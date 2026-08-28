@@ -1,5 +1,6 @@
 {
   "dataset": "princeton-nlp/SWE-bench_Verified",
+  "dataset_repo_sha": "c104f840cc67f8b6eec6f759ebc8b2693d585d4a",
   "max_per_repo": 9,
   "measured": [
     "django__django-11276",
@@ -89,6 +90,7 @@
     "pytest-dev__pytest-5840"
   ],
   "rows": 500,
+  "rows_sha256_canonical": "4f74c5cff0d5838cd8026295d7ed61ed8171147207ead7d795ff18c977712ae2",
   "seed": "saltbench-wave1-2026-08-27",
   "split": "test"
 }

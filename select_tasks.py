@@ -60,6 +60,13 @@ MAX_PER_REPO = 9         # ⛔ CHOSEN FROM MEASURED ARITHMETIC, NOT PREFERENCE.
 DATASET = "princeton-nlp/SWE-bench_Verified"
 DATASET_SPLIT = "test"
 DATASET_ROWS = 500
+DATASET_REPO_SHA = "c104f840cc67f8b6eec6f759ebc8b2693d585d4a"   # HF repo revision
+DATASET_ROWS_SHA256 = "4f74c5cff0d5838cd8026295d7ed61ed8171147207ead7d795ff18c977712ae2"
+# ⛔ A ROW COUNT IS NOT A CONTENT PIN. The draw depends on byte-level fields — the gold
+#   patch's file list and the statement length — so any upstream reformatting changes the
+#   eligible set and therefore the sorted draw. `data/` is gitignored, so without these two
+#   values the bytes the frozen list came from are not recoverable and
+#   "anyone may re-derive the exact task list" is false.
 # ─────────────────────────────────────────────────────────────────────────────────────
 
 

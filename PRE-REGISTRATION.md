@@ -77,7 +77,12 @@ prose and code could differ, the code is definitive and this sentence is what ma
 true. *v1 claimed the list was re-derivable "from the public dataset plus this page" and
 never named the script — the page alone did not determine the list.*
 
-**Pinned snapshot:** `princeton-nlp/SWE-bench_Verified`, split `test`, 500 rows.
+**Pinned snapshot:** `princeton-nlp/SWE-bench_Verified`, split `test`, 500 rows —
+**repo revision `c104f840cc67f8b6eec6f759ebc8b2693d585d4a`**, and **sha256
+`4f74c5cf…12ae2` over the canonicalised rows**, both recorded in `TASKLIST.json`.
+⛔ *v2 pinned a ROW COUNT, which is not a content pin, in the section whose thesis is
+re-derivability: the draw depends on byte-level fields, and `data/` is gitignored, so
+without the revision the bytes the frozen list came from were not recoverable.*
 
 **Criteria, metadata only** (no task inspected, no solution read, no arm run before the
 list was frozen). Applied over the 500 rows, **measured**:
