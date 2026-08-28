@@ -287,7 +287,9 @@ def self_test():
     check(len(shared) >= max(1, len(mm) - 2),
           f"pilot shares {len(shared)} of {len(mm)} measured repos")
     worst = max((abs(mm[r] / len(m) - pp[r] / len(p)) for r in set(mm) | set(pp)), default=1.0)
-    check(worst <= 0.12, f"largest per-repo share gap {worst:.1%} <= 12%")
+    # ⛔ WAS `<= 0.12` WHILE select() RAISES ABOVE STRATA_TOLERANCE=0.08 — a branch that
+    #   could never fail, in the file that had just learned "green meant nothing".
+    check(worst <= STRATA_TOLERANCE, f"largest per-repo share gap {worst:.1%} <= {STRATA_TOLERANCE:.0%}")
     check(not (set(x['instance_id'] for x in m) & set(x['instance_id'] for x in p)),
           "measured ∩ pilot = ∅")
 

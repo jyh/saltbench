@@ -22,7 +22,7 @@ tape-out resource and never takes a P1 build ticket.
    — reproduced at this hand: `measured=42, pilot=0`, raising nothing. §3.
 2. **The predicate was a no-op on the real encoding** (JSON strings; `len("[]") == 2`), so
    the criterion guaranteeing a regression surface admitted the 11 instances lacking one.
-3. **§3.4's regression rule refused CORRECT patches** on ≥9.5% of the drawn set — a
+3. **§3.4's regression rule refused CORRECT patches** on **18–42% of the CURRENT drawn set** — a
    mechanical bias against my own treatment arm. I asked refuters for a cheaper
    explanation of a *win* and never asked for one of a *loss*. Rewritten in DESIGN §3.
 4. **§6 had no adverse outcome.** Every terminal state read favourable. §6 below.
@@ -159,9 +159,16 @@ count appear in the headline.
   reported as a result — with the CI, so a reader can see it is a routing outcome.
 
 **Pinned identically for both arms, before the first call:** model id and snapshot,
-`output_config.effort`, `thinking` mode and display, `max_tokens`, caching configuration
-and TTL, and temperature. *An unpinned effort setting is a larger lever on the dollar
-figure than the gate is.*
+`output_config.effort`, `thinking` mode and display, `max_tokens`, and the caching configuration
+and TTL. *An unpinned effort setting is a larger lever on the dollar figure than the gate is.*
+⛔⛔ **`temperature` IS NOT PINNED, AND v2 PINNING IT WAS A FIRST-CALL FATAL: `claude-sonnet-5`
+REJECTS SAMPLING PARAMETERS WITH A 400**, so the first API request of either arm would have
+failed exactly as frozen. *I had the authoritative model table loaded in the session that wrote
+that line and pinned it anyway — a source in context is not a source consulted.*
+⇒ **Agent nondeterminism therefore CANNOT be pinned away on this model.** It is handled where
+it can be: `P₁` is generated once and shared across arms (DESIGN §7), so round 1 carries no
+sampling variance at all; rounds ≥2 do, and that variance inflates `n_d`, which the MDE table
+already prices. The model snapshot id is pinned; the sampler is not pinnable.
 
 ---
 

@@ -12,7 +12,11 @@ Four things did not, and **all four were things I would have defended**:
 
 1. **§3.4 was mechanically biased AGAINST my own treatment arm** — the gate's regression
    baseline was `C`, the grader's is `C + T`, and `T` rewrites test expectations.
-   Measured: ≥9.5% of the drawn set fail a *correct* patch under v1's rule. I had asked
+   **Re-measured at this hand on the CURRENT measured-50: 21/50 = 42%** have a gold test patch
+   that deletes a line of an existing test file; **9/50 = 18%** delete a line containing
+   `assert`/`==`/`expected`. ⛔ **v2 still said "≥9.5%", computed on the 42-task draw that cap 9
+   REPLACED — I re-froze the draw and never re-derived the figure that motivated this very
+   rewrite, understating the bias 2–4× in the sentence a write-up would quote.** I had asked
    refuters for a cheaper explanation of a **win**; this is a cheaper explanation of a
    **loss**, and I never asked for that direction. Rewritten in §3 below.
 2. **"Only the accept/refuse decision differs" was false**, refuted by two other lines in
@@ -157,6 +161,12 @@ prediction. Where `T` rewrites an existing test's expectations, the base-commit 
 that test encodes the **old** behaviour — so the very fix the issue asks for makes it
 fail, and v1's rule ("tests that passed before the patch must still pass") fires on a
 **correct** patch. ≥4 of the 42 then-drawn tasks (≥9.5%) are in this class;
+⚠️ **THE TWO PROXIES DIFFER BY 2.3× AND THE NARROW ONE MISSES MY OWN WORKED EXAMPLE** — so
+`rewrites_existing_test` MUST be given a normative implementation in `analyse.py`, committed
+BEFORE the first call, or it is a researcher degree of freedom in the one variable used to
+detect the confound. ⚠️ *And stratifying a 50-task screen whose MDE is 15.7–28.7 points into
+9/41 or 21/29 leaves NEITHER stratum powered: the stratification is a DIAGNOSTIC, not a
+control, and says so.*
 `pytest-dev__pytest-5809` is fully worked: the base test asserts `lexer=python3`, `T`
 replaces it with `lexer=text`, and the correct fix sends `text`.
 
