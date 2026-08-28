@@ -53,17 +53,17 @@ log "task=$IID image=$IMG@$DIG base=$BASE"
 finish() {
   [ -n "$finished" ] && return 0
   finished=1; rc="${1:-0}"
+  # a container that died under the agent makes every later rt call plumbing, whatever its rc (refuter RI3-R1) —
+  # measured BEFORE the container is removed (the first amendment cut measured after, and always read dead)
+  container_alive=""
+  if [ -n "$SID" ]; then container_alive=$("$DOCKER_BIN" inspect -f '{{.State.Running}}' "$CTR" 2>/dev/null); [ "$container_alive" = "true" ] || term="HARNESS_ERROR(container_dead:$term)"; fi
   "$DOCKER_BIN" rm -f "$CTR" >/dev/null 2>&1
   [ -d "$EP" ] && mv "$EP" "$ST/eptree" 2>/dev/null   # the agent-visible tree is archived, never left for the next episode
   # smoke probes are never scored: they land as SMOKE(...) in their own log (refuter RI-8)
   [ -n "$PROMPT_OVERRIDE" ] && term="SMOKE($term)"
   [ -n "${CLAUDE_BIN_STUB:-}" ] && term="DRYEXEC($term)"
-  # a container that died under the agent makes every later rt call plumbing, whatever its rc (refuter RI3-R1)
-  if [ -n "$SID" ]; then
-    alive=$("$DOCKER_BIN" inspect -f '{{.State.Running}}' "$CTR" 2>/dev/null); [ "$alive" = "true" ] || term="HARNESS_ERROR(container_dead:$term)"
-  fi
   t1=$(now)
-  ARMV="$arm" python3 - "$ST" "$IID" "$IMG" "$DIG" "$BASE" "$term" "$rc" "$t0" "$t1" "$MODEL" "$EFFORT" "$MAX_TURNS" "$WALL_S" "$TOKEN_CEILING" "$H" "$CFG" "$CLAUDE_BIN" "$ep" "${SID:-}" "$AGENT_PATH" <<'PY'
+  ARMV="$arm" CONTAINER_ALIVE="$container_alive" python3 - "$ST" "$IID" "$IMG" "$DIG" "$BASE" "$term" "$rc" "$t0" "$t1" "$MODEL" "$EFFORT" "$MAX_TURNS" "$WALL_S" "$TOKEN_CEILING" "$H" "$CFG" "$CLAUDE_BIN" "$ep" "${SID:-}" "$AGENT_PATH" <<'PY'
 import json,sys,hashlib,os,subprocess
 (st,iid,img,dig,base,term,rc,t0,t1,model,effort,mt,wall,ceil,h,cfg,cbin,ep,sid,apath)=sys.argv[1:]
 arm=os.environ.get("ARMV")
@@ -107,6 +107,7 @@ m={"episode":ep,"instance_id":iid,"arm":arm,"image":img,"digest":dig,"base_commi
    "first_call_usage":mt_.get("first_call_usage"),"unknown_tools":mt_.get("unknown_tools"),
    "quota_evidence":(open(os.path.join(st,"quota_evidence.txt")).read().strip() if os.path.exists(os.path.join(st,"quota_evidence.txt")) else None),
    "freeze_commit":(open(os.path.join(h,"FREEZE-COMMIT")).read().strip() if os.path.exists(os.path.join(h,"FREEZE-COMMIT")) else None),
+   "container_running_at_end":os.environ.get("CONTAINER_ALIVE"),
 
    "flags":["-p <prompt>","--model",model,"--effort",effort,"--max-turns",mt,"--dangerously-skip-permissions",
             "--disallowedTools","WebFetch,WebSearch,Agent,Task,Workflow,Skill,Monitor,CronCreate,CronDelete,CronList,RemoteTrigger,SendMessage,ListAgents,PushNotification,SendUserFile,EnterWorktree,ExitWorktree",
