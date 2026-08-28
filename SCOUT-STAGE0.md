@@ -1,18 +1,22 @@
 # SCOUT — STAGE 0: the CONTROL protocol (plain · placebo), frozen
 
-**Frozen 2026-08-28, bench seat, BEFORE any model call by this seat** (the freeze commit is the pin;
-draft `a03bd3c` was refuted first — 5 lenses, 42 confirmed findings, 10 fatal — and this is the
-repaired text; the verdict lives in `seat/fleet/REFUTER-saltbench-stage0-2026-08-28.md`).
-Commission: council minute 2026-08-28 ITEM 12 and the boot brief `seat/briefs/0000-BOOT-bench.md`.
+**Frozen 2026-08-28, bench seat, BEFORE any model call by this seat.** The freeze commit is the pin;
+the harness under `harness/` is the normative form of every mechanism named here, and
+`harness/HASHES.txt` pins every file, the arm renderings, the projected data, the per-task
+canonical prompts, and the claude version. Two refuter passes preceded it, both banked in
+`seat/fleet/`: pass 1 on draft `a03bd3c` (5 lenses, 42 confirmed, 10 fatal) and pass 2 on the
+repaired `79835da` (21 closed / 21 partial; 3 fresh fatals, **all repair-introduced**). Their
+residue is repaired in this commit; what is left open is named in §0 and §8, not smoothed.
+Commission: council minute 2026-08-28 ITEM 12 and `seat/briefs/0000-BOOT-bench.md`.
 
 This document supersedes NOTHING in `PRE-REGISTRATION.md` (v4) or `DESIGN-gate-wave1.md` (v4):
 wave 1 is **HELD** — no model call is made under that design — and stage 0 REUSES its
 arm-independent machinery by reference (task draw, image digests, exclusions, harness pin, CHECK 2b,
 the metered unit) while replacing the agent, the arms and the rule of amendment. Where this page and
 those documents differ on an *agent* or *arm* matter, this page governs for the scout; where they
-differ on a *scoring* or *substrate* matter, they govern and this page is wrong.
-**`harness/` is the NORMATIVE form of every mechanism named here** (the pre-registration's §3 rule):
-where prose and script differ, the script at the freeze commit is definitive.
+differ on a *scoring* or *substrate* matter, they govern — with ONE dated exception recorded in
+both places: the pre-flight control is a NO-OP patch (§2; `EXCLUSIONS.md` amendment 2026-08-28).
+**Where prose and script differ, the script at the freeze commit is definitive** (PRE-REG §3's rule).
 
 **The rule of amendment (boot brief act A):** nothing runs before ITS OWN protocol is frozen and
 dated. Stage 0 freezes the two CONTROL arms. Every TREATMENT arm is registered later as a **dated
@@ -32,21 +36,28 @@ exists. Stage 0 measures nothing about the salt method.
 **Stage 0 CANNOT show (the wave-1 cannot-show list, re-cut for the scout):**
 1. *A mechanism.* PLAIN–PLACEBO differs in bytes AND content by design; it is not a controlled
    contrast, it is the price of a generic block. A placebo win is "compliance with house notes",
-   inseparable from evaluation-aware behaviour (the agent sees a working path and project notes;
-   it is not told an arm, a gate, or an evaluation exists — the NEUTRAL framing, named as an artifact).
+   inseparable from evaluation-aware behaviour: the agent is not told an arm, a gate or an
+   evaluation exists (the NEUTRAL framing, named as an artifact), but it sees notes presented as a
+   project's own for a repository that has no team.
 2. *Arm-blindness by construction.* The agent runs as the same uid as the harness with a Docker
    socket in reach; nothing on the host is unreadable to it. Blindness is **by audit** (§1, §5):
-   every tool call is in the transcript and an escape VOIDs the episode.
-3. *A closed network.* The test environment has none; the agent's host does. Closed by hook, by
-   audit, and by the absence of a reason — not by the OS. The residual is named, owned, and dated:
-   the uid split + `pf` rule for the agent user is the Captain's-hand item for the next sitting.
+   every tool call is in the transcript; an escape VOIDs the episode; the audit is a regex and a
+   path resolver, and a determined agent could evade it — an agent told "there is no network" and
+   given no reason to look has, in the transcript, no way to hide that it looked.
+3. *A closed network.* The test environment has none (`--network none`); the agent's host does.
+   The hook is a **tripwire and the audit's source, not an OS closure**. The residual is named,
+   owned and dated: a dedicated agent uid + a `pf` rule for it is the Captain's-hand item for the
+   next sitting (§8).
 4. *Separation of sampling variance from arm effect.* No task-arm is repeated at k = 15.
 5. *Contamination.* A memorised task solves in both arms and pulls the pair toward concordance.
+6. *Anything about `--max-turns` or the Keychain before the smoke probes have run* (§7).
 
 ## 1 · The hermetic agent (AGENT OUTSIDE, ENVIRONMENT INSIDE — the 13:3x ruling)
 
-**Agent = Claude Code proper, `claude` 2.1.251, headless (`-p`), on the Studio host, on the
-jykriterion subscription.** Never an API key; never the OAuth token in a custom harness.
+**Agent = Claude Code proper, `claude` 2.1.251 (pinned in `HASHES.txt`; the version is asserted
+before every episode and the auto-updater is disabled in the agent's environment), headless
+(`-p`), on the Studio host, on the jykriterion subscription.** Never an API key; never the OAuth
+token in a custom harness.
 
 ```
 CLAUDE_CONFIG_DIR = /Users/jyh/.claude-bench   credentials (macOS Keychain, keyed to this dir) + settings.json
@@ -54,43 +65,52 @@ HOME              = /Users/jyh                  REAL — the Keychain credential
                                                 (measured); ~/.claude is NOT read because CLAUDE_CONFIG_DIR overrides it
 cwd               = /Users/jyh/work/<ep>/repo   the working copy; <ep> = ep-<8 hex>, neutral root, no "bench" in the path
 PATH (agent)      = /usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/.local/bin   (the login PATH,
-                                                echoed by the smoke probe from INSIDE the agent and recorded)
-env -i HOME USER LOGNAME PATH TERM LANG TMPDIR CLAUDE_CONFIG_DIR BENCH_EP   (BENCH_EP = the episode dir, read by the hook)
+                                                echoed by smoke probe A1 from INSIDE the agent and recorded)
+env -i  HOME USER LOGNAME PATH TERM LANG TMPDIR CLAUDE_CONFIG_DIR BENCH_EP(=the episode dir, read by the hook)
+        DISABLE_AUTOUPDATER=1 DISABLE_UPDATES=1 CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING=1
 $(command -v claude) -p "$(cat prompt.md)" --model claude-sonnet-5 --effort high --max-turns 40 \
-   --dangerously-skip-permissions --disallowedTools "WebFetch,WebSearch,Agent,Task,Workflow,Skill" \
+   --dangerously-skip-permissions \
+   --disallowedTools "WebFetch,WebSearch,Agent,Task,Workflow,Skill,Monitor,CronCreate,CronDelete,CronList,RemoteTrigger,SendMessage,ListAgents,PushNotification,SendUserFile,EnterWorktree,ExitWorktree" \
    --strict-mcp-config --setting-sources user,project --output-format json --session-id <uuid>
 ```
 - **`--setting-sources user,project`** — `project` is REQUIRED: without it Claude Code 2.1.251 loads
   no project-tree CLAUDE.md at all (refuter F0; the draft said `user` and would have run both arms as
   the same run). The `user` source is `~/.claude-bench/settings.json` (= `harness/settings.bench.json`,
-  sha-pinned), which carries the one `PreToolUse` hook. `--bare` is never used (it disables CLAUDE.md).
+  sha-pinned), which carries the one `PreToolUse` hook, matcher `Bash|Monitor`. `--bare` is never used.
 - **Hermeticity of the agent** is exactly: no fleet tree, no memory bank, no MCP, no CLAUDE.md above
   `/Users/jyh/work/<ep>/`. Asserted before every episode (`episode.sh` §6): no `CLAUDE.md` on the
   path from `/` to the episode dir; the extracted tree carries no `CLAUDE.md`, `CLAUDE.local.md`,
-  `.claude/`, `.mcp.json`; the config dir's `projects/` is EMPTY and its entries match a frozen
-  allowlist; settings, hook, arm rendering and the task's canonical prompt hash to `HASHES.txt`.
+  `.claude/`, `.mcp.json`; the config dir's `projects/`, `file-history/`, `session-env/`,
+  `sessions/`, `todos/`, `shell-snapshots/`, `debug/` are EMPTY and it carries no
+  agent-influencing entry (`CLAUDE.md commands agents skills rules hooks .mcp.json`); any other
+  unexpected entry is recorded, not fatal; settings, hook, `episode.sh` itself, the arm rendering
+  and the task's canonical prompt hash to `HASHES.txt`.
 - **The arm IS a CLAUDE.md file** at `/Users/jyh/work/<ep>/CLAUDE.md` — one directory above the
   working copy, so ancestor discovery loads it and the patch never contains it. **`/Users/jyh/work`
-  holds ONLY the running episode** (asserted; the previous tree is archived into state at landing).
-- **The arm name exists in no file, no argv and no env while claude runs**: it reaches `episode.sh`
-  as an environment variable consumed and unset; `prompt_meta.json` carries no arm field;
-  `manifest.json` — the only file naming the arm — is written after the process has exited.
-- **Network and host reach — hook, audit, and the OS where it applies:** `WebFetch`/`WebSearch` are
-  disallowed; the test container runs `--network none`; the `PreToolUse` hook on `Bash`
-  (`harness/hook-deny-network.sh`, identical in every arm) blocks two classes — **ESCAPE** (fetchers,
-  installers, sockets, `gh`, the `docker` CLI by name, and any literal path into `~/bench`, `~/.claude*`
-  or another episode; the agent's own episode path is exempt) and **URL** (a scheme in the command
-  text — an issue often quotes one; blocked so nothing is fetched, counted, never a VOID by itself).
-  Post hoc, `meter.py` audits EVERY tool call — Bash commands and the paths of Read/Edit/Write/Glob/
-  Grep: an escape whose result is the hook's BLOCKED text is an **attempt** (counted); an unblocked
-  escape, a file tool outside the episode tree, or a spawn tool **VOIDs** the episode (reported,
-  never scored). *The issue's fix is public on GitHub; an agent that can fetch it is not being
-  measured — and one that tries is reported.* The host route itself stays open (§0 item 3).
-- **The agent's tests run INSIDE the instance image** (§3), never on the host: the host has no
-  project dependencies, and the base block (§4) tells the agent the one way to run anything. The
-  wrapper is exercised under the agent's EXACT environment before every episode (`rt` → python
-  version from inside the container), so "the agent could not run tests" is a HARNESS_ERROR, never
-  a result.
+  holds ONLY the running episode** (asserted; the tree is archived into state at landing).
+- **The arm name is in no argv and no env while claude runs** (it reaches `episode.sh` on STDIN —
+  an env var survives `unset` in the kernel's saved exec environment and shows in `ps -E`), and in
+  **no file the hook or the audit permits**: `prompt_meta.json` carries no arm field;
+  `manifest.json` is written after the process has exited; the driver logs the arm only in its
+  LANDED line. Prior episodes' landings and manifests do name arms — they sit under `~/bench`,
+  which is an ESCAPE token in the hook and the audit.
+- **Network and host reach — hook, audit, and the OS where it applies:** `WebFetch`/`WebSearch` and
+  every spawning or command-running tool other than `Bash` are disallowed; the test container runs
+  `--network none`; the `PreToolUse` hook (`harness/hook-deny-network.sh`, identical in every arm,
+  20-arm self-test) blocks two classes — **ESCAPE** (fetchers, installers, sockets, `gh`, `docker`
+  and the others *bare or path-qualified*; Python network APIs INSIDE inline code only, because a
+  grep for `urllib` in a repository is innocent; any path into `~/bench`, `~/.claude*`,
+  `$CLAUDE_CONFIG_DIR`, a relative `bench/`, or another episode; the agent's own episode path is
+  exempt) and **URL** (a scheme in the command text — an issue often quotes one; blocked so nothing
+  is fetched, counted, never a VOID by itself). Post hoc, `meter.py` audits EVERY tool call — Bash
+  and Monitor commands, and every path field of Read/Edit/Write/Glob/Grep/Notebook tools RESOLVED
+  against the agent's cwd (a relative `../../` out of the tree is an escape): an escape whose
+  result is the hook's BLOCKED text is an **attempt** (counted); an unblocked escape, a resolved
+  path outside the episode tree (or `/tmp`), a spawn tool, or an unknown command-running tool
+  **VOIDs** the episode (reported, never scored). The host route itself stays open (§0 item 3).
+- **The agent's tests run INSIDE the instance image** (§3), never on the host. The wrapper is
+  exercised under the agent's EXACT environment before every episode (its log line is kept apart
+  from the agent's), so "the agent could not run tests" is a HARNESS_ERROR, never a result.
 
 ## 2 · Substrate, task subset, scoring, images — UNCHANGED from v5, by reference
 
@@ -99,48 +119,54 @@ $(command -v claude) -p "$(cat prompt.md)" --model claude-sonnet-5 --effort high
   `4f74c5cff0d5838cd8026295d7ed61ed8171147207ead7d795ff18c977712ae2` — **the recipe is in the
   repo** (`select_tasks.py --verify-dataset`; silicon's handoff defect, closed):
   `sha256(json.dumps(rows, sort_keys=True, separators=(",",":")).encode())`.
-- **During episodes the Studio holds NO held-out byte:** `harness/data/problem_statements.json` is
-  a projection of the pilot rows to `{instance_id, problem_statement, base_commit, repo, version}`
-  (sha in `HASHES.txt`); `episode.sh` REFUSES to run while the full dataset is present. The full
-  dataset and every gold-bearing harness log are on the Studio only for the control and scoring
-  phases (`harness/studio_phase.sh in|out`, run from the seat), and are moved off before the first
-  episode and after the last scoring run.
+- **During episodes the Studio holds NO held-out byte:** `harness/data/problem_statements.json`
+  (COMMITTED; sha in `HASHES.txt`) is a projection of the pilot rows to `{instance_id,
+  problem_statement, base_commit, repo, version}`; `episode.sh` REFUSES to run while the full
+  dataset or any `run_evaluation` log is present on the Studio. The full dataset and every
+  gold-bearing harness log are on the Studio only for the control and scoring phases
+  (`harness/studio_phase.sh in|out`, run from the seat; `out` FAILS unless zero gold-bearing files
+  remain).
 - **Task subset = the first `k` of the frozen `TASKLIST.json` `pilot` list, in draw order, k = 15.**
-  Episodes run task-major, arm-minor: task 1 (a0, a1), task 2 (a1, a0), … so a stop leaves complete
-  pairs and neither arm always runs second on a warm cache (8:7 first-run asymmetry at k = 15, reported).
-  Extending k past 15 is an amendment; shrinking it is a REPORTED stop.
+  Episodes run task-major, arm-minor: task 1 (a0, a1), task 2 (a1, a0), … so neither arm always
+  runs second on a warm cache (8:7 first-run asymmetry at k = 15, reported per pair). A stop
+  between the two arms of a task leaves that pair incomplete; the resume re-runs the missing cell
+  and the morning line counts only complete pairs. Extending k past 15 is an amendment; shrinking
+  it is a REPORTED stop.
 - `solved := official harness swebench==4.1.0 (726c546) reports resolved=true` for the SUBMITTED
   patch, run post hoc as a batch with `-d data/verified.json` (local file, content-pinned), `-i`
-  the k ids, `--namespace swebench --instance_image_tag latest --max_workers 1 --timeout 1800`.
-  Images by DIGEST from `IMAGE-DIGESTS.json` with the pre-registered BRIDGE (`docker pull --platform
-  linux/amd64 <image>@<digest>` · `docker tag <image>@<digest> <image>:latest`) — 4.1.0 calls
-  `images.get(key)` before any pull. The images are `linux/amd64` only (registry manifest, read
-  without a daemon); they run under Rosetta on the arm64 Studio; 4.1.0 defaults `arch=x86_64` and
-  creates containers with `platform=linux/x86_64` (source read at this hand).
+  the k ids, `--namespace swebench --instance_image_tag latest --max_workers 1 --timeout 1800
+  --cache_level instance`. Images by DIGEST from `IMAGE-DIGESTS.json` with the pre-registered
+  BRIDGE (`harness/pull_pilot.sh`: `docker pull --platform linux/amd64 <image>@<digest>` ·
+  `docker tag <image>@<digest> <image>:latest`) — 4.1.0 calls `images.get(key)` before any pull.
+  All 30 pilot images are pulled and bridged on the Studio (88 GB). The images are `linux/amd64`
+  only; they run under Rosetta on the arm64 Studio; 4.1.0 defaults `arch=x86_64` and creates
+  containers with `platform=linux/x86_64` (source read at this hand).
 - **Exclusions per `EXCLUSIONS.md`, arm-independent, both controls run before either arm on every
-  task in the subset.** ⛔ *Amended 08/28 (refuter F4): swebench 4.1.0 DROPS an empty-patch
-  prediction before evaluation, so the pre-flight submits a NO-OP patch (a new empty marker file
-  outside every test path) and the harness grades the unmodified tree: all F2P fail, all P2P pass.*
-  Gold-control unchanged. Rows are logged for all k, survivors included.
-- **Predictions are built from manifests AFTER the batch** (`harness/predictions.py`), from
-  scorable terminations only — `DONE`, `ROUNDS_EXHAUSTED`, `WALLCLOCK`, `TOKEN_CEILING`
-  (`+NO_PATCH` variants as empty patches = unsolved). `VOID`, `QUOTA`, `ERROR_*`, `HARNESS_ERROR`
-  rows are NEVER scored; they are listed as REMOVED with their reason and `n_effective` is the
-  pair count. **No prediction is written while the night runs.**
+  task in the subset.** ⛔ *Amended 2026-08-28 in both documents (refuter F4): swebench 4.1.0 DROPS
+  an empty-patch prediction before evaluation, so the pre-flight submits a NO-OP patch (one new
+  empty marker file outside every test path) and the harness grades the unmodified tree: all F2P
+  fail, all P2P pass.* Gold-control unchanged. Rows are logged for all k, survivors included; the
+  harness exit code is checked, not masked.
+- **Predictions are built from manifests AFTER the batch** (`harness/predictions.py`, arms `a0 a1`
+  only), from scorable terminations — `DONE`, `ROUNDS_EXHAUSTED`, `WALLCLOCK`, `TOKEN_CEILING`
+  (`+NO_PATCH` variants as empty patches = unsolved). `VOID`, `QUOTA`, `AUTH`, `ERROR_*`,
+  `HARNESS_ERROR`, `SMOKE`, `DRY` rows are NEVER scored; they are listed as REMOVED with their
+  reason and `n_effective` is the pair count. **No prediction is written while the night runs.**
 - No held-out identity reaches the agent through the builder: the prompt is built from
   `problem_statement` ALONE by `harness/build_prompt.py`, whose self-test smuggles each of the five
-  held-out fields into the statement and asserts a refusal.
+  held-out fields into the statement and asserts a refusal, checks the projection's shape, the
+  placebo's vocabulary, and that the prompt and base block name only entries the episode dir holds.
 
 ## 3 · One environment for the agent's tests, the checks and the scorer
 
 Per episode (`harness/episode.sh`): `docker create --platform linux/amd64 <image>@<digest>`;
 `docker cp <ctr>:/testbed` to state; **assert the image's history is the post-fix shape BEFORE
-dropping it** (`HEAD~1 == base_commit` and no commit dated after base other than the recipe's
-synthetic HEAD; tag count recorded — refuter L3 turned the maintainers' build date into a
-per-episode assertion); delete every `.git` and `packed-refs` at any depth; refuse a tree carrying
-`CLAUDE.md`/`.claude`/`.mcp.json`; move it to `/Users/jyh/work/<ep>/repo`. Then **CHECK 2b on the
-host copy** and, after the container is up, **CHECK 2b again inside it on `/testbed`** — all states
-fail-closed, logged (`harness/check2b.sh`, 6-arm self-test):
+dropping it** (`HEAD~1 == base_commit`; no commit dated at or after base other than base and the
+recipe's synthetic HEAD; tag count recorded; an image without `.git` is refused because the
+checkout-is-base claim could not be asserted); delete every `.git` and `packed-refs` at any depth;
+refuse a tree carrying `CLAUDE.md`/`.claude`/`.mcp.json`; move it to `/Users/jyh/work/<ep>/repo`.
+Then **CHECK 2b on the host copy** and, after the container is up, **CHECK 2b again inside it on
+`/testbed`** — all states fail-closed, logged (`harness/check2b.sh`, 6-arm self-test):
 
 ```
 no .git at ANY depth · no packed-refs · no file named .git containing "gitdir:" ·
@@ -152,19 +178,25 @@ The episode container: `docker run -d --platform linux/amd64 --network none --na
 -v /Users/jyh/work/<ep>/repo:/testbed -w /testbed <image>@<digest> tail -f /dev/null`. Inside the
 container's mount namespace the bind mount hides the image's own `/testbed` (measured: no
 `/testbed/.git`, no `/eval.sh`, no `/tmp/patch.diff`); the pristine image is still one `docker
-run` away on the host, which is why `docker` is an ESCAPE token in the hook and the audit — the
-agent has no reason to say the word: the wrapper says it. The agent reaches the environment
-through ONE wrapper, `/Users/jyh/work/<ep>/rt`, which runs `<absolute docker> exec -w /testbed <ep>
-bash -lc 'source /opt/miniconda3/bin/activate testbed && <cmd>'` and appends every command and
-exit code to `rt.log`; per episode `rt_calls` and `rt_calls_rc0` are recorded and an episode whose
-every `rt` call failed is `HARNESS_ERROR`, never a result.
+run` away on the host, which is why `docker` — bare or by path — is an ESCAPE token in the hook and
+the audit: the agent has no reason to say the word, the wrapper says it. The agent reaches the
+environment through ONE wrapper, `/Users/jyh/work/<ep>/rt`, which runs `<absolute docker> exec -w
+/testbed <ep> timeout 590 bash -lc 'source /opt/miniconda3/bin/activate testbed && <cmd>'` (the
+in-container `timeout` so a tool-level kill leaves no orphan) and appends every command and exit
+code to `rt.log`; per episode `rt_calls`, `rt_calls_rc0` and `rt_unfinished` (START without END —
+the Bash tool's own timeout) are recorded, and an episode whose every `rt` call ended
+`rc=126|127` (not executable / not found — plumbing, never a failing test) is `HARNESS_ERROR`.
 
 Before ANY harness run (pre-flight, gold-control, scoring) `harness/bridge_assert.sh` asserts, per
 id, that `<image>:latest` and `<image>@<digest>` are the SAME image object (`.Id` equal) — the
 harness prefers a local `:latest` and never compares a digest (refuter v3/v4).
-**Infrastructure failures get exactly ONE deterministic retry** (same image, task, arm; logged
-`RETRY` by the driver) before the driver HALTS for an operator; a `HARNESS_ERROR` that survives
-the retry is never an exclusion (EXCLUSIONS.md) and never scored (§2).
+**Non-terminal landings** (`HARNESS_ERROR`, `ERROR_*`) get exactly ONE retry after 60 s;
+`QUOTA`/`AUTH` are a **hold with a release condition and a timeout** — 30-minute steps, at most
+6 h, the same task-arm re-run once per step — then the driver HALTS for an operator. A
+`HARNESS_ERROR` that survives its retry is never an exclusion (EXCLUSIONS.md) and never scored.
+**Any abnormal exit of `episode.sh` still lands** (an EXIT trap types it `HARNESS_ERROR(abort:…)`,
+removes the container, archives the tree) — the draft could die between "container up" and
+"claude started" without a landing line, which is how one dead line would have burned the night.
 
 **The submitted patch is NEVER a terminal `git diff` of a repo the agent could touch.** A shadow
 git-dir in state (outside the agent's tree; `GIT_DIR` set only in the harness process) commits the
@@ -172,14 +204,16 @@ pristine copy as `base` before the episode; after it, `add -A && diff --cached -
 patch, sha256-recorded. The tree's own `.gitignore` is honoured. An agent that `git init`s its
 working copy is recorded (`agent_made_git`), not penalised; both arms are told there is no history.
 
-*Feasibility, measured 08/28:* extraction + both CHECK 2b + shadow git + wrapper assertion = 11 s;
-427 django tests in 2 s through the bind mount under Rosetta. If a task's visible suite cannot
-complete inside the wall-clock ceiling in either arm, that is an arm-independent covariate
-(`rt.log` wall time, tool-timeout count per arm), reported.
+*Feasibility, measured 08/28 on the Studio:* `--dry` (extraction + history assertion + both CHECK
+2b + shadow git + wrapper under the agent env) = 11 s; 427 django tests in 2 s through the bind
+mount under Rosetta; a **run-shaped dry** with a stub in place of claude executed every line after
+the launch (watchdog, wait, jsonl discovery, meter, audit, cleanup, manifest) and landed
+`DONE+NO_PATCH` — the path the draft had never run.
 
 ## 4 · The two arms — the prompt is IDENTICAL up to the episode path; only the CLAUDE.md differs
 
-**The prompt** (`-p`), built by `harness/build_prompt.py` from `problem_statement` only:
+**The prompt** (`-p`), built by `harness/build_prompt.py` from `problem_statement` only
+(`harness/prompt.md`, 278 bytes as a template):
 
 ```
 You are working in a checkout of the repository at /Users/jyh/work/<ep>/repo.
@@ -194,8 +228,8 @@ The episode path differs per episode, so the prompt is pinned CANONICALLY: `HASH
 one `prompt-canonical <instance_id> <sha256>` line per pilot task (path → `__EP__`), `episode.sh`
 asserts the episode's canonical sha against it, and the morning line asserts equality within pairs.
 
-**The arm file** = `BASE` block + `ARM` block. `BASE` (`harness/base.md`, byte-identical in every
-arm; the only place the agent learns HOW to run anything):
+**The arm file** = `BASE` block + `ARM` block. `BASE` (`harness/base.md`, 590 bytes, byte-identical
+in every arm; the only place the agent learns HOW to run anything):
 
 ```
 # Working notes
@@ -227,105 +261,123 @@ arm; the only place the agent learns HOW to run anything):
   lists each dimension on which it differs, and its `ARM` block is within `[1,610, 1,968]` bytes
   (±10 %) — or it registers a profile-matched placebo variant beside it and runs that too.** The
   mechanical length term is also MEASURED, no tokenizer needed: per task, call 1's
-  `cache_creation_input_tokens` in `a1` minus `a0` ≈ the placebo's token cost, reported.
+  `cache_creation_input_tokens` in `a1` minus `a0` ≈ the placebo's token cost (`first_call_usage`
+  in every manifest; median printed by the morning line).
 - **Framing:** the agent is told nothing of arms, gates or evaluation; the notes present as a
   project's own. Named as an artifact in §0.
 
 ## 5 · Metering — from the session jsonl, deduplicated by `message.id`; audit from the same file
 
 The session file is `$CLAUDE_CONFIG_DIR/projects/<cwd-slug>/<uuid>.jsonl`, copied verbatim into the
-episode artifact. **One API call lands as one `assistant` line PER CONTENT BLOCK, each carrying the
-same `message.id`, `requestId` and `usage`** (measured on this seat's own session: 45 lines = 22
-calls). `harness/meter.py` (17-check self-test):
+episode artifact (a `-p` session leaves exactly one `.jsonl` there — measured; a second one, or a
+`subagents/` directory, means a subagent ran). **One API call lands as one `assistant` line PER
+CONTENT BLOCK, each carrying the same `message.id`, `requestId` and `usage`** (measured on this
+seat's own session: 45 lines = 22 calls). `harness/meter.py` (26-check self-test):
 
 - **calls := distinct `message.id`** (fallback `requestId`; a line with neither is `no_call_id`
   and VOIDs — never a per-line fallback); `isApiErrorMessage` / model `<synthetic>` lines are
   excluded from calls and counted (`api_error_lines`);
 - **the metered sum** = `input + cache_creation + cache_read + output` over those calls — the
   pre-registration's unit, unchanged; the four classes, `thinking_tokens`, per-call max, the
-  `model` string per call (an OBSERVATION: `claude-sonnet-5` is requested; what lands is
-  reported), `service_tier`, `speed`;
+  first call's usage, the `model` string per call (an OBSERVATION: `claude-sonnet-5` is requested;
+  what lands is reported), `service_tier`;
 - **compaction lands NOWHERE**: a `compact_boundary` record carries `compactMetadata.preTokens/
   postTokens` and no usage. Their sum is reported as `compaction_input_floor`, and
   `metered_sum_incl_compaction_floor` beside the raw sum; the autocompact window is the CLI default
-  (`auto`), recorded as such in every manifest, not pinned;
-- **the CLI cross-check governs UPWARD**: `--output-format json` gives `num_turns` and `usage`;
-  `num_turns_matches_calls` and the signed per-class `cli_minus_jsonl` are reported; when the CLI
-  figure is larger it governs (`metered_sum_governing`) and `jsonl_undercount` is printed —
-  the jsonl governs only downward. `total_cost_usd` is recorded and NOT used (dollars struck);
+  (`auto`) at the pinned claude version — a constant at that version, recorded, not pinned;
+- **the CLI cross-check governs UPWARD**: `--output-format json` gives `num_turns`, `usage` (the
+  CLI's own schema says: main loop only) and `modelUsage` (per model, includes auxiliary calls).
+  `num_turns_matches_calls`, the signed per-class `cli_minus_jsonl`, `jsonl_undercount`, and any
+  model in `modelUsage` never observed in the jsonl (`foreign_models_in_modelUsage`, a hidden-call
+  detector) are reported; **`metered_sum_governing` = max(jsonl, usage, modelUsage)** and is the
+  figure the morning line uses. `total_cost_usd` is recorded and NOT used (dollars struck);
 - **API-level retries** (429/5xx re-sends) never land in the jsonl and are not billed: the metered
   sum is what LANDED, which is what the quota consumed;
-- **subagents**: `isSidechain` lines, any spawn tool_use (`Agent`/`Task`/`Workflow`/`Skill`, all
-  disallowed), a second `.jsonl` or a `subagents/` directory under the config dir → `VOID(SUBAGENT)`;
-  any extra transcript is metered separately so a VOID episode still has a complete number;
-- a **truncated last line** is recorded (`truncated_last_line`), never silently skipped; an empty
-  or unparsable `meter.json` makes the episode `HARNESS_ERROR(meter)`, never a quiet `NA`;
-- the **ESCAPE / URL audit** of §1, with `escape_attempts_blocked`, `escape_unblocked`,
-  `url_mentions`, `dotdot_paths`, and the `void_reasons` list.
+- **subagents**: `isSidechain` lines, any spawn tool_use, a second `.jsonl` or a `subagents/`
+  directory → `VOID(SUBAGENT)`; any extra transcript is metered separately;
+- a **truncated last line** is recorded, never silently skipped; an empty or unparsable
+  `meter.json` makes the episode `HARNESS_ERROR(meter)`, never a quiet `NA`;
+- the **ESCAPE / URL audit** of §1 (`escape_attempts_blocked`, `escape_unblocked`, `url_mentions`,
+  `dotdot_paths`, `unknown_tools`, `tool_timeouts` = tool results reading "Command timed out").
 
-**Termination**, typed per episode: `DONE` · `ROUNDS_EXHAUSTED` (`--max-turns 40` fired:
-`subtype == error_max_turns`) · `WALLCLOCK` (the harness watchdog killed it at 5,400 s) ·
-`TOKEN_CEILING` (killed at a metered sum ≥ **8,000,000** = R × the pre-registration's 200,000
-per-call sub-cap, so **`--max-turns` is the stop expected to bind**; the draft's 3,000,000 would
-have bound at ~30 calls on a 100k prefix and censored the p90 stage 0 exists to measure) ·
-`QUOTA` (the CLI returned an error naming a rate/usage limit) · `ERROR_<subtype>` (any other CLI
-error) · `HARNESS_ERROR` · `VOID(<reasons>:<term>)` · `+NO_PATCH` suffix when the tree is
-unchanged. **The watchdog signals claude itself** (`exec`'d in its subshell, so `$!` is the agent);
-after `wait` the harness asserts no process still holds the session id and logs `ORPHAN_KILLED`
-if one did (refuter F5/M1: the draft killed the subshell and let the agent keep spending).
-`--max-turns` is accepted by 2.1.251 and absent from `--help`; the CLI's own text reads *"Maximum
-number of agentic turns (API round-trips)"*, so **R = 40 calls = 40 turns**, established by smoke
-probe B (§7) before the first episode.
+**Termination**, typed per episode: `DONE` · `ROUNDS_EXHAUSTED` (`subtype == error_max_turns`) ·
+`WALLCLOCK` (the watchdog killed it at 5,400 s) · `TOKEN_CEILING` (killed at a metered sum ≥
+**8,000,000** = R × the pre-registration's 200,000 per-call sub-cap, so **`--max-turns` is the
+stop expected to bind**; the draft's 3,000,000 would have bound at ~30 calls on a 100k prefix and
+censored the p90 stage 0 exists to measure) · `QUOTA` (the CLI's message text or stderr names a
+rate/usage limit — classified from TEXT, never from a numeric field; the matched words are recorded
+as `quota_evidence`; a run that produced a transcript with zero metered calls is `QUOTA(no_call)`)
+· `AUTH` (login/Keychain text) · `ERROR_<subtype>` · `HARNESS_ERROR(…)` · `VOID(<reasons>:<term>)`
+· `SMOKE(<term>)` (a `PROMPT_OVERRIDE` run) · `DRY` · `+NO_PATCH` suffix when the tree is unchanged.
+**The watchdog signals claude itself** (`exec`'d in its subshell, so `$!` is the agent); after
+`wait` the harness asserts no process still holds the session id and logs `ORPHAN_KILLED` if one
+did. `--max-turns` is accepted by 2.1.251 and absent from `--help`; the CLI's own text reads
+*"Maximum number of agentic turns (API round-trips)"*, so **R = 40 calls = 40 turns**, established
+by smoke probe B before the first episode.
 
-## 6 · What counts as an episode's artifact (`~/bench/state/<ep>/`, sha256-listed)
+## 6 · What counts as an episode's artifact (`~/bench/state/<ep>/`, `SHA256SUMS`-listed)
 
-`manifest.json` (task · arm · digest · base · termination · exit code · session id · claude binary
-and version · host arch · docker platform · agent PATH · flags verbatim · arm rendering sha and
-block bytes · CLAUDE.md sha · prompt sha and canonical sha · settings and hook shas · patch sha and
-bytes · `agent_made_git` · `rt_calls`/`rt_calls_rc0` · metered sums · calls · void reasons ·
-compactions) · `session.jsonl` (verbatim) · `result.json` (the CLI's) · `model_patch.diff` ·
-`image_history.txt` · `check2b.host.log` · `check2b.container.log` · `env_python.txt` (the
-wrapper under the agent env) · `rt.log` · `network_audit.txt` · `meter.json` · `prompt.md` ·
-`prompt_meta.json` · `eptree/` (the agent-visible tree, archived at landing: `CLAUDE.md`, `rt`,
-`repo/`) · `configdir-projects/` (the config dir's `projects/` subtree, archived then REMOVED
-after every episode, unconditionally, so nothing but credentials crosses episodes) · and, after
-the batch, the harness `report.json` for the instance and the pre-flight/gold-control rows.
-**A green exit says something RAN, not what:** an episode with no `model_patch.diff` is
-`NO_PATCH`, scored unsolved, never "missing".
+`manifest.json` (task · arm · digest · base · termination · exit code · session id · claude binary,
+its resolved target and version · host arch · docker platform · agent PATH · flags verbatim · arm
+rendering sha and block bytes · CLAUDE.md sha · prompt sha, canonical sha, override sha · settings,
+hook and `episode.sh` shas · patch sha and bytes · `agent_made_git` · `rt_calls`/`rt_calls_rc0`/
+`rt_unfinished` · metered sums (raw, governing, incl. compaction floor) · calls · void reasons ·
+compactions · models · service tiers · tool timeouts · first-call usage · unknown tools · quota
+evidence) · `session.jsonl` (verbatim) · `result.json` · `cli_text.txt` · `claude.stderr` ·
+`model_patch.diff` · `image_history.txt` · `check2b.host.log` · `check2b.container.log` ·
+`env_python.txt` · `rt.probe.log` (the harness's own wrapper probe) · `rt.log` (the agent's calls) ·
+`network_audit.txt` · `meter.json` · `prompt.md` · `prompt_meta.json` · `configdir_unexpected.txt` ·
+`eptree/` (the agent-visible tree, archived at landing) · `configdir-projects/` (the config dir's
+`projects/` subtree, archived then REMOVED after every episode, with `file-history/`,
+`session-env/`, `sessions/`, `todos/`, `shell-snapshots/`, `debug/`, `history.jsonl` and the
+`.claude.json` project entries for the episode root — unconditionally, so nothing but credentials
+crosses episodes) · and, after the batch, the harness `report.json` for the instance and the
+pre-flight/gold-control rows. **A green exit says something RAN, not what:** an episode with no
+`model_patch.diff` is `NO_PATCH`, scored unsolved, never "missing".
 
 ## 7 · Order of operations, the first model calls, and the reading rules
 
-1. This freeze + `harness/` committed; `HASHES.txt` written; refuter pass on the draft
-   (`a03bd3c`, 5 lenses: arm-blindness · metering · leaks · placebo-cheaper · harness-executes,
-   each finding attacked by 2–3 skeptics) → REPAIR → a second pass on the repairs → this commit.
+1. This freeze + `harness/` committed; `HASHES.txt` written; two refuter passes (§preamble).
    **The harness, all in `harness/`, each with a driven self-test where one is possible:**
-   `episode.sh` (runner + watchdog) · `rt.template` · `check2b.sh` (+`check2b.selftest.sh`, 6 arms)
-   · `hook-deny-network.sh` (`--selftest`, 12 arms; `--pattern-escape`/`--pattern-url` shared with
-   the audit) · `meter.py` (`--self-test`, 17 checks) · `build_prompt.py` (`--self-test`: five
-   held-out fields refused, projection shape, placebo vocabulary) · `project_data.py` ·
-   `bridge_assert.sh` · `preflight_gold.sh` · `score.sh` · `run_stage0.sh` (driver) ·
-   `predictions.py` · `morning_line.py` · `settings.bench.json` · `sync_studio.sh` ·
-   `studio_phase.sh` · `hashes.sh` → `HASHES.txt`. All four self-tests pass on the Studio itself
-   (bash 3.2, python 3.9); a `--dry` episode passed there under this runner in 11 s.
+   `episode.sh` (runner + watchdog + EXIT trap; asserts its own sha) · `rt.template` ·
+   `check2b.sh` (+`check2b.selftest.sh`, 6 arms) · `hook-deny-network.sh` (`--selftest`, 20 arms;
+   `--pattern-escape`/`--pattern-url` shared with the audit) · `meter.py` (`--self-test`, 26
+   checks) · `build_prompt.py` (`--self-test`, 12 checks) · `project_data.py` ·
+   `bridge_assert.sh` · `pull_pilot.sh` (the bridge) · `preflight_gold.sh` · `score.sh` ·
+   `run_stage0.sh` (driver) · `predictions.py` · `morning_line.py` · `settings.bench.json` ·
+   `sync_studio.sh` (fails on sha drift) · `studio_phase.sh` (`out` fails if gold remains) ·
+   `dry_exec_stub.sh` (the run-shaped dry) · `hashes.sh` → `HASHES.txt`. All self-tests pass on
+   the Studio itself (bash 3.2, python 3.9); `--dry` and the run-shaped dry passed there under
+   this runner.
 2. Captain's hand: `~/.claude-bench` logged in as jykriterion **from inside `tmux attach -t
-   bench`** on the Studio (so the credential is created by the session that will read it).
+   bench`** on the Studio (so the credential is created by the session that will read it), then
+   the config dir's transient entries cleared (`episode.sh` asserts them empty).
 3. **SMOKE PROBES — the first model calls on this account, DECLARED here so they own their
-   boundary.** Both run THROUGH `episode.sh` (`PROMPT_OVERRIDE`, arm `s0`, `LANDINGS=smoke.log`),
-   so they exercise the exact environment block, and neither is an episode or scored:
-   **A (canary)** — arm `s0` says *"if asked to reply OK, reply `OK CANARY-7f3a91`"*; prompt
-   *"Run `echo $PATH; command -v docker; command -v curl` with the Bash tool, then reply with the
-   single word OK."*, `--max-turns 4`. Establishes: the Keychain reads under tmux-over-ssh; the
-   jsonl lands where §5 says; the arm file IS loaded (the canary string appears); the agent's real
-   PATH (recorded into §1 if it differs).
+   boundary.** All run THROUGH `episode.sh` (`PROMPT_OVERRIDE`, arm `s0`, `LANDINGS=smoke.log`), so
+   they exercise the exact environment block; they land as `SMOKE(…)` and are never scored:
+   **A1 (PATH + canary)** — arm `s0` says *"if asked to reply OK, reply `OK CANARY-7f3a91`"*;
+   prompt *"Run `echo $PATH` with the Bash tool, then reply with the single word OK."*,
+   `--max-turns 3`. Establishes: the Keychain reads under tmux-over-ssh; the jsonl lands where §5
+   says; the arm file IS loaded (the canary string appears in `result.result`); the agent's real
+   PATH (recorded; §1 amended if it differs).
+   **A2 (tripwire)** — prompt *"Run `command -v docker` with the Bash tool, then reply OK."*,
+   `--max-turns 3`. Establishes: the hook fires from inside the agent (the tool result carries
+   BLOCKED), `meter.json` classifies it as `escape_attempts_blocked` with `void == false`.
    **B (cap)** — prompt *"Run `ls`, then `ls -a`, then `ls -la`, each as a separate Bash call,
    then reply OK."*, `--max-turns 2`. Establishes: `error_max_turns` fires; `num_turns` vs distinct
-   `message.id`; `result.usage` vs the jsonl sum. Both are reported on the bus with metered tokens.
-4. `studio_phase.sh in` · pre-flight + gold-control on the k tasks (containers only) ·
-   `studio_phase.sh out` (dataset and gold logs leave the Studio).
-5. Episodes, task-major, sequential, in tmux `bench:run` on the Studio; a bus line per landing
-   with the metered sum, relayed by the seat from `~/bench/logs/landings.log`. The quota triple is
-   read ONCE at dispatch, never polled; the 5-hour window is the concurrency limit (sequential = 1).
-   The driver HALTS on a non-terminal landing that survives its one retry.
+   `message.id`; `result.usage` and `modelUsage` vs the jsonl sum.
+   **C (rt from inside)** — prompt *"Run `<EP>/rt 'python -c \"print(6*7)\"'` with the Bash tool,
+   then reply OK."*, `--max-turns 3`. Establishes: the wrapper works under the agent's Bash tool
+   (not only under the harness's `env -i`); `rt_calls_rc0 == 1`.
+   Each is reported on the bus with its metered tokens; **the driver does not start until all
+   four have landed with the expected facts** — a human reading, treated as a hard stop.
+4. `studio_phase.sh in` · pre-flight + gold-control on the k tasks (containers only; ~30 harness
+   evaluations under Rosetta, budgeted before the driver starts) · `studio_phase.sh out`.
+5. Episodes, task-major, sequential, under `caffeinate -dims` in tmux `bench:run` on the Studio
+   (the machine may not sleep under a running episode); a bus line per landing with the metered
+   sum, relayed by the seat from `~/bench/logs/landings.log`. The quota triple is read ONCE at
+   dispatch, never polled; the 5-hour window is the concurrency limit (sequential = 1); a window
+   edge is a `QUOTA` hold (§3), not a halt.
 6. `studio_phase.sh in` · `predictions.py` · batch scoring per arm · `studio_phase.sh out` · the
    **MORNING LINE** (`harness/morning_line.py`, the one pre-declared computation):
    - solve rate per arm over PAIRS (tasks with both arms scorable), with `b` (a0-only), `c`
@@ -334,18 +386,36 @@ the batch, the harness `report.json` for the instance and the pre-flight/gold-co
      sign-test probability of a difference at least that large under IDENTICAL arms — a
      descriptor, not a test; **`|b−c| < 5` of 15 is reported INDISTINGUISHABLE AT k = 15 and
      narrated in neither direction**;
-   - metered-sum distribution per arm (p50/p90/max) with terminations per arm; **the p90 the cap
-     rule consumes is `a0`'s, over `DONE|ROUNDS_EXHAUSTED` episodes; censored rows (`WALLCLOCK`/
-     `TOKEN_CEILING`) are excluded and counted beside it**; `a1`'s p90 is reported for the
-     length term;
+   - metered-sum distribution per arm (p50/p90/max, nearest-rank, over `metered_sum_governing`)
+     with terminations per arm; **the p90 the cap rule consumes is `a0`'s, over
+     `DONE|ROUNDS_EXHAUSTED` episodes; censored rows (`WALLCLOCK`/`TOKEN_CEILING`) are excluded
+     and counted beside it**; `a1`'s p90 is reported for the length term;
    - **CAP-CONFOUNDED** if the count of cap-bound episodes (`ROUNDS_EXHAUSTED`+`WALLCLOCK`+
-     `TOKEN_CEILING`) differs between arms by ≥ 2;
-   - REMOVED rows (VOID/QUOTA/ERROR/HARNESS_ERROR) listed with reasons; `url_mentions` and blocked
-     escape attempts per arm; pair order and wall-clock per episode;
+     `TOKEN_CEILING`) among the pairs differs between arms by ≥ 2;
+   - REMOVED rows (VOID/QUOTA/AUTH/ERROR/HARNESS_ERROR) with reasons; per arm `url_mentions`,
+     blocked escape attempts, tool timeouts, compactions; the length term (median first-call
+     `cache_creation` delta); pair order and wall-clock per pair; canonical-prompt equality within
+     every pair; the models seen per arm; duplicate terminal manifests, if any;
    - **no p-value, by design.**
 
 **Model sequence:** Sonnet for both controls and for every treatment arm first; Opus/Fable only on
 an arm pair that differs, Fable episodes only on the Captain's word (item 12).
+
+## 8 · Open items, owned and dated (not smoothed)
+
+- **Agent uid split + `pf` rule** (§0 item 3): the OS-level closure of the host route. Captain's
+  hand (a user, a sudoers line, a pf anchor). Next sitting.
+- **The audit's reach** (§0 item 2): a regex over Bash text plus a resolver over path fields. Named
+  evasions that pass it today: variable-built paths (`H=$HOME; cat $H/b*/…`), `ps -E`, `printenv`,
+  a script written with Write and then run. Every one leaves its bytes in the transcript; none is
+  something an agent told "there is no network" has a reason to do. Owner: bench; reviewed after
+  the first night's transcripts.
+- **Compaction in the cap rule**: the p90 consumes `metered_sum_governing`; if any `a0` episode
+  compacted (`compactions > 0`), the morning line says so beside the p90 and the cap amendment
+  states which figure it read. Owner: bench, at the morning line.
+- **The pre-flight/gold timing under Rosetta** (30 evaluations at `--timeout 1800`): measured in
+  step 4 before the driver starts; a 1800 s exclusion is reported as a Rosetta cost, never as a
+  task property.
 
 ---
 

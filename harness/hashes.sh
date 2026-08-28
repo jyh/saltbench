@@ -8,10 +8,11 @@ set -u
 cd "$(dirname "$0")" || exit 1
 {
   echo "# HASHES — regenerate with harness/hashes.sh; sha256; generated $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-  for f in base.md prompt.md rt.template episode.sh check2b.sh check2b.selftest.sh hook-deny-network.sh meter.py build_prompt.py preflight_gold.sh bridge_assert.sh score.sh run_stage0.sh predictions.py project_data.py morning_line.py settings.bench.json arms/*.md; do
+  for f in base.md prompt.md rt.template episode.sh check2b.sh check2b.selftest.sh hook-deny-network.sh meter.py build_prompt.py preflight_gold.sh bridge_assert.sh score.sh run_stage0.sh predictions.py project_data.py morning_line.py pull_pilot.sh sync_studio.sh studio_phase.sh dry_exec_stub.sh settings.bench.json arms/*.md; do
     printf '%s %s\n' "$f" "$(shasum -a 256 "$f" | cut -d' ' -f1)"
   done
   printf 'settings.json %s\n' "$(shasum -a 256 settings.bench.json | cut -d' ' -f1)"
+  printf 'claude-version %s\n' "2.1.251"
   for a in arms/*.md; do
     id=$(basename "$a" .md)
     printf 'rendered-%s(__EP__) %s bytes=%s\n' "$id" "$(cat base.md "$a" | shasum -a 256 | cut -d' ' -f1)" "$(cat base.md "$a" | wc -c | tr -d ' ')"

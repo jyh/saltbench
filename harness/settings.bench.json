@@ -2,7 +2,7 @@
   "theme": "auto",
   "hooks": {
     "PreToolUse": [
-      { "matcher": "Bash",
+      { "matcher": "Bash|Monitor",
         "hooks": [ { "type": "command", "command": "/Users/jyh/bench/harness/hook-deny-network.sh", "timeout": 15 } ] }
     ]
   }

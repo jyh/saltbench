@@ -9,5 +9,5 @@ case "${1:?in|out}" in
   out) mkdir -p "$REPO/runs/studio-controls"
        rsync -a --remove-source-files "$STUDIO:~/bench/state/controls/" "$REPO/runs/studio-controls/" 2>/dev/null
        rsync -a --remove-source-files "$STUDIO:~/bench/state/scoring/" "$REPO/runs/studio-scoring/" 2>/dev/null
-       ssh "$STUDIO" 'rm -f ~/bench/harness/data/verified.json; find ~/bench/state/controls ~/bench/state/scoring -type d -empty -delete 2>/dev/null; ls ~/bench/harness/data/; find ~/bench -name "*.diff" -path "*run_evaluation*" | wc -l' && echo "dataset + gold logs OUT" ;;
+       ssh "$STUDIO" 'rm -f ~/bench/harness/data/verified.json; find ~/bench/state/controls ~/bench/state/scoring -type d -empty -delete 2>/dev/null; ls ~/bench/harness/data/; n=$(find ~/bench -type f -path "*run_evaluation*" 2>/dev/null | wc -l | tr -d " "); echo "gold-bearing files remaining: $n"; [ "$n" = 0 ]' && echo "dataset + gold logs OUT" || { echo "OUT FAILED: gold-bearing files remain on the Studio"; exit 1; } ;;
 esac

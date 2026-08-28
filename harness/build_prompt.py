@@ -113,6 +113,10 @@ def self_test():
     if os.path.exists(pp):
         rows = json.load(open(pp))
         check(all(set(r) == {"instance_id", "problem_statement", "base_commit", "repo", "version"} for r in rows), "problem_statements.json holds exactly the five projected fields (%d rows)" % len(rows))
+    # every __EP__/<name> the prompt and base block mention must be an entry episode.sh asserts (CLAUDE.md repo rt)
+    import re as _re
+    names = {n.rstrip(".") for n in _re.findall(r"__EP__/([A-Za-z0-9_.-]+)", open(os.path.join(HERE, "prompt.md")).read() + open(os.path.join(HERE, "base.md")).read())}
+    check(names <= {"CLAUDE.md", "repo", "rt"}, "prompt/base name only episode-dir entries: %s" % sorted(names))
     # a1 (placebo) carries no verification vocabulary
     a1 = open(os.path.join(HERE, "arms", "a1.md")).read().lower()
     bad = [w for w in ("test", "reproduce", "verify", "verif", "spec", "propert", "checker", "proof", "prove", "statement", "assert", "expected") if w in a1]

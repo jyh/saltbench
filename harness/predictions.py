@@ -7,11 +7,14 @@ terminal manifest wins; duplicates are reported.   usage: predictions.py <STATE 
 import glob, json, os, sys
 SCORABLE = ("DONE", "ROUNDS_EXHAUSTED", "WALLCLOCK", "TOKEN_CEILING")
 st, out = sys.argv[1], sys.argv[2]
+ARMS = set(sys.argv[3].split(",")) if len(sys.argv) > 3 else {"a0", "a1"}   # smoke arms (s*) are never scored
 rows, excl, dups = {}, [], []
 for mp in sorted(glob.glob(os.path.join(st, "*", "manifest.json"))):
     m = json.load(open(mp)); t = m.get("termination", ""); key = (m["instance_id"], m["arm"])
+    if m["arm"] not in ARMS or t.startswith(("SMOKE", "DRY")):
+        continue
     base = t.split("+")[0]
-    if base in SCORABLE and not t.startswith("VOID") and not t.startswith("HARNESS_ERROR"):
+    if base in SCORABLE:
         if key in rows: dups.append({"key": key, "kept": m["episode"], "dropped": rows[key]["episode"]})
         patch = open(os.path.join(os.path.dirname(mp), "model_patch.diff")).read() if m.get("model_patch_bytes") else ""
         rows[key] = {"episode": m["episode"], "instance_id": m["instance_id"], "model_name_or_path": "stage0-" + m["arm"], "model_patch": patch, "termination": t}

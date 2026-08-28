@@ -27,3 +27,12 @@ exclusion count appear in the headline.
 | instance_id | decided_at | trigger | report.json sha256 | raw log | arm_scores_sealed | decider |
 |---|---|---|---|---|---|---|
 | *(none yet — no run has occurred)* | | | | | | |
+
+---
+**AMENDMENT 2026-08-28 (bench seat, SCOUT stage 0, before any model call; refuter F4):** control (i)
+"pre-flight" is executed as a **NO-OP patch** — a `diff --git` adding one empty marker file
+(`.swebench_preflight`) outside every test path — because the pinned harness `swebench==4.1.0`
+DROPS an empty-patch prediction before evaluation (`run_evaluation.py`: `empty_patch_ids`). The
+harness therefore grades the UNMODIFIED tree, which is the control's meaning: all F2P must fail, all
+P2P must pass. Control (ii) unchanged. The table above gains no column; the trigger value for (i)
+reads `preflight(noop)`.

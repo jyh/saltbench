@@ -7,4 +7,11 @@ set -u
 STUDIO="${STUDIO:-kriterion-lan}"; REPO="$(cd "$(dirname "$0")/.." && pwd)"
 rsync -a --delete -e "ssh -o ConnectTimeout=10" "$REPO/harness/" "$STUDIO:~/bench/harness/" || exit 1
 rsync -a -e "ssh -o ConnectTimeout=10" "$REPO/TASKLIST.json" "$REPO/IMAGE-DIGESTS.json" "$STUDIO:~/bench/harness/" || exit 1
-ssh -o ConnectTimeout=10 "$STUDIO" 'bash -lc "cd ~/bench/harness && shasum -a 256 settings.bench.json hook-deny-network.sh episode.sh HASHES.txt | cut -c1-16 | tr \"\\n\" \" \"; echo; ls data/"'
+# receipt: the Studio-side shas of the files the run depends on must EQUAL the pinned ones (refuter RI-2)
+for f in episode.sh hook-deny-network.sh settings.bench.json meter.py build_prompt.py; do
+  want=$(grep "^$f " "$REPO/harness/HASHES.txt" | cut -d' ' -f2)
+  have=$(ssh -o ConnectTimeout=10 "$STUDIO" "shasum -a 256 ~/bench/harness/$f | cut -d' ' -f1")
+  [ "$want" = "$have" ] && echo "SYNC OK   $f ${have:0:16}" || { echo "SYNC DRIFT $f studio=${have:0:16} pinned=${want:0:16}"; exit 2; }
+done
+ssh -o ConnectTimeout=10 "$STUDIO" 'ls ~/bench/harness/data/'
+

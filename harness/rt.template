@@ -1,10 +1,11 @@
 #!/bin/bash
 # rt — run a command inside this checkout's environment (harness wrapper; identical in every arm)
 # usage: rt <cmd> [args...]     or     rt '<shell string>'
+# The command is wrapped in the container's own `timeout 590` so a tool-level kill leaves no orphan inside.
 LOG=__ST__/rt.log
 if [ $# -eq 1 ]; then cmd="$1"; else cmd=$(printf '%q ' "$@"); fi
 printf '%s\tSTART\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$cmd" >> "$LOG"
-__DOCKER__ exec -w /testbed __CTR__ bash -lc 'source /opt/miniconda3/bin/activate testbed >/dev/null 2>&1 || { source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed; }; eval "$1"' _ "$cmd"
+__DOCKER__ exec -w /testbed __CTR__ timeout 590 bash -lc 'source /opt/miniconda3/bin/activate testbed >/dev/null 2>&1 || { source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed; }; eval "$1"' _ "$cmd"
 rc=$?
 printf '%s\tEND\trc=%s\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$rc" "$cmd" >> "$LOG"
 exit $rc

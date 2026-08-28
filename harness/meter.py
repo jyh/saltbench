@@ -27,7 +27,11 @@ import argparse, collections, json, os, re, sys
 CLASSES = ("input_tokens", "cache_creation_input_tokens", "cache_read_input_tokens", "output_tokens")
 SPAWN = {"Agent", "Task", "Workflow", "Skill"}
 PATH_TOOLS = {"Read": ("file_path",), "Edit": ("file_path",), "Write": ("file_path",), "MultiEdit": ("file_path",),
-              "NotebookEdit": ("notebook_path",), "Glob": ("path",), "Grep": ("path",), "LS": ("path",)}
+              "NotebookEdit": ("notebook_path",), "NotebookRead": ("notebook_path",), "Glob": ("path", "pattern"), "Grep": ("path",), "LS": ("path",)}
+# tools an episode may legitimately use; anything else is recorded, and VOIDs if it can run a command or name a path
+KNOWN_TOOLS = {"Bash", "Read", "Edit", "Write", "MultiEdit", "Glob", "Grep", "LS", "NotebookEdit", "NotebookRead", "TodoWrite", "TodoRead",
+               "BashOutput", "KillShell", "KillBash", "ExitPlanMode", "EnterPlanMode", "AskUserQuestion", "StructuredOutput", "Sleep", "ToolSearch"}
+TIMEOUT_MARK = "Command timed out after"
 BLOCKED_MARK = "BLOCKED by the episode harness"
 
 
@@ -70,8 +74,10 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0):
     sidechain = 0; missing_class = []; models = collections.Counter(); tiers = collections.Counter()
     tool_uses = collections.Counter(); compactions = []; api_error = 0; no_call_id = 0
     escapes_blocked = []; escapes_unblocked = []; url_mentions = 0; spawn_uses = 0; dotdot = 0
-    first_ts = None; last_ts = None; versions = set(); cost_state = None
+    first_ts = None; last_ts = None; versions = set(); cost_state = None; unknown_tools = collections.Counter(); first_call = None
     results = _tool_results(recs)
+    timeouts = sum(1 for v in results.values() if TIMEOUT_MARK in v)
+    cwd = (ep + "/repo") if ep else None
     rx_e = re.compile(escape_re) if escape_re else None
     rx_u = re.compile(url_re) if url_re else None
     for r in recs:
@@ -79,8 +85,6 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0):
         if t == "system" and r.get("subtype") in ("compact_boundary", "compaction"):
             cm = r.get("compactMetadata") or {}
             compactions.append({"preTokens": cm.get("preTokens"), "postTokens": cm.get("postTokens")})
-        if t == "summary":
-            compactions.append({"preTokens": None, "postTokens": None, "kind": "summary-record"})
         if t == "cost-state":
             cost_state = r.get("modelUsage") or r.get("costState") or {k: v for k, v in r.items() if k != "type"}
         if t != "assistant":
@@ -102,6 +106,8 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0):
                     missing_class.append((mid, c))
             by_id[mid] = {c: int(u.get(c, 0) or 0) for c in CLASSES}
             by_id[mid]["thinking"] = int(((u.get("output_tokens_details") or {}).get("thinking_tokens")) or 0)
+            if first_call is None:
+                first_call = {c: by_id[mid][c] for c in CLASSES}
             models[m.get("model")] += 1; tiers[u.get("service_tier")] += 1
             versions.add(r.get("version"))
             ts = r.get("timestamp")
@@ -114,23 +120,34 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0):
             tool_uses[name] += 1
             if name in SPAWN:
                 spawn_uses += 1
+            if name not in KNOWN_TOOLS and name not in SPAWN:
+                unknown_tools[name] += 1
+                if "command" in inp or any(k in inp for k in ("file_path", "path", "notebook_path")):
+                    escapes_unblocked.append("%s UNKNOWN-TOOL %s" % (name, json.dumps(inp)[:200]))
+                continue
             probe = None
-            if name == "Bash":
+            if name in ("Bash", "Monitor"):
                 probe = inp.get("command") or ""
             elif name in PATH_TOOLS:
-                probe = " ".join(str(inp.get(k) or "") for k in PATH_TOOLS[name])
+                # every path-like field, RESOLVED against the agent's cwd, must stay inside the episode tree (or /tmp)
+                for k in PATH_TOOLS[name]:
+                    raw = str(inp.get(k) or "").strip()
+                    if not raw:
+                        continue
+                    if ".." in raw:
+                        dotdot += 1
+                    if k == "pattern" and not os.path.isabs(raw) and not raw.startswith(".."):
+                        continue
+                    resolved = os.path.normpath(raw if os.path.isabs(raw) else os.path.join(cwd or "", raw)) if ep else raw
+                    if ep and not (resolved == ep or resolved.startswith(ep + "/") or resolved.startswith(("/tmp/", "/private/tmp/"))):
+                        escapes_unblocked.append("%s %s=%s -> %s" % (name, k, raw, resolved))
+                continue
             if probe is None:
                 continue
             raw = probe.strip()
             if ".." in raw:
                 dotdot += 1
-            if name in PATH_TOOLS and ep and raw:
-                # a file tool's path must be the episode's own tree (or /tmp); any other absolute path is an escape
-                if raw.startswith(ep + "/") or raw == ep or not os.path.isabs(raw) or raw.startswith(("/tmp", "/private/tmp")):
-                    continue
-                escapes_unblocked.append("%s %s" % (name, probe))
-                continue
-            p2 = probe.replace(ep + "/", "/EP/") if ep else probe   # own-episode paths are neutral for the Bash regex
+            p2 = probe.replace(ep, "/EP") if ep else probe   # the own episode path (with or without a trailing slash) is neutral
             if rx_e and rx_e.search(p2):
                 res = results.get(c.get("id"), "")
                 (escapes_blocked if BLOCKED_MARK in res else escapes_unblocked).append("%s %s" % (name, probe))
@@ -157,6 +174,7 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0):
         "tool_uses": dict(tool_uses), "bash_commands": tool_uses.get("Bash", 0),
         "escape_attempts_blocked": escapes_blocked, "escape_unblocked": escapes_unblocked,
         "url_mentions": url_mentions, "dotdot_paths": dotdot, "cost_state": cost_state,
+        "tool_timeouts": timeouts, "unknown_tools": dict(unknown_tools), "first_call_usage": first_call,
         "first_call_ts": first_ts, "last_call_ts": last_ts,
         "void_reasons": void_reasons, "void": bool(void_reasons),
     }
@@ -176,8 +194,19 @@ def crosscheck(m, result):
     over = sum(max(0, d) for d in out["cli_minus_jsonl"].values())
     out["jsonl_undercount"] = over
     cli_sum = sum(int(ru.get(c) or 0) for c in CLASSES) if ru else 0
-    out["metered_sum_governing"] = max(m["metered_sum"], cli_sum)  # the larger figure governs (M8)
-    out["usage_matches_jsonl"] = all(d == 0 for d in out["cli_minus_jsonl"].values())
+    # modelUsage (per model, camelCase) is the CLI's own preferred ledger and includes auxiliary calls; a model there that
+    # was never observed in the jsonl is a hidden-call detector, and its sum also governs upward (refuter M8)
+    mu = result.get("modelUsage") or {}
+    mu_sum = 0; foreign = []
+    for model, v in mu.items():
+        if isinstance(v, dict):
+            mu_sum += sum(int(v.get(k) or 0) for k in ("inputTokens", "cacheCreationInputTokens", "cacheReadInputTokens", "outputTokens"))
+            if model not in m["models"]:
+                foreign.append(model)
+    out["cli_modelUsage_sum"] = mu_sum; out["cli_modelUsage_models"] = sorted(mu); out["foreign_models_in_modelUsage"] = foreign
+    out["metered_sum_governing"] = max(m["metered_sum"], cli_sum, mu_sum)  # the largest figure governs (M8)
+    out["usage_matches_jsonl"] = bool(out["cli_minus_jsonl"]) and all(d == 0 for d in out["cli_minus_jsonl"].values())
+    out["cli_usage_schema_seen"] = bool(out["cli_minus_jsonl"])
     return out
 
 
@@ -215,6 +244,20 @@ def self_test():
     check(m3d["url_mentions"] == 1 and not m3d["void"], "a URL mention is counted, never a void")
     m3e = meter(recs + [a("m8", [tu("Bash", {"command": EP + "/rt python -m pytest"}, "t8")])], ep=EP, escape_re=ESC)
     check(not m3e["void"], "own rt (path under the episode) is not an escape")
+    m3f = meter(recs + [a("m8b", [tu("Bash", {"command": "cd " + EP + " && ls"}, "t8b")])], ep=EP, escape_re=ESC)
+    check(not m3f["void"], "the bare own episode path (no trailing slash) is not an escape")
+    m3g = meter(recs + [a("m8c", [tu("Grep", {"pattern": "arm", "path": "../../../bench/state"}, "t8c")])], ep=EP, escape_re=ESC)
+    check(m3g["escape_unblocked"] and m3g["void"], "a relative path that resolves outside the episode voids")
+    m3h = meter(recs + [a("m8d", [tu("Grep", {"pattern": "def foo", "path": "django/db"}, "t8d")])], ep=EP, escape_re=ESC)
+    check(not m3h["void"], "a relative path inside the repo is fine")
+    m3i = meter(recs + [a("m8e", [tu("Glob", {"pattern": "/Users/jyh/bench/**/manifest.json"}, "t8e")])], ep=EP, escape_re=ESC)
+    check(m3i["void"], "an absolute Glob pattern outside the episode voids")
+    m3j = meter(recs + [a("m8f", [tu("Monitor", {"command": "curl x"}, "t8f")])], ep=EP, escape_re=ESC)
+    check(m3j["escape_unblocked"] and m3j["void"], "Monitor command is audited like Bash")
+    m3k = meter(recs + [a("m8g", [tu("SomeNewTool", {"command": "ls"}, "t8g")])], ep=EP, escape_re=ESC)
+    check(m3k["unknown_tools"] == {"SomeNewTool": 1} and m3k["void"], "an unknown command-running tool voids")
+    m3l = meter(recs + [a("m8h", [tu("Bash", {"command": "ls"}, "t8h")]), tr("t8h", TIMEOUT_MARK + " 120000ms")], ep=EP, escape_re=ESC)
+    check(m3l["tool_timeouts"] == 1 and m3l["first_call_usage"] == {c: u[c] for c in CLASSES}, "tool timeouts counted; first-call usage emitted")
     bad = a("m9", []); bad["message"]["usage"] = {"input_tokens": 1}
     m4 = meter(recs + [bad], ep=EP)
     check(m4["missing_usage_class"] and "USAGE_SCHEMA" in m4["void_reasons"], "a usage record missing a class voids (drift is a hole, not a zero)")
@@ -231,6 +274,8 @@ def self_test():
     check(cc["usage_matches_jsonl"] and cc["num_turns_matches_calls"] and cc["metered_sum_governing"] == 2306, "cli cross-check matches; jsonl governs when equal")
     cc2 = crosscheck(m, {"num_turns": 3, "usage": {"input_tokens": 900006, "cache_creation_input_tokens": 200, "cache_read_input_tokens": 2000, "output_tokens": 100}})
     check(cc2["jsonl_undercount"] == 900000 and cc2["metered_sum_governing"] == 902306 and cc2["num_turns_matches_calls"] is False, "the larger CLI figure governs upward; num_turns mismatch is flagged")
+    cc3 = crosscheck(m, {"num_turns": 2, "usage": {"inputTokens": 50}, "modelUsage": {"claude-sonnet-5": {"inputTokens": 6, "cacheCreationInputTokens": 200, "cacheReadInputTokens": 2000, "outputTokens": 100}, "claude-haiku-4-5": {"inputTokens": 5000}}})
+    check(cc3["usage_matches_jsonl"] is False and cc3["foreign_models_in_modelUsage"] == ["claude-haiku-4-5"] and cc3["metered_sum_governing"] == 7306, "camelCase usage is not vacuously matched; a foreign model in modelUsage is flagged and governs upward")
     import tempfile
     d = tempfile.mkdtemp(); p = os.path.join(d, "t.jsonl")
     with open(p, "w") as f:
