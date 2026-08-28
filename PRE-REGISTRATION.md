@@ -1,4 +1,4 @@
-# SaltBench Wave 1 — PRE-REGISTRATION (v2)
+# SaltBench Wave 1 — PRE-REGISTRATION (v4)
 
 **Re-frozen 2026-08-27 21:1x, still BEFORE any model call.** v1 (`saltbench 2ef7505`) was
 amended after a 6/6 REPAIR-THEN-FIRE refuter pass; amending before the first API request is
@@ -7,7 +7,10 @@ request of any arm is sent, nothing above the line at the bottom may be revised.
 
 Owner: silicon seat. Governing: council minute 2026-08-27 (`72928e04` + `93130077`) and
 the promotion charter `seat/briefs/2026-08-20-saltbench-promotion.md`.
-Verdicts: `seat fleet/REFUTER-saltbench-wave1-gate-2026-08-27.md`.
+Verdicts: pass 1 `…-gate-2026-08-27.md` · pass 2 `…-v2-…` · pass 3 `…-v3-…`, all under
+`seat fleet/`. ⛔ *v3 titled itself "(v2)" and cited only pass 1 while its body answered
+pass 2 — a frozen instrument that cannot name its own version makes a reader mis-attribute
+every correction by one generation.*
 
 ---
 
@@ -236,7 +239,12 @@ n_d=5 and 0.03125 at n_d=6. **At n_d ≤ 5 no p-value is reported**; the result 
 arms were too concordant for this screen (n_d = k of 50)"* with `b`, `c`, refusal counts
 and the exact CI.
 
-**Always reported:** raw token counts per arm by class (uncached in, cache-write,
+**Always reported:** **`BUDGET_EXHAUSTED` and `HARNESS_ERROR` counts per arm** — ⛔ *neither
+appeared anywhere in the binding instrument before v4, so the modal failure of a capped run
+(the treatment losing solves because the cap ate its adjudication) would have been reported
+as evidence that gating is NET-HARMFUL, with no pre-registered check able to catch it* — and
+**if either arm's `BUDGET_EXHAUSTED` rate exceeds 5%, the primary is reported
+BUDGET-CONFOUNDED and ADVERSE-2 does NOT fire** · raw token counts per arm by class (uncached in, cache-write,
 cache-read, output incl. thinking), dollars at list rates, container-evaluation runs,
 wall-clock, solves, per-task budget consumed **as a distribution**, fraction of ceiling
 consumed, typed termination reason, attempts per task, `base_fail_rate`,
@@ -244,8 +252,12 @@ consumed, typed termination reason, attempts per task, `base_fail_rate`,
 precision (patch- and task-level), the selected set's gold-patch-file-count histogram and
 per-repo composition, and the two leak covariates `p2p_recoverable` / `f2p_recoverable`
 plus `rewrites_existing_test` — **all computed after scoring and never shown to gate or
-agent.** The primary result is reported **stratified** on `rewrites_existing_test` and on
-`f2p_recoverable > 0`.
+agent.** The primary result is reported **stratified** on `rewrites_existing_test`, on
+`f2p_recoverable > 0`, and on **realised rounds** — ⛔ *the last is a POST-TREATMENT variable
+(realised rounds in the treatment arm is `1 + (the gate refused)`), so it is a **DIAGNOSTIC, not
+a control**, and **no stratum-level claim is made from it.** v3 put the round decomposition in
+the design with no such guard, three sections after §3 guards its own stratification in exactly
+those terms.*
 
 **Cost has no undefined branch:** the ratio is printed only with its denominator inline
 (`$X / 23 solved`), and **when solves < 5 it prints `undefined (k solves)`** — never
@@ -290,8 +302,10 @@ GATE's judgement.*
 **This is adverse and is NOT read as evidence for the capability floor.**
 
 **ADVERSE-3 — the cost clause in §1 is enforced.** §1 says "at equal enforced token
-spend". **If treatment cost-per-solved-task exceeds control's by more than K = 2× with no
-significant solve gain, §1's claim is reported NOT SUPPORTED.** K is fixed now, because
+spend". **If treatment cost-per-solved-task exceeds control's by more than **`COST_MULTIPLE = 2×`** with no
+significant solve gain — ⛔ *renamed from `K`, which v3 also used for the (now deleted) round
+count: one symbol carrying two frozen constants in one document is a re-derivation waiting to
+go wrong*, §1's claim is reported NOT SUPPORTED.** K is fixed now, because
 without a pre-stated K any figure can be narrated as acceptable.
 
 **ADVERSE-4 — the regression arm was disabled by the declaration channel.** If declaration
@@ -339,23 +353,71 @@ evidence, and the write-up says so.
   active gate can produce it by refusing correctly and the agent recovering to the same
   outcome.* Liveness is established by an **arm-independent falsifier**: refusals > 0 and
   at least one shadow-scored refused patch whose outcome differs from its revision's.
-- **Refusal rate, with its unit named:** the **per-task** rate (fraction of tasks with ≥1
-  refusal). **< 2% is inert** — report and discard. **> 98% is a REPORTED result of harm**,
-  not a discard.
+- **Refusal rate — TREATMENT ARM ONLY**, unit named: the **per-task** rate (fraction of tasks
+  with ≥1 refusal). **< 2% is inert** — report and discard. **> 98% is a REPORTED result of
+  harm**, not a discard. ⛔ *v3 named no arm, and the sham refuses 100% BY CONSTRUCTION — so
+  the frozen instrument classified its own placebo as a reported result of harm, on a
+  correct run. The neighbouring ADVERSE-1 scopes itself properly, which is what made the
+  omission legible.*
 - **Too few discordant pairs to test:** `n_d ≤ 5` → reported per §5, never as a null.
 - **Leak check with a failing arm:** every scored prediction's sha must appear in the
   accepted-patch log.
 - **Cost:** exceeding the ruled $150–400 before the paired run completes → **stop and
   report**, never quietly reduce n.
 
-**`TOKEN_CAP_PER_TASK = 400,000`** (input + cache-write + cache-read + output, per task, per
-arm, harness-enforced). ⛔ *v2 stated the cap as a relation with no value, so realised rounds
-were `min(K, ⌊cap ÷ per-round cost⌋)` and the gate's measured benefit depended silently on
-context and repo size — a constant that grows.*
-**`solved` is the OFFICIAL SWE-bench harness**, pinned by commit sha and image digest recorded
-in `TASKLIST.json` at first run — **including the version that fixed the 162-tag leak**
-(DESIGN §4 CHECK 2). ⛔ *v2 pinned no harness version, so that fix was not in force, and the
-scorer defines the dependent variable.*
+**`TOKEN_CAP_PER_TASK = 400,000`**, and ⛔ **THE BRANCH IS NAMED, answering DESIGN §8 Q3 which
+v3 left open while resting §1 on "equal enforced token spend": THE CAP COVERS AGENT + GATE
+TOKENS SUMMED, per task per arm.** In wave 1 the gate makes **no** model calls (helm ruling), so
+its contribution is **0** — but the rule is stated for the sum, so wave 2 cannot inherit an
+agent-only cap by silence.
+
+⛔⛔ **RE-DERIVED FOR THE REAL v4 STRUCTURE, BECAUSE 400,000 WAS DERIVED FOR THE DELETED ONE**
+(3 × 120k agent-only + 11% slack — a number consistent only with the K=3 v3 itself deleted):
+```
+control     1 agent round                              120,000
+sham        2 agent rounds                             240,000
+treatment   2 agent rounds + worst-case ids payload    256,583   ← binding arm
+                                              cap      400,000   (143,417 slack)
+```
+✅ **Under the non-model gate the cap DOES NOT BIND.** *Pass 3's 480,000 figure was correct for
+the MODEL-BACKED gate it was computed against; the helm's ruling removed those calls. Recording
+both so the number is not re-litigated: had the gate stayed model-backed, a refused treatment
+episode would have hit BUDGET_EXHAUSTED and scored UNSOLVED **on exactly the tasks where the
+gate fired** — the cap would have deleted the mechanism while keeping its cost.*
+
+⚠️ **THE GROWING TERM SURVIVES THE RULING AND IS BOUNDED SEPARATELY.** `RegressionDetected(ids)`
+was limited only by `ids ⊆ base_test_report.ids`. Measured at this hand over the frozen
+measured-50 (`PASS_TO_PASS` id strings, comma-joined): **min 113 · median 5,761 · p90 50,136 ·
+max 66,332 chars — a 587× spread**, with per-repo medians from **sympy 708** to **matplotlib
+34,081** (48×). *Pass 3 measured 106 / 5,677 / 49,373 / 65,458 and 617×; the small gap is a
+joining convention and the figures above are the ones this freeze uses.* ⇒ **§6 caps the ids
+payload at 20 ids** (overflow rendered `"N ids and k more"`, matching `BuildFailed`'s 4 KiB
+bound), which collapses the worst case to **~300 tokens** and removes a per-task input-size
+term that **correlated with the source repo** and was charged to the treatment arm alone.
+**A per-call sub-cap of 200,000 tokens is stated so the sum is enforceable rather than merely
+declared.****`solved` is the OFFICIAL SWE-bench harness, PINNED — not promised.**
+```
+swebench == 4.1.0   (commit 726c546)
+```
+⛔ **v3 said the harness would be "recorded at first run", which is a PROMISE, not a pin** — and
+the scorer *is* the dependent variable, so an unpinned scorer is an unpinned outcome.
+**Why 4.1.0 specifically, and it is the only viable choice:** v5.x **cannot consume** the pinned
+13-column dataset revision, and v4.0.4 **predates the history fix** whose absence is the
+162-tag leak (DESIGN §4 CHECK 2). *A version range would have re-opened the leak at one end and
+broken ingestion at the other.*
+⛔ **CONTAINERS ARE ADDRESSED BY DIGEST**, via a committed 80-row `instance_id → image@sha256`
+table — **rebuild-on-miss and the default namespace are mutually exclusive by an explicit raise
+in the harness**, so a tag-addressed run silently gets a different image than the one certified.
+✅ **THE TABLE IS COMMITTED: `IMAGE-DIGESTS.json`, 80/80 resolved, ZERO unresolved** — every
+measured and pilot instance mapped to `image@sha256`, resolved from the registry manifest
+(no Docker daemon involved, so this is reproducible by anyone with network). *I wrote it
+OWED ten minutes ago and then resolved it; correcting that sentence rather than shipping a
+freeze that understates itself is the same discipline as not shipping one that overstates.*
+
+⛔ **THE DATED MODEL SNAPSHOT PIN IS STRUCK: no dated snapshot exists for `claude-sonnet-5`**, so
+v3 pinned a shape that cannot be satisfied — a second first-call failure of the same family as
+the `temperature` 400. ⇒ **`response.model` is RECORDED PER CALL** and reported; the model
+identity becomes an observation rather than an assertion.
 ⚠️ **BUDGET, RE-PRICED HONESTLY: v2's ≈$250 counted ZERO gate model calls**, while the design
 meters them to the arm and makes the control and sham pay a discarded synthesis call. A
 gate call sized like an agent round roughly **doubles** it, against the $150–400 band — and up
@@ -365,9 +427,16 @@ with the gate arm included before it starts.** The choice is stated here before 
 *"the three-arm design is not wishful" was not established by arithmetic that priced one of
 three drivers.*
 
-*Budget arithmetic, so the three-arm design is not wishful: 3 arms × 50 tasks + 30 pilot
-pairs ≈ 210 episodes at K = 3 rounds. At Sonnet-5 list rates and ~100k in / 20k out per
-round, ≈ $250 — inside the ruled band, and the enforced token cap is what keeps it there.*
+*Budget, re-priced on the v4 structure (v3's figure was the DELETED design's, at K=3):*
+```
+measured  50 tasks × (control 1 + sham 2 + treatment ≤2 rounds)   ≤ 250 agent rounds
+pilot     30 tasks × (control 1 + treatment ≤2)                   ≤  90
+                                                          total   ≤ 340 rounds
+   at ~100k in / 20k out per round and Sonnet-5 list rates ($0.40/round)  ≈ $136 API
+```
+**Inside the ruled $150–400 band with the cap enforced**, and the gate contributes **no tokens**
+(non-model, helm ruling). ⛔ *Container cost is NOT tokens and is counted separately: ~340 shadow
+harness evaluations plus 80 pre-flight and 80 gold-control runs.*
 
 ---
 
