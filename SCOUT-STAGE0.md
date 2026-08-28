@@ -487,3 +487,8 @@ Still open, named (§8 stands, plus): the audit does not VOID a Bash relative cl
 the hook is fail-open on malformed input; `/tmp` is a shared, unscrubbed channel between the two arms
 of a task (blessed for reads; a per-episode `TMPDIR` is the next amendment); a docker-level failure
 that returns `rc=1` is caught by the container-liveness check, not by the `rc=126|127` rule.
+
+**Amendment 1, addendum (2026-08-28 16:5x, before any model call):** the four probes of item 10 are run and
+ASSERTED by `harness/smoke.sh` (pinned): canary present · A2 blocked and not void · B `error_max_turns` and
+`num_turns == calls` · C `rt_calls_rc0 == 1`. It exits non-zero on any failed fact; the driver is not started
+on a non-zero smoke. The human hard stop of §7.3 becomes a script.
