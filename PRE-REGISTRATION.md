@@ -1,225 +1,300 @@
-# SaltBench Wave 1 — PRE-REGISTRATION
+# SaltBench Wave 1 — PRE-REGISTRATION (v2)
 
-**Written 2026-08-27, BEFORE any model call.** Nothing in this document may be revised
-after the first API request of either arm; revisions are appended below the line at the
-bottom, dated, with the reason. The point of writing it first is that the criteria cannot
-be fitted to a result that has not happened yet.
+**Re-frozen 2026-08-27 21:1x, still BEFORE any model call.** v1 (`saltbench 2ef7505`) was
+amended after a 6/6 REPAIR-THEN-FIRE refuter pass; amending before the first API request is
+what this document's own rule permits, and what it forbids afterwards. Once the first
+request of any arm is sent, nothing above the line at the bottom may be revised.
 
-Owner: silicon seat (staffing closed by the Captain, 2026-08-27 20:1x).
-Governing documents: council minute 2026-08-27 (docket `72928e04` + addendum `93130077`)
-and the promotion charter `seat/briefs/2026-08-20-saltbench-promotion.md`.
-
----
-
-## 0 · The status of this document
-
-⛔ **PRIVATE.** Nothing here publishes until the IARC ruling lands and the Captain says
-go (promotion charter, binding). This repo has **zero git remotes** by construction.
-
-⛔ **Personal lane.** This harness is built fresh, reimplementing only field-standard
-methodology. **No employer-lane code enters this repo, ever** (portfolio `CLAUDE.md` lane
-law). It touches no tape-out resource, never takes a P1 build ticket, and pulls no
-tape-out seat.
+Owner: silicon seat. Governing: council minute 2026-08-27 (`72928e04` + `93130077`) and
+the promotion charter `seat/briefs/2026-08-20-saltbench-promotion.md`.
+Verdicts: `seat fleet/REFUTER-saltbench-wave1-gate-2026-08-27.md`.
 
 ---
 
-## 1 · The claim, stated narrowly enough to be wrong
+## 0 · Status, lane, and what the refuter pass changed
 
-**Claim under test:** an agent whose patches must pass a *gate* solves more tasks
-correctly than the same agent without the gate, at a stated cost.
+⛔ **PRIVATE.** Nothing publishes until the IARC ruling lands and the Captain says go.
+Zero git remotes by construction. Personal lane; no employer-lane code, ever; touches no
+tape-out resource and never takes a P1 build ticket.
 
-**What "the gate" is:** a mechanism that independently checks a candidate patch and
-refuses it when the evidence does not support acceptance. The demo arm is **the gated
-harness — a mechanism, not an exhortation.** No prompt-level "please be careful" arm is
-part of wave 1.
-
-### ⛔ What this experiment CANNOT show, stated up front
-
-Wave 1 runs on Python repository-repair tasks scored by held-out tests. On that
-substrate:
-
-- **It does NOT test machine-checked proof.** The kernel is not in this loop. No claim
-  about proof-carrying code, kernel scoring, or verification may be drawn from wave 1,
-  and any later write-up that cites wave 1 for such a claim is misusing it.
-- **It tests the GATING DISCIPLINE only** — the value of refusing a patch that looks
-  green but is not.
-- A null result here does not refute the Salt method; it bounds where the *gating
-  discipline alone*, stripped of proof, is worth its cost.
-
-*This section exists because the most likely way this demo does damage is by being
-quoted for the claim it did not test.*
+**v1's four fatal classes, all of which I would have defended:**
+1. **n = 50 was unreachable.** The cap starved the draw and the code truncated in silence
+   — reproduced at this hand: `measured=42, pilot=0`, raising nothing. §3.
+2. **The predicate was a no-op on the real encoding** (JSON strings; `len("[]") == 2`), so
+   the criterion guaranteeing a regression surface admitted the 11 instances lacking one.
+3. **§3.4's regression rule refused CORRECT patches** on ≥9.5% of the drawn set — a
+   mechanical bias against my own treatment arm. I asked refuters for a cheaper
+   explanation of a *win* and never asked for one of a *loss*. Rewritten in DESIGN §3.
+4. **§6 had no adverse outcome.** Every terminal state read favourable. §6 below.
 
 ---
 
-## 2 · Substrate — MY call, and deliberately adverse
+## 1 · The claim, and what it may NOT be quoted for
 
-**Chosen: SWE-bench Verified (the human-validated split), a subset selected per §3.**
+**Claim:** an agent whose patches must pass a gate solves more tasks correctly than the
+same agent without the gate, **at equal enforced token spend**, on the population defined
+in §3.
 
-The Captain delegated substrate to this seat. The alternative was our own corpus (salt
-lemma-ports, saltworks organ-level nodes), which is kernel-scorable and plays to the
-method's strength. **I am not choosing it, and the reason is the whole argument:**
+### ⛔ What wave 1 cannot show
 
-> The one sharp question this demo must survive is *"you built the benchmark to win."*
-> The strongest available answer is a substrate **we did not design, whose scoring we do
-> not control, and where our method's best feature is unavailable.**
-
-So the substrate is chosen *against* us on three axes at once. If the gate still helps
-there, the result is believable in a way a home-corpus win could never be. If it does
-not help there, that is a real and reportable bound.
-
-⚠️ **The honest tension, named rather than buried:** SaltBench's own tech report argues
-that hidden-test suites sample properties where proofs state them. That argument is about
-what makes a good *benchmark*. Here we are not proposing SWE-bench as a yardstick — we
-are borrowing a neutral one to test a mechanism. Using a substrate whose methodology we
-criticize, and winning on it anyway, is stronger evidence than winning on our own.
+- **Not machine-checked proof.** The kernel is not in this loop. Any later write-up citing
+  wave 1 for a proof claim is misusing it.
+- **The estimand is CONDITIONAL ON THE §3 PREDICATE.** Wave 1 measures the gate's effect
+  on tasks with a 1–3-file gold patch, a non-empty regression suite, a ≥500-character
+  statement, and ≤9 per repo. **It does not estimate the effect on SWE-bench Verified as a
+  whole, and no write-up may state §1's claim without that qualifier.**
+- **Contamination is unmeasurable here and cuts toward zero.** Verified has been public
+  since 2024 and the model under test may have seen it. On a memorized task the first
+  patch is already correct, so the gate can only subtract — every refusal there is an
+  incorrect refusal. **Wave 1 cannot separate a contamination-attenuated effect from a
+  capability floor**, and §6 no longer pretends otherwise.
+- **This is a SCREEN.** At n = 50 pairs, exact McNemar, a **+10-point** effect is detected
+  with power **0.14–0.29** depending on discordance (verified at this hand, §5). Wave 1 is
+  powered for a large effect and blind to a modest one.
 
 ---
 
-## 3 · Task selection — the criteria, fixed before either arm runs
+## 2 · Substrate — my call, and deliberately adverse
 
-**Selection uses instance METADATA ONLY. No task is inspected, no solution is read, and
-no arm is run before the task list is frozen and committed to this repo.**
+**SWE-bench Verified**, subset per §3, pinned in §3.
 
-Predicate, applied to SWE-bench Verified:
+The alternative was our own kernel-scorable corpus, which plays to the method's strength —
+**which is why it loses.** The sharp question this demo must survive is *"you built the
+benchmark to win"*, and the strongest answer is a substrate **we did not design, whose
+scoring we do not control, and where our best feature is unavailable.** Adverse on three
+axes. If the gate still helps, that is believable in a way a home-corpus win never is.
 
-1. `len(FAIL_TO_PASS) >= 1` — there must be a failing test that a correct patch fixes,
-   or the task carries no solvable signal.
-2. `len(PASS_TO_PASS) >= 1` — there must be a regression signal the gate can act on.
-   *(This is the discriminating one: it is what makes a false green detectable.)*
-3. Gold-patch scope band: touches **1–3 files**. A metadata proxy for tasks that are
-   neither trivial nor sprawling. Read from the patch's file list only — the patch
-   content is not read.
-4. Problem statement length ≥ 500 characters — excludes underspecified issues where
-   failure is a reading-comprehension artifact rather than an engineering one.
-5. **Repo-diversity cap: at most 4 tasks per source repository**, so no single codebase's
-   idiom dominates the estimate.
+⚠️ *The honest tension: SaltBench's own tech report argues hidden-test suites sample
+properties where proofs state them. That is an argument about what makes a good benchmark.
+We are borrowing a neutral one to test a mechanism, not proposing it as a yardstick.*
 
-**Deterministic draw, so the selection is auditable rather than trusted:** candidates
-meeting 1–5 are sorted by `sha256(instance_id + SEED)` and the first **N = 50** taken.
+---
+
+## 3 · Task selection — frozen, and now actually reachable
+
+**`select_tasks.py` in this repo is the NORMATIVE implementation of this section.** Where
+prose and code could differ, the code is definitive and this sentence is what makes that
+true. *v1 claimed the list was re-derivable "from the public dataset plus this page" and
+never named the script — the page alone did not determine the list.*
+
+**Pinned snapshot:** `princeton-nlp/SWE-bench_Verified`, split `test`, 500 rows.
+
+**Criteria, metadata only** (no task inspected, no solution read, no arm run before the
+list was frozen). Applied over the 500 rows, **measured**:
+
+| # | criterion | rejects |
+|---|---|---|
+| 1 | `len(FAIL_TO_PASS) ≥ 1` — a solvable signal exists | 0 |
+| 2 | `len(PASS_TO_PASS) ≥ 1` — a regression signal exists | **11** |
+| 3 | gold patch touches 1–3 files (file list only; content unread) | 9 |
+| 4 | problem statement ≥ 500 chars | 78 |
+| 5 | **≤ 9 tasks per source repository** — applied during the draw | *binding* |
+
+⛔ **v1 called criterion 2 "the discriminating one". It is not** — it removes 2.2%. The
+criteria that actually shape the population are 4 (the length floor) and **5, the cap,
+which v1 introduced almost in passing and which is the one that broke the design.**
+
+**The algorithm, stated explicitly because v1's prose was unimplementable** (criterion 5
+has no per-item form, and no tie-break was given for which N of a repo survive):
+
+1. filter by criteria 1–4;
+2. sort by `sha256(instance_id + SEED)`;
+3. walk that order, admitting while the repo's count `< 9`;
+4. **RAISE if fewer than 80 admitted** — never truncate;
+5. partition into **measured-50 / pilot-30 by largest-remainder apportionment within each
+   repo**, so the pilot mirrors the measured set's repo mix.
 
 ```
-SEED = saltbench-wave1-2026-08-27
-N    = 50   (inside the ruled 40–60 band)
+SEED         = saltbench-wave1-2026-08-27      (unchanged from v1)
+N_MEASURED   = 50        N_PILOT = 30          (pilot raised from 10, §4)
+MAX_PER_REPO = 9                               (raised from 4)
 ```
 
-The seed and predicate are committed **in this document, before any run**. Anyone may
-re-derive the exact task list from the public dataset plus this page. A selection that
-can be re-derived cannot be quietly re-drawn.
+**Why 9, from measured arithmetic rather than preference.** Ceiling
+`Σ min(eligible_r, cap)` over the 11 eligible repos: `4→42 · 5→52 · 6→62 · 8→78 · 9→86`.
+We need 80. **Cap 8 starves.** ⛔ **The cap materially re-weights the substrate — django is
+46% of the raw split and 12% of the measured set — so the wave-1 solve rate is NOT
+comparable to any published SWE-bench figure.** (§4 already forbids quoting one.)
 
-⛔ **If the frozen list must change for a mechanical reason** (a task fails to build in
-both arms for environment reasons unrelated to the patch), the exclusion is logged with
-its cause in `EXCLUSIONS.md` **and the pair is dropped from both arms**, never from one.
+⛔ **Step 5 replaces a tail-take.** v1 took offsets 50–59 of the capped walk; because the
+cap is spent in hash order the big repos fill early, so the tail was composed entirely of
+the smallest codebases — a pilot sharing near-zero composition with the set it calibrates,
+a bias surviving n → ∞.
 
----
+**The frozen list is committed as `TASKLIST.json`**, discharging v1's promise that it be
+frozen before any arm runs.
 
-## 4 · Model — one mid model, and the band is MEASURED, not quoted
-
-Ruled shape: **ONE mid model** in a 45–55% baseline band.
-
-**Candidate: `claude-sonnet-5`** ($2/MTok in, $10/MTok out) — the tier that leaves the
-most room inside the ruled $150–400 budget for a paired run plus a pilot.
-
-⛔ **THE BAND IS A PROPERTY OF `model × substrate × harness`, NOT OF A MODEL.** A
-published leaderboard figure was produced by a different scaffold and does not transfer to
-this one. **No baseline percentage is asserted in this pre-registration**, and none may be
-cited from memory or from a table.
-
-**Pilot, run before the paired run:** the control arm alone on **10 tasks drawn by the
-same predicate and seed but explicitly excluded from the 50** (offsets 50–59 of the
-sorted draw, so the pilot never contaminates the measured set).
-
-- Pilot solve rate lands in **40–60%** → proceed with `claude-sonnet-5`.
-- Pilot lands **above 60%** → step down one tier and re-pilot (ceiling effects hide the
-  effect we are looking for).
-- Pilot lands **below 40%** → step up one tier and re-pilot (floor effects do the same).
-- **Pre-stated cap: at most two re-pilots.** If no tier lands in band, wave 1 reports
-  *"no model in the affordable range sits in the measurable band on this substrate"* —
-  **which is a result, and it is reported as one, not quietly retried until something
-  fits.**
+**Exclusions** are arm-independent by construction and logged in `EXCLUSIONS.md`, created
+with its header before the run. An instance is excluded **iff** (i) the **pre-flight** —
+empty patch at base — fails to produce all-F2P-fail and all-P2P-pass, or (ii) the
+**gold-control** — gold patch in the same image — fails to resolve. Both are computed
+before either arm runs and cannot depend on arm outcomes. ⛔ **Any per-arm run failure not
+reproduced by an arm-independent control scores UNSOLVED for that arm; it is never an
+exclusion.** *v1's trigger was "fails in both arms" with an action clause reading
+universally — and one-arm failures ARE the discordant pairs, which carry 100% of the
+McNemar information.* Excluded pairs are **not refilled**; `n_effective` and the exclusion
+count appear in the headline.
 
 ---
 
-## 5 · Design and scoring
+## 4 · Model — one mid tier, band MEASURED, pilot on BOTH arms
 
-**Paired, within-task.** Both arms attempt the identical task list. The unit of analysis
-is the **pair**, not the task.
+**Candidate: `claude-sonnet-5`** ($2/MTok in, $10/MTok out).
 
-- **Control arm:** the agent, unmodified.
-- **Treatment arm:** the same agent, same model, same budget, behind **the gate**.
-- Both arms are scored by the **held-out** SWE-bench harness (FAIL_TO_PASS +
-  PASS_TO_PASS). Neither arm sees the scoring tests.
+⛔ **No baseline percentage is asserted.** The band is a property of
+`model × substrate × harness`; a leaderboard figure came from a different scaffold.
 
-**Primary statistic: McNemar's test on discordant pairs.** Concordant pairs carry no
-information about a difference and are reported but not tested. **Pre-stated: two-sided,
-α = 0.05.**
+**Pilot: the 30 tasks of §3, run on BOTH arms** (30 pairs, not 30 control tasks).
 
-⚠️ **n = 50 is a SCREEN, not a measurement.** It can see a large effect and is blind to a
-modest one. **A non-significant result will be reported as "this screen could not see an
-effect of this size," never as "there is no effect."** With a lopsided discordant split a
-large effect is visible at this n; anything subtle requires an extension that is not
-budgeted here.
+- Routes the tier if the control-arm rate lands in **40–60%**.
+- **Measures discordance**, the sole input to power — so the §5 MDE is published from
+  measurement rather than guessed. ⛔ Pilot discordance feeds **only** the published MDE,
+  never `n`, the band, or the tier.
+- ⚠️ **The band decision is a ROUTING HEURISTIC, not evidence about the model's baseline**,
+  and is reported with its exact 95% CI. At n=10 (v1) a dead-centre model mis-routed
+  **34.4%** of the time; at n=30 that falls to ~10%.
+- **A pilot above 60% triggers the contamination check (§5) BEFORE any tier step-down**,
+  so a memorized ceiling is not misread as a capability ceiling.
+- At most **two** re-pilots; then *"no affordable model sits in the measurable band"* is
+  reported as a result — with the CI, so a reader can see it is a routing outcome.
 
-**Also reported, always:**
-- **Cost per solved task**, both arms, in dollars — the compute objection, retired at
-  demo grade or conceded honestly.
-- Wall-clock per task, both arms.
-- **Gate refusal count, and how many refusals were correct** (the patch would indeed
-  have failed held-out tests) versus incorrect (the patch would have passed). *A gate
-  that refuses everything scores well on solve-rate-of-accepted and is worthless; this
-  ratio is what stops that reading.*
+**Pinned identically for both arms, before the first call:** model id and snapshot,
+`output_config.effort`, `thinking` mode and display, `max_tokens`, caching configuration
+and TTL, and temperature. *An unpinned effort setting is a larger lever on the dollar
+figure than the gate is.*
 
 ---
 
-## 6 · The capability-floor hypothesis — pre-registered as win-either-way
+## 5 · Design, statistic, and what is always reported
 
-**Hypothesis:** the gate's benefit depends on the agent being capable enough to act on a
-refusal. Below some capability floor, the gate refuses and the agent cannot recover, so
-gating costs money and buys nothing.
+**Paired, within-task.** All arms attempt the identical list; `P₁` is generated once and
+shared (DESIGN §7). The unit is the **pair**.
 
-This is registered **before** the run so that either outcome is a finding:
+- **Primary ESTIMAND:** the paired difference in solve rate over all attempted tasks
+  (`solved` as defined in DESIGN §2; no accepted proposal ⇒ unsolved).
+- **Primary TEST:** the **exact conditional binomial McNemar test, equal-tailed two-sided
+  doubling, α = 0.05. No χ² approximation, corrected or otherwise, at any n_d.**
+  *Verified at this hand: the three common variants disagree in nine cells for
+  6 ≤ n_d ≤ 25 — e.g. n_d=8 at 7:1 is exact p=0.0703 (NS) and uncorrected χ² p=0.0339
+  (SIG). Naming the variant after seeing the split is a live researcher degree of freedom.*
+- **Both are reported in the headline, estimate first**, with `b`, `c`, `n_d` and an exact
+  CI on the paired risk difference. *A "significant win" at this n can rest on six
+  discordant pairs.*
 
-- Gate helps at the mid tier → the mechanism works where it is affordable.
-- Gate does not help → **evidence for the floor**, which is the house tier table's own
-  prediction and a result worth reporting.
+**Pre-registered MDE (verified at this hand, exact test, n=50, 80% power):**
 
-⛔ **Registering both outcomes as interesting is exactly the move that makes a
-pre-registration cheap to write and expensive to violate.** It is written down so that a
-null cannot be quietly reframed after the fact.
+| discordance | 0.16 | 0.20 | 0.30 | 0.40 | 0.50 |
+|---|---|---|---|---|---|
+| detectable marginal delta | 15.7 pts | 17.6 | 21.9 | 25.4 | 28.7 |
+
+Power at **+10 points**: 0.288 / 0.241 / 0.179 / 0.143 at those discordances — **a real
++10-point improvement is missed roughly three times in four.** §5's write-up sentence is
+therefore fixed now: *"this screen could not see an effect below X points at the observed
+discordance."*
+
+⛔ **DISCORDANCE PRECONDITION, verified: if `n_d ≤ 5` the pre-registered test has ZERO
+power at any split** — the minimum attainable two-sided p is `2·(½)^n_d`, i.e. 0.0625 at
+n_d=5 and 0.03125 at n_d=6. **At n_d ≤ 5 no p-value is reported**; the result reads *"the
+arms were too concordant for this screen (n_d = k of 50)"* with `b`, `c`, refusal counts
+and the exact CI.
+
+**Always reported:** raw token counts per arm by class (uncached in, cache-write,
+cache-read, output incl. thinking), dollars at list rates, container-evaluation runs,
+wall-clock, solves, per-task budget consumed **as a distribution**, fraction of ceiling
+consumed, typed termination reason, attempts per task, `base_rate`, `lift`, refusal
+precision (patch- and task-level), the selected set's gold-patch-file-count histogram and
+per-repo composition, and the two leak covariates `p2p_recoverable` / `f2p_recoverable`
+plus `rewrites_existing_test` — **all computed after scoring and never shown to gate or
+agent.** The primary result is reported **stratified** on `rewrites_existing_test` and on
+`f2p_recoverable > 0`.
+
+**Cost has no undefined branch:** the ratio is printed only with its denominator inline
+(`$X / 23 solved`), and **when solves < 5 it prints `undefined (k solves)`** — never
+imputed. Gate model calls are charged to the arm that makes them. **No conclusion rests on
+the cost ratio; it is context for the primary statistic.**
+
+**Contamination proxy:** normalized edit similarity between the control arm's submitted
+patch and the gold patch, reported as a distribution, with the paired result stratified
+high/low at a pre-stated cut. *If the effect lives in the low-similarity stratum and
+vanishes in the high, that is the contamination signature, visible instead of confounding.*
+
+---
+
+## 6 · Adverse outcomes — THREE, declared before the run
+
+⛔ **v1 registered both outcomes as "interesting" and I called that win-either-way.
+Registering both as interesting is NOT registering one as ADVERSE**, and every terminal
+state v1 admitted read favourable. That is the ceiling-that-cannot-be-exceeded, in the one
+document written to prevent it.
+
+**ADVERSE-1 — the gate did not discriminate.** Refusal precision is compared against the
+control arm's own patch-failure rate, which is chance level for a content-blind rejector.
+**If the 95% CI for refusal precision includes or falls below that base rate, wave 1
+reports "the gate did not discriminate" as ADVERSE.** ⭐ *The capability floor structurally
+cannot rescue this: the floor is a claim about the AGENT's recovery; this measures the
+GATE's judgement.*
+
+**ADVERSE-2 — net harm.** If the discordant split significantly favours the control arm
+(`b > c`, exact two-sided p ≤ 0.05), wave 1 reports the gating discipline as
+**NET-HARMFUL at this tier** — more correct patches destroyed than incorrect ones caught.
+**This is adverse and is NOT read as evidence for the capability floor.**
+
+**ADVERSE-3 — the cost clause in §1 is enforced.** §1 says "at equal enforced token
+spend". **If treatment cost-per-solved-task exceeds control's by more than K = 2× with no
+significant solve gain, §1's claim is reported NOT SUPPORTED.** K is fixed now, because
+without a pre-stated K any figure can be narrated as acceptable.
+
+**And the floor hypothesis is downgraded to what one tier can support:** a null at a single
+tier is consistent with *both* the capability floor *and* a worthless gate *and*
+contamination attenuation. **Wave 1 cannot separate them and will make no floor claim.**
+⛔ *v1 held two incompatible propositions: §4 chose the tier expressly so the effect would
+be measurable, and §6 reserved the right to blame a null on that same tier being below the
+floor.*
 
 ---
 
 ## 7 · Stopping rule
 
-Fixed n = 50 per arm. **No optional stopping**, no peeking-then-extending.
-
-If a batch-sequential extension is ever wanted, it requires a pre-stated boundary
-committed to this repo *before* the extension runs, and the analysis changes accordingly.
-**Extending a fixed-n design after seeing the result is how a screen becomes a fiction.**
+Fixed n = 50 pairs per arm. **No optional stopping, no peeking-then-extending.** Any
+batch-sequential extension requires a boundary committed here *before* it runs.
 
 ---
 
 ## 8 · The persuasion artifact
 
-**3–5 discordant-pair case studies**, chosen after scoring by a pre-stated rule: the
-discordant pairs with the **largest held-out-test delta**, ties broken by the deterministic
-draw order.
+**3–5 discordant-pair case studies**, drawn from **both discordance directions in
+proportion**, ties broken by the §3 draw order. ⛔ **At least one gate-was-wrong case ships
+if one exists.** *v1's rule selected "largest held-out delta" and then asserted every case
+shows the gate catching a false green — control-favouring pairs cannot show that, so the
+rule could select cases contradicting their own caption.*
 
-Each case study shows the gate refusing a patch that looked green and did not hold —
-**the mechanism on camera**, which is what a colleague remembers. Case studies are
-illustration, not evidence; the statistic is the evidence, and the write-up will say so.
+Every case study must exhibit a refusal whose **typed** reason names the specific defect
+the revision fixed. *An illustration that cannot show the mechanism firing is not an
+illustration of the mechanism.* Case studies are illustration; the statistic is the
+evidence, and the write-up says so.
 
 ---
 
-## 9 · What would make me abandon or amend this
+## 9 · Abandon conditions
 
-Stated now, so it is not decided under pressure later:
+- **Harness fault — CONJUNCTIVE:** discard only if `n_d = 0` **AND** refusals issued = 0
+  **AND** submitted patches are byte-identical on every pair. ⛔ *v1 discarded any run with
+  `n_d = 0` as a harness fault — which is exactly the null §6 promises to report, and an
+  active gate can produce it by refusing correctly and the agent recovering to the same
+  outcome.* Liveness is established by an **arm-independent falsifier**: refusals > 0 and
+  at least one shadow-scored refused patch whose outcome differs from its revision's.
+- **Refusal rate, with its unit named:** the **per-task** rate (fraction of tasks with ≥1
+  refusal). **< 2% is inert** — report and discard. **> 98% is a REPORTED result of harm**,
+  not a discard.
+- **Too few discordant pairs to test:** `n_d ≤ 5` → reported per §5, never as a null.
+- **Leak check with a failing arm:** every scored prediction's sha must appear in the
+  accepted-patch log.
+- **Cost:** exceeding the ruled $150–400 before the paired run completes → **stop and
+  report**, never quietly reduce n.
 
-- Both arms score identically on every pair → the harness is not exercising the gate;
-  fix the harness, discard the run, report the discarded run.
-- Gate refusal rate is 0% or 100% → the gate is inert or vacuous; not a result about the
-  method.
-- Cost exceeds the ruled $150–400 before the paired run completes → **stop and report**,
-  rather than quietly reducing n.
+*Budget arithmetic, so the three-arm design is not wishful: 3 arms × 50 tasks + 30 pilot
+pairs ≈ 210 episodes at K = 3 rounds. At Sonnet-5 list rates and ~100k in / 20k out per
+round, ≈ $250 — inside the ruled band, and the enforced token cap is what keeps it there.*
 
 ---
 
