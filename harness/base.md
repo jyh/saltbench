@@ -5,4 +5,5 @@
   `__EP__/rt 'cd tests && python -m pytest test_x.py -q | tail -30'`.
   Commands run without it use a bare host and will not find the project's dependencies.
 - There is no network. Do not try to install packages or fetch anything.
-- Edit files in place under `__EP__/wc`. Do not create commits.
+- The checkout at `__EP__/repo` has no git history; do not use git. Edit files in place there.
+  Do not create commits.

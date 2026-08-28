@@ -10,12 +10,18 @@ OUT="$BENCH/state/controls"; mkdir -p "$OUT"; cd "$OUT" || exit 1
 [ $# -ge 1 ] || { echo "usage: preflight_gold.sh <instance_ids...>"; exit 2; }
 "$PY" -c "import swebench,importlib.metadata as m; assert m.version('swebench')=='4.1.0', m.version('swebench')" || exit 3
 bash "$H/bridge_assert.sh" "$@" || exit 4
-: > empty_preds.jsonl
-for i in "$@"; do printf '{"instance_id":"%s","model_name_or_path":"empty","model_patch":""}\n' "$i" >> empty_preds.jsonl; done
-"$PY" -m swebench.harness.run_evaluation -d "$H/data/verified.json" -s test -i "$@" -p empty_preds.jsonl \
-   --namespace swebench --instance_image_tag latest --max_workers 1 --timeout 1800 --cache_level instance -id preflight --report_dir "$OUT" 2>&1 | tail -5
+# ⛔ swebench 4.1.0 DROPS empty-patch predictions before evaluation (run_evaluation.py: empty_patch_ids), so
+# the pre-flight is a NO-OP patch: it applies, touches no code, and the harness grades the unmodified tree
+# (refuter F4). The marker file is outside every test path.
+: > noop_preds.jsonl
+NOOP='diff --git a/.swebench_preflight b/.swebench_preflight\nnew file mode 100644\nindex 0000000..e69de29\n'
+for i in "$@"; do printf '{"instance_id":"%s","model_name_or_path":"noop","model_patch":"%s"}\n' "$i" "$NOOP" >> noop_preds.jsonl; done
+"$PY" -m swebench.harness.run_evaluation -d "$H/data/verified.json" -s test -i "$@" -p noop_preds.jsonl \
+   --namespace swebench --instance_image_tag latest --max_workers 1 --timeout 1800 --cache_level instance -id preflight --report_dir "$OUT" > preflight.out 2>&1; rc1=$?
+tail -3 preflight.out; [ "$rc1" = 0 ] || { echo "preflight harness rc=$rc1"; exit 5; }
 "$PY" -m swebench.harness.run_evaluation -d "$H/data/verified.json" -s test -i "$@" -p gold \
-   --namespace swebench --instance_image_tag latest --max_workers 1 --timeout 1800 --cache_level instance -id goldcontrol --report_dir "$OUT" 2>&1 | tail -5
+   --namespace swebench --instance_image_tag latest --max_workers 1 --timeout 1800 --cache_level instance -id goldcontrol --report_dir "$OUT" > goldcontrol.out 2>&1; rc2=$?
+tail -3 goldcontrol.out; [ "$rc2" = 0 ] || { echo "goldcontrol harness rc=$rc2"; exit 5; }
 "$PY" - "$OUT" "$@" <<'PY'
 import json,sys,glob,os
 out=sys.argv[1]; ids=sys.argv[2:]

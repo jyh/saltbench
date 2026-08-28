@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """build_prompt.py — build an episode's prompt and arm file from the pinned dataset.
 
-    build_prompt.py --instance <id> --arm <a0|a1|...> --ep <EPROOT/ep-xxxx> --out <STATE/ep-xxxx>
+    ARM_FOR_BUILD=<a0|a1|...> build_prompt.py --instance <id> --ep <EPROOT/ep-xxxx> --out <STATE/ep-xxxx>
+    (the arm arrives in the ENVIRONMENT, never argv, and is written to NO file here — refuter F1)
     build_prompt.py --self-test
 
 THE ONLY DATASET FIELD THAT LEAVES THIS PROCESS IS `problem_statement` (DESIGN §4 CHECK 1, applied
-to the prompt builder). The row is loaded, ONE field is read, the row is dropped. A self-test drives
+to the prompt builder). During episodes the Studio holds only the PROJECTION data/problem_statements.json
+(no patch/test_patch/hints/F2P/P2P bytes exist on the host at all); the builder still refuses a leak if
+handed a full row. A self-test drives
 the failing input: a prompt that contains any byte of `patch`, `test_patch`, `hints_text`,
 FAIL_TO_PASS or PASS_TO_PASS raises.
 """
@@ -52,23 +55,26 @@ def render(problem_statement, arm, ep, row_for_check=None, arms_dir=None):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--instance"); ap.add_argument("--arm"); ap.add_argument("--ep"); ap.add_argument("--out")
-    ap.add_argument("--data", default=os.path.join(HERE, "..", "data", "verified.json"))
+    ap.add_argument("--instance"); ap.add_argument("--ep"); ap.add_argument("--out")
+    ap.add_argument("--data", default=os.path.join(HERE, "data", "problem_statements.json"))
     ap.add_argument("--self-test", action="store_true")
     a = ap.parse_args()
     if a.self_test:
         return self_test()
+    arm = os.environ.get("ARM_FOR_BUILD")
+    if not arm:
+        raise SystemExit("ARM_FOR_BUILD must be set in the environment")
     row = load_row(a.instance, a.data)
     ps = row["problem_statement"]
-    prompt, claude_md = render(ps, a.arm, a.ep, row_for_check=row)
+    prompt, claude_md = render(ps, arm, a.ep, row_for_check=row)
+    canonical = open(os.path.join(HERE, "prompt.md")).read().replace("__PROBLEM_STATEMENT__", ps)
     os.makedirs(a.out, exist_ok=True)
     open(os.path.join(a.out, "prompt.md"), "w").write(prompt)
     open(os.path.join(a.ep, "CLAUDE.md"), "w").write(claude_md)
+    # NO arm-identifying field is written here; finish() in episode.sh adds them after the agent has exited
     meta = {
-        "instance_id": a.instance, "arm": a.arm, "ep": a.ep,
-        "prompt_sha256": sha(prompt.encode()), "prompt_bytes": len(prompt.encode()),
-        "claude_md_sha256": sha(claude_md.encode()), "claude_md_bytes": len(claude_md.encode()),
-        "arm_block_bytes": len(open(os.path.join(HERE, "arms", a.arm + ".md")).read().encode()),
+        "instance_id": a.instance, "ep": a.ep,
+        "prompt_sha256": sha(prompt.encode()), "prompt_sha256_canonical": sha(canonical.encode()), "prompt_bytes": len(prompt.encode()),
         "problem_statement_sha256": sha(ps.encode()),
         "base_commit": row["base_commit"], "repo": row["repo"], "version": row.get("version"),
     }
@@ -101,7 +107,16 @@ def self_test():
             check(True, "leak of %s refused" % f)
     # the arm dir must contain no arm named by its meaning (arm-blindness on disk)
     names = sorted(os.listdir(os.path.join(HERE, "arms")))
-    check(all(n.startswith("a") and n[1:-3].isdigit() and n.endswith(".md") for n in names), "arm files are opaquely named: %s" % names)
+    check(all(n[0] in "as" and n[1:-3].isdigit() and n.endswith(".md") for n in names), "arm files are opaquely named: %s" % names)
+    # the projection carries no held-out field
+    pp = os.path.join(HERE, "data", "problem_statements.json")
+    if os.path.exists(pp):
+        rows = json.load(open(pp))
+        check(all(set(r) == {"instance_id", "problem_statement", "base_commit", "repo", "version"} for r in rows), "problem_statements.json holds exactly the five projected fields (%d rows)" % len(rows))
+    # a1 (placebo) carries no verification vocabulary
+    a1 = open(os.path.join(HERE, "arms", "a1.md")).read().lower()
+    bad = [w for w in ("test", "reproduce", "verify", "verif", "spec", "propert", "checker", "proof", "prove", "statement", "assert", "expected") if w in a1]
+    check(not bad, "a1 placebo carries none of the verification vocabulary: %s" % bad)
     print("SELF-TEST", "OK" if ok else "FAILED")
     return 0 if ok else 1
 

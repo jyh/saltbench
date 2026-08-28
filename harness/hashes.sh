@@ -8,7 +8,7 @@ set -u
 cd "$(dirname "$0")" || exit 1
 {
   echo "# HASHES — regenerate with harness/hashes.sh; sha256; generated $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-  for f in base.md prompt.md rt.template episode.sh check2b.sh hook-deny-network.sh meter.py build_prompt.py preflight_gold.sh bridge_assert.sh score.sh run_stage0.sh settings.bench.json arms/*.md; do
+  for f in base.md prompt.md rt.template episode.sh check2b.sh check2b.selftest.sh hook-deny-network.sh meter.py build_prompt.py preflight_gold.sh bridge_assert.sh score.sh run_stage0.sh predictions.py project_data.py morning_line.py settings.bench.json arms/*.md; do
     printf '%s %s\n' "$f" "$(shasum -a 256 "$f" | cut -d' ' -f1)"
   done
   printf 'settings.json %s\n' "$(shasum -a 256 settings.bench.json | cut -d' ' -f1)"
@@ -18,3 +18,15 @@ cd "$(dirname "$0")" || exit 1
   done
 } > HASHES.txt
 cat HASHES.txt
+# per-task CANONICAL prompt shas (prompt with the episode path replaced by __EP__), so a pair's prompts are
+# provably identical up to the path (refuter F3); requires data/problem_statements.json beside the harness
+if [ -f data/problem_statements.json ]; then
+  python3 - >> HASHES.txt <<'PY'
+import json,hashlib
+t=open("prompt.md").read()
+for r in sorted(json.load(open("data/problem_statements.json")),key=lambda r:r["instance_id"]):
+    p=t.replace("__PROBLEM_STATEMENT__",r["problem_statement"])
+    print("prompt-canonical", r["instance_id"], hashlib.sha256(p.encode()).hexdigest())
+PY
+  printf 'problem_statements.json %s\n' "$(shasum -a 256 data/problem_statements.json | cut -d' ' -f1)" >> HASHES.txt
+fi

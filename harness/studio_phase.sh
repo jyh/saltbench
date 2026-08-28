@@ -1,0 +1,13 @@
+#!/bin/bash
+# studio_phase.sh — run FROM THE SEAT (yukon): put the full dataset on the Studio for a control/scoring
+# phase, or take it (and every gold-bearing harness log) OFF before episodes. episode.sh REFUSES to run
+# while the full dataset is present.   usage: studio_phase.sh in|out   env: STUDIO (ssh host)
+set -u
+STUDIO="${STUDIO:-kriterion-lan}"; REPO="$(cd "$(dirname "$0")/.." && pwd)"
+case "${1:?in|out}" in
+  in)  rsync -a "$REPO/data/verified.json" "$STUDIO:~/bench/harness/data/verified.json" && echo "dataset IN" ;;
+  out) mkdir -p "$REPO/runs/studio-controls"
+       rsync -a --remove-source-files "$STUDIO:~/bench/state/controls/" "$REPO/runs/studio-controls/" 2>/dev/null
+       rsync -a --remove-source-files "$STUDIO:~/bench/state/scoring/" "$REPO/runs/studio-scoring/" 2>/dev/null
+       ssh "$STUDIO" 'rm -f ~/bench/harness/data/verified.json; find ~/bench/state/controls ~/bench/state/scoring -type d -empty -delete 2>/dev/null; ls ~/bench/harness/data/; find ~/bench -name "*.diff" -path "*run_evaluation*" | wc -l' && echo "dataset + gold logs OUT" ;;
+esac
