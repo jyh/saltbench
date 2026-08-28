@@ -113,8 +113,28 @@ no warning.
 | refusals issued (attempt-level **and** deduped by `patch_sha256`) | activity, not inflatable by a stubborn agent re-proposing |
 | attempts refused **that would have resolved** | the gate's cost — *relabelled: v1 called these "solved tasks destroyed", but a refusal followed by an accepted resolving revision destroyed nothing* |
 | `tasks_destroyed` := tasks with a correct refusal that ended unsolved | the task-level cost the old label falsely promised |
-| **`base_rate`** := resolved ÷ all scored attempts, both arms | ⭐ free, since §2 scores every patch |
-| **`lift`** := refusal precision ÷ (1 − `base_rate`) | ⛔ **THE KILL v1 MISSED: a content-blind gate attains precision equal to the base failure rate, which on this substrate exceeds ½ — so a coin-flip gate reports "most of my refusals were correct".** Precision is reported **only** alongside base_rate and lift. |
+| **`base_fail_rate`** := proposals that would NOT resolve ÷ **proposals the gate ADJUDICATED in the treatment arm** | ⭐ free (§2 scores every patch), and it is the EXACT chance level for a rate-matched content-blind refuser on the same stream |
+| **`base_fail_rate_round1`** := the same over the SHARED `P₁` proposals only | unconditioned by the gate and identical across arms — the non-circular reference |
+| **`lift`** := refusal precision ÷ `base_fail_rate` | ⛔ **THE KILL v1 MISSED: a content-blind gate attains precision equal to the base failure rate, which on this substrate exceeds ½ — so a coin-flip gate reports "most of my refusals were correct".** Precision is reported **only** alongside `base_fail_rate` and `lift`. |
+
+⛔⛔ **THE DENOMINATOR WAS WRONG IN v2 AND IT WAS WRONG IN BOTH DOCUMENTS, DIFFERENTLY**
+(helm, 21:22, while the second pass ran). DESIGN v2 defined the base over **both arms'**
+scored attempts; PRE-REGISTRATION §6 compared precision to the **control arm's**
+patch-failure rate. Different denominators, different populations — **and neither is the
+right one, so "change one of the two sentences" would have left a wrong definition
+standing.**
+🔑 ***THE GATE ONLY EVER ADJUDICATES TREATMENT-ARM PROPOSALS, SO THE CHANCE LEVEL IS THE
+FAILURE RATE OF THE STREAM IT ACTUALLY SAW.*** A pooled rate mixes in control proposals the
+gate never judged; the control's own rate is a different population generated under a
+different round structure after round 1.
+⚠️ **Two words also removed an ambiguity that invited the error: `base_rate` never said
+whether it counted RESOLVES or FAILURES, and `lift` was written as `precision ÷ (1 −
+base_rate)` — so the reader had to infer the polarity. It is `base_fail_rate` now, and
+lift divides by it directly.**
+📌 A residual, named rather than smoothed: the adjudicated stream is itself shaped by the
+gate, because round-2+ proposals exist only where it refused. `base_fail_rate_round1` is
+reported beside it precisely because `P₁` is shared and unconditioned — if the two
+disagree materially, the conditioning is visible instead of silent.
 
 Refusal precision is reported **both** patch-level (pooled) and **task-level** (first
 refusal only), with the refusals-per-task distribution, so one pathological task cannot

@@ -201,7 +201,8 @@ and the exact CI.
 **Always reported:** raw token counts per arm by class (uncached in, cache-write,
 cache-read, output incl. thinking), dollars at list rates, container-evaluation runs,
 wall-clock, solves, per-task budget consumed **as a distribution**, fraction of ceiling
-consumed, typed termination reason, attempts per task, `base_rate`, `lift`, refusal
+consumed, typed termination reason, attempts per task, `base_fail_rate`,
+`base_fail_rate_round1`, `lift`, refusal
 precision (patch- and task-level), the selected set's gold-patch-file-count histogram and
 per-repo composition, and the two leak covariates `p2p_recoverable` / `f2p_recoverable`
 plus `rewrites_existing_test` — **all computed after scoring and never shown to gate or
@@ -227,10 +228,16 @@ Registering both as interesting is NOT registering one as ADVERSE**, and every t
 state v1 admitted read favourable. That is the ceiling-that-cannot-be-exceeded, in the one
 document written to prevent it.
 
-**ADVERSE-1 — the gate did not discriminate.** Refusal precision is compared against the
-control arm's own patch-failure rate, which is chance level for a content-blind rejector.
-**If the 95% CI for refusal precision includes or falls below that base rate, wave 1
-reports "the gate did not discriminate" as ADVERSE.** ⭐ *The capability floor structurally
+**ADVERSE-1 — the gate did not discriminate.** Refusal precision is compared against
+**`base_fail_rate`** — the failure rate of the proposals **the gate actually adjudicated in
+the treatment arm** (DESIGN §2), which is the exact chance level for a rate-matched
+content-blind refuser on that same stream. **If the 95% CI for `lift` (= precision ÷
+`base_fail_rate`) includes or falls below 1.0, wave 1 reports "the gate did not
+discriminate" as ADVERSE.**
+⛔ *Corrected 21:2x before the first call: this section had said the CONTROL arm's
+patch-failure rate while DESIGN said BOTH arms' — two different denominators for one
+quantity, and neither was the population the gate judged. The gate never sees a control
+proposal.* ⭐ *The capability floor structurally
 cannot rescue this: the floor is a claim about the AGENT's recovery; this measures the
 GATE's judgement.*
 
