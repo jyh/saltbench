@@ -1,0 +1,9 @@
+{
+  "theme": "auto",
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Bash",
+        "hooks": [ { "type": "command", "command": "/Users/jyh/bench/harness/hook-deny-network.sh", "timeout": 15 } ] }
+    ]
+  }
+}

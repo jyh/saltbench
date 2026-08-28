@@ -315,15 +315,41 @@ def self_test():
     return 0 if ok else 1
 
 
+def dataset_rows_sha256(rows):
+    """THE RECIPE for DATASET_ROWS_SHA256 -- published as an invocation, not a number (silicon's
+    handoff defect, 08/28: four defensible fold recipes give four digests over one set of bytes,
+    and the only sort_keys in this file emits with indent=2, which is a DIFFERENT digest).
+        sha256(json.dumps(rows, sort_keys=True, separators=(",", ":")).encode("utf-8"))
+    """
+    return hashlib.sha256(json.dumps(rows, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+
+
+def verify_dataset(path):
+    rows = json.load(open(path))
+    got = dataset_rows_sha256(rows)
+    print(f"rows={len(rows)} expected_rows={DATASET_ROWS}")
+    print(f"sha256(compact,sort_keys)  = {got}")
+    print(f"DATASET_ROWS_SHA256 (pinned) = {DATASET_ROWS_SHA256}")
+    alt = hashlib.sha256(json.dumps(rows, sort_keys=True, indent=2).encode("utf-8")).hexdigest()
+    print(f"sha256(indent=2,sort_keys) = {alt}   <- NOT the pin; shown so the recipe is seen to matter")
+    ok = got == DATASET_ROWS_SHA256 and len(rows) == DATASET_ROWS
+    print("DATASET", "MATCHES the pin" if ok else "DOES NOT MATCH the pin")
+    return 0 if ok else 1
+
+
 def main():
     ap = argparse.ArgumentParser(description="SaltBench wave 1 task selection (metadata only)")
     ap.add_argument("--self-test", action="store_true")
+    ap.add_argument("--verify-dataset", metavar="ROWS_JSON",
+                    help="recompute DATASET_ROWS_SHA256 over ROWS_JSON with THE RECIPE and compare")
     ap.add_argument("--instances", help="JSON list of SWE-bench Verified instance metadata")
     ap.add_argument("--emit", help="write the frozen task list here")
     a = ap.parse_args()
 
     if a.self_test:
         return self_test()
+    if a.verify_dataset:
+        return verify_dataset(a.verify_dataset)
     if not a.instances:
         ap.error("give --instances <file.json> or --self-test")
 
