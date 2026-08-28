@@ -108,7 +108,9 @@ no warning.
   runs in a **post-episode batch** over stored blobs. *This ordering is the structural,
   checkable proof that no score reached the gate; v1 stated the requirement with no
   mechanism.*
-- **I3** identical `patch_sha256` within a task never receives differing verdicts.
+- **I3** identical **`gate_input_sha256`** within a task never receives differing verdicts.
+  ⛔ *v2 keyed this on `patch_sha256`, which forbade the redeclare-and-resubmit recovery §3.4
+  exists to enable — the declaration is not part of the patch.*
 
 ### The refusal table, with the denominator v1 omitted
 
@@ -189,10 +191,43 @@ convenient:
 - **It moves the gate closer to the actual claim** — not "nothing may change" but "state
   what you changed and why", which is the discipline the method is about.
 
-⚠️ **The residual, named rather than hidden:** an agent that changes behaviour and fails
-to declare it is still refused, correctly by this rule and incorrectly by intent. That is
-now a **measured quantity** (`refusals_on_undeclared_expectation_change`), not an unnamed
-bias.
+⛔⛔ **PASS 2 HOLED THIS CHANNEL THREE INDEPENDENT WAYS AND ALL THREE REPAIRS ARE BINDING.**
+It is my own replacement rule, so it gets the harshest statement:
+- **THE TYPED REASON IS A SELF-DEFEATING ORACLE.** `UndeclaredExpectationChange(ids)` names
+  precisely the ids whose declaration makes that refusal impossible next round — **the gate
+  hands the agent the list to echo.** The control never receives a reason and so can never
+  echo, which makes the channel *symmetric in form and asymmetric in effect*; calling it
+  symmetric was a category error.
+- **BLANKET DECLARATION WAS FREE.** No cap, no plausibility test, and nothing evaluated the
+  "one-line justification". `PASS_TO_PASS` per task on the measured-50 runs **median 94, max
+  875** — declaring everything currently failing bought total immunity from the regression arm.
+  ⇒ **`|declared| ≤ 5`, AND every declared id must be CURRENTLY FAILING under the candidate
+  patch** (the gate has this in `post_test_report`). Measured justification: over the
+  measured-50 the per-task count of deleted-line hunks in existing test files is
+  `{0:29, 1:14, 2:4, 3:1, 20:1, 30:1}` — **so 19 of the 21 rewriting tasks need ≤ 5.**
+- **I3 FORBADE THE RECOVERY THE CHANNEL EXISTS FOR.** The declaration is not part of the patch,
+  so a redeclare-and-resubmit leaves `patch_sha256` unchanged and I3 demanded the identical
+  verdict — REFUSE again. ⇒ **I3 is RE-KEYED on `gate_input_sha256`**, so a redeclared
+  identical patch is a different adjudication rather than an invariant violation.
+⚠️ **AND THE NAMED RESIDUAL MEASURED THE WRONG ERROR.**
+`refusals_on_undeclared_expectation_change` counts only UNDER-declaration — **the
+over-declaration exploit drives it to ZERO, and a zero there reads as "no residual bias".**
+*The quiet failure reads as good news.* ⇒ companions, all computable post hoc from `T`:
+`declared_not_in_T` · declaration precision and recall against `T` · the `|declared|`
+distribution · `regression_refusals_averted_by_declaration` · and the one that settles
+capability-vs-voice, **`frac_declared_ids_echoed_from_prior_reason` per arm, whose control
+value is necessarily 0**. Declarations are logged in **all three arms**; the control's are
+inert, and their distribution is the only empirical test of the symmetry claim.
+📌 **FIRING RULE, because v2 left two constructors with identical payloads and no rule:**
+`UndeclaredExpectationChange` fires **iff** every failing id is outside the declared set and at
+least one lies in an existing test file; `RegressionDetected` otherwise. *Unspecified, an
+implementer emitting only the latter would have driven my named residual to exactly 0 with no
+defect visible anywhere.*
+⚠️ **Direction, stated honestly: over-declaration attenuates toward the null** — a fully
+declaring agent converges on the control — **so the exploit is conservative for §1's claim, and
+that is exactly what makes it dangerous: it voids the mechanism while every named quantity
+reads clean, and it corrupts ADVERSE-1, because a gate that never got to judge is not a gate
+that judged badly.**
 
 📊 **And the class is measured post hoc regardless.** For every drawn task, compute — from
 `T`, in the analysis only, never shown to gate or agent — `rewrites_existing_test ∈
@@ -231,10 +266,18 @@ Three executable checks, because an enumeration without a failing input is decor
   is a diff a reviewer sees" was the wrong control: the upstream record is one flat dict
   carrying `patch`, `test_patch`, `hints_text` and both id lists together, so
   "pass the instance to the gate" leaks everything **without adding a field**.
-- **CHECK 2** — `git -C repo_snapshot rev-parse HEAD` must return **non-zero**. The
-  snapshot carries no history. *SWE-bench mirrors retain full history and branches, and
-  `base_commit` is an ancestor of the merged PR in that same object store, so a plain
-  checkout hands `git log --all -p` the gold patch and the gold test patch.*
+- **CHECK 2** — ⛔ **v2'S PREDICATE WAS THE WRONG TEST AND IS REPLACED.** It asserted
+  `git -C repo_snapshot rev-parse HEAD` returns non-zero — which **passes on a nested `.git`,
+  on an unborn HEAD, and on a worktree-pointer state, every one of them holding the full
+  object store.** ⇒ **The snapshot is BUILT by copying the worktree WITHOUT git metadata (no
+  `.git` at any depth, no `GIT_DIR`, no worktree pointer file), and the check asserts NO
+  REACHABLE OBJECT STORE:** `git -C snapshot rev-parse --git-dir` fails, `find snapshot -name
+  .git` is empty, and `GIT_DIR`/`GIT_COMMON_DIR` are unset in the gate's environment.
+  ⛔⛔ **THIS IS NOT HYPOTHETICAL AND IT LEAKS TO BOTH ARMS, NOT JUST THE GATE:** the official
+  image recipe leaves **162 tags** behind after `git remote remove origin`, and
+  `git log --all -S<f2p-name>` returns the commit whose diff **IS** the dataset's `patch` and
+  `test_patch`. **The harness version that fixed this is PINNED in the pre-registration** —
+  v2 pinned no harness version at all, so the fix was not in force.
 - **CHECK 3** — the positive control: a test that builds a `GateInput` carrying
   `test_patch`, `hints_text`, or a `.git` directory and asserts the builder **RAISES**.
 
@@ -254,15 +297,21 @@ confound, reported rather than controlled.**
   cap systematically buys it more of them. The enforced invariant is TOKENS; dollars are
   reported.*
 - **(b) Every model call made inside the gate is metered to the arm that made it.**
-- **(c) EQUAL PROPOSAL ROUNDS BY CONSTRUCTION.** A fixed **K = 3** rounds per task in
-  **both** arms. The treatment arm's rounds after the first are gate-triggered with a
-  typed reason; the control arm's are self-directed with a **fixed, content-free** prompt.
-  ⭐ **This is the same-code-path doctrine applied to the revision loop instead of only to
-  the accept/refuse call, and it is what makes the comparison mean anything: attempt count
-  is then equal by construction, and the ONLY difference is whether the revision trigger
-  carries information — which is the claim under test.**
-- **(d)** If the gate is model-backed, the control arm's ACCEPT-wired gate **runs the
-  identical synthesis call and discards the result**, so tokens and latency match.
+- **(c) ⛔ DELETED — v2 claimed "a fixed K = 3 rounds per task in BOTH arms … equal by
+  construction". THE CONTROL COULD NOT HAVE K ROUNDS**: ACCEPT ends the episode, its gate is
+  hard-wired ACCEPT, and §5(d) invokes that gate each round, so the control terminated at
+  round 1 — and I1 made any later round unsubmittable anyway. *Parity in count, zero in
+  opportunity.* **The round structure now lives in §7 and the arms differ in stopping rule BY
+  NECESSITY; that difference is what the SHAM exists to price, which is what a placebo is
+  for.** ⚠️ **And the cap gets a NUMBER: `TOKEN_CAP_PER_TASK` is stated in the
+  pre-registration, because v2 wrote the cap as a relation with no value — so realised rounds
+  were `min(K, ⌊cap ÷ per-round cost⌋)` and the gate's measured benefit still depended
+  silently on a growing quantity (context and repo size).**
+- **(d)** If the gate is model-backed, **BOTH the control's and the SHAM's gate run the
+  identical synthesis call and discard the result**, so tokens and latency match across all
+  three arms. ⛔ *v2 equalised the CONTROL only and omitted the sham, so under a per-task hard
+  cap the sham's agent got strictly more of the ceiling than either other arm — contaminating
+  both decomposition terms, in opposite directions.*
 
 Reported always, as distributions and never only as means: per-task tokens by class, tool
 calls, wall-clock, **fraction of the ceiling actually consumed**, and a typed
@@ -282,7 +331,12 @@ Reason = PatchDidNotApply
        | RegressionDetected(ids)                   # ids ⊆ base_test_report.ids
        | UndeclaredExpectationChange(ids)          # ids ⊆ base_test_report.ids
        | SynthCheckFailed(check_id, observed, expected)
+       | ContentFree                      # the SHAM's only legal reason (fixed literal)
 ```
+⛔ *v2's enum had no content-free constructor while §7 required the sham to emit one, and
+gave the sham "no test execution" while `RegressionDetected` required `ids ⊆ base_test_report`
+— **the sham could not be CONSTRUCTED as specified.** The sham's `base_test_report` and
+`post_test_report` are explicitly EMPTY, and `ContentFree` carries a pre-registered literal.*
 
 Enforced at construction: a `RegressionDetected` carrying an id absent from
 `base_test_report` **must raise** — that is the positive control. Every emitted reason is
@@ -295,28 +349,56 @@ first is a leak, and no amount of reviewing free text separates them reliably.*
 
 ---
 
-## 7 · The arms — and the sham that v1 lacked
+## 7 · The arms — v3, after pass 2 killed v2's version
 
-| arm | gate | rounds |
-|---|---|---|
-| **control** | hard-wired ACCEPT (runs and discards any synthesis, §5d) | K, self-directed |
-| **treatment** | the live gate | K, gate-triggered |
-| **sham** | refuses with a **content-free** reason, at a per-task count matched to the treatment arm's realised refusals, **no test execution** | K, sham-triggered |
+| arm | round 1 | round 2 | submits |
+|---|---|---|---|
+| **control** | shared `P₁`, no gate | — | `P₁`. **Single submission.** |
+| **sham** | `P₁` refused, **content-free, on EVERY task** | agent revises → accepted unconditionally | `P₂` |
+| **treatment** | `P₁` adjudicated by the live gate | only if REFUSED: revise → adjudicated again | the accepted proposal, else **empty** |
 
-**`treatment − sham` is the gate's information content. `sham − control` is the
-forced-revision effect.** Without the sham arm, REFUSE-ONCE explains the whole result, and
-a best-of-2 gain on this substrate is the same magnitude as the only effect this screen is
-powered to detect — *the alternative explanation is not merely unexcluded, it is sized to
-fully produce the finding.*
+⛔⛔ **v2's "EQUAL PROPOSAL ROUNDS BY CONSTRUCTION — a fixed K = 3 in both arms" IS DELETED, NOT
+ADJUSTED, because the mechanism it asserted did not exist.** Three of v2's own sentences forced
+the control to terminate at round 1 — ACCEPT ends the episode · the control's gate is
+hard-wired ACCEPT · §5(d) invokes that gate every round — and **I1 made its later rounds
+unsubmittable by invariant.** ⇒ ***PARITY IN COUNT AND PROVABLY ZERO IN OPPORTUNITY.*** Three
+refuters reached that independently. *The repair is removal: a claim whose mechanism does not
+exist is not weakened by qualification.*
 
-⭐ **The first proposal `P₁` is generated once per task and SHARED across all three arms.**
-Exact pairing, no sampling noise in the discordance, and the arms differ only from round 2.
+⭐ **THE SHAM IS NOW LITERAL REFUSE-ONCE** — content-free refusal of round 1 on **every** task,
+then unconditional acceptance. **No per-task matching, no sequencing, all three arms run in
+parallel.**
+⛔ **v2's matched sham was worse than no sham.** With `P₁` shared and ACCEPT terminating, a
+matched sham with count ≥1 *must* refuse from round 1 — **so its first refusal landed on the
+byte-identical `P₁` the treatment refused, on exactly the treatment's refusal set.** Its
+task-level refusal precision was therefore **identically equal to the treatment's on every
+run**. ***A PLACEBO THAT INHERITS THE TREATMENT'S TARGETING CANNOT CALIBRATE TARGETING.***
+And it was not the counterfactual it was named for: REFUSE-ONCE refuses everywhere; the matched
+sham refused only where the treatment did.
 
-⛔ **If the sham arm is unaffordable, the headline claim is DOWNGRADED in advance** to
-*"gating-or-forced-revision beats a single submission"*, and the decomposition is deferred
-— the same discipline the pre-registration already applies to the capability floor.
+**THE CONTRASTS, AND WHAT EACH ONE IS ALLOWED TO MEAN:**
+- **`treatment − control` — PRIMARY.** *"Does the gate beat a single submission?"* This is the
+  claim in §1 and the only contrast the MDE table, the discordance precondition and the adverse
+  outcomes are written for.
+- `sham − control` — secondary: **the value of one forced revision, on every task, carrying no
+  information.** This is the REFUSE-ONCE / best-of-2 effect, measured rather than argued.
+- `treatment − sham` — secondary. ⛔ **It may NOT be called "the gate's information content."**
+  The gate's information has two parts — *which* patches to refuse and *what* to say — and this
+  contrast confounds them with a dose difference (the sham refuses every task, the treatment
+  only where it judges).
+🔑 **THE READING THAT MATTERS: if `treatment − control` ≈ `sham − control`, the gate's
+SELECTIVITY added nothing beyond the retry**, whatever the refusal table says.
 
----
+⭐⭐ **AND THE SHAM NOW MEASURES THE CHANCE LEVEL INSTEAD OF IT BEING COMPUTED.** Because it
+refuses `P₁` on every task, **the sham's realised refusal precision IS the round-1 failure
+rate** — the exact rate a content-blind refuser attains. ⇒ **ADVERSE-1 fires against the SHAM'S
+REALISED PRECISION, an empirical placebo, not against `base_fail_rate`'s computed value.**
+*The placebo we are paying for is the direct measurement of the thing it was added to bound.*
+
+⚠️ **Dose is NOT equalised and the freeze says so rather than implying otherwise:** the sham
+refuses on 100% of tasks, the treatment on the fraction it judges. Realised rounds are logged
+per arm and the result is decomposed by them. **Compute matching (§5d) extends to ALL THREE
+arms**, including the sham.
 
 ## 8 · What a refuter should attack next
 

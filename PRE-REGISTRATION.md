@@ -163,7 +163,7 @@ count appear in the headline.
 - At most **two** re-pilots; then *"no affordable model sits in the measurable band"* is
   reported as a result — with the CI, so a reader can see it is a routing outcome.
 
-**Pinned identically for both arms, before the first call:** model id and snapshot,
+**Pinned identically for ALL THREE arms, before the first call:** model id and snapshot,
 `output_config.effort`, `thinking` mode and display, `max_tokens`, and the caching configuration
 and TTL. *An unpinned effort setting is a larger lever on the dollar figure than the gate is.*
 ⛔⛔ **`temperature` IS NOT PINNED, AND v2 PINNING IT WAS A FIRST-CALL FATAL: `claude-sonnet-5`
@@ -179,8 +179,34 @@ already prices. The model snapshot id is pinned; the sampler is not pinnable.
 
 ## 5 · Design, statistic, and what is always reported
 
-**Paired, within-task.** All arms attempt the identical list; `P₁` is generated once and
+**Paired, within-task.** All three arms attempt the identical list; `P₁` is generated once and
 shared (DESIGN §7). The unit is the **pair**.
+
+### ⛔ THE THREE ARMS, NAMED HERE BECAUSE THIS IS THE DOCUMENT THAT FREEZES
+
+⛔⛔ **v2's sham existed ONLY in the design document: `grep -ci sham PRE-REGISTRATION.md`
+returned 0.** The arm credited with closing v1's cheapest non-mechanism explanation was absent
+from the binding instrument — no hypothesis, no contrast, no adverse outcome, no test. ⇒ ***THE
+CEILING CLASS DID NOT CLOSE; IT MOVED.***
+
+| arm | what it does |
+|---|---|
+| **control** | submits the shared `P₁`. Single submission. |
+| **sham** | refuses `P₁` **content-free on every task** (literal REFUSE-ONCE), then accepts |
+| **treatment** | the live gate adjudicates; refusal buys one revision |
+
+**PRIMARY CONTRAST: `treatment − control`.** *Does the gate beat a single submission?* The MDE
+table, the discordance precondition, §7's fixed n, and ADVERSE-1/2/3 are all written for this
+contrast and **only** this one.
+**PRE-SPECIFIED SECONDARY:** `sham − control` (the value of one uninformative forced revision)
+and `treatment − sham`. ⛔ **Neither secondary is tested at α = 0.05 unless the primary is
+significant** — a fixed-sequence gate. *Three contrasts tested freely at 0.05 is a familywise
+rate near 0.14, and after the run any of the three could be narrated as "the" result — the
+exact researcher degree of freedom this section bans by name one paragraph later.*
+⛔ **`treatment − sham` MAY NOT BE CALLED "the gate's information content"** — it confounds
+*which* patches are refused with *what the reason says*, plus a dose difference.
+🔑 **The reading that matters: if `treatment − control` ≈ `sham − control`, the gate's
+SELECTIVITY added nothing beyond the retry.**
 
 - **Primary ESTIMAND:** the paired difference in solve rate over all attempted tasks
   (`solved` as defined in DESIGN §2; no accepted proposal ⇒ unsolved).
@@ -240,12 +266,17 @@ Registering both as interesting is NOT registering one as ADVERSE**, and every t
 state v1 admitted read favourable. That is the ceiling-that-cannot-be-exceeded, in the one
 document written to prevent it.
 
-**ADVERSE-1 — the gate did not discriminate.** Refusal precision is compared against
-**`base_fail_rate`** — the failure rate of the proposals **the gate actually adjudicated in
-the treatment arm** (DESIGN §2), which is the exact chance level for a rate-matched
-content-blind refuser on that same stream. **If the 95% CI for `lift` (= precision ÷
-`base_fail_rate`) includes or falls below 1.0, wave 1 reports "the gate did not
-discriminate" as ADVERSE.**
+**ADVERSE-1 — the gate did not discriminate.** ⭐ **The chance level is now MEASURED, not
+computed: the sham refuses `P₁` on every task, so its REALISED refusal precision IS the
+round-1 failure rate a content-blind refuser attains.** If the 95% CI for the treatment's
+refusal precision **includes or falls below the sham's realised precision**, wave 1 reports
+"the gate did not discriminate" as ADVERSE.
+⛔ **INTERPRETABILITY PRECONDITION, because v2's version fired on a GOOD gate most of the time
+at this n:** ADVERSE-1 is evaluated only if the treatment issued **≥ 10 refusals**; below that
+the result reads *"too few refusals to judge discrimination (r = k)"* and is not an adverse
+finding. *An adverse outcome that fires on noise is not a bar, it is a coin.*
+📌 `base_fail_rate` is still reported — as the computed cross-check on the sham's empirical
+value, never as the bar itself.
 ⛔ *Corrected 21:2x before the first call: this section had said the CONTROL arm's
 patch-failure rate while DESIGN said BOTH arms' — two different denominators for one
 quantity, and neither was the population the gate judged. The gate never sees a control
@@ -262,6 +293,12 @@ GATE's judgement.*
 spend". **If treatment cost-per-solved-task exceeds control's by more than K = 2× with no
 significant solve gain, §1's claim is reported NOT SUPPORTED.** K is fixed now, because
 without a pre-stated K any figure can be narrated as acceptable.
+
+**ADVERSE-4 — the regression arm was disabled by the declaration channel.** If declaration
+precision against `T` is at chance, **or** `regression_refusals_averted_by_declaration` exceeds
+refusals issued, wave 1 reports **"the gate = apply + build + synth only"** — the regression arm
+was gamed, not exercised. *Registered because over-declaration attenuates toward the null while
+every other named quantity reads clean.*
 
 **And the floor hypothesis is downgraded to what one tier can support:** a null at a single
 tier is consistent with *both* the capability floor *and* a worthless gate *and*
@@ -310,6 +347,23 @@ evidence, and the write-up says so.
   accepted-patch log.
 - **Cost:** exceeding the ruled $150–400 before the paired run completes → **stop and
   report**, never quietly reduce n.
+
+**`TOKEN_CAP_PER_TASK = 400,000`** (input + cache-write + cache-read + output, per task, per
+arm, harness-enforced). ⛔ *v2 stated the cap as a relation with no value, so realised rounds
+were `min(K, ⌊cap ÷ per-round cost⌋)` and the gate's measured benefit depended silently on
+context and repo size — a constant that grows.*
+**`solved` is the OFFICIAL SWE-bench harness**, pinned by commit sha and image digest recorded
+in `TASKLIST.json` at first run — **including the version that fixed the 162-tag leak**
+(DESIGN §4 CHECK 2). ⛔ *v2 pinned no harness version, so that fix was not in force, and the
+scorer defines the dependent variable.*
+⚠️ **BUDGET, RE-PRICED HONESTLY: v2's ≈$250 counted ZERO gate model calls**, while the design
+meters them to the arm and makes the control and sham pay a discarded synthesis call. A
+gate call sized like an agent round roughly **doubles** it, against the $150–400 band — and up
+to 630 shadow harness evaluations plus 160 pre-flight/gold-control runs are container cost on
+top. ⇒ **either the gate is NON-MODEL-BACKED for wave 1 (§3 item 3 drops), or the run is priced
+with the gate arm included before it starts.** The choice is stated here before the first call;
+*"the three-arm design is not wishful" was not established by arithmetic that priced one of
+three drivers.*
 
 *Budget arithmetic, so the three-arm design is not wishful: 3 arms × 50 tasks + 30 pilot
 pairs ≈ 210 episodes at K = 3 rounds. At Sonnet-5 list rates and ~100k in / 20k out per
