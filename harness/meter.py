@@ -136,7 +136,11 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0):
                         continue
                     if ".." in raw:
                         dotdot += 1
-                    if k == "pattern" and not os.path.isabs(raw) and not raw.startswith(".."):
+                    if k == "pattern" and not os.path.isabs(raw) and not raw.startswith(("..", "~", "$")):
+                        continue
+                    if raw.startswith(("~", "$")):
+                        # a tilde/variable path is expanded by the tool, not by us: it can only mean outside the tree (refuter RI3-R5)
+                        escapes_unblocked.append("%s %s=%s (tilde/variable path)" % (name, k, raw))
                         continue
                     resolved = os.path.normpath(raw if os.path.isabs(raw) else os.path.join(cwd or "", raw)) if ep else raw
                     if ep and not (resolved == ep or resolved.startswith(ep + "/") or resolved.startswith(("/tmp/", "/private/tmp/"))):
@@ -250,6 +254,8 @@ def self_test():
     check(m3g["escape_unblocked"] and m3g["void"], "a relative path that resolves outside the episode voids")
     m3h = meter(recs + [a("m8d", [tu("Grep", {"pattern": "def foo", "path": "django/db"}, "t8d")])], ep=EP, escape_re=ESC)
     check(not m3h["void"], "a relative path inside the repo is fine")
+    m3i2 = meter(recs + [a("m8e2", [tu("Read", {"file_path": "~/bench/logs/landings.log"}, "t8e2")])], ep=EP, escape_re=ESC)
+    check(m3i2["void"], "a tilde path in a file tool voids")
     m3i = meter(recs + [a("m8e", [tu("Glob", {"pattern": "/Users/jyh/bench/**/manifest.json"}, "t8e")])], ep=EP, escape_re=ESC)
     check(m3i["void"], "an absolute Glob pattern outside the episode voids")
     m3j = meter(recs + [a("m8f", [tu("Monitor", {"command": "curl x"}, "t8f")])], ep=EP, escape_re=ESC)

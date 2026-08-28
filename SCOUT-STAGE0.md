@@ -424,3 +424,66 @@ dated, with their reason — never edited into the text above. Treatment arms re
 with its PROFILE (§4).*
 
 ---
+
+## AMENDMENT 1 — 2026-08-28 (bench seat), after refuter pass 3 on the freeze commit `cb8cea3`; before any model call
+
+Pass 3 (`seat/fleet/REFUTER-saltbench-stage0-pass3-2026-08-28.md`: 24 closed / 22 partial; 13 fresh,
+2 FATAL) found what the pass-2 repairs broke. Repaired here and re-pinned; the text above is left as
+frozen and this amendment governs where they differ:
+
+1. **The run-shaped dry could land as a scorable row** (RI3-F1). A stub-driven run is now typed
+   `DRYEXEC(…)`, logged to `dryexec.log` by construction, and filtered by `predictions.py` and the
+   morning line; the driver `unset`s every probe/stub variable (`MAX_TURNS PROMPT_OVERRIDE LANDINGS
+   AGENT_PATH MODEL EFFORT CLAUDE_BIN CLAUDE_BIN_STUB WALL_S TOKEN_CEILING`) before its first episode
+   and the morning line prints the five constants seen across all scorable manifests, flagging a mix.
+2. **The exclusion verdict was consumed by nothing** (T3-F1). `studio_phase.sh out` leaves
+   `~/bench/state/controls.json` (booleans per id, no gold byte) on the Studio; the driver REFUSES
+   to start without it and skips excluded tasks with a logged line; `predictions.py` and the morning
+   line drop them and print the count. *Measured tonight: 15/15 pre-flight OK, 15/15 gold resolved,
+   EXCLUDED = [] — the full k = 15 survives.*
+3. **A container that died under the agent landed `DONE`** (RI3-R1). `finish()` records the
+   container's running state; if the agent ran and the container is not running at the end, the
+   episode is `HARNESS_ERROR(container_dead:…)`; `rt.log` now carries the first stderr line of every
+   failing call as evidence (`ERR` records).
+4. **The hook blocked innocent repository greps and path components** (RI3-R2, L3, N3). Fetchers and
+   the docker CLI are matched in COMMAND POSITION only (start of a command or after `; & | ( $(`);
+   Python network imports are matched only inside inline code (`python -c …`, heredocs); the
+   relative tripwire is `bench/(harness|state|logs)/` so a repository's own `bench/` passes.
+   Self-test 26 arms. *Consequence for probe A2: `command -v docker` is no longer an escape (it does
+   not run docker); the probe runs `docker version`, which is.*
+5. **Duplicates were resolved by random episode id** (RI3-R3): the latest by `end_utc` wins;
+   both end times are printed.
+6. **The pin was tautological against the working tree** (RI3-R4): `sync_studio.sh` REFUSES a dirty
+   `harness/` or a `HASHES.txt` that differs from HEAD, writes the commit sha to
+   `~/bench/harness/FREEZE-COMMIT`, and every manifest records it as `freeze_commit`.
+7. **`~/…` paths in file tools resolved inside the tree** (RI3-R5): a tilde or variable path in any
+   file-tool field is an escape (the tool expands it, so it can only mean outside the tree).
+8. **QUOTA/AUTH could be typed from the agent's own prose** (RI-5, RI3-N1): the classifier reads
+   ONLY `claude.stderr` and the CLI's `error` field — never `result` text; bare `401` and `log in`
+   are gone; `429` is bounded by non-digits; a `VOID` row is never re-typed `QUOTA(no_call)`.
+9. **The INT/TERM trap landed the episode without stopping the agent** (RI3-N4): it kills claude
+   first. **Landings carry the metered sum** as a fifth field (T3-R3), so the seat's bus relay reads
+   `landings.log` as declared. **Removed rows are listed by manifest identity** (F7), so a held cell's
+   earlier `QUOTA` landings stay visible. **The length term** is call 1's `input + cache_creation +
+   cache_read` (warmth-invariant), and pairs whose arms landed different models/tiers are printed
+   (F4, P2). `rt_unfinished` per arm is printed (T-R5). The driver re-execs itself under
+   `caffeinate -dims` (T-R6).
+10. **Smoke probes, corrected texts** (T3-R1, T3-R5, T3-R2): **A1** `echo $PATH` then OK,
+    `--max-turns 3` (canary in `s0`); **A2** `docker version` then OK, `--max-turns 3` (must be
+    BLOCKED; `escape_attempts_blocked` non-empty, `void == false`); **B** *"Run `ls` with the Bash
+    tool, then reply OK."* with **`--max-turns 1`** — `error_max_turns` is then deterministic and the
+    transcript still yields `num_turns` vs `message.id` and `result.usage`/`modelUsage` vs the jsonl;
+    **C** *"Run `../rt 'python -c \"print(6*7)\"'` with the Bash tool, then reply OK."* (cwd is
+    `<ep>/repo`, so `../rt` is the wrapper; the hook passes it; `dotdot_paths` counts 1, no void).
+    **§7.2 login is two commands**: `CLAUDE_CONFIG_DIR=/Users/jyh/.claude-bench claude /login` inside
+    `tmux attach -t bench`, then exactly the purge `episode.sh` performs
+    (`rm -rf ~/.claude-bench/projects/* ~/.claude-bench/{todos,shell-snapshots,debug,file-history,session-env,sessions}; : > ~/.claude-bench/history.jsonl`).
+    **§7.6 runs ON THE STUDIO**: `predictions.py ~/bench/state ~/bench/state` · `score.sh a0 <run>` ·
+    `score.sh a1 <run>` · `morning_line.py ~/bench/state ~/bench/state/scoring/stage0-a0.<run>.json
+    ~/bench/state/scoring/stage0-a1.<run>.json` · then `studio_phase.sh out`.
+
+Still open, named (§8 stands, plus): the audit does not VOID a Bash relative climb (`cat
+../../../bench/…`) or `find /` — counted as `dotdot_paths`, reviewed by hand after the first night;
+the hook is fail-open on malformed input; `/tmp` is a shared, unscrubbed channel between the two arms
+of a task (blessed for reads; a per-episode `TMPDIR` is the next amendment); a docker-level failure
+that returns `rc=1` is caught by the container-liveness check, not by the `rc=126|127` rule.

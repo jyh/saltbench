@@ -5,7 +5,10 @@
 LOG=__ST__/rt.log
 if [ $# -eq 1 ]; then cmd="$1"; else cmd=$(printf '%q ' "$@"); fi
 printf '%s\tSTART\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$cmd" >> "$LOG"
-__DOCKER__ exec -w /testbed __CTR__ timeout 590 bash -lc 'source /opt/miniconda3/bin/activate testbed >/dev/null 2>&1 || { source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed; }; eval "$1"' _ "$cmd"
+ERRF=$(mktemp -t rt.XXXXXX)
+__DOCKER__ exec -w /testbed __CTR__ timeout 590 bash -lc 'source /opt/miniconda3/bin/activate testbed >/dev/null 2>&1 || { source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed; }; eval "$1"' _ "$cmd" 2> >(tee "$ERRF" >&2)
 rc=$?
+# the first stderr line is evidence of WHY a call failed (docker "is not running" vs a failing test), never shown to the agent twice
+[ "$rc" != 0 ] && printf '%s\tERR\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$(head -1 "$ERRF" 2>/dev/null | cut -c1-200)" >> "$LOG"; rm -f "$ERRF"
 printf '%s\tEND\trc=%s\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$rc" "$cmd" >> "$LOG"
 exit $rc

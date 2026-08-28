@@ -19,12 +19,14 @@ BENCH="${BENCH:-$HOME/bench}"; H="${H:-$BENCH/harness}"; CFG="${CFG:-$HOME/.clau
 MODEL="${MODEL:-claude-sonnet-5}"; EFFORT="${EFFORT:-high}"; MAX_TURNS="${MAX_TURNS:-40}"
 WALL_S="${WALL_S:-5400}"; TOKEN_CEILING="${TOKEN_CEILING:-8000000}"; LANDINGS="${LANDINGS:-landings.log}"
 PROMPT_OVERRIDE="${PROMPT_OVERRIDE:-}"; REAL_HOME="$HOME"
+# a stub-driven run can never land where the driver reads (refuter RI3-F1): it is typed DRYEXEC(...) and logged apart
+[ -n "${CLAUDE_BIN_STUB:-}" ] && LANDINGS="dryexec.log"
 ep="ep-$(head -c 4 /dev/urandom | od -An -tx1 | tr -d ' \n')"
 EP="$EPROOT/$ep"; ST="$BENCH/state/$ep"; CTR="$ep"
 mkdir -p "$EP" "$ST/extract" "$BENCH/logs" "$EPROOT"
 log() { printf '%s %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$*" | tee -a "$ST/episode.log"; }
 now() { date -u +%s; }
-term="UNSET"; t0=$(now); crc=""; SID=""; JSONL=""; killed=""; finished=""
+term="UNSET"; t0=$(now); crc=""; SID=""; JSONL=""; killed=""; finished=""; CPID=""
 CLAUDE_BIN="${CLAUDE_BIN:-$(command -v claude)}"; DOCKER_BIN=$(command -v docker)
 PINNED_CLAUDE=$(grep '^claude-version ' "$H/HASHES.txt" | cut -d' ' -f2)
 # the agent's PATH: the Studio's login PATH (measured by smoke probe A1 from inside the agent), stated not assumed
@@ -55,6 +57,11 @@ finish() {
   [ -d "$EP" ] && mv "$EP" "$ST/eptree" 2>/dev/null   # the agent-visible tree is archived, never left for the next episode
   # smoke probes are never scored: they land as SMOKE(...) in their own log (refuter RI-8)
   [ -n "$PROMPT_OVERRIDE" ] && term="SMOKE($term)"
+  [ -n "${CLAUDE_BIN_STUB:-}" ] && term="DRYEXEC($term)"
+  # a container that died under the agent makes every later rt call plumbing, whatever its rc (refuter RI3-R1)
+  if [ -n "$SID" ]; then
+    alive=$("$DOCKER_BIN" inspect -f '{{.State.Running}}' "$CTR" 2>/dev/null); [ "$alive" = "true" ] || term="HARNESS_ERROR(container_dead:$term)"
+  fi
   t1=$(now)
   ARMV="$arm" python3 - "$ST" "$IID" "$IMG" "$DIG" "$BASE" "$term" "$rc" "$t0" "$t1" "$MODEL" "$EFFORT" "$MAX_TURNS" "$WALL_S" "$TOKEN_CEILING" "$H" "$CFG" "$CLAUDE_BIN" "$ep" "${SID:-}" "$AGENT_PATH" <<'PY'
 import json,sys,hashlib,os,subprocess
@@ -99,6 +106,8 @@ m={"episode":ep,"instance_id":iid,"arm":arm,"image":img,"digest":dig,"base_commi
    "models":mt_.get("models"),"service_tiers":mt_.get("service_tiers"),"tool_timeouts":mt_.get("tool_timeouts"),
    "first_call_usage":mt_.get("first_call_usage"),"unknown_tools":mt_.get("unknown_tools"),
    "quota_evidence":(open(os.path.join(st,"quota_evidence.txt")).read().strip() if os.path.exists(os.path.join(st,"quota_evidence.txt")) else None),
+   "freeze_commit":(open(os.path.join(h,"FREEZE-COMMIT")).read().strip() if os.path.exists(os.path.join(h,"FREEZE-COMMIT")) else None),
+
    "flags":["-p <prompt>","--model",model,"--effort",effort,"--max-turns",mt,"--dangerously-skip-permissions",
             "--disallowedTools","WebFetch,WebSearch,Agent,Task,Workflow,Skill,Monitor,CronCreate,CronDelete,CronList,RemoteTrigger,SendMessage,ListAgents,PushNotification,SendUserFile,EnterWorktree,ExitWorktree",
             "--strict-mcp-config","--setting-sources","user,project","--output-format","json","--session-id <uuid>"]}
@@ -106,12 +115,12 @@ json.dump(m,open(os.path.join(st,"manifest.json"),"w"),indent=1,sort_keys=True)
 PY
   ( cd "$ST" && find . -type f ! -name SHA256SUMS -exec shasum -a 256 {} + > SHA256SUMS 2>/dev/null )
   log "LANDED $ep task=$IID arm=$arm term=$term rc=$rc wall=$(( $(now)-t0 ))s metered=$(python3 -c "import json;m=json.load(open('$ST/manifest.json'));print(m['metered_sum_governing'] or m['metered_sum'])" 2>/dev/null)"
-  printf '%s %s %s %s\n' "$ep" "$IID" "$arm" "$term" >> "$BENCH/logs/$LANDINGS"
+  printf '%s %s %s %s %s\n' "$ep" "$IID" "$arm" "$term" "$(python3 -c "import json;m=json.load(open('$ST/manifest.json'));print(m['metered_sum_governing'] or m['metered_sum'] or 0)" 2>/dev/null)" >> "$BENCH/logs/$LANDINGS"
   exit "$rc"
 }
 # any abnormal exit still cleans up and lands (refuter RI-1): the trap fires on the way out with a typed reason
 trap '[ -z "$finished" ] && { term="HARNESS_ERROR(abort:line$LINENO:$term)"; finish 1; }' EXIT
-trap 'term="HARNESS_ERROR(signal)"; finish 1' INT TERM
+trap '[ -n "${CPID:-}" ] && { kill -TERM "$CPID" 2>/dev/null; sleep 5; kill -KILL "$CPID" 2>/dev/null; }; term="HARNESS_ERROR(signal)"; finish 1' INT TERM
 
 # ── 1. image present and IS the pinned digest; claude is the pinned version and no updater may move it ────
 "$DOCKER_BIN" image inspect "$IMG@$DIG" >/dev/null 2>&1 || die "image $IMG@$DIG not present (pull_pilot.sh first)"
@@ -217,9 +226,9 @@ try:
 except Exception:
     print("")
 PY
-sub=$(head -1 "$ST/cli_text.txt" 2>/dev/null); msgs="$(tail -n +2 "$ST/cli_text.txt" 2>/dev/null) $(cat "$ST/claude.stderr" 2>/dev/null)"
-quota_rx='rate.?limit|usage limit|hit your limit|limit resets|limit will reset|usage credits|extra usage|spend limit|quota|overloaded|billing|too many requests'
-auth_rx='not logged in|invalid api key|authentication|unlock-keychain|keychain|401|please run /login|log in'
+sub=$(head -1 "$ST/cli_text.txt" 2>/dev/null); msgs="$(sed -n 3p "$ST/cli_text.txt" 2>/dev/null) $(cat "$ST/claude.stderr" 2>/dev/null)"
+quota_rx='rate.?limit|usage limit|hit your [a-z ]*limit|limit[^a-z]*resets|limit will reset|usage credits|extra usage|spend.?limit|quota|overloaded|billing|too many requests|(^|[^0-9])429([^0-9]|$)'
+auth_rx='not logged in|invalid api key|authentication (error|failed)|unlock-keychain|keychain|please run /login|(^|[^a-z])log ?in( |$)|unauthori[sz]ed'
 if [ -n "$killed" ]; then term="$killed"
 elif [ -z "$JSONL" ]; then
   if printf '%s' "$msgs" | grep -Eqi "$auth_rx"; then term="AUTH"; elif printf '%s' "$msgs" | grep -Eqi "$quota_rx"; then term="QUOTA"; else term="HARNESS_ERROR"; fi
@@ -250,7 +259,7 @@ if [ -n "$JSONL" ]; then
     term="VOID($(python3 -c "import json;print(','.join(json.load(open('$ST/meter.json'))['void_reasons']))"):${term})"
   fi
   # a run that landed a jsonl but no metered call is a stall, not a result: QUOTA unless typed otherwise (refuter P2)
-  if [ "$(python3 -c "import json;print(json.load(open('$ST/meter.json')).get('calls',0))" 2>/dev/null)" = "0" ]; then case "$term" in AUTH*|QUOTA*|HARNESS*) ;; *) term="QUOTA(no_call:$term)" ;; esac; fi
+  if [ "$(python3 -c "import json;print(json.load(open('$ST/meter.json')).get('calls',0))" 2>/dev/null)" = "0" ]; then case "$term" in AUTH*|QUOTA*|HARNESS*|VOID*) ;; *) term="QUOTA(no_call:$term)" ;; esac; fi
 fi
 # the config dir carries nothing across episodes but credentials: archive its projects/ subtree, then remove it — UNCONDITIONALLY
 mkdir -p "$ST/configdir-projects" && cp -R "$CFG/projects/." "$ST/configdir-projects/" 2>/dev/null; rm -rf "$CFG/projects"/* 2>/dev/null
