@@ -166,9 +166,17 @@ count appear in the headline.
 - At most **two** re-pilots; then *"no affordable model sits in the measurable band"* is
   reported as a result — with the CI, so a reader can see it is a routing outcome.
 
-**Pinned identically for ALL THREE arms, before the first call:** model id and snapshot,
-`output_config.effort`, `thinking` mode and display, `max_tokens`, and the caching configuration
-and TTL. *An unpinned effort setting is a larger lever on the dollar figure than the gate is.*
+**Pinned identically for ALL THREE arms, before the first call — WITH VALUES, because v4 named
+the parameters and supplied none:**
+```
+model                 claude-sonnet-5        (response.model recorded per call)
+output_config.effort  "high"
+thinking              {type: "adaptive", display: "omitted"}
+max_tokens            32000                  (streamed; non-streaming risks HTTP timeouts)
+cache_control         ephemeral, 1-hour TTL, breakpoint AFTER the retrieval prefix
+```
+*The breakpoint sits after the retrieval prefix so a revision round RE-READS it rather than
+re-writing it — which is also why the metered sum must count cache-reads per call (§9).* *An unpinned effort setting is a larger lever on the dollar figure than the gate is.*
 ⛔⛔ **`temperature` IS NOT PINNED, AND v2 PINNING IT WAS A FIRST-CALL FATAL: `claude-sonnet-5`
 REJECTS SAMPLING PARAMETERS WITH A 400**, so the first API request of either arm would have
 failed exactly as frozen. *I had the authoritative model table loaded in the session that wrote
@@ -261,7 +269,8 @@ those terms.*
 
 **Cost has no undefined branch:** the ratio is printed only with its denominator inline
 (`$X / 23 solved`), and **when solves < 5 it prints `undefined (k solves)`** — never
-imputed. Gate model calls are charged to the arm that makes them. **No conclusion rests on
+imputed. *(Gate model calls would be charged to the arm making them — **moot in wave 1: the
+gate makes none**.)* **No conclusion rests on
 the cost ratio; it is context for the primary statistic.**
 
 **Contamination proxy:** normalized edit similarity between the control arm's submitted
@@ -365,11 +374,34 @@ evidence, and the write-up says so.
 - **Cost:** exceeding the ruled $150–400 before the paired run completes → **stop and
   report**, never quietly reduce n.
 
-**`TOKEN_CAP_PER_TASK = 400,000`**, and ⛔ **THE BRANCH IS NAMED, answering DESIGN §8 Q3 which
-v3 left open while resting §1 on "equal enforced token spend": THE CAP COVERS AGENT + GATE
-TOKENS SUMMED, per task per arm.** In wave 1 the gate makes **no** model calls (helm ruling), so
-its contribution is **0** — but the rule is stated for the sum, so wave 2 cannot inherit an
-agent-only cap by silence.
+### The metered unit, defined — and the cap as a RULE, not a number
+
+⛔⛔ **"AGENT ROUND" WAS UNDEFINED, WHICH MADE EVERY CAP NUMBER MEANINGLESS.** The metered sum
+counts **cache-reads PER CALL**, so an *agentic* round of `T` model calls meters ≈ `T × prefix`
+— a 400,000 ceiling admits roughly **three CALLS, not three rounds**, and every arm lands
+BUDGET-CONFOUNDED. *v3 and v4 each fixed the numerator; neither defined the thing being counted.*
+
+> **A PROPOSAL ROUND := one agentic episode of at most `R = 40` model calls. The metered sum is
+> over ALL calls in the task**, every arm — input + cache-write + cache-read + output.
+
+**`TOKEN_CAP_PER_TASK := ⌈2 × (pilot control-arm p90 of the metered sum)⌉`**, computed from the
+pilot **before** the paired run and **frozen at that moment**, with a **hard per-episode ceiling
+of $4.00** beside it. ⛔ *A cap fixed before the unit is defined is a guess wearing a number's
+clothes; a cap derived from the pilot's measured distribution is the only kind that can be right
+about a quantity nobody has measured yet.* Both the frozen value and the pilot p90 behind it are
+recorded before the first paired call.
+
+📌 **CONTEXT/RETRIEVAL POLICY, NAMED — "~100k in per round" implies one, and v4 left it
+implicit.** ~100k input is **≈200× the task text**, so the harness is doing repository
+retrieval, not passing the issue alone. **Wave 1: whole-file retrieval of files named in the
+problem statement plus the agent's own reads, capped at `R` calls; no repo-wide embedding
+index.** *An unnamed retrieval policy silently sets the per-call prefix — and the prefix is
+exactly what the cap meters.*
+
+⛔ **THE BRANCH IS NAMED** (DESIGN §8 Q3, left open in v3 while §1 rested on "equal enforced
+token spend"): **the cap covers AGENT + GATE tokens SUMMED, over ALL calls in the task.** The
+gate contributes **0** in wave 1 — stated as a sum so wave 2 cannot inherit an agent-only cap by
+silence.
 
 ⛔⛔ **RE-DERIVED FOR THE REAL v4 STRUCTURE, BECAUSE 400,000 WAS DERIVED FOR THE DELETED ONE**
 (3 × 120k agent-only + 11% slack — a number consistent only with the K=3 v3 itself deleted):
@@ -391,20 +423,35 @@ measured-50 (`PASS_TO_PASS` id strings, comma-joined): **min 113 · median 5,761
 max 66,332 chars — a 587× spread**, with per-repo medians from **sympy 708** to **matplotlib
 34,081** (48×). *Pass 3 measured 106 / 5,677 / 49,373 / 65,458 and 617×; the small gap is a
 joining convention and the figures above are the ones this freeze uses.* ⇒ **§6 caps the ids
-payload at 20 ids** (overflow rendered `"N ids and k more"`, matching `BuildFailed`'s 4 KiB
-bound), which collapses the worst case to **~300 tokens** and removes a per-task input-size
+payload at 20 ids** — ⛔ *and my "~300" was **THE MEDIAN PRESENTED AS THE WORST** (pass 4's
+catch). My own recompute gave 496, because I divided chars by 4 while test-ids tokenize at
+**≈1.84 chars/token**, so the conservative **1,077** governs. My own banked law is DENSITY IS
+NOT PORTABLE, and I applied a prose ratio to identifier-heavy text.* (overflow rendered `"N ids and k more"`, matching `BuildFailed`'s 4 KiB
+bound), which collapses the payload to **median ~305 / worst ~1,077 tokens** and removes a
+per-task input-size
 term that **correlated with the source repo** and was charged to the treatment arm alone.
 **A per-call sub-cap of 200,000 tokens is stated so the sum is enforceable rather than merely
 declared.****`solved` is the OFFICIAL SWE-bench harness, PINNED — not promised.**
 ```
 swebench == 4.1.0   (commit 726c546)
 ```
+⛔⛔ **AND THE PIN IS NECESSARY, NOT SUFFICIENT — v4's protection claim was open.** `4.1.0` puts
+the history fix in the **BUILD RECIPE**, and we **PULL** pre-built images: a build-time fix is
+not in force for an image built by someone else. **What protects is DESIGN §4 CHECK 2b — a
+per-container assertion failing on all four leak states, run on the AGENT's working copy in
+EVERY arm** (it was absent in every arm at `21123ae0`, and CHECK 2 guarded only the gate's
+snapshot while the leak reaches the agent).
 ⛔ **v3 said the harness would be "recorded at first run", which is a PROMISE, not a pin** — and
 the scorer *is* the dependent variable, so an unpinned scorer is an unpinned outcome.
 **Why 4.1.0 specifically, and it is the only viable choice:** v5.x **cannot consume** the pinned
 13-column dataset revision, and v4.0.4 **predates the history fix** whose absence is the
 162-tag leak (DESIGN §4 CHECK 2). *A version range would have re-opened the leak at one end and
 broken ingestion at the other.*
+**BRIDGING PROCEDURE, pre-registered because the pinned harness resolves images BY KEY:** for
+each of the 80, `docker pull <image>@<digest>` then `docker tag <image>@<digest>
+<instance_image_key>`, before any arm runs. ⛔ *Committing digests WITHOUT the bridge leaves the
+harness free to resolve the key its own way — the table would certify an image the run never
+used.*
 ⛔ **CONTAINERS ARE ADDRESSED BY DIGEST**, via a committed 80-row `instance_id → image@sha256`
 table — **rebuild-on-miss and the default namespace are mutually exclusive by an explicit raise
 in the harness**, so a tag-addressed run silently gets a different image than the one certified.

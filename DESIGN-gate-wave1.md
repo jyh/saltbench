@@ -2,7 +2,7 @@
 
 **Status: DESIGN, NOT BUILT.** Re-frozen 2026-08-27 21:1x after a 6/6 REPAIR-THEN-FIRE
 refuter pass on v1 (`saltbench 59660c0`; verdicts at `seat
-fleet/REFUTER-saltbench-wave1-gate-2026-08-27.md`). Amended before any model call, which
+fleet/`, passes 1–4). Amended before any model call, which
 the pre-registration's own rule permits and which it forbids afterwards.
 
 ## Amendment record — what v1, v2 and v3 got wrong (each item tagged)
@@ -288,6 +288,23 @@ Three executable checks, because an enumeration without a failing input is decor
   `git log --all -S<f2p-name>` returns the commit whose diff **IS** the dataset's `patch` and
   `test_patch`. **The harness version that fixed this is PINNED in the pre-registration** —
   v2 pinned no harness version at all, so the fix was not in force.
+- **CHECK 2b — THE PER-CONTAINER LEAK ASSERTION, RUN ON THE *AGENT'S* WORKING COPY IN *EVERY*
+  ARM, BEFORE THE AGENT IS GIVEN THE TASK.** ⛔⛔ **v4's protection claim was open and I did not
+  see it: pinning `swebench==4.1.0` puts the history fix into the BUILD RECIPE, and we PULL
+  pre-built images — a build-time fix is not in force for an image someone else built.** And
+  CHECK 2 guarded only the GATE's snapshot, while the leak reaches **the agent**, in all three
+  arms. *The pin was necessary and I mistook it for sufficient.*
+  ```
+  assert:  no .git at ANY depth          (find <wc> -name .git -print -quit  ⇒ empty)
+           no packed refs                (no <wc>/**/packed-refs)
+           no worktree pointer file      (no <wc>/**/.git as a FILE containing "gitdir:")
+           no reachable object store     (git -C <wc> rev-parse --git-dir  ⇒ non-zero,
+                                          with GIT_DIR / GIT_COMMON_DIR unset)
+  ```
+  **All four must fail-closed, per container, per arm, logged with the container digest.** *Four
+  states, because each one alone passes a test written for another: a nested `.git` survives a
+  top-level check, a worktree pointer is a FILE not a directory, and packed refs persist after a
+  remote is removed — which is exactly how 162 tags outlived `git remote remove origin`.*
 - **CHECK 3** — the positive control: a test that builds a `GateInput` carrying
   `test_patch`, `hints_text`, or a `.git` directory and asserts the builder **RAISES**.
 
@@ -306,7 +323,8 @@ confound, reported rather than controlled.**
   round — so an equal token cap systematically buys it cheaper tokens, and an equal dollar
   cap systematically buys it more of them. The enforced invariant is TOKENS; dollars are
   reported.*
-- **(b) Every model call made inside the gate is metered to the arm that made it.**
+- **(b)** Every model call inside the gate is metered to the arm that made it — ⚠️ **MOOT IN
+  WAVE 1: the gate is NON-MODEL-BACKED and makes none.** The rule stands for wave 2.
 - **(c) ⛔ DELETED — v2 claimed "a fixed K = 3 rounds per task in BOTH arms … equal by
   construction". THE CONTROL COULD NOT HAVE K ROUNDS**: ACCEPT ends the episode, its gate is
   hard-wired ACCEPT, and §5(d) invokes that gate each round, so the control terminated at
@@ -437,7 +455,8 @@ arms**, including the sham.
 
 1. Trace every `GateInput` field for correlation with held-out identities.
 2. Diff control/treatment/sham code paths for any difference beyond the verdict.
-3. Is the token cap enforced on the sum, including gate calls?
+3. ✅ **ANSWERED (PRE-REG §9): agent + gate tokens SUMMED over ALL calls in the task; the gate
+   contributes zero in wave 1.**
 4. Can a task score solved without the official harness reporting `resolved`?
 5. Does any statistic go undefined at 0% or 100% refusal? (`accepted-and-failed` has an
    empty denominator at 100% and must print `n/a`, never `0%`.)
