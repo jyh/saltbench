@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(a: Rat) (b: Rat) (c: Rat)\n: problem_spec implementation a b c\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Rat \u2192 Rat \u2192 Rat \u2192 Rat)\n-- inputs\n(a: Rat) (b: Rat) (c: Rat) : Prop :=",
+ "implementation_signature": "def implementation (a: Rat) (b: Rat) (c: Rat): Rat :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 a b c, problem_spec impl a b c) \u2194\n(\u2200 a b c, generated_spec impl a b c) :=",
+ "nl": "function_signature: \"def triangle_area(a: float, b: float, c: float) -> float\"\ndocstring: |\n    Given the lengths of the three sides of a triangle. Return the area of the triangle rounded to 2 decimal points\n    if the three sides form a valid triangle. Otherwise return -1. Three sides make a valid triangle when the sum of\n    any two sides is greater than the third side.\ntest_cases:\n  - input: (3, 4, 5)\n    expected_output: 6\n  - input: (1, 2, 10)\n    expected_output: -1",
+ "problem_id": 71,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Rat \u2192 Rat \u2192 Rat \u2192 Rat)\n-- inputs\n(a: Rat) (b: Rat) (c: Rat) :=\n-- spec\nlet spec (result : Rat) :=\n  let is_valid_triangle :=\n    (a + b > c) \u2227  (a + c > b) \u2227 (b + c > a);\n  let s :=\n    (a + b + c) / 2;\n  if is_valid_triangle then\n    |result^2 - (s * (s-a) * (s-b) * (s-c))| \u2264 ((1: Rat)/10000)\n  else\n    result = -1\n-- program termination\n\u2203 result, implementation a b c = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 3 4 5 = 6.00\n#test implementation 1 2 10 = -1\n#test implementation 4 8 5 = 8.18\n#test implementation 2 2 2 = 1.73\n#test implementation 1 2 3 = -1\n#test implementation 10 5 7 = 16.25\n#test implementation 2 6 3 = -1\n#test implementation 1 1 1 =  0.43\n#test implementation 2 2 10 = -1"
+}

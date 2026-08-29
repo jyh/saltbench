@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Option (List String) \u00d7 Option Nat)\n-- inputs\n(text: String) : Prop :=",
+ "nl": "function_signature: \"def split_words(txt)\"\ndocstring: |\n    Given a string of words, return a list of words split on whitespace, if no whitespaces exists in the text you\n    should split on commas ',' if no commas exists you should return the number of lower-case letters with odd order in the\n    alphabet, ord('a') = 0, ord('b') = 1, ... ord('z') = 25\ntest_cases:\n  - input: \"Hello world!\"\n    expected_output: [\"Hello\", \"world!\"]\n  - input: \"Hello,world!\"\n    expected_output: [\"Hello\", \"world!\"]\n  - input: \"abcdef\"\n    expected_output: 3",
+ "problem_id": 129
+}

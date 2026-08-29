@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: String \u2192 String \u2192 Nat)\n-- inputs\n(string substring: String) : Prop :=",
+ "nl": "function_signature: \"def how_many_times(string: str, substring: str) -> int\"\ndocstring: |\n  Find how many times a given substring can be found in the original string. Count overlaping cases.\ntest_cases:\n  - input:\n      - \"\"\n      - \"a\"\n    expected_output: 0\n  - input:\n      - \"aaa\"\n      - \"a\"\n    expected_output: 3\n  - input:\n      - \"aaaa\"\n      - \"aa\"\n    expected_output: 3",
+ "problem_id": 18
+}

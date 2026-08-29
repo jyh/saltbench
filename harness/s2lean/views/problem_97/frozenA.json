@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Int \u2192 Int \u2192 Int)\n-- inputs\n(a b: Int) : Prop :=",
+ "nl": "function_signature: \"def multiply(a : Int, b : Int) -> Int\"\ndocstring: |\n    Complete the function that takes two integers and returns\n    the product of their unit digits.\n    Assume the input is always valid.\n    -- Note(George): I'm finding it hard to not leak the implementation here, so I opted to make the spec more convoluted.\ntest_cases:\n  - input: 148, 412\n    expected_output: 16\n  - input: 19, 28\n    expected_output: 72\n  - input: 2020, 1851\n    expected_output: 0\n  - input: 14, -15\n    expected_output: 20",
+ "problem_id": 97
+}

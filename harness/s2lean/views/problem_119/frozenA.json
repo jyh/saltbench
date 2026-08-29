@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List String \u2192 String)\n-- inputs\n(l: List String) : Prop :=",
+ "nl": "function_signature: \"def match_parens(l : list[str]) -> str\"\ndocstring: |\n    You are given a list of two strings, both strings consist of open\n    parentheses '(' or close parentheses ')' only.\n    Your job is to check if it is possible to concatenate the two strings in\n    some order, that the resulting string will be good.\n    A string S is considered to be good if and only if all parentheses in S\n    are balanced. For example: the string '(())()' is good, while the string\n    '())' is not.\n    Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.\ntest_cases:\n  - input: ['()(', ')']\n    expected_output: \"Yes\"\n  - input: [')', ')']\n    expected_output: \"No\"",
+ "problem_id": 119
+}

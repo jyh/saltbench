@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(n: Nat)\n: problem_spec implementation n\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: Nat \u2192 Nat)\n-- inputs\n(n: Nat) : Prop :=",
+ "implementation_signature": "def implementation (n: Nat) : Nat :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 implementation,\n(\u2200 n, problem_spec implementation n) \u2194\n(\u2200 n, generated_spec implementation n) :=",
+ "nl": "function_signature: \"def fizz_buzz(n: int)\"\ndocstring: |\n    Return the number of times the digit 7 appears in integers less than n which are divisible by 11 or 13.\ntest_cases:\n  - input: 50\n    output: 0\n  - input: 78\n    output: 2\n  - input: 79\n    output: 3",
+ "problem_id": 36,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Nat \u2192 Nat)\n-- inputs\n(n: Nat) :=\n-- spec\nlet spec (result: Nat) :=\n  (n = 0 \u2192 result = 0) \u2227\n  (0 < n \u2192 result = implementation (n - 1) \u2192\n    ((n - 1) % 11 \u2260  0 \u2227  (n - 1) % 13 \u2260  0) \u2228 (n - 1).repr.count '7' = 0) \u2227\n  (0 < n \u2192 result \u2260 implementation (n - 1) \u2192\n    ((n - 1) % 11 = 0 \u2228  (n - 1) % 13 = 0) \u2227\n    result - implementation (n - 1) = (n - 1).repr.count '7')\n-- program termination\n\u2203 result, implementation n = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 50 = 0\n#test implementation 78 = 2\n#test implementation 79 = 3"
+}

@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 String)\n-- inputs\n(n: Nat) : Prop :=",
+ "nl": "function_signature: \"def solve(n: int) -> str\"\ndocstring: |\n    Given a positive integer N, return the total sum of its digits in binary.\ntest_cases:\n  - input: 1000\n    output: \"1\"\n  - input: 150\n    output: \"110\"\n  - input: 147\n    output: \"1100\"\nNote: The spec formalization takes the result, makes it a list of 0/1s and then reverse it and uses Nat.ofDigits. The reversal is because ofDigits expects little-endian order.",
+ "problem_id": 84
+}

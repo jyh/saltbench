@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 List String)\n-- inputs\n(s: String) : Prop :=",
+ "nl": "function_signature: \"def words_string(s: string) -> List[string]\"\ndocstring: |\n    You will be given a string of words separated by commas or spaces. Your task is\n    to split the string into words and return an array of the words.\ntest_cases:\n  - input: \"Hi, my name is John\"\n    expected_output: [\"Hi\", \"my\", \"name\", \"is\", \"John\"]\n  - input: \"One, two, three, four, five, six\"\n    expected_output: [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"]",
+ "problem_id": 101
+}

@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(s: String) : Prop :=",
+ "nl": "function_signature: \"def encode_shift(s: String) -> String\"\ndocstring: |\n    returns encoded string by shifting every character by 5 in the alphabet.\ntest_cases:\n  - input: abc\n    expected_output: fgh\n  - input: xyz\n    expected_output: cde\n  - input: aaa\n    expected_output: fff",
+ "problem_id": 50
+}

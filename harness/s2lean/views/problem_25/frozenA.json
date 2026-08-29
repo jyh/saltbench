@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: Nat \u2192 List Nat)\n-- inputs\n(n: Nat) : Prop :=",
+ "nl": "function_signature: \"def factorize(n: int) -> List[int]\"\ndocstring: |\n    Return list of prime factors of given integer in the order from smallest to largest.\n    Each of the factors should be listed number of times corresponding to how many times it appeares in factorization.\n    Input number should be equal to the product of all factors\ntest_cases:\n  - input: 8\n    expected_output: [2, 2, 2]\n  - input: 25\n    expected_output: [5, 5]\n  - input: 70\n    expected_output: [2, 5, 7]",
+ "problem_id": 25
+}

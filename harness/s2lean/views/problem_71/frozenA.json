@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Rat \u2192 Rat \u2192 Rat \u2192 Rat)\n-- inputs\n(a: Rat) (b: Rat) (c: Rat) : Prop :=",
+ "nl": "function_signature: \"def triangle_area(a: float, b: float, c: float) -> float\"\ndocstring: |\n    Given the lengths of the three sides of a triangle. Return the area of the triangle rounded to 2 decimal points\n    if the three sides form a valid triangle. Otherwise return -1. Three sides make a valid triangle when the sum of\n    any two sides is greater than the third side.\ntest_cases:\n  - input: (3, 4, 5)\n    expected_output: 6\n  - input: (1, 2, 10)\n    expected_output: -1",
+ "problem_id": 71
+}

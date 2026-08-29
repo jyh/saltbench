@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(text: String) : Prop :=",
+ "nl": "function_signature: \"def fix_spaces(text: str) -> str\"\ndocstring: |\n    Given a string text, replace all spaces in it with underscores,\n    and if a string has more than 2 consecutive spaces,\n    then replace all consecutive spaces with -\ntest_cases:\n  - input: \"Example\"\n    expected_output: \"Example\"\n  - input: \"Example 1\"\n    expected_output: \"Example_1\"\n  - input: \" Example 2\"\n    expected_output: \"_Example_2\"\n  - input: \" Example   3\"\n    expected_output: \"_Example-3\"",
+ "problem_id": 140
+}

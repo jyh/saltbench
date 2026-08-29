@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat)\n-- inputs\n(x: Nat) : Prop :=",
+ "nl": "function_signature: \"def car_race_collision(x: Nat) -> Nat\"\ndocstring: |\n    Imagine a road that's a perfectly straight infinitely long line.\n    n cars are driving left to right;  simultaneously, a different set of n cars\n    are driving right to left.   The two sets of cars start out being very far from\n    each other.  All cars move in the same speed.  Two cars are said to collide\n    when a car that's moving left to right hits a car that's moving right to left.\n    However, the cars are infinitely sturdy and strong; as a result, they continue moving\n    in their trajectory as if they did not collide.\n    This function outputs the number of such collisions.\ntest_cases:\n  - input: 0\n    expected_output: 0\n  - input: 5\n    expected_output: 25",
+ "problem_id": 41
+}

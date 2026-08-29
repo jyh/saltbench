@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(n: Nat)\n: problem_spec implementation n :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat)\n-- inputs\n(nums: Nat) : Prop :=",
+ "implementation_signature": "def implementation (n: Nat) : Nat :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 n, problem_spec impl n) \u2194\n(\u2200 n, generated_spec impl n) :=",
+ "nl": "function_signature: \"def get_max_triples(n: int) -> int\"\ndocstring: |\n    You are given a positive integer n. You have to create an integer array a of length n.\n    For each i (1 \u2264 i \u2264 n), the value of a[i] = i * i - i + 1.\n    Return the number of triples (a[i], a[j], a[k]) of a where i < j < k,\n    and a[i] + a[j] + a[k] is a multiple of 3.\ntest_cases:\n  - input: 5\n    expected_output: 1",
+ "problem_id": 147,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: Nat \u2192 Nat)\n-- inputs\n(n: Nat) :=\n-- spec\nlet spec (result: Nat) :=\n\u2203 (S : Finset (Nat \u00d7 Nat \u00d7 Nat)), S.card = result \u2227\n  \u2200 (triple: Nat \u00d7 Nat \u00d7 Nat),\n    let (i, j, k) := triple;\n    let a_i := i * i - i + 1;\n    let a_j := j * j - j + 1;\n    let a_k := k * k - k + 1;\n    (1 \u2264 i \u2227 i < j \u2227 j < k \u2227 k \u2264 n \u2227\n    (a_i + a_j + a_k) % 3 = 0)\n    \u2194 triple \u2208 S\n-- program termination\n\u2203 result, impl n = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 5 = 1"
+}

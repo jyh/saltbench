@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: List Int \u2192 Int \u2192 List Int)\n-- inputs\n(numbers: List Int)\n(delimeter: Int) : Prop :=",
+ "nl": "function_signature: \"def intersperse(numbers: List[int], delimeter: int) -> List[int]\"\ndocstring: |\n    Insert a number 'delimeter' between every two consecutive elements of input list `numbers'\ntest_cases:\n  - input:\n      - []\n      - 4\n    expected_output: []\n  - input:\n      - [1, 2, 3]\n      - 4\n    expected_output: [1, 4, 2, 4, 3]",
+ "problem_id": 5
+}

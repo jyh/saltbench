@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(a b: Nat)\n: problem_spec implementation a b :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat \u2192 List Nat)\n-- inputs\n(a b : Nat) : Prop :=",
+ "implementation_signature": "def implementation (a b: Nat) : List Nat :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 a b, problem_spec impl a b) \u2194\n(\u2200 a b, generated_spec impl a b) :=",
+ "nl": "function_signature: \"def generate_integers(a : Nat, b : Nat) -> List Nat\"\ndocstring: |\n    Given two positive integers a and b, return the even digits between a\n    and b, in ascending order.\ntest_cases:\n  - input: [2, 8]\n    expected_output: [2, 4, 6, 8]\n  - input: [8, 2]\n    expected_output: [2, 4, 6, 8]\n  - input: [10, 14]\n    expected_output: [10, 12, 14]",
+ "problem_id": 163,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: Nat \u2192 Nat \u2192 List Nat)\n-- inputs\n(a b : Nat) :=\nlet isAscendingBy2 (r : List Nat) :=\n\u2200 i, i < r.length - 1 \u2192 r[i+1]! - r[i]! = 2\n-- spec\nlet spec (result: List Nat) :=\nresult.all (fun n => n % 2 = 0) \u2227 isAscendingBy2 result \u2227\n1 < result.length \u2227\nlet min_a_b := min a b;\nlet max_a_b := max a b;\nif min_a_b = max_a_b \u2227 (min_a_b % 2 = 1)\nthen result = []\nelse ((result[0]! = if 2 \u2223 min_a_b then min_a_b else (min_a_b + 1)) \u2227\n(result[result.length-1]! = if 2 \u2223 max_a_b then max_a_b else max_a_b - 1))\n-- program terminates\n\u2203 result, impl a b = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 2 8 = [2, 4, 6, 8]\n#test implementation 8 2 = [2, 4, 6, 8]\n#test implementation 10 14 = [10, 12, 14]"
+}

@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(strings: List String)\n: problem_spec implementation strings\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: List String \u2192 Option String)\n-- inputs\n(strings: List String) : Prop :=",
+ "implementation_signature": "def implementation (strings: List String) : Option String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 implementation,\n(\u2200 strings, problem_spec implementation strings) \u2194\n(\u2200 strings, generated_spec implementation strings) :=",
+ "nl": "function_signature: \"def longest(strings: List[str]) -> Optional[str]\"\ndocstring: |\n    Out of list of strings, return the longest one. Return the first one in case of multiple\n    strings of the same length. Return None in case the input list is empty.\ntest_cases:\n  - input: []\n    expected_output: None\n  - input: [\"a\", \"b\", \"c\"]\n    expected_output: \"a\"\n  - input: [\"a\", \"bb\", \"ccc\"]\n    expected_output: \"ccc\"",
+ "problem_id": 12,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List String \u2192 Option String)\n-- inputs\n(strings: List String) :=\n-- spec\nlet spec (result: Option String) :=\n  (result = none \u2194 strings.length = 0) \u2228\n  (\u2203 longest, result = some longest \u2227\n  longest \u2208 strings \u2227\n  \u2200 s, s \u2208 strings \u2192 s.length \u2264 longest.length \u2192\n  (\u2203 i, i < strings.length \u2227\n  strings[i]! = longest \u2227 \u2200 j < i, strings[j]!.length < longest.length));\n-- program termination\n\u2203 result, implementation strings = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [\"a\", \"b\", \"c\"] = some \"a\"\n#test implementation [\"a\", \"bb\", \"ccc\"] = some \"ccc\"\n#test implementation [] = none"
+}

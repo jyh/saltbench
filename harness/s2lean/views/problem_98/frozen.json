@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(s: String)\n: problem_spec implementation s\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Int)\n-- inputs\n(s: String) : Prop :=",
+ "implementation_signature": "def implementation (s: String) : Int :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 s, problem_spec impl s) \u2194\n(\u2200 s, generated_spec impl s) :=",
+ "nl": "function_signature: \"def count_upper(s : String) -> Int\"\ndocstring: |\n    Given a string s, count the number of uppercase vowels in even indices.\n    -- Note(George): I also feel like this one is hard to not leak, I tried a trick about keeping implementation for a recursive call in the spec. Let me know if this doesn't work..\ntest_cases:\n  - input: \"aBCdEf\"\n    expected_output: 1\n  - input: \"abcdefg\"\n    expected_output: 0\n  - input: \"dBBE\"\n    expected_output: 0",
+ "problem_id": 98,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: String \u2192 Int)\n-- inputs\n(s: String) :=\n-- spec\nlet uppercase_vowels := ['A', 'E', 'I', 'O', 'U']\nlet spec (result : Int) :=\n  let chars := s.toList\n  (result = 0 \u2194 \u2200 i, i < chars.length \u2192 chars[i]! \u2209 uppercase_vowels) \u2227\n  (1 < chars.length \u2192\n    (result - 1 = implementation (chars.drop 2).toString \u2194 chars[0]! \u2208 uppercase_vowels) \u2228\n    (result = implementation (chars.drop 2).toString \u2194 chars[0]! \u2209 uppercase_vowels)\n  )\n-- program termination\n\u2203 result,\n  implementation s = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"aBCdEf\" = 1\n#test implementation \"abcdefg\" = 0\n#test implementation \"dBBE\" = 0"
+}

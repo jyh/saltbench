@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(s: String)\n: problem_spec implementation s\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(s: String) : Prop :=",
+ "implementation_signature": "def implementation (s: String) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 x, problem_spec impl x) \u2194\n(\u2200 x, generated_spec impl x) :=",
+ "nl": "function_signature: \"def encode_shift(s: String) -> String\"\ndocstring: |\n    returns encoded string by shifting every character by 5 in the alphabet.\ntest_cases:\n  - input: abc\n    expected_output: fgh\n  - input: xyz\n    expected_output: cde\n  - input: aaa\n    expected_output: fff",
+ "problem_id": 50,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: String \u2192 String)\n-- inputs\n(s : String) :=\nlet isAlphabetic (string: String) : Bool :=\n\u2200 i, i < string.length \u2192\nlet c := string.get! \u27e8i\u27e9;\n('a'.toNat \u2264 c.toNat \u2227 c.toNat \u2264 'z'.toNat) \u2228\n('A'.toNat \u2264 c.toNat \u2227 c.toNat \u2264 'Z'.toNat)\n-- spec\nlet spec (result: String) :=\nisAlphabetic result \u2227 isAlphabetic s \u2227\nresult.length = s.length \u2227\n\u2203 k : Nat, k < 26 \u2227\n\u2200 i : Nat, i < s.length \u2192\n((s.get! \u27e8i\u27e9).toNat + k) % 26 = (result.get! \u27e8i\u27e9).toNat\n\u2192 k = 5\n-- program termination\n\u2203 result, implementation s = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"abc\" = \"fgh\"\n#test implementation \"xyz\" = \"cde\"\n#test implementation \"aaa\" = \"fff\""
+}

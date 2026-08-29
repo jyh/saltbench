@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(x shift: Nat)\n: problem_spec implementation x shift\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat \u2192 String)\n-- inputs\n(x y: Nat) : Prop :=",
+ "implementation_signature": "def implementation (x shift: Nat) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 x y, problem_spec impl x y) \u2194\n(\u2200 x y, generated_spec impl x y) :=",
+ "nl": "function_signature: \"def circular_shift(x: Int, shift: Int) -> String\"\ndocstring: |\n    Circular shift the digits of the integer x, shift the digits right by shift\n    and return the result as a string.\n    If shift > number of digits, return digits reversed.\ntest_cases:\n  - input: [12, 1]\n    expected_output: 21\n  - input: [12, 2]\n    expected_output: 12",
+ "problem_id": 65,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Nat \u2192 Nat \u2192 String)\n-- inputs\n(x shift: Nat) :=\nlet isReverse (s: String) : Bool :=\n  let n := s.length;\n  \u2200 i, i < n / 2 \u2192 s.get! \u27e8i\u27e9 = s.get! \u27e8n - 1 - i\u27e9;\n-- spec\nlet spec (result: String) :=\nlet x_str := Nat.repr x;\nresult.length = x_str.length \u2227\n(x_str.length < shift \u2192 isReverse x_str) \u2227\n(shift \u2264 x_str.length \u2192\n  x_str.take shift = result.drop (x_str.length - shift) \u2227\n  x_str.drop shift = result.take (x_str.length - shift));\n-- program termination\n\u2203 result, implementation x shift = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation (12 : Int) (1 : Int) = \"21\"\n#test implementation (12 : Int) (2 : Int) = \"12\""
+}

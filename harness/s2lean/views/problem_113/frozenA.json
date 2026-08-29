@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List String \u2192 List String)\n-- inputs\n(lst: List String) : Prop :=",
+ "nl": "function_signature: \"def odd_count(lst : list[str]) -> list[str]\"\ndocstring: |\n    Given a list of strings, where each string consists of only digits, return a list.\n    Each element i of the output should be \"the number of odd elements in the\n    string i of the input.\" where all the i's should be replaced by the number\n    of odd digits in the i'th string of the input.\n    Note(George): Found it hard to not leak the implementation, so I opted for a recursive statement.\ntest_cases:\n  - input: ['1234567']\n    expected_output: [\"the number of odd elements 4n the str4ng 4 of the 4nput.\"]\n  - input: ['3',\"11111111\"]\n    expected_output: [\"the number of odd elements 1n the str1ng 1 of the 1nput.\",\n     \"the number of odd elements 8n the str8ng 8 of the 8nput.\"]",
+ "problem_id": 113
+}

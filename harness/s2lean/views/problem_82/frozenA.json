@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(s: String) : Prop :=",
+ "nl": "function_signature: \"def prime_length(s: str) -> bool\"\ndocstring: |\n    Write a function that takes a string and returns True if the string\n    length is a prime number or False otherwise\ntest_cases:\n  - input: \"Hello\"\n    output: True\n  - input: \"abcdcba\"\n    output: True\n  - input: \"kittens\"\n    output: True\n  - input: \"orange\"\n    output: False",
+ "problem_id": 82
+}

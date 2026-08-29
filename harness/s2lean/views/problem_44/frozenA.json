@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat \u2192 String)\n-- inputs\n(x base: Nat) : Prop :=",
+ "nl": "function_signature: \"def change_base(x: Nat, base: Nat) -> String\"\ndocstring: |\n    Change numerical base of input number x to base.\n    return string representation after the conversion.\n    base numbers are less than 10.\ntest_cases:\n  - input: (8, 3)\n    expected_output: '22'\n  - input: (8, 2)\n    expected_output: '1000'\n  - input: (7, 2)\n    expected_output: '111'",
+ "problem_id": 44
+}

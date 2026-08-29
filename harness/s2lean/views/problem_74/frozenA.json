@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List String \u2192 List String \u2192 List String)\n-- inputs\n(lst1: List String) (lst2: List String) : Prop :=",
+ "nl": "function_signature: \"def total_match(lst1: List[str], lst2: List[str]) -> List[str]\"\ndocstring: |\n  Write a function that accepts two lists of strings and returns the list that has\n  total number of chars in the all strings of the list less than the other list.\n  If the two lists have the same number of chars, return the first list.\ntest_cases:\n  - input: ([], [])\n    expected_output: []\n  - input: (['hi', 'admin'], ['hI', 'Hi'])\n    expected_output: ['hI', 'Hi']\n  - input: (['hi', 'admin'], ['hi', 'hi', 'admin', 'project'])\n    expected_output: ['hi', 'admin']\n  - input: (['hi', 'admin'], ['hI', 'hi', 'hi'])\n    expected_output: ['hI', 'hi', 'hi']\n  - input: (['4'], ['1', '2', '3', '4', '5'])\n    expected_output: ['4']",
+ "problem_id": 74
+}

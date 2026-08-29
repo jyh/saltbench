@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 String)\n-- inputs\n(decimal: Nat) : Prop :=",
+ "nl": "function_signature: \"def decimal_to_binary(decimal: nat) -> string\"\ndocstring: |\n    You will be given a number in decimal form and your task is to convert it to\n    binary format. The function should return a string, with each character representing a binary\n    number. Each character in the string will be '0' or '1'.\n\n    There will be an extra couple of characters 'db' at the beginning and at the end of the string.\n    The extra characters are there to help with the format.\ntest_cases:\n  - input: 15\n    expected_output: \"db1111db\"\n  - input: 32\n    expected_output: \"db100000db\"",
+ "problem_id": 79
+}

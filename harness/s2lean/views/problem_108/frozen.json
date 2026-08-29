@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(arr: List Int)\n: problem_spec implementation arr\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 Int)\n-- inputs\n(arr: List Int) : Prop :=",
+ "implementation_signature": "def implementation (arr: List Int) : Int :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 arr, problem_spec impl arr) \u2194\n(\u2200 arr, generated_spec impl arr) :=",
+ "nl": "function_signature: \"def count_nums(arr: List[int]) -> int\"\ndocstring: |\n    Write a function count_nums which takes an array of integers and returns\n    the number of elements which has a sum of digits > 0.\n    If a number is negative, then its first signed digit will be negative:\n    e.g. -123 has signed digits -1, 2, and 3.\ntest_cases:\n  - input: []\n    expected_output: 0\n  - input: [-1, 11, -11]\n    expected_output: 1\n  - input: [1, 1, 2]\n    expected_output: 3",
+ "problem_id": 108,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List Int \u2192 Int)\n-- inputs\n(arr: List Int) :=\n\n-- spec\nlet spec (result: Int) :=\n  let dig_sum (x: Int): Int :=\n    let digs := Nat.digits 10 x.natAbs;\n    if x >= 0 then\n      (List.map (fun t => (t: Int)) digs).sum\n    else\n      (List.map (fun t => (t: Int)) (digs.drop 1)).sum - (digs[0]! : Int);\n  (arr = [] \u2192 result = 0) \u2227\n  (arr \u2260 [] \u2192 0 < (dig_sum arr[0]!) \u2192 result = 1 + implementation (arr.drop 1)) \u2227\n  (arr \u2260 [] \u2192 (dig_sum arr[0]!) \u2264 0 \u2192 result = implementation (arr.drop 1));\n-- program termination\n\u2203 result, implementation arr = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [] = 0\n#test implementation [-1, -2, 0] = 0\n#test implementation [1, 1, 2, -2, 3, 4, 5] = 6\n#test implementation [1, 6, 9, -6, 0, 1, 5] = 5\n#test implementation [1, 100, 98, -7, 1, -1] = 4\n#test implementation [12, 23, 34, -45, -56, 0] = 5\n#test implementation [-0, 1^0] = 1\n#test implementation [1] = 1"
+}

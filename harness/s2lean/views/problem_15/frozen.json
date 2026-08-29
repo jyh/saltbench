@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(n: Nat)\n: problem_spec implementation n\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: Nat \u2192 String)\n-- inputs\n(n: Nat) : Prop :=",
+ "implementation_signature": "def implementation (n: Nat) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 implementation,\n(\u2200 n, problem_spec implementation n) \u2194\n(\u2200 n, generated_spec implementation n) :=",
+ "nl": "function_signature: \"def string_sequence(n: int) -> str\"\ndocstring: |\n    Return a string containing space-delimited numbers starting from 0 upto n inclusive.\ntest_cases:\n  - input: 0\n    expected_output: \"0\"\n  - input: 5\n    expected_output: \"0 1 2 3 4 5\"",
+ "problem_id": 15,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Nat \u2192 String)\n-- inputs\n(n: Nat) :=\n-- spec\nlet spec (result: String) :=\nlet result_nums := result.splitOn \" \";\nresult_nums.length = n + 1 \u2227\n\u2200 i, i < n + 1 \u2192 result_nums[i]! = i.repr;\n-- program termination\n\u2203 result, implementation n = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 0 = \"0\"\n#test implementation 5 = \"0 1 2 3 4 5\""
+}

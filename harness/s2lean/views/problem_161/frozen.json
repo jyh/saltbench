@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(s: String)\n: problem_spec implementation s :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(s : String) : Prop :=",
+ "implementation_signature": "def implementation (s: String) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 s, problem_spec impl s) \u2194\n(\u2200 s, generated_spec impl s) :=",
+ "nl": "function_signature: \"def solve(string : String) -> String\"\ndocstring: |\n    You are given a string s.\n    if s[i] is a letter, reverse its case from lower to upper or vise versa,\n    otherwise keep it as it is.\n    If the string contains no letters, reverse the string.\n    The function should return the resulted string.\ntest_cases:\n  - input: \"1234\"\n    expected_output: \"4321\"\n  - input: \"ab\"\n    expected_output: \"AB\"\n  - input: \"#a@C\"\n    expected_output: \"#A@c\"",
+ "problem_id": 161,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(string : String) :=\n-- spec\nlet spec (result: String) :=\nresult.length = string.length \u2227\nlet hasNoAlphabet := string.all (\u03bb c => not (c.isAlpha));\n(hasNoAlphabet \u2192\n  result.toList = string.toList.reverse) \u2227\n(hasNoAlphabet = false \u2192\n  \u2200 i, i < string.length \u2192\n  let c := string.get! \u27e8i\u27e9;\n  (c.isAlpha \u2192 ((c.isLower \u2192 c.toUpper = result.get! \u27e8i\u27e9) \u2228\n              (c.isUpper \u2192 c.toLower = result.get! \u27e8i\u27e9))) \u2227\n  (\u00ac c.isAlpha \u2192 c = result.get! \u27e8i\u27e9))\n-- program terminates\n\u2203 result, impl string = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"1234\" = \"4321\"\n#test implementation \"ab\" = \"AB\"\n#test implementation \"#a@C\" = \"#A@c\""
+}

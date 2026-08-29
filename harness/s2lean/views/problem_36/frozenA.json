@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: Nat \u2192 Nat)\n-- inputs\n(n: Nat) : Prop :=",
+ "nl": "function_signature: \"def fizz_buzz(n: int)\"\ndocstring: |\n    Return the number of times the digit 7 appears in integers less than n which are divisible by 11 or 13.\ntest_cases:\n  - input: 50\n    output: 0\n  - input: 78\n    output: 2\n  - input: 79\n    output: 3",
+ "problem_id": 36
+}

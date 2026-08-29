@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Nat \u2192 List Nat)\n-- inputs\n(x: List Nat) : Prop :=",
+ "nl": "function_signature: \"def unique_digits(x: List[nat]) -> List[nat]\"\ndocstring: |\n    Given a list of positive integers x. return a sorted list of all\n    elements that hasn't any even digit.\n\n    Note: Returned list should be sorted in increasing order.\ntest_cases:\n  - input: [15, 33, 1422, 1]\n    expected_output: [1, 15, 33]\n  - input: [152, 323, 1422, 10]\n    expected_output: []",
+ "problem_id": 104
+}

@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(n x y: Int)\n: problem_spec implementation n x y :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Int \u2192 Int \u2192 Int \u2192 Int)\n-- inputs\n(n x y: Int) : Prop :=",
+ "implementation_signature": "def implementation (n x y: Int) : Int :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 n x y, problem_spec impl n x y) \u2194\n(\u2200 n x y, generated_spec impl n x y) :=",
+ "nl": "function_signature: \"def x_or_y(int n, int x, int y) -> int\"\ndocstring: |\n    A simple program which should return the value of x if n is\n    a prime number and should return the value of y otherwise.\ntest_cases:\n  - input: [7, 34, 12]\n    expected_output: 34\n  - input: [15, 8, 5]\n    expected_output: 5",
+ "problem_id": 150,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: Int \u2192 Int \u2192 Int \u2192 Int)\n-- inputs\n(n x y: Int) :=\n-- spec\nlet spec (result: Int) :=\n(result = x \u2194 Nat.Prime n.toNat) \u2227\n(result = y \u2194 (\u00ac Nat.Prime n.toNat \u2228 n \u2264 1))\n-- program terminates\n\u2203 result, impl n x y = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 7 34 12 = 34\n#test implementation 15 8 5 = 5"
+}

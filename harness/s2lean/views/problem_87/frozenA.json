@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List (List Int) \u2192 Int \u2192 List (Nat \u00d7 Nat))\n-- inputs\n(lst: List (List Int))\n(x: Int) : Prop :=",
+ "nl": "function_signature: \"def get_coords_sorted(lst : list(list(int)), x : int) -> list((int, int))\"\ndocstring: |\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\ntest_cases:\n  - input: [[[1,2,3,4,5,6], [1,2,3,4,1,6], [1,2,3,4,5,1]], 1]\n    output: [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n  - input: [[], 1]\n    output: []\n  - input: [[[], [1], [1, 2, 3]], 3]\n    output: [(2, 2)]",
+ "problem_id": 87
+}

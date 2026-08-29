@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: String \u2192 String \u2192 String)\n-- inputs\n(a b: String) : Prop :=",
+ "nl": "function_signature: \"def string_xor(a: str, b: str) -> str\"\ndocstring: |\n    Input are two strings a and b consisting only of 1s and 0s.\n    Perform binary XOR on these inputs and return result also as a string.\ntest_cases:\n  - input:\n      - \"010\"\n      - \"110\"\n    expected_output: \"100\"",
+ "problem_id": 11
+}

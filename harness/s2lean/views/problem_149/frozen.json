@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(lst: List String)\n: problem_spec implementation lst :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List String \u2192 List String)\n-- inputs\n(lst: List String) : Prop :=",
+ "implementation_signature": "def implementation (lst: List String) : List String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 lst, problem_spec impl lst) \u2194\n(\u2200 lst, generated_spec impl lst) :=",
+ "nl": "function_signature: \"def sorted_list_sum(lst: List[str]) -> List[str]\"\ndocstring: |\n    Write a function that accepts a list of strings as a parameter,\n    deletes the strings that have odd lengths from it,\n    and returns the resulted list with a sorted order,\n    The list is always a list of strings and never an array of numbers,\n    and it may contain duplicates.\n    The order of the list should be ascending by length of each word, and you\n    should return the list sorted by that rule.\n    If two words have the same length, sort the list alphabetically.\n    The function should return a list of strings in sorted order.\n    You may assume that all words will have the same length.\ntest_cases:\n  - input: [\"aa\", \"a\", \"aaa\"]\n    output: [\"aa\"]\n  - input: [\"ab\", \"a\", \"aaa\", \"cd\"]\n    output: [\"ab\", \"cd\"]",
+ "problem_id": 149,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: List String \u2192 List String)\n-- inputs\n(lst: List String) :=\n-- spec\nlet spec (result: List String) :=\nmatch result with\n| [] => \u2200 str \u2208 lst, Odd str.length\n| head::tail =>\n  Even head.length \u2227\n  (\u2200 str \u2208 lst,\n    Odd str.length \u2228\n    str.length > head.length \u2228\n    str.length = head.length \u2227 str \u2265 head)\n  \u2227 impl (lst.erase head) = tail\n-- program termination\n\u2203 result, impl lst = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [\"aa\", \"a\", \"aaa\"] = [\"aa\"]\n#test implementation [\"ab\", \"a\", \"aaa\", \"cd\"] = [\"ab\", \"cd\"]"
+}

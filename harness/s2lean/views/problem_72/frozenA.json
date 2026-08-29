@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 Int \u2192 Bool)\n-- inputs\n(q: List Int) (w: Int) : Prop :=",
+ "nl": "function_signature: \"def will_it_fly(q: List[int], w: int) -> bool\"\ndocstring: |\n    Write a function that returns True if the object q will fly, and False otherwise.\n    The object q will fly if it's balanced (it is a palindromic list) and the sum of its elements is\n    less than or equal the maximum possible weight w.\ntest_cases:\n  - input: ([1, 2], 5)\n    expected_output: False\n  - input: ([3, 2, 3], 1)\n    expected_output: False\n  - input: ([3, 2, 3], 9)\n    expected_output: True\n  - input: ([3], 5)\n    expected_output: True",
+ "problem_id": 72
+}

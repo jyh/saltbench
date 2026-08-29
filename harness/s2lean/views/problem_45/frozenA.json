@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Rat \u2192 Rat \u2192 Rat)\n-- inputs\n(a h: Rat) : Prop :=",
+ "nl": "function_signature: \"def triangle_area(a: float, h: float) -> float\"\ndocstring: |\n    Given length of a side and high return area for a triangle.\ntest_cases:\n  - input: (5, 3)\n    expected_output: 7.5\n  - input: (8, 2)\n    expected_output: 8.0",
+ "problem_id": 45
+}

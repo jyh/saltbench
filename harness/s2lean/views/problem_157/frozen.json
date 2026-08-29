@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(a b c: Nat)\n: problem_spec implementation a b c :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat \u2192 Nat \u2192 Bool)\n-- inputs\n(a b c: Nat) : Prop :=",
+ "implementation_signature": "def implementation (a b c: Nat) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 a b c, problem_spec impl a b c) \u2194\n(\u2200 a b c, generated_spec impl a b c) :=",
+ "nl": "function_signature: \"def right_angle_triangle(a: Nat, b: Nat, c: Nat) -> Bool\"\ndocstring: |\n    Given the lengths of the three sides of a triangle. Return True if the three\n    sides form a right-angled triangle, False otherwise.\n    A right-angled triangle is a triangle in which one angle is right angle or\n    90 degree.\ntest_cases:\n  - input: [3, 4, 5]\n    expected_output: True\n  - input: [1, 2, 3]\n    expected_output: False",
+ "problem_id": 157,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: Nat \u2192 Nat \u2192 Nat \u2192 Bool)\n-- inputs\n(a b c: Nat) :=\n-- spec\nlet spec (result: Bool) :=\nresult \u2194\n  0 < a \u2227 0 < b \u2227 0 < c \u2227\n  ((a * a + b * b = c * c) \u2228\n  (a * a + c * c = b * b) \u2228\n  (b * b + c * c = a * a))\n-- program terminates\n\u2203 result, impl a b c = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation ([1, 2, 2, -4]: List Int) = (-9: Int)\n#test implementation ([0, 1]: List Int) = (0: Int)\n#test implementation ([]: List Int) = none"
+}

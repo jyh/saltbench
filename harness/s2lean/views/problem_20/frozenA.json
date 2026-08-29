@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: List Rat \u2192 (Rat \u00d7 Rat))\n-- inputs\n(numbers: List Rat) : Prop :=",
+ "nl": "function_signature: \"def find_closest_elements(numbers: List[float]) -> Tuple[float, float]\"\ndocstring: |\n    From a supplied list of numbers (of length at least two) select and return two that are the closest to each\n    other and return them in order (smaller number, larger number).\ntest_cases:\n  - input: [1.0, 2.0, 3.0, 4.0, 5.0, 2.2]\n    expected_output: (2.0, 2.2)\n  - input: [1.0, 2.0, 3.0, 4.0, 5.0, 2.0]\n    expected_output: (2.0, 2.0)",
+ "problem_id": 20
+}

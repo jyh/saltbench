@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: List Int \u2192 List Int)\n-- inputs\n(l: List Int) : Prop :=",
+ "nl": "function_signature: \"def sort_even(l: list)\"\ndocstring: |\n    This function takes a list l and returns a list l' such that\n    l' is identical to l in the odd indicies, while its values at the even indicies are equal\n    to the values of the even indicies of l, but sorted.\ntest_cases:\n  - input: [1, 2, 3]\n    output: [1, 2, 3]\n  - input: [5, 6, 3, 4]\n    output: [3, 6, 5, 4]",
+ "problem_id": 37
+}

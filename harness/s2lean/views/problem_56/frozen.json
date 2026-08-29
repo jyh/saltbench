@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(brackets: String)\n: problem_spec implementation brackets :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(brackets : String) : Prop :=",
+ "implementation_signature": "def implementation (brackets: String) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 brackets, problem_spec impl brackets) \u2194\n(\u2200 brackets, generated_spec impl brackets) :=",
+ "nl": "function_signature: \"def correct_bracketing(brackets: str) -> Bool\"\ndocstring: |\n    brackets is a string of \"<\" and \">\".\n    return True if every opening bracket has a corresponding closing bracket, i.e., (each open bracket is properly closed)\ntest_cases:\n  - input: \"<\"\n    expected_output: False\n  - input: \"<>\"\n    expected_output: True\n  - input: \"<<><>>\"\n    expected_output: True\n  - input: \"><<>\"\n    expected_output: False",
+ "problem_id": 56,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(brackets: String) :=\n-- spec\nlet spec (result: Bool) :=\n  brackets.data.all (fun c => c = '<' \u2228 c = '>') \u2192\n  (result \u2194 balanced_paren_non_computable brackets '<' '>')\n-- program terminates\n\u2203 result, impl brackets = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"<\" = false\n#test implementation \"<>\" = true\n#test implementation \"<<><>>\" = true\n#test implementation \"><<>\" = false"
+}

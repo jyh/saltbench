@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(num: Nat)\n: problem_spec implementation num :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 String)\n-- inputs\n(num: Nat) : Prop :=",
+ "implementation_signature": "def implementation (num: Nat) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 num, problem_spec impl num) \u2194\n(\u2200 num, generated_spec impl num) :=",
+ "nl": "function_signature: \"def int_to_mini_roman(num: Nat) -> String\"\ndocstring: |\n    Given a positive integer, obtain its roman numeral equivalent as a string,\n    and return it in lowercase.\n    Restrictions: 1 <= num <= 1000\ntest_cases:\n  - input: 19\n    expected_output: xix\n  - input: 152\n    expected_output: clii\n  - input: 426\n    expected_output: cdxxvi",
+ "problem_id": 156,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: Nat \u2192 String)\n-- inputs\n(num: Nat) :=\n-- spec\nlet spec (result: String) :=\n1 \u2264 num \u2227 num \u2264 1000 \u2227 (result.data.all (fun c => c.isLower)) \u2192\nisValidRoman result \u2227 romanToDecimal result = num\n-- program terminates\n\u2203 result, impl num = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 19 = \"xix\"\n#test implementation 152 = \"clii\"\n#test implementation 426 = \"cdxxvi\""
+}

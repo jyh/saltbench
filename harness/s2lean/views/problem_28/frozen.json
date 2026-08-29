@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(strings: List String)\n: problem_spec implementation strings\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: List String \u2192 String)\n-- inputs\n(strings: List String) : Prop :=",
+ "implementation_signature": "def implementation (strings: List String) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 implementation,\n(\u2200 strings, problem_spec implementation strings) \u2194\n(\u2200 strings, generated_spec implementation strings) :=",
+ "nl": "function_signature: \"def concatenate(strings: List[str]) -> str\"\ndocstring: |\n    Concatenate list of strings into a single string\ntest_cases:\n  - input: []\n    expected_output: \"\"\n  - input: [\"a\", \"b\", \"c\"]\n    expected_output: \"abc\"",
+ "problem_id": 28,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List String \u2192 String)\n-- inputs\n(strings: List String) :=\n-- spec\nlet spec (result: String) :=\nlet result_chars := result.toList;\nresult_chars.length = (strings.map (\u03bb s => s.length)).sum \u2227\n\u2200 i, i < strings.length \u2192\n(let string_in_result := strings[i]!;\nlet end_idx := ((strings.take (i + 1)).map (\u03bb s => s.length)).sum;\nlet start_idx := end_idx - string_in_result.length;\nlet corresponding_string_in_result := ((result_chars.take end_idx).drop start_idx).asString;\ncorresponding_string_in_result = string_in_result);\n-- program termination\n\u2203 result, implementation strings = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [] = \"\"\n#test implementation [\"a\", \"b\", \"c\"] = \"abc\""
+}

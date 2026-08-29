@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(n: Nat)\n: problem_spec implementation n\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat)\n-- inputs\n(x : Nat) : Prop :=",
+ "implementation_signature": "def implementation (n: Nat) : Nat :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 n, problem_spec impl n) \u2194\n(\u2200 n, generated_spec impl n) :=",
+ "nl": "function_signature: \"def fib(n: int) -> int\"\ndocstring: |\n    Return n-th Fibonacci number.\ntest_cases:\n  - input: 10\n    expected_output: 55\n  - input: 1\n    expected_output: 1\n  - input: 8\n    expected_output: 21",
+ "problem_id": 55,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Nat \u2192 Nat)\n-- inputs\n(n: Nat) :=\n-- spec\nlet spec (result: Nat) :=\nfibonacci_non_computable n result\n-- program termination\n\u2203 result, implementation n = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 10 = 55\n#test implementation 1 = 1\n#test implementation 8 = 21"
+}

@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Nat \u2192 Nat)\n-- inputs\n(x: String) (y: Nat) : Prop :=",
+ "nl": "function_signature: \"def fruit_distribution(string: str, Nat n) -> Nat\"\ndocstring: |\n    In this task, you will be given a string that represents a number of apples and oranges\n    that are distributed in a basket of fruit this basket contains\n    apples, oranges, and mango fruits. Given the string that represents the total number of\n    the oranges and apples and an integer that represent the total number of the fruits\n    in the basket return the number of the mango fruits in the basket.\ntest_cases:\n  - input: [\"5 apples and 6 oranges\", 19]\n    expected_output: 8\n  - input: [\"0 apples and 1 oranges\", 3]\n    expected_output: 2\n  - input: [\"2 apples and 3 oranges\", 100]\n    expected_output: 95\n  - input: [\"100 apples and 1 oranges\", 120]\n    expected_output: 19",
+ "problem_id": 67
+}

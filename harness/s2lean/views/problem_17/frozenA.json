@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: String \u2192 List Nat)\n-- inputs\n(string: String) : Prop :=",
+ "nl": "function_signature: \"def parse_music(music_string: str) -> List[int]\"\ndocstring: |\n    Input to this function is a string representing musical notes in a special ASCII format.\n    Your task is to parse this string and return list of integers corresponding to how many beats does each\n    not last.\n\n    Here is a legend:\n    'o' - whole note, lasts four beats\n    'o|' - half note, lasts two beats\n    '.|' - quater note, lasts one beat\ntest_cases:\n  - input: \"o o| .| o| o| .| .| .| .| o o\"\n    expected_output: [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]",
+ "problem_id": 17
+}

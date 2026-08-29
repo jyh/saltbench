@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(s c: String)\n: problem_spec implementation s c\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String \u2192 (String \u00d7 Bool))\n-- inputs\n(s: String)\n(c: String) : Prop :=",
+ "implementation_signature": "def implementation (s: String) (c: String) : String \u00d7 Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 s c, problem_spec impl s c) \u2194\n(\u2200 s c, generated_spec impl s c) :=",
+ "nl": "function_signature: \"def reverse_delete(s : str, c : str) -> (str, bool)\"\ndocstring: |\n    We are given two strings s and c, you have to deleted all the characters in s that are equal to any character in c\n    then check if the result string is palindrome.\n    A string is called palindrome if it reads the same backward as forward.\n    You should return a tuple containing the result string and True/False for the check.\n    -- Note: We assume the deletions preserve the order of the remaining characters.\ntest_cases:\n  - input: [\"abcde\", \"ae\"]\n    expected_output: (\"bcd\", False)\n  - input: [\"abcdef\", \"b\"]\n    expected_output: (\"acdef\", False)\n  - input: [\"abcdedcba\", \"ab\"]\n    expected_output: ('cdedc', True)",
+ "problem_id": 112,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: String \u2192 String \u2192 (String \u00d7 Bool))\n-- inputs\n(s: String)\n(c: String) :=\n-- spec\nlet spec (result : String \u00d7 Bool) :=\n  let (result_str, result_bool) := result\n  result_bool = (List.Palindrome result_str.data) \u2227\n  (c.data.length = 0 \u2192 result_str = s) \u2227\n  (c.data.length > 0 \u2192\n    result_str =\n    (implementation\n      (String.join ((s.data.filter (fun x => x \u2260 c.data.head!)).map (fun c => String.mk [c])))\n      (c.drop 1).toString).fst)\n\n-- program termination\n\u2203 result,\n  implementation s c = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"abcde\" \"ae\" = (\"bcd\", False)\n#test implementation \"abcdef\" \"b\" = (\"acdef\", False)\n#test implementation \"abcdedcba\" \"ab\" = (\"cdedc\", True)"
+}

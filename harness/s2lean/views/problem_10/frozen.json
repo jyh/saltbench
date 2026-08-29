@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(s: String)\n: problem_spec implementation s\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: String \u2192 String)\n-- inputs\n(string: String) : Prop :=",
+ "implementation_signature": "def implementation (string: String) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 implementation,\n(\u2200 string, problem_spec implementation string) \u2194\n(\u2200 string, generated_spec implementation string) :=",
+ "nl": "function_signature: \"def make_palindrome(string: str) -> str\"\ndocstring: |\n    Find the shortest palindrome that begins with a supplied string.\n    Algorithm idea is simple:\n    - Find the longest postfix of supplied string that is a palindrome.\n    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\ntest_cases:\n  - input: \"\"\n    expected_output: \"\"\n  - input: \"cat\"\n    expected_output: \"catac\"\n  - input: \"cata\"\n    expected_output: \"catac\"",
+ "problem_id": 10,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: String \u2192 String)\n-- inputs\n(string: String) :=\n-- spec\nlet spec (result: String) :=\nis_palindrome result \u2227\nresult.length \u2265 string.length \u2227\nstring.isPrefixOf result \u2227\n-- comprehensive check that the result is the shortest palindrome\n(\u2200 (possible_palindrome: String),\nstring.isPrefixOf possible_palindrome \u2192\nis_palindrome possible_palindrome \u2192\nresult.length \u2264 possible_palindrome.length);\n-- program termination\n\u2203 result, implementation string = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"\" = \"\"\n#test implementation \"cat\" = \"catac\"\n#test implementation \"cata\" = \"catac\""
+}

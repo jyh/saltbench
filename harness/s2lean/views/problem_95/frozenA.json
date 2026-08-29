@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Std.HashMap String String \u2192 Bool)\n-- inputs\n(D: Std.HashMap String String) : Prop :=",
+ "nl": "function_signature: \"def check_dict_case(s : dict[str, str]) -> bool\"\ndocstring: |\n    Given a dictionary, return True if all keys are strings in lower\n    case or all keys are strings in upper case, else return False.\n    The function should return False is the given dictionary is empty.\n    Note(George): Modified the problem to use strings only for both keys and values.\ntest_cases:\n  - input: {\"a\":\"apple\", \"b\":\"banana\"}\n    expected_output: True\n  - input: {\"a\":\"apple\", \"A\":\"banana\", \"B\":\"banana\"}\n    expected_output: False\n  - input: {\"a\":\"apple\", \"b\":\"banana\", \"a\":\"apple\"}\n    expected_output: False\n  - input: {\"Name\":\"John\", \"Age\":\"36\", \"City\":\"Houston\"}\n    expected_output: False\n  - input: {\"STATE\":\"NC\", \"ZIP\":\"12345\" }\n    expected_output: True",
+ "problem_id": 95
+}

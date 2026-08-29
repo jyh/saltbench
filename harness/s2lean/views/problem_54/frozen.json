@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(s0 s1: String)\n: problem_spec implementation s0 s1  :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String \u2192 Bool)\n-- inputs\n(s0 s1: String) : Prop :=",
+ "implementation_signature": "def implementation (s0 s1: String) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 s0 s1, problem_spec impl s0 s1) \u2194\n(\u2200 s0 s1, generated_spec impl s0 s1) :=",
+ "nl": "function_signature: \"def same_chars(s0: string, s1: string) -> Bool\"\ndocstring: Check if two words have the same characters.\ntest_cases:\n  - input: ['eabcdzzzz', 'dddzzzzzzzddeddabc']\n    expected_output: True\n  - input: ['eabcd', 'dddddddabc']\n    expected_output: False",
+ "problem_id": 54,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: String \u2192 String \u2192 Bool)\n-- inputs\n(s0 s1: String) :=\n-- spec\nlet spec (res: Bool) :=\n  res \u2194 (\u2200 c : Char, c \u2208 s0.toList \u2194 c \u2208 s1.toList)\n-- program terminates\n\u2203 result, impl s0 s1 = result \u2227\n-- return value satisfies spec\nspec result\n-- if result then spec else \u00acspec",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 'eabcdzzzz' 'dddzzzzzzzddeddabc' = true\n#test implementation 'abcd' 'dddddddabc' = true\n#test implementation 'dddddddabc' 'abcd' = true\n#test implementation 'eabcd' 'dddddddabc' = false\n#test implementation 'abcd' 'dddddddabce' = false\n#test implementation 'eabcdzzzz' 'dddzzzzzzzddddabc' = false"
+}

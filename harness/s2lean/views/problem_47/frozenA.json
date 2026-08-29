@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Rat \u2192 Rat)\n-- inputs\n(x: List Rat) : Prop :=",
+ "nl": "function_signature: \"def median(numbers: List[float]) -> float\"\ndocstring: |\n    Return median of elements in the list l\ntest_cases:\n  - input: [3, 1, 2, 4, 5]\n    output: 3\n  - input: [-10, 4, 6, 1000, 10, 20]\n    output: 15.0",
+ "problem_id": 47
+}

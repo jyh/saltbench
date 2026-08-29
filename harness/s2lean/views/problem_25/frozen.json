@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(n: Nat)\n: problem_spec implementation n\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: Nat \u2192 List Nat)\n-- inputs\n(n: Nat) : Prop :=",
+ "implementation_signature": "def implementation (n: Nat) : List Nat :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 implementation,\n(\u2200 n, problem_spec implementation n) \u2194\n(\u2200 n, generated_spec implementation n) :=",
+ "nl": "function_signature: \"def factorize(n: int) -> List[int]\"\ndocstring: |\n    Return list of prime factors of given integer in the order from smallest to largest.\n    Each of the factors should be listed number of times corresponding to how many times it appeares in factorization.\n    Input number should be equal to the product of all factors\ntest_cases:\n  - input: 8\n    expected_output: [2, 2, 2]\n  - input: 25\n    expected_output: [5, 5]\n  - input: 70\n    expected_output: [2, 5, 7]",
+ "problem_id": 25,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Nat \u2192 List Nat)\n-- inputs\n(n: Nat) :=\n-- spec\nlet spec (result: List Nat) :=\n2 \u2264 n \u2192\n(result.prod = n \u2227\nList.Sorted Nat.le result \u2227\nresult.all (\u03bb i => n % i = 0 \u2227 Nat.Prime i));\n-- program termination\n\u2203 result, implementation n = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 8 = [2, 2, 2]\n#test implementation 25 = [5, 5]\n#test implementation 70 = [2, 5, 7]"
+}

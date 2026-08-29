@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(n: Nat)\n: problem_spec implementation n\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: Nat \u2192 Nat)\n-- inputs\n(n: Nat) : Prop :=",
+ "implementation_signature": "def implementation (n: Nat) : Nat :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 implementation,\n(\u2200 n, problem_spec implementation n) \u2194\n(\u2200 n, generated_spec implementation n) :=",
+ "nl": "function_signature: \"def prime_fib(n: int)\"\ndocstring: |\n    prime_fib returns n-th prime Fibonacci number.\n    Note(George): A proof of this problem requires the resolution of the open conjecture: there are infinitely many prime Fibonacci numbers.\ntest_cases:\n  - input: 1\n    output: 2\n  - input: 2\n    output: 3\n  - input: 3\n    output: 5\n  - input: 4\n    output: 13\n  - input: 5\n    output: 89",
+ "problem_id": 39,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Nat \u2192 Nat)\n-- inputs\n(n: Nat) :=\n-- spec\nlet spec (result: Nat) :=\n  n > 0 \u2192\n    (\u2203 i, Nat.fib i = result \u2227 Nat.Prime result \u2227\n      (\u2203! S : Finset Nat, S.card = n - 1 \u2227\n      (\u2200 y \u2208 S, (\u2203 k, y = Nat.fib k) \u2227 y < result \u2227 Nat.Prime y))\n    )\n-- program termination\n\u2203 result, implementation n = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "NOTE we changed to #eval! instead of #test\nbecause we can't use #test for implementation\nwithout a proof of termination\n#eval! implementation 1 = 2\n#eval! implementation 2 = 3\n#eval! implementation 3 = 5\n#eval! implementation 4 = 13\n#eval! implementation 5 = 89"
+}

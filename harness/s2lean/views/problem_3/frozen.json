@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(operations: List Int)\n: problem_spec implementation operations\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 Bool)\n-- inputs\n(operations: List Int) : Prop :=",
+ "implementation_signature": "def implementation (operations: List Int) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 operations, problem_spec impl operations) \u2194\n(\u2200 operations, generated_spec impl operations) :=",
+ "nl": "function_signature: \"def below_zero(operations: List[int]) -> bool\"\ndocstring: |\n    You're given a list of deposit and withdrawal operations on a bank account that starts with\n    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and\n    at that point function should return True. Otherwise it should return False.\ntest_cases:\n  - input:\n      - 1\n      - 2\n      - 3\n    expected_output: false\n  - input:\n      - 1\n      - 2\n      - -4\n      - 5\n    expected_output: true",
+ "problem_id": 3,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: List Int \u2192 Bool)\n-- inputs\n(operations: List Int) :=\n-- spec\nlet below_zero_condition := \u2203 i, i \u2264 operations.length \u2227\n(operations.take i).sum < 0;\nlet spec (result: Bool) :=\nif result then below_zero_condition else \u00acbelow_zero_condition;\n-- program terminates\n\u2203 result, impl operations = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [1, 2, 3] = false\n#test implementation [1, 2, -4, 5] = true"
+}

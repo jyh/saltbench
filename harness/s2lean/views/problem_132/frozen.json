@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(string: String)\n: problem_spec implementation string :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(lst: String) : Prop :=",
+ "implementation_signature": "def implementation (lst: String) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 string, problem_spec impl string) \u2194\n(\u2200 string, generated_spec impl string) :=",
+ "nl": "function_signature: \"def is_nested(string: str) -> Bool\"\ndocstring: |\n    Create a function that takes a string as input which contains only parentheses.\n    The function should return True if and only if there is a valid subsequence of parentheses\n    where at least one parenthesis in the subsequence is nested.\ntest_cases:\n  - input: '(())'\n    expected_output: True\n  - input: '()))))))((((()'\n    expected_output: False\n  - input: '()()'\n    expected_output: False\n  - input: '()'\n    expected_output: False\n  - input: '(()())'\n    expected_output: True\n  - input: '(())(('\n    expected_output: True",
+ "problem_id": 132,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(string: String) :=\n-- spec\nlet spec (result: Bool) :=\nstring.toList.all (fun x => x = '(' \u2228 x = ')') \u2192\nresult = true \u2194\n  \u2203 x : String,\n    is_subsequence x.toList string.toList \u2227\n    balanced_paren_non_computable x '(' ')' \u2227\n    2 \u2264 count_max_paren_depth x\n-- program termination\n\u2203 result, impl string = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"(())\" = true\n#test implementation \"()))))))((((()\" = false\n#test implementation \"()()\" = false\n#test implementation \"()\" = false\n#test implementation \"(()())\" = true\n#test implementation \"(())((\" = true"
+}

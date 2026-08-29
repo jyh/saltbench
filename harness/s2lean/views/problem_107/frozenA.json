@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat \u00d7 Nat)\n-- inputs\n(n: Nat) : Prop :=",
+ "nl": "function_signature: \"def even_odd_palindrome(n: nat) -> (nat, nat)\"\ndocstring: |\n    Given a positive integer n, return a tuple that has the number of even and odd\n    integer palindromes that fall within the range(1, n), inclusive.\ntest_cases:\n  - input: 3\n    expected_output: (1, 2)\n  - input: 12\n    expected_output: (4, 6)",
+ "problem_id": 107
+}

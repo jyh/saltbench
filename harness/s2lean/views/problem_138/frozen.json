@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(n: Int)\n: problem_spec implementation n :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Int \u2192 Bool)\n-- inputs\n(n: Int) : Prop :=",
+ "implementation_signature": "def implementation (n: Int) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 n, problem_spec impl n) \u2194\n(\u2200 n, generated_spec impl n) :=",
+ "nl": "function_signature: \"def is_equal_to_sum_even(n: int) -> Bool\"\ndocstring: |\n    Evaluate whether the given number n can be written as the sum of exactly 4 positive even numbers\ntest_cases:\n  - input: 4\n    expected_output: False\n  - input: 6\n    expected_output: False\n  - input: 8\n    expected_output: True",
+ "problem_id": 138,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: Int \u2192 Bool)\n-- inputs\n(n: Int) :=\n-- spec\nlet spec (result: Bool) :=\n  let sum_exists := \u2203 a b c d : Nat,\n    Even a \u2227\n    Even b \u2227\n    Even c \u2227\n    Even d \u2227\n    (a + b + c + d = n);\n  result = true \u2194 sum_exists\n-- program termination\n\u2203 result, impl n = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 4 = false\n#test implementation 6 = false\n#test implementation 8 = true"
+}

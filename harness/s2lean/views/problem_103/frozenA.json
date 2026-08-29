@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat \u2192 Option String)\n-- inputs\n(n: Nat) (m: Nat) : Prop :=",
+ "nl": "function_signature: \"def rounded_avg(n: nat, m: nat) -> Option[string]\"\ndocstring: |\n    You are given two positive integers n and m, and your task is to compute the\n    average of the integers from n through m (including n and m).\n    Round the answer to the nearest integer and convert that to binary.\n    If n is greater than m, return none.\ntest_cases:\n  - input: (1, 5)\n    expected_output: \"0b11\"\n  - input: (7, 5)\n    expected_output: None\n  - input: (10, 20)\n    expected_output: \"0b1111\"\n  - input: (20, 33)\n    expected_output: \"0b11010\"",
+ "problem_id": 103
+}

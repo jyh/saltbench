@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat)\n-- inputs\n(x : Nat) : Prop :=",
+ "nl": "function_signature: \"def fibfib(n: int)\"\ndocstring: |\n    The FibFib number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:\n    fibfib(0) == 0\n    fibfib(1) == 0\n    fibfib(2) == 1\n    fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).\n    Please write a function to efficiently compute the n-th element of the fibfib number sequence.\nNote(Meghana): While the specification asks for an efficient computation of fibfib, we cannot enforce this constraint currently.\ntest_cases:\n  - input: 1\n    output: 0\n  - input: 5\n    output: 4\n  - input: 8\n    output: 24",
+ "problem_id": 63
+}

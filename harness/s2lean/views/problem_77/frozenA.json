@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Int \u2192 Bool)\n-- inputs\n(a: Int) : Prop :=",
+ "nl": "function_signature: \"def iscube(a: int) -> bool\"\ndocstring: |\n    Write a function that takes an integer a and returns True if this integer is a cube of some integer number.\n    Note: you may assume the input is always valid.\ntest_cases:\n  - input: 1\n    expected_output: True\n  - input: 2\n    expected_output: False\n  - input: -1\n    expected_output: True\n  - input: 64\n    expected_output: True\n  - input: 0\n    expected_output: True\n  - input: 180\n    expected_output: False",
+ "problem_id": 77
+}

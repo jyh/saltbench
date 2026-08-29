@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(string : String) : Prop :=",
+ "nl": "function_signature: \"def remove_vowels(string: str) -> string\"\ndocstring: |\n    remove_vowels is a function that takes string and returns string without vowels.\ntest_cases:\n  - input: \"\"\n    expected_output: \"\"\n  - input: \"abcdef\\nghijklm\"\n    expected_output: \"bcdf\\nghjklm\"\n  - input: \"abcdef\"\n    expected_output: \"bcdf\"\n  - input: \"aaaaa\"\n    expected_output: \"\"\n  - input: \"aaBAA\"\n    expected_output: \"B\"",
+ "problem_id": 51
+}

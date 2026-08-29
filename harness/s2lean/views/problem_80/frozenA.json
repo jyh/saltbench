@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(s: String) : Prop :=",
+ "nl": "function_signature: \"def is_happy(s: str) -> bool\"\ndocstring: |\n    You are given a string s.\n    Your task is to check if the string is happy or not.\n    A string is happy if its length is at least 3 and every 3 consecutive letters are distinct\ntest_cases:\n  - input: \"a\"\n    output: False\n  - input: \"aa\"\n    output: False\n  - input: \"abcd\"\n    output: True\n  - input: \"aabb\"\n    output: False\n  - input: \"adb\"\n    output: True",
+ "problem_id": 80
+}

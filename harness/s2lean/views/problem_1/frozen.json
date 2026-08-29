@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(paren_string: String)\n: problem_spec implementation paren_string :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 List String)\n-- inputs\n(paren_string: String) : Prop :=",
+ "implementation_signature": "def implementation (paren_string: String) : List String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 paren_string, problem_spec impl paren_string) \u2194\n(\u2200 paren_string, generated_spec impl paren_string) :=",
+ "nl": "function_signature: \"def separate_paren_groups(paren_string: str) -> List[str]\"\ndocstring: |\n    Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\ntest_cases:\n  - input: \"( ) (( )) (( )( ))\"\n    expected_output:\n      - \"()\"\n      - \"(())\"\n      - \"(()())\"",
+ "problem_id": 1,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: String \u2192 List String)\n-- inputs\n(paren_string: String) :=\n-- spec\nlet paren_string_filtered := (paren_string.toList.filter (fun c => c == '(' \u2228  c == ')')).asString;\nlet spec (result_list: List String) :=\nbalanced_paren_non_computable paren_string_filtered '(' ')' \u2192\n-- concat of result is input_filtered\n(result_list.foldl (\u00b7 ++ \u00b7) \"\" = paren_string_filtered) \u2227\n-- each item in result is balanced and has only one group\n(\u2200 str \u2208 result_list, balanced_paren_non_computable str '(' ')' \u2227 count_paren_groups str = 1);\n-- program terminates\n\u2203 result, impl paren_string = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"( ) (( )) (( )( ))\" = [\"()\", \"(())\", \"(()())\"]"
+}

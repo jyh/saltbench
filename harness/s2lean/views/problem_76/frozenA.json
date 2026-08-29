@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Int \u2192 Int \u2192 Bool)\n-- inputs\n(x: Int) (n: Int) : Prop :=",
+ "nl": "function_signature: \"def is_simple_power(x: int, n: int) -> bool\"\ndocstring: |\n    Your task is to write a function that returns true if a number x is a simple\n    power of n and false in other cases. x is a simple power of n if n**int=x\ntest_cases:\n  - input: (1, 4)\n    expected_output: True\n  - input: (2, 2)\n    expected_output: True\n  - input: (8, 2)\n    expected_output: True\n  - input: (3, 2)\n    expected_output: False\n  - input: (3, 1)\n    expected_output: False\n  - input: (5, 3)\n    expected_output: False",
+ "problem_id": 76
+}

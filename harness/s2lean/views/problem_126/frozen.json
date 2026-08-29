@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(lst: List Int)\n: problem_spec implementation lst :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 Bool)\n-- inputs\n(lst: List Int) : Prop :=",
+ "implementation_signature": "def implementation (lst: List Int) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 lst, problem_spec impl lst) \u2194\n(\u2200 lst, generated_spec impl lst) :=",
+ "nl": "function_signature: \"def is_sorted(lst: List[int]) -> Bool\"\ndocstring: |\n    Given a list of numbers, return whether or not they are sorted\n    in ascending order. If list has more than 1 duplicate of the same\n    number, return False. Assume no negative numbers and only integers.\ntest_cases:\n  - input: [5]\n    expected_output: True\n  - input: [1, 2, 3, 4, 5]\n    expected_output: True\n  - input: [1, 3, 2, 4, 5]\n    expected_output: False\n  - input: [1, 2, 3, 4, 5, 6]\n    expected_outupt: True\n  - input: [1, 2, 3, 4, 5, 6, 7]\n    expected_output: True\n  - input: [1, 3, 2, 4, 5, 6, 7]\n    expected_output: False\n  - input: [1, 2, 2, 3, 3, 4]\n    expected_output: True\n  - input: [1, 2, 2, 2, 3, 4]\n    expected_output: False",
+ "problem_id": 126,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: List Int \u2192 Bool)\n-- inputs\n(lst: List Int) :=\n-- spec\nlet sorted_ascending := lst.Sorted (\u00b7 \u2264 \u00b7);\nlet ms := Multiset.ofList lst;\nlet multiple_duplicates := \u2203 i, i \u2208 lst \u2227 2 < ms.count i;\nlet spec (res: Bool) :=\n  res \u2192 sorted_ascending \u2227\n  res \u2192 \u00acmultiple_duplicates \u2227\n  multiple_duplicates \u2192 \u00acres \u2227\n  \u00acsorted_ascending \u2192 \u00acres;\n-- program terminates\n\u2203 result, impl lst = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [5] = true\n#test implementation [1, 2, 3, 4, 5] = true\n#test implementation [1, 3, 2, 4, 5] = false\n#test implementation [1, 2, 3, 4, 5, 6] = true\n#test implementation [1, 2, 3, 4, 5, 6, 7] = true\n#test implementation [1, 3, 2, 4, 5, 6, 7] = false\n#test implementation [1, 2, 2, 3, 3, 4] = true\n#test implementation [1, 2, 2, 2, 3, 4] = false"
+}

@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(file_name: String) : Prop :=",
+ "nl": "function_signature: \"def file_name_check(file_name: str) -> str\"\ndocstring: |\n    Create a function which takes a string representing a file's name, and returns\n    'Yes' if the the file's name is valid, and returns 'No' otherwise.\n    A file's name is considered to be valid if and only if all the following conditions\n    are met:\n    - There should not be more than three digits ('0'-'9') in the file's name.\n    - The file's name contains exactly one dot '.'\n    - The substring before the dot should not be empty, and it starts with a letter from\n    the latin alphapet ('a'-'z' and 'A'-'Z').\n    - The substring after the dot should be one of these: ['txt', 'exe', 'dll']\ntest_cases:\n  - input: \"example.txt\"\n    expected_output: \"Yes\"\n  - input: \"1example.dll\"\n    expected_output: \"No\"",
+ "problem_id": 141
+}

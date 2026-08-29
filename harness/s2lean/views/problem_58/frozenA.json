@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 List Int \u2192 List Int)\n-- inputs\n(x y: List Int) : Prop :=",
+ "nl": "function_signature: \"def common(l1: List[Int], l2: List[Int]) -> List[Int]\"\ndocstring: |\n    Return sorted unique common elements for two lists.\ntest_cases:\n  - input: [[1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121]]\n    expected_output: [1, 5, 653]\n  - input: [[5, 3, 2, 8], [3, 2]]\n    expected_output: [2, 3]",
+ "problem_id": 58
+}

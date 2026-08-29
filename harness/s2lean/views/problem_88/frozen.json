@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(lst: List Nat)\n: problem_spec implementation lst\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Nat \u2192 List Nat)\n-- inputs\n(lst: List Nat) : Prop :=",
+ "implementation_signature": "def implementation (lst: List Nat) : List Nat :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 lst, problem_spec impl lst) \u2194\n(\u2200 lst, generated_spec impl lst) :=",
+ "nl": "function_signature: \"def sort_array(lst : list(int)) -> list(int)\"\ndocstring: |\n    \"\"\"\n    Given an array of non-negative integers, return a copy of the given array after sorting,\n    you will sort the given array in ascending order if the sum( first index value, last index value) is odd,\n    or sort it in descending order if the sum( first index value, last index value) is even.\n    Note(George): I have elected to ignore the copy part.\ntest_cases:\n  - input: []\n    output: []\n  - input: [5]\n    output: [5]\n  - input: [2, 4, 3, 0, 1, 5]\n    output: [0, 1, 2, 3, 4, 5]\n  - input: [2, 4, 3, 0, 1, 5, 6]\n    output: [6, 5, 4, 3, 2, 1, 0]",
+ "problem_id": 88,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List Nat \u2192 List Nat)\n-- inputs\n(lst: List Nat) :=\n-- spec\nlet spec (result : List Nat) :=\n  lst.length > 0 \u2192\n  result.length = lst.length \u2227\n  (\u2200 i, i < result.length \u2192\n    result[i]! \u2208 lst \u2227\n    lst[i]! \u2208 result \u2227\n    result.count (lst[i]!) = lst.count (lst[i]!)) \u2227\n  (lst.head! + lst.getLast!) \u2261 1 [MOD 2] \u2192\n    result.Sorted Nat.le \u2227\n  (lst.head! + lst.getLast!) \u2261 0 [MOD 2] \u2192\n    result.Sorted (fun a b => a \u2265 b)\n-- program termination\n\u2203 result,\n  implementation lst = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [] = []\n#test implementation [5] = [5]\n#test implementation [2, 4, 3, 0, 1, 5] = [0, 1, 2, 3, 4, 5]\n#test implementation [2, 4, 3, 0, 1, 5, 6] = [6, 5, 4, 3, 2, 1, 0]"
+}

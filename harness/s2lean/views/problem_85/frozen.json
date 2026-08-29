@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(lst: List Int)\n: problem_spec implementation lst\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 Int)\n-- inputs\n(lst: List Int) : Prop :=",
+ "implementation_signature": "def implementation (lst: List Int) : Int :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 lst, problem_spec impl lst) \u2194\n(\u2200 lst, generated_spec impl lst) :=",
+ "nl": "function_signature: \"def solve(n: list[int]) -> int\"\ndocstring: |\n    Given a non-empty list of integers lst, add the even elements that are at odd indices.\ntest_cases:\n  - input: [4, 2, 6, 7]\n    output: 2",
+ "problem_id": 85,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List Int \u2192 Int)\n-- inputs\n(lst: List Int) :=\n-- spec\nlet spec (result : Int) :=\n  lst.length = 0 \u2192 result = 0 \u2227\n  lst.length > 0 \u2192\n    if lst.length > 1 then\n      result = (if Even lst[1]! then lst[1]! else 0) + implementation (lst.drop 2)\n    else\n      result = (if Even lst[1]! then lst[1]! else 0)\n-- program termination\n\u2203 result,\n  implementation lst = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [4, 2, 6, 7] = 2"
+}

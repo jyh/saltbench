@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 Bool)\n-- inputs\n(lst: List Int) : Prop :=",
+ "nl": "function_signature: \"def is_sorted(lst: List[int]) -> Bool\"\ndocstring: |\n    Given a list of numbers, return whether or not they are sorted\n    in ascending order. If list has more than 1 duplicate of the same\n    number, return False. Assume no negative numbers and only integers.\ntest_cases:\n  - input: [5]\n    expected_output: True\n  - input: [1, 2, 3, 4, 5]\n    expected_output: True\n  - input: [1, 3, 2, 4, 5]\n    expected_output: False\n  - input: [1, 2, 3, 4, 5, 6]\n    expected_outupt: True\n  - input: [1, 2, 3, 4, 5, 6, 7]\n    expected_output: True\n  - input: [1, 3, 2, 4, 5, 6, 7]\n    expected_output: False\n  - input: [1, 2, 2, 3, 3, 4]\n    expected_output: True\n  - input: [1, 2, 2, 2, 3, 4]\n    expected_output: False",
+ "problem_id": 126
+}

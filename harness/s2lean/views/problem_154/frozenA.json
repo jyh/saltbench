@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String \u2192 Bool)\n-- inputs\n(a b: String) : Prop :=",
+ "nl": "function_signature: \"def cycpattern_check(String a, String b) -> Bool\"\ndocstring: |\n    You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word, else False\ntest_cases:\n  - input: [\"abcd\", \"abd\"]\n    expected_output: False\n  - input: [\"hello\", \"ell\"]\n    expected_output: True\n  - input: [\"whassup\", \"psus\"]\n    expected_output: False\n  - input: [\"abab\", \"baa\"]\n    expected_output: True\n  - input: [\"efef\", \"eeff\"]\n    expected_output: False\n  - input: [\"himenss\", \"simen\"]\n    expected_output: True",
+ "problem_id": 154
+}

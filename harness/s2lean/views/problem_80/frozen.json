@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(s: String)\n: problem_spec implementation s\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(s: String) : Prop :=",
+ "implementation_signature": "def implementation (s: String) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 s, problem_spec impl s) \u2194\n(\u2200 s, generated_spec impl s) :=",
+ "nl": "function_signature: \"def is_happy(s: str) -> bool\"\ndocstring: |\n    You are given a string s.\n    Your task is to check if the string is happy or not.\n    A string is happy if its length is at least 3 and every 3 consecutive letters are distinct\ntest_cases:\n  - input: \"a\"\n    output: False\n  - input: \"aa\"\n    output: False\n  - input: \"abcd\"\n    output: True\n  - input: \"aabb\"\n    output: False\n  - input: \"adb\"\n    output: True",
+ "problem_id": 80,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: String \u2192 Bool)\n-- inputs\n(s: String) :=\n-- spec\nlet spec (result : Bool) :=\n  result \u2194\n  (3 \u2264 s.length) \u2227\n  \u00ac (\u2203 i j, i < j \u2227 j < s.length \u2227 j - i \u2264 2 \u2227 s.data[i]! = s.data[j]!)\n-- program termination\n\u2203 result,\n  implementation s = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"a\" = False\n#test implementation \"aa\" = False\n#test implementation \"abcd\" = True\n#test implementation \"aabb\" = False\n#test implementation \"adb\" = True"
+}

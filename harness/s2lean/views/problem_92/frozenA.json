@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Rat \u2192 Rat \u2192 Rat \u2192 Bool)\n-- inputs\n(a: Rat) (b: Rat) (c: Rat) : Prop :=",
+ "nl": "function_signature: \"def any_int(a: float, b: float, c: float) -> bool\"\ndocstring: |\n    Create a function that takes 3 numbers.\n    Returns true if one of the numbers is equal to the sum of the other two, and all numbers are integers.\n    Returns false in any other cases.\ntest_cases:\n  - input: [5, 2, 7]\n    expected_output: true\n  - input: [3, 2, 2]\n    expected_output: false\n  - input: [3, -2, 1]\n    expected_output: true\n  - input: [3.6, -2.2, 2]\n    expected_output: false",
+ "problem_id": 92
+}

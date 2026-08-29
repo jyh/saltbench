@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(s: String) : Prop :=",
+ "nl": "function_signature: \"def encode(s : str) -> str\"\ndocstring: |\n    Write a function that takes a message, and encodes in such a\n    way that it swaps case of all letters, replaces all vowels in\n    the message with the letter that appears 2 places ahead of that\n    vowel in the english alphabet.\n    Assume only letters.\ntest_cases:\n  - input: \"test\"\n    expected_output: \"TGST\"\n  - input: \"This is a message\"\n    expected_output: \"tHKS KS C MGSSCGG\"",
+ "problem_id": 93
+}

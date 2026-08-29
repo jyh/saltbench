@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 List Int)\n-- inputs\n(nums: List Int) : Prop :=",
+ "nl": "function_signature: \"def order_by_points(nums: List[int]) -> List[int]\"\ndocstring: |\n    Write a function which sorts the given list of integers\n    in ascending order according to the sum of their digits.\n    Note: if there are several items with similar sum of their digits,\n    order them based on their index in original list.\ntest_cases:\n  - input: [1, 11, -1, -11, -12]\n    expected_output: [-1, -11, 1, -12, 11]\n  - input: []\n    expected_output: []",
+ "problem_id": 145
+}

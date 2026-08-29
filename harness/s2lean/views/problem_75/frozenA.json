@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Int \u2192 Bool)\n-- inputs\n(a: Int) : Prop :=",
+ "nl": "function_signature: \"def is_multiply_prime(a: int) -> bool\"\ndocstring: |\n    Write a function that returns true if the given number is the multiplication of 3 prime numbers\n    and false otherwise. Knowing that (a) is less then 100.\ntest_cases:\n  - input: 30\n    expected_output: True",
+ "problem_id": 75
+}

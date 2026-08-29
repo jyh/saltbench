@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(numbers: List Int)\n: problem_spec implementation numbers\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: List Int \u2192 List Int)\n-- inputs\n(numbers: List Int) : Prop :=",
+ "implementation_signature": "def implementation (numbers: List Int): List Int :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 implementation,\n(\u2200 numbers, problem_spec implementation numbers) \u2194\n(\u2200 numbers, generated_spec implementation numbers) :=",
+ "nl": "function_signature: \"def get_positive(l: list)\"\ndocstring: |\n    Return only positive numbers in the list.\ntest_cases:\n  - input: [-1, 2, -4, 5, 6]\n    expected_output: [2, 5, 6]\n  - input: [5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]\n    expected_output: [5, 3, 2, 3, 9, 123, 1]",
+ "problem_id": 30,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List Int \u2192 List Int)\n-- inputs\n(numbers: List Int) :=\n-- spec\nlet spec (result: List Int) :=\n  result.all (\u03bb x => x > 0 \u2227 x \u2208 numbers) \u2227\n  numbers.all (\u03bb x => x > 0 \u2192 x \u2208 result) \u2227\n  result.all (\u03bb x => result.count x = numbers.count x);\n-- program termination\n\u2203 result,\n  implementation numbers = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [(-1), 2, (-4), 5, 6] = [2, 5, 6]\n#test implementation [5, 3, (-5), 2, (-3), 3, 9, 0, 123, 1, (-10)] = [5, 3, 2, 3, 9, 123, 1]"
+}

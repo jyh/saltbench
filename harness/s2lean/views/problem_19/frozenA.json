@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: String \u2192 String)\n-- inputs\n(numbers: String) : Prop :=",
+ "nl": "function_signature: \"def sort_numbers(numbers: str) -> str\"\ndocstring: |\n    Input is a space-delimited string of numberals from 'zero' to 'nine'.\n    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.\n    Return the string with numbers sorted from smallest to largest\ntest_cases:\n  - input: \"three one five\"\n    expected_output: \"one three five\"",
+ "problem_id": 19
+}

@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(n: Int)\n: problem_spec implementation n\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Int \u2192 List Int)\n-- inputs\n(n: Int) : Prop :=",
+ "implementation_signature": "def implementation (n: Int) : List Int :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 n, problem_spec impl n) \u2194\n(\u2200 n, generated_spec impl n) :=",
+ "nl": "function_signature: \"def f(n: int) -> List[int]\"\ndocstring: |\n    Implement the function f that takes n as a parameter,\n    and returns a list of size n, such that the value of the element at index i is the factorial of i if i is even\n    or the sum of numbers from 1 to i otherwise.\n    i starts from 1.\n    the factorial of i is the multiplication of the numbers from 1 to i (1 * 2 * ... * i).\ntest_cases:\n  - input: 5\n    expected_output: [1, 2, 6, 24, 15]",
+ "problem_id": 106,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Int \u2192 List Int)\n-- inputs\n(n: Int) :=\n-- spec\nlet spec (result: List Int) :=\n  (result.length = n) \u2227\n  (forall i: Nat, (1 \u2264 i \u2227 i \u2264 n \u2227 Even i) \u2192 (result[i-1]! = Nat.factorial i)) \u2227\n  (forall i: Nat, (1 \u2264 i \u2227 i \u2264 n \u2227 Odd i) \u2192 (result[i-1]! = (List.range (i+1)).sum))\n-- program termination\n\u2203 result, implementation n = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 5 = [1, 2, 6, 24, 15]\n#test implementation 7 = [1, 2, 6, 24, 15, 720, 28]\n#test implementation 1 = [1]\n#test implementation 3 = [1, 2, 6]"
+}

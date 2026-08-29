@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(s: String) : Prop :=",
+ "nl": "function_signature: \"def anti_shuffle(s : str) -> str\"\ndocstring: |\n    \"\"\"\n    Write a function that takes a string and returns an ordered version of it.\n    Ordered version of string, is a string where all words (separated by space)\n    are replaced by a new word where all the characters arranged in\n    ascending order based on ascii value.\n    Note: You should keep the order of words and blank spaces in the sentence.\ntest_cases:\n  - input: \"Hi\"\n    output: \"Hi\"\n  - input: \"hello\"\n    output: \"ehllo\"\n  - input: \"Hello World!!!\"\n    output: \"Hello !!!Wdlor\"",
+ "problem_id": 86
+}

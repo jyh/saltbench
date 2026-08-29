@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 Int)\n-- inputs\n(arr: List Int) : Prop :=",
+ "nl": "function_signature: \"def count_nums(arr: List[int]) -> int\"\ndocstring: |\n    Write a function count_nums which takes an array of integers and returns\n    the number of elements which has a sum of digits > 0.\n    If a number is negative, then its first signed digit will be negative:\n    e.g. -123 has signed digits -1, 2, and 3.\ntest_cases:\n  - input: []\n    expected_output: 0\n  - input: [-1, 11, -11]\n    expected_output: 1\n  - input: [1, 1, 2]\n    expected_output: 3",
+ "problem_id": 108
+}

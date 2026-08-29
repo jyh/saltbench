@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(numbers: List Nat)\n: problem_spec implementation numbers\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Nat \u2192 List Nat)\n-- inputs\n(x: List Nat) : Prop :=",
+ "implementation_signature": "def implementation (numbers: List Nat) : List Nat :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 x, problem_spec impl x) \u2194\n(\u2200 x, generated_spec impl x) :=",
+ "nl": "function_signature: \"def pluck(numbers: List[Int]) -> List[Int]\"\ndocstring: |\n    Given an array representing a branch of a tree that has non-negative integer nodes\n    your task is to pluck one of the nodes and return it.\n    The plucked node should be the node with the smallest even value.\n    If multiple nodes with the same smallest even value are found return the node that has smallest index.\n\n    The plucked node should be returned in a list, [ smallest_value, its index ],\n    If there are no even values or the given array is empty, return [].\ntest_cases:\n  - input: [4, 2, 3]\n    expected_output: [2, 1]\n  - input: [1, 2, 3]\n    expected_output: [2, 1]\n  - input: []\n    expected_output: []\n  - input: [5, 0, 3, 0, 4, 2]\n    expected_output: [0, 1]",
+ "problem_id": 68,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List Nat \u2192 List Nat)\n-- inputs\n(numbers: List Nat) :=\n-- spec\nlet spec (result: List Nat) :=\n(result.length = 0 \u2194 \u2200 i, i < numbers.length \u2192 numbers[i]! % 2 = 1) \u2227\n(result.length = 2 \u2194 \u2203 i, i < numbers.length \u2227\n  numbers[i]! % 2 = 0 \u2227\n  result[0]! = numbers[i]! \u2227\n  result[1]! = i \u2227\n  (\u2200 j, j < numbers.length \u2192 j < i \u2192 (numbers[j]! % 2 = 1 \u2228 numbers[i]! < numbers[j]!)) \u2227\n  (\u2200 k, k < numbers.length \u2192 numbers[k]! % 2 = 0 \u2192 numbers[i]! \u2264 numbers[k]!));\n-- program termination\n\u2203 result, implementation numbers = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [4, 2, 3] = [2, 1]\n#test implementation [1, 2, 3] = [2, 1]\n#test implementation [] = []\n#test implementation [5, 0, 3, 0, 4, 2] = [0, 1]\n"
+}

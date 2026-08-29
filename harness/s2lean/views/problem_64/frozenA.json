@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Nat)\n-- inputs\n(x : String) : Prop :=",
+ "nl": "function_signature: \"def remove_vowels(string: str) -> Nat\"\ndocstring: |\n    Write a function vowels_count which takes a string representing\n    a word as input and returns the number of vowels in the string.\n    Vowels in this case are 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a\n    vowel, but only when it is at the end of the given word.\ntest_cases:\n  - input: \"abcde\"\n    expected_output: 2\n  - input: \"ACEDY\"\n    expected_output: 3",
+ "problem_id": 64
+}

@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 Option Int)\n-- inputs\n(arr: List Int) : Prop :=",
+ "nl": "function_signature: \"def prod_signs(arr: List[int]) -> Optional[int]\"\ndocstring: |\n    You are given an array arr of integers and you need to return\n    sum of magnitudes of integers multiplied by product of all signs\n    of each number in the array, represented by 1, -1 or 0.\n    Note: return None for empty arr.\ntest_cases:\n  - input: [1, 2, 2, -4]\n    expected_output: -9\n  - input: [0, 1]\n    expected_output: 0\n  - input: []\n    expected_output: None",
+ "problem_id": 128
+}

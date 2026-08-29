@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: String \u2192 String)\n-- inputs\n(string: String) : Prop :=",
+ "nl": "function_signature: \"def make_palindrome(string: str) -> str\"\ndocstring: |\n    Find the shortest palindrome that begins with a supplied string.\n    Algorithm idea is simple:\n    - Find the longest postfix of supplied string that is a palindrome.\n    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\ntest_cases:\n  - input: \"\"\n    expected_output: \"\"\n  - input: \"cat\"\n    expected_output: \"catac\"\n  - input: \"cata\"\n    expected_output: \"catac\"",
+ "problem_id": 10
+}

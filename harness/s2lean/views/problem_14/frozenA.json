@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: String \u2192 List String)\n-- inputs\n(string: String) : Prop :=",
+ "nl": "function_signature: \"def all_prefixes(string: str) -> List[str]\"\ndocstring: |\n    Return list of all prefixes from shortest to longest of the input string\ntest_cases:\n  - input: \"abc\"\n    expected_output:\n      - \"a\"\n      - \"ab\"\n      - \"abc\"",
+ "problem_id": 14
+}

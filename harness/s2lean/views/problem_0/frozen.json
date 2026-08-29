@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(numbers: List Rat)\n(threshold: Rat)\n: problem_spec implementation numbers threshold  :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Rat \u2192 Rat \u2192 Bool)\n-- inputs\n(numbers: List Rat)\n(threshold: Rat) : Prop :=",
+ "implementation_signature": "def implementation (numbers: List Rat) (threshold: Rat) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 numbers threshold, problem_spec impl numbers threshold) \u2194\n(\u2200 numbers threshold, generated_spec impl numbers threshold) :=",
+ "nl": "function_signature: \"def has_close_elements(numbers: List[float], threshold: float) -> bool\"\ndocstring: Check if in given list of numbers, are any two numbers closer to each other than given threshold.\ntest_cases:\n  - input: [[1.0, 2.0, 3.0], 0.5]\n    expected_output: False\n  - input: [[1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3]\n    expected_output: True",
+ "problem_id": 0,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: List Rat \u2192 Rat \u2192 Bool)\n-- inputs\n(numbers: List Rat)\n(threshold: Rat) :=\n-- spec\nlet numbers_within_threshold :=\n(\u2203 i j, i < numbers.length \u2227 j < numbers.length \u2227\ni \u2260 j \u2227 |numbers[i]! - numbers[j]!| < threshold);\nlet spec (res: Bool) :=\nnumbers.length > 1 \u2192\nif res then numbers_within_threshold else \u00acnumbers_within_threshold;\n-- program terminates\n\u2203 result, impl numbers threshold = result \u2227\n-- return value satisfies spec\nspec result\n-- if result then spec else \u00acspec",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation ([1, 2, 3]: List Rat) 0.5 = false\n#test implementation ([1, 2.8, 3, 4, 5, 2]: List Rat) 0.3 = true"
+}

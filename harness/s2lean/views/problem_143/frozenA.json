@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(sentence: String) : Prop :=",
+ "nl": "function_signature: \"def words_in_sentence(sentence: str) -> str\"\ndocstring: |\n    You are given a string representing a sentence,\n    the sentence contains some words separated by a space,\n    and you have to return a string that contains the words from the original sentence,\n    whose lengths are prime numbers,\n    the order of the words in the new string should be the same as the original one.\n\n    Constraints:\n    * 1 <= len(sentence) <= 100\n    * sentence contains only letters\ntest_cases:\n  - input: \"This is a test\"\n    expected_output: \"is\"\n  - input: \"lets go for swimming\"\n    expected_output: \"go for\"",
+ "problem_id": 143
+}

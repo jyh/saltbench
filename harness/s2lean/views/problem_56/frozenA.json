@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(brackets : String) : Prop :=",
+ "nl": "function_signature: \"def correct_bracketing(brackets: str) -> Bool\"\ndocstring: |\n    brackets is a string of \"<\" and \">\".\n    return True if every opening bracket has a corresponding closing bracket, i.e., (each open bracket is properly closed)\ntest_cases:\n  - input: \"<\"\n    expected_output: False\n  - input: \"<>\"\n    expected_output: True\n  - input: \"<<><>>\"\n    expected_output: True\n  - input: \"><<>\"\n    expected_output: False",
+ "problem_id": 56
+}

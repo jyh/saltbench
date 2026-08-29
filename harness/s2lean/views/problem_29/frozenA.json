@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: List String \u2192 String \u2192 List String)\n-- inputs\n(strings: List String)\n(pref: String) : Prop :=",
+ "nl": "function_signature: \"def filter_by_prefix(strings: List[str], prefix: str) -> List[str]\"\ndocstring: |\n    Filter an input list of strings only for ones that start with a given prefix.\ntest_cases:\n  - input:\n    - []\n    - \"a\"\n    expected_output: []\n  - input:\n    - [\"abc\", \"bcd\", \"cde\", \"array\"]\n    - \"a\"\n    expected_output: [\"abc\", \"array\"]",
+ "problem_id": 29
+}

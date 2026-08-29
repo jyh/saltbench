@@ -13,6 +13,13 @@ cd "$(dirname "$0")" || exit 1
   done
   printf 'settings.json %s\n' "$(shasum -a 256 settings.bench.json | cut -d' ' -f1)"
   printf 'claude-version %s\n' "2.1.251"
+  # S2-Lean: the harness files, the arm renderings with the Lean base block, and every shipped view
+  for f in s2lean/*.py s2lean/*.sh s2lean/*.md s2lean/rt.template; do [ -f "$f" ] && printf '%s %s\n' "$f" "$(shasum -a 256 "$f" | cut -d' ' -f1)"; done
+  for a in arms/*.md; do id=$(basename "$a" .md); printf 'rendered-s2-%s(__EP__) %s bytes=%s\n' "$id" "$(cat s2lean/base.md "$a" | shasum -a 256 | cut -d' ' -f1)" "$(cat s2lean/base.md "$a" | wc -c | tr -d ' ')"; done
+  if [ -d s2lean/views ]; then for d in s2lean/views/problem_*; do t=$(basename "$d"); printf 'view-A %s %s\n' "$t" "$(shasum -a 256 "$d/A.lean" | cut -d' ' -f1)"; printf 'view-C %s %s\n' "$t" "$(shasum -a 256 "$d/C.lean" | cut -d' ' -f1)"; printf 'frozen %s %s\n' "$t" "$(shasum -a 256 "$d/frozen.json" | cut -d' ' -f1)"; done; fi
+  printf 'clever-commit %s\n' "8348039a7ff7730a126d761e71d0439735eeb3e2"
+  printf 'lean-toolchain %s\n' "leanprover/lean4:v4.27.0"
+  printf 'mathlib-rev %s\n' "a3a10db0e9d66acbebf76c5e6a135066525ac900"
   for a in arms/*.md; do
     id=$(basename "$a" .md)
     printf 'rendered-%s(__EP__) %s bytes=%s\n' "$id" "$(cat base.md "$a" | shasum -a 256 | cut -d' ' -f1)" "$(cat base.md "$a" | wc -c | tr -d ' ')"

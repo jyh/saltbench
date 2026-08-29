@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Int \u2192 Bool)\n-- inputs\n(n: Int) : Prop :=",
+ "nl": "function_signature: \"def is_equal_to_sum_even(n: int) -> Bool\"\ndocstring: |\n    Evaluate whether the given number n can be written as the sum of exactly 4 positive even numbers\ntest_cases:\n  - input: 4\n    expected_output: False\n  - input: 6\n    expected_output: False\n  - input: 8\n    expected_output: True",
+ "problem_id": 138
+}

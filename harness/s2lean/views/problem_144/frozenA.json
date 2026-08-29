@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String \u2192 Bool)\n-- inputs\n(x: String) (n: String) : Prop :=",
+ "nl": "function_signature: \"def simplify(x: str, n: str) -> Bool\"\ndocstring: |\n    Your task is to implement a function that will simplify the expression\n    x * n. The function returns True if x * n evaluates to a whole number and False\n    otherwise. Both x and n, are string representation of a fraction, and have the following format,\n    <numerator>/<denominator> where both numerator and denominator are positive whole numbers.\n\n    You can assume that x, and n are valid fractions, and do not have zero as denominator.\ntest_cases:\n  - input: [\"1/5\", \"5/1\"]\n    expected_output: True\n  - input: [\"1/6\", \"2/1\"]\n    expected_output: False\n  - input: [\"7/10\", \"10/2\"]\n    expected_output: False",
+ "problem_id": 144
+}

@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(l: List Int)\n: problem_spec implementation l\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: List Int \u2192 List Int)\n-- inputs\n(l: List Int) : Prop :=",
+ "implementation_signature": "def implementation (l: List Int) : List Int :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 implementation,\n(\u2200 l, problem_spec implementation l) \u2194\n(\u2200 l, generated_spec implementation l) :=",
+ "nl": "function_signature: \"def sort_third(l: list)\"\ndocstring: |\n    This function takes a list l and returns a list l' such that\n    l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal\n    to the values of the corresponding indicies of l, but sorted.\ntest_cases:\n  - input: [1, 2, 3]\n    output: [1, 2, 3]\n  - input: [5, 6, 3, 4, 8, 9, 2]\n    output: [2, 6, 3, 4, 8, 9, 5]",
+ "problem_id": 33,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List Int \u2192 List Int)\n-- inputs\n(l: List Int) :=\n-- spec\nlet spec (result: List Int) :=\n  l.length = result.length \u2227\n  let every_third_idx := (List.range l.length).filter (\u03bb i => i % 3 = 0);\n  let every_third_val_in_result := every_third_idx.map (\u03bb i => result[i]!);\n  let every_third_val := every_third_idx.map (\u03bb i => l[i]!);\n  (\u2200 i, i < l.length \u2192 (i % 3 \u2260 0 \u2192 l[i]! = result[i]!)) \u2227\n  List.Sorted Int.le every_third_val_in_result \u2227\n  every_third_val.all (\u03bb x => every_third_val_in_result.count x = every_third_val.count x);\n-- program termination\n\u2203 result, implementation l = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [1, 2, 3] = [1, 2, 3]\n#test implementation [5, 6, 3, 4, 8, 9, 2] = [2, 6, 3, 4, 8, 9, 5]"
+}

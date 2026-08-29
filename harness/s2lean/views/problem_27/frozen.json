@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(string: String)\n: problem_spec implementation string\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: String \u2192 String)\n-- inputs\n(string: String) : Prop :=",
+ "implementation_signature": "def implementation (string: String) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 implementation,\n(\u2200 string, problem_spec implementation string) \u2194\n(\u2200 string, generated_spec implementation string) :=",
+ "nl": "function_signature: \"def flip_case(string: str) -> str\"\ndocstring: |\n    For a given string, flip lowercase characters to uppercase and uppercase to lowercase.\ntest_cases:\n  - input: \"Hello\"\n    expected_output: \"hELLO\"",
+ "problem_id": 27,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: String \u2192 String)\n-- inputs\n(string: String) :=\n-- spec\nlet spec (result: String) :=\nlet chars_in_result := result.toList;\nlet chars_in_string := string.toList;\nchars_in_result.length = string.length \u2227\n(\u2200 i, i < chars_in_result.length \u2192\n  let c := chars_in_result[i]!;\n  let c' := chars_in_string[i]!;\n  (c.isUpper \u2192 c'.isLower) \u2227\n  (c.isLower \u2192 c'.isUpper) \u2227\n  ((\u00ac c.isUpper \u2227 \u00ac c.isLower) \u2192 c = c')\n);\n-- program termination\n\u2203 result, implementation string = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"Hello\" = \"hELLO\""
+}

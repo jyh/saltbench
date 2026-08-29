@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(decimal: Nat)\n: problem_spec implementation decimal\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 String)\n-- inputs\n(decimal: Nat) : Prop :=",
+ "implementation_signature": "def implementation (decimal: Nat) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 decimal, problem_spec impl decimal) \u2194\n(\u2200 decimal, generated_spec impl decimal) :=",
+ "nl": "function_signature: \"def decimal_to_binary(decimal: nat) -> string\"\ndocstring: |\n    You will be given a number in decimal form and your task is to convert it to\n    binary format. The function should return a string, with each character representing a binary\n    number. Each character in the string will be '0' or '1'.\n\n    There will be an extra couple of characters 'db' at the beginning and at the end of the string.\n    The extra characters are there to help with the format.\ntest_cases:\n  - input: 15\n    expected_output: \"db1111db\"\n  - input: 32\n    expected_output: \"db100000db\"",
+ "problem_id": 79,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Nat \u2192 String)\n-- inputs\n(decimal: Nat) :=\n-- spec\nlet spec (result: String) :=\n  4 < result.length \u2227\n  result.drop (result.length - 2) = \"db\" \u2227\n  result.take 2 = \"db\" \u2227\n  let resultTrimmed := (result.toList.drop 2).dropLast.dropLast.map (fun c => c.toNat - '0'.toNat)\n  decimal = Nat.ofDigits 2 resultTrimmed.reverse\n-- program termination\n\u2203 result, implementation decimal = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 0 = \"db0db\"\n#test implementation 32 = \"db100000db\"\n#test implementation 103 = \"db1100111db\"\n#test implementation 15 = \"db1111db\""
+}

@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(s: String)\n: problem_spec implementation s\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Nat)\n-- inputs\n(s: String) : Prop :=",
+ "implementation_signature": "def implementation (s: String) : Nat :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 s, problem_spec impl s) \u2194\n(\u2200 s, generated_spec impl s) :=",
+ "nl": "function_signature: \"def is_bored(s: str) -> int\"\ndocstring: |\n    You'll be given a string of words, and your task is to count the number\n    of boredoms. A boredom is a sentence that starts with the word \"I\".\n    Sentences are delimited by '.', '?' or '!'.\ntest_cases:\n  - input: \"Hello world\"\n    expected_output: 0\n  - input: \"The sky is blue. The sun is shining. I love this weather\"\n    expected_output: 1",
+ "problem_id": 91,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: String \u2192 Nat)\n-- inputs\n(s: String) :=\n-- spec\nlet spec (result : Nat) :=\n  let is_sentence_is_boredom (s: String) : Bool :=\n    (s.startsWith \"I \" \u2228 s.startsWith \" I\") \u2227 '.' \u2209 s.data \u2227 '?' \u2209 s.data \u2227 '!' \u2209 s.data\n  match s.data.findIdx? (\u03bb c => c = '.' \u2228 c = '?' \u2228 c = '!') with\n  | some i =>\n    let j := i + 1;\n    let substring := (s.drop j).toString;\n    result = (if is_sentence_is_boredom substring then 1 else 0) + implementation substring\n  | none =>\n    result = if is_sentence_is_boredom s then 1 else 0\n-- program termination\n\u2203 result,\n  implementation s = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"Hello world\" = 0\n#test implementation \"The sky is blue. The sun is shining. I love this weather\" = 1"
+}

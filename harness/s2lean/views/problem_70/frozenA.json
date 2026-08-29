@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 List Int)\n-- inputs\n(lst: List Int) : Prop :=",
+ "nl": "function_signature: \"def strange_sort_list(lst: List[int]) -> List[int]\"\ndocstring: |\n    Given list of integers, return list in strange order.\n    Strange sorting is when you start with the minimum value,\n    then the maximum of the remaining integers, then the minimum and so on.\ntest_cases:\n  - input: [1, 2, 3, 4]\n    expected_output: [1, 4, 2, 3]\n  - input: [5, 5, 5, 5]\n    expected_output: [5, 5, 5, 5]\n  - input: []\n    expected_output: []",
+ "problem_id": 70
+}

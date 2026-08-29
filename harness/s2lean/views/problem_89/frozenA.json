@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(str: String) : Prop :=",
+ "nl": "function_signature: \"def encrypt(str : str) -> str\"\ndocstring: |\n    Create a function encrypt that takes a string as an argument and\n    returns a string encrypted with the alphabet being rotated.\n    The alphabet should be rotated in a manner such that the letters\n    shift down by two multiplied to two places.\ntest_cases:\n  - input: \"hi\"\n    output: \"lm\"\n  - input: \"asdfghjkl\"\n    output: \"ewhjklnop\"\n  - input: \"gf\"\n    output: \"kj\"\n  - input: \"et\"\n    output: \"ix\"",
+ "problem_id": 89
+}

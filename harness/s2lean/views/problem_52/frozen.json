@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(numbers: List Int)\n(threshold: Int)\n: problem_spec implementation numbers threshold  :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 Int \u2192 Bool)\n-- inputs\n(numbers : List Int)\n(threshold : Int) : Prop :=",
+ "implementation_signature": "def implementation (numbers: List Int) (threshold: Int) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 numbers threshold, problem_spec impl numbers threshold) \u2194\n(\u2200 numbers threshold, generated_spec impl numbers threshold) :=",
+ "nl": "function_signature: \"def below_threshold(numbers: List[Int], threshold: Int) -> bool\"\ndocstring: Return True if all numbers in the list l are below threshold t, and False otherwise.\ntest_cases:\n  - input: [[1, 2, 4, 10], 100]\n    expected_output: True\n  - input: [[1, 20, 4, 10], 5]\n    expected_output: False",
+ "problem_id": 52,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: List Int \u2192 Int \u2192 Bool)\n-- inputs\n(numbers: List Int)\n(threshold: Int) :=\n-- spec\nlet numbers_below_threshold :=\n  \u2200 i, i < numbers.length \u2192 numbers[i]! < threshold;\nlet spec (res: Bool) :=\n(numbers.length = 0 \u2192 res) \u2227\n(res \u2194 numbers_below_threshold)\n-- program terminates\n\u2203 result, impl numbers threshold = result \u2227\n-- return value satisfies spec\nspec result\n-- if result then spec else \u00acspec",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation ([1, 2, 4, 10]: List Int) 100 = true\n#test implementation ([1, 20, 4, 10]: List Int) 5 = false"
+}

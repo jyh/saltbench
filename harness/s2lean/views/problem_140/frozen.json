@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(text: String)\n: problem_spec implementation text :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(text: String) : Prop :=",
+ "implementation_signature": "def implementation (text: String) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 text, problem_spec impl text) \u2194\n(\u2200 text, generated_spec impl text) :=",
+ "nl": "function_signature: \"def fix_spaces(text: str) -> str\"\ndocstring: |\n    Given a string text, replace all spaces in it with underscores,\n    and if a string has more than 2 consecutive spaces,\n    then replace all consecutive spaces with -\ntest_cases:\n  - input: \"Example\"\n    expected_output: \"Example\"\n  - input: \"Example 1\"\n    expected_output: \"Example_1\"\n  - input: \" Example 2\"\n    expected_output: \"_Example_2\"\n  - input: \" Example   3\"\n    expected_output: \"_Example-3\"",
+ "problem_id": 140,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(text: String) :=\n-- spec\nlet spec (result: String) :=\n  (result = \"\" \u2192 text = \"\") \u2227\n  (result \u2260 \"\" \u2192 (\n    (\u2203 pref s, text = pref ++ s\n      \u2227 pref.length = 1\n      \u2227 pref \u2260 \" \"\n      \u2227 result = pref ++ impl s)\n    \u2228\n    (\u2203 pref s : String, text = pref ++ s \u2227 pref \u2260 \"\" \u2227 (\u2200 ch, ch \u2208 pref.toList \u2192 ch = ' ')\n      \u2227 let k := pref.length;\n        (k \u2264 2 \u2192 result = (String.replicate k '_') ++ (impl (text.drop k).toString))\n      \u2227 (2 < k \u2192 result = \"-\" ++ (impl (text.drop k).toString))) )\n  )\n-- program termination\n\u2203 result, impl text = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"Example\" = \"Example\"\n#test implementation \"Example 1\" = \"Example_1\"\n#test implementation \" Example 2\" = \"_Example_2\"\n#test implementation \" Example   3\" = \"_Example-3\""
+}

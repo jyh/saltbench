@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(arr: List Int)\n(k: Nat)\n: problem_spec implementation arr k :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 Nat \u2192 Int)\n-- inputs\n(arr: List Int)\n(k: Nat) : Prop :=",
+ "implementation_signature": "def implementation (arr: List Int) (k: Nat) : Int :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 arr k, problem_spec impl arr k) \u2194\n(\u2200 arr k, generated_spec impl arr k) :=",
+ "nl": "function_signature: \"def add_elements(arr: List[int], k: int) -> int\"\ndocstring: |\n    Given a non-empty array of integers arr and an integer k, return\n    the sum of the elements with at most two digits from the first k elements of arr.\n\n    Constraints:\n        1. 1 <= len(arr) <= 100\n        2. 1 <= k <= len(arr)\ntest_cases:\n  - input: [[111, 21, 3, 4000, 5, 6, 7, 8, 9], 4]\n    expected_output: 24",
+ "problem_id": 122,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: List Int \u2192 Nat \u2192 Int)\n-- inputs\n(arr: List Int)\n(k: Nat) :=\n-- spec\nlet spec (result: Int) :=\n  1 \u2264 arr.length \u2192 arr.length \u2264 100 \u2192 1 \u2264 k \u2192 k \u2264 arr.length \u2192\n  ((\u2200 i, 0 \u2264 i \u2227 i < k \u2192 \u00ac(arr[i]! \u2264 99 \u2227 -99 \u2264 arr[i]!)) \u2192 result = 0) \u2227\n  \u2203 i, i < k\n    \u2227 arr[i]! \u2264 99 \u2227 -99 \u2264 arr[i]!\n    \u2227 result = arr[i]! + (if i = 0 then 0 else impl arr i)\n    \u2227 \u2200 i', i < i' \u2227 i' < k \u2192 \u00ac(arr[i']! \u2264 99 \u2227 -99 \u2264 arr[i']!)\n-- program termination\n\u2203 result, impl arr k = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation ([111, 21, 3, 4000, 5, 6, 7, 8, 9]: List Int) 4 = 24"
+}

@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(l: List String)\n: problem_spec implementation l\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List String \u2192 String)\n-- inputs\n(l: List String) : Prop :=",
+ "implementation_signature": "def implementation (l: List String) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 l, problem_spec impl l) \u2194\n(\u2200 l, generated_spec impl l) :=",
+ "nl": "function_signature: \"def match_parens(l : list[str]) -> str\"\ndocstring: |\n    You are given a list of two strings, both strings consist of open\n    parentheses '(' or close parentheses ')' only.\n    Your job is to check if it is possible to concatenate the two strings in\n    some order, that the resulting string will be good.\n    A string S is considered to be good if and only if all parentheses in S\n    are balanced. For example: the string '(())()' is good, while the string\n    '())' is not.\n    Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.\ntest_cases:\n  - input: ['()(', ')']\n    expected_output: \"Yes\"\n  - input: [')', ')']\n    expected_output: \"No\"",
+ "problem_id": 119,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List String \u2192 String)\n-- inputs\n(l: List String) :=\n-- spec\nlet spec (result : String) :=\n  l.length = 2 \u2192\n  l[0]!.all (fun c => c = '(' \u2228 c = ')') \u2192\n  l[1]!.all (fun c => c = '(' \u2228 c = ')') \u2192\n  let res := (balanced_paren_non_computable (l[0]! ++ l[1]!) '(' ')' \u2228\n            balanced_paren_non_computable (l[1]! ++ l[0]!) '(' ')')\n  (res \u2192 result = \"Yes\") \u2227\n  (\u00ac res \u2192 result = \"No\")\n-- program termination\n\u2203 result,\n  implementation l = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation ['()(', ')'] = \"Yes\"\n#test implementation [')', ')'] = \"No\""
+}

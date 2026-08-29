@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat)\n-- inputs\n(n: Nat) : Prop :=",
+ "nl": "function_signature: \"def digits(n: int) -> int\"\ndocstring: |\n    Given a positive integer n, return the product of the odd digits.\n    Return 0 if all digits are even.\ntest_cases:\n  - input: 1\n    expected_output: 1\n  - input: 4\n    expected_output: 0\n  - input: 235\n    expected_output: 15",
+ "problem_id": 131
+}

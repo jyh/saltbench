@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(numbers: List Int)\n(delimeter: Int)\n: problem_spec implementation numbers delimeter\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: List Int \u2192 Int \u2192 List Int)\n-- inputs\n(numbers: List Int)\n(delimeter: Int) : Prop :=",
+ "implementation_signature": "def implementation (numbers: List Int) (delimeter: Int) : List Int :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 implementation,\n(\u2200 numbers delimeter, problem_spec implementation numbers delimeter) \u2194\n(\u2200 numbers delimeter, generated_spec implementation numbers delimeter) :=",
+ "nl": "function_signature: \"def intersperse(numbers: List[int], delimeter: int) -> List[int]\"\ndocstring: |\n    Insert a number 'delimeter' between every two consecutive elements of input list `numbers'\ntest_cases:\n  - input:\n      - []\n      - 4\n    expected_output: []\n  - input:\n      - [1, 2, 3]\n      - 4\n    expected_output: [1, 4, 2, 4, 3]",
+ "problem_id": 5,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List Int \u2192 Int \u2192 List Int)\n-- inputs\n(numbers: List Int)\n(delimeter: Int) :=\n-- spec\nlet spec (result: List Int) :=\n(result.length = 0 \u2227 result = numbers) \u2228\n(result.length = 2 \u2227 numbers.length = 1 \u2227\nresult[0]! = numbers[0]! \u2227 result[1]! = delimeter) \u2228\n(result.length = 2 * numbers.length - 1 \u2227\n\u2200 i, i < numbers.length \u2192\nresult[2 * i]! = numbers[i]! \u2227\n(0 < 2*i - 1 \u2192 result[2 * i - 1]! = delimeter));\n-- program termination\n\u2203 result, implementation numbers delimeter = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [1, 2, 3] 4 = [1, 4, 2, 4, 3]\n#test implementation [] 4 = []\n#test implementation [1] 4 = [1]"
+}

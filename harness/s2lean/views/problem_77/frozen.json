@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(a: Int)\n: problem_spec implementation a\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Int \u2192 Bool)\n-- inputs\n(a: Int) : Prop :=",
+ "implementation_signature": "def implementation (a: Int) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 a, problem_spec impl a) \u2194\n(\u2200 a, generated_spec impl a) :=",
+ "nl": "function_signature: \"def iscube(a: int) -> bool\"\ndocstring: |\n    Write a function that takes an integer a and returns True if this integer is a cube of some integer number.\n    Note: you may assume the input is always valid.\ntest_cases:\n  - input: 1\n    expected_output: True\n  - input: 2\n    expected_output: False\n  - input: -1\n    expected_output: True\n  - input: 64\n    expected_output: True\n  - input: 0\n    expected_output: True\n  - input: 180\n    expected_output: False",
+ "problem_id": 77,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Int \u2192 Bool)\n-- inputs\n(a: Int) :=\n-- spec\nlet spec (result: Bool) :=\n  result \u2194 exists n: Int, a = n^3\n-- program termination\n\u2203 result, implementation a = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 1 = True\n#test implementation 2 = False\n#test implementation -1 = True\n#test implementation 64 = True\n#test implementation 180 = False\n#test implementation 1000 = True\n#test implementation 0 = True\n#test implementation 1729 = False"
+}

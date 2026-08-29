@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Nat \u2192 List Nat)\n-- inputs\n(lst: List Nat) : Prop :=",
+ "nl": "function_signature: \"def sort_array(lst : list(int)) -> list(int)\"\ndocstring: |\n    \"\"\"\n    Given an array of non-negative integers, return a copy of the given array after sorting,\n    you will sort the given array in ascending order if the sum( first index value, last index value) is odd,\n    or sort it in descending order if the sum( first index value, last index value) is even.\n    Note(George): I have elected to ignore the copy part.\ntest_cases:\n  - input: []\n    output: []\n  - input: [5]\n    output: [5]\n  - input: [2, 4, 3, 0, 1, 5]\n    output: [0, 1, 2, 3, 4, 5]\n  - input: [2, 4, 3, 0, 1, 5, 6]\n    output: [6, 5, 4, 3, 2, 1, 0]",
+ "problem_id": 88
+}

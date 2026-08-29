@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(s: String)\n: problem_spec implementation s\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(s: String) : Prop :=",
+ "implementation_signature": "def implementation (s: String) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 s, problem_spec impl s) \u2194\n(\u2200 s, generated_spec impl s) :=",
+ "nl": "function_signature: \"def prime_length(s: str) -> bool\"\ndocstring: |\n    Write a function that takes a string and returns True if the string\n    length is a prime number or False otherwise\ntest_cases:\n  - input: \"Hello\"\n    output: True\n  - input: \"abcdcba\"\n    output: True\n  - input: \"kittens\"\n    output: True\n  - input: \"orange\"\n    output: False",
+ "problem_id": 82,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: String \u2192 Bool)\n-- inputs\n(s: String) :=\n-- spec\nlet spec (result : Bool) :=\nlet is_prime (n: Nat) : Prop :=\n  2 \u2264 n \u2227 \u00ac (\u2203 k, 2 \u2264 k \u2227 k < n \u2227 n % k = 0);\n  result \u2194 is_prime s.length\n-- program termination\n\u2203 result,\n  implementation s = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"Hello\" = True\n#test implementation \"abcdcba\" = True\n#test implementation \"kittens\" = True\n#test implementation \"orange\" = False"
+}

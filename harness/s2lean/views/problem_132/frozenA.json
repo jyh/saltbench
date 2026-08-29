@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(lst: String) : Prop :=",
+ "nl": "function_signature: \"def is_nested(string: str) -> Bool\"\ndocstring: |\n    Create a function that takes a string as input which contains only parentheses.\n    The function should return True if and only if there is a valid subsequence of parentheses\n    where at least one parenthesis in the subsequence is nested.\ntest_cases:\n  - input: '(())'\n    expected_output: True\n  - input: '()))))))((((()'\n    expected_output: False\n  - input: '()()'\n    expected_output: False\n  - input: '()'\n    expected_output: False\n  - input: '(()())'\n    expected_output: True\n  - input: '(())(('\n    expected_output: True",
+ "problem_id": 132
+}

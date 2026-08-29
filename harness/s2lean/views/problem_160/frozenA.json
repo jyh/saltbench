@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List String \u2192 List Nat \u2192 Int)\n-- inputs\n(operator : List String)\n(operand : List Nat) : Prop :=",
+ "nl": "function_signature: \"def do_algebra(operator: List String, operand: List Nat) -> Int\"\ndocstring: |\n    Given two lists operator, and operand. The first list has basic algebra operations, and\n    the second list is a list of integers. Use the two given lists to build the algebric\n    expression and return the evaluation of this expression.\n\n    The basic algebra operations:\n    Addition ( + )\n    Subtraction ( - )\n    Multiplication ( * )\n    Floor division ( // )\n    Exponentiation ( ** )\n\n    Note:\n        The length of operator list is equal to the length of operand list minus one.\n        Operand is a list of of non-negative integers.\n        Operator list has at least one operator, and operand list has at least two operands.\ntest_cases:\n  - input: [['+', '*', '-'], [2, 3, 4, 5]]\n    expected_output: 9",
+ "problem_id": 160
+}

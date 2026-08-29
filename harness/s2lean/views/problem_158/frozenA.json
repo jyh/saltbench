@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List String \u2192 String)\n-- inputs\n(words: List String) : Prop :=",
+ "nl": "function_signature: \"def find_max(words: List String) -> String\"\ndocstring: |\n    Write a function that accepts a list of strings.\n    The list contains different words. Return the word with maximum number\n    of unique characters. If multiple strings have maximum number of unique\n    characters, return the one which comes first in lexicographical order.\ntest_cases:\n  - input: [\"name\", \"of\", \"string\"]\n    expected_output: \"string\"\n  - input: [\"name\", \"enam\", \"game\"]\n    expected_output: \"enam\"\n  - input: [\"aaaaaaa\", \"bb\", \"cc\"]\n    expected_output: \"aaaaaaa\"",
+ "problem_id": 158
+}

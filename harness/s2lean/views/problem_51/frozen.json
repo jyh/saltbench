@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(s: String)\n: problem_spec implementation s\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(string : String) : Prop :=",
+ "implementation_signature": "def implementation (string: String) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 string, problem_spec impl string) \u2194\n(\u2200 string, generated_spec impl string) :=",
+ "nl": "function_signature: \"def remove_vowels(string: str) -> string\"\ndocstring: |\n    remove_vowels is a function that takes string and returns string without vowels.\ntest_cases:\n  - input: \"\"\n    expected_output: \"\"\n  - input: \"abcdef\\nghijklm\"\n    expected_output: \"bcdf\\nghjklm\"\n  - input: \"abcdef\"\n    expected_output: \"bcdf\"\n  - input: \"aaaaa\"\n    expected_output: \"\"\n  - input: \"aaBAA\"\n    expected_output: \"B\"",
+ "problem_id": 51,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: String \u2192 String)\n-- inputs\n(string: String) :=\nlet is_consonant (c: Char): Bool :=\n  let vowels := \"aeiouAEIOU\"\n  not (vowels.contains c);\n-- spec\nlet spec (result: String) :=\nresult.all (\u03bb c => is_consonant c) \u2227 result.length \u2264 string.length \u2227\n\u2200 c, result.contains c \u2192 string.contains c \u2227\n\u2200 c , string.contains c \u2227 is_consonant c \u2192 (result.contains c);\n-- program termination\n\u2203 result, implementation string = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"\" = \"\"\n#test implementation \"cat\" = \"catac\"\n#test implementation \"cata\" = \"catac\""
+}

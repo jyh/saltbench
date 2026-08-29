@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(nums: List Int)\n: problem_spec implementation nums\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 Int)\n-- inputs\n(nums: List Int) : Prop :=",
+ "implementation_signature": "def implementation (nums: List Int) : Int :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 nums, problem_spec impl nums) \u2194\n(\u2200 nums, generated_spec impl nums) :=",
+ "nl": "function_signature: \"def minSubArraySum(nums : list[int]) -> int\"\ndocstring: |\n    Given an array of integers nums, find the minimum sum of any non-empty sub-array\n    of nums.\ntest_cases:\n  - input: [2, 3, 4, 1, 2, 4]\n    expected_output: 1\n  - input: [-1, -2, -3]\n    expected_output: -6",
+ "problem_id": 114,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List Int \u2192 Int)\n-- inputs\n(nums: List Int) :=\n-- spec\nlet spec (result : Int) :=\n  (\u2200 subarray \u2208 nums.sublists,\n    subarray.length > 0 \u2192\n    result \u2264 subarray.sum) \u2227\n  (\u2203 subarray \u2208 nums.sublists,\n    subarray.length > 0 \u2227\n    result = subarray.sum)\n-- program termination\n\u2203 result,\n  implementation nums = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [2, 3, 4, 1, 2, 4] = 1\n#test implementation [-1, -2, -3] = -6"
+}

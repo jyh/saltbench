@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(s: String) : Prop :=",
+ "nl": "function_signature: \"def encode_cyclic(s: str) -> str\"\ndocstring: |\n  Returns an encoded string by cycling each group of three consecutive characters.\n  Specifically, each group of exactly three characters 'abc' is transformed to 'bca'.\n  Groups of fewer than three characters at the end of the string remain unchanged.\ntest_cases:\n  - input: \"abcdef\"\n    expected_output: \"bcaefd\"\n  - input: \"abcde\"\n    expected_output: \"bcade\"\n  - input: \"ab\"\n    expected_output: \"ab\"",
+ "problem_id": 38
+}

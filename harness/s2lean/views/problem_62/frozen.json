@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(xs: List Int)\n: problem_spec implementation xs :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 List Int)\n-- inputs\n(xs : List Int) : Prop :=",
+ "implementation_signature": "def implementation (xs: List Int) : List Int :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 xs, problem_spec impl xs) \u2194\n(\u2200 xs, generated_spec impl xs) :=",
+ "nl": "function_signature: \"def derivative(xs: List Int) -> List Int\"\ndocstring: |\n    xs represent coefficients of a polynomial.\n    xs[0] + xs[1] * x + xs[2] * x^2 + ....\n     Return derivative of this polynomial in the same form.\ntest_cases:\n  - input: [3, 1, 2, 4, 5]\n    expected_output: [1, 4, 12, 20]\n  - input: [1, 2, 3]\n    expected_output: [2, 6]",
+ "problem_id": 62,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: List Int \u2192 List Int)\n-- inputs\n(xs: List Int) :=\n-- spec\nlet spec (result: List Int) :=\n  result.length = xs.length - 1 \u2227\n  result = (check_derivative xs.reverse).reverse\n-- program terminates\n\u2203 result, impl xs = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [3, 1, 2, 4, 5] : List Int = [1, 4, 12, 20]\n#test implementation [1, 2, 3] : List Int = [2, 6]"
+}

@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(txt: String)\n: problem_spec implementation txt :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(txt: String) : Prop :=",
+ "implementation_signature": "def implementation (txt: String) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 txt, problem_spec impl txt) \u2194\n(\u2200 txt, generated_spec impl txt) :=",
+ "nl": "function_signature: \"def check_if_last_char_is_a_letter(txt: str) -> Bool\"\ndocstring: |\n    Create a function that returns True if the last character\n    of a given string is an alphabetical character and is not\n    a part of a word, and False otherwise.\n    Note: \"word\" is a group of characters separated by space.\ntest_cases:\n  - input: \"apple pie\"\n    expected_output: False\n  - input: \"apple pi e\"\n    expected_output: True\n  - input: \"apple pi e \"\n    expected_output: False\n  - input: \"\"\n    expected_output: False",
+ "problem_id": 134,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(txt: String) :=\n-- spec\nlet spec (result: Bool) :=\n  let words := txt.splitOn \" \";\n  match words with\n  | [] => result = False\n  | [last_word] => (result \u2194 last_word.length = 1 \u2227 (let diff := (last_word.get 0).toLower.toNat - 'a'.toNat; 0 \u2264 diff \u2227 diff \u2264 25))\n  | head::tail => result \u2194 (let tail_txt := String.join tail; impl tail_txt);\n-- program terminates\n\u2203 result, impl txt = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"apple pie\" = false\n#test implementation \"apple pi e\" = true\n#test implementation \"apple pi e \" = false\n#test implementation \"\" = false"
+}

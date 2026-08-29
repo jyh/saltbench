@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(a b: String)\n: problem_spec implementation a b :=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String \u2192 Bool)\n-- inputs\n(a b: String) : Prop :=",
+ "implementation_signature": "def implementation (a b: String) : Bool :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 a b, problem_spec impl a b) \u2194\n(\u2200 a b, generated_spec impl a b) :=",
+ "nl": "function_signature: \"def cycpattern_check(String a, String b) -> Bool\"\ndocstring: |\n    You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word, else False\ntest_cases:\n  - input: [\"abcd\", \"abd\"]\n    expected_output: False\n  - input: [\"hello\", \"ell\"]\n    expected_output: True\n  - input: [\"whassup\", \"psus\"]\n    expected_output: False\n  - input: [\"abab\", \"baa\"]\n    expected_output: True\n  - input: [\"efef\", \"eeff\"]\n    expected_output: False\n  - input: [\"himenss\", \"simen\"]\n    expected_output: True",
+ "problem_id": 154,
+ "problem_spec": "def problem_spec\n-- function signature\n(impl: String \u2192 String \u2192 Bool)\n-- inputs\n(a b: String) :=\n-- spec\nlet spec (result: Bool) :=\n(b.length = 0 \u2192 result) \u2227\n(0 < b.length \u2192\nresult \u2194 ((b.length \u2264 a.length) \u2227\n  (\u2203 i : Nat, i < b.length \u2227\n  let b_rotation := (b.drop i).toString ++ (b.take i).toString;\n  a.containsSubstr b_rotation)));\n-- program terminates\n\u2203 result, impl a b = result \u2227\n-- return value satisfies spec\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"abcd\" \"abd\" = False\n#test implementation \"hello\" \"ell\" = True\n#test implementation \"whassup\" \"psus\" = False\n#test implementation \"abab\" \"baa\" = True\n#test implementation \"efef\" \"eeff\" = False\n#test implementation \"himenss\" \"simen\" = True"
+}

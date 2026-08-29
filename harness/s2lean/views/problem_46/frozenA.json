@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat)\n-- inputs\n(x: Nat) : Prop :=",
+ "nl": "function_signature: \"def fib4(n: int)\"\ndocstring: |\n    The Fib4 number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:\n    fib4(0) -> 0\n    fib4(1) -> 0\n    fib4(2) -> 2\n    fib4(3) -> 0\n    fib4(n) -> fib4(n-1) + fib4(n-2) + fib4(n-3) + fib4(n-4).\n    Please write a function to efficiently compute the n-th element of the fib4 number sequence.  Do not use recursion.\ntest_cases:\n  - input: 5\n    output: 4\n  - input: 6\n    output: 8\n  - input: 7\n    output: 14",
+ "problem_id": 46
+}

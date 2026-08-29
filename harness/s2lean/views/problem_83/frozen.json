@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(n: Nat)\n: problem_spec implementation n\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat)\n-- inputs\n(n: Nat) : Prop :=",
+ "implementation_signature": "def implementation (n: Nat) : Nat :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 n, problem_spec impl n) \u2194\n(\u2200 n, generated_spec impl n) :=",
+ "nl": "function_signature: \"def starts_one_ends(n: int) -> int\"\ndocstring: |\n    Given a positive integer n, return the count of the numbers of n-digit\n    positive integers that start or end with 1.\n    Note: For reviewer, I believe this is the most straightforward spec, and I am relying on Set cardianlity not being computable in general. The point of this problem is really to privide a formula.\n    Note: But I guess a program that goes through each number and adds 1 will be the same as a program that computes in O(1) under this view.\ntest_cases:\n  - input: 1\n    output: 1\n  - input: 2\n    output: 18",
+ "problem_id": 83,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Nat \u2192 Nat)\n-- inputs\n(n: Nat) :=\n-- spec\nlet spec (result : Nat) :=\n  0 < n \u2192\n  result = {k : \u2115 | 10 ^ (n - 1) \u2264 k \u2227 k < 10 ^ n \u2227 (k.repr.front = '1' \u2228 k.repr.back = '1')}.ncard\n-- program termination\n\u2203 result,\n  implementation n = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 1 = 1\n#test implementation 2 = 18"
+}

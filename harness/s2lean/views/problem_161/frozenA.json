@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(s : String) : Prop :=",
+ "nl": "function_signature: \"def solve(string : String) -> String\"\ndocstring: |\n    You are given a string s.\n    if s[i] is a letter, reverse its case from lower to upper or vise versa,\n    otherwise keep it as it is.\n    If the string contains no letters, reverse the string.\n    The function should return the resulted string.\ntest_cases:\n  - input: \"1234\"\n    expected_output: \"4321\"\n  - input: \"ab\"\n    expected_output: \"AB\"\n  - input: \"#a@C\"\n    expected_output: \"#A@c\"",
+ "problem_id": 161
+}

@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Int)\n-- inputs\n(num: String) : Prop :=",
+ "nl": "function_signature: \"def hex_key(num: string) -> int\"\ndocstring: |\n    You have been tasked to write a function that receives\n    a hexadecimal number as a string and counts the number of hexadecimal\n    digits that are primes (prime number, or a prime, is a natural number\n    greater than 1 that is not a product of two smaller natural numbers).\n    Hexadecimal digits are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F.\n    Prime numbers are 2, 3, 5, 7, 11, 13, 17,...\n    So you have to determine a number of the following digits: 2, 3, 5, 7,\n    B (=decimal 11), D (=decimal 13).\n    Note: you may assume the input is always correct or empty string,\n    and symbols A,B,C,D,E,F are always uppercase.\ntest_cases:\n  - input: \"AB\"\n    expected_output: 1\n  - input: \"1077E\"\n    expected_output: 2\n  - input: \"ABED1A33\"\n    expected_output: 4\n  - input: \"123456789ABCDEF0\"\n    expected_output: 6\n  - input: \"2020\"\n    expected_output: 2",
+ "problem_id": 78
+}

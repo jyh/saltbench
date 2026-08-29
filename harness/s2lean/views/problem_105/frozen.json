@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(arr: List Int)\n: problem_spec implementation arr\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 List String)\n-- inputs\n(arr: List Int) : Prop :=",
+ "implementation_signature": "def implementation (arr: List Int) : List String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 arr, problem_spec impl arr) \u2194\n(\u2200 arr, generated_spec impl arr) :=",
+ "nl": "function_signature: \"def by_length(arr: List[int]) -> List[string]\"\ndocstring: |\n    Given an array of integers, sort the integers that are between 1 and 9 inclusive,\n    reverse the resulting array, and then replace each digit by its corresponding name from\n    \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\".\ntest_cases:\n  - input: [2, 1, 1, 4, 5, 8, 2, 3]\n    expected_output: [\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"]\n  - input: []\n    expected_output: []\n  - input: [1, -1 , 55]\n    expected_output: ['One']",
+ "problem_id": 105,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List Int \u2192 List String)\n-- inputs\n(arr: List Int) :=\n-- spec\nlet spec (result: List String) :=\n  let digits: List String := [\"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\"];\n  (forall s: String, (s \u2208 result \u2192 s \u2208 digits)) \u2227\n  (arr.length \u2265 result.length) \u2227\n  (forall x: Nat, ((x: Int) \u2208 arr \u2227 1 \u2264 x \u2227 x \u2264 9) \u2192 (digits[x-1]! \u2208 result)) \u2227\n  (List.Sorted Int.le (List.map (fun (s: String) => (List.idxOf s digits) + 1) result).reverse)\n-- program termination\n\u2203 result, implementation arr = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [2, 1, 1, 4, 5, 8, 2, 3] = [\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"]\n#test implementation [] = []\n#test implementation [1, -1 , 55] = [\"One\"]\n#test implementation [1, -1, 3, 2] = [\"Three\", \"Two\", \"One\"]\n#test implementation [9, 4, 8] = [\"Nine\", \"Eight\", \"Four\"]"
+}

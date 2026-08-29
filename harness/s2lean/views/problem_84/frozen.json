@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(n: Nat)\n: problem_spec implementation n\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 String)\n-- inputs\n(n: Nat) : Prop :=",
+ "implementation_signature": "def implementation (n: Nat) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 n, problem_spec impl n) \u2194\n(\u2200 n, generated_spec impl n) :=",
+ "nl": "function_signature: \"def solve(n: int) -> str\"\ndocstring: |\n    Given a positive integer N, return the total sum of its digits in binary.\ntest_cases:\n  - input: 1000\n    output: \"1\"\n  - input: 150\n    output: \"110\"\n  - input: 147\n    output: \"1100\"\nNote: The spec formalization takes the result, makes it a list of 0/1s and then reverse it and uses Nat.ofDigits. The reversal is because ofDigits expects little-endian order.",
+ "problem_id": 84,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Nat \u2192 String)\n-- inputs\n(n: Nat) :=\n-- spec\nlet spec (result : String) :=\n  0 < n \u2192\n  result.all (fun c => c = '0' \u2228 c = '1') \u2192\n  Nat.ofDigits 2 (result.data.map (fun c => if c = '0' then 0 else 1)).reverse = (Nat.digits 10 n).sum\n-- program termination\n\u2203 result,\n  implementation n = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 1000 = \"1\"\n#test implementation 150 = \"110\"\n#test implementation 147 = \"1100\""
+}

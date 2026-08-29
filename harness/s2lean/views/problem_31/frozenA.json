@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: Nat \u2192 Bool)\n-- inputs\n(n: Nat) : Prop :=",
+ "nl": "function_signature: \"def is_prime(n)\"\ndocstring: |\n    Return true if a given number is prime, and false otherwise.\ntest_cases:\n  - input: 6\n    output: False\n  - input: 101\n    output: True\n  - input: 11\n    output: True\n  - input: 13441\n    output: True\n  - input: 61\n    output: True\n  - input: 4\n    output: False\n  - input: 1\n    output: False",
+ "problem_id": 31
+}

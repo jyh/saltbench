@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(n: Nat) (m: Nat)\n: problem_spec implementation n m\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat \u2192 Option String)\n-- inputs\n(n: Nat) (m: Nat) : Prop :=",
+ "implementation_signature": "def implementation (n: Nat) (m: Nat) : Option String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 n m, problem_spec impl n m) \u2194\n(\u2200 n m, generated_spec impl n m) :=",
+ "nl": "function_signature: \"def rounded_avg(n: nat, m: nat) -> Option[string]\"\ndocstring: |\n    You are given two positive integers n and m, and your task is to compute the\n    average of the integers from n through m (including n and m).\n    Round the answer to the nearest integer and convert that to binary.\n    If n is greater than m, return none.\ntest_cases:\n  - input: (1, 5)\n    expected_output: \"0b11\"\n  - input: (7, 5)\n    expected_output: None\n  - input: (10, 20)\n    expected_output: \"0b1111\"\n  - input: (20, 33)\n    expected_output: \"0b11010\"",
+ "problem_id": 103,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: Nat \u2192 Nat \u2192 Option String)\n-- inputs\n(n: Nat) (m: Nat) :=\n-- spec\nlet spec (result: Option String) :=\n  (n > m \u2194 result.isNone) \u2227\n  (n \u2264 m \u2194 result.isSome) \u2227\n  (n \u2264 m \u2192\n    (result.isSome \u2227\n    let val := Option.getD result \"\";\n    let xs := List.Ico n (m+1);\n    let avg := xs.sum / xs.length;\n    (val.take 2 = \"0b\") \u2227\n    (Nat.ofDigits 2 ((val.drop 2).toString.toList.map (fun c => c.toNat - '0'.toNat)).reverse = avg)))\n-- program termination\n\u2203 result, implementation n m = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation 1 5 = some \"0b11\"\n#test implementation 7 13 = some \"0b1010\"\n#test implementation 964 977 = some \"0b1111001010\"\n#test implementation 996 997 = some \"0b1111100100\"\n#test implementation 185 546 = some \"0b101101101\"\n#test implementation 362 496 = some \"0b110101101\"\n#test implementation 350 902 = some \"0b1001110010\"\n#test implementation 197 233 = some \"0b11010111\"\n#test implementation 7 5 = none\n#test implementation 5 1 = none\n#test implementation 5 5 = some \"0b101\""
+}

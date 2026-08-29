@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String \u2192 Bool)\n-- inputs\n(s0 s1: String) : Prop :=",
+ "nl": "function_signature: \"def same_chars(s0: string, s1: string) -> Bool\"\ndocstring: Check if two words have the same characters.\ntest_cases:\n  - input: ['eabcdzzzz', 'dddzzzzzzzddeddabc']\n    expected_output: True\n  - input: ['eabcd', 'dddddddabc']\n    expected_output: False",
+ "problem_id": 54
+}

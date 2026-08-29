@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: Nat \u2192 Nat)\n-- inputs\n(x : Nat) : Prop :=",
+ "nl": "function_signature: \"def largest_prime_factor(n: Nat) -> Nat\"\ndocstring: |\n    Return the largest prime factor of n. Assume n > 1 and is not a prime.\ntest_cases:\n  - input: 13195\n    expected_output: 29\n  - input: 2048\n    expected_output: 2",
+ "problem_id": 59
+}

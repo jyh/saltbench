@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: String \u2192 String)\n-- inputs\n(string: String) : Prop :=",
+ "nl": "function_signature: \"def flip_case(string: str) -> str\"\ndocstring: |\n    For a given string, flip lowercase characters to uppercase and uppercase to lowercase.\ntest_cases:\n  - input: \"Hello\"\n    expected_output: \"hELLO\"",
+ "problem_id": 27
+}

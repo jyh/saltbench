@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Std.HashMap Char Nat)\n-- inputs\n(s: String) : Prop :=",
+ "nl": "function_signature: \"def histogram(s : str) -> Dict[str, int]\"\ndocstring: |\n    Given a string representing a space separated lowercase letters, return a dictionary\n    of the letter with the most repetition and containing the corresponding count.\n    If several letters have the same occurrence, return all of them.\n    -- Note(George): I believe the equality extensionality for HashMaps makes this spec true.\ntest_cases:\n  - input: 'a b c'\n    expected_output: {'a': 1, 'b': 1, 'c': 1}\n  - input: 'a b b a'\n    expected_output: {'a': 2, 'b': 2}\n  - input: 'a b c a b'\n    expected_output: {'a': 2, 'b': 2}\n  - input: 'b b b b a'\n    expected_output: {'b': 4}\n  - input: ''\n    expected_output: {}",
+ "problem_id": 111
+}

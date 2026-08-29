@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 Bool)\n-- inputs\n(x: String) : Prop :=",
+ "nl": "function_signature: \"def is_palindrome(string: str) -> Bool\"\ndocstring: |\n    Checks if given string is a palindrome\ntest_cases:\n  - input: \"\"\n    expected_output: True\n  - input: \"aba\"\n    expected_output: True\n  - input: \"aaaaa\"\n    expected_output: \"True\"\n  - input: \"zbcd\"\n    expected_output: \"False\"",
+ "problem_id": 48
+}

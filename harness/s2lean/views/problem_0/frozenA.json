@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Rat \u2192 Rat \u2192 Bool)\n-- inputs\n(numbers: List Rat)\n(threshold: Rat) : Prop :=",
+ "nl": "function_signature: \"def has_close_elements(numbers: List[float], threshold: float) -> bool\"\ndocstring: Check if in given list of numbers, are any two numbers closer to each other than given threshold.\ntest_cases:\n  - input: [[1.0, 2.0, 3.0], 0.5]\n    expected_output: False\n  - input: [[1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3]\n    expected_output: True",
+ "problem_id": 0
+}

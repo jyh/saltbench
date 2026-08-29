@@ -1,0 +1,5 @@
+{
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: List Int \u2192 Option Int)\n-- inputs\n(lst: List Int) : Prop :=",
+ "nl": "function_signature: \"def next_smallest(lst: List[int]) -> Optional[int]\"\ndocstring: |\n    You are given a list of integers.\n    Write a function next_smallest() that returns the 2nd smallest element of the list.\n    Return None if there is no such element.\n    TODO(George): Remove this when being reviewed\n    The spec is defined as: if result is none there is no second smallest element, which\n    exists in a finite list iff there are at least two distinct elements in the list.\n    If result is some x, then x is the second smallest element of the list, the spec\n    obtains the sublist of elements smaller than the result, and checks that this\n    sublist does not contain two distinct elements (they are all the same).\ntest_cases:\n  - input: [1, 2, 3, 4, 5]\n    output: 2\n  - input: [5, 1, 4, 3, 2]\n    output: 2\n  - input: []\n    output: None\n  - input: [1, 1]\n    output: None",
+ "problem_id": 90
+}

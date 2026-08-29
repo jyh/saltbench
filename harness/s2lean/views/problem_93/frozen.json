@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(s: String)\n: problem_spec implementation s\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(s: String) : Prop :=",
+ "implementation_signature": "def implementation (s: String) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 s, problem_spec impl s) \u2194\n(\u2200 s, generated_spec impl s) :=",
+ "nl": "function_signature: \"def encode(s : str) -> str\"\ndocstring: |\n    Write a function that takes a message, and encodes in such a\n    way that it swaps case of all letters, replaces all vowels in\n    the message with the letter that appears 2 places ahead of that\n    vowel in the english alphabet.\n    Assume only letters.\ntest_cases:\n  - input: \"test\"\n    expected_output: \"TGST\"\n  - input: \"This is a message\"\n    expected_output: \"tHKS KS C MGSSCGG\"",
+ "problem_id": 93,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: String \u2192 String)\n-- inputs\n(s: String) :=\n-- spec\nlet spec (result : String) :=\n  s.data.all (\u03bb c => c.isAlpha) \u2192\n  result.length = s.length \u2227\n  (\u2200 i, i < s.length \u2192\n    let c := s.data[i]!;\n    let c' := result.data[i]!;\n    match c with\n    | 'a' | 'e' | 'i' | 'o' | 'u' | 'A' | 'E' | 'I' | 'O' | 'U' =>\n      c.isUpper \u2192 c'.val = c.toLower.val + 2 \u2227\n      c.isLower \u2192 c'.val = c.toUpper.val + 2\n    | _ =>\n      c.isUpper \u2192 c' = c.toLower \u2227\n      c.isLower \u2192 c' = c.toUpper)\n-- program termination\n\u2203 result,\n  implementation s = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"test\" = \"TGST\"\n#test implementation \"This is a message\" = \"tHKS KS C MGSSCGG\""
+}

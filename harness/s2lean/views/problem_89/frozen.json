@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(str: String)\n: problem_spec implementation str\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(impl: String \u2192 String)\n-- inputs\n(str: String) : Prop :=",
+ "implementation_signature": "def implementation (str: String) : String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 str, problem_spec impl str) \u2194\n(\u2200 str, generated_spec impl str) :=",
+ "nl": "function_signature: \"def encrypt(str : str) -> str\"\ndocstring: |\n    Create a function encrypt that takes a string as an argument and\n    returns a string encrypted with the alphabet being rotated.\n    The alphabet should be rotated in a manner such that the letters\n    shift down by two multiplied to two places.\ntest_cases:\n  - input: \"hi\"\n    output: \"lm\"\n  - input: \"asdfghjkl\"\n    output: \"ewhjklnop\"\n  - input: \"gf\"\n    output: \"kj\"\n  - input: \"et\"\n    output: \"ix\"",
+ "problem_id": 89,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: String \u2192 String)\n-- inputs\n(str: String) :=\n-- spec\nlet spec (result : String) :=\n  result.data.all (fun c => c.isLower) \u2192\n  result.length = str.length \u2227\n  (\u2200 i, i < str.length \u2192\n    let c := str.data[i]!\n    let c' := result.data[i]!\n    ((c'.toNat - 97) + 2 * 2) % 26 = (c.toNat - 97))\n-- program termination\n\u2203 result,\n  implementation str = result \u2227\n  spec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation \"hi\" = \"lm\"\n#test implementation \"asdfghjkl\" = \"ewhjklnop\"\n#test implementation \"gf\" = \"kj\"\n#test implementation \"et\" = \"ix\""
+}

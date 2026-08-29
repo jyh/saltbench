@@ -1,0 +1,11 @@
+{
+ "correctness_theorem": "theorem correctness\n(strings: List String)\n(substring: String)\n: problem_spec implementation strings substring\n:=",
+ "generated_spec_header": "def generated_spec\n-- function signature\n(implementation: List String \u2192 String \u2192 List String)\n-- inputs\n(strings: List String)\n(substring: String) : Prop :=",
+ "implementation_signature": "def implementation (strings: List String) (substring: String): List String :=",
+ "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 implementation,\n(\u2200 strings substring, problem_spec implementation strings substring) \u2194\n(\u2200 strings substring, generated_spec implementation strings substring) :=",
+ "nl": "function_signature: \"def filter_by_substring(strings: List[str], substring: str) -> List[str]\"\ndocstring: |\n  Filter an input list of strings only for ones that contain given substring\ntest_cases:\n  - input:\n    - []\n    - \"a\"\n    expected_output: []\n  - input:\n    - [\"abc\", \"bacd\", \"cde\", \"array\"]\n    - \"a\"\n    expected_output: [\"abc\", \"bacd\", \"array\"]",
+ "problem_id": 7,
+ "problem_spec": "def problem_spec\n-- function signature\n(implementation: List String \u2192 String \u2192 List String)\n-- inputs\n(strings: List String)\n(substring: String)\n:=\n-- spec\nlet spec (result: List String) :=\n(\u2200 i, i < result.length \u2192 result[i]!.containsSubstr substring \u2192\n\u2200 j, j < strings.length \u2227 strings[j]!.containsSubstr substring \u2192 strings[j]! \u2208 result \u2192\n\u2200 j, j < result.length \u2192 result.count result[j]! = strings.count result[j]!);\n-- program termination\n\u2203 result, implementation strings substring = result \u2227\nspec result",
+ "shipped_generated_spec_body": "sorry",
+ "test_cases": "#test implementation [] \"a\" = []\n#test implementation [\"abc\", \"bacd\", \"cde\", \"array\"] \"a\" = [\"abc\", \"bacd\", \"array\"]"
+}
