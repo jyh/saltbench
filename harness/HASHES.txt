@@ -1,4 +1,4 @@
-# HASHES — regenerate with harness/hashes.sh; sha256; generated 2026-08-29T01:43:02Z
+# HASHES — regenerate with harness/hashes.sh; sha256; generated 2026-08-29T01:47:25Z
 base.md 9ada9241a09ae82621f227bf316c46697f40b134c5005e269ca4722f49794f09
 prompt.md 0a33c3a46e7b08034c06041910518f98d4b08728c12d18c327d7c0fc81cd2288
 rt.template c46e59af03b0b9f1f6ed5db15594678646053e7e4d9f856ae14763ee6757f7ea

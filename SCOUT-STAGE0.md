@@ -528,3 +528,21 @@ Whether such a patch applies is the harness's verdict; the flag is printed besid
 per-episode table: `RESULTS-stage0-2026-08-29.md`; archive under `runs/stage0-2026-08-28/`. The morning line's
 model-equality check compared call counts instead of model names (a reporting bug, fixed in `morning_line.py`;
 the corrected line is the one recorded). The a0 p90 the cap rule consumes is **1,602,434**.
+
+**Amendment 1, addendum 6 (2026-08-29 02:0x — the CONTAMINATION CHECK, stated BEFORE it is computed; the
+Captain's word via the helm 18:5x; PRE-REG §4 mandates it first because the control landed 13/15 = 87 %, above
+the 40–60 % band):** instrument = PRE-REG §5's proxy, run on the SEAT (gold never nears the agent host):
+per task and arm, **sim := 1 − Levenshtein(C(A), C(G)) / max(|C(A)|, |C(G)|)** at character level, where
+C(P) is the sequence of a patch's changed lines (`+`/`-`, headers excluded, sign kept, whitespace
+normalised) **restricted to the files the gold patch touches**; `exact` := the multiset of changed lines
+equals gold's. **CUT: HIGH iff sim ≥ 0.80.** Reported as a distribution over all 15 tasks per arm, the
+unrestricted sim beside it, and the gold's changed-line count. **Named confound, stated now:** a forced minimal
+fix is similar to gold whether or not the model has seen it — tasks whose gold changes ≤ 4 lines are flagged
+small-fix and the reading is also given without them. **Reading rule, over RESOLVED a0 tasks:** f_high =
+fraction in HIGH; **f_high ≥ 2/3 ⇒ CONTAMINATION-CONSISTENT** (memorisation and forced fixes are not
+separable by this instrument; the honest next substrate is S2-Lean, where the kernel decides); **f_high ≤ 1/3
+⇒ CAPABILITY-CONSISTENT**; otherwise INDETERMINATE, reported as such. Normative form: `harness/contamination.py`,
+committed at this addendum's commit and run only after it. A secondary, UNREGISTERED and exploratory
+reading — a judge panel quoting non-forced verbatim overlap (comments, names, structure) between agent and
+gold patches — may be reported as evidence beside the number; it moves no reading. Nothing else moves
+until this lands.
