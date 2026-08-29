@@ -8,7 +8,7 @@ import glob, json, os, sys
 SCORABLE = ("DONE", "ROUNDS_EXHAUSTED", "WALLCLOCK", "TOKEN_CEILING")
 st, out = sys.argv[1], sys.argv[2]
 ARMS = set(sys.argv[3].split(",")) if len(sys.argv) > 3 else {"a0", "a1"}   # smoke arms (s*) are never scored
-rows, excl, dups = {}, [], []
+rows, excl, dups, notes = {}, [], [], []
 mans = [json.load(open(mp)) | {"_dir": os.path.dirname(mp)} for mp in glob.glob(os.path.join(st, "*", "manifest.json"))]
 excl_ids = set()
 cj = os.path.join(st, "controls.json")
@@ -23,7 +23,16 @@ for m in sorted(mans, key=lambda m: (m.get("end_utc") or 0)):   # LATEST BY END 
     base = t.split("+")[0]
     if base in SCORABLE:
         if key in rows: dups.append({"key": key, "kept": m["episode"], "kept_end_utc": m.get("end_utc"), "dropped": rows[key]["episode"], "dropped_end_utc": rows[key].get("end_utc")})
-        patch = open(os.path.join(os.path.dirname(mp), "model_patch.diff")).read() if m.get("model_patch_bytes") else ""
+        patch = ""; non_utf8 = False
+        if m.get("model_patch_bytes"):
+            raw = open(os.path.join(os.path.dirname(mp), "model_patch.diff"), "rb").read()
+            try:
+                patch = raw.decode("utf-8")
+            except UnicodeDecodeError:
+                # the agent's output is submitted as-is except that bytes no JSON string can carry are replaced;
+                # whether such a patch still applies is the harness's verdict, and the flag travels with the row
+                patch = raw.decode("utf-8", errors="replace"); non_utf8 = True
+                notes.append({"episode": m["episode"], "instance_id": m["instance_id"], "arm": m["arm"], "note": "patch_non_utf8: %d bytes, undecodable bytes replaced" % len(raw)})
         rows[key] = {"episode": m["episode"], "end_utc": m.get("end_utc"), "instance_id": m["instance_id"], "model_name_or_path": "stage0-" + m["arm"], "model_patch": patch, "termination": t}
     else:
         excl.append({"episode": m["episode"], "instance_id": m["instance_id"], "arm": m["arm"], "termination": t})
@@ -32,5 +41,5 @@ for a in arms:
     with open(os.path.join(out, "predictions-%s.jsonl" % a), "w") as f:
         for (i, arm), r in sorted(rows.items()):
             if arm == a: f.write(json.dumps({k: r[k] for k in ("instance_id", "model_name_or_path", "model_patch")}) + "\n")
-json.dump({"excluded": excl, "duplicates": [{"key": list(d["key"]), "kept": d["kept"], "kept_end_utc": d["kept_end_utc"], "dropped": d["dropped"], "dropped_end_utc": d["dropped_end_utc"]} for d in dups]}, open(os.path.join(out, "predictions-excluded.json"), "w"), indent=1)
+json.dump({"notes": notes, "excluded": excl, "duplicates": [{"key": list(d["key"]), "kept": d["kept"], "kept_end_utc": d["kept_end_utc"], "dropped": d["dropped"], "dropped_end_utc": d["dropped_end_utc"]} for d in dups]}, open(os.path.join(out, "predictions-excluded.json"), "w"), indent=1)
 print("scorable rows:", {a: sum(1 for (_, x) in rows if x == a) for a in arms}, "excluded:", len(excl), "duplicates:", len(dups))

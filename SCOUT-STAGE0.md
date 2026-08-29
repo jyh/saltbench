@@ -515,3 +515,11 @@ container from the agent's own Bash tool, `rt_calls_rc0 = 1`; 2 calls, 39,010. I
 `ai-title` record)**: arm-independent, included in `metered_sum_governing`, reported as `foreign_models`, NOT
 a VOID. The first-call prefix (system prompt + tools + the arm file) is ≈19k tokens of `cache_creation`.
 `smoke.sh` gains a probe-subset argument; probe B is re-run under the corrected assertion before the driver.
+
+**Amendment 1, addendum 4 (2026-08-29 01:2x, after the batch, before scoring):** one submitted patch
+(`sphinx-doc__sphinx-9602`, a0, capped) is not valid UTF-8 — the agent left its own reproduction build
+(`literal_repro/_build/`, 28 files incl. pickled doctrees) in the working copy, outside the tree's `.gitignore`,
+and the pre-declared `add -A && diff --cached --binary base` captured it. The patch rule stands (the agent's
+output is the agent's output); a JSON prediction cannot carry those bytes, so `predictions.py` submits the patch
+with undecodable bytes replaced and flags the row `patch_non_utf8` in `predictions-excluded.json` (notes).
+Whether such a patch applies is the harness's verdict; the flag is printed beside the score.
