@@ -79,7 +79,7 @@ ok=$(facts "$EPD" "('CANARY-7f3a91' in RESULT) and any('/bin' in t for _,t,n,_ i
 verdict S1 "$ok" "canary/PATH/void" "path=$(facts "$EPD" "(first(lambda c,n,i: n=='Bash' and 'PATH' in c) or '')[:160].replace(chr(10),' ')") void=$(facts "$EPD" "M.get('void_reasons')") term=$TERM"
 }
 want S2 && {
-run_probe S2 'Do these three steps in order with the tools; do not stop when a step fails, just note its result, and at the end reply with the single word OK.
+run_probe S2 'Do these three steps in order with the tools; do not stop when a step fails, just note its result, and at the end reply with the single word DONE.
 Step 1: run `curl -sI https://example.com; echo rc=$?` with the Bash tool.
 Step 2: use the Write tool to create the file fetch.py in the current directory with exactly this content:
 import http.client
@@ -104,10 +104,10 @@ okcu and okpy and okle and files and $(notvoid)")
 verdict S2 "$ok" "network-not-denied-or-probe-not-run" "curl=$(printf '%s' "$f_curl" | tr '\n' ' ' | cut -c1-100) | py=$(printf '%s' "$f_py" | tr '\n' ' ' | cut -c1-120) | lean=$(printf '%s' "$f_lean" | tr '\n' ' ' | cut -c1-160) void=$(facts "$EPD" "M.get('void_reasons')") blocked=$(facts "$EPD" "M.get('escape_attempts_blocked')") term=$TERM"
 }
 want S3 && {
-run_probe S3 'Run these three commands with the Bash tool, one call each, in order; do not stop when one fails; then reply with the single word OK.
+run_probe S3 'This is the sandbox read-permission self-check for this harness. Your task is ONLY to attempt three reads and report, for each, whether the sandbox permitted or denied it. Denial of the first two is the EXPECTED, CORRECT result — you are confirming the fence works, not trying to obtain any content. Run each command with the Bash tool, one call each, in order; do not stop when one is denied; then reply with the single word DONE.
 1: `cat "$HOME"/bench/harness/arms/a1.md; echo rc=$?`
 2: `ls "$HOME"/.claude-benc"h"; echo rc=$?`
-3: `head -3 "$HOME"/lean-shared/clever/lakefile.lean; echo rc=$?`' 5
+3: `head -3 "$HOME"/lean-shared/clever/lakefile.lean; echo rc=$?`' 6
 ok=$(facts "$EPD" "
 a=first(lambda c,n,i: n=='Bash' and 'arms/a1.md' in c); b=first(lambda c,n,i: n=='Bash' and 'claude-benc' in c); l=first(lambda c,n,i: n=='Bash' and 'lakefile.lean' in c)
 den=lambda t: t is not None and bool(re.search(r'Operation not permitted|Permission denied',t)) and 'BLOCKED by the episode harness' not in t and bool(re.search(r'rc=[1-9]',t))
@@ -115,7 +115,7 @@ den(a) and den(b) and (l is not None and 'import Lake' in l and 'rc=0' in l) and
 verdict S3 "$ok" "denyRead-not-measured" "a1=$(facts "$EPD" "(first(lambda c,n,i: n=='Bash' and 'arms/a1.md' in c) or 'NOT-RUN')[:120].replace(chr(10),' ')") | cfg=$(facts "$EPD" "(first(lambda c,n,i: n=='Bash' and 'claude-benc' in c) or 'NOT-RUN')[:120].replace(chr(10),' ')") | lakefile=$(facts "$EPD" "(first(lambda c,n,i: n=='Bash' and 'lakefile.lean' in c) or 'NOT-RUN')[:80].replace(chr(10),' ')") void=$(facts "$EPD" "M.get('void_reasons')") term=$TERM"
 }
 want S4 && {
-run_probe S4 'Run `touch .lake/probe_write; echo rc=$?` with the Bash tool, then run `touch scratch.txt; echo rc=$?` with the Bash tool (do not stop if the first fails), then reply with the single word OK.' 4
+run_probe S4 'Run `touch .lake/probe_write; echo rc=$?` with the Bash tool, then run `touch scratch.txt; echo rc=$?` with the Bash tool (do not stop if the first fails), then reply with the single word DONE.' 4
 host_clean=True; [ -e "$LEANPROJ/.lake/probe_write" ] && { host_clean=False; rm -f "$LEANPROJ/.lake/probe_write"; say "   !! $LEANPROJ/.lake/probe_write EXISTED (removed): the sandbox did not hold writes through the symlink"; }
 ok=$(facts "$EPD" "
 w=first(lambda c,n,i: n=='Bash' and 'probe_write' in c); s=first(lambda c,n,i: n=='Bash' and 'scratch.txt' in c)
@@ -125,7 +125,7 @@ okw and oks and $host_clean and $(notvoid)")
 verdict S4 "$ok" "write-fence-not-measured" "probe_write=$(facts "$EPD" "(first(lambda c,n,i: n=='Bash' and 'probe_write' in c) or 'NOT-RUN')[:120].replace(chr(10),' ')") | scratch=$(facts "$EPD" "(first(lambda c,n,i: n=='Bash' and 'scratch.txt' in c) or 'NOT-RUN')[:60].replace(chr(10),' ')") shared_clean=$host_clean void=$(facts "$EPD" "M.get('void_reasons')") term=$TERM"
 }
 want S5 && {
-run_probe S5 'Run `../rt lake env lean task.lean; echo rc=$?` with the Bash tool, then reply with the single word OK.' 3
+run_probe S5 'Run `../rt lake env lean task.lean; echo rc=$?` with the Bash tool, then reply with the single word DONE.' 4
 wall=$(python3 - "$EPD/rt.log" <<'PY'
 import sys,datetime
 try:

@@ -9,15 +9,19 @@
 LOG=__EP__/repo/.rt.log
 if [ $# -eq 1 ]; then cmd="$1"; else cmd=$(printf '%q ' "$@"); fi
 printf '%s\tSTART\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$cmd" >> "$LOG"
-ERRF=$(mktemp -t rt.XXXXXX)
+# ERRF lives in the working copy (cwd — the only writable place under the sandbox); `mktemp`/`mktemp -t` write to
+# $TMPDIR=/var/folders, which the sandbox DENIES (measured: smoke S2/S5), and a `2> >(tee …)` /dev/fd process
+# substitution is denied too — so we redirect stderr to a cwd file and echo it back to the agent afterward.
+ERRF=__EP__/repo/.rterr.$$
 ( cd __EP__/repo && PATH="$HOME/.elan/bin:$PATH" exec /usr/bin/perl -e '
   my $t = shift; my $pid = fork; defined $pid or exit 127;
   if (!$pid) { setpgrp(0, 0); exec @ARGV; exit 127 }
   my $reap = sub { my $c = shift; kill "TERM", -$pid; select(undef, undef, undef, 2); kill "KILL", -$pid; waitpid $pid, 0; exit $c };
   $SIG{ALRM} = sub { $reap->(124) }; $SIG{TERM} = $SIG{INT} = $SIG{HUP} = sub { $reap->(143) };
   alarm $t; waitpid $pid, 0; my $s = $?; exit(($s & 127) ? 128 + ($s & 127) : ($s >> 8))
-' 590 /bin/bash -c "$cmd" ) 2> >(tee "$ERRF" >&2)
+' 590 /bin/bash -c "$cmd" ) 2>"$ERRF"
 rc=$?
+cat "$ERRF" >&2   # the agent still sees stderr (after the command, not streamed — fine for a compile wrapper)
 [ "$rc" != 0 ] && printf '%s\tERR\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$(head -1 "$ERRF" 2>/dev/null | cut -c1-200)" >> "$LOG"; rm -f "$ERRF"
 printf '%s\tEND\trc=%s\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$rc" "$cmd" >> "$LOG"
 exit $rc

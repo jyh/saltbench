@@ -348,3 +348,30 @@ hook being the audit not the fence; a body can still read a PUBLIC file into a t
 dated, with their reason — never edited into the text above. The salt arm registers here.*
 
 ---
+
+### Amendment 1 — 2026-08-29, the smoke finding: the FENCE is validated; two harness-plumbing fixes (no scored call yet)
+
+The first model calls on this substrate were the s0 smoke probes the freeze names (F2). Smoke FAILED (S1 PASS,
+S2–S5 FAIL) and correctly refused to start the driver — and it earned its place: it measured the design's ONE
+unverified assumption and found the fence SOUND but the plumbing broken.
+
+**VALIDATED (the design's core assumption, now measured green):** Claude Code's built-in Seatbelt sandbox
+(`settings.s2.json`) HOLDS under `-p --dangerously-skip-permissions --setting-sources user,project` on claude
+2.1.251 — network denied (curl blocked; a Write-then-`python3 fetch.py` fails to connect), the shared build's
+write denied through the `.lake` symlink (`touch .lake/probe_write` → Operation not permitted), cwd writable
+(`touch scratch.txt` rc 0), and — the crux — **`../rt`-less `lake env lean task.lean` COMPILES under the sandbox**
+(LEAN_RC=0, the stage-A view elaborated with its `sorry` warning; driven in ep-7222ac9a). So the kernel checker
+CAN run inside the fence; the substrate is hermetic as designed.
+
+**FIXED (harness plumbing, not the design):** (a) the sandbox does NOT redirect `$TMPDIR` (it stays the login
+`/var/folders/…/T`, which the sandbox then denies), so `rt`'s `mktemp -t rt.XXXXXX` error-capture file and its
+`2> >(tee …)` `/dev/fd` process substitution both hit "Operation not permitted" and `rt` died before ever
+running `lake env lean` (smoke S2/S5). `rt.template` now writes its stderr-capture to a cwd file
+(`__EP__/repo/.rterr.$$`) and echoes it back — no `mktemp`, no `/dev/fd`. (b) Smoke S3 (deny-read of the harness
+trees) came back NOT-RUN because the s0 agent RIGHTLY refused an unframed instruction to read the benchmark's own
+files ("they target benchmark/harness … I'm not going to run those"); the probe is reframed as what it honestly
+is — a sandbox read-permission SELF-CHECK where denial is the expected, correct result — and S2/S4/S5's
+completion word changed from "OK" (which the s0 canary CLAUDE.md hijacks) to "DONE".
+
+No scored episode has run. Re-hash, re-sync, and re-smoke follow; only a green S1–S5 authorizes the a0 control.
+
