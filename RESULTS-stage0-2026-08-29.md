@@ -64,7 +64,7 @@ STAGE-0 MORNING LINE  pairs=15 (tasks with both arms scorable)  excluded_by_cont
 ## Observations (recorded, not narrated)
 
 - **Identical patches:** on `django__django-15315` both arms shipped the byte-identical 704-byte patch (the known fix). Task-level concordance is total: the same 13 resolved, the same 2 unresolved.
-- **Tool use differs by arm as the arm files would predict:** a0 (plain) made 89 `rt` calls across its 15 episodes, a1 (house conventions, no tool-mandating step) made 76. Neither difference moved a score.
+- **Tool use by arm:** a0 (plain) made 89 `rt` calls across its 15 episodes, a1 (house conventions, no tool-mandating step) 76 — somewhat fewer, not none; the difference moved no score. (My bus post of 01:5x mis-stated these as 22 vs 4 and the total spend as ≈21.5M; corrected on the bus at 01:5x — the figures here are the computed ones.)
 - **Spend:** a0 10,059,085 tokens, a1 10,816,650 tokens, total 20,875,735 (governing sums, incl. one ~920-token Haiku session-title call per episode). Median episode ≈ 0.55M; the 5 capped episodes ≈ 1.4–1.7M each.
 - **Length term:** the placebo costs a median 544 tokens on call 1 (a1 − a0 first-call prefix).
 - **One non-UTF-8 patch:** `sphinx-doc__sphinx-9602` a0 (capped) left its own `literal_repro/_build/` in the working copy; submitted with replaced bytes and flagged (addendum 4). It did not resolve; neither did a1's clean 0-byte-flagged attempt on the same task.
