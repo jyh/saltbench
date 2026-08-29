@@ -63,7 +63,16 @@ def first(pred):
         if pred(cmd,name,inp): return txt
     return None
 import re
-print(eval(expr))
+# the assertions may be MULTI-STATEMENT (setup assignments + a final boolean): exec all but the last line,
+# then eval the last — `eval` alone cannot run assignments (that was the uniform S2/S3/S4 FAIL).
+ns = dict(first=first, R=R, M=M, RESULT=RESULT, re=re, os=os, st=st)
+lines = [l for l in expr.strip("\n").split("\n")]
+try:
+    if len(lines) > 1:
+        exec("\n".join(lines[:-1]), ns)
+    print(eval(lines[-1], ns))
+except Exception as e:
+    print("FACTS_ERROR:%r" % e)
 PY
 }
 verdict() { # id ok why facts
