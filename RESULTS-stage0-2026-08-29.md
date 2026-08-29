@@ -119,3 +119,35 @@ a1: resolved 13; HIGH among resolved 6 (f_high=0.46) => INDETERMINATE; exact-mat
 Cross-arm determinism, measured: 5 of 15 pairs are byte-identical across arms (13658, 15315, 14894, 26323, 22914) — the model writes the same fix regardless of the arm file; one of them (`sympy-22914`) is LOW-similarity to gold (0.107), i.e. identical across arms without resembling upstream.
 
 **What this instrument can and cannot say:** it cannot separate memorisation from a forced minimal fix on the HIGH tasks (named before computing); it CAN say that half the solves were reached by a route upstream did not take. The 87 % ceiling is therefore not read as memorised, and not read as clean either — INDETERMINATE, as the rule says. The exploratory judge panel (unregistered; reported beside this, moving nothing) is recorded below when it lands.
+
+## Exploratory judge panel (UNREGISTERED; 15 tasks × 3 blind Fable judges on the a0 patch + transcript vs gold; moves no reading)
+
+| task | verdicts | forced fix |
+|---|---|---|
+| django__django-15315 | no/no/no | F/F/F |
+| django__django-13658 | no/no/no | F/F/F |
+| sympy__sympy-14248 | SIGNAL/SIGNAL/SIGNAL | n/n/n |
+| django__django-15930 | no/no/no | F/F/F |
+| sympy__sympy-22914 | no/no/no | F/F/F |
+| sympy__sympy-17655 | SIGNAL/SIGNAL/no | F/F/F |
+| matplotlib__matplotlib-24970 | no/no/no | F/F/F |
+| sphinx-doc__sphinx-9602 | SIGNAL/SIGNAL/SIGNAL | n/n/n |
+| sympy__sympy-21612 | no/SIGNAL/SIGNAL | F/n/n |
+| matplotlib__matplotlib-22865 | no/no/no | F/F/F |
+| scikit-learn__scikit-learn-26323 | no/no/no | F/F/F |
+| scikit-learn__scikit-learn-14894 | no/no/no | F/F/F |
+| matplotlib__matplotlib-25775 | no/no/no | F/n/F |
+| sphinx-doc__sphinx-10449 | no/no/no | n/n/n |
+| astropy__astropy-14539 | SIGNAL/SIGNAL/SIGNAL | F/F/F |
+
+Signal from ≥ 2 judges on 5 of 15: `sympy-14248` (3/3), `sphinx-9602` (3/3), `astropy-14539` (3/3), `sympy-21612` (2/3), `sympy-17655` (2/3, weakest). Unanimous no-signal on the other 10, mostly where the fix is forced.
+
+**Verified by the seat at the artifact (not the judges' word):**
+- `sympy-14248` (UNRESOLVED, capped): gold's added line `s = pform     # First element` and `_keep_coeff(-c, m)` appear in the transcript FIRST as the agent's Edit input — before any read could have shown them (they are gold ADDED lines, absent from the base tree); the agent later rewrote both.
+- `sphinx-9602` (UNRESOLVED, capped): gold's added comment `# Wrap the Text nodes inside brackets by literal node if the subscript is a Literal` and `nodes.literal('', '', subnode)` likewise appear first as the agent's Edit input; the agent then changed `literal`→`inline` and kept the now-false comment.
+- `sympy-21612` (resolved): the agent wrote `# issue 21537` in a test — the string `21537` is in the transcript 6×, in the prompt 0×, in gold 0×. The judges recall 21537 as the upstream issue PR 21612 closed; the seat cannot verify that offline and says so.
+- `astropy-14539` (resolved): the agent wrote *"I'll use 14545, a plausible next PR number for this fix"* and named the changelog `14545.bugfix.rst` — `14545` is in no input it was given; the judges recall it as the real upstream PR number (same caveat).
+
+**The skeptic's caveats stand as the panel stated them:** three judges of one model family are correlated, not independent; the two identifier findings rest on the judges' own recall of upstream numbers; the 17655 docstring is a single mirror-inverted sentence; forced-fix is itself a judge call.
+
+**Reading (exploratory, beside the registered INDETERMINATE):** the model has seen upstream's fixes for at least two of these tasks — verbatim added lines reproduced before they could be read — and recall did not deliver either solve. Contamination is present on this substrate at this tier; whether it inflates the 13/15 cannot be told from these instruments. That is the honest S1 statement, and it is the reason item 12 gave for S2-Lean: the kernel decides there, and no proxy is needed.

@@ -554,3 +554,11 @@ a1 identical. Five of 15 pairs are byte-identical across arms (model determinism
 Full table in `RESULTS-stage0-2026-08-29.md`; `runs/stage0-2026-08-28/contamination.json`. The reading is
 INDETERMINATE and is reported as such; it neither licenses a tier step-down nor forbids S1 — that decision is
 the Captain's, with the number in hand.
+
+**Amendment 1, addendum 8 (2026-08-29 02:3x — exploratory panel beside the registered reading; moves nothing):**
+the unregistered blind panel found signal from ≥ 2 judges on 5 of 15 tasks; the seat VERIFIED at the artifact that
+on `sympy-14248` and `sphinx-9602` (both unresolved) upstream's ADDED lines appear in the transcript first as the
+agent's own Edit input, and that on `sympy-21612` and `astropy-14539` the agent emitted an upstream identifier
+(`21537`, `14545`) present in no input it was given (the numbers' upstream identity rests on the judges' recall).
+The registered reading stays INDETERMINATE; the exploratory reading is: recall of upstream fixes is PRESENT on this
+substrate at this tier. Recorded in `RESULTS-stage0-2026-08-29.md`. Nothing else moves without the Captain's word.
