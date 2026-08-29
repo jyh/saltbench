@@ -546,3 +546,11 @@ committed at this addendum's commit and run only after it. A secondary, UNREGIST
 reading — a judge panel quoting non-forced verbatim overlap (comments, names, structure) between agent and
 gold patches — may be reported as evidence beside the number; it moves no reading. Nothing else moves
 until this lands.
+
+**Amendment 1, addendum 7 (2026-08-29 02:1x — the contamination check COMPUTED, by the rule of addendum 6):**
+a0 resolved 13; HIGH (sim ≥ 0.80) among them 6 ⇒ **f_high = 0.46 ⇒ INDETERMINATE**; excluding small-fix tasks
+3/8 HIGH; exact matches 2; seven resolved tasks LOW (a different change from upstream's); both unresolved LOW.
+a1 identical. Five of 15 pairs are byte-identical across arms (model determinism, one of them LOW to gold).
+Full table in `RESULTS-stage0-2026-08-29.md`; `runs/stage0-2026-08-28/contamination.json`. The reading is
+INDETERMINATE and is reported as such; it neither licenses a tier step-down nor forbids S1 — that decision is
+the Captain's, with the number in hand.

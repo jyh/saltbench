@@ -74,3 +74,48 @@ STAGE-0 MORNING LINE  pairs=15 (tasks with both arms scorable)  excluded_by_cont
 ## What this does and does not say
 
 Stage 0 measured nothing about the salt method (by design, §0). It says: the harness runs, is hermetic in the ways the freeze claims and audited in the ways it admits, meters to the token, and produces a control pair that is indistinguishable at k = 15 — the placebo priced at 544 tokens of prefix and no solves. The treatment arms (TDD · spec-lite · spec-as-checker · full salt) register next as dated amendments with their profiles; each runs against these same 15 tasks under the cap rule's number above.
+
+## Contamination check (PRE-REG §4/§5; instrument, cut and reading rule stated in addendum 6 BEFORE computing)
+
+```
+CONTAMINATION PROXY — cut HIGH >= 0.80 (stated before computing); primary = a0
+task                                 arm   sim unrest exact str  gold agnt  tot small  resolved/term
+astropy__astropy-14539               a0  1.000  0.121  True HIGH    2    2   12 True   ✅/DONE
+astropy__astropy-14539               a1  1.000  0.125  True HIGH    2    2   11 True   ✅/DONE
+django__django-13658                 a0  0.984  0.984 False HIGH    7    6    6 False  ✅/DONE
+django__django-13658                 a1  0.984  0.984 False HIGH    7    6    6 False  ✅/DONE
+django__django-15315                 a0  1.000  1.000  True HIGH    6    6    6 False  ✅/DONE
+django__django-15315                 a1  1.000  1.000  True HIGH    6    6    6 False  ✅/DONE
+django__django-15930                 a0  0.369  0.185 False LOW     5    8   28 False  ✅/DONE
+django__django-15930                 a1  0.228  0.203 False LOW     5    2   12 False  ✅/DONE
+matplotlib__matplotlib-22865         a0  0.903  0.903 False HIGH    8    8    8 False  ✅/DONE
+matplotlib__matplotlib-22865         a1  0.929  0.929 False HIGH    8    8    8 False  ✅/DONE
+matplotlib__matplotlib-24970         a0  0.182  0.182 False LOW    21    5    5 False  ✅/DONE
+matplotlib__matplotlib-24970         a1  0.036  0.036 False LOW    21    2    2 False  ✅/DONE
+matplotlib__matplotlib-25775         a0  0.424  0.390 False LOW    39   31   46 False  ✅/ROUNDS_EXHAUSTED
+matplotlib__matplotlib-25775         a1  0.626  0.454 False LOW    39   28   35 False  ✅/ROUNDS_EXHAUSTED
+scikit-learn__scikit-learn-14894     a0  0.128  0.128 False LOW    13    3    3 False  ✅/DONE
+scikit-learn__scikit-learn-14894     a1  0.128  0.128 False LOW    13    3    3 False  ✅/DONE
+scikit-learn__scikit-learn-26323     a0  0.982  0.982 False HIGH    4    3    3 True   ✅/DONE
+scikit-learn__scikit-learn-26323     a1  0.982  0.982 False HIGH    4    3    3 True   ✅/DONE
+sphinx-doc__sphinx-10449             a0  0.156  0.187 False LOW    12    2    5 False  ✅/DONE
+sphinx-doc__sphinx-10449             a1  0.237  0.230 False LOW    12    6   12 False  ✅/DONE
+sphinx-doc__sphinx-9602              a0  0.753  0.001 False LOW    12   10 16116 False  ❌/ROUNDS_EXHAUSTED
+sphinx-doc__sphinx-9602              a1  0.519  0.467 False LOW    12    9   19 False  ❌/DONE
+sympy__sympy-14248                   a0  0.435  0.435 False LOW    65   68   68 False  ❌/ROUNDS_EXHAUSTED
+sympy__sympy-14248                   a1  0.533  0.533 False LOW    65   44   44 False  ❌/ROUNDS_EXHAUSTED
+sympy__sympy-17655                   a0  0.822  0.822 False HIGH    4    6    6 True   ✅/DONE
+sympy__sympy-17655                   a1  0.828  0.828 False HIGH    4    5    5 True   ✅/DONE
+sympy__sympy-21612                   a0  0.225  0.153 False LOW     2    4    7 True   ✅/DONE
+sympy__sympy-21612                   a1  0.219  0.153 False LOW     2    4    7 True   ✅/DONE
+sympy__sympy-22914                   a0  0.107  0.107 False LOW     2    6    6 True   ✅/DONE
+sympy__sympy-22914                   a1  0.107  0.107 False LOW     2    6    6 True   ✅/DONE
+a0: resolved 13; HIGH among resolved 6 (f_high=0.46) => INDETERMINATE [PRIMARY]; exact-match 2; excluding small-fix tasks: 3/8 HIGH; sim distribution (all 15): min 0.107 p50 0.435 max 1.000
+a1: resolved 13; HIGH among resolved 6 (f_high=0.46) => INDETERMINATE; exact-match 2; excluding small-fix tasks: 3/8 HIGH; sim distribution (all 15): min 0.036 p50 0.533 max 1.000
+```
+
+**Reading by the pre-stated rule (a0, resolved 13): f_high = 6/13 = 0.46 ⇒ INDETERMINATE.** Not ≥ 2/3 (contamination-consistent), not ≤ 1/3 (capability-consistent). Excluding the 6 small-fix tasks (gold ≤ 4 changed lines): 3/8 HIGH. Exact-match to gold: 2 (`django-15315`, `astropy-14539` — 6- and 2-line fixes). **Seven resolved tasks are LOW-similarity: the agent resolved them with a different change from upstream's** — the shape memorisation does not produce. Both unresolved tasks are LOW. a1 reads identically (6/13, 0.46).
+
+Cross-arm determinism, measured: 5 of 15 pairs are byte-identical across arms (13658, 15315, 14894, 26323, 22914) — the model writes the same fix regardless of the arm file; one of them (`sympy-22914`) is LOW-similarity to gold (0.107), i.e. identical across arms without resembling upstream.
+
+**What this instrument can and cannot say:** it cannot separate memorisation from a forced minimal fix on the HIGH tasks (named before computing); it CAN say that half the solves were reached by a route upstream did not take. The 87 % ceiling is therefore not read as memorised, and not read as clean either — INDETERMINATE, as the rule says. The exploratory judge panel (unregistered; reported beside this, moving nothing) is recorded below when it lands.
