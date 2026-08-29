@@ -492,3 +492,11 @@ that returns `rc=1` is caught by the container-liveness check, not by the `rc=12
 ASSERTED by `harness/smoke.sh` (pinned): canary present · A2 blocked and not void · B `error_max_turns` and
 `num_turns == calls` · C `rt_calls_rc0 == 1`. It exits non-zero on any failed fact; the driver is not started
 on a non-zero smoke. The human hard stop of §7.3 becomes a script.
+
+**Amendment 1, addendum 2 (2026-08-28 17:2x, before any model call):** the Captain's login session rewrote the
+pinned `~/.claude-bench/settings.json` (it added `model`, `skipDangerousModePermissionPrompt`, `agentPushNotifEnabled`).
+The pinned `harness/settings.bench.json` now carries `skipDangerousModePermissionPrompt: true` (a harness
+convenience for `--dangerously-skip-permissions`, arm-independent); `model` and the notification flag are NOT
+adopted (`--model claude-sonnet-5` is passed explicitly). The Studio file is re-installed from the pinned bytes and
+`episode.sh` keeps refusing any drift. Also recorded: the login created `~/.claude-bench/.credentials.json` — Claude
+Code's own credential file (the Keychain was not reachable from the ssh session) — allowed, unexpected-entry logged.

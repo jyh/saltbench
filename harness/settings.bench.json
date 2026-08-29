@@ -1,5 +1,6 @@
 {
   "theme": "auto",
+  "skipDangerousModePermissionPrompt": true,
   "hooks": {
     "PreToolUse": [
       { "matcher": "Bash|Monitor",
