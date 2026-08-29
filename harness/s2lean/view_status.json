@@ -1,0 +1,988 @@
+{
+ "problem_0": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_1": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_2": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_3": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_4": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_5": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_6": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_7": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_8": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_9": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_10": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_11": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_12": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_13": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_14": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_15": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_16": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_17": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_18": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_19": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_20": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_21": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_23": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_24": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_25": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_26": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_27": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_28": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_29": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_30": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_31": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_32": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_33": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_34": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_35": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_36": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_37": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_38": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_39": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:43:0: error: Function expected at"
+ },
+ "problem_40": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_41": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_42": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_43": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_44": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:46:30: error: missing end of character literal"
+ },
+ "problem_45": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_46": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_47": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_48": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_49": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_50": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_51": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_52": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_53": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_54": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:37:6: error: Application type mismatch: The argument"
+ },
+ "problem_55": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_56": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_57": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_58": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_59": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_60": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_61": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_62": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:43:6: error: Application type mismatch: The argument"
+ },
+ "problem_63": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_64": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_65": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:46:21: error: Application type mismatch: The argument"
+ },
+ "problem_66": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_67": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_68": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_69": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_70": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_71": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_72": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_73": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_74": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_75": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_76": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_77": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:47:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class"
+ },
+ "problem_78": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_79": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_80": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_81": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:83:49: error: missing end of character literal"
+ },
+ "problem_82": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_83": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_84": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_85": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_86": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_87": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:57:21: error: Application type mismatch: The argument"
+ },
+ "problem_88": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_89": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_90": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_91": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_92": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_93": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_94": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_95": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_96": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_97": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:51:0: error(lean.synthInstanceFailed): failed to synthesize instance of type class"
+ },
+ "problem_98": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_99": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_100": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_101": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_102": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_103": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_104": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_105": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_106": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_107": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_108": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_109": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_110": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:61:21: error: Application type mismatch: The argument"
+ },
+ "problem_111": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:54:6: error: Application type mismatch: The argument"
+ },
+ "problem_112": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:52:36: error: Type mismatch"
+ },
+ "problem_113": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:47:25: error: missing end of character literal"
+ },
+ "problem_114": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_115": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_116": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_117": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_118": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_119": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:50:25: error: missing end of character literal"
+ },
+ "problem_120": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_121": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_122": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_123": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_124": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_125": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_126": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_127": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_128": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_129": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_130": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_131": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_132": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_133": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_134": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_135": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_136": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_138": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_139": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_140": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_141": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_142": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_143": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_144": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_145": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_146": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_147": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_148": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_149": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_150": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_151": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_152": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_153": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:64:6: error: Application type mismatch: The argument"
+ },
+ "problem_154": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_155": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:43:6: error(lean.synthInstanceFailed): failed to synthesize instance of type class"
+ },
+ "problem_156": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_157": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:44:21: error: Application type mismatch: The argument"
+ },
+ "problem_158": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_159": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_160": {
+  "A": "ok",
+  "B": "ok",
+  "C": "error",
+  "first_error": "C:52:22: error: Application type mismatch: The argument"
+ },
+ "problem_161": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "problem_163": {
+  "A": "ok",
+  "B": "ok",
+  "C": "ok",
+  "first_error": ""
+ },
+ "c_dead": [
+  39,
+  44,
+  54,
+  62,
+  65,
+  77,
+  81,
+  87,
+  97,
+  110,
+  111,
+  112,
+  113,
+  119,
+  153,
+  155,
+  157,
+  160
+ ]
+}

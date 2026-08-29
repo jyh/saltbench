@@ -1,0 +1,28 @@
+;; sandbox_check.sb — Seatbelt profile TEMPLATE for the S2-Lean checker (repair round 1, D4 step 2 / refuter R1).
+;; check.py renders __LEAN_BIN__ and __WRITE_PATHS__ and passes the text to `/usr/bin/sandbox-exec -p`, around
+;; every `lean` it runs on agent-influenced text (the canonical compile) and, for uniformity, around the pristine
+;; compile and the s2audit run. Seatbelt is LAST-MATCH-WINS: the allows must come AFTER the denies.
+;;
+;; What it fences:
+;;   network*        — no sockets of any kind (an in-body `#eval IO.Process.run curl …` cannot reach the net)
+;;   process-fork    — lean may not create ANY child process: `IO.Process.spawn/output/run` fail with
+;;                     "operation not permitted", so no background writer can outlive the compile and no
+;;                     shell runs as the Studio user at check time (refuter R1's `id` / curl / writeFile chain)
+;;   process-exec*   — only the pinned toolchain `lean` binary may be exec'd (sandbox-exec's own exec of it)
+;;   file-write*     — denied everywhere EXCEPT the check work dir(s) rendered below, /private/tmp and
+;;                     /private/var/folders (TMPDIR), and /dev/null. Reads are NOT denied (Lean must read
+;;                     ~2 GB of Mathlib oleans); a body can read host files and print them into its own
+;;                     log_tail — stated in the freeze, closed by D1's agent-side denyRead.
+;;
+;; Why `lean` directly and not `lake env lean`: the exec allow-list admits ONE binary; `lake` would have to be
+;; allowed too, and lake forks lean. check.py takes LEAN_PATH/PATH from `lake env env` (harness-side, no agent
+;; text) and runs the toolchain lean under this profile. `lake env lean -o` itself was verified to need NO
+;; writes into the project (.lake is write-denied here and the compile succeeds).
+(version 1)
+(allow default)
+(deny network*)
+(deny process-fork)
+(deny process-exec*)
+(allow process-exec (literal "__LEAN_BIN__"))
+(deny file-write*)
+(allow file-write* __WRITE_PATHS__ (subpath "/private/tmp") (subpath "/private/var/folders") (literal "/dev/null"))

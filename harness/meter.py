@@ -2,7 +2,7 @@
 """meter.py — recover the METERED SUM and the audit facts from a Claude Code session jsonl.
 
     meter.py <session.jsonl> [--result result.json] [--ep <EP>] [--escape-file <regex>] [--url-file <regex>]
-                             [--extra <other.jsonl> ...] [--live]
+                             [--extra <other.jsonl> ...] [--neutral <abs prefix> ...] [--live]
     meter.py --self-test
 
 THE UNIT (PRE-REG §9, unchanged): metered sum = input + cache_creation + cache_read + output over ALL
@@ -21,6 +21,10 @@ Rules the refuter pass (a03bd3c) forced, each a named field below:
   * ESCAPE audit over EVERY tool_use input (Bash command; Read/Edit/Write/Glob/Grep paths): a hit whose
     tool_result is the hook's BLOCKED text is an ATTEMPT (counted); an unblocked hit VOIDs (F1/L1/R4)
   * URL mentions are counted apart from escapes and never VOID on their own (L7)
+  * S2 repair D12: `--neutral <prefix>` (repeatable) names trees a file tool may read without an escape — the shared
+    Lean project (realpath of LEANPROJ) and the toolchain (~/.elan) are libraries, not harness state; a `~/` path is
+    expanded the way the tool expands it and then judged as an absolute path. The Bash probe also re-checks what the
+    rt wrapper would run (the hook's RTSTRIP, verbatim), so a hook-BLOCKED `../rt 'lake update'` is COUNTED as an attempt.
 """
 import argparse, collections, json, os, re, sys
 
@@ -33,6 +37,8 @@ KNOWN_TOOLS = {"Bash", "Read", "Edit", "Write", "MultiEdit", "Glob", "Grep", "LS
                "BashOutput", "KillShell", "KillBash", "ExitPlanMode", "EnterPlanMode", "AskUserQuestion", "StructuredOutput", "Sleep", "ToolSearch"}
 TIMEOUT_MARK = "Command timed out after"
 BLOCKED_MARK = "BLOCKED by the episode harness"
+# the rt-wrapper strip, the same as hook-deny-network.sh --pattern-rtstrip: `<path>/rt `, `../rt `, `./rt `, `rt ` → ` ; `
+RTSTRIP = re.compile(r"(^|[ ;&|(])([^ ;&|(]*/)?rt[ ]+")
 
 
 def load(path, live=False):
@@ -69,7 +75,8 @@ def _tool_results(recs):
     return out
 
 
-def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0):
+def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0, neutral=None):
+    neutral = [n.rstrip("/") for n in (neutral or []) if n]
     by_id = collections.OrderedDict()
     sidechain = 0; missing_class = []; models = collections.Counter(); tiers = collections.Counter()
     tool_uses = collections.Counter(); compactions = []; api_error = 0; no_call_id = 0
@@ -138,12 +145,18 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0):
                         dotdot += 1
                     if k == "pattern" and not os.path.isabs(raw) and not raw.startswith(("..", "~", "$")):
                         continue
-                    if raw.startswith(("~", "$")):
-                        # a tilde/variable path is expanded by the tool, not by us: it can only mean outside the tree (refuter RI3-R5)
+                    if raw.startswith("~/"):
+                        raw_abs = os.path.expanduser(raw)   # the tool expands `~/`; judge the absolute path it means (D12)
+                    elif raw.startswith(("~", "$")):
+                        # a `~user`/variable path is expanded by the tool, not by us: it can only mean outside the tree (refuter RI3-R5)
                         escapes_unblocked.append("%s %s=%s (tilde/variable path)" % (name, k, raw))
                         continue
-                    resolved = os.path.normpath(raw if os.path.isabs(raw) else os.path.join(cwd or "", raw)) if ep else raw
-                    if ep and not (resolved == ep or resolved.startswith(ep + "/") or resolved.startswith(("/tmp/", "/private/tmp/"))):
+                    else:
+                        raw_abs = raw
+                    resolved = os.path.normpath(raw_abs if os.path.isabs(raw_abs) else os.path.join(cwd or "", raw_abs)) if ep else raw_abs
+                    inside = (resolved == ep or resolved.startswith(ep + "/") or resolved.startswith(("/tmp/", "/private/tmp/"))
+                              or any(resolved == n or resolved.startswith(n + "/") for n in neutral))
+                    if ep and not inside:
                         escapes_unblocked.append("%s %s=%s -> %s" % (name, k, raw, resolved))
                 continue
             if probe is None:
@@ -152,7 +165,12 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0):
             if ".." in raw:
                 dotdot += 1
             p2 = probe.replace(ep, "/EP") if ep else probe   # the own episode path (with or without a trailing slash) is neutral
-            if rx_e and rx_e.search(p2):
+            hit = bool(rx_e and rx_e.search(p2))
+            if rx_e and not hit:
+                inner = RTSTRIP.sub(" ; ", p2)                  # what the rt wrapper would run, quotes dropped (hook D12)
+                if inner != p2:
+                    hit = bool(rx_e.search(inner.replace("'", "").replace('"', "")))
+            if hit:
                 res = results.get(c.get("id"), "")
                 (escapes_blocked if BLOCKED_MARK in res else escapes_unblocked).append("%s %s" % (name, probe))
             elif rx_u and rx_u.search(probe):
@@ -268,6 +286,16 @@ def self_test():
     check(m3k["unknown_tools"] == {"SomeNewTool": 1} and m3k["void"], "an unknown command-running tool voids")
     m3l = meter(recs + [a("m8h", [tu("Bash", {"command": "ls"}, "t8h")]), tr("t8h", TIMEOUT_MARK + " 120000ms")], ep=EP, escape_re=ESC)
     check(m3l["tool_timeouts"] == 1 and m3l["first_call_usage"] == {c: u[c] for c in CLASSES}, "tool timeouts counted; first-call usage emitted")
+    NEU = ["/Users/jyh/lean-shared/clever", "/Users/jyh/.elan"]
+    m3m = meter(recs + [a("m8i", [tu("Read", {"file_path": "/Users/jyh/lean-shared/clever/.lake/packages/mathlib/Mathlib/Data/List/Basic.lean"}, "t8i")])], ep=EP, escape_re=ESC, neutral=NEU)
+    check(not m3m["void"] and not m3m["escape_unblocked"], "a Read under a --neutral prefix (the shared Lean project) is neither an escape nor a void")
+    m3n = meter(recs + [a("m8j", [tu("Read", {"file_path": "/Users/jyh/lean-shared/clever/lakefile.lean"}, "t8j")])], ep=EP, escape_re=ESC)
+    check(m3n["void"], "the same Read WITHOUT --neutral still voids (the prefix must be declared)")
+    import os as _os; _home = _os.path.expanduser("~")
+    m3o = meter(recs + [a("m8k", [tu("Read", {"file_path": "~/.elan/toolchains/x/src/lean/Init/Prelude.lean"}, "t8k")])], ep=EP, escape_re=ESC, neutral=[_home + "/.elan"])
+    check(not m3o["void"], "a ~/ path is expanded and judged: ~/.elan under --neutral is not a void")
+    m3p = meter(recs + [a("m8l", [tu("Bash", {"command": EP + "/rt 'lake update'"}, "t8l")]), tr("t8l", BLOCKED_MARK)], ep=EP, escape_re="(^|[;&|(])[ ]*lake[ ]+update")
+    check(m3p["escape_attempts_blocked"] == ["Bash " + EP + "/rt 'lake update'"] and not m3p["void"], "a hook-BLOCKED rt-wrapped escape is counted as an attempt (rt strip mirrors the hook)")
     bad = a("m9", []); bad["message"]["usage"] = {"input_tokens": 1}
     m4 = meter(recs + [bad], ep=EP)
     check(m4["missing_usage_class"] and "USAGE_SCHEMA" in m4["void_reasons"], "a usage record missing a class voids (drift is a hole, not a zero)")
@@ -301,6 +329,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("jsonl", nargs="?"); ap.add_argument("--result"); ap.add_argument("--ep")
     ap.add_argument("--escape-file"); ap.add_argument("--url-file"); ap.add_argument("--extra", nargs="*", default=[])
+    ap.add_argument("--neutral", action="append", default=[], help="absolute prefix a file tool may read without an escape (repeatable)")
     ap.add_argument("--live", action="store_true"); ap.add_argument("--self-test", action="store_true")
     a = ap.parse_args()
     if a.self_test:
@@ -308,12 +337,12 @@ def main():
     esc = open(a.escape_file).read().strip() if a.escape_file else None
     url = open(a.url_file).read().strip() if a.url_file else None
     recs, trunc = load(a.jsonl, live=a.live)
-    m = meter(recs, ep=a.ep, escape_re=esc, url_re=url, truncated=trunc)
+    m = meter(recs, ep=a.ep, escape_re=esc, url_re=url, truncated=trunc, neutral=a.neutral)
     if a.extra:
         m["extra_files"] = []
         for x in a.extra:
             r2, t2 = load(x, live=True)
-            mm = meter(r2, ep=a.ep, escape_re=esc, url_re=url, truncated=t2)
+            mm = meter(r2, ep=a.ep, escape_re=esc, url_re=url, truncated=t2, neutral=a.neutral)
             m["extra_files"].append({"file": x, "calls": mm["calls"], "metered_sum": mm["metered_sum"]})
     if a.result and os.path.exists(a.result):
         try:

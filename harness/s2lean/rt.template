@@ -1,11 +1,22 @@
 #!/bin/bash
 # rt — run a command inside this project's Lean environment (harness wrapper; identical in every arm)
 # usage: rt <cmd> [args...]     or     rt '<shell string>'      e.g.  rt lake env lean task.lean
-LOG=__ST__/rt.log
+# The bound is macOS-native (repair D11; the Studio has no `timeout`): perl forks the command into ITS OWN PROCESS GROUP
+# and on alarm (590 s) or a signal kills the whole group (TERM, 2 s, KILL) so no lean/lake survives a tool-level kill.
+# rc: the command's (signals as 128+n); 124 on the bound; 143 when rt itself was signalled; 127 when exec fails.
+# The log lives INSIDE the working copy (.rt.log: cwd is the only writable place under the sandbox; it is agent-visible
+# and non-scoring) and the harness moves it to the state dir after the run.
+LOG=__EP__/repo/.rt.log
 if [ $# -eq 1 ]; then cmd="$1"; else cmd=$(printf '%q ' "$@"); fi
 printf '%s\tSTART\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$cmd" >> "$LOG"
 ERRF=$(mktemp -t rt.XXXXXX)
-( cd __EP__/repo && PATH="$HOME/.elan/bin:$PATH" timeout 590 bash -c "$cmd" ) 2> >(tee "$ERRF" >&2)
+( cd __EP__/repo && PATH="$HOME/.elan/bin:$PATH" exec /usr/bin/perl -e '
+  my $t = shift; my $pid = fork; defined $pid or exit 127;
+  if (!$pid) { setpgrp(0, 0); exec @ARGV; exit 127 }
+  my $reap = sub { my $c = shift; kill "TERM", -$pid; select(undef, undef, undef, 2); kill "KILL", -$pid; waitpid $pid, 0; exit $c };
+  $SIG{ALRM} = sub { $reap->(124) }; $SIG{TERM} = $SIG{INT} = $SIG{HUP} = sub { $reap->(143) };
+  alarm $t; waitpid $pid, 0; my $s = $?; exit(($s & 127) ? 128 + ($s & 127) : ($s >> 8))
+' 590 /bin/bash -c "$cmd" ) 2> >(tee "$ERRF" >&2)
 rc=$?
 [ "$rc" != 0 ] && printf '%s\tERR\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$(head -1 "$ERRF" 2>/dev/null | cut -c1-200)" >> "$LOG"; rm -f "$ERRF"
 printf '%s\tEND\trc=%s\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$rc" "$cmd" >> "$LOG"

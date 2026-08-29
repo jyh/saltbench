@@ -1,4 +1,7 @@
 import Imports.AllImports
+noncomputable def check_derivative : List ℤ → List ℤ
+  | []       => []
+  | (x::rest)  => (Polynomial.eval 1 (Polynomial.derivative (Polynomial.C x * Polynomial.X ^ rest.length))) :: (check_derivative rest)
 
 /--
 function_signature: "def derivative(xs: List Int) -> List Int"

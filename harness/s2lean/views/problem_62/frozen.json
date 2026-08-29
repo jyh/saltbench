@@ -4,6 +4,7 @@
  "implementation_signature": "def implementation (xs: List Int) : List Int :=",
  "isomorphism_theorem": "theorem spec_isomorphism:\n\u2200 impl,\n(\u2200 xs, problem_spec impl xs) \u2194\n(\u2200 xs, generated_spec impl xs) :=",
  "nl": "function_signature: \"def derivative(xs: List Int) -> List Int\"\ndocstring: |\n    xs represent coefficients of a polynomial.\n    xs[0] + xs[1] * x + xs[2] * x^2 + ....\n     Return derivative of this polynomial in the same form.\ntest_cases:\n  - input: [3, 1, 2, 4, 5]\n    expected_output: [1, 4, 12, 20]\n  - input: [1, 2, 3]\n    expected_output: [2, 6]",
+ "preamble": "noncomputable def check_derivative : List \u2124 \u2192 List \u2124\n  | []       => []\n  | (x::rest)  => (Polynomial.eval 1 (Polynomial.derivative (Polynomial.C x * Polynomial.X ^ rest.length))) :: (check_derivative rest)",
  "problem_id": 62,
  "problem_spec": "def problem_spec\n-- function signature\n(impl: List Int \u2192 List Int)\n-- inputs\n(xs: List Int) :=\n-- spec\nlet spec (result: List Int) :=\n  result.length = xs.length - 1 \u2227\n  result = (check_derivative xs.reverse).reverse\n-- program terminates\n\u2203 result, impl xs = result \u2227\n-- return value satisfies spec\nspec result",
  "shipped_generated_spec_body": "sorry",

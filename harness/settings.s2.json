@@ -1,0 +1,41 @@
+{
+  "theme": "auto",
+  "skipDangerousModePermissionPrompt": true,
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Bash|Monitor",
+        "hooks": [ { "type": "command", "command": "/Users/jyh/bench/harness/hook-deny-network.sh", "timeout": 15 } ] }
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false,
+    "autoAllowBashIfSandboxed": true,
+    "excludedCommands": [],
+    "network": {
+      "allowedDomains": [],
+      "strictAllowlist": true,
+      "allowUnixSockets": [],
+      "allowAllUnixSockets": false,
+      "allowLocalBinding": false
+    },
+    "filesystem": {
+      "denyRead": [
+        "~/bench",
+        "~/bench-dry",
+        "~/.claude-bench",
+        "~/.claude",
+        "~/.ssh",
+        "~/.aws",
+        "~/.gnupg",
+        "~/.config",
+        "~/Library/Keychains",
+        "~/Library/Application Support"
+      ],
+      "denyWrite": [
+        "~/lean-shared"
+      ]
+    }
+  }
+}

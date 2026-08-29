@@ -1,5 +1,6 @@
 {
  "source": "arXiv 2605.23772 Table 1 (PDF) + \u00a74.2; leaderboard footnote (PR #74) publishes no ids",
+ "note": "ID SPACE: every id here is a CLEVER problem_<id> (= its HumanEval id; the paper's Table 1 ids are HumanEval ids = CLEVER ids). The pinned clone ships 161 files: ids 0..163 minus 22, 137, 162 (those three do not exist; 161 and 163 do). flagged_spec_ids = the 80 Table-1 rows (spec flagged by the authors); excluded_ids = the four pre-registered structural exclusions, removed by draw.py BEFORE the first k are taken (39 is both flagged and excluded); nl_leaked_ids = docstrings that carry the human spec in prose (problem_90: 'TODO(George)... The spec is defined as: ...'), kept verbatim as CLEVER ships them \u2014 F3 is reported with and without them (D8). Consumers: draw.py (excluded_ids), s2_morning_line.py (all three lists), run_s2_stage0.sh via draw.py.",
  "flagged_spec_ids": [
   5,
   7,
@@ -87,6 +88,9 @@
   39,
   123,
   160
+ ],
+ "nl_leaked_ids": [
+  90
  ],
  "n_flagged": 80
 }
