@@ -500,3 +500,18 @@ convenience for `--dangerously-skip-permissions`, arm-independent); `model` and 
 adopted (`--model claude-sonnet-5` is passed explicitly). The Studio file is re-installed from the pinned bytes and
 `episode.sh` keeps refusing any drift. Also recorded: the login created `~/.claude-bench/.credentials.json` — Claude
 Code's own credential file (the Keychain was not reachable from the ssh session) — allowed, unexpected-entry logged.
+
+**Amendment 1, addendum 3 (2026-08-29 00:2x, after the four smoke probes — the first model calls on jykriterion,
+arm `s0`, task `django__django-15315`, freeze commit `13959bd`):** MEASURED: (A1) the canary string landed —
+the arm CLAUDE.md IS loaded under `--setting-sources user,project`; the agent's PATH is exactly the one §1
+states; 2 calls, 39,157 governing tokens. (A2) `docker version` was BLOCKED by the hook from inside the agent,
+recorded as an attempt, not a void; 2 calls, 39,262. (B) `--max-turns 1` fired `error_max_turns` after
+exactly ONE Sonnet call: **the cap counts main-loop API calls, as pinned** — and at the cap the CLI reports
+`num_turns = calls + 1` (the turn it cut); on a normal end `num_turns == calls` (A1/A2/C). `meter.py`'s
+cross-check now accepts `calls + 1` only under `error_max_turns`. 1 call, 19,848. (C) `../rt` ran inside the
+container from the agent's own Bash tool, `rt_calls_rc0 = 1`; 2 calls, 39,010. In every probe the CLI's
+`usage` equals the jsonl sum to the token (no undercount), and **`modelUsage` carries one
+`claude-haiku-4-5-20251001` call of ~920 tokens per session — Claude Code's own session-title call (the
+`ai-title` record)**: arm-independent, included in `metered_sum_governing`, reported as `foreign_models`, NOT
+a VOID. The first-call prefix (system prompt + tools + the arm file) is ≈19k tokens of `cache_creation`.
+`smoke.sh` gains a probe-subset argument; probe B is re-run under the corrected assertion before the driver.

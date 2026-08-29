@@ -189,7 +189,11 @@ def crosscheck(m, result):
     if not result:
         return out
     out["cli_num_turns"] = result.get("num_turns")
-    out["num_turns_matches_calls"] = (result.get("num_turns") == m["calls"]) if result.get("num_turns") is not None else None
+    # measured 08/28 (smoke probes): num_turns == calls on a normal end; at the --max-turns cap the CLI reports calls + 1
+    # (the turn it cut). Either is a match; anything else is a hidden or lost call.
+    nt = result.get("num_turns")
+    capped = result.get("subtype") == "error_max_turns"
+    out["num_turns_matches_calls"] = (nt == m["calls"] or (capped and nt == m["calls"] + 1)) if nt is not None else None
     ru = result.get("usage") or {}
     out["cli_usage"] = {c: ru.get(c) for c in CLASSES}
     out["cli_minus_jsonl"] = {c: (int(ru[c]) - m["classes"][c]) for c in CLASSES if ru.get(c) is not None}
