@@ -161,7 +161,7 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0, neutral=None)
                 continue
             if probe is None:
                 continue
-            raw = probe.strip()
+            raw = probe.replace("\n", ";").strip()   # EDH-5 mirror: flatten so a heredoc import is not split from its anchor
             if ".." in raw:
                 dotdot += 1
             p2 = probe.replace(ep, "/EP") if ep else probe   # the own episode path (with or without a trailing slash) is neutral

@@ -125,6 +125,7 @@ try:
 except Exception: print("")')
 own="${BENCH_EP:-}"
 if [ -n "$own" ]; then probe=$(printf '%s' "$cmd" | sed "s|$own||g"); else probe="$cmd"; fi
+probe=$(printf '%s' "$probe" | tr '\n' ';')   # flatten newlines to an anchor char: grep is per-line, so a heredoc's `import` on its own line must not split it from the `<<` anchor (EDH-5)
 # what rt would run: the wrapper prefix becomes a segment start, quotes drop (only when a wrapper prefix was present)
 inner=$(printf '%s' "$probe" | sed -E "$RTSTRIP")
 if [ "$inner" != "$probe" ]; then inner=$(printf '%s' "$inner" | sed "s/['\"]//g"); else inner=""; fi

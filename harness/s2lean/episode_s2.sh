@@ -36,7 +36,7 @@ EP="$EPROOT/$ep"; ST="$BENCH/state/$ep"; TASK="problem_$PID"; ABDIR="$SROOT/$TAS
 mkdir -p "$EP" "$ST" "$BENCH/logs" "$EPROOT" "$ABDIR"
 log() { printf '%s %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$*" | tee -a "$ST/episode.log"; }
 now() { date -u +%s; }
-term="UNSET"; t0=$(now); crc=""; SID=""; JSONL=""; killed=""; finished=""; CPID=""; orphans=0
+term="UNSET"; t0=$(now); crc=""; SID=""; JSONL=""; killed=""; finished=""; CPID=""; orphans=0; ARMFILE=""   # ARMFILE bound early so finish() survives a die() before it is set (EDH-1)
 CLAUDE_BIN="${CLAUDE_BIN:-$(command -v claude)}"
 PINNED_CLAUDE=$(grep '^claude-version ' "$H/HASHES.txt" | cut -d' ' -f2)
 AGENT_PATH="${AGENT_PATH:-/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$REAL_HOME/.local/bin}"
@@ -333,8 +333,13 @@ bp,out,ep,term,vsha=sys.argv[1:]
 raw=open(bp,"rb").read(); b=json.loads(raw)
 json.dump({"generated_spec_body":b["generated_spec_body"],"a_episode":ep,"a_bodies_sha256":hashlib.sha256(raw).hexdigest(),"a_termination":term,"a_passed":True,"a_view_sha256":vsha},open(out,"w"),indent=1)
 PY
+  elif [ -n "$scored" ]; then
+    # a SCORED stage A that did not pass IS the latest-scored row (s2_morning_line 'latest scored wins'); it
+    # supersedes any earlier pass, so its A.bodies must go. A NON-scored fail (HARNESS_ERROR/VOID/AUTH/QUOTA)
+    # is transient and must NOT delete an earlier valid pass (F4).
+    [ -e "$ABDIR/A.bodies.json" ] && { rm -f "$ABDIR/A.bodies.json"; log "A_BODIES superseded (scored, not passed) for $TASK/$arm (term=$term passed=$passed)"; }
   else
-    [ -e "$ABDIR/A.bodies.json" ] && { rm -f "$ABDIR/A.bodies.json"; log "A_BODIES stale copy deleted for $TASK/$arm (term=$term passed=$passed)"; }
+    [ -e "$ABDIR/A.bodies.json" ] && log "A_BODIES kept: this episode is NON-scored ($term); an earlier scored pass for $TASK/$arm stands (F4)"
   fi
 fi
 finish "$crc"

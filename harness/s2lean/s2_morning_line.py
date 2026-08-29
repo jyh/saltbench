@@ -34,7 +34,8 @@ RULES (stated here, before computing):
    are on disk; passes with no bodies on disk are listed as UNKNOWN and excluded from f_high with a warning).
    READING RULE: f_high ≥ 0.5 ⇒ the F3 band is NOT read — RECALL-SUSPECT ⇒ HOLD for council (F5); else the band is read.
  - classes per cell come from check.class (PASS|SCREEN|COMPILE|KERNEL_REJECTED|STATEMENT_ALTERED|AXIOMS_FAIL|TIMEOUT|
-   HARNESS); KERNEL_REJECTED and STATEMENT_ALTERED are printed as their own lines, AXIOMS_FAIL as 'axiom-only failures'.
+   HARNESS|PROVENANCE); KERNEL_REJECTED, STATEMENT_ALTERED and PROVENANCE (stage-B generated_spec != the scored
+   stage-A body, AP-4) are printed as their own lines, AXIOMS_FAIL as 'axiom-only failures'.
  - the cap the salt arm consumes is PER STAGE: the a0 p90 of the same stage over DONE|ROUNDS_EXHAUSTED rows (D16).
  - no p-value, by design (b/c/n_d are printed as counts; |b−c| < 5 is labelled INDISTINGUISHABLE)."""
 import collections, difflib, glob, hashlib, json, math, os, re, sys
@@ -179,6 +180,7 @@ for stage, label, dom in (("A", "spec compiles", D), ("B", "ISOMORPHISM PROVEN (
 def cells(pred): return [(pid(t), s, a) for (t, s, a), m in sorted(scor.items()) if (t, s, a) not in orphan and pred(m)]
 print("  KERNEL_REJECTED: %s" % cells(lambda m: klass(m) == "KERNEL_REJECTED" and not m.get("passed")))
 print("  STATEMENT_ALTERED: %s" % [(x, (scor[("problem_%d" % x[0], x[1], x[2])].get("check") or {}).get("statement_diffs")) for x in cells(lambda m: klass(m) == "STATEMENT_ALTERED" and not m.get("passed"))])
+print("  PROVENANCE (stage-B generated_spec != scored stage-A body, AP-4): %s" % cells(lambda m: klass(m) == "PROVENANCE"))
 print("  axiom-only failures (AXIOMS_FAIL: compiled, kernel replay ok, statements identical, axioms outside the allowlist): %s" % [
     (x, (scor[("problem_%d" % x[0], x[1], x[2])].get("check") or {}).get("axioms")) for x in cells(lambda m: klass(m) == "AXIOMS_FAIL" and not m.get("passed"))])
 print("  ORPHAN B rows (a_episode ≠ the scored A row; reported, NOT counted): %s" % [(pid(t), a, scor[(t, s, a)]["episode"], "a_episode=%s" % ae, "scored A=%s" % Ae, "a_bodies_sha256=%s" % (scor[(t, s, a)].get("a_bodies_sha256") or "")[:12]) for (t, s, a), (ae, Ae) in sorted(orphan.items())])

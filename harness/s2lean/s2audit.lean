@@ -122,8 +122,13 @@ def run (canon pristine stage : String) (aOlean? : Option String) : IO Json := d
       let (mdA, _regionA) ← readModuleData p
       let mapA := toMap mdA
       pure (Json.bool ((mapA[`generated_spec]? >>= value?) == (mapC[`generated_spec]? >>= value?)))
+  -- AP-3: names referenced by an audited decl that resolve in NEITHER the module nor the import env — fail closed
+  let mut unknown : Array Name := #[]
+  for (n, _) in frozen stage do
+    if (lookup n).isNone then unknown := unknown.push n
+  axOk := axOk && unknown.isEmpty   -- mut reassign (Lean forbids shadowing a let mut)
   return Json.mkObj [
-    ("replay_ok", replayOk), ("replay_error", replayErr),
+    ("replay_ok", replayOk), ("replay_error", replayErr), ("unknown", names unknown),
     ("statements", Json.mkObj stmts.toList), ("statements_identical", diffs.isEmpty), ("statement_diffs", names diffs),
     ("axioms", Json.mkObj axs.toList), ("axioms_ok", axOk), ("a_body_value_identical", aId),
     ("n_constants", mdC.constants.size), ("constants", names mdC.constNames)]

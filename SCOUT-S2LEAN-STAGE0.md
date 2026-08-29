@@ -1,14 +1,15 @@
-# SCOUT — S2-LEAN STAGE 0: the CONTROL protocol on CLEVER (plain · placebo) — DRAFT v2 AFTER REFUTER PASS 1 (not yet the freeze: pass 2, the run-shaped dry and the Studio controls are owed before the dated freeze commit)
+# SCOUT — S2-LEAN STAGE 0: the CONTROL protocol on CLEVER (plain · placebo) — FROZEN 2026-08-29, bench seat
 
-**To be frozen 2026-08-29, bench seat, BEFORE any model call on this substrate.** Authorised by the scout's decision
+**Frozen 2026-08-29, bench seat, BEFORE any model call on this substrate** (two refuter passes: §8/§9; controls 30/30 on
+the Studio and the run-shaped dry driven on the round-2 harness). Authorised by the scout's decision
 rules (`seat/briefs/2026-08-28-DELEGATION-morning-council-only.md` §1, in force on the Captain's word 20:3x):
 **F1** resolved the S1 fork to S2-Lean / CLEVER first; **F2** — the dated freeze commit IS the authorization,
 controls before treatment, treatment arms as dated amendments before their own first call; **F3** reads the
 control result; **F4** Sonnet first; **F5** an uncovered result is a HOLD with a fallback row, never an
 improvised arm. Everything not stated here is inherited from `SCOUT-STAGE0.md` (S1) as amended — the agent,
-the metering, the termination typing, the driver rules — **except where S1's sentence presumes the container**
-(see §4: the S1 container sentences — `--network none`, `docker exec` scoring, "CHECK 2b in every container" —
-do not hold on this substrate and are replaced here). `harness/` is the normative form. The source read behind
+the metering, the termination typing, the driver rules — **except every S1 sentence that presumes the container or
+the SWE-bench patch** (see §4/§6: `--network none`, `docker exec` scoring, "CHECK 2b in every container", the
+`model_patch.diff`/digest/platform artifact rows — none hold on this substrate; §4 and §6 give the S2 forms). `harness/` is the normative form. The source read behind
 the choice: `S2-SOURCE-READ-2026-08-29.md`. The refutation this draft answers: `seat/fleet/REFUTER-saltbench-s2lean-2026-08-28.md`
 (90 confirmed, 0 refuted) — §8 maps its classes to the repairs.
 
@@ -35,13 +36,19 @@ effect) — with these substrate-specific sharpenings:
 - **The reference "ground-truth" specs are disputed** (80/161 flagged by arXiv 2605.23772; four excluded by its §4.2)
   and **one docstring leaks its spec in prose** (problem_90, drawn at #4): the flagged list, the excluded four
   and the NL-leaked id are recorded in `harness/s2lean/flagged.json`; F3 is reported over the drawn set AND over
-  its unflagged subset AND without the NL-leaked id — only the first is read against the band (§2).
+  its unflagged subset (read as the F5 band-divergence check: if the all-drawn band and the unflagged band differ,
+  the result is uncovered ⇒ HOLD) AND without the NL-leaked id (reported, not banded) (§2).
 - **The isomorphism shape is strict**: a docstring-faithful spec that is strictly stronger than the human's (the
   human spec has a don't-care region) is provably NON-isomorphic (kernel-checked on problem_0, unflagged). F3 thus
   measures "reproduced the human's exact boundary". §2 pre-registers a blind B-failure TRIAGE so a low rate can be
   read as a tier floor only if the failures are the agent's.
 - **The axiom audit and the kernel replay are the scout's, not CLEVER's** — the reference checker accepts any
   axiom and never re-checks the module.
+- **Which head wrote this freeze:** the DRAFT v1→v2 text and repair round 1 (86f9e04→4a26604) were written on
+  **Fable 5** (with Sonnet/Opus refuter subagents); from 2026-08-29 02:06:50 PDT the seat's head fell back to
+  **Opus 4.8** (a Fable-5 `[cyber]` safety fallback on the network-fence text, session-scoped — not a usage cap),
+  which wrote refuter pass 2's integration and repair round 2 (this commit). Pass 2's finders/verifiers ran on
+  Sonnet/Opus by design either way. Recorded so the artifact is honest about the head; the referee is the kernel.
 
 ## 1 · The substrate, pinned
 
@@ -54,9 +61,10 @@ effect) — with these substrate-specific sharpenings:
 - **The id set is CLEVER's, not `range(161)`:** `src/lean4/human_eval/problem_k.lean` for k ∈ 0…163 minus
   {22, 137, 162} — 161 files (measured). The flagged list's ids are HumanEval ids = CLEVER ids (161 and 163 exist;
   22 and 137 do not).
-- **A problem file is a FULL SOLUTION** (natural-language spec, the human `problem_spec`, the `generated_spec`
-  header with body `sorry`, the `spec_isomorphism` theorem with proof `sorry` — in EVERY file; no isomorphism
-  proof ships — the `implementation` and its `correctness` proof, `#test` cases). **The agent never sees a raw
+- **A raw problem file is the CLEVER skeleton plus the human ground truth** (natural-language spec; the human
+  `problem_spec`; the `generated_spec` header with body `sorry`; the `spec_isomorphism` theorem with proof `sorry`
+  — in EVERY file, i.e. NO isomorphism proof ships; the `implementation` and its `correctness` proof — themselves
+  `sorry` in 157/161 files; and `#test` cases). **The agent never sees a raw
   file.** `harness/s2lean/build_views.py` (the only code that reads a raw file; self-tested over all 161: parse;
   no implementation, proof or ground-truth spec leaks into any stage-A view; out-of-section residue captured)
   emits per problem:
@@ -164,7 +172,9 @@ with a timeout that kills the group (no orphan `lean`):
    B: `generated_spec`, `problem_spec`, `spec_isomorphism`; C: `problem_spec`, `implementation`, `correctness`)
    **and the VALUE of `problem_spec`** between canonical and pristine — any difference is STATEMENT_ALTERED (a
    notation, macro, instance or `open` that changes what the frozen text means is caught here, by construction, not
-   by a word list); then **collect the axioms** of the stage's audited declarations from the replayed environment:
+   by a word list); then **collect the axioms** of the stage's audited declarations by walking the module's own
+   `ConstantInfo`s, falling back to the import environment — the same constants the replay checks, so the axioms are
+   reported even when the kernel rejects the module (and an audited name that resolves in neither fails closed):
    every set ⊆ {`propext`, `Classical.choice`, `Quot.sound`} — `sorryAx` and any user axiom fail here
    (AXIOMS_FAIL); a `native_decide` proof is already rejected at replay (the fresh kernel cannot evaluate
    `Lean.reduceBool` without the compiled closure: KERNEL_REJECTED, driven) and would otherwise fail on
@@ -239,34 +249,61 @@ maxHeartbeats 400000 in`); the timeout control (no `lean` process left).
 `meter.py` unchanged in its unit (message.id dedupe; governing sum incl. `modelUsage`; the audit) with
 `~/lean-shared` and `~/.elan` as neutral prefixes. `--max-turns 40`; `WALL_S` 5,400; `TOKEN_CEILING` 8,000,000
 (safety only; stage 0 has no parity cap). Landings carry `<ep> <problem> <stage> <arm> <term> <metered>` in
-`s2-landings.log`; the driver's synthetic rows use `<none>` and 0. The artifact adds `task.lean`, `bodies.json`,
-`canonical.lean`, `check.json` (with its `class`), `env_probe.txt`, `rt.log`; the manifest adds `substrate`, `stage`,
-`lean_toolchain`, `leanproj_sha`, `view_sha256`, `frozen_sha256`, `check`, `passed`, and for stage B `a_episode`,
-`a_bodies_sha256`, `a_termination`.
+`s2-landings.log`; the driver's synthetic rows use `<none>` and 0. The S2 artifact is `task.lean`, `bodies.json`,
+`canonical.lean` (+ `canonical.olean` for the a→B chain), `check.json` (with its `class`), `audit.json`, `compile.log`,
+`env_probe.txt`, `rt.log`, `session.jsonl`, `manifest.json`, `SHA256SUMS`; the manifest keys are `substrate`, `stage`,
+`lean_toolchain`, `leanproj_sha`, `view_sha256`, `frozen_sha256`, `check` (the check.json subset incl. `class`),
+`passed`, `checker_sha256`, `orphans_killed`, and for stage B `a_episode`, `a_bodies_sha256`, `a_termination`,
+`a_view_sha256`. **The S1 container-and-patch rows do NOT exist on S2** — no `model_patch.diff`, `image_history.txt`,
+`check2b.container.log`, `env_python.txt`; no patch sha/bytes, `agent_made_git`, docker platform, digest or base.
 
-## 7 · Order of operations (the runbook, as the operator runs it from tmux over ssh)
+## 7 · Order of operations (the runbook, executable, as the operator runs it from tmux over ssh)
 
-1. This text + `harness/` committed; refuter pass 2 (closure of pass 1 + fresh lenses on the repaired files);
-   `--dry` and the RUN-SHAPED dry (stub claude that writes bodies, so extract → assemble → check → audit RUN) on
-   the seat and on the Studio; then the **dated freeze commit** (retitle from DRAFT) = the authorization (F2).
-2. Studio prep (no model): `lean_shared_build.sh` (export → `~/lean-shared/clever`, cache, `Imports` build, the
-   assertions, the three shas); `sync_studio.sh` (views excluded; receipt over the S2 pinned files); the control kit
-   shipped, `s2_controls.sh` → `~/bench/state/s2-controls.json` (CONTROLS PASS required), the kit deleted and its
-   absence asserted; `~/.claude-bench/settings.json` = `settings.s2.json` (sha asserted per episode).
-3. `stage_views.sh ship A` (A.lean + frozenA.json only; `check` shows frozen = 0, C = 0). Smoke probes
-   `smoke_s2.sh` (arm `s0`, `SMOKE(…)`, never scored): S1 canary + PATH · S2 network (curl, a written `fetch.py`, a
-   Lean `#eval IO.Process.run curl` through `rt` — all must FAIL) · S3 reads (`~/bench/harness/arms/a1.md` and
-   `~/.claude-bench` DENIED; `~/lean-shared/clever/lakefile.lean` readable) · S4 writes (`.lake/probe` DENIED; cwd
-   writable) · S5 the compile through `rt` from the agent (wall recorded). Five `SMOKE PASS` lines carrying this
-   freeze's `episode_s2.sh` sha are asserted by the driver before it starts.
-4. `run_s2_stage0.sh A 30` (60 episodes) · when every A has landed (`has_terminal` over the 60 (task, arm) pairs),
-   `stage_views.sh ship BC` · `run_s2_stage0.sh B 30` · `run_s2_stage0.sh C 30` (C-dead skipped) — each under
-   caffeinate in tmux `bench:run`; the seat's watch emits a liveness line per landing.
-5. `s2_morning_line.py ~/bench/state 30`: per stage and arm, passed / landed / k; **the F3 line** (plain, stage B,
-   over k) with its band; beside it the unflagged rate, the rate without problem_90, the recall instrument
-   (`f_high` and whether the band is read), the C line over the C-eligible subset, orphan/superseded/view-dead rows,
-   failure classes (KERNEL_REJECTED, STATEMENT_ALTERED, AXIOMS_FAIL, COMPILE, SCREEN), the per-stage `a0` p90 the cap
-   rule consumes; the B-failure triage follows from the seat. **No p-value, by design.**
+**STEP 0 — seat, before the freeze commit.**
+(0a) `export CLEVER_SRC=<clever clone>/src/lean4`; assert `git -C <clone> rev-parse HEAD` = `8348039a7ff7730a126d761e71d0439735eeb3e2`.
+(0b) `bash harness/hashes.sh >/dev/null` (it EXITS non-zero if `CLEVER_SRC` is unset — a pin-less HASHES.txt would make
+every episode refuse); assert `grep -c '^leanproj-' harness/HASHES.txt` = 3 and `git diff --quiet harness/HASHES.txt` (or
+review the diff). (0c) refuter pass 2 (this file answers it: §9); `--dry` and the RUN-SHAPED dry (`DRY_RUN=1` + the stub,
+so extract→assemble→check→audit RUN) on the seat; then the **dated freeze commit** (retitle from DRAFT) = the
+authorization (F2). The freeze commit sha is written to `harness/FREEZE-COMMIT` by `sync_studio.sh` at STEP 1.
+
+**STEP 1 — Studio prep (no model), in this ORDER (each step names the fact the next needs):**
+(1a) `bash harness/sync_studio.sh` FIRST — it commits `harness/` to the Studio (views EXCLUDED; a stale Studio views dir
+is purged; `FREEZE-COMMIT` written; the receipt asserts every S2 file's Studio sha == the pin, and the three `leanproj-*`
+pins and `draw-30` are present). The build reads `clever-commit` from the Studio's HASHES.txt, which only this sync puts
+there. (1b) `ssh kriterion-lan 'bash ~/bench/harness/s2lean/lean_shared_build.sh'` — export → `~/lean-shared/clever`,
+`lake exe cache get` + `Imports` build, the six assertions, prints the `leanproj-*` shas (must equal the pins). (1c)
+`ssh kriterion-lan 'cp ~/bench/harness/settings.s2.json ~/.claude-bench/settings.json'` then assert its sha ==
+`grep '^settings.s2.json ' harness/HASHES.txt` — **re-run this after ANY claude login/auth refresh on the Studio (a login
+REWRITES settings.json), and re-run smoke afterward** (episode_s2.sh asserts this sha per episode). (1d) the controls, kit
+OUTSIDE `~/bench` (it carries `frozen.json`, which would trip the stage-A refusal): on the seat
+`rm -rf /tmp/s2kit && python3 harness/s2lean/s2_controls_kit.py "$CLEVER_SRC" harness/s2lean/views /tmp/s2kit`;
+`ssh kriterion-lan 'rm -rf ~/s2kit'`; `rsync -a /tmp/s2kit/ kriterion-lan:~/s2kit/`;
+`ssh kriterion-lan 'bash ~/bench/harness/s2lean/s2_controls.sh ~/lean-shared/clever ~/s2kit ~/bench/state/s2-controls.json'`
+(CONTROLS PASS 30/30 required; it deletes the kit unless `KEEP_KIT=1`); then `ssh kriterion-lan 'rm -rf ~/s2kit; find ~/bench ~/lean-shared -name frozen.json -o -name C.lean | wc -l'` must print 0 before ship A.
+
+**STEP 2 — ship the stage-A views and probe (no scored call yet):** `harness/s2lean/stage_views.sh ship A`
+(A.lean + frozenA.json only; `check` shows frozen = 0, C = 0). Smoke `smoke_s2.sh` (arm `s0`, `SMOKE(…)`, never scored,
+never writes `A.bodies.json`): **S1** canary + PATH · **S2** network (curl, a written `fetch.py`, a Lean
+`#eval IO.Process.run curl` through `rt` — all must FAIL) · **S3** reads (`~/bench/harness/arms/a1.md` and `~/.claude-bench`
+DENIED; `~/lean-shared/clever/lakefile.lean` readable — S3 spells its reads so the HOOK passes them, so the OS, not the
+regex, is measured) · **S4** writes (`.lake/probe` DENIED; cwd writable) · **S5** the compile through `rt` from the agent.
+`run_s2_stage0.sh` refuses to start unless the LAST verdict per id S1–S5 is `SMOKE PASS` carrying this freeze's
+`episode_s2.sh` sha, AND `~/bench/state/s2-controls.json` has `controls_pass:true`.
+
+**STEP 3 — the run:** `run_s2_stage0.sh A 30` (60 episodes) · when every A has landed
+(`grep -c 'S2 STAGE A DRIVER DONE'` = 1, or `has_terminal` over the 60 (task,arm) pairs), `stage_views.sh ship BC` ·
+`run_s2_stage0.sh B 30` · `run_s2_stage0.sh C 30` (C-dead skipped, view_dead landings) — each under caffeinate in tmux
+`bench:run`; the seat's watch emits a liveness line per landing.
+
+**STEP 4 — the morning line, then archive back to the seat:**
+`ssh kriterion-lan 'python3 ~/bench/harness/s2lean/s2_morning_line.py ~/bench/state 30'`: per stage and arm,
+passed / landed / k; **the F3 line** (plain, stage B, over k) with its band; beside it the unflagged rate (the F5
+band-divergence check), the rate without problem_90, the recall instrument (`f_high` and whether the band is read),
+the C line over the C-eligible subset, orphan/superseded/view-dead rows, the classes (KERNEL_REJECTED, STATEMENT_ALTERED,
+PROVENANCE, AXIOMS_FAIL, COMPILE, SCREEN), the per-stage `a0` p90 the cap rule consumes. **No p-value, by design.**
+Then `rsync` `~/bench/state/` (manifests, check.json, canonical.lean, session.jsonl) back to the seat for the B-failure
+triage (§2) and the results commit; `studio_phase.sh out`-style assertion that no ground truth remains.
 
 ## 8 · Refuter pass 1 (2026-08-28, 86f9e04) → what changed in this draft
 
@@ -283,6 +320,27 @@ maxHeartbeats 400000 in`); the timeout control (no `lean` process left).
 | FORBID false positives; timeout orphans `lean`; `result.errors`; no process-group kill; realpath VOID trap (R2/R3, MT-R2/R3/R4) | comment-stripped screen with the heartbeats allowance; group kills; `errors` read; neutral prefixes (§3, §4, §6) |
 | no controls script, no B gold, no smoke script, checker/frozenA/manifest unpinned (FN-5/10, R7, F7/F9/F10, MT-R6) | `s2_controls.sh` on problem_1 with the driven exploits; `smoke_s2.sh`; the new HASHES pins (§3, §7) |
 | recall not instrumented; isomorphism-shape strictness; placebo not inert (F3-02/03, note F3-07) | recall instrument and triage pre-registered (§2); Lean-neutral placebo (§5) |
+
+## 9 · Refuter pass 2 (2026-08-29, 4a26604) → round-2 repairs (this text)
+
+Pass 2 (`seat/fleet/REFUTER-saltbench-s2lean-pass2-2026-08-29.md`): 76/90 pass-1 findings CLOSED, 13 PARTIAL + 1
+OPEN(note), 22 fresh confirmed (0 refuted). Round 2, each re-driven on the seat:
+
+| finding (pass 2) | repair (section) |
+|---|---|
+| FATAL: `hashes.sh` dropped the `leanproj-*` pins when `CLEVER_SRC` unset — 4a26604 shipped a HASHES.txt that refuses every episode (FN2-01/EDH-2/P2C2-04) | `hashes.sh` EXITS non-zero and writes atomically (a fail never clobbers HASHES.txt); STEP 0 regenerates with `CLEVER_SRC`; `sync_studio.sh` receipt now lists `leanproj-*`/`draw-30` |
+| FATAL: `sync_studio.sh` reported DRIFT on files whose shas are EQUAL (a duplicate HASHES line) and exited 2 — the harness never reached the Studio (P2C2-01) | `hashes.sh` no longer double-emits `s2audit.lean`/`sandbox_check.sb`; `sync_studio.sh`'s receipt grep takes `head -1` |
+| FATAL: the check-time compile could write into `$ST` and REPLACE `bodies.json`, and the D5 provenance certified the tampered body (AP-1/R1) | check.py compiles in a FRESH isolated `cwork` (TMPDIR-scoped, removed after); the sandbox write-allow is `cwork` only (no broad `/private/tmp`); the olean is archived out; `bodies.json` is never fence-writable |
+| credential read into `log_tail` via `include_str`/`#eval`; elaborator-attribute bodies unscreened (AP-2) | the profile DENIES reads of the credential/config trees; the screen adds `command_elab term_elab attribute include_str IO` (and the stage-A olean is copied into `cwork` so the audit reads nothing under `$BENCH/state`) |
+| repair-introduced: A.bodies deletion clobbers a valid earlier pass (F4); `ARMFILE` unbound in `finish()` → HALT (EDH-1) | a NON-scored fail no longer deletes A.bodies (only a scored-not-passed supersede does); `ARMFILE` bound at init |
+| nothing gated the driver on the controls; a stale SMOKE PASS was accepted; the audit SIGKILL had no retry (F7/FN-5/EDH-3) | `run_s2_stage0.sh` refuses without `controls_pass:true`; the smoke gate takes the LAST verdict per id; check.py retries a transient audit SIGKILL once |
+| `a_body_value_identical` computed but never gated (AP-4); audit axiom-source prose wrong (AP-3/P2C2-03) | a stage-B `generated_spec` ≠ the scored A body is class `PROVENANCE`; §3 states the real axiom source; `s2audit.lean` records `unknown` names and fails closed |
+| heredoc network clause could not fire (per-line grep); stale Studio views not purged; settings.s2.json install/controls kit path/build-order unstated (EDH-5/EDH-4/FN2-02/03/04) | hook + meter flatten newlines before matching; `sync_studio.sh` purges the Studio views dir; §7 is an executable runbook (sync before build; the kit outside `~/bench`; the settings install with its assertion) |
+| prose overclaims: "FULL SOLUTION", §6 inherited container artifact rows (R5/P2C2-05) | §1 says "skeleton + human ground truth"; §6 lists the S2 artifact/manifest and names the dropped container rows |
+
+NOTE-level and accepted as stated limitations: the working copy still names CLEVER by package (NF10); the hook's
+`$VAR/..` climb tripwire (GT-6) and `.lake/build` write (M6) are covered by the sandbox `denyRead`/`denyWrite`, the
+hook being the audit not the fence; a body can still read a PUBLIC file into a truncated `log_tail` (AP-2 residual).
 
 ---
 

@@ -13,14 +13,17 @@ SSH="ssh -o ConnectTimeout=10"
 if [ -n "$(git -C "$REPO" status --porcelain harness/ TASKLIST.json IMAGE-DIGESTS.json)" ]; then echo "REFUSE: harness/ (or a table) has uncommitted changes — commit first, then sync"; exit 3; fi
 git -C "$REPO" diff --quiet HEAD -- harness/HASHES.txt || { echo "REFUSE: HASHES.txt differs from HEAD"; exit 3; }
 git -C "$REPO" rev-parse HEAD > "$REPO/harness/FREEZE-COMMIT"
+$SSH "$STUDIO" 'rm -rf ~/bench/harness/s2lean/views' 2>/dev/null   # purge: the exclude below protects a STALE views dir from --delete (EDH-4)
 rsync -a --delete --exclude='s2lean/views/' --exclude='__pycache__/' --exclude='.DS_Store' -e "$SSH" "$REPO/harness/" "$STUDIO:~/bench/harness/" || exit 1
 rm -f "$REPO/harness/FREEZE-COMMIT"
 rsync -a -e "$SSH" "$REPO/TASKLIST.json" "$REPO/IMAGE-DIGESTS.json" "$STUDIO:~/bench/harness/" || exit 1
 # receipt: the Studio-side shas of the files the run depends on must EQUAL the pinned ones (refuter RI-2; FN-10 for S2)
 for f in episode.sh hook-deny-network.sh settings.bench.json settings.s2.json meter.py build_prompt.py \
-         s2lean/episode_s2.sh s2lean/check.py s2lean/extract.py s2lean/assemble.py s2lean/screen.py s2lean/s2audit.lean s2lean/sandbox_check.sb s2lean/rt.template s2lean/run_s2_stage0.sh s2lean/smoke_s2.sh; do
-  want=$(grep "^$f " "$REPO/harness/HASHES.txt" | cut -d' ' -f2)
-  [ -n "$want" ] || { echo "SYNC MISSING-PIN $f (not in HASHES.txt — hashes.sh first)"; exit 2; }
+         s2lean/episode_s2.sh s2lean/check.py s2lean/extract.py s2lean/assemble.py s2lean/screen.py s2lean/s2audit.lean s2lean/sandbox_check.sb s2lean/rt.template s2lean/run_s2_stage0.sh s2lean/smoke_s2.sh \
+         leanproj-lakefile leanproj-manifest leanproj-toolchain draw-30; do
+  want=$(grep "^$f " "$REPO/harness/HASHES.txt" | head -1 | cut -d' ' -f2)   # head -1: a table with a duplicate line must not make want a two-line string (P2C2-01)
+  [ -n "$want" ] || { echo "SYNC MISSING-PIN $f (not in HASHES.txt — run hashes.sh with CLEVER_SRC set first)"; exit 2; }
+  case "$f" in leanproj-*|draw-30) echo "SYNC PIN  $f ${want:0:16} (a pin line, not a shipped file — presence asserted)"; continue ;; esac
   have=$($SSH "$STUDIO" "shasum -a 256 ~/bench/harness/$f 2>/dev/null | cut -d' ' -f1")
   [ "$want" = "$have" ] && echo "SYNC OK   $f ${have:0:16}" || { echo "SYNC DRIFT $f studio=${have:0:16} pinned=${want:0:16}"; exit 2; }
 done

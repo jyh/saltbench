@@ -20,7 +20,8 @@ import json, re, sys
 TOKENS = [
     "macro_rules", "macro", "syntax", "notation", "infixl", "infixr", "infix", "prefix", "postfix",
     "elab_rules", "elab", "declare_syntax_cat", "run_cmd", "run_elab", "run_tac",
-    "builtin_initialize", "initialize", "#eval!", "#eval", "#print", "#exit", "import",
+    "command_elab", "term_elab", "builtin_command_elab", "builtin_term_elab", "attribute", "include_str",
+    "builtin_initialize", "initialize", "#eval!", "#eval", "#print", "#exit", "import", "IO",
     "axiom", "unsafe", "implemented_by", "extern", "opaque", "partial", "set_option",
 ]
 _TOK = re.compile(r"(?<![A-Za-z0-9_.'!?#])(?:%s)(?![A-Za-z0-9_!?'])" % "|".join(re.escape(t) for t in TOKENS))
@@ -114,13 +115,13 @@ CASES = [  # (body, expected tokens)
     ("macro_rules | `(∀ $xs:ident*, $b) => `(True)", ["macro_rules@1"]),
     ("open Lean Elab Command in\nrun_cmd liftTermElabM do pure ()", ["run_cmd@2"]),
     ("by run_tac do pure ()", ["run_tac@1"]),
-    ("#eval IO.FS.writeFile \"x\" \"y\"", ["#eval@1"]),
+    ("#eval IO.FS.writeFile \"x\" \"y\"", ["#eval@1", "IO@1"]),
     ("#eval! spin 0", ["#eval!@1"]),
     ("open Lean Elab Command in elab_rules : command | `(#print axioms $x:ident) => pure ()", ["elab_rules@1", "#print@1"]),
     ("partial def spin (n : Nat) : Nat := spin (n+1)", ["partial@1"]),
     ("@[implemented_by cheat] def f : Nat := 0", ["implemented_by@1"]),
     ("theorem h.sorry : True := trivial\nexact List.IsPrefix.refl _\nexact foo_prefix", []),
-    ("@[command_elab Parser.Command.printAxioms] def x : CommandElab := fun _ => pure ()", []),
+    ("@[command_elab Parser.Command.printAxioms] def x : CommandElab := fun _ => pure ()", ["attribute-bracket: command_elab@1"] if False else ["command_elab@1"]),
     ("theorem two : (2:Nat)+2=4 := by native_decide", []),
     ('s!"value {x} run_cmd" ++ "y"', []),
     ('r#"raw \\" #eval"# ++ "x"', []),
@@ -129,6 +130,12 @@ CASES = [  # (body, expected tokens)
     ("opaque o : Nat", ["opaque@1"]),
     ("import Mathlib", ["import@1"]),
     ("line1\n-- #eval here\nsyntax \"#test \" term : command", ["syntax@3"]),
+    ("open Lean Elab Command in\n@[command_elab Lean.Parser.Command.declaration] def hij : CommandElab := fun _ => IO.FS.writeFile \"x\" \"y\"", ["command_elab@2", "IO@2"]),
+    ("theorem h : True := by have s := include_str \"/etc/hosts\"; trivial", ["include_str@1"]),
+    ("#eval IO.Process.run { cmd := \"curl\" }", ["#eval@1", "IO@1"]),
+    ("attribute [local simp] foo", ["attribute@1"]),
+    ("exact List.foldr (fun a b => a + b) 0 xs", []),
+    ("have hio : Nat := 0; exact hio", []),
 ]
 
 

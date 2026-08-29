@@ -28,9 +28,13 @@ stamp() { date -u +%Y-%m-%dT%H:%M:%SZ; }
 # the smoke gate (D13): five PASS lines from THIS freeze's episode_s2.sh, else nothing starts
 if [ "$DRY" != "1" ]; then
   esha=$(shasum -a 256 "$H/s2lean/episode_s2.sh" | cut -d' ' -f1); miss=""
-  for id in S1 S2 S3 S4 S5; do grep -Eq "^SMOKE PASS $id .*episode_s2\.sh=$esha" "$BENCH/logs/smoke.log" 2>/dev/null || miss="$miss $id"; done
+  for id in S1 S2 S3 S4 S5; do v=$(grep -E "^SMOKE (PASS|FAIL) $id " "$BENCH/logs/smoke.log" 2>/dev/null | tail -1); printf '%s\n' "$v" | grep -Eq "^SMOKE PASS $id .*episode_s2\.sh=$esha" || miss="$miss $id"; done   # LAST verdict per id, not any PASS (EDH-3)
   [ -z "$miss" ] || { echo "REFUSE: smoke.log lacks SMOKE PASS for$miss from episode_s2.sh=$esha (run smoke_s2.sh first)"; exit 3; }
   echo "$(stamp) SMOKE GATE OK episode_s2.sh=$esha" | tee -a "$RL"
+  # controls gate (F7/FN-5): the D14 checker controls must have passed before any scored episode
+  cj="$BENCH/state/s2-controls.json"
+  python3 -c "import json,sys;sys.exit(0 if json.load(open('$cj')).get('controls_pass') else 1)" 2>/dev/null || { echo "REFUSE: $cj missing or controls_pass!=true (run s2_controls.sh first)"; exit 3; }
+  echo "$(stamp) CONTROLS GATE OK" | tee -a "$RL"
 else
   echo "$(stamp) DRY_RUN=1: smoke gate skipped; stub=$CLAUDE_BIN; landings=$L; bodies under $SROOT" | tee -a "$RL"
 fi

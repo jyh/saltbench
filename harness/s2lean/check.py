@@ -26,13 +26,12 @@ usage: check.py <A|B|C> <frozen.json> <bodies.json> <LEANPROJ> <work>/canonical.
          [--timeout 600] [--audit-timeout 600] [--no-screen]                 -> check.json on stdout
 exit 0 (verdict in JSON), 2 on class HARNESS.
 """
-import argparse, hashlib, json, os, shutil, signal, subprocess, sys, time, traceback
+import argparse, hashlib, json, os, shutil, signal, subprocess, sys, tempfile, time, traceback
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import screen as scr
 from assemble import assemble
 ALLOW = {"propext", "Classical.choice", "Quot.sound"}
 SANDBOX = "/usr/bin/sandbox-exec"
-NOWRITE_UNDER = ("/private/tmp", "/private/var/folders")   # allowed by the profile for everybody
 
 
 def sha_s(s): return hashlib.sha256(s.encode("utf-8")).hexdigest()
@@ -52,9 +51,13 @@ def lake_env(proj):
     return env, os.path.realpath(lean)
 
 
+# credential/config trees the fenced compile must not READ (AP-2: `include_str`/#eval reading a secret into log_tail)
+DENY_READ = ["~/.claude-bench", "~/.claude", "~/.ssh", "~/.aws", "~/.gnupg", "~/.config", "~/.gitconfig",
+             "~/Library/Keychains", "~/Library/Application Support"]
 def render_profile(template, lean_bin, write_paths):
     wp = " ".join('(subpath "%s")' % os.path.realpath(p) for p in write_paths)
-    return template.replace("__LEAN_BIN__", lean_bin).replace("__WRITE_PATHS__", wp)
+    dr = " ".join('(subpath "%s")' % os.path.expanduser(p) for p in DENY_READ)
+    return template.replace("__LEAN_BIN__", lean_bin).replace("__WRITE_PATHS__", wp).replace("__DENY_READ__", "(deny file-read* %s)" % dr)
 
 
 def pgrep(args):
@@ -102,10 +105,12 @@ def check(a, res):
         for k in ("a_episode", "a_bodies_sha256", "a_termination", "a_passed", "a_view_sha256"): res[k] = ab.get(k)
     # 1. screen
     res["screen"] = scr.screen_bodies(bd); res["screen_enforced"] = not a.no_screen
-    # sources
-    work = os.path.dirname(os.path.abspath(a.canonical)); os.makedirs(work, exist_ok=True)
+    # sources. `art` = the ARCHIVE dir (the harness writes here, unfenced); `cwork` = a FRESH isolated dir the
+    # fenced compile is the ONLY thing that may write (AP-1: the fence's writable path must never be a file the
+    # harness later reads/archives — $ST/bodies.json etc.). cwork lives under TMPDIR/private-tmp, outside $BENCH.
+    art = os.path.dirname(os.path.abspath(a.canonical)); os.makedirs(art, exist_ok=True)
     src = assemble(a.stage, fz, bd); psrc = assemble(a.stage, fz, {}, pristine=True)
-    open(a.canonical, "w").write(src)
+    open(a.canonical, "w").write(src)                       # the ARCHIVE copy (harness write, not the fenced process)
     res["canonical_sha256"] = sha_s(src); res["pristine_sha256"] = sha_s(psrc)
     res["tests_in_file"] = a.stage == "C" and "#test" in src
     if res["screen"] and res["screen_enforced"]:
@@ -113,48 +118,59 @@ def check(a, res):
     if not os.path.exists(SANDBOX): raise RuntimeError("%s missing: cannot fence the compile" % SANDBOX)
     env, lean = lake_env(a.proj); res["lean_bin"] = lean
     template = open(a.profile).read()
-    belt = os.path.abspath(a.canonical)
-    # 2. compile the canonical file (agent text) — fenced
-    olean = os.path.join(work, "canonical.olean")
-    if os.path.exists(olean): os.remove(olean)
-    prof = render_profile(template, lean, [work])
-    rc, out, wall, killed, left = run_fenced([lean, "--root=" + work, "-o", olean, a.canonical], work, env, prof, a.timeout, belt)
+    cwork = tempfile.mkdtemp(prefix="s2check-")           # the ONLY write-allowed path; removed in finally
+    res["check_work"] = cwork
+    env = dict(env); env["TMPDIR"] = cwork                # lean's own scratch stays inside the fence
+    prof = render_profile(template, lean, [cwork])        # writes: cwork only (no broad /private/tmp — R1)
+    ccanon = os.path.join(cwork, "canonical.lean"); open(ccanon, "w").write(src)
+    # 2. compile the canonical file (agent text) — fenced, in cwork
+    olean = os.path.join(cwork, "canonical.olean")
+    rc, out, wall, killed, left = run_fenced([lean, "--root=" + cwork, "-o", olean, ccanon], cwork, env, prof, a.timeout, ccanon)
     res["rc"], res["compile_wall_s"], res["log_tail"] = rc, wall, out[-3000:]
     res["orphans_killed"], res["orphans_left"] = killed, left
     res["sorry_lines"] = [l for l in out.splitlines() if "declaration uses 'sorry'" in l]
-    open(os.path.join(work, "compile.log"), "w").write(out)
+    open(os.path.join(art, "compile.log"), "w").write(out)
     res["compiled"] = (rc == 0 and os.path.exists(olean))
     if rc == "TIMEOUT": res["class"] = "TIMEOUT"; return
     if not res["compiled"]: res["class"] = "COMPILE"; return
     res["canonical_olean_sha256"] = sha_f(olean)
-    # 3. pristine (no agent text) — compiled AFTER the canonical, never inside its writable paths unless trusted
-    if a.pristine_cache:
-        pdir = os.path.join(a.pristine_cache, "problem_%s" % fz.get("problem_id"), a.stage, res["pristine_sha256"][:16])
-        rp = os.path.realpath(pdir)
-        trusted = not (rp.startswith(os.path.realpath(work) + os.sep) or any(rp.startswith(x + os.sep) for x in NOWRITE_UNDER))
-    else:
-        pdir, trusted = os.path.join(work, "pristine"), False
-    res["pristine_dir"], res["pristine_cache_trusted"] = pdir, trusted
-    os.makedirs(pdir, exist_ok=True)
+    shutil.copy(olean, os.path.join(art, "canonical.olean"))   # archive the olean (cwork is deleted); stage B reads it as --a-olean (AP-1 fix must not break the a_olean chain)
+    # 3. pristine (no agent text) — compiled in cwork/pristine; cached olean lives OUTSIDE cwork (never fence-writable)
+    pdir = os.path.join(cwork, "pristine"); os.makedirs(pdir, exist_ok=True)
     pfile, polean = os.path.join(pdir, "canonical.lean"), os.path.join(pdir, "canonical.olean")
-    cached = trusted and os.path.exists(polean) and os.path.exists(pfile) and open(pfile).read() == psrc
+    cache_olean = None
+    if a.pristine_cache:
+        cache_olean = os.path.join(a.pristine_cache, "problem_%s" % fz.get("problem_id"), a.stage, res["pristine_sha256"][:16] + ".olean")
+    res["pristine_cache_olean"] = cache_olean
+    cached = bool(cache_olean and os.path.exists(cache_olean))
     res["pristine_cached"] = cached
-    if not cached:
-        if os.path.exists(polean): os.remove(polean)
+    if cached:
+        shutil.copy(cache_olean, polean)                 # harness copy into cwork; the fenced audit reads it there
+    else:
         open(pfile, "w").write(psrc)
-        prc, pout, pwall, _, _ = run_fenced([lean, "--root=" + pdir, "-o", polean, pfile], pdir, env, render_profile(template, lean, [pdir]), a.timeout, pfile)
+        prc, pout, pwall, _, _ = run_fenced([lean, "--root=" + pdir, "-o", polean, pfile], pdir, env, render_profile(template, lean, [cwork]), a.timeout, pfile)
         res["pristine_rc"], res["pristine_wall_s"] = prc, pwall
-        open(os.path.join(pdir, "compile.log"), "w").write(pout)
+        open(os.path.join(art, "pristine.compile.log"), "w").write(pout)
         if prc != 0 or not os.path.exists(polean):
             res["pristine_log_tail"] = pout[-2000:]
             raise RuntimeError("pristine file does not compile (rc=%s): the view is dead, not the agent" % prc)
+        if cache_olean:                                  # populate the cache (harness copy, outside the fence)
+            os.makedirs(os.path.dirname(cache_olean), exist_ok=True); shutil.copy(polean, cache_olean)
     res["pristine_olean_sha256"] = sha_f(polean)
-    # 4. audit — replay + statements + axioms, outside the agent's elaboration
-    aol = os.path.abspath(a.a_olean) if a.a_olean else "-"
-    if aol != "-" and not os.path.exists(aol): res["a_olean_missing"] = aol; aol = "-"
-    arc, aout, awall, _, _ = run_fenced([lean, "--run", a.audit, olean, polean, a.stage, aol], work, env, render_profile(template, lean, [work]), a.audit_timeout, a.audit)
+    # 4. audit — replay + statements + axioms, outside the agent's elaboration. The stage-A olean is copied INTO
+    #    cwork so the audit reads nothing under $BENCH/state (the profile denies that read).
+    aol = "-"
+    if a.a_olean and os.path.exists(a.a_olean):
+        aol = os.path.join(cwork, "a_canonical.olean"); shutil.copy(a.a_olean, aol)
+    elif a.a_olean:
+        res["a_olean_missing"] = a.a_olean
+    arc, aout, awall, _, _ = run_fenced([lean, "--run", a.audit, olean, polean, a.stage, aol], cwork, env, render_profile(template, lean, [cwork]), a.audit_timeout, a.audit)
+    # 4a. a transient SIGKILL of the audit (OOM/contention, rc negative and not a timeout) is retried ONCE (FN-5)
+    if arc not in (0,) and arc != "TIMEOUT" and isinstance(arc, int) and arc < 0:
+        res["audit_retry"] = arc
+        arc, aout, awall, _, _ = run_fenced([lean, "--run", a.audit, olean, polean, a.stage, aol], cwork, env, render_profile(template, lean, [cwork]), a.audit_timeout, a.audit)
     res["audit_rc"], res["audit_wall_s"] = arc, awall
-    open(os.path.join(work, "audit.log"), "w").write(aout)
+    open(os.path.join(art, "audit.log"), "w").write(aout)
     aj = None
     for line in reversed(aout.splitlines()):
         line = line.strip()
@@ -164,7 +180,7 @@ def check(a, res):
     if aj is None or "error" in aj:
         res["audit_log_tail"] = aout[-2000:]
         raise RuntimeError("audit did not run: %s" % ((aj or {}).get("error") or "no JSON on stdout (rc=%s)" % arc))
-    open(os.path.join(work, "audit.json"), "w").write(json.dumps(aj, indent=1))
+    open(os.path.join(art, "audit.json"), "w").write(json.dumps(aj, indent=1))
     res["replay_ok"], res["replay_error"] = bool(aj.get("replay_ok")), aj.get("replay_error") or ""
     res["statements"], res["statements_identical"] = aj.get("statements"), bool(aj.get("statements_identical"))
     res["statement_diffs"], res["axioms"] = aj.get("statement_diffs") or [], aj.get("axioms") or {}
@@ -174,6 +190,7 @@ def check(a, res):
     if not res["replay_ok"]: res["class"] = "KERNEL_REJECTED"
     elif not res["statements_identical"]: res["class"] = "STATEMENT_ALTERED"
     elif not res["axioms_ok"]: res["class"] = "AXIOMS_FAIL"
+    elif res.get("a_body_value_identical") is False: res["class"] = "PROVENANCE"   # AP-4: stage-B generated_spec != the scored stage-A body
     else: res["class"] = "PASS"
 
 
@@ -194,6 +211,9 @@ def main():
         check(a, res)
     except Exception as e:
         res["class"] = "HARNESS"; res["harness_error"] = "%s\n%s" % (repr(e), traceback.format_exc()[-1500:])
+    finally:
+        cw = res.get("check_work")
+        if cw and os.path.isdir(cw): shutil.rmtree(cw, ignore_errors=True)
     res["passed"] = (res["class"] == "PASS")
     print(json.dumps(res, indent=1))
     sys.exit(2 if res["class"] == "HARNESS" else 0)

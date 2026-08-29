@@ -9,10 +9,13 @@
 ;;                     "operation not permitted", so no background writer can outlive the compile and no
 ;;                     shell runs as the Studio user at check time (refuter R1's `id` / curl / writeFile chain)
 ;;   process-exec*   — only the pinned toolchain `lean` binary may be exec'd (sandbox-exec's own exec of it)
-;;   file-write*     — denied everywhere EXCEPT the check work dir(s) rendered below, /private/tmp and
-;;                     /private/var/folders (TMPDIR), and /dev/null. Reads are NOT denied (Lean must read
-;;                     ~2 GB of Mathlib oleans); a body can read host files and print them into its own
-;;                     log_tail — stated in the freeze, closed by D1's agent-side denyRead.
+;;   file-write*     — denied everywhere EXCEPT the fresh per-check work dir rendered below (cwork, the ONLY
+;;                     writable path — never $ST/$BENCH, so a body cannot overwrite bodies.json: AP-1) and
+;;                     /dev/null. TMPDIR is set to cwork so lean's scratch stays inside.
+;;   file-read*      — DENIED for the credential/config trees (__DENY_READ__: ~/.claude-bench, ~/.claude, ~/.ssh,
+;;                     ~/.aws, keychains, …) so an `include_str`/#eval cannot read a secret into log_tail (AP-2);
+;;                     otherwise reads are allowed (Lean must read ~2 GB of Mathlib oleans). The stage-A olean is
+;;                     copied INTO cwork so the audit reads nothing under $BENCH/state.
 ;;
 ;; Why `lean` directly and not `lake env lean`: the exec allow-list admits ONE binary; `lake` would have to be
 ;; allowed too, and lake forks lean. check.py takes LEAN_PATH/PATH from `lake env env` (harness-side, no agent
@@ -23,6 +26,7 @@
 (deny network*)
 (deny process-fork)
 (deny process-exec*)
+__DENY_READ__
 (allow process-exec (literal "__LEAN_BIN__"))
 (deny file-write*)
-(allow file-write* __WRITE_PATHS__ (subpath "/private/tmp") (subpath "/private/var/folders") (literal "/dev/null"))
+(allow file-write* __WRITE_PATHS__ (literal "/dev/null"))
