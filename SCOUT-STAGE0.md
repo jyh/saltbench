@@ -523,3 +523,8 @@ and the pre-declared `add -A && diff --cached --binary base` captured it. The pa
 output is the agent's output); a JSON prediction cannot carry those bytes, so `predictions.py` submits the patch
 with undecodable bytes replaced and flags the row `patch_non_utf8` in `predictions-excluded.json` (notes).
 Whether such a patch applies is the harness's verdict; the flag is printed beside the score.
+
+**Amendment 1, addendum 5 (2026-08-29 01:5x, after scoring):** stage 0 EXECUTED under this protocol. Results and the
+per-episode table: `RESULTS-stage0-2026-08-29.md`; archive under `runs/stage0-2026-08-28/`. The morning line's
+model-equality check compared call counts instead of model names (a reporting bug, fixed in `morning_line.py`;
+the corrected line is the one recorded). The a0 p90 the cap rule consumes is **1,602,434**.

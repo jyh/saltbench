@@ -64,7 +64,7 @@ for i in pairs:
     tot = lambda u: sum(int(u.get(k) or 0) for k in ("input_tokens", "cache_creation_input_tokens", "cache_read_input_tokens"))
     if fc(scor[(i, "a0")]) and fc(scor[(i, "a1")]): deltas.append(tot(fc(scor[(i, "a1")])) - tot(fc(scor[(i, "a0")])))
 print("  length term (a1-a0 first-call input+cache_creation+cache_read tokens): median=%s over %d pairs" % (pct(deltas, .5), len(deltas)))
-print("  pairs whose arms landed different models/tiers: %s" % [i for i in pairs if (scor[(i, "a0")].get("models"), scor[(i, "a0")].get("service_tiers")) != (scor[(i, "a1")].get("models"), scor[(i, "a1")].get("service_tiers"))])
+print("  pairs whose arms landed different models/tiers: %s" % [i for i in pairs if (set(scor[(i, "a0")].get("models") or {}), set(scor[(i, "a0")].get("service_tiers") or {})) != (set(scor[(i, "a1")].get("models") or {}), set(scor[(i, "a1")].get("service_tiers") or {}))])
 for a in ("a0", "a1"):
     print("  %s rt_unfinished total=%d" % (a, sum(int(m.get("rt_unfinished") or 0) for (i, x), m in scor.items() if x == a)))
 print("  pair order / wall_s: " + " ".join("%s:%s(%ss)/%s(%ss)" % (i[:24], *( ("a0", scor[(i, "a0")]["wall_s"], "a1", scor[(i, "a1")]["wall_s"]) if scor[(i, "a0")]["start_utc"] <= scor[(i, "a1")]["start_utc"] else ("a1", scor[(i, "a1")]["wall_s"], "a0", scor[(i, "a0")]["wall_s"]) )) for i in pairs))
