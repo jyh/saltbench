@@ -645,3 +645,85 @@ the cap costs ~8M, and in U at R=40 three of six ran to the cap.
 **Reporting.** Per episode: termination, class, calls, metered, wall. Then U15 = (4+p)/15 with its band, beside — never
 replacing — the all-drawn read of record and the pinned uniform R=40 read; the flagged 0/9 contrast; `f_high` over
 U15's passes; the integrity block; the `constants` split named. No p-value, as everywhere in this protocol.
+
+#### Amendment 3 — RESULT (2026-08-30 20:12Z): U15 = 8/15 = 53.3% ⇒ RUN, and one registered prediction failed
+
+**The nine landings** (arm a0, stage B, R=100, all other constants frozen; stage A at the frozen R=40):
+
+| problem | episode | calls | term | class | metered | wall s |
+|---|---|---|---|---|---|---|
+| 142 | `ep-4681d600` | 46  | DONE             | **PASS**    | 2,731,432  | 562  |
+| 96  | `ep-40cc1558` | 13  | DONE             | AXIOMS_FAIL | 460,034    | 360  |
+| 112 | `ep-9a17fc79` | 100 | ROUNDS_EXHAUSTED | AXIOMS_FAIL | 7,386,952  | 1,182 |
+| 141 | `ep-2831da3b` | 100 | ROUNDS_EXHAUSTED | AXIOMS_FAIL | 11,757,659 | 1,826 |
+| 31  | `ep-b1611c0b` | 16  | DONE             | **PASS**    | 448,644    | 339  |
+| 54  | `ep-1a53df01` | 12  | DONE             | **PASS**    | 311,056    | 139  |
+| 127 | `ep-f1c9b264` | 13  | DONE             | AXIOMS_FAIL | 635,859    | 420  |
+| 18  | `ep-b8e69623` | 14  | DONE             | AXIOMS_FAIL | 480,048    | 279  |
+| 74  | `ep-cfecb10e` | 16  | DONE             | **PASS**    | 537,153    | 201  |
+
+Stage A first: **9/9 DONE, passed, 4–14 calls, 1,309,708 metered / 13.5 min.**
+`p = 4` of the nine ⇒ the registered table's row `p = 4`.
+
+**THE READING, from the frozen instrument** (`s2_morning_line.py ~/bench/state 27`):
+
+- **U15 (n=15, the registered population): 8/15 = 53.3% ⇒ RUN THE SALT ARM** — proven ids `[146, 16, 4, 38, 142, 31, 54, 74]`.
+- **Recall instrument: `f_high = 0.00`** over all 8 passes (suspect 0; max `sim` 0.452 at problem_4; no trivial proof)
+  ⇒ below the 0.5 cut ⇒ **the band is read**.
+- **Integrity, all empty:** KERNEL_REJECTED `[]` · STATEMENT_ALTERED `[]` · PROVENANCE (AP-4) `[]` · orphan-B `[]` ·
+  unscored `[]`. Superseded rows: the three amendment-2 supersessions, named. `constants=[(40, …), (100, …)]` as registered.
+- **The all-drawn read of record is UNCHANGED** — rerunning the instrument at k=15 reproduces **4/15 = 26.7% ⇒ RUN**,
+  U(n=6) 4/6, f_high 0.00, exactly as landed on 08/30 01:17Z. The nine are not in that population and did not touch it.
+- ⚠ The instrument's k=27 all-drawn line (8/27 = 29.6%) is printed **PROVISIONAL / NOT YET READABLE**, because three
+  flagged ids in the first 27 (`110, 114, 75`) were never run. That is correct and expected: this amendment registered
+  the unflagged population, not the first 27. **The k=27 all-drawn figure is not a reading and is not reported as one.**
+
+**REGISTERED PREDICTIONS, scored:**
+
+1. *"the nine pass 3–6 of 9"* — **4 of 9. HOLDS.**
+2. *"total metered 30–50M, and at least three of the nine terminate `ROUNDS_EXHAUSTED` or `TOKEN_CEILING`"* —
+   ⛔ **FAILED, on both clauses.** Stage B cost **24,748,837** (26,058,545 with stage A), **below** the 30M floor; and
+   only **two** episodes reached the cap. Recorded as a failure, not as approximately right. The error is the same
+   shape as the one amendment 2's cost model made in the opposite direction: I priced from the three hardest episodes
+   in the campaign (the amendment-2 set, selected *because* they were round-capped) and applied their mean to a fresh
+   unselected population. **A mean taken over a set selected for difficulty is not a population mean.**
+3. *"9/9 stage A DONE, none above 15 calls"* — **9/9 DONE, max 14 calls. HOLDS.**
+
+**PRICE:** stage A 1,309,708 / 13.5 min · stage B 24,748,837 / 88.5 min · **total 26,058,545 metered / ~1.7 h** against
+a registered ~41M / 2.5–4 h and an authorized ~41M. The **60M stop rule never fired** (peak 41% of it). D16 stage-B p90
+is unchanged at **7,673,919** (n=24).
+
+**⛔ A CORRECTION TO THIS AMENDMENT'S OWN TEXT.** The table above §"Why the six existing rows count as R=100" lists
+problem 0's class as `COMPILE`. **It is `AXIOMS_FAIL`** (`ep-80475385`, verified in the morning line's axiom-only block:
+`spec_isomorphism` carries `sorryAx`). I recalled that cell instead of reading it; the two `COMPILE` rows of the original
+F3 read were problems 38 and 73, both since superseded. Nothing depends on it — the row is not-proven either way and the
+R=100-equivalence argument rests on its **8 calls of 40**, which is measured and correct — but a registered document
+must not carry a recalled number, so the error is recorded rather than edited away.
+
+**WHAT THE NUMBERS SAY, at the limits of what n=15 supports:**
+
+- **The flagged/unflagged split is the campaign's sharpest empirical result, and it is NOT a budget artifact.**
+  Unflagged **8/15 = 53.3%**; flagged **0/9**. Every one of the nine flagged episodes terminated `DONE` — *none* was
+  `ROUNDS_EXHAUSTED* — so they stopped voluntarily with turns in hand (the closest, problem 81, used its 40th turn and
+  still terminated DONE). Budget did not bind the flagged set, so budget does not explain its zero.
+- **R = 100 bought exactly one pass that R = 40 could not have reached:** problem_142 at **46 calls**. The other three
+  passes closed at 16, 12 and 16. ⇒ a counterfactual U15 at R=40 would read **7/15 = 46.7%**, still RUN — *a
+  counterfactual, not a measurement*, since the other episodes were not re-run.
+- **Cost and success are inversely related here.** All four passes were cheap (≤ 46 calls, ≤ 2.73M); both episodes that
+  ran to the cap failed, at 7.39M and 11.76M. But cheapness predicts nothing: four of the five failures were also
+  cheap, closing with `sorry` at 13–14 calls with ~86 turns in hand. **Extra rounds rescue nothing once the model has
+  decided to admit the gap.**
+- **The failure mode is unchanged and total:** all five failures are `AXIOMS_FAIL` with `sorryAx` in
+  `spec_isomorphism` — compiled, kernel-replayed, statements byte-identical, the isomorphism admitted rather than proved.
+
+**⛔ AN INSTRUMENT FINDING FROM THIS RUN, registered here and NOT fixed inside it:** `TOKEN_CEILING` has never been
+enforced, in either substrate, in any episode of the campaign. The watchdog calls `meter.py "$JSONL" --live` **without
+`--ep`** (`episode_s2.sh:248`; identically `episode.sh:206`), and `meter.py:157` evaluates `ep + "/"` unconditionally
+after `:156` guarded it — so the first tool call carrying a file path raises `TypeError`, two `2>/dev/null`s and a
+`|| echo 0` turn the crash into `0`, and `0 >= 8000000` is false forever. Verified by running the watchdog's pipeline
+verbatim on a live transcript. Not a governing-vs-jsonl gap: for problem_141 the two figures agree to 1,020. No landed
+result changes (no episode has ever terminated `TOKEN_CEILING`; a sweep of the archived S1 manifests finds 0 over cap),
+but **every price model must be built on R and WALL, not on the ceiling** — the observed maximum is 11,757,659 against a
+nominal 8,000,000. The repair (one line, plus a self-test case that drives the *watchdog's* call rather than the
+scorer's) is a separate dated amendment, because repairing it mid-run would have put this amendment's last five
+episodes on a different instrument from its first four and from everything they are compared against.
