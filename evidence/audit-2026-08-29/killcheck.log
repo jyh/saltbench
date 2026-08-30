@@ -1,0 +1,21 @@
+their benchmark loaded: 161 problems
+problem_0    ep-80475385  ours=AXIOMS_FAIL  theirs: iso_ok=False compile_ok=True  (9.5s)
+problem_4    ep-1d49761e  ours=PASS         theirs: iso_ok=True  compile_ok=True  (9.6s)
+problem_12   ep-467a1ba8  ours=AXIOMS_FAIL  theirs: iso_ok=False compile_ok=True  (9.7s)
+problem_16   ep-3920dbd5  ours=PASS         theirs: iso_ok=True  compile_ok=True  (9.8s)
+problem_34   ep-ff345a84  ours=AXIOMS_FAIL  theirs: iso_ok=False compile_ok=True  (9.8s)
+problem_38   ep-0a279a22  ours=COMPILE      theirs: iso_ok=False compile_ok=False (10.2s)
+problem_69   ep-1ddd1f27  ours=AXIOMS_FAIL  theirs: iso_ok=False compile_ok=True  (9.7s)
+problem_73   ep-420f3439  ours=COMPILE      theirs: iso_ok=False compile_ok=False (9.9s)
+problem_81   ep-ef95cf1f  ours=AXIOMS_FAIL  theirs: iso_ok=False compile_ok=True  (9.8s)
+problem_90   ep-ff18fce0  ours=AXIOMS_FAIL  theirs: iso_ok=False compile_ok=True  (9.9s)
+problem_109  ep-e3efc300  ours=AXIOMS_FAIL  theirs: iso_ok=False compile_ok=True  (9.8s)
+problem_129  ep-fd4db425  ours=AXIOMS_FAIL  theirs: iso_ok=False compile_ok=True  (9.8s)
+problem_146  ep-9ee56e58  ours=AXIOMS_FAIL  theirs: iso_ok=False compile_ok=True  (9.8s)
+problem_159  ep-5d68afc9  ours=AXIOMS_FAIL  theirs: iso_ok=False compile_ok=True  (9.7s)
+problem_163  ep-b05bcd4f  ours=AXIOMS_FAIL  theirs: iso_ok=False compile_ok=True  (9.8s)
+
+=== THEIR CHECKER: 2/15 isomorphism_ok
+=== OUR CHECKER:   2/15 passed
+=== AGREEMENT:     15/15
+KILLCHECK-EXIT=0

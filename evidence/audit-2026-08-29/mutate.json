@@ -1,0 +1,257 @@
+[
+ {
+  "pid": 0,
+  "ep": "ep-80475385",
+  "our_class": "AXIOMS_FAIL",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.7
+  }
+ },
+ {
+  "pid": 4,
+  "ep": "ep-1d49761e",
+  "our_class": "PASS",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.9
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.7
+  }
+ },
+ {
+  "pid": 12,
+  "ep": "ep-467a1ba8",
+  "our_class": "AXIOMS_FAIL",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.7
+  }
+ },
+ {
+  "pid": 16,
+  "ep": "ep-3920dbd5",
+  "our_class": "PASS",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.9
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  }
+ },
+ {
+  "pid": 34,
+  "ep": "ep-ff345a84",
+  "our_class": "AXIOMS_FAIL",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  }
+ },
+ {
+  "pid": 38,
+  "ep": "ep-0a279a22",
+  "our_class": "COMPILE",
+  "M1": {
+   "iso_ok": false,
+   "compile_ok": false,
+   "err": "ngth - rest.length % 3 + 3\n\u22a2 List.take (rest.length % 3) (List.drop (rest.length - rest.length % 3) (List.drop 3 t)) =\n    List.take (rest.length % 3) (List.drop (rest.length - rest.length % 3) rest)\n",
+   "wall_s": 10.2
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  }
+ },
+ {
+  "pid": 69,
+  "ep": "ep-1ddd1f27",
+  "our_class": "AXIOMS_FAIL",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.9
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  }
+ },
+ {
+  "pid": 73,
+  "ep": "ep-420f3439",
+  "our_class": "COMPILE",
+  "M1": {
+   "iso_ok": false,
+   "compile_ok": false,
+   "err": "edSimpArgs false`\n/Users/jyh/s2kill/clever/src/lean4/temp/7a1d2db4.lean:91:55: error: unsolved goals\na c : \u2124\n\u22a2 (List.filter (fun i => !decide ([a][i]? = [c][i]?)) [0]).length = if a = c then 0 else 1\n",
+   "wall_s": 9.9
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.9
+  }
+ },
+ {
+  "pid": 81,
+  "ep": "ep-ef95cf1f",
+  "our_class": "AXIOMS_FAIL",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.7
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  }
+ },
+ {
+  "pid": 90,
+  "ep": "ep-ff18fce0",
+  "our_class": "AXIOMS_FAIL",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  }
+ },
+ {
+  "pid": 109,
+  "ep": "ep-e3efc300",
+  "our_class": "AXIOMS_FAIL",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.7
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  }
+ },
+ {
+  "pid": 129,
+  "ep": "ep-fd4db425",
+  "our_class": "AXIOMS_FAIL",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  }
+ },
+ {
+  "pid": 146,
+  "ep": "ep-9ee56e58",
+  "our_class": "AXIOMS_FAIL",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  }
+ },
+ {
+  "pid": 159,
+  "ep": "ep-5d68afc9",
+  "our_class": "AXIOMS_FAIL",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.9
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  }
+ },
+ {
+  "pid": 163,
+  "ep": "ep-b05bcd4f",
+  "our_class": "AXIOMS_FAIL",
+  "M1": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  },
+  "M2": {
+   "iso_ok": true,
+   "compile_ok": true,
+   "err": "No sorries found",
+   "wall_s": 9.8
+  }
+ }
+]

@@ -1,0 +1,152 @@
+[
+ {
+  "pid": 0,
+  "our_class": "AXIOMS_FAIL",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]",
+  "wall_s": 9.5
+ },
+ {
+  "pid": 4,
+  "our_class": "PASS",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]",
+  "wall_s": 9.7
+ },
+ {
+  "pid": 12,
+  "our_class": "AXIOMS_FAIL",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]",
+  "wall_s": 9.8
+ },
+ {
+  "pid": 16,
+  "our_class": "PASS",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]",
+  "wall_s": 9.8
+ },
+ {
+  "pid": 34,
+  "our_class": "AXIOMS_FAIL",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat]",
+  "wall_s": 9.8
+ },
+ {
+  "pid": 38,
+  "our_class": "COMPILE",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]",
+  "wall_s": 9.9
+ },
+ {
+  "pid": 69,
+  "our_class": "AXIOMS_FAIL",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext]",
+  "wall_s": 9.7
+ },
+ {
+  "pid": 73,
+  "our_class": "COMPILE",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext]",
+  "wall_s": 9.8
+ },
+ {
+  "pid": 81,
+  "our_class": "AXIOMS_FAIL",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]",
+  "wall_s": 9.8
+ },
+ {
+  "pid": 90,
+  "our_class": "AXIOMS_FAIL",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext]",
+  "wall_s": 9.8
+ },
+ {
+  "pid": 109,
+  "our_class": "AXIOMS_FAIL",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext]",
+  "wall_s": 9.8
+ },
+ {
+  "pid": 129,
+  "our_class": "AXIOMS_FAIL",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]",
+  "wall_s": 9.8
+ },
+ {
+  "pid": 146,
+  "our_class": "AXIOMS_FAIL",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]",
+  "wall_s": 9.8
+ },
+ {
+  "pid": 159,
+  "our_class": "AXIOMS_FAIL",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext]",
+  "wall_s": 9.8
+ },
+ {
+  "pid": 163,
+  "our_class": "AXIOMS_FAIL",
+  "thm_untouched": true,
+  "their_iso_ok": true,
+  "their_compile_ok": true,
+  "their_error": "No sorries found",
+  "axiom_audit": "'spec_isomorphism' depends on axioms: [cheat, propext]",
+  "wall_s": 9.8
+ }
+]

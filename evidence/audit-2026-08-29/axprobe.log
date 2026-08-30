@@ -1,0 +1,17 @@
+problem_0    thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]
+problem_4    thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]
+problem_12   thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]
+problem_16   thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]
+problem_34   thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat]
+problem_38   thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]
+problem_69   thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext]
+problem_73   thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext]
+problem_81   thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]
+problem_90   thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext]
+problem_109  thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext]
+problem_129  thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]
+problem_146  thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext, Classical.choice, Quot.sound]
+problem_159  thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext]
+problem_163  thm_untouched=True   theirs: iso_ok=True   |  axiom audit: 'spec_isomorphism' depends on axioms: [cheat, propext]
+=== CLEVER's checker certified 15/15 with an untouched statement and a false axiom
+AXPROBE-EXIT=0
