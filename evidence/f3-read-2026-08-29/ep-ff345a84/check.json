@@ -1,0 +1,82 @@
+{
+ "stage": "B",
+ "problem_id": 34,
+ "screen": [],
+ "screen_enforced": true,
+ "compiled": true,
+ "rc": 0,
+ "compile_wall_s": 7.3,
+ "log_tail": "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-ojyb2d06/canonical.lean:29:2: warning: `List.Sorted` has been deprecated: Use `List.Pairwise` instead\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-ojyb2d06/canonical.lean:37:8: warning: declaration uses 'sorry'\n",
+ "replay_ok": true,
+ "replay_error": "",
+ "statements_identical": true,
+ "statement_diffs": [],
+ "axioms": {
+  "generated_spec": [],
+  "problem_spec": [],
+  "spec_isomorphism": [
+   "sorryAx"
+  ]
+ },
+ "axioms_ok": false,
+ "passed": false,
+ "class": "AXIOMS_FAIL",
+ "tests_in_file": false,
+ "a_body_value_identical": true,
+ "audit_wall_s": 7.2,
+ "harness_error": null,
+ "checker_sha256": {
+  "check.py": "9aa58095579dfc7d12cb0c727c23c7a6dffe7efaa0b0ba0b76111cd7dd767f8b",
+  "s2audit.lean": "37ccc2c586ef545b46d73425412e7c789ec2c3463216fa94ddd0481b083c81f2",
+  "sandbox_check.sb": "f0e34eee14330ba9fb5b622f9fd0572ae62c154024962e48f38071d0c36af981",
+  "screen.py": "aa2c9376a5b3e0c79dea4e6e16a320dcd7e43ad208d05c127586502729d9ab1c",
+  "assemble.py": "11698336484a92d47267cdf657b4b2d2c57fa1f42219e83329333cf4af3b98ee"
+ },
+ "a_bodies_file_sha256": "88a8c47ec7348ff95d611fd1037200edc54969f807a00878e264e940618e7b02",
+ "a_episode": "ep-e54a18d5",
+ "a_bodies_sha256": "e7c358d26821d0cfadfda603221790adee9dc395185fb2e9ee87c53d50f019d1",
+ "a_termination": "DONE",
+ "a_passed": true,
+ "a_view_sha256": "774c8f0355a44cd61257a512d61f0617926ae8a3fe73d7a41c14018bb206f830",
+ "canonical_sha256": "cd06f9d1bb1bd244288b657b58c8546bf403291c8a23bf9f4f5608e20a57327c",
+ "pristine_sha256": "975fb1a9c836e4722a44de19d9912a29e6bbe28d78c191ca2f1cb697d252dc8b",
+ "lean_bin": "/Users/jyh/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean",
+ "check_work": "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-ojyb2d06",
+ "orphans_killed": [],
+ "orphans_left": [],
+ "sorry_lines": [
+  "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-ojyb2d06/canonical.lean:37:8: warning: declaration uses 'sorry'"
+ ],
+ "canonical_olean_sha256": "7dd883fc3b1ece5ae5e71f24738eec934a3bc39c22e99dbf1f33e3b3f79b76cd",
+ "pristine_cache_olean": "/Users/jyh/bench/s2views/.pristine-cache/problem_34/B/975fb1a9c836e472.olean",
+ "pristine_cached": false,
+ "pristine_rc": 0,
+ "pristine_wall_s": 7.3,
+ "pristine_olean_sha256": "a7795fb88e0815d59a6401a25fd4d9908b912dd76f6b1f0dd061d50d17b4f85a",
+ "audit_rc": 0,
+ "statements": {
+  "generated_spec": {
+   "kind_canonical": "defn",
+   "kind_pristine": "defn",
+   "type_identical": true,
+   "value_identical": null
+  },
+  "problem_spec": {
+   "kind_canonical": "defn",
+   "kind_pristine": "defn",
+   "type_identical": true,
+   "value_identical": true
+  },
+  "spec_isomorphism": {
+   "kind_canonical": "thm",
+   "kind_pristine": "thm",
+   "type_identical": true,
+   "value_identical": null
+  }
+ },
+ "module_constants": [
+  "generated_spec",
+  "spec_isomorphism",
+  "problem_spec"
+ ]
+}

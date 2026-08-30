@@ -1,0 +1,85 @@
+{
+ "stage": "B",
+ "problem_id": 159,
+ "screen": [],
+ "screen_enforced": true,
+ "compiled": true,
+ "rc": 0,
+ "compile_wall_s": 7.1,
+ "log_tail": "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-q8x_xyke/canonical.lean:62:8: warning: declaration uses 'sorry'\n",
+ "replay_ok": true,
+ "replay_error": "",
+ "statements_identical": true,
+ "statement_diffs": [],
+ "axioms": {
+  "generated_spec": [],
+  "problem_spec": [
+   "propext"
+  ],
+  "spec_isomorphism": [
+   "propext",
+   "sorryAx"
+  ]
+ },
+ "axioms_ok": false,
+ "passed": false,
+ "class": "AXIOMS_FAIL",
+ "tests_in_file": false,
+ "a_body_value_identical": true,
+ "audit_wall_s": 7.3,
+ "harness_error": null,
+ "checker_sha256": {
+  "check.py": "9aa58095579dfc7d12cb0c727c23c7a6dffe7efaa0b0ba0b76111cd7dd767f8b",
+  "s2audit.lean": "37ccc2c586ef545b46d73425412e7c789ec2c3463216fa94ddd0481b083c81f2",
+  "sandbox_check.sb": "f0e34eee14330ba9fb5b622f9fd0572ae62c154024962e48f38071d0c36af981",
+  "screen.py": "aa2c9376a5b3e0c79dea4e6e16a320dcd7e43ad208d05c127586502729d9ab1c",
+  "assemble.py": "11698336484a92d47267cdf657b4b2d2c57fa1f42219e83329333cf4af3b98ee"
+ },
+ "a_bodies_file_sha256": "b666e4c46ed53ee74a71ecadee522806ee2ed8210437f70822fdc1b9a692028e",
+ "a_episode": "ep-6c1ee460",
+ "a_bodies_sha256": "58c143070187370b674821ecffd28a04dfe98b5a8afc95d08385030b4d4bd536",
+ "a_termination": "DONE",
+ "a_passed": true,
+ "a_view_sha256": "37cd0200b3fb4d9e7d060bf180dd485455911deda196304a9cc544935f4d38ab",
+ "canonical_sha256": "4f919fc37b0607b3de4cfed163f80d7c578dec130a00810cfb1dd421b70ed82a",
+ "pristine_sha256": "446af761a12b66a7c58fc1e09e90e0a69bebf5ada347c963cfc624840c33ff81",
+ "lean_bin": "/Users/jyh/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean",
+ "check_work": "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-q8x_xyke",
+ "orphans_killed": [],
+ "orphans_left": [],
+ "sorry_lines": [
+  "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-q8x_xyke/canonical.lean:62:8: warning: declaration uses 'sorry'"
+ ],
+ "canonical_olean_sha256": "2492e26dbbcdca8f55364e206cf31062689c94bb5ee30f469b018188d57d954f",
+ "pristine_cache_olean": "/Users/jyh/bench/s2views/.pristine-cache/problem_159/B/446af761a12b66a7.olean",
+ "pristine_cached": false,
+ "pristine_rc": 0,
+ "pristine_wall_s": 7.2,
+ "pristine_olean_sha256": "37c0f2d7390e32d2271c68de25519a0e87b022c7e39ff71e1107637d8b1b807a",
+ "audit_rc": 0,
+ "statements": {
+  "generated_spec": {
+   "kind_canonical": "defn",
+   "kind_pristine": "defn",
+   "type_identical": true,
+   "value_identical": null
+  },
+  "problem_spec": {
+   "kind_canonical": "defn",
+   "kind_pristine": "defn",
+   "type_identical": true,
+   "value_identical": true
+  },
+  "spec_isomorphism": {
+   "kind_canonical": "thm",
+   "kind_pristine": "thm",
+   "type_identical": true,
+   "value_identical": null
+  }
+ },
+ "module_constants": [
+  "generated_spec",
+  "spec_isomorphism",
+  "problem_spec"
+ ]
+}

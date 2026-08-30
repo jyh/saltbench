@@ -375,3 +375,68 @@ completion word changed from "OK" (which the s0 canary CLAUDE.md hijacks) to "DO
 
 No scored episode has run. Re-hash, re-sync, and re-smoke follow; only a green S1–S5 authorizes the a0 control.
 
+
+---
+
+### Amendment 2 — 2026-08-29, (c1): the three round-capped stage-B episodes re-run at R=100 — DIAGNOSTIC, registered before its first call
+
+**Authorization.** Captain's ruling 16:5x, row p, option (c1), sequenced after (d) (the audit finding,
+`AUDIT-FINDING-s2lean-2026-08-29.md`). Helm's confirmation 17:1x: proceed without a further word.
+
+**The question, and only this question.** The F3 read was 2/15 = 13.3% ⇒ HOLD (floor). Three of the fifteen
+stage-B a0 episodes terminated `ROUNDS_EXHAUSTED` — the harness stopped them, they did not stop themselves.
+Was the floor, in part, a budget artifact? This amendment re-runs **exactly those three**, with **R = 100**
+(`MAX_TURNS`), and changes nothing else.
+
+**The registered set — three episodes, named before the run:**
+
+| problem | episode of record | class at R=40 | calls | metered | wall s |
+|---|---|---|---|---|---|
+| 38  | `ep-0a279a22` | COMPILE      | 40 | 2,125,654 | 724 |
+| 73  | `ep-420f3439` | COMPILE      | 40 | 2,833,049 | 884 |
+| 146 | `ep-9ee56e58` | AXIOMS_FAIL  | 40 | 2,477,257 | 700 |
+
+**Explicitly NOT in the set, and why:** `ep-ef95cf1f` (problem 81) also reached calls=40, but terminated
+`DONE` — the model finished on its last available turn rather than being cut off. It is a borderline case,
+named here so that its exclusion is a registered decision and not an oversight. The other eleven episodes
+stopped with turns in hand.
+
+**The ceiling this cannot pass.** The other eleven chose `sorry` with budget remaining, so the arithmetic
+maximum this amendment can produce is 2 + 3 = **5/15 = 33.3%**. It is DIAGNOSTIC, not remedial.
+
+**⚠ It is not, however, purely diagnostic about the reading, and that is registered here in advance.** 5/15 =
+33.3% falls in the RUN band (20–80%), so a 3/3 flip would move the all-drawn band from HOLD to RUN. The F5
+fallback still governs: all three registered problems (38, 73, 146) are in the **unflagged** subset
+U = [73, 0, 146, 16, 4, 38], so a 3/3 flip would take U to 5/6 = 83.3% ⇒ HOLD (too-easy), and the two bands
+would still DIFFER ⇒ F5 ⇒ HOLD. **No outcome of this amendment can produce a RUN reading.** Registered before
+the first call so that it cannot be discovered afterwards.
+
+**A pre-registered observation, not a result:** all three round-capped episodes are unflagged. The flagged
+problems gave up early with `sorry`; the unflagged ones ran to the cap. This bears on the F5 divergence — the
+sharpest open design question — but n=3 and it is stated here as an observation to be tested, not a finding.
+
+**What changes, and what does not.** `MAX_TURNS` 40 → 100 for these three episodes only. Everything else is
+the frozen constant: `MODEL=claude-sonnet-5`, `EFFORT=high`, `WALL_S=5400`, **`TOKEN_CEILING=8000000`
+(UNCHANGED)**, same views, same checker (`check.py` sha256 `9aa58095…`), same arm `a0`, same prompt. The
+episodes are invoked directly (the driver's `has_terminal` correctly refuses to redo a landed cell, and the
+driver unsets `MAX_TURNS` by design).
+
+**A falsifiable prediction about the cost curve, registered before the run.** Per-call metered cost in these
+three episodes grows linearly (cache-read dominated, **zero compactions**): call 1 ≈ 21k, call 40 ≈ 95k /
+124k / 106k, i.e. ~1.9k–2.6k per call of growth. Integrating to the unchanged 8M ceiling predicts
+**termination on `TOKEN_CEILING` at roughly calls 82 / 71 / 77**, *before* R=100 is reached. So this
+amendment in practice buys ~2× the calls, not 2.5×, and its expected cost is **~24M metered / ~1.5–2.5 h**,
+not the ~7.5M quoted when the option was priced — that estimate scaled tokens without scaling turns, the same
+error the stage-B re-price made. **If instead these episodes terminate `DONE` or `ROUNDS_EXHAUSTED`, this cost
+model is wrong and that is recorded as such.** The token ceiling is deliberately NOT raised: a
+`TOKEN_CEILING` landing is still an answer to "was it budget-bound", and a frozen constant is not moved to
+make an experiment prettier.
+
+**What the re-run does to the record.** `s2_morning_line.py:83` scores the LAST manifest per (problem, stage,
+arm), so these three re-runs will **supersede** the R=40 rows and the aggregate's `constants` will read
+non-uniform `[(40, …), (100, …)]`. That is expected, not an integrity failure. The F3 read of record is
+therefore pinned in the repo *before* this amendment runs: `evidence/f3-read-2026-08-29/` carries all 15
+stage-B `manifest.json` + `check.json` and the full pre-amendment morning line.
+
+**Reporting.** Per episode: termination, class, calls, metered, wall. Then the amended F3 line beside the
+pinned one, with the superseded rows named. No p-value, as everywhere in this protocol.

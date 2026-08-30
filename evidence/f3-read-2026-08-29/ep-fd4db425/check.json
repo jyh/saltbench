@@ -1,0 +1,93 @@
+{
+ "stage": "B",
+ "problem_id": 129,
+ "screen": [],
+ "screen_enforced": true,
+ "compiled": true,
+ "rc": 0,
+ "compile_wall_s": 7.4,
+ "log_tail": "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-f_jxkj2g/canonical.lean:47:35: warning: `String.get!` has been deprecated: Use `String.Pos.Raw.get!` instead\n\nNote: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.get!` to `String.Pos.Raw.get! x`).\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-f_jxkj2g/canonical.lean:64:8: warning: declaration uses 'sorry'\n",
+ "replay_ok": true,
+ "replay_error": "",
+ "statements_identical": true,
+ "statement_diffs": [],
+ "axioms": {
+  "generated_spec": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "problem_spec": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "spec_isomorphism": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ]
+ },
+ "axioms_ok": false,
+ "passed": false,
+ "class": "AXIOMS_FAIL",
+ "tests_in_file": false,
+ "a_body_value_identical": true,
+ "audit_wall_s": 8.3,
+ "harness_error": null,
+ "checker_sha256": {
+  "check.py": "9aa58095579dfc7d12cb0c727c23c7a6dffe7efaa0b0ba0b76111cd7dd767f8b",
+  "s2audit.lean": "37ccc2c586ef545b46d73425412e7c789ec2c3463216fa94ddd0481b083c81f2",
+  "sandbox_check.sb": "f0e34eee14330ba9fb5b622f9fd0572ae62c154024962e48f38071d0c36af981",
+  "screen.py": "aa2c9376a5b3e0c79dea4e6e16a320dcd7e43ad208d05c127586502729d9ab1c",
+  "assemble.py": "11698336484a92d47267cdf657b4b2d2c57fa1f42219e83329333cf4af3b98ee"
+ },
+ "a_bodies_file_sha256": "f7a834602ba692e5c75e8c502d2b1d4b544a894b3cc79f95d1a6a13aeec1c30f",
+ "a_episode": "ep-acf2b1e2",
+ "a_bodies_sha256": "6a2f6f98d82cb8ae9ac68587c5bf926f63edac8658e000390ba0058233bd7baf",
+ "a_termination": "DONE",
+ "a_passed": true,
+ "a_view_sha256": "18b54efa941c8bccfa0931ca6889697292412bf1e3313deee336683836411335",
+ "canonical_sha256": "dd437bb341466ed4c49499ac8103e2877c7f338581772eea1b354382188b4869",
+ "pristine_sha256": "c0e14ada7aafdfaeab072f8dfe1b55d9a8091692b27757c9b9170cd43ee584a9",
+ "lean_bin": "/Users/jyh/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean",
+ "check_work": "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-f_jxkj2g",
+ "orphans_killed": [],
+ "orphans_left": [],
+ "sorry_lines": [
+  "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-f_jxkj2g/canonical.lean:64:8: warning: declaration uses 'sorry'"
+ ],
+ "canonical_olean_sha256": "90d53f9fbfcc6411b3c5375dc8dbd9a85015877360226944efdd9e17085e66b3",
+ "pristine_cache_olean": "/Users/jyh/bench/s2views/.pristine-cache/problem_129/B/c0e14ada7aafdfae.olean",
+ "pristine_cached": false,
+ "pristine_rc": 0,
+ "pristine_wall_s": 7.3,
+ "pristine_olean_sha256": "f065817420ab52aed901d235018ae826eb789af2756952b9c18402aff234e031",
+ "audit_rc": 0,
+ "statements": {
+  "generated_spec": {
+   "kind_canonical": "defn",
+   "kind_pristine": "defn",
+   "type_identical": true,
+   "value_identical": null
+  },
+  "problem_spec": {
+   "kind_canonical": "defn",
+   "kind_pristine": "defn",
+   "type_identical": true,
+   "value_identical": true
+  },
+  "spec_isomorphism": {
+   "kind_canonical": "thm",
+   "kind_pristine": "thm",
+   "type_identical": true,
+   "value_identical": null
+  }
+ },
+ "module_constants": [
+  "generated_spec",
+  "spec_isomorphism",
+  "problem_spec"
+ ]
+}
