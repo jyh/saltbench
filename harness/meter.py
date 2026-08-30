@@ -154,7 +154,11 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0, neutral=None)
                     else:
                         raw_abs = raw
                     resolved = os.path.normpath(raw_abs if os.path.isabs(raw_abs) else os.path.join(cwd or "", raw_abs)) if ep else raw_abs
-                    inside = (resolved == ep or resolved.startswith(ep + "/") or resolved.startswith(("/tmp/", "/private/tmp/"))
+                    # `bool(ep) and …` SHORT-CIRCUITS: with no --ep (the WATCHDOG's call, episode_s2.sh:248 /
+                    # episode.sh:206) `ep + "/"` raised TypeError, the caller swallowed it and read 0 usage, and the
+                    # TOKEN_CEILING never fired in any episode of the campaign. `inside` is consumed only under
+                    # `if ep and not inside`, so this is a no-op whenever ep is set. (amendment 4, 2026-08-30)
+                    inside = bool(ep) and (resolved == ep or resolved.startswith(ep + "/") or resolved.startswith(("/tmp/", "/private/tmp/"))
                               or any(resolved == n or resolved.startswith(n + "/") for n in neutral))
                     if ep and not inside:
                         escapes_unblocked.append("%s %s=%s -> %s" % (name, k, raw, resolved))
@@ -321,6 +325,23 @@ def self_test():
         f.write('{"type":"assistant","message":{"id":"m10","usage":{"input_tokens":1')
     recs2, tr2 = load(p)
     check(tr2 == 1 and len(recs2) == len(recs), "a truncated last line is recorded, not fatal")
+    # ⭐ THE ARM THAT WAS MISSING, AND WHY THE DEFECT LIVED (amendment 4): every case above passes ep=EP, but the
+    # WATCHDOG calls this file with NO --ep. A self-test that never makes the call its caller makes is a self-test of
+    # a different program. Both halves are driven: the in-process call, and the watchdog's argv as a SUBPROCESS.
+    mno = meter(recs, ep=None, escape_re=ESC, url_re=URL)
+    check(mno["metered_sum"] == 2 * 1153 and mno["calls"] == 2, "ep=None (the watchdog's call) meters instead of raising")
+    p2 = os.path.join(d, "watchdog.jsonl")
+    with open(p2, "w") as f:
+        for r in recs: f.write(json.dumps(r) + "\n")
+    import subprocess
+    cp = subprocess.run([sys.executable, os.path.abspath(__file__), p2, "--live"], capture_output=True, text=True)
+    live_ok = False
+    try:
+        live_ok = cp.returncode == 0 and json.loads(cp.stdout)["metered_sum"] == 2 * 1153
+    except Exception:
+        live_ok = False
+    check(live_ok, "the WATCHDOG's exact argv (`meter.py <jsonl> --live`, no --ep) exits 0 and prints metered_sum "
+                   "(rc=%s, stderr=%s)" % (cp.returncode, (cp.stderr or "").strip().splitlines()[-1:] or ""))
     print("SELF-TEST", "OK" if ok else "FAILED")
     return 0 if ok else 1
 

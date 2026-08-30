@@ -727,3 +727,59 @@ but **every price model must be built on R and WALL, not on the ceiling** — th
 nominal 8,000,000. The repair (one line, plus a self-test case that drives the *watchdog's* call rather than the
 scorer's) is a separate dated amendment, because repairing it mid-run would have put this amendment's last five
 episodes on a different instrument from its first four and from everything they are compared against.
+
+---
+
+### Amendment 4 — 2026-08-30, the instrument repair: `TOKEN_CEILING` is made operative (no scored figure changes)
+
+**Authorization.** Helm 13:5x under the council's approval boundary (internal-facing ⇒ process, not a Captain word),
+ordered as item (1) before the treatment arms: *"the meter one-line fix FIRST with its self-test driving THE
+WATCHDOG'S call — these arms run under a ceiling that finally works."* Registered before its first act, as ever.
+
+**⛔ A CORRECTION TO MY OWN 13:0x CLAIM, MADE BEFORE THE FIX AND MEASURED.** I posted, and banked, that
+`TOKEN_CEILING` "has never been enforced in any episode of the campaign." **That is too strong and is wrong as
+written.** The crash is conditional: it fires only on a transcript containing a path-carrying tool call. Measured over
+all 112 archived episodes by running the watchdog's pipeline verbatim under the OLD code:
+
+- **blind (crashed ⇒ read 0) on 93 of 112 episodes; worked on 19.**
+- The 19 it worked on are trivial transcripts: **their maximum metered sum is 85,445 — 1.07 % of the 8,000,000
+  ceiling**, and **none** reached even half of it.
+- **Every episode that could conceivably have tripped the ceiling was blind**, including both that exceeded it
+  (problem_141 at 11,756,639 and problem_73 at 8,863,324) and the next three largest.
+
+⇒ the accurate statement, which is what the finding always rested on: **the ceiling was blind on every episode where
+it could have mattered, and has never once had the opportunity to fire.** The operational conclusion is unchanged;
+the sentence I used to carry it was not true, and it is corrected here rather than quietly restated.
+
+**The defect.** `meter.py:157` evaluated `ep + "/"` unconditionally, although `:156` had already guarded the same
+`ep` and although `inside` is consumed only under `if ep and not inside`. The watchdog calls the meter with no
+`--ep` (`episode_s2.sh:248`; identically `episode.sh:206`), so `ep is None` and the first path-carrying tool call
+raised `TypeError`. The call site discards stderr twice and ends `|| echo 0`, so **a crashed meter reported zero
+usage**, and `0 >= 8000000` is false forever.
+
+**The fix — one line.** `inside = bool(ep) and (…)`. Python short-circuits, so `ep + "/"` is never evaluated when
+`ep` is None; and because `inside` is read only under `if ep and not inside`, the change is a **no-op whenever `ep`
+is set**, which is every scoring call.
+
+**Proof that no scored figure moves — driven, not argued.** Old and new `meter.py` were run over **all 112 archived
+episodes** with the scorer's own argv (`--ep`, `--result`, `--escape-file`, `--url-file` as the episode used them)
+and their complete output hashed: **112 byte-identical, 0 differing.** No number this campaign has ever reported
+changes.
+
+**Proof that the guard now works.** Two self-test arms added, and they exist because of *why* the defect survived:
+every pre-existing case passed `ep=EP`, while the caller that matters passes none — **a self-test that never makes
+the call its caller makes is a self-test of a different program.** The new arms drive (1) `meter(recs, ep=None, …)`
+in process, and (2) **the watchdog's exact argv as a subprocess** — `meter.py <jsonl> --live`, no `--ep` — asserting
+exit 0 and a correct `metered_sum`. Both PASS; the whole self-test is OK. On a real transcript the repaired pipeline
+returns the manifest's own figure.
+
+`HASHES.txt` re-pinned: `meter.py` `3798e7369b34…` → `3c3e7101f2a8…`.
+
+**⚠ THE CONSEQUENCE THAT MUST NOT BE SLIPPED, and which the arms' amendment has to answer.** Making the ceiling
+operative *changes the environment* between the arms already landed and any arm run after this commit. Every `a0`
+row of U15 ran with an inoperative ceiling — bounded in practice by `R` and `WALL_S` alone, and two of them spent
+8.86M and 11.76M without being stopped. If a treatment arm now runs under a live 8,000,000 ceiling, an episode that
+would have finished at 9M is killed and scored not-proven, where its plain-arm counterpart was allowed to run.
+**That is an instrument asymmetry favouring the control, and it is a confound, not a conservatism.** The remedy
+belongs to the arms' own pre-registration and is registered there: the arms are given a `TOKEN_CEILING` that does
+not bind, so that `R` and `WALL_S` remain the binding constraints for treatment exactly as they were for control.
