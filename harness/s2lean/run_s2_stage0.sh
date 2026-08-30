@@ -41,6 +41,26 @@ fi
 # leftover episode dirs (SIGKILL, power loss, a Finder .DS_Store) would make every episode die at the EPROOT assertion (M7)
 for d in "$EPROOT"/ep-* "$EPROOT"/.DS_Store; do [ -e "$d" ] || continue; mkdir -p "$BENCH/state/orphans"; mv "$d" "$BENCH/state/orphans/$(date -u +%Y%m%dT%H%M%SZ)-$(basename "$d")"; echo "$(stamp) SWEPT leftover $d -> state/orphans" | tee -a "$RL"; done
 ids=$(python3 "$H/s2lean/draw.py" "$K") || { echo "REFUSE: draw.py failed"; exit 3; }
+# AMENDMENT 3 (2026-08-30, unflagged-only n=15 at R=100). Two registered overrides, both REFUSING rather than guessing:
+#   ONLY_IDS  a subset of the first k, so the seeded DRAW still chooses the population and the operator only narrows it;
+#             anything outside the drawn k, or a duplicate, is a REFUSE (never a silent extension of the draw).
+#   R_AMEND   the round cap for THIS run, re-exported as MAX_TURNS after the deliberate unset above (the unset exists so
+#             an inherited MAX_TURNS cannot leak into a scored run; a registered cap must therefore be re-stated here).
+# Absent both, the driver behaves exactly as frozen. START counts within the FILTERED list.
+if [ -n "${ONLY_IDS:-}" ]; then
+  sel=""
+  for w in $ONLY_IDS; do t="problem_${w#problem_}"
+    case " $ids " in *" $t "*) : ;; *) echo "REFUSE: ONLY_IDS names $t, which is not in the first $K of the draw"; exit 3 ;; esac
+    case " $sel " in *" $t "*) echo "REFUSE: ONLY_IDS names $t twice"; exit 3 ;; esac
+    sel="$sel $t"
+  done
+  ids="$sel"; echo "$(stamp) ONLY_IDS (registered subset of the first $K):$ids" | tee -a "$RL"
+fi
+if [ -n "${R_AMEND:-}" ]; then
+  case "$R_AMEND" in ''|*[!0-9]*) echo "REFUSE: R_AMEND must be a positive integer (got '$R_AMEND')"; exit 3 ;; esac
+  [ "$R_AMEND" -ge 1 ] || { echo "REFUSE: R_AMEND must be >= 1"; exit 3; }
+  export MAX_TURNS="$R_AMEND"; echo "$(stamp) R_AMEND: MAX_TURNS=$MAX_TURNS (registered round cap for this run)" | tee -a "$RL"
+fi
 if [ "$STAGE" = "C" ]; then
   [ -s "$H/s2lean/view_status.json" ] || { echo "REFUSE: $H/s2lean/view_status.json missing — the C-dead list (D7) is not pre-registered"; exit 3; }
   cdead=$(python3 -c "import json;print(' '.join('problem_%s'%i for i in json.load(open('$H/s2lean/view_status.json')).get('c_dead',[])))")

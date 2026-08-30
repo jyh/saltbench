@@ -501,3 +501,147 @@ sharpest open design question is unchanged, and is now larger.
    option was priced was 3.2× low.
 3. **D16, the cap rule's number, moved materially:** stage-B p90 is now **7,673,919** (was 2,477,257). Any
    treatment-arm cap derived from it (salt = 2×) changes accordingly.
+
+---
+
+### Amendment 3 — 2026-08-30, row p option (a): the UNFLAGGED-ONLY n=15 control at R=100 — registered before its first call
+
+**Authorization.** Council 2026-08-30, DESK row w, the Captain's word: *"Authorize R=100"*. The minute records it as
+"Unflagged-only n=15 at the R=100 cap, ~41M / ~3 h on kriterion — the clean control. The ~22.5M envelope is superseded
+for this step; bench's stage-A default is void." This amendment is written and committed BEFORE the first model call of
+the act, per the freeze rule; the commit is the authorization.
+
+**The question, and only this question.** The reading of record after amendment 2 is RUN, and it leans on an unflagged
+subset of **n = 6** (4/6). The flagged subset is 0/9. This amendment measures the unflagged rate at **n = 15** under a
+**uniform R = 100** budget, so the subset that carries the reading is no longer read off six episodes and no longer
+mixes round caps. It re-runs nothing that has landed; it adds the nine unflagged problems the seeded order supplies next.
+
+#### The registered population — derived at the object, not recalled
+
+Same frozen seeded order, same four pre-registered exclusions, `flagged_spec_ids` from `flagged.json` (arXiv 2605.23772
+Table 1). Taking the first FIFTEEN **unflagged** ids of that order reaches **depth 27**:
+
+`U15 = 73 0 146 16 4 38 · 142 96 112 141 31 54 127 18 74`
+
+The first six already carry stage A and stage B. **THE REGISTERED SET OF THIS AMENDMENT IS THE NINE NEW IDS:**
+
+`142 96 112 141 31 54 127 18 74`
+
+each run **stage A then stage B**, arm `a0` only. None of the fifteen is the NL-leaked id (problem 90 is flagged and is
+not in U15), so this population has no with/without-`nl_leaked` split to report — unlike the all-drawn read.
+
+#### Why the six existing rows count as R=100 — measured at their manifests, not assumed
+
+| problem | episode of record | R | calls used | termination | class |
+|---|---|---|---|---|---|
+| 38  | `ep-e866aac4` | 100 | 93  | DONE             | **PASS** |
+| 146 | `ep-d26f5fbe` | 100 | 95  | DONE             | **PASS** |
+| 73  | `ep-aa00339e` | 100 | 100 | ROUNDS_EXHAUSTED | AXIOMS_FAIL |
+| 4   | `ep-1d49761e` | 40  | 26  | DONE             | **PASS** |
+| 16  | `ep-3920dbd5` | 40  | 25  | DONE             | **PASS** |
+| 0   | `ep-80475385` | 40  | 8   | DONE             | COMPILE |
+
+Three ran at R=100. The other three ran at R=40 and **stopped voluntarily with 14, 15 and 32 turns unused** — the cap
+could not have bound them, so raising it cannot move them. That is a measured property of each episode, not an
+assumption about the population. ⇒ **U15 at R=100 is EXACT for twelve of fifteen and R=100-EQUIVALENT for three**
+(0, 16, 4). The aggregate's `constants` will therefore still read `[(40, …), (100, …)]`; that is expected and is not an
+integrity failure, and the alternative — re-running 0/16/4 at R=100, ~4M — is NOT taken, because it would replace a
+budget question that is already answered per-episode with fresh run-to-run variance in three rows of record. It is named
+here as an option the desk may take, with that cost stated.
+
+⚠ **The residue, registered in advance rather than discovered afterwards: problem 73 is still budget-censored AT R=100**
+(100 calls, ROUNDS_EXHAUSTED). One of the fifteen has not been run to voluntary termination at any budget tried.
+
+#### The outcome space — ENUMERATED EXHAUSTIVELY
+
+Amendment 2 registered a claim about its outcomes (*"No outcome of this amendment can produce a RUN reading"*) that the
+run falsified, because it checked one corner and generalised. Every outcome of this amendment is therefore listed. Let
+`p` = passes among the nine new. U15 = (4 + p)/15:
+
+| p | U15 | U15 band | all-drawn F3 (unchanged) | F5: do the bands agree? |
+|---|---|---|---|---|
+| 0 | 4/15 = 26.7% | RUN | 4/15 = 26.7% RUN | agree ⇒ RUN |
+| 1 | 5/15 = 33.3% | RUN | " | agree ⇒ RUN |
+| 2 | 6/15 = 40.0% | RUN | " | agree ⇒ RUN |
+| 3 | 7/15 = 46.7% | RUN | " | agree ⇒ RUN |
+| 4 | 8/15 = 53.3% | RUN | " | agree ⇒ RUN |
+| 5 | 9/15 = 60.0% | RUN | " | agree ⇒ RUN |
+| 6 | 10/15 = 66.7% | RUN | " | agree ⇒ RUN |
+| 7 | 11/15 = 73.3% | RUN | " | agree ⇒ RUN |
+| **8** | **12/15 = 80.0%** | **HOLD (too easy)** — the band is `≥ 80 % ⇒ HOLD`, and 80.0% is inside it | " | **DIFFER ⇒ F5 ⇒ HOLD** |
+| **9** | **13/15 = 86.7%** | **HOLD (too easy)** | " | **DIFFER ⇒ F5 ⇒ HOLD** |
+
+So: **two of the ten outcomes (p = 8, 9) move the reading from RUN to HOLD**, and they do it twice over — on U15's own
+band and through the F5 divergence. This amendment can therefore reverse the reading of record, and that is registered
+before the first call. Two further routes to a non-RUN outcome, also registered: the **recall instrument** (if
+`f_high ≥ 0.5` over U15's passes, the band is NOT read ⇒ RECALL-SUSPECT ⇒ HOLD, F5), and any **integrity finding**
+(KERNEL_REJECTED, STATEMENT_ALTERED, orphan-B, an unscored or unresolved row), which is reported and not scored around.
+
+**What this amendment does NOT do.** It does not touch the all-drawn F3 of record (its population is the first 15 of the
+draw; the nine new ids are not in it, so that number stays 4/15 = 26.7%, mixed-budget, with the uniform R=40 read
+2/15 = 13.3% pinned at `evidence/f3-read-2026-08-29/`). It does not re-run problem 81 or any landed episode. It does not
+run the flagged subset, so the flagged/unflagged contrast stays 0/9 against U15 — better n on one side only. It runs no
+placebo and no salt arm: **there is still no comparison, and nothing about the salt method is tested by it.**
+
+#### What changes in the harness, and what does not
+
+The driver iterates the first k of the draw and deliberately `unset`s `MAX_TURNS` (so an inherited cap cannot leak into
+a scored run). An unflagged-only set at a registered cap needs both to be stated, so `run_s2_stage0.sh` gains exactly two
+env overrides, each of which REFUSES rather than guesses:
+
+- **`ONLY_IDS`** — a subset of the first k. Anything outside the drawn k is a REFUSE, so the seeded draw still chooses
+  the population and the operator can only narrow it; a duplicate id is a REFUSE.
+- **`R_AMEND`** — the round cap for this run, validated as a positive integer and re-exported as `MAX_TURNS` after the
+  unset. Logged to the driver log at the start of the run and recorded per episode in `manifest.json:max_turns`.
+
+Absent both, the driver behaves exactly as frozen. **Four arms driven before this text was committed** (run-shaped dry,
+`DRY_RUN=1` with the stub): an id outside the first k ⇒ REFUSE; a duplicate ⇒ REFUSE; `R_AMEND=abc` ⇒ REFUSE;
+`R_AMEND=0` ⇒ REFUSE; and the accept path filtered to the nine and logged `MAX_TURNS=100`. The pin moves with the file:
+`HASHES.txt` `s2lean/run_s2_stage0.sh` `478543a3f114…` → `4e43c67435d4…` (the episode's own hash gate caught the drift
+during the dry — the gate works).
+
+**Everything else is the frozen constant:** `MODEL=claude-sonnet-5`, `EFFORT=high`, `WALL_S=5400`,
+**`TOKEN_CEILING=8000000` (UNCHANGED)**, the same views, the same checker (`check.py` sha `9aa58095…`), the same prompts,
+the same arm `a0`. A `TOKEN_CEILING` landing is a scored, terminal, budget-censored row and counts as not proven —
+amendment 2 measured that this ceiling is soft (problem 73 reached 8,863,324, +10.8% over, without tripping it), and it
+is still not raised to make an experiment prettier.
+
+**Stage A runs at the FROZEN R = 40, not at 100** — deliberately, so the nine new stage-A episodes are identical in
+constants to the fifteen already landed (stage A took a median of 6 calls; R is not binding there). ⚠ If any stage-A
+episode terminates `ROUNDS_EXHAUSTED` at 40, that is a signal that the new population differs from the old, and it will
+be reported as such rather than absorbed.
+
+**Ground truth must leave the host first.** Stage A is GT-free by construction, and the Studio currently holds
+`frozen=161 C=161` from the stage-B ship. The sequence is `stage_views.sh ship A` (which removes them; the command
+prints the count, which must read 0) → stage A ×9 → `ship BC` → stage B ×9. Declared here because it is a Studio state
+change, and safe because the views are committed on the seat and the fifteen scored stage-B artifacts live under
+`state/`, not under the shipped views. (⚠ The `ship BC` gate greps the driver log for `S2 STAGE A DRIVER DONE`, which is
+already present from the 08/29 run — for this amendment the gate is therefore satisfied by history, not by this run's
+own stage A. The operator confirms the nine stage-A landings by their own log lines instead.)
+
+#### Price, registered before the run, and a stop rule
+
+Measured unit costs: stage A mean 190,302/ep (n=15); stage B at R=40 mean 1,311,118/ep (n=15); stage B at R=100 on the
+three hard episodes 7,176,588 / 7,673,919 / 8,864,343 (mean 7.9M); the six unflagged at their effective budgets mean
+4.32M. Stage B at R=100 is **bimodal, not normal**: an episode that stops voluntarily costs ~0.3–2.5M, one that runs to
+the cap costs ~8M, and in U at R=40 three of six ran to the cap.
+
+- **Registered central estimate: ~1.7M (stage A ×9) + ~39M (stage B ×9) ≈ 41M metered, ~2.5–4 h wall.**
+- **Registered range: 15M** (all nine stop early) **to 72M** (all nine run to the cap) — the authorized ~41M is the
+  midpoint, not a bound.
+- ⛔ **STOP RULE, declared because the range exceeds the authorization on one side:** if cumulative metered for this
+  amendment passes **60M** before the ninth stage-B landing, the driver is stopped after the episode in flight and the
+  state is posted to the desk before anything further runs. Exceeding an authorized spend on my own reading is not mine
+  to do.
+
+**Falsifiable predictions, registered before the first call** (all three may fail; failures are reported as failures):
+
+1. **Rate:** the nine new pass **3–6 of 9**, i.e. U15 lands in 47–67%, RUN. (The flagged/unflagged split is real and the
+   unflagged rate is genuinely near the 4/6 already seen.)
+2. **Cost:** total metered **30–50M**, and **at least three** of the nine terminate `ROUNDS_EXHAUSTED` at 100 or on
+   `TOKEN_CEILING`.
+3. **Stage A:** 9/9 terminate `DONE`, none above 15 calls.
+
+**Reporting.** Per episode: termination, class, calls, metered, wall. Then U15 = (4+p)/15 with its band, beside — never
+replacing — the all-drawn read of record and the pinned uniform R=40 read; the flagged 0/9 contrast; `f_high` over
+U15's passes; the integrity block; the `constants` split named. No p-value, as everywhere in this protocol.
