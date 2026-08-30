@@ -1,0 +1,122 @@
+{
+ "stage": "B",
+ "problem_id": 146,
+ "screen": [],
+ "screen_enforced": true,
+ "compiled": true,
+ "rc": 0,
+ "compile_wall_s": 8.3,
+ "log_tail": "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-pv2nbagd/canonical.lean:90:37: warning: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-pv2nbagd/canonical.lean:137:29: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-pv2nbagd/canonical.lean:222:17: warning: This simp argument is unused:\n  problem_spec\n\nHint: Omit it from the simp argument list.\n  simp only [\u0335p\u0335r\u0335o\u0335b\u0335l\u0335e\u0335m\u0335_\u0335s\u0335p\u0335e\u0335c\u0335]\u0335 \u0335at hspec\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-pv2nbagd/canonical.lean:248:17: warning: This simp argument is unused:\n  problem_spec\n\nHint: Omit it from the simp argument list.\n  simp only \u0335[\u0335p\u0335r\u0335o\u0335b\u0335l\u0335e\u0335m\u0335_\u0335s\u0335p\u0335e\u0335c\u0335]\u0335\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n",
+ "replay_ok": true,
+ "replay_error": "",
+ "statements_identical": true,
+ "statement_diffs": [],
+ "axioms": {
+  "generated_spec": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "problem_spec": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "spec_isomorphism": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ]
+ },
+ "axioms_ok": true,
+ "passed": true,
+ "class": "PASS",
+ "tests_in_file": false,
+ "a_body_value_identical": true,
+ "audit_wall_s": 8.2,
+ "harness_error": null,
+ "checker_sha256": {
+  "check.py": "9aa58095579dfc7d12cb0c727c23c7a6dffe7efaa0b0ba0b76111cd7dd767f8b",
+  "s2audit.lean": "37ccc2c586ef545b46d73425412e7c789ec2c3463216fa94ddd0481b083c81f2",
+  "sandbox_check.sb": "f0e34eee14330ba9fb5b622f9fd0572ae62c154024962e48f38071d0c36af981",
+  "screen.py": "aa2c9376a5b3e0c79dea4e6e16a320dcd7e43ad208d05c127586502729d9ab1c",
+  "assemble.py": "11698336484a92d47267cdf657b4b2d2c57fa1f42219e83329333cf4af3b98ee"
+ },
+ "a_bodies_file_sha256": "15691fd6102bd7f63780d4e21c2b9dd6a7645cf5f87272224eeac6555ff6979e",
+ "a_episode": "ep-1e6c7bba",
+ "a_bodies_sha256": "73a8ef2722960287f61e5ce9c1c836c1ba983fcb3820849f5f0bb76b029bbb80",
+ "a_termination": "DONE",
+ "a_passed": true,
+ "a_view_sha256": "e62ce41d68ad8c5a56c3919881ab4f6abd797d0c1d16eb180522949c70a7ca83",
+ "canonical_sha256": "8b5498ffa8f8cd254aa1a82541013cb880c51937d85f39aefd257672b6b8be66",
+ "pristine_sha256": "72e7483a2e0a1447062b4830eeb05b0fc30c1ac29cbbb07c846e17b665c594c7",
+ "lean_bin": "/Users/jyh/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean",
+ "check_work": "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-pv2nbagd",
+ "orphans_killed": [],
+ "orphans_left": [],
+ "sorry_lines": [],
+ "canonical_olean_sha256": "cd61ab25bd744d104b654b92f09c9a2e7a4b66389efb6c5ac48f378e536e9f89",
+ "pristine_cache_olean": "/Users/jyh/bench/s2views/.pristine-cache/problem_146/B/72e7483a2e0a1447.olean",
+ "pristine_cached": true,
+ "pristine_olean_sha256": "af238d8dc4a78652eca85da1030985832f6251b1474cc03f5d2ab596110337b1",
+ "audit_rc": 0,
+ "statements": {
+  "generated_spec": {
+   "kind_canonical": "defn",
+   "kind_pristine": "defn",
+   "type_identical": true,
+   "value_identical": null
+  },
+  "problem_spec": {
+   "kind_canonical": "defn",
+   "kind_pristine": "defn",
+   "type_identical": true,
+   "value_identical": true
+  },
+  "spec_isomorphism": {
+   "kind_canonical": "thm",
+   "kind_pristine": "thm",
+   "type_identical": true,
+   "value_identical": null
+  }
+ },
+ "module_constants": [
+  "SpecIso.toDigits_recurrence",
+  "_private.canonical.0.Nat.toDigitsCore.match_1.splitter",
+  "_private.canonical.0.SpecIso.toDigitsCore_append",
+  "SpecIso.valid_iff._proof_1_2",
+  "SpecIso.valid_iff._proof_1_3",
+  "_private.canonical.0.SpecIso.toDigitsCore_fuel_irrelevant",
+  "_private.canonical.0.SpecIso.getLastD_indep",
+  "generated_spec",
+  "List.getLastD.eq_2",
+  "problem_spec.eq_1",
+  "Nat.toDigitsCore.eq_1",
+  "_private.canonical.0.SpecIso.toDigitsCore_fuel_irrelevant._proof_1_2",
+  "_private.canonical.0.SpecIso.toDigitsCore_fuel_irrelevant._proof_1_3",
+  "Nat.toDigitsCore.eq_def",
+  "List.getLastD.eq_1",
+  "SpecIso.leading_digit_eq._proof_1_6",
+  "_private.canonical.0.SpecIso.toString_head_eq",
+  "spec_isomorphism",
+  "SpecIso.leading_digit_eq._proof_1_5",
+  "SpecIso.valid_iff",
+  "_private.canonical.0.SpecIso.digitChar_toNat",
+  "_private.canonical.0.SpecIso.toDigitsCore_eq_toDigits._proof_1_1",
+  "_private.canonical.0.SpecIso.toDigitsCore_eq_toDigits",
+  "_private.canonical.0.Nat.toDigitsCore.match_1.eq_2",
+  "SpecIso.valid_iff._proof_1_1",
+  "_private.canonical.0.SpecIso.closedForm_cons",
+  "problem_spec",
+  "SpecIso.leading_digit_eq",
+  "_private.canonical.0.Nat.toDigitsCore.match_1.eq_1",
+  "SpecIso.leading_digit_eq._proof_1_4",
+  "Nat.toDigitsCore.eq_2",
+  "_private.canonical.0.List.getLastD.match_1.eq_1",
+  "problem_spec.match_1",
+  "_private.canonical.0.List.getLastD.match_1.splitter",
+  "SpecIso.toDigits_recurrence._proof_1_2",
+  "SpecIso.toDigits_recurrence._proof_1_3",
+  "_private.canonical.0.List.getLastD.match_1.eq_2"
+ ]
+}

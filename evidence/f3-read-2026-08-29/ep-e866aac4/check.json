@@ -1,0 +1,120 @@
+{
+ "stage": "B",
+ "problem_id": 38,
+ "screen": [],
+ "screen_enforced": true,
+ "compiled": true,
+ "rc": 0,
+ "compile_wall_s": 7.7,
+ "log_tail": "",
+ "replay_ok": true,
+ "replay_error": "",
+ "statements_identical": true,
+ "statement_diffs": [],
+ "axioms": {
+  "generated_spec": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "problem_spec": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "spec_isomorphism": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ]
+ },
+ "axioms_ok": true,
+ "passed": true,
+ "class": "PASS",
+ "tests_in_file": false,
+ "a_body_value_identical": true,
+ "audit_wall_s": 8.4,
+ "harness_error": null,
+ "checker_sha256": {
+  "check.py": "9aa58095579dfc7d12cb0c727c23c7a6dffe7efaa0b0ba0b76111cd7dd767f8b",
+  "s2audit.lean": "37ccc2c586ef545b46d73425412e7c789ec2c3463216fa94ddd0481b083c81f2",
+  "sandbox_check.sb": "f0e34eee14330ba9fb5b622f9fd0572ae62c154024962e48f38071d0c36af981",
+  "screen.py": "aa2c9376a5b3e0c79dea4e6e16a320dcd7e43ad208d05c127586502729d9ab1c",
+  "assemble.py": "11698336484a92d47267cdf657b4b2d2c57fa1f42219e83329333cf4af3b98ee"
+ },
+ "a_bodies_file_sha256": "4fce47a2686269a7a3032be5e772e015975766495b2b9fb78f163b55450a266b",
+ "a_episode": "ep-9f489e48",
+ "a_bodies_sha256": "72ff2ba53c5bf715f44292dda044f206051bb6051d6b4ee6010506bcc004d859",
+ "a_termination": "DONE",
+ "a_passed": true,
+ "a_view_sha256": "82109ae370104808ca2923bba850d1b613a1209281c591778eef00512dc75664",
+ "canonical_sha256": "59bedec291729503cb253185de54ca8c062a185e970abdabc15ea92a12c49a9a",
+ "pristine_sha256": "a9c25e6c726b8c6203ba8663ad85a06e9ff884aa36de8f69c90caf0c53388c15",
+ "lean_bin": "/Users/jyh/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean",
+ "check_work": "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-lz9cknh6",
+ "orphans_killed": [],
+ "orphans_left": [],
+ "sorry_lines": [],
+ "canonical_olean_sha256": "263bbc31638facd2e5305906d9fee0460c22c5f3f8f0b61b4376e76cce3de283",
+ "pristine_cache_olean": "/Users/jyh/bench/s2views/.pristine-cache/problem_38/B/a9c25e6c726b8c62.olean",
+ "pristine_cached": false,
+ "pristine_rc": 0,
+ "pristine_wall_s": 7.2,
+ "pristine_olean_sha256": "ed18c31c655ac9f06ac6f9e0ea2c6aef2796ff8a8c257329e03c31df86ca076c",
+ "audit_rc": 0,
+ "statements": {
+  "generated_spec": {
+   "kind_canonical": "defn",
+   "kind_pristine": "defn",
+   "type_identical": true,
+   "value_identical": null
+  },
+  "problem_spec": {
+   "kind_canonical": "defn",
+   "kind_pristine": "defn",
+   "type_identical": true,
+   "value_identical": true
+  },
+  "spec_isomorphism": {
+   "kind_canonical": "thm",
+   "kind_pristine": "thm",
+   "type_identical": true,
+   "value_identical": null
+  }
+ },
+ "module_constants": [
+  "_private.canonical.0.block_iff",
+  "generated_spec.go.induct",
+  "_private.canonical.0.key._proof_1_9",
+  "generated_spec.go._sparseCasesOn_1",
+  "_private.canonical.0.key",
+  "generated_spec",
+  "_private.canonical.0.tail_iff._proof_1_1",
+  "_private.canonical.0.generated_spec.go.match_1.eq_1",
+  "_private.canonical.0.generated_spec.go.match_1.eq_2",
+  "_private.canonical.0.generated_spec.go.match_1.splitter",
+  "spec_isomorphism",
+  "_private.canonical.0.tail_iff._proof_1_2",
+  "_private.canonical.0.tail_iff._proof_1_3",
+  "_private.canonical.0.key._proof_1_7",
+  "generated_spec.go.match_1",
+  "generated_spec.go",
+  "_private.canonical.0.cons3_drop_add",
+  "_private.canonical.0.tail_iff",
+  "_private.canonical.0.tail_iff._simp_1_4",
+  "generated_spec.go.eq_def",
+  "generated_spec.go._unsafe_rec",
+  "_private.canonical.0.block_iff._proof_1_5",
+  "generated_spec.go._sunfold",
+  "_private.canonical.0.key._proof_1_5",
+  "problem_spec",
+  "_private.canonical.0.block_iff.match_1_3",
+  "_private.canonical.0.key._proof_1_6",
+  "_private.canonical.0.cons3_getElem_add",
+  "_private.canonical.0.block_iff._proof_1_1",
+  "_private.canonical.0.key._proof_1_8",
+  "generated_spec.go.eq_2",
+  "_private.canonical.0.block_iff._proof_1_2",
+  "generated_spec.go.eq_1"
+ ]
+}

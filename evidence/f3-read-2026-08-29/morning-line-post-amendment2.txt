@@ -1,0 +1,45 @@
+S2-LEAN STAGE-0 MORNING LINE  k=15  drawn |D|=15 (excluded ids [32, 39, 123, 160] removed at the draw)  flagged∩D=9 [12, 34, 69, 81, 90, 109, 129, 159, 163]  nl_leaked∩D=[90]  c_dead∩D=[81] (view_status.json read)
+  manifests: 33 considered (52 dropped as SMOKE/DRY/other-substrate/other-arm), scored cells 30, superseded 3, unscored 0, orphan B rows 0, synthetic landings 0 (/Users/jyh/bench/logs/s2-landings.log)  constants=[(40, 5400, 8000000, 'claude-sonnet-5', 'high'), (100, 5400, 8000000, 'claude-sonnet-5', 'high')]
+  stage A spec compiles: a0 proven 15/15 (counted rows 15, resolved 15)  classes={'PASS': 15}  metered p50=138880 p90=383287 max=444372  terms={'DONE': 15}
+     proven: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38]
+  stage A spec compiles: a1 proven 0/15 (counted rows 0, resolved 0)  classes={}  metered p50=None p90=None max=None  terms={}
+     proven: []
+     not proven (15): NO_LANDING: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38]
+     pairs over 15: b(a0 only)=15 c(a1 only)=0 n_d=15 |b-c|=15 reported as counts; no p-value
+  stage B ISOMORPHISM PROVEN (the F3 quantity): a0 proven 4/15 (counted rows 15, resolved 15)  classes={'AXIOMS_FAIL': 11, 'PASS': 4}  metered p50=1010831 p90=7673919 max=8864343  terms={'DONE': 14, 'ROUNDS_EXHAUSTED': 1}
+     proven: [146, 16, 4, 38]
+     not proven (11): FAIL:AXIOMS_FAIL: [109, 34, 73, 90, 159, 12, 69, 0, 163, 129, 81]
+  stage B ISOMORPHISM PROVEN (the F3 quantity): a1 proven 0/15 (counted rows 0, resolved 0)  classes={}  metered p50=None p90=None max=None  terms={}
+     proven: []
+     not proven (15): NO_LANDING: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38]
+     pairs over 15: b(a0 only)=4 c(a1 only)=0 n_d=4 |b-c|=4 INDISTINGUISHABLE (|b-c| < 5)
+  stage C impl + correctness proven (over the C-eligible drawn subset): a0 proven 0/14 (counted rows 0, resolved 0)  classes={}  metered p50=None p90=None max=None  terms={}
+     proven: []
+     not proven (14): NO_LANDING: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 38]
+     NOT_RUN(view_dead) — not counted (1): NO_LANDING: [81]
+  stage C impl + correctness proven (over the C-eligible drawn subset): a1 proven 0/14 (counted rows 0, resolved 0)  classes={}  metered p50=None p90=None max=None  terms={}
+     proven: []
+     not proven (14): NO_LANDING: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 38]
+     NOT_RUN(view_dead) — not counted (1): NO_LANDING: [81]
+     pairs over 14: b(a0 only)=0 c(a1 only)=0 n_d=0 |b-c|=0 INDISTINGUISHABLE (|b-c| < 5)
+  KERNEL_REJECTED: []
+  STATEMENT_ALTERED: []
+  PROVENANCE (stage-B generated_spec != scored stage-A body, AP-4): []
+  axiom-only failures (AXIOMS_FAIL: compiled, kernel replay ok, statements identical, axioms outside the allowlist): [((0, 'B', 'a0'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((109, 'B', 'a0'), {'generated_spec': [], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((12, 'B', 'a0'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((129, 'B', 'a0'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((159, 'B', 'a0'), {'generated_spec': [], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((163, 'B', 'a0'), {'generated_spec': [], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((34, 'B', 'a0'), {'generated_spec': [], 'problem_spec': [], 'spec_isomorphism': ['sorryAx']}), ((69, 'B', 'a0'), {'generated_spec': [], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((73, 'B', 'a0'), {'generated_spec': ['propext'], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((81, 'B', 'a0'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((90, 'B', 'a0'), {'generated_spec': [], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']})]
+  ORPHAN B rows (a_episode ≠ the scored A row; reported, NOT counted): []
+  superseded rows (not counted): [(73, 'B', 'a0', 'ep-420f3439', 'ROUNDS_EXHAUSTED', 'superseded by ep-aa00339e'), (146, 'B', 'a0', 'ep-9ee56e58', 'ROUNDS_EXHAUSTED', 'superseded by ep-d26f5fbe'), (38, 'B', 'a0', 'ep-0a279a22', 'ROUNDS_EXHAUSTED', 'superseded by ep-e866aac4')]
+  unscored rows (not counted): []
+  rows for problems NOT in the draw (excluded or beyond k; not counted): []
+  F3 (plain arm a0, stage B, proven over the k=15 drawn): 4/15 = 26.7% ⇒ RUN THE SALT ARM (20–80%)   proven ids: [146, 16, 4, 38]
+     unflagged drawn subset U (n=6, ids [73, 0, 146, 16, 4, 38]): 4/6 = 66.7% ⇒ RUN THE SALT ARM (20–80%)   proven ids: [146, 16, 4, 38]
+     without nl_leaked [90] (n=14): 4/14 = 28.6% ⇒ RUN THE SALT ARM (20–80%)
+     bands all-drawn vs unflagged: agree
+     resolution (B, a0): 15/15 drawn problems resolved (scored row or synthetic landing)
+  RECALL INSTRUMENT (D10, plain arm, stage-B passes n=4, with bodies on disk 4): suspect 0 (sim≥0.80: 0, trivial proof: 0)  f_high=0.00 ⇒ below the 0.5 cut; the band is read
+     problem_146 sim=0.143 trivial=False ok
+     problem_16 sim=0.078 trivial=False ok
+     problem_4 sim=0.452 trivial=False ok
+     problem_38 sim=0.091 trivial=False ok
+  READING: RUN THE SALT ARM (20–80%)
+  p90 the cap rule consumes (D16, per stage, a0 DONE|ROUNDS_EXHAUSTED): A=383287 (n=15) B=7673919 (n=15) C=None (n=0)
+  no p-value, by design.

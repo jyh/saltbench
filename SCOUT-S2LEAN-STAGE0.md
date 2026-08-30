@@ -440,3 +440,64 @@ stage-B `manifest.json` + `check.json` and the full pre-amendment morning line.
 
 **Reporting.** Per episode: termination, class, calls, metered, wall. Then the amended F3 line beside the
 pinned one, with the superseded rows named. No p-value, as everywhere in this protocol.
+
+#### Amendment 2 — RESULT (2026-08-30 01:17Z), including a registered claim of mine that the run refuted
+
+**The three landings** (arm a0, stage B, R=100, all other constants frozen):
+
+| problem | episode | was (R=40) | now (R=100) | term | calls | metered | wall s |
+|---|---|---|---|---|---|---|---|
+| 38  | `ep-e866aac4` | COMPILE      | **PASS**        | DONE              | 93  | 7,176,588 | 1,463 |
+| 73  | `ep-aa00339e` | COMPILE      | AXIOMS_FAIL     | ROUNDS_EXHAUSTED  | 100 | 8,864,343 | 1,282 |
+| 146 | `ep-d26f5fbe` | AXIOMS_FAIL  | **PASS**        | DONE              | 95  | 7,673,919 | 974   |
+
+Two of three flipped to proven, with clean axioms `{propext, Classical.choice, Quot.sound}` and zero sorries.
+Problem 38 needed **93 turns** — it could not have been proved inside R=40 under any strategy. Problem 73 got
+its file compiling (real progress; at R=40 it never compiled) and still closed with `sorry` at turn 100.
+Cost: **23,714,850 metered / 1.03 h** for the three.
+
+**⛔ THE PRE-REGISTERED CLAIM THAT FAILED.** This amendment stated, in writing and before the first call:
+*"No outcome of this amendment can produce a RUN reading."* **That is false, and this run is the case that
+falsifies it.** The justification checked only the 3/3 corner (which gives U = 5/6 = 83.3% ⇒ HOLD too-easy,
+bands differ, F5 HOLD) and then generalised to "no outcome". The 2/3 case was never enumerated. It is what
+happened, and it puts **both** bands inside RUN:
+
+- F3 all-drawn: **4/15 = 26.7% ⇒ RUN** (was 2/15 = 13.3% ⇒ HOLD)
+- unflagged U (n=6): **4/6 = 66.7% ⇒ RUN** (was 2/6 = 33.3%)
+- without nl_leaked [90] (n=14): 4/14 = 28.6% ⇒ RUN
+- bands all-drawn vs unflagged: **agree** ⇒ the F5 fallback does not fire
+- recall instrument f_high = 0.00 ⇒ below the cut, the band is read
+- **READING: RUN THE SALT ARM (20–80%)**
+
+The registered ceiling (5/15 = 33.3%) held. An amendment registered as "DIAGNOSTIC, not remedial" changed
+stage 0's reading from HOLD to RUN. Enumerating one corner is not enumerating the outcome space.
+
+**⚠ THE CAVEAT THAT GOVERNS THE READING: 4/15 IS A MIXED-BUDGET NUMBER.** The arm now holds twelve episodes
+at R=40 and three at R=100 (`constants=[(40, …), (100, …)]`, three superseded rows named in the aggregate).
+The uniform-budget readings are: **a0 at R=40 = 2/15 = 13.3% (HOLD)**, pinned at
+`evidence/f3-read-2026-08-29/`; **a0 at R=100 = UNMEASURED**. The RUN reading belongs to neither.
+
+The exposure is, however, small and nameable: of the twelve un-re-run episodes, ten stopped voluntarily with
+turns in hand and would be unaffected by a larger R. **The single exception is problem 81 (`ep-ef95cf1f`),
+which used all 40 calls and terminated DONE** — the borderline case this amendment registered as an explicit
+exclusion. ⛔ **It must NOT be re-run on the strength of this result**: adding it to the set after seeing a
+favourable outcome is precisely the move pre-registration exists to prevent. It is named here as an option
+for the desk, with that hazard stated, and nothing more.
+
+**The flagged/unflagged split did not dissolve — it sharpened.** flagged 0/9, unflagged 4/6. The F5 bands
+agree only because both figures now sit inside 20–80%; F5 tests band membership, not effect size. The
+sharpest open design question is unchanged, and is now larger.
+
+**Two instrument findings, measured:**
+
+1. **`TOKEN_CEILING` is soft.** Problem 73 landed at `metered_sum` 8,863,324 against a ceiling of 8,000,000
+   — **+10.8% over** — and terminated on rounds, not on the ceiling. The ceiling is a live poll of the
+   session jsonl (`episode_s2.sh:248`); whether the overshoot is poll granularity or a race with max-turns is
+   **not read**, and is not diagnosed here. It matters for pricing any future arm.
+2. **The cost re-price was right on tokens and conservative on wall; the cost *curve* was wrong.** Registered:
+   ~24M metered, 1.5–2.5 h, with `TOKEN_CEILING` predicted to bind at ~calls 82/71/77. Measured: 23.7M
+   (within 1.2%), 1.03 h, and **no episode terminated on the ceiling** — per-call growth flattens rather than
+   continuing linear (93 calls at 77k mean against an extrapolated 86k). The ~7.5M figure quoted when the
+   option was priced was 3.2× low.
+3. **D16, the cap rule's number, moved materially:** stage-B p90 is now **7,673,919** (was 2,477,257). Any
+   treatment-arm cap derived from it (salt = 2×) changes accordingly.
