@@ -783,3 +783,112 @@ would have finished at 9M is killed and scored not-proven, where its plain-arm c
 **That is an instrument asymmetry favouring the control, and it is a confound, not a conservatism.** The remedy
 belongs to the arms' own pre-registration and is registered there: the arms are given a `TOKEN_CEILING` that does
 not bind, so that `R` and `WALL_S` remain the binding constraints for treatment exactly as they were for control.
+
+---
+
+### Amendment 5 — 2026-08-30, THE TREATMENT: the salt arm `a2` and the placebo `a1` on U15 — registered before their first call
+
+**Authorization.** DESK row H, ruled GO by the helm 13:5x under the council's approval boundary (internal-facing ⇒
+process, not a Captain word; reported to the sitting as a branch taken), adopting this seat's banked recommendation
+whole: *"a2 (salt) AND a1 (placebo) on the same population as ONE dated amendment, R=100-matched, off this run's
+unselected unit costs"*, ordered after the meter repair (amendment 4). This is the first act in the campaign that
+tests what commission item 12 names. Everything before it was control.
+
+**The question.** Does the salt method improve this agent's performance on kernel-checked specification work — and
+if a change appears, is it the method's content or merely the presence of a longer process prompt? The plain control
+`a0` is already landed on this exact population at this exact budget: **U15 = 8/15 = 53.3%**.
+
+**Population and budget: identical to the control, by construction.** The same U15
+(`73 0 146 16 4 38 142 96 112 141 31 54 127 18 74`), `MODEL=claude-sonnet-5`, `EFFORT=high`, `R = 100`,
+`WALL_S = 5400`, the same views, the same checker, the same prompts. Both arms run **stage A then stage B**: an arm
+changes the agent at stage A too, so `a2` and `a1` must write their own `generated_spec` — a stage-B row is refused
+without its own arm's scored stage-A pass, by the driver's design.
+
+**⚠ `TOKEN_CEILING = 20,000,000` FOR BOTH ARMS, AND THIS IS A CORRECTION FOR COMPARABILITY, NOT A LOOSENING.**
+Amendment 4 made the ceiling operative for the first time. Every `a0` row of U15 ran with it **dead** — bounded in
+practice by `R` and `WALL_S` alone — and two of them spent 8,863,324 and 11,756,639 unimpeded. Leaving the frozen
+8,000,000 in place would kill a treatment episode at 8M that its control counterpart was allowed to finish: an
+instrument asymmetry favouring the control. 20,000,000 sits above the campaign maximum (11,756,639) with margin, so
+**`R` and `WALL_S` bind for treatment exactly as they bound for control**, and the ceiling reverts to what §6 always
+called it — a runaway guard. It is set through the driver's registered `TC_AMEND`, printed in the run log per run.
+
+**The arms, as files.** The statement is the artifact, so both are byte-pinned before the first call:
+
+| arm | file | arm block | rendering (`base.md` + arm) | pin |
+|---|---|---|---|---|
+| `a0` plain (landed) | — | 0 | 627 | `8b7962f2…` |
+| `a1` placebo | `harness/s2lean/placebo.md` | 1,746 | 2,373 | `4a1adc93…` |
+| `a2` **salt** | `harness/arms/a2.md` | **1,913** | **2,540** | `0c37d7c8…` |
+
+**PROFILE:** `a2`'s arm block is **1,913 bytes, inside the pre-registered profile band [1,610, 1,968]** that the S1
+design fixed for treatment arms; it is 9.6 % longer than the S2 placebo's block and the renderings differ by 7.0 %.
+No new file is required of the agent, no tool is added, and the prompt is byte-identical across arms up to the
+episode path — **only the CLAUDE.md differs**, which is the commission's own definition of an arm.
+
+**What `a2` renders, article by article, so it can be audited against its source** (`salt/docs/SALT-METHOD.md`,
+Captain-ratified 2026-08-12). Rendered: **R1** (adversarial controls that must have bite — item 4; specification
+certificates as derived restatements — item 5), **R2** (no claim without its checker; no `sorry` on the record —
+items 1–2), **R3** (the append-only record, errors and retractions first-class — item 8), **R4** (statement
+immutability, never weakened to admit a proof — item 3), **A3** (budgeted attempts, exhaustion recorded not ground
+through — item 6), **A4** (explore then refute, acceptance settled before the fact — item 7). **NOT rendered, and
+why:** **A1/A2/A5/A6** (one orchestrator, executors, scheduled councils, an independent witness) are properties of a
+multi-agent organisation with a human in it — the commission PARKED autonomy and multi-agent, and a single headless
+agent in a container cannot instantiate them; **R5** (irreversible acts reserved to humans) has no referent inside a
+sealed episode; **R6** (conditional objectives) and **R7** (requirements elicited, not assumed) presuppose a human
+counterparty and a design ledger that the episode does not have. ⇒ **`a2` is the method's SOLO-RENDERABLE CORE, not
+the whole method, and no result from it may be reported as a test of the Advisory tier.** That limit is registered
+here so it cannot be discovered later.
+
+**⚠ THE OBVIOUS OBJECTION, REGISTERED RATHER THAN AVOIDED.** `a2` item 2 names `sorry` — and `sorry` is exactly the
+control's dominant failure (all seven U15 `a0` failures are `AXIOMS_FAIL` with `sorryAx`). So the arm can be read as
+coaching to the metric. Three things bear on it, and the reader may weigh them: (i) *the method's own text says it* —
+R2 reads "the kernel for mathematics (axiom-audited; **no sorry on the record**)"; rendering the method faithfully
+required naming it, and softening it to avoid the appearance would have been the real distortion; (ii) the control is
+not ignorant of the word — `base.md` and the stage prompts already instruct the agent to *replace* every `sorry`;
+(iii) telling an agent not to admit a gap does not tell it how to close one, and the registered predictions below
+allow for exactly that — a prohibition can raise the not-compiling and round-exhausted counts without raising passes.
+**If `a2` gains, "it was told not to write `sorry`" is a live alternative explanation and will be reported as one.**
+
+**THE READOUT, pre-registered, and no p-value (as everywhere in this protocol).** Over the 15 paired problems, for
+each contrast: `b` = problems the first arm proved and the second did not, `c` = the reverse, `n_d` = `b + c`.
+**|b − c| < 5 ⇒ INDISTINGUISHABLE** (the protocol's standing label); `|b − c| ≥ 5` ⇒ a difference, direction named.
+Both contrasts are read: **`a2` vs `a0`** (the method) and **`a1` vs `a0`** (the length-and-process control).
+
+| `a2` vs `a0` | `a1` vs `a0` | what it means, and it is written down now |
+|---|---|---|
+| better | indistinguishable | the strongest available result: the salt CONTENT moved it, not the prompt's presence |
+| better | better | a PROCESS-PROMPT effect; the method is not shown to add anything over any long checklist |
+| better | worse | method helps, generic process hurts; report both, and the placebo becomes the interesting arm |
+| indistinguishable | indistinguishable | **the null, and it is the outcome I would bet on at this n**: nothing detectable at k=15 |
+| indistinguishable | better | adverse for the method: a generic checklist did what the method did not |
+| indistinguishable | worse | the placebo damages; the method at least does not |
+| worse | any | **ADVERSE FOR THE METHOD on this substrate at this tier, and it is reportable exactly as loudly as a win** |
+
+⛔ **There is no outcome of this amendment that is not publishable, and no outcome that would be re-framed as
+interesting after the fact** — the v4 gate design's third refuted defect was registering both outcomes as
+*interesting* rather than registering one as *adverse*. The adverse cell is named above, in advance.
+
+**Falsifiable predictions, registered before the first call:**
+
+1. **Rate:** `a2` lands **8–12 of 15**; `a1` lands **6–10 of 15**. (I expect the method's effect at this n to be
+   small or invisible; the honest modal outcome is the null row above.)
+2. **Cost:** `a2`'s mean stage-B cost exceeds `a0`'s measured **2,749,871/ep by at least 25 %**, and `a2` produces
+   **≥ 4** `ROUNDS_EXHAUSTED` rows against `a0`'s 3 — because item 2 removes the cheap exit that four of the five
+   amendment-3 failures took (`sorry` at 13–14 calls with ~86 turns in hand).
+3. **Class shift:** **at least one `a2` episode lands `COMPILE`** (a file that does not compile), a class U15's `a0`
+   produced zero of — the predicted cost of forbidding the admitted gap.
+
+**Order, budget and the stop rule.** Stage A for both arms (`ARMS="a2 a1"`, the driver alternating arm order per
+problem so neither arm systematically runs first), then `ship BC`, then stage B for both arms the same way.
+⚠ Stage A is GT-free by construction, so ground truth leaves the host first — and `stage_views.sh ship A` is known to
+hang (amendment 3's finding), so its end state is produced by hand and **verified by SET-HASH against the seat**,
+never by an exit code. Priced off amendment 3's unselected unit costs (stage A 145,523/ep; stage B @R=100
+2,749,871/ep): **≈ 43.4M per arm, ≈ 87M for the amendment, ~6 h wall.** ⛔ **STOP RULE: 65M cumulative for either
+arm alone, or 130M for the amendment, stops the driver after the episode in flight and posts the state to the desk
+before anything further runs** — and the enforcer is a live watch armed BEFORE the first episode, not a memory.
+Quota exhaustion is a swap event under the council's doctrine, not a failure; the driver's own QUOTA hold branch
+bridges up to 6 h and a halt is resumable.
+
+**Reporting.** Per episode: termination, class, calls, metered, wall. Then both contrasts with `b`/`c`/`n_d`, the
+per-arm rates beside the landed `a0` 8/15, the recall instrument over each arm's passes, the integrity block, and the
+class distribution per arm. The predictions are scored as they stand, wins and failures alike.

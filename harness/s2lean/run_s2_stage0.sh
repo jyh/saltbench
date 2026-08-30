@@ -56,6 +56,11 @@ if [ -n "${ONLY_IDS:-}" ]; then
   done
   ids="$sel"; echo "$(stamp) ONLY_IDS (registered subset of the first $K):$ids" | tee -a "$RL"
 fi
+if [ -n "${TC_AMEND:-}" ]; then
+  case "$TC_AMEND" in ''|*[!0-9]*) echo "REFUSE: TC_AMEND must be a positive integer (got '$TC_AMEND')"; exit 3 ;; esac
+  [ "$TC_AMEND" -ge 1 ] || { echo "REFUSE: TC_AMEND must be >= 1"; exit 3; }
+  export TOKEN_CEILING="$TC_AMEND"; echo "$(stamp) TC_AMEND: TOKEN_CEILING=$TOKEN_CEILING (registered; amendment 5 sets it NON-BINDING so R and WALL bind for treatment exactly as they did for the control, whose ceiling was inoperative)" | tee -a "$RL"
+fi
 if [ -n "${R_AMEND:-}" ]; then
   case "$R_AMEND" in ''|*[!0-9]*) echo "REFUSE: R_AMEND must be a positive integer (got '$R_AMEND')"; exit 3 ;; esac
   [ "$R_AMEND" -ge 1 ] || { echo "REFUSE: R_AMEND must be >= 1"; exit 3; }
