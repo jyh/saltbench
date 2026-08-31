@@ -1305,3 +1305,71 @@ the one GT-free view tree (161 A + 161 frozenA, **0 GT**, verified through the l
 reachable from the new root. The watch and its HALT path were re-pointed and the halt chain re-driven end to end
 against the new root before arming. ⇒ **A NEW REGIME GETS A NEW STATE ROOT — sharing one is how a tier raise
 quietly eats the control it is being compared against.**
+
+**AMENDMENT 8, ADDENDUM 3 — 2026-08-31, appended BEFORE stage B's first call: the gate's result, a caveat I owed,
+and the finding that the token multiplier HIDES the tier's real cost.**
+
+**STAGE A LANDED: 30/30, every cell `DONE / PASS`**, in 5,663 s (1.57 h) — inside the 3 h wall rule, and
+**5,982,892 metered = 24 % of the 25M token rule.** The full population qualifies for stage B, exactly as at Sonnet.
+
+**THE TIER MULTIPLIER, MEASURED OVER ALL 30 PAIRED CELLS:** `a0` 1,737,611 vs 2,449,669 ⇒ **×0.709** · `a2`
+4,245,281 vs 4,366,199 ⇒ **×0.972** · **`m_A` = 0.878.** ⭐ **The raised tier is CHEAPER in tokens at this stage,
+which I did not expect** — and the salt arm's overhead *ratio grew*: `a2`/`a0` was 1.78 at Sonnet and is **2.44** at
+Opus. A stronger model needs fewer rounds to write a spec; the method's required articles cost what they cost
+whoever executes them. Stage A is not a scored quantity and this is an observation, not a finding.
+
+⛔ **THE CAVEAT I OWED AND HAD NOT REGISTERED.** `m_A` is measured on episodes of **5–22 calls**; stage B runs to
+**100**. A multiplier from short work need not transfer to long work. So the gate now carries an explicit
+**pessimistic band `M_HI = 2.0`** — "Opus costs twice the tokens per unit of long work", a bound and not a
+prediction — and **decides on the worst corner**, because *a gate decided on a point estimate is a gate that has
+assumed away its own largest unknown.*
+
+⭐⭐ **AND THE FINDING THAT MATTERS MOST, WHICH THE TOKEN MULTIPLIER ACTIVELY CONCEALS: THE QUOTA COST PER TOKEN IS
+ROUGHLY DOUBLE AT THIS TIER.** One reading (never a poll) after stage A: **8 / 62 / 93**, against 2 / 61 / 93 at
+dispatch. Against the 08/29 Sonnet calibration (19,666,775 metered moved the 5-hour arm 0 → 9):
+
+| | metered | 5-hour points | points per M tokens |
+|---|---|---|---|
+| Sonnet, 08/29 | 19,666,775 | +9 | 0.458 |
+| **Opus, stage A today** | 5,982,892 | **+6** | **1.003** |
+
+⇒ **≈ 2.19× the quota per token**, while the *token count fell 12 %*. **The effective tier cost is ≈ 0.878 × 2.19 ≈
+1.9×, and a campaign that priced this tier on tokens alone would have called it free.** Both figures include head
+activity in their windows, so this is a like-for-like ratio and not a clean isolation; and the weekly arm agrees
+only within its own error (1 point per 19.67M at Sonnet, 1 point per 5.98M today ⇒ 3.3×, from two **single-point,
+whole-percent** reads that carry ±50 % relative error each). **The 5-hour arm is the better instrument here purely
+because it has six times the resolution** — which is itself worth recording: *the coarse instrument was the one the
+gate was registered on.*
+
+**THE GATE, COMPUTED AS REGISTERED, AT ALL FOUR CORNERS** (`T_B_pred` = the per-item sum over the 30 stage-B cells,
+never a mean): measured `m_A` × point rate **15.0 %** · measured × pessimistic rate **22.5 %** · `M_HI` × point rate
+**34.1 %** · **`M_HI` × pessimistic rate 51.2 %.** ⇒ **51.2 % ≤ 60 % ⇒ GATE PASSES ON THE WORST CORNER ⇒ FULL U15,
+BOTH ARMS.** No truncation, no prefix.
+
+📌 **A PACING FACT THE GATE DOES NOT COVER, STATED SO IT IS NOT A SURPRISE.** Stage B is predicted at ~89.6M tokens
+and ~7.9 h wall (the stage-A wall ratio was 1.44). At the measured rate that is ~90 points of 5-hour capacity
+against ~176 available over the run — comfortable. **At `M_HI` it is ~205 needed against ~176 available, so the run
+would stall on the ROLLING limit and wait for a refill.** That is survivable by design, not a failure: the driver's
+own `QUOTA` hold branch bridges up to 6 h and a halt is resumable. Named here because an unnamed stall reads as a
+dead driver.
+
+⚖ **A DEPARTURE FROM MY OWN REGISTERED ORDER, MADE IN WRITING BEFORE THE ACT RATHER THAN SILENTLY.** Amendment 8
+says *"stage B starts on the fresh weekly (after 15:59)."* That was the right call when the fresh pool was the only
+one big enough to matter. It is now **wrong for the same reason the original was right**: 38 % of the weekly remains
+and **it expires at 15:59**, the gate says stage B needs 15–51 % of a pool, and idling for two and three-quarter
+hours **forfeits** the expiring 38 % without buying anything — the reset refills the counter regardless of how much
+of it I spend first. **Stage B therefore starts now and straddles the reset.** The worst case is that it exhausts
+the expiring pool before 15:59 and the `QUOTA` hold bridges the remaining minutes — strictly better than idling
+through them. ⇒ *A registered order exists to stop improvisation, not to outlive the measurement it was built on;
+the discipline is that the change is dated, reasoned and appended BEFORE the act — which is what this is.*
+
+📌 **A STALE GATE, NAMED.** `stage_views.sh ship BC` refuses unless `~/bench/logs/run_s2_stage0.log` carries
+`S2 STAGE A DRIVER DONE`. This run logs to **`~/bench-a8`**, so that gate was satisfied by a **DONE from the Sonnet
+run** — it passed, and it passed for the wrong reason. The real condition was verified by hand (this run's own log
+carries its own DONE at 20:09:25Z, 30/30 landed). ⇒ **A GATE THAT READS A PATH THE RUN NO LONGER WRITES IS A GREEN
+LIGHT WIRED TO NOTHING** — an inherited cost of addendum 2's state-root split, and cheaper to say than to leave for
+the next head to trip over. GT is now on the host and verified **by content**: GT set-hash `cf67a9c0ed805f36` and
+A-views `bc4d6eafc0430ed2`, both equal to the seat's, `frozen=161 C=161`.
+
+**Stage-B stop rules, unchanged from amendment 8** (weekly at 75 % consumed · 90,000,000 metered in either arm ·
+12 h wall), with the live enforcer re-armed on stage-B caps before the first stage-B episode.
