@@ -1275,3 +1275,33 @@ problem-level check spends a whole extra episode after the breach) and exits **4
 started nothing. Driven both ways before this was written: absent ⇒ the episode starts; present ⇒ exit 4, reason
 printed, **zero** episodes started. ⇒ **A STOP RULE WITHOUT A MECHANISM IS A SENTENCE, NOT A RULE** — and I had
 written it as a sentence twice (amendments 5 and 6) before building the mechanism.
+
+**AMENDMENT 8, ADDENDUM 2 — 2026-08-31, appended BEFORE the first call: the run gets its OWN STATE ROOT, and why
+the dry did not catch what stopped it.** The first launch of stage A **started zero episodes**: the driver printed
+`skip … (terminal landing exists)` **thirty times** and went straight to `DRIVER DONE`. `has_terminal` greps the
+landings log, and every U15 stage-A cell already has a `DONE` there **from the Sonnet run** — the resume logic that
+makes a halt safely resumable cannot see that the *tier* has changed, because the landings line has no model field.
+**Zero model tokens were spent** (probe: 0 started, metered 0, no new manifests), so the amendment's first call has
+still not happened when this is written.
+
+⛔ **AND THE DRY SHOULD HAVE CAUGHT IT AND COULD NOT.** My run-shaped dry ran against a *fresh* `BENCH`, so its
+landings log was empty — the one dimension the real run differs in. ⇒ **A DRY THAT DOES NOT INHERIT THE REAL RUN'S
+HISTORY IS NOT RUN-SHAPED; IT IS SHAPED LIKE THE FIRST RUN.** That is the fifth repair round in this campaign to
+produce a fatal, and it is the same defect class as the meter's self-test: *the call I made was not the call the
+caller makes.*
+
+📌 **A SECOND HAZARD THE SAME FINDING EXPOSED, which had not stopped anything and would have been silent.** Stage A
+writes `A.bodies.json` to `state/s2/<task>/<arm>/`, keyed on **(task, arm) only — not on tier.** Had the skip logic
+not fired, an Opus stage A would have **overwritten amendment 5's Sonnet stage-A bodies in place.** The manifests'
+`a_bodies_sha256` and the orphan rule would have caught the *inconsistency* at scoring time, and the archived
+`state/ep-*/bodies.json` are the fallback, so the evidence was recoverable — **but the overwrite itself would have
+been silent, and "recoverable" is not "safe".**
+
+**The repair, which fixes both at once: this amendment runs in its own state root, `~/bench-a8`.** Fresh landings
+log (so nothing is skipped and resume still works *within* this run), fresh `state/` (so no Sonnet artifact can be
+touched), the smoke log and `s2-controls.json` copied in so **both gates still apply**, and `s2views` a symlink to
+the one GT-free view tree (161 A + 161 frozenA, **0 GT**, verified through the link). `H` still points at the pinned
+`~/bench/harness`, so the harness under test is the pinned one. Verified before launch: 0 prior `A.bodies.json`
+reachable from the new root. The watch and its HALT path were re-pointed and the halt chain re-driven end to end
+against the new root before arming. ⇒ **A NEW REGIME GETS A NEW STATE ROOT — sharing one is how a tier raise
+quietly eats the control it is being compared against.**
