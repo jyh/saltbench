@@ -66,6 +66,30 @@ if [ -n "${R_AMEND:-}" ]; then
   [ "$R_AMEND" -ge 1 ] || { echo "REFUSE: R_AMEND must be >= 1"; exit 3; }
   export MAX_TURNS="$R_AMEND"; echo "$(stamp) R_AMEND: MAX_TURNS=$MAX_TURNS (registered round cap for this run)" | tee -a "$RL"
 fi
+# AMENDMENT 8 (2026-08-31, the Opus-5 reach amendment, desk row c). Two more registered overrides in the same shape —
+# validated, REFUSING rather than guessing, re-exported AFTER the deliberate unset above, printed in the run log:
+#   M_AMEND   the episode model. ALLOWLISTED, not free text: the tier is the independent variable of this amendment, so
+#             a typo must stop the run, never silently score a different tier. `claude-fable-5` is DELIBERATELY ABSENT —
+#             the commission (council item 12) puts Fable episodes behind the Captain's own word, and the kriterion
+#             Fable weekly read 93% consumed at 11:00 today; a run that could reach for it by env is a run that can
+#             spend a pool it was never granted.
+#   W_AMEND   the per-episode wall ceiling. It exists because a ceiling that binds at one tier and not another is an
+#             INSTRUMENT ASYMMETRY ACROSS THE TIER: WALL_S=5400 was never binding at Sonnet (U15 stage-B max 1,987 s,
+#             37% of it), and a slower tier could hit it where the control never could. R and the token ceiling stay
+#             the binders, exactly as they were for the control.
+# Absent both, the driver behaves exactly as frozen (MODEL/WALL_S stay unset ⇒ episode_s2.sh's own defaults).
+if [ -n "${M_AMEND:-}" ]; then
+  case "$M_AMEND" in
+    claude-sonnet-5|claude-opus-5) : ;;
+    *) echo "REFUSE: M_AMEND must be one of the registered episode models (claude-sonnet-5 claude-opus-5); got '$M_AMEND'. Fable episodes need the Captain's word and a fresh Fable weekly, not an env var."; exit 3 ;;
+  esac
+  export MODEL="$M_AMEND"; echo "$(stamp) M_AMEND: MODEL=$MODEL (registered episode model for this run)" | tee -a "$RL"
+fi
+if [ -n "${W_AMEND:-}" ]; then
+  case "$W_AMEND" in ''|*[!0-9]*) echo "REFUSE: W_AMEND must be a positive integer of seconds (got '$W_AMEND')"; exit 3 ;; esac
+  [ "$W_AMEND" -ge 1 ] || { echo "REFUSE: W_AMEND must be >= 1"; exit 3; }
+  export WALL_S="$W_AMEND"; echo "$(stamp) W_AMEND: WALL_S=$WALL_S (registered per-episode wall ceiling for this run)" | tee -a "$RL"
+fi
 if [ "$STAGE" = "C" ]; then
   [ -s "$H/s2lean/view_status.json" ] || { echo "REFUSE: $H/s2lean/view_status.json missing — the C-dead list (D7) is not pre-registered"; exit 3; }
   cdead=$(python3 -c "import json;print(' '.join('problem_%s'%i for i in json.load(open('$H/s2lean/view_status.json')).get('c_dead',[])))")

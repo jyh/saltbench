@@ -1132,3 +1132,135 @@ and the whole `s2lean/` block of `HASHES.txt` re-verified byte-identical against
 a filter that silently narrows its input prints a complete-looking report over an incomplete one.* The frozen tool
 did not lie about the 30 rows it dropped; it counted them, in a parenthetical, inside a total it also used for
 SMOKE and DRY rows. **The count was there and it was unreadable, which is the same as absent.**
+
+
+---
+
+### Amendment 8 — 2026-08-31, THE OPUS-5 REACH AMENDMENT: the same U15, the tier raised, `a0` + `a2` — registered BEFORE its first call
+
+**Authorization.** The Captain's word, in channel to the helm at 10:5x: *"Let's do the Opus 5 tier raise on the same
+15 problems… 40% left on all-models on kriterion, reset in 5h. Let's go for it."* Docketed as **desk row c** (seat
+`7065cbed`, 11:08:07); bench relit on it 11:08:17. This is the deferred **(c2)** of the 08/29 four-option brief —
+the commission's sequential-models fence (Sonnet across all arms first, then the tier that differs) lifted by the
+same hand that set it. Ruling O's *no further arm spend* was substrate- and tier-scoped, and **the tier is what moves.**
+
+**The question, and only this question.** Amendment 5 ran `a0`/`a1`/`a2` on U15 at `claude-sonnet-5` and returned
+the null: 8/15 every arm, and `a2` matched `a0` **problem for problem** — b = 0, c = 0, fifteen agreements out of
+fifteen. **The b cell was empty.** This amendment asks whether it is empty *at that tier* or empty *simply*: at
+`claude-opus-5`, on the same fifteen problems, **is there a problem the salt arm proves that the plain arm cannot?**
+
+**⛔ WHAT THIS CANNOT SHOW, restated because a raised tier does not raise the rendering.** `a2` is still the method's
+**solo-renderable core** — A1/A2/A5/A6, R5, R6 and R7 remain unrenderable in a sealed single-agent episode. A
+positive result here is about the articles a lone agent can carry, and nothing else. The Advisory tier is untouched.
+
+**The registered population — unchanged, and unchanged on purpose.** U15, the unflagged drawn subset at draw depth 27:
+`73 0 146 16 4 38 142 96 112 141 31 54 127 18 74`. Same seed, same draw, same order. The whole value of this
+amendment is that the population and the checker are held fixed while exactly one variable moves.
+
+**The arms.** `a0` (plain) and `a2` (salt, `harness/arms/a2.md`, pin `0c37d7c8…`, 1,913 B — byte-identical to the
+arm that ran at Sonnet). **`a1` (placebo) is CONTINGENT and is registered here so it cannot be a post-hoc
+addition:** it runs, on this same population and tier, **if and only if `a2` beats `a0` by b − c ≥ 2 at stage B.**
+The reasoning is stated before the data: at Sonnet the placebo was indistinguishable from plain, so the "any added
+prompt helps" channel is already measured *closed at that tier*; it must be re-opened only if the salt arm actually
+gains, at which point ruling it out is mandatory rather than optional. If `a2` does not gain, `a1` would buy a
+second null at roughly half the price of the whole amendment.
+
+**Constants — the fourth regime, and no fifth.** `R_AMEND=100` (matching U15's regime exactly) ·
+`W_AMEND=10800` · `TC_AMEND=30000000` · `M_AMEND=claude-opus-5` · effort `high`. The manifests will therefore
+carry `(100, 10800, 30000000, 'claude-opus-5', 'high')` and the morning line's `constants` list must show **four**
+regimes and no more.
+
+- **`TOKEN_CEILING`'s disposition, which desk row c demands explicitly.** Amendment 4 made it operative and proved
+  it repaired. It is set **NON-BINDING at 30,000,000** — 2.55× the largest episode this campaign has ever metered
+  (11,757,659, problem 141 at Sonnet). It is a **runaway guard, not a budget rule.** `R` and `WALL` bind, exactly
+  as they did for every Sonnet row in the comparison. The budget rule is the live watch below, on the aggregate.
+- **Why the wall ceiling is raised, and why that is not a loosening.** `WALL_S=5400` was *never binding at Sonnet*:
+  the U15 stage-B maximum was 1,987 s, **37 % of it**. A slower tier can hit a ceiling the control never touched,
+  and a ceiling that binds at one tier and not the other is an **instrument asymmetry across the tier** — the same
+  defect amendment 5 had to correct for `TOKEN_CEILING`, in the same direction, against the same comparison.
+
+**Harness — two registered overrides, in the shape amendments 3 and 5 established.** `M_AMEND` (allowlisted
+`claude-sonnet-5 | claude-opus-5`; **`claude-fable-5` deliberately absent** — Fable episodes need the Captain's own
+word per council item 12, and kriterion's Fable weekly read **93 % consumed** at 11:00 today) and `W_AMEND`
+(validated integer seconds). Both REFUSE rather than guess, both are re-exported after the driver's deliberate
+unset, both print to the run log. **Six REFUSE arms and a negative control driven under the run-shaped dry before
+this text was written; the accept path is driven on the Studio before the first episode** — the campaign's own gate,
+which has caught a fatal in 4 of 4 repair rounds.
+
+**THE PRICE, PER ITEM — the law this campaign has paid for four times.** The pairs are measured: every one of the
+30 cells this amendment will run has a Sonnet cost on the same problem, same stage, same arm.
+
+| | `a0` | `a2` | both arms |
+|---|---|---|---|
+| stage A, 15 problems | 2,449,669 tok / 1,538 s | 4,366,199 / 2,386 s | **6,815,868 / 3,924 s (65 min)** |
+| stage B, 15 problems | 50,682,519 / 9,980 s | 51,413,806 / 9,777 s | **102,096,325 / 19,757 s (5.5 h)** |
+| **A + B** | 53,132,188 | 55,780,005 | **108,912,193 / ~6.6 h** |
+
+⭐ **AND THE PER-ITEM VIEW SHOWS SOMETHING A TOTAL CANNOT: FIVE PROBLEMS CARRY ~85 % OF STAGE B.** Problems
+**73, 146, 38, 112, 141** account for 42.9M of `a0`'s 50.7M and 43.3M of `a2`'s 51.4M. **Three of those five — 73,
+112, 141 — are the R = 100 cap-runners that never succeed in either arm.** So the amendment's cost is dominated by
+its known failures, not by its successes, and any truncation is a decision about how much to spend re-failing.
+
+**THE UNKNOWN, NAMED: the tier multiplier.** Nothing in this campaign has ever metered an Opus episode. The Sonnet
+table above is a *per-item basis*, not a prediction — it becomes one only when multiplied by a measured `m`.
+**So stage A is run first and is the calibration**, which costs nothing extra because row c requires both stages at
+the raised tier anyway.
+
+**BUDGET, MEASURED — and it decides start-now vs wait.** kriterion at 11:00 (quota-cadence, zero model tokens):
+**5-hour rolling 0 %** · **all-models weekly 60 % used ⇒ 40 % left** · Fable weekly 93 % · **both weeklies reset
+today at 15:59.**
+⇒ **THE 40 % EXPIRES IN ~4.5 HOURS. Spending it before 15:59 is not a cost — not spending it is.** That, and not
+the "go for it" bias, is why this starts now. **Stage A goes in the expiring pool; stage B goes on the fresh one.**
+
+**THE STAGE GATE — mechanical, computed from measurements, registered before either stage runs.**
+
+1. After stage A: `m_A = T_A(Opus) / 6,815,868` — the paired multiplier over the *same 30 cells*.
+2. **ONE** quota reading (never a poll): `r = Δ(all-models weekly %) / T_A`.
+3. `T_B_pred = 102,096,325 × m_A` (the per-cell sum, not a mean); `Q_B_pred = T_B_pred × r`.
+4. **GATE:** stage B starts on the **fresh** weekly (after 15:59) and runs the **full U15, both arms**, only if
+   `Q_B_pred ≤ 60 %` of a weekly pool. Otherwise it runs both arms over a **PREFIX of U15 in draw order** — the
+   draw was built to be truncated at its head, the driver is task-major with arms alternating, so a prefix is a set
+   of *complete pairs* and never a cherry-pick — and **the read is over the completed prefix and says so.**
+
+**STOP RULES — with a LIVE enforcer armed BEFORE the first episode, not a memory** (the 08/30 law: a budget rule
+needs an enforcer, and a watch built on end-of-unit events cannot tell a long unit from a dead one, so the watch
+carries in-flight liveness).
+
+- **Stage A:** 25,000,000 metered (≈ 3.7 × the Sonnet figure) **or** 3.0 h wall — the driver stops after the
+  episode in flight and the state goes to the desk before anything further runs.
+- **Stage B:** the all-models weekly reaching **75 % consumed**, **or** 90,000,000 metered in either arm, **or**
+  12 h wall — same halt, same report. A quarter of the week's pool is left for everything else kriterion does.
+- A halt is **resumable** and quota exhaustion is a swap event under the council's doctrine, not a failure.
+
+**PREDICTIONS, registered before the first call, scored as they stand.**
+
+1. **Rate.** `a0` stage-B proven on U15 lands in **9–13 of 15** and `a2` in **9–13** (Sonnet: 8 and 8). The floor
+   of 9 is the substantive claim that the tier raise buys at least one problem.
+   **Per item:** all eight Sonnet-proved problems (146, 16, 4, 38, 142, 31, 54, 74) stay proved in **both** arms,
+   and any gain comes from **{73, 112, 141}** — the three that exhausted R = 100 — **not** from {0, 96, 127, 18},
+   which admitted `sorry` cheaply with ~86 turns in hand. *Extra capability should rescue the ones that ran out of
+   room, not the ones that gave up early.*
+2. **The b cell — the row's own target.** **b ≤ 1 and |b − c| < 5 ⇒ INDISTINGUISHABLE again.** I register the null
+   as the modal expectation at the raised tier too, so that a gain is a surprise rather than a confirmation.
+3. **The cost split reproduces in SIGN.** The 08/31 finding — `a2` ~25 % cheaper where both arms prove, ~19 %
+   dearer where both fail — holds in sign on **both** halves at Opus. This is the campaign's only measured
+   separation, and a tier raise is the first test of whether it belongs to the method or to the tier.
+4. **Failure mode unchanged.** `AXIOMS_FAIL` with `sorryAx` remains the dominant failure class in both arms
+   (≥ 60 % of non-passes).
+
+**Decision rule.** The registered morning line — now amendment 7's instrument, which can score `a2` at all —
+with `|b − c| < 5 ⇒ INDISTINGUISHABLE`. Counts, not p-values. An outcome this text does not cover is a **HOLD**
+with a fallback row, never an improvised arm (F5).
+
+**Order of operations.** GT off the host **first** (stage A is GT-free by construction; `ship A` is known to hang,
+so its end state is produced by hand and verified by **SET-HASH**, never by an exit code) → stage A, both arms →
+the gate above → `ship BC` → stage B, both arms → the morning line at `ML_ARMS=a0,a2` → the contingent `a1` only if
+prediction 2 fails in the salt arm's favour.
+
+📌 **RECEIPT, already taken, and one instrument finding with it.** GT was removed by hand at 11:3x and verified by
+content: **0 GT files anywhere under `~/bench`**, A-views set-hash **`bc4d6eafc0430ed2`** on the Studio equal to the
+seat's, 161 problem dirs, no `.pristine-cache`. The recipe is `<relative path> <sha256>` per file, sorted, hashed —
+and it **reproduces the banked A-views figure exactly**, which is how I know it is the banked recipe. ⚠ It does
+**not** reproduce the banked GT figure (`05139f9aba3dbc17`; this recipe gives `cf67a9c0ed805f36` on the seat **and**
+on the Studio, so the two sides agree and the *recipe* differs). ⇒ **a set-hash without its recipe is not a
+receipt — it is a number that only its author can check.** The recipe is written down here so the next head can.
