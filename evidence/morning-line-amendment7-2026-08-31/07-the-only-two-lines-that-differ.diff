@@ -1,0 +1,8 @@
+2c2
+<   manifests: 81 considered (95 dropped as SMOKE/DRY/other-substrate/other-arm), scored cells 78, superseded 3, unscored 0, orphan B rows 0, synthetic landings 0 (/Users/jyh/bench/logs/s2-landings.log)  constants=[(40, 5400, 8000000, 'claude-sonnet-5', 'high'), (100, 5400, 8000000, 'claude-sonnet-5', 'high'), (100, 5400, 20000000, 'claude-sonnet-5', 'high')]
+---
+>   manifests: 81 considered (95 dropped as SMOKE/DRY/other-substrate/other-arm), scored cells 78, superseded 3, unscored 0, orphan B rows 0, synthetic landings 0 (/Users/jyh/bench/logs/s2-landings.log)  constants=[(40, 5400, 8000000, 'claude-sonnet-5', 'high'), (100, 5400, 8000000, 'claude-sonnet-5', 'high'), (100, 5400, 20000000, 'claude-sonnet-5', 'high')]  arms=a0(plain/control) a1(placebo)
+48c48
+<      (salt arm a1, for information: passes 8, suspect 0)
+---
+>      (arm a1 [placebo], for information: passes 8, suspect 0)

@@ -1,0 +1,26 @@
+  PASS   green1 rc==0
+  PASS   green1 a0 scored 1/15
+  PASS   green1 a1 scored 1/15
+  PASS   green1 a2 NOT scored
+  PASS   green1 a2 rows dropped as other-arm
+  PASS   green1 contrast a0/a1 = b1 c1
+  PASS   green1 exactly one contrast line
+  PASS   green1 arms declared in header
+  PASS   green2 rc==0
+  PASS   green2 a2 scored 2/15
+  PASS   green2 a1 NOT scored
+  PASS   green2 contrast a0/a2 = b0 c1
+  PASS   green3 rc==0
+  PASS   green3 three arm lines
+  PASS   green3 three contrast lines
+  PASS   green3 a0/a1
+  PASS   green3 a0/a2
+  PASS   green3 a1/a2
+  PASS   label1 no 'salt arm a1'
+  PASS   label2 a1 named placebo
+  PASS   label2 a2 named salt
+  PASS   red1 a0 absent refuses
+  PASS   red2 bad token refuses
+  PASS   red3 duplicate refuses
+  PASS   red4 empty refuses
+SELF-TEST PASS — 9 arms driven (3 green, 2 label, 4 red), every arm a SUBPROCESS on the real argv

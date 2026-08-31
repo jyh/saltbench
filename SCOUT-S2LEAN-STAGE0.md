@@ -1037,3 +1037,98 @@ registered as such before the run. **This result is silent on the Advisory tier 
 It is one substrate, one model tier, one stage, k = 15, no p-value. It says: *on kernel-checked specification work at
 this tier, a faithful solo rendering of the method's required articles changed nothing measurable about what the
 agent could prove.*
+
+
+---
+
+### Amendment 7 — 2026-08-31, the instrument repair: the morning line can score ANY registered arm, and it stops calling the placebo "the salt arm" (no scored figure changes)
+
+**Authorization.** Internal-facing instrument repair, so process and not a Captain word — the same boundary
+amendment 4 ran under. It is registered here **before the Opus-5 reach amendment (desk row c) is written**,
+deliberately: an instrument repaired *after* its next arm's numbers are in hand is a different instrument from one
+repaired before, and this one is repaired before.
+
+**⚠ AND IT IS NOT THE "CHEAP WIN" MY OWN BANK CALLED IT.** I banked this at 04:0x as the next head's cheapest
+win, ~0 model tokens, nice-to-have. Desk row c makes it a **PREREQUISITE**: the row's named target is the **b
+cell — problems the salt arm proves that the control cannot** — and that cell is exactly the `a0`-vs-`a2` contrast
+the frozen tool structurally cannot compute. A "cheap win" and "a prerequisite of the next run" are not the same
+priority, and I had it filed as the former.
+
+**The defect, in two parts, both at the same instrument.**
+
+1. **`s2_morning_line.py` DROPS EVERY NON-`a0`/`a1` ROW, SILENTLY AND WITH A COMPLETE-LOOKING REPORT.** The
+   manifest filter reads `m.get("arm") in ("a0", "a1")` and the contrast is hard-wired `a0`-vs-`a1`. On 2026-08-31
+   this meant **all 30 `a2` rows of amendment 5's treatment run were discarded as "other-arm"** while the tool
+   printed a full, well-formed `a0`/`a1` table beside them and exited 0. The salt arm was scored by a **read-only
+   analysis copy** re-pointed to `("a0","a2")`, with the pinned file left byte-untouched (verified after the
+   analysis at `73c4eda8d10c3e9b`, its HASHES pin). That was the right move under time pressure and it is not a
+   procedure to repeat: **the reading of record should come from the registered instrument, not from a copy of it.**
+2. **THE TOOL CALLED `a1` "THE SALT ARM".** Its recall line printed `(salt arm a1, for information: …)`. **`a1` is
+   the PLACEBO** — S1 heritage, from a time when a1 *was* the treatment slot; no computation ever depended on it.
+   But it is printed on the page that carries this campaign's central claim, and it invites precisely the one
+   misreading the campaign cannot afford. Worse, the analysis copy inherited the hard-wired caption: **the pinned
+   `a0`-vs-`a2` evidence file says `c(a1 only)=0` while scoring `a2`.** The numbers in it are right; two captions
+   in it are wrong, and this amendment is where that is said rather than quietly re-run.
+
+**The repair.**
+
+- The scored arm set is `ML_ARMS` (ordered, comma-separated), **default `a0,a1`** — the frozen behaviour.
+- **It REFUSES rather than coerces**, because a silently-dropped arm is the whole defect: a token that is not an
+  arm name, a repeat, or an arm set **without `a0`** each exit non-zero with a reason. `a0` is required because F3,
+  the D16 per-stage cap and the recall instrument are *defined* on the plain arm; this switch does not re-point them.
+- **Every unordered pair of the arm set gets its own b/c/n_d line, captioned with the ARM NAMES.** With the default
+  pair that is byte-identical to the frozen line; with three arms it is three lines and the campaign's first
+  complete 3×3 in one run.
+- Roles are named from a table (`a0` plain/control · `a1` placebo · `a2` salt; anything else prints *role
+  unregistered*), and the header now declares the arm set it scored, so a report can no longer be read without
+  knowing which arms produced it.
+
+**THE GATE — `selftest_morning_line.py`, nine arms, every one a SUBPROCESS on the script's real argv.** This
+obeys the law amendment 4 paid for: *a self-test that never makes the call its caller makes is a self-test of a
+different program.* Three green arms assert the numbers (default / `a0,a2` / all three), two label arms assert the
+mislabel is **gone** *and* that the right labels are **present** — an absence assertion alone passes against an
+empty report — and four red arms assert a refusal with a non-zero exit.
+
+⛔ **AND THE DECISIVE CONTROL FOUND A DEFECT IN THE GATE ITSELF.** Run against the **frozen** tool the suite must
+go red, so I ran it, and it did not report red — it **crashed** with `can only concatenate str (not "list")`,
+because every green run had skipped the failure branch and no test had ever executed it. **A gate whose FAILURE
+path has never run is an untested gate.** Fixed (`str(detail)`), commented in place, and both arms re-driven. The
+control's result, which is the measurement that matters:
+
+| suite run against | result |
+|---|---|
+| the amended tool | **PASS — 25/25 assertions, 9 arms** |
+| the **frozen** tool (`73c4eda8d10c3e9b`, restored from git) | **FAIL — 15 of 25 assertions flip**, including every `ML_ARMS` refusal (all four red arms exit **0** — the variable is simply ignored), every `a2` figure, and `label1`, which reports the literal string `(salt arm a1, for information: passes 1, suspect 0)` |
+
+The 10 assertions that pass under **both** are exactly the default-behaviour ones. **The suite discriminates, and
+the half of it that does not discriminate is the no-op proof.**
+
+**PROVEN NO-OP ON THE REAL DATA — measured on the Studio, over the campaign's actual 183-episode state.**
+
+1. The **frozen** tool re-run today on `~/bench/state` at k=27 reproduces the pinned evidence file
+   `evidence/treatment-read-2026-08-31/morning-line-a0-a1.txt` **byte for byte**. The reading of record is
+   reproducible before anything is touched.
+2. Relocating the frozen tool to a scratch directory reproduces it **byte for byte** again — so the move is not
+   the variable.
+3. The **amended** tool at its default reproduces it in **49 of 51 lines**. The two that differ are the repair
+   itself and nothing else: the header gained ` arms=a0(plain/control) a1(placebo)`, and
+   `(salt arm a1, …)` became `(arm a1 [placebo], …)`. **Every scored figure — every rate, class count, metered
+   percentile, contrast, band and the F3 reading — is identical.**
+4. `ML_ARMS=a0,a2` reproduces the pinned analysis copy with **every number identical**; the only diffs are the
+   three contrast captions the copy got wrong (`c(a1 only)` → `c(a2 only)`), the recall label, and the header.
+   **Amendment 5's result is unchanged in every figure. The analysis-copy procedure is retired.**
+
+**ONE FACT THE REPAIR PRODUCES THAT NO PRIOR RUN COULD.** With all three arms in one pass, the **`a1`-vs-`a2`**
+contrast is computable for the first time: at stage B, **b = 1, c = 1** — the placebo proves problem 73, which the
+salt arm does not; the salt arm proves problem 4, which the placebo does not. INDISTINGUISHABLE by the registered
+rule (|b−c| < 5), reported as counts, no p-value. It changes no conclusion. It is recorded because the frozen
+instrument could not have told me it existed.
+
+**Pins.** `s2lean/s2_morning_line.py` → `41030434291d3c0b…` (from `73c4eda8d10c3e9b…`); new
+`s2lean/selftest_morning_line.py` → `6ebf8b53a4944c6b…`, inserted at the position `hashes.sh`'s own glob puts it,
+and the whole `s2lean/` block of `HASHES.txt` re-verified byte-identical against a live re-run of those globs.
+
+⭐ **THE LAW THIS AMENDMENT ADDS:** *an instrument that discards data it was not told about must SAY SO OR REFUSE —
+a filter that silently narrows its input prints a complete-looking report over an incomplete one.* The frozen tool
+did not lie about the 30 rows it dropped; it counted them, in a parenthetical, inside a total it also used for
+SMOKE and DRY rows. **The count was there and it was unreadable, which is the same as absent.**

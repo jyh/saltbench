@@ -1,0 +1,47 @@
+  PASS   green1 rc==0
+  PASS   green1 a0 scored 1/15
+  PASS   green1 a1 scored 1/15
+  PASS   green1 a2 NOT scored
+  PASS   green1 a2 rows dropped as other-arm
+  PASS   green1 contrast a0/a1 = b1 c1
+  PASS   green1 exactly one contrast line
+  FAIL   green1 arms declared in header   << []
+  PASS   green2 rc==0
+  FAIL   green2 a2 scored 2/15   <<   stage B ISOMORPHISM PROVEN (the F3 quantity): a0 proven 1/15 (counted rows 3, resolved 3)  classes={'PASS': 1, 'AXIOMS_FAIL': 2}  metered p50=1003 p90=1005 max=1005  terms={'DONE': 3}
+     proven: [109]
+     not proven (14): FAIL:AXIOMS_FAIL: [34, 73]  NO_LANDING: [90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38]
+  stage B ISOMORPHISM PROVEN (the F3 quantity): a1 proven 1/15 (counted rows 3, re
+  FAIL   green2 a1 NOT scored   <<   stage B ISOMORPHISM PROVEN (the F3 quantity): a0 proven 1/15 (counted rows 3, resolved 3)  classes={'PASS': 1, 'AXIOMS_FAIL': 2}  metered p50=1003 p90=1005 max=1005  terms={'DONE': 3}
+     proven: [109]
+     not proven (14): FAIL:AXIOMS_FAIL: [34, 73]  NO_LANDING: [90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38]
+  stage B ISOMORPHISM PROVEN (the F3 quantity): a1 proven 1/15 (counted rows 3, re
+  FAIL   green2 contrast a0/a2 = b0 c1   <<   stage B ISOMORPHISM PROVEN (the F3 quantity): a0 proven 1/15 (counted rows 3, resolved 3)  classes={'PASS': 1, 'AXIOMS_FAIL': 2}  metered p50=1003 p90=1005 max=1005  terms={'DONE': 3}
+     proven: [109]
+     not proven (14): FAIL:AXIOMS_FAIL: [34, 73]  NO_LANDING: [90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38]
+  stage B ISOMORPHISM PROVEN (the F3 quantity): a1 proven 1/15 (counted rows 3, re
+  PASS   green3 rc==0
+  FAIL   green3 three arm lines   <<   stage B ISOMORPHISM PROVEN (the F3 quantity): a0 proven 1/15 (counted rows 3, resolved 3)  classes={'PASS': 1, 'AXIOMS_FAIL': 2}  metered p50=1003 p90=1005 max=1005  terms={'DONE': 3}
+     proven: [109]
+     not proven (14): FAIL:AXIOMS_FAIL: [34, 73]  NO_LANDING: [90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38]
+  stage B ISOMORPHISM PROVEN (the F3 quantity): a1 proven 1/15 (counted rows 3, re
+  FAIL   green3 three contrast lines   <<   stage B ISOMORPHISM PROVEN (the F3 quantity): a0 proven 1/15 (counted rows 3, resolved 3)  classes={'PASS': 1, 'AXIOMS_FAIL': 2}  metered p50=1003 p90=1005 max=1005  terms={'DONE': 3}
+     proven: [109]
+     not proven (14): FAIL:AXIOMS_FAIL: [34, 73]  NO_LANDING: [90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38]
+  stage B ISOMORPHISM PROVEN (the F3 quantity): a1 proven 1/15 (counted rows 3, re
+  PASS   green3 a0/a1
+  FAIL   green3 a0/a2   <<   stage B ISOMORPHISM PROVEN (the F3 quantity): a0 proven 1/15 (counted rows 3, resolved 3)  classes={'PASS': 1, 'AXIOMS_FAIL': 2}  metered p50=1003 p90=1005 max=1005  terms={'DONE': 3}
+     proven: [109]
+     not proven (14): FAIL:AXIOMS_FAIL: [34, 73]  NO_LANDING: [90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38]
+  stage B ISOMORPHISM PROVEN (the F3 quantity): a1 proven 1/15 (counted rows 3, re
+  FAIL   green3 a1/a2   <<   stage B ISOMORPHISM PROVEN (the F3 quantity): a0 proven 1/15 (counted rows 3, resolved 3)  classes={'PASS': 1, 'AXIOMS_FAIL': 2}  metered p50=1003 p90=1005 max=1005  terms={'DONE': 3}
+     proven: [109]
+     not proven (14): FAIL:AXIOMS_FAIL: [34, 73]  NO_LANDING: [90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38]
+  stage B ISOMORPHISM PROVEN (the F3 quantity): a1 proven 1/15 (counted rows 3, re
+  FAIL   label1 no 'salt arm a1'   << ['     (salt arm a1, for information: passes 1, suspect 0)']
+  FAIL   label2 a1 named placebo   << []
+  FAIL   label2 a2 named salt   << []
+  FAIL   red1 a0 absent refuses   << rc=0 err=
+  FAIL   red2 bad token refuses   << rc=0 err=
+  FAIL   red3 duplicate refuses   << rc=0 err=
+  FAIL   red4 empty refuses   << rc=0 err=
+SELF-TEST FAIL: green1 arms declared in header, green2 a2 scored 2/15, green2 a1 NOT scored, green2 contrast a0/a2 = b0 c1, green3 three arm lines, green3 three contrast lines, green3 a0/a2, green3 a1/a2, label1 no 'salt arm a1', label2 a1 named placebo, label2 a2 named salt, red1 a0 absent refuses, red2 bad token refuses, red3 duplicate refuses, red4 empty refuses — 9 arms driven (3 green, 2 label, 4 red), every arm a SUBPROCESS on the real argv

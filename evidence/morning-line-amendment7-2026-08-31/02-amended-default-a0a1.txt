@@ -1,0 +1,51 @@
+S2-LEAN STAGE-0 MORNING LINE  k=27  drawn |D|=27 (excluded ids [32, 39, 123, 160] removed at the draw)  flagged∩D=12 [12, 34, 69, 75, 81, 90, 109, 110, 114, 129, 159, 163]  nl_leaked∩D=[90]  c_dead∩D=[54, 81, 110, 112] (view_status.json read)
+  manifests: 81 considered (95 dropped as SMOKE/DRY/other-substrate/other-arm), scored cells 78, superseded 3, unscored 0, orphan B rows 0, synthetic landings 0 (/Users/jyh/bench/logs/s2-landings.log)  constants=[(40, 5400, 8000000, 'claude-sonnet-5', 'high'), (100, 5400, 8000000, 'claude-sonnet-5', 'high'), (100, 5400, 20000000, 'claude-sonnet-5', 'high')]  arms=a0(plain/control) a1(placebo)
+  stage A spec compiles: a0 proven 24/27 (counted rows 24, resolved 24)  classes={'PASS': 24}  metered p50=110357 p90=340564 max=444372  terms={'DONE': 24}
+     proven: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38, 142, 96, 112, 141, 31, 54, 127, 18, 74]
+     not proven (3): NO_LANDING: [110, 114, 75]
+  stage A spec compiles: a1 proven 15/27 (counted rows 15, resolved 15)  classes={'PASS': 15}  metered p50=117489 p90=236150 max=281076  terms={'DONE': 15}
+     proven: [73, 0, 146, 16, 4, 38, 142, 96, 112, 141, 31, 54, 127, 18, 74]
+     not proven (12): NO_LANDING: [109, 34, 90, 159, 12, 69, 163, 129, 81, 110, 114, 75]
+     pairs over 27: b(a0 only)=9 c(a1 only)=0 n_d=9 |b-c|=9 reported as counts; no p-value
+  stage B ISOMORPHISM PROVEN (the F3 quantity): a0 proven 8/27 (counted rows 24, resolved 24)  classes={'AXIOMS_FAIL': 16, 'PASS': 8}  metered p50=635859 p90=7673919 max=11757659  terms={'DONE': 21, 'ROUNDS_EXHAUSTED': 3}
+     proven: [146, 16, 4, 38, 142, 31, 54, 74]
+     not proven (19): FAIL:AXIOMS_FAIL: [109, 34, 73, 90, 159, 12, 69, 0, 163, 129, 81, 96, 112, 141, 127, 18]  NO_LANDING: [110, 114, 75]
+  stage B ISOMORPHISM PROVEN (the F3 quantity): a1 proven 8/27 (counted rows 15, resolved 15)  classes={'PASS': 8, 'AXIOMS_FAIL': 6, 'COMPILE': 1}  metered p50=930428 p90=9128436 max=11777161  terms={'DONE': 13, 'ROUNDS_EXHAUSTED': 2}
+     proven: [73, 146, 16, 38, 142, 31, 54, 74]
+     not proven (19): FAIL:AXIOMS_FAIL: [0, 4, 96, 112, 127, 18]  FAIL:COMPILE: [141]  NO_LANDING: [109, 34, 90, 159, 12, 69, 163, 129, 81, 110, 114, 75]
+     pairs over 27: b(a0 only)=1 c(a1 only)=1 n_d=2 |b-c|=0 INDISTINGUISHABLE (|b-c| < 5)
+  stage C impl + correctness proven (over the C-eligible drawn subset): a0 proven 0/23 (counted rows 0, resolved 0)  classes={}  metered p50=None p90=None max=None  terms={}
+     proven: []
+     not proven (23): NO_LANDING: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 38, 142, 96, 141, 31, 114, 75, 127, 18, 74]
+     NOT_RUN(view_dead) — not counted (4): NO_LANDING: [81, 110, 112, 54]
+  stage C impl + correctness proven (over the C-eligible drawn subset): a1 proven 0/23 (counted rows 0, resolved 0)  classes={}  metered p50=None p90=None max=None  terms={}
+     proven: []
+     not proven (23): NO_LANDING: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 38, 142, 96, 141, 31, 114, 75, 127, 18, 74]
+     NOT_RUN(view_dead) — not counted (4): NO_LANDING: [81, 110, 112, 54]
+     pairs over 23: b(a0 only)=0 c(a1 only)=0 n_d=0 |b-c|=0 INDISTINGUISHABLE (|b-c| < 5)
+  KERNEL_REJECTED: []
+  STATEMENT_ALTERED: []
+  PROVENANCE (stage-B generated_spec != scored stage-A body, AP-4): []
+  axiom-only failures (AXIOMS_FAIL: compiled, kernel replay ok, statements identical, axioms outside the allowlist): [((0, 'B', 'a0'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((0, 'B', 'a1'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((109, 'B', 'a0'), {'generated_spec': [], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((112, 'B', 'a0'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((112, 'B', 'a1'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((12, 'B', 'a0'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((127, 'B', 'a0'), {'generated_spec': ['propext'], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((127, 'B', 'a1'), {'generated_spec': ['propext'], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((129, 'B', 'a0'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((141, 'B', 'a0'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((159, 'B', 'a0'), {'generated_spec': [], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((163, 'B', 'a0'), {'generated_spec': [], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((18, 'B', 'a0'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((18, 'B', 'a1'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((34, 'B', 'a0'), {'generated_spec': [], 'problem_spec': [], 'spec_isomorphism': ['sorryAx']}), ((4, 'B', 'a1'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((69, 'B', 'a0'), {'generated_spec': [], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((73, 'B', 'a0'), {'generated_spec': ['propext'], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((81, 'B', 'a0'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext', 'Classical.choice'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((90, 'B', 'a0'), {'generated_spec': [], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx']}), ((96, 'B', 'a0'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']}), ((96, 'B', 'a1'), {'generated_spec': ['propext', 'Classical.choice', 'Quot.sound'], 'problem_spec': ['propext'], 'spec_isomorphism': ['propext', 'sorryAx', 'Classical.choice', 'Quot.sound']})]
+  ORPHAN B rows (a_episode ≠ the scored A row; reported, NOT counted): []
+  superseded rows (not counted): [(73, 'B', 'a0', 'ep-420f3439', 'ROUNDS_EXHAUSTED', 'superseded by ep-aa00339e'), (146, 'B', 'a0', 'ep-9ee56e58', 'ROUNDS_EXHAUSTED', 'superseded by ep-d26f5fbe'), (38, 'B', 'a0', 'ep-0a279a22', 'ROUNDS_EXHAUSTED', 'superseded by ep-e866aac4')]
+  unscored rows (not counted): []
+  rows for problems NOT in the draw (excluded or beyond k; not counted): []
+  F3 (plain arm a0, stage B, proven over the k=27 drawn): 8/27 = 29.6% ⇒ RUN THE SALT ARM (20–80%)   proven ids: [146, 16, 4, 38, 142, 31, 54, 74]
+     unflagged drawn subset U (n=15, ids [73, 0, 146, 16, 4, 38, 142, 96, 112, 141, 31, 54, 127, 18, 74]): 8/15 = 53.3% ⇒ RUN THE SALT ARM (20–80%)   proven ids: [146, 16, 4, 38, 142, 31, 54, 74]
+     without nl_leaked [90] (n=26): 8/26 = 30.8% ⇒ RUN THE SALT ARM (20–80%)
+     bands all-drawn vs unflagged: agree
+     resolution (B, a0): 24/27 drawn problems resolved (scored row or synthetic landing); UNRESOLVED [110, 114, 75] ⇒ F3 NOT YET READABLE (PROVISIONAL)
+  RECALL INSTRUMENT (D10, plain arm, stage-B passes n=8, with bodies on disk 8): suspect 0 (sim≥0.80: 0, trivial proof: 0)  f_high=0.00 ⇒ below the 0.5 cut; the band is read
+     problem_146 sim=0.143 trivial=False ok
+     problem_16 sim=0.078 trivial=False ok
+     problem_4 sim=0.452 trivial=False ok
+     problem_38 sim=0.091 trivial=False ok
+     problem_142 sim=0.194 trivial=False ok
+     problem_31 sim=0.111 trivial=False ok
+     problem_54 sim=0.178 trivial=False ok
+     problem_74 sim=0.053 trivial=False ok
+     (arm a1 [placebo], for information: passes 8, suspect 0)
+  READING: PROVISIONAL (F3 NOT YET READABLE) — RUN THE SALT ARM (20–80%)
+  p90 the cap rule consumes (D16, per stage, a0 DONE|ROUNDS_EXHAUSTED): A=340564 (n=24) B=7673919 (n=24) C=None (n=0)
+  no p-value, by design.

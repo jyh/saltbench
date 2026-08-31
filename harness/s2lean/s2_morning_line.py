@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 r"""s2_morning_line.py — the S2-Lean stage-0 report, computed the ONE pre-declared way (repair round 1: D6 draw,
 D8 flagged/leaked, D9 morning line, D10 recall instrument, D16 per-stage cap).
-usage: s2_morning_line.py <STATE dir> <k>
-reads: <STATE>/*/manifest.json (substrate S2-Lean/CLEVER, arms a0/a1; SMOKE*/DRY* terminations dropped);
+usage: s2_morning_line.py <STATE dir> <k>        (env ML_ARMS=a0,a1,a2 selects the arms; default a0,a1)
+       s2_morning_line.py --selftest             drives THIS script's own argv over a synthetic state (amendment 7)
+reads: <STATE>/*/manifest.json (substrate S2-Lean/CLEVER, arms in ML_ARMS; SMOKE*/DRY* terminations dropped);
        <STATE>/../logs/s2-landings.log for the driver's SYNTHETIC landings `<none> <task> <stage> <arm> <term> 0`
        (env S2_LANDINGS overrides the path); beside this script: draw.py (IMPORTED — the k drawn, excluded ids already
        removed), flagged.json (flagged_spec_ids, excluded_ids, nl_leaked_ids), view_status.json (c_dead).
@@ -37,11 +38,39 @@ RULES (stated here, before computing):
    HARNESS|PROVENANCE); KERNEL_REJECTED, STATEMENT_ALTERED and PROVENANCE (stage-B generated_spec != the scored
    stage-A body, AP-4) are printed as their own lines, AXIOMS_FAIL as 'axiom-only failures'.
  - the cap the salt arm consumes is PER STAGE: the a0 p90 of the same stage over DONE|ROUNDS_EXHAUSTED rows (D16).
- - no p-value, by design (b/c/n_d are printed as counts; |b−c| < 5 is labelled INDISTINGUISHABLE)."""
+ - no p-value, by design (b/c/n_d are printed as counts; |b−c| < 5 is labelled INDISTINGUISHABLE).
+ - ARMS (amendment 7, 2026-08-31): the scored arm set is ML_ARMS (ordered, comma-separated; default "a0,a1", which
+   reproduces the frozen report). a0 must be present and is the primary: F3, the D16 per-stage cap and the recall
+   instrument are DEFINED on the plain arm and are not re-pointed by this switch. Every unordered pair of the arm
+   set gets its own b/c/n_d line, labelled with the ARM NAMES — the frozen tool hard-wired a0-vs-a1 and, worse,
+   captioned a1 "the salt arm", which a1 is not: a1 is the PLACEBO and a2 is the salt arm. Roles are named from
+   ARM_ROLE below so the report cannot mislabel them again."""
 import collections, difflib, glob, hashlib, json, math, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import draw as drawmod  # noqa: E402
+
+# ---- the scored arm set (amendment 7). Default reproduces the frozen a0/a1 report.
+# REFUSE, never coerce: a silently-dropped arm is exactly the defect this repairs — the frozen tool discarded all 30
+# a2 rows as "other-arm" and reported a complete-looking a0/a1 table beside them.
+ARM_ROLE = {"a0": "plain/control", "a1": "placebo", "a2": "salt"}
+def parse_arms(spec):
+    arms = [a.strip() for a in str(spec).split(",") if a.strip()]
+    for a in arms:
+        if not re.match(r"^a[0-9]+$", a):
+            sys.exit("REFUSE: ML_ARMS token %r is not an arm name (^a[0-9]+$). Arms are registered in the amendments." % a)
+    if len(set(arms)) != len(arms):
+        sys.exit("REFUSE: ML_ARMS has a repeated arm: %s" % arms)
+    if "a0" not in arms:
+        sys.exit("REFUSE: ML_ARMS must contain a0. F3, the D16 per-stage cap and the recall instrument are DEFINED on "
+                 "the plain arm a0; scoring without it would print those three under a name that does not mean them.")
+    return arms
+ARMS = parse_arms(os.environ.get("ML_ARMS") or "a0,a1")
+def role(a): return ARM_ROLE.get(a, "role unregistered")
+
+if len(sys.argv) > 1 and sys.argv[1] == "--selftest":
+    import selftest_morning_line as _st  # noqa: E402
+    sys.exit(_st.main())
 
 st, k = os.path.abspath(sys.argv[1]), int(sys.argv[2])
 FL = json.load(open(os.path.join(HERE, "flagged.json")))
@@ -72,7 +101,7 @@ allm = []
 for p in glob.glob(os.path.join(st, "*", "manifest.json")):
     try: allm.append(json.load(open(p)))
     except Exception as e: print("WARNING unreadable manifest %s: %s" % (p, e))
-man = [m for m in allm if m.get("substrate") == "S2-Lean/CLEVER" and m.get("arm") in ("a0", "a1") and not str(m.get("termination", "")).startswith(("SMOKE", "DRY"))]
+man = [m for m in allm if m.get("substrate") == "S2-Lean/CLEVER" and m.get("arm") in ARMS and not str(m.get("termination", "")).startswith(("SMOKE", "DRY"))]
 man.sort(key=lambda m: (m.get("end_utc") or 0, m.get("episode") or ""))
 rows = collections.defaultdict(list)
 for m in man: rows[(m["instance_id"], m["stage"], m["arm"])].append(m)
@@ -156,10 +185,11 @@ def recall(arm):
 consts = sorted({(m.get("max_turns"), m.get("wall_ceiling_s"), m.get("token_ceiling"), m.get("model_requested"), m.get("effort")) for m in man})
 print("S2-LEAN STAGE-0 MORNING LINE  k=%d  drawn |D|=%d (excluded ids %s removed at the draw)  flagged∩D=%d %s  nl_leaked∩D=%s  c_dead∩D=%s (view_status.json %s)" % (
     k, len(D), sorted(EXC), len(D) - len(U), sorted(set(ids(D)) - set(ids(U))), sorted(set(ids(D)) - set(ids(DNL))), sorted(set(ids(D)) - set(ids(CE))), "read" if VS else "ABSENT"))
-print("  manifests: %d considered (%d dropped as SMOKE/DRY/other-substrate/other-arm), scored cells %d, superseded %d, unscored %d, orphan B rows %d, synthetic landings %d (%s)  constants=%s" % (
-    len(man), len(allm) - len(man), len(scor), len(superseded), len(unscored), len(orphan), len(synth), LAND if os.path.exists(LAND) else "no landings log at " + LAND, consts))
+print("  manifests: %d considered (%d dropped as SMOKE/DRY/other-substrate/other-arm), scored cells %d, superseded %d, unscored %d, orphan B rows %d, synthetic landings %d (%s)  constants=%s  arms=%s" % (
+    len(man), len(allm) - len(man), len(scor), len(superseded), len(unscored), len(orphan), len(synth), LAND if os.path.exists(LAND) else "no landings log at " + LAND, consts,
+    " ".join("%s(%s)" % (a, role(a)) for a in ARMS)))
 for stage, label, dom in (("A", "spec compiles", D), ("B", "ISOMORPHISM PROVEN (the F3 quantity)", D), ("C", "impl + correctness proven (over the C-eligible drawn subset)", CE)):
-    for a in ("a0", "a1"):
+    for a in ARMS:
         keys = [(t, stage, a) for t in dom]
         ok = [key for key in keys if proven(key)]; cnt = [key for key in keys if counted(key)]; res = [key for key in keys if resolved(key)]
         ms = [metered(scor[key]) for key in cnt if metered(scor[key])]
@@ -173,9 +203,12 @@ for stage, label, dom in (("A", "spec compiles", D), ("B", "ISOMORPHISM PROVEN (
         if stage == "C":
             dead = [(t, "C", a) for t in D if t not in CE]
             if dead: print("     NOT_RUN(view_dead) — not counted (%d): %s" % (len(dead), grouped(dead)))
-    b = sum(1 for t in dom if proven((t, stage, "a0")) and not proven((t, stage, "a1")))
-    c = sum(1 for t in dom if proven((t, stage, "a1")) and not proven((t, stage, "a0")))
-    print("     pairs over %d: b(a0 only)=%d c(a1 only)=%d n_d=%d |b-c|=%d %s" % (len(dom), b, c, b + c, abs(b - c), "INDISTINGUISHABLE (|b-c| < 5)" if abs(b - c) < 5 else "reported as counts; no p-value"))
+    for _i in range(len(ARMS)):
+        for _j in range(_i + 1, len(ARMS)):
+            x, y = ARMS[_i], ARMS[_j]
+            b = sum(1 for t in dom if proven((t, stage, x)) and not proven((t, stage, y)))
+            c = sum(1 for t in dom if proven((t, stage, y)) and not proven((t, stage, x)))
+            print("     pairs over %d: b(%s only)=%d c(%s only)=%d n_d=%d |b-c|=%d %s" % (len(dom), x, b, y, c, b + c, abs(b - c), "INDISTINGUISHABLE (|b-c| < 5)" if abs(b - c) < 5 else "reported as counts; no p-value"))
 # own classes
 def cells(pred): return [(pid(t), s, a) for (t, s, a), m in sorted(scor.items()) if (t, s, a) not in orphan and pred(m)]
 print("  KERNEL_REJECTED: %s" % cells(lambda m: klass(m) == "KERNEL_REJECTED" and not m.get("passed")))
@@ -206,8 +239,9 @@ print("  RECALL INSTRUMENT (D10, plain arm, stage-B passes n=%d, with bodies on 
     "n/a (no passes)" if f_high is None else ("RECALL-SUSPECT ⇒ HOLD for council (F5); the F3 band is NOT read" if f_high >= 0.5 else "below the 0.5 cut; the band is read")))
 for t, s, tr, su, lab in rc: print("     %s sim=%s trivial=%s %s" % (t, "n/a" if s is None else "%.3f" % s, tr, lab))
 if len(known) < len(rc): print("     WARNING: %d passes have no bodies on disk (excluded from f_high) — resolve before reading" % (len(rc) - len(known)))
-rc1 = recall("a1")
-if rc1: print("     (salt arm a1, for information: passes %d, suspect %d)" % (len(rc1), sum(1 for r in rc1 if r[3])))
+for _a in ARMS[1:]:
+    rca = recall(_a)
+    if rca: print("     (arm %s [%s], for information: passes %d, suspect %d)" % (_a, role(_a), len(rca), sum(1 for r in rca if r[3])))
 if f_high is not None and f_high >= 0.5: reading = "RECALL-SUSPECT ⇒ HOLD for council (F5); band not read"
 elif differ: reading = "HOLD (F5: all-drawn band %s ≠ unflagged band %s)" % (b_all.split(" ")[0], b_u.split(" ")[0])
 else: reading = b_all
