@@ -892,3 +892,56 @@ bridges up to 6 h and a halt is resumable.
 **Reporting.** Per episode: termination, class, calls, metered, wall. Then both contrasts with `b`/`c`/`n_d`, the
 per-arm rates beside the landed `a0` 8/15, the recall instrument over each arm's passes, the integrity block, and the
 class distribution per arm. The predictions are scored as they stand, wins and failures alike.
+
+---
+
+### Amendment 6 — 2026-08-30, a raise of amendment 5's stop rules, registered BEFORE the trip
+
+**Authorization.** Helm ruling 2026-08-30 17:09 (bus offset 29415945), granting this seat's option (ii):
+*"a DATED amendment 6, 65M→72M per-arm / 130M→145M total, written and PUSHED BEFORE THE TRIP."* The helm names the
+three conditions that make this a disciplined raise rather than a decorative rule, and each is recorded here against
+its evidence.
+
+**What changes — and it is only this.** Amendment 5's stop rules move:
+
+| rule | was | is |
+|---|---|---|
+| per arm | 65,000,000 | **72,000,000** |
+| amendment total | 130,000,000 | **145,000,000** |
+
+**Nothing else moves.** Population U15, arms `a0`/`a1`/`a2` byte-identical to their pins, `R = 100`,
+`TOKEN_CEILING = 20,000,000`, `WALL_S = 5400`, `MODEL=claude-sonnet-5`, `EFFORT=high`, the same views, the same
+checker, the same prompts, the same interleaved order. No experimental constant is touched; this amendment is about
+what stops the run, not about what the run is.
+
+**Condition 1 — registered BEFORE the trip.** At the moment of writing, `a2` = 27,653,732 and `a1` = 28,004,910
+(55,658,642 total), against the 65M rule. Neither arm is within 37M of the old rule; the raise is prospective, not a
+rescue of a run already halted.
+
+**Condition 2 — the cause is MY PRICING, and it is stated as mine.** Amendment 5 priced U15's stage B at
+2,749,871/ep, the mean over the **nine new** problems — a subset selected for being fresh, and as it happened cheap —
+for a population that also contains the six originals, three of which cost 7.2M–11.8M each. The population's own
+control mean is 3,378,834. Then, an hour later, I compounded it: my 23:5x projection extrapolated a flat mean from
+the three most expensive problems then finished and predicted the rules would bite at problem 9, which was wrong by
+five problems and made the decision look far more expensive than it was (+95M, where the truth is +2–4M).
+⭐ **THE LAW THIS AMENDMENT CARRIES, because all three of the day's pricing errors are one error:** at 20:12 I priced
+from a set selected for difficulty; at 21:0x from a set selected for freshness; at 23:5x from a flat mean over the
+expensive tail. **In every case a per-item predictor was already measured and sitting in the manifests, and I reached
+for a scalar.** ⇒ **WHEN THE ITEMS ARE PAIRED AND THE CONTROL IS ALREADY MEASURED, PREDICT PER ITEM; A MEAN IS THE
+ESTIMATOR OF LAST RESORT, NOT OF FIRST.** Predicting each remaining episode from its own `a0` episode, scaled by the
+measured arm ratios (`a1` 1.35×, `a2` 1.36×), gives projected totals **`a2` 67.1M · `a1` 66.4M · ≈133M** — which is
+what 72M and 145M are sized against, with ~5M per-arm and ~12M total of headroom.
+
+**Condition 3 — outcome-blind, with the numbers so a reader can check it.** At the ruling, 6 of 15 problems were
+decided on all three arms and the contrasts were **`a2` vs `a0`: b = 0, c = 0** (not one disagreement in six
+problems) and **`a1` vs `a0`: b = 1, c = 1**. Both sit at `|b − c| = 0`, dead on the registered INDISTINGUISHABLE
+label. **No result motivates this raise; there is no result yet to motivate it.**
+
+**What is NOT relaxed.** The discipline is unchanged in kind: at 72,000,000 on either arm, or 145,000,000 for the
+amendment, the driver stops after the episode in flight and the state goes to the desk before anything further runs.
+The enforcer remains a live watch, and its thresholds move with this text rather than after it. ⛔ And the standing
+prohibition stands: **this seat does not raise its own guard.** The raise exists because the desk ruled it; the
+seat's own act was to price the fork, name the error, and let the default hold.
+
+**Registered consequence.** The run is expected to complete the paired **n = 15** without either rule firing. If a
+rule fires anyway, that is a second pricing failure and it will be reported as one.
