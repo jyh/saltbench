@@ -111,6 +111,16 @@ for id in $ids; do
   n=$((n+1)); [ "$n" -lt "$START" ] && continue
   if [ $((n % 2)) -eq 1 ]; then order="$ARMS"; else order=$(printf '%s\n' $ARMS | tail -r | tr '\n' ' '); fi
   for arm in $order; do
+    # AMENDMENT 8 ADDENDUM 1 (2026-08-31, before the first call): the COOPERATIVE HALT.
+    # A registered stop rule needs an enforcer that can actually stop the driver, and the only safe place to stop is
+    # BETWEEN episodes — killing a process mid-episode corrupts the landing the rule exists to protect. The watch
+    # touches $BENCH/HALT; the driver reads it here and exits 4 with the reason, after the episode in flight.
+    # ⛔ Checked INSIDE the arm loop, not the problem loop: with two arms per problem, a problem-level check can
+    # spend a whole extra episode after the breach.
+    if [ -f "$BENCH/HALT" ]; then
+      echo "$(stamp) HALT FILE: $BENCH/HALT present — stopping after the episode in flight. Reason: $(head -c 400 "$BENCH/HALT" 2>/dev/null)" | tee -a "$RL"
+      exit 4
+    fi
     if has_terminal "$t" "$STAGE" "$arm"; then echo "skip $t $STAGE $arm (terminal landing exists)"; continue; fi
     if [ "$STAGE" = "B" ] && [ ! -s "$SROOT/$t/$arm/A.bodies.json" ]; then synthetic "$t" B "$arm" "NOT_PROVEN(no_stage_A_pass)"; continue; fi
     if [ "$STAGE" = "C" ]; then case " $cdead " in *" $t "*) synthetic "$t" C "$arm" "NOT_RUN(view_dead)"; continue ;; esac; fi

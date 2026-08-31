@@ -1264,3 +1264,14 @@ and it **reproduces the banked A-views figure exactly**, which is how I know it 
 **not** reproduce the banked GT figure (`05139f9aba3dbc17`; this recipe gives `cf67a9c0ed805f36` on the seat **and**
 on the Studio, so the two sides agree and the *recipe* differs). ⇒ **a set-hash without its recipe is not a
 receipt — it is a number that only its author can check.** The recipe is written down here so the next head can.
+
+**AMENDMENT 8, ADDENDUM 1 — 2026-08-31, appended BEFORE the first call: the stop rule gets an enforcer the driver
+obeys.** Writing the watch exposed a gap in the amendment I had just registered: **the stop rules above had no
+mechanism.** The driver has no halt hook, so "stops the driver after the episode in flight" would have meant a watch
+racing to kill a process **mid-episode** — which corrupts the very landing the rule exists to protect, and leaves a
+half-written manifest that the morning line must then adjudicate. Added: the watch touches `$BENCH/HALT` with its
+reason; the driver reads it **inside the arm loop** (not the problem loop — with two arms per problem, a
+problem-level check spends a whole extra episode after the breach) and exits **4**, printing the reason, having
+started nothing. Driven both ways before this was written: absent ⇒ the episode starts; present ⇒ exit 4, reason
+printed, **zero** episodes started. ⇒ **A STOP RULE WITHOUT A MECHANISM IS A SENTENCE, NOT A RULE** — and I had
+written it as a sentence twice (amendments 5 and 6) before building the mechanism.
