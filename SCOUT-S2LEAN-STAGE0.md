@@ -945,3 +945,95 @@ seat's own act was to price the fork, name the error, and let the default hold.
 
 **Registered consequence.** The run is expected to complete the paired **n = 15** without either rule firing. If a
 rule fires anyway, that is a second pricing failure and it will be reported as one.
+
+#### Amendment 5 — RESULT (2026-08-31 03:36Z): all three arms 8/15 = 53.3%, and the salt arm matched the control PROBLEM FOR PROBLEM
+
+**THE READING: `a2` vs `a0` — b = 0, c = 0, n_d = 0 ⇒ INDISTINGUISHABLE. `a1` vs `a0` — b = 1, c = 1, n_d = 2 ⇒
+INDISTINGUISHABLE.** This is the **null row** of the registered 3×3 outcome table, which I named in advance as the
+outcome I would bet on at this n. **Nothing about the salt method's solo-renderable core is detectable at k = 15 on
+this substrate at this tier.**
+
+| problem | `a0` plain | `a1` placebo | `a2` salt |
+|---|---|---|---|
+| 73  | AXIOMS_FAIL 100 / 8,864k | **PASS 89 / 8,596k** | AXIOMS_FAIL 100 / 10,077k |
+| 0   | AXIOMS_FAIL 8 / 337k | AXIOMS_FAIL 12 / 544k | AXIOMS_FAIL 22 / 820k |
+| 146 | PASS 95 / 7,673k | PASS 88 / 9,128k | PASS 68 / 6,046k |
+| 16  | PASS 25 / 870k | PASS 43 / 1,431k | PASS 25 / 952k |
+| 4   | PASS 26 / 1,010k | **AXIOMS_FAIL 19 / 930k** | PASS 19 / 844k |
+| 38  | PASS 93 / 7,176k | PASS 78 / 5,283k | PASS 56 / 4,546k |
+| 142 | PASS 46 / 2,731k | PASS 38 / 2,352k | PASS 37 / 2,123k |
+| 96  | AXIOMS_FAIL 13 / 460k | AXIOMS_FAIL 20 / 869k | AXIOMS_FAIL 24 / 906k |
+| 112 | AXIOMS_FAIL 100 / 7,386k | AXIOMS_FAIL 100 / 8,789k | AXIOMS_FAIL 100 / 8,536k |
+| 141 | AXIOMS_FAIL 100 / 11,757k | **COMPILE** 100 / 11,777k | AXIOMS_FAIL 100 / 14,129k |
+| 31  | PASS 16 / 448k | PASS 16 / 475k | PASS 20 / 600k |
+| 54  | PASS 12 / 311k | PASS 8 / 215k | PASS 10 / 260k |
+| 127 | AXIOMS_FAIL 13 / 635k | AXIOMS_FAIL 11 / 403k | AXIOMS_FAIL 19 / 732k |
+| 18  | AXIOMS_FAIL 14 / 480k | AXIOMS_FAIL 13 / 535k | AXIOMS_FAIL 14 / 422k |
+| 74  | PASS 16 / 537k | PASS 11 / 338k | PASS 13 / 414k |
+| **rate** | **8/15 = 53.3%** | **8/15 = 53.3%** | **8/15 = 53.3%** |
+
+⭐ **`a2` did not merely match the control's RATE — it matched the control's SET.** Fifteen problems, fifteen
+agreements, `n_d = 0`. The placebo differs from the control on exactly two problems, in opposite directions (won 73,
+lost 4). The one thing the arms visibly changed is how much they spent getting to the same answers.
+
+**Instrument state.** `f_high = 0.00` on every arm (8 passes each, 0 suspect, max `sim` 0.452) ⇒ the band is read.
+Integrity **all empty on both scoring passes** — KERNEL_REJECTED `[]`, STATEMENT_ALTERED `[]`, PROVENANCE (AP-4) `[]`,
+orphan-B `[]`, unscored `[]` — with the three amendment-2 supersessions named and
+`constants=[(40,5400,8M),(100,5400,8M),(100,5400,20M)]`, i.e. the three registered regimes and no fourth.
+
+⚠ **AN INSTRUMENT GAP, DECLARED: the frozen `s2_morning_line.py` DOES NOT SCORE `a2`.** Its manifest filter is
+`arm in ("a0","a1")` (line 75) and its contrast is hard-wired to `a0` vs `a1`, so in the pinned tool's own run the
+thirty `a2` rows fall into "dropped as other-arm". `a2` was therefore scored by a **read-only analysis copy** with
+`("a0","a1")` re-pointed to `("a0","a2")` and nothing else changed; the pinned file is byte-untouched
+(`73c4eda8d10c3e9b…`, equal to its HASHES pin, verified after the analysis). Every `a2` figure above comes from the
+control's own logic — same scored-row rule, same class source, same orphan and provenance checks — but a reader must
+know it came from a copy. **Extending the pinned tool to arbitrary arms is owed, as its own dated amendment.**
+📌 **And a naming defect found in the pinned tool while doing it:** its recall line prints
+`(salt arm a1, for information: …)`. **`a1` is the PLACEBO.** The label is S1 heritage and touches no computation,
+but it invites exactly the misreading this campaign cannot afford, and it is fixed in the same owed amendment.
+
+**REGISTERED PREDICTIONS, SCORED — one holds, two fail:**
+
+1. *"`a2` lands 8–12 of 15; `a1` lands 6–10 of 15"* — **8 and 8. HOLDS**, both at the bottom of their bands.
+2. *"`a2`'s mean stage-B cost exceeds `a0`'s measured 2,749,871/ep by at least 25 %, and `a2` produces ≥ 4
+   `ROUNDS_EXHAUSTED` against `a0`'s 3"* — ⛔ **FAILS ON BOTH CLAUSES.** `a2`'s mean is **3,427,587** against a
+   threshold of 3,437,339: **short by 9,752, or 0.28 %** — a miss, and recorded as a miss precisely because it is
+   close enough to be worth rounding, which is exactly when a pre-registration earns its keep. And `a2` produced
+   **3** `ROUNDS_EXHAUSTED`, the same as control, not ≥ 4. (Against the CORRECT comparator — `a0`'s U15 mean of
+   3,378,834 — `a2` is +1.4 %, so the clause fails far more heavily than the registered number suggests.)
+3. *"at least one `a2` episode lands `COMPILE`"* — ⛔ **FAILS.** `a2` produced **zero**. The campaign's only `COMPILE`
+   came from **`a1`**, on problem 141 — which is evidence against the mechanism I proposed (that forbidding the
+   admitted gap would push the salt arm into non-compiling files), since a generic checklist produced one and the
+   prohibition did not.
+
+**THE COST FINDING, which is the only place the arms separate, and it is a paired within-problem comparison:**
+
+- **Totals are flat:** `a0` 50,682,519 · `a1` 51,671,576 · `a2` 51,413,806 — a 1.4 % spread across all three arms.
+- **But the split is not.** On the **8 problems both arms proved**, `a2` used **248 calls vs `a0`'s 329 (−24.6 %)**
+  and **15.79M vs 20.76M tokens (−24 %)**. On the **7 both failed**, `a2` used **379 calls vs 348 (+8.9 %)** and
+  **35.62M vs 29.92M (+19 %)**.
+  ⇒ **WHERE A PROOF EXISTS, THE SALT ARM REACHES IT ABOUT A QUARTER CHEAPER; WHERE ONE DOES NOT, IT SPENDS ABOUT A
+  FIFTH MORE BEFORE ADMITTING THE SAME GAP — AND THE TWO CANCEL.** A campaign that measured only totals would have
+  seen nothing at all here. This is n=8 and n=7 and is reported as a paired observation, not an effect.
+- ⛔ **A correction to what I said DURING the run:** at 6 of 15 I described `a2` as "cheaper on three of four passes"
+  and drew the same conclusion from a partial set. The conclusion survived the full data, but it was a partial-mean
+  reading when I said it, of exactly the family that produced the day's three pricing errors.
+
+**THE `sorry` OBJECTION, ANSWERED BY THE DATA.** Amendment 5 registered that `a2` names `sorry` — the control's
+dominant failure — and that if `a2` gained, "it was told not to write `sorry`" would be a live alternative
+explanation. **`a2` did not gain, and the objection is now moot in the direction that matters: seven of `a2`'s
+fifteen episodes ended `AXIOMS_FAIL` with `sorryAx`, the identical failure and the identical set as the control.**
+Being told in plain terms that a placeholder is not a proof changed neither which problems were solved nor how they
+failed. That is the cleanest thing this amendment establishes.
+
+**Price:** stage A 6,457,019 (30 episodes) + stage B 103,085,382 → **109,542,401 metered, ~6.5 h**, against
+amendment 6's rules of 72M per arm and 145M total. Final per-arm totals `a2` 55,780,005 · `a1` 53,762,396 —
+**both under even the ORIGINAL 65M rule.** The raise was not needed. It was still the right call when it was ruled,
+on the estimate then in hand; that the estimate was again too high is the fourth measurement of the same defect.
+
+**What this does NOT show.** `a2` is the method's **solo-renderable core**, not the method: A1/A2/A5/A6 (orchestrator,
+executors, councils, independent witness), R5, R6 and R7 are unrenderable in a sealed single-agent episode and were
+registered as such before the run. **This result is silent on the Advisory tier and on every multi-agent invariant.**
+It is one substrate, one model tier, one stage, k = 15, no p-value. It says: *on kernel-checked specification work at
+this tier, a faithful solo rendering of the method's required articles changed nothing measurable about what the
+agent could prove.*
