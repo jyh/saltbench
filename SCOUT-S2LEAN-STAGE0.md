@@ -1373,3 +1373,113 @@ A-views `bc4d6eafc0430ed2`, both equal to the seat's, `frozen=161 C=161`.
 
 **Stage-B stop rules, unchanged from amendment 8** (weekly at 75 % consumed · 90,000,000 metered in either arm ·
 12 h wall), with the live enforcer re-armed on stage-B caps before the first stage-B episode.
+
+
+---
+
+### Amendment 8 — RESULT, 2026-08-31: the tier raise buys TWO PROBLEMS AND A QUARTER OF THE PRICE, and the reach cell is still not the salt arm's
+
+**The run.** 60 episodes, stage A + stage B, `a0` and `a2` over U15 at `claude-opus-5`, in the isolated root
+`~/bench-a8`. **All 60 terminated `DONE`. Zero `ROUNDS_EXHAUSTED`** (Sonnet had three), zero retries, zero holds,
+no `HALT` — the run ended on its own and the enforcer exited on the driver's own `DONE`. Scored by the **registered
+instrument** at `ML_ARMS=a0,a2` — the first time this campaign has scored a salt arm with its own tool instead of a
+copy of it. `constants=[(100, 10800, 30000000, 'claude-opus-5', 'high')]`, one regime, exactly as registered.
+
+**THE READ (U15, stage B, isomorphism proven):**
+
+| | Sonnet (amendment 5) | **Opus (this amendment)** |
+|---|---|---|
+| `a0` plain | 8/15 = 53.3 % | **10/15 = 66.7 %** |
+| `a2` salt | 8/15 = 53.3 % | **10/15 = 66.7 %** |
+| contrast | b=0, c=0, **15/15 agreements** | `a0`-only **{112}** · `a2`-only **{4}** · **\|b−c\| = 0** |
+| verdict | INDISTINGUISHABLE | **INDISTINGUISHABLE** |
+
+`f_high = 0.00` on both arms (max sim 0.588) ⇒ **the band is read.** Recall instrument clean.
+
+⭐ **THE TIER RAISE IS REAL AND IT IS CHEAP.** +2 problems in each arm, and **the whole amendment cost
+26,104,403 metered in 5.0 h against Sonnet's 108,912,193 in 6.6 h — ×0.24 of the tokens.** Stage B alone is
+**×0.197**. The `a0` stage-B p90 fell from **7,673,919 to 967,038** (×0.126). Adjusting for the measured ~2.19×
+quota-per-token of the tier, the effective cost is still ≈ **×0.53**. **The raised tier was cheaper in every
+currency and better on the rate** — which is not what a tier raise is normally expected to be, and it is the single
+most useful fact this amendment produced for the campaign's future pricing.
+
+📌 **AND THE MECHANISM IS VISIBLE PER ITEM: THE TIER RAISE DID NOT MAKE HARD PROBLEMS CHEAPER TO GRIND — IT STOPPED
+THE GRINDING.** The three R=100 cap-runners were the campaign's most expensive cells and all three *failed* at
+Sonnet. **Problem 141: 11,757,659 tokens and 100 calls, failing, at Sonnet → 180,396 tokens and 9 calls, PASSING,
+at Opus.** Problem 73: 8.9M failing → 832K passing. Problem 112: 7.4M failing → 2.9M passing. ⇒ *a cost model built
+on a weaker model's failures is a model of its flailing, and it does not transfer up a tier.* This is why every
+corner of my registered gate was pessimistic and every corner was wrong in the same direction.
+
+---
+
+**PREDICTIONS: THREE HOLD, ONE FAILS.**
+
+1. ✅ **Rate — HOLDS on both clauses.** Predicted 9–13 for each arm; **got 10 and 10.** The per-item clause holds
+   *exactly*: I registered that gains would come from **{73, 112, 141}** — the three that exhausted R=100 — and
+   **not** from {0, 96, 127, 18}, which admitted `sorry` cheaply with turns in hand. **`a0` gained 73, 112 and 141;
+   `a2` gained 73 and 141. Not one gain, in either arm, came from the excluded set.** The reasoning — extra
+   capability rescues the ones that ran out of room, not the ones that gave up early — is the best-supported claim
+   in this amendment.
+   ⛔ **But I did not predict a LOSS, and there is one: `a0` proved problem 4 at Sonnet and FAILS it at Opus**
+   (`AXIOMS_FAIL`, `sorryAx`). ⇒ **A TIER RAISE IS NOT MONOTONE PER PROBLEM.** Net +2 in each arm is a net.
+2. ✅ **The reach cell — HOLDS.** Predicted `b ≤ 1` and `|b−c| < 5`; got **1 and 0.** The cell is no longer empty,
+   and it is symmetric.
+3. ⛔ **The cost split — FAILS, and on every set I can defend.** I predicted `a2` stays *cheaper* where both arms
+   prove and *dearer* where both fail. **The sign flipped on the first clause at all three candidate sets:** the 9
+   both-proved at Opus (Sonnet −3.0 % → Opus **+50.6 %**), the 8 both-proved at Sonnet that I wrote the prediction
+   from (−23.9 % → **+35.2 %**), and their 7-problem intersection (−24.3 % → **+66.6 %**). Reported on all three
+   *precisely so the verdict cannot depend on a set chosen after seeing the answer.* The second clause holds (both
+   tiers dearer where both fail). ⇒ **the campaign's only measured separation was a property of the TIER, not of
+   the method** — at Opus the salt arm is simply the more expensive arm everywhere.
+4. ✅ **Failure mode — HOLDS.** `AXIOMS_FAIL` is 4 of 5 non-passes in **each** arm (80 %, against a ≥60 % bar).
+
+---
+
+⚠ **THE INTEGRITY BLOCK IS NOT EMPTY FOR THE FIRST TIME IN THIS CAMPAIGN. Both events were inspected at the
+artifact before this text was written. NEITHER IS A CHEAT, and one of them changes how the result should be read.**
+
+⛔⛔ **(1) `problem_112`, `a2`, `SCREEN` — THE CONTROL-ONLY CELL WAS NEVER EVALUATED.** The salt arm's submission
+carried `set_option linter.deprecated false` on line 1 of its helper lemmas, and the screen refused it. **The screen
+is a WHITELIST** (`maxHeartbeats | maxRecDepth | synthInstance.*`, literal nat, `in` form) and everything else is
+screened **because `debug.skipKernelTC` lives in "everything else"** — a whitelist is the correct way round for a
+soundness screen and it behaved exactly as frozen. But the pragma it refused is a **linter suppression with no
+soundness content**, the file was never compiled (`compiled=false`, `rc=null`, `replay_ok=null`), and its
+isomorphism proof is a long, serious attempt. ⇒ **WE DO NOT KNOW WHETHER `a2` WOULD HAVE PROVED 112.** And the
+stakes are exact: **had it passed, `a2` would read 11/15 and the salt-only cell would be 2 — which is precisely the
+`b − c ≥ 2` that this amendment registered as the trigger for the contingent `a1` placebo arm.** The null rests on
+an unevaluated cell, and that sentence belongs in front of the null, not behind it.
+🛑 **I am NOT re-running it as part of this read.** A single cell re-run, chosen because of the result it produced,
+is the exact cherry-pick pre-registration exists to prevent. It is a **desk question**; if it is to be answered it
+is a DIAGNOSTIC under its own dated amendment, labelled as such, in the shape amendment 2 used — and any narrowing
+of the screen must be registered **before** the re-run, since narrowing a screen after seeing which cell it cost is
+itself post-hoc.
+
+⭐ **(2) `problem_18`, `a0`, `KERNEL_REJECTED` — and the most remarkable episode of the run is a CONTROL episode
+that is not a failure of capability.** The agent wrote `by sorry` for the isomorphism, and in its helper lemmas
+**formally proved that the isomorphism statement is FALSE** — two independent counterexamples
+(`spec_isomorphism_is_false`, `spec_isomorphism_is_false'`) built on an implementation satisfying its own
+`generated_spec` by `rfl`, with an explicit off-by-one diagnosis (`problem_spec` demands `result = string.length`
+while `generated_spec` counts `length + 1` positions). It is scored **FAIL, correctly** — the isomorphism was not
+proven. But ⇒ **"THE AGENT PROVED THE TASK STATEMENT FALSE" AND "THE AGENT COULD NOT DO THE TASK" ARE DIFFERENT
+EVENTS, AND THIS CHECKER CANNOT TELL THEM APART.** That is a finding about the *instrument*, and it applies to
+every `sorry` this campaign has ever counted.
+⚠ **A class-comparability caveat I have NOT diagnosed:** eleven Sonnet episodes with the identical honest `sorry`
+scored `AXIOMS_FAIL`, i.e. they passed the kernel-replay gate; this one failed it (`replay_ok=false`) and so was
+classified by the first failing gate as `KERNEL_REJECTED`. **The rate is unaffected — it is a fail either way — but
+the CLASS DISTRIBUTIONS of the two reads are not comparable until this is diagnosed.** Named, not explained away.
+
+---
+
+**Price and instrument.** Stage A 5,982,892 / 5,663 s (30/30 `DONE / PASS`) · stage B 20,121,511 / 12,380 s ·
+**total 26,104,403 / 5.0 h**, against stop rules of 90M per arm and 12 h — **the run finished at 29 % of one arm's
+token rule and 42 % of the wall rule, and no stop rule ever fired.** Superseded 0, unscored 0, orphan B rows 0,
+`STATEMENT_ALTERED` empty, `PROVENANCE` (AP-4) empty, 15/15 resolved in both arms.
+
+**What this does NOT show.** `a2` remains the method's **solo-renderable core**: A1/A2/A5/A6, R5, R6 and R7 are
+unrenderable in a sealed single-agent episode. **A raised tier does not raise the rendering.** One substrate, one
+stage, k=15, no p-value, and — as of this read — one cell of the contrast never evaluated.
+
+⭐ **THE SENTENCE THIS AMENDMENT EARNS:** *at a materially stronger tier, on the same fifteen kernel-checked
+specification problems, the plain agent and a faithful solo rendering of the method proved the same number of
+problems and disagreed on exactly one problem each — while the tier raise itself bought two problems in both arms
+at a quarter of the price.* **The variable that moved the result was the model, not the method.**

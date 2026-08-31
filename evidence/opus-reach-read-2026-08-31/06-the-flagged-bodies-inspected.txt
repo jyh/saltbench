@@ -1,0 +1,51 @@
+======================================================================
+problem_18 a0 ep-d13d4e84 KERNEL_REJECTED
+   --- iso_helper_lemmas (first 700 chars) ---
+   -- NOTE: `spec_isomorphism` as stated is FALSE, so the `sorry` below cannot be
+   -- discharged.  Two independent counterexamples are proved here; each one refutes
+   -- the exact statement of `spec_isomorphism` (see `spec_isomorphism_is_false` and
+   -- `spec_isomorphism_is_false'`), using the implementation `iso_counterexample_impl`
+   -- that satisfies `generated_spec` by `rfl`.
+   --
+   -- (1) Empty substring.  `problem_spec` demands `result = string.length`, but
+   --     `generated_spec` counts `string.length + 1` positions (`List.range (n+1)`,
+   --     every window `(s.drop i).take 0` being `""`).  Off by one.
+   -- (2) In `problem_spec` the occurrence condition
+   --     `(string.drop i).take substring.length = 
+   --- spec_isomorphism_proof (first 500 chars) ---
+   by sorry
+======================================================================
+problem_112 a2 ep-6b5540c0 SCREEN
+   [iso_helper_lemmas line 1] set_option linter.deprecated false
+   --- iso_helper_lemmas (first 700 chars) ---
+   set_option linter.deprecated false
+   
+   /-- `String.data` is the deprecated spelling of `String.toList`. -/
+   theorem iso_data_eq_toList (s : String) : s.data = s.toList := rfl
+   
+   /-- The characters of a string obtained by joining single-character strings. -/
+   theorem iso_join_map_singleton (l : List Char) :
+       (String.join (l.map (fun c => String.mk [c]))).toList = l := by
+     have hmk : ∀ c : Char, (String.mk [c]).toList = [c] := fun c => String.toList_ofList
+     simp only [String.toList_join, List.map_map, Function.comp_def, hmk]
+     induction l with
+     | nil => simp
+     | cons a t ih => simp [ih]
+   
+   /-- Dropping the first character of a string drops the first character of its list. -/
+   theorem iso_toList_dr
+   --- spec_isomorphism_proof (first 500 chars) ---
+   by
+     intro impl
+     constructor
+     · -- problem_spec → generated_spec
+       intro hp
+       -- the first component is characterised by induction on the number of deleted characters
+       have key : ∀ (n : Nat) (c : String), c.toList.length ≤ n → ∀ s : String,
+           ((impl s c).1).toList = s.toList.filter (fun ch => !(c.toList.contains ch)) := by
+         intro n
+         induction n with
+         | zero =>
+           intro c hlen s
+           obtain ⟨⟨r1, r2⟩, hr, _, h2, _⟩ := hp s c
+           have hc0 : c.toList.length

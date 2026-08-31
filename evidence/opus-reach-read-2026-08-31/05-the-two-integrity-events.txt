@@ -1,0 +1,27 @@
+======================================================================
+problem_18 a0  episode=ep-d13d4e84  class=KERNEL_REJECTED  term=DONE  calls=28 wall=595
+   compiled                 true
+   replay_ok                false
+   statements_identical     true
+   axioms_ok                false
+   passed                   false
+   rc                       0
+   sorry_lines              ["/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-9vasecuj/canonical.lean:118:8: warning: declaration uses 'sorry'"]
+   statement_diffs          []
+   screen                   []
+   tests_in_file            false
+   a_body_value_identical   true
+   axioms: {"generated_spec": ["propext", "Classical.choice", "Quot.sound"], "problem_spec": ["propext", "Classical.choice", "Quot.sound"], "spec_isomorphism": ["propext", "sorryAx", "Classical.choice", "Quot.sound"]}
+======================================================================
+problem_112 a2  episode=ep-6b5540c0  class=SCREEN  term=DONE  calls=56 wall=1117
+   compiled                 false
+   replay_ok                null
+   statements_identical     null
+   axioms_ok                null
+   passed                   false
+   rc                       null
+   statement_diffs          []
+   screen                   ["iso_helper_lemmas: set_option@1"]
+   tests_in_file            false
+   a_body_value_identical   null
+   axioms: {}

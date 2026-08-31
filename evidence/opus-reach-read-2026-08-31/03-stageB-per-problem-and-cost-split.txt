@@ -1,0 +1,28 @@
+BOTH PROVED (n=9): [73, 146, 16, 38, 142, 141, 31, 54, 74]
+   OPUS    a0    3721257 tok / 135 calls   a2    5602502 tok / 165 calls   a2/a0 tok +50.6%  calls +22.2%
+   Sonnet  a0   40371042 tok / 503 calls   a2   39151459 tok / 429 calls   a2/a0 tok -3.0%  calls -14.7%
+BOTH FAILED (n=4): [0, 96, 127, 18]
+   OPUS    a0    1808399 tok /  61 calls   a2    1966442 tok /  62 calls   a2/a0 tok +8.7%  calls +1.6%
+   Sonnet  a0    1913694 tok /  48 calls   a2    2881545 tok /  79 calls   a2/a0 tok +50.6%  calls +64.6%
+a0 ONLY: [112]   a2 ONLY (THE REACH CELL): [4]
+
+per-problem, stage B, Opus vs Sonnet:
+prob   a0  opus / sonnet  class a2  opus / sonnet  class
+73       832471 /  8864343 PASS             664691 / 10077214 PASS          
+0        265286 /   337753 AXIOMS_FAIL      519015 /   820299 AXIOMS_FAIL   
+146      967038 /  7673919 PASS            1876634 /  6046774 PASS          
+16       384790 /   870248 PASS             427296 /   952258 PASS          
+4        785454 /  1010831 AXIOMS_FAIL      211185 /   844138 PASS          
+38       605836 /  7176588 PASS            1190213 /  4546850 PASS          
+142      400478 /  2731432 PASS             477673 /  2123105 PASS          
+96       405271 /   460034 AXIOMS_FAIL      475413 /   906156 AXIOMS_FAIL   
+112     2860947 /  7386952 PASS            3165325 /  8536664 SCREEN        
+141      180396 / 11757659 PASS             424885 / 14129732 PASS          
+31       140498 /   448644 PASS             209150 /   600422 PASS          
+54        54768 /   311056 PASS             106640 /   260713 PASS          
+127      214810 /   635859 AXIOMS_FAIL      387270 /   732357 AXIOMS_FAIL   
+18       923032 /   480048 KERNEL_REJECTED   584744 /   422733 AXIOMS_FAIL   
+74       154982 /   537153 PASS             225320 /   414391 PASS          
+
+STAGE B TOTALS: a0 9176057 (Sonnet 50682519, x0.181)  a2 10945454 (Sonnet 51413806, x0.213)  BOTH 20121511 (Sonnet 102096325, x0.197)
+ROUNDS_EXHAUSTED this run: 0 (Sonnet U15 stage B: 3)

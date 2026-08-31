@@ -1,0 +1,9 @@
+PREDICTION 3 — 'the cost split reproduces IN SIGN'. Reported on EVERY defensible set, so the
+verdict cannot depend on which set I chose after seeing the answer.
+
+the 9 BOTH-PROVED AT OPUS  n=9
+   Sonnet a2 vs a0: -3.0%     Opus a2 vs a0: +50.6%   => sign FLIPS
+the 8 BOTH-PROVED AT SONNET (the set my prediction was written from)  n=8
+   Sonnet a2 vs a0: -23.9%     Opus a2 vs a0: +35.2%   => sign FLIPS
+their INTERSECTION (7, proved by both arms at BOTH tiers)  n=7
+   Sonnet a2 vs a0: -24.3%     Opus a2 vs a0: +66.6%   => sign FLIPS
