@@ -1761,3 +1761,114 @@ false positives are invisible by construction — you only ever see the cell you
 refusal rate would have been hiding a proportional amount of completed work, and nothing in the pipeline would
 have said so.** ⇒ **A DEFENCE-IN-DEPTH LAYER NEEDS ITS OWN FALSE-POSITIVE READING, ROUTINELY, NOT WHEN A RESULT
 MAKES SOMEONE CURIOUS.**
+
+---
+
+### Amendment 10 — 2026-08-31, THE HERMETICITY GATE: `ship BC` stops reading a log and starts reading the state (no scored figure changes)
+
+**What it repairs.** `FINDING-ship-bc-gate-2026-08-31.md` measured `stage_views.sh`'s ground-truth gate GREEN while
+it pointed at nothing. The predicate was one line —
+`ssh STUDIO 'grep -q "S2 STAGE A DRIVER DONE" ~/bench/logs/run_s2_stage0.log'` — and the newest `DONE` in the file
+it grepped had been printed **one second after its own gate lines with zero `START`/`LANDED` between**: the first
+of the two fatals amendment 8 caught before spending a model token, i.e. the driver on the OLD root skipping all
+27 episodes and announcing completion. **The green light was minted by the exact bug the fresh state root was
+created to escape, and it outlived the escape.** Ground truth is 322 files whose arrival on the host ends stage-A
+hermeticity; the gate that decides when they may land was decorative.
+
+**This amendment touches no scored figure.** It changes a transport gate. Every landed manifest, class, rate and
+contrast is untouched, and the amendment-8 and amendment-9 readings stand exactly as written.
+
+#### 10.1 · Three defects, three answers, each one named at the thing it fixes
+
+| # | defect (as found) | answer |
+|---|---|---|
+| 1 | **WRONG ROOT** — every path in the tool was the literal `~/bench` while amendment 8's run wrote `~/bench-a8`. | `RBENCH` is **REQUIRED, absolute, and has no default**, in `ship A`, `ship BC` and `check` alike. *The only caller a default protects is the one who forgot, and forgetting is the bug* — this repo's own law, minted when `helm_append.sh`'s hardcoded seat signed one seat's confession with another's name. |
+| 2 | **NO CLOCK** — `grep -q` over an APPEND-ONLY log cannot distinguish today's `DONE` from one written days ago. | The gate reads no log. Every cell's provenance episode must have finished within `BC_MAX_AGE_H` hours (default **24**), measured from `end_utc` in that episode's own manifest. |
+| 3 | **NO SUBSTANCE** — a driver's `DONE` line is the DRIVER'S CLAIM, not the STATE'S FACT. | The gate walks the drawn ids × the arms and verifies each stage-A artifact **by content**: the file exists and is non-empty, carries the D5 provenance keys, `a_passed` is `true`, `generated_spec_body` is non-empty, the episode it names **exists in this root**, that manifest agrees on `stage`/`instance_id`/`arm`, and — the receipt — **its `a_bodies_sha256` equals `sha256` of that episode's own `bodies.json`.** *The receipt is the content, never the tool that moved it.* |
+
+New files: `harness/s2lean/bc_gate.py` (runs where the root lives; `stage_views.sh` pipes it to the Studio over
+ssh as `python3 - <args>`, so there is nothing to pre-ship and nothing to drift) and
+`harness/s2lean/bc_gate.selftest.sh`.
+
+#### 10.2 · The red-first proof — **21 arms, every one a subprocess on the real argv**
+
+`bash harness/s2lean/bc_gate.selftest.sh` → **21 ok, 0 failed.** Eighteen arms drive `bc_gate.py` itself: the
+complete root passes; a root with a `DONE` line and an EMPTY state refuses; a missing cell, `a_passed=false`, a
+0-byte `A.bodies.json`, a provenance episode **not in this root** (the cross-root leftover — amendment 8's defect
+3 returning), a `bodies.json` swapped after the fact (the receipt arm), a stage-B episode posing as stage A, a
+manifest with **no `end_utc`** (a gate with no clock is refused rather than trusted), a 111-hour-old root, and the
+same root passing at `--max-age-h 200`; a non-existent root; and the three no-default refusals plus a non-numeric
+id and an arm/id that never ran.
+
+The remaining three arms are **the flip, driven rather than asserted** — the FROZEN predicate and the new gate run
+on the SAME fixture roots:
+
+| fixture | frozen predicate | content gate | |
+|---|---|---|---|
+| `donebutempty` — a `DONE` line, an empty state (**the 2026-08-31 state, exactly**) | **PASS** | **REFUSE** | ⇐ FLIP |
+| `stale` — complete but 111 h old | **PASS** | **REFUSE** | ⇐ FLIP |
+| `good` — complete, fresh, content-consistent | PASS | PASS | (the no-op proof) |
+
+#### 10.3 · Driven at the REAL roots, read-only — and it says something sharper than the finding did
+
+Neither call ships anything; `ship BC`'s rsyncs were not run. Evidence:
+`evidence/ship-bc-gate-repair-2026-08-31/`.
+
+- **`/Users/jyh/bench-a8`** (the ACTIVE root, where amendment 8 actually ran), `arms=a0,a2`, the U15 ids:
+  **PASS — 30/30 cells** content-verified, in-root, 4.7–6.3 h old, every receipt matching. Among them
+  `problem_112/a2 → ep-3f17b258 → f71afda6…` — **the same provenance chain amendment 9 verified by hand, here
+  reproduced by machine.**
+- **`/Users/jyh/bench`** (the root the OLD gate hardwired), `arms=a0,a1,a2`: the frozen predicate says **PASS**;
+  the content gate **REFUSES all 45 cells**, every one on the clock — the newest stage-A artifact in that root is
+  **26.8 h** old and the oldest **61.3 h**.
+
+⭐ **THAT IS A HARDER FINDING THAN THE ONE I BANKED.** The old predicate is green on **both** roots — on the active
+one for the right reason and on a two-and-a-half-day-old one for no reason at all. It could not tell them apart
+because it never looked at either: it looked at a log. ⇒ **A GATE THAT READS AN ANNOUNCEMENT CANNOT DISTINGUISH
+THE PLACE THE WORK HAPPENED FROM THE PLACE IT DIDN'T.**
+
+#### 10.4 · The interface change, stated because it breaks the runbook
+
+`stage_views.sh` now REFUSES without `RBENCH` (absolute), and `ship BC` additionally REFUSES without `IDS` and
+`ARMS`. §7's runbook lines must be called as
+`RBENCH=/Users/jyh/bench-a8 IDS="73 0 146 …" ARMS="a0,a2" stage_views.sh ship BC`. `FORCE_BC=1` still overrides
+and still says so loudly — the override is retained deliberately: a gate with no override gets worked around
+outside the tool, where nothing records it.
+
+⛔ **The operating rule from the finding is now LIFTED for `ship BC` and STANDS for `ship A`:** the BC gate reads
+the state and may be trusted; **`ship A` still HANGS** (undiagnosed since 08/30), so that half of the GT transport
+is still by hand, verified by set-hash. **Both halves were manual and only one said so; now one is fixed and the
+other still says so.**
+
+---
+
+### Amendment 9 §9.5 — LANDED, 2026-08-31: the screen's `linter.` clause, red-first and proven a no-op
+
+The condition §9.5 was contingent on (the differential arms agreeing) is satisfied, so the clause lands. It is the
+**narrowest** widening that admits the measured case: `set_option linter.<dotted leaf> <true|false>`, in the bare
+form as well as the `in` form, and nothing else. `debug.*`, `pp.*`, a bare `linter`, `linterFoo.bar`, and a
+`linter.` option with a non-boolean value all remain refused, and each of those is a driven case.
+
+**RED FIRST, then green — the same gate run twice** (`harness/s2lean/screen_widening_proof.py`, which loads the
+pre-change `screen.py` out of git by revision and evaluates one case list against both files):
+
+| | want-mismatches | flips (red→green) | `screen_bodies()` on the real landed artifact | verdict |
+|---|---|---|---|---|
+| **before** the change | **6** | **0** | `['iso_helper_lemmas: set_option@1']` | **FAIL (8)** |
+| **after** the change | 0 | **6** | `[]` | **PASS** |
+
+Nine guard cases are byte-identical under both files, so the widening removed no refusal it was not meant to
+remove; the smuggling arm (`set_option linter.x false in` followed by `set_option debug.skipKernelTC true in`)
+correctly reports `["set_option@2"]` and only that. `screen.py --selftest` carries the same arms and reads
+**45/45**. The proof's second half drives `screen_bodies()` — **the call `check.py` actually makes** — over the
+real landed `bodies.json` of `ep-6b5540c0` rather than a fixture.
+
+**PROVEN A NO-OP ON THE REAL STATE.** The new screen was run over **every landed episode in both state roots —
+201 of them**: **200 identical, 1 differing, and the one is the named cell.** The same sweep confirms the
+pre-change screen reproduces the **recorded** `check.screen` verdict on **201 of 201**, i.e. the file in this
+repo is the file that ran. Evidence:
+`evidence/amend9-refused-cell-2026-08-31/{06,07,08}-*`.
+
+⛔ **NON-RETROACTIVE, as registered.** `ep-6b5540c0` keeps `class = SCREEN` in its manifest; the amendment-8
+reading of record keeps `a2 = 10/15`. The 11/15 of §9.4 is a DIAGNOSTIC and is labelled one everywhere it appears.
+The clause governs **future** runs only.

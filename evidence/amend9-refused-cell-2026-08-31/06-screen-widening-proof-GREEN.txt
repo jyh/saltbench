@@ -1,0 +1,26 @@
+PRE-CHANGE screen.py from 74e37fd (7738 B); WORKING-TREE screen.py (10144 B)
+
+OLD    NEW    WANT    case
+RED    green  green   FLIP  'set_option linter.deprecated false'
+RED    green  green   FLIP  'set_option linter.deprecated false in'
+RED    green  green   FLIP  'set_option linter.unusedVariables true in'
+RED    green  green   FLIP  'set_option linter.style.longLine false'
+RED    green  green   FLIP  'set_option linter.deprecated false'
+RED    RED    RED           'set_option debug.skipKernelTC true in'
+RED    RED    RED           'set_option debug.skipKernelTC true'
+RED    RED    RED           'set_option pp.all true'
+RED    RED    RED           'set_option maxHeartbeats 400000'
+RED    RED    RED           'set_option linterFoo.bar false'
+RED    RED    RED           'set_option linter false'
+RED    RED    RED           'set_option linter.deprecated 5'
+RED    RED    RED           'axiom cheat (P : Prop) : P'
+RED    RED    RED           'run_cmd liftTermElabM do pure ()'
+RED    RED    RED     FLIP  'set_option linter.deprecated false in'
+
+-- screen_bodies() on the real landed artifact (the call check.py makes) --
+   evidence/amend9-refused-cell-2026-08-31/04-the-refused-bodies-AS-LANDED.json
+   OLD -> ['iso_helper_lemmas: set_option@1']
+   NEW -> []
+
+flips (red->green, non-guard cases): 6
+screen widening proof: PASS
