@@ -1,0 +1,24 @@
+1c1
+< S2-LEAN STAGE-0 MORNING LINE  k=27  drawn |D|=27 (excluded ids [32, 39, 123, 160] removed at the draw)  flagged∩D=12 [12, 34, 69, 75, 81, 90, 109, 110, 114, 129, 159, 163]  nl_leaked∩D=[90]  c_dead∩D=[54, 81, 110, 112] (view_status.json read)
+---
+> S2-LEAN STAGE-0 MORNING LINE  k=27  drawn |D|=27 (excluded ids [32, 39, 123, 160] removed at the draw)  flagged∩D=12 [12, 34, 69, 75, 81, 90, 109, 110, 114, 129, 159, 163]  nl_leaked∩D=[90]  c_dead∩D=[18, 54, 81, 110, 112] (view_status.json read)
+17c17
+<   stage C impl + correctness proven (over the C-eligible drawn subset): a0 proven 0/23 (counted rows 0, resolved 0)  classes={}  metered p50=None p90=None max=None  terms={}
+---
+>   stage C impl + correctness proven (over the C-eligible drawn subset): a0 proven 0/22 (counted rows 0, resolved 0)  classes={}  metered p50=None p90=None max=None  terms={}
+19,21c19,21
+<      not proven (23): NO_LANDING: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 38, 142, 96, 141, 31, 114, 75, 127, 18, 74]
+<      NOT_RUN(view_dead) — not counted (4): NO_LANDING: [81, 110, 112, 54]
+<   stage C impl + correctness proven (over the C-eligible drawn subset): a2 proven 0/23 (counted rows 0, resolved 0)  classes={}  metered p50=None p90=None max=None  terms={}
+---
+>      not proven (22): NO_LANDING: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 38, 142, 96, 141, 31, 114, 75, 127, 74]
+>      NOT_RUN(view_dead) — not counted (5): NO_LANDING: [81, 110, 112, 54, 18]
+>   stage C impl + correctness proven (over the C-eligible drawn subset): a2 proven 0/22 (counted rows 0, resolved 0)  classes={}  metered p50=None p90=None max=None  terms={}
+23,25c23,25
+<      not proven (23): NO_LANDING: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 38, 142, 96, 141, 31, 114, 75, 127, 18, 74]
+<      NOT_RUN(view_dead) — not counted (4): NO_LANDING: [81, 110, 112, 54]
+<      pairs over 23: b(a0 only)=0 c(a2 only)=0 n_d=0 |b-c|=0 INDISTINGUISHABLE (|b-c| < 5)
+---
+>      not proven (22): NO_LANDING: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 38, 142, 96, 141, 31, 114, 75, 127, 74]
+>      NOT_RUN(view_dead) — not counted (5): NO_LANDING: [81, 110, 112, 54, 18]
+>      pairs over 22: b(a0 only)=0 c(a2 only)=0 n_d=0 |b-c|=0 INDISTINGUISHABLE (|b-c| < 5)

@@ -1,0 +1,13 @@
+
+SELFTEST: 9 arms, 0 failed
+  refuse/empty                 PASS  rc=2
+  refuse/nonnumeric            PASS  rc=2
+  refuse/negative              PASS  rc=2
+  refuse/float                 PASS  rc=2
+  accept/normalises            PASS  rc=3
+  red/18-is-refused            PASS  rc=3
+  green/0-is-not-refused       PASS  rc=0
+  mixed/18-and-0               PASS  rc=3
+  honesty/no-clean-claim       PASS  rc=0
+
+[exited with code 0]
