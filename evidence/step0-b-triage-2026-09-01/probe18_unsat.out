@@ -1,0 +1,5 @@
+'occ_set_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'occ_card_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'problem_spec_forces_zero_at_aaaa_aa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'stageC_problem18_unsatisfiable' depends on axioms: [propext, Classical.choice, Quot.sound]
+RC=0

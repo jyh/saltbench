@@ -1,0 +1,8 @@
+Unable to find a counter-example
+/tmp/testprobe.lean:4:0: error: 
+===================
+Found a counter-example!
+issue: 2 = 99 does not hold
+(0 shrinks)
+-------------------
+RC=1

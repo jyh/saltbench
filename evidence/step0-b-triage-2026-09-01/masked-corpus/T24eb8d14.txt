@@ -1,0 +1,77 @@
+TOKEN: T24eb8d14
+PROBLEM: problem_141
+
+== NL (docstring + examples) ==
+function_signature: "def file_name_check(file_name: str) -> str"
+docstring: |
+    Create a function which takes a string representing a file's name, and returns
+    'Yes' if the the file's name is valid, and returns 'No' otherwise.
+    A file's name is considered to be valid if and only if all the following conditions
+    are met:
+    - There should not be more than three digits ('0'-'9') in the file's name.
+    - The file's name contains exactly one dot '.'
+    - The substring before the dot should not be empty, and it starts with a letter from
+    the latin alphapet ('a'-'z' and 'A'-'Z').
+    - The substring after the dot should be one of these: ['txt', 'exe', 'dll']
+test_cases:
+  - input: "example.txt"
+    expected_output: "Yes"
+  - input: "1example.dll"
+    expected_output: "No"
+
+== HUMAN problem_spec (the oracle) ==
+def problem_spec
+-- function signature
+(impl: String → String)
+-- inputs
+(file_name : String) :=
+-- spec
+let spec (result: String) :=
+let valid := (file_name.toList.filter Char.isDigit).length ≤ 3 ∧
+  (file_name.toList.filter (· = '.')).length = 1 ∧
+  ∃ before after : String,
+    file_name = before ++ "." ++ after ∧
+    before != "" ∧
+    Char.isAlpha (before.get! 0) ∧
+    (after = "txt" ∨ after = "exe" ∨ after = "dll")
+(result = "Yes" ↔ valid) ∧
+(result = "No" ↔ ¬valid)
+
+-- program termination
+∃ result, impl file_name = result ∧
+-- return value satisfies spec
+spec result
+
+== #test lines ==
+#test implementation "example.txt" = "Yes"
+#test implementation "1example.dll" = "No"
+
+== ISOMORPHISM THEOREM (what stage B had to prove) ==
+theorem spec_isomorphism:
+∀ impl,
+(∀ file_name, problem_spec impl file_name) ↔
+(∀ file_name, generated_spec impl file_name) :=
+
+== AGENT generated_spec HEADER ==
+def generated_spec
+-- function signature
+(impl: String → String)
+-- inputs
+(file_name: String) : Prop :=
+== AGENT generated_spec BODY ==
+let digit_count := (file_name.toList.filter Char.isDigit).length
+let parts := file_name.splitOn "."
+let ext_valid :=
+  parts.length = 2 ∧
+  (match (parts[0]!).toList with
+   | [] => False
+   | c :: _ => ('a' ≤ c ∧ c ≤ 'z') ∨ ('A' ≤ c ∧ c ≤ 'Z')) ∧
+  (parts[1]! = "txt" ∨ parts[1]! = "exe" ∨ parts[1]! = "dll")
+let valid := digit_count ≤ 3 ∧ ext_valid
+(valid → impl file_name = "Yes") ∧ (¬ valid → impl file_name = "No")
+
+== AGENT stage-B proof body ==
+by sorry
+
+== AGENT iso helper lemmas ==
+

@@ -1,0 +1,180 @@
+TOKEN: Td99b3cd7
+PROBLEM: problem_127
+
+== NL (docstring + examples) ==
+function_signature: "def intersection(interval1: Tuple[Int, Int], interval2: Tuple[Int, Int]) -> str"
+docstring: |
+    You are given two intervals,
+    where each interval is a pair of integers. For example, interval = (start, end) = (1, 2).
+    The given intervals are closed which means that the interval (start, end)
+    includes both start and end.
+    For each given interval, it is assumed that its start is less or equal its end.
+    Your task is to determine whether the length of intersection of these two
+    intervals is a prime number.
+    Example, the intersection of the intervals (1, 3), (2, 4) is (2, 3)
+    which its length is 1, which not a prime number.
+    If the length of the intersection is a prime number, return "YES",
+    otherwise, return "NO".
+    If the two intervals don't intersect, return "NO".
+test_cases:
+  - input: [(1, 2), (2, 3)]
+    expected_output: "NO"
+  - input: [(-1, 1), (0, 4)]
+    expected_output: "NO"
+  - input: [(-3, -1), (-5, 5)]
+    expected_output: "YES"
+
+== HUMAN problem_spec (the oracle) ==
+def problem_spec
+-- function signature
+(impl: Int × Int → Int × Int → String)
+-- inputs
+(interval1: Int × Int)
+(interval2: Int × Int) :=
+-- spec
+let spec (result: String) :=
+let (s1, e1) := interval1;
+let (s2, e2) := interval2;
+s1 ≤ e1 → s2 ≤ e2 →
+let intersectionStart := max s1 s2;
+let intersectionEnd := min e1 e2;
+let hasIntersection := intersectionStart ≤ intersectionEnd;
+let isPrime := Nat.Prime (intersectionEnd - intersectionStart).toNat;
+(result = "YES" ↔ hasIntersection ∧ isPrime) ∧
+(result = "NO" ↔ ¬hasIntersection ∨ ¬isPrime) ∧
+(result = "YES" ∨ result = "NO")
+-- program terminates
+∃ result, impl interval1 interval2 = result ∧
+-- return value satisfies spec
+spec result
+
+== #test lines ==
+#test implementation (1, 2) (2, 3) = "NO"
+#test implementation (-1, 1) (0, 4) = "NO"
+#test implementation (-3, -1) (-5, 5) = "YES"
+
+== ISOMORPHISM THEOREM (what stage B had to prove) ==
+theorem spec_isomorphism:
+∀ impl,
+(∀ interval1 interval2, problem_spec impl interval1 interval2) ↔
+(∀ interval1 interval2, generated_spec impl interval1 interval2) :=
+
+== AGENT generated_spec HEADER ==
+def generated_spec
+-- function signature
+(impl: Int × Int → Int × Int → String)
+-- inputs
+(interval1: Int × Int)
+(interval2: Int × Int) : Prop :=
+== AGENT generated_spec BODY ==
+(impl interval1 interval2 = "YES" ∨ impl interval1 interval2 = "NO") ∧
+(impl interval1 interval2 = "YES" ↔
+  (max interval1.1 interval2.1 ≤ min interval1.2 interval2.2 ∧
+   Nat.Prime (min interval1.2 interval2.2 - max interval1.1 interval2.1).toNat))
+
+== AGENT stage-B proof body ==
+-- UNFINISHED, and not finishable: `spec_isomorphism_is_false` above is a checked proof that
+-- this statement is false (the two specs disagree on intervals with start > end, where
+-- `problem_spec` is vacuous but `generated_spec` is not).  The `sorry` records that; it is
+-- not a proof.  The provable content is `generated_imp_problem` and `problem_imp_generated`.
+by sorry
+
+== AGENT iso helper lemmas ==
+/-
+FINDING: `spec_isomorphism` as stated is FALSE, and `spec_isomorphism_is_false` below is a
+machine-checked refutation of it.  The two specs differ on ill-formed inputs:
+
+* `problem_spec` guards its whole body with `s1 ≤ e1 → s2 ≤ e2 →`, so for an interval with
+  `start > end` it is satisfied by *every* `impl` (the `∃ result` part is discharged by
+  `rfl`, and `spec result` is vacuously true).
+* `generated_spec` has no such guard, so it still constrains `impl` there — in particular it
+  forces `impl interval1 interval2 ∈ {"YES", "NO"}`.
+
+Hence an `impl` that is correct on well-formed intervals but returns "MAYBE" on ill-formed
+ones satisfies `problem_spec` everywhere and `generated_spec` nowhere near `((1,0), (0,1))`.
+
+What *is* true is recorded by the two lemmas below: the `←` direction holds unconditionally,
+and the `→` direction holds exactly under the well-formedness hypotheses that `problem_spec`
+itself assumes.
+-/
+
+/-- The `←` direction of the isomorphism, pointwise and unconditional. -/
+theorem generated_imp_problem (impl : Int × Int → Int × Int → String)
+    (i1 i2 : Int × Int) (h : generated_spec impl i1 i2) : problem_spec impl i1 i2 := by
+  obtain ⟨hor, hiff⟩ := h
+  refine ⟨impl i1 i2, rfl, ?_⟩
+  obtain ⟨s1, e1⟩ := i1
+  obtain ⟨s2, e2⟩ := i2
+  intro _ _
+  refine ⟨hiff, ⟨?_, ?_⟩, hor⟩
+  · intro hno
+    by_contra hcon
+    rw [not_or, not_not, not_not] at hcon
+    rw [hiff.mpr hcon] at hno
+    exact absurd hno (by decide)
+  · intro hd
+    rcases hor with hy | hn
+    · exfalso
+      have hc := hiff.mp hy
+      rcases hd with hd | hd
+      · exact hd hc.1
+      · exact hd hc.2
+    · exact hn
+
+/-- The `→` direction of the isomorphism, pointwise, under the well-formedness hypotheses
+    that `problem_spec` assumes.  Without them it is false (see `spec_isomorphism_is_false`). -/
+theorem problem_imp_generated (impl : Int × Int → Int × Int → String)
+    (i1 i2 : Int × Int) (h1 : i1.1 ≤ i1.2) (h2 : i2.1 ≤ i2.2)
+    (h : problem_spec impl i1 i2) : generated_spec impl i1 i2 := by
+  obtain ⟨r, hr, hs⟩ := h
+  subst hr
+  obtain ⟨s1, e1⟩ := i1
+  obtain ⟨s2, e2⟩ := i2
+  obtain ⟨hy, _, hor⟩ := hs h1 h2
+  exact ⟨hor, hy⟩
+
+/-- A witness separating the two specs: correct on well-formed intervals, "MAYBE" elsewhere. -/
+def maybe_impl : Int × Int → Int × Int → String := fun i1 i2 =>
+  if (i1.1 ≤ i1.2 ∧ i2.1 ≤ i2.2) then
+    (if (max i1.1 i2.1 ≤ min i1.2 i2.2 ∧ Nat.Prime (min i1.2 i2.2 - max i1.1 i2.1).toNat)
+      then "YES" else "NO")
+  else "MAYBE"
+
+theorem maybe_impl_sat_problem_spec :
+    ∀ i1 i2, problem_spec maybe_impl i1 i2 := by
+  intro i1 i2
+  refine ⟨maybe_impl i1 i2, rfl, ?_⟩
+  obtain ⟨s1, e1⟩ := i1
+  obtain ⟨s2, e2⟩ := i2
+  intro h1 h2
+  have hb : maybe_impl (s1, e1) (s2, e2)
+      = if (max s1 s2 ≤ min e1 e2 ∧ Nat.Prime (min e1 e2 - max s1 s2).toNat)
+        then "YES" else "NO" := by
+    simp only [maybe_impl, if_pos (And.intro h1 h2)]
+  by_cases hc : (max s1 s2 ≤ min e1 e2 ∧ Nat.Prime (min e1 e2 - max s1 s2).toNat)
+  · rw [hb, if_pos hc]
+    refine ⟨⟨fun _ => hc, fun _ => rfl⟩, ⟨fun hh => absurd hh (by decide), ?_⟩, Or.inl rfl⟩
+    intro hh
+    rcases hh with hh | hh
+    · exact absurd hc.1 hh
+    · exact absurd hc.2 hh
+  · rw [hb, if_neg hc]
+    refine ⟨⟨fun hh => absurd hh (by decide), fun hh => absurd hh hc⟩,
+      ⟨fun _ => (not_and_or.mp hc), fun _ => rfl⟩, Or.inr rfl⟩
+
+/-- `maybe_impl` violates `generated_spec` at the ill-formed input `((1, 0), (0, 1))`. -/
+theorem maybe_impl_not_sat_generated_spec :
+    ¬ generated_spec maybe_impl ((1 : Int), (0 : Int)) ((0 : Int), (1 : Int)) := by
+  intro hg
+  have hm : maybe_impl ((1 : Int), (0 : Int)) ((0 : Int), (1 : Int)) = "MAYBE" := by
+    simp [maybe_impl]
+  rcases hg.1 with hy | hy <;> rw [hm] at hy <;> exact absurd hy (by decide)
+
+/-- The theorem `spec_isomorphism` below is not provable: here is a refutation of it. -/
+theorem spec_isomorphism_is_false :
+    ¬ (∀ impl,
+        (∀ interval1 interval2, problem_spec impl interval1 interval2) ↔
+        (∀ interval1 interval2, generated_spec impl interval1 interval2)) := by
+  intro h
+  exact maybe_impl_not_sat_generated_spec
+    ((h maybe_impl).mp maybe_impl_sat_problem_spec _ _)

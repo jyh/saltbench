@@ -1,0 +1,10 @@
+{
+"problem_0":   {"label":"HUMAN-LOOSE","why":"problem_spec guards its whole conclusion with numbers.length > 1, so it is vacuous on lists of length <= 1; every agent spec is total and therefore strictly stronger."},
+"problem_4":   {"label":"HUMAN-LOOSE","why":"problem_spec guards its conclusion with 0 < numbers.length, so it is vacuous on []; both agent specs are total."},
+"problem_18":  {"label":"AGENT-WRONG","why":"every agent spec scans List.range (|s| - |t| + 1), forcing impl s \"\" = |s| + 1, while the frozen #test line demands implementation \"a\" \"\" = 1 = |s|. Mechanical contradiction with a #test line."},
+"problem_73":  {"label":"PROOF-HARD","why":"the agent spec (count of mismatched mirror pairs) is the correct minimum; no witness of non-isomorphism was found or is expected. Both cells ROUNDS_EXHAUSTED with bare sorry."},
+"problem_96":  {"label":"HUMAN-LOOSE","why":"problem_spec constrains membership only, never order or multiplicity; every agent spec pins the exact list or Pairwise (<), hence is strictly stronger."},
+"problem_112": {"label":"PROOF-HARD","why":"problem_spec is a recursive characterisation; no witness of non-isomorphism exists -- a sibling cell PROVED the isomorphism completely (amendment 9). The three remaining cells all ROUNDS_EXHAUSTED with bare sorry."},
+"problem_127": {"label":"HUMAN-LOOSE","why":"problem_spec guards its body with s1 <= e1 -> s2 <= e2 ->, so it is vacuous on ill-formed intervals; every agent spec is total."},
+"problem_141": {"label":"PROOF-HARD","why":"the specs agree; the obligation is a String.splitOn/splitOnAux equivalence. Two cells wrote 7,033 and 8,086 chars of String-library lemmas and still ran out of rounds. No witness of non-isomorphism."}
+}

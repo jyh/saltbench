@@ -1,0 +1,3 @@
+String.drop : String → ℕ → String.Slice
+String.take : String → ℕ → String.Slice
+RC=0

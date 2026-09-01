@@ -1,0 +1,122 @@
+TOKEN: T03af5cc6
+PROBLEM: problem_0
+
+== NL (docstring + examples) ==
+function_signature: "def has_close_elements(numbers: List[float], threshold: float) -> bool"
+docstring: Check if in given list of numbers, are any two numbers closer to each other than given threshold.
+test_cases:
+  - input: [[1.0, 2.0, 3.0], 0.5]
+    expected_output: False
+  - input: [[1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3]
+    expected_output: True
+
+== HUMAN problem_spec (the oracle) ==
+def problem_spec
+-- function signature
+(impl: List Rat → Rat → Bool)
+-- inputs
+(numbers: List Rat)
+(threshold: Rat) :=
+-- spec
+let numbers_within_threshold :=
+(∃ i j, i < numbers.length ∧ j < numbers.length ∧
+i ≠ j ∧ |numbers[i]! - numbers[j]!| < threshold);
+let spec (res: Bool) :=
+numbers.length > 1 →
+if res then numbers_within_threshold else ¬numbers_within_threshold;
+-- program terminates
+∃ result, impl numbers threshold = result ∧
+-- return value satisfies spec
+spec result
+-- if result then spec else ¬spec
+
+== #test lines ==
+#test implementation ([1, 2, 3]: List Rat) 0.5 = false
+#test implementation ([1, 2.8, 3, 4, 5, 2]: List Rat) 0.3 = true
+
+== ISOMORPHISM THEOREM (what stage B had to prove) ==
+theorem spec_isomorphism:
+∀ impl,
+(∀ numbers threshold, problem_spec impl numbers threshold) ↔
+(∀ numbers threshold, generated_spec impl numbers threshold) :=
+
+== AGENT generated_spec HEADER ==
+def generated_spec
+-- function signature
+(impl: List Rat → Rat → Bool)
+-- inputs
+(numbers: List Rat)
+(threshold: Rat) : Prop :=
+== AGENT generated_spec BODY ==
+impl numbers threshold = true ↔
+  ∃ i j : Fin numbers.length, i ≠ j ∧ |numbers.get i - numbers.get j| < threshold
+
+== AGENT stage-B proof body ==
+by
+  intro impl
+  constructor
+  · -- Not provable: see `forward_direction_false` above.
+    sorry
+  · intro h numbers threshold
+    refine ⟨impl numbers threshold, rfl, ?_⟩
+    intro _
+    have hg := (h numbers threshold)
+    rw [generated_spec, index_forms_iff] at hg
+    cases hb : impl numbers threshold
+    · simp only [Bool.false_eq_true, if_false]
+      intro hp
+      exact absurd (hg.mpr hp) (by rw [hb]; simp)
+    · simpa using hg.mp hb
+
+== AGENT iso helper lemmas ==
+/-- Bridge between the two ways of indexing used by the two specs:
+`Fin`-indexed `List.get` (generated_spec) and `Nat`-indexed `getElem!` (problem_spec). -/
+theorem index_forms_iff (numbers : List Rat) (threshold : Rat) :
+    (∃ i j : Fin numbers.length, i ≠ j ∧ |numbers.get i - numbers.get j| < threshold) ↔
+    (∃ i j, i < numbers.length ∧ j < numbers.length ∧
+      i ≠ j ∧ |numbers[i]! - numbers[j]!| < threshold) := by
+  constructor
+  · rintro ⟨i, j, hij, h⟩
+    refine ⟨i.val, j.val, i.isLt, j.isLt, fun he => hij (Fin.ext he), ?_⟩
+    rwa [getElem!_pos numbers i.val i.isLt, getElem!_pos numbers j.val j.isLt,
+      ← List.get_eq_getElem, ← List.get_eq_getElem]
+  · rintro ⟨i, j, hi, hj, hij, h⟩
+    refine ⟨⟨i, hi⟩, ⟨j, hj⟩, fun he => hij (Fin.mk.inj_iff.mp he), ?_⟩
+    rwa [List.get_eq_getElem, List.get_eq_getElem, ← getElem!_pos numbers i hi,
+      ← getElem!_pos numbers j hj]
+
+/-!
+The forward implication of `spec_isomorphism` is *not* provable: `problem_spec` says nothing
+at all about lists of length ≤ 1 (its conclusion is guarded by `numbers.length > 1`), whereas
+`generated_spec` forces `impl numbers threshold = false` there, because `∃ i j : Fin numbers.length,
+i ≠ j` is unsatisfiable when `numbers.length ≤ 1`.  The witness below makes this precise.
+-/
+
+open Classical in
+/-- An implementation that is correct on lists of length > 1 but answers `true` on short lists. -/
+noncomputable def bad_impl (l : List Rat) (t : Rat) : Bool :=
+  if l.length ≤ 1 then true
+  else if (∃ i j, i < l.length ∧ j < l.length ∧ i ≠ j ∧ |l[i]! - l[j]!| < t) then true else false
+
+theorem bad_impl_satisfies_problem_spec : ∀ numbers threshold, problem_spec bad_impl numbers threshold := by
+  intro n t
+  refine ⟨bad_impl n t, rfl, ?_⟩
+  intro hlen
+  have h1 : ¬ (n.length ≤ 1) := by omega
+  by_cases h : (∃ i j, i < n.length ∧ j < n.length ∧ i ≠ j ∧ |n[i]! - n[j]!| < t)
+  · have hb : bad_impl n t = true := by unfold bad_impl; rw [if_neg h1, if_pos h]
+    rw [hb]; simpa using h
+  · have hb : bad_impl n t = false := by unfold bad_impl; rw [if_neg h1, if_neg h]
+    rw [hb]; simpa using h
+
+theorem bad_impl_violates_generated_spec : ¬ (∀ numbers threshold, generated_spec bad_impl numbers threshold) := by
+  intro h
+  have hb : bad_impl [] 0 = true := by unfold bad_impl; simp
+  obtain ⟨i, _, _⟩ := (h [] 0).mp hb
+  exact i.elim0
+
+/-- Hence the left-to-right direction of `spec_isomorphism` is refutable. -/
+theorem forward_direction_false : ¬ (∀ impl,
+    (∀ numbers threshold, problem_spec impl numbers threshold) →
+    (∀ numbers threshold, generated_spec impl numbers threshold)) := fun h =>
+  bad_impl_violates_generated_spec (h bad_impl bad_impl_satisfies_problem_spec)

@@ -1,0 +1,189 @@
+TOKEN: Te1099580
+PROBLEM: problem_112
+
+== NL (docstring + examples) ==
+function_signature: "def reverse_delete(s : str, c : str) -> (str, bool)"
+docstring: |
+    We are given two strings s and c, you have to deleted all the characters in s that are equal to any character in c
+    then check if the result string is palindrome.
+    A string is called palindrome if it reads the same backward as forward.
+    You should return a tuple containing the result string and True/False for the check.
+    -- Note: We assume the deletions preserve the order of the remaining characters.
+test_cases:
+  - input: ["abcde", "ae"]
+    expected_output: ("bcd", False)
+  - input: ["abcdef", "b"]
+    expected_output: ("acdef", False)
+  - input: ["abcdedcba", "ab"]
+    expected_output: ('cdedc', True)
+
+== HUMAN problem_spec (the oracle) ==
+def problem_spec
+-- function signature
+(implementation: String → String → (String × Bool))
+-- inputs
+(s: String)
+(c: String) :=
+-- spec
+let spec (result : String × Bool) :=
+  let (result_str, result_bool) := result
+  result_bool = (List.Palindrome result_str.data) ∧
+  (c.data.length = 0 → result_str = s) ∧
+  (c.data.length > 0 →
+    result_str =
+    (implementation
+      (String.join ((s.data.filter (fun x => x ≠ c.data.head!)).map (fun c => String.mk [c])))
+      (c.drop 1).toString).fst)
+
+-- program termination
+∃ result,
+  implementation s c = result ∧
+  spec result
+
+== #test lines ==
+#test implementation "abcde" "ae" = ("bcd", False)
+#test implementation "abcdef" "b" = ("acdef", False)
+#test implementation "abcdedcba" "ab" = ("cdedc", True)
+
+== ISOMORPHISM THEOREM (what stage B had to prove) ==
+theorem spec_isomorphism:
+∀ impl,
+(∀ s c, problem_spec impl s c) ↔
+(∀ s c, generated_spec impl s c) :=
+
+== AGENT generated_spec HEADER ==
+def generated_spec
+-- function signature
+(impl: String → String → (String × Bool))
+-- inputs
+(s: String)
+(c: String) : Prop :=
+== AGENT generated_spec BODY ==
+-- The first component is `s` with every character occurring in `c` deleted,
+-- the remaining characters keeping their original order.
+((impl s c).1).toList = s.toList.filter (fun ch => !(c.toList.contains ch)) ∧
+-- The second component says whether that resulting string is a palindrome.
+((impl s c).2 = true ↔ ((impl s c).1).toList.reverse = ((impl s c).1).toList)
+
+== AGENT stage-B proof body ==
+by
+  intro impl
+  constructor
+  · -- problem_spec → generated_spec
+    intro hp
+    -- the first component is characterised by induction on the number of deleted characters
+    have key : ∀ (n : Nat) (c : String), c.toList.length ≤ n → ∀ s : String,
+        ((impl s c).1).toList = s.toList.filter (fun ch => !(c.toList.contains ch)) := by
+      intro n
+      induction n with
+      | zero =>
+        intro c hlen s
+        obtain ⟨⟨r1, r2⟩, hr, _, h2, _⟩ := hp s c
+        have hc0 : c.toList.length = 0 := Nat.le_zero.mp hlen
+        rw [hr]
+        simp only
+        rw [h2 hc0, List.eq_nil_of_length_eq_zero hc0]
+        simp
+      | succ n ih =>
+        intro c hlen s
+        obtain ⟨⟨r1, r2⟩, hr, _, h2, h3⟩ := hp s c
+        rw [hr]
+        simp only
+        by_cases hc0 : c.toList.length = 0
+        · rw [h2 hc0, List.eq_nil_of_length_eq_zero hc0]
+          simp
+        · have hpos : c.toList.length > 0 := Nat.pos_of_ne_zero hc0
+          obtain ⟨a, rest, hcl⟩ : ∃ a rest, c.toList = a :: rest := by
+            match hm : c.toList with
+            | [] => rw [hm] at hpos; simp at hpos
+            | x :: xs => exact ⟨x, xs, rfl⟩
+          have hlen' : ((c.drop 1).toString).toList.length ≤ n := by
+            rw [iso_toList_drop_one, hcl]
+            rw [hcl] at hlen
+            simp at hlen ⊢
+            omega
+          have hIH := ih ((c.drop 1).toString) hlen'
+            (String.join ((s.toList.filter (fun x => decide (x ≠ c.toList.head!))).map
+              (fun ch => String.mk [ch])))
+          rw [h3 hpos]
+          simp only [iso_data_eq_toList]
+          rw [hIH, iso_join_map_singleton, iso_toList_drop_one, hcl]
+          simp only [List.head!_cons, List.drop_succ_cons, List.drop_zero]
+          exact iso_filter_step a rest s.toList
+    intro s c
+    refine ⟨key c.toList.length c (le_refl _) s, ?_⟩
+    obtain ⟨⟨r1, r2⟩, hr, h1, _, _⟩ := hp s c
+    rw [hr]
+    simp only at h1 ⊢
+    exact (Iff.of_eq h1).trans List.Palindrome.iff_reverse_eq
+  · -- generated_spec → problem_spec
+    intro hg s c
+    obtain ⟨h1, h2⟩ := hg s c
+    refine ⟨impl s c, rfl, ?_, ?_, ?_⟩
+    · exact propext (h2.trans List.Palindrome.iff_reverse_eq.symm)
+    · intro hc
+      have hc' : c.toList = [] := List.eq_nil_of_length_eq_zero hc
+      apply String.ext
+      rw [h1, hc']
+      simp
+    · intro hc
+      have hc' : c.toList.length > 0 := hc
+      obtain ⟨a, rest, hcl⟩ : ∃ a rest, c.toList = a :: rest := by
+        match hm : c.toList with
+        | [] => rw [hm] at hc'; simp at hc'
+        | x :: xs => exact ⟨x, xs, rfl⟩
+      apply String.ext
+      simp only [iso_data_eq_toList]
+      rw [h1, (hg (String.join ((s.toList.filter (fun x => decide (x ≠ c.toList.head!))).map
+        (fun ch => String.mk [ch]))) ((c.drop 1).toString)).1,
+        iso_join_map_singleton, iso_toList_drop_one, hcl]
+      simp only [List.head!_cons, List.drop_succ_cons, List.drop_zero]
+      exact (iso_filter_step a rest s.toList).symm
+
+== AGENT iso helper lemmas ==
+set_option linter.deprecated false
+
+/-- `String.data` is the deprecated spelling of `String.toList`. -/
+theorem iso_data_eq_toList (s : String) : s.data = s.toList := rfl
+
+/-- The characters of a string obtained by joining single-character strings. -/
+theorem iso_join_map_singleton (l : List Char) :
+    (String.join (l.map (fun c => String.mk [c]))).toList = l := by
+  have hmk : ∀ c : Char, (String.mk [c]).toList = [c] := fun c => String.toList_ofList
+  simp only [String.toList_join, List.map_map, Function.comp_def, hmk]
+  induction l with
+  | nil => simp
+  | cons a t ih => simp [ih]
+
+/-- Dropping the first character of a string drops the first character of its list. -/
+theorem iso_toList_drop_one (s : String) :
+    ((s.drop 1).toString).toList = s.toList.drop 1 := by
+  by_cases hs : s = ""
+  · subst hs; rfl
+  · have h : s.startPos ≠ s.endPos := by
+      simpa [String.startPos_eq_endPos_iff] using hs
+    have hdrop : s.drop 1 = s.sliceFrom (s.startPos.next h) := by
+      simp [String.drop, String.Slice.drop, String.Slice.Pos.nextn, String.sliceFrom,
+        String.startPos_toSlice, String.Pos.toSlice_next, String.Pos.toSlice_inj, h]
+    have hempty : (s.sliceTo s.startPos).copy = "" := by
+      apply String.utf8ByteSize_eq_zero_iff.mp
+      simp [String.Slice.utf8ByteSize_copy, String.endExclusive_sliceTo,
+        String.startInclusive_sliceTo, String.offset_startPos]
+    have key := String.Pos.eq_copy_sliceTo_append_get h
+    rw [hempty] at key
+    have hlist := congrArg String.toList key
+    rw [String.toList_append, String.toList_append, String.toList_empty,
+      String.toList_singleton] at hlist
+    rw [hdrop]
+    show ((s.sliceFrom (s.startPos.next h)).copy).toList = s.toList.drop 1
+    rw [hlist]
+    simp
+
+/-- Deleting one character and then the rest is the same as deleting all of them at once. -/
+theorem iso_filter_step (a : Char) (rest l : List Char) :
+    (l.filter (fun x => decide (x ≠ a))).filter (fun ch => !(rest.contains ch))
+      = l.filter (fun ch => !((a :: rest).contains ch)) := by
+  rw [List.filter_filter]
+  apply List.filter_congr
+  intro x _
+  simp [Bool.and_comm]

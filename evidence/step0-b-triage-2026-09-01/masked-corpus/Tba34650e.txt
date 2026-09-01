@@ -1,0 +1,161 @@
+TOKEN: Tba34650e
+PROBLEM: problem_0
+
+== NL (docstring + examples) ==
+function_signature: "def has_close_elements(numbers: List[float], threshold: float) -> bool"
+docstring: Check if in given list of numbers, are any two numbers closer to each other than given threshold.
+test_cases:
+  - input: [[1.0, 2.0, 3.0], 0.5]
+    expected_output: False
+  - input: [[1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3]
+    expected_output: True
+
+== HUMAN problem_spec (the oracle) ==
+def problem_spec
+-- function signature
+(impl: List Rat → Rat → Bool)
+-- inputs
+(numbers: List Rat)
+(threshold: Rat) :=
+-- spec
+let numbers_within_threshold :=
+(∃ i j, i < numbers.length ∧ j < numbers.length ∧
+i ≠ j ∧ |numbers[i]! - numbers[j]!| < threshold);
+let spec (res: Bool) :=
+numbers.length > 1 →
+if res then numbers_within_threshold else ¬numbers_within_threshold;
+-- program terminates
+∃ result, impl numbers threshold = result ∧
+-- return value satisfies spec
+spec result
+-- if result then spec else ¬spec
+
+== #test lines ==
+#test implementation ([1, 2, 3]: List Rat) 0.5 = false
+#test implementation ([1, 2.8, 3, 4, 5, 2]: List Rat) 0.3 = true
+
+== ISOMORPHISM THEOREM (what stage B had to prove) ==
+theorem spec_isomorphism:
+∀ impl,
+(∀ numbers threshold, problem_spec impl numbers threshold) ↔
+(∀ numbers threshold, generated_spec impl numbers threshold) :=
+
+== AGENT generated_spec HEADER ==
+def generated_spec
+-- function signature
+(impl: List Rat → Rat → Bool)
+-- inputs
+(numbers: List Rat)
+(threshold: Rat) : Prop :=
+== AGENT generated_spec BODY ==
+impl numbers threshold = true ↔
+  ∃ i j : Fin numbers.length, i ≠ j ∧ |numbers.get i - numbers.get j| < threshold
+
+== AGENT stage-B proof body ==
+-- UNPROVABLE AS STATED: `spec_isomorphism_false` (helper section above) refutes
+-- exactly this proposition, so no proof can replace this `sorry`.
+by sorry
+
+-- Identity check: this elaborates only if the type refuted by
+-- `spec_isomorphism_false` is *definitionally the statement above*.
+#check (spec_isomorphism_false spec_isomorphism : False)
+
+== AGENT iso helper lemmas ==
+/-
+FINDING (recorded, not worked around): `spec_isomorphism` as stated is **false**.
+Everything below is a machine-checked account of that; `spec_isomorphism_false`
+at the end of this section refutes exactly the proposition the theorem asserts
+(see the `#check` in the proof section).
+
+Why: `problem_spec` constrains `impl` only under `numbers.length > 1`, while
+`generated_spec` constrains it for *every* list.  When `numbers.length ≤ 1`
+there is no pair of distinct elements of `Fin numbers.length`, so the right-hand
+side of `generated_spec` is `False` and `generated_spec` forces
+`impl numbers threshold = false`; `problem_spec` says nothing there.  Hence an
+`impl` that is correct on long lists but answers `true` on the empty list
+satisfies `∀ numbers threshold, problem_spec ..` yet fails `generated_spec []`.
+That is `iso_counterexample` below, so the `→` direction of the theorem fails.
+
+The `←` direction does hold, and pointwise at that:
+`generated_spec_imp_problem_spec`.
+-/
+
+/-- The `numbers[i]!` form used by `problem_spec` and the `Fin` form used by
+`generated_spec` describe the same pairs. -/
+theorem within_threshold_iff (numbers : List Rat) (threshold : Rat) :
+    (∃ i j, i < numbers.length ∧ j < numbers.length ∧ i ≠ j ∧
+        |numbers[i]! - numbers[j]!| < threshold)
+    ↔ (∃ i j : Fin numbers.length, i ≠ j ∧
+        |numbers.get i - numbers.get j| < threshold) := by
+  constructor
+  · rintro ⟨i, j, hi, hj, hij, h⟩
+    refine ⟨⟨i, hi⟩, ⟨j, hj⟩, ?_, ?_⟩
+    · simpa [Fin.ext_iff] using hij
+    · simpa [List.get_eq_getElem, getElem!_pos numbers i hi,
+        getElem!_pos numbers j hj] using h
+  · rintro ⟨i, j, hij, h⟩
+    refine ⟨i.val, j.val, i.isLt, j.isLt, ?_, ?_⟩
+    · simpa [Fin.ext_iff] using hij
+    · simpa [List.get_eq_getElem, getElem!_pos numbers i.val i.isLt,
+        getElem!_pos numbers j.val j.isLt] using h
+
+/-- The direction of the theorem that is true, and it needs no quantifier over
+all inputs: `generated_spec` at one input implies `problem_spec` at that input. -/
+theorem generated_spec_imp_problem_spec
+    (impl : List Rat → Rat → Bool) (numbers : List Rat) (threshold : Rat)
+    (h : generated_spec impl numbers threshold) :
+    problem_spec impl numbers threshold := by
+  refine ⟨impl numbers threshold, rfl, ?_⟩
+  intro _
+  by_cases hb : impl numbers threshold = true
+  · simp only [hb, if_true]
+    exact (within_threshold_iff numbers threshold).mpr (h.mp hb)
+  · rw [Bool.not_eq_true] at hb
+    simp only [hb]
+    intro hc
+    exact absurd (h.mpr ((within_threshold_iff numbers threshold).mp hc)) (by simp [hb])
+
+/-- An implementation that is correct on lists of length `> 1` but answers
+`true` on lists of length `≤ 1`. -/
+def iso_counterexample : List Rat → Rat → Bool := fun ns t =>
+  decide (ns.length ≤ 1) ||
+    decide (∃ i j : Fin ns.length, i ≠ j ∧ |ns.get i - ns.get j| < t)
+
+theorem iso_counterexample_problem_spec :
+    ∀ numbers threshold, problem_spec iso_counterexample numbers threshold := by
+  intro n t
+  refine ⟨iso_counterexample n t, rfl, ?_⟩
+  intro hlen
+  have h1 : decide (n.length ≤ 1) = false := by simp; omega
+  by_cases hP : (∃ i j : Fin n.length, i ≠ j ∧ |n.get i - n.get j| < t)
+  · have hb : iso_counterexample n t = true := by
+      simp only [iso_counterexample, h1, Bool.false_or, decide_eq_true_eq]; exact hP
+    simp only [hb, if_true]
+    exact (within_threshold_iff n t).mpr hP
+  · have hb : iso_counterexample n t = false := by
+      simp only [iso_counterexample, h1, Bool.false_or, decide_eq_false_iff_not]
+      exact hP
+    simp only [hb]
+    intro hc
+    exact hP ((within_threshold_iff n t).mp hc)
+
+/-- …but it does not satisfy `generated_spec` on the empty list. -/
+theorem iso_counterexample_not_generated_spec :
+    ¬ generated_spec iso_counterexample [] 0 := by
+  intro h
+  obtain ⟨i, _⟩ := h.mp (by simp [iso_counterexample])
+  exact absurd i.isLt (by simp)
+
+/-- So the `→` direction of `spec_isomorphism` already fails. -/
+theorem problem_spec_not_imp_generated_spec :
+    ¬ (∀ impl, (∀ numbers threshold, problem_spec impl numbers threshold) →
+        (∀ numbers threshold, generated_spec impl numbers threshold)) := fun H =>
+  iso_counterexample_not_generated_spec
+    (H iso_counterexample iso_counterexample_problem_spec [] 0)
+
+/-- Hence the theorem below is false. -/
+theorem spec_isomorphism_false :
+    ¬ (∀ impl,
+        (∀ numbers threshold, problem_spec impl numbers threshold) ↔
+        (∀ numbers threshold, generated_spec impl numbers threshold)) := fun H =>
+  problem_spec_not_imp_generated_spec fun impl hp => (H impl).mp hp

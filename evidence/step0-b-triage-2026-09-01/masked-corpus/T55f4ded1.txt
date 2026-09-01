@@ -1,0 +1,133 @@
+TOKEN: T55f4ded1
+PROBLEM: problem_96
+
+== NL (docstring + examples) ==
+function_signature: "def count_up_to(n : int) -> list[int]"
+docstring: |
+    Implement a function that takes an non-negative integer and returns an array of the first n
+    integers that are prime numbers and less than n.
+test_cases:
+  - input: 5
+    expected_output: [2,3]
+  - input: 11
+    expected_output: [2,3,5,7]
+  - input: 0
+    expected_output: []
+  - input: 20
+    expected_output: [2,3,5,7,11,13,17,19]
+  - input: 1
+    expected_output: []
+  - input: 18
+    expected_output: [2,3,5,7,11,13,17]
+
+== HUMAN problem_spec (the oracle) ==
+def problem_spec
+-- function signature
+(implementation: Nat → List Nat)
+-- inputs
+(n: Nat) :=
+-- spec
+let spec (result : List Nat) :=
+  match n with
+  | 0 => result = []
+  | n => n > 0 → (∀ i, i < result.length → (Nat.Prime (result[i]!)) ∧ (result[i]!) < n) ∧
+         (∀ i : Nat, i < n → Nat.Prime i → i ∈ result)
+-- program termination
+∃ result,
+  implementation n = result ∧
+  spec result
+
+== #test lines ==
+#test implementation 5 = [2,3]
+#test implementation 11 = [2,3,5,7]
+#test implementation 0 = []
+#test implementation 20 = [2,3,5,7,11,13,17,19]
+#test implementation 1 = []
+#test implementation 18 = [2,3,5,7,11,13,17]
+
+== ISOMORPHISM THEOREM (what stage B had to prove) ==
+theorem spec_isomorphism:
+∀ impl,
+(∀ n, problem_spec impl n) ↔
+(∀ n, generated_spec impl n) :=
+
+== AGENT generated_spec HEADER ==
+def generated_spec
+-- function signature
+(impl: Nat → List Nat)
+-- inputs
+(n: Nat) : Prop :=
+== AGENT generated_spec BODY ==
+-- the result contains exactly the prime numbers strictly less than n,
+-- listed in strictly increasing order (hence without duplicates)
+(∀ i : Nat, i ∈ impl n ↔ (Nat.Prime i ∧ i < n)) ∧
+List.Pairwise (· < ·) (impl n)
+
+== AGENT stage-B proof body ==
+by
+  intro impl
+  constructor
+  · intro h n
+    refine ⟨mem_impl_iff_of_problem_spec h n, ?_⟩
+    -- `List.Pairwise (· < ·) (impl n)` does NOT follow from `problem_spec`: the latter
+    -- constrains only *which* numbers occur in the output, never their order or
+    -- multiplicity.  See `disproof.lean` for a complete, `sorry`-free refutation of this
+    -- goal (witness: `fun n => primesBelow n ++ primesBelow n`, which satisfies
+    -- `problem_spec` at every `n` yet is not pairwise increasing at `n = 3`).
+    sorry
+  · intro h n
+    exact problem_spec_of_generated_spec h n
+
+== AGENT iso helper lemmas ==
+/-- Under `problem_spec` at every `n`, membership in `impl n` is exactly primality below `n`.
+    This is the half of `generated_spec` that `problem_spec` really does pin down. -/
+theorem mem_impl_iff_of_problem_spec {impl : Nat → List Nat}
+    (h : ∀ n, problem_spec impl n) (n i : Nat) :
+    i ∈ impl n ↔ (Nat.Prime i ∧ i < n) := by
+  obtain ⟨r, hr, hs⟩ := h n
+  subst hr
+  cases n with
+  | zero =>
+    have h0 : impl 0 = [] := hs
+    simp [h0]
+  | succ m =>
+    obtain ⟨hlt, hmem⟩ := hs (Nat.succ_pos m)
+    constructor
+    · intro hi
+      obtain ⟨j, hj, hji⟩ := List.mem_iff_getElem.mp hi
+      have hjj := hlt j hj
+      rw [getElem!_pos (impl (m + 1)) j hj, hji] at hjj
+      exact hjj
+    · rintro ⟨hp, hi⟩
+      exact hmem i hi hp
+
+/-- The direction that is true: `generated_spec` implies `problem_spec`. -/
+theorem problem_spec_of_generated_spec {impl : Nat → List Nat}
+    (h : ∀ n, generated_spec impl n) (n : Nat) : problem_spec impl n := by
+  refine ⟨impl n, rfl, ?_⟩
+  cases n with
+  | zero =>
+    show impl 0 = []
+    refine List.eq_nil_iff_forall_not_mem.mpr ?_
+    intro a ha
+    exact absurd (((h 0).1 a).mp ha).2 (Nat.not_lt_zero a)
+  | succ m =>
+    intro _
+    refine ⟨?_, ?_⟩
+    · intro i hi
+      rw [getElem!_pos (impl (m + 1)) i hi]
+      exact ((h (m + 1)).1 _).mp (List.getElem_mem hi)
+    · intro i hi hp
+      exact ((h (m + 1)).1 i).mpr ⟨hp, hi⟩
+
+/-- A short restatement of what was actually landed, derived rather than asserted: an
+    implementation satisfying `generated_spec` everywhere satisfies `problem_spec` everywhere,
+    and consequently returns `[]` on `0` and always lists `2` once `n` exceeds `2`. -/
+theorem generated_spec_sound {impl : Nat → List Nat} (h : ∀ n, generated_spec impl n) :
+    (∀ n, problem_spec impl n) ∧ impl 0 = [] ∧ (∀ n, 2 < n → 2 ∈ impl n) := by
+  refine ⟨problem_spec_of_generated_spec h, ?_, ?_⟩
+  · obtain ⟨r, hr, hs⟩ := problem_spec_of_generated_spec h 0
+    subst hr
+    exact hs
+  · intro n hn
+    exact ((h n).1 2).mpr ⟨Nat.prime_two, hn⟩

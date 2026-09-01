@@ -1,0 +1,151 @@
+TOKEN: Te356fe27
+PROBLEM: problem_96
+
+== NL (docstring + examples) ==
+function_signature: "def count_up_to(n : int) -> list[int]"
+docstring: |
+    Implement a function that takes an non-negative integer and returns an array of the first n
+    integers that are prime numbers and less than n.
+test_cases:
+  - input: 5
+    expected_output: [2,3]
+  - input: 11
+    expected_output: [2,3,5,7]
+  - input: 0
+    expected_output: []
+  - input: 20
+    expected_output: [2,3,5,7,11,13,17,19]
+  - input: 1
+    expected_output: []
+  - input: 18
+    expected_output: [2,3,5,7,11,13,17]
+
+== HUMAN problem_spec (the oracle) ==
+def problem_spec
+-- function signature
+(implementation: Nat → List Nat)
+-- inputs
+(n: Nat) :=
+-- spec
+let spec (result : List Nat) :=
+  match n with
+  | 0 => result = []
+  | n => n > 0 → (∀ i, i < result.length → (Nat.Prime (result[i]!)) ∧ (result[i]!) < n) ∧
+         (∀ i : Nat, i < n → Nat.Prime i → i ∈ result)
+-- program termination
+∃ result,
+  implementation n = result ∧
+  spec result
+
+== #test lines ==
+#test implementation 5 = [2,3]
+#test implementation 11 = [2,3,5,7]
+#test implementation 0 = []
+#test implementation 20 = [2,3,5,7,11,13,17,19]
+#test implementation 1 = []
+#test implementation 18 = [2,3,5,7,11,13,17]
+
+== ISOMORPHISM THEOREM (what stage B had to prove) ==
+theorem spec_isomorphism:
+∀ impl,
+(∀ n, problem_spec impl n) ↔
+(∀ n, generated_spec impl n) :=
+
+== AGENT generated_spec HEADER ==
+def generated_spec
+-- function signature
+(impl: Nat → List Nat)
+-- inputs
+(n: Nat) : Prop :=
+== AGENT generated_spec BODY ==
+(impl n).Pairwise (· < ·) ∧ ∀ x : Nat, x ∈ impl n ↔ (x < n ∧ Nat.Prime x)
+
+== AGENT stage-B proof body ==
+by
+  intro impl
+  constructor
+  · -- This direction is FALSE: see `spec_isomorphism_converse_false` above, which
+    -- proves `¬ (∀ impl, (∀ n, problem_spec impl n) → ∀ n, generated_spec impl n)`.
+    -- `problem_spec` constrains neither the ordering nor the multiplicity of the
+    -- entries, so it cannot imply `List.Pairwise (· < ·)`.  Unprovable.
+    sorry
+  · exact generated_implies_problem impl
+
+== AGENT iso helper lemmas ==
+/-
+NOTE ON THIS FILE: the theorem `spec_isomorphism` below is FALSE as stated, and the
+lemma `spec_isomorphism_converse_false` at the end of this section is a machine-checked
+refutation of it.
+
+`problem_spec` only requires that every entry of the result is a prime `< n` and that
+every prime `< n` occurs somewhere in the result.  It says nothing about the order of
+the entries and nothing about repetitions.  `generated_spec` additionally requires
+`List.Pairwise (· < ·)`, i.e. strictly increasing (hence duplicate-free).  So the
+implementation `bad_impl` below -- "the primes below `n`, listed twice" -- satisfies
+`problem_spec bad_impl n` for every `n`, while `generated_spec bad_impl 3` fails
+because `bad_impl 3 = [2, 2]` is not strictly increasing.
+
+The direction that *is* true (`generated_spec → problem_spec`) is proved in
+`generated_implies_problem` and is used in the proof below.
+-/
+
+/-- The direction of the isomorphism that actually holds. -/
+theorem generated_implies_problem (impl : Nat → List Nat)
+    (h : ∀ n, generated_spec impl n) : ∀ n, problem_spec impl n := by
+  intro n
+  refine ⟨impl n, rfl, ?_⟩
+  have hmem := (h n).2
+  cases n with
+  | zero =>
+    show impl 0 = []
+    rw [List.eq_nil_iff_forall_not_mem]
+    intro x hx
+    exact absurd ((hmem x).mp hx).1 (Nat.not_lt_zero x)
+  | succ k =>
+    intro _
+    refine ⟨?_, ?_⟩
+    · intro i hi
+      have : (impl (k + 1))[i]! ∈ impl (k + 1) := by
+        rw [getElem!_pos (impl (k + 1)) i hi]
+        exact List.getElem_mem hi
+      exact ⟨((hmem _).mp this).2, ((hmem _).mp this).1⟩
+    · intro i hi hp
+      exact (hmem i).mpr ⟨hi, hp⟩
+
+/-- The primes below `n`, listed twice: a witness that the converse direction fails. -/
+def bad_impl (n : Nat) : List Nat :=
+  ((List.range n).filter (fun x => decide (Nat.Prime x))) ++
+  ((List.range n).filter (fun x => decide (Nat.Prime x)))
+
+theorem bad_impl_mem (n x : Nat) : x ∈ bad_impl n ↔ (x < n ∧ Nat.Prime x) := by
+  simp [bad_impl, List.mem_append, List.mem_filter, List.mem_range]
+
+theorem bad_impl_problem_spec : ∀ n, problem_spec bad_impl n := by
+  intro n
+  refine ⟨bad_impl n, rfl, ?_⟩
+  cases n with
+  | zero => simp [bad_impl]
+  | succ k =>
+    intro _
+    refine ⟨?_, ?_⟩
+    · intro i hi
+      have hmem : (bad_impl (k + 1))[i]! ∈ bad_impl (k + 1) := by
+        rw [getElem!_pos (bad_impl (k + 1)) i hi]
+        exact List.getElem_mem hi
+      have := (bad_impl_mem (k + 1) _).mp hmem
+      exact ⟨this.2, this.1⟩
+    · intro i hi hp
+      exact (bad_impl_mem (k + 1) i).mpr ⟨hi, hp⟩
+
+theorem bad_impl_not_generated_spec : ¬ generated_spec bad_impl 3 := by
+  intro h
+  have h1 := h.1
+  have hb : bad_impl 3 = [2, 2] := by decide
+  rw [hb] at h1
+  simp at h1
+
+/-- `problem_spec → generated_spec` is refutable, hence `spec_isomorphism` is false. -/
+theorem spec_isomorphism_converse_false :
+    ¬ (∀ impl, (∀ n, problem_spec impl n) → (∀ n, generated_spec impl n)) := by
+  intro h
+  exact bad_impl_not_generated_spec (h bad_impl bad_impl_problem_spec 3)

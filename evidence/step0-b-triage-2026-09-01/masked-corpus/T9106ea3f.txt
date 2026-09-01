@@ -1,0 +1,178 @@
+TOKEN: T9106ea3f
+PROBLEM: problem_18
+
+== NL (docstring + examples) ==
+function_signature: "def how_many_times(string: str, substring: str) -> int"
+docstring: |
+  Find how many times a given substring can be found in the original string. Count overlaping cases.
+test_cases:
+  - input:
+      - ""
+      - "a"
+    expected_output: 0
+  - input:
+      - "aaa"
+      - "a"
+    expected_output: 3
+  - input:
+      - "aaaa"
+      - "aa"
+    expected_output: 3
+
+== HUMAN problem_spec (the oracle) ==
+def problem_spec
+-- function signature
+(implementation: String → String → Nat)
+-- inputs
+(string substring: String) :=
+-- spec
+let spec (result: Nat) :=
+(substring.length = 0 → result = string.length)
+∧
+(substring.length ≠ 0 →
+(string.length < substring.length → result = 0)
+∧
+(string.length = substring.length →
+((string = substring ↔ result = 1) ∧
+(substring ≠ string ↔ result = 0)))
+∧
+(substring.length < string.length  →
+let substring_start_idx := {i: Nat | i < string.length - substring.length + 1};
+let substring_occurrences := {i ∈ substring_start_idx | (string.drop i).take substring.length = substring };
+result = substring_occurrences.toFinset.card));
+-- program termination
+∃ result, implementation string substring = result ∧
+spec result
+
+== #test lines ==
+#test implementation "aaa" "a" = 3
+#test implementation "aaaa" "aa" = 3
+#test implementation "" "a" = 0
+#test implementation "a" "" = 1
+#test implementation "a" "a" = 1
+
+== ISOMORPHISM THEOREM (what stage B had to prove) ==
+theorem spec_isomorphism:
+∀ implementation,
+(∀ string substring, problem_spec implementation string substring) ↔
+(∀ string substring, generated_spec implementation string substring) :=
+
+== AGENT generated_spec HEADER ==
+def generated_spec
+-- function signature
+(implementation: String → String → Nat)
+-- inputs
+(string substring: String) : Prop :=
+== AGENT generated_spec BODY ==
+((List.range (string.toList.length - substring.toList.length + 1)).filter
+    (fun i => (string.toList.drop i).take substring.toList.length = substring.toList)).length
+  = implementation string substring
+
+== AGENT stage-B proof body ==
+-- UNPROVABLE AS STATED.  `spec_isomorphism_is_false` in the helper section above is a
+-- machine-checked proof of the negation of this very statement: `generated_spec` forces
+-- `implementation string "" = string.length + 1` while `problem_spec` forces
+-- `implementation string "" = string.length`, and both specs are separately satisfiable.
+-- Since the goal is refutable, no proof term can be put here; the `sorry` records that the
+-- obligation is unmet rather than discharged.
+by sorry
+
+== AGENT iso helper lemmas ==
+/-
+FINDING: the theorem `spec_isomorphism` below is FALSE as stated, and the lemmas in this
+section prove it (see `spec_isomorphism_is_false` at the end of the section).
+
+The two specifications disagree on the empty substring, and only there:
+
+* `generated_spec` scans the start indices `List.range (|string| - |substring| + 1)`.  For
+  `substring = ""` this is `List.range (|string| + 1)` and every index passes the test
+  `(string.toList.drop i).take 0 = []`, so it forces `implementation string "" = |string| + 1`.
+* `problem_spec` says outright `substring.length = 0 → result = string.length`, i.e. it forces
+  `implementation string "" = |string|`.
+
+`|string| + 1 ≠ |string|`, so no implementation can satisfy both (`specs_contradict_at_empty`).
+Both specs are individually satisfiable (`generated_spec_satisfiable`,
+`problem_spec_satisfiable`), so neither implication of the claimed iff holds: witnesses are
+given by `problem_not_implies_generated` and `generated_not_implies_problem`.
+-/
+
+/-- `generated_spec` forces the count `|string| + 1` on an empty substring. -/
+theorem generated_forces_length_succ (implementation : String → String → Nat) (string : String)
+    (h : generated_spec implementation string "") :
+    implementation string "" = string.length + 1 := by
+  unfold generated_spec at h
+  rw [← h]
+  simp
+
+/-- `problem_spec` forces the count `|string|` on an empty substring. -/
+theorem problem_forces_length (implementation : String → String → Nat) (string : String)
+    (h : problem_spec implementation string "") :
+    implementation string "" = string.length := by
+  obtain ⟨result, hres, hzero, -⟩ := h
+  rw [hres]
+  exact hzero rfl
+
+/-- The two specifications are jointly unsatisfiable on any empty substring. -/
+theorem specs_contradict_at_empty (implementation : String → String → Nat) (string : String)
+    (hg : generated_spec implementation string "")
+    (hp : problem_spec implementation string "") : False := by
+  have h1 := generated_forces_length_succ implementation string hg
+  have h2 := problem_forces_length implementation string hp
+  omega
+
+/-- `generated_spec` is satisfiable: it is satisfied by the count it defines. -/
+theorem generated_spec_satisfiable :
+    ∃ implementation, ∀ string substring, generated_spec implementation string substring :=
+  ⟨fun string substring =>
+    ((List.range (string.toList.length - substring.toList.length + 1)).filter
+      (fun i => (string.toList.drop i).take substring.toList.length = substring.toList)).length,
+   fun _ _ => rfl⟩
+
+/-- `problem_spec` is satisfiable too: every input pair admits a result meeting the spec. -/
+theorem problem_spec_satisfiable :
+    ∃ implementation, ∀ string substring, problem_spec implementation string substring := by
+  have H : ∀ s sub : String, ∃ r : Nat, problem_spec (fun _ _ => r) s sub := by
+    intro s sub
+    by_cases h0 : sub.length = 0
+    · exact ⟨s.length, _, rfl, fun _ => rfl, fun h => absurd h0 h⟩
+    · by_cases h1 : s.length < sub.length
+      · exact ⟨0, _, rfl, fun h => absurd h h0,
+          fun _ => ⟨fun _ => rfl, fun h => by omega, fun h => by omega⟩⟩
+      · by_cases h2 : s.length = sub.length
+        · refine ⟨if s = sub then 1 else 0, _, rfl, fun h => absurd h h0,
+            fun _ => ⟨fun h => by omega, fun _ => ?_, fun h => by omega⟩⟩
+          split_ifs with hs
+          · exact ⟨⟨fun _ => rfl, fun _ => hs⟩,
+              ⟨fun h => absurd hs.symm h, fun h => by simp at h⟩⟩
+          · exact ⟨⟨fun h => absurd h hs, fun h => by simp at h⟩,
+              ⟨fun _ => rfl, fun _ hc => hs hc.symm⟩⟩
+        · exact ⟨_, _, rfl, fun h => absurd h h0,
+            fun _ => ⟨fun h => by omega, fun h => absurd h h2, fun _ => rfl⟩⟩
+  choose f hf using H
+  exact ⟨f, hf⟩
+
+/-- The forward implication of `spec_isomorphism` fails. -/
+theorem problem_not_implies_generated :
+    ¬ (∀ implementation,
+        (∀ string substring, problem_spec implementation string substring) →
+        (∀ string substring, generated_spec implementation string substring)) := by
+  intro h
+  obtain ⟨impl, himpl⟩ := problem_spec_satisfiable
+  exact specs_contradict_at_empty impl "" (h impl himpl "" "") (himpl "" "")
+
+/-- The reverse implication of `spec_isomorphism` fails. -/
+theorem generated_not_implies_problem :
+    ¬ (∀ implementation,
+        (∀ string substring, generated_spec implementation string substring) →
+        (∀ string substring, problem_spec implementation string substring)) := by
+  intro h
+  obtain ⟨impl, himpl⟩ := generated_spec_satisfiable
+  exact specs_contradict_at_empty impl "" (himpl "" "") (h impl himpl "" "")
+
+/-- Hence the statement of `spec_isomorphism` is refutable: no proof of it exists. -/
+theorem spec_isomorphism_is_false :
+    ¬ (∀ implementation,
+        (∀ string substring, problem_spec implementation string substring) ↔
+        (∀ string substring, generated_spec implementation string substring)) := by
+  intro h
+  exact problem_not_implies_generated fun impl himpl => (h impl).mp himpl

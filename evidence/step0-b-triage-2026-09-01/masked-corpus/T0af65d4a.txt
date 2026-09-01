@@ -1,0 +1,226 @@
+TOKEN: T0af65d4a
+PROBLEM: problem_141
+
+== NL (docstring + examples) ==
+function_signature: "def file_name_check(file_name: str) -> str"
+docstring: |
+    Create a function which takes a string representing a file's name, and returns
+    'Yes' if the the file's name is valid, and returns 'No' otherwise.
+    A file's name is considered to be valid if and only if all the following conditions
+    are met:
+    - There should not be more than three digits ('0'-'9') in the file's name.
+    - The file's name contains exactly one dot '.'
+    - The substring before the dot should not be empty, and it starts with a letter from
+    the latin alphapet ('a'-'z' and 'A'-'Z').
+    - The substring after the dot should be one of these: ['txt', 'exe', 'dll']
+test_cases:
+  - input: "example.txt"
+    expected_output: "Yes"
+  - input: "1example.dll"
+    expected_output: "No"
+
+== HUMAN problem_spec (the oracle) ==
+def problem_spec
+-- function signature
+(impl: String → String)
+-- inputs
+(file_name : String) :=
+-- spec
+let spec (result: String) :=
+let valid := (file_name.toList.filter Char.isDigit).length ≤ 3 ∧
+  (file_name.toList.filter (· = '.')).length = 1 ∧
+  ∃ before after : String,
+    file_name = before ++ "." ++ after ∧
+    before != "" ∧
+    Char.isAlpha (before.get! 0) ∧
+    (after = "txt" ∨ after = "exe" ∨ after = "dll")
+(result = "Yes" ↔ valid) ∧
+(result = "No" ↔ ¬valid)
+
+-- program termination
+∃ result, impl file_name = result ∧
+-- return value satisfies spec
+spec result
+
+== #test lines ==
+#test implementation "example.txt" = "Yes"
+#test implementation "1example.dll" = "No"
+
+== ISOMORPHISM THEOREM (what stage B had to prove) ==
+theorem spec_isomorphism:
+∀ impl,
+(∀ file_name, problem_spec impl file_name) ↔
+(∀ file_name, generated_spec impl file_name) :=
+
+== AGENT generated_spec HEADER ==
+def generated_spec
+-- function signature
+(impl: String → String)
+-- inputs
+(file_name: String) : Prop :=
+== AGENT generated_spec BODY ==
+let digitCount := (file_name.toList.filter Char.isDigit).length
+  let parts := file_name.splitOn "."
+  let validName :=
+    digitCount ≤ 3 ∧
+    ∃ before after : String, parts = [before, after] ∧
+      before ≠ "" ∧ before.front?.map Char.isAlpha = some true ∧
+      (after = "txt" ∨ after = "exe" ∨ after = "dll")
+  (validName → impl file_name = "Yes") ∧ (¬ validName → impl file_name = "No")
+
+== AGENT stage-B proof body ==
+by sorry
+
+== AGENT iso helper lemmas ==
+theorem splitOnAux_eq_splitAux (c : Char) : ∀ (s : String) (b i : String.Pos.Raw) (acc : List String),
+    String.splitOnAux s (String.ofList [c]) b i 0 acc = String.splitAux s (· == c) b i acc
+  | s, b, i, acc => by
+    unfold String.splitOnAux String.splitAux
+    by_cases h : i.atEnd s
+    · simp [h]
+    · have hdec := Nat.sub_lt_sub_left (Nat.gt_of_not_le (mt decide_eq_true h)) (String.Pos.Raw.lt_next s i)
+      simp only [h]
+      have hget0 : String.Pos.Raw.get (String.ofList [c]) 0 = c := by
+        simpa using String.get_of_valid ([] : List Char) [c]
+      have hnext0 : String.Pos.Raw.next (String.ofList [c]) 0 = ⟨c.utf8Size⟩ := by
+        have := String.next_of_valid ([] : List Char) c []
+        simpa using this
+      have hend0 : String.rawEndPos (String.ofList [c]) = (⟨c.utf8Size⟩ : String.Pos.Raw) := by
+        simp
+      by_cases hc : String.Pos.Raw.get s i = c
+      · have hatend : String.Pos.Raw.atEnd (String.ofList [c]) (String.Pos.Raw.next (String.ofList [c]) 0) = true := by
+          simp [String.atEnd_iff, hnext0, hend0]
+        have hun : (String.Pos.Raw.next s i).unoffsetBy (String.Pos.Raw.next (String.ofList [c]) 0) = i := by
+          apply String.Pos.Raw.ext
+          simp only [String.Pos.Raw.byteIdx_unoffsetBy, String.Pos.Raw.next, hc, hget0]
+          simp only [String.Pos.Raw.byteIdx_add_char, String.Pos.Raw.byteIdx_zero]
+          omega
+        simp only [hget0, hc, hatend, if_true, hun, beq_self_eq_true]
+        exact splitOnAux_eq_splitAux c s (String.Pos.Raw.next s i) (String.Pos.Raw.next s i)
+          (String.Pos.Raw.extract s b i :: acc)
+      · have hne : (String.Pos.Raw.get s i == c) = false := by
+          simp [hc]
+        simp only [hget0, hne]
+        have hun0 : (i.unoffsetBy (0 : String.Pos.Raw)) = i := by
+          apply String.Pos.Raw.ext
+          simp [String.Pos.Raw.byteIdx_unoffsetBy]
+        rw [hun0]
+        exact splitOnAux_eq_splitAux c s b (String.Pos.Raw.next s i) acc
+termination_by s b i acc => s.rawEndPos.1 - i.1
+
+theorem splitOn_singleton (c : Char) (s : String) :
+    s.splitOn (String.ofList [c]) = String.splitToList s (· == c) := by
+  have hne : String.ofList [c] ≠ ("" : String) := by
+    intro h
+    have h2 := congrArg String.toList h
+    simp at h2
+  simp only [String.splitOn, String.splitToList, hne, beq_iff_eq, if_neg]
+  exact splitOnAux_eq_splitAux c s 0 0 []
+
+theorem front?_ofList_cons (hd : Char) (tl : List Char) : (String.ofList (hd :: tl)).front? = some hd := by
+  simp only [String.front?, String.Slice.front?]
+  set s : String := String.ofList (hd :: tl) with hs
+  have hbytes : s.toByteArray.utf8DecodeChar? 0 = some hd := by
+    rw [hs, String.toByteArray_ofList, List.utf8Encode_cons, List.utf8Encode_singleton]
+    exact ByteArray.utf8DecodeChar?_utf8EncodeChar_append
+  have hne : s.toSlice.startPos ≠ s.toSlice.endPos := by
+    rw [String.startPos_toSlice]
+    intro h
+    have h2 := congrArg String.Slice.Pos.offset h
+    simp only [String.Pos.offset_toSlice, String.offset_startPos] at h2
+    have h3 := congrArg String.Pos.Raw.byteIdx h2
+    simp [hs] at h3
+    have := hd.utf8Size_pos
+    omega
+  rw [String.Slice.Pos.get?, dif_neg hne, String.Slice.Pos.get_eq_utf8DecodeChar]
+  simp only [String.startInclusive_toSlice, String.offset_startPos, Nat.zero_add]
+  rw [ByteArray.utf8DecodeChar]
+  simp [hbytes]
+
+theorem front_alpha_iff (s : String) (hs : s ≠ "") :
+    s.front?.map Char.isAlpha = some true ↔ Char.isAlpha (s.get! (0 : String.Pos.Raw)) := by
+  obtain ⟨l, rfl⟩ := s.exists_eq_ofList
+  match l, hs with
+  | (hd :: tl), _ =>
+    have hget : (String.ofList (hd :: tl)).get! (0 : String.Pos.Raw) = hd := by
+      show String.Pos.Raw.get! (String.ofList (hd :: tl)) 0 = hd
+      rw [String.Pos.Raw.get!_eq_get]
+      simpa using String.get_of_valid ([] : List Char) (hd :: tl)
+    rw [front?_ofList_cons, hget]
+    simp
+
+theorem splitOnP_eq_singleton_iff {α : Type} (p : α → Bool) :
+    ∀ (l w : List α), l.splitOnP p = [w] ↔ (l = w ∧ ∀ y ∈ w, ¬ p y)
+  | [], w => by
+      rw [List.splitOnP_nil]
+      constructor
+      · intro h
+        have hw : ([] : List α) = w := (List.cons_eq_cons.mp h).1
+        exact ⟨hw, by rw [← hw]; simp⟩
+      · rintro ⟨hw, -⟩
+        rw [← hw]
+  | (x :: l'), w => by
+      rw [List.splitOnP_cons]
+      by_cases hpx : p x = true
+      · simp only [hpx, if_true]
+        constructor
+        · intro h
+          exact absurd (congrArg List.length h)
+            (by simpa using List.splitOnP_ne_nil p l')
+        · rintro ⟨h1, h2⟩
+          exact absurd (h2 x (h1 ▸ List.mem_cons_self)) (by simp [hpx])
+      · simp only [hpx, Bool.false_eq_true, if_false]
+        obtain ⟨w0, rest, hm⟩ := List.exists_cons_of_ne_nil (List.splitOnP_ne_nil p l')
+        rw [hm, List.modifyHead]
+        constructor
+        · intro h
+          have h1 : x :: w0 = w := (List.cons_eq_cons.mp h).1
+          have h2 : rest = [] := (List.cons_eq_cons.mp h).2
+          have hw0 : l'.splitOnP p = [w0] := by rw [hm, h2]
+          rw [splitOnP_eq_singleton_iff p l' w0] at hw0
+          refine ⟨by rw [← h1, ← hw0.1], ?_⟩
+          rintro y hy
+          rw [← h1] at hy
+          rcases List.mem_cons.mp hy with rfl | hy
+          · simpa using hpx
+          · exact hw0.2 y hy
+        · rintro ⟨rfl, h2⟩
+          have hw0 : l'.splitOnP p = [l'] :=
+            (splitOnP_eq_singleton_iff p l' l').mpr
+              ⟨rfl, fun y hy => h2 y (List.mem_cons_of_mem x hy)⟩
+          rw [hw0] at hm
+          have h2 : rest = [] := (List.cons_eq_cons.mp hm).2.symm
+          have h1 : w0 = l' := (List.cons_eq_cons.mp hm).1.symm
+          rw [h1, h2]
+
+theorem splitOnP_eq_two_imp {α : Type} (p : α → Bool) :
+    ∀ (l xs after : List α), l.splitOnP p = [xs, after] →
+      (∀ y ∈ xs, ¬ p y) ∧ ∃ sep, p sep = true ∧ l = xs ++ sep :: after ∧ ∀ y ∈ after, ¬ p y
+  | [], xs, after => by
+      intro h
+      rw [List.splitOnP_nil] at h
+      exact absurd (congrArg List.length h) (by simp)
+  | (x :: l'), xs, after => by
+      intro h
+      rw [List.splitOnP_cons] at h
+      by_cases hpx : p x = true
+      · simp only [hpx, if_true] at h
+        have h1 : ([] : List α) = xs := (List.cons_eq_cons.mp h).1
+        have h2 : l'.splitOnP p = [after] := (List.cons_eq_cons.mp h).2
+        rw [splitOnP_eq_singleton_iff p l' after] at h2
+        refine ⟨by rw [← h1]; simp, x, hpx, ?_, h2.2⟩
+        rw [← h1, List.nil_append, h2.1]
+      · simp only [hpx, Bool.false_eq_true, if_false] at h
+        obtain ⟨w0, rest, hm⟩ := List.exists_cons_of_ne_nil (List.splitOnP_ne_nil p l')
+        rw [hm, List.modifyHead] at h
+        have h1 : x :: w0 = xs := (List.cons_eq_cons.mp h).1
+        have h2 : rest = [after] := (List.cons_eq_cons.mp h).2
+        have hrec : l'.splitOnP p = [w0, after] := by rw [hm, h2]
+        obtain ⟨hw0, sep, hsep, hleq, hafter⟩ := splitOnP_eq_two_imp p l' w0 after hrec
+        refine ⟨?_, sep, hsep, ?_, hafter⟩
+        · rw [← h1]
+          rintro y hy
+          rcases List.mem_cons.mp hy with rfl | hy
+          · simpa using hpx
+          · exact hw0 y hy
+        · rw [← h1, hleq]

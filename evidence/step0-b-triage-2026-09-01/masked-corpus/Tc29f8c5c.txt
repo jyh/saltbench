@@ -1,0 +1,75 @@
+TOKEN: Tc29f8c5c
+PROBLEM: problem_18
+
+== NL (docstring + examples) ==
+function_signature: "def how_many_times(string: str, substring: str) -> int"
+docstring: |
+  Find how many times a given substring can be found in the original string. Count overlaping cases.
+test_cases:
+  - input:
+      - ""
+      - "a"
+    expected_output: 0
+  - input:
+      - "aaa"
+      - "a"
+    expected_output: 3
+  - input:
+      - "aaaa"
+      - "aa"
+    expected_output: 3
+
+== HUMAN problem_spec (the oracle) ==
+def problem_spec
+-- function signature
+(implementation: String → String → Nat)
+-- inputs
+(string substring: String) :=
+-- spec
+let spec (result: Nat) :=
+(substring.length = 0 → result = string.length)
+∧
+(substring.length ≠ 0 →
+(string.length < substring.length → result = 0)
+∧
+(string.length = substring.length →
+((string = substring ↔ result = 1) ∧
+(substring ≠ string ↔ result = 0)))
+∧
+(substring.length < string.length  →
+let substring_start_idx := {i: Nat | i < string.length - substring.length + 1};
+let substring_occurrences := {i ∈ substring_start_idx | (string.drop i).take substring.length = substring };
+result = substring_occurrences.toFinset.card));
+-- program termination
+∃ result, implementation string substring = result ∧
+spec result
+
+== #test lines ==
+#test implementation "aaa" "a" = 3
+#test implementation "aaaa" "aa" = 3
+#test implementation "" "a" = 0
+#test implementation "a" "" = 1
+#test implementation "a" "a" = 1
+
+== ISOMORPHISM THEOREM (what stage B had to prove) ==
+theorem spec_isomorphism:
+∀ implementation,
+(∀ string substring, problem_spec implementation string substring) ↔
+(∀ string substring, generated_spec implementation string substring) :=
+
+== AGENT generated_spec HEADER ==
+def generated_spec
+-- function signature
+(implementation: String → String → Nat)
+-- inputs
+(string substring: String) : Prop :=
+== AGENT generated_spec BODY ==
+implementation string substring =
+  ((List.range (string.length - substring.length + 1)).filter
+    (fun i => (string.drop i).take substring.length == substring)).length
+
+== AGENT stage-B proof body ==
+by sorry
+
+== AGENT iso helper lemmas ==
+
