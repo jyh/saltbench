@@ -1,0 +1,76 @@
+===== /tmp/ab_sweep.py (run on kriterion) =====
+import json,os,glob,re
+rows=[]
+for root,tag in (("/Users/jyh/bench/state","sonnet"),("/Users/jyh/bench-a8/state","opus")):
+    for ep in sorted(glob.glob(root+"/ep-*")):
+        cj=os.path.join(ep,"check.json")
+        if not os.path.exists(cj): continue
+        try: d=json.load(open(cj))
+        except Exception: continue
+        can=os.path.join(ep,"canonical.lean")
+        txt=open(can).read() if os.path.exists(can) else ""
+        mj=os.path.join(ep,"manifest.json")
+        m=json.load(open(mj)) if os.path.exists(mj) else {}
+        rows.append(dict(tag=tag,ep=os.path.basename(ep),pid=d.get("problem_id"),arm=m.get("arm"),stage=d.get("stage"),
+            cls=d.get("class"),replay=d.get("replay_ok"),
+            nd=txt.count("native_decide"),dec=len(re.findall(r"\\bdecide\\b",txt)),
+            sorry=txt.count("sorry"),err=(d.get("replay_error") or "")[:120]))
+json.dump(rows,open("/tmp/ab_rows.json","w"),indent=0)
+print("rows",len(rows))
+from collections import Counter
+print("by tag/stage/class",Counter((r["tag"],r["stage"],r["cls"]) for r in rows))
+print()
+print("EPISODES WITH native_decide ANYWHERE:")
+for r in rows:
+    if r["nd"]: print(" ",r["tag"],r["ep"],"p"+str(r["pid"]),r["arm"],r["stage"],r["cls"],"replay=",r["replay"],"nd=",r["nd"],r["err"])
+print()
+print("ALL replay_ok==False:")
+for r in rows:
+    if r["replay"] is False: print(" ",r["tag"],r["ep"],"p"+str(r["pid"]),r["arm"],r["stage"],r["cls"],"nd=",r["nd"],"|",r["err"])
+
+===== /tmp/ab_tab.py (run on kriterion) =====
+import json,os,glob
+from collections import Counter,defaultdict
+rows=[]
+for root,tag in (("/Users/jyh/bench/state","sonnet"),("/Users/jyh/bench-a8/state","opus")):
+    for ep in sorted(glob.glob(root+"/ep-*")):
+        cj=os.path.join(ep,"check.json"); mj=os.path.join(ep,"manifest.json")
+        if not os.path.exists(cj): continue
+        d=json.load(open(cj)); m=json.load(open(mj)) if os.path.exists(mj) else {}
+        if d.get("stage")!="B": continue
+        ax=d.get("axioms") or {}
+        allax=set()
+        for v in ax.values(): allax|=set(v)
+        rows.append((tag,m.get("arm"),d.get("problem_id"),d.get("class"),"sorryAx" in allax,d.get("replay_ok"),os.path.basename(ep),m.get("model")))
+tab=defaultdict(Counter)
+for tag,arm,pid,cls,sx,rp,ep,mo in rows: tab[(tag,arm)][cls]+=1
+for k in sorted(tab,key=str): print(k,dict(tab[k]))
+print()
+print("NON-PASS stage-B episodes, with the sorryAx flag (the admitted-the-gap family):")
+fam=defaultdict(Counter)
+for tag,arm,pid,cls,sx,rp,ep,mo in rows:
+    if cls!="PASS": fam[(tag,arm)][(cls,sx)]+=1
+for k in sorted(fam,key=str): print(" ",k,dict(fam[k]))
+
+===== /tmp/ab_surface.py (run on kriterion) =====
+import json,os,glob
+from collections import defaultdict
+import statistics as st
+per=defaultdict(list)
+lines=defaultdict(list)
+for root,tag in (("/Users/jyh/bench/state","sonnet"),("/Users/jyh/bench-a8/state","opus")):
+    for ep in sorted(glob.glob(root+"/ep-*")):
+        cj=os.path.join(ep,"check.json"); aj=os.path.join(ep,"audit.json"); mj=os.path.join(ep,"manifest.json")
+        if not (os.path.exists(cj) and os.path.exists(aj)): continue
+        d=json.load(open(cj))
+        if d.get("stage")!="B": continue
+        a=json.load(open(aj)); m=json.load(open(mj)) if os.path.exists(mj) else {}
+        arm=m.get("arm")
+        per[(tag,arm)].append(a.get("n_constants") or 0)
+        can=os.path.join(ep,"canonical.lean")
+        if os.path.exists(can): lines[(tag,arm)].append(len(open(can).read().splitlines()))
+print("stage-B module size (n_constants in the compiled olean) and canonical.lean lines")
+for k in sorted(per,key=str):
+    v=sorted(per[k]); l=sorted(lines[k])
+    print(" ",k,"n=",len(v),"constants med=",st.median(v),"max=",max(v),"| lines med=",st.median(l),"max=",max(l))
+

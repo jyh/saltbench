@@ -1,0 +1,35 @@
+=== 18/a0 ep-d13d4e84 (Opus, amendment 8) — check.json, the gate-relevant fields ===
+  stage                    "B"
+  problem_id               18
+  class                    "KERNEL_REJECTED"
+  passed                   false
+  rc                       0
+  compiled                 true
+  replay_ok                false
+  replay_error             "(kernel) (interpreter) unknown declaration 'spec_isomorphism_is_false'._nativeDecide_1_3'"
+  statements_identical     true
+  axioms_ok                false
+  a_body_value_identical   true
+  sorry_lines              ["/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-9vasecuj/canonical.lean:118:8: warning: declaration uses 'sorry'"]
+  screen                   []
+  axioms                   {"generated_spec": ["propext", "Classical.choice", "Quot.sound"], "problem_spec": ["propext", "Classical.choice", "Quot.sound"], "spec_isomorphism": ["propext", "sorryAx", "Classical.choice", "Quot.sound"]}
+
+=== audit.json — the module constants the replay walked (n=15) ===
+    iso_counterexample_impl
+    spec_isomorphism_is_false'
+    iso_counterexample_impl_generated
+    spec_isomorphism_is_false'._simp_1_1
+    generated_spec
+    spec_isomorphism
+    problem_spec._proof_2
+    problem_spec._proof_1
+    spec_isomorphism_is_false'._proof_1_3
+    problem_spec
+    spec_isomorphism_is_false'._simp_1_2
+    spec_isomorphism_is_false'._nativeDecide_1_3
+    spec_isomorphism_is_false._proof_1_1
+    spec_isomorphism_is_false._nativeDecide_1_1
+    spec_isomorphism_is_false
+
+  replay_ok    False
+  replay_error (kernel) (interpreter) unknown declaration 'spec_isomorphism_is_false'._nativeDecide_1_3'

@@ -1,0 +1,186 @@
+=== OPUS 18/a0 ep-d13d4e84 canonical.lean (122 lines) — the agent proved the statement FALSE with native_decide ===
+     1	import Imports.AllImports
+     2	
+     3	/--
+     4	function_signature: "def how_many_times(string: str, substring: str) -> int"
+     5	docstring: |
+     6	  Find how many times a given substring can be found in the original string. Count overlaping cases.
+     7	test_cases:
+     8	  - input:
+     9	      - ""
+    10	      - "a"
+    11	    expected_output: 0
+    12	  - input:
+    13	      - "aaa"
+    14	      - "a"
+    15	    expected_output: 3
+    16	  - input:
+    17	      - "aaaa"
+    18	      - "aa"
+    19	    expected_output: 3
+    20	-/
+    21	
+    22	def generated_spec
+    23	-- function signature
+    24	(implementation: String → String → Nat)
+    25	-- inputs
+    26	(string substring: String) : Prop :=
+    27	implementation string substring =
+    28	  (List.range (string.length - substring.length + 1)).countP
+    29	    (fun i => ((string.drop i).take substring.length) == substring)
+    30	
+    31	def problem_spec
+    32	-- function signature
+    33	(implementation: String → String → Nat)
+    34	-- inputs
+    35	(string substring: String) :=
+    36	-- spec
+    37	let spec (result: Nat) :=
+    38	(substring.length = 0 → result = string.length)
+    39	∧
+    40	(substring.length ≠ 0 →
+    41	(string.length < substring.length → result = 0)
+    42	∧
+    43	(string.length = substring.length →
+    44	((string = substring ↔ result = 1) ∧
+    45	(substring ≠ string ↔ result = 0)))
+    46	∧
+    47	(substring.length < string.length  →
+    48	let substring_start_idx := {i: Nat | i < string.length - substring.length + 1};
+    49	let substring_occurrences := {i ∈ substring_start_idx | (string.drop i).take substring.length = substring };
+    50	result = substring_occurrences.toFinset.card));
+    51	-- program termination
+    52	∃ result, implementation string substring = result ∧
+    53	spec result
+    54	
+    55	-- NOTE: `spec_isomorphism` as stated is FALSE, so the `sorry` below cannot be
+    56	-- discharged.  Two independent counterexamples are proved here; each one refutes
+    57	-- the exact statement of `spec_isomorphism` (see `spec_isomorphism_is_false` and
+    58	-- `spec_isomorphism_is_false'`), using the implementation `iso_counterexample_impl`
+    59	-- that satisfies `generated_spec` by `rfl`.
+    60	--
+    61	-- (1) Empty substring.  `problem_spec` demands `result = string.length`, but
+    62	--     `generated_spec` counts `string.length + 1` positions (`List.range (n+1)`,
+    63	--     every window `(s.drop i).take 0` being `""`).  Off by one.
+    64	-- (2) In `problem_spec` the occurrence condition
+    65	--     `(string.drop i).take substring.length = substring` is an equality of
+    66	--     `String.Slice` (in Lean v4.27 `String.take/drop : String → Nat → String.Slice`,
+    67	--     and `substring` is coerced with `String.toSlice`).  That `Eq` is *structural*:
+    68	--     it forces the base strings to be equal (`Slice.str`), so whenever
+    69	--     `substring.length < string.length` the occurrence set is empty and
+    70	--     `problem_spec` forces `result = 0`.  `generated_spec` uses `==`, i.e. content
+    71	--     equality (`String.Slice.beq`), so it counts real occurrences — e.g. 3 for
+    72	--     the docstring's own example ("aaaa", "aa").
+    73	
+    74	def iso_counterexample_impl : String → String → Nat := fun s t =>
+    75	  (List.range (s.length - t.length + 1)).countP
+    76	    (fun i => ((s.drop i).take t.length) == t)
+    77	
+    78	theorem iso_counterexample_impl_generated :
+    79	    ∀ string substring, generated_spec iso_counterexample_impl string substring :=
+    80	  fun _ _ => rfl
+    81	
+    82	-- (1) the empty-substring off-by-one
+    83	theorem spec_isomorphism_is_false :
+    84	    ¬ (∀ implementation,
+    85	        (∀ string substring, problem_spec implementation string substring) ↔
+    86	        (∀ string substring, generated_spec implementation string substring)) := by
+    87	  intro H
+    88	  obtain ⟨r, hr, hspec⟩ := (H iso_counterexample_impl).mpr
+    89	    iso_counterexample_impl_generated "" ""
+    90	  have h0 : r = 0 := hspec.1 rfl
+    91	  have h1 : iso_counterexample_impl "" "" = 1 := by native_decide
+    92	  rw [h1, h0] at hr
+    93	  exact absurd hr (by decide)
+    94	
+    95	-- (2) structural `String.Slice` equality: ("aaaa", "aa") ↦ 0 vs 3
+    96	theorem spec_isomorphism_is_false' :
+    97	    ¬ (∀ implementation,
+    98	        (∀ string substring, problem_spec implementation string substring) ↔
+    99	        (∀ string substring, generated_spec implementation string substring)) := by
+   100	  intro H
+   101	  obtain ⟨r, hr, hspec⟩ := (H iso_counterexample_impl).mpr
+   102	    iso_counterexample_impl_generated "aaaa" "aa"
+   103	  have hset : {i ∈ {i : Nat | i < ("aaaa":String).length - ("aa":String).length + 1} |
+   104	      (("aaaa":String).drop i).take ("aa":String).length = ("aa":String)} = ∅ := by
+   105	    ext i
+   106	    simp only [Set.mem_setOf_eq, Set.mem_empty_iff_false, iff_false, not_and]
+   107	    intro _ h
+   108	    have h2 : ("aaaa" : String) = "aa" := congrArg String.Slice.str h
+   109	    exact absurd h2 (by decide)
+   110	  have hr0 : r = 0 := by
+   111	    have h := (hspec.2 (by decide)).2.2 (by decide)
+   112	    simp only [hset] at h
+   113	    simpa using h
+   114	  have h3 : iso_counterexample_impl "aaaa" "aa" = 3 := by native_decide
+   115	  rw [h3, hr0] at hr
+   116	  exact absurd hr (by decide)
+   117	
+   118	theorem spec_isomorphism:
+   119	∀ implementation,
+   120	(∀ string substring, problem_spec implementation string substring) ↔
+   121	(∀ string substring, generated_spec implementation string substring) :=
+   122	by sorry
+
+=== SONNET 18/a0 ep-b8e69623 canonical.lean (61 lines) — the same problem, the same arm, a plain sorry ===
+     1	import Imports.AllImports
+     2	
+     3	/--
+     4	function_signature: "def how_many_times(string: str, substring: str) -> int"
+     5	docstring: |
+     6	  Find how many times a given substring can be found in the original string. Count overlaping cases.
+     7	test_cases:
+     8	  - input:
+     9	      - ""
+    10	      - "a"
+    11	    expected_output: 0
+    12	  - input:
+    13	      - "aaa"
+    14	      - "a"
+    15	    expected_output: 3
+    16	  - input:
+    17	      - "aaaa"
+    18	      - "aa"
+    19	    expected_output: 3
+    20	-/
+    21	
+    22	def generated_spec
+    23	-- function signature
+    24	(implementation: String → String → Nat)
+    25	-- inputs
+    26	(string substring: String) : Prop :=
+    27	implementation string substring =
+    28	  ((List.range (string.length - substring.length + 1)).filter
+    29	    (fun i => (string.drop i).take substring.length == substring)).length
+    30	
+    31	def problem_spec
+    32	-- function signature
+    33	(implementation: String → String → Nat)
+    34	-- inputs
+    35	(string substring: String) :=
+    36	-- spec
+    37	let spec (result: Nat) :=
+    38	(substring.length = 0 → result = string.length)
+    39	∧
+    40	(substring.length ≠ 0 →
+    41	(string.length < substring.length → result = 0)
+    42	∧
+    43	(string.length = substring.length →
+    44	((string = substring ↔ result = 1) ∧
+    45	(substring ≠ string ↔ result = 0)))
+    46	∧
+    47	(substring.length < string.length  →
+    48	let substring_start_idx := {i: Nat | i < string.length - substring.length + 1};
+    49	let substring_occurrences := {i ∈ substring_start_idx | (string.drop i).take substring.length = substring };
+    50	result = substring_occurrences.toFinset.card));
+    51	-- program termination
+    52	∃ result, implementation string substring = result ∧
+    53	spec result
+    54	
+    55	
+    56	
+    57	theorem spec_isomorphism:
+    58	∀ implementation,
+    59	(∀ string substring, problem_spec implementation string substring) ↔
+    60	(∀ string substring, generated_spec implementation string substring) :=
+    61	by sorry

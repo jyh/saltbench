@@ -1,0 +1,31 @@
+=== SWEEP: every scored episode in BOTH state roots (~/bench = Sonnet, ~/bench-a8 = Opus) ===
+rows 201
+by tag/stage/class Counter({('sonnet', 'A', 'PASS'): 67, ('sonnet', 'B', 'AXIOMS_FAIL'): 30, ('opus', 'A', 'PASS'): 30, ('sonnet', 'B', 'PASS'): 24, ('opus', 'B', 'PASS'): 20, ('sonnet', 'A', 'AXIOMS_FAIL'): 17, ('opus', 'B', 'AXIOMS_FAIL'): 8, ('sonnet', 'B', 'COMPILE'): 3, ('opus', 'B', 'SCREEN'): 1, ('opus', 'B', 'KERNEL_REJECTED'): 1})
+
+EPISODES WITH native_decide ANYWHERE:
+  opus ep-d13d4e84 p18 a0 B KERNEL_REJECTED replay= False nd= 2 (kernel) (interpreter) unknown declaration 'spec_isomorphism_is_false'._nativeDecide_1_3'
+
+ALL replay_ok==False:
+  opus ep-d13d4e84 p18 a0 B KERNEL_REJECTED nd= 2 | (kernel) (interpreter) unknown declaration 'spec_isomorphism_is_false'._nativeDecide_1_3'
+
+=== stage-B class tables per read and arm, with the sorryAx flag on non-passes ===
+('opus', 'a0') {'PASS': 10, 'AXIOMS_FAIL': 4, 'KERNEL_REJECTED': 1}
+('opus', 'a2') {'PASS': 10, 'SCREEN': 1, 'AXIOMS_FAIL': 4}
+('sonnet', 'a0') {'COMPILE': 2, 'PASS': 8, 'AXIOMS_FAIL': 17}
+('sonnet', 'a1') {'PASS': 8, 'COMPILE': 1, 'AXIOMS_FAIL': 6}
+('sonnet', 'a2') {'PASS': 8, 'AXIOMS_FAIL': 7}
+
+NON-PASS stage-B episodes, with the sorryAx flag (the admitted-the-gap family):
+  ('opus', 'a0') {('AXIOMS_FAIL', True): 4, ('KERNEL_REJECTED', True): 1}
+  ('opus', 'a2') {('SCREEN', False): 1, ('AXIOMS_FAIL', True): 4}
+  ('sonnet', 'a0') {('COMPILE', False): 2, ('AXIOMS_FAIL', True): 17}
+  ('sonnet', 'a1') {('COMPILE', False): 1, ('AXIOMS_FAIL', True): 6}
+  ('sonnet', 'a2') {('AXIOMS_FAIL', True): 7}
+
+=== module surface per read and arm ===
+stage-B module size (n_constants in the compiled olean) and canonical.lean lines
+  ('opus', 'a0') n= 15 constants med= 11 max= 45 | lines med= 122 max= 180
+  ('opus', 'a2') n= 14 constants med= 11.0 max= 43 | lines med= 133.0 max= 222
+  ('sonnet', 'a0') n= 25 constants med= 4 max= 37 | lines med= 61 max= 267
+  ('sonnet', 'a1') n= 14 constants med= 5.0 max= 34 | lines med= 65.5 max= 257
+  ('sonnet', 'a2') n= 15 constants med= 5 max= 42 | lines med= 67 max= 265

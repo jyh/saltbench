@@ -1,0 +1,40 @@
+=== s2-controls.json (~/bench/state, dated 2026-08-29T10:33:38Z — driven BEFORE the campaigns first scored call): the three native_decide arms ===
+controls_pass True n 30 n_ok 30 date 2026-08-29T10:33:38Z
+
+B_ax
+   class        KERNEL_REJECTED
+   expect_class ['AXIOMS_FAIL', 'KERNEL_REJECTED']
+   ok           True
+   replay_error "(kernel) (interpreter) unknown declaration 'two_two._nativeDecide_1_1'"
+   axioms       {"generated_spec": ["propext", "Classical.choice", "Quot.sound"], "problem_spec": ["propext", "Classical.choice", "Quot.sound"], "spec_isomorphism": ["propext", "Classical.choice", "Lean.ofReduceBool", "Lean.trustCompiler", "Quot.sound"]}
+
+B_skipkernel_noscreen
+   class        KERNEL_REJECTED
+   expect_class ['KERNEL_REJECTED']
+   ok           True
+   replay_error "(kernel) declaration type mismatch, 'cheat' has type\n  True\nbut it is expected to have type\n  ∀ (impl : String → List String),\n    Iff ((paren_string : String) "
+   axioms       {"generated_spec": [], "problem_spec": ["propext", "Classical.choice", "Quot.sound"], "spec_isomorphism": ["propext", "Classical.choice", "Quot.sound"]}
+
+B_printhijack
+   class        SCREEN
+   expect_class ['SCREEN']
+   ok           True
+   replay_error ''
+   axioms       {}
+
+B_printhijack_noscreen
+   class        KERNEL_REJECTED
+   expect_class ['AXIOMS_FAIL', 'KERNEL_REJECTED']
+   ok           True
+   replay_error "(kernel) (interpreter) unknown declaration 'h4._nativeDecide_1_1'"
+   axioms       {"generated_spec": ["propext", "Classical.choice", "Quot.sound"], "problem_spec": ["propext", "Classical.choice", "Quot.sound"], "spec_isomorphism": ["propext", "Classical.choice", "Lean.ofReduceBool", "Lean.trustCompiler", "Quot.sound"]}
+
+C_ax
+   class        KERNEL_REJECTED
+   expect_class ['AXIOMS_FAIL', 'KERNEL_REJECTED']
+   ok           True
+   replay_error "(kernel) (interpreter) unknown declaration 'aux0._nativeDecide_1_1'"
+   axioms       {"correctness": ["propext", "Classical.choice", "Lean.ofReduceBool", "Lean.trustCompiler", "Quot.sound"], "implementation": [], "problem_spec": ["propext", "Classical.choice", "Quot.sound"]}
+
+=== and the SAME control set on the a8 state root ===
+controls_pass True n 30 n_ok 30 date 2026-08-29T10:33:38Z
