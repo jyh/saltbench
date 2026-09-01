@@ -1,0 +1,35 @@
+=== the gate predicate (stage_views.sh:17), run VERBATIM and READ-ONLY ===
+GATE = PASS — 'ship BC' would put ground truth on the host right now
+
+=== every DONE line in the file the gate reads (/Users/jyh/bench/logs/run_s2_stage0.log) ===
+108:2026-08-29T11:59:38Z S2 STAGE A DRIVER DONE k=15
+268:2026-08-30T18:42:36Z S2 STAGE A DRIVER DONE k=27
+543:2026-08-30T22:05:18Z S2 STAGE A DRIVER DONE k=27
+737:2026-08-31T18:32:19Z S2 STAGE A DRIVER DONE k=27
+
+=== the NEWEST one in context: gates OK at 18:32:18Z, DONE at 18:32:19Z ===
+2026-08-31T18:32:18Z CONTROLS GATE OK
+2026-08-31T18:32:18Z ONLY_IDS (registered subset of the first 27): problem_73 problem_0 problem_146 problem_16 problem_4 problem_38 problem_142 problem_96 problem_112 problem_141 problem_31 problem_54 problem_127 problem_18 problem_74
+2026-08-31T18:32:18Z TC_AMEND: TOKEN_CEILING=30000000 (registered; amendment 5 sets it NON-BINDING so R and WALL bind for treatment exactly as they did for the control, whose ceiling was inoperative)
+2026-08-31T18:32:18Z R_AMEND: MAX_TURNS=100 (registered round cap for this run)
+2026-08-31T18:32:18Z M_AMEND: MODEL=claude-opus-5 (registered episode model for this run)
+2026-08-31T18:32:18Z W_AMEND: WALL_S=10800 (registered per-episode wall ceiling for this run)
+2026-08-31T18:32:19Z S2 STAGE A DRIVER DONE k=27
+
+START/LANDED lines between that invocation's gates and its DONE: 0
+
+=== what the a8 run wrote INSTEAD, in its OWN root ===
+total 136
+drwxr-xr-x  6 jyh  staff    192 Aug 31 13:13 .
+drwxr-xr-x  6 jyh  staff    192 Aug 31 16:40 ..
+-rw-r--r--@ 1 jyh  staff  22110 Aug 31 16:40 a8_watch.log
+-rw-r--r--@ 1 jyh  staff  32460 Aug 31 16:39 run_s2_stage0.log
+-rw-r--r--@ 1 jyh  staff   2408 Aug 31 16:39 s2-landings.log
+-rw-r--r--@ 1 jyh  staff   5008 Aug 31 11:33 smoke.log
+DONE lines in the a8 log: 1
+226:2026-08-31T20:09:16Z S2 STAGE A DRIVER DONE k=27
+
+=== the views symlink: the ship TARGET is shared, only the GATE is stale ===
+lrwxr-xr-x    1 jyh  staff    24 Aug 31 11:33 /Users/jyh/bench-a8/s2views -> /Users/jyh/bench/s2views
+drwxr-xr-x  164 jyh  staff  5248 Aug 28 20:33 /Users/jyh/bench/s2views
+bench/s2views frozen=     161 C=     161 | frozen+C anywhere under ~/bench =      322
