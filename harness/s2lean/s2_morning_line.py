@@ -213,8 +213,8 @@ for stage, label, dom in (("A", "spec compiles", D), ("B", "ISOMORPHISM PROVEN (
             dead = [(t, "C", a) for t in D if t not in CE]
             if dead: print("     NOT_RUN(view_dead) — not counted (%d): %s" % (len(dead), grouped(dead)))
             okU = [(t, "C", a) for t in UC if proven((t, "C", a))]
-            print("     REGISTERED POPULATION UC = U ∖ c_dead (amendment 11's gate is a COUNT over THIS set, not a rate over the %d above)  n=%d ids %s: %s proven %d/%d = %s" % (
-                len(CE), len(UC), ids(UC), a, len(okU), len(UC), rate(len(okU), len(UC))))
+            print("     REGISTERED POPULATION UC = U ∖ c_dead (amendment 11's gate is a COUNT over THIS set, not a rate over the %d above)  n=%d ids %s: %s proven %s" % (
+                len(CE), len(UC), ids(UC), a, rate(len(okU), len(UC))))
     for _i in range(len(ARMS)):
         for _j in range(_i + 1, len(ARMS)):
             x, y = ARMS[_i], ARMS[_j]
