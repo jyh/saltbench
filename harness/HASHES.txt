@@ -1,4 +1,4 @@
-# HASHES — regenerate with harness/hashes.sh; sha256; generated 2026-09-01T18:12:37Z
+# HASHES — regenerate with harness/hashes.sh; sha256; generated 2026-09-01T21:23:12Z
 base.md 9ada9241a09ae82621f227bf316c46697f40b134c5005e269ca4722f49794f09
 prompt.md 0a33c3a46e7b08034c06041910518f98d4b08728c12d18c327d7c0fc81cd2288
 rt.template c46e59af03b0b9f1f6ed5db15594678646053e7e4d9f856ae14763ee6757f7ea
@@ -41,6 +41,7 @@ s2lean/s2_morning_line.py 5f5fb09eb0ebd9e65abb42726947db02742977472a1acd140c037d
 s2lean/screen_widening_proof.py b9854ad858993970b49410abc705ee70245aac0424aec730e0ff375324459e20
 s2lean/screen.py cc591ca662684e8d1ea915739dcec666d7816e27c02cf4feba681eebdc9ae676
 s2lean/selftest_morning_line.py 32460f89029ddde919aad3faefd209d66d32c66865ab58c7713fa1cf5f269369
+s2lean/vac_probe.py 81fba95015641d0e86dd5e7e08a9a6b9dbe40fd8cf81c10743383f7f7f6c647e
 s2lean/bc_gate.selftest.sh 65bb1ff4add1a70b5089e945684410b3e71c662b46599e838978674eb5128bed
 s2lean/dry_exec_stub_s2.sh 19e4124209109e929816ce91dbe2a9dc486e7dde6c198f7d27b3f0c665fe706d
 s2lean/episode_s2.sh cfb8a714272e5686c95c69650179059d7c320167c415f2f32fc1029150ac9a40
