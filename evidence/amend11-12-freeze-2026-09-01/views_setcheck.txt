@@ -1,0 +1,9 @@
+view-A   pinned 161  present on host 161  MATCH 161  absent   0
+view-C   pinned 161  present on host 161  MATCH 161  absent   0
+frozen   pinned 161  present on host 161  MATCH 161  absent   0
+frozenA  pinned 161  present on host 161  MATCH 161  absent   0
+MISMATCHES: NONE
+files under s2views: 644
+SET-HASH(all s2views) = be49ab767a66ce1d
+GT files (frozen.json + C.lean): 322   SET-HASH = cf67a9c0ed805f36
+A-view files: 322   SET-HASH = bc4d6eafc0430ed2

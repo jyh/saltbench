@@ -1,0 +1,1038 @@
+{
+ "controls_pass": true,
+ "n": 31,
+ "n_ok": 31,
+ "leanproj": "/Users/jyh/lean-shared/clever",
+ "checker_sha256": {
+  "check.py": "9aa58095579dfc7d12cb0c727c23c7a6dffe7efaa0b0ba0b76111cd7dd767f8b",
+  "s2audit.lean": "37ccc2c586ef545b46d73425412e7c789ec2c3463216fa94ddd0481b083c81f2",
+  "screen.py": "cc591ca662684e8d1ea915739dcec666d7816e27c02cf4feba681eebdc9ae676",
+  "assemble.py": "11698336484a92d47267cdf657b4b2d2c57fa1f42219e83329333cf4af3b98ee",
+  "sandbox_check.sb": "f0e34eee14330ba9fb5b622f9fd0572ae62c154024962e48f38071d0c36af981"
+ },
+ "date": "2026-09-01T17:55:15Z",
+ "results": {
+  "A_pos": {
+   "ok": true,
+   "class": "PASS",
+   "passed": true,
+   "expect_class": [
+    "PASS"
+   ],
+   "fails": [],
+   "compile_wall_s": 11.9,
+   "audit_wall_s": 8.7,
+   "pristine_wall_s": 7.6,
+   "check_wall_s": 29.6,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "generated_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "human problem_spec body verbatim"
+  },
+  "A_neg": {
+   "ok": true,
+   "class": "AXIOMS_FAIL",
+   "passed": false,
+   "expect_class": [
+    "AXIOMS_FAIL"
+   ],
+   "fails": [],
+   "compile_wall_s": 7.8,
+   "audit_wall_s": 7.8,
+   "pristine_wall_s": 7.8,
+   "check_wall_s": 25.5,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "generated_spec": [
+     "sorryAx"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": ""
+  },
+  "B_pos": {
+   "ok": true,
+   "class": "PASS",
+   "passed": true,
+   "expect_class": [
+    "PASS"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.6,
+   "audit_wall_s": 8.2,
+   "pristine_wall_s": 7.9,
+   "check_wall_s": 26.6,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "generated_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": true,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": ""
+  },
+  "B_neg": {
+   "ok": true,
+   "class": "AXIOMS_FAIL",
+   "passed": false,
+   "expect_class": [
+    "AXIOMS_FAIL"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.0,
+   "audit_wall_s": 8.4,
+   "pristine_wall_s": 8.2,
+   "check_wall_s": 26.1,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "generated_spec": [],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": [
+     "propext",
+     "sorryAx",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": false,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": ""
+  },
+  "B_ax": {
+   "ok": true,
+   "class": "KERNEL_REJECTED",
+   "passed": false,
+   "expect_class": [
+    "AXIOMS_FAIL",
+    "KERNEL_REJECTED"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.3,
+   "audit_wall_s": 8.4,
+   "pristine_wall_s": 8.2,
+   "check_wall_s": 26.6,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "generated_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": [
+     "propext",
+     "Classical.choice",
+     "Lean.ofReduceBool",
+     "Lean.trustCompiler",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "(kernel) (interpreter) unknown declaration 'two_two._nativeDecide_1_1'",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": ""
+  },
+  "B_notation": {
+   "ok": true,
+   "class": "SCREEN",
+   "passed": false,
+   "expect_class": [
+    "SCREEN"
+   ],
+   "fails": [],
+   "compile_wall_s": null,
+   "audit_wall_s": null,
+   "pristine_wall_s": null,
+   "check_wall_s": 0.0,
+   "rc": null,
+   "screen": [
+    "iso_helper_lemmas: notation@1"
+   ],
+   "statement_diffs": [],
+   "axioms": {},
+   "replay_error": "",
+   "orphans_killed": null,
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "F3 B1: screened"
+  },
+  "B_notation_noscreen": {
+   "ok": true,
+   "class": "STATEMENT_ALTERED",
+   "passed": false,
+   "expect_class": [
+    "STATEMENT_ALTERED"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.2,
+   "audit_wall_s": 8.2,
+   "pristine_wall_s": 8.2,
+   "check_wall_s": 26.3,
+   "rc": 0,
+   "screen": [
+    "iso_helper_lemmas: notation@1"
+   ],
+   "statement_diffs": [
+    "spec_isomorphism"
+   ],
+   "axioms": {
+    "generated_spec": [],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": [
+     "propext"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "F3 B1: structural catch"
+  },
+  "B_macro_forall": {
+   "ok": true,
+   "class": "SCREEN",
+   "passed": false,
+   "expect_class": [
+    "SCREEN"
+   ],
+   "fails": [],
+   "compile_wall_s": null,
+   "audit_wall_s": null,
+   "pristine_wall_s": null,
+   "check_wall_s": 0.1,
+   "rc": null,
+   "screen": [
+    "iso_helper_lemmas: macro_rules@1"
+   ],
+   "statement_diffs": [],
+   "axioms": {},
+   "replay_error": "",
+   "orphans_killed": null,
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "F3 B3"
+  },
+  "B_macro_forall_noscreen": {
+   "ok": true,
+   "class": "STATEMENT_ALTERED",
+   "passed": false,
+   "expect_class": [
+    "STATEMENT_ALTERED"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.5,
+   "audit_wall_s": 8.2,
+   "pristine_wall_s": 8.3,
+   "check_wall_s": 26.7,
+   "rc": 0,
+   "screen": [
+    "iso_helper_lemmas: macro_rules@1"
+   ],
+   "statement_diffs": [
+    "spec_isomorphism"
+   ],
+   "axioms": {
+    "generated_spec": [],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": []
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": ""
+  },
+  "B_macro_iff_noscreen": {
+   "ok": true,
+   "class": "STATEMENT_ALTERED",
+   "passed": false,
+   "expect_class": [
+    "STATEMENT_ALTERED"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.3,
+   "audit_wall_s": 8.2,
+   "pristine_wall_s": 8.1,
+   "check_wall_s": 26.4,
+   "rc": 0,
+   "screen": [
+    "iso_helper_lemmas: macro_rules@1"
+   ],
+   "statement_diffs": [
+    "spec_isomorphism"
+   ],
+   "axioms": {
+    "generated_spec": [],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "F3 B2b"
+  },
+  "B_from_A_macro": {
+   "ok": true,
+   "class": "SCREEN",
+   "passed": false,
+   "expect_class": [
+    "SCREEN"
+   ],
+   "fails": [],
+   "compile_wall_s": null,
+   "audit_wall_s": null,
+   "pristine_wall_s": null,
+   "check_wall_s": 0.0,
+   "rc": null,
+   "screen": [
+    "generated_spec_body: macro_rules@2"
+   ],
+   "statement_diffs": [],
+   "axioms": {},
+   "replay_error": "",
+   "orphans_killed": null,
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "F3 B9b: the merged stage-A body is re-screened at B"
+  },
+  "B_from_A_macro_noscreen": {
+   "ok": true,
+   "class": "STATEMENT_ALTERED",
+   "passed": false,
+   "expect_class": [
+    "STATEMENT_ALTERED"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.2,
+   "audit_wall_s": 8.5,
+   "pristine_wall_s": 8.2,
+   "check_wall_s": 26.6,
+   "rc": 0,
+   "screen": [
+    "generated_spec_body: macro_rules@2"
+   ],
+   "statement_diffs": [
+    "spec_isomorphism"
+   ],
+   "axioms": {
+    "generated_spec": [],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": ""
+  },
+  "B_skipkernel": {
+   "ok": true,
+   "class": "SCREEN",
+   "passed": false,
+   "expect_class": [
+    "SCREEN"
+   ],
+   "fails": [],
+   "compile_wall_s": null,
+   "audit_wall_s": null,
+   "pristine_wall_s": null,
+   "check_wall_s": 0.1,
+   "rc": null,
+   "screen": [
+    "iso_helper_lemmas: run_cmd@2"
+   ],
+   "statement_diffs": [],
+   "axioms": {},
+   "replay_error": "",
+   "orphans_killed": null,
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "F4 B4b: run_cmd screened"
+  },
+  "B_skipkernel_noscreen": {
+   "ok": true,
+   "class": "KERNEL_REJECTED",
+   "passed": false,
+   "expect_class": [
+    "KERNEL_REJECTED"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.6,
+   "audit_wall_s": 8.3,
+   "pristine_wall_s": 8.3,
+   "check_wall_s": 26.9,
+   "rc": 0,
+   "screen": [
+    "iso_helper_lemmas: run_cmd@2"
+   ],
+   "statement_diffs": [],
+   "axioms": {
+    "generated_spec": [],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "(kernel) declaration type mismatch, 'cheat' has type\n  True\nbut it is expected to have type\n  \u2200 (impl : String \u2192 List String),\n    Iff ((paren_string : String) ",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "F4 B4b: kernel replay"
+  },
+  "B_printhijack": {
+   "ok": true,
+   "class": "SCREEN",
+   "passed": false,
+   "expect_class": [
+    "SCREEN"
+   ],
+   "fails": [],
+   "compile_wall_s": null,
+   "audit_wall_s": null,
+   "pristine_wall_s": null,
+   "check_wall_s": 0.0,
+   "rc": null,
+   "screen": [
+    "iso_helper_lemmas: elab_rules@4",
+    "iso_helper_lemmas: #print@5"
+   ],
+   "statement_diffs": [],
+   "axioms": {},
+   "replay_error": "",
+   "orphans_killed": null,
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "F6: elab_rules + #print screened"
+  },
+  "B_printhijack_noscreen": {
+   "ok": true,
+   "class": "KERNEL_REJECTED",
+   "passed": false,
+   "expect_class": [
+    "AXIOMS_FAIL",
+    "KERNEL_REJECTED"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.5,
+   "audit_wall_s": 8.5,
+   "pristine_wall_s": 8.3,
+   "check_wall_s": 27.1,
+   "rc": 0,
+   "screen": [
+    "iso_helper_lemmas: elab_rules@4",
+    "iso_helper_lemmas: #print@5"
+   ],
+   "statement_diffs": [],
+   "axioms": {
+    "generated_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": [
+     "propext",
+     "Classical.choice",
+     "Lean.ofReduceBool",
+     "Lean.trustCompiler",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "(kernel) (interpreter) unknown declaration 'h4._nativeDecide_1_1'",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "F6: audit unaffected (no #print line exists)"
+  },
+  "B_evalio": {
+   "ok": true,
+   "class": "SCREEN",
+   "passed": false,
+   "expect_class": [
+    "SCREEN"
+   ],
+   "fails": [],
+   "compile_wall_s": null,
+   "audit_wall_s": null,
+   "pristine_wall_s": null,
+   "check_wall_s": 0.0,
+   "rc": null,
+   "screen": [
+    "iso_helper_lemmas: #eval@1",
+    "iso_helper_lemmas: IO@1"
+   ],
+   "statement_diffs": [],
+   "axioms": {},
+   "replay_error": "",
+   "orphans_killed": null,
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "R1"
+  },
+  "B_evalio_noscreen": {
+   "ok": true,
+   "class": "COMPILE",
+   "passed": false,
+   "expect_class": [
+    "COMPILE"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.4,
+   "audit_wall_s": null,
+   "pristine_wall_s": null,
+   "check_wall_s": 10.1,
+   "rc": 1,
+   "screen": [
+    "iso_helper_lemmas: #eval@1",
+    "iso_helper_lemmas: IO@1"
+   ],
+   "statement_diffs": [],
+   "axioms": {},
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "R1: sandbox-exec denies the write"
+  },
+  "B_evalnet_noscreen": {
+   "ok": true,
+   "class": "COMPILE",
+   "passed": false,
+   "expect_class": [
+    "COMPILE"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.3,
+   "audit_wall_s": null,
+   "pristine_wall_s": null,
+   "check_wall_s": 10.0,
+   "rc": 1,
+   "screen": [
+    "iso_helper_lemmas: #eval@1",
+    "iso_helper_lemmas: IO@2",
+    "iso_helper_lemmas: IO@3",
+    "iso_helper_lemmas: IO@3"
+   ],
+   "statement_diffs": [],
+   "axioms": {},
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "R1: fork/exec denied before curl could run"
+  },
+  "B_comment_sorry": {
+   "ok": true,
+   "class": "PASS",
+   "passed": true,
+   "expect_class": [
+    "PASS"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.4,
+   "audit_wall_s": 8.5,
+   "pristine_wall_s": 8.3,
+   "check_wall_s": 26.8,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "generated_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "R2"
+  },
+  "B_comment_tokens": {
+   "ok": true,
+   "class": "PASS",
+   "passed": true,
+   "expect_class": [
+    "PASS"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.3,
+   "audit_wall_s": 8.5,
+   "pristine_wall_s": 8.6,
+   "check_wall_s": 27.1,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "generated_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "R2"
+  },
+  "B_string_token": {
+   "ok": true,
+   "class": "PASS",
+   "passed": true,
+   "expect_class": [
+    "PASS"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.5,
+   "audit_wall_s": 8.4,
+   "pristine_wall_s": 8.2,
+   "check_wall_s": 26.8,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "generated_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "R2"
+  },
+  "B_heartbeats": {
+   "ok": true,
+   "class": "PASS",
+   "passed": true,
+   "expect_class": [
+    "PASS"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.4,
+   "audit_wall_s": 8.5,
+   "pristine_wall_s": 8.4,
+   "check_wall_s": 27.1,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "generated_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "spec_isomorphism": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "R2"
+  },
+  "C_pos": {
+   "ok": true,
+   "class": "PASS",
+   "passed": true,
+   "expect_class": [
+    "PASS"
+   ],
+   "fails": [],
+   "compile_wall_s": 9.6,
+   "audit_wall_s": 8.7,
+   "pristine_wall_s": 8.3,
+   "check_wall_s": 28.4,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "correctness": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "implementation": [],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": true,
+   "harness_error": "",
+   "note": "problem_3 gold impl+proof"
+  },
+  "C_neg": {
+   "ok": true,
+   "class": "AXIOMS_FAIL",
+   "passed": false,
+   "expect_class": [
+    "AXIOMS_FAIL"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.6,
+   "audit_wall_s": 8.6,
+   "pristine_wall_s": 8.1,
+   "check_wall_s": 27.2,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "correctness": [
+     "propext",
+     "sorryAx",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "implementation": [],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": true,
+   "harness_error": "",
+   "note": ""
+  },
+  "C_ax": {
+   "ok": true,
+   "class": "KERNEL_REJECTED",
+   "passed": false,
+   "expect_class": [
+    "AXIOMS_FAIL",
+    "KERNEL_REJECTED"
+   ],
+   "fails": [],
+   "compile_wall_s": 9.5,
+   "audit_wall_s": 8.6,
+   "pristine_wall_s": 8.2,
+   "check_wall_s": 28.0,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "correctness": [
+     "propext",
+     "Classical.choice",
+     "Lean.ofReduceBool",
+     "Lean.trustCompiler",
+     "Quot.sound"
+    ],
+    "implementation": [],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "(kernel) (interpreter) unknown declaration 'aux0._nativeDecide_1_1'",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": true,
+   "harness_error": "",
+   "note": ""
+  },
+  "C_decide": {
+   "ok": true,
+   "class": "PASS",
+   "passed": true,
+   "expect_class": [
+    "PASS"
+   ],
+   "fails": [],
+   "compile_wall_s": 9.5,
+   "audit_wall_s": 8.6,
+   "pristine_wall_s": 8.2,
+   "check_wall_s": 28.0,
+   "rc": 0,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {
+    "correctness": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ],
+    "implementation": [],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": true,
+   "harness_error": "",
+   "note": "AV/amdt 11: the DIFFERENTIAL sibling of C_ax \u2014 the SAME helper, `decide` not `native_decide`. prompt_C.md now tells the agent native_decide is rejected and `decide` is fine; this arm is the second half of that sentence, and without it the first half is a prohibition with no measured alternative"
+  },
+  "C_badimpl": {
+   "ok": true,
+   "class": "COMPILE",
+   "passed": false,
+   "expect_class": [
+    "COMPILE"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.4,
+   "audit_wall_s": null,
+   "pristine_wall_s": null,
+   "check_wall_s": 10.0,
+   "rc": 1,
+   "screen": [],
+   "statement_diffs": [],
+   "axioms": {},
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": true,
+   "harness_error": "",
+   "note": "a failing #test = rc 1"
+  },
+  "C_notation": {
+   "ok": true,
+   "class": "SCREEN",
+   "passed": false,
+   "expect_class": [
+    "SCREEN"
+   ],
+   "fails": [],
+   "compile_wall_s": null,
+   "audit_wall_s": null,
+   "pristine_wall_s": null,
+   "check_wall_s": 0.0,
+   "rc": null,
+   "screen": [
+    "implementation: notation@2"
+   ],
+   "statement_diffs": [],
+   "axioms": {},
+   "replay_error": "",
+   "orphans_killed": null,
+   "a_body_value_identical": null,
+   "tests_in_file": true,
+   "harness_error": "",
+   "note": "F3 C4"
+  },
+  "C_notation_noscreen": {
+   "ok": true,
+   "class": "STATEMENT_ALTERED",
+   "passed": false,
+   "expect_class": [
+    "STATEMENT_ALTERED"
+   ],
+   "fails": [],
+   "compile_wall_s": 8.7,
+   "audit_wall_s": 8.3,
+   "pristine_wall_s": 8.1,
+   "check_wall_s": 26.8,
+   "rc": 0,
+   "screen": [
+    "implementation: notation@2"
+   ],
+   "statement_diffs": [
+    "correctness"
+   ],
+   "axioms": {
+    "correctness": [],
+    "implementation": [],
+    "problem_spec": [
+     "propext",
+     "Classical.choice",
+     "Quot.sound"
+    ]
+   },
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": true,
+   "harness_error": "",
+   "note": "F3 C4: wrong impl passes the tests, the statement compare catches it"
+  },
+  "T_timeout": {
+   "ok": true,
+   "class": "TIMEOUT",
+   "passed": false,
+   "expect_class": [
+    "TIMEOUT"
+   ],
+   "fails": [],
+   "compile_wall_s": 5.1,
+   "audit_wall_s": null,
+   "pristine_wall_s": null,
+   "check_wall_s": 6.7,
+   "rc": "TIMEOUT",
+   "screen": [
+    "iso_helper_lemmas: partial@1",
+    "iso_helper_lemmas: IO@1",
+    "iso_helper_lemmas: IO@1",
+    "iso_helper_lemmas: #eval@2"
+   ],
+   "statement_diffs": [],
+   "axioms": {},
+   "replay_error": "",
+   "orphans_killed": [],
+   "a_body_value_identical": null,
+   "tests_in_file": false,
+   "harness_error": "",
+   "note": "R3/MT-R2: process-group kill"
+  }
+ }
+}

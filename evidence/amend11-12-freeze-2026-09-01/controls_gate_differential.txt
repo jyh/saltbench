@@ -1,0 +1,35 @@
+=== NEW gate on the LANDED record (bench-a8) ===
+  ok   assemble.py 11698336484a… matches
+  ok   check.py 9aa58095579d… matches
+  ok   s2audit.lean 37ccc2c586ef… matches
+  ok   sandbox_check.sb f0e34eee1433… matches
+  ok   C_pos PASS
+  ok   C_neg AXIOMS_FAIL
+  ok   C_ax KERNEL_REJECTED
+  ok   C_badimpl COMPILE
+  ok   C_notation SCREEN
+  ok   C_notation_noscreen STATEMENT_ALTERED
+REFUSE: CHECKER DRIFT screen.py: controls certified aa2c9376a5b3e0c7… but the live file is cc591ca662684e8d…
+REFUSE: required control C_decide is ABSENT from the record
+CONTROLS GATE REFUSE (/Users/jyh/bench-a8/state/s2-controls.json, 10 checked, 7 required)
+rc=3
+
+=== the OLD one-line predicate, verbatim, on the SAME file ===
+old predicate rc=0  (0 = it says GO)
+
+=== NEW gate on the FRESH record ===
+  ok   assemble.py 11698336484a… matches
+  ok   check.py 9aa58095579d… matches
+  ok   s2audit.lean 37ccc2c586ef… matches
+  ok   sandbox_check.sb f0e34eee1433… matches
+  ok   screen.py cc591ca66268… matches
+  ok   C_pos PASS
+  ok   C_neg AXIOMS_FAIL
+  ok   C_ax KERNEL_REJECTED
+  ok   C_decide PASS
+  ok   C_badimpl COMPILE
+  ok   C_notation SCREEN
+  ok   C_notation_noscreen STATEMENT_ALTERED
+  ok   age 0.2 h
+CONTROLS GATE PASS (/Users/jyh/s2-controls-NEW.json, 13 checked, 7 required)
+rc=0

@@ -123,15 +123,26 @@ meter **both move only at episode end**, so a healthy 26-minute episode is byte-
 an end-of-unit instrument. Reading the transcript makes the report honest; halting on it would throw away a live
 episode.
 
-**DRIVEN — `halt_watch.sh --selftest` ⇒ 21 arms, 0 failed**, every arm a subprocess on the real argv: 6 REFUSE
+**DRIVEN — `halt_watch.sh --selftest` ⇒ 23 arms, 0 failed, twenty consecutive runs green**, every arm a subprocess on the real argv: 6 REFUSE
 arms (relative root, missing root, bad stage, non-numeric budget, **zero budget** — a zero budget halts before
 the first episode — unknown arg), the green under-budget path with its measured total, the budget HALT with the
 reason **written into the file**, the wall arm firing with the budget nowhere near, **two SCOPE arms** (another
 stage's or another arm's landings must not count — a watch that counts the previous stage's spend halts a run
 that has spent nothing, and it looks exactly like a real breach), a **since-ARMED** arm, two DONE arms (another
 stage's `DRIVER DONE` is not mine), and two arms proving a pre-existing HALT file is reported and **not**
-overwritten. Mutation-driven: *the budget arm never fires* ⇒ 3 arms red; *the scope filter ignores the arm* ⇒
-1 arm red.
+overwritten. Mutation-driven, **each mutation caught by its own arm**: *the budget arm never fires* ⇒ 3 arms red; *the scope
+filter ignores the arm* ⇒ 1 arm red; *the spend-window filter is removed* ⇒ 1 arm red.
+
+⛔ **AND IT WAS INTERMITTENT BEFORE IT WAS RIGHT — CAUGHT ONLY BECAUSE THE ARCHIVE RE-RAN IT.** The first
+version went green on the run I published and **red on three arms** when the evidence archive drove it again
+minutes later. Cause: the watch had **one** clock. `START` is the WALL arm's origin *and* was the floor of the
+spend window, so a fixture landing written in the same second the watch armed sat on the wrong side of an
+integer boundary — counted or filtered depending on where the second fell. Repair: **two clocks, deliberately
+separated**, with `--since` exposed so the arms that are about the BUDGET are not also about the clock, and the
+spend-window arm now drives the SAME fixture both ways (`--since 0` breaches, the default does not). ⇒ **AN
+INTERMITTENT GATE IS WORSE THAN A RED ONE: a red gate gets read, a flaky one gets re-run until it agrees.**
+And the only reason this was seen at all is that the archive step re-ran a suite that had already passed —
+*run a new gate more than once before you trust it.*
 
 ## §5 · `prompt_C.md` AND ROW AV — THE SENTENCE, AND ITS CONTROL, TOGETHER
 
@@ -243,6 +254,8 @@ moved — all 161 × 4 view pins, every arm rendering and every other harness fi
 - **A green light that cannot be wrong is not a gate**, and the way to find out is to run the old predicate and
   the new one on the same specimen.
 - **The plumbing that reports a gate can defeat it:** `cmd | tee || fail` takes `tee`'s status.
+- **An intermittent gate is worse than a red one** — a red gate gets read, a flaky one gets re-run until it
+  agrees. **Run a new gate more than once before you trust it**, and give a test one clock per thing it tests.
 - **A gate whose failure path has never executed is an untested gate** — reached by running the control, never by
   reading the code.
 - **Spend comparability only when a run needs it**: a repair that breaks a landed record and serves no

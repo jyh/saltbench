@@ -1,0 +1,12 @@
+2026-09-01T18:05:51Z DRY_RUN=1: smoke gate skipped; stub=/Users/jyh/bench-c1b/harness/s2lean/dry_exec_stub_s2.sh; landings=/Users/jyh/bench-c1b/logs/dryexec.log; bodies under /Users/jyh/bench-c1b/state/s2-dry
+2026-09-01T18:05:51Z ONLY_IDS (registered subset of the first 27): problem_18 problem_112 problem_54 problem_73
+2026-09-01T18:05:51Z TC_AMEND: TOKEN_CEILING=20000000 (registered; amendment 5 sets it NON-BINDING so R and WALL bind for treatment exactly as they did for the control, whose ceiling was inoperative)
+2026-09-01T18:05:51Z R_AMEND: MAX_TURNS=100 (registered round cap for this run)
+2026-09-01T18:05:51Z C-DEAD (view_status.json): problem_18 problem_39 problem_44 problem_54 problem_62 problem_65 problem_77 problem_81 problem_87 problem_97 problem_110 problem_111 problem_112 problem_113 problem_119 problem_153 problem_155 problem_157 problem_160
+2026-09-01T18:05:51Z SYNTHETIC problem_18 C a0 NOT_RUN(view_dead)
+2026-09-01T18:05:51Z SYNTHETIC problem_112 C a0 NOT_RUN(view_dead)
+2026-09-01T18:05:51Z SYNTHETIC problem_54 C a0 NOT_RUN(view_dead)
+2026-09-01T18:05:51Z START #4 problem_73 stage=C
+2026-09-01T18:06:37Z LANDED #4 problem_73 C arm=a0 term=DONE
+2026-09-01T18:06:37Z S2 STAGE C DRIVER DONE k=27
+DRY18_EXIT=0

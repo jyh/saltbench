@@ -1,0 +1,31 @@
+2026-09-01T17:56:39Z DRY_RUN=1: smoke gate skipped; stub=/Users/jyh/bench-c1/harness/s2lean/dry_exec_stub_s2.sh; landings=/Users/jyh/bench-c1/logs/dryexec.log; bodies under /Users/jyh/bench-c1/state/s2-dry
+2026-09-01T17:56:39Z ONLY_IDS (registered subset of the first 27): problem_73 problem_0 problem_146 problem_16 problem_4 problem_38 problem_142 problem_96 problem_141 problem_31 problem_127 problem_74
+2026-09-01T17:56:39Z TC_AMEND: TOKEN_CEILING=20000000 (registered; amendment 5 sets it NON-BINDING so R and WALL bind for treatment exactly as they did for the control, whose ceiling was inoperative)
+2026-09-01T17:56:39Z R_AMEND: MAX_TURNS=100 (registered round cap for this run)
+2026-09-01T17:56:39Z C-DEAD (view_status.json): problem_18 problem_39 problem_44 problem_54 problem_62 problem_65 problem_77 problem_81 problem_87 problem_97 problem_110 problem_111 problem_112 problem_113 problem_119 problem_153 problem_155 problem_157 problem_160
+2026-09-01T17:56:39Z START #1 problem_73 stage=C
+2026-09-01T17:57:25Z LANDED #1 problem_73 C arm=a0 term=DONE
+2026-09-01T17:57:25Z START #2 problem_0 stage=C
+2026-09-01T17:58:10Z LANDED #2 problem_0 C arm=a0 term=DONE
+2026-09-01T17:58:10Z START #3 problem_146 stage=C
+2026-09-01T17:58:55Z LANDED #3 problem_146 C arm=a0 term=DONE
+2026-09-01T17:58:55Z START #4 problem_16 stage=C
+2026-09-01T17:59:39Z LANDED #4 problem_16 C arm=a0 term=DONE
+2026-09-01T17:59:39Z START #5 problem_4 stage=C
+2026-09-01T18:00:24Z LANDED #5 problem_4 C arm=a0 term=DONE
+2026-09-01T18:00:24Z START #6 problem_38 stage=C
+2026-09-01T18:01:09Z LANDED #6 problem_38 C arm=a0 term=DONE
+2026-09-01T18:01:09Z START #7 problem_142 stage=C
+2026-09-01T18:01:53Z LANDED #7 problem_142 C arm=a0 term=DONE
+2026-09-01T18:01:53Z START #8 problem_96 stage=C
+2026-09-01T18:02:38Z LANDED #8 problem_96 C arm=a0 term=DONE
+2026-09-01T18:02:38Z START #9 problem_141 stage=C
+2026-09-01T18:03:23Z LANDED #9 problem_141 C arm=a0 term=DONE
+2026-09-01T18:03:23Z START #10 problem_31 stage=C
+2026-09-01T18:04:08Z LANDED #10 problem_31 C arm=a0 term=DONE
+2026-09-01T18:04:08Z START #11 problem_127 stage=C
+2026-09-01T18:04:53Z LANDED #11 problem_127 C arm=a0 term=DONE
+2026-09-01T18:04:53Z START #12 problem_74 stage=C
+2026-09-01T18:05:38Z LANDED #12 problem_74 C arm=a0 term=DONE
+2026-09-01T18:05:38Z S2 STAGE C DRIVER DONE k=27
+DRY_EXIT=0

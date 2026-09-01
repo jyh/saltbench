@@ -1,0 +1,77 @@
+=== c_dead_merge ===
+c_dead_merge selftest: 11 arms, 0 failed
+
+=== controls_gate ===
+  PASS   green/all-agree
+  PASS   red/CHECKER DRIFT caught
+  PASS   red/drift names both shas
+  PASS   red/the OLD predicate passes the same file
+  PASS   red/controls_pass false
+  PASS   red/n_ok != n
+  PASS   red/empty results under a green boolean
+  PASS   red/required control absent
+  PASS   red/required control not ok
+  PASS   red/class not in expect_class
+  PASS   red/checker file absent
+  PASS   red/no checker_sha256
+  PASS   red/too old
+  PASS   green/no clock asked, no clock applied
+  PASS   red/bad stage
+  PASS   red/unknown arg
+  PASS   red/no args
+controls_gate selftest: 17 arms, 0 failed
+
+=== halt_watch (x3, was intermittent) ===
+halt_watch selftest: 23 arms, 0 failed
+halt_watch selftest: 23 arms, 0 failed
+halt_watch selftest: 23 arms, 0 failed
+
+=== morning line ===
+  PASS   green1 rc==0
+  PASS   green1 a0 scored 1/15
+  PASS   green1 a1 scored 1/15
+  PASS   green1 a2 NOT scored
+  PASS   green1 a2 rows dropped as other-arm
+  PASS   green1 contrast a0/a1 = b1 c1
+  PASS   green1 exactly one contrast line
+  PASS   green1 arms declared in header
+  PASS   green2 rc==0
+  PASS   green2 a2 scored 2/15
+  PASS   green2 a1 NOT scored
+  PASS   green2 contrast a0/a2 = b0 c1
+  PASS   green3 rc==0
+  PASS   green3 three arm lines
+  PASS   green3 three contrast lines
+  PASS   green3 a0/a1
+  PASS   green3 a0/a2
+  PASS   green3 a1/a2
+  PASS   label1 no 'salt arm a1'
+  PASS   label2 a1 named placebo
+  PASS   label2 a2 named salt
+  PASS   amdt12 rc==0
+  PASS   amdt12 CE line still 13/22 (the frozen line is UNCHANGED)
+  PASS   amdt12 registered line present and n=12
+  PASS   amdt12 registered COUNT is 9/12, not 13/22
+  PASS   amdt12 the registered ids ARE amendment 11's twelve
+  PASS   amdt12 18 is NOT in the registered ids (c_dead_unsat, amendment 11 §2)
+  PASS   amdt12 a registered pairs line exists beside the CE one
+  PASS   amdt12 stage A and B print NO registered line (stage C only)
+  PASS   red1 a0 absent refuses
+  PASS   red2 bad token refuses
+  PASS   red3 duplicate refuses
+  PASS   red4 empty refuses
+SELF-TEST PASS — 10 arms driven (3 green, 2 label, 1 stage-C/amendment-12, 4 red), every arm a SUBPROCESS on the real argv
+
+=== c_oracle_preflight (seat) ===
+
+
+SELFTEST: 9 arms, 5 failed
+  refuse/empty                 PASS  rc=2
+  refuse/nonnumeric            PASS  rc=2
+  refuse/negative              PASS  rc=2
+  refuse/float                 PASS  rc=2
+  accept/normalises            FAIL  rc=2
+  red/18-is-refused            FAIL  rc=2
+  green/0-is-not-refused       FAIL  rc=2
+  mixed/18-and-0               FAIL  rc=2
+  honesty/no-clean-claim       FAIL  rc=2

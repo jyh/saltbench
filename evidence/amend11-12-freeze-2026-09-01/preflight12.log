@@ -1,0 +1,19 @@
+problem      VERDICT     CHECK1 slice-eq         CHECK2 gt-vs-#test
+problem_0    UNREFUTED   no-slice-coercion       gt-passes-its-tests
+problem_4    UNREFUTED   no-slice-coercion       gt-passes-its-tests
+problem_16   UNREFUTED   no-slice-coercion       gt-passes-its-tests
+problem_31   UNREFUTED   no-slice-coercion       gt-passes-its-tests
+problem_38   UNREFUTED   no-slice-coercion       UNREACHED
+problem_73   UNREFUTED   no-slice-coercion       gt-passes-its-tests
+problem_74   UNREFUTED   no-slice-coercion       UNREACHED
+problem_96   UNREFUTED   no-slice-coercion       UNREACHED
+problem_127  UNREFUTED   no-slice-coercion       UNREACHED
+problem_141  UNREFUTED   no-slice-coercion       UNREACHED
+problem_142  UNREFUTED   no-slice-coercion       UNREACHED
+problem_146  UNREFUTED   no-slice-coercion       UNREACHED
+
+
+REFUSED: (none)
+⚠ UNREFUTED IS NOT CLEAN. This tool refutes; it does not certify. A GT-based satisfiability check
+  is impossible here: only 4 of 161 CLEVER problems carry a complete reference correctness proof.
+PREFLIGHT_EXIT=0

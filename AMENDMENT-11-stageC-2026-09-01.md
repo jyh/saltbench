@@ -1,9 +1,15 @@
 # AMENDMENT 11 — S2-LEAN **STAGE C** ON U15 AT `claude-opus-5`, GATED ON THE PLAIN ARM
 
-**DRAFT — NOT YET THE AUTHORIZATION.** Registered under desk row AS (the helm's commission, bus 09/01 08:53).
-Seat `bench` · drafted 2026-09-01 · **freeze due 09/02** · the dated freeze commit is the authorization (F2), and
-**no stage-C model call is made before it**, which is also the commission's stated objection window.
+**FROZEN 2026-09-01 — THIS COMMIT IS THE AUTHORIZATION (F2).** Registered under desk row AS (the helm's
+commission, bus 09/01 08:53). Seat `bench` · drafted and frozen 2026-09-01, inside the 09/02 deadline.
+⛔ **NO STAGE-C MODEL CALL HAS BEEN MADE AND NONE IS MADE BEFORE 09/02**, which is the commission's own
+objection window: the freeze opens it, it does not close it. §12 is the checklist, every line closed at the
+object; §13 is what happens after, in order, and its first line is arming the enforcer.
 Amends the frozen `SCOUT-S2LEAN-STAGE0.md`; appended, never edited in.
+**Rides with AMENDMENT 12 (2026-09-01), which lands first**: the four instrument repairs this amendment's gate
+depends on — `c_dead`'s satisfiability successor, the stage-C registered-population line, the tracked HALT
+enforcer, `prompt_C.md`'s row-AV sentence — and a fifth found while closing §12: the checker-controls gate.
+**§4's gate is unreadable without amendment 12 §2 and §3.**
 
 *The commission is the question and the constraints; the pricing, the registration and the freeze are this
 seat's. **Every number below is re-derived at the artifact**, and where the commission stated one I say whether
@@ -121,6 +127,9 @@ real argv.
 `c_oracle_preflight.py 0 4 16 31 38 73 74 96 127 141 142 146` ⇒ **REFUSED: (none) — all 12 UNREFUTED**, CHECK 1
 reaching all 12 (`no-slice-coercion` on every one) and CHECK 2 reaching **5 of 12** (`0, 4, 16, 31, 73`, all
 `gt-passes-its-tests`) with 7 UNREACHED for want of a reference implementation.
+✅ **AND RE-DRIVEN ON THE STUDIO AT THE SYNCED SHA BEFORE THE FREEZE — the same verdict, arrived at through the
+transport the run will use** (selftest 9 arms / 0 failed; the twelve-problem run reproducing the table above
+line for line). *A tool proven on the seat is a tool proven on the seat.*
 ⇒ **The registered population of 12 stands, and `problem_18` remains the only cell this instrument refuses.**
 ⚠️ Seven of the twelve are UNREACHED by CHECK 2 and that is printed, not smoothed: **UNREFUTED is the strongest
 thing this gate can say, and on seven of the twelve it rests on CHECK 1 alone.**
@@ -304,13 +313,87 @@ Advisory tier remains untested by this campaign, as it has been by every read so
 
 ## §12 · THE FREEZE — WHAT MUST BE TRUE BEFORE THE DATED COMMIT
 
-- [x] `c_oracle_preflight.py` selftest GREEN — **9 arms, 0 failed** (§3) · [ ] pinned in `HASHES.txt`
-- [x] the pre-flight driven over all 12, report archived, **UNREFUTED for all 12** (§3)
-- [x] the §2 no-op proof run and archived (53 lines each; A and B byte-identical) · [ ] `view_status.json` `c_dead` += 18 — **lands WITH the freeze, not before it: the edit is what this amendment authorises**
-- [ ] `prompt_C.md` carries the row-AV sentence
-- [ ] S1–S5 pre-flight green at the current sha; `s2-controls.json` present on the Studio **with C-control rows
-      read, not `controls_pass` believed**
-- [ ] the C views verified on the host BY SET-HASH; nothing shipped
-- [ ] the HALT enforcer written and armed on the Studio **before** the first episode
-- [ ] the reading-instrument amendment of §2 (a registered-population line in the stage-C block), or the §2 reading rule carried explicitly into the result
-- [ ] `HASHES.txt` regenerated and reproducing; freeze commit made; **only then** the first model call
+**EVERY LINE BELOW IS CLOSED, AND CLOSED AT THE OBJECT.** Where an item is discharged by an existing
+measurement rather than a new one, it says so and says why re-taking it would measure the same file twice.
+The four instrument repairs this list required are **AMENDMENT 12 (2026-09-01)**, which rides with this one and
+lands before it — *this amendment's gate is unreadable without amendment 12 §2 and §3.*
+
+- [x] **`c_oracle_preflight.py` selftest GREEN — 9 arms, 0 failed**, re-driven **on the Studio at the synced
+      sha**, not only on the seat · [x] **pinned in `HASHES.txt`**
+- [x] **the pre-flight driven over all 12 at the synced sha, UNREFUTED for all 12**, reproducing §3 exactly:
+      `REFUSED: (none)`, CHECK 1 reaching **12 of 12** (`no-slice-coercion` on every one), CHECK 2 reaching
+      **5 of 12** (`0, 4, 16, 31, 73`, all `gt-passes-its-tests`), **7 UNREACHED and printed as UNREACHED**.
+      ⚠️ On seven of the twelve, UNREFUTED rests on CHECK 1 alone. *The gate refutes; it does not certify.*
+- [x] **the §2 no-op proof re-run on the real state after the amendment-12 edits** (`~/bench-a8/state`, `k=27`,
+      `ML_ARMS=a0,a2`): **53 → 56 lines, and EVERY stage-A and stage-B line byte-identical.** The whole delta:
+      `c_dead∩D` gains 18 in the header · 18 moves from `not proven` to `NOT_RUN(view_dead)` in both arms ·
+      the C-eligible denominator falls 23 → 22 · **three lines are ADDED** (the registered-population line per
+      arm, and the registered pairs line). Nothing else moves.
+- [x] **`view_status.json` `c_dead` += 18 — and NOT by hand.** The union runs through `c_dead_merge.py`, which
+      `views_selftest.sh` itself now calls (amendment 12 §2), so a future sweep cannot silently drop it.
+      Applied delta: **all 161 per-problem rows byte-identical**, `c_dead_elaboration` equal to the previous
+      `c_dead` exactly, `c_dead_unsat = [18]`. **Verified live in the driver**: the dry's `C-DEAD` line lists
+      `problem_18` first.
+- [x] **`prompt_C.md` carries the row-AV sentence** (amendment 12 §5), arm-blind, at **measured** zero
+      comparability cost (114 stage-A + 87 stage-B landed episodes; `prompt_C.md` has never been used in a
+      scored episode). **And its second half is driven, not asserted:** the new `C_decide` control — the same
+      problem, the same gold implementation and proof, the same helper lemma as `C_ax`, `by decide` instead of
+      `by native_decide` — returns **PASS** where `C_ax` returns **KERNEL_REJECTED**.
+- [x] **S1–S5 pre-flight green at the current sha — established by the driver's OWN predicate, run verbatim.**
+      `episode_s2.sh` is `cfb8a714272e5686…`, **byte-identical to the binary those probes measured**, and the
+      LAST verdict for each of S1–S5 is `SMOKE PASS` carrying that sha, **at both state roots**. No fence file
+      moved in amendments 11 or 12 (`episode_s2.sh`, `hook-deny-network.sh`, `settings.s2.json`,
+      `sandbox_check.sb`, `rt.template` are all identically pinned). ⇒ **re-burning the five probes would
+      measure the same file a second time**, and §5 records the structural reason they can never be re-run at a
+      stage-C root at all.
+- [x] **`s2-controls.json` verified BY ROWS, not by `controls_pass` — and reading the rows found a live defect.**
+      The landed record (30/30, `2026-08-29`) certified **`screen.py = aa2c9376…` while the live screen is
+      `cc591ca6…`** (amendment 9's widening). ⇒ **the controls were RE-RUN at the current checker: 31/31 PASS**
+      (the 30 frozen plus `C_decide`), and the driver's boolean gate is replaced by `controls_gate.py`
+      (amendment 12 §5b). Driven on the real records: **REFUSE on the stale one** (naming both the drift and
+      the absent `C_decide`), **PASS on the fresh one**. All seven C rows read and recorded.
+- [x] **the C views verified on the host BY CONTENT AND BY SET-HASH; nothing shipped.** All **644 files**
+      under `~/bench/s2views` (161 × `A.lean`, `C.lean`, `frozen.json`, `frozenA.json`) match their
+      `HASHES.txt` pins — **644/644, zero mismatches, zero absent**. Both set-hashes **REPRODUCE the banked
+      figures**: GT `cf67a9c0ed805f36`, A-views `bc4d6eafc0430ed2`. `ship BC` was NOT run and amendment 10's
+      `bc_gate.py` is NOT pointed at this run (§5).
+- [x] **the HALT enforcer written, and written as a TRACKED ARTIFACT** — `harness/s2lean/halt_watch.sh`,
+      **21 arms, 0 failed**, two mutations caught (amendment 12 §4). ⚠️ **ARMING IT ON THE STUDIO, IN `tmux`,
+      BEFORE THE FIRST EPISODE, IS A DISPATCH ACT AND IS NOT DONE BY THIS FREEZE** — it is the first line of
+      §13.
+- [x] **the reading-instrument amendment of §2 — LANDED as amendment 12 §3**, red-first: **6 assertions flip
+      against the pre-change tool and all 9 frozen arms pass under both.** ⭐ The instrument now **derives**
+      this amendment's registered population instead of trusting its prose: at `k=27` it computes
+      `[73, 0, 146, 16, 4, 38, 142, 96, 141, 31, 127, 74]` — §2's twelve, exactly.
+- [x] **the run-shaped dry of STAGE C at a fresh root** — the gate this seat pays for every time it skips it.
+      Driven at a **fresh root** (`~/bench-c1`, harness + views symlinked, `smoke.log` and the **fresh**
+      `s2-controls.json` copied in) with the stub, `ARMS=a0`, `ONLY_IDS` = the registered 12, `R_AMEND=100`,
+      `TC_AMEND=20000000`, **both arms**:
+      **GREEN — all 12 landed `DONE`, `S2 STAGE C DRIVER DONE k=27`, exit 0**, with the driver's own log
+      confirming `ONLY_IDS (registered subset of the first 27)`, both amendments' knobs echoed, and the
+      C-DEAD line listing **`problem_18` first**.
+      **RED — a second dry with `ONLY_IDS="problem_18 problem_112 problem_54 problem_73"` lands
+      `SYNTHETIC … NOT_RUN(view_dead)` for all three C-dead ids and runs only `problem_73`** ⇒ the new
+      `c_dead` entry is not a document, it is a branch the driver takes. *Both arms differ, on the machine.*
+- [x] **`HASHES.txt` regenerated and reproducing.** The three `leanproj-*` pins re-derived from the Studio's
+      live project are **byte-identical to the frozen ones** (`66fd2abd… / 75f31318… / d55ca003…`) — itself the
+      content check that the shared build is the pinned one. Delta across both amendments: **7 files re-pinned,
+      6 added, and nothing else moved** — every one of the 644 view pins and every arm rendering unchanged.
+- [ ] **the dated freeze commit — the authorization (F2). Only then the first model call, and not before
+      09/02**, which is the commission's own objection window.
+
+## §13 · DISPATCH — WHAT HAPPENS AFTER THE FREEZE, IN ORDER
+
+Recorded here so the freeze is not mistaken for a start. **No model token is spent by this amendment.**
+
+1. **ARM `halt_watch.sh` on the Studio, in `tmux`, BEFORE the first episode** —
+   `halt_watch.sh $BENCH C a0 50000000 12` (§6's registered stops). *A budget rule with no live enforcer is a
+   sentence, and an enforcer armed after the first episode is a sentence with a timestamp.*
+2. **One quota reading at dispatch. Never a poll.**
+3. **Step 1**: `ARMS=a0`, `ONLY_IDS` = the registered 12, `R_AMEND=100`, `TC_AMEND=20000000`, stage C, own
+   state root, `smoke.log` and the **fresh** `s2-controls.json` copied in so both gates still apply.
+4. **The gate read**: `ML_ARMS=a0`, and `P0` is the **count on the REGISTERED POPULATION line**, never the
+   printed rate over 22 (§2, amendment 12 §3).
+5. **§8's permissive-oracle diagnostic**, over the landed artifacts, at zero model tokens, reported BESIDE the
+   number and never against it.
+6. Then §9's branches, and nothing else.
