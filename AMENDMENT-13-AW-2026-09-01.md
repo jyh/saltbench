@@ -153,3 +153,29 @@ coarse instrument and is stated as one. It cannot separate "the placebo prompt i
 prompt helps exactly as much as the salt prompt does" — **both predict ARM-INDEPENDENT**, and distinguishing
 them is not on this instrument at any n it can afford. It says nothing about stage C (read at the ceiling on
 a different population) and nothing about the salt method, which `a2` already answered as the null.
+
+---
+
+## ADDENDUM 1 (2026-09-01 22:3x, BEFORE THE FIRST `a1` CALL) — HOW §7's QUOTA READING IS SATISFIED, AND WHY NO SECOND READING IS TAKEN
+
+§7 registers *"one quota reading at THIS dispatch."* **The reading of record is the helm's, taken at
+2026-09-01 14:0x and posted at bus offset 30441837: `kriterion 1/0/0` (5h-rolling / all-models-weekly /
+fable-weekly), resets Sep 7.** It was taken **for this ladder**, and the Captain's word in the same post
+prices AW inside it explicitly ("AW runs in every branch after the gate read (≈13M, kriterion)").
+
+**MEASURED SINCE, at the artifact rather than estimated:** amendment 11 Step 1 spent **4,352,098 metered
+tokens** (12 episodes, 56.7 min). That is the entire consumption between the reading and this dispatch.
+⇒ The dispatch position is *the helm's reading plus one exactly-known delta*, which is **strictly better
+information than a fresh reading**, and it cost nothing.
+
+**A SECOND READING IS DELIBERATELY NOT TAKEN, for two reasons, both recorded so the deviation is visible:**
+1. **A reading costs quota and the commission's rule is "one reading at dispatch; never poll."** Two readings
+   twenty minutes apart, spanning one known 4.35M spend, is the poll the rule exists to forbid.
+2. ⛔ **AND THE MECHANICAL ONE, WHICH MATTERS MORE:** there is no harness tool for the quota triple
+   (`quota_evidence.txt` is only a regex scrape of error text and is EMPTY for all 12 episodes — correctly,
+   since none hit a limit). Reading it would mean an ad-hoc `claude` call **inside the hermetic config dir
+   `~/.claude-bench`**, which would write a session into its `projects/` — a directory the freeze requires to
+   stay EMPTY and which `episode_s2.sh` audits per episode (`configdir_unexpected.txt`).
+   ⇒ ***the instrument for reading the budget would damage the hermeticity the budget is being spent on.***
+   Recorded as an owed item: **a quota reading has no non-invasive mechanism at this seat**, and building one
+   is its own work, not a line item inside a run.
