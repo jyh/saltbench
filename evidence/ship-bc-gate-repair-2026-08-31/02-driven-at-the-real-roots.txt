@@ -1,0 +1,94 @@
+# The BC gate driven at the REAL roots, 2026-08-31 — READ-ONLY: bc_gate.py only; ship BC's rsyncs were NOT run.
+# Generated 2026-09-01T00:55:06Z
+
+===== /Users/jyh/bench-a8  arms=a0,a2  ids=U15 =====
+--- the FROZEN predicate (grep -q 'S2 STAGE A DRIVER DONE' $R/logs/run_s2_stage0.log) ---
+  PASS  (it would have shipped 322 GT files into this root)
+--- the NEW content gate (bc_gate.py) ---
+BC CONTENT GATE  root=/Users/jyh/bench-a8  arms=a0,a2  ids=15  max_age_h=24
+  green problem_73/a0      ep-26e6d3e5  end_utc=1788201418 (6.3 h ago)  sha=c383399c006ce3fd
+  green problem_73/a2      ep-519056f3  end_utc=1788201790 (6.2 h ago)  sha=433fa4bd230b2309
+  green problem_0/a0       ep-a82f0235  end_utc=1788202114 (6.1 h ago)  sha=3021ca3d4fb4588a
+  green problem_0/a2       ep-cd80ff67  end_utc=1788202002 (6.1 h ago)  sha=3021ca3d4fb4588a
+  green problem_146/a0     ep-b0ba9fd8  end_utc=1788202245 (6.1 h ago)  sha=930ebc53c2d6be94
+  green problem_146/a2     ep-d39c204e  end_utc=1788202818 (5.9 h ago)  sha=a5ef022b4c7fe723
+  green problem_16/a0      ep-a0207aa8  end_utc=1788203122 (5.8 h ago)  sha=a2bf841dd3f4a24f
+  green problem_16/a2      ep-ec60f2d3  end_utc=1788203030 (5.9 h ago)  sha=4e597849c4c110f6
+  green problem_4/a0       ep-862c93ca  end_utc=1788203273 (5.8 h ago)  sha=18c44c5d3f148110
+  green problem_4/a2       ep-975a2b08  end_utc=1788203425 (5.7 h ago)  sha=3a821840e7bbac9b
+  green problem_38/a0      ep-980deeb6  end_utc=1788203789 (5.6 h ago)  sha=9300d41044c9ea4a
+  green problem_38/a2      ep-a5e09fee  end_utc=1788203697 (5.7 h ago)  sha=a8f63755a02eecc0
+  green problem_142/a0     ep-e3a6ef39  end_utc=1788203940 (5.6 h ago)  sha=a1dd5a58be313f71
+  green problem_142/a2     ep-007e3ec2  end_utc=1788204152 (5.5 h ago)  sha=e6da320b0363a917
+  green problem_96/a0      ep-cec27ffe  end_utc=1788204495 (5.4 h ago)  sha=c2962a9ce17d00db
+  green problem_96/a2      ep-a0558aee  end_utc=1788204404 (5.5 h ago)  sha=669b349656714c72
+  green problem_112/a0     ep-0abbee2d  end_utc=1788204646 (5.4 h ago)  sha=e28182444eefd106
+  green problem_112/a2     ep-3f17b258  end_utc=1788204898 (5.3 h ago)  sha=f71afda6f976f127
+  green problem_141/a0     ep-94bbd45e  end_utc=1788205481 (5.2 h ago)  sha=172718ef1c5aa95b
+  green problem_141/a2     ep-2f4e0bf8  end_utc=1788205210 (5.2 h ago)  sha=312d626785836bf6
+  green problem_31/a0      ep-0180295d  end_utc=1788205573 (5.1 h ago)  sha=6b1d7f140c79d52b
+  green problem_31/a2      ep-764b205d  end_utc=1788205744 (5.1 h ago)  sha=1918b84e4c4b37c8
+  green problem_54/a0      ep-6a02f4da  end_utc=1788206046 (5.0 h ago)  sha=6c35b66687611c51
+  green problem_54/a2      ep-b792e613  end_utc=1788205915 (5.1 h ago)  sha=6c35b66687611c51
+  green problem_127/a0     ep-e3ec6b0c  end_utc=1788206177 (5.0 h ago)  sha=8e2721ff82452c4e
+  green problem_127/a2     ep-72ec19e9  end_utc=1788206369 (4.9 h ago)  sha=4aed5de9f7144e02
+  green problem_18/a0      ep-baaaed5d  end_utc=1788206732 (4.8 h ago)  sha=f7e2840e0fa7f762
+  green problem_18/a2      ep-60a7eb99  end_utc=1788206621 (4.9 h ago)  sha=d51fb9415184e753
+  green problem_74/a0      ep-4cdab930  end_utc=1788206824 (4.8 h ago)  sha=9e6a5f43312b890c
+  green problem_74/a2      ep-16f666d6  end_utc=1788206955 (4.8 h ago)  sha=f7308fac86dd5691
+PASS: 30/30 cells carry a content-verified, in-root, fresh stage-A pass.
+  rc=0
+
+===== /Users/jyh/bench  arms=a0,a1,a2  ids=U15 =====
+--- the FROZEN predicate (grep -q 'S2 STAGE A DRIVER DONE' $R/logs/run_s2_stage0.log) ---
+  PASS  (it would have shipped 322 GT files into this root)
+--- the NEW content gate (bc_gate.py) ---
+BC CONTENT GATE  root=/Users/jyh/bench  arms=a0,a1,a2  ids=15  max_age_h=24
+  RED   problem_73/a0      episode ep-f2570412 finished 61.3 h ago (> 24) — STALE
+  RED   problem_73/a1      episode ep-e483ac97 finished 27.8 h ago (> 24) — STALE
+  RED   problem_73/a2      episode ep-a2655135 finished 27.8 h ago (> 24) — STALE
+  RED   problem_0/a0       episode ep-977a8162 finished 61.2 h ago (> 24) — STALE
+  RED   problem_0/a1       episode ep-55e6e165 finished 27.8 h ago (> 24) — STALE
+  RED   problem_0/a2       episode ep-07715727 finished 27.7 h ago (> 24) — STALE
+  RED   problem_146/a0     episode ep-1e6c7bba finished 61.1 h ago (> 24) — STALE
+  RED   problem_146/a1     episode ep-8b5adb59 finished 27.6 h ago (> 24) — STALE
+  RED   problem_146/a2     episode ep-3fcca2c7 finished 27.7 h ago (> 24) — STALE
+  RED   problem_16/a0      episode ep-35a9e769 finished 61.0 h ago (> 24) — STALE
+  RED   problem_16/a1      episode ep-af0f8c0c finished 27.6 h ago (> 24) — STALE
+  RED   problem_16/a2      episode ep-c2b569cb finished 27.6 h ago (> 24) — STALE
+  RED   problem_4/a0       episode ep-d381f098 finished 61.0 h ago (> 24) — STALE
+  RED   problem_4/a1       episode ep-9b841474 finished 27.5 h ago (> 24) — STALE
+  RED   problem_4/a2       episode ep-2c940b81 finished 27.5 h ago (> 24) — STALE
+  RED   problem_38/a0      episode ep-9f489e48 finished 60.9 h ago (> 24) — STALE
+  RED   problem_38/a1      episode ep-2347e0f2 finished 27.5 h ago (> 24) — STALE
+  RED   problem_38/a2      episode ep-cea90855 finished 27.5 h ago (> 24) — STALE
+  RED   problem_142/a0     episode ep-90d4b5fe finished 30.4 h ago (> 24) — STALE
+  RED   problem_142/a1     episode ep-8d8ca699 finished 27.3 h ago (> 24) — STALE
+  RED   problem_142/a2     episode ep-7c6e7c63 finished 27.4 h ago (> 24) — STALE
+  RED   problem_96/a0      episode ep-8dc70ad1 finished 30.4 h ago (> 24) — STALE
+  RED   problem_96/a1      episode ep-e252700a finished 27.3 h ago (> 24) — STALE
+  RED   problem_96/a2      episode ep-91a20a05 finished 27.3 h ago (> 24) — STALE
+  RED   problem_112/a0     episode ep-db3b0174 finished 30.3 h ago (> 24) — STALE
+  RED   problem_112/a1     episode ep-5588e2f1 finished 27.2 h ago (> 24) — STALE
+  RED   problem_112/a2     episode ep-6f0003cf finished 27.2 h ago (> 24) — STALE
+  RED   problem_141/a0     episode ep-38c0c4e5 finished 30.3 h ago (> 24) — STALE
+  RED   problem_141/a1     episode ep-1351b724 finished 27.2 h ago (> 24) — STALE
+  RED   problem_141/a2     episode ep-017eeff2 finished 27.1 h ago (> 24) — STALE
+  RED   problem_31/a0      episode ep-6fa0959b finished 30.3 h ago (> 24) — STALE
+  RED   problem_31/a1      episode ep-cd02ea2d finished 27.0 h ago (> 24) — STALE
+  RED   problem_31/a2      episode ep-eb5d9d1a finished 27.1 h ago (> 24) — STALE
+  RED   problem_54/a0      episode ep-03345255 finished 30.3 h ago (> 24) — STALE
+  RED   problem_54/a1      episode ep-baeb9fab finished 27.0 h ago (> 24) — STALE
+  RED   problem_54/a2      episode ep-05c352f1 finished 27.0 h ago (> 24) — STALE
+  RED   problem_127/a0     episode ep-558c5c79 finished 30.3 h ago (> 24) — STALE
+  RED   problem_127/a1     episode ep-01e10eea finished 27.0 h ago (> 24) — STALE
+  RED   problem_127/a2     episode ep-ddc8c34b finished 27.0 h ago (> 24) — STALE
+  RED   problem_18/a0      episode ep-0bcd994b finished 30.2 h ago (> 24) — STALE
+  RED   problem_18/a1      episode ep-e8ff1c48 finished 26.9 h ago (> 24) — STALE
+  RED   problem_18/a2      episode ep-4c510ba9 finished 26.9 h ago (> 24) — STALE
+  RED   problem_74/a0      episode ep-866ff8b0 finished 30.2 h ago (> 24) — STALE
+  RED   problem_74/a1      episode ep-acdddd47 finished 26.8 h ago (> 24) — STALE
+  RED   problem_74/a2      episode ep-cd17debf finished 26.9 h ago (> 24) — STALE
+REFUSE: 45 of 45 cells failed the content gate — stage A has NOT completed in this root.
+        (FORCE_BC=1 overrides, loudly. A DONE line is not evidence; this gate reads the state.)
+  rc=3

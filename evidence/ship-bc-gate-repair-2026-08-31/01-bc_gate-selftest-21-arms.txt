@@ -1,0 +1,26 @@
+=== the gate's own arms (bc_gate.py, real argv, subprocess) ===
+ok    arm 1  complete, fresh, content-consistent root -> PASS     rc=0
+ok    arm 2  DONE line present, state EMPTY (the 08/31 state)     rc=3
+ok    arm 3  one cell has no A.bodies.json                        rc=3
+ok    arm 4  a_passed=false                                       rc=3
+ok    arm 5  A.bodies.json is a 0-byte file                       rc=3
+ok    arm 6  provenance episode is NOT in this root (cross-root)  rc=3
+ok    arm 7  episode bodies swapped after the fact (receipt)      rc=3
+ok    arm 8  provenance episode is stage B, not A                 rc=3
+ok    arm 9  manifest has no end_utc — a gate with no clock     rc=3
+ok    arm 10 root is fresh-complete but 111 h old (the CLOCK arm) rc=3
+ok    arm 11 ...and the same stale root passes at --max-age-h 200 rc=0
+ok    arm 12 root does not exist (the WRONG-ROOT arm)             rc=3
+ok    arm 13 --root omitted: REFUSE, no default                   rc=2
+ok    arm 14 --ids omitted: REFUSE, no default                    rc=2
+ok    arm 15 --arms omitted: REFUSE, no default                   rc=2
+ok    arm 16 a non-numeric id                                     rc=2
+ok    arm 17 an id that was never run                             rc=3
+ok    arm 18 an arm that was never run                            rc=3
+
+=== THE FLIP, DRIVEN: the FROZEN predicate vs the new gate, on the SAME roots ===
+  donebutempty   frozen-predicate=PASS   content-gate=REFUSE <= FLIP
+  stale          frozen-predicate=PASS   content-gate=REFUSE <= FLIP
+  good           frozen-predicate=PASS   content-gate=PASS   
+
+bc_gate selftest: 21 ok, 0 failed

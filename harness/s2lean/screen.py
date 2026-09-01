@@ -9,7 +9,9 @@ It runs over the bodies AFTER stripping `--` line comments, nested `/- … -/` b
 included), string literals ("…", s!"…", r"…", r#"…"#) and char literals ('a', '\n', '\''), so that a comment
 such as `-- no sorry here` or a string `"run_cmd"` cannot trip it (refuter R2). `sorry`/`admit` are NOT screened:
 they are decided structurally (sorryAx in the collected axioms). `set_option <heartbeat-class option> <nat> in`
-is allowed (R2); any other set_option is screened (debug.skipKernelTC lives there).
+is allowed (R2), and `set_option linter.<leaf> <true|false>` is allowed in both the bare and `in` forms
+(amendment 9 §9.5, 2026-08-31, proven by differential measurement — a linter setting changes only which warnings
+are printed); ANY OTHER set_option is screened (debug.skipKernelTC lives there).
 
 usage: screen.py <bodies.json>            -> JSON list of violations "key: token@line"
        screen.py --selftest               -> runs the built-in cases, exit 0 iff all pass
@@ -25,8 +27,22 @@ TOKENS = [
     "axiom", "unsafe", "implemented_by", "extern", "opaque", "partial", "set_option",
 ]
 _TOK = re.compile(r"(?<![A-Za-z0-9_.'!?#])(?:%s)(?![A-Za-z0-9_!?'])" % "|".join(re.escape(t) for t in TOKENS))
-# The ONE allowed set_option family (R2): resource limits, `in` form, a literal natural.
+# The allowed set_option families. TWO clauses, and no third.
+#  (1) R2: resource limits, `in` form, a literal natural.
+#  (2) AMENDMENT 9 §9.5 (2026-08-31): an option under the `linter.` NAMESPACE with a BOOLEAN literal, in the bare
+#      form as well as the `in` form. Registered before its first use and proven by a differential MEASUREMENT,
+#      not by a taxonomy of "harmless" options: over the campaign's one screened episode (problem_112/a2,
+#      ep-6b5540c0) the full gate — compile, kernel replay, statement byte-identity, axiom allowlist — returns
+#      the IDENTICAL verdict and the IDENTICAL axiom sets with the pragma present and with it deleted, and the
+#      only observable difference is the number of deprecation WARNINGS printed (6 vs 11). A linter is an
+#      elaboration-time diagnostic; its verdict is a message, and messages do not enter the terms the kernel
+#      checks. ⛔ The clause is deliberately NARROW — a dotted leaf under `linter.` and a literal `true`/`false`
+#      and nothing else — because everything it does not match still falls to "everything else", where
+#      `debug.skipKernelTC` lives. `linterFoo.bar`, bare `linter`, and a non-boolean value are all still refused,
+#      and each of those is a driven case in screen_widening_proof.py.
 ALLOWED_SET_OPTION = re.compile(r"set_option\s+(?:maxHeartbeats|maxRecDepth|synthInstance\.\w+)\s+\d+\s+in(?![A-Za-z0-9_])")
+ALLOWED_LINTER_OPTION = re.compile(
+    r"set_option\s+linter(?:\.[A-Za-z_][A-Za-z0-9_']*)+\s+(?:true|false)(?![A-Za-z0-9_'])(?:\s+in(?![A-Za-z0-9_]))?")
 _CHAR = re.compile(r"'(?:\\(?:x[0-9A-Fa-f]{2}|u\{[0-9A-Fa-f]+\}|.)|[^'\\\n])'")
 _RAW = re.compile(r'r(#*)"')
 
@@ -87,6 +103,7 @@ def strip(src):
 def screen_text(text):
     """Violations in one body: list of 'token@line'."""
     s = ALLOWED_SET_OPTION.sub(" ", strip(text or ""))
+    s = ALLOWED_LINTER_OPTION.sub(" ", s)
     return ["%s@%d" % (m.group(0), s.count("\n", 0, m.start()) + 1) for m in _TOK.finditer(s)]
 
 
@@ -110,6 +127,16 @@ CASES = [  # (body, expected tokens)
     ("set_option maxHeartbeats 0 in by simp", []),
     ("set_option synthInstance.maxHeartbeats 100000 in by simp", []),
     ("set_option debug.skipKernelTC true in\ntheorem x : True := trivial", ["set_option@1"]),
+    ("set_option debug.skipKernelTC true\ntheorem x : True := trivial", ["set_option@1"]),
+    # amendment 9 §9.5 — the `linter.` clause, and the four near-misses it must NOT admit
+    ("set_option linter.deprecated false\n\ntheorem t : True := trivial", []),
+    ("set_option linter.deprecated false in\ntheorem t : True := trivial", []),
+    ("set_option linter.style.longLine false\nexact foo", []),
+    ("set_option linterFoo.bar false\nexact foo", ["set_option@1"]),
+    ("set_option linter false\nexact foo", ["set_option@1"]),
+    ("set_option linter.deprecated 5\nexact foo", ["set_option@1"]),
+    ("set_option pp.all true\nexact foo", ["set_option@1"]),
+    ("set_option linter.deprecated false in\nset_option debug.skipKernelTC true in\nexact foo", ["set_option@2"]),
     ("set_option maxHeartbeats 400000\nby simp", ["set_option@1"]),
     ("local notation \"problem_spec\" => True", ["notation@1"]),
     ("macro_rules | `(∀ $xs:ident*, $b) => `(True)", ["macro_rules@1"]),

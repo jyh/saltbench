@@ -1,0 +1,5 @@
+THE PROVEN NO-OP — amendment 9 section 9.5, the linter clause, over EVERY landed episode in BOTH state roots
+landed bodies compared: 201
+old screen reproduces the RECORDED check.screen verdict on: 201 of 201 (mismatches: 0 )
+identical old vs new: 200   differing: 1
+    ('bench-a8', 'problem_112', 'B', 'a2', 'ep-6b5540c0', "recorded=['iso_helper_lemmas: set_option@1']", "old=['iso_helper_lemmas: set_option@1']", 'new=[]')

@@ -1483,3 +1483,392 @@ stage, k=15, no p-value, and — as of this read — one cell of the contrast ne
 specification problems, the plain agent and a faithful solo rendering of the method proved the same number of
 problems and disagreed on exactly one problem each — while the tier raise itself bought two problems in both arms
 at a quarter of the price.* **The variable that moved the result was the model, not the method.**
+
+---
+
+### Amendment 9 — 2026-08-31 (17:4x PDT / 2026-09-01 00:4x UTC), row AC: the REFUSED `112 / a2` CELL — a DIAGNOSTIC over a FROZEN artifact, registered BEFORE its first check and BEFORE any number
+
+**What authorizes it.** The Captain's standing law of 2026-08-31 17:4x, verbatim on the bus: *"You don't need to
+block on me, the only restricted operations are external facing… everything is preapproved, make good choices. If
+any seat is uncertain, work on a branch."* The helm's routing to this seat in the same post: *"row AC's asterisk —
+state YOUR OWN pre-registered criterion for the refused `112/a2` cell on a branch, fire the registered `a1` arm
+under it, and post the result as the sitting's evidence with the criterion stated before the number."* This
+amendment is that criterion. It is written and committed on branch `bench/amend9-refused-cell` **before the first
+check is run**, which is the only property that makes it worth anything.
+
+**Why a criterion is needed at all, stated without softening it.** I have already seen the result the refused cell
+would change. Re-examining one cell *chosen because of the answer it produced* is the exact act pre-registration
+exists to prevent, and "everything is preapproved" does not repeal that — it hands me the DECISION; it does not
+hand me permission to make the decision after the fact. So the order of work is: the criterion, in writing,
+committed; then the check.
+
+---
+
+#### 9.0 · What this amendment does NOT amend
+
+The **amendment-8 reading of record is untouched and stays untouched**: `a0` 10/15, `a2` 10/15, `a0`-only `{112}`,
+`a2`-only `{4}`, `|b−c| = 0`, INDISTINGUISHABLE. The frozen screen behaved exactly as frozen; `problem_112 / a2 /
+ep-6b5540c0` is `class = SCREEN` in its manifest and **remains `SCREEN` in its manifest forever**. Nothing produced
+under this amendment retro-scores a landed episode, and no figure in §Amendment 8 — RESULT is rewritten by it. What
+this amendment produces is a **DIAGNOSTIC, labelled as such wherever it is reported**, in the shape amendment 2 used.
+
+---
+
+#### 9.1 · THE CORRECTION THAT COMES FIRST — amendment 8's statement of the stakes is ARITHMETICALLY WRONG, and it is the reason this row exists
+
+Amendment 8 — RESULT, integrity event (1), says of the refused cell:
+
+> *"had it passed, `a2` would read 11/15 and the salt-only cell would be 2 — which is precisely the `b − c ≥ 2`
+> that this amendment registered as the trigger for the contingent `a1` placebo arm."*
+
+**The second clause is false, and I found it while writing this criterion, before running anything.** Read at the
+artifact (`evidence/opus-reach-read-2026-08-31/01-morning-line-a0-a2.txt:11,16` and
+`03-stageB-per-problem-and-cost-split.txt:7`):
+
+- `a0` proven = `[73, 146, 16, 38, 142, 112, 141, 31, 54, 74]` — **`112` is already in the control's pass set.**
+- `a2` proven = the same ten with `4` in place of `112`.
+- ⇒ `a0`-only `= {112}`, `a2`-only `= {4}`, and the tool prints `b(a0 only)=1 c(a2 only)=1 n_d=2 |b-c|=0`.
+
+If the refused cell resolves to a PASS, `112` becomes a **mutual** pass, not a salt-only pass. The cells become
+`a0`-only `= {}` and `a2`-only `= {4}`: the **salt-only cell stays at 1**, and it is the *control-only* cell that
+falls to 0. The salt arm's margin over the control goes from **0 to +1** — never to +2. The slip is exactly the one
+it looks like: `{4} ∪ {112}` was counted as the salt-only cell while `112` was already the control's.
+
+⛔ **CONSEQUENCE, AND IT SHRINKS THE ROW:** under **either** resolution of the refused cell, the registered
+contingency for the placebo arm — *"it runs if and only if `a2` beats `a0` by `b − c ≥ 2` at stage B"* — **does not
+fire.** The reachable maximum is +1. The null does not rest on the unevaluated cell. **The RATE does** — `a2` would
+read 11/15 against `a0`'s 10/15 — and that is a real and sufficient reason to run the diagnostic, but it is a
+smaller claim than the one amendment 8 made, and the smaller claim is the true one.
+
+📌 **A SECOND DEFECT IN THE SAME SENTENCE, NAMED SO IT CANNOT BIND ANYTHING LATER.** The registered trigger's prose
+and its symbols contradict each other. `s2_morning_line.py:211` prints `b` = **first-arm-only** and `c` =
+**second-arm-only**, so at `ML_ARMS=a0,a2` the symbols read `b = a0`-only, `c = a2`-only, and "`b − c ≥ 2`" is
+literally *the control beating the salt arm by two*. The prose says the opposite ("`a2` beats `a0`"). The intent is
+unambiguous from the surrounding paragraph and I read it as intended — **(a2-only) − (a0-only) ≥ 2** — but a
+trigger whose words and whose symbols disagree is not a rule, and it must not be left to be resolved by whoever
+reads it after seeing a number. **It is resolved here, in the intended direction, before any number.**
+⇒ **A CONTINGENCY REGISTERED IN TWO NOTATIONS IS TWO CONTINGENCIES UNTIL SOMEONE PICKS ONE — AND THE MOMENT TO
+PICK IS BEFORE THE DATA, WHICH IS NOW.**
+
+---
+
+#### 9.2 · THE CRITERION — admissibility is MEASURED, not asserted
+
+The screen (`harness/s2lean/screen.py`) is defence in depth, not the gate: it refuses bodies carrying
+command-introducing or meta keywords so that agent meta-code is never compiled. Its `set_option` clause is a
+**whitelist** (`maxHeartbeats | maxRecDepth | synthInstance.*`, literal nat, `in` form) and everything else is
+refused **because `debug.skipKernelTC` lives in "everything else"**. A whitelist is the correct direction for a
+soundness screen and that direction does not change here.
+
+I will not decide admissibility by asserting a taxonomy of "harmless" options — that is exactly the kind of
+judgement that bends toward the answer one wants. **The criterion is a differential measurement, registered now:**
+
+> **A `set_option` occurrence in a landed body is ADMISSIBLE iff, holding the agent's bodies byte-identical
+> otherwise, the assembled module passes the FULL gate — compile, kernel replay (`loadExts := false` +
+> `Environment.replay`), statement byte-identity, axiom allowlist — with the pragma PRESENT, and the run with the
+> pragma DELETED produces the IDENTICAL gate outcome, the IDENTICAL axiom sets for all three names, and the
+> IDENTICAL `spec_isomorphism` statement. If deleting the pragma changes ANY gate outcome, the pragma had semantic
+> content and the refusal STANDS.**
+
+Both arms are run and both are reported. The pragma-deleted arm is the negative control: **a pragma that can be
+removed without changing a single gate outcome cannot have bought the proof.** If the deleted arm fails to compile
+where the present arm compiles, that is itself the proof that the refusal was right, and it is reported as such.
+
+The soundness argument that makes this criterion *principled* rather than merely convenient — stated before the
+measurement, so the measurement can refute it: a Lean linter is an **elaboration-time diagnostic pass**; its verdict
+is a message, and messages do not enter the terms the kernel checks. Downstream of it this campaign's gate replays
+the environment from `ConstantInfo`s in a fresh kernel, which cannot see an option that only governed which
+warnings were printed. If that argument is wrong, the differential arm will say so.
+
+---
+
+#### 9.3 · SCOPE — what may and may not be touched
+
+**MAY:** re-run `check.py` over the **stored** bodies of `ep-6b5540c0`, pinned at
+`bodies_sha256 = 06f40a82464212a9046628d961e2052162d5cea66a9b6ac8c232567320ff4ba1`
+(`a_bodies_sha256 = f71afda6…`, `view_sha256 = dc7f28bc…`, `frozen_sha256 = 206dc29a…`, all read from the landed
+manifest), with the screen's refusal bypassed under §9.2 and with the pragma-deleted differential as its control.
+
+**MAY NOT — no model call of any kind.** No new episode, no re-sampling, no new draw, no change of population, arm,
+tier or constants. The agent's output is FIXED at the sha above; this amendment re-runs the *checker*, never the
+agent. **Zero model tokens are authorized by this amendment and zero are expected.** If any step turns out to need
+a model call, this amendment does not cover it and the work stops.
+
+**MAY NOT retro-score.** Landed manifests are not rewritten; the morning line of record is not re-run against
+altered artifacts; the diagnostic is reported as a separate, labelled table.
+
+**MUST be symmetric.** The procedure applies to **every** episode in the campaign whose class is `SCREEN` or whose
+`check.screen` list is non-empty — not to a cell selected for its effect. Enumerated at the artifact across BOTH
+state roots (`~/bench/state` and `~/bench-a8/state`, all `ep-*/manifest.json`) before this text was written:
+**exactly one such episode exists in the whole campaign** — `bench-a8 · problem_112 · B · a2 · ep-6b5540c0 ·
+SCREEN · ['iso_helper_lemmas: set_option@1']`. The symmetry requirement is therefore satisfied trivially, and that
+fact is itself the record that no selection took place.
+
+---
+
+#### 9.4 · THE PRE-COMMITTED REPORT — both branches, written before the check
+
+**If the stored body PASSES the full gate under §9.2 (and its deleted-pragma control agrees):** report, labelled
+DIAGNOSTIC, that `a2` would read **11/15** against `a0`'s 10/15 on U15 at the Opus tier; that the contrast becomes
+`a0`-only `= 0`, `a2`-only `= 1`, `|b − c| = 1`, **still INDISTINGUISHABLE** under the registered rule
+(`|b−c| < 5`); and that the registered `≥ 2` contingency **does not fire** (§9.1). The conclusion I will draw, and
+I am writing it now so it cannot be improved later: *the headline RATE of the salt arm rested on an unevaluated
+cell; the NULL did not.*
+
+**If the stored body FAILS the full gate:** report the class it earns and its axiom sets; `a2` = 10/15 stands
+confirmed by measurement rather than by refusal; the screen cost the campaign nothing on this cell; and the same
+`≥ 2` contingency still does not fire.
+
+**If the two differential arms DISAGREE:** the pragma had semantic content, the refusal is vindicated on its
+merits, the screen's whitelist is *not* widened (§9.5 is withdrawn), and that is the headline of the diagnostic.
+
+**In every branch:** report both arms, the pinned shas, the exact `check.json` produced, and the enumeration of
+§9.3 showing that one screened cell existed and one was examined.
+
+---
+
+#### 9.5 · THE SCREEN CHANGE — registered here, NON-RETROACTIVE, red-first, and contingent on §9.4
+
+If and only if the differential arms agree, `ALLOWED_SET_OPTION` is widened by exactly one clause: an option under
+the **`linter.` namespace** with a boolean literal, in **both** the bare and the `in` forms. Nothing else moves —
+`debug.*`, `compiler.*`, `maxRecDepth` outside the existing clause, and every other `set_option` stay refused.
+
+The change lands **only with a red-first gate**, in this repo's standing form: new `screen.py` self-test cases that
+**FAIL against the current file and PASS against the changed one** — (a) `set_option linter.deprecated false` bare
+and (b) in `in` form are admitted; and cases that must stay red in both — (c) `set_option debug.skipKernelTC true`
+bare and (d) in `in` form are refused, (e) a non-`linter` option outside the resource whitelist is refused. The
+change applies to **future runs only**: it does not alter the class of any landed episode, and the campaign's one
+screened cell keeps its `SCREEN` manifest whatever the diagnostic finds.
+
+---
+
+#### 9.6 · THE CONTINGENT `a1` ARM — the registered rule, applied honestly
+
+The helm's routing says *"fire the registered `a1` arm under it."* Applied under the criterion above, **the
+registered `a1` arm does not fire**, and it does not fire in either branch of §9.4, because its trigger is
+`(a2-only) − (a0-only) ≥ 2` and the arithmetic of §9.1 caps the reachable value at **+1**. Firing it anyway would
+not be firing *the registered arm* — it would be adding an unregistered arm after seeing the data, which is the
+precise thing the contingency was written into amendment 5 to prevent. **I am not inventing a reach to get there.**
+
+That is a report to the desk, not a refusal to work: **if `a1` at the Opus tier is wanted, it is wanted for a
+different and nameable reason** — to test whether the tier's +2 is arm-independent across all three arms, i.e.
+whether the one separation this campaign has measured is a property of the model at every rung. That is a NEW
+question, it needs its OWN dated amendment with its own prediction registered before its first call, and it prices
+off the measured amendment-8 basis at **≈13 M metered / ≈2.5 h** for one 15-problem arm (stage A + stage B, both
+arms' Opus per-episode costs). It is not authorized by this amendment and no part of it runs under this one.
+
+---
+
+#### 9.7 · Price, mechanism, and the stop rule
+
+**Model tokens authorized: ZERO.** Compute is the Studio's existing shared Lean build (`~/lean-shared/clever`,
+toolchain `leanprover/lean4:v4.27.0`, mathlib `a3a10db0…`) driven by `check.py` at its landed pin
+`9aa58095579dfc7d12cb0c727c23c7a6dffe7efaa0b0ba0b76111cd7dd767f8b`. Wall is bounded by two module compiles.
+**Stop rule with its mechanism, not a sentence:** if either compile exceeds 15 minutes it is killed at the shell
+and the branch is reported as INCONCLUSIVE rather than resolved in either direction — an unfinished compile is not
+a verdict, and a diagnostic that cannot finish must say so rather than inherit the refusal's answer.
+
+**Merge rule (the Captain's law):** merged to `master` on green, abandoned on red, and the ruling folded in
+whenever it comes. The registered text above is never edited after the fact — corrections are appended.
+
+---
+
+### Amendment 9 — RESULT, 2026-08-31: THE REFUSED CELL WAS A PROOF. The salt arm proved problem 112 and the instrument refused to look — and the null still stands
+
+**Zero model tokens spent, as registered.** The checker was re-run over the frozen agent artifact; the agent was
+never called. Evidence: `evidence/amend9-refused-cell-2026-08-31/` (the diagnostic script, its full log, both
+`check.json`s, the refused bodies as landed, the landed manifest).
+
+**Provenance verified by content BEFORE the run, every pin matching the landed manifest:**
+`bodies.json` `06f40a82…` · `frozen.json` `206dc29a…` · `check.py` `9aa58095…` · `screen.py` `aa2c9376…` ·
+stage-A provenance chain `A.bodies.json` → `a_episode = ep-3f17b258` → that episode's own
+`bodies.json` = `f71afda6…` = the `a_bodies_sha256` recorded in the stage-B manifest.
+
+#### The measurement
+
+| | screen verdict | compiled | replay | statements | axioms (`spec_isomorphism`) | **class** |
+|---|---|---|---|---|---|---|
+| **PRESENT** (bodies byte-identical to what landed) | `["iso_helper_lemmas: set_option@1"]` | ✓ rc 0 | ✓ | identical | `propext, Classical.choice, Quot.sound` | **PASS** |
+| **DELETED** (the one pragma line removed) | `[]` | ✓ rc 0 | ✓ | identical | `propext, Classical.choice, Quot.sound` | **PASS** |
+
+**The differential arms AGREE, and they agree on every field that bears on the gate.** Computed over the whole
+`check.json` object, the two runs are identical on `class`, `passed`, `compiled`, `rc`, `replay_ok`,
+`statements_identical`, `statement_diffs`, `axioms_ok`, `axioms` (all three names), `statements`, `sorry_lines`
+(empty) and `module_constants` (all 19, same set). They differ on exactly nine fields, and **every one of them is
+either the screen verdict itself, a hash of the file with one line removed, or a wall-clock**:
+`screen`, `canonical_sha256`, `canonical_olean_sha256`, `log_tail`, `check_work`, `compile_wall_s`,
+`audit_wall_s`, `pristine_wall_s`, `pristine_cached`.
+
+⭐ **AND `log_tail` IS THE POSITIVE CONTROL I DID NOT PLAN FOR.** The pragma-deleted arm emits **11** deprecation
+warnings where the pragma-present arm emits **6** — `String.data has been deprecated: Use String.toList instead`.
+That is the pragma's entire effect, visible in the artifact: **it changed how many warnings were printed and
+nothing else.** The gate is warning-blind by construction, and here it is measured being warning-blind.
+
+⇒ **The pragma is ADMISSIBLE under §9.2. The criterion registered before the number is satisfied, in the direction
+the number went, and it would have been satisfied identically had the number gone the other way** — which is the
+only thing that makes it a criterion.
+
+#### What the cell actually contained
+
+`problem_112 / a2 / ep-6b5540c0` is **a complete, honest, kernel-checked proof.** `spec_isomorphism`'s axioms are
+`[propext, Classical.choice, Quot.sound]` — **the allowlist exactly, with no `sorryAx`** — the statements are byte
+identical to the frozen ones, the kernel replayed the module from `ConstantInfo`s in a fresh environment, and
+`sorry_lines` is empty. The refused pragma sat on line 1 of `iso_helper_lemmas` and its purpose is written in the
+doc comment on the very next line: *"`String.data` is the deprecated spelling of `String.toList`."*
+
+📌 **The screen was not wrong in its DIRECTION and this result does not say it was.** A whitelist is the correct
+shape for a soundness screen, `debug.skipKernelTC` genuinely does live in "everything else", and defence in depth
+that never refuses anything is decoration. What this result says is narrower and more useful: **the campaign's
+ONE screened cell in 201 scored episodes was a FALSE POSITIVE, and it cost the treatment arm a proof it had
+actually completed.** One refusal, one instance, 100 % of them wrong.
+
+#### The arithmetic, applied exactly as §9.4 pre-committed it
+
+**DIAGNOSTIC reading** (labelled as such; the amendment-8 reading of record is unchanged at `a2` 10/15):
+
+| U15, stage B, Opus | of record (amdt 8) | **diagnostic (amdt 9)** |
+|---|---|---|
+| `a0` plain | 10/15 = 66.7 % | 10/15 = 66.7 % |
+| `a2` salt | 10/15 = 66.7 % | **11/15 = 73.3 %** |
+| `a0`-only | `{112}` | **`{}` — 0** |
+| `a2`-only (the reach cell) | `{4}` | `{4}` — **1** |
+| contrast | `\|b−c\| = 0` | **`\|b−c\| = 1` — INDISTINGUISHABLE (`\|b−c\| < 5`)** |
+
+**AND THE SENTENCE I WROTE BEFORE I HAD THE NUMBER, WHICH IS THE ONE THE RESULT EARNS:**
+⭐ ***the headline RATE of the salt arm rested on an unevaluated cell; the NULL did not.*** `a2` reads 11/15
+against `a0`'s 10/15 — a real change to a headline this campaign has published twice — and the contrast moves
+from 0 to 1, which is still INDISTINGUISHABLE under the rule registered before the first call, and still nowhere
+near the `≥ 2` that would have fired the placebo arm.
+
+⛔ **THE CONTINGENT `a1` ARM THEREFORE DOES NOT FIRE, exactly as §9.6 registered before the check** — and note
+what would have happened without §9.1: amendment 8's own text said this cell *was* the `b−c ≥ 2` trigger. Had I
+taken that sentence on trust and run `a1` on the strength of it, I would have spent ≈13 M tokens firing an arm
+whose registered condition was never met, and I would have called it "the registered contingency". ⇒ **THE MOST
+EXPENSIVE THING IN THIS AMENDMENT WAS PREVENTED BY RE-DERIVING A NUMBER THE PREVIOUS AMENDMENT HAD ALREADY
+STATED.** A registered trigger is only as good as the arithmetic that reads it, and the arithmetic is cheap.
+
+#### What this does NOT show
+
+It does not show the method works: 11 vs 10 at n=15 with `|b−c| = 1` is the same null the campaign has returned
+three times. It does not amend the reading of record. It does not license a re-run of any other cell — there is
+no other cell: **one screened episode existed in the whole campaign and it is the one examined** (§9.3,
+enumerated across both state roots before this text was written). And it says nothing about the method's
+multi-agent tier, which remains unrendered.
+
+⭐ **THE LAW THIS AMENDMENT PAYS FOR:** *a screen that refuses is a measurement it prevented, and a whitelist's
+false positives are invisible by construction — you only ever see the cell you went back for.* The campaign ran
+201 scored episodes and looked at exactly one refusal, because exactly one existed. **A screen with a higher
+refusal rate would have been hiding a proportional amount of completed work, and nothing in the pipeline would
+have said so.** ⇒ **A DEFENCE-IN-DEPTH LAYER NEEDS ITS OWN FALSE-POSITIVE READING, ROUTINELY, NOT WHEN A RESULT
+MAKES SOMEONE CURIOUS.**
+
+---
+
+### Amendment 10 — 2026-08-31, THE HERMETICITY GATE: `ship BC` stops reading a log and starts reading the state (no scored figure changes)
+
+**What it repairs.** `FINDING-ship-bc-gate-2026-08-31.md` measured `stage_views.sh`'s ground-truth gate GREEN while
+it pointed at nothing. The predicate was one line —
+`ssh STUDIO 'grep -q "S2 STAGE A DRIVER DONE" ~/bench/logs/run_s2_stage0.log'` — and the newest `DONE` in the file
+it grepped had been printed **one second after its own gate lines with zero `START`/`LANDED` between**: the first
+of the two fatals amendment 8 caught before spending a model token, i.e. the driver on the OLD root skipping all
+27 episodes and announcing completion. **The green light was minted by the exact bug the fresh state root was
+created to escape, and it outlived the escape.** Ground truth is 322 files whose arrival on the host ends stage-A
+hermeticity; the gate that decides when they may land was decorative.
+
+**This amendment touches no scored figure.** It changes a transport gate. Every landed manifest, class, rate and
+contrast is untouched, and the amendment-8 and amendment-9 readings stand exactly as written.
+
+#### 10.1 · Three defects, three answers, each one named at the thing it fixes
+
+| # | defect (as found) | answer |
+|---|---|---|
+| 1 | **WRONG ROOT** — every path in the tool was the literal `~/bench` while amendment 8's run wrote `~/bench-a8`. | `RBENCH` is **REQUIRED, absolute, and has no default**, in `ship A`, `ship BC` and `check` alike. *The only caller a default protects is the one who forgot, and forgetting is the bug* — this repo's own law, minted when `helm_append.sh`'s hardcoded seat signed one seat's confession with another's name. |
+| 2 | **NO CLOCK** — `grep -q` over an APPEND-ONLY log cannot distinguish today's `DONE` from one written days ago. | The gate reads no log. Every cell's provenance episode must have finished within `BC_MAX_AGE_H` hours (default **24**), measured from `end_utc` in that episode's own manifest. |
+| 3 | **NO SUBSTANCE** — a driver's `DONE` line is the DRIVER'S CLAIM, not the STATE'S FACT. | The gate walks the drawn ids × the arms and verifies each stage-A artifact **by content**: the file exists and is non-empty, carries the D5 provenance keys, `a_passed` is `true`, `generated_spec_body` is non-empty, the episode it names **exists in this root**, that manifest agrees on `stage`/`instance_id`/`arm`, and — the receipt — **its `a_bodies_sha256` equals `sha256` of that episode's own `bodies.json`.** *The receipt is the content, never the tool that moved it.* |
+
+New files: `harness/s2lean/bc_gate.py` (runs where the root lives; `stage_views.sh` pipes it to the Studio over
+ssh as `python3 - <args>`, so there is nothing to pre-ship and nothing to drift) and
+`harness/s2lean/bc_gate.selftest.sh`.
+
+#### 10.2 · The red-first proof — **21 arms, every one a subprocess on the real argv**
+
+`bash harness/s2lean/bc_gate.selftest.sh` → **21 ok, 0 failed.** Eighteen arms drive `bc_gate.py` itself: the
+complete root passes; a root with a `DONE` line and an EMPTY state refuses; a missing cell, `a_passed=false`, a
+0-byte `A.bodies.json`, a provenance episode **not in this root** (the cross-root leftover — amendment 8's defect
+3 returning), a `bodies.json` swapped after the fact (the receipt arm), a stage-B episode posing as stage A, a
+manifest with **no `end_utc`** (a gate with no clock is refused rather than trusted), a 111-hour-old root, and the
+same root passing at `--max-age-h 200`; a non-existent root; and the three no-default refusals plus a non-numeric
+id and an arm/id that never ran.
+
+The remaining three arms are **the flip, driven rather than asserted** — the FROZEN predicate and the new gate run
+on the SAME fixture roots:
+
+| fixture | frozen predicate | content gate | |
+|---|---|---|---|
+| `donebutempty` — a `DONE` line, an empty state (**the 2026-08-31 state, exactly**) | **PASS** | **REFUSE** | ⇐ FLIP |
+| `stale` — complete but 111 h old | **PASS** | **REFUSE** | ⇐ FLIP |
+| `good` — complete, fresh, content-consistent | PASS | PASS | (the no-op proof) |
+
+#### 10.3 · Driven at the REAL roots, read-only — and it says something sharper than the finding did
+
+Neither call ships anything; `ship BC`'s rsyncs were not run. Evidence:
+`evidence/ship-bc-gate-repair-2026-08-31/`.
+
+- **`/Users/jyh/bench-a8`** (the ACTIVE root, where amendment 8 actually ran), `arms=a0,a2`, the U15 ids:
+  **PASS — 30/30 cells** content-verified, in-root, 4.7–6.3 h old, every receipt matching. Among them
+  `problem_112/a2 → ep-3f17b258 → f71afda6…` — **the same provenance chain amendment 9 verified by hand, here
+  reproduced by machine.**
+- **`/Users/jyh/bench`** (the root the OLD gate hardwired), `arms=a0,a1,a2`: the frozen predicate says **PASS**;
+  the content gate **REFUSES all 45 cells**, every one on the clock — the newest stage-A artifact in that root is
+  **26.8 h** old and the oldest **61.3 h**.
+
+⭐ **THAT IS A HARDER FINDING THAN THE ONE I BANKED.** The old predicate is green on **both** roots — on the active
+one for the right reason and on a two-and-a-half-day-old one for no reason at all. It could not tell them apart
+because it never looked at either: it looked at a log. ⇒ **A GATE THAT READS AN ANNOUNCEMENT CANNOT DISTINGUISH
+THE PLACE THE WORK HAPPENED FROM THE PLACE IT DIDN'T.**
+
+#### 10.4 · The interface change, stated because it breaks the runbook
+
+`stage_views.sh` now REFUSES without `RBENCH` (absolute), and `ship BC` additionally REFUSES without `IDS` and
+`ARMS`. §7's runbook lines must be called as
+`RBENCH=/Users/jyh/bench-a8 IDS="73 0 146 …" ARMS="a0,a2" stage_views.sh ship BC`. `FORCE_BC=1` still overrides
+and still says so loudly — the override is retained deliberately: a gate with no override gets worked around
+outside the tool, where nothing records it.
+
+⛔ **The operating rule from the finding is now LIFTED for `ship BC` and STANDS for `ship A`:** the BC gate reads
+the state and may be trusted; **`ship A` still HANGS** (undiagnosed since 08/30), so that half of the GT transport
+is still by hand, verified by set-hash. **Both halves were manual and only one said so; now one is fixed and the
+other still says so.**
+
+---
+
+### Amendment 9 §9.5 — LANDED, 2026-08-31: the screen's `linter.` clause, red-first and proven a no-op
+
+The condition §9.5 was contingent on (the differential arms agreeing) is satisfied, so the clause lands. It is the
+**narrowest** widening that admits the measured case: `set_option linter.<dotted leaf> <true|false>`, in the bare
+form as well as the `in` form, and nothing else. `debug.*`, `pp.*`, a bare `linter`, `linterFoo.bar`, and a
+`linter.` option with a non-boolean value all remain refused, and each of those is a driven case.
+
+**RED FIRST, then green — the same gate run twice** (`harness/s2lean/screen_widening_proof.py`, which loads the
+pre-change `screen.py` out of git by revision and evaluates one case list against both files):
+
+| | want-mismatches | flips (red→green) | `screen_bodies()` on the real landed artifact | verdict |
+|---|---|---|---|---|
+| **before** the change | **6** | **0** | `['iso_helper_lemmas: set_option@1']` | **FAIL (8)** |
+| **after** the change | 0 | **6** | `[]` | **PASS** |
+
+Nine guard cases are byte-identical under both files, so the widening removed no refusal it was not meant to
+remove; the smuggling arm (`set_option linter.x false in` followed by `set_option debug.skipKernelTC true in`)
+correctly reports `["set_option@2"]` and only that. `screen.py --selftest` carries the same arms and reads
+**45/45**. The proof's second half drives `screen_bodies()` — **the call `check.py` actually makes** — over the
+real landed `bodies.json` of `ep-6b5540c0` rather than a fixture.
+
+**PROVEN A NO-OP ON THE REAL STATE.** The new screen was run over **every landed episode in both state roots —
+201 of them**: **200 identical, 1 differing, and the one is the named cell.** The same sweep confirms the
+pre-change screen reproduces the **recorded** `check.screen` verdict on **201 of 201**, i.e. the file in this
+repo is the file that ran. Evidence:
+`evidence/amend9-refused-cell-2026-08-31/{06,07,08}-*`.
+
+⛔ **NON-RETROACTIVE, as registered.** `ep-6b5540c0` keeps `class = SCREEN` in its manifest; the amendment-8
+reading of record keeps `a2 = 10/15`. The 11/15 of §9.4 is a DIAGNOSTIC and is labelled one everywhere it appears.
+The clause governs **future** runs only.
