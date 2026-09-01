@@ -186,6 +186,16 @@ expectation does not move. **This spend is bought with eyes open and the eyes ar
   faith.** (The scouts read a clone where the file was absent. A gate that reads a summary field is the defect
   this seat repaired in `ship BC` on 08/31.)
 
+⛔ **AND A STRUCTURAL FACT ABOUT THE SMOKE GATE THAT ONLY STAGE C EXPOSES, FOUND WHILE CLOSING §12.**
+`smoke_s2.sh` REFUSES to run at any root holding ground truth (`smoke_s2.sh:26` — "the probes are stage-A
+episodes"), and **stage C REQUIRES ground truth at its root**: the C view *is* `frozen.json` + `C.lean`.
+⇒ **the smoke gate and stage C are mutually exclusive at the same root, by construction.** The probes can
+therefore never be re-run at a stage-C root, and the smoke log must always be INHERITED there — which is the
+copy-in mechanic amendment 8 already used, now with a reason rather than a habit. The driver's gate is
+satisfied by content, not by locality: it demands five `SMOKE PASS` lines carrying **the current
+`episode_s2.sh` sha** (`run_s2_stage0.sh:31`, LAST verdict per id), and that sha is what makes an inherited
+log honest. *A pre-flight that cannot run where the run runs must be pinned to the thing it measured.*
+
 ## §6 · BUDGET, RE-DERIVED AT THE ARTIFACT
 
 Measured over the 30 Opus U15 stage-B manifests in `~/bench-a8` (`meter.json` per episode):

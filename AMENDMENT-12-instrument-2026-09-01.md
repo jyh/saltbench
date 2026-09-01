@@ -1,4 +1,4 @@
-# AMENDMENT 12 — THE INSTRUMENT AMENDMENTS BESIDE THE GATE (C-dead, the stage-C reading line, the enforcer, prompt_C)
+# AMENDMENT 12 — THE INSTRUMENT AMENDMENTS BESIDE THE GATE (C-dead, the stage-C reading line, the enforcer, prompt_C, and the controls gate)
 
 Seat `bench` · dated **2026-09-01** · registered under desk row AS, on the helm's 09:12:46 word
 ("`c_dead`'s SUCCESSOR is a SATISFIABILITY check … register it as an instrument amendment beside the gate";
@@ -13,13 +13,16 @@ reading. Nothing in this amendment changes any landed verdict, and §5 says so w
 
 ## §1 · WHY THESE ARE ONE DOCUMENT
 
-Four repairs, one cause. `c_dead` answered *"does the C view elaborate?"* and was read as *"can the stage-C task
+Five repairs, one cause. `c_dead` answered *"does the C view elaborate?"* and was read as *"can the stage-C task
 be done?"*; the morning line's stage-C block prints a rate over one population while amendment 11's gate is a
 count over another; the budget enforcer has been rewritten from a bank paragraph three times because it never
 had a file; and `prompt_C.md` forbids nothing about `native_decide` while the checker rejects it.
 
-**Each is the same defect in a different coat: A GATE, A PRINTED NUMBER, AN ENFORCER AND A PROMPT ARE ALL
-INSTRUMENTS, AND EACH OF THESE FOUR MEASURED A PROXY FOR THE THING INSTEAD OF THE THING.**
+and the checker-controls gate reads a single boolean written by a run that may predate the checker it is
+certifying.
+
+**Each is the same defect in a different coat: A GATE, A PRINTED NUMBER, AN ENFORCER, A PROMPT AND A GREEN
+LIGHT ARE ALL INSTRUMENTS, AND EACH OF THESE FIVE MEASURED A PROXY FOR THE THING INSTEAD OF THE THING.**
 
 ## §2 · `c_dead` HAS TWO COMPONENTS, AND THE UNION LIVES IN THE GENERATOR
 
@@ -160,6 +163,54 @@ authorises no stage to use.** Amendment 11 runs **no stage A and no stage B**. �
 live protocol question for the next substrate or the next re-read, and the moment to spend the comparability is
 when a run needs it.** Recorded here so it cannot be adopted quietly later.
 
+## §5b · THE CONTROLS GATE — FOUND LIVE WHILE CLOSING AMENDMENT 11's §12, AND IT WAS GREEN AGAINST A CHECKER THAT NO LONGER EXISTED
+
+**THE DEFECT, MEASURED ON THE MACHINE, NOT REASONED ABOUT.** `run_s2_stage0.sh` gated every scored episode on
+
+    python3 -c "import json,sys;sys.exit(0 if json.load(open('$cj')).get('controls_pass') else 1)"
+
+— **one summary field**: no clock, no tie to the checker about to run, no idea which controls produced it.
+The commission itself warned about this shape ("verify … C-control rows are PRESENT, not `controls_pass: true`
+believed"), which is why I read the rows by hand. Reading them turned up the rest:
+
+⛔ **THE LANDED `s2-controls.json` IN BOTH STATE ROOTS (dated `2026-08-29T10:33:38Z`, 30/30, `controls_pass:
+true`) CERTIFIES `screen.py = aa2c9376…` — AND THE SCREEN THAT WOULD HAVE SCORED THIS RUN IS `cc591ca6…`**,
+amendment 9's §9.5 widening, landed 08/31 and synced today. Four of the five recorded checker shas match; the
+fifth does not, and **the gate compares none of them.** Amendment 9 proved that particular widening a **no-op
+over all 201 landed episodes**, so nothing was harmed — *and the gate could not have known that.* **A green
+light that cannot be wrong is not a gate.**
+
+⇒ **THIRD INSTANCE OF ONE SHAPE AT THIS SEAT IN THREE DAYS:** `ship BC` gated on a **DONE line in a log**
+(08/31, repaired by amendment 10); `c_dead` gated on **elaboration** (§2 above); this gated on a **boolean**.
+The cure is the same all three times, and it is worth stating once as a rule rather than three times as a
+repair: **READ THE CONTENT, IN THE PLACE THE WORK WILL HAPPEN.**
+
+**THE REPAIR — `harness/s2lean/controls_gate.py`**, pinned, called by the driver. Five clauses, each a refusal
+(*a refusal is a result*): the summary must agree with itself (`controls_pass` **and** `n_ok == n`); **every
+file in `checker_sha256` must match the sha of the LIVE file** in the harness directory — the clause that fires
+today; this stage's control **family** must be present, `ok`, and each row's recorded class inside its own
+`expect_class`; an optional clock; and a non-empty results block with a class on every row, because
+**`controls_pass: true` over zero rows is the failure a boolean cannot express.**
+
+**DRIVEN — `controls_gate.py --selftest` ⇒ 17 arms, 0 failed**, every arm a subprocess on the real argv.
+⭐ **The arm that carries the finding is DIFFERENTIAL on one fixture: the new gate REFUSES the drifted record
+naming both shas, and the OLD one-line predicate — run verbatim, in the same arm, on the same file — EXITS 0.**
+Both arms differ, on the specimen, rather than on my say-so. Also driven: `controls_pass` false · `n_ok != n` ·
+an empty results block under a true boolean · **a required control ABSENT (which is exactly what a stage-C run
+inherits if it is handed a controls file written before `C_decide` existed)** · a required control not ok · a
+row whose class contradicts its own expectation · a checker file named but missing · no `checker_sha256` at
+all · the clock in both directions · three bad-argument refusals.
+
+⛔ **AND WIRING IT IN INTRODUCED A FATAL, WHICH THE RUN-SHAPED DRY CAUGHT AND WHICH I AM RECORDING RATHER THAN
+QUIETLY FIXING.** My first wiring was `python3 controls_gate.py … | tee -a "$RL" || { … exit 3; }` — **a
+pipeline's status is `tee`'s**, so a REFUSING gate would have read as green: *the exact defect this gate exists
+to remove, reintroduced by the plumbing that reports it.* Now captured, not piped. **Fifth consecutive repair
+round at this seat to introduce a fatal — the run-shaped dry is part of the gate, not a formality.**
+
+**STATE:** the controls are re-run at the CURRENT checker set as part of this amendment (31 arms — the 30
+frozen plus `C_decide` of §5), and the new record replaces the stale one in the run root. **The old record is
+not deleted and not trusted:** it is the specimen this section is about.
+
 ## §6 · WHAT THIS AMENDMENT DOES NOT DO
 
 It does not change any landed verdict, any scored class, any rate, or any pinned view. It does not change
@@ -186,6 +237,12 @@ moved — all 161 × 4 view pins, every arm rendering and every other harness fi
 - **An enforcer that lives in a session which must exit has an expiry date** — this seat paid it three times, and
   the fix was always a tracked file.
 - **A prohibition with no measured alternative is half a sentence.**
+- **A gate that reads a summary cannot tell a result from a memory of one** — third instance of one shape in
+  three days (a DONE line, an elaboration check, a boolean). **Read the content, in the place the work will
+  happen.**
+- **A green light that cannot be wrong is not a gate**, and the way to find out is to run the old predicate and
+  the new one on the same specimen.
+- **The plumbing that reports a gate can defeat it:** `cmd | tee || fail` takes `tee`'s status.
 - **A gate whose failure path has never executed is an untested gate** — reached by running the control, never by
   reading the code.
 - **Spend comparability only when a run needs it**: a repair that breaks a landed record and serves no

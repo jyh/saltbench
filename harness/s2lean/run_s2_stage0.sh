@@ -31,9 +31,19 @@ if [ "$DRY" != "1" ]; then
   for id in S1 S2 S3 S4 S5; do v=$(grep -E "^SMOKE (PASS|FAIL) $id " "$BENCH/logs/smoke.log" 2>/dev/null | tail -1); printf '%s\n' "$v" | grep -Eq "^SMOKE PASS $id .*episode_s2\.sh=$esha" || miss="$miss $id"; done   # LAST verdict per id, not any PASS (EDH-3)
   [ -z "$miss" ] || { echo "REFUSE: smoke.log lacks SMOKE PASS for$miss from episode_s2.sh=$esha (run smoke_s2.sh first)"; exit 3; }
   echo "$(stamp) SMOKE GATE OK episode_s2.sh=$esha" | tee -a "$RL"
-  # controls gate (F7/FN-5): the D14 checker controls must have passed before any scored episode
+  # controls gate (F7/FN-5): the D14 checker controls must have passed before any scored episode.
+  # ⛔ AMENDMENT 12 (2026-09-01): this WAS `.get("controls_pass")` — one boolean, no clock, no tie to the
+  # checker about to run. Measured live that day: the landed record certified screen.py aa2c9376… while the
+  # screen that would score the run was cc591ca6… (amendment 9's widening). The gate was green against a
+  # checker that no longer existed. controls_gate.py reads the CONTENT: the summary must agree with itself,
+  # every checker sha must match the LIVE file, and this stage's control family must be present and ok.
   cj="$BENCH/state/s2-controls.json"
-  python3 -c "import json,sys;sys.exit(0 if json.load(open('$cj')).get('controls_pass') else 1)" 2>/dev/null || { echo "REFUSE: $cj missing or controls_pass!=true (run s2_controls.sh first)"; exit 3; }
+  # ⛔ CAPTURED, NOT PIPED: `cmd | tee || {…}` takes tee's status, so a REFUSING gate would read as green —
+  # the exact defect this gate exists to remove, reintroduced by the plumbing that reports it. Caught by the
+  # run-shaped dry, which is why the dry is part of the gate and not a formality.
+  cgout=$(python3 "$H/s2lean/controls_gate.py" "$cj" "$H/s2lean" --stage "$STAGE" --quiet 2>&1) || {
+    printf '%s\n' "$cgout" | tee -a "$RL"; echo "REFUSE: controls gate (above; run s2_controls.sh against THIS checker)"; exit 3; }
+  printf '%s\n' "$cgout" | tee -a "$RL"
   echo "$(stamp) CONTROLS GATE OK" | tee -a "$RL"
 else
   echo "$(stamp) DRY_RUN=1: smoke gate skipped; stub=$CLAUDE_BIN; landings=$L; bodies under $SROOT" | tee -a "$RL"
