@@ -1483,3 +1483,190 @@ stage, k=15, no p-value, and — as of this read — one cell of the contrast ne
 specification problems, the plain agent and a faithful solo rendering of the method proved the same number of
 problems and disagreed on exactly one problem each — while the tier raise itself bought two problems in both arms
 at a quarter of the price.* **The variable that moved the result was the model, not the method.**
+
+---
+
+### Amendment 9 — 2026-08-31 (17:4x PDT / 2026-09-01 00:4x UTC), row AC: the REFUSED `112 / a2` CELL — a DIAGNOSTIC over a FROZEN artifact, registered BEFORE its first check and BEFORE any number
+
+**What authorizes it.** The Captain's standing law of 2026-08-31 17:4x, verbatim on the bus: *"You don't need to
+block on me, the only restricted operations are external facing… everything is preapproved, make good choices. If
+any seat is uncertain, work on a branch."* The helm's routing to this seat in the same post: *"row AC's asterisk —
+state YOUR OWN pre-registered criterion for the refused `112/a2` cell on a branch, fire the registered `a1` arm
+under it, and post the result as the sitting's evidence with the criterion stated before the number."* This
+amendment is that criterion. It is written and committed on branch `bench/amend9-refused-cell` **before the first
+check is run**, which is the only property that makes it worth anything.
+
+**Why a criterion is needed at all, stated without softening it.** I have already seen the result the refused cell
+would change. Re-examining one cell *chosen because of the answer it produced* is the exact act pre-registration
+exists to prevent, and "everything is preapproved" does not repeal that — it hands me the DECISION; it does not
+hand me permission to make the decision after the fact. So the order of work is: the criterion, in writing,
+committed; then the check.
+
+---
+
+#### 9.0 · What this amendment does NOT amend
+
+The **amendment-8 reading of record is untouched and stays untouched**: `a0` 10/15, `a2` 10/15, `a0`-only `{112}`,
+`a2`-only `{4}`, `|b−c| = 0`, INDISTINGUISHABLE. The frozen screen behaved exactly as frozen; `problem_112 / a2 /
+ep-6b5540c0` is `class = SCREEN` in its manifest and **remains `SCREEN` in its manifest forever**. Nothing produced
+under this amendment retro-scores a landed episode, and no figure in §Amendment 8 — RESULT is rewritten by it. What
+this amendment produces is a **DIAGNOSTIC, labelled as such wherever it is reported**, in the shape amendment 2 used.
+
+---
+
+#### 9.1 · THE CORRECTION THAT COMES FIRST — amendment 8's statement of the stakes is ARITHMETICALLY WRONG, and it is the reason this row exists
+
+Amendment 8 — RESULT, integrity event (1), says of the refused cell:
+
+> *"had it passed, `a2` would read 11/15 and the salt-only cell would be 2 — which is precisely the `b − c ≥ 2`
+> that this amendment registered as the trigger for the contingent `a1` placebo arm."*
+
+**The second clause is false, and I found it while writing this criterion, before running anything.** Read at the
+artifact (`evidence/opus-reach-read-2026-08-31/01-morning-line-a0-a2.txt:11,16` and
+`03-stageB-per-problem-and-cost-split.txt:7`):
+
+- `a0` proven = `[73, 146, 16, 38, 142, 112, 141, 31, 54, 74]` — **`112` is already in the control's pass set.**
+- `a2` proven = the same ten with `4` in place of `112`.
+- ⇒ `a0`-only `= {112}`, `a2`-only `= {4}`, and the tool prints `b(a0 only)=1 c(a2 only)=1 n_d=2 |b-c|=0`.
+
+If the refused cell resolves to a PASS, `112` becomes a **mutual** pass, not a salt-only pass. The cells become
+`a0`-only `= {}` and `a2`-only `= {4}`: the **salt-only cell stays at 1**, and it is the *control-only* cell that
+falls to 0. The salt arm's margin over the control goes from **0 to +1** — never to +2. The slip is exactly the one
+it looks like: `{4} ∪ {112}` was counted as the salt-only cell while `112` was already the control's.
+
+⛔ **CONSEQUENCE, AND IT SHRINKS THE ROW:** under **either** resolution of the refused cell, the registered
+contingency for the placebo arm — *"it runs if and only if `a2` beats `a0` by `b − c ≥ 2` at stage B"* — **does not
+fire.** The reachable maximum is +1. The null does not rest on the unevaluated cell. **The RATE does** — `a2` would
+read 11/15 against `a0`'s 10/15 — and that is a real and sufficient reason to run the diagnostic, but it is a
+smaller claim than the one amendment 8 made, and the smaller claim is the true one.
+
+📌 **A SECOND DEFECT IN THE SAME SENTENCE, NAMED SO IT CANNOT BIND ANYTHING LATER.** The registered trigger's prose
+and its symbols contradict each other. `s2_morning_line.py:211` prints `b` = **first-arm-only** and `c` =
+**second-arm-only**, so at `ML_ARMS=a0,a2` the symbols read `b = a0`-only, `c = a2`-only, and "`b − c ≥ 2`" is
+literally *the control beating the salt arm by two*. The prose says the opposite ("`a2` beats `a0`"). The intent is
+unambiguous from the surrounding paragraph and I read it as intended — **(a2-only) − (a0-only) ≥ 2** — but a
+trigger whose words and whose symbols disagree is not a rule, and it must not be left to be resolved by whoever
+reads it after seeing a number. **It is resolved here, in the intended direction, before any number.**
+⇒ **A CONTINGENCY REGISTERED IN TWO NOTATIONS IS TWO CONTINGENCIES UNTIL SOMEONE PICKS ONE — AND THE MOMENT TO
+PICK IS BEFORE THE DATA, WHICH IS NOW.**
+
+---
+
+#### 9.2 · THE CRITERION — admissibility is MEASURED, not asserted
+
+The screen (`harness/s2lean/screen.py`) is defence in depth, not the gate: it refuses bodies carrying
+command-introducing or meta keywords so that agent meta-code is never compiled. Its `set_option` clause is a
+**whitelist** (`maxHeartbeats | maxRecDepth | synthInstance.*`, literal nat, `in` form) and everything else is
+refused **because `debug.skipKernelTC` lives in "everything else"**. A whitelist is the correct direction for a
+soundness screen and that direction does not change here.
+
+I will not decide admissibility by asserting a taxonomy of "harmless" options — that is exactly the kind of
+judgement that bends toward the answer one wants. **The criterion is a differential measurement, registered now:**
+
+> **A `set_option` occurrence in a landed body is ADMISSIBLE iff, holding the agent's bodies byte-identical
+> otherwise, the assembled module passes the FULL gate — compile, kernel replay (`loadExts := false` +
+> `Environment.replay`), statement byte-identity, axiom allowlist — with the pragma PRESENT, and the run with the
+> pragma DELETED produces the IDENTICAL gate outcome, the IDENTICAL axiom sets for all three names, and the
+> IDENTICAL `spec_isomorphism` statement. If deleting the pragma changes ANY gate outcome, the pragma had semantic
+> content and the refusal STANDS.**
+
+Both arms are run and both are reported. The pragma-deleted arm is the negative control: **a pragma that can be
+removed without changing a single gate outcome cannot have bought the proof.** If the deleted arm fails to compile
+where the present arm compiles, that is itself the proof that the refusal was right, and it is reported as such.
+
+The soundness argument that makes this criterion *principled* rather than merely convenient — stated before the
+measurement, so the measurement can refute it: a Lean linter is an **elaboration-time diagnostic pass**; its verdict
+is a message, and messages do not enter the terms the kernel checks. Downstream of it this campaign's gate replays
+the environment from `ConstantInfo`s in a fresh kernel, which cannot see an option that only governed which
+warnings were printed. If that argument is wrong, the differential arm will say so.
+
+---
+
+#### 9.3 · SCOPE — what may and may not be touched
+
+**MAY:** re-run `check.py` over the **stored** bodies of `ep-6b5540c0`, pinned at
+`bodies_sha256 = 06f40a82464212a9046628d961e2052162d5cea66a9b6ac8c232567320ff4ba1`
+(`a_bodies_sha256 = f71afda6…`, `view_sha256 = dc7f28bc…`, `frozen_sha256 = 206dc29a…`, all read from the landed
+manifest), with the screen's refusal bypassed under §9.2 and with the pragma-deleted differential as its control.
+
+**MAY NOT — no model call of any kind.** No new episode, no re-sampling, no new draw, no change of population, arm,
+tier or constants. The agent's output is FIXED at the sha above; this amendment re-runs the *checker*, never the
+agent. **Zero model tokens are authorized by this amendment and zero are expected.** If any step turns out to need
+a model call, this amendment does not cover it and the work stops.
+
+**MAY NOT retro-score.** Landed manifests are not rewritten; the morning line of record is not re-run against
+altered artifacts; the diagnostic is reported as a separate, labelled table.
+
+**MUST be symmetric.** The procedure applies to **every** episode in the campaign whose class is `SCREEN` or whose
+`check.screen` list is non-empty — not to a cell selected for its effect. Enumerated at the artifact across BOTH
+state roots (`~/bench/state` and `~/bench-a8/state`, all `ep-*/manifest.json`) before this text was written:
+**exactly one such episode exists in the whole campaign** — `bench-a8 · problem_112 · B · a2 · ep-6b5540c0 ·
+SCREEN · ['iso_helper_lemmas: set_option@1']`. The symmetry requirement is therefore satisfied trivially, and that
+fact is itself the record that no selection took place.
+
+---
+
+#### 9.4 · THE PRE-COMMITTED REPORT — both branches, written before the check
+
+**If the stored body PASSES the full gate under §9.2 (and its deleted-pragma control agrees):** report, labelled
+DIAGNOSTIC, that `a2` would read **11/15** against `a0`'s 10/15 on U15 at the Opus tier; that the contrast becomes
+`a0`-only `= 0`, `a2`-only `= 1`, `|b − c| = 1`, **still INDISTINGUISHABLE** under the registered rule
+(`|b−c| < 5`); and that the registered `≥ 2` contingency **does not fire** (§9.1). The conclusion I will draw, and
+I am writing it now so it cannot be improved later: *the headline RATE of the salt arm rested on an unevaluated
+cell; the NULL did not.*
+
+**If the stored body FAILS the full gate:** report the class it earns and its axiom sets; `a2` = 10/15 stands
+confirmed by measurement rather than by refusal; the screen cost the campaign nothing on this cell; and the same
+`≥ 2` contingency still does not fire.
+
+**If the two differential arms DISAGREE:** the pragma had semantic content, the refusal is vindicated on its
+merits, the screen's whitelist is *not* widened (§9.5 is withdrawn), and that is the headline of the diagnostic.
+
+**In every branch:** report both arms, the pinned shas, the exact `check.json` produced, and the enumeration of
+§9.3 showing that one screened cell existed and one was examined.
+
+---
+
+#### 9.5 · THE SCREEN CHANGE — registered here, NON-RETROACTIVE, red-first, and contingent on §9.4
+
+If and only if the differential arms agree, `ALLOWED_SET_OPTION` is widened by exactly one clause: an option under
+the **`linter.` namespace** with a boolean literal, in **both** the bare and the `in` forms. Nothing else moves —
+`debug.*`, `compiler.*`, `maxRecDepth` outside the existing clause, and every other `set_option` stay refused.
+
+The change lands **only with a red-first gate**, in this repo's standing form: new `screen.py` self-test cases that
+**FAIL against the current file and PASS against the changed one** — (a) `set_option linter.deprecated false` bare
+and (b) in `in` form are admitted; and cases that must stay red in both — (c) `set_option debug.skipKernelTC true`
+bare and (d) in `in` form are refused, (e) a non-`linter` option outside the resource whitelist is refused. The
+change applies to **future runs only**: it does not alter the class of any landed episode, and the campaign's one
+screened cell keeps its `SCREEN` manifest whatever the diagnostic finds.
+
+---
+
+#### 9.6 · THE CONTINGENT `a1` ARM — the registered rule, applied honestly
+
+The helm's routing says *"fire the registered `a1` arm under it."* Applied under the criterion above, **the
+registered `a1` arm does not fire**, and it does not fire in either branch of §9.4, because its trigger is
+`(a2-only) − (a0-only) ≥ 2` and the arithmetic of §9.1 caps the reachable value at **+1**. Firing it anyway would
+not be firing *the registered arm* — it would be adding an unregistered arm after seeing the data, which is the
+precise thing the contingency was written into amendment 5 to prevent. **I am not inventing a reach to get there.**
+
+That is a report to the desk, not a refusal to work: **if `a1` at the Opus tier is wanted, it is wanted for a
+different and nameable reason** — to test whether the tier's +2 is arm-independent across all three arms, i.e.
+whether the one separation this campaign has measured is a property of the model at every rung. That is a NEW
+question, it needs its OWN dated amendment with its own prediction registered before its first call, and it prices
+off the measured amendment-8 basis at **≈13 M metered / ≈2.5 h** for one 15-problem arm (stage A + stage B, both
+arms' Opus per-episode costs). It is not authorized by this amendment and no part of it runs under this one.
+
+---
+
+#### 9.7 · Price, mechanism, and the stop rule
+
+**Model tokens authorized: ZERO.** Compute is the Studio's existing shared Lean build (`~/lean-shared/clever`,
+toolchain `leanprover/lean4:v4.27.0`, mathlib `a3a10db0…`) driven by `check.py` at its landed pin
+`9aa58095579dfc7d12cb0c727c23c7a6dffe7efaa0b0ba0b76111cd7dd767f8b`. Wall is bounded by two module compiles.
+**Stop rule with its mechanism, not a sentence:** if either compile exceeds 15 minutes it is killed at the shell
+and the branch is reported as INCONCLUSIVE rather than resolved in either direction — an unfinished compile is not
+a verdict, and a diagnostic that cannot finish must say so rather than inherit the refusal's answer.
+
+**Merge rule (the Captain's law):** merged to `master` on green, abandoned on red, and the ruling folded in
+whenever it comes. The registered text above is never edited after the fact — corrections are appended.
