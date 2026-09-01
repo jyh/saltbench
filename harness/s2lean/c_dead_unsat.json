@@ -1,0 +1,13 @@
+{
+ "_note": "THE SATISFIABILITY-REFUTED C-DEAD COMPONENT — registered by AMENDMENT 11 (2026-09-01), desk row AS. `c_dead` was minted as an ELABORATION list ('the C view does not elaborate', views_selftest.sh, D7). It now means 'the stage-C task cannot be completed', of which non-elaboration is one case and PROVABLE UNSATISFIABILITY is another. This file is the second component; views_selftest.sh unions it into c_dead so that regenerating view_status.json can never silently drop it. An id here has an elaborating C view and is dead anyway.",
+ "_governance": "Additions to this file are protocol changes and are made by dated amendment only, each carrying a machine-checked refutation. Never add an id because an arm failed on it.",
+ "unsat": {
+  "18": {
+   "amendment": "AMENDMENT-11-stageC-2026-09-01.md §2, evidence in TRIAGE-B-failures-2026-09-01.md §4 (saltbench bf03f2d)",
+   "theorem": "stageC_problem18_unsatisfiable : ¬ ∃ impl, (∀ s t, problem_spec impl s t) ∧ impl \"aaaa\" \"aa\" = 3",
+   "axioms": ["propext", "Classical.choice", "Quot.sound"],
+   "reason": "In Lean v4.27 String.drop/take return a String.Slice and Slice equality is structural, so problem_18's occurrence test is FALSE at a genuine occurrence: the frozen problem_spec forces 0 where the frozen #test line demands 3. Satisfy `correctness` and the #test fails (rc 1 = COMPILE); pass the #test and `correctness` is unprovable without sorry (AXIOMS_FAIL). No arm can pass at any budget.",
+   "elaborates": true
+  }
+ }
+}

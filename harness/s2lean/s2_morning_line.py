@@ -22,7 +22,9 @@ RULES (stated here, before computing):
  - F3 = proven(·, B, a0) over the k drawn; draw.py removes the excluded ids BEFORE the first k, so the denominator is
    k (|D|). Beside it: the rate over the unflagged drawn subset U = D ∖ flagged_spec_ids, and the rate without
    nl_leaked_ids. The C line is over the C-eligible drawn subset D ∖ c_dead (view_status.json); c_dead problems are
-   reported as their own class NOT_RUN(view_dead).
+   reported as their own class NOT_RUN(view_dead). Stage C ALSO prints the REGISTERED POPULATION line over
+   UC = U ∖ c_dead (amendment 12): amendment 11's gate is a COUNT over UC, and the printed CE rate is not that
+   gate's denominator — the two can point opposite ways on the same run.
  - bands: rate ≥ 80 % ⇒ HOLD (too easy at this tier); rate < 20 % ⇒ HOLD (a floor); 20 % ≤ rate < 80 % ⇒ RUN THE
    SALT ARM. If the all-drawn band and the unflagged band differ ⇒ HOLD (F5, fallback row). F3 is READABLE only when
    every drawn problem has a resolution for (B, a0) — a scored row or a synthetic landing; otherwise the reading is
@@ -85,6 +87,13 @@ assert not any(pid(t) in EXC for t in D)
 U = [t for t in D if pid(t) not in FLG]
 DNL = [t for t in D if pid(t) not in NLK]
 CE = [t for t in D if pid(t) not in CDEAD]
+# UC = THE REGISTERED STAGE-C POPULATION (amendment 12, 2026-09-01): the unflagged drawn subset MINUS the
+# C-dead. Stage C's printed block is over CE (the C-eligible DRAWN subset) and stage B's F3 line is over U —
+# so before this line existed the instrument had an unflagged line for stage B and NONE for stage C, while
+# amendment 11's gate is a COUNT over exactly this set. At a plausible outcome the printed rate over CE and
+# the gate over UC point OPPOSITE ways (9/22 = 41 % reads "RUN THE SALT ARM"; 9/12 is a CEILING HOLD).
+# ⇒ a printed rate whose denominator differs from the gate's is a green light waiting to happen.
+UC = [t for t in D if pid(t) not in FLG and pid(t) not in CDEAD]
 Dset = set(D)
 ids = lambda ts: [pid(t) for t in ts]
 
@@ -203,12 +212,20 @@ for stage, label, dom in (("A", "spec compiles", D), ("B", "ISOMORPHISM PROVEN (
         if stage == "C":
             dead = [(t, "C", a) for t in D if t not in CE]
             if dead: print("     NOT_RUN(view_dead) — not counted (%d): %s" % (len(dead), grouped(dead)))
+            okU = [(t, "C", a) for t in UC if proven((t, "C", a))]
+            print("     REGISTERED POPULATION UC = U ∖ c_dead (amendment 11's gate is a COUNT over THIS set, not a rate over the %d above)  n=%d ids %s: %s proven %d/%d = %s" % (
+                len(CE), len(UC), ids(UC), a, len(okU), len(UC), rate(len(okU), len(UC))))
     for _i in range(len(ARMS)):
         for _j in range(_i + 1, len(ARMS)):
             x, y = ARMS[_i], ARMS[_j]
             b = sum(1 for t in dom if proven((t, stage, x)) and not proven((t, stage, y)))
             c = sum(1 for t in dom if proven((t, stage, y)) and not proven((t, stage, x)))
             print("     pairs over %d: b(%s only)=%d c(%s only)=%d n_d=%d |b-c|=%d %s" % (len(dom), x, b, y, c, b + c, abs(b - c), "INDISTINGUISHABLE (|b-c| < 5)" if abs(b - c) < 5 else "reported as counts; no p-value"))
+            if stage == "C":
+                bU = sum(1 for t in UC if proven((t, stage, x)) and not proven((t, stage, y)))
+                cU = sum(1 for t in UC if proven((t, stage, y)) and not proven((t, stage, x)))
+                print("     pairs over the REGISTERED %d: b(%s only)=%d c(%s only)=%d n_d=%d |b-c|=%d %s" % (
+                    len(UC), x, bU, y, cU, bU + cU, abs(bU - cU), "INDISTINGUISHABLE (|b-c| < 5)" if abs(bU - cU) < 5 else "reported as counts; no p-value"))
 # own classes
 def cells(pred): return [(pid(t), s, a) for (t, s, a), m in sorted(scor.items()) if (t, s, a) not in orphan and pred(m)]
 print("  KERNEL_REJECTED: %s" % cells(lambda m: klass(m) == "KERNEL_REJECTED" and not m.get("passed")))

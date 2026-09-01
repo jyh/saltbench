@@ -106,6 +106,7 @@ def main():
         ctl("C_pos", "C", 3, C(gold_impl, gold_proof), "PASS", asserts=["tests_in_file:true"], note="problem_3 gold impl+proof"),
         ctl("C_neg", "C", 3, C(gold_impl, "by sorry"), "AXIOMS_FAIL", asserts=["axiom:sorryAx"]),
         ctl("C_ax", "C", 3, C(gold_impl, "by\nhave _h := aux0\n" + gold_tactics, "theorem aux0 : (1:Nat) = 1 := by native_decide"), AXFAIL, asserts=["axiom:Lean.ofReduceBool"]),
+        ctl("C_decide", "C", 3, C(gold_impl, "by\nhave _h := aux0\n" + gold_tactics, "theorem aux0 : (1:Nat) = 1 := by decide"), "PASS", asserts=["tests_in_file:true"], note="AV/amdt 11: the DIFFERENTIAL sibling of C_ax — the SAME helper, `decide` not `native_decide`. prompt_C.md now tells the agent native_decide is rejected and `decide` is fine; this arm is the second half of that sentence, and without it the first half is a prohibition with no measured alternative"),
         ctl("C_badimpl", "C", 3, C("true", "by sorry"), "COMPILE", asserts=["tests_in_file:true", "log:counter"], note="a failing #test = rc 1"),
         ctl("C_notation", "C", 3, C("operations.any (· < 0)\n" + notation3, "by trivial"), "SCREEN", note="F3 C4"),
         ctl("C_notation_noscreen", "C", 3, C("operations.any (· < 0)\n" + notation3, "by trivial"), "STATEMENT_ALTERED", no_screen=True, asserts=["diff:correctness"], note="F3 C4: wrong impl passes the tests, the statement compare catches it"),

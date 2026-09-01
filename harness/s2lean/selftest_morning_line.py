@@ -57,12 +57,41 @@ def build_state(root):
     return tasks
 
 
+def build_state_C(root, k, proven_C):
+    """A second, SEPARATE state root carrying stage-C rows (amendment 12).
+
+    Separate on purpose: adding C rows to the shared root would move `manifests: N considered (M dropped)` and
+    the three frozen contrast counts, so the nine amendment-7 arms would have to be re-baselined to test
+    something they do not test. An additive change gets an additive fixture.
+    """
+    tasks = drawmod.draw(k)
+    n = 0
+    for arm in ("a0", "a2"):
+        for task in tasks:
+            ok = pid_of(task) in proven_C[arm]
+            ep = "ep-C%s%d" % (arm, n)
+            m = {"substrate": "S2-Lean/CLEVER", "arm": arm, "stage": "C", "instance_id": task, "episode": ep,
+                 "termination": "DONE", "end_utc": 1700000000 + n, "passed": ok, "metered_sum": 1000 + n,
+                 "calls": 5, "max_turns": 100, "wall_ceiling_s": 5400, "token_ceiling": 20000000,
+                 "model_requested": "claude-opus-5", "effort": "high",
+                 "check": {"class": "PASS" if ok else "AXIOMS_FAIL", "passed": ok, "compiled": True,
+                           "axioms_ok": ok, "statement_diffs": []}}
+            d = os.path.join(root, ep); os.makedirs(d, exist_ok=True)
+            json.dump(m, open(os.path.join(d, "manifest.json"), "w"))
+            n += 1
+    return tasks
+
+
+def pid_of(t): return int(t.split("_")[1])
+
+
 def run(state, env_extra):
     env = dict(os.environ)
     env.pop("ML_ARMS", None)
     env["S2_LANDINGS"] = os.path.join(state, "_no_landings_log")   # deliberately absent
+    kk = env_extra.pop("_K", K)          # popped BEFORE the update: an int in the environ is a TypeError
     env.update(env_extra)
-    p = subprocess.run([sys.executable, SCRIPT, state, str(K)], capture_output=True, text=True, env=env)
+    p = subprocess.run([sys.executable, SCRIPT, state, str(kk)], capture_output=True, text=True, env=env)
     return p.returncode, p.stdout, p.stderr
 
 
@@ -133,6 +162,51 @@ def main():
         check("label2 a1 named placebo", "a1(placebo)" in out, [l for l in out.splitlines() if "arms=" in l])
         check("label2 a2 named salt", "a2(salt)" in out, [l for l in out.splitlines() if "arms=" in l])
 
+        # ---------- AMENDMENT 12 (2026-09-01): the stage-C REGISTERED-POPULATION line.
+        # The defect: stage C's block is over CE (the C-eligible DRAWN subset) while amendment 11's gate is a
+        # COUNT over UC = U ∖ c_dead. At k=27 that is 22 against 12, and at a plausible outcome the printed
+        # rate and the registered gate point OPPOSITE ways. Driven at k=27 because that is the live
+        # configuration, and the fixture is built so CE and UC could not be confused by coincidence.
+        rootC = tempfile.mkdtemp(prefix="ml-selftest-C-")
+        try:
+            # a0 proves 9 of the registered 12 AND 4 flagged-or-C-dead problems that are in CE but NOT in UC.
+            # ⇒ CE count 13/22 = 59.1 % (inside the 20–80 % "RUN" band) while the registered count is 9/12,
+            #   which is amendment 11's CEILING HOLD. If the instrument prints only the first, the run reads
+            #   as its own opposite — this arm is that sentence, driven.
+            REG12 = {73, 0, 146, 16, 4, 38, 142, 96, 141, 31, 127, 74}
+            a0C = {73, 0, 146, 16, 4, 38, 142, 96, 141} | {109, 34, 90, 159}
+            a2C = set(a0C)
+            tasksC = build_state_C(rootC, 27, {"a0": a0C, "a2": a2C})
+            arms_run += 1
+            rc, out, err = run(rootC, {"ML_ARMS": "a0,a2", "_K": 27})
+            check("amdt12 rc==0", rc == 0, err[-300:])
+            check("amdt12 CE line still 13/22 (the frozen line is UNCHANGED)",
+                  "a0 proven 13/22" in out, [l for l in out.splitlines() if "impl + correctness" in l])
+            check("amdt12 registered line present and n=12",
+                  re.search(r"REGISTERED POPULATION UC = U ∖ c_dead .* n=12 ", out) is not None,
+                  [l for l in out.splitlines() if "REGISTERED" in l])
+            check("amdt12 registered COUNT is 9/12, not 13/22",
+                  "a0 proven 9/12" in out, [l for l in out.splitlines() if "REGISTERED" in l])
+            # ⛔ The regex may not match at all — that is exactly what happens when this arm is driven against
+            # the PRE-CHANGE tool, which is the red control. Reading `.group(1)` off None there turned a FAIL
+            # into a TRACEBACK and took the remaining arms with it. Second instance in this same file of the
+            # law it already carries: A GATE WHOSE FAILURE PATH HAS NEVER EXECUTED IS AN UNTESTED GATE — and
+            # the failure path is reached by running the control, not by reading the code.
+            mreg = re.search(r"n=12 ids \[([0-9, ]+)\]", out)
+            regids = sorted(int(x) for x in mreg.group(1).split(",")) if mreg else None
+            check("amdt12 the registered ids ARE amendment 11's twelve",
+                  regids == sorted(REG12), regids if regids is not None else "no REGISTERED line at all")
+            check("amdt12 18 is NOT in the registered ids (c_dead_unsat, amendment 11 §2)",
+                  regids is not None and 18 not in regids,
+                  regids if regids is not None else "no REGISTERED line at all")
+            check("amdt12 a registered pairs line exists beside the CE one",
+                  "pairs over the REGISTERED 12" in out, [l for l in out.splitlines() if "pairs over" in l])
+            check("amdt12 stage A and B print NO registered line (stage C only)",
+                  out.count("REGISTERED POPULATION") == len(("a0", "a2")),
+                  out.count("REGISTERED POPULATION"))
+        finally:
+            shutil.rmtree(rootC, ignore_errors=True)
+
         # ---------- RED arms: every one must REFUSE with a nonzero exit
         for name, spec, needle in (
             ("red1 a0 absent", "a1,a2", "must contain a0"),
@@ -146,7 +220,7 @@ def main():
     finally:
         shutil.rmtree(root, ignore_errors=True)
 
-    print("SELF-TEST %s — %d arms driven (3 green, 2 label, 4 red), every arm a SUBPROCESS on the real argv"
+    print("SELF-TEST %s — %d arms driven (3 green, 2 label, 1 stage-C/amendment-12, 4 red), every arm a SUBPROCESS on the real argv"
           % ("PASS" if not fails else "FAIL: " + ", ".join(fails), arms_run))
     return 0 if not fails else 1
 

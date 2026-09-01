@@ -2,7 +2,8 @@
 # views_selftest.sh — the VIEWS SELF-TEST (repair D7): compile every stage-A view (A.lean, sorry body), every stage-B
 # PRISTINE file (frozen statements only, sorry bodies — generated_spec body `sorry`, isomorphism proof `by sorry`) and
 # every stage-C view (C.lean, sorry bodies) under `lake env lean` in the pinned CLEVER project, and write
-# view_status.json = {"problem_k": {"A": ok|error, "B": ok|error, "C": ok|error, "first_error": str}, "c_dead": [ids]}.
+# view_status.json = {"problem_k": {"A": ok|error, "B": ok|error, "C": ok|error, "first_error": str}, "c_dead": [ids],
+#                     "c_dead_elaboration": [ids this script measured], "c_dead_unsat": [ids from c_dead_unsat.json]}.
 # Verdict rule (pre-stated): A and B are ok iff rc == 0. C is ok iff EVERY `error:` in its log is the sorry-evaluation
 # abort of a `#test` line ("aborting evaluation since the expression depends on the 'sorry' axiom") — that error is the
 # placeholder's, not the view's; any other error is a view that is dead BEFORE any agent text ⇒ c_dead. first_error is
@@ -55,9 +56,9 @@ xargs -P "$J" -n 1 "$WORK/one.sh" < "$WORK/files.txt" > "$WORK/compile.log" 2>&1
 echo "compiled $(wc -l < "$WORK/files.txt" | tr -d ' ') files in $(( $(date +%s) - t0 )) s (j=$J)"
 
 # 3. classify and write view_status.json
-python3 - "$WORK" "$OUT" <<'PY' || exit 5
-import json, os, re, sys
-W, OUT = sys.argv[1], sys.argv[2]
+python3 - "$WORK" "$OUT" "$(cd "$(dirname "$0")" && pwd)" <<'PY' || exit 5
+import json, os, re, subprocess, sys
+W, OUT, HDIR = sys.argv[1], sys.argv[2], sys.argv[3]
 ABORT = "aborting evaluation since the expression depends on the 'sorry' axiom"
 ERR = re.compile(r"^(.*?\.lean):(\d+):(\d+): error(\(.*?\))?: (.*)$")
 ids = sorted({int(f.split("_")[1]) for f in os.listdir(os.path.join(W, "src")) if f.endswith(".lean")})
@@ -84,14 +85,24 @@ for i in ids:
             first_error = first_error or fe
     row["first_error"] = first_error
     status["problem_%d" % i] = row
+# c_dead HAS TWO COMPONENTS AND THIS SCRIPT MEASURES ONLY ONE OF THEM (amendment 11, 2026-09-01).
+# These compiles answer "does the C view ELABORATE?". A view can elaborate perfectly and still be dead, because
+# the frozen problem_spec and the frozen #test lines contradict each other — problem_18 is such a cell, and it
+# is a THEOREM, not a judgement. Those ids are registered in c_dead_unsat.json and unioned in by
+# c_dead_merge.py, which is the SINGLE implementation of the union (a by-hand refresh of an existing
+# view_status.json runs the same code path). ⇒ regenerating this file cannot silently drop them, which is the
+# whole reason the merge is called by the GENERATOR and does not live in the generated file.
 status["c_dead"] = dead["C"]
+status["c_dead_elaboration"] = dead["C"]
 json.dump(status, open(OUT, "w"), indent=1); open(OUT, "a").write("\n")
+r = subprocess.run([sys.executable, os.path.join(HDIR, "c_dead_merge.py"), OUT, "--in-place"])
+if r.returncode != 0: print("REFUSE: c_dead_merge.py rc=%d — the C-dead union did not apply" % r.returncode); sys.exit(6)
 print("A ok %d/%d  B ok %d/%d  C ok %d/%d" % (len(ids) - len(dead["A"]), len(ids), len(ids) - len(dead["B"]), len(ids), len(ids) - len(dead["C"]), len(ids)))
 print("A dead:", dead["A"]); print("B dead:", dead["B"]); print("C dead (%d):" % len(dead["C"]), dead["C"])
 for i in dead["C"]: print("  C %d: %s" % (i, status["problem_%d" % i]["first_error"][:160]))
 for st in ("A", "B"):
     for i in dead[st]: print("  %s %d: %s" % (st, i, status["problem_%d" % i]["first_error"][:160]))
 REF = [39, 44, 54, 62, 65, 77, 81, 87, 97, 110, 111, 112, 113, 119, 153, 155, 157, 160]   # the refuters' sweep at 86f9e04
-print("refuters' C-dead list agreement: %s  (derived-only: %s, refuters-only: %s)" % (dead["C"] == REF, sorted(set(dead["C"]) - set(REF)), sorted(set(REF) - set(dead["C"]))))
+print("refuters' C-dead list agreement (ELABORATION component only — the sweep at 86f9e04 predates the unsat component): %s  (derived-only: %s, refuters-only: %s)" % (dead["C"] == REF, sorted(set(dead["C"]) - set(REF)), sorted(set(REF) - set(dead["C"]))))
 print("wrote", OUT)
 PY
