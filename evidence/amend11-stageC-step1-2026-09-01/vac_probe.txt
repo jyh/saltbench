@@ -1,0 +1,26 @@
+AMENDMENT 11 §8 — PERMISSIVE-ORACLE DIAGNOSTIC (probe points frozen before the run)
+state root /Users/jyh/bench-c/state   arm a0   stage C   n_permissive_ids 4
+
+  problem_0     ep-4b6b4312  PASS   probe CORRECT
+      vacuous because: problem_spec is guarded by `numbers.length > 1`; the #test lines visit only length 3 and 6
+      expected: false on both (no two distinct elements exist)
+      empty        = false
+      single       = false
+  problem_4     ep-887333ba  PASS   probe CORRECT   [SOFT CELL]
+      vacuous because: problem_spec is guarded by `0 < numbers.length`; the only #test visits a length-4 list
+      expected: 0 (the only defensible total extension; see the SOFT-CELL note)
+      empty        = true
+      empty_value  = 0
+  problem_96    ep-8036a643  PASS   probe CORRECT
+      vacuous because: the spec fixes only `every element is prime and < n` and `every prime < n is in the result`; it says NOTHING about order or duplicates, and 7 is not among the #test inputs (5,11,0,20,1,18)
+      expected: [2, 3, 5] — strictly increasing and duplicate-free
+      at7          = [2, 3, 5]
+  problem_127   ep-6f395a0a  PASS   probe CORRECT
+      vacuous because: problem_spec is guarded by `s1 ≤ e1 → s2 ≤ e2`; (5,0) is ill-formed so every clause is vacuously true, including `result = "YES" ∨ result = "NO"`
+      expected: "YES" or "NO" (the spec's own totality clause, which the guard switches off)
+      illformed    = NO
+
+f_vac = 0/4 = 0.000  (fraction of PASSes on the four permissive specs that are WRONG at their frozen probe point)
+f_vac(hard cells only, problem_4 excluded as undefined-in-the-docstring) = 0/3 = 0.000
+
+⛔ THIS IS REPORTED BESIDE P0, NEVER AGAINST IT (§8). It does not change the record, the class of any episode, or the gate.

@@ -1,0 +1,30 @@
+S2-LEAN STAGE-0 MORNING LINE  k=27  drawn |D|=27 (excluded ids [32, 39, 123, 160] removed at the draw)  flagged∩D=12 [12, 34, 69, 75, 81, 90, 109, 110, 114, 129, 159, 163]  nl_leaked∩D=[90]  c_dead∩D=[18, 54, 81, 110, 112] (view_status.json read)
+  manifests: 12 considered (0 dropped as SMOKE/DRY/other-substrate/other-arm), scored cells 12, superseded 0, unscored 0, orphan B rows 0, synthetic landings 0 (/Users/jyh/bench-c/logs/s2-landings.log)  constants=[(100, 10800, 20000000, 'claude-opus-5', 'high')]  arms=a0(plain/control)
+  stage A spec compiles: a0 proven 0/27 (counted rows 0, resolved 0)  classes={}  metered p50=None p90=None max=None  terms={}
+     proven: []
+     not proven (27): NO_LANDING: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38, 142, 110, 96, 112, 141, 31, 114, 75, 54, 127, 18, 74]
+  stage B ISOMORPHISM PROVEN (the F3 quantity): a0 proven 0/27 (counted rows 0, resolved 0)  classes={}  metered p50=None p90=None max=None  terms={}
+     proven: []
+     not proven (27): NO_LANDING: [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38, 142, 110, 96, 112, 141, 31, 114, 75, 54, 127, 18, 74]
+  stage C impl + correctness proven (over the C-eligible drawn subset): a0 proven 12/22 (counted rows 12, resolved 12)  classes={'PASS': 12}  metered p50=263190 p90=912687 max=949908  terms={'DONE': 12}
+     proven: [73, 0, 146, 16, 4, 38, 142, 96, 141, 31, 127, 74]
+     not proven (10): NO_LANDING: [109, 34, 90, 159, 12, 69, 163, 129, 114, 75]
+     NOT_RUN(view_dead) — not counted (5): NO_LANDING: [81, 110, 112, 54, 18]
+     REGISTERED POPULATION UC = U ∖ c_dead (amendment 11's gate is a COUNT over THIS set, not a rate over the 22 above)  n=12 ids [73, 0, 146, 16, 4, 38, 142, 96, 141, 31, 127, 74]: a0 proven 12/12 = 100.0%
+  KERNEL_REJECTED: []
+  STATEMENT_ALTERED: []
+  PROVENANCE (stage-B generated_spec != scored stage-A body, AP-4): []
+  axiom-only failures (AXIOMS_FAIL: compiled, kernel replay ok, statements identical, axioms outside the allowlist): []
+  ORPHAN B rows (a_episode ≠ the scored A row; reported, NOT counted): []
+  superseded rows (not counted): []
+  unscored rows (not counted): []
+  rows for problems NOT in the draw (excluded or beyond k; not counted): []
+  F3 (plain arm a0, stage B, proven over the k=27 drawn): 0/27 = 0.0% ⇒ HOLD (<20%: a floor, not a reason to add arms)   proven ids: []
+     unflagged drawn subset U (n=15, ids [73, 0, 146, 16, 4, 38, 142, 96, 112, 141, 31, 54, 127, 18, 74]): 0/15 = 0.0% ⇒ HOLD (<20%: a floor, not a reason to add arms)   proven ids: []
+     without nl_leaked [90] (n=26): 0/26 = 0.0% ⇒ HOLD (<20%: a floor, not a reason to add arms)
+     bands all-drawn vs unflagged: agree
+     resolution (B, a0): 0/27 drawn problems resolved (scored row or synthetic landing); UNRESOLVED [109, 34, 73, 90, 159, 12, 69, 0, 163, 146, 129, 16, 4, 81, 38, 142, 110, 96, 112, 141, 31, 114, 75, 54, 127, 18, 74] ⇒ F3 NOT YET READABLE (PROVISIONAL)
+  RECALL INSTRUMENT (D10, plain arm, stage-B passes n=0, with bodies on disk 0): suspect 0 (sim≥0.80: 0, trivial proof: 0)  f_high=n/a ⇒ n/a (no passes)
+  READING: PROVISIONAL (F3 NOT YET READABLE) — HOLD (<20%: a floor, not a reason to add arms)
+  p90 the cap rule consumes (D16, per stage, a0 DONE|ROUNDS_EXHAUSTED): A=None (n=0) B=None (n=0) C=912687 (n=12)
+  no p-value, by design.

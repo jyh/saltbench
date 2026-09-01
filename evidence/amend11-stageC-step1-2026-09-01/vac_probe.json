@@ -1,0 +1,52 @@
+{
+ "f_vac_den": 4,
+ "f_vac_num": 0,
+ "rows": [
+  {
+   "class": "PASS",
+   "correct_at_probe": true,
+   "episode": "ep-4b6b4312",
+   "probed": true,
+   "problem": 0,
+   "soft": false,
+   "values": {
+    "empty": "false",
+    "single": "false"
+   }
+  },
+  {
+   "class": "PASS",
+   "correct_at_probe": true,
+   "episode": "ep-887333ba",
+   "probed": true,
+   "problem": 4,
+   "soft": true,
+   "values": {
+    "empty": "true",
+    "empty_value": "0"
+   }
+  },
+  {
+   "class": "PASS",
+   "correct_at_probe": true,
+   "episode": "ep-8036a643",
+   "probed": true,
+   "problem": 96,
+   "soft": false,
+   "values": {
+    "at7": "[2, 3, 5]"
+   }
+  },
+  {
+   "class": "PASS",
+   "correct_at_probe": true,
+   "episode": "ep-6f395a0a",
+   "probed": true,
+   "problem": 127,
+   "soft": false,
+   "values": {
+    "illformed": "NO"
+   }
+  }
+ ]
+}
