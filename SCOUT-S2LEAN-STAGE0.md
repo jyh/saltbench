@@ -1670,3 +1670,94 @@ a verdict, and a diagnostic that cannot finish must say so rather than inherit t
 
 **Merge rule (the Captain's law):** merged to `master` on green, abandoned on red, and the ruling folded in
 whenever it comes. The registered text above is never edited after the fact — corrections are appended.
+
+---
+
+### Amendment 9 — RESULT, 2026-08-31: THE REFUSED CELL WAS A PROOF. The salt arm proved problem 112 and the instrument refused to look — and the null still stands
+
+**Zero model tokens spent, as registered.** The checker was re-run over the frozen agent artifact; the agent was
+never called. Evidence: `evidence/amend9-refused-cell-2026-08-31/` (the diagnostic script, its full log, both
+`check.json`s, the refused bodies as landed, the landed manifest).
+
+**Provenance verified by content BEFORE the run, every pin matching the landed manifest:**
+`bodies.json` `06f40a82…` · `frozen.json` `206dc29a…` · `check.py` `9aa58095…` · `screen.py` `aa2c9376…` ·
+stage-A provenance chain `A.bodies.json` → `a_episode = ep-3f17b258` → that episode's own
+`bodies.json` = `f71afda6…` = the `a_bodies_sha256` recorded in the stage-B manifest.
+
+#### The measurement
+
+| | screen verdict | compiled | replay | statements | axioms (`spec_isomorphism`) | **class** |
+|---|---|---|---|---|---|---|
+| **PRESENT** (bodies byte-identical to what landed) | `["iso_helper_lemmas: set_option@1"]` | ✓ rc 0 | ✓ | identical | `propext, Classical.choice, Quot.sound` | **PASS** |
+| **DELETED** (the one pragma line removed) | `[]` | ✓ rc 0 | ✓ | identical | `propext, Classical.choice, Quot.sound` | **PASS** |
+
+**The differential arms AGREE, and they agree on every field that bears on the gate.** Computed over the whole
+`check.json` object, the two runs are identical on `class`, `passed`, `compiled`, `rc`, `replay_ok`,
+`statements_identical`, `statement_diffs`, `axioms_ok`, `axioms` (all three names), `statements`, `sorry_lines`
+(empty) and `module_constants` (all 19, same set). They differ on exactly nine fields, and **every one of them is
+either the screen verdict itself, a hash of the file with one line removed, or a wall-clock**:
+`screen`, `canonical_sha256`, `canonical_olean_sha256`, `log_tail`, `check_work`, `compile_wall_s`,
+`audit_wall_s`, `pristine_wall_s`, `pristine_cached`.
+
+⭐ **AND `log_tail` IS THE POSITIVE CONTROL I DID NOT PLAN FOR.** The pragma-deleted arm emits **11** deprecation
+warnings where the pragma-present arm emits **6** — `String.data has been deprecated: Use String.toList instead`.
+That is the pragma's entire effect, visible in the artifact: **it changed how many warnings were printed and
+nothing else.** The gate is warning-blind by construction, and here it is measured being warning-blind.
+
+⇒ **The pragma is ADMISSIBLE under §9.2. The criterion registered before the number is satisfied, in the direction
+the number went, and it would have been satisfied identically had the number gone the other way** — which is the
+only thing that makes it a criterion.
+
+#### What the cell actually contained
+
+`problem_112 / a2 / ep-6b5540c0` is **a complete, honest, kernel-checked proof.** `spec_isomorphism`'s axioms are
+`[propext, Classical.choice, Quot.sound]` — **the allowlist exactly, with no `sorryAx`** — the statements are byte
+identical to the frozen ones, the kernel replayed the module from `ConstantInfo`s in a fresh environment, and
+`sorry_lines` is empty. The refused pragma sat on line 1 of `iso_helper_lemmas` and its purpose is written in the
+doc comment on the very next line: *"`String.data` is the deprecated spelling of `String.toList`."*
+
+📌 **The screen was not wrong in its DIRECTION and this result does not say it was.** A whitelist is the correct
+shape for a soundness screen, `debug.skipKernelTC` genuinely does live in "everything else", and defence in depth
+that never refuses anything is decoration. What this result says is narrower and more useful: **the campaign's
+ONE screened cell in 201 scored episodes was a FALSE POSITIVE, and it cost the treatment arm a proof it had
+actually completed.** One refusal, one instance, 100 % of them wrong.
+
+#### The arithmetic, applied exactly as §9.4 pre-committed it
+
+**DIAGNOSTIC reading** (labelled as such; the amendment-8 reading of record is unchanged at `a2` 10/15):
+
+| U15, stage B, Opus | of record (amdt 8) | **diagnostic (amdt 9)** |
+|---|---|---|
+| `a0` plain | 10/15 = 66.7 % | 10/15 = 66.7 % |
+| `a2` salt | 10/15 = 66.7 % | **11/15 = 73.3 %** |
+| `a0`-only | `{112}` | **`{}` — 0** |
+| `a2`-only (the reach cell) | `{4}` | `{4}` — **1** |
+| contrast | `\|b−c\| = 0` | **`\|b−c\| = 1` — INDISTINGUISHABLE (`\|b−c\| < 5`)** |
+
+**AND THE SENTENCE I WROTE BEFORE I HAD THE NUMBER, WHICH IS THE ONE THE RESULT EARNS:**
+⭐ ***the headline RATE of the salt arm rested on an unevaluated cell; the NULL did not.*** `a2` reads 11/15
+against `a0`'s 10/15 — a real change to a headline this campaign has published twice — and the contrast moves
+from 0 to 1, which is still INDISTINGUISHABLE under the rule registered before the first call, and still nowhere
+near the `≥ 2` that would have fired the placebo arm.
+
+⛔ **THE CONTINGENT `a1` ARM THEREFORE DOES NOT FIRE, exactly as §9.6 registered before the check** — and note
+what would have happened without §9.1: amendment 8's own text said this cell *was* the `b−c ≥ 2` trigger. Had I
+taken that sentence on trust and run `a1` on the strength of it, I would have spent ≈13 M tokens firing an arm
+whose registered condition was never met, and I would have called it "the registered contingency". ⇒ **THE MOST
+EXPENSIVE THING IN THIS AMENDMENT WAS PREVENTED BY RE-DERIVING A NUMBER THE PREVIOUS AMENDMENT HAD ALREADY
+STATED.** A registered trigger is only as good as the arithmetic that reads it, and the arithmetic is cheap.
+
+#### What this does NOT show
+
+It does not show the method works: 11 vs 10 at n=15 with `|b−c| = 1` is the same null the campaign has returned
+three times. It does not amend the reading of record. It does not license a re-run of any other cell — there is
+no other cell: **one screened episode existed in the whole campaign and it is the one examined** (§9.3,
+enumerated across both state roots before this text was written). And it says nothing about the method's
+multi-agent tier, which remains unrendered.
+
+⭐ **THE LAW THIS AMENDMENT PAYS FOR:** *a screen that refuses is a measurement it prevented, and a whitelist's
+false positives are invisible by construction — you only ever see the cell you went back for.* The campaign ran
+201 scored episodes and looked at exactly one refusal, because exactly one existed. **A screen with a higher
+refusal rate would have been hiding a proportional amount of completed work, and nothing in the pipeline would
+have said so.** ⇒ **A DEFENCE-IN-DEPTH LAYER NEEDS ITS OWN FALSE-POSITIVE READING, ROUTINELY, NOT WHEN A RESULT
+MAKES SOMEONE CURIOUS.**

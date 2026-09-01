@@ -1,0 +1,104 @@
+{
+ "stage": "B",
+ "problem_id": 112,
+ "screen": [],
+ "screen_enforced": false,
+ "compiled": true,
+ "rc": 0,
+ "compile_wall_s": 7.9,
+ "log_tail": "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-fyr6h7m7/canonical.lean:41:44: warning: `String.data` has been deprecated: Use `String.toList` instead\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-fyr6h7m7/canonical.lean:42:5: warning: `String.data` has been deprecated: Use `String.toList` instead\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-fyr6h7m7/canonical.lean:43:5: warning: `String.data` has been deprecated: Use `String.toList` instead\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-fyr6h7m7/canonical.lean:46:23: warning: `String.data` has been deprecated: Use `String.toList` instead\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-fyr6h7m7/canonical.lean:46:51: warning: `String.data` has been deprecated: Use `String.toList` instead\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-fyr6h7m7/canonical.lean:46:78: warning: `String.mk` has been deprecated: Use `String.ofList` instead\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-fyr6h7m7/canonical.lean:55:44: warning: `String.data` has been deprecated: Use `String.toList` instead\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-fyr6h7m7/canonical.lean:59:34: warning: `String.mk` has been deprecated: Use `String.ofList` instead\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-fyr6h7m7/canonical.lean:60:26: warning: `String.mk` has been deprecated: Use `String.ofList` instead\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-fyr6h7m7/canonical.lean:141:25: warning: `String.mk` has been deprecated: Use `String.ofList` instead\n/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-fyr6h7m7/canonical.lean:172:19: warning: `String.mk` has been deprecated: Use `String.ofList` instead\n",
+ "replay_ok": true,
+ "replay_error": "",
+ "statements_identical": true,
+ "statement_diffs": [],
+ "axioms": {
+  "generated_spec": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "problem_spec": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "spec_isomorphism": [
+   "propext",
+   "Classical.choice",
+   "Quot.sound"
+  ]
+ },
+ "axioms_ok": true,
+ "passed": true,
+ "class": "PASS",
+ "tests_in_file": false,
+ "a_body_value_identical": null,
+ "audit_wall_s": 8.1,
+ "harness_error": null,
+ "checker_sha256": {
+  "check.py": "9aa58095579dfc7d12cb0c727c23c7a6dffe7efaa0b0ba0b76111cd7dd767f8b",
+  "s2audit.lean": "37ccc2c586ef545b46d73425412e7c789ec2c3463216fa94ddd0481b083c81f2",
+  "sandbox_check.sb": "f0e34eee14330ba9fb5b622f9fd0572ae62c154024962e48f38071d0c36af981",
+  "screen.py": "aa2c9376a5b3e0c79dea4e6e16a320dcd7e43ad208d05c127586502729d9ab1c",
+  "assemble.py": "11698336484a92d47267cdf657b4b2d2c57fa1f42219e83329333cf4af3b98ee"
+ },
+ "a_bodies_file_sha256": "289251f94ea6514329a831f7f185d57278175f905fb816080d69f40cfae1b353",
+ "a_episode": "ep-3f17b258",
+ "a_bodies_sha256": "f71afda6f976f127ad5f63ac30efddfeaef1cd9e0b0ddb38b70efd3950aeb515",
+ "a_termination": "DONE",
+ "a_passed": true,
+ "a_view_sha256": "ab700b77a6b6671bc7f82ba3a591aaac2fa2c8154fac67e664272177c18b9d8f",
+ "canonical_sha256": "e6ba0c7a63aff16d06437c300be35fd3a46429251994928db60a8d98c0f8b2ec",
+ "pristine_sha256": "57bb6a956a822e42e3969d44625fdb74d51637836279a6a9013c1bbd49b9dc9a",
+ "lean_bin": "/Users/jyh/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean",
+ "check_work": "/var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/s2check-fyr6h7m7",
+ "orphans_killed": [],
+ "orphans_left": [],
+ "sorry_lines": [],
+ "canonical_olean_sha256": "66d7ae73c553daa7506396e07bf72005611ee80e2606831e61ec658e8c17c6f8",
+ "pristine_cache_olean": "/Users/jyh/bench-a8/diag-amend9/pristine/problem_112/B/57bb6a956a822e42.olean",
+ "pristine_cached": true,
+ "pristine_olean_sha256": "b9b62beba9910baa966b5324c2671120bbcbe350118910b757fa5def8cd81d52",
+ "audit_rc": 0,
+ "statements": {
+  "generated_spec": {
+   "kind_canonical": "defn",
+   "kind_pristine": "defn",
+   "type_identical": true,
+   "value_identical": null
+  },
+  "problem_spec": {
+   "kind_canonical": "defn",
+   "kind_pristine": "defn",
+   "type_identical": true,
+   "value_identical": true
+  },
+  "spec_isomorphism": {
+   "kind_canonical": "thm",
+   "kind_pristine": "thm",
+   "type_identical": true,
+   "value_identical": null
+  }
+ },
+ "module_constants": [
+  "iso_data_eq_toList",
+  "iso_toList_drop_one._simp_1_1",
+  "_private.canonical.0.String.Slice.Pos.nextn.match_1.eq_1",
+  "String.drop.eq_1",
+  "iso_toList_drop_one._simp_1_8",
+  "String.Slice.drop.eq_1",
+  "generated_spec",
+  "iso_filter_step",
+  "iso_join_map_singleton",
+  "spec_isomorphism",
+  "_private.canonical.0.String.Slice.Pos.nextn.match_1.eq_2",
+  "String.Slice.Pos.nextn.eq_1",
+  "String.Slice.Pos.nextn.eq_def",
+  "spec_isomorphism.match_1_1",
+  "String.Slice.Pos.nextn.eq_2",
+  "iso_toList_drop_one",
+  "problem_spec",
+  "_private.canonical.0.String.Slice.Pos.nextn.match_1.splitter",
+  "problem_spec.match_1"
+ ]
+}
