@@ -42,7 +42,10 @@ on the flip day.
 2. A fence denies the agent the network, the ground truth and the harness state, and the fence
    is measured by probes before the run. The v1 probes spoke only the sandbox's language, and the
    layer above it (the agent's own file tool) was unfenced for every v1 episode; amendment 17
-   records the finding, the repair and its canary, and the paper states it.
+   records the finding, the repair and its canary, and the paper states it. Its section 11 adds
+   the campaign-wide audit: across 278 landed Lean episodes no agent ever directed a file tool at
+   a fenced path. The gap was open and its measured exploitation is zero, which is not the same as
+   protection.
 3. A dated freeze commit is the authorization. Predictions are registered and scored; adverse
    outcomes are named; every later change is a dated amendment appended before its own first
    call. Frozen text is never edited.

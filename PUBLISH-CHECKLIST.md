@@ -302,3 +302,20 @@ beside our own would blur the line the whole protocol is built on.
 
 The two-tier comparison itself remains OPEN and is a version-2 question. A read at a 120-call cap is
 a spend the owner decides, not this seat.
+
+## (j) The escape sentence corrected and the campaign-wide audit taken in (2026-09-02, the same day)
+
+Master moved again while section (i) was being written. Amendment 17's section 11, appended not edited
+in, retracts the evidence sentence of its own sections 1 and 9 and supplies the S2-Lean audit sum this
+checklist's section (h) recorded as OWED. Both go in.
+
+| where | change | source |
+|---|---|---|
+| `paper/saltbench-v1.tex` section 2, the fence | the void probe episode is no longer described as having READ a file under its configuration directory. Read at the transcript the call returned that the file did not exist; the audit field had recorded only that the call was not blocked. The episode stays void and unscorable. The paragraph now carries the campaign-wide audit in its place: 278 landed Lean episodes with a transcript, 278 parsed, zero file-tool calls at a fenced path either served or not served; the detector driven on all three branches; and the limit stated, that this measures what the agents did and not what they could have done | `AMENDMENT-17-fence-config-dir-2026-09-02.md` section 11; `harness/s2rust-analysis/s2lean_escape_audit.py` |
+| `paper/saltbench-v1.tex` section 5, instrument finding 6 | extended: the audit built to find the hole carried the same shape of defect as the probe. A field that records "not blocked" conflates a denial, an absent file and a served read, and it reported as an escape a read that had returned no bytes | same |
+| `README.md` item 2 | the audit sum added, with its limit | same |
+| `paper/saltbench-v1.tex` abstract | one clause: the instrument-findings sentence named the hole without its measured exploitation, which reads as a stronger defect than the record supports; it now carries the 278-episode zero | same |
+| the branch | `public-v1` rebased past master `8cbe46f`, no conflict | `git rebase` |
+
+This closes the item section (h) left open. Nothing stronger than the audit is claimed: the gap was
+open, its measured exploitation is zero, and an absence of exploitation is not a presence of protection.
