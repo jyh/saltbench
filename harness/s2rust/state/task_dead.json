@@ -1,0 +1,4046 @@
+{
+ "rlimit": 250,
+ "seed": 0,
+ "verus": "/Users/jyh/bench-src/verus-release-pin/verus-arm64-macos/verus",
+ "n": 207,
+ "tally": {
+  "LIVE": 180,
+  "TASK_CONTEXT_INCOMPLETE": 27
+ },
+ "wall_s": 1007.7,
+ "rows": [
+  {
+   "task_id": "AC__vreplicaset_controller__proof__guarantee__guarantee_condition_holds",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 7 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 7 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 11.2
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_always_each_vrs_in_reconcile_implies_filtered_pods_owned_by_vrs",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 358.6
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_always_every_msg_from_vrs_controller_carries_vrs_key",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.9
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_always_there_is_no_request_msg_to_external_from_controller",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 15.7
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_always_vrs_reconcile_request_only_interferes_with_itself",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 10.3
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_garbage_collector_does_not_delete_vrs_pods",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 50.0
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_no_other_pending_request_interferes_with_vrs_reconcile",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 4.6
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_no_pending_interfering_update_request",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 5.5
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_no_pending_mutation_request_not_from_controller_on_pods",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.9
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_vrs_in_ongoing_reconciles_does_not_have_deletion_timestamp",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 4.4
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_vrs_in_schedule_does_not_have_deletion_timestamp",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.8
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_lemmas__matching_pods_equal_to_matching_pod_entries_values",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.6
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_lemmas__only_interferes_with_itself_equivalent_to_lifted_only_interferes_with_itself_action",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_lemmas__vrs_rely_condition_equivalent_to_lifted_vrs_rely_condition",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_lemmas__vrs_rely_condition_equivalent_to_lifted_vrs_rely_condition_action",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__api_actions__lemma_api_request_other_than_pending_req_msg_maintains_matching_pods",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 17.9
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__proof__eventually_stable_reconciliation_holds",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.2
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__proof__eventually_stable_reconciliation_holds_per_cr",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.6
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__proof__lemma_from_reconcile_idle_to_scheduled",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.1
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__proof__lemma_from_scheduled_to_init_step",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 4.5
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__proof__spec_before_phase_n_entails_true_leads_to_current_state_matches",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.4
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_create_pod_resp_to_receive_create_pod_resp",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.2
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_delete_pod_resp_to_receive_delete_pod_resp",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.4
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_list_pods_resp_to_done",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 7.1
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_list_pods_resp_to_receive_create_pod_resp",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.3
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_list_pods_resp_to_receive_delete_pod_resp",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.3
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_list_pods_resp_to_send_create_pod_req",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 10.8
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_list_pods_resp_to_send_delete_pod_req",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 12.1
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_ok_resp_at_after_create_pod_step_to_done",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 8.8
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_ok_resp_at_after_delete_pod_step_to_done",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 7.3
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_ok_resp_to_send_create_pod_req",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 6.8
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_ok_resp_to_send_delete_pod_req",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 34.3
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_send_create_pod_req_to_receive_ok_resp",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 7.9
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_send_delete_pod_req_to_receive_ok_resp",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 22.3
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_send_list_pods_req_to_receive_list_pods_resp",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 3.5
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_diff_and_init_to_current_state_matches",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.8
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_init_step_to_send_list_pods_req",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 3.7
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__assumption_and_invariants_of_all_phases_is_stable",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.1
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__derived_invariants_since_beginning_is_stable",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.5
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__next_with_wf_is_stable",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.7
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__spec_and_invariants_entails_stable_spec_and_invariants",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.0
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__spec_entails_all_invariants",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 10.5
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__spec_of_previous_phases_entails_eventually_new_invariants",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.9
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__stable_spec_and_assumption_and_invariants_of_all_phases_is_stable",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.9
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__stable_spec_is_stable",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.5
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__terminate__lemma_from_after_create_or_delete_pod_rank_zero_to_reconcile_idle",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.1
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__terminate__lemma_from_after_create_pod_rank_n_to_create_pod_rank_n_minus_1",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.8
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__terminate__lemma_from_after_delete_pod_rank_n_to_delete_pod_rank_n_minus_1",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.9
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__terminate__lemma_from_after_list_pods_to_reconcile_idle",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.9
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__terminate__lemma_from_pending_req_in_flight_or_resp_in_flight_at_all_create_to_create_n",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__terminate__reconcile_eventually_terminates",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.8
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__terminate__reconcile_eventually_terminates_on_vrs_object",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.0
+  },
+  {
+   "task_id": "NR__definitions_u__impl3__lemma_entry_sizes_aligned",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 6 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__definitions_u__impl3__lemma_entry_sizes_aligned_auto",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 4 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 4 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__definitions_u__impl3__lemma_entry_sizes_increase",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 5 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__definitions_u__lemma_maxphyaddr_facts",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 5 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 5 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__definitions_u__lemma_new_seq",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__extra__aligned_transitive",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__extra__aligned_transitive_auto",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.3
+  },
+  {
+   "task_id": "NR__extra__assert_maps_equal_contains_pair",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.3
+  },
+  {
+   "task_id": "NR__extra__lemma_aligned_iff_eq_mul_div",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__extra__lemma_set_of_first_n_nat_is_finite",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__extra__leq_add_aligned_less",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 4 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 4 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "NR__extra__mod_add_zero",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.3
+  },
+  {
+   "task_id": "NR__extra__mod_mult_zero_implies_mod_zero",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.3
+  },
+  {
+   "task_id": "NR__extra__subtract_mod_eq_zero",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.3
+  },
+  {
+   "task_id": "NR__impl_u__indexing__lemma_entry_base_from_index",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 6 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 6 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__impl_u__indexing__lemma_entry_base_from_index_support",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__impl_u__indexing__lemma_index_from_base_and_addr",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 4 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 4 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_empty_implies_interp_aux_empty",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_empty_implies_interp_empty",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_entries_interp_equal_implies_interp_aux_equal",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_entries_interp_equal_implies_interp_equal",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_entries_interp_insert_implies_interp_insert",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_aux_between",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_aux_contains_implies_interp_of_entry_contains",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_contains_implies_interp_of_entry_contains",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_entries_insert_implies_interp_insert",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_entries_remove_implies_interp_remove",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 11 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_of_entry_between",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 11 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 11 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.6
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_of_entry_contains_mapping_implies_interp_aux_contains_mapping",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_of_entry_contains_mapping_implies_interp_contains_mapping",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_of_entry_disjoint_mappings",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.3
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_of_entry_insert_implies_interp_aux_insert",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_of_entry_insert_implies_interp_insert",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_of_entry_insert_page_implies_interp_insert_page",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_of_entry_key_between",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_new_empty_dir",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 8 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 8 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_nonempty_implies_interp_contains",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 11 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__impl_u__l2_impl__impl0__lemma_addr_mask_when_hp_pat_is_zero",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 22 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 22 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.6
+  },
+  {
+   "task_id": "NR__impl_u__l2_impl__impl0__lemma_zero_entry_facts",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 24 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 24 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__impl_u__l2_impl__lemma_aligned_addr_mask_facts",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 23 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 23 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.8
+  },
+  {
+   "task_id": "NR__impl_u__l2_impl__lemma_bitvector_facts",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 9 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 9 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.6
+  },
+  {
+   "task_id": "NR__impl_u__l2_impl__lemma_bitvector_facts_simple",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 7 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 7 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__impl_u__l2_impl__lemma_page_aligned_implies_mask_dir_addr_is_identity",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 10 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__bounds_applied_mappings",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.1
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__extra_mappings_preserved",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.7
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__extra_mappings_submap",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.5
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__interp_vmem_subrange",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 6 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 6 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.6
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__interp_vmem_update_range",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__lemma_effective_mappings_unaffected_if_thread_state_constant",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.7
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__lemma_map_soundness_equality",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.8
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__lemma_unmap_soundness_equality",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.6
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__monotonic_candidate_mapping_overlaps_existing_vmem",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.3
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__next_step_refines_hl_next_step",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 9.8
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__no_overlaps_applied_mappings",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.3
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__no_overlaps_interp_pt_mem",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.1
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__no_overlaps_pmem_applied_mappings",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.4
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__os_init_refines_hl_init",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 9 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 9 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.6
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__os_next_refines_hl_next",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.6
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__relevant_mem_preserved",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.3
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__step_MapEnd_refines",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.8
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__step_MapOpChange_refines",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.8
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__step_MapStart_refines",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.6
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__step_MemOp_refines",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 42 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error[E0425]: cannot find function `is_in_mapped_region` in this scope",
+     "error[E0433]: failed to resolve: use of undeclared type `ThreadState`",
+     "error[E0433]: failed to resolve: use of undeclared type `ThreadState`"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error[E0425]: cannot find function `is_in_mapped_region` in this scope",
+     "error[E0433]: failed to resolve: use of undeclared type `ThreadState`",
+     "error[E0433]: failed to resolve: use of undeclared type `ThreadState`"
+    ]
+   },
+   "seconds": 4.3
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__step_UnmapEnd_refines",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.4
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__step_UnmapOpChange_refines",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.6
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__step_UnmapStart_refines",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.2
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__unmap_vaddr_set_le_extra_mappings_dom",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.2
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__vaddr_distinct",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.0
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__vaddr_mapping_is_being_modified_from_vaddr_unmap",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error[E0433]: failed to resolve: use of undeclared type `CoreState`",
+     "error[E0433]: failed to resolve: use of undeclared type `CoreState`",
+     "error[E0433]: failed to resolve: use of undeclared type `CoreState`"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error[E0433]: failed to resolve: use of undeclared type `CoreState`",
+     "error[E0433]: failed to resolve: use of undeclared type `CoreState`",
+     "error[E0433]: failed to resolve: use of undeclared type `CoreState`"
+    ]
+   },
+   "seconds": 1.2
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl1__lemma_interps_match",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 46 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 46 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.9
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl1__lemma_interps_match_aux1",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 58 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 58 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 13.7
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl1__lemma_interps_match_aux2",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 57 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 57 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 4.6
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl2__lemma_regions_derived_from_view_after_write",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.5
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl2__register_failed_map",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 48 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error[E0425]: cannot find function `lemma_concurrent_trs` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error[E0425]: cannot find function `lemma_concurrent_trs` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 1.1
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl3__lemma_regions_derived_from_view_after_write",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.6
+  },
+  {
+   "task_id": "NR__spec_t__hlproof__insert_map_preserves_unique",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__spec_t__hlproof__insert_non_map_preserves_unique",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 2 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__spec_t__hlproof__map_end_preserves_inv",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__spec_t__hlproof__map_start_preserves_inv",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 15 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 15 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "NR__spec_t__hlproof__unmap_start_preserves_inv",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 12 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 12 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__spec_t__hlspec__next_step_preserves_inv",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 15 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 15 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.8
+  },
+  {
+   "task_id": "NR__spec_t__mmu__defs__x86_arch_spec_upper_bound",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 11 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 11 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__spec_t__mmu__pt_mem__impl0__lemma_pt_walk",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 37 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 37 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.8
+  },
+  {
+   "task_id": "NR__spec_t__mmu__pt_mem__impl0__lemma_pt_walk_agrees_in_frame",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 37 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 37 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.2
+  },
+  {
+   "task_id": "NR__spec_t__mmu__pt_mem__impl0__lemma_write_seq",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__spec_t__mmu__pt_mem__impl0__lemma_write_seq_first",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.3
+  },
+  {
+   "task_id": "NR__spec_t__mmu__pt_mem__impl0__lemma_write_seq_idle",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__spec_t__mmu__pt_mem__impl0__lemma_write_seq_push",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__spec_t__mmu__pt_mem__impl0__lemma_write_seq_read",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: recursive function must have a decreases clause",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__spec_t__mmu__pt_mem__lemma_fold_left_push",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.3
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__init_implies_inv",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.8
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_bits_align_to_usize",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 31 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 31 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.3
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_finish_iter_walk_invalid_after_nonpos_write",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 32 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 32 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.0
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_finish_iter_walk_prefix_matches_iter_walk",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 28 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 28 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_finish_iter_walk_valid_with_nonpos_write_in_path",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 32 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 32 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.3
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_indexing_bits_match_len_decrease",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.3
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_invalid_walk_is_invalid_in_writer_mem",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 33 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 33 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.0
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_iter_walk_equals_pt_walk",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 24 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 24 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.6
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_iter_walk_result_vbase_equal",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 6 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 6 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_iter_walk_result_vbase_equal_aux1",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 31 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 31 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.8
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_iter_walk_result_vbase_equal_aux2",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 31 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 31 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.8
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_mem_view_after_step_write",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 6 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_pt_walk_result_vaddr_indexing_bits_match",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 31 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 31 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_pt_walk_result_vbase_equal",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 31 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 31 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.9
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_step_Writeback_post_valid_pt_walk_not_wraddr_in_path",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 33 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 33 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.0
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_step_Writeback_post_valid_walk_unchanged",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 33 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 33 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.9
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_step_Writeback_preserves_writer_mem",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_step_writeback_invalid_walk_unchanged",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 33 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 33 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.0
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_step_writenonneg_new_walk_has_pending_map",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.1
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_step_writenonneg_path_addrs_match",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 32 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 32 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.3
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_step_writenonneg_valid_walk_unchanged",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 33 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 33 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.1
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_step_writenonpos_invalid_walk_unchanged",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 33 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 33 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.2
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_valid_implies_equal_reads",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_valid_implies_equal_walks",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 34 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 34 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.4
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_valid_not_pending_implies_equal",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 36 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 36 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.8
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_writer_read_from_sbuf",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 6 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 6 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.6
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_writes_tso_empty_implies_sbuf_empty",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 6 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__next_preserves_inv",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.9
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__next_step_preserves_inv",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 2 previous errors"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 2 previous errors"
+    ]
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__next_step_preserves_inv_sbuf_facts",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 2 previous errors"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 2 previous errors"
+    ]
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__next_step_preserves_inv_unmapping",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__next_step_preserves_wf",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.1
+  },
+  {
+   "task_id": "NR__spec_t__mmu__translation__impl1__lemma_view_unchanged_dirty_access",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 31 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 31 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.0
+  },
+  {
+   "task_id": "NR__spec_t__mmu__translation__lemma_bit_indices_less_512",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 9 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 9 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.6
+  },
+  {
+   "task_id": "NR__spec_t__os_code_vc__lemma_concurrent_trs",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 42 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error[E0425]: cannot find function `next_preserves_inv` in this scope",
+     "error[E0433]: failed to resolve: use of unresolved module or unlinked crate `to_rl1`",
+     "error: aborting due to 2 previous errors"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error[E0425]: cannot find function `next_preserves_inv` in this scope",
+     "error[E0433]: failed to resolve: use of unresolved module or unlinked crate `to_rl1`",
+     "error: aborting due to 2 previous errors"
+    ]
+   },
+   "seconds": 20.0
+  },
+  {
+   "task_id": "NR__spec_t__os_code_vc__lemma_concurrent_trs_during_shootdown",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 42 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 42 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 22.4
+  },
+  {
+   "task_id": "NR__spec_t__os_code_vc__lemma_concurrent_trs_induct",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 40 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error[E0412]: cannot find type `RLbl` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error[E0412]: cannot find type `RLbl` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 0.7
+  },
+  {
+   "task_id": "NR__spec_t__os_code_vc__lemma_concurrent_trs_no_lock",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 42 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 42 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 29.8
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__init_implies_inv",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 42 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 42 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.1
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__init_implies_tlb_inv",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 9 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 9 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.6
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_candidate_mapping_inflight_pmem_overlap_hl_implies_os",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.8
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_candidate_mapping_inflight_pmem_overlap_os_implies_hl",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.8
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_candidate_mapping_inflight_vmem_overlap_hl_implies_os",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.8
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_candidate_mapping_inflight_vmem_overlap_os_implies_hl",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 13 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.8
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_init_implies_empty_map",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 35 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.8
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_insert_no_overlap_preserves_no_overlap",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_insert_preserves_no_overlap",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.5
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_map_insert_value",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.3
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_map_insert_values_equality",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 1 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.3
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_submap_preserves_no_overlap",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 3 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.4
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_unique_and_overlap_values_implies_overlap_vmem",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 12 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 12 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 0.6
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_preserves_inv",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.3
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_inv",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.5
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_inv_allocated_mem",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 11.1
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_inv_basic",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 13.5
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_inv_impl",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 2.8
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_inv_mmu",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 42 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 42 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 10.7
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_inv_pending_maps",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 15.4
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_inv_shootdown",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 4.8
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_inv_writes",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 8.8
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_overlap_mem_inv",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 29.7
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_tlb_inv",
+   "verdict": "TASK_CONTEXT_INCOMPLETE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "scaffold": {
+    "cls": "COMPILE",
+    "rc": 1,
+    "results_line": null,
+    "errors": [
+     "error: cannot find macro `assert_by_contradiction` in this scope",
+     "error: aborting due to 1 previous error"
+    ]
+   },
+   "seconds": 15.5
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__step_MapNoOp_and_step_MapOpChange_preserves_overlap_mem_inv",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 3.6
+  },
+  {
+   "task_id": "NR__theorem__lemma1_init",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.0
+  },
+  {
+   "task_id": "NR__theorem__lemma1_next",
+   "verdict": "LIVE",
+   "standalone": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "splice": null,
+   "scaffold": {
+    "cls": "PASS",
+    "rc": 0,
+    "results_line": "verification results:: 41 verified, 0 errors",
+    "errors": []
+   },
+   "seconds": 1.4
+  }
+ ]
+}

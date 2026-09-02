@@ -1,0 +1,32 @@
+ 181 LIVE                        1.1s NR__spec_t__os_invariant__init_implies_inv
+ 182 LIVE                        0.6s NR__spec_t__os_invariant__init_implies_tlb_inv
+ 183 LIVE                        0.8s NR__spec_t__os_invariant__lemma_candidate_mapping_inflight
+ 184 LIVE                        0.8s NR__spec_t__os_invariant__lemma_candidate_mapping_inflight
+ 185 LIVE                        0.8s NR__spec_t__os_invariant__lemma_candidate_mapping_inflight
+ 186 LIVE                        0.8s NR__spec_t__os_invariant__lemma_candidate_mapping_inflight
+ 187 LIVE                        0.8s NR__spec_t__os_invariant__lemma_init_implies_empty_map
+ 188 LIVE                        0.5s NR__spec_t__os_invariant__lemma_insert_no_overlap_preserve
+ 189 LIVE                        0.5s NR__spec_t__os_invariant__lemma_insert_preserves_no_overla
+ 190 LIVE                        0.3s NR__spec_t__os_invariant__lemma_map_insert_value
+ 191 LIVE                        0.3s NR__spec_t__os_invariant__lemma_map_insert_values_equality
+ 192 LIVE                        0.4s NR__spec_t__os_invariant__lemma_submap_preserves_no_overla
+ 193 LIVE                        0.6s NR__spec_t__os_invariant__lemma_unique_and_overlap_values_
+ 194 LIVE                        1.3s NR__spec_t__os_invariant__next_preserves_inv
+ 195 LIVE                        1.5s NR__spec_t__os_invariant__next_step_preserves_inv
+ 196 LIVE                       11.1s NR__spec_t__os_invariant__next_step_preserves_inv_allocate
+ 197 LIVE                       13.5s NR__spec_t__os_invariant__next_step_preserves_inv_basic
+ 198 LIVE                        2.8s NR__spec_t__os_invariant__next_step_preserves_inv_impl
+ 199 LIVE                       10.7s NR__spec_t__os_invariant__next_step_preserves_inv_mmu
+ 200 LIVE                       15.4s NR__spec_t__os_invariant__next_step_preserves_inv_pending_
+ 201 LIVE                        4.8s NR__spec_t__os_invariant__next_step_preserves_inv_shootdow
+ 202 LIVE                        8.8s NR__spec_t__os_invariant__next_step_preserves_inv_writes
+ 203 LIVE                       29.7s NR__spec_t__os_invariant__next_step_preserves_overlap_mem_
+ 204 TASK_CONTEXT_INCOMPLETE    15.5s NR__spec_t__os_invariant__next_step_preserves_tlb_inv
+ 205 LIVE                        3.6s NR__spec_t__os_invariant__step_MapNoOp_and_step_MapOpChang
+ 206 LIVE                        1.0s NR__theorem__lemma1_init
+ 207 LIVE                        1.4s NR__theorem__lemma1_next
+
+TALLY {"LIVE": 180, "TASK_CONTEXT_INCOMPLETE": 27}
+dead-list written to ./task_dead_full.json
+
+[exited with code 0]
