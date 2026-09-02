@@ -1,0 +1,9 @@
+screen_verus selftest: 29 arms, 0 failed
+selftest_check_verus: 19 arms, 0 failed
+controls_gate_verus selftest: 10 arms, 0 failed
+selftest_rt_verus: 9 arms, 0 failed
+gt_leak_check selftest: 7 arms, 0 failed
+FENCE SELFTEST: 18 passed, 0 FAILED
+prompt-coverage selftest: 5 arms, 0 failed
+settings-fence selftest: 9 arms, 0 failed
+dry selftest: 7 arms, 0 failed

@@ -1,0 +1,28 @@
+{
+  "theme": "auto",
+  "skipDangerousModePermissionPrompt": true,
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Bash|Monitor",
+        "hooks": [ { "type": "command", "command": "__HOOK__", "timeout": 15 } ] }
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false,
+    "autoAllowBashIfSandboxed": true,
+    "excludedCommands": [],
+    "network": {
+      "allowedDomains": [],
+      "strictAllowlist": true,
+      "allowUnixSockets": [],
+      "allowAllUnixSockets": false,
+      "allowLocalBinding": false
+    },
+    "filesystem": {
+      "denyRead": __DENY_READ__,
+      "denyWrite": []
+    }
+  }
+}

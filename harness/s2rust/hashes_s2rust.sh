@@ -42,10 +42,20 @@ JSONL="$BENCH_REPO/benchmarks/VeruSAGE-Bench/tasks.jsonl"; need "$JSONL"
 OUT=$(mktemp /tmp/s2rustpins.XXXXXX); trap 'rm -f "$OUT"' EXIT
 sha() { shasum -a 256 "$1" | cut -d' ' -f1; }
 {
-  for f in rustspan.py build_views_verus.py extract_verus.py screen_verus.py check_verus.py gt_pass_verus.py \
-           rlimit_curve_verus.py gt_leak_check.py controls_gate_verus.py views_sethash.py \
-           selftest_check_verus.py selftest_rt_verus.sh selftest_fence_verus.py selftest_prompt_coverage.py \
-           hashes_s2rust.sh sandbox_verus.sb rt.template base.md prompt_P.md; do
+  # ⛔ ENUMERATED, NOT HAND-LISTED. The first cut carried an explicit file list, and within one commit it was
+  # already stale: six new tools (the episode driver, its dry stub, the settings renderer and template, the
+  # smoke gate, the provisioning script) were on disk and absent from the table.
+  #   ⇒ 🔑 A HAND-MAINTAINED FILE LIST IS AN ABSENCE-LIST, AND AN ABSENCE-LIST CARRIES THE SAME STALENESS AS
+  #     THE PRESENCE-LIST IT COMPLEMENTS — while reading, to anyone reviewing it, exactly like an audit.
+  # It fails LOUD rather than silently omitting: episode_s2rust.sh refuses any s2rust/ file that is on the
+  # host and not in the table, so an unpinned tool stops the run instead of riding along unmeasured. The
+  # exclusions are by KIND (build artefacts, state, the table itself), never by name.
+  # ⛔ AND THE GLOB IS EVERY FILE, NOT A LIST OF EXTENSIONS — my first enumerating cut still missed
+  # `settings.s2rust.template.json`, because `*.py *.sh *.sb *.md rt.template` is a hand-list wearing a
+  # glob's clothes. Same defect, one layer down, caught the same way: by counting the keys against the dir.
+  for f in *; do
+    [ -f "$f" ] || continue
+    case "$f" in *.pyc|HASHES*|FREEZE-COMMIT) continue ;; esac
     need "$f"; printf 's2rust/%s %s\n' "$f" "$(sha "$f")"
   done
   # the toolchain, pinned as BINARIES — no cargo and no rustup at episode time

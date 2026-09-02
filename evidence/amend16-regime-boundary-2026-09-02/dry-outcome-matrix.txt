@@ -1,0 +1,10 @@
+RUN-SHAPED DRY (task=AC__vreplicaset_controller__proof__guarantee__guarantee_condition_holds, zero model tokens)
+  PASS proof    VERIFY_FAIL
+  PASS clean    VERIFY_FAIL
+  PASS screen   SCREEN
+  PASS helper   VERIFY_FAIL
+  PASS badhelp  SCREEN
+  PASS damage   SCAFFOLD_DAMAGED
+  PASS D0       3 distinct classes — the rig actually steers the subject
+
+dry selftest: 7 arms, 0 failed

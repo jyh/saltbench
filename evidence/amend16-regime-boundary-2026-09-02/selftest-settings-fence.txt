@@ -1,0 +1,11 @@
+  PASS C1 run's own root is denied              /Users/jyh/bench-a8
+  PASS C2 sibling root covered when named       a subpath deny on ~/bench would NOT have reached it
+  PASS C3 a different root is NOT denied        proves derivation, not a blanket deny
+  PASS C4 empty $BENCH REFUSES                  no silent fallback to ~/bench
+  PASS C5 hook path derived from the root       /Users/jyh/bench-a8/harness/hook-deny-network.sh
+  PASS C6 sandbox block intact                  enabled+failIfUnavailable+no network
+  PASS C7 --check accepts a faithful rendering  SETTINGS OK /var/folders/6g/vctfxpj12fb30906yg61rtm40000gn/T
+  PASS C8 --check REFUSES a tampered fence      SETTINGS DRIFT: /var/folders/6g/vctfxpj12fb30906yg61rtm40000
+  PASS C9 --check REFUSES another root's fence  SETTINGS DRIFT: /var/folders/6g/vctfxpj12fb30906yg61rtm40000
+
+settings-fence selftest: 9 arms, 0 failed
