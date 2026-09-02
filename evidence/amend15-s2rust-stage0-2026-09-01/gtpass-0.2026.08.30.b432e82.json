@@ -1,0 +1,137 @@
+[
+ [
+  "NR__impl_u__l1__impl2__lemma_empty_implies_interp_empty",
+  "PASS",
+  0,
+  "verification results:: 10 verified, 0 errors",
+  0.3,
+  "",
+  7726
+ ],
+ [
+  "NR__spec_t__mmu__rl2__lemma_step_Writeback_post_valid_pt_walk_not_wraddr_in_path",
+  "PASS",
+  0,
+  "verification results:: 33 verified, 0 errors",
+  0.5,
+  "",
+  22359
+ ],
+ [
+  "NR__spec_t__os_invariant__lemma_submap_preserves_no_overlap",
+  "PASS",
+  0,
+  "verification results:: 3 verified, 0 errors",
+  0.3,
+  "",
+  5594
+ ],
+ [
+  "NR__impl_u__l2_impl__lemma_bitvector_facts",
+  "PASS",
+  0,
+  "verification results:: 9 verified, 0 errors",
+  0.3,
+  "",
+  1364
+ ],
+ [
+  "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_garbage_collector_does_not_delete_vrs_pods",
+  "PASS",
+  0,
+  "verification results:: 1 verified, 0 errors",
+  4.6,
+  "",
+  173383
+ ],
+ [
+  "NR__spec_t__mmu__rl2__lemma_finish_iter_walk_invalid_after_nonpos_write",
+  "PASS",
+  0,
+  "verification results:: 32 verified, 0 errors",
+  0.5,
+  "",
+  14549
+ ],
+ [
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_delete_pod_resp_to_receive_delete_pod_resp",
+  "PASS",
+  0,
+  "verification results:: 1 verified, 0 errors",
+  1.2,
+  "",
+  191488
+ ],
+ [
+  "NR__spec_t__mmu__pt_mem__impl0__lemma_write_seq_first",
+  "PASS",
+  0,
+  "verification results:: 1 verified, 0 errors",
+  0.3,
+  "",
+  1005
+ ],
+ [
+  "NR__impl_u__l2_impl__impl0__lemma_zero_entry_facts",
+  "FAIL",
+  1,
+  "(no results line)",
+  0.2,
+  "",
+  9564
+ ],
+ [
+  "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_always_vrs_reconcile_request_only_interferes_with_itself",
+  "PASS",
+  0,
+  "verification results:: 1 verified, 0 errors",
+  5.8,
+  "",
+  173249
+ ],
+ [
+  "NR__spec_t__mmu__rl2__lemma_step_Writeback_preserves_writer_mem",
+  "PASS",
+  0,
+  "verification results:: 3 verified, 0 errors",
+  0.4,
+  "",
+  9229
+ ],
+ [
+  "NR__spec_t__os_code_vc__lemma_concurrent_trs_induct",
+  "FAIL",
+  1,
+  "(no results line)",
+  0.3,
+  "",
+  62321
+ ],
+ [
+  "NR__impl_u__os_refinement__step_MemOp_refines",
+  "FAIL",
+  1,
+  "(no results line)",
+  0.4,
+  "",
+  122532
+ ],
+ [
+  "NR__spec_t__mmu__rl2__next_step_preserves_inv_sbuf_facts",
+  "FAIL",
+  1,
+  "(no results line)",
+  0.3,
+  "",
+  45333
+ ],
+ [
+  "NR__impl_u__wrapped_token__impl1__lemma_interps_match",
+  "FAIL",
+  1,
+  "(no results line)",
+  0.2,
+  "",
+  30723
+ ]
+]

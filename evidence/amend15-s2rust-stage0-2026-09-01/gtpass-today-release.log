@@ -1,0 +1,19 @@
+ 1/15 PASS rc=0     0.3s        verification results:: 10 verified, 0 errors  NR__impl_u__l1__impl2__lemma_empty_implies_interp_empty
+ 2/15 PASS rc=0     0.5s        verification results:: 33 verified, 0 errors  NR__spec_t__mmu__rl2__lemma_step_Writeback_post_valid_pt_wal
+ 3/15 PASS rc=0     0.3s        verification results:: 3 verified, 0 errors   NR__spec_t__os_invariant__lemma_submap_preserves_no_overlap
+ 4/15 PASS rc=0     0.3s        verification results:: 9 verified, 0 errors   NR__impl_u__l2_impl__lemma_bitvector_facts
+ 5/15 PASS rc=0     4.6s        verification results:: 1 verified, 0 errors   AC__vreplicaset_controller__proof__helper_invariants__proof_
+ 6/15 PASS rc=0     0.5s        verification results:: 32 verified, 0 errors  NR__spec_t__mmu__rl2__lemma_finish_iter_walk_invalid_after_n
+ 7/15 PASS rc=0     1.2s        verification results:: 1 verified, 0 errors   AC__vreplicaset_controller__proof__liveness__resource_match_
+ 8/15 PASS rc=0     0.3s        verification results:: 1 verified, 0 errors   NR__spec_t__mmu__pt_mem__impl0__lemma_write_seq_first
+ 9/15 FAIL rc=1     0.2s        (no results line)                             NR__impl_u__l2_impl__impl0__lemma_zero_entry_facts
+10/15 PASS rc=0     5.8s        verification results:: 1 verified, 0 errors   AC__vreplicaset_controller__proof__helper_invariants__proof_
+11/15 PASS rc=0     0.4s        verification results:: 3 verified, 0 errors   NR__spec_t__mmu__rl2__lemma_step_Writeback_preserves_writer_
+12/15 FAIL rc=1     0.3s        (no results line)                             NR__spec_t__os_code_vc__lemma_concurrent_trs_induct
+13/15 FAIL rc=1     0.4s        (no results line)                             NR__impl_u__os_refinement__step_MemOp_refines
+14/15 FAIL rc=1     0.3s        (no results line)                             NR__spec_t__mmu__rl2__next_step_preserves_inv_sbuf_facts
+15/15 FAIL rc=1     0.2s        (no results line)                             NR__impl_u__wrapped_token__impl1__lemma_interps_match
+
+GT PASS at today's release, rlimit 250, seed 0:  10/15 = 67%
+
+[exited with code 0]

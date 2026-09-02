@@ -1,0 +1,23 @@
+AC u NR = 267
+  PROOF_OK                         163
+  SHAPE                            61
+  TARGET_ABSENT                    24
+  EXEC_OR_OTHER:bare               8
+  EXEC_OR_OTHER:exec               7
+  TARGET_AMBIGUOUS(2 of 2)         3
+  TARGET_AMBIGUOUS(3 of 4)         1
+
+target proof-fn body shapes:
+  '{\n}'                   163
+  '{\n    }'               38
+  '{\n\n}'                 3
+  OTHER(13 B)              3
+  OTHER(74 B)              2
+  OTHER(154 B)             1
+  OTHER(143 B)             1
+  OTHER(102 B)             1
+
+TARGET_ABSENT sample: ['AC__vreplicaset_controller__proof__liveness__proof_lemma_true_leads_to_always_current_state_matches', 'AC__vreplicaset_controller__proof__liveness__spec__invariant_is_stable', 'AC__vreplicaset_controller__proof__liveness__spec__invariant_since_phase_i_is_stable']
+AMBIG sample: [('NR__definitions_u__impl2__entry_base', 2, 2), ('NR__definitions_u__impl2__next_entry_base', 2, 2), ('NR__impl_u__wrapped_token__impl2__allocate', 2, 2), ('NR__impl_u__wrapped_token__impl2__read', 3, 4)]
+nonproof sample: [('NR__impl_u__l2_impl__impl0__address', 'bare'), ('NR__impl_u__l2_impl__impl0__new_entry', 'bare'), ('NR__impl_u__wrapped_token__impl2__finish_map_and_release_lock', 'exec'), ('NR__impl_u__wrapped_token__impl2__write_change', 'exec'), ('NR__impl_u__wrapped_token__impl2__write_stutter', 'exec')]
+SHAPE sample: [('AC__vreplicaset_controller__proof__liveness__api_actions__lemma_create_matching_pod_request_adds_matching_pod_and_returns_ok', "'{\\n    let r = arbitrary(); // TODO -- please replace this wi'"), ('AC__vreplicaset_controller__proof__liveness__api_actions__lemma_get_then_delete_matching_pod_request_deletes_matching_pod_and_returns_ok', "'{\\n    let r = arbitrary(); // TODO -- replace with the right'"), ('AC__vreplicaset_controller__proof__liveness__api_actions__lemma_list_pods_request_returns_ok_list_resp_containing_matching_pods', "'{\\n    let r = arbitrary(); // TODO -- repalce with the right'"), ('NR__definitions_u__impl3__lemma_entry_sizes_aligned', "'{\\n    \\n    }'"), ('NR__definitions_u__impl3__lemma_entry_sizes_aligned_auto', "'{\\n    }'")]

@@ -1,0 +1,16 @@
+proof-fn targets, body EMPTY modulo whitespace : 207   (of which NOT literally '{\n}': 44 )
+proof-fn targets, body carries CONTENT         : 17
+
+CONTENT examples:
+    AC__vreplicaset_controller__proof__liveness__api_action -> 'let r = arbitrary(); // TODO -- please replace this with the right ret'
+    AC__vreplicaset_controller__proof__liveness__api_action -> 'let r = arbitrary(); // TODO -- replace with the right return value/ex'
+    AC__vreplicaset_controller__proof__liveness__api_action -> 'let r = arbitrary(); // TODO -- repalce with the right return value an'
+    NR__impl_u__l1__impl2__lemma_entries_interp_insert_impl -> 'other.interp_aux(i) === self.interp_aux(i)'
+    NR__impl_u__l1__impl2__lemma_entries_interp_remove_impl -> 'other.interp_aux(i) === self.interp_aux(i)'
+    NR__impl_u__l2_impl__impl0__lemma_new_entry_addr_mask_i -> '0 < layer'
+
+SELF-TEST  assemble(task-skeleton, gt body) == ground_truth :
+   REPRODUCES byte-for-byte : 31
+   DOES NOT                 : 176
+      task!=gt outside the body 176
+   sample: ['AC__vreplicaset_controller__proof__helper_invariants__proof_', 'AC__vreplicaset_controller__proof__helper_invariants__proof_', 'AC__vreplicaset_controller__proof__helper_invariants__proof_', 'AC__vreplicaset_controller__proof__helper_invariants__proof_']
