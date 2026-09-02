@@ -1,0 +1,16 @@
+TURNS-TO-FIRST-rc0, per episode, from the archived rt.log (referee calls, not model turns)
+⛔ This is the referee-call index of the first clean run — UNCENSORED for episodes that reached one.
+  ep-34aa0535   referee calls  6   first rc=0 at call NEVER
+  ep-dd13ed30   referee calls  1   first rc=0 at call 1
+  ep-a2f50c0e   referee calls  5   first rc=0 at call 2
+  ep-e3895808   referee calls  4   first rc=0 at call 3
+  ep-0e3ab1ab   referee calls  3   first rc=0 at call 3
+  ep-0951cdb5   referee calls 11   first rc=0 at call 10
+  ep-b6310c13   referee calls  5   first rc=0 at call 3
+  ep-3e844002   referee calls  4   first rc=0 at call 3
+  ep-99735220   referee calls 15   first rc=0 at call 14
+  ep-651e86f2   referee calls  7   first rc=0 at call 6
+
+  sighted episodes n=9   turns-to-first-rc0: median 3  p90 14  max 14
+  ⇒ this statistic is NOT censored by the turn cap for these episodes: each reached a clean
+    referee run inside the budget, so the index is the real one, not a lower bound.

@@ -1,0 +1,21 @@
+episode       class           total tok   refs   @ref tok@first rc0 % of tot
+ep-0951cdb5   PASS            3,132,914     10      9     2,851,632     91%
+ep-0e3ab1ab   PASS            1,106,010      2      2       907,863     82%
+ep-34aa0535   VERIFY_FAIL     3,255,428      6  NEVER             -       -
+ep-3e844002   PASS            1,613,737      3      2     1,311,350     81%
+ep-44dd23cc   VERIFY_FAIL        90,723      0  NEVER             -       -
+ep-5d6ae8e2   PASS              466,390      2      1       355,509     76%
+ep-651e86f2   PASS            3,101,197      7      6     2,684,237     87%
+ep-99735220   PASS            3,524,943     12     11     2,964,775     84%
+ep-a2f50c0e   PASS            1,366,939      4      1       977,401     72%
+ep-b115dc91   PASS               76,003      1      1        48,576     64%
+ep-b6310c13   PASS            2,215,679      3      2     1,774,868     80%
+ep-dd13ed30   PASS              957,722      1      1       806,264     84%
+ep-e3895808   PASS            2,150,320      4      3     1,799,159     84%
+ep-ecc1a8ee   SCREEN          2,725,592      5      1     1,961,978     72%
+ep-ef8d8dbb   HELPERS_SHAPE     612,390      1      1       498,226     81%
+
+SIGHTED n=13
+  referee calls to first rc0 : median 2  p90 9  max 11
+  metered at first rc0       : median 1,311,350  p90 2,851,632  max 2,964,775
+  fraction of the episode spent BEFORE the first clean run: median 81%

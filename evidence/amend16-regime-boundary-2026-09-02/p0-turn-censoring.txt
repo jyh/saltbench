@@ -1,0 +1,10 @@
+TURN DISTRIBUTION, and whether it can price stage C's cap
+  n=10  cap=40  median=33.5  max=40
+  episodes AT the cap: 2 of 10 (20%)
+  p90 of calls: 40
+
+  ⛔ THE DISTRIBUTION IS CENSORED AT THE CAP: 2 of 10 episodes stopped BECAUSE of it, so every
+     observation at 40 is a LOWER BOUND on what that episode wanted. A p90 computed from this
+     data cannot exceed 40 — measuring a cap from data the cap produced returns the cap.
+  ⇒ stage C's cap needs turns-to-first-rc0 from an UNCENSORED read, or a cap raised until the
+     censoring fraction is ~0 and THEN measured.

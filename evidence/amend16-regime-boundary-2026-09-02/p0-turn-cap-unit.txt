@@ -1,0 +1,20 @@
+⛔ MY TURN COUNTER WAS IN THE WRONG UNIT — the giveaway is arithmetic, not taste:
+   ep-0951cdb5 reported 'first clean run at turn 70' while its cap was 40 and it landed calls=40.
+   An episode cannot reach turn 70 under a 40-turn cap. I counted ASSISTANT MESSAGES; MAX_TURNS
+   counts Claude Code's own turns, and meter.py's `calls` dedupes by message.id.
+   ⇒ A STATISTIC IS ONLY A CAP'S PRICE IF IT IS IN THE CAP'S UNIT.
+
+IN THE CAP'S OWN UNIT (`calls`, which meter.py produces and MAX_TURNS bounds):
+  passing episodes: 9   of which UNCENSORED (calls<cap): 8   AT the cap: 1
+  uncensored passing calls: [23, 26, 27, 27, 32, 35, 35, 39]
+  median 29.5   p90 39   max 39
+
+  ⇒ the cap (40) sits essentially AT the p90 of what a passing episode needs (39).
+    That is why 2 of 10 hit it and one PASSED at the wire: the cap is not comfortably above the
+    distribution, it is inside its shoulder. 'The cap fits' and 'the cap binds' are both true.
+
+  A DEFENSIBLE stage-C cap from THIS read, in unit and with headroom:
+    2x the uncensored p90 = 78 turns
+    3x the uncensored p90 = 117 turns
+  ⛔ but it is still a p90 over n=8 with 2 known right-censored points, so it is a FLOOR on the
+    true p90, not the p90. An uncensored read at a higher cap is the only clean measurement.

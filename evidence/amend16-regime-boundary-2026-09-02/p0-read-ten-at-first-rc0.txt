@@ -1,0 +1,16 @@
+THE P0 READ'S TEN, IN DRAW ORDER — metered at first clean referee run
+#   episode       class              total  @ref tok@first rc0      %
+1   ep-34aa0535   VERIFY_FAIL    3,255,428 NEVER             -      -
+2   ep-dd13ed30   PASS             957,722     1       806,264    84%
+3   ep-a2f50c0e   PASS           1,366,939     1       977,401    72%
+4   ep-e3895808   PASS           2,150,320     3     1,799,159    84%
+5   ep-0e3ab1ab   PASS           1,106,010     2       907,863    82%
+6   ep-0951cdb5   PASS           3,132,914     9     2,851,632    91%
+7   ep-b6310c13   PASS           2,215,679     2     1,774,868    80%
+8   ep-3e844002   PASS           1,613,737     2     1,311,350    81%
+9   ep-99735220   PASS           3,524,943    11     2,964,775    84%
+10  ep-651e86f2   PASS           3,101,197     6     2,684,237    87%
+
+SIGHTED IN THE READ: n=9 of 10
+  referee calls to first rc0 : median 2  p90 11  max 11
+  metered at first rc0       : median 1,774,868  p90 2,964,775  max 2,964,775

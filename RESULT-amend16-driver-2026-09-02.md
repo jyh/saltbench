@@ -304,3 +304,49 @@ claimed earlier nor what the wording assumed.
 priced 60 episodes off S2-Lean's p50 — a foreign substrate — and got 60.6M. Then, from the single cheapest
 sighted episode (76,003), I reasoned toward 4.6M. The n=3 median says 28.0M.
 ⇒ 🔑 **THE FIX FOR A NUMBER FROM THE WRONG POPULATION IS NOT A NUMBER FROM A SMALLER ONE.**
+
+
+---
+
+## §6 · THE P0 GATE READ — `P0 = 9 of 10` ⇒ **CEILING HOLD**
+
+Upper tercile (the hard band), `a0`, `claude-opus-5`, seed 20260902, n=13 with the helm's sequential early
+stop. **10 of 10 scorable, zero VOID / HARNESS / QUOTA.** The stop fired at 10 (9 ≥ 9 already), **saving
+10,459,778 at zero information lost.** Spend **22,424,889** against a 32,884,667 quote.
+
+| # | termination | class | calls | ref-call @ first `rc0` | metered | metered @ first `rc0` |
+|---|---|---|---|---|---|---|
+| 1 | `ROUNDS_EXHAUSTED` | VERIFY_FAIL | **40/40** | NEVER | 3,255,428 | — |
+| 2–10 | `DONE` | **PASS** ×9 | 23–40 | 1 · 1 · 3 · 2 · 9 · 2 · 2 · 11 · 6 | 957,722 – 3,524,943 | 64–91% of total |
+
+**PREDICTION SCORED:** registered **P0 = 5–9, point 7**, *"STEP 2 likely, CEILING live at the upper end."*
+Band **held at its top edge**; point estimate **low by 2**; the verdict named as the live risk is the one that
+occurred. ⛔ **Fifth consecutive under-estimate of `a0`.** ⇒ 🔑 **A SYSTEMATIC ERROR IN ONE DIRECTION IS A
+MODEL DEFECT, NOT A RUN OF BAD LUCK.**
+
+### 6.1 The cap sits in the shoulder, and that makes the ceiling worse
+
+Uncensored passing `calls`: **23 26 27 27 32 35 35 39 — p90 = 39 against a cap of 40**; 2 of 10 at the cap,
+**one a PASS at exactly 40/40**. ⇒ 🔑 **A p90 COMPUTED FROM DATA THE CAP PRODUCED RETURNS THE CAP.**
+
+**The helm's reading — *"a binding cap makes the CEILING robust upward, so DT's fork is unchanged"* — is
+CONFIRMED at the object, and strengthened.** Raising the cap is monotone for `a0`, so P0 can only rise from 9;
+**but the measured 9 is therefore a LOWER BOUND** — `ep-34aa0535` died at 40/40 reading `8 verified, 1 errors`,
+one obligation short — so the true ceiling is plausibly 10/10 and **the room for `a2` is smaller than the read
+showed.** The correction makes the instrument defect *more* severe, not different.
+⚠️ Operational caveat: a higher cap moves the bind onto **tokens** (marginal ~137k/turn and rising) ⇒ HALTs ⇒
+it threatens the **denominator**, not the count. An unreadable gate, not a lower one.
+
+### 6.2 ⭐ The 81%
+
+The median episode spends **81% of its tokens before its first clean referee run** (range 64–91%).
+⇒ 🔑 **COST IS DOMINATED BY SEARCH, NOT VERIFICATION — A CAP CUTS SEARCH, NOT POLISH.** Reproducible as
+`harness/s2rust/at_first_rc0.py`.
+
+### 6.3 What it means, and what is not mine to decide
+
+`a0` clears **every band this campaign can afford**: 3/3 on the easy-to-middle range, 9/10 on the hardest
+third. **The instrument, not the treatment, is the defect — a comparison has no room**, and the 11.8%
+rerun-flip null is the same size as the entire available effect. **HOLDING** by the helm's word; the sitting
+(~05:00) rules on desk row **DT**, whose default is a **lower tier for both arms** — same 13 ids, Sonnet-5,
+same early stop. My one adopted caveat: **quote it from Sonnet's own curve**, never from these Opus figures.
