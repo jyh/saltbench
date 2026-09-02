@@ -30,7 +30,7 @@ zero-remote status makes a rewrite technically safe and semantically destructive
 ## (b) The Scrub gates, ported and driven — GREEN; tree residue 0 after section (f); 3 historical messages baselined and HELD
 
 Ported byte-identical from `salt` (which carries the jas port): `scripts/check_commit_trailers.py`,
-`scripts/check_private_paths.py` (gate id `819d4ebd77620b0d`), `scripts/check_pr_descriptions.py`,
+`scripts/check_private_paths.py` (gate id `819d4ebd77620b0d` at the port; `04ad5a4385236cac` after adopting salt's 2026-09-02 fleet sync, which adds the `safe_gif` root), `scripts/check_pr_descriptions.py`,
 `.githooks/commit-msg`, and `.github/workflows/scrub.yml` with a saltbench header. The hook is
 armed in this checkout (`git config core.hooksPath .githooks`) and was driven red and green.
 
@@ -59,9 +59,10 @@ brief"); the fixture's comment text was changed. The tree baseline is now empty 
 rewrite is lawful here (no public remote exists) and is HELD for the Captain, because it would
 re-sha every commit the private record cites.
 
-Fleet item, not this repository's: the gate's employer-lane root list predates the `safe_gif`
-seat. Measured here: zero occurrences of any employer-lane name in the tree or history
-(`git grep -I -n -E 'safe_gif|safe_dav1d|pcc-bios|/loca/|/holl/'` returns nothing).
+Fleet item, closed the same day: the gate's employer-lane root list predated the `safe_gif` seat. The
+helm synced the gate across the public repos on 2026-09-02 and this repository adopted salt's
+`origin/main` copy (the only difference: the fifth root). Measured here: zero occurrences of any
+employer-lane name in the tree or history.
 
 ## (c) Provenance of every population — WRITTEN, `PROVENANCE.md`
 
@@ -87,7 +88,7 @@ pinned revision by `harness/project_data.py`.
 | `git grep -I -n -E 'sk-ant-|AKIA[0-9A-Z]{12}|BEGIN [A-Z ]*PRIVATE KEY|ghp_[A-Za-z0-9]{20}|xox[bp]-[0-9]'` | tracked tree | 0 |
 | the same pattern with `grep -rlE` | `runs/` (61 MB, untracked) and `data/` | 0 files |
 | `FLEET.md`, the seat repo path, the kit path, session URLs | `runs/` (untracked) | 0 files |
-| the same, re-scoped to the WHOLE tracked tree after the refuter pass (`git grep -n -I -i -E 'FLEET\.md\|projects/claude/seat\|Documents/seat\|claude\.ai/code/session_\|memory-seats\|seat-loop\|helm_append'`) | tracked | 6 lines, no path: the hook's own refusal text, the gate's own fixture, this table's row, two docstring mentions of a fleet tool's name (`harness/s2lean/bc_gate.py:14` and its evidence copy), one mention of the bus file's name (`SCOUT-S2LEAN-STAGE0.md:1785`). The three name mentions are fleet VOCABULARY, held with the vocabulary item below |
+| the same class, re-scoped to the WHOLE tracked tree after the refuter pass (a case-insensitive grep for the bus file's name, the seat repository's path, the kit path under the Documents folder, session URLs, the memory-mirror directory, the seat loop and the bus tool's name; spelled in words here because the gate reads a literal pattern as an instance) | tracked | 6 lines, no path: the hook's own refusal text, the gate's own fixture, this table's row, two docstring mentions of a fleet tool's name (`harness/s2lean/bc_gate.py:14` and its evidence copy), one mention of the bus file's name (`SCOUT-S2LEAN-STAGE0.md:1785`). The three name mentions are fleet VOCABULARY, held with the vocabulary item below |
 | the run host's and the subscription account's names | tracked | 41 occurrences in 21 files, all replaced by role words and GATED (`scripts/check_infra_names.py`, section (f)); one commit body in history still names the host (history, held with the messages) |
 | absolute home paths (`/Users/jyh`) | tracked | 127 files (103 under `evidence/`, 17 under `harness/`, 7 documents) |
 | absolute home paths | `runs/` | 292 files |
@@ -208,3 +209,44 @@ reconciles them.
 
 `harness/s2rust-analysis/dt_quote.py` (not pinned; two occurrences) changed too and is not in the
 map. The commit shas of the frozen record are untouched: no history was rewritten.
+
+## (g) Repairs after the paper's refuter pass (the numbers against the frozen record, 2026-09-02)
+
+The second refuter traced about 45 numeric claims in the paper to the frozen record: all but one
+verified, no treatment effect claimed, voice clean. Thirteen repairs were ordered and all were made on
+`public-v1`:
+
+1. The stage-C population sentence (the same defect as (f).1; the two ids removed from U15 are 54 and 112).
+2. `PROVENANCE.md`: z3 is 4.12.5 as bundled in the Verus release (`HASHES.txt` key `z3-version`), not 4.16.0.
+3. The claim that the private-paths gate ships byte-identical to three repositories was FALSE (saltworks
+   and jas had drifted) and is struck; the helm synced the three on 2026-09-02 and this repository adopted
+   salt's synced copy (gate id `04ad5a4385236cac`, the `safe_gif` root added).
+4. The branch rebased past `master` `b692514` so the flip does not ship `at_first_rc0.py` unpinned inside the
+   fenced `harness/s2rust/`; the paper's citation re-pointed to `harness/s2rust-analysis/`.
+5. The 2.2 to 2.8 re-timing figure is sourced to `harness/s2rust/difficulty_band.py`'s header, where it lives.
+6. The triage body now reads 31 cells as 30 triageable plus one outside the taxonomy, as Appendix B does.
+7. The pilot's 3 of 3 is disclosed at the figure as a re-score: the landing file still reads the grader's
+   refusal (`RESULT-amend16-driver-2026-09-02.md` sections 4c and 5).
+8. Appendix C carries the lower-bound sentence for the 9 PASS (the failure at 40 of 40 one obligation
+   short; p90 of the passing call counts 39 against a cap of 40; one pass at exactly 40).
+9. The SWE-bench 13 of 15 carries its cap-bound caveat in the abstract and the body (both failures at the
+   40-call cap; cap-bound episodes 3 and 2), and the abstract names the contamination finding.
+10. The 0 of 9 flagged contrast is stated at its own cap (40) against the 8 of 15 at 100.
+11. Source comments added to the stage-0 setup sentence and to the failure-surface paragraph.
+12. The fourth triage label, HUMAN-BUGGY, is named with its count (0) and why it is unreachable on U15.
+13. The receipts re-recorded at the tip, below.
+
+Receipts, measured on the tree of the second repair commit before it was committed (that commit adds one
+message and no file):
+
+| gate | verdict |
+|---|---|
+| `check_commit_trailers.py --self-test`, then full | OK; 95 commit messages and 1040 tracked files, 0 forbidden strings |
+| `check_private_paths.py --self-test` (gate `04ad5a4385236cac`) | OK |
+| `check_private_paths.py --tree` | 0 residue lines, 0 baseline entries |
+| `check_private_paths.py --messages` | 95 messages, 3 accepted historical commits, 0 new |
+| `check_pr_descriptions.py --self-test` | OK |
+| `check_infra_names.py --self-test`, then the tree | OK; 1040 tracked text files, 0 occurrences |
+| the pin table against the tree | 95 file pins, all OK |
+| `.githooks/commit-msg`, planted trailer then clean | rc 1, then rc 0 |
+| `paper/saltbench-v1.pdf` | rebuilt with tectonic, 10 pages |

@@ -52,7 +52,7 @@ read from a secondary record rather than the object, the row says so.
 | Lean 4 | `leanprover/lean4:v4.27.0` | Apache-2.0 |
 | mathlib | `a3a10db0e9d66acbebf76c5e6a135066525ac900` | Apache-2.0 |
 | Verus | `release/0.2025.09.12.bb1f342` (arm64-macos zip, sha256 `95c5d5a5…6933`), rust channel `1.88.0-aarch64-apple-darwin` | MIT |
-| z3 | 4.16.0 as bundled in the Verus release | MIT |
+| z3 | 4.12.5 as bundled in the Verus release (`HASHES.txt` key `z3-version`) | MIT |
 | lynette | from `microsoft/verus-proof-synthesis` at the pin above | MIT |
 | swebench | 4.1.0 | MIT |
 | Claude Code | 2.1.251 headless, the agent under test; models `claude-sonnet-5`, `claude-opus-5` | proprietary; not redistributed. Transcripts of its runs are the campaign's data (section 3) |
