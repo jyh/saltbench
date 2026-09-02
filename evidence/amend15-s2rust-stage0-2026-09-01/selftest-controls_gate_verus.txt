@@ -1,0 +1,14 @@
+--- case                                                 want   gate   old one-line predicate
+ok   a fresh, honest record                               True   True   exit 0
+ok   CHECKER DRIFT (the live 09/01 defect)                False  False  exit 0   <- old gate would have PASSED this
+ok   controls taken at a DIFFERENT RLIMIT                 False  False  exit 0   <- old gate would have PASSED this
+ok   controls taken against a DIFFERENT VERUS BINARY      False  False  exit 0   <- old gate would have PASSED this
+ok   no toolchain block at all                            False  False  exit 0   <- old gate would have PASSED this
+ok   controls_pass TRUE over ZERO rows                    False  False  exit 0   <- old gate would have PASSED this
+ok   the summary disagrees with itself                    False  False  exit 0   <- old gate would have PASSED this
+ok   a control returned the WRONG class                   False  False  exit 0   <- old gate would have PASSED this
+ok   a required control is ABSENT                         False  False  exit 0   <- old gate would have PASSED this
+ok   the record never says WHICH checker ran              False  False  exit 0   <- old gate would have PASSED this
+
+controls_gate_verus selftest: 10 arms, 0 failed
+DIFFERENTIAL: 9 of the 9 refused records EXIT 0 under the one-line predicate this replaces.
