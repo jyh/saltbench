@@ -1,5 +1,6 @@
 {
   "theme": "auto",
+  "permissions": { "deny": __DENY_TOOLS__ },
   "skipDangerousModePermissionPrompt": true,
   "hooks": {
     "PreToolUse": [

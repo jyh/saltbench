@@ -247,6 +247,25 @@ def main():
     arm("A14h CLI REFUSES without --cfg", pr2.returncode != 0 and "REFUSE" in (pr2.stdout + pr2.stderr),
         "rc=%d" % pr2.returncode)
 
+    # ---- A15: TWO LAYERS FROM ONE LIST — the sandbox does NOT cover the agent's own tools
+    # ⛔ MEASURED, NOT REASONED: with the config dir correctly in `sandbox.filesystem.denyRead`, a throwaway
+    # agent asked to read a file inside it PRINTED THE CANARY. `denyRead` fences sandboxed SUBPROCESSES; the
+    # `Read` tool is run by the CLI itself. The tool-permission rule blocks it — same canary, answer UNREADABLE.
+    full = json.loads(R.render("/Users/jyh/bench-rust", None, SIB_CFG))
+    dr2 = (full.get("sandbox") or {}).get("filesystem", {}).get("denyRead") or []
+    rules = ((full.get("permissions") or {}).get("deny")) or []
+    missing = [d for d in dr2 if not any(r.startswith("Read(//%s/" % d.lstrip("/")) for r in rules)]
+    arm("A15a every denied path is denied to the TOOLS too", not missing,
+        "%d sandbox paths, %d tool rules, %d uncovered" % (len(dr2), len(rules), len(missing)))
+    arm("A15b the config dir has tool rules",
+        any(r == "Read(//%s/**)" % SIB_CFG.lstrip("/") for r in rules),
+        "the exact rule the canary drive proved blocks the Read tool")
+    # RED: a fence with the tool layer stripped leaves every one of those paths open to Read
+    stripped = dict(full); stripped.pop("permissions", None)
+    arm("A15c RED: without the tool layer nothing is covered",
+        not (((stripped.get("permissions") or {}).get("deny")) or []),
+        "this is the shape that shipped, and the canary walked through it")
+
     print("\nFENCE SELFTEST: %d passed, %d FAILED" % (len(PASS), len(FAIL)))
     if FAIL:
         print("  failed: %s" % ", ".join(FAIL))

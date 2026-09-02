@@ -57,7 +57,29 @@ def render(bench, hook=None, cfg=None):
     # `/Users/jyh/bench/harness/hook-deny-network.sh` literally — which works today only because every state
     # root's `harness` is a SYMLINK to `~/bench/harness`. A fence whose audit layer points at another root's
     # copy is one `rm` away from being unhooked without anything failing.
+    # ⛔⛔ TWO LAYERS FROM ONE LIST, BECAUSE THE FIRST LAYER DOES NOT COVER THE AGENT'S OWN TOOLS.
+    # `sandbox.filesystem.denyRead` fences SANDBOXED SUBPROCESSES (Bash, and anything they exec). It does NOT
+    # stop the `Read` TOOL, which the CLI executes itself. MEASURED with a canary on 09/02: with the config
+    # dir correctly listed in denyRead — 11 entries, path-containment verified — a throwaway agent was asked
+    # to read a file inside it and PRINTED THE CANARY VERBATIM. The list was right and the layer was the wrong
+    # layer. The tool-permission rule `Read(//abs/**)` blocks it: same canary, agent answers UNREADABLE.
+    #   ⇒ 🔑 A DENY LIST IS ONLY AS BROAD AS THE LAYER THAT ENFORCES IT — naming a path in the sandbox does
+    #     not deny it to the tools that never enter the sandbox.
+    #   ⇒ 🔑 AND THE PROBE THAT MISSED IT SPOKE THE WRONG LANGUAGE: the smoke gate proved "credential reads
+    #     denied" through Bash/Lean, which ARE sandboxed. A probe written in the sandbox's language cannot
+    #     see a hole in the layer above it.
+    # Both renderings come from `deny_read_paths` so the two layers cannot drift: a rule stated twice is two
+    # rules. Tools are listed by NAME rather than by what exists today — a rule for an absent tool is inert
+    # (driven: 12 rules launch cleanly) and a tool that appears later arrives already fenced.
+    DENY_TOOLS = ("Read", "Edit", "Write", "NotebookEdit", "Grep", "Glob")
+    rules = []
+    for d in sorted(deny):
+        a = d.lstrip("/")
+        for tool in DENY_TOOLS:
+            rules.append("%s(//%s/**)" % (tool, a))
+            rules.append("%s(//%s/*)" % (tool, a))
     txt = open(TEMPLATE, encoding="utf-8").read()
+    txt = txt.replace("__DENY_TOOLS__", json.dumps(rules, indent=8).replace("\n]", "\n    ]"))
     txt = txt.replace("__DENY_READ__", json.dumps(sorted(deny), indent=8).replace("\n]", "\n      ]"))
     txt = txt.replace("__HOOK__", hook)
     json.loads(txt)          # a rendering that is not valid JSON must fail HERE, not in the agent's launch
