@@ -1,0 +1,12 @@
+SMOKE OK   verus                  7a7b319b170692d3
+SMOKE OK   rust_verify            43bfcd7c36bcfc2e
+SMOKE OK   z3                     bbb24b8fed27552f
+SMOKE OK   vstd                   b3ab83d2648a5c0b
+SMOKE OK   lynette                8e2e4d96dc9c13f2
+SMOKE OK   rustup                 ec1b9233e7f72990
+SMOKE OK   rust-channel           1.88.0-aarch64-apple-darwin installed
+SMOKE OK   profile                833c6da8766ba5fa
+SMOKE OK   referee-flags          rlimit=250 seed=0
+SMOKE OK   referee                fenced run verifies: verification results:: 1 verified, 0 errors
+SMOKE PASS toolchain (T1-T5)
+rc=0

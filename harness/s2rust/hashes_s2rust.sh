@@ -1,15 +1,24 @@
 #!/bin/bash
-# hashes_s2rust.sh — regenerate HASHES-S2RUST.txt: the S2-Rust harness files, the toolchain pins, the
-# benchmark pins and the rendered arm files.
+# hashes_s2rust.sh — THE S2-RUST PIN EMITTER. One implementation, two callers.
 #
-# ⛔ THIS IS A SEPARATE FILE FROM THE SHARED `harness/HASHES.txt` **ON PURPOSE**, AND THE REASON IS A DATE.
-# Amendment 11 §13's stage-C dispatch is still pending its 09/02 objection window and must run against the
-# harness `sync_studio.sh` froze at saltbench `15cfdc2`. Adding S2-Rust keys to `hashes.sh` would rewrite
-# `HASHES.txt`, move the harness sha `sync_studio.sh` receipts, and put the Studio out of step with its own
-# freeze commit — for a wave that has not yet crossed its regime boundary.
-# ⇒ SPEND COMPARABILITY ONLY WHEN A RUN NEEDS IT (amendment 11's law). These pins merge into `hashes.sh` at
-# the VeruSAGE stage-0 regime boundary, together with the z3 fence widening and rows AV + CO — the helm's
-# ruling that they land as ONE regime change, not three.
+# ⭐ MERGED INTO `hashes.sh` at the VeruSAGE stage-0 regime boundary (amendment 16), as the helm ruled: one
+# regime change, not three. Until then this wrote its own `HASHES-S2RUST.txt`, because rewriting `HASHES.txt`
+# would have moved the harness the still-pending stage-C dispatch was frozen against.
+#
+# ⛔⛔ THE MERGE WAS NOT THE ONE-LINE CHORE IT LOOKED LIKE: THE TWO TABLES SHARE KEYS WITH DIFFERENT VALUES.
+# Measured before merging — `base.md` (9ada9241… vs 7e543ff6…) and `rt.template` (c46e59af… vs 5db37bbe…)
+# exist in BOTH tables and mean different files; `arms/a2.md` collides too but is byte-identical by design.
+# A naive concatenation would have put two `base.md` lines in `HASHES.txt`, and every consumer resolves a key
+# with `grep … | head -1`, so ONE OF THEM WOULD HAVE SILENTLY BECOME AUTHORITATIVE — the exact P2C2-01 defect
+# `sync_studio.sh`'s own comment warns about, re-created by the merge that was supposed to be bookkeeping.
+# ⇒ THE FILE KEYS ARE THEREFORE NAMESPACED `s2rust/<file>`, exactly as S2-Lean's are `s2lean/<file>`, and
+#   `hashes.sh` now REFUSES a table containing any duplicate key at all (a gate, so this cannot recur).
+# ⇒ 🔑 TWO TABLES THAT WERE NEVER COMPARED CAN EACH BE CORRECT AND STILL COLLIDE — a merge is a measurement,
+#   not an append.
+#
+# ⛔ AND IT IS STILL ONE IMPLEMENTATION: `--emit` prints the pin block to stdout and the default writes the
+# standalone file from THAT SAME BLOCK. Amendment 15's law — a checksum defined twice is two checksums; the
+# generator and the verifier must be the same CODE, not the same idea.
 #
 # Every path below is REQUIRED and the script FAILS LOUD if one is missing: a HASHES file that silently omits
 # a pin is worse than none, because the gate that reads it reports green (amendment 12's law).
@@ -25,14 +34,19 @@ need() { [ -e "$1" ] || { echo "FATAL: missing $1 — cannot emit its pin" >&2; 
 need "$VERUS_ROOT/verus"; need "$VERUS_ROOT/z3"; need "$VERUS_ROOT/libvstd.rlib"; need "$LYNETTE_BIN"
 JSONL="$BENCH_REPO/benchmarks/VeruSAGE-Bench/tasks.jsonl"; need "$JSONL"
 
-OUT=HASHES-S2RUST.txt.tmp; trap 'rm -f HASHES-S2RUST.txt.tmp' EXIT   # atomic: a fail-loud exit must not clobber
+# ⛔ THIS SCRIPT NOW ONLY EMITS. Its standalone-file mode is GONE with `HASHES-S2RUST.txt` itself: leaving a
+# mode that writes a second pin table would let anyone re-create, in one command, exactly the duplicate this
+# amendment merged away — and the second table would then drift silently, because nothing reads it.
+#   ⇒ A RETIRED ARTIFACT WHOSE GENERATOR SURVIVES IS NOT RETIRED.
+# `--emit` is still accepted so the caller's intent stays readable at the call site in hashes.sh.
+OUT=$(mktemp /tmp/s2rustpins.XXXXXX); trap 'rm -f "$OUT"' EXIT
 sha() { shasum -a 256 "$1" | cut -d' ' -f1; }
 {
-  echo "# HASHES-S2RUST — regenerate with harness/s2rust/hashes_s2rust.sh; sha256; generated $(date -u +%Y-%m-%dT%H:%M:%SZ)"
   for f in rustspan.py build_views_verus.py extract_verus.py screen_verus.py check_verus.py gt_pass_verus.py \
            rlimit_curve_verus.py gt_leak_check.py controls_gate_verus.py views_sethash.py \
-           selftest_check_verus.py selftest_rt_verus.sh hashes_s2rust.sh rt.template base.md prompt_P.md; do
-    need "$f"; printf '%s %s\n' "$f" "$(sha "$f")"
+           selftest_check_verus.py selftest_rt_verus.sh selftest_fence_verus.py selftest_prompt_coverage.py \
+           hashes_s2rust.sh sandbox_verus.sb rt.template base.md prompt_P.md; do
+    need "$f"; printf 's2rust/%s %s\n' "$f" "$(sha "$f")"
   done
   # the toolchain, pinned as BINARIES — no cargo and no rustup at episode time
   printf 'verus-release %s\n'  "$("$VERUS_ROOT/verus" --version 2>/dev/null | awk '/Version:/{print $2}')"
@@ -42,6 +56,12 @@ sha() { shasum -a 256 "$1" | cut -d' ' -f1; }
   printf 'z3-version %s\n'     "$("$VERUS_ROOT/z3" --version 2>/dev/null | head -1 | tr ' ' '_')"
   printf 'vstd-sha %s\n'       "$(sha "$VERUS_ROOT/libvstd.rlib")"
   printf 'lynette-sha %s\n'    "$(sha "$LYNETTE_BIN")"
+  # ⛔ rustup IS PINNED BECAUSE THE FENCE ADMITS IT. `verus` is a shim that resolves its toolchain by RUNNING
+  # rustup, so `sandbox_verus.sb` must allow rustup to exec — and rustup is the one member of that trusted set
+  # that is NOT part of the pinned release: it lives on the user's PATH and is user-writable. A binary admitted
+  # to a fence must be pinned by the same instrument that pins the ones it stands next to.
+  RUSTUP_BIN=$(command -v rustup); need "$RUSTUP_BIN"
+  printf 'rustup-sha %s\n'     "$(sha "$RUSTUP_BIN")"
   # ⛔ NOT a documentation pin: a Verus release zip does NOT stand alone — it refuses to run until a MATCHING
   # rustup toolchain is installed on the host, and the two candidate releases want different ones
   # (1.97.1 for 0.2026.08.30, 1.88.0 for the benchmark's pin). This is a Studio PREREQUISITE.
@@ -59,7 +79,10 @@ sha() { shasum -a 256 "$1" | cut -d' ' -f1; }
     printf 'rendered-s2rust-%s(__EP__) %s bytes=%s\n' "$id" \
       "$(cat base.md "$src" | shasum -a 256 | cut -d' ' -f1)" "$(cat base.md "$src" | wc -c | tr -d ' ')"
   done
-  printf 'arms/a2.md %s\n' "$(sha ../arms/a2.md)"
+  # ⛔ `arms/a2.md` is NOT emitted here any more: hashes.sh's own `arms/*.md` loop already pins it, and after
+  # the merge a second line would be a duplicate key. It happens to carry the SAME sha (a2.md is byte-identical
+  # across substrates by design) — which is precisely what makes it dangerous to leave: a duplicate whose two
+  # values agree today is a duplicate that stops agreeing silently.
   # THE VIEWS ARE NOT SHIPPED — they are REBUILT from the pinned jsonl and verified by SET-HASH. 207 views of
   # multi-hundred-KB Rust do not belong in git when they are a pure function of two pinned inputs
   # (bench-jsonl-sha + build_views_verus.py). Measured: a clean rebuild reproduces the set-hash byte-identically.
@@ -67,6 +90,4 @@ sha() { shasum -a 256 "$1" | cut -d' ' -f1; }
     printf 'views-set-sha256 %s\n' "$(python3 views_sethash.py "$VIEWS_DIR")"
   fi
 } > "$OUT"
-mv "$OUT" HASHES-S2RUST.txt
-trap - EXIT
-echo "wrote $(pwd)/HASHES-S2RUST.txt ($(wc -l < HASHES-S2RUST.txt | tr -d ' ') lines)"
+cat "$OUT"

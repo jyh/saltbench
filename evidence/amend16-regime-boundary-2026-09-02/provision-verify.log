@@ -1,0 +1,12 @@
+== verify BY CONTENT (both ends) ==
+  OK    verus        7a7b319b170692d3
+  OK    rust_verify  43bfcd7c36bcfc2e
+  OK    z3           bbb24b8fed27552f
+  OK    vstd         b3ab83d2648a5c0b
+  OK    lynette      8e2e4d96dc9c13f2
+  OK    rustup       ec1b9233e7f72990
+  OK    toolchain    01f12bacb2890fae (tree set-hash)
+  OK    harness      no toolchain file under ~/bench/harness
+== smoke: verus runs on the Studio ==
+verification results:: 1 verified, 0 errors
+PROVISION OK

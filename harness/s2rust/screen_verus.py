@@ -75,6 +75,56 @@ _HELPER_BAD = [
 ]
 
 
+# ─────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ROW AV — WHAT THE CHECKER REFUSES, THE AGENT MUST HAVE BEEN TOLD.
+#
+# Row AV was opened against S2-Lean: `native_decide` is effectively out of bounds and NO PROMPT SAYS SO, so
+# an episode can fail on a rule the agent was never given. The helm ruled it ripens at this regime boundary.
+# MEASURED HERE BEFORE ANY REPAIR: of the 29 refusal rules this screen enforces, the S2-Rust prompts named
+# 12 and left **17 unstated** — including two an agent would plausibly reach for while writing a legitimate
+# helper lemma: a new `use` import (only `broadcast use` is allowed) and `todo!`/`unimplemented!`.
+#
+# ⛔⛔ AND THE UNSTATED SURFACE IS ARM-RELEVANT, WHICH IS WHY THIS IS NOT COSMETIC. The `use` rule bites in
+# the HELPERS region, and the salt arm `a2` is the arm that ENCOURAGES helper lemmas. This is amendment 15's
+# FATAL 3 wearing different clothes: an instrument that penalises the treatment for applying the treatment
+# manufactures the opposite effect. Asking "which arm is likelier to trip this gate, and why" is now a
+# standing question for every gate this campaign adds.
+#
+# ⇒ THE REPAIR IS NOT PROSE, IT IS A GATE. Stating the rules in a prompt fixes today and rots tomorrow: the
+#   next rule added to RULES would be unstated again, and nothing would notice. This registry makes the
+#   prompt a CONSUMER of the rule set: every entry below must name a phrase that literally appears in the
+#   agent-visible prompt text, and `selftest_prompt_coverage.py` REFUSES a rule with no entry at all — so a
+#   rule cannot be added to the checker without the same commit telling the agent about it.
+#   📌 The value is the phrase the AGENT reads, not a restatement of the regex: a rule the prompt states in
+#      different words than the code uses is still stated.
+PROMPT_COVERAGE = {
+    "assume(": "assume", "assume_specification": "assume_specification", "admit(": "admit",
+    "external_body": "external_body", "verifier::external": "verifier::external",
+    "assume_termination": "assume_termination",
+    "exec_allows_no_decreases_clause": "exec_allows_no_decreases_clause",
+    "axiom fn": "axiom fn", "macro_rules": "macro_rules", "include!": "include!",
+    "include_str!": "include_str!", "std::process": "std::process", "unsafe": "unsafe",
+    "extern": "extern", "mod": "mod", "fn main": "fn main", "#[cfg": "#[cfg",
+    "#[test]": "#[test]", "unimplemented!": "unimplemented!", "todo!": "todo!",
+    "#![ (non-trigger)": "inner attribute", "use (new import)": "new `use` import",
+    "#[verifier::X] non-proof": "#[verifier::",
+    "spec fn (helpers)": "spec fn", "exec fn (helpers)": "exec fn", "impl (helpers)": "impl",
+    "trait (helpers)": "trait", "const (helpers)": "const",
+    "broadcast proof (helpers)": "broadcast proof",
+}
+
+
+def rule_names():
+    """Every refusal rule this screen enforces, by the name it reports — the gate's subject.
+
+    Derived from the live tables rather than typed, so a rule added to RULES or _HELPER_BAD appears here
+    automatically and the coverage gate goes red until the prompt names it.
+    """
+    return ([n for n, _ in RULES]
+            + ["#![ (non-trigger)", "use (new import)", "#[verifier::X] non-proof"]
+            + ["%s (helpers)" % n for n, _ in _HELPER_BAD])
+
+
 def strip(src):
     """Blank comments, strings, raw strings and char literals; keep newlines so line numbers hold."""
     try:

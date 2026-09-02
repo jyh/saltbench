@@ -1,0 +1,8 @@
+screen enforces 29 refusal rules; prompt surface = base.md, prompt_P.md
+  PASS B1 every rule is registered            unregistered=none
+  PASS B2 every rule is STATED in the prompt  unstated=none
+  PASS B3 no orphan registry entries          orphans=none
+  PASS B4 RED: unregistered rule is caught    caught=['__mutant_rule__']
+  PASS B5 RED: unstated phrase is caught      caught=['assume(']
+
+prompt-coverage selftest: 5 arms, 0 failed

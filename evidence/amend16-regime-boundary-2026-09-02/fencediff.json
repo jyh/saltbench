@@ -1,0 +1,677 @@
+{
+ "n": 61,
+ "diffs": 0,
+ "rows": [
+  {
+   "task_id": "NR__impl_u__os_refinement__step_UnmapOpChange_refines",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.8,
+    0.9
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_core_mem_pm14",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_vrs_in_schedule_does_not_have_deletion_timestamp",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    1.2,
+    1.1
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__invariant_since_phase_ii_is_stable",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__pt_mem__impl0__lemma_write_seq_push",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_no_pending_mutation_request_not_from_controller_on_pods",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    1.2,
+    1.2
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__translation__MASK_ADDR",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_candidate_mapping_inflight_pmem_overlap_hl_implies_os",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.4,
+    0.4
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__translation__impl1__lemma_view_unchanged_dirty_access",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.5,
+    0.5
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__translation__MASK_L3_PG_ADDR",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl3__lemma_regions_derived_from_view_after_write",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.8,
+    0.8
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_of_entry_key_between",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__extra_mappings_submap",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.7,
+    0.7
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl3_read",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    1.2,
+    1.3
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_unmapping__pt_walk_valid_in_post_unchanged",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.7,
+    0.8
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_overlap_mem_inv",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    10.1,
+    10.0
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl1__lemma_interps_match_aux2",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    2.4,
+    2.3
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__invariant_is_stable",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.8,
+    0.9
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__os_next_refines_hl_next",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.8,
+    0.8
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_list_pods_resp_to_done",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    2.6,
+    2.5
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__api_actions__lemma_create_matching_pod_request_adds_matching_pod_and_returns_ok",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.8,
+    0.8
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_inv_writes",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    4.3,
+    4.2
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__spec_and_invariants_entails_stable_spec_and_invariants",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.9,
+    0.8
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__os_code_vc__lemma_concurrent_trs_induct",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.5,
+    0.5
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_of_entry_contains_mapping_implies_interp_contains_mapping",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_entries_interp_insert_implies_interp_insert",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_of_entry_insert_implies_interp_aux_insert",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.3
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_inv_pending_maps",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    7.4,
+    7.4
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_step_Writeback_post_valid_walk_unchanged",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.5,
+    0.5
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__interp_vmem_subrange",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl3_write_change",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    1.3,
+    1.4
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl2__new",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__hlproof__unmap_start_preserves_inv",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__pt_mem__impl0__lemma_write_seq_first",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__terminate__lemma_from_after_delete_pod_rank_n_to_delete_pod_rank_n_minus_1",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.9,
+    1.0
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__indexing__lemma_entry_base_from_index_support",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__l2_impl__impl0__address",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_pt_walk_result_vaddr_indexing_bits_match",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.4,
+    0.4
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__indexing__lemma_entry_base_from_index",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__terminate__reconcile_eventually_terminates",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.9,
+    0.9
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__translation__MASK_L2_PG_ADDR",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.1,
+    0.2
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__next_step_preserves_inv_unmapping",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.5,
+    0.6
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__l2_impl__impl0__lemma_new_entry_mb0_bits_are_zero",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.8,
+    0.8
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__rl2__lemma_finish_iter_walk_invalid_after_nonpos_write",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.5,
+    0.5
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_create_pod_resp_to_receive_create_pod_resp",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.9,
+    0.9
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_entries_insert_implies_interp_insert",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl3__new",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.6,
+    0.6
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__lemma_candidate_mapping_inflight_vmem_overlap_os_implies_hl",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.4,
+    0.4
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__os_refinement__lemma_map_soundness_equality",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.4,
+    0.4
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_tlb_inv",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    15.1,
+    14.9
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__l2_impl__impl0__lemma_zero_entry_facts",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__wrapped_token__impl1__lemma_interps_match_aux1",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    6.9,
+    6.9
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__assumption_and_invariants_of_all_phases_is_stable",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.9,
+    0.9
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__os_invariant__next_step_preserves_inv_basic",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    6.7,
+    6.6
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__spec_of_previous_phases_entails_eventually_new_invariants",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    1.4,
+    1.4
+   ]
+  },
+  {
+   "task_id": "NR__impl_u__l1__impl2__lemma_interp_of_entry_insert_page_implies_interp_insert_page",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "NR__extra__mod_add_zero",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.1,
+    0.1
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__defs__x86_arch_spec_upper_bound",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__guarantee__guarantee_condition_holds",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    5.5,
+    5.6
+   ]
+  },
+  {
+   "task_id": "AC__vreplicaset_controller__proof__liveness__spec__stable_spec_is_stable",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.7,
+    0.8
+   ]
+  },
+  {
+   "task_id": "NR__spec_t__mmu__translation__MASK_L1_PG_ADDR",
+   "unfenced": "PASS",
+   "fenced": "PASS",
+   "same": true,
+   "fenced_err": [],
+   "secs": [
+    0.2,
+    0.2
+   ]
+  }
+ ]
+}

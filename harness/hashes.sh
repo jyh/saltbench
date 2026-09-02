@@ -31,6 +31,21 @@ OUT=HASHES.txt.tmp; trap 'rm -f HASHES.txt.tmp' EXIT   # atomic: a fail-loud exi
     id=$(basename "$a" .md)
     printf 'rendered-%s(__EP__) %s bytes=%s\n' "$id" "$(cat base.md "$a" | shasum -a 256 | cut -d' ' -f1)" "$(cat base.md "$a" | wc -c | tr -d ' ')"
   done
+  # ── S2-RUST (amendment 16, the VeruSAGE stage-0 regime boundary) ────────────────────────────────────
+  # ⛔ EMITTED BY s2rust/hashes_s2rust.sh --emit, NEVER re-implemented here. A checksum defined twice is two
+  # checksums (amendment 15): the generator and the verifier must be the same CODE, not the same idea.
+  # ⛔ Its file keys are namespaced `s2rust/…` because `base.md`, `rt.template` and `arms/a2.md` exist in BOTH
+  # tables and the first two mean DIFFERENT files with DIFFERENT shas. Every consumer resolves a key with
+  # `grep … | head -1`, so an un-namespaced merge would have made one of two `base.md` lines silently
+  # authoritative — P2C2-01, re-created by the merge meant to be bookkeeping. The duplicate-key gate below
+  # is what keeps that fixed rather than merely fixed-today.
+  if [ -n "${VERUS_ROOT:-}" ] && [ -n "${LYNETTE_BIN:-}" ] && [ -n "${BENCH_REPO:-}" ]; then
+    s2rust/hashes_s2rust.sh --emit || { echo "FATAL: the S2-Rust pin emitter failed" >&2; exit 2; }
+  else
+    echo "FATAL: VERUS_ROOT / LYNETTE_BIN / BENCH_REPO unset — the S2-Rust pins cannot be emitted, and a" >&2
+    echo "  HASHES.txt silently missing them reports green to every gate that reads it (FN2-01's shape)." >&2
+    exit 2
+  fi
 } > "$OUT"
 # per-task CANONICAL prompt shas (prompt with the episode path replaced by __EP__), so a pair's prompts are
 # provably identical up to the path (refuter F3); requires data/problem_statements.json beside the harness
@@ -43,5 +58,24 @@ for r in sorted(json.load(open("data/problem_statements.json")),key=lambda r:r["
     print("prompt-canonical", r["instance_id"], hashlib.sha256(p.encode()).hexdigest())
 PY
   printf 'problem_statements.json %s\n' "$(shasum -a 256 data/problem_statements.json | cut -d' ' -f1)" >> "$OUT"
+fi
+# ⛔ THE DUPLICATE-KEY GATE. Every consumer of this table resolves a key with `grep "^<key> " | head -1`, so a
+# table with the same key twice does not fail — it silently elects one of the two values. sync_studio.sh's
+# `head -1` was added for exactly that reason (P2C2-01) and treats the symptom; this treats the cause, and it
+# is what makes the S2-Rust merge safe rather than merely careful.
+#
+# ⛔⛔ THE RESOLUTION KEY IS NOT ALWAYS FIELD 1, AND MY FIRST CUT OF THIS GATE GOT IT WRONG. The table carries
+# TWO line shapes — `<key> <value>` and `<kind> <subject> <value>` (`frozen <task> <sha>`, `view-A <task> <sha>`,
+# `prompt-canonical <instance_id> <sha>`) — which is exactly why episode_s2.sh has BOTH `pin2` and `pin3`.
+# Keying on $1 alone reported `frozen`, `frozenA` and `prompt-canonical` as duplicates on a table that was
+# perfectly well-formed: 3 false positives out of 4 hits, and it would have blocked every regeneration.
+#   ⇒ A UNIQUENESS GATE MUST KEY ON WHAT THE CONSUMER RESOLVES ON. Mine keyed on what the line STARTS with,
+#     which is the same mistake in miniature as the whole family this campaign keeps finding: an instrument
+#     that names a proxy for the thing it means.
+dups=$(awk '!/^#/ && NF>=2 { if (NF>=3) print $1, $2; else print $1 }' "$OUT" | sort | uniq -d)
+if [ -n "$dups" ]; then
+  echo "FATAL: duplicate key(s) in HASHES.txt — a consumer would silently elect one value:" >&2
+  echo "$dups" | sed 's/^/  /' >&2
+  exit 2
 fi
 mv "$OUT" HASHES.txt; cat HASHES.txt

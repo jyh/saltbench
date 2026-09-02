@@ -1,0 +1,61 @@
+;; sandbox_verus.sb — Seatbelt profile TEMPLATE for the S2-Rust referee (amendment 16, the VeruSAGE stage-0
+;; regime boundary). `check_verus.py` renders __EXEC_ALLOW__, __WRITE_PATHS__ and __DENY_READ__ and passes the
+;; text to `/usr/bin/sandbox-exec -p` around every Verus run on agent-influenced text.
+;; Seatbelt is LAST-MATCH-WINS: the allows must come AFTER the denies.
+;;
+;; ⛔⛔ THIS PROFILE IS DELIBERATELY WIDER THAN `s2lean/sandbox_check.sb`, IN EXACTLY ONE RESPECT, AND THE
+;; DIFFERENCE IS FORCED BY THE TOOL RATHER THAN CHOSEN. S2-Lean denies `process-fork` outright: `lean` is a
+;; single process and must never spawn, so refuter R1's `IO.Process.run` chain dies at the fork. VERUS CANNOT
+;; RUN UNDER THAT RULE — it is a driver, not a verifier. Measured, red-first, on a real reference file:
+;;
+;;     (deny process-fork)  =>  "verus: rustup not found, or not executable"  then a panic at
+;;                              rust_verify/src/lifetime.rs:333 "could not execute lifetime rustc process", rc 1
+;;
+;; So the fork is ALLOWED and the whole weight of the exec fence rests on `process-exec*` instead: a forked
+;; child may exist, but it may only ever become one of the FOUR pinned binaries below. Nothing else on the
+;; machine is reachable from inside this profile — proven by a positive control, not asserted.
+;;
+;; ⭐ THE EXEC SET IS FOUR BINARIES, AND "VERUS EXECS ONLY z3" (amendment 15 §8, open question (ii)) IS FALSE.
+;; The `verus` binary is a SHIM: it resolves the pinned Rust toolchain by running `rustup`, which execs
+;; `rust_verify`, which execs `z3`. Established by a four-step ladder in which each arm's own error names the
+;; next binary in the chain — i.e. every member is proven NECESSARY by its own red arm:
+;;
+;;     allow {verus}                          -> error: failed to execute rust_verify (PermissionDenied)
+;;     allow {verus,rustup}                   -> error: command failed: '.../rust_verify': Operation not permitted
+;;     allow {verus,rustup,rust_verify}       -> error: could not execute z3 process (Operation not permitted)
+;;     allow {verus,rustup,rust_verify,z3}    -> verification results:: 1 verified, 0 errors
+;;
+;; ⛔ AND THE SET IS COMPLETE ONLY BECAUSE IT WAS MEASURED OVER A POPULATION, NOT OVER A FIXTURE. My first
+;; green arm ran a 1.3 kB PROOF-ONLY file, which never reaches Verus's lifetime/borrow driver at all; the
+;; existence of a fifth exec point (`lifetime rustc`) was revealed by the RED arm's error text, not by the
+;; green one. The completeness claim rests on the fence DIFFERENTIAL: 61 reference files drawn seeded
+;; (seed 20260902) from the drawable population AC u NR, each run FENCED and UNFENCED, verdicts compared —
+;; **61/61 agree, 0 differ**. A fifth binary would have turned some fenced run into COMPILE.
+;;   ⇒ A WHITELIST IS COMPLETE ONLY OVER THE SHAPES IT WAS MEASURED ON, and a green arm on one fixture
+;;     measures the fixture. The red arm reached further into the program than the green arm did.
+;;
+;; ⛔ `rustup` IS THE ONE MEMBER THAT IS NOT PART OF THE PINNED VERUS RELEASE. It lives on the user's PATH
+;; (~/.cargo/bin/rustup), is user-writable, and is therefore pinned BY SHA in HASHES-S2RUST.txt alongside the
+;; release's own three, with the toolchain channel recorded beside it. A binary admitted to a fence must be
+;; pinned by the same instrument that pins the ones it stands next to.
+;;
+;; What each leg fences, every one of them driven by a positive control on this exact profile text (the
+;; control adds /bin/sh + /bin/bash to the exec list, and nothing else, so a probe can exercise the legs
+;; Verus itself never touches — the one difference is declared, never silent):
+;;   network*      — no sockets. Probe: bash /dev/tcp connect => "Operation not permitted".
+;;   process-exec* — only the four pinned binaries. Probe: /usr/bin/whoami => denied.
+;;   file-write*   — denied everywhere except the fresh per-check work dir and /dev/null, so a body cannot
+;;                   overwrite bodies.json or reach the state root. Probe: `: > ~/FENCE_ESCAPE_PROBE` =>
+;;                   denied AND no such file on disk afterwards; `: > <work>/x` => allowed.
+;;   file-read*    — DENIED for the credential/config trees and for the run's own state root (__DENY_READ__,
+;;                   DERIVED from $BENCH — row CO: a fence that NAMES a path stops protecting the day the work
+;;                   moves). Probe: read ~/.ssh/known_hosts => denied, while a non-denied path stays readable,
+;;                   so the leg is proven to bite WITHOUT being blanket.
+(version 1)
+(allow default)
+(deny network*)
+(deny process-exec*)
+__DENY_READ__
+(allow process-exec __EXEC_ALLOW__)
+(deny file-write*)
+(allow file-write* __WRITE_PATHS__ (literal "/dev/null"))

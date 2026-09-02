@@ -1,0 +1,8 @@
+== transport ==
+== verify BY CONTENT (both ends) ==
+  OK    verus        7a7b319b170692d3
+  OK    rust_verify  43bfcd7c36bcfc2e
+  OK    z3           bbb24b8fed27552f
+  OK    vstd         b3ab83d2648a5c0b
+  OK    lynette      8e2e4d96dc9c13f2
+  OK    rustup       ec1b9233e7f72990

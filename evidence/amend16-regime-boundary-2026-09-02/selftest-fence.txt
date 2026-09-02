@@ -1,0 +1,21 @@
+EXEC SET (derived, not typed): verus rustup rust_verify z3
+  PASS A1 exec-ladder allow=1             rc=128 names='rust_verify' denied=True
+  PASS A2 exec-ladder allow=2             rc=1 names='rust_verify' denied=True
+  PASS A3 exec-ladder allow=3             rc=128 names='z3' denied=True
+  PASS A4 exec-ladder allow=4 GREEN       rc=0
+  PASS A5 deny-process-fork BREAKS verus  rc=1
+  PASS A6 deny-read credential tree       
+  PASS A7 deny-write outside workdir      no file on disk=True
+  PASS A8 workdir IS writable             
+  PASS A9 deny-network                    
+  PASS A10a unlisted exec denied          
+  PASS A10b fence is NOT blanket          an allowed path stays readable
+  PASS A11a $BENCH root is denied         /Users/jyh/bench-a8
+  PASS A11b sibling root NOT covered by ~/bench this is the defect row CO names
+  PASS A11c unset BENCH guesses NO root   an unset root must not silently become ~/bench
+  PASS A11d CO: GT in sibling root DENIED $BENCH=/var/folders/6g/vctfxpj12fb30906yg61rtm40000gn/T/fencetest.8co9z9ms/bench-sibling
+  PASS A11e CO: same file readable when $BENCH elsewhere proves A11d is the DERIVATION, not a blanket deny
+  PASS A12 fenced verdict == unfenced     PASS vs PASS
+  PASS A13 referee defaults to fenced     default=True
+
+FENCE SELFTEST: 18 passed, 0 FAILED

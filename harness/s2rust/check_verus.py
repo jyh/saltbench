@@ -6,6 +6,16 @@ Runs on the Studio, no model, under sandbox-exec, in its OWN PROCESS GROUP, with
 SHARED path as its `pgrep -f` pattern, so one invocation's cleanup SIGKILLed three other invocations' audits
 (`audit_rc=-9`). A sweep whose pattern names a shared file cleans up after everybody.
 
+⛔⛔ THE SENTENCE ABOVE WAS FALSE OF THIS FILE FROM THE DAY IT WAS WRITTEN UNTIL AMENDMENT 16 (2026-09-02).
+It was inherited verbatim from `s2lean/check.py`, where every clause of it is true. Here, a grep for
+SANDBOX / sandbox-exec / killpg / belt over the code returned NOTHING but this comment: the referee ran
+UNFENCED, in a bare `subprocess.run`, with no profile, no process-group kill and no belt at all. Of the three
+properties the paragraph claims, exactly one (`start_new_session=True`) was implemented.
+  ⇒ 🔑 A DOCSTRING COPIED FROM A FILE WHERE IT WAS TRUE IS AN ASSERTION ABOUT THE FILE IT CAME FROM. It reads
+    as a receipt, it survives review because it is accurate prose about a real design, and it describes
+    another program. The fence below is what makes it true here; it is not documentation of a fence, it is
+    the fence.
+
 ORDER — and a screened or cheating body is NEVER handed to the referee:
     SCREEN -> SCAFFOLD_DAMAGED -> HELPERS_SHAPE -> CHEAT_FAIL -> STATEMENT_ALTERED
            -> TIMEOUT | RLIMIT | COMPILE | VERIFY_FAIL -> PASS ;  HARNESS anywhere the checker cannot run.
@@ -29,11 +39,75 @@ to keep in sync, it is a function of the one we froze.
 usage: check_verus.py --frozen F --agent-file F [--orig F] --verus P --lynette P
                       [--rlimit N] [--seed N] [--timeout S] [--no-screen] [--out F]
 """
-import argparse, json, os, re, subprocess, sys, tempfile, time
+import argparse, hashlib, json, os, re, shutil, signal, subprocess, sys, tempfile, time
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
 import build_views_verus as B
 import screen_verus
+
+SANDBOX = "/usr/bin/sandbox-exec"
+PROFILE_TEMPLATE = os.path.join(HERE, "sandbox_verus.sb")
+
+# Credential/config trees the fenced referee must not READ. The RUN'S OWN STATE ROOT is appended by
+# `deny_read_paths` below, DERIVED from $BENCH — see row CO.
+DENY_READ = ["~/.claude-bench", "~/.claude", "~/.ssh", "~/.aws", "~/.gnupg", "~/.config", "~/.gitconfig",
+             "~/Library/Keychains", "~/Library/Application Support"]
+
+
+def deny_read_paths(bench=None):
+    """The deny-read set: the static credential trees PLUS the run's own state root, DERIVED.
+
+    ⛔ ROW CO, AND IT IS THE REASON THIS IS A FUNCTION RATHER THAN A LIST. The S2-Lean fences name `~/bench`
+    STATICALLY. Since 08/31 this campaign has deliberately run each new regime in its OWN state root
+    (`~/bench-a8`, `~/bench-c`, `~/bench-aw`), and `/Users/jyh/bench-a8` is a SIBLING of `/Users/jyh/bench`,
+    not a child of it — so a subpath deny on `~/bench` does not reach it. The state roots stayed protected
+    only by an accident of how they were built (their `s2views` were symlinks resolving back into the denied
+    subpath) and by the hook layer, whose escape pattern happens to match `bench-*`.
+      ⇒ A FENCE THAT NAMES A PATH INSTEAD OF DERIVING ONE STOPS PROTECTING THE DAY THE WORK MOVES — and the
+        move that broke it was a repair, adopted for good reasons, whose blast radius nobody re-measured.
+    $BENCH is the root the driver already exports per run, so the fence now follows the root by construction.
+    Falling back to `~/bench` when $BENCH is unset would silently reinstate the exact defect this repairs, so
+    an unset $BENCH contributes NO root rather than a guessed one, and the caller records which it used.
+    """
+    paths = [os.path.expanduser(p) for p in DENY_READ]
+    root = bench if bench is not None else os.environ.get("BENCH")
+    if root:
+        paths.append(os.path.realpath(os.path.expanduser(root)))
+    return paths
+
+
+def verus_exec_set(verus):
+    """The FOUR binaries the fence admits, derived from the verus path the caller pinned.
+
+    ⭐ MEASURED, NOT ASSUMED (and amendment 15 §8's open question (ii), 'Verus execs only z3', is FALSE):
+    `verus` is a shim that resolves the pinned Rust toolchain by running `rustup`, which execs `rust_verify`,
+    which execs `z3`. Each member is proven necessary by its own red arm — see sandbox_verus.sb's ladder.
+    ⛔ `rustup` is the one member OUTSIDE the pinned release (it is on the user's PATH and user-writable), so
+    it is pinned by sha in HASHES.txt (`rustup-sha`) like the other three. A missing rustup is a HARNESS error and
+    never a silently narrower fence: the referee would fail on every task and look like a dead toolchain.
+    """
+    root = os.path.dirname(os.path.realpath(verus))
+    rustup = shutil.which("rustup")
+    if not rustup:
+        raise RuntimeError("no rustup on PATH: the verus shim resolves its toolchain through it (fence needs it)")
+    return [os.path.realpath(verus), os.path.realpath(rustup),
+            os.path.join(root, "rust_verify"), os.path.join(root, "z3")]
+
+
+def render_profile(verus, work, bench=None):
+    tmpl = open(PROFILE_TEMPLATE, encoding="utf-8").read()
+    ex = " ".join('(literal "%s")' % b for b in verus_exec_set(verus))
+    dr = " ".join('(subpath "%s")' % p for p in deny_read_paths(bench))
+    wp = '(subpath "%s")' % os.path.realpath(work)
+    return (tmpl.replace("__EXEC_ALLOW__", ex)
+                .replace("__DENY_READ__", "(deny file-read* %s)" % dr)
+                .replace("__WRITE_PATHS__", wp))
+
+
+def pgrep(args):
+    p = subprocess.run(["pgrep"] + args, capture_output=True, text=True)
+    return sorted(int(x) for x in p.stdout.split() if x.isdigit())
 
 RESULTS = re.compile(r"verification results:: (\d+) verified, (\d+) errors")
 PARTIAL = re.compile(r"\(partial verification")
@@ -58,18 +132,47 @@ def extract(path):
     return out
 
 
-def referee(verus, path, cwd, rlimit, seed, timeout, extra=()):
-    argv = ["perl", "-e", "alarm %d; exec @ARGV" % timeout, verus, "--crate-type=lib",
-            "--rlimit", str(rlimit), "--smt-option", "smt.random_seed=%d" % seed] + list(extra) + [path]
+def referee(verus, path, cwd, rlimit, seed, timeout, extra=(), fenced=True, bench=None):
+    """Run Verus on `path` under the Seatbelt profile, in its OWN process group, with a PER-INVOCATION belt.
+
+    ⛔ The timeout is the PARENT'S, not `perl -e alarm`'s. The old shape wrapped the referee in perl so perl
+    could raise SIGALRM; under the fence that would have required admitting `perl` to the exec allow-list —
+    i.e. widening the fence to carry the timeout. `Popen.communicate(timeout=)` plus `killpg` does the same
+    job from OUTSIDE the sandbox and keeps the admitted set at the four binaries the tool actually needs.
+    ⛔ The belt pattern is THIS INVOCATION'S OWN work dir (amendment 14 repair 4): a sweep whose pattern names
+    a shared file cleans up after everybody, and that one SIGKILLed three concurrent invocations' audits.
+    """
+    profile = render_profile(verus, cwd, bench) if fenced else None
+    argv = [verus, "--crate-type=lib", "--rlimit", str(rlimit),
+            "--smt-option", "smt.random_seed=%d" % seed] + list(extra) + [path]
+    cmd = ([SANDBOX, "-p", profile] + argv) if fenced else argv
     t0 = time.time()
-    p = subprocess.run(argv, cwd=cwd, capture_output=True, text=True, start_new_session=True)
-    line = next((l for l in p.stdout.splitlines() if l.startswith("verification results::")), None)
+    p = subprocess.Popen(cmd, cwd=cwd, env=dict(os.environ, TMPDIR=cwd), stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE, text=True, start_new_session=True)
+    pgid, timed_out = p.pid, False
+    try:
+        out, err = p.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        timed_out = True
+        try: os.killpg(pgid, signal.SIGKILL)
+        except ProcessLookupError: pass
+        out, err = p.communicate()
+    killed, left = [], []
+    for _ in range(25):
+        left = [x for x in pgrep(["-g", str(pgid)]) + pgrep(["-f", os.path.realpath(cwd)]) if x != os.getpid()]
+        if not left: break
+        for pid in set(left):
+            try: os.kill(pid, signal.SIGKILL); killed.append(pid)
+            except ProcessLookupError: pass
+        time.sleep(0.2)
+    line = next((l for l in out.splitlines() if l.startswith("verification results::")), None)
     m = RESULTS.search(line) if line else None
-    return dict(rc=p.returncode, results_line=line,
+    return dict(rc=p.returncode, results_line=line, timed_out=timed_out, fenced=fenced,
                 verified=int(m.group(1)) if m else None, errors=int(m.group(2)) if m else None,
                 partial=bool(line and PARTIAL.search(line)),
-                rlimit_exceeded="Resource limit (rlimit) exceeded" in p.stderr,
-                stderr_head=[l for l in p.stderr.splitlines() if l.startswith("error")][:5],
+                rlimit_exceeded="Resource limit (rlimit) exceeded" in err,
+                stderr_head=[l for l in err.splitlines() if l.startswith("error")][:5],
+                belt_killed=sorted(set(killed)), belt_left=left,
                 seconds=round(time.time() - t0, 1))
 
 
@@ -95,11 +198,16 @@ def main():
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--timeout", type=int, default=900)
     ap.add_argument("--no-screen", action="store_true")
+    # ⛔ `--no-fence` exists ONLY for the fence differential (selftest_fence_verus.py), which must run the same
+    # file both ways to prove the fence changes no verdict. It is never in a scored argv, and `check.json`
+    # records `fenced` per run so a scored record can be read back and audited for it.
+    ap.add_argument("--no-fence", action="store_true")
     a, _ = ap.parse_known_args()
     if not (a.frozen and a.agent_file and a.verus):
         sys.exit(__doc__)
 
-    out = dict(rlimit=a.rlimit, seed=a.seed, checker=os.path.basename(__file__))
+    out = dict(rlimit=a.rlimit, seed=a.seed, checker=os.path.basename(__file__),
+               profile_sha256=hashlib.sha256(open(PROFILE_TEMPLATE, "rb").read()).hexdigest())
     fz = json.load(open(a.frozen))
     orig = open(a.orig, encoding="utf-8").read() if a.orig else B.assemble(fz, {}, pristine=True)
     bodies = extract(a.agent_file)          # ⚠️ read off the file the AGENT wrote — amendment 14's law
@@ -163,9 +271,13 @@ def main():
             return finish(out, a)
 
     # ---- layer 5: THE REFEREE
-    r = referee(a.verus, "task.rs", work, a.rlimit, a.seed, a.timeout)
+    r = referee(a.verus, "task.rs", work, a.rlimit, a.seed, a.timeout, fenced=not a.no_fence)
     out["referee"] = r
-    out["class"] = classify(r, r["rc"] == 142 or r["rc"] == -14)
+    # ⛔ TIMEOUT is read off the PARENT'S own bookkeeping, never inferred from an rc. The old form tested
+    # `rc == 142 or rc == -14`, which is `perl -e alarm`'s SIGALRM signature — a fact about the wrapper that
+    # is no longer in the argv. An rc test for a wrapper you removed answers about a program you are not
+    # running: it cannot fire, so every timeout would have been scored VERIFY_FAIL or COMPILE.
+    out["class"] = classify(r, r["timed_out"])
     return finish(out, a)
 
 

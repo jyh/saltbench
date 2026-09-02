@@ -1,0 +1,23 @@
+== SMOKE GATE RED ARMS ==
+-- the REJECTED 0.2026.08.30 release (the specimen amendment 15 kept) --
+SMOKE FAIL verus                  DRIFT host=5973cfbc2abe8456 pinned=7a7b319b170692d3
+SMOKE FAIL rust_verify            DRIFT host=c3c9c4f439dfcb15 pinned=43bfcd7c36bcfc2e
+SMOKE FAIL z3                     DRIFT host=edae32f9e37ea4b5 pinned=bbb24b8fed27552f
+SMOKE FAIL vstd                   DRIFT host=537e5447e045531e pinned=b3ab83d2648a5c0b
+SMOKE FAIL rust-channel           binary wants '1.97.1-aarch64-apple-darwin', pin says '1.88.0-aarch64-apple-darwin'
+SMOKE FAILED toolchain
+-- mutation: s|^z3-sha .*|z3-sha 0000000000000000000000000000000000000000000000000000000000000000| --
+SMOKE FAIL z3                     DRIFT host=bbb24b8fed27552f pinned=0000000000000000
+SMOKE FAILED toolchain
+-- mutation: s|^rust-channel .*|rust-channel 1.97.1-aarch64-apple-darwin| --
+SMOKE FAIL rust-channel           binary wants '1.88.0-aarch64-apple-darwin', pin says '1.97.1-aarch64-apple-darwin'
+SMOKE FAILED toolchain
+-- mutation: /^verus-sha /d --
+SMOKE FAIL verus                  no pin 'verus-sha' in Hr.txt — cannot certify it
+SMOKE FAILED toolchain
+-- mutation: s|^s2rust/sandbox_verus.sb .*|s2rust/sandbox_verus.sb deadbeef| --
+SMOKE FAIL profile                DRIFT host=833c6da8766ba5fa pinned=deadbeef
+SMOKE FAILED toolchain
+-- mutation: /^verus-rlimit /d --
+SMOKE FAIL referee-flags          verus-rlimit/verus-seed missing — the rt and the checker could diverge
+SMOKE FAILED toolchain

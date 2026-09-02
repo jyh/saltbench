@@ -16,7 +16,7 @@ WHAT IT VERIFIES — every clause a refusal, and a refusal is a RESULT:
   1. `controls_pass` is true AND `n_ok == n` — the summary must agree with itself.
   2. EVERY file in `checker_sha256` matches the sha of the LIVE file of that name. This is the clause that
      catches a record certifying a checker that has since changed.
-  3. The TOOLCHAIN pins in the record match the LIVE `HASHES-S2RUST.txt` — `verus-sha`, `z3-sha`, `vstd-sha`,
+  3. The TOOLCHAIN pins in the record match the LIVE `HASHES.txt` — `verus-sha`, `z3-sha`, `vstd-sha`,
      `lynette-sha`, `verus-rlimit`, `verus-seed`. ⛔ NEW ON THIS SUBSTRATE AND NOT IN THE S2-LEAN GATE: on
      S2-Lean the referee is a toolchain the harness does not carry; here the referee IS a pinned binary and
      its rlimit and seed are part of the verdict. A controls record taken at a different rlimit certifies
@@ -44,7 +44,17 @@ def sha_f(p):
 
 
 def read_pins(hdir):
-    p = os.path.join(hdir, "HASHES-S2RUST.txt")
+    """The toolchain pins, read from the ONE merged table.
+
+    ⛔ `HASHES-S2RUST.txt` is RETIRED (amendment 16): its pins were merged into `HASHES.txt` at the VeruSAGE
+    stage-0 regime boundary and the standalone file is gone. Keeping both would have been a checksum defined
+    twice — the generator and the verifier must be the same CODE, not the same idea — and this gate is
+    precisely the verifier, so it reads what `hashes.sh` now writes.
+    📌 The keys read here (`verus-sha`, `z3-sha`, …) are toolchain pins and were NEVER namespaced, so the
+    merge did not move them; only the S2-Rust FILE keys gained an `s2rust/` prefix, to avoid colliding with
+    `base.md` and `rt.template`, which exist in both halves with different values.
+    """
+    p = os.path.join(hdir, "HASHES.txt")
     out = {}
     try:
         for line in open(p):
@@ -97,7 +107,7 @@ def gate(cj, hdir, require, max_age_h):
     live = read_pins(hdir)
     rec = d.get("toolchain") or {}
     if live is None:
-        ref.append("HASHES-S2RUST.txt not found in %s — cannot verify the toolchain pins" % hdir)
+        ref.append("HASHES.txt not found in %s — cannot verify the toolchain pins" % hdir)
     elif not rec:
         ref.append("the record carries no `toolchain` block — a controls record taken at a different "
                    "rlimit/seed/binary certifies nothing about this run")
@@ -106,7 +116,7 @@ def gate(cj, hdir, require, max_age_h):
             if k not in rec:
                 ref.append("toolchain pin %s absent from the record" % k)
             elif k not in live:
-                ref.append("toolchain pin %s absent from HASHES-S2RUST.txt" % k)
+                ref.append("toolchain pin %s absent from HASHES.txt" % k)
             elif str(rec[k]) != str(live[k]):
                 ref.append("toolchain DRIFT %s: record %r live %r" % (k, rec[k], live[k]))
             else:
@@ -151,7 +161,7 @@ def selftest():
     hdir = os.path.join(root, "h"); os.makedirs(hdir)
     open(os.path.join(hdir, "check_verus.py"), "w").write("# live checker\n")
     open(os.path.join(hdir, "screen_verus.py"), "w").write("# live screen\n")
-    open(os.path.join(hdir, "HASHES-S2RUST.txt"), "w").write(
+    open(os.path.join(hdir, "HASHES.txt"), "w").write(
         "verus-sha AAA\nz3-sha BBB\nvstd-sha CCC\nlynette-sha DDD\nverus-rlimit 250\nverus-seed 0\n")
     good_cs = {f: sha_f(os.path.join(hdir, f)) for f in ("check_verus.py", "screen_verus.py")}
     good_tc = {"verus-sha": "AAA", "z3-sha": "BBB", "vstd-sha": "CCC", "lynette-sha": "DDD",

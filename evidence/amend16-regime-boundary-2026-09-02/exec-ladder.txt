@@ -1,0 +1,9 @@
+== THE EXEC LADDER (each red arm's error names the NEXT binary; arm d proves the set complete) ==
+-- allow-set a --
+error: failed to execute rust_verify Os { code: 1, kind: PermissionDenied, message: "Operation not permitted" }
+-- allow-set b --
+error: command failed: '/Users/jyh/bench-src/verus-release-pin/verus-arm64-macos/rust_verify': Operation not permitted (os error 1)
+-- allow-set c --
+[31merror: could not execute z3 process (Operation not permitted (os error 1))[0m
+-- allow-set d --
+verification results:: 1 verified, 0 errors
