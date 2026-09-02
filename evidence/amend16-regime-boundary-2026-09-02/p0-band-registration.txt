@@ -1,0 +1,36 @@
+THE REGISTERED BAND RULE
+  rule      : MIDDLE TERCILE of the 180 LIVE tasks, ordered by REFERENCE-PROOF WALL
+              (ties broken by task_id, so the ordering is a function of the record alone)
+  cutpoints : lower  wall >= 0.70s   (rank 60)
+              upper  wall <= 1.80s   (rank 119)
+  band n    : 60      composition AC=5 NR=55
+  band bytes: median 35188  mean 56652  min 2203  max 165383
+
+THE DRAW — n=13, seed 20260902, from the middle tercile:
+   1  wall   1.70s  bytes   76755  NR NR__impl_u__os_refinement__extra_mappings_preserved
+   2  wall   1.70s  bytes   75797  NR NR__impl_u__os_refinement__lemma_effective_mappings_unaf
+   3  wall   0.80s  bytes   37280  NR NR__impl_u__os_refinement__lemma_map_soundness_equality
+   4  wall   1.40s  bytes   75995  NR NR__impl_u__os_refinement__no_overlaps_pmem_applied_mapp
+   5  wall   1.60s  bytes  138548  NR NR__impl_u__os_refinement__os_next_refines_hl_next
+   6  wall   1.30s  bytes   80150  NR NR__impl_u__os_refinement__relevant_mem_preserved
+   7  wall   1.80s  bytes  101949  NR NR__impl_u__os_refinement__step_MapOpChange_refines
+   8  wall   0.70s  bytes   13867  NR NR__spec_t__hlproof__map_start_preserves_inv
+   9  wall   1.30s  bytes   16362  NR NR__spec_t__mmu__rl2__lemma_finish_iter_walk_valid_with_
+  10  wall   1.00s  bytes   23835  NR NR__spec_t__mmu__rl2__lemma_step_Writeback_post_valid_pt
+  11  wall   0.90s  bytes   22284  NR NR__spec_t__mmu__rl2__lemma_step_Writeback_post_valid_wa
+  12  wall   1.00s  bytes   22295  NR NR__spec_t__mmu__rl2__lemma_step_writeback_invalid_walk_
+  13  wall   1.80s  bytes   24286  NR NR__spec_t__mmu__rl2__lemma_valid_not_pending_implies_eq
+
+  draw bytes: median 37280  mean 54569  max 138548
+  draw composition: AC=0 NR=13
+
+PRICE, interpolated on BYTES from the two measured anchors (15.06 tok/byte):
+  NR anchor  466,390 @  18319 B     AC anchor 2,725,592 @ 168329 B
+PRICE, interpolated on BYTES from the two MEASURED anchors (15.06 tok/byte):
+  anchors: NR 466,390 @ 18,319 B   |   AC 2,725,592 @ 168,329 B
+  per-episode at the draw's MEDIAN bytes (37,280 B): 751,949
+  per-episode range: 399,341 .. 2,277,080
+  RUN TOTAL, summed per task (n=13)      : 13,160,347
+  RUN TOTAL if every task cost the worst : 29,602,039
+
+  vs the refused (A): AC n=13 priced ~35,000,000 -> this band is ~3x cheaper
