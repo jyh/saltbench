@@ -1,4 +1,4 @@
-# HASHES — regenerate with harness/hashes.sh; sha256; generated 2026-09-02T07:16:31Z
+# HASHES — regenerate with harness/hashes.sh; sha256; generated 2026-09-02T07:30:32Z
 base.md 9ada9241a09ae82621f227bf316c46697f40b134c5005e269ca4722f49794f09
 prompt.md 0a33c3a46e7b08034c06041910518f98d4b08728c12d18c327d7c0fc81cd2288
 rt.template c46e59af03b0b9f1f6ed5db15594678646053e7e4d9f856ae14763ee6757f7ea
@@ -752,6 +752,7 @@ s2rust/selftest_rt_verus.sh d2303ef7cc17079c21f64c2fde24be84fa7d20e56f2481663cb0
 s2rust/selftest_settings_verus.py 03bc687be3f65d02d47173a1d5374e67d2f1e403b40e91c468be39eb0b73e5f6
 s2rust/settings.s2rust.template.json 378768b2319e1132383ee97137e6485c0b9bb382f36a6bcf25d4e94f31d3e684
 s2rust/smoke_toolchain_verus.sh 35f859a4fda007021169f3e2663d511da9b22a49be7930fb794d8b5c3fed822c
+s2rust/sync_studio_s2rust.sh ed689200d1d851dbf0b34d7514a41de435bf3a1bb381e40e5848c7dd441b3b70
 s2rust/views_sethash.py c19b6e549e4603ba25ec6f9d203c6b6fbb0649c6cf45174bb8bd30d2e2e45480
 verus-release 0.2025.09.12.bb1f342
 verus-sha 7a7b319b170692d33ef3b9f526112f3a29003a7f60313f6e11f97ef34c9ffb36
