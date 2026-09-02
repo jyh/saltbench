@@ -90,6 +90,8 @@ Every arm receives the same task file and the same stage prompt; only the agent'
 
 \paragraph{S1: SWE-bench Verified.} \texttt{princeton-nlp/SWE-bench\_Verified} at revision \texttt{c104f840}, 500 rows, content-pinned by a hash over the canonicalised rows.\src{PRE-REGISTRATION.md section 3; TASKLIST.json} The selection script is the normative form of the criteria; the draw is measured-50 and pilot-30 with a per-repository cap of~9, chosen from arithmetic over the eligible counts after the first draft's cap starved the draw in silence.\src{PRE-REGISTRATION.md section 3}
 
+No task text from SWE-bench Verified is redistributed. Its dataset card carries no licence field, so rather than rely on a reading of what the issue text permits, the repository ships the 30 identifiers, the pinned revision, a hash over the 500 canonicalised rows and a hash over the 30-row projection the episodes read; \texttt{harness/fetch\_problem\_statements.py} rebuilds that projection from the pinned revision and verifies it against both.\src{PROVENANCE.md section 1.3; PUBLISH-CHECKLIST.md section (k)} The rebuild was compared byte for byte against the file the episodes read before that file was removed from the tree.
+
 Licences and attributions for every source, and the exact list of what this repository redistributes from each, are in \texttt{PROVENANCE.md}.
 
 \section{Results}
@@ -217,6 +219,8 @@ The failure surface on S2-Lean is also a finding about the benchmark: four of th
 Every pin is a line in \texttt{harness/HASHES.txt}: the CLEVER commit, the Lean toolchain and mathlib revision, the project manifest and lakefile hashes, the Verus release and its rust channel, the z3, vstd and lynette hashes, the resource limit and seed, every prompt, arm file, checker and driver, and the set-hash of the 207 rebuilt Verus views. The evaluation images for the SWE-bench substrate are pinned by digest in \texttt{IMAGE-DIGESTS.json}. The episode script refuses to run a stage whose view or checker hash is not the pinned one, and each manifest records the freeze commit, the hashes it asserted, the model id read from every response, and the transcript's hash. The morning-line instruments that produced every rate in this paper are in the repository with their self-tests, and the evidence directories carry their outputs byte for byte.
 
 The task populations are re-derived from the pinned sources by the harness's view builders; the repository redistributes only what \texttt{PROVENANCE.md} lists. The run records and the S2 episode archives are a separate data asset; its DOI is assigned at release (Zenodo) and recorded in the repository on the flip day. Version~2's populations ship as Harbor tasks so that the referee, the fence and the task are one object.
+
+The code is released under Apache-2.0 and the data and documents under CC BY 4.0. The agent was Claude Code on a consumer subscription, and the transcripts are published as this campaign's own measurements: the provider's Consumer Terms effective 2025-10-08 assign outputs to the user and do not restrict their publication, and the training restriction in the Usage Policy dated 2025-09-15 binds the subscriber rather than a recipient of these files.\src{PROVENANCE.md section 3; PUBLISH-CHECKLIST.md section (k)} Both documents are cited at the version read, because both are revised in place.
 
 \section*{Acknowledgements}
 

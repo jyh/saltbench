@@ -6,8 +6,11 @@ authors:
     given-names: Jason
 version: "1.0"
 date-released: "2026-09-02"
-# license: PROPOSED Apache-2.0 for the code (LICENSE, marked PROPOSAL) and CC-BY-4.0 for data and
-# documents (LICENSE-DATA). The field is set on the flip day, when the repository owner chooses.
+# Chosen by the repository owner 2026-09-02: Apache-2.0 for the code (LICENSE), CC-BY-4.0 for the
+# data and documents (LICENSE-DATA). CFF has one license field, so both SPDX ids are listed.
+license:
+  - Apache-2.0
+  - CC-BY-4.0
 repository-code: "https://github.com/jyh/saltbench"
 keywords:
   - benchmark

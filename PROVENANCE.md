@@ -41,9 +41,9 @@ read from a secondary record rather than the object, the row says so.
 | pin | dataset repo revision `c104f840cc67f8b6eec6f759ebc8b2693d585d4a`; sha256 over the canonicalised rows recorded in `TASKLIST.json` (`rows_sha256_canonical`) |
 | licence | the SWE-bench code repository (`SWE-bench/SWE-bench`) is MIT (read at the object 2026-09-02). The dataset card carries NO licence field (read 2026-09-02). The problem statements are GitHub issue text authored by the issue reporters of the source repositories; the gold patches and tests are code of the source repositories under their licences (next row). This repository treats the issue text as redistributable under the source repository's licence plus the SWE-bench release, and states that this is a reading, not a ruling |
 | source repositories of the 30 drawn statements | astropy/astropy BSD-3-Clause · django/django BSD-3-Clause · matplotlib/matplotlib "License agreement for matplotlib versions 1.3.0 and later" (PSF-style, BSD-compatible) · psf/requests Apache-2.0 · pydata/xarray Apache-2.0 · pytest-dev/pytest MIT · scikit-learn/scikit-learn BSD-3-Clause · sphinx-doc/sphinx BSD-2-Clause (GitHub reports NOASSERTION; the file is the two-clause BSD text) · sympy/sympy BSD-3-Clause with derived-code notices. All read at the repositories' current default branch on 2026-09-02, not at the task base commits |
-| redistributed here | `harness/data/problem_statements.json` (30 rows: `instance_id`, `repo`, `base_commit`, `version`, `problem_statement`), `TASKLIST.json` (ids only), `IMAGE-DIGESTS.json` (public `swebench/sweb.eval.x86_64.*` image names and digests). `data/verified.json` is the local copy of the dataset and is NOT tracked; it is re-derived from the pinned revision |
+| redistributed here | **No issue text.** `TASKLIST.json` (the 30 ids, the pinned revision `dataset_repo_sha`, and `rows_sha256_canonical` over the 500 canonicalised rows the draw was made from), `IMAGE-DIGESTS.json` (public `swebench/sweb.eval.x86_64.*` image names and digests), and the projection's own sha256 in `harness/HASHES.txt` (key `problem_statements.json`) together with the 30 `prompt-canonical <id> <sha>` pins. `harness/data/problem_statements.json` (30 rows of `instance_id`, `repo`, `base_commit`, `version`, `problem_statement`) was dropped from the public tree on the owner's ruling of 2026-09-02 and is re-derived by `harness/fetch_problem_statements.py`, which verifies its output against both pins; the rebuild was measured byte-identical to the file the episodes read before the file was removed. `data/verified.json` is the local copy of the dataset and is NOT tracked |
 | attribution in the record | `PRE-REGISTRATION.md` section 3, `SCOUT-STAGE0.md`, `RESULTS-stage0-2026-08-29.md` |
-| obligation | keep the repository attributions with the redistributed issue text (the `repo` field does this per row); the scorer is `swebench` 4.1.0 (MIT), used unmodified through the pinned images |
+| obligation | none arises from issue text, since none is redistributed; a reader who rebuilds the projection takes the source repositories' licences with it, and the `repo` field carries the attribution per row. The scorer is `swebench` 4.1.0 (MIT), used unmodified through the pinned images |
 
 ## 2. Third-party tools the harness pins (not redistributed)
 
@@ -62,14 +62,23 @@ read from a secondary record rather than the object, the row says so.
 The run records (`evidence/`, tracked; `runs/`, untracked, 61 MB; the S2-Lean and S2-Rust episode
 archives, on the Studio state roots and NOT in this repository) contain the agent's transcripts,
 its patches, proofs and specifications, and the referee's verdicts. They are this campaign's
-measurements. They are a separate data asset under the data licence proposed in `LICENSE-DATA`;
+measurements. They are a separate data asset under the data licence in `LICENSE-DATA` (CC BY 4.0, chosen by the
+repository owner on 2026-09-02);
 its DOI is assigned at release (Zenodo) and recorded here on the flip day, and section 4 states what
 the asset still needs before that day. Two notes travel with them:
 
-1. Provider terms. The agent is Claude Code on a consumer subscription. Anthropic's published
-   terms assign output ownership to the user and do not forbid publication of outputs; this is the
-   author's reading of the terms as of 2026-09-02 and the Captain confirms it before the flip
-   (PUBLISH-CHECKLIST.md item (d)).
+1. Provider terms. The agent is Claude Code on a consumer subscription. The reading below was
+   checked against the published documents on 2026-09-02 and CONFIRMED by the repository owner the
+   same day; both documents are cited at the version read, because both are revised in place.
+   - Anthropic's **Consumer Terms of Service, effective 2025-10-08**, section 4 ("Inputs and
+     Outputs"): as between the parties and to the extent permitted by law, Outputs are the user's.
+     Nothing in the document forbids publishing them.
+   - Anthropic's **Usage Policy, dated 2025-09-15**: the restriction on using outputs to train a
+     competing model binds *the subscriber*, that is this campaign. It does not travel with the
+     published bytes, so it is not a condition this repository can or does impose on a downloader.
+   Consequence for the licence: the transcripts are released under `LICENSE-DATA` (CC BY 4.0) as
+   this campaign's own measurements, with no further provider-imposed condition on the recipient.
+   Recorded in `PUBLISH-CHECKLIST.md` item (d) and section (j).
 2. Content of the transcripts. The transcripts quote task text (issue text, Lean and Rust source
    from the populations above, under those licences) and agent-written code. They also carry
    absolute paths of the machines the episodes ran on (`/Users/jyh/...`). Those paths identify a
@@ -78,7 +87,13 @@ the asset still needs before that day. Two notes travel with them:
 
 ## 4. What is NOT in this repository, and where it is
 
-- `data/verified.json` (the SWE-bench Verified rows): re-derive from the pinned revision.
+- `data/verified.json` (the SWE-bench Verified rows): re-derive from the pinned revision
+  `c104f840cc67f8b6eec6f759ebc8b2693d585d4a`, and check it with
+  `python3 select_tasks.py --verify-dataset data/verified.json`.
+- `harness/data/problem_statements.json` (the 30 projected statements, section 1.3): rebuild with
+  `python3 harness/fetch_problem_statements.py --download` (or `--rows data/verified.json`). It
+  verifies the result against `harness/HASHES.txt`; a green run means you hold the bytes the
+  episodes read.
 - The run records and the S2 episode archives are a separate data asset; its DOI is assigned at
   release (Zenodo) and recorded here on the flip day. Status on 2026-09-02: **OWED, INVENTORIED,
   NOT YET SCRUBBED, AND NOT A REPO ARTIFACT.** The inventory, as measured by the bench seat at the

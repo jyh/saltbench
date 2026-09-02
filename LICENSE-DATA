@@ -1,8 +1,8 @@
-PROPOSAL (2026-09-02): the data and the documents of this repository (the protocol documents,
-amendments, result files, evidence directories, and the released run records) are offered under
-the Creative Commons Attribution 4.0 International licence (CC BY 4.0), and the code (harness/,
-scripts/, select_tasks.py) under the Apache License 2.0 in LICENSE. The licence choice is the
-repository owner's and this file says "proposal" until that choice is made.
+The data and the documents of this repository (the protocol documents, amendments, result
+files, evidence directories, and the released run records) are licensed under the Creative
+Commons Attribution 4.0 International licence (CC BY 4.0). The code (harness/, scripts/,
+select_tasks.py) is under the Apache License 2.0 in LICENSE. Chosen by the repository owner
+on 2026-09-02.
 
 To view a copy of CC BY 4.0, visit https://creativecommons.org/licenses/by/4.0/
 

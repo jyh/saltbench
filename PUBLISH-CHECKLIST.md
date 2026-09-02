@@ -75,11 +75,12 @@ redistributes from it. Summary:
 | S2-Rust | VeruSAGE-Bench `microsoft/verus-proof-synthesis@cbf9c0c6` | MIT (Microsoft 2024) | nothing of the task text; verdict records keyed by id |
 | S1 | SWE-bench Verified, HF revision `c104f840` | code repo MIT; dataset card has no licence field; issue text under the nine source repositories' licences (BSD-3, BSD-2, Apache-2.0, MIT, matplotlib's PSF-style) | 30 problem statements, the id list, the image digests |
 
-Open for the Captain: the SWE-bench Verified dataset card states no licence. The reading taken in
-`PROVENANCE.md` section 1.3 (issue text redistributable under the source repository's licence plus
-the SWE-bench release) is a reading. If the Captain prefers, `harness/data/problem_statements.json`
-can be dropped from the public tree at zero cost to reproducibility, since it is re-derived from the
-pinned revision by `harness/project_data.py`.
+~~Open for the Captain~~ — RULED 2026-09-02, section (k) ruling 3: the SWE-bench Verified dataset
+card states no licence, so the reading is not relied on and the 30 statements are DROPPED from the
+public tree. `harness/data/problem_statements.json` is untracked and gitignored; the ids, the pinned
+revision and two checksums stay, and `harness/fetch_problem_statements.py` rebuilds the projection
+and verifies it against the pin. The rebuild was measured byte-identical to the dropped file before
+it was removed, so the cost to reproducibility is zero.
 
 ## (d) Secrets, private paths, transcripts — CLEAN; provider-terms note written
 
@@ -109,8 +110,10 @@ Keep / strip decisions per artifact:
 | the S2-Lean and S2-Rust episode archives on the Studio (278 + 16 episode dirs, inventoried in `PROVENANCE.md` section 4) | OWED to the data asset: INVENTORIED, NOT YET SCRUBBED, NOT A REPO ARTIFACT; the flip does not wait on them | a `session.jsonl` carries host paths, session ids and the agent's reasoning; it needs its own content scrub gate and a non-git channel before release |
 | `harness/s2rust/views/` | not tracked, rebuilt from the pin | contains the benchmark's task text and ground truth |
 
-Provider terms: `PROVENANCE.md` section 3 records the reading (outputs are the user's; publication
-is not forbidden) and marks it for the Captain's confirmation.
+Provider terms: CONFIRMED 2026-09-02, section (k) ruling 2. `PROVENANCE.md` section 3 now cites both
+documents at the version read — the Consumer Terms effective 2025-10-08 (section 4: Outputs are the
+user's; publication is not forbidden) and the Usage Policy dated 2025-09-15 (the no-training clause
+binds the subscriber, not a downloader).
 
 ## (e) The flip — PREPARED on branch `public-v1`, NOT MERGED
 
@@ -119,24 +122,33 @@ switched. The branch carries: the public README (the PRIVATE banner replaced; a 
 Apache-2.0 for code, marked PROPOSAL in the file itself since (f)) and `LICENSE-DATA` (proposal: CC-BY-4.0 for data and documents), a
 `CITATION.cff` (its licence field held as a comment until the choice is made), a public `CLAUDE.md` replacing the seat instructions, the `.gitignore` comment
 cleaned, the baselines regenerated (the three removed lines shrink the tree baseline to 10), and
-the scrub CI armed. The licence choice is the Captain's; the branch says "proposal" in both files
-until he chooses. The branch sha is in the READY post on the bus.
+the scrub CI armed. ~~The licence choice is the Captain's; the branch says "proposal" in both
+files until he chooses.~~ RULED 2026-09-02, section (k) ruling 1: Apache-2.0 for the code, CC BY 4.0
+for the data and documents. Both files now state the choice, and `CITATION.cff` carries both SPDX
+ids. The branch sha is in the READY post on the bus.
+
+**The flip shape, ruled 2026-09-02 (section (k) ruling 6).** `public-v1` becomes the public `main`,
+and `master` is then fast-forwarded onto it. This is lawful precisely because `public-v1` is
+`master` plus its own commits and nothing behind it — `git rev-list --left-right --count
+master...public-v1` reads `0 N`. One gated branch results, as in the sibling repository. ⛔ The
+consequence a later hand must not undo: **the public history is `public-v1`'s, never `master`'s.**
+`master` carries the private-vocabulary lines and the infrastructure names that the flip layer
+removed, so merging `master` into a public `main` would publish exactly what the gates were built to
+stop. Fast-forward `master` onto the flipped branch; never the reverse.
 
 Not done by this seat, by construction: creating the public GitHub repository, pushing, and the
 arXiv submission. The helm carries the READY post to the Captain.
 
 ## What the flip still needs from others
 
-1. The Captain: the licence choice; confirmation of the provider-terms reading; the SWE-bench issue
-   text decision (keep or drop the 30 statements).
+1. ~~The Captain: the licence choice; confirmation of the provider-terms reading; the SWE-bench issue
+   text decision.~~ ALL THREE RULED 2026-09-02 — section (k).
 2. bench: the S2 episode archives pulled into the data asset; the DT Sonnet two-tier read if it
    lands before the flip (the paper carries a slot for it, section 6).
 3. The helm: the fleet-level note that the private-paths gate's root list predates `safe_gif`.
-4. The Captain, HELD by the refuter pass, not acted on here: (i) the 3 commit messages carrying private
-   paths and the 1 commit body naming the run host: a pre-flip history rewrite is lawful (no public
-   remote) and would re-sha every commit the private record cites, so it needs a shamap of its own;
-   (ii) the fleet vocabulary (Captain, helm, seat, council, bus) in 53 non-frozen files: scrub or
-   accept.
+4. ~~The Captain, HELD by the refuter pass~~ — BOTH RULED 2026-09-02, section (k) rulings 4 and 5:
+   (i) the 3 commit messages and the 1 commit body are ACCEPTED as they stand, no rewrite; (ii) the
+   fleet vocabulary is ACCEPTED, with a glossary added to the public README.
 5. The data asset's channel (Zenodo proposed) and its transcript scrub gate, before the archives ship.
 
 ## (f) Repairs after the refuter pass on the flip package (2026-09-02, the same day)
@@ -319,3 +331,43 @@ checklist's section (h) recorded as OWED. Both go in.
 
 This closes the item section (h) left open. Nothing stronger than the audit is claimed: the gap was
 open, its measured exploitation is zero, and an absence of exploitation is not a presence of protection.
+
+## (k) The owner's six rulings on the flip, applied (2026-09-02, the same day)
+
+Every open question this checklist had held for the repository owner was ruled at a sitting on
+2026-09-02, one by one. What follows is each ruling and what was done under it. Nothing here changes
+a number, a protocol text or a result; ruling 3 removes a file from the tree and rulings 1, 2, 5 and
+6 are documentation.
+
+| # | ruling | applied |
+|---|---|---|
+| 1 | Licence: **Apache-2.0 for the code, CC BY 4.0 for the data and documents.** Accepted as proposed | `LICENSE` and `LICENSE-DATA` state the choice instead of marking a proposal; `CITATION.cff` sets `license: [Apache-2.0, CC-BY-4.0]`; the README's Licence section and `PROVENANCE.md` section 3 drop the word "proposed" |
+| 2 | Provider terms: the reading is **confirmed**, checked live against the documents; cite both at the version read | `PROVENANCE.md` section 3 item 1 rewritten: Consumer Terms **effective 2025-10-08** section 4 (Outputs are the user's; publication not forbidden) and the Usage Policy **dated 2025-09-15** (the no-training clause binds the subscriber, not a downloader). Both are revised in place upstream, which is why the version is cited and not just the URL |
+| 3 | The 30 SWE-bench issue texts: **dropped**. Keep the ids, the pinned revision and a fetch script; re-addable by one commit | `harness/data/problem_statements.json` removed from the tree and gitignored; `harness/fetch_problem_statements.py` added (self-test 13 arms, all green) which rebuilds the projection from the pinned revision `c104f840cc67f8b6eec6f759ebc8b2693d585d4a` and verifies it against `rows_sha256_canonical` in `TASKLIST.json` and the `problem_statements.json` pin in `harness/HASHES.txt`. `PROVENANCE.md` section 1.3 and section 4, the README's Licence and Reproducing sections, and item (c) above all updated |
+| 4 | The 3 commit messages carrying private paths and the 1 body naming the run host: **accepted, no rewrite** | Nothing done, deliberately. They stay in the baseline `scripts/check_private_paths.py --messages` accepts (3 accepted historical, 0 new). A rewrite would re-sha roughly a hundred commits that the frozen record cites by hash, for filenames that name no third party |
+| 5 | The fleet vocabulary in the frozen documents: **accepted**, with a README glossary | The README gains "A glossary for the record's vocabulary": Captain, helm, seat, bus, council, desk row, refuter, commission, Studio, morning line, fleet. It says plainly that none of it is a technical term of the benchmark and that the frozen documents keep it because frozen documents are appended to, never edited |
+| 6 | Flip shape: **`public-v1` becomes the public `main`; `master` is then fast-forwarded onto it** | Recorded in item (e) above, with the direction stated as a prohibition — the public history is `public-v1`'s and never `master`'s, because `master` still carries the vocabulary lines and infrastructure names the flip layer removed |
+
+### The one thing worth checking twice
+
+Ruling 3 is the only one that removes bytes, so it was driven rather than asserted. Before the file
+was deleted, `fetch_problem_statements.py` was run against a local copy of the 500 pinned rows and
+its output compared to the tracked file with `cmp`: **byte-identical**, and green against both
+checksums. The claim "re-addable by one commit at zero cost to reproducibility" is therefore
+measured, not argued. The two pins that make it verifiable are already in the public tree and were
+not regenerated: `harness/HASHES.txt` keeps the `problem_statements.json` line and the 30
+`prompt-canonical <id> <sha>` lines, which are value pins and do not depend on the file's presence.
+
+`harness/fetch_problem_statements.py` is deliberately NOT in `harness/hashes.sh`'s pin list and says
+so in its own header. It was written after every episode had run; pinning it would dress a
+publication convenience as run-time apparatus.
+
+One consequence of the drop is named rather than left to be discovered. `harness/build_prompt.py`'s
+self-test asserts that the projection holds exactly the five fields, and that arm is guarded by a
+file-existence test: with the file absent the arm does not run and the self-test still prints
+`SELF-TEST OK`, one check lighter. It was driven in that state and is green. The assertion itself
+did not go away; it is in `fetch_problem_statements.py`'s `project()`, which refuses a row carrying
+a sixth field and refuses a pilot id the rows do not supply, so it now fires when the file is BUILT
+instead of only when a copy happens to be present. `build_prompt.py` is pinned and was deliberately
+not edited: adding a printed "skipped" line would change bytes that the frozen run manifests
+recorded, which is a worse trade than writing this paragraph.

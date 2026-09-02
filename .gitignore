@@ -2,6 +2,10 @@
 # The charter and the seat instructions live outside this repository.
 runs/
 /data/
+# the 30 projected SWE-bench issue texts are not redistributed (PROVENANCE.md section 1.3);
+# re-derive them with harness/fetch_problem_statements.py, which verifies the result against
+# the pin in harness/HASHES.txt
+harness/data/
 *.jsonl
 .env
 __pycache__/
