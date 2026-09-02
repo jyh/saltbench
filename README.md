@@ -38,7 +38,9 @@ on the flip day.
    verifier behind three integrity layers, or a hidden test suite), outside the agent's own
    toolchain invocation.
 2. A fence denies the agent the network, the ground truth and the harness state, and the fence
-   is measured by probes before the run.
+   is measured by probes before the run. The v1 probes spoke only the sandbox's language, and the
+   layer above it (the agent's own file tool) was unfenced for every v1 episode; amendment 17
+   records the finding, the repair and its canary, and the paper states it.
 3. A dated freeze commit is the authorization. Predictions are registered and scored; adverse
    outcomes are named; every later change is a dated amendment appended before its own first
    call. Frozen text is never edited.

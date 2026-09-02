@@ -250,3 +250,27 @@ message and no file):
 | the pin table against the tree | 95 file pins, all OK |
 | `.githooks/commit-msg`, planted trailer then clean | rc 1, then rc 0 |
 | `paper/saltbench-v1.pdf` | rebuilt with tectonic, 10 pages |
+
+## (h) The hermeticity claim, corrected after amendment 17 (2026-09-02, the same day)
+
+bench's amendment 17 and its same-day addendum (section 9) found, by a canary driven on the run
+host in both arms, that the sandbox's read denials bind sandboxed subprocesses only. The agent
+harness's own file-reading tool never enters that sandbox, and neither substrate's settings carried
+a tool-permission rule, so no scored episode of this campaign had the agent's tools fenced by path.
+The paper's fence section had said "reads denied on the harness state, the credential trees, and
+the run root" of the agent as a whole. The helm carried the finding to this seat at 09:24.
+
+What changed, and only this:
+
+| where | change |
+|---|---|
+| `paper/saltbench-v1.tex` abstract | one clause added to the instrument-findings sentence: a fence probed only in its sandbox's language cannot see the layer above it, and no scored episode had the agent's own file tool fenced by path |
+| `paper/saltbench-v1.tex` section 2, the fence | the first sentence now says the agent's SUBPROCESSES run under the sandbox; the hook is named as a shell-tool hook and the audit layer is named; a third paragraph states the finding, what did hold (subprocess sandbox, empty network allowlist, shell-tool hook, ground-truth leak check, audit layer), the S2-Rust read's audit (15 Opus episodes, none voided, no unblocked read of a fenced path, one shell attempt blocked), the one observed escape (a Sonnet episode of the in-flight probe, void), the S2-Lean scope (layer absent; no audit summary in a result file, nothing claimed), and the repair with its canary in both arms; source `AMENDMENT-17-fence-config-dir-2026-09-02.md` sections 2 and 9 |
+| `paper/saltbench-v1.tex` section 5, the instrument findings | one item added: a deny list is only as broad as the layer that enforces it; a probe has to speak every tool's language and has to be neutral, because a refusal by the subject is not a refusal by the instrument |
+| `README.md` item 2 of the protocol | two sentences added stating the v1 probes' scope and pointing at amendment 17 |
+| the branch | `public-v1` rebased past master `88b4610` (amendments 17 and its addendum, the two-layer fence, arms 26 to 29) so the flip carries the finding and the repair; one adjacent-line conflict in `harness/HASHES.txt` resolved by taking this branch's re-pin of `provision_studio.sh` and master's re-pin of `render_settings_verus.py`; every gate re-run green at the tip |
+
+No number in the paper moved. The S2-Rust hard band stays 9 of 10; the S2-Lean null stays 8 of 15 on
+every arm. The S2-Lean episodes' per-episode audit counts (unblocked reads of a fenced path through the
+file tool) are OWED by the archive owner before any sentence stronger than "the layer was absent" can be
+written about them; asked on the bus with this pass.
