@@ -206,7 +206,101 @@ bold. The pilot was the right instrument and it arrived one post too late to sto
 
 ---
 
-## §5 · THE MEASURED PRICE
+## §4c · THE HELPERS WHITELIST REFUSED A LEGITIMATE HELPER LEMMA — ARM-CORRELATED, THIRD INSTANCE
 
-*(pending — the pilot is re-running under the repaired driver; this section is filled from
-`price.py` against the four registered predictions P1–P4, which were posted to the bus BEFORE the spend.)*
+`ep-ef8d8dbb` wrote a memory-region helper lemma and was landed `HELPERS_SHAPE`:
+
+```
+proof fn lemma_...(...)
+    ensures !overlap(
+        MemRegion { base: i, size: s.core_states[ci].pte_size(...) },
+        MemRegion { base: j, size: s.core_states[cj].pte_size(...) })
+{ ... }
+```
+
+`helpers_shape` split items by **brace depth**, so the **struct literals in the `ensures` clause** opened and
+closed depth at top level and ended the item **mid-signature**; the remainder scored "not a `proof fn`".
+
+> 🔑 **A FIXTURE SUITE PROVES THE SHAPES YOU IMAGINED; ONLY THE POPULATION PROVES THE ONES YOU DIDN'T.**
+> 29 screen arms, 18 fence arms and an 11-arm fixture kit all passed. The **third episode ever run** found it.
+>
+> 🔑 **AND IT IS ARM-CORRELATED, IN THE SAME DIRECTION AS AMENDMENT 15's FATAL 3.** `a2` encourages helper
+> lemmas; richer helpers carry struct literals in their specs; so the gate refused the treatment for applying
+> the treatment — **inside the very layer added to prevent the first instance of that error.** Ask of every
+> gate which arm is likelier to trip it, and ask it again of the gate you added to answer that question last time.
+
+**Repair:** items split by **top-level line structure**, not brace depth — the region is top-level by
+construction, so an item begins at a line at the region's base indentation starting with an attribute or an
+identifier, and a bare `{`/`}` there is body punctuation. Fails **closed**: non-blank content with no
+recognisable item start is a violation.
+
+⛔ **A second defect inside my own repair, caught by a GREEN arm:** `#[verifier::rlimit(50)]` sits at the same
+column as the `proof fn` it decorates, so the split made it a separate item declaring nothing — and `rlimit`
+is one of the five attributes lynette itself calls a proof instruction, i.e. **explicitly allowed**, and
+exactly what a helper-writing arm reaches for. Attributes now attach forward; a dangling attribute is its own
+violation. ⇒ **A REPAIR VALIDATED ONLY ON THE CASE THAT PROMPTED IT IS HALF-MEASURED.**
+
+**Driven:** 14 arms on `helpers_shape` (5 green including the real shape, 9 red). `screen_verus` 29 → 32 arms.
+
+📌 **The registered control holds: the screen over all 207 REFERENCE BODIES returns 0 defects.** ⛔ My first
+run of it reported **207 of 207** and I nearly filed a regression — I had fed it whole ground-truth **files**
+instead of the proof **bodies** the screen operates on, and a whole file legitimately contains `use`,
+`fn main` and `external_body`. ⇒ 🔑 **A CONTROL FED THE WRONG OBJECT REPORTS A CATASTROPHE OR AN ALL-CLEAR
+WITH EQUAL CONFIDENCE.** The right object is `frozen.json:proof_interior_original`.
+
+---
+
+## §5 · THE MEASURED PRICE, AND THREE OF FOUR REGISTERED PREDICTIONS FAILED
+
+**Pilot: n = 3, `a0`, `claude-opus-5`, seeded 20260902 from the LIVE 180.** Registered on the bus BEFORE the
+spend. Total metered **1,154,783**.
+
+| task | class | metered | wall | calls | `rt_calls` |
+|---|---|---|---|---|---|
+| `…lemma_interp_of_entry_between` | **PASS** | 76,003 | 65 s | 4 | 1 |
+| `…lemma_candidate_mapping_inflight_pmem_overlap_hl_implies_os` | **PASS** | 466,390 | 126 s | 17 | ≥1 |
+| `…no_overlaps_applied_mappings` | **PASS** *(re-scored)* | 612,390 | 286 s | 19 | ≥1 |
+
+**median 466,390 · mean 384,928 · min 76,003 · max 612,390 (n=3)** · wall 1.1–4.8 min.
+
+📌 The third was landed `HELPERS_SHAPE` by the false refusal of §4c and **re-scored from its archived agent
+artifact** under the repaired checker — no new spend: `45 verified, 0 errors`, `fenced true`, `lynette_rc 0`,
+count guard `external_body` 12→12 and 1→1, both unchanged.
+
+### The predictions, scored
+
+| | prediction | measured | |
+|---|---|---|---|
+| **P1** | median **>** S2-Lean p50 (1,010,831); band 3M–8M | **466,390** | ❌ **FAILED** — and ~10x below the band |
+| **P2** | `a0` passes **0 or 1** of 3 | **3 of 3** | ❌ **FAILED** |
+| **P3** | wall 5–25 min each | **1.1 / 2.1 / 4.8 min** | ❌ **FAILED** |
+| **P4** | ≤ 1 `ROUNDS_EXHAUSTED` | **0** | ✅ HELD |
+
+**I was wrong in the same direction three times: I priced S2-Rust as harder and slower than it is.** My
+reasoning was that the task files are large (median 32,979 B), so reading alone would be expensive.
+⇒ 🔑 **A BIG FILE IS NOT A BIG TASK.** Episode cost is driven by the difficulty of the proof, not the bytes
+of context.
+
+### ⭐⭐ AND `a0` PASSING 3 OF 3 IS A CAMPAIGN-LEVEL SIGNAL, NOT A CONVENIENCE
+
+Plain `a0`, no salt, cleared every drawn LIVE task at Opus-5. That is the **CEILING** shape S2-Lean already
+met once (`P0 = 12/12 ⇒ CEILING HOLD`): **an arm at ceiling leaves no room for a treatment effect to show**,
+and the drawn `n`, the tier and the task difficulty band all have to be re-read before a scored comparison is
+worth paying for. **n = 3**, so this is a signal and not a reading — but it is the signal that decides what
+stage 0.5 is even measuring.
+
+### Sizing, at the measured median, with its denominator
+
+| | at median 466,390 | at worst observed 612,390 |
+|---|---|---|
+| 60 episodes (the commission's null) | **≈ 28.0M** | ≈ 36.7M |
+| 30 episodes (the fallback `n`) | **≈ 14.0M** | ≈ 18.4M |
+
+**15M buys ≈ 32 episodes at the median.** So `n = 30` fits the cap at the median (14.0M) and **breaks it at
+the worst observed (18.4M)** — the authorization is marginal rather than impossible, which is neither what I
+claimed earlier nor what the wording assumed.
+
+⛔ **This is the second correction to my own pricing in one hour, and both were the same error.** First I
+priced 60 episodes off S2-Lean's p50 — a foreign substrate — and got 60.6M. Then, from the single cheapest
+sighted episode (76,003), I reasoned toward 4.6M. The n=3 median says 28.0M.
+⇒ 🔑 **THE FIX FOR A NUMBER FROM THE WRONG POPULATION IS NOT A NUMBER FROM A SMALLER ONE.**

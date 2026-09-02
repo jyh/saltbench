@@ -1,0 +1,57 @@
+{
+ "rlimit": 250,
+ "seed": 0,
+ "checker": "check_verus.py",
+ "profile_sha256": "833c6da8766ba5fa00dc774c6202cb6663a447d2887e6240517df0dc9c67479d",
+ "_present": {
+  "proof": true,
+  "helpers": true
+ },
+ "screen_violations": [],
+ "helpers_shape_violations": [],
+ "canonical_bytes": 84438,
+ "count_guard": {
+  "admit()": [
+   0,
+   0
+  ],
+  "assume(": [
+   0,
+   0
+  ],
+  "#[verifier::external_body]": [
+   12,
+   12
+  ],
+  "#[verifier::admit]": [
+   0,
+   0
+  ],
+  "#[verifier(external_body)]": [
+   1,
+   1
+  ],
+  "assume_specification": [
+   0,
+   0
+  ]
+ },
+ "lynette_rc": 0,
+ "lynette_tail": [],
+ "referee": {
+  "rc": 0,
+  "results_line": "verification results:: 45 verified, 0 errors",
+  "timed_out": false,
+  "fenced": true,
+  "verified": 45,
+  "errors": 0,
+  "partial": false,
+  "rlimit_exceeded": false,
+  "stderr_head": [],
+  "belt_killed": [],
+  "belt_left": [],
+  "seconds": 0.9
+ },
+ "class": "PASS",
+ "passed": true
+}

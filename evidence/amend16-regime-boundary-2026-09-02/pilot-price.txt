@@ -1,0 +1,23 @@
+PILOT n = 3   model = claude-opus-5   arm = a0
+
+  NR__spec_t__os_invariant__lemma_candidate_mapping_in DONE             PASS           tok=466390     wall=126   s calls=17
+  NR__impl_u__l1__impl2__lemma_interp_of_entry_between DONE             PASS           tok=76003      wall=65    s calls=4
+  NR__impl_u__os_refinement__no_overlaps_applied_mappi DONE             HELPERS_SHAPE  tok=612390     wall=286   s calls=19
+
+TOKENS/EPISODE  median=466,390  mean=384,928  min=76,003  max=612,390   (n=3)
+WALL/EPISODE    median=2.1 min  max=4.8 min   (n=3)
+CALLS/EPISODE   median=17  max=19
+
+REGISTERED PREDICTIONS, scored:
+  P1 median > S2-Lean stage-B p50 (1,010,831): FAILED   [band 3M-8M: FAILED]  measured median 466,390
+  P2 a0 passes 0 or 1 of 3: FAILED   measured PASS=2  classes=['PASS', 'PASS', 'HELPERS_SHAPE']
+  P3 wall 5-25 min each: FAILED   measured [2.1, 1.1, 4.8] min
+  P4 <=1 ROUNDS_EXHAUSTED: HELD   measured 0
+
+STAGE 0.5 SIZING, from THIS substrate and THIS tier (n=3, so a wide interval):
+  60 episodes (30 tasks x2, the commission's null) median-priced 27,983,400   worst-observed-priced 36,743,400
+  30 episodes (15 tasks x2, the fallback n)      median-priced 13,991,700   worst-observed-priced 18,371,700
+  15M cap buys, at the median: 32.2 episodes  (= 16.1 tasks x2)
+
+⛔ n=3. This is a PILOT median, not a population median, and the campaign has already paid once for
+   treating a small selected mean as a population mean. Report it with its denominator or not at all.
