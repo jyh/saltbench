@@ -30,7 +30,7 @@ sha() { shasum -a 256 "$1" | cut -d' ' -f1; }
 {
   echo "# HASHES-S2RUST — regenerate with harness/s2rust/hashes_s2rust.sh; sha256; generated $(date -u +%Y-%m-%dT%H:%M:%SZ)"
   for f in rustspan.py build_views_verus.py extract_verus.py screen_verus.py check_verus.py gt_pass_verus.py \
-           rlimit_curve_verus.py gt_leak_check.py controls_gate_verus.py \
+           rlimit_curve_verus.py gt_leak_check.py controls_gate_verus.py views_sethash.py \
            selftest_check_verus.py selftest_rt_verus.sh hashes_s2rust.sh rt.template base.md prompt_P.md; do
     need "$f"; printf '%s %s\n' "$f" "$(sha "$f")"
   done
@@ -60,6 +60,12 @@ sha() { shasum -a 256 "$1" | cut -d' ' -f1; }
       "$(cat base.md "$src" | shasum -a 256 | cut -d' ' -f1)" "$(cat base.md "$src" | wc -c | tr -d ' ')"
   done
   printf 'arms/a2.md %s\n' "$(sha ../arms/a2.md)"
+  # THE VIEWS ARE NOT SHIPPED — they are REBUILT from the pinned jsonl and verified by SET-HASH. 207 views of
+  # multi-hundred-KB Rust do not belong in git when they are a pure function of two pinned inputs
+  # (bench-jsonl-sha + build_views_verus.py). Measured: a clean rebuild reproduces the set-hash byte-identically.
+  if [ -n "${VIEWS_DIR:-}" ] && [ -d "$VIEWS_DIR/views" ]; then
+    printf 'views-set-sha256 %s\n' "$(python3 views_sethash.py "$VIEWS_DIR")"
+  fi
 } > "$OUT"
 mv "$OUT" HASHES-S2RUST.txt
 trap - EXIT
