@@ -1,0 +1,45 @@
+LIVE tasks: 180   curve R=[10, 50, 250]   determinism x3 at R=250
+   R=10    25/180  {"PASS": 25}
+   R=10    50/180  {"PASS": 50}
+   R=10    75/180  {"PASS": 75}
+   R=10   100/180  {"PASS": 100}
+   R=10   125/180  {"PASS": 125}
+   R=10   150/180  {"PASS": 150}
+   R=10   175/180  {"PASS": 174, "RLIMIT": 1}
+   R=10   180/180  {"PASS": 179, "RLIMIT": 1}
+R=10   => PASS 179/180   {"PASS": 179, "RLIMIT": 1}
+   R=50    25/180  {"PASS": 25}
+   R=50    50/180  {"PASS": 50}
+   R=50    75/180  {"PASS": 75}
+   R=50   100/180  {"PASS": 100}
+   R=50   125/180  {"PASS": 125}
+   R=50   150/180  {"PASS": 150}
+   R=50   175/180  {"PASS": 175}
+   R=50   180/180  {"PASS": 180}
+R=50   => PASS 180/180   {"PASS": 180}
+   R=250   25/180  {"PASS": 25}
+   R=250   50/180  {"PASS": 50}
+   R=250   75/180  {"PASS": 75}
+   R=250  100/180  {"PASS": 100}
+   R=250  125/180  {"PASS": 125}
+   R=250  150/180  {"PASS": 150}
+   R=250  175/180  {"PASS": 175}
+   R=250  180/180  {"PASS": 180}
+R=250  => PASS 180/180   {"PASS": 180}
+   determinism rep 2   50/180  flips=0
+   determinism rep 2  100/180  flips=0
+   determinism rep 2  150/180  flips=0
+   determinism rep 2  180/180  flips=0
+   determinism rep 3   50/180  flips=0
+   determinism rep 3  100/180  flips=0
+   determinism rep 3  150/180  flips=0
+   determinism rep 3  180/180  flips=0
+
+=== CURVE ===
+  R=10    PASS 179/180
+  R=50    PASS 180/180   (+1)
+  R=250   PASS 180/180   (+0)
+
+PIN VERDICT: ✅ NOT INDICTED — the curve is FLAT into R=250 (+0).
+DETERMINISM: flips=0 over 3 repeats ✅ (expected 0)
+wall 40.6 min -> ./rlimit_curve.json

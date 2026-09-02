@@ -1,0 +1,926 @@
+{
+ "rs": [
+  10,
+  50,
+  250
+ ],
+ "repeats": 3,
+ "n": 180,
+ "curve": {
+  "10": {
+   "PASS": 179,
+   "RLIMIT": 1
+  },
+  "50": {
+   "PASS": 180
+  },
+  "250": {
+   "PASS": 180
+  }
+ },
+ "flips": 0,
+ "flip_detail": {},
+ "wall_s": 2438.2,
+ "per_task": {
+  "AC__vreplicaset_controller__proof__guarantee__guarantee_condition_holds": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_always_each_vrs_in_reconcile_implies_filtered_pods_owned_by_vrs": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_always_every_msg_from_vrs_controller_carries_vrs_key": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_always_there_is_no_request_msg_to_external_from_controller": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_always_vrs_reconcile_request_only_interferes_with_itself": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_garbage_collector_does_not_delete_vrs_pods": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_no_other_pending_request_interferes_with_vrs_reconcile": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_no_pending_interfering_update_request": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_no_pending_mutation_request_not_from_controller_on_pods": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_vrs_in_ongoing_reconciles_does_not_have_deletion_timestamp": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_invariants__proof__lemma_eventually_always_vrs_in_schedule_does_not_have_deletion_timestamp": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_lemmas__matching_pods_equal_to_matching_pod_entries_values": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_lemmas__only_interferes_with_itself_equivalent_to_lifted_only_interferes_with_itself_action": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_lemmas__vrs_rely_condition_equivalent_to_lifted_vrs_rely_condition": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__helper_lemmas__vrs_rely_condition_equivalent_to_lifted_vrs_rely_condition_action": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__api_actions__lemma_api_request_other_than_pending_req_msg_maintains_matching_pods": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__proof__eventually_stable_reconciliation_holds": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__proof__eventually_stable_reconciliation_holds_per_cr": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__proof__lemma_from_reconcile_idle_to_scheduled": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__proof__lemma_from_scheduled_to_init_step": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__proof__spec_before_phase_n_entails_true_leads_to_current_state_matches": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_create_pod_resp_to_receive_create_pod_resp": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_delete_pod_resp_to_receive_delete_pod_resp": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_list_pods_resp_to_done": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_list_pods_resp_to_receive_create_pod_resp": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_list_pods_resp_to_receive_delete_pod_resp": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_list_pods_resp_to_send_create_pod_req": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_list_pods_resp_to_send_delete_pod_req": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_ok_resp_at_after_create_pod_step_to_done": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_ok_resp_at_after_delete_pod_step_to_done": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_ok_resp_to_send_create_pod_req": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_receive_ok_resp_to_send_delete_pod_req": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_send_create_pod_req_to_receive_ok_resp": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_send_delete_pod_req_to_receive_ok_resp": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_after_send_list_pods_req_to_receive_list_pods_resp": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_diff_and_init_to_current_state_matches": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__resource_match__lemma_from_init_step_to_send_list_pods_req": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__spec__assumption_and_invariants_of_all_phases_is_stable": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__spec__derived_invariants_since_beginning_is_stable": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__spec__next_with_wf_is_stable": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__spec__spec_and_invariants_entails_stable_spec_and_invariants": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__spec__spec_entails_all_invariants": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__spec__spec_of_previous_phases_entails_eventually_new_invariants": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__spec__stable_spec_and_assumption_and_invariants_of_all_phases_is_stable": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__spec__stable_spec_is_stable": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__terminate__lemma_from_after_create_or_delete_pod_rank_zero_to_reconcile_idle": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__terminate__lemma_from_after_create_pod_rank_n_to_create_pod_rank_n_minus_1": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__terminate__lemma_from_after_delete_pod_rank_n_to_delete_pod_rank_n_minus_1": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__terminate__lemma_from_after_list_pods_to_reconcile_idle": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__terminate__lemma_from_pending_req_in_flight_or_resp_in_flight_at_all_create_to_create_n": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__terminate__reconcile_eventually_terminates": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "AC__vreplicaset_controller__proof__liveness__terminate__reconcile_eventually_terminates_on_vrs_object": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__definitions_u__impl3__lemma_entry_sizes_aligned_auto": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__definitions_u__lemma_maxphyaddr_facts": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__extra__aligned_transitive": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__extra__aligned_transitive_auto": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__extra__assert_maps_equal_contains_pair": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__extra__lemma_aligned_iff_eq_mul_div": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__extra__leq_add_aligned_less": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__extra__mod_add_zero": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__extra__mod_mult_zero_implies_mod_zero": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__extra__subtract_mod_eq_zero": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__indexing__lemma_entry_base_from_index": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__indexing__lemma_entry_base_from_index_support": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__indexing__lemma_index_from_base_and_addr": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l1__impl2__lemma_empty_implies_interp_empty": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l1__impl2__lemma_entries_interp_equal_implies_interp_equal": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l1__impl2__lemma_entries_interp_insert_implies_interp_insert": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l1__impl2__lemma_interp_contains_implies_interp_of_entry_contains": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l1__impl2__lemma_interp_entries_insert_implies_interp_insert": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l1__impl2__lemma_interp_of_entry_between": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l1__impl2__lemma_interp_of_entry_contains_mapping_implies_interp_contains_mapping": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l1__impl2__lemma_interp_of_entry_insert_implies_interp_insert": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l1__impl2__lemma_interp_of_entry_insert_page_implies_interp_insert_page": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l1__impl2__lemma_interp_of_entry_key_between": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l1__impl2__lemma_new_empty_dir": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l2_impl__impl0__lemma_addr_mask_when_hp_pat_is_zero": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l2_impl__impl0__lemma_zero_entry_facts": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l2_impl__lemma_aligned_addr_mask_facts": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l2_impl__lemma_bitvector_facts": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l2_impl__lemma_bitvector_facts_simple": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__l2_impl__lemma_page_aligned_implies_mask_dir_addr_is_identity": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__bounds_applied_mappings": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__extra_mappings_preserved": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__extra_mappings_submap": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__interp_vmem_subrange": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__interp_vmem_update_range": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__lemma_effective_mappings_unaffected_if_thread_state_constant": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__lemma_map_soundness_equality": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__lemma_unmap_soundness_equality": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__monotonic_candidate_mapping_overlaps_existing_vmem": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__next_step_refines_hl_next_step": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__no_overlaps_applied_mappings": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__no_overlaps_interp_pt_mem": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__no_overlaps_pmem_applied_mappings": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__os_init_refines_hl_init": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__os_next_refines_hl_next": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__relevant_mem_preserved": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__step_MapEnd_refines": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__step_MapOpChange_refines": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__step_MapStart_refines": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__step_UnmapEnd_refines": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__step_UnmapOpChange_refines": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__step_UnmapStart_refines": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__unmap_vaddr_set_le_extra_mappings_dom": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__os_refinement__vaddr_distinct": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__wrapped_token__impl1__lemma_interps_match": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__wrapped_token__impl1__lemma_interps_match_aux1": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__wrapped_token__impl1__lemma_interps_match_aux2": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__wrapped_token__impl2__lemma_regions_derived_from_view_after_write": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__impl_u__wrapped_token__impl3__lemma_regions_derived_from_view_after_write": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__hlproof__insert_map_preserves_unique": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__hlproof__insert_non_map_preserves_unique": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__hlproof__map_end_preserves_inv": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__hlproof__map_start_preserves_inv": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__hlproof__unmap_start_preserves_inv": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__hlspec__next_step_preserves_inv": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__defs__x86_arch_spec_upper_bound": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__pt_mem__impl0__lemma_pt_walk": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__pt_mem__impl0__lemma_pt_walk_agrees_in_frame": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__pt_mem__impl0__lemma_write_seq_first": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__pt_mem__impl0__lemma_write_seq_push": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__pt_mem__lemma_fold_left_push": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__init_implies_inv": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_bits_align_to_usize": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_finish_iter_walk_invalid_after_nonpos_write": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_finish_iter_walk_prefix_matches_iter_walk": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_finish_iter_walk_valid_with_nonpos_write_in_path": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_indexing_bits_match_len_decrease": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_invalid_walk_is_invalid_in_writer_mem": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_iter_walk_equals_pt_walk": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_iter_walk_result_vbase_equal": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_iter_walk_result_vbase_equal_aux1": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_iter_walk_result_vbase_equal_aux2": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_pt_walk_result_vaddr_indexing_bits_match": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_pt_walk_result_vbase_equal": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_step_Writeback_post_valid_pt_walk_not_wraddr_in_path": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_step_Writeback_post_valid_walk_unchanged": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_step_Writeback_preserves_writer_mem": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_step_writeback_invalid_walk_unchanged": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_step_writenonneg_new_walk_has_pending_map": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_step_writenonneg_path_addrs_match": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_step_writenonneg_valid_walk_unchanged": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_step_writenonpos_invalid_walk_unchanged": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_valid_implies_equal_reads": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_valid_implies_equal_walks": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_valid_not_pending_implies_equal": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__lemma_writer_read_from_sbuf": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__next_preserves_inv": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__rl2__next_step_preserves_wf": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__translation__impl1__lemma_view_unchanged_dirty_access": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__mmu__translation__lemma_bit_indices_less_512": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_code_vc__lemma_concurrent_trs_during_shootdown": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_code_vc__lemma_concurrent_trs_no_lock": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__init_implies_inv": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__init_implies_tlb_inv": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__lemma_candidate_mapping_inflight_pmem_overlap_hl_implies_os": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__lemma_candidate_mapping_inflight_pmem_overlap_os_implies_hl": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__lemma_candidate_mapping_inflight_vmem_overlap_hl_implies_os": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__lemma_candidate_mapping_inflight_vmem_overlap_os_implies_hl": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__lemma_init_implies_empty_map": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__lemma_insert_no_overlap_preserves_no_overlap": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__lemma_insert_preserves_no_overlap": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__lemma_map_insert_value": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__lemma_map_insert_values_equality": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__lemma_submap_preserves_no_overlap": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__lemma_unique_and_overlap_values_implies_overlap_vmem": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__next_preserves_inv": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__next_step_preserves_inv": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__next_step_preserves_inv_allocated_mem": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__next_step_preserves_inv_basic": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__next_step_preserves_inv_impl": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__next_step_preserves_inv_mmu": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__next_step_preserves_inv_pending_maps": {
+   "R10": "RLIMIT",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__next_step_preserves_inv_shootdown": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__next_step_preserves_inv_writes": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__next_step_preserves_overlap_mem_inv": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__spec_t__os_invariant__step_MapNoOp_and_step_MapOpChange_preserves_overlap_mem_inv": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__theorem__lemma1_init": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  },
+  "NR__theorem__lemma1_next": {
+   "R10": "PASS",
+   "R50": "PASS",
+   "R250": "PASS"
+  }
+ }
+}

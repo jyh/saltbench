@@ -73,3 +73,38 @@ solved are named and removed before any arm sees them.
 **LAW THIS RESULT ADDS.** A dead-task list produced under the wrong toolchain is not a small error in a
 number — it is a *different list*, and it removes real tasks while leaving the broken binary in place.
 Measure `task_dead` only after the pin is gated, never alongside it.
+
+---
+
+## APPENDED 23:0x — THE RLIMIT CURVE AND THE DETERMINISM CONTROL (§8.5), BOTH DISCHARGED
+
+**900 referee invocations, 40.6 min, over the 180 LIVE tasks' reference bodies THROUGH OUR SCAFFOLD**, at the
+registered pin, seed 0. Record: `harness/s2rust/state/rlimit_curve.json`.
+
+| `--rlimit` | PASS | climb |
+|---|---|---|
+| 10 | 179 / 180 | — |
+| 50 | **180 / 180** | +1 |
+| **250** (registered) | **180 / 180** | **+0** |
+
+✅ **PIN VERDICT: NOT INDICTED. The curve is FLAT into R = 250 (+0).** The protocol's indictment condition —
+*the pin is indicted if the PASS curve is still climbing at 250* — does not fire. The single task that needs
+more than R = 10 returns `RLIMIT` there and passes at 50, and nothing anywhere needs more than 50.
+
+✅ **DETERMINISM: 0 flips over 3 repeats at R = 250** (§11.3's control; a nonzero count would have indicted
+the *pin*, not the solver, and blocked). The referee is reproducible at the pinned rlimit and seed.
+
+📌 **WHAT THE CURVE DOES AND DOES NOT LICENCE, said precisely.** It measures the budget against the
+**reference** proofs, and they are cheap: 179 of 180 fit in the CLI default. It therefore establishes that
+**R = 250 is not too LOW** — no reference proof is failing for want of budget, so no failure under it can be
+blamed on the ceiling. It does **not** establish that 250 is enough for an *agent's* proof, which may be far
+more expensive than a human's: that headroom is exactly what 250 buys over veval.py's own choice, and the
+`RLIMIT` class exists — kept separate from `VERIFY_FAIL`, never charged to the arm — precisely because the
+curve cannot answer that question in advance.
+⇒ 🔑 ***A BUDGET VALIDATED ON THE REFERENCE SOLUTION IS VALIDATED AGAINST THE CHEAPEST PROOF ANYONE WILL EVER
+WRITE FOR THAT TASK. It bounds the budget from below and says nothing from above.***
+
+📌 It also settles the `R = 10` vs `R = 250` dispute at the object: DD ⟦R U1⟧ corrected the draft's claim that
+"10 is the published regime" (10 is the CLI default; `veval.py` passes 250). **Measured, both work for the
+reference proofs** — 179/180 at 10, 180/180 at 50 — so the refuter's correction stands on provenance, and
+the practical gap between the two values on ground truths is **one task**.
