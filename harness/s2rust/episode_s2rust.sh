@@ -156,7 +156,23 @@ m={"episode":ep,"substrate":"S2-Rust/VeruSAGE","task_id":task,"stage":"P","arm":
    "rt_calls":starts,"rt_ends":ends,"rt_calls_rc0":ok,"rt_refused":refused,
    "prompt_sha256":pm.get("prompt_sha256"),"prompt_sha256_canonical":pm.get("prompt_sha256_canonical"),
    "view_sha256":pm.get("view_sha256"),
-   "metered_sum":mt_.get("metered_sum"),"metered_classes":mt_.get("classes"),"calls":mt_.get("calls")}
+   "metered_sum":mt_.get("metered_sum"),"metered_classes":mt_.get("classes"),"calls":mt_.get("calls"),
+   # ⛔ THE INTEGRITY AUDIT IS IN THE RECORD, NOT ONLY IN A LOG BESIDE IT. These four fields are why the
+   # transcript is archived at all: without them a scored episode carries its verdict and no evidence that
+   # the verdict was earned inside the fence. `session_jsonl_sha256` ties the manifest to the exact
+   # transcript that produced it, so a later audit reads the same bytes this run metered.
+   "escape_attempts_blocked":mt_.get("escape_attempts_blocked"),
+   "escape_unblocked":mt_.get("escape_unblocked"),
+   "url_mentions":mt_.get("url_mentions"),
+   "void":mt_.get("void"),"void_reasons":mt_.get("void_reasons"),
+   "session_jsonl_sha256":sha(os.path.join(st,"session.jsonl")),
+   # ⛔ `tool_uses` and `bash_commands` are the keys meter.py ACTUALLY emits. My first cut wrote
+   # `tool_counts`, which meter.py has never produced — it would have recorded null in every manifest and
+   # read, to anyone scanning the record, as "this episode used no tools". A DEAD FIELD IS NOT A CHEAP FIELD.
+   # `bash_commands` is the field that answers the question I could not answer about the first PASS: whether
+   # the agent invoked `rt` at all, or never tried.
+   "tool_uses":mt_.get("tool_uses"),"bash_commands":mt_.get("bash_commands"),
+   "unknown_tools":mt_.get("unknown_tools"),"compactions":mt_.get("compactions")}
 for k in CK: m["check_"+k]=ck.get(k)
 json.dump(m,open(os.path.join(st,"manifest.json"),"w"),indent=1)
 print("LANDED %s %s %s %s %s %s" % (ep, task, arm, term, ck.get("class") or "NO_CHECK", mt_.get("metered_sum") or 0))
@@ -286,5 +302,53 @@ BENCH="$BENCH" python3 "$S2R/check_verus.py" --frozen "$FZ" --agent-file "$EP/re
    --verus "$VERUS_ROOT/verus" --lynette "$LYNETTE_BIN" --rlimit "$RLIMIT" --seed "$SEED" \
    --out "$ST/check.json" > "$ST/check.stdout" 2> "$ST/check.stderr"
 ccrc=$?; [ "$ccrc" = 2 ] && log "CHECK HARNESS rc=$ccrc (see check.stderr)"
-python3 "$H/meter.py" "$JSONL" --ep "$ep" > "$ST/meter.json" 2>/dev/null || echo '{}' > "$ST/meter.json"
+[ -s "$ST/check.json" ] && python3 -c "import json;json.load(open('$ST/check.json'))" 2>/dev/null || { : > "$ST/check.json"; term="HARNESS_ERROR(check:$term)"; }
+
+# ── 10. THE ARCHIVE AND THE INTEGRITY AUDIT ─────────────────────────────────────────────────────────────
+# ⛔⛔ THIS WHOLE BLOCK WAS MISSING FROM THE FIRST PORT, AND ITS ABSENCE WAS INVISIBLE UNTIL AN EPISODE
+# PASSED AND I TRIED TO AUDIT IT. `s2lean/episode_s2.sh` archives the transcript, runs the escape/url audit,
+# detects VOID (subagents, extra jsonls, meter void_reasons), applies the QUOTA(no_call) rule, and CLEANS the
+# config dir. My port kept the driver's SHAPE — refuse, prepare, launch, check, land — and silently dropped
+# every one of those, because none of them is on the happy path and nothing downstream complained.
+# What it cost, measured rather than imagined: the first scored episode landed `PASS` with `rt_calls=0`, and
+# I could not tell whether the agent CHOSE not to run the referee or COULD NOT — because the transcript, the
+# only artifact that answers it, had never been archived and was then deleted by the next episode's cleanup.
+#   ⇒ 🔑 A PORT THAT KEEPS THE SHAPE AND DROPS THE EVIDENCE PRODUCES EPISODES THAT SCORE BUT CANNOT BE
+#     AUDITED — and a result you cannot audit is not a cheaper result, it is a different kind of object.
+# The config-dir cleanup lives HERE, in the episode that dirtied it, and not in the caller: a driver that
+# depends on its caller to tidy up has made hermeticity someone else's job (my pilot script's hand-rolled
+# reset is exactly what that looks like, and it killed two episodes before it killed the evidence).
+if [ -n "$JSONL" ]; then
+  cp "$JSONL" "$ST/session.jsonl"
+  bash "$H/hook-deny-network.sh" --pattern-escape > "$ST/escape_pattern.txt"
+  bash "$H/hook-deny-network.sh" --pattern-url   > "$ST/url_pattern.txt"
+  nj=$(find "$CFG/projects" -name '*.jsonl' | wc -l | tr -d ' ')
+  nsub=$(find "$CFG/projects" -type d -name subagents | wc -l | tr -d ' ')
+  extra_j=$(find "$CFG/projects" -name '*.jsonl' ! -name "$SID.jsonl" 2>/dev/null | tr '\n' ' ')
+  # --neutral names the paths a file tool may read WITHOUT it counting as an escape: the pinned toolchain and
+  # the views the agent is supposed to read. S2-Lean neutralises its Lean project and elan for the same reason.
+  python3 "$H/meter.py" "$ST/session.jsonl" --result "$ST/result.json" --ep "$EP" \
+    --escape-file "$ST/escape_pattern.txt" --url-file "$ST/url_pattern.txt" \
+    --neutral "$VERUS_ROOT" --neutral "$LYNETTE_BIN" --neutral "$REAL_HOME/.rustup" --neutral "$REAL_HOME/.cargo" \
+    ${extra_j:+--extra $extra_j} > "$ST/meter.json" 2> "$ST/meter.err"
+  [ -s "$ST/meter.json" ] || term="HARNESS_ERROR(meter:$term)"
+  python3 -c "import json;m=json.load(open('$ST/meter.json'));print('\n'.join(m['escape_unblocked']+['BLOCKED: '+x for x in m['escape_attempts_blocked']]))" > "$ST/network_audit.txt" 2>/dev/null
+  if [ "$nj" != "1" ] || [ "$nsub" != "0" ]; then term="VOID(SUBAGENT:${term})"
+  elif python3 -c "import json,sys;sys.exit(0 if json.load(open('$ST/meter.json'))['void'] else 1)" 2>/dev/null; then
+    term="VOID($(python3 -c "import json;print(','.join(json.load(open('$ST/meter.json'))['void_reasons']))"):${term})"; fi
+  # ⛔ zero model calls is a QUOTA symptom, never a result: an episode that never reached the model must not
+  # land as DONE with an empty body scored on its merits.
+  if [ "$(python3 -c "import json;print(json.load(open('$ST/meter.json')).get('calls',0))" 2>/dev/null)" = "0" ]; then
+    case "$term" in AUTH*|QUOTA*|HARNESS*|VOID*) ;; *) term="QUOTA(no_call:$term)" ;; esac; fi
+else
+  echo '{}' > "$ST/meter.json"
+fi
+# the config dir is archived and then RESET to its keep-list, by the episode that dirtied it
+mkdir -p "$ST/configdir-projects" && cp -R "$CFG/projects/." "$ST/configdir-projects/" 2>/dev/null
+for e in "$CFG"/* "$CFG"/.[!.]*; do
+  [ -e "$e" ] || continue
+  case "$(basename "$e")" in .claude.json|.credentials.json|settings.json|stub_mode) continue ;; esac
+  rm -rf "$e"
+done
+mkdir -p "$CFG/projects"
 finish 0
