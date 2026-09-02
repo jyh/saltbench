@@ -1,0 +1,29 @@
+THE UPPER TERCILE — REGISTERED BEFORE THE DRAW
+  rule      : UPPER TERCILE of the 180 LIVE tasks by REFERENCE-PROOF WALL, ties by task_id
+  cutpoint  : RANK >= 120  (label: recorded wall >= 1.90s — a LABEL for the rank, not the rule)
+  band n    : 60   composition AC=42 NR=18
+  band wall : median 4.55s  max 358.60s
+  band bytes: median 165568  mean 152652  max 223502
+
+THE DRAW — n=13, seed 20260902, UPPER tercile:
+   1  wall  358.60s  bytes  173919  AC  AC__vreplicaset_controller__proof__helper_invariants__proo
+   2  wall    2.90s  bytes  153965  AC  AC__vreplicaset_controller__proof__helper_invariants__proo
+   3  wall    2.90s  bytes  164927  AC  AC__vreplicaset_controller__proof__helper_invariants__proo
+   4  wall   17.90s  bytes  142264  AC  AC__vreplicaset_controller__proof__liveness__api_actions__
+   5  wall    2.10s  bytes  152550  AC  AC__vreplicaset_controller__proof__liveness__proof__lemma_
+   6  wall   12.10s  bytes  186962  AC  AC__vreplicaset_controller__proof__liveness__resource_matc
+   7  wall    7.30s  bytes  183307  AC  AC__vreplicaset_controller__proof__liveness__resource_matc
+   8  wall    6.80s  bytes  182365  AC  AC__vreplicaset_controller__proof__liveness__resource_matc
+   9  wall   34.30s  bytes  184833  AC  AC__vreplicaset_controller__proof__liveness__resource_matc
+  10  wall   22.30s  bytes  185365  AC  AC__vreplicaset_controller__proof__liveness__resource_matc
+  11  wall    1.90s  bytes  165432  AC  AC__vreplicaset_controller__proof__liveness__terminate__le
+  12  wall    2.40s  bytes   22866  NR  NR__spec_t__mmu__rl2__lemma_valid_implies_equal_walks
+  13  wall    8.80s  bytes  120334  NR  NR__spec_t__os_invariant__next_step_preserves_inv_writes
+
+  draw: AC=11 NR=2   bytes median 165432  max 186962
+
+PRICE from the BAND'S OWN BYTES (15.06 tok/byte between the two measured anchors):
+  per-episode at draw median bytes: 2,681,962
+  per-episode range               : 534,869 .. 3,006,211
+  RUN TOTAL (summed per task)     : 32,884,667
+  worst case (all at max bytes)   : 39,080,748

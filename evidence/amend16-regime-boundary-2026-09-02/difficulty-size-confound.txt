@@ -1,0 +1,8 @@
+IS THE UPPER TERCILE JUST 'AC' UNDER ANOTHER NAME?
+  upper tercile  n=60  AC=42 NR=18  bytes median 165568
+  AC (all LIVE)  n=52  bytes median 168329
+  overlap: 42 of the 60 upper-tercile tasks are AC = 70%
+  the upper band's median bytes are 98% of AC's
+
+  Spearman rank correlation, reference-proof WALL vs task BYTES, over all 180 LIVE: rho = 0.892
+  ⇒ difficulty and size are very nearly the SAME AXIS in this benchmark.

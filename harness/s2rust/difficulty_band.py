@@ -17,6 +17,16 @@ WALL (from the three-way ground-truth pass) and the view's SIZE — and offers a
 difficulty quantiles rather than across projects. Nothing here decides the design; it makes the fork
 decidable on data instead of on another extrapolation.
 
+⛔⛔ THE CUTPOINTS ARE RANKS, NOT SECONDS — AND A LATER READER MUST NOT RE-DERIVE THEM FROM THE PRINTED
+ABSOLUTES. Measured: re-timing 18 reference proofs on an IDLE seat returns walls 2.2-2.8x FASTER than the
+same tasks recorded during the 207-task population pass (358.60 s -> 127 s). The ORDER is stable across that
+shift (median CV 0.019, max 0.041, 2 rank changes of 18 and both between recorded ties), which is the only
+property a tercile rule consumes.
+  ⇒ A BAND RULE MUST DEPEND ONLY ON THE PROPERTY THAT SURVIVES THE CONDITIONS IT WILL BE RECOMPUTED UNDER.
+  ⇒ The seconds printed beside a cutpoint are a LABEL for the rank, taken from `state/task_dead.json` under
+    the load of that pass. Recompute the band from THAT RECORD, never from a fresh timing, or the same rule
+    will silently select a different population.
+
 ⛔ IT IS NOT A PREDICTOR AND MUST NOT BE READ AS ONE. The reference wall measures how hard the task was for
 the REFERENCE PROOF under the referee, which bounds the agent's cost from BELOW and says nothing from above —
 the same law the rlimit curve already carries. n=1 of agent cost on AC is not enough to fit anything; the
