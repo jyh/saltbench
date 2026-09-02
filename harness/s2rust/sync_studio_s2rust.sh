@@ -52,14 +52,29 @@ local_h=$(cd "$REPO/harness" && eval "$TREEHASH")
 remote_h=$($SSH "$STUDIO" "cd $RROOT/harness && $TREEHASH")
 # the seat's tree carries FREEZE-COMMIT only during the copy, so compare the PINNED files rather than the raw
 # tree hash: every key in HASHES.txt must resolve to the same sha on the Studio.
+# ⛔⛔ ONE ssh CALL FOR THE WHOLE SET, NOT ONE PER FILE — AND THAT IS A CORRECTNESS FIX, NOT A SPEED ONE.
+# My first cut ran `$SSH` INSIDE a `while read` loop. ssh reads its own stdin, so it CONSUMED THE LOOP'S
+# INPUT: the loop ran exactly ONCE, and the receipt printed "pinned files checked: 1, drifted: 0" and read
+# as a clean green sync while ~50 files went unexamined.
+#   ⇒ 🔑 A RECEIPT THAT DOES NOT STATE ITS OWN DENOMINATOR CAN PASS ON A SAMPLE OF ONE — and this one did
+#     print its denominator, which is the only reason I caught it. The floor below makes the number BINDING
+#     rather than merely printed: a receipt whose coverage collapses now FAILS instead of reporting green.
+keys=$(awk '!/^#/ && NF==2 {print $1, $2}' "$REPO/harness/HASHES.txt" \
+       | awk '$1 ~ /^(s2rust|s2lean)\// && $1 ~ /\.(json|py|sh|sb|md|lean)$|rt\.template$/')
+nwant=$(printf '%s\n' "$keys" | grep -c . || true)
+remote_shas=$($SSH -n "$STUDIO" "cd $RROOT/harness && find s2rust s2lean -type f -not -name '*.pyc' -print0 2>/dev/null | xargs -0 shasum -a 256 | sed 's|  | |'")
 rc=0; n=0; bad=0
 while read -r key want; do
-  case "$key" in s2rust/*|s2lean/*|'#'*) ;; *) continue ;; esac
-  case "$key" in *.json|*.py|*.sh|*.sb|*.md|*.lean|*rt.template) ;; *) continue ;; esac
-  have=$($SSH "$STUDIO" "shasum -a 256 '$RROOT/harness/$key' 2>/dev/null | cut -d' ' -f1")
+  [ -n "$key" ] || continue
+  have=$(printf '%s\n' "$remote_shas" | awk -v k="$key" '$2==k {print $1; exit}')
   n=$((n+1)); [ "$want" = "$have" ] || { echo "  DRIFT $key studio=${have:0:16} pinned=${want:0:16}"; bad=$((bad+1)); rc=2; }
-done < <(awk '!/^#/ && NF==2 {print $1, $2}' "$REPO/harness/HASHES.txt")
-echo "  pinned files checked on the Studio: $n, drifted: $bad"
+done <<EOF
+$keys
+EOF
+echo "  pinned files checked on the Studio: $n of $nwant, drifted: $bad"
+# THE COVERAGE FLOOR: the S2-Rust half alone is >20 files, so a receipt reporting fewer has under-measured,
+# whatever it says about drift.
+[ "$n" = "$nwant" ] && [ "$n" -ge 20 ] || { echo "  FAIL  coverage: checked $n of $nwant pinned files (floor 20) — the receipt did not measure what it claims"; rc=2; }
 
 after=$($SSH "$STUDIO" "cd ~/bench/harness && $TREEHASH")
 if [ "$before" = "$after" ]; then echo "  OK    ~/bench/harness BYTE-UNCHANGED (${before:0:16}) — stage C's freeze intact"
