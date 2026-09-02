@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use SaltBench, please cite the paper and the repository."
+title: "SaltBench v1: A Referee-Gated, Pre-Registered Protocol for Measuring Method Effects in Machine-Checked Software Work, with Frontier Baselines on Lean and Verus"
+authors:
+  - family-names: Hickey
+    given-names: Jason
+version: "1.0"
+date-released: "2026-09-02"
+license: Apache-2.0
+repository-code: "https://github.com/jyh/saltbench"
+keywords:
+  - benchmark
+  - formal verification
+  - Lean 4
+  - Verus
+  - coding agents
+  - pre-registration
+preferred-citation:
+  type: article
+  title: "SaltBench v1: A Referee-Gated, Pre-Registered Protocol for Measuring Method Effects in Machine-Checked Software Work, with Frontier Baselines on Lean and Verus"
+  authors:
+    - family-names: Hickey
+      given-names: Jason
+  year: 2026
+  journal: "arXiv preprint"
+  notes: "arXiv identifier to be added at submission"

@@ -1,27 +1,73 @@
 # SaltBench
 
-⛔ **PRIVATE.** Nothing here publishes until the IARC ruling lands and the Captain says
-go (charter: `seat/briefs/2026-08-20-saltbench-promotion.md`). This repo has **zero git
-remotes** by construction.
+A referee-gated, pre-registered protocol for measuring whether a change to how a coding agent is
+instructed changes what it can get past a machine referee. Version 1 ships the protocol, two task
+populations with their provenance, frontier baselines on both, a pre-registered null on one with
+the blind triage that explains most of it, and the instrument findings as results. It claims no
+effect of the method under test; the tests that could show one are stated in the paper and remain
+open.
 
-⛔ **COMMIT HYGIENE — APPLIED FROM COMMIT #1, NOT FROM THE DAY IT GOES PUBLIC.**
-This repo is *destined* to become public on clearance. `Claude-Session:` trailers are
-therefore **banned here from the start**, exactly as in `salt` / `saltworks` / `jas`.
-`Co-Authored-By` and `model:` are fine.
-
-> The 2026-08-16 history purge happened because trailers were already in history when a
-> repo turned public. A repo that will be public is a public repo for hygiene purposes,
-> starting at its first commit — the alternative is a second purge, and a purge is only
-> ever needed because someone applied the rule at the wrong time.
-
-⛔ **Personal lane.** Harness built fresh, reimplementing only field-standard
-methodology. **No employer-lane code, ever.** Touches no tape-out resource.
+The paper is `paper/saltbench-v1.tex` (build: `cd paper && tectonic saltbench-v1.tex`; the PDF is
+committed beside it). Every number in the paper carries a comment naming the file in this
+repository it was copied from.
 
 ## What is here
 
-- `PRE-REGISTRATION.md` — wave 1, written before any model call. The claim, what it
-  cannot show, the substrate choice and why it is deliberately adverse, task-selection
-  criteria, the model band (measured by pilot, never quoted), the statistic, and the
-  conditions that would make me abandon the design.
-- `select_tasks.py` — the §3 criteria as executable code. Metadata only; never reads a
-  solution, never calls a model. `--self-test` drives every arm both ways.
+| path | what |
+|---|---|
+| `PRE-REGISTRATION.md` | wave 1 on SWE-bench Verified, frozen before any model call (the substrate was later abandoned as saturated; the datum stays) |
+| `SCOUT-STAGE0.md`, `RESULTS-stage0-2026-08-29.md` | the S1 control protocol and its stage-0 result |
+| `SCOUT-S2LEAN-STAGE0.md` | the S2-Lean protocol on CLEVER Task 1, frozen 2026-08-29, with amendments 1 to 10 and their results appended in place |
+| `AMENDMENT-11` to `AMENDMENT-16`, `RESULT-*` | the later S2-Lean and S2-Rust amendments, each frozen before its first call, and their results |
+| `TRIAGE-B-failures-2026-09-01.md` | the blind triage of every failed S2-Lean stage-B cell; problem 18's stage C is machine-checked unsatisfiable |
+| `AUDIT-FINDING-s2lean-2026-08-29.md` | the audit of the benchmark's reference checker |
+| `harness/` | the harness: episode drivers, fences, checkers, morning-line instruments, self-tests; `harness/HASHES.txt` pins everything |
+| `harness/s2lean/views/` | the CLEVER problems re-cut into stage views (MIT, see `PROVENANCE.md`) |
+| `evidence/` | the instruments' outputs and manifests the result files cite, byte for byte |
+| `PROVENANCE.md` | every population and third-party artifact, its pin, its licence, what is redistributed |
+| `PUBLISH-CHECKLIST.md` | the hygiene and provenance checklist driven before publication |
+| `select_tasks.py`, `TASKLIST.json`, `IMAGE-DIGESTS.json` | the S1 draw as code, the frozen list, the evaluation image digests |
+
+The run records (`runs/`, 61 MB of transcripts and manifests) and the S2 episode archives are
+released as a data asset beside this repository, not in the git tree.
+
+## The protocol in five lines
+
+1. A referee decides every outcome (the Lean kernel by replay with an axiom allowlist, the Verus
+   verifier behind three integrity layers, or a hidden test suite), outside the agent's own
+   toolchain invocation.
+2. A fence denies the agent the network, the ground truth and the harness state, and the fence
+   is measured by probes before the run.
+3. A dated freeze commit is the authorization. Predictions are registered and scored; adverse
+   outcomes are named; every later change is a dated amendment appended before its own first
+   call. Frozen text is never edited.
+4. A budget stop is a halt, never a failure.
+5. Of every gate, ask which arm is more likely to trip it.
+
+## Reproducing
+
+The task populations are re-derived from their pinned sources by the harness's view builders
+(`harness/s2lean/build_views.py`, `harness/s2rust/build_views_verus.py`, `harness/project_data.py`).
+The pins are lines in `harness/HASHES.txt`; the episode scripts refuse to run a stage whose view or
+checker hash is not the pinned one. The morning-line instruments (`harness/morning_line.py`,
+`harness/s2lean/s2_morning_line.py`) reproduce every rate in the paper from the manifests, and
+their self-tests drive the script's real argv. The episodes ran under Claude Code 2.1.251 headless
+on a subscription; the agent is not redistributed.
+
+## Licence
+
+PROPOSAL, pending the owner's choice: code under Apache-2.0 (`LICENSE`), data and documents under
+CC BY 4.0 (`LICENSE-DATA`). Third-party material keeps its own licence: CLEVER (MIT, Trishul,
+UT Austin), VeruSAGE-Bench and lynette (MIT, Microsoft), SWE-bench (MIT) and the source
+repositories of the drawn issues. See `PROVENANCE.md`.
+
+## Citing
+
+See `CITATION.cff`.
+
+## Contributing
+
+The frozen documents are appended to, never edited. Commit messages carry no chat-session
+trailers or URLs; `Co-Authored-By` is fine. The Scrub CI (`.github/workflows/scrub.yml`) enforces
+both on every push, and a fresh clone arms the local hook with
+`git config core.hooksPath .githooks`.

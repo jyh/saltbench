@@ -1,11 +1,8 @@
 # private_paths_baseline.tsv -- ACCEPTED residue for the tree ratchet (check_private_paths.py --tree).
 # file<TAB>line-sha16<TAB>what. Shrink it after a repair with --tree --write-baseline; a growth is a reviewed diff.
-.gitignore	6dce304e04636c7f	a path into a private-record repo
 AMENDMENT-15-s2rust-2026-09-01.md	ac9e3e0c884dd0fc	a path into a private-record repo
 AMENDMENT-15-s2rust-2026-09-01.md	004deec9de7aee4a	a path into a private-record repo
-CLAUDE.md	264dc31dd665850b	a path into a private-record repo
 PRE-REGISTRATION.md	e631f52fadad3261	a path into a private-record repo
-README.md	c5734e4a2af284b0	a path into a private-record repo
 SCOUT-S2LEAN-STAGE0.md	776304192e78e1a0	a path into a private-record repo
 SCOUT-S2LEAN-STAGE0.md	5a87eb8d1a821896	a path into a private-record repo
 SCOUT-S2LEAN-STAGE0.md	4ad2f480575c0489	a path into a private-record repo
