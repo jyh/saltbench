@@ -300,3 +300,68 @@ reset wiped its live transcript before anything archived it** — *a killed epis
 cleanup, and someone else's cleanup is not a substitute* · fence drives **≥218,670 measured, true total
 higher because each probe overwrote its own result file** — *a probe that overwrites its own receipt cannot
 report its own cost.*
+
+---
+
+## §11 · ADDENDUM — **§1's EVIDENCE SENTENCE IS WRONG, AND THE CAMPAIGN-WIDE AUDIT IS ZERO**
+
+*Appended, not edited in. The hole is real and the repair stands; the sentence I used as its evidence does not.*
+
+### The mis-statement
+
+§1 and §9 say `ep-c392a7ac` **"READ `$CFG/projects/<slug>/memory/MEMORY.md` and was SERVED."** Read at the
+transcript, that Read returned:
+
+```
+TOOL_RESULT is_error = True
+   "File does not exist. Note: your current working directory is /Users/jyh/work-rust/ep-c392a7ac/repo."
+```
+
+**The agent guessed a path for a memory file that was not there. No bytes came back.** The driver's
+`escape_unblocked` field recorded it because *the hook did not refuse it* — not because it was served.
+
+> 🔑 **AN AUDIT THAT LOGS "NOT BLOCKED" IS NOT LOGGING "SERVED."** `is_error` conflates three different
+> facts, and only one of them is a fence event: **REFUSED** (a permission/sandbox/hook denial — the fence
+> held), **ABSENT** (nothing was there — the fence was never tested), and **SERVED** (the bytes came back —
+> the only one that is a hole being used). An escape field that does not separate them will call an
+> absent file an escape.
+
+### ⭐ What still stands, and why the repair was right anyway
+
+**The hole was real and was proven by the CANARY, not by that episode.** With the config dir correctly in
+`denyRead` I planted a real file and the agent **printed its contents verbatim**; with `permissions.deny`
+added it answered `UNREADABLE`, canary 0/0. That RED/GREEN pair is the evidence, and it is untouched by
+this correction. *The episode raised the question; the canary answered it.*
+
+### The campaign-wide audit paper is owed — and it is a clean zero
+
+`harness/s2rust-analysis/s2lean_escape_audit.py`, over **every landed S2-Lean episode in all four state
+roots** (`~/bench`, `~/bench-a8`, `~/bench-aw`, `~/bench-c`):
+
+```
+EPISODES with a transcript : 278        EPISODES parsed : 278      (none skipped)
+FILE-TOOL CALLS ON A FENCED PATH
+  UNBLOCKED (served) : 0
+  NOT SERVED         : 0
+episodes with >=1 unblocked fenced read: 0 of 278
+```
+
+**Not "zero served out of many attempts" — zero attempts.** No S2-Lean agent ever directed `Read`, `Edit`,
+`Write`, `NotebookEdit`, `Glob` or `Grep` at a path under any deny root.
+
+⛔ **AND THE ZERO WAS NOT TAKEN ON TRUST**, because *a quiet failure reads as good news — a ZERO refutes your
+implementation first.* The detector is driven on **all three branches**: a fixture with a **SERVED** read of
+a fenced path is counted (1); a **REFUSED** read is classified refused and not counted; a read of a
+**non-fenced** path is not counted at all. It was also run against the real S2-Rust episode, where it found
+the one fenced-path call and correctly classified it **ABSENT** — which is how the §1 mis-statement above
+was caught.
+
+### What paper may say, and what it may not
+
+- **MAY:** the tool-path layer was absent for every scored episode of this campaign, in both substrates —
+  measured, and stated in `permissions: null`.
+- **MAY:** over all 278 landed S2-Lean episodes, **no agent directed a file tool at a fenced path**, so
+  nothing is known to have been read through the gap. The gap is real; its measured exploitation is zero.
+- **MAY NOT:** that any episode read a fenced file. None did.
+- ⚠️ **AND THE HONEST LIMIT:** this audits what the agents *did*, not what they *could have done*. The
+  canary shows the gap was open. **An absence of exploitation is not a presence of protection.**
