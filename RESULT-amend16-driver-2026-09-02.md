@@ -71,6 +71,48 @@ no tools"*. **A DEAD FIELD IS NOT A CHEAP FIELD** — a law this seat banked the
 
 ---
 
+## §2b · ⛔⛔ AND THEN THE AUDIT PAID FOR ITSELF IMMEDIATELY: TWO EPISODES HAD PASSED **BLIND**
+
+The repaired driver archived a transcript, and the very first thing it showed was that `rt_calls = 0` was
+not a choice.
+
+| measured on `ep-3fba0475` | |
+|---|---|
+| `denyRead` contains | `/Users/jyh/bench-rust` |
+| episode dir | `/Users/jyh/bench-rust/work/ep-3fba0475` — **inside it** |
+| `tool_uses` | `{"Bash": 18, "Edit": 2, "Read": 4, "ToolSearch": 1}` |
+| `rt_calls` | **0** — the wrapper never logged even a START |
+| `escape_unblocked` / `void` | `[]` / `False` — the fence itself held |
+
+The transcript shows the agent trying `../rt verus task.rs`, then the absolute path, then a wrapper script in
+`$TMPDIR` — **three attempts** — and then spending ten Bash calls hunting for a `verus` it was never going to
+reach. It then wrote a proof it could not check. **The proof PASSED. Twice** (1,208,459 and 846,079 tokens).
+
+**The cause is row CO's own repair meeting a placement decision.** Deriving `denyRead` from `$BENCH` makes the
+fence follow the state root — correct, and the whole point of CO. It becomes self-defeating the moment the
+episode tree is placed *inside* that root, because the agent's `rt` and task file then sit in a denied
+subpath. S2-Lean never hit it only because its `EPROOT` (`$HOME/work`) happens to sit outside `~/bench` — an
+accident, exactly like the symlink accident that protected the sibling roots *before* CO.
+
+> 🔑 **A FENCE DERIVED FROM THE RUN ROOT MUST NOT CONTAIN THE AGENT'S OWN WORKSPACE.**
+>
+> 🔑 **AND THE EPISODE STILL SCORED.** A blind agent that passes is not a cheap pass — it is a measurement of
+> a **different task** than the one registered, and nothing downstream could have told the difference.
+
+⚠️ **The `rt` probe gave false comfort.** It runs harness-side, unfenced, so it certified that the wrapper
+works *for the harness* while the agent could not execute the same file. That is the toolchain gate's lesson
+in a second costume: two claims measured under two environments, only one of which describes the run.
+
+**The repair is a REFUSAL, not a warning** — an episode the agent cannot check its work in must not be
+scored. Driven both ways: `EPROOT` inside `$BENCH` → `FENCE SELF-BLOCK`, naming the dir and the denied path;
+outside → `fence/workspace disjoint`, episode lands. Plus arms **C10/C11** (settings suite now 11 arms).
+
+📌 **The two blind PASSes are kept at `~/bench-rust/specimen-unauditable/` and are NOT counted.** They are
+also the only evidence that `a0` can pass this benchmark *with no referee at all* — a question worth its own
+registered experiment, but not the one that was registered.
+
+---
+
 ## §3 · THE OTHER DEFECTS OF MINE, EACH CAUGHT BY DRIVING
 
 1. **The dry's outcome matrix returned the same class six times and looked healthy.** The rig steered the
@@ -127,6 +169,40 @@ the null is priced at Opus. A Sonnet price is a floor and does not transfer.
 
 **§5 below carries the measured price. It is a PILOT median at n=3 and is reported with its denominator: the
 campaign has already paid once for reading a small selected mean as a population mean.**
+
+---
+
+## §4b · ⭐ THE COST OF THE BLINDNESS, QUANTIFIED — AND MY OWN PRICING CLAIM CORRECTED
+
+The same task, the same arm, the same model. The only difference is whether the agent could reach `rt`:
+
+| | blind (`ep-b5e58301`) | blind (`ep-3fba0475`) | **sighted (`ep-b115dc91`)** |
+|---|---|---|---|
+| metered | 1,208,459 | 846,079 | **76,003** |
+| wall | 386 s | 447 s | **65 s** |
+| tool calls | 30 | 26 | **4** |
+| `rt_calls` | 0 | 0 | **1** (rc 0) |
+| escape attempts blocked | — | 2 | **0** |
+| class | PASS | PASS | **PASS** |
+
+**A blind episode cost 11-16x a sighted one** — the tokens went into hunting for a binary the agent could
+never reach, and the escape attempts were that hunt hitting the fence.
+
+⛔ **AND THIS CORRECTS A CLAIM I POSTED TO THE BUS BEFORE THE SPEND.** I wrote that *"15M buys ~15 episodes,
+not 30"*, priced off S2-Lean's stage-B p50 of 1,010,831 — while explicitly warning, in the same post, that
+every number I had came from another substrate. A sighted S2-Rust episode measures **76,003**, roughly
+**13x cheaper**, at which 60 episodes cost ≈ 4.6M and sit comfortably **inside** the 15M cap.
+
+**What survives and what does not:**
+- **SURVIVES (and the helm banked it as law):** *a cap and a sample size are one constraint, not two* — a
+  fallback `n` that was never priced is not a fallback. That is a statement about the shape of the
+  authorization and it is independent of the number.
+- **DOES NOT SURVIVE:** my specific arithmetic. "15M buys ~15 episodes" was a cross-substrate extrapolation,
+  and I made exactly the error I had named one paragraph earlier.
+
+⇒ 🔑 **NAMING A HAZARD IS NOT THE SAME AS BEING PROTECTED FROM IT.** I labelled the S2-Lean figures as
+foreign, reasoned from them anyway because they were the only figures I had, and posted the conclusion in
+bold. The pilot was the right instrument and it arrived one post too late to stop the claim.
 
 ---
 

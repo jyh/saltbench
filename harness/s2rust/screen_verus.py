@@ -139,51 +139,119 @@ def helpers_shape(helpers_text):
 
     ⛔ THIS IS A SEPARATE STRUCTURAL GATE, NOT PART OF THE TOKEN SCREEN, AND `--no-screen` DOES NOT DISABLE IT.
     Reason, measured: the helpers region is appended PAST the end of the original item list so that lynette
-    `additions` accepts it (build_views_verus.py's docstring), and lynette's lockstep loop therefore never
-    EXAMINES anything in that region — an added `axiom fn` there is invisible to layer 4. The end-of-block
-    placement buys acceptance of legitimate helpers and pays for it in layer-4 coverage of that region, so
-    the region needs a structural gate of its own. A whitelist, not a blacklist: the blacklist this replaces
-    passed every named bad shape and would have admitted every unnamed one.
+    `additions` accepts it, and lynette's lockstep loop therefore never EXAMINES anything in that region — an
+    added `axiom fn` there is invisible to layer 4. The end-of-block placement buys acceptance of legitimate
+    helpers and pays for it in layer-4 coverage, so the region needs a structural gate of its own. A
+    whitelist, not a blacklist: the blacklist this replaces passed every named bad shape and would have
+    admitted every unnamed one.
+
+    ⛔⛔ ITEMS ARE SPLIT BY TOP-LEVEL LINE STRUCTURE, NOT BY BRACE DEPTH, AND THAT IS A REPAIR PAID FOR BY A
+    REAL EPISODE. The first cut walked the text counting braces and ended an item wherever depth returned to
+    zero. A Verus `proof fn` routinely carries a STRUCT LITERAL in its `requires`/`ensures`:
+
+        proof fn lemma(...)
+            ensures !overlap(
+                MemRegion { base: i, size: ... },      <-- depth 0 -> 1 -> 0, mid-SIGNATURE
+                MemRegion { base: j, size: ... })
+        { ... }
+
+    so the item was cut in half before its body and the remainder scored "not a `proof fn`". Measured on
+    `ep-ef8d8dbb` (a0, opus-5): a perfectly legitimate memory-region helper lemma was refused HELPERS_SHAPE.
+      ⇒ 🔑 AND IT IS ARM-CORRELATED, FOR THE THIRD TIME IN THIS WAVE. `a2` encourages helper lemmas, richer
+        helper lemmas are likelier to carry struct literals in their specs, so this gate refused the
+        treatment for applying the treatment — inside the very layer added to prevent the first instance of
+        that error. ASK OF EVERY GATE WHICH ARM IS LIKELIER TO TRIP IT.
+      ⇒ 🔑 29 screen arms and a full fixture kit never caught it. THE FIRST REAL AGENT ARTIFACT DID.
+        A FIXTURE SUITE PROVES THE SHAPES YOU IMAGINED; ONLY THE POPULATION PROVES THE ONES YOU DIDN'T.
+
+    The region is top-level by construction, so an item BEGINS at a line sitting at the region's base
+    indentation and starting with an attribute or an identifier. A bare `{` or `}` at that column is body
+    punctuation, not an item. Braces inside a signature are then irrelevant, which is the whole point.
+    ⛔ It fails CLOSED: non-blank content with no recognisable item start is a violation, never a pass —
+    a parser that cannot find an item must not thereby approve the region.
     """
     s = strip(helpers_text or "")
-    out = []
-    i, n, depth, start = 0, len(s), 0, None
-    while i < n:
-        c = s[i]
-        if depth == 0 and start is None and not c.isspace():
-            start = i
-        if c == "{":
-            depth += 1
-        elif c == "}":
-            depth -= 1
-            if depth == 0 and start is not None:
-                out.append((start, s[start:i + 1])); start = None
-        elif c == ";" and depth == 0 and start is not None:
-            out.append((start, s[start:i + 1])); start = None
-        i += 1
-    if start is not None:
-        out.append((start, s[start:]))
-    bad = []
-    for off, item in out:
-        head = item
+    if not s.strip():
+        return []
+    lines = s.split("\n")
+    indents = [len(l) - len(l.lstrip()) for l in lines if l.strip()]
+    base = min(indents) if indents else 0
+    starts = []
+    for idx, l in enumerate(lines):
+        if not l.strip():
+            continue
+        if (len(l) - len(l.lstrip())) != base:
+            continue
+        head = l.strip()
+        if head.startswith("#[") or re.match(r"[A-Za-z_]", head):
+            starts.append(idx)
+    if not starts:
+        return ["helpers: no top-level item found in a non-empty helpers region"]
+    off = [0]
+    for l in lines[:-1]:
+        off.append(off[-1] + len(l) + 1)
+
+    def strip_attrs(text):
+        """Remove leading `#[...]` attribute blocks; return what the item actually declares."""
+        head = text
         while True:
             h = head.lstrip()
             if h.startswith("#["):
                 d = 0
-                for k, ch in enumerate(h):
+                for j, ch in enumerate(h):
                     if ch == "[":
                         d += 1
                     elif ch == "]":
                         d -= 1
                         if d == 0:
-                            head = h[k + 1:]; break
+                            head = h[j + 1:]
+                            break
+                else:
+                    return h
+                continue
+            return h
+
+    # ⛔ AN ATTRIBUTE LINE ATTACHES FORWARD; IT IS NOT AN ITEM. `#[verifier::rlimit(50)]` sits at the same
+    # column as the `proof fn` it decorates, so the line-structure split makes it a separate "item" that
+    # declares nothing — and `rlimit` is one of the five attributes lynette itself calls a proof instruction,
+    # i.e. EXPLICITLY ALLOWED, and exactly the kind of thing a helper-writing arm reaches for. Caught by the
+    # green arm for "attribute + doc comment", which is why the repair carries green arms and not only red ones.
+    #   ⇒ A REPAIR VALIDATED ONLY ON THE CASE THAT PROMPTED IT IS HALF-MEASURED.
+    items = []
+    for k, ln in enumerate(starts):
+        stop = starts[k + 1] if k + 1 < len(starts) else len(lines)
+        text = "\n".join(lines[ln:stop])
+        if items and items[-1][2]:               # previous chunk was attributes only: absorb it
+            ln = items[-1][0]
+            text = "\n".join(lines[ln:stop])
+            items.pop()
+        items.append((ln, text, strip_attrs(text).strip() == ""))
+
+    bad = []
+    for ln, item, attr_only in items:
+        if attr_only:                            # a dangling attribute declaring nothing
+            bad.append("helpers: item %d is an attribute with no item@%d" % (len(bad) + 1, _line(s, off[ln])))
+            continue
+        head = item
+        while True:
+            h = head.lstrip()
+            if h.startswith("#["):
+                d = 0
+                for j, ch in enumerate(h):
+                    if ch == "[":
+                        d += 1
+                    elif ch == "]":
+                        d -= 1
+                        if d == 0:
+                            head = h[j + 1:]
+                            break
                 else:
                     break
                 continue
             head = h
             break
         if not re.match(r"(?:pub\s+)?proof\s+fn\b", head):
-            bad.append("helpers: item %d is not a `proof fn`@%d" % (len(bad) + 1, _line(s, off)))
+            bad.append("helpers: item %d is not a `proof fn`@%d" % (len(bad) + 1, _line(s, off[ln])))
     return bad
 
 
@@ -252,6 +320,23 @@ CASES = [
     # the token inside a COMMENT or a STRING must not trip the screen
     ("assume in a comment", {"proof": "// assume(false) is what we do NOT do\nassert(true);"}, False),
     ("assume in a string", {"proof": 'let s = "assume(false)"; assert(true);'}, False),
+    # ── THE HELPERS-REGION SHAPES, and the first three are paid for by a REAL EPISODE ────────────────────
+    # ⛔ `ep-ef8d8dbb` (a0, opus-5) wrote a legitimate memory-region helper lemma and was refused
+    # HELPERS_SHAPE, because the item splitter counted braces and a STRUCT LITERAL in an `ensures` clause
+    # closed the item mid-signature. 29 screen arms and a full fixture kit never produced that shape; the
+    # first real agent artifact did, on the third episode ever run on this substrate.
+    #   ⇒ A FIXTURE SUITE PROVES THE SHAPES YOU IMAGINED; ONLY THE POPULATION PROVES THE ONES YOU DIDN'T.
+    #   ⇒ AND IT WAS ARM-CORRELATED: a2 encourages helper lemmas, richer helpers carry struct literals in
+    #     their specs, so the gate refused the treatment for applying the treatment — the THIRD instance of
+    #     that shape in this wave, inside the layer added to prevent the first.
+    ("helper with a struct literal in ensures",
+     {"helpers": "proof fn f(x: int)\n    ensures !overlap(\n        MemRegion { base: 0, size: 1 },\n"
+                 "        MemRegion { base: 2, size: 3 })\n{\n    assert(true);\n}\n"}, False),
+    ("two helpers, struct literals in both",
+     {"helpers": "proof fn a(x: int)\n    ensures p(MemRegion { base: 0 })\n{\n}\n\n"
+                 "proof fn b(y: int)\n    ensures y == y\n{\n}\n"}, False),
+    ("doc comment + allowed attribute on a helper",
+     {"helpers": "/// doc\n#[verifier::rlimit(50)]\nproof fn f()\n{\n}\n"}, False),
 ]
 
 
