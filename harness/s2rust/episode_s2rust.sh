@@ -329,8 +329,14 @@ printf '%s' "$msgs" | grep -Eio "$quota_rx|$auth_rx" | head -3 | tr '\n' ' ' > "
 # ── 9. THE CHECK. ⚠️ read off the file the AGENT wrote (amendment 14's law) ──────────────────────────────
 cp "$EP/repo/task.rs" "$ST/agent_task.rs" 2>/dev/null
 python3 "$S2R/extract_verus.py" "$EP/repo/task.rs" > "$ST/bodies.json" 2>"$ST/extract.err" || { : > "$ST/bodies.json"; term="${term}+NO_BODIES"; }
+# ⛔ THE TERMINATION IS PASSED TO THE CHECKER so a body captured mid-kill is not scored as a verdict.
+# `ep-ecc1a8ee` was killed by the token watchdog after 6 referee calls and scored SCREEN on two `assume(`
+# in the helpers region — ordinary proof development (assume a lemma, discharge it later) convicted as
+# cheating because the agent never got to remove it. A HALT IS NOT A FAIL, and that has to bind where the
+# verdict is written.
 BENCH="$BENCH" python3 "$S2R/check_verus.py" --frozen "$FZ" --agent-file "$EP/repo/task.rs" \
    --verus "$VERUS_ROOT/verus" --lynette "$LYNETTE_BIN" --rlimit "$RLIMIT" --seed "$SEED" \
+   --termination "$term" \
    --out "$ST/check.json" > "$ST/check.stdout" 2> "$ST/check.stderr"
 ccrc=$?; [ "$ccrc" = 2 ] && log "CHECK HARNESS rc=$ccrc (see check.stderr)"
 [ -s "$ST/check.json" ] && python3 -c "import json;json.load(open('$ST/check.json'))" 2>/dev/null || { : > "$ST/check.json"; term="HARNESS_ERROR(check:$term)"; }

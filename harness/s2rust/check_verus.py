@@ -176,6 +176,12 @@ def referee(verus, path, cwd, rlimit, seed, timeout, extra=(), fenced=True, benc
                 seconds=round(time.time() - t0, 1))
 
 
+# Terminations that are HALTS, not results. The token stop is registered as "a HALT never a FAIL"
+# (amendment 14's rider); a wall-clock kill is the same shape. A body captured mid-iteration is WORK IN
+# PROGRESS, and scoring it convicts the agent of scaffolding it had not yet removed.
+HALT_TERMINATIONS = ("TOKEN_CEILING", "WALLCLOCK")
+
+
 def classify(r, timeout_hit):
     if timeout_hit:
         return "TIMEOUT"
@@ -202,6 +208,8 @@ def main():
     # file both ways to prove the fence changes no verdict. It is never in a scored argv, and `check.json`
     # records `fenced` per run so a scored record can be read back and audited for it.
     ap.add_argument("--no-fence", action="store_true")
+    # the episode's termination, so the checker can refuse to score a body captured mid-kill
+    ap.add_argument("--termination", default="")
     a, _ = ap.parse_known_args()
     if not (a.frozen and a.agent_file and a.verus):
         sys.exit(__doc__)
@@ -282,6 +290,21 @@ def main():
 
 
 def finish(out, a):
+    # ⛔⛔ A HALTED EPISODE MUST NOT CARRY A SCORED CLASS. Measured on `ep-ecc1a8ee` (a0, AC, opus-5): the
+    # episode was killed by the TOKEN_CEILING watchdog after 6 referee calls, and the checker then scored the
+    # file as it stood — `SCREEN`, on `assume(@19` and `assume(@21` in the helpers region. That is ordinary
+    # proof development: assume a lemma, discharge it later. The agent was mid-iteration and was convicted of
+    # cheating for work it had not finished removing.
+    #   ⇒ 🔑 A CLASS COMPUTED ON A KILLED EPISODE CONVICTS THE AGENT OF ITS WORK IN PROGRESS. The token stop
+    #     is registered as "a HALT never a FAIL", and that has to be enforced where the verdict is WRITTEN,
+    #     not only stated in the rider — a reader of the manifest sees `SCREEN` and has no way to know the
+    #     body was a snapshot of an interrupted edit.
+    # The diagnostics are KEPT (they are the only record of what the agent had reached); only the scored
+    # class is replaced, and `halted` says why.
+    if a.termination and a.termination.split("(")[0] in HALT_TERMINATIONS:
+        out["class_at_halt"] = out.get("class")
+        out["class"] = "HALT"
+        out["halted"] = a.termination
     out["passed"] = out["class"] == "PASS"
     text = json.dumps(out, indent=1)
     if a.out:
