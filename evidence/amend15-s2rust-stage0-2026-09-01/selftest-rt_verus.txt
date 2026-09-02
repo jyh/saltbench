@@ -1,0 +1,14 @@
+--- RED ARMS: the fence must refuse every argument list but one ---
+ok   no arguments (rc=64)
+ok   wrong verb (rc=64)
+ok   right verb, wrong file (rc=64)
+ok   extra argument (rc=64)
+ok   an arm smuggling --no-cheating (rc=64)
+ok   an arm smuggling --no-verify (rc=64)
+ok   shell string form (Lean rt's idiom) (rc=64)
+--- GREEN ARM: the one accepted command actually runs the referee ---
+ok   verus task.rs on a valid file (rc=0)
+--- the log records both outcomes ---
+ok   .rt.log carries REFUSED and END rc=0
+
+selftest_rt_verus: 9 arms, 0 failed

@@ -1,0 +1,9 @@
+ok   a clean shipped root                                 expect_leak=False got=False
+ok   a planted ground_truth key                           expect_leak=True  got=True
+ok   the key NESTED two levels down                       expect_leak=True  got=True
+ok   a LEAK UNDER A HARMLESS FILENAME                     expect_leak=True  got=True
+ok   the benchmark's task file by name                    expect_leak=True  got=True
+ok   a seat-side gt/ directory                            expect_leak=True  got=True
+ok   a .rs file MENTIONING ground_truth in a comment      expect_leak=False got=False
+
+gt_leak_check selftest: 7 arms, 0 failed
