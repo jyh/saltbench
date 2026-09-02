@@ -99,3 +99,75 @@ rank task-3  (opus PASSED in 26 calls)
   opus    ep-a2f50c0e   calls=26  rt_calls=5  rt_rc0=3   PASS           verification results:: 2 verified, 0 errors
   sonnet  ep-f1b92367   calls=40  rt_calls=0  rt_rc0=0   VERIFY_FAIL    verification results:: 0 verified, 1 errors
 ```
+
+---
+
+## AMENDMENT — THE 120-TURN DISCRIMINATOR **PASSED**, AND IT REFUTES THIS FILE'S OWN READING
+
+*Appended on the helm's 10:1x ruling, which authorised exactly this episode: ONE, `MAX_TURNS=120`,
+`a0`, Sonnet, on rank task-2, bounded at 30M metered or 60 min. Blocks below are verbatim tool output.*
+
+```
+opus  @40  ep-dd13ed30   DONE             PASS         calls=23   cap=40   rt=1/1 wall=307   metered=957,722     verification results:: 9 verified, 0 errors
+sonnet@40  ep-c2300e39   ROUNDS_EXHAUSTED VERIFY_FAIL  calls=40   cap=40   rt=1/0 wall=768   metered=3,051,144   verification results:: 0 verified, 1 errors
+sonnet@120 ep-5d3d567c   DONE             PASS         calls=79   cap=120  rt=2/1 wall=1071  metered=8,375,623   verification results:: 10 verified, 0 errors
+
+integrity of the 120-turn PASS, at the artifact:
+   check_screen_violations          []
+   check_helpers_shape_violations   []
+   check_lynette_rc                 0
+   check_count_guard                {"admit()": [0, 0], "assume(": [0, 0], "#[verifier::external_body]": [10, 10], "#[verifier::admit]": [0, 0], "
+   check_rlimit                     250
+   check_passed                     true
+   void                             false
+   escape_unblocked                 []
+   model_requested                  "claude-sonnet-5"
+```
+
+### The verdict
+
+**Sonnet PASSED the task it failed at 40 turns** — cleanly: `screen []`, `helpers []`, `lynette_rc 0`,
+count guard unchanged (`external_body` 10 → 10, `admit()`/`assume(` 0 → 0), `rlimit` inside budget, `void
+false`, no escape, `10 verified, 0 errors`. It took **79 calls** — beyond the 40 cap, comfortably inside 120
+— and **8,375,623** tokens against the 30M bound.
+
+⇒ **THE CAP WAS BINDING.** By the helm's rule: **the 26-episode read at `MAX_TURNS=40` DOES NOT RUN** — it
+would have been a cap measurement — and a read at 120 is a Captain-scale spend the helm presents, not fires.
+
+### ⛔ THE READING THIS FILE PUBLISHED WAS WRONG, AND THE HELM ADOPTED IT INTO THE ROW HEADER
+
+The section above concluded, from `0 verified, 1 errors` at 40/40, that *"the cap did not cut short an
+episode that was about to succeed; it stopped three that had not started succeeding."* **That inference is
+refuted by this episode.** The same task, the same tier, the same agent: 0 verified at turn 40, and a
+complete verified proof by turn 79.
+
+> 🔑 **IN A VERIFIER, "0 VERIFIED" IS NOT A DISTANCE.** A proof obligation is discharged or it is not, so an
+> incomplete proof reports **0 until the moment it reports all of them**. Opus's `8 verified, 1 errors` **is**
+> a distance — it says one obligation short. Sonnet's `0 verified` said nothing at all, and I read it as
+> saying the maximum.
+> 🔑 **A PARTIAL COUNT MEASURES DISTANCE; A ZERO COUNT MEASURES NOTHING.** I treated an absent measurement as
+> an extreme measurement.
+
+📌 **THE LAW I BANKED FROM IT SURVIVES; MY USE OF IT DOES NOT.** *Score the censored state, not only the
+censoring rate* is still right — the state is exactly where Opus's "one obligation short" lives. What was
+wrong is that I scored a state that carried **no information** and concluded from its silence.
+⇒ 🔑 **SCORING THE STATE ONLY HELPS WHEN THE STATE IS INFORMATIVE — AND A ZERO IS NOT A SMALL NUMBER, IT IS
+AN ABSENT ONE.**
+
+📌 **AND THE CENSORING RATE — THE THING I TALKED MYSELF OUT OF — WAS RIGHT ALL ALONG.** G2 fired at 3 of 3
+and meant precisely what it said. My "free measurement" overturned a correct reading with a confident
+inference from a null field. *The cheap check that reverses an expensive conclusion deserves the same
+scepticism as the conclusion.*
+
+### What the numbers now say about a read at 120
+
+| | measured | |
+|---|---|---|
+| Sonnet@120, one PASS | **8,375,623** tokens, 79 calls, 1071 s | n = **1** |
+| vs Opus per-episode (22,424,889 / 10) | **3.74×** tokens ⇒ **1.71×** the per-episode QUOTA | still **inside** G1's 2.0× |
+| 26 episodes at that rate | ≈ **218M** tokens ≈ **11.1 of the 25 weekly points** | under the hard ceiling |
+
+⚠️ **AND 218M IS A LOWER BOUND, FOR THE THIRD TIME IN THIS FILE'S OWN PATTERN.** It is priced off a single
+episode that **PASSED at 79 of 120 calls**, on the task **Opus found easiest of the three** (23 calls). An
+episode that runs to 120 costs more, and the band's harder tasks cost more again. *A price taken from the
+cheapest observed outcome is not a price.*
