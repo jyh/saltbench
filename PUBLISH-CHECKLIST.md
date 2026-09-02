@@ -274,3 +274,31 @@ No number in the paper moved. The S2-Rust hard band stays 9 of 10; the S2-Lean n
 every arm. The S2-Lean episodes' per-episode audit counts (unblocked reads of a fenced path through the
 file tool) are OWED by the archive owner before any sentence stronger than "the layer was absent" can be
 written about them; asked on the bus with this pass.
+
+## (i) The lower-tier row, written once from the landed result files (2026-09-02, the same day)
+
+The paper's section 6 had held a slot for a two-tier read that was in flight. The read was withdrawn
+and the withdrawal is itself the result, so the slot is now filled from two files in this tree rather
+than left as a promise. Numbers copied from those files' verbatim tool-output blocks; none retyped
+from a message.
+
+| where | change | source |
+|---|---|---|
+| `paper/saltbench-v1.tex` section 6 item 1 | rewritten: the paired three-task quote at a 40-call cap (aggregate paired token ratio 1.55, per-episode median 2.06, lower tier at 0.71 of the higher tier's per-episode quota, 0 of 3 passing against 2 of 3, all three at the cap), then one episode at a 120-call cap as a three-line table (opus 40/23/957,722/307/9 verified; sonnet 40/40/3,051,144/768/0 verified; sonnet 120/79/8,375,623/1071/10 verified), the clean-gate list for the pass, the withdrawal of the 13-id read at 40 calls, and the read at 120 priced as a lower bound at roughly 218 million tokens for 26 episodes | `RESULT-DT-sonnet-probe-2026-09-02.md`, the `dt_quote.py` block and the appended 120-turn amendment |
+| `paper/saltbench-v1.tex` section 4.4, the cap caveat | one sentence: the cap cutting an episode that would otherwise have passed is now evidenced directly, not inferred from the shoulder | same |
+| `paper/saltbench-v1.tex` section 5, instrument finding 1 | extended: recording the censored state does not rescue the estimate on its own, because under a verifier an obligation is discharged or it is not, so a partial count is a distance and a zero count is an absent measurement | same |
+| `paper/saltbench-v1.tex` section 2, the fence | the void escape episode is no longer described as belonging to a probe "still in flight"; it points at section 6 | same |
+| `paper/saltbench-v1.tex` section 6 item 3 | the conditional second version-2 population resolved: the scout returned no (5 of 113 tasks are Rust, below the registered threshold of 8 before any screening; 0 of the 5 survived the screen) | `RESULT-DY-deepswe-scout-2026-09-02.md` sections 3, 4 and 5 |
+| `README.md` index | the amendment row extended to 17; the two new result files listed | the tree |
+| the branch | `public-v1` rebased past master `78c6e3a` (the DT quote, the DY scout, the 120-turn discriminator), no conflict | `git rebase` |
+
+No number already in the paper moved. The S2-Rust hard band stays 9 of 10; the S2-Lean null stays
+8 of 15 on every arm.
+
+NOT taken into the paper, and named so the omission is deliberate rather than an oversight: the DY
+result file also carries a third party's published figures for the two tiers on its own 113 tasks.
+Those are someone else's measurement on a population this benchmark does not run, and quoting them
+beside our own would blur the line the whole protocol is built on.
+
+The two-tier comparison itself remains OPEN and is a version-2 question. A read at a 120-call cap is
+a spend the owner decides, not this seat.

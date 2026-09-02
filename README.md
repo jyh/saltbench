@@ -18,7 +18,9 @@ repository it was copied from.
 | `PRE-REGISTRATION.md` | wave 1 on SWE-bench Verified, frozen before any model call (the substrate was later abandoned as saturated; the datum stays) |
 | `SCOUT-STAGE0.md`, `RESULTS-stage0-2026-08-29.md` | the S1 control protocol and its stage-0 result |
 | `SCOUT-S2LEAN-STAGE0.md` | the S2-Lean protocol on CLEVER Task 1, frozen 2026-08-29, with amendments 1 to 10 and their results appended in place |
-| `AMENDMENT-11` to `AMENDMENT-16`, `RESULT-*` | the later S2-Lean and S2-Rust amendments, each frozen before its first call, and their results |
+| `AMENDMENT-11` to `AMENDMENT-17`, `RESULT-*` | the later S2-Lean and S2-Rust amendments, each frozen before its first call, and their results |
+| `RESULT-DT-sonnet-probe-2026-09-02.md` | the lower-tier probe on the hard band: the paired quote at a 40-call cap, and the appended episode at a 120-call cap that showed the cap was binding |
+| `RESULT-DY-deepswe-scout-2026-09-02.md` | the scout for a second version-2 population, verdict no, run at zero model tokens |
 | `TRIAGE-B-failures-2026-09-01.md` | the blind triage of every failed S2-Lean stage-B cell; problem 18's stage C is machine-checked unsatisfiable |
 | `AUDIT-FINDING-s2lean-2026-08-29.md` | the audit of the benchmark's reference checker |
 | `harness/` | the harness: episode drivers, fences, checkers, morning-line instruments, self-tests; `harness/HASHES.txt` pins everything |
