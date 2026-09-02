@@ -168,3 +168,64 @@ happened, by a mechanism I had named as unlikely. **n=1 and VOID, so it prices n
 `ep-c392a7ac` **stands in the record as VOID — unscorable, the detector's verdict, not a re-score.** The probe
 RESUMES at **n = 3**, with a **fresh episode for draw rank 1**: replacing a VOID is not selection. The three
 ids, the draw order, the registration and the gates G1/G2 are **unchanged**; only the instrument moved.
+
+---
+
+## §9 · ADDENDUM, SAME DAY — **§1–§8 ABOVE NAME THE RIGHT PATH AND THE WRONG LAYER**
+
+*Appended, not edited in. Everything above stands as written and as driven; this section corrects what it
+concluded.*
+
+**The repair in §3 was installed and then DRIVEN WITH A CANARY, and the canary escaped.** With the config dir
+correctly present in `sandbox.filesystem.denyRead` — 11 entries, path containment verified at the rendered
+file — a throwaway agent was asked to read `$CFG/memory/MEMORY.md` and **printed the canary verbatim.**
+
+> 🔑 **A DENY LIST IS ONLY AS BROAD AS THE LAYER THAT ENFORCES IT.**
+> `sandbox.filesystem.denyRead` fences **sandboxed subprocesses** — Bash and whatever it execs. The `Read`
+> **tool** is executed by the CLI itself and never enters that sandbox.
+
+This is the true explanation of the incident's signature. §1 read *"the same path refused one way and served
+another"* as an inconsistency to be fixed by completing the list. It was not: it was **two enforcement
+layers**, and the list was only ever the subprocess one.
+
+> 🔑 **AND THE PROBE THAT MISSED IT SPOKE THE WRONG LANGUAGE.** S2-Lean's smoke gate certified *"harness/
+> credential reads denied"* through a Lean `IO.Process.run` and through Bash — both sandboxed. A probe
+> written in the sandbox's language cannot see a hole in the layer above it, and reads afterwards as though
+> the agent itself were fenced.
+
+⚠️ **SCOPE — BOTH SUBSTRATES, THE WHOLE CAMPAIGN.** `settings.s2.json` and `settings.s2rust.template.json`
+both carried `permissions: null`. **No scored episode of this campaign has had its agent TOOLS fenced by
+path.** What *was* in force and is separately evidenced: the subprocess sandbox, the empty network allowlist,
+the `Bash|Monitor` hook, the GT leak check, and the audit layer that records tool reads — and it is that audit
+layer which establishes the Opus P0 read as clean (**15/15 `void=False`, `escape_unblocked=0`**). The one
+observed escape is the voided Sonnet episode. **`P0 = 9 of 10` stands.**
+
+**THE ACTUAL REPAIR:** the rendered fence now carries `permissions.deny` **derived from the same
+`deny_read_paths()` list** — 11 paths × 6 tools × 2 globs = **132 rules** beside the 11 sandbox paths, so the
+two layers cannot drift. Tools are **named, not enumerated from what exists today**: a rule for an absent tool
+is inert (driven) and a tool that appears later arrives already fenced.
+
+**DRIVEN, BOTH ARMS, ON THE STUDIO.** RED (no `permissions.deny`): the canary **ESCAPED** into the agent's
+final message — the test discriminates. GREEN: final message **`UNREADABLE`**, canary in `result.json` **0**,
+in the transcript **0**. Arms A15a/b/c added (fence suite **26 → 29**); A15a asserts every sandbox-denied path
+also carries a `Read(...)` rule, so the layers cannot drift.
+
+### Two more of my own defects, inside the probes written to prove a fence
+
+- **`grep -c X f || echo 0` prints TWO lines on no-match** (grep emits `0` *and* exits 1), so `"0\n0" != "0"`
+  and a **BLOCKED result reported as ESCAPED**. Third instance of this shape in one day at this seat: I
+  diagnosed it in the run driver and then wrote it into two probes of my own.
+  ⇒ **Branch on grep's exit code, never on a count you had to rescue.**
+- **My first bypass probe measured the model, not the fence.** It *told* the agent Read was denied and asked
+  it to route around; the agent made **zero tool calls** and declined on its own judgment, so the canary
+  stayed in and the arm read BLOCKED.
+  ⇒ 🔑 **A REFUSAL BY THE SUBJECT IS NOT A REFUSAL BY THE INSTRUMENT** — an adversarially-worded probe is the
+  likeliest of all probes to be answered by the subject's judgment instead of by the thing under test.
+
+📌 **HELM RULING 09:24:** the §3 divergence is **upheld and the "derive, no literals" instruction overruled by
+it** — the run's own roots are derived; foreign credential trees stay as literals with their reason.
+
+📌 **A GAP NAMED AND NOT CLOSED:** nothing tracked *writes* `$CFG/settings.json` on the Studio. The sync ships
+the harness; the episode only *checks* the fence and refuses on drift (fail-closed, which is why this cost
+nothing). ⇒ **a fence checked by a tool and installed by a hand has an install step nobody will remember.**
+First item after the read.
