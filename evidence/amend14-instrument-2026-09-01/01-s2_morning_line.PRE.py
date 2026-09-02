@@ -230,12 +230,6 @@ for stage, label, dom in (("A", "spec compiles", D), ("B", "ISOMORPHISM PROVEN (
 def cells(pred): return [(pid(t), s, a) for (t, s, a), m in sorted(scor.items()) if (t, s, a) not in orphan and pred(m)]
 print("  KERNEL_REJECTED: %s" % cells(lambda m: klass(m) == "KERNEL_REJECTED" and not m.get("passed")))
 print("  STATEMENT_ALTERED: %s" % [(x, (scor[("problem_%d" % x[0], x[1], x[2])].get("check") or {}).get("statement_diffs")) for x in cells(lambda m: klass(m) == "STATEMENT_ALTERED" and not m.get("passed"))])
-# amendment 14: a class the morning line cannot print is a class the campaign will not see. SCAFFOLD_DAMAGED
-# is reported with the sections that were lost, so the line distinguishes "the agent removed the harness's
-# section markers" from "the agent honestly admitted the gap" — which AXIOMS_FAIL alone cannot.
-print("  SCAFFOLD_DAMAGED (marker pairs missing; the harness substituted its frozen default): %s" % [
-    (x, (scor[("problem_%d" % x[0], x[1], x[2])].get("check") or {}).get("scaffold_missing"))
-    for x in cells(lambda m: klass(m) == "SCAFFOLD_DAMAGED" and not m.get("passed"))])
 print("  PROVENANCE (stage-B generated_spec != scored stage-A body, AP-4): %s" % cells(lambda m: klass(m) == "PROVENANCE"))
 print("  axiom-only failures (AXIOMS_FAIL: compiled, kernel replay ok, statements identical, axioms outside the allowlist): %s" % [
     (x, (scor[("problem_%d" % x[0], x[1], x[2])].get("check") or {}).get("axioms")) for x in cells(lambda m: klass(m) == "AXIOMS_FAIL" and not m.get("passed"))])
@@ -248,33 +242,11 @@ print("  rows for problems NOT in the draw (excluded or beyond k; not counted): 
 p_all = [t for t in D if proven((t, "B", "a0"))]; p_u = [t for t in U if proven((t, "B", "a0"))]; p_nl = [t for t in DNL if proven((t, "B", "a0"))]
 b_all, b_u, b_nl = band(len(p_all), len(D)), band(len(p_u), len(U)), band(len(p_nl), len(DNL))
 unres = [t for t in D if not resolved((t, "B", "a0"))]
-# ⛔ "NO DATA" IS NOT 0 (desk word 2026-09-01, on a finding routed 09/01 18:34). At a state root where stage B
-# never ran for a0 — a stage-C-only root is the live case — the numerator is an ABSENCE while the denominator is
-# still the drawn set, so `band(0, len(D))` returns "HOLD (<20%: a floor)": A REGISTERED DECISION PRINTED OFF A
-# STAGE THAT NEVER RAN, directly above the stage-C block that DID run. The PROVISIONAL prefix already fired here
-# and did not save it — it qualified the reading while the reading still named a band.
-#   ⇒ nothing resolved  ⇒ NOT RUN, and NO BAND IS PRINTED AT ALL (an unread band cannot be misquoted).
-#     partly resolved   ⇒ unchanged PROVISIONAL behaviour: that is an INCOMPLETE measurement, not an absent one,
-#                          and the distinction is the whole point — this repair must not silence a partial read.
-notrun = len(unres) == len(D)
-if notrun:
-    # ⛔ this message deliberately does NOT spell out the band it is refusing to print. The defect being
-    #    repaired is that a band string gets QUOTED out of this block; a line explaining which band it would
-    #    have printed re-creates exactly that surface, and it is greppable by the same reader. Caught by this
-    #    repair's own selftest arm ("NO band is printed anywhere in the F3 block"), which failed on my first cut.
-    print("  F3 (plain arm a0, stage B, proven over the k=%d drawn): NOT RUN AT THIS ROOT — 0 of %d drawn problems "
-          "carry a stage-B a0 scored row or synthetic landing, so there is no rate and NO BAND IS COMPUTED: "
-          "'no data' is not 0." % (len(D), len(D)))
-    print("     unflagged drawn subset U (n=%d, ids %s): NOT RUN" % (len(U), ids(U)))
-    print("     without nl_leaked %s (n=%d): NOT RUN" % (sorted(NLK), len(DNL)))
-    differ = False
-    print("     bands all-drawn vs unflagged: NOT COMPARED (stage B a0 never ran at this root)")
-else:
-    print("  F3 (plain arm a0, stage B, proven over the k=%d drawn): %s ⇒ %s   proven ids: %s" % (len(D), rate(len(p_all), len(D)), b_all, ids(p_all)))
-    print("     unflagged drawn subset U (n=%d, ids %s): %s ⇒ %s   proven ids: %s" % (len(U), ids(U), rate(len(p_u), len(U)), b_u, ids(p_u)))
-    print("     without nl_leaked %s (n=%d): %s ⇒ %s" % (sorted(NLK), len(DNL), rate(len(p_nl), len(DNL)), b_nl))
-    differ = b_all != b_u
-    print("     bands all-drawn vs unflagged: %s" % ("DIFFER ⇒ HOLD (F5: fallback row)" if differ else "agree"))
+print("  F3 (plain arm a0, stage B, proven over the k=%d drawn): %s ⇒ %s   proven ids: %s" % (len(D), rate(len(p_all), len(D)), b_all, ids(p_all)))
+print("     unflagged drawn subset U (n=%d, ids %s): %s ⇒ %s   proven ids: %s" % (len(U), ids(U), rate(len(p_u), len(U)), b_u, ids(p_u)))
+print("     without nl_leaked %s (n=%d): %s ⇒ %s" % (sorted(NLK), len(DNL), rate(len(p_nl), len(DNL)), b_nl))
+differ = b_all != b_u
+print("     bands all-drawn vs unflagged: %s" % ("DIFFER ⇒ HOLD (F5: fallback row)" if differ else "agree"))
 print("     resolution (B, a0): %d/%d drawn problems resolved (scored row or synthetic landing)%s" % (len(D) - len(unres), len(D), "" if not unres else "; UNRESOLVED %s ⇒ F3 NOT YET READABLE (PROVISIONAL)" % ids(unres)))
 rc = recall("a0"); known = [r for r in rc if r[1] is not None]; sus = [r for r in known if r[3]]
 f_high = (len(sus) / len(known)) if known else None
@@ -287,21 +259,13 @@ if len(known) < len(rc): print("     WARNING: %d passes have no bodies on disk (
 for _a in ARMS[1:]:
     rca = recall(_a)
     if rca: print("     (arm %s [%s], for information: passes %d, suspect %d)" % (_a, role(_a), len(rca), sum(1 for r in rca if r[3])))
-if notrun: reading = "NOT RUN (stage B, arm a0, at this root) — F3 is UNREAD, which is not the same as HELD"
-elif f_high is not None and f_high >= 0.5: reading = "RECALL-SUSPECT ⇒ HOLD for council (F5); band not read"
+if f_high is not None and f_high >= 0.5: reading = "RECALL-SUSPECT ⇒ HOLD for council (F5); band not read"
 elif differ: reading = "HOLD (F5: all-drawn band %s ≠ unflagged band %s)" % (b_all.split(" ")[0], b_u.split(" ")[0])
 else: reading = b_all
-# the PROVISIONAL prefix is for a PARTIAL read; a NOT-RUN reading is not a provisional anything.
-print("  READING: %s%s" % ("PROVISIONAL (F3 NOT YET READABLE) — " if (unres and not notrun) else "", reading))
+print("  READING: %s%s" % ("PROVISIONAL (F3 NOT YET READABLE) — " if unres else "", reading))
 caps = {}
 for stage in ("A", "B", "C"):
     ms = [metered(m) for (t, s, a), m in scor.items() if s == stage and a == "a0" and (t, s, a) not in orphan and base(m["termination"]) in ("DONE", "ROUNDS_EXHAUSTED") and metered(m)]
     caps[stage] = (pct(ms, .9), len(ms))
 print("  p90 the cap rule consumes (D16, per stage, a0 DONE|ROUNDS_EXHAUSTED): %s" % " ".join("%s=%s (n=%d)" % (s, v[0], v[1]) for s, v in caps.items()))
-# amendment 14 §7 — the PER-EPISODE token stop, DERIVED here rather than typed into an amendment (the 09/01
-# law: a denominator typed into a document is a claim; one computed by the tool is a measurement). The
-# registered multiple is 4×; §7 records why. Printed for every stage so the number a run would enforce is
-# visible BEFORE the run, next to the corner it is built on.
-print("  per-episode TOKEN STOP at the registered 4x (amendment 14 §7; a HALT, never a FAIL): %s" % " ".join(
-    "%s=%s" % (s, (4 * v[0]) if v[0] else None) for s, v in caps.items()))
 print("  no p-value, by design.")

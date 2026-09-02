@@ -1,0 +1,39 @@
+=== controls_gate.py on the FRESH record (live amended checker)
+  ok   assemble.py 11698336484a… matches
+  ok   check.py 006117e11d1b… matches
+  ok   s2audit.lean 2c4a689fc125… matches
+  ok   sandbox_check.sb f0e34eee1433… matches
+  ok   screen.py cc591ca66268… matches
+CONTROLS GATE PASS (/Users/jyh/s2-controls-amend14-clean.json, 5 checked, 0 required)
+
+=== the SAME gate on the OLD landed record — must REFUSE
+  ok   assemble.py 11698336484a… matches
+  ok   sandbox_check.sb f0e34eee1433… matches
+  ok   screen.py cc591ca66268… matches
+REFUSE: CHECKER DRIFT check.py: controls certified 9aa58095579dfc7d… but the live file is 006117e11d1bc4f0…
+REFUSE: CHECKER DRIFT s2audit.lean: controls certified 37ccc2c586ef545b… but the live file is 2c4a689fc1257735…
+CONTROLS GATE REFUSE (/Users/jyh/bench-aw/state/s2-controls.json, 3 checked, 0 required)
+
+=== selftest_check_concurrency RED (pre-change) x3
+     verdict=AXIOMS_FAIL audit_rc=0 retry=None   decoy=KILLED
+SELF-TEST FAIL: the audit's sweep does NOT kill a process it does not own — 1 arm driven (a decoy carrying the shared audit path, one real check.py invocation), deterministic in both directions
+     verdict=AXIOMS_FAIL audit_rc=0 retry=None   decoy=KILLED
+SELF-TEST FAIL: the audit's sweep does NOT kill a process it does not own — 1 arm driven (a decoy carrying the shared audit path, one real check.py invocation), deterministic in both directions
+     verdict=AXIOMS_FAIL audit_rc=0 retry=None   decoy=KILLED
+SELF-TEST FAIL: the audit's sweep does NOT kill a process it does not own — 1 arm driven (a decoy carrying the shared audit path, one real check.py invocation), deterministic in both directions
+
+=== selftest_check_concurrency GREEN x3
+     verdict=AXIOMS_FAIL audit_rc=0 retry=None   decoy=ALIVE
+SELF-TEST PASS — 1 arm driven (a decoy carrying the shared audit path, one real check.py invocation), deterministic in both directions
+     verdict=AXIOMS_FAIL audit_rc=0 retry=None   decoy=ALIVE
+SELF-TEST PASS — 1 arm driven (a decoy carrying the shared audit path, one real check.py invocation), deterministic in both directions
+     verdict=AXIOMS_FAIL audit_rc=0 retry=None   decoy=ALIVE
+SELF-TEST PASS — 1 arm driven (a decoy carrying the shared audit path, one real check.py invocation), deterministic in both directions
+
+=== selftest_scaffold x2
+SELF-TEST PASS — 4 arms driven (1 control, 1 damaged, 1 empty-section, 1 unknown-field), every arm a SUBPROCESS running the real check.py on the real argv
+SELF-TEST PASS — 4 arms driven (1 control, 1 damaged, 1 empty-section, 1 unknown-field), every arm a SUBPROCESS running the real check.py on the real argv
+
+=== selftest_s2audit x2
+SELF-TEST PASS — 4 arms driven (1 specimen, 2 alteration, 1 no-op control), every arm a real lean compile under the fence and a subprocess audit on the real argv
+SELF-TEST PASS — 4 arms driven (1 specimen, 2 alteration, 1 no-op control), every arm a real lean compile under the fence and a subprocess audit on the real argv

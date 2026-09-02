@@ -49,6 +49,32 @@ made them agree**, which is a sharper statement than either rate.
 
 ## §3 · ⛔⛔ THE INTEGRITY EVENT — `STATEMENT_ALTERED` ON `112` IS A **FALSE POSITIVE**, AND I PROVED IT
 
+> ⛔⛔ **CORRECTION APPENDED 2026-09-01 (amendment 14), NOT EDITED IN. THE CONCLUSION OF THIS SECTION HOLDS;
+> ITS MECHANISM IS WRONG.** `112 / a1` **is** a false positive, the gate **does** fail closed, and
+> `P1 = 9/15` and the `{PASS 9, AXIOMS_FAIL 6}` taxonomy all stand. But **the agent did NOT delete the section
+> markers.** The 61-line file grepped below is the **ASSEMBLED `canonical.lean`** (sha256 `d1a3d677411de26e…`),
+> which `assemble.py` composes from `frozen.json` + `bodies.json` and which **never carries markers for any
+> episode, passing or failing**. The agent's own file, `ep-2714f8d2/eptree/repo/task.lean`, carries **12
+> markers, all pairs intact**, and `bodies.json` records `_present = {spec_isomorphism_proof: true,
+> iso_helper_lemmas: true}`. Swept over the whole record: **256/256 `bodies.json` carry `_present` and ZERO
+> have a missing pair — no agent in this campaign has ever damaged the scaffold.**
+>
+> **The real cause, proven by compiling both sides under the harness's own fence:** Lean caches auxiliary
+> `match` declarations per module and names each after whichever declaration elaborated it *first*. The
+> agent's `generated_spec` destructures a `String × Bool` before `problem_spec` does, so the canonical mints
+> `generated_spec.match_1` and `problem_spec` **reuses** it, while the pristine (`generated_spec := sorry`)
+> mints `problem_spec.match_1`. The two `problem_spec` values use 31 constants each and **differ in exactly
+> one: the matcher's name.** `s2audit.lean` compared them with a structural `Expr ==`.
+> ⇒ ***A structural comparison of a frozen declaration's elaborated value is not a comparison of that
+> declaration — it is a comparison of the whole module.*** The frozen TEXT was never at risk: `assemble.py`
+> splices `fz["problem_spec"]` verbatim.
+>
+> ⇒ The paragraph below reading *"THE AGENT DELETED THE HARNESS'S SECTION MARKERS"* is **FALSE and is left
+> standing as the specimen**: it was measured at a real file with a real sha, and that is exactly why nothing
+> downstream caught it. ***"Verified at the artifact" names a habit, not a guarantee — the question is always
+> which artifact, and who wrote it.*** See `AMENDMENT-14-instrument-2026-09-01.md`.
+
+
 The instrument reports `STATEMENT_ALTERED: [((112, 'B', 'a1'), ['problem_spec'])]` — the campaign's **first
 statement-immutability failure**. Read at face value it says *the agent tampered with the reference
 specification.* **It did not.**

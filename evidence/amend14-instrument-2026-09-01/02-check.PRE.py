@@ -15,8 +15,7 @@ AGENT'S ELABORATION. Runs on the Studio, no model. Steps:
               Imports.AllImports environment, Expr comparison of every frozen statement's type (and
               problem_spec's value) against the pristine olean, axiom collection over the replayed environment.
 passed = screen ok ∧ compiled ∧ replay ok ∧ statements identical ∧ axioms ok.
-class  = the first failing gate: SCREEN | TIMEOUT | COMPILE | KERNEL_REJECTED | STATEMENT_ALTERED |
-         SCAFFOLD_DAMAGED | AXIOMS_FAIL
+class  = the first failing gate: SCREEN | TIMEOUT | COMPILE | KERNEL_REJECTED | STATEMENT_ALTERED | AXIOMS_FAIL
          | HARNESS (the checker itself could not run: bad args, no sandbox-exec, pristine does not compile,
          audit unreadable) | PASS.
 A screened body is NOT compiled (its meta-code never runs); --no-screen (test flag, controls only) records the
@@ -104,24 +103,6 @@ def check(a, res):
         bd["generated_spec_body"] = body
         res["a_bodies_file_sha256"] = sha_f(a.a_bodies)
         for k in ("a_episode", "a_bodies_sha256", "a_termination", "a_passed", "a_view_sha256"): res[k] = ab.get(k)
-    # 1a. SCAFFOLD (amendment 14, 2026-09-01). `extract.py` has always computed `_present` — which of the
-    # stage's `-- start_def X` / `-- end_def X` pairs it actually FOUND — and until now NOTHING READ IT
-    # (`grep -n _present harness/s2lean/*` returned one line: its definition). An agent that deletes the
-    # harness's section markers therefore yields empty bodies, `assemble.py` substitutes the frozen `sorry`
-    # defaults, the file compiles, and the episode scores **AXIOMS_FAIL with `sorryAx` — byte-indistinguishable
-    # from an agent that honestly admitted the gap.** A DEAD FIELD IS NOT A CHEAP FIELD: it is a measurement
-    # taken, paid for, and then discarded at the point of use.
-    #   ⛔ `_present` is a MARKER-PAIR fact, never a content fact: an empty section with intact markers is
-    #      legitimate (`iso_helper_lemmas` is empty in most episodes) and is NOT damage.
-    #   ⛔ A bodies.json with no `_present` key at all is UNKNOWN, never damaged — a checker must not convict
-    #      an episode on a field its own extractor did not write.
-    #   📌 Stage B's `generated_spec_body` is MERGED from --a-bodies (D5) and is not extracted from the agent's
-    #      stage-B file, so it is deliberately outside this test: its provenance is checked by AP-4 instead.
-    pres = bd.get("_present")
-    res["scaffold_present"] = pres
-    res["scaffold_missing"] = sorted(k for k, v in pres.items() if not v) if isinstance(pres, dict) else []
-    res["scaffold_damaged"] = bool(res["scaffold_missing"])
-    res["scaffold_unknown"] = pres is None
     # 1. screen
     res["screen"] = scr.screen_bodies(bd); res["screen_enforced"] = not a.no_screen
     # sources. `art` = the ARCHIVE dir (the harness writes here, unfenced); `cwork` = a FRESH isolated dir the
@@ -183,23 +164,11 @@ def check(a, res):
         aol = os.path.join(cwork, "a_canonical.olean"); shutil.copy(a.a_olean, aol)
     elif a.a_olean:
         res["a_olean_missing"] = a.a_olean
-    # ⛔ THE BELT PATTERN MUST BE UNIQUE TO THIS INVOCATION (amendment 14, 2026-09-01). `run_fenced` sweeps
-    # `pgrep -f <belt>` and SIGKILLs every match, so a belt that names a SHARED file kills other people's
-    # processes. The compile and pristine steps pass per-invocation source paths (`ccanon`, `pfile`); the audit
-    # step passed `a.audit` — `<harness>/s2audit.lean`, IDENTICAL FOR EVERY INVOCATION. Two `check.py` runs
-    # against the same harness dir therefore SIGKILL each other's audits: measured, staggered by 9 s, the
-    # victim reports `audit_rc = -9`, is retried once by FN-5, is KILLED AGAIN by the same sweep, and scores
-    # `HARNESS`. It cannot mis-score an episode (it fails loud), but it makes any concurrent checker run
-    # INTERMITTENT — and it is how this amendment's own new gate first failed.
-    #   ⇒ the belt is now `olean`, which lives in this invocation's fresh `cwork` and appears in the audit's
-    #     argv, so it matches this audit and its children and nothing else. Sequential runs are unaffected:
-    #     with one invocation live both patterns select exactly the same processes.
-    abelt = olean
-    arc, aout, awall, _, _ = run_fenced([lean, "--run", a.audit, olean, polean, a.stage, aol], cwork, env, render_profile(template, lean, [cwork]), a.audit_timeout, abelt)
+    arc, aout, awall, _, _ = run_fenced([lean, "--run", a.audit, olean, polean, a.stage, aol], cwork, env, render_profile(template, lean, [cwork]), a.audit_timeout, a.audit)
     # 4a. a transient SIGKILL of the audit (OOM/contention, rc negative and not a timeout) is retried ONCE (FN-5)
     if arc not in (0,) and arc != "TIMEOUT" and isinstance(arc, int) and arc < 0:
         res["audit_retry"] = arc
-        arc, aout, awall, _, _ = run_fenced([lean, "--run", a.audit, olean, polean, a.stage, aol], cwork, env, render_profile(template, lean, [cwork]), a.audit_timeout, abelt)
+        arc, aout, awall, _, _ = run_fenced([lean, "--run", a.audit, olean, polean, a.stage, aol], cwork, env, render_profile(template, lean, [cwork]), a.audit_timeout, a.audit)
     res["audit_rc"], res["audit_wall_s"] = arc, awall
     open(os.path.join(art, "audit.log"), "w").write(aout)
     aj = None
@@ -220,11 +189,6 @@ def check(a, res):
     res["module_constants"] = aj.get("constants")
     if not res["replay_ok"]: res["class"] = "KERNEL_REJECTED"
     elif not res["statements_identical"]: res["class"] = "STATEMENT_ALTERED"
-    # SCAFFOLD_DAMAGED sits BETWEEN the two, and the placement is the whole point of the class. Both FAIL;
-    # only one accuses the agent of tampering with the specification. It pre-empts AXIOMS_FAIL because it
-    # EXPLAINS the sorryAx (the harness substituted the default, the agent never wrote a proof), and it does
-    # NOT pre-empt STATEMENT_ALTERED, which is the stronger accusation and is measured independently.
-    elif res["scaffold_damaged"]: res["class"] = "SCAFFOLD_DAMAGED"
     elif not res["axioms_ok"]: res["class"] = "AXIOMS_FAIL"
     elif res.get("a_body_value_identical") is False: res["class"] = "PROVENANCE"   # AP-4: stage-B generated_spec != the scored stage-A body
     else: res["class"] = "PASS"
@@ -242,7 +206,6 @@ def main():
            "compile_wall_s": None, "log_tail": "", "replay_ok": None, "replay_error": None, "statements_identical": None,
            "statement_diffs": [], "axioms": {}, "axioms_ok": None, "passed": False, "class": "HARNESS",
            "tests_in_file": False, "a_body_value_identical": None, "audit_wall_s": None, "harness_error": None,
-           "scaffold_present": None, "scaffold_missing": [], "scaffold_damaged": False, "scaffold_unknown": True,
            "checker_sha256": {os.path.basename(p): sha_f(p) for p in (__file__, a.audit, a.profile, os.path.join(HERE, "screen.py"), os.path.join(HERE, "assemble.py")) if os.path.exists(p)}}
     try:
         check(a, res)

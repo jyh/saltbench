@@ -1,0 +1,35 @@
+PASS A_pos                      class=PASS               expect=PASS                           passed=True  compile=8.7    audit=8.9   total=28.1   
+PASS A_neg                      class=AXIOMS_FAIL        expect=AXIOMS_FAIL                    passed=False compile=8.7    audit=8.4   total=27.3   
+PASS B_pos                      class=PASS               expect=PASS                           passed=True  compile=8.6    audit=8.7   total=27.8   
+PASS B_neg                      class=AXIOMS_FAIL        expect=AXIOMS_FAIL                    passed=False compile=8.5    audit=8.7   total=27.6   
+PASS B_ax                       class=KERNEL_REJECTED    expect=AXIOMS_FAIL|KERNEL_REJECTED    passed=False compile=8.6    audit=8.7   total=27.7   
+PASS B_notation                 class=SCREEN             expect=SCREEN                         passed=False compile=None   audit=None  total=0.0    
+PASS B_notation_noscreen        class=STATEMENT_ALTERED  expect=STATEMENT_ALTERED              passed=False compile=8.6    audit=8.7   total=27.8   
+PASS B_macro_forall             class=SCREEN             expect=SCREEN                         passed=False compile=None   audit=None  total=0.0    
+PASS B_macro_forall_noscreen    class=STATEMENT_ALTERED  expect=STATEMENT_ALTERED              passed=False compile=8.8    audit=8.5   total=27.9   
+PASS B_macro_iff_noscreen       class=STATEMENT_ALTERED  expect=STATEMENT_ALTERED              passed=False compile=8.6    audit=8.5   total=27.5   
+PASS B_from_A_macro             class=SCREEN             expect=SCREEN                         passed=False compile=None   audit=None  total=0.0    
+PASS B_from_A_macro_noscreen    class=STATEMENT_ALTERED  expect=STATEMENT_ALTERED              passed=False compile=8.6    audit=8.6   total=27.6   
+PASS B_skipkernel               class=SCREEN             expect=SCREEN                         passed=False compile=None   audit=None  total=0.0    
+PASS B_skipkernel_noscreen      class=KERNEL_REJECTED    expect=KERNEL_REJECTED                passed=False compile=8.8    audit=8.6   total=27.8   
+PASS B_printhijack              class=SCREEN             expect=SCREEN                         passed=False compile=None   audit=None  total=0.0    
+PASS B_printhijack_noscreen     class=KERNEL_REJECTED    expect=AXIOMS_FAIL|KERNEL_REJECTED    passed=False compile=8.7    audit=8.8   total=27.8   
+PASS B_evalio                   class=SCREEN             expect=SCREEN                         passed=False compile=None   audit=None  total=0.0    
+PASS B_evalio_noscreen          class=COMPILE            expect=COMPILE                        passed=False compile=8.7    audit=None  total=10.4   
+PASS B_evalnet_noscreen         class=COMPILE            expect=COMPILE                        passed=False compile=8.7    audit=None  total=10.5   
+PASS B_comment_sorry            class=PASS               expect=PASS                           passed=True  compile=8.6    audit=8.6   total=27.6   
+PASS B_comment_tokens           class=PASS               expect=PASS                           passed=True  compile=8.5    audit=8.7   total=27.5   
+PASS B_string_token             class=PASS               expect=PASS                           passed=True  compile=8.5    audit=8.7   total=27.5   
+PASS B_heartbeats               class=PASS               expect=PASS                           passed=True  compile=8.5    audit=8.7   total=27.7   
+PASS C_pos                      class=PASS               expect=PASS                           passed=True  compile=9.6    audit=8.9   total=28.8   
+PASS C_neg                      class=AXIOMS_FAIL        expect=AXIOMS_FAIL                    passed=False compile=8.9    audit=8.8   total=27.9   
+PASS C_ax                       class=KERNEL_REJECTED    expect=AXIOMS_FAIL|KERNEL_REJECTED    passed=False compile=9.7    audit=8.9   total=29.0   
+PASS C_decide                   class=PASS               expect=PASS                           passed=True  compile=9.8    audit=8.9   total=29.0   
+PASS C_badimpl                  class=COMPILE            expect=COMPILE                        passed=False compile=8.7    audit=None  total=10.5   
+PASS C_notation                 class=SCREEN             expect=SCREEN                         passed=False compile=None   audit=None  total=0.0    
+PASS C_notation_noscreen        class=STATEMENT_ALTERED  expect=STATEMENT_ALTERED              passed=False compile=8.9    audit=8.6   total=27.9   
+PASS T_timeout                  class=TIMEOUT            expect=TIMEOUT                        passed=False compile=5.1    audit=None  total=6.8    
+pgrep -fl lean (this kit's work dir): none
+pgrep -fl lean (all, other seats' processes included): 11 line(s)
+CONTROLS PASS (31/31)
+kit deleted: /Users/jyh/ctl-kit2

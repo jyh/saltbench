@@ -1,0 +1,2 @@
+SELF-TEST FAIL: arm2 a damaged scaffold is SCAFFOLD_DAMAGED, not AXIOMS_FAIL, arm2 the sorryAx is still visible in the record, not hidden by the new class — 4 arms driven (1 control, 1 damaged, 1 empty-section, 1 unknown-field), every arm a SUBPROCESS running the real check.py on the real argv
+SELF-TEST PASS — 4 arms driven (1 specimen, 2 alteration, 1 no-op control), every arm a real lean compile under the fence and a subprocess audit on the real argv

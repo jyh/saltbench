@@ -15,3 +15,21 @@ Root `/Users/jyh/bench-aw` on kriterion, built BY HAND (`ship A` hangs). Stage A
 | `episode-records.tar` | all 30 episodes' `manifest.json` + `check.json` + `meter.json` (90 files). |
 
 SET-HASH(evidence, at collection) = `af64acb5e09e9e65`
+
+
+---
+
+## ⛔⛔ CORRECTION APPENDED 2026-09-01 (amendment 14) — the row for `p112_canonical_STATEMENT_ALTERED.lean` above
+
+That file is the **ASSEMBLED `canonical.lean`** (sha256 `d1a3d677411de26e…`, byte-identical to
+`ep-2714f8d2/canonical.lean`), **not the agent's file**. `assemble.py` builds it from `frozen.json` +
+`bodies.json` and **never emits `-- start_def` / `-- end_def` markers for any episode**, so its zero marker
+count is a fact about the harness and says nothing about the agent. The agent's own
+`eptree/repo/task.lean` carries **12 markers, all pairs intact**, and its `bodies.json` records
+`_present = {spec_isomorphism_proof: true, iso_helper_lemmas: true}`.
+
+The false positive is real; its cause is **auxiliary-matcher naming**, not marker deletion — Lean names a
+shared `match_1` after whichever declaration elaborated it first, so the canonical's `problem_spec` uses
+`generated_spec.match_1` while the pristine's uses `problem_spec.match_1`, and a structural `Expr ==` called
+that an altered statement. The specimen is **kept, and kept under its original name**, because the mislabelled
+file is itself the evidence for how the misreading happened. See `AMENDMENT-14-instrument-2026-09-01.md` §1–2.

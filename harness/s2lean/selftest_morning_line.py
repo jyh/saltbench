@@ -82,6 +82,23 @@ def build_state_C(root, k, proven_C):
     return tasks
 
 
+
+def _stop_is_4x(out):
+    """The stop line must be 4x the cap line, PER STAGE, read off the tool's own output — never recomputed
+    here from the fixture. A self-test that recomputes the quantity tests its own arithmetic, not the tool's."""
+    import re as _re
+    cap = next((l for l in out.splitlines() if "p90 the cap rule consumes" in l), None)
+    stop = next((l for l in out.splitlines() if "per-episode TOKEN STOP" in l), None)
+    if not cap or not stop: return False
+    caps = dict(_re.findall(r"([ABC])=(\d+|None) ?\(?", cap.split(":", 1)[1]))
+    stops = dict(_re.findall(r"([ABC])=(\d+|None)", stop.split(":", 1)[1]))
+    if set(caps) != set(stops) or not caps: return False
+    for k in caps:
+        if caps[k] == "None": 
+            if stops[k] != "None": return False
+        elif int(stops[k]) != 4 * int(caps[k]): return False
+    return True
+
 def pid_of(t): return int(t.split("_")[1])
 
 
@@ -204,8 +221,56 @@ def main():
             check("amdt12 stage A and B print NO registered line (stage C only)",
                   out.count("REGISTERED POPULATION") == len(("a0", "a2")),
                   out.count("REGISTERED POPULATION"))
+
+            # ---------- amendment 14: "NO DATA" IS NOT 0, driven on the same C-only root and the same argv.
+            # ⛔ Against the PRE-CHANGE tool these four FLIP: it printed
+            #      "F3 (... k=27 drawn): 0/27 = 0.0% ⇒ HOLD (<20%: a floor, not a reason to add arms)"
+            #      "READING: PROVISIONAL (F3 NOT YET READABLE) — HOLD (<20%: a floor, ...)"
+            #    i.e. a REGISTERED DECISION about the plain arm, read off a stage that never ran, printed
+            #    directly above the stage-C block that did. The PROVISIONAL prefix was already there and did
+            #    not save it — it qualified the reading while the reading still named a band.
+            fblock = "\n".join(l for l in out.splitlines()
+                                if "F3 (" in l or "unflagged drawn subset" in l or "nl_leaked" in l
+                                or "bands all-drawn" in l or "READING:" in l)
+            arms_run += 1
+            check("amdt14 F3 headline says NOT RUN at a stage-C-only root",
+                  "NOT RUN AT THIS ROOT" in fblock, fblock)
+            check("amdt14 NO band is printed anywhere in the F3 block",
+                  "HOLD (<20%" not in fblock and "RUN THE SALT ARM" not in fblock
+                  and "HOLD (≥80%" not in fblock, fblock)
+            check("amdt14 the two subset lines are NOT RUN, not 0/n rates",
+                  "(n=15, ids [73, 0, 146, 16, 4, 38, 142, 96, 112, 141, 31, 54, 127, 18, 74]): NOT RUN" in fblock
+                  and "without nl_leaked [90] (n=26): NOT RUN" in fblock, fblock)
+            check("amdt14 the two bands are NOT COMPARED (an absent band cannot 'agree')",
+                  "bands all-drawn vs unflagged: NOT COMPARED" in fblock, fblock)
+            check("amdt14 the SCAFFOLD_DAMAGED integrity line EXISTS (a class with no line is a class nobody sees)",
+                  "SCAFFOLD_DAMAGED (marker pairs missing" in out,
+                  [l for l in out.splitlines() if "SCAFFOLD" in l] or "no SCAFFOLD_DAMAGED line at all")
+            check("amdt14 READING is NOT RUN and carries no PROVISIONAL prefix",
+                  "READING: NOT RUN (stage B, arm a0, at this root)" in fblock
+                  and "PROVISIONAL (F3 NOT YET READABLE) —" not in fblock, fblock)
         finally:
             shutil.rmtree(rootC, ignore_errors=True)
+
+        # ---------- amendment 14 CONTROL, and it is the arm that matters most: a root where stage B DID
+        # run must be BYTE-UNCHANGED. Four assertions that a NOT-RUN branch has not eaten a real reading —
+        # a repair which suppresses a false HOLD by suppressing ALL holds passes the four arms above and
+        # destroys the instrument. Driven on the SHARED root (stage A+B, a0 proves 1 of 15).
+        arms_run += 1
+        rc, out, err = run(root, {})
+        fb = "\n".join(l for l in out.splitlines()
+                        if "F3 (" in l or "bands all-drawn" in l or "READING:" in l)
+        check("amdt14 control rc==0", rc == 0, err[-300:])
+        check("amdt14 control F3 still prints its RATE and its BAND",
+              "F3 (plain arm a0, stage B, proven over the k=15 drawn): 1/15 = 6.7% ⇒ HOLD (<20%" in fb, fb)
+        check("amdt14 control NOT RUN does NOT appear on a root that ran",
+              "NOT RUN" not in fb, fb)
+        check("amdt14 the per-episode TOKEN STOP line is DERIVED and is 4x the printed p90",
+              any(l.strip().startswith("per-episode TOKEN STOP") for l in out.splitlines())
+              and _stop_is_4x(out),
+              [l for l in out.splitlines() if "TOKEN STOP" in l or "p90 the cap rule" in l])
+        check("amdt14 control bands are still COMPARED",
+              "bands all-drawn vs unflagged: " in fb and "NOT COMPARED" not in fb, fb)
 
         # ---------- RED arms: every one must REFUSE with a nonzero exit
         for name, spec, needle in (
@@ -220,7 +285,7 @@ def main():
     finally:
         shutil.rmtree(root, ignore_errors=True)
 
-    print("SELF-TEST %s — %d arms driven (3 green, 2 label, 1 stage-C/amendment-12, 4 red), every arm a SUBPROCESS on the real argv"
+    print("SELF-TEST %s — %d arms driven (3 green, 2 label, 1 stage-C/amendment-12, 1 amendment-14 NOT-RUN, 1 amendment-14 control, 4 red), every arm a SUBPROCESS on the real argv"
           % ("PASS" if not fails else "FAIL: " + ", ".join(fails), arms_run))
     return 0 if not fails else 1
 

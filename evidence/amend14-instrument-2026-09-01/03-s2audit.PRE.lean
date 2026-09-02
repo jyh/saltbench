@@ -46,72 +46,6 @@ def kind : ConstantInfo → String
 def value? : ConstantInfo → Option Expr
   | .defnInfo v => some v.value | .thmInfo v => some v.value | .opaqueInfo v => some v.value | _ => none
 
-/-! ### Auxiliary-matcher naming (amendment 14, 2026-09-01)
-
-⛔ THE DEFECT THIS CLOSES, measured on `problem_112 / a1 / stage B` (`~/bench-aw/state/ep-2714f8d2`), the
-campaign's ONLY `STATEMENT_ALTERED`. `problem_spec` destructures a `String × Bool` with a pattern `let`, which
-needs an auxiliary matcher. Lean CACHES matchers per module and names each after **whichever declaration
-elaborated it first**:
-
-    CANONICAL constants: #[generated_spec, problem_spec, spec_isomorphism, generated_spec.match_1]
-    PRISTINE  constants: #[generated_spec, problem_spec, spec_isomorphism, problem_spec.match_1]
-
-In the canonical the AGENT's `generated_spec` body destructures the same type first, so the matcher is minted as
-`generated_spec.match_1` and `problem_spec` REUSES it; in the pristine `generated_spec := sorry` mints nothing, so
-`problem_spec` mints its own. The two `problem_spec` values then use 31 constants each and **differ in exactly one:
-the matcher's NAME.** A structural `Expr ==` reported that as an altered specification.
-
-⇒ **A STRUCTURAL COMPARISON OF A FROZEN DECLARATION'S ELABORATED VALUE IS NOT A COMPARISON OF THAT DECLARATION —
-IT IS A COMPARISON OF THE WHOLE MODULE**, because elaboration shares auxiliary declarations and names them after
-whoever needed them first. The frozen TEXT was never at risk: `assemble.py` splices `fz["problem_spec"]` verbatim,
-so text immutability holds by construction. What varied was the agent's neighbours.
-
-The fix keys each matcher on **its own type and value** rather than its name, so two matchers compare equal exactly
-when they mean the same thing — the semantic-hijack detection this comparison exists for (refuter F3: a notation,
-macro or instance that changes a frozen statement's elaborated meaning) is UNCHANGED. An aux decl the lookup cannot
-resolve keeps a distinguishing marker: it must never silently compare equal.
-
-⚠ WIDENED AS NARROWLY AS THE EVIDENCE ALLOWS (the 08/31 screen law). `match_<digits>` ONLY. Other owner-named
-auxiliaries (`_proof_<n>`, `.eq_def`, …) have the same shape of hazard and are DELIBERATELY NOT normalised: none
-has been observed in 239 landed episodes, and a relaxation with no specimen behind it is a hole with a rationale.
--/
-
-/-- Last name component is `match_<digits>` ⇒ an auxiliary matcher, whose PREFIX is an artifact of elaboration
-order rather than of meaning. -/
-def isAuxMatcher : Name → Bool
-  | .str _ s => s.startsWith "match_" && !(s.drop 6).isEmpty && (s.drop 6).all Char.isDigit
-  | _ => false
-
-/-- `e` with every auxiliary matcher DELTA-EXPANDED to its own definition (level params instantiated), so the
-comparison sees the matcher's MEANING and never its owner-derived name. A matcher that cannot be resolved, or
-has no value, keeps a marker built from its ORIGINAL name — so the two sides differ and the gate FAILS CLOSED.
-
-⛔ THE DEFECT MY FIRST CUT OF THIS FUNCTION HAD, caught by driving it on the real specimen rather than by
-reading it. It replaced each matcher with a name built from `toString` of the matcher's type and value — and
-`toString` prints BINDER names, which are hygienic and carry the MODULE they were elaborated in:
-
-    C type: … (result._@.canonical.1600460969._hygCtx._hyg.50 : Prod String Bool) … (result_palindrome : Bool) …
-    P type: … (result._@.pristine.1835493598._hygCtx._hyg.48 : Prod String Bool) … (result_bool : Bool) …
-
-while `Expr ==` is alpha-equivalence and reports these two matchers EQUAL. So a repair for name-sensitivity was
-itself name-sensitive, one level down, and read `value_identical = false` exactly as before.
-⇒ **A NORMALISATION THAT ROUTES THROUGH A PRINTED FORM IS NOT A NORMALISATION — printing re-introduces every
-distinction the comparison was chosen to ignore.** Compare terms as terms. -/
-partial def normAux (lookup : Name → Option ConstantInfo) (e : Expr) : Expr :=
-  e.replace fun sub => match sub with
-    | .const n us =>
-      if isAuxMatcher n then
-        match lookup n with
-        | some ci =>
-          match value? ci with
-          | some v => some (normAux lookup (v.instantiateLevelParams ci.levelParams us))
-          | none   => some (.const (.mkSimple ("__auxopaque__" ++ n.toString)) us)
-        | none => some (.const (.mkSimple ("__auxunresolved__" ++ n.toString)) us)
-      else none
-    | _ => none
-
-def normVal (lookup : Name → Option ConstantInfo) : Option Expr → Option Expr := Option.map (normAux lookup)
-
 def toMap (md : ModuleData) : Std.HashMap Name ConstantInfo := Id.run do
   let mut m : Std.HashMap Name ConstantInfo := {}
   for ci in md.constants do
@@ -157,24 +91,14 @@ def run (canon pristine stage : String) (aOlean? : Option String) : IO Json := d
   -- 2. statements vs pristine
   let mut stmts : Array (String × Json) := #[]
   let mut diffs : Array Name := #[]
-  -- amendment 14: the aux-matcher lookups are per-MODULE (each side keys its own matchers on their own
-  -- content), falling back to the import environment for a matcher that is not module-local.
-  let lookC : Name → Option ConstantInfo := fun n => (mapC[n]?).orElse fun _ => env0.find? n
-  let lookP : Name → Option ConstantInfo := fun n => (mapP[n]?).orElse fun _ => env0.find? n
   for (n, cmpVal) in frozen stage do
     match mapP[n]?, mapC[n]? with
     | some cp, some cc =>
       let tId := cp.type == cc.type && kind cp == kind cc && cp.levelParams == cc.levelParams
-      -- `value_identical_raw` is the PRE-amendment verdict, kept beside the amended one for ever: a repair
-      -- that hides the number it changed cannot be audited, and the 08/31 comparability law requires the
-      -- flips to be publishable BY NAME from the record itself rather than from a memory of the re-run.
-      let vRaw? : Option Bool := if cmpVal then some (value? cp == value? cc) else none
-      let vId?  : Option Bool := if cmpVal then some (normVal lookP (value? cp) == normVal lookC (value? cc)) else none
+      let vId? : Option Bool := if cmpVal then some (value? cp == value? cc) else none
       if !tId || vId? == some false then diffs := diffs.push n
       stmts := stmts.push (n.toString, Json.mkObj [
         ("type_identical", tId), ("value_identical", match vId? with | some b => Json.bool b | none => Json.null),
-        ("value_identical_raw", match vRaw? with | some b => Json.bool b | none => Json.null),
-        ("aux_matcher_renaming", Json.bool (vRaw? == some false && vId? == some true)),
         ("kind_canonical", kind cc), ("kind_pristine", kind cp)])
     | cp?, cc? =>
       diffs := diffs.push n
@@ -197,9 +121,7 @@ def run (canon pristine stage : String) (aOlean? : Option String) : IO Json := d
     | some p =>
       let (mdA, _regionA) ← readModuleData p
       let mapA := toMap mdA
-      let lookA : Name → Option ConstantInfo := fun n => (mapA[n]?).orElse fun _ => env0.find? n
-      pure (Json.bool (normVal lookA (mapA[`generated_spec]? >>= value?)
-                       == normVal lookC (mapC[`generated_spec]? >>= value?)))
+      pure (Json.bool ((mapA[`generated_spec]? >>= value?) == (mapC[`generated_spec]? >>= value?)))
   -- AP-3: names referenced by an audited decl that resolve in NEITHER the module nor the import env — fail closed
   let mut unknown : Array Name := #[]
   for (n, _) in frozen stage do

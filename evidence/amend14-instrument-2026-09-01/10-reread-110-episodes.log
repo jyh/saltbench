@@ -1,0 +1,12 @@
+stage-B/C episodes with a canonical.olean: 110
+   ... 20/110 re-audited
+   ... 40/110 re-audited
+   ... 60/110 re-audited
+   ... 80/110 re-audited
+   FLIP ep-2714f8d2 problem_112 B a1  (False, ('problem_spec',)) -> (True, ())
+   ... 100/110 re-audited
+
+RE-READ COMPLETE: 110 stage-B/C episodes re-audited under BOTH checkers
+FLIPS: 1
+   ('/Users/jyh/bench-aw', 'ep-2714f8d2', 'problem_112', 'B', 'a1', (False, ('problem_spec',)), (True, ()))
+ERRORS: 0

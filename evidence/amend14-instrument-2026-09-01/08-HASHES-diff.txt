@@ -1,0 +1,23 @@
+1c1
+< # HASHES — regenerate with harness/hashes.sh; sha256; generated 2026-09-01T21:23:12Z
+---
+> # HASHES — regenerate with harness/hashes.sh; sha256; generated 2026-09-02T04:03:19Z
+35c35
+< s2lean/check.py 9aa58095579dfc7d12cb0c727c23c7a6dffe7efaa0b0ba0b76111cd7dd767f8b
+---
+> s2lean/check.py 006117e11d1bc4f0250d56c056f57eb3ee9f4319f75382ed3300c5fd77b79bda
+40c40
+< s2lean/s2_morning_line.py 5f5fb09eb0ebd9e65abb42726947db02742977472a1acd140c037dd5a7a0625e
+---
+> s2lean/s2_morning_line.py d25e808e254ebc0082466070f3fa39e08d6538e3c49827b54547047a8f6eeb70
+43c43,46
+< s2lean/selftest_morning_line.py 32460f89029ddde919aad3faefd209d66d32c66865ab58c7713fa1cf5f269369
+---
+> s2lean/selftest_check_concurrency.py ff1314abf95a3c88578d47132af1fb0ce24970df5127f7c24a647f1890576119
+> s2lean/selftest_morning_line.py 3f8acb1776de44833d7efa621c921b374d07b9e4093f4c88bd92701a4fb138c8
+> s2lean/selftest_s2audit.py b14b6b094f7be53e261aa72c9ab319bd2656a0990393b04865414903769b7a47
+> s2lean/selftest_scaffold.py 0be4ae8d9a07572063a0bf87a80a4aaf9c338f26e4934a3e2a8175f210cbd0f7
+61c64
+< s2lean/s2audit.lean 37ccc2c586ef545b46d73425412e7c789ec2c3463216fa94ddd0481b083c81f2
+---
+> s2lean/s2audit.lean 2c4a689fc1257735d3b1a15f8129ae2c9bc565fb59c31a7a917b687bdd541f2b
