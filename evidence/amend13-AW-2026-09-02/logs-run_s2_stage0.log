@@ -1,0 +1,213 @@
+2026-09-01T22:20:20Z SMOKE GATE OK episode_s2.sh=cfb8a714272e5686c95c69650179059d7c320167c415f2f32fc1029150ac9a40
+CONTROLS GATE PASS (/Users/jyh/bench-aw/state/s2-controls.json, 7 checked, 2 required)
+2026-09-01T22:20:20Z CONTROLS GATE OK
+2026-09-01T22:20:20Z ONLY_IDS (registered subset of the first 27): problem_73 problem_0 problem_146 problem_16 problem_4 problem_38 problem_142 problem_96 problem_112 problem_141 problem_31 problem_54 problem_127 problem_18 problem_74
+2026-09-01T22:20:20Z TC_AMEND: TOKEN_CEILING=30000000 (registered; amendment 5 sets it NON-BINDING so R and WALL bind for treatment exactly as they did for the control, whose ceiling was inoperative)
+2026-09-01T22:20:20Z R_AMEND: MAX_TURNS=100 (registered round cap for this run)
+2026-09-01T22:20:20Z M_AMEND: MODEL=claude-opus-5 (registered episode model for this run)
+2026-09-01T22:20:20Z W_AMEND: WALL_S=10800 (registered per-episode wall ceiling for this run)
+2026-09-01T22:20:20Z START #1 problem_73 stage=A
+EPISODE ep-30c16615
+2026-09-01T22:20:31Z PREPARED task=problem_73 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:20:31Z CLAUDE started pid=90107 pgid=90107 session=6eda6e88-1894-405d-8e9a-8b2cd2a5ea39
+2026-09-01T22:22:40Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_73/a1/A.bodies.json
+2026-09-01T22:22:40Z LANDED ep-30c16615 task=problem_73 stage=A arm=a1 term=DONE passed=True rc=0 wall=140s metered=132453
+2026-09-01T22:22:40Z LANDED #1 problem_73 A arm=a1 term=DONE
+2026-09-01T22:22:40Z START #2 problem_0 stage=A
+EPISODE ep-d767b556
+2026-09-01T22:22:52Z PREPARED task=problem_0 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:22:52Z CLAUDE started pid=91146 pgid=91146 session=96c496e5-a18d-4476-a82f-a5732ea18ad2
+2026-09-01T22:25:00Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_0/a1/A.bodies.json
+2026-09-01T22:25:00Z LANDED ep-d767b556 task=problem_0 stage=A arm=a1 term=DONE passed=True rc=0 wall=140s metered=122989
+2026-09-01T22:25:00Z LANDED #2 problem_0 A arm=a1 term=DONE
+2026-09-01T22:25:00Z START #3 problem_146 stage=A
+EPISODE ep-9350ad30
+2026-09-01T22:25:12Z PREPARED task=problem_146 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:25:12Z CLAUDE started pid=92253 pgid=92253 session=bb9e9c87-7790-4b62-b129-2517fb029ca9
+2026-09-01T22:27:21Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_146/a1/A.bodies.json
+2026-09-01T22:27:21Z LANDED ep-9350ad30 task=problem_146 stage=A arm=a1 term=DONE passed=True rc=0 wall=141s metered=122511
+2026-09-01T22:27:21Z LANDED #3 problem_146 A arm=a1 term=DONE
+2026-09-01T22:27:21Z START #4 problem_16 stage=A
+EPISODE ep-fcbf1f74
+2026-09-01T22:27:33Z PREPARED task=problem_16 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:27:33Z CLAUDE started pid=93234 pgid=93234 session=989cbfa5-0d76-4559-b06a-e58ea068c9b2
+2026-09-01T22:29:21Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_16/a1/A.bodies.json
+2026-09-01T22:29:21Z LANDED ep-fcbf1f74 task=problem_16 stage=A arm=a1 term=DONE passed=True rc=0 wall=120s metered=128478
+2026-09-01T22:29:22Z LANDED #4 problem_16 A arm=a1 term=DONE
+2026-09-01T22:29:22Z START #5 problem_4 stage=A
+EPISODE ep-210f2e02
+2026-09-01T22:29:33Z PREPARED task=problem_4 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:29:33Z CLAUDE started pid=94238 pgid=94238 session=ccc412a3-9df3-4987-9638-290408212ec3
+2026-09-01T22:31:42Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_4/a1/A.bodies.json
+2026-09-01T22:31:42Z LANDED ep-210f2e02 task=problem_4 stage=A arm=a1 term=DONE passed=True rc=0 wall=140s metered=200782
+2026-09-01T22:31:42Z LANDED #5 problem_4 A arm=a1 term=DONE
+2026-09-01T22:31:42Z START #6 problem_38 stage=A
+EPISODE ep-1739938d
+2026-09-01T22:31:54Z PREPARED task=problem_38 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:31:54Z CLAUDE started pid=95278 pgid=95278 session=2a55eaef-9d26-4f38-b050-df201e95295f
+2026-09-01T22:33:42Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_38/a1/A.bodies.json
+2026-09-01T22:33:42Z LANDED ep-1739938d task=problem_38 stage=A arm=a1 term=DONE passed=True rc=0 wall=120s metered=107793
+2026-09-01T22:33:43Z LANDED #6 problem_38 A arm=a1 term=DONE
+2026-09-01T22:33:43Z START #7 problem_142 stage=A
+EPISODE ep-c6190eb0
+2026-09-01T22:33:54Z PREPARED task=problem_142 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:33:54Z CLAUDE started pid=96280 pgid=96280 session=f7a25089-0130-49d0-bd35-cf971c2f4c2e
+2026-09-01T22:35:43Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_142/a1/A.bodies.json
+2026-09-01T22:35:43Z LANDED ep-c6190eb0 task=problem_142 stage=A arm=a1 term=DONE passed=True rc=0 wall=120s metered=139936
+2026-09-01T22:35:43Z LANDED #7 problem_142 A arm=a1 term=DONE
+2026-09-01T22:35:43Z START #8 problem_96 stage=A
+EPISODE ep-6a36c5e6
+2026-09-01T22:35:55Z PREPARED task=problem_96 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:35:55Z CLAUDE started pid=97233 pgid=97233 session=d1566784-c55d-4ec1-b85b-2ab17854d5e7
+2026-09-01T22:38:23Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_96/a1/A.bodies.json
+2026-09-01T22:38:23Z LANDED ep-6a36c5e6 task=problem_96 stage=A arm=a1 term=DONE passed=True rc=0 wall=160s metered=164051
+2026-09-01T22:38:23Z LANDED #8 problem_96 A arm=a1 term=DONE
+2026-09-01T22:38:23Z START #9 problem_112 stage=A
+EPISODE ep-4ee67c33
+2026-09-01T22:38:35Z PREPARED task=problem_112 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:38:35Z CLAUDE started pid=98380 pgid=98380 session=5ebb9660-d36f-4de9-a023-7e689a9798ac
+2026-09-01T22:40:43Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_112/a1/A.bodies.json
+2026-09-01T22:40:43Z LANDED ep-4ee67c33 task=problem_112 stage=A arm=a1 term=DONE passed=True rc=0 wall=140s metered=192069
+2026-09-01T22:40:43Z LANDED #9 problem_112 A arm=a1 term=DONE
+2026-09-01T22:40:43Z START #10 problem_141 stage=A
+EPISODE ep-ccc794b6
+2026-09-01T22:40:55Z PREPARED task=problem_141 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:40:55Z CLAUDE started pid=99410 pgid=99410 session=444f1208-6225-4fda-b3b8-f323799f63a4
+2026-09-01T22:43:04Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_141/a1/A.bodies.json
+2026-09-01T22:43:04Z LANDED ep-ccc794b6 task=problem_141 stage=A arm=a1 term=DONE passed=True rc=0 wall=141s metered=169607
+2026-09-01T22:43:04Z LANDED #10 problem_141 A arm=a1 term=DONE
+2026-09-01T22:43:04Z START #11 problem_31 stage=A
+EPISODE ep-cbb4a976
+2026-09-01T22:43:16Z PREPARED task=problem_31 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:43:16Z CLAUDE started pid=672 pgid=672 session=7c98dccc-7113-4cae-be07-b51c27122242
+2026-09-01T22:45:04Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_31/a1/A.bodies.json
+2026-09-01T22:45:04Z LANDED ep-cbb4a976 task=problem_31 stage=A arm=a1 term=DONE passed=True rc=0 wall=120s metered=135648
+2026-09-01T22:45:04Z LANDED #11 problem_31 A arm=a1 term=DONE
+2026-09-01T22:45:04Z START #12 problem_54 stage=A
+EPISODE ep-d1e88613
+2026-09-01T22:45:15Z PREPARED task=problem_54 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:45:15Z CLAUDE started pid=2086 pgid=2086 session=fc481e6c-2bfe-454c-af72-6451d789e104
+2026-09-01T22:46:44Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_54/a1/A.bodies.json
+2026-09-01T22:46:44Z LANDED ep-d1e88613 task=problem_54 stage=A arm=a1 term=DONE passed=True rc=0 wall=100s metered=85076
+2026-09-01T22:46:44Z LANDED #12 problem_54 A arm=a1 term=DONE
+2026-09-01T22:46:44Z START #13 problem_127 stage=A
+EPISODE ep-3e9f59c8
+2026-09-01T22:46:56Z PREPARED task=problem_127 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:46:56Z CLAUDE started pid=3071 pgid=3071 session=e24c1f18-52e5-444b-83d9-1e910ebc13e2
+2026-09-01T22:49:44Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_127/a1/A.bodies.json
+2026-09-01T22:49:44Z LANDED ep-3e9f59c8 task=problem_127 stage=A arm=a1 term=DONE passed=True rc=0 wall=180s metered=181390
+2026-09-01T22:49:44Z LANDED #13 problem_127 A arm=a1 term=DONE
+2026-09-01T22:49:44Z START #14 problem_18 stage=A
+EPISODE ep-a234c4f9
+2026-09-01T22:49:56Z PREPARED task=problem_18 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:49:56Z CLAUDE started pid=4257 pgid=4257 session=b9f6308e-8bf1-4b19-bb10-1e08739a884b
+2026-09-01T22:52:24Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_18/a1/A.bodies.json
+2026-09-01T22:52:24Z LANDED ep-a234c4f9 task=problem_18 stage=A arm=a1 term=DONE passed=True rc=0 wall=160s metered=137620
+2026-09-01T22:52:24Z LANDED #14 problem_18 A arm=a1 term=DONE
+2026-09-01T22:52:24Z START #15 problem_74 stage=A
+EPISODE ep-19e5d73d
+2026-09-01T22:52:36Z PREPARED task=problem_74 stage=A lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:52:36Z CLAUDE started pid=5328 pgid=5328 session=5e3d8509-f0ea-46ff-bdcb-35d6a8e10aa7
+2026-09-01T22:54:04Z A_BODIES written /Users/jyh/bench-aw/state/s2/problem_74/a1/A.bodies.json
+2026-09-01T22:54:04Z LANDED ep-19e5d73d task=problem_74 stage=A arm=a1 term=DONE passed=True rc=0 wall=100s metered=132565
+2026-09-01T22:54:05Z LANDED #15 problem_74 A arm=a1 term=DONE
+2026-09-01T22:54:05Z S2 STAGE A DRIVER DONE k=27
+2026-09-01T22:54:50Z SMOKE GATE OK episode_s2.sh=cfb8a714272e5686c95c69650179059d7c320167c415f2f32fc1029150ac9a40
+CONTROLS GATE PASS (/Users/jyh/bench-aw/state/s2-controls.json, 8 checked, 3 required)
+2026-09-01T22:54:50Z CONTROLS GATE OK
+2026-09-01T22:54:50Z ONLY_IDS (registered subset of the first 27): problem_73 problem_0 problem_146 problem_16 problem_4 problem_38 problem_142 problem_96 problem_112 problem_141 problem_31 problem_54 problem_127 problem_18 problem_74
+2026-09-01T22:54:50Z TC_AMEND: TOKEN_CEILING=30000000 (registered; amendment 5 sets it NON-BINDING so R and WALL bind for treatment exactly as they did for the control, whose ceiling was inoperative)
+2026-09-01T22:54:50Z R_AMEND: MAX_TURNS=100 (registered round cap for this run)
+2026-09-01T22:54:50Z M_AMEND: MODEL=claude-opus-5 (registered episode model for this run)
+2026-09-01T22:54:50Z W_AMEND: WALL_S=10800 (registered per-episode wall ceiling for this run)
+2026-09-01T22:54:50Z START #1 problem_73 stage=B
+EPISODE ep-f1b47835
+2026-09-01T22:55:01Z PREPARED task=problem_73 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:55:01Z CLAUDE started pid=7919 pgid=7919 session=37b03251-98d7-47d1-9b49-f8deb7d97cbf
+2026-09-01T22:59:31Z LANDED ep-f1b47835 task=problem_73 stage=B arm=a1 term=DONE passed=True rc=0 wall=281s metered=349240
+2026-09-01T22:59:31Z LANDED #1 problem_73 B arm=a1 term=DONE
+2026-09-01T22:59:31Z START #2 problem_0 stage=B
+EPISODE ep-ea6241ab
+2026-09-01T22:59:43Z PREPARED task=problem_0 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T22:59:43Z CLAUDE started pid=9418 pgid=9418 session=47c5a9dd-5624-4bdf-8af0-3268587278fd
+2026-09-01T23:04:13Z LANDED ep-ea6241ab task=problem_0 stage=B arm=a1 term=DONE passed=False rc=0 wall=282s metered=317883
+2026-09-01T23:04:13Z LANDED #2 problem_0 B arm=a1 term=DONE
+2026-09-01T23:04:13Z START #3 problem_146 stage=B
+EPISODE ep-5e66eb13
+2026-09-01T23:04:25Z PREPARED task=problem_146 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T23:04:25Z CLAUDE started pid=10700 pgid=10700 session=815b66ac-dbc5-4bd5-8a19-33c0e123de59
+2026-09-01T23:11:55Z LANDED ep-5e66eb13 task=problem_146 stage=B arm=a1 term=DONE passed=True rc=0 wall=462s metered=635409
+2026-09-01T23:11:56Z LANDED #3 problem_146 B arm=a1 term=DONE
+2026-09-01T23:11:56Z START #4 problem_16 stage=B
+EPISODE ep-d0a26817
+2026-09-01T23:12:07Z PREPARED task=problem_16 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T23:12:07Z CLAUDE started pid=12570 pgid=12570 session=5dd7dcde-b36d-46b8-8905-2530b37a752c
+2026-09-01T23:15:37Z LANDED ep-d0a26817 task=problem_16 stage=B arm=a1 term=DONE passed=True rc=0 wall=221s metered=299210
+2026-09-01T23:15:37Z LANDED #4 problem_16 B arm=a1 term=DONE
+2026-09-01T23:15:37Z START #5 problem_4 stage=B
+EPISODE ep-bb3f4957
+2026-09-01T23:15:49Z PREPARED task=problem_4 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T23:15:49Z CLAUDE started pid=13879 pgid=13879 session=26162435-ebdb-4d3a-808b-3157b60998fd
+2026-09-01T23:23:39Z LANDED ep-bb3f4957 task=problem_4 stage=B arm=a1 term=DONE passed=False rc=0 wall=482s metered=612357
+2026-09-01T23:23:39Z LANDED #5 problem_4 B arm=a1 term=DONE
+2026-09-01T23:23:39Z START #6 problem_38 stage=B
+EPISODE ep-c9a9b42d
+2026-09-01T23:23:51Z PREPARED task=problem_38 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T23:23:51Z CLAUDE started pid=15550 pgid=15550 session=f88485d6-3d70-41c1-8255-027519fb77c6
+2026-09-01T23:29:22Z LANDED ep-c9a9b42d task=problem_38 stage=B arm=a1 term=DONE passed=True rc=0 wall=343s metered=385078
+2026-09-01T23:29:22Z LANDED #6 problem_38 B arm=a1 term=DONE
+2026-09-01T23:29:22Z START #7 problem_142 stage=B
+EPISODE ep-2a04df7c
+2026-09-01T23:29:34Z PREPARED task=problem_142 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T23:29:34Z CLAUDE started pid=16868 pgid=16868 session=faba0068-c243-4ef8-bcbe-5c9369f499e7
+2026-09-01T23:33:44Z LANDED ep-2a04df7c task=problem_142 stage=B arm=a1 term=DONE passed=True rc=0 wall=262s metered=259640
+2026-09-01T23:33:44Z LANDED #7 problem_142 B arm=a1 term=DONE
+2026-09-01T23:33:44Z START #8 problem_96 stage=B
+EPISODE ep-e43ef997
+2026-09-01T23:33:56Z PREPARED task=problem_96 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T23:33:56Z CLAUDE started pid=18164 pgid=18164 session=1fb1eea2-b7fe-4608-944f-db1735a54566
+2026-09-01T23:38:25Z LANDED ep-e43ef997 task=problem_96 stage=B arm=a1 term=DONE passed=False rc=0 wall=281s metered=389524
+2026-09-01T23:38:25Z LANDED #8 problem_96 B arm=a1 term=DONE
+2026-09-01T23:38:25Z START #9 problem_112 stage=B
+EPISODE ep-2714f8d2
+2026-09-01T23:38:37Z PREPARED task=problem_112 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-01T23:38:37Z CLAUDE started pid=19392 pgid=19392 session=30ed8ea5-01a6-4f08-be69-a2e08ef89b29
+2026-09-02T00:03:11Z LANDED ep-2714f8d2 task=problem_112 stage=B arm=a1 term=ROUNDS_EXHAUSTED passed=False rc=1 wall=1486s metered=9271167
+2026-09-02T00:03:11Z LANDED #9 problem_112 B arm=a1 term=ROUNDS_EXHAUSTED
+2026-09-02T00:03:11Z START #10 problem_141 stage=B
+EPISODE ep-295a52c6
+2026-09-02T00:03:23Z PREPARED task=problem_141 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-02T00:03:23Z CLAUDE started pid=24382 pgid=24382 session=b5bf2176-0834-4b71-b7a1-b16bd25c14e6
+2026-09-02T00:08:53Z LANDED ep-295a52c6 task=problem_141 stage=B arm=a1 term=DONE passed=True rc=0 wall=342s metered=429728
+2026-09-02T00:08:53Z LANDED #10 problem_141 B arm=a1 term=DONE
+2026-09-02T00:08:53Z START #11 problem_31 stage=B
+EPISODE ep-0514750d
+2026-09-02T00:09:05Z PREPARED task=problem_31 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-02T00:09:05Z CLAUDE started pid=25875 pgid=25875 session=72c37796-d704-40f0-a424-569160631c48
+2026-09-02T00:11:54Z LANDED ep-0514750d task=problem_31 stage=B arm=a1 term=DONE passed=True rc=0 wall=181s metered=182140
+2026-09-02T00:11:54Z LANDED #11 problem_31 B arm=a1 term=DONE
+2026-09-02T00:11:54Z START #12 problem_54 stage=B
+EPISODE ep-ba66eb76
+2026-09-02T00:12:05Z PREPARED task=problem_54 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-02T00:12:05Z CLAUDE started pid=27030 pgid=27030 session=a98a81ee-df4b-4dbc-9652-8a8cd53d1c8a
+2026-09-02T00:13:14Z LANDED ep-ba66eb76 task=problem_54 stage=B arm=a1 term=DONE passed=True rc=0 wall=80s metered=74157
+2026-09-02T00:13:14Z LANDED #12 problem_54 B arm=a1 term=DONE
+2026-09-02T00:13:14Z START #13 problem_127 stage=B
+EPISODE ep-ce2c0963
+2026-09-02T00:13:26Z PREPARED task=problem_127 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-02T00:13:26Z CLAUDE started pid=27873 pgid=27873 session=960c3295-ec6a-43eb-94b4-9225e6fc1ffd
+2026-09-02T00:19:35Z LANDED ep-ce2c0963 task=problem_127 stage=B arm=a1 term=DONE passed=False rc=0 wall=381s metered=368202
+2026-09-02T00:19:36Z LANDED #13 problem_127 B arm=a1 term=DONE
+2026-09-02T00:19:36Z START #14 problem_18 stage=B
+EPISODE ep-e73b5875
+2026-09-02T00:19:47Z PREPARED task=problem_18 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-02T00:19:48Z CLAUDE started pid=29140 pgid=29140 session=6f4e1d75-0a3c-43fc-83c7-f2595285f6bd
+2026-09-02T00:28:38Z LANDED ep-e73b5875 task=problem_18 stage=B arm=a1 term=DONE passed=False rc=0 wall=542s metered=605445
+2026-09-02T00:28:38Z LANDED #14 problem_18 B arm=a1 term=DONE
+2026-09-02T00:28:38Z START #15 problem_74 stage=B
+EPISODE ep-f97f95e5
+2026-09-02T00:28:50Z PREPARED task=problem_74 stage=B lean=leanprover/lean4:v4.27.0 probe=42
+2026-09-02T00:28:50Z CLAUDE started pid=30900 pgid=30900 session=277101b3-16b3-43ad-b6ac-975430c8f0a5
+2026-09-02T00:31:59Z LANDED ep-f97f95e5 task=problem_74 stage=B arm=a1 term=DONE passed=True rc=0 wall=201s metered=243461
+2026-09-02T00:31:59Z LANDED #15 problem_74 B arm=a1 term=DONE
+2026-09-02T00:31:59Z S2 STAGE B DRIVER DONE k=27

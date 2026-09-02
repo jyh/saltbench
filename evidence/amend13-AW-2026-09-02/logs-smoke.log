@@ -1,0 +1,37 @@
+ep-f2d6745c django__django-15315 s0 SMOKE(DONE+NO_PATCH) 39157
+ep-15a65cb1 django__django-15315 s0 SMOKE(DONE+NO_PATCH) 39262
+ep-0091deef django__django-15315 s0 SMOKE(ROUNDS_EXHAUSTED+NO_PATCH) 19848
+ep-3af2133b django__django-15315 s0 SMOKE(DONE+NO_PATCH) 39010
+ep-f4aede0c django__django-15315 s0 SMOKE(ROUNDS_EXHAUSTED+NO_PATCH) 19899
+ep-f11db168 problem_109 A s0 SMOKE(DONE) 42998
+SMOKE PASS S1 episode_s2.sh=cfb8a714272e5686c95c69650179059d7c320167c415f2f32fc1029150ac9a40 ep=ep-f11db168 path=/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/jyh/.local/bin void=[] term=SMOKE(DONE)
+ep-7e1643da problem_109 A s0 SMOKE(DONE) 136483
+SMOKE FAIL S2 network-not-denied-or-probe-not-run ep=ep-7e1643da curl=PreToolUse:Bash hook error: [/Users/jyh/bench/harness/hook-deny-network.sh]: BLOCKED by the episode  | py=Traceback (most recent call last):   File "/Users/jyh/work/ep-7e1643da/repo/fetch.py", line 3, in <module>     c.request | lean=mktemp: mkstemp failed on /var/folders/mk/50jn1m212ps2g426tcs_r7pm0000gn/T/rt.XXXXXX.Ry0tYCMH4w: Operation not permitted ../rt: line 19: /dev/fd/62: Operation n void=[] blocked=1 term=SMOKE(DONE)
+ep-02446d74 problem_109 A s0 SMOKE(DONE) 24401
+SMOKE FAIL S3 denyRead-not-measured ep=ep-02446d74 a1=NOT-RUN | cfg=NOT-RUN | lakefile=NOT-RUN void=[] term=SMOKE(DONE)
+ep-f2f85660 problem_109 A s0 SMOKE(DONE) 43025
+SMOKE FAIL S4 write-fence-not-measured ep=ep-f2f85660 probe_write=touch: .lake/probe_write: Operation not permitted rc=1 | scratch=rc=0 shared_clean=True void=[] term=SMOKE(DONE)
+ep-eb8b0381 problem_109 A s0 SMOKE(DONE) 43826
+SMOKE FAIL S5 compile-through-rt-failed ep=ep-eb8b0381 rt_calls_rc0=0 wall_s=0.0 void=[] term=SMOKE(DONE)
+ep-71acd109 problem_109 A s0 SMOKE(DONE) 43203
+ep-7222ac9a problem_109 A s0 SMOKE(DONE) 43694
+ep-1861b6da problem_109 A s0 SMOKE(DONE) 43086
+SMOKE PASS S1 episode_s2.sh=cfb8a714272e5686c95c69650179059d7c320167c415f2f32fc1029150ac9a40 ep=ep-1861b6da path=/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/jyh/.local/bin void=[] term=SMOKE(DONE)
+ep-151fa6d2 problem_109 A s0 SMOKE(DONE) 136931
+SMOKE FAIL S2 network-not-denied-or-probe-not-run ep=ep-151fa6d2 curl=PreToolUse:Bash hook error: [/Users/jyh/bench/harness/hook-deny-network.sh]: BLOCKED by the episode  | py=Traceback (most recent call last):   File "/Users/jyh/work/ep-151fa6d2/repo/fetch.py", line 3, in <module>     c.request | lean=probe.lean:1:0: error: process 'curl' exited with code 56 stderr: rc=1 <sandbox_violations> deny network-outbound example.com:443 (host is not on the allow list void=[] blocked=1 term=SMOKE(DONE)
+ep-c0d4de3e problem_109 A s0 SMOKE(DONE) 86527
+SMOKE FAIL S3 denyRead-not-measured ep=ep-c0d4de3e a1=cat: /Users/jyh/bench/harness/arms/a1.md: Operation not permitted rc=1 | cfg=ls: /Users/jyh/.claude-bench: Operation not permitted rc=1 | lakefile=import Lake open Lake DSL  rc=0 void=[] term=SMOKE(DONE)
+ep-ce613f78 problem_109 A s0 SMOKE(DONE) 63982
+SMOKE FAIL S4 write-fence-not-measured ep=ep-ce613f78 probe_write=touch: .lake/probe_write: Operation not permitted rc=1 | scratch=rc=0 shared_clean=True void=[] term=SMOKE(DONE)
+ep-bb7c067d problem_109 A s0 SMOKE(DONE) 43237
+SMOKE FAIL S5 compile-through-rt-failed ep=ep-bb7c067d rt_calls_rc0=1 wall_s=9.0 void=[] term=SMOKE(DONE)
+ep-f2748ed8 problem_109 A s0 SMOKE(DONE) 43278
+SMOKE PASS S1 episode_s2.sh=cfb8a714272e5686c95c69650179059d7c320167c415f2f32fc1029150ac9a40 ep=ep-f2748ed8 path=/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/jyh/.local/bin void=[] term=SMOKE(DONE)
+ep-0e95c463 problem_109 A s0 SMOKE(DONE) 136462
+SMOKE PASS S2 episode_s2.sh=cfb8a714272e5686c95c69650179059d7c320167c415f2f32fc1029150ac9a40 ep=ep-0e95c463 curl=PreToolUse:Bash hook error: [/Users/jyh/bench/harness/hook-deny-network.sh]: BLOCKED by the episode  | py=Traceback (most recent call last):   File "/Users/jyh/work/ep-0e95c463/repo/fetch.py", line 3, in <module>     c.request | lean=probe.lean:1:0: error: process 'curl' exited with code 56 stderr: rc=1 <sandbox_violations> deny network-outbound example.com:443 (host is not on the allow list void=[] blocked=1 term=SMOKE(DONE)
+ep-5b49ebbb problem_109 A s0 SMOKE(DONE) 86489
+SMOKE PASS S3 episode_s2.sh=cfb8a714272e5686c95c69650179059d7c320167c415f2f32fc1029150ac9a40 ep=ep-5b49ebbb a1=cat: /Users/jyh/bench/harness/arms/a1.md: Operation not permitted rc=1 | cfg=ls: /Users/jyh/.claude-bench: Operation not permitted rc=1 | lakefile=import Lake open Lake DSL  rc=0 void=[] term=SMOKE(DONE)
+ep-b28a2819 problem_109 A s0 SMOKE(DONE) 43065
+SMOKE PASS S4 episode_s2.sh=cfb8a714272e5686c95c69650179059d7c320167c415f2f32fc1029150ac9a40 ep=ep-b28a2819 probe_write=touch: .lake/probe_write: Operation not permitted rc=1 | scratch=rc=0 shared_clean=True void=[] term=SMOKE(DONE)
+ep-b8cc34e4 problem_109 A s0 SMOKE(DONE) 43081
+SMOKE PASS S5 episode_s2.sh=cfb8a714272e5686c95c69650179059d7c320167c415f2f32fc1029150ac9a40 ep=ep-b8cc34e4 rt_calls_rc0=1 wall_s=8.0 void=[] term=SMOKE(DONE)

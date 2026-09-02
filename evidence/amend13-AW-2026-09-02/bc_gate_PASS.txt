@@ -1,0 +1,17 @@
+BC CONTENT GATE  root=/Users/jyh/bench-aw  arms=a1  ids=15  max_age_h=24
+  green problem_73/a1      ep-30c16615  end_utc=1788301360 (2.2 h ago)  sha=d48817d01b46c913
+  green problem_0/a1       ep-d767b556  end_utc=1788301500 (2.2 h ago)  sha=9cf254d7e9e0e325
+  green problem_146/a1     ep-9350ad30  end_utc=1788301641 (2.1 h ago)  sha=11fea5c14b6920d0
+  green problem_16/a1      ep-fcbf1f74  end_utc=1788301761 (2.1 h ago)  sha=5e10ae032bfda364
+  green problem_4/a1       ep-210f2e02  end_utc=1788301902 (2.1 h ago)  sha=a5c829b6545530e3
+  green problem_38/a1      ep-1739938d  end_utc=1788302022 (2.0 h ago)  sha=101326fad8222477
+  green problem_142/a1     ep-c6190eb0  end_utc=1788302143 (2.0 h ago)  sha=6a18fc77acc2f4c7
+  green problem_96/a1      ep-6a36c5e6  end_utc=1788302303 (2.0 h ago)  sha=c69e167ac9ce95fe
+  green problem_112/a1     ep-4ee67c33  end_utc=1788302443 (1.9 h ago)  sha=6ab5635554aa90f1
+  green problem_141/a1     ep-ccc794b6  end_utc=1788302584 (1.9 h ago)  sha=f835136b671553b9
+  green problem_31/a1      ep-cbb4a976  end_utc=1788302704 (1.8 h ago)  sha=bbfdb19ec870154e
+  green problem_54/a1      ep-d1e88613  end_utc=1788302804 (1.8 h ago)  sha=3b7d459dd860a363
+  green problem_127/a1     ep-3e9f59c8  end_utc=1788302984 (1.8 h ago)  sha=bbc397fd44365449
+  green problem_18/a1      ep-a234c4f9  end_utc=1788303144 (1.7 h ago)  sha=bd3a59ee0218407e
+  green problem_74/a1      ep-19e5d73d  end_utc=1788303244 (1.7 h ago)  sha=f43ad826bcc0cc44
+PASS: 15/15 cells carry a content-verified, in-root, fresh stage-A pass.
