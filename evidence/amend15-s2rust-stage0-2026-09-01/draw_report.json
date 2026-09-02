@@ -1,0 +1,14 @@
+{
+ "built": 207,
+ "refused": {
+  "SHAPE": 17,
+  "TARGET_ABSENT": 24,
+  "TARGET_AMBIGUOUS": 4,
+  "EXEC_TARGET": 15
+ },
+ "gt_body_missing": [],
+ "projects": [
+  "AC",
+  "NR"
+ ]
+}

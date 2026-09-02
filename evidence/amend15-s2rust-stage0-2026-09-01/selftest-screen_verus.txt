@@ -1,0 +1,31 @@
+ok   assume                             expect=True  got=True  
+ok   admit                              expect=True  got=True  
+ok   assume_specification               expect=True  got=True  
+ok   external_body helper               expect=True  got=True  
+ok   axiom fn                           expect=True  got=True  
+ok   new import                         expect=True  got=True  
+ok   inner attr                         expect=True  got=True  
+ok   spec fn in helpers                 expect=True  got=True  
+ok   exec fn in helpers                 expect=True  got=True  
+ok   impl in helpers                    expect=True  got=True  
+ok   unimplemented                      expect=True  got=True  
+ok   std::process                       expect=True  got=True  
+ok   verifier attr not in the five      expect=True  got=True  
+ok   fn main                            expect=True  got=True  
+ok   trigger inner attr                 expect=False got=False 
+ok   auto inner attr                    expect=False got=False 
+ok   all_triggers inner attr            expect=False got=False 
+ok   a NON-trigger inner attr is STILL refused expect=True  got=True  
+ok   broadcast use                      expect=False got=False 
+ok   axiom_ call                        expect=False got=False 
+ok   by nonlinear_arith                 expect=False got=False 
+ok   by(bit_vector) no space            expect=False got=False 
+ok   reveal + decreases                 expect=False got=False 
+ok   trigger attr                       expect=False got=False 
+ok   proof fn helper                    expect=False got=False 
+ok   verifier::rlimit is allowed        expect=False got=False 
+ok   calc!                              expect=False got=False 
+ok   assume in a comment                expect=False got=False 
+ok   assume in a string                 expect=False got=False 
+
+screen_verus selftest: 29 arms, 0 failed

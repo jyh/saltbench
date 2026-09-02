@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/private/tmp/claude-501/-Users-jyh-projects-claude-saltbench/e8874a3b-1986-465f-94d6-7f406589d989/scratchpad/redfirst.py", line 8, in <module>
+    fz=json.load(open('vout2/views/%s/frozen.json'%T)); gt=json.load(open('vout2/gt/%s.json'%T))
+                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'vout2/views/NR__impl_u__l1__impl2__lemma_empty_implies_interp_empty/frozen.json'

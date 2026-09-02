@@ -1,0 +1,27 @@
+fixture task: NR__impl_u__l1__impl2__lemma_empty_implies_interp_empty
+
+--- RED ARMS ---
+ok   pristine (empty proof body)            expect=VERIFY_FAIL       got=VERIFY_FAIL
+ok   assume(false) in the proof body        expect=SCREEN            got=SCREEN
+ok   assume(false), screen disabled         expect=CHEAT_FAIL        got=CHEAT_FAIL
+ok   external_body helper                   expect=SCREEN            got=SCREEN
+ok   external_body helper, screen off       expect=CHEAT_FAIL        got=CHEAT_FAIL
+ok   spec fn in the helpers region          expect=SCREEN            got=SCREEN
+ok   new axiom fn in helpers                expect=SCREEN            got=SCREEN
+ok   new axiom fn, screen disabled          expect=HELPERS_SHAPE     got=HELPERS_SHAPE
+ok   spec fn in helpers, screen disabled    expect=HELPERS_SHAPE     got=HELPERS_SHAPE
+ok   impl block in helpers, screen off      expect=HELPERS_SHAPE     got=HELPERS_SHAPE
+ok   proof marker pair deleted              expect=SCAFFOLD_DAMAGED  got=SCAFFOLD_DAMAGED
+ok   helper lemma with an empty body        expect=VERIFY_FAIL       got=VERIFY_FAIL
+ok   unimplemented!() in the body           expect=SCREEN            got=SCREEN
+--- GREEN ARMS ---
+ok   clean: the reference body              expect=PASS              got=PASS
+ok   #![trigger ...] in the proof body      expect=NOT_SCREEN        got=VERIFY_FAIL
+ok   broadcast use in the proof body        expect=NOT_SCREEN        got=VERIFY_FAIL
+ok   a context axiom_ CALL in the body      expect=NOT_SCREEN        got=COMPILE
+ok   clean body PLUS a valid helper         expect=PASS              got=PASS
+
+--- STRUCTURAL ARM ---
+ok   edit outside the regions is discarded  expect=absent from canonical got=absent
+
+selftest_check_verus: 19 arms, 0 failed
