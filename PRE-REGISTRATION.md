@@ -6,7 +6,7 @@ what this document's own rule permits, and what it forbids afterwards. Once the 
 request of any arm is sent, nothing above the line at the bottom may be revised.
 
 Owner: silicon seat. Governing: council minute 2026-08-27 (`72928e04` + `93130077`) and
-the promotion charter `seat/briefs/2026-08-20-saltbench-promotion.md`.
+the promotion charter of 2026-08-20 (in the private record).
 Verdicts: pass 1 `…-gate-2026-08-27.md` · pass 2 `…-v2-…` · pass 3 `…-v3-…`, all under
 `seat fleet/`. ⛔ *v3 titled itself "(v2)" and cited only pass 1 while its body answered
 pass 2 — a frozen instrument that cannot name its own version makes a reader mis-attribute

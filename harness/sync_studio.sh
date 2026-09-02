@@ -7,7 +7,7 @@
 # C.lean) reaches the Studio ONLY through stage_views.sh, after every stage-A landing; the sync asserts no view file
 # exists anywhere under ~/bench/harness afterwards. The receipt covers the S2 pinned files too (FN-10).
 set -u
-STUDIO="${STUDIO:-kriterion-lan}"; REPO="$(cd "$(dirname "$0")/.." && pwd)"
+STUDIO="${STUDIO:-studio}"; REPO="$(cd "$(dirname "$0")/.." && pwd)"
 SSH="ssh -o ConnectTimeout=10"
 # only a COMMITTED harness may reach the Studio (refuter RI3-R4): refuse a dirty tree, and name the commit the copy came from
 if [ -n "$(git -C "$REPO" status --porcelain harness/ TASKLIST.json IMAGE-DIGESTS.json)" ]; then echo "REFUSE: harness/ (or a table) has uncommitted changes — commit first, then sync"; exit 3; fi

@@ -23,7 +23,7 @@
 #
 # usage: sync_studio_s2rust.sh [--verify]
 set -u
-STUDIO="${STUDIO:-kriterion-lan}"; RROOT="${RROOT:-/Users/jyh/bench-rust}"
+STUDIO="${STUDIO:-studio}"; RROOT="${RROOT:-/Users/jyh/bench-rust}"
 SSH="ssh -o ConnectTimeout=10"
 REPO="$(cd "$(dirname "$0")/../.." && pwd)"
 VERIFY_ONLY=0; [ "${1:-}" = "--verify" ] && VERIFY_ONLY=1

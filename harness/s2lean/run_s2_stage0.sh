@@ -80,7 +80,7 @@ fi
 # validated, REFUSING rather than guessing, re-exported AFTER the deliberate unset above, printed in the run log:
 #   M_AMEND   the episode model. ALLOWLISTED, not free text: the tier is the independent variable of this amendment, so
 #             a typo must stop the run, never silently score a different tier. `claude-fable-5` is DELIBERATELY ABSENT —
-#             the commission (council item 12) puts Fable episodes behind the Captain's own word, and the kriterion
+#             the commission (council item 12) puts Fable episodes behind the Captain's own word, and the bench account's
 #             Fable weekly read 93% consumed at 11:00 today; a run that could reach for it by env is a run that can
 #             spend a pool it was never granted.
 #   W_AMEND   the per-episode wall ceiling. It exists because a ceiling that binds at one tier and not another is an

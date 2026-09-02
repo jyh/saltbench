@@ -5,9 +5,9 @@ Registered under desk row **DD**, discharged by the helm on the bus 09/01 21:35:
 seat's gate in its own words: *"WHAT bench DOES NEXT (its gate): freeze the AMENDMENT from the commission,
 then stage 0 per its §5."*
 
-**Sources, in precedence order.** (1) `seat/briefs/2026-09-01-helm-COMMISSION-saltbench-next-wave-verusage.md`
+**Sources, in precedence order.** (1) the fleet's wave commission for S2-Rust (2026-09-01, in the private record)
 (the wave commission; its **§11 binds the body where they disagree**). (2)
-`seat/briefs/2026-09-01-helm-COMMISSION-s2rust-arm-and-grader.md` (seat `57529f58`, the arm+grader design,
+the fleet's arm-and-grader commission (2026-09-01, in the private record; the arm+grader design,
 one refuter, two CONFIRMED-FATAL folded) — hereafter **DD**. (3) `S2-RUST-SCOUT-2026-09-02.md`,
 `S2-SOURCE-READ-2026-08-29.md`. The S2-Lean harness at `15cfdc2` is the port's parent.
 

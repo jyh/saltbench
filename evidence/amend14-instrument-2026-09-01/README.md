@@ -1,6 +1,6 @@
 # EVIDENCE — amendment 14 (instrument): four repairs, one refuted premise, one registered rider
 
-Zero model tokens. Every number here was measured at an artifact on kriterion or reproduced on the seat.
+Zero model tokens. Every number here was measured at an artifact on the Studio or reproduced on the seat.
 
 | file | what it proves |
 |---|---|

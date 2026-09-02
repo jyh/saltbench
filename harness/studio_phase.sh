@@ -3,7 +3,7 @@
 # phase, or take it (and every gold-bearing harness log) OFF before episodes. episode.sh REFUSES to run
 # while the full dataset is present.   usage: studio_phase.sh in|out   env: STUDIO (ssh host)
 set -u
-STUDIO="${STUDIO:-kriterion-lan}"; REPO="$(cd "$(dirname "$0")/.." && pwd)"
+STUDIO="${STUDIO:-studio}"; REPO="$(cd "$(dirname "$0")/.." && pwd)"
 case "${1:?in|out}" in
   in)  rsync -a "$REPO/data/verified.json" "$STUDIO:~/bench/harness/data/verified.json" && echo "dataset IN" ;;
   out) mkdir -p "$REPO/runs/studio-controls"

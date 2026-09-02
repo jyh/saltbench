@@ -235,7 +235,7 @@ for Step 1: 12 × p90(966,017) × 3 ≈ 34.8M.**
 - **HALT 12 h wall per arm-stage**, cooperative, via `$BENCH/HALT` checked **inside the arm loop**
   (amendment 8 addendum 1), with the enforcer in `tmux` **on the Studio** and armed **BEFORE the first
   episode** — never in the seat's session, which dies at exit.
-- **Weekly ≤ 75 %**, **Sep 7 16:00 protected**, kriterion only, fleet QUIET at bench.
+- **Weekly ≤ 75 %**, **Sep 7 16:00 protected**, the bench account only, fleet QUIET at bench.
 - **One quota reading at dispatch. Never a poll.** (Owed at dispatch, not now.)
 
 ## §7 · PREDICTIONS — REGISTERED BEFORE ANY STAGE-C CALL

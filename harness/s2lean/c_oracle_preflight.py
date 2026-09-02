@@ -30,7 +30,7 @@ usage: c_oracle_preflight.py <ids...>            ids as bare ints or problem_<n>
 env:   VIEWS      frozen views dir      (default: <this dir>/views)
        LEANPROJ   lean project to run `lake env lean` in   (default: ~/lean-shared/clever)
        CLEVER_GT  CLEVER checkout for CHECK 2 (default: ~/clever-gt); absent => CHECK 2 reports UNREACHED
-       SSH_HOST   run lean over ssh on this host instead of locally (e.g. kriterion)
+       SSH_HOST   run lean over ssh on this host instead of locally (e.g. the Studio host)
 exit:  0 = no problem refuted · 3 = at least one problem REFUTED · 2 = harness error. A REFUSAL IS A RESULT.
 """
 import json, os, re, subprocess, sys, tempfile

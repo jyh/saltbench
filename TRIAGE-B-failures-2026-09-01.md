@@ -268,4 +268,4 @@ evidence/step0-b-triage-2026-09-01/
   probe_test_is_an_error.*    a failing #test is an error with RC=1
   measure_dead_guard.py       78/78 rows take the fallback; the §6 guard never fires
 ```
-Lean probes: `ssh kriterion 'bash -lc "cd ~/lean-shared/clever && lake env lean <file>"'`.
+Lean probes: `ssh studio 'bash -lc "cd ~/lean-shared/clever && lake env lean <file>"'`.

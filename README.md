@@ -28,8 +28,9 @@ repository it was copied from.
 | `PUBLISH-CHECKLIST.md` | the hygiene and provenance checklist driven before publication |
 | `select_tasks.py`, `TASKLIST.json`, `IMAGE-DIGESTS.json` | the S1 draw as code, the frozen list, the evaluation image digests |
 
-The run records (`runs/`, 61 MB of transcripts and manifests) and the S2 episode archives are
-released as a data asset beside this repository, not in the git tree.
+The run records (`runs/`, 61 MB of transcripts and manifests) and the S2 episode archives are a
+separate data asset, not in the git tree; its DOI is assigned at release (Zenodo) and recorded here
+on the flip day.
 
 ## The protocol in five lines
 
@@ -46,13 +47,36 @@ released as a data asset beside this repository, not in the git tree.
 
 ## Reproducing
 
-The task populations are re-derived from their pinned sources by the harness's view builders
-(`harness/s2lean/build_views.py`, `harness/s2rust/build_views_verus.py`, `harness/project_data.py`).
+The task populations are re-derived from their pinned sources by the harness's view builders.
 The pins are lines in `harness/HASHES.txt`; the episode scripts refuse to run a stage whose view or
-checker hash is not the pinned one. The morning-line instruments (`harness/morning_line.py`,
-`harness/s2lean/s2_morning_line.py`) reproduce every rate in the paper from the manifests, and
-their self-tests drive the script's real argv. The episodes ran under Claude Code 2.1.251 headless
-on a subscription; the agent is not redistributed.
+checker hash is not the pinned one. The morning-line instruments reproduce every rate in the paper
+from the episode manifests, and their self-tests drive the script's real argv. The episodes ran
+under Claude Code 2.1.251 headless on a subscription; the agent is not redistributed, and a rerun
+needs a Claude Code login, the Lean and Verus toolchains at the pinned versions, and a run host
+laid out as `SCOUT-S2LEAN-STAGE0.md` section 3 and `AMENDMENT-15-s2rust-2026-09-01.md` section 6
+describe (the scripts call it `studio`; set `STUDIO` to your own ssh host).
+
+```
+# 1. verify every file pin in the table against the tree (95 files; every line must read OK)
+cd harness && awk '!/^#/ && NF==2 && $2 ~ /^[0-9a-f]{64}$/ {print $2"  "$1}' HASHES.txt \
+  | while read h f; do [ -f "$f" ] && echo "$h  $f"; done | shasum -a 256 -c
+
+# 2. rebuild the S2-Lean views from a CLEVER checkout at the pinned commit (tracked under s2lean/views/)
+python3 s2lean/build_views.py <clever-checkout> s2lean/views
+
+# 3. rebuild the S2-Rust views from the pinned tasks.jsonl and compare the set-hash to HASHES.txt
+python3 s2rust/build_views_verus.py <tasks.jsonl> <viewsdir> --projects AC,NR
+python3 s2rust/views_sethash.py <viewsdir>          # -> "<sha256> count=207"; grep views-set-sha256 HASHES.txt
+
+# 4. the drivers (each refuses to start unless its own pins and smoke gate hold)
+caffeinate -dims ./run_stage0.sh <k> [start_index]                 # S1, env: BENCH H ARMS
+./s2lean/run_s2_stage0.sh <A|B|C> <k> [start_index]                # S2-Lean, env: BENCH H EPROOT ARMS
+printf '%s\n' a0 | ./s2rust/episode_s2rust.sh <task_id>            # one S2-Rust episode, env: BENCH H CFG VIEWS VERUS_ROOT
+
+# 5. the morning lines, from the manifests a run leaves under its state root
+python3 s2lean/s2_morning_line.py <state-root> <k>
+python3 morning_line.py <state-root> <a0-report> <a1-report>
+```
 
 ## Licence
 

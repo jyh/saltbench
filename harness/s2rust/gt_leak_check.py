@@ -109,7 +109,7 @@ def selftest():
     arm("the benchmark's task file by name", lambda d: w(d, "data/tasks.jsonl", '{"a":1}\n'), True)
     arm("a seat-side gt/ directory", lambda d: w(d, "gt/t1.json", '{"proof":"x"}'), True)
     arm("a .rs file MENTIONING ground_truth in a comment", lambda d:
-        w(d, "views/t1/task.rs", "// ground_truth lives on the seat\nverus!{}"), False)
+        w(d, "views/t1/task.rs", "// ground_truth lives host-side\nverus!{}"), False)
     print("\ngt_leak_check selftest: 7 arms, %d failed" % bad)
     shutil.rmtree(root, ignore_errors=True)
     return 1 if bad else 0

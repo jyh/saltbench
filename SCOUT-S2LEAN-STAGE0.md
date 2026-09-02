@@ -2,7 +2,7 @@
 
 **Frozen 2026-08-29, bench seat, BEFORE any model call on this substrate** (two refuter passes: §8/§9; controls 30/30 on
 the Studio and the run-shaped dry driven on the round-2 harness). Authorised by the scout's decision
-rules (`seat/briefs/2026-08-28-DELEGATION-morning-council-only.md` §1, in force on the Captain's word 20:3x):
+rules (the fleet's delegation brief of 2026-08-28, §1, in force on the Captain's word 20:3x):
 **F1** resolved the S1 fork to S2-Lean / CLEVER first; **F2** — the dated freeze commit IS the authorization,
 controls before treatment, treatment arms as dated amendments before their own first call; **F3** reads the
 control result; **F4** Sonnet first; **F5** an uncovered result is a HOLD with a fallback row, never an
@@ -10,7 +10,7 @@ improvised arm. Everything not stated here is inherited from `SCOUT-STAGE0.md` (
 the metering, the termination typing, the driver rules — **except every S1 sentence that presumes the container or
 the SWE-bench patch** (see §4/§6: `--network none`, `docker exec` scoring, "CHECK 2b in every container", the
 `model_patch.diff`/digest/platform artifact rows — none hold on this substrate; §4 and §6 give the S2 forms). `harness/` is the normative form. The source read behind
-the choice: `S2-SOURCE-READ-2026-08-29.md`. The refutation this draft answers: `seat/fleet/REFUTER-saltbench-s2lean-2026-08-28.md`
+the choice: `S2-SOURCE-READ-2026-08-29.md`. The refutation this draft answers: the refuter report on this scout's draft (pass 1, 2026-08-28, in the private record)
 (90 confirmed, 0 refuted) — §8 maps its classes to the repairs.
 
 ## 0 · What this stage is for — and what it cannot show
@@ -271,16 +271,16 @@ authorization (F2). The freeze commit sha is written to `harness/FREEZE-COMMIT` 
 (1a) `bash harness/sync_studio.sh` FIRST — it commits `harness/` to the Studio (views EXCLUDED; a stale Studio views dir
 is purged; `FREEZE-COMMIT` written; the receipt asserts every S2 file's Studio sha == the pin, and the three `leanproj-*`
 pins and `draw-30` are present). The build reads `clever-commit` from the Studio's HASHES.txt, which only this sync puts
-there. (1b) `ssh kriterion-lan 'bash ~/bench/harness/s2lean/lean_shared_build.sh'` — export → `~/lean-shared/clever`,
+there. (1b) `ssh studio 'bash ~/bench/harness/s2lean/lean_shared_build.sh'` — export → `~/lean-shared/clever`,
 `lake exe cache get` + `Imports` build, the six assertions, prints the `leanproj-*` shas (must equal the pins). (1c)
-`ssh kriterion-lan 'cp ~/bench/harness/settings.s2.json ~/.claude-bench/settings.json'` then assert its sha ==
+`ssh studio 'cp ~/bench/harness/settings.s2.json ~/.claude-bench/settings.json'` then assert its sha ==
 `grep '^settings.s2.json ' harness/HASHES.txt` — **re-run this after ANY claude login/auth refresh on the Studio (a login
 REWRITES settings.json), and re-run smoke afterward** (episode_s2.sh asserts this sha per episode). (1d) the controls, kit
 OUTSIDE `~/bench` (it carries `frozen.json`, which would trip the stage-A refusal): on the seat
 `rm -rf /tmp/s2kit && python3 harness/s2lean/s2_controls_kit.py "$CLEVER_SRC" harness/s2lean/views /tmp/s2kit`;
-`ssh kriterion-lan 'rm -rf ~/s2kit'`; `rsync -a /tmp/s2kit/ kriterion-lan:~/s2kit/`;
-`ssh kriterion-lan 'bash ~/bench/harness/s2lean/s2_controls.sh ~/lean-shared/clever ~/s2kit ~/bench/state/s2-controls.json'`
-(CONTROLS PASS 30/30 required; it deletes the kit unless `KEEP_KIT=1`); then `ssh kriterion-lan 'rm -rf ~/s2kit; find ~/bench ~/lean-shared -name frozen.json -o -name C.lean | wc -l'` must print 0 before ship A.
+`ssh studio 'rm -rf ~/s2kit'`; `rsync -a /tmp/s2kit/ studio:~/s2kit/`;
+`ssh studio 'bash ~/bench/harness/s2lean/s2_controls.sh ~/lean-shared/clever ~/s2kit ~/bench/state/s2-controls.json'`
+(CONTROLS PASS 30/30 required; it deletes the kit unless `KEEP_KIT=1`); then `ssh studio 'rm -rf ~/s2kit; find ~/bench ~/lean-shared -name frozen.json -o -name C.lean | wc -l'` must print 0 before ship A.
 
 **STEP 2 — ship the stage-A views and probe (no scored call yet):** `harness/s2lean/stage_views.sh ship A`
 (A.lean + frozenA.json only; `check` shows frozen = 0, C = 0). Smoke `smoke_s2.sh` (arm `s0`, `SMOKE(…)`, never scored,
@@ -297,7 +297,7 @@ regex, is measured) · **S4** writes (`.lake/probe` DENIED; cwd writable) · **S
 `bench:run`; the seat's watch emits a liveness line per landing.
 
 **STEP 4 — the morning line, then archive back to the seat:**
-`ssh kriterion-lan 'python3 ~/bench/harness/s2lean/s2_morning_line.py ~/bench/state 30'`: per stage and arm,
+`ssh studio 'python3 ~/bench/harness/s2lean/s2_morning_line.py ~/bench/state 30'`: per stage and arm,
 passed / landed / k; **the F3 line** (plain, stage B, over k) with its band; beside it the unflagged rate (the F5
 band-divergence check), the rate without problem_90, the recall instrument (`f_high` and whether the band is read),
 the C line over the C-eligible subset, orphan/superseded/view-dead rows, the classes (KERNEL_REJECTED, STATEMENT_ALTERED,
@@ -323,7 +323,7 @@ triage (§2) and the results commit; `studio_phase.sh out`-style assertion that 
 
 ## 9 · Refuter pass 2 (2026-08-29, 4a26604) → round-2 repairs (this text)
 
-Pass 2 (`seat/fleet/REFUTER-saltbench-s2lean-pass2-2026-08-29.md`): 76/90 pass-1 findings CLOSED, 13 PARTIAL + 1
+Pass 2 (the refuter report of 2026-08-29, in the private record): 76/90 pass-1 findings CLOSED, 13 PARTIAL + 1
 OPEN(note), 22 fresh confirmed (0 refuted). Round 2, each re-driven on the seat:
 
 | finding (pass 2) | repair (section) |
@@ -507,7 +507,7 @@ sharpest open design question is unchanged, and is now larger.
 ### Amendment 3 — 2026-08-30, row p option (a): the UNFLAGGED-ONLY n=15 control at R=100 — registered before its first call
 
 **Authorization.** Council 2026-08-30, DESK row w, the Captain's word: *"Authorize R=100"*. The minute records it as
-"Unflagged-only n=15 at the R=100 cap, ~41M / ~3 h on kriterion — the clean control. The ~22.5M envelope is superseded
+"Unflagged-only n=15 at the R=100 cap, ~41M / ~3 h on the Studio — the clean control. The ~22.5M envelope is superseded
 for this step; bench's stage-A default is void." This amendment is written and committed BEFORE the first model call of
 the act, per the freeze rule; the commit is the authorization.
 
@@ -1139,7 +1139,7 @@ SMOKE and DRY rows. **The count was there and it was unreadable, which is the sa
 ### Amendment 8 — 2026-08-31, THE OPUS-5 REACH AMENDMENT: the same U15, the tier raised, `a0` + `a2` — registered BEFORE its first call
 
 **Authorization.** The Captain's word, in channel to the helm at 10:5x: *"Let's do the Opus 5 tier raise on the same
-15 problems… 40% left on all-models on kriterion, reset in 5h. Let's go for it."* Docketed as **desk row c** (seat
+15 problems… 40% left on all-models on the bench account, reset in 5h. Let's go for it."* Docketed as **desk row c** (seat
 `7065cbed`, 11:08:07); bench relit on it 11:08:17. This is the deferred **(c2)** of the 08/29 four-option brief —
 the commission's sequential-models fence (Sonnet across all arms first, then the tier that differs) lifted by the
 same hand that set it. Ruling O's *no further arm spend* was substrate- and tier-scoped, and **the tier is what moves.**
@@ -1181,7 +1181,7 @@ regimes and no more.
 
 **Harness — two registered overrides, in the shape amendments 3 and 5 established.** `M_AMEND` (allowlisted
 `claude-sonnet-5 | claude-opus-5`; **`claude-fable-5` deliberately absent** — Fable episodes need the Captain's own
-word per council item 12, and kriterion's Fable weekly read **93 % consumed** at 11:00 today) and `W_AMEND`
+word per council item 12, and the bench account's Fable weekly read **93 % consumed** at 11:00 today) and `W_AMEND`
 (validated integer seconds). Both REFUSE rather than guess, both are re-exported after the driver's deliberate
 unset, both print to the run log. **Six REFUSE arms and a negative control driven under the run-shaped dry before
 this text was written; the accept path is driven on the Studio before the first episode** — the campaign's own gate,
@@ -1206,7 +1206,7 @@ table above is a *per-item basis*, not a prediction — it becomes one only when
 **So stage A is run first and is the calibration**, which costs nothing extra because row c requires both stages at
 the raised tier anyway.
 
-**BUDGET, MEASURED — and it decides start-now vs wait.** kriterion at 11:00 (quota-cadence, zero model tokens):
+**BUDGET, MEASURED — and it decides start-now vs wait.** The bench account at 11:00 (quota-cadence, zero model tokens):
 **5-hour rolling 0 %** · **all-models weekly 60 % used ⇒ 40 % left** · Fable weekly 93 % · **both weeklies reset
 today at 15:59.**
 ⇒ **THE 40 % EXPIRES IN ~4.5 HOURS. Spending it before 15:59 is not a cost — not spending it is.** That, and not
@@ -1229,7 +1229,7 @@ carries in-flight liveness).
 - **Stage A:** 25,000,000 metered (≈ 3.7 × the Sonnet figure) **or** 3.0 h wall — the driver stops after the
   episode in flight and the state goes to the desk before anything further runs.
 - **Stage B:** the all-models weekly reaching **75 % consumed**, **or** 90,000,000 metered in either arm, **or**
-  12 h wall — same halt, same report. A quarter of the week's pool is left for everything else kriterion does.
+  12 h wall — same halt, same report. A quarter of the week's pool is left for everything else the Studio does.
 - A halt is **resumable** and quota exhaustion is a swap event under the council's doctrine, not a failure.
 
 **PREDICTIONS, registered before the first call, scored as they stand.**

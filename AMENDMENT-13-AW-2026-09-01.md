@@ -3,7 +3,7 @@
 
 **Commission:** desk row AW, GO'd by the Captain at the helm 2026-09-01 14:1x ("AW (a1@Opus as the
 arm-independence question, GO by ruling 15) after the gate read … AW runs in every branch after the gate
-read (≈13M, kriterion)"). The gate read landed at 22:09Z (`P0 = 12/12`, CEILING HOLD, saltbench `2219c23`).
+read (≈13M, the bench account)"). The gate read landed at 22:09Z (`P0 = 12/12`, CEILING HOLD, saltbench `2219c23`).
 **No `a1`-at-Opus model call has been made. This amendment is written before the first one.**
 
 ---
@@ -143,7 +143,7 @@ Each HALT sits **above** its corner, because a HALT that binds is a budget rule 
 - **HALT 35M per arm-stage** (`halt_watch.sh $BENCH <STAGE> a1 35000000 12`), armed in `tmux` **on the
   Studio, BEFORE the first episode of EACH stage** — never in the seat's session, which dies at exit.
 - **HALT 12 h wall per arm-stage**, cooperative via `$BENCH/HALT` read inside the driver's arm loop.
-- **Weekly ≤ 75 %**, **Sep 7 16:00 protected**, kriterion only.
+- **Weekly ≤ 75 %**, **Sep 7 16:00 protected**, the bench account only.
 - **One quota reading at THIS dispatch. Never a poll.**
 
 ## §8 · WHAT THIS AMENDMENT CANNOT SAY
@@ -159,9 +159,9 @@ a different population) and nothing about the salt method, which `a2` already an
 ## ADDENDUM 1 (2026-09-01 22:3x, BEFORE THE FIRST `a1` CALL) — HOW §7's QUOTA READING IS SATISFIED, AND WHY NO SECOND READING IS TAKEN
 
 §7 registers *"one quota reading at THIS dispatch."* **The reading of record is the helm's, taken at
-2026-09-01 14:0x and posted at bus offset 30441837: `kriterion 1/0/0` (5h-rolling / all-models-weekly /
+2026-09-01 14:0x and posted at bus offset 30441837: `bench-account 1/0/0` (5h-rolling / all-models-weekly /
 fable-weekly), resets Sep 7.** It was taken **for this ladder**, and the Captain's word in the same post
-prices AW inside it explicitly ("AW runs in every branch after the gate read (≈13M, kriterion)").
+prices AW inside it explicitly ("AW runs in every branch after the gate read (≈13M, the bench account)").
 
 **MEASURED SINCE, at the artifact rather than estimated:** amendment 11 Step 1 spent **4,352,098 metered
 tokens** (12 episodes, 56.7 min). That is the entire consumption between the reading and this dispatch.

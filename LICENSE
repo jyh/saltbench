@@ -1,3 +1,7 @@
+PROPOSAL (2026-09-02): the code of this repository (harness/, scripts/, select_tasks.py) is
+offered under the Apache License 2.0 whose text follows. The licence choice is the repository
+owner's; this file says "proposal" until that choice is made, and the licence text below is
+the unmodified Apache-2.0 text. Data and documents: see LICENSE-DATA (also a proposal).
 
                                  Apache License
                            Version 2.0, January 2004

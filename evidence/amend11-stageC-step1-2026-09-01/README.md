@@ -1,6 +1,6 @@
 # EVIDENCE — amendment 11 Step 1 (S2-Lean stage C, `a0`, the registered 12, `claude-opus-5`)
 
-Run root `/Users/jyh/bench-c` on kriterion. Dispatch 2026-09-01T21:13:09Z, DRIVER DONE 22:09:49Z.
+Run root `/Users/jyh/bench-c` on the Studio. Dispatch 2026-09-01T21:13:09Z, DRIVER DONE 22:09:49Z.
 Every file copied from the Studio and **sha-verified against its source after the copy** — the receipt is
 the content, never scp's exit code.
 

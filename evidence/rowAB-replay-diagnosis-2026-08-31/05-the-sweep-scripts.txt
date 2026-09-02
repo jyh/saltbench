@@ -1,4 +1,4 @@
-===== /tmp/ab_sweep.py (run on kriterion) =====
+===== /tmp/ab_sweep.py (run on the Studio) =====
 import json,os,glob,re
 rows=[]
 for root,tag in (("/Users/jyh/bench/state","sonnet"),("/Users/jyh/bench-a8/state","opus")):
@@ -28,7 +28,7 @@ print("ALL replay_ok==False:")
 for r in rows:
     if r["replay"] is False: print(" ",r["tag"],r["ep"],"p"+str(r["pid"]),r["arm"],r["stage"],r["cls"],"nd=",r["nd"],"|",r["err"])
 
-===== /tmp/ab_tab.py (run on kriterion) =====
+===== /tmp/ab_tab.py (run on the Studio) =====
 import json,os,glob
 from collections import Counter,defaultdict
 rows=[]
@@ -52,7 +52,7 @@ for tag,arm,pid,cls,sx,rp,ep,mo in rows:
     if cls!="PASS": fam[(tag,arm)][(cls,sx)]+=1
 for k in sorted(fam,key=str): print(" ",k,dict(fam[k]))
 
-===== /tmp/ab_surface.py (run on kriterion) =====
+===== /tmp/ab_surface.py (run on the Studio) =====
 import json,os,glob
 from collections import defaultdict
 import statistics as st

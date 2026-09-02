@@ -20,7 +20,7 @@
 # usage: RBENCH=<remote abs path> stage_views.sh gen <clone src/lean4> | ship A | ship BC | check
 #        ship BC additionally needs:  IDS="73 0 146 ..."  ARMS="a0,a2"   (BC_MAX_AGE_H defaults to 24)
 set -u
-STUDIO="${STUDIO:-kriterion-lan}"; REPO="$(cd "$(dirname "$0")/../.." && pwd)"; V="$REPO/harness/s2lean/views"
+STUDIO="${STUDIO:-studio}"; REPO="$(cd "$(dirname "$0")/../.." && pwd)"; V="$REPO/harness/s2lean/views"
 SSH="ssh -o ConnectTimeout=10"
 need_root() {
   [ -n "${RBENCH:-}" ] || { echo "REFUSE: RBENCH is required and has no default (the absolute state root ON THE STUDIO, e.g. /Users/jyh/bench-a8)."; echo "        The 2026-08-31 green-light-on-nothing was a hardwired \`~/bench\` answering for a run that wrote \`~/bench-a8\`."; exit 2; }

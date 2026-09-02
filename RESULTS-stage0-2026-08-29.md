@@ -1,6 +1,6 @@
 # STAGE 0 — RESULTS, 2026-08-29 (bench seat)
 
-Protocol: `SCOUT-STAGE0.md` frozen at `cb8cea3`, amendment 1 + addenda 1–4 (executed at freeze commit `13959bd`→`6c6df80` on the Studio; every manifest names its commit). Substrate: SWE-bench Verified pilot draw, first k = 15 tasks of `TASKLIST.json`, both arms, task-major. Agent: Claude Code 2.1.251 headless, `claude-sonnet-5`, effort high, `--max-turns 40`, on the jykriterion subscription. Scorer: swebench 4.1.0 in the digest-bridged images. Controls: pre-flight 15/15, gold 15/15, EXCLUDED = []. Driver: 00:21:25Z → 01:17:06Z (56 min). Scoring: 01:20Z → 01:41Z. Archive: `runs/stage0-2026-08-28/` (transcripts, manifests, patches, meter, logs; the reproducible trees excluded).
+Protocol: `SCOUT-STAGE0.md` frozen at `cb8cea3`, amendment 1 + addenda 1–4 (executed at freeze commit `13959bd`→`6c6df80` on the Studio; every manifest names its commit). Substrate: SWE-bench Verified pilot draw, first k = 15 tasks of `TASKLIST.json`, both arms, task-major. Agent: Claude Code 2.1.251 headless, `claude-sonnet-5`, effort high, `--max-turns 40`, on the bench subscription. Scorer: swebench 4.1.0 in the digest-bridged images. Controls: pre-flight 15/15, gold 15/15, EXCLUDED = []. Driver: 00:21:25Z → 01:17:06Z (56 min). Scoring: 01:20Z → 01:41Z. Archive: `runs/stage0-2026-08-28/` (transcripts, manifests, patches, meter, logs; the reproducible trees excluded).
 
 ## The morning line (the one pre-declared computation, `harness/morning_line.py`)
 

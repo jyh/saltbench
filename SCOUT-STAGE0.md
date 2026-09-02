@@ -4,10 +4,10 @@
 the harness under `harness/` is the normative form of every mechanism named here, and
 `harness/HASHES.txt` pins every file, the arm renderings, the projected data, the per-task
 canonical prompts, and the claude version. Two refuter passes preceded it, both banked in
-`seat/fleet/`: pass 1 on draft `a03bd3c` (5 lenses, 42 confirmed, 10 fatal) and pass 2 on the
+the private record: pass 1 on draft `a03bd3c` (5 lenses, 42 confirmed, 10 fatal) and pass 2 on the
 repaired `79835da` (21 closed / 21 partial; 3 fresh fatals, **all repair-introduced**). Their
 residue is repaired in this commit; what is left open is named in §0 and §8, not smoothed.
-Commission: council minute 2026-08-28 ITEM 12 and `seat/briefs/0000-BOOT-bench.md`.
+Commission: council minute 2026-08-28 ITEM 12 and the bench seat's boot brief.
 
 This document supersedes NOTHING in `PRE-REGISTRATION.md` (v4) or `DESIGN-gate-wave1.md` (v4):
 wave 1 is **HELD** — no model call is made under that design — and stage 0 REUSES its
@@ -56,7 +56,7 @@ exists. Stage 0 measures nothing about the salt method.
 
 **Agent = Claude Code proper, `claude` 2.1.251 (pinned in `HASHES.txt`; the version is asserted
 before every episode and the auto-updater is disabled in the agent's environment), headless
-(`-p`), on the Studio host, on the jykriterion subscription.** Never an API key; never the OAuth
+(`-p`), on the Studio host, on the bench subscription.** Never an API key; never the OAuth
 token in a custom harness.
 
 ```
@@ -349,7 +349,7 @@ pre-flight/gold-control rows. **A green exit says something RAN, not what:** an 
    `dry_exec_stub.sh` (the run-shaped dry) · `hashes.sh` → `HASHES.txt`. All self-tests pass on
    the Studio itself (bash 3.2, python 3.9); `--dry` and the run-shaped dry passed there under
    this runner.
-2. Captain's hand: `~/.claude-bench` logged in as jykriterion **from inside `tmux attach -t
+2. Captain's hand: `~/.claude-bench` logged in as the bench account **from inside `tmux attach -t
    bench`** on the Studio (so the credential is created by the session that will read it), then
    the config dir's transient entries cleared (`episode.sh` asserts them empty).
 3. **SMOKE PROBES — the first model calls on this account, DECLARED here so they own their
@@ -427,7 +427,7 @@ with its PROFILE (§4).*
 
 ## AMENDMENT 1 — 2026-08-28 (bench seat), after refuter pass 3 on the freeze commit `cb8cea3`; before any model call
 
-Pass 3 (`seat/fleet/REFUTER-saltbench-stage0-pass3-2026-08-28.md`: 24 closed / 22 partial; 13 fresh,
+Pass 3 (the refuter report of 2026-08-28, pass 3, in the private record: 24 closed / 22 partial; 13 fresh,
 2 FATAL) found what the pass-2 repairs broke. Repaired here and re-pinned; the text above is left as
 frozen and this amendment governs where they differ:
 
@@ -501,7 +501,7 @@ adopted (`--model claude-sonnet-5` is passed explicitly). The Studio file is re-
 `episode.sh` keeps refusing any drift. Also recorded: the login created `~/.claude-bench/.credentials.json` — Claude
 Code's own credential file (the Keychain was not reachable from the ssh session) — allowed, unexpected-entry logged.
 
-**Amendment 1, addendum 3 (2026-08-29 00:2x, after the four smoke probes — the first model calls on jykriterion,
+**Amendment 1, addendum 3 (2026-08-29 00:2x, after the four smoke probes — the first model calls on the bench account,
 arm `s0`, task `django__django-15315`, freeze commit `13959bd`):** MEASURED: (A1) the canary string landed —
 the arm CLAUDE.md IS loaded under `--setting-sources user,project`; the agent's PATH is exactly the one §1
 states; 2 calls, 39,157 governing tokens. (A2) `docker version` was BLOCKED by the hook from inside the agent,

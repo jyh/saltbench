@@ -201,6 +201,21 @@ jobs:
           # Anything NEW reds, on every push, on every branch.
           python scripts/check_private_paths.py --messages
 
+  infra-names:
+    name: no infrastructure name (host, account) in the public tree
+    runs-on: ubuntu-latest
+    # Added 2026-09-02 after the v1 refuter pass found 41 occurrences of the run host's and the
+    # subscription account's names in the tree, a class neither sibling gate covers (they fire on
+    # PATHS). The names were replaced by role words and this arm holds the class. Tree scan, every
+    # push; the gate proves it can fail before it is allowed to pass.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/check_infra_names.py --self-test
+      - run: python scripts/check_infra_names.py
+
   pr-descriptions:
     name: no private-record path in PR titles/bodies (the forge-side prose)
     runs-on: ubuntu-latest

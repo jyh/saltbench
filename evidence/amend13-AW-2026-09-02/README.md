@@ -1,6 +1,6 @@
 # EVIDENCE — amendment 13 (row AW): `a1` (placebo) at `claude-opus-5`, stage A+B on U15
 
-Root `/Users/jyh/bench-aw` on kriterion, built BY HAND (`ship A` hangs). Stage A 2026-09-01T22:20:20Z →
+Root `/Users/jyh/bench-aw` on the Studio, built BY HAND (`ship A` hangs). Stage A 2026-09-01T22:20:20Z →
 22:54:05Z; stage B 22:54:50Z → 2026-09-02T00:31:59Z. Every file sha-verified against its source AFTER copying.
 
 | file | what it proves |

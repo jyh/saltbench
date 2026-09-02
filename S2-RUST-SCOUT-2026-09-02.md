@@ -106,7 +106,7 @@ Not touched by this pass, and still required before any S2-Rust design can be fr
   which must be recorded at snapshot time. **A benchmark whose recipe is unpinned is pinned by its registry,
   and a registry tag is a moving target with a name that looks fixed.**
 - **(c) Feasibility on the Studio.** Both harnesses are Docker-in-Linux, `linux/amd64`, no native-macOS path.
-  Rosetta emulation is verified working on kriterion for `linux/amd64`, but **no Rust image has been pulled or
+  Rosetta emulation is verified working on the Studio for `linux/amd64`, but **no Rust image has been pulled or
   run here** and disk cost is unmeasured. Rust-SWE-bench needs a 120 GB local build and is separately blocked
   on **(g) licence absent**.
 - **(d) Arm content is undesigned** — whether `hints_text` (often quoting the fix) and `FAIL_TO_PASS` test

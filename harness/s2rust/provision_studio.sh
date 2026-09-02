@@ -1,6 +1,6 @@
 #!/bin/bash
 # provision_studio.sh — put the S2-Rust toolchain on the Studio, BY TRANSPORT FROM THE SEAT, and verify it
-# BY CONTENT. Run FROM THE SEAT. Zero model tokens.   env: STUDIO (ssh host, default kriterion-lan)
+# BY CONTENT. Run FROM THE SEAT. Zero model tokens.   env: STUDIO (ssh host, default studio)
 #
 # ⛔ WHY TRANSPORT AND NOT `curl https://sh.rustup.rs | sh`. The wave's firewall line is "no binary of
 # unestablished provenance; saltbench pins its own download by sha256". A fresh network install on the Studio
@@ -16,7 +16,7 @@
 #
 # usage: provision_studio.sh [--verify]     --verify skips the copy and only re-checks what is there
 set -u
-STUDIO="${STUDIO:-kriterion-lan}"
+STUDIO="${STUDIO:-studio}"
 SSH="ssh -o ConnectTimeout=10"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 VERIFY_ONLY=0; [ "${1:-}" = "--verify" ] && VERIFY_ONLY=1

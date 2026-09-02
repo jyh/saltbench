@@ -6,7 +6,8 @@ authors:
     given-names: Jason
 version: "1.0"
 date-released: "2026-09-02"
-license: Apache-2.0
+# license: PROPOSED Apache-2.0 for the code (LICENSE, marked PROPOSAL) and CC-BY-4.0 for data and
+# documents (LICENSE-DATA). The field is set on the flip day, when the repository owner chooses.
 repository-code: "https://github.com/jyh/saltbench"
 keywords:
   - benchmark

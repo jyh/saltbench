@@ -7,7 +7,7 @@ registered before it runs.
 
 Evidence: `evidence/rowAB-replay-diagnosis-2026-08-31/` (5 files; the sweep scripts are archived with it so the
 numbers are re-derivable). State roots read: `~/bench/state` (Sonnet, amendments 1–6) and `~/bench-a8/state`
-(Opus-5, amendment 8), both on kriterion.
+(Opus-5, amendment 8), both on the Studio.
 
 ## 1 · The question as the bank left it
 

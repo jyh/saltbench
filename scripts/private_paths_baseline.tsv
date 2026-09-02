@@ -1,12 +1,2 @@
 # private_paths_baseline.tsv -- ACCEPTED residue for the tree ratchet (check_private_paths.py --tree).
 # file<TAB>line-sha16<TAB>what. Shrink it after a repair with --tree --write-baseline; a growth is a reviewed diff.
-AMENDMENT-15-s2rust-2026-09-01.md	ac9e3e0c884dd0fc	a path into a private-record repo
-AMENDMENT-15-s2rust-2026-09-01.md	004deec9de7aee4a	a path into a private-record repo
-PRE-REGISTRATION.md	e631f52fadad3261	a path into a private-record repo
-SCOUT-S2LEAN-STAGE0.md	776304192e78e1a0	a path into a private-record repo
-SCOUT-S2LEAN-STAGE0.md	5a87eb8d1a821896	a path into a private-record repo
-SCOUT-S2LEAN-STAGE0.md	4ad2f480575c0489	a path into a private-record repo
-SCOUT-STAGE0.md	76c0d1efc0e8192b	a path into a private-record repo
-SCOUT-STAGE0.md	a91fb5b465759e83	a path into a private-record repo
-SCOUT-STAGE0.md	f1140c8ba6b93b5e	a path into a private-record repo
-harness/s2rust/gt_leak_check.py	d8d8806c050986d2	a path into a private-record repo

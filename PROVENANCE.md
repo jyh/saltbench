@@ -62,8 +62,9 @@ read from a secondary record rather than the object, the row says so.
 The run records (`evidence/`, tracked; `runs/`, untracked, 61 MB; the S2-Lean and S2-Rust episode
 archives, on the Studio state roots and NOT in this repository) contain the agent's transcripts,
 its patches, proofs and specifications, and the referee's verdicts. They are this campaign's
-measurements and are released with the paper as data under the data licence proposed in the
-public README. Two notes travel with them:
+measurements. They are a separate data asset under the data licence proposed in `LICENSE-DATA`;
+its DOI is assigned at release (Zenodo) and recorded here on the flip day, and section 4 states what
+the asset still needs before that day. Two notes travel with them:
 
 1. Provider terms. The agent is Claude Code on a consumer subscription. Anthropic's published
    terms assign output ownership to the user and do not forbid publication of outputs; this is the
@@ -78,13 +79,36 @@ public README. Two notes travel with them:
 ## 4. What is NOT in this repository, and where it is
 
 - `data/verified.json` (the SWE-bench Verified rows): re-derive from the pinned revision.
-- `runs/` (the S1 stage-0 and audit archives): released as a data asset beside the repository,
-  not in the git tree.
-- The S2-Lean episode archives (`~/bench*/state/` on the Studio: `task.lean`, `bodies.json`,
-  `canonical.lean`, `check.json`, `audit.json`, `session.jsonl`, `manifest.json` per episode) and
-  the S2-Rust archives (`~/bench-rust/`): the bench seat owns them; they are pulled into the data
-  asset before the flip. The paper's numbers are read from the RESULT files, which were computed
-  from these archives by the pinned morning-line instruments.
-- The refuter reports and the commissions this record cites by name live in the private record
-  and are not published; the record cites them where it always did (PUBLISH-CHECKLIST.md item (b)
-  explains why those citations stay).
+- The run records and the S2 episode archives are a separate data asset; its DOI is assigned at
+  release (Zenodo) and recorded here on the flip day. Status on 2026-09-02: **OWED, INVENTORIED,
+  NOT YET SCRUBBED, AND NOT A REPO ARTIFACT.** The inventory, as measured by the bench seat at the
+  state roots on 2026-09-02:
+
+  | root | contents |
+  |---|---|
+  | `runs/` (S1, on the seat machine, untracked) | 61 MB: stage-0 transcripts, audit runs, Studio controls and scoring |
+  | S2-Rust `~/bench-rust/state` | 16 episode dirs (15 landed, 1 in flight), 15 `manifest.json`, 15 `session.jsonl`, 19 MB |
+  | S2-Lean `~/bench/state` | 176 episode dirs, 3.3 GB (the size is Lean build residue, not more evidence) |
+  | S2-Lean `~/bench-a8/state` | 60 episode dirs, 32 MB |
+  | S2-Lean `~/bench-aw/state` | 30 episode dirs, 15 MB |
+  | S2-Lean `~/bench-c/state` | 12 episode dirs, 7.1 MB |
+
+  278 S2-Lean episode directories across four roots, and the roots are not interchangeable. Each
+  episode holds `task.lean`, `bodies.json`, `canonical.lean`, `check.json`, `audit.json`,
+  `session.jsonl` and `manifest.json` (S2-Rust: `task.rs`, the extracted proof, the checker record,
+  `session.jsonl`, `manifest.json`). The paper's numbers are read from the RESULT files, which the
+  pinned morning-line instruments computed from these archives.
+
+  What the asset needs before release, and why it is not a pending copy: a `session.jsonl` is the
+  agent's full transcript and carries absolute host paths, session identifiers, the configuration
+  directory's layout and the agent's own reasoning text. That is exactly why it is the evidence the
+  protocol asks for, and exactly why it is not copied anywhere public unread. It needs a scrub gate
+  of its own, run over transcript bodies (the shape of `scripts/check_private_paths.py`, applied to
+  content rather than to tree paths), and a release channel that is not git. The directory
+  `~/bench-rust/specimen-unauditable/` holds the two S2-Rust episodes that passed blind and the one
+  that could not be audited; they are kept deliberately as specimens, are counted in no rate, and
+  ship LABELLED if the asset ships.
+- The refuter reports and the commissions this record cites by role ("the fleet's wave commission",
+  "the refuter report of 2026-08-29", "the bench seat's boot brief") live in the private record and
+  are not published. They were cited by path until 2026-09-02; PUBLISH-CHECKLIST.md section (f)
+  records the rewording and the byte changes it made to frozen documents.
