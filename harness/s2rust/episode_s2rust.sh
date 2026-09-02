@@ -81,6 +81,31 @@ command -v perl >/dev/null 2>&1 || refuse "perl missing (rt bound)"; command -v 
 python3 "$S2R/render_settings_verus.py" --check "$CFG/settings.json" --bench "$BENCH" > "$ST/settings_check.txt" 2>&1 \
   || { cat "$ST/settings_check.txt"; refuse "$CFG/settings.json is not the pinned fence template rendered at BENCH=$BENCH"; }
 
+# ⛔⛔ THE AGENT'S WORKSPACE MUST NOT BE INSIDE THE FENCE'S OWN DENY SET, AND THIS ASSERTION EXISTS BECAUSE
+# TWO EPISODES PASSED WITHOUT IT. Row CO's repair makes `denyRead` DERIVE from `$BENCH` so the fence follows
+# the state root; it becomes self-defeating the moment the episode tree is placed INSIDE that root, because
+# the agent's own `rt` wrapper and task file then sit in a denied subpath. Measured on `ep-3fba0475`:
+# `denyRead` carried `/Users/jyh/bench-rust`, `EPROOT` was `$BENCH/work`, and the agent tried `../rt` THREE
+# times, failed silently every time (rt never even logged a START), and spent ten Bash calls hunting for a
+# `verus` it was never going to find. It then wrote a proof BLIND — and the proof PASSED.
+#   ⇒ 🔑 A FENCE DERIVED FROM THE RUN ROOT MUST NOT CONTAIN THE AGENT'S OWN WORKSPACE. Deriving the deny set
+#     was right; what made it wrong was placing the workspace inside the thing being denied. S2-Lean never
+#     hit this only because its EPROOT (`$HOME/work`) happens to sit outside `~/bench`.
+#   ⇒ 🔑 AND THE EPISODE STILL SCORED. A blind agent that passes is not a cheap pass — it is a measurement of
+#     a DIFFERENT TASK than the one registered, and nothing downstream could have told the difference.
+# This is a REFUSAL and not a warning: an episode the agent cannot check its work in must not be scored.
+python3 - "$CFG/settings.json" "$EP" <<'PY' || refuse "the episode workspace is inside the agent fence's deny set (see above)"
+import json, os, sys
+cfg, ep = sys.argv[1], os.path.realpath(sys.argv[2])
+deny = json.load(open(cfg))["sandbox"]["filesystem"].get("denyRead") or []
+hit = [d for d in deny if ep == d or ep.startswith(os.path.realpath(os.path.expanduser(d)) + os.sep)]
+if hit:
+    print("FENCE SELF-BLOCK: the episode dir %s is inside denied path(s) %s" % (ep, hit))
+    print("  the agent could not read or execute its own rt wrapper; set EPROOT outside $BENCH")
+    sys.exit(2)
+print("fence/workspace disjoint: %s is outside every denyRead entry" % ep)
+PY
+
 # ── 1. THE TOOLCHAIN — identity AND capability, before anything is prepared ──────────────────────────────
 HASHES="$H/HASHES.txt" VERUS_ROOT="$VERUS_ROOT" LYNETTE_BIN="$LYNETTE_BIN" \
   bash "$S2R/smoke_toolchain_verus.sh" > "$ST/toolchain.txt" 2>&1 \
@@ -235,6 +260,12 @@ have_a=$(cat "$S2R/base.md" "$ARMFILE" | shasum -a 256 | cut -d' ' -f1)
 # ── 6. the wrapper under the agent's EXACT environment, before the model is paid for ─────────────────────
 # ⛔ The probe runs the REAL referee on the REAL task file. A wrapper that only works in the harness's own
 # environment fails on the agent's first call, after the spend has started.
+# ⚠️ AND THE PROBE IS NOT SUFFICIENT ON ITS OWN, WHICH IT LOOKED LIKE UNTIL IT WASN'T. It runs HARNESS-side,
+# unfenced, so it certifies that the wrapper works FOR THE HARNESS. On ep-3fba0475 this probe passed and the
+# AGENT still could not execute the same wrapper, because the agent runs under a Seatbelt fence the harness
+# does not. The structural assertion above (workspace disjoint from the deny set) is what actually covers
+# the agent's case; this probe covers the wrapper's own correctness. Two claims, two checks — the same
+# lesson the toolchain gate taught when its identity and capability halves disagreed about the machine.
 ( cd "$EP/repo" && env -i HOME="$REAL_HOME" USER="$USER" LOGNAME="$USER" PATH="$AGENT_PATH" TERM=dumb LANG=en_US.UTF-8 "$EP/rt" verus task.rs ) > "$ST/env_probe.txt" 2>&1
 pr=$?; printf 'rt_probe_rc=%s\n' "$pr" >> "$ST/env_probe.txt"
 # the UNSOLVED view is expected to FAIL verification (its proof body is empty) — what must work is the

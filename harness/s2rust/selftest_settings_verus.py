@@ -86,6 +86,20 @@ def main():
     rc, out = check(good, other)
     arm("C9 --check REFUSES another root's fence", rc != 0, out[:60])
 
+    # C10/C11 — THE SELF-BLOCK ARM. Two episodes PASSED before this existed, both of them blind: the fence
+    # derived from $BENCH denied the agent its own episode dir, because the workspace had been placed inside
+    # the root the fence protects. The agent tried `../rt` three times and failed silently every time.
+    #   ⇒ A FENCE DERIVED FROM THE RUN ROOT MUST NOT CONTAIN THE AGENT'S OWN WORKSPACE.
+    def blocked(ep, bench):
+        d = deny_of(R.render(bench))
+        return [x for x in d if ep == x or ep.startswith(os.path.realpath(os.path.expanduser(x)) + os.sep)]
+    inside = os.path.join(root, "work", "ep-deadbeef")
+    outside = os.path.join(os.path.expanduser("~"), "work", "ep-deadbeef")
+    arm("C10 workspace INSIDE the root is caught", bool(blocked(inside, root)),
+        "this is the defect that let two blind episodes score")
+    arm("C11 workspace OUTSIDE the root is fine", not blocked(outside, root),
+        "so C10 is the containment test, not a blanket refusal")
+
     print("\nsettings-fence selftest: %d arms, %d failed" % (len(PASS) + len(FAIL), len(FAIL)))
     if FAIL:
         print("  failed: %s" % ", ".join(FAIL))
