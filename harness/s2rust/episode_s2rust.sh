@@ -48,6 +48,15 @@ term="UNSET"; t0=$(now); crc=""; SID=""; JSONL=""; killed=""; finished=""; CPID=
 CLAUDE_BIN="${CLAUDE_BIN:-$(command -v claude)}"
 PINNED_CLAUDE=$(grep '^claude-version ' "$H/HASHES.txt" | cut -d' ' -f2)
 AGENT_PATH="${AGENT_PATH:-/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$REAL_HOME/.cargo/bin:$REAL_HOME/.local/bin}"
+# ⛔ THE HARNESS-SIDE PATH MUST CARRY rustup TOO, not just the agent's. `verus` is a shim that resolves its
+# toolchain by RUNNING rustup, so every harness-side invocation — the smoke gate, check_verus's fence
+# rendering — needs it on PATH exactly as the agent does. On the Studio rustup was TRANSPORTED, not installed
+# by rustup-init, so no login profile mentions it and the ambient PATH does not carry it.
+# The pilot's three episodes REFUSED on precisely this, before any model call. That is the gate working; the
+# defect was that the harness and the agent were being given two different machines to run on.
+CARGO_BIN="${CARGO_BIN:-$REAL_HOME/.cargo/bin}"
+case ":$PATH:" in *":$CARGO_BIN:"*) ;; *) PATH="$CARGO_BIN:$PATH" ;; esac
+export PATH
 sha() { shasum -a 256 "$1" 2>/dev/null | cut -d' ' -f1; }
 pin2() { grep -F -- "$1 " "$H/HASHES.txt" | grep -E "^$1 " | head -1 | cut -d' ' -f2; }
 refuse() { echo "REFUSE: $*"; rm -rf "$EP" "$ST"; exit 3; }

@@ -28,6 +28,17 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 HASHES="${HASHES:-$HERE/../HASHES.txt}"
 VERUS_ROOT="${VERUS_ROOT:-$HOME/verus-pin/verus-arm64-macos}"
 LYNETTE_BIN="${LYNETTE_BIN:-$HOME/verus-pin/lynette}"
+# ⛔⛔ ONE PATH, ESTABLISHED ONCE, FOR EVERY CHECK BELOW — AND THIS LINE IS A REPAIR, NOT A CONVENIENCE.
+# The first cut set `PATH="$HOME/.cargo/bin:$PATH"` only inside T3's python call. On the Studio, where rustup
+# was TRANSPORTED rather than installed by rustup-init (so no profile line was ever written), that produced a
+# gate whose halves disagreed about the machine: T1 reported "no rustup on PATH" while T3, three lines later,
+# reported the fenced referee verifying a real proof. Both were true, of two different environments.
+#   ⇒ 🔑 A GATE THAT MEASURES TWO PROPERTIES UNDER TWO DIFFERENT ENVIRONMENTS IS TWO GATES, AND ONLY ONE OF
+#     THEM DESCRIBES THE RUN. The identity half must be asked about the same machine the capability half runs on.
+# CARGO_BIN is a seam so a host that keeps rustup elsewhere can say so, rather than this failing mysteriously.
+CARGO_BIN="${CARGO_BIN:-$HOME/.cargo/bin}"
+case ":$PATH:" in *":$CARGO_BIN:"*) ;; *) PATH="$CARGO_BIN:$PATH" ;; esac
+export PATH
 
 sha(){ shasum -a 256 "$1" 2>/dev/null | cut -d' ' -f1; }
 pin(){ grep -E "^$1 " "$HASHES" 2>/dev/null | head -1 | cut -d' ' -f2; }
@@ -78,7 +89,7 @@ RL=$(pin verus-rlimit); SD=$(pin verus-seed)
 W=$(mktemp -d /tmp/verussmoke.XXXXXX)
 printf 'use vstd::prelude::*;\nverus!{\nproof fn smoke_add_zero(x: int)\n    ensures x + 0 == x\n{\n}\n}\nfn main() {}\n' > "$W/task.rs"
 export HERE
-out=$(cd "$W" && PATH="$HOME/.cargo/bin:$PATH" python3 - "$VERUS_ROOT/verus" "$W" <<'PY' 2>&1
+out=$(cd "$W" && python3 - "$VERUS_ROOT/verus" "$W" <<'PY' 2>&1
 import sys, os
 sys.path.insert(0, os.environ["HERE"])
 import check_verus as C
