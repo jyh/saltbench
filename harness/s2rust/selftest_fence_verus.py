@@ -179,6 +179,74 @@ def main():
     d = inspect.signature(C.referee).parameters["fenced"].default
     arm("A13 referee defaults to fenced", d is True, "default=%r" % d)
 
+    # ---- A14: THE CONFIG DIR IS A DERIVED ROOT (the sequel to row CO, and the arm that fails on the old code)
+    # ⛔ PATH CONTAINMENT, NEVER `startswith`. The defect's whole shape is that `~/.claude-bench` is a STRING
+    # prefix of `~/.claude-bench-rust` and is NOT its parent directory. An arm written with `startswith` would
+    # have passed against the broken code and certified the hole. My own first check made exactly that error.
+    from pathlib import Path
+
+    def path_covered(target, paths):
+        t = Path(os.path.realpath(target))
+        for q in paths:
+            qq = Path(os.path.realpath(q))
+            if t == qq or t.is_relative_to(qq):
+                return True
+        return False
+
+    SIB_CFG = "/Users/jyh/.claude-bench-rust"      # the sibling-prefix case, verbatim from the incident
+    cred = os.path.join(SIB_CFG, ".credentials.json")
+
+    with_cfg = C.deny_read_paths("/Users/jyh/bench-rust", SIB_CFG)
+    without   = C.deny_read_paths("/Users/jyh/bench-rust", None)
+
+    arm("A14a cfg derived: credentials DENIED", path_covered(cred, with_cfg),
+        "%s covered by the rendered deny set" % cred)
+    # THIS is the arm that fails on the pre-repair code: there, deny_read_paths took no cfg at all and the
+    # rendered fence for an S2-Rust run contained no path covering the agent's own config dir.
+    arm("A14b RED: without cfg it is NOT covered", not path_covered(cred, without),
+        "proves A14a is not vacuous — the old behaviour is reproduced and shown open")
+    # and the string test that lied, kept as a permanent demonstration rather than a memory
+    lied = any(cred.startswith(os.path.expanduser(x)) for x in C.DENY_READ)
+    arm("A14c startswith LIES where path containment does not",
+        lied and not path_covered(cred, without),
+        "a string test says covered, a path test says not — this is why the arm uses Path.is_relative_to")
+    # foreign trees must NOT have been dropped by the repair
+    arm("A14d foreign trees still denied",
+        path_covered("/Users/jyh/.claude-bench/.credentials.json", with_cfg)
+        and path_covered("/Users/jyh/.claude/.credentials.json", with_cfg),
+        "another regime's config dir and the user's own stay denied")
+    # the renderer must REFUSE rather than default
+    import render_settings_verus as R
+    try:
+        R.render("/Users/jyh/bench-rust", None, None)
+        refused = False
+    except SystemExit:
+        refused = True
+    arm("A14e renderer REFUSES an unset cfg", refused, "a default here would silently re-create the defect")
+    # and the rendered agent fence actually carries it
+    txt = R.render("/Users/jyh/bench-rust", None, SIB_CFG)
+    dr = (json.loads(txt).get("sandbox") or {}).get("filesystem", {}).get("denyRead") or []
+    arm("A14f rendered agent fence carries the cfg", path_covered(cred, dr),
+        "%d denyRead entries" % len(dr))
+    # ⛔ A14g DRIVES THE CLI, NOT THE FUNCTION — amendment 4's law: a self-test that never makes the call its
+    # caller makes is a self-test of a different program. A14a-f all called render() directly and ALL PASSED
+    # while `main()` still had no --cfg option at all, so the episode's own invocation would have REFUSED on
+    # every task. The arms were green and the production path was broken; only running the argv found it.
+    rs = os.path.join(HERE, "render_settings_verus.py")
+    pr = subprocess.run([sys.executable, rs, "--bench", "/Users/jyh/bench-rust", "--cfg", SIB_CFG],
+                        capture_output=True, text=True)
+    ok = False
+    try:
+        drc = (json.loads(pr.stdout).get("sandbox") or {}).get("filesystem", {}).get("denyRead") or []
+        ok = path_covered(cred, drc)
+    except Exception:
+        pass
+    arm("A14g CLI argv (as the episode calls it)", ok, "rc=%d" % pr.returncode)
+    pr2 = subprocess.run([sys.executable, rs, "--bench", "/Users/jyh/bench-rust"],
+                         capture_output=True, text=True)
+    arm("A14h CLI REFUSES without --cfg", pr2.returncode != 0 and "REFUSE" in (pr2.stdout + pr2.stderr),
+        "rc=%d" % pr2.returncode)
+
     print("\nFENCE SELFTEST: %d passed, %d FAILED" % (len(PASS), len(FAIL)))
     if FAIL:
         print("  failed: %s" % ", ".join(FAIL))

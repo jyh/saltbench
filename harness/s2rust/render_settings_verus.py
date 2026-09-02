@@ -37,13 +37,22 @@ TEMPLATE = os.path.join(HERE, "settings.s2rust.template.json")
 import check_verus as C
 
 
-def render(bench, hook=None):
+def render(bench, hook=None, cfg=None):
     if not bench:
         raise SystemExit("render_settings_verus: REFUSE — $BENCH is unset. A fence that guesses its own root "
                          "is the defect row CO names; name the root explicitly.")
+    # ⛔ THE CONFIG DIR IS REQUIRED FOR THE SAME REASON THE ROOT IS, AND IT IS REQUIRED BECAUSE IT WAS MISSING.
+    # The static list names `~/.claude-bench`; S2-Rust runs on `~/.claude-bench-rust`, a SIBLING. For one whole
+    # P0 read the agent's own config dir — where `.credentials.json` lives — was readable, and an episode
+    # proved it by reading a file inside it while the identical Bash request was blocked by the hook.
+    # A default here would re-create the defect silently, so there is none.
+    if not cfg:
+        raise SystemExit("render_settings_verus: REFUSE — the agent config dir is unset. The fence must DENY "
+                         "the very directory holding the credentials it runs on; naming another run's config "
+                         "dir is how it was wrong. Pass --cfg $CFG explicitly.")
     root = os.path.realpath(os.path.expanduser(bench))
     hook = hook or os.path.join(root, "harness", "hook-deny-network.sh")
-    deny = C.deny_read_paths(root)
+    deny = C.deny_read_paths(root, cfg)
     # ⛔ The hook path is DERIVED from the same root, not hardcoded. settings.s2.json names
     # `/Users/jyh/bench/harness/hook-deny-network.sh` literally — which works today only because every state
     # root's `harness` is a SYMLINK to `~/bench/harness`. A fence whose audit layer points at another root's
@@ -58,16 +67,17 @@ def render(bench, hook=None):
 def main():
     ap = argparse.ArgumentParser(add_help=False)
     ap.add_argument("--bench"); ap.add_argument("--hook"); ap.add_argument("--out"); ap.add_argument("--check")
+    ap.add_argument("--cfg")
     a, _ = ap.parse_known_args()
     if not a.bench:
         sys.exit(__doc__)
-    txt = render(a.bench, a.hook)
+    txt = render(a.bench, a.hook, a.cfg)
     if a.check:
         have = open(a.check, encoding="utf-8").read()
         if have != txt:
-            print("SETTINGS DRIFT: %s is not the pinned template rendered at BENCH=%s" % (a.check, a.bench))
+            print("SETTINGS DRIFT: %s is not the pinned template rendered at BENCH=%s CFG=%s" % (a.check, a.bench, a.cfg))
             return 2
-        print("SETTINGS OK %s (template rendered at BENCH=%s)" % (a.check, a.bench))
+        print("SETTINGS OK %s (template rendered at BENCH=%s CFG=%s)" % (a.check, a.bench, a.cfg))
         return 0
     if a.out:
         open(a.out, "w", encoding="utf-8").write(txt)

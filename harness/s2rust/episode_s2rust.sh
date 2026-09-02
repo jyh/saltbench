@@ -14,6 +14,15 @@
 # classes with no successor here, and inventing an empty stage machinery "for symmetry" would be scaffolding
 # that only ever reports on itself.
 #
+# ⛔ TWO LAYERS, AND ONLY ONE OF THEM IS COMPLETE BY CONSTRUCTION. The FILESYSTEM FENCE (settings.json's
+# sandbox.filesystem.denyRead, rendered below) is the FIRST layer and must be complete ON ITS OWN, because it
+# is the only layer that applies to every tool. The PreToolUse hook is a SECOND layer and its matcher is
+# `Bash|Monitor` — IT COVERS ONLY THE TOOLS IT MATCHES. On 09/02 that difference was measured rather than
+# reasoned about: `ep-c392a7ac` asked for one path two ways, the hook BLOCKED the Bash form, and the Read
+# tool — which the hook does not match — was served, because the filesystem layer had a hole.
+#   ⇒ 🔑 A SECOND LAYER THAT COVERS A SUBSET OF THE TOOLS CANNOT BE READ AS EVIDENCE THE FIRST LAYER HOLDS;
+#     it will pass exactly the probes written in the language it matches.
+#
 # ⛔ THE AGENT FENCE IS RENDERED, NOT PINNED AS A FILE (row CO, built in). `settings.s2.json` names `~/bench`
 # statically and does not reach a SIBLING state root; here the fence is rendered from $BENCH by
 # render_settings_verus.py and the episode asserts the config dir's settings.json EQUALS that rendering. What
@@ -78,8 +87,12 @@ command -v perl >/dev/null 2>&1 || refuse "perl missing (rt bound)"; command -v 
 # ⛔ THE AGENT FENCE, ASSERTED AS A RENDERING OF THE PINNED TEMPLATE AT THIS RUN'S ROOT. This is the whole of
 # row CO on the agent side: the check is not "is this file the pinned bytes" (it cannot be — it carries $BENCH)
 # but "is this file what the pinned template renders to HERE".
-python3 "$S2R/render_settings_verus.py" --check "$CFG/settings.json" --bench "$BENCH" > "$ST/settings_check.txt" 2>&1 \
-  || { cat "$ST/settings_check.txt"; refuse "$CFG/settings.json is not the pinned fence template rendered at BENCH=$BENCH"; }
+# ⛔ --cfg IS NOT OPTIONAL AND IS NOT DERIVED FROM --check's DIRNAME. The fence must DENY the very directory
+# holding the credentials this episode authenticates with, and until 09/02 it did not: the deny list named
+# `~/.claude-bench` (S2-Lean's) while S2-Rust runs on `~/.claude-bench-rust`, its SIBLING. `ep-c392a7ac` read
+# a file inside its own config dir and was served. The renderer REFUSES an unset --cfg rather than defaulting.
+python3 "$S2R/render_settings_verus.py" --check "$CFG/settings.json" --bench "$BENCH" --cfg "$CFG" > "$ST/settings_check.txt" 2>&1 \
+  || { cat "$ST/settings_check.txt"; refuse "$CFG/settings.json is not the pinned fence template rendered at BENCH=$BENCH CFG=$CFG"; }
 
 # ⛔⛔ THE AGENT'S WORKSPACE MUST NOT BE INSIDE THE FENCE'S OWN DENY SET, AND THIS ASSERTION EXISTS BECAUSE
 # TWO EPISODES PASSED WITHOUT IT. Row CO's repair makes `denyRead` DERIVE from `$BENCH` so the fence follows

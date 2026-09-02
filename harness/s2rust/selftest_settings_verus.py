@@ -23,6 +23,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import render_settings_verus as R
 
+# ⛔ Every arm below must now pass a CONFIG DIR: since 09/02 the fence derives TWO roots (the state
+# root from $BENCH and the agent config dir from $CFG) and the renderer REFUSES an unset cfg rather
+# than defaulting — a default is how the config dir came to be another run's for a whole P0 read.
+CFG_FIXTURE = "/Users/jyh/.claude-bench-rust"
+
 PASS, FAIL = [], []
 
 
@@ -38,7 +43,7 @@ def deny_of(txt):
 def main():
     root = "/Users/jyh/bench-a8"          # a real sibling root from the campaign's own history
     other = "/Users/jyh/bench-c"
-    txt = R.render(root)
+    txt = R.render(root, None, CFG_FIXTURE)
     deny = deny_of(txt)
 
     arm("C1 run's own root is denied", os.path.realpath(root) in deny, root)
@@ -50,7 +55,7 @@ def main():
         "proves derivation, not a blanket deny")
 
     try:
-        R.render("")
+        R.render("", None, CFG_FIXTURE)
         ok4 = False
     except SystemExit:
         ok4 = True
@@ -70,7 +75,8 @@ def main():
     open(good, "w").write(txt)
     def check(path, bench):
         p = subprocess.run([sys.executable, os.path.join(HERE, "render_settings_verus.py"),
-                            "--check", path, "--bench", bench], capture_output=True, text=True)
+                            "--check", path, "--bench", bench, "--cfg", CFG_FIXTURE],
+                           capture_output=True, text=True)
         return p.returncode, (p.stdout + p.stderr).strip()
 
     rc, out = check(good, root)
@@ -91,7 +97,7 @@ def main():
     # the root the fence protects. The agent tried `../rt` three times and failed silently every time.
     #   ⇒ A FENCE DERIVED FROM THE RUN ROOT MUST NOT CONTAIN THE AGENT'S OWN WORKSPACE.
     def blocked(ep, bench):
-        d = deny_of(R.render(bench))
+        d = deny_of(R.render(bench, None, CFG_FIXTURE))
         return [x for x in d if ep == x or ep.startswith(os.path.realpath(os.path.expanduser(x)) + os.sep)]
     inside = os.path.join(root, "work", "ep-deadbeef")
     outside = os.path.join(os.path.expanduser("~"), "work", "ep-deadbeef")

@@ -4,7 +4,7 @@
 Council 09/02: "DT both arms at Sonnet". Helm gates, as RE-CUT 08:37 on this seat's denominator finding:
   G1 SPEND   the 13-id TWO-ARM read (26 episodes) PROCEEDS UNASKED if its quoted PER-EPISODE QUOTA
              <= 2x the Opus read's measured per-episode quota. Tokens are reported BESIDE quota, never
-             as the gate. HARD CEILING regardless: <= 25 percentage points of kriterion's weekly.
+             as the gate. HARD CEILING regardless: <= 25 percentage points of the bench account's weekly.
   G2 CENSORING  report the censoring fraction beside the count; >=2 of 3 at the cap => the 13-id read at
              MAX_TURNS=40 is registered in its own header as PARTLY A CAP MEASUREMENT.
 
@@ -168,7 +168,7 @@ def main():
     # ---- the hard weekly ceiling --------------------------------------------------------------------------
     tot_tok = s_per_ep * N_EPISODES
     pts = tot_tok * WEEKLY_PT_PER_SONNET_TOK
-    print("\n  HARD CEILING — kriterion's weekly, %.0f points" % WEEKLY_CEILING_PTS)
+    print("\n  HARD CEILING — the bench account's weekly, %.0f points" % WEEKLY_CEILING_PTS)
     print("    read total, %d episodes          : %13s tokens (reported, not the gate)" % (N_EPISODES, money(tot_tok)))
     print("    weekly points, at the S2-Lean anchor (19.67M Sonnet tok = 1 pt) : %.1f of %.0f" % (pts, WEEKLY_CEILING_PTS))
     print("    %s" % ("✅ under the ceiling" if pts <= WEEKLY_CEILING_PTS else "⛔ OVER THE CEILING ⇒ HOLD"))

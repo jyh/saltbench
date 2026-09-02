@@ -47,7 +47,10 @@ mkdir -p "$ROOT/views"; cp -R "$VIEWS_SRC/views" "$ROOT/views/views"
 BENCH="$ROOT/bench"; CFG="$ROOT/cfg"; EPROOT="$ROOT/work"
 mkdir -p "$BENCH/logs" "$BENCH/state" "$CFG/projects" "$EPROOT"
 ln -sfn "$H" "$BENCH/harness"     # production shape: the harness lives under the run's own root
-python3 "$HERE/render_settings_verus.py" --bench "$BENCH" --out "$CFG/settings.json" >/dev/null || exit 2
+# ⛔ --cfg IS THE DRY'S JOB TOO: the dry exists to be RUN-SHAPED, and since 09/02 the run passes --cfg. A dry
+# that renders the fence differently from the run is a dry of a different program — and it would have gone on
+# passing while every real episode REFUSED.
+python3 "$HERE/render_settings_verus.py" --bench "$BENCH" --cfg "$CFG" --out "$CFG/settings.json" >/dev/null || exit 2
 TASK=$(ls "$ROOT/views/views" | head -1 | tr -d '/')
 
 run(){ # run <mode> -> the landed class

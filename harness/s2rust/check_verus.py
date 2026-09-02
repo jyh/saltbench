@@ -49,14 +49,45 @@ import screen_verus
 SANDBOX = "/usr/bin/sandbox-exec"
 PROFILE_TEMPLATE = os.path.join(HERE, "sandbox_verus.sb")
 
-# Credential/config trees the fenced referee must not READ. The RUN'S OWN STATE ROOT is appended by
-# `deny_read_paths` below, DERIVED from $BENCH — see row CO.
-DENY_READ = ["~/.claude-bench", "~/.claude", "~/.ssh", "~/.aws", "~/.gnupg", "~/.config", "~/.gitconfig",
-             "~/Library/Keychains", "~/Library/Application Support"]
+# ⛔⛔ THE FENCE HAS **TWO DERIVED ROOTS** AND A LIST OF **FOREIGN** TREES, AND THE DISTINCTION IS THE WHOLE
+# POINT OF THIS BLOCK. The two derived roots are THIS RUN'S STATE ROOT ($BENCH) and THIS RUN'S CONFIG DIR
+# ($CFG, the directory holding the credentials the episode authenticates with). Everything in
+# FOREIGN_CREDENTIAL_TREES belongs to somebody else — the human user, or another regime's harness — and is a
+# literal precisely because it is NOT this run's and must never be read as covering it.
+#
+# HOW THIS WENT WRONG, AND IT WAS PROVEN BY AN EPISODE RATHER THAN BY REVIEW. Row CO derived the STATE ROOT
+# and left the config dir a literal, `~/.claude-bench`. That is S2-LEAN'S config dir. S2-Rust runs on
+# `~/.claude-bench-rust`, a SIBLING of it — the names share a prefix, the paths do not nest. So for one whole
+# P0 read the agent's own config dir, the directory holding `.credentials.json`, was outside the fence.
+# `ep-c392a7ac` READ `$CFG/projects/<slug>/memory/MEMORY.md` and was served, while the identical request via
+# Bash was BLOCKED by the PreToolUse hook: the same path refused one way and served another.
+#   ⇒ 🔑 A REPAIR THAT DERIVES ONE OF TWO PATHS LEAVES THE OTHER NAMED, and the docstring explaining the
+#     derivation reads to every later reviewer as though everything is derived.
+#   ⇒ 🔑 SIBLING PATHS WHOSE NAMES SHARE A PREFIX ARE THE WORST CASE: `startswith` answers "covered" where
+#     path containment answers "not covered". My own first check made that error and reported the credential
+#     tree safe; only the episode's audit log contradicted it.
+#   ⇒ 🔑 EVERY ROOT A FENCE NAMES IS EITHER DERIVED, OR A LITERAL **WITH ITS REASON WRITTEN BESIDE IT**.
+#
+# 📌 A DELIBERATE DIVERGENCE FROM THE HELM'S WORD 09:00, STATED SO IT CAN BE OVERRULED IN ONE WORD. The
+# instruction was "no literal config path remains in DENY_READ". Deleting `~/.claude-bench` outright would
+# open a NEW hole in the same shape as the one being closed: an S2-Rust agent could then read S2-LEAN'S
+# credential tree, which is exactly the class of access this fence exists to deny. The defect was never that
+# a literal existed — it was that a literal was MISTAKEN FOR the run's own config dir. So the literals stay,
+# under a name that cannot be misread, each as a FOREIGN tree, and the run's own two roots are derived.
+FOREIGN_CREDENTIAL_TREES = [
+    "~/.claude",                      # the human user's own Claude config + credentials
+    "~/.claude-bench",                # S2-LEAN's harness config dir — ANOTHER regime's, never this run's
+    "~/.ssh", "~/.aws", "~/.gnupg",   # host credential trees
+    "~/.config", "~/.gitconfig",
+    "~/Library/Keychains", "~/Library/Application Support",
+]
+# Kept as the old name so existing callers and arms (A11c counts it) keep working.
+DENY_READ = FOREIGN_CREDENTIAL_TREES
 
 
-def deny_read_paths(bench=None):
-    """The deny-read set: the static credential trees PLUS the run's own state root, DERIVED.
+def deny_read_paths(bench=None, cfg=None):
+    """The deny-read set: the FOREIGN credential trees PLUS THIS RUN'S TWO DERIVED ROOTS —
+    the state root ($BENCH) and the agent config dir ($CFG). See the block above.
 
     ⛔ ROW CO, AND IT IS THE REASON THIS IS A FUNCTION RATHER THAN A LIST. The S2-Lean fences name `~/bench`
     STATICALLY. Since 08/31 this campaign has deliberately run each new regime in its OWN state root
@@ -74,6 +105,20 @@ def deny_read_paths(bench=None):
     root = bench if bench is not None else os.environ.get("BENCH")
     if root:
         paths.append(os.path.realpath(os.path.expanduser(root)))
+    # ⛔ THE CONFIG DIR, DERIVED — the sequel to row CO. An unset value contributes NO path rather than a
+    # guessed one, and the CALLER that must not guess (the agent-fence renderer) REFUSES instead of proceeding.
+    # Guessing `~/.claude-bench` here is exactly what the defect looked like.
+    # ⛔ AND IT IS AN ARGUMENT, NOT AN ENVIRONMENT LOOKUP, DELIBERATELY — unlike `bench` above, which keeps its
+    # $BENCH fallback for compatibility with existing callers. A fence that reads its own scope out of the
+    # ambient environment is measured under one environment and RUNS under another: the harness renders this
+    # profile with its own env, while the agent is launched under `env -i`. That is the "a gate that measures
+    # two properties under two environments is two gates" defect, and it would make the fence's coverage
+    # depend on whoever happened to export CLAUDE_CONFIG_DIR in the calling shell.
+    conf = cfg
+    if conf:
+        rp = os.path.realpath(os.path.expanduser(conf))
+        if rp not in paths:
+            paths.append(rp)
     return paths
 
 
@@ -95,10 +140,10 @@ def verus_exec_set(verus):
             os.path.join(root, "rust_verify"), os.path.join(root, "z3")]
 
 
-def render_profile(verus, work, bench=None):
+def render_profile(verus, work, bench=None, cfg=None):
     tmpl = open(PROFILE_TEMPLATE, encoding="utf-8").read()
     ex = " ".join('(literal "%s")' % b for b in verus_exec_set(verus))
-    dr = " ".join('(subpath "%s")' % p for p in deny_read_paths(bench))
+    dr = " ".join('(subpath "%s")' % p for p in deny_read_paths(bench, cfg))
     wp = '(subpath "%s")' % os.path.realpath(work)
     return (tmpl.replace("__EXEC_ALLOW__", ex)
                 .replace("__DENY_READ__", "(deny file-read* %s)" % dr)

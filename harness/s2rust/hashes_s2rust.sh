@@ -96,8 +96,19 @@ sha() { shasum -a 256 "$1" | cut -d' ' -f1; }
   # THE VIEWS ARE NOT SHIPPED — they are REBUILT from the pinned jsonl and verified by SET-HASH. 207 views of
   # multi-hundred-KB Rust do not belong in git when they are a pure function of two pinned inputs
   # (bench-jsonl-sha + build_views_verus.py). Measured: a clean rebuild reproduces the set-hash byte-identically.
-  if [ -n "${VIEWS_DIR:-}" ] && [ -d "$VIEWS_DIR/views" ]; then
-    printf 'views-set-sha256 %s\n' "$(python3 views_sethash.py "$VIEWS_DIR")"
-  fi
+  # ⛔⛔ THIS WAS A SILENT `if` AND IT IS THE ONE PIN THE HEADER'S OWN RULE FORBIDS OMITTING. On 09/02 a
+  # regeneration run without VIEWS_DIR DROPPED this line, and `episode_s2rust.sh:133` REFUSES on an empty
+  # `want_vs` — so the table would have bricked every episode of the next run, from a generator whose header
+  # says it FAILS LOUD precisely so that cannot happen. It failed CLOSED, so no result could be wrong; it
+  # would simply have killed a paid-for run at its first episode.
+  #   ⇒ 🔑 THE ONE CONDITIONAL LINE IN A FAIL-LOUD GENERATOR IS THE LINE THAT WILL GO MISSING, and a
+  #     generator that omits a pin its consumer requires is a generator that writes a broken table quietly.
+  # The views are a pure function of two pinned inputs, so a REBUILD is always available and costs ~3 s:
+  #   python3 build_views_verus.py <tasks.jsonl> <tmpdir> && VIEWS_DIR=<tmpdir>
+  # Measured 09/02: a clean seat rebuild reproduces the Studio's live set-hash byte-identically (8c41b6d9…,
+  # count=207) — the reproduction IS the check that the pin is honest.
+  : "${VIEWS_DIR:?set VIEWS_DIR=<dir holding views/> — rebuild it with build_views_verus.py (~3 s). A HASHES.txt without views-set-sha256 makes episode_s2rust.sh REFUSE EVERY episode.}"
+  [ -d "$VIEWS_DIR/views" ] || { echo "FATAL: \$VIEWS_DIR/views missing at $VIEWS_DIR — cannot emit views-set-sha256" >&2; exit 2; }
+  printf 'views-set-sha256 %s\n' "$(python3 views_sethash.py "$VIEWS_DIR")"
 } > "$OUT"
 cat "$OUT"
