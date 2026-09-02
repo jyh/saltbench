@@ -152,3 +152,45 @@ thought to write, which is what makes it look like a whitelist · a two-way diff
 the only two candidates it was given — before trusting one that acquits you, ask whether a third party was
 ever on the list · a registered prediction that fails is worth more than one that passes, and worth most when
 the code, not the prediction, turns out to have moved.
+
+---
+
+## §A7 · APPENDED 22:1x — THE PINS, DRIVEN; AND ONE CORRECTION TO THE FROZEN AMENDMENT
+
+**`harness/s2rust/hashes_s2rust.sh` → `HASHES-S2RUST.txt` (30 lines), driven three ways: fail-loud on unset
+env (rc 1, naming the variable), fail-loud on a bad path (`FATAL: missing …/verus — cannot emit its pin`),
+and a real run.** A HASHES file that silently omits a pin is worse than none, because the gate that reads it
+reports green — amendment 12's law, given an arm here rather than a comment.
+
+⚖️ **AND IT IS A SEPARATE FILE FROM THE SHARED `harness/HASHES.txt`, AS A DECISION.** Amendment 11 §13's
+stage-C dispatch is still pending its **09/02** objection window and must run against the harness
+`sync_studio.sh` froze at `15cfdc2`. Re-keying `hashes.sh` now would rewrite `HASHES.txt`, move the harness
+sha that `sync_studio.sh` receipts, and put the Studio out of step with its own freeze commit — for a wave
+that has not crossed its regime boundary. ⇒ **SPEND COMPARABILITY ONLY WHEN A RUN NEEDS IT.** These pins merge
+into `hashes.sh` at the VeruSAGE stage-0 boundary, with the z3 fence widening and rows **AV + CO**, as one
+regime change. 📌 Every commit of this campaign so far has ADDED files only; `harness/s2lean/` and
+`HASHES.txt` are byte-untouched, so stage C's harness is exactly what it was at `15cfdc2`.
+
+**TWO COMMISSION NUMBERS RE-DERIVED AT THE ARTIFACT, both reproducing:**
+- **`arms/a2.md` = `36ec05fcf211da47…`, 1,913 B** — DD §1.1's repaired pin (`36ec05fc…`, HASHES.txt:26) and
+  its stated size, both exact. The refuter's correction (the draft had pinned `0c37d7c8…`, which is the
+  RENDERED `rendered-s2-a2`) is confirmed: `0c37d7c8…` is indeed the rendered line in `HASHES.txt`.
+- **THE PLACEBO LENGTH MATCH (F3-02/03) CARRIES OVER EXACTLY, not approximately.** S2-Lean rendered
+  `a1` 2,373 B / `a2` 2,540 B; S2-Rust `a1` **2,842** / `a2` **3,009**. The Verus `base.md` adds **469 B to
+  every arm identically** (1,096 − 627 = 469; 2,842 − 2,373 = 469; 3,009 − 2,540 = 469), so the `a2 − a1`
+  delta is **167 B on both substrates** — the landed value, unchanged. The re-spelling of `base.md` cannot
+  have introduced a length asymmetry between the arms, and that is now a measured fact rather than an
+  expectation.
+
+⛔ **A CORRECTION TO THE FROZEN AMENDMENT §5, and it is exactly the "incidental" class the fleet's own
+CLAUDE.md warns clusters defects.** §5's SETTLED paragraph reads *"the arm64-macos zip bundles … `z3`
+(Z3 4.16.0)"*. **The load-bearing half is true of both candidate releases — each zip bundles `vstd`,
+`vstd.vir` and a `z3`, so no `rustup`/`cargo`/network is needed at episode time.** The version number is not:
+**4.16.0 is the z3 in `release/0.2026.08.30.b432e82`, the release §5 goes on to REJECT. The registered binary
+`release/0.2025.09.12.bb1f342` bundles Z3 `4.12.5`**, which is what `HASHES-S2RUST.txt` now pins
+(`z3-version Z3_version_4.12.5_-_64_bit`, `z3-sha bbb24b8f…`). I measured the bundling on one binary and the
+choice landed on the other, and the number travelled with the sentence instead of with the object.
+⇒ 🔑 ***WHEN A DECISION MOVES FROM ONE CANDIDATE TO ANOTHER, EVERY NUMBER MEASURED ON THE LOSER HAS TO MOVE
+WITH IT OR BE RE-TAKEN. A fact stated about "the release" was true of the release I had in hand, and became
+false the moment "the release" meant a different one.*** The pin file is generated from the binary in use, so
+it cannot carry this defect again; the prose could, and did.

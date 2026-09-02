@@ -1,0 +1,42 @@
+#!/bin/bash
+# rt — the ONLY way an arm may invoke the referee. Harness wrapper; IDENTICAL IN EVERY ARM.
+#
+# ⛔ IT ACCEPTS EXACTLY ONE COMMAND LINE: `rt verus task.rs`. Anything else is REFUSED with rc 64 and logged.
+# The arm does not choose the referee's flags: `--rlimit` and the SMT seed are pinned in HASHES.txt and baked
+# in here, so the IN-EPISODE referee is the CHECK-TIME referee flag for flag. An arm that could pass its own
+# --rlimit could buy a verdict the checker would not reproduce.
+# ⛔ `--no-cheating` is NOT here and must never be added. Measured on the PRISTINE benchmark file: it emits
+# `error: external_body/assume_specification not allowed with --no-cheating`, because the benchmark ships its
+# context lemmas as external_body stubs. Under that flag every episode of every arm fails on scaffolding the
+# benchmark itself supplies. (Amendment 15 §7.)
+# ⛔ `--no-verify` must never be added: it skips verification AND suppresses the results line the PASS
+# predicate parses.
+#
+# The bound is macOS-native (the Studio has no `timeout(1)`): perl forks the command into ITS OWN PROCESS
+# GROUP and on alarm or a signal kills the whole group (TERM, 2 s, KILL) so no verus/z3 survives a tool-level
+# kill. rc: the command's (signals as 128+n); 124 on the bound; 143 when rt itself was signalled; 127 when
+# exec fails; 64 on a refused argument list.
+LOG=__EP__/repo/.rt.log
+stamp() { date -u +%Y-%m-%dT%H:%M:%SZ; }
+
+if [ "$#" -ne 2 ] || [ "$1" != "verus" ] || [ "$2" != "task.rs" ]; then
+  printf '%s\tREFUSED\t%s\n' "$(stamp)" "$*" >> "$LOG"
+  echo "rt: this harness accepts exactly one command: 'rt verus task.rs'" >&2
+  exit 64
+fi
+
+printf '%s\tSTART\tverus task.rs\n' "$(stamp)" >> "$LOG"
+# ERRF lives in the working copy (cwd is the only writable place under the sandbox; $TMPDIR is DENIED).
+ERRF=__EP__/repo/.rterr.$$
+( cd __EP__/repo && PATH="$HOME/.cargo/bin:$PATH" exec /usr/bin/perl -e '
+  my $t = shift; my $pid = fork; defined $pid or exit 127;
+  if (!$pid) { setpgrp(0, 0); exec @ARGV; exit 127 }
+  my $reap = sub { my $c = shift; kill "TERM", -$pid; select(undef, undef, undef, 2); kill "KILL", -$pid; waitpid $pid, 0; exit $c };
+  $SIG{ALRM} = sub { $reap->(124) }; $SIG{TERM} = $SIG{INT} = $SIG{HUP} = sub { $reap->(143) };
+  alarm $t; waitpid $pid, 0; my $s = $?; exit(($s & 127) ? 128 + ($s & 127) : ($s >> 8))
+' __RT_TIMEOUT__ __VERUS__ --crate-type=lib --rlimit __RLIMIT__ --smt-option smt.random_seed=__SEED__ task.rs ) 2>"$ERRF"
+rc=$?
+cat "$ERRF" >&2
+[ "$rc" != 0 ] && printf '%s\tERR\t%s\n' "$(stamp)" "$(head -1 "$ERRF" 2>/dev/null | cut -c1-200)" >> "$LOG"; rm -f "$ERRF"
+printf '%s\tEND\trc=%s\tverus task.rs\n' "$(stamp)" "$rc" >> "$LOG"
+exit $rc
