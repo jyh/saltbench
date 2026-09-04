@@ -27,7 +27,7 @@ SaltBench is a benchmark protocol for one question: does a change to how a codin
 
 \section{Introduction}
 
-A benchmark for agent methods needs two properties that usually pull against each other. The outcome has to be decided by something the agent cannot argue with, and the comparison has to be planned before the agent runs, so that the result cannot be narrated afterwards. SaltBench is a protocol that insists on both. The referee is a proof kernel, a program verifier, or a hidden test suite, run outside the agent's own toolchain invocation. The comparison is pre-registered: the population is drawn by a committed seed, the arms are byte-pinned, the predictions are written down, the adverse outcomes are named, and the freeze commit is the authorization. Everything that happens afterwards is a dated amendment appended to the record.
+A benchmark for agent methods needs two properties that usually pull against each other. The outcome has to be decided by something the agent cannot argue with, and the comparison has to be planned before the agent runs, so that the result cannot be narrated afterwards. SaltBench is a protocol that insists on both. The referee is a proof kernel, a program verifier, or a hidden test suite, run outside the agent's own toolchain invocation. The comparison is pre-registered~\cite{nosek2018preregistration}: the population is drawn by a committed seed, the arms are byte-pinned, the predictions are written down, the adverse outcomes are named, and the freeze commit is the authorization. Everything that happens afterwards is a dated amendment appended to the record.
 
 This paper is version~1. It claims the protocol, two populations with their provenance, frontier baselines on those populations, a pre-registered null on one of them with a triage that explains most of it, and a set of instrument findings that we think transfer to any benchmark of this kind. It does not claim an effect of the method under test. Section~\ref{sec:open} states the tests that could produce one; they are the content of version~2.
 
@@ -40,11 +40,11 @@ The method under test is a set of working practices for machine-checked developm
 
 An episode ends when the agent stops or hits a cap. The file it leaves is then scored by a checker the agent never sees, on a machine the agent never reaches. What ``solved'' means is fixed per substrate.
 
-\paragraph{Lean (CLEVER).} The checker extracts only the agent-writable bodies by section markers, screens them for command-introducing and meta keywords with comments and string literals stripped, assembles a canonical file from the frozen statements and the bodies, and compiles it under an operating-system sandbox. It then replays every declaration of the compiled module through the Lean kernel (\texttt{Lean.Environment.replay}), so a declaration the elaborator admitted without the kernel is rejected. It compares, as kernel expressions, the type of every frozen declaration and the value of the human specification between the canonical file and a pristine file with \texttt{sorry} bodies, so a notation, macro, instance or \texttt{open} that changes what the frozen text means is caught by construction. It collects the axioms of the audited declarations and requires every set to be inside $\{\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}\}$; \texttt{sorryAx}, user axioms, and \texttt{native\_decide}'s \texttt{Lean.ofReduceBool} all fail here. The class names the first failing gate: \texttt{SCREEN}, \texttt{COMPILE}, \texttt{KERNEL\_REJECTED}, \texttt{STATEMENT\_ALTERED}, \texttt{AXIOMS\_FAIL}, \texttt{PASS}.\src{SCOUT-S2LEAN-STAGE0.md section 3}
+\paragraph{Lean (CLEVER~\cite{thakur2025clever}).} The checker extracts only the agent-writable bodies by section markers, screens them for command-introducing and meta keywords with comments and string literals stripped, assembles a canonical file from the frozen statements and the bodies, and compiles it under an operating-system sandbox. It then replays every declaration of the compiled module through the Lean kernel~\cite{demoura2021lean4} (\texttt{Lean.Environment.replay}), so a declaration the elaborator admitted without the kernel is rejected. It compares, as kernel expressions, the type of every frozen declaration and the value of the human specification between the canonical file and a pristine file with \texttt{sorry} bodies, so a notation, macro, instance or \texttt{open} that changes what the frozen text means is caught by construction. It collects the axioms of the audited declarations and requires every set to be inside $\{\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}\}$; \texttt{sorryAx}, user axioms, and \texttt{native\_decide}'s \texttt{Lean.ofReduceBool} all fail here. The class names the first failing gate: \texttt{SCREEN}, \texttt{COMPILE}, \texttt{KERNEL\_REJECTED}, \texttt{STATEMENT\_ALTERED}, \texttt{AXIOMS\_FAIL}, \texttt{PASS}.\src{SCOUT-S2LEAN-STAGE0.md section 3}
 
-\paragraph{Verus (VeruSAGE-Bench).} Verus emits no proof object and there is no independent re-check, so the protocol says ``the referee accepted'' where the Lean protocol says ``kernel''. The integrity work that the kernel replay and axiom audit do in Lean is done here by three text and AST layers before the referee runs: a screen over the agent's regions; a count guard over \texttt{admit()}, \texttt{assume(}, \texttt{external\_body} in both spellings, \texttt{assume\_specification} and \texttt{verifier::admit}, canonical against original; and the benchmark's own \texttt{lynette additions} AST comparison. A screened or cheating body is never handed to the referee. \texttt{PASS} requires exit~0 and a results line that parses as \texttt{N verified, 0 errors} with $N \geq 1$ and no partial-verification suffix. Resource-limit exhaustion and compile errors are their own classes and are never charged to the arm.\src{AMENDMENT-15-s2rust-2026-09-01.md section 6}
+\paragraph{Verus~\cite{lattuada2023verus} (VeruSAGE-Bench~\cite{yang2025verusage}).} Verus emits no proof object and there is no independent re-check, so the protocol says ``the referee accepted'' where the Lean protocol says ``kernel''. The integrity work that the kernel replay and axiom audit do in Lean is done here by three text and AST layers before the referee runs: a screen over the agent's regions; a count guard over \texttt{admit()}, \texttt{assume(}, \texttt{external\_body} in both spellings, \texttt{assume\_specification} and \texttt{verifier::admit}, canonical against original; and the benchmark's own \texttt{lynette additions} AST comparison. A screened or cheating body is never handed to the referee. \texttt{PASS} requires exit~0 and a results line that parses as \texttt{N verified, 0 errors} with $N \geq 1$ and no partial-verification suffix. Resource-limit exhaustion and compile errors are their own classes and are never charged to the arm.\src{AMENDMENT-15-s2rust-2026-09-01.md section 6}
 
-\paragraph{SWE-bench Verified.} The scorer is the unmodified \texttt{swebench} harness in the pinned evaluation images, with the fail-to-pass and pass-to-pass suites hidden from the agent. This substrate was abandoned after stage~0 (Section~\ref{sec:s1}); its protocol is kept in the record.
+\paragraph{SWE-bench~\cite{jimenez2024swebench} Verified~\cite{swebenchverified}.} The scorer is the unmodified \texttt{swebench} harness in the pinned evaluation images, with the fail-to-pass and pass-to-pass suites hidden from the agent. This substrate was abandoned after stage~0 (Section~\ref{sec:s1}); its protocol is kept in the record.
 
 \subsection{The fence is measured, not assumed}
 \label{sec:fence}
@@ -61,7 +61,7 @@ The third finding arrived after every read reported in this paper and applies to
 
 The dated freeze commit is the authorization. Before it: the population rule and seed, the arms as byte-pinned files, the checker, the constants, the reading rule, the predictions, the adverse outcomes, the stop rules with their enforcer. After it: nothing above the line is edited. Every later change, including a repair to an instrument, is a dated amendment appended before its own first model call, with its own predictions. Corrections to a registered document are appended as corrections, never edited away; the record carries several such corrections by its own authors.\src{PRE-REGISTRATION.md section 0; SCOUT-S2LEAN-STAGE0.md, amendments 1 through 10}
 
-The reading rule on the Lean and Verus populations is a count, not a $p$-value: for two arms on the same drawn problems, $b$ is the number the first arm proves and the second does not, $c$ the reverse, and $|b-c| < 5$ is read as \textsc{indistinguishable}. The threshold is registered before the first call and the outcome table is enumerated, with the adverse cell named.\src{SCOUT-S2LEAN-STAGE0.md, amendment 5} For the Verus wave the fixed separation is replaced by one derived from a measured null (a same-arm rerun), because the substrate's own paper reports that 11.8\,\% of failures flip on rerun.\src{AMENDMENT-15-s2rust-2026-09-01.md section 9}
+The reading rule on the Lean and Verus populations is a count, not a $p$-value: for two arms on the same drawn problems, $b$ is the number the first arm proves and the second does not, $c$ the reverse, and $|b-c| < 5$ is read as \textsc{indistinguishable}. The threshold is registered before the first call and the outcome table is enumerated, with the adverse cell named.\src{SCOUT-S2LEAN-STAGE0.md, amendment 5} For the Verus wave the fixed separation is replaced by one derived from a measured null (a same-arm rerun), because the substrate's own paper~\cite{yang2025verusage} reports that 11.8\,\% of failures flip on rerun.\src{AMENDMENT-15-s2rust-2026-09-01.md section 9}
 
 Predictions are scored as they stand. Of the registered predictions in the record, several failed, and the failures are recorded as failures with their direction: the estimator over-priced five consecutive stages, then under-priced the sixth because one episode carried 64\,\% of a stage's spend.\src{RESULT-amend11-stageC-2026-09-01.md section 4; RESULT-amend13-AW-2026-09-02.md section 5}
 
@@ -84,11 +84,11 @@ Every arm receives the same task file and the same stage prompt; only the agent'
 \section{Populations and provenance}
 \label{sec:populations}
 
-\paragraph{S2-Lean: CLEVER Task~1.} \texttt{trishullab/clever} at commit \texttt{8348039}, MIT, Lean \texttt{v4.27.0}, mathlib \texttt{a3a10db0}; 161 problems.\src{SCOUT-S2LEAN-STAGE0.md section 1} A raw problem file is re-cut by the harness into three views: stage~A (write \texttt{generated\_spec} from the docstring, ground truth absent), stage~B (prove \texttt{spec\_isomorphism} between the agent's frozen specification and the revealed human one), stage~C (implement and prove \texttt{correctness} against the human specification, tests included). The draw sorts the real ids by a committed seed after removing the four structural exclusions of the benchmark's agentic-proving paper. Stage~0 ran $k=30$. The registered comparison population is U15, the first fifteen unflagged ids of that order (the same paper flags 80 of 161 specifications), reached at depth~27.\src{SCOUT-S2LEAN-STAGE0.md section 2; amendment 3} Stage~C's population removes the two U15 ids whose stage-C view fails to elaborate before any agent text (problems 54 and 112) and one further id, problem~18, whose task is machine-checked unsatisfiable (Section~\ref{sec:triage}), leaving 12.\src{AMENDMENT-11-stageC-2026-09-01.md section 2}
+\paragraph{S2-Lean: CLEVER Task~1.} \texttt{trishullab/clever}~\cite{thakur2025clever} at commit \texttt{8348039}, MIT, Lean \texttt{v4.27.0}~\cite{demoura2021lean4}, mathlib \texttt{a3a10db0}~\cite{mathlib2020}; 161 problems.\src{SCOUT-S2LEAN-STAGE0.md section 1} A raw problem file is re-cut by the harness into three views: stage~A (write \texttt{generated\_spec} from the docstring, ground truth absent), stage~B (prove \texttt{spec\_isomorphism} between the agent's frozen specification and the revealed human one), stage~C (implement and prove \texttt{correctness} against the human specification, tests included). The draw sorts the real ids by a committed seed after removing the four structural exclusions of the benchmark's agentic-proving paper~\cite{sosso2026agentic}. Stage~0 ran $k=30$. The registered comparison population is U15, the first fifteen unflagged ids of that order (the same paper flags 80 of 161 specifications), reached at depth~27.\src{SCOUT-S2LEAN-STAGE0.md section 2; amendment 3} Stage~C's population removes the two U15 ids whose stage-C view fails to elaborate before any agent text (problems 54 and 112) and one further id, problem~18, whose task is machine-checked unsatisfiable (Section~\ref{sec:triage}), leaving 12.\src{AMENDMENT-11-stageC-2026-09-01.md section 2}
 
-\paragraph{S2-Rust: VeruSAGE-Bench proof targets.} \texttt{microsoft/verus-proof-synthesis} at commit \texttt{cbf9c0c6}, MIT; the Anvil-Advanced and NRKernel projects, 267 records.\src{AMENDMENT-15-s2rust-2026-09-01.md section 2} The wave takes the unique \texttt{proof fn} target whose body is empty modulo whitespace: 207 records; the five refuse classes are counted and published with the draw.\src{AMENDMENT-15-s2rust-2026-09-01.md section 3} Stage~0 then ran every reference proof through the pinned referee inside the harness's own scaffold: 180 live, 27 with a task text that omits definitions its own ground truth supplies, zero dead tasks, zero pin defects, zero scaffold defects.\src{RESULT-amend15-stage0-2026-09-01.md} The pin itself was measured: the current Verus release failed 5 of 15 reference proofs at the Rust front end, and the benchmark's own release passed 15 of 15; a front-end error on a reference file indicts the toolchain, never the task.\src{AMENDMENT-15-s2rust-2026-09-01.md section 5} The resource-limit curve is flat into the registered limit (179 of 180 at 10, 180 of 180 at 50 and at 250) and three repeats at the pinned seed produced zero flips.\src{RESULT-amend15-stage0-2026-09-01.md, appended section}
+\paragraph{S2-Rust: VeruSAGE-Bench proof targets.} \texttt{microsoft/verus-proof-synthesis}~\cite{yang2025verusage} at commit \texttt{cbf9c0c6}, MIT; the Anvil-Advanced~\cite{sun2024anvil} and NRKernel~\cite{lattuada2023verus} projects, 267 records.\src{AMENDMENT-15-s2rust-2026-09-01.md section 2} The wave takes the unique \texttt{proof fn} target whose body is empty modulo whitespace: 207 records; the five refuse classes are counted and published with the draw.\src{AMENDMENT-15-s2rust-2026-09-01.md section 3} Stage~0 then ran every reference proof through the pinned referee inside the harness's own scaffold: 180 live, 27 with a task text that omits definitions its own ground truth supplies, zero dead tasks, zero pin defects, zero scaffold defects.\src{RESULT-amend15-stage0-2026-09-01.md} The pin itself was measured: the current Verus release failed 5 of 15 reference proofs at the Rust front end, and the benchmark's own release passed 15 of 15; a front-end error on a reference file indicts the toolchain, never the task.\src{AMENDMENT-15-s2rust-2026-09-01.md section 5} The resource-limit curve is flat into the registered limit (179 of 180 at 10, 180 of 180 at 50 and at 250) and three repeats at the pinned seed produced zero flips.\src{RESULT-amend15-stage0-2026-09-01.md, appended section}
 
-\paragraph{S1: SWE-bench Verified.} \texttt{princeton-nlp/SWE-bench\_Verified} at revision \texttt{c104f840}, 500 rows, content-pinned by a hash over the canonicalised rows.\src{PRE-REGISTRATION.md section 3; TASKLIST.json} The selection script is the normative form of the criteria; the draw is measured-50 and pilot-30 with a per-repository cap of~9, chosen from arithmetic over the eligible counts after the first draft's cap starved the draw in silence.\src{PRE-REGISTRATION.md section 3}
+\paragraph{S1: SWE-bench Verified.} \texttt{princeton-nlp/SWE-bench\_Verified}~\cite{swebenchverified} at revision \texttt{c104f840}, 500 rows, content-pinned by a hash over the canonicalised rows.\src{PRE-REGISTRATION.md section 3; TASKLIST.json} The selection script is the normative form of the criteria; the draw is measured-50 and pilot-30 with a per-repository cap of~9, chosen from arithmetic over the eligible counts after the first draft's cap starved the draw in silence.\src{PRE-REGISTRATION.md section 3}
 
 No task text from SWE-bench Verified is redistributed. Its dataset card carries no licence field, so rather than rely on a reading of what the issue text permits, the repository ships the 30 identifiers, the pinned revision, a hash over the 500 canonicalised rows and a hash over the 30-row projection the episodes read; \texttt{harness/fetch\_problem\_statements.py} rebuilds that projection from the pinned revision and verifies it against both.\src{PROVENANCE.md section 1.3; PUBLISH-CHECKLIST.md section (k)} The rebuild was compared byte for byte against the file the episodes read before that file was removed from the tree.
 
@@ -208,7 +208,7 @@ model & cap & calls & metered tokens & wall (s) & referee at the end \\
 
 The 120-call episode passed cleanly: no screen violation, no helper-shape violation, the linter at return code zero, the count guard unchanged, the resource limit inside budget, the episode not void and no unblocked read of a fenced path. The cap was therefore binding at this tier on this task, and the identical Sonnet episode's report of no discharged obligations at call~40 was not a measure of how far it had to go. The planned 13-id read at 40 calls does not run, because it would return the cap. A read at 120 is a different and much larger commitment: one episode at 8.4 million tokens prices 26 episodes at roughly 218 million, and that figure is a lower bound, since the episode it is priced from passed at 79 of its 120 calls on the task the higher tier found easiest of the three. The two-tier comparison is therefore open and belongs to version~2. What the pair does establish is narrower, and it is one episode against one: on this task the lower tier reaches the same referee verdict as the higher one, and pays 8.7 times the tokens and 3.4 times the calls to get there.
 \item \textbf{A CLEVER variant with the oracle repaired.} Replace the isomorphism obligation with an implication-with-witness (the agent's specification implies the human one, and the reference implementation satisfies the agent's), exclude problem~18, and rerun the seven problems both arms failed. This changes what the benchmark measures and is registered as a variant, not as a correction to the published Task~1 numbers.
-\item \textbf{Populations with room.} Version~2 adds a custom population of classic systems components with textbook specifications, graded by size a priori and frozen (specification, tests, satisfiability witness, one specification perturbation for a maintenance arm, mutant set) before any model call, with every result reported. A scout for a second population over a contamination-free Rust software-engineering set returned no: of its 113 hand-authored tasks 5 are Rust, below the registered threshold of 8 before any screening, and none of the 5 survived the screen for a specification layer.\src{RESULT-DY-deepswe-scout-2026-09-02.md sections 3, 4 and 5} The custom population ships in the Harbor task format, so that the referee, the fence and the task remain one object.
+\item \textbf{Populations with room.} Version~2 adds a custom population of classic systems components with textbook specifications, graded by size a priori and frozen (specification, tests, satisfiability witness, one specification perturbation for a maintenance arm, mutant set) before any model call, with every result reported. A scout for a second population over a contamination-free Rust software-engineering set returned no: of its 113 hand-authored tasks 5 are Rust, below the registered threshold of 8 before any screening, and none of the 5 survived the screen for a specification layer.\src{RESULT-DY-deepswe-scout-2026-09-02.md sections 3, 4 and 5} The custom population ships in the Harbor task format~\cite{harbor2026}, so that the referee, the fence and the task remain one object.
 \end{enumerate}
 
 The failure surface on S2-Lean is also a finding about the benchmark: four of the twelve remaining stage-C oracles are permissive on regions their tests never visit, and the four-label triage taxonomy has no cell for a reference specification that contradicts its own tests.\src{RESULT-amend11-stageC-2026-09-01.md section 2, the permissive-oracle diagnostic; TRIAGE-B-failures-2026-09-01.md section 5.1} The reproduction scripts for both are in the repository, for the benchmark's authors; the disclosure itself is a separate act and is not claimed here.
@@ -216,15 +216,122 @@ The failure surface on S2-Lean is also a finding about the benchmark: four of th
 \section{Reproducibility}
 \label{sec:repro}
 
-Every pin is a line in \texttt{harness/HASHES.txt}: the CLEVER commit, the Lean toolchain and mathlib revision, the project manifest and lakefile hashes, the Verus release and its rust channel, the z3, vstd and lynette hashes, the resource limit and seed, every prompt, arm file, checker and driver, and the set-hash of the 207 rebuilt Verus views. The evaluation images for the SWE-bench substrate are pinned by digest in \texttt{IMAGE-DIGESTS.json}. The episode script refuses to run a stage whose view or checker hash is not the pinned one, and each manifest records the freeze commit, the hashes it asserted, the model id read from every response, and the transcript's hash. The morning-line instruments that produced every rate in this paper are in the repository with their self-tests, and the evidence directories carry their outputs byte for byte.
+Every pin is a line in \texttt{harness/HASHES.txt}: the CLEVER commit, the Lean toolchain and mathlib revision, the project manifest and lakefile hashes, the Verus release and its rust channel, the z3~\cite{demoura2008z3}, vstd and lynette hashes, the resource limit and seed, every prompt, arm file, checker and driver, and the set-hash of the 207 rebuilt Verus views. The evaluation images for the SWE-bench substrate are pinned by digest in \texttt{IMAGE-DIGESTS.json}. The episode script refuses to run a stage whose view or checker hash is not the pinned one, and each manifest records the freeze commit, the hashes it asserted, the model id read from every response, and the transcript's hash. The morning-line instruments that produced every rate in this paper are in the repository with their self-tests, and the evidence directories carry their outputs byte for byte.
 
 The task populations are re-derived from the pinned sources by the harness's view builders; the repository redistributes only what \texttt{PROVENANCE.md} lists. The run records and the S2 episode archives are a separate data asset; its DOI is assigned at release (Zenodo) and recorded in the repository on the flip day. Version~2's populations ship as Harbor tasks so that the referee, the fence and the task are one object.
 
-The code is released under Apache-2.0 and the data and documents under CC BY 4.0. The agent was Claude Code on a consumer subscription, and the transcripts are published as this campaign's own measurements: the provider's Consumer Terms effective 2025-10-08 assign outputs to the user and do not restrict their publication, and the training restriction in the Usage Policy dated 2025-09-15 binds the subscriber rather than a recipient of these files.\src{PROVENANCE.md section 3; PUBLISH-CHECKLIST.md section (k)} Both documents are cited at the version read, because both are revised in place.
+The code is released under Apache-2.0 and the data and documents under CC BY 4.0. The agent was Claude Code~\cite{claudecode} on a consumer subscription, and the transcripts are published as this campaign's own measurements: the provider's Consumer Terms effective 2025-10-08~\cite{anthropic2025terms} assign outputs to the user and do not restrict their publication, and the training restriction in the Usage Policy dated 2025-09-15~\cite{anthropic2025usage} binds the subscriber rather than a recipient of these files.\src{PROVENANCE.md section 3; PUBLISH-CHECKLIST.md section (k)} Both documents are cited at the version read, because both are revised in place.
 
 \section*{Acknowledgements}
 
 CLEVER is by the Trishul group at UT Austin (MIT licence); VeruSAGE-Bench and lynette are by Microsoft (MIT licence); SWE-bench Verified is by the SWE-bench authors with OpenAI's verification pass; the source repositories of the drawn issues carry their own licences, listed in \texttt{PROVENANCE.md}. The runs were executed by Claude Code with Anthropic's Sonnet~5 and Opus~5 models. The protocol documents, amendments and result files in the repository were written by the author's assistant heads under the author's direction and carry the author's responsibility.
+
+
+% References. Every entry below was VERIFIED on 2026-09-04 by fetching the landing page named
+% in the comment beside it: the title, the author list, the year and the venue are copied from
+% that page, never from memory. No external .bib file: the arXiv package stays one file.
+\begin{thebibliography}{99}
+
+\bibitem{claudecode}
+% verified at https://code.claude.com/docs/en/overview (2026-09-04); version from PROVENANCE.md section 2
+Anthropic.
+\newblock \emph{Claude Code}, version 2.1.251.
+\newblock \url{https://code.claude.com/docs/en/overview}.
+
+\bibitem{anthropic2025terms}
+% verified at https://www.anthropic.com/legal/consumer-terms (2026-09-04); the page reads "Effective October 8, 2025"
+Anthropic.
+\newblock \emph{Consumer Terms of Service}, effective October~8, 2025.
+\newblock \url{https://www.anthropic.com/legal/consumer-terms}.
+
+\bibitem{anthropic2025usage}
+% verified at https://www.anthropic.com/legal/aup (2026-09-04); the page reads "Effective September 15, 2025"
+Anthropic.
+\newblock \emph{Usage Policy}, effective September~15, 2025.
+\newblock \url{https://www.anthropic.com/legal/aup}.
+
+\bibitem{demoura2008z3}
+% verified at dblp record for TACAS 2008, pages 337-340, doi 10.1007/978-3-540-78800-3_24 (2026-09-04)
+Leonardo de~Moura and Nikolaj Bj{\o}rner.
+\newblock Z3: An Efficient SMT Solver.
+\newblock In \emph{Tools and Algorithms for the Construction and Analysis of Systems (TACAS 2008)}, pages 337--340, 2008.
+\newblock \url{https://doi.org/10.1007/978-3-540-78800-3_24}.
+
+\bibitem{demoura2021lean4}
+% verified at dblp record for CADE 2021, pages 625-635, doi 10.1007/978-3-030-79876-5_37 (2026-09-04)
+Leonardo de~Moura and Sebastian Ullrich.
+\newblock The Lean 4 Theorem Prover and Programming Language.
+\newblock In \emph{Automated Deduction --- CADE 28}, pages 625--635, 2021.
+\newblock \url{https://doi.org/10.1007/978-3-030-79876-5_37}.
+
+\bibitem{harbor2026}
+% verified at https://doi.org/10.5281/zenodo.20953922 (2026-09-04); concept DOI, resolved to v0.22.0
+Harbor Framework Team.
+\newblock \emph{Harbor: A framework for evaluating and optimizing agents and models in container environments}.
+\newblock Zenodo, 2026.
+\newblock \url{https://doi.org/10.5281/zenodo.20953922}.
+
+\bibitem{jimenez2024swebench}
+% verified at https://arxiv.org/abs/2310.06770 (2026-09-04); comments field names ICLR 2024
+Carlos~E. Jimenez, John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir Press, and Karthik Narasimhan.
+\newblock SWE-bench: Can Language Models Resolve Real-World GitHub Issues?
+\newblock In \emph{International Conference on Learning Representations (ICLR)}, 2024.
+\newblock arXiv:2310.06770. \url{https://arxiv.org/abs/2310.06770}.
+
+\bibitem{lattuada2023verus}
+% verified at https://api.crossref.org/works/10.1145/3586037 (2026-09-04); the arXiv posting 2303.05491 is the extended version
+Andrea Lattuada, Travis Hance, Chanhee Cho, Matthias Brun, Isitha Subasinghe, Yi Zhou, Jon Howell, Bryan Parno, and Chris Hawblitzel.
+\newblock Verus: Verifying Rust Programs using Linear Ghost Types.
+\newblock \emph{Proceedings of the ACM on Programming Languages}, 7(OOPSLA1):286--315, 2023.
+\newblock \url{https://doi.org/10.1145/3586037}.
+
+\bibitem{mathlib2020}
+% verified at https://api.crossref.org/works/10.1145/3372885.3373824 and https://arxiv.org/abs/1910.09336 (2026-09-04)
+The mathlib Community.
+\newblock The Lean mathematical library.
+\newblock In \emph{Proceedings of the 9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP 2020)}, pages 367--381, 2020.
+\newblock \url{https://doi.org/10.1145/3372885.3373824}.
+
+\bibitem{nosek2018preregistration}
+% verified at https://api.crossref.org/works/10.1073/pnas.1708274114 (2026-09-04)
+Brian~A. Nosek, Charles~R. Ebersole, Alexander~C. DeHaven, and David~T. Mellor.
+\newblock The preregistration revolution.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 115(11):2600--2606, 2018.
+\newblock \url{https://doi.org/10.1073/pnas.1708274114}.
+
+\bibitem{swebenchverified}
+% verified at https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified (2026-09-04): 500 rows in the test split, no licence field on the card
+Princeton NLP.
+\newblock \emph{SWE-bench Verified}.
+\newblock Hugging Face dataset, split \texttt{test}, 500 rows; revision \texttt{c104f840} as pinned here. The dataset card carries no licence field.
+\newblock \url{https://huggingface.co/datasets/princeton-nlp/SWE-bench_Verified}.
+
+\bibitem{sosso2026agentic}
+% verified at https://arxiv.org/abs/2605.23772 (2026-09-04); submitted 22 May 2026, no venue named
+Alessandro Sosso, Akhil Arora, and Bas Spitters.
+\newblock Agentic Proving for Program Verification.
+\newblock arXiv:2605.23772, 2026. \url{https://arxiv.org/abs/2605.23772}.
+
+\bibitem{sun2024anvil}
+% verified at https://weizmann.elsevierpure.com/en/publications/anvil-verifying-liveness-of-cluster-management-controllers/ (2026-09-04): OSDI 2024, pages 649-666
+Xudong Sun, Wenjie Ma, Jiawei~Tyler Gu, Zicheng Ma, Tej Chajed, Jon Howell, Andrea Lattuada, Oded Padon, Lalith Suresh, Adriana Szekeres, and Tianyin Xu.
+\newblock Anvil: Verifying Liveness of Cluster Management Controllers.
+\newblock In \emph{Proceedings of the 18th USENIX Symposium on Operating Systems Design and Implementation (OSDI 2024)}, pages 649--666. USENIX Association, 2024.
+\newblock \url{https://www.usenix.org/conference/osdi24/presentation/sun-xudong}.
+
+\bibitem{thakur2025clever}
+% verified at https://arxiv.org/abs/2505.13938 (2026-09-04); submitted May 2025, no venue named
+Amitayush Thakur, Jasper Lee, George Tsoukalas, Meghana Sistla, Matthew Zhao, Stefan Zetzsche, Greg Durrett, Yisong Yue, and Swarat Chaudhuri.
+\newblock CLEVER: A Curated Benchmark for Formally Verified Code Generation.
+\newblock arXiv:2505.13938, 2025. \url{https://arxiv.org/abs/2505.13938}.
+
+\bibitem{yang2025verusage}
+% verified at https://arxiv.org/abs/2512.18436 (2026-09-04); submitted 20 December 2025, revised 15 April 2026, no venue named
+Chenyuan Yang, Natalie Neamtu, Chris Hawblitzel, Jacob~R. Lorch, and Shan Lu.
+\newblock VeruSAGE: A Study of Agent-Based Verification for Rust Systems.
+\newblock arXiv:2512.18436, 2025. \url{https://arxiv.org/abs/2512.18436}.
+
+\end{thebibliography}
 
 \appendix
 

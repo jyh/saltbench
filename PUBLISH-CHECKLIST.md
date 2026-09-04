@@ -261,7 +261,7 @@ message and no file):
 | `check_infra_names.py --self-test`, then the tree | OK; 1040 tracked text files, 0 occurrences |
 | the pin table against the tree | 95 file pins, all OK |
 | `.githooks/commit-msg`, planted trailer then clean | rc 1, then rc 0 |
-| `paper/saltbench-v1.pdf` | rebuilt with tectonic, 10 pages |
+| `paper/saltbench-v1.pdf` | rebuilt with tectonic, 14 pages (`pdfinfo`), zero TeX warnings, 15 of 15 `\bibitem` entries cited and 0 undefined citations |
 
 ## (h) The hermeticity claim, corrected after amendment 17 (2026-09-02, the same day)
 
