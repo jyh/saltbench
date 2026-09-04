@@ -371,3 +371,53 @@ a sixth field and refuses a pilot id the rows do not supply, so it now fires whe
 instead of only when a copy happens to be present. `build_prompt.py` is pinned and was deliberately
 not edited: adding a printed "skipped" line would change bytes that the frozen run manifests
 recorded, which is a worse trade than writing this paragraph.
+
+## (l) The References section, and what verifying it found (2026-09-04)
+
+The v1 source went to the owner's read with zero `\cite` and zero `\bibitem`. It now carries a
+single `thebibliography` block of fifteen entries and no external `.bib`, so the arXiv package
+stays one file.
+
+The rule for the block is the same one this repository applies to numbers. Every entry was
+verified by fetching its landing page on 2026-09-04, and the URL of that page is a TeX comment
+beside the entry, so the check travels with the entry and never prints. Title, author list, year
+and venue are copied from the page. Nothing is written from memory.
+
+| entry | verified at |
+|---|---|
+| Lean 4 (CADE 2021, 625--635) | dblp record, doi `10.1007/978-3-030-79876-5_37` |
+| mathlib (CPP 2020, 367--381) | Crossref `10.1145/3372885.3373824`; arXiv 1910.09336 |
+| Verus (PACMPL 7(OOPSLA1):286--315) | Crossref `10.1145/3586037` |
+| z3 (TACAS 2008, 337--340) | dblp record, doi `10.1007/978-3-540-78800-3_24` |
+| CLEVER | arXiv 2505.13938 landing page |
+| Agentic Proving for Program Verification | arXiv 2605.23772 landing page |
+| VeruSAGE | arXiv 2512.18436 landing page |
+| SWE-bench (ICLR 2024) | arXiv 2310.06770 landing page |
+| SWE-bench Verified (dataset card) | the Hugging Face card: 500 rows, still no licence field |
+| Anvil (OSDI 2024, 649--666) | the publisher listing for the OSDI 2024 proceedings |
+| Harbor | Zenodo concept doi `10.5281/zenodo.20953922` |
+| the preregistration literature (PNAS 115(11):2600--2606) | Crossref `10.1073/pnas.1708274114` |
+| Claude Code | the vendor documentation landing page |
+| Consumer Terms of Service | the document itself: "Effective October 8, 2025" |
+| Usage Policy | the document itself: "Effective September 15, 2025" |
+
+Three things the fetching found that a bibliography written from memory would have shipped.
+
+1. **An identifier held in memory for the Anvil paper resolved to an unrelated preprint in
+   algebraic topology.** Same-shaped identifier, entirely different work. It was replaced by the
+   record read at the publisher listing. This is the whole argument for the rule: a wrong
+   identifier is not a typo a reader can repair, it is an attribution to strangers.
+2. **`PROVENANCE.md` attributed CLEVER to the wrong people.** Its row read
+   "Thakur, Chaudhary, Sosso, Arora, et al." The arXiv landing page gives Thakur, Lee, Tsoukalas,
+   Sistla, Zhao, Zetzsche, Durrett, Yue, Chaudhuri; Sosso and Arora are two of the three authors of
+   the *other* paper the same row cites correctly one sentence later. The row had merged two author
+   lists. Corrected at the object, with the read date recorded in the row.
+3. **The two provider dates in the paper's reproducibility section verified unchanged.** Both
+   documents are revised in place, which is why they are cited at a version; both still read the
+   dates the section names.
+
+Two things were deliberately NOT entered, so that nobody adds them later believing they were
+missed. The author's own formal-mathematics project, named in the introduction as the source of
+the method under test, has no public artifact to cite. And no antecedent of the referee-gated
+idea was added beyond the ones the prose already names, because placing a citation where the
+prose names nothing would mean writing new prose, which this pass was not to do.
