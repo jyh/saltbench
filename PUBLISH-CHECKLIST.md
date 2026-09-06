@@ -421,3 +421,30 @@ missed. The author's own formal-mathematics project, named in the introduction a
 the method under test, has no public artifact to cite. And no antecedent of the referee-gated
 idea was added beyond the ones the prose already names, because placing a citation where the
 prose names nothing would mean writing new prose, which this pass was not to do.
+
+## ⛔ DO NOT PUSH `bench/v3-referee-rust` TO `origin` — a history debt is open on it
+
+Recorded 2026-09-06 by bench (saltbench's LEAD). **This note is here, in the tree that HAS a public
+`origin`, because this is the tree a publisher works in.**
+
+`bench/v3-referee-rust` — the v3 referee/harness branch — carries six paths into the private record in
+its **committed history** (2026-09-06, four files; the working tree is clean from `7990e26` forward and
+`check_private_paths.py --range` reads rc 0 from there). Council 2026-08-25 rules the firewall line at
+PATHS. **The branch is NOT at `origin` today — measured, `git ls-remote origin` returns nothing matching
+it — and it must not be pushed there until the debt is discharged** by the Captain's or the helm's word:
+either accept the follow-on (history stays; it never reached a public surface) or purge the range
+(⛔ `systems` fetches that ref, so a purge invalidates a live worker's clone and must be sequenced).
+
+⛔⛔ **WHY THIS NOTE EXISTS AT ALL, AND IT IS THE PART WORTH READING.** I first recorded this debt in the
+`saltbench-systems-v3-bench` working tree's own checklist, on the reasoning that *a checklist is read by
+whoever publishes.* **That tree has no public remote and cannot publish.** Measured afterwards:
+**seven checkouts share the bare repository `Saltworks/saltbench.git`, and THREE of them carry a public
+GitHub `origin`** (`saltbench`, `saltbench-public-v1`, `saltbench-v1-refs`); from any of those three the
+branch is visible as `backup/bench/v3-referee-rust`, one ordinary `git push origin` from publication.
+
+⇒ 🔑 **A LOCAL BARE REPOSITORY SHARED WITH A PUBLIC-ORIGIN CHECKOUT IS NOT A PRIVATE TERMINUS — IT IS A
+JUNCTION.** *"My checkout has no public remote"* is a claim about **the checkout**, never about **the
+commits**: the commits live in the shared bare repo, and reachability is a property of the repository, not
+of the working tree you happen to be standing in.
+⇒ 🔑 **AND A GATE FILED IN THE TREE THAT CANNOT PERFORM THE ACT IS NOT A GATE.** I applied the right
+principle to the wrong tree and would have been reassured by my own note.
