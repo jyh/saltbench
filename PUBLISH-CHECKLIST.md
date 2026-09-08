@@ -422,7 +422,21 @@ the method under test, has no public artifact to cite. And no antecedent of the 
 idea was added beyond the ones the prose already names, because placing a citation where the
 prose names nothing would mean writing new prose, which this pass was not to do.
 
-## ⛔ DO NOT PUSH `bench/v3-referee-rust` TO `origin` — a history debt is open on it
+## ✅ SUPERSEDED 2026-09-08 — THE DEBT IS ACCEPTED AND THE FREEZE IS LIFTED
+**The Captain ruled at council 2026-09-08 (row HT): _accept the follow-on, do not ask GitHub to
+erase._** The section below stated the freeze and the reasons for it; **it is kept, not deleted, so the
+record shows what was true and for how long** — but its instruction no longer binds. `bench/v3-referee-
+rust` MAY be pushed to `origin`.
+⛔ **What the acceptance does NOT do:** it does not un-publish anything. The branch reached the public
+origin on 2026-09-08 13:30:44Z and the objects were measured **still served by sha, anonymously, after
+the branch was deleted** (HTTP 200 against a positive control at 200 and a bogus sha at 422). **The
+ruling accepts that exposure; it does not reverse it**, and no local operation could have.
+📌 **And the repair that outlived the incident:** `.githooks/pre-push` now runs the private-paths gate
+BEFORE objects leave, on `main` and on the publish-gate branch. **The gate that would have prevented
+this existed, proven, in a sibling repo for five days.** ⇒ *The fleet repairs the site, not the class.*
+
+### THE ORIGINAL NOTE, KEPT AS WRITTEN AND NO LONGER BINDING
+## ⛔ (SUPERSEDED) DO NOT PUSH `bench/v3-referee-rust` TO `origin` — a history debt is open on it
 
 Recorded 2026-09-06 by bench (saltbench's LEAD). **This note is here, in the tree that HAS a public
 `origin`, because this is the tree a publisher works in.**
