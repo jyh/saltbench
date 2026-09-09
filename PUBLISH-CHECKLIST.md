@@ -921,3 +921,107 @@ reading the paper against the new declared set rather than against the old numbe
 no edit, the sweep of it against the body last sitting found it clean, and its two relevant claims
 (three of five below the floor; the spread larger than the smallest premium) hold under both readings.
 Re-opening the most-read paragraph in the paper on a change that does not touch it is scope, not care.
+
+## (o) ⚖️ THE CAPTAIN'S RULING OF 2026-09-09: THE PAPER IS ABOUT v3 — MEASURED AND PRICED, NOT YET EXECUTED
+
+Carried by the 39th helm head, 2026-09-09 12:3x PDT. **His words as carried:** *"No, the paper should
+be about v3."* Glossed in the carry as: the SaltBench paper is about **v3 (seat-as-subject)**, not v1.
+Recorded here by `paper` the same hour, with the paper measured against the ruling rather than guessed at.
+
+### 1 THE MEASUREMENT — HOW MUCH OF TODAY'S PAPER IS v3
+
+Characters per section of `paper/saltbench-v1.tex` at `6a797d8`, counted mechanically:
+
+```
+  S3-Systems (the v3 matrix)          21,911   26.4%   ← ONE subsection of the four in Results
+  everything else                     61,178   73.6%
+    the referee-gated protocol        13,509   16.3%
+    reproducibility                    9,973   12.0%
+    the instrument findings            6,952    8.4%
+    the treatment question, open       6,707    8.1%
+    populations and provenance         5,982    7.2%
+    SWE-bench / S2-Lean / triage / S2-Rust reads and their three appendices
+```
+⇒ **v3 is a quarter of the artifact and sits as one subsection inside Results.** A paper *about* v3 is
+not an edit to this paper; it is a different architecture.
+
+### 2 ⛔ THE LABEL COLLISION, AND IT IS IN THE MOST-READ STRING THE ARTIFACT HAS
+
+**`v1` and `v3` are two different axes and this repository uses both without ever saying so:**
+```
+  v1   the PAPER's own edition     \title{SaltBench v1: ...} · paper/saltbench-v1.tex · CITATION.cff · desk row EA "v1 PUBLICATION"
+  v3   the CAMPAIGN generation     harness/systems-v3/ · backup/systems-v3 · the v3 run accounts · section (l) "the v3 opus matrix"
+```
+A paper about v3 titled *SaltBench v1* is not strictly contradictory, because an edition and a campaign
+generation are different axes. **It reads as a contradiction to everyone who has not been told they are
+different axes, and nobody outside this fleet has been told.**
+
+⇒ **THE RULING HAS TWO READINGS AND THEY PRODUCE DIFFERENT ARTIFACTS:**
+```
+  (a) SUBJECT   the paper's SUBJECT becomes the v3 campaign        ← the helm's gloss, and the one I take
+  (b) EDITION   the paper's own version label should track the campaign generation, so
+                "SaltBench v1" is the misnomer and the artifact is "SaltBench v3"
+```
+They are not exclusive, and (a) probably wants (b) resolved anyway. **Both are recorded because a
+21-page re-architecture executed against the wrong one is expensive, and the ruling is seven words.**
+
+### 3 ⚖️ IT COLLIDES WITH A REGISTERED RECOMMENDATION IN THIS FILE, AND THE COLLISION IS THE USEFUL PART
+
+Section (n) registered a title fork whose arm B was **"RECOMMENDED, and taken unless the owner says
+otherwise"**: leave the title naming Lean and Verus as the baselines, because the systems population
+**is not a baseline** and *"advertising the systems population in the title would make the strongest
+claim in the paper the one the run supports least, which is precisely what Section (l) exists to
+prevent everywhere else."*
+
+✅ **THE OWNER HAS NOW SAID OTHERWISE. ARM B FALLS.** That is what the clause was for, and nobody
+should re-litigate it or treat the ruling as needing a defence.
+
+⛔⛔ **BUT ARM B's REASON DOES NOT FALL WITH ARM B, AND SECTION (l) IS BINDING, NOT ADVISORY.** What v3
+is, taken from this paper's own qualifiers and disclosures rather than from an opinion:
+```
+  N = 0 referee verdicts on a withheld suite            it is a COST result; correctness unmeasured
+  3 of 5 magnitudes below the resolvable floor          under BOTH readings
+  the gold pair at k = 1                                no verdict reachable at any outcome
+  the sign test is one-sided                            cannot significantly refute
+  within-condition spread 1.80x                         larger than the smallest premium
+  the declared set spans two run accounts               a cache-state mechanism unquantified
+  3 cells of the declared set                           no box-load bound on any file at `main`
+```
+⇒ 🔑 ***A PAPER WHOSE SUBJECT IS v3 CANNOT CARRY THE PREMIUM AS ITS HEADLINE WITHOUT BREAKING SECTION
+(l), WHICH WAS WRITTEN FOR EXACTLY THIS AND BINDS EVERY WRITE-UP OF MATRIX #1.***
+
+### 4 ⭐ THE RECOMMENDATION, AND IT IS NOT A HEDGE — IT IS THE STRONGER PAPER
+
+**The subject of a v3 paper is the PROTOCOL AND THE INSTRUMENT, DEMONSTRATED ON v3.** The premium is
+the occasion; it is not the claim, and by the registration it cannot be.
+
+What v3 actually earned, all of it defensible and all of it v3's own: a referee-gated, pre-registered
+protocol was run on a seat-as-subject cost matrix, and in one campaign it caught a censored cap that
+returns the cap; a statistic that is a cap's price only in the cap's unit; a gate that penalises the
+treatment for applying the treatment; a screen whose false positives are invisible until someone goes
+back for the refused cell; a fence probed only in its sandbox's language, which cannot see the layer
+above it; an instrument that stated a reporting rule in the grammar of a measurement and was quoted as
+one by its own abstract; a scoreboard silent about three structural properties in a row; and a declared
+set that outgrew a bound written over it. **Every one of those is a finding the protocol produced, and
+each is worth more than the ratio.**
+
+⇒ ✅ **AND IT DISSOLVES THE (n) HAZARD RATHER THAN ACCEPTING IT:** a title about the protocol and the
+instrument makes the strongest claim in the paper **the one the run supports best.**
+
+### 5 WHAT WAS DONE AND WHAT WAS DELIBERATELY NOT
+
+**Done:** the measurement above; this record; and PR #18, reading B into the scoreboard — **v3's own
+numbers, correct under every reading of the ruling**, which is why it was taken first and taken whole.
+**Not done: the restructure.** A 21-page re-architecture driven by a seven-word ruling with a live label
+ambiguity is the exceeding-the-commission defect, and unlike PR #9 it is not one commit to revert.
+
+```
+  OWNER               the Captain (what the ruling means), then `paper` (executing it)
+  RELEASE CONDITION   a word on (a) vs (b), and on whether the protocol-and-instrument spine of
+                      item 4 is the intended subject; any one of the three unblocks a start
+  RE-MEASURE          at the next READY post
+  GATES THE UPLOAD?   ⛔ YES — and it is the FIRST item in this file that does. Every other block
+                      here gated an improvement while the artifact stood correct. This one puts the
+                      artifact's SUBJECT in question, and an upload prepared against the wrong
+                      subject is not an improvement missed but a wrong paper published.
+```
