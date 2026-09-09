@@ -543,6 +543,60 @@ amendment's declared-set change is in the tracked scorer.** An artefact cited by
 something other than what produced the result is the same defect class this section was opened for.
 
 
+## (n) UPLOAD DAY — THE EXACT SITES THE ARXIV ID AND THE ZENODO DOI GO INTO, MEASURED IN ADVANCE
+
+Added 2026-09-09 by `paper`. The order is *"on upload day: the arXiv id and the Zenodo DOI into
+README, PROVENANCE and the paper."* This section is that order resolved to file and line **before
+the day**, because on the day the identifier exists and the memory of where it belongs does not.
+
+### THE ZENODO DOI — THREE SITES OUTSIDE THIS FILE, TWO INSIDE IT
+All five carry the same promise, and all five must move together or the repository asserts an
+unassigned DOI in one place and a real one in another.
+
+| file | line at `abdb0fd` | the sentence that must change |
+|---|---|---|
+| `README.md` | 33-35 | *"its DOI is assigned at release (Zenodo) and recorded here on the flip day"* |
+| `PROVENANCE.md` | 67 | the same sentence, in the data-asset paragraph |
+| `PROVENANCE.md` | 97-98 | *"Status on 2026-09-02: OWED, INVENTORIED"* — the status line, not only the DOI |
+| `paper/saltbench-v1.tex` | the Reproducibility section | *"its DOI is assigned at release (Zenodo) and recorded in the repository on the flip day"* |
+| this file | 120 and 189 | the `runs/` disposition row and the data-asset item |
+
+⛔ **THE DOI IS NOT A STRING SUBSTITUTION.** Four of the five sentences say the DOI *will be*
+assigned; after release they must say what it *is*. A find-and-replace on the identifier leaves the
+future tense standing beside the number.
+
+### ⛔⛔ THE ARXIV ID HAS EXACTLY ONE SITE TODAY, AND IT IS NOT ONE OF THE THREE THE ORDER NAMES
+Measured across the tree: the only place prepared for it is `CITATION.cff`,
+`preferred-citation.notes: "arXiv identifier to be added at submission"`. **`README.md` and
+`PROVENANCE.md` have no arXiv line at all**, so on upload day those are ADDITIONS and not edits.
+
+⇒ 🔑 ***AN EDIT YOU HAVE TO REMEMBER TO MAKE IS A DIFFERENT RISK FROM AN EDIT YOU HAVE TO REMEMBER TO
+FIND, AND THE ORDER NAMED THREE FILES OF WHICH TWO HAVE NO SITE.*** What upload day needs:
+
+1. `CITATION.cff` — replace the `notes` line with the identifier, and set `preferred-citation.url`.
+2. `README.md` — a citation line beside the paper reference at line 10, naming the arXiv id.
+3. `PROVENANCE.md` — the paper's own entry, alongside the third-party ones it already lists.
+4. `paper/saltbench-v1.tex` — nothing. **An arXiv paper does not print its own identifier**; arXiv
+   stamps it. Recording it in the tex would be a second, hand-maintained copy of a number the
+   service owns.
+
+### ⚖️ A FORK I AM NOT TAKING ALONE: THE TITLE NAMES TWO SUBSTRATES AND THE PAPER NOW HAS THREE
+The title ends *"with Frontier Baselines on Lean and Verus"*. Since the matrix #1 revision the paper
+reports a third population, five components authored here in Rust.
+
+* **arm A, change the title.** It would describe the contents.
+* **arm B, leave it.** ⭐ **RECOMMENDED, and taken unless the owner says otherwise.** The third
+  population's result is a COST reading with correctness unmeasured and no independent authorship.
+  It is **not a baseline**, and the title's claim is about where the baselines are, which is still
+  exactly Lean and Verus. Advertising the systems population in the title would make the strongest
+  claim in the paper the one the run supports least, which is precisely what Section~(l) exists to
+  prevent everywhere else.
+
+⛔ **WHICHEVER ARM IS TAKEN, `CITATION.cff` AND THE `\title{}` MUST MATCH BYTE FOR BYTE.** They carry
+the same string twice today, and a title change that moves one of them is a citation that disagrees
+with the paper it cites.
+
+
 ## (l) REQUIRED DISCLOSURES FOR ANY WRITE-UP OF MATRIX #1 (v3) — BINDING, not advisory
 <!-- ⛔ RELABELLED 2026-09-09 by bench: this section stood as a SECOND "(j)" beside the
      09/02 escape-sentence section, so a citation to "section (j)" resolved to two different
