@@ -468,4 +468,34 @@ Totals over 30 triageable cells: \textsc{human-loose} 17, \textsc{agent-wrong} 5
 
 Upper tercile of the 180 live tasks by reference-proof wall, rank $\geq 120$; band $n=60$, Anvil-Advanced 42 and NRKernel 18; band wall median 4.55\,s, max 358.60\,s; band bytes median 165,568. Draw of 13 at seed 20260902: 11 Anvil-Advanced, 2 NRKernel. Ten run under the sequential stop: 9 \texttt{PASS}, 1 \texttt{VERIFY\_FAIL} at the cap; sighted episodes reach the first clean referee run at a median of 2 referee calls (p90 9).\src{evidence/amend16-regime-boundary-2026-09-02/p0-upper-tercile-registration.txt; RESULT-amend16-driver-2026-09-02.md section 6; evidence/amend16-regime-boundary-2026-09-02/p0-metered-at-first-rc0.txt} The 9 is a lower bound on the band's pass count at this cap: the failed episode ended at 40 of 40 calls one obligation short (8 verified, 1 error), the uncensored passing call counts run 23 to 39 against the cap of 40 with p90 = 39, and one pass landed at exactly 40 of 40.\src{RESULT-amend16-driver-2026-09-02.md section 6.1}
 
+\section{The systems matrix, per cell}
+\label{app:cells}
+
+Every metered price in the declared set of Section~\ref{sec:s3}, by condition, as the scorer reports them. The scoreboard prints a premium and not the two medians behind it, because the instrument that computes the two readings prints per-cell prices and the premium and does not print the median; this table is what a reader needs to recover any median in that scoreboard. Prices are US dollars of metered subscription spend per cell, each read from that cell's harvested \texttt{METER.txt}.
+
+Reading~A is every row as printed. Reading~B is every row with the \underline{underlined} cell removed: those three are the borrowed smoke cells, one each on the three problems the matrix root could not take to $n=3$ on its own. Three conditions therefore stand at $n=4$ under reading~A and at $n=3$ under reading~B, and the rest are $n=3$ under both. At $n=4$ the median is the mean of the middle pair and is not any cell's price, which is why the three premiums that move between the readings are exactly the three conditions listed with four cells.\src{harness/systems-v3/RESULT-n3-topup-2026-09-09.md section 3, the instrument's stdout for both readings}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+problem & arm & cells \\
+\midrule
+Crc32 & plain-bare & \$5.36 \$6.21 \$7.64 \\
+Crc32 & diet-bare & \$6.19 \$7.21 \$7.63 \\
+FreeList & plain-bare & \$13.02 \$23.38 \underline{\$13.77} \$13.01 \\
+FreeList & diet-bare & \$37.95 \$37.60 \$35.41 \\
+LRU & plain-bare & \$7.75 \$9.73 \underline{\$6.68} \$9.87 \\
+LRU & diet-bare & \$11.19 \$11.21 \$14.63 \\
+LZW & plain-bare & \$8.15 \$20.95 \$13.95 \\
+LZW & plain-statement & \$10.24 \$11.39 \$9.82 \\
+LZW & diet-bare & \$31.70 \$19.18 \$18.16 \\
+LZW & diet-statement & \$22.53 \$15.34 \$18.54 \\
+Paxos & plain-bare & \$9.49 \underline{\$14.20} \$16.78 \$20.16 \\
+Paxos & diet-bare & \$37.93 \$37.65 \$23.52 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent Four cells of the matrix root are refused by the scorer rather than defaulted, because their cost line does not open with a bare price: a void meter carries a zero in its prose, and a scanner that reads on would price an unmetered cell at nothing. They are excluded from every reading.\src{harness/systems-v3/RESULT-n3-topup-2026-09-09.md section 3, the refused cells}
+
 \end{document}
