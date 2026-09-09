@@ -42,9 +42,20 @@ armed in this checkout (`git config core.hooksPath .githooks`) and was driven re
 | private-paths, tree ratchet | `--tree` | first run: 13 residue lines in 8 files, all baselined. After (f): 0 residue lines, 0 baseline entries. ⛔ **RE-MEASURED 2026-09-09: 2 accepted residue lines in 2 files (both the kit run surface, ratified by path AND content hash), 24 baseline rows, 22 of them debt already paid. 0 NEW.** The zero was true when written and the table kept asserting it; the ratchet's verdict is `0 NEW residue`, which is not the same sentence. |
 | private-paths, message ratchet | `--messages` | **5** historical commits baselined (3 Aug + the Captain's 2, ACCEPT 09-09), 0 new |
 | private-paths, full delta | `--range <root>..HEAD` | fires on the historical commits that ADDED the 13 lines and the 3 messages, nothing else; history is not rewritten, so this range reads the same after (f). The CI scans each push's delta, and the tree ratchet reads the tree |
-| infra names (host, account) | `python3 scripts/check_infra_names.py --self-test`, then the tree scan | OK: 5 planted forms caught, role words pass; tree 1039 files, 0 occurrences (was 41 in 21 files, section (f)) |
+| infra names (host, account) | `python3 scripts/check_infra_names.py --self-test`, then the tree scan | OK: 5 planted forms caught, role words pass; tree 1039 files, 0 occurrences (was 41 in 21 files, section (f)). ⛔ **CAUGHT A REAL ONE 2026-09-09**: the placebo ruling carried the run host once and the run account once, and they reached the public repo's CI before any local run saw them — because the four arms above were run from memory and this fifth one was not. Rewritten as role wording (`the Studio`, `the Studio's shared run account`). |
 | PR-description self-test | `python3 scripts/check_pr_descriptions.py --self-test` | OK |
 | commit-msg hook | a planted trailer line, then a Co-Authored-By line | rc 1, then rc 0 (re-driven after (f)) |
+
+
+⛔⛔ **RUN THE GATES FROM THIS TABLE, NOT FROM MEMORY — MEASURED 2026-09-09 BY THE SEAT THAT WROTE IT.**
+Preparing the ACCEPT push I ran four gates, read four greens, and pushed. **There are five**, and the
+fifth is the one that had a finding: two infrastructure names in the placebo ruling, which went public
+on a branch and were caught by CI rather than by me. Every one of the four I ran was a gate I could
+name from memory; the one I missed was the one only this table knows about.
+⇒ 🔑 ***A CHECKLIST YOU ARE WORKING INSIDE IS NOT A CHECKLIST YOU HAVE READ.*** The four greens made the
+set feel complete, which is exactly what a partial sweep does: **it is the COUNT that reassures, and the
+count is the one thing a partial sweep gets right.** The fix is not vigilance — it is running the column
+above end to end, every time, and refusing to treat a green as coverage until the last row has printed.
 
 The 13 tree lines and 3 messages all cite the private record by path, in the frozen protocol
 documents (`PRE-REGISTRATION.md`, `SCOUT-STAGE0.md`, `SCOUT-S2LEAN-STAGE0.md`,

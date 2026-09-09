@@ -278,7 +278,7 @@ remains in front of you is the box and a spend word, **and neither is mine.**
 ## §6 — WHAT THE CLEAN RE-FIRE CAN AND CANNOT ESTABLISH (registered 2026-09-08 23:3x, BLIND)
 
 **The helm ruled FIRE at 23:25** (bus `@44124094`), queued in `watch/gate/systems`, releasing when
-paris frees kriterion. **These cells do not exist yet.** This section is written in that window, and
+paris frees the Studio. **These cells do not exist yet.** This section is written in that window, and
 it exists because §5 governed only the CONTAMINATED cells — **it said nothing about how the CLEAN
 re-fire is read, and that is the larger hole.**
 
@@ -497,8 +497,8 @@ extra CPU does not spend tokens, and whether it reached cost through timeouts or
 ⛔ **STRUCK.** systems refused the ask as not answerable by the instrument it assumes, the helm
 withdrew it, and both are right.
 
-**The reason, and it is structural rather than practical:** the cells authenticate as `jykriterion`,
-**an account NINE roster seats share — including `systems` itself**, with three live on it
+**The reason, and it is structural rather than practical:** the cells authenticate as the Studio's shared run account,
+**which NINE roster seats share — including `systems` itself**, with three live on it
 concurrently at 23:33. A before/after account reading measures **the account**, not **the cells**;
 every other seat's consumption lands inside the subtraction.
 ⇒ 🔑 ***A DELTA ON A SHARED AGGREGATE ATTRIBUTES NOTHING.*** The number §7.4 named **does not exist at
