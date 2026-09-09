@@ -149,8 +149,23 @@ def self_id() -> str:
 # otherwise pass vacuously by excluding the one file that matters.
 # ---------------------------------------------------------------------------
 _SEAT = "se" + "at"                    # the commons/memory-mirror repo
-_EMPLOYER = ["lo" + "ca", "ho" + "ll", "pcc-" + "bios", "safe_" + "dav1d", "safe_" + "gif"]
-_PRIVATE_PROJ = ["si" + "la", "mor" + "pho"]
+_EMPLOYER = ["lo" + "ca", "ho" + "ll", "pcc-" + "bios", "safe_" + "dav1d", "safe_" + "gif",
+             "anu" + "bis"]                                       # commissioned at council 2026-09-09
+_PRIVATE_PROJ = ["si" + "la", "mor" + "pho",
+                 "emanu" + "ensis",                               # PRIVATE FOREVER, born 2026-09-03
+                 "ver" + "so"]                                    # PRIVATE at the forge
+# ⛔ THREE ROOTS ADDED 2026-09-09, RECONCILING A LIST WHOSE OWN BANNER SAID IT WAS STALE.
+#   The banner below has read "last reconciled 2026-08-25" since it was written, and it names
+#   the consequence exactly: "a private root born after that date is NOT watched until this
+#   list is edited." Two of these three were born after it -- one of them an EMPLOYER-lane
+#   repo commissioned the morning this was found -- and the third was never added at all.
+#   ⇒ A DECLARED STALENESS IS STILL A HOLE. The banner made the gap honest, not absent, and
+#   nothing polls a banner. Found from a sibling seat's drift measurement (row JC), not here.
+#   MEASURED BEFORE ADDING, the way the durable-tier note below requires: across saltbench,
+#   salt and saltworks, the PATH form of all three occurs in ZERO tracked files, so none of
+#   them reds ordinary content. (The bare word of the last one appears in 12 files as a
+#   substring of ordinary words; the lookbehind in _INTO excludes every one, which is why
+#   the path-form count is the one that decides.)
 _CFGDIR = r"\.claude-" + _SEAT + r"-[A-Za-z0-9_-]+"
 _KIT_RE = "Documents" + r"[/" + chr(92)*2 + r"]+" + _SEAT   # separator-agnostic
 _KIT = "Documents/" + _SEAT                                      # display form only
@@ -1268,8 +1283,11 @@ def main() -> int:
           f"  WATCHING {len(FORBIDDEN)} shapes: "
           + "; ".join(w for _, w in FORBIDDEN) + ".\n"
           f"  ROOTS ARE A HAND-COPIED SNAPSHOT of a fleet map that lives OUTSIDE"
-          f" these repos and MOVES. Last reconciled 2026-08-25. A private root"
-          f" born after that date is NOT watched until this list is edited.")
+          f" these repos and MOVES. Last reconciled 2026-09-09, WATCHING"
+          f" {len(_ROOTS)} ROOTS BY NAME. A private root born after that date is"
+          f" NOT watched until this list is edited -- and the count is printed"
+          f" so a reader can compare it against the fleet map instead of"
+          f" trusting the date, which is the check the date alone cannot carry.")
     return 0
 
 
