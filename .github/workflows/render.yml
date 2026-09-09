@@ -1,0 +1,80 @@
+name: Render
+
+# THE TRACKED PDF MUST RENDER THE TRACKED TEX.
+#
+# ⚖️ AUTHORISED by the helm (39th head) 2026-09-09 under three conditions, all met here:
+#   (1) A NEW JOB, NEVER AN EDIT TO AN EXISTING SCRUB GATE. This is a separate workflow file
+#       and `.github/workflows/scrub.yml` is BYTE-IDENTICAL to what it was before this commit.
+#       Those three gates are the publication firewall, proven across 15 real failures, and
+#       nothing here weakens them for a convenience. Verify with `git diff -- .github/workflows/scrub.yml`.
+#   (2) DRIVEN RED FIRST. `--self-test` runs before the real scan on every invocation of this
+#       job, and it drives three arms in order: an empty scan is fatal (proven FIRST, before any
+#       arm that can pass); RED on a corrected tex beside the PDF built from its pre-correction
+#       text; GREEN on the same pair after a rebuild with nothing else changed.
+#       ⭐ AND IT IS PROVEN IN PRODUCTION, NOT ONLY IN A FIXTURE: run against this repository's
+#       own state at `be0883b` -- the real hour-old defect -- the gate REFUSES and names the
+#       exact sentence, "Every magnitude is unresolved" in the tracked PDF against "No magnitude
+#       is resolvable for the population" in the tex, diverging at character 37438.
+#   (3) BLIND SPOTS DECLARED IN THE SCRIPT'S OWN DOCSTRING: engine and font drift, and that it
+#       compares STRINGS and not LAYOUT. Read `scripts/check_paper_render.py` before trusting it.
+#
+# ⭐ WHY THIS JOB EXISTS, AND IT IS THE METHOD RATHER THAN THE FIX. On 2026-09-09 a correction
+# landed in `paper/saltbench-v1.tex` and the tracked `paper/saltbench-v1.pdf` was not rebuilt,
+# so the repository held a corrected source beside a rendering of the sentence the correction
+# removed -- and the PDF is the artifact an arXiv cut would take. Every gate was green, because
+# NOTHING IN THIS REPOSITORY RENDERED ANYTHING: the source-marker gate reads the tex, the scrub
+# gates read tree bytes and commit messages, and no gate compared the two artifacts.
+# THE DEFECT WAS CAUGHT BY READING BOTH STRINGS BACK OUT OF THE RENDERED PDF INSTEAD OF TRUSTING
+# THE BUILD. A build that exits 0 tells you a PDF was written; it does not tell you what is in
+# it. This job is that read, performed mechanically on every push.
+# ⛔ AND THE FAILURE DIRECTION IS THE ONE THAT HIDES: after the correction the repository looked
+# MORE correct than before, the fix was real, and CI was 10/10 on it. A stale build fails toward
+# looking fixed, which is why no one goes looking.
+#
+# ⚠️ THE ENGINE IS PINNED, AND THAT PIN IS WHAT KEEPS THIS GATE'S FALSE-RED RATE DOWN. The
+# comparison assumes the tracked PDF came from the same engine and font set. Tectonic is pinned
+# to the version the paper is built with locally; an upgrade on either side can move the text
+# layer with the source unchanged. That reds a correct pair, which is the SAFE direction, and
+# the remedy is a rebuild, never a suppression.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  TECTONIC_VERSION: "0.17.0"
+
+jobs:
+  paper-render:
+    name: the tracked PDF renders the tracked tex
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: poppler, to read a PDF back out
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
+      - name: tectonic, pinned to the version the paper is built with
+        run: |
+          set -euo pipefail
+          URL="https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%40${TECTONIC_VERSION}/tectonic-${TECTONIC_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+          curl -fsSL "$URL" -o /tmp/tectonic.tar.gz
+          sudo tar -xzf /tmp/tectonic.tar.gz -C /usr/local/bin tectonic
+          tectonic --version
+          # Fail closed on a version that is not the pinned one: a silently different engine is
+          # exactly the drift this gate's own blind spot warns about.
+          tectonic --version | grep -q "Tectonic ${TECTONIC_VERSION}"
+
+      # ⛔ THE GATE PROVES IT CAN FAIL BEFORE IT IS ALLOWED TO PASS. House doctrine, and this
+      # gate's self-test drives the empty-scan refusal FIRST, then RED, then GREEN.
+      - name: drive the gate red before letting it pass
+        run: python scripts/check_paper_render.py --self-test
+
+      - name: every tracked PDF renders its source
+        run: python scripts/check_paper_render.py

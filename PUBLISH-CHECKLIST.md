@@ -1025,3 +1025,35 @@ ambiguity is the exceeding-the-commission defect, and unlike PR #9 it is not one
                       artifact's SUBJECT in question, and an upload prepared against the wrong
                       subject is not an improvement missed but a wrong paper published.
 ```
+
+### ✅ A FIFTH GATE, ADDED 2026-09-09 ON THE HELM'S AUTHORISATION: THE TRACKED PDF MUST RENDER THE TRACKED TEX
+
+`scripts/check_paper_render.py`, wired from **`.github/workflows/render.yml`, a NEW workflow file.**
+⛔ **`.github/workflows/scrub.yml` IS BYTE-IDENTICAL** across this change, verified with `git diff
+--quiet`, because the four gates in it are the publication firewall and nothing weakens them for a
+convenience. That was the helm's first condition and it is checkable rather than asserted.
+
+**WHAT IT CLOSES.** PR #19 corrected a sentence in the tex and did not rebuild the PDF, so `main`
+held a corrected source beside a rendering of the sentence the correction removed, with **every gate
+green** — the source-marker gate reads the tex, the scrub gates read tree bytes and commit messages,
+and **nothing in this repository rendered anything.** The PDF is what an arXiv cut takes.
+⇒ 🔑 ***A STALE BUILD FAILS TOWARD LOOKING FIXED.*** After the correction the repo looked MORE correct
+than before, the fix was real, and CI was 10/10 on it. That is why nobody goes looking.
+
+**DRIVEN RED FIRST, AND IN PRODUCTION RATHER THAN ONLY IN A FIXTURE.** The self-test runs before the
+real scan on every invocation, three arms in order: **empty scan fatal proven FIRST** · **RED** on a
+corrected tex beside its pre-correction PDF · **GREEN** on the same pair after a rebuild with nothing
+else changed. ⭐ **And run against this repository's own state at `be0883b`, the real hour-old defect,
+it REFUSES and names the exact sentence** — *"Every magnitude is unresolved"* in the tracked PDF
+against *"No magnitude is resolvable for the population"* in the tex, diverging at character 37438.
+
+⛔ **ITS BLIND SPOTS, DECLARED IN ITS OWN DOCSTRING because a gate that does not state its limits gets
+read as stronger than it is:** engine and font drift can red a correct pair (the safe direction; the
+remedy is a rebuild, never a suppression, and tectonic is pinned to `0.17.0` on both sides for it);
+**it compares STRINGS and not LAYOUT**, so it cannot see a pagination or table regression and nothing
+here claims the PDF *looks* right; it does not read non-text content; and `\src{}` markers expand to
+nothing, so marker changes are the source-marker gate's business and not this one's.
+
+📌 **THE REASON IT EXISTS IS THE METHOD, NOT THE FIX.** The defect was caught by reading both strings
+back OUT of the rendered PDF instead of trusting that the build exited 0. **A build that exits 0 tells
+you a PDF was written; it does not tell you what is in it.** This gate is that read, made mechanical.
