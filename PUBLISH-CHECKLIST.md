@@ -835,3 +835,89 @@ reader meets the claim — NOT in a methods section, NOT in an appendix, NOT in 
 STATISTICAL ONES INCLUDED, ASK WHICH ARM TRIPS IT — AND ASK WHILE NO RESULT EXISTS, BECAUSE
 AFTERWARDS THE ANSWER IS UNPUBLISHABLE EITHER WAY.*** An instrument is validated only when good and
 bad outputs DIFFER; ours returns p=1.0000 on the arm that would be the larger surprise.
+
+### ✅ BOTH BLOCKS ABOVE ARE DISCHARGED — 2026-09-09, AND I FOUND THE SECOND ONE BY RE-MEASURING MY OWN ABSENCE
+
+Recorded by `paper`. **Appended beneath the two entries above, never edited over them.**
+
+**READING B: released by arm 1 of its own condition.** The RESULT file exists on `main` and carries
+every field the condition specified. Re-measured with the same sweep and the same positive control:
+
+```
+  harness/systems-v3/RESULT-n3-topup-2026-09-09.md      the three cells, both readings, verbatim stdout
+  harness/systems-v3/RESULT-matrix-opus-1-2026-09-08.md the discharge recorded against the dependency
+  the three top-up cells, harvest METER + post-end COST  section 1        ✅
+  both readings' premium tables, pooled sds, p-values    section 3        ✅  cut from the instrument
+  the per-problem A-to-B divergence                      section 5        ✅
+  the AMENDMENT 26 registered bounds beside the landed    section 4       ✅
+  the account-boundary disclosure                        section 1b       ✅  (not required; volunteered)
+```
+
+⭐ **The file is cut from the unmodified instrument's stdout with the scorer's sha beside it.** That
+is the thing the block was actually about, and it is worth naming: the block was never doubt about
+the numbers, and this file answers the doubt that existed.
+
+**AMENDMENT 26: released by arm 2, and arm 2 was always MINE.** The condition read *"the amendment
+document reaches `main`, OR a line in this section recording that it lives on a named branch, the way
+21 and 22 already are."* **This is that line:**
+
+```
+  AMENDMENT-26-n3-topup-2026-09-09.md   lives on   refs/remotes/backup/systems-v3
+  commit                                1556db7    2026-09-09 08:48:38 -0700
+  at `main`                             absent, as AMENDMENT-21 and -22 are absent from main
+  positive control                      AMENDMENT-25-cross-vendor-agy-2026-09-07.md found by the same sweep
+```
+
+⛔⛔ **AND THE FINDING IS THAT MY EARLIER MEASUREMENT WAS WRONG IN A WAY ITS OWN INSTRUMENT COULD NOT
+SEE.** The entry above says AMENDMENT 26 was `FOUND ON NO REF`, measured with a positive control at
+~11:0x today. **The document had been committed at 08:48:38, two hours and some minutes earlier.**
+The sweep enumerated `git for-each-ref`, which lists the refs **this checkout has fetched**, and
+`backup` is a second remote that had not been fetched in this working copy.
+⇒ 🔑 ***AN ABSENCE MEASURED OVER `for-each-ref` IS A CLAIM ABOUT AN OBJECT STORE, NOT ABOUT A FLEET.***
+It is the same shape as the fleet-root `grep` defect: a population silently emptied, exit 0, no
+warning, and a true absence and a stale one are byte-identical in the output.
+✅ **THE REMEDY, AND IT IS ONE WORD:** `git fetch --all` before any absence sweep over refs, and say
+in the finding which remotes were fetched.
+📌 **The entry above did state itself at its limit** (*"what is measured is that the DOCUMENT is
+absent from THIS REPOSITORY... it may live in a campaign tree"*), which is the only reason this is a
+correction to my own record and not a false accusation against `systems`. **The limit clause earned
+its keep**, and a measurement stated at its limit is the one that survives being wrong.
+
+### 📌 THREE SITES READING B TOUCHED THAT THE PRICING ABOVE DID NOT NAME
+
+The priced table above listed seven sites and was accurate on all seven. Three more moved, found by
+reading the paper against the new declared set rather than against the old numbers.
+
+1. ⛔ **THE MEDIAN COLUMNS COULD NOT SURVIVE, AND THE REASON IS PROVENANCE, NOT LAYOUT.** The table
+   carried `plain median` and `diet median` beside each premium. The old hand-written scoreboard
+   printed those medians; **the instrument that computes readings A and B prints the per-cell prices
+   and the premium and does not print the median.** At n=4 a median is the mean of the middle pair
+   and is not any cell's price, so under reading A the column could only have been arithmetic of
+   mine. Under this repo's own first rule that number could not name a file, so **the columns are
+   retired and the table's SHAPE changed, not only its values.** ⇒ 🔑 ***AN INSTRUMENT THAT GAINS A
+   READING CAN LOSE A COLUMN, AND THE WRITE-UP FINDS OUT ONLY BY TRYING TO CITE IT.***
+   ⚖️ **A cheap fix that is `systems`/`bench`'s and not mine:** have the scorer print the two medians
+   it already computes. The column returns the moment it is in the stdout.
+2. ⛔⛔ **A BOUND WAS STATED OVER THE MATRIX ROOT AND THE DECLARED SET OUTGREW IT.** The box-load
+   paragraph cleared this matrix of the 24-process leak by a margin: *"all 37 of its cells reached
+   their end at or before 2026-09-09T00:51:59Z and that leak opened at 03:34:51Z."* **The three cells
+   AMENDMENT 26 added are in the declared set and are not in that 37**, and no file on `main` records
+   an end time for them. The paper now states the bound over the matrix root, says the three added
+   cells are not covered, and does not claim they are.
+   ⇒ 🔑 ***A SET THAT GROWS AFTER A BOUND IS WRITTEN OVER IT DOES NOT INHERIT THE BOUND, AND THE
+   GROWTH IS SILENT*** — the scoreboard, the premium and the p-value do not change shape when a cell
+   no timing record covers joins the set. **This is the priced-table's own defect class one level up:
+   the pricing asked what reading B CHANGES and not what it ENLARGES.**
+   ⚖️ **OWED, `systems`/`bench`, not gating:** an end time for the three top-up cells in a file on
+   `main`. The construction stamp `2026-09-09T15:44:50Z` exists in AMENDMENT 26 section 3, which is on
+   `backup/systems-v3` and therefore uncitable by `check_paper_sources`. One line on `main` closes it.
+3. **Qualifier 4's span endpoint and its comparison term both moved.** `FreeList` plain now includes
+   the $13.01 top-up cell, so the within-condition span is \$13.01 to \$23.38 rather than \$13.02 to
+   \$23.38; the ratio is $1.80\times$ at both. And the **smallest premium in the table is no longer
+   the same problem under both readings**: Crc32 at $1.16\times$ under A, LRU at $1.15\times$ under B.
+   The abstract's clause *"larger than the smallest premium"* is true under both and was left alone.
+
+**WHAT WAS DELIBERATELY NOT DONE:** the abstract was not reopened. The pricing above found it needs
+no edit, the sweep of it against the body last sitting found it clean, and its two relevant claims
+(three of five below the floor; the spread larger than the smallest premium) hold under both readings.
+Re-opening the most-read paragraph in the paper on a change that does not touch it is scope, not care.
