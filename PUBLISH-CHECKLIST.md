@@ -1129,3 +1129,35 @@ sentence should be read again in the same pass.**
                       now discharged; this half is not. An upload carries a title page.
   ⛔ IT DOES NOT GATE  the draft, which exists, nor any further prose work, which is independent.
 ```
+
+### 5 ⚖️ UPDATE, 2026-09-09 14:5x — THE SPINE IS RATIFIED AND THE TITLE IS IN THE ARTIFACT AS A PROPOSAL
+
+**The Captain, verbatim, carried by the helm:** *"Yes — the protocol and the instrument, demonstrated
+on v3 — and reporting on observations is fine; we do not need that final number."*
+✅ **THE SPINE OF ITEM 4 ABOVE IS RULED, NOT INFERRED.** Section (o)'s third release arm is discharged
+at the source. Nobody should re-open it, and the reversal cost this seat priced against it is moot.
+✅ **AND THE SECOND CLAUSE IS A RULING ON THE COST PARAGRAPH:** observations are fine, the final number
+is not needed. That is the form the paper now carries, and the forbidden-form guard sits in
+Section~4 rather than only in a result file.
+
+⚡ **THE TITLE IS NOW WRITTEN INTO BOTH STRINGS, MARKED PROPOSED, ON THE HELM'S INSTRUCTION.**
+```
+  SaltBench v1: A Referee-Gated, Pre-Registered Protocol for Measuring Method Effects
+  in Machine-Checked Software Work, and What Its Instrument Caught on a Seat-as-Subject Cost Matrix
+```
+It is the RECOMMENDED candidate of item 2 above, extended to carry the demonstration as well as the
+instrument, because the ruling names both (*"the protocol and the instrument, demonstrated on v3"*).
+⛔ **IT IS A PROPOSAL SITTING IN THE ARTIFACT, NOT AN APPROVED TITLE.** It was landed there rather
+than left in this file so the owner reads it where it will be printed, which is the only place a
+title can actually be judged.
+✅ **THE BYTE-FOR-BYTE REQUIREMENT IS MECHANICALLY VERIFIED**, not asserted: `\title{}` with its TeX
+line breaks collapsed equals both `title:` lines in `CITATION.cff` exactly. The receipt is the two
+strings printed side by side in the PR.
+⇒ **REMAINING, AND IT IS THE ONLY THING LEFT BETWEEN THIS DRAFT AND SUBMISSION-READY: one word from
+the owner on that string.** Keep it, change it, or replace it; any of the three is one line.
+
+📌 **THE EDITION QUESTION IS STILL NOT RULED, AND THE DEFAULT IS NOW TAKEN.** Section 3 above proposed
+one sentence naming the edition and the campaign generation as different axes, and recorded that it
+was not taken. **It is taken now**, in Section~1, because the ruling settled the SUBJECT and left the
+label collision standing, and an arXiv reader meeting *SaltBench v1* on a paper about v3 has no other
+way to read it. One sentence, removable in one edit if reading (b) is later preferred.

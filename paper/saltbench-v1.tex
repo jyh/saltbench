@@ -14,7 +14,7 @@
 \newcommand{\src}[1]{}  % source-file marker; expands to nothing in the PDF
 \newcommand{\arm}[1]{\texttt{#1}}
 
-\title{SaltBench v1: A Referee-Gated, Pre-Registered Protocol for Measuring\\Method Effects in Machine-Checked Software Work,\\with Frontier Baselines on Lean and Verus}
+\title{SaltBench v1: A Referee-Gated, Pre-Registered Protocol for Measuring Method Effects\\in Machine-Checked Software Work, and What Its Instrument Caught\\on a Seat-as-Subject Cost Matrix}
 \author{Jason Hickey}
 \date{September 2026}
 
@@ -29,7 +29,7 @@ SaltBench is a benchmark protocol for one question: does a change to how a codin
 
 A benchmark for agent methods needs two properties that usually pull against each other. The outcome has to be decided by something the agent cannot argue with, and the comparison has to be planned before the agent runs, so that the result cannot be narrated afterwards. SaltBench is a protocol that insists on both. The referee is a proof kernel, a program verifier, or a hidden test suite, run outside the agent's own toolchain invocation. The comparison is pre-registered~\cite{nosek2018preregistration}: the population is drawn by a committed seed, the arms are byte-pinned, the predictions are written down, the adverse outcomes are named, and the freeze commit is the authorization. Everything that happens afterwards is a dated amendment appended to the record.
 
-This paper is about that experiment. It claims the protocol, the seat-as-subject design and its authored population, the cost reading the run returned together with the qualifiers registered alongside it, and a set of instrument findings that we think transfer to any benchmark of this kind. It does not claim an effect of the method under test on what a referee accepts, and it reports no magnitude for the population. Section~\ref{sec:open} states the tests that could produce one. Three earlier reads on drawn populations are reported in Section~\ref{sec:priorreads}, compressed to the role they now have, which is the reason this design is shaped as it is.
+This paper is about that experiment. It claims the protocol, the seat-as-subject design and its authored population, the cost reading the run returned together with the qualifiers registered alongside it, and a set of instrument findings that we think transfer to any benchmark of this kind. It does not claim an effect of the method under test on what a referee accepts, and it reports no magnitude for the population. Section~\ref{sec:open} states the tests that could produce one. Three earlier reads on drawn populations are reported in Section~\ref{sec:priorreads}, compressed to the role they now have, which is the reason this design is shaped as it is. One note on the labels, because two of them are numbers. This document is version~1 of the SaltBench report; \emph{v3} names the campaign generation whose matrix it reports, and not an edition of this document. The two are different axes and only the first is this paper's own version.
 
 The method under test is a set of working practices for machine-checked development that the author uses in a formal mathematics project. Its rendering as an arm is described in Section~\ref{sec:arms}; only the part of it that a single sealed agent can carry is rendered, and that limit was registered before the first call.
 
