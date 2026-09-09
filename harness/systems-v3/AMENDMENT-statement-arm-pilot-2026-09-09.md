@@ -182,3 +182,51 @@ the same account**, so the primary reading is unaffected. ⛔ **Any bare-vs-stat
 crosses the boundary and must say so**, per the disclosure already at `RESULT-n3-topup-2026-09-09.md`.
 📌 **The cells authenticate from a credential file on the run box that no roster edit touches** — naming
 the account here is a registration, and the config dir must be verified at the object before the fire.
+
+---
+
+# ADDENDUM 2 — 2026-09-09 16:1x. **18 OF 24, AND THE GOLD PAIR CANNOT REACH A VERDICT.**
+
+## A2.1 · ⛔⛔ THE ARITHMETIC, STATED TONIGHT AND NOT IN THE MORNING
+```
+  one-sided sign test, k of k, p = 0.5^k
+    k = 3   best case 3 of 3   p = 0.1250   NO VERDICT at any outcome
+    k = 4   best case 4 of 4   p = 0.0625   NO VERDICT at any outcome
+    k = 5   best case 5 of 5   p = 0.0312   the ONLY k that can reach .05
+```
+⇒ 🔑 ***k = 5 IS THE MINIMUM, PAXOS IS ONE OF THE FIVE, AND PAXOS CANNOT CARRY AN ARM-NEUTRAL STATEMENT.
+THEREFORE THE GOLD PAIR CANNOT REACH A VERDICT IN THIS DESIGN.*** Not "we fell short of five" — **at
+k = 4 the best attainable outcome is p = 0.0625 and it is still no verdict.**
+⛔ **This is registered BEFORE the cells land, so the morning cannot read it as a disappointment.** §16 of
+the original freeze said the same thing at k = 1; **this is that finding one level up, and it survived
+adding three problems.**
+
+## A2.2 · WHY PAXOS IS A RESULT AND NOT A DEFECT
+The harness's **neutrality gate** refuses a cell whose rendered `REQUIREMENTS.md` carries the treatment's
+vocabulary, **because that file is read by the PLAIN arm too**. Measured on the extractions:
+```
+  ## Statement section     proof fn   "specification"     build
+  LZW · Crc32 · LRU            0            0             ✅  (LZW is the landed control: also 0/0)
+  FreeList                     0            1             ⛔ -> comment-only elision fixes it
+  Paxos                        3            0             ⛔ IRREDUCIBLE
+```
+⇒ ***A PAXOS STATEMENT NAMES `proof fn` BECAUSE PAXOS'S SPECIFICATION **IS** PROOF OBLIGATIONS.*** The
+vocabulary is not decoration that can be elided; it is the content. **A plain+statement Paxos cell would
+be a control instructed to write proofs, which is not a control.**
+⇒ **REGISTERED AS A FINDING: for a proof-obligation task, an arm-neutral formal statement cannot exist.**
+That is a property of the benchmark's design, it is reportable, and **it is the reason the gold pair
+stops at four problems rather than an accident of scheduling.**
+📌 **The elision rule is admissible precisely because it is FREE:** measured, it changes **FreeList
+alone** — LZW, Crc32, LRU and Paxos are byte-identical under it — so **LZW's already-landed statement is
+not disturbed and comparability across problems is preserved.** ⛔ Had it changed LZW, it would have been
+refused: a rule that rewrites the one landed precedent breaks the arm it is trying to complete.
+
+## A2.3 · WHAT FIRES, AND WHAT IS REPORTED
+```
+  FIRE   Crc32 6 · LRU 6 · FreeList 6   = 18 cells      (FreeList on the re-cut export)
+  NOT    Paxos 6                        = 6 cells       REPORTED AS A RESULT, never as a shortfall
+  gold pair reaches k = 4 (Crc32 · LRU · FreeList · LZW) ⇒ p = 0.0625 floor, NO VERDICT
+```
+⛔ **Everything else in this amendment stands**: the cap at `C1_USD=37.21` with FreeList's diet cells
+expected to cap, the account, and the reading. ⚠️ **FreeList is both the cap-risk AND the elision case** —
+the one problem where two registered hazards meet, and its six cells are the ones to watch.
