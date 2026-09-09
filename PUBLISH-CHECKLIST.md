@@ -1057,3 +1057,75 @@ nothing, so marker changes are the source-marker gate's business and not this on
 📌 **THE REASON IT EXISTS IS THE METHOD, NOT THE FIX.** The defect was caught by reading both strings
 back OUT of the rendered PDF instead of trusting that the build exited 0. **A build that exits 0 tells
 you a PDF was written; it does not tell you what is in it.** This gate is that read, made mechanical.
+
+## (p) ⚖️ THE RESTRUCTURE EXECUTED, AND THE ONE LINE OF IT THAT IS NOT MINE TO WRITE
+
+Written by `paper`, 2026-09-09 evening, after the Captain's ruling of 12:3x and his question of
+14:2x (*"for bench and paper, I'm wondering how soon we can draft the v3 version of the paper"*).
+Section (o) recorded the ruling MEASURED AND PRICED, NOT YET EXECUTED. This section records it
+executed, and isolates the single remaining decision that belongs to the owner.
+
+### 1 ✅ THE MAP'S SIX ITEMS, ALL SIX ACCOUNTED FOR
+
+```
+  1  §5, the four new findings            ✅ DONE   PR #24 (three into §5, one routed to §8)
+  2  compress the prior reads             ✅ DONE   PR #26  13,118 -> 7,422 chars
+  3  the new opening, §§1-2               ✅ DONE   PR #27
+  4  re-anchor the protocol onto v3       ✅ DONE   PR #27
+  5  appendix D, the per-cell prices      ✅ DONE   PR #25
+  6  the title page + CITATION.cff        ⛔ THE CAPTAIN'S. Proposed below, NOT taken.
+```
+⇒ **A FULL-PROSE v3 DRAFT EXISTS.** The artifact is about the seat-as-subject experiment: the
+authored population opens it, the v3 reading is its centre, the instrument findings are its spine,
+and the three drawn populations are compressed to the reason the design is shaped as it is.
+⛔ **IT IS NOT SUBMISSION-READY, AND THE GAP IS ITEM 6 PLUS A READ.**
+
+### 2 ⛔ THE TITLE, PROPOSED AND NOT TAKEN — TWO STRINGS THAT MUST MATCH BYTE FOR BYTE
+
+Today `\title{}` in `paper/saltbench-v1.tex` and `title:` in `CITATION.cff` carry the same string,
+and that string names Lean and Verus as the baselines. **Under the new subject it advertises the two
+populations the paper now compresses to context, and does not name the one it is about.**
+
+```
+  RECOMMENDED  SaltBench v1: A Referee-Gated, Pre-Registered Protocol for Measuring Method
+               Effects in Machine-Checked Software Work, and What It Caught in Its Own Instrument
+
+  ALTERNATIVE  SaltBench v1: A Referee-Gated, Pre-Registered Protocol for Measuring Method
+               Effects in Machine-Checked Software Work, Demonstrated on a Seat-as-Subject
+               Cost Matrix
+```
+⭐ **WHY THE RECOMMENDED ONE.** Section (n)'s fallen arm B was right about the hazard even though the
+owner overruled its conclusion: **advertising the systems population would make the strongest claim in
+the paper the one the run supports least.** A title naming the INSTRUMENT does not have that problem,
+because the instrument findings are the best-evidenced material in the campaign. The alternative names
+the demonstration instead, which is accurate and weaker.
+⛔ **NEITHER TITLE MAY NAME THE PREMIUM.** Section (l) binds every write-up of matrix #1, and a
+premium in a title is a headline by construction.
+
+### 3 ⛔ THE EDITION STRING IS A SEPARATE QUESTION AND IT IS STILL OPEN
+The ruling was **SUBJECT, not edition** (section (o), reading (a)). So `v1` stays as the paper's
+edition while `v3` is the campaign generation it reports.
+⚠️ **INSIDE THIS FLEET THOSE ARE TWO AXES. OUTSIDE IT, NOBODY HAS EVER BEEN TOLD THAT**, and
+*SaltBench v1* on a paper about v3 reads as a contradiction to every arXiv reader.
+```
+  DEFAULT I PROPOSE   one sentence in §1 stating that the paper's edition and the campaign
+                      generation are different axes. Costs a line, needs no ruling, reversible.
+                      ⛔ NOT TAKEN YET, because if reading (b) is preferred it is unnecessary.
+  IF READING (b)      every occurrence of "SaltBench v1" becomes "SaltBench v3", in BOTH strings,
+                      and the file `paper/saltbench-v1.tex` should be renamed with it.
+```
+📌 **A THIRD SITE, NAMED SO IT IS NOT REDISCOVERED LATER:** the treatment-question section assigns
+the two-tier read to *version~2*. That is the campaign's registered vocabulary for future work, it
+was deliberately left untouched by PR #27, and **whichever way the edition question goes, that
+sentence should be read again in the same pass.**
+
+### 4 ⚖️ THE BLOCK, RE-STATED IN THE REGISTER'S FORM
+```
+  OWNER               the Captain
+  RELEASE CONDITION   one string, chosen, and written into BOTH `\title{}` and `CITATION.cff`
+                      byte for byte. A `git diff` over those two lines is the whole receipt.
+  RE-MEASURE          at the next READY post
+  GATES THE UPLOAD?   ⛔ YES. Section (o) put the artifact's SUBJECT in question and that half is
+                      now discharged; this half is not. An upload carries a title page.
+  ⛔ IT DOES NOT GATE  the draft, which exists, nor any further prose work, which is independent.
+```
