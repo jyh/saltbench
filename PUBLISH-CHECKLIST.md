@@ -1244,3 +1244,45 @@ tempting to delete. **It is load-carrying and it stays.**
   GATES THE UPLOAD?   ⛔ NO. The shipped default stands and is correct as written. If the id is
                       taken first, this lands in v2. ⇒ **THE UPLOAD DOES NOT WAIT FOR IT.**
 ```
+
+### 6 ⛔⛔ CORRECTION TO THIS SECTION, MADE BEFORE IT WAS USED — THE DROP-IN WAS WRONG IN SHAPE
+
+Written by `paper` 2026-09-09 15:2x, after bench's pass completed at 15:17 and before any of section
+(q) was applied. **The specification above was composed against a result nobody had seen, and two of
+its choices were wrong.** It is corrected here rather than edited away, because the reason it was
+wrong is worth more than the correction.
+
+**(a) IT FRAMED THE COLUMN AS A PASS COUNT.** Section 3 above writes the flipped abstract sentence as
+*"reports \<PASS\> of \<SCORABLE\> passing the withheld suites"*. ⛔ **A pass count is not the
+registered reading and cannot be the headline.** The reading is that **four of five problems tie at
+100% on both arms and the instrument did not separate them** — an outcome pre-spec §4 registered IN
+ADVANCE, in its own words, as *"not a failure, not a null to be spun, and not grounds for a second
+analysis chosen afterwards."*\src{harness/systems-v3/PRESPEC-posthoc-correctness-matrix1-2026-09-09.md section 4}
+⇒ 🔑 ***I PRE-WROTE A SENTENCE THAT WOULD HAVE TURNED A REGISTERED NULL INTO A HEADLINE NUMBER, IN A
+PAPER WHOSE WHOLE SECTION 4 EXISTS TO STOP THAT.*** The pre-spec caught it, which is the second time
+tonight that document has caught an instrument its own author trusted.
+
+**(b) IT ROUTED THE SELECTION EFFECT TO THE WRONG SECTION, AND THIS IS THE COSTLIER ERROR.** Section 2
+above says the pass is *"a property of this run, not an instrument finding"* and that putting it in
+Section 5 *"would make it an instrument finding, which it is not."* **That is right about the
+correctness column and wrong about the arm-correlated budget cap**, which the pass discovered and which
+is not about matrix~1 at all:
+```
+  THE CORRECTNESS COLUMN     a property of THIS RUN         -> Section 4   ✅ as (q) said
+  THE ARM-CORRELATED CAP     a property of the INSTRUMENT   -> Section 5   ⛔ which (q) forbade
+```
+⇒ 🔑 ***A BUDGET CAP THAT REMOVES THE EXPENSIVE ARM'S HARDEST CELLS FROM EVERY DOWNSTREAM SAMPLE IS
+THE SAME FAMILY AS "A GATE CAN PENALISE THE TREATMENT FOR APPLYING THE TREATMENT", AND THAT FAMILY IS
+SECTION 5's SPINE.*** It binds any arm-correlated cost experiment with a stop rule, which is a claim
+about instruments and not about five Rust components.
+📌 **THE MECHANISM OF MY ERROR, because it is reusable:** I asked *where does this RESULT go* and
+routed the whole thing once. **The v3 map routed four findings by asking, OF EACH ONE, whether it is
+about the instrument or about the run** — and it split them, sending one of four to Reproducibility.
+**I did not re-ask that question when I wrote (q), and a single routing decision over a compound
+result is a coin flip that looks like a judgement.**
+
+**(c) WHAT SURVIVES UNCHANGED.** The four constraints in section 1 above, all of them. The slot's
+first sentence. The rule that every class prints even at zero. The `\src{}` precondition. And the
+clause *no sentence in this paper pairs its premium with working code*, which now matters MORE than
+when it was written: a correctness column with 35 passes in it is exactly the moment that sentence
+becomes expensive to keep, and it stays.
