@@ -229,7 +229,26 @@ _ROOTLESS_INTO = ("(?<![A-Za-z0-9_./" + _BS + _BS + "-])(?:"
 # returns the same verdict wherever it executes. A lane changes WHERE a gate
 # runs; only the pattern changes WHAT it can match.
 _SEP = r"[/\\]+"
-_INTO = rf"(?<![A-Za-z0-9_-])(?:{_ROOT_ALT}){_SEP}[A-Za-z0-9_.-]+"
+# ⛔ THE LEFT GUARD EXCLUDES A PRECEDING DOT, AND IT DID NOT UNTIL 2026-09-09.
+# `_ROOTLESS_INTO` above has carried "." in its lookbehind since it was written; this
+# pattern did not. So a DOT-PREFIXED directory whose name is a root spelled with a leading
+# dot matched the root itself. Measured on a live branch: 27 findings, of which 23 were a
+# dot-prefixed CELL-LOCAL SCRATCH directory in this repo's own harness, against 2 real ones
+# and 2 files whose job is to NAME the forbidden shape (a deny-list and a detector).
+# ⇒ A GUARD THAT REFUSES FOR A WRONG REASON IS HOW A GUARD GETS BYPASSED: the branch was
+#   blocked, the list read 27, and the two that mattered sat inside twenty-five.
+# ⛔⛔ AND THE COST WAS ABOUT TO BE PERMANENT. The ruled ACCEPT runs
+#   `--messages --write-baseline`, which baselines EVERY finding it sees — three shas, one
+#   of them a false positive from this very defect. ⇒ A TOOLING BUG BASELINED IS A TOOLING
+#   BUG PROMOTED TO HISTORY, ratified under the Captain's name. Caught by the lead who
+#   checked the mechanic before running the ruling.
+# ⛔ "/" IS DELIBERATELY *NOT* ADDED. An absolute path carries a slash immediately before
+#   the root and MUST still be caught; only the dot is excluded. Driven both ways.
+# 📌 THIS COMMENT IS LITERAL-FREE ON PURPOSE. My first cut SPELLED the dot-prefixed form
+#   out here and THE SELF-TEST CAUGHT IT — this file scans its own source, and I had
+#   assembled the literal in the SCRIPT THAT WROTE THE FILE rather than in the file.
+#   ⇒ ASSEMBLY MUST LIVE IN THE ARTIFACT, NOT IN ITS GENERATOR.
+_INTO = rf"(?<![A-Za-z0-9_.-])(?:{_ROOT_ALT}){_SEP}[A-Za-z0-9_.-]+"
 
 FORBIDDEN = [
     (re.compile(_INTO),
@@ -569,6 +588,11 @@ def self_test() -> int:
         ("p-bus", "as minuted at " + _BUS.replace(chr(92), "") + ":99999"),
         # THE FOUR SHAPES THAT WERE BLIND UNTIL 08/25. Assembled, never spelled.
         ("p-bslash", "see " + _SEAT + chr(92) + "briefs" + chr(92) + "x.md"),
+        # THE PAIRED OPPOSITE of c-dot-scratch: a SLASH immediately before the root is a
+        # REAL absolute path into the private record and MUST still fire. The 09/09 guard
+        # excludes a preceding DOT and deliberately not a preceding SLASH; without this
+        # arm, widening that class would pass every test in this file.
+        ("p-abs-root", "see /Users/x/projects/claude/" + _SEAT + "/briefs/x.md"),
         ("p-mixed", "see " + _SEAT + chr(92) + _ROOTLESS[0] + "/x.md"),
         ("p-unc", "see " + chr(92)*2 + "host" + chr(92) + _SEAT + chr(92) + "briefs"),
         ("p-drive", "see C:" + chr(92) + "Users" + chr(92) + "j" + chr(92)
@@ -616,6 +640,16 @@ def self_test() -> int:
         ("c-rl-bare", "the " + _ROOTLESS[0] + " directory holds the record"),
         ("c-rl-mid", "docs/" + _ROOTLESS[0] + "/x.md nests a PUBLIC dir"),
         ("c-rl-word", "a " + _ROOTLESS[1] + " of seats sailed at dawn"),
+        # ── THE DOT-PREFIXED SCRATCH DIRECTORY, added 2026-09-09 with its defect ──────────
+        # A dot-prefixed directory whose name is a root is NOT that root: it is a cell-local
+        # scratch dir in this repo's own harness. 23 of 27 findings on a live branch were this
+        # shape, against 2 real ones — and the ruled ACCEPT would have baselined one of them
+        # as ratified residue. These two arms are why that cannot silently return.
+        # ⛔ THEY ARE PAIRED WITH p-abs-root BELOW, DELIBERATELY: a guard that has stopped
+        #   matching is indistinguishable from a guard that has stopped working, so the arm
+        #   proving the dot is EXCLUDED is worthless without the arm proving the SLASH is not.
+        ("c-dot-scratch", "the cell wrote repo/." + _SEAT + "/rt.log"),
+        ("c-dot-abs", "planted at /Users/x/cells/0b/repo/." + _SEAT + "/gitprobe-91920"),
     ]
     for ident, text in clean:
         got = scan([(ident, text)])
