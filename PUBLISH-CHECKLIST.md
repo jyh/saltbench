@@ -45,6 +45,7 @@ armed in this checkout (`git config core.hooksPath .githooks`) and was driven re
 | infra names (host, account) | `python3 scripts/check_infra_names.py --self-test`, then the tree scan | OK: 5 planted forms caught, role words pass; tree 1039 files, 0 occurrences (was 41 in 21 files, section (f)). ⛔ **CAUGHT A REAL ONE 2026-09-09**: the placebo ruling carried the run host once and the run account once, and they reached the public repo's CI before any local run saw them — because the four arms above were run from memory and this fifth one was not. Rewritten as role wording (`the Studio`, `the Studio's shared run account`). |
 | PR-description self-test | `python3 scripts/check_pr_descriptions.py --self-test` | OK |
 | commit-msg hook | a planted trailer line, then a Co-Authored-By line | rc 1, then rc 0 (re-driven after (f)) |
+| paper source markers | `python3 scripts/check_paper_sources.py --self-test`, then the paper scan | self-test OK (both empty scans fatal proven first, 7 real marker shapes pass, 4 planted failures caught one per class). Scan: **RED at `e56375e`** (18 findings over 100 markers, 5 cited paths absent), **GREEN at `abdb0fd`** (101 markers, every cited path tracked) after PR #6. Wired into `scrub.yml` in the same act. See section (m). |
 
 
 ⛔⛔ **RUN THE GATES FROM THIS TABLE, NOT FROM MEMORY — MEASURED 2026-09-09 BY THE SEAT THAT WROTE IT.**
@@ -460,6 +461,141 @@ its record belongs where the push is prepared** — the same reason `ctl/harvest
 harvest rather than after.
 
 ---
+
+## (m) THE PAPER'S SOURCE MARKERS MUST RESOLVE AT THE PUBLISHED BRANCH — DISCHARGED 2026-09-09, GATE GREEN AND WIRED
+
+Added 2026-09-09 by `paper`, on a defect found while revising the paper onto matrix #1.
+
+**THE DEFECT.** The paper's discipline is that every number carries a `\src{...}` marker naming the
+file in this repository it was copied from, and `paper/README.md` says the macro expands to nothing
+in the PDF so the sources travel with the text and never print. That last property is what hides the
+failure: a marker naming a file that reaches no public branch looks exactly like a marker naming one
+that does, from the paper, from the PDF, and from a clean build.
+
+Measured at the object after PR #3 merged, over `paper/saltbench-v1.tex` at `main`:
+
+```
+  source markers ............ 100
+  cited paths that resolve ..  95
+  cited paths that do NOT ...   5
+```
+
+```
+  harness/systems-v3/PREREGISTRATION-matrix-opus-1-2026-09-08.md   <- THE PRE-REGISTRATION
+  harness/systems-v3/PRICE-campaign-matrix-opus-1-2026-09-08.md
+  harness/systems-v3/PREDICTIONS-pricing-set-2026-09-06.md
+  harness/systems-v3/RESULT-hidden-test-strength-v3.md
+  harness/systems-v3/score_matrix1.py
+```
+
+⇒ 🔑 ***THE PAPER'S CENTRAL METHODOLOGICAL CLAIM IS THAT THE READING WAS PRE-REGISTERED BEFORE THE
+FIRST CELL, AND THE DOCUMENT THAT SUBSTANTIATES IT IS THE ONE A READER CANNOT OPEN.*** PR #3 carried
+the two required DISCLOSURES, which was the right first cut and is not the criticism. The
+registration, the price, the predictions, the suite-strength table and the scorer are the second cut.
+
+**THE GATE.** `scripts/check_paper_sources.py`, same fail-closed shape as its siblings: a scan
+finding no `.tex` file, or no source marker, reds; `--self-test` proves both of those before the real
+scan is trusted, drives 7 real marker shapes green (including a cited directory, a continuation
+segment naming no file, and a later token that is a locator rather than a path) and 4 planted
+failures red, one per class.
+
+⛔ **IT IS RED RIGHT NOW AND THAT IS THE POINT.** It was written against a live defect, not a
+fixture, and its red arm is in production on the real paper. It is **deliberately NOT wired into
+`.github/workflows/scrub.yml` yet**, because a gate that reds on a condition nobody can clear is a
+gate that gets disabled.
+
+**RELEASE CONDITION, AND IT IS TWO ACTS IN ONE ORDER:**
+
+1. the five files above reach `main` (a small gated PR off main, artefacts and not history, the
+   route PR #3 established) — **owner: `bench`**;
+2. **in the same act**, add a `paper-sources` job to `scrub.yml` beside its four siblings, running
+   `--self-test` then the scan. **The wiring belongs with the fix**: five files landing makes the
+   gate green, and a green gate nobody runs is what this section exists to prevent.
+
+⛔ **UNTIL BOTH ARE DONE, THE ARXIV UPLOAD IS NOT CLEAR.** Not because the paper is wrong, but
+because five of its provenance markers point outside the artifact a reader is given, and the whole
+`\src{}` convention is a promise that they do not.
+
+### ✅ DISCHARGED THE SAME DAY, BOTH ACTS, IN THE ORDER THE CONDITION NAMED
+
+| act | who | receipt |
+|---|---|---|
+| 1. the five files reach `main` | `bench` | PR #6 merged at `abdb0fd`, 8 of 8 CI green, verified file by file |
+| 2. the scrub job wired, in the same act | `paper` | `paper-sources` job in `.github/workflows/scrub.yml`, `--self-test` then the scan |
+
+```
+  BEFORE (main @ e56375e)   FAIL: 18 findings over 100 markers -- 5 cited paths not in the repo
+  AFTER  (main @ abdb0fd)   OK: 101 source markers in 1 paper file(s), every cited path tracked
+```
+
+⭐ **THE RED ARM RAN IN PRODUCTION, ON THE REAL PAPER, BEFORE THE GREEN ONE DID.** That is the whole
+value of writing the gate at the moment the defect was live: the arm that matters was exercised
+against a real defect rather than a planted one, and the fixture arms in `--self-test` are there to
+keep it exercised after the defect is gone.
+
+⛔ **AND ONE PROVENANCE GAP THIS DOES NOT CLOSE, NAMED BY `bench` WITH THE FILES:** the
+`score_matrix1.py` now public is the UNPATCHED scorer, whose declared set is the matrix root plus the
+three smoke cells. The topped-up n=3 numbers are produced by a PATCHED COPY on the run box that exists
+in no repository. ⇒ **The published scorer over the published archive reproduces the numbers this paper
+prints, because the top-up cells sit in a root the published scorer does not declare** — that is what
+makes today's table citable. ⇒ ⛔ **It also means NO TOPPED-UP FIGURE MAY ENTER THE PAPER until the
+amendment's declared-set change is in the tracked scorer.** An artefact cited by name that resolves to
+something other than what produced the result is the same defect class this section was opened for.
+
+
+## (n) UPLOAD DAY — THE EXACT SITES THE ARXIV ID AND THE ZENODO DOI GO INTO, MEASURED IN ADVANCE
+
+Added 2026-09-09 by `paper`. The order is *"on upload day: the arXiv id and the Zenodo DOI into
+README, PROVENANCE and the paper."* This section is that order resolved to file and line **before
+the day**, because on the day the identifier exists and the memory of where it belongs does not.
+
+### THE ZENODO DOI — THREE SITES OUTSIDE THIS FILE, TWO INSIDE IT
+All five carry the same promise, and all five must move together or the repository asserts an
+unassigned DOI in one place and a real one in another.
+
+| file | line at `abdb0fd` | the sentence that must change |
+|---|---|---|
+| `README.md` | 33-35 | *"its DOI is assigned at release (Zenodo) and recorded here on the flip day"* |
+| `PROVENANCE.md` | 67 | the same sentence, in the data-asset paragraph |
+| `PROVENANCE.md` | 97-98 | *"Status on 2026-09-02: OWED, INVENTORIED"* — the status line, not only the DOI |
+| `paper/saltbench-v1.tex` | the Reproducibility section | *"its DOI is assigned at release (Zenodo) and recorded in the repository on the flip day"* |
+| this file | 120 and 189 | the `runs/` disposition row and the data-asset item |
+
+⛔ **THE DOI IS NOT A STRING SUBSTITUTION.** Four of the five sentences say the DOI *will be*
+assigned; after release they must say what it *is*. A find-and-replace on the identifier leaves the
+future tense standing beside the number.
+
+### ⛔⛔ THE ARXIV ID HAS EXACTLY ONE SITE TODAY, AND IT IS NOT ONE OF THE THREE THE ORDER NAMES
+Measured across the tree: the only place prepared for it is `CITATION.cff`,
+`preferred-citation.notes: "arXiv identifier to be added at submission"`. **`README.md` and
+`PROVENANCE.md` have no arXiv line at all**, so on upload day those are ADDITIONS and not edits.
+
+⇒ 🔑 ***AN EDIT YOU HAVE TO REMEMBER TO MAKE IS A DIFFERENT RISK FROM AN EDIT YOU HAVE TO REMEMBER TO
+FIND, AND THE ORDER NAMED THREE FILES OF WHICH TWO HAVE NO SITE.*** What upload day needs:
+
+1. `CITATION.cff` — replace the `notes` line with the identifier, and set `preferred-citation.url`.
+2. `README.md` — a citation line beside the paper reference at line 10, naming the arXiv id.
+3. `PROVENANCE.md` — the paper's own entry, alongside the third-party ones it already lists.
+4. `paper/saltbench-v1.tex` — nothing. **An arXiv paper does not print its own identifier**; arXiv
+   stamps it. Recording it in the tex would be a second, hand-maintained copy of a number the
+   service owns.
+
+### ⚖️ A FORK I AM NOT TAKING ALONE: THE TITLE NAMES TWO SUBSTRATES AND THE PAPER NOW HAS THREE
+The title ends *"with Frontier Baselines on Lean and Verus"*. Since the matrix #1 revision the paper
+reports a third population, five components authored here in Rust.
+
+* **arm A, change the title.** It would describe the contents.
+* **arm B, leave it.** ⭐ **RECOMMENDED, and taken unless the owner says otherwise.** The third
+  population's result is a COST reading with correctness unmeasured and no independent authorship.
+  It is **not a baseline**, and the title's claim is about where the baselines are, which is still
+  exactly Lean and Verus. Advertising the systems population in the title would make the strongest
+  claim in the paper the one the run supports least, which is precisely what Section~(l) exists to
+  prevent everywhere else.
+
+⛔ **WHICHEVER ARM IS TAKEN, `CITATION.cff` AND THE `\title{}` MUST MATCH BYTE FOR BYTE.** They carry
+the same string twice today, and a title change that moves one of them is a citation that disagrees
+with the paper it cites.
+
 
 ## (l) REQUIRED DISCLOSURES FOR ANY WRITE-UP OF MATRIX #1 (v3) — BINDING, not advisory
 <!-- ⛔ RELABELLED 2026-09-09 by bench: this section stood as a SECOND "(j)" beside the
