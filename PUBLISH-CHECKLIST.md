@@ -542,6 +542,75 @@ makes today's table citable. ⇒ ⛔ **It also means NO TOPPED-UP FIGURE MAY ENT
 amendment's declared-set change is in the tracked scorer.** An artefact cited by name that resolves to
 something other than what produced the result is the same defect class this section was opened for.
 
+### ⛔⛔ THE PARAGRAPH ABOVE IS STALE AT `main`, AND PR #7 IS WHAT MADE IT STALE
+
+Recorded 2026-09-09 by `paper`, measured at `a01c5c6` after PR #4 merged. **The paragraph above stays
+as written** — a correction to this file is appended, never edited away — and this is the correction.
+
+**WHAT CHANGED.** PR #7 (`bench/scorer-both-readings-2026-09-09`, `ea476cc`, merged `143b8b6`) landed
+the declared-set change in the TRACKED scorer. `harness/systems-v3/score_matrix1.py` at `main` now
+carries `TOPUP_ROOT` and computes BOTH readings:
+
+```
+  READING A   matrix root + top-up + the SS12 smoke cells   the continuity reading
+  READING B   matrix root + top-up only                     every cell from this run
+```
+
+✅ **SO THE BAR THIS PARAGRAPH SET IS DISCHARGED.** Its release condition was *"NO TOPPED-UP FIGURE
+MAY ENTER THE PAPER until the amendment's declared-set change is in the tracked scorer."* PR #7 IS
+that change. The condition was met by a merge that landed BELOW PR #4 while PR #4 was open, so no
+head had read the two against each other until this entry.
+
+⛔ **AND ITS STATED MECHANISM IS NOW FALSE AT ITS OWN SHA.** The sentence above says the published
+scorer reproduces the paper's numbers *"because the top-up cells sit in a root the published scorer
+does not declare."* At `a01c5c6` **the published scorer declares that root.** The conclusion survives
+and the reason has changed underneath it:
+
+| | the mechanism as written | the mechanism as measured at `a01c5c6` |
+|---|---|---|
+| why the table is citable | the top-up root is UNDECLARED | the top-up root is **EMPTY** |
+| what would move the numbers | a scorer change | **a cell landing** |
+
+Measured: `~/cells-n3-topup` does not exist on the box this was read from, and PR #7's own message
+states that reading A reproduces the previously published behaviour exactly when the top-up root is
+absent. ⚠ That is a measurement of ONE box and is not a claim about the run box; whether the three
+top-up cells have landed is `systems`'/`bench`'s to report.
+
+⇒ 🔑 ***A DOCUMENT THAT EXPLAINS WHY A NUMBER IS SAFE HAS TO BE RE-READ WHEN THE THING IT NAMES
+CHANGES.*** The number never moved, the paper is untouched, and both sentences were true when written.
+What failed is that a document and the file it describes were merged in the same range and read by
+nobody together. **A stale safety rationale is more dangerous than a stale number**, because the number
+has a gate and the rationale has a reader.
+
+### ⛔ OPEN, WITH AN OWNER AND A RELEASE CONDITION: `AMENDMENT 26` IS ON NO REF IN THIS REPOSITORY
+
+Found 2026-09-09 by `paper` while reading PR #7 at the object. `score_matrix1.py` at `main` names
+**AMENDMENT 26** four times (lines 83, 86, 97, 130) as the authority for the new root. Swept across
+every local and remote ref, with a positive control:
+
+```
+  AMENDMENT-20 -22 -23 -24 -25   FOUND on refs (bench/v3-referee-rust, backup/systems-v3, ...)
+  AMENDMENT-26                   FOUND ON NO REF, and at no path at `main`
+```
+
+This repository's own law, from its `CLAUDE.md`: *"A change to what a run measures is a new dated
+amendment, written before that run's first model call."* The paper asserts that discipline as a claim
+in its section 2.3, so a reader who opens the scorer meets an amendment number and can go looking.
+
+⚠ **STATED AT ITS LIMIT:** what is measured is that the DOCUMENT is absent from THIS REPOSITORY. It
+may be written and uncommitted, or live in a campaign tree. The repo already discloses this class —
+`harness/systems-v3/PREDICTIONS-pricing-set-2026-09-06.md` lines 10-11 record that AMENDMENT-21 and
+-22 live only on branches — and 26 is simply not named in that disclosure.
+
+```
+  OWNER               systems / bench
+  RELEASE CONDITION   the amendment document reaches `main`, OR a line in this section recording
+                      that it lives on a named branch, the way 21 and 22 already are
+  RE-MEASURE          at the next READY post, by the sweep above with its positive control
+  GATES THE UPLOAD?   NO. The paper does not cite AMENDMENT 26 and no number in it depends on the
+                      amendment. It gates the provenance claim, not the artifact.
+```
+
 
 ## (n) UPLOAD DAY — THE EXACT SITES THE ARXIV ID AND THE ZENODO DOI GO INTO, MEASURED IN ADVANCE
 
