@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use SaltBench, please cite the paper and the repository."
-title: "SaltBench v1: A Referee-Gated, Pre-Registered Protocol for Measuring Method Effects in Machine-Checked Software Work, with Frontier Baselines on Lean and Verus"
+title: "SaltBench: A Referee-Gated Protocol for Measuring Method Effects in Machine-Checked Software Work"
 authors:
   - family-names: Hickey
     given-names: Jason
@@ -21,7 +21,7 @@ keywords:
   - pre-registration
 preferred-citation:
   type: article
-  title: "SaltBench v1: A Referee-Gated, Pre-Registered Protocol for Measuring Method Effects in Machine-Checked Software Work, with Frontier Baselines on Lean and Verus"
+  title: "SaltBench: A Referee-Gated Protocol for Measuring Method Effects in Machine-Checked Software Work"
   authors:
     - family-names: Hickey
       given-names: Jason
