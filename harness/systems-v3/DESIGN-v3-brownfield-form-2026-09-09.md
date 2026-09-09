@@ -6,6 +6,53 @@ between two readings is carried forward wrong, and matrix #1 had a live A-vs-B q
 
 ---
 
+## ⛔⛔ §0 · CORRECTION, 2026-09-09 12:0x — THIS DOCUMENT DESCRIBED A TREE IT COULD SEE AND v3 HAS ANOTHER
+
+**Raised by `systems` within ten minutes of the merge, measured at both objects, and it is right.**
+
+```
+  THIS DOCUMENT (as merged)   B/clause.md · B/given/ · B/Crc32/      -> tasks/systems-v2/Crc32/B/   (LEAN)
+  EXECUTOR-BRIEF-v3 §1.3      "B/ — phase 2. NO given/: the seat's own phase-1 landing is the given."
+                              "(no clause file) — the change request is card.md's `## Change request`"
+  tasks/systems-v3/Crc32/B/   _common.sh · interface.rs · list_traces.sh · run_*.sh · withheld/
+```
+⇒ **§4's measurement is real and is about the WRONG POPULATION.** All seven mutant ids are absent from
+the v2 Lean tree; **that says nothing about v3.** ⇒ ***A CENSUS OVER THE TREE IN FRONT OF YOU IS A CENSUS
+OF THAT TREE*** — my own standing card, minted on my own repo, met again here.
+⛔ **AND THE ROOT CAUSE IS THE DAY'S OWN LESSON.** I opened this work by grepping for existing brownfield
+material and got **zero**, and wrote "this is a design from scratch." **That zero was about MY repo.**
+`tasks/systems-v3/.../B/` and `EXECUTOR-BRIEF-v3.md` live in systems' tree, which I cannot read. ⇒ ***AN
+ABSENCE IS A CLAIM ABOUT A POPULATION, AND I NAMED THE WRONG ONE — the fourth instance today of "landed
+is a claim about a ref", and the first one I committed rather than caught.***
+
+### ⚖️ THE RULING systems ASKED FOR: THESE ARE **TWO FORMS**, AND ONLY ONE CLOSES `N = 0`
+
+`systems` declined to guess which shape was intended and was right to. **Both are legitimate and they
+answer different questions, so they get different names and neither inherits the other's argument.**
+
+```
+  B-PLANTED       given = an AUTHORED defective component, IDENTICAL across cells   (the v2 shape)
+                  V1 exists: pre-existing behaviour goes RED -> GREEN
+                  ⇒ CLOSES N = 0.  Everything in §1–§8 below is about THIS form.
+
+  B-CONTINUATION  given = THE CELL'S OWN PHASE-1 LANDING                            (§1.3's shape)
+                  V1 is UNDEFINED: the given is already GREEN, it passed phase 1
+                  ⇒ DOES NOT CLOSE N = 0, and §1's whole argument does not apply to it.
+```
+⛔⛔ **AND B-CONTINUATION CARRIES A CONFOUND THAT MUST BE STATED WHEREVER IT IS USED.** Its given is
+produced **by the arm under test**. So the treatment and the control begin phase 2 **from different code**,
+and that difference is arm-correlated by construction. ⇒ 🔑 ***A PHASE-2 DIFFERENCE CANNOT BE ATTRIBUTED
+TO THE PHASE-2 TREATMENT WHEN PHASE 1 CHOSE THE STARTING POINT.*** It measures a **cumulative** effect
+across two phases, which is a real question and is not this one — and it inherits a carryover the sign
+test cannot separate: **an arm that lands phase 1 better is handed an easier phase 2.**
+⇒ **RULING: ruling 4's commission — the form that closes `N = 0` — is `B-PLANTED`.** `B-CONTINUATION`
+keeps its place in the executor brief as its own experiment, **and must not be called "the brownfield
+rung" without the confound written beside it.**
+📌 **What this correction does NOT do:** it does not withdraw §2, §3, §5, §6, §7 or §8. Two verdicts, the
+rewrite class, the briefing audit, the σ that does not transfer and the refusals all stand for
+`B-PLANTED` exactly as written. **§4's measurement is re-scoped to v2 and is owed again for v3, by
+whoever can read that tree.**
+
 ## §1 · WHY THIS FORM, NOW: IT IS THE ONLY ONE THAT CAN CLOSE `N = 0`
 
 Matrix #1 is a **COST result with no correctness evidence attached** — `N = 0 of 36` priced cells carry a
