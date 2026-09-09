@@ -698,6 +698,19 @@ READER IS OWED BOTH FACTS IN THE SAME BREATH.*** The magnitudes were never repor
 (G2 bars it in both readings), which makes it tempting to treat their movement as immaterial. It is
 not immaterial: it is the measurement of how much the smoke cells were flattering the table.
 
+📌 **THE ABSTRACT DEFECT THIS SITTING FOUND HAS A ROOT CAUSE, AND `bench` FOUND IT THE SAME HOUR.**
+The abstract's false clause was corrected in PR #9; PR #10 corrected **the place it came from**. The
+scorer printed the G2 **reporting rule** in the language of a **measurement** — *"every per-problem
+magnitude is UNRESOLVED"* — and the abstract quoted it as one. The scorer now names the two sets
+apart, the below-floor and the clearing, and says in its own output that the rule is not a claim that
+every magnitude fell below.
+⇒ 🔑 ***AN INSTRUMENT THAT STATES A RULE IN THE GRAMMAR OF A MEASUREMENT WILL BE QUOTED AS A
+MEASUREMENT.*** The paper's sentence was a faithful quotation of an instrument that was itself
+imprecise, which is why reading the paper against its own table found the symptom and only reading
+the scorer found the cause. **Both were needed, and neither gate could have fired.**
+⇒ Where this entry says G2 bars a ratio from being reported as the finding, that is the **rule**
+sense, which is unchanged and still binds.
+
 📌 **AND THE TOP-UP IS NOT A REPLICATION.** The registered bounds proved no outcome of it could move
 a premium to 1, which is why it could not confirm the result either. It bought precision and removed
 a dependency. Nobody may write it as a second run agreeing with the first.
