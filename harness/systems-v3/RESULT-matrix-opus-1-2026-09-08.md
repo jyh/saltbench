@@ -127,6 +127,30 @@ edge, on my own claim, hours after making it.
 
 ## ⛔⛔ CORRECTNESS: **N = 0.** NO CELL IN MATRIX #1 CARRIES A REFEREE VERDICT ON A WITHHELD SUITE.
 
+> ✅⛔ **SUPERSEDED 2026-09-09 15:1x — N = 0 WAS TRUE WHEN WRITTEN AND IS NOW FALSE. THE REFEREE HAS BEEN
+> INVOKED.** On the Captain's order, a declared post-hoc pass scored the whole declared set against the
+> withheld suites. **Zero model tokens, 43 cells, 246 seconds.**
+> ```
+>   PASS 35 · FAIL 1 · CAP-COST 3 · FAILED-BOOT 4        of 36 LANDED cells, 35 pass
+>   four of five problems TIE at 100% on both bare arms  ⇒ the instrument did not separate them
+>   all six +stmt cells PASS 8/8, both arms
+> ```
+> **Full per-cell verdicts:** `RESULT-posthoc-correctness-verdicts-2026-09-09.tsv`. **The reading:**
+> `RESULT-posthoc-correctness-2026-09-09.md`. **Frozen before the first suite ran:**
+> `PRESPEC-posthoc-correctness-matrix1-2026-09-09.md` (commit `437ea70`, 14:57:28).
+> ⛔⛔ **WHAT SURVIVES THIS SECTION UNCHANGED, AND IT IS THE HALF THAT MATTERED:** this run was
+> **REGISTERED AS A COST EXPERIMENT**, and the correctness column is **POST HOC and labelled so
+> everywhere**. It is not a pre-registered result and may never be presented as one.
+> ⭐ **AND THE PASS FOUND A SELECTION EFFECT THIS SECTION COULD NOT HAVE SEEN:** all three budget-capped
+> cells are `salt-diet`, none is `plain`, so the correctness column scores **18 plain against 12 salt**.
+> The dropped salt cells are the ones that ran long enough to hit a cap — **the hard ones** — so **salt's
+> pass rate is biased UP by construction.** ⇒ ***THE ARM THAT COSTS MORE IS SYSTEMATICALLY LESS LIKELY TO
+> BE ASKED THE CORRECTNESS QUESTION.***
+> 📌 **A PASS IS STILL NOT "CORRECT"** — it is *the withheld suite did not fail it*, and that suite's
+> 44/44 is a **ceiling, not a strength**. **No sentence joins the premium to correctness with "and
+> therefore".**
+
+
 **The Captain's question at council 2026-09-09, answered at the object and written here because the
 question was asked of this file: *of the priced cells, how many carry a referee GREEN on the withheld
 suite, and from what path are the verdicts read?***
