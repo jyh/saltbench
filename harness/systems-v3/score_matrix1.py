@@ -79,29 +79,56 @@ def sign_test(k_pos, k_tot):
         return c
     return sum(comb(k_tot, i) for i in range(k_pos, k_tot+1)) / float(2**k_tot)
 
-def main():
-    if not os.path.isdir(HARVEST):
-        print("no archive at %s" % HARVEST); return 2
-    # ── THE DECLARED SET.  Matrix #1 is the cells in MATRIX_ROOT plus the three SMOKE cells named
-    #    in SS12, and nothing else.  A glob over the archive is not a set: it pools other runs.
-    MATRIX_ROOT = os.path.expanduser("~/cells-matrix1")
-    SMOKE = {"ae304f63": "~/cells", "a69e9131": "~/cells", "b7537006": "~/cells"}   # SS12
+# ── THE DECLARED SET.  Matrix #1 is the cells in MATRIX_ROOT, plus the three SMOKE cells named in
+#    SS12, plus the AMENDMENT 26 top-up root, and nothing else.  A glob over the archive is not a
+#    set: it pools other runs.  A SECOND NAMED ROOT IS STILL A SET.
+MATRIX_ROOT = os.path.expanduser("~/cells-matrix1")
+TOPUP_ROOT  = os.path.expanduser("~/cells-n3-topup")     # AMENDMENT 26 -- the n=3 top-up cells
+SMOKE = {"ae304f63": "~/cells", "a69e9131": "~/cells", "b7537006": "~/cells"}   # SS12
+
+def declared_set(include_smoke):
+    """The declared set, with the SMOKE cells IN or OUT.
+
+    ⛔⛔ THE SWITCH IS THE WHOLE POINT AND IT WAS REGISTERED BEFORE EITHER READING EXISTED.
+    Three of matrix #1's five problems reach n=3 in the plain-bare arm ONLY by counting one SS12
+    smoke cell each -- cells built for a different purpose, in a different root, in a different
+    RUN.  This file's own law is that THE RUN IS THE FOURTH FIELD and cannot be read off a cell.
+    So the headline was resting on a pooling this file declares but the scoreboard never showed.
+    The AMENDMENT 26 top-up fires one plain cell per affected problem so those three reach n=3
+    INSIDE their own run.  It does NOT remove the smoke cells: with the top-up in and the smoke
+    also in, those conditions read n=4, and the dependency is diluted rather than discharged --
+    which is harder to see, not easier.  ⇒ BOTH READINGS ARE COMPUTED AND BOTH ARE PRINTED.
+    """
     declared = {}
-    if os.path.isdir(MATRIX_ROOT):
-        for cid in sorted(os.listdir(MATRIX_ROOT)):
-            c = os.path.join(MATRIX_ROOT, cid)
+    for root in (MATRIX_ROOT, TOPUP_ROOT):
+        if not os.path.isdir(root): continue
+        for cid in sorted(os.listdir(root)):
+            c = os.path.join(root, cid)
             # ⛔ FILTER ON STRUCTURE, NEVER ON NAME.  This read `cid != "_bin"` plus an
             # isdir(ctl) test: it excluded ONE non-cell by name and admitted any other
             # directory that happened to carry a ctl/.  `_audit` appears in this root
             # mid-run and has bitten two other tools of mine by exactly that route.
             # A cell is a directory with ctl/arm.  Nothing else is, whatever it is called.
             if os.path.exists(os.path.join(c, "ctl", "arm")): declared[cid] = c
-    for cid, root in SMOKE.items():
-        c = os.path.join(os.path.expanduser(root), cid)
-        if os.path.isdir(os.path.join(c, "ctl")): declared[cid] = c
-    print("declared set: %d cells (%d in the matrix root + %d smoke, SS12)\n"
-          % (len(declared), len(declared)-sum(1 for k in SMOKE if k in declared),
-             sum(1 for k in SMOKE if k in declared)))
+    if include_smoke:
+        for cid, root in SMOKE.items():
+            c = os.path.join(os.path.expanduser(root), cid)
+            if os.path.isdir(os.path.join(c, "ctl")): declared[cid] = c
+    return declared
+
+def _census(declared):
+    """Count each root SEPARATELY.  ⛔ The receipt line used to say 'in the matrix root' for cells
+    that are not in it: a census that misattributes its own population is worse than none."""
+    n_smoke = sum(1 for k in SMOKE if k in declared)
+    n_top   = sum(1 for k, v in declared.items() if v.startswith(TOPUP_ROOT + os.sep))
+    return len(declared) - n_smoke - n_top, n_top, n_smoke
+
+def score(declared, title):
+    print("=" * 78)
+    print(title)
+    m, t, k = _census(declared)
+    print("declared set: %d cells (%d matrix root + %d top-up AMENDMENT 26 + %d smoke SS12)\n"
+          % (len(declared), m, t, k))
 
     cells, refused = {}, []
     for cid, cell in sorted(declared.items()):
@@ -157,9 +184,11 @@ def main():
         if a == "salt-diet" and e == "none":
             q = med.get((t, "plain", "none"))
             if q: prem[t] = med[(t, a, e)] / q
+    verdict = None
     if prem:
         pos = sum(1 for v in prem.values() if v > 1.0); tot = len(prem)
         p = sign_test(pos, tot)
+        verdict = (pos, tot, p, dict(prem))
         for t in sorted(prem): print("  %-9s premium %.4fx  %s" % (t, prem[t], "above 1" if prem[t] > 1 else "BELOW 1"))
         print("  %d of %d problems show a premium > 1   p = %.4f   -> %s"
               % (pos, tot, p, "SIGNIFICANT" if p <= 0.05 else "NOT a result"))
@@ -187,6 +216,42 @@ def main():
             print("     section (SS16), so this pair CANNOT reach .05 and is reported without a verdict. **")
     else:
         print("  no statement-arm pair at n=3 yet")
+    return verdict
+
+
+def main():
+    if not os.path.isdir(HARVEST):
+        print("no archive at %s" % HARVEST); return 2
+
+    a = score(declared_set(True),
+              "READING A -- THE CONTINUITY READING: matrix root + top-up + the SS12 smoke cells")
+    print()
+    b = score(declared_set(False),
+              "READING B -- SMOKE OUT: matrix root + top-up ONLY, every cell from this run")
+
+    # ⛔⛔ THE COMPARISON IS THE POINT, AND IT IS REPORTED WHICHEVER WAY IT COMES OUT.
+    # Registered before either reading existed, so this is a pre-committed comparison and not a
+    # choice made after seeing two numbers.  If B agrees with A, the headline does not depend on
+    # the borrowed cells and the published disclosure is discharged BY MEASUREMENT.  If B differs,
+    # THE DIFFERENCE IS THE RESULT and it outranks the headline.  There is no third branch here on
+    # purpose: a scorer that reports one reading when they agree and two when they do not has made
+    # the disagreement invisible in exactly the case that matters.
+    print("\n" + "=" * 78)
+    print("A vs B -- DOES THE HEADLINE DEPEND ON THE BORROWED SMOKE CELLS?")
+    if a is None or b is None:
+        print("  NOT YET READABLE: one reading has no problem at n=3 in both bare arms.")
+        print("  ⛔ This is NOT 'no dependency'. Report the disclosure verbatim until both read.")
+        return 0
+    (pa, ta, ppa, _), (pb, tb, ppb, _) = a, b
+    print("  A: %d of %d   p = %.4f        B: %d of %d   p = %.4f" % (pa, ta, ppa, pb, tb, ppb))
+    if (pa, ta) == (pb, tb):
+        print("  ⇒ IDENTICAL SIGN VERDICT WITHOUT THE BORROWED CELLS.")
+        print("     The published smoke-cell dependency is DISCHARGED. Report both readings anyway:")
+        print("     the reader cannot reconstruct the set from a single number.")
+    else:
+        print("  ⇒ ⛔⛔ THE READINGS DISAGREE. THE DISAGREEMENT IS THE RESULT AND OUTRANKS THE")
+        print("     HEADLINE. The 5-of-5 figure rests on cells built as a smoke, in another root,")
+        print("     for another purpose. Do not publish A without B beside it.")
     return 0
 
 if __name__ == "__main__":
