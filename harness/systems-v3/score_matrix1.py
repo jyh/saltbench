@@ -194,9 +194,24 @@ def score(declared, title):
               % (pos, tot, p, "SIGNIFICANT" if p <= 0.05 else "NOT a result"))
         if tot == 5 and pos == 4:
             print("  ** 4-of-5 is p=0.1875 and was registered IN ADVANCE as NOT a positive result. **")
-        if fl and any(v < fl for v in prem.values()):
-            print("  G2: at least one premium is BELOW the %.4fx floor -> every per-problem MAGNITUDE is UNRESOLVED" % fl)
-            print("      Report the SIGN across problems; do NOT report a ratio as the headline.")
+        if fl:
+            # ⛔⛔ STATE THE FACT AND THE RULE SEPARATELY. This printed "at least one premium is
+            # BELOW the floor -> every per-problem MAGNITUDE is UNRESOLVED", which reads as a claim
+            # about EVERY problem and is one. The paper took it at its word: the abstract at
+            # origin/main said "every per-problem magnitude falls below the resolvable floor" while
+            # its own body table showed TWO of five clearing it. Caught by `paper`, 2026-09-09.
+            # ⇒ A REPORTING RULE WRITTEN IN THE LANGUAGE OF A MEASUREMENT WILL BE QUOTED AS ONE.
+            below = sorted(t for t, v in prem.items() if v < fl)
+            clear = sorted(t for t, v in prem.items() if v >= fl)
+            print("  G2 FLOOR %.4fx at n=%s -- PER PROBLEM (SS14: the floor is per-problem and n is not uniform)" % (fl, n_min))
+            print("      BELOW  (magnitude UNRESOLVED) : %s" % (", ".join(below) or "none"))
+            print("      CLEARS (magnitude resolvable) : %s" % (", ".join(clear) or "none"))
+            if below:
+                print("      => THE REGISTERED HEADLINE IS THE SIGN ACROSS PROBLEMS, NOT A RATIO.")
+                print("         This is a REPORTING RULE. It is NOT a claim that every magnitude")
+                print("         fell below: %d of %d premium(s) DO clear the floor, and any prose"
+                      % (len(clear), len(prem)))
+                print("         saying otherwise contradicts this table.")
     else:
         print("  not readable yet — needs plain-bare and diet-bare at n=3 on at least one problem")
 
