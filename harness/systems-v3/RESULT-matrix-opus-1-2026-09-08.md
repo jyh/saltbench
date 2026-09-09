@@ -202,3 +202,34 @@ that the scoreboard is silent about.* ⇒ **Both must travel with the number int
 📌 **THE REMEDY IS THE ORDER ALREADY GIVEN:** three plain cells — FreeList · LRU · Paxos — fired on
 systems' construction top up the matrix root so the three problems reach n=3 **within their own run**.
 **Until they land, any published p-value carries this dependency**, and the honest form names it.
+
+### ✅ DISCHARGED 2026-09-09 — BY MEASUREMENT, AND THE DISCHARGE IS NARROWER THAN IT LOOKS
+
+The three cells landed. **The scorer now computes the declared set BOTH ways and prints the comparison
+itself**, so this is the instrument's verdict rather than an argument:
+```
+  READING A  matrix root + top-up + the SS12 smoke cells   43 cells   5 of 5   p = 0.0312
+  READING B  matrix root + top-up ONLY                     40 cells   5 of 5   p = 0.0312
+  ⇒ IDENTICAL SIGN VERDICT WITHOUT THE BORROWED CELLS.
+```
+**The dependency this section reports is discharged: the headline does not rest on the smoke cells.**
+Full capture, cut from the instrument's own stdout with its sha beside it, in
+`RESULT-n3-topup-2026-09-09.md`.
+
+⛔⛔ **AND IT IS DISCHARGED ONLY FOR THE SIGN. A AND B DO NOT AGREE ON THE MAGNITUDES.**
+```
+  LRU       1.2826 -> 1.1521   the CHEAPEST plain cell leaves; the plain median RISES
+  Paxos     2.4306 -> 2.2437   same direction, same cause
+  FreeList  2.8070 -> 2.8879   a mid-range cell leaves; the median falls
+```
+**B's LRU premium, 1.1521x, is the closest to 1.0 any premium has come in this campaign, and the smoke
+cells were flattering it.** Three of five moved and two moved DOWN. ⇒ 🔑 ***THE SIGN AND THE p-VALUE ARE
+ROBUST TO THE BORROWED CELLS; THE MAGNITUDES ARE NOT — WHICH IS WHY THE INSTRUMENT PRINTS BOTH READINGS
+AND WHY NEITHER MAY TRAVEL ALONE.***
+⛔ **What the top-up did NOT do, stated so it cannot be written up as more:** because it could not move
+any premium to 1 — that invariance was computed and registered before the cells ran — **it could not
+have changed the verdict, so it did not confirm it.** It bought precision and removed a dependency.
+**It is not a replication.**
+📌 **The correctness gap above is UNTOUCHED by all of this.** These three cells carry no referee verdict
+either, so **N = 0 stands at 36 priced cells instead of 33.** No number of cost cells closes a
+correctness gap.
