@@ -1286,3 +1286,72 @@ first sentence. The rule that every class prints even at zero. The `\src{}` prec
 clause *no sentence in this paper pairs its premium with working code*, which now matters MORE than
 when it was written: a correctness column with 35 passes in it is exactly the moment that sentence
 becomes expensive to keep, and it stays.
+
+## (r) ⚡ THE STATEMENT-ARM COLUMN AS AN APPLY — WRITTEN AGAINST THE REGISTERED AMENDMENT, BEFORE THE NUMBERS EXIST
+
+Written by `paper` 2026-09-09 15:5x on the Captain's word, verbatim: *"I may hold the arXiv click until
+the morning. If we get results on the statement-arm, I want to add it."* The click is held to morning.
+**The shipping object is the tip of `main` at the moment he clicks; if the statement arm has not landed
+by then, it ships without it.** Nothing here is in the paper and nothing here may enter it until bench's
+RESULT file is at a tracked path.
+
+### 1 ⛔ THE REGISTERED DESIGN, COPIED FROM THE AMENDMENT AND NOT PARAPHRASED
+`harness/systems-v3/AMENDMENT-statement-arm-pilot-2026-09-09.md`, tracked at `main` `fb704cf`, frozen
+BEFORE any card was edited:
+```
+  CELLS       4 problems x {plain+statement (d), salt-diet+statement (e)} x n=3 = 24; with LZW's 6 -> k=5
+  READING     per-problem median(e)/median(d), then the cross-problem SIGN TEST at k=5, the SAME statistic
+              and the SAME floor (2.0072x at n=3) as the bare reading. A SIGN IS THE FINDING; no ratio or
+              range is reported as the result.                                              (§5)
+  THE CAP     C1_USD = 37.21, DEFAULT UNCHANGED. FreeList and Paxos diet+statement are REGISTERED IN
+              ADVANCE as expected to cap. A capped cell is CAP-COST, never a failure.       (§3)
+  ⛔ k        CAPPED CELLS DO NOT SILENTLY SHRINK k. A condition landing fewer than 3 is reported AT THE n
+              ACHIEVED with the shortfall NAMED IN THE SAME TABLE.                          (§5)
+  CORRECTNESS scored by the frozen pre-spec 437ea70; PRE-registered for these 24, post hoc for the bare
+              arms. THE TWO MUST NOT BE POOLED without that distinction printed.            (§5)
+  IF RAISED   no bare-vs-statement cost comparison without the raise stated in the same sentence. (§3)
+  EXTRACTION  ⛔ ADDENDUM 1 SUPERSEDES §4: the four `## Statement` sections are EXTRACTED by
+              `harness/systems-v3/extract_statement_v3.py` from the withheld reference solution, VERBATIM,
+              closed over itself and the interface. LZW reproduces BYTE-IDENTICAL (4,405 B) as the control.
+              The four section shas are the provenance; a section that does not reproduce from the tool is
+              NOT ADMISSIBLE; a named proof fn contributes its CONTRACT, body elided, on EVERY task alike.
+              FIRING: the Captain's read of the four, OR 21:00 local, whichever is first.    (A1.1, A1.2)
+  ⛔ THE ARM   the statement arm is handed the formal specification derived verbatim from the withheld
+              reference ON EVERY PROBLEM. That is the treatment, it is intended, and it is NOT a fence leak.
+              It is a STRONGER treatment than the bare arm by construction, and the (d) vs (e) comparison
+              is WITHIN it, where both sides receive it. THE PAPER MUST SAY THIS WHERE THE ARM IS
+              DESCRIBED, so no reader mistakes it for a leak.                                 (A1.2.1)
+```
+
+### 2 THE NINE SITES, MEASURED AT THE TEX — AND THE APPLY THAT EDITS THEM
+The apply lives in the paper seat's own record, in its dated brief for 2026-09-09 named for the statement-arm apply (seat commit `5fe34375`),
+takes a `params.json` whose every number is COPIED FROM THE TRACKED RESULT FILE, and asserts each anchor
+is unique before it writes. Its docstring carries the schema.
+```
+  1  the abstract       "buildable on one problem only ... k=1 ... no verdict"  -> read at k=K, SIGN of K, p
+  2  §4 built/registered "24 statement-arm cells ... refused"                    -> past tense + the amendment
+  3  §4 qualifier 3     "reaches no verdict ... k=1"                            -> reached none INSIDE the
+                                                                                   matrix; read separately
+  4  §4 NEW paragraph   "The gold pair, under the statement amendment"          -> table: n_d · n_e ·
+                                                                                   premium · note; sign row
+  5  §4 what-may-be-quoted                                                       -> one sentence: same rule
+  6  §2 the content gap "Only LZW's card carries ..."                           -> past tense + authoring rule
+  7  §7 gap 3           "the only thing standing between the gold pair and k=5" -> closed, by amendment
+  8  §4.x post-hoc pass NEW paragraph, the 24 under THEIR OWN HEADING             -> never pooled
+  9  appendix D         rows for the 24 cells' prices                            -> after the Paxos row
+```
+⛔ **WHAT THE APPLY REFUSES TO DO, BY CONSTRUCTION:** it prints no premium as the finding; it keeps all
+four qualifiers (the third changes content, not count); it names a shortfall in the table, never in a
+footnote; it adds the 24 cells' correctness under a separate heading; it describes the sections as
+EXTRACTED and never as authored, and says the arm receives the formal spec by design. **Those are the five ways this
+column could be written wrong, and each is the shape my correctness drop-in got wrong at (q) part 6.**
+
+### 3 ⚖️ THE BLOCK, IN THE REGISTER'S FORM
+```
+  OWNER               systems (the four sections) -> bench (the run and the RESULT file) -> paper (apply)
+  RELEASE CONDITION   a RESULT file for the 24 cells AT A TRACKED PATH, carrying per-problem premiums,
+                      landed n per condition, the sign test, and the correctness classes. Not a post.
+  RE-MEASURE          at the morning READY, before the click
+  GATES THE UPLOAD?   ⛔ NO. The Captain's rule: if it is there by morning it ships in v1; if not, v1
+                      ships without it. Nothing here holds the click.
+```
