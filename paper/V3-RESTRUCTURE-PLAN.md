@@ -66,6 +66,17 @@ the paper today.**
    `git for-each-ref` measures what the checkout has fetched; a positive control drawn from the same
    truncated population fires correctly and proves nothing.
 
+⚠️ **CORRECTION TO THIS LIST, MADE BEFORE IT WAS MERGED, BY ASKING OF EACH ONE WHETHER IT IS ABOUT
+THE INSTRUMENT OR ABOUT THE PROCESS.** Findings 1, 2 and 4 are about the measuring apparatus and its
+claims, and they belong in section 5. **Finding 3 is not**: a tex file diverging from its rendering is
+repository hygiene, not a property of the benchmark's instrument, and it belongs in **section 8,
+Reproducibility**, beside the other things that make the artifact re-derivable.
+⇒ **Finding 4 earns section 5 on a specific ground rather than a general one:** this paper makes real
+absence claims — five sweep patterns returning zero files each, zero served reads of a fenced path
+across 278 episodes — and a finding that an absence is only as wide as the population the instrument
+could see **bears directly on how those claims should be read.** It is self-critical in the direction
+that costs something, which is the only direction worth much.
+
 📌 **And a fifth that belongs beside them, already in §5:** a censored cap returns the cap; a
 statistic is a cap's price only in the cap's unit; a gate can penalise the treatment for applying the
 treatment; a screen's false positives are invisible until someone goes back for the refused cell; a
