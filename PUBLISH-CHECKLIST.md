@@ -27,7 +27,7 @@ the RESULT files' "THIS COMMIT IS THE AUTHORIZATION" lines such as `8de0b74`, `2
 `15cfdc2`). Rewriting history would orphan every one of those citations. The repository's
 zero-remote status makes a rewrite technically safe and semantically destructive.
 
-## (b) The Scrub gates, ported and driven — GREEN; tree residue 0 after section (f); 3 historical messages baselined and HELD
+## (b) The Scrub gates, ported and driven — GREEN; tree residue 0 after section (f); 5 historical messages baselined, DISCHARGED 09-09
 
 Ported byte-identical from `salt` (which carries the jas port): `scripts/check_commit_trailers.py`,
 `scripts/check_private_paths.py` (gate id `819d4ebd77620b0d` at the port; `04ad5a4385236cac` after adopting salt's 2026-09-02 fleet sync, which adds the `safe_gif` root), `scripts/check_pr_descriptions.py`,
@@ -39,8 +39,8 @@ armed in this checkout (`git config core.hooksPath .githooks`) and was driven re
 | trailer self-test | `python3 scripts/check_commit_trailers.py --self-test` | OK |
 | trailer, full history and tree | `python3 scripts/check_commit_trailers.py` | OK: 94 commit messages and 1039 tracked files, 0 forbidden strings (re-run after (f)) |
 | private-paths self-test | `python3 scripts/check_private_paths.py --self-test` | OK (16 planted shapes caught, 16 compliant forms passed) |
-| private-paths, tree ratchet | `--tree` | first run: 13 residue lines in 8 files, all baselined. After (f): **0 residue lines, 0 baseline entries** |
-| private-paths, message ratchet | `--messages` | 3 historical commits baselined, 0 new |
+| private-paths, tree ratchet | `--tree` | first run: 13 residue lines in 8 files, all baselined. After (f): 0 residue lines, 0 baseline entries. ⛔ **RE-MEASURED 2026-09-09: 2 accepted residue lines in 2 files (both the kit run surface, ratified by path AND content hash), 24 baseline rows, 22 of them debt already paid. 0 NEW.** The zero was true when written and the table kept asserting it; the ratchet's verdict is `0 NEW residue`, which is not the same sentence. |
+| private-paths, message ratchet | `--messages` | **5** historical commits baselined (3 Aug + the Captain's 2, ACCEPT 09-09), 0 new |
 | private-paths, full delta | `--range <root>..HEAD` | fires on the historical commits that ADDED the 13 lines and the 3 messages, nothing else; history is not rewritten, so this range reads the same after (f). The CI scans each push's delta, and the tree ratchet reads the tree |
 | infra names (host, account) | `python3 scripts/check_infra_names.py --self-test`, then the tree scan | OK: 5 planted forms caught, role words pass; tree 1039 files, 0 occurrences (was 41 in 21 files, section (f)) |
 | PR-description self-test | `python3 scripts/check_pr_descriptions.py --self-test` | OK |
@@ -261,7 +261,7 @@ message and no file):
 | `check_infra_names.py --self-test`, then the tree | OK; 1040 tracked text files, 0 occurrences |
 | the pin table against the tree | 95 file pins, all OK |
 | `.githooks/commit-msg`, planted trailer then clean | rc 1, then rc 0 |
-| `paper/saltbench-v1.pdf` | rebuilt with tectonic, 14 pages (`pdfinfo`), zero TeX warnings, 15 of 15 `\bibitem` entries cited and 0 undefined citations |
+| `paper/saltbench-v1.pdf` | rebuilt with tectonic, 10 pages |
 
 ## (h) The hermeticity claim, corrected after amendment 17 (2026-09-02, the same day)
 
@@ -344,7 +344,7 @@ a number, a protocol text or a result; ruling 3 removes a file from the tree and
 | 1 | Licence: **Apache-2.0 for the code, CC BY 4.0 for the data and documents.** Accepted as proposed | `LICENSE` and `LICENSE-DATA` state the choice instead of marking a proposal; `CITATION.cff` sets `license: [Apache-2.0, CC-BY-4.0]`; the README's Licence section and `PROVENANCE.md` section 3 drop the word "proposed" |
 | 2 | Provider terms: the reading is **confirmed**, checked live against the documents; cite both at the version read | `PROVENANCE.md` section 3 item 1 rewritten: Consumer Terms **effective 2025-10-08** section 4 (Outputs are the user's; publication not forbidden) and the Usage Policy **dated 2025-09-15** (the no-training clause binds the subscriber, not a downloader). Both are revised in place upstream, which is why the version is cited and not just the URL |
 | 3 | The 30 SWE-bench issue texts: **dropped**. Keep the ids, the pinned revision and a fetch script; re-addable by one commit | `harness/data/problem_statements.json` removed from the tree and gitignored; `harness/fetch_problem_statements.py` added (self-test 13 arms, all green) which rebuilds the projection from the pinned revision `c104f840cc67f8b6eec6f759ebc8b2693d585d4a` and verifies it against `rows_sha256_canonical` in `TASKLIST.json` and the `problem_statements.json` pin in `harness/HASHES.txt`. `PROVENANCE.md` section 1.3 and section 4, the README's Licence and Reproducing sections, and item (c) above all updated |
-| 4 | The 3 commit messages carrying private paths and the 1 body naming the run host: **accepted, no rewrite** | Nothing done, deliberately. They stay in the baseline `scripts/check_private_paths.py --messages` accepts (3 accepted historical, 0 new). A rewrite would re-sha roughly a hundred commits that the frozen record cites by hash, for filenames that name no third party |
+| 4 | The 3 commit messages carrying private paths and the 1 body naming the run host: **accepted, no rewrite** | Nothing done, deliberately. They stay in the baseline `scripts/check_private_paths.py --messages` accepts (**5** accepted historical as of 2026-09-09, 0 new). A rewrite would re-sha roughly a hundred commits that the frozen record cites by hash, for filenames that name no third party |
 | 5 | The fleet vocabulary in the frozen documents: **accepted**, with a README glossary | The README gains "A glossary for the record's vocabulary": Captain, helm, seat, bus, council, desk row, refuter, commission, Studio, morning line, fleet. It says plainly that none of it is a technical term of the benchmark and that the frozen documents keep it because frozen documents are appended to, never edited |
 | 6 | Flip shape: **`public-v1` becomes the public `main`; `master` is then fast-forwarded onto it** | Recorded in item (e) above, with the direction stated as a prohibition — the public history is `public-v1`'s and never `master`'s, because `master` still carries the vocabulary lines and infrastructure names the flip layer removed |
 
@@ -372,93 +372,146 @@ instead of only when a copy happens to be present. `build_prompt.py` is pinned a
 not edited: adding a printed "skipped" line would change bytes that the frozen run manifests
 recorded, which is a worse trade than writing this paragraph.
 
-## (l) The References section, and what verifying it found (2026-09-04)
+## ⛔ HISTORY DEBT ON `bench/v3-referee-rust` — MUST BE SETTLED BEFORE THIS BRANCH GOES PUBLIC
 
-The v1 source went to the owner's read with zero `\cite` and zero `\bibitem`. It now carries a
-single `thebibliography` block of fifteen entries and no external `.bib`, so the arXiv package
-stays one file.
+Recorded 2026-09-06 by bench, as a **declared hole with a named trigger** rather than an open question
+that a publication step would have to rediscover.
 
-The rule for the block is the same one this repository applies to numbers. Every entry was
-verified by fetching its landing page on 2026-09-04, and the URL of that page is a TeX comment
-beside the entry, so the check travels with the entry and never prints. Title, author list, year
-and venue are copied from the page. Nothing is written from memory.
+**What:** six paths into the private record entered the *committed history* of this branch on 2026-09-06,
+in four files bench authored that day (the helm's REGISTRATION briefs; the MEASURE brief, twice; a
+COMMISSION brief; the kit's watch surface). Council 2026-08-25 rules the firewall line at PATHS.
 
-| entry | verified at |
-|---|---|
-| Lean 4 (CADE 2021, 625--635) | dblp record, doi `10.1007/978-3-030-79876-5_37` |
-| mathlib (CPP 2020, 367--381) | Crossref `10.1145/3372885.3373824`; arXiv 1910.09336 |
-| Verus (PACMPL 7(OOPSLA1):286--315) | Crossref `10.1145/3586037` |
-| z3 (TACAS 2008, 337--340) | dblp record, doi `10.1007/978-3-540-78800-3_24` |
-| CLEVER | arXiv 2505.13938 landing page |
-| Agentic Proving for Program Verification | arXiv 2605.23772 landing page |
-| VeruSAGE | arXiv 2512.18436 landing page |
-| SWE-bench (ICLR 2024) | arXiv 2310.06770 landing page |
-| SWE-bench Verified (dataset card) | the Hugging Face card: 500 rows, still no licence field |
-| Anvil (OSDI 2024, 649--666) | the publisher listing for the OSDI 2024 proceedings |
-| Harbor | Zenodo concept doi `10.5281/zenodo.20953922` |
-| the preregistration literature (PNAS 115(11):2600--2606) | Crossref `10.1073/pnas.1708274114` |
-| Claude Code | the vendor documentation landing page |
-| Consumer Terms of Service | the document itself: "Effective October 8, 2025" |
-| Usage Policy | the document itself: "Effective September 15, 2025" |
+**State:** the working tree is CLEAN — rewritten as role wording at `7990e26`. ⛔⛔ **THIS PARAGRAPH
+CLAIMED `check_private_paths.py --range` READS `rc 0` FROM THAT COMMIT FORWARD. THAT IS FALSE AS OF
+2026-09-09 AND THE DEBT IS LARGER THAN RECORDED HERE.** Measured at the object 06:3x, after `evidence`
+armed this checkout at the outside hook form (row HU) and told me before I met it cold:
+```
+  check_private_paths.py --range 7990e26..bench/v3-referee-rust     ->  rc 1
+  TWO further commits, both AFTER 7990e26, both in their COMMIT MESSAGE, not the tree:
+    58d821f  2026-09-07 21:09   a bare private-record path, briefs-shaped
+    064911f  2026-09-07 14:20   a bare private-record path, runbooks-shaped
+    ⛔ DESCRIBED, NOT QUOTED. Reproducing the literal strings here made this very
+      section trip the gate — 3 findings, all of them my own documentation of the
+      defect. The gate warns of exactly this: "a literal example is still an
+      instance." A record of a forbidden form must name its SHAPE, never its text.
+```
+⇒ 🔑 ***A "CLEAN FROM HERE FORWARD" CLAIM IS A CLAIM ABOUT THE FUTURE, AND THIS ONE WAS WRITTEN THREE
+DAYS BEFORE THE COMMITS THAT FALSIFIED IT.*** It was true when written, it is the sentence a publisher
+would rely on, and nothing re-checked it until a gate was armed. **A declared-clean line decays exactly
+like a declared-open one, and it is more dangerous because it invites no work.**
+⛔ **The offending text survives in `d2d4a0f..7990e26^` AND in the messages of the two commits above.**
+⚠️ **The `.seat/` findings in the same gate run are FALSE POSITIVES and are NOT part of this debt** —
+`evidence` measured that at the gate with both controls: it cannot distinguish a cell's own
+`repo/.seat/` scratch dir from the fleet's private record. That is a gate defect, reported and not
+patched by this seat. **No public surface was ever reached: the sole remote on
+this checkout is the local bare repository on the Saltworks volume.**
 
-Three things the fetching found that a bibliography written from memory would have shipped.
+**THE TRIGGER: this branch may not be pushed to any public remote until this line is discharged**, by one
+of two acts, and the choice is the Captain's or the helm's, not a lead's:
+1. **ACCEPT THE FOLLOW-ON** — the history stays, on the grounds that it never reached a public surface and
+   the publication step is itself the gate. Discharge by striking this section with the ruling cited.
+2. **PURGE** — the 08/16 treatment, rewriting the range. ⛔ Note the cost honestly: `systems` fetches this
+   ref, so a purge invalidates a live worker's clone and must be sequenced with it.
 
-1. **An identifier held in memory for the Anvil paper resolved to an unrelated preprint in
-   algebraic topology.** Same-shaped identifier, entirely different work. It was replaced by the
-   record read at the publisher listing. This is the whole argument for the rule: a wrong
-   identifier is not a typo a reader can repair, it is an attribution to strangers.
-2. **`PROVENANCE.md` attributed CLEVER to the wrong people.** Its row read
-   "Thakur, Chaudhary, Sosso, Arora, et al." The arXiv landing page gives Thakur, Lee, Tsoukalas,
-   Sistla, Zhao, Zetzsche, Durrett, Yue, Chaudhuri; Sosso and Arora are two of the three authors of
-   the *other* paper the same row cites correctly one sentence later. The row had merged two author
-   lists. Corrected at the object, with the read date recorded in the row.
-3. **The two provider dates in the paper's reproducibility section verified unchanged.** Both
-   documents are revised in place, which is why they are cited at a version; both still read the
-   dates the section names.
+### ✅ DISCHARGED 2026-09-09 — ACCEPT RULED, AND THE MECHANIC RATIFIED MORE THAN THE RULING NAMED
 
-Two things were deliberately NOT entered, so that nobody adds them later believing they were
-missed. The author's own formal-mathematics project, named in the introduction as the source of
-the method under test, has no public artifact to cite. And no antecedent of the referee-gated
-idea was added beyond the ones the prose already names, because placing a citation where the
-prose names nothing would mean writing new prose, which this pass was not to do.
+**The Captain ruled ACCEPT (option 1) on `58d821f` + `064911f`, delivered via the helm on bus 45083690.**
+Executed here, and the trigger above is lifted: this branch may be pushed.
+```
+  BEFORE   baseline 3 rows (Aug S2-Lean: 4a26604, 58a3ecc, cb8cea3) · --messages FAIL, 3 unaccepted
+  AFTER    baseline 5 rows = those 3 + the Captain's 2 · --messages OK, 0 new
+  arms     --self-test OK · --tree OK (0 new residue) · --range 778fc25..HEAD OK (0 paths)
+```
+⛔⛔ **THE MECHANIC HAS NO SELECTION, AND THE THIRD COMMIT IT SWEPT IN WAS MINE.** `--write-baseline`
+takes no revision list: it accepts **every message reachable from HEAD that the gate reds on**. At the
+moment the ruling arrived that was **three** commits, not two — the Captain's two, plus `d2633e9`
+(bench, 2026-09-09), whose message quoted both offending paths *literally while recording that they are
+offending*: the identical defect `89f5685` had just repaired in this file, committed one hour later in
+the message of the commit that repaired it.
+⇒ **It was NOT baselined.** It was **unpushed** — contained in the local branch and in neither `origin`
+nor `backup` — so the gate's own stated remedy applied: *"the ONLY acceptable fix is catching it BEFORE
+the push."* Reworded at the object (`d2633e9` → `118b4ea`), the three commits above it replayed, and the
+result verified **tree-identical** to the pre-rewrite ref (`git diff` empty, `presha-accept-2026-09-09`
+retained as the safety ref). The gate then reds on **exactly the two the Captain named**, so the write
+ratifies his ruling and nothing else.
+⇒ 🔑 ***AN ACCEPT RULING NAMES COMMITS; THE TOOL THAT EXECUTES IT NAMES A REACHABILITY SET. WHERE THOSE
+TWO SETS DIFFER, THE TOOL WINS SILENTLY AND THE RECORD SAYS THE RULING WAS FOLLOWED.*** The gap is not
+in the ruling and not in the gate — the gate's docstring says a baseline growth *"needs a council word,
+not a green build,"* which is exactly the property `--write-baseline` cannot enforce for itself.
+📌 **STANDING CONSEQUENCE FOR THE NEXT ACCEPT:** run `--messages` and read the finding list BEFORE
+`--write-baseline`, and compare it commit-by-commit against the words of the ruling. A count is not a
+check: three findings and two named commits agree on neither, and the run that would have hidden it
+prints `5 accepted commit(s) written` either way.
 
-## ✅ SUPERSEDED 2026-09-08 — THE DEBT IS ACCEPTED AND THE FREEZE IS LIFTED
-**The Captain ruled at council 2026-09-08 (row HT): _accept the follow-on, do not ask GitHub to
-erase._** The section below stated the freeze and the reasons for it; **it is kept, not deleted, so the
-record shows what was true and for how long** — but its instruction no longer binds. `bench/v3-referee-
-rust` MAY be pushed to `origin`.
-⛔ **What the acceptance does NOT do:** it does not un-publish anything. The branch reached the public
-origin on 2026-09-08 13:30:44Z and the objects were measured **still served by sha, anonymously, after
-the branch was deleted** (HTTP 200 against a positive control at 200 and a bogus sha at 422). **The
-ruling accepts that exposure; it does not reverse it**, and no local operation could have.
-📌 **And the repair that outlived the incident:** `.githooks/pre-push` now runs the private-paths gate
-BEFORE objects leave, on `main` and on the publish-gate branch. **The gate that would have prevented
-this existed, proven, in a sibling repo for five days.** ⇒ *The fleet repairs the site, not the class.*
+⛔ **Why it is written HERE and not only on the desk:** a desk row is read by whoever sweeps the desk; a
+publication checklist is read by whoever publishes. **This debt's only dangerous moment is the push, so
+its record belongs where the push is prepared** — the same reason `ctl/harvest-owed` is written before the
+harvest rather than after.
 
-### THE ORIGINAL NOTE, KEPT AS WRITTEN AND NO LONGER BINDING
-## ⛔ (SUPERSEDED) DO NOT PUSH `bench/v3-referee-rust` TO `origin` — a history debt is open on it
+---
 
-Recorded 2026-09-06 by bench (saltbench's LEAD). **This note is here, in the tree that HAS a public
-`origin`, because this is the tree a publisher works in.**
+## (l) REQUIRED DISCLOSURES FOR ANY WRITE-UP OF MATRIX #1 (v3) — BINDING, not advisory
+<!-- ⛔ RELABELLED 2026-09-09 by bench: this section stood as a SECOND "(j)" beside the
+     09/02 escape-sentence section, so a citation to "section (j)" resolved to two different
+     sections and a reader reached whichever came first. Earlier receipts and bus posts cite
+     it as (j) — they mean THIS section, the matrix #1 disclosures. The old label is recorded
+     rather than erased, for the same reason a superseded line is replaced and not deleted. -->
 
-`bench/v3-referee-rust` — the v3 referee/harness branch — carries six paths into the private record in
-its **committed history** (2026-09-06, four files; the working tree is clean from `7990e26` forward and
-`check_private_paths.py --range` reads rc 0 from there). Council 2026-08-25 rules the firewall line at
-PATHS. **The branch is NOT at `origin` today — measured, `git ls-remote origin` returns nothing matching
-it — and it must not be pushed there until the debt is discharged** by the Captain's or the helm's word:
-either accept the follow-on (history stays; it never reached a public surface) or purge the range
-(⛔ `systems` fetches that ref, so a purge invalidates a live worker's clone and must be sequenced).
+⛔ **SCOPE: this section is about the v3 opus matrix, not the v1 flip that the rest of this file
+covers.** It is here because this is the surface a publisher reaches; a rule binding the write-up
+that lives only in the pre-registration binds nobody who does not read the pre-registration.
 
-⛔⛔ **WHY THIS NOTE EXISTS AT ALL, AND IT IS THE PART WORTH READING.** I first recorded this debt in the
-`saltbench-systems-v3-bench` working tree's own checklist, on the reasoning that *a checklist is read by
-whoever publishes.* **That tree has no public remote and cannot publish.** Measured afterwards:
-**seven checkouts share the bare repository `Saltworks/saltbench.git`, and THREE of them carry a public
-GitHub `origin`** (`saltbench`, `saltbench-public-v1`, `saltbench-v1-refs`); from any of those three the
-branch is visible as `backup/bench/v3-referee-rust`, one ordinary `git push origin` from publication.
+**Ruled by the helm 2026-09-08 on bench's own disclosure (§20 of
+`harness/systems-v3/PREREGISTRATION-matrix-opus-1-2026-09-08.md`). Each item appears where the
+reader meets the claim — NOT in a methods section, NOT in an appendix, NOT in a footnote.**
 
-⇒ 🔑 **A LOCAL BARE REPOSITORY SHARED WITH A PUBLIC-ORIGIN CHECKOUT IS NOT A PRIVATE TERMINUS — IT IS A
-JUNCTION.** *"My checkout has no public remote"* is a claim about **the checkout**, never about **the
-commits**: the commits live in the shared bare repo, and reachability is a property of the repository, not
-of the working tree you happen to be standing in.
-⇒ 🔑 **AND A GATE FILED IN THE TREE THAT CANNOT PERFORM THE ACT IS NOT A GATE.** I applied the right
-principle to the wrong tree and would have been reassured by my own note.
+1. ⛔ **THE PRIMARY TEST IS ONE-SIDED, AND THIS APPEARS BESIDE THE p-VALUE.**
+   `P(at least k premiums ABOVE 1)`. Five above 1 → p = 0.0312 and the hypothesis is CONFIRMED at
+   .05; five BELOW 1 → p = 1.0000 and it **cannot be refuted at .05**. ⇒ **this design can confirm
+   its hypothesis and cannot significantly refute it.** A one-sided test is a claim about which
+   surprise you were willing to be surprised by; a reader who meets that in an appendix has
+   already read the headline and priced it as two-sided.
+2. ⛔ **THE HEADLINE IS THE SIGN ACROSS PROBLEMS, NEVER A RATIO.** 5/5 → p=0.031. **4/5 → p=0.1875
+   and is registered IN ADVANCE as NOT a result** — it may not be reported as "nearly". The
+   per-problem MAGNITUDES are UNRESOLVED at n=3 against the registered floor of 2.007254… (printed
+   2.0072 truncated here, 2.0073 rounded in some receipts — **one number, two renderings**).
+3. ⛔ **THE GOLD PAIR IS k=1 AND MUST BE LABELLED AS SUCH.** Only LZW carries a `## Statement`
+   card (§16), so the statement-arm comparison cannot reach significance at ANY outcome. It is the
+   pair the campaign most wants and the one this matrix cannot answer.
+4. ⛔ **THE PLACEBO'S ZEROS ARE NECESSARY AND NOT SUFFICIENT.** A shingle count cannot fail a
+   construction that replaced the words. The placebo arm may never be reported as "provably
+   contains no method" (`RULING-placebo-acceptance-2026-09-08.md`).
+5. ⛔ **COST IS COMPARABLE ACROSS THE TWO EXPORTS; CONTAINMENT MEASUREMENTS ARE NOT.** No table may
+   place placebo and stage-1 escape/containment columns side by side (same ruling, §2).
+6. ⛔ **THE CELLS CARRY NO `built-from.tsv`.** Matrix #1's provenance is a RECONSTRUCTION
+   (`PROVENANCE-matrix1-2026-09-08.tsv`), not a receipt written at build time. Say which it is.
+
+7. ⛔ **CROSS-STAGE COST COMPARISONS ARE CONFOUNDED BY CONCURRENCY.** Stage 1 ran roughly ONE
+   cell at a time; matrix #1 ran FOUR. The two stages ran the same client binary (confirmed by byte
+   size against stage 1's own record) but **not under the same box contention**, and this harness
+   records box-busyness as material. ⇒ **stage 1's premiums (1.1655–1.3560) may not be presented as
+   a replication of matrix #1's (1.1610–2.7306)**: the sets differ in concurrency as well as date,
+   and nothing separates those. Matrix #1's own result is unaffected — its sign test is computed
+   entirely within one run where both arms were at 4-wide.
+
+8. ⛔⛔ **EVERY PUBLISHED COST CARRIES AN UNMEASURED BOX-LOAD TERM, AND NOTHING IN THIS CAMPAIGN
+   MEASURES IT.** Item 7 discloses a *known* concurrency difference between stages. This one is
+   worse in kind: **the harness reaps the client and the watcher, and nothing reaps what the SUBJECT
+   forked.** Measured 2026-09-09 by `systems` — 24 busy-wait processes forked by the subject of one
+   placebo cell, re-parented to init, burning ~11 cores for **3h23m**, outliving their own cell's END
+   by **3h09m**, with 11 of 16 priced cells in that wave metered wholly or partly inside the window.
+   ⇒ **A cell's END is not the end of the cell's processes**, so any cell may have been priced on a
+   box carrying the residue of earlier cells. **No arm looks, so no run can state its own load.**
+   ⛔ **Direction on COST: UNMEASURED.** Extra CPU does not spend tokens; it could reach cost only
+   indirectly (timeouts, retries, extra turns) and that was not driven. **Do not report this as
+   having inflated or deflated anything.**
+   ✅ **BOUNDED FOR MATRIX #1 SPECIFICALLY, and the bound is the only reason the headline is
+   unaffected:** every one of matrix #1's 37 cells reached END by `2026-09-09T00:51:59Z`; that leak
+   opened at `2026-09-09T03:34:51Z` — a margin of **2h 42m 52s**. ⇒ **No matrix #1 cell was metered
+   inside it** (`RULING-placebo-acceptance-2026-09-08.md` §8.1). **This clears matrix #1 of THAT
+   leak and of no other.**
+
+⇒ 🔑 **THE GENERALISATION, WHICH IS THE HELM'S AND OUTLIVES THIS CAMPAIGN: *OF EVERY GATE,
+STATISTICAL ONES INCLUDED, ASK WHICH ARM TRIPS IT — AND ASK WHILE NO RESULT EXISTS, BECAUSE
+AFTERWARDS THE ANSWER IS UNPUBLISHABLE EITHER WAY.*** An instrument is validated only when good and
+bad outputs DIFFER; ours returns p=1.0000 on the arm that would be the larger surprise.
