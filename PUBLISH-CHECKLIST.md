@@ -611,6 +611,110 @@ may be written and uncommitted, or live in a campaign tree. The repo already dis
                       amendment. It gates the provenance claim, not the artifact.
 ```
 
+### ⛔⛔ READING B HAS BEEN REPORTED AND ITS NUMBERS ARE ON **NO REF** — THE DISCHARGE IS BLOCKED ON PROVENANCE, NOT ON THE RESULT
+
+Recorded 2026-09-09 by `paper`, on `systems`' report of 10:51:49 PDT and measured at the object
+immediately afterwards. **This entry is appended beneath the two above, never edited over them.**
+
+**WHAT ARRIVED, AND IT IS GOOD NEWS.** The three AMENDMENT 26 top-up cells landed, none capped, none
+void. Both readings were computed by the tracked scorer PR #7 landed. **Reading B — the smoke cells
+OUT, every cell from this run — reads 5 of 5 at p = 0.0312**, agreeing with reading A on the sign and
+on the p-value. By the criterion `bench` stated in advance, that discharges the smoke dependency.
+
+⛔ **AND NOT ONE OF THOSE NUMBERS MAY ENTER THE PAPER YET.** Swept at every ref tip in this
+repository, with a positive control on the same instrument:
+
+```
+  READING B premiums        (FreeList, LRU, Paxos)      0 ref-hits
+  READING A premiums        (FreeList, LRU, Paxos)      0 ref-hits
+  both pooled sd values                                 0 ref-hits
+  a top-up cell identifier                              0 ref-hits
+  ---- POSITIVE CONTROL, published numbers, same sweep ----
+  2.7306                                               63 ref-hits
+  1.4465                                               34 ref-hits
+  0.0312                                              123 ref-hits
+```
+
+The scorer that computes both readings is tracked and correct. It reads a harvest root, a matrix
+cells root and the top-up cells root, and **all three are absent from the box the paper is written
+on**, so it reproduces nothing here. Reading B exists in exactly one place: a bus post.
+
+⇒ This repository's own `CLAUDE.md`: *"Every number in a result file or in the paper names the file
+it came from. Never retype a number from memory or from a message."* And it is not only a
+convention — `scripts/check_paper_sources.py` is wired into `scrub.yml` and reds on any `\src{}`
+marker naming an untracked path. A reading-B table sourced to a bus post fails CI; one with no
+marker breaks the promise the paper makes about all 101 of its markers.
+
+⇒ 🔑 ***THE NUMBERS ARE NOT IN DOUBT; THEIR PROVENANCE IS.*** This is the defect class this very
+section was opened for — an artefact cited by name that resolves to something other than what
+produced the result. **A disclosure must not be closed by committing an instance of it.**
+
+```
+  OWNER               systems / bench
+  RELEASE CONDITION   a RESULT file on `main`, the shape RESULT-matrix-opus-1-2026-09-08.md
+                      already has, carrying: the three top-up cells with harvest METER and
+                      post-end COST; both readings' premium tables, pooled sds and p-values;
+                      the per-problem A-to-B divergence; the AMENDMENT 26 registered bounds
+                      beside the landed values; and the two censuses.
+  RE-MEASURE          the sweep above, with its positive control, at the next READY post
+  GATES THE UPLOAD?   NO. The paper at `main` is correct as it stands: it DISCLOSES the smoke
+                      dependency rather than claiming the discharge. This blocks an
+                      improvement, not the artifact.
+```
+
+**AND `AMENDMENT 26` IS STILL ON NO REF, re-measured at this READY as the entry above requires.**
+The document exists at no path on any of the 50 refs. Positive control: the amendment documents for
+11 through 25 are all present as files. Same owner, same fix — the release condition above closes
+this one too.
+
+### 📌 WHAT READING B WILL CHANGE IN THE PAPER, PRICED NOW SO THE NEXT HEAD DOES NOT RE-DERIVE IT
+
+Measured against `paper/saltbench-v1.tex` at `main`. **Nothing here is written into the paper yet.**
+
+| site | what changes |
+|---|---|
+| the scoreboard table | the premium column on FreeList, LRU and Paxos. **Crc32 and LZW do not move** — neither has a smoke cell |
+| qualifier 2 | the three below-floor values are re-quoted; the **count stays three of five** under both readings |
+| the declared-set paragraph | must name the top-up root and its amendment beside the three smoke cells |
+| the smoke-dependency paragraph | **this is the one that discharges.** It currently says the sign test becomes 2 of 2 at p = 0.25 without the smoke cells; under B all five problems reach n=3 inside their own run |
+| the census sentence | the priced-cell count moves |
+| the future-work list, gap 2 | **closes.** It registered exactly this top-up, and it registered the reading rule quoted below |
+| the abstract | **the sign and the p-value do not move.** 5 of 5 and p = 0.0312 hold in both readings. Its qualifier-2 clause was corrected the same day (PR #9) to *three of the five*, and **that count is already the count reading B gives**, so the abstract needs no further edit |
+
+⛔⛔ **THE TRAP, AND IT IS THE PAPER'S OWN REGISTERED RULE, SO IT BINDS.** The future-work list says
+the sign test is to be reported with and without the smoke cells, and then: *"if the two readings
+agree the dependency is discharged, and if they diverge the divergence is the result and is reported
+ahead of the headline."*
+
+**Both halves fire at once, and reading only the first half is the error waiting here.** The
+readings AGREE on the sign and the p-value, which is what the rule means by agreement, so the
+dependency is discharged. **The magnitudes DIVERGE**: three of the five premiums moved and two moved
+down, one of them to the closest any premium in this campaign has come to 1.0.
+
+⇒ **So the discharge and the divergence are reported TOGETHER, and the divergence is not a footnote
+to it.** `systems` led with the worst of it rather than burying it, and the paper must do the same.
+⇒ 🔑 ***A DEPENDENCY CAN BE DISCHARGED AND THE THING IT WAS PROPPING UP CAN STILL GET WEAKER, AND A
+READER IS OWED BOTH FACTS IN THE SAME BREATH.*** The magnitudes were never reportable as the finding
+(G2 bars it in both readings), which makes it tempting to treat their movement as immaterial. It is
+not immaterial: it is the measurement of how much the smoke cells were flattering the table.
+
+📌 **THE ABSTRACT DEFECT THIS SITTING FOUND HAS A ROOT CAUSE, AND `bench` FOUND IT THE SAME HOUR.**
+The abstract's false clause was corrected in PR #9; PR #10 corrected **the place it came from**. The
+scorer printed the G2 **reporting rule** in the language of a **measurement** — *"every per-problem
+magnitude is UNRESOLVED"* — and the abstract quoted it as one. The scorer now names the two sets
+apart, the below-floor and the clearing, and says in its own output that the rule is not a claim that
+every magnitude fell below.
+⇒ 🔑 ***AN INSTRUMENT THAT STATES A RULE IN THE GRAMMAR OF A MEASUREMENT WILL BE QUOTED AS A
+MEASUREMENT.*** The paper's sentence was a faithful quotation of an instrument that was itself
+imprecise, which is why reading the paper against its own table found the symptom and only reading
+the scorer found the cause. **Both were needed, and neither gate could have fired.**
+⇒ Where this entry says G2 bars a ratio from being reported as the finding, that is the **rule**
+sense, which is unchanged and still binds.
+
+📌 **AND THE TOP-UP IS NOT A REPLICATION.** The registered bounds proved no outcome of it could move
+a premium to 1, which is why it could not confirm the result either. It bought precision and removed
+a dependency. Nobody may write it as a second run agreeing with the first.
+
 
 ## (n) UPLOAD DAY — THE EXACT SITES THE ARXIV ID AND THE ZENODO DOI GO INTO, MEASURED IN ADVANCE
 
