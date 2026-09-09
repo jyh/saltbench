@@ -130,17 +130,37 @@ def score(declared, title):
     print("declared set: %d cells (%d matrix root + %d top-up AMENDMENT 26 + %d smoke SS12)\n"
           % (len(declared), m, t, k))
 
-    cells, refused = {}, []
+    cells, refused, reached_back = {}, [], []
     for cid, cell in sorted(declared.items()):
         hv = sorted(d for d in os.listdir(HARVEST) if d.startswith(cid + "-"))
         if not hv: continue                      # not harvested yet — silently pending, not refused
-        meter = os.path.join(HARVEST, hv[-1], "METER.txt")
-        if not os.path.exists(meter):
-            refused.append((cid, "harvest has no METER.txt")); continue
+        # ⛔⛔ THE LATEST HARVEST THAT PARSES AS A PRICE, NOT SIMPLY THE LATEST HARVEST.
+        # This read hv[-1] — the lexicographically last dir — and a cell can hold more than one
+        # harvest.  On 2026-09-09 two LANDED, fully priced cells were harvested against the wrong
+        # account first and wrote VOID(UNMETERED); both were re-harvested and recovered, and they
+        # scored correctly ONLY because the good harvest happened to sort second.  Had the VOID
+        # sorted last, this scorer would have refused a cell that has a perfectly good price one
+        # directory away — dropping it from its condition and moving that problem's median.
+        # ⇒ A SELECTOR THAT PICKS BY NAME IS CORRECT ONLY WHILE THE NAMES HAPPEN TO ORDER THE WAY
+        #   THE CONTENT DOES.  Reported by systems, who hit the near-miss.
+        # ⚠️ Reaching PAST the newest harvest is disclosed, never silent: an older price is still a
+        # price, but the reader must be told the newest one did not parse.
         cond, err = condition_of(cell)
         if err: refused.append((cid, err)); continue
-        cost, cerr = cost_of(meter)
-        if cerr: refused.append((cid, cerr)); continue
+        cost, cerr, used, tried = None, None, None, 0
+        for d in reversed(hv):
+            m = os.path.join(HARVEST, d, "METER.txt")
+            tried += 1
+            if not os.path.exists(m):
+                cerr = "harvest has no METER.txt"; continue
+            c, e = cost_of(m)
+            if e is None:
+                cost, cerr, used = c, None, d; break
+            cerr = e
+        if cost is None:
+            refused.append((cid, "%s (examined %d harvest(s), none priced)" % (cerr, tried))); continue
+        if used != hv[-1]:
+            reached_back.append((cid, used, hv[-1]))
         cells.setdefault(cond, []).append((cid, cost))
 
     print("MATRIX #1 — read from the ARCHIVE, keyed on (task, arm, card_extras)\n")
@@ -148,6 +168,12 @@ def score(declared, title):
         print("REFUSED (never defaulted):")
         for cid, why in refused: print("  %-10s %s" % (cid, why))
         print()
+    if reached_back:
+        print("⛔ PRICED FROM AN EARLIER HARVEST (the newest did not parse as a bare price):")
+        for cid, used, newest in reached_back:
+            print("  %-10s used %s   newest %s" % (cid, used, newest))
+        print("  Each of these had a later harvest that is VOID or unparseable. The price is real")
+        print("  and the reach-back is disclosed rather than silent.\n")
     print("%-9s %-10s %-10s %5s  %s" % ("task", "arm", "extras", "n", "cells"))
     med = {}
     for cond in sorted(cells):
