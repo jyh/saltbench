@@ -45,6 +45,7 @@ armed in this checkout (`git config core.hooksPath .githooks`) and was driven re
 | infra names (host, account) | `python3 scripts/check_infra_names.py --self-test`, then the tree scan | OK: 5 planted forms caught, role words pass; tree 1039 files, 0 occurrences (was 41 in 21 files, section (f)). ⛔ **CAUGHT A REAL ONE 2026-09-09**: the placebo ruling carried the run host once and the run account once, and they reached the public repo's CI before any local run saw them — because the four arms above were run from memory and this fifth one was not. Rewritten as role wording (`the Studio`, `the Studio's shared run account`). |
 | PR-description self-test | `python3 scripts/check_pr_descriptions.py --self-test` | OK |
 | commit-msg hook | a planted trailer line, then a Co-Authored-By line | rc 1, then rc 0 (re-driven after (f)) |
+| paper source markers | `python3 scripts/check_paper_sources.py --self-test`, then the paper scan | self-test OK (both empty scans fatal proven first, 7 real marker shapes pass, 4 planted failures caught one per class). ⛔ **THE TREE SCAN IS RED AS OF 2026-09-09 AND IS SUPPOSED TO BE**: 100 markers, 95 resolve, 5 do not. See section (m). |
 
 
 ⛔⛔ **RUN THE GATES FROM THIS TABLE, NOT FROM MEMORY — MEASURED 2026-09-09 BY THE SEAT THAT WROTE IT.**
@@ -460,6 +461,61 @@ its record belongs where the push is prepared** — the same reason `ctl/harvest
 harvest rather than after.
 
 ---
+
+## (m) THE PAPER'S SOURCE MARKERS MUST RESOLVE AT THE PUBLISHED BRANCH — GATE WRITTEN, CURRENTLY RED BY DESIGN
+
+Added 2026-09-09 by `paper`, on a defect found while revising the paper onto matrix #1.
+
+**THE DEFECT.** The paper's discipline is that every number carries a `\src{...}` marker naming the
+file in this repository it was copied from, and `paper/README.md` says the macro expands to nothing
+in the PDF so the sources travel with the text and never print. That last property is what hides the
+failure: a marker naming a file that reaches no public branch looks exactly like a marker naming one
+that does, from the paper, from the PDF, and from a clean build.
+
+Measured at the object after PR #3 merged, over `paper/saltbench-v1.tex` at `main`:
+
+```
+  source markers ............ 100
+  cited paths that resolve ..  95
+  cited paths that do NOT ...   5
+```
+
+```
+  harness/systems-v3/PREREGISTRATION-matrix-opus-1-2026-09-08.md   <- THE PRE-REGISTRATION
+  harness/systems-v3/PRICE-campaign-matrix-opus-1-2026-09-08.md
+  harness/systems-v3/PREDICTIONS-pricing-set-2026-09-06.md
+  harness/systems-v3/RESULT-hidden-test-strength-v3.md
+  harness/systems-v3/score_matrix1.py
+```
+
+⇒ 🔑 ***THE PAPER'S CENTRAL METHODOLOGICAL CLAIM IS THAT THE READING WAS PRE-REGISTERED BEFORE THE
+FIRST CELL, AND THE DOCUMENT THAT SUBSTANTIATES IT IS THE ONE A READER CANNOT OPEN.*** PR #3 carried
+the two required DISCLOSURES, which was the right first cut and is not the criticism. The
+registration, the price, the predictions, the suite-strength table and the scorer are the second cut.
+
+**THE GATE.** `scripts/check_paper_sources.py`, same fail-closed shape as its siblings: a scan
+finding no `.tex` file, or no source marker, reds; `--self-test` proves both of those before the real
+scan is trusted, drives 7 real marker shapes green (including a cited directory, a continuation
+segment naming no file, and a later token that is a locator rather than a path) and 4 planted
+failures red, one per class.
+
+⛔ **IT IS RED RIGHT NOW AND THAT IS THE POINT.** It was written against a live defect, not a
+fixture, and its red arm is in production on the real paper. It is **deliberately NOT wired into
+`.github/workflows/scrub.yml` yet**, because a gate that reds on a condition nobody can clear is a
+gate that gets disabled.
+
+**RELEASE CONDITION, AND IT IS TWO ACTS IN ONE ORDER:**
+
+1. the five files above reach `main` (a small gated PR off main, artefacts and not history, the
+   route PR #3 established) — **owner: `bench`**;
+2. **in the same act**, add a `paper-sources` job to `scrub.yml` beside its four siblings, running
+   `--self-test` then the scan. **The wiring belongs with the fix**: five files landing makes the
+   gate green, and a green gate nobody runs is what this section exists to prevent.
+
+⛔ **UNTIL BOTH ARE DONE, THE ARXIV UPLOAD IS NOT CLEAR.** Not because the paper is wrong, but
+because five of its provenance markers point outside the artifact a reader is given, and the whole
+`\src{}` convention is a promise that they do not.
+
 
 ## (l) REQUIRED DISCLOSURES FOR ANY WRITE-UP OF MATRIX #1 (v3) — BINDING, not advisory
 <!-- ⛔ RELABELLED 2026-09-09 by bench: this section stood as a SECOND "(j)" beside the
