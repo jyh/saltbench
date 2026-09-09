@@ -19,6 +19,27 @@ beautifully and the unexpected one in two grudging lines. This is the fix for th
 
 ## THE SCOREBOARD — SIGN FIRST, BECAUSE THE SIGN IS THE REGISTERED READING (§2)
 
+> ⛔⛔ **SUPERSEDED 2026-09-09 — THE PREMIUMS IN THIS TABLE ARE PRE-TOP-UP. THE CURRENT FIGURES ARE IN
+> `RESULT-n3-topup-2026-09-09.md`, WHICH IS THE INSTRUMENT'S OWN STDOUT.** Three cells landed on 09-09
+> and moved three of the five:
+> ```
+>              Crc32   FreeList  LRU     LZW     Paxos
+>   HERE       1.1610  2.7306    1.4465  1.3749  2.6514     pre-top-up
+>   READING A  1.1610  2.8070    1.2826  1.3749  2.4306     matrix + top-up + the SS12 smoke cells
+>   READING B  1.1610  2.8879    1.1521  1.3749  2.2437     matrix + top-up ONLY, every cell one run
+> ```
+> ⚠️ **LRU moved 1.4465 → 1.2826 → 1.1521 — the staleness runs toward the FLATTERING end**, so a reader
+> who stops at this table carries a larger smallest-premium than the run supports.
+> ⇒ 🔑 ***THIS NOTICE EXISTS BECAUSE THE DEFECT HAPPENED TO A REAL READER.*** On 09-09 the helm quoted
+> this table into advice on an employer-lane funding argument, correctly sourced and one day stale. **The
+> discharge section further down this file is not a substitute for a notice at the table**, because the
+> table is what gets read and lifted. ⇒ ***A CORRECTION PLACED AFTER THE THING IT CORRECTS IS NOT A
+> CORRECTION FOR ANYONE WHO STOPS AT THE THING.***
+> ⛔ **The sign is unchanged and is the registered reading: 5 of 5, p = 0.0312, on BOTH readings.** No
+> ratio or range is reported as the finding — not "2.7×", not "1–3×". Three of the five premiums fall
+> below the design's own resolvable floor of 2.0072× under both readings.
+
+
     problem     plain median      diet median       premium
     Crc32       $6.21             $7.21             1.1610x
     FreeList    $13.77            $37.60            2.7306x
@@ -126,6 +147,30 @@ edge, on my own claim, hours after making it.
 ---
 
 ## ⛔⛔ CORRECTNESS: **N = 0.** NO CELL IN MATRIX #1 CARRIES A REFEREE VERDICT ON A WITHHELD SUITE.
+
+> ✅⛔ **SUPERSEDED 2026-09-09 15:1x — N = 0 WAS TRUE WHEN WRITTEN AND IS NOW FALSE. THE REFEREE HAS BEEN
+> INVOKED.** On the Captain's order, a declared post-hoc pass scored the whole declared set against the
+> withheld suites. **Zero model tokens, 43 cells, 246 seconds.**
+> ```
+>   PASS 35 · FAIL 1 · CAP-COST 3 · FAILED-BOOT 4        of 36 LANDED cells, 35 pass
+>   four of five problems TIE at 100% on both bare arms  ⇒ the instrument did not separate them
+>   all six +stmt cells PASS 8/8, both arms
+> ```
+> **Full per-cell verdicts:** `RESULT-posthoc-correctness-verdicts-2026-09-09.tsv`. **The reading:**
+> `RESULT-posthoc-correctness-2026-09-09.md`. **Frozen before the first suite ran:**
+> `PRESPEC-posthoc-correctness-matrix1-2026-09-09.md` (commit `437ea70`, 14:57:28).
+> ⛔⛔ **WHAT SURVIVES THIS SECTION UNCHANGED, AND IT IS THE HALF THAT MATTERED:** this run was
+> **REGISTERED AS A COST EXPERIMENT**, and the correctness column is **POST HOC and labelled so
+> everywhere**. It is not a pre-registered result and may never be presented as one.
+> ⭐ **AND THE PASS FOUND A SELECTION EFFECT THIS SECTION COULD NOT HAVE SEEN:** all three budget-capped
+> cells are `salt-diet`, none is `plain`, so the correctness column scores **18 plain against 12 salt**.
+> The dropped salt cells are the ones that ran long enough to hit a cap — **the hard ones** — so **salt's
+> pass rate is biased UP by construction.** ⇒ ***THE ARM THAT COSTS MORE IS SYSTEMATICALLY LESS LIKELY TO
+> BE ASKED THE CORRECTNESS QUESTION.***
+> 📌 **A PASS IS STILL NOT "CORRECT"** — it is *the withheld suite did not fail it*, and that suite's
+> 44/44 is a **ceiling, not a strength**. **No sentence joins the premium to correctness with "and
+> therefore".**
+
 
 **The Captain's question at council 2026-09-09, answered at the object and written here because the
 question was asked of this file: *of the priced cells, how many carry a referee GREEN on the withheld
