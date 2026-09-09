@@ -30,6 +30,36 @@ to matrix #1's harness before firing (AMENDMENT 26 §3).
 ⚠️ **`n302lru` and `n301free` each harvested VOID once first**, against the wrong account, and were
 recovered. See §6 — the recovery is why their good harvest sorts last.
 
+## §1b — ⛔ THE POOLED CELLS SPAN TWO ACCOUNTS, AND NEITHER RESULT FILE SHOWED IT
+
+Measured 2026-09-09 12:0x by `bench` at the run box, while discharging an unrelated provisioning item:
+```
+  n301free · n302lru · n303paxo   transcripts under  RUN ACCOUNT A   (the top-up)
+  every matrix-root cell          transcripts under  RUN ACCOUNT B   (matrix #1)
+  ⇒ two DISTINCT v3 run accounts. Which two is not the disclosure; THAT THERE ARE TWO is.
+```
+📌 The accounts are named by role rather than by directory, per the firewall line on infrastructure
+names in a public repo. ⛔ **The first draft of this very paragraph named one of them literally and the
+gate refused it** — the same shape as the note in `RULING-placebo-acceptance` §14's neighbourhood, met
+again in a paragraph *about* accounts. **A record of a forbidden form must name its ROLE, never its text.**
+**This file named its own account and not the contrast; `RESULT-matrix-opus-1` names no account at all.**
+So a reader of either file could not tell that reading B — described as *"every cell from this run"* —
+**pools cells priced under two different accounts.**
+
+✅ **IT DOES NOT MOVE A PRICE, AND THAT IS MEASURED, NOT ASSUMED.** Both populations are priced from the
+**same rate card read on the same day** — `rates rates.tsv read_on 2026-09-05` in the METER of a top-up
+cell and of a matrix cell alike. **COST is a rate card applied to token counts, not an account's bill**,
+so the account boundary cannot change what a given token count costs.
+
+⚠️ **WHAT IS NOT MEASURED, STATED BECAUSE IT IS THE ONE MECHANISM THAT COULD BITE.** The account cannot
+change the price of a token, but it could change the COUNT: **`T` is 98% `cache_read`**, cache state is
+per-account and per-session, and nothing here measured whether it differs **systematically** across the
+boundary rather than randomly. Cache state already varies cell to cell inside the matrix, so this is not a
+new source of variance — **it is a possible SYSTEMATIC one, and it is unquantified.**
+⇒ 🔑 ***"EVERY CELL FROM THIS RUN" IS A CLAIM ABOUT A RUN, AND A RUN IS NOT NECESSARILY ONE CONTEXT.***
+This is the third structural property of this dataset that the scoreboard was silent about — after the
+correctness gap and the smoke cells — and it is disclosed on the same terms: **it travels with the number.**
+
 ## §2 — WHAT THE READINGS ARE
 ```
   READING A   matrix root + top-up + the SS12 smoke cells   43 cells   the continuity reading
