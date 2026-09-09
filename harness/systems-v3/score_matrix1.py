@@ -84,6 +84,14 @@ def sign_test(k_pos, k_tot):
 #    set: it pools other runs.  A SECOND NAMED ROOT IS STILL A SET.
 MATRIX_ROOT = os.path.expanduser("~/cells-matrix1")
 TOPUP_ROOT  = os.path.expanduser("~/cells-n3-topup")     # AMENDMENT 26 -- the n=3 top-up cells
+# ── THE STATEMENT-ARM ROOTS (AMENDMENT statement-arm-pilot 2026-09-09, addenda 1-2).  A LIST, because
+#    the arm fires in waves and the fence law forbids building a second wave while the first runs: each
+#    wave gets a FRESH root, so the declared set names roots, not one root.
+#    ⛔ ADDING A ROOT HERE IS AN AMENDMENT ACT, NOT A CONVENIENCE.  The build script's own closing note
+#    is the reason this exists: "cells in this fresh root are invisible to the scorer until the
+#    amendment declares this root in ... Without that, these cells will run, cost money, and score
+#    nowhere."  They ran tonight; this is the half that makes them count.
+STMT_ROOTS = [os.path.expanduser("~/cells-stmt-2026-09-09")]
 SMOKE = {"ae304f63": "~/cells", "a69e9131": "~/cells", "b7537006": "~/cells"}   # SS12
 
 def declared_set(include_smoke):
@@ -100,7 +108,7 @@ def declared_set(include_smoke):
     which is harder to see, not easier.  ⇒ BOTH READINGS ARE COMPUTED AND BOTH ARE PRINTED.
     """
     declared = {}
-    for root in (MATRIX_ROOT, TOPUP_ROOT):
+    for root in [MATRIX_ROOT, TOPUP_ROOT] + STMT_ROOTS:
         if not os.path.isdir(root): continue
         for cid in sorted(os.listdir(root)):
             c = os.path.join(root, cid)
@@ -121,14 +129,16 @@ def _census(declared):
     that are not in it: a census that misattributes its own population is worse than none."""
     n_smoke = sum(1 for k in SMOKE if k in declared)
     n_top   = sum(1 for k, v in declared.items() if v.startswith(TOPUP_ROOT + os.sep))
-    return len(declared) - n_smoke - n_top, n_top, n_smoke
+    n_stmt  = sum(1 for k, v in declared.items()
+                  if any(v.startswith(r + os.sep) for r in STMT_ROOTS))
+    return len(declared) - n_smoke - n_top - n_stmt, n_top, n_smoke, n_stmt
 
 def score(declared, title):
     print("=" * 78)
     print(title)
-    m, t, k = _census(declared)
-    print("declared set: %d cells (%d matrix root + %d top-up AMENDMENT 26 + %d smoke SS12)\n"
-          % (len(declared), m, t, k))
+    m, t, k, st = _census(declared)
+    print("declared set: %d cells (%d matrix root + %d top-up AMENDMENT 26 + %d smoke SS12"
+          " + %d statement-arm)\n" % (len(declared), m, t, k, st))
 
     cells, refused, reached_back = {}, [], []
     for cid, cell in sorted(declared.items()):
