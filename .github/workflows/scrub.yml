@@ -216,6 +216,26 @@ jobs:
       - run: python scripts/check_infra_names.py --self-test
       - run: python scripts/check_infra_names.py
 
+  paper-sources:
+    name: every source marker in the paper resolves
+    runs-on: ubuntu-latest
+    # Added 2026-09-09 after the matrix #1 revision found five of the paper's 100 \src{} markers
+    # naming files that were at no public branch, one of them the pre-registration the paper's
+    # central methodological claim rests on. The class is invisible to every other arm and to the
+    # reader: paper/README.md's selling point is that the macro expands to nothing in the PDF, so a
+    # marker at no public branch is byte-identical, in the rendered artifact, to one at main. A
+    # clean build with zero undefined references says nothing about it.
+    # The five landed in PR #6 and the gate went green; it is wired in the same act, because a
+    # green gate nobody runs is what PUBLISH-CHECKLIST section (m) exists to prevent.
+    # The gate proves it can fail before it is allowed to pass, like its siblings.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/check_paper_sources.py --self-test
+      - run: python scripts/check_paper_sources.py
+
   pr-descriptions:
     name: no private-record path in PR titles/bodies (the forge-side prose)
     runs-on: ubuntu-latest

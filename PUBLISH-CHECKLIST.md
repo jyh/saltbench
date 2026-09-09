@@ -45,7 +45,7 @@ armed in this checkout (`git config core.hooksPath .githooks`) and was driven re
 | infra names (host, account) | `python3 scripts/check_infra_names.py --self-test`, then the tree scan | OK: 5 planted forms caught, role words pass; tree 1039 files, 0 occurrences (was 41 in 21 files, section (f)). ⛔ **CAUGHT A REAL ONE 2026-09-09**: the placebo ruling carried the run host once and the run account once, and they reached the public repo's CI before any local run saw them — because the four arms above were run from memory and this fifth one was not. Rewritten as role wording (`the Studio`, `the Studio's shared run account`). |
 | PR-description self-test | `python3 scripts/check_pr_descriptions.py --self-test` | OK |
 | commit-msg hook | a planted trailer line, then a Co-Authored-By line | rc 1, then rc 0 (re-driven after (f)) |
-| paper source markers | `python3 scripts/check_paper_sources.py --self-test`, then the paper scan | self-test OK (both empty scans fatal proven first, 7 real marker shapes pass, 4 planted failures caught one per class). ⛔ **THE TREE SCAN IS RED AS OF 2026-09-09 AND IS SUPPOSED TO BE**: 100 markers, 95 resolve, 5 do not. See section (m). |
+| paper source markers | `python3 scripts/check_paper_sources.py --self-test`, then the paper scan | self-test OK (both empty scans fatal proven first, 7 real marker shapes pass, 4 planted failures caught one per class). Scan: **RED at `e56375e`** (18 findings over 100 markers, 5 cited paths absent), **GREEN at `abdb0fd`** (101 markers, every cited path tracked) after PR #6. Wired into `scrub.yml` in the same act. See section (m). |
 
 
 ⛔⛔ **RUN THE GATES FROM THIS TABLE, NOT FROM MEMORY — MEASURED 2026-09-09 BY THE SEAT THAT WROTE IT.**
@@ -462,7 +462,7 @@ harvest rather than after.
 
 ---
 
-## (m) THE PAPER'S SOURCE MARKERS MUST RESOLVE AT THE PUBLISHED BRANCH — GATE WRITTEN, CURRENTLY RED BY DESIGN
+## (m) THE PAPER'S SOURCE MARKERS MUST RESOLVE AT THE PUBLISHED BRANCH — DISCHARGED 2026-09-09, GATE GREEN AND WIRED
 
 Added 2026-09-09 by `paper`, on a defect found while revising the paper onto matrix #1.
 
@@ -515,6 +515,32 @@ gate that gets disabled.
 ⛔ **UNTIL BOTH ARE DONE, THE ARXIV UPLOAD IS NOT CLEAR.** Not because the paper is wrong, but
 because five of its provenance markers point outside the artifact a reader is given, and the whole
 `\src{}` convention is a promise that they do not.
+
+### ✅ DISCHARGED THE SAME DAY, BOTH ACTS, IN THE ORDER THE CONDITION NAMED
+
+| act | who | receipt |
+|---|---|---|
+| 1. the five files reach `main` | `bench` | PR #6 merged at `abdb0fd`, 8 of 8 CI green, verified file by file |
+| 2. the scrub job wired, in the same act | `paper` | `paper-sources` job in `.github/workflows/scrub.yml`, `--self-test` then the scan |
+
+```
+  BEFORE (main @ e56375e)   FAIL: 18 findings over 100 markers -- 5 cited paths not in the repo
+  AFTER  (main @ abdb0fd)   OK: 101 source markers in 1 paper file(s), every cited path tracked
+```
+
+⭐ **THE RED ARM RAN IN PRODUCTION, ON THE REAL PAPER, BEFORE THE GREEN ONE DID.** That is the whole
+value of writing the gate at the moment the defect was live: the arm that matters was exercised
+against a real defect rather than a planted one, and the fixture arms in `--self-test` are there to
+keep it exercised after the defect is gone.
+
+⛔ **AND ONE PROVENANCE GAP THIS DOES NOT CLOSE, NAMED BY `bench` WITH THE FILES:** the
+`score_matrix1.py` now public is the UNPATCHED scorer, whose declared set is the matrix root plus the
+three smoke cells. The topped-up n=3 numbers are produced by a PATCHED COPY on the run box that exists
+in no repository. ⇒ **The published scorer over the published archive reproduces the numbers this paper
+prints, because the top-up cells sit in a root the published scorer does not declare** — that is what
+makes today's table citable. ⇒ ⛔ **It also means NO TOPPED-UP FIGURE MAY ENTER THE PAPER until the
+amendment's declared-set change is in the tracked scorer.** An artefact cited by name that resolves to
+something other than what produced the result is the same defect class this section was opened for.
 
 
 ## (l) REQUIRED DISCLOSURES FOR ANY WRITE-UP OF MATRIX #1 (v3) — BINDING, not advisory
