@@ -1161,3 +1161,86 @@ one sentence naming the edition and the campaign generation as different axes, a
 was not taken. **It is taken now**, in Section~1, because the ruling settled the SUBJECT and left the
 label collision standing, and an arXiv reader meeting *SaltBench v1* on a paper about v3 has no other
 way to read it. One sentence, removable in one edit if reading (b) is later preferred.
+
+## (q) ⚡ THE CORRECTNESS COLUMN AS A DROP-IN — WRITTEN BEFORE THE NUMBERS EXIST, SO EITHER ORDER SHIPS
+
+Written by `paper` 2026-09-09 evening on the helm's order: *"prepare the column as a DROP-IN ... so
+whichever arrives first ships."* bench is authorised to run the 37-cell hidden-suite pass tonight at
+zero model spend behind `harness/systems-v3/PRESPEC-posthoc-correctness-matrix1-2026-09-09.md`, frozen
+BEFORE any suite ran. **The shipped default is unchanged: correctness unmeasured, v2 answers it.**
+⛔ **NOTHING HERE IS IN THE PAPER YET AND NOTHING HERE MAY BE WRITTEN INTO IT UNTIL A RESULT FILE
+EXISTS AND IS NAMED.** This section exists so that landing it is an edit and not a composition.
+
+### 1 ⛔ THE FOUR CONSTRAINTS THE PRE-SPEC BINDS ON ANY PROSE, COPIED NOT PARAPHRASED
+1. **THE PASS IS POST HOC AND IS LABELLED SO WHEREVER IT IS REPORTED.** It is not a pre-registered
+   result and *"may never be presented as one."* The cost result IS pre-registered. **A paper that
+   prints them in one table without that word on the second has merged two epistemic kinds.**
+2. **SIX CLASSES, NEVER POOLED:** `PASS` · `FAIL` · `NO-BUILD` · `CAP-COST` · `FAILED-BOOT` ·
+   `INTERFACE-MISS`. ⛔ `CAP-COST` and `FAILED-BOOT` **are not failures of the method** (the cell was
+   never asked the question) and are never pooled into `FAIL` **and never dropped** — *"a dropped cell
+   is a claim that it did not exist."* `NO-BUILD` on a LANDED cell **is** a real adverse outcome.
+   `INTERFACE-MISS` is not `FAIL`, because a formatting miss must not read as a wrong algorithm.
+3. **A PASS IS A SUITE OUTCOME, NOT A CORRECTNESS VERDICT.** The suite is the referee's, its strength
+   is a CEILING (44 of 44 mutants killed, seven dying to a single test), and the paper already says so.
+4. **THE FORBIDDEN SENTENCES**, verbatim from §7: *"The salt arm costs more and produces more correct
+   code"* (a causal join this design cannot support); *"N of 43 cells were correct"*; and any ratio or
+   range as the cost finding, unchanged.
+
+### 2 THE SLOT — ONE NEW SUBSECTION AT THE END OF SECTION 4, AND NOTHING MOVES
+Title: **`\subsection{A post-hoc correctness pass}`** with `\label{sec:posthoc}`, placed AFTER *What
+may be quoted from this reading* and BEFORE *The declared set*. It is a subsection rather than a new
+section because it is a property of this run, and putting it in Section 5 would make it an instrument
+finding, which it is not.
+**Its first sentence is fixed now and does not depend on the numbers:**
+> *This pass is post hoc. Matrix~1 was registered as a cost experiment, its cost result was known
+> before any suite was run, and the classes and their meanings below were fixed in a dated
+> pre-specification before the first cell was scored. It is reported as a declared post-hoc
+> measurement and not as a pre-registered result.*
+Then the six-class table, one row per class with its count, **every class printed even at zero**,
+then the reading, then what it does not license (§1.4 above).
+
+### 3 ⚡ THE ABSTRACT SENTENCE THAT FLIPS — THE ONLY ABSTRACT EDIT, AND IT IS ONE SENTENCE
+```
+  TODAY   No cell of that run carries a referee verdict on a withheld suite, so it is a cost result
+          with correctness unmeasured, and no sentence in this paper pairs its premium with working
+          code. The withheld suites exist and their strength was characterised before any cell ran;
+          what is absent is the referee's invocation on these cells, not the tests.
+
+  FLIPS   The cells were scored for cost with the referee never invoked on them; a declared post-hoc
+          pass over the surviving cell repositories, specified before it was run, reports <PASS> of
+          <SCORABLE> passing the withheld suites, with <NO-BUILD> not building, <INTERFACE-MISS> not
+          binding to the interface, and <CAP-COST>+<FAILED-BOOT> never asked the question. No
+          sentence in this paper pairs its premium with working code.
+```
+⛔ **The clause `no sentence in this paper pairs its premium with working code` SURVIVES THE FLIP.**
+It is the sentence forbidden by §7.1, and the correctness column is exactly the moment it becomes
+tempting to delete. **It is load-carrying and it stays.**
+
+### 4 THE OTHER SITES, MEASURED SO NOBODY HUNTS FOR THEM ON THE NIGHT
+```
+  §4 opening        "no cell of this run carries a correctness verdict at all" + the
+                    "statement about what was run and not about what exists" clause
+                    ⇒ becomes "carried no verdict AT THE TIME IT WAS SCORED", + a pointer to
+                      the new subsection. The suites-exist clause STAYS; it is still true.
+  §4 what-may-be-   the closing sentence, "nothing in this section bears on whether the method
+  quoted            changes what a referee accepts ... not answered here"
+                    ⇒ becomes a pointer to the post-hoc subsection AND KEEPS ITS TEETH: a
+                      post-hoc suite outcome is still not a pre-registered capability result.
+  §7 treatment      the gap that reads "correctness unmeasured" ⇒ narrows, does NOT close.
+  question          ⛔ THE TREATMENT QUESTION STAYS OPEN. A post-hoc pass on one matrix does
+                    not answer it and must not be written as if it did.
+  §2                UNTOUCHED. The suites and the 44/44 ceiling are already stated correctly.
+  the title         UNTOUCHED. It is the owner's string.
+```
+
+### 5 ⚖️ THE BLOCK, IN THE REGISTER'S FORM
+```
+  OWNER               bench (the run), then `paper` (the prose)
+  RELEASE CONDITION   a RESULT file at a named path carrying the six class counts. ⛔ Not a bus
+                      post and not a number in a message — this repo's law is that every figure
+                      names the file it came from, and that law caught a superseded premium set
+                      tonight.
+  RE-MEASURE          at the next READY post
+  GATES THE UPLOAD?   ⛔ NO. The shipped default stands and is correct as written. If the id is
+                      taken first, this lands in v2. ⇒ **THE UPLOAD DOES NOT WAIT FOR IT.**
+```
