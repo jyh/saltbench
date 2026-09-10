@@ -702,3 +702,99 @@ differ somewhere; they simply do not differ here.**
 for every dispatch.** A dispatch whose export is not recorded cannot be reproduced, and the fact that
 the choice does not matter today is not a reason to leave it unrecorded — it is the reason it is cheap
 to record now.
+
+---
+
+# ADDENDUM 7 — ⚖️ THE §9 BRANCH IS RULED **REUSE**, ITS CONDITION IS MEASURED, AND FOUR PINS THAT DRIFT SILENTLY
+## Appended 2026-09-10 PDT. ⛔ **NOTHING ABOVE IS EDITED.** §9 is answered by ruling, not by this file.
+⚠️ **Written while ②'s four cells were already firing.** Everything in it was measured BEFORE the first
+model call; it changes nothing about what the run measures, and is recorded here so no later reader
+re-derives it. §G2 and §G3 are the two that could have voided the comparison silently.
+
+## G1 · ✅ THE RULING, AND THE CONDITION IT CARRIED
+The helm ruled **REUSE** (2026-09-09 23:5x), **conditional**: *LZW's `card.md` must be byte-identical
+between the four landed phase-1 cells and step ②*, void if the authoring order resized LZW's statement.
+**Both halves measured; the condition HOLDS.**
+```
+  37 copies of LZW/card.md on the run box carry exactly TWO shas
+    d9ca4fb2  every export up to  2026-09-05 22:51
+    f5c3e8c9  every export from   2026-09-06 13:17  through the newest (09-09 22:48)
+  the four cells were built 2026-09-08 20:56 — inside the f5c3e8c9 era, and nothing has moved since
+  the change was Amendment 23 ADDING `## Hint` + `## Statement`   7,896 B -> 14,575 B
+```
+⛔ **THE CELL DOES NOT STORE THE CARD**, so byte-identity is not directly checkable, and the two obvious
+handles are both wrong: `ctl/task`'s third field is the **nonce** (`sha256(urandom)[:24]`) and has the
+shape of a digest without being one; `repo/REQUIREMENTS.md`'s raw sha differs across a matched arm pair
+by construction, because line 1 carries that nonce.
+✅ **THE INSTRUMENT IS THE HARNESS'S OWN:** `cell_manifest.py` hashes `REQUIREMENTS.md` with every
+`work order #` line struck, precisely so an arm pair hashes identically — a **nonce-independent
+card-identity digest**, frozen in each cell at build time. The step-② card reproduces it exactly at
+both flag settings (`83c9f34fea59` extras=none, `49526c433a4c` extras=statement), with the live cell
+files as a positive control and a one-word card mutation as a sensitivity control.
+✅ **HALF TWO:** a `## Hint` edit moves the `--hint` rendering and leaves **both** scored renderings
+byte-identical, so the authorable surface cannot invalidate these cells. The `## Statement` size is
+**extracted, not authored** (systems, 21:56), so the authoring order could not have resized it.
+
+## G2 · ⛔⛔ NO CELL RECORDS THE ACCOUNT IT RAN ON, AND THE TEMPLATE ON THE BOX NAMES THE WRONG ONE
+A continuation compares two subjects unless phase 2 runs on phase 1's account. **Nothing in a cell
+records that.** The manifest has no such row; every `.claude-*` string in `ctl/` belongs to the fence's
+own deny glob, which lists all of them and therefore names none.
+```
+  phase-1 transcripts of all four cells      the RUN account's cfg dir   account uuid dbfc67e4
+  matrix1-fire.sh -> ~/cells/toolchain.env   the RUN account's cfg dir   (agrees, independently)
+  stmt-build.sh   hard-codes its CFG to      a DIFFERENT cfg dir         account uuid 27b7f909
+```
+📌 Config-dir and account names are deliberately not written here (the repo is destined public and its
+`check_infra_names` gate forbids the run box's name); **the two uuids are what makes them distinct**,
+and the distinctness is the whole finding.
+⛔ **`stmt-build.sh` is the newest and most copyable build driver on that box.** Taking it as the
+template runs phase 2 on a different human account, and **nothing downstream could report it.**
+⇒ 🔑 ***AN ARTEFACT THAT DOES NOT RECORD A CHOICE CANNOT REFUTE A WRONG ONE.*** Identity was checked
+in the config, never inferred from the directory's name — this campaign has already paid once for a
+correctly-named config dir that authenticated as the wrong account under a 21-arm preflight that read
+21/21 CLEAR.
+📌 **OWED, NOT PATCHED HERE** (it is another seat's `cell_build.py`, and ② was in flight): the cell
+should write its resolved account uuid into `ctl/`.
+
+## G3 · ⛔⛔ THE FENCE IS A FUNCTION OF THE AMBIENT `TMPDIR`, AND NO CALLER PASSES IT
+`stage_fence_v3.sh --apply` reported **4 rendered, 4 clean, SEALED**, and every launch then **HELD**:
+```
+  HOLD FENCE render_fence_v3: DRIFT — ctl/fence.json differs from a fresh rendering
+  --diff:  - /var/folders/<user>/T   and its /private twin  (the file has it; a fresh rendering does not)
+```
+The renderer bakes the ambient temp dir into all three sets. The canonical call sites pin
+`TMPDIR=/tmp` (`cell-claude.sh`, and `~/cells/toolchain.env` exports it); a stager invoked from a
+plain ssh shell does not, so it sealed a fence **no launcher could ever match**.
+⇒ 🔑 ***A SEAL PROVES THE POPULATION AGREES WITH THE RENDERER THAT SEALED IT, NOT WITH THE ONE THAT
+WILL CHECK IT.*** ✅ **The fence failed CLOSED and the launcher's own re-render caught it** — the
+property the drift check exists for, working on its first real use. Re-applied under
+`. ~/cells/toolchain.env` and verified with the **vendored `_bin` renderer**, which is the copy the
+launcher actually runs: `--check` rc 0 on all four.
+⇒ **REGISTERED FOR ②: a fence is rendered AND verified under the launcher's own shell and the
+vendored renderer, never from the export tree in an ad-hoc shell.**
+
+## G4 · ✅ THE 35-EXPORT HAZARD IS NARROWED, AND IT FAILS LOUDLY FOR THE FLAGS ② USES
+Addendum 6 §F3 left the export choice undeclared with the scope *one card, two flags*. Extended to
+four flags, one card, all three `render_requirements.py` versions:
+```
+  <none>       identical across all 3 versions
+  --change     identical across all 3 versions
+  --statement  ONLY in f8067e28 (27 of 36 copies); the other two exit rc 64 "unknown argument"
+  --hint       ONLY in f8067e28;                    the other two exit rc 64 "unknown argument"
+```
+⇒ **For the two flags ② depends on, the wrong export cannot silently mis-render — it REFUSES.** The
+hazard is real for the bare arm (where the output is identical anyway) and **not live** for the
+statement arm. ⛔ Still one card; it says nothing about the other thirteen.
+
+## G5 · 📌 TRUST IS NOT SEEDED BY THE BUILD, AND AN UNSEEDED CELL DIES THE SIX-HOLD DEATH
+`cell_trust_v3.py --seed` is a separate step (`stmt-build.sh` PHASE 3 names it). The copies inherited
+no trust for the new root, and every launch HELD on it alongside the fence. Seeded and `--check`ed rc 0
+on all four. ⇒ **A COPIED CELL INHERITS ITS TREE AND NONE OF ITS HOST-SIDE REGISTRATIONS** — trust and
+fence are both keyed to the path, and both must be re-established after a copy.
+
+## G6 · ⛔ AND ONE OF MINE: A VERDICT LINE THAT OUTRAN ITS OWN LOOP
+My originals-untouched check used a bash **associative array**; the run box is **bash 3.2**, which has
+none. Three of four comparisons died as arithmetic errors, the failure flag never tripped, and it
+printed **"ALL FOUR ORIGINALS BYTE-UNTOUCHED"** having compared **one**. Re-driven portably with an
+explicit `CHECKED=4 of 4` counter. ⇒ ***A LOOP THAT ERRORS INSTEAD OF FAILING LEAVES THE VERDICT TRUE-
+LOOKING AND UNEARNED*** — and this one guarded another campaign's submitted evidence.
