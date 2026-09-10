@@ -925,16 +925,42 @@ The three trees are archived to `~/specchange-phase2-aborted-<ts>/` with a full 
 cell, so phase 2's record under ACCOUNT B is unmixed. The boot counter is per-invocation (`boots=0` is
 initialised inside `cell-watch.sh`), so nothing is inherited.
 
-## H7 · ⚖️ NEW STANDING ORDER — **TOKEN COSTS BESIDE DOLLAR COSTS**
-The Captain, 2026-09-10 09:3x: *"please info bench to produce token costs (in addition to dollar
-costs)."* ⇒ **Every cell, arm, wave and result file that carries a `$` figure carries a TOKEN figure
-beside it**, split input/output/cache where the harness has it.
-**Why it binds the design and not just the reporting:** dollars are derived — they move with pricing
-and with which model served the cell — while tokens are the physical quantity the quota pools actually
-meter. **P1 is a cross-model comparison, and a result expressed only in dollars cannot be compared
-across models.** ⛔ Where a figure is unavailable it is reported `UNMEASURED`; it is **never derived
-backwards from price**, which would silently re-introduce the pricing assumption the order exists to
-remove.
+## H7 · ⚖️ TOKEN FIGURES BESIDE DOLLAR FIGURES — **A CAMPAIGN PRACTICE, AND THE PROVENANCE IS CORRECTED BELOW**
+⛔⛔ **CORRECTED 2026-09-10 ON `kent`'s MEASUREMENT. THIS SECTION QUOTED A SENTENCE THE CAPTAIN NEVER
+SAID.** It read: *The Captain, 09:3x: "please info bench to produce token costs (in addition to dollar
+costs)."* **No such utterance exists.** Measured at his actual channel — he types into panes, so the bus
+was never going to hold it — the whole corpus (82 projects, 681 transcripts, all accounts, with a
+driven positive control) contains **ZERO** user turns matching "token costs". What he did say:
+```
+  16:34:51Z  pane anubis   "can we use tokens instead of dollars?"
+  17:18:02Z  pane anubis   "bench has calculated the tokens, can you add them?"
+```
+⇒ **Four drifts, all hardening, between that and what I registered:** a QUESTION became an ORDER;
+**"instead of" became "in addition to"** — inverted; it was asked of **anubis** about the **anubis
+design doc**, not of this seat about P1 costing; and it was filed among council rulings 38 minutes
+after the close.
+⇒ 🔑 ***THE GLOSS THAT JUSTIFIES A DRIFT IS WHAT MAKES THE DRIFT INVISIBLE*** (`kent`'s law, and it
+fired on me): the quote reached me already carrying its own good reason — *dollars are derived, tokens
+are what the pools meter* — and **a quote that arrives with a compelling justification does not get
+re-read.** I did not merely repeat it; I amplified it into a "standing order" and wrote the
+justification underneath as though it were his.
+
+## H7-bis · WHAT THE CAMPAIGN ACTUALLY DOES, OWNED BY THE CAMPAIGN
+**Every result file that carries a `$` figure carries a TOKEN figure beside it**, split
+input/output/cache where the harness has it; an unavailable figure reads `UNMEASURED` and is **never
+derived backwards from price**.
+📌 **THE REASONING IS THIS SEAT'S AND THE HELM'S, NOT HIS:** dollars are derived and move with list
+pricing and with which model served the cell, while tokens are the physical quantity the quota pools
+meter — and P1 is a cross-model comparison, so a result expressed only in dollars cannot be compared
+across models. **That argument stands on its own merits and is adopted as campaign practice. It is not
+a quotation and it is not an order.**
+⛔ **AND ONE THING IT DOES NOT SETTLE, WHICH IS HIS TO ANSWER:** he asked *"instead of"*. **Whether
+dollars stay in the tables at all is a question he may believe he has already answered**, and this
+seat has been acting on the opposite reading all day. The practice above keeps both, which is a
+superset of what he asked and may be the better artefact — **but the choice is put to him rather than
+assumed.** Raised, not resolved.
+📌 Found by `kent`, who measured the record rather than the work and explicitly claimed no
+misdirection. **The artefact harm was small; the harm was to the record, and the record is public.**
 
 ## H8 · 📌 THE OPERATIONAL COUPLING THIS CREATES, WHICH IS NOT A BLOCKER BUT IS NOT NOTHING
 `bench`'s SEAT also runs on ACCOUNT B. Until now the seat and the cells drew on different pools, so a
