@@ -25,7 +25,7 @@ cell's own `ctl/post-end-1.tsv`:
   n303paxo   $20.16          20.1567              LANDED      61 s
 ```
 **0 CAP-COST · 0 VOID · 0 replacements owed.** Built in a fresh root (`~/cells-n3-topup`) with a new id
-prefix, on `.claude-v3-jasonh`, from export `6b6fc12`; the subject-facing tree was driven byte-identical
+prefix, on ACCOUNT B's config dir, from export `6b6fc12`; the subject-facing tree was driven byte-identical
 to matrix #1's harness before firing (AMENDMENT 26 §3).
 ⚠️ **`n302lru` and `n301free` each harvested VOID once first**, against the wrong account, and were
 recovered. See §6 — the recovery is why their good harvest sorts last.

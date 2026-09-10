@@ -105,7 +105,7 @@ without that distinction printed.
   BOX TIME  UNMEASURED and not guessed. The pilot ran 4-wide.
   ACCOUNT   the cells authenticate from a credential file on the run box, which no roster edit touches.
             NAMED, NOT CHOSEN: this needs a v3 run account with headroom for ~$418 plus cap margin.
-            The Captain has ruled relight-to-jasonh; one account was reported at 83%.
+            The Captain has ruled relight-to-ACCOUNT B; one account was reported at 83%.
 ```
 
 ## §7 · WHAT WOULD INVALIDATE THIS RUN
@@ -165,12 +165,13 @@ default is safe precisely because of that.
 ## A1.3 · ACCOUNT — NAMED
 ```
   NEEDS      ~$418 estimated + cap margin; two conditions expected to cap at $37.21 (§3)
-  NAMED      jasonh — RULED BY THE CAPTAIN, 15:44 verbatim: "Yes, I believe we will need to use jasonh"
+  NAMED      ACCOUNT B — RULED BY THE CAPTAIN, 15:44 verbatim: "Yes, I believe we will need to
+             use [ACCOUNT B]"
              weekly reset 15:00 today, so it is the freshest pool
   READING    12:47  5h 4% · weekly 53% · fable 44%
              ⛔ RE-MEASURE AT THE CREDENTIAL IMMEDIATELY BEFORE LAUNCH and record the launch-time
              reading HERE — a quota figure is a BILL, not a budget, and this one is four hours stale
-  CO-TENANT  the helm relights to jasonh tonight; its draw is small but the account is SHARED during
+  CO-TENANT  the helm relights to ACCOUNT B tonight; its draw is small but the account is SHARED during
              the run ⇒ an ACCOUNT-LEVEL delta attributes nothing to these cells. Per-cell prices come
              from each cell's own METER under SS23(e), which is unaffected.
   NOT USED   the Studio's shared run account at 83% used; the third pool is the no-regret zone
@@ -384,3 +385,25 @@ emit, **it would be true of one problem at `n = 3`, and it would be read as a me
 ***FORBIDDING A CLAIM IS ONLY HALF A GUARD; THE OTHER HALF IS SAYING WHAT MAY BE SAID INSTEAD*** —
 the same rule §4 of the paper already applies to the bare arms' premiums, extended here to the one
 cross-arm comparison this run can produce, **before anyone knows which way it falls.**
+
+---
+
+# REDACTION NOTE — appended 2026-09-10, NOT an edit to the record's substance
+⛔ **THIS DOCUMENT IS FROZEN AND THIS FILE'S OWN LAW SAYS FROZEN DOCUMENTS ARE APPENDED TO, NEVER
+EDITED IN.** Three lines above (§6's `ACCOUNT` row, §A1.3's `NAMED` and `CO-TENANT` rows) have
+nevertheless been **redacted in place**: a subscription account was named by its real name, and this
+repository is destined public, where the lane fence says an infrastructure name may not appear.
+
+**Why redaction rather than either alternative.** Leaving it breaches the lane. Deleting the
+sentences would damage the record — what those lines carry is a real methodological fact, that the
+run account was **shared with another tenant during the run**, which a reviewer must be able to see.
+⇒ **The freeze law exists so that a record is not SILENTLY altered.** A redaction that announces
+itself, names the lines it touched, and preserves every other byte is not the thing that law forbids.
+The substitution is one-for-one (`ACCOUNT B` for the account name, the Captain's verbatim quote
+marked `[ACCOUNT B]` where the redaction falls inside it); no claim, number or verdict is changed.
+📌 **The label→account mapping lives in the private record.** Convention named by `evidence` on the
+bus, 2026-09-10: *a public tree carries the confound under anonymised labels; the structure survives,
+the identity does not travel.*
+📌 Found because `check_infra_names.py` knew exactly ONE name while the fleet had grown to four
+accounts across four boxes. The gate is widened in the same change, with a tripwire that reds when
+its forbidden set is smaller than the roster it was reconciled against.
