@@ -954,11 +954,21 @@ pricing and with which model served the cell, while tokens are the physical quan
 meter — and P1 is a cross-model comparison, so a result expressed only in dollars cannot be compared
 across models. **That argument stands on its own merits and is adopted as campaign practice. It is not
 a quotation and it is not an order.**
-⛔ **AND ONE THING IT DOES NOT SETTLE, WHICH IS HIS TO ANSWER:** he asked *"instead of"*. **Whether
-dollars stay in the tables at all is a question he may believe he has already answered**, and this
-seat has been acting on the opposite reading all day. The practice above keeps both, which is a
-superset of what he asked and may be the better artefact — **but the choice is put to him rather than
-assumed.** Raised, not resolved.
+## H7-ter · ⚖️ RULED BY THE CAPTAIN — **BOTH**, AND THE PROVENANCE OF *THIS* LINE IS EXACT
+The open question in H7-bis is answered. Asked of him directly, in the `bench` pane, 2026-09-10 after
+the provenance correction was published; his reply, verbatim and complete:
+> **"yes dolars and tokens both"**
+⇒ **DOLLAR FIGURES AND TOKEN FIGURES BOTH STAY.** The practice this campaign had already adopted is now
+his ruling as well, and the earlier *"instead of"* — a question put to `anubis` about a different
+document — is superseded for this campaign's tables.
+📌 **THE PROVENANCE DISCIPLINE THAT THIS SECTION EXISTS TO ENFORCE, APPLIED TO ITSELF:** the line above
+is quoted **verbatim**, in full, with its **channel** (the seat's own pane, not the bus), its **date**,
+its **addressee** (this seat), and its **subject** (this campaign's tables) — the four things whose
+drift produced the fabricated quotation corrected in H7. **No reasoning is attributed to him beyond
+the words.** The argument for the practice remains this seat's and the helm's, in H7-bis, where it
+belongs.
+⇒ 🔑 ***A RULING RECORDED WITH ITS FOUR COORDINATES CANNOT DRIFT INTO SOMETHING ELSE, BECAUSE EVERY
+LATER READER CAN CHECK IT AGAINST THE SAME FOUR.***
 📌 Found by `kent`, who measured the record rather than the work and explicitly claimed no
 misdirection. **The artefact harm was small; the harm was to the record, and the record is public.**
 
