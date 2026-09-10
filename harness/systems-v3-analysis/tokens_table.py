@@ -15,9 +15,22 @@ The account is DERIVED by locating the transcript tree under <cfg>/projects/, be
 """
 import json, os, subprocess, sys, glob
 
+# ⛔⛔ THE FLOOR RULE, added 2026-09-10. The meter VOIDs a cell whose transcript carries an INTERRUPTED
+# record, and it is right to: "the client stops writing usage where the interrupt lands, so this sum is
+# a LOWER BOUND, not a price." But a VOID is not a gap -- the meter still computes T and COST from the
+# 99%+ of records that ARE complete, and its own message says what that number is.
+# ⇒ With --floors those cells are RETAINED and labelled FLOOR, never merged into the priced set.
+# WHY IT MATTERS AND IS NOT BOOKKEEPING: dropping them is an ARM-CORRELATED exclusion (plain 44%
+# priced, salt-diet 67%), so the strict aggregate compares two differently-selected subsets. Retaining
+# them as floors is safe in the direction that matters -- a floor UNDERSTATES, the understatement
+# falls more on the control arm, and a bias against the arm under test cannot MANUFACTURE a positive.
+# ⛔ LIMIT: that argument licenses a NUMBER reported as a floor. It does NOT license a VERDICT.
+
 HOME = os.path.expanduser("~")
 BIN = os.path.join(HOME, "cells-specchange-1", "_bin", "cell_meter.py")
-ROOTS = sys.argv[1:] or [os.path.join(HOME, "cells-matrix1")]
+ARGS = [a for a in sys.argv[1:] if a != "--floors"]
+FLOORS = "--floors" in sys.argv[1:]
+ROOTS = ARGS or [os.path.join(HOME, "cells-matrix1")]
 
 def cfg_dirs():
     return sorted(d for d in glob.glob(os.path.join(HOME, ".claude*")) if os.path.isdir(d))
@@ -69,7 +82,8 @@ for root in ROOTS:
         except Exception:
             rows.append(dict(root=os.path.basename(root), cell=cid, arm=arm, acct=email,
                              status="METER-UNPARSABLE")); continue
-        if m["void"]:
+        understated = m["void"] and all("UNDERSTATED" in v for v in m["void"])
+        if m["void"] and not (FLOORS and understated and m.get("COST") is not None):
             rows.append(dict(root=os.path.basename(root), cell=cid, arm=arm, acct=email,
                              status="VOID:" + m["void"][0][:40])); continue
         tot = dict(input=0, cache_write_5m=0, cache_write_1h=0, cache_read=0, output=0)
@@ -80,7 +94,7 @@ for root in ROOTS:
                 for k in tot:
                     tot[k] += v.get(k, 0)
         rows.append(dict(root=os.path.basename(root), cell=cid, arm=arm, acct=email,
-                         status="OK", models="+".join(sorted(models)),
+                         status=("FLOOR" if m["void"] else "OK"), models="+".join(sorted(models)),
                          records=m["records"], T=m["T"], cost=m["COST"], **tot))
 
 hdr = ["root", "cell", "arm", "acct", "status", "models", "records",
