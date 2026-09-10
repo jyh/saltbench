@@ -5,6 +5,11 @@ to produce token costs (in addition to dollar costs)."* **He never said it** —
 pane corpus (82 projects, 681 transcripts, positive control driven), "token costs" appears in ZERO user
 turns. He asked `anubis`, about the `anubis` design doc: *"can we use tokens instead of dollars?"*, and
 later *"bench has calculated the tokens, can you add them?"*
+✅ **RULED 2026-09-10, and this line's provenance is exact:** asked directly in this seat's pane after
+the correction was published, the Captain answered **"yes dolars and tokens both"** — verbatim, in
+full, to this seat, about this campaign's tables. **Dollars and tokens both stay.** The reasoning below
+remains this seat's and the helm's; only the four words are his.
+
 ⇒ **A question became an order, "instead of" became "in addition to", and the addressee and subject
 both changed.** The reasoning printed under it — dollars are derived, tokens are what the pools meter —
 **is this seat's and the helm's, not his.** It is good reasoning and it is adopted as campaign practice
