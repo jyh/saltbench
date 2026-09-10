@@ -84,6 +84,22 @@ FORBIDDEN = [
 DECLARED_NAMES = 7
 DECLARED_RECONCILED = "2026-09-10"
 
+# THE RECONCILIATION ITSELF, WRITTEN OUT, so a reader can check COMPLETENESS without re-deriving it.
+# The roster carries 5 ACCOUNTS and 4 BOXES -- 9 entities, covered by the 7 stems above because two
+# stems each cover a box and an account that share a word. Entity -> the stem that catches it:
+#
+#     account  jy-aletheia      -> its own stem
+#     account  ja-son           -> the CONFIG-DIR shape only (see the note above: it is also a byline)
+#     account  jy-<the box word>-> the box stem, as a substring
+#     account  ja-son-h         -> its own stem
+#     account  <box4>-local     -> the box-4 stem, as a substring
+#     box      yu-kon           -> its own stem       box  ke-nai   -> its own stem
+#     box      <the box word>   -> its own stem       box  jao-quin -> its own stem
+#
+# ⛔ THIS TABLE IS A SNAPSHOT OF A FILE THAT LIVES ELSEWHERE AND MOVES, exactly like the roots list
+#   in the private-paths gate. It is written down not because it stays true but because a reader who
+#   suspects it has stopped being true can check it in one pass instead of rebuilding the derivation.
+
 
 def tracked_files() -> list[tuple[str, str]]:
     out = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, capture_output=True, check=True).stdout
