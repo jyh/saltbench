@@ -942,3 +942,64 @@ wave could not starve the seat that runs it. **They now share one.** At dispatch
 `12/20/4`. ⇒ For the four-cell wave this is immaterial; for P1's ~300 cells it is a real constraint,
 and the campaign should not discover it the way it discovered the weekly limit. Raised here so it is on
 the record before the wave, not after.
+
+---
+
+# ADDENDUM 9 — ⚖️ HOW A CAPPED CELL IS READ, REGISTERED **WHILE BLIND TO WHETHER ANY CELL WILL CAP**
+## Appended 2026-09-10 ~10:5x PDT, mid-wave. ⛔ **NOTHING ABOVE IS EDITED.** This fixes an ANALYSIS choice before its outcome is known, which is the only time the choice is worth anything.
+
+## J1 · ⛔ WHY THIS IS BEING WRITTEN NOW AND NOT AT HARVEST
+The state of ②'s wave at the moment of writing, and it is the point:
+```
+  93323249  plain      LANDED landing-2   $11.9963
+  22ee7d33  plain      LANDED landing-2   $17.1549
+  18fb3eed  salt-diet  RUNNING            $14.36     cap $18.60, armed 17:20:40Z, unit COST
+  6d58f1ec  salt-diet  RUNNING            $14.79     cap $18.60
+```
+**Both control cells have landed. Both treatment cells are still running, four dollars under a cap
+neither has hit.** So the arm this rule would most affect has no outcome yet, and I cannot know which
+way the rule will cut. **That is the only condition under which registering it means anything** — this
+seat has already shipped a gate that computed its own threshold from the run it was judging.
+⇒ 🔑 ***A RULE FOR READING A RESULT IS WORTH EXACTLY AS MUCH AS THE AUTHOR'S IGNORANCE OF THE
+RESULT.*** Written at harvest it is a rationalisation with a timestamp.
+
+## J2 · ⚖️ A CAP-OUT IS A RESULT, NOT A FAULT
+The cap was **armed before the first model call** (`ARMED … unit COST cost 18.60`, 17:20:40Z),
+**uniform across arms**, and expressed in **dollars, not `T`** — which matters, because a `T` cap
+subsidises whichever arm runs longer and this campaign has already measured `T` to be 97.5 % cache
+reads. A cell that reaches it has produced information: *this cell did not finish inside the budget.*
+⇒ **It is sorted RESULT, and it enters the record as one.** It is not re-run to get a landing, and it
+is not quietly dropped — dropping the cells that cost most is the exclusion that flatters whichever
+arm costs more.
+
+## J3 · ⛔⛔ BUT ITS COST IS **RIGHT-CENSORED**, AND THE THREE RULES ARE NOT NEGOTIABLE
+```
+  a capped cell's cost is  >= $18.60      it is NEVER reported as  = $18.60
+```
+1. **NEVER POOLED INTO A MEAN OR A MEDIAN WITH LANDED CELLS.** A censored value entering a mean drags
+   it toward the cap and the result reads as *"the arm cost about the cap"*, which is the one thing
+   the number cannot say.
+2. **THE PRIMARY COMPARISON UNDER ANY CENSORING IS THE LANDING RATE**, reported as a fraction with
+   both numerators and denominators visible (`2/2` vs `n/2`), because the landing rate is uncensored
+   and the cost is not.
+3. **A COST FIGURE FOR AN ARM CONTAINING A CAPPED CELL CARRIES `>=` IN THE SAME CELL OF THE SAME
+   TABLE**, never in a footnote. This campaign's own law from this morning: *a floor licenses a
+   NUMBER, not a VERDICT*, and a censored cost is a floor.
+
+## J4 · ⇒ AND CENSORING THAT FALLS ON ONE ARM **IS** THE FINDING
+If the treatment arm caps and the control does not, that asymmetry is not an inconvenience to be
+corrected away — **it is the measurement**, and it says something stronger than a cost ratio: *at a
+budget the control finished inside, the treatment did not.* It gets reported in exactly those words.
+⛔ **THE MIRROR CASE, REGISTERED WITH EQUAL FORCE SO THIS IS NOT A ONE-WAY RULE:** if the CONTROL caps
+and the treatment lands, the same sentence is written with the arms exchanged. **A rule that only
+fires in the direction the author expects is not a rule.**
+
+## J5 · ⛔ WHAT THIS WAVE CANNOT SUPPORT, SAID BEFORE THE NUMBERS EXIST
+**n = 2 per arm, one task, one model.** Nothing here is inferential: no p-value, no interval, no claim
+that one arm costs more **in general**. The deliverable is what the commission asked for —
+**believability**: did the spec change get taken, did the record show the work, and what did it cost —
+plus a landing rate and a censored cost, both with their denominators.
+📌 The end token is already structural rather than prose: `render_result_v3.py` reads `END
+(LANDED|DONE|CAP-TOKENS|CAP-COST|CAP-WALL|…)` out of `watch.log`, so **a capped cell is distinguishable
+from a landed one by a machine, not by a reader's memory of what happened.** This addendum says what to
+do with that distinction; the harness already preserves it.
