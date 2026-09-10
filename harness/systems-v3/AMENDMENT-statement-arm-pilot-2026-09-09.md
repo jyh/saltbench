@@ -272,6 +272,27 @@ this ground and is **not revived here**.
 NOT EXIST BEFORE THE DATA.*** The concordance is recorded as a **structural warning**, which is what it
 is, and never as a result.
 
+⛔⛔ **AND THE CONCORDANCE IS NOT EVEN STABLE ACROSS THE TWO READINGS OF ITS OWN DATA — MEASURED HERE, NOT
+REPORTED TO ME.** Ordered by statement size (Crc32 · LRU · LZW · Paxos · FreeList), the bare premiums run
+
+```
+  reading A   1.1610  1.2826  1.3749  2.4306  2.8070    strictly increasing with size
+  reading B   1.1610  1.1521  1.3749  2.2437  2.8879    ⛔ INVERTED at Crc32 / LRU
+```
+
+**The perfect rank match holds under reading A and BREAKS under reading B**, where Crc32 `1.1610` sits
+above LRU `1.1521`. The two problems that swap are the two whose premiums are closest together and both
+far below the floor, so the inversion is exactly what sampling noise at `n=3` looks like.
+⇒ **This rescues nothing** — the qualitative warning of A3.1 and A3.3 stands untouched, and the selection
+effect does not depend on any ordering being perfect. **What it kills is any temptation to price the
+concordance.** A pattern that reverses when three borrowed cells leave the declared set is not a pattern a
+number may be attached to, and **the strongest form of the ordering claim that survives both readings is
+that the premium is near 1 on the smallest problems and rises with size.**
+📌 Recorded because the concordance reached the bus as *"all five, 1-2-3-4-5"* and as *"three concordant
+orderings"*, both taken over reading A alone. **A campaign that reports two readings has to check a
+cross-reading claim against both**, and the discipline that caught this is the same one that produced the
+two readings in the first place.
+
 ## A3.3 · THE CONSEQUENCE: FreeList CANNOT SETTLE IT, WHICHEVER WAY IT LANDS
 
 Statement size and bare premium are **both downstream of the same latent variable — how hard the problem
