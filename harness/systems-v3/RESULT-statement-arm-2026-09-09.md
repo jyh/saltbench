@@ -111,22 +111,36 @@ ones that ran long enough to hit the cap — **the hard ones** — so **the trea
 biased UP by construction.**
 
 ## §7 · ⭐⭐ THE REGISTERED CAP PREDICTION FAILED IN THE OPEN, ON THE FULL n IT DECLARED
-`§3` of the amendment registered `C1_USD = 37.21` and, against the pilot's own tracked medians, declared
-**FreeList's diet+statement cells EXPECTED TO CAP** (bare diet median **$37.60**, max **$37.95**, both
-above the cap). The default-if-silent branch — **CAP UNCHANGED** — was taken. The outcome:
+`§3` registered `C1_USD = 37.21` and, against the pilot's own tracked medians, declared **FreeList's
+diet+statement cells EXPECTED TO CAP** (diet-bare median **$37.60**, max **$37.95**, both above the cap).
+`A2.3` restated it unchanged. Paxos never fires, so **FreeList is the only problem on which it can be
+scored at all.** The default-if-silent branch — **CAP UNCHANGED** — was taken. The outcome:
 ```
   sf04free  $29.00   UNDER     sf05free  $21.18   UNDER     sf06free  $27.84   UNDER
   the cap was NOT raised.  worst cell is 78% of it.  0 CAP-COST cells in 18.
-  FreeList diet: bare median $37.60  ->  statement median $27.84   (-26%)
 ```
-⇒ **A prediction registered before the first cell failed, on all three cells, in the open.** It is
-reported here as a **result**, not a footnote, because it was registered rather than found.
-⛔⛔ **WHAT MAY NOT BE SAID WITH IT.** *"The specification made the expensive arm cheaper"* is **one
-problem at n = 3, an observation and not a direction.** It is admissible only because the cap was **not**
-raised — a raised cap would have measured the statement arm under a different budget than the bare arm it
-is compared against, and `§3` registered that consequence in advance. `A3.1`'s selection effect and
-`A3.2`'s confound both bind on it. ⛔ **No probability is attached to the rank ordering** — two p-values
-have already been struck on this axis for pricing a pattern found by inspection.
+⇒ **THE PREDICTION FAILED, ON ALL THREE CELLS, AND ITS DIRECTION IS THAT THE CELLS CAME IN UNDER.**
+It is recorded here as a **failure** and reported as a **result**, per `A4.2`'s second branch, which was
+registered while two of these three cells were still running. ⛔ **A registered prediction that fails is
+a result of this instrument, not an embarrassment to be dropped.**
+
+### §7b · ⛔⛔ THE COMPARISON THIS FAILURE INVITES IS NOT THE REGISTERED READING (`A4.3`)
+The arithmetic invites *"the statement made the treatment's dearest condition cheaper"* — FreeList diet
+went from a **bare** median of `$37.60` to a **statement** median of `$27.84`.
+⛔ ***THAT IS A BARE-vs-STATEMENT COMPARISON. THE REGISTERED READING OF THIS ARM IS (d) vs (e) — the two
+STATEMENT conditions on the same problem*** (`§5`). They are different comparisons over different
+populations **and they are not pooled.** The registered reading for FreeList is `§4`'s **1.5246x**.
+**What may be said of the bare-vs-statement line, and it is deliberately narrow:**
+1. **One problem at `n = 3`** — an OBSERVATION, not a direction. The `2.0072x` resolvable floor applies
+   to it exactly as to every other premium in this file.
+2. Admissible **only because the cap was NOT raised**, so both sides were measured under the same budget.
+   ⛔ **Had the cap been raised this comparison would be barred outright**, and that condition travels
+   with any quotation of it.
+3. The two sides differ in **more than the statement**: the diet-bare cells are matrix cells, the
+   diet+statement cells are amendment cells fired later. `A3.1`'s selection effect and `A3.2`'s confound
+   both bind. **Nothing in this design licenses reading a capability or a mechanism from it.**
+⛔ **No probability is attached to the rank ordering** — two p-values have already been struck on this
+axis for pricing a pattern found by inspection.
 
 ## §8 · PROVENANCE
 ```
