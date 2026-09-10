@@ -68,11 +68,19 @@ FORBIDDEN = [
 #   ⇒ Anything this shape cannot catch is carried by the CONVENTION instead: a public tree names
 #     accounts by anonymised label (ACCOUNT A / ACCOUNT B), with the mapping in the private record.
 
-# The tripwire that makes the NEXT outgrowing loud instead of silent. The roster lives OUTSIDE this
-# repo and MOVES, so CI cannot read it; what CI can do is refuse to run against a set that has
-# shrunk, and print the count so a reader can compare it against the fleet map rather than trusting
-# a date. Reconciled against the fleet roster on the date below -- its box column and its account
-# column. Adding a box or an account to the fleet means editing BOTH lines, deliberately.
+# ⛔ WHAT THIS TRIPWIRE DOES AND -- MORE IMPORTANTLY -- WHAT IT DOES NOT.
+#   It refuses to scan when the forbidden set has SHRUNK below the count declared here. That catches
+#   a name being DELETED. It does NOT catch the failure that actually happened, which was the FLEET
+#   GROWING while this list stood still: both lines below are edited by the same hand, so they move
+#   together and neither can notice a new account or a new box existing.
+#   ⇒ 🔑 A DECLARATION AND THE THING IT DESCRIBES, EDITED TOGETHER, CANNOT CHECK EACH OTHER.
+#   ⇒ **Completeness is not checkable from inside this repo at all.** The roster lives outside it and
+#     MOVES, and CI cannot read it. Only a FLEET-SIDE check that reads the roster can know this set is
+#     incomplete; that check is the load-bearing one and this is a second lock, not the lock.
+#     (Named by `systems` on the bus, 2026-09-10, correcting this seat's first claim for it.)
+#   The count is printed on every run so a reader can compare it against the fleet map rather than
+#   trusting a date. Reconciled against the fleet roster on the date below -- its box column and its
+#   account column. Adding a box or an account means editing BOTH lines, deliberately.
 DECLARED_NAMES = 7
 DECLARED_RECONCILED = "2026-09-10"
 
