@@ -1003,3 +1003,52 @@ plus a landing rate and a censored cost, both with their denominators.
 (LANDED|DONE|CAP-TOKENS|CAP-COST|CAP-WALL|…)` out of `watch.log`, so **a capped cell is distinguishable
 from a landed one by a machine, not by a reader's memory of what happened.** This addendum says what to
 do with that distinction; the harness already preserves it.
+
+---
+
+# ADDENDUM 10 — ⛔⛔ A LANDING IS NOT A VERDICT, AND IT ERRS IN **BOTH** DIRECTIONS
+## Appended 2026-09-10 PDT on the helm's ask, after measuring the second direction it did not have.
+
+## K1 · THE ASK, AND WHY IT GENERALISES FURTHER THAN IT WAS PUT
+The helm asked that `false_done_claims: 0` be retired as evidence **for every arm, Claude included**,
+after `av02lzw` claimed R1–R8 `DONE` with a `solution.rs` that does not compile. That is right, and
+the Claude side has the mirror case, measured the same afternoon:
+```
+  GEMINI   av02lzw    LANDED · false_done_claims 0 · claimed R1–R8 DONE   ->  DOES NOT COMPILE
+  CLAUDE   6d58f1ec   CAP-COST · no landing marker · never declared       ->  PASSES 15/15
+```
+⇒ 🔑 ***A LANDING CLAIM IS NOT A BOUND ON CORRECTNESS IN EITHER DIRECTION — IT IS A DIFFERENT
+MEASUREMENT.*** It **over-states** when a subject declares work it did not do, and it **under-states**
+when a correct subject is stopped before it declares. Both were measured, in one campaign, on one day.
+⇒ **So the retirement is not "trust landings less." It is: a landing answers *did the subject say it
+was done*, and correctness answers *is it*, and no arithmetic converts one into the other.**
+
+## K2 · ⛔ WHAT THIS CORRECTS IN ADDENDUM 9, WHICH IS MINE AND WAS MERGED
+Addendum 9 §J3.2 registered: *"the primary comparison under any censoring is the LANDING RATE, because
+the landing rate is uncensored and the cost is not."* **The first clause is true and the inference is
+wrong.** A landing rate is uncensored and it is *not a correctness rate*, so promoting it to the
+primary comparison substitutes an availability measure for the verdict. **`6d58f1ec` is exactly the
+cell that rule mishandles**: censored on cost, absent from the landing rate, and correct.
+⇒ **CORRECTED: the primary comparison is the WITHHELD-SUITE SCORE.** The landing rate is reported
+beside it as what it is — a declaration rate — and the cost stays censored as §J3 says.
+
+## K3 · ✅ THE PILOT, RE-READ AGAINST THE SUITE — AND THE HEADLINE CHANGES
+Driven with `tasks/systems-v3/LZW/B/run_tests.sh` (the POST-change suite; `G/` scores phase 1 and
+would be the wrong instrument), from copies, archive hash-checked and byte-unchanged:
+```
+  93323249  plain      15/15      22ee7d33  plain      15/15
+  18fb3eed  salt-diet  15/15      6d58f1ec  salt-diet  15/15   <- the CAPPED cell
+  ---- VERIFIED 4/4 both arms · LANDING RATE was plain 2/2, salt-diet 1/2 ----
+```
+⇒ **The spec change was taken correctly in every cell of the pilot.** The arm difference I reported as
+a landing rate is a difference in *declaration*, not in *outcome*, and on the measurement that matters
+the two arms are identical at n=2.
+📌 **`RESULT-specchange-1-2026-09-10.md` is the one Claude-arm RESULT in this harness that carried no
+withheld-suite score** — six others do. The gap was mine, not the campaign's, and this closes it.
+
+## K4 · 📌 A NAMING DEBT THIS EXPOSED
+`RESULT-specchange-1-verdicts-2026-09-10.tsv` contains **landings, costs and token counts — no
+verdicts.** The word entered the filename when nothing in the file had been verified.
+⇒ **A file whose name claims a verdict will be cited as one.** Any future result file naming a column
+or a file `verdict` carries a score from the withheld suite, or it is renamed. The word is reserved
+for the party that can issue one.
