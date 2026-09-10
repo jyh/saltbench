@@ -52,3 +52,57 @@ n = 9, **one task** (LZW), one substrate, one declared model, greenfield only. N
 made here: the Claude arm ran under a different tool-permission regime, and comparing them would
 compare two experiments. **This is a standalone floor for one vendor on one task, and it is offered as
 exactly that.**
+
+---
+
+# ⛔⛔ ERRATUM 2026-09-10 — §3's ATTRIBUTION IS WRONG. **NO SHELL COMMAND RAN IN ANY OF THE NINE CELLS.**
+
+§3 of this result states, as established fact, that the denials were *"the subject invoking `bin/bus`
+and `bin/rt` — the interface this campaign handed it"* and therefore **FENCE-OVERREACH**. **That is
+superseded.** The helm opened Antigravity's own transcripts instead of inferring from the meter, and
+the story collapses.
+
+## WHAT ACTUALLY HAPPENED
+```
+  av07 step 3   run_command  pwd && ls -la
+       step 4   exit 65  sandbox-exec: /tmp/exebox-402207933.sb: Operation not permitted
+       step 29  run_command  echo hello
+       step 30  exit 65  sandbox-exec: …: Operation not permitted
+  across all nine: 40 run_command results, 40 x exit 65, ZERO successes
+```
+**`echo hello` fails exactly as `bin/rt check` does.** The mechanism, driven with both arms differing:
+our build wraps the client in our own Seatbelt fence **and** passes the vendor's `--sandbox`, so every
+command is a `sandbox-exec` inside a `sandbox-exec`, and **macOS refuses the nested apply.** The 36
+`fence_denials` the meter counted were the subject's *escalation* attempts after it correctly
+diagnosed the nesting — not the 40 primary failures, which are "successful" tool calls whose OUTPUT is
+an error.
+⇒ **The honest figure is not "36 of 71 turns denied". It is "0 of 40 shell commands ran."**
+✅ **Verified independently by this seat before publishing this erratum:** across all nine cells there
+is **no `target/` and no `.seat/rt.result`** — **0 of 9 ever compiled anything** — and the exit-65
+signature appears in every cell. (This seat's own run_command tally is coarser than the helm's and the
+40 is taken on their count, not re-derived here.)
+
+## ⇒ WHAT CHANGES, AND WHAT GETS STRONGER
+- ⛔ **§3's "FENCE-OVERREACH, not subject-reach" is WITHDRAWN.** Both readings were wrong: it was
+  neither the fence over-reaching nor the subject over-reaching, but **a containment conflict that
+  made execution impossible.**
+- ✅ **§1's VERDICT STANDS AND IS A FAR DEEPER FLOOR.** The subject wrote `solution.rs` and
+  `tests/driver.rs` through file tools, **never built, never ran a test, never saw a compiler** — and
+  **8 of 9 pass the complete hidden suite.** Written blind. That is a much stronger statement about
+  the model than the one this document originally made.
+- ✅ **§2 is unsurprising in hindsight**: `av02lzw` claimed done with code that does not compile
+  because **nothing in the wave was ever compiled.** The claim/verdict gap it demonstrates is
+  undisturbed; its cause is now known.
+- ✅ **§5's "not comparable" was right for a stronger reason than it gave.** The asymmetry is not a
+  matter of degree. **These nine are a NO-SHELL arm, not a plain arm.** Claude cells build and test
+  freely; recovering Claude's denial rate is moot for this pairing, because **the asymmetry is a KIND,
+  not a COUNT.**
+- ⚠️ **§3's token figures** are not "inflated by dead turns" so much as **taken under a regime with no
+  execution at all.**
+
+## ⇒ 🔑 THE LESSON THIS SEAT OWES, AND IT IS THE SECOND TIME TODAY
+I verified every NUMBER in this result at the object — the scores, the archive hashes, the meters —
+and repeated an **ATTRIBUTION** on trust. This morning I did the same with a quotation. ⇒ ***A CAUSAL
+CLAIM IS EVIDENCE TOO, AND IT IS THE KIND I KEEP TAKING SECOND-HAND — because it arrives already
+explained, and an explanation is what makes a claim feel checked.*** The record was one file away in
+both cases.
