@@ -58,6 +58,21 @@ def parse_driver_output(text):
     "this arm did nothing", which is indistinguishable from the finding.  The positive control (a
     wrecked reference must FAIL) is what separated them, and nothing else would have.
 
+    ⛔⛔ AND THE ROOT IS THAT THE FIVE WITHHELD DRIVERS DO NOT SHARE AN OUTPUT CONTRACT.  Measured over
+    `withheld/tests/*.rs` in all five pricing tasks:
+
+        PASS   `println!("PASS {}")`          UNIFORM in 5 of 5
+        FAIL   `println!("FAIL {}")`          LRU · LZW · FreeList
+               `println!("FAIL {}{}")`        Crc32
+               `println!("FAIL {} — ...")`    Paxos, in SEVEN distinct shapes
+
+    ⇒ 🔑 THE VALIDITY CHECK EVERY TASK PASSES -- the reference run -- EXERCISES ONLY THE `PASS` PATH,
+    WHICH IS THE ONE SHAPE THAT IS UNIFORM.  All the variation lives in the path that appears only when
+    something fails, so a parser validated against the reference is validated against the half that
+    could not have told it anything.  This is why the tool ran clean on 5 of 5 references and was wrong
+    on 2 of 5 mutant sets.  Taking the arm name as the FIRST TOKEN after the verb is contract-free and
+    survives all three shapes.
+
     ONE guard does the anchoring: `LINE` is anchored at `^` and requires a SPACE after the verb.
 
       "  FAIL: the implementation panicked"   the driver's panic line -- refused twice over
