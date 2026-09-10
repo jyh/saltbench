@@ -1,0 +1,280 @@
+# AMENDMENT — THE SPEC-CHANGE TASK SHAPE
+## Dated 2026-09-09 PDT (2026-09-10 UTC). ⛔ **THE COMMIT THAT FREEZES THIS FILE IS THE AUTHORISATION, AND IT LANDS BEFORE ANY SPEC-CHANGE CELL IS BUILT.**
+
+Ordered by the Captain at 21:5x PDT: *"for bench, we need to get the spec change authored, then run
+that next; then resume expansion to all 14 problems."* Routed by the 42nd helm head, whose sequence is
+ordered and is not collapsed here: **① author · ② run that · ③ then the expansion.** This file is ①.
+
+It discharges **`PREREGISTRATION-matrix-opus-2-specchange-2026-09-08.md` §4**, which recorded the task
+shape as **OWED BEFORE CELL 1** and refused to mint it:
+
+> The Captain's word is *"spec change, not an RTL one"*. **That is a direction, not a specification**,
+> and this desk will not mint the definition that decides what the arm measures. **OWED:** the exact
+> spec-change instruction — what the subject is given (a working implementation? its tests? the old
+> spec?), what changes, and what "done" means for the referee.
+
+`systems` was right to refuse; the Captain has now said who authors it. **Nothing in matrix #2's
+reading (§5–§8 of that file) is touched by this amendment.** Its `greenfield-derived` label on any `n`,
+its spread clause, its agreement clause and its `UNRESOLVED` verdict word all stand as written.
+
+---
+
+## §1 · ⛔⛔ THE ANSWER TO §4, AND IT WAS ALREADY BUILT — I MEASURED IT RATHER THAN DESIGNING IT
+
+**THE SUBJECT IS GIVEN ITS OWN PHASE-1 REPOSITORY, MID-FLIGHT, WITH A CUSTOMER COMMIT ON IT.**
+
+Measured at the object on `saltbench-systems` branch `systems-v3-repair1` @ `311b208`:
+
+```
+  tasks/systems-v3/EXECUTOR-BRIEF-v3.md §1.3, verbatim:
+      "B/ — phase 2 (the change request). No given/: the seat's own phase-1 landing is the given."
+
+  harness/systems-v3/customer.sh dispatch <cell> <task-dir>
+      REFUSES unless ctl/end-1 exists (phase 1 has ENDED) and the tree is clean
+      checks out main, then ONE commit authored `customer <customer@bench>`, hooks off:
+        inbox/change-1.md   = a FIXED paragraph + the card's `## Change request (phase 2)` section
+                              as `render_requirements.py --clause` prints it
+        REQUIREMENTS.md     = re-rendered with `## Change 1`, SAME nonce, the same lines the clause
+                              carries, so the seat's two copies cannot disagree
+        interface.rs        = replaced by B/interface.rs, the EXTENDED interface
+        BUS.md              = a CUSTOMER line
+        git tag P1
+      prints a payload sha over (inbox/change-1.md + interface.rs) — IDENTICAL ACROSS THE ARM PAIR
+
+  harness/systems-v3/render/BOOT_PROMPT_2.txt
+      a NEW SESSION on the same repository: read inbox/ first, then BANK.md, memory/MEMORY.md, the
+      tail of BUS.md; "Reconcile BANK.md against the tree before you trust it."
+```
+
+⇒ **"DONE" FOR THE REFEREE IS ALREADY DEFINED AND ALREADY EMITTED**, and it is two numbers, not one.
+`B/withheld/tests/driver_main.rs` runs the base suite and the clause suite and reports them separately:
+
+```
+  TESTS        <passed>/<total>      the pooled figure
+  REGRESSIONS  <FAILED>/<total>      the base suite = phase 1's driver VERBATIM
+  CLAUSE_TESTS <FAILED>/<total>      the clause's own tests
+```
+
+⇒ 🔑 ***THE TASK SHAPE WAS NOT MISSING. IT WAS UNREGISTERED*** — built, tested, and reachable, while
+the one file that says what the arm measures said `OWED` and `nothing is built`. **That is the whole
+of ①: not an invention, a registration**, and the three sections below are the three places where
+registering it changes what may be reported.
+
+## §2 · ⛔⛔ POLARITY: TWO OF THE THREE FIELDS COUNT FAILURES, AND THE THIRD COUNTS PASSES
+
+```
+  TESTS 41/44          41 PASSED of 44      <- a HIGH number is GOOD
+  REGRESSIONS 3/9      3 FAILED of 9        <- a HIGH number is BAD
+  CLAUSE_TESTS 0/12    0 FAILED of 12       <- a HIGH number is BAD
+```
+Read at the source: `driver_main.rs` prints `passed` for `TESTS` and `regr_failed` / `clause_failed`
+for the other two. ⇒ **A scorer that copies the `TESTS` idiom onto either of the other two lines
+reports a perfect cell as a total failure and a total failure as perfect, with no parse error.**
+⛔ **REGISTERED: every consumer of these two fields names the polarity in the same expression that
+reads it**, and no result table prints `REGRESSIONS 0/9` without the word `failed` beside it.
+📌 This campaign has carded this exact shape once already — one log reporting percent USED and another
+percent REMAINING. **Polarity is a property of the instrument, never of the quantity.**
+
+## §3 · ⛔⛔ THE FIELDS ARE PARSED AND NO VERDICT IS COMPUTED FROM THEM
+
+Measured over every ref on `saltbench-systems`, with a positive control on the same grep:
+
+```
+  referee_v3.py:266–280      parses REGRESSIONS/CLAUSE_TESTS into
+                             regressions_failed · regressions_total · clause_failed · clause_total
+  render_result_v3.py:115    prints them as a PARENTHETICAL on the tests string
+  anything else              NOTHING.  No branch, no class, no verdict reads either field.
+```
+⇒ **`DESIGN-v3-brownfield-form-2026-09-09.md` §7 item 1 — *"V1 and V2 as separate verdicts, with the
+path each is read from, and unmeasured ≠ pass"* — IS NOT BUILT.** The numbers reach a decoration.
+⇒ 🔑 ***A FIELD THAT IS PARSED AND NEVER BRANCHED ON IS NOT A VERDICT; IT IS A COMMENT WITH A REGEX
+IN FRONT OF IT*** — and it reads as present to every reader who greps the field name.
+
+**REGISTERED, and this is a build owed before cell 1:**
+```
+  V1  REGRESSIONS   the pre-existing behaviour SURVIVED the change   GREEN iff regressions_failed == 0
+  V2  CLAUSE        the requested change was implemented             GREEN iff clause_failed == 0
+  ⛔ a missing REGRESSIONS or CLAUSE_TESTS line is UNMEASURED, never GREEN, and never absorbed
+     into TESTS.  A cell whose driver did not build is UNMEASURED on both.
+  ⛔ V1 and V2 are separate columns.  No pooled "tests green" field is reported for a phase-2 cell.
+```
+
+## §4 · ⚖️ THE FORM IS **CONTINUATION**, AND ITS CONFOUND IS NOW A MEASURED COVARIATE INSTEAD OF A CAVEAT
+
+`DESIGN-v3-brownfield-form-2026-09-09.md` §0 names two forms and rules that the one closing `N = 0`
+is **B-PLANTED** (given = an AUTHORED defective component, identical across cells). **Measured: no
+v3 task has a `given/` and `cell_build.py` has no code path that seeds one.** All five pricing tasks'
+`B/` trees are `_common.sh · interface.rs · list_traces.sh · run_*.sh · withheld/` and nothing else.
+
+⇒ **THE SPEC-CHANGE ARM AUTHORISED HERE IS `B-CONTINUATION`, AND IT IS CALLED THAT.** Per the design's
+own ruling it **does not close `N = 0`** and **may not be called "the brownfield rung"**. B-PLANTED
+remains registered as OWED for the form that closes `N = 0`; **this amendment does not build it and
+does not retire it.**
+
+⛔⛔ **THE CONFOUND, STATED IN THE DESIGN'S OWN WORDS BECAUSE IT BINDS EVERY NUMBER BELOW:**
+> *A PHASE-2 DIFFERENCE CANNOT BE ATTRIBUTED TO THE PHASE-2 TREATMENT WHEN PHASE 1 CHOSE THE STARTING
+> POINT.* The given is produced **by the arm under test**; an arm that lands phase 1 better is handed
+> an easier phase 2.
+
+✅ **WHAT THIS AMENDMENT ADDS, AND IT IS THE ONE THING THAT MAKES THE FORM REPORTABLE: THE STARTING
+POINT IS MEASURED, PER CELL, BEFORE PHASE 2 RUNS.**
+```
+  THE P1 BASELINE.  Immediately after customer.sh dispatches and BEFORE the phase-2 session launches,
+  run B/run_tests.sh against the tree at tag P1 and record, in ctl/ and in the manifest:
+       p1_regressions_failed / p1_regressions_total     (expected 0/t for a good phase-1 landing)
+       p1_clause_failed      / p1_clause_total          (expected ~t/t: the clause is not yet done)
+       p1_solution_sha256                               the given, as it actually is in THIS cell
+  ⛔ It costs ZERO MODEL TOKENS: it is a cargo build and a driver run on a tree that already exists.
+```
+⇒ **Every V1 and V2 verdict is reported WITH its cell's P1 baseline in the same row.** A `V1 RED` on a
+cell whose baseline was already RED is a different event from a `V1 RED` on a cell that entered phase 2
+clean, and **the pooled number cannot tell them apart.**
+⛔ **A cell whose P1 baseline has `p1_regressions_failed > 0` is reported in its own class and is not
+pooled into V1**: its phase-1 landing was already failing its own regressions, so phase 2 was handed a
+different task. **It is not excluded — excluding it would delete the finding.**
+
+## §5 · ⛔⛔ THE BUILD PATH THAT PRODUCES A SPEC-CHANGE CELL THAT IS NOT ONE — REFUSED HERE
+
+`cell_build.py --phase 2` on a FRESH cell is reachable today and is validated by nothing:
+`--phase` is `type=int, default=1` with no precondition. What it builds, measured at the source:
+
+```
+  solution.rs   <- B/interface.rs   ⛔ A STUB.  All four bodies are `let _ = x; Vec::new()`
+  REQUIREMENTS  <- rendered --change: phase-1 requirements PLUS `## Change 1`
+  inbox/        <- .keep ONLY.  No change-1.md.
+  git tag P1    <- ABSENT.  ctl/customer.log ABSENT.  No prior session, no landing, no bank.
+  ctl/task      <- records phase = 2
+```
+⇒ **That cell is GREENFIELD WITH A LONGER CARD.** It measures nothing brownfield, it has no given, its
+V1 baseline is the empty stub, and **`ctl/task` labels it `phase 2`, so any scorer keying on the phase
+pools it with real spec-change cells.**
+📌 **And it hands the agent a dangling pointer:** `B/interface.rs`'s own header says *"The change
+request in `inbox/change-1.md`"* — a file that path never writes.
+
+⛔ **REGISTERED: A SPEC-CHANGE CELL IS ONE THAT CARRIES `ctl/customer.log` WITH A `dispatched P1` LINE.**
+No other cell may be reported, priced or scored as spec-change, whatever `ctl/task` says. The
+build-time gate owed before cell 1: **`cell_build.py --phase 2` REFUSES unless the cell already holds
+`ctl/end-1`**, the same precondition `customer.sh` already enforces — driven RED by building a fresh
+`--phase 2` cell and seeing it refuse, and GREEN on a cell that has ended phase 1.
+⇒ 🔑 ***THE PRECONDITION EXISTS AND IS ENFORCED BY THE SECOND TOOL IN THE SEQUENCE, NOT THE FIRST***,
+so the shape that skips the second tool entirely is the one shape nothing checks.
+
+## §6 · THE REWRITE CLASS, MEASURABLE HERE WITHOUT A NEW INSTRUMENT
+
+`DESIGN §3` requires REPAIRED / REPLACED / REMOVED registered before cell 1 with a prediction per arm.
+Under CONTINUATION the given is the cell's own `solution.rs` at tag `P1`, so the class is a diff the
+harness takes, never the agent:
+```
+  REPAIRED   solution.rs at end-2 shares lineage with P1 and was EDITED
+  REPLACED   solution.rs at end-2 is a wholesale rewrite of P1
+  REMOVED    the component moved out of solution.rs
+  measured   p1_solution_sha256 vs end-2 sha, plus `git diff --stat P1..HEAD -- solution.rs`
+```
+⛔ **REGISTERED PREDICTION, BEFORE THE CELLS FIRE, so it cannot be fitted afterwards:** the salt-diet
+arms are predicted to REPAIR more often than the plain arms, because the method's briefing prescribes
+reading and re-verifying existing work while the plain briefing does not. **This is a prediction about
+a CLASS FREQUENCY at n = 1 per condition and is therefore UNPOWERED — it is registered so that the
+observed classes are read against a stated expectation, not so that it can be tested.**
+📌 A REPLACED cell is priced, scored on V1/V2, and reported in its own class. Not void, not excluded.
+
+## §7 · ⛔ THE OUTCOME SPACE, PARTITIONED — EXHAUSTIVE AND MUTUALLY EXCLUSIVE
+
+`systems` paid for this clause tonight: its registered bands read *above 1.8105 upheld · at or below
+1.5214 REFUTED · below 1 strongly refuted*, the outcome was **1.5246**, and it satisfied **none of the
+three** — missing the REFUTED boundary by **0.0032**. ⇒ 🔑 ***A PRE-REGISTRATION WITH A GAP BETWEEN ITS
+THRESHOLDS IS NOT PRE-REGISTERED FOR THE OUTCOME THAT LANDS IN THE GAP.***
+
+**THE SPEC-CHANGE PILOT'S OUTCOME SPACE, COVERING EVERY REAL LINE WITH NO GAP AND NO OVERLAP:**
+
+```
+  FEASIBILITY (matrix #2 §7's first product) — one of exactly these, per cell:
+    LANDED-SCORED     the phase-2 session ended, the driver built, both fields present
+    LANDED-UNSCORED   the session ended, the driver did NOT build      -> V1/V2 UNMEASURED
+    CAP-COST          stopped at C2_USD = 18.60                        -> not a failure, its own class
+    CAP-TOKENS        stopped at the token cap                         -> its own class
+    HARNESS           refused by the referee before scoring            -> not a cell outcome
+    NO-LAND           the session ended without a landing              -> V1/V2 UNMEASURED
+  ⇒ the six are exhaustive and disjoint; every fired cell lands in exactly one.
+
+  CORRECTNESS, only on LANDED-SCORED cells, and V1 and V2 are read INDEPENDENTLY:
+    V1 GREEN iff regressions_failed == 0    V1 RED otherwise
+    V2 GREEN iff clause_failed == 0         V2 RED otherwise
+  ⇒ the 2x2 is reported as a 2x2.  ⛔ NO SINGLE "correct" FIELD IS DERIVED FROM IT.
+     The interesting cell is V1 GREEN / V2 RED against V1 RED / V2 GREEN, and one number hides it.
+
+  TASK-SHAPE RISK (matrix #2 §7's second product), registered as an ORDER OF MAGNITUDE before firing:
+    COLLAPSED   the phase-2 diff is under  50 added lines in solution.rs
+    NORMAL      50 to 500 added lines
+    EXPLODED    over 500 added lines, or solution.rs at end-2 is REPLACED
+  ⇒ boundaries at 50 and 500 are one order of magnitude apart, coarser than any cell-to-cell noise
+    this campaign has measured.  A diff of exactly 50 or exactly 500 is the LOWER class (`<` above).
+```
+
+⛔⛔ **AND THE WORD FOR THE WHOLE PILOT IS FIXED BEFORE IT FIRES, AS MATRIX #2 §1 REGISTERED:
+`UNRESOLVED`.** At **k = 1** no sign test outcome reaches significance — not "probably won't", cannot
+— and at **n = 1** there is no magnitude reading and no spread reading at all. **No headline of the
+form "spec change costs more/less" is available whatever comes back.** ⛔ **No ordering carries a
+p-value.** This campaign has struck two p-values on that axis already.
+
+## §8 · WHAT FIRES AT ②, AND WHAT IT COSTS
+
+```
+  DESIGN     1 problem x 4 arms x n = 1 = 4 CELLS.  Matrix #2 §7, ratified by me on the bus
+             2026-09-08 09:33:06 (body receipt sha256/16 ff85b1540289014c).  UNCHANGED here.
+  problem    LZW.  Justified, not preferred: it is the only pricing problem with both a phase-1
+             landing record and stage-1 dispersion, so a failure is attributable to the FORM rather
+             than to never-run risk.
+  arms       plain-bare · salt-diet-bare · plain-STATEMENT · salt-diet-STATEMENT   (matrix #1's four)
+  model      claude-opus-5
+  caps       C1_USD = 37.21 · C2_USD = 18.60, FROZEN in cost_caps.tsv, taken as data, not as an
+             argument.  ⛔ THE TABLE'S OWN CAVEAT (2) TRAVELS WITH EVERY PHASE-2 NUMBER: "PHASE 2 IS
+             UNMEASURED — C2 is §9's half-rule applied to a number nobody has observed."
+             ⇒ REGISTERED, DEFAULT-IF-SILENT: THE CAP IS UNCHANGED, and any phase-2 cell that stops
+             at C2 is reported CAP-COST, never as a failure.  A raise is a new dated amendment.
+  ⚠️ EACH CELL IS TWO SESSIONS.  A spec-change cell requires a phase-1 landing first; phase 2 cannot
+     be built without ctl/end-1 (§5).  Whether the four phase-1 halves are FIRED FRESH or CONTINUED
+     from existing landed LZW cells is a COMPARABILITY question, and it is §9.
+```
+
+## §9 · ⛔ THE ONE QUESTION THIS FILE LEAVES OPEN, NAMED SO IT IS NOT MISTAKEN FOR SETTLED
+
+**May phase 2 continue from an ALREADY LANDED phase-1 LZW cell, or must each pair's phase 1 be fired
+fresh?** Continuing is far cheaper and the machinery permits it. **It is not registered here because
+I have not measured what is on the run box**, and a comparability argument names a reference.
+```
+  STATUS      OPEN.  Not answered by this amendment and not answerable from this tree.
+  WHY IT MATTERS   a continued cell's phase-1 half was fired under matrix #1's registration, not
+                   this one; its cost belongs to that run and must not be added to this one's total.
+  THE MEASUREMENT  the landed LZW cells on the run box: which arms, which archive, which caps,
+                   and whether ctl/end-1 and a clean tree survive.
+  DEFAULT-IF-SILENT   FIRE PHASE 1 FRESH for all four cells, and report phase-1 and phase-2 cost as
+                   SEPARATE columns either way.  The expensive branch is the safe one here.
+```
+⇒ 🔑 ***AN ASKED QUESTION AND AN ANSWERED QUESTION LEAVE THE SAME TRACE IN A DOCUMENT UNLESS ONE OF
+THEM IS MARKED*** — `systems` wrote that in §8 of matrix #2 four hours before I needed it.
+
+## §10 · WHAT WOULD INVALIDATE THIS RUN
+
+Building a phase-2 cell without `ctl/customer.log` carrying a `dispatched P1` line; reporting a pooled
+"tests green" for a phase-2 cell; reading `REGRESSIONS` or `CLAUSE_TESTS` as passes; reporting V1 or V2
+without its cell's P1 baseline beside it; calling this form "brownfield" or claiming it closes
+`N = 0`; raising C2_USD without a new dated amendment; quoting a magnitude, a spread or a p-value from
+a 4-cell pilot; or adding a continued cell's phase-1 cost to this run's total.
+
+## §11 · WHAT THIS AMENDMENT CANNOT ESTABLISH, SAID FIRST
+
+* **It cannot show the method produces better code.** At `k = 1`, `n = 1`, nothing is resolvable.
+* **It cannot separate the phase-2 treatment from the phase-1 starting point.** §4's confound is
+  structural to CONTINUATION; the P1 baseline makes it VISIBLE, not absent.
+* **It cannot close `N = 0`.** That needs B-PLANTED, which is not built and is not built here.
+* **A GREEN V1 does not show the agent understood the component.** It shows a suite stopped failing,
+  and that suite's strength is a **ceiling of 1.000 measured against mutants authored beside it**.
+  ⛔ **AND THE NUMBER THAT MATTERS IS THIS TASK'S OWN, NOT THE SET'S**, from
+  `harness/systems-v3/RESULT-hidden-test-strength-v3.md`:
+```
+  LZW/B    score 1.000    MIN MARGIN 1    clears_too_early · decoder_ignores_clear
+  (set-wide: SEVEN mutants across FOUR cells are killed by a SINGLE test)
+```
+  ⇒ **The rung this pilot scores kills two of its own mutants by exactly one test.** A phase-2
+  submission that differs where that one test does not probe is reported `V2 GREEN`.
+  **The margin, not the rate, is what a correctness claim rests on.**
