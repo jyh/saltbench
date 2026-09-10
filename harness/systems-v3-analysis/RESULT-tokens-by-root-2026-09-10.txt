@@ -1,0 +1,37 @@
+=== cells-matrix1 (37 cells) ===
+  STRICT           plain=7/16 salt-diet=14/21   arm gap 23 pts NOT arm-neutral
+  FLOOR-INCLUSIVE  plain=15/16 salt-diet=18/21   arm gap 8 pts arm-neutral
+    plain      n=15  $/M-T  1.025   $/M-OUTPUT   66.62   median $   9.82
+    salt-diet  n=18  $/M-T  0.805   $/M-OUTPUT   94.26   median $  18.86
+
+=== cells-n3-topup (3 cells) ===
+  STRICT           plain=2/3   arm gap 0 pts arm-neutral
+  FLOOR-INCLUSIVE  plain=3/3   arm gap 0 pts arm-neutral
+    plain      n=3   $/M-T  1.077   $/M-OUTPUT   74.34   median $  13.01
+
+=== cells-placebo (16 cells) ===
+  no plain/salt-diet cells
+
+=== cells-placebo-refire (15 cells) ===
+  no plain/salt-diet cells
+
+=== cells-specchange-1 (4 cells) ===
+  STRICT           plain=2/2 salt-diet=2/2   arm gap 0 pts arm-neutral
+  FLOOR-INCLUSIVE  plain=2/2 salt-diet=2/2   arm gap 0 pts arm-neutral
+    plain      n=2   $/M-T  1.019   $/M-OUTPUT   76.25   median $  14.58
+    salt-diet  n=2   $/M-T  0.837   $/M-OUTPUT   96.34   median $  17.99
+
+=== cells-stmt-2026-09-09 (12 cells) ===
+  STRICT           plain=5/6 salt-diet=4/6   arm gap 17 pts NOT arm-neutral
+  FLOOR-INCLUSIVE  plain=6/6 salt-diet=6/6   arm gap 0 pts arm-neutral
+    plain      n=6   $/M-T  1.003   $/M-OUTPUT   70.30   median $   8.78
+    salt-diet  n=6   $/M-T  0.877   $/M-OUTPUT   84.37   median $  11.10
+
+=== cells-stmt-free-2026-09-09 (6 cells) ===
+  STRICT           plain=2/3 salt-diet=3/3   arm gap 33 pts NOT arm-neutral
+  FLOOR-INCLUSIVE  plain=3/3 salt-diet=3/3   arm gap 0 pts arm-neutral
+    plain      n=3   $/M-T  0.987   $/M-OUTPUT   62.56   median $  18.26
+    salt-diet  n=3   $/M-T  0.834   $/M-OUTPUT   91.65   median $  27.84
+
+⛔ Roots are reported separately and never pooled: different waves, arms, dates and task sets.
+⛔ A FLOOR licenses a NUMBER, not a VERDICT.
