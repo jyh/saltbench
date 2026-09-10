@@ -230,3 +230,104 @@ refused: a rule that rewrites the one landed precedent breaks the arm it is tryi
 ⛔ **Everything else in this amendment stands**: the cap at `C1_USD=37.21` with FreeList's diet cells
 expected to cap, the account, and the reading. ⚠️ **FreeList is both the cap-risk AND the elision case** —
 the one problem where two registered hazards meet, and its six cells are the ones to watch.
+
+---
+
+# A3 · THE SELECTION EFFECT AND THE DIFFICULTY CONFOUND, REGISTERED BEFORE FreeList'S CELLS LAND
+
+Appended 2026-09-09 evening by `paper`, on the 41st helm head's order (`gate/paper`, the ORDER half:
+*"the arm looks mild because its population is the mild end of the five. Say that BEFORE FreeList lands,
+not after"*), and on systems' withdrawal of 17:49 and the maestro's rulings of 17:50 and 17:52.
+
+⛔ **THIS SECTION IS WRITTEN WHILE FreeList's SIX CELLS ARE STILL IN FLIGHT.** That is its whole value.
+Every claim below is available to either outcome, so neither outcome can be reported as having produced
+it. Written afterwards it would be outcome-dependent reporting and worth nothing.
+
+## A3.1 · THE SELECTION EFFECT: THE ARM'S LANDED POPULATION IS THE MILD END OF THE FIVE
+
+The pilot's three landed gold problems are **LZW, Crc32 and LRU**. Those are **exactly the three whose
+bare-arm premiums fall below the design's own resolvable floor of `2.0072x`** — Crc32 `1.1610`, LZW
+`1.3749`, LRU `1.2826` under reading A and `1.1521` under reading B.
+Paxos is excluded, as a registered result and not as a shortfall (A2.2: for a proof-obligation task an
+arm-neutral formal statement cannot exist). **FreeList, the one problem still in flight, carries the
+LARGEST bare premium of all five** — `2.8070` under reading A, `2.8879` under reading B.
+*Bare premiums read from `RESULT-n3-topup-2026-09-09.md` section 3, not retyped from a post.*
+
+⇒ 🔑 ***THE ARM LOOKS MILD BECAUSE ITS POPULATION IS THE MILD END OF THE FIVE, BY CONSTRUCTION AND NOT BY
+CHANCE.*** Whatever mildness its result shows is predicted by the selection alone, before any account of
+the treatment is reached for.
+
+## A3.2 · THREE CONCORDANT ORDERINGS — AND NO p-VALUE ON ANY OF THEM
+
+Three quantities rank the five problems in the same order, and that order tracks problem size:
+**statement bytes** (systems' own measurement at `311b208`), **bare-arm premium**
+(`RESULT-n3-topup-2026-09-09.md` section 3), and **statement-arm premium** (bench, 17:31 and 17:52 —
+⛔ **not yet at a tracked path; see A3.4**).
+
+⛔⛔ **NO p-VALUE IS ATTACHED TO ANY OF THE THREE, AND NONE MAY BE COMPUTED FROM THEM LATER.**
+**All three orderings were found by inspection, after the data, while hunting an explanation for a low
+cell.** A `p = 0.0083` computed on the first of them was **struck by the maestro at 17:52** on exactly
+this ground and is **not revived here**.
+⇒ 🔑 ***A p-VALUE ON A PATTERN DISCOVERED BY INSPECTION IS NOT A p-VALUE: IT PRICES A HYPOTHESIS THAT DID
+NOT EXIST BEFORE THE DATA.*** The concordance is recorded as a **structural warning**, which is what it
+is, and never as a result.
+
+⛔⛔ **AND THE CONCORDANCE IS NOT EVEN STABLE ACROSS THE TWO READINGS OF ITS OWN DATA — MEASURED HERE, NOT
+REPORTED TO ME.** Ordered by statement size (Crc32 · LRU · LZW · Paxos · FreeList), the bare premiums run
+
+```
+  reading A   1.1610  1.2826  1.3749  2.4306  2.8070    strictly increasing with size
+  reading B   1.1610  1.1521  1.3749  2.2437  2.8879    ⛔ INVERTED at Crc32 / LRU
+```
+
+**The perfect rank match holds under reading A and BREAKS under reading B**, where Crc32 `1.1610` sits
+above LRU `1.1521`. The two problems that swap are the two whose premiums are closest together and both
+far below the floor, so the inversion is exactly what sampling noise at `n=3` looks like.
+⇒ **This rescues nothing** — the qualitative warning of A3.1 and A3.3 stands untouched, and the selection
+effect does not depend on any ordering being perfect. **What it kills is any temptation to price the
+concordance.** A pattern that reverses when three borrowed cells leave the declared set is not a pattern a
+number may be attached to, and **the strongest form of the ordering claim that survives both readings is
+that the premium is near 1 on the smallest problems and rises with size.**
+📌 Recorded because the concordance reached the bus as *"all five, 1-2-3-4-5"* and as *"three concordant
+orderings"*, both taken over reading A alone. **A campaign that reports two readings has to check a
+cross-reading claim against both**, and the discipline that caught this is the same one that produced the
+two readings in the first place.
+
+## A3.3 · THE CONSEQUENCE: FreeList CANNOT SETTLE IT, WHICHEVER WAY IT LANDS
+
+Statement size and bare premium are **both downstream of the same latent variable — how hard the problem
+is.** A harder problem takes a bigger formal statement *and* shows a bigger method premium.
+⇒ **The dose account and the selection account make the SAME prediction for every outcome FreeList can
+produce.** If FreeList lands high, that is what a dose account predicts and equally what a selection
+account predicts. **A sixth problem that ranks with the other five adds a data point and no information.**
+
+⇒ ⛔ ***THE CONFOUND IS STRUCTURAL, NOT ACCIDENTAL, AND NO REORDERING OF THIS POPULATION ESCAPES IT.***
+**What would discriminate is a problem where the orderings DISAGREE** — a large statement on a low-premium
+problem, or a terse statement on a high one. **There is no such problem among the five.** That is a
+sampling requirement for the 14-problem expansion (registered by the maestro at 17:50), not something
+tonight can supply.
+
+## A3.4 · WHAT IS DEFENSIBLE WHATEVER FreeList DOES
+
+* **The gold pair is 2 of 3 above 1, `p = 0.5000`** — not a result, and it is the registered null.
+  ⛔ *"2 of 3 above 1" READS AS SUPPORT AND IS A COIN FLIP*; the `p` and the floor travel in the same breath.
+* **The magnitudes are unresolved**: all three landed statement-arm premiums sit below the `2.0072x` floor.
+* **The bare arms' bound**: no premium in this campaign exceeds **`2.8879x`** under either reading.
+* ⛔ **THE STATEMENT-ARM NUMBERS ARE NOT YET CITABLE.** No statement-arm RESULT file is tracked at any
+  path in this repository — measured this evening, `git ls-files` over the tree returns an amendment, a
+  fetch script and two unrelated `.lean` exhibits, and no result. **Until bench lands that file, those
+  three premiums may not enter the paper**, whatever they say. A result on the bus is not citable.
+
+⛔⛔ **AND THE LIMIT ON THE BOUND ITSELF, WHICH IS THE POINT OF THIS SECTION:**
+***THE BOUND IS A PROPERTY OF THIS POPULATION, NOT A PROMISE ABOUT LARGER ONES.*** The premium sits at or
+below 1 on the smallest problem and grows to nearly 3x on the largest. **A population with larger problems
+than these five is not covered by it**, and no sentence anywhere may present the bound as though it were.
+
+## A3.5 · A NUMBER CORRECTION, FLAGGED RATHER THAN ABSORBED
+
+The formulation **"the premium never exceeded `2.81x`" is READING-A ONLY.** Reading B's FreeList premium
+is **`2.8879x`**. Any bound quoted as holding *"under both readings"* is **`2.8879x`**, and **"under
+`3x`"** is the only short form true under both.
+📌 Recorded here rather than silently corrected downstream, because the `2.81x` form has now appeared in a
+gate and in a relayed ruling, and **a bound that is quoted one reading short is a bound that fails exactly
+where the population is hardest** — on FreeList, the problem this pilot is still waiting on.
