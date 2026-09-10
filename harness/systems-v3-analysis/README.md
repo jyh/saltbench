@@ -82,3 +82,42 @@ is derived backwards from a token count or the reverse. A cell whose account can
   python3 agg.py <that file>          # the aggregate, with the exclusion-neutrality check first
   python3 void_by_arm.py <that file>  # why cells are unpriced, by arm
 ```
+
+---
+
+# ⭐⭐ EXTENDED 2026-09-10 — SEVEN ROOTS, 89 OF 93 CELLS PRICED, AND THE REVERSAL REPLICATES
+
+The first cut walked **one** root (`cells-matrix1`) and priced 21 cells. Walking every completed
+Claude root on the run box:
+```
+  cells-matrix1 33 · cells-placebo 16 · cells-placebo-refire 15 · cells-stmt-2026-09-09 12
+  cells-stmt-free-2026-09-09 6 · cells-specchange-1 4 · cells-n3-topup 3
+  ---- 89 of 93 cells priced (53 OK + 36 FLOOR), 4 with no transcript ----
+```
+
+## ⭐⭐ THE FINDING REPLICATES ACROSS INDEPENDENT POPULATIONS
+`RESULT-tokens-by-root-2026-09-10.txt`, per root, never pooled:
+```
+  root                       plain $/M-T   salt $/M-T   plain $/M-out   salt $/M-out
+  cells-matrix1                  1.025        0.805         66.62          94.26
+  cells-specchange-1             1.019        0.837         76.25          96.34
+  cells-stmt-2026-09-09          1.003        0.877         70.30          84.37
+  cells-stmt-free-2026-09-09     0.987        0.834         62.56          91.65
+```
+⇒ **In every one of the four roots carrying both arms, the treatment is CHEAPER per token of total
+traffic and DEARER per token produced.** ⇒ 🔑 ***THE REVERSAL IS NOT AN ARTEFACT OF ONE WAVE.*** It is
+four independently-run populations — different dates, task sets and wave designs — agreeing on the
+direction, which is a far stronger statement than the n of any one of them.
+📌 **And the floor rule earns itself in every root**, not just the first: arm-neutrality goes 23→8,
+17→0 and 33→0 points once VOID cells are retained as labelled floors.
+
+## ⛔ THREE THINGS THIS TABLE DOES NOT DO
+1. **IT DOES NOT POOL ROOTS.** They are different waves, arms, dates and task sets, and pooling them is
+   the confound this campaign already cards. `agg.py` reports each separately and says so.
+2. ⛔⛔ **AND THAT WAS NOT FREE: the previous `agg.py` HARD-CODED `root == "cells-matrix1"`**, so run
+   over a seven-root file it produced an aggregate **byte-identical to the one-root run** — a summary
+   silently describing a different population than its input. Caught only because the numbers had not
+   moved when they should have. ⇒ 🔑 ***A FILTER THAT NARROWS WITHOUT SAYING SO TURNS A WIDER INPUT
+   INTO A SILENT NO-OP***, and the output looks exactly as correct as before.
+3. **The two placebo roots are priced but carry neither `plain` nor `salt-diet`**, so they contribute
+   cells to the coverage count and nothing to this comparison. Stated rather than dropped.
