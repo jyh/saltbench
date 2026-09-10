@@ -1,0 +1,47 @@
+name: Abstract
+
+# THE ABSTRACT MUST FIT arXiv's SUBMISSION FIELD.
+#
+# ⚖️ Added 2026-09-09 by `paper` under the same three conditions the Render gate was authorised
+#    under, all met here:
+#   (1) A NEW WORKFLOW FILE, NEVER AN EDIT TO AN EXISTING SCRUB GATE.
+#       `.github/workflows/scrub.yml` is BYTE-IDENTICAL across this commit; verify with
+#       `git diff -- .github/workflows/scrub.yml`. Those gates are the publication firewall and
+#       nothing here touches them.
+#   (2) DRIVEN RED FIRST. `--self-test` runs before the real scan on every invocation, in order:
+#       a tex with NO abstract is fatal (proven first, before any arm that can pass); one
+#       character over the cap is REFUSED; exactly the cap PASSES, because an off-by-one here
+#       reds a submittable abstract; and a 2,350-character source that is 1,440 characters of
+#       plain text PASSES, because counting markup would red a submittable abstract too.
+#   (3) BLIND SPOTS DECLARED IN THE SCRIPT'S OWN DOCSTRING. Read it before trusting this.
+#
+# ⭐ WHY IT EXISTS. arXiv refuses an abstract over 1,920 characters -- verified at the object,
+# https://info.arxiv.org/help/prep.html: "abstracts longer than 1920 characters will not be
+# accepted." NOT truncated. REFUSED, at the form, by the person clicking submit, at the end of
+# everything, when every gate in this repository is green.
+# ⛔ AND THE INSTRUCTIVE PART IS WHICH EDIT CROSSED IT. On 2026-09-09 the statement-arm null was
+# applied and the abstract went to 1,887 -- 33 UNDER. A wording change later in the same sitting,
+# seven words longer, took it to 1,929 -- NINE OVER. The edit that added a whole clause stayed
+# inside; the one that rephrased a sentence did not. NOBODY MEASURES A REPHRASING AGAINST A
+# LENGTH CAP, which is the whole argument for doing it mechanically on every push.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  abstract-length:
+    name: the abstract fits arXiv's submission field
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: drive the gate red before letting it pass
+        run: python scripts/check_abstract_length.py --self-test
+      - name: the abstract fits
+        run: python scripts/check_abstract_length.py

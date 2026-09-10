@@ -722,6 +722,41 @@ Added 2026-09-09 by `paper`. The order is *"on upload day: the arXiv id and the 
 README, PROVENANCE and the paper."* This section is that order resolved to file and line **before
 the day**, because on the day the identifier exists and the memory of where it belongs does not.
 
+### ⛔⛔ THE ABSTRACT FIELD IS CAPPED AT 1,920 CHARACTERS AND arXiv REFUSES A LONGER ONE
+
+Added 2026-09-09 by `paper`, on the same principle as the rest of this section: **on the day, the
+form exists and the memory of its limits does not.** Verified at the object that day,
+`https://info.arxiv.org/help/prep.html`: *"Keep it short - abstracts longer than 1920 characters
+will not be accepted; abridge your abstract if necessary."* ⛔ **NOT truncated. REFUSED**, at the
+form, by the person clicking submit, after every gate in this repository is green.
+
+⚖️ **WHICH ABSTRACT IS PASTED: THE PAPER'S OWN, AND THERE IS NOT A SECOND ONE.** A separate
+1,912-character metadata abstract was drafted earlier in the campaign, when the paper's abstract
+was 3,794 characters and could not fit. **It no longer applies:** the abstract was rewritten on the
+owner's word at 17:3x and now fits with room. ⇒ **Keeping two would be worse than the problem it
+solved** — a second abstract drifts from the paper's the first time either is edited, and nothing
+would compare them. **One string, and it is the one in `paper/saltbench-v1.tex`.** *(If the helm or
+the owner prefers the separate one, that is a ruling to record here, and it takes a gate of its own,
+because this one measures the tex.)*
+
+```
+  cap                       1920 plain-text characters
+  the abstract at 4be2a30   1873   -> 47 under
+  the gate                  scripts/check_abstract_length.py, from .github/workflows/abstract.yml
+                            counts the abstract AS arXiv RECEIVES IT: math delimiters dropped,
+                            \times as x, TeX quotes and dashes plain, whitespace collapsed
+```
+
+⛔ **THE INSTRUCTIVE PART IS WHICH EDIT CROSSED IT, AND THE FIRST ACCOUNT OF THIS WAS WRONG.**
+Applying the registered statement-arm null took the abstract to **1,887 — 33 UNDER**. A wording
+change later in the same sitting, seven words longer, took it to **1,929 — NINE OVER**. Both are
+reproducible from the recorded shas (seat `2bf4bfe1` applied to `0ca3b27`). It was first reported
+on the bus as the null's doing; **it was not, and that correction is recorded here rather than only
+in the post that carried the error.**
+⇒ 🔑 ***THE EDIT THAT CROSSED THE LIMIT WAS NOT THE ONE THAT LOOKED LIKE IT ADDED CONTENT.*** A whole
+new clause stayed inside; a rephrasing went over. **Nobody measures a rephrasing against a length
+cap**, which is the entire argument for the gate rather than for care.
+
 ### THE ZENODO DOI — THREE SITES OUTSIDE THIS FILE, TWO INSIDE IT
 All five carry the same promise, and all five must move together or the repository asserts an
 unassigned DOI in one place and a real one in another.
