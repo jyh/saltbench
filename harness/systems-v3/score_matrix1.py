@@ -91,7 +91,8 @@ TOPUP_ROOT  = os.path.expanduser("~/cells-n3-topup")     # AMENDMENT 26 -- the n
 #    is the reason this exists: "cells in this fresh root are invisible to the scorer until the
 #    amendment declares this root in ... Without that, these cells will run, cost money, and score
 #    nowhere."  They ran tonight; this is the half that makes them count.
-STMT_ROOTS = [os.path.expanduser("~/cells-stmt-2026-09-09")]
+STMT_ROOTS = [os.path.expanduser("~/cells-stmt-2026-09-09"),      # wave 1: Crc32 + LRU, export aaf570e
+              os.path.expanduser("~/cells-stmt-free-2026-09-09")]  # wave 2: FreeList, export 311b208
 SMOKE = {"ae304f63": "~/cells", "a69e9131": "~/cells", "b7537006": "~/cells"}   # SS12
 
 def declared_set(include_smoke):
