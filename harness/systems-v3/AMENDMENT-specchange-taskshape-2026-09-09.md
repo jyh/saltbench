@@ -278,3 +278,87 @@ a 4-cell pilot; or adding a continued cell's phase-1 cost to this run's total.
   ⇒ **The rung this pilot scores kills two of its own mutants by exactly one test.** A phase-2
   submission that differs where that one test does not probe is reported `V2 GREEN`.
   **The margin, not the rate, is what a correctness claim rests on.**
+
+---
+
+# ADDENDUM 1 — §9 IS MEASURED. THE CONTINUATION CANDIDATES EXIST, ALL FOUR ARMS, THREE EACH.
+## Appended 2026-09-09 PDT, after the amendment above was frozen. ⛔ **THE AMENDMENT IS NOT EDITED. §9's DEFAULT STANDS UNTIL RULED; THIS SECTION MAKES THE ALTERNATIVE REGISTERED AND SELECTABLE INSTEAD OF MERELY CHEAPER.**
+
+§9 left one question open and said it was *"not answerable from this tree"*. It is answerable from the
+run box, and I measured it there rather than leaving it as a budget question somebody re-opens at ②.
+
+## A1 · THE CENSUS, TAKEN AT THE OBJECT
+
+```
+  arm                cells (all LZW, phase 1)          end-1  clean  branch  landed-1
+  plain-bare         93323249  c34012e0  d91f137b        3/3    3/3    main     3/3
+  salt-diet-bare     18fb3eed  7ac56e4e  eb558398        3/3    3/3    main     3/3
+  plain-STATEMENT    22ee7d33  922d1ff0  f795e96f        3/3    3/3    main     3/3
+  salt-diet-STMT     6d58f1ec  9aca67c5  f5f66c47        3/3    3/3    main     3/3
+```
+⇒ **`customer.sh`'s two preconditions — `ctl/end-1` exists and the tree is clean — are satisfied by
+all twelve.** Every one carries its arm's `CLAUDE.md` (plain 5,024 B · salt-diet 13,123 B with three
+method docs) and a `LANDING.md`, so **continuing preserves the treatment rather than re-applying it.**
+⇒ **ZERO cells anywhere on the box carry `ctl/customer.log`. No spec-change cell has ever been
+dispatched, in any campaign.** ②, whichever branch it takes, is cell 1 of this form.
+
+## A2 · ⛔⛔ A TAG NAMED AFTER AN ARM THAT IS NOT THE ARM — AND IT IS THE SALT ARM'S OWN ARTEFACT
+
+My first partition of these twelve read the git tag `statement-1` as "the statement arm". Measured:
+
+```
+  tag statement-1 present on   18fb3eed 7ac56e4e eb558398 6d58f1ec 9aca67c5 f5f66c47
+                               = ALL SIX salt-diet cells, and NO plain cell
+  ctl/card_extras = statement  22ee7d33 922d1ff0 f795e96f 6d58f1ec 9aca67c5 f5f66c47
+                               = the SIX cells actually BUILT with --statement
+  the two sets AGREE on three cells and DISAGREE on six.
+```
+⇒ **`statement-1` is a tag the SALT METHOD'S OWN WORKFLOW creates** — the method briefs the agent to
+write a statement — **so it marks the treatment, not the arm.** A partition taken from it puts three
+plain-STATEMENT cells in the bare group and three diet-bare cells in the statement group.
+⇒ 🔑 ***AN ARTEFACT NAMED AFTER AN ARM IS EVIDENCE ABOUT THE ARM'S BEHAVIOUR, NEVER A LABEL FOR IT.***
+This campaign has carded the mirror image — a referee `seal()` keyed on the treatment's vocabulary,
+which could not see the control improvising the treatment. **Same defect, other direction.**
+⛔ **REGISTERED: THE ARM OF A CELL IS `ctl/arm`, AND ITS EXTRAS ARE `ctl/card_extras`.** No arm
+partition is taken from a git tag, a file name, a directory name, or the presence of method content.
+
+## A3 · ⛔ THE HAZARD REUSE INTRODUCES, WHICH IS NOT COST — IT IS A FREE PARAMETER
+
+The pilot is **n = 1**. Three landed candidates per arm means **choosing one is a degree of freedom**,
+and it is exercised after the phase-1 costs, landings and verdicts are all known.
+⇒ 🔑 ***A SELECTION MADE AFTER THE OUTCOMES ARE VISIBLE IS FITTING, EVEN WHEN THE SELECTOR IS
+INNOCENT*** — this is the campaign's own "a gate fitted to its own data is not a gate", moved from a
+threshold to a sample.
+
+**THE SELECTION RULE, REGISTERED HERE, BEFORE ANY P1 BASELINE HAS BEEN COMPUTED FOR ANY CELL:**
+```
+  1. Run the P1 baseline (§4) on ALL TWELVE.  Zero model tokens: a cargo build and a driver run.
+  2. A cell is ELIGIBLE iff p1_regressions_failed == 0 — its own phase-1 landing passes its own
+     base suite.  This is a VALIDITY filter, applied identically to every arm, not an outcome filter:
+     a cell already failing its own regressions is not a valid given for any arm.
+  3. Among an arm's eligible cells, take the LOWEST CELL ID lexicographically.  The ids are
+     sha-derived and carry no outcome information.
+  4. An arm with NO eligible cell has its phase 1 FIRED FRESH, and that fact is reported.
+  ⛔ 5. THE ELIGIBLE COUNT PER ARM IS ITSELF REPORTED, and it is arm-correlated information: an
+     asymmetry in how many phase-1 landings pass their own regressions is a finding about phase 1,
+     and it travels with every phase-2 number in the same table.
+  ⛔ 6. The two NOT-chosen baselines per arm are recorded too. They cost nothing and they measure the
+     WITHIN-ARM SPREAD OF THE STARTING POINT — the confound's own magnitude, which no other
+     quantity in this design exposes.
+```
+📌 **One candidate is already flagged by its own tags: `eb558398` carries `refused-1` beside
+`landed-1`.** Recorded here before the baselines are run so it cannot be quietly dropped later; the
+rule above does not special-case it, and its baseline decides its eligibility like any other.
+
+## A4 · ⚖️ THE RECOMMENDATION, AND WHAT IT DOES NOT DO
+
+**RECOMMENDED: REUSE, under A3's rule.** Firing four fresh phase-1 halves costs up to
+`4 x C1_USD = 4 x 37.21 = $148.84` and buys **nothing about phase 2**: the confound is inherent to
+CONTINUATION and is not reduced by a fresh phase 1, because a fresh phase 1 is *also* run by the arm
+under test. **The only thing fresh cells buy is that phase-1 and phase-2 cost belong to one
+registration — and §8 already requires those be separate columns either way.**
+⛔ **WHAT THIS DOES NOT DO: it does not flip §9's default.** The default-if-silent above remains FIRE
+FRESH. This addendum registers the alternative, its rule, and its price so the choice at ② is a
+ruling on two stated branches rather than an improvisation under a budget. **The cheaper branch is
+the one I am recommending, which is exactly why the rule that removes its free parameter is written
+here, before any of its numbers exist.**
