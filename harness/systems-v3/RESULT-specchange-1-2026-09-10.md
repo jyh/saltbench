@@ -61,3 +61,21 @@ This is **run 3**. Both earlier runs are archived, not discarded:
 📌 The account moved between phases (registered, addendum 8 §H1): the account is constant **across
 arms within phase 2**, so the between-arm comparison is unaffected; any within-cell phase-1→phase-2
 delta carries the seam. Each cell records its resolved account uuid in `ctl/account.tsv`.
+
+
+---
+
+# ⛔⛔ AMENDED 2026-09-10 — THIS RESULT REPORTED CLAIMS AND CALLED THEM VERDICTS
+Everything above stands as a record of what the cells DECLARED and what they COST. **None of it was a
+correctness result**, and the table's own file is named `…-verdicts-….tsv` while containing none.
+Driven since, with `LZW/B/run_tests.sh` — the post-change suite, the runner the referee uses — from
+copies, archive byte-unchanged:
+```
+  93323249 plain 15/15 · 22ee7d33 plain 15/15 · 18fb3eed salt-diet 15/15 · 6d58f1ec salt-diet 15/15
+  VERIFIED 4/4 in BOTH arms.        The LANDING rate above was plain 2/2, salt-diet 1/2.
+```
+⇒ **`6d58f1ec` was CAPPED, never declared a landing, and is CORRECT.** ⇒ 🔑 ***A LANDING CLAIM
+UNDER-STATES AS READILY AS IT OVER-STATES; it answers "did the subject say it was done", not "is it".***
+⇒ **The §1 landing rate is a DECLARATION rate. The correctness result is 4/4 both arms.** See
+ADDENDUM 10 of `AMENDMENT-specchange-taskshape-2026-09-09.md`, which also corrects addendum 9 §J3.2
+where I made the landing rate the primary comparison.
