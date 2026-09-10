@@ -548,3 +548,54 @@ the STUB client (`claude-stub.sh`), and never once against a real one.**
 stub is proven against a subject that cannot surprise it**, which is exactly the property a real
 subject lacks. Registered as the honest feasibility statement: **STUB-DRIVEN END TO END; REAL-CLIENT
 CELL COUNT = 0.**
+
+---
+
+# ADDENDUM 4 — THE DRIFT CHECK ADDENDUM 3 ASKED FOR ALREADY EXISTS, AND IT IS **FORWARD-ONLY**
+## Appended 2026-09-09 PDT. ⛔ **NOTHING ABOVE IS EDITED. THIS NAMES THE TOOL FOR §C2 ITEM 2 AND RECORDS THE ONE THING IT CANNOT DO.**
+
+## D1 · ✅ IT IS A CALL, NOT A BUILD
+`render_fence_v3.py --cell <cell> --cfg <run config dir> --check <fence.json>` re-renders and compares,
+and **its refusal message is already the right sentence**:
+> *"DRIFT — %s differs from a fresh rendering (the fence is stale; a glob evaluated at render time is a
+> snapshot, and what makes it a fence is re-evaluating it at the moment of use and refusing on
+> disagreement)"*
+
+⇒ **It compares the FULL serialized rendering, so it covers BOTH LAYERS in one comparison** —
+`sandbox.filesystem.denyRead`, `sandbox.filesystem.denyWrite` and `permissions.deny`. Addendum 3's
+requirement that the check see both layers is **satisfied by the existing tool**, not owed as a build.
+📌 **Recorded because the fleet keeps paying for the opposite:** a good tool nobody reaches for is the
+cheapest defect there is, and §C2 item 2 was one sentence away from commissioning a second one.
+
+## D2 · ⛔⛔ AND THE LIMIT, MEASURED BY TRYING IT: THE CHECK CANNOT BE RUN ON AN ARCHIVED CELL
+The rendering is a function of `(cell, cfg, verus_root, cargo_root)`. **`cfg` is not recorded anywhere
+in the cell.** Measured on the `plain-bare` candidate:
+```
+  its ctl/fence.json      denyRead 93 · denyWrite 99 · tool rules 374
+  ~/.claude* dirs on the box today: 14 — and ALL FOURTEEN are in that cell's denyRead
+  ⇒ the config dir this cell actually ran under is NOT among the directories that exist now
+  ⇒ nothing in ctl/ names it, so it cannot be recovered from the cell
+```
+⛔ **STATED AS MEASURED, NOT EXPLAINED: I could not identify this cell's own config directory from
+anything inside the cell, so I could not re-run `--check` against it.** I am not claiming to know
+whether the directory was deleted, renamed, or excluded by a mechanism I did not read.
+
+⇒ 🔑 ***A CHECK WHOSE INPUTS INCLUDE SOMETHING THE ARTEFACT DOES NOT RECORD IS FORWARD-ONLY: it can
+keep a fence honest from the moment of rendering onward, and it can say nothing about a fence rendered
+before it was asked.*** The fence is auditable while the run is alive and unauditable afterwards, and
+**that is invisible from the file itself, which looks complete.**
+
+## D3 · ⇒ WHAT THIS CHANGES FOR ②, AND WHAT IT DOES NOT
+```
+  UNCHANGED   Addendum 3 §C2's sequence. A copied cell is rendered FRESH against a fresh cfg, in one
+              pass after every copy lands, and --check is run against THAT rendering before launch.
+              That sequence is forward-only by construction, so the limit does not touch it.
+  NEW         ⛔ No claim may be made that a REUSED cell's ORIGINAL fence was current when its phase 1
+              ran.  It cannot be checked now.  Any statement about the phase-1 fence of a continued
+              cell is UNMEASURED, and is reported that way rather than assumed from the file's
+              existence.
+  OWED, small, and NOT a blocker: the renderer should write the cfg path INTO the rendering it
+              produces, so a fence can be re-checked against the inputs that made it.  Registered
+              here rather than built, because render_fence_v3.py's output shape is a fence contract
+              and changing it mid-campaign is not a tidy-up.
+```
