@@ -809,10 +809,10 @@ Council 2026-09-10, the Captain, verbatim: *"We need bench to continue with the 
 14-problem expansion + antigravity, that will need to happen on jasonh."* That is branch **(c)** of the
 three registered in addendum 7's gate — **a different run account** — and it supersedes the
 recommendation (a) WAIT that this seat filed with the block.
-⛔ **THE COST (c) CARRIES, STATED BEFORE IT IS PAID.** Phase 1 of all four cells ran on **jykriterion**
+⛔ **THE COST (c) CARRIES, STATED BEFORE IT IS PAID.** Phase 1 of all four cells ran on **the PREVIOUS run account**
 (`dbfc67e4`); phase 2 is ordered on **jasonh** (`27b7f909`). Established by location, not by belief:
 transcripts land under `<cfg>/projects/`, and all four phase-1 transcript trees sit under
-`.claude-v3-kriterion`. **So within every cell the two halves run on two different human accounts.**
+the previous run account's config dir. **So within every cell the two halves run on two different human accounts.**
 ⇒ **THE REGISTERED POSITION, and it is a choice, not a discovery:** the account is **constant across
 arms within phase 2**, so the BETWEEN-ARM comparison — which is the claim ② exists to make — is not
 confounded by it. What the seam touches is any **WITHIN-cell phase-1→phase-2 cost delta**, and every
@@ -863,14 +863,14 @@ wrong one.*
 On relight this seat posted that the sealed fence *"denies `.claude-v3-jasonh` as a peer, so re-render
 and re-seal is owed before a launch."* **Measured, that is wrong in its consequence.**
 ```
-  claude-v3-jasonh      12 occurrences      claude-v3-kriterion   12 occurrences
+  the ruled account's cfg   12 occurrences      the previous account's cfg   12 occurrences
   permissions.deny 246 rules · sandbox denyRead 61 · denyWrite 67 — jasonh in ALL THREE
 ```
 The deny-set is a `~/.claude*` glob taken at render time and it covers **both** config dirs
 **symmetrically**. Denying the cell's own config dir to the AGENT is the intent, not a fault — the
 client authenticates outside the agent's tool and sandbox layers.
 ⭐ **AND THE POSITIVE CONTROL IS ALREADY IN HAND:** last night's four cells ran with
-`.claude-v3-kriterion` — likewise in their own deny set — and three of them reached LIVE. **A cell
+the previous run account's config dir — likewise in their own deny set — and three reached LIVE. **A cell
 whose own config dir is fenced still authenticates and runs.** ⇒ The account move requires no fence
 work at all.
 ⇒ 🔑 ***THE MORNING'S CLAIM WAS REASONED FROM A MECHANISM I HAD MEASURED BEFORE AND NOT FROM THE OBJECT
