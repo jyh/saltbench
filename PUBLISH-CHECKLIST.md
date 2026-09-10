@@ -922,7 +922,22 @@ no edit, the sweep of it against the body last sitting found it clean, and its t
 (three of five below the floor; the spread larger than the smallest premium) hold under both readings.
 Re-opening the most-read paragraph in the paper on a change that does not touch it is scope, not care.
 
-## (o) ⚖️ THE CAPTAIN'S RULING OF 2026-09-09: THE PAPER IS ABOUT v3 — MEASURED AND PRICED, NOT YET EXECUTED
+## (o) ⚖️ THE CAPTAIN'S RULING OF 2026-09-09: THE PAPER IS ABOUT v3 — ✅ EXECUTED AND RATIFIED, THIS BLOCK IS DISCHARGED
+
+⛔⛔ **READ THIS BEFORE THE SECTION BELOW IT.** The heading of this section read *"MEASURED AND
+PRICED, NOT YET EXECUTED"* and its block at item 5 read `GATES THE UPLOAD? ⛔ YES` until 2026-09-09
+18:4x. **Both were already false.** The release condition was *"a word on (a) vs (b), and on whether
+the protocol-and-instrument spine of item 4 is the intended subject; any one of the three unblocks a
+start"* — and the Captain gave the third at **14:5x**, verbatim: *"Yes -- the protocol and the
+instrument, demonstrated on v3 -- and reporting on observations is fine; we do not need that final
+number."* The restructure then **ran to completion in six merged PRs**, recorded 200 lines below in
+section (p), whose own opening sentence begins *"Section (o) recorded the ruling MEASURED AND PRICED,
+NOT YET EXECUTED. This section records it executed."*
+⇒ 🔑 ***A DISCHARGE RECORDED IN A LATER SECTION DOES NOT DISCHARGE THE EARLIER ONE, AND THE EARLIER
+ONE IS WHAT A SWEEP REACHES FIRST.*** This file's own register form exists so that a block can be
+read without reading the file, and **the one block here that gates the upload was the one still
+declaring itself open** — on the morning it would be swept. The text below is kept unedited, because
+a struck claim has to stay readable, and every word of it was true when it was written.
 
 Carried by the 39th helm head, 2026-09-09 12:3x PDT. **His words as carried:** *"No, the paper should
 be about v3."* Glossed in the carry as: the SaltBench paper is about **v3 (seat-as-subject)**, not v1.
@@ -1020,10 +1035,11 @@ ambiguity is the exceeding-the-commission defect, and unlike PR #9 it is not one
   RELEASE CONDITION   a word on (a) vs (b), and on whether the protocol-and-instrument spine of
                       item 4 is the intended subject; any one of the three unblocks a start
   RE-MEASURE          at the next READY post
-  GATES THE UPLOAD?   ⛔ YES — and it is the FIRST item in this file that does. Every other block
-                      here gated an improvement while the artifact stood correct. This one puts the
-                      artifact's SUBJECT in question, and an upload prepared against the wrong
-                      subject is not an improvement missed but a wrong paper published.
+  GATES THE UPLOAD?   ✅ DISCHARGED 2026-09-09 14:5x, and NO LONGER GATES. The third arm of the
+                      release condition was met in the Captain's own words; the restructure is
+                      executed and recorded in section (p). Struck rather than deleted: it read
+                      ⛔ YES for four hours after it was released, which is the defect the note at
+                      the head of this section records.
 ```
 
 ### ✅ A FIFTH GATE, ADDED 2026-09-09 ON THE HELM'S AUTHORISATION: THE TRACKED PDF MUST RENDER THE TRACKED TEX
