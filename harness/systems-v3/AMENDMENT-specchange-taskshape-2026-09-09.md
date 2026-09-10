@@ -465,3 +465,86 @@ mutant set authored beside the suite, a 0-survivor arm-coverage sweep, and now a
 ⛔ **CONSEQUENCE FOR THE RESULT: the confound of §4 is NOT shown to be small. It is shown to be
 INVISIBLE TO THE ONLY PRE-PHASE-2 INSTRUMENT THIS DESIGN HAS**, and that sentence travels with every
 V1 and V2 verdict this pilot produces.
+
+---
+
+# ADDENDUM 3 — ⛔⛔ REUSE IS BY **COPY**. DISPATCHING INTO A LANDED MATRIX-1 CELL WOULD MUTATE THE ARTEFACT BEHIND A PUBLISHED RESULT.
+## Appended 2026-09-09 PDT. ⛔ **THE AMENDMENT AND ADDENDA 1–2 ARE NOT EDITED. THIS SECTION CONSTRAINS THE REUSE BRANCH ADDENDUM 1 RECOMMENDED; IT DOES NOT WITHDRAW THE RECOMMENDATION.**
+
+Addendum 1 recommended reuse and named four cells. It said nothing about **where** the dispatch lands,
+and that omission is the difference between a cheap branch and a destructive one.
+
+## C1 · ⛔⛔ `customer.sh` WRITES INTO THE CELL'S OWN REPOSITORY. IT IS NOT A READ.
+```
+  REPO="$CELL/repo"
+  ... > "$REPO/inbox/change-1.md"          a new file
+  ... > "$REPO/REQUIREMENTS.md"            OVERWRITTEN with the --change rendering
+  cp "$TASK/B/interface.rs" "$REPO/interface.rs"   OVERWRITTEN with the extended interface
+  ... >> "$REPO/BUS.md"                    appended
+  $G commit -q -m "CUSTOMER: change request 1"     A COMMIT ON main
+  $G tag P1                                        A TAG
+```
+⇒ **The four cells Addendum 1 named live in `cells-matrix1`. They are the landed evidence behind
+matrix #1's result, the post-hoc correctness pass, the statement-arm result, and the paper submitted
+to arXiv.** A dispatch into them **overwrites two tracked files and adds a commit and a tag to the
+repository whose state those results describe.**
+⇒ 🔑 ***"REUSE THE LANDING" AND "DISPATCH INTO THE CELL" ARE NOT THE SAME ACT, AND ONLY ONE OF THEM IS
+REVERSIBLE.*** The campaign's standing rule is **re-score FROM the archive, never IN it**; this is that
+rule met on the fire path rather than the scoring path, where the write is a git commit rather than a
+rebuilt `.lake`.
+
+⛔ **REGISTERED: NO SPEC-CHANGE DISPATCH IS EVER MADE INTO A CELL UNDER `cells-matrix1`, OR UNDER ANY
+CELLS ROOT WHOSE CELLS ARE CITED BY A LANDED RESULT.** Reuse copies the cell into a NEW cells root
+first, and the dispatch lands on the copy.
+```
+  the copy records, in the new cell's ctl/:  source_root · source_cell_id · source_HEAD sha
+  ⇒ a continued cell can always name the landing it continues, and the original is byte-untouched
+```
+
+## C2 · ⛔⛔ AND THE COPY IS NOT A COPY: THE FENCE IS A GLOB TAKEN AT RENDER TIME
+
+Measured on `93323249`'s `ctl/fence.json`: it names **35 distinct sibling paths under its own cells
+root**, enumerated when the batch was rendered.
+```
+  cells-matrix1/_archive   cells-matrix1/_audit   ... 35 peer paths, as literal deny globs
+```
+⇒ **A cell copied to a new root carries a fence that denies the OLD root's siblings and is SILENT
+ABOUT ITS NEW ONES.** The agent's peers in the new root are outside every deny rule it carries.
+⇒ 🔑 ***A DENY-SET ENUMERATED AT RENDER TIME IS A CLAIM ABOUT THE DIRECTORY AS IT WAS, AND COPYING A
+CELL CHANGES THE DIRECTORY WITHOUT CHANGING THE CLAIM.*** This campaign has already paid for the
+same mechanism twice, in the other direction — a second batch built after a first leaves the first
+batch's fence permissive toward the new arrivals, in **both** fence layers, and only a drift check
+sees it.
+
+⛔ **REGISTERED, BEFORE ANY REUSED CELL IS LAUNCHED:**
+```
+  1. RE-RENDER the fence for every cell in the new root, in ONE pass, AFTER every copy has landed.
+     A pass that runs while a later copy is still to come repeats the defect it is fixing.
+  2. DRIFT-CHECK both layers against the new root's actual contents, and refuse the launch on any
+     cell whose fence does not name every peer present.
+  3. The check is driven RED first by planting a peer AFTER the render and confirming the drift
+     check refuses — an absence assertion needs an arm that produces the presence.
+```
+⚠️ **NAMED, NOT MEASURED:** whether anything else in a cell's `ctl/` is root-relative in the same way.
+`budgets.env` is measured and is NOT — it carries the frozen `C1_USD 37.21` / `C2_USD 18.60` and the
+phase-2 token and wall rows, so **a reused cell is already armed for phase 2.** `fence.json` is the one
+file I have checked for root-relative content, and **I am not claiming the others are clean.**
+
+## C3 · ⇒ WHAT ② NOW COSTS, AND WHY IT IS STILL THE CHEAP BRANCH
+```
+  fresh phase 1 x 4        up to 4 x C1_USD 37.21 = $148.84, plus phase 2
+  reuse by copy x 4        $0 in model tokens, plus a copy, a fence re-render and a drift check
+```
+The reuse branch stays recommended. **What Addendum 1 got wrong was not the branch, it was the
+verb** — and a reader who took "reuse the landed cell" literally would have written a commit into the
+evidence for a submitted paper before firing a single model call.
+
+## C4 · 📌 THE FEASIBILITY STATUS OF THE WHOLE FORM, MEASURED WHILE CHECKING THE ABOVE
+`dry_cells.sh` drives the entire sequence end to end — phase 1, `ctl/end-1`, `customer.sh dispatch`,
+phase 2, `ctl/end-2`, then the manifest and the canary scan — and **refuses at each step that does not
+land.** ⇒ **The spec-change form is not unbuilt and not untried: it has been driven end to end against
+the STUB client (`claude-stub.sh`), and never once against a real one.**
+⇒ **That is better news than "not built" and it is not the same as "works".** ⛔ **A path proven with a
+stub is proven against a subject that cannot surprise it**, which is exactly the property a real
+subject lacks. Registered as the honest feasibility statement: **STUB-DRIVEN END TO END; REAL-CLIENT
+CELL COUNT = 0.**
