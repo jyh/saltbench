@@ -644,3 +644,61 @@ reported `rc=0` and step 1 looked like a pass. ⇒ ***`cmd | tail` GIVES YOU `ta
 it fails in the direction that reads as success. Caught in one iteration by the refusal text
 disagreeing with the code beside it — **two readings of one event, which is the only reason it was
 visible at all.**
+
+---
+
+# ADDENDUM 6 — ✅ THE REUSE MECHANIC IS DRIVEN END TO END, AND ⛔ THE HARNESS EXPORT IS AN UNDECLARED CHOICE AMONG 35
+## Appended 2026-09-09 PDT. ⛔ **NOTHING ABOVE IS EDITED.** Two facts ② needs, both measured, so a fresh head does not re-derive them.
+
+## F1 · ✅ COPY → DISPATCH WORKS, AND THE ORIGINAL IS BYTE-UNTOUCHED
+Addendum 3 registered *reuse is by COPY* and left the mechanic unproven. It is now driven, on a copy of
+the `plain-bare` candidate, at **zero model tokens**:
+```
+  customer.sh dispatch <copy> <task>    rc 0
+    "dispatched change request 1 to dry00001 at 3c737fb (payload sha b777bf53bf66ae65)"
+  ON THE COPY    inbox/change-1.md 2769 B · tag P1 added beside landed-1 and s1
+                 commit 3c737fb authored `customer` · REQUIREMENTS.md gains `## Change 1`
+                 interface.rs gains `encode12` · ctl/customer.log carries the `dispatched P1` line
+  ON THE ORIGINAL 93323249    HEAD unchanged 97e7336a · tags unchanged · tree clean
+                 ⛔ ctl/customer.log ABSENT — the marker §5 defines a spec-change cell by never appeared
+```
+⇒ **The copy becomes a spec-change cell by §5's own definition, and the original does not.** That is the
+whole of Addendum 3's §C1, executed rather than asserted.
+📌 **The payload sha is the manifest row Addendum 1 promised is identical across the arm pair.** For LZW
+under this export it is `b777bf53bf66ae65`; each arm's dispatch prints its own and they must agree.
+
+## F2 · ⛔⛔ `customer.sh` IS NOT WHERE A REFEREE-SIDE READER WILL LOOK, AND THE FIRST DRIVE FAILED THERE
+My first attempt ran it from the referee's export and got **rc 127, "No such file or directory"**.
+```
+  the referee export's harness/systems-v3/ holds THREE files:
+      _common_v3.sh · Cargo.toml.template · rust_env.sh
+  customer.sh lives ONLY in the sha-named harness exports:
+      ~/projects/claude/saltbench-systems-v3-export-<sha>/harness/systems-v3/customer.sh
+```
+⇒ **The referee export is a toolchain shim, not the harness.** ⛔ **And a `command -v`-style check would
+not have helped: the failure is a PATH that exists for other tools and not for this one.**
+
+## F3 · ⛔⛔ THIRTY-FIVE HARNESS EXPORTS, AND NOTHING DECLARES WHICH IS CURRENT
+```
+  export trees on the box                         35
+  customer.sh                                     IDENTICAL in all 35 (one sha)
+  render_requirements.py                          THREE DISTINCT VERSIONS  (27 · 7 · 1)
+  and a bare, undated ~/projects/claude/saltbench-systems-v3-export beside them
+```
+⇒ 🔑 ***A DISPATCH IS A FUNCTION OF THE EXPORT IT IS RUN FROM, AND THE BOX OFFERS 35 CANDIDATES WITH NO
+DECLARATION*** — the same shape this campaign already carded when a root variable was trusted as a path
+on a box holding three verus builds. **A pin that is a path is not a pin when the box holds 35.**
+
+✅ **AND THE HAZARD IS CHECKED, NOT ASSUMED — IT IS NOT LIVE FOR THIS PAYLOAD.** Both halves of what the
+subject receives were rendered from one card by all three renderer versions:
+```
+  --clause  (inbox/change-1.md's body)   sha f1e0c2f56b363801   2414 B   IDENTICAL 3 of 3
+  --change  (REQUIREMENTS.md)            sha 46651a850f1b20f9   8247 B   IDENTICAL 3 of 3
+```
+⛔ **SCOPE, STATED RATHER THAN GENERALISED: that is ONE card (LZW) and TWO flags.** It says nothing about
+`--hint`, `--statement`, or the other thirteen cards, and I did not test them. **The three versions
+differ somewhere; they simply do not differ here.**
+⇒ **REGISTERED FOR ②: the export tree is NAMED in the run record with its sha, beside the payload sha,
+for every dispatch.** A dispatch whose export is not recorded cannot be reproduced, and the fact that
+the choice does not matter today is not a reason to leave it unrecorded — it is the reason it is cheap
+to record now.
