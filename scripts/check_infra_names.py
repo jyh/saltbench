@@ -41,8 +41,48 @@ ROOT = pathlib.Path(subprocess.run(["git", "rev-parse", "--show-toplevel"],
                                    cwd=pathlib.Path(__file__).resolve().parent,
                                    capture_output=True, text=True, check=True).stdout.strip())
 
-# Assembled, never spelled: the host and the account share this stem.
-FORBIDDEN = ["kri" + "ter" + "ion"]
+# Assembled, never spelled — this gate scans itself.
+#
+# ⛔⛔ WIDENED 2026-09-10, on `systems`'s measurement of a FALSE GREEN. This list held exactly ONE
+#   stem, because when the gate was written the host and the account SHARED it. The fleet now runs
+#   FOUR accounts across FOUR boxes, and a BOX NAME (2 files) and an ACCOUNT NAME (2 files) were sitting
+#   on PUBLIC main with Scrub GREEN. The gate was never wrong; it was OUTGROWN, and nothing announced
+#   that.  ⇒ 🔑 AN ARM THAT NAMES ONE MEMBER OF A SET GOES VACUOUS WHEN THE SET GROWS.
+FORBIDDEN = [
+    "kri" + "ter" + "ion",      # a box, and an account: the original single stem
+    "yu" + "kon",               # the box the seats run on
+    "ke" + "nai",               # a box
+    "jao" + "quin",             # a box
+    "ja" + "son" + "h",         # an account
+    "jy" + "aletheia",          # an account
+    "claude-account-" + "ja" + "son",   # see the note below: the bare stem is NOT gateable
+]
+
+# ⛔ THE ONE THAT CANNOT BE A BARE SUBSTRING, AND THE REASON IS NOT A TECHNICALITY.
+#   One account's name is the Captain's own GIVEN NAME, which appears legitimately in this public
+#   repo as AUTHORSHIP -- `CITATION.cff` and `paper/saltbench-v1.tex` (\author{...}, and twice in the
+#   bibliography). A bare substring rule would RED the paper's author line, and a gate that reds on
+#   correct content is a gate that gets deleted. So that account is gated in its CONFIG-DIR SHAPE
+#   only, which no byline can produce.
+#   ⇒ 🔑 A NAME THAT IS ALSO A PERSON'S NAME IS GATEABLE ONLY IN THE SHAPES INFRASTRUCTURE USES.
+#   ⇒ Anything this shape cannot catch is carried by the CONVENTION instead: a public tree names
+#     accounts by anonymised label (ACCOUNT A / ACCOUNT B), with the mapping in the private record.
+
+# ⛔ WHAT THIS TRIPWIRE DOES AND -- MORE IMPORTANTLY -- WHAT IT DOES NOT.
+#   It refuses to scan when the forbidden set has SHRUNK below the count declared here. That catches
+#   a name being DELETED. It does NOT catch the failure that actually happened, which was the FLEET
+#   GROWING while this list stood still: both lines below are edited by the same hand, so they move
+#   together and neither can notice a new account or a new box existing.
+#   ⇒ 🔑 A DECLARATION AND THE THING IT DESCRIBES, EDITED TOGETHER, CANNOT CHECK EACH OTHER.
+#   ⇒ **Completeness is not checkable from inside this repo at all.** The roster lives outside it and
+#     MOVES, and CI cannot read it. Only a FLEET-SIDE check that reads the roster can know this set is
+#     incomplete; that check is the load-bearing one and this is a second lock, not the lock.
+#     (Named by `systems` on the bus, 2026-09-10, correcting this seat's first claim for it.)
+#   The count is printed on every run so a reader can compare it against the fleet map rather than
+#   trusting a date. Reconciled against the fleet roster on the date below -- its box column and its
+#   account column. Adding a box or an account means editing BOTH lines, deliberately.
+DECLARED_NAMES = 7
+DECLARED_RECONCILED = "2026-09-10"
 
 
 def tracked_files() -> list[tuple[str, str]]:
@@ -78,11 +118,22 @@ def self_test() -> int:
         failures.append("scan([]) must find nothing")
     if not _is_empty_scan_fatal([]):
         failures.append("an empty file set must be FATAL, not green")
-    # 2. Planted forms are caught: bare, capitalised, account-prefixed, inside an ssh alias.
-    stem = FORBIDDEN[0]
-    for form in (stem, stem.capitalize(), "jy" + stem, "ssh " + stem + "-lan 'x'", stem.upper()):
-        if len(scan([("f.md", f"a line\n{form} here\n")])) != 1:
-            failures.append(f"planted form {form!r} must be caught exactly once")
+    # 2. EVERY name is planted, in every case and prefix form -- not just FORBIDDEN[0]. A per-name
+    #    loop is the arm that a widened list cannot silently outgrow.
+    for stem in FORBIDDEN:
+        for form in (stem, stem.capitalize(), "x" + stem, "ssh " + stem + "-lan 'x'", stem.upper()):
+            if len(scan([("f.md", f"a line\n{form} here\n")])) != 1:
+                failures.append(f"planted form {form!r} must be caught exactly once")
+    # 2b. THE TRIPWIRE ITSELF, driven: a set smaller than the declaration must be FATAL. Without this
+    #     arm the declaration is a comment, and a comment cannot fail.
+    if _declared_ok(FORBIDDEN[:-1]):
+        failures.append("a set smaller than DECLARED_NAMES must be FATAL")
+    if not _declared_ok(FORBIDDEN):
+        failures.append("the live set must satisfy its own declaration")
+    # 2c. The author's given name, standing alone as a byline, must PASS -- it is authorship, not
+    #     infrastructure, and it is in this repo's own CITATION.cff and paper.
+    if scan([("CITATION.cff", "  given-names: Ja" + "son\n\\author{Ja" + "son Hickey}\n")]):
+        failures.append("an author byline must not be caught")
     # 3. The role words pass.
     clean = [("g.md", "on the Studio, on the bench account, STUDIO=\"${STUDIO:-studio}\", ssh studio 'x'\n")]
     if scan(clean):
@@ -95,12 +146,19 @@ def self_test() -> int:
         print(f"SELF-TEST FAIL: {f}")
     if failures:
         return 1
-    print("check_infra_names SELF-TEST: OK (empty scan fatal proven FIRST, 5 planted forms caught, role words pass, self clean)")
+    print(f"check_infra_names SELF-TEST: OK (empty scan fatal proven FIRST, "
+          f"{len(FORBIDDEN) * 5} planted forms caught across {len(FORBIDDEN)} name(s), "
+          f"the shrunk-set tripwire fires, an author byline passes, role words pass, self clean)")
     return 0
 
 
 def _is_empty_scan_fatal(rows) -> bool:
     return len(rows) == 0
+
+
+def _declared_ok(names) -> bool:
+    """The forbidden set must not be SMALLER than what was reconciled against the roster."""
+    return len(names) >= DECLARED_NAMES
 
 
 def main() -> int:
@@ -109,6 +167,11 @@ def main() -> int:
     a = ap.parse_args()
     if a.self_test:
         return self_test()
+    if not _declared_ok(FORBIDDEN):
+        print(f"FAIL: {len(FORBIDDEN)} forbidden name(s) against DECLARED_NAMES={DECLARED_NAMES} "
+              f"(reconciled {DECLARED_RECONCILED}) -- a set that has shrunk is a gate that has been "
+              f"quietly narrowed; refusing to scan.")
+        return 1
     rows = tracked_files()
     if _is_empty_scan_fatal(rows):
         print("FAIL: zero tracked text files -- refusing to call an empty scan clean")
@@ -119,7 +182,9 @@ def main() -> int:
     if found:
         print(f"FAIL: {len(found)} infrastructure-name occurrence(s) in {len({r for r, _, _ in found})} file(s)")
         return 1
-    print(f"check_infra_names: OK ({len(rows)} tracked text files, 0 occurrences)")
+    print(f"check_infra_names: OK ({len(rows)} tracked text files, 0 occurrences; "
+          f"{len(FORBIDDEN)} names WATCHED BY NAME, reconciled against the fleet roster {DECLARED_RECONCILED} -- \n"
+          f"  the count is printed so a reader can compare it against the fleet map instead of trusting the date.)")
     return 0
 
 
