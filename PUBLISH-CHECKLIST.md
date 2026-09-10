@@ -1176,10 +1176,26 @@ sentence should be read again in the same pass.**
   RELEASE CONDITION   one string, chosen, and written into BOTH `\title{}` and `CITATION.cff`
                       byte for byte. A `git diff` over those two lines is the whole receipt.
   RE-MEASURE          at the next READY post
-  GATES THE UPLOAD?   ⛔ YES. Section (o) put the artifact's SUBJECT in question and that half is
-                      now discharged; this half is not. An upload carries a title page.
+  GATES THE UPLOAD?   ✅ DISCHARGED 2026-09-09 15:01 PDT, AND NO LONGER GATES. The Captain gave
+                      the string himself; it landed VERBATIM at `e50ebfd` in all three sites
+                      (the tex title macro and BOTH `CITATION.cff` title lines), 97 characters,
+                      no trailing period, byte identical as literal bytes rather than identical
+                      after a transformation. This line read `⛔ YES` until 2026-09-10 04:1x.
   ⛔ IT DOES NOT GATE  the draft, which exists, nor any further prose work, which is independent.
 ```
+⛔⛔ **THIS BLOCK READ `⛔ YES` FOR THIRTEEN HOURS AFTER THE OWNER RELEASED IT, AND THE RELEASE IS
+RECORDED 30 LINES BELOW IT IN SECTION 5.** Found 2026-09-10 04:1x while measuring the artifact for a
+READY post, not by any gate, because **no gate fires on a true sentence that has stopped being true.**
+⇒ 🔑 ***A DISCHARGE IN A LATER SECTION DOES NOT DISCHARGE THE EARLIER BLOCK*** — the same defect this
+file recorded at item (o) on 09/09, in the same file, in the same direction, four hours that time and
+thirteen this time. **A reader consulting this block on the morning of the upload would have been told
+the upload was gated on a word the owner had already given.**
+📌 **AND SECTION 5 BELOW IS STALE IN ITS OWN RIGHT, LEFT STANDING AND MARKED RATHER THAN REWRITTEN:**
+it describes a PROPOSED title (`SaltBench v1: ... and What Its Instrument Caught on a Seat-as-Subject
+Cost Matrix`) that is **not the title in the artifact.** The owner's string removed the edition token
+altogether, which is a THIRD answer to the (a)-against-(b) question and neither of the two registered.
+Its closing line, *"the only thing left between this draft and submission-ready: one word from the
+owner on that string"*, was true when written and was answered 6 minutes later.
 
 ### 5 ⚖️ UPDATE, 2026-09-09 14:5x — THE SPINE IS RATIFIED AND THE TITLE IS IN THE ARTIFACT AS A PROPOSAL
 
