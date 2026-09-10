@@ -1,0 +1,13 @@
+cell	task	arm	extras	kind	class	tests	secs
+st01crc3	Crc32	plain	statement	LANDED	PASS	6/6	6
+st02crc3	Crc32	plain	statement	LANDED	PASS	6/6	5
+st03crc3	Crc32	plain	statement	LANDED	PASS	6/6	6
+st04crc3	Crc32	salt-diet	statement	LANDED	PASS	6/6	5
+st05crc3	Crc32	salt-diet	statement	LANDED	PASS	6/6	6
+st06crc3	Crc32	salt-diet	statement	LANDED	PASS	6/6	5
+st07lru	LRU	plain	statement	LANDED	PASS	16/16	6
+st08lru	LRU	plain	statement	LANDED	PASS	16/16	5
+st09lru	LRU	plain	statement	LANDED	PASS	16/16	6
+st10lru	LRU	salt-diet	statement	LANDED	PASS	16/16	6
+st11lru	LRU	salt-diet	statement	LANDED	PASS	16/16	5
+st12lru	LRU	salt-diet	statement	LANDED	PASS	16/16	6
