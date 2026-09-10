@@ -26,9 +26,11 @@ def account_of(cfg):
     try:
         d = json.load(open(os.path.join(cfg, ".claude.json")))
         a = d["oauthAccount"]
-        return a.get("emailAddress", "?"), a.get("accountUuid", "?")[:8]
+        # the uuid PREFIX, never the account name or address: an infrastructure name may not sit
+        # in the public tree, and a uuid prefix is an opaque, stable, auditable identifier.
+        return a.get("accountUuid", "?")[:8], a.get("accountUuid", "?")[:8]
     except Exception:
-        return ("?", "?")
+        return ("UNREADABLE", "UNREADABLE")
 
 def find_transcripts(cell_repo):
     """Return (path, cfg) for the transcript tree of this repo, or (None, None)."""

@@ -13,7 +13,7 @@ analysis script dropped into it can halt every episode. Nothing here is ever run
 `cache_creation` with its 5m/1h split, `cache_read`, `output` — per model, split head vs executor,
 with `T` and a modelled `COST` beside them. **The order is therefore a surfacing job, not a
 measurement job.** `tokens_table.py` walks a cell population, resolves each cell's account by locating
-its transcript tree under `<cfg>/projects/`, runs the meter, and emits one row per cell.
+its transcript tree under `<cfg>/projects/` and reports it as an opaque uuid prefix, never a name, runs the meter, and emits one row per cell.
 
 ## ⛔ THE TABLE IS NOT YET AN ARM COMPARISON, AND THE REASON IS IN THE TABLE
 Over `cells-matrix1`, the phase-1 greenfield landings:
