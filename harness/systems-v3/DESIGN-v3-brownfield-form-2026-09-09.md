@@ -219,3 +219,44 @@ which is precisely why it was chosen as the primary reading.
   claim rests on.**
 * **Nothing here licenses pairing a cost premium with correctness.** If a brownfield run produces both a
   premium and a V1 rate, they are two results and **the paper must not join them with "and therefore".**
+
+---
+
+# ⛔⛔ ADDENDUM, 2026-09-10 — `G/` AND `B/` DO NOT MEAN IN v3 WHAT THEY MEAN IN v2
+## Appended by bench after ratifying a brownfield structure built on the v2 reading of the letter.
+
+**This document says above that "the task material largely exists" and that `Crc32` is realised as a
+full `B/` tree beside its greenfield `G/`. That is true of v2 and it is not true of v3, and the two
+trees wear the same two letters.**
+
+```
+  v2   tasks/systems-v2/<Task>/B/   clause.md · given/ · withheld/     GREENFIELD vs BROWNFIELD
+  v3   tasks/systems-v3/<Task>/B/   interface.rs · withheld/ · …       PHASE 1 vs PHASE 2
+       Crc32  G/interface.rs 37 lines   ->   B/interface.rs 68 lines   B EXTENDS G
+       no `given/` and no `clause.md` anywhere under the v3 tree
+```
+⇒ **`B/` IS THE SPEC-CHANGE'S POST-CHANGE RUNG.** The decisive evidence is `customer.sh` itself, the
+script that dispatches the change request:
+```
+  cp "$TASK/B/interface.rs" "$REPO/interface.rs"
+```
+The change request **is** the replacement of the phase-1 interface with `B/interface.rs`, and
+`B/withheld/` is the suite that scores the result. The directory is not spare and not unexplained —
+it is fully occupied, and the P1 spec-change wave ran on it.
+
+## ⇒ 🔑 THE TRAP, WHICH IS WHY THIS IS WRITTEN HERE AND NOT IN A SEAT'S BANK
+***THE LETTERS WERE INHERITED ACROSS A REDESIGN AND THEIR MEANING CHANGED UNDER THEM.*** A reader who
+knows v2 measures v3's `B/` accurately, compares it against the v2 meaning of the letter, and
+concludes *"there is no brownfield rung here"* — while the directory is in fact occupied by something
+else entirely. **A name that survives a redesign is worse than a name that breaks, because nothing
+announces the change.** Two seats reached that conclusion independently on the same morning, and one
+of them ratified a design on it.
+
+## 📋 WHAT FOLLOWS FOR BROWNFIELD
+- **The form in this document still stands** — the RED→GREEN delta argument, the two verdicts `V1`/`V2`
+  as separate columns, and the givens still needing to be authored.
+- ⛔ **BUT BROWNFIELD CANNOT LIVE IN `B/`.** It needs a **THIRD** rung. Putting the given beside the
+  change request's interface would let a spec-change cell read a brownfield interface, and the first
+  symptom would look like a task defect rather than a collision.
+- 📌 **Whatever the third rung is called, it should not be a single letter**, and this meaning shift
+  should be stated wherever a reader of either convention will meet it.
