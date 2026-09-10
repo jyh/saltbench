@@ -1,0 +1,11 @@
+cell	verdict	tests	turns	denied	T	vendor_tokens	thinking	meter_file
+av01lzw	PASS	8/8	8	4	1161781	213119	13994	cells-agy-pilot2/av01lzw/ctl/agy-meter-1.json
+av02lzw	BUILD-FAIL	0/0	6	2	1023762	191953	14568	cells-agy-pilot2/av02lzw/ctl/agy-meter-1.json
+av03lzw	PASS	8/8	8	5	1136953	196373	14007	cells-agy-pilot2/av03lzw/ctl/agy-meter-1.json
+av04lzw	PASS	8/8	9	5	1104040	189252	14408	cells-agy-pilot2/av04lzw/ctl/agy-meter-1.json
+av05lzw	PASS	8/8	7	3	676424	137126	9703	cells-agy-pilot2/av05lzw/ctl/agy-meter-1.json
+av06lzw	PASS	8/8	7	3	1144925	154066	19137	cells-agy-pilot2/av06lzw/ctl/agy-meter-1.json
+av07lzw	PASS	8/8	10	6	1112075	160156	11321	cells-agy-pilot2/av07lzw/ctl/agy-meter-1.json
+av08lzw	PASS	8/8	9	5	930653	153272	14148	cells-agy-pilot2/av08lzw/ctl/agy-meter-1.json
+av09lzw	PASS	8/8	7	3	879359	144862	14022	cells-agy-pilot2/av09lzw/ctl/agy-meter-1.json
+# totals	turns=71	denied=36 (50.7%)	T=9169972
