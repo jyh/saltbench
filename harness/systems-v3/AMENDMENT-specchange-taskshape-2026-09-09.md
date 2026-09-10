@@ -599,3 +599,48 @@ before it was asked.*** The fence is auditable while the run is alive and unaudi
               here rather than built, because render_fence_v3.py's output shape is a fence contract
               and changing it mid-campaign is not a tidy-up.
 ```
+
+---
+
+# ADDENDUM 5 — ✅ ADDENDUM 3 §C2's SEQUENCE IS DRIVEN, RED-FIRST, AND THE DRIFT CHECK IS LOAD-BEARING
+## Appended 2026-09-09 PDT. ⛔ **NOTHING ABOVE IS EDITED. THIS DISCHARGES A REGISTERED OWED ITEM, so a later reader does not see it as outstanding and pay for it twice.**
+
+`§C2` registered three things before any reused cell launches: **re-render in one pass after every copy
+lands · drift-check both layers · drive the check RED by planting a peer AFTER the render.** All three
+are now executed on a synthetic cells root, touching no real cell and spending no model tokens.
+
+## E1 · THE DRIVE
+```
+  step                                        rc   result
+  1  render a fence for cell aaaa1111          0   WROTE   62 denyRead · 65 denyWrite
+  2  --check, nothing changed                  0   CURRENT 62 denyRead · 65 denyWrite
+  3  PLANT a new peer cccc3333, --check        1   DRIFT   <- THE RED. The check refuses.
+  4  the peer in a FRESH rendering             -   8 occurrences
+  5  re-render, then --check                   0   CURRENT 63 denyRead · 66 denyWrite  (+1 each)
+```
+⇒ **The refusal in step 3 is the whole property**: a fence rendered before a peer existed does not
+name it, `--check` sees exactly that, and re-rendering closes it by precisely one peer in each layer.
+⇒ **`§C2` items 2 and 3 are DISCHARGED. Item 1 — one pass, after every copy lands — is an ORDERING
+and can only be discharged at ②**, against the real copies.
+
+## E2 · ⛔ A CONSTRAINT ON ② THAT THE DRIVE FOUND BY REFUSING, AND IT IS EASY TO TRIP
+My first two attempts REFUSED, correctly, and the second refusal is the instructive one:
+```
+  cells root under /tmp                REFUSED — "/private/tmp" is in the deny set
+  cells root named ~/bench-fencedrive  REFUSED — the renderer globs ~/bench* into the deny set,
+                                       and my SCRATCH DIRECTORY'S NAME matched it
+  ⇒ "the cell's own <path>/repo is inside the deny set ... a fence that blocks the agent's working
+     copy is not a fence, it is a blind episode that still scores"
+```
+⇒ ⛔ **THE COPIES' CELLS ROOT MUST NOT BE UNDER `/tmp`, MUST NOT MATCH `~/bench*` OR `~/.claude*`, AND
+MUST NOT BE UNDER `~/projects`** — or the render refuses and no cell is built. **Registered here
+because the natural name for a copy root is exactly the one that trips it.**
+⭐ **The refusal is the tool working**: it names the offending root and says why, and it fires at
+render time rather than at scoring time.
+
+## E3 · 📌 AND ONE OF MY OWN, RECORDED BECAUSE IT IS THE THIRD TIME
+My first drive script read the renderer's exit code through `| tail -1`, so a **refusing** command
+reported `rc=0` and step 1 looked like a pass. ⇒ ***`cmd | tail` GIVES YOU `tail`'s EXIT CODE***, and
+it fails in the direction that reads as success. Caught in one iteration by the refusal text
+disagreeing with the code beside it — **two readings of one event, which is the only reason it was
+visible at all.**
