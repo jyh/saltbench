@@ -362,3 +362,106 @@ FRESH. This addendum registers the alternative, its rule, and its price so the c
 ruling on two stated branches rather than an improvisation under a budget. **The cheaper branch is
 the one I am recommending, which is exactly why the rule that removes its free parameter is written
 here, before any of its numbers exist.**
+
+---
+
+# ADDENDUM 2 — ⛔⛔ §4's P1 BASELINE INSTRUMENT CANNOT RUN. I DROVE IT AND IT FAILED IN THE FLATTERING DIRECTION.
+## Appended 2026-09-09 PDT. ⛔ **THE AMENDMENT AND ADDENDUM 1 ARE NOT EDITED. §4's INSTRUMENT IS CORRECTED HERE, BEFORE ANY CELL OF THIS FORM HAS FIRED.**
+
+§4 registered: *"run `B/run_tests.sh` against the tree at tag P1"*. **I drove it. It cannot run, and it
+was never going to be able to.**
+
+## B1 · THE DRIVE, AT THE OBJECT
+`LZW/B/run_tests.sh` against the landed phase-1 tree of the `plain-bare` cell `93323249`, under the
+frozen toolchain env:
+```
+  RC=3
+  error[E0425]: cannot find function `encode12` in this scope
+  error[E0599]: no variant named `Encode12` found for enum `lzw::Op`
+  error[E0599]: no variant named `Decode12` found for enum `lzw::Op`
+  error: could not compile `lzw` (bin "driver") due to 12 previous errors
+  TESTS 0/0
+```
+⛔ **AND THE PART THAT MATTERS MORE THAN THE FAILURE: there is NO `REGRESSIONS` LINE AND NO
+`CLAUSE_TESTS` LINE IN THAT OUTPUT AT ALL.** The driver never ran, so it printed neither.
+
+⇒ **THE B DRIVER IS COMPILED AGAINST THE SUBMISSION AND CALLS `encode12`, `decode12`, `Op::Encode12`
+and `Op::Decode12`. A PHASE-1 TREE DEFINES NONE OF THEM, BY CONSTRUCTION.** The B rung requires the
+EXTENDED interface, which is exactly what `customer.sh` installs — **so the one moment §4 asked for
+the measurement is the one moment the measurement is a build error.**
+
+## B2 · ⛔⛔ THE FAILURE DIRECTION, WHICH IS WHY THIS IS AN ADDENDUM AND NOT A FOOTNOTE
+A baseline recorder that reads `regressions_failed` out of that output finds the field **ABSENT**, and
+the cheapest handling of an absent count is **zero**:
+```
+  what happened          the crate did not compile; nothing was measured
+  what a reader records  p1_regressions_failed = 0
+  what that means        "this cell's phase-1 landing passes its own base suite perfectly"
+```
+⇒ 🔑 ***AN INSTRUMENT THAT REPORTS ABSENCE FAILS TOWARD ABSENCE, AND HERE ABSENCE IS THE FLATTERING
+ANSWER*** — a total build failure is byte-indistinguishable from a flawless landing, and it would have
+propagated into the eligibility filter of Addendum 1 §A3 as **every cell eligible for the right reason
+by accident.** My own bank carries this law from yesterday; **it caught me on the registration I wrote
+to apply it.**
+📌 **§3 of the amendment already forbids this** — *"a missing `REGRESSIONS` or `CLAUSE_TESTS` line is
+UNMEASURED, never GREEN"*. **The rule was correct and the instrument it governed could not produce the
+line at all.** ⇒ ***A CORRECT RULE ABOUT A FIELD DOES NOT ESTABLISH THAT ANY RUN CAN PRODUCE IT.***
+
+## B3 · ✅ THE CORRECTED INSTRUMENT, AND IT HAS ALREADY RUN
+
+**REGISTERED, REPLACING §4's FIRST SENTENCE:** the P1 baseline is taken with the **`G` rung's**
+`run_tests.sh` on the cell's phase-1 landing — the base suite alone, which is precisely what
+"regressions" names, since the B driver's base suite is *phase 1's driver verbatim*.
+```
+  p1_base_passed / p1_base_total     from the G rung's `TESTS <passed>/<total>`
+  ⛔ POLARITY: the G runner prints PASSED.  The B runner's REGRESSIONS line prints FAILED.
+     The corrected baseline therefore reports a DIFFERENT POLARITY from the field it is a baseline
+     for, and every consumer names which one it is reading in the expression that reads it.
+  p1_solution_sha256                 unchanged
+```
+⛔ **THE CLAUSE HALF OF THE BASELINE IS STRUCK, NOT DEFERRED.** `p1_clause_failed/total` was
+registered as a quantity to record. **It is not a quantity**: a phase-1 tree cannot define the clause's
+functions, so there is no state of the world in which it is anything but "did not compile". Recording
+it would have been recording a constant as a measurement.
+
+✅ **AND THE CORRECTED BASELINE COSTS NOTHING, BECAUSE IT IS ALREADY MEASURED.** The post-hoc
+correctness pass ran the G rung over every matrix-1 cell. From
+`harness/systems-v3/RESULT-posthoc-correctness-verdicts-2026-09-09.tsv` and the run's own verdicts
+table, all twelve LZW phase-1 landings:
+```
+  arm                cell       class   TESTS      arm                cell       class   TESTS
+  plain-bare         93323249   PASS     8/8       plain-STATEMENT    22ee7d33   PASS     8/8
+  plain-bare         c34012e0   PASS     8/8       plain-STATEMENT    922d1ff0   PASS     8/8
+  plain-bare         d91f137b   PASS     8/8       plain-STATEMENT    f795e96f   PASS     8/8
+  salt-diet-bare     18fb3eed   PASS     8/8       salt-diet-STMT     6d58f1ec   PASS     8/8
+  salt-diet-bare     7ac56e4e   PASS     8/8       salt-diet-STMT     9aca67c5   PASS     8/8
+  salt-diet-bare     eb558398   PASS     8/8       salt-diet-STMT     f5f66c47   PASS     8/8
+```
+
+## B4 · ⇒ ADDENDUM 1's SELECTION RULE, RESOLVED — AND THE FOUR CELLS NAMED BEFORE ANY PHASE-2 NUMBER EXISTS
+
+Rule 2 (eligible iff the phase-1 landing passes its own base suite) admits **12 of 12, uniformly, all
+four arms**. Rule 5's eligible-count asymmetry is **3/3 in every arm — no asymmetry to report.** So the
+selection reduces to rule 3's blind tiebreak, and it is discharged here, in writing, **before a single
+phase-2 quantity exists for any cell:**
+```
+  plain-bare        -> 93323249        plain-STATEMENT   -> 22ee7d33
+  salt-diet-bare    -> 18fb3eed        salt-diet-STMT    -> 6d58f1ec
+```
+📌 `eb558398`'s `refused-1` tag, flagged in Addendum 1, is **moot**: it is eligible on the measurement
+and it is not the lowest id in its arm. It was named in advance precisely so this sentence could be
+written rather than assumed.
+
+## B5 · ⛔ AND THE LIMIT ON WHAT B3 SHOWS, BECAUSE 12 OF 12 IS A CEILING AND NOT A CLEAN BILL
+
+**8/8 on an 8-test base suite is the top of the scale.** Twelve cells reading identically means **this
+suite cannot tell them apart**, not that the twelve landings are equivalent.
+⇒ **Rule 6 of Addendum 1 — record the two not-chosen baselines to expose the WITHIN-ARM SPREAD of the
+starting point — returns ZERO SPREAD ON THIS INSTRUMENT, and that reading is VACUOUS at the ceiling.**
+It is reported as `spread UNMEASURABLE at ceiling`, never as `spread = 0`.
+⇒ 🔑 ***AN ARM AT CEILING LEAVES NO ROOM TO DISCRIMINATE, AND HERE THE ARM AT CEILING IS THE BASELINE
+INSTRUMENT ITSELF.*** The campaign has now met this shape three times — a 1.000 kill rate against a
+mutant set authored beside the suite, a 0-survivor arm-coverage sweep, and now a 12-of-12 baseline.
+⛔ **CONSEQUENCE FOR THE RESULT: the confound of §4 is NOT shown to be small. It is shown to be
+INVISIBLE TO THE ONLY PRE-PHASE-2 INSTRUMENT THIS DESIGN HAS**, and that sentence travels with every
+V1 and V2 verdict this pilot produces.
