@@ -1,8 +1,16 @@
 # systems-v3-analysis — the token figures beside the dollar figures
 
-**Standing order, the Captain, 2026-09-10 09:3x:** *"please info bench to produce token costs (in
-addition to dollar costs)."* Registered as ADDENDUM 8 §H7 of
-`../systems-v3/AMENDMENT-specchange-taskshape-2026-09-09.md`.
+⛔⛔ **PROVENANCE CORRECTED 2026-09-10.** This file opened by quoting the Captain: *"please info bench
+to produce token costs (in addition to dollar costs)."* **He never said it** — measured across his whole
+pane corpus (82 projects, 681 transcripts, positive control driven), "token costs" appears in ZERO user
+turns. He asked `anubis`, about the `anubis` design doc: *"can we use tokens instead of dollars?"*, and
+later *"bench has calculated the tokens, can you add them?"*
+⇒ **A question became an order, "instead of" became "in addition to", and the addressee and subject
+both changed.** The reasoning printed under it — dollars are derived, tokens are what the pools meter —
+**is this seat's and the helm's, not his.** It is good reasoning and it is adopted as campaign practice
+on its own merits; it is not a quotation. ⛔ **Whether dollars stay in the tables is his to answer:** he
+asked *instead of*, and this work assumed *in addition to*. Found by `kent`. Registered in ADDENDUM 8
+§H7 of `../systems-v3/AMENDMENT-specchange-taskshape-2026-09-09.md`.
 
 **Why this directory is separate from `systems-v3/`.** Analysis tools live beside the harness, never
 inside it: a harness directory that is checked as a set refuses any file present but unpinned, so an
