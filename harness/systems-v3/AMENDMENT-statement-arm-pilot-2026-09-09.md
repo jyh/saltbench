@@ -331,3 +331,56 @@ is **`2.8879x`**. Any bound quoted as holding *"under both readings"* is **`2.88
 📌 Recorded here rather than silently corrected downstream, because the `2.81x` form has now appeared in a
 gate and in a relayed ruling, and **a bound that is quoted one reading short is a bound that fails exactly
 where the population is hardest** — on FreeList, the problem this pilot is still waiting on.
+
+---
+
+# A4 · HOW THE CAP PREDICTION IS SCORED — REGISTERED WHILE `sf05free` AND `sf06free` ARE STILL RUNNING
+
+Appended 2026-09-09 19:0x by `paper`. ⛔⛔ **THIS SECTION IS WRITTEN WITH TWO OF FreeList's SIX CELLS
+STILL IN FLIGHT, AND THAT IS ITS ONLY VALUE.** §3 registered a prediction; nothing in this file says
+how the prediction is READ if it fails. **Written after the cells land, every word below would be
+outcome-dependent reporting.** Same shape as `A3`, same reason.
+
+## A4.1 · THE PREDICTION, AS IT STANDS IN §3
+
+> *"Register now that FreeList and Paxos diet+stmt are EXPECTED to cap"* — on the ground that their
+> bare counterparts' medians already sat above `C1_USD = 37.21` (FreeList diet-bare median **$37.60**,
+> max $37.95). `A2.3` restated it unchanged. **Paxos never fires** (`A2.2`), so **FreeList is the only
+> problem on which this prediction can be scored at all.**
+
+## A4.2 · ⚖️ IT IS SCORED AS IT STANDS, IN EITHER DIRECTION, AND BOTH DIRECTIONS ARE WRITTEN HERE
+
+* **IF THE CONDITION CAPS** — the capped cells are reported as `CAP-COST` and never as failures, per
+  §3 and the correctness pre-spec's class rule, and the condition is read at the `n` it reached with
+  the shortfall named in the table rather than in a footnote. The prediction is recorded as holding.
+* **IF IT DOES NOT CAP** — **the prediction FAILED and is recorded as a failure, with its direction**,
+  in the same paragraph of the paper that already records the estimator's five over-prices and its
+  one under-price. ⛔ **A registered prediction that fails is a result of this instrument, not an
+  embarrassment to be dropped**, and this campaign has recorded several.
+
+## A4.3 · ⛔⛔ THE COMPARISON A FAILURE INVITES IS NOT THE REGISTERED READING
+
+If FreeList's diet+statement cells land under the cap while its **diet-bare** median sat at $37.60,
+the arithmetic invites the sentence *"the statement made the treatment's dearest condition cheaper."*
+⛔ **THAT IS A BARE-vs-STATEMENT COMPARISON. THE REGISTERED READING OF THIS ARM IS (d) vs (e) — the
+two STATEMENT conditions on the same problem** (§5). The two are different comparisons over different
+populations and they are not pooled.
+**What may be said of it, and it is deliberately narrow:**
+1. It is **one problem at `n = 3`**, so it is an OBSERVATION and not a direction, and the resolvable
+   floor of `2.0072x` at `n = 3` applies to it exactly as it applies to every other premium here.
+2. It is admissible **only because the cap was NOT raised** (§3, first branch), so both sides were
+   measured under the same budget. ⛔ **Had the cap been raised this comparison would be barred
+   outright**, and that condition travels with any quotation of it.
+3. The two sides differ in **more than the statement**: the diet-bare cells are matrix cells and the
+   diet+statement cells are amendment cells, fired later, and `A3.1`'s selection effect and `A3.2`'s
+   confound both bind here. **Nothing in this design licenses reading a capability or a mechanism
+   from it.**
+
+## A4.4 · WHY THIS IS REGISTERED RATHER THAN LEFT TO THE WRITE-UP
+
+The Captain's stated end use for the cost result is a funding argument. A sentence of the form *"the
+specification made the expensive arm cheaper"* is the single most quotable thing this campaign could
+emit, **it would be true of one problem at `n = 3`, and it would be read as a mechanism.** ⇒ 🔑
+***FORBIDDING A CLAIM IS ONLY HALF A GUARD; THE OTHER HALF IS SAYING WHAT MAY BE SAID INSTEAD*** —
+the same rule §4 of the paper already applies to the bare arms' premiums, extended here to the one
+cross-arm comparison this run can produce, **before anyone knows which way it falls.**
