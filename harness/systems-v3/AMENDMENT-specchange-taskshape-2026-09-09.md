@@ -801,18 +801,26 @@ LOOKING AND UNEARNED*** — and this one guarded another campaign's submitted ev
 
 ---
 
-# ADDENDUM 8 — ⚖️ THE RUN ACCOUNT IS RULED `jasonh`, AND THE MOVE COSTS FIVE THINGS THE RULING DOES NOT NAME
+# ADDENDUM 8 — ⚖️ THE RUN ACCOUNT IS RULED `ACCOUNT B`, AND THE MOVE COSTS FIVE THINGS THE RULING DOES NOT NAME
 ## Appended 2026-09-10 PDT, BEFORE ②'s first model call. ⛔ **NOTHING ABOVE IS EDITED.** The Captain answered §9's blocked branch by ruling, not by this file; this registers what the ruling changes.
 
 ## H1 · ⚖️ THE RULING, AND THE ONE CHOICE IT FORCES ON THE EXPERIMENT
 Council 2026-09-10, the Captain, verbatim: *"We need bench to continue with the spec-change +
-14-problem expansion + antigravity, that will need to happen on jasonh."* That is branch **(c)** of the
+14-problem expansion + antigravity, that will need to happen on [ACCOUNT B]."* That is branch **(c)** of the
 three registered in addendum 7's gate — **a different run account** — and it supersedes the
 recommendation (a) WAIT that this seat filed with the block.
-⛔ **THE COST (c) CARRIES, STATED BEFORE IT IS PAID.** Phase 1 of all four cells ran on **the PREVIOUS run account**
-(`dbfc67e4`); phase 2 is ordered on **jasonh** (`27b7f909`). Established by location, not by belief:
+⛔ **THE COST (c) CARRIES, STATED BEFORE IT IS PAID.** Phase 1 of all four cells ran on **ACCOUNT A**
+(**ACCOUNT A**); phase 2 is ordered on **ACCOUNT B**. Established by location, not by belief:
 transcripts land under `<cfg>/projects/`, and all four phase-1 transcript trees sit under
 the previous run account's config dir. **So within every cell the two halves run on two different human accounts.**
+📌 **ON THE LABELS.** `ACCOUNT A` and `ACCOUNT B` are anonymised throughout, **including inside the
+Captain's verbatim quote, where the redaction is marked**. The label→account mapping lives in the
+private record. This repo is destined public and an infrastructure name may not enter it; the
+CONFOUND, however, must be stated, and the two obligations are both satisfiable — **the structure
+survives, the identity does not travel.** Stripping the sentences would damage the record and
+naming the account would breach the lane; relabelling costs one pass and loses nothing a reader
+needs. (Convention named by `evidence` on the bus, 2026-09-10, on the red this file caused.)
+
 ⇒ **THE REGISTERED POSITION, and it is a choice, not a discovery:** the account is **constant across
 arms within phase 2**, so the BETWEEN-ARM comparison — which is the claim ② exists to make — is not
 confounded by it. What the seam touches is any **WITHIN-cell phase-1→phase-2 cost delta**, and every
@@ -824,9 +832,9 @@ the transcript, never from an exit code** (fleet law, 2026-09-10 08:0x).
 
 ## H2 · ⛔⛔ THE UUID THIS SEAT'S OWN BANK NAMED AS "THE TRAP" IS NOW THE TARGET
 Addendum 7 §G2 and this seat's bank both flagged `stmt-build.sh` — the newest, most copyable build
-driver on the run box — for hard-coding config dir uuid `27b7f909`, *"a different human account"*, and
+driver on the run box — for hard-coding a config dir uuid, *"a different human account"*, and
 warned that a fresh head templating from it *"fires on the wrong subscription silently."*
-**`27b7f909` is jasonh.** Nine hours after that warning was written, the ruling made it the correct
+**That uuid is ACCOUNT B.** Nine hours after that warning was written, the ruling made it the correct
 account. Nothing about the file changed.
 ⇒ 🔑 ***A HAZARD IS A RELATION BETWEEN AN ARTEFACT AND AN INTENT, NOT A PROPERTY OF THE ARTEFACT.*** A
 bank entry that names a VALUE as dangerous ages differently from one that names a MECHANISM: the
@@ -838,7 +846,7 @@ superseded one without re-deriving the whole question.
 
 ## H3 · ✅ THE ACCOUNT PIN IS AN IDENTITY CHECK NOW, AND DRIVING IT CAUGHT THE GUARD REFUSING BLIND
 The fire script's account pin was `[ "$CLAUDE_CONFIG_DIR" = "<path>" ]` — **a check on the directory's
-NAME.** On 2026-09-06 a dir called `~/.claude-v3-jasonh` authenticated as a *different* account while a
+NAME.** On 2026-09-06 a dir named for one account authenticated as a *different* one while a
 21-arm preflight read 21/21 CLEAR. Replaced with a check on `oauthAccount.accountUuid`, read at the
 object, refusing on mismatch.
 ⛔⛔ **AND THE FIRST CUT OF THAT GUARD WAS BROKEN, IN THE FAIL-CLOSED DIRECTION.** Its inline Python
@@ -848,7 +856,7 @@ empty — so it **refused unconditionally**. Driven:
   RED  wrong uuid          rc=3  "...got deadbeef-0000-..."   <- names the value it actually read
   RED  .claude.json absent rc=3  "...got UNREADABLE"
   RED  oauthAccount absent rc=3  "...got UNREADABLE"
-  GREEN true uuid          rc=0  "ACCOUNT VERIFIED uuid=27b7f909-..."  + ctl/account.tsv written
+  GREEN true uuid          rc=0  "ACCOUNT VERIFIED uuid=<ACCOUNT B>"   + ctl/account.tsv written
 ```
 **Both RED arms had passed against the broken guard, reporting the exact right message and the exact
 right exit code.** ⇒ 🔑 ***A FAIL-CLOSED GUARD THAT IS BROKEN IS INDISTINGUISHABLE FROM A WORKING ONE
@@ -860,11 +868,11 @@ addendum 7 §G1's sensitivity arm, one night later, on a different instrument.
 wrong one.*
 
 ## H4 · ✅ THE FENCE NEEDS NO CHANGE, AND THIS CORRECTS A CLAIM THIS SEAT MADE THIS MORNING
-On relight this seat posted that the sealed fence *"denies `.claude-v3-jasonh` as a peer, so re-render
+On relight this seat posted that the sealed fence *"denies ACCOUNT B's config dir as a peer, so re-render
 and re-seal is owed before a launch."* **Measured, that is wrong in its consequence.**
 ```
-  the ruled account's cfg   12 occurrences      the previous account's cfg   12 occurrences
-  permissions.deny 246 rules · sandbox denyRead 61 · denyWrite 67 — jasonh in ALL THREE
+  ACCOUNT B's cfg   12 occurrences      ACCOUNT A's cfg   12 occurrences
+  permissions.deny 246 rules · sandbox denyRead 61 · denyWrite 67 — ACCOUNT B in ALL THREE
 ```
 The deny-set is a `~/.claude*` glob taken at render time and it covers **both** config dirs
 **symmetrically**. Denying the cell's own config dir to the AGENT is the intent, not a fault — the
@@ -914,7 +922,7 @@ Three of the four cells reached LIVE last night before the weekly limit and left
 `<synthetic>` is the client's own locally-generated message — the limit dialog. **No served turn, no
 subject output, no tokens.** ⇒ A restart is clean, and this is measured because **size is not content**.
 The three trees are archived to `~/specchange-phase2-aborted-<ts>/` with a full `ctl/` snapshot per
-cell, so phase 2's record under `jasonh` is unmixed. The boot counter is per-invocation (`boots=0` is
+cell, so phase 2's record under ACCOUNT B is unmixed. The boot counter is per-invocation (`boots=0` is
 initialised inside `cell-watch.sh`), so nothing is inherited.
 
 ## H7 · ⚖️ NEW STANDING ORDER — **TOKEN COSTS BESIDE DOLLAR COSTS**
@@ -929,7 +937,7 @@ backwards from price**, which would silently re-introduce the pricing assumption
 remove.
 
 ## H8 · 📌 THE OPERATIONAL COUPLING THIS CREATES, WHICH IS NOT A BLOCKER BUT IS NOT NOTHING
-`bench`'s SEAT also runs on `jasonh`. Until now the seat and the cells drew on different pools, so a
+`bench`'s SEAT also runs on ACCOUNT B. Until now the seat and the cells drew on different pools, so a
 wave could not starve the seat that runs it. **They now share one.** At dispatch the pool read
 `12/20/4`. ⇒ For the four-cell wave this is immaterial; for P1's ~300 cells it is a real constraint,
 and the campaign should not discover it the way it discovered the weekly limit. Raised here so it is on

@@ -1,5 +1,5 @@
 #!/bin/bash
-# studio_phase.sh — run FROM THE SEAT (yukon): put the full dataset on the Studio for a control/scoring
+# studio_phase.sh — run FROM THE SEAT BOX: put the full dataset on the Studio for a control/scoring
 # phase, or take it (and every gold-bearing harness log) OFF before episodes. episode.sh REFUSES to run
 # while the full dataset is present.   usage: studio_phase.sh in|out   env: STUDIO (ssh host)
 set -u

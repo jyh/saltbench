@@ -1,6 +1,6 @@
 # The hidden-test strength table — row 2's deliverable, over the five cards
 
-Owner: bench. Date: **2026-09-04**. Box: **yukon**. 💵 **Zero model tokens — no model of any kind was
+Owner: bench. Date: **2026-09-04**. Box: **the seat box**. 💵 **Zero model tokens — no model of any kind was
 called.** No cell was run: this is the referee measuring **withheld tests against withheld mutants**,
 squarely inside the gate's *build and receipt only*.
 
