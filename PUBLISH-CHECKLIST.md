@@ -788,9 +788,31 @@ FIND, AND THE ORDER NAMED THREE FILES OF WHICH TWO HAVE NO SITE.*** What upload 
    stamps it. Recording it in the tex would be a second, hand-maintained copy of a number the
    service owns.
 
-### ⚖️ A FORK I AM NOT TAKING ALONE: THE TITLE NAMES TWO SUBSTRATES AND THE PAPER NOW HAS THREE
-The title ends *"with Frontier Baselines on Lean and Verus"*. Since the matrix #1 revision the paper
-reports a third population, five components authored here in Rust.
+### ✅ THE TITLE IS SETTLED, AND IT IS THE OWNER'S OWN STRING — RECORDED HERE BECAUSE THIS IS THE UPLOAD-DAY SECTION
+**Given by the Captain 2026-09-09 15:01 PDT, landed verbatim at `e50ebfd`, 97 characters, no trailing
+period.** Re-measured at the object 2026-09-10 04:2x: the tex title macro, `CITATION.cff` line 3 and
+`CITATION.cff` line 24 are byte identical to each other.
+```
+  SaltBench: A Referee-Gated Protocol for Measuring Method Effects in Machine-Checked Software Work
+```
+⛔⛔ **THIS STRING APPEARED NOWHERE IN THIS FILE UNTIL NOW, WHILE SIX LINES OF IT NAMED SUPERSEDED
+TITLES.** Measured with a positive control: **0** occurrences of the shipping title against **6** of
+the earlier candidates. ⇒ 🔑 ***THE UPLOAD MAP DID NOT CONTAIN THE ONE STRING THE UPLOAD PUTS ON THE
+FORM.*** A reader preparing the submission from this section would have typed a title the artifact
+does not carry.
+
+### ⛔ THE FORK BELOW IS MOOT, KEPT BECAUSE IT RECORDS WHY THE SUBSTRATES ARE NOT IN THE TITLE
+*It read as a LIVE fork, in the present tense, until 2026-09-10 04:2x.* Its premise — *"the title ends
+`with Frontier Baselines on Lean and Verus`"* — **stopped being true at `87ac8c6` on 09/09**, and the
+owner's string removed the substrates along with everything else. **Arm B was recommended and the
+owner's own title took arm B's substance**, so nothing here is owed. The reasoning is kept because it
+is the argument for why a third population does not go in a title, and that argument outlives the
+string it was written about.
+```
+  ITS PREMISE, AS WRITTEN   The title ends "with Frontier Baselines on Lean and Verus". Since the
+                            matrix #1 revision the paper reports a third population, five
+                            components authored here in Rust.
+```
 
 * **arm A, change the title.** It would describe the contents.
 * **arm B, leave it.** ⭐ **RECOMMENDED, and taken unless the owner says otherwise.** The third
@@ -800,9 +822,12 @@ reports a third population, five components authored here in Rust.
   claim in the paper the one the run supports least, which is precisely what Section~(l) exists to
   prevent everywhere else.
 
-⛔ **WHICHEVER ARM IS TAKEN, `CITATION.cff` AND THE `\title{}` MUST MATCH BYTE FOR BYTE.** They carry
-the same string twice today, and a title change that moves one of them is a citation that disagrees
-with the paper it cites.
+⛔ **THE BYTE-FOR-BYTE REQUIREMENT SURVIVES THE FORK AND IS THE LIVE RULE HERE:** `CITATION.cff` and
+the tex title macro must match byte for byte, and a title change that moves one of them is a citation
+that disagrees with the paper it cites. **Verified green above.** ⚠️ Note the site count: the string
+lives in **THREE** places, not two, because `CITATION.cff` carries it at line 3 AND at the
+preferred-citation entry, line 24. It is **not** in `README.md` — a reasonable guess that measures as
+a mismatch and is not one.
 
 
 ## (l) REQUIRED DISCLOSURES FOR ANY WRITE-UP OF MATRIX #1 (v3) — BINDING, not advisory
