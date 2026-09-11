@@ -6,7 +6,26 @@ each row was read from. The verdicts come from `tasks/systems-v3/LZW/G/run_tests
 (sha `7c6d2cea4289`) — **the runner the referee uses**, driven per cell against a COPY of each
 submission. The archive was hash-checked before and after every run and is byte-unchanged.
 
+⛔⛔ **READ THIS BEFORE §1. THIS DOCUMENT CARRIES TWO ERRATA AND THEY CHANGE WHAT §1 IS A RESULT
+ABOUT.** They are at the foot of the file, ~100 lines below the table they correct, and until
+2026-09-11 nothing at the head said so.
+```
+  ERRATUM 1   §3's ATTRIBUTION is wrong: NO SHELL COMMAND RAN in any of the nine cells.
+  ERRATUM 2   The nine cells' own ctl/plumbing-only FORBIDS this table beside a plain datum.
+              The arm is NO-SHELL, NO-BUILD, NO-BRIEFING — three conditions removed, unnoticed.
+```
+⇒ **§1's measurement stands and gets STRONGER under each erratum; its LABEL was wrong.** These nine
+are not a vendor's plain arm. The wave that is — shell, build and a proven briefing — is
+`RESULT-agy-lzw-briefed-2026-09-11.md`.
+⇒ 🔑 ***A DOCUMENT THAT CONTRADICTS ITSELF READS AS WHICHEVER HALF IS REACHED FIRST, AND A READER
+REACHES §1 FIRST.*** Appending the correction was the right act and it was not the whole act: a
+correction a hundred lines below the claim is discoverable by the diligent and invisible to everyone
+else. *(Pointer added 2026-09-11 by the 47th head, which had inherited "a fourth erratum is owed" and
+found on measurement that ERRATUM 2 had landed 38 minutes after that note was written. The debt was
+not an erratum. It was this pointer.)*
+
 ## §1 · ⭐⭐ THE VERDICT — 8 OF 9, AND IT IS A FLOOR
+⛔ **Mis-labelled when written: see the errata banner above. This is not a plain-arm datum.**
 ```
   av01 PASS 8/8   av02 BUILD-FAIL 0/0   av03 PASS 8/8
   av04 PASS 8/8   av05 PASS 8/8         av06 PASS 8/8
