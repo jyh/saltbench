@@ -55,10 +55,41 @@ The treatment runs a verifier, whose steps take minutes. The control verifies no
 never approach the cap. **The deadline truncates the treatment's turns and never the control's.**
 ⇒ ***A CAP THAT BINDS ONE ARM AND NOT THE OTHER IS A TREATMENT, NOT A DEFAULT.***
 
-✅ **RAISING IT UNIFORMLY REMOVES A CONFOUND RATHER THAN CREATING ONE, and this is the load-bearing
-argument:** no plain turn came near five minutes, so a larger cap **cannot change the control's
-behaviour at all.** It binds neither arm — the only state in which the deadline is not a variable.
-Raising it for the treatment alone would have been a different experiment.
+✅ **RAISING IT UNIFORMLY CANNOT CHANGE THE CONTROL:** no plain turn came near five minutes, so a
+larger cap leaves the control's behaviour untouched. Raising it for the treatment alone would have
+been a different experiment.
+
+⛔⛔ **AND THAT IS A STATEMENT ABOUT THE CONTROL, NOT ABOUT THE SYSTEM. RAISING IT KILLED THE NEXT
+CELL.** This paragraph originally claimed the change was free. It was not, and the correction is
+the more useful half of the finding.
+The first re-run cell under the corrected 1800s deadline produced **198 step-update events, ONE
+init, and ZERO result events**; its last step reads a **303-line solution the subject had written**;
+`done_reason NO-FIRST-RESULT`; **SIGKILL at 1320 s**; meter **T = 0**; truncations 0.
+**It looked exactly like nothing ran, and the subject had been working the whole time.**
+```
+  1320 = 600 + 600 + 120   controller first-result patience · persist-probe wait · exit timeout
+  client 300s  / controller 600s  ->  600 > 300   the client truncated, EMITTED A PARTIAL RESULT,
+                                                  and the controller accepted it. It worked.
+  client 1800s / controller 600s  ->  600 < 1800  the controller gives up while the client works.
+```
+The turn-loop controller takes its own per-turn patience, defaulting to 600 s, and **the launcher
+never passed it at all.**
+⇒ 🔑 ***A CAP YOU REMOVE MAY BE THE ONLY THING PRODUCING THE EVENT ITS CONSUMER WAITS FOR.*** The
+five-minute truncation was **arm-correlated and load-bearing at the same time.**
+⇒ 🔑 ***WHEN TWO COMPONENTS EACH CARRY A DEFAULT FOR THE SAME QUANTITY, THE RELATIVE ORDER IS THE
+REAL PARAMETER, AND NOBODY SETS IT.*** The controller patience is now required, passed rather than
+defaulted, **asserted greater than the client deadline**, and recorded in each cell.
+⇒ **THE REPORTING RULE THAT FALLS OUT:** the re-measurement is **truncations AND result events**.
+***A cell with zero truncations and zero results is not a fixed cell, it is a killed one.***
+
+📌 **AND A THIRD PRECONDITION, FOUND THE SAME WAY.** The next cell wrote its briefing receipt, ran,
+and died **three seconds past its access token's expiry** on a `Forbidden` from the token endpoint.
+The credential warm-up had reported *"token unchanged — it was not yet due for refresh"* and the
+wave launched anyway, so the cell began with **five minutes of credential**.
+⇒ ***A WARM-UP THAT ASKS THE CLIENT TO REFRESH GETS THE CLIENT'S OPINION OF "DUE", NOT A GUARANTEED
+WINDOW*** — "unchanged" was reported as success and meant the opposite. The expiry is a claim inside
+the credential file, so the window is a fact about a file; it is now read, and a cell the credential
+cannot cover is refused before it is spent.
 
 📌 **THE SAME QUESTION, ASKED OF EVERY OTHER CAP**, measured rather than assumed:
 ```
