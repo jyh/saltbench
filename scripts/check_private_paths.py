@@ -1068,6 +1068,131 @@ def tree_mode(write: bool) -> int:
 MSG_BASELINE = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                             "private_paths_message_baseline.tsv")
 
+# ---------------------------------------------------------------------------
+# ⛔⛔ THE HISTORY ARM (`--history`), ADDED 2026-09-11 ON THE HELM'S RULING.
+# Measured that night across the fleet: salt, saltbench and saltworks CI run
+# `--range` and `--tree` and ZERO history scans, and `argparse` REJECTED the
+# flag in all three — x86lean's copy was the only one that had it.
+#   ⇒ IT IS NOT THAT CI DECLINED TO RUN THE ARM. THE ARM WAS ABSENT, so the
+#     population it reads had never been looked at. The exposure in this repo
+#     was UNMEASURED — not clean, not dirty, UNLOOKED-AT.
+#
+# WHAT THE OTHER THREE ARMS CANNOT SEE, WHICH IS THE WHOLE REASON FOR THIS ONE:
+#   --range     scans ONE push's delta. A push whose CI run was CANCELLED is
+#               never re-scanned by any later run: each push reads its OWN
+#               range. (This seat's own card, paid for on a live branch.)
+#   --tree      scans the CURRENT tree. A path added in one commit and removed
+#               in the next is INVISIBLE to it — and still in the history a
+#               clone hands out.
+#   --messages  scans commit MESSAGES across all history, never their CONTENT.
+#   ⇒ A private path that entered before this gate existed, or in a push whose
+#     run was cancelled, and was later tidied out of the tree, is reachable by
+#     `git log -p` on a public clone and by NOTHING in this file until now.
+#
+# ⛔ IT IS ITS OWN RATCHET WITH ITS OWN BASELINE, and that is not bookkeeping.
+# The helm's near-miss the same night: it borrowed x86lean's script to measure
+# salt and got "FAIL, 84 private-record paths" — a BASELINE MISMATCH, not a
+# leak, and it was one command from publishing that.
+#   ⇒ 🔑 A BORROWED INSTRUMENT CARRIES ITS OWN BASELINE, SO A CROSS-REPO RUN
+#     MEASURES THE DIFFERENCE BETWEEN BASELINES AND NOT THE SUBJECT.
+# So this arm is implemented HERE, in this repo's own checker, against a
+# baseline written from this repo's own history. Nothing is copied in.
+# ---------------------------------------------------------------------------
+HIST_BASELINE = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                             "private_paths_history_baseline.tsv")
+
+
+def load_hist_baseline() -> set:
+    """The accepted (sha, what) pairs. Absent file = empty set, never a pass."""
+    out = set()
+    if not os.path.exists(HIST_BASELINE):
+        return out
+    with open(HIST_BASELINE, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.rstrip("\n")
+            if not line.strip() or line.startswith("#"):
+                continue
+            parts = line.split("\t")
+            if len(parts) >= 2:
+                out.add((parts[0], parts[1]))
+    return out
+
+
+def history_rows() -> list:
+    """(sha, added text) for every line every commit in history ADDS.
+
+    ⛔ Per commit against its FIRST parent, so a merge is charged for what it
+    brings and not for the whole of the branch it merges. A root commit is
+    diffed against the empty tree, or its contents would never be read at all —
+    and the first commit is exactly where a pre-gate path would sit.
+    """
+    EMPTY_TREE = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
+    shas = subprocess.run(["git", "rev-list", "HEAD"], capture_output=True,
+                          text=True, encoding="utf-8", check=True).stdout.split()
+    rows = []
+    for sha in shas:
+        parents = subprocess.run(["git", "rev-list", "--parents", "-n", "1", sha],
+                                 capture_output=True, text=True, encoding="utf-8",
+                                 check=True).stdout.split()
+        base = parents[1] if len(parents) > 1 else EMPTY_TREE
+        out = subprocess.run(["git", "diff", "--unified=0", "--no-color", base, sha],
+                             capture_output=True, text=True, encoding="utf-8",
+                             errors="replace", check=False).stdout
+        for line in out.splitlines():
+            if line.startswith("+") and not line.startswith("+++"):
+                rows.append((sha[:12], line[1:]))
+    return rows
+
+
+def history_mode(write: bool) -> int:
+    if is_shallow():
+        print("FAIL: this is a SHALLOW clone. A full-history ratchet on a "
+              "truncated history scans the truncation, not the history.\n"
+              "      CI must check out with `fetch-depth: 0` for this job.")
+        return 1
+    try:
+        rows = history_rows()
+    except subprocess.CalledProcessError as e:
+        print(f"FAIL: could not read history from HEAD: {e}")
+        return 1
+    # ⛔ AN EMPTY SCAN IS NOT A CLEAN SCAN. Same refusal as every other arm:
+    #   this gate reports a NEGATIVE, and a negative from a population of zero
+    #   is the shape every silent failure in this campaign has taken.
+    if _is_empty_scan_fatal(rows):
+        print("FAIL: scanned ZERO added lines across HEAD's history. An empty "
+              "scan is not a clean scan — this gate refuses to report success "
+              "on it.")
+        return 1
+    found = scan(rows)
+    per = {}
+    for sha, what, line in found:
+        per.setdefault((sha, what), line)
+    if write:
+        with open(HIST_BASELINE, "w", encoding="utf-8", newline="") as fh:
+            fh.write("# private_paths_history_baseline.tsv -- ACCEPTED historical commits whose "
+                     "ADDED LINES carry a private-record path (check_private_paths.py --history).\n"
+                     "# sha<TAB>what. NEVER the line itself: an excerpt would put the path into the "
+                     "tree, where the tree ratchet reds on it.\n"
+                     "# A pushed commit's content cannot be repaired without a force-push (ruled out "
+                     "08/30), so this list does not shrink; a growth is a reviewed diff.\n")
+            for k in sorted(per):
+                fh.write(f"{k[0]}\t{k[1]}\n")
+        print(f"check_private_paths --history --write-baseline: {len(per)} accepted "
+              f"finding(s) written to {os.path.basename(HIST_BASELINE)}")
+        return 0
+    base = load_hist_baseline()
+    new = [k for k in sorted(per) if k not in base]
+    ncommits = len(set(r[0] for r in rows))
+    if new:
+        print(f"FAIL: {len(new)} NEW private-record path(s) in history, not in "
+              f"{os.path.basename(HIST_BASELINE)} ({ncommits} commits scanned):")
+        for sha, what in new[:20]:
+            print(f"  {sha}  {what}")
+        return 1
+    print(f"check_private_paths --history: OK ({ncommits} commits scanned, "
+          f"{len(rows)} added lines; {len(base)} accepted historical finding(s), 0 new)")
+    return 0
+
 
 def load_msg_baseline():
     """set of accepted shas, or None when no baseline file exists.
@@ -1171,14 +1296,20 @@ def main() -> int:
                     help="ratchet: whole-tree residue vs the committed baseline")
     ap.add_argument("--messages", action="store_true",
                     help="ratchet: every message reachable from HEAD vs the committed baseline")
+    ap.add_argument("--history", action="store_true",
+                    help="ratchet: added lines of EVERY commit in history vs the "
+                         "committed baseline (the arm --range and --tree cannot see)")
     ap.add_argument("--write-baseline", action="store_true",
                     help="with --tree/--messages: (re)write that accepted-residue baseline")
     args = ap.parse_args()
 
-    if args.tree and args.messages:
-        print("FAIL: --tree and --messages are separate ratchets with separate "
-              "baselines; run them as separate steps so a red names its arm.")
+    if sum(bool(x) for x in (args.tree, args.messages, args.history)) > 1:
+        print("FAIL: --tree, --messages and --history are separate ratchets with "
+              "separate baselines; run them as separate steps so a red names its arm.")
         return 1
+
+    if args.history:
+        return history_mode(args.write_baseline)
 
     if args.tree:
         return tree_mode(args.write_baseline)
