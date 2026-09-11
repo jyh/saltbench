@@ -229,7 +229,14 @@ jobs:
     # PATHS). The names were replaced by role words and this arm holds the class. Tree scan, every
     # push; the gate proves it can fail before it is allowed to pass.
     steps:
+      # ⛔ fetch-depth: 0 — the history arm below needs the history. Its first run
+      #   scanned ONE commit and printed OK, while the sibling job in this same file
+      #   scanned 358: the default checkout is shallow. The script now refuses a
+      #   shallow clone too, because a guard that lives only in a workflow is a guard
+      #   the script's reader cannot see.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

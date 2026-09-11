@@ -237,7 +237,27 @@ def added_rows(base: str, sha: str) -> list:
     return rows
 
 
+def _is_shallow() -> bool:
+    return _git(["rev-parse", "--is-shallow-repository"]).strip() == "true"
+
+
 def history_mode(write: bool) -> int:
+    # ⛔⛔ A SHALLOW CLONE FAILS, AND THIS GUARD WAS MISSING FOR ONE CI RUN.
+    #   Driven, and caught only by reading the COUNT in a PASSING line rather than the
+    #   colour beside it: this arm's first CI run printed
+    #       check_infra_names --history: OK (1 commits scanned; 40 accepted, 0 new)
+    #   while the sibling in the same workflow printed 358. The job checks out at the
+    #   default depth, and without this guard a one-commit history scans the truncation
+    #   and reports success -- a green that means nothing, in a gate whose whole job is
+    #   to report a negative.
+    #   ⇒ 🔑 THE WORKFLOW WAS ALSO FIXED (fetch-depth: 0), AND THAT IS NOT THE REPAIR.
+    #     A script that depends on its caller being configured correctly has moved the
+    #     guard to the one place a reader of the script cannot see it.
+    if _is_shallow():
+        print("FAIL: this is a SHALLOW clone. A full-history ratchet on a truncated "
+              "history scans the truncation, not the history.\n"
+              "      CI must check out with `fetch-depth: 0` for this job.")
+        return 1
     shas = _git(["rev-list", "HEAD"]).split()
     if not shas:
         print("FAIL: scanned ZERO commits from HEAD. An empty scan is not a clean scan.")
