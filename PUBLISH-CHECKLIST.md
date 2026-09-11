@@ -773,13 +773,40 @@ unassigned DOI in one place and a real one in another.
 assigned; after release they must say what it *is*. A find-and-replace on the identifier leaves the
 future tense standing beside the number.
 
-### ⛔⛔ THE ARXIV ID HAS EXACTLY ONE SITE TODAY, AND IT IS NOT ONE OF THE THREE THE ORDER NAMES
+### ✅✅ THE ARXIV ID IS LANDED — `arXiv:2609.11076`, 2026-09-10. THE BLOCK BELOW IS DISCHARGED AND IS KEPT AS HISTORY
+**The identifier exists and all three sites carry it.** Verified at the object BEFORE any site moved,
+because an identifier handed over in prose is a TYPED value and a receipt value is DERIVED:
+```
+  https://arxiv.org/abs/2609.11076
+    title      SaltBench: A Referee-Gated Protocol for Measuring Method Effects in
+               Machine-Checked Software Work     <- byte-identical to the title recorded below
+    author     Jason Hickey       submitted 2026-09-10
+    class      cs.SE primary, cross-listed cs.LO
+  apply_arxiv_id.py --check   NOT YET LANDED  ->  LANDED (CITATION.cff 1 · README.md 1 · PROVENANCE.md ours + 3 citations)
+```
+⛔ **THE CLASSES LANDED THE REVERSE OF EVERY ORDER IN THE RECORD**, which named `cs.LO` primary and
+`cs.SE`/`cs.AI` cross-listed. What exists is **`cs.SE` primary, `cs.LO` cross-list**. No file in this
+repository claims a class, so nothing was owed — recorded so that a later reader does not take the
+plan for the fact.
+⛔ **AND ONE CLAIM IN THE APPLIED DIFF CARRIES A LOCAL DEPENDENCY NO GATE READS.** The README line
+says arXiv builds its version from that same `.tex`, which is true only while the tracked file is
+still the submitted bytes. Measured at the landing commit, with six PRs merged since the click:
+`paper/saltbench-v1.tex` is blob `45f8d197` at both the tip and `a9b7bdb`, sha256
+`703dc74f...5035ab80`, 113,352 B, and `git diff a9b7bdb..HEAD -- paper/` is EMPTY. **Re-measure that
+before editing the tex**, because the sentence goes false silently.
+⇒ 🔑 ***A DISCHARGE IS NOT A DELETION: the numbered map below is what upload day actually
+needed, and it was right.*** It is kept in the past tense it has earned.
+
+*(what follows is the block as written before the identifier existed)*
+
+⛔⛔ **THE ARXIV ID HAD EXACTLY ONE SITE, AND IT WAS NOT ONE OF THE THREE THE ORDER NAMED**
 Measured across the tree: the only place prepared for it is `CITATION.cff`,
 `preferred-citation.notes: "arXiv identifier to be added at submission"`. **`README.md` and
 `PROVENANCE.md` have no arXiv line at all**, so on upload day those are ADDITIONS and not edits.
 
 ⇒ 🔑 ***AN EDIT YOU HAVE TO REMEMBER TO MAKE IS A DIFFERENT RISK FROM AN EDIT YOU HAVE TO REMEMBER TO
-FIND, AND THE ORDER NAMED THREE FILES OF WHICH TWO HAVE NO SITE.*** What upload day needs:
+FIND, AND THE ORDER NAMED THREE FILES OF WHICH TWO HAVE NO SITE.*** What upload day needed, all four
+✅ **DONE** (1-3 written by `scripts/apply_arxiv_id.py`, 4 deliberately untouched):
 
 1. `CITATION.cff` — replace the `notes` line with the identifier, and set `preferred-citation.url`.
 2. `README.md` — a citation line beside the paper reference at line 10, naming the arXiv id.
