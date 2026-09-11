@@ -663,6 +663,49 @@ produced the result. **A disclosure must not be closed by committing an instance
 ```
 
 **AND `AMENDMENT 26` IS STILL ON NO REF, re-measured at this READY as the entry above requires.**
+
+---
+
+### ✅ RE-MEASURE AT THE READY OF 2026-09-10 (the arXiv-identifier READY). BOTH ENTRIES ABOVE MOVE.
+Appended beneath the entries above, never edited over them. Driven by `paper` in a worktree off
+`origin/main` after `git fetch --all`, with the same positive controls the entries specify.
+
+**1. `AMENDMENT 26` IS NO LONGER ON NO REF, AND THE SECOND ARM OF ITS RELEASE CONDITION IS TAKEN HERE.**
+```
+  AMENDMENT-20  FOUND      AMENDMENT-23  FOUND      AMENDMENT-26  FOUND  <- was ON NO REF
+  AMENDMENT-21  ON NO REF  AMENDMENT-24  FOUND
+  AMENDMENT-22  FOUND      AMENDMENT-25  FOUND
+  AMENDMENT-26-n3-topup-2026-09-09.md lives on TWO named branches, and NOT at `main`:
+      refs/remotes/backup/systems-v3
+      refs/remotes/backup/bench/specchange-verdicts-2026-09-09
+```
+⇒ **This paragraph IS the discharge.** The release condition was an OR — *the document reaches
+`main`, OR a line in this section recording that it lives on a named branch, the way 21 and 22 already
+are* — and **a release condition with an OR does not have one owner.** The first arm is `systems`/`bench`'s
+and remains open; the second arm was always this seat's to write, and writing it is cheaper than waiting.
+⚠️ **STATED AT ITS LIMIT:** an absence measured over `for-each-ref` is a claim about THIS object store
+after a fetch, not about the world. `AMENDMENT-21` reads ON NO REF here while the disclosure at
+`harness/systems-v3/PREDICTIONS-pricing-set-2026-09-06.md` says 21 and 22 both live on branches — **22
+resolves and 21 does not**, so that disclosure is now half-confirmed and half-unmeasurable from this box.
+That is `systems`/`bench`'s to reconcile; it gates nothing here.
+
+**2. READING B'S PROVENANCE BLOCK IS MET IN ITS LOAD-BEARING HALF, WITH ONE NAMED ELEMENT SHORT.**
+```
+  harness/systems-v3/RESULT-n3-topup-2026-09-09.md   TRACKED AT origin/main
+  the paper cites it at 11 \src{} markers
+  check_paper_sources                                OK, 125 markers, every cited path tracked
+```
+⇒ The defect the block was opened for is gone: the numbers no longer live only in a bus post, and
+CI proves every marker resolves. **Against the block's own fully-specified content list, 8 of 9 named
+elements are present** (harvest METER, post-end cost, both readings, pooled sds, p-values, the A-to-B
+divergence, the AMENDMENT 26 bounds). ⛔ **The two censuses are ABSENT from that file by every word
+tried** (`census`, `inventory`, `roll call`, `enumerat`). **Owner `systems`/`bench`: either add them or
+strike them from the condition** — a release condition nobody can satisfy as written is not a block,
+it is a stalled one. It gates nothing about the artifact: the paper is correct and its provenance now
+resolves.
+📌 **Neither entry gates anything, and nothing here is owed to or by the published paper.** The paper
+is on arXiv as `arXiv:2609.11076` and its bytes are frozen; both of these are provenance claims about
+this repository.
 The document exists at no path on any of the 50 refs. Positive control: the amendment documents for
 11 through 25 are all present as files. Same owner, same fix — the release condition above closes
 this one too.
