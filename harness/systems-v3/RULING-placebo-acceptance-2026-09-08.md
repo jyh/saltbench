@@ -849,3 +849,58 @@ its premise says **"LZW, CRC-32 — the only two that exist"** while **FIVE prob
 and **stage 1 is at n=3 on three of five** — `FreeList` and `Paxos` need **one `plain` cell each.**
 ⇒ **The row stays OPEN, its scope corrected and its gap named as two cells** — not as "stage 1 is
 outstanding", which is what it read as before and what nobody could act on.
+
+---
+
+# ⛔⛔ ADDENDUM 2026-09-11 — THE RULED SHA CAN NEVER MATCH A FIRED CELL, AND THAT LOOKS LIKE A FINDING
+**bench · added when the placebo arm was ratified into P1, before any placebo result is published**
+
+This ruling opens with *"THE SHA IS THE ARTEFACT AND THE PATH IS NOT"*, which is right and which cost
+two destroyed revisions to learn. **It gives no way to check that a fired cell carries those bytes,
+and the obvious way is wrong.**
+
+## §B1 · THE TRAP, WALKED INTO AND MEASURED
+```
+  accepted            CLAUDE.placebo.r4.md   sha256/16 8699d11ea6f0f792   11,584 B
+  a fired cell        repo/CLAUDE.md         sha256/16 2950946975b8da2b   11,583 B
+  cmp                 differ: char 3, line 1
+```
+**One byte, at the very start — which reads exactly like a tampered or unruled artefact.** It is not.
+The diff is one line and the whole of it:
+```
+  -  # <Task>: session instructions (the manual)
+  +  # Crc32: session instructions (the manual)
+```
+⇒ 🔑 ***A RULING THAT PINS A TEMPLATE BY SHA CANNOT BE CHECKED AGAINST A RENDERED CELL BY SHA, AND
+THE MISMATCH IS GUARANTEED FOR EVERY CELL THAT WILL EVER RUN.*** A head who compares shas concludes
+the arm ran unruled. **That is a false alarm in the expensive direction: it impugns an entire arm's
+cells over a difference the design put there on purpose.**
+
+## §B2 · ✅ THE CHECK THAT IS SOUND, AND THE CENSUS IT RETURNS
+`harness/systems-v3/verify_arm_render.py` renders the template with the **declared** substitution and
+compares the RESULT to the cell's file **byte for byte** — never "the diff looks like a substitution".
+```
+  ~/cells-placebo          16 cells   16 carry the accepted template, rendered   0 REFUSED
+  ~/cells-placebo-refire   15 cells   15 carry the accepted template, rendered   0 REFUSED
+  ---- 31 of 31 placebo cells are on the ruled artefact, verified BY CONTENT ----
+```
+⛔ **The substitution is a PARAMETER, never a guess about wording.** An earlier cut classified a diff
+line as a substitution if it contained the placeholder *or a phrase from the template's title* — **a
+filter that names one member of a set, which passes whatever it was written against and goes vacuous
+the moment the wording changes.**
+✅ **DRIVEN IN BOTH DIRECTIONS BEFORE USE, because a checker nobody tested is a promise nobody keeps:**
+```
+  GREEN   an unmodified copy of a real cell                    PASSES
+  RED     ONE character changed mid-file                       CAUGHT, named at byte 5786, rc 1
+  RED     a placeholder that does not occur in the template    REFUSES — "a checker whose
+          substitution never fires passes every cell"
+```
+
+## §B3 · WHAT THIS DOES AND DOES NOT ESTABLISH
+✅ **Establishes:** every placebo cell fired to date carries the bytes this ruling accepted, modulo the
+one declared substitution. **The arm's provenance is now a measurement rather than an assumption**,
+which it needed to be before the placebo enters a published comparison.
+⛔ **Does not establish:** anything about the Captain's review (desk row `HE` — *"No default on the
+review — it is the Captain's by his word"*), nor about whether the placebo cells were run under the
+same caps and configuration as the arms they will be compared against. **Those are separate and both
+are open.**
