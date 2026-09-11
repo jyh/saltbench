@@ -5,6 +5,15 @@ source, the exact pin the campaign used, the licence as read at the object on 20
 repository redistributes from it, and where the source is cited in the record. Where a licence was
 read from a secondary record rather than the object, the row says so.
 
+## 0. This repository's own paper
+
+| field | value |
+|---|---|
+| paper | Hickey, "SaltBench: A Referee-Gated Protocol for Measuring Method Effects in Machine-Checked Software Work", arXiv:2609.11076, https://arxiv.org/abs/2609.11076 |
+| source | `paper/saltbench-v1.tex` in this repository. arXiv builds its own PDF from that file; `paper/saltbench-v1.pdf` is the `tectonic` build committed beside it |
+| licence | CC-BY-4.0, as `LICENSE-DATA` (the owner's choice of 2026-09-02, recorded in `CITATION.cff`) |
+| relation | every number in the paper names the file in this repository it was copied from, checked by `scripts/check_paper_sources.py` |
+
 ## 1. Task populations
 
 ### 1.1 CLEVER (the S2-Lean population)
