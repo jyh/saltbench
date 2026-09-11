@@ -920,6 +920,60 @@ def self_test() -> int:
     if len(finding_lines([("x", "w", "")])) != 1:
         failures.append("an empty excerpt prints identity+shape alone, never a blank")
 
+    # 5. ⛔⛔ THE HISTORY ARM'S MERGE SEMANTICS, ON A REAL THROWAWAY REPOSITORY.
+    #    These exist because the first cut of history_rows() diffed against the FIRST
+    #    PARENT alone and therefore charged a MERGE for everything the other branch
+    #    brought — content the branch commit had already been charged for, one row above
+    #    it in the same scan. It is fail-closed, so nothing was missed; it inflates every
+    #    baseline with duplicate shas and, worse, a future merge carrying an
+    #    already-accepted line is charged as a NEW sha and REDS. A gate that reds on a
+    #    correct merge is a gate people learn to override.
+    #    ⇒ Both directions are driven, because fixing the first by SKIPPING merges would
+    #      make an EVIL MERGE invisible — content neither parent had.
+    tmp5 = tempfile.mkdtemp(prefix="ppgate-history-")
+    here5 = os.getcwd()
+    try:
+        r5 = os.path.join(tmp5, "r")
+        def g5(*a):
+            return subprocess.run(["git"] + list(a), cwd=r5, capture_output=True, text=True)
+        subprocess.run(["git", "init", "-q", "-b", "trunk", r5], capture_output=True)
+        g5("config", "user.email", "t@t"); g5("config", "user.name", "t")
+        open(os.path.join(r5, "a.txt"), "w").write("base\n")
+        g5("add", "-A"); g5("-c", "core.hooksPath=/dev/null", "commit", "-qm", "root")
+        g5("checkout", "-qb", "side")
+        open(os.path.join(r5, "leak.md"), "w").write("see " + _SEAT + "/briefs/x.md\n")
+        g5("add", "-A"); g5("-c", "core.hooksPath=/dev/null", "commit", "-qm", "side adds it")
+        adding = g5("rev-parse", "HEAD").stdout.strip()[:12]
+        g5("checkout", "-q", "trunk")
+        open(os.path.join(r5, "b.txt"), "w").write("other\n")
+        g5("add", "-A"); g5("-c", "core.hooksPath=/dev/null", "commit", "-qm", "trunk moves on")
+        g5("-c", "core.hooksPath=/dev/null", "merge", "-q", "--no-ff", "side", "-m", "merge side")
+        merge_sha = g5("rev-parse", "HEAD").stdout.strip()[:12]
+        os.chdir(r5)
+        charged = {sha for sha, _w, _l in scan(history_rows())}
+        os.chdir(here5)
+        if adding not in charged:
+            failures.append("--history must charge the commit that ADDED the path")
+        if merge_sha in charged:
+            failures.append("--history must NOT charge a merge for a line a parent already had")
+        # the EVIL MERGE: content NEITHER parent had, introduced by the merge itself
+        g5("checkout", "-qb", "evil", "HEAD~1")
+        open(os.path.join(r5, "c.txt"), "w").write("x\n")
+        g5("add", "-A"); g5("-c", "core.hooksPath=/dev/null", "commit", "-qm", "evil side")
+        g5("checkout", "-q", "trunk")
+        g5("-c", "core.hooksPath=/dev/null", "merge", "-q", "--no-ff", "--no-commit", "evil")
+        open(os.path.join(r5, "evil.md"), "w").write("see " + _SEAT + "/briefs/evil.md\n")
+        g5("add", "-A"); g5("-c", "core.hooksPath=/dev/null", "commit", "-qm", "evil merge")
+        evil_sha = g5("rev-parse", "HEAD").stdout.strip()[:12]
+        os.chdir(r5)
+        charged2 = {sha for sha, _w, _l in scan(history_rows())}
+        os.chdir(here5)
+        if evil_sha not in charged2:
+            failures.append("--history must charge an EVIL MERGE for content no parent had")
+    finally:
+        os.chdir(here5)
+        shutil.rmtree(tmp5, ignore_errors=True)
+
     for f in failures:
         print(f"SELF-TEST FAIL: {f}")
     if failures:
@@ -1127,20 +1181,48 @@ def history_rows() -> list:
     and the first commit is exactly where a pre-gate path would sit.
     """
     EMPTY_TREE = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
+
+    def added_against(base, sha):
+        out = subprocess.run(["git", "diff", "--unified=0", "--no-color", base, sha],
+                             capture_output=True, text=True, encoding="utf-8",
+                             errors="replace", check=False).stdout
+        return [l[1:] for l in out.splitlines()
+                if l.startswith("+") and not l.startswith("+++")]
+
     shas = subprocess.run(["git", "rev-list", "HEAD"], capture_output=True,
                           text=True, encoding="utf-8", check=True).stdout.split()
     rows = []
     for sha in shas:
         parents = subprocess.run(["git", "rev-list", "--parents", "-n", "1", sha],
                                  capture_output=True, text=True, encoding="utf-8",
-                                 check=True).stdout.split()
-        base = parents[1] if len(parents) > 1 else EMPTY_TREE
-        out = subprocess.run(["git", "diff", "--unified=0", "--no-color", base, sha],
-                             capture_output=True, text=True, encoding="utf-8",
-                             errors="replace", check=False).stdout
-        for line in out.splitlines():
-            if line.startswith("+") and not line.startswith("+++"):
-                rows.append((sha[:12], line[1:]))
+                                 check=True).stdout.split()[1:]
+        if not parents:
+            # a ROOT commit against the empty tree: the first commit is exactly where a
+            # pre-gate path sits, and diffing it against nothing would never read it.
+            add = added_against(EMPTY_TREE, sha)
+        elif len(parents) == 1:
+            add = added_against(parents[0], sha)
+        else:
+            # ⛔⛔ A MERGE IS CHARGED ONLY FOR CONTENT **NO PARENT HAD**, AND THE FIRST CUT OF
+            #   THIS FUNCTION GOT IT WRONG. It diffed against the FIRST PARENT alone, so a
+            #   merge was charged for everything the OTHER branch brought — content the branch
+            #   commit had ALREADY been charged for, one row above it in the same scan.
+            #   ⇒ Driven on a throwaway repo (root, side branch adding a path, main moves on,
+            #     --no-ff merge): the arm charged TWO commits, the adding one and the merge.
+            #   ⇒ It is FAIL-CLOSED, so nothing was missed — but it inflates every baseline
+            #     with duplicate shas and, worse, **a future merge that carries an
+            #     already-accepted line is charged as a NEW sha and REDS.** A gate that reds on
+            #     a correct merge is a gate people learn to override.
+            #   ⇒ 🔑 AND THE EVIL MERGE IS WHY THIS IS AN INTERSECTION AND NOT A SKIP: a merge
+            #     can introduce content NEITHER parent had, and skipping merges would make that
+            #     invisible. A line is the merge's own exactly when it is added against EVERY
+            #     parent.
+            sets = [set(added_against(pa, sha)) for pa in parents]
+            common = set.intersection(*sets) if sets else set()
+            # preserve order and multiplicity from the first-parent view
+            add = [l for l in added_against(parents[0], sha) if l in common]
+        for line in add:
+            rows.append((sha[:12], line))
     return rows
 
 
