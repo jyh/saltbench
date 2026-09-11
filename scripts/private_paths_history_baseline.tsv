@@ -1,0 +1,17 @@
+# private_paths_history_baseline.tsv -- ACCEPTED historical commits whose ADDED LINES carry a private-record path (check_private_paths.py --history).
+# sha<TAB>what. NEVER the line itself: an excerpt would put the path into the tree, where the tree ratchet reds on it.
+# A pushed commit's content cannot be repaired without a force-push (ruled out 08/30), so this list does not shrink; a growth is a reviewed diff.
+16dbad8040ec	a path into a private-record repo
+16dbad8040ec	a rootless path into the private record (briefs-/fleet-shape)
+1d8591b2eebe	a path into a private-record repo
+2d43a4d90bd4	a path into a private-record repo
+2ef7505be637	a path into a private-record repo
+4a266049ebee	a path into a private-record repo
+58a3ecc77d6f	a path into a private-record repo
+79835dac87de	a path into a private-record repo
+86f9e04655bc	a path into a private-record repo
+9ef690a95308	a path into a private-record repo
+a03bd3cdaaef	a path into a private-record repo
+cb8cea300463	a path into a private-record repo
+e09e6a1d32d9	a path into a private-record repo
+efd41256026e	the kit run surface

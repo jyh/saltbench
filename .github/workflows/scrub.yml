@@ -201,6 +201,26 @@ jobs:
           # Anything NEW reds, on every push, on every branch.
           python scripts/check_private_paths.py --messages
 
+      - name: history (added lines of every commit) vs the committed baseline
+        run: |
+          # ⛔⛔ ADDED 2026-09-11 ON THE HELM'S RULING. Until tonight this repo ran
+          # --range, --tree and --messages and ZERO history scans, and `--history`
+          # did not EXIST in the script: argparse rejected it. So the population it
+          # reads had never been looked at -- not clean, not dirty, UNLOOKED-AT.
+          # What the other three arms cannot see, each for its own reason:
+          #   --range     scans ONE push's delta, and a push whose run was CANCELLED
+          #               is never re-scanned by any later run.
+          #   --tree      scans the CURRENT tree, so a path added in one commit and
+          #               removed in the next is invisible -- and still in the history
+          #               every clone of this public repo hands out.
+          #   --messages  reads commit MESSAGES, never their content.
+          # Measured the first time this ran: 14 accepted findings in 13 commits, and
+          # NONE of them still in the tree. They are frozen in the baseline, which is
+          # a RATCHET AND NOT A REPAIR: a pushed commit's content cannot be changed
+          # without a force-push, ruled out 08/30 and a Captain-level call on a public
+          # repo that an arXiv paper now cites. This stops the NEXT one.
+          python scripts/check_private_paths.py --history
+
   infra-names:
     name: no infrastructure name (host, account) in the public tree
     runs-on: ubuntu-latest
@@ -215,6 +235,19 @@ jobs:
           python-version: "3.12"
       - run: python scripts/check_infra_names.py --self-test
       - run: python scripts/check_infra_names.py
+      - name: history (added lines of every commit) vs the committed baseline
+        run: |
+          # ⛔⛔ ADDED 2026-09-11, AND THIS GATE WAS WORSE THAN ITS SIBLING. Until
+          # tonight `check_infra_names.py --help` read `[-h] [--self-test]`: no range
+          # arm, no history arm, no message arm. It had never read a single commit --
+          # and it is the gate on HOST AND ACCOUNT NAMES, the class the fleet has an
+          # explicit law about and the one that actually leaked.
+          # ⇒ A GATE WITH ONE ARM IS CLEAN ABOUT THE ONLY POPULATION IT CAN SEE, and
+          #   the tree is the population that MOVES.
+          # Measured the first time this ran on 360 commits: the tree carries 0, and
+          # history carries 107 occurrences across 36 commits, NONE still in the tree.
+          # Frozen and counted here; the repair is not this arm's to make.
+          python scripts/check_infra_names.py --history
 
   paper-sources:
     name: every source marker in the paper resolves

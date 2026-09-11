@@ -33,6 +33,7 @@ a gate that gets abandoned.
 from __future__ import annotations
 
 import argparse
+import os
 import pathlib
 import subprocess
 import sys
@@ -177,17 +178,148 @@ def _declared_ok(names) -> bool:
     return len(names) >= DECLARED_NAMES
 
 
+
+# ---------------------------------------------------------------------------
+# ⛔⛔ THE HISTORY AND RANGE ARMS, ADDED 2026-09-11.
+# Measured that night, on the helm's ruling about the SIBLING gate: this file
+# had `[-h] [--self-test]` and nothing else. No range arm, no history arm, no
+# message arm. It scanned the tracked TREE and had never read a single commit —
+# and it is the gate on HOST AND ACCOUNT NAMES, the class the fleet has an
+# explicit law about and the one that actually leaked.
+#   ⇒ Measured over saltbench's 360 commits the first time this ran:
+#       current tree   0 occurrences        ✅
+#       history      107 occurrences in 36 commits, NONE of them still in the tree
+#   ⇒ 🔑 A GATE WITH ONE ARM IS CLEAN ABOUT THE ONLY POPULATION IT CAN SEE, and
+#     the tree is the population that MOVES. Everything it ever caught and
+#     everything anyone ever tidied away is still in a public clone.
+#
+# ⛔ THE RATCHET IS NOT A REPAIR AND MUST NOT READ AS ONE. A pushed commit's
+# content cannot be changed without a force-push, ruled out 08/30 and in any
+# case a Captain-level call on a public repo an arXiv paper now cites. This
+# freezes the population and COUNTS it. It stops tomorrow's commit and says
+# nothing whatever about yesterday's.
+# ---------------------------------------------------------------------------
+HIST_BASELINE = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                             "infra_names_history_baseline.tsv")
+EMPTY_TREE = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
+
+
+def _git(args: list) -> str:
+    return subprocess.run(["git"] + args, capture_output=True, text=True,
+                          encoding="utf-8", errors="replace").stdout
+
+
+def load_hist_baseline() -> set:
+    """Accepted (sha, file) pairs. An absent file is an EMPTY set, never a pass."""
+    out = set()
+    if not os.path.exists(HIST_BASELINE):
+        return out
+    with open(HIST_BASELINE, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.rstrip("\n")
+            if not line.strip() or line.startswith("#"):
+                continue
+            parts = line.split("\t")
+            if len(parts) >= 2:
+                out.add((parts[0], parts[1]))
+    return out
+
+
+def added_rows(base: str, sha: str) -> list:
+    """(path, added text) for what this commit ADDS. A deletion is never a finding."""
+    out = _git(["diff", "--unified=0", "--no-color", base, sha])
+    rows, path = [], "?"
+    for line in out.splitlines():
+        if line.startswith("+++ b/"):
+            path = line[6:]
+        elif line.startswith("+") and not line.startswith("+++"):
+            rows.append((path, line[1:]))
+    return rows
+
+
+def history_mode(write: bool) -> int:
+    shas = _git(["rev-list", "HEAD"]).split()
+    if not shas:
+        print("FAIL: scanned ZERO commits from HEAD. An empty scan is not a clean scan.")
+        return 1
+    per = {}
+    total = 0
+    for sha in shas:
+        parents = _git(["rev-list", "--parents", "-n", "1", sha]).split()
+        # ⛔ first parent, so a merge is charged for what it BRINGS, not for the
+        #   whole branch; and a root commit against the empty tree, because the
+        #   first commit is exactly where a pre-gate name sits.
+        base = parents[1] if len(parents) > 1 else EMPTY_TREE
+        rows = added_rows(base, sha)
+        if not rows:
+            continue
+        for rel, _i, _line in scan(rows):
+            per.setdefault((sha[:12], rel), 0)
+            per[(sha[:12], rel)] += 1
+            total += 1
+    if write:
+        with open(HIST_BASELINE, "w", encoding="utf-8", newline="") as fh:
+            fh.write("# infra_names_history_baseline.tsv -- ACCEPTED historical commits whose ADDED "
+                     "LINES carry an infrastructure name (check_infra_names.py --history).\n"
+                     "# sha<TAB>file<TAB>count. NEVER the line and NEVER the name: an excerpt would "
+                     "put the name into the tree, where the tree arm correctly reds on it.\n"
+                     "# This list does not shrink without a force-push, which is a Captain-level call "
+                     "on a public repo. A GROWTH is a reviewed diff.\n")
+            for k in sorted(per):
+                fh.write(f"{k[0]}\t{k[1]}\t{per[k]}\n")
+        print(f"check_infra_names --history --write-baseline: {len(per)} accepted (commit, file) "
+              f"pair(s), {total} occurrence(s), written to {os.path.basename(HIST_BASELINE)}")
+        return 0
+    base_set = load_hist_baseline()
+    new = [k for k in sorted(per) if k not in base_set]
+    if new:
+        print(f"FAIL: {len(new)} NEW infrastructure-name finding(s) in history, not in "
+              f"{os.path.basename(HIST_BASELINE)} ({len(shas)} commits scanned):")
+        for sha, rel in new[:20]:
+            print(f"  {sha}  {rel}")
+        return 1
+    print(f"check_infra_names --history: OK ({len(shas)} commits scanned; "
+          f"{len(base_set)} accepted historical (commit, file) pair(s), 0 new)")
+    return 0
+
+
+def range_mode(rev_range: str) -> int:
+    """The arm CI runs on a push: what THIS delta adds, against nothing."""
+    rows = added_rows(*rev_range.split("..", 1)) if ".." in rev_range else added_rows(EMPTY_TREE, rev_range)
+    found = scan(rows)
+    for rel, i, line in found:
+        print(f"  {rel}:{i}: {line}")
+    if found:
+        print(f"FAIL: {len(found)} infrastructure-name occurrence(s) added by {rev_range}")
+        return 1
+    print(f"check_infra_names --range {rev_range}: OK ({len(rows)} added lines, 0 occurrences)")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--self-test", action="store_true")
+    ap.add_argument("--history", action="store_true",
+                    help="ratchet: added lines of EVERY commit in history vs the committed baseline")
+    ap.add_argument("--range", default=None,
+                    help="scan the added lines of a git revision range (the push arm)")
+    ap.add_argument("--write-baseline", action="store_true",
+                    help="with --history: write the accepted-history baseline")
     a = ap.parse_args()
     if a.self_test:
         return self_test()
+    if a.history and a.range:
+        print("FAIL: --history and --range are separate arms; run them separately so a red names its arm.")
+        return 1
     if not _declared_ok(FORBIDDEN):
         print(f"FAIL: {len(FORBIDDEN)} forbidden name(s) against DECLARED_NAMES={DECLARED_NAMES} "
               f"(reconciled {DECLARED_RECONCILED}) -- a set that has shrunk is a gate that has been "
               f"quietly narrowed; refusing to scan.")
         return 1
+    if a.history:
+        return history_mode(a.write_baseline)
+    if a.range:
+        return range_mode(a.range)
     rows = tracked_files()
     if _is_empty_scan_fatal(rows):
         print("FAIL: zero tracked text files -- refusing to call an empty scan clean")

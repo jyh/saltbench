@@ -1,0 +1,43 @@
+# infra_names_history_baseline.tsv -- ACCEPTED historical commits whose ADDED LINES carry an infrastructure name (check_infra_names.py --history).
+# sha<TAB>file<TAB>count. NEVER the line and NEVER the name: an excerpt would put the name into the tree, where the tree arm correctly reds on it.
+# This list does not shrink without a force-push, which is a Captain-level call on a public repo. A GROWTH is a reviewed diff.
+036b4ab7f32c	harness/systems-v3/RESULT-hidden-test-strength-v3.md	1
+0d3a3d112ad3	SCOUT-S2LEAN-STAGE0.md	1
+14b97fa37cfb	harness/systems-v3/AMENDMENT-statement-arm-pilot-2026-09-09.md	2
+15cfdc2e2009	evidence/amend14-instrument-2026-09-01/README.md	1
+16ac6bcd13da	harness/systems-v3/RESULT-n3-topup-2026-09-09.md	1
+18641799d0ab	harness/systems-v3/AMENDMENT-statement-arm-pilot-2026-09-09.md	3
+1b91cffc41c1	DIAGNOSIS-replay-vs-axioms-2026-08-31.md	1
+1b91cffc41c1	evidence/rowAB-replay-diagnosis-2026-08-31/05-the-sweep-scripts.txt	3
+2219c23db600	evidence/amend11-stageC-step1-2026-09-01/README.md	1
+4373d29b828d	SCOUT-STAGE0.md	1
+521bd1fad0fa	harness/systems-v3/AMENDMENT-specchange-taskshape-2026-09-09.md	13
+53b7d2590ba7	harness/systems-v3/RULING-placebo-acceptance-2026-09-08.md	2
+53e6266cc98c	harness/systems-v3/AMENDMENT-statement-arm-pilot-2026-09-09.md	1
+58a3ecc77d6f	SCOUT-S2LEAN-STAGE0.md	6
+63921a5f1c3e	RESULTS-stage0-2026-08-29.md	1
+67a4cdad43c2	SCOUT-S2LEAN-STAGE0.md	4
+67a4cdad43c2	harness/s2lean/run_s2_stage0.sh	1
+79835dac87de	harness/studio_phase.sh	2
+79835dac87de	harness/sync_studio.sh	1
+7ad0e3fd98a4	harness/s2rust/sync_studio_s2rust.sh	1
+7c7cdf6adb3f	harness/systems-v3/AMENDMENT-statement-arm-pilot-2026-09-09.md	2
+86f9e04655bc	harness/s2lean/stage_views.sh	1
+8de0b7466cb1	evidence/amend11-12-freeze-2026-09-01/README.md	1
+9122a4ebdaa1	harness/systems-v3-analysis/RESULT-tokens-table-matrix1-2026-09-10.tsv	33
+97f9406e65a1	S2-RUST-SCOUT-2026-09-02.md	1
+9b8ff309fd92	evidence/amend13-AW-2026-09-02/README.md	1
+9ef690a95308	CLAUDE.md	1
+a03bd3cdaaef	SCOUT-STAGE0.md	3
+a03fc612d71c	AMENDMENT-13-AW-2026-09-01.md	2
+abdb0fd329b8	harness/systems-v3/RESULT-hidden-test-strength-v3.md	1
+b692514c5e92	harness/s2rust-analysis/dt_quote.py	2
+bf03f2d2db9b	TRIAGE-B-failures-2026-09-01.md	1
+c3cb71a6aa44	AMENDMENT-13-AW-2026-09-01.md	2
+c8848fa2778c	harness/systems-v3/AMENDMENT-statement-arm-pilot-2026-09-09.md	2
+cb8cea300463	SCOUT-STAGE0.md	1
+e4deef590dd3	harness/systems-v3/RESULT-n3-topup-2026-09-09.md	1
+e6d65c97cf5f	AMENDMENT-11-stageC-2026-09-01.md	1
+e6d65c97cf5f	harness/s2lean/c_oracle_preflight.py	1
+f46e62c5e2b6	harness/s2rust/provision_studio.sh	2
+fb704cf2a4ff	harness/systems-v3/AMENDMENT-statement-arm-pilot-2026-09-09.md	1
