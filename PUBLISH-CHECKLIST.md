@@ -663,6 +663,49 @@ produced the result. **A disclosure must not be closed by committing an instance
 ```
 
 **AND `AMENDMENT 26` IS STILL ON NO REF, re-measured at this READY as the entry above requires.**
+
+---
+
+### ✅ RE-MEASURE AT THE READY OF 2026-09-10 (the arXiv-identifier READY). BOTH ENTRIES ABOVE MOVE.
+Appended beneath the entries above, never edited over them. Driven by `paper` in a worktree off
+`origin/main` after `git fetch --all`, with the same positive controls the entries specify.
+
+**1. `AMENDMENT 26` IS NO LONGER ON NO REF, AND THE SECOND ARM OF ITS RELEASE CONDITION IS TAKEN HERE.**
+```
+  AMENDMENT-20  FOUND      AMENDMENT-23  FOUND      AMENDMENT-26  FOUND  <- was ON NO REF
+  AMENDMENT-21  ON NO REF  AMENDMENT-24  FOUND
+  AMENDMENT-22  FOUND      AMENDMENT-25  FOUND
+  AMENDMENT-26-n3-topup-2026-09-09.md lives on TWO named branches, and NOT at `main`:
+      refs/remotes/backup/systems-v3
+      refs/remotes/backup/bench/specchange-verdicts-2026-09-09
+```
+⇒ **This paragraph IS the discharge.** The release condition was an OR — *the document reaches
+`main`, OR a line in this section recording that it lives on a named branch, the way 21 and 22 already
+are* — and **a release condition with an OR does not have one owner.** The first arm is `systems`/`bench`'s
+and remains open; the second arm was always this seat's to write, and writing it is cheaper than waiting.
+⚠️ **STATED AT ITS LIMIT:** an absence measured over `for-each-ref` is a claim about THIS object store
+after a fetch, not about the world. `AMENDMENT-21` reads ON NO REF here while the disclosure at
+`harness/systems-v3/PREDICTIONS-pricing-set-2026-09-06.md` says 21 and 22 both live on branches — **22
+resolves and 21 does not**, so that disclosure is now half-confirmed and half-unmeasurable from this box.
+That is `systems`/`bench`'s to reconcile; it gates nothing here.
+
+**2. READING B'S PROVENANCE BLOCK IS MET IN ITS LOAD-BEARING HALF, WITH ONE NAMED ELEMENT SHORT.**
+```
+  harness/systems-v3/RESULT-n3-topup-2026-09-09.md   TRACKED AT origin/main
+  the paper cites it at 11 \src{} markers
+  check_paper_sources                                OK, 125 markers, every cited path tracked
+```
+⇒ The defect the block was opened for is gone: the numbers no longer live only in a bus post, and
+CI proves every marker resolves. **Against the block's own fully-specified content list, 8 of 9 named
+elements are present** (harvest METER, post-end cost, both readings, pooled sds, p-values, the A-to-B
+divergence, the AMENDMENT 26 bounds). ⛔ **The two censuses are ABSENT from that file by every word
+tried** (`census`, `inventory`, `roll call`, `enumerat`). **Owner `systems`/`bench`: either add them or
+strike them from the condition** — a release condition nobody can satisfy as written is not a block,
+it is a stalled one. It gates nothing about the artifact: the paper is correct and its provenance now
+resolves.
+📌 **Neither entry gates anything, and nothing here is owed to or by the published paper.** The paper
+is on arXiv as `arXiv:2609.11076` and its bytes are frozen; both of these are provenance claims about
+this repository.
 The document exists at no path on any of the 50 refs. Positive control: the amendment documents for
 11 through 25 are all present as files. Same owner, same fix — the release condition above closes
 this one too.
@@ -773,13 +816,40 @@ unassigned DOI in one place and a real one in another.
 assigned; after release they must say what it *is*. A find-and-replace on the identifier leaves the
 future tense standing beside the number.
 
-### ⛔⛔ THE ARXIV ID HAS EXACTLY ONE SITE TODAY, AND IT IS NOT ONE OF THE THREE THE ORDER NAMES
+### ✅✅ THE ARXIV ID IS LANDED — `arXiv:2609.11076`, 2026-09-10. THE BLOCK BELOW IS DISCHARGED AND IS KEPT AS HISTORY
+**The identifier exists and all three sites carry it.** Verified at the object BEFORE any site moved,
+because an identifier handed over in prose is a TYPED value and a receipt value is DERIVED:
+```
+  https://arxiv.org/abs/2609.11076
+    title      SaltBench: A Referee-Gated Protocol for Measuring Method Effects in
+               Machine-Checked Software Work     <- byte-identical to the title recorded below
+    author     Jason Hickey       submitted 2026-09-10
+    class      cs.SE primary, cross-listed cs.LO
+  apply_arxiv_id.py --check   NOT YET LANDED  ->  LANDED (CITATION.cff 1 · README.md 1 · PROVENANCE.md ours + 3 citations)
+```
+⛔ **THE CLASSES LANDED THE REVERSE OF EVERY ORDER IN THE RECORD**, which named `cs.LO` primary and
+`cs.SE`/`cs.AI` cross-listed. What exists is **`cs.SE` primary, `cs.LO` cross-list**. No file in this
+repository claims a class, so nothing was owed — recorded so that a later reader does not take the
+plan for the fact.
+⛔ **AND ONE CLAIM IN THE APPLIED DIFF CARRIES A LOCAL DEPENDENCY NO GATE READS.** The README line
+says arXiv builds its version from that same `.tex`, which is true only while the tracked file is
+still the submitted bytes. Measured at the landing commit, with six PRs merged since the click:
+`paper/saltbench-v1.tex` is blob `45f8d197` at both the tip and `a9b7bdb`, sha256
+`703dc74f...5035ab80`, 113,352 B, and `git diff a9b7bdb..HEAD -- paper/` is EMPTY. **Re-measure that
+before editing the tex**, because the sentence goes false silently.
+⇒ 🔑 ***A DISCHARGE IS NOT A DELETION: the numbered map below is what upload day actually
+needed, and it was right.*** It is kept in the past tense it has earned.
+
+*(what follows is the block as written before the identifier existed)*
+
+⛔⛔ **THE ARXIV ID HAD EXACTLY ONE SITE, AND IT WAS NOT ONE OF THE THREE THE ORDER NAMED**
 Measured across the tree: the only place prepared for it is `CITATION.cff`,
 `preferred-citation.notes: "arXiv identifier to be added at submission"`. **`README.md` and
 `PROVENANCE.md` have no arXiv line at all**, so on upload day those are ADDITIONS and not edits.
 
 ⇒ 🔑 ***AN EDIT YOU HAVE TO REMEMBER TO MAKE IS A DIFFERENT RISK FROM AN EDIT YOU HAVE TO REMEMBER TO
-FIND, AND THE ORDER NAMED THREE FILES OF WHICH TWO HAVE NO SITE.*** What upload day needs:
+FIND, AND THE ORDER NAMED THREE FILES OF WHICH TWO HAVE NO SITE.*** What upload day needed, all four
+✅ **DONE** (1-3 written by `scripts/apply_arxiv_id.py`, 4 deliberately untouched):
 
 1. `CITATION.cff` — replace the `notes` line with the identifier, and set `preferred-citation.url`.
 2. `README.md` — a citation line beside the paper reference at line 10, naming the arXiv id.

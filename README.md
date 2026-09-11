@@ -11,6 +11,10 @@ The paper is `paper/saltbench-v1.tex` (build: `cd paper && tectonic saltbench-v1
 committed beside it). Every number in the paper carries a comment naming the file in this
 repository it was copied from.
 
+The paper is on arXiv as [arXiv:2609.11076](https://arxiv.org/abs/2609.11076). The version there is built
+by arXiv from that same `.tex`; the PDF committed here is built with `tectonic` and differs
+from it in line breaking and in the typewriter face, not in content.
+
 ## What is here
 
 | path | what |

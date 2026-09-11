@@ -94,3 +94,48 @@ n = 9, **one task** (LZW), one substrate, greenfield only, **the PLAIN arm only*
 different tool-permission regime and their arm file is delivered under a different filename; the
 equivalence battery that would license such a comparison is registered, unsigned, and deliberately
 not invoked here. **This is a standalone floor for one vendor on one task, offered as exactly that.**
+
+---
+
+# ⛔⛔ READING A RUN: TWO WAYS THIS NIGHT'S RESULTS WERE NEARLY MISREAD
+**bench · 2026-09-11 · added at the helm's request, after each cost two published posts**
+
+Both are about **instruments that report a state, read as if they reported an outcome.** Neither is
+exotic and both are cheap to avoid, which is why they are recorded beside the numbers rather than in
+a bank nobody opens.
+
+## §A · `ctl/end-1` IS NOT A LEDGER. HARVEST ON THE **LANDING**.
+```
+  three cells, each  TESTS 8/8 · P-DELIVERY yes · landed-1 tag present · LANDING.md present
+  the same three     ctl/end-1 reads "CLAIENT-ERROR phase-1 the launcher exited 4"
+```
+A re-launch after the cells had finished was refused at `rc 4` — correctly, and **before any model
+call, so nothing was spent** — and the driver then wrote its end marker **over a landing**. The
+marker is LAST-WRITER-WINS; the landing is a git tag and a commit.
+⇒ 🔑 ***A RETRY IS A WRITER, AND AN END MARKER IS NOT A LEDGER.***
+⇒ **The contradiction is the proof, and it is better than any argument for it: three cells that PASS
+carrying an `end-1` that says they FAILED. Any harvest keyed on the marker discards all three.**
+✅ **KEY A HARVEST ON: the `landed-N` tag and its commit · `LANDING.md` · `ctl/agy-probes-N.tsv` ·
+`ctl/agy-meter-N.json` · the stream.** ⛔ **Never on `ctl/end-N` alone.**
+📌 And the cause was not a retry policy: a running shell script was overwritten on disk, bash resumed
+inside the new bytes and re-entered its firing loop. **A running script is an open file being read.**
+⛔ The markers are NOT repaired by hand. Restoring one would fabricate the artefact this campaign
+treats as evidence; it is recorded as known-corrupt instead.
+
+## §B · A PRINT TIMEOUT, A RATE LIMIT AND AN ACCOUNT WALL ARE THREE DIFFERENT THINGS
+They are indistinguishable from the client's side — each ends with no live client and errors in a log.
+```
+  print timeout after 5m0s   ONE TURN exceeded its own deadline.      The cell may be fine.
+  HTTP 429                   a RATE limit: requests per unit time.    Retried through; work advances.
+  account wall               the QUOTA budget for the window is gone. Nothing will run.
+```
+⇒ ***A COUNT OF ERROR STRINGS IN A LOG IS NOT A STOP.*** Measured this night: a cell's client log
+carried **19** `429`s while its stream grew **1,857 bytes in 12 seconds** — throttled and advancing.
+Simultaneously the account read **99 % weekly and 86 % five-hour REMAINING** and answered a live
+usage query. **Every one of those readings was true.**
+⇒ 🔑 ***A RATE LIMIT AND A QUOTA ARE DIFFERENT RESOURCES; EXHAUSTING ONE SAYS NOTHING ABOUT THE OTHER.***
+✅ **THE DISCRIMINATORS, in order of cost:** is the **stream still growing** (free, decisive) · does the
+**pool** answer, and what does it say (one reading, and a reading costs quota) · only then the log.
+📌 **Burstiness, not budget, is what earns a 429.** Firing a wave's first cell ALONE before widening
+removes the simultaneous first-contact that produces them — added here for a credential-refresh race
+and it appears to help this too.
