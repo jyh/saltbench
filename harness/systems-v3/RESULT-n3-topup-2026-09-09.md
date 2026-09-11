@@ -228,3 +228,83 @@ magnitude fell below, and 2 of 5 do clear the floor.
   ⚠️ A fragility this leaves: the scorer selects `hv[-1]`, the lexicographically last harvest dir —
   **not the last one carrying a price.** These two are safe only because the good harvest sorted
   second. The robust form is *"the latest harvest that parses as a bare price"*.
+
+---
+
+# ⛔⛔ ADDENDUM — ROW `KS`: THE TOKENS BESIDE THE DOLLARS, FOR THE GENERATION THIS TABLE WAS READ FROM
+**bench · 2026-09-11 · the original §3 table is UNTOUCHED and every price below reproduces it exactly**
+
+The Captain, 2026-09-11: *"we need to produce tokens in addition to dollars."* This adds them without
+changing a single published figure, and the reproduction of the prices is what proves the tokens
+belong to them.
+
+## §A1 · ⛔⛔ WHY THIS COULD NOT BE DONE BY RE-RUNNING THE SCORER
+`score_matrix1.py` prices each cell from **the latest harvest that parses**, and the archive GROWS:
+cells are re-harvested, and a cell that continued into phase 2 genuinely costs more the second time.
+```
+                            published 2026-09-09        the same scorer, re-run 2026-09-11
+  Crc32 plain none (n=3)    $5.36 $6.21 $7.64           $12.42 $13.68 $15.52
+  declared set              43 cells                    61 cells
+```
+**Neither reading is wrong.** ⇒ 🔑 ***A RESULT THAT QUOTES PRICES FROM A MUTABLE ARCHIVE THROUGH A
+"LATEST" RULE IS A CLAIM ABOUT A MOMENT NOBODY RECORDED*** — this file named neither the harvest
+generation nor the scorer's sha.
+⛔ **So the tempting form of this addendum — re-run with the token column and paste — would have
+replaced every price in §3 with today's while a reader saw only that tokens had been added.**
+⇒ ***A PRESENTATION CHANGE THAT REQUIRES RE-RUNNING A READING IS NOT A PRESENTATION CHANGE.***
+
+## §A2 · ✅ THE METHOD, AND THE REPRODUCTION IS THE PROOF
+`harness/systems-v3/harvest_view_asof.sh` builds a view of the archive restricted to harvests whose
+**own directory-name stamp** is at or before a cutoff (never mtime: a copy or a restore moves mtime
+and does not move the name). `score_matrix1.py` now takes `HARVEST_ROOT`.
+```
+  view as of 20260909T235959Z     95 harvests included · 37 later · 25 unstamped, named and excluded
+  the scorer AS IT STOOD          every §3 price reproduced, row for row
+  ROBUSTNESS                      a second view INCLUDING the 25 unstamped harvests: byte-identical
+```
+⭐ **The second view is there because the first agreed with me.** The unstamped `*-final` directories
+sort *after* every timestamped one, so they are exactly what a "latest harvest" rule would pick —
+**an agreement that had not been tested against the population most able to break it.**
+
+## §A3 · ⭐ THE TABLE — every price as published, now with its token total
+```
+task      arm        extras       n  cells  ($cost / tokens)
+Crc32     plain      none         3  $5.36/4.24M   $6.21/6.11M   $7.64/7.13M
+Crc32     salt-diet  none         3  $6.19/6.10M   $7.21/7.40M   $7.63/7.80M
+FreeList  plain      none         4  $13.02/11.91M $23.38/25.85M $13.77/11.75M $13.01/10.28M
+FreeList  salt-diet  none         3  $37.95/51.40M $37.60/46.11M $35.41/46.24M
+LRU       plain      none         4  $7.75/7.13M   $9.73/8.16M   $6.68/6.22M   $9.87/11.43M
+LRU       salt-diet  none         3  $11.19/13.30M $11.21/10.99M $14.63/18.40M
+LZW       plain      none         3  $8.15/7.55M   $20.95/26.62M $13.95/11.45M
+LZW       plain      statement    3  $10.24/10.00M $11.39/8.34M  $9.82/8.86M
+LZW       salt-diet  none         3  $31.70/42.91M $19.18/22.06M $18.16/20.93M
+LZW       salt-diet  statement    3  $22.53/26.37M $15.34/16.17M $18.54/21.42M
+Paxos     plain      none         4  $9.49/8.61M   $14.20/12.91M $16.78/17.68M $20.16/18.25M
+Paxos     salt-diet  none         3  $37.93/52.17M $37.65/49.73M $23.52/29.44M
+```
+**The token total is read from the SAME meter file, and therefore the same records, as the price.**
+⛔ The obvious alternative — the meter's `COST` beside `post-end-N.tsv`'s `final_T` — agrees on **134
+of 135** archived cells, and the one disagreement is a cell that spent through **executors**, which
+the meter counts and the per-phase record does not. **That join understates tokens on exactly the
+cells that fired subagents, and 134 of 135 has the shape of a verified rule.**
+
+## §A4 · ⛔⛔ WHAT ADDING THE COLUMN REVEALED ABOUT THE PRICES THAT WERE ALREADY HERE
+**Seventeen of the cells priced in this reading carry a meter that declares its own totals a LOWER
+BOUND** — an interrupted turn, where the client stops writing usage at the interrupt, so the meter
+says in its own words that the sum *"is a LOWER BOUND, not a price."* **§3 quotes those cells as
+prices without the flag, and so did I until the token column made me read the line.**
+```
+  floors by arm, over the cells priced in THIS reading:   plain 12   ·   salt-diet 5
+```
+⇒ 🔑 ***A FLOOR UNDERSTATES, AND THESE FLOORS LAND ON THE CONTROL ARM MORE THAN TWICE AS OFTEN AS ON
+THE TREATED ONE.*** Any salt-diet-to-plain ratio taken from either column is therefore biased
+**upward** — **the treatment is made to look relatively more expensive than it is**, which is the
+direction that flatters this campaign's headline and so the one to declare loudest.
+📐 **The magnitude is small where it can be measured and the instrument declines to bound it:** the
+interrupted turns are 1–3 records out of 103–293 per affected cell, and the recorded part of those
+turns is 0.03 %–1.4 % of the cell's total. **The unrecorded part is unmeasured by construction** —
+the meter calls the factor unbounded — so this is a declared bias with a known sign and an unknown
+size, not a correction.
+⛔ **No verdict in this document moves**: its primary reading is a SIGN test across problems, the
+floors are not large enough to flip a per-problem sign at these margins, and every per-problem
+magnitude was already below the registered resolvable floor and reported as such.
