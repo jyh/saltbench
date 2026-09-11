@@ -40,8 +40,33 @@ both exports (`7810edea2eadd33b`); only the post-run reading path differs.
   time budget ... They have been left as stubs."*
 - ⛔ **s2st02 is INCOMPLETE and sits in no denominator.** No `LANDING.md`, no tag.
 - ⛔ **No token, turn or wall figure from any of these three may be pooled across arms.**
-⇒ **This condition is being re-run under a corrected, declared deadline. The numbers above are
-reported so the confound is on the record, not to support a rate.**
+⇒ **This condition was re-run under corrected, declared caps. The numbers above are reported so the
+confound is on the record, not to support a rate.**
+
+## §2b · ⭐⭐ THE RE-RUN, UNDER CORRECTED CAPS — AND TRUNCATION IS NOT THE CAUSE
+Per-turn deadline 1800 s, controller patience 2100 s, cell wall 21600 s, turn cap 40, credential
+window asserted before each launch. **Every value declared by the caller and recorded in the cell
+(`ctl/caps.tsv`).**
+```
+  cell     truncations  tests  self-declared          encode
+  s2sg01        1        0/8   7 claims as NOT        untouched starting STUB
+  s2sg02        1        0/8   8 claims as PARTIAL    untouched starting STUB
+  s2sg03        0        0/8   5 claims as NOT        SPEC written: requires/ensures present
+  ---- 3 of 3 LANDED · 3 of 3 score 0/8 · 3 of 3 SELF-DECLARED incompleteness ----
+```
+⛔⛔ **s2sg03 HAD ZERO TRUNCATIONS AND STILL SCORED 0/8**, and its own claims name the obstacle:
+*"NOT: proof of model properties blocked (lemma_lzw_correct)"* — **a mathematical obstacle, not a
+clock.**
+⇒ 🔑 ***TRUNCATION IS NOT THE CAUSE OF THESE ZEROS.*** A cell with no truncation reached the same
+outcome as two with one each. **By the sign argument, s2sg03's zero is not confounded at all** — no
+truncation was live in it — which makes it the cleanest treated datum in this document.
+⇒ **THE SHAPE OF THE CONDITION, n = 5 across both runs:** **four of five** salt-diet+statement cells
+decline to ship an implementation and **say so in their own landing artefact**; **one of five**
+(`s2st03`) implements it, proves it, and passes 8/8. The subjects spend the budget on the PROOF and
+do not ship unproven code.
+⛔ **That is a result about the condition, not a defect in the run** — and the withheld suite is the
+only party that separates it from a landing, since **all five LANDED.**
+📌 **A landing rate here would read 5/5. The verified rate is 1/5.** Same cells, same artefacts.
 
 ## §3 · 🔑 THE FINDING: A DEFAULT THAT BINDS ONE ARM AND NOT THE OTHER IS NOT A DEFAULT
 `agy --print-timeout` is a **per-turn** wall clock, default `5m0s`. The launcher had passed it as a
