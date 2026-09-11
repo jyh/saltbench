@@ -106,3 +106,52 @@ and repeated an **ATTRIBUTION** on trust. This morning I did the same with a quo
 CLAIM IS EVIDENCE TOO, AND IT IS THE KIND I KEEP TAKING SECOND-HAND — because it arrives already
 explained, and an explanation is what makes a claim feel checked.*** The record was one file away in
 both cases.
+
+---
+
+# ⛔⛔ ERRATUM 2 · 2026-09-10 — **THE NINE CELLS SAY, IN THEIR OWN `ctl/`, THAT THIS TABLE MUST NOT EXIST**
+
+Every one of `~/cells-agy-pilot2/av0*/` carries a file called `ctl/plumbing-only`, written by
+`cell_build.py` on 2026-09-07, **before any of them ran.** Its words:
+
+> *"This cell exercises the agy CLIENT BOUNDARY only. Its instruction file is NOT delivered to the
+> subject: agy does not read `CLAUDE.md`, and no working delivery path was found as of 2026-09-07
+> (nine locations measured, all NONE). ⇒ It is NOT a like-for-like plain-vs-plain datum and **must not
+> enter a table beside one.**"*
+
+**I put them in one.** §1 of this document presents the nine as a vendor's plain-arm floor, and §5
+defends the comparison's limits on grounds of *regime* — the thing the cells themselves had already
+ruled out on grounds of *kind*.
+
+## WHAT IS ACTUALLY TRUE OF THESE NINE, IN ONE LINE
+They are a **NO-SHELL, NO-BUILD, NO-BRIEFING** arm:
+```
+  no shell    40 of 40 run_command results exited 65        (ERRATUM 1, above)
+  no build    0 of 9 cells produced target/ or rt.result    (ERRATUM 1, verified here)
+  no briefing the 5,024 B CLAUDE.md was present in all nine and READ BY NONE —
+              `agy` has zero references to that filename; its own log reported
+              the prompt's `user_rules` section EMPTY on every measured run
+```
+⇒ **Three conditions were removed from this arm and nobody knew.** The verdict in §1 survives all
+three and gets stronger with each — **8 of 9 against the complete hidden suite, written blind, unbuilt
+and unbriefed** — but the *label* on §1 was wrong, and §5's caveat was the wrong caveat.
+
+## ⇒ 🔑 THE FAILURE, AND IT IS NOT THE ONE I WOULD HAVE GUESSED
+I verified every number in this table at the object. I read `ctl/arm`, `ctl/task` and the meters.
+**I never opened the one file in the cell that existed solely to stop me.** It was not hidden, not
+stale, and not ambiguous; it was English, in the directory, written by our own builder for this exact
+reader.
+⇒ ***A CELL THAT ARGUES WITH YOU IS THE ONE DOCUMENT NOBODY GREPS FOR*** — because a check is aimed at
+fields you expect to exist, and a warning is a file you have no reason to name.
+📌 **THE REPAIR IS STRUCTURAL, NOT A RESOLUTION TO BE MORE CAREFUL:** read every file in a cell's
+`ctl/` you cannot name, before the cell enters any table. It costs one `ls`.
+
+## WHAT REPLACES THIS TABLE
+Nothing here is retracted as a *measurement*; it is re-labelled as what it is, and it is superseded by
+a wave that removes all three conditions. That wave runs under `AGENTS.md` — the filename `agy`
+actually loads — with a **per-cell briefing receipt** (`AMENDMENT-briefing-receipt-2026-09-10.md`): a
+derived token inside the arm file, echoed by the subject on its first turn, **no echo ⇒
+`VOID(NO-BRIEFING)`, never scored and never quietly counted as its arm.**
+⇒ **The comparison this document should never have made becomes available only when that wave lands.**
+Until then the nine stand as a standalone, heavily-qualified floor for one vendor on one task — which
+is what their own `ctl/` said on the day they were built.
