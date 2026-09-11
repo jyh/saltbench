@@ -1,0 +1,161 @@
+# RESULT — LZW with the STATEMENT arm, both conditions, scored against the withheld suite
+**bench · 2026-09-11 · the plain half is a result; the treated half is CONFOUNDED and says so**
+
+⛔ **Every verdict below comes from `tasks/systems-v3/LZW/G/run_tests.sh`** — the runner the referee
+uses — driven per cell against a COPY of each submission. Token and turn figures come from each
+cell's own `agy-meter-1.json`; truncation counts from each cell's own `agy-stderr-1.txt`. Nothing
+here is retyped from a message.
+
+## §1 · ⭐⭐ plain+statement: THREE OF THREE LANDED, THREE OF THREE 8/8
+```
+  cell     verdict   tests   T          cmds   truncations
+  s2ps01   LANDED    8/8     1,429,927   10     0
+  s2pt01   LANDED    8/8     1,320,232   11     0
+  s2pt02   LANDED    8/8     1,338,174   11     0
+```
+All three receipt probes (P-DELIVERY, P-PERSIST, P-ANYWHERE) read `yes` on every cell, so **the
++statement briefing demonstrably loads**. This condition is clean: **no cell was truncated**, none
+self-declared an unmet requirement, and all three carry a landing tag and a `LANDING.md`.
+
+✅ **POOLABILITY CHECKED, NOT ASSUMED.** The three normalise to one interface,
+`f8f3b763ae5b1655`, and they sit in **two cell roots built from two different exports** — so the
+check is load-bearing here rather than ceremonial. The cell builder is **byte-identical** across
+both exports (`7810edea2eadd33b`); only the post-run reading path differs.
+
+## §2 · ⛔⛔ salt-diet+statement: CONFOUNDED. THE PASS STANDS, THE FAILURES DO NOT.
+```
+  cell     verdict       tests   truncations   what happened
+  s2st01   LANDED        0/8      3            self-declared R1/R2 NOT; encode left as the STUB
+  s2st02   no landing     --      5            terminated mid-implementation; INCOMPLETE
+  s2st03   LANDED        8/8      3            encode PROVED, and it passes
+```
+**Every one of these cells was truncated by a per-turn deadline that cannot bind the control
+(§3).** Under the ruling that a bias against the arm under test cannot manufacture a positive:
+- ✅ **s2st03's 8/8 STANDS, AND IT IS A FLOOR.** It wrote `encode` carrying
+  `ensures codes_view(out@) == encode_model(input@)` — **a machine-checked implementation that also
+  passes the complete withheld suite** — *while being cut short three times.*
+  ⇒ **The condition can produce a proved, correct LZW.**
+- ⛔ **s2st01's 0/8 IS WITHDRAWN as a statement about the condition.** A verdict must be corrected,
+  not labelled. The subject's own `LANDING.md` names the mechanism: *"could not be proven within the
+  time budget ... They have been left as stubs."*
+- ⛔ **s2st02 is INCOMPLETE and sits in no denominator.** No `LANDING.md`, no tag.
+- ⛔ **No token, turn or wall figure from any of these three may be pooled across arms.**
+⇒ **This condition was re-run under corrected, declared caps. The numbers above are reported so the
+confound is on the record, not to support a rate.**
+
+## §2b · ⭐⭐ THE RE-RUN, UNDER CORRECTED CAPS — AND TRUNCATION IS NOT THE CAUSE
+Per-turn deadline 1800 s, controller patience 2100 s, cell wall 21600 s, turn cap 40, credential
+window asserted before each launch. **Every value declared by the caller and recorded in the cell
+(`ctl/caps.tsv`).**
+```
+  cell     truncations  tests  self-declared          encode
+  s2sg01        1        0/8   7 claims as NOT        untouched starting STUB
+  s2sg02        1        0/8   8 claims as PARTIAL    untouched starting STUB
+  s2sg03        0        0/8   5 claims as NOT        SPEC written: requires/ensures present
+  ---- 3 of 3 LANDED · 3 of 3 score 0/8 · 3 of 3 SELF-DECLARED incompleteness ----
+```
+⛔⛔ **s2sg03 HAD ZERO TRUNCATIONS AND STILL SCORED 0/8**, and its own claims name the obstacle:
+*"NOT: proof of model properties blocked (lemma_lzw_correct)"* — **a mathematical obstacle, not a
+clock.**
+⇒ 🔑 ***TRUNCATION IS NOT THE CAUSE OF THESE ZEROS.*** A cell with no truncation reached the same
+outcome as two with one each. **By the sign argument, s2sg03's zero is not confounded at all** — no
+truncation was live in it — which makes it the cleanest treated datum in this document.
+⇒ **THE SHAPE OF THE CONDITION, n = 5 across both runs:** **four of five** salt-diet+statement cells
+decline to ship an implementation and **say so in their own landing artefact**; **one of five**
+(`s2st03`) implements it, proves it, and passes 8/8. The subjects spend the budget on the PROOF and
+do not ship unproven code.
+⛔ **That is a result about the condition, not a defect in the run** — and the withheld suite is the
+only party that separates it from a landing, since **all five LANDED.**
+📌 **A landing rate here would read 5/5. The verified rate is 1/5.** Same cells, same artefacts.
+
+## §2c · ⭐⭐ BOTH ARMS UNDER ONE DECLARED CONFIGURATION — THE COMPARISON THIS DOCUMENT EXISTS FOR
+Control re-run at the SAME declared caps as the treated arm, so the two are one experiment and not
+two. All six cells share one normalised interface (`f8f3b763ae5b1655`).
+```
+  arm                  landed   TESTS 8/8   truncations   self-declared incomplete
+  plain+statement       3 / 3      3 / 3      0 · 0 · 0            0 of 3
+  salt-diet+statement   3 / 3      0 / 3      1 · 1 · 0            3 of 3
+```
+⇒ **THE SEPARATION, RE-MEASURED, AND IT IS NOT ZERO:**
+```
+                    per-turn cap 300 s        per-turn cap 1800 s
+  plain             0 · 0 · 0                 0 · 0 · 0
+  salt-diet         2 · 4 · 3 · 3 · 5         1 · 1 · 0
+```
+**Raising the cap sixfold reduced the treated arm's truncations but did not remove them, and the
+control has never tripped it at either value.** ⇒ A per-turn wall clock **cannot be made arm-neutral
+for an arm that runs a verifier**: verification time is unbounded in a way the control's work is
+not. It can only be made non-binding, and non-binding may be unreachable.
+✅ **BUT THE RESIDUAL DOES NOT CARRY THE RESULT, AND THAT IS THE POINT:** `s2sg03` truncated **zero**
+times and scored 0/8 exactly like the two that truncated once. ⇒ **The confound is real, its sign is
+known, and it is not load-bearing for this verdict.** Declared here rather than chased, because
+chasing it means paying for ever-longer cells to reach a number that may not exist.
+
+## §3 · 🔑 THE FINDING: A DEFAULT THAT BINDS ONE ARM AND NOT THE OTHER IS NOT A DEFAULT
+`agy --print-timeout` is a **per-turn** wall clock, default `5m0s`. The launcher had passed it as a
+defaulted value since the day it was written and **nobody ever set it.** Counting `print timeout`
+in each cell's own stderr, across every cell of the campaign:
+```
+  plain       3 cells   0, 0, 0
+  salt-diet   5 cells   2, 4, 3, 3, 5          PERFECT SEPARATION
+```
+The treatment runs a verifier, whose steps take minutes. The control verifies nothing, so its turns
+never approach the cap. **The deadline truncates the treatment's turns and never the control's.**
+⇒ ***A CAP THAT BINDS ONE ARM AND NOT THE OTHER IS A TREATMENT, NOT A DEFAULT.***
+
+✅ **RAISING IT UNIFORMLY CANNOT CHANGE THE CONTROL:** no plain turn came near five minutes, so a
+larger cap leaves the control's behaviour untouched. Raising it for the treatment alone would have
+been a different experiment.
+
+⛔⛔ **AND THAT IS A STATEMENT ABOUT THE CONTROL, NOT ABOUT THE SYSTEM. RAISING IT KILLED THE NEXT
+CELL.** This paragraph originally claimed the change was free. It was not, and the correction is
+the more useful half of the finding.
+The first re-run cell under the corrected 1800s deadline produced **198 step-update events, ONE
+init, and ZERO result events**; its last step reads a **303-line solution the subject had written**;
+`done_reason NO-FIRST-RESULT`; **SIGKILL at 1320 s**; meter **T = 0**; truncations 0.
+**It looked exactly like nothing ran, and the subject had been working the whole time.**
+```
+  1320 = 600 + 600 + 120   controller first-result patience · persist-probe wait · exit timeout
+  client 300s  / controller 600s  ->  600 > 300   the client truncated, EMITTED A PARTIAL RESULT,
+                                                  and the controller accepted it. It worked.
+  client 1800s / controller 600s  ->  600 < 1800  the controller gives up while the client works.
+```
+The turn-loop controller takes its own per-turn patience, defaulting to 600 s, and **the launcher
+never passed it at all.**
+⇒ 🔑 ***A CAP YOU REMOVE MAY BE THE ONLY THING PRODUCING THE EVENT ITS CONSUMER WAITS FOR.*** The
+five-minute truncation was **arm-correlated and load-bearing at the same time.**
+⇒ 🔑 ***WHEN TWO COMPONENTS EACH CARRY A DEFAULT FOR THE SAME QUANTITY, THE RELATIVE ORDER IS THE
+REAL PARAMETER, AND NOBODY SETS IT.*** The controller patience is now required, passed rather than
+defaulted, **asserted greater than the client deadline**, and recorded in each cell.
+⇒ **THE REPORTING RULE THAT FALLS OUT:** the re-measurement is **truncations AND result events**.
+***A cell with zero truncations and zero results is not a fixed cell, it is a killed one.***
+
+📌 **AND A THIRD PRECONDITION, FOUND THE SAME WAY.** The next cell wrote its briefing receipt, ran,
+and died **three seconds past its access token's expiry** on a `Forbidden` from the token endpoint.
+The credential warm-up had reported *"token unchanged — it was not yet due for refresh"* and the
+wave launched anyway, so the cell began with **five minutes of credential**.
+⇒ ***A WARM-UP THAT ASKS THE CLIENT TO REFRESH GETS THE CLIENT'S OPINION OF "DUE", NOT A GUARANTEED
+WINDOW*** — "unchanged" was reported as success and meant the opposite. The expiry is a claim inside
+the credential file, so the window is a fact about a file; it is now read, and a cell the credential
+cannot cover is refused before it is spent.
+
+📌 **THE SAME QUESTION, ASKED OF EVERY OTHER CAP**, measured rather than assumed:
+```
+  cap                  plain             salt-diet          binds
+  per-turn deadline    0 of 3 trip       5 of 5 trip        treatment — FIRED
+  wall seconds / cell  738 · 747 · 798   3635 .. 13700      treatment — live
+  turns (cap 40)       3 · 3 · 3         6 .. 10            treatment — not yet
+  T (cap 250,000,000)  ~1.3M             3.9M .. 19.9M      treatment — not yet
+```
+**Every cap in the launch path binds the treatment first**, because the treatment runs a verifier.
+A cap that *cannot* bind the control is a cap on one arm whether or not it has fired yet. All three
+are now required with no default and recorded into each cell.
+
+## §4 · WHAT THIS DOES NOT SUPPORT
+n = 3 per condition, **one task** (LZW), one substrate, greenfield only, one declared model.
+⛔ **No cost comparison between the arms is offered here**, and the salt-diet cost figures are
+withdrawn from comparison until the re-run lands. ⛔ **No landing rate is offered**: a landing
+records that the subject stopped, not that it succeeded — one cell in this document declares in its
+own landing artefact that it did not implement the task, and lands identically to one claiming all
+eight requirements done. **The withheld suite is the only party that separates them.**
+📌 The served model remains **DECLARED, not VERIFIED**: the vendor transcript carries no model field.
