@@ -44,6 +44,44 @@ def cost_of(meter):
                   "scanning on (a VOID meter carries $0.00 in its prose): %s"
                   % hits[0].split("  ")[0].strip())
 
+def tokens_of(meter):
+    """The cell's TOKEN total, read from the SAME file and the SAME record population as its price.
+
+    ROW KS (the Captain, 2026-09-11): "we need to produce tokens in addition to dollars" — every
+    published SaltBench cost carries TOKENS beside DOLLARS.
+
+    ⛔⛔ READ IT FROM THE METER, NOT FROM `post-end-N.tsv`, AND THE REASON IS MEASURED.  The obvious
+    join is `post-end`'s `final_T` beside the meter's `COST`: it agrees on 134 of 135 archived cells.
+    The one disagreement is a cell that spent through EXECUTORS — the meter counts `COST_exec` and
+    `T_exec`, and `post-end` does not.  So that join UNDERSTATES tokens on exactly the cells that
+    fired subagents, and it does so silently, because 134/135 looks like a verified rule.
+    ⇒ 🔑 A TOKEN FIGURE AND A PRICE ARE COMPARABLE ONLY IF THEY COVER THE SAME RECORDS.  The meter's
+      own `T` line sits ONE LINE ABOVE its `COST` line and covers exactly the same ones.
+
+    Returns (T, flag, err).  `flag` is non-None when the meter declares its own totals a LOWER BOUND
+    (an interrupted turn: the client stops writing usage where the interrupt lands).  A floor
+    published without that word is the same defect as a price published without its n.
+    """
+    head = None
+    void_flag = None
+    for l in open(meter, encoding="utf-8", errors="replace"):
+        if l.startswith("VOID(UNDERSTATED)"):
+            void_flag = "LOWER BOUND (meter declares VOID(UNDERSTATED): an interrupted turn)"
+        if l.startswith("T_head "):
+            if head is not None:
+                return None, None, "METER has more than one T_head line and a token total must be unambiguous"
+            head = l
+    if head is None:
+        return None, None, "METER has no T_head line to take a token total from"
+    # Anchor on the LAST field, `T <digits>`, exactly as cost_of anchors on the first field after
+    # COST.  An unanchored search for "T" matches T_head, T_exec and T_wf.
+    m = re.search(r"\sT\s+([0-9]+)\s*$", head.rstrip("\n"))
+    if not m:
+        return None, None, ("T_head line does not end in a bare total -- refusing rather than "
+                            "scanning on: %s" % head.strip()[:80])
+    return int(m.group(1)), void_flag, None
+
+
 def condition_of(celldir):
     """(task, arm, card_extras) -- all three, read from the cell's own ctl.  REFUSES on absence."""
     def rd(f):
@@ -142,6 +180,7 @@ def score(declared, title):
           " + %d statement-arm)\n" % (len(declared), m, t, k, st))
 
     cells, refused, reached_back = {}, [], []
+    tok_errs, tok_floors = [], []          # ROW KS
     for cid, cell in sorted(declared.items()):
         hv = sorted(d for d in os.listdir(HARVEST) if d.startswith(cid + "-"))
         if not hv: continue                      # not harvested yet — silently pending, not refused
@@ -159,6 +198,7 @@ def score(declared, title):
         cond, err = condition_of(cell)
         if err: refused.append((cid, err)); continue
         cost, cerr, used, tried = None, None, None, 0
+        tok, tokflag = None, None
         for d in reversed(hv):
             m = os.path.join(HARVEST, d, "METER.txt")
             tried += 1
@@ -166,14 +206,29 @@ def score(declared, title):
                 cerr = "harvest has no METER.txt"; continue
             c, e = cost_of(m)
             if e is None:
-                cost, cerr, used = c, None, d; break
+                # ROW KS: the token total comes from THIS meter — the one that supplied the price —
+                # so the two figures cover the same records. Never from a second instrument.
+                t, tflag, terr = tokens_of(m)
+                cost, cerr, used, tok, tokflag = c, None, d, t, tflag
+                if terr: tok_errs.append((cid, terr))
+                break
             cerr = e
         if cost is None:
             refused.append((cid, "%s (examined %d harvest(s), none priced)" % (cerr, tried))); continue
         if used != hv[-1]:
             reached_back.append((cid, used, hv[-1]))
-        cells.setdefault(cond, []).append((cid, cost))
+        if tokflag: tok_floors.append((cid, tokflag))
+        cells.setdefault(cond, []).append((cid, cost, tok))
 
+    if tok_errs:
+        print("⛔ TOKEN TOTAL UNREADABLE (the price stands; the token figure is stated as absent, "
+              "never as zero):")
+        for cid, why in tok_errs: print("  %-10s %s" % (cid, why))
+        print()
+    if tok_floors:
+        print("⚠️ TOKEN TOTAL IS A LOWER BOUND ON THESE CELLS:")
+        for cid, why in tok_floors: print("  %-10s %s" % (cid, why))
+        print()
     print("MATRIX #1 — read from the ARCHIVE, keyed on (task, arm, card_extras)\n")
     if refused:
         print("REFUSED (never defaulted):")
@@ -185,16 +240,18 @@ def score(declared, title):
             print("  %-10s used %s   newest %s" % (cid, used, newest))
         print("  Each of these had a later harvest that is VOID or unparseable. The price is real")
         print("  and the reach-back is disclosed rather than silent.\n")
-    print("%-9s %-10s %-10s %5s  %s" % ("task", "arm", "extras", "n", "cells"))
+    print("%-9s %-10s %-10s %5s  %s" % ("task", "arm", "extras", "n", "cells ($cost/tokens)"))
     med = {}
     for cond in sorted(cells):
-        v = [c for _, c in cells[cond]]
-        shown = " ".join("$%.2f" % x for x in v)
+        v = [c for _, c, _ in cells[cond]]
+        # ROW KS: tokens BESIDE dollars, in the same cell of the table, never in a caption.
+        shown = " ".join("$%.2f/%s" % (c, ("%.2fM" % (t / 1e6)) if t is not None else "T?")
+                         for _, c, t in cells[cond])
         if len(v) >= 3: med[cond] = statistics.median(v)
         print("%-9s %-10s %-10s %5d  %s%s" % (cond[0], cond[1], cond[2], len(v), shown,
               "" if len(v) >= 3 else "   <- below n=3, no median taken"))
 
-    groups = [[c for _, c in v] for k, v in cells.items() if len(v) >= 3]
+    groups = [[c for _, c, _ in v] for k, v in cells.items() if len(v) >= 3]
     # ⛔⛔ THE FLOOR IS REGISTERED, NOT FITTED TO THIS RUN.  This computed the pooled
     # sd from matrix #1's OWN cells and gated G2 on the result.  The pre-registration
     # (line 36, and line 101 on provenance) registers the floor as 2.0072x from
