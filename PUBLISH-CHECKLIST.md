@@ -1517,3 +1517,55 @@ column could be written wrong, and each is the shape my correctness drop-in got 
   GATES THE UPLOAD?   ⛔ NO. The Captain's rule: if it is there by morning it ships in v1; if not, v1
                       ships without it. Nothing here holds the click.
 ```
+
+---
+
+## (s) ⚖️ ROW `KS` — TOKENS BESIDE DOLLARS, AND THE ONE PLACE THE RULE MUST NOT BE APPLIED LITERALLY
+**bench · 2026-09-11 · the Captain: *"yes, not a question, we need to produce tokens in addition to
+dollars"*. Owner bench, deadline the ~Oct 1 freeze.**
+
+### 1 THE RULE, AND WHERE IT IS ALREADY MET
+Every published cost carries a TOKEN figure beside the DOLLAR figure. **`USED` / `REMAINING` and
+`$` / `T` go IN THE CELL, never in a caption or a lone header** — the campaign already has one card
+about a polarity that inverted between two instruments, and a unit in a header is the same defect
+waiting.
+```
+  FORWARD   satisfied AT THE INSTRUMENT: score_matrix1.py's tokens_of() and the Stage ❸ scorer both
+            print T in the same row as the verdict.  A rule that depends on a head remembering it at
+            write-up time lapses at the next relight.
+  BACKWARD  RESULT-n3-topup-2026-09-09 §A3 — done, with the method that makes it safe (§2 below)
+```
+
+### 2 ⛔⛔ NEVER BY RE-RUNNING THE READING
+The scorer prices each cell from *the latest harvest that parses*, and the archive GROWS. Re-running
+a published reading today changes its prices — measured: Crc32 plain reads `$5.36 $6.21 $7.64` in the
+file and `$12.42 $13.68 $15.52` on a fresh run, **both correct for their moment.**
+⇒ ***A PRESENTATION CHANGE THAT REQUIRES RE-RUNNING A READING IS NOT A PRESENTATION CHANGE.***
+✅ **Use `harness/systems-v3/harvest_view_asof.sh` + `HARVEST_ROOT`** to rebuild the archive as of the
+reading's date, and **REPRODUCE THE PUBLISHED PRICES FIRST — that reproduction is the proof the token
+figures belong to them.** Then add the column.
+
+### 3 ⛔⛔ THE EXCEPTION: A RATIO TABLE. DO NOT ADD A TOKEN PREMIUM.
+A cost table takes the rule literally: the same quantity in two units, side by side. **A RATIO table
+does not.** `$/T` and `$/output` **rank the arms OPPOSITELY** in this campaign's own measurements, so
+a token premium beside a cost premium is **a second, differently-ranked verdict quantity**, not a
+second rendering of the first.
+⇒ 🔑 ***IN A TABLE WHOSE VERDICT IS A RATIO, ADDING THE SAME RATIO IN A SECOND UNIT INVITES THE READER
+TO TAKE WHICHEVER AGREES WITH THEM.***
+✅ **THE RULE FOR RATIO TABLES: add the token MEDIAN beside the dollar MEDIAN** — same quantity, two
+units, no new verdict. ⛔ **A token PREMIUM is a new reading and needs its own registration**, before
+its numbers exist, like any other.
+
+### 4 ⚠️ AND WHAT ADDING THE COLUMN EXPOSED ABOUT PRICES ALREADY PUBLISHED
+**Cells whose meter declares `VOID(UNDERSTATED)` are LOWER BOUNDS, not prices** — an interrupted turn
+stops the client writing usage where the interrupt lands, and the meter says so in its own words.
+Published tables quote them as prices without the flag. In the n3-topup reading: **17 such cells,
+splitting plain 12 · salt-diet 5.**
+⇒ **A floor understates, and these floors land on the CONTROL arm more than twice as often**, so any
+cross-arm ratio from either column is biased **upward** — the treatment made to look relatively more
+expensive. ⭐ **That is the direction that flatters this campaign's headline, so it is declared
+loudest.** Magnitude is small where measurable (1–3 records of 103–293 per cell) and **the instrument
+declines to bound the unrecorded part**, so it is a declared bias with a known sign and an unknown
+size, never a correction.
+📌 **The scorer's floor report names each cell's ARM** for exactly this reason: an exclusion is a claim
+about a population, and a list of bare cell ids cannot be checked for skew.
