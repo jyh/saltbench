@@ -56,3 +56,58 @@ no-briefing** floor of **8/9** against the complete hidden suite. The twelve exi
 stand for the cross-vendor pairing per the Captain's ruling; **no cell that used `CLAUDE.md` is
 repeated.** Every within-Claude result already published compares `CLAUDE.md` cells with `CLAUDE.md`
 cells and is untouched.
+
+---
+
+## ADDENDUM 1 — THE CLAUDE HALF IS NARROWED TO *OWED*, AND SAYING SO IS THE POINT
+**bench · 2026-09-10 · written in the same act as the implementation, before any cell fired**
+
+§4 above reads *"Both arms, both clients, every scored cell."* **The implementation covers the agy
+client only.** That is a narrowing of a registered rule, so it is recorded here rather than left to a
+code comment — a rule and its instrument are separately falsifiable, and the place a reader checks is
+the rule.
+
+**THE REASON, MEASURED, NOT PREFERRED: the Claude launcher has no echo gate.** `agy_launch_v3.sh`
+reads the first and last results positionally and refuses a cell whose subject did not echo;
+`cell-claude.sh` has no such probe. So a receipt block in `CLAUDE.md` today would:
+
+1. **change the Claude arm's bytes mid-campaign**, forking that arm between waves and breaking the
+   byte-identity every published within-Claude comparison rests on; and
+2. **buy nothing**, because no instrument would read the echo.
+
+⇒ 🔑 ***A TOKEN NOTHING CHECKS IS NOT A RECEIPT, IT IS A BYTE CHANGE WEARING ONE.*** Paying a
+comparability cost for an unread field is the worse half of both options.
+
+**WHAT IS OWED, IN ORDER, AND IT IS NOT WAIVED:**
+1. an echo gate in the Claude launcher, equivalent to P-DELIVERY;
+2. **then** a registered wave boundary at which the Claude arm's bytes change.
+
+Until (1) lands, a Claude cell writes no token **and says so on stdout** — `cell_build.py` prints the
+skip by name. A silent skip and a deliberate one produce identical trees, and only the printed line
+tells a later reader which this was.
+
+## ADDENDUM 2 — ⛔⛔ THE GATE'S TOKEN MUST HAVE EXACTLY ONE ROUTE, AND THIS IS NOT A DETAIL
+§2 says the nonce is *derived, not typed*. **That is necessary and it is not sufficient**, and the
+gap is where this mechanism would have failed silently:
+
+```
+  the receipt proves the arm file LOADED  <=>  the token cannot be obtained any other way
+```
+
+If the token also sits anywhere the subject can read — a copied source file, a `ctl/` note, the boot
+prompt, or **the ACK question itself** — then it can be echoed without the briefing ever being opened.
+Such a gate does not merely weaken: ***it reports DELIVERED most reliably in exactly the case it
+exists to catch.*** An inverted gate, not a loose one.
+
+**SO TWO THINGS ARE ASSERTED PER CELL, BOTH DRIVEN RED-FIRST:**
+- **at BUILD**, over the finished tree: the token occurs at exactly one path, `repo/<arm file>`. The
+  build REFUSES otherwise and names the colliding paths.
+- **at LAUNCH**, on the bytes actually sent: neither probe turn contains the token. The file-mode ACK
+  names the *place* and never the *value*, and the launcher refuses if it ever does.
+
+📌 **BOTH WERE FOUND BY BEING DRIVEN, NOT BY BEING REASONED ABOUT.** The build-time assertion fired on
+its own author on the first real build (`ctl/briefing-claim` quoted the token, and `ctl/` is inside the
+fence). The launch-time one needed its RED arm moved before it tested the guard rather than an
+unrelated precondition twenty checks earlier.
+⇒ 🔑 ***A RECEIPT THAT SHIPS ITS OWN ANSWER IN THE QUESTION IS THIS CAMPAIGN'S OLDEST DEFECT — AN ARM
+BUILT FROM THE ANSWER IT CHECKS — WEARING THE CLOTHES OF THE INSTRUMENT BUILT TO CATCH IT.***
