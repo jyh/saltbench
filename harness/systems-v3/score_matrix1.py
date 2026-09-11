@@ -22,7 +22,12 @@ WHAT IT REFUSES TO DO
 """
 import os, re, sys, math, json, statistics
 
-HARVEST = os.path.expanduser("~/harvest-v3")          # the archive, per SS23(e)
+# ⛔ OVERRIDABLE SO A READING CAN BE REPRODUCED AS OF A DATE (row KS, 2026-09-11).  The archive GROWS:
+#   cells are re-harvested, and this scorer takes "the latest harvest that parses as a price", so a
+#   re-run today does NOT reproduce a table published last week.  Pointing HARVEST_ROOT at a view of
+#   the archive restricted to harvests at or before the reading's date makes the old table
+#   reproducible — and REPRODUCING IT IS THE PROOF that the restriction is the right one.
+HARVEST = os.path.expanduser(os.environ.get("HARVEST_ROOT", "~/harvest-v3"))   # the archive, per SS23(e)
 K_POWER = 7.8489                                       # (z.025+z.20)^2, precise quantiles
 
 def cost_of(meter):
@@ -217,7 +222,11 @@ def score(declared, title):
             refused.append((cid, "%s (examined %d harvest(s), none priced)" % (cerr, tried))); continue
         if used != hv[-1]:
             reached_back.append((cid, used, hv[-1]))
-        if tokflag: tok_floors.append((cid, tokflag))
+        # ⛔ THE ARM GOES IN THE FLOOR REPORT, NOT JUST THE CELL ID.  A floor understates, so a floor
+        #   that lands more often on one arm biases every cross-arm ratio taken from the column — and
+        #   a list of bare cell ids cannot be checked for that.  An exclusion is a claim about a
+        #   population; print the population.
+        if tokflag: tok_floors.append((cid, cond, tokflag))
         cells.setdefault(cond, []).append((cid, cost, tok))
 
     if tok_errs:
@@ -227,7 +236,14 @@ def score(declared, title):
         print()
     if tok_floors:
         print("⚠️ TOKEN TOTAL IS A LOWER BOUND ON THESE CELLS:")
-        for cid, why in tok_floors: print("  %-10s %s" % (cid, why))
+        from collections import Counter as _C
+        _byarm = _C()
+        for cid, cond, why in tok_floors:
+            print("  %-10s %-9s %-10s %-10s %s" % (cid, cond[0], cond[1], cond[2], why))
+            _byarm[cond[1]] += 1
+        print("  floors by arm: %s   (of the cells PRICED IN THIS READING)"
+              % ", ".join("%s %d" % kv for kv in sorted(_byarm.items())))
+        print("  ⛔ A FLOOR UNDERSTATES. Read any cross-arm token ratio against this split, not past it.")
         print()
     print("MATRIX #1 — read from the ARCHIVE, keyed on (task, arm, card_extras)\n")
     if refused:
