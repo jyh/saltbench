@@ -68,6 +68,29 @@ do not ship unproven code.
 only party that separates it from a landing, since **all five LANDED.**
 📌 **A landing rate here would read 5/5. The verified rate is 1/5.** Same cells, same artefacts.
 
+## §2c · ⭐⭐ BOTH ARMS UNDER ONE DECLARED CONFIGURATION — THE COMPARISON THIS DOCUMENT EXISTS FOR
+Control re-run at the SAME declared caps as the treated arm, so the two are one experiment and not
+two. All six cells share one normalised interface (`f8f3b763ae5b1655`).
+```
+  arm                  landed   TESTS 8/8   truncations   self-declared incomplete
+  plain+statement       3 / 3      3 / 3      0 · 0 · 0            0 of 3
+  salt-diet+statement   3 / 3      0 / 3      1 · 1 · 0            3 of 3
+```
+⇒ **THE SEPARATION, RE-MEASURED, AND IT IS NOT ZERO:**
+```
+                    per-turn cap 300 s        per-turn cap 1800 s
+  plain             0 · 0 · 0                 0 · 0 · 0
+  salt-diet         2 · 4 · 3 · 3 · 5         1 · 1 · 0
+```
+**Raising the cap sixfold reduced the treated arm's truncations but did not remove them, and the
+control has never tripped it at either value.** ⇒ A per-turn wall clock **cannot be made arm-neutral
+for an arm that runs a verifier**: verification time is unbounded in a way the control's work is
+not. It can only be made non-binding, and non-binding may be unreachable.
+✅ **BUT THE RESIDUAL DOES NOT CARRY THE RESULT, AND THAT IS THE POINT:** `s2sg03` truncated **zero**
+times and scored 0/8 exactly like the two that truncated once. ⇒ **The confound is real, its sign is
+known, and it is not load-bearing for this verdict.** Declared here rather than chased, because
+chasing it means paying for ever-longer cells to reach a number that may not exist.
+
 ## §3 · 🔑 THE FINDING: A DEFAULT THAT BINDS ONE ARM AND NOT THE OTHER IS NOT A DEFAULT
 `agy --print-timeout` is a **per-turn** wall clock, default `5m0s`. The launcher had passed it as a
 defaulted value since the day it was written and **nobody ever set it.** Counting `print timeout`
