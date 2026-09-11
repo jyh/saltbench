@@ -970,6 +970,55 @@ def self_test() -> int:
         os.chdir(here5)
         if evil_sha not in charged2:
             failures.append("--history must charge an EVIL MERGE for content no parent had")
+        # ⛔⛔ AND THE PASS LINE ITSELF, WHICH NO ARM TOUCHED UNTIL NOW.
+        #   The arms above call history_rows() and scan() directly, so history_mode() — the
+        #   function that PRINTS THE NUMBER A READER TRUSTS — had no test. It shipped with a
+        #   NameError in its new branch and this suite went green, because nothing called it.
+        #   ⇒ 🔑 A SUITE THAT TESTS THE COMPUTATION AND NOT THE REPORT LEAVES THE ONE LINE A
+        #     HUMAN READS UNGUARDED — and on this gate that line is how a truncated history
+        #     was caught at all.
+        #   ⇒ Driven on the same scratch repo, through the real entry point, with its output
+        #     captured: the WALK must equal git's own count and must be labelled as the walk.
+        os.chdir(r5)
+        try:
+            import io, contextlib
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                history_mode(False)
+            out5 = buf.getvalue()
+            real5 = len(subprocess.run(["git", "rev-list", "HEAD"], capture_output=True,
+                                       text=True, encoding="utf-8").stdout.split())
+        finally:
+            os.chdir(here5)
+        if f"{real5} commits walked" not in out5.lower():
+            failures.append("--history's output must report the COMMITS WALKED, counted from git "
+                            f"(expected {real5}; got: {out5.strip()[:120]})")
+        if "commits scanned" in out5.lower():
+            failures.append("--history must not say 'commits scanned' — that label was carried by "
+                            "the CONTRIBUTOR count and hid a truncated history")
+        # ⛔ AND THE **OK** PATH, WHICH THE ARM ABOVE DOES NOT REACH. The scratch repo has
+        #   findings, so it takes the FAIL branch — and my first negative control reverted
+        #   the OK line and saw nothing fire, which read as a vacuous arm and was a control
+        #   aimed at the wrong line. Two print paths, two labels, two arms.
+        #   ⇒ Baseline the scratch repo's own findings, then the same call takes the OK path.
+        os.chdir(r5)
+        try:
+            hb = HIST_BASELINE
+            saved = open(hb).read() if os.path.exists(hb) else None
+            buf2 = io.StringIO()
+            with contextlib.redirect_stdout(buf2):
+                history_mode(True)          # write the scratch repo's baseline
+                history_mode(False)         # now clean -> the OK path
+            out6 = buf2.getvalue()
+        finally:
+            if saved is None:
+                if os.path.exists(hb): os.remove(hb)
+            else:
+                open(hb, "w").write(saved)
+            os.chdir(here5)
+        if "OK" not in out6 or f"{real5} commits WALKED" not in out6:
+            failures.append("--history's OK line must report the COMMITS WALKED too "
+                            f"(expected {real5}; got: {out6.strip()[-140:]})")
     finally:
         os.chdir(here5)
         shutil.rmtree(tmp5, ignore_errors=True)
@@ -1264,15 +1313,32 @@ def history_mode(write: bool) -> int:
         return 0
     base = load_hist_baseline()
     new = [k for k in sorted(per) if k not in base]
+    # ⛔⛔ TWO NUMBERS, BECAUSE ONE OF THEM USED TO CARRY THE OTHER'S LABEL.
+    #   This line said "N commits scanned" and reported `len(set(sha for sha in rows))` —
+    #   the commits that CONTRIBUTED ADDED LINES, not the commits walked. Harmless until
+    #   the merge-semantics fix landed, at which point merges correctly contribute nothing
+    #   and the figure fell from 359 to 254 on an unchanged history.
+    #   ⇒ 🔑 AND IT IS THE WORST POSSIBLE FIELD TO MISLABEL: **this number is how the
+    #     shallow-clone defect was caught** — a CI run printing "OK (1 commits scanned)"
+    #     while its sibling printed 358. A reader who cannot trust the denominator has lost
+    #     the one signal that distinguishes "passed" from "ran on anything".
+    #   ⇒ So: the WALK is reported, the CONTRIBUTORS are reported, and neither wears the
+    #     other's name. A truncated history now shows up in the first number, where it
+    #     cannot hide inside a plausible-looking smaller one.
+    #   ⛔ Counted from git, not from `rows`: the walk is the thing being reported, and
+    #     deriving it from the findings is how the two got conflated in the first place.
+    nwalked = len(subprocess.run(["git", "rev-list", "HEAD"], capture_output=True,
+                                 text=True, encoding="utf-8", check=True).stdout.split())
     ncommits = len(set(r[0] for r in rows))
     if new:
         print(f"FAIL: {len(new)} NEW private-record path(s) in history, not in "
-              f"{os.path.basename(HIST_BASELINE)} ({ncommits} commits scanned):")
+              f"{os.path.basename(HIST_BASELINE)} ({nwalked} commits walked):")
         for sha, what in new[:20]:
             print(f"  {sha}  {what}")
         return 1
-    print(f"check_private_paths --history: OK ({ncommits} commits scanned, "
-          f"{len(rows)} added lines; {len(base)} accepted historical finding(s), 0 new)")
+    print(f"check_private_paths --history: OK ({nwalked} commits WALKED, "
+          f"{ncommits} of them contributed added lines, {len(rows)} added lines; "
+          f"{len(base)} accepted historical finding(s), 0 new)")
     return 0
 
 
