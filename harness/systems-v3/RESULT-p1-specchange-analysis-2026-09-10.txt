@@ -1,0 +1,28 @@
+cells 19   LANDED 16   full-pass 16
+⇒ landed but NOT a full pass : f33c7e65
+⇒ full pass but NOT landed   : 9e6c8d4d
+
+BY ARM
+  plain      n=9   full-pass 8/9   landed 8/9
+  salt-diet  n=10  full-pass 8/10   landed 8/10
+
+BY TASK (roots and tasks are not pooled)
+  Crc32      plain 3/3  salt-diet 3/3
+  FreeList   plain 2/2  salt-diet 0/1
+  LRU        plain 2/2  salt-diet 3/3
+  LZW        salt-diet 1/1
+  Paxos      plain 1/2  salt-diet 1/2
+
+EVERY CELL THAT IS NOT A FULL PASS, NAMED
+  b22d1000   Paxos     salt-diet  CAP-COST  tests=0/0    $19.56  CENSORED
+  f33c7e65   FreeList  salt-diet  LANDED    tests=8/9    $14.81
+  f6462d47   Paxos     plain      CAP-COST  tests=23/24  $19.78  CENSORED
+
+COST AND TOKENS, BOTH (the Captain's ruling), by arm — censored cells marked and NOT pooled into a mean
+  arm          n   median $     median T  median output      $/M-T    $/M-out
+  plain        8      13.52     15213405         162557      0.901      80.73
+  salt-diet    8       9.99     11087020         111675      0.864      89.58
+  ⛔ medians over UNCENSORED cells only; 3 censored cells excluded from them and named: 9e6c8d4d >=$18.62, b22d1000 >=$19.56, f6462d47 >=$19.78
+  ⛔ the $/M rates include every cell, so they are FLOORS where a censored cell contributes.
+
+  wave totals: T 284599552 · cache_read 275776507 (96.9%) · output 2954679 (1.04%) · $250.93
