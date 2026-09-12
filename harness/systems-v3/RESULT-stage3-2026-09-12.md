@@ -176,3 +176,30 @@ runners. Spot-checked by `TESTS` line against the earlier score directories: `s3
 `s3fs01` (1, scored 0/7).** A false done claim is the turn loop disagreeing with the subject; it is
 reported, not scored, and **it is not what produced the 0/7** — that cell ran eight turns, produced
 eight results and landed, and the failures its code carries are semantic ones the loop never inspects.
+
+## ⑨ THE REPAIR THIS RESULT OWED, BUILT AND DRIVEN THE SAME SHIFT
+§③ names a defect in how the chain reports itself, and a finding without a repair is a note. The
+chain's per-cell log line now prints the cell's own outcome beside the probe's end marker.
+```
+  BEFORE   s3ps02 end=PERSIST-INDETERMINATE phase-1 the s trunc=0
+  AFTER    s3ps02 done=TURN-TIMEOUT landed=False end=PERSIST-INDETERMINATE phase-1 the s trunc=0
+```
+⭐ **It is a SECOND FIELD, not a better sentence.** The marker's wording is accurate and was never the
+problem: *"persistence could not be read (not a half-life measurement)"* is a precise, self-limiting
+statement about a probe. **The parenthesis is what does the damage, because it answers a question
+about scope and a reader who has been answered stops asking.** No rewording removes that; a field the
+marker cannot speak for does.
+
+**Driven in three directions against real cells on disk, using the line EXTRACTED FROM THE INSTALLED
+FILE rather than a retyped copy, behind a `declare -F` anti-vacuity arm:**
+```
+  landed cell     s3fs01, s3fp01   done=LANDED       landed=True
+  killed cell     s3ps02, s3ps03   done=TURN-TIMEOUT landed=False
+  never-fired     s3fp02, s3fp03   done=-            landed=-        (caller survives, rc 0)
+```
+⛔ **The v3 runtime is not tracked in this repository**, so this repair is pinned by sha rather than
+by version: `s3-chain2.sh` `1ad854ac4474d3fe` → `ba96243266c4255f`, helper `s3-donefn.sh`, backup of
+the pre-patch file kept beside it. **A sha pin is what you write when there is no version.**
+📌 **The same defect is one `say` line away in any sibling logger that prints an end marker.** This
+patch reaches one call site, verified as the only one in this script; it is not a claim about the
+others.
