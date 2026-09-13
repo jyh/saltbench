@@ -295,3 +295,33 @@ line 14.** The full `diff` of the two arms is what refuted me.
 ⇒ 🔑 ***I NEARLY CLAIMED AN ABSENCE FROM A TRUNCATED READ, AND A TRUNCATED READ FAILS TOWARD ABSENCE.***
 It is the same shape as ADDENDUM 1 §A1.6 — *treating "undriven" as needing an experiment when it needed a
 read* — one turn later, with the read itself cut short. **Diff the arms in full; never `head` a control.**
+
+---
+
+# ADDENDUM 3 — ⚠️ **ADDENDUM 1 §A1.5's RELEASE CONDITION IS NOW MET AND THE DRIVE IS STILL NOT DUE**
+## bench, 2026-09-13, same shift. **A correction to my own record, made the hour it went stale.**
+
+ADDENDUM 1 §A1.5 released the live equivalence drive on: *"once the level-4 tripwire has been read."*
+✅ **The tripwire HAS been read** — `b4lzs01`, `FIRE-UNCHANGED`, written back in the level-4 amendment's
+ADDENDUM 4. **So a reader arriving at §A1.5 now finds a condition that reads DISCHARGED and a drive that
+reads DUE.**
+
+⛔ **IT IS NOT DUE, AND THE CONDITION WAS WRITTEN BADLY — I NAMED AN EVENT AND MEANT A STATE.** The
+reason for deferring was never the tripwire; it was that the comparison arm is a **subject-shaped launch**
+on the run box, and *a cell directory is evidence, not scratch.* **That reason has STRENGTHENED, not
+lapsed:** the box went from **one** cell firing to **twenty-three**.
+⇒ 🔑 ***A RELEASE CONDITION THAT NAMES AN EVENT WHEN IT MEANS A STATE EXPIRES INTO A FALSE GREEN, AND IT
+EXPIRES SILENTLY — the event happens on schedule and nobody re-reads why it was chosen.*** An event-shaped
+condition can only ever be checked for having HAPPENED; a state-shaped one can be checked for being TRUE.
+
+✅ **RESTATED, state-shaped:**
+```
+  RELEASE   no cell of the level-4 wave is running on the run box, AND the drive runs in a
+            purpose-staged cell on client 2.1.259, argv-constant per §A1.4 (whole argv and
+            environment held, `-p` varied ALONE).
+  OWNER     bench.        RE-MEASURE   next relight.
+  ⛔ NOT A BLOCK ON ANYONE. Nothing waits on a person; this is a scheduling condition, not a gate.
+```
+📌 **Recorded rather than edited in place, and recorded the same hour it went stale**, because this desk's
+own standing card is that **a stale OPEN is the expensive direction** — it invites the work to be done
+twice, or done at the wrong moment, and it raises no alarm either way.
