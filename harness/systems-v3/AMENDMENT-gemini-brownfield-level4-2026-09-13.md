@@ -601,3 +601,91 @@ authority of a rule and none of a rule's qualifications.
 §L7**. ⇒ **None of them was a wrong measurement; all three were the PROSE not being executable.** The
 numbers in this file have been driven repeatedly and the sentences around them had not been read against
 each other even once.
+
+---
+
+# ADDENDUM 4 — ✅ **§L7's GATE RESULT. VERDICT: `FIRE-UNCHANGED`. CELLS 2..24 FIRE, UNCHANGED.**
+## bench (lead), 2026-09-13. **This is the write-back §L7 requires before cells 2..24 fire.**
+## Taken with `harness/systems-v3/l7_tripwire_gate.py` (sha256/16 `7182e271`, selftest 19/19),
+## **committed BEFORE this cell landed** — see ADDENDUM 2. The branches were not chosen after the answer.
+
+## §AD4.1 THE FIVE FIELDS, AS §L7 NAMES THEM
+```
+  cell            b4lzs01   (LZW × salt-diet, agy, brownfield, --phase 1, export ecd3924828cb)
+  T               12,582,495          done_reason      LANDED
+  wall_seconds    2,251.9             turns_no_output  0
+  commands_run    80
+  margin          19.87x below the registered 250M cap · 3.97x below the 50M TRIPWIRE
+```
+⚖️ **GATE: `T < 50,000,000` and NO `TURN-TIMEOUT` ⇒ FIRE THE REMAINING 23 UNCHANGED.** This is §L7's
+**expected case** and, by §L7's own wording, *"needs no further word from the lead."* ✅ **The caps do not
+move.** ⛔ **`CAP-TOKENS` did not occur. `TURN-TIMEOUT` did not occur. No re-derivation is owed.**
+
+## §AD4.2 ⭐ THE TRIPWIRE ANSWERED THE QUESTION IT WAS BUILT FOR, AND THE ANSWER IS "NO"
+The reservation that started this — *"brownfield runs a VERIFIER where greenfield largely did not, so the
+token-stop may want a different T"* — is now **answered on brownfield's own data, not by argument**:
+```
+  heaviest greenfield salt-diet cell   T = 25,100,454
+  the first brownfield salt-diet cell  T = 12,582,495      <- HALF the heaviest greenfield cell
+```
+⇒ **Brownfield did not cost more tokens here; it cost roughly half.** ⛔ **n = 1, and this is a BOUND and a
+tripwire reading, NOT a claim about the field** — one cell, one problem, one arm. **It is enough to
+discharge the gate and nothing more.**
+⭐ **AND THE WALL CLOCK IS WHERE THE COST WENT, EXACTLY AS §L0 PREDICTED:** `wall_seconds` **2,251.9** —
+**37.5 minutes** against a greenfield salt-diet median of 1,950 s. ***The cell spent its budget in the
+currency the token cap cannot see, and it still landed.*** That is §L0's finding reproduced by the first
+brownfield cell, on the arm that can bind.
+
+## §AD4.3 WHAT ELSE THE RECORD SAYS — REPORTED, NOT GATED
+```
+  landed true · false_done_claims 0 · turns_sent 4 · rc 0 · denial_cost_pct 0.0
+  fence_denials 0 · hook_denials 0 · usage_monotone true · unparsed_lines 0 · meter verdict OK
+  served gemini-3.1-pro-high (vendor google)   ⛔ an ECHO of our own request, NOT evidence of what was served
+  T composition: cache_read 11,452,140 · input 1,026,809 · output 103,546 · thinking 62,508
+```
+⚠️ **`T` IS 91 % CACHE READS.** Any cost statement built on `T` must name its denominator — this desk's
+standing card is that `$/T` and `$/output-token` can rank two arms in **opposite** directions.
+📊 **`command_failure_pct` = 52.5 (42 of 80 commands failed).** ⛔ **Not a gate branch, and NOT an
+anomaly** — censused over the 77 cells in this campaign with `commands_run > 0`: **min 23.7 · median 66.7
+· max 100.0, and 54 of 77 sit at or above 52.5.** ⇒ **The tripwire is BELOW the campaign median.**
+*Recorded so that a later reader meeting "52.5 % of commands failed" has the denominator beside it.*
+
+## §AD4.4 ⛔ TWO THINGS THIS READING DOES **NOT** SAY
+1. ⛔ **`ctl/end-1` reads `LANDED landing-1 a2edf2b7` and that is the PERSISTENCE PROBE's verdict, not the
+   cell's.** The cell's own verdict is `done_reason` + `landed` in `ctl/agy-turnloop-1.json`, which is what
+   this gate read. **The two agree here. They have not always agreed, which is why they are read
+   separately.**
+2. ⛔ **The containment line is WEAKER than its neighbours and must not be quoted as comparable.**
+   `p_exposure` reads **`peer=no-peer-cell`** — **an UNTESTED arm, not a passing one** — because the
+   tripwire was fired **alone in its root**. Censused: **106 multi-cell-root cells read `peer=denied`; the
+   4 single-cell-root cells read `no-peer-cell`.** ⇒ **The arm begins testing something the moment cells
+   2..24 land in that root.** *(And `verdict=NOT-A-DATUM` here is the campaign's **standing, disclosed**
+   state — 92 of 112 cells — registered in `RESULT-stage3-2026-09-12.md` §8. It is not new to this wave.)*
+
+## §AD4.5 ⇒ THE GATE IS DISCHARGED
+**§L7 is closed.** The banner of this amendment — as scoped by ADDENDUM 3 — no longer withholds anything:
+**cells 2..24 are authorised, from export `ecd3924828cb`, under the profile frozen in §L1–§L6, unchanged.**
+📌 **Owed next, by the hand and not by me:** one `export_sha` across all 24, and the `TURN-TIMEOUT`
+incidence **reported as a SPLIT** (degenerate vs real) per ADDENDUM 2 §AD2.5 — **for this wave the
+tripwire contributes 0 to both.**
+
+### ⚠️ §AD4.6 A TIMING NOTE, RECORDED BECAUSE IT IS THE SAME PROSE CONFLICT A THIRD TIME
+§L7 says **both** of these:
+> *"THE GATE — written back into THIS FILE **before cells 2..24 fire**."*
+> *"`T < 50M` and no `TURN-TIMEOUT` → FIRE THE REMAINING 23 UNCHANGED. This … **needs no further word
+> from me**."*
+
+**The hand took the second, correctly, and fired within a minute of the cell landing. This write-back
+landed a few minutes after.** ⇒ **When the hand is faster than the lead, the two clauses cannot both be
+satisfied, and §L7 does not say which yields.**
+✅ **NO HARM, AND THE REASON IS WORTH MORE THAN THE RULE:** the hand and I read `b4lzs01` **independently**
+and reported **the same five fields and the same branch**. *A pre-declared gate is exactly what makes a
+fast hand safe* — the branch was fixed before the data existed, so there was nothing for either of us to
+decide. **The write-back is the RECORD; the pre-declaration was the CONTROL.**
+⚖️ **SCOPED FOR NEXT TIME, so it is not re-litigated:** *the write-back must precede cells 2..24 **on any
+branch that is not the pre-declared expected case**. On the expected case the hand fires and the lead
+records.* ⛔ **Any HOLD, `CAP-TOKENS` or `T ≥ 50M` branch still blocks the fire, absolutely.**
+📌 **Third time in one amendment that two sentences could not both be obeyed** — §L7's four rows
+(ADDENDUM 2), the banner against §L7 (ADDENDUM 3), and now this. ⇒ ***THE NUMBERS IN THIS FILE WERE
+DRIVEN REPEATEDLY; THE SENTENCES AROUND THEM WERE NEVER READ AGAINST EACH OTHER.*** That is the
+transferable finding of this wave's design phase, and it cost nothing only because the gate was encoded.
