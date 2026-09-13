@@ -32,8 +32,16 @@ already exist as `(arm, card_extras)`. **REGISTERED RESOLUTION, so no head has t
 `salt` and `salt-diet` are **both buildable and are different arms.** The resolution is `salt-diet` on
 two grounds, not one: the campaign's population is **99 `salt-diet` cells against 1 `salt`**, and row
 HC's own 09/09 stamp maps its stage-1 arms onto `plain none` / `salt-diet none` / `placebo none` when
-it measures them. ⛔ **If the council intends the `salt` arm instead, this file is wrong and the fire
-must not proceed on it** — that is why the resolution is written down rather than carried in a head.
+it measures them. ⭐ **AND A THIRD GROUND, WHICH IS DECISIVE AND TURNS "RESOLVED" INTO "REQUIRED BY THE DESIGN"** (the
+helm, signing as non-author, 2026-09-13): **the 09/07 minute §A1 builds the placebo FROM
+`CLAUDE.salt-diet.md`** — matching its headings, its section lengths and its imperative count. **A
+placebo is only a control for the arm it was built to mirror.** ⇒ **If the salt arm of this factorial
+were `salt`, the placebo would be mirroring a different document and the contrast would be UNMATCHED,
+which is the one thing the placebo arm exists to avoid.** The first two grounds make `salt-diet` the
+likely reading; this one makes it the only coherent one.
+⛔ **If the council intends the `salt` arm instead, this file is wrong AND SO IS THE PLACEBO, and the
+fire must not proceed on either** — that is why the resolution is written down rather than carried in
+a head.
 
 ⇒ 🔑 ***AND THE MEASUREMENT THAT MATTERS MOST HERE IS THE ONE THAT CORRECTS MY OWN PREDECESSOR.*** Row
 HC's 09/13 stamp offers as evidence: *"Swept every cells root on the run box for `ctl/arm` matching
@@ -96,6 +104,26 @@ it** (row HC's own 09/09 rule, restated here because a rule in a desk cell is no
 median above; band = **[0.60×, 1.70×] of it**, registered as one multiplicative rule for all fifteen
 rather than hand-tuned per cell, because a band chosen per problem after seeing that problem's spread
 is fitted and its author cannot show otherwise.
+
+⭐ **THE WIDTH IS NOW DERIVED, AND THE ORDER OF EVENTS IS STATED BECAUSE IT IS THE HONEST PART.** The
+helm's signature asked for either a derivation or a plain admission that the width was a declared
+choice. **It was a declared choice — I picked it before deriving anything — and the derivation
+RATIFIES it rather than having produced it.** From the registered `sd(ln cost) = 0.30458`, simulating
+the median of n = 3 (400,000 trials, seed fixed in the generator):
+```
+  sd of the MEDIAN of n=3 ......... 0.20351 in ln space   (= 0.6682 x sigma)
+  central 95% of that median ...... [0.6707x, 1.4906x]
+  central 99% of that median ...... [0.5900x, 1.6933x]
+  THE REGISTERED BAND [0.60x, 1.70x] ... simulated coverage 0.9890
+```
+⇒ **The band chosen by judgement is, to two decimal places, the 99% sampling interval for the quantity
+it bounds.** It is kept as `[0.60×, 1.70×]` — round numbers registered before the arithmetic — and the
+arithmetic is printed beside it so a reader can re-cut it at 95% without re-running anything.
+⛔ **WHAT THE BAND DOES NOT COVER, and it is not a small caveat: it is a SAMPLING interval under the
+registered σ ONLY.** It says nothing about the instrument changing between matrix #1 and HC stage 1 —
+and §3a establishes that the instrument HAS changed, because the cap now censors where it did not.
+**A band derived from sampling alone cannot absorb a censoring change, and no widening of it would
+make that legitimate.**
 ```
   arm            problem    POINT       BAND (registered)        basis
 
@@ -156,6 +184,34 @@ conclusion to draw from the table later.
 📌 **I am not raising the cap and not asking for it to be raised.** Row HC forbids it, and censoring
 that is declared in advance is a limitation; censoring discovered afterwards is a confound.
 
+## §3b · ⛔⛔ THE CAP IS VISIBLE TO THE SUBJECT, SO "LANDED JUST UNDER IT" IS PACING AND NOT EVIDENCE
+**The helm's signing condition, and it is a real hole in §3a rather than a tightening of it.**
+`repo/BUDGET.md` sits at the top level of the subject's own working directory and is **rewritten every
+tick** by `cell-watch.sh` with `cost (USD): cap <C> spent <S> remaining <R>`. Both arms see it; it is
+**unadvertised** (zero hits in the cell `CLAUDE.md` and in `BOOT_PROMPT_2`) and **untracked**. It was
+registered as a property of the arm by ruling, and it is **symmetric in FORM and asymmetric in EFFECT:
+it only bites the arm that approaches the cap.**
+⇒ ⛔ **AND ON FreeList AND Paxos THE ARM PREDICTED TO REACH THE CAP IS PRECISELY THE ARM READING A
+SHRINKING NUMBER.** As §4 was written, a `salt-bare` cell landing at **$37.00** would count as a
+falsification of "caps out" — **and a subject pacing itself to finish just under a countdown it can
+read produces exactly $37.00.** ⇒ 🔑 ***THE HARNESS'S OWN DISCLOSURE COULD "REFUTE" THE TWO SHARPEST
+PREDICTIONS IN THIS FILE, AND THE REFUTATION WOULD BE THE INSTRUMENT TALKING.***
+✅ **REGISTERED NOW, BEFORE THE FIRE:**
+```
+  CAP-OUT      median >= C1_USD 37.21                      the prediction, as in §3a
+  NEAR-CAP     median in [0.95 x C1, C1) = [$35.35, $37.21)   ⭐ ITS OWN OUTCOME.
+               NEITHER a cap-out NOR a falsification of one. Reported as NEAR-CAP and counted
+               separately, because a visible countdown makes this band uninterpretable as either.
+  BELOW        median < $35.35                             falsifies the cap-out prediction
+```
+📌 **AND THE READING THAT DISAMBIGUATES IT IS RECORDED PER CELL, NOT INFERRED:** for every stage-1
+cell, **whether its transcript shows the subject reading `BUDGET.md`** — the file is in its cwd and a
+read is a tool call, so this is observable rather than argued. **A NEAR-CAP landing with no BUDGET.md
+read is a different fact from a NEAR-CAP landing with one**, and the table carries the column.
+⛔ **The file is NOT removed or hidden for this stage.** It was registered as a property of the arm by
+ruling, and removing it mid-wave would be the larger change. **The remedy is to stop it corrupting a
+verdict, not to alter the treatment surface.**
+
 ## §4 · THE FALSIFICATION RULE, REGISTERED BEFORE THE FIRE
 1. **A prediction is WRONG when that arm's new n = 3 median falls OUTSIDE its band.** Counted per cell
    group, reported as a bare count out of 15. **No band is widened after a result. No cell is dropped
@@ -163,7 +219,8 @@ that is declared in advance is a limitation; censoring discovered afterwards is 
 2. **A CAP-OUT IS A RESULT, NOT A VOID** (row HC: *"Caps as floors; a cap-out is a result; no cap
    raised"*). A capped cell enters the median at its cap and the table says so. **Per §3a, two arms
    are PREDICTED to cap out; for those two the cap-out IS the prediction, not an excuse for missing
-   one.**
+   one — and §3b's NEAR-CAP band applies to them, so a landing in [$35.35, $37.21) is neither scored
+   as a cap-out nor counted as a falsification.**
 3. ⛔ **THE REPLICATION HALF IS DELIBERATELY LOW-INFORMATION AND I AM SAYING SO BEFORE IT PAYS OFF.**
    Ten of these fifteen points are matrix #1's own medians, so predicting them is close to predicting
    that the same harness does the same thing twice. **Its value is not surprise — it is that the cells
