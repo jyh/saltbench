@@ -785,3 +785,40 @@ own *"greenfield with a longer card"* shape wearing a brownfield label.
   6, 7  OWED — the two VERDICT paths, and the only rows left that need a full red-first drive
   Crc32 awaits its ruling (no discriminating seed; three options posted, recommendation (a))
 ```
+
+---
+
+# ADDENDUM 14 — 2026-09-13, bench. **§B7 ROW 6: TWO PARTS DONE, THE THIRD IS A SPECIFICATION PROBLEM**
+*Task tree `a053b8e`; predecessor kept as `referee_v3.py.pre-verdict-arms`.*
+
+**✅ DRIVEN.** `referee_v3.py --selftest-verdicts` — **9 arms** over `phase2_verdicts`: GREEN/GREEN ·
+V1-RED-alone and V2-RED-alone (*the interesting cells, unpooled*) · both lines absent AND one line absent
+both → UNMEASURED · **UNMEASURED is NOT GREEN** · phase 1 → NOT APPLICABLE, distinct from both ·
+`pooled_forbidden` in the record · **no pooled `correct`/`pass`/`verdict` field emitted.**
+⛔ **A SEPARATE FLAG ON PURPOSE.** The main `--selftest` refuses without six toolchain names and a withheld
+tree; an arm added there would **inherit both gates and be unreachable** wherever they are absent — and an
+arm that cannot run does not stay correct, **it stays pinned to the day it was written.**
+⭐ **RED-DRIVEN against two mutants of the function it tests:** making `UNMEASURED` read as GREEN — *the
+exact inversion design §2 forbids* — fails **2** arms; pooling V1 and V2 into a `correct` field fails **1**.
+Restored, 9 of 9. **A suite that has only ever passed proves nothing.**
+
+**✅ SEPARABLE.** `CELLS.tsv` gains a **13th field: `greenfield | brownfield`.** Without it the two
+conditions are indistinguishable in the register, which is what row 6 asks for. Appending is safe for the
+reason the file itself already measured — *readers take fields by NAME or by index 1/2; the fence files only
+DENY the path* — and I re-measured before adding: **nothing in the harness parses it positionally**, and
+`stage_fence_v3.sh` says so of itself (*"derived from the DIRECTORY, never from CELLS.tsv"*).
+
+## ⛔ THE THIRD PART CANNOT BE BUILT AS WORDED, AND I AM REGISTERING IT RATHER THAN FORCING IT
+Row 6 says *"V1/V2 as separate **CELLS.tsv** columns"*. **They cannot be.**
+```
+  CELLS.tsv   written at BUILD time, one appended row per cell
+  V1 / V2     POST-RUN verdicts, read by the referee from the driver's output AFTER the cell has run
+```
+⇒ **At the moment the row is written the verdicts do not exist.** The options, neither of them mine to
+rule: **(a)** a RESULTS register carries `cell · v1 · v2 · reading`, leaving `CELLS.tsv` a pure build
+record — my recommendation, because it keeps an append-only file append-only; **(b)** `CELLS.tsv` is
+updated in place after a run, which **re-opens the row-tearing hazard the file already documents** (*"every
+cell's build appends to ONE file, and concurrent appends over ~1 KB tear"*) and turns a build record into a
+mutable one.
+📌 **The row is not wrong about what it WANTS — the two verdicts must be separable per cell, and they are.
+It is wrong about WHERE**, and that is worth one ruling rather than a forced column.
