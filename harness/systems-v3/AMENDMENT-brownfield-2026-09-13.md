@@ -577,8 +577,11 @@ selftest); its PARENT-KEY half cannot be built until a cell can carry a `field` 
 as though it were.**
 
 ## ⚖️ THE THIRD RUNG, SPECIFIED — so it is built once and not re-derived (bench, 2026-09-13)
-Written in the shape A5.6(b) used for gate FIX 3: **fully specified, deliberately not built at the tail of
-a shift**, because it is the blocker for the whole field and deserves a full red-first drive.
+Written in the shape A5.6(b) used for gate FIX 3. ⚠️ **THIS PARAGRAPH SAID "deliberately not built at the
+tail of a shift" AND THAT IS NO LONGER TRUE — IT WAS BUILT AND DRIVEN THE SAME SHIFT; see ADDENDUM 10.**
+The line is corrected rather than deleted because a spec that says "not built" while the thing is built is
+the stale-DONE shape in the other direction, and this document has already been corrected once for a name
+that outlived its object.
 
 **IT IS A `--field`, NOT A `--phase`.** Phase is the GREENFIELD→SPEC-CHANGE axis and brownfield is
 orthogonal to it: a brownfield cell can itself later take a spec-change (§B4 says so — *"a brownfield
@@ -617,3 +620,48 @@ parent yields a BROWNFIELD child"*). Overloading `--phase` would make the two ax
 ```
 📌 **`--field` also finally lets `CELLS.tsv` separate greenfield from brownfield rows, which §B7 row 6
 needs and which is today impossible: the two fields are indistinguishable in a built cell.**
+
+---
+
+# ADDENDUM 10 — 2026-09-13, bench. ✅ **THE THIRD RUNG IS BUILT AND DRIVEN. `--field` IS LIVE.**
+*Task tree `457443c`. The predecessor is kept beside it as `cell_build.py.pre-field`.*
+
+**`--field {greenfield,brownfield}`, not a `--phase`** — §B4 says a brownfield parent yields a brownfield
+CHILD, so overloading phase would have made `brownfield→spec-change` inexpressible and pooled two
+conditions. `interface.rs` is UNCHANGED and still from `G/`; **`solution.rs` is the only file that differs
+from a greenfield cell at t0**; `ctl/field` and `ctl/seed-sha` are written; the card addendum is appended
+to `REQUIREMENTS.md`.
+
+```
+  R1  a missing seed or addendum         REFUSE  — "a brownfield cell without it would be a GREENFIELD
+                                                   cell wearing the label, and nothing downstream could tell"
+  R2  --field brownfield --phase 2       REFUSE  — row 8's parent-key half does not exist
+      CONTROL: --phase 2 ALONE still hits the older state refusal ⇒ I shadowed nothing
+  R3  a built brownfield cell            solution.rs == the seed BYTE-FOR-BYTE · interface.rs ==
+                                         G/interface.rs BYTE-FOR-BYTE · ctl/field = brownfield ·
+                                         ctl/seed-sha == the registry's seed_sha256 · addendum present
+  R4  NO REGRESSION                      a greenfield cell built AFTER the change is CONTENT-IDENTICAL to
+                                         one built before — tree 897c1ce0…, `diff -r` excluding .git EMPTY
+  R5  neutrality                         ctl/neutrality.log: "neutrality: zero hits" on the finished tree
+```
+⛔ **R2 WAS DRIVEN ONCE IN THE WRONG ORDER AND PROVED NOTHING** — the older phase-2 STATE refusal fired
+first and shadowed it. The check now sits **ahead** of that one, which is also where it belongs on the
+merits: it is ARGUMENT VALIDITY, true or false whatever the cell's state, and it needs no toolchain, so
+it can be driven. That is the same reasoning the older comment there already gives for its own placement.
+⇒ 🔑 ***AN ARM THAT FIRES BEHIND AN EARLIER GATE IS NOT A WEAK ARM, IT IS AN UNTESTED ONE — AND IT LOOKS
+EXACTLY LIKE A PASSING ONE, BECAUSE SOMETHING DID REFUSE.***
+
+⭐ **R4 IS THE ONE THAT MATTERED and it needed its own correction.** It first read as a FAILURE because I
+compared the `root` the builder PRINTS — **a COMMIT sha, which embeds the clock.** Two runs of the SAME
+builder, one second apart, differ there by construction. The TREE is the content identity and is stable;
+`cell_manifest.py` was already keyed on it. ⇒ **A no-regression arm is only as good as the object it
+compares, and "root" was the wrong one.**
+
+## ⇒ §B7 STATE
+```
+  row 1 ✅ 4 of 5     row 2 ✅ superseded, driven      row 4 ✅ 48 baseline rows     row 9 ✅
+  row 5  N2 ✅ · N1 ⏸ · N3 ⏸        row 3 OPEN — needs a cell, AND A CELL CAN NOW BE BUILT
+  rows 6, 7 OWED (verdict paths)    row 8: COPY-not-dispatch ✅ · parent-key now UNBLOCKED (ctl/field exists)
+```
+**The blocker named in addendum 9 is gone.** Rows 3, 5(N1), 5(N3) and row 8's parent-key half were all
+waiting on a buildable cell; they are now waiting only on someone to drive them.
