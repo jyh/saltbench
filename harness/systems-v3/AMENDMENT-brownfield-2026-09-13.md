@@ -185,3 +185,46 @@ Design §8 stands in full and is not restated. The one line that must travel wit
 **a planted defect is not a sample of the defects real code has**, one defect per problem is `k = 1`, and if a
 brownfield run yields both a cost premium and a V1 rate **they are two results and the paper must not join
 them with "and therefore."**
+
+---
+
+# ⛔⛔ CORRECTION TO §B1, SAME DAY, BEFORE ANY SETUP WAS BUILT ON IT
+## The seeded artefact is `solution.rs`, NOT `interface.rs`. Measured at the canonical source tree
+## (`saltbench-systems-v3`, branch `master`, `26cbbd4`), not at an export.
+
+§B1 above names the third rung's content as `brownfield/interface.rs`. **That is wrong on a load-bearing
+detail and would have mis-built the whole field.** The v3 executor brief says so in terms:
+```
+  EXECUTOR-BRIEF-v3.md:19   "The component is ONE file `solution.rs`; the fixed interface is
+                             `interface.rs` (plain Rust, ONE neutral file, IDENTICAL IN BOTH ARMS)"
+  EXECUTOR-BRIEF-v3.md:31   THE CONTAINMENT RULE: harness/systems-v3/containment.py <interface.rs> <solution.rs>
+```
+⇒ **`interface.rs` is the FIXED, ARM-NEUTRAL interface the agent is GIVEN. `solution.rs` is what the agent
+WRITES and what every suite scores.** A planted defect in `interface.rs` would not be "seeded with buggy code"
+at all — it would corrupt the one file the design guarantees is identical across arms, which is the opposite
+of §B2's whole purpose.
+
+## ⇒ THE RUNG, CORRECTED
+```
+  tasks/systems-v3/<Task>/brownfield/solution.rs      THE SEEDED, DEFECTIVE COMPONENT     <- the seed
+  tasks/systems-v3/<Task>/brownfield/card-addendum.md "this component already exists"
+  interface.rs        NOT copied, NOT altered — the cell takes G/interface.rs exactly as greenfield does
+  SCORING             G/run_tests.sh + G/withheld/{tests,mutants,reference,controls,tags.json}
+                      "seeded with buggy code, SAME REQUIREMENTS" ⇒ the same suite, by construction
+  containment.py      still applies, unchanged: the seed must itself satisfy it, or the cell starts illegal
+```
+⛔ **CONSEQUENT EDITS elsewhere in this amendment, so it does not contradict itself:** §B3's `file` column and
+`seed_sha256` are the sha of **`solution.rs`**; §B5's discriminator ("the seeded file survives at its path and
+was EDITED") is about **`solution.rs`**; §B7 row 1's "G/ and B/ byte-unchanged" now also requires that
+**`brownfield/` contains no `interface.rs` at all** — its presence would be the collision, and it is cheap to
+assert.
+
+## ⇒ 🔑 THE LESSON, AND IT IS THIS AMENDMENT'S OWN §B1 TURNED ON ITS AUTHOR
+§B1 exists because `B/` does not mean in v3 what it meant in v2, and it says: *a name that survives a redesign
+is worse than a name that breaks, because nothing announces the change.* **I then assumed what `interface.rs`
+was from its name, without reading the brief that defines it** — the same error one level down, inside the
+section warning against it. ⇒ ***A DOCUMENT THAT WARNS ABOUT UNREAD NAMES IS NOT THEREBY WRITTEN BY SOMEONE
+WHO READ THEM.*** The correction cost ten minutes because the seed had not been authored yet; it would have
+cost the field if row 1 had been built first.
+📌 **And it is why §B7 row 1 is a checklist row rather than an assumption:** the recon that found this was the
+first act of discharging it.
