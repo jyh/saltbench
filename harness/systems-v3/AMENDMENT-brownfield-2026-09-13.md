@@ -449,3 +449,24 @@ sets are globs taken at RENDER TIME, and a glob that grows after the render leav
 permissive.
 📌 **Recorded rather than quietly deferred**, because "the fence denies `~/projects`" is exactly the kind of
 true-and-undriven sentence that reads as a discharged row in a checklist.
+
+---
+
+# ADDENDUM 6 — 2026-09-13, bench. **§B7 ROW 4 IS DISCHARGED FOR THE FOUR SEEDED PROBLEMS**
+
+`harness/systems-v3/BROWNFIELD-SEED-BASELINE.tsv` — **48 rows, one per withheld test per problem**, each
+taken from that test's own run against the raw seed, before any cell. Not counts: the **per-test** state,
+because `bugs_introduced` is defined as *any OTHER test GREEN at baseline going RED at end* and a count
+cannot answer that.
+```
+  LZW        3 GREEN /  5 RED        LRU        10 GREEN / 6 RED
+  Paxos     11 GREEN /  6 RED        FreeList    6 GREEN / 1 RED
+```
+The RED rows are exactly the seeded defect's detectors and they match `BROWNFIELD-PLANTS.tsv`'s
+`detecting_withheld_tests` column test-for-test — **the two files are independent renderings of the same
+runs, so a disagreement between them is a real alarm rather than a formatting difference.**
+📌 The amendment's own warning, now concrete: **without this file `bugs_introduced` silently becomes
+"tests failing at end", which counts the PLANTED DEFECT ITSELF as introduced** — the metric would report
+every arm as having introduced a bug it was handed.
+⛔ **And `bugs_introduced = 0` remains a FLOOR, never a zero** (suite-limited; report the margin beside it).
+**Crc32 is absent from this file for the same reason it is absent from the plants registry: it awaits its ruling.**
