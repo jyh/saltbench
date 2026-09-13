@@ -304,3 +304,75 @@ labelled so.** Nothing here blocks the field.
   a cell that argues    every agy cell carries ctl/plumbing-only. READ IT before a cell enters a table.
 ```
 ⇒ **Everything else in §G1–§G9 that this file does not restate stands unchanged and applies.**
+
+---
+
+# ADDENDUM 1 — 2026-09-13, bench. ✅ **`BUDGET.md` REGISTERED: IT IS ABSENT ON THE ENTIRE agy LANE, AND THE SPLIT IS ON THE CLIENT**
+
+*Filed on maestro's non-author read of `c4bcb1a` (15:01), which found this file mentioned `BUDGET.md`
+**zero** times while the 13:08 ruling had made it part of the **TREATMENT SURFACE** in every wave's
+registration from the P2 pair on. **Level 4 is the first wave since.** The catch is correct and the gap
+was mine.*
+
+⚖️ **maestro proposed taking this line from the tripwire cell's own tree. IT DID NOT HAVE TO WAIT:** the
+fact was already readable on 63 built cells, so the line is filled in **BEFORE the first call** rather
+than after cell 1. ⇒ *A registration that can be taken before the fire should never be scheduled for
+after it.*
+
+## THE CENSUS — measured at the object, denominator first, with a positive control
+```
+  agy GREENFIELD cells (the s3 wave)   55 with a repo/ ...... repo/BUDGET.md present:  0
+  agy BROWNFIELD probe cells           8 with a repo/ ......  repo/BUDGET.md present:  0
+  POSITIVE CONTROL — CLAUDE cells      25 with a repo/ .....  repo/BUDGET.md present: 24
+  mechanism arm                        agy_launch_v3.sh mentions BUDGET: 0 occurrences
+```
+⛔ **THE 25th CLAUDE CELL IS NAMED RATHER THAN ROUNDED AWAY:** `d64c7ea2` has **no `ctl/client` and no
+end marker — it never fired.** ⇒ **The honest denominator is 24 of 24 FIRED Claude cells, not 24 of 25**,
+and the control is therefore *perfect*, not merely strong.
+⇒ 🔑 ***THE SPLIT IS TOTAL AND IT IS ON THE CLIENT — the SECOND client-split finding this desk has
+measured today, the first being P-SANDBOX (134 agy / 124 claude).*** Same shape, same day, same cause:
+**two fire paths that were never required to agree about what they put in front of a subject.**
+
+## WHAT THE FILE DISCLOSES WHERE IT EXISTS, verbatim from two real cells
+```
+  PHASE 1 (token profile)          PHASE 2 (pricing profile, the P2 pair the 13:08 ruling was about)
+  tokens: cap / spent / remaining  cost (USD): cap / spent / remaining      <- HC condition (1)'s hazard
+  wall: remaining  (= max_wall)    tokens (a reading, not the cap): spent
+  compactions so far               wall: remaining (= max_wall) · compactions so far
+```
+⭐ **maestro's guess about the clocks was exactly right, and it is the load-bearing half:** the file shows
+`wall: remaining`, which is **`max_wall` (21,600 s)** — and **`max_wall` has never bound a cell in this
+campaign** (heaviest observed wall: 5,539 s, a quarter of it). ⛔ **The per-turn `turn_timeout` — the cap
+that actually cut four cells, all salt-diet — is NOT SHOWN, on EITHER lane, in EITHER phase.**
+
+## ⇒ ⚖️ THE THREE CONSEQUENCES, REGISTERED. IT IS A DECLARED PROPERTY, NOT A PREDICTION AND NOT A STOP
+1. ✅ **FOR THIS WAVE, THE SUBJECT READS NO COUNTDOWN OF ANY KIND.** No token cap, no USD, no wall clock.
+   ⇒ **§L4's arm-correlated wall-clock cut CANNOT be explained by a subject pacing itself against a
+   readable clock**, because on this lane there is no clock to read. **This STRENGTHENS §L4 rather than
+   qualifying it**, and it is registered here so that a later reader does not have to wonder.
+2. ⛔ **DESK HC's CONDITION-(1) HAZARD DOES NOT ARISE ON THE agy LANE, AND THE REASON IS NOT VIRTUE.**
+   HC registered `NEAR-CAP` and a per-cell *"did the transcript show the subject reading `BUDGET.md`"*
+   column because **a subject pacing itself under a countdown it can read produces exactly the landing
+   that falsifies a cap-out prediction.** ⇒ **That column is VACUOUS on this wave — the file is not
+   there to read** — and ⛔ **a vacuous column must be reported as `NOT APPLICABLE (file absent on this
+   lane)`, never as `no read observed`.** The two are byte-identical in a results table and mean opposite
+   things: one is a subject that did not look, the other is a subject that could not.
+3. ⛔⛔ **THE CLAUDE AND GEMINI LANES HAVE DIFFERENT TREATMENT SURFACES, AND ANY CROSS-LANE SENTENCE MUST
+   DECLARE IT.** A Claude subject is handed a budget file; a Gemini subject is not. **This is a second,
+   independent incommensurability between the lanes, beside the USD one §G2 already registered** — and it
+   is the more dangerous of the two, because a missing dollar sign is visible in a table and a missing
+   *file in the subject's working directory* is visible nowhere.
+
+## 📌 WHAT IS **NOT** CLAIMED HERE
+⛔ **I did not locate the executable that writes `BUDGET.md`.** `cell-watch.sh` is not on this run box and
+`~/cells/_bin` (28 executables) contains no writer of it but `smoke_harvest_v3.sh`. **The CENSUS is
+measured; the MECHANISM is NOT LOCATED, and it is recorded as not-located rather than inferred from the
+census.** The one mechanism arm I *can* drive points the same way — `agy_launch_v3.sh` mentions `BUDGET`
+zero times — but **an absence in one file is not the identification of a writer in another.**
+⚠️ This is the campaign's own standing caution: *the v3 runtime is tracked nowhere*, so a mechanism
+question about it cannot be answered from the repository, and a census must not be dressed up as one.
+
+## SCOPE
+**§L1–§L11 are unchanged. No cap moves, no cell is voided, no reading rule is added or removed.** This
+addendum fills one registration line that the 13:08 ruling required and `c4bcb1a` omitted.
+✅ **gemini fires on `c4bcb1a` as authorized; this line does not gate the fire and was never a hold.**
