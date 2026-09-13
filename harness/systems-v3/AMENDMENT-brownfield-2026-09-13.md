@@ -864,3 +864,168 @@ an unrun cell reads `UNTOUCHED 1.000 HEAD`; a one-byte-edited one reads `REPAIRE
   6   its third part is a SPECIFICATION problem, registered for a ruling: V1/V2 cannot be CELLS.tsv
       columns, because that file is written at BUILD time and the verdicts are POST-RUN
 ```
+
+---
+
+# ADDENDUM 16 — 2026-09-13, bench. ⛔⛔ **§B7 ROW 7'S ✅ DOES NOT HOLD: "HARNESS-TAKEN" WAS READ AS "NOT AGENT-REPORTED", AND BOTH WITNESSES WERE INSIDE THE SUBJECT'S REACH**
+*`harness/systems-v3/brownfield_rewrite_class.py`, saltbench-systems `071252d` + `3591e27` (branch
+`bench/b7-row7-harness-witness-2026-09-13`, pushed to backup). Task tree: export `ecd3924`.*
+
+## ⚠️ FIRST, THE DISAGREEMENT THAT SENT ME TO LOOK, BECAUSE IT IS THE CHEAPEST PART OF THIS
+**ADDENDUM 15 marked row 7 ✅ DISCHARGED. The same head's GATE and BANK both listed row 7 as the next
+item to TAKE, in that order, at the top.** One shift, one seat, two records, opposite verdicts. I took
+the gate's reading because it was the one addressed to me, and it was right — **but I want the record to
+say that I did not discover the defect by suspecting it, I discovered it because two documents disagreed
+and I read the loser.** ⇒ 🔑 ***A CONTRADICTION BETWEEN TWO OF YOUR OWN RECORDS IS A FREE AUDIT, AND THE
+TEMPTATION IS TO RESOLVE IT BY PICKING THE FRESHER ONE RATHER THAN BY MEASURING.***
+
+## ⛔ THE DEFECT: TWO DIFFERENT PROPERTIES SHARE ONE PHRASE
+Row 7 reads *"wired to HARNESS-TAKEN hashes"*. ADDENDUM 8 glossed it, correctly as far as it went:
+*"the hashes must be taken by the harness precisely because a subject-reported hash is the subject
+grading itself."* ADDENDUM 15 discharged it on exactly that reading — the seed came from the cell's git
+**root commit**, not from a landing note, so it was not agent-reported.
+⇒ ⛔⛔ **BUT "NOT REPORTED BY THE SUBJECT" AND "NOT CONTROLLABLE BY THE SUBJECT" ARE DIFFERENT
+PROPERTIES, AND ONLY THE SECOND ONE MAKES A WITNESS A WITNESS.** The row was scored on the first.
+
+**MEASURED AT THE OBJECT, in the harness's own source, 2026-09-13:**
+```
+  render_fence_v3.deny_set   denies FOREIGN_TREES ∪ ~/.claude* ∪ ~/bench* ∪ the cells root's shared
+                             members ∪ every SIBLING cell ∪ the scratch roots.
+                             The cell's OWN directory is not in it. The only invariant asserted about
+                             the cell's own tree is the OPPOSITE one — that repo/ and tmp/ must NOT be
+                             denied ("a fence that blocks the agent's working copy is not a fence, it
+                             is a blind episode that still scores").
+  cell_build.py              says so itself, at the briefing-token census: "ctl/ is walked too,
+                             deliberately: the fence allows the cell tree, so a token written into
+                             ctl/briefing-nonce IS reachable by the subject's shell."
+```
+⇒ **`ctl/seed-sha` is harness-WRITTEN and subject-REACHABLE. The git root commit is harness-COMMITTED
+and subject-REWRITABLE** (`commit --amend`, `rebase`, or `rm -rf .git && git init`). The discriminator
+rested on the weaker of the two and consulted the other one not at all — while its own docstring
+asserted they agreed (*"the root commit, which is also what `ctl/seed-sha` attests"*).
+⛔ **AN UNCHECKED PREMISE STATED IN A DOCSTRING IS NOT A WEAKER CHECK THAN A COMPARISON. IT IS NOT A
+CHECK.** It is a sentence that makes a reader stop asking.
+
+## ⭐ WHAT IT COSTS, MEASURED ON A REAL CELL RATHER THAN ARGUED
+A **COPY** of the real probe cell `bflzwp` (LZW, seed `aa968d04…`) — copied, never dispatched — with its
+`repo/.git` removed and its own wholesale rewrite re-committed as *"the component repository"*. Two
+commands for a subject with a shell.
+```
+  unwired (seed from the cell's own root commit)  ->  UNTOUCHED   retained 1.000
+  wired   (seed from the task tree, W1)           ->  REFUSED     "THE CELL'S HISTORY DOES NOT CARRY
+                                                                   THE SEED IT WAS BUILT WITH"
+  the true class of that cell                     ->  REPLACED
+```
+⇒ 🔑 ***THE REWRITE ESCAPE AND THE INACTIVE CELL BECAME THE SAME ROW.*** `REPLACED` — "greenfield with
+extra steps" — is the **entire reason design §3 registers this class**, and it is the one outcome a
+forged seed erases. A root rewritten to something merely *near* the output reads `REPAIRED` at a high
+ratio instead: **the intended brownfield outcome, manufactured.** The class can be moved to any value
+the subject likes, and the unwired tool has no channel through which to notice.
+📌 **The pre-wiring logic is KEPT IN THE FILE as a named negative control** (`_classify_cell_only_
+NEGATIVE_CONTROL`, no caller outside the selftest, no flag that reaches it), so the two rows above are a
+MEASUREMENT of what the wiring buys and not a claim about it. Same pattern, same reason, as
+`render_fence_v3.render(carve=False)`: **an invariant you cannot show FAILING is one you have not tested.**
+
+## ✅ THE REPAIR — THREE WITNESSES, AND ONLY ONE IS OUT OF REACH
+```
+  W1  <tasks-root>/<task>/brownfield/solution.rs   the SOURCE seed, in the harness tree. AUTHORITATIVE,
+                                                   and the text every class is computed against.
+  W2  <cell>/ctl/seed-sha                          harness-written at build   · subject-REACHABLE
+  W3  solution.rs at the cell repo's ROOT COMMIT   harness-committed at build · subject-REWRITABLE
+```
+⛔ **W2 and W3 ARE KEPT, BUT DEMOTED — AS TAMPER DETECTORS, NEVER AS SOURCES OF TRUTH.** They are the
+only reason a rewrite is VISIBLE at all. Any disagreement **REFUSES** and names which witness disagrees.
+⛔ **A TAMPER IS AN INSTRUMENT-INTEGRITY FINDING AND NEVER A FOURTH OUTCOME CLASS.** A refused cell emits
+no class at all — binning it would put a forged cell in a table beside honest ones.
+⛔ **MORE THAN ONE ROOT COMMIT REFUSES** rather than the tool picking one. `rev-list --max-parents=0`
+returns a LIST; the old code took `[-1]`. Two roots is the signature of a graft or a re-init.
+⛔ **`--tasks` IS REQUIRED AND HAS NO BYPASS.** A flag permitting the tool to run without its external
+witness would be used, and the resulting rows are **indistinguishable from wired ones once they reach a
+table.** There was no caller to break: this tool had none.
+⛔ **A CELL WITHOUT `ctl/seed-sha` IS REFUSED, NOT SKIPPED** — a greenfield cell has none, and skipping
+it silently is how a greenfield cell enters a brownfield condition wearing the label.
+📌 **`seed_sha` AND `end_sha` ARE NOW ON EVERY ROW**, so design §3's *"a hash at build, a hash at end, and
+a diff statistic between them"* is all three on the line and the class is reproducible without the cell.
+📌 **THE 0.20 THRESHOLD IS DELIBERATELY UNTOUCHED.** Moving the cut in the same edit would make its
+pre-data registration unverifiable by a reader of one diff.
+
+## ⭐ AND THE SECOND COMMIT, WHICH IS THE ONE I ALMOST DID NOT WRITE
+W1 is out of reach **because of where the task tree sits** — under `~/projects`, which is in
+`FOREIGN_TREES`. That is a fact about the run box, **not about this tool**, and I had written it into a
+docstring as though a docstring could see the box it is read on. So it is now **re-taken PER CELL** from
+the cell's own rendered fence, as a `w1_fenced` column:
+```
+  COVERED     a denyRead entry covers the W1 tree, or an ancestor of it
+  UNCOVERED   REFUSES — a witness the subject can reach is not a witness
+  UNVERIFIED  no rendered fence in ctl/. The class still stands on W1/W2/W3 agreement; the
+              REACHABILITY claim is UNTESTED for that cell, and the count prints as its own loud
+              trailer rather than sitting in a column a reader may not scan.
+```
+⇒ 🔑 ***A CLAIM ABOUT REACHABILITY THAT IS NOT RE-TAKEN PER CELL IS A CLAIM ABOUT THE DAY IT WAS
+WRITTEN.*** ⛔ And `UNVERIFIED` is deliberately **not** printed as a pass: *"untested" is not "held"*, and
+this file's parent already records that the most dangerous green is one that names its own scope
+accurately, because the scope is printed where the reader has already decided the answer is yes.
+
+## 📊 THE DRIVE — SELFTEST, MUTANTS, AND THE OBJECT
+```
+  selftest ............... 26 of 26, rc 0.  16 of the arms are RED (a planted tamper must REFUSE).
+  mutation controls ...... 6 of 6 KILL the selftest at rc 1, each by its OWN named arm:
+                             M1 W3 root-commit check removed ....... 2 arms fail
+                             M2 W2 ctl/seed-sha check removed ...... 1
+                             M3 multi-root refusal removed ......... 1
+                             M4 missing ctl/seed-sha skipped ....... 1
+                             M5 UNCOVERED fence not refused ........ 1
+                             M6 absent fence reported as COVERED ... 1
+                             M0 UNMUTATED control .................. rc 0, 0 arms fail
+  the object (A) ......... all EIGHT real brownfield probe cells, rc 0. Four seed shas, independently
+                           re-derived from the task tree and matching the builder's to the byte:
+                           LZW aa968d04 · LRU d9b2f3d3 · Paxos 1ce92803 · FreeList 4ebaf3df.
+  the object (B) ......... four PLANTS over COPIES of `bflzwp`, same real seed, rc 1:
+                           REPAIRED 0.990 · REPLACED 0.000 · REMOVED · REFUSED(forged root)
+```
+⛔ **WHY (B) EXISTS AT ALL: eight clean `UNTOUCHED` rows from a tool I had just written is the shape of a
+broken instrument, not of a good one.** The probe cells made zero model calls, so `UNTOUCHED` is the
+correct answer for every one of them — and a classifier that returns the correct constant is
+byte-indistinguishable from one that returns a constant. **(B) is the only reason (A) is a reading.**
+
+## ⚠️ AN ARM-CORRELATED SPLIT IN (A), CHASED TO ITS CAUSE AND **NOT** A FINDING
+`w1_fenced` came back **COVERED on all four `plain` cells and UNVERIFIED on all four `salt-diet` cells** —
+4/4 versus 0/4, a perfect split on the arm, which is the shape this campaign treats as guilty until
+measured. **Measured:** the salt cells lack exactly five files, all LAUNCH-PREFLIGHT artefacts
+(`launch.log`, `agy-battery-preflight.tsv`, `probe-battery.log`, `srt-settings.json` and its
+declared-differences table). That is **the battery having been run once per PAIR**, which is correct —
+the battery's claim is *"each seed compiles"*, a per-SEED property — and **the gemini seat declared it as
+`--` on the salt rows of its own published matrix.** ⇒ **My column surfaced a DECLARED asymmetry from a
+second direction. It is recorded here because a clean split on the arm deserves a cause, and because
+reporting a peer's declared `--` as a discovery is the cheapest way to spend someone else's credibility.**
+
+## ⛔ WHAT THIS DOES **NOT** ESTABLISH, SAID BEFORE ANY WAVE USES IT
+1. **No brownfield cell has ever been RUN.** Every class in (A) is `UNTOUCHED` on a zero-model-call
+   probe. **The discriminator has never seen a subject's real output**, and (B) is planted by me.
+2. **The 0.20 cut is untested against real agent behaviour** and will stay that way until a wave lands.
+   It is registered, printed beside every row, and re-derivable — that is all it is.
+3. **A subject that forges W2 *and* W3 *consistently* is caught by W1, but a subject that could reach
+   W1 is caught by nothing here** — which is why `UNCOVERED` refuses rather than warns.
+4. ⚠️ **A SIBLING GATE CARRIES THE SAME UNCHECKED PREMISE AND IT IS NOT MINE TO CLOSE THIS SHIFT.**
+   `brownfield_seed_check.py` (row 5) states in its own docstring that its SELF arm *"catches a tampered
+   record, a tampered root"*. **It compares `ctl/seed-sha` against the root commit — two witnesses both
+   inside the subject's reach — so a subject that rewrites BOTH is invisible to it.** The claim is false
+   for the coordinated case. ✅ **The population is covered in practice, because row 7's tool now refuses
+   exactly that cell**; ⛔ **but row 5's own sentence overstates row 5**, and it is registered here rather
+   than quietly edited, because a gate's scope is row 5's to restate.
+
+## ⇒ §B7 STATE, RESTATED IN FULL SO NO READER HAS TO ASSEMBLE IT
+```
+  1 ✅ 4 of 5 (Crc32 awaits its ruling)   2 ✅ (superseded by S1·S2·S3)   4 ✅   5 ✅   8 ✅   9 ✅
+  3   HALF — hook layer ✅; the SANDBOX layer needs a STAGED CELLS ROOT, not merely a cell
+  6   TWO PARTS DONE; the third is a SPECIFICATION problem registered for a ruling
+  7 ✅ DISCHARGED — ON THE SECOND READING OF ITS OWN WORDS. ADDENDUM 15's ✅ is SUPERSEDED, not
+      deleted: it was a correct discharge of "not agent-reported" and that is not what the row says.
+```
+⇒ 🔑 ***THE LESSON, AND IT IS THE ONE WORTH CARRYING OUT OF THIS FILE: A CHECKLIST ROW IS DISCHARGED
+AGAINST ITS WORDS, AND ITS WORDS HAVE TO BE RE-READ BY SOMEONE WHO IS NOT THE PERSON WHO WROTE THE
+GLOSS.*** ADDENDUM 8 wrote the gloss and ADDENDUM 15 discharged against the gloss, both the same seat,
+six hours apart, both careful. **The row never changed. The reading narrowed, once, and nothing in the
+process re-opened it** — which is exactly the "checklist you work inside is not one you read" defect this
+desk has already banked, arriving one level further down: **not a row skipped, a row satisfied in the
+smaller of its two meanings.**
