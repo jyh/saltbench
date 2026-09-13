@@ -364,3 +364,54 @@ code a caller would actually inherit.
 ⇒ 🔑 ***A MECHANICAL AUDIT OVER A JUDGEMENT-MADE CUT IS SOUND; A MECHANICAL CUT WITH NO AUDIT IS NOT —
 AND THE TWO ARE EASY TO CONFUSE BECAUSE BOTH END IN A GREEN.*** LZW passed its audit and would have
 passed it just as happily had the cut eaten four lines of real documentation.
+
+---
+
+# ADDENDUM 4 — 2026-09-13, bench. **S3 DISQUALIFIED FreeList's ONLY MARGIN-VIABLE SEED, AND THE COMPILER WAS THE SIGNPOST**
+
+Addendum 3 selected `align_ignored` (margin 3/7) for FreeList as **the only candidate surviving the
+margin rules**. Driving S3 on the authored artefact **failed it**, and the reason is the sharpest thing
+this field has turned up so far:
+```
+  warning: unused variable: `a`
+    --> solution.rs:80:40
+  80 |  pub fn malloc(&mut self, n: usize, a: usize) -> Option<Region>
+```
+**`a` is the ALIGNMENT parameter, and `align_ignored` is the mutant that ignores alignment.** ⇒ 🔑 ***THE
+COMPILER NAMES THE SEEDED DEFECT, BY PARAMETER, AT ITS OWN LINE — AND `rt check` IS THE FIRST THING ANY
+CELL RUNS.*** A defect that rustc points at is a defect POINTED AT; V1 would stop measuring "finds a bug
+nobody pointed at" for that problem entirely.
+📌 **This is why S3 replaced the vacuous `visible_suite_detects` and not merely supplemented it.** The
+compiler is the ONLY harness-supplied signal a v3 cell has, and it turned out to carry a real one.
+
+## THE FULL FreeList PICTURE, EVERY CELL DRIVEN
+```
+  mutant              margin   S3 (no diagnostic)                            verdict
+  align_ignored        3/7 ✅  ⛔ FAILS — rustc names the unused `a`          POINTED AT
+  free_leaks           1/7 ⛔  ✅ passes, 0 warnings                          fragile only
+  trivial              6/7     ⛔ FAILS — 4 warnings (unused `n`, …)          pointed AND absurd
+                                          "malloc always refuses" as a GIVEN
+  header_past_end      7/7 ⛔  —                                             LOUD
+  split_off_by_one     7/7 ⛔  —                                             LOUD
+```
+⇒ **NO FreeList MUTANT PASSES BOTH RULES.** That is a second task, after Crc32, that the existing mutant
+set cannot supply a clean seed for — **and for an entirely different reason, found by an entirely
+different check.** Two of five, both found before any cell, which is what the checklist is for.
+
+## ⚖️ THE DECISION, TAKEN AND OPEN TO REVERSAL — `free_leaks`, WITH THE EXCEPTION NAMED
+**FreeList's seed is `free_leaks`.** It is subtle, plausible, builds clean, and fails **exactly one**
+withheld test — `exhaust_and_recover` — driven: `TESTS 6/7`, rc 1.
+**Why the margin-1 rule is waived HERE and not in general:** its rationale is that a rewrite the single
+test does not probe leaves the seed undetectable. `exhaust_and_recover` tests the *property the defect
+destroys* (the arena drains and cannot recover), not an incidental symptom, so **a rewrite that still
+leaks still fails it.** The residual risk is suite EVOLUTION, not rewrite variety.
+⛔ **MITIGATION, and it is a requirement on the scorer, not a hope:** the scorer **must assert that
+`exhaust_and_recover` EXISTS and RAN** for any FreeList brownfield cell. If that test is ever renamed or
+retired, FreeList's rows must go **UNMEASURED, never PASS** — which is exactly the failure mode the
+margin-1 rule exists to prevent, made visible instead of prevented.
+📌 **The alternatives, rejected and recorded so the choice is reviewable:** (a) `align_ignored` with the
+warning silenced — ⛔ **that is me deleting a genuine compiler diagnostic to hide the defect**, and S3
+would then pass BY CONSTRUCTION for that row, which is not the same evidence as the other three;
+(b) drop FreeList — a real option, but it shrinks a registered population to avoid naming an exception;
+(c) author a non-mutant defect — forfeits the measured-detection property that makes every other row
+evidence. **If the helm prefers (b), the row is deleted and nothing else changes.**
