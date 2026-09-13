@@ -738,3 +738,50 @@ it a field.** It does not. The +9 is the same nine lines in both arms.
 artefact of comparing two cells built at different nonces. **Rebuilt at matched nonces; the true delta is
 a pure addition.** A diff between two objects that differ for an uninteresting reason is not the diff you
 wanted, and it reads exactly like one.
+
+---
+
+# ADDENDUM 13 — 2026-09-13, bench. ✅ **§B7 ROW 8 IS FULLY DISCHARGED. THE PARENT KEY EXISTS.**
+*Task tree `773f99c`; predecessor kept as `cell_copy_v3.py.pre-parent-key`.*
+
+`cell_copy_v3.py` now writes **`ctl/parent`** and **REFUSES an unresolvable parent at the copy** — §B4's
+*"a child with no resolvable parent is VOID, not scored"*, enforced where the child is made rather than
+discovered at scoring. Every component is **DERIVED from the parent's own `ctl` and never typed**: a key a
+human retypes is a key that drifts from the cell it names.
+```
+  problem · phase · arm · field · client        derived
+  parent_end_sha                                the parent's repo HEAD — §B4's baseline for the child
+  n_index                                       ⚠️ DECLARED UNRESOLVED
+```
+⚠️ **`n_index` IS DECLARED, NOT FABRICATED.** §B4 names five components and **this harness has no
+n-index/replicate concept at all** — measured with a positive control: **ZERO** files name one, against
+**SEVEN** naming the arm. ⇒ 🔑 ***A FABRICATED KEY COMPONENT IS WORSE THAN A DECLARED GAP, BECAUSE IT LOOKS
+RESOLVED AND THE SCORER WOULD KEY ON IT.*** The gap is now on the record instead of in the key.
+
+⭐ **`field` IS INFERRED WHEN ABSENT, AND THAT DEFECT WAS CAUGHT BY MY OWN REFUSAL FIRING ON THE TOOL'S
+SELFTEST.** `ctl/field` was born TODAY with the rung, so **every cell built before it lacks one** — and a
+mandatory `field` would have refused to copy **the entire existing population.** That is the *"a step that
+grows the glob"* failure in its **retroactive** form: I added a required field and made it required
+backwards. A pre-rung cell IS greenfield (brownfield did not exist), so the value is determinate — **but it
+is recorded as `INFERRED`, because "read from the cell" and "deduced from a date" are different warrants
+and a scorer may care which it holds.**
+📌 **The selftest fixture is now cell-shaped** (a real `ctl/task` triple, a git repo with a HEAD). It had
+to be: **a fixture that is not shaped like a real cell cannot test a tool that reads real cells**, and mine
+was passing 18/18 against cells no builder produces.
+
+**DRIVEN:** a real brownfield cell resolves all four + the END sha · a parent with no `ctl/field` INFERS
+greenfield and says so (rc 0) · a parent missing `ctl/arm` REFUSES naming it · a parent whose repo has no
+HEAD REFUSES naming that · **selftest 18 of 18 after the change.**
+
+## 📌 AND A STALE REASON, CORRECTED THE MOMENT IT WENT STALE
+`cell_build`'s `--field brownfield --phase 2` refusal said *"row 8's PARENT-KEY half does not exist."*
+**It does now.** The refusal STANDS on better ground and its message says so: **a brownfield child is
+COPIED from a landed parent, never built from scratch** — building one here would produce this builder's
+own *"greenfield with a longer card"* shape wearing a brownfield label.
+
+## ⇒ §B7 AT THIS POINT
+```
+  1 ✅ 4 of 5   2 ✅   3 HALF (hook ✅ · sandbox needs a STAGED CELLS ROOT)   4 ✅   5 ✅   8 ✅   9 ✅
+  6, 7  OWED — the two VERDICT paths, and the only rows left that need a full red-first drive
+  Crc32 awaits its ruling (no discriminating seed; three options posted, recommendation (a))
+```
