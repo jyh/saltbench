@@ -528,3 +528,50 @@ specification had not named. **Rows 6 and 7 are that same class of change**, and
 drive from a head with a full shift in front of it rather than the tail of one.
 📌 **Row 8 is the one to take first** — it is a REFUSAL, its RED is cheap to construct (an unresolvable
 parent key), and it protects evidence rather than producing a verdict.
+
+---
+
+# ADDENDUM 9 — 2026-09-13, bench. ⛔⛔ **THE BROWNFIELD RUNG IS REGISTERED AND NOT BUILDABLE, AND THE OBVIOUS COMMAND FOR IT BUILT A SPEC-CHANGE CELL SILENTLY**
+
+**The seeds authored this shift cannot be consumed by anything.** Measured at the builder, with a
+positive control: `cell_build.py` contains **ZERO occurrences of `brownfield`** against **22 of `phase`**,
+and its rung selection is a binary fork on an unvalidated `type=int` flag:
+```
+  rung = os.path.join(task, "G" if a.phase == 1 else "B")        # anything != 1 selects B/
+```
+`a.phase` is used at **five** sites and validated against a permitted set at **none**. ⇒ **`--phase 3` —
+the natural reach for a third rung, now that §B1 registers one — would have built:**
+```
+  rung          B/interface.rs      the SPEC-CHANGE post-change interface, as the given
+  requirements  rendered WITHOUT `--change`      (that flag is gated on phase == 2)
+  precondition  the phase-2 end-1 check SKIPPED  (also gated on phase == 2)
+  ctl/task      "<task>\t3\t<nonce>"             so a scorer keying on the phase pools it NOWHERE
+```
+**An incoherent cell, produced silently by the obvious command**, and every symptom of it would have
+looked like a task defect rather than a builder one — which is the exact failure mode §B1 chose the
+NAME `brownfield/` to avoid, arriving through the FLAG instead.
+📌 **AND IT IS THE FILE'S OWN DOCUMENTED DEFECT, ONE MEMBER OVER.** `cell_build.py` already carries a long
+note beginning *"A `--phase 2` BUILD ON A FRESH CELL PRODUCES A CELL THAT IS NOT A SPEC-CHANGE CELL, AND
+NOTHING VALIDATED IT… `--phase` was `type=int, default=1` with no precondition at all."* That repair added
+a precondition **for phase 2** and left the general hole open. ⇒ 🔑 ***A GUARD KEYED TO ONE MEMBER OF A SET
+DOES NOT FAIL WHEN THE SET CHANGES — IT GOES VACUOUS, AND THE SET CHANGED THE DAY THIS AMENDMENT LANDED.***
+
+## ✅ FIXED, FAIL-CLOSED, AND DRIVEN — `cell_build.py` REFUSES AN UNKNOWN PHASE
+It names the brownfield rung as **registered but not buildable**, so the next person to reach for it is
+told the truth instead of receiving a spec-change cell.
+```
+  --phase 3   REFUSE rc 4, naming brownfield/ as registered-but-unbuildable
+  --phase 1   passes the guard, hits the pre-existing missing-card.md refusal
+  --phase 2   passes the guard, hits the pre-existing end-1 precondition
+```
+**Each arm flips only its target; the guard shadows neither existing refusal.** Predecessor kept beside it
+as `cell_build.py.pre-phase-guard`.
+
+## ⇒ THE CRITICAL PATH FOR THIS FIELD, NAMED
+**Teaching `cell_build.py` the third rung is now the blocker for every remaining brownfield row**, and it
+supplies the `field` component that §B4's parent key needs and that **no cell carries today** (measured:
+no harness file references `ctl/parent`, against three referencing `ctl/arm`; and n1a-pro has 34 `ctl/`
+files and no `parent`). ⇒ **§B7 row 8's COPY-not-dispatch half is BUILT (`cell_copy_v3.py`, 18/18
+selftest); its PARENT-KEY half cannot be built until a cell can carry a `field` at all.**
+⚠️ **"The seeds are authored" is not "a brownfield cell can be built", and this amendment would have read
+as though it were.**
