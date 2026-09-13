@@ -699,3 +699,42 @@ layer most people picture. **It is also the layer that historically WAS populate
 substrates.* A row marked done on the strength of the layer that was already known to be the working one
 is exactly the failure that card exists to prevent. ⇒ 🔑 ***REPORTING HALF A GATE AS A GATE IS HOW A
 TWO-LAYER FENCE BECOMES A ONE-LAYER FENCE WITH A CLEAN RECORD.***
+
+---
+
+# ADDENDUM 12 — 2026-09-13, bench. ✅ **§B7 ROW 5 IS FULLY DISCHARGED. N1 AND N3 ARE BOTH DRIVEN.**
+
+**N1 — seed byte-identity across arms — is now CHECKABLE, and building the check is what found the gap.**
+I assumed `cell_manifest.py --pair` covered it, since it refuses any diff outside METHOD_FILES. **It does
+not:** a one-byte plant in a cell's working `solution.rs` left `--pair` reading **OK**, because the manifest
+reads the ROOT COMMIT. **The manifest is right; nothing was comparing `ctl/seed-sha` to anything at all.**
+⭐ **AND THE ROOT COMMIT IS THE CORRECT COMPARISON POINT, FOR A REASON SPECIFIC TO THIS FIELD:** in a
+brownfield cell the subject is *supposed* to modify `solution.rs` — that is the task — so **`ctl/seed-sha`
+differing from the current working file is the NORMAL END STATE.** A check written against the working tree
+would fire on every cell that did its job. **The seed is what the cell was GIVEN**, which lives at the root
+commit and is stable for the cell's whole life.
+`harness/systems-v3/brownfield_seed_check.py` (task tree `0e425e3`), two refusals:
+```
+  SELF    ctl/seed-sha == sha256(solution.rs AT THE ROOT COMMIT) — catches a tampered record, a tampered
+          root, or a builder that wrote the field from something other than the file it copied
+  CROSS   every cell of a condition carries the SAME ctl/seed-sha — N1 proper
+  ⛔ a cell with NO ctl/seed-sha is REFUSED, never skipped: a greenfield cell has none, and skipping it
+    would let one into a brownfield condition unnoticed
+```
+**Selftest 4 of 4 (one green, three red). Driven on real cells:** the real pair PASSES *with a working-tree
+plant still present* · a tampered record REFUSES on both SELF and CROSS · a real greenfield cell REFUSES.
+
+**N3 — the briefing diff — is PUBLISHED at `harness/systems-v3/BROWNFIELD-BRIEFING-DIFF.md`**, taken from
+cells built at MATCHED NONCES so the only differences are the field's.
+```
+  plain   differing files: REQUIREMENTS.md, solution.rs   REQUIREMENTS.md +9/-0   CLAUDE.md IDENTICAL
+  salt    differing files: REQUIREMENTS.md, solution.rs   REQUIREMENTS.md +9/-0   CLAUDE.md IDENTICAL
+```
+⇒ 🔑 ***EACH ARM'S METHOD FILE IS BYTE-IDENTICAL BETWEEN GREENFIELD AND BROWNFIELD.*** That is §B2's
+sharpest hazard made checkable — *the treatment's content substantially IS advice about how to approach code
+you did not write* — and **a field that altered either arm's briefing would be adding treatment and calling
+it a field.** It does not. The +9 is the same nine lines in both arms.
+📌 A first pass showed **+10/−1** and the "removal" was the per-cell **work-order nonce** on line 1, an
+artefact of comparing two cells built at different nonces. **Rebuilt at matched nonces; the true delta is
+a pure addition.** A diff between two objects that differ for an uninteresting reason is not the diff you
+wanted, and it reads exactly like one.
