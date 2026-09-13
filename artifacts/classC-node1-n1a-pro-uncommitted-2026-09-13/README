@@ -1,0 +1,7 @@
+⛔ THE CELL'S WORK AT LOOP EXIT, NEVER COMMITTED BY THE SUBJECT. Snapshot taken by bench BEFORE any gate ran,
+because exec_gate_x.sh does `git checkout` and a dirty worktree is the one thing a checkout can move or lose.
+A cell is evidence, and this evidence existed only in the working tree.
+  worktree-vs-HEAD.patch   the full uncommitted diff (the scoreable artefact)
+  Salt/HB/*.lean, docs/…   the files verbatim as the subject left them
+  revert.py update_lemma.py  untracked scripts the subject left behind
+  status.txt · SHA256-16.txt
