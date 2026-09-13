@@ -1,0 +1,16 @@
+# BROWNFIELD-PLANTS.tsv — the registered planted-defect list (§B3, amendment 2026-09-13).
+# ⛔ THIS FILE IS WITHHELD FROM EVERY CELL. It lives in the harness, which is never copied into a
+#    cell's repo. §B7(3) drives a RED arm proving a cell cannot read it; until that arm is green the
+#    registry is not secret, it is UNEXAMINED.
+#
+# SCHEMA NOTE, 2026-09-13: §B3's `visible_suite_detects` column is SUPERSEDED by addendum 2 — a v3 cell
+# has NO visible suite (tests/ is created empty; no withheld tests, no traces, no run_tests.sh reach it),
+# so a "driven no" there would be a registered green that tests nothing. The three columns s1_builds,
+# s2_withheld_fails and s3_no_diagnostic replace it and are each DRIVEN, never declared.
+#
+# margin = withheld tests that FAIL on the raw seed, of the suite's total. ⛔ THE MARGIN IS THE
+# SELECTION CRITERION, NOT THE KILL: a seed caught by one test puts the whole two-sided metric on that
+# one test, and a seed caught by EVERY test is loud rather than discriminating.
+#
+problem	file	behaviour_broken	detecting_withheld_tests	margin	s1_builds	s2_withheld_fails	s3_no_diagnostic	seed_sha256	provenance	author	authored_at
+LZW	brownfield/solution.rs	the initial dictionary is built with the bound 255, so byte 0xFF has no code of its own and every created code is one lower than it should be	round_trip_known,all_byte_values,kwkwk_trigger,random_inputs,repetitive_inputs	5/8	yes	yes(TESTS 3/8 rc1)	yes(0 warnings vs control 2)	aa968d046528530b9bd32ec55c879b5f1f947e535292163301a5301b405b2337	G/withheld/mutants/dict_seeded_255.rs, header and inline WRONG comments stripped; strip audited	bench	2026-09-13
