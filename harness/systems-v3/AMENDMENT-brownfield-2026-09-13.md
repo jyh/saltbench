@@ -415,3 +415,37 @@ would then pass BY CONSTRUCTION for that row, which is not the same evidence as 
 (b) drop FreeList — a real option, but it shrinks a registered population to avoid naming an exception;
 (c) author a non-mutant defect — forfeits the measured-detection property that makes every other row
 evidence. **If the helm prefers (b), the row is deleted and nothing else changes.**
+
+---
+
+# ADDENDUM 5 — 2026-09-13, bench. **§B7 ROW 3: THE RULE COVERS THE REGISTRY; THE DRIVE DOES NOT EXIST; AND THE ARM THAT LOOKS LIKE COVERAGE IS NOT**
+
+Row 3 requires a RED arm proving **a cell cannot read `BROWNFIELD-PLANTS.tsv`**. Status, measured:
+
+**✅ THE RULE COVERS IT.** `render_fence_v3.py` line 80 denies **`~/projects`** wholesale — *"the fleet
+tree: the bus, the seat repo, every campaign checkout"* — and the registry lives at
+`…/saltbench/harness/systems-v3/BROWNFIELD-PLANTS.tsv`, inside it. The class-C cells' rendered fence
+agrees from the other direction: `denyRead: ["/Users/<owner>", "/Volumes", "/private/tmp",
+"/private/var/folders"]`, a blanket home deny.
+
+**⛔ THE DRIVE DOES NOT EXIST, AND THE NEAREST-LOOKING ARM IS NOT IT.** The class-C fence battery carries
+an arm called **`F-harness-tree`**, which reads like coverage of "the harness". It runs:
+```
+  arm F-harness-tree  fail "Operation not permitted"  "cat $R/_bin/SHA256-16.txt"
+```
+`$R/_bin` is the **EXECUTOR ROOT's** bin — a different harness entirely from the one holding the registry.
+✅ **Measured with a positive control: the battery contains ZERO occurrences of `saltbench`, against SIX of
+`projects/claude`** — so its arms do use that root, and the registry's tree is simply not among them.
+⇒ 🔑 ***AN ARM NAMED FOR A TREE IS NOT AN ARM FOR EVERY TREE OF THAT NAME, AND A BATTERY READING
+`39 OK / 0 BAD` INVITES THE READER TO ASSUME OTHERWISE.*** This seat's own card — *an arm that names one
+member of a set goes vacuous rather than failing* — arriving as a measurement rather than an aphorism.
+
+**⇒ ROW 3 REMAINS OPEN, AND WHAT WOULD CLOSE IT IS SPECIFIC:** an arm, driven **inside a real brownfield
+cell**, that attempts to read `BROWNFIELD-PLANTS.tsv` by its full path and expects `Operation not
+permitted` — **in BOTH layers**, because `sandbox.filesystem.denyRead` fences SUBPROCESSES while
+`permissions.deny` fences the CLI's OWN TOOLS, and historically only one was ever populated. It cannot be
+driven before the first brownfield cell exists, and **a static read of the deny list is not a drive**: these
+sets are globs taken at RENDER TIME, and a glob that grows after the render leaves the earlier cells
+permissive.
+📌 **Recorded rather than quietly deferred**, because "the fence denies `~/projects`" is exactly the kind of
+true-and-undriven sentence that reads as a discharged row in a checklist.
