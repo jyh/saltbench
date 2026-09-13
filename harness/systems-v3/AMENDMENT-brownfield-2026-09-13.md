@@ -665,3 +665,37 @@ compares, and "root" was the wrong one.**
 ```
 **The blocker named in addendum 9 is gone.** Rows 3, 5(N1), 5(N3) and row 8's parent-key half were all
 waiting on a buildable cell; they are now waiting only on someone to drive them.
+
+---
+
+# ADDENDUM 11 — 2026-09-13, bench. **§B7 ROW 3: ONE LAYER DRIVEN, ONE NAMED. THE HALF-ANSWER IS STATED AS A HALF.**
+
+Row 3 became drivable the moment a brownfield cell could be built (addendum 10). It has **TWO layers**, and
+only one of them is now driven.
+
+**✅ THE HOOK LAYER — `permissions.deny` / the attempt audit — IS DRIVEN.**
+```
+  a cell attempting  cat …/harness/systems-v3/BROWNFIELD-PLANTS.tsv   -> rc 2  BLOCK, reason on stderr
+  CONTROL            cargo build --offline                            -> rc 0  ALLOW
+  the hook's own selftest                                             -> 84 of 84 arms fired
+```
+The hook's deny set carries `~/projects`, which the registry sits inside. **The registry is not readable by
+a cell through the tool surface.**
+
+**⛔ THE SANDBOX LAYER — `sandbox.filesystem.denyRead`, which fences SUBPROCESSES — IS NOT DRIVEN, AND
+CANNOT BE FROM A BUILT CELL ALONE.** A built cell carries **no `fence.json`**: the fence is rendered at
+LAUNCH, not at build. Attempting to render one standalone, `render_fence_v3.py` **REFUSED**, correctly:
+> *the run config dir … is not covered by the `~/.claude*` deny set — the one directory whose credential
+> this cell holds must be denied to it*
+
+⇒ **The remaining dependency is now NAMED and it is not "a cell": it is a properly staged CELLS ROOT** — a
+real `~/.claude*` run config dir, with settings, fence and trust installed **in that order** (the fence
+render READS settings). ⇒ **Row 3 closes when the sandbox arm is driven against a fence rendered for a real
+run config dir, expecting `Operation not permitted`.**
+
+⚠️ **WHY THIS IS RECORDED AS A HALF AND NOT AS A ROW DISCHARGED.** The hook result is real and it is the
+layer most people picture. **It is also the layer that historically WAS populated while the other was not**
+— this seat's own card: *the agent fence has TWO layers and only one was ever populated in both
+substrates.* A row marked done on the strength of the layer that was already known to be the working one
+is exactly the failure that card exists to prevent. ⇒ 🔑 ***REPORTING HALF A GATE AS A GATE IS HOW A
+TWO-LAYER FENCE BECOMES A ONE-LAYER FENCE WITH A CLEAN RECORD.***
