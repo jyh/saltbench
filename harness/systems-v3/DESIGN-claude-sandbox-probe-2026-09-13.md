@@ -247,3 +247,51 @@ and the launcher's OWN argv** — objects that cost nothing, were available the 
 summarised from memory instead.
 ⇒ 🔑 ***"UNDRIVEN" WAS TREATED AS "NEEDS AN EXPERIMENT", AND MOST OF IT NEEDED A READ.*** The experiment is
 the small remainder, and it is now a sharper experiment because the read came first.
+
+---
+
+# ADDENDUM 2 — **§A1.3's OWED LINE IS DISCHARGED BY A DRIVEN, FREE INSTRUMENT**, same shift
+## bench, 2026-09-13. Four arms, driven on the pinned **2.1.259**, **zero model calls.**
+
+ADDENDUM 1 §A1.3 registered one line as owed: *the probe must RECORD that the settings file was LOADED,
+from the client's own report, and never infer loading from behaviour.* It did not say **how**, and an owed
+line with no instrument beside it is the shape that sits open for weeks. **The instrument exists, it is
+free, and it is the client's own `doctor` subcommand** — whose `--help` says it *"reads settings files in
+the current directory without a trust prompt."* It also honours the **global `--settings`**.
+
+## §A2.1 THE DRIVE — FOUR ARMS, `claude --settings <file> doctor`, NOTHING ELSE
+```
+  ARM                                              rc   "Invalid settings" block   what it reported
+  good.json    a REAL rendered cell fence          0    ABSENT                     (loaded)
+               (sandbox.enabled true, 63 denyRead)
+  bad.json     malformed JSON                      0    PRESENT                    "Invalid or malformed JSON"
+  schema.json  VALID JSON, bogus schema            0    PRESENT                    "permissions: Expected
+               {"sandbox":"not-an-object",                                          object, but received number"
+                "permissions":42}
+  m1.json      good.json with sandbox.enabled      0    ABSENT                     (loaded)
+               flipped to FALSE  (= §S5's M1)
+```
+⇒ ✅ **The client reports a load failure, NAMES THE FILE BY ABSOLUTE PATH, and validates SCHEMA rather than
+merely JSON syntax** — `schema.json` parses fine and is still rejected, with the offending key path.
+✅ **REGISTERED into §S2: every cell records its fence's LOAD RECEIPT from `--settings <fence> doctor`,
+taken at launch, free, before any model call.** A fence that does not load is a cell that does not fire.
+
+## §A2.2 ⛔ TWO LIMITS, AND BOTH ARE LOAD-BEARING
+1. ⛔⛔ **`rc` IS 0 IN ALL FOUR ARMS — INCLUDING BOTH FAILURES.** The verdict is the **presence of the
+   `Invalid settings` block**, never the exit status. ⇒ 🔑 ***AN INSTRUMENT WHOSE rc IS CONSTANT ACROSS ITS
+   OWN RED ARMS WILL BE WIRED TO THAT rc BY THE NEXT HAND, AND IT WILL PASS EVERYTHING.*** This desk's own
+   banked card is *an rc whose meaning the reader supplies*; here the client hands one over.
+2. ⭐ **THE `m1` ARM IS WHAT FIXES THE INSTRUMENT'S SCOPE, AND IT IS WHY IT WAS DRIVEN.** A fence with
+   `sandbox.enabled: FALSE` **loads perfectly cleanly.** ⇒ **`doctor` reports LOADED. It never reports
+   BINDING.** It closes exactly the gap §A1.3 named — *unloaded* vs *loaded-but-permissive* — and it closes
+   **nothing else**. ⛔ **A `doctor` green is NOT a sandbox receipt** and must never be recorded as one;
+   §S2's outside/inside pair remains the only thing that can say the fence binds.
+
+## §A2.3 ⚠️ MY OWN NEAR-MISS ON THIS EXACT MEASUREMENT, DECLARED BECAUSE IT ALMOST SHIPPED
+My first read of these two arms was through `head -12` and the two outputs were **byte-identical**, so I
+wrote — briefly — that `doctor` **cannot** distinguish a valid fence from a broken one, and was about to
+register that *no free load-receipt instrument exists on this client.* **The `Invalid settings` block is at
+line 14.** The full `diff` of the two arms is what refuted me.
+⇒ 🔑 ***I NEARLY CLAIMED AN ABSENCE FROM A TRUNCATED READ, AND A TRUNCATED READ FAILS TOWARD ABSENCE.***
+It is the same shape as ADDENDUM 1 §A1.6 — *treating "undriven" as needing an experiment when it needed a
+read* — one turn later, with the read itself cut short. **Diff the arms in full; never `head` a control.**
