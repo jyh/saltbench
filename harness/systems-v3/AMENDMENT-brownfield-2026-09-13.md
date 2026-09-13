@@ -864,3 +864,65 @@ an unrun cell reads `UNTOUCHED 1.000 HEAD`; a one-byte-edited one reads `REPAIRE
   6   its third part is a SPECIFICATION problem, registered for a ruling: V1/V2 cannot be CELLS.tsv
       columns, because that file is written at BUILD time and the verdicts are POST-RUN
 ```
+
+---
+
+# ADDENDUM 10 — 2026-09-13, bench. **§B7 ROW 6 IS RULED: V1/V2 ARE NOT `CELLS.tsv` COLUMNS, AND THE ROW IS RESTATED RATHER THAN DISCHARGED**
+
+⛔⛔ **ROW 6 AS WRITTEN IS UNSATISFIABLE, AND BUILDING IT WOULD MAKE THINGS WORSE RATHER THAN LEAVING
+THEM AS THEY ARE.** The row reads *"V1/V2 as separate `CELLS.tsv` columns; `unmeasured` distinct from
+`pass`, driven."* **Four measurements, each taken at the object, and any one of them is sufficient:**
+
+```
+  1  TIMING      CELLS.tsv is written by cell_build.py at BUILD time. V1 and V2 are POST-RUN
+                 verdicts. A build-time file can carry a post-run verdict only by being MUTATED
+                 after the run — and a cell directory is evidence, not scratch (repo CLAUDE.md).
+  2  CONSUMERS   its readers are cell_build.py, render_fence_v3.py, fence-hook.sh, hook-deny-v3.sh.
+                 Those are the BUILDER and the FENCE. ⛔ NO SCORER READS IT. Adding verdict columns
+                 couples the scorer to the fence: a scoring bug could then change what a cell is
+                 ALLOWED TO READ. That is a safety surface, and verdicts have no business on it.
+  3  SHAPE       it is HEADERLESS and POSITIONAL — row 1 is DATA, not a header. Its leading
+                 fields are a cell id, a run-box name, a lane and a harness version, with no
+                 column names above them, so a reader must count positions to find anything.
+                 Adding columns is a silent breaking change for every positional reader, and the
+                 failure mode is a misread column, not an error.
+  4  POPULATION  it does not exist on the p2b root at all. A column on a file that is absent for the
+                 live wave is a registered check that measures nothing — §B7's own recurring defect.
+```
+
+⇒ 🔑 ***THE ROW ASKED FOR THE RIGHT PROPERTY IN THE WRONG FILE.*** What it actually wants — V1 and V2
+read INDEPENDENTLY, with `unmeasured` a distinct value from `pass` — is a property of the VERDICT
+artefact, and the verdict artefact already exists: `referee_v3.phase2_verdicts()`, which is one
+derivation point (`V1 GREEN iff regressions_failed == 0` · `V2 GREEN iff clause_failed == 0`, no
+pooled field derived, phase 1 `NOT APPLICABLE`, a missing line `UNMEASURED` and never GREEN).
+
+## ✅ ROW 6, RESTATED — this is what discharges it
+> **6′  V1/V2 recorded as INDEPENDENT fields of the referee's phase-2 verdict output, never in
+> `CELLS.tsv`; `unmeasured` DISTINCT from `pass`, driven RED-first against the export that will
+> actually score the run, and that export's sha recorded beside the verdicts.**
+
+## ⛔⛔ AND THE LIVE BLOCKER THIS RULING SURFACED, WHICH MATTERS MORE THAN THE RULING
+**The export that BUILT the live P2 pair cannot produce V1/V2 at all.** Measured, with a positive
+control in both directions:
+
+```
+  grep -c phase2_verdicts  export-23b351c/…/referee_v3.py   ->   0     (the BUILDER of p2b001+p2b002)
+  grep -c phase2_verdicts  export-s2m/…/referee_v3.py       ->  13     (positive control: it is findable)
+  p2b001 ctl/built-from.tsv  export_sha 23b351cf49a55b94…
+  p2b002 ctl/built-from.tsv  export_sha 23b351cf49a55b94…
+  28 of 64 export trees carry the function; 36 do not, and nothing declares which is current.
+```
+⇒ **Scoring the P2 pair REQUIRES an export other than the one that built it, and no file in either
+cell records that pairing.** ⛔ **So the verdicts would come from an instrument whose provenance is
+unstated — while `built-from.tsv` sits right beside them looking like it answers the question.**
+⇒ 🔑 ***`built-from.tsv` RECORDS THE BUILDER, AND A READER WILL TAKE IT FOR THE TOOLCHAIN. WHEN THE
+SCORER IS A DIFFERENT EXPORT, THE RECEIPT IS NOT WRONG — IT IS ANSWERING A QUESTION NOBODY ASKED.***
+
+**BINDING ON THE P2 SCORING, and it costs nothing to comply:** whoever scores p2b001/p2b002 records
+`scorer_export_sha` beside `export_sha`, and if the two differ, says so in the result file. **A
+single export used for both is better and is the default if one is available.**
+
+## SCOPE
+This addendum rules §B7 row 6 and registers one blocker on the P2 spec-change scoring. **It
+discharges no other row.** Rows 1–5, 7 and 8 stand as written; row 2 is superseded by Addendum 2 and
+row 1 is discharged for four of five problems. **Nothing here authorises a cell.**
