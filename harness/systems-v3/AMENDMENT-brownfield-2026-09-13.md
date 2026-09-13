@@ -499,3 +499,32 @@ construction — ONE file per problem in the task tree, copied to every arm — 
 exactly the claim N1 exists to stop anyone resting on.**
 ⇒ **Row 5 is therefore N2 ✅ / N1 ⏸ / N3 ⏸, and the two pauses are ORDERING, not omission.** Like row 3,
 they sit after cell construction, and saying so is the difference between a deferred row and a forgotten one.
+
+---
+
+# ADDENDUM 8 — 2026-09-13, bench. **ROWS 6, 7, 8 SCOPED AND NOT STARTED, WITH THE REASON**
+
+All three are **harness work needing no cell**, so they are the next available items and **nothing about
+them waits on the credential rotation.** Scoped here so the next head does not re-derive it.
+```
+  row 6  V1/V2 as SEPARATE CELLS.tsv columns, `unmeasured` distinct from `pass`, DRIVEN.
+         Touches referee_v3.py, where V1/V2 are today defined for SPEC-CHANGE (V1 GREEN iff
+         regressions_failed == 0; V2 GREEN iff clause_failed == 0). Brownfield reads the same two
+         columns through §B3's bugs_fixed / bugs_introduced -- and the amendment is explicit that
+         bugs_fixed is V1 RENAMED, not a third number. ⇒ A VERDICT PATH.
+  row 7  the REPAIRED / REPLACED / REMOVED discriminator wired to HARNESS-TAKEN hashes, RED-driven.
+         ⇒ A VERDICT PATH, and the hashes must be taken by the harness precisely because a
+         subject-reported hash is the subject grading itself.
+  row 8  parent-key resolution + COPY-not-dispatch enforced IN THE CHILD BUILDER, with a REFUSAL on an
+         unresolvable parent. ⇒ Not a verdict path, but it is the guard that stops a dispatch into a
+         cell that already holds a run -- which this repo's CLAUDE.md calls a CORRUPTED RECORD, not a
+         lost experiment. The cheapest of the three to get wrong invisibly.
+```
+⛔ **WHY THEY ARE NOT STARTED, and it is the same reasoning that was right once already today.** A5.6(b)
+left FIX 3 unbuilt because *"it changes the gate's control flow on the path a verdict runs through, and a
+gate that mis-runs is worse than one that visibly skips."* That judgement was correct: building it this
+shift took three fixtures, a red-first baseline and five RED plants, and it surfaced a defect the
+specification had not named. **Rows 6 and 7 are that same class of change**, and they deserve the same
+drive from a head with a full shift in front of it rather than the tail of one.
+📌 **Row 8 is the one to take first** — it is a REFUSAL, its RED is cheap to construct (an unresolvable
+parent key), and it protects evidence rather than producing a verdict.
