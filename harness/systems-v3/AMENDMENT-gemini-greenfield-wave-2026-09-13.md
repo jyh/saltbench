@@ -158,3 +158,73 @@ BEFORE — an untracked file is invisible to it, and the green it returns is abo
 which is a private-record shape, so the paragraph explaining the infra-name defect carried a path defect.
 ⇒ **A prohibition stated in prose is a counterexample to itself unless the prose is written to the rule
 it is stating.** Both gates now pass with the file TRACKED.
+
+---
+
+# §G9 · ⚖️ THE LEAD'S RULINGS ON THE HAND'S CENSUS — 2026-09-13, bench
+*`gemini` measured the lane before firing and returned three questions and one refutation. All four are
+answered here. I re-drove the refutation at the object before accepting it.*
+
+## R1 · ⛔ **§G2's CONCLUSION IS WITHDRAWN. `--budgets pricing` DOES NOT VOID A GEMINI CELL.**
+My three measurements were each TRUE and I re-drove them; **the INFERENCE crossed lanes.** Re-measured:
+```
+  fire_agy_v3.sh   grep budgets|COST|USD|CAP_UNIT|rates   ->  0 hits. The agy fire path arms NO cost cap.
+  agy_meter_v3.py  its own words: "this meter does NOT price. On a subscription ..."
+                   VOID kinds present: VOID(NO-MODEL) · VOID(NON-GEMINI).   UNPRICED: 0 occurrences.
+  cell-watch.sh    the CLAUDE fire path. fire_agy_v3.sh names it in HEADER COMMENTS ONLY (lines 9, 26).
+  the object       41 metered cells on disk were built on `pricing`; none is COST-BLIND.
+```
+⇒ 🔑 ***I MEASURED `cell-watch.sh`, WHICH THIS LANE NEVER CALLS. RIGHT INSTRUMENT, WRONG POPULATION —
+THE FIFTH TIME IN ONE DAY I HAVE READ A TRUE NUMBER OFF AN OBJECT THE CLAIM WAS NOT ABOUT.***
+⚠️ **AND IT WAS OPERATIONALLY BLOCKING, NOT MERELY WRONG:** `agy_wave_v3.sh` HARDCODES `--budgets pricing`,
+so as frozen §G2 forbade the only profile the wave driver can emit. **A hand obeying the freeze literally
+would have had to edit its lead's tool.** A freeze that cannot be obeyed without editing the toolchain is
+a defect in the freeze.
+
+✅ **WHAT SURVIVES UNTOUCHED, AND IT IS THE PART THAT MATTERED:** **no USD figure is quoted for any cell of
+this wave, and the Gemini and Opus lanes are NOT comparable in dollars.** That is a **REPORTING** rule and
+it stands whatever the profile does. ⭐ **It is now better motivated than when I wrote it:** an agy cell's
+`ctl/budgets.env` carries `C1_USD=37.21` **written and inert**, so a later reader finds a Claude-derived
+number that never applied to that cell. ⇒ **REGISTERED: the USD rows on an agy cell are INERT-ON-THIS-LANE
+and must never be read, quoted, or summed.**
+
+## R2 · ✅ THE T CAP IS `pricing`'s **250,000,000**, NOT a new profile — and the reason is arm-correlation
+Read from the cells on disk: `plain` max T **2,475,940** (n=18) · `salt-diet` max T **25,100,454** (n=20).
+```
+  smoke40  40 M   = 1.6x the largest salt-diet cell and 16x the largest plain cell
+                   -> it would bind THE TREATMENT ARM FIRST, and A CAP THAT BINDS ONE ARM IS A TREATMENT
+  pricing 250 M   ~ 10x the largest cell this campaign has produced -> binds NEITHER arm
+```
+⇒ **§G7's calibration cell is SUPERSEDED: the number it existed to obtain is already readable**, and
+`smoke40` — which I chose — was the arm-biased option. **The hand's recommendation is adopted in full.**
+
+## R3 · ⛔⛔ THE ARM IS **`salt-diet`**. §G1's `--arm salt` WAS MY TRANSCRIPTION ERROR.
+`cell_build.py --arm` takes `plain | salt | salt-diet | placebo`, and **`salt` and `salt-diet` are DIFFERENT
+ARMS.** Every treatment cell this campaign has run — the 20 metered on disk, the 19-row spec-change result,
+stage 1 — is **`salt-diet`**. ⇒ **Typed literally, §G1 would have built an arm the campaign has never run,
+against comparators that do not exist.** The flag table is corrected: `salt-bare` = `--arm salt-diet`,
+`salt-stmt` = `--arm salt-diet --statement`.
+📌 **The hand caught this and was right to refuse to resolve it alone** — `agy_wave_v3.sh`'s own header
+carries the same warning: *a script written for one arm and reused for another will run the arm it was
+written for, and the cell id will say otherwise.*
+
+## R4 · ⚖️ THE 42 ARE ADMISSIBLE **IN PRINCIPLE**, AND THE RECEIPT GATE DECIDES EACH ONE
+Same 14 conditions, same model (41 × `gemini-3.1-pro-high`, **zero substitution**), n=3, metered.
+**They satisfy §G1's population exactly.** ⇒ **DO NOT RE-FIRE THE 38.** Re-running cells that already exist
+spends the pool to reproduce what is on disk, and the Captain's *"asap"* is served by scoring, not by firing.
+```
+  ADMIT          subject to briefing_verdict_v3.py passing PER CELL — the receipt gate rules, not I
+  THE REMAINDER  the 4 that never fired: crc32-saltdiet-stmt/s3ct03 · freelist-plain/s3fp02 · s3fp03
+                 · freelist-plain-stmt/s3fq03   <- these are the wave's real fire list
+  THE 5 metered-not-landed  REPORTED, NEVER SILENTLY DROPPED. A PERSIST-INDETERMINATE cell is UNMEASURED
+                 for landing; its TOKENS remain admissible. ⚠️ The 5/5 arm-correlation is ITSELF A FINDING
+                 and is reported as one — an arm-correlated exclusion is decided by its SIGN, and dropping
+                 five treatment cells quietly would flatter the control.
+  ⛔ THE EXPORT   they were built from export s2g `156fcb93`, NOT today's harness. That does not make them
+                 inadmissible — comparability names a REFERENCE, not a date — but the export sha is
+                 RECORDED with the result, and any cell fired now is fired from a NAMED export, not "latest".
+  ⛔ THE FIELD    `ctl/field` is EMPTY on all 42 (they predate `--field`). Greenfield is established
+                 STRUCTURALLY, which the hand correctly flagged as the weakest link in its post.
+                 ⇒ ACCEPTED AS GREENFIELD, and the warrant is recorded as INFERRED, never as read —
+                 the same distinction `cell_copy_v3.py` now makes for a parent's field.
+```
