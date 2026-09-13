@@ -84,8 +84,18 @@ only a limit. The cost figures are modelled at list rates: a unit for comparing 
   built on one account on September 7–8 and ran phase 2 on another. The tool already carries the
   same lesson for the *path* ("the slug is filed under the path the cell had **when it ran**") and
   has not carried it across to the *config dir*.
-  ⇒ **Consequently the COST and T figures here come from the cells' own `POST-END` meter lines, not
-  from a harvest receipt.** Same instrument, different file, and this file says which.
+  ⇒ **REPAIRED AND RE-HARVESTED THE SAME SHIFT.** The harvest now prefers a run-time `ctl/run-cfg.tsv`
+  row over the build-time one and its refusal names which file it read; the cell records that row at
+  each launch. Driven RED/GREEN/RED, then end to end on both cells: **rc 0, `METER + HEAD SHARE
+  taken`, no `VOID`** — `COST $15.35` (p2b001) and `COST $11.70` (p2b002), from
+  `harvest-v3/<id>-<stamp>/METER.txt`.
+  ⭐ **Those receipts AGREE with the cells' own `POST-END` meter lines ($15.3468 / $11.6997), which is
+  the point of quoting both: two different files, one instrument, the same number.** Where this file
+  gives four decimal places it is citing `ctl/watch.log`; the harvest receipt rounds to two.
+  ⚠️ **`ctl/run-cfg.tsv` on these two cells is RECONSTRUCTED, not written at launch** — the repair is
+  committed and unmerged, so it did not run for them. The row is measured, not recalled (each cell's
+  transcript slug exists under the named config dir and under no other v3 config dir on the box), and
+  the file says so in its own `provenance` field.
 - 📌 **Nothing in either cell records the config dir it RAN on.** `ctl/account.tsv` is empty in both;
   `ctl/launch.log`'s ARGV line lists environment **names**, not values. **Owed repair:** the cell
   records its run-time config dir, and the harvest prefers that over the build-time row.
