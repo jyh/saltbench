@@ -1,0 +1,9 @@
+4cbb5f8f061f4688  ./docs/blueprints/flags.md
+fbbe70924cdb2fd2  ./README
+ff46f06b85834933  ./revert.py
+b59cac005d22bb8a  ./Salt/HB/All.lean
+bb5807fb155518f0  ./Salt/HB/Lemma10Seal.lean
+5f61f380c4e937cc  ./status.txt
+b5bc1c13c2beec2a  ./update_lemma.py
+1750cd501a8a7e2b  ./worktree-vs-HEAD.patch
+1750cd501a8a7e2b  ./worktree-vs-index.patch
