@@ -228,3 +228,67 @@ WHO READ THEM.*** The correction cost ten minutes because the seed had not been 
 cost the field if row 1 had been built first.
 📌 **And it is why §B7 row 1 is a checklist row rather than an assumption:** the recon that found this was the
 first act of discharging it.
+
+---
+
+# ADDENDUM 2 — 2026-09-13, bench. **§B7 ROW 2 CANNOT BE DISCHARGED AS WRITTEN, BECAUSE THERE IS NO VISIBLE SUITE**
+
+⛔⛔ **THE MEASUREMENT, taken at the builder and confirmed at a built cell.** §B3 requires
+`visible_suite_detects` to be **`no` for every row** and §B7 row 2 requires that column **DRIVEN**, not
+declared. Driving it requires a visible suite to run. **A v3 cell has none.**
+
+```
+  cell_build.py:636   copy(<rung>/interface.rs -> repo/interface.rs)
+  cell_build.py:637   copy(<rung>/interface.rs -> repo/solution.rs)      <- solution.rs IS the stub set
+  cell_build.py       os.makedirs(repo/"tests"); open(repo/"tests/.keep","w").close()   <- CREATED EMPTY
+  cell_build.py:14    "At t0 solution.rs is a copy of interface.rs: the stubs compile, so bin/rt check is GREEN"
+```
+**A cell repo receives:** `REQUIREMENTS.md` · `interface.rs` · `solution.rs` (the stubs) · `Cargo.toml` ·
+an **empty** `tests/` · `inbox/` · `memory/` · `BANK.md` · `BUS.md` · the overlay. **No withheld tests, no
+visible tests, no traces, no `run_tests.sh`.**
+✅ **POSITIVE CONTROL ON THE ABSENCE:** grepping `cell_build.py` for `run_tests|driver_lib|withheld|traces`
+returns **nothing**, while greps for `interface.rs|copytree|card` in the same file return plenty — so the
+grep works and the zero is a reading.
+**And `bin/rt` offers exactly `check` · `build` · `test`, where `test` builds `tests/driver.rs` — a file
+the AGENT writes** (it reports `ABSENT tests/driver.rs` when the agent has not).
+
+⇒ 🔑 ***THE COLUMN IS VACUOUS BY CONSTRUCTION. A "DRIVEN `no`" ON AN EMPTY SUITE IS A GREEN THAT TESTS
+NOTHING — AND IT WOULD BE A REGISTERED ONE, WHICH IS WORSE THAN AN ABSENT CHECK.*** This is the same
+defect the parent amendment warns about in its own §B7 note ("I have written the table and that is not the
+same as having run it"), one level down: **the row was written against a suite that does not exist.**
+
+## THE REPLACEMENT — THREE CHECKS THAT CAN ACTUALLY BE DRIVEN, AND WHAT EACH PROTECTS
+```
+  S1  THE SEED COMPILES AND `bin/rt check` IS GREEN AT t0.
+      WHY: greenfield's t0 property is that the stubs compile. A seed that does not compile starts every
+      brownfield cell RED, and every arm spends its first turns FIXING THE BUILD -- which confounds
+      "finds the seeded bug" with "repairs a broken given", in a form that looks like effort.
+  S2  THE WITHHELD SUITE FAILS ON THE RAW SEED, AND THE FAILING TESTS ARE NAMED FROM THAT RUN.
+      WHY: this is what makes `detecting_withheld_test(s) BY NAME` EVIDENCE rather than an assertion, and
+      it is the only thing that makes "did not fix the bug" MEASURABLE. A seed the withheld suite does not
+      catch scores identically whether the agent fixes it or ignores it.
+  S3  NO COMPILER DIAGNOSTIC POINTS AT THE SEED (`rt check` / `rt build` emit no warning naming it).
+      WHY: this is the TRUE analogue of the intent behind `visible_suite_detects: no`. The agent's only
+      harness-supplied signal is the compiler. A seed the compiler flags is a seed POINTED AT, and V1
+      stops measuring "finds a bug nobody pointed at" -- which is the original sentence's whole purpose.
+```
+📌 **THE INTENT OF §B3'S COLUMN IS PRESERVED AND ITS MECHANISM IS REPLACED.** Nothing here weakens the
+requirement; S3 is the same requirement aimed at the signal that actually exists.
+
+## AND THE AUTHORING METHOD THIS UNLOCKS — DERIVE THE SEED FROM THE MEASURED MUTANT SET
+Each task already carries `G/withheld/mutants/` (LZW/G: `kwkwk_dropped` · `encoder_extends_before_emitting`
+· `decoder_extends_before_emitting` · `dict_seeded_255`), and
+`RESULT-hidden-test-strength-v3.md` **already records that all 44 are killed and at what MARGIN** — the
+number of withheld tests that actually fail on each.
+⇒ **A seed derived from a mutant whose kill margin is already measured arrives with S2 nearly discharged
+and its detection evidenced rather than hoped for.** ⛔ **And the margin is the selection criterion, not
+the kill:** a mutant killed by ONE test is a fragile seed — the whole two-sided metric would then rest on
+a single test — while `LZW/G dict_seeded_255` is killed at **margin 5 of 8**. **Prefer high margin.**
+⚠️ **The mutants live under `withheld/`, which no export carries, so this reuses a withheld artefact
+without exposing it** — but §B7(3)'s RED arm (a cell cannot read the registry) now covers a second object
+and must be driven against **both** the registry and any seed provenance note.
+
+## SCOPE OF THIS ADDENDUM
+**It changes no measurement, because no brownfield cell has fired** — it replaces a checklist row that
+could not be discharged as written, before the first call, which is the form this campaign requires.
+**§B7 row 2 is superseded by S1 · S2 · S3 above. Rows 1 and 3–8 stand unchanged.**
