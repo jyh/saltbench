@@ -1,0 +1,19 @@
+# BROWNFIELD-PLANTS.tsv — the registered planted-defect list (§B3, amendment 2026-09-13).
+# ⛔ THIS FILE IS WITHHELD FROM EVERY CELL. It lives in the harness, which is never copied into a
+#    cell's repo. §B7(3) drives a RED arm proving a cell cannot read it; until that arm is green the
+#    registry is not secret, it is UNEXAMINED.
+#
+# SCHEMA NOTE, 2026-09-13: §B3's `visible_suite_detects` column is SUPERSEDED by addendum 2 — a v3 cell
+# has NO visible suite (tests/ is created empty; no withheld tests, no traces, no run_tests.sh reach it),
+# so a "driven no" there would be a registered green that tests nothing. The three columns s1_builds,
+# s2_withheld_fails and s3_no_diagnostic replace it and are each DRIVEN, never declared.
+#
+# margin = withheld tests that FAIL on the raw seed, of the suite's total. ⛔ THE MARGIN IS THE
+# SELECTION CRITERION, NOT THE KILL: a seed caught by one test puts the whole two-sided metric on that
+# one test, and a seed caught by EVERY test is loud rather than discriminating.
+#
+problem	file	behaviour_broken	detecting_withheld_tests	margin	s1_builds	s2_withheld_fails	s3_no_diagnostic	seed_sha256	provenance	author	authored_at
+LZW	brownfield/solution.rs	the initial dictionary is built with the bound 255, so byte 0xFF has no code of its own and every created code is one lower than it should be	round_trip_known,all_byte_values,kwkwk_trigger,random_inputs,repetitive_inputs	5/8	yes	yes(TESTS 3/8 rc1)	yes(0 warnings vs control 2)	aa968d046528530b9bd32ec55c879b5f1f947e535292163301a5301b405b2337	G/withheld/mutants/dict_seeded_255.rs, leading tell block and inline tells stripped; strip audited	bench	2026-09-13
+Paxos	brownfield/solution.rs	one acceptor of three counts as a quorum, so a value can be chosen without a majority	minority_not_chosen,duplicate_accept_before_choice,fresh_quorum_proposes_own_value,same_value_two_ballots_not_chosen,neg_propose_minority_quorum,exploration_agreement_and_validity	6/17	yes	yes(TESTS 11/17 rc1)	yes(0 warnings vs control 2)	1ce92803be426d3213238274c29e92e53a62d792b431c93356d1e9c7fa1f871d	G/withheld/mutants/small_quorum.rs, leading tell block and inline tells stripped; strip audited	bench	2026-09-13
+LRU	brownfield/solution.rs	a hit on get does not move the key to the front, so recency is not updated on reads	hit_moves_to_front,evicts_lru,evicted_key_is_gone,repeated_touches,random_vs_oracle,random_eviction_heavy	6/16	yes	yes(TESTS 10/16 rc1)	yes(0 warnings vs control 2)	d9b2f3d364f3a6c600f450b931cd2c3b08ec4ac8801dedb974180de9ab653680	G/withheld/mutants/get_no_touch.rs, leading tell block and inline tells stripped; strip audited	bench	2026-09-13
+FreeList	brownfield/solution.rs	free writes the released block's header back but never links the block onto the free list, so every released block is leaked and the arena drains	exhaust_and_recover	1/7	yes	yes(TESTS 6/7 rc1)	yes(0 warnings vs control 2)	4ebaf3df8b2a10c1c441f862c1cb08e096d70dad3bd8fb5f96c4a45a9b2afd70	G/withheld/mutants/free_leaks.rs, leading tell block and inline tells stripped; strip audited | MARGIN-1 EXCEPTION, registered: no FreeList mutant passes both rules - align_ignored(3/7) FAILS S3 because rustc names the unused alignment parameter at the defect's own line, trivial(6/7) FAILS S3 with 4 warnings and is absurd as a given, two are loud at 7/7. MITIGATION: the scorer must assert exhaust_and_recover EXISTS and RAN.	bench	2026-09-13
