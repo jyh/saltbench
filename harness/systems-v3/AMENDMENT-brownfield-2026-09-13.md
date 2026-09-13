@@ -470,3 +470,32 @@ runs, so a disagreement between them is a real alarm rather than a formatting di
 every arm as having introduced a bug it was handed.
 ⛔ **And `bugs_introduced = 0` remains a FLOOR, never a zero** (suite-limited; report the margin beside it).
 **Crc32 is absent from this file for the same reason it is absent from the plants registry: it awaits its ruling.**
+
+---
+
+# ADDENDUM 7 — 2026-09-13, bench. **§B7 ROW 5 SPLITS: N2 IS DRIVEN; N1 AND N3 CANNOT RUN BEFORE A CELL**
+
+**✅ N2 — NO ARM VOCABULARY — DRIVEN ON ALL FOUR SEEDS: ZERO hits, against a control that fires.**
+The pattern was **IMPORTED from `neutrality_grep.py`, never retyped** — the same law the fleet ruled for
+its commit hooks the same morning (*every hook IMPORTS its repo's gate patterns*), because a copied
+pattern list is a stale fixture the day the original moves.
+```
+  LZW 0 · Paxos 0 · LRU 0 · FreeList 0        CONTROL ("we prove the specification here") -> 2 hits
+```
+📌 **AND THE STANDING GATE ALREADY COVERS IT AT BUILD TIME, which I verified rather than assumed:**
+`cell_build.py` runs `neutrality_grep.py` **over the finished tree** with METHOD_FILES excluded *by path*,
+and **refuses** on a hit. A brownfield seed lands at `repo/solution.rs` — inside the scanned tree, not a
+method file — **so it is scanned by construction.** The drive above is what §B2 asks for (RED-driven
+*before* the first cell); the build-time gate is what keeps it true per cell afterwards. **Neither
+substitutes for the other.**
+⚠️ **Arm-neutrality by PROVENANCE was not accepted as evidence.** The seeds derive from mutants authored
+long before any treatment existed, which is a good argument and not a measurement. It is now measured.
+
+**⛔ N1 (seed byte-identity across arms) and N3 (the briefing diff published) CANNOT BE DRIVEN YET.**
+N1's subject is `ctl/seed-sha` agreeing across a condition's four cells, and its RED is *plant a one-byte
+difference in ONE cell* — there are no cells. N3's subject is the greenfield→brownfield briefing diff,
+and the brownfield briefing is part of cell construction. **At the source both are byte-identical by
+construction — ONE file per problem in the task tree, copied to every arm — and "by construction" is
+exactly the claim N1 exists to stop anyone resting on.**
+⇒ **Row 5 is therefore N2 ✅ / N1 ⏸ / N3 ⏸, and the two pauses are ORDERING, not omission.** Like row 3,
+they sit after cell construction, and saying so is the difference between a deferred row and a forgotten one.
