@@ -1029,3 +1029,105 @@ six hours apart, both careful. **The row never changed. The reading narrowed, on
 process re-opened it** — which is exactly the "checklist you work inside is not one you read" defect this
 desk has already banked, arriving one level further down: **not a row skipped, a row satisfied in the
 smaller of its two meanings.**
+
+---
+
+# ADDENDUM 17 — 2026-09-13, bench. ⛔⛔ **§B7 ROW 3'S SECOND LAYER IS NOT A BROWNFIELD GAP. IT IS CAMPAIGN-WIDE: 124 CLAUDE CELLS HAVE BEEN LAUNCHED AND NOT ONE HAS EVER HAD ITS SANDBOX LAYER DRIVEN**
+
+*Measured on the run box 2026-09-13, at the object, with a positive control. Nothing here changes a
+number in any published result; it changes what one sentence in them is entitled to claim.*
+
+## THE CENSUS
+```
+  cells carrying a ctl/launch.log ................. 262
+    of those, mentioning P-SANDBOX ................ 134
+  split by CLIENT, and it is TOTAL:
+    134  PSB    client=agy        the OS fence is DRIVEN, both halves, per cell
+    124  noPSB  client=claude     ⛔ not one
+      4  noPSB  client=?          (no ctl/client; not counted either way)
+  POSITIVE CONTROL on the sweep: a generic launch needle matches 262 of 262 logs.
+```
+⇒ **The split is perfect and it is on the CLIENT, not on the arm, not on the field, not on the wave.**
+
+## WHAT EACH CLIENT ACTUALLY DOES, READ IN THE SOURCE AND THEN AT A CELL
+```
+  agy_launch_v3.sh  probe_sandbox()   plants a file OUTSIDE the cell and one INSIDE, reads BOTH through
+                    $SANDBOX_PREFIX — the wrapper the launch actually runs under — and requires
+                    outside DENIED *and* inside READABLE. Its own comment says why both halves:
+                    "a profile that denies EVERYTHING would pass a deny-only check while making the
+                    cell unrunnable."
+  cell-claude.sh    renders the fence, RE-RENDERS it at the moment of use and HOLDs on any drift
+                    (bench's 21:28 finding), and passes it to the client as --settings ctl/fence.json.
+                    ⛔ IT NEVER ATTEMPTS A DENIED READ. There is no probe of any kind in its 256 lines.
+```
+**At the object, one cell of each, side by side:**
+```
+  bflzwp  (agy)     ctl/launch.log:  "P-SANDBOX yes (outside DENIED, inside readable, driven on this
+                                      cell's own profile)"
+  p2b001  (claude)  ctl/launch.log:  P-SANDBOX occurrences = 0 · built-from.tsv: no containment row
+                    — and p2b001 is an arm of the P2 pair whose RESULT is already merged.
+```
+
+## ⇒ 🔑 THE CLAIM THAT IS AFFECTED, STATED EXACTLY
+For every Claude cell this campaign has ever run, `sandbox.filesystem.denyRead` is **RENDERED** ✅,
+**DRIFT-CHECKED AT THE MOMENT OF USE** ✅, and **NEVER DRIVEN** ⛔.
+⛔ **THIS IS NOT "THE FENCE LEAKED".** No leak is claimed, none is suspected, and the hook layer
+(`permissions.deny`) **is** driven and green. ⇒ ***IT IS UNMEASURED, NOT UNSOUND*** — this desk's own
+banked line about a public history, arriving a second time in a different tree. **A rendered set is a
+statement about a FILE. A drive is a statement about the BOX.** `cell_build.py` already says the
+distinction in its own words — *"a promise at build, discharged at launch"* — and for the Claude client
+the discharge step was never written.
+⚠️ **AND THE TWO LAYERS ARE THE OLD TRAP.** This seat's standing card is that the agent fence has TWO
+enforcement layers and historically only one was ever populated. **The shape has recurred one level
+along: two layers, both populated, and for one whole client only one is ever DRIVEN.** ADDENDUM 11
+refused to mark row 3 discharged on the hook layer alone for exactly this reason — ***reporting half a
+gate as a gate is how a two-layer fence becomes a one-layer fence with a clean record*** — and that
+refusal is now vindicated by a census it did not have.
+
+## ⛔ WHAT THIS DOES **TO** ROW 3, AND IT MAKES THE ROW BIGGER RATHER THAN CLOSING IT
+ADDENDUM 11 named row 3's remaining dependency as *"a properly staged CELLS ROOT"*. **That was true and
+it was too small.** Staging a root would let ONE brownfield cell be driven; it would leave the
+instrument that drives it unwritten for the client every Claude cell uses.
+```
+  ROW 3 CLOSES WHEN:  a Claude cell attempts to read BROWNFIELD-PLANTS.tsv by its full path from a
+                      SUBPROCESS under its own rendered fence and gets `Operation not permitted`,
+                      with the GREEN half beside it (a path INSIDE the cell still readable).
+  WHAT IS MISSING:    not a cell and not a root — a `probe_sandbox` for the CLAUDE client.
+                      agy has one. It is the model to port, and ⛔ its own hardest-won lesson ports
+                      with it: the probe must run through THE THING THE CLIENT IS WRAPPED IN, never
+                      through `sandbox-exec` by name, or it proves a mechanism the launch no longer
+                      uses — "a green P-SANDBOX for a containment nothing was using."
+  ⚠️ AND THE CLAUDE CASE IS NOT THE AGY CASE:  agy is wrapped by an EXTERNAL prefix, so its probe can
+                      borrow the wrapper. The Claude client sandboxes ITSELF from fence.json, and
+                      `SANDBOX_PREFIX` is EMPTY for it — `probe_sandbox()` would return
+                      "n/a (AGY_SANDBOX=none was DECLARED: there is no OS fence to prove)".
+                      ⛔⛔ THAT SENTENCE IS FALSE FOR A CLAUDE CELL, whose fence.json sets
+                      `sandbox.enabled: true`. A STRAIGHT PORT WOULD PRINT A DECLARED n/a OVER A REAL
+                      FENCE — a third way to get a clean record for an undriven layer.
+```
+
+## 📌 HOW THIS WAS FOUND, BECAUSE THE ROUTE MATTERS MORE THAN THE RESULT
+I was doing **row 7**, not row 3. Wiring the discriminator to a witness outside the subject's reach
+forced me to read `render_fence_v3.deny_set` and ask *what can this cell actually reach* — and then, to
+turn that answer into a per-cell measurement, to ask *where does a cell's rendered fence live*. **The
+census fell out of the second question.** ⇒ ***THE WAY TO FIND AN UNDRIVEN GATE IS TO NEED ITS OUTPUT
+FOR SOMETHING ELSE.*** Nobody audits a green.
+
+## ⛔ WHAT I AM **NOT** DOING, AND WHY IT IS NOT TIMIDITY
+1. **Not porting the probe this shift.** It is a change on the LAUNCH path of every Claude cell, and
+   `ADDENDUM 8`'s own reasoning applies unchanged: *"it changes the gate's control flow on the path a
+   verdict runs through, and a gate that mis-runs is worse than one that visibly skips."* A straight
+   port is actively wrong here (see the n/a trap above), so this needs a design, not an afternoon.
+2. **Not re-opening any merged result.** No number moves. The affected sentence is a containment claim,
+   and it is corrected by being scoped, not by being withdrawn.
+3. **Not marking row 3 anything but HALF.** It was HALF before this census and it is HALF after, for a
+   larger reason. ⛔ **A row does not become more discharged because you found out the gap was wider.**
+
+## ⇒ §B7 STATE
+```
+  1 ✅ 4 of 5 (Crc32 awaits its ruling)   2 ✅ (superseded by S1·S2·S3)   4 ✅   5 ✅   7 ✅   8 ✅   9 ✅
+  3   HALF, AND THE OTHER HALF IS NOW SIZED: the hook layer is driven; the sandbox layer needs a
+      `probe_sandbox` FOR THE CLAUDE CLIENT, which does not exist for any of the 124 cells that have
+      used it. ⛔ THIS IS THE ROW THAT GATES THE BROWNFIELD FIRE, and it is no longer a staging chore.
+  6   TWO PARTS DONE; the third is a SPECIFICATION problem registered for a ruling.
+```
