@@ -575,3 +575,45 @@ files and no `parent`). ⇒ **§B7 row 8's COPY-not-dispatch half is BUILT (`cel
 selftest); its PARENT-KEY half cannot be built until a cell can carry a `field` at all.**
 ⚠️ **"The seeds are authored" is not "a brownfield cell can be built", and this amendment would have read
 as though it were.**
+
+## ⚖️ THE THIRD RUNG, SPECIFIED — so it is built once and not re-derived (bench, 2026-09-13)
+Written in the shape A5.6(b) used for gate FIX 3: **fully specified, deliberately not built at the tail of
+a shift**, because it is the blocker for the whole field and deserves a full red-first drive.
+
+**IT IS A `--field`, NOT A `--phase`.** Phase is the GREENFIELD→SPEC-CHANGE axis and brownfield is
+orthogonal to it: a brownfield cell can itself later take a spec-change (§B4 says so — *"a brownfield
+parent yields a BROWNFIELD child"*). Overloading `--phase` would make the two axes one and make
+`brownfield→spec-change` inexpressible.
+```
+  --field {greenfield,brownfield}   default greenfield.  Written verbatim to ctl/field.
+                                    REFUSE `--field brownfield` when <task>/brownfield/solution.rs is absent.
+                                    REFUSE `--field brownfield --phase 2` for now: the parent-key half of
+                                      §B7 row 8 does not exist, so the child could not name its parent.
+```
+**WHAT CHANGES IN THE BUILD, and it is SMALLER than it looks — three lines and a refusal:**
+```
+  rung             UNCHANGED: G/ at phase 1.  ⛔ interface.rs is STILL G/interface.rs, copied as today —
+                   §B1's corrigendum: interface.rs is the fixed, arm-neutral interface, IDENTICAL IN BOTH
+                   ARMS, and a brownfield cell takes it exactly as greenfield does.
+  solution.rs      <- <task>/brownfield/solution.rs      (instead of a second copy of interface.rs)
+                   THIS IS THE ONLY FILE THAT DIFFERS FROM A GREENFIELD CELL AT t0.
+  REQUIREMENTS.md  the card rendering, PLUS <task>/brownfield/card-addendum.md appended.
+                   ⛔ THE ADDENDUM IS NOT WRITTEN YET and it is the one piece needing JUDGEMENT, not
+                     plumbing: it must say "an implementation exists already" WITHOUT saying "it is
+                     buggy" (that is the finding V1 measures) and WITHOUT any term from §B2's N2 list.
+  ctl/field        "brownfield\n"  — the component §B4's parent key needs and no cell carries today.
+  ctl/seed-sha     sha256 of the seed AS COPIED, for §B2's N1 byte-identity check across arms.
+```
+**THE DRIVES IT OWES, red-first:**
+```
+  R1  --field brownfield with no brownfield/solution.rs        -> REFUSE            (both directions)
+  R2  --field brownfield --phase 2                             -> REFUSE, for now  (both directions)
+  R3  a built brownfield cell: repo/solution.rs == the seed BYTE-FOR-BYTE; repo/interface.rs ==
+      G/interface.rs BYTE-FOR-BYTE; ctl/field == brownfield; ctl/seed-sha == the registry's seed_sha256
+  R4  a built GREENFIELD cell is BYTE-IDENTICAL to one built before this change — the no-regression arm,
+      and the one that matters most, because this edits the path every existing cell is built on
+  R5  the neutrality grep still passes on the finished brownfield tree (it scans repo/, so the SEED is
+      in scope — verified this shift, and R5 is what keeps it verified)
+```
+📌 **`--field` also finally lets `CELLS.tsv` separate greenfield from brownfield rows, which §B7 row 6
+needs and which is today impossible: the two fields are indistinguishable in a built cell.**
