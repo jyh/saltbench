@@ -292,3 +292,54 @@ and must be driven against **both** the registry and any seed provenance note.
 **It changes no measurement, because no brownfield cell has fired** — it replaces a checklist row that
 could not be discharged as written, before the first call, which is the form this campaign requires.
 **§B7 row 2 is superseded by S1 · S2 · S3 above. Rows 1 and 3–8 stand unchanged.**
+
+---
+
+# ADDENDUM 3 — 2026-09-13, bench. **THE SEED SELECTION FOR ALL FIVE, REGISTERED BEFORE ANY CELL**
+
+Derived from `results/hidden-test-strength-2026-09-04.json` — **the margin, per mutant, per task**: the
+number of withheld tests that FAIL on it. Read here **forwards**, before the run, which is what the
+parent result file recommended and nothing had yet done.
+
+```
+  LZW/G       5/8   dict_seeded_255          6/8  decoder_extends   6/8  kwkwk_dropped   8/8  encoder_extends ⛔LOUD
+  LRU/G       5/16  put_duplicates           6/16 get_no_touch      7/16 evict_mru       9/16 capacity_off_by_one
+  Paxos/G     1/17  own_value ⛔FRAGILE      2/17 accept_below_promise  4/17 forgetful_promise  6/17 small_quorum
+  FreeList/G  1/7   free_leaks ⛔FRAGILE     3/7  align_ignored     6/7  trivial         7/7  header_past_end ⛔LOUD
+                                                                                        7/7  split_off_by_one ⛔LOUD
+  Crc32/G     5/6   ALL FIVE at 5/6 — ComplementedTable · HighByteIndex · SevenSteps · ShortTable · UnreflectedPoly
+```
+**THE TWO EXCLUSION RULES, and they are opposite failures of the same quantity:**
+- ⛔ **MARGIN 1 IS FRAGILE.** The entire two-sided metric would rest on ONE withheld test. If that test is
+  ever weakened, retired, or simply does not probe a particular rewrite, the seed becomes undetectable and
+  a cell that ignored the bug scores identically to one that fixed it. **`own_value`, `free_leaks`: OUT.**
+- ⛔ **MARGIN == TOTAL IS LOUD.** A defect that fails EVERY test breaks the basic round trip, so any agent
+  that writes a single smoke test finds it in its first turn. That puts the field at a CEILING and
+  measures nothing about method. **`encoder_extends_before_emitting`, `header_past_end`,
+  `split_off_by_one`: OUT.** (The parent result file already said these say the LEAST about suite
+  strength — *loud, not discriminating*. The same property disqualifies them as seeds, for the same reason.)
+
+**THE SELECTION:**
+```
+  LZW        dict_seeded_255   5/8    ✅ AUTHORED AND DRIVEN THIS SHIFT (S1·S2·S3)
+  Paxos      small_quorum      6/17   the ONLY comfortably robust candidate — the other three are 1, 2 and 4 of 17
+  FreeList   align_ignored     3/7    the ONLY viable candidate: one fragile, two loud, one near-loud (6/7)
+  LRU        get_no_touch      6/16   preferred over put_duplicates (5/16): a recency bug needs a SEQUENCING
+                                      test, so it is not reachable by single-operation poking
+  Crc32      ⚠️ SEE BELOW — no choice available on this axis
+```
+⇒ 🔑 ***IN TWO OF FIVE TASKS THE MARGIN DATA REDUCES FOUR CANDIDATES TO ONE. THE SEED CHOICE WAS NEVER
+FREE; IT ONLY LOOKED FREE BECAUSE NOBODY HAD READ THE MARGINS.*** Had these been chosen by plausibility —
+and `free_leaks` and `own_value` are the most natural-sounding bugs in their tasks — **two of five seeds
+would have rested on a single test each**, and nothing in the pipeline would have reported it.
+
+## ⚠️ Crc32 IS A WEAK BROWNFIELD TASK AND THAT IS A PROPERTY OF THE TASK, NOT A CHOICE I AM MAKING
+All five of its mutants fail **5 of 6** tests — 83% of the suite. There is no discriminating seed available:
+every defect it offers is loud. **Registered as a limitation before the run rather than discovered in the
+analysis.** Options, for the helm, and I am NOT ruling between them: (a) run Crc32 and expect it to sit at
+a ceiling, reporting it as such; (b) drop Crc32 from the brownfield pilot and run four problems;
+(c) author a NEW non-mutant defect for Crc32 — which forfeits the measured-detection property that makes
+every other row evidence, and would need S2 driven from scratch.
+📌 **My recommendation is (a): run it and report the ceiling.** A task that cannot discriminate is itself a
+finding about the substrate, it costs one cell per arm, and (b) silently changes the registered population
+while (c) trades the one property that makes this selection method trustworthy.
