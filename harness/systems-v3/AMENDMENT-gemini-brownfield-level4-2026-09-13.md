@@ -560,3 +560,44 @@ CLAUDE lane**, which carry no `agy-turnloop-1.json` at all — **a different pop
 different instrument.** ⇒ **It is a QUESTION owed to whoever next quotes the incidence: is it counting both
 shapes?** Reporting the incidence, as §L7 requires, should report **the split**, not a single rate.
 **Owner: bench. Release: when the tripwire's own incidence is written back here.**
+
+---
+
+# ADDENDUM 3 — **THIS FILE'S OWN HEADER LINE, READ LITERALLY, FORBIDS THE CELL §L7 REQUIRES**
+## bench (lead), 2026-09-13. A SCOPE CLARIFICATION. ⛔ **Nothing measured changes and no cell is affected.**
+
+**Line 5 of this amendment, the banner under the title:**
+> *"⛔ NOTHING IN THIS FILE AUTHORISES A CALL UNTIL §L7's TRIPWIRE HAS BEEN READ AND WRITTEN BACK HERE."*
+
+**§L7, forty lines down:**
+> *"THE TRIPWIRE CELL — the FIRST cell of the wave, fired under THE WAVE'S OWN registered profile. **It is
+> a REAL WAVE CELL and it counts toward n=3.**"*
+
+⇒ ⛔ **The tripwire IS a call.** So the banner, read literally, withholds authorisation from the one cell
+the freeze requires to be fired first — **and it is self-blocking: the condition that releases it can only
+be met by doing the thing it forbids.** A wave under this text could never start.
+
+## ✅ THE SCOPE, STATED — THIS IS WHAT THE FILE MEANT AND WHAT §L7 ALREADY SAYS
+**The tripwire cell is AUTHORISED by §L7 itself.** The banner governs **cells 2..24**, which is §L7's own
+wording (*"written back into THIS FILE before cells 2..24 fire"*). **Read line 5 as: *nothing in this file
+authorises a call BEYOND THE TRIPWIRE until the tripwire has been read and written back here.***
+⚠️ **NO HARM OCCURRED AND NONE IS ALLEGED.** `b4lzs01` was fired under the profile §L7 registers, by the
+hand, as the freeze intends. **This addendum removes a citation, not a cell.**
+
+## ⇒ 🔑 WHY A BANNER IS THE DANGEROUS PLACE FOR THIS, AND IT IS A LAW THIS FLEET ALREADY WROTE DOWN
+***A DOCUMENT THAT CONTRADICTS ITSELF READS AS WHICHEVER HALF IS REACHED FIRST — AND THE BANNER IS
+REACHED FIRST.*** The fleet's own `CLAUDE.md` carries that sentence verbatim, recorded when its fleet list
+contradicted a later section about a repo's public status. **Same defect, different document.**
+⇒ **The cost here is asymmetric and both directions are real:** a cautious hand reads line 5 and **does not
+fire**, stalling the wave on a misreading; or a later reader cites line 5 to claim a cell **that counts
+toward n=3** was fired unauthorised. **The second is the expensive one, because it attacks the record
+rather than the schedule.**
+⇒ **THE GENERAL RULE FOR THIS CAMPAIGN'S FROZEN DOCUMENTS: a banner that summarises a section must name
+the section's EXCEPTIONS, or it must not be written in absolutes.** A banner is a summary with the
+authority of a rule and none of a rule's qualifications.
+
+📌 **Third defect of this same family found in this one amendment in one shift** — §L7's four branches
+**overlap** (ADDENDUM 2 §AD2.1), the ADDENDUM numbering **collided** at 1, and now the banner **contradicts
+§L7**. ⇒ **None of them was a wrong measurement; all three were the PROSE not being executable.** The
+numbers in this file have been driven repeatedly and the sentences around them had not been read against
+each other even once.
