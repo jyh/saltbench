@@ -304,3 +304,189 @@ labelled so.** Nothing here blocks the field.
   a cell that argues    every agy cell carries ctl/plumbing-only. READ IT before a cell enters a table.
 ```
 ⇒ **Everything else in §G1–§G9 that this file does not restate stands unchanged and applies.**
+
+---
+
+# ADDENDUM 1 — 2026-09-13, bench. ✅ **`BUDGET.md` REGISTERED: IT IS ABSENT ON THE ENTIRE agy LANE, AND THE SPLIT IS ON THE CLIENT**
+
+*Filed on maestro's non-author read of `c4bcb1a` (15:01), which found this file mentioned `BUDGET.md`
+**zero** times while the 13:08 ruling had made it part of the **TREATMENT SURFACE** in every wave's
+registration from the P2 pair on. **Level 4 is the first wave since.** The catch is correct and the gap
+was mine.*
+
+⚖️ **maestro proposed taking this line from the tripwire cell's own tree. IT DID NOT HAVE TO WAIT:** the
+fact was already readable on 63 built cells, so the line is filled in **BEFORE the first call** rather
+than after cell 1. ⇒ *A registration that can be taken before the fire should never be scheduled for
+after it.*
+
+## THE CENSUS — measured at the object, denominator first, with a positive control
+```
+  agy GREENFIELD cells (the s3 wave)   55 with a repo/ ...... repo/BUDGET.md present:  0
+  agy BROWNFIELD probe cells           8 with a repo/ ......  repo/BUDGET.md present:  0
+  POSITIVE CONTROL — CLAUDE cells      25 with a repo/ .....  repo/BUDGET.md present: 24
+  mechanism arm                        agy_launch_v3.sh mentions BUDGET: 0 occurrences
+```
+⛔ **THE 25th CLAUDE CELL IS NAMED RATHER THAN ROUNDED AWAY:** `d64c7ea2` has **no `ctl/client` and no
+end marker — it never fired.** ⇒ **The honest denominator is 24 of 24 FIRED Claude cells, not 24 of 25**,
+and the control is therefore *perfect*, not merely strong.
+⇒ 🔑 ***THE SPLIT IS TOTAL AND IT IS ON THE CLIENT — the SECOND client-split finding this desk has
+measured today, the first being P-SANDBOX (134 agy / 124 claude).*** Same shape, same day, same cause:
+**two fire paths that were never required to agree about what they put in front of a subject.**
+
+## WHAT THE FILE DISCLOSES WHERE IT EXISTS, verbatim from two real cells
+```
+  PHASE 1 (token profile)          PHASE 2 (pricing profile, the P2 pair the 13:08 ruling was about)
+  tokens: cap / spent / remaining  cost (USD): cap / spent / remaining      <- HC condition (1)'s hazard
+  wall: remaining  (= max_wall)    tokens (a reading, not the cap): spent
+  compactions so far               wall: remaining (= max_wall) · compactions so far
+```
+⭐ **maestro's guess about the clocks was exactly right, and it is the load-bearing half:** the file shows
+`wall: remaining`, which is **`max_wall` (21,600 s)** — and **`max_wall` has never bound a cell in this
+campaign** (heaviest observed wall: 5,539 s, a quarter of it). ⛔ **The per-turn `turn_timeout` — the cap
+that actually cut four cells, all salt-diet — is NOT SHOWN, on EITHER lane, in EITHER phase.**
+
+## ⇒ ⚖️ THE THREE CONSEQUENCES, REGISTERED. IT IS A DECLARED PROPERTY, NOT A PREDICTION AND NOT A STOP
+1. ✅ **FOR THIS WAVE, THE SUBJECT READS NO COUNTDOWN OF ANY KIND.** No token cap, no USD, no wall clock.
+   ⇒ **§L4's arm-correlated wall-clock cut CANNOT be explained by a subject pacing itself against a
+   readable clock**, because on this lane there is no clock to read. **This STRENGTHENS §L4 rather than
+   qualifying it**, and it is registered here so that a later reader does not have to wonder.
+2. ⛔ **DESK HC's CONDITION-(1) HAZARD DOES NOT ARISE ON THE agy LANE, AND THE REASON IS NOT VIRTUE.**
+   HC registered `NEAR-CAP` and a per-cell *"did the transcript show the subject reading `BUDGET.md`"*
+   column because **a subject pacing itself under a countdown it can read produces exactly the landing
+   that falsifies a cap-out prediction.** ⇒ **That column is VACUOUS on this wave — the file is not
+   there to read** — and ⛔ **a vacuous column must be reported as `NOT APPLICABLE (file absent on this
+   lane)`, never as `no read observed`.** The two are byte-identical in a results table and mean opposite
+   things: one is a subject that did not look, the other is a subject that could not.
+3. ⛔⛔ **THE CLAUDE AND GEMINI LANES HAVE DIFFERENT TREATMENT SURFACES, AND ANY CROSS-LANE SENTENCE MUST
+   DECLARE IT.** A Claude subject is handed a budget file; a Gemini subject is not. **This is a second,
+   independent incommensurability between the lanes, beside the USD one §G2 already registered** — and it
+   is the more dangerous of the two, because a missing dollar sign is visible in a table and a missing
+   *file in the subject's working directory* is visible nowhere.
+
+## 📌 WHAT WAS NOT CLAIMED HERE — **AND IS NOW LOCATED. THIS PARAGRAPH IS SUPERSEDED IN PLACE**
+*This section read **"the MECHANISM is NOT LOCATED"** for forty minutes. `gemini` located it before this
+addendum merged, and it is corrected here rather than left standing: **a stale OPEN in a registration is
+the expensive direction**, and this one would have shipped a "we could not find it" beside a fact that
+had been found.*
+
+⭐⭐ **THE MECHANISM, AND IT IS STRUCTURAL RATHER THAN INCIDENTAL:**
+```
+  THE ONLY WRITER IN THE WHOLE v3 HARNESS   cell-watch.sh — write_budget() at :368,
+                                            redirecting to $REPO/BUDGET.md at :375 and :378
+  AND THE HARNESS SAYS SO ITSELF, UNPROMPTED, at cell_build.py:834 —
+     "written later (target/ by rt, .seat/ by rt and declare, BUDGET.md by the watcher, ...)"
+  ⇒ THE agy LANE HAS NO WATCHER AT ALL.  Its own built-from.tsv records, verbatim:
+     watcher   n/a (agy: a headless stream driver, no pane watcher)
+```
+⇒ 🔑 ***THE ONLY WRITER OF `BUDGET.md` IS A COMPONENT THE agy LANE STRUCTURALLY DOES NOT HAVE.*** That is
+a located mechanism, not a failure to find one — and it is a far stronger registration than the census,
+because **it says the file cannot appear on this lane, not merely that it has not.**
+
+✅ **VERIFIED INDEPENDENTLY AT THE OBJECT BY THIS DESK, denominator first, before being written in:**
+```
+  agy cells that RAN ....... 55   with ctl/watch.log:  0
+  CLAUDE cells that RAN .... 24   with ctl/watch.log: 24
+```
+**A perfect split, on the same axis as the file itself.** *(I verified the structural half rather than
+accepting it: a number I can re-drive is cheap, and this desk's standing failure is verifying NUMBERS and
+taking CAUSES on trust — a located mechanism is exactly a cause.)*
+
+### ⇒ 🔑 THE METHOD LESSON, WHICH IS `gemini`'s AND IS BETTER THAN THE FINDING
+My arm grepped `_bin` (28 files, chosen because it was the directory I had). gemini's first arm grepped
+four agy files **it chose** — so it discriminated, **but only because it happened to pick the right four.**
+The arm that actually settled it enumerated **every file in the harness touching the needle — 8 of 104 —
+and classified each**, with a control of 7 files for `P-SANDBOX` proving the sweep live.
+⇒ ***AN ENUMERATED POPULATION IS A GUESS WEARING A DENOMINATOR. THE FIX WAS NEVER A BETTER NEEDLE — IT
+WAS GREPPING THE WHOLE TREE AND LETTING THE FILE LIST BE THE POPULATION.***
+⚠️ **And the campaign's standing caution is narrowed by this, not confirmed:** *"the v3 runtime is tracked
+nowhere"* is true of the REPOSITORY and does **not** mean a mechanism question is unanswerable — **the
+runtime is on disk and can be enumerated.** "Not in the repo" and "not reachable" are different claims,
+and I had been treating the first as the second.
+
+## SCOPE
+**§L1–§L11 are unchanged. No cap moves, no cell is voided, no reading rule is added or removed.** This
+addendum fills one registration line that the 13:08 ruling required and `c4bcb1a` omitted.
+✅ **gemini fires on `c4bcb1a` as authorized; this line does not gate the fire and was never a hold.**
+
+---
+
+## ⛔⛔ CORRECTION TO ADDENDUM 1, THE SAME HOUR, BEFORE IT MERGED — **MY SECOND ARM WAS VACUOUS, AND THE CLAUDE LANE IS THE CONTROL THAT PROVES IT**
+
+*maestro, on the non-author read: "`repo/BUDGET.md ABSENT` on a built cell reads identically for a lane
+that never writes it and a lane that writes it from its first tick. Only a reading taken while the cell
+runs can tell them apart." **Correct. And driving the objection made it worse than stated.***
+
+### THE ARM I OFFERED AS CORROBORATION, DRIVEN, WITH THE CONTROL THAT KILLS IT
+```
+  write_budget anywhere in ~/cells/_bin (28 executables) ......... 0 files
+  BUDGET in every _bin executable ......... 0, except smoke_harvest_v3.sh (2)
+  POSITIVE CONTROL on the grep: P-SANDBOX in agy_launch_v3.sh ..... 17   ⇒ the instrument works
+  ⛔ AND THE CONTROL THAT DESTROYS THE INFERENCE:
+     cell-watch.sh — the CLAUDE lane's writer, at its line 368 — IS NOT IN `_bin` EITHER.
+```
+⇒ 🔑 ***MY "ABSENT FROM THE SOURCE" ARM IS EQUALLY ABSENT FOR THE LANE THAT DEMONSTRABLY WRITES THE FILE.
+A TEST THAT RETURNS THE SAME ANSWER FOR BOTH LANES DISCRIMINATES NOTHING — AND I OFFERED IT AS THOUGH IT
+DID.*** `_bin` is 28 files and the v3 runtime is ~65: **I measured the population I could reach and
+reported it as the population that matters.** This desk's two banked laws arriving in one paragraph —
+*an instrument that reports absence fails toward absence*, and *a grep-the-source arm proves the CALL,
+not the CALLEE*. **The addendum above says "the MECHANISM is NOT LOCATED" and then leans on the mechanism
+anyway.**
+⛔ **AND THE 8 BROWNFIELD PROBE CELLS ARE STRUCK FROM THE CENSUS TABLE.** They never launched, so their
+zero is uninformative in exactly the way maestro describes. **They inflated the appearance of a census
+without adding evidence**, and a row that cannot move a verdict does not belong beside rows that can.
+
+### ✅ WHAT ACTUALLY ANSWERS THE OBJECTION — AND IT IS `gemini`'s STATIC ARM, NOT MINE
+```
+  ⑴ STATIC   the CODE of the agy RUN-TIME path, 4 files:
+             agy_launch_v3.sh · fire_agy_v3.sh · agy_turnloop_v3.py · agy_wave_v3.sh
+             BUDGET.md 0 · write_budget 0
+             POSITIVE CONTROL: the cell-claude path    BUDGET.md 6 · write_budget 4   ⇒ IT FIRES
+  ⑵ EMPIRICAL  end-state artefacts of cells that RAN:  repo/BUDGET.md in 0 of 55
+             POSITIVE CONTROL: 24 of 24 FIRED Claude cells carry it
+```
+⭐ **⑴ IS THE ONE THAT SETTLES IT, AND THE REASON IS THE TURNLOOP.** `agy_turnloop_v3.py` is the agy
+lane's RUN-TIME component — the counterpart of the watcher that writes the file on the Claude lane — and
+its positive control fires on `cell-watch.sh`'s actual `write_budget()`. ⇒ **This reads the run-time
+mechanism directly, which is precisely what an end-state census cannot do.**
+✅ **AND ⑵ IS SOUND AFTER ALL — I OVER-CONCEDED, AND maestro CORRECTED ME IN THE PERMISSIVE DIRECTION.**
+My first instinct was that an end-state census cannot separate *"never written"* from *"written then
+removed."* **It can, and the discriminator is inside the census's own positive control:** on the Claude
+lane the watcher writes `BUDGET.md` **while a cell runs and the file STAYS IN THE TREE AFTER LANDING** —
+which is exactly what 24-of-24-fired demonstrates. ⇒ **So an agy cell that RAN and carries no
+`BUDGET.md` IS real evidence that the agy path never wrote it.** The control does double duty: it proves
+the instrument fires *and* it establishes the persistence that makes the end state admissible.
+⇒ 🔑 ***THE OBJECTION WAS NEVER TO MY POPULATION — IT WAS TO THE UNLAUNCHED CELLS I HAD MIXED INTO IT.
+RESTRICTED TO THE 55 THAT RAN, THE CENSUS STANDS ON ITS OWN.*** ⛔ **I nearly paid 30 minutes and a
+tripwire re-take for a concession nobody asked for**, which is its own defect: *conceding more than the
+objection claimed is as much a misreading as conceding less, and it is the one that looks like rigour.*
+📌 **`gemini` reported the same two mechanisms independently and then RETIRED its own post as a
+reproduction rather than a corroboration — correctly. It is ONE reading, and the record does not count it
+twice.** The only thing its version has that mine lacks is **breadth within one mechanism**, and broader
+coverage of the same mechanism is not a second mechanism.
+✅ **NO RUNNING-CELL RE-TAKE IS OWED, ON maestro's OWN WORD** (*"No `b4lzs01` re-take is needed to back
+it"*). I had proposed one and it was declined as unnecessary — **the 55 cells that RAN already are the
+right population.** ⛔ **The tripwire is not spent on confirming a line that is already backed**, which
+is what §L7 exists to protect: a tripwire reading is for a number that cannot be got any other way.
+
+### ⚖️ THE REGISTRATION LINE, IN ITS CORRECTED AND NOW-SUPPORTED FORM
+> **On the agy lane, NO BUDGET OR CAP *FIGURE* REACHES THE SUBJECT AT ANY POINT IN A CELL'S LIFE.**
+> **`SEAT.md` discloses that a budget EXISTS** — *"a session that crosses its budget is ended where it
+> stands"* — **but never the NUMBER.** ⇒ **The EXISTENCE is disclosed; the NUMBER is not, ever.**
+⛔ **THAT IS THE ASYMMETRY, AND IT IS SHARPER THAN "absent vs present":** on the Claude lane the number is
+a **live countdown in the subject's own cwd, refreshed as it works.** On this lane the subject knows only
+that a limit exists somewhere. ⇒ **Two subjects who both know they are on a budget, one of whom can watch
+it drain.** **Registered as a treatment-surface asymmetry, and any cross-lane sentence must declare it.**
+
+### ⇒ THE THREE CONSEQUENCES: (1) STANDS, NOW PROPERLY SUPPORTED
+Consequence (1) was marked PROVISIONAL when the objection landed, because it does not merely weaken if the
+run-time answer goes the other way — **it INVERTS.** ✅ **It is now supported by ⑴, and it stands.** (2)
+and (3) stand with it. ⛔ **The provisional marking is recorded rather than deleted**, because *a
+consequence that was provisional for forty minutes and a consequence that was never in doubt are different
+facts about how much this registration has been tested.*
+
+### ⇒ 🔑 THE ONE I AM CARRYING
+***I TOOK A CENSUS AT THE END STATE AND ANSWERED A QUESTION ABOUT RUN TIME, AND THE SECOND ARM I REACHED
+FOR TO CHECK MYSELF WAS BLIND IN EXACTLY THE SAME DIRECTION AS THE FIRST.*** Two arms agreeing is not
+corroboration when both read the same surface — **the CORROBORATION LAW, count MECHANISMS not voices** —
+which §L8 of this very file quotes at the hand, four hours before its author failed to apply it to himself
+one addendum later.
