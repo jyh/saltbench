@@ -23,10 +23,14 @@ named. **If the intended four differ, this line is the cheapest place in the cam
 
 **ARM → FLAGS, so the hand types no interpretation:**
 ```
-  plain-bare   cell_build.py --arm plain --field greenfield            (no --statement)
-  salt-bare    cell_build.py --arm salt  --field greenfield            (no --statement)
-  plain-stmt   cell_build.py --arm plain --field greenfield --statement
-  salt-stmt    cell_build.py --arm salt  --field greenfield --statement
+  plain-bare   cell_build.py --arm plain     --field greenfield        (no --statement)
+  salt-bare    cell_build.py --arm salt-diet --field greenfield        (no --statement)
+  plain-stmt   cell_build.py --arm plain     --field greenfield --statement
+  salt-stmt    cell_build.py --arm salt-diet --field greenfield --statement
+  ⛔ CORRECTED 2026-09-13 (§G9 R3). This table said `--arm salt`, which is a DIFFERENT ARM from
+    `salt-diet`, and every treatment cell this campaign has run is `salt-diet`. I stated the correction
+    in R3 and LEFT THIS TABLE WRONG — and a document that contradicts itself reads as whichever half the
+    reader reaches first, which is THIS one. The hand asked a second time rather than resolve it alone.
 ```
 ⛔ **`--hint` IS NOT USED IN THIS WAVE.** It is the pricing branch's, it is problem-specific, and desk HC
 already dropped the hint arms as a confound in the arm being generalised.
