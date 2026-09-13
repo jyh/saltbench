@@ -363,14 +363,45 @@ that actually cut four cells, all salt-diet — is NOT SHOWN, on EITHER lane, in
    is the more dangerous of the two, because a missing dollar sign is visible in a table and a missing
    *file in the subject's working directory* is visible nowhere.
 
-## 📌 WHAT IS **NOT** CLAIMED HERE
-⛔ **I did not locate the executable that writes `BUDGET.md`.** `cell-watch.sh` is not on this run box and
-`~/cells/_bin` (28 executables) contains no writer of it but `smoke_harvest_v3.sh`. **The CENSUS is
-measured; the MECHANISM is NOT LOCATED, and it is recorded as not-located rather than inferred from the
-census.** The one mechanism arm I *can* drive points the same way — `agy_launch_v3.sh` mentions `BUDGET`
-zero times — but **an absence in one file is not the identification of a writer in another.**
-⚠️ This is the campaign's own standing caution: *the v3 runtime is tracked nowhere*, so a mechanism
-question about it cannot be answered from the repository, and a census must not be dressed up as one.
+## 📌 WHAT WAS NOT CLAIMED HERE — **AND IS NOW LOCATED. THIS PARAGRAPH IS SUPERSEDED IN PLACE**
+*This section read **"the MECHANISM is NOT LOCATED"** for forty minutes. `gemini` located it before this
+addendum merged, and it is corrected here rather than left standing: **a stale OPEN in a registration is
+the expensive direction**, and this one would have shipped a "we could not find it" beside a fact that
+had been found.*
+
+⭐⭐ **THE MECHANISM, AND IT IS STRUCTURAL RATHER THAN INCIDENTAL:**
+```
+  THE ONLY WRITER IN THE WHOLE v3 HARNESS   cell-watch.sh — write_budget() at :368,
+                                            redirecting to $REPO/BUDGET.md at :375 and :378
+  AND THE HARNESS SAYS SO ITSELF, UNPROMPTED, at cell_build.py:834 —
+     "written later (target/ by rt, .seat/ by rt and declare, BUDGET.md by the watcher, ...)"
+  ⇒ THE agy LANE HAS NO WATCHER AT ALL.  Its own built-from.tsv records, verbatim:
+     watcher   n/a (agy: a headless stream driver, no pane watcher)
+```
+⇒ 🔑 ***THE ONLY WRITER OF `BUDGET.md` IS A COMPONENT THE agy LANE STRUCTURALLY DOES NOT HAVE.*** That is
+a located mechanism, not a failure to find one — and it is a far stronger registration than the census,
+because **it says the file cannot appear on this lane, not merely that it has not.**
+
+✅ **VERIFIED INDEPENDENTLY AT THE OBJECT BY THIS DESK, denominator first, before being written in:**
+```
+  agy cells that RAN ....... 55   with ctl/watch.log:  0
+  CLAUDE cells that RAN .... 24   with ctl/watch.log: 24
+```
+**A perfect split, on the same axis as the file itself.** *(I verified the structural half rather than
+accepting it: a number I can re-drive is cheap, and this desk's standing failure is verifying NUMBERS and
+taking CAUSES on trust — a located mechanism is exactly a cause.)*
+
+### ⇒ 🔑 THE METHOD LESSON, WHICH IS `gemini`'s AND IS BETTER THAN THE FINDING
+My arm grepped `_bin` (28 files, chosen because it was the directory I had). gemini's first arm grepped
+four agy files **it chose** — so it discriminated, **but only because it happened to pick the right four.**
+The arm that actually settled it enumerated **every file in the harness touching the needle — 8 of 104 —
+and classified each**, with a control of 7 files for `P-SANDBOX` proving the sweep live.
+⇒ ***AN ENUMERATED POPULATION IS A GUESS WEARING A DENOMINATOR. THE FIX WAS NEVER A BETTER NEEDLE — IT
+WAS GREPPING THE WHOLE TREE AND LETTING THE FILE LIST BE THE POPULATION.***
+⚠️ **And the campaign's standing caution is narrowed by this, not confirmed:** *"the v3 runtime is tracked
+nowhere"* is true of the REPOSITORY and does **not** mean a mechanism question is unanswerable — **the
+runtime is on disk and can be enumerated.** "Not in the repo" and "not reachable" are different claims,
+and I had been treating the first as the second.
 
 ## SCOPE
 **§L1–§L11 are unchanged. No cap moves, no cell is voided, no reading rule is added or removed.** This
