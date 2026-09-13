@@ -822,3 +822,45 @@ cell's build appends to ONE file, and concurrent appends over ~1 KB tear"*) and 
 mutable one.
 📌 **The row is not wrong about what it WANTS — the two verdicts must be separable per cell, and they are.
 It is wrong about WHERE**, and that is worth one ruling rather than a forced column.
+
+---
+
+# ADDENDUM 15 — 2026-09-13, bench. ✅ **§B7 ROW 7 IS DISCHARGED — AND §B5 NEEDED A FOURTH CLASS**
+*`harness/systems-v3/brownfield_rewrite_class.py`, task tree `3da6dbe`.*
+
+**HARNESS-TAKEN ON BOTH SIDES:** the seed **as the cell was GIVEN it** (the root commit, which
+`ctl/seed-sha` attests) and the component **as the cell LEFT it**. A class read from a landing note would
+be the subject grading itself.
+
+⛔⛔ **§B5 NAMES THREE CLASSES AND THERE ARE FOUR. `UNTOUCHED` WAS ADDED THE FIRST TIME THIS TOOL RAN ON
+REAL CELLS**, where an untouched seed came back **`REPAIRED` at retained 1.000**. **A cell that never
+modified the given did not REPAIR it.** Without the state, a cell that FAILED TO ACT is binned as *"the
+only brownfield outcome in the intended sense"* — the flattering direction, silently.
+⇒ 🔑 ***A CLASSIFIER WHOSE CLASSES ASSUME THE SUBJECT ACTED WILL LABEL INACTION AS THE GOOD OUTCOME.***
+**This amendment's §B5 is amended accordingly: REMOVED · REPLACED · REPAIRED · UNTOUCHED.**
+
+## THE THRESHOLD, REGISTERED BEFORE ANY CELL, AND WHY IT IS SURVIVABLE
+`retained < 0.20 → REPLACED`, where `retained` is the line-level ratio of the END file against the seed.
+**0.20 is arbitrary in the way every threshold is**, and two things keep it honest:
+1. **It is fixed BEFORE the data.** A threshold chosen after seeing the arms is FITTED to them and its
+   author cannot show otherwise — this desk's own card, and the reason the number is in the source today.
+2. **`retained` is printed on EVERY row**, so any reader can re-derive every class under a different cut
+   **without re-running anything.** ⇒ ***THE CLASS IS THE OPINION; THE STATISTIC IS THE MEASUREMENT, AND
+   ONLY ONE OF THEM IS BEING ASKED TO BE BELIEVED.***
+
+## ⭐ END STATE READS THE WORKING TREE WHEN IT IS DIRTY, AND SAYS WHICH IT READ
+**Class-C node 1 produced a cell that proved its statement and committed NOTHING.** A discriminator that
+looked only at commits would classify **a whole real outcome as REMOVED.** A5.6(c) registered *a working
+tree is a possible output shape and nothing in the harness treats it as one* — this treats it as one.
+
+**DRIVEN: selftest 9 of 9**, both sides of the threshold. **RED-driven against two mutants:** reading only
+HEAD (uncommitted work invisible) fails **4** arms; moving the threshold to 0 fails **2**. **On real cells:**
+an unrun cell reads `UNTOUCHED 1.000 HEAD`; a one-byte-edited one reads `REPAIRED 0.995 working tree`.
+
+## ⇒ §B7 IS COMPLETE BUT FOR TWO NAMED ITEMS
+```
+  1 ✅ 4 of 5 (Crc32 awaits its ruling)     2 ✅     4 ✅     5 ✅     6 ✅     7 ✅     8 ✅     9 ✅
+  3   HALF — hook layer ✅; the SANDBOX layer needs a STAGED CELLS ROOT, not merely a cell
+  6   its third part is a SPECIFICATION problem, registered for a ruling: V1/V2 cannot be CELLS.tsv
+      columns, because that file is written at BUILD time and the verdicts are POST-RUN
+```
