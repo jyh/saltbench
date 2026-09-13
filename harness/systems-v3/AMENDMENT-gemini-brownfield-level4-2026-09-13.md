@@ -493,7 +493,7 @@ one addendum later.
 
 ---
 
-# ADDENDUM 1 — **§L7's GATE IS ENCODED, ITS FOUR ROWS OVERLAP, AND A REAL CELL SHAPE WOULD HAVE FOOLED IT**
+# ADDENDUM 2 — **§L7's GATE IS ENCODED, ITS FOUR ROWS OVERLAP, AND A REAL CELL SHAPE WOULD HAVE FOOLED IT**
 ## bench (lead), 2026-09-13 22:4xZ. ⛔ **WRITTEN WHILE `b4lzs01` IS STILL RUNNING** — measured at the object
 ## at 22:41:19Z, `ctl/agy-turnloop-1.json` ABSENT. **This registration precedes the tripwire's outcome, and
 ## the history of `l7_tripwire_gate.py` is the proof it cannot have been tuned to it.**
@@ -503,7 +503,7 @@ that gets done from memory, under time pressure, by whoever is awake — so the 
 from the frozen text, in `harness/systems-v3/l7_tripwire_gate.py` (`--selftest`, **19 of 19**, RED arms and
 a positive control). Encoding them surfaced two things the prose could not show.
 
-## §AD1.1 ⛔ THE FOUR ROWS ARE **NOT MUTUALLY EXCLUSIVE**, AND §L7 DOES NOT SAY WHICH WINS
+## §AD2.1 ⛔ THE FOUR ROWS ARE **NOT MUTUALLY EXCLUSIVE**, AND §L7 DOES NOT SAY WHICH WINS
 ```
   · CAP-TOKENS implies T at the 250M cap, hence T >= 50M.  THOSE TWO ROWS ALWAYS CO-OCCUR.
   · TURN-TIMEOUT can co-occur with T >= 50M -- and the rows then give OPPOSITE orders:
@@ -518,7 +518,7 @@ finding. ⇒ **A cell that is BOTH holds on the token reading AND reports the ti
 COMPOSE, they do not conflict.** `report_timeout` is therefore an **independent flag, never a branch**, and
 it is raised whenever `done_reason` is `TURN-TIMEOUT` no matter which verdict won.
 
-## §AD1.2 ⛔⛔ THE DEGENERATE CELL — **8 OF 97 REAL TERMINAL CELLS HAVE THIS SHAPE**
+## §AD2.2 ⛔⛔ THE DEGENERATE CELL — **8 OF 97 REAL TERMINAL CELLS HAVE THIS SHAPE**
 Driving the gate against **real** cells rather than its own fixtures found this immediately:
 ```
   a real terminal cell on the box:  T=0 · commands_run=0 · wall_seconds=0.2 · done_reason=TURN-TIMEOUT
@@ -534,14 +534,14 @@ population, not a list anyone chose:
   97 terminal cells    82 FIRE-UNCHANGED · 6 FIRE-AND-REPORT · 8 DEGENERATE-REFUSE · 1 NOT-TERMINAL-REFUSE
 ```
 
-## §AD1.3 ⚠️ AND THE LANDING SIGNAL CAN ARRIVE **BEFORE** THE METRIC — 1 OF 97
+## §AD2.3 ⚠️ AND THE LANDING SIGNAL CAN ARRIVE **BEFORE** THE METRIC — 1 OF 97
 One cell carries `ctl/agy-turnloop-1.json` **with no `ctl/agy-meter-1.json` beside it.** The two are not
 guaranteed to appear together. ⇒ **A watch keyed on the turnloop file can fire while `T` is still
 unreadable.** The gate refuses that cell rather than half-reading it (`T` absent is never read as a passing
 value), so the cost is one re-read — **but a hand that took the turnloop file as "the numbers are ready"
 would have read `T` as absent and moved on.**
 
-## §AD1.4 ✅ THE EMPIRICAL HEADROOM, AND IT IS A **THIRD INDEPENDENT REPRODUCTION**
+## §AD2.4 ✅ THE EMPIRICAL HEADROOM, AND IT IS A **THIRD INDEPENDENT REPRODUCTION**
 Over **100 metered agy cells**, the file list as the population:
 ```
   max T 25,100,454   ·   median T 1,333,005   ·   T >= 50M tripwire: 0   ·   T >= 250M cap: 0
@@ -551,7 +551,7 @@ Over **100 metered agy cells**, the file list as the population:
 freeze's *"the token cap binds nobody"* on a **third** population (greenfield-45 · the 97-cell done_reason
 census · these 100 metered cells). **The caps do not move.**
 
-## §AD1.5 ⚠️ A CAUTION ON §L7's "IT WAS ALREADY 19%", **SCOPED, AND NOT A CORRECTION**
+## §AD2.5 ⚠️ A CAUTION ON §L7's "IT WAS ALREADY 19%", **SCOPED, AND NOT A CORRECTION**
 In the **agy terminal population**, `TURN-TIMEOUT` is **not one shape**: of **14**, **8 are degenerate**
 (T=0, 0 commands, ~0.2 s) and **6 are real timeouts**. **A cell that died in 0.2 s and a cell that ran out
 of wall clock are the same token in a table and opposite events in the field.**
