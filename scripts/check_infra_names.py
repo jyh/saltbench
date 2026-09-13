@@ -57,6 +57,7 @@ FORBIDDEN = [
     "ja" + "son" + "h",         # an account
     "jy" + "aletheia",          # an account
     "claude-account-" + "ja" + "son",   # see the note below: the bare stem is NOT gateable
+    "salt" + "forge",           # an account, added 2026-09-12 on the Captain's order at council
 ]
 
 # ⛔ THE ONE THAT CANNOT BE A BARE SUBSTRING, AND THE REASON IS NOT A TECHNICALITY.
@@ -82,17 +83,18 @@ FORBIDDEN = [
 #   The count is printed on every run so a reader can compare it against the fleet map rather than
 #   trusting a date. Reconciled against the fleet roster on the date below -- its box column and its
 #   account column. Adding a box or an account means editing BOTH lines, deliberately.
-DECLARED_NAMES = 7
-DECLARED_RECONCILED = "2026-09-10"
+DECLARED_NAMES = 8
+DECLARED_RECONCILED = "2026-09-12"
 
 # THE RECONCILIATION ITSELF, WRITTEN OUT, so a reader can check COMPLETENESS without re-deriving it.
-# The roster carries 5 ACCOUNTS and 4 BOXES -- 9 entities, covered by the 7 stems above because two
+# The roster carries 6 ACCOUNTS and 4 BOXES -- 10 entities, covered by the 8 stems above because two
 # stems each cover a box and an account that share a word. Entity -> the stem that catches it:
 #
 #     account  jy-aletheia      -> its own stem
 #     account  ja-son           -> the CONFIG-DIR shape only (see the note above: it is also a byline)
 #     account  jy-<the box word>-> the box stem, as a substring
 #     account  ja-son-h         -> its own stem
+#     account  salt-forge       -> its own stem       (added 2026-09-12)
 #     account  <box4>-local     -> the box-4 stem, as a substring
 #     box      yu-kon           -> its own stem       box  ke-nai   -> its own stem
 #     box      <the box word>   -> its own stem       box  jao-quin -> its own stem
