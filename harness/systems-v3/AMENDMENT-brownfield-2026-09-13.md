@@ -343,3 +343,24 @@ every other row evidence, and would need S2 driven from scratch.
 📌 **My recommendation is (a): run it and report the ceiling.** A task that cannot discriminate is itself a
 finding about the substrate, it costs one cell per arm, and (b) silently changes the registered population
 while (c) trades the one property that makes this selection method trustworthy.
+
+## ⛔ THE STRIP IS A JUDGEMENT; THE AUDIT IS MECHANICAL. DO NOT CONFUSE THEM (method note, 2026-09-13)
+Every mutant announces itself, in a leading header and often at the mutation site. Both must go.
+**The rule I used for LZW — "drop everything before `===== INTERFACE REGION BEGIN =====`" — IS WRONG IN
+GENERAL AND WORKED BY LUCK.** Verified after the fact: LZW's mutant header happens to run right up to
+that marker, so the cut removed 7 lines all of which were tells and no legitimate content. ⛔ **`FreeList`
+breaks it**: its 3-line `// MUTANT: align_ignored …` header is followed by the FILE'S OWN descriptive
+header (*"a first-fit allocator over a word-addressed arena… every block carries a two-word in-band
+header"*) and only then the marker. Cutting at the marker would **delete real documentation the given
+should carry**, changing the artefact's character and making the brownfield rung quietly terser than the
+code a caller would actually inherit.
+```
+  STRIP   drop the leading contiguous comment block ONLY while every line in it is a tell or an empty
+          comment; STOP at the first comment line that is legitimate content. This is per-file and it is
+          a JUDGEMENT — inspect the head of each mutant before cutting.
+  AUDIT   then grep the ARTEFACT for  WRONG|MUTANT|<mutant-name>|reference implementation|reference verbatim
+          and require ZERO. Mechanical, and it is what catches a bad strip.
+```
+⇒ 🔑 ***A MECHANICAL AUDIT OVER A JUDGEMENT-MADE CUT IS SOUND; A MECHANICAL CUT WITH NO AUDIT IS NOT —
+AND THE TWO ARE EASY TO CONFUSE BECAUSE BOTH END IN A GREEN.*** LZW passed its audit and would have
+passed it just as happily had the cut eaten four lines of real documentation.
