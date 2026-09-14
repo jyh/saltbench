@@ -380,3 +380,50 @@ at the launcher.
 MUST BE TRUE AND NOT WHAT MUST BE PAID.*** ADDENDUM 3 fixed this condition's SHAPE — event to state —
 and the state is now true. What it never carried was a PRICE, and the price here is a model call for a
 fact twelve credential files decline to state.
+
+---
+
+# ADDENDUM 5 — ⛔⛔ **ERRATUM TO ADDENDUM 4, SAME SHIFT: THE IDENTITY *IS* LOCALLY READABLE AND THE PREFLIGHT IS *NOT* PRICED IN MODEL QUOTA**
+## bench, 2026-09-14, ~40 minutes after ADDENDUM 4 merged. **I checked one file and claimed an absence.**
+
+ADDENDUM 4 states that *"the credential file carries the plan and not the identity, so the config dir's
+name is the only local signal of which account it is"*, and concludes that the drive's preflight **costs a
+call**. ⛔ **BOTH HALVES ARE WRONG, AND THE SECOND ONE IS WRONG IN THE EXPENSIVE DIRECTION** — it prices a
+free step and would defer the drive for a reason that does not exist.
+
+## WHAT I MEASURED, AND THE FILE I DID NOT OPEN
+I read `.credentials.json` in twelve config dirs, found `subscriptionType` and no email, and wrote the
+absence. **The email lives in a DIFFERENT FILE in the same directory**, which this fleet's own
+`quota-triples.sh` has been reading all along:
+```
+  .credentials.json  ->  claudeAiOauth.subscriptionType        the PLAN.  No email.  (what I read)
+  .claude.json       ->  oauthAccount.emailAddress             the ACCOUNT.           (what I did not)
+```
+✅ **Driven on the run box: five config dirs, five emails, no failures.** The identity is available
+locally, for free, with no launch and no call.
+⛔ **AND THE SERVER READ IS NOT A MODEL CALL EITHER.** `quota-triples.sh` carries a `server_identity()`
+whose own comment prices it: ***"Costs one profile GET per account per reading."*** A profile GET burns no
+model quota. The same tool's header says the whole instrument **"costs no model tokens."**
+⇒ **ADDENDUM 4's registered item 2 — "THE PREFLIGHT COSTS A CALL. One server identity read, booked" — is
+WITHDRAWN. Nothing about this drive's preflight needs booking against the quota triple.**
+
+## ✅ WHAT SURVIVES, AND IT IS NOW BETTER EVIDENCED THAN WHEN I OVERSTATED IT
+***A CONFIG DIR'S NAME IS NOT ITS ACCOUNT.*** Measured the same minute, at the object:
+```
+  a dir whose suffix names THIS SEAT          authenticates as a DIFFERENT account entirely
+  a dir whose suffix is a bare system index   authenticates as a THIRD account
+```
+(The dirs and addresses are in the private run record; naming them here would trip this repo's own
+account-name gate.) **Two of five sampled dirs disagree with their own names.** So the preflight's
+identity step is still REQUIRED and still load-bearing — it is simply **free**, which makes refusing to
+do it indefensible rather than merely expensive.
+
+## ⇒ 🔑 THE ONE TO CARRY, AND IT IS AGAINST MY OWN STANDING CARD
+***BEFORE WRITING "X DOES NOT EXIST", NAME THE PLACES X COULD LIVE AND SAY WHICH ONES YOU LOOKED IN.***
+That sentence is already in this desk's bank, written after it stopped three false claims in a single
+boot. I wrote an absence from a sample of **one file out of two**, in a directory whose other file the
+fleet's own instrument reads for exactly this purpose — **and the instrument was four lines away in a
+tool I opened in the same hour, to answer the same question.**
+⇒ 📌 **AN ABSENCE CLAIM NEEDS ITS POPULATION STATED, AND "twelve directories" NAMED A BIG POPULATION OF
+THE WRONG OBJECT.** Twelve is a reassuring number. It was twelve samples of one file, and the answer was
+in the other one. **A large n over the wrong object reads exactly like diligence.**
