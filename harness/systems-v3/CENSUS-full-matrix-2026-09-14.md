@@ -1,0 +1,122 @@
+# MATRIX CENSUS — THE CAPTAIN'S FULL-MATRIX REQUEST, DESK ROW `MP`
+## bench (SaltBench lead), 2026-09-14. **Part 1 of the row's act (1). No arXiv draft begins until this reads full.**
+## His words, verbatim: *"once we get the full matrix for the saltbench pilot (4 models, 5 problems,
+## greenfield + brownfield, {plain,salt-diet}*{,statement,spec-change}) I would like to update the arXiv paper"*.
+## ⇒ **4 × 5 × 2 × 2 × 3 = 240 conditions, before replication n.**
+## ⛔ **DONE means A RESULT OF RECORD WITH A PR SHA. It does NOT mean cells exist on the run box** — see §C2.
+
+---
+
+## §C1 · THE MODELS — THE ROW'S FIRST UNMEASURED ITEM, ANSWERED AT THE OBJECT
+Every distinct model string in every cell record on the run box (`built-from.tsv` `model_served` /
+`model_requested`, and `--model` in `launch.log`; **both lanes; 307 `ctl/arm` files swept**):
+```
+  gemini-3.1-pro-high      260 occurrences     levels 1 and 4
+  claude-opus-5            162                 the Opus lane
+  gemini-3.8-flash-high      2                 level 5 — HALTED at one cell, 0 scored
+  ───────────────────────────────────────────────────────────────────────────────────
+  THREE subject models have ever been served. THERE IS NO FOURTH IN THE RECORD.
+```
+⛔⛔ **AND THE TRAP, WHICH IS WHY NO FOURTH IS NAMED HERE.** `_bin/models.tsv` lists `claude-sonnet-5`
+and `claude-fable-5-1` beside `claude-opus-5` and looks exactly like the answer. **Its first column is
+`role`**: `head · worker-opus · worker-sonnet · reviewer · designer`. ⇒ ***THOSE ARE ROLES INSIDE A
+CELL, NOT SUBJECT MODELS OF THE MATRIX.*** A subordinate worker model inside an Opus cell is not a row
+of this grid. **The fourth model is the Captain's to name; it is not inferable from a role map.**
+⇒ **60 of the 240 conditions belong to a model that does not yet exist in this campaign.**
+
+## §C2 · ⛔ WHY THIS CENSUS IS BUILT FROM RESULTS OF RECORD AND NOT FROM A CELL SWEEP
+I swept 307 `ctl/arm` files intending to classify every cell by its five axes. **It cannot be done:**
+```
+  agy lane (b4/s3)   ctl/arm = plain|salt-diet   ctl/field = brownfield|<empty>   ctl/card_extras = none|statement
+  claude lane        ctl/arm = a 24-hex NONCE    ctl/task  = "1"                  the axes are NOT in these files
+```
+⇒ **The same filenames hold different things in the two lanes**, and 121 Claude-lane cells would have
+been binned under hexadecimal "arms". ⇒ 🔑 ***A CELL THAT NEVER BECAME A RESULT OF RECORD IS RESIDUE,
+NOT EVIDENCE*** — which is what the row asks for anyway, and is the sounder basis.
+
+## §C3 · ⛔⛔ TWO CLASSES THE HARNESS CANNOT EXPRESS — STATED, NOT SILENTLY DROPPED (the row requires this)
+```
+  (a) <any model> × Paxos × statement                          INEXPRESSIBLE — RULED, with a reason
+      RESULT-statement-arm-2026-09-09.md: "an arm-neutral formal statement CANNOT EXIST for a
+      proof-obligation task … a plain+statement Paxos cell would be a control told to write proofs."
+      ⇒ 4 models × 1 problem × 2 fields × 2 arms = 16 of the 240.
+  (b) <any model> × brownfield × spec-change                   INEXPRESSIBLE AS BUILT — needs a ruling
+      cell_build.py REFUSES `--field brownfield --phase 2` outright, and spec-change IS the phase-2
+      shape (level-4 freeze §L8, row 8 discharge).
+      ⇒ 4 models × 5 problems × 2 arms = 40 of the 240.
+      ⚠️ MEASURED AS A BUILDER REFUSAL, NOT YET CONFIRMED AS A DESIGN DECISION. If it is a design
+        decision the 40 leave the denominator; if it is a limitation they are OWED. NOT MY CALL.
+```
+⇒ **Between them, up to 56 of 240 may not be expressible conditions at all.** ⚠️ (a) and (b) overlap on
+Paxos × brownfield × spec-change (4 cells), so the union is **52**, not 56. **Stated because a reader
+adding the two numbers gets the wrong denominator.**
+
+## §C4 · THE GRID, PER MODEL (each model is 5 × 2 × 2 × 3 = 60 conditions)
+
+### `claude-opus-5` — the most complete row
+```
+  greenfield × {plain,salt-diet} × none        × 5 problems   DONE   RESULT-matrix-opus-1 9ffa1a8   10
+  greenfield × {plain,salt-diet} × statement   × 4 problems   DONE   RESULT-statement-arm 173ee84    8
+       (Crc32·LRU·FreeList = 18 of 24 cells; LZW via matrix-1's GOLD PAIR)   Paxos: INEXPRESSIBLE (2)
+  greenfield × {plain,salt-diet} × spec-change × 5 problems   DONE   RESULT-p1-specchange 20836ad   10
+       (19 cells; RESULT-specchange-1 a9ed1f3 is the LZW four-cell pilot; some cells CAP-COST CENSORED)
+  brownfield × everything                      × 5 problems   BLOCKED  §B7 row 3 — the helm's hold on
+       CLAUDE-CLIENT brownfield cells (the undriven OS-sandbox layer). Lifts on the probe's receipt.  30
+  ─────────────────────────────────────────────────────────────────────────────────────────────────
+  DONE 28 · INEXPRESSIBLE 2 · BLOCKED 30  (of which 10 are also class (b))
+```
+
+### `gemini-3.1-pro-high`
+```
+  greenfield × {plain,salt-diet} × none        × 4 problems   DONE   RESULT-p1-greenfield 6f627f5    8
+       (LRU·Paxos·FreeList·Crc32. LZW EXCLUDED from the bare pair — desk HC already held it at n=1)  LZW OWED 2
+  greenfield × {plain,salt-diet} × statement   × 3 problems   DONE   RESULT-p1-greenfield 6f627f5    6
+       (Crc32·FreeList·LRU)                    LZW OWED 2 · Paxos INEXPRESSIBLE 2
+  greenfield × {plain,salt-diet} × spec-change × 5 problems   OWED                                  10
+  brownfield × {plain,salt-diet} × none        × 4 problems   DONE   RESULT-level4 0e66928           8
+       (FreeList·LRU·LZW·Paxos. Crc32 EXCLUDED as a declared NEGATIVE CONTROL, freeze §G4)  Crc32 OWED 2
+  brownfield × {plain,salt-diet} × statement   × 5 problems   OWED (Paxos 2 INEXPRESSIBLE)           10
+  brownfield × {plain,salt-diet} × spec-change × 5 problems   class (b)                              10
+  ─────────────────────────────────────────────────────────────────────────────────────────────────
+  DONE 22 · OWED 28 · INEXPRESSIBLE 4 (+10 class (b))
+```
+
+### `gemini-3.8-flash-high`
+```
+  ALL 60   BLOCKED — not owed. Level 5 HALTED at ONE cell; 0 scored.
+  AMENDMENT-gemini-flash-level5 ADDENDUM 1, merged 6d8dd527: the model runs an episode as ONE TURN and
+  meets a per-turn deadline calibrated on Pro's granularity. ⛔ n = 1 on the Flash side.
+  ⇒ RELEASE: a design decision about per-turn capping for a model that does not segment. NOT a re-fire.
+```
+
+### the FOURTH MODEL — UNNAMED
+```
+  ALL 60   BLOCKED ON THE CAPTAIN — the model is not named and cannot be inferred (§C1).
+```
+
+## §C5 · THE TOTAL, AND IT IS THE HEADLINE
+```
+  DONE (result of record, sha-pinned) ..............  50 of 240   ~21 %
+  OWED (expressible, unrun) .........................  28
+  BLOCKED (hold / halt / unnamed model) ............. 110   (opus brownfield 30 · flash 60 · model-4 60,
+                                                             less overlaps counted once)
+  INEXPRESSIBLE or pending a ruling ................. up to  52
+```
+⛔⛔ **THE MATRIX DOES NOT READ FULL, AND THE GAP IS NOT MOSTLY WORK — IT IS THREE DECISIONS.**
+```
+  1  WHICH FOURTH MODEL?                  the Captain's        60 conditions
+  2  DOES §B7 row 3's HOLD LIFT?          the helm's           30 conditions (Opus brownfield)
+  3  IS brownfield × spec-change A DESIGN DECISION OR A LIMITATION?   the council's   40 conditions
+```
+⇒ 🔑 ***130 OF THE 240 TURN ON THREE RULINGS AND NOT ON A SINGLE CELL BEING FIRED.*** **Firing everything
+currently expressible and unblocked closes 28 conditions and still leaves the matrix 60 % short.**
+⇒ **The arXiv update is not gated on run time. It is gated on three words that are not mine to say.**
+
+## §C6 · WHAT THIS CENSUS DOES NOT DO
+1. **It does not read every cell of the 17 results of record.** Coverage is taken from each result's own
+   population statement, which is the claim each file makes about itself. **A per-cell reconciliation of
+   all 17 is not done** and would be the next refinement if any count here is disputed.
+2. **It marks no cell DONE that I have not seen a sha for.**
+3. **It names no fourth model**, and it does not treat `models.tsv` as one.
+4. **It makes no claim about RESULTS** — only about which conditions have a result of record. **Whether
+   the numbers in them support any paper sentence is a separate question and is the paper seat's.**
