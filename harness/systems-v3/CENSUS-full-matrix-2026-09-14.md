@@ -134,6 +134,7 @@ currently expressible and unblocked closes 28 conditions and still leaves the ma
   DONE            50   25.0 %        OWED            98   49.0 %
   BLOCKED         36   18.0 %        INEXPRESSIBLE   16    8.0 %        TOTAL 200
   ⛔ CORRECTED BY ADDENDUM 2: Flash's 46 were BLOCKED on a "turn stall" that was a 503. They are OWED.
+  ⛔ CORRECTED AGAIN BY ADDENDUM 3: §B7 row 3 LIFTED ⇒ BLOCKED 36 → 0, OWED 98 → 134. NO BLOCKS REMAIN.
 
   claude-opus-5          DONE 28 · OWED  0 · BLOCKED 18 · INEXPR 4
   claude-sonnet-5        DONE  0 · OWED 28 · BLOCKED 18 · INEXPR 4    <- never run as a SUBJECT: 0 of 307 cells
@@ -218,3 +219,50 @@ the 307 cells on the box has ever been served by a Sonnet.**
 controls, which may recur.** Flash's 46 are **OWED-WITH-A-NAMED-RISK**, not owed-and-easy.
 📌 **§D4's "one ruling, one design call, actual work" now reads: ONE RULING (row 3, 36) and 98 of work.
 The design call is withdrawn — there was never a design question, only a capacity error.**
+
+
+---
+
+# ✅✅ ADDENDUM 3 — **§B7 ROW 3 IS LIFTED. BLOCKED GOES 36 → 0. THE MATRIX HAS NO BLOCKS LEFT.**
+## bench, same shift, ~4 minutes after ADDENDUM 2. **The helm lifted the hold on the sandbox probe's
+## receipt** (`systems`' desk MQ: `7c5295e`, merged by me to `backup/master`, selftest driven 23/23).
+## **Claude-client brownfield — Opus 18 + Sonnet 18 — is now bench's to pull.**
+
+```
+  DONE            50   25.0 %        OWED           134   67.0 %
+  BLOCKED          0    0.0 %        INEXPRESSIBLE   16    8.0 %        TOTAL 200
+```
+
+## §F1 · THE TRAJECTORY OF ONE AFTERNOON, BECAUSE THE SHAPE IS THE LESSON
+```
+  11:3x   DONE 50 · OWED  28 · BLOCKED 110 · INEXPR 52     denominator 240, before the Captain
+  11:4x   DONE 50 · OWED  52 · BLOCKED  82 · INEXPR 16     his two words: skip bf×spec-change, Sonnet
+  12:0x   DONE 50 · OWED  98 · BLOCKED  36 · INEXPR 16     the 503 correction — Flash was never blocked
+  12:1x   DONE 50 · OWED 134 · BLOCKED   0 · INEXPR 16     §B7 row 3 LIFTED on the probe's receipt
+```
+⇒ 🔑 ***I REPORTED AT 11:3x THAT "130 OF THE 240 TURN ON THREE RULINGS AND NOT ON A SINGLE CELL BEING
+FIRED", AND THAT THE arXiv UPDATE WAS "GATED ON THREE WORDS THAT ARE NOT MINE TO SAY". ALL THREE WERE
+SAID WITHIN FORTY MINUTES.*** **The census's value was not its 50 — it was naming the three decisions
+precisely enough that they could be taken.** ⇒ **A census that ends in a number is a status report; one
+that ends in named owners is a decision queue.**
+⚠️ **AND THE HONEST HALF: one of the three "rulings" was not a decision at all — it was MY OWN
+MISREADING of a 503 as a model behaviour.** It did not need a word from anyone; it needed someone to
+open the `result` object. **Two were genuinely the Captain's and the helm's. I had scored my own error
+as a governance gate.**
+
+## §F2 · WHAT IS NOW TRUE OF THE MATRIX
+- **NO CONDITION IS BLOCKED.** Every one of the 184 non-DONE cells is either **WORK (134)** or
+  **INEXPRESSIBLE (16)**.
+- **The 16 are `<any model> × Paxos × statement`**, ruled inexpressible with a reason: *an arm-neutral
+  formal statement cannot exist for a proof-obligation task.* ⛔ **They are not owed and should leave any
+  "percent complete" denominator that is quoted as progress.** Against the EXPRESSIBLE 184, DONE is
+  **27.2 %**, not 25.0 %.
+- ⚠️ **"Unblocked" is not "cheap".** 134 conditions at n=3 is ~402 cells. **Flash's 46 carry a named
+  external risk (503 capacity). Sonnet's 46 are a NEW POPULATION — zero Sonnet cells exist.**
+- 📌 **36 of the 134 are newly bench's** by the helm's words, and they are the first Claude-client
+  brownfield cells this campaign would ever run.
+
+## §F3 · WHAT THIS DOES NOT AUTHORISE
+⛔ **No wave is authorised by this addendum.** The matrix being unblocked makes every remaining cell a
+**SPEND** question rather than a governance one, and **spend is the Captain's**. ⇒ **Act (2) — the arXiv
+draft — still does not begin: the census does not read full, and 134 owed conditions is not full.**
