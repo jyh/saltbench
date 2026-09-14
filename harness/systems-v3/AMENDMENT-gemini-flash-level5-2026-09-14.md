@@ -309,3 +309,61 @@ OWN FINDING.*** The instrument had already answered: the error string was in the
 in a field nobody read, on the very cell both seats were reasoning about.
 📌 **AND THE SHAPE THAT MADE IT SURVIVE A CHECK: the check and the claim shared an axis.** An
 event-type census and a position census both measure the ENVELOPE. **A 503 lives in the PAYLOAD.**
+
+---
+
+# ✅ ADDENDUM 3 — **THE RETRY LANDED. THE TURN-STRUCTURE CLAIM IS NOW *POSITIVELY* REFUTED, AND THE TURN-LOOP QUESTION IS CLOSED.**
+## bench (lead), 2026-09-14. **The Captain authorised one retry, up to 3 attempts, on the capacity error.
+## Attempt 1 succeeded.** Reading frame registered by the lead BEFORE it ran, so nothing here is fitted.
+
+## §G1 · THE RESULT OBJECTS — ALL THREE, PAYLOAD FIRST
+```
+  line 210 of 347   status=SUCCESS  duration_seconds=527.934851  num_turns=1  error=-
+  line 305 of 347   status=SUCCESS  duration_seconds=696.151821  num_turns=2  error=-
+  line 347 of 347   status=SUCCESS  duration_seconds=758.690128  num_turns=3  error=-
+  ctl/end-1   2026-09-14T19:50:35Z LANDED   ·   model_requested == model_served == gemini-3.8-flash-high
+  attempt 1 of up to 3 · reader VERIFIED against the known 503 cell BEFORE any spend
+```
+⇒ **Flash emits ONE `result` PER TURN, SPREAD THROUGH THE STREAM — 210 · 305 · 347 — exactly as Pro
+does.** ⇒ **`duration_seconds` is CUMULATIVE (527.9 → 696.2 → 758.7), not per-turn.**
+
+## §G2 · ⇒ 🔑 THE CLEAN STATEMENT OF ADDENDUM 1's ERROR
+ADDENDUM 2 said the empirical half of §A4 had *"no evidence remaining"*. **It now has evidence, and it
+points the other way.** The 09-14 cell's single `result` sat at **line 102 of 102**, and ADDENDUM 1 read
+*"terminal position"* as *"one long turn"*.
+```
+  a result at the LAST line is what ONE LONG TURN would look like
+  a result at the LAST line is ALSO what an ERROR ON TURN 1 looks like
+  ⇒ THE POSITION CANNOT TELL THEM APART.  `status` CAN, and it was one field away.
+```
+⇒ ***CAUSE AND EFFECT WERE REVERSED: THE END OF THE STREAM WAS TREATED AS EVIDENCE ABOUT TURN STRUCTURE
+WHEN IT WAS EVIDENCE THAT THE RUN HAD ENDED.*** ⛔ **And the Pro "control" could not have caught it: a Pro
+cell that SUCCEEDS also has its last `result` on its last line — 103 of 103. Both models put a result at
+the end. The difference was never positional.**
+
+## §G3 · THE TURN-LOOP QUESTION IS CLOSED FOR BOTH MEASURED MODELS
+*Is "one `result` per turn" a PRO-SPECIFIC assumption in the v3 turn loop?* — **NO.**
+**Flash 3 turns / 3 results · Pro 5 turns / 5 results.** ⇒ **The loop's assumption holds for both.**
+⚠️ **Untested for any other client or vendor**, so the probe stays registered OPEN for a genuinely new
+lane. ⛔ **§A4's DESIGN half still has NO KNOWN INSTANCE**, and is now less likely to acquire one.
+
+## §G4 · ⛔⛔ CAPACITY: WHAT IS KNOWN, AND IT IS WEAKER THAN TWO EARLIER STATEMENTS OF MINE
+```
+  UNAVAILABLE at   2026-09-14T16:57:07Z   (503, last stream byte of the failed cell)
+  AVAILABLE by     2026-09-14T19:37:23Z   (the retry's LAUNCH; it then ran clean)
+  RECOVERY TIME    UNMEASURED. Upper bound 2 h 40 m 16 s. n = 1 outage. INTERIOR UNPROBED.
+```
+⛔ **I twice called this "~3 h recovery". BOTH STATEMENTS WERE WRONG, IN TWO DIFFERENT WAYS:**
+1. **My anchor was the retry's LANDING, not its LAUNCH** — charging the outage for 13 minutes 12 seconds
+   during which the model was demonstrably WORKING. ⇒ *I measured "time until the retry finished" and
+   called it "time until capacity returned".*
+2. ⭐ **And even the corrected 2:40:16 is NOT a recovery time — NOBODY PROBED THE INTERIOR.** Capacity may
+   have returned at 16:58. **The interval holds two observations, one failure and one success, and no
+   information about what lies between them.** ⇒ **A RIGHT-CENSORED UPPER BOUND.**
+⇒ **A wave scheduled on "~3 h recovery" would be scheduled on a bound the data cannot distinguish from
+one minute.** ✅ **A recovery estimate costs a cheap poll during an outage, never a wave. Not proposed.**
+
+## §G5 · STANDING
+**Flash's 46 census conditions: OWED, with an INTERMITTENT capacity risk of UNKNOWN duration.** ⛔ **The
+42-cell wave remains UNAUTHORISED — it was always a SPEND question and the Captain's.** ✅ **Attempts 2
+and 3 are unnecessary: they were authorised against a capacity error, and attempt 1 landed clean.**
