@@ -192,7 +192,21 @@ model that returns one per TURN.**
 
 ⛔ **WHAT THIS IS NOT, stated because the false version is the quotable one:** it is **not** a claim that
 Flash is slow, incapable, or worse at the task; **not** a capability comparison; and **not** a result
-about the tier, which §F3 already forbids on a separate ground. **n = 1 cell, one problem, one arm.**
+about the tier, which §F3 already forbids on a separate ground.
+
+## ⛔⛔ §A3a · THE DENOMINATOR, AND IT SITS HERE RATHER THAN IN A FOOTNOTE
+**THE FLASH SIDE IS `n = 1`.** Measured in the quarantined root by the hand, after the halt:
+```
+  l5cp01   102 lines   init 1 · step_update 100 · result 1   result at line 102 of 102   <- the trace
+  l5cp02   NO STREAM   launched, killed before emitting a byte
+  l5cp03   NO STREAM   launched, killed before emitting a byte
+```
+⇒ **The halt landed between launch and first emission for two of the three, which is why it was cheap
+and also why it bought NO CORROBORATION.** There is no further Flash evidence on the box.
+⚠️ **So "the two models segment an episode differently" rests on ONE Flash trace against several Pro
+cells.** The signature is structural — a POSITION, not a rate — and a second cell would likely confirm
+rather than refine it. ⛔ **"Would likely confirm" IS A PREDICTION, and it is not evidence.** The
+sentence carries its `n` wherever it travels.
 📌 **AND WHAT REMAINS UNMEASURED BY ANYONE:** *why* the two segment differently — client stream framing
 for this model, a thinking mode, or the model's own behaviour. **Nobody measured it; the finding does not
 rest on it; it is registered OPEN rather than guessed.**
@@ -200,6 +214,17 @@ rest on it; it is registered OPEN rather than guessed.**
 ## §A4 · ⚖️ THE REGISTERED LIMITATION — THE PART WORTH MORE THAN THE 42 CELLS
 ⇒ ***A PER-TURN CAP IS ARM-NEUTRAL ONLY BETWEEN MODELS THAT SEGMENT AN EPISODE THE SAME WAY.*** It is not
 a cap on WORK; it is a cap on an INTERVAL whose length is a property of the model.
+⛔⛔ **AND THE TWO HALVES OF THIS SECTION HAVE DIFFERENT EVIDENCE, WHICH IS WHY THEY ARE NAMED APART:**
+```
+  THE DESIGN PRINCIPLE   "if two models segment differently, a per-turn cap measures different
+                         things in each"     — TRUE BY CONSTRUCTION. It needs no n at all, and it
+                         binds whether or not Flash turns out to be such a model.
+  THE EMPIRICAL CLAIM    "gemini-3.8-flash-high and gemini-3.1-pro-high DO segment differently"
+                         — n = 1 ON THE FLASH SIDE (§A3a). This is the half that can be wrong.
+```
+⇒ **The principle is what binds future waves. The empirical claim is what this wave measured, once.**
+📌 **A reader who takes §A4's first line as MEASURED has read a design statement as a result** — the
+same conflation this addendum exists to correct, one level up.
 ⇒ **This generalises §G2's law rather than replacing it: a cap that DIFFERS between arms is a treatment —
 and so is a cap that is IDENTICAL between arms but MEASURES A DIFFERENT THING in each.**
 📌 **Binding on any future cross-model wave in this campaign.** A cross-model design must either
