@@ -1,0 +1,149 @@
+# AMENDMENT — THE GEMINI **FLASH** GREENFIELD WAVE (LEVEL 5), FROZEN BEFORE ITS FIRST CALL
+## bench (SaltBench lead), 2026-09-14. Desk row **LU**. Written on the hand's ask, which named
+## **four inputs: model id · n · which problems × which arms · whether §G2's token-stop carries.**
+## A runner seat `gemini` is the HAND; **bench stays lead — design, caps, scoring rules, amendments.**
+## ⛔ **NOTHING ELSE IS OWED BEFORE THE FIRST CALL.** §F0 answers all four; the hand fires on this file.
+
+---
+
+## §F0 · ⚖️ THE FOUR INPUTS, ANSWERED IN ONE BLOCK SO THE HAND NEEDS NOTHING ELSE
+```
+  1  MODEL ID            gemini-3.8-flash-high
+                         MEASURED SERVED by the hand at `agy models`, 2026-09-13 21:2xZ.
+                         Re-assert at launch; a served-model mismatch VOIDS (§F5 row 1).
+  2  n                   3 per condition. Unchanged from level 1.
+  3  PROBLEMS × ARMS     LEVEL 1's POPULATION, MIRRORED EXACTLY — 42 cells (§F1).
+                         Nothing is added, dropped or reordered.
+  4  DOES §G2 CARRY?     ITS MECHANISM CARRIES IN FULL; ITS NUMBER IS HELD, NOT RE-DERIVED (§F2).
+```
+
+---
+
+## §F1 · THE POPULATION — 42 CELLS, MIRRORING LEVEL 1 EXACTLY
+```
+  BARE PAIR       plain-bare · salt-bare     × LRU · Paxos · FreeList · Crc32   × n3 = 24
+  STATEMENT PAIR  plain-stmt · salt-stmt     × Crc32 · FreeList · LRU           × n3 = 18
+                                                                        TOTAL = 42  ✓ reconciles
+```
+⚖️ **WHY MIRROR RATHER THAN REDESIGN, stated as a decision and not an omission.** This wave's ONLY
+purpose is to vary the model. **Every other axis held byte-constant is what makes the contrast readable
+at all** — and §F3 shows the model axis is already carrying two changes it cannot separate. **Adding a
+third would spend 42 cells on a question nobody could answer.**
+
+**ARM → FLAGS, so the hand types no interpretation:**
+```
+  plain-bare   cell_build.py --arm plain     --field greenfield              (no --statement)
+  salt-bare    cell_build.py --arm salt-diet --field greenfield              (no --statement)
+  plain-stmt   cell_build.py --arm plain     --field greenfield --statement
+  salt-stmt    cell_build.py --arm salt-diet --field greenfield --statement
+```
+⛔ **`--arm salt-diet`, NEVER `--arm salt`. They are DIFFERENT ARMS and both are buildable.** Every
+treatment cell this campaign has run is `salt-diet`. *(§G1's own table said `--arm salt`, was corrected
+in §G9 R3, and the table was LEFT WRONG — the hand had to ask twice. It is written correctly here the
+first time, because **a document that contradicts itself reads as whichever half the reader reaches
+first**, and the reader reaches the table.)*
+⛔ **`--hint` IS NOT USED IN THIS WAVE**, for the same reason level 1 excluded it: it is the pricing
+branch's, it is problem-specific, and desk HC dropped the hint arms as a confound in the arm being
+generalised.
+
+---
+
+## §F2 · THE CAP — §G2's MECHANISM CARRIES UNCHANGED; ITS NUMBER IS HELD AND ITS INCIDENCE REPORTED
+
+✅ **THE MECHANISM CARRIES, AND IT IS A PROPERTY OF THE LANE AND NOT OF THE MODEL.** §G2 established
+that a **USD cap voids every cell on this lane**: `rates.tsv` carries zero gemini rows, `cell_meter.py`
+zero gemini mentions, and a served model with no rates row prices `VOID(UNPRICED)`. **A model swap
+inside the same lane changes none of that.** ⇒ **The cap is denominated in `T` (tokens), never USD.**
+⛔ **AND `NO USD ANYWHERE` IS A REPORTING RULE HERE TOO** (§L5 rule 7): this is a subscription lane, a
+dollar figure would be an invention, and the inert per-cell USD field enters no table.
+
+⚠️ **THE NUMBER IS A DIFFERENT QUESTION FROM THE MECHANISM, AND I AM NOT RE-DERIVING IT.** `T1_TOK =
+250,000,000` was calibrated on **Pro** traffic. **No Flash token distribution exists in this campaign**,
+so any Flash-specific number I wrote today would be fitted to nothing.
+⇒ ✅ **REGISTERED: THE CAP DOES NOT MOVE, AND ITS INCIDENCE BECOMES A REPORTED QUANTITY** — the same
+form §L4 used for the wall clock, for the same reason. **A cap held constant across the model swap is
+the only way its incidence is readable as a fact about the model.**
+📌 **The prior, so the reading is not invented afterwards:** on Pro the token cap **bound nobody** —
+level 4 measured **9.96× headroom above the largest cell**. ⛔ **That is a PRIOR, NOT A PREDICTION**, and
+§L9 item 5's rule governs it: a greenfield/Pro incidence *"is not a prediction"* of another population's
+rate, **and if the Flash rate differs that is a result about the model.**
+
+---
+
+## §F3 · ⛔⛔ THE TIER + GENERATION CONFOUND — REGISTERED, AND IT IS THE HEADLINE
+
+**The hand measured it and it is unfixable by design, not by effort:**
+```
+  level 1 / level 4    gemini-3.1-pro-high        tier PRO      generation 3.1
+  level 5 (this wave)  gemini-3.8-flash-high      tier FLASH    generation 3.8
+  THERE IS NO FLASH AT GENERATION 3.1  (agy models, measured by the hand 2026-09-13 21:2xZ)
+```
+⇒ 🔑 ***ANY PRO↔FLASH DIFFERENCE THIS WAVE PRODUCES IS A TIER CHANGE **AND** A GENERATION CHANGE, AND
+THIS DESIGN CANNOT SEPARATE THEM.*** **It must NEVER be labelled a tier contrast, a "cheaper model"
+result, or a capability-vs-cost curve.** The admissible sentence names both axes every time.
+⛔ **AND THE DIRECTION IS NOT EVEN SIGNED:** a later generation may be *better* than an earlier one at
+the same tier, so the two axes can push **opposite ways** and a null result is not evidence of
+equivalence. **This is registered as a confound, not as a caveat to be recalled at write-up.**
+📌 **WHY IT IS IN THE FREEZE AND NOT A FOOTNOTE:** the confound is invisible in every artefact the wave
+produces. A per-cell table shows a model id, and **a model id looks like one variable.**
+
+---
+
+## §F4 · THE READING RULES — INHERITED, AND THE TWO THAT LEVEL 4 HAD TO LEARN
+```
+  1  SIGN ONLY on any arm contrast. No magnitude, no ratio with a confidence claim.
+  2  A TURNS-CUT CELL'S PASS IS A FLOOR, and its TOKEN, TURN and WALL figures are NOT POOLABLE
+     across arms. Reported per cell, flagged, never entering an average or a premium.
+  3  LANDING AND PASSING ARE TWO RATES AND ARE NEVER ONE NUMBER.
+  4  AN ARM-CORRELATED CUT IS DECIDED BY ITS SIGN. Every cut so far removes a TREATMENT cell;
+     dropping them would FLATTER THE CONTROL. They are reported with the arm named. None is dropped.
+  5  `bugs_introduced = 0` IS A FLOOR, NEVER A ZERO — `>= 0 (suite-limited)`, with the margin beside it.
+  6  THE EXPORT SHA IS RECORDED, and `scorer_export_sha` beside it if they differ. The RUNTIME is
+     pinned; the INSTRUMENT need not be.
+  7  NO USD ANYWHERE (§F2).
+  8  AN UNMETERED CELL IS NOT AN ABSENT ONE. It is a row with `-` meters, never a smaller denominator.
+```
+⛔⛔ **RULE 2 USES `TURNS-CUT` AND NOT `TURN-TIMEOUT`, AND THAT IS DELIBERATE.** Level 4's ADDENDUM 4
+registered two names because this campaign gave ONE name to TWO instruments and duly misquoted itself:
+```
+  CELL-KILLED   `done_reason` (ctl/agy-turnloop-1.json)  — did the CONTROLLER stop this cell?
+  TURNS-CUT     the scorer's per-turn print-deadline count — were any TURNS cut at print_timeout?
+```
+**A cell may read LANDED, never CELL-KILLED, and still be TURNS-CUT.** In level 4, five cells did.
+⚠️ **AND THE PRIOR WORTH WATCHING ON THIS WAVE, registered as a prior and not a prediction:** TURNS-CUT
+has been **all treatment, zero control, in BOTH waves measured on one instrument** — greenfield 3 of 16
+salt-diet vs 0 of 21 plain; level-4 brownfield 5 of 12 vs 0 of 12. **Flash is a faster model, so the
+per-turn deadline may bind LESS.** ⇒ **Either outcome is informative and neither is predicted here.**
+
+## §F5 · WHAT VOIDS A CELL (faults only — no prediction appears in this list)
+```
+  1  the served model differs from gemini-3.8-flash-high            VOID
+  2  the cell ends METER-BLIND / no readable T                      VOID(UNPRICED)
+  3  a cancelled-build wedge                     WALL TIME INADMISSIBLE as cost; tokens remain
+  4  the fence battery does not pass for the cell's PATH            DO NOT FIRE
+  5  ctl/field != greenfield                                        VOID
+  6  CAP-TOKENS                                   NOT void: reported as CUT, with the arm named
+  7  CELL-KILLED                                  NOT void: reported per arm, V1 read as a FLOOR
+  8  TURNS-CUT                                    NOT void: reported per arm, cost figures unpoolable
+```
+⛔ **My expectations about which arm or which model costs more are NOT in this list**, and neither is
+the §F2 prior. **A failed prediction is the experiment working, never a stop.**
+
+## §F6 · WHAT THIS WAVE CANNOT ESTABLISH, SAID BEFORE ANY DATA
+1. ⛔ **Anything about TIER alone.** §F3. The model axis carries two changes.
+2. **No magnitude.** Sign only, until a variance pilot re-derives a floor from THIS model's dispersion.
+3. **Nothing about brownfield.** This is a greenfield wave; level 4's field is a different object.
+4. **No cross-lane comparison.** The Claude lane is not comparable to this one in dollars or in tokens.
+5. **n = 3 per condition.** At this n the design resolves only a very large effect.
+6. **A cost premium and a V1 rate are TWO RESULTS** and must never be joined with "and therefore".
+
+## §F7 · WHAT THE HAND DELIVERS
+```
+  one export_sha across all 42 cells, recorded; scorer_export_sha beside it if newer
+  per-condition score receipts as FILES, never a summary typed into a post
+  the PER-CELL TABLE OF RECORD — arm · problem · T · wall · turns · commands · done_reason ·
+    end · verdict · tests · TURNS-CUT flag · source receipt      (the standing form, council ③)
+  TURNS-CUT incidence reported as a SPLIT BY ARM, never pooled
+```
+⇒ **The lead scores and writes the result of record. Any public sentence, and any claim about the
+method, is the Captain's.**
