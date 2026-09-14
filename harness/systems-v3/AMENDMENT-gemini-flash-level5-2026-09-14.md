@@ -147,3 +147,106 @@ the §F2 prior. **A failed prediction is the experiment working, never a stop.**
 ```
 ⇒ **The lead scores and writes the result of record. Any public sentence, and any claim about the
 method, is the Captain's.**
+
+---
+
+# ADDENDUM 1 — **LEVEL 5 IS HALTED AT ONE CELL. THIS ADDENDUM IS ITS RESULT OF RECORD.**
+## bench (lead), 2026-09-14, ~2 h after the freeze. **The wave produced ONE cell and NO scored data.**
+## ⛔ **It produced a finding anyway, and the finding is about THIS HARNESS AND THAT MODEL AS A PAIR —
+## never about the model's capability.** Cost: 1 cell, ~2 % of a five-hour pool.
+
+## §A1 · WHAT HAPPENED
+The hand fired condition 1 and halted after **one cell**: `gemini-3.8-flash-high` reached the **1,800 s
+per-turn print deadline on every turn**, with no turn completing. It quarantined the root by cause,
+scored nothing, and handed the fork up as a design call rather than re-capping. **That was correct**:
+⇒ 🔑 ***A CAP THAT BINDS OCCASIONALLY IS A MEASUREMENT; A CAP THAT BINDS ON EVERY TURN IS THE
+INSTRUMENT, NOT THE SUBJECT.*** §F2 registered the cap's incidence as a reported quantity — **incidence,
+not saturation.** A wave of 42 cells whose every figure is a floor would have cost the pool and said
+nothing about Flash.
+
+## §A2 · ⛔⛔ THE CHARACTERISATION WAS WRONG, AND IT IS THE HALF THAT MATTERS
+The halt came with a proposed finding: *"`gemini-3.8-flash-high` does not complete turns under this
+harness at the registered caps."* **Measured at the object, that is FALSE.** Two hypotheses died and one
+survived:
+```
+  ⛔ REFUTED   "the turn loop misses a differently-named terminal event"
+               Flash's stream:  init 1 · step_update 100 · result 1   — THREE types, no others
+               Pro's stream:    init 1 · step_update  97 · result 5   — THE SAME THREE
+               (and b4fs03, a long Pro cell: init 1 · step_update 2193 · result 9)
+               ⇒ identical event vocabulary. The loop parses everything it is sent.
+  ✅ MEASURED   WHERE the `result` events sit, which is the entire finding:
+               FLASH   init at line 1 ............... result at line 102 of 102   <- THE LAST LINE
+               PRO     results at lines 17 · 56 · 90 · 95 · 103 of 103            <- spread through
+```
+⇒ 🔑 ***FLASH DID NOT FAIL TO COMPLETE A TURN. IT RAN THE WHOLE EPISODE AS ONE TURN AND EMITTED ITS
+`result` AT THE END.*** `agy_turnloop_v3.py:115` terminates a turn on `event == "result"` and waits per
+turn against the deadline. **A model that returns one `result` per EPISODE meets a deadline built for a
+model that returns one per TURN.**
+
+## §A3 · ✅ THE FINDING, IN THE ONLY FORM THE EVIDENCE SUPPORTS
+> **Under the v3 agy turn loop — which terminates a turn on a `result` event and applies an 1,800 s
+> per-turn print deadline — `gemini-3.8-flash-high` emitted ONE `result`, at the end of the episode,
+> across 100 `step_update`s in 34 minutes, where `gemini-3.1-pro-high` emitted FIVE, spread throughout,
+> across 97 in 160 s. The two models segment an episode into turns differently, and the per-turn cap is
+> calibrated on Pro's granularity.**
+
+⛔ **WHAT THIS IS NOT, stated because the false version is the quotable one:** it is **not** a claim that
+Flash is slow, incapable, or worse at the task; **not** a capability comparison; and **not** a result
+about the tier, which §F3 already forbids on a separate ground.
+
+## ⛔⛔ §A3a · THE DENOMINATOR, AND IT SITS HERE RATHER THAN IN A FOOTNOTE
+**THE FLASH SIDE IS `n = 1`.** Measured in the quarantined root by the hand, after the halt:
+```
+  l5cp01   102 lines   init 1 · step_update 100 · result 1   result at line 102 of 102   <- the trace
+  l5cp02   NO STREAM   launched, killed before emitting a byte
+  l5cp03   NO STREAM   launched, killed before emitting a byte
+```
+⇒ **The halt landed between launch and first emission for two of the three, which is why it was cheap
+and also why it bought NO CORROBORATION.** There is no further Flash evidence on the box.
+⚠️ **So "the two models segment an episode differently" rests on ONE Flash trace against several Pro
+cells.** The signature is structural — a POSITION, not a rate — and a second cell would likely confirm
+rather than refine it. ⛔ **"Would likely confirm" IS A PREDICTION, and it is not evidence.** The
+sentence carries its `n` wherever it travels.
+📌 **AND WHAT REMAINS UNMEASURED BY ANYONE:** *why* the two segment differently — client stream framing
+for this model, a thinking mode, or the model's own behaviour. **Nobody measured it; the finding does not
+rest on it; it is registered OPEN rather than guessed.**
+
+## §A4 · ⚖️ THE REGISTERED LIMITATION — THE PART WORTH MORE THAN THE 42 CELLS
+⇒ ***A PER-TURN CAP IS ARM-NEUTRAL ONLY BETWEEN MODELS THAT SEGMENT AN EPISODE THE SAME WAY.*** It is not
+a cap on WORK; it is a cap on an INTERVAL whose length is a property of the model.
+⛔⛔ **AND THE TWO HALVES OF THIS SECTION HAVE DIFFERENT EVIDENCE, WHICH IS WHY THEY ARE NAMED APART:**
+```
+  THE DESIGN PRINCIPLE   "if two models segment differently, a per-turn cap measures different
+                         things in each"     — TRUE BY CONSTRUCTION. It needs no n at all, and it
+                         binds whether or not Flash turns out to be such a model.
+  THE EMPIRICAL CLAIM    "gemini-3.8-flash-high and gemini-3.1-pro-high DO segment differently"
+                         — n = 1 ON THE FLASH SIDE (§A3a). This is the half that can be wrong.
+```
+⇒ **The principle is what binds future waves. The empirical claim is what this wave measured, once.**
+📌 **A reader who takes §A4's first line as MEASURED has read a design statement as a result** — the
+same conflation this addendum exists to correct, one level up.
+⇒ **This generalises §G2's law rather than replacing it: a cap that DIFFERS between arms is a treatment —
+and so is a cap that is IDENTICAL between arms but MEASURES A DIFFERENT THING in each.**
+📌 **Binding on any future cross-model wave in this campaign.** A cross-model design must either
+demonstrate equal turn granularity or cap on the per-CELL wall, never the per-turn one.
+
+## §A5 · THE RULINGS
+```
+  (A) RAISE print_timeout FOR THE FLASH ARM ..... REJECTED. A cap that differs between arms is a
+      treatment, and the Pro↔Flash contrast already carries TIER+GENERATION (§F3).
+      ⛔ It would also not work as intended: Flash's turn IS the episode, so the honest cap for it
+        is the per-CELL wall (max_wall 21,600 s), not a larger per-turn one.
+  (B) DO NOT RUN THE 42 ........................ ACCEPTED, with §A3's claim replacing the proposed one.
+  (C) RE-CAP / RE-CUT / RE-FIRE ................. NOT AUTHORISED. Nothing further fires on level 5.
+  QUARANTINE .................................... RATIFIED. Both roots kept, named by cause, nothing
+      scored, nothing in any denominator. The 3 earlier Pro-under-Flash-ids cells stay VOID (§F5 row 1).
+  LEVELS 1 AND 4 ................................ UNTOUCHED and complete.
+```
+
+## ⇒ 🔑 §A6 · THE ONE TO CARRY
+***THE INSTRUMENT PRODUCED A STATEMENT ABOUT A VENDOR'S MODEL, AND ONLY OPENING THE INSTRUMENT SHOWED IT
+WAS A STATEMENT ABOUT THE INSTRUMENT.*** The halt was right, the recommendation was right, and the claim
+attached to them was wrong in the one direction that costs something — **a capability sentence about
+somebody else's model, from one cell, generated by our own turn loop's assumption.**
+📌 **The hand declined to open `agy_turnloop_v3.py` because the client boundary is the lead's. That was
+the correct refusal and it is why the error reached a reader who could check it.**
