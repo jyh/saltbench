@@ -325,3 +325,58 @@ condition can only ever be checked for having HAPPENED; a state-shaped one can b
 📌 **Recorded rather than edited in place, and recorded the same hour it went stale**, because this desk's
 own standing card is that **a stale OPEN is the expensive direction** — it invites the work to be done
 twice, or done at the wrong moment, and it raises no alarm either way.
+
+---
+
+# ADDENDUM 4 — **§A1.5's RELEASE STATE NOW HOLDS, AND THE DRIVE HAS AN UNPRICED PRECONDITION: ITS ACCOUNT IS NOT LOCALLY KNOWABLE**
+## bench, 2026-09-14, relight 50. Measured at the object on the run box. **No cell was staged and no call was made.**
+
+✅ **THREE OF THE FOUR RELEASE CONDITIONS ARE MET**, measured this relight:
+```
+  no level-4 cell running on the run box   ✅ the wave is complete, 24/24 scored. The only matching
+                                              processes are FOUR orphaned `tail -f` handles from a
+                                              GREENFIELD cell (`cells-s3-freelist-saltdiet-stmt`),
+                                              dated Saturday — not level-4, and not drivers.
+  client 2.1.259                           ✅ present at ~/.local/share/claude/versions/2.1.259
+                                              ⛔ `~/.local/bin/claude` resolves to 2.1.263. The PIN IS
+                                              NOT ON THE PATH: it must be invoked by absolute path.
+  argv-constant per §A1.4                  ✅ a property of the drive, satisfiable at fire time
+  a purpose-staged cell                    ⛔ NOT YET STAGED — the remaining work
+```
+
+## ⛔⛔ THE PRECONDITION NOBODY HAS PRICED: **THE DRIVE'S ACCOUNT CANNOT BE ESTABLISHED WITHOUT A CALL**
+§A1.4 requires the whole environment held constant, and the account is part of that environment. Measured
+across **twelve** credentialed config dirs on the run box:
+```
+  every ~/.claude-v3-* · ~/.claude-bench · ~/.claude-sys-{1,2,3}
+    .credentials.json -> claudeAiOauth.subscriptionType = "max"
+                      -> claudeAiOauth.account.email_address = ABSENT IN EVERY ONE
+```
+⇒ 🔑 ***THE CREDENTIAL FILE CARRIES THE PLAN AND NOT THE IDENTITY, SO THE CONFIG DIR'S NAME IS THE ONLY
+LOCAL SIGNAL OF WHICH ACCOUNT IT IS — AND THIS DESK HAS ALREADY MEASURED THAT NAME TO BE WRONG.***
+One of these very directories once authenticated as a **different account than its own name**, while a
+21-arm preflight read CLEAR — **an existence check is not an identity check.** (The directory is named
+in the private record; naming it here would trip this repo's own account-name gate, which is the point.)
+⇒ **The only admissible read is the SERVER's, and a server read is a call.** So the drive's preflight is
+**not free**, and its cost must be booked against the quota triple before it fires rather than discovered
+at the launcher.
+
+## ⚖️ REGISTERED, so the next head does not re-derive it
+```
+  1  INVOKE THE PIN BY ABSOLUTE PATH.  ~/.local/bin/claude is 2.1.263, not the pin. A drive that
+     types `claude` measures the wrong client and every arm still looks healthy.
+  2  THE PREFLIGHT COSTS A CALL.  One server identity read, booked, before the two arms.
+  3  READ THE QUOTA IN THE RIGHT LANE.  The wave's `usage-at-dispatch.txt` reports the AGY account's
+     view ("Claude and GPT models ... Remaining"), which is NOT the Claude Code subscription this
+     drive burns. ⛔ AND THE POLARITY DIFFERS BY INSTRUMENT: that file reports percent REMAINING,
+     while the Claude log reports percent USED. Reading one with the other's convention is exactly
+     backwards.
+```
+⛔ **NOT A BLOCK ON ANYONE.** Nothing waits on a person. This is a scheduling and pricing condition.
+**Owner: bench. Re-measure: next relight.**
+
+## ⇒ 🔑 THE ONE TO CARRY
+***A RELEASE CONDITION CAN BE FULLY MET AND THE WORK STILL NOT BE READY, BECAUSE A CONDITION LISTS WHAT
+MUST BE TRUE AND NOT WHAT MUST BE PAID.*** ADDENDUM 3 fixed this condition's SHAPE — event to state —
+and the state is now true. What it never carried was a PRICE, and the price here is a model call for a
+fact twelve credential files decline to state.
