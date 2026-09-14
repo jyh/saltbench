@@ -266,3 +266,46 @@ as a governance gate.**
 ⛔ **No wave is authorised by this addendum.** The matrix being unblocked makes every remaining cell a
 **SPEND** question rather than a governance one, and **spend is the Captain's**. ⇒ **Act (2) — the arXiv
 draft — still does not begin: the census does not read full, and 134 owed conditions is not full.**
+
+---
+
+# ⚠️ ADDENDUM 4 — **Crc32's BROWNFIELD CONDITIONS ARE BUILDABLE AND THEY ARE A *LOUD* RUNG**
+## bench, 2026-09-14. `systems` built the fifth brownfield given (PR #144, `6303467`), closing §B7 row 1
+## at five of five. **This addendum records WHAT KIND of cell those conditions produce, because the
+## census is what a later reader will price the matrix from.**
+
+## §H1 · THE MEASUREMENT, WHICH IS `systems`' AND CARRIES ITS OWN CONTROL
+```
+  REFERENCE (control)   TESTS 6/6   margin 0/6   <- the withheld suite is VALID
+  ComplementedTable     TESTS 1/6   margin 5/6
+  HighByteIndex         TESTS 1/6   margin 5/6
+  SevenSteps            TESTS 1/6   margin 5/6
+  ShortTable            TESTS 1/6   margin 5/6
+  UnreflectedPoly       TESTS 1/6   margin 5/6
+  failing set IDENTICAL on all five:
+     check_value · published_vectors · long_and_all_byte_values · lengths · random_cross_check
+```
+⭐ **The reference control is what makes the five margins mean anything** — without it, "all five at 5/6"
+is equally consistent with a suite that fails five tests on everything.
+
+## §H2 · ⛔ WHAT IT MEANS FOR THE TWO CENSUS CONDITIONS
+`gemini-3.1-pro-high × brownfield × Crc32 × {plain, salt-diet}` move from **OWED-and-unbuildable** to
+**OWED-and-buildable**. ⛔ **They are NOT ordinary brownfield cells:**
+- **Margin 5 of a SIX-test suite is the LOUD end** of this desk's seed criterion: *every test fails, so
+  the subject cannot miss the defect and the task measures nothing about localisation.*
+- **No seed choice fixes it.** All five mutants are identical on the suite ⇒ **the property belongs to
+  the WITHHELD SUITE, not to the mutant.** ⇒ **This is the "no discriminating seed" condition desk KT
+  recorded, arriving as a number instead of a judgement.**
+⇒ ⚖️ **ANY RESULT FROM THESE TWO CONDITIONS READS AS A CEILING, NEVER AS A DISCRIMINATION**, which is
+exactly what the Captain's §G4 ruling asked for: *"Crc32 — RUN IT AND REPORT THE CEILING."*
+⛔ **They must not be pooled with the other four brownfield problems in any arm comparison**, for the
+same reason a truncated cell's cost figures are not poolable: **the cells are not measuring the same
+thing, and the difference is a property of the instrument rather than of the subject.**
+
+## ⇒ 🔑 §H3 · AND A CORRECTION OF MINE THAT BELONGS BESIDE IT
+I handed `systems` this seed criterion **with a prediction wrapped around it** — *"you have a real
+choice and the margins will differ across them."* **I had never opened `Crc32/G/withheld/`.** It measured
+all five in six minutes and they are identical.
+⇒ ***A CRITERION SURVIVES BEING WRONG ABOUT THE DATA; A PREDICTION SMUGGLED INSIDE IT DOES NOT, AND IT
+DISCREDITS THE CRITERION ON THE WAY OUT.*** **The criterion held — it returned LOUD. The prediction was
+mine and was worthless.**
