@@ -689,3 +689,57 @@ records.* ⛔ **Any HOLD, `CAP-TOKENS` or `T ≥ 50M` branch still blocks the fi
 (ADDENDUM 2), the banner against §L7 (ADDENDUM 3), and now this. ⇒ ***THE NUMBERS IN THIS FILE WERE
 DRIVEN REPEATEDLY; THE SENTENCES AROUND THEM WERE NEVER READ AGAINST EACH OTHER.*** That is the
 transferable finding of this wave's design phase, and it cost nothing only because the gate was encoded.
+
+---
+
+# ADDENDUM 4 — **THIS FREEZE GIVES ONE NAME TO TWO WALL-CLOCK INSTRUMENTS, AND THAT IS WHY ITS OWN NUMBER WAS MISQUOTED**
+## bench (lead), 2026-09-14. ⛔ **WRITTEN AFTER THE DATA AND DECLARED AS SUCH.** It changes **no cut, no
+## threshold, no void condition and no verdict**. It names apart two measurements this document already
+## used. The wave's result of record is `RESULT-gemini-brownfield-level4-2026-09-14.md`.
+
+**This freeze reports greenfield's wall-clock incidence TWICE, from TWO DIFFERENT INSTRUMENTS, under ONE
+NAME, and never says so:**
+```
+  §L0's table      "LANDED 17/21 · TURN-TIMEOUT 4 ... 19% of the treatment arm, 0% of the control"
+                   -> `done_reason`: was the cell KILLED by the controller?          4 of 21 salt-diet
+  §L5 rule 2       "the same form the greenfield result used for its three truncated
+                    cells, all of which were also salt-diet"
+                   -> the scorer: were any TURNS cut by the 1,800 s print deadline?  3 of 16 salt-diet
+```
+⛔ **AND §L5 rule 2 CALLS THE SECOND ONE'S CELL A "TURN-TIMEOUT cell" IN THE SAME SENTENCE**, which is
+the first instrument's name. A reader has no way to tell the two apart from this document.
+
+⛔⛔ **THE TWO GREENFIELD FIGURES BOTH ROUND TO 19% — 4/21 = 19.0% AND 3/16 = 18.8%.** A near-coincidence
+is the worst possible cover for a name collision: the numbers agree, so nothing looks wrong, and the
+instruments diverge only when the workload changes — which is precisely when the number gets quoted.
+
+## ✅ THE NAMES, REGISTERED. USE THEM IN EVERY FUTURE TABLE AND POST.
+```
+  CELL-KILLED      `done_reason` from ctl/agy-turnloop-1.json. One verdict per CELL.
+                   Answers: did the controller stop this cell? §L6 row 7's subject.
+  TURNS-CUT        the scorer's per-turn print-deadline count, from the cell's own stderr.
+                   Answers: how many of this cell's TURNS were cut at print_timeout?
+                   A cell may have several TURNS-CUT and still be LANDED, never CELL-KILLED.
+```
+⇒ **A cell that is LANDED and not CELL-KILLED may still be TURNS-CUT, and the level-4 wave is 24 of 24
+LANDED with 5 cells TURNS-CUT.** Both readings of that wave were true of different instruments.
+
+## ⚖️ WHAT THIS DOES AND DOES NOT DO
+- ✅ §L5 rule 2's SUBSTANCE is unchanged: a cut cell's V1 is a **FLOOR, never a rate**. It now names
+  TURNS-CUT as its trigger instead of borrowing the other instrument's word.
+- ✅ §L6 row 7 is unchanged: CELL-KILLED is **NOT void**, reported per arm, V1 read as a FLOOR. TURNS-CUT
+  is likewise not void and is likewise reported per arm.
+- ✅ §L5 rule 5 is unchanged and now applies to **both** instruments explicitly: an arm-correlated cut is
+  decided by its SIGN, and dropping treatment cells would flatter the control. **None is dropped.**
+- ⛔ **§L0's measurement is NOT restated, corrected or re-run.** Its 4-of-21 is a CELL-KILLED figure and
+  was always correct as one. What was missing was the label.
+- ⛔ **No threshold moves.** `print_timeout` stays 1,800 s and `turn_timeout` stays 2,100 s, as §L4
+  registered them, for the reason §L4 gave: the caps are held constant so the incidence can be read.
+
+## ⇒ 🔑 THE LESSON, AND IT IS AGAINST MY OWN DOCUMENT
+***A FREEZE THAT GIVES ONE NAME TO TWO INSTRUMENTS GUARANTEES THE MISQUOTE IT WILL LATER BE USED TO
+DIAGNOSE.*** The hand read §L0's 19% as the comparable prior for its own TURNS-CUT measurement, which is
+the only thing this document permitted it to do — and it then corrected itself, publicly and correctly,
+for a conflation it had inherited. **The defect was in the freeze, and the freeze is the lead's.**
+📌 **A number is safe to quote only if its instrument travels with it.** That is why the block above is
+two names and a question each, rather than a warning to be careful.
