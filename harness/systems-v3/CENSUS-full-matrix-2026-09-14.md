@@ -164,8 +164,28 @@ withdrew it within two minutes of offering it.
   gemini-3.1-pro-high vs  gemini-3.8-flash-high  both served, substituted  cost: 3 VOID cells
   claude-sonnet-4-6   vs  claude-sonnet-5        both real, one unservable cost: ZERO
 ```
-⇒ ***THE ONLY ONE THAT COST NOTHING IS THE ONE WHERE THE ID WAS CHECKED AGAINST THE SERVED LIST BEFORE
-FIRING.*** ⛔ **A client refuses an UNKNOWN id — and every one of these was perfectly known.**
+⛔⛔ **CORRECTION, SAME SHIFT, BEFORE THIS FILE LANDED — I CREDITED THE ZERO COST TO CARE AND IT WAS A
+GATE.** I wrote that the Sonnet case cost nothing *"because the id was checked against the served list"*.
+**Measured afterwards by the hand: the harness had ALREADY REFUSED IT.** Verbatim from the battery:
+`agy_launch: REFUSE — AGY_MODEL='claude-sonnet-4-6' is not a Gemini id. The Captain ruled 2026-09-07
+that agy serves GEMINI for this arm.` **The cell BUILT, the battery went RED at rc 9, and nothing
+launched — no `launch.log`, no stream, no meter, no end marker. Zero model spend.**
+⇒ ✅ **THREE INDEPENDENT THINGS WOULD HAVE STOPPED IT, AND THE CHEAPEST FIRED FIRST:** the hand's own
+withdrawal · the lead's stand-down 90 seconds after authorising · **and a REGISTERED GATE that had been
+sitting in the launcher for a week enforcing a ruling NEITHER OF US CITED.**
+⇒ 🔑 ***SO THE THREE CASES DIFFER BY WHERE THE GATE SAT, NOT BY WHO WAS CAREFUL:***
+```
+  gate at the BATTERY   refused before launch, at BUILD time          cost ZERO      (sonnet)
+  gate at the LAUNCH    the served-model assertion, per cell          cost 3 cells   (flash, caught by hand)
+  gate at the METER     §F5 row 1 alone, after the pool is spent      cost 42 cells  (what flash risked)
+  NO GATE               two documents disagreeing about a flag        cost two asks  (--arm salt)
+```
+⇒ **This is the level-5 lesson generalised one step further: *the difference between a gate at the meter
+and a check at launch is 39 cells* — and the difference between a check at launch and a GATE AT THE
+BATTERY is the last three.**
+⇒ ⚠️ ***AND THE HUMBLING HALF: THE GATE KNEW THE ANSWER TO A QUESTION TWO SEATS SPENT TWENTY MINUTES
+ARGUING.*** Neither of us asked the harness what it would accept. **Ask the instrument before debating
+the answer.**
 ⇒ **The turn-loop probe is REGISTERED OPEN, not dropped:** it would test whether *one `result` per turn*
 is a Pro-specific assumption, and it is the first act of any future cross-vendor agy wave. **Standing it
 down now is the banked rule — fire the highest unblocked item first, then measure beside it.**
