@@ -120,3 +120,62 @@ currently expressible and unblocked closes 28 conditions and still leaves the ma
 3. **It names no fourth model**, and it does not treat `models.tsv` as one.
 4. **It makes no claim about RESULTS** — only about which conditions have a result of record. **Whether
    the numbers in them support any paper sentence is a separate question and is the paper seat's.**
+
+
+---
+
+# ADDENDUM 1 — **THE CAPTAIN RULED TWO OF THE THREE, 2026-09-14 11:41. THE DENOMINATOR IS 200.**
+## bench, same shift, ~20 minutes after the census above. **His words, verbatim, typed to the helm:**
+## *"Yes, we can skip brownfield + spec-change. Yes, fourth model is Sonnet."*
+
+## §D1 · RECOUNTED, NOT ASSERTED
+`brownfield × spec-change` leaves the denominator (**−40**) and `claude-sonnet-5` fills the fourth row.
+```
+  DONE            50   25.0 %        OWED            52   26.0 %
+  BLOCKED         82   41.0 %        INEXPRESSIBLE   16    8.0 %        TOTAL 200
+
+  claude-opus-5          DONE 28 · OWED  0 · BLOCKED 18 · INEXPR 4
+  claude-sonnet-5        DONE  0 · OWED 28 · BLOCKED 18 · INEXPR 4    <- never run as a SUBJECT: 0 of 307 cells
+  gemini-3.1-pro-high    DONE 22 · OWED 24 · BLOCKED  0 · INEXPR 4
+  gemini-3.8-flash-high  DONE  0 · OWED  0 · BLOCKED 46 · INEXPR 4    <- the level-5 turn stall
+```
+
+## §D2 · ⛔⛔ NAMING THE FOURTH MODEL DOUBLED WHAT ONE UNRESOLVED HOLD COSTS
+My first recount put Sonnet at **46 OWED** — i.e. *"the matrix is now a running problem."* **Then I read
+the hold's own wording** (desk `LU`, the maestro's 09-13 narrowing): *"the row-3 hold binds
+**CLAUDE-CLIENT** cells ONLY and does not hold agy-client brownfield, because the gap is client-local."*
+⇒ **`claude-sonnet-5` IS A CLAUDE-CLIENT MODEL**, so its 18 brownfield conditions sit under the SAME hold
+as Opus's 18.
+```
+  §B7 row 3 blocked  18 conditions   before the fourth model was named
+  §B7 row 3 blocks   36 conditions   after   —  18 % of the whole matrix
+```
+⇒ 🔑 ***THE RULING THAT ADDED WORK AND THE RULING THAT BLOCKS IT ARE IN DIFFERENT ROWS, OWNED BY
+DIFFERENT PARTIES, AND NEITHER MENTIONS THE OTHER.*** Had the scope not been checked, this census would
+have reported 46 runnable Sonnet conditions and the helm would have priced its own hold at half.
+
+## §D3 · A NEAR-MISS ON THE MODEL ID, CAUGHT AT ZERO COST, AND IT IS THE THIRD OF ITS KIND
+The hand reported that `agy` serves a Sonnet and offered a one-cell probe. **Measured: `agy` serves
+`claude-sonnet-4-6`; `agy models` returns 0 for `claude-sonnet-5`.** ⇒ **Two real, servable,
+nearly-identically-named models, and the probe would have fired the one nobody named.** The hand
+withdrew it within two minutes of offering it.
+```
+  --arm salt          vs  --arm salt-diet        both buildable            cost: two asks
+  gemini-3.1-pro-high vs  gemini-3.8-flash-high  both served, substituted  cost: 3 VOID cells
+  claude-sonnet-4-6   vs  claude-sonnet-5        both real, one unservable cost: ZERO
+```
+⇒ ***THE ONLY ONE THAT COST NOTHING IS THE ONE WHERE THE ID WAS CHECKED AGAINST THE SERVED LIST BEFORE
+FIRING.*** ⛔ **A client refuses an UNKNOWN id — and every one of these was perfectly known.**
+⇒ **The turn-loop probe is REGISTERED OPEN, not dropped:** it would test whether *one `result` per turn*
+is a Pro-specific assumption, and it is the first act of any future cross-vendor agy wave. **Standing it
+down now is the banked rule — fire the highest unblocked item first, then measure beside it.**
+
+## §D4 · WHAT REMAINS, AND IT IS NO LONGER THREE THINGS
+```
+  ONE RULING      §B7 row 3 — the helm's — 36 conditions, lifts on the sandbox probe's receipt
+  ONE DESIGN CALL Flash's 46 — per-turn capping for a model that runs an episode as ONE TURN
+  ACTUAL WORK     52 OWED — Sonnet greenfield 28 · gemini-3.1-pro 24
+```
+⇒ **Firing every owed condition closes 52 and takes the matrix to 102 of 200 — barely half — because 82
+sit behind one hold and one design call.** ⚠️ **A Sonnet wave is a NEW POPULATION, not a top-up: zero of
+the 307 cells on the box has ever been served by a Sonnet.**
