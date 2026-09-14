@@ -131,13 +131,14 @@ currently expressible and unblocked closes 28 conditions and still leaves the ma
 ## §D1 · RECOUNTED, NOT ASSERTED
 `brownfield × spec-change` leaves the denominator (**−40**) and `claude-sonnet-5` fills the fourth row.
 ```
-  DONE            50   25.0 %        OWED            52   26.0 %
-  BLOCKED         82   41.0 %        INEXPRESSIBLE   16    8.0 %        TOTAL 200
+  DONE            50   25.0 %        OWED            98   49.0 %
+  BLOCKED         36   18.0 %        INEXPRESSIBLE   16    8.0 %        TOTAL 200
+  ⛔ CORRECTED BY ADDENDUM 2: Flash's 46 were BLOCKED on a "turn stall" that was a 503. They are OWED.
 
   claude-opus-5          DONE 28 · OWED  0 · BLOCKED 18 · INEXPR 4
   claude-sonnet-5        DONE  0 · OWED 28 · BLOCKED 18 · INEXPR 4    <- never run as a SUBJECT: 0 of 307 cells
   gemini-3.1-pro-high    DONE 22 · OWED 24 · BLOCKED  0 · INEXPR 4
-  gemini-3.8-flash-high  DONE  0 · OWED  0 · BLOCKED 46 · INEXPR 4    <- the level-5 turn stall
+  gemini-3.8-flash-high  DONE  0 · OWED 46 · BLOCKED  0 · INEXPR 4    <- see ADDENDUM 2 below
 ```
 
 ## §D2 · ⛔⛔ NAMING THE FOURTH MODEL DOUBLED WHAT ONE UNRESOLVED HOLD COSTS
@@ -199,3 +200,21 @@ down now is the banked rule — fire the highest unblocked item first, then meas
 ⇒ **Firing every owed condition closes 52 and takes the matrix to 102 of 200 — barely half — because 82
 sit behind one hold and one design call.** ⚠️ **A Sonnet wave is a NEW POPULATION, not a top-up: zero of
 the 307 cells on the box has ever been served by a Sonnet.**
+
+
+---
+
+# ⛔⛔ ADDENDUM 2 — **THE FLASH ROW WAS WRONG: BLOCKED 82 → 36, OWED 52 → 98**
+## bench, same shift. **The level-5 halt was a 503 (`No capacity available`), not a turn stall** —
+## see `AMENDMENT-gemini-flash-level5-2026-09-14.md` ADDENDUM 2, which refutes the finding this census
+## row was built on. **I registered that finding and merged it; the correction is mine.**
+```
+  was   DONE 50 · OWED 52 · BLOCKED 82 · INEXPRESSIBLE 16
+  now   DONE 50 · OWED 98 · BLOCKED 36 · INEXPRESSIBLE 16
+```
+⇒ **BLOCKED HALVES AND THE MATRIX BECOMES MOSTLY WORK: 98 of 200 are expressible and unblocked.**
+⇒ **The ONLY remaining hold is §B7 row 3's 36** (Opus 18 + Sonnet 18, both Claude-client brownfield).
+⚠️ **"Retryable" is not "free":** a 503 is server capacity — **an external condition nobody here
+controls, which may recur.** Flash's 46 are **OWED-WITH-A-NAMED-RISK**, not owed-and-easy.
+📌 **§D4's "one ruling, one design call, actual work" now reads: ONE RULING (row 3, 36) and 98 of work.
+The design call is withdrawn — there was never a design question, only a capacity error.**
