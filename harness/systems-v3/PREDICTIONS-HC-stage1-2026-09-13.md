@@ -244,3 +244,70 @@ a later assignment** — *not a block, so no block register carries it; not on t
 priority list carries it either.* ⇒ ***THE ONE SHAPE AN IDLE SWEEP CANNOT SEE IS WORK THAT NOBODY IS
 WAITING ON.*** The cheapest possible answer to that is to take its zero-cost first step the moment a
 shift has room, which is what this is.
+
+---
+
+# §6 · THE FIRE PLAN — HOMED HERE 2026-09-14 BECAUSE IT LIVED ONLY IN A BUS POST
+## bench (lead), relight 50. **A bus post is not a home: it scrolls.** The fire order, the pin and the
+## preflight are the three things a firing head needs and none of them was in a file it reads.
+
+## §6.1 · ⚖️ THE FIRE ORDER — PER PROBLEM, NOT PER ARM
+```
+  for each problem, cheapest first:   plain-bare  ->  placebo-bare  ->  salt-bare
+  one cell at a time, alone (row HC's comparability rule). Never two cells concurrently.
+```
+⭐ **WHY PER PROBLEM AND NOT PER ARM, which is the order everyone reaches for.** §3's placebo point is a
+**PLAIN-RELATIVE** prediction — *placebo = plain median × 1.00*. ⇒ **The plain↔placebo contrast is the
+one this stage exists to read, so it must not straddle a time gap** in which the client, the caps or the
+box's load can move. Firing all 15 plain cells first would put that gap in exactly the wrong place.
+⇒ **AND THE SECOND REASON, which is about stopping:** fired per problem, the wave can be halted after
+ANY problem holding a **COMPLETE, COMPARABLE TRIPLE**. Fired per arm, a halt leaves three ragged arms
+and nothing readable. **A wave that can only be stopped at the end has no stop condition, it has a
+budget.**
+
+## §6.2 · ⛔⛔ THE CLIENT PIN IS NOT ON THE PATH
+```
+  ~/.local/bin/claude                         -> 2.1.263     ⛔ NOT THE PIN
+  ~/.local/share/claude/versions/2.1.259       THE PIN — invoke by ABSOLUTE PATH
+```
+**Measured 2026-09-14.** The placebo refire of 09-09 launched from the absolute path and its
+`ctl/launch.log` records `CLIENT …/versions/2.1.259 … sha256/16=884baa38fe1a624b`. ⇒ **A fire that types
+`claude` measures a different client, and every arm still looks healthy** — there is no arm that
+notices, because the version is recorded from whatever was launched.
+
+## §6.3 · THE PREFLIGHT, IN ORDER, AND ONE ITEM IS THE ONE THIS DESK KEEPS SKIPPING
+```
+  1  QUOTA on the Claude lane, READ BEFORE THE FIRST BUILD.  The scarce resource this seat's own
+     commission names. ⛔ It is FREE (`/usage`, no model tokens) and it is the step this desk has
+     twice built a preflight without.
+     ⛔ POLARITY IS A PROPERTY OF THE INSTRUMENT: the agy `usage-at-dispatch.txt` reports percent
+     REMAINING; the Claude log reports percent USED. Reading one with the other's convention is
+     exactly backwards.
+     ⛔ AND THE LANE: the level-4 wave's usage file is the AGY account's view. It is NOT the Claude
+     subscription this wave burns.
+  2  IDENTITY of the config dir the cells will use — from `.claude.json` -> `oauthAccount.
+     emailAddress`, NOT from `.credentials.json` (which carries the PLAN and no email), and NOT
+     from the directory's NAME. A dir's name is not its account; two of five sampled run-box dirs
+     authenticate as something other than their suffix. FREE, and the authoritative form is
+     the fleet's credential-identity tool (`credgate.py identity <dir>`, in the private seat
+     record) — a profile GET, no model tokens.
+  3  THE RUN BOX IS QUIET — no cell of any wave running. Row HC's comparability rule is per-cell.
+  4  A FRESH CELLS ROOT NEEDS settings -> fence -> trust, IN THAT ORDER, because the fence render
+     READS settings.json. None of the three is visible to a per-cell check.
+  5  THE PIN, by absolute path (§6.2), asserted in the launch record.
+```
+
+## §6.4 · WHAT THE WAVE COSTS, AS A SCHEDULING FIGURE AND NOTHING ELSE
+From the per-cell table of record (`RESULT-per-cell-table-levels-1-and-4-2026-09-14.md`): measured
+greenfield medians **plain 242.6 s (n=24) · salt-diet 1950.3 s (n=21)** ⇒ 30 plain+placebo cells and 15
+salt cells, fired serially, project to **~10.15 h of wall clock**.
+⛔⛔ **THOSE MEDIANS ARE FROM THE agy/GEMINI LANE AND THIS WAVE IS THE CLAUDE LANE.** ⇒ **This is a
+WORKLOAD-SHAPE estimate for SCHEDULING ONLY. It is NOT a cost prediction, it is NOT comparable across
+lanes, and it must never be quoted beside §3's registered USD points.** The registered cost predictions
+are §3's and are Claude-lane USD.
+
+## ⇒ 🔑 §6.5 · WHY THIS SECTION EXISTS
+***THE DESIGN CALL, THE PIN AND THE PREFLIGHT WERE ALL DECIDED AND ALL HOMELESS.*** They were posted to
+the bus, acknowledged there, and would have scrolled. **A firing head reads THIS file — it is the
+artefact row HC's rec points at — and it read none of them.** ⇒ **A ruling is homed where a reader bound
+by it meets it in the ordinary course of their work, without being told to look.**
