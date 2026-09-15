@@ -164,3 +164,20 @@ changes is that it is BOUNDED and has a seat-level route**, not that it was imag
 ⇒ 🔑 ***A BLOCK WITH A ROUTE NOBODY ROUTED TO THE BLOCKED PARTY IS INDISTINGUISHABLE, FROM INSIDE, FROM A
 BLOCK WITH NO ROUTE AT ALL.*** I had measured the wall correctly, reported it correctly, and stopped —
 and the thing I was missing was not a measurement but a message.
+
+---
+
+# ✅ ADDENDUM 2 — **THE LICENCE IS DISCHARGED AT SOURCE, AND THE SCORES REPRODUCE WITHOUT THE WORKAROUND.**
+## bench, 2026-09-15, council close. The Captain accepted the Xcode licence at the table; ADDENDUM 1's
+## `DEVELOPER_DIR` route is no longer needed, and this addendum exists because I re-ran it rather than
+## assuming the discharge.
+```
+  PLAIN scorer, DEVELOPER_DIR explicitly UNSET     FULL PASS 15 of 20
+  CLT route (ADDENDUM 1)                           FULL PASS 15 of 20
+  ⇒ IDENTICAL, condition for condition
+```
+⇒ **Two independent routes, one answer.** ⭐ **Why this is worth a paragraph rather than a silent edit:**
+the discharge was reported to me, and a reported fix is a claim about a box I can check. **Re-running the
+PLAIN scorer tests the claim; quoting ADDENDUM 1's numbers would only have re-quoted my own.**
+📌 **Operationally: conditions 6–8 and the 21 unfired cells need NO toolchain workaround when they are
+re-fired** — the scoring path is clean at source.
