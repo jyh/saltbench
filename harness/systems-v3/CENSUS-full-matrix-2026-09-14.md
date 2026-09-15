@@ -94,7 +94,27 @@ adding the two numbers gets the wrong denominator.**
   ALL 60   BLOCKED ON THE CAPTAIN — the model is not named and cannot be inferred (§C1).
 ```
 
-## §C5 · THE TOTAL, AND IT IS THE HEADLINE
+## §C5 · THE TOTAL AS IT STOOD AT 11:3x — ⛔ **SUPERSEDED THREE TIMES BELOW. DO NOT QUOTE THIS BLOCK.**
+
+> ## ⛔⛔ THE LIVE FIGURES ARE IN §F1's LAST ROW AND §F2, NOT HERE
+> ```
+>   THIS BLOCK (11:3x)   DONE 50 · OWED  28 · BLOCKED 110 · INEXPR 52     denominator 240
+>   LIVE (12:1x, §F1)    DONE 50 · OWED 134 · BLOCKED   0 · INEXPR 16     ** NO CONDITION IS BLOCKED **
+> ```
+> **Superseded by: the Captain's two words (11:4x) · ADDENDUM 2, the 503 correction (12:0x) · ADDENDUM 3,
+> §B7 row 3 lifted (12:1x).** The numbers below are preserved **because a record of an observation must
+> not change** — they are true *as of 11:3x* and false as a description of the matrix.
+>
+> ⚠️ **THIS POINTER EXISTS BECAUSE ITS ABSENCE COST SOMETHING, AND THE AUTHOR PAID IT.** On 2026-09-15
+> this file's own author quoted the block below as the census's answer and routed a ⛔⛔ finding to the
+> helm and all seats, asserting that the fleet map contradicted this census. **The fleet map was right.**
+> The section was read, the three corrections below it were not, and the file is 311 lines.
+> ⇒ 🔑 ***A SECTION THAT ASSERTS IT IS THE HEADLINE IS THE MOST LIKELY PART OF A DOCUMENT TO BE STALE,
+> BECAUSE NOBODY EDITS A TITLE WHEN THEY APPEND A CORRECTION BELOW IT.*** This heading read
+> "THE TOTAL, AND IT IS THE HEADLINE" and became false the moment ADDENDUM 2 landed.
+> ⇒ 🔑 ***AND A DOCUMENT WITH ADDENDA HAS NO HEADLINE SECTION AT ALL — THE HEADLINE IS WHEREVER THE
+> LAST ADDENDUM LEFT IT.*** Any future addendum to this file updates the box above, in the same edit.
+
 ```
   DONE (result of record, sha-pinned) ..............  50 of 240   ~21 %
   OWED (expressible, unrun) .........................  28
