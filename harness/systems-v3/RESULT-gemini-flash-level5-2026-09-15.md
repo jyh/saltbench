@@ -1,0 +1,119 @@
+# RESULT — LEVEL 5, THE GEMINI **FLASH** GREENFIELD WAVE: **HALTED AT 21 OF 42, AND ITS SCORES ARE VOID**
+## bench (lead and hand), 2026-09-15. Freeze: `AMENDMENT-gemini-flash-level5-2026-09-14.md` §F0–§F6 + ADDENDA 1–4.
+## Authorised by council 2026-09-14 ⑫(i). Fired 2026-09-15T01:29:52Z. Halted 12:13Z on a PRE-REGISTERED criterion.
+## ⛔ **READ §4 BEFORE ANY OTHER SECTION: THE PASS/FAIL SCORES ARE VOID AND THE REASON IS NOT THE MODEL.**
+
+## 1 · WHAT RAN
+```
+  population          §F1's 14 conditions x n3 = 42 cells, level 1's population mirrored exactly
+  FIRED               21 cells (7 conditions)         NEVER FIRED  21 cells (7 conditions)
+  LANDED              20        NOT-LANDED  1         built-but-unfired at the halt: 3 (zero spend)
+  model               gemini-3.8-flash-high, model_requested read back FROM EACH CELL'S OWN RECEIPT
+                      and asserted per condition; ZERO substitutions
+  export              saltbench-systems-v3-export-9f650a3 (client_sha256 in every receipt, ⑫(1))
+  containment         level 1's, unchanged — srt, p_exposure sensitive=3/10 (§4 of the 09-14 bus ruling)
+```
+
+## 2 · THE PER-CELL TABLE — `clean_s` IS THE COST FIGURE, NOT `cum`
+`clean_s` sums the per-turn deltas of **SUCCESS turns only**; `cum` is the terminal `duration_seconds`.
+They are equal exactly when a cell took no error turns. ⛔ **`cum` on an error-hit cell is capacity retry,
+not model work** — the instrument that made this visible is in §5.
+```
+cell    condition           arm       SUC ERR  clean_s     cum            T   ok/run  end
+l5cp01  crc32-plain         plain        3   0      278     278    3,993,025     1/33  LANDED
+l5cp02  crc32-plain         plain        4   0      203     203    3,389,253     0/24  LANDED
+l5cp03  crc32-plain         plain        3   0      311     311    5,838,876    24/48  LANDED
+l5cs01  crc32-saltdiet      salt-diet    4   0      481     481   12,112,123    10/45  LANDED
+l5cs02  crc32-saltdiet      salt-diet    4   0      513     513   11,452,788    15/49  LANDED
+l5cs03  crc32-saltdiet      salt-diet    5   0     2090    2090   12,283,790    16/63  LANDED
+l5fp01  freelist-plain      plain        4   0      371     371    4,850,397     7/24  LANDED
+l5fp02  freelist-plain      plain        3   0      412     412    6,495,950     2/24  LANDED
+l5fp03  freelist-plain      plain        4   0      349     349    6,748,970     0/22  LANDED
+l5fs01  freelist-saltdiet   salt-diet    5   0      608     608   11,901,071    14/37  LANDED
+l5fs02  freelist-saltdiet   salt-diet    6   0     5108    5108   57,655,873   60/183  LANDED
+l5fs03  freelist-saltdiet   salt-diet    4   0      982     982   24,187,669    33/64  LANDED
+l5lp01  lru-plain           plain        3   0      390     390    6,709,167     1/35  LANDED
+l5lp02  lru-plain           plain        3   0      399     399    5,413,078    19/38  LANDED
+l5lp03  lru-plain           plain        5   0      270     270    3,390,887     2/23  LANDED
+l5ls01  lru-saltdiet        salt-diet    1   1       23     479    5,363,915    34/84  NOT-LANDED
+l5ls02  lru-saltdiet        salt-diet    1   4       65    3586   24,067,847    16/47  LANDED
+l5ls03  lru-saltdiet        salt-diet    0   5        0    3906   15,944,363    13/45  LANDED
+l5pp01  paxos-plain         plain        1   3      226    1499    4,693,808     3/18  LANDED
+l5pp02  paxos-plain         plain        3   0     1607    1607    5,954,935    10/28  LANDED
+l5pp03  paxos-plain         plain        1   3      107    1654    5,566,217     1/23  LANDED
+```
+⚠️ **`T` CARRIES ITS COMPOSITION OR IT IS NOT A COST: 85–88 % CACHE READ, UNDER 1 % OUTPUT** (measured).
+⚠️ **`ok/run` is PROVEN-OK COMMANDS of commands run** — see §6, it is not a pass rate.
+
+## 3 · THE THREE BLOCKS, AND THEY ARE NOT COMPARABLE TO EACH OTHER
+```
+  CONDITIONS 1–5   15 cells   ZERO error turns on every cell; cum == clean_s        ✅ CLEAN
+  CONDITION 6       3 cells   ALL THREE capacity-hit. l5ls03 LANDED with 0 SUCCESS turns
+                              and clean_s = 0; l5ls02 landed on 65 s of 3,586.
+                              l5ls01 ended NOT-LANDED on INVALID_ARGUMENT (400).    ⛔ CONTAMINATED
+  CONDITION 7       3 cells   SPLIT: 2 majority-error (503), 1 wholly clean          ⚠️ MIXED
+```
+⇒ 🔑 ***A CELL CAN LAND HAVING DONE NO WORK AT ALL.*** `l5ls03`'s end marker reads `LANDED` and its five
+turns are five `UNAVAILABLE (503)`. **This is the campaign's own landing caveat at its limit case, measured.**
+⛔ **§F5's void list does not cover it** (its faults are: wrong served model · meter-blind · build wedge ·
+fence fail · wrong field). **The freeze is NOT amended** — post-first-call, an amendment would be post-data.
+The cells are reported as outcomes with their errors quoted, and the reading rules handle them at scoring.
+
+## 4 · ⛔⛔⛔ THE SCORES ARE **VOID**, AND THE POSITIVE CONTROL IS WHY THIS FILE SAYS SO
+The score stage completed cleanly — 7 conditions, rc 0, 20 cells, POOLABLE, zero fetch failures — and
+reported **FULL PASS 0 of 3 on every condition; every cell `BUILD-FAIL`, `TESTS 0/0`.**
+✅ **CONTROL, DRIVEN BEFORE ANY OF IT WAS BELIEVED:** the same scorer, run the same minute, on a **LEVEL-1
+(Pro)** condition whose result of record reads `crc32-plain 3 of 3 FULL PASS, 6/6 tests each`:
+```
+  s3cp01 · s3cp02 · s3cp03   ->   BUILD-FAIL   TESTS 0/0      ⇒ it fails cells KNOWN to pass
+```
+⇒ **THE INSTRUMENT, NOT THE SUBJECT.** Root cause, reproduced by hand with the harness's own toolchain env:
+```
+  error: linking with `cc` failed: exit status: 69
+  note: You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license'
+  ⇒ proc-macro2 and indexmap BUILD SCRIPTS fail ⇒ nothing links ⇒ every cell reads BUILD-FAIL
+  the SCORING box cc  -> REFUSES (the scorer builds here)   the RUN box cc -> CLEAN (the cells ran here)
+  and each cell's own battery at run time: "cargo-build expected=pass got=pass rc=0 out=BUILT"
+```
+⇒ ***THE SUBJECTS' CODE BUILT SUCCESSFULLY ON THE RUN BOX. THE FAILURE IS ENTIRELY IN THE LOCAL SCORING
+STEP.*** ⭐ **NO PASS/FAIL NUMBER FROM THIS WAVE MAY BE QUOTED**, and none appears in this file.
+📌 **The block is `paris`'s registered Xcode-licence wall, whose scope was bounded to the LEAN toolchain.
+It also voids SaltBench's RUST scoring path — a second campaign, a different language, the same `cc`, and
+it fails with a GREEN rc.** Release: `sudo xcodebuild -license` on the scoring box — interactive, needs
+sudo, **no seat can do it.** ✅ **Every artefact is intact; the 21 cells re-score unchanged once it lifts.**
+
+## 5 · THE HALT — A PRE-REGISTERED CRITERION, AND THE CELL THAT PROVED WHY IT WAS WRITTEN DOWN
+Registered before condition 7 had any data: *halt if ≥2 of 3 cells are majority-error.*
+```
+  l5pp01  1 SUCC / 3 ERR   YES        l5pp02  3 SUCC / 0 ERR   no        l5pp03  1 SUCC / 3 ERR   YES
+  ⇒ 2 of 3  ⇒  FIRED
+```
+⭐ **`l5pp03` READ CLEAN MID-RUN** (`SUCCESS=1 ERROR=0 clean_s=107`) **AND THEN TOOK THREE 503s.** ⇒ ***HAD
+I JUDGED ON THE SNAPSHOT I WOULD HAVE CONCLUDED "CAPACITY RECOVERED" AND CONTINUED.*** The criterion's own
+wording — *"condition 7 RETURNS"* — is what stopped that. **A snapshot is not a verdict.**
+**Halt executed by PID at both ends, verified dead, run box checked after; condition 8 was BUILT and
+UNFIRED — zero model spend.** `exec-registry`: `HALTED-BY-REGISTERED-CRITERION`.
+
+## 6 · WHAT THE WAVE DOES ESTABLISH, ALL OF IT ARM-FREE OR SIGN-ONLY
+1. **Capacity boundary, sharp:** clean through **06:17Z**, degraded by **07:10Z**, still degraded at 12:13Z
+   with one clean cell inside it. **Two error classes: `UNAVAILABLE (503)` and, once, `INVALID_ARGUMENT (400)`
+   — the second is NOT the registered capacity risk and is unexplained (n=1).**
+2. **Flash segments an episode exactly as Pro does** — 3–6 turns per cell, results spread through the
+   stream. ADDENDUM 3's refutation now holds on 21 cells rather than the 1 it was built on.
+3. ⚖️ **SIGN ONLY (freeze rule 1): salt-diet costs more than plain on both axes, on both problems with a
+   clean pair** (Crc32, FreeList). **No magnitude and no ratio is published.**
+4. **Cap incidence:** largest clean cell `l5fs02` at 57,655,873 T = **4.34× under the 250 M cap**. ⛔ Not
+   compared to §F2's 9.96 % prior, which is **level 4 = BROWNFIELD**; this wave is greenfield, and that
+   comparison would move model and field together.
+5. **Proven-ok commands are NOT a pass rate and are reported as their own quantity:** 6 of 9 plain cells
+   in conditions 1–5 landed having proven **≤2** commands worked. ⛔ **Not an arm claim** — volume and
+   reverse causality are both live and the registered per-command-type instrument is unrun.
+
+## 7 · WHAT IS OWED, AND BY WHOM
+```
+  the licence wall        the Captain's hand (sudo + interactive). NOT a seat act.
+  re-score the 21         bench, the moment the wall lifts. Manifest builder and frozen harness ready.
+  the 21 unfired cells    a SPEND: the helm's, then his. NOT re-fired on a seat's initiative.
+  condition 6's re-fire   the same. Recommendation on the bus is AGAINST it.
+  §F5's gap               a reading-rules question at scoring, NOT a post-data amendment.
+```
