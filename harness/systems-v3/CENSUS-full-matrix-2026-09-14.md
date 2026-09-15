@@ -99,7 +99,8 @@ adding the two numbers gets the wrong denominator.**
 > ## ⛔⛔ THE LIVE FIGURES ARE IN §F1's LAST ROW AND §F2, NOT HERE
 > ```
 >   THIS BLOCK (11:3x)   DONE 50 · OWED  28 · BLOCKED 110 · INEXPR 52     denominator 240
->   LIVE (12:1x, §F1)    DONE 50 · OWED 134 · BLOCKED   0 · INEXPR 16     ** NO CONDITION IS BLOCKED **
+>   12:1x (§F1)         DONE 50 · OWED 134 · BLOCKED   0 · INEXPR 16     ** NO CONDITION IS BLOCKED **
+>   LIVE (ADDENDUM 5)  DONE 57 · OWED 127 · BLOCKED   0 · INEXPR 16     level 5's 7 flash conditions
 > ```
 > **Superseded by: the Captain's two words (11:4x) · ADDENDUM 2, the 503 correction (12:0x) · ADDENDUM 3,
 > §B7 row 3 lifted (12:1x).** The numbers below are preserved **because a record of an observation must
@@ -159,7 +160,7 @@ currently expressible and unblocked closes 28 conditions and still leaves the ma
   claude-opus-5          DONE 28 · OWED  0 · BLOCKED 18 · INEXPR 4
   claude-sonnet-5        DONE  0 · OWED 28 · BLOCKED 18 · INEXPR 4    <- never run as a SUBJECT: 0 of 307 cells
   gemini-3.1-pro-high    DONE 22 · OWED 24 · BLOCKED  0 · INEXPR 4
-  gemini-3.8-flash-high  DONE  0 · OWED 46 · BLOCKED  0 · INEXPR 4    <- see ADDENDUM 2 below
+  gemini-3.8-flash-high  DONE  0 · OWED 46 · BLOCKED  0 · INEXPR 4    <- ADDENDUM 2; SUPERSEDED BY ADDENDUM 5
 ```
 
 ## §D2 · ⛔⛔ NAMING THE FOURTH MODEL DOUBLED WHAT ONE UNRESOLVED HOLD COSTS
@@ -329,3 +330,98 @@ all five in six minutes and they are identical.
 ⇒ ***A CRITERION SURVIVES BEING WRONG ABOUT THE DATA; A PREDICTION SMUGGLED INSIDE IT DOES NOT, AND IT
 DISCREDITS THE CRITERION ON THE WAY OUT.*** **The criterion held — it returned LOUD. The prediction was
 mine and was worthless.**
+
+
+---
+
+# ✅ ADDENDUM 5 — **THE FLASH ROW MOVES: `DONE 0 → 7`, `OWED 46 → 39`. TOTAL `DONE 50 → 57`.**
+## bench, 2026-09-15 16:3x. **The re-cut the helm asked for, and it is ONE result, not a day of cells.**
+
+## §J1 · THE TRIGGER, STATED SO THIS FILE STOPS BEING RE-CUT ON A CLOCK
+**This census moves when a RESULT OF RECORD MERGES WITH A PR SHA, and on nothing else.** That is its own
+§C5/§C2 rule (*"a cell that never became a result of record is RESIDUE, NOT EVIDENCE"*), and it means a day
+of cells landing on the run box **cannot** age it. Measured at the object across the full window since
+this file's commit, two boundaries agreeing: **exactly one result of record has merged.**
+```
+  RESULT-gemini-flash-level5-2026-09-15.md    PR #147 -> 6369997    <- the only one
+  HC stage 1's 11 landed cells                ZERO results of record at the time of that measurement
+```
+
+## §J2 · THE MOVE, AND THE ONE JUDGMENT IN IT
+`RESULT-gemini-flash-level5-2026-09-15.md` carries **7 conditions** with a result of record:
+`crc32-{plain,saltdiet}` · `freelist-{plain,saltdiet}` · `lru-{plain,saltdiet}` · `paxos-plain`.
+```
+  gemini-3.8-flash-high   DONE 7 · OWED 39 · BLOCKED 0 · INEXPR 4   (of its 50 in the 200-view)
+  MATRIX                  DONE 57 · OWED 127 · BLOCKED 0 · INEXPR 16  = 200
+```
+⚖️ **THE JUDGMENT, MADE EXPLICITLY RATHER THAN BURIED IN THE ARITHMETIC: does a HALTED wave, whose own
+result publishes no arm comparison, make its conditions `DONE`?** **Yes — and the reason is this file's
+own §C6(4):** *"It makes no claim about RESULTS — only about which conditions have a result of record.
+Whether the numbers in them support any paper sentence is a separate question and is the paper seat's."*
+⇒ **`DONE` here has always meant "has a result of record", never "has a usable number".** Ruling otherwise
+would silently redefine the column mid-census, which is worse than a debatable 7.
+⛔⛔ **SO THE CAVEATS TRAVEL WITH THE ROW, BECAUSE A BARE `DONE 7` WOULD OVERSTATE WHAT IS IN HAND:**
+```
+  NO ARM COMPARISON IS PUBLISHED   the denominators are not neutral and EVERY missing cell is salt-diet,
+                                   so a rate over them is measured on a treatment arm whose cells were
+                                   removed by an arm-correlated mechanism (its ADDENDUM 1, verbatim)
+  TWO CELLS FULL-PASSED HAVING     l5ls02 and l5ls03 did 65 s and 0 s of model work and sit inside
+  DONE NO MODEL WORK               `lru-saltdiet 2 of 2`. A FULL PASS BY A CELL THAT DID NO WORK IS A
+                                   FACT ABOUT THE TASK, NOT ABOUT THE MODEL.
+  7 OF 14 CONDITIONS NEVER FIRED   21 cells unfired; re-firing them is a SPEND and is not a seat's call
+```
+⇒ 🔑 ***A CONDITION CAN BE `DONE` FOR THIS CENSUS AND USELESS TO THE PAPER, AND KEEPING THOSE TWO
+QUESTIONS APART IS THE ONLY REASON THIS COLUMN MEANS ANYTHING.*** The alternative — a `DONE` that quietly
+encodes "and the numbers are good" — is a column no one can audit.
+
+## §J3 · ⛔ HC STAGE 1 ADDS **ZERO** CONDITIONS, AND I AM REPORTING IT AGAINST MY OWN CAMPAIGN
+```
+  the Captain's axes, verbatim   {plain, salt-diet} x {none, statement, spec-change}
+                                 ==> THERE IS NO PLACEBO AXIS. HC1's placebo arm is not on this grid.
+  §C4, the opus row              greenfield x {plain,salt-diet} x none x 5 problems
+                                 DONE  RESULT-matrix-opus-1  9ffa1a8   (10 conditions)
+  HC stage 1                     claude-opus-5 x greenfield x none, THE SAME FIVE PROBLEMS
+```
+⇒ ***HC STAGE 1'S 45 CELLS ARE A PRE-REGISTERED REPLICATION OF AN ALREADY-`DONE` ROW, PLUS AN ARM THAT IS
+NOT ON THE GRID. A REPLICATION STRENGTHENS A `DONE` CELL; IT DOES NOT ADD ONE.***
+⚠️ **This does NOT make HC1 wasted**, and the design said so in advance: §4(3) of
+`PREDICTIONS-HC-stage1-2026-09-13.md` registers the replication half as deliberately low-information,
+whose value is that **the cells are NEW and fired under a rule fixed in advance** — which matrix #1's
+cells can never retroactively become — and whose cost receipt prices the remaining owed work.
+⛔ **But it does mean HC1 IS NOT THE PATH TO `FULL`, and no one should plan as though it were.** Whether
+the one serial Claude-lane worker stays on it is a CAMPAIGN question and is **reserved to the Captain**.
+⚠️ **A unit confusion to retire on sight:** the phrase *"45 of the 134 owed"* counts **CELLS** against a
+denominator of **CONDITIONS**. The helm has claimed that error as its own; it is recorded here because
+this file is where the denominator lives.
+
+## §J4 · THE 240- AND 200-VIEWS, PUBLISHED SIDE BY SIDE SO NOBODY DERIVES ONE AGAIN
+```
+                        240-view                          200-view (drops brownfield x spec-change, 40)
+  DONE                        57                                57
+  OWED                       127                               127
+  BLOCKED                      0                                 0
+  INEXPRESSIBLE               56                                16
+  ------------------------------------------------------------------------------------
+  TOTAL                      240                               200
+```
+⇒ **The two views differ ONLY in whether the 40 inexpressible `brownfield x spec-change` conditions sit
+inside the denominator.** Every other figure is identical.
+⚠️ **AND THE RESIDUAL THAT CAUSED A FALSE FINDING TODAY IS NAMED AND RUN DOWN TO THE CONDITION:**
+deriving the 200-view from §C5's *11:3x* numbers gives `INEXPR 12` against the live `16`. **The four are
+`claude-sonnet-5 × Paxos × statement`, and they did not exist at 11:3x because THE FOURTH MODEL HAD NOT
+BEEN NAMED YET.**
+```
+  §F2: the inexpressible set is  <any model> x Paxos x statement x {greenfield,brownfield} x {plain,salt-diet}
+  at 11:3x, THREE models known    3 x 2 x 2 = 12
+  after the Captain named Sonnet  4 x 2 x 2 = 16      <- the entire residual, and it is not a disagreement
+```
+⇒ **So the gap is an artefact of deriving from a superseded snapshot, NOT a disagreement between this
+file and the fleet map.** The map has been correct throughout.
+⇒ 🔑 ***A DERIVED VIEW OF A TABLE IS A NEW CLAIM AND IT INHERITS THE CITATION WITHOUT INHERITING THE
+CHECK.*** Both views are now published so no reader has to derive either.
+
+## §J5 · WHAT THIS ADDENDUM DOES NOT DO
+1. **It does not read the level-5 result's cells.** Coverage is that file's own population statement.
+2. **It authorises no wave and no spend.** §F3 stands: spend is the Captain's.
+3. **It does not make the matrix read `FULL`.** 127 owed conditions is not full, and act (2) — the arXiv
+   draft — still does not begin.
