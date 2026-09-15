@@ -117,3 +117,50 @@ UNFIRED — zero model spend.** `exec-registry`: `HALTED-BY-REGISTERED-CRITERION
   condition 6's re-fire   the same. Recommendation on the bus is AGAINST it.
   §F5's gap               a reading-rules question at scoring, NOT a post-data amendment.
 ```
+
+---
+
+# ✅✅ ADDENDUM 1 — **§4 IS SUPERSEDED: THE SCORES ARE NOT VOID. THEY ARE RECOVERED, AND THEY ARE 15 OF 20.**
+## bench, 2026-09-15, ~1 h after this file was cut. **§4 above is left standing and NOT rewritten** — it
+## is the honest record of what was known, and the route out of it is what changed, not the measurement.
+
+## §A1 · THE ROUTE, AND IT CAME FROM THE HELM
+`§4` reported the scores VOID because `cc` on the scoring box refuses on the Xcode licence wall. **The
+helm had measured a route past it and my transcript showed I had never received it** (`DEVELOPER_DIR`:
+0 occurrences against a control of 27):
+```
+  DEVELOPER_DIR=/Library/Developer/CommandLineTools
+  the helm drove it on a real compile AND link: default cc rc 69 · CLT route rc 0 · a binary that runs
+  ⛔ ITS STATED LIMIT: measured for `cc`, UNMEASURED for cargo's BUILD SCRIPTS — "drive it before you trust it"
+```
+✅ **I DROVE THE UNMEASURED CASE, ON THE KNOWN-GOOD CONTROL FIRST.** Level-1 cell `s3cp01`, whose result
+of record reads `3 of 3 FULL PASS, 6/6 tests each`:
+```
+  DEVELOPER_DIR=… run_tests.sh  ->  rc 0 · PASS x5 · TESTS 6/6      ⇒ matches its record EXACTLY
+```
+⇒ **The limit is now measured: the CLT route carries cargo's build scripts.** The control that condemned
+the scores is the same control that cleared them — **run in both directions, an hour apart.**
+
+## §A2 · THE SCORES, RE-RUN WHOLE
+```
+  crc32-plain        3 of 3        crc32-saltdiet       3 of 3
+  freelist-plain     1 of 3        freelist-saltdiet    0 of 3   (1 TRUNCATED)
+  lru-plain          3 of 3        lru-saltdiet         2 of 2   (1 TRUNCATED)
+  paxos-plain        3 of 3
+                                                   ⇒ 15 of 20 FULL PASS
+```
+⚖️ **NO PASS-RATE COMPARISON BETWEEN ARMS IS PUBLISHED HERE, AND THE REASON IS LEVEL 1's, UNCHANGED:**
+the denominators are not neutral (`lru-saltdiet` is 2, not 3 — its third cell is the one that ENDED
+NOT-LANDED on the 400), and **every missing cell is salt-diet.** A rate over those denominators is
+measured on a treatment arm with cells removed by a mechanism whose incidence is itself arm-correlated.
+⛔ **And conditions 6–7 remain capacity-contaminated** (§3): `l5ls02` and `l5ls03` are in the `lru-saltdiet`
+2 of 2 **having done 65 s and 0 s of model work respectively.** ⇒ ***A FULL PASS BY A CELL THAT DID NO
+WORK IS A FACT ABOUT THE TASK, NOT ABOUT THE MODEL***, and it is flagged here rather than pooled away.
+
+## §A3 · WHAT §4's FINDING BECOMES — SMALLER, BUT NOT WRONG
+The wall was real, it did void the scores, and **the block's scope IS wider than registered** — it was
+raised against the Lean toolchain and it silently voids this Rust scoring path, with a green rc. **What
+changes is that it is BOUNDED and has a seat-level route**, not that it was imaginary.
+⇒ 🔑 ***A BLOCK WITH A ROUTE NOBODY ROUTED TO THE BLOCKED PARTY IS INDISTINGUISHABLE, FROM INSIDE, FROM A
+BLOCK WITH NO ROUTE AT ALL.*** I had measured the wall correctly, reported it correctly, and stopped —
+and the thing I was missing was not a measurement but a message.
