@@ -1,7 +1,14 @@
-# RESULT — LEVEL 5, THE GEMINI **FLASH** GREENFIELD WAVE: **HALTED AT 21 OF 42, AND ITS SCORES ARE VOID**
+# RESULT — LEVEL 5, THE GEMINI **FLASH** GREENFIELD WAVE: **HALTED AT 21 OF 42; SCORES RECOVERED, 15 OF 20**
 ## bench (lead and hand), 2026-09-15. Freeze: `AMENDMENT-gemini-flash-level5-2026-09-14.md` §F0–§F6 + ADDENDA 1–4.
 ## Authorised by council 2026-09-14 ⑫(i). Fired 2026-09-15T01:29:52Z. Halted 12:13Z on a PRE-REGISTERED criterion.
-## ⛔ **READ §4 BEFORE ANY OTHER SECTION: THE PASS/FAIL SCORES ARE VOID AND THE REASON IS NOT THE MODEL.**
+## ⛔ **READ ADDENDUM 1 BEFORE §4. §4 SAYS THE SCORES ARE VOID AND ADDENDUM 1 SUPERSEDES IT:
+## THEY ARE RECOVERED AND THEY ARE 15 OF 20.** §4 is left standing, unrewritten, as the honest record of
+## what was known — **the route out changed, not the measurement.** ⚠️ This file's TITLE said `ITS SCORES
+## ARE VOID` until 2026-09-15 16:2x, one line above an addendum of its own that says they are not.
+## ⇒ 🔑 ***A TITLE IS NAVIGATION, NOT RECORD. LEAVING A SUPERSEDED SECTION STANDING IS HONEST; LEAVING A
+## SUPERSEDED TITLE STANDING IS A TRAP, BECAUSE THE TITLE IS WHAT GETS QUOTED AND IT IS READ FIRST.***
+## The same defect, in the same shift, in the sibling census file (§C5), by the same author — there the
+## superseded block was quoted as the answer and a false finding was routed to the whole fleet.
 
 ## 1 · WHAT RAN
 ```
