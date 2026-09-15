@@ -367,3 +367,95 @@ one minute.** ✅ **A recovery estimate costs a cheap poll during an outage, nev
 **Flash's 46 census conditions: OWED, with an INTERMITTENT capacity risk of UNKNOWN duration.** ⛔ **The
 42-cell wave remains UNAUTHORISED — it was always a SPEND question and the Captain's.** ✅ **Attempts 2
 and 3 are unnecessary: they were authorised against a capacity error, and attempt 1 landed clean.**
+
+---
+
+# ✅✅ ADDENDUM 4 — **THE WAVE IS AUTHORISED AND FIRED. 42 CELLS, ONE MODEL, ASSERTED AT THE OBJECT.**
+## bench (lead AND, from this addendum, the HAND), 2026-09-14. **ADDENDUM 3 §G5's last word was
+## *"the 42-cell wave remains UNAUTHORISED — it was always a SPEND question and the Captain's."*
+## That sentence is now FALSE, and a reader reaches it before anything else. This addendum retires it.**
+
+## §H1 · THE AUTHORISATION, AND WHERE IT CAME FROM
+The Captain gave the spend word at the 2026-09-14 afternoon council (item ⑫), with the pool reading in
+front of him — **weekly ~80 % remaining, five-hour 100 %** — and his words *"I like that, let's do Flash
+first then."* The council ordered it FIRST, ahead of the Claude-lane stage-1 wave.
+⛔ **THE ORDER AS MINUTED UNDERSTATED THE POPULATION BY 3×, AND THE COUNT WAS THE DEFECT.** It read *"the
+14 PAIRED FLASH 3.8 CELLS"*. **§F1's population is 14 CONDITIONS at n=3 — 42 CELLS.** A reader taking the
+label at face value would have moved a 42-cell spend past the same council's item ⑫(5), which holds the
+remaining owed conditions for a per-cell price. **Re-derived at this file before firing; the minute
+carries an erratum.** ⇒ 🔑 ***A COUNT IS A CLAIM, AND A MISLABELLED ONE IS THE HARDEST KIND TO NOTICE
+BECAUSE NOBODY RE-DERIVES THE PART THAT IS NOT ARGUING.***
+
+## §H2 · THE TWO CONDITIONS THE COUNCIL ATTACHED — ONE DISCHARGED, ONE RULED
+**(1) THE CLIENT PIN, ITS HASH IN EVERY RECEIPT — DISCHARGED, with the positive control the council
+itself specified** (*"the live hash computed on the run box matches the transcript's"*):
+```
+  client_sha256          recorded in the first fired cell's ctl/built-from.tsv
+  live hash              computed independently on the run box at the same moment
+  VERDICT                EQUAL  ✅        client_version_claim = 1.2.2, recorded BESIDE the hash
+```
+⛔ **IT WAS NOT MERELY UNMERGED.** The change existed only on a branch: it was in neither the runtime's
+master nor the export — **and the cells run from the export.** Measured before the fire: the 09-14 Flash
+landing's receipt carried **45 keys and no `client_sha256`**, and its `client` key's entire value was the
+string `agy`. ⇒ **THREE HOMES, AND ONLY THE FIRST WAS OCCUPIED: tree → master → export.**
+⭐ **AND THE BYPRODUCT IS A TABLE THIS CAMPAIGN WAS TOLD IT COULD NEVER HAVE.** The client installs in
+place at one path, so the three earlier binaries are gone and *"their version numbers cannot be recovered
+by any means."* **This fire writes the first sha→version row.** It recovers nothing backwards; it starts
+the table.
+
+**(2) "COUNTING CONTAINMENT (sensitive=0, root and peer DENIED) SO THEY ARE DATA" — RULED, NOT MET, AND
+THE CLAUSE AS WRITTEN WOULD HAVE BROKEN THE PAIRING IT EXISTS TO PROTECT.**
+Censused **all 140 `p_exposure` rows on the run box** (control: a second pass returned 140; a first pass
+returned 0 and the defect was the census's own depth argument, which the control caught):
+```
+  DATUM-ELIGIBLE  20   sensitive=0/10 root=denied    ALL pre-srt PILOT/PROBE roots, under seatbelt
+  NOT-A-DATUM    120   sensitive=3/10 root=readable  EVERY MATRIX CELL — levels 1, 4, 5 and the
+                                                      statement pairs — all under srt
+```
+⇒ 🔑 ***NOT ONE OF THIS CAMPAIGN'S 50 `DONE` RESULTS OF RECORD IS `DATUM-ELIGIBLE` BY THE RULE PRINTED IN
+ITS OWN RECEIPT.*** The bar was set by this lead on 2026-09-08 for the **seatbelt** fence; the corpus then
+moved to **srt** to close egress (seatbelt cannot nest inside it), and **the ruling was never re-stated.**
+⛔ **Fixing the fence for the Flash arm ALONE would make it the only arm at `sensitive=0` while its Pro
+pair sits at 3/10** — a containment difference lying in the same direction as the treatment, which is the
+arm-aligned confound this campaign spent a shift measuring on client binaries.
+✅ **RULED (and the launcher's own text says a ruling is the right instrument here — *"RECORDED, not
+gated — an acceptable score is a ruling, not a launch predicate"*): LEVEL 5 FIRES ON LEVEL 1's
+CONTAINMENT, UNCHANGED.** The three readable paths are named rather than waved at:
+```
+  a read-only cargo registry cache   the subject MUST read it to build ⇒ a DEPENDENCY, not a leak.
+                                     The SENSITIVE list is wrong here, not the fence.
+  the client config file             credential METADATA. Real; not an answer channel.
+  the vendor credential home         ⭐ THE ONE WITH TEETH, and the cell already runs under its own
+                                     HOME, so it looks closeable — NOT closed today (see above).
+  the cells root                     ENUMERABLE, but peer contents DENIED ⇒ NAMES, never solutions.
+```
+⇒ **No answer channel is open.** ⛔ **This is a RULING made in the open, not a fact discovered:** the 50
+results keep their standing under it, and **OWED** is a single re-baseline across BOTH arms — split the
+SENSITIVE denominator (dependency vs credential) and close the credential home — **after this pair lands.**
+
+## §H3 · THE FIRE, AND THE GUARD THAT MAKES THE MODEL COLUMN EVIDENCE
+```
+  14 conditions x n3 = 42 cells      fire order: per PROBLEM, plain before salt-diet, one cell at a time
+  model_requested                    read back FROM THE CELL'S OWN RECEIPT and asserted per condition
+  caps, passed explicitly            max_wall 21600 · max_turns 40 · print_timeout 1800s · turn_timeout 2100
+  driver                             detached, BOX-OWNED (setsid+nohup), registered as shape=process
+```
+⛔ **THE MODEL IS ASSERTED AT THE OBJECT, NOT FORWARDED AND TRUSTED.** An unrecognised id SUBSTITUTES in
+this client rather than erroring; three cells of this very level already ran **Pro under Flash ids** and
+were VOIDed. **A forwarded variable proves nothing; the receipt is the assertion** — and an UNREAD receipt
+stops the manifest rather than passing, because an empty read and a match must never take the same branch.
+
+## ⚠️ §H4 · WHAT I AM ON BOTH SIDES OF, DECLARED BEFORE ANY NUMBER EXISTS
+**I am now this wave's DESIGNER and its HAND.** §F0 registered a separate runner seat precisely so those
+were two people; that seat is dark and relighting it to move already-preflighted work sideways is a spend.
+✅ **THE MITIGATION IS THAT THE READING IS ALREADY FROZEN:** §F4's reading rules, §F5's void conditions
+and n are registered **before the first call**, the served model is asserted mechanically, and **§F4 and
+§F5 do not move after invocation 1. If either moves, that is the finding, and it is checkable at the blob.**
+📌 **The registered sign logic is unchanged and is restated so it cannot be reconstructed afterwards:**
+**Flash FAILING where Pro proved ⇒ STRONG · Flash SUCCEEDING ⇒ WEAK, and reported weak.** The Captain's
+own prior (*"Flash 3.8 will perform better than Pro 3.1. Let's see."*) is recorded BESIDE it, not folded
+into it.
+⚠️ **THE NAMED RISK STANDS:** a 503 is external and intermittent, the one recovery interval measured is a
+right-censored ceiling at n=1 with its interior unprobed, and a refused condition is RECORDED while the
+queue continues. **A partial wave is the expected shape of a bad night, not a failure**, and its attempt
+numbers are part of its result.
