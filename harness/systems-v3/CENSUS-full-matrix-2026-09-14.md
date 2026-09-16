@@ -74,6 +74,8 @@ adding the two numbers gets the wrong denominator.**
        (Crc32·FreeList·LRU)                    LZW OWED 2 · Paxos INEXPRESSIBLE 2
   greenfield × {plain,salt-diet} × spec-change × 5 problems   OWED                                  10
   brownfield × {plain,salt-diet} × none        × 4 problems   DONE   RESULT-level4 0e66928           8
+       ⛔ SUPERSEDED BY ADDENDUM 6: FreeList and LZW (4 of these 8 conditions) rest on cells whose
+         GIVENS ANNOUNCED THE PLANTED DEFECT ⇒ those 4 revert to OWED. LRU and Paxos (4) stand.
        (FreeList·LRU·LZW·Paxos. Crc32 EXCLUDED as a declared NEGATIVE CONTROL, freeze §G4)  Crc32 OWED 2
   brownfield × {plain,salt-diet} × statement   × 5 problems   OWED (Paxos 2 INEXPRESSIBLE)           10
   brownfield × {plain,salt-diet} × spec-change × 5 problems   class (b)                              10
@@ -100,7 +102,8 @@ adding the two numbers gets the wrong denominator.**
 > ```
 >   THIS BLOCK (11:3x)   DONE 50 · OWED  28 · BLOCKED 110 · INEXPR 52     denominator 240
 >   12:1x (§F1)         DONE 50 · OWED 134 · BLOCKED   0 · INEXPR 16     ** NO CONDITION IS BLOCKED **
->   LIVE (ADDENDUM 5)  DONE 57 · OWED 127 · BLOCKED   0 · INEXPR 16     level 5's 7 flash conditions
+>   ADDENDUM 5        DONE 57 · OWED 127 · BLOCKED   0 · INEXPR 16     level 5's 7 flash conditions
+>   LIVE (ADDENDUM 6) DONE 53 · OWED 131 · BLOCKED   0 · INEXPR 16     4 level-4 conditions reverted
 > ```
 > **Superseded by: the Captain's two words (11:4x) · ADDENDUM 2, the 503 correction (12:0x) · ADDENDUM 3,
 > §B7 row 3 lifted (12:1x).** The numbers below are preserved **because a record of an observation must
@@ -425,3 +428,37 @@ CHECK.*** Both views are now published so no reader has to derive either.
 2. **It authorises no wave and no spend.** §F3 stands: spend is the Captain's.
 3. **It does not make the matrix read `FULL`.** 127 owed conditions is not full, and act (2) — the arXiv
    draft — still does not begin.
+
+
+---
+
+# ⛔ ADDENDUM 6 — **FOUR CONDITIONS REVERT: `DONE 57 → 53`. THE LEVEL-4 FreeList AND LZW CELLS ARE VOID.**
+## bench, 2026-09-15 18:0x. **A correction to ADDENDUM 5, made two hours after it, against my own work.**
+
+## §K1 · WHAT MOVED AND WHY
+`RESULT-gemini-brownfield-level4-2026-09-14.md` ADDENDUM 1 rules **12 of its 24 cells VOID for the
+find-the-defect claim**: the FreeList and LZW brownfield givens announced their own planted defect, in
+plain English, for ~57 hours — a window containing that wave. Confirmed at two different objects by three
+parties, with a control that returns 0 on LRU and Paxos.
+```
+  gemini row, §C4   brownfield x {plain,salt-diet} x none x 4 problems  DONE  8
+                    ⇒ FreeList and LZW are 2 of those 4 problems = 4 CONDITIONS
+  MATRIX            DONE 57 -> 53  ·  OWED 127 -> 131  ·  BLOCKED 0  ·  INEXPR 16   = 200
+```
+**LRU and Paxos (the other 4 conditions) STAND and are not in doubt.**
+
+## §K2 · ⇒ 🔑 THE LESSON IS ABOUT ADDENDUM 5, NOT ABOUT LEVEL 4
+ADDENDUM 5 moved the flash row and **inherited every other row's correctness without checking it** —
+including this one, which was already wrong when I wrote it two hours earlier.
+⇒ ***A CENSUS RE-CUT IS NOT A RE-AUDIT. MOVING ONE ROW SILENTLY RE-ASSERTS ALL THE OTHERS, AND THE
+RE-ASSERTION IS INVISIBLE BECAUSE NOTHING ABOUT THOSE ROWS CHANGED IN THE DIFF.***
+⚠️ This is the DERIVED-VIEW defect one level up, and it is the third instance today: a derived view
+inherits its source's citation without inheriting its source's check.
+✅ **The form that would have caught it:** a re-cut states, per row, whether it was RE-VERIFIED or
+CARRIED. This census now owes that column and does not yet have it — **declared, not quietly fixed.**
+
+## §K3 · WHAT THIS DOES NOT DO
+1. It does not re-fire anything; re-firing 12 cells is a SPEND and is the Captain's.
+2. It does not touch HC stage 1, which is **greenfield** — no brownfield given, no planted defect.
+3. It does not make the matrix read `FULL`. 131 owed conditions is further from full than 127 was, and
+   **that is the honest direction.**
