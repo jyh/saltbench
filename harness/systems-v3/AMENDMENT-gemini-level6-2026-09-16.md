@@ -438,3 +438,79 @@ commit `99439c2`, where they were first pushed, so their pre-verdict text can be
     re-run and a comparability statement against level 5. **Any PTY grant, if the cause requires one, is frozen in the same addendum**,
     so level 6 re-baselines once.
 - **What `c419bdc` still is:** level 6's SCORING sha. The resumption export is named by the addendum that fixes the cause and the fence.
+
+---
+## ⚖️ ADDENDUM 5 — THE FENCE PACKAGE FOR RESUMPTION: the hook route is DETECT-AND-VOID, and the PTY grant is a fork on DIAG-2. APPENDED; §H1–§H7 and ADDENDA 1–4 untouched.
+*bench (lead), 2026-09-16 14:5x PDT. **Registered before DIAG-2 fires**, so A5.4's row is chosen by its reading rather than fitted to it.
+It freezes what ADDENDUM 4 (A4.6) made a precondition of resumption. It goes to a non-author for signature before it binds.*
+
+**A5.1 · THE TWO FAULTS IT REPAIRS** (systems, 2026-09-16, zero spend, on the run box; receipts filed with the builder's runs):
+```
+  PTY        under the sandbox (srt 0.0.76) with no PTY grant, a PTY cannot be opened ("out of pty devices", rc 1): the six
+             block-S Pro cells' and the diagnostic's refusal, reproduced. With the documented boolean `allowPty: true`, it opens.
+  HOOK       the client runs a PreToolUse hook from files the subject can write. Eight tamper routes probed:
+               today's config                                  8 of 8 routes CHANGE the hook
+               + write-deny on the hook script and its         7 of 8 REFUSED; the WORKSPACE hook (repo/.agents/hooks.json)
+                 client-HOME registration                        still changes, because repo/ must stay writable
+               + write-deny on the whole client HOME           no better on the workspace route, and it breaks the client's own state
+```
+
+**A5.2 · ⛔ THE CONTAINMENT CLAIM ON THIS LANE IS RESTATED, WEAKER, BEFORE ANY RESUMED CELL.**
+- **No denial can close the workspace hook route.** The fence therefore claims only this: **a cell whose hook set at END differs from what the
+  launcher installed is VOID(FENCE-TAMPER) and scores nothing.**
+- **It does NOT claim the subject could not reach a web tool during a run.** It claims that a cell which could have, by this route, is voided.
+  Any sentence about web isolation on this lane, in a result or the paper, carries that wording.
+- Write-deny on the hook script and its client-HOME registration is KEPT (it closes 7 of 8 routes, so a tamper must use the one route the END
+  read is built around). The whole-HOME deny is NOT taken.
+- **What is measured about the past, and what is not yet filed:** the builder's stream census read 196 agy streams. It finds writes to a hook
+  path in ONE cell (the uncounted diagnostic), and **48 web-tool CALLS in 14 cells**, several of them in level-3 and level-4 cells.
+  ⛔ **A call is not a served call:** the builder reports 0 of the 48 served, by a second method (hook sha, deny list, result-record
+  presence). **That per-cell receipt is owed as a FILE before any result of record is described as untouched on the web route.** The cells
+  carrying a hook script but no stream read are covered only by the final-bytes census, which cannot see a rewrite that was restored.
+
+**A5.3 · §H6 ROWS 9 AND 10, ADDED — FAULTS, DECIDED WITHOUT READING TESTS, ARM-INDEPENDENT.**
+```
+  9   at END, the primary hook registration is not byte-identical to the launcher's copy taken at launch (held      VOID(FENCE-TAMPER)
+      where the subject cannot write), OR the hook script's sha differs from the canonical, OR ANY other hook
+      registration exists in a path the client loads that the launcher did not write and record
+  10  the END read in row 9 cannot be made                                                                        UNMEASURED(FENCE) — never clean
+```
+- ⛔ **THE ROW IS REGISTERED AGAINST THIS PROPERTY, NOT AGAINST A SCRIPT.** The builder's first cut of the END check (`agy_fence_intact_v3.py`
+  at `741321d`) matched a registered command by SUBSTRING. Driven by the lead on a fixture, it read FENCE-OK for a registration that chains a runner
+  before the canonical script, and for a workspace hook whose command merely names it. **Equality, never containment.** The instrument is cited
+  in A5.6 only at a sha whose selftest carries red arms for both shapes, plus a mutant restoring containment that must flip them.
+- **Its population is the list of paths the client loads**, taken from the client's own strings (the client HOME's two locations and the
+  workspace `.agents` / `.agent` / `_agents` / `_agent` forms) and **cited by file in the instrument's header**. Whether the client loads a
+  workspace hook below the workspace root is answered from the client, not from a glob. A client pin change re-derives the list.
+- **Binds forward:** every agy cell of levels 6, 7 and 8 fired after this addendum merges. **It does not reach back as a void.** Whether any
+  earlier result of record needs a statement about the web route is decided on the owed receipt in A5.2, not by this row.
+
+**A5.4 · THE PTY GRANT — A FORK ON DIAG-2, REGISTERED BEFORE IT FIRES.**
+DIAG-2 is ONE Flash cell from level 5's export `9f650a3`, same condition as the first diagnostic (LZW plain+statement), in a DIAG root,
+uncounted and pooled nowhere. **It fires after HC stage 1's last cell ends** (PREDICTIONS-HC-stage1 §6.1), and it is killed on the first
+subject write to any row-9 path. The lead names the row on its three counts (made · succeeded · refused).
+```
+  DIAG-2 reads                                    cause, as read                      the package
+  >= 1 refused and 0 succeeded   (NO-SHELL)       a lane-side / received change        allowPty: true in every resumed cell's sandbox config
+  >= 1 shell call succeeded      (SHELL-OK)       the export delta 9f650a3 -> 5f70ee8   allowPty stays OFF; the delta is bisected and fixed,
+                                                                                        and the fixing export is the one A5.6 names
+  0 attempts · discarded · unreadable · killed before its first shell call            no row; nothing resumes; a re-fire is the lead's word
+```
+- ⚠️ **If `9f650a3`'s export is no longer on the run box byte-identical to what level 5 ran, DIAG-2 runs from a re-cut, and the reading says so.**
+- **What `allowPty` grants, stated so it is not read as larger:** the sandbox's pseudo-tty allowance (PTY allocation and its terminal ioctls)
+  and nothing else. It is a declared difference from level 5's sandbox configuration.
+
+**A5.5 · COMPARABILITY WITH LEVEL 5 — DECLARED BEFORE ANY RESUMED CELL.** Resumed level-6 cells differ from level 5's in their sandbox
+configuration by: write-deny on the hook script and its registration · the END read (row 9) · and, on A5.4's first row, `allowPty`. **Any
+level-5 ↔ level-6 contrast names these.** Level 5's cells had working shells and unaltered hooks (A3.1; A5.2), so none of the three would have
+voided a level-5 cell — which bounds, but does not remove, the break. **One fence-battery run on the resumption export, per cells root, before
+that root's first cell** (§H6 row 4).
+
+**A5.6 · THE RESUMPTION EXPORT — PENDING.** Named here, with its harness delta from `c419bdc`, once (1) DIAG-2 has picked A5.4's row and (2)
+bare `master` carries, in ONE sha that both FIRES and SCORES: the row-8 shell-count script tracked with its control pair (A4.3) · the row-9 END
+read with the arms in A5.3 · write-deny on the hook script and its registration · `allowPty` per A5.4's row. **Until then nothing fires on the
+agy lane except DIAG-2.**
+
+**A5.7 · LEVEL 7.** Level 7's freeze pins its export to `5f70ee8`, which carries the PTY fault and the open hook route, so **level 7 cannot fire
+from its registered export.** It adopts this package by its OWN addendum, naming A5.6's export and rows 8–10, before its first cell. That
+addendum is owed by the lead and needs its own non-author signature.
