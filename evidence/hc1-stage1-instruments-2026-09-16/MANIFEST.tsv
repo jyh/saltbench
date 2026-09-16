@@ -22,3 +22,4 @@ concurrency/drive_quiet.sh	8de0f8396df69dae	8de0f8396df69dae	verbatim
 concurrency/hc1_concurrency.py	97286310856db077	97286310856db077	verbatim
 lk-wait-census/census.out	9f3a7048c4e74e17	343daec7865e2a78	rewritten
 lk-wait-census/lk_wait_census.py	1f041bf43c0f52fd	e609f00ce4d214ee	rewritten
+concurrency/census-45.out	d12a13232df37c56	d12a13232df37c56	verbatim (re-run over all 45 cells after row 45, 2026-09-16 16:2x PDT)
