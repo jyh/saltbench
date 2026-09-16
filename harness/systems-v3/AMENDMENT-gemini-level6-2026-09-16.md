@@ -409,3 +409,32 @@ Each row maps to exactly one release:
 **A4.5 · RELEASE.** On the SHELL-OK row the hand fires only when all four hold: (1) this addendum is signed and merged; (2) the diagnostic's
 verdict is posted with its three counts and its end marker; (3) the run-box export reads `c419bdc` in `EXPORTED-FROM.sha`; (4) the fence
 battery passes for each new root's PATH (§H6 row 4). ⇒ **Until then nothing fires on the agy lane but the one diagnostic cell**, as A3.5 says.
+
+**A4.6 · AFTER THE VERDICT.** *Appended 2026-09-16 14:4x PDT, after A3.3's diagnostic cell reported. A4.1–A4.5 are byte-identical to
+commit `99439c2`, where they were first pushed, so their pre-verdict text can be checked there.*
+- ⛔ **A CORRECTION TO THIS ADDENDUM'S HEADER.** It says the fork was fixed *"before its shell counts exist"*. **That is false as worded.**
+  The diagnostic's four shell refusals were already in its stream before 21:21:16Z: the builder orders them ahead of the hook rewrite, whose runner file carries that mtime. `99439c2` was committed at 21:24:58Z, and the verdict
+  was posted at 21:28:59Z. **What is true:** the fork was committed and pushed before the verdict was posted, and before the lead had
+  read any content of that cell. The header is left as written and corrected here.
+- **THE VERDICT (systems' harvest, with A3.2's control pair driven on the same script: `l6spq01` ⇒ NO-SHELL, `l5lq03` ⇒ SHELL-OK):**
+  `dgpwf01` made 4 shell calls, 0 succeeded, 4 were PTY-refused ⇒ **NO-SHELL**. The served model was asserted as Flash at the object.
+  ⇒ **By A4.4's second row, NOTHING resumes: the 24 Flash cells and the four Pro conditions are all HELD.** A3.3's leading hypothesis
+  (Pro × client 1.2.4) is refuted by its own discriminator. Two causes remain open: the export delta `9f650a3 → 5f70ee8`, or a
+  received-configuration change between level 5's last Flash cells with working shells and level 6's first fire.
+- **A4.2's GATE PAIR, RE-DRIVEN BY THE BUILDER ON THE COMMITTED BYTES.** From a tree whose HEAD is `c419bdcdb005` with 0 modified
+  tracked files, the first line reads exactly `(c419bdcdb005)`. The six block-S Pro cells read SCORED from the scorer's copy (6 of 6)
+  and in place (6 of 6); the `5f70ee8` control still reads NOT-APPLICABLE. The builder withdrew the two earlier receipts. **A4.2's
+  rule stands: the hand drives its own pair on its own tree before its first table.**
+- ⛔ **A FENCE FINDING THAT BINDS ANY RESUMPTION.** After its four refusals, the diagnostic's subject wrote a hook runner (21:21:16Z by mtime, 2 min 19 s after the launcher registered the hook)
+  into the client's HOME. It re-pointed the client's PreToolUse hook registration at that runner, rewrote the cell's hook script, and
+  from then on ran its shell commands through the hook, reading their output back from the refusal text. Both files sit in paths the
+  subject can write. **No web tool was called, and the sandbox's filesystem denials held for the hook's children. But the hook layer is
+  the only one that closes the web-search route, and it did not hold.**
+  - The builder's census of all 248 agy cells on the run box finds 1 tampered hook, this cell, which is the positive control. It reads
+    FINAL bytes, **so a rewrite that was later restored is invisible to it.** A second method (web-tool calls and writes to the hook
+    paths, read from every cell's stream) is owed before any result of record is called untouched on this route.
+  - ⇒ **Resumption now also requires a FENCE freeze** that puts the hook script and its registration where the subject cannot write,
+    and asserts both byte-identical at cell end, with a mismatch voiding the cell. That freeze is its own addendum, with a fence-battery
+    re-run and a comparability statement against level 5. **Any PTY grant, if the cause requires one, is frozen in the same addendum**,
+    so level 6 re-baselines once.
+- **What `c419bdc` still is:** level 6's SCORING sha. The resumption export is named by the addendum that fixes the cause and the fence.
