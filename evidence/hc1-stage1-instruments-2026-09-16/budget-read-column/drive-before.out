@@ -1,0 +1,6 @@
+FAIL hc1ps02 want=READ-NOT-SEEN got=READ
+FAIL hc1fs01 want=READ-SAW got=READ
+FAIL hc1cs01 want=READ-SAW got=READ
+FAIL hc1cb01 want=READ-NOT-SEEN got=READ
+FAIL hc1fp02 want=READ-SAW got=READ
+arms=5 fail=5

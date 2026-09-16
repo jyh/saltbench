@@ -1,0 +1,11 @@
+ALL BUDGET.md tool_uses in head transcripts (reads AND mentions), by method 2: {'NONE': 41, 'ANY-BUDGET-WORD': 25}
+== NONE
+   ('hc1cb01', '{"command": "echo \\"=== BANK.md ===\\" && cat BANK.md && echo \\"=== BUS.md ===\\" && cat BUS', 'jyh  staff    0 Sep 15 10:49 .keep\\n=== BUDGET ===\\n=== bin ===\\ntotal 56\\ndrwxr-xr-x   5 jyh  staff    160 Sep 15 10:49 .\\ndrwxr-xr-x  20 jyh  staff    640 Sep')
+   ('hc1cb02', '{"command": "ls -la bin tests && cat Cargo.toml && cat LANDING.md.template && cat BUDGET.m', 'ck, review, sub-agent -->\\n---\\n.seat/\\nBUDGET.md\\ntarget/\\nBUS.md merge=union\\n--- bus script ---\\n#!/bin/sh\\n# bus \\u2014 append one line to BUS.md:  bin/bus ')
+   ('hc1cb03', '{"command": "ls -la inbox tests bin; echo \\"=== BUDGET ===\\"; cat BUDGET.md 2>/dev/null; e', 'jyh  staff    0 Sep 15 13:33 .keep\\n=== BUDGET ===\\n=== Cargo.toml ===\\n# Harness-owned. The one build manifest of the cell; identical bytes in both arms (`crc3')
+   ('hc1cp01', '{"command": "echo \\"=== Cargo.toml ===\\" && cat Cargo.toml && echo \\"=== LANDING.md.templa', 'jyh  staff    0 Sep 15 10:07 .keep\\n=== BUDGET ===\\n(no BUDGET.md)\\nzsh:1: operation not permitted: /tmp/claude-501/cwd-84cf"')
+== ANY-BUDGET-WORD
+   ('hc1cb03', '{"command": "cat BUDGET.md", "description": "Check budget"}', '"Exit code 1\\n# BUDGET (written by the harness)\\n\\nphase 1\\ncost (USD): cap 37.21 spent 7.2986 remaining 29.91\\ntokens (a reading, not t')
+   ('hc1cp02', '{"command": "echo \\"=== interface.rs ===\\" && cat interface.rs && echo \\"=== solution.rs =', ' jyh  staff  16015 Sep 15 11:53 rt\\n=== BUDGET ==="')
+   ('hc1cs01', '{"command": "bin/bus \\"BOOTED hc1cs01 Crc32 session 1: read SEAT.md, CLAUDE.md, REQUIREMEN', '\\".seat/\\", \\"target/\\", \\"vendor/\\", \\"BUDGET.md\\", \\".git/\\")\\n\\ndef tree_hash():\\n    \\"\\"\\"A hash of the working tree\'s CONTENT (tracked changes and untrack')
+   ('hc1fb01', '{"command": "cat BUDGET.md; git add -A && git commit -q -m \\"memory: what the next session', '"Exit code 1\\n# BUDGET (written by the harness)\\n\\nphase 1\\ncost (USD): cap 37.21 spent 9.6718 remaining 27.54\\ntokens (a reading, not t')

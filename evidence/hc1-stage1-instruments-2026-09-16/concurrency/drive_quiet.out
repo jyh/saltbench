@@ -1,0 +1,10 @@
+ok   ended fresh cell is quiet (rc 0)
+ok   fresh cell without end marker is LIVE (rc 1)
+ok   stale cell without end marker is quiet (rc 0)
+ok   HC1 cell left to the beat guard (rc 0)
+ok   end-2 is terminal (rc 0)
+ok   a cell silent 20 min reads LIVE (rc 1)
+ok   MUTANT (no end skip) flips the ended-cell arm (rc 1)
+     live: NOT QUIET — 1 non-HC1 cell(s) live by their own ctl/ writes (window 2400s, no end marker): cells-diag-pw-flash-lzw-plain-stmt-2026-09-16/dgpwf01(last write 245s ago)
+     live rc=1
+ARMS 7 of 7
