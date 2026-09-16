@@ -1,0 +1,68 @@
+# RECEIPT — ol_lower_bound_margins.py (git blob f6331b269f0cc4323e005f18a0b073df2bfd02c3) over paper/saltbench-v1.tex (blob 45f8d1979134, origin/main dfa0e6b; sha256/16 of the copy read: 703dc74fb0a79bfd)
+# view: harvest_view_asof.sh 20260910T040648Z (the commit time of aee2fa5, the last change to the tex). Zero model calls.
+view ~/bench-dry/ol-margins-2026-09-16/view-receipt-20260910T040648Z: 105 harvest(s) at or before 20260910T040648Z · 33 later · 25 unstamped (excluded, named above)
+source   paper.tex  (tex blob 45f8d1979134)  appendix rows: 18 conditions, 57 printed prices, 3 underlined (smoke)
+view     ~/bench-dry/ol-margins-2026-09-16/view-receipt-20260910T040648Z  harvests with METER.txt: 104
+matched  57 of 57 printed prices to exactly one harvest, all distinct; the two lower-bound methods agree on 57 of 57
+
+BARE MATRIX (the scoreboard; sign test over 5 problems) -- READING A
+  printed prices 33  lower bounds 13  (plain 10, diet 3)
+  LB  Crc32    plain $  6.21  746d7d4e-20260908T200826Z    tex:560  interrupted records 1  recorded share of cost 0.0906%
+  LB  Crc32    diet  $  6.19  11165871-20260908T190510Z    tex:561  interrupted records 1  recorded share of cost 0.1201%
+  LB  Crc32    diet  $  7.21  3e95075c-20260908T195422Z    tex:561  interrupted records 1  recorded share of cost 0.0954%
+  LB  FreeList plain $ 13.02  188f422b-20260908T192546Z    tex:562  interrupted records 1  recorded share of cost 0.1822%
+  LB  FreeList plain $ 13.77  ae304f63-20260908T171534Z    tex:562  interrupted records 1  recorded share of cost 0.2979%
+  LB  FreeList plain $ 13.01  n301free-20260909T163423Z    tex:562  interrupted records 1  recorded share of cost 0.3509%
+  LB  LRU      plain $  7.75  3bdcbcbd-20260908T194417Z    tex:564  interrupted records 1  recorded share of cost 0.4958%
+  LB  LRU      plain $  9.73  69e8c2c4-20260908T213651Z    tex:564  interrupted records 1  recorded share of cost 0.0808%
+  LB  LZW      plain $ 20.95  c34012e0-20260908T224311Z    tex:566  interrupted records 1  recorded share of cost 0.3654%
+  LB  Paxos    plain $  9.49  60a056e6-20260908T202828Z    tex:570  interrupted records 1  recorded share of cost 0.0583%
+  LB  Paxos    plain $ 14.20  b7537006-20260908T175334Z    tex:570  interrupted records 3  recorded share of cost 0.2463%
+  LB  Paxos    plain $ 16.78  f6462d47-20260909T000532Z    tex:570  interrupted records 1  recorded share of cost 0.0972%
+  LB  Paxos    diet  $ 37.93  6fc49f7c-20260908T204837Z    tex:571  interrupted records 1  recorded share of cost 0.1769%
+  recorded share of cost over these 13 cells: min 0.0583%  max 0.4958%
+  problem  n_pl n_dt  plain_med diet_med  premium  medLB  plain side to 1.0x   plain side to floor  diet side to 1.0x    diet side to floor  
+  Crc32       3    3  $6.21     $7.21     1.1610x both   +16.1% | 178x        -                    -                    +101.4% | 844x      
+  FreeList    4    3  $13.39    $37.60    2.8070x plain  +188.9% | 748x       +39.8% | 123x        -                    -                   
+  LRU         4    3  $8.74     $11.21    1.2826x plain  +61.9% | 359x        -                    -                    none | none         
+  LZW         3    3  $13.95    $19.18    1.3749x --     none | none          -                    -                    none | none         
+  Paxos       4    3  $15.49    $37.65    2.4306x plain  +217.9% | 2244x      +22.2% | 127x        -                    -                   
+
+BARE MATRIX (the scoreboard; sign test over 5 problems) -- READING B
+  printed prices 30  lower bounds 11  (plain 8, diet 3)
+  LB  Crc32    plain $  6.21  746d7d4e-20260908T200826Z    tex:560  interrupted records 1  recorded share of cost 0.0906%
+  LB  Crc32    diet  $  6.19  11165871-20260908T190510Z    tex:561  interrupted records 1  recorded share of cost 0.1201%
+  LB  Crc32    diet  $  7.21  3e95075c-20260908T195422Z    tex:561  interrupted records 1  recorded share of cost 0.0954%
+  LB  FreeList plain $ 13.02  188f422b-20260908T192546Z    tex:562  interrupted records 1  recorded share of cost 0.1822%
+  LB  FreeList plain $ 13.01  n301free-20260909T163423Z    tex:562  interrupted records 1  recorded share of cost 0.3509%
+  LB  LRU      plain $  7.75  3bdcbcbd-20260908T194417Z    tex:564  interrupted records 1  recorded share of cost 0.4958%
+  LB  LRU      plain $  9.73  69e8c2c4-20260908T213651Z    tex:564  interrupted records 1  recorded share of cost 0.0808%
+  LB  LZW      plain $ 20.95  c34012e0-20260908T224311Z    tex:566  interrupted records 1  recorded share of cost 0.3654%
+  LB  Paxos    plain $  9.49  60a056e6-20260908T202828Z    tex:570  interrupted records 1  recorded share of cost 0.0583%
+  LB  Paxos    plain $ 16.78  f6462d47-20260909T000532Z    tex:570  interrupted records 1  recorded share of cost 0.0972%
+  LB  Paxos    diet  $ 37.93  6fc49f7c-20260908T204837Z    tex:571  interrupted records 1  recorded share of cost 0.1769%
+  recorded share of cost over these 11 cells: min 0.0583%  max 0.4958%
+  problem  n_pl n_dt  plain_med diet_med  premium  medLB  plain side to 1.0x   plain side to floor  diet side to 1.0x    diet side to floor  
+  Crc32       3    3  $6.21     $7.21     1.1610x both   +16.1% | 178x        -                    -                    +101.4% | 844x      
+  FreeList    3    3  $13.02    $37.60    2.8879x plain  +189.0% | 1036x      +43.9% | 125x        -                    -                   
+  LRU         3    3  $9.73     $11.21    1.1521x plain  +44.6% | 188x        -                    -                    none | none         
+  LZW         3    3  $13.95    $19.18    1.3749x --     none | none          -                    -                    none | none         
+  Paxos       3    3  $16.78    $37.65    2.2437x plain  +296.7% | 5090x      +11.8% | 121x        -                    -                   
+
+STATEMENT ARM (the paired reading at k=4, plus LZW from the matrix) -- READING A (no underlined cell in this group, so A = B)
+  printed prices 24  lower bounds 6  (plain 3, diet 3)
+  LB  LZW      plain $  9.82  f795e96f-20260909T000933Z    tex:567  interrupted records 1  recorded share of cost 0.4299%
+  LB  LZW      diet  $ 15.34  9aca67c5-20260908T215854Z    tex:569  interrupted records 2  recorded share of cost 0.4425%
+  LB  Crc32    plain $  8.64  st02crc3-20260909T234603Z    tex:573  interrupted records 2  recorded share of cost 0.7579%
+  LB  Crc32    diet  $  8.56  st04crc3-20260909T234604Z    tex:574  interrupted records 1  recorded share of cost 0.3140%
+  LB  FreeList plain $ 17.72  sf01free-20260910T014513Z    tex:575  interrupted records 1  recorded share of cost 0.0639%
+  LB  LRU      diet  $ 18.65  st10lru-20260910T001613Z     tex:578  interrupted records 1  recorded share of cost 0.5048%
+  recorded share of cost over these 6 cells: min 0.0639%  max 0.7579%
+  problem  n_pl n_dt  plain_med diet_med  premium  medLB  plain side to 1.0x   plain side to floor  diet side to 1.0x    diet side to floor  
+  Crc32       3    3  $6.66     $6.25     0.9384x --     -                    -                    none | none          none | none         
+  FreeList    3    3  $18.26    $27.84    1.5246x --     none | none          -                    -                    none | none         
+  LRU         3    3  $9.36     $14.24    1.5214x --     none | none          -                    -                    none | none         
+  LZW         3    3  $10.24    $18.54    1.8105x --     none | none          -                    -                    +34.0% | 77x        
+
+ALL PRINTED PRICES  57  lower bounds 19  (plain 13, diet 6)  recorded share of cost over them: min 0.0583%  max 0.7579%
+# rc=0
