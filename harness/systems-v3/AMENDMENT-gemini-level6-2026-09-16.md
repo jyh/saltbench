@@ -302,9 +302,12 @@ six cells had neither — they are not weak results, they are not results.**
   ```
     >= 1 refused and 0 succeeded     VOID(NO-SHELL)
     >= 1 succeeded (any refused)     NOT void; the refused count is REPORTED per cell
-    0 shell calls attempted          NOT void; reported as NO-SHELL-ATTEMPTED — a subject that never reached for a shell was not denied
-                                     one, and its cell is scored as it stands
+    0 shell calls attempted          UNMEASURED(NO-SHELL) — never clean. A client that stops asking after refusals, or never offers
+                                     the tool, is the fault in its MOST degraded form and makes no refusal to key on. Such a cell is
+                                     scored only after the lead reads its client log and states, per cell, why no shell was attempted.
   ```
+  ⛔ **Rewritten before signature** (the helm, 12:39): an earlier head of this addendum scored the zero-attempt state as it stood, so the
+  rule would have been blind to its own fault exactly where the denial was most complete. Silence there resolves to clean, so it is closed.
 - **IT BINDS FORWARD, BY LEVEL AND BY SHA:** every level-6 cell, from `5f70ee8` and from any export A3.5 names; and level 7's cells, from
   whichever export level 7's own addendum names. It does not reach back to levels 1–5, whose cells had shells (A3.1).
 - **THE INSTRUMENT IS OWED BEFORE THE ROW IS APPLIED TO ANY FURTHER CELL:** a tracked script in the harness repo that prints, per cell,
