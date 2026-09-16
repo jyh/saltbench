@@ -18,7 +18,9 @@
                     tasks/systems-v3/{LZW,LRU,Paxos}/ and that carries the any-503 supervisor
                     (gemini_canary_wave_v1.sh). Measured: `e5f7126` differs from `eacb9ec` under those
                     task dirs ONLY in LZW/brownfield/solution.rs, which no level-6 condition builds.
-                    One sha for all 36 cells, recorded.
+                    ⛔ AND the export MUST carry the launcher's P-DELIVERY repair (§H4.5): the token is never
+                    written to ctl/launch.log, and the uniqueness walk re-runs immediately before the client
+                    spawns. No sha without it qualifies. One sha for all 36 cells, recorded.
   5  FIRE ORDER     by expected discrimination (§H2), under the council's any-503 rule.
   6  USAGE          `gemini` reads agy /usage at each fire and bank (council 09-16 ③b); bench consumes it.
 ```
@@ -105,6 +107,14 @@ arm is a treatment; it is held constant here so its incidence is readable, and i
    this lane proves the arm FILE was opened, not that the METHOD was read.** `ctl/` holds no withheld test and no other arm's
    material, and both arms are equally exposed. **This level fires on the same fence**, because the fix is its own fence
    freeze; the per-cell `ctl/` read census is a REPORTED column (§H8), and no delivery claim is made from P-DELIVERY alone.
+5. ⛔⛔ **A THIRD ROUTE TO THE TOKEN, AND IT IS REPAIRED BEFORE THIS LEVEL FIRES, NOT DECLARED** (systems, 2026-09-16 09:31):
+   the launcher's own line *"ack token … lives ONLY in the cell's briefing file"* tees the token into `ctl/launch.log` BEFORE the
+   client starts — 101 of 122 file-mode cells carry it, and 29 level-5 subjects opened that log. The build-time uniqueness walk
+   is correct when it runs; `launch.log` does not exist yet. ⇒ **The line asserting the token has one home was its second home.**
+   ✅ **REQUIRED IN THE EXPORT (§H0 row 4):** the log line carries a hash of the token, never the token, and the launcher re-runs
+   the uniqueness walk right before spawn, refusing on a second home. ⇒ **A cell whose `ctl/launch.log` contains the raw token
+   is VOID** (§H6 row 7). ⚠️ Whether any level-5 P-DELIVERY is unsupported (a `launch.log` read before the first echo with no arm-
+   file read) is a separate sizing for level 5's result of record, and is not decided here.
 
 ---
 
@@ -127,6 +137,7 @@ export sha recorded · no USD · an unmetered cell is a row, not a smaller denom
   4  the fence battery does not pass for the cell's PATH                  DO NOT FIRE
   5  a 503 inside the cell                                                DISCARD per the council's any-503 rule
   6  CAP-TOKENS · CELL-KILLED · TURNS-CUT                                 NOT void: reported per arm
+  7  ctl/launch.log contains the raw P-DELIVERY token (§H4.5)             VOID
 ```
 
 ## §H7 · WHAT THIS LEVEL CANNOT ESTABLISH, SAID BEFORE ANY DATA
