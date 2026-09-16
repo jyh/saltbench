@@ -18,9 +18,12 @@
                     tasks/systems-v3/{LZW,LRU,Paxos}/ and that carries the any-503 supervisor
                     (gemini_canary_wave_v1.sh). Measured: `e5f7126` differs from `eacb9ec` under those
                     task dirs ONLY in LZW/brownfield/solution.rs, which no level-6 condition builds.
-                    ⛔ AND the export MUST carry the launcher's P-DELIVERY repair (§H4.5): the token is never
-                    written to ctl/launch.log, and the uniqueness walk re-runs immediately before the client
-                    spawns. No sha without it qualifies. One sha for all 36 cells, recorded.
+                    ⛔ AND the export MUST carry the P-DELIVERY repair (§H4.5), all three parts: (i) the token's
+                    derivation file lives OUTSIDE the cell tree, in a root sibling the fence denies (e.g.
+                    <root>/_receipts/<id>), and ctl/briefing-claim names no path the subject can open; (ii) the
+                    token is never written to ctl/launch.log; (iii) the uniqueness walk re-runs immediately before
+                    the client spawns, with NO exempted file. No sha without all three qualifies.
+                    One sha for all 36 cells, recorded.
   5  FIRE ORDER     by expected discrimination (§H2), under the council's any-503 rule.
   6  USAGE          `gemini` reads agy /usage at each fire and bank (council 09-16 ③b); bench consumes it.
 ```
@@ -111,9 +114,14 @@ arm is a treatment; it is held constant here so its incidence is readable, and i
    the launcher's own line *"ack token … lives ONLY in the cell's briefing file"* tees the token into `ctl/launch.log` BEFORE the
    client starts — 101 of 122 file-mode cells carry it, and 29 level-5 subjects opened that log. The build-time uniqueness walk
    is correct when it runs; `launch.log` does not exist yet. ⇒ **The line asserting the token has one home was its second home.**
-   ✅ **REQUIRED IN THE EXPORT (§H0 row 4):** the log line carries a hash of the token, never the token, and the launcher re-runs
-   the uniqueness walk right before spawn, refusing on a second home. ⇒ **A cell whose `ctl/launch.log` contains the raw token
-   is VOID** (§H6 row 7). ⚠️ Whether any level-5 P-DELIVERY is unsupported (a `launch.log` read before the first echo with no arm-
+   ⛔ **AND THE ROUTE IS SIGNPOSTED** (systems, 09:33): `ctl/briefing-claim` — opened by 32 of 41 level-5 subjects — says in words
+   *"Its briefing receipt token is in ctl/briefing-nonce"*, the ONE file the build-time walk exempts by name. ⇒ ***The note written
+   to avoid quoting the token gave the subject directions to it*** — a guard that catches a quoted VALUE cannot catch a POINTER
+   whose target is the file it was told to ignore. **So a log fix alone does not close P-DELIVERY.**
+   ✅ **REQUIRED IN THE EXPORT (§H0 row 4), ALL THREE:** the derivation file moves out of the cell to a fence-denied root sibling,
+   and the claim file names no subject-readable path · the log line carries no token · the launcher re-runs the uniqueness walk
+   right before spawn with NO exemption, refusing on any second home. ⇒ **A cell whose tree contains the raw token anywhere but
+   the arm file — `ctl/launch.log`, `ctl/briefing-nonce` or any other path — is VOID** (§H6 row 7). ⚠️ Whether any level-5 P-DELIVERY is unsupported (a `launch.log` read before the first echo with no arm-
    file read) is a separate sizing for level 5's result of record, and is not decided here.
 
 ---
@@ -137,7 +145,7 @@ export sha recorded · no USD · an unmetered cell is a row, not a smaller denom
   4  the fence battery does not pass for the cell's PATH                  DO NOT FIRE
   5  a 503 inside the cell                                                DISCARD per the council's any-503 rule
   6  CAP-TOKENS · CELL-KILLED · TURNS-CUT                                 NOT void: reported per arm
-  7  ctl/launch.log contains the raw P-DELIVERY token (§H4.5)             VOID
+  7  the raw P-DELIVERY token occurs in the cell tree outside the arm file VOID  (§H4.5; ctl/ included)
 ```
 
 ## §H7 · WHAT THIS LEVEL CANNOT ESTABLISH, SAID BEFORE ANY DATA
