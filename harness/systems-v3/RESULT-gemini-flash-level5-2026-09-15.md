@@ -188,3 +188,56 @@ the discharge was reported to me, and a reported fix is a claim about a box I ca
 PLAIN scorer tests the claim; quoting ADDENDUM 1's numbers would only have re-quoted my own.**
 📌 **Operationally: conditions 6–8 and the 21 unfired cells need NO toolchain workaround when they are
 re-fired** — the scoring path is clean at source.
+
+
+---
+
+# ✅✅ ADDENDUM 3 — **LEVEL 5 IS COMPLETE: 27 OF 27 CELLS LANDED AND SCORED, 25 FULL PASS**
+## bench (lead), 2026-09-16. `gemini` was the hand; the wave ran 14 h 44 m unattended and ended rc=0.
+## **Every figure below was re-read by the lead from the per-condition receipt files, not retyped from
+## the hand's report.** The hand's report was correct in every figure checked.
+
+## §C1 · THE NINE CONDITIONS
+```
+  condition                  attempt  FULL PASS   tests                 truncated
+  lru-saltdiet   (re-fire)      3       3 of 3    16/16 x3                  0
+  paxos-plain    (re-fire)      1       2 of 3    17/17, 17/17, 16/17       0
+  paxos-saltdiet (re-fire)      2       2 of 3    17/17, 17/17, 16/17       1
+  crc32-plain-stmt              1       3 of 3    6/6 x3                    0
+  crc32-saltdiet-stmt           1       3 of 3    6/6 x3                    0
+  freelist-plain-stmt           1       3 of 3    7/7 x3                    0
+  freelist-saltdiet-stmt        1       3 of 3    7/7 x3                    0
+  lru-plain-stmt                1       3 of 3    16/16 x3                  0
+  lru-saltdiet-stmt             1       3 of 3    16/16 x3                  0
+  -----------------------------------------------------------------------------------
+  27 cells . 27 LANDED . 25 FULL PASS . 2 FAIL (both Paxos, both 16/17) . TRUNCATED 1
+```
+⛔ **THIS IS NOT A COLUMN TO SUM.** It holds two populations: three **re-fired** conditions that replace
+503-contaminated conditions of this wave's first run, and six **new** statement conditions.
+
+## §C2 · ⛔ THE STATEMENT ARM IS AT A CEILING, AND THAT IS A PROPERTY OF THE SCORED POPULATION
+**18 of 18 statement cells passed every test**, with 0 truncations. ⇒ **The pass-rate instrument cannot
+produce a difference between arms on these tasks.** A measurement with no variance is not a weak one but
+an absent one, and no increase in n lifts it. The correct entry is therefore **not** "no difference
+found" but **"this instrument cannot produce a difference"** — a limitation of the scored population.
+⚠️ The controls that went red were drawn from other tasks. That proves the red path is live **in the run**;
+it does not prove **these tasks** can go red. A task that has never failed is one whose difficulty is
+unmeasured, not one shown to be passable.
+⚠️ **A "margin" cannot rescue this from the pass side**: distance-to-failure is undefined for a cell at
+n/n. The instrument that measures it is mutation analysis, which is a spend and not a re-read.
+
+## §C3 · TRUNCATION, AS A COUNT
+```
+  plain       0 of 21 cells  (7 conditions)
+  salt-diet   4 of 23 cells  (8 conditions)
+```
+All-treatment, zero-control, in every wave measured. **This is a COUNT and is not claimed as an effect.**
+A per-turn deadline can only bind the arm whose turns run longer, so the two arms are not measured under
+the same regime. For TOKENS the bias is conservative (a cut turn understates salt-diet's T, pushing any
+premium down); for CORRECTNESS its sign is unmeasured. **It is owed a registration before the next wave,
+so that it can be tested rather than accumulated.**
+
+## §C4 · WHAT THIS ADDENDUM DOES NOT DO
+1. **No arm contrast, ratio or premium is computed** (§F4 rule 1).
+2. `l5psra202`'s cost figures remain **unpoolable** (truncated; its PASS stands as a floor).
+3. `l5psr01` remains a **recorded set-aside**: citable, never tabled.
