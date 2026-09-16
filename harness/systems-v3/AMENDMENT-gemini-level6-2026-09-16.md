@@ -279,3 +279,61 @@ link on the box it fires from before the first cell**; a wave that announces its
 
 **A2.4 · RELEASE.** On this addendum's merge the hand fires level 6 from `5f70ee8`, in §H2's order — **block S, then B, then G** — under the
 any-503 rule, and delivers §H8's receipts plus one token-scan receipt per cell. The lead scores and re-cuts the census in the same commit.
+
+---
+## ⚖️ ADDENDUM 3 — THE HALT: a NO-SHELL fault row, and a scorer gate that tests the layout, not the tree. APPENDED; §H1–§H7's text untouched.
+*bench (lead), 2026-09-16. Written after the hand halted the wave at 19:30Z with zero model spend lost, and BEFORE any level-6 table
+was read by the lead. **It adds a void row to §H6, so it goes to a non-author for signature before it binds.***
+
+**A3.1 · WHAT THE HAND MEASURED** (gemini, 2026-09-16, per-call accounting from each cell's `ctl/stream-1.ndjson`, read-only on the run box):
+all six block-S Pro cells (`l6spq01-03`, `l6spt01-03`) made 5–14 shell (`run_command`) calls each and **0 succeeded**: every one was refused
+with `failed to create PTY: operation not permitted`. Level-5 Flash cells on the same client binary succeeded on every shell call, and so
+did level-4 Pro cells on the earlier client. A subject's own LANDING.md named the cause. **The method of record is shell + build, and these
+six cells had neither — they are not weak results, they are not results.**
+
+**A3.2 · §H6 ROW 8, ADDED — A HARNESS FAULT, DECIDED ON THE TOOL RECORD ALONE.**
+```
+  8  the cell made >= 1 shell call refused by the sandbox and 0 shell calls succeeded      VOID(NO-SHELL)
+```
+- **It is a fault, not an outcome.** It is decided from the tool-call record and never from the withheld suite. The lead set it for the six
+  cells **without reading their TESTS column**, and it is arm-independent: both arms of block S are affected alike. **A VOID(NO-SHELL) cell is
+  never counted as a failure, a pass, or a denominator entry in any table** — it is a row in the fault census, like every other §H6 void.
+- **THE THREE STATES, SO NONE IS INFERRED:**
+  ```
+    >= 1 refused and 0 succeeded     VOID(NO-SHELL)
+    >= 1 succeeded (any refused)     NOT void; the refused count is REPORTED per cell
+    0 shell calls attempted          UNMEASURED(NO-SHELL) — never clean. A client that stops asking after refusals, or never offers
+                                     the tool, is the fault in its MOST degraded form and makes no refusal to key on. Such a cell is
+                                     scored only after the lead reads its client log and states, per cell, why no shell was attempted.
+  ```
+  ⛔ **Rewritten before signature** (the helm, 12:39): an earlier head of this addendum scored the zero-attempt state as it stood, so the
+  rule would have been blind to its own fault exactly where the denial was most complete. Silence there resolves to clean, so it is closed.
+- **IT BINDS FORWARD, BY LEVEL AND BY SHA:** every level-6 cell, from `5f70ee8` and from any export A3.5 names; and level 7's cells, from
+  whichever export level 7's own addendum names. It does not reach back to levels 1–5, whose cells had shells (A3.1).
+- **THE INSTRUMENT IS OWED BEFORE THE ROW IS APPLIED TO ANY FURTHER CELL:** a tracked script in the harness repo that prints, per cell,
+  shell calls made · succeeded · sandbox-refused, from `ctl/stream-<phase>.ndjson`, with its **control pair driven and filed**: `l6spq01` ⇒ VOID
+  and `l5lq03` ⇒ not. Until it is tracked, row 8 on any other cell is **UNMEASURED(NO-SHELL)**, never clean.
+- **The six block-S Pro cells are VOID(NO-SHELL) on the hand's measurement**, which the tracked instrument re-derives before the result
+  is written.
+
+**A3.3 · THE CAUSE IS OPEN, AND NOTHING FIRES ON A GUESS.** The leading hypothesis is *model × client 1.2.4 (Pro asks for a PTY; Flash does not)*.
+- **Evidence for it:** the launcher delta from level 5's export (`9f650a3`) to `5f70ee8` changes nothing about how the client is spawned
+  beyond the `_receipts` read denial.
+- **Evidence it is not the settings:** the sandbox refuses a PTY under level 5's settings too (the hand's zero-spend probe).
+- **The discriminator:** one uncounted diagnostic Flash cell on `5f70ee8`, in a `DIAG` root and pooled nowhere, if a zero-spend read cannot
+  settle it.
+- ⛔ **Granting PTYs in the sandbox is a FENCE change.** It is registered here as NOT TAKEN: taking it needs its own addendum, a fence-battery
+  re-run, and a declared comparability break against level 5.
+
+**A3.4 · THE SCORER — A FIRST-LINE GATE PROVES WHICH TREE SCORED, NOT THAT THE TREE CAN READ THE LAYOUT.**
+- **The defect:** at `5f70ee8`, `score_wave_v3.sh` copies `ctl/` alone. The verdict reader looks for the record at `<parent>/_receipts/<id>`,
+  absent in the copy, and returns **NOT-APPLICABLE**, a SCORABLE verdict.
+- **Driven both ways by the hand:** in place, 6 of 6 SCORED; the ctl-only copy of `l6spq01` came back NOT-APPLICABLE. **So this scorer could
+  never report a VOID, and ADDENDUM 2's first-line gate passed it** — the line did name `5f70ee8`.
+- ✅ **THE GATE, ADDED:** before any level-6 or level-7 table is read, ONE real cell must score **SCORED both IN PLACE and FROM THE
+  SCORER'S OWN COPY**, run by the scorer that will produce the table. Both receipts are filed beside the first line's.
+- **The repaired scorer's sha is named in A3.5 when it lands. No level-6 table is read before then.**
+
+**A3.5 · THE EXPORT FOR RESUMPTION — PENDING.** Named here, with its harness delta from `5f70ee8`, once the scorer fix lands (and, if taken,
+whatever A3.3 decides). **Until A3.5 is filled and this addendum is signed and merged, nothing fires on the agy lane except A3.3's one
+diagnostic cell.**
