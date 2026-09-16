@@ -196,3 +196,48 @@ the brownfield primary separator, per cell, never averaged across problems).
 ```
 ⇒ **The lead scores and writes the result of record, and RE-CUTS THE MATRIX CENSUS IN THE SAME COMMIT** (council 09-16 ⑤d).
 Any public sentence, and any claim about the method, is the Captain's.
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (76th head), 2026-09-16 11:5x PDT
+
+**SIGNED AT BLOB `7801a1c5952abc1bf1afb87990ade3e3aaefeda9`**, resolved at `c1d3910:harness/systems-v3/AMENDMENT-gemini-level7-2026-09-16.md` — **byte-identical to the blob the freeze post pinned.** Read WHOLE (198 lines). Registered on `blocked-on-helm` by the lead at 11:49:53 and discharged by this section.
+
+### WHAT I DROVE AT THE OBJECT — each with a control, none taken from the file's own word
+```
+  1  BLOB IDENTITY      c1d3910:<this file> = 7801a1c59…  == the pinned blob                     ✅
+  2  §K0.4 ANCESTRY     eacb9ec · b444453 · 5fa1178 · e501aba · 8ffa393 each
+                        `merge-base --is-ancestor <sha> 5f70ee8` rc 0 at the BARE repo           ✅ 5 of 5
+  3  §K0.4 TASK TREES   git diff eacb9ec 5f70ee8 -- the four task trees = 0 lines                ✅
+       control          the same diff against level 4's export ecd3924 = 95 lines — the
+                        instrument can return non-zero, so the 0 is a reading and not a silence  ✅
+  4  §K0.4 TELLS        level 4's two literal tells: FreeList 0 · LZW 0 at 5f70ee8;
+                        FreeList 1 · LZW 1 at ecd3924 — the control discriminates                ✅
+       control          both givens readable and non-empty at BOTH shas (FreeList 192/192,
+                        LZW 100/101 lines) — a zero from an unreadable path is not a zero        ✅
+  5  §K1 ARITHMETIC     8+12+8 = 28 conditions; at n=3, 24+36+24 = 84 cells. Internally
+                        consistent, and each block's count follows from its own factors          ✅
+  6  §K3 RECEIPT        branch bench/l7-statement-localisation-2026-09-16 @ f88cfe3 EXISTS and
+                        its README's verdict table matches this amendment CELL FOR CELL —
+                        Crc32 3/5 NARROWS · FreeList 2/5 NARROWS · LRU 0/4 · LZW 0/4 NEUTRAL     ✅
+  7  §K3 CHRONOLOGY     the load-bearing independence claim, driven at the bare: latest
+                        statement commit 311b208 @ 2026-09-09 16:10:33 is STRICTLY EARLIER
+                        than the earliest seed commit 2fada07 @ 2026-09-13 08:18:04 — a
+                        ~3.7-day gap. "No statement could have been written with its defect
+                        in view" HOLDS at the object                                             ✅
+```
+
+### ⛔ WHAT I DID **NOT** VERIFY, NAMED SO THIS SIGNATURE IS NOT READ WIDER THAN IT IS
+1. **The M2 readings themselves.** The receipt says plainly that *"M2 is a reading of each mutant's diff, not a program."* I verified that the receipt EXISTS and that its table AGREES with this amendment; **I did not independently re-read the 18 sibling mutants.** That judgment is the lead's and this signature does not ratify it.
+2. **The tell audit's 5-of-5 clean at `5f70ee8` and its planted-comment REFUSE control** — read as claims, not re-run.
+3. **§K0 row 8's preflight** (`--plan` × 28, four dry builds, the Paxos RED control, the audit): it fires **before the first cell** and does not exist yet. Nothing here says it will pass.
+4. **The withheld suites, the killer counts, and every rendered-bytes figure** in the receipt.
+⇒ **This signature covers the freeze's INTEGRITY — that it is pinned, internally consistent, and that its stated object-level facts are true at the objects.** It does not cover the wave's execution, and it is not a second opinion on the science.
+
+### 📌 ONE OBSERVATION, NOT AN OBJECTION — recorded so the RESULT's reader is not surprised
+**Block C is 24 of the 84 cells — 29 % of the wave — and is pre-registered AT CEILING**, while §K6 rule 11 and §K8.5 say a ceiling is `UNRESOLVED-BY-CEILING` and *"says nothing about the arms."* **That is declared honestly and in advance, which is the right form**, and firing it LAST is the right sequencing: a capacity halt then costs the least informative block. I record it only because *"28 conditions / 84 cells"* reads as 84 cells of evidence, and by this file's own rules up to 24 of them may resolve nothing about the arms. **It still completes matrix cells, which is the Captain's stated top priority, so the spend is justified on completion grounds rather than on discrimination grounds** — and those are two different justifications that a result table will not distinguish.
+⭐ **And the thing I would have flagged if it were missing, found present:** BS's registered reading is *arm within condition* (§K6 rule 12), so the Crc32/FreeList statement-precision confound of §K3 item 2 is **common to both arms of every BS contrast** and cannot drive the comparison this level actually makes. The confound is real, declared, and structurally inert here — which is why rule 12 is load-bearing and not boilerplate.
+
+**⇒ SIGNED. No cell fires on this file before §K0 row 7 (level 6's chain ends) and row 8 (the preflight receipts).**
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
