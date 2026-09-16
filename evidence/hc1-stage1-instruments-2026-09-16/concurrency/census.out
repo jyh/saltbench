@@ -1,0 +1,170 @@
+population: 428 cell dirs with ctl/ · 411 with a readable window · 44 HC1 cells
+hc1cp01 09-15T17:17..17:47  30.0min END  other-cells=0  hc1-overlap=0  
+hc1cb01 09-15T17:50..18:15  25.6min END  other-cells=1  hc1-overlap=0  
+        4.7 min  agy    cells-l5-lru-saltdiet-refire.DISCARDED-503-2026-09-15T17:54:39Z/l5lsr01 NOEND
+hc1cs01 09-15T18:18..18:48  29.6min END  other-cells=0  hc1-overlap=0  
+hc1cp02 09-15T18:54..19:26  31.6min END  other-cells=1  hc1-overlap=0  
+        1.2 min  agy    cells-l5-lru-saltdiet-refire-a2.DISCARDED-503-2026-09-15T18:55:46Z/l5lsra201 NOEND
+hc1cb02 09-15T19:29..19:45  15.5min END  other-cells=0  hc1-overlap=0  
+hc1cs02 09-15T19:46..20:12  26.6min END  other-cells=3  hc1-overlap=0  
+       16.4 min  agy    cells-l5-lru-saltdiet-refire-a3/l5lsra301 
+       16.3 min  agy    cells-l5-lru-saltdiet-refire-a3/l5lsra302 
+       16.3 min  agy    cells-l5-lru-saltdiet-refire-a3/l5lsra303 
+hc1cp03 09-15T20:14..20:33  18.5min END  other-cells=3  hc1-overlap=0  
+       18.5 min  agy    cells-l5-lru-saltdiet-refire-a3/l5lsra303 
+       15.7 min  agy    cells-l5-lru-saltdiet-refire-a3/l5lsra302 
+        0.9 min  agy    cells-l5-lru-saltdiet-refire-a3/l5lsra301 
+hc1cb03 09-15T20:33..20:56  22.6min END  other-cells=1  hc1-overlap=0  
+       22.6 min  agy    cells-l5-lru-saltdiet-refire-a3/l5lsra303 
+hc1cs03 09-15T20:57..21:20  23.6min END  other-cells=4  hc1-overlap=0  
+       18.2 min  agy    cells-l5-paxos-plain-refire/l5ppr03 
+       13.3 min  agy    cells-l5-paxos-plain-refire/l5ppr02 
+        6.0 min  agy    cells-l5-paxos-plain-refire/l5ppr01 
+        4.7 min  agy    cells-l5-lru-saltdiet-refire-a3/l5lsra303 
+hc1fp01 09-15T21:23..21:58  35.6min END  other-cells=4  hc1-overlap=0  
+       31.7 min  agy    cells-l5-paxos-plain-refire/l5ppr03 
+        2.7 min  agy    cells-l5-paxos-saltdiet-refire.DISCARDED-503-2026-09-15T22:38:57Z/l5psr01 
+        0.1 min  agy    cells-l5-paxos-saltdiet-refire.DISCARDED-503-2026-09-15T22:38:57Z/l5psr03 NOEND
+        0.0 min  agy    cells-l5-paxos-saltdiet-refire.DISCARDED-503-2026-09-15T22:38:57Z/l5psr02 NOEND
+hc1fb01 09-15T22:21..22:52  30.6min END  other-cells=0  hc1-overlap=0  
+hc1fs01 09-15T22:54..23:47  52.7min END  other-cells=3  hc1-overlap=0  
+        8.0 min  agy    cells-l5-paxos-saltdiet-refire-a2/l5psra201 
+        7.9 min  agy    cells-l5-paxos-saltdiet-refire-a2/l5psra202 
+        7.9 min  agy    cells-l5-paxos-saltdiet-refire-a2/l5psra203 
+hc1fp02 09-15T23:51..01:09  78.9min END  other-cells=3  hc1-overlap=0  
+       78.9 min  agy    cells-l5-paxos-saltdiet-refire-a2/l5psra203 
+       78.9 min  agy    cells-l5-paxos-saltdiet-refire-a2/l5psra202 
+        8.8 min  agy    cells-l5-paxos-saltdiet-refire-a2/l5psra201 
+hc1fb02 09-16T01:21..01:45  24.6min END  other-cells=5  hc1-overlap=0  
+       22.2 min  agy    cells-l5-paxos-saltdiet-refire-a2/l5psra203 
+        1.9 min  agy    cells-l5-paxos-saltdiet-refire-a2/l5psra202 
+        1.8 min  agy    cells-l5-crc32-plain-stmt/l5cq01 
+        1.8 min  agy    cells-l5-crc32-plain-stmt/l5cq02 
+        1.7 min  agy    cells-l5-crc32-plain-stmt/l5cq03 
+hc1fs02 09-16T01:48..02:47  58.8min END  other-cells=6  hc1-overlap=0  
+       43.3 min  agy    cells-l5-crc32-plain-stmt/l5cq03 
+       14.5 min  agy    cells-l5-crc32-saltdiet-stmt/l5ct02 
+       14.5 min  agy    cells-l5-crc32-saltdiet-stmt/l5ct03 
+       10.5 min  agy    cells-l5-crc32-saltdiet-stmt/l5ct01 
+        4.5 min  agy    cells-l5-crc32-plain-stmt/l5cq02 
+        0.3 min  agy    cells-l5-crc32-plain-stmt/l5cq01 
+hc1fp03 09-16T02:52..03:20  28.6min END  other-cells=2  hc1-overlap=0  
+       28.6 min  agy    cells-l5-crc32-saltdiet-stmt/l5ct03 
+        4.3 min  agy    cells-l5-crc32-saltdiet-stmt/l5ct02 
+hc1fb03 09-16T03:25..03:58  33.6min END  other-cells=4  hc1-overlap=0  
+       21.9 min  agy    cells-l5-freelist-plain-stmt/l5fq03 
+       11.5 min  agy    cells-l5-freelist-plain-stmt/l5fq02 
+       11.3 min  agy    cells-l5-crc32-saltdiet-stmt/l5ct03 
+        5.8 min  agy    cells-l5-freelist-plain-stmt/l5fq01 
+hc1fs03 09-16T04:00..05:39  99.0min END  other-cells=4  hc1-overlap=0  
+       72.4 min  agy    cells-l5-freelist-saltdiet-stmt/l5ft03 
+       72.0 min  agy    cells-l5-freelist-saltdiet-stmt/l5ft02 
+       26.1 min  agy    cells-l5-freelist-plain-stmt/l5fq03 
+       13.1 min  agy    cells-l5-freelist-saltdiet-stmt/l5ft01 
+hc1lp01 09-16T06:02..06:37  34.6min END  other-cells=4  hc1-overlap=0  
+       20.1 min  agy    cells-l5-freelist-saltdiet-stmt/l5ft03 
+       13.5 min  agy    cells-l5-lru-plain-stmt/l5lq03 
+       13.1 min  agy    cells-l5-lru-plain-stmt/l5lq02 
+        6.5 min  agy    cells-l5-lru-plain-stmt/l5lq01 
+hc1lb01 09-16T06:38..06:53  15.5min END  other-cells=1  hc1-overlap=0  
+       15.5 min  agy    cells-l5-lru-plain-stmt/l5lq03 
+hc1ls01 09-16T06:55..07:23  27.6min END  other-cells=4  hc1-overlap=0  
+       17.2 min  agy    cells-l5-lru-plain-stmt/l5lq03 
+        9.4 min  agy    cells-l5-lru-saltdiet-stmt/l5lt01 
+        9.3 min  agy    cells-l5-lru-saltdiet-stmt/l5lt02 
+        9.3 min  agy    cells-l5-lru-saltdiet-stmt/l5lt03 
+hc1lp02 09-16T07:25..07:49  23.6min END  other-cells=3  hc1-overlap=0  
+       23.6 min  agy    cells-l5-lru-saltdiet-stmt/l5lt03 
+       23.6 min  agy    cells-l5-lru-saltdiet-stmt/l5lt02 
+        6.1 min  agy    cells-l5-lru-saltdiet-stmt/l5lt01 
+hc1lb02 09-16T07:50..08:11  21.6min END  other-cells=2  hc1-overlap=0  
+       21.6 min  agy    cells-l5-lru-saltdiet-stmt/l5lt03 
+       21.6 min  agy    cells-l5-lru-saltdiet-stmt/l5lt02 
+hc1ls02 09-16T08:13..08:38  24.6min END  other-cells=2  hc1-overlap=0  
+       19.1 min  agy    cells-l5-lru-saltdiet-stmt/l5lt03 
+        5.3 min  agy    cells-l5-lru-saltdiet-stmt/l5lt02 
+hc1lp03 09-16T08:39..09:00  21.6min END  other-cells=0  hc1-overlap=0  
+hc1lb03 09-16T09:02..09:25  22.6min END  other-cells=0  hc1-overlap=0  
+hc1ls03 09-16T09:26..09:54  27.6min END  other-cells=0  hc1-overlap=0  
+hc1zp01 09-16T09:56..10:21  25.6min END  other-cells=0  hc1-overlap=0  
+hc1zb01 09-16T10:23..11:00  36.6min END  other-cells=0  hc1-overlap=0  
+hc1zs01 09-16T11:01..11:30  29.6min END  other-cells=0  hc1-overlap=0  
+hc1zp02 09-16T11:32..11:55  23.6min END  other-cells=0  hc1-overlap=0  
+hc1zb02 09-16T11:59..12:29  30.6min END  other-cells=0  hc1-overlap=0  
+hc1zs02 09-16T12:30..13:15  44.7min END  other-cells=0  hc1-overlap=0  
+hc1zp03 09-16T13:16..13:38  22.6min END  other-cells=0  hc1-overlap=0  
+hc1zb03 09-16T13:39..14:05  25.6min END  other-cells=0  hc1-overlap=0  
+hc1zs03 09-16T14:06..14:50  44.7min END  other-cells=0  hc1-overlap=0  
+hc1pp01 09-16T14:52..16:17  85.9min END  other-cells=0  hc1-overlap=0  
+hc1pb01 09-16T16:19..16:47  28.6min END  other-cells=0  hc1-overlap=0  
+hc1ps01 09-16T16:48..17:41  52.7min END  other-cells=0  hc1-overlap=0  
+hc1pp02 09-16T17:42..18:24  42.7min END  other-cells=6  hc1-overlap=0  
+       14.8 min  agy    cells-l6-lzw-pro-plain-stmt/l6spq03 
+       10.5 min  agy    cells-l6-lzw-pro-plain-stmt/l6spq02 
+        6.2 min  agy    cells-l6-lzw-pro-plain-stmt/l6spq01 
+        1.3 min  agy    cells-l6-lzw-pro-salt-stmt/l6spt01 
+        1.2 min  agy    cells-l6-lzw-pro-salt-stmt/l6spt02 
+        1.2 min  agy    cells-l6-lzw-pro-salt-stmt/l6spt03 
+hc1pb02 09-16T18:27..19:32  64.8min END  other-cells=6  hc1-overlap=0  
+       58.6 min  agy    cells-l6-lzw-pro-salt-stmt/l6spt03 
+       43.4 min  agy    cells-l6-lzw-pro-salt-stmt/l6spt02 
+        2.2 min  agy    cells-l6-lzw-pro-salt-stmt/l6spt01 
+        0.1 min  agy    cells-l6-lzw-flash-plain-stmt.HALTED-NOSHELL-2026-09-16T19:30:51Z/l6sfq02 NOEND
+        0.1 min  agy    cells-l6-lzw-flash-plain-stmt.HALTED-NOSHELL-2026-09-16T19:30:51Z/l6sfq03 NOEND
+        0.0 min  agy    cells-l6-lzw-flash-plain-stmt.HALTED-NOSHELL-2026-09-16T19:30:51Z/l6sfq01 NOEND
+hc1ps02 09-16T19:33..20:30  56.8min END  other-cells=0  hc1-overlap=0  
+hc1pp03 09-16T20:35..21:13  37.6min END  other-cells=0  hc1-overlap=0  
+hc1pb03 09-16T21:17..21:26   9.4min NOEND  other-cells=1  hc1-overlap=0  
+        6.4 min  agy    cells-diag-pw-flash-lzw-plain-stmt-2026-09-16/dgpwf01 NOEND
+HC1 cells with >=1 overlapping non-HC1 cell: 23 of 44
+
+AT-FIRE and EXPOSURE per HC1 cell: shared = minutes of the window during which >=1 other cell ran (union, not a sum)
+  hc1cp01 plain     window  30.0 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1cb01 placebo   window  25.6 min · shared   4.7 min ( 18%) · at fire: l5lsr01
+  hc1cs01 salt-diet window  29.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1cp02 plain     window  31.6 min · shared   1.2 min (  4%) · at fire: l5lsra201
+  hc1cb02 placebo   window  15.5 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1cs02 salt-diet window  26.6 min · shared  16.4 min ( 62%) · at fire: quiet
+  hc1cp03 plain     window  18.5 min · shared  18.5 min (100%) · at fire: l5lsra301, l5lsra302, l5lsra303
+  hc1cb03 placebo   window  22.6 min · shared  22.6 min (100%) · at fire: l5lsra303
+  hc1cs03 salt-diet window  23.6 min · shared  23.0 min ( 98%) · at fire: l5lsra303
+  hc1fp01 plain     window  35.6 min · shared  34.4 min ( 96%) · at fire: l5ppr03
+  hc1fb01 placebo   window  30.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1fs01 salt-diet window  52.7 min · shared   8.0 min ( 15%) · at fire: quiet
+  hc1fp02 plain     window  78.9 min · shared  78.9 min (100%) · at fire: l5psra201, l5psra202, l5psra203
+  hc1fb02 placebo   window  24.6 min · shared  24.0 min ( 98%) · at fire: l5psra202, l5psra203
+  hc1fs02 salt-diet window  58.8 min · shared  57.9 min ( 98%) · at fire: l5cq01, l5cq02, l5cq03
+  hc1fp03 plain     window  28.6 min · shared  28.6 min (100%) · at fire: l5ct02, l5ct03
+  hc1fb03 placebo   window  33.6 min · shared  33.2 min ( 99%) · at fire: l5ct03
+  hc1fs03 salt-diet window  99.0 min · shared  98.5 min (100%) · at fire: l5fq03
+  hc1lp01 plain     window  34.6 min · shared  33.7 min ( 97%) · at fire: l5ft03
+  hc1lb01 placebo   window  15.5 min · shared  15.5 min (100%) · at fire: l5lq03
+  hc1ls01 salt-diet window  27.6 min · shared  26.6 min ( 96%) · at fire: l5lq03
+  hc1lp02 plain     window  23.6 min · shared  23.6 min (100%) · at fire: l5lt01, l5lt02, l5lt03
+  hc1lb02 placebo   window  21.6 min · shared  21.6 min (100%) · at fire: l5lt02, l5lt03
+  hc1ls02 salt-diet window  24.6 min · shared  19.1 min ( 77%) · at fire: l5lt02, l5lt03
+  hc1lp03 plain     window  21.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1lb03 placebo   window  22.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1ls03 salt-diet window  27.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1zp01 plain     window  25.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1zb01 placebo   window  36.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1zs01 salt-diet window  29.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1zp02 plain     window  23.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1zb02 placebo   window  30.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1zs02 salt-diet window  44.7 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1zp03 plain     window  22.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1zb03 placebo   window  25.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1zs03 salt-diet window  44.7 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1pp01 plain     window  85.9 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1pb01 placebo   window  28.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1ps01 salt-diet window  52.7 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1pp02 plain     window  42.7 min · shared  16.2 min ( 38%) · at fire: quiet
+  hc1pb02 placebo   window  64.8 min · shared  58.8 min ( 91%) · at fire: l6spt01, l6spt02, l6spt03
+  hc1ps02 salt-diet window  56.8 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1pp03 plain     window  37.6 min · shared   0.0 min (  0%) · at fire: quiet
+  hc1pb03 placebo   window   9.4 min · shared   6.4 min ( 68%) · at fire: quiet
+
+PER ARM: cells · cells with any overlap · cells NOT quiet at fire · shared minutes / window minutes
+  plain     15 cells ·  8 overlapped · 7 not quiet at fire ·  235.1 /  540.9 min = 43.5%
+  placebo   15 cells ·  8 overlapped · 7 not quiet at fire ·  186.7 /  407.7 min = 45.8%
+  salt-diet 14 cells ·  7 overlapped · 5 not quiet at fire ·  249.4 /  598.4 min = 41.7%

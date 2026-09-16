@@ -1,0 +1,51 @@
+population: 43 HC1 cell dirs; needle 'rt: a build is already running here; waiting for it'; control = the needle occurs in the cell's own bin/rt
+hc1cb01   Crc32     placebo   END   jsonl=3  wait_lines=4   fleet_wrapper_mentions=0   rt_control=True
+hc1cb02   Crc32     placebo   END   jsonl=3  wait_lines=4   fleet_wrapper_mentions=0   rt_control=True
+hc1cb03   Crc32     placebo   END   jsonl=3  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1cp01.FAILED-BUILD-no-cargo-on-path-2026-09-15T1643Z ?         ?         LIVE  jsonl=0  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1cp01.NO-RUN-auth-dead-v3-<account>-2026-09-15T1653Z Crc32     plain     LIVE  jsonl=0  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1cp01   Crc32     plain     END   jsonl=4  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1cp02   Crc32     plain     END   jsonl=4  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1cp03   Crc32     plain     END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1cs01   Crc32     salt-diet END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1cs02   Crc32     salt-diet END   jsonl=3  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1cs03   Crc32     salt-diet END   jsonl=3  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1fb01   FreeList  placebo   END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1fb02   FreeList  placebo   END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1fb03   FreeList  placebo   END   jsonl=3  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1fp01   FreeList  plain     END   jsonl=4  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1fp02   FreeList  plain     END   jsonl=4  wait_lines=6   fleet_wrapper_mentions=0   rt_control=True
+hc1fp03   FreeList  plain     END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1fs01   FreeList  salt-diet END   jsonl=4  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1fs02   FreeList  salt-diet END   jsonl=3  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1fs03   FreeList  salt-diet END   jsonl=5  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1lb01   LRU       placebo   END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1lb02   LRU       placebo   END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1lb03   LRU       placebo   END   jsonl=3  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1lp01   LRU       plain     END   jsonl=4  wait_lines=4   fleet_wrapper_mentions=0   rt_control=True
+hc1lp02   LRU       plain     END   jsonl=3  wait_lines=4   fleet_wrapper_mentions=0   rt_control=True
+hc1lp03   LRU       plain     END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1ls01   LRU       salt-diet END   jsonl=2  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1ls02   LRU       salt-diet END   jsonl=2  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1ls03   LRU       salt-diet END   jsonl=2  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1zb01   LZW       placebo   END   jsonl=3  wait_lines=4   fleet_wrapper_mentions=0   rt_control=True
+hc1zb02   LZW       placebo   END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1zb03   LZW       placebo   END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1zp01   LZW       plain     END   jsonl=3  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1zp02   LZW       plain     END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1zp03   LZW       plain     END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1zs01   LZW       salt-diet END   jsonl=2  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1zs02   LZW       salt-diet END   jsonl=3  wait_lines=2   fleet_wrapper_mentions=0   rt_control=True
+hc1zs03   LZW       salt-diet END   jsonl=3  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1pb01   Paxos     placebo   END   jsonl=3  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1pb02   Paxos     placebo   LIVE  jsonl=2  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1pp01   Paxos     plain     END   jsonl=3  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+hc1pp02   Paxos     plain     END   jsonl=3  wait_lines=4   fleet_wrapper_mentions=0   rt_control=True
+hc1ps01   Paxos     salt-diet END   jsonl=3  wait_lines=0   fleet_wrapper_mentions=0   rt_control=True
+
+per arm, ENDED cells only:  arm  cells  cells_with_a_wait  wait_lines  cells_mentioning_fleet_wrapper
+  placebo    13   9   24   0
+  plain      14  12   34   0
+  salt-diet  13   5   10   0
+rt control failed or absent for: none
+ENDED cells with NO transcript found (UNMEASURED, not zero): none

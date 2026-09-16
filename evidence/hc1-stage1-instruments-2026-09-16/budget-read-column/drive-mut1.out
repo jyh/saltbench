@@ -1,0 +1,6 @@
+PASS hc1ps02 column=READ-NOT-SEEN
+FAIL hc1fs01 want=READ-SAW got=READ-NOT-SEEN
+FAIL hc1cs01 want=READ-SAW got=READ-NOT-SEEN
+PASS hc1cb01 column=READ-NOT-SEEN
+FAIL hc1fp02 want=READ-SAW got=READ-NOT-SEEN
+arms=5 fail=3

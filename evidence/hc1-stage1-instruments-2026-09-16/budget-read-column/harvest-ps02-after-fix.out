@@ -1,0 +1,37 @@
+=== CELL hc1ps02  Paxos / salt-diet / n2
+--- ctl/arm=salt-diet  ctl/card_extras=none
+--- TERMINAL MARKER (its own text, never summarised):
+    2026-09-16T20:30:24Z LANDED landing-1 ddc0d19e493b
+    CLASS: LANDED
+--- METER (input / cache_creation / cache_read / output, SEPARATELY — the Captain's row 3):
+    slug $HOME/<run-config-dir>/projects/-Users-jyh-cells-hc1-paxos-saltdiet-hc1ps02-repo
+    heads 1 sidechains 2 workflows 0 records 236 unparsable 0
+    T_head 50316856  T_exec claude-opus-5=699399  T_wf 0  T 51016255
+    COST $36.76  COST_head $34.87  COST_exec claude-opus-5=$1.89  COST_wf $0.00  rates rates.tsv read_on 2026-09-05 (modelled at list rates, not an invoice)
+    compactions 0  jsonl_undercount 0  synthetic -  models claude-opus-5=236
+    FOLD assistant lines 355 over 236 records (100 written in more than one line, copies max 3): MAX per usage key, UNION of the blocks — output +42954 and tool calls +101 over a first-line reading; tool calls 235; non-monotone copies 0; bucket-straddling records 0
+    INTERRUPT stop_reason=null records 0 (T 0, output 0) · stop_reason key present on 236/236 records · iterations key present on 236/236 · usage-without-iterations records 0 · markers disagree 0 · no interrupted turn in this slug: the sum above is not understated by this cause
+    RECEIPT bucket model records input cache_creation(5m/1h) cache_read output T share_T COST share_COST
+    RECEIPT head claude-opus-5 records 216 input 432 cache_creation 349601 (0/349601) cache_read 49706151 output 260672 T 50316856 99% COST $34.87 95%
+    RECEIPT exec claude-opus-5 records 20 input 40 cache_creation 78080 (78080/0) cache_read 576656 output 44623 T 699399 1% COST $1.89 5%
+    HEAD SHARE: T 99% · COST 95% · the head's own T: cache_read 99% input 0% output 1% cache_creation 1%
+--- UNDERSTATEMENT, BOUNDED (the interrupted record's share of T):
+    no interrupted turn in this cell: the total is a PRICE, not a bound
+--- BUDGET.md READ? (the §3b column that disambiguates a NEAR-CAP landing):
+    BUDGET.md present in the subject's cwd
+      BUDGET.md READ BY THE SUBJECT : 1   (Read 0 + Bash-with-a-read-verb 1 + other tool 0)
+      NOT reads, counted separately : mention-only-in-Bash 2 · mention-in-a-payload 0 · tool_result 3 · assistant text 0 · arm/system text 0
+      records containing the string : 6   unparsable 0
+      RETURNED THE COUNTDOWN         : 0 of 1 reads   (the rest returned no countdown: missing file / empty output)
+      §3b COLUMN                    : READ-NOT-SEEN   (scope: this transcript only; sub-agent transcripts are NOT read)
+      ⚠️  1 read(s) returned NO countdown, at: line 34 2026-09-16T19:33:50.785Z
+      ⚠️  THE REGISTERED CRITERION ('a Read tool call') WOULD SCORE THIS **NO-READ** AND BE WRONG.
+          line 34     Bash_read              cat BUDGET.md 2>/dev/null
+          line 38     Bash_mention_only      ls BUDGET.md 2>
+          line 41     Bash_mention_only      ls BUDGET.md 2>
+--- GIT (did the subject actually commit work?):
+    ddc0d19 landing 1: Paxos single-decree Synod: an executable model behind the fixed interface with a machine-checked safety proof. agreement (R1) and validity (R2) proved in Verus over an inductive invariant built on Lamport's SafeAt; all four interface functions verified, step_enabled both sound and complete, so R3's 'admits exactly the steps' holds in both directions. verus_guard OK, 73 verified 0 errors, TESTS 48/48. A sealed refuter broke the first statement twice and a reviewer found a third defect; all are fixed and recorded. Statement 3 ratified, tag statement-3.
+    99d8c73 Paxos: LANDING.md Claims lines in the shape bin/declare parses
+    2ebcae2 Paxos: LANDING.md and the bank at the landing
+    3bb230b Paxos: the reviewer's six findings filed; statement 3 RATIFIED
+    78da491 Paxos: accepting no longer raises the acceptor's promise
