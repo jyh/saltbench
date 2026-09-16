@@ -103,7 +103,8 @@ adding the two numbers gets the wrong denominator.**
 >   THIS BLOCK (11:3x)   DONE 50 · OWED  28 · BLOCKED 110 · INEXPR 52     denominator 240
 >   12:1x (§F1)         DONE 50 · OWED 134 · BLOCKED   0 · INEXPR 16     ** NO CONDITION IS BLOCKED **
 >   ADDENDUM 5        DONE 57 · OWED 127 · BLOCKED   0 · INEXPR 16     level 5's 7 flash conditions
->   LIVE (ADDENDUM 6) DONE 53 · OWED 131 · BLOCKED   0 · INEXPR 16     4 level-4 conditions reverted
+>   ADDENDUM 6        DONE 53 · OWED 131 · BLOCKED   0 · INEXPR 16     4 level-4 conditions reverted
+>   LIVE (ADDENDUM 7) DONE 60 · OWED 124 · BLOCKED   0 · INEXPR 16     level 5 complete: +7 flash conditions
 > ```
 > **Superseded by: the Captain's two words (11:4x) · ADDENDUM 2, the 503 correction (12:0x) · ADDENDUM 3,
 > §B7 row 3 lifted (12:1x).** The numbers below are preserved **because a record of an observation must
@@ -462,3 +463,41 @@ CARRIED. This census now owes that column and does not yet have it — **declare
 2. It does not touch HC stage 1, which is **greenfield** — no brownfield given, no planted defect.
 3. It does not make the matrix read `FULL`. 131 owed conditions is further from full than 127 was, and
    **that is the honest direction.**
+
+
+---
+
+# ✅ ADDENDUM 7 — **LEVEL 5 COMPLETES: `DONE 53 → 60`, FLASH `7 → 14`**
+## bench, 2026-09-16. **Moved in the SAME COMMIT as the result of record it counts**, so the two land
+## under one sha and this census never reads ahead of its evidence. ⚠️ The first draft of this line said
+## "moved because a result of record merged" — untrue at the moment of writing, since that result is in
+## this commit. Atomic landing is the stronger guarantee and the accurate one.
+
+## §M1 · THE ARITHMETIC, WITH ITS REASONING, BECAUSE A BARE NUMBER HERE HAS BEEN WRONG BEFORE
+ADDENDUM 5 counted **7** flash conditions, all under the `none` treatment:
+`crc32-{plain,saltdiet}` · `freelist-{plain,saltdiet}` · `lru-{plain,saltdiet}` · `paxos-plain`.
+The completed wave (`RESULT-gemini-flash-level5-2026-09-15.md` ADDENDUM 3) carries nine conditions:
+```
+  paxos-saltdiet (none)          NOT among the 7                                  +1
+  6 statement conditions         statement IS a registered axis; only
+    crc32/freelist/lru           Paxos x statement is inexpressible               +6
+    x {plain, salt-diet}
+  lru-saltdiet, paxos-plain      re-fires of conditions ALREADY counted; they
+    (re-fires)                   replace contaminated cells, they add none         0
+  ----------------------------------------------------------------------------------
+                                                                                   +7
+  gemini-3.8-flash-high   DONE 14 · OWED 32 · BLOCKED 0 · INEXPR 4   (of its 50 in the 200-view)
+  MATRIX                  DONE 60 · OWED 124 · BLOCKED 0 · INEXPR 16  = 200
+```
+
+## §M2 · ⛔ SIX OF THE SEVEN ARE DONE AND CANNOT DISCRIMINATE, AND THE COLUMN MUST NOT HIDE IT
+The six statement conditions are `DONE` by this file's rule — **`DONE` means "has a result of record",
+never "has a usable number"** (§C6(4)). **All six sit at a pass-rate CEILING** (18 of 18 cells passed
+every test). ⇒ **They count toward `FULL`. They contribute no arm contrast on pass rate.**
+⇒ 🔑 ***A MATRIX CAN READ FULL AND STILL BE UNABLE TO ANSWER THE QUESTION IT WAS BUILT FOR.*** The
+census tracks coverage; whether coverage yields a comparison is the paper's question, and this addendum
+records the gap rather than letting the count close it silently.
+
+## §M3 · WHAT THIS DOES NOT DO
+1. It authorises no spend. 2. It does not make the matrix read `FULL`: 124 owed conditions is not full.
+3. It does not revisit the level-4 void of ADDENDUM 6, which stands.
