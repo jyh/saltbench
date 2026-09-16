@@ -24,9 +24,34 @@ name: Abstract
 # seven words longer, took it to 1,929 -- NINE OVER. The edit that added a whole clause stayed
 # inside; the one that rephrased a sentence did not. NOBODY MEASURES A REPHRASING AGAINST A
 # LENGTH CAP, which is the whole argument for doing it mechanically on every push.
+# ⛔ AN ALLOW-LIST, NOT A `paths-ignore`, AND THE DIFFERENCE IS THE WHOLE POINT.
+#   A DENY-LIST asks "which paths are NOT inputs?" -- open-ended, and a wrong answer is SILENT: the
+#   heavy job simply stops running on something that mattered. An ALLOW-LIST asks "what can this
+#   checker SEE?" -- closed, answerable at the object, and it fails CLOSED.
+#   MEASURED AT THE OBJECT before this filter was written:
+#     `scripts/check_abstract_length.py:48`  DEFAULT = "paper/saltbench-v1.tex"  -- one file,
+#     in `paper/`, and it reads nothing else.
+#   ⇒ this job is STRUCTURALLY INCAPABLE of detecting anything outside `paper/`, so listing `paper/**`
+#     is not a bet about build inputs -- it is a statement of what the checker can read.
+# ⛔ THE THREE NON-`paper` ENTRIES ARE LOAD-BEARING AND A SWEEP WOULD MISS THEM: filter to `paper/**`
+#   alone and A CHANGE TO THE CHECKER ITSELF STOPS RUNNING THE CHECKER -- the deny-list failure mode
+#   reappearing inside the allow-list.
+# ✅ `scrub.yml` IS DELIBERATELY NOT FILTERED. It carries both REQUIRED checks, and GitHub reads a
+#   SKIPPED required check as PENDING, which hangs a merge forever. Never put a path filter on it.
+# ⭐ THIS COMMIT IS ITS OWN POSITIVE CONTROL: it edits a workflow file, which IS in the list below,
+#   so both jobs MUST run on this PR. If they are skipped here, the filter is wrong and says so
+#   immediately rather than silently a week from now.
 on:
   push:
+    paths:
+      - 'paper/**'
+      - 'scripts/check_abstract_length.py'
+      - '.github/workflows/abstract.yml'
   pull_request:
+    paths:
+      - 'paper/**'
+      - 'scripts/check_abstract_length.py'
+      - '.github/workflows/abstract.yml'
   workflow_dispatch:
 
 permissions:
