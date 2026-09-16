@@ -1,0 +1,4 @@
+cross-tab over every BUDGET.md tool_use in 42 head transcripts (method 1 = countdown regex, method 2 = the file's own header line):
+   ('countdown-regex', 'header') 13
+   ('countdown-regex', 'no-header') 3
+   ('no-regex', 'no-header') 50
