@@ -130,6 +130,34 @@ def scan(rows: list[tuple[str, str]]) -> list[tuple[str, int, str]]:
     return found
 
 
+# ⛔⛔ THE FINDING LINE WITHHOLDS THE MATCHED TEXT — desk row `PX`, the Captain's word 2026-09-16
+#   ("yes, accept rec"), executed by the 79th helm head.
+#
+#   WHY. This gate exists to stop an infrastructure name entering a PUBLIC repo. Until this change it
+#   REPORTED each finding as `  <file>:<line>: <the whole matched line>` — and on a public repo that
+#   report lands in a world-readable Actions log. ⇒ 🔑 THE MECHANISM BUILT TO STOP A PRIVATE STRING
+#   ENTERING THE RECORD PUBLISHED A SAMPLE OF EXACTLY WHAT IT CAUGHT.
+#
+#   ⭐ DRIVEN BEFORE THE CHANGE, ON A SCRATCH REPO: a planted line printed the account name, the home
+#   path AND an unrelated marker that happened to share the line. **The leak is not bounded by the
+#   name it matched** — it is the whole line, to 160 characters.
+#
+#   ⭐ MEASURED AT THE FORGE, the reason this was not hypothetical: across 92 failed Scrub runs on the
+#   five gated public repos, 25 carried a gate FAIL block, and the home-directory / host / account
+#   classes appear in saltbench runs ONLY — because this file is the only UNTRUNCATED echoer and it
+#   runs in this repo alone (404 in salt, saltworks, jas, x86lean).
+#
+#   ⛔ WHAT IS KEPT, AND WHY IT IS NOT A BARE COUNT. Row I(c) (08/31) already paid for that mistake:
+#   *"a count is not a scope; the verdict carries its scope or it carries nothing."* A fixer needs to
+#   find the occurrence, so the FILE and the LINE NUMBER stay. What goes is the TEXT.
+_FINDING_LABEL = "an infrastructure name (account or host)"
+
+
+def finding_line(rel: str, i: int) -> str:
+    """The one place a finding is rendered. File + line + CATEGORY, never the matched text."""
+    return f"  {rel}:{i}: {_FINDING_LABEL}"
+
+
 def self_test() -> int:
     failures = []
     # 1. The empty set is FATAL, first.
@@ -161,13 +189,45 @@ def self_test() -> int:
     me = pathlib.Path(__file__).read_text(encoding="utf-8")
     if scan([("scripts/check_infra_names.py", me)]):
         failures.append("this file must not spell the name it forbids")
+    # 5. ⛔⛔ THE FINDING LINE MUST NOT CARRY THE MATCHED TEXT — desk `PX`. This is the arm that makes
+    #    the withholding a PROPERTY and not a habit: the renderer is driven on a real finding and the
+    #    output is checked for the very thing it must never contain.
+    #    ⚠️ THE LEAK WAS NEVER BOUNDED BY THE NAME IT MATCHED — the old form printed the WHOLE line, so
+    #    anything sharing that line went to a public log too. The control below plants exactly that:
+    #    a secret-shaped neighbour with no infrastructure name of its own.
+    planted_name = "salt" + "forge"
+    neighbour = "SIDECAR-SECRET-XYZ"
+    probe_line = f"export CFG=/Users/jyh/.claude-account-{planted_name}/x  # {neighbour}"
+    hits = scan([("cfg.sh", probe_line + "\n")])
+    if len(hits) != 1:
+        failures.append("the finding-line probe must produce exactly one hit to render")
+    else:
+        rel, i, matched = hits[0]
+        rendered = finding_line(rel, i)
+        if planted_name in rendered:
+            failures.append("the finding line LEAKS the matched infrastructure name")
+        if neighbour in rendered:
+            failures.append("the finding line LEAKS a neighbour string sharing the matched line")
+        if matched in rendered:
+            failures.append("the finding line LEAKS the matched text")
+        # ⭐ AND IT MUST STILL BE ACTIONABLE — row I(c): a count is not a scope. A renderer that
+        #   withheld the file or the line number would pass every check above and be useless.
+        if f"{rel}:{i}" not in rendered:
+            failures.append("the finding line must still name the FILE and the LINE NUMBER")
+        # ⭐ THE VACUITY CONTROL: the old form must FAIL the very checks the new form passes, or the
+        #   arm proves nothing about the change.
+        old_form = f"  {rel}:{i}: {matched}"
+        if planted_name not in old_form or neighbour not in old_form:
+            failures.append("CONTROL: the pre-change form should have leaked; this arm is vacuous")
+
     for f in failures:
         print(f"SELF-TEST FAIL: {f}")
     if failures:
         return 1
     print(f"check_infra_names SELF-TEST: OK (empty scan fatal proven FIRST, "
           f"{len(FORBIDDEN) * 5} planted forms caught across {len(FORBIDDEN)} name(s), "
-          f"the shrunk-set tripwire fires, an author byline passes, role words pass, self clean)")
+          f"the shrunk-set tripwire fires, an author byline passes, role words pass, self clean, "
+          f"the finding line withholds the matched text and still names file:line)")
     return 0
 
 
@@ -309,8 +369,8 @@ def range_mode(rev_range: str) -> int:
     """The arm CI runs on a push: what THIS delta adds, against nothing."""
     rows = added_rows(*rev_range.split("..", 1)) if ".." in rev_range else added_rows(EMPTY_TREE, rev_range)
     found = scan(rows)
-    for rel, i, line in found:
-        print(f"  {rel}:{i}: {line}")
+    for rel, i, _line in found:
+        print(finding_line(rel, i))
     if found:
         print(f"FAIL: {len(found)} infrastructure-name occurrence(s) added by {rev_range}")
         return 1
@@ -347,8 +407,8 @@ def main() -> int:
         print("FAIL: zero tracked text files -- refusing to call an empty scan clean")
         return 1
     found = scan(rows)
-    for rel, i, line in found:
-        print(f"  {rel}:{i}: {line}")
+    for rel, i, _line in found:
+        print(finding_line(rel, i))
     if found:
         print(f"FAIL: {len(found)} infrastructure-name occurrence(s) in {len({r for r, _, _ in found})} file(s)")
         return 1
