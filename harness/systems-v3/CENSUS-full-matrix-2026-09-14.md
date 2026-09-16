@@ -109,7 +109,8 @@ adding the two numbers gets the wrong denominator.**
 >   12:1x (§F1)         DONE 50 · OWED 134 · BLOCKED   0 · INEXPR 16     ** NO CONDITION IS BLOCKED **
 >   ADDENDUM 5        DONE 57 · OWED 127 · BLOCKED   0 · INEXPR 16     level 5's 7 flash conditions
 >   ADDENDUM 6        DONE 53 · OWED 131 · BLOCKED   0 · INEXPR 16     4 level-4 conditions reverted
->   LIVE (ADDENDUM 7) DONE 60 · OWED 124 · BLOCKED   0 · INEXPR 16     level 5 complete: +7 flash conditions
+>   ADDENDUM 7        DONE 60 · OWED 124 · BLOCKED   0 · INEXPR 16     level 5 complete: +7 flash conditions
+>   LIVE (ADDENDUM 8) DONE 60 · OWED 124 · BLOCKED   0 · INEXPR 16     HC stage 1 complete: +0 (a replication; §J3)
 > ```
 > **Superseded by: the Captain's two words (11:4x) · ADDENDUM 2, the 503 correction (12:0x) · ADDENDUM 3,
 > §B7 row 3 lifted (12:1x).** The numbers below are preserved **because a record of an observation must
@@ -506,3 +507,34 @@ records the gap rather than letting the count close it silently.
 ## §M3 · WHAT THIS DOES NOT DO
 1. It authorises no spend. 2. It does not make the matrix read `FULL`: 124 owed conditions is not full.
 3. It does not revisit the level-4 void of ADDENDUM 6, which stands.
+
+
+---
+
+# ✅ ADDENDUM 8 — **HC STAGE 1 COMPLETES: THE COUNT DOES NOT MOVE, `DONE 60 · OWED 124 · INEXPR 16`**
+## bench, 2026-09-16. **Re-cut at the stage's completion and landed in the SAME COMMIT as its result of record**
+## (`RESULT-HC1-stage1-2026-09-16.md`), per council 2026-09-16 ⑤d.
+
+## §N1 · WHY +0, CHECKED AGAINST §J3 RATHER THAN ASSUMED
+HC stage 1 fired 45 `claude-opus-5 × greenfield × none` cells over the five problems, in plain, placebo and salt-diet arms.
+```
+  claude-opus-5 x greenfield x {plain,salt-diet} x none x 5 problems   DONE since RESULT-matrix-opus-1   (10 conditions, §C4)
+  the placebo arm                                                       NOT ON THE GRID                  (§J3: no placebo axis)
+```
+⇒ **Every stage-1 cell falls in an already-DONE condition or off the grid. MATRIX: DONE 60 · OWED 124 · BLOCKED 0 ·
+INEXPR 16 = 200, unchanged.** The row's `DONE` now carries a pre-registered replication at n = 3: 10 of 10 medians inside
+their bands in the grid arms (15 of 15 with placebo). The premium RESOLVED on FreeList, was CENSORED on Paxos, and was
+UNRESOLVED as registered on Crc32, LRU and LZW.
+
+## §N2 · ⛔ A DISTINCTION THIS FILE'S COLUMNS CANNOT YET CARRY, RECORDED RATHER THAN ENCODED
+Stage 1's UNRESOLVED premiums are of two kinds, and **neither is a measured null**: **censored by the cost cap** (Paxos),
+and **registered as unresolvable at n = 3** (Crc32, LRU, LZW). **This census's `DONE` column does not distinguish them, and neither
+does a grid cell reading UNRESOLVED.** Whether it should, and how the paper counts them, is on the 2026-09-17 agenda. **No
+column is added here**, because adding one mid-census would redefine the table (the reasoning of §C6(4)).
+
+## §N3 · WHAT THIS DOES NOT DO
+1. **It authorises no spend.** What the Claude lane fires next (stage 2 or the owed Claude-lane conditions) is the
+   Captain's call, docketed for 2026-09-17.
+2. **It re-verifies no other row.** Every row other than `claude-opus-5 × greenfield × none` is CARRIED from ADDENDUM 7, and
+   §K2's RE-VERIFIED/CARRIED column is still owed and still not built.
+3. **It does not make the matrix read `FULL`:** 124 conditions are owed.

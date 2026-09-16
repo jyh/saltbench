@@ -1,0 +1,54 @@
+CONTROL positive  $HOME/cells-hc1-paxos-saltdiet/hc1ps03/repo/BUDGET.md -> MATCH
+CONTROL negative  'ls: BUDGET.md: No such file or directory' -> NO MATCH
+POPULATION 45 ENDED HC1 cells (ctl/end-1 present)
+cell     arm       class            cost     inst pair  SAW   NOFILE  EMPTY   reads (offset_s:kind:spent)
+hc1cb01  placebo   LANDED           9.2728   1    1     0     0       1       10:EMPTY
+hc1cb02  placebo   LANDED           5.1685   1    1     0     0       1       14:EMPTY   [sub-agent reads 1, saw 1]
+hc1cb03  placebo   LANDED           12.4632  2    2     1     0       1       14:EMPTY 830:SAW:7.2986   [sub-agent reads 1, saw 0]
+hc1cp01  plain     LANDED           9.6619   1    1     0     0       1       12:EMPTY
+hc1cp02  plain     LANDED           6.8919   1    1     0     0       1       10:EMPTY
+hc1cp03  plain     LANDED           8.8230   1    1     0     0       1       11:EMPTY
+hc1cs01  salt-diet LANDED           14.5264  1    1     1     0       0       96:SAW:0.2869
+hc1cs02  salt-diet LANDED           9.5081   2    2     0     0       2       12:EMPTY 15:EMPTY
+hc1cs03  salt-diet LANDED           8.3901   1    1     0     0       1       9:EMPTY
+hc1fb01  placebo   LANDED           11.3851  2    2     1     0       1       14:EMPTY 1694:SAW:9.6718
+hc1fb02  placebo   LANDED           9.8943   1    1     0     0       1       9:EMPTY
+hc1fb03  placebo   LANDED           14.1378  1    1     0     0       1       13:EMPTY
+hc1fp01  plain     LANDED           14.0305  1    1     0     0       1       9:EMPTY
+hc1fp02  plain     LANDED           19.9392  2    2     2     0       0       148:SAW:0.2149 3687:SAW:13.1301
+hc1fp03  plain     LANDED           10.9615  1    1     0     0       1       8:EMPTY   [sub-agent reads 1, saw 1]
+hc1fs01  salt-diet LANDED           33.4562  7    7     5     0       2       7:EMPTY 2200:SAW:17.0044 2400:SAW:18.8315 2468:EMPTY 2685:SAW:23.6228 2967:SAW:26.4430 3037:SAW:30.1908
+hc1fs02  salt-diet ENDED-NOT-LANDED 37.7238  1    1     0     0       1       19:EMPTY
+hc1fs03  salt-diet LANDED           29.8014  1    1     0     0       1       12:EMPTY
+hc1lb01  placebo   LANDED           6.3029   1    1     0     0       1       18:EMPTY
+hc1lb02  placebo   LANDED           8.9955   1    1     0     0       1       11:EMPTY
+hc1lb03  placebo   LANDED           7.0345   2    2     1     0       1       12:EMPTY 714:SAW:3.1882
+hc1lp01  plain     LANDED           10.2649  1    1     0     0       1       13:EMPTY   [sub-agent reads 1, saw 1]
+hc1lp02  plain     LANDED           8.8518   2    2     0     0       2       17:EMPTY 22:EMPTY   [sub-agent reads 1, saw 1]
+hc1lp03  plain     LANDED           7.0352   1    1     0     0       1       56:EMPTY
+hc1ls01  salt-diet LANDED           9.5330   2    2     0     0       2       11:EMPTY 15:EMPTY
+hc1ls02  salt-diet LANDED           12.7352  1    1     1     0       0       169:SAW:0.3708
+hc1ls03  salt-diet LANDED           8.6397   1    1     0     0       1       18:EMPTY
+hc1zb01  placebo   LANDED           7.4728   2    2     1     0       1       12:EMPTY 347:SAW:1.3048
+hc1zb02  placebo   LANDED           13.9100  1    1     0     0       1       16:EMPTY
+hc1zb03  placebo   LANDED           15.3191  1    1     0     0       1       16:EMPTY
+hc1zp01  plain     LANDED           9.6886   1    1     0     0       1       11:EMPTY
+hc1zp02  plain     LANDED           7.5319   1    1     0     0       1       14:EMPTY
+hc1zp03  plain     LANDED           8.9667   2    2     0     0       2       10:EMPTY 52:EMPTY
+hc1zs01  salt-diet LANDED           12.5607  2    2     1     0       1       12:EMPTY 390:SAW:1.3124
+hc1zs02  salt-diet LANDED           17.3950  1    1     0     0       1       10:EMPTY
+hc1zs03  salt-diet LANDED           23.7584  2    2     2     0       0       221:SAW:0.3591 2078:SAW:15.7339
+hc1pb01  placebo   LANDED           15.1916  2    2     0     0       2       11:EMPTY 15:EMPTY   [sub-agent reads 1, saw 1]
+hc1pb02  placebo   LANDED           23.1678  1    1     0     0       1       16:EMPTY
+hc1pb03  placebo   LANDED           16.8880  1    1     0     0       1       10:EMPTY
+hc1pp01  plain     LANDED           20.2315  2    2     0     0       2       14:EMPTY 17:EMPTY   [sub-agent reads 1, saw 1]
+hc1pp02  plain     LANDED           16.5068  2    2     0     0       2       11:EMPTY 19:EMPTY
+hc1pp03  plain     LANDED           22.0065  4    4     3     0       1       10:EMPTY 1512:SAW:12.2403 1796:SAW:16.3524 2009:SAW:19.0144
+hc1ps01  salt-diet ENDED-NOT-LANDED 37.6287  1    1     0     0       1       29:EMPTY
+hc1ps02  salt-diet LANDED           36.7601  1    1     0     0       1       8:EMPTY
+hc1ps03  salt-diet LANDED           36.7836  2    2     1     0       1       9:EMPTY 1911:SAW:11.5744
+BY ARM   cells · column says READ · a read that SAW the countdown · READ by the column but NEVER SAW it
+  placebo   15 · 15 ·  4 · 11
+  plain     15 · 15 ·  2 · 13
+  salt-diet 15 · 15 ·  6 ·  9
+TWO-METHOD AGREEMENT (instrument read count == paired read count): 0 of 45 cells disagree
