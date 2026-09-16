@@ -85,9 +85,14 @@ adding the two numbers gets the wrong denominator.**
 
 ### `gemini-3.8-flash-high`
 ```
+  ⛔ SUPERSEDED — READ THE §C5 POINTER BOX. LIVE: flash DONE 14 · OWED 32 · BLOCKED 0 · INEXPR 4
+     (ADDENDUM 2: not blocked, a 503 · ADDENDUM 5: DONE 7 · ADDENDUM 7: DONE 14). The lines below are
+     the 09-14 11:3x record, preserved unedited, and BOTH claims in them are now refuted:
   ALL 60   BLOCKED — not owed. Level 5 HALTED at ONE cell; 0 scored.
   AMENDMENT-gemini-flash-level5 ADDENDUM 1, merged 6d8dd527: the model runs an episode as ONE TURN and
   meets a per-turn deadline calibrated on Pro's granularity. ⛔ n = 1 on the Flash side.
+  ⛔ REFUTED by the completed wave (RESULT-gemini-flash-level5 §6.2): Flash segments an episode
+     exactly as Pro does, 3-6 turns per cell, across 21 cells. The n=1 above was the whole basis.
   ⇒ RELEASE: a design decision about per-turn capping for a model that does not segment. NOT a re-fire.
 ```
 
