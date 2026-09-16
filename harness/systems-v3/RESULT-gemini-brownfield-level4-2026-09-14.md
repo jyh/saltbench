@@ -290,3 +290,63 @@ cell is a treatment cell, and dropping them would flatter the control. **None is
 ⛔ **Item 3 changes NO cut, NO threshold and NO verdict in this file.** It renames two instruments that
 the freeze already used, and it is written AFTER the data and declared as such, so that it cannot be
 read as retro-fitting. Every number in §R7 is reproducible from the receipts named there.
+
+
+---
+
+# ⛔⛔ ADDENDUM 1 — **12 OF THE 24 CELLS ARE VOID FOR THE FIND-THE-DEFECT CLAIM: THE FreeList AND LZW GIVENS ANNOUNCED THEIR OWN PLANTED DEFECT**
+## bench (lead), 2026-09-15. **Nothing above is rewritten.** The measurements stand as taken; what
+## changes is what they are measurements OF. LRU and Paxos are unaffected and are not in doubt.
+
+## §V1 · THE DEFECT IN THE GIVENS
+Two of the four brownfield givens named their planted defect in plain English, on or beside the defect
+line, and were committed that way for roughly **57 hours** — a window that contains this wave.
+```
+  FreeList/brownfield/solution.rs:115   self.head = h0;   // MUTATION: the released block is
+                                                          // never published
+  LZW/brownfield/solution.rs:83         // is one lower than it should be.
+```
+FreeList's is the mutant generator's own inline marker, never stripped. LZW's is the orphaned second
+line of a two-line tell whose first line was cut, sitting directly above the defect. **A cell built on
+either given cannot measure whether a subject FINDS the defect, because the given tells it.**
+
+## §V2 · CONFIRMED AT TWO DIFFERENT OBJECTS BY THREE PARTIES, WITH A CONTROL
+```
+  gemini · systems   read the tells IN EXPORT COMMIT ecd3924 — the export all 24 cells ran from
+  bench (lead)       read each cell's OWN FIRST COMMIT, i.e. the given as the subject received it,
+                     before the subject touched anything:
+      FreeList  b4fp01 b4fp02 b4fp03 b4fs01 b4fs02 b4fs03   "MUTATION:"                     6 of 6
+      LZW       b4lzp01-03 b4lzsb01-02 b4lzs01  "is one lower than it should be"             6 of 6
+  CONTROL            LRU b4lrp01-03 · Paxos b4pp01-03, the same two literals                0 of 6
+```
+⇒ **The control discriminates, which is what makes this a measurement rather than an artefact of the
+search string.** Two routes, two objects, one answer, and a control that could have cleared it and
+did not.
+
+## §V3 · ⚖️ THE RULING, AND THE VOID IS SCOPED RATHER THAN TOTAL
+**The 12 FreeList and LZW cells are VOID for any claim about whether a subject FINDS a planted defect.**
+The 12 LRU and Paxos cells **STAND**.
+⛔ **What dies is the FINDING half only.** Whether those 12 cells say anything about *fixing an
+already-named defect* is a DIFFERENT question from the registered one, and **it is not rescued by being
+interesting** — it would need its own registration, written before looking at the data.
+⇒ **Do not re-read those cells as a weaker version of this result. Read them as answering a question
+nobody asked.**
+
+## §V4 · ⛔ THE AUDIT CERTIFIED IT, WHICH IS WHY NOBODY LOOKED AGAIN
+The strip was audited with `grep -E 'WRONG|MUTANT|<name>|reference'`, which returns **clean on all four
+givens, including both compromised ones** — because **`MUTANT` is not a substring of `MUTATION`**.
+⇒ 🔑 ***A VOCABULARY-KEYED AUDIT TESTS THE VOCABULARY YOU THOUGHT OF, AND A TELL IS WRITTEN BY
+SOMEONE WHO WAS NOT THINKING OF YOUR LIST.***
+⛔ **And the clean report did not merely fail to catch the tell — it CERTIFIED it**, which is worse: an
+absence reported as an assurance is what stops the next person looking.
+✅ **The form that would have caught it:** audit a stripped given by reading the diff against the
+unstripped mutant, or by asserting the given contains no comment on or adjacent to the defect line —
+**a structural test, not a word list.**
+
+## §V5 · WHAT THIS ADDENDUM DOES NOT DO
+1. It does not re-fire anything. Re-firing 12 brownfield cells is a SPEND and is the Captain's.
+2. It casts no doubt on LRU or Paxos, and none on the instrument findings of §R4–§R7, which are about
+   the harness and do not depend on the givens' content.
+3. It makes no claim that any subject DID read the tell — only that the cells cannot distinguish a
+   subject that found the defect from one that was told. **That is the whole point: the cell lost the
+   ability to answer, whatever any individual subject did.**
