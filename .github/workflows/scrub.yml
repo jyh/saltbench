@@ -78,8 +78,18 @@ jobs:
           # history is neither the "new branch" case nor the ordinary case, and
           # the old two-branch test had nowhere to put it.
           DEF="${{ github.event.repository.default_branch }}"
+          # ANCESTRY, NOT EXISTENCE (desk ML finding #6; salt's form since #144).
+          #   `git cat-file -e BEFORE` asks whether the object EXISTS. The question is
+          #   whether it is an ANCESTOR of HEAD. On a REWIND the old tip still resolves,
+          #   so `BEFORE..HEAD` is EMPTY and the gate's fail-closed fires on clean
+          #   content; a no-op push (BEFORE == HEAD) is the second empty-range case.
+          #   Both fell through to a spurious red, never a leak. Driven red-first in a
+          #   scratch repo over ordinary, all-zeros, unreachable, rewind and no-op:
+          #   only rewind and no-op changed, from an empty range to the fallback.
+          #   `--is-ancestor` already implies the object exists, so no cat-file is kept.
           if [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ] \
-             && git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+             && git merge-base --is-ancestor "$BEFORE" HEAD 2>/dev/null \
+             && [ "$BEFORE" != "$(git rev-parse HEAD)" ]; then
             RANGE="$BEFORE..HEAD"
             echo "push delta: $RANGE"
           elif MB=$(git merge-base "origin/$DEF" HEAD 2>/dev/null) && [ -n "$MB" ] \
@@ -150,8 +160,18 @@ jobs:
           # answers on an existing branch. Both paths are now driven as controls
           # before shipping, clean AND dirty.
           DEF="${{ github.event.repository.default_branch }}"
+          # ANCESTRY, NOT EXISTENCE (desk ML finding #6; salt's form since #144).
+          #   `git cat-file -e BEFORE` asks whether the object EXISTS. The question is
+          #   whether it is an ANCESTOR of HEAD. On a REWIND the old tip still resolves,
+          #   so `BEFORE..HEAD` is EMPTY and the gate's fail-closed fires on clean
+          #   content; a no-op push (BEFORE == HEAD) is the second empty-range case.
+          #   Both fell through to a spurious red, never a leak. Driven red-first in a
+          #   scratch repo over ordinary, all-zeros, unreachable, rewind and no-op:
+          #   only rewind and no-op changed, from an empty range to the fallback.
+          #   `--is-ancestor` already implies the object exists, so no cat-file is kept.
           if [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ] \
-             && git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+             && git merge-base --is-ancestor "$BEFORE" HEAD 2>/dev/null \
+             && [ "$BEFORE" != "$(git rev-parse HEAD)" ]; then
             RANGE="$BEFORE..HEAD"
             echo "push delta: $RANGE"
           elif MB=$(git merge-base "origin/$DEF" HEAD 2>/dev/null) && [ -n "$MB" ] \
