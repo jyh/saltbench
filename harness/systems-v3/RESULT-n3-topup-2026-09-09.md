@@ -289,6 +289,10 @@ the meter counts and the per-phase record does not. **That join understates toke
 cells that fired subagents, and 134 of 135 has the shape of a verified rule.**
 
 ## §A4 · ⛔⛔ WHAT ADDING THE COLUMN REVEALED ABOUT THE PRICES THAT WERE ALREADY HERE
+> ⛔ **SUPERSEDED 2026-09-16 by `paper/ERRATUM-lower-bound-cells-2026-09-16.md` — do not quote this section.** Its
+> count of 17 (plain 12 · salt-diet 5) does not reproduce (15 over the §A3 table, plain 11 · diet 4); its
+> "0.03 %–1.4 %" is replaced by a measured share; its "every per-problem magnitude was already below the
+> registered resolvable floor" is contradicted by §3 of this file. The section is left as written below.
 **Seventeen of the cells priced in this reading carry a meter that declares its own totals a LOWER
 BOUND** — an interrupted turn, where the client stops writing usage at the interrupt, so the meter
 says in its own words that the sum *"is a LOWER BOUND, not a price."* **§3 quotes those cells as
