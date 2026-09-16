@@ -99,6 +99,12 @@ arm is a treatment; it is held constant here so its incidence is readable, and i
    the wave, never as the other arm of a contrast.
 3. **Block B has no Pro pair at this level** — its Pro cells are level 4's, on export `ecd3924`. A Flash-vs-Pro
    brownfield reading carries confounds 1 and 2 together.
+4. ⛔ **A KNOWN FENCE DEVIATION, DECLARED BEFORE THE FIRE RATHER THAN DISCOVERED AFTER IT** (systems, phase-2 scope census,
+   2026-09-16): **the agy fence lets the subject read and write its own `ctl/`.** In level 5, 41 of 185 cells listed or opened
+   `ctl/` — all Flash — and 15 opened `briefing-nonce`; one ran `tail` on the arm file and then read the nonce. ⇒ **P-DELIVERY on
+   this lane proves the arm FILE was opened, not that the METHOD was read.** `ctl/` holds no withheld test and no other arm's
+   material, and both arms are equally exposed. **This level fires on the same fence**, because the fix is its own fence
+   freeze; the per-cell `ctl/` read census is a REPORTED column (§H8), and no delivery claim is made from P-DELIVERY alone.
 
 ---
 
@@ -107,6 +113,9 @@ Rules 1-8 of level 5 §F4 apply unchanged (sign only · a TURNS-CUT pass is a fl
 landing and passing are two rates · an arm-correlated cut is decided by its sign · `bugs_introduced` is a floor ·
 export sha recorded · no USD · an unmetered cell is a row, not a smaller denominator).
 **9  VERIFIED FIRST.** A condition's rate is withheld-suite passes over scorable cells; LANDED is a separate column.
+   ⛔ **On this lane LANDED means `LANDING.md` EXISTS, not that the subject declared a landing** (systems, 2026-09-16: 13 of 146
+   LANDED agy cells carry no `landed-N` tag, and three result-bearing cells' own `.seat` records say the subject gave up). The
+   LANDED column therefore also carries `declared` (a `landed-N` tag present) beside it, and neither is ever a pass rate.
 **10 RETENTION IS BLOCK B's PRIMARY SEPARATOR, AND IT IS A PROPERTY OF THE GIVEN.** It is reported per cell beside the
    withheld suite, never averaged across problems (LRU and Paxos seeds differ in size).
 
@@ -129,7 +138,8 @@ the Claude lane in dollars or tokens. 4. **A cost result and a pass-rate result 
 ```
   one export sha across all 36 cells · per-condition score receipts as FILES · the per-cell table of record
   (arm · problem · model · T · wall · turns · done_reason · end · verdict · tests · retention for block B ·
-  TURNS-CUT flag · source receipt) · TURNS-CUT and CAP incidence as a SPLIT BY ARM · the /usage rows it logged
+  TURNS-CUT flag · declared (landed-N tag) · ctl/ read census · source receipt) · TURNS-CUT and CAP incidence as a
+  SPLIT BY ARM · the /usage rows it logged
 ```
 ⇒ **The lead scores and writes the result of record, and RE-CUTS THE MATRIX CENSUS IN THE SAME COMMIT** (council
 09-16 ⑤d). Any public sentence, and any claim about the method, is the Captain's.
