@@ -40,8 +40,8 @@ A median of three is whichever cell sits in the middle, so it **inherits that ce
 containing a bound was checked for where the bound sits:
 
 - **plain** — the bound `$7.04*` is the arm's **minimum**. Understatement can only raise it *toward* the
-  median; to reach `$8.85` it would need **+26 %**, against a measured understatement of **0.3597 % of
-  cost**. ⇒ **The median is a PRICE, protected by magnitude (72× margin).**
+  median; to reach `$8.85` it would need **+25.7 %**, against a measured understatement of **0.3597 % of
+  cost**. ⇒ **The median is a PRICE, protected by magnitude (71× margin).**
 - **placebo** — the bound `$7.03*` **is** the median cell. ⇒ **The median is a BOUND.** Numerically it is
   within $0.0056 of $7.03 (0.0800 % of cost) — **and the size is not the point; the kind is.**
 - **salt-diet** — no bound. ⇒ **The median is a PRICE.**
