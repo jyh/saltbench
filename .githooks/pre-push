@@ -23,6 +23,11 @@
 #      armed all reach a push with messages commit-msg never saw.
 #   2. scripts/check_private_paths.py --range -- the ruled firewall line at
 #      PATHS, over both arms (commit messages AND the lines the delta adds).
+#   3. scripts/check_pr_descriptions.py --range and --ref -- no lane name or
+#      family reference in a commit SUBJECT or the pushed REF NAME, and no lane
+#      name in a commit body (desk QA). A pushed subject cannot be edited
+#      without a history rewrite, and a merge subject quotes the ref name where
+#      no hook runs, so this is the last moment either is free to change.
 #
 # WHAT IT DELIBERATELY DOES NOT DO: the --tree and --messages ratchets. Those
 # scan whole history / the whole tree and are CI's job. A pre-push hook that is
@@ -39,6 +44,7 @@ set -u
 
 ZERO=0000000000000000000000000000000000000000
 GATE=scripts/check_private_paths.py
+SUBJECT_GATE=scripts/check_pr_descriptions.py
 
 # Interpreter chosen by EXECUTION, never by `command -v` -- on Windows the Store
 # ships an app-execution-alias stub named `python3` that is on PATH, answers the
@@ -55,13 +61,15 @@ if [ -z "$PY" ]; then
 fi
 
 ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || ROOT=.
-if [ ! -f "$ROOT/$GATE" ]; then
-  echo "pre-push REFUSED: $GATE is not in this working tree." >&2
-  echo "  This hook derives its verdict from that gate and will not guess it." >&2
-  echo "  (core.hooksPath is repo-global while .githooks/ is branch-local, so a" >&2
-  echo "   checkout of a branch predating the gate lands exactly here.)" >&2
-  exit 1
-fi
+for need in "$GATE" "$SUBJECT_GATE"; do
+  if [ ! -f "$ROOT/$need" ]; then
+    echo "pre-push REFUSED: $need is not in this working tree." >&2
+    echo "  This hook derives its verdict from that gate and will not guess it." >&2
+    echo "  (core.hooksPath is repo-global while .githooks/ is branch-local, so a" >&2
+    echo "   checkout of a branch predating the gate lands exactly here.)" >&2
+    exit 1
+  fi
+done
 
 # origin's default branch, for the base of a ref origin does not yet have.
 default_remote_branch() {
@@ -176,13 +184,27 @@ while read -r local_ref local_sha remote_ref remote_sha; do
     bad=1
   fi
 
+  # ---- ARM 3: lane names and family references (desk QA) --------------------
+  if ! ( cd "$ROOT" && "$PY" "$SUBJECT_GATE" --range "$RANGE" ) < /dev/null; then
+    echo "pre-push REFUSED: the subject gate RED on ${RANGE} (${local_ref:-<ref>} -> ${remote_ref:-<ref>})." >&2
+    echo "  The findings above name the commit and the surface, never the word." >&2
+    echo "  Reword the commit now (amend or rebase): a pushed subject stays in" >&2
+    echo "  history for as long as the repository does." >&2
+    bad=1
+  fi
+  if ! ( cd "$ROOT" && "$PY" "$SUBJECT_GATE" --ref "${remote_ref:-}" ) < /dev/null; then
+    echo "pre-push REFUSED: the pushed ref name carries a refused word. Push the" >&2
+    echo "  work under a neutral branch name: a merge subject will quote this one." >&2
+    bad=1
+  fi
+
   if [ "$bad" -ne 0 ]; then
     status=1
     continue
   fi
 
   n=$(git rev-list --count "$RANGE" 2>/dev/null) || n="?"
-  echo "pre-push OK [session-trailer + private-paths]: ${local_ref:-<ref>} -> ${remote_ref:-<ref>}, range ${RANGE} (${WHY}), ${n} commit(s) scanned."
+  echo "pre-push OK [session-trailer + private-paths + subject gate --range]: ${local_ref:-<ref>} -> ${remote_ref:-<ref>}, range ${RANGE} (${WHY}), ${n} commit(s) scanned."
 done < "$TMPIN"
 
 if [ "$seen" -eq 0 ]; then
