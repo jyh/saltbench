@@ -164,4 +164,53 @@ the Claude lane in dollars or tokens. 4. **A cost result and a pass-rate result 
 09-16 ⑤d). Any public sentence, and any claim about the method, is the Captain's.
 
 ---
-## ⚖️ SIGNATURE (non-author) — NOT YET GIVEN
+## ⚖️ SIGNATURE (non-author) — GIVEN
+**Signed by the helm — the 74th helm head, Fable 5.1 by the session transcript's own `message.model` line — 2026-09-16 09:4x PDT,
+at blob `4f036557` (this file at commit `2fdfba8`), read WHOLE, 167 lines.** A signature covers the blob it pins: the head moved
+`3112d18 → 344c174 → 8654711 → 2fdfba8` in twelve minutes, every move BEFORE this read and none after it. **Any edit to §H0–§H7
+re-opens this signature; naming the export sha in §H0 row 4 does not.**
+
+### DRIVEN AT THE OBJECTS — not from the PR body, not from the bus
+```
+  claim                         object read                                                                    verdict
+  ③a(a)(b)(c) as cited          seat minute 2026-09-16 lines 38–44 (his "yes, accept all recs"; (a)(b)(c) by name)     MATCHES
+  population 12 / 36            §H1 arithmetic (4+4+4 conditions × n=3) · CENSUS-full-matrix-2026-09-14 §C4:              MATCHES
+                                pro: LZW bare OWED 2 · LZW stmt OWED 2 · brownfield LRU/Paxos DONE ("LRU and Paxos (4) stand")
+                                flash: DONE 14 (level 5 = greenfield LRU/Paxos/FreeList/Crc32) · OWED 32 = LZW 4 +
+                                brownfield 18 + spec-change 10 ⇒ the 8 flash conditions here are the ones not gated on a
+                                level-7/8 delivery — the twelve are exactly the owed set the harness expresses today
+  priors, block S               RESULT-agy-lzw-statement §1: 3/3 LANDED 8/8 · §2b: "landing 5/5, verified 1/5"          MATCHES
+  priors, block B               RESULT-gemini-brownfield-level4 §R1 rows b4lr*/b4p*: plain LRU 0.981 ×3, Paxos            MATCHES
+                                0.992/0.978/0.978 ⇒ 0.978–0.992 · salt-diet LRU 0.322–0.517, Paxos 0.670–0.756 ⇒
+                                0.322–0.756 · withheld plain 6/6 full · salt-diet 4/6 (b4lrs03 10/16, b4ps03 12/17)
+  priors, block G               RESULT-agy-lzw-briefed §1 FULL PASS 9/9 · RESULT-agy-lzw-saltdiet-stage1 3/3 FULL PASS     MATCHES
+  the 8/9 exclusion             RESULT-agy-lzw-scored-2026-09-10 errata 1–2: NO-SHELL, NO-BUILD, NO-BRIEFING                MATCHES
+  caps                          agy_wave_v3.sh:64 `AGY_PRINT_TIMEOUT:-1800s` · :67 `AGY_TURN_TIMEOUT:-2100` at e5f7126 ·   MATCHES
+                                T1_TOK 250,000,000 = the level-5 amendment's value (Pro-calibrated, as it says)
+  flags                         cell_build.py:412–432 at e5f7126: --arm ∈ {plain,salt,salt-diet,placebo} · --field ·         MATCHES
+                                --statement · --phase · --client agy · --budgets pricing · --hint exists and is unused
+  export tree claim             saltbench-systems `git diff --stat eacb9ec e5f7126 -- tasks/systems-v3/{LZW,LRU,Paxos}` ⇒    TRUE, see (1)
+                                ONE file, LZW/brownfield/solution.rs · e5f7126 carries gemini_canary_wave_v1.sh, eacb9ec
+                                does not · eacb9ec is NOT an ancestor of e5f7126
+  §H4.5 figures                 systems' 09:31/09:33 posts (101 of 122 · 29 · 32 of 41) — CITED; systems' census is the      NOT RE-DRIVEN
+                                instrument of record and the deviation is declared, not measured, here
+  the spawn-time walk           cell_build.py:289 `assert_briefing_token_unique`: hits must equal exactly [repo/<armfile>];    READ
+                                "no exempted file" therefore means no file excluded from the SEARCH — the arm file is the
+                                walk's one permitted hit, not an exemption. The wording holds.
+```
+
+### FINDINGS — NEITHER BLOCKS THE FIRE; each is a line the lead owes BEFORE the export is named
+1. **§H0 row 4 says two things about `e5f7126`, and the first is now false.** Its first half records that `e5f7126` "qualifies";
+   its second half (the addendum) says no sha without all three repair parts qualifies. At `e5f7126` the launcher's own line
+   `agy_launch_v3.sh:1295` still tees the token into `ctl/launch.log`, so **`e5f7126` is the BASE, not a qualifying export.**
+   Say so in the row. And note what the export test does NOT test: it is a TREE test on three task dirs plus one file's presence,
+   and `e5f7126` does not descend from `eacb9ec` — the harness files outside those dirs (the builder, the launcher, the fence
+   renderer) are not pinned to master by it. **The qualifying sha should be cut on master, or its harness delta from master listed
+   beside it.** One line either way.
+2. **§H6 row 7 voids a cell on a condition nothing is named to measure.** "The raw token occurs in the cell tree outside the arm
+   file ⇒ VOID" is right; it needs an INSTRUMENT — a scan of the cell tree for the token's bytes, arm file excluded, run at cell
+   end, with a POSITIVE CONTROL (a planted second copy is FOUND) — and its receipt listed in §H8. A void nobody measures is a gate
+   its author believes in, and this one guards the receipt the whole lane's delivery claim rests on.
+
+**Signed.** Level 6 fires on this blob once the lead names the export sha in §H0 row 4 (a one-line addendum) and the two findings
+above have their lines. The census re-cut lands in the same commit as the result (council 09-16 ⑤d); the lead scores.
