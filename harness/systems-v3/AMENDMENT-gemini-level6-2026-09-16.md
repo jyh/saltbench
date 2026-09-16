@@ -337,3 +337,75 @@ six cells had neither — they are not weak results, they are not results.**
 **A3.5 · THE EXPORT FOR RESUMPTION — PENDING.** Named here, with its harness delta from `5f70ee8`, once the scorer fix lands (and, if taken,
 whatever A3.3 decides). **Until A3.5 is filled and this addendum is signed and merged, nothing fires on the agy lane except A3.3's one
 diagnostic cell.**
+
+---
+## ⚖️ ADDENDUM 4 — A3.5 FILLED: THE EXPORT FOR RESUMPTION, AND WHAT IT RESUMES. APPENDED; §H1–§H7 and A3.1–A3.5 untouched.
+*bench (lead), 2026-09-16 14:3x PDT. Fills A3.5, which stays as written. **Registered before A3.3's diagnostic cell reports:** that cell
+fired at 21:18:41Z, and the fork in A4.4 is fixed here before its shell counts exist. It goes to a non-author for signature before it binds.*
+
+**A4.1 · THE SHA.** Bare `master` = **`c419bdcdb005672938b732e27757d89c5c2bc2db`**, read back by the lead at the bare repo:
+```
+  ancestry        5f70ee8 --is-ancestor c419bdc rc 0 · ONE commit on top of 5f70ee8
+  harness delta   5f70ee8..c419bdc: 4 files, +257 / -2, all under harness/systems-v3/, all on the SCORING side:
+                    score_wave_v3.sh           copies <root>/_receipts/<id> beside ctl/; a failed ssh or copy is FETCH-FAIL, never absence
+                    briefing_verdict_v3.py     new verdict UNMEASURED(NO-RECORD): a declared briefing with no record in either layout
+                    selftest_score_wave_v3.sh  new, hermetic · selftest_all_v3.sh registers it
+  launch path     byte-identical to 5f70ee8 (git diff --quiet rc 0 on each): agy_launch_v3.sh · agy_wave_v3.sh · cell_build.py ·
+                    fire_agy_v3.sh · gemini_canary_wave_v1.sh · gemini_lane_remote_v1.sh
+                  none of them calls either changed script: fixed-string count 0 for both names in each file, except one COMMENT in
+                    cell_build.py (control: agy_launch_v3.sh names cell_build 8 times)
+  tasks           the delta names no file under tasks/
+```
+⇒ **A cell resumed under this addendum builds and launches on bytes identical to `5f70ee8`.** So A3.3's diagnostic cell, fired from
+`5f70ee8`, speaks for this export's launch path. The new sha changes what SCORES, not what RUNS.
+
+**A4.2 · A3.4's GATE IS NOT YET MET FOR THESE BYTES — THE HAND'S PAIR IS THE GATE.** systems (2026-09-16) drove the scorer fix on the six
+block-S Pro cells: from the scorer's own copy SCORED 6 of 6, in place SCORED 3 of 3, and the `5f70ee8` scorer on the same copy NOT-APPLICABLE
+(the control). A reader mutant with the new branch disabled fails 3 of 35 arms; two scorer mutants each flip their arm. The fix works.
+- ⛔ **BUT THE TWO "FROM ITS COPY" RECEIPTS WERE NOT SCORED BY `c419bdc`'s BYTES.** Their first line reads `(5f70ee8e2d73)`, with no
+  `+DIRTY`. At `c419bdc` the scorer appends `+DIRTY:N` inside the parentheses whenever a tracked file in its tree is modified, so a tree
+  at `5f70ee8` carrying `c419bdc`'s scorer prints `(5f70ee8e2d73+DIRTY:N)`. A clean line naming `5f70ee8` came from a scorer revision
+  that predates the marker, run from a tree whose HEAD was still `5f70ee8`. The receipts were filed a minute after the commit, which is
+  the ordinary shape of a fix measured before it is committed. **It is a finding about the receipt, not about the fix.**
+- ⇒ **So the first-line gate is doing its job, and the pair A3.4 requires is still owed on the committed bytes.** Before its first
+  level-6 table the hand moves its scorer tree to `c419bdc`, confirms the first line reads exactly `(c419bdcdb005)`, and drives ONE
+  in-place/copy pair from that tree (zero spend), filed beside the first line. **That pair is the gate receipt for this sha, and
+  nothing is scored before it.**
+- ⚠️ **SCORED is the briefing verdict's scorability, not a result.** Those six cells stay VOID(NO-SHELL) under A3.2.
+- ⚠️ **Declared by the builder:** the full `selftest_all_v3` was not run (a memory condition on the box). The consumers were: briefing-verdict
+  35/35 · score-wave 17/17 · briefing-receipt 25/25 · referee 36 arms, 0 failed.
+
+**A4.3 · THE ROW-8 INSTRUMENT IS NOT IN THIS SHA.** Measured: `git ls-tree -r c419bdc` lists no shell-counting script. The script in use
+is untracked; systems drove it on A3.2's control pair before the diagnostic spend (`l6spq01` ⇒ NO-SHELL, `l5lq03` ⇒ SHELL-OK).
+- ⇒ **Under A3.2, every resumed cell reads UNMEASURED(NO-SHELL) on row 8 until the script is tracked, and no level-6 table is read
+  before then.**
+- It lands on bare `master` as a DESCENDANT of `c419bdc` whose delta touches no launch-path file in A4.1's list, with its control pair
+  filed. **Cells may FIRE from `c419bdc` before it lands. They are SCORED from that descendant**, which the result file names with its
+  delta from `c419bdc`, and A4.2's first-line check and pair are re-filed from it.
+- ⚠️ The tracked script is a new artifact and owes its own non-author check, as ADDENDUM 3's signature recorded.
+- The diagnostic's reading in A4.4 is a CAUSE reading taken with the controlled script. It decides what resumes and scores nothing.
+
+**A4.4 · WHAT RESUMES — DECIDED BY A3.3's DIAGNOSTIC CELL, REGISTERED BEFORE ITS VERDICT.** The cell is Flash, LZW plain+statement,
+from `5f70ee8`, uncounted and pooled nowhere. The lead names which row it read, on the three counts (made · succeeded · refused).
+Each row maps to exactly one release:
+```
+  the diagnostic reads                                cause, as read                      release
+  >= 1 shell call succeeded          (SHELL-OK)       Pro x client 1.2.4 (A3.3's lead)    the 8 FLASH conditions, 24 cells, from c419bdc
+  >= 1 refused and 0 succeeded       (NO-SHELL)       the export/launcher, or lane-wide   NOTHING resumes; a new addendum names the fix first
+  0 shell calls attempted            (UNMEASURED)     undecided                           NOTHING resumes; a re-fire is the lead's word
+  discarded (a 503) · no readable stream              undecided                           NOTHING resumes; a re-fire is the lead's word
+```
+- **On SHELL-OK, in §H2's order:** block S Flash (6) · block B (12, all Flash) · block G Flash (6). Every cell is built fresh in a new
+  root. The halted block-S Flash root (set aside at 19:30Z; no cell had launched) is never dispatched into again.
+- **THE FOUR PRO CONDITIONS ARE HELD, NOT DROPPED:** S-Pro (its six cells stand VOID(NO-SHELL)) and G-Pro (six cells, never fired). On
+  A3.3's reading a Pro cell on this client and this fence is another NO-SHELL cell, so firing one buys a void. They fire only after an
+  addendum that changes the fence (A3.3's PTY grant, NOT TAKEN) or the client, with its own comparability statement. The matrix census
+  carries them OWED. **§H0 row 3's population is unchanged; only its completion waits.**
+- **Declared before any data:** until the Pro conditions run, level 6 has NO Pro/Flash pair in block S or G. §H4.1's reading is not
+  available at this level, and §H2's Pro priors stay ordering priors only (§H4.2).
+- ⛔ **A SHELL-OK diagnostic clears row 8 for no resumed cell.** One Flash cell with a working shell is a cause reading, not a
+  guarantee about 24. Each resumed cell is read by the tracked script (A4.3).
+
+**A4.5 · RELEASE.** On the SHELL-OK row the hand fires only when all four hold: (1) this addendum is signed and merged; (2) the diagnostic's
+verdict is posted with its three counts and its end marker; (3) the run-box export reads `c419bdc` in `EXPORTED-FROM.sha`; (4) the fence
+battery passes for each new root's PATH (§H6 row 4). ⇒ **Until then nothing fires on the agy lane but the one diagnostic cell**, as A3.5 says.
