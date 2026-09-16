@@ -296,8 +296,17 @@ six cells had neither — they are not weak results, they are not results.**
   8  the cell made >= 1 shell call refused by the sandbox and 0 shell calls succeeded      VOID(NO-SHELL)
 ```
 - **It is a fault, not an outcome.** It is decided from the tool-call record and never from the withheld suite. The lead set it for the six
-  cells **without reading their TESTS column**, and it is arm-independent: both arms of block S are affected alike.
-- **It binds every level-6 cell, and level 7's cells by that freeze's own addendum.**
+  cells **without reading their TESTS column**, and it is arm-independent: both arms of block S are affected alike. **A VOID(NO-SHELL) cell is
+  never counted as a failure, a pass, or a denominator entry in any table** — it is a row in the fault census, like every other §H6 void.
+- **THE THREE STATES, SO NONE IS INFERRED:**
+  ```
+    >= 1 refused and 0 succeeded     VOID(NO-SHELL)
+    >= 1 succeeded (any refused)     NOT void; the refused count is REPORTED per cell
+    0 shell calls attempted          NOT void; reported as NO-SHELL-ATTEMPTED — a subject that never reached for a shell was not denied
+                                     one, and its cell is scored as it stands
+  ```
+- **IT BINDS FORWARD, BY LEVEL AND BY SHA:** every level-6 cell, from `5f70ee8` and from any export A3.5 names; and level 7's cells, from
+  whichever export level 7's own addendum names. It does not reach back to levels 1–5, whose cells had shells (A3.1).
 - **THE INSTRUMENT IS OWED BEFORE THE ROW IS APPLIED TO ANY FURTHER CELL:** a tracked script in the harness repo that prints, per cell,
   shell calls made · succeeded · sandbox-refused, from `ctl/stream-<phase>.ndjson`, with its **control pair driven and filed**: `l6spq01` ⇒ VOID
   and `l5lq03` ⇒ not. Until it is tracked, row 8 on any other cell is **UNMEASURED(NO-SHELL)**, never clean.
