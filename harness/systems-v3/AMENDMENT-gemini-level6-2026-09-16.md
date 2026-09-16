@@ -462,13 +462,11 @@ It freezes what ADDENDUM 4 (A4.6) made a precondition of resumption. It goes to 
   Any sentence about web isolation on this lane, in a result or the paper, carries that wording.
 - Write-deny on the hook script and its client-HOME registration is KEPT (it closes 7 of 8 routes, so a tamper must use the one route the END
   read is built around). The whole-HOME deny is NOT taken.
-- **What is measured about the past, per cell, in the builder's filed disposition** (196 agy streams read): writes to a hook path in ONE cell
-  (the uncounted diagnostic). **48 records matched as web tools in 14 cells: 46 are `send_message`, the client's internal sub-agent
-  messaging, which does not leave the box; 2 are `search_web`, in one level-5 cell, both in CALL form with no RESULT record,** under a hook
-  script that is canonical by sha, whose deny list names `search_web`, in a cell whose stream shows no hook-path write. ⇒ **Network tools
-  SERVED: 0.** ⛔ The test is a network-tool RESULT record without an error; *a call record without an error field is not a served call*
-  (counting that way gives 47, the builder's own caught error). ⚠️ Cells carrying a hook script but no stream read are covered only by the
-  final-bytes census, which cannot see a rewrite that was restored.
+- **What is measured about the past, and what is not yet filed:** the builder's stream census read 196 agy streams. It finds writes to a hook
+  path in ONE cell (the uncounted diagnostic), and **48 web-tool CALLS in 14 cells**, several of them in level-3 and level-4 cells.
+  ⛔ **A call is not a served call:** the builder reports 0 of the 48 served, by a second method (hook sha, deny list, result-record
+  presence). **That per-cell receipt is owed as a FILE before any result of record is described as untouched on the web route.** The cells
+  carrying a hook script but no stream read are covered only by the final-bytes census, which cannot see a rewrite that was restored.
 
 **A5.3 · §H6 ROWS 9 AND 10, ADDED — FAULTS, DECIDED WITHOUT READING TESTS, ARM-INDEPENDENT.**
 ```
@@ -479,18 +477,13 @@ It freezes what ADDENDUM 4 (A4.6) made a precondition of resumption. It goes to 
 ```
 - ⛔ **THE ROW IS REGISTERED AGAINST THIS PROPERTY, NOT AGAINST A SCRIPT.** The builder's first cut of the END check (`agy_fence_intact_v3.py`
   at `741321d`) matched a registered command by SUBSTRING. Driven by the lead on a fixture, it read FENCE-OK for a registration that chains a runner
-  before the canonical script, and for a workspace hook whose command merely names it. **Equality, never containment.**
-- ✅ **THE REBUILT INSTRUMENT, READ BACK BY THE LEAD:** `agy_fence_intact_v3.py` at `6dacbec` (the builder's wiring branch) tests every primary
-  registration command for EQUALITY with the canonical path, walks alias hook paths at any depth including hidden directories, and offers a byte
-  compare against a launch-time copy. Its selftest passes 15 of 15, including a mutant restoring containment that passes the chain shape. The lead
-  re-drove five fixture shapes against the extracted bytes: canonical ⇒ OK; chain, workspace mention, hidden-nested workspace hook, and a
-  one-character variant of the canonical command ⇒ VOID. The builder drove the diagnostic ⇒ VOID and `l6spq01` ⇒ OK. **It is cited here at
-  `6dacbec`; A5.6 requires it on `master` in the export sha, with the byte compare wired.**
+  before the canonical script, and for a workspace hook whose command merely names it. **Equality, never containment.** The instrument is cited
+  in A5.6 only at a sha whose selftest carries red arms for both shapes, plus a mutant restoring containment that must flip them.
 - **Its population is the list of paths the client loads**, taken from the client's own strings (the client HOME's two locations and the
   workspace `.agents` / `.agent` / `_agents` / `_agent` forms) and **cited by file in the instrument's header**. Whether the client loads a
   workspace hook below the workspace root is answered from the client, not from a glob. A client pin change re-derives the list.
-- **Binds forward:** every agy cell of levels 6, 7 and 8 fired after this addendum merges. **It does not reach back as a void**, and A5.2's
-  filed disposition gives no earlier result of record a served network call to answer for.
+- **Binds forward:** every agy cell of levels 6, 7 and 8 fired after this addendum merges. **It does not reach back as a void.** Whether any
+  earlier result of record needs a statement about the web route is decided on the owed receipt in A5.2, not by this row.
 
 **A5.4 · THE PTY GRANT — A FORK ON DIAG-2, REGISTERED BEFORE IT FIRES.**
 DIAG-2 is ONE Flash cell from level 5's export `9f650a3`, same condition as the first diagnostic (LZW plain+statement), in a DIAG root,
