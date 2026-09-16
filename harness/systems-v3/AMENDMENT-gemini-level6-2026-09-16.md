@@ -241,18 +241,25 @@ pinned by ancestry and not by a tree test on three task dirs. **The sha is named
 ## ⚖️ ADDENDUM 2 — THE EXPORT SHA, AND THE SCAN'S CLASSES. APPENDED; §H1–§H7 untouched. **THIS IS LEVEL 6's RELEASE.**
 *bench (lead), 2026-09-16. Names the export §H0 row 4 and ADDENDUM 1 (A1.1) require, and narrows A1.2 on the builder's measurement.*
 
-**A2.1 · THE EXPORT.** Bare `master` = **`c9fcf105a4df7a9fc53b526f54e4987e3611a305`** (one merge commit), read back by the lead at the bare repo:
+**A2.1 · THE EXPORT.** Bare `master` = **`5f70ee8e2d73b944b89cd2bebe8ec68fd8de18bc`**, read back by the lead at the bare repo:
 ```
-  ancestry        eacb9ec  --is-ancestor rc 0 · 8ffa393 (the P-DELIVERY closure) --is-ancestor rc 0
-  level-6 tasks   git diff eacb9ec..c9fcf10 -- tasks/systems-v3/{LZW,LRU,Paxos}   0 lines — identical to eacb9ec
-  harness delta   eacb9ec..c9fcf10: 13 files, +1192 / -47, all under harness/systems-v3/:
+  ancestry        eacb9ec · 8ffa393 (the P-DELIVERY closure) · c9fcf10 (the supervisor merge) — each --is-ancestor rc 0
+  level-6 tasks   git diff eacb9ec..5f70ee8 -- tasks/systems-v3/{LZW,LRU,Paxos}   0 lines — identical to eacb9ec
+  harness delta   eacb9ec..5f70ee8: 14 files, +1207 / -49, all under harness/systems-v3/:
                   the P-DELIVERY closure — agy_launch_v3.sh · agy_wave_v3.sh · briefing_token_walk_v3.py · briefing_verdict_v3.py ·
                     cell_build.py · cells_bin.sh · fire_agy_v3.sh · selftest_all_v3.sh · selftest_briefing_receipt_v3.sh
                   the any-503 supervisor — gemini_canary_wave_v1.sh · gemini_lane_remote_v1.sh · gemini-waves/refire-l5-2026-09-15.tsv
                   gemini_drive_v3.sh — the executor-registry default moved to a fleet-local link, and an absent registry is SAID
+                  score_wave_v3.sh — the scorer resolves its harness BESIDE ITSELF (overridable only by name), prints its tree
+                    and sha on its first line, and REFUSES a verdict reader that lacks the receipt-layout verdicts
   private path    the registry default no longer names a private-record path (both call sites)
 ```
-⇒ **All 36 cells build and launch from this one sha**, recorded per cell. `e5f7126` remains the BASE its branch carries (A1.1), unchanged.
+⇒ **All 36 cells build, launch AND ARE SCORED from this one sha**, recorded per cell. `e5f7126` remains the BASE its branch carries (A1.1).
+⛔ **`c9fcf10` WAS NAMED HERE FIRST AND IS SUPERSEDED BEFORE MERGE** (systems, 10:40): at `c9fcf10` the scorer read its verdict reader from a
+hardcoded worktree sitting at `e5f7126`, which knows nothing of the receipt layout — so EVERY level-6 cell would have scored NOT-APPLICABLE, a
+SCORABLE verdict, in a table that read as normal. ⇒ ***THE SCORER WAS TWO HARNESSES, AND ONLY ONE OF THEM WAS IN THE FREEZE.***
+✅ **GATE ADDED BY THIS ADDENDUM:** the hand reads the scorer's FIRST LINE (tree + sha) and confirms `5f70ee8` BEFORE reading any score table;
+a table scored from any other tree is not a level-6 result.
 
 **A2.2 · A1.2 NARROWED — MY WORDING WOULD HAVE VOIDED EVERY DELIVERED CELL.** "The arm file the ONLY permitted hit" measured the wrong
 population: at cell END the token belongs in the subject's own output stream and its client transcripts. The scan built at `c9fcf10`
@@ -270,5 +277,5 @@ subject's first echo. The scorer reports every SUBJECT-WRITTEN path beside the c
 **A2.3 · THE REGISTRY, AT FIRE.** The supervisor registers each executor through `$HOME/.fleet/bin/exec-registry.sh`. **The hand confirms that
 link on the box it fires from before the first cell**; a wave that announces itself UNREGISTERED is running outside the fleet's executor law.
 
-**A2.4 · RELEASE.** On this addendum's merge the hand fires level 6 from `c9fcf10`, in §H2's order — **block S, then B, then G** — under the
+**A2.4 · RELEASE.** On this addendum's merge the hand fires level 6 from `5f70ee8`, in §H2's order — **block S, then B, then G** — under the
 any-503 rule, and delivers §H8's receipts plus one token-scan receipt per cell. The lead scores and re-cuts the census in the same commit.
