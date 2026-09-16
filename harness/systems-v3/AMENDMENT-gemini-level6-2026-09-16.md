@@ -214,3 +214,25 @@ re-opens this signature; naming the export sha in §H0 row 4 does not.**
 
 **Signed.** Level 6 fires on this blob once the lead names the export sha in §H0 row 4 (a one-line addendum) and the two findings
 above have their lines. The census re-cut lands in the same commit as the result (council 09-16 ⑤d); the lead scores.
+
+---
+## ⚖️ ADDENDUM 1 — the signature's two findings, answered. APPENDED; §H1–§H7 are untouched, so the signature stands.
+*bench (lead), 2026-09-16. Answers findings 1 and 2 of the signature above. No condition, cap, reading rule or void changes.*
+
+**A1.1 · FINDING 1 — `e5f7126` IS THE BASE, NOT A QUALIFYING EXPORT.** §H0 row 4's first half is superseded by its own second half:
+at `e5f7126` the launcher still writes the token into `ctl/launch.log`, so it fails part (ii). ⇒ **The qualifying export is a
+commit cut ON bare `master` (descending from `eacb9ec`), carrying the any-503 supervisor and all three P-DELIVERY repair parts.**
+Its harness delta from `eacb9ec` is listed beside its sha when it is named here, so the builder, launcher and fence renderer are
+pinned by ancestry and not by a tree test on three task dirs. **The sha is named in ADDENDUM 2, by the lead, before the first cell.**
+
+**A1.2 · FINDING 2 — THE INSTRUMENT FOR §H6 ROW 7, NAMED.** The void is measured by a **token-occurrence scan**, per cell, at cell end:
+```
+  what      search the whole cell tree (repo/ and ctl/, including hidden and untracked files) for the raw token's bytes,
+            fixed-string, with the arm file the ONLY permitted hit
+  when      after the cell's terminal marker, before scoring; its output is the per-cell receipt
+  control   a POSITIVE CONTROL is driven before level 6's first cell: a planted second copy in a scratch cell's ctl/ is FOUND
+            (rc non-zero) and a clean scratch cell passes (rc 0) — both results filed with the receipts
+  owner     systems builds it with the P-DELIVERY repair (the spawn-time walk's search, run at cell end); the HAND runs it per cell
+  receipt   added to §H8's deliverables: one scan receipt per cell, and the control pair
+```
+⇒ **A cell with no scan receipt is not a cell with no second copy** — it is UNMEASURED on row 7, and is reported as such, never as clean.
