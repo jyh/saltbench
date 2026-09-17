@@ -1,0 +1,47 @@
+--- self-test on the RUN BOX (a different python, a different box) ---
+  PASS GREEN the phase the CELL records is reported (⑯'s phase dimension)
+  PASS the declared absence is printed BESIDE the numbers, never left to a document
+cell_tokens SELF-TEST: OK
+
+--- LIVE: the three HC1 LRU plain cells, one command ---
+=== hc1lp01   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records        input   cache_crea     cache_read       output              T   share
+    exec   claude-opus-5            48           96       160011        2360247        69507        2589861   27.8%
+    exec   claude-sonnet-5           7           14        43263         165848        19568         228693    2.5%
+    head   claude-opus-5            81          162       113273        6322351        68594        6504380   69.8%
+    ALL    -                       136          272       316547        8848446       157669        9322934  100.0%
+    ROLE SHARE OF T: exec 30.2% · head 69.8%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1lp02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records        input   cache_crea     cache_read       output              T   share
+    exec   claude-opus-5            24           48        91007        1302168        31708        1424931   17.5%
+    exec   claude-sonnet-5           4            8        35460          69330        14715         119513    1.5%
+    head   claude-opus-5            70          140       131609        6384217        83215        6599181   81.0%
+    ALL    -                        98          196       258076        7755715       129638        8143625  100.0%
+    ROLE SHARE OF T: exec 19.0% · head 81.0%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1lp03   phases recorded: 1   cfg rows recorded: 1
+    VOID (declared, carried verbatim): VOID(UNDERSTATED) 1 record(s) carry stop_reason=null (an INTERRUPTED turn): 38443 T and 2 output tokens are recorded but UNDERSTATED by an unbounded factor — the client stops writing usage where the interrupt lands, so this sum is a LOWER BOUND, not a price
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records        input   cache_crea     cache_read       output              T   share
+    exec   claude-opus-5            19           38        58486         703636        23923         786083   11.8%
+    exec   claude-sonnet-5           9           18        37296         235529        17910         290753    4.4%
+    head   claude-opus-5            70          140       111125        5399410        63537        5574212   83.8%
+    ALL    -                        98          196       206907        6338575       105370        6651048  100.0%
+    ROLE SHARE OF T: exec 16.2% · head 83.8%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+rc=0
