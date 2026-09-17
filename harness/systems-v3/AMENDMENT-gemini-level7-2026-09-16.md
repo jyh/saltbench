@@ -407,3 +407,17 @@ wall cap's incidence by arm is the reading that matters.
 **⇒ SIGNED.** Nothing fires before L7A1.6.
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+
+---
+## ⚖️ ADDENDUM 3 — LEVEL 7's EXPORT MOVES WITH LEVEL 6's: `abb7829` (level 6 ADDENDUM 8). APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-16 18:2x PDT. Before level 7's first cell. No cell, condition, cap or void changes. It goes to a non-author for signature.*
+
+**L7A3.1** · L7A1.2 named `199c791`. **At that sha no agy cell that runs its battery can launch** (level 6 A8.1), so level 7 cannot fire from it.
+⇒ **Level 7's export is `abb7829946a80c6e204e877346961c45e5e30b66`**, named under §K0 row 4's own clause.
+- **Delta from `199c791`:** exactly `harness/systems-v3/agy_launch_v3.sh`, as in level 6 A8.3.
+- **Delta from `5f70ee8`:** L7A1.2's list, plus that file.
+- **Task trees:** `git diff 199c791 abb7829 -- tasks` is 0 lines, so L7A1.2's task-tree reading (0 against 5f70ee8, control 95) carries unchanged.
+
+**L7A3.2** · Wherever L7A1.5 reads `199c791`, read `abb7829`: §K0 row 8's dry builds, the BS tripwire's given compare, §K9's scorer first line
+`(abb7829946a8)`, and the gates. **Level 6 A8.5's F2 adds `home-launchable OK`, and it binds every level-7 root.**
+**L7A3.3** · §K0 row 7 is unchanged: level 7 fires after level 6's chain ends.
