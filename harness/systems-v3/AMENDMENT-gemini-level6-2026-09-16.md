@@ -721,11 +721,11 @@ Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
 voided, no condition changes and nothing is halted: the caps in force are the ones every agy level has run under. **What changes is what
 the freeze SAYS is in force.** It goes to a non-author for signature.*
 
-**A7.1 · THE DEFECT, MEASURED THREE WAYS.** §H3 registers *"token cap T1_TOK 250,000,000"*, and §H6 row 6 and §H8 report CAP-TOKENS per
-arm. **No agy-lane script enforces `T1_TOK`.**
+**A7.1 · THE DEFECT, MEASURED THREE WAYS.** §H3 registers *"token cap T1_TOK 250,000,000"*, and §H3's reporting line and §H6 row 6 name
+CAP-TOKENS as a reported class. **No agy-lane script enforces `T1_TOK`.**
 ```
   1  census      18 agy-path files at 199c791 (agy_*.sh · agy_*.py · fire_agy_v3.sh · gemini_*.sh): T1_TOK occurs ONCE, in a comment
-                 (agy_wave_v3.sh:106 "Cost is bounded by budgets.env (T1_TOK, C1_USD)"); budgets.env is read by none of them.
+                 (agy_wave_v3.sh:106 "Cost is bounded by budgets.env (T1_TOK, C1_USD)"); budgets.env appears only in that comment.
                  positive control: cell-watch.sh — the CLAUDE lane's watcher — reads T1_TOK 8 times and budgets.env 9. No agy file calls it.
   2  vocabulary  agy_turnloop_v3.py's end kinds are TURN-CAP · WALL-CAP · TURN-TIMEOUT · TURN-DENIED. There is no token-cap end.
   3  record      CAP-TOKENS occurs in 0 of the 7 agy result files (RESULT-agy-* · RESULT-gemini-* · RESULT-p1-greenfield)
@@ -745,7 +745,10 @@ phase aside's KEEP list, which moves nothing and enforces nothing. **The data ar
 ```
 These are the values levels 4 and 5 registered by name (`max_wall 21600 · max_turns 40 · print_timeout 1800s · turn_timeout 2100`).
 Levels 6 and 7 carried the per-turn pair and the token value and dropped the two that bind. **`agy_wave_v3.sh` is byte-identical
-across `5f70ee8`, `c419bdc` and `199c791`** (A4.1, A6.1), so every level-6 cell ran, and runs, under exactly these.
+across `5f70ee8`, `c419bdc` and `199c791`** (A4.1, A6.1), so these are the DEFAULTS every level-6 cell met.
+⛔ **They are environment defaults (`${AGY_MAX_TURNS:-40}`), so a hand's environment can override them.** The wave prints the values it
+actually used on its `CAPS` line (`agy_wave_v3.sh`, before the first cell). **The hand files that line with each wave's receipts, and a
+wave whose line differs from A7.2 is reported as such**, never read as registered.
 
 **A7.3 · WHAT THE TABLES CARRY INSTEAD.**
 - **§H6 row 6** reads `TURN-CAP · WALL-CAP · TURN-TIMEOUT · TURNS-CUT · CELL-KILLED` — NOT void, reported per arm. `CAP-TOKENS` is
