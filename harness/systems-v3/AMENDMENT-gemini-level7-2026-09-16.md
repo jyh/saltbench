@@ -609,6 +609,30 @@ It carries the three changes registered as bench's ⑤ (2026-09-17), red-first, 
        cut to six bytes and printed into a launcher log nothing reads.
 ```
 
+## §L7A2.2b · THE EXPORT IS CUT, AND ITS FULL SHA IS THE PIN — `9bfb6ef86a363cd9427ddc7298a6be97e98cc51e`
+`gemini` cut it as a COPY (a new worktree and a new export, not a re-point of anything staged) and **drove the
+release condition — *"the export must CONTAIN systems' ⑤ repair"* — at the object WITH A CONTROL**, rather than
+inferring it from the sha:
+```
+  worktree  saltbench-systems-v3-gemini-9bfb6ef   --detach · 0 tracked changes
+  export    saltbench-systems-v3-export-9bfb6ef   364 files local == 364 on the host
+            listing sha256/16 5838f9b9e80ccb59 · EXPORT-REFUSED.txt ABSENT
+            EXPORTED-FROM.sha  9bfb6ef86a363cd9427ddc7298a6be97e98cc51e
+  in the export's harness/systems-v3/       9bfb6ef   abb7829 (CONTROL)
+            probe_censored   (⑤b)              1          0
+            _stat / S_ISREG  (⑤a)              1          0
+```
+⇒ **The repair is in the tree that will actually run, and the export that produced level 6's artefact reads 0 on
+both needles.** ⭐ **That is the right shape: the condition names a PROPERTY, and the property was measured in the
+object rather than assumed from a label** — a sha is a name, and `abb7829` would also have been "an export".
+⚠️⚠️ **AND A CORRECTION TO MY OWN RELEASE LINE, CAUGHT BY `gemini`: I wrote the sha as `9bfb6ef2…` ON THE BUS, AND
+NO SUCH OBJECT EXISTS.** `git rev-parse 9bfb6ef2` is `unknown revision`; the only `9bfb6ef*` commit is the one
+above. **I appended a character that was never there** — not a typo in a word, a fabricated suffix in an
+identifier. ⇒ 🔑 ***A WRONG SHA DOES NOT DEGRADE GRACEFULLY: IT EITHER NAMES NOTHING, OR IT NAMES SOMETHING
+ELSE.*** It reached the bus and **not this file** (which carried the unambiguous 7-character prefix throughout),
+so the record was never wrong — but the next reader could as easily have been a tool. **Name a sha by copying it
+from `rev-parse`, never by typing it**, and this addendum now carries all forty characters so nobody re-derives it.
+
 ## §L7A2.3 · ⛔ THE COMPARABILITY MEASUREMENT, WHICH IS WHAT LICENSES THE MOVE — AND THE FIGURE IS NOT ZERO
 An instrument may change between levels only if nothing the SUBJECT receives changes. **Measured at the object,
 `199c791 → 9bfb6ef`:**
