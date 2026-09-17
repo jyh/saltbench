@@ -510,3 +510,31 @@ already requires. Evidence is in `evidence/l8-export-163df20-2026-09-17/`.
   THIS EXPORT.
 - systems owes two more selftest arms at its next touch of the supervisor (`cells-l8V-` → R4 and an empty prefix with no extra → FIELDS). They do not
   move the export, and a later supervisor satisfies A4.2 if it descends from `163df20`.
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (85th head), 2026-09-17 01:2x PDT, on ADDENDUM 4 (A4.1–A4.4)
+
+**SIGNED AT BLOB `7090d8e2b11627d6a8d4c119c0d2c2cd4f06e08f`**, head `6a3a6fc3` — **both matched the lead's ask before I read a line.** Read WHOLE. Append-only: **7 files, +256 / −0**; the amendment file has 0 removed lines and the 84th head's ADDENDUM 3 signature is intact at this head. The head descends from `main` (fast-forwardable). The five `MANIFEST.tsv` digests were re-derived from the blobs at this head: **5 of 5 match.**
+
+### ⭐ BOTH DRIVES RE-RUN BY ME, FROM THIS PR'S OWN SCRIPTS, AT THE SHA — BYTE-IDENTICAL TO THE TRACKED OUTPUTS
+```
+  export_delta.sh <harness> 2419dcf 163df20                 rc 0   sha256/16 75125bb31a88ffe1 == tracked   ✅
+     six ancestry rows rc 0 · control (export-in-base) rc 1 · 39 commits / 26 files · 0 under withheld/mutants/
+     refusal control: an unresolvable sha → rc 2                                                          ✅
+  supervisor_gate_drive.sh <harness> 163df20 <templates>    rc 0   sha256/16 09a047c587ea459b == tracked   ✅
+     --selftest 88 of 88, 0 FAIL · supervisor sha256/16 7b03c644726146e4 · 11 templates (21 rows):
+     REFUSE [A2.1] unset · REFUSE [A2.1] at 1 · REFUSE [R6] at 1,2 · control, extra column emptied: 11 × OK at 1,2
+     refusal control: an empty template directory → rc 2                                                  ✅
+```
+⚠️ **A byte-identical re-run of the lead's own script is ONE instrument run twice — it proves the tracked output is what that script prints at that sha, not that the script measures what the addendum says.** So two cells were re-derived by a SECOND method, plain git on the harness checkout: the six ancestry claims by `merge-base --is-ancestor` (**6 of 6**), and the supervisor's digest by `git show 163df20:harness/systems-v3/gemini_canary_wave_v1.sh | sha256` (**`7b03c644726146e4`**). Both agree with the script.
+
+### ⚠️ ONE MEASUREMENT OF A4.2's PREMISE, AND ITS LIMIT
+A4.2 rests on *"no cell runs `gemini_canary_wave_v1.sh`; the hand's chain runs it from its own harness checkout"*. I read the level-6 refire chain's script on the build box for that filename: **1 hit(s).** That corroborates the premise for the chain live tonight; it says nothing about a level-8 chain that has not been written.
+
+### ⛔ WHAT I DID **NOT** VERIFY
+1. **§M0 row 8's preflight and A2.3's withheld census at this export** — both are taken AT the export by the hand, in its window; the run-box export directory is not cut yet.
+2. **That the chain's working tree will be at `163df20`** — A4.2 makes that the hand's receipt.
+3. **A4.3's claim that `agy_wave_v3.sh` ends its wave green on a refused extra with zero cells** — READ, not driven; the drive above shows the supervisor's refusal, which is the layer this addendum adds.
+4. **That the 11 templates I drove are the 11 the hand will fire** — the drive prints basenames and digests; the fire precondition (empty the extra column) is a hand act that has not happened.
+
+⇒ **A4.1–A4.4 name one sha, one supervisor and one fire precondition; every derived cell in the evidence directory reproduces at the sha by the lead's instrument and, where a second method exists, by that too. Signed.**
