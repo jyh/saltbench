@@ -327,3 +327,32 @@ makes any other problem's V1 or V2 more or less informative.
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 
 ---
+
+---
+
+## ⚖️ ADDENDUM 2 — FOUR RULINGS HOMED BEFORE THE EXPORT IS NAMED: A PHASES FLAG THAT MUST BIND, REACH AFTER A 503, THE WITHHELD VOID ROW, AND THE DRY DRIVE'S WINDOW. APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-16 20:0x PDT. It adds one harness requirement to §M0 row 4, one rule to §M4, one row to §M8 and one clause to §M0 row 8, and
+changes no condition or cap. The rulings were given on the bus at 19:06–19:07 (from the hand's two observations) and 19:3x (the fence finding);
+this is their home. It goes to a non-author for signature before it binds.*
+
+**A2.1 · §M0 ROW 4 — THE EXPORT MUST MAKE `AGY_PHASES` BIND.** Measured at bare master `4dfcad6`: the driver reads `${AGY_PHASES:-1}`
+(`gemini_drive_v3.sh:185`), and the supervisor `gemini_canary_wave_v1.sh` names the variable **0** times. It reaches the driver only by
+inheritance. ⇒ A leg launched without it fires phase 1 only, spends, and exits green, and the driver's `1,2` wiring probe keys on the same
+variable. **REQUIRED in the export, a harness build routed to systems:** the supervisor prints `AGY_PHASES=<value>` on its PLAN and
+SUPERVISOR START lines, and REFUSES a manifest whose roots are `cells-l8-*` unless the value is `1,2`. The hand's chain HALTs on a driver line
+reading `phases 1`, and that stays as the second layer.
+
+**A2.2 · §M4 RULE 5 — REACH AFTER A 503 IS A RE-SAMPLE.** The council's any-503 rule discards the WHOLE condition, including other cells'
+LANDED phase-1 work. The rule stands as written, and it does not conflict with rule 2 (rule 2 is about selection, the 503 rule about capacity).
+**Registered:** discarded phase-1 landings are never pooled and never counted toward REACH; REACH after a discard is a RE-SAMPLE of the whole
+condition; the per-cell table carries each cell's ATTEMPT NUMBER.
+
+**A2.3 · §M8 ROW 13** is level 6 §H6 row 11 (VOID(LEAK-WITHHELD), with level 6 A9.2's ACCESS / NAME-ONLY rule), applied per phase. **Level
+7 A5.1's precondition is carried:** the withheld census is re-run against a current level-8 fence and reads COVERED before the first cell.
+
+**A2.4 · §M0 ROW 8 — THE DRY DRIVE'S WINDOW AND ITS LIMITS.** `dry_phase2_v3.sh` REFUSES while any `fire_agy_v3.sh`, `cell-claude.sh` or
+`agy_wave_v3.sh` process is live (`dry_phase2_v3.sh:49`). The Claude lane now fires beside the agy lane (AMENDMENT-claude-lane-B §Q3.4
+item 3, ruled (b)), so **that window is scheduled by the helm, not waited for.** The drive's own printed LIMITS ride with its receipt:
+agy_wave's pool read, credential warm-up and phase-1 loop NOT exercised; the client was `/bin/echo`; phase 1's stream, landing and `end-1`
+were PLANTED. **A `LAUNCH-REFUSED` end** (`fire_agy_v3.sh`: an unlisted launcher rc with no client file created, "NOTHING WAS SPENT") is not a
+scored cell. It re-fires under a new attempt number (A2.2).
