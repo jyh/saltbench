@@ -687,3 +687,49 @@ client build, HC1's own registered confounds. **It is a token-volume reading wit
    half is an existing record and the Sonnet half does not exist yet.
 3. **It does not repair `clb_harvest.py`.** The defect is measured, its remedy is a procedure, and the code change is parked to ⑱.
 4. **It does not re-price the campaign in tokens.** ⑯'s re-basing of published USD figures is owed and is not this document.
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (89th head), 2026-09-17 14:2x PDT, on ADDENDUM 3 (A3.0–A3.7)
+
+**SIGNED AT BLOB `f7575ae0f9f169e617555a38cbc5cbf1829d7f30`**, resolved at `33503a6025a60e11689924f523a7622a5a679873:harness/systems-v3/AMENDMENT-claude-lane-B-2026-09-16.md` — **the blob and the head the lead pinned in its own ask, matched at the forge in one command.** Read WHOLE.
+📌 **SCOPE: A3.0–A3.7 only.** §Q0–§Q9 and the 83rd and 84th heads' signatures are untouched and are not re-opened. **This addendum RELEASES NOTHING** — nothing fires before it AND the release addendum, which is the minute's own condition.
+
+### WHAT I DROVE AT THE OBJECT — each with a control
+```
+  1 BLOB + HEAD     f7575ae0f9… == the lead's pinned blob · head 33503a60… == the lead's ask       ✅
+  2 APPEND-ONLY     TWO methods: `cmp` of the first 50,618 bytes against origin/main (IDENTICAL),
+                    and numstat 167/0. Both prior signatures present and unchanged (2 hits each,
+                    base and head).                                                                 ✅
+  3 THE LOAD-BEARING CLAIM — A3.2's broken priors, re-derived at the CENSUS, not read off the table:
+                      SG  greenfield × none        DONE  9ffa1a8     prior INTACT                   ✅
+                      SS  greenfield × statement   DONE  173ee84     prior INTACT                   ✅
+                      SC  greenfield × spec-change DONE  20836ad     prior INTACT                   ✅
+                      SB  brownfield = block O     BLOCKED, not fired  PRIOR BROKEN                 ✅
+                      SBS brownfield = block OS    BLOCKED, not fired  PRIOR BROKEN                 ✅
+                    and the totals DONE 28 · INEXPR 2 · BLOCKED 30, with 10+8+10 = 28 proving
+                    the 28 IS greenfield-only — which is the whole of why three priors survive.     ✅
+  4 THE MAPPING     block → (field, extras) taken from §Q1's OWN table, so "SB's counterpart IS
+                    block O" is derived rather than asserted: SB = Sonnet brownfield none,
+                    O = Opus brownfield none.                                                       ✅
+  5 THE COUNTS      DERIVED from §Q1's table: SG 30 · SB 30 · SS 24 · SBS 24 · SC 30 = 138 Sonnet;
+                    O 30 · OS 24 = 54 Opus; 64 conditions / 192 cells.                              ✅
+  6 MUTATION CONTROL  a wrong sha planted into a census COPY → arm 3 FAILS. The arm can fail.       ✅
+```
+
+### ⚖️ WHY I AGREE THAT THIS NEEDED A NON-AUTHOR AND NOT A `sed`
+**A3.2 is correct and it is the reason the re-order is not mechanical.** Three Sonnet blocks keep their prior *because Opus's greenfield is already DONE*, and the two brownfield blocks lose theirs *because their counterparts are the very blocks ⑤(a) moved to the end*. A mechanical re-order carries the word **"BORROWED"** over a prior that no longer exists, and it reads exactly like a clean rename.
+⭐ **A3.3 is the clause I would have been most likely to miss, and it is unrecoverable after block O is read:** the protecting clause *"a different Sonnet shape is a result about Sonnet, never a failed prediction"* exists **because the borrowing ran Opus → Sonnet.** Under ⑤(a) rows 6 and 7 gain a *Sonnet* prior, so the clause must reverse or the last two blocks inherit a prediction they never had — arriving as *"Opus failed to reproduce Sonnet"*, which this freeze is not entitled to claim. **Registering it before either block fires is the only order in which it costs one sentence.**
+⭐ **A3.4's T-SB is a hole the re-order OPENS, not an addition the lead wanted:** T-O's coverage of the brownfield-specific rows was *incidental to being first*, and ⑤(a) moves the first brownfield fire into a block that had no tripwire at all. ***A re-order does not move a tripwire — it moves what the tripwire was the first of.***
+
+### ⛔ WHAT I DID **NOT** VERIFY — named so this signature is not read wider than it is
+1. **A3.5's token figures and the `clb_harvest.py` two-arm drive.** I did not re-run `cell_meter.py`, re-derive any T, or reach the run box. The evidence directory and `derive_table.py` are cited and I accepted them as the lead's own receipts.
+2. **A3.6's `hc1lp01/02/03` numbers**, including the `VOID(UNDERSTATED)` lower bound that makes the median a BAND. Read, not driven.
+3. **The release draft's renumber to ADDENDUM 4** and the two sentences A3.0 says are amended on that branch — a different branch, not offered here.
+4. **Whether the census itself is right.** Arm 3 checks this addendum against `CENSUS-full-matrix-2026-09-14.md`; if the census is wrong, my arm inherits that and does not catch it. *(The 83rd head declared the same limit about §Q1 against the census, in the other direction.)*
+5. **The five §Q2 build items and the export's bytes** — covered by ADDENDA 1 and 2, not re-opened.
+
+### ⚠️ TWO THINGS I OWE THE LEAD, BOTH SMALL AND NEITHER BLOCKING
+- **The ask's append figure is off by 50 bytes:** it states **15,190 B** and the append measures **15,240 B**. Append-only is proven independently by `cmp` and by numstat 0-deletions, so nothing rests on it — **but it is a number in a pinned ask, and a pinned ask's numbers are the thing a signer is supposed to check.**
+- **bench's correction to the helm is accepted and it is mine, not the lead's:** the minute's ⑤ chain and the helm's gate line to bench both name **T-O** as the tripwire read before the block continues. Under ⑤(a) **the campaign's first cell is T-S (`SG · LRU · plain · greenfield bare`)**, and T-O is no longer first. **The minute and the gate are corrected by the helm in the same act as this signature.**
+
+**⇒ SIGNED.** A3.0–A3.7 are internally exact, their load-bearing claim is true at the census by an independent derivation with a control that fails, and their scope is honestly bounded by their author. Nothing fires before the release addendum names the export sha and carries the `rates.tsv` re-read.
