@@ -620,14 +620,14 @@ Its per-cell table is sha256/16 `705c0428624e145d`. **Both are cited by hash and
   network-tool results served     0    test: a network-tool RESULT record carrying no error
   hook-path writes               10    all in dgpwf01, the uncounted first diagnostic cell
 ```
-- ⛔ **A call is not a served call, and the census's first reading was wrong in that direction:** a denied web tool leaves no result record,
-  so "a call record with no error" over-counts served tools as 47. The rule above is the one A5.2 asked for.
-- **What it supports:** for the 196 agy cells on the run box that have a stream, 0 network-tool results were served. **What it does not:** cells that carry a hook
+- ⛔ **A call is not a served call:** a denied web tool leaves no result record at all, so the looser rule "a call record with no error"
+  would count 47 served (RECEIPT §5, method note). The rule above is the one A5.2 asked for.
+- **What it supports:** across the 196 agy streams the census read, 0 network-tool results were served. **What it does not:** cells that carry a hook
   script and no stream are covered only by the final-bytes census, which cannot see a rewrite that was later restored. Both clauses travel
   together. **A5.2's wording for levels 6–8 (detect and void) is unchanged.**
 
-**A6.5 · A5.5's COMPARABILITY SENTENCE, COMPLETED.** A resumed level-6 cell differs from a level-5 cell by exactly these five, and any
-level-5 ↔ level-6 contrast names all five:
+**A6.5 · A5.5's COMPARABILITY SENTENCE, COMPLETED.** A resumed level-6 cell differs from a level-5 cell by exactly items 1–4. Item 5 is not
+a difference but a caveat DIAG-2 could not remove. Any level-5 ↔ level-6 contrast names all five:
 ```
   1  write-deny on ctl/web-deny.sh · config/hooks.json · the antigravity-cli link · config/.migrated       (sandbox configuration)
   2  the launcher pre-migrates the hook registration; level 5's client migrated it itself               (export delta, A6.1)
