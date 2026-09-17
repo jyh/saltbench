@@ -105,3 +105,38 @@ ran before the watcher's first write. The column does not decide §3b's outcome;
   this commit records that the count does not move.
 - **It does not choose stage 2.** Desk HG's designs return to the 2026-09-17 sitting, together with the question the
   replication raised: **the cap bound the arm that runs longest, and every proposed stage-2 cell class runs longer.**
+
+---
+
+# ADDENDUM 1 — 2026-09-16, bench. **A DECLARED EXPOSURE: TWO WITHHELD-CARRYING TREES SAT OUTSIDE THESE CELLS' OS-LAYER FENCE. MEASURED USE: 0 OF 45.**
+*Appended. §0–§6 are unchanged, and no number above moves.*
+
+**How it was found.** The stage-1 stage script took its task tree from a referee tree in the run box's home directory. It did not
+use the 9f650a3 export (the Claude-lane (B) freeze, `AMENDMENT-claude-lane-B-2026-09-16.md` §Q2 item 1, records the check that
+this changed nothing the cells were given). That tree carries `withheld/` for all five problems. The harness design says no withheld
+byte reaches the run box. So the question became: which such trees does a stage-1 cell's fence deny?
+
+**EXPOSURE** (`evidence/hc1-stage1-instruments-2026-09-16/exposure/census.out`, from `withheld_exposure_census.py`). A read-only walk
+of the run box's home directory found 194 withheld-shaped entries in 7 top-level trees. Each tree was tested against one stage-1
+cell's rendered `ctl/fence.json` (sandbox `denyRead`, realpath prefix). **Five are COVERED. Two are NOT:**
+`~/referee-posthoc-2026-09-09` (25 entries) and `~/rescore-tool` (7). The census's limits are printed in its header: depth 7, no
+tarball interiors, no cells roots, and a name-based walk, so the count is a floor. **Only the OS layer was measured; the hook layer
+was not.**
+
+**USE** (`exposure/use.out`, from `transcript_use_census.py`). Every transcript file of the 45 stage-1 project dirs was read, heads
+and sidechains, 143 files in all:
+```
+  referee-posthoc 0 · rescore-tool 0 · withheld 0 · saltbench-systems-v3-export 0
+  CONTROL  REQUIREMENTS.md 143 of 143 · files naming their own cell path 143 of 143
+  second method: FOREIGN cell paths named 0
+```
+📌 `/cells/` reads **20** in the same file. Every one of those hits is a harness code comment the subject sees (`~/cells/<id>/repo → <id>`),
+not a path the subject opened. The second method, which parses cell paths under the home directory, reads 0 foreign cells. The wide
+needle is kept in the output so the 20 is visible and explained rather than filtered out.
+
+**⇒ WHAT IT MEANS FOR THIS RESULT.** The exposure existed at the OS layer, and no stage-1 subject is measured to have used it.
+**No cell is voided and no number moves.** The instrument's limit travels with that sentence: a read whose path string appears in
+neither the call nor its result would not be seen.
+⚠️ **Whether this belongs in the paper's own words is the Captain's call** (the helm carried it to the 2026-09-17 sitting). The two trees
+are to be moved inside the fence in a window the helm schedules. That closes the MEASURED exposure, not the class. The (B) freeze is to check
+its deny set against this census, re-run at release (its ADDENDUM 1, owed at this writing).

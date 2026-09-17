@@ -1,0 +1,10 @@
+# project dirs matching 'cells-hc1': 45 · transcript files (heads + sidechains): 143
+needle	files
+referee-posthoc	0
+rescore-tool	0
+withheld	0
+saltbench-systems-v3-export	0
+/cells/	20
+CONTROL REQUIREMENTS.md	143
+CONTROL files naming their own cell path	143
+FOREIGN cell paths named (distinct cells)	0
