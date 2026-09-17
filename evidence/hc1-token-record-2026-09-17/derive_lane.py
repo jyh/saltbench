@@ -57,6 +57,24 @@ def main():
     if len(cond) != 15: bad.append("population is %d conditions, not 15" % len(cond))
     print("POPULATION  %d cells · %d conditions · %d with a declared VOID(UNDERSTATED)"
           % (len(cells), len(cond), sum(1 for c in cells if c["void"])))
+    # the LANDED / CAP-COST split is DERIVED from the cells' own end markers, never typed, and the two
+    # populations are cross-checked: an id in one file and not the other is a REFUSAL, not a footnote.
+    import os
+    em = os.path.join(os.path.dirname(os.path.abspath(sys.argv[1])), "hc1-end-markers.tsv")
+    if os.path.exists(em):
+        kinds = collections.Counter(); ids = set()
+        for line in open(em):
+            if not line.startswith("hc1"): continue
+            cid, marker = line.rstrip("\n").split("\t", 1)
+            ids.add(cid); kinds[marker.split()[1] if len(marker.split()) > 1 else "NO-END-MARKER"] += 1
+        print("            end markers: " + " · ".join("%s %d" % (k, v) for k, v in sorted(kinds.items())))
+        capture_ids = {c["id"] for c in cells}
+        if ids != capture_ids:
+            bad.append("end-marker ids and capture ids differ: %s" % sorted(ids ^ capture_ids)[:5])
+        else:
+            print("            the end-marker file and the token capture name THE SAME %d cells" % len(ids))
+    else:
+        bad.append("hc1-end-markers.tsv is absent — the LANDED/CAP-COST split would be a typed expectation")
     multi = sum(1 for c in cells if any(r["model"] != "claude-opus-5" for r in c["rows"]))
     print("            %d of %d cells carry SONNET subagent records inside an OPUS cell\n" % (multi, len(cells)))
 
