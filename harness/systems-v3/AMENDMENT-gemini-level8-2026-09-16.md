@@ -238,3 +238,36 @@ sentence, and any claim about the method, is the Captain's.
 **⇒ SIGNED.** ⛔ **And this signature fires nothing: no cell runs before level 7's chain ends, before §M3's gate is built and exported, and before a signed addendum names §M0 row 4's export with its harness delta from `2419dcf`.**
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+
+---
+## ⚖️ ADDENDUM 1 — V1 ON LZW IS SHOWN ABLE TO GO RED ON A REAL DRIVER OUTPUT: a control fixture, NOT a scoring input. APPENDED; all text above, the signature included, untouched.
+*bench (lead), 2026-09-16 18:3x PDT. Registered before level 8's first cell, and before any LZW table. It adds a reading rule and changes no
+condition, cap, void or export. It goes to a non-author for signature.*
+
+**L8A1.1 · WHY.** All five withheld `LZW/B` mutants read `REGRESSIONS 0/8`. So until today, V1 RED with V2 GREEN on LZW was reached only by the
+CONSTRUCTED fixture in `selftest_phase2_verdicts.py` (arm A6), and never by a real driver output. **A level-8 LZW V1 GREEN would have rested on an
+instrument never shown able to fail there.** §M7 rule 12 records the same shape for Crc32's V2, facing the other verdict.
+
+**L8A1.2 · WHAT WAS BUILT, AND WHERE.** The builder, on the lead's ruling, at harness bare master **`7aefc44`** (a merge of `242cd10` and `20bc35a`,
+read back by the lead):
+```
+  the fixture   phase 1's kwkwk_dropped carried onto B's 16-bit decode, at tasks/systems-v3/LZW/B/withheld/controls/v1-red-kwkwk/solution.rs
+  NOT a mutant  it sits OUTSIDE withheld/mutants/, which test_strength reads: `git diff --quiet 01d238e 20bc35a -- …/withheld/mutants` rc 0,
+                and 242cd10..7aefc44 adds exactly 4 files, all under that controls/ directory. LZW/B's suite-strength reading does not move.
+  order         prediction commit 3501873 (18:28:14 PDT) --is-ancestor run commit 20bc35a (18:29:32 PDT), rc 0
+```
+**L8A1.3 · THE READING** (the tracked outputs `run-2026-09-16/{fixture,control}.out`, read by the lead):
+```
+  fixture (the kwkwk decode fault)   TESTS 9/15 · REGRESSIONS 6/8 · CLAUSE_TESTS 0/7   ⇒ V1 RED · V2 GREEN
+  control (reference.plain)          TESTS 15/15 · REGRESSIONS 0/8 · CLAUSE_TESTS 0/7  ⇒ V1 GREEN · V2 GREEN
+```
+The builder registered P1–P4 before the run, from `driver_lib.rs`: regressions reach only `enc`/`dec`, and clause tests only `enc12`/`dec12`. All
+four HELD. The six failing tests are named in `RECEIPT.md` in that directory.
+⚠️ **LIMITS, riding with the reading:**
+- **Commit order proves the prediction was committed first, not that the run came after it.** The raw outputs carry no timestamp.
+- The lead did NOT re-run `B/run_tests.sh`. The counts are read from the tracked copies.
+- **One fault shape.** It shows V1 CAN fail on LZW; it is not a strength figure.
+
+**L8A1.4 · REGISTERED, ADDED TO §M7:** **16 LZW's V1 IS A READING THAT CAN FAIL** (this control). An LZW phase-2 V1 GREEN is reported as V1
+GREEN, with this addendum cited beside it the first time it appears in a result. **Crc32's V2 remains UNINFORMATIVE (rule 12).** Nothing here
+makes any other problem's V1 or V2 more or less informative.
