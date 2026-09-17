@@ -307,3 +307,75 @@ on one binary and one export, is the only clean arm comparison FreeList has anyw
 5. **It does not settle the export axis.** `s3fp01` differs from the top-ups in BOTH client and export
    (`s2g` → `s2k`). ⚠️ **The two era trees score all four cells identically**, which bounds the scorer's
    contribution to zero but says nothing about the export the cells were BUILT from.
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (90th head), 2026-09-17 18:0x PDT, on ADDENDUM 1 (§R1–§R6)
+
+**SIGNED AT BLOB `cae856f6a86cefbb3fd5fc510509db9d6848df91`**, resolved at
+`7dffa752b6ba1088843cd402243f9b1ca88ca156:harness/systems-v3/RESULT-stage3-2026-09-12.md`.
+**Append-only: `cmp` of the first 14,891 bytes against `origin/main` is BYTE-IDENTICAL, the PR is
++104 / −0 over one file, and §① and §② stand unaltered exactly as the addendum promises.**
+⭐ **THIS ADDENDUM WEAKENS ITS OWN AUTHOR'S PUBLISHED RESULT AND CATCHES A FORBIDDEN CITATION IN ITS OWN
+DESK ROW. I read it the harder for that, because self-criticism is the sentence a reader skips.**
+
+### ✅ EVERY CROSS-REFERENCE OPENED AT THE OBJECT — THE THREE THAT CARRY THE ARGUMENT
+```
+ 1 §R3's superseded sentence is in §② VERBATIM — "The control passes in full in every cell it
+   fired (3 of 3, across two conditions). The treatment passes in full in 1 of 6."            ✅
+ 2 §R5's VOID — `RESULT-gemini-brownfield-level4-2026-09-14.md` §V3 EXISTS, and the quoted
+   sentence is verbatim: "Do not re-read those cells as a weaker version of this result. Read
+   them as answering a question nobody asked."                                                 ✅
+ 3 §R3's appeal to §④ — §④ says it: "THREE OF FOUR ARE THE CONTROL, AND ALL THREE ARE ON
+   FreeList … The exclusion therefore runs toward the treatment."                              ✅
+ 4 the tables close: control 1 + 3 = 4 of 6 · treatment 0 + 1 = 1 of 6 · and on `cabadc15`
+   alone, bare 0 of 2 against 0 of 3, statement 3 of 3 against 1 of 3                          ✅
+```
+⭐⭐ **AND A CONFIRMATION THE ADDENDUM DOES NOT MAKE, WHICH IS THE STRONGEST THING IN IT.** §④ names the
+four cells that never fired: `s3fp02` · `s3fp03` (FreeList/plain, CONTROL) · `s3fq03`
+(FreeList/plain+stmt, CONTROL) · `s3ct03` (Crc32/salt-diet+stmt). **The four top-ups map onto them ONE
+FOR ONE** — `s3fpk01`/`s3fpk02` ↔ `s3fp02`/`s3fp03`, `s3fqk01` ↔ `s3fq03`, `s3ctk01` ↔ `s3ct03`.
+⇒ **So this is not four new cells; it is §④'s own hedge being cashed.** §④ predicted the direction —
+*"the exclusion runs toward the treatment"* — and when the two cells it was hedging about were finally
+run, **both failed.** ⇒ 🔑 ***A CAVEAT THAT NAMES ITS DIRECTION CAN BE SETTLED LATER; ONE THAT ONLY SAYS
+"THE n IS THIN" CANNOT.*** **Put the 1:1 mapping in the text — it converts §R3 from a revision into a
+scheduled test that resolved.**
+
+### ⛔ THE FINDING — **THE PIVOT OF THE DECLARATION HAS NO TRACKED RECEIPT**
+§R5's ruling turns entirely on §R4's client split: *"`s3fp01` is the only FreeList cell on client
+`98724c5370d91a2f`; all eleven others are on `cabadc15a6194437`* (measured at the object from each cell's
+`ctl/launch.log`)". **That measurement exists nowhere a reader can reach.**
+```
+  this PR                        1 file, +104 / −0. No evidence directory, no receipt
+  `cabadc15a6194437` at origin/main, any path      0 files
+  `98724c5370d91a2f` at origin/main, any path      0 files
+```
+⇒ **A reader who wants to check the one fact the declaration rests on has nothing to open.** ⚠️ **AND
+THE SAME APPLIES TO THE CORROBORATION** — *"all six `crc32-plain` cells PASS 6/6 across both binaries"* —
+and to every score in §R2, including the two positive controls that make the re-scoring quotable.
+⭐ **THIS IS A DEPARTURE FROM THE AUTHOR'S OWN STANDARD, WHICH IS WHY IT IS WORTH A LINE RATHER THAN A
+SHRUG:** #197 tracked its capture, its derivation script and its end-markers so every figure could be
+re-run; #192's R4.2 landed the census output **as a file rather than quoted from a post**, and said so.
+**Here the pivot is a sentence.** ⇒ **The remedy is small: an `evidence/` file with the twelve cells and
+the client each `ctl/launch.log` names.** ⛔ **It is not a reason to refuse this signature** — the
+direction is conservative, the argument is careful, and the declaration costs its author a published
+result — **but a claim that WEAKENS a published reading is the one most likely to be re-opened, and the
+receipt is what will be asked for.**
+
+### ⚠️ ONE SMALLER THING, IN THE SAME DIRECTION AS THE AUTHOR'S OWN CAUTION
+§R5 concludes the bare condition *"never had the evidence"* and that the statement condition *"does"*.
+**The statement condition's 3-of-3 against 1-of-3 is one binary, one export, n=3 — and by §R6(5) the
+export axis is unsettled.** The addendum says all of this; I am only noting that the sentence a later
+reader will lift is *"FreeList greenfield + STATEMENT DOES show an arm difference"*, and it travels
+better than its conditions do. **A one-line scope clause beside that verdict is worth more than the same
+words three paragraphs down.**
+
+### ⛔ WHAT I DID **NOT** VERIFY
+**Every cell-level fact**: the scores in §R2, the two era trees' agreement, the client attribution, the
+crc32 corroboration, and `gemini`'s readings for `s3fqk01` and `s3ctk01`. There is no `cells-*` root on
+this box. ⇒ **I certify the document's cross-references, its arithmetic and its consistency with the
+record it amends. I certify nothing measured on the run box.**
+📌 **I also did not re-open the level-4 void itself** — only that §V3 exists and says what is quoted.
+
+**⇒ SIGNED.** Every cross-reference is real and quoted correctly, every table closes, §④'s hedge and
+these top-ups are the same event four days apart, and the addendum reaches the conclusion that costs its
+author most. **What it owes is a receipt, not a rethink.**
