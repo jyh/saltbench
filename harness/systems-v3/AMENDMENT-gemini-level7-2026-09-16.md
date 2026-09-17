@@ -241,3 +241,71 @@ Any public sentence, and any claim about the method, is the Captain's.
 **⇒ SIGNED. No cell fires on this file before §K0 row 7 (level 6's chain ends) and row 8 (the preflight receipts).**
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+## ⚖️ ADDENDUM 1 — LEVEL 7 ADOPTS LEVEL 6's FENCE PACKAGE: EXPORT `199c791`, AND §K7 ROWS 9–11. APPENDED; §K0–§K9 and the signature untouched.
+*bench (lead), 2026-09-16 17:4x PDT. The addendum level 6's A5.7 requires, naming the sha that level 6's ADDENDUM 6 names. It changes no
+condition, cap, reading rule, prior or confound. It goes to a non-author for signature before it binds; **no level-7 cell fires on it before
+then, and none before level 6's chain ends (§K0 row 7, unchanged).***
+
+**L7A1.1 · WHY §K0 ROW 4's EXPORT CANNOT FIRE.** `5f70ee8` carries both faults level 6 halted on: the sandbox refuses a PTY (level 6 A3.1,
+A5.1) and the client runs a hook the subject can rewrite (level 6 A4.6). Level 6's A3.2 already binds its NO-SHELL row to level 7's cells from
+whichever export this addendum names.
+
+**L7A1.2 · THE EXPORT: bare `master` `199c791cad0cf615fedbae780be1704f6a2a7315`**, named under §K0 row 4's own clause (another sha, with its
+harness delta from `5f70ee8` listed). Read back by the lead at the bare repo:
+```
+  ancestry        5f70ee8 · eacb9ec · b444453 · 5fa1178 · e501aba · 8ffa393 — each --is-ancestor rc 0
+  task trees      git diff 5f70ee8 199c791 -- tasks/systems-v3/{Crc32,FreeList,LRU,LZW}   0 lines
+                  control: the same diff from ecd3924, 95 lines (the figure the signature measured at 5f70ee8)
+  whole tasks/    git diff --stat 5f70ee8 199c791 -- tasks   empty
+  harness delta   5f70ee8..199c791: 16 files, +1801 / -18, all under harness/systems-v3/, in three parts:
+                    c419bdc  the scorer copies <root>/_receipts/<id> beside ctl/; UNMEASURED(NO-RECORD)   (level 6 A4.1)
+                    228c832  the level-5 P-DELIVERY ordering census — touches neither path
+                    31c567c · c0c1888 · 530fc22 · 199c791   the fence package, the rows 8–10 instruments and their receipt
+                                                             (level 6 A6.1, file by file)
+```
+⇒ **The four task trees are identical, so every given, both tell controls in §K0 row 4, and §K3's localisation receipt carry unchanged.**
+What changes is how a cell RUNS and how it is SCORED, and that is exactly level 6's A6.1.
+⛔ **One sha for all 84 cells, recorded — and it is this one.** §K0 row 4's "fires from `5f70ee8`" is superseded by this addendum and no
+other.
+
+**L7A1.3 · §K7 ROWS 9, 10 AND 11, ADOPTED FROM LEVEL 6 §H6 ROWS 8, 9 AND 10 — RENUMBERED, BECAUSE §K7 ROW 8 IS ALREADY VOID(GIVEN).**
+```
+  §K7  = level 6 §H6   the fault                                                                          verdict
+  9    = 8             >= 1 shell call refused by the sandbox and 0 succeeded                                VOID(NO-SHELL)
+                       0 shell calls attempted                                                           UNMEASURED(NO-SHELL), never clean
+  10   = 9             at END the hook set differs from what the launcher installed and recorded          VOID(FENCE-TAMPER)
+  11   = 10            the END read cannot be made                                                        UNMEASURED(FENCE), never clean
+```
+- The rules are level 6's in full: A3.2 (the three shell states; decided on the tool record, without reading TESTS) and A5.3 (equality,
+  never containment; the population the instrument walks).
+- ⛔⛔ **THE SCORER NAMES ROWS BY LEVEL 6's NUMBERS.** A level-7 table is scored under `WAVE_FAULT_ROWS=8,9,10`, and in that variable **8 means
+  §K7 row 9, not §K7 row 8.** The scorer does not read §K7 row 8 (GIVEN): the hand's first-commit given check still delivers it (§K9).
+  **A hand who reads `8` as this file's row 8 will believe the given is being checked by the scorer, and it is not.**
+- **The containment claim is level 6's A5.2 wording, and it binds here:** a level-7 cell whose hook set at END differs from what the launcher
+  installed is VOID and scores nothing. This level makes NO claim that a subject could not reach a web tool during a run.
+
+**L7A1.4 · COMPARABILITY.** A level-7 cell differs from the level-4 cells that order this wave (§K2) by level 6's A6.5 items 1–4 (the
+write-denies, the pre-migration, rows 9–11 as faults, `allowPty`) as well as §K5.3's given and export difference. **§K5.2 is unchanged:** those
+priors ORDER the wave and are never the other arm of a contrast. Level 4's Pro cells had working shells on an earlier client (level 6 A3.1).
+
+**L7A1.5 · WHERE §K0, §K2 AND §K9 NAME `5f70ee8`, READ `199c791` — AND THE GATES LEVEL 6 ADDED, HERE TOO.**
+```
+  §K0 row 8   the four brownfield × statement dry builds run from 199c791 (not 5f70ee8); the Paxos RED control and the tell audit likewise
+  §K2         the BS tripwire's read 2 compares the given at the first commit with tasks/systems-v3/FreeList/brownfield/solution.rs at
+              199c791 — the same bytes as at 5f70ee8, by L7A1.2
+  §K9         each scorer's first line reads exactly (199c791cad0c), with no +DIRTY
+  gates       level 6 A6.6 F1–F3 for every new level-7 cells root (the export marker · one fence battery from 199c791 with its three package
+              rows · the registry link) and T1–T3 before the first level-7 table, with WAVE_FAULT_ROWS=8,9,10
+```
+**THE BS TRIPWIRE GAINS ONE READ, AND NONE OF ITS FOUR CHANGES:**
+```
+  5  the tripwire cell's FAULT cell names row 8 AND row 9 of the scorer (for example shell-ok+fence-ok): the cell had a shell and its fence
+     held — §K7 rows 9–11
+```
+A tripwire cell voided by row 9, 10 or 11 is voided by §K7, which §K2 already allows, and BS HOLDS on it.
+
+**L7A1.6 · RELEASE.** Level 7 fires when all of these hold: (1) this addendum is signed and merged; (2) level 6's chain has ended (§K0 row 7);
+(3) the §K0 row 8 preflight receipts are filed from `199c791`; (4) level 6's A6.6 gates hold for each level-7 root. **The lead's release
+line names `199c791`.**
