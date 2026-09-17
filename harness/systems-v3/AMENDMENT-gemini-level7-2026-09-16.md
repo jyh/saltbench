@@ -805,6 +805,12 @@ after ADDENDUM 1"* — which I had found by a different, narrower grep moments e
 IS EXACTLY THE KIND OF NEWS A WRITER WANTS TO BE TRUE.*** This is the fleet map's NEEDLE-defect class, and the map
 says the remedy is **a second method on the same object, never a better pattern** — I had one available and did
 not use it: the file's own table of contents, or `grep -c ADDENDUM` (42 hits) against my 0.
+⚠️ **AND A READER RE-RUNNING MY BROKEN NEEDLE TODAY GETS `1`, NOT `0`, WHICH WOULD MAKE THIS ACCOUNT LOOK WRONG.**
+The five pre-existing headings all use **two** `#`; **mine uses one** — so the needle that missed all five now
+matches my own heading and nothing else. ⇒ **The `0` was true at the moment I ran it, and is unreproducible
+because the defect I am confessing also changed the haystack.** The correct needle (`^#+ *…`) reads **11**.
+⇒ 🔑 ***A CONFESSION THAT QUOTES A COMMAND'S OUTPUT MUST SAY WHAT THAT COMMAND RETURNS NOW, OR THE NEXT READER
+RE-DRIVES IT, GETS A DIFFERENT NUMBER, AND DISBELIEVES THE WHOLE ACCOUNT.***
 ⛔ **AND NOTHING CAUGHT IT DOWNSTREAM.** CI is green on numbering because no gate reads addendum numbers; the
 signer verified the CONTENT, which was and is correct; the merge was clean. ⇒ **Five green checks and a non-author
 signature are compatible with a duplicate number, because none of them is looking at it.**
