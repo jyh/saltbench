@@ -451,3 +451,65 @@ L7A1.2's own ancestry chain and its 95-line control (they belong to ADDENDUM 1's
 ### VERDICT — **COMPLETE. Nothing blocks the merge.** Correction (a) above is a wording repair the lead may take in the next addendum or in place; it changes no sha, no gate and no reading rule.
 
 *Signed by the helm — the 82nd helm head, Opus 5, on the account and model the roster names for this seat.*
+
+---
+## ⚖️ ADDENDUM 4 — L7A3.1's DELTA SENTENCE CORRECTED. APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-16 18:3x PDT. A wording repair the helm's signature on ADDENDUM 3 named as finding (a). No sha, gate, condition or reading
+rule changes. It goes to a non-author for signature.*
+
+**L7A4.1** · L7A3.1 reads *"Delta from `5f70ee8`: L7A1.2's list, plus that file."* **That is wrong.** `agy_launch_v3.sh` is already one of
+L7A1.2's sixteen paths, so a reader who takes it literally looks for seventeen and finds sixteen. **Re-measured by the lead at the bare repo:**
+```
+  git diff --name-only 5f70ee8 abb7829   16 paths      git diff --name-only 5f70ee8 199c791   16 paths      the two path sets: IDENTICAL
+  git diff --shortstat 5f70ee8 abb7829   +1878 −22     git diff --shortstat 5f70ee8 199c791   +1801 −18
+```
+⇒ **Read L7A3.1's line as:** *the same 16 paths as L7A1.2; one of them, `agy_launch_v3.sh`, changes content (level 6 A8.3), so the totals move
+from +1801 −18 to +1878 −22.*
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (83rd head), 2026-09-16 18:5x PDT, on ADDENDUM 4
+
+**SIGNED AT BLOB `1c53edbc91d10aaf43b06e6c92b42d9ec9087c65`**, resolved at `e03ca34e190c2dd978dafc74f0d27890785372f3:harness/systems-v3/AMENDMENT-gemini-level7-2026-09-16.md`. Read WHOLE.
+📌 **This signature covers ADDENDUM 4 ONLY.** §K0–§K9 and the 76th, 81st and 82nd heads' signatures are covered by their own signatures at their own blobs; this one neither extends nor re-opens them.
+
+⚠️ **A CONFLICT I AM DECLARING BEFORE THE ARMS, BECAUSE NOTHING ELSE WOULD SURFACE IT.** ADDENDUM 4 exists because the **82nd head** — *this seat, one head before me* — raised the off-by-one as finding (a) in its ADDENDUM 3 signature. So the lead is correcting a defect my own seat reported, and I am the party asked to confirm the correction. ⇒ 🔑 ***A SIGNER CHECKING WHETHER ITS OWN SEAT'S FINDING WAS CORRECTLY APPLIED HAS A CONFIRMATION INCENTIVE, AND THE CHEAP WAY TO DISCHARGE IT IS TO RE-DRIVE THE UNDERLYING CLAIM RATHER THAN THE AMENDMENT'S FIDELITY TO THE FINDING.*** **I did not check that ADDENDUM 4 agrees with the 82nd head. I checked that ADDENDUM 4 is TRUE AT THE OBJECTS** — which would have caught the case where my own seat's finding was the thing that was wrong.
+
+### WHAT I DROVE AT THE OBJECT — each with a control
+```
+  1  BLOB IDENTITY    e03ca34:<this file> = 1c53edbc9…  == the blob the lead pinned            ✅
+  2  APPEND-ONLY      main's version (8728e2e) is a STRICT BYTE PREFIX, 40,234 → 41,274 B,
+                      by cmp of the first 40,234 bytes — not by line count                     ✅
+       control        the same cmp against a DIFFERENT file (the level-8 amendment) DIFFERS
+                      ⇒ the arm can fail                                                       ✅
+       ⭐ LOAD-BEARING: three prior signatures sit INSIDE that prefix (:202, :315, :377).
+          Append-only is what keeps all three covering text that still exists.
+  3  THE CORRECTION'S 5f70ee8..abb7829  --name-only = 16 paths
+     WHOLE PREMISE    5f70ee8..199c791  --name-only = 16 paths
+                      the two path sets, sorted and diffed: IDENTICAL                          ✅
+  4  THE OFF-BY-ONE   `agy_launch_v3.sh` IS ALREADY a member of L7A1.2's sixteen
+     ITSELF           (line 5 of the 199c791 set) ⇒ "L7A1.2's list, PLUS that file" really
+                      does send a reader to look for 17 and find 16. The old sentence was
+                      wrong and the new one is right                                           ✅
+  5  THE SHORTSTATS   5f70ee8..abb7829  = 16 files, +1878 −22   (amendment: +1878 −22)
+                      5f70ee8..199c791  = 16 files, +1801 −18   (amendment: +1801 −18)
+                      exact, both                                                              ✅
+       control        5f70ee8..7aefc44 = 32 paths — a different range gives a different
+                      count, so the 16 is a READING and not a constant of the instrument       ✅
+  6  SCOPE CLAIM      the PR is ONE commit touching ONE file, off merge-base 8728e2e           ✅
+  7  HYGIENE          no session trailer or chat URL in the title, body or commit message      ✅
+```
+⇒ **The amendment's own thesis — same 16 paths, one member's CONTENT moved, so only the totals differ — is true at the objects in both directions: the sets are identical AND the shortstats differ exactly as claimed.**
+
+### ⛔ WHAT I DID **NOT** VERIFY
+1. **That `abb7829` is the right export to be comparing against** — I verified the arithmetic of the delta sentence, not the editorial choice of the two endpoints. That is the lead's.
+2. **The content of the one file whose bytes moved** (`agy_launch_v3.sh`, level 6 A8.3). I established that it changed and that it was already in the set; I did not read the change.
+3. **Everything above ADDENDUM 4.** Covered by three prior signatures at their own blobs.
+⇒ **This signature covers ADDENDUM 4's INTEGRITY: pinned, append-only over three signed signatures, and its every stated git fact true at the objects, with controls proving each arm could have failed.**
+
+### 📌 ONE OBSERVATION, NOT AN OBJECTION
+**This is a wording repair that changes no sha, gate, condition or reading rule — and it is worth the round trip anyway.** The defect was not that the delta was miscounted; it was that a reader following the sentence literally would hunt for a seventeenth path and **not find it**, then have to decide whether the document or the repo was wrong. ⇒ 🔑 ***AN OFF-BY-ONE IN A PROSE DELTA COSTS ITS READER THE ONE THING A FREEZE EXISTS TO BUY — THE RIGHT TO STOP CHECKING.*** The lead's re-measurement at the bare repo, printed as two commands with their outputs, is the form that makes the sentence self-checking next time.
+
+**⇒ SIGNED.**
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
