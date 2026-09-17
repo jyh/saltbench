@@ -1,0 +1,76 @@
+export 163df20d20c0287c58ff0ec2ca1b97f78c4d04c2  tree 74e5de71ff1c5b5afb422654b8c524bd8c8905dc
+base   2419dcfc4d9e1fc7919f22129904d373f41c97a4
+== 1 · ancestry (rc 0 = the commit is in the export)
+  rc=0  2419dcf  base, the phase-2 wiring (§M0 row 4)
+  rc=0  9e45404  §M3 the phase-1 fault gate
+  rc=0  5c2bb95  A2.1 AGY_PHASES binds
+  rc=0  6edf70b  A3.3 one reader, wide needle
+  rc=0  205d7db  R1-R3 + ROOT
+  rc=0  2884f75  R4-R6 + FIELDS
+== 1b · CONTROL: a commit that is NOT in the export must read rc=1
+  rc=1  export-in-base (must be 1)
+== 2 · delta 2419dcf..163df20
+  commits 39 · files 26
+  +15    -1    harness/systems-v3/agy_battery_cell.sh
+  +396   -0    harness/systems-v3/agy_fault_gate_v3.py
+  +83    -9    harness/systems-v3/agy_launch_v3.sh
+  +6     -3    harness/systems-v3/agy_phase_aside_v3.py
+  +9     -0    harness/systems-v3/agy_wave_v3.sh
+  +74    -10   harness/systems-v3/brownfield_rewrite_class.py
+  +41    -0    harness/systems-v3/cell-claude.sh
+  +43    -9    harness/systems-v3/cells_bin.sh
+  +160   -0    harness/systems-v3/clb_fire.sh
+  +230   -0    harness/systems-v3/clb_harvest.py
+  +178   -0    harness/systems-v3/clb_stage.sh
+  +171   -0    harness/systems-v3/dry_phase2_v3.sh
+  +88    -2    harness/systems-v3/fire_agy_v3.sh
+  +303   -6    harness/systems-v3/gemini_canary_wave_v1.sh
+  +5     -0    harness/systems-v3/gemini_drive_v3.sh
+  +6     -0    harness/systems-v3/models-sonnet.tsv
+  +50    -10   harness/systems-v3/probe_sandbox_v3.sh
+  +25    -10   harness/systems-v3/referee_v3.py
+  +308   -0    harness/systems-v3/score_claude_v3.py
+  +150   -12   harness/systems-v3/selftest_all_v3.sh
+  +765   -0    harness/systems-v3/served_models_v3.py
+  +126   -0    harness/systems-v3/withheld_access_census.py
+  +93    -0    tasks/systems-v3/LZW/B/withheld/controls/v1-red-kwkwk/RECEIPT.md
+  +18    -0    tasks/systems-v3/LZW/B/withheld/controls/v1-red-kwkwk/run-2026-09-16/control.out
+  +24    -0    tasks/systems-v3/LZW/B/withheld/controls/v1-red-kwkwk/run-2026-09-16/fixture.out
+  +202   -0    tasks/systems-v3/LZW/B/withheld/controls/v1-red-kwkwk/solution.rs
+== 3 · the delta GROUPED BY PATH PATTERN — a reading aid, NOT a call graph
+   ⚠️ a first draft grouped by which entry points NAME each basename; it was withdrawn before commit because a generic
+      basename (solution.rs) and a mention in a comment both count as a call. What runs on the agy path at this sha is
+      shown by §M0 row 8's dry drive AT the export, not by this grouping.
+   patterns  claude-lane-prefixed ^harness/systems-v3/(clb_[^/]*|cell-claude\.sh|score_claude_v3\.py|served_models_v3\.py|models-sonnet\.tsv)$
+             withheld control      ^tasks/systems-v3/[^/]+/B/withheld/controls/
+             agy-prefixed          ^harness/systems-v3/(agy_[^/]*|fire_agy[^/]*|gemini_[^/]*|dry_phase2[^/]*)$
+  AGY-PREFIXED          harness/systems-v3/agy_battery_cell.sh
+  AGY-PREFIXED          harness/systems-v3/agy_fault_gate_v3.py
+  AGY-PREFIXED          harness/systems-v3/agy_launch_v3.sh
+  AGY-PREFIXED          harness/systems-v3/agy_phase_aside_v3.py
+  AGY-PREFIXED          harness/systems-v3/agy_wave_v3.sh
+  SHARED-OR-OTHER       harness/systems-v3/brownfield_rewrite_class.py
+  CLAUDE-LANE-PREFIXED  harness/systems-v3/cell-claude.sh
+  SHARED-OR-OTHER       harness/systems-v3/cells_bin.sh
+  CLAUDE-LANE-PREFIXED  harness/systems-v3/clb_fire.sh
+  CLAUDE-LANE-PREFIXED  harness/systems-v3/clb_harvest.py
+  CLAUDE-LANE-PREFIXED  harness/systems-v3/clb_stage.sh
+  AGY-PREFIXED          harness/systems-v3/dry_phase2_v3.sh
+  AGY-PREFIXED          harness/systems-v3/fire_agy_v3.sh
+  AGY-PREFIXED          harness/systems-v3/gemini_canary_wave_v1.sh
+  AGY-PREFIXED          harness/systems-v3/gemini_drive_v3.sh
+  CLAUDE-LANE-PREFIXED  harness/systems-v3/models-sonnet.tsv
+  SHARED-OR-OTHER       harness/systems-v3/probe_sandbox_v3.sh
+  SHARED-OR-OTHER       harness/systems-v3/referee_v3.py
+  CLAUDE-LANE-PREFIXED  harness/systems-v3/score_claude_v3.py
+  SHARED-OR-OTHER       harness/systems-v3/selftest_all_v3.sh
+  CLAUDE-LANE-PREFIXED  harness/systems-v3/served_models_v3.py
+  SHARED-OR-OTHER       harness/systems-v3/withheld_access_census.py
+  WITHHELD-CONTROL      tasks/systems-v3/LZW/B/withheld/controls/v1-red-kwkwk/RECEIPT.md
+  WITHHELD-CONTROL      tasks/systems-v3/LZW/B/withheld/controls/v1-red-kwkwk/run-2026-09-16/control.out
+  WITHHELD-CONTROL      tasks/systems-v3/LZW/B/withheld/controls/v1-red-kwkwk/run-2026-09-16/fixture.out
+  WITHHELD-CONTROL      tasks/systems-v3/LZW/B/withheld/controls/v1-red-kwkwk/solution.rs
+  SUMMARY  CLAUDE-LANE-PREFIXED 7 · WITHHELD-CONTROL 4 · AGY-PREFIXED 9 · SHARED-OR-OTHER 6 · total 26
+== 4 · CONTROL on the withheld-control group: no changed file lies under a withheld/mutants/ directory (the scoring population)
+  files under withheld/mutants/: 0
+  files under withheld/ at all (the control must find the fixture): 4
