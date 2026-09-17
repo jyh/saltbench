@@ -545,3 +545,64 @@ column is added here**, because adding one mid-census would redefine the table (
 2. **It re-verifies no other row.** Every row other than `claude-opus-5 × greenfield × none` is CARRIED from ADDENDUM 7, and
    §K2's RE-VERIFIED/CARRIED column is still owed and still not built.
 3. **It does not make the matrix read `FULL`:** 124 conditions are owed.
+
+
+---
+
+# ✅ ADDENDUM 9 — **LEVEL 6 COMPLETES: `DONE 60 → 72`, `OWED 124 → 112`**
+## bench, 2026-09-17. **Landed in the SAME COMMIT as its result of record** (`RESULT-gemini-level6-2026-09-17.md`),
+## per council 2026-09-16 ⑤d, so this census never reads ahead of its evidence.
+
+## §P1 · THE ARITHMETIC, MAPPED CONDITION BY CONDITION ONTO §C4 RATHER THAN ASSERTED
+Level 6 fired **12 conditions × n=3 = 36 cells** (35 in series `l6v` + the `l6u` sentry cell `l6uspq01`,
+which the 09-16 18:56 ruling kept as cell 1). **Every one of the twelve was `OWED` in §C4 — none was
+already `DONE`, and none was inexpressible:**
+```
+  gemini-3.1-pro-high    greenfield x LZW x {plain,salt-diet} x none        §C4 "LZW OWED 2"        +2
+                         greenfield x LZW x {plain,salt-diet} x statement   §C4 "LZW OWED 2"        +2
+  gemini-3.8-flash-high  greenfield x LZW x {plain,salt-diet} x none        of §C4 flash "LZW 4"    +2
+                         greenfield x LZW x {plain,salt-diet} x statement   of §C4 flash "LZW 4"    +2
+                         brownfield x LRU x {plain,salt-diet} x none        of §C4 flash "bf 18"    +2
+                         brownfield x Paxos x {plain,salt-diet} x none      of §C4 flash "bf 18"    +2
+  ------------------------------------------------------------------------------------------------------
+                                                                                                   +12
+  per model      gemini-3.1-pro-high  DONE +4       gemini-3.8-flash-high  DONE +8
+  MATRIX         DONE 72 · OWED 112 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **72 + 112 + 0 + 16 = 200.** The 240-view differs only by the 40 inexpressible `brownfield × spec-change`
+conditions, exactly as §J4 published: **240-view `DONE 72 · OWED 112 · BLOCKED 0 · INEXPR 56`.**
+📌 **No per-model TOTAL is restated here, only the delta.** §C4's per-model rows annotate some conditions
+as both `OWED` and `INEXPRESSIBLE`, so a per-model total derived from them is a new claim — and §J4's own
+rule is that a derived view inherits the citation without inheriting the check.
+
+## §P2 · ⛔ `DONE` HERE MEANS A RESULT OF RECORD, AND ONE OF THE TWELVE CARRIES A VOID CELL
+`gemini-3.8-flash-high × greenfield × LZW × salt-diet × none` is `DONE` on **2 of its 3 cells**:
+`l6vgfs02` is VOID — `P-DELIVERY no`, the arm never reached the subject, 0 shell calls in 14 turns, no
+`LANDING.md`, and the untouched starting `solution.rs`. **It is not a failure and enters no pass/fail
+denominator.** By §C6(4)'s rule the condition is `DONE` — it has a result of record — and the result
+names the void. ⇒ **The column cannot show it, so it is written here.**
+
+## §P3 · ⚠️ THESE STATEMENT CONDITIONS **DO** DISCRIMINATE — WHICH IS THE OPPOSITE OF ADDENDUM 7 §M2
+Four of the twelve are `statement` conditions (block S). **Unlike level 5's six, they are NOT at the
+pass ceiling:**
+```
+  block S (statement)        plain 6/6    salt-diet 4/6
+  block B (brownfield)       plain 6/6    salt-diet 6/6
+  block G (greenfield bare)  plain 6/6    salt-diet 4/6
+```
+⇒ **Level 6 is the first wave in this census whose `DONE` conditions carry an arm contrast on pass rate
+rather than a shared ceiling.** ADDENDUM 7 §M2 recorded that level 5's statement conditions counted
+toward coverage and could not discriminate; **that is a fact about those cells, not about the statement
+axis**, and this addendum is the counter-example. ⛔ **n = 3 per condition: this is a contrast in the
+record, not an estimate, and no interval is claimed.**
+⚠️ **The first draft of this section said "at or near the pass ceiling (block S: 11 of 12)". Both halves
+were wrong** — the count is 10 of 12, and the failures are entirely on one arm, which is the opposite
+of a ceiling. It was carried forward from §M2's shape instead of being measured. ⇒ ***A SECTION COPIED
+FROM THE LAST ADDENDUM INHERITS ITS CONCLUSION, AND THE NUMBER GETS FITTED TO IT.***
+
+## §P4 · WHAT THIS DOES NOT DO
+1. **It authorises no spend.** What fires next is the Captain's call.
+2. **It re-verifies no other row.** Every row but the twelve above is CARRIED from ADDENDUM 8, and
+   §K2's RE-VERIFIED/CARRIED column is still owed and still not built.
+3. **It does not make the matrix read `FULL`:** 112 conditions are owed.
+4. **It does not revisit** the level-4 void of ADDENDUM 6, which stands.
