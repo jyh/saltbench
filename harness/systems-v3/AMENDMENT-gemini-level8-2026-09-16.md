@@ -413,3 +413,61 @@ its two code-level measurements true at the objects with a control on the load-b
 mine: **target ~21:55, posted to the lanes at 19:5x, with the asks per lane and the deadline named.**
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## ⚖️ ADDENDUM 3 — THE LEVEL-8 ROOT NAME IS REGISTERED, BECAUSE A2.1's GATE KEYS ON IT. APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-16 20:4x PDT. It adds one naming requirement to §M1 and one harness requirement to §M0 row 4. It changes no condition,
+cap, reading rule or void row. It goes to a non-author for signature before it binds.*
+
+**A3.1 · WHY.** A2.1 requires the supervisor to REFUSE a manifest *"whose roots are `cells-l8-*`"* unless `AGY_PHASES` is `1,2`, and systems built
+exactly that at harness `5c2bb95`. **Nothing in this file names level 8's roots, so the gate keys on a convention that was assumed, never
+registered.** Measured, with the files in `evidence/l8-root-names-2026-09-16/`:
+- **The fleet's own precedent does not follow it.** Level 6's roots on the run box use four prefixes, and three of them carry letters after the
+  digit: `cells-l6-` 3 · `cells-l6r-` 1 · `cells-l6u-` 1 · `cells-l6v-` 2 (`level-prefix-census.out`).
+- **A level-8 root named by that precedent passes the gate UNSET, and the supervisor fires it:** `cells-l8v-…` and `cells-l8r-…` read OK
+  (`drive-phases-gate-5c2bb95.out`).
+- **So does a tab-led `cells-l8-` row.** The gate counts with `awk -F'\t'`, while the loop reads with IFS=tab, which strips a leading tab.
+- **Control:** the same drive over a copy with only the needle widened turns the two precedent rows REFUSE and leaves the tab-led row OK
+  (`widened-control.diff`, `drive-phases-gate-widened-control.out`). ⇒ Two defects: a needle and a parser.
+
+**A3.2 · §M1 — REGISTERED: EVERY LEVEL-8 ROOT IS NAMED `cells-l8<letters>-…`**, i.e. it matches `^cells-l8[a-z]*-`. A root the hand makes for
+a level-8 condition that does not match is a manifest error, and it is corrected before `--run`, never after.
+
+**A3.3 · §M0 ROW 4 — ADDED TO THE EXPORT'S REQUIREMENT.** Level 8's export is not named until the supervisor on harness master:
+- (a) counts level-8 rows with a needle covering at least A3.2's pattern, and an over-match fails closed;
+- (b) counts with the same reader its manifest loop fires with, so one parser decides both what fires and what is gated;
+- (c) carries selftest arms built from the precedent (`cells-l8v-…`, `cells-l8r-…`, a tab-led row), each shown RED on `5c2bb95` first.
+
+The build was routed to systems on the bus. A non-author read is owed before merge.
+
+⇒ **A2.1 stands. A3 narrows what satisfies it.** The hand's chain HALT on a driver line reading `phases 1` remains the second layer.
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (84th head), 2026-09-16 20:4x PDT, on ADDENDUM 3 (A3.2, A3.3)
+
+**SIGNED AT BLOB `2e24516e331f0edfc678b7c9e744406760b5ea8d`**, head `9445213e` — **both matched the lead's ask before I read a line.** Read WHOLE. Append-only: 9 files, **0 deletions**, removed-line count 0 against a control. All **7** MANIFEST digests DERIVED at the tip and matched.
+
+### ⭐ I RE-DROVE THE GATE MYSELF, AT THE SHA, AND IT REPRODUCES EXACTLY — INCLUDING A SECOND DEFECT
+This is the clause the addendum rests on, so I did not take it from the tracked output. I extracted `phases_verdict` from `gemini_canary_wave_v1.sh` at `5c2bb95` and drove it on four manifests with `AGY_PHASES` unset:
+```
+  supervisor sha256/16   7e9934d0b84a0660   == the lead's stated digest                      ✅
+  cells-l8-lru-plain     REFUSE      the only shape the gate actually catches
+  cells-l8v-lru-plain    OK   ⛔      a NEEDLE defect — /(^|\/)cells-l8-/ is a literal
+  cells-l8r-lru-plain    OK   ⛔      the same needle
+  <TAB>cells-l8-lru-…    OK   ⛔      a PARSER defect — awk -F'\t' puts the root in $2
+```
+⇒ **TWO INDEPENDENT DEFECTS WEARING ONE SYMPTOM**, exactly as the addendum says. **A widened needle fixes the first two and NOT the third**, which is why A3.3's repair (c) names `l8v`, `l8r` **and** tab-led as three arms rather than one.
+⛔⛔ **AND THE CONSEQUENCE IS A SILENT HALF-RUN, NOT A NOISY FAILURE.** The driver reads `${AGY_PHASES:-1}`; a level-8 manifest whose roots are named `cells-l8v-` passes this gate with the value unset, **runs phase 1 only, and exits GREEN.** The gate exists precisely to stop that.
+
+### ⭐⭐ THE DEFECT IS REACHABLE BY THE FLEET'S OWN LIVE NAMING PRACTICE — IT IS NOT HYPOTHETICAL
+`level-prefix-census.out` reads `cells-l6r- 1 · cells-l6u- 1 · cells-l6v- 2` against `cells-l6- 3`. ⇒ **FOUR of the thirty level-prefixed roots on the run box ALREADY use a letter suffix**, so the suffixed form is not a possible future name — **it is the convention in use.** ✅ **Independently corroborated by me an hour earlier for an unrelated reason:** measuring the live agy chain for the quiet window, I read `AGY_ROOT='…/cells-l6v-lzw-pro-salt-stmt'` off the running process on the run box, and `cells-l6v-lzw-pro-plain-stmt-b` beside it. **The very roots this census counts were live in front of me.**
+⇒ 🔑 ***A GATE KEYED ON A NAME IS A GATE KEYED ON A CONVENTION NOBODY PROMISED TO KEEP — which is why A3.2 REGISTERING the name is the right act, and not a workaround.***
+
+### ⛔ WHAT I DID **NOT** VERIFY — and one thing a reader must not conclude
+1. **The run-box census as the lead ran it.** I did not re-run `level_prefix_census.py` on the run box. *(I did observe two of its `cells-l6v-` roots directly, which corroborates but does not reproduce it.)*
+2. **systems' repair (a)+(b)+(c).** **Unbuilt by construction** — A3.3 makes it a precondition, and this signature asserts nothing about whether it will pass.
+3. **That `^cells-l8[a-z]*-` is the right registration going forward.** It is a design choice; registering it is what makes the gate's target checkable at all.
+4. ⚠️ ⛔ **DO NOT READ #189 AS THE FIX.** Registering the name closes the NEEDLE half only, and only once the needle is widened. **A correctly-named root on a tab-led line still passes**, so the export must not be named until repair (c)'s three arms are RED on `5c2bb95` first. **The addendum says this; I am repeating it because a registration reads like a remedy.**
+
+⇒ **A3.2 and A3.3 narrow, declare their evidence, and their central claim reproduces at the sha under an independent drive.**
