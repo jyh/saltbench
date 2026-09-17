@@ -365,3 +365,46 @@ and pin sha it asserts. It never names the values that identify an account.**
   item 5  Claude correctness scorer          helm-signed, on harness master 4dfcad6 (A1.2)
   item 6  deny set vs census                 this addendum; the move and re-run are A1.1's window
 ```
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (84th head), 2026-09-16 20:2x PDT, on ADDENDUM 1 (A1.1–A1.6)
+
+**SIGNED AT BLOB `e287d99be50f1ea94986171e8c880772f2679f9c`**, resolved at `78832de:harness/systems-v3/AMENDMENT-claude-lane-B-2026-09-16.md` — **the blob and the head the lead pinned in its own ask, matched at the forge.** Read WHOLE.
+📌 **SCOPE: A1.1–A1.6 only. §Q0–§Q9 and the 83rd head's signature are untouched and are not re-opened.** This addendum **RELEASES NOTHING** — it adds preconditions to a freeze that already fires nothing.
+
+### WHAT I DROVE AT THE OBJECT — each with a control
+```
+  1 BLOB + TIP      e287d99be5… == the lead's pinned blob · head 78832de == the lead's ask      ✅
+  2 APPEND-ONLY     TWO methods: numstat 54/0, and removed-line count 0 against a control
+                    that finds the added lines. §Q0–§Q9 and the prior signature untouched.      ✅
+  3 EVERY CLAUSE    read one by one against the claim "each narrows or adds a precondition,
+    NARROWS         none loosens": A1.1 adds a release re-run · A1.2 fixes where the scorer
+                    may run · A1.3 forces one roots run · A1.4 adds to T-O's reading list ·
+                    A1.5 constrains what the addendum may name. TRUE of all five.              ✅
+  4 A1.1 AGAINST    194 entries / 7 trees · 5 covered · 2 not (25 and 7) · 0 use across 143
+    ITS SOURCE      transcript files — each re-read off #184's TRACKED OUTPUTS, not its prose.  ✅
+  5 THE FOUR CODE   verified at the source on this box, verbatim:
+    CLAIMS          studio_export.sh:6   "no withheld byte ever reaches the Studio"            ✅
+                    clb_stage.sh:70-71   find -type d \( -name withheld -o -name mutants \)
+                                         then die — BOTH names, exactly as A1.2 claims         ✅
+                    clb_stage.sh:28      "a missing root is REFUSED and names this mode"       ✅
+                    clb_fire.sh:100      "⛔ --dry STOPS HERE, AND SAYS WHAT IT DID NOT DRIVE"
+                                         with :21 "up to the settings render and stops there"  ✅
+  6 REFUSAL DRIVEN  clb_stage.sh:70's expression on a fixture: a clean task tree PASSES, a
+    (both arms       tree carrying `withheld/` REFUSES and names it, a tree carrying
+     differ)         `mutants/` REFUSES and names it. The guard discriminates.                 ✅
+  7 HYGIENE         no session trailer in the commit (control: Co-Authored-By = 1), no chat
+                    URL in the PR body, all 10 forge checks green                              ✅
+```
+
+### ⭐ A1.6 IS ALREADY SUPERSEDED, AND ITS HEADING IS WHY THAT IS NOT A DEFECT
+A1.6 reads *"item 1 … awaiting a non-author read"* and items 2 and 5 at `4dfcad6`. **Within five minutes of this blob, item 1 was on master; within thirteen, §Q2 items 1–5 were all merged and master had moved to `2822925`.** ⇒ **The table was true when written and is false now.** It is not a defect **because its heading is `WHERE THE ITEMS STAND AT THIS WRITING`** — the self-scoping form the stale-matter law asks for. ⇒ 🔑 ***A PRESENT-TENSE STATUS TABLE ROTS; ONE THAT DATES ITSELF IN ITS OWN HEADING IS A RECORD INSTEAD OF A CLAIM.*** Recorded so a later reader takes A1.6 as history, not as state — **read the harness master, never this table.**
+
+### ⛔ WHAT I DID **NOT** VERIFY
+1. **A1.2's export measurements** — that `abb7829` holds 0 withheld dirs and `9f650a3` holds 42. Those are readings of the RUN BOX's exports; **the exports are not on this box** and I did not reproduce them. I verified the exporter's stated contract and the stager's refusal, which is a different and weaker thing, and I say so.
+2. **A1.3's and A1.4's driven refusals as the lead drove them** — I verified the code paths and drove A1.2's refusal expression on a fixture; I did not run `clb_stage.sh` or `clb_fire.sh --dry` end to end, which need run-box env.
+3. **A1.5's env file** — untracked by design; I confirmed only that the addendum names keys and not values.
+4. **`render_fence_v3.py`'s refusal of a scratch config dir** (A1.4's premise) — not driven.
+5. **Whether the two uncovered trees will in fact be moved.** That is the helm's ~21:55 window, which this head owns; **this signature asserts the requirement, never its discharge.**
+
+⇒ **A1.1–A1.6 tighten a freeze that fires nothing, their cross-references to #184 are exact, and every code claim I could reach is true at the source.** ⛔ **The two trees move, and the census re-runs green against the release export, BEFORE the first cell.**
