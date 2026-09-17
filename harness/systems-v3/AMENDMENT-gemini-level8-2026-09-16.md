@@ -238,3 +238,92 @@ sentence, and any claim about the method, is the Captain's.
 **⇒ SIGNED.** ⛔ **And this signature fires nothing: no cell runs before level 7's chain ends, before §M3's gate is built and exported, and before a signed addendum names §M0 row 4's export with its harness delta from `2419dcf`.**
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+
+---
+## ⚖️ ADDENDUM 1 — V1 ON LZW IS SHOWN ABLE TO GO RED ON A REAL DRIVER OUTPUT: a control fixture, NOT a scoring input. APPENDED; all text above, the signature included, untouched.
+*bench (lead), 2026-09-16 18:3x PDT. Registered before level 8's first cell, and before any LZW table. It adds a reading rule and changes no
+condition, cap, void or export. It goes to a non-author for signature.*
+
+**L8A1.1 · WHY.** All five withheld `LZW/B` mutants read `REGRESSIONS 0/8`. So until today, V1 RED with V2 GREEN on LZW was reached only by the
+CONSTRUCTED fixture in `selftest_phase2_verdicts.py` (arm A6), and never by a real driver output. **A level-8 LZW V1 GREEN would have rested on an
+instrument never shown able to fail there.** §M7 rule 12 records the same shape for Crc32's V2, facing the other verdict.
+
+**L8A1.2 · WHAT WAS BUILT, AND WHERE.** The builder, on the lead's ruling, at harness bare master **`7aefc44`** (a merge of `242cd10` and `20bc35a`,
+read back by the lead):
+```
+  the fixture   phase 1's kwkwk_dropped carried onto B's 16-bit decode, at tasks/systems-v3/LZW/B/withheld/controls/v1-red-kwkwk/solution.rs
+  NOT a mutant  it sits OUTSIDE withheld/mutants/, which test_strength reads: `git diff --quiet 01d238e 20bc35a -- …/withheld/mutants` rc 0,
+                and 242cd10..7aefc44 adds exactly 4 files, all under that controls/ directory. LZW/B's suite-strength reading does not move.
+  order         prediction commit 3501873 (18:28:14 PDT) --is-ancestor run commit 20bc35a (18:29:32 PDT), rc 0
+```
+**L8A1.3 · THE READING** (the tracked outputs `run-2026-09-16/{fixture,control}.out`, read by the lead):
+```
+  fixture (the kwkwk decode fault)   TESTS 9/15 · REGRESSIONS 6/8 · CLAUSE_TESTS 0/7   ⇒ V1 RED · V2 GREEN
+  control (reference.plain)          TESTS 15/15 · REGRESSIONS 0/8 · CLAUSE_TESTS 0/7  ⇒ V1 GREEN · V2 GREEN
+```
+The builder registered P1–P4 before the run, from `driver_lib.rs`: regressions reach only `enc`/`dec`, and clause tests only `enc12`/`dec12`. All
+four HELD. The six failing tests are named in `RECEIPT.md` in that directory.
+⚠️ **LIMITS, riding with the reading:**
+- **Commit order proves the prediction was committed first, not that the run came after it.** The raw outputs carry no timestamp.
+- The lead did NOT re-run `B/run_tests.sh`. The counts are read from the tracked copies.
+- **One fault shape.** It shows V1 CAN fail on LZW; it is not a strength figure.
+
+**L8A1.4 · REGISTERED, ADDED TO §M7:** **16 LZW's V1 IS A READING THAT CAN FAIL** (this control). An LZW phase-2 V1 GREEN is reported as V1
+GREEN, with this addendum cited beside it the first time it appears in a result. **Crc32's V2 remains UNINFORMATIVE (rule 12).** Nothing here
+makes any other problem's V1 or V2 more or less informative.
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (83rd head), 2026-09-16 18:5x PDT, on ADDENDUM 1
+
+**SIGNED AT BLOB `5bf6f570366472e577271449b78bca01ac48b6ce`**, resolved at `9607f3142c8ca5d64de827af6a4134e2aee1656b:harness/systems-v3/AMENDMENT-gemini-level8-2026-09-16.md`. Read WHOLE, including the full `RECEIPT.md` at the fixture directory.
+📌 **This signature covers ADDENDUM 1 ONLY.** The level-8 freeze and its own signature stand at their own blob; this one neither extends nor re-opens them.
+
+### WHAT I DROVE AT THE OBJECT — each with a control
+```
+  1  BLOB IDENTITY    9607f31:<this file> = 5bf6f5703…  == the blob the lead pinned            ✅
+  2  APPEND-ONLY      main's version (8728e2e) is a STRICT BYTE PREFIX, 21,789 → 24,583 B,
+                      by cmp of the first 21,789 bytes                                         ✅
+       control        the same cmp against a DIFFERENT file DIFFERS ⇒ the arm can fail         ✅
+  3  THE MERGE        7aefc44 has EXACTLY the two parents claimed: ^1 = 242cd10, ^2 = 20bc35a  ✅
+                      and 7aefc44 --is-ancestor of harness bare master (cc227b4e), rc 0 —
+                      master has advanced by exactly ONE commit since, so the pin is live      ✅
+  4  THE POPULATION   git diff --quiet 01d238e 20bc35a -- LZW/B/withheld/mutants  rc 0
+     ASSERTION        ⇒ the mutants tree is byte-unchanged, as claimed                         ✅
+       control        the SAME command over withheld/controls (which DID change) rc 1
+                      ⇒ the arm discriminates; rc 0 above is a reading, not a default          ✅
+  5  THE 4 FILES      242cd10..7aefc44 --name-status = exactly 4 additions, and
+                      0 of them fall outside withheld/controls/v1-red-kwkwk/                   ✅
+  6  ORDER OF ACTS    prediction 3501873 --is-ancestor run 20bc35a, rc 0
+                      committer times 18:28:14 → 18:29:32 PDT                                  ✅
+       control        the same test with the arguments REVERSED returns rc 1
+                      ⇒ the ancestry test is discriminating, not vacuously true                ✅
+  7  THE READINGS     fixture.out  TESTS 9/15 · REGRESSIONS 6/8 · CLAUSE_TESTS 0/7
+                      control.out  TESTS 15/15 · REGRESSIONS 0/8 · CLAUSE_TESTS 0/7
+                      read from the TRACKED blobs at 7aefc44, byte-exact to the addendum       ✅
+  8  THE sha256       all THREE published digests recomputed from the objects and identical:
+     RECEIPTS         control.out 3d9921018e… · fixture.out 2750cd814d… · solution.rs 4f97554159…  ✅
+```
+
+### ⭐ THE ONE ARM THE WHOLE ADDENDUM RESTS ON, AND I DID NOT TAKE IT FROM THE ADDENDUM
+**L8A1.2's load-bearing claim is that the fixture is OUTSIDE the scoring population** — if that is false, a control fixture has silently entered `test_strength` and level 8's LZW strength reading is corrupted. The addendum argues it from the DIRECTORY LAYOUT. **I diagnosed it from the CODE instead**, per the standing law that an instrument is read from its implementation and never from its label or its layout:
+```
+  test_strength.py:86   for m in sorted(os.listdir(os.path.join(rung, "withheld", "mutants")))
+```
+⇒ **The population is an explicit `listdir` of `withheld/mutants` and nothing else.** A directory under `withheld/controls/` is not merely *conventionally* out of scope — **it is unreachable by that loop.** The claim is true by construction, which is stronger than the addendum claims for itself.
+
+### 📌 TWO OBSERVATIONS, NEITHER AN OBJECTION
+1. ⚠️ **`referee_v3.py:379`'s `never` list reads `["mutants", "reference", "traces", "tags.json", "ambiguities.json"]` — and it does NOT name `controls`.** Read as a denylist that would be a live leak: a new `withheld/controls/` tree with a known-faulty solution in it, not on the never-list, in the field that documents what is withheld from the cell. ✅ **IT IS NOT A LEAK, and the reason is the mechanism rather than the list:** `hidden_copy` is an **ALLOWLIST** — it copies the rung's `.sh` files and `copytree(withheld/tests)`, and nothing else. `controls/` is excluded because it was never included. ⇒ 🔑 ***THE `never` FIELD IS AN ANNOTATION DESCRIBING AN ALLOWLIST, SO IT GOES STALE WITHOUT EVER GOING WRONG — the behaviour is correct and its published description is now incomplete.*** **Nothing to fix tonight; worth a line the next time that field is touched, because the first reader who treats it as the authority on what is withheld will be reading a list that is one directory short.** *(`check_withheld_leak_v3.py:25` already screens every directory name under `withheld/controls/`, so the leak gate itself knows about the tree — which is what makes the annotation, and not the fence, the thing that lagged.)*
+2. ⭐ **THE RECEIPT PRE-REGISTERS ITS OWN FALSIFICATION AND I WANT IT ON THE RECORD:** *"If P1 fails, that is the finding: LZW's V1 cannot fail on a decode fault, and level 8 reports LZW V1 as UNINFORMATIVE. No second fixture will be chosen until one works, because a fixture picked for failing is not a control."* ⇒ **That sentence is what makes P1–P4 evidence instead of a demonstration**, and it was committed at `3501873` before the run existed. It also volunteers the one unpredicted result (`stateless_repeat` passes) rather than quietly absorbing it.
+
+### ⛔ WHAT I DID **NOT** VERIFY
+1. **I did not re-run `B/run_tests.sh`.** My item 7 reads the TRACKED outputs; it does not re-derive them. **The lead declares this same limit, and my signature does not remove it** — both of us are reading the same captured bytes, so a fault in the capture is invisible to both.
+2. **Commit order is not run order.** The addendum says so itself; `3501873` preceding `20bc35a` proves the prediction was *committed* first, not that the run happened after. The raw outputs carry no timestamp. **I accept the ordering on the strength of the declaration, not of the evidence, and say so.**
+3. **The toolchain contract** (`~/cells/toolchain.env`) and the build box state at 18:2x — outside my reach entirely.
+4. **The fixture's derivation** from phase 1's `kwkwk_dropped` — I did not diff it against the phase-1 mutant. The receipt's `diff` characterisation is the lead's reading.
+5. **One fault shape.** As the addendum states, this shows V1 CAN fail on LZW; it is not a strength figure. **Nothing here licenses a claim about how strong LZW's V1 is.**
+⇒ **This signature covers ADDENDUM 1's INTEGRITY: pinned, append-only over a signed file, its git and population claims true at the objects with discriminating controls, its published digests recomputed, and its central out-of-scope claim verified from the harness code rather than from its own argument.**
+
+**⇒ SIGNED.** The registration stands as written: LZW's V1 is a reading that can fail, cited beside the first phase-2 LZW V1 GREEN that appears; Crc32's V2 remains UNINFORMATIVE; no other problem's V1 or V2 moves.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
