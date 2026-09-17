@@ -311,3 +311,57 @@ kind beside every premium. Any public sentence, and any claim about the method, 
 **⇒ SIGNED.** Nothing fires before §Q2's five items are driven with their controls and a release addendum names the export sha and carries the `rates.tsv` re-read.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## ⚖️ ADDENDUM 1 — §Q2 ITEM 6 (THE DENY SET AGAINST A CENSUS), AND WHAT BUILDING ITEMS 1, 2 AND 5 CHANGED. APPENDED; §Q0–§Q9 and the signature untouched.
+**bench (lead), 2026-09-16 20:0x PDT.** Each clause below narrows or adds a precondition. None loosens one. It goes to a non-author for signature
+before it binds, and it cites `RESULT-HC1-stage1-2026-09-16.md` ADDENDUM 1 and its instruments, which land in saltbench #184.
+
+### A1.1 · ⛔ §Q2 ITEM 6 — THE FENCE IS CHECKED AGAINST A CENSUS OF WITHHELD TREES, RE-RUN AT RELEASE, NEVER AGAINST A LIST
+**Found while building item 5, measured at the objects** (`RESULT-HC1-stage1-2026-09-16.md` ADDENDUM 1, with its instruments and outputs
+under `evidence/hc1-stage1-instruments-2026-09-16/exposure/`). A read-only census of the run box's home directory found 194
+withheld-shaped entries in 7 top-level trees. A Claude cell's sandbox `denyRead` covers 5 of them. **Two are NOT covered:** a referee tree
+(25 entries, uncovered for both lanes) and a rescore tool (7 entries, uncovered for the Claude lane only). HC stage 1's measured use of
+either was 0 across all 143 transcript files.
+⇒ **REQUIRED BEFORE THE FIRST CELL:**
+1. Both trees are moved inside the belt or off the box, in a two-lane-quiet window the helm schedules. A tree in reach of a live cell is
+   never moved.
+2. `withheld_exposure_census.py` is RE-RUN at release against a cell staged from the release export, and against a current agy fence.
+   **Every tree reads COVERED**, and `census.out` is filed with the release addendum.
+3. **The census's limits ride with its verdict:** depth 7, no tarball interiors, no cells roots, a name-based walk. **Moving the two trees
+   closes the MEASURED exposure, not the class**, and a green census is a floor on the population, never proof of its size.
+
+### A1.2 · ⛔ THE RUN BOX TAKES A NO-WITHHELD EXPORT, AND SCORING RUNS OFF THE BOX (refines §Q0 rows 4 and 6)
+`studio_export.sh` is the harness's allowlist export; its header says *"no withheld byte ever reaches the Studio"*. Measured on the run box: export
+`abb7829` holds **0** withheld dirs, and export `9f650a3`, the one HC stage 1 used, holds **42** (under `~/projects`, which is fenced).
+⇒ **The release export is cut by the allowlist exporter and carries no `withheld/` or `mutants/`.** `clb_stage.sh` REFUSES a task tree
+that carries either (driven: the 9f650a3 export was refused by name). ⇒ **Item 5's scorer runs on HARVESTED COPIES of ended cells, on a
+box where the withheld suite legitimately lives.** The scorer does not care where it runs; this clause fixes where it may.
+
+### A1.3 · CELLS ROOTS ARE CREATED ONCE, IN THE SAME WINDOW
+A cells root is a new `$HOME` entry, and an entry created while any cell of either lane is live sits outside that cell's fence until its
+next render. ⇒ **All 64 roots are created by one `clb_stage.sh --roots` run in A1.1's window.** Staging refuses a missing root
+(driven: refused by name, with 0 clb roots in `$HOME` afterwards).
+
+### A1.4 · WHAT A DRY DRIVE OF THE FIRE PATH CANNOT REACH, SO T-O READS IT (adds to §Q3.3)
+`clb_fire.sh --dry` stops BEFORE the settings render. A dry scratch config dir was REFUSED by `render_fence_v3.py`, because a config dir
+outside the `~/.claude*` deny set cannot be fenced. That refusal is the guard working. ⇒ **The first real fire is the first drive of settings
+→ trust → fence convergence → `--check` → sandbox probe → `--require` → launch on the tracked scripts.** ⇒ **T-O's reading list gains:** the
+fire log's `SETTINGS … read back`, `TRUST SEEDED`, `FENCE CONVERGES (sha16 …)`, `CHECK CLEAN` and `P-SANDBOX GREEN for fence …` lines, and the
+receipt file under `<root>/_audit/sandbox-probe/` for that sha.
+
+### A1.5 · THE LANE'S ENV FILE IS UNTRACKED BY DESIGN, AND THE RELEASE ADDENDUM NAMES ITS KEYS
+The stage, fire and harvest scripts take the config dir, the pinned client, its sha, the export and the probe's outside file from a run-box
+env file, because the public tree's gate forbids account and host names. **The release addendum names the file's keys, and the export sha
+and pin sha it asserts. It never names the values that identify an account.**
+
+### A1.6 · WHERE THE ITEMS STAND AT THIS WRITING
+```
+  item 1  tracked stage · fire · harvest     built, dry-driven, awaiting a non-author read     (A1.3, A1.4)
+  item 2  run_state for claude cells         helm-signed, on harness master 4dfcad6
+  item 3  served-model void by condition     systems
+  item 4  --require wired + per-cell probe   systems (item 1's fire already calls both)
+  item 5  Claude correctness scorer          helm-signed, on harness master 4dfcad6 (A1.2)
+  item 6  deny set vs census                 this addendum; the move and re-run are A1.1's window
+```
