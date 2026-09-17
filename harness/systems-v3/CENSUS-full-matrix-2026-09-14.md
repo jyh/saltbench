@@ -103,7 +103,14 @@ adding the two numbers gets the wrong denominator.**
 
 ## §C5 · THE TOTAL AS IT STOOD AT 11:3x — ⛔ **SUPERSEDED THREE TIMES BELOW. DO NOT QUOTE THIS BLOCK.**
 
-> ## ⛔⛔ THE LIVE FIGURES ARE IN §F1's LAST ROW AND §F2, NOT HERE
+> ## ⛔⛔ THE LIVE FIGURE IS THE ROW MARKED `LIVE` IN THIS BOX, AND NOWHERE ELSE
+> ⚠️ **This line read *"the live figures are in §F1's last row and §F2"* until 2026-09-17, and it had gone
+> stale in the same way the heading above it did: §F1's last row reads **DONE 50** and the matrix is at **60**.
+> A reader who followed the pointer instead of reading the box got a figure four addenda old.**
+> ⇒ 🔑 ***A POINTER TO THE CURRENT FIGURE ROTS EXACTLY AS FAST AS THE FIGURE, AND IT IS WORSE THAN THE STALE
+> FIGURE ITSELF, BECAUSE IT SENDS THE READER AWAY FROM THE TABLE THAT IS BEING KEPT UP TO DATE.*** The
+> trajectory below is appended to at every addendum; the `LIVE` row is therefore always last and always current,
+> which is a property of the FORM rather than of anyone remembering to re-point a sentence.
 > ```
 >   THIS BLOCK (11:3x)   DONE 50 · OWED  28 · BLOCKED 110 · INEXPR 52     denominator 240
 >   12:1x (§F1)         DONE 50 · OWED 134 · BLOCKED   0 · INEXPR 16     ** NO CONDITION IS BLOCKED **
