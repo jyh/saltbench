@@ -1,0 +1,57 @@
+# cell_meter.py sha256/16 faf81afbbd7062c0  (from the release export tree)
+# taken 2026-09-17T21:15:22Z on the run box, READ-ONLY: no cell, slug or config dir was written.
+
+===== CELL hc1lp01  field=greenfield  arm=plain  extras=none
+----- terminal marker: 2026-09-16T06:37:12Z LANDED landing-1 386037d4d3aa
+----- cfg rows recorded IN THE CELL (ctl/run-cfg.tsv, distinct): <HOME>/<THE CONFIG DIR HC1 FIRED UNDER> 
+----- ARM A: the slug as clb_harvest.py derives it from the lane env (CLB_CFG)
+VOID(UNMETERED) slug dir absent or empty: <HOME>/<THE LANE'S CURRENT CONFIG DIR>/projects/-<HOME>-cells-hc1-lru-plain-hc1lp01-repo
+----- ARM B: the slug the CELL ITSELF records
+heads 1 sidechains 3 workflows 0 records 136 unparsable 0
+T_head 6504380  T_exec claude-opus-5=2589861 claude-sonnet-5=228693  T_wf 0  T 9322934
+COST $10.26  COST_head $6.01  COST_exec claude-opus-5=$3.92 claude-sonnet-5=$0.34  COST_wf $0.00  rates rates.tsv read_on 2026-09-05 (modelled at list rates, not an invoice)
+compactions 0  jsonl_undercount 0  synthetic -  models claude-opus-5=129 claude-sonnet-5=7
+FOLD assistant lines 232 over 136 records (81 written in more than one line, copies max 4): MAX per usage key, UNION of the blocks — output +85730 and tool calls +87 over a first-line reading; tool calls 141; non-monotone copies 0; bucket-straddling records 0
+INTERRUPT stop_reason=null records 0 (T 0, output 0) · stop_reason key present on 136/136 records · iterations key present on 136/136 · usage-without-iterations records 0 · markers disagree 0 · no interrupted turn in this slug: the sum above is not understated by this cause
+RECEIPT bucket model records input cache_creation(5m/1h) cache_read output T share_T COST share_COST
+RECEIPT head claude-opus-5 records 81 input 162 cache_creation 113273 (0/113273) cache_read 6322351 output 68594 T 6504380 70% COST $6.01 59%
+RECEIPT exec claude-opus-5 records 48 input 96 cache_creation 160011 (160011/0) cache_read 2360247 output 69507 T 2589861 28% COST $3.92 38%
+RECEIPT exec claude-sonnet-5 records 7 input 14 cache_creation 43263 (43263/0) cache_read 165848 output 19568 T 228693 2% COST $0.34 3%
+HEAD SHARE: T 70% · COST 59% · the head's own T: cache_read 97% input 0% output 1% cache_creation 2%
+
+===== CELL hc1lp02  field=greenfield  arm=plain  extras=none
+----- terminal marker: 2026-09-16T07:49:03Z LANDED landing-1 f1051e19b61d
+----- cfg rows recorded IN THE CELL (ctl/run-cfg.tsv, distinct): <HOME>/<THE CONFIG DIR HC1 FIRED UNDER> 
+----- ARM A: the slug as clb_harvest.py derives it from the lane env (CLB_CFG)
+VOID(UNMETERED) slug dir absent or empty: <HOME>/<THE LANE'S CURRENT CONFIG DIR>/projects/-<HOME>-cells-hc1-lru-plain-hc1lp02-repo
+----- ARM B: the slug the CELL ITSELF records
+heads 1 sidechains 2 workflows 0 records 98 unparsable 0
+T_head 6599181  T_exec claude-opus-5=1424931 claude-sonnet-5=119513  T_wf 0  T 8143625
+COST $8.85  COST_head $6.59  COST_exec claude-opus-5=$2.01 claude-sonnet-5=$0.25  COST_wf $0.00  rates rates.tsv read_on 2026-09-05 (modelled at list rates, not an invoice)
+compactions 0  jsonl_undercount 0  synthetic -  models claude-opus-5=94 claude-sonnet-5=4
+FOLD assistant lines 172 over 98 records (62 written in more than one line, copies max 4): MAX per usage key, UNION of the blocks — output +44795 and tool calls +66 over a first-line reading; tool calls 100; non-monotone copies 0; bucket-straddling records 0
+INTERRUPT stop_reason=null records 0 (T 0, output 0) · stop_reason key present on 98/98 records · iterations key present on 98/98 · usage-without-iterations records 0 · markers disagree 0 · no interrupted turn in this slug: the sum above is not understated by this cause
+RECEIPT bucket model records input cache_creation(5m/1h) cache_read output T share_T COST share_COST
+RECEIPT head claude-opus-5 records 70 input 140 cache_creation 131609 (0/131609) cache_read 6384217 output 83215 T 6599181 81% COST $6.59 74%
+RECEIPT exec claude-opus-5 records 24 input 48 cache_creation 91007 (91007/0) cache_read 1302168 output 31708 T 1424931 17% COST $2.01 23%
+RECEIPT exec claude-sonnet-5 records 4 input 8 cache_creation 35460 (35460/0) cache_read 69330 output 14715 T 119513 1% COST $0.25 3%
+HEAD SHARE: T 81% · COST 74% · the head's own T: cache_read 97% input 0% output 1% cache_creation 2%
+
+===== CELL hc1lp03  field=greenfield  arm=plain  extras=none
+----- terminal marker: 2026-09-16T09:00:53Z LANDED landing-1 418c9554dd90
+----- cfg rows recorded IN THE CELL (ctl/run-cfg.tsv, distinct): <HOME>/<THE CONFIG DIR HC1 FIRED UNDER> 
+----- ARM A: the slug as clb_harvest.py derives it from the lane env (CLB_CFG)
+VOID(UNMETERED) slug dir absent or empty: <HOME>/<THE LANE'S CURRENT CONFIG DIR>/projects/-<HOME>-cells-hc1-lru-plain-hc1lp03-repo
+----- ARM B: the slug the CELL ITSELF records
+VOID(UNDERSTATED) 1 record(s) carry stop_reason=null (an INTERRUPTED turn): 38443 T and 2 output tokens are recorded but UNDERSTATED by an unbounded factor — the client stops writing usage where the interrupt lands, so this sum is a LOWER BOUND, not a price
+heads 1 sidechains 2 workflows 0 records 98 unparsable 0
+T_head 5574212  T_exec claude-opus-5=786083 claude-sonnet-5=290753  T_wf 0  T 6651048
+COST $7.04  COST_head $5.40  COST_exec claude-opus-5=$1.32 claude-sonnet-5=$0.32  COST_wf $0.00  rates rates.tsv read_on 2026-09-05 (modelled at list rates, not an invoice)
+compactions 0  jsonl_undercount 0  synthetic -  models claude-opus-5=89 claude-sonnet-5=9
+FOLD assistant lines 187 over 98 records (71 written in more than one line, copies max 4): MAX per usage key, UNION of the blocks — output +39925 and tool calls +81 over a first-line reading; tool calls 107; non-monotone copies 0; bucket-straddling records 0
+INTERRUPT stop_reason=null records 1 (T 38443, output 2) · stop_reason key present on 98/98 records · iterations key present on 97/98 · usage-without-iterations records 1 · markers disagree 0 · ⛔ THE TOTALS ABOVE ARE A LOWER BOUND, NOT A PRICE
+RECEIPT bucket model records input cache_creation(5m/1h) cache_read output T share_T COST share_COST
+RECEIPT head claude-opus-5 records 70 input 140 cache_creation 111125 (0/111125) cache_read 5399410 output 63537 T 5574212 84% COST $5.40 77%
+RECEIPT exec claude-opus-5 records 19 input 38 cache_creation 58486 (58486/0) cache_read 703636 output 23923 T 786083 12% COST $1.32 19%
+RECEIPT exec claude-sonnet-5 records 9 input 18 cache_creation 37296 (37296/0) cache_read 235529 output 17910 T 290753 4% COST $0.32 5%
+HEAD SHARE: T 84% · COST 77% · the head's own T: cache_read 97% input 0% output 1% cache_creation 2%
