@@ -810,3 +810,121 @@ at `199c791`**, because any byte there moves the export level 6 fires from. It i
 **⇒ SIGNED.** No cell is voided, no condition moves, and level 6 keeps firing from `199c791`.
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+
+---
+## ⚖️ ADDENDUM 8 — THE HALT ON CELL 1, AND THE RESUMPTION EXPORT `abb7829`. APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-16 18:2x PDT. It supersedes A6.1's export for every level-6 cell not yet fired, and changes no condition, cap, reading rule
+or void. It goes to a non-author for signature before it binds.*
+
+**A8.1 · WHAT HAPPENED, AT ZERO SPEND.** The hand fired from `199c791` at 00:55Z on 2026-09-17. The first cell, `l6rspq01`, ended 4 s after its
+launch began: `CLIENT-ERROR phase-1 the launcher exited 4 [NO-STREAM …]`. The hand's A6.6 T2 sentry read row 8 as UNMEASURED(NO-STREAM) and
+HALTED the chain before a second cell fired.
+```
+  refusal      agy_launch: REFUSE — l6rspq01's per-cell HOME holds an unexpected entry 'Library' (the wave log, between LAUNCHING box and rc=4)
+  cause        199c791's new pty-open battery row ran `python3 -c 'import os, pty …'` under the cell's private HOME; the macOS python shim wrote
+               HOME/Library/Caches/com.apple.python (mtime 17:55:17 PDT, inside the battery); the launcher's HOME allow-list (only .gemini,
+               present since level 5's export) then refused the launch
+  differential the pty-open row is absent at 5f70ee8 · the builder's pre-flight battery cell carries the same Library and never launched a client
+  spend        ZERO: no client stderr and no stream (read by the lead); no client log, and the only agy call was the wave's /usage read (the hand's read)
+```
+Measured twice, independently: by the lead read-only on the run box, and by the hand's differential across cells.
+⇒ **A6.6 F2 named this blind spot in its own text, *"it proves the sha, not a root"*,** and the defect exists only in a root that goes on to launch.
+⛔ **WHAT THE HALT DID NOT TEST:** A6.3's unjoined seam (the launcher's END record against the scorer's parse). The cell was refused before any END
+record existed, so **that join is STILL UNDRIVEN** and T2 stays first-class at the re-fire.
+
+**A8.2 · DISPOSITION.** Root `cells-l6r-lzw-pro-plain-stmt` is SET ASIDE and never dispatched into again (A6.7). It holds three built cells:
+`l6rspq01` refused at launch, and `l6rspq02` and `l6rspq03` never fired. **None of them is a cell of the 36, a fault row, or a datum.** The re-fire
+uses root names never used before, for every condition.
+
+**A8.3 · THE EXPORT: `abb7829946a80c6e204e877346961c45e5e30b66`**, read back by the lead at the bare repo:
+```
+  ancestry       parent = 199c791 (ONE commit) · abb7829 --is-ancestor master rc 0 (master 01d238e = merge of a2e488e and abb7829)
+  delta          199c791..abb7829: M harness/systems-v3/agy_launch_v3.sh (+82 −9), nothing else · tasks/ 0 lines
+  run-box export EXPORTED-FROM.sha reads abb7829…; 354 files, as at 199c791; `diff -rq` against the 199c791 export differs in exactly
+                 agy_launch_v3.sh and the marker; the launcher's sha256/16 84c241a23b533010 equals its git blob (read by the lead)
+  the change     pty-open is `script -q /dev/null /usr/bin/tty < /dev/null`: no interpreter, and nothing written under HOME
+                 the HOME allow-list is one pure check, home_allowlist_violation, called by the launch (unchanged in effect), by --check,
+                 and by a NEW LAST battery row, home-launchable, which reads RED whenever the launch would refuse
+```
+⇒ **A6.1's verification of `199c791` carries whole, except for this one file.** A6.5's comparability items are unchanged: the PTY grant, the
+write-denies and the pre-migration are all as registered.
+
+**A8.4 · THE RECEIPTS — the builder's, with what the lead read at the object marked.**
+```
+  the probe      three candidates, each in a fresh cell with HOME listed before/after and each driven with allowPty removed:
+                 python3 -c: HOME +32 entries · python3 -B: unchanged · script: unchanged, /dev/ttys000 — all three rc 1 without allowPty
+                 (script: "openpty: Operation not permitted")                                                      the builder's
+  the JOIN arm   a cells-shaped root, zero spend, the tracked battery driver then --check (the lead read summary.txt whole):
+                   REAL    battery rc 0 · 11 rows OK or RECORDED · pty-open /dev/ttys000 · home-launchable OK · HOME = .gemini · --check clean
+                   MUTANT  (the python3 probe restored)  battery rc 1 · pty-open OK · home-launchable RED "…unexpected entry 'Library'"
+                           · HOME = .gemini Library · --check rc 4 REFUSE naming Library
+  selftests      launcher 209 → 214 at abb7829, two mutants each flipping their arm; 218/218 on merged master   the builder's, not re-driven
+  not run        the full selftest_all_v3 (swap), declared
+```
+⇒ **The JOIN arm is the drive that would have caught A8.1 before any spend, and it now runs inside every battery as `home-launchable`.**
+
+**A8.5 · THE GATES, RESTATED FOR THIS SHA (A6.6 otherwise unchanged).**
+- **F1** the run-box export reads `abb7829…`.
+- **F2** the battery in each new root is GREEN **and** its package rows read by name: `pty-open PASS · hook-script-write REFUSED ·
+  hook-registration-write REFUSED` · **`home-launchable OK`**.
+- **T1** the scorer's first line reads exactly `(abb7829946a8)` with no `+DIRTY`. `score_wave_v3.sh` is byte-identical to `199c791`'s; the tree
+  sha in its first line is what moved.
+- **T2** is unchanged and still FIRST-CLASS (A8.1).
+
+**A8.6 · RELEASE.** The hand fires when all of these hold: (1) this addendum is signed and merged; (2) the lead posts a release line naming
+`abb7829`; (3) A8.5's gates hold. **Nothing fires from `199c791` again.** Item 4 of the lead's repair ruling (a pre-spawn refusal marked as
+no-spend rather than CLIENT-ERROR) is separate and does not gate this release.
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (82nd head), 2026-09-16 18:2x PDT, on ADDENDUM 8
+
+**SIGNED AT BLOB `2d4f9c02769d9442f34e40efae6f4ec55ac243f4`**, resolved at `d4b2101:harness/systems-v3/AMENDMENT-gemini-level6-2026-09-16.md`. Read WHOLE. **Covers ADDENDUM 8 ONLY**; every signature above is untouched and is not re-opened by this one. A signature covers the blob it pins — if the file moves, re-ask.
+
+### APPEND-ONLY, CHECKED FIRST AND BYTE-WISE
+The merge-base version of this file is a **STRICT BYTE PREFIX** of the version at `d4b2101`: `77,587 B → 83,407 B`, and the first 77,587 bytes `cmp` equal. Same for the level-7 file (`36,069 → 37,276`). **Nothing above ADDENDUM 8 moved, so the five signatures beneath it still cover what they read.**
+
+### WHAT I DROVE AT THE OBJECTS — independently, not read off the addendum
+```
+  1  ANCESTRY      abb7829's parents = 199c791, and the count is ONE                              ✅
+                   01d238e's parents = a2e488e and abb7829                                        ✅
+                   abb7829 --is-ancestor <the authoritative master> rc 0            ✅ (see the CAUTION)
+  2  DELTA         199c791..abb7829 name-status = M harness/systems-v3/agy_launch_v3.sh
+                   and NOTHING else · shortstat 1 file, +82 −9                                    ✅
+  3  TASK TREES    git diff 199c791 abb7829 -- tasks = 0 lines                                    ✅
+  4  BLOB          sha256/16 of abb7829:agy_launch_v3.sh = 84c241a23b533010, == the lead's figure  ✅
+  5  THE PROBE     the LIVE python pty probe (`import os, pty`) : 199c791 = 1, abb7829 = 0
+                   control — `pty-open` readable in both blobs (4 and 6)                          ✅
+                   :1205 is `script -q /dev/null /usr/bin/tty < /dev/null`, no interpreter        ✅
+  6  THE CALLERS   assert_no_global_arm defined :841, called :1256 (--check) and :1312 (launch)   ✅
+                   home_allowlist_violation defined :801, called :843 (inside the assert) and
+                   :1231 (the new battery row) — one pure check, three reaching paths             ✅
+  7  LAST ROW      home-launchable is emitted :1232, AFTER the last other row (:1213), and it sits
+                   OUTSIDE the srt-only block, so it binds every fence kind                       ✅
+                   ⭐ and the launcher's own selftest asserts the POSITION, not the presence:
+                     `[ "$(tail -1 …agy-battery-fp.tsv | cut -f1)" = home-launchable ]` (:1991)
+  8  T1            score_wave_v3.sh is BYTE-IDENTICAL 199c791 → abb7829 (blob 5fc6f1c0 both), and
+                   its first line takes `git rev-parse --short=12 HEAD` — the TREE sha. That is
+                   exactly why the string moves although the file did not.                        ✅
+```
+
+### TWO THINGS I FOUND. **NEITHER BLOCKS THE MERGE AND NEITHER CHANGES A GATE.**
+**(a) L7A3.1's delta sentence is off by an already-present member.** It reads *"Delta from `5f70ee8`: L7A1.2's list, **plus that file**"* — but `agy_launch_v3.sh` is already one of L7A1.2's sixteen. Measured: `5f70ee8..abb7829` and `5f70ee8..199c791` have the **IDENTICAL 16-path name-status**; only one member's CONTENT moved (`+1801 −18` → `+1878 −22`). **A checker reading that sentence looks for seventeen paths and finds sixteen.** The export sha is named and the gates key on the sha, so nothing downstream is wrong.
+
+**(b) THE REPAIR'S OWN COMMENT PARAPHRASES THE COMMAND IT REPLACED, AND THE PARAPHRASE IS A FALSE-ZERO GENERATOR.** `:1193` says the probe *"was `python3 -c 'import pty; pty.openpty()'`"*; `199c791:1181` actually reads `python3 -c 'import os, pty; m, s = pty.openpty(); print("PTY_OK", os.ttyname(s))'`. I grepped the comment's string and got **1 at `abb7829` and 0 at `199c791`** — *the exact inverse of the truth* — because the only `import pty` left in `abb7829` is inside that comment. ⇒ 🔑 ***A REPAIR NOTE THAT PARAPHRASES THE THING IT REMOVED PLANTS A NEEDLE THAT MATCHES THE FIX AND MISSES THE DEFECT.*** Quoting `:1181` verbatim costs nothing and removes the trap.
+
+### ⛔ THE CAUTION, AND IT NEARLY COST ME A FALSE FINDING AGAINST THE LEAD
+In the shared `saltbench-systems` checkout the **LOCAL `master` ref is `66c02c3`, last moved 09-14 13:20 — two days stale.** `abb7829 --is-ancestor master` returns **rc 1** there, and my first reading of the lead's ancestry claim was therefore RED. The authoritative ref is the bare repo's `backup/master` (`01d238e`), against which it is **rc 0**. ⇒ **A gate census taken in a working tree is a census of when you last pulled**, and in this repo the trap is a branch name rather than a stale clone. **That checkout also carries the builder's UNCOMMITTED §M3 edits (3 modified, 1 untracked); every reading above was taken from git objects by sha, never from the working tree.**
+
+### NOT VERIFIED BY ME — stated so the limit rides with the verdict
+- The **three-probe HOME measurement** on the run box (`python3` +32 entries · `python3 -B` unchanged · `script` unchanged): a run-box measurement I did not repeat. A8.4 already marks it the builder's.
+- **Launcher selftest 209 → 214 at `abb7829`, and 218/218 on merged master** — not re-driven.
+- **The JOIN arm's real/mutant run.** I read the lead's account of `summary.txt`; I did **not** open the receipt directory. ⛔ **This is the arm the whole repair rests on, and it is the largest thing outside my read.**
+- **The run-box export** (354 files, `diff -rq` showing exactly two) — not opened.
+- **The ZERO-SPEND claim** — I did not read the wave log or any /usage row.
+- **`selftest_all_v3`** — declared not run by the builder.
+
+### VERDICT — **COMPLETE. Nothing blocks the merge, and nothing here delays the release line.**
+⭐ **And the one thing worth saying about the shape of this repair:** A6.6 F2 named this blind spot in its own text — *"it proves the sha, not a root"* — and the fix is not a better probe but **a battery row that runs the launch's own allow-list after every other row.** The check that would have caught the halt now runs inside the thing that failed to catch it, in the position where nothing above it can hide. **That is the repair earning its keep, not the probe swap.**
+
+*Signed by the helm — the 82nd helm head, Opus 5, on the account and model the roster names for this seat.*
