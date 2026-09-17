@@ -1,0 +1,720 @@
+# cell_meter.py sha256/16 faf81afbbd7062c0
+# taken 2026-09-17T21:49:56Z, READ-ONLY. Population DECLARED, not globbed blindly:
+#   45 cells = 5 problems x {placebo,plain,salt-diet} x n=3.  43 LANDED + 2 CAP-COST.
+#   2 directories are NOT cells and are excluded BY NAME, declared rather than silently skipped:
+#     a FAILED-BUILD quarantine (no arm, no end marker) and a NO-RUN quarantine (staged, never ran).
+=== hc1cb01   phases recorded: 1   cfg rows recorded: 1
+    VOID (declared, carried verbatim): VOID(UNDERSTATED) 1 record(s) carry stop_reason=null (an INTERRUPTED turn): 36831 T and 1 output tokens are recorded but UNDERSTATED by an unbounded factor — the client stops writing usage where the interrupt lands, so this sum is a LOWER BOUND, not a price
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            16         32        57094      57094          0        526927       23780        607833    6.4%
+    exec   claude-sonnet-5          10         20        37100      37100          0        257422        9751        304293    3.2%
+    head   claude-opus-5            95        190       140491          0     140491       8340221       89605       8570507   90.4%
+    ALL    -                       121        242       234685      94194     140491       9124570      123136       9482633  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 9.6% · head 90.4%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1cb02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            16         32        62284      62284          0        688580       14690        765586   15.9%
+    exec   claude-sonnet-5          15         30        56041      56041          0        579561       22736        658368   13.6%
+    head   claude-opus-5            55        110        83779          0      83779       3271317       44403       3399609   70.5%
+    ALL    -                        86        172       202104     118325      83779       4539458       81829       4823563  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 29.5% · head 70.5%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1cb03   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            37         74        84371      84371          0       1812337       31323       1928105   13.0%
+    exec   claude-sonnet-5           9         18        38211      38211          0        211394       12500        262123    1.8%
+    head   claude-opus-5           131        262       151130          0     151130      12386645       91101      12629138   85.2%
+    ALL    -                       177        354       273712     122582     151130      14410376      134924      14819366  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 14.8% · head 85.2%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1cp01   phases recorded: 1   cfg rows recorded: 1
+    VOID (declared, carried verbatim): VOID(UNDERSTATED) 1 record(s) carry stop_reason=null (an INTERRUPTED turn): 32494 T and 10 output tokens are recorded but UNDERSTATED by an unbounded factor — the client stops writing usage where the interrupt lands, so this sum is a LOWER BOUND, not a price
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            25         50        73001      73001          0       1146544       26143       1245738   11.6%
+    exec   claude-sonnet-5          37         74        94894      94894          0       1310969       38349       1444286   13.5%
+    head   claude-opus-5            92        184       129115          0     129115       7838697       75364       8043360   74.9%
+    ALL    -                       154        308       297010     167895     129115      10296210      139856      10733384  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 25.1% · head 74.9%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1cp02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            38         76       105814     105814          0       1326241       52348       1484479   28.3%
+    exec   claude-sonnet-5          15         30        38954      38954          0        438580       22143        499707    9.5%
+    head   claude-opus-5            49         98        99420          0      99420       3112504       52034       3264056   62.2%
+    ALL    -                       102        204       244188     144768      99420       4877325      126525       5248242  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 37.8% · head 62.2%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1cp03   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            37         74        87952      87952          0       1870852       33362       1992240   22.9%
+    exec   claude-sonnet-5          11         22        33526      33526          0        264589       12891        311028    3.6%
+    head   claude-opus-5            73        146       126794          0     126794       6182798       75107       6384845   73.5%
+    ALL    -                       121        242       248272     121478     126794       8318239      121360       8688113  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 26.5% · head 73.5%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1cs01   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            36         72        90961      90961          0       1081165       41519       1213717    7.6%
+    head   claude-opus-5           103        206       208911          0     208911      14333384      124886      14667387   92.4%
+    ALL    -                       139        278       299872      90961     208911      15414549      166405      15881104  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 7.6% · head 92.4%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1cs02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            11         22        35358      35358          0        253652        9431        298463    3.2%
+    exec   claude-sonnet-5          14         28        55549      55549          0        579662       29642        664881    7.1%
+    head   claude-opus-5            79        158       164756          0     164756       8152916      105933       8423763   89.7%
+    ALL    -                       104        208       255663      90907     164756       8986230      145006       9387107  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 10.3% · head 89.7%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1cs03   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-sonnet-5          26         52        77738      77738          0        789164       35276        902230   10.3%
+    head   claude-opus-5            76        152       151009          0     151009       7610910       94749       7856820   89.7%
+    ALL    -                       102        204       228747      77738     151009       8400074      130025       8759050  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 10.3% · head 89.7%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1fb01   phases recorded: 1   cfg rows recorded: 1
+    VOID (declared, carried verbatim): VOID(UNDERSTATED) 1 record(s) carry stop_reason=null (an INTERRUPTED turn): 23089 T and 2 output tokens are recorded but UNDERSTATED by an unbounded factor — the client stops writing usage where the interrupt lands, so this sum is a LOWER BOUND, not a price
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            10         20        52338      52338          0        292087       36120        380565    3.5%
+    exec   claude-sonnet-5          10         20        57774      57774          0        394510       50015        502319    4.6%
+    head   claude-opus-5            90        180       175197          0     175197       9821174      104874      10101425   92.0%
+    ALL    -                       110        220       285309     110112     175197      10507771      191009      10984309  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 8.0% · head 92.0%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1fb02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5             4          8        72390      72390          0         28281       37519        138198    1.5%
+    exec   claude-sonnet-5           9         18        68383      68383          0        361568       43880        473849    5.2%
+    head   claude-opus-5            82        164       147927          0     147927       8275357       87594       8511042   93.3%
+    ALL    -                        95        190       288700     140773     147927       8665206      168993       9123089  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 6.7% · head 93.3%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1fb03   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            28         56        95303      95303          0       1556595       59888       1711842   11.8%
+    exec   claude-sonnet-5          15         30       101394     101394          0        903408       66131       1070963    7.4%
+    head   claude-opus-5           102        204       179537          0     179537      11429200      106394      11715335   80.8%
+    ALL    -                       145        290       376234     196697     179537      13889203      232413      14498140  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 19.2% · head 80.8%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1fp01   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            38         76       157235     157235          0       1951773       73578       2182662   16.4%
+    exec   claude-sonnet-5          12         24        41749      41749          0        342555       18113        402441    3.0%
+    head   claude-opus-5            93        186       179509          0     179509      10413690      115004      10708389   80.6%
+    ALL    -                       143        286       378493     198984     179509      12708018      206695      13293492  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 19.4% · head 80.6%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1fp02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            80        160       561043     561043          0       4780935      167588       5509726   33.4%
+    head   claude-opus-5            89        178       180791          0     180791      10706494      107587      10995050   66.6%
+    ALL    -                       169        338       741834     561043     180791      15487429      275175      16504776  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 33.4% · head 66.6%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1fp03   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            26         52       112815     112815          0       1683908       70476       1867251   19.0%
+    exec   claude-sonnet-5          24         48        86454      86454          0       1204480       59495       1350477   13.8%
+    head   claude-opus-5            71        142       130415          0     130415       6369630       84420       6584607   67.2%
+    ALL    -                       121        242       329684     199269     130415       9258018      214391       9802335  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 32.8% · head 67.2%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1fs01   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5             2          4        24083      24083          0         13593       29643         67323    0.1%
+    exec   claude-sonnet-5          13         26       155538     155538          0        436854       65334        657752    1.4%
+    head   claude-opus-5           214        428       334419          0     334419      44432776      234618      45002241   98.4%
+    ALL    -                       229        458       514040     179621     334419      44883223      329595      45727316  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 1.6% · head 98.4%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1fs02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            16         32        84681      84681          0        519532       59564        663809    1.2%
+    head   claude-opus-5           221        442       332572          0     332572      51930158      246100      52509272   98.8%
+    ALL    -                       237        474       417253      84681     332572      52449690      305664      53173081  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 1.2% · head 98.8%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1fs03   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            52        104       249512     249512          0       2388894      142060       2780570    9.4%
+    head   claude-opus-5           123        246       369058          0     369058      26125668      269632      26764604   90.6%
+    ALL    -                       175        350       618570     249512     369058      28514562      411692      29545174  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 9.4% · head 90.6%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1lb01   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            15         30        39044      39044          0        389047       17781        445902    7.6%
+    exec   claude-sonnet-5          10         20        31966      31966          0        229718       12410        274114    4.7%
+    head   claude-opus-5            65        130       111517          0     111517       4967345       62809       5141801   87.7%
+    ALL    -                        90        180       182527      71010     111517       5586110       93000       5861817  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 12.3% · head 87.7%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1lb02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            19         38        74557      74557          0        852110       25173        951878   10.5%
+    exec   claude-sonnet-5           9         18        50050      50050          0        289846       22352        362266    4.0%
+    head   claude-opus-5            83        166       133175          0     133175       7567912       78029       7779282   85.5%
+    ALL    -                       111        222       257782     124607     133175       8709868      125554       9093426  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 14.5% · head 85.5%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1lb03   phases recorded: 1   cfg rows recorded: 1
+    VOID (declared, carried verbatim): VOID(UNDERSTATED) 1 record(s) carry stop_reason=null (an INTERRUPTED turn): 23028 T and 9 output tokens are recorded but UNDERSTATED by an unbounded factor — the client stops writing usage where the interrupt lands, so this sum is a LOWER BOUND, not a price
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            22         44        63917      63917          0        871629       23901        959491   15.1%
+    exec   claude-sonnet-5          11         22        43327      43327          0        301957       19672        364978    5.8%
+    head   claude-opus-5            67        134       112178          0     112178       4831675       67909       5011896   79.1%
+    ALL    -                       100        200       219422     107244     112178       6005261      111482       6336365  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 20.9% · head 79.1%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1lp01   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            48         96       160011     160011          0       2360247       69507       2589861   27.8%
+    exec   claude-sonnet-5           7         14        43263      43263          0        165848       19568        228693    2.5%
+    head   claude-opus-5            81        162       113273          0     113273       6322351       68594       6504380   69.8%
+    ALL    -                       136        272       316547     203274     113273       8848446      157669       9322934  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 30.2% · head 69.8%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1lp02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            24         48        91007      91007          0       1302168       31708       1424931   17.5%
+    exec   claude-sonnet-5           4          8        35460      35460          0         69330       14715        119513    1.5%
+    head   claude-opus-5            70        140       131609          0     131609       6384217       83215       6599181   81.0%
+    ALL    -                        98        196       258076     126467     131609       7755715      129638       8143625  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 19.0% · head 81.0%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1lp03   phases recorded: 1   cfg rows recorded: 1
+    VOID (declared, carried verbatim): VOID(UNDERSTATED) 1 record(s) carry stop_reason=null (an INTERRUPTED turn): 38443 T and 2 output tokens are recorded but UNDERSTATED by an unbounded factor — the client stops writing usage where the interrupt lands, so this sum is a LOWER BOUND, not a price
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            19         38        58486      58486          0        703636       23923        786083   11.8%
+    exec   claude-sonnet-5           9         18        37296      37296          0        235529       17910        290753    4.4%
+    head   claude-opus-5            70        140       111125          0     111125       5399410       63537       5574212   83.8%
+    ALL    -                        98        196       206907      95782     111125       6338575      105370       6651048  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 16.2% · head 83.8%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1ls01   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            13         26        47172      47172          0        426135       27479        500812    5.7%
+    head   claude-opus-5            75        150       168592          0     168592       8060382      104844       8333968   94.3%
+    ALL    -                        88        176       215764      47172     168592       8486517      132323       8834780  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 5.7% · head 94.3%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1ls02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            11         22        51835      51835          0        386501       30987        469345    3.2%
+    head   claude-opus-5           118        236       169835          0     169835      13960820      110532      14241423   96.8%
+    ALL    -                       129        258       221670      51835     169835      14347321      141519      14710768  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 3.2% · head 96.8%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1ls03   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            15         30        44737      44737          0        473020       23707        541494    7.2%
+    head   claude-opus-5            64        128       162446          0     162446       6675617      102714       6940905   92.8%
+    ALL    -                        79        158       207183      44737     162446       7148637      126421       7482399  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 7.2% · head 92.8%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1zb01   phases recorded: 1   cfg rows recorded: 1
+    VOID (declared, carried verbatim): VOID(UNDERSTATED) 1 record(s) carry stop_reason=null (an INTERRUPTED turn): 23018 T and 2 output tokens are recorded but UNDERSTATED by an unbounded factor — the client stops writing usage where the interrupt lands, so this sum is a LOWER BOUND, not a price
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            20         40       118063     118063          0        785155       35358        938616   15.7%
+    exec   claude-sonnet-5          16         32        76474      76474          0        820685       39598        936789   15.7%
+    head   claude-opus-5            54        108       110498          0     110498       3913288       65787       4089681   68.6%
+    ALL    -                        90        180       305035     194537     110498       5519128      140743       5965086  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 31.4% · head 68.6%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1zb02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            29         58        90598      90598          0       1657153       32433       1780242   12.2%
+    exec   claude-sonnet-5           5         10        27152      27152          0         89000        8351        124513    0.9%
+    head   claude-opus-5            97        194       208008          0     208008      12320700      131738      12660640   86.9%
+    ALL    -                       131        262       325758     117750     208008      14066853      172522      14565395  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 13.1% · head 86.9%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1zb03   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            28         56        94876      94876          0       1530463       37850       1663245    9.1%
+    exec   claude-sonnet-5           6         12        52510      52510          0        169227       32304        254053    1.4%
+    head   claude-opus-5           135        270       188795          0     188795      16084609      103781      16377455   89.5%
+    ALL    -                       169        338       336181     147386     188795      17784299      173935      18294753  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 10.5% · head 89.5%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1zp01   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            29         58       104293     104293          0       1893709       49904       2047964   23.5%
+    exec   claude-sonnet-5          15         30        58681      58681          0        682190       35327        776228    8.9%
+    head   claude-opus-5            66        132       130167          0     130167       5690327       82324       5902950   67.6%
+    ALL    -                       110        220       293141     162974     130167       8266226      167555       8727142  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 32.4% · head 67.6%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1zp02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            23         46        74341      74341          0       1051975       42599       1168961   18.4%
+    exec   claude-sonnet-5          24         48        69075      69075          0       1249208       37443       1355774   21.3%
+    head   claude-opus-5            52        104       106450          0     106450       3667086       71219       3844859   60.4%
+    ALL    -                        99        198       249866     143416     106450       5968269      151261       6369594  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 39.6% · head 60.4%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1zp03   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            19         38        66437      66437          0        812147       36185        914807   11.1%
+    exec   claude-sonnet-5          10         20        52638      52638          0        350389       30272        433319    5.3%
+    head   claude-opus-5            78        156       133117          0     133117       6684678       82476       6900427   83.7%
+    ALL    -                       107        214       252192     119075     133117       7847214      148933       8248553  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 16.3% · head 83.7%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1zs01   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            11         22        36989      36989          0        284690       19744        341445    2.6%
+    head   claude-opus-5            92        184       205202          0     205202      12212245      141376      12559007   97.4%
+    ALL    -                       103        206       242191      36989     205202      12496935      161120      12900452  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 2.6% · head 97.4%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1zs02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            33         66       107265     107265          0       1182238       49147       1338716    7.5%
+    head   claude-opus-5            96        192       241484          0     241484      16121909      177110      16540695   92.5%
+    ALL    -                       129        258       348749     107265     241484      17304147      226257      17879411  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 7.5% · head 92.5%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1zs03   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            18         36        87485      87485          0        533706       58923        680150    2.5%
+    head   claude-opus-5           137        274       306054          0     306054      26526801      205850      27038979   97.5%
+    ALL    -                       155        310       393539      87485     306054      27060507      264773      27719129  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 2.5% · head 97.5%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1pb01   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5             7         14        76479      76479          0        228878       47363        352734    2.2%
+    exec   claude-sonnet-5          11         22        63827      63827          0        382560       40069        486478    3.0%
+    head   claude-opus-5           111        222       216906          0     216906      15175563      120810      15513501   94.9%
+    ALL    -                       129        258       357212     140306     216906      15787001      208242      16352713  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 5.1% · head 94.9%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1pb02   phases recorded: 1   cfg rows recorded: 1
+    VOID (declared, carried verbatim): VOID(UNDERSTATED) 1 record(s) carry stop_reason=null (an INTERRUPTED turn): 95485 T and 2 output tokens are recorded but UNDERSTATED by an unbounded factor — the client stops writing usage where the interrupt lands, so this sum is a LOWER BOUND, not a price
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            30         60       204244     204244          0       2189500       59782       2453586    8.9%
+    exec   claude-sonnet-5          25         50       148505     148505          0       1052249       58487       1259291    4.6%
+    head   claude-opus-5           139        278       252687          0     252687      23411527      156037      23820529   86.5%
+    ALL    -                       194        388       605436     352749     252687      26653276      274306      27533406  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 13.5% · head 86.5%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1pb03   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            14         28       102042     102042          0        748202       43825        894097    5.2%
+    exec   claude-sonnet-5          16         32       106674     106674          0        634595       54215        795516    4.6%
+    head   claude-opus-5            97        194       232545          0     232545      15196980      156784      15586503   90.2%
+    ALL    -                       127        254       441261     208716     232545      16579777      254824      17276116  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 9.8% · head 90.2%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1pp01   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            39         78       230929     230929          0       3776262      140622       4147891   20.6%
+    head   claude-opus-5           121        242       197645          0     197645      15669398      142872      16010157   79.4%
+    ALL    -                       160        320       428574     230929     197645      19445660      283494      20158048  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 20.6% · head 79.4%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1pp02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            31         62       198802     198802          0       2111336       96957       2407157   17.0%
+    head   claude-opus-5            83        166       234716          0     234716      11379877      149860      11764619   83.0%
+    ALL    -                       114        228       433518     198802     234716      13491213      246817      14171776  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 17.0% · head 83.0%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1pp03   phases recorded: 1   cfg rows recorded: 1
+    VOID (declared, carried verbatim): VOID(UNDERSTATED) 3 record(s) carry stop_reason=null (an INTERRUPTED turn): 128403 T and 7 output tokens are recorded but UNDERSTATED by an unbounded factor — the client stops writing usage where the interrupt lands, so this sum is a LOWER BOUND, not a price
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            41         82       185649     185649          0       1851906       71488       2109125    7.9%
+    exec   claude-sonnet-5           9         18        64416      64416          0        321375       38583        424392    1.6%
+    head   claude-opus-5           141        282       239739          0     239739      23627205      132361      23999587   90.5%
+    ALL    -                       191        382       489804     250065     239739      25800486      242432      26533104  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 9.5% · head 90.5%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1ps01   phases recorded: 1   cfg rows recorded: 1
+    VOID (declared, carried verbatim): VOID(UNDERSTATED) 1 record(s) carry stop_reason=null (an INTERRUPTED turn): 98909 T and 17 output tokens are recorded but UNDERSTATED by an unbounded factor — the client stops writing usage where the interrupt lands, so this sum is a LOWER BOUND, not a price
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            60        120       206285     206285          0       4385567       97439       4689411    9.3%
+    head   claude-opus-5           209        418       329015          0     329015      45366186      229388      45925007   90.7%
+    ALL    -                       269        538       535300     206285     329015      49751753      326827      50614418  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 9.3% · head 90.7%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1ps02   phases recorded: 1   cfg rows recorded: 1
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            20         40        78080      78080          0        576656       44623        699399    1.4%
+    head   claude-opus-5           216        432       349601          0     349601      49706151      260672      50316856   98.6%
+    ALL    -                       236        472       427681      78080     349601      50282807      305295      51016255  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 1.4% · head 98.6%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+=== hc1ps03   phases recorded: 1   cfg rows recorded: 1
+    VOID (declared, carried verbatim): VOID(UNDERSTATED) 1 record(s) carry stop_reason=null (an INTERRUPTED turn): 27656 T and 5 output tokens are recorded but UNDERSTATED by an unbounded factor — the client stops writing usage where the interrupt lands, so this sum is a LOWER BOUND, not a price
+    TOKENS BY ROLE AND DIRECTION (the price of record):
+    role   model               records      input   cache_crea      5m_wr      1h_wr    cache_read      output             T   share
+    exec   claude-opus-5            53        106       216342     216342          0       2585476      112141       2914065    6.6%
+    head   claude-opus-5           158        316       389041          0     389041      40387046      289966      41066369   93.4%
+    ALL    -                       211        422       605383     216342     389041      42972522      402107      43980434  100.0%
+    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00
+       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from
+       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.
+    ROLE SHARE OF T: exec 6.6% · head 93.4%
+    ⛔ ROLE IS head/exec/wf, THE MECHANISM CLASS. worker/designer/reviewer DO NOT SEPARATE: the meter
+       keys the exec bucket by SERVED MODEL, not by executor. That is ⑯'s declared absence, not a zero.
+    USD: DERIVED FROM THE TOKENS ABOVE, SECONDARY BY RULING — read it off the meter's own COST lines,
+       which price each direction at its own rate and say 'modelled at list rates, not an invoice'.
+
+### CELLS METERED: 45   QUARANTINE DIRS EXCLUDED BY NAME: 2

@@ -1,0 +1,23 @@
+set -u
+set -a; . ~/.fleet/saltbench/claude-lane.env; set +a
+M="$CLB_EXPORT/harness/systems-v3/cell_meter.py"
+cat > /tmp/ct.py <<'PYEOF'
+  [ scripts/cell_tokens.py, spliced in verbatim at drive time and removed after ]
+PYEOF
+echo "# cell_meter.py sha256/16 $(python3 -c 'import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],"rb").read()).hexdigest()[:16])' "$M")"
+echo "# taken $(date -u +%Y-%m-%dT%H:%M:%SZ), READ-ONLY. Population DECLARED, not globbed blindly:"
+echo "#   45 cells = 5 problems x {placebo,plain,salt-diet} x n=3.  43 LANDED + 2 CAP-COST."
+echo "#   2 directories are NOT cells and are excluded BY NAME, declared rather than silently skipped:"
+echo "#     a FAILED-BUILD quarantine (no arm, no end marker) and a NO-RUN quarantine (staged, never ran)."
+n=0; skipped=0
+for r in ~/cells-hc1-*; do
+  [ -d "$r" ] || continue
+  for c in "$r"/hc1*; do
+    [ -d "$c" ] || continue
+    case "$(basename $c)" in *.FAILED-BUILD-*|*.NO-RUN-*) skipped=$((skipped+1)); continue;; esac
+    n=$((n+1))
+    python3 /tmp/ct.py "$c" --meter "$M" 2>&1
+  done
+done
+echo "### CELLS METERED: $n   QUARANTINE DIRS EXCLUDED BY NAME: $skipped"
+rm -f /tmp/ct.py
