@@ -186,3 +186,64 @@ The real census carries FOUR trees sharing one prefix — `~/bench-v2`, `~/bench
 5. **`~/rescore-tool` is NOT-COVERED by the Claude fence and COVERED by the agy fence.** The ADDENDUM's "Two are NOT" is correct *for this RESULT's subject*, which is a stage-1 Claude cell; the census prints both columns so the asymmetry stays visible. **Recorded, not corrected.**
 
 ⇒ **The exposure is declared, the use is zero by a detector proven able to be non-zero, and no number in §0–§6 moves.** The two uncovered trees are the helm's ~21:55 two-lane-quiet window, which this head inherits and owns.
+
+---
+
+# ADDENDUM 2 — 2026-09-17, bench. **⑯: THE SAME 45 CELLS IN TOKENS. EVERY FIGURE IN §0–§6 AND IN ADDENDUM 1 IS REPRODUCED AND UNCHANGED — AND THE PREMIUM IS LARGER IN THE UNIT THAT IS NOW THE PRICE OF RECORD.**
+Council 2026-09-17 ⑯, the Captain: *"what we really want is the token cost, borken down if possible. Dollars are
+secondary."* ⇒ per cell and per lane, tokens by ROLE · DIRECTION · PHASE; **USD derives from tokens, never the
+reverse.** This addendum re-reads stage 1 in that unit. **It re-opens no verdict.** Appended; §0–§6, ADDENDUM 1
+and the 84th head's signature are untouched.
+📌 Instrument `cell_meter.py` (release export, sha256/16 `faf81afbbd7062c0`) through `scripts/cell_tokens.py`;
+capture and derivation in `evidence/hc1-token-record-2026-09-17/`. **Every figure below is produced by
+`derive_lane.py` from the capture's bytes; none is typed** (idiom law clause 1).
+
+## A2.1 · ⭐ THE POSITIVE CONTROL FIRST, BECAUSE IT IS WHAT MAKES THE REST QUOTABLE
+**All fifteen USD medians in §1 and all five premiums in §2 re-derive from the token capture — to the published
+cent and the published third decimal.** `derive_lane.py` **REFUSES (rc 1)** if any fails, or if the population is
+not 45 cells / 15 conditions. ⇒ **The tokens and the published dollars are the same cells, proved rather than
+assumed**, against a target computed weeks earlier by a different route.
+
+## A2.2 · THE LANE IN TOKENS
+```
+  T 755,217,221 over 45 cells      USD 687.20, DERIVED from those tokens
+  ROLE        head 89.0%  ·  exec 11.0%          (head/exec/wf: see the declared absence in A2.4)
+  DIRECTION   cache_read 96.798% · output 1.162% · 1h-write 1.135% · 5m-write 0.903% · input 0.002%
+  POPULATION  43 LANDED + 2 CAP-COST; two quarantine directories (a FAILED-BUILD and a NO-RUN) are
+              NOT cells and are excluded BY NAME, declared rather than silently skipped.
+```
+
+## A2.3 · ⭐⭐ THE PREMIUM IN BOTH UNITS — §2's READING, RE-READ
+```
+  problem     $ premium    T premium   output premium      §2 as published
+  Crc32          1.078x       1.080x        1.146x             1.078x
+  FreeList       2.385x       3.440x        1.537x             2.385x     <- the one RESOLVED premium
+  LRU            1.077x       1.085x        1.021x             1.077x
+  LZW            1.940x       2.168x        1.496x             1.940x
+  Paxos          1.818x       2.511x        1.324x             1.818x
+  MEDIAN         1.818x       2.168x        1.324x
+```
+⛔ **§2's THREE KINDS STILL MUST NOT BE POOLED, AND THIS CHANGES NONE OF THEM:** RESOLVED on FreeList, CENSORED on
+Paxos, UNRESOLVED-as-registered on Crc32, LRU and LZW. **A larger number in a different unit does not resolve an
+unresolved reading.**
+⇒ 🔑 ***THE TWO UNITS DISAGREE, AND THE MECHANISM IS ARITHMETIC RATHER THAN INTERPRETATION:*** output is priced
+**50× cache_read** (25.00 vs 0.50 per M on this model's row), and **plain's output share of T is 1.574 % against
+salt-diet's 0.899 %** ⇒ **plain is 26.9 % dearer PER TOKEN**, which compresses the dollar ratio.
+⭐ **THE DECOMPOSITION DOLLARS CANNOT SHOW: the OUTPUT premium is only 1.324×.** The treatment arm's cost is
+dominated by **re-reading context**, not by producing more. **In dollars this looked like a smaller version of the
+same quantity; in tokens it is a different quantity, and a different lever.**
+⚠️ **EVERY FIGURE HERE IS A LOWER BOUND, AND THE BIAS RUNS ONE WAY:** the two CAP-COST cells are both salt-diet, so
+their T is truncated by the cap, and 10 of 45 cells carry an interrupted turn the meter declares. **The premiums
+UNDERSTATE the gap.**
+
+## A2.4 · WHAT THIS ADDENDUM DOES NOT DO
+1. **It moves no verdict and no number in §0–§6.** It reproduces them.
+2. **It does not separate worker · designer · reviewer.** `T_exec` is keyed by served MODEL, not by executor, so
+   role is `head · exec · wf`. **⑯'s declared absence, with a named remedy parked to council ⑱** — not a zero.
+3. **It says nothing about any other model.** Stage 1 is `claude-opus-5`; ⑤'s equal-token-volume caveat is
+   settled elsewhere, against the Sonnet tripwire.
+4. ⚠️ **It records one error of the author's, because the control caught it and the direction is the lesson:** a
+   first pass priced every bucket at the Opus row and over-stated **11 of 15 medians by 2–9 %, all one way** —
+   **30 of the 45 cells carry SONNET subagent records inside an OPUS cell.** ⇒ ***A RATE APPLIED TO A TOKEN COUNT
+   THAT IS NOT THAT MODEL'S.*** **The systematic direction is what exposed it; the same magnitude scattered would
+   have read as rounding and shipped.**
