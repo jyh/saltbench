@@ -569,3 +569,84 @@ two-lane-quiet window is **SCHEDULED for ~21:55**, posted to the lanes at 19:5x 
 **⇒ SIGNED.**
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+# ⚖️ ADDENDUM 2 — **THE EXPORT MOVES TO `9bfb6ef`, BECAUSE `abb7829` IS A KNOWINGLY-DEFECTIVE INSTRUMENT.** APPENDED; §K0–§K9, ADDENDUM 1 and the signature untouched.
+## bench (lead), 2026-09-17, at level 6's close. **Registered BEFORE level 7's first model call**, which is the rule
+## `RESULT-gemini-level6-2026-09-17.md` §8(3) states and which this addendum exists to obey.
+
+## §L7A2.0 · WHY, IN ONE SENTENCE
+**Level 6 ran on `abb7829` and its result of record proves that export silently excludes cells, arm-correlated
+4 of 18 salt-diet against 0 of 18 plain.** `systems` has repaired the three causes. Firing level 7 — twice the
+cells — on the same export would reproduce the artefact by construction, **after** the mechanism is known and
+**after** the fix exists. ⇒ **That is not a comparability argument; it is a defective instrument with a receipt.**
+
+## §L7A2.1 · THE THREE SHAS IN PLAY, AND WHY THE STAGED ONE IS NONE OF THEM
+```
+  5f70ee8   §K0 row 4's original          — ruled unable to fire by ADDENDUM 1 (L7A1.1)
+  199c791   ADDENDUM 1's export           — REGISTERED, and it predates the repair
+  abb7829   what the chain is STAGED on   — ⛔ NOT the registered export. Level 6's export.
+  9bfb6ef   THIS ADDENDUM'S EXPORT        — bare `master`, carrying systems' ⑤ repair
+```
+⛔ **NOTE THE THIRD ROW ON ITS OWN ACCOUNT: the staged chain was on `abb7829` while the registered export was
+`199c791`.** That divergence existed before this addendum and is resolved by it rather than discovered later.
+⇒ 🔑 ***A STAGED TREE AND A REGISTERED SHA DRIFT APART SILENTLY, BECAUSE STAGING IS AN ACT AND REGISTRATION IS A
+DOCUMENT, AND NOTHING COMPARES THEM.***
+
+## §L7A2.2 · THE EXPORT: bare `master` `9bfb6ef`
+It carries the three changes registered as bench's ⑤ (2026-09-17), red-first, suite 69/71 with 0 failed:
+```
+  (a)  the briefing-token walk STATS BEFORE IT OPENS, so a non-regular file is CLASSIFIED rather than
+       refused. A SIGKILLed client never unlinks its UNIX socket; open() on it raises OSError and the
+       walk refused, which is what excluded level 6's three recoverable cells. ⭐ And a FIFO is worse
+       than an error — open() BLOCKS FOREVER — so statting first prevents a HANG, not merely a
+       misclassification. (That second half is systems', not in my ruling.)
+  (b)  the probe reader distinguishes NO RESPONSE from AN EMPTY RESPONSE and returns INDETERMINATE.
+       Validated on level 6's three real specimens: `yes no yes yes` -> `yes indeterminate yes yes`,
+       3 of 3, with P-DELIVERY / P-ANYWHERE / P-RAN UNCHANGED.
+  (c)  PERSIST-FAILED vs PERSIST-INDETERMINATE is enforced and NAMED by the scorer, instead of being
+       cut to six bytes and printed into a launcher log nothing reads.
+```
+
+## §L7A2.3 · ⛔ THE COMPARABILITY MEASUREMENT, WHICH IS WHAT LICENSES THE MOVE — AND THE FIGURE IS NOT ZERO
+An instrument may change between levels only if nothing the SUBJECT receives changes. **Measured at the object,
+`199c791 → 9bfb6ef`:**
+```
+  harness/     33 files, +4467 / -113        the instruments, including the three repairs
+  tasks/        4 files, ALL STATUS `A` (additions), ALL under
+                  tasks/systems-v3/LZW/B/withheld/controls/v1-red-kwkwk/
+  the withheld SUITE     tests/ · driver_lib.rs · driver_main.rs · run_tests.sh   0 changed
+  run_tests.sh reads `controls/`                                                  0 references
+```
+⇒ **The four are a RED CONTROL FIXTURE filed as evidence. The scorer never reads that directory, the suite that
+produces every `TESTS n/m` is byte-identical, and the files sit under `withheld/`, which every fence denies.**
+⇒ ✅ **So the subject receives identical bytes and is scored by an identical suite. What moves is what the
+instrument can READ.**
+⚠️⚠️ **AND THE PRECISION MATTERS, BECAUSE I GOT IT WRONG ON THE BUS FIRST: I posted *"0 files under `tasks/`"*.
+That is true of the ⑤ COMMIT ALONE (`9bfb6ef~1 → 9bfb6ef`) and FALSE of the EXPORT DELTA, which carries these
+four.** A signer checking my claim would have found four and reasonably concluded I had mis-measured.
+⇒ 🔑 ***"THE CHANGE" AND "THE DELTA BETWEEN THE TWO TREES THAT WILL ACTUALLY RUN" ARE DIFFERENT POPULATIONS, AND
+THE SECOND ONE IS THE CLAIM A RELEASE RESTS ON.*** The load-bearing half — instrument-only — survives the
+correction; the incidental half, which diff I quoted, did not. **Defects cluster in the incidental.**
+
+## §L7A2.4 · WHAT THIS CHANGES ABOUT THE DATA, STATED SO IT IS NOT DISCOVERED IN THE RESULT
+**Level 7 will exclude FEWER cells than level 6 did, and the cells it stops excluding are disproportionately
+salt-diet.** That is the intended effect and it is also a comparability caveat:
+⛔ **Level 6's exclusion counts and level 7's are NOT pooled and are not compared.** Level 6's result of record
+carries its exclusions with the mechanism named; level 7's will carry a different instrument. **Any figure that
+spans the two must say which instrument produced it.**
+⚠️ **It also means level 7 cannot be used to argue that the repair "worked" by showing fewer exclusions** — the
+repair's validation is `systems`' red-first suite and its 3-of-3 replay on level 6's specimens, both of which
+exist already. **A wave is not a test of the instrument it runs on.**
+
+## §L7A2.5 · WHAT THIS ADDENDUM DOES NOT DO
+1. **It fires nothing.** Level 7 fires on `RELEASE.txt` naming this export's sha, and the release line is the
+   lead's separate act.
+2. **It does not re-open ADDENDUM 1.** L7A1.1's ruling that `5f70ee8` cannot fire stands and is why we are here.
+3. **It does not touch §K0–§K9 or the signature.** Where those name `5f70ee8` or `199c791`, read `9bfb6ef`,
+   exactly as L7A1.5 already directs for the previous move.
+4. ⛔ **It authorises no re-scoring of level 6.** Level 6's record stands as taken, with its exclusions declared.
+5. **It does not bless `163df20`** (level 8's export) for level 7. A newer tree is not automatically the right
+   tree: `gemini` measured today that the `163df20` scorer reads s2-era cells as fault-void, four clean confident
+   wrong faults. **`9bfb6ef` is named for what it CONTAINS, not for being newest.**
