@@ -195,3 +195,46 @@ result are two results.**
 ```
 ⇒ **The lead scores and writes the result of record, and RE-CUTS THE MATRIX CENSUS IN THE SAME COMMIT** (council 09-16 ⑤d). Any public
 sentence, and any claim about the method, is the Captain's.
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (81st head), 2026-09-16 18:0x PDT
+
+**SIGNED AT BLOB `8cfcaaa73eb5b7348ce2ee14b5a17fae1666515e`**, resolved at `ea4ae5b:harness/systems-v3/AMENDMENT-gemini-level8-2026-09-16.md`. Read WHOLE.
+📌 **This file is NEW on `main`, so unlike levels 6 and 7 there is no earlier signature underneath and append-only is not load-bearing here.** Stated because on those two files it was the FIRST thing I checked, and its absence here is a property of this PR rather than an omission in this signature.
+
+### WHAT I DROVE AT THE OBJECT — each with a control where an absence is claimed
+```
+  1  BLOB IDENTITY    ea4ae5b:<this file> = 8cfcaaa73…  == the blob the lead pinned              ✅
+  2  §M3's CENTRAL    at 2419dcf, `run_phase2` reads `end-1`'s kind, tests `= LANDED`, and goes
+     CLAIM — THE      STRAIGHT to `customer.sh dispatch`. **There is no read of phase 1's shell
+     REASON §M0 ROW   or fence rows anywhere between.** Every skip it does make is `say`-ed, so
+     4 IS PENDING     the gap is not a silent path — it is an ABSENT check on a loud path        ✅
+  3  AND WHY THAT     `score_wave_v3.sh:174` prints `POST-ASIDE` for a set-aside cell and it is
+     GAP IS NOT       covered by its own selftest arm (`selftest_score_wave_v3.sh:143`, "defect
+     RECOVERABLE      4"). ⇒ **the evidence is not merely unread at the time, it is UNREADABLE
+     AFTERWARDS**, which is what turns a tidiness point into a gate                              ✅
+  4  §M1 ARITHMETIC   2 models × 5 problems × 2 arms = 20 conditions; at n=3, 60 cells.
+                      Internally consistent and each factor is named                             ✅
+  5  §M5's CAPS       the four values and the "T1_TOK is not a cap" clause are level 6 A7.1/A7.2,
+                      which I drove at the object and signed an hour ago — they carry here       ✅
+  6  §M0 ROW 4's      2419dcf is bare master, fast-forwarded by `systems` at 17:45 and read back
+     BASE             by me at the bare repo when I signed #177                                  ✅
+```
+
+### ⛔ WHAT I DID **NOT** VERIFY
+1. **That the aside physically moves `stream-1.ndjson` out of the cell.** I looked for it in `agy_wave_v3.sh` and it is not there; it lives elsewhere. **The POST-ASIDE refusal (item 3) is the half that makes §M3 load-bearing and I drove that — the mechanism by which the file leaves is read as the lead's claim.**
+2. **Every BORROWED prior in §M2** — the Opus spec-change rates, Crc32's uninformative V2, and level 5's three Flash LRU plain landings that justify the tripwire's choice. **Read as cited results, not re-derived.** §M2 already forbids them predicting anything, which limits what a wrong one could cost.
+3. **§M4's direct prior** (Pro greenfield plain 18/0/0 against salt-diet 15 LANDED / 4 NOT-LANDED / 3 truncated; the 3,635–13,700 s walls). Read as the lead's own result. **It is load-bearing for REACH's direction and inherits that file's standing, not mine.**
+4. **The `--fold-bus` measurement** (20 of 74 landed bare agy cells carried a BUS.md-only edit).
+5. **Anything about execution.** §M0 row 8's preflight has not run, §M3's build does not exist yet, and **no export sha is named** — by design.
+
+### 📌 TWO OBSERVATIONS, BOTH IN THE FREEZE'S FAVOUR
+⭐⭐ **① THE EXPORT IS PENDING *BECAUSE OF A DEFECT THE LEAD FOUND IN ITS OWN HARNESS BEFORE A SINGLE CELL RAN*, AND THAT IS THE RIGHT ORDER OF EVENTS.** §M3's gap is not hypothetical — **a phase 2 could fire on a phase 1 that had no shell or whose fence was tampered, and the aside then puts the evidence beyond the scorer's reach.** In the lead's own words, *"a phase 1 that reached the web through a rewritten hook hands its code, as the given, to phase 2."*
+⇒ 🔑 ***THE CONTAMINATION WOULD HAVE ARRIVED AS DATA, NOT AS AN ERROR — a phase-2 result computed from a poisoned given is a NUMBER, and nothing downstream distinguishes it from a clean one.*** Refusing to name an export until the gate exists is the only remedy that works, because **every cheaper one requires reading evidence that no longer exists.**
+⭐⭐ **② §M4 REGISTERS A SELECTION EFFECT BEFORE ANY DATA, AND NAMES THE ARM IT FAVOURS.** A phase 2 exists only on a phase 1 that landed and passed §M3, and the direct prior says **salt-diet loses phase-1 cells that plain does not.** ⇒ **So every phase-2 rate is conditioned on a filter that is correlated with the treatment** — and the freeze prints REACH beside every rate, refuses top-up re-fires (*"re-firing a condition until it reaches 3 selects again on the same property"*), and reports a short condition at the n it reached.
+⇒ 🔑 ***THAT REFUSAL IS THE WHOLE THING. A TOP-UP IS THE INTUITIVE, GENEROUS-LOOKING ACT, AND IT IS THE ONE THAT WOULD LAUNDER THE SELECTION INTO THE RESULT.*** Registered in advance, it cannot be reconsidered once the n's are known and inconvenient.
+
+**⇒ SIGNED.** ⛔ **And this signature fires nothing: no cell runs before level 7's chain ends, before §M3's gate is built and exported, and before a signed addendum names §M0 row 4's export with its harness delta from `2419dcf`.**
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
