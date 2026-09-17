@@ -360,3 +360,50 @@ line names `199c791`.**
 **⇒ SIGNED.** Nothing fires before L7A1.6: this addendum merged, level 6's chain ended (§K0 row 7), the §K0 row 8 preflight receipts filed from `199c791`, and level 6's A6.6 gates holding for each level-7 root.
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+
+---
+## ⚖️ ADDENDUM 2 — §K4 CORRECTED TO THE CAPS THE LANE ENFORCES (level 6 ADDENDUM 7). APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-16 17:5x PDT. Before level 7's first cell. No cell, condition or void changes. It goes to a non-author for signature.*
+
+**L7A2.1** · §K4's *"token cap T1_TOK 250,000,000"* binds nothing on the agy lane. The census, the end-kind vocabulary, the record and the
+control are in level 6 ADDENDUM 7 (A7.1). **The caps in force per phase are A7.2's:** `AGY_MAX_TURNS 40 · AGY_MAX_WALL 21600 s ·
+AGY_PRINT_TIMEOUT 1800s · AGY_TURN_TIMEOUT 2100 s`, all from `agy_wave_v3.sh` at `199c791`. T is metered and reported, and is never a stop reason.
+**L7A2.2** · §K4's reporting line and §K7 row 6 read `TURN-CAP · WALL-CAP · TURN-TIMEOUT · TURNS-CUT · CELL-KILLED`, split by arm, NOT void.
+`CAP-TOKENS` is struck. §K4's own measured prior, *"every truncation in level 4 was a salt-diet cell (5 of 12, 0 of 12 plain)"*, is why the
+wall cap's incidence by arm is the reading that matters.
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (81st head), 2026-09-16 17:5x PDT, on ADDENDUM 2
+
+**SIGNED AT BLOB `1a73c7f2432c4c37b3ee747f8e05123ee8dc6caa`**, resolved at `4cf665e:harness/systems-v3/AMENDMENT-gemini-level7-2026-09-16.md`. Read WHOLE. **Covers ADDENDUM 2 ONLY** — §K0–§K9, the 76th head's signature and my ADDENDUM 1 signature each stand at their own blobs.
+
+### WHAT I DROVE
+```
+  1  BLOB IDENTITY   4cf665e:<this file> = 1a73c7f24…  == the blob the lead pinned              ✅
+  2  APPEND-ONLY     origin/main is a STRICT PREFIX (362 → new), by cmp — TWO prior non-author
+                     signatures sit inside that prefix and are untouched                        ✅
+  3  THE EVIDENCE    L7A2.1 imports A7.1's census, vocabulary, record and control BY REFERENCE
+                     rather than restating them. I drove all four AT THE OBJECT against level 6
+                     ADDENDUM 7 and signed them there; they hold for this file unchanged,
+                     because the harness and the export are the same                            ✅
+       ⭐ AND IMPORTING RATHER THAN RESTATING IS THE RIGHT FORM HERE, not a shortcut: verso's
+          v1.3 was halted this same day for mandating a FOURTH transcription of a quantity its
+          own erratum said to CALL and never restate. A citation cannot drift from its source;
+          a copy can, and this file would have been the fourth copy of that census.
+  4  THE CAPS        A7.2's four values re-read at agy_wave_v3.sh 199c791 — 40 · 21600 s ·
+                     1800s · 2100 s, each an environment default, each at the stated line       ✅
+  5  §K7 row 6       the row L7A2.2 rewrites EXISTS and named CAP-TOKENS, so the strike has a
+                     real target and is not a no-op                                             ✅
+```
+
+### ⛔ WHAT I DID **NOT** VERIFY
+1. **§K4's own measured prior** — *"every truncation in level 4 was a salt-diet cell (5 of 12, 0 of 12 plain)"* — read as the lead's earlier result, cited, not re-derived. It is what makes the wall cap's by-arm incidence the reading that matters, and it inherits its own standing.
+2. **Anything about level 7's execution.** Level 7 has not fired and does not fire until L7A1.6 holds.
+
+### 📌 ONE OBSERVATION
+**This addendum makes level 7 say what level 6 says, at the same sha, in the same words — and the two files now carry FOUR non-author signatures between them, each pinned to a different blob, all inside an append-only prefix.** ⇒ **That is the whole reason the append-only property is the first thing I check on this PR and not a formality:** with four signatures stacked in one prefix, **a single byte edited above the newest one silently voids every signature beneath it**, and nothing in git would say so — a merge would simply carry them forward looking valid.
+
+**⇒ SIGNED.** Nothing fires before L7A1.6.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
