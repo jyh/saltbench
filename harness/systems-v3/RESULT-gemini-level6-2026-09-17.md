@@ -20,12 +20,23 @@ AND WRITTEN DOWN BEFORE ANY OF THEIR SCORES EXISTED.**
   after the three recoveries plain 18/18  salt-diet 14/17  (82.4%)   1 excluded
 ```
 
-**AND THE CONTRAST IS NOT UNIFORM ACROSS THE THREE BLOCKS — brownfield shows none at all:**
+**AND THE CONTRAST IS NOT UNIFORM ACROSS THE THREE BLOCKS — brownfield shows none at all.**
+⛔ **THE DENOMINATOR IS SCORABLE CELLS, NOT DECLARED CELLS, AND IT DIFFERS IN EXACTLY ONE ROW:**
 ```
-  block S (statement,  LZW)          plain 6/6    salt-diet 4/6
-  block B (brownfield, LRU+Paxos)    plain 6/6    salt-diet 6/6
-  block G (greenfield bare, LZW)     plain 6/6    salt-diet 4/6
+  block                              plain            salt-diet        declared  scorable
+  S (statement,  LZW)                6 of 6           4 of 6              6         6
+  B (brownfield, LRU+Paxos)          6 of 6           6 of 6              6         6
+  G (greenfield bare, LZW)           6 of 6           4 of 5   <- 80 %    6         5
+                                                      ------------------------------------
+                                     18 of 18         14 of 17   = §1's headline denominator
 ```
+⚠️ **`l6vgfs02` IS VOID AND ENTERS NO PASS/FAIL DENOMINATOR** (§3), so block G's salt-diet rate is **4 of 5**.
+⭐ **THE FIRST DRAFT OF THIS TABLE PRINTED IT AS `4/6`** — ruling the cell out of a denominator in §3 and spending
+it in one here, eleven lines earlier in the reader's path. **The block denominators then summed to 18 against §1's
+own 17.** ⇒ 🔑 ***A VOID RULED IN PROSE AND SPENT IN A TABLE TWO SECTIONS AWAY, AND THE TABLE IS THE HALF A READER
+QUOTES.*** ⚠️ **The error's direction was CONSERVATIVE — it made the treatment arm look worse — and no contrast in
+§1 reverses**, which is exactly why it could have survived: an error against your own case invites no scrutiny.
+*(Found by the 90th helm head at signature, by re-deriving §1 from §4's 36-row table instead of reading §1.)*
 ⚠️ **n = 3 per condition. These are counts in this wave's record, not estimates, and no interval is
 claimed.** The plain arm passed every cell it ran in all three blocks, so **this wave places no lower
 bound on the control and cannot separate the arms on the brownfield block at all.**
@@ -199,6 +210,11 @@ predominantly a CONTEXT cost, not a generation cost** — the same shape measure
 HC1 (2.168x total vs 1.324x output). Over the poolable set, cache-read is 86.9% of plain's total and 89.9% of salt-diet's.
 ⚠️ **A median over n = 16–18 with one arm's spread running 4.9M–35.6M is a description of this wave, not
 an estimate of a population.** No interval is claimed.
+✅ **AND THE PREMIUM IS ROBUST TO THE EXCLUSION DECISION ITSELF, WHICH IS THE FIRST THING A SCEPTIC ASKS:** over
+**all 18** salt-diet cells the medians and the ratio are **identical** to the poolable figures. `l6vgfs02`'s
+172,717 T sits below the median and `l6vspt01`'s 17,892,929 T above it, **so dropping one from each side leaves
+the middle exactly where it was.** ⇒ **Nothing in §7 turns on which cells I excluded from the cost pool.**
+*(Named by the 90th helm head at signature, as a claim this result had earned and not made.)*
 
 ---
 # §8 · THREE THINGS THIS RESULT DECLARES RATHER THAN RESOLVES

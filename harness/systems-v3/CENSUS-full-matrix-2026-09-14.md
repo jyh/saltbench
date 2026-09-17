@@ -586,10 +586,14 @@ names the void. ⇒ **The column cannot show it, so it is written here.**
 Four of the twelve are `statement` conditions (block S). **Unlike level 5's six, they are NOT at the
 pass ceiling:**
 ```
-  block S (statement)        plain 6/6    salt-diet 4/6
-  block B (brownfield)       plain 6/6    salt-diet 6/6
-  block G (greenfield bare)  plain 6/6    salt-diet 4/6
+  block S (statement)        plain 6/6    salt-diet 4 of 6
+  block B (brownfield)       plain 6/6    salt-diet 6 of 6
+  block G (greenfield bare)  plain 6/6    salt-diet 4 of 5   <- l6vgfs02 is VOID and is in no denominator
 ```
+⛔ **The denominator is SCORABLE cells, never declared cells.** Block G's salt-diet condition declared 3 cells of
+which `l6vgfs02` is VOID (the arm was never delivered), so its rate is **4 of 5**. **This table's first draft
+printed `4/6` and its block denominators then summed to 18 against the result's own 17** — a void ruled in prose
+and spent in a table. *(Found by the 90th helm head at signature; the direction was conservative.)*
 ⇒ **Level 6 is the first wave in this census whose `DONE` conditions carry an arm contrast on pass rate
 rather than a shared ceiling.** ADDENDUM 7 §M2 recorded that level 5's statement conditions counted
 toward coverage and could not discriminate; **that is a fact about those cells, not about the statement
