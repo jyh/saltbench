@@ -1,0 +1,10 @@
+# fences: claude ~/cells-hc1-lzw-plain/hc1zp01/ctl/fence.json (denyRead 168) · agy ~/cells-l6v-lzw-pro-plain-stmt-b/l6vspb01/ctl/srt-settings.json (denyRead 177)
+# withheld-shaped entries: 194 in 7 top-level trees (a FLOOR: depth 7, no tarballs, name-based)
+tree	entries	claude	agy
+~/projects	58	COVERED	COVERED
+~/bench-v2	34	COVERED	COVERED
+~/bench-v2-smoke	34	COVERED	COVERED
+~/referee-posthoc-2026-09-09	25	NOT-COVERED	NOT-COVERED
+~/bench-v2-amend6	18	COVERED	COVERED
+~/bench-v2-census-a6	18	COVERED	COVERED
+~/rescore-tool	7	NOT-COVERED	COVERED

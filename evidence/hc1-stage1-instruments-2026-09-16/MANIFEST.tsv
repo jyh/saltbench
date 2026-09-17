@@ -25,3 +25,7 @@ lk-wait-census/lk_wait_census.py	1f041bf43c0f52fd	e609f00ce4d214ee	rewritten
 concurrency/census-45.out	d12a13232df37c56	d12a13232df37c56	verbatim (re-run over all 45 cells after row 45, 2026-09-16 16:2x PDT)
 budget-read-column/census-45.out	90461f3639f0722f	bda12666f13b25c3	rewritten (re-run over all 45 cells after row 45, 2026-09-16 16:2x PDT)
 lk-wait-census/census-45.out	693844836d422499	4200af5597789a74	rewritten (re-run over all 45 cells after row 45, 2026-09-16 16:2x PDT)
+exposure/withheld_exposure_census.py	d313f389d93689a1	d313f389d93689a1	verbatim
+exposure/transcript_use_census.py	4200f2cfa8b421b9	4200f2cfa8b421b9	verbatim
+exposure/census.out	2bcb0f508db81ff6	2bcb0f508db81ff6	verbatim
+exposure/use.out	88e47433cfe3e183	88e47433cfe3e183	verbatim
