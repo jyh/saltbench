@@ -1,0 +1,33 @@
+### self-test on the run box
+  PASS the limit rides WITH the verdict: the body-checked read is declared un-run, beside the green
+lane_identity SELF-TEST: OK
+
+### the LANE's current cfg — digest only, and it is NOT a check
+DIGEST <DIGEST-A: the lane's current cfg>
+⛔ THIS IS NOT A CHECK. It reports what the dir authenticates as, so a human who knows the
+   intended account can record it as --expect. Comparing this to itself blesses whatever is there.
+rc=0
+
+### the dir HC1 fired under, for contrast — do they differ?
+DIGEST <DIGEST-B: the cfg HC1 fired under>
+
+### and the REFUSAL that matters: no expectation supplied
+REFUSE rc 4: no --expect supplied. A MISSING EXPECTATION IS NOT A PASS — that is the same defect this tool exists to fix, one level up. Use --print-digest to obtain a value to record.
+rc=0
+
+########## exit codes read from the COMMAND, not from a pipe ##########
+### the refusal arm, exit code read from the COMMAND and not from a pipe
+REFUSE rc 4: no --expect supplied. A MISSING EXPECTATION IS NOT A PASS — that is the same defect this tool exists to fix, one level up. Use --print-digest to obtain a value to record.
+TRUE rc=4   (a pipe into head read 0 for this same command)
+
+### and a MISMATCH against a deliberately wrong expectation, same rule
+REFUSE rc 5: IDENTITY MISMATCH. expected 0000000000000000 · got <DIGEST-A: the lane's current cfg>
+   (neither account is named: only digests cross this boundary, per the infra-name gate)
+TRUE rc=5
+
+### and the credential half, offline, against the lane's own digest
+IDENTITY OK: the config dir authenticates as the expected account (digest <DIGEST-A: the lane's current cfg>).
+    credential: present · refresh token present · access token valid
+    ⛔ THIS IS THE OFFLINE SHAPE ONLY. §Q3.4 item 2's trivial AUTHENTICATED READ, checked by its
+       BODY, is NOT performed here and is still owed at the preflight.
+TRUE rc=0
