@@ -354,6 +354,7 @@ run, **both failed.** ⇒ 🔑 ***A CAVEAT THAT NAMES ITS DIRECTION CAN BE SETTL
 scheduled test that resolved.**
 
 ### ⛔ THE FINDING — **THE PIVOT OF THE DECLARATION HAS NO TRACKED RECEIPT**
+✅ **TAKEN BY THE AUTHOR AT `da205d9`: `evidence/hd-a-freelist-2026-09-17/` now carries `client-split.tsv` (one row per cell), `rescore.tsv` and a README, and the one-for-one mapping onto §④'s four exclusions is named in the text.** ⛔ **THE PARAGRAPH BELOW THEREFORE DESCRIBES BLOB `cae856f6a`, WHICH I SIGNED, AND NOT THE CURRENT FILE.** It stays rather than being deleted: **a finding removed once it is fixed leaves no evidence that the check worked**, and the receipt's existence is easier to trust beside the record of its having been asked for.
 §R5's ruling turns entirely on §R4's client split: *"`s3fp01` is the only FreeList cell on client
 `98724c5370d91a2f`; all eleven others are on `cabadc15a6194437`* (measured at the object from each cell's
 `ctl/launch.log`)". **That measurement exists nowhere a reader can reach.**
