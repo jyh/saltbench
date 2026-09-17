@@ -763,7 +763,7 @@ client build, HC1's own registered confounds. **It is a token-volume reading wit
   (harness/systems-v3 23 A · 21 M; tasks/systems-v3 7 A · 3 M). `rates.tsv`, `cost_caps.tsv` and `models.tsv` are blob-identical at both ends.
 - **One sha for all 192 cells,** recorded per cell by the stager.
 
-### R4.2 · A1.1 ITEM 2 — THE WITHHELD CENSUS, RE-RUN AT RELEASE — ⏳ PENDING THE HELM'S WINDOW
+### R4.2 · A1.1 ITEM 2 — THE WITHHELD CENSUS, RE-RUN AT RELEASE — ✅ **TAKEN 2026-09-17 15:41Z, ALL SIX TREES `COVERED · COVERED`, rc 0**
 - **The instrument** is `withheld_exposure_census.py`, a COPY of #184's instrument. It differs ONLY by a guard that REFUSES when `~` holds no
   `cells-*` root, and by a printed host-role line (`census-guard.diff`). Driven on the build box: `REFUSE`, rc 1. #184's original is untouched,
   because it backs a published MANIFEST digest.
@@ -774,8 +774,27 @@ client build, HC1's own registered confounds. **It is a token-volume reading wit
   📌 The step that renders it is generic in its arguments despite its name: `fence-only-TO.sh` takes `<block> <Problem> <arm> <n>` and derives
   the root and id from them (its line 27), so **only the ARGUMENTS change — `SG LRU plain 1`.** *(The name says T-O; the instrument is not
   its label, and a reader who trusts the name will think it is being run on the wrong cell.)*
-- ⏳ **`census.out`: NOT YET TAKEN.** **Every tree must read COVERED**, or this addendum is not offered for signature. A1.1 item 3's limits
-  ride with it.
+- ✅ **TAKEN.** The tracked reading is `evidence/claude-lane-b-release-2026-09-16/census-at-window.out`, run by the helm at the
+  close of its 2026-09-17 window on the fence `clbglp01` staged for this purpose (step 3½), rc 0:
+```
+  # host role: the run box (cells-* roots under ~: 190)
+  # fences: claude ~/cells-clb-sg-lru-plain/clbglp01/ctl/fence.json (denyRead 223)
+  #         agy    ~/cells-l6v-lzw-flash-salt-bare/l6vgfs03/ctl/srt-settings.json (denyRead 190)
+  # withheld-shaped entries: 194 in 6 top-level trees (a FLOOR: depth 7, no tarballs, name-based)
+  tree                    entries  claude   agy
+  ~/projects                   58  COVERED  COVERED
+  ~/bench-v2                   34  COVERED  COVERED
+  ~/bench-v2-smoke             34  COVERED  COVERED
+  ~/bench-dry                  32  COVERED  COVERED
+  ~/bench-v2-amend6            18  COVERED  COVERED
+  ~/bench-v2-census-a6         18  COVERED  COVERED
+```
+  **Every tree reads COVERED on both fences. The condition is met and this addendum may be offered for signature.**
+- ⚠️ **A1.1 ITEM 3's LIMIT RIDES WITH THE VERDICT, NOT BEHIND IT:** the 194 is a **FLOOR**, not a ceiling — depth 7, no tarballs,
+  name-based. ⇒ **It is not a proof that no withheld material exists anywhere; it is a proof that everything this method can see is
+  denied to BOTH lanes.** A census reporting a ceiling would be claiming more than it measured.
+- 📌 **The fence it covers is `clbglp01`'s, which is the FIRST STAGED cell as this section requires — and under ⑤(a) that is T-S, not
+  T-O.** The runbook's own hand-off line still said `O LRU salt-diet 1`; it was not followed. **The role was satisfied, not the label.**
 
 ### R4.3 · RATES — RE-READ, TWO SIDES, BY SCRIPT — ✅ **TAKEN 2026-09-17, `VERDICT ALL-EQUAL`, rc 0**
 `rates_reread.py` compares the prompt-caching page that `rates.tsv` cites, row by row and figure by figure, for the three served models.
