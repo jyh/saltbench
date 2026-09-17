@@ -760,3 +760,53 @@ wave whose line differs from A7.2 is reported as such**, never read as registere
 
 **A7.4 · THE COMMENT THAT CARRIED IT.** `agy_wave_v3.sh:106` claims `budgets.env` bounds cost. It does not on this lane. **It is NOT edited
 at `199c791`**, because any byte there moves the export level 6 fires from. It is routed to the builder for master, beside level 8's merge.
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (81st head), 2026-09-16 17:5x PDT, on ADDENDUM 7
+
+**SIGNED AT BLOB `7e4795f4195941e7e52fdb2a57d9794f6ef349ff`**, resolved at `4cf665e:harness/systems-v3/AMENDMENT-gemini-level6-2026-09-16.md`. Read WHOLE. **Covers ADDENDUM 7 ONLY**; everything above it, including my ADDENDUM 6 signature, stands at its own blob.
+
+### WHAT I DROVE AT THE OBJECT — each with a control, none taken from the file's own word
+```
+  1  BLOB IDENTITY   4cf665e:<this file> = 7e4795f41…  == the blob the lead pinned              ✅
+  2  APPEND-ONLY     origin/main is a STRICT PREFIX (716 → new), by cmp — so ADDENDUM 6 AND
+                     its signature are untouched, which is the property that keeps the
+                     earlier signature valid                                                    ✅
+  3  A7.1 arm 1      T1_TOK across the agy path at 199c791: ONE occurrence, and it is the
+                     COMMENT at agy_wave_v3.sh:106. The only other hits are cell_build.py's
+                     PROFILES, which WRITE the value into a cell and enforce nothing —
+                     exactly the lead's account of why it looked armed                          ✅
+       control       cell-watch.sh (the CLAUDE lane) reads T1_TOK 8 times ⇒ the needle works
+                     and the agy-path absence is a REAL absence, not a broken search            ✅
+  4  A7.1 arm 2      agy_turnloop_v3.py's end kinds are TURN-CAP · WALL-CAP · TURN-TIMEOUT ·
+                     TURN-DENIED. CAP-TOKENS: ZERO, in that file and in every agy-path file     ✅
+       control       CAP-TOKENS is live elsewhere in the tree — cell-watch.sh ·
+                     render_result_v3.py · smoke_harvest_v3.sh — so the zero discriminates      ✅
+  5  A7.1 arm 3      CAP-TOKENS = 0 in EVERY agy-lane RESULT file at origin/main                ✅
+       control       it reads 6 · 1 · 5 in the level-4/5/greenfield AMENDMENT files             ✅
+       ⚠️ DENOMINATOR: I count EIGHT such files (7 `.md` + `RESULT-agy-lzw-scored…tsv`),
+          not the seven the addendum states. The claim is unaffected — 0 in all eight — and
+          it is recorded because a count is a claim even when it changes nothing.
+  6  A7.2 THE CAPS   at agy_wave_v3.sh 199c791: AGY_MAX_TURNS=${AGY_MAX_TURNS:-40} and
+                     AGY_MAX_WALL=${AGY_MAX_WALL:-21600} (:107); AGY_PRINT_TIMEOUT :-1800s
+                     (:64); AGY_TURN_TIMEOUT :-2100 (:67). Every value and every line number
+                     as registered, and every one an ENVIRONMENT DEFAULT as A7.2 says          ✅
+  7  A7.2's REMEDY   the `CAPS` line (:68) really does print all four values it asks the hand
+                     to file — so "file the CAPS line" is a check and not a gesture            ✅
+```
+
+### ⛔ WHAT I DID **NOT** VERIFY
+1. **The level-4 and level-5 figures A7.3 reasons from** — the 5-of-12 truncation split, and Pro greenfield salt-diet at 3,635–13,700 s against plain's 738–798 s. **Read as the lead's own prior results, cited, not re-derived.** They carry A7.3's *conclusion about which arm a wall cap is likeliest to bind*, and that conclusion inherits their standing, not this signature's.
+2. **`l5fs02` at 57,655,873 T** (the "4.34× under" figure) — read as a claim.
+3. **Level 1's §G7** — the addendum explicitly declines to re-scope it, and so do I.
+4. **Anything about what a level-6 table will show.** This is a correction to what the freeze SAYS is in force, and nothing else.
+
+### 📌 ONE OBSERVATION, AND IT IS IN THE ADDENDUM'S FAVOUR
+⭐ **THE LEAD FOUND THIS BY READING ITS OWN REGISTRATION AGAINST THE ENFORCING CODE WHILE DRAFTING A DIFFERENT LEVEL — not from a failure, and not because anything went wrong.** A cap 4.34× above the largest cell on record would never have bound, so **no run would ever have exposed it**; the only way to find it was to go and look.
+⇒ 🔑 ***A REGISTERED CONSTRAINT THAT IS NEVER APPROACHED IS INDISTINGUISHABLE FROM ONE THAT IS NOT WIRED, AND THE DATA CAN NEVER TELL YOU WHICH.*** A freeze's caps are a CLAIM ABOUT THE HARNESS, and the only instrument for that claim is reading the harness.
+⚖️ **AND A7.3's "a column that can only read 0 is not a column" is the same law facing the other way** — striking `CAP-TOKENS` from the tables is the honest half of this correction, not housekeeping. **Dropping a reported class is a real change to what a table promises, and it is right here precisely because the lane cannot produce it.**
+
+**⇒ SIGNED.** No cell is voided, no condition moves, and level 6 keeps firing from `199c791`.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
