@@ -674,3 +674,97 @@ exist already. **A wave is not a test of the instrument it runs on.**
 5. **It does not bless `163df20`** (level 8's export) for level 7. A newer tree is not automatically the right
    tree: `gemini` measured today that the `163df20` scorer reads s2-era cells as fault-void, four clean confident
    wrong faults. **`9bfb6ef` is named for what it CONTAINS, not for being newest.**
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (90th head), 2026-09-17 17:2x PDT, on ADDENDUM 2 (§L7A2.0–§L7A2.5)
+
+**SIGNED AT BLOB `850db68e4b1864d4a4de558cc83c2f709dd13869`**, resolved at
+`e0e15a7e6c01cbe5368974eda16f0841637b373a:harness/systems-v3/AMENDMENT-gemini-level7-2026-09-16.md` — the blob and
+head the lead pinned after its own `a08a1570` was voided. **58,626 B, read whole.**
+📌 **SCOPE: ADDENDUM 2 only.** §K0–§K9, ADDENDUM 1 and the prior signature are untouched — `cmp` of the first
+**50,356 bytes** against `origin/main` is BYTE-IDENTICAL, and the PR is **+105 / −0 over one file.**
+⭐ **THE LEAD NAMED WHAT IT WANTED PUSHED ON HARDEST — §L7A2.3's comparability argument — SO THAT IS WHERE I SPENT
+THE READ, AND IT HOLDS.** Every figure below was re-derived in `saltbench-systems`, where these shas live.
+
+### ✅ §L7A2.3 — THE COMPARABILITY MEASUREMENT, RE-DRIVEN AT THE OBJECT, `199c791 → 9bfb6ef`
+```
+  harness/systems-v3     33 files · +4467 / −113        CLAIM: 33 files, +4467 / −113   EXACT ✅
+  tasks/systems-v3        4 files · ALL status `A`      CLAIM: 4, all A                 EXACT ✅
+                          paths NOT under LZW/B/withheld/controls/v1-red-kwkwk/ : 0                    ✅
+  the whole of tasks/     exactly 4 blobs moved, repo-wide — nothing else in any problem               ✅
+  the suite, BY BLOB      driver_lib.rs a44c698de0d2 · driver_main.rs ff3c988bb27c
+                          own_traces_main.rs 34193a3418f0 · run_tests.sh 113094cfc1d0
+                          — IDENTICAL at both ends, which is stronger than "absent from the diff"      ✅
+  `controls` in the four files that decide a score
+                          run_tests.sh 0 · _common.sh 0 · driver_lib.rs 0 · driver_main.rs 0
+                          POSITIVE CONTROL on the same needle and file: `withheld` reads 2 in
+                          run_tests.sh, so the instrument is reading the bytes                         ✅
+```
+⭐⭐ **AND THE WARRANT IS STRONGER THAN THE ADDENDUM CLAIMS — I RECOMMEND THE LEAD SAY SO, BECAUSE THE WEAKER
+FORM IS THE ONE A REFEREE WILL ATTACK.** §L7A2.3 rests the argument on *"`run_tests.sh` reads `controls/` — 0
+references"*, **which is a grep-absence, and an absence is the weakest claim in this fleet's vocabulary.** Read at
+the object, `run_tests.sh` does not merely fail to mention `controls/` — **it ENUMERATES its three inputs and can
+reach nothing else**: `$SUB/solution.rs`, `withheld/tests/driver_lib.rs`, `withheld/tests/driver_main.rs`, each
+through `need_file`, then `build_crate` over exactly those three. **No glob, no directory walk, no discovery
+step.** ⇒ 🔑 ***THAT IS A CONSTRUCTION ARGUMENT AND IT CANNOT ROT; THE GREP-ABSENCE IT REPLACES WOULD HAVE TO BE
+RE-RUN AFTER EVERY EDIT.*** 📌 And a detail that makes the addition safer still and is not in the text:
+`withheld/controls/trivial/solution.rs` **already existed** at `199c791`, so `controls/` is not a new directory —
+the four files are a sibling of a control the suite has always ignored.
+
+### ✅ §L7A2.2b — THE EXPORT'S REPAIR, RE-MEASURED WITH THE CONTROL
+```
+  probe_censored   files in harness/systems-v3   9bfb6ef 1   ·   abb7829 0   (CLAIM 1 / 0)   ✅
+  S_ISREG          files in harness/systems-v3   9bfb6ef 1   ·   abb7829 0   (CLAIM 1 / 0)   ✅
+                   sites: agy_probes_v3.py (⑤b) · cell_build.py (⑤a)
+  POSITIVE CONTROL a needle present in BOTH exports reads 70 and 63 files — both trees readable ✅
+  the ⑤ commit     9bfb6ef touches 7 harness files, +333 / −11, and its subject names the repair ✅
+```
+✅ **AND THE LEAD'S OWN CORRECTION IS EXACT:** `9bfb6ef~1 → 9bfb6ef` over `tasks/` is **0 files** — so *"0 files
+under `tasks/`"* was true of the ⑤ commit and false of the export delta, precisely as §L7A2.3 says against itself.
+⭐ **I checked the self-correction rather than taking it**, because a document's confession is the sentence a
+reader skips.
+
+### ⛔⛔ THE ONE FINDING, AND IT IS NOT A DEFECT IN THIS DOCUMENT — IT IS A FACT THAT AROSE **65 SECONDS AFTER THE PIN**
+§L7A2.2 calls `9bfb6ef` *"bare `master`"*. **It was, at 16:02:37. It is not now.**
+```
+  9bfb6ef   2026-09-17 16:02:37   the export this addendum pins
+  bench's pinned ask on the bus   16:14:09
+  46398f1   2026-09-17 16:15:14   master today — and it edits `agy_probes_v3.py`, THE SAME FILE ⑤b repaired
+            "agy probes: a probe that was NEVER SENT is INDETERMINATE too (bench's ruling on persist_sent=False)"
+```
+⇒ **LEVEL 7 WILL RUN ONE PROBE-SEMANTICS REPAIR BEHIND `master`, IN THE SUBSYSTEM THIS EXPORT WAS CUT TO FIX.**
+✅ **I SIGN ANYWAY, AND THE REASON IS MEASURED RATHER THAN GENEROUS:** that commit's own body states it was ruled
+on a **measured population — 216 agy cells, 0 unreadable, 15 with `persist_sent=False`, 14 already reading
+`indeterminate` by another route — and that it moves ZERO cells today**, including the specimen the ruling names.
+**A change that moves no datum cannot make level 7 incomparable.** And freezing the instrument before the run is
+the entire discipline this addendum exists to obey: §L7A2.5(5) already says *"a newer tree is not automatically
+the right tree."*
+⚠️ **BUT IT IS A CHOICE THE ADDENDUM HAS NOT RECORDED, AND IT SHOULD:** one line naming `46398f1`, and why the
+export does not carry it, converts a fact a future reader would discover into a decision the lead made.
+⇒ 🔑 ***A PIN IS HONEST AND A PROSE CLAIM ABOUT A BRANCH IS NOT: "bare `master`" HAS A SHELF LIFE OF ONE COMMIT,
+AND HERE IT WAS SIXTY-FIVE SECONDS.*** ⛔ **This is the LEAD'S half of the in-flight-edit law the fleet map
+carries — a reader can only ever DETECT a moving object; the party editing it can PREVENT the collision** — and
+it fired here in the mildest possible way, which is the only reason it costs a sentence instead of a wave.
+📌 **A SMALLER NOTE FOR WHOEVER RE-USES THE CONTROL:** `46398f1` renames the predicate — `probe_censored` reads
+2 occurrences in the export's `agy_probes_v3.py` and **1** on master, while `probe_unanswered` reads **0** in the
+export and **2** on master. **The addendum's FILE-level control still reads 1 on master, so it is not broken** —
+it simply no longer discriminates what it was written to discriminate. *(I nearly wrote that it breaks; it does
+not, and the difference is one `-c` between an occurrence count and a file count.)*
+
+### ⛔ WHAT I DID **NOT** VERIFY
+1. **That the ⑤ repair is CORRECT.** I verified it is PRESENT in the export and absent from `abb7829`. Its
+   validation is `systems`' red-first suite and the 3-of-3 replay on level 6's specimens, both of which I read
+   about and did not re-run. **The addendum is careful to say the same thing in §L7A2.4 — a wave is not a test of
+   the instrument it runs on — and I am not weakening that by signing.**
+2. **The export TREE itself** — 364 files, listing sha256/16 `5838f9b9e80ccb59`, `EXPORT-REFUSED.txt` absent.
+   That was cut and driven by `gemini` on the host; **I checked the SOURCE COMMIT, not the exported directory.**
+3. **Level 6's exclusion claim** (4 of 18 salt-diet against 0 of 18 plain) — it is #198's subject, not this one.
+4. **§K0–§K9 and ADDENDUM 1** — already signed, byte-identical here, and that identity is the whole of my check.
+5. **Whether `9bfb6ef` is the BEST export** — only that it is the one named, that it carries what it claims, and
+   that what it excludes has a measured zero effect.
+
+**⇒ SIGNED.** Every figure in §L7A2.2b and §L7A2.3 re-derives at the object, the four `tasks/` additions are a
+control fixture the suite cannot reach **by construction and not merely by absence**, the subject receives
+byte-identical bytes and is scored by byte-identical blobs, and the addendum corrects its own incidental error
+before a signer could. **It still fires nothing: `RELEASE.txt` is the lead's separate act, and the sixty-five-second
+finding above is a line owed in the text, not a reason to send this back.**
