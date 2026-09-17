@@ -520,3 +520,170 @@ Both are right today, and both are follow-ups.
 5. **The two follow-ups the addendum declares owed.** ⚠️ **I flag the second as this campaign's own idiom-law clause 1:** *"the ROOTS line types 18 and 46 without comparing their sum to 64"* is a TYPED EXPECTATION, and a typed expectation is correct-not-verified. It is right today and the addendum says so; **it should be derived before it is relied on.**
 
 ⇒ **A2.1–A2.4 narrow four checks, declare their differences, and every figure I could reach re-derives from the tracked bytes rather than from the prose.** The lead pinned its blob and head in the ask, which made this the cheapest signature of the night — **that is the form, and it should be the standard.**
+
+---
+
+## ⚖️ ADDENDUM 3 — ⑤(a): **THE SONNET CELLS FIRE FIRST.** §Q3.2 RE-SEQUENCED · §Q3.1 RE-BASED · §Q3.3 RE-ORDERED WITH ONE TRIPWIRE ADDED · AND ⑯'s TOKEN FORM. APPENDED; all text above, signatures included, untouched.
+bench (SaltBench lead), 2026-09-17. Council 09/17 afternoon **⑤(a)** and **⑯**, the Captain's words verbatim in that sitting's minute (the private
+record; cited by DATE and by his words, as this freeze cites council 09-16). ⑤(a): *"Ah! What I actually meant was to schedule the Sonnet cells next to
+decrease the bench spend rate (vs Opus) -- the caveat remains the same."* ⑯: *"On saltbench, what we really want is the token
+cost, borken down if possible. Dollars are secondary."*
+⛔ **UNSIGNED UNTIL A NON-AUTHOR SIGNS IT**, as §Q0–§Q9, ADDENDUM 1 and ADDENDUM 2 were. ⛔ **Nothing fires before BOTH this
+addendum and the release addendum** (the minute's own condition).
+
+### A3.0 · ⛔ THE NUMBER, DECLARED RATHER THAN QUIETLY TAKEN — THE MINUTE'S "ADDENDUM 3" AND A DRAFT ALREADY CARRYING THAT NUMBER
+The minute homes ⑤(a) at *"the lane-B freeze ADDENDUM 3 (bench)"*. **A draft on the unmerged release branch already called
+itself ADDENDUM 3** (sections R3.1–R3.6, written 2026-09-16, unsigned, never offered). Two claims to one number, neither wrong
+when written — the file registry is per-branch and git reports no collision.
+⇒ **RESOLVED IN THE DIRECTION THAT KEEPS THE RECORD READABLE: this addendum takes 3, matching the minute; the release draft is
+renumbered ADDENDUM 4 (R4.1–R4.6) on its own branch before it is offered.** It is unsigned and unmerged, so the renumber costs
+nothing; the alternative left `main` reading 1 · 2 · 4 with a gap, and the minute's own pointer wrong.
+⚠️ **AND THE RELEASE DRAFT HAS TWO SENTENCES THIS RULING FALSIFIES, WHICH ARE AMENDED IN THE SAME ACT AND NAMED HERE SO THE
+AMENDMENT IS NOT SILENT:** R3.5's heading assumes block O fires first, and R3.6 says of T-S *"It fires after block O and block
+OS, in §Q3.2's order."* **Both are corrected on that branch.** Nothing above this line is touched.
+
+### A3.1 · §Q3.2 — THE ORDER, RE-SEQUENCED
+```
+  blocks      SG → SB → SS → SBS → SC → O → OS
+              (all five SONNET blocks, then the two OPUS blocks — ⑤(a).
+               SC stays LAST AMONG THE SONNET BLOCKS on §Q3.2's own reason, which is intra-Sonnet and
+               survives the move: phase 2, C2 is §9's half-rule on a number never observed, and the Opus
+               spec-change row already carries CAP-COST censoring. That reason never depended on O or OS.)
+  problems    LRU → Paxos → FreeList → LZW → Crc32     UNCHANGED (statement blocks omit Paxos)
+  cells       per problem: plain#1 · salt-diet#1 · plain#2 · salt-diet#2 · plain#3 · salt-diet#3   UNCHANGED
+```
+**One cell at a time** and the per-pair stopping argument are UNCHANGED: a halt after any cell still leaves every earlier PAIR
+whole, because the re-order moves whole blocks and never splits a pair.
+📌 **Counts, derived from §Q1 and not typed: 138 Sonnet cells (30+30+24+24+30) then 54 Opus (30+24) = 192.**
+
+### A3.2 · §Q3.1 — RE-BASED, AND WHAT THE RE-ORDER BREAKS (MEASURED AT THE CENSUS, NOT REASONED)
+§Q3.1 rows 3..7 read *"BORROWED FROM OPUS … block O/OS once scored."* ⛔ **Under ⑤(a) two of those five borrow from blocks that
+have not fired.** Measured at `CENSUS-full-matrix-2026-09-14.md` §C4 (Opus: **DONE 28 · INEXPRESSIBLE 2 · BLOCKED 30**, the 28
+being greenfield only):
+```
+  block  its Opus counterpart                      status          verdict
+  SG     greenfield × bare × 5                     DONE  9ffa1a8   ✅ prior INTACT
+  SS     greenfield × statement × 4                DONE  173ee84   ✅ prior INTACT
+  SC     greenfield × spec-change × 5              DONE  20836ad   ✅ prior INTACT
+  SB     brownfield × bare   = BLOCK O             NOT FIRED       ⛔ PRIOR BROKEN BY THE RE-ORDER
+  SBS    brownfield × statement = BLOCK OS         NOT FIRED       ⛔ PRIOR BROKEN BY THE RE-ORDER
+```
+⇒ 🔑 ***THREE OF FIVE SONNET BLOCKS KEEP THEIR PRIOR BECAUSE OPUS'S GREENFIELD IS ALREADY DONE; THE TWO BROWNFIELD BLOCKS LOSE
+THEIRS, AND A MECHANICAL RE-ORDER WOULD HAVE CARRIED THE WORD "BORROWED" OVER A PRIOR THAT NO LONGER EXISTS.***
+✅ **REMEDY — the freeze's own form, not a new one:** SB and SBS take the **OTHER LANE** prior, exactly as §Q3.1 row 1 gives it to
+block O, carrying its caveats unchanged (agy Pro level 4: LRU and Paxos STAND; **FreeList and LZW are VOID for the
+find-the-defect claim (§V3) and ORDER only**). The re-based table:
+```
+  order  block  expectation             prior
+  1      SG     BORROWED FROM OPUS      Opus greenfield × bare × 5, DONE (§C4; RESULT-matrix-opus-1 9ffa1a8)
+  2      SB     VARIES (retention)      OTHER LANE — §Q3.1 row 1's prior verbatim, caveats included.
+                                        ⛔ No Claude brownfield cell has a result of record; that sentence
+                                           of row 1 is now true of SB, which fires first.
+  3      SS     BORROWED FROM OPUS      Opus greenfield × statement × 4, DONE (RESULT-statement-arm 173ee84)
+  4      SBS    BORROWED, TWO SIDES     brownfield from row 2 (other lane) · statement from row 3. ⛔ No
+                                        brownfield × statement cell has a result of record on ANY lane.
+  5      SC     BORROWED FROM OPUS      Opus greenfield × spec-change × 5, DONE (RESULT-p1-specchange 20836ad)
+  6      O      VARIES (retention)      OTHER LANE, unchanged — AND NOW ALSO the SB rows, freshly scored
+  7      OS     VARIES — BORROWED       from row 6, unchanged — AND NOW ALSO the SBS rows, freshly scored
+```
+⛔ **Crc32 is unchanged in every respect**: a LOUD, CEILING rung, registered AT CEILING, fires LAST inside its block, never
+pooled with the other four. ⛔ **A CEILING IS NOT PARITY.** ⛔ **LANDED IS NOT VERIFIED** (§Q6 rule 1).
+
+### A3.3 · ⛔⛔ THE DIRECTION OF BORROWING REVERSES FOR O AND OS, AND THE PROTECTING CLAUSE MUST REVERSE WITH IT
+§Q3.1 ends: *"A different Sonnet shape is a result about Sonnet, never a failed prediction."* **That clause exists because the
+borrowing ran Opus → Sonnet.** Under ⑤(a) rows 6 and 7 gain a same-condition prior that is a **Sonnet** row.
+⇒ ***REGISTERED, BEFORE EITHER BLOCK FIRES: where an Opus row's cited prior is a Sonnet row of the same condition, A DIFFERENT
+OPUS SHAPE IS A RESULT ABOUT OPUS, NEVER A FAILED PREDICTION.*** The asymmetry is a property of the ORDER, not of the models.
+⇒ 🔑 ***A RE-ORDER THAT LEAVES THE PROTECTING CLAUSE POINTING THE OLD WAY HANDS THE LAST BLOCKS A PREDICTION THEY NEVER HAD***
+— and it would arrive as *"Opus failed to reproduce Sonnet"*, which is not a claim this freeze is entitled to make.
+📌 It is written here rather than left to §Q6 because it costs one sentence now and is unrecoverable after block O is read.
+
+### A3.4 · §Q3.3 — THE TRIPWIRE ORDER, AND THE ONE THE RE-ORDER MAKES NECESSARY
+```
+  1  T-S    SG · LRU · plain · greenfield bare       THE CAMPAIGN'S FIRST CLAUDE-LANE (B) CELL. Plumbing, not arms.
+  2  T-SB   SB · LRU · salt-diet · brownfield bare   ⭐ NEW — see below
+  3  T-SC   the first SC cell, read after its phase 2 ends
+  4  T-O    O · LRU · salt-diet · brownfield bare    unchanged in content; no longer first
+  5  T-OS   OS · FreeList · salt-diet · brownfield statement    unchanged in content
+```
+⛔⛔ **WHY T-SB EXISTS, AND IT IS A HOLE THE RE-ORDER OPENS RATHER THAN AN ADDITION I WANTED:** under the frozen order **T-O was
+the lane's first brownfield cell**, and its reading list is where the brownfield-specific rows live — *the given at the first
+commit byte-identical to the export's*, and (release addendum) *`w1_fenced` read on a brownfield COPY, which no ended Claude
+brownfield cell has ever produced*. **⑤(a) moves the first brownfield fire into block SB, which had no tripwire at all.**
+⇒ 🔑 ***A RE-ORDER DOES NOT MOVE A TRIPWIRE — IT MOVES WHAT THE TRIPWIRE WAS THE FIRST OF***, and the coverage that was
+incidental to being first is the coverage that is silently lost.
+✅ **T-SB's reading list is the UNION of T-O's and T-S's**, because it is both the lane's first brownfield cell and a Sonnet
+cell: the brownfield rows of the release addendum's T-O list, **plus** T-S's forced-subagent-model and served-set rows.
+**Any row that does not read HOLDS block SB.** The tripwire cell counts as cell 1 of its condition unless §Q7 voids it — unchanged.
+📌 **T-O is not weakened by moving:** its list is unchanged and it is still read before block O continues. What it loses is only
+its accidental role as the lane's first brownfield fire, which T-SB now holds.
+
+### A3.5 · ⑯ — TOKENS ARE THE PRICE OF RECORD. WHAT THE INSTRUMENT ALREADY EMITS, WHAT IT CANNOT, AND THE ONE CLAUSE THAT BINDS THE HAND
+**Driven read-only on the run box this afternoon; nothing was written to any cell, slug or config dir. Instrument:
+`cell_meter.py` from the release export, sha256/16 `faf81afbbd7062c0`. Evidence:
+`evidence/claude-lane-b-addendum3-2026-09-17/` — the capture, its driver, and `derive_table.py`, which produces every figure
+below from the capture's bytes. No figure here is typed (idiom law clause 1).**
+
+**(a) BY DIRECTION AND BY ROLE-CLASS: ALREADY NATIVE, PER CELL.** `cell_meter.py` prints, for every (bucket × served model):
+`records · input · cache_creation (5m/1h) · cache_read · output · T · share_T · COST · share_COST`, and labels the dollar
+*"modelled at list rates (rates.tsv), not an invoice."* ⇒ **⑯'s form is the instrument's own output; what ⑯ changes is which
+half LEADS the record.** Tokens lead; USD derives. The campaign's published prices to date lead with USD and are re-based.
+
+**(b) BY PHASE: FREE, AND ALREADY WRITTEN BY THE CELL.** `cell_meter.py`'s contract is one session per phase, and the cell's own
+`ctl/run-cfg.tsv` carries `cfg` · `run_at` · **`phase`** per launch.
+
+**(c) BY THE FOUR ROLES ⑯ NAMES: A DECLARED ABSENCE, WITH ITS CAUSE AND ITS PRICE.** The buckets are `head · exec · wf` —
+*mechanism* classes. **`T_exec` is keyed by SERVED MODEL, not by executor**, so two subagents of the same model are summed and
+their identities discarded — although the per-agent files (`subagents/agent-*.jsonl`) exist on disk. ⇒ **head vs worker is
+available; designer vs reviewer is NOT, and that is ⑯'s declared absence, stated rather than approximated.** The remedy is to key
+the `exec` bucket by the agent file as well as the model; it is a harness change to a FROZEN export, so it is **named and PARKED
+to the pilot's completion per ⑱** — it is not taken here.
+
+**(d) PER LANE:** the sum over the per-cell captures. **No new instrument, and no lane figure is ever computed from a dollar.**
+
+**(e) ⛔⛔ THE CLAUSE THAT ACTUALLY BINDS THE HAND, AND IT COSTS NO HARNESS BYTE.** `clb_harvest.py` derives a cell's session slug
+from **`CLB_CFG`** — the lane env, a MUTABLE key, which has already moved. Driven on three landed cells, both arms each:
+```
+  ARM A   the slug as clb_harvest.py derives it    VOID(UNMETERED) — "no session dir for this
+                                                    cell. Unmetered is not zero."        3 of 3
+  ARM B   the slug THE CELL ITSELF records         a full receipt, T 6.6M – 9.3M         3 of 3
+```
+⇒ 🔑 ***THE TOOL IS CORRECT AND ITS ANSWER IS FALSE: "no session dir for this cell" is true of the path it derived and false of
+the cell — and the honest rider "Unmetered is not zero" is the sentence that makes a reader accept it. THE MOST DANGEROUS VOID
+IS THE ONE THAT DECLARES ITS OWN INTEGRITY.***
+✅ **REGISTERED, AND IT IS A PROCEDURE, NOT A CODE CHANGE** (the export is frozen and named by the release addendum; a code change
+re-opens §Q0 row 4):
+1. **A cell is metered from the `cfg` its OWN `ctl/run-cfg.tsv` records**, never from the ambient `CLB_CFG`. Where a cell records
+   more than one distinct `cfg`, every one is read and the fact is declared.
+2. **At harvest, `cell_meter.py`'s FULL stdout is captured into the cell's evidence**, because the token record lives OUTSIDE the
+   cell, under a path derived from a key that moves. ⚠️ ***A PRICE OF RECORD THAT IS RE-DERIVED FROM A MOVING KEY IS NOT A RECORD.***
+3. **A VOID is quoted verbatim with its reason and stays a declared absence** — never a zero, never a dollar divided back into tokens.
+⚠️ **THE `VOID(UNDERSTATED)` CASE IS NOT AN ERROR AND MUST NOT BE SMOOTHED:** an interrupted turn makes a cell's T a LOWER BOUND,
+so a median over n=3 containing one becomes a **BAND**. The instrument volunteers this; the reading must carry it.
+
+### A3.6 · ⭐⭐ ⑤'s CAVEAT IS ANSWERED AT **T-S**, AGAINST A RECORD THAT ALREADY EXISTS — SO SONNET-FIRST DELAYS NOTHING
+The caveat is the Captain's: **equal token volume between the models is UNMEASURED**, and the per-cell point prices (0.18 vs
+0.45) are a *rate* applied to a count nobody has compared. The minute says the first Sonnet block's tripwire is the measurement.
+⛔ **It cannot be settled against T-O**, which differs from T-S in **both** arm and field (`O · LRU · salt-diet · brownfield` vs
+`SG · LRU · plain · greenfield`); two cells differing in two factors do not price a model.
+✅ **It is settled against HC stage 1's `hc1lp01/02/03` — `LRU · plain · greenfield · bare`, T-S's condition EXACTLY, one model
+up, n=3, all LANDED.** Metered this afternoon:
+```
+  cell      T             T_head              head's own split: cache_read · output · input · cache_creation
+  hc1lp01   9,322,934     6,504,380 (70%)     97.20% · 1.05% · 0.0025% · 1.74%
+  hc1lp02   8,143,625     6,599,181 (81%)     96.74% · 1.26% · 0.0021% · 1.99%
+  hc1lp03   6,651,048 ⛔  5,574,212 (84%)     96.86% · 1.14% · 0.0025% · 1.99%   ⛔ LOWER BOUND
+  ⇒ the registered median (§Q6) is a BAND: [8,143,625 , 9,322,934]
+```
+⇒ **When T-S lands, the caveat is answered the same hour and does not wait for block O.** The Opus half is a PRIOR record, so
+this addendum registers the comparison **before the Sonnet half exists**, which is the only order in which it proves anything.
+⛔ **WHAT THIS DOES NOT LICENSE:** the two are separated by MODEL and by DATE, not by model alone — different weeks, different
+client build, HC1's own registered confounds. **It is a token-volume reading with its confounds declared, never an arm result.**
+
+### A3.7 · WHAT THIS ADDENDUM DOES NOT DO — SAID BEFORE ANY CELL FIRES
+1. **It does not change any arm, any cap, any scoring rule, any confound, or §Q7's void list.** It moves an ORDER and re-bases the
+   expectations that order invalidates.
+2. **It does not settle whether a Sonnet cell costs fewer tokens.** It registers the comparison and names the cells; A3.6's Opus
+   half is an existing record and the Sonnet half does not exist yet.
+3. **It does not repair `clb_harvest.py`.** The defect is measured, its remedy is a procedure, and the code change is parked to ⑱.
+4. **It does not re-price the campaign in tokens.** ⑯'s re-basing of published USD figures is owed and is not this document.
