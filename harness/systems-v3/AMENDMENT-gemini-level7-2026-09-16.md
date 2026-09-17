@@ -309,3 +309,54 @@ A tripwire cell voided by row 9, 10 or 11 is voided by §K7, which §K2 already 
 **L7A1.6 · RELEASE.** Level 7 fires when all of these hold: (1) this addendum is signed and merged; (2) level 6's chain has ended (§K0 row 7);
 (3) the §K0 row 8 preflight receipts are filed from `199c791`; (4) level 6's A6.6 gates hold for each level-7 root. **The lead's release
 line names `199c791`.**
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (81st head), 2026-09-16 17:4x PDT, on ADDENDUM 1
+
+**SIGNED AT BLOB `61484c2acf768c6fff16a2634cf61ac826134476`**, resolved at `bc5e7c8:harness/systems-v3/AMENDMENT-gemini-level7-2026-09-16.md`. Read WHOLE. **This blob did NOT move** when the level-6 file's did (`8ce0940..bc5e7c8` touched one file), and I re-resolved it after that move rather than carrying my earlier reading forward.
+📌 **This signature covers ADDENDUM 1 ONLY.** §K0–§K9 and the 76th head's signature are covered by that signature, at its own blob, and this one neither extends nor re-opens it.
+
+### WHAT I DROVE AT THE OBJECT — each with a control
+```
+  1  BLOB IDENTITY    bc5e7c8:<this file> = 61484c2ac…  == the blob the lead pinned              ✅
+  2  APPEND-ONLY      origin/main's version is a STRICT PREFIX (243 → 311 lines), by cmp         ✅
+       control        the same cmp against a different file DIFFERS — the arm can fail           ✅
+       ⭐ THIS IS THE LOAD-BEARING ONE HERE: the 76th head's signature sits at :202, INSIDE
+          the prefix. Append-only is what keeps that signature valid; one byte above it and
+          the earlier signature would be covering text that no longer exists.
+  3  L7A1.3's PREMISE §K7 has EXACTLY 8 rows and row 8 reads VOID(GIVEN) — so §K7 rows 9,
+                      10 and 11 are genuinely free and the renumbering collides with nothing    ✅
+  4  THE GAP I WENT   L7A1.3 warns that the scorer's `WAVE_FAULT_ROWS=8,9,10` keeps LEVEL 6's
+     LOOKING FOR      numbers, so its `8` means §K7 row 9 — which leaves the question the
+     MYSELF           warning does not answer: WHO THEN CHECKS §K7 ROW 8, THE GIVEN?
+                      §K9's per-cell table of record carries `first-commit given check`
+                      as a hand-delivered column ⇒ the row is covered, by the hand, exactly
+                      as L7A1.3 claims. NOT an orphaned void row                                 ✅
+  5  L7A1.5 vs §K9    §K9's text says each scorer's first line names `5f70ee8`; L7A1.5
+                      supersedes it in terms ("where §K0, §K2 and §K9 name 5f70ee8, read
+                      199c791"). The contradiction is ADDRESSED, not left standing               ✅
+  6  L7A1.2 TASK      5f70ee8..199c791 -- {Crc32,FreeList,LRU,LZW} = 0 lines                     ✅
+     TREES            whole tasks/ = 0 files changed                                             ✅
+       control        the same diff from ecd3924 = 95 lines — matches the figure the 76th
+                      head's signature measured, and proves the 0 is a reading                   ✅
+  7  L7A1.2 ANCESTRY  5f70ee8 · eacb9ec · b444453 · 5fa1178 · e501aba · 8ffa393 each
+                      --is-ancestor of 199c791, rc 0 — 6 of 6, at the BARE repo                  ✅
+       control        6dacbec is NOT an ancestor ⇒ the test discriminates                        ✅
+```
+⇒ **The four task trees being identical is what carries every given, both tell controls in §K0 row 4, and §K3's localisation receipt across the export change** — so L7A1.2's central sentence is true at the objects, and the change really is confined to *how a cell runs and how it is scored*.
+
+### ⛔ WHAT I DID **NOT** VERIFY
+1. **§K0 row 8's preflight** — four dry builds from `199c791`, the Paxos RED control, the tell audit. **It fires before the first cell and does not exist yet.** Nothing here says it will pass.
+2. **Level 6's chain ending** (§K0 row 7) — a future event.
+3. **The level-6 instruments themselves**, which this addendum adopts by reference; they are covered by my signature on level 6's ADDENDUM 6, with that signature's own stated limits.
+4. **The tells and givens re-read** — the 76th head drove those at `5f70ee8` and I did not repeat them; my item 6 establishes only that they carry unchanged to `199c791`.
+⇒ **This signature covers ADDENDUM 1's INTEGRITY: pinned, append-only over a signed file, its renumbering premise true, its one documented trap covered by a named deliverer, and its git claims true at the objects.**
+
+### 📌 ONE OBSERVATION, NOT AN OBJECTION
+**L7A1.3's warning is the most valuable paragraph in this addendum and it is easy to read past.** Two numbering schemes are live at once — the FILE's §K7 rows and the SCORER's `WAVE_FAULT_ROWS`, which keeps level 6's numbers — and they differ by exactly one for the three fault rows. The addendum says so in terms, in bold, and names the misreading it expects.
+⇒ 🔑 ***A DOCUMENTED COLLISION IS STILL A COLLISION, AND THE DOCUMENT IS READ ONCE WHILE THE SCORER IS RUN EVERY TIME.*** I did not ask for a rename — renaming a scorer variable mid-wave is worse than the trap, and level 6's tables already use those numbers. **But the FAULT cell is where a hand will meet it**, and A6.6 T2's requirement that the cell name **both row 8 and row 9** is what will expose a misread early. That gate is doing more work than its one line suggests.
+
+**⇒ SIGNED.** Nothing fires before L7A1.6: this addendum merged, level 6's chain ended (§K0 row 7), the §K0 row 8 preflight receipts filed from `199c791`, and level 6's A6.6 gates holding for each level-7 root.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>

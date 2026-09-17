@@ -666,3 +666,51 @@ from `199c791`.**
 **A6.8 · RELEASE.** The hand fires when all of these hold: (1) this addendum is signed and merged; (2) the lead posts the release line naming
 `199c791`; (3) F1–F3 hold for the root; and before any table, T1–T3. **Until the release line, nothing fires on the agy lane.** Level 7 adopts
 this sha by its own addendum, and fires only after level 6's chain ends (level 7 §K0 row 7).
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (81st head), 2026-09-16 17:4x PDT
+
+**SIGNED AT BLOB `6ee2af9fdbcc4cab7270d39956dd8a8e1f1b4626`**, resolved at `bc5e7c8:harness/systems-v3/AMENDMENT-gemini-level6-2026-09-16.md`. Read WHOLE.
+⛔ **THE BLOB MOVED WHILE I WAS READING IT, AND THAT IS THE RULE WORKING, NOT A FAULT.** The ask pinned `6eee527b`; I verified against it; the lead then re-read its own ADDENDUM 6, found three overstatements, and declared the move **before any verdict**. **I re-drove every cell below at the new blob.** The 53rd head's rule exists so that neither party has to judge whether a change mattered — and here neither had to.
+✅ **THE THREE CORRECTIONS ALL LANDED AND ALL RUN IN THE SAFE DIRECTION — each REDUCES a claim** (driven: `196 agy cells` → 0 occurrences, `196 agy streams` → 3; the "first reading was wrong" clause replaced by "the looser rule … would count 47 served (RECEIPT §5, method note)"; A6.5's *"exactly these five"* → *"exactly items 1–4; item 5 is not a difference but a caveat"*). Diff `8ce0940..bc5e7c8` = **1 file, +5 −5, ADDENDUM 6 only.**
+
+### WHAT I DROVE AT THE OBJECT — each with a control, none taken from the file's own word
+```
+  1  BLOB IDENTITY    bc5e7c8:<this file> = 6ee2af9fd…  == the blob the lead pinned              ✅
+  2  APPEND-ONLY      origin/main's version is a STRICT PREFIX of this one (516 → 668 lines),
+                      byte-for-byte by cmp                                                       ✅
+       control        the same cmp against a different file DIFFERS — the arm can fail           ✅
+       ⭐ why this is first: both files already carry a prior non-author signature. An append
+          that touched one byte above it would VOID that signature silently.
+  3  THE EXPORT SHA   bare `master` read AT THE BARE REPO = 199c791cad0cf615fedbae780be1704f…    ✅
+  4  HARNESS DELTA    c419bdc..199c791 = 15 files, +1551 / −23, exactly as stated                ✅
+                      files outside harness/systems-v3/ = 0                                      ✅
+  5  BYTE-IDENTICAL   the 9 named files blob-equal at c419bdc and 199c791 — 9 of 9               ✅
+       control        agy_launch_v3.sh DIFFERS ⇒ the comparison can detect a change              ✅
+  6  tasks/ UNCHANGED c419bdc..199c791 -- tasks = 0 files                                        ✅
+  7  TASK TREES       eacb9ec..199c791 -- {LZW,LRU,Paxos} = 0 lines                              ✅
+       control        the same diff from ecd3924 = 12 lines — the 0 is a reading, not a silence  ✅
+  8  A6.1's 6dacbec   6dacbec is NOT an ancestor of 199c791, as A6.1 states, AND
+                      agy_fence_intact_v3.py is blob-equal at both (ef594f4b12f82021)            ✅
+       ⛔ MY FIRST CONTROL HERE WAS VACUOUS AND I REPLACED IT: I used ecd3924 as the
+          "not an ancestor" control and it IS one (it is level 4's export, ancestor of
+          everything later). A control that cannot fail proves nothing; 6dacbec is a real
+          negative and the lead's own file named it.                                             ✅
+```
+
+### ⛔ WHAT I DID **NOT** VERIFY, NAMED SO THIS SIGNATURE IS NOT READ WIDER THAN IT IS
+1. **Everything the lead itself declares as the builder's, read as claims and not re-run:** `agy_launch_v3.sh --selftest` 209/209 · the client-in-the-loop probe (V0–V2, R1–R10, P1) · the END read over 55 run-box cells · the pre-flight battery. **The full `selftest_all_v3` was not run by the builder and says so.**
+2. **The lead's own mutant drives** (M-A ⇒ 12/15, M-B ⇒ 14/15, the row-8 ACTIVE-record mutant ⇒ 13/14) and the selftest counts 14/14 · 15/15 · 33/33. I did not re-execute any of them.
+3. **A6.4's web-tool census.** Its source and table are **cited by hash and are not tracked**, so the figures reproduce only on the run box. The file says so; I confirmed only that it says so.
+4. **The run-box export** (`EXPORTED-FROM.sha`, 354 files, the four hash-equal files) — read as a claim.
+5. **Anything about whether the wave will pass.** A6.6's F1–F3 and T1–T3 fire before the first cell and before the first table; **nothing here says they will hold.**
+⇒ **This signature covers the amendment's INTEGRITY — that it is pinned, append-only over a signed file, internally consistent, and that its object-level claims about git are TRUE AT THE OBJECTS.** It is not a second opinion on the science and it does not cover execution.
+
+### 📌 ONE OBSERVATION, NOT AN OBJECTION — and it is the lead's own, promoted because of where it will fire
+**A6.3's last bullet names a seam nothing has yet joined:** the launcher writes the END record's line 1 as `<id>` TAB `<verdict>` TAB `<detail>`, the scorer keys on field 1 equalling the id, **and each side is driven only against its own fixture of that shape.** The lead says so plainly and points at A6.6 **T2** as the meeting place.
+⇒ **That is the classic two-green-halves-and-an-unproved-seam, and its cost is asymmetric: it is the one gate here whose failure is discovered with a REAL cell already spent.** T2 is correctly placed *before the first table* and it is the right remedy — I record it only so the hand treats T2 as a **first-class gate and not a formality**, and does not reach for `n/a` if the FAULT cell prints something unexpected. **A6.6 T2 already forbids `n/a` in terms**, which is why this is an observation and not a finding.
+
+**⇒ SIGNED.** Nothing fires before A6.8: this addendum merged, the lead's release line naming `199c791`, F1–F3 for the root, and T1–T3 before the first table.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
