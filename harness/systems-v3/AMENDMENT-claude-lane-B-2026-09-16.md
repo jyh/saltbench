@@ -263,3 +263,51 @@ existed** (receipt §R4).
 kind beside every premium. Any public sentence, and any claim about the method, is the Captain's.
 
 ---
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (83rd head), 2026-09-16 19:3x PDT, on §Q0–§Q9
+
+**SIGNED AT BLOB `4aa24eb2f4429f0774ce6db1616b9c1b1f28d738`**, resolved at `2ebd98c:harness/systems-v3/AMENDMENT-claude-lane-B-2026-09-16.md`. Read WHOLE, all 265 lines. A NEW file, so append-only does not apply and I say so rather than claiming an arm I did not drive.
+📌 **SCOPE, TAKEN FROM THE FREEZE'S OWN WORDS: this covers §Q0–§Q9 and RELEASES NOTHING.** No cell fires until §Q2's five items are driven with controls and a release addendum names the export sha. **Signature and release are two acts.**
+
+### WHAT I DROVE AT THE OBJECT — each with a control
+```
+  1 BLOB IDENTITY   2ebd98c:<this file> = 4aa24eb2f…  == the blob the lead pinned                    ✅
+                    one commit, ONE file, off merge-base 8728e2e                                     ✅
+  2 §Q1 ARITHMETIC  DERIVED, never read off the table: 5×2×2×3 = 60 per model, less Paxos×statement
+                    4 and brownfield×spec-change 10 ⇒ 46 owed. Opus greenfield done = 5×2×3−2 = 28,
+                    so Opus owed 18 = O(10)+OS(8). Sonnet 46 = SG+SB+SS+SBS+SC. TOTAL 64.
+                    Block table sums: conditions 64 · cells 192 · n=3 consistent                     ✅
+  3 F4's PREMISE    THE CORRECTION IS TRUE AT THE CODE, and the code says so itself. cell-watch.sh
+    (it OVERTURNS   `if [ -n "$COST_CAP" ]; then CAP_UNIT=COST; else CAP_UNIT=TOKENS`, and its own
+     a sub-fork)    comment: "a C<phase>_USD row arms the cap in COST — CAP-COST ends the session,
+                    T is read and printed beside the cost and never ends it."                        ✅
+                    The pricing profile REFUSES to arm in TOKENS ⇒ CAP-TOKENS is unreachable here.   ✅
+  4 ITEM 3's        `referee_v3.py:524-529` builds `served` as a SET over EVERY row of models.tsv
+    CORRUPTION      and flags only models OUTSIDE that union ⇒ an Opus record inside a Sonnet cell
+    RISK            really does read `clean`. THE FREEZE'S SEQUENCING CLAIM IS CORRECT: item 3 is
+                    the only one whose absence CORRUPTS rather than delays.                          ✅
+  5 ITEM 5's        `exhaust_and_recover` at cc227b4: harness files 0 · withheld test files 13
+    FreeList CLAIM  (the freeze claims 0 vs "2+"). The margin-1 assertion is well founded.           ✅
+  6 HYGIENE         no session trailer or chat URL in title, body or commit message                  ✅
+```
+
+### ⚖️ THE FORK AT §Q3.4 ITEM 3 — RULED (b), ON THE LEAD'S RECOMMENDATION
+**(b): no other CLAUDE-lane cell live; agy-lane cells PERMITTED; the per-cell concurrency census a REPORTED column.**
+**THE REASON IS THE REGISTERED READING, NOT CONVENIENCE.** §Q6 rule 7 registers the reading as **ARM WITHIN CONDITION**, and §Q3.2 fires pairs adjacently (`plain#1 · salt-diet#1 · …`). ⇒ ***THE CONFOUND IS SMALLEST EXACTLY WHERE THE READING IS TAKEN*** — a pair's two cells share their agy exposure more closely than any two cells in the wave do. **(a) would buy protection where no contrast is registered, and pay for it by making this lane's progress a function of the agy chain schedule** — with levels 6, 7 and 8 running as continuous chains on one box, that is a lane that may not fire at all.
+⭐ **AND IT IS A CONFOUND WITH A KNOWN SIGN, WHICH IS A BOUND RATHER THAN A DOUBT:** load moves wall time directly and cost only through behaviour. It is registered (§Q5.4), reported per cell (§Q9), and the yield clause protects the agy lane's zero-spend windows. ⛔ **(a) IS NOT REFUTED — it is the stricter rule, and it is declined on price, which is a different thing and is said so plainly.**
+
+### ⛔ WHAT I DID **NOT** VERIFY — named so this signature is not read wider than it is
+1. **§Q1's population against the CENSUS.** I derived 64/192 from the freeze's OWN stated exclusion rules and it is internally exact. **I did not open census ADDENDUM 8 to confirm it says 64.** If the census disagrees, my arm 2 does not catch it.
+2. **§Q3.1's priors** — the level-4 retention figures, REPLACED counts and FULL PASS rates are quoted from another lane's result of record. **I did not re-read it.**
+3. **The `rates.tsv` 0.40× claim** underneath F4's restatement, and stage 1's §5.1/§5.3 figures.
+4. **The 09-14 sandbox receipt's §R4/§R5**, which item 4 rests on.
+5. **The five §Q2 items themselves** — unbuilt by construction; they are preconditions, and this signature asserts nothing about whether they will pass.
+⇒ **This signature covers the freeze's INTEGRITY: pinned, internally exact in its population arithmetic, its two code-level claims true at the objects with the corrupting one correctly singled out, its fork ruled, and its scope honestly bounded.** It is not a second opinion on the science.
+
+### 📌 ONE THING THE CAPTAIN SHOULD HEAR, AND IT IS NOT AN OBJECTION
+**His *"Yes (B)"* answered a question that named F4 as posted — and F4's PREMISE WAS THEN FOUND FALSE at the code.** The lead did the right thing: it **restated** F4 on the armed caps with three registered predictions rather than quietly dropping it. ⇒ 🔑 ***AN ACCEPTED FORK IS NOT AN ACCEPTED PREMISE, AND THE PARTY WHO DISCOVERS THE PREMISE MOVED OWES THE WORD, NOT THE SILENCE.*** It is carried to the 09-17 council alongside the same shape found tonight on desk `PT`. **Nothing is blocked by it.**
+
+**⇒ SIGNED.** Nothing fires before §Q2's five items are driven with their controls and a release addendum names the export sha and carries the `rates.tsv` re-read.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
