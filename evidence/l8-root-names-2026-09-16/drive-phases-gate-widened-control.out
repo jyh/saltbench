@@ -1,0 +1,6 @@
+supervisor sha256/16 8635e990d7512586 · phases_verdict 7 lines
+manifest	phases_verdict(unset)	supervisor loop
+1-gate-shape	REFUSE	FIRES cells-l8-lzw-pro-plain-stmt
+2-precedent-v	REFUSE	FIRES cells-l8v-lzw-pro-plain-stmt
+3-precedent-r	REFUSE	FIRES cells-l8r-lzw-pro-salt-stmt
+4-tab-led	OK	FIRES cells-l8-lzw-pro-plain-stmt

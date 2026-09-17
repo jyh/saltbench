@@ -413,3 +413,32 @@ its two code-level measurements true at the objects with a control on the load-b
 mine: **target ~21:55, posted to the lanes at 19:5x, with the asks per lane and the deadline named.**
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## ⚖️ ADDENDUM 3 — THE LEVEL-8 ROOT NAME IS REGISTERED, BECAUSE A2.1's GATE KEYS ON IT. APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-16 20:4x PDT. It adds one naming requirement to §M1 and one harness requirement to §M0 row 4. It changes no condition,
+cap, reading rule or void row. It goes to a non-author for signature before it binds.*
+
+**A3.1 · WHY.** A2.1 requires the supervisor to REFUSE a manifest *"whose roots are `cells-l8-*`"* unless `AGY_PHASES` is `1,2`, and systems built
+exactly that at harness `5c2bb95`. **Nothing in this file names level 8's roots, so the gate keys on a convention that was assumed, never
+registered.** Measured, with the files in `evidence/l8-root-names-2026-09-16/`:
+- **The fleet's own precedent does not follow it.** Level 6's roots on the run box use four prefixes, and three of them carry letters after the
+  digit: `cells-l6-` 3 · `cells-l6r-` 1 · `cells-l6u-` 1 · `cells-l6v-` 2 (`level-prefix-census.out`).
+- **A level-8 root named by that precedent passes the gate UNSET, and the supervisor fires it:** `cells-l8v-…` and `cells-l8r-…` read OK
+  (`drive-phases-gate-5c2bb95.out`).
+- **So does a tab-led `cells-l8-` row.** The gate counts with `awk -F'\t'`, while the loop reads with IFS=tab, which strips a leading tab.
+- **Control:** the same drive over a copy with only the needle widened turns the two precedent rows REFUSE and leaves the tab-led row OK
+  (`widened-control.diff`, `drive-phases-gate-widened-control.out`). ⇒ Two defects: a needle and a parser.
+
+**A3.2 · §M1 — REGISTERED: EVERY LEVEL-8 ROOT IS NAMED `cells-l8<letters>-…`**, i.e. it matches `^cells-l8[a-z]*-`. A root the hand makes for
+a level-8 condition that does not match is a manifest error, and it is corrected before `--run`, never after.
+
+**A3.3 · §M0 ROW 4 — ADDED TO THE EXPORT'S REQUIREMENT.** Level 8's export is not named until the supervisor on harness master:
+- (a) counts level-8 rows with a needle covering at least A3.2's pattern, and an over-match fails closed;
+- (b) counts with the same reader its manifest loop fires with, so one parser decides both what fires and what is gated;
+- (c) carries selftest arms built from the precedent (`cells-l8v-…`, `cells-l8r-…`, a tab-led row), each shown RED on `5c2bb95` first.
+
+The build was routed to systems on the bus. A non-author read is owed before merge.
+
+⇒ **A2.1 stands. A3 narrows what satisfies it.** The hand's chain HALT on a driver line reading `phases 1` remains the second layer.
