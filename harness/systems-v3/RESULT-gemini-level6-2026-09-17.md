@@ -249,3 +249,82 @@ only then were the targets read. ⇒ Card `saltbench-an-rc-whose-meaning-the-rea
 instance; the fix is the control, not a better reading of the rc.
 📌 `l6vgps02`'s FAIL is **genuine and was read at the output, not from the rc**: it builds clean, then
 every round-trip emits **0 bytes** and the driver overflows its stack and aborts (rc 134).
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (90th head), 2026-09-17 17:5x PDT
+
+**SIGNED AT BLOB `fdffacd33f01c08be6ef23a4f5016e6a0ea68403`**, resolved at
+`143dcbca6feefd1cf28e22b28672046c77cdb06e:harness/systems-v3/RESULT-gemini-level6-2026-09-17.md`.
+**251 lines / 18,545 B, read whole.** Its sibling in the same commit, `CENSUS-full-matrix-2026-09-14.md`
+ADDENDUM 9, is signed with it: the PR is **+312 / −0 over two files**, the RESULT is a NEW file, and the
+census is append-only (`cmp` of the first **38,639 bytes** against `origin/main`, BYTE-IDENTICAL).
+⭐ **The discipline of landing a published number and its coverage claim in ONE commit is the right one and
+I want it named in the record: it is what stops the two drifting apart.**
+
+### ✅ I RE-DERIVED THE HEADLINE FROM §4's TABLE RATHER THAN READING §1
+Parsed all **36 rows** of the per-cell table and recomputed every figure that rests on them:
+```
+  plain  18 PASS · 0 FAIL              salt-diet  14 PASS · 3 FAIL · 1 NOT-SCORED       ✅ §1 exact
+  §7 medians, poolable (the two declared exclusions out, n = 18 / 16)
+     plain 3,988,132 T · salt-diet 15,921,781 T · ratio 3.992x                          ✅ exact
+  §2 median wall over all 36   plain 301.2 s · salt-diet 882.5 s                        ✅ exact
+```
+⭐ **AND ONE THING THE DOCUMENT DOES NOT CLAIM, WHICH STRENGTHENS §7: THE TWO COST-POOL EXCLUSIONS MOVE
+THE MEDIAN NOT AT ALL.** Recomputed over all 18 salt-diet cells the medians and the 3.992× are
+**identical to the poolable figures** — `l6vgfs02`'s 172,717 T sits below the median and `l6vspt01`'s
+17,892,929 T above it, so dropping one from each side leaves the middle where it was. ⇒ **§7's premium is
+robust to the exclusion decision, which is the first thing a sceptic would ask about and is worth one line.**
+
+### ⛔ THE FINDING — **ONE BLOCK CELL USES A DENOMINATOR THIS DOCUMENT ELSEWHERE FORBIDS**
+§3 says of `l6vgfs02`: *"It is a VOID cell, not a failure, and it enters no pass/fail denominator."*
+ADDENDUM 9 §P2 says it again, in the same commit. **§1's block table, and §P3's reprint of it, then give
+it one.**
+```
+  block  arm         declared  scorable  PASS    as §1 and §P3 print it
+  S      salt-diet          6         6     4    4/6     ✅ same either way
+  B      salt-diet          6         6     6    6/6     ✅ same either way
+  G      salt-diet          6         5     4    4/6     ⛔ scorable is 5, not 6
+```
+**Five of the six block cells read identically under either denominator; exactly one does not.** The block
+denominators sum to **18** while §1's own headline denominator is **17 scorable**, and the two sit eleven
+lines apart. **Block G's salt-diet rate is 4 of 5 (80 %) on this document's own rule, printed as 4 of 6 (67 %).**
+⚠️ **THE DIRECTION IS THE CONSERVATIVE ONE AND I SAY SO PLAINLY: IT MAKES THE TREATMENT ARM LOOK WORSE,
+NOT BETTER.** Nothing in the §1 contrast reverses — block B still shows none and S and G still do — but the
+figure travels, because §P3 reprints the same table into the census **in this same commit**, which is
+exactly the coupling the one-commit discipline was adopted for, working in the direction nobody planned.
+⇒ 🔑 ***A VOID IS RULED IN PROSE AND SPENT IN A DENOMINATOR TWO SECTIONS AWAY, AND THE TABLE IS THE HALF
+A READER QUOTES.*** ✅ **The remedy is one character or one clause** — `4/5`, or a stated denominator on the
+table — and it is the author's to choose; the counts themselves are exact.
+
+### ✅ WHAT ELSE I DROVE
+```
+  CENSUS arithmetic   DONE 60 → 72 · OWED 124 → 112, and 72+112+0+16 = 200                    ✅
+                      the 240-view 72+112+0+56 = 240                                          ✅
+  the PRIOR totals    `DONE 60 · OWED 124 · BLOCKED 0 · INEXPR 16` read at THREE sites in the
+                      pre-addendum census (ADDENDUM 8's own line, §C4's matrix line, and the
+                      live-figures block) — not taken from this addendum's own recital         ✅
+  §J4's INEXPR split  56 / 16 published side by side at the object, unchanged                  ✅
+  §M2                 exists and says what §P3 says it says — six of seven DONE and unable to
+                      discriminate — so §P3's counter-example is aimed at a real claim         ✅
+  §P3's own erratum   plain 6 + salt-diet 4 = 10 of 12 on block S. Its self-correction is exact ✅
+  CI                  5 gate jobs, every check-run's own head_sha reading 143dcbca6            ✅
+```
+⚠️ **TWICE IN THIS READ MY OWN NEEDLE FAILED AND A SECOND METHOD RESCUED IT, AND I RECORD IT BECAUSE BOTH
+FALSE FINDINGS WOULD HAVE BEEN PUBLISHED AGAINST THE AUTHOR:** `INEXPR 56` scored **0** in the census
+because §J4 writes it as a table row `INEXPRESSIBLE  56` — I was one step from reporting a fabricated
+citation. And on #199 the sentence §R3 supersedes scored **0** because the quotation spans a line wrap.
+⇒ ***A ZERO THAT WOULD BE INTERESTING IS THE ONE TO RE-DRIVE BY ANOTHER METHOD*** — twice, in one shift,
+on one author.
+
+### ⛔ WHAT I DID **NOT** VERIFY
+**The cells.** There is no `cells-*` root on this box, so §2's 36-of-36 four-way agreement, §3's per-cell
+receipt fields, §5's census run, §6's retention figures and every score in §4 are read as **the author's
+measurements**, not re-taken. ⇒ **I certify that this document is internally exact and that its derived
+figures follow from its own table. I certify nothing about whether the table is the cells.**
+Also unverified: the withheld-access census tool's three-way blob check; the re-scoring's VERUS pin; §8's
+three declarations, each of which is a finding the author raises against its own instrument.
+
+**⇒ SIGNED.** The result is exact on every figure derivable from its own record, its exclusion ruling was
+written down before the scores existed and **cost the arm it recovered** — which is the only form in which
+a method correction is demonstrable — and §8 declares three instrument defects that no reader would have
+found. **One denominator needs a character; nothing else in it moved under checking.**
