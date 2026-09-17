@@ -27,7 +27,7 @@ import argparse, os, re, subprocess, sys
 RECEIPT = re.compile(
     r"^RECEIPT (?P<bucket>\S+) (?P<model>\S+) records (?P<records>\d+) input (?P<input>\d+) "
     r"cache_creation (?P<cc>\d+) \((?P<w5>\d+)/(?P<w1>\d+)\) cache_read (?P<cr>\d+) output (?P<output>\d+) T (?P<T>\d+)")
-DIRS = ("input", "cache_creation", "cache_read", "output")
+DIRS = ("input", "cache_write_5m", "cache_write_1h", "cache_read", "output")  # FIVE: cache_creation is TWO rates
 
 
 def run_cfg(cell):
@@ -82,15 +82,19 @@ def report(cell, cfgs, phases, rows, voids, limits, out):
     for l in limits:
         out("    " + l)
     out("    TOKENS BY ROLE AND DIRECTION (the price of record):")
-    out("    %-6s %-18s %8s %12s %12s %14s %12s %14s %7s" % (
-        "role", "model", "records", "input", "cache_crea", "cache_read", "output", "T", "share"))
+    out("    %-6s %-18s %8s %10s %12s %10s %10s %13s %11s %13s %7s" % (
+        "role", "model", "records", "input", "cache_crea", "  5m_wr", "  1h_wr", "cache_read", "output", "T", "share"))
     for r in sorted(rows, key=lambda r: (r["bucket"], r["model"])):
-        out("    %-6s %-18s %8d %12d %12d %14d %12d %14d %6.1f%%" % (
-            r["bucket"], r["model"], r["records"], r["input"], r["cc"], r["cr"], r["output"], r["T"],
+        out("    %-6s %-18s %8d %10d %12d %10d %10d %13d %11d %13d %6.1f%%" % (
+            r["bucket"], r["model"], r["records"], r["input"], r["cc"], r["w5"], r["w1"], r["cr"], r["output"], r["T"],
             100.0 * r["T"] / T if T else 0.0))
-    out("    %-6s %-18s %8d %12d %12d %14d %12d %14d %6.1f%%" % (
+    out("    %-6s %-18s %8d %10d %12d %10d %10d %13d %11d %13d %6.1f%%" % (
         "ALL", "-", sum(r["records"] for r in rows), sum(r["input"] for r in rows), sum(r["cc"] for r in rows),
+        sum(r["w5"] for r in rows), sum(r["w1"] for r in rows),
         sum(r["cr"] for r in rows), sum(r["output"] for r in rows), T, 100.0 if T else 0.0))
+    out("    ⛔ cache_creation IS TWO DIRECTIONS AT DIFFERENT RATES (5-minute write vs 1-hour write, 6.25 vs 10.00")
+    out("       per M for this model's row). A merged cache_creation cannot be priced, and a price derived from")
+    out("       one that is merged is a BRACKET, not a figure. The split is carried because ⑯ says BY DIRECTION.")
     by_role = {}
     for r in rows:
         by_role[r["bucket"]] = by_role.get(r["bucket"], 0) + r["T"]
@@ -204,6 +208,16 @@ def self_test():
               "MUTANT a changed fixture moves the total, so the two arms above are not vacuous")
         check("phases recorded: 1" in body, "GREEN the phase the CELL records is reported (⑯'s phase dimension)")
         check("worker/designer/reviewer DO NOT SEPARATE" in body, "the declared absence is printed BESIDE the numbers, never left to a document")
+        # ⛔ THE TTL SPLIT — cache_creation is TWO directions at DIFFERENT rates, and a merged one cannot be priced
+        fx_head = [r for r in fx_rows if r["bucket"] == "head"][0]
+        check(str(fx_head["w1"]) in body and str(fx_head["w5"]) in body,
+              "the cache_creation 5m/1h SPLIT is carried (fixture: %d/%d), not merged away" % (fx_head["w5"], fx_head["w1"]))
+        # and the mutant: move the split WITHOUT moving the total, and the output must change
+        lines.clear(); open(fixture, "w").write(good.replace("cache_creation 100 (0/100)", "cache_creation 100 (100/0)"))
+        c3 = cell_at("green3", "cfgG"); one(c3, stub, 1, None, out)
+        moved = "\n".join(lines)
+        check(str(exp_T) in moved and moved != body,
+              "MUTANT moving cache_creation between TTLs leaves T unchanged and CHANGES the report — a merged column could not tell them apart")
     print("cell_tokens SELF-TEST: " + ("OK" if ok[0] else "FAILED"))
     return 0 if ok[0] else 1
 
