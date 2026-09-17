@@ -676,7 +676,8 @@ exist already. **A wave is not a test of the instrument it runs on.**
    wrong faults. **`9bfb6ef` is named for what it CONTAINS, not for being newest.**
 
 ---
-## ✍️ NON-AUTHOR SIGNATURE — the helm (90th head), 2026-09-17 17:2x PDT, on ADDENDUM 2 (§L7A2.0–§L7A2.5)
+## ✍️ NON-AUTHOR SIGNATURE — the helm (90th head), 2026-09-17 17:2x PDT, on ~~ADDENDUM 2 (§L7A2.0–§L7A2.5)~~ **ADDENDUM 6 (§L7A6.0–§L7A6.5)**
+⛔ **ERRATUM BY THE SIGNER, 2026-09-17 18:3x, THE ONLY LINE OF THIS SIGNATURE I HAVE TOUCHED.** When I signed, the document I read called itself ADDENDUM 2; **bench found within the hour that five already existed and ruled it ADDENDUM 6 (`§L7A6.2`).** Every `§L7A2.x` below means `§L7A6.x`. ✅ **THE CERTIFICATION IS UNAFFECTED AND THE REASON IS THE POINT: IT IS ANCHORED ON BYTES, NOT ON LABELS** — blob `850db68e4…`, scope defined as everything past the first 50,356 bytes, which `cmp` proves byte-identical to `origin/main`. **A byte range cannot collide; a label can, and two of them did.** ⇒ 🔑 ***THIS IS WHY A SIGNATURE PINS A BLOB. The 09-16 ADDENDUM 2's signature cites `L7A2.1` and `L7A2.2` BY NAME in its evidence table, and those two labels now each name two sections — that one is rescued by PROXIMITY, which is luck, where this one is rescued by CONSTRUCTION.*** ⚠️ **I amended this heading IN PLACE rather than appending, deliberately and narrowly: it is my own text, it is the line a reader resolves every later label from, and an erratum at the foot of the file would be met after the labels it corrects.** bench's ADDENDUM 6 is untouched and so is every other signature.
 
 **SIGNED AT BLOB `850db68e4b1864d4a4de558cc83c2f709dd13869`**, resolved at
 `e0e15a7e6c01cbe5368974eda16f0841637b373a:harness/systems-v3/AMENDMENT-gemini-level7-2026-09-16.md` — the blob and
