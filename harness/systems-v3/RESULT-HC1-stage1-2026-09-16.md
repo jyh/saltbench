@@ -186,3 +186,131 @@ The real census carries FOUR trees sharing one prefix — `~/bench-v2`, `~/bench
 5. **`~/rescore-tool` is NOT-COVERED by the Claude fence and COVERED by the agy fence.** The ADDENDUM's "Two are NOT" is correct *for this RESULT's subject*, which is a stage-1 Claude cell; the census prints both columns so the asymmetry stays visible. **Recorded, not corrected.**
 
 ⇒ **The exposure is declared, the use is zero by a detector proven able to be non-zero, and no number in §0–§6 moves.** The two uncovered trees are the helm's ~21:55 two-lane-quiet window, which this head inherits and owns.
+
+---
+
+# ADDENDUM 2 — 2026-09-17, bench. **⑯: THE SAME 45 CELLS IN TOKENS. EVERY FIGURE IN §0–§6 AND IN ADDENDUM 1 IS REPRODUCED AND UNCHANGED — AND THE PREMIUM IS LARGER IN THE UNIT THAT IS NOW THE PRICE OF RECORD.**
+Council 2026-09-17 ⑯, the Captain: *"what we really want is the token cost, borken down if possible. Dollars are
+secondary."* ⇒ per cell and per lane, tokens by ROLE · DIRECTION · PHASE; **USD derives from tokens, never the
+reverse.** This addendum re-reads stage 1 in that unit. **It re-opens no verdict.** Appended; §0–§6, ADDENDUM 1
+and the 84th head's signature are untouched.
+📌 Instrument `cell_meter.py` (release export, sha256/16 `faf81afbbd7062c0`) through `scripts/cell_tokens.py`;
+capture and derivation in `evidence/hc1-token-record-2026-09-17/`. **Every figure below is produced by
+`derive_lane.py` from the capture's bytes; none is typed** (idiom law clause 1).
+
+## A2.1 · ⭐ THE POSITIVE CONTROL FIRST, BECAUSE IT IS WHAT MAKES THE REST QUOTABLE
+**All fifteen USD medians in §1 and all five premiums in §2 re-derive from the token capture — to the published
+cent and the published third decimal.** `derive_lane.py` **REFUSES (rc 1)** if any fails, or if the population is
+not 45 cells / 15 conditions. ⇒ **The tokens and the published dollars are the same cells, proved rather than
+assumed**, against a target computed weeks earlier by a different route.
+
+## A2.2 · THE LANE IN TOKENS
+```
+  T 755,217,221 over 45 cells      USD 687.20, DERIVED from those tokens
+  ROLE        head 89.0%  ·  exec 11.0%          (head/exec/wf: see the declared absence in A2.4)
+  DIRECTION   cache_read 96.798% · output 1.162% · 1h-write 1.135% · 5m-write 0.903% · input 0.002%
+  POPULATION  43 LANDED + 2 CAP-COST; two quarantine directories (a FAILED-BUILD and a NO-RUN) are
+              NOT cells and are excluded BY NAME, declared rather than silently skipped.
+```
+
+## A2.3 · ⭐⭐ THE PREMIUM IN BOTH UNITS — §2's READING, RE-READ
+```
+  problem     $ premium    T premium   output premium      §2 as published
+  Crc32          1.078x       1.080x        1.146x             1.078x
+  FreeList       2.385x       3.440x        1.537x             2.385x     <- the one RESOLVED premium
+  LRU            1.077x       1.085x        1.021x             1.077x
+  LZW            1.940x       2.168x        1.496x             1.940x
+  Paxos          1.818x       2.511x        1.324x             1.818x
+  MEDIAN         1.818x       2.168x        1.324x
+```
+⛔ **§2's THREE KINDS STILL MUST NOT BE POOLED, AND THIS CHANGES NONE OF THEM:** RESOLVED on FreeList, CENSORED on
+Paxos, UNRESOLVED-as-registered on Crc32, LRU and LZW. **A larger number in a different unit does not resolve an
+unresolved reading.**
+⇒ 🔑 ***THE TWO UNITS DISAGREE, AND THE MECHANISM IS ARITHMETIC RATHER THAN INTERPRETATION:*** output is priced
+**50× cache_read** (25.00 vs 0.50 per M on this model's row), and **plain's output share of T is 1.574 % against
+salt-diet's 0.899 %** ⇒ **plain is 26.9 % dearer PER TOKEN**, which compresses the dollar ratio.
+⭐ **THE DECOMPOSITION DOLLARS CANNOT SHOW: the OUTPUT premium is only 1.324×.** The treatment arm's cost is
+dominated by **re-reading context**, not by producing more. **In dollars this looked like a smaller version of the
+same quantity; in tokens it is a different quantity, and a different lever.**
+⚠️ **EVERY FIGURE HERE IS A LOWER BOUND, AND THE BIAS RUNS ONE WAY:** the two CAP-COST cells are both salt-diet, so
+their T is truncated by the cap, and 10 of 45 cells carry an interrupted turn the meter declares. **The premiums
+UNDERSTATE the gap.**
+
+## A2.4 · WHAT THIS ADDENDUM DOES NOT DO
+1. **It moves no verdict and no number in §0–§6.** It reproduces them.
+2. **It does not separate worker · designer · reviewer.** `T_exec` is keyed by served MODEL, not by executor, so
+   role is `head · exec · wf`. **⑯'s declared absence, with a named remedy parked to council ⑱** — not a zero.
+3. **It says nothing about any other model.** Stage 1 is `claude-opus-5`; ⑤'s equal-token-volume caveat is
+   settled elsewhere, against the Sonnet tripwire.
+4. ⚠️ **It records one error of the author's, because the control caught it and the direction is the lesson:** a
+   first pass priced every bucket at the Opus row and over-stated **11 of 15 medians by 2–9 %, all one way** —
+   **30 of the 45 cells carry SONNET subagent records inside an OPUS cell.** ⇒ ***A RATE APPLIED TO A TOKEN COUNT
+   THAT IS NOT THAT MODEL'S.*** **The systematic direction is what exposed it; the same magnitude scattered would
+   have read as rounding and shipped.**
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (90th head), 2026-09-17 16:4x PDT, on ADDENDUM 2 (A2.1–A2.4)
+
+**SIGNED AT BLOB `066a352d34ff44963af857027bf18f00e9e42864`**, resolved at
+`0ca2f7bd28a75fa3ed3d04bb6ee3daa6c17ba08d:harness/systems-v3/RESULT-HC1-stage1-2026-09-16.md` — the blob and head
+the lead pinned. **21,357 B, read whole.**
+📌 **SCOPE: ADDENDUM 2 only.** §0–§6, ADDENDUM 1 and the 84th head's signature are untouched and not re-opened —
+proven below, not assumed. **This addendum moves no verdict.**
+
+### ✅ I DID NOT READ THIS ADDENDUM'S ARITHMETIC. I RE-RAN IT.
+```
+ 1 PIN           066a352d3 == the pinned blob · 0ca2f7bd2 == the pinned head                              ✅
+ 2 APPEND-ONLY   TWO ways: PR numstat **+126 / −0** over 3 files, and `cmp` of the first **16,694 bytes**
+                 against `origin/main` — BYTE-IDENTICAL. Append **4,663 B**. ⭐ Both figures the ask states,
+                 to the byte                                                                              ✅
+ 3 THE CONTROL, RE-RUN BY ME on the tracked capture: `derive_lane.py hc1-45-cells-tokens.txt` ⇒ **rc 0**, and
+                 **EVERY FIGURE IN A2.1–A2.3 REPRODUCES** — 15 of 15 published USD medians to the cent
+                 (worst |Δ| $0.0050) · all five `$` premiums to the third decimal · the five T premiums and
+                 five output premiums · the MEDIAN row 1.818 / 2.168 / 1.324 · **T 755,217,221 · USD 687.20** ·
+                 ROLE 89.0 / 11.0 · DIRECTION 96.798 / 1.162 / 1.135 / 0.903 / 0.002 · plain's output share
+                 1.574 % against salt-diet's 0.899 % · **26.9 % dearer per token** · 30 of 45 cells carrying
+                 Sonnet records · 43 LANDED + 2 CAP-COST · 10 declared VOID(UNDERSTATED)                  ✅
+ 4 THREE MUTATION CONTROLS, MINE, each REFUSING rc 1 with a DIFFERENT message — a check is validated by its
+   ability to fail, and this one fails three ways:
+     one head row's `cache_read` +50,000,000   ⇒ `REFUSE: Crc32 placebo: 12.46 != published 9.27`
+     one cell removed from the capture         ⇒ `population is 44 cells, not 45` **and** the id cross-check
+     one id renamed in the end-marker file     ⇒ `end-marker ids and capture ids differ`                  ✅
+   ⭐ **THE THIRD ARM IS THE ONE WORTH THE LEAD'S ATTENTION: the 15-median control PASSED while the population
+   was corrupted.** The REFUSE came from the end-marker cross-check alone. ⇒ 🔑 ***A POSITIVE CONTROL ON THE
+   NUMBERS CANNOT SEE A DEFECT IN THE POPULATION THOSE NUMBERS ARE DRAWN FROM*** — and the second arm, which the
+   ask never mentions, is what catches it. **The conjunction is doing real work and it should be said out loud.**
+ 5 A2.4 ITEM 4 — THE AUTHOR'S OWN SELF-REPORTED ERROR, RE-DERIVED INDEPENDENTLY rather than taken on trust,
+   because a document's self-criticism is the sentence a reader skips: pricing every bucket at the Opus row
+   moves **11 of 15** medians, **all in the same direction (over-stating)**, by **1.8 % to 9.5 %**.
+   **The count and the direction are exact.** ⚠️ The stated band *"2–9 %"* rounds INWARD at both ends — the
+   true top is 9.5 %. The author's report understates the author's own error, which is the harmless direction  ✅
+ 6 CI GREEN **ON THE PINNED HEAD** — all five gate jobs, every check-run's own `head_sha` reading `0ca2f7bd2` ✅
+```
+
+### ⚠️ TWO THINGS I OWE THE LEAD, NEITHER BLOCKING
+1. **`derive_lane.py`'s `RATES` TABLE IS TYPED, AND THE DOCUMENT DOES NOT SAY WHY.** The docstring says *"none is
+   typed (idiom law clause 1)"* of the figures — true — while the ten rate constants that turn every token count
+   into a dollar are hard-coded in the source. **I checked all ten against `rates.tsv` at the release export sha
+   (`8756904f2d1117114c7767133f083ae2b8fd642d`): opus-5 `5.00 · 6.25 · 10.00 · 0.50 · 25.00` and sonnet-5
+   `2.00 · 2.50 · 4.00 · 0.20 · 10.00` — 10 of 10 EXACT.** ⇒ **Nothing is wrong, and I think pinning them is
+   RIGHT** — a result of record should reproduce under the rates in force when it was measured, not under
+   whatever the page says next year. ⛔ **But that is a decision, and it is nowhere on the page.** One declared
+   line — *"the rates are pinned to `rates.tsv`'s 2026-09-05 rows and are deliberately not re-read"* — turns a
+   silent hard-coding into a stated design choice. ⚠️ **Its sibling addendum's R4.3 exists precisely because
+   `rates.tsv` can move; this instrument is the one place that would not notice.**
+2. **The band in A2.4 item 4**, above. A line, not a defect.
+
+### ⛔ WHAT I DID **NOT** VERIFY
+**The capture itself.** `hc1-45-cells-tokens.txt` is the INPUT to everything above; I re-ran the derivation on it,
+I did not re-take it. Whether it faithfully reads the 45 cells' transcripts rests on `cell_meter.py` and
+`scripts/cell_tokens.py`, which I did not read and which are settled elsewhere. ⇒ **I certify that the published
+dollars and the published tokens are the SAME NUMBERS, computed two ways from one capture. I certify nothing about
+whether that capture is the cells.** · **§0–§6 and ADDENDUM 1** — already signed, and byte-identical here, which is
+the whole of what I checked about them. · **The CAP-COST and interrupted-turn claims** beyond the end-marker file's
+own tally. · **⑯'s cross-lane table question**, which the lead raised separately and which is not this document.
+
+**⇒ SIGNED.** The central claim is the strongest kind available: fifteen figures published weeks earlier by a
+different route, reproduced to the cent from a capture taken in a different unit, by an instrument that refuses
+three distinct ways when I break it. **A2.3's two units disagree and the addendum explains the disagreement with
+arithmetic rather than interpretation, refuses to let a bigger number resolve an unresolved reading, and states
+that every figure in it is a lower bound. Nothing here re-opens §2's three kinds, and nothing should.**
