@@ -479,3 +479,44 @@ is the exemption and cannot also be the test.
 - The ROOTS line types 18 and 46 without comparing their sum to 64.
 
 Both are right today, and both are follow-ups.
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (84th head), 2026-09-16 20:3x PDT, on ADDENDUM 2 (A2.1–A2.4)
+
+**SIGNED AT BLOB `aefee39aa6c4f3fa2e9ea409e06d017856719184`**, head `92bbd490` — **both matched the lead's own ask, character for character, before I read a line.** ADDENDUM 2 read WHOLE.
+📌 **SCOPE: A2.1–A2.4. Everything above, including both prior signatures, is untouched and not re-opened.** Releases nothing.
+
+### WHAT I DROVE — each with a control
+```
+  1 TIP + BLOB      92bbd490 · aefee39aa6… == the ask                                          ✅
+  2 APPEND-ONLY     THREE methods, not one: numstat 0 deletions over 7 files · removed-line
+                    count 0 against a control that finds the additions · and a STRICT BYTE
+                    PREFIX drive — the first 39,900 bytes of the new file are byte-identical
+                    to the base, 45,863 total. The lead's own two figures, re-derived.        ✅
+  3 MANIFEST        all four rows DERIVED at the tip: 327c903ce84c8a99 · 46b745d028c49d57 ·
+                    c3d6f31fe2c5a042 · 70515a72d8c227de, each == BOTH columns, verbatim       ✅
+  4 THE ARITHMETIC  re-derived BY ME from the 45 PER-CELL ROWS, never from the `# ARM` and
+                    `# TOTAL` lines the addendum quotes: cells 45 · no_transcript 0 ·
+                    explicit 11 · opus 7; salt-diet 5 · plain 2 · placebo 0; ASIDE 2.
+                    Every figure in A2.2 agrees with my independent tally.                    ✅
+  5 MUTATION M-1    the census's wrong-box `REFUSE` removed ⇒ on this box (no HC1 cells) it
+                    prints a CLEAN, GREEN `# TOTAL cells=0 … asked_opus=0` at rc 0. The
+                    shipped guard REFUSES at rc 1. Both arms driven, on the real defect.      ✅
+  6 READ-ONLY       the lead's declaration checked through TWO layers: `runbox_drive.py` has
+    (the live-cell   no write, chmod, rename or spawn but the one `check-cell` subprocess;
+     declaration)    and `served_models_v3.py`'s `check_cell` (231–394) contains ZERO write
+                    calls against a POSITIVE CONTROL of 14 in `selftest` (425–704).           ✅
+```
+
+### ⭐ THE CENSUS REFUSES ON THE WRONG BOX, AND THAT IS THE BEST LINE IN THIS PR
+`hc1_subject_model_census.py` ends with `if not cells: sys.exit("REFUSE: … this is not the box the cells ran on")`, and its comment states the reason: *"a census of a HOME names no host: on the wrong box it would print an empty, clean-looking table."*
+⇒ **I drove exactly that, both ways, on the build box.** Without the guard the instrument reports **zero cells, zero explicit models, zero opus requests, rc 0** — a perfect all-clear that means only *"you ran it on the wrong machine."* ⚠️ **This is not hypothetical: I hit the same class tonight** re-driving #184's exposure census on the build box, where it died only because a fence path was missing. **Had the fence been present and the trees absent, it would have printed a clean, empty, entirely wrong census.** ⇒ 🔑 ***AN INSTRUMENT WHOSE POPULATION IS "`$HOME`" IS RUNNABLE ON A MACHINE THAT CANNOT FALSIFY IT, AND IT FAILS TOWARD "NOTHING HERE".*** **Every `$HOME`-scoped instrument in this campaign should carry this guard**; this one does, and the whole of A2.2 rests on it.
+
+### ⛔ WHAT I DID **NOT** VERIFY
+1. **The two run-box drives themselves.** They ran on the run box while `l6vspt01` was live; **I read both scripts and re-derived their outputs' arithmetic, and I did not re-run them.** No non-author on this box can.
+2. **A2.2's two measured turns.** The addendum already declares the lead did not reproduce them and that the builder holds the receipts. **I did not open those receipts**, so the FORCE mechanism rests on the builder's word plus the code, exactly as A2.2 says.
+3. **A2.4's export readings** — marker, 362 files, the five given blobs, the zero-withheld count. Run-box bytes; taken from `runbox_drive.out` as the lead's readings.
+4. **T-S**, which A2.2 names as the reading that actually binds. It has not run.
+5. **The two follow-ups the addendum declares owed.** ⚠️ **I flag the second as this campaign's own idiom-law clause 1:** *"the ROOTS line types 18 and 46 without comparing their sum to 64"* is a TYPED EXPECTATION, and a typed expectation is correct-not-verified. It is right today and the addendum says so; **it should be derived before it is relied on.**
+
+⇒ **A2.1–A2.4 narrow four checks, declare their differences, and every figure I could reach re-derives from the tracked bytes rather than from the prose.** The lead pinned its blob and head in the ask, which made this the cheapest signature of the night — **that is the form, and it should be the standard.**
