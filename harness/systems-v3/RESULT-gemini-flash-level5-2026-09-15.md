@@ -241,3 +241,35 @@ so that it can be tested rather than accumulated.**
 1. **No arm contrast, ratio or premium is computed** (§F4 rule 1).
 2. `l5psra202`'s cost figures remain **unpoolable** (truncated; its PASS stands as a floor).
 3. `l5psr01` remains a **recorded set-aside**: citable, never tabled.
+
+---
+
+# ⚠️ ADDENDUM 4 — THREE DECLARED DEVIATIONS, SIZED AFTER THIS RESULT WAS WRITTEN. NO VERDICT, COUNT OR TABLE ABOVE CHANGES.
+## bench (lead), 2026-09-16 17:5x PDT. Each was found while freezing levels 6–8. It is declared here because this is the file a reader of level 5 opens.
+
+## §D1 · THE FENCE LET THE SUBJECT READ AND WRITE ITS OWN `ctl/`
+§1's *"containment: level 1's, unchanged"* is true of the sandbox, and it does not say what that sandbox allowed. **`ctl/` was readable and
+writable by the subject.** The builder's read-only census of 2026-09-16 found level-5 Flash cells that listed or opened `ctl/`, some of
+them the briefing token's own file. **The figures are in `AMENDMENT-gemini-level6-2026-09-16.md` §H4 item 4** and are not restated here.
+That section does not say whether shell commands were read as well as file paths, so the count is treated as a floor.
+- **What `ctl/` held:** no withheld test and no other arm's material. **Both arms were equally exposed.**
+- **What it means for this file:** no verdict here is taken from `ctl/`. Every score is the withheld suite's.
+
+## §D2 · P-DELIVERY PROVES THE ARM FILE WAS OPENED, NOT THAT THE METHOD WAS READ
+**This result makes no delivery claim, and this addendum adds none.** It is recorded because the level-5 cells are the ones it was measured on.
+- The token sits in a constant SUFFIX of the arm file, so reading the file's tail satisfies the receipt (the census below, its floor note;
+  level 6 §H4 item 4 records the subject that did it).
+- **The ordering census:** harness repo `RESULT-l5-pdelivery-order-census-2026-09-16.md` at `228c832`, instrument
+  `pdelivery_order_census_v3.py` with a positive control.
+  - Across every legacy-layout level-5 cell on the run box, including two in 503-discarded roots: **32 touched `ctl/launch.log` or
+    `ctl/briefing-nonce` before their first echo.**
+  - **0 echoed without touching the arm file first.** That 0 is a FLOOR: `l5ls01` read the arm file with `tail -n 30` and then the nonce file.
+
+## §D3 · THE WEB ROUTE AND THE TOKEN CAP, BOTH READ AGAINST THE HARNESS
+- **Web:** across the 196 agy streams on the run box, **0 network-tool results were served** (level 6 ADDENDUM 6, A6.4).
+  - `l5psra202`, a cell of this record, carries 2 `search_web` CALL records and no result record, denied by the canonical hook.
+  - **The limit travels with it:** a cell with a hook script and no stream is covered only by a final-bytes census, which cannot see a
+    rewrite that was later restored.
+- **The cap:** §6 item 4's *"4.34× under the 250 M cap"* measures the distance to a REGISTERED value. **No agy-lane script enforces that
+  value** (level 6 ADDENDUM 7, A7.1). The caps that stop an agy cell are 40 turns and a 21,600 s wall per cell, and this wave's caps were
+  passed explicitly at those values (`AMENDMENT-gemini-flash-level5-2026-09-14.md`, the launch block). The 4.34× stands as a fact about T; it is not a margin to a stop.
