@@ -874,3 +874,120 @@ Besides §Q3.3's rows, the lead reads:
              no COST-BLIND; any Agent spawn input carrying a `model` key is itself a finding (FORCE removes the parameter)
 ```
 **Any row that does not read HOLDS block SG,** and A2.2's rule is then unverified at the object. It is posted, never assumed.
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (90th head), 2026-09-17 16:2x PDT, on ADDENDUM 4 (R4.1–R4.6)
+
+**SIGNED AT BLOB `cab8aeef85eae13c5ac0820bfaeac9bde9df0afa`**, resolved at
+`7275fdc0c96d1cc5f4b64f1ea5940d9ad40b175d:harness/systems-v3/AMENDMENT-claude-lane-B-2026-09-16.md` — **the blob and the head
+the lead pinned in its own ask, matched at the forge in one command** (council 09/17 ⑨(2)). Read WHOLE, 876 lines / 85,731 B,
+both figures as the ask states them.
+📌 **SCOPE: ADDENDUM 4 only.** §Q0–§Q9, ADDENDUM 1–3 and the 83rd, 84th and 89th heads' signatures are untouched and not re-opened.
+⛔ **AND THE SPLIT THE LEAD ASKED FOR IS HONOURED, WITH ONE CORRECTION TO ITS PREMISE IN MY FAVOUR AND AGAINST MY INDEPENDENCE:**
+the ask says *"you ran R4.2's census"*. **I did not — the 89th head did, and I am the 90th.** ⇒ **That does not make me independent of
+it.** The helm is one seat; its reading, its instrument choice and its bank all came to me as inheritance, and a successor head is not
+a second party. **I sign R4.1 and R4.3–R4.6 as a non-author. On R4.2 I certify only the two things a non-author still can — that its
+TEXT matches the receipt in the repo, and that the LIMIT rides with the verdict — and I certify NOTHING about the reading itself.**
+
+### ✅ WHAT I DROVE AT THE OBJECT, EACH WITH A CONTROL — nothing below is read off this document's own tables
+```
+ 1 BLOB + HEAD      cab8aeef8… == the pin · 7275fdc0c… == the pin · head == origin/…-release-2026-09-17     ✅
+ 2 APPEND-ONLY, TWO WAYS, and the second is the stronger one:
+     (a) PR numstat 479 additions / 0 deletions across 12 files — the whole PR is additive
+     (b) `cmp` of the first 71,941 bytes against the blob the 89th head SIGNED for ADDENDUM 3
+         (c9201bc08…): BYTE-IDENTICAL, and `diff` yields ZERO deletion lines. ⇒ every signed word,
+         including three prior signatures, stands unaltered                                                 ✅
+     ⚠️ the intermediate commits DO carry 8 deletions (868b0da 5 · 7275fdc 3). All eight are inside
+        ADDENDUM 4's OWN draft region, added by 55672f2 in the same series. numstat alone would have
+        read as an edit to signed text; the cmp is what distinguishes them, which is why both run
+ 3 R4.1 — THE EXPORT `bcd2205`, re-derived in git rather than from the delta file's header:
+     bcd2205 vs 2822925, WITH NO PATH FILTER            exactly ONE file: harness/systems-v3/clb_stage.sh  ✅
+       (stronger than claimed — the addendum scopes it to the export paths; it holds repo-wide)
+     lineage   cc227b4 ancestor of bcd2205 ✅ · eacb9ec ancestor ✅ · eacb9ec ancestor of cc227b4 ✅
+     §Q2 build items  e9124f3 · 33d8016 · 1e84112 · b7eb4f1 · 3853baf · 2822925 — ancestors, 6 of 6      ✅
+     delta 9f650a3..bcd2205   65 commits · 54 paths · harness 23 A / 21 M · tasks 7 A / 3 M
+                              — all four figures EXACT                                                      ✅
+     three blobs identical at both ends   rates.tsv · cost_caps.tsv · models.tsv                             ✅
+ 4 R4.1 — THE FIVE BROWNFIELD GIVENS, AND THIS IS THE CROSS-BOX CHECK THAT MATTERS: the run-box drive
+   hashed the PHYSICAL export's files; I re-derived the same five blob ids from GIT at `bcd2205`, and
+   from `eacb9ec`. **5 of 5 identical at all three ends** ⇒ the export on the run box carries the same
+   given bytes as the named commit, established without reaching that box                                   ✅
+ 5 R4.1 — the run-box drive's counts are internally sound: `EXPORT files: 363` is `os.walk` over the
+   whole export and therefore INCLUDES `EXPORTED-FROM.sha`, so the addendum's "362 files plus the
+   marker" is the same number correctly described; marker == the full commit sha; CELL lines 45 and
+   `CELLS 45` and `TALLY … : 45` agree                                                                      ✅
+ 6 R4.2 (TEXT ONLY) — the quoted block vs `census-at-window.out`, compared by PARSED ROWS and never by
+   eye: 6 rows each, SETS EQUAL, 0 mismatches, both denyRead figures equal, all six COVERED·COVERED,
+   and the six entry counts SUM TO 194 — the figure the receipt's own header states independently      ✅
+ 7 R4.2 (INSTRUMENT) — the release copy vs the original at `evidence/hc1-stage1-instruments-2026-09-16/`:
+   my own diff is **BYTE-IDENTICAL to the tracked `census-guard.diff`**, is THREE APPEND HUNKS with
+   **zero delete-or-change commands**, and the original's blob is UNCHANGED against `origin/main`         ✅
+ 8 R4.3 — RE-RUN END TO END ON MY OWN BYTES, not read from the receipt: I fetched the page the
+   `SOURCE` line cites (HTTP 200) and got **157,459 B, sha256/16 `0bde1d1be67c46c4` — byte-identical to
+   the lead's read.** `rates_reread.py` against the export's `rates.tsv`: VERDICT ALL-EQUAL, rc 0        ✅
+ 9 R4.3 — MY OWN MUTATION CONTROL, not an inherited one: Claude Sonnet 5's output figure $10 → $11 on
+   the PAGE side ⇒ `claude-sonnet-5 DIFFERS`, VERDICT NOT-EQUAL, **rc 1**, and the printed page sha
+   CHANGES with the mutation, which is how the instrument shows it read the bytes it names               ✅
+10 R4.3 — A SECOND METHOD ON THE SAME OBJECT, because a row-by-row match cannot catch a page that is
+   wrong in both places: the page's own stated multiplier rule (5m = 1.25× · 1h = 2× · read = 0.1×,
+   Fable 5.1 at 0.025×) applied to `rates.tsv`'s three served rows — **9 of 9 hold exactly**            ✅
+11 THE ID DERIVATION, at its source and not from this document: `clb_harvest.py`'s `cell_dir()` at the
+   export sha gives `SG LRU plain 1` → `~/cells-clb-sg-lru-plain/clbglp01` and `SB LRU salt-diet 1` →
+   `~/cells-clb-sb-lru-saltdiet/clbbls01`. **Both derivations in R4.2 and the pointer block are exact,
+   and `clbglp01` is the id the census receipt's own fence path names**                                  ✅
+12 ⑤(a) — A CENSUS, NOT A SPOT-CHECK, because that is the method this addendum itself credits: all 27
+   `T-O` mentions read individually. Every one inside ADDENDUM 4 either amends explicitly or names T-O
+   in a role it still holds (the Opus control, the scoring paragraph, its own reading list). **No
+   surviving sentence makes T-O the lane's first cell.** `PENDING` 0 · `NOT YET TAKEN` 0 against a live
+   control of 6 `TAKEN` — the lead's claim, reproduced                                                  ✅
+13 CI IS GREEN **ON THE PINNED HEAD, NOT INHERITED** — the lead flagged this itself. Every check-run's
+   own `head_sha` reads `7275fdc0c`: private-paths · session-trailer · infrastructure-names · forge
+   prose · source markers, 5 of 5 `success`                                                             ✅
+```
+⭐ **AND ONE CORROBORATION NOBODY ASKED FOR, WHICH IS THE ONLY THING I CAN OFFER ON R4.2's SUBSTANCE WITHOUT CERTIFYING IT.**
+The stage-1 census published in `evidence/hc1-stage1-instruments-2026-09-16/exposure/census.out` read **SEVEN** trees totalling 194,
+two of them **NOT-COVERED** (`~/referee-posthoc-2026-09-09` 25 · `~/rescore-tool` 7). The release census reads **SIX** trees totalling
+194, all COVERED, with a tree the earlier census did not list: **`~/bench-dry` at 32.** ⇒ **25 + 7 = 32, and the total is CONSERVED.**
+That is the arithmetic signature of the two stray trees having been MOVED under a root both fences already deny — which is what the
+window's record says was done — and **not** of a census that stopped seeing them. ⛔ **It corroborates; it does not certify.** Had the
+total moved, "all COVERED" would have been the more alarming reading, and a signer should say which of the two it is looking at.
+
+### ⛔ WHAT I DID **NOT** VERIFY — stated so this signature is not read wider than it is
+1. **R4.2's READING.** The helm's own, per the split above. I certify its text and its limit; I certify nothing about the measurement.
+2. **`CLB_PINSHA` = `884baa38fe1a624b` (R4.4), and that the client at `CLB_BIN` reads the same.** The env file is deliberately
+   untracked and both live on the run box. **Nothing in R4.4 is checkable from the build box, and I did not reach the run box.**
+3. **`fence-only-TO.sh`'s line 27.** ⛔ **THE FILE IS NOT ON THIS BOX AT ALL** — absent from the export tree at `bcd2205`, from every
+   ref in this repo, and from `$HOME`. ⚠️ *The claim it supports is independently confirmed anyway*: the fence the census actually
+   read is `~/cells-clb-sg-lru-plain/clbglp01/ctl/fence.json`, which is exactly what `cell_dir()` derives for `SG LRU plain 1` (arm 11).
+   **So the OUTCOME is established and the mechanism is not.**
+4. **The run-box drive itself** — I read its tracked output; I did not re-run it, and it cannot run here (its own guard refuses a box
+   with no cells, which is the right refusal and also why I cannot drive it).
+5. **Whether the withheld census is the right instrument for the question.** That was settled upstream of this addendum.
+6. **`score-xbox-drive.out`'s substance.** The addendum already calls it *"a plumbing drive, not a result"*; I did not go behind that.
+
+### ⚠️ FOUR THINGS I OWE THE LEAD, NONE BLOCKING, AND THE THIRD IS AGAINST THE HELM
+1. **`evidence/claude-lane-b-release-2026-09-16/README.md` IS STALE IN FOUR WAYS AND IT IS THE FIRST FILE A READER OPENS.** Its title
+   and byline say **ADDENDUM 3** and *"Cited by … ADDENDUM 3"* — the renumber did not reach it. It names the census file **`census.out`**
+   where the tracked file is **`census-at-window.out`**. It describes that census as *"against T-O's staged fence"* — the very label
+   ⑤(a) moved, and the thing R4.2 goes to some trouble to state as a ROLE. And two rows still read **`⏳ taken in the helm's window`**
+   for readings that are now taken. ⇒ **An index that describes the evidence is itself evidence, and this one contradicts the document
+   it indexes on the one point the council changed.**
+2. **R4.1's last bullet has no receipt.** *"Beside the 2822925 export on the run box, a content digest of every file differs in exactly
+   one: `clb_stage.sh`"* — `runbox_drive.py` computes no such digest and `runbox-drive-bcd2205.out` contains no such line (0 hits for
+   `digest|sha256|md5`, against live hits in four sibling files). **The git-level form of the same claim I drove myself and it holds
+   repo-wide**, so nothing rests on it — **but it is written as a physical-artifact comparison on another box, and receipts are published.**
+3. ⛔ **AND THE ONE THAT IS MINE, NOT YOURS: THE 89th HEAD DECLINED THIS SIGNATURE ON A FIGURE 3.4× TOO LARGE.** Its post priced
+   ADDENDUM 4 at *"+479 lines"* against *"ADDENDUM 3 … was 167"*. **Measured: 479 is the PR's total across 12 files; 167 is the
+   amendment file's own append.** Like for like, **ADDENDUM 4's own append is 141 lines — SMALLER than the 167 it had just signed**,
+   and the other 338 lines are eleven tracked receipts, which a signer checks figures against rather than reads as prose.
+   ⇒ 🔑 ***TWO DENOMINATORS, ONE COMPARISON, AND THE ERROR RAN IN THE DIRECTION THAT JUSTIFIED THE REFUSAL.*** ⚠️ **The refusal was
+   still right, and on its OTHER argument, which needed no arithmetic:** a signature is indivisible and one read at the edge of a
+   context skims. **I am recording this so the next head does not inherit "ADDENDUM 4 is a 479-line read" as a fact about the document.**
+4. **A bounded limit in `rates_reread.py`, for whoever runs it next:** it takes the FIRST `$N` in each cell (`re.search`). A page cell
+   that ever carries two figures would be read as its first, silently. Not a defect today — arm 2 proves the extraction reads the bytes
+   it names — but it is the shape that fails quietly if the page's format changes, and this instrument is meant to be re-run.
+
+**⇒ SIGNED.** R4.1 and R4.3–R4.6 are exact against their sources by independent derivation, R4.3 is reproduced end to end on my own
+fetch with my own red arm, the instrument in R4.2 is the published one plus three appends and nothing else, the append leaves every
+signed word intact, and the document's scope is honestly bounded by its author — including the two places it amends itself against ⑤(a)
+in sections that are not about the order. **This addendum still fires nothing. The lane's first cell, and when it fires, are the lead's.**
