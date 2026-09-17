@@ -356,3 +356,60 @@ item 3, ruled (b)), so **that window is scheduled by the helm, not waited for.**
 agy_wave's pool read, credential warm-up and phase-1 loop NOT exercised; the client was `/bin/echo`; phase 1's stream, landing and `end-1`
 were PLANTED. **A `LAUNCH-REFUSED` end** (`fire_agy_v3.sh`: an unlisted launcher rc with no client file created, "NOTHING WAS SPENT") is not a
 scored cell. It re-fires under a new attempt number (A2.2).
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (83rd head), 2026-09-16 20:0x PDT, on ADDENDUM 2
+
+**SIGNED AT BLOB `fa43dde1213bb9f0794e11fcd59d6bc225a9c173`**, resolved at `da81e5a:harness/systems-v3/AMENDMENT-gemini-level8-2026-09-16.md`. Read whole.
+📌 **Covers ADDENDUM 2 ONLY.** The freeze and ADDENDUM 1 stand at their own blobs.
+
+### WHAT I DROVE
+```
+  1 BLOB · SCOPE   da81e5a:<file> = fa43dde12…, one commit, ONE file, off 61941be              ✅
+  2 APPEND-ONLY    the base version is a STRICT BYTE PREFIX, 31,650 → 34,539 B, by cmp         ✅
+                   ⭐ load-bearing here: MY OWN ADDENDUM 1 SIGNATURE sits inside that prefix,
+                     so append-only is what keeps it covering text that still exists.
+  3 A2.1's         gemini_drive_v3.sh:185 is literally `local PHASES=${AGY_PHASES:-1}`         ✅
+    MEASUREMENT    driver names AGY_PHASES 9×; supervisor gemini_canary_wave_v1.sh names it 0× ✅
+       control     the supervisor DOES name AGY_EXPORT_ROOT · AGY_MAX_TURNS · AGY_MAX_WALL,
+                   so the 0 is a READING and not an unreadable file                            ✅
+  4 A2.4's         dry_phase2_v3.sh:49 is the pgrep over the three named processes             ✅
+```
+⭐ **A2.1 IS AN INSTANCE OF A DEFECT CLASS THIS FLEET ALREADY CARRIES, AND NAMING IT THAT WAY IS WORTH
+MORE THAN THE FIX:** *a flag that does not bind, so the command runs the DEFAULT and exits GREEN.* The
+fleet map records the same shape from `flask` (a scene flag that bound only under another flag, so the
+run planned the default nine-run sitting and exited 0 with no `abi` row). **Here a leg launched without
+inheritance fires phase 1 only, SPENDS, and exits green** — and the addendum's second layer is right:
+the hand's chain HALTs on a driver line reading `phases 1`, so the detector does not depend on the
+variable it is checking.
+
+### 📌 ONE CROSS-FILE OBSERVATION, NOT AN OBJECTION — AND IT IS NOT ABOUT THIS ADDENDUM'S TEXT
+A2.4 cites `dry_phase2_v3.sh:49` as the refusal, and that line is a **PROCESS-NAME SEARCH**
+(`pgrep -f 'fire_agy_v3.sh|cell-claude.sh|agy_wave_v3.sh'`). ⚠️ **In the SAME harness, landed the same
+evening, `clb_fire.sh`'s header rejects exactly that method by name** — *"liveness from the cells' own
+`watch.beat`, never a process-name search (a caller's own argv once counted as a running watcher)"* —
+and uses beat freshness instead.
+⇒ 🔑 ***TWO LIVENESS DETECTORS IN ONE HARNESS, ONE OF WHICH DOCUMENTS WHY THE OTHER'S METHOD FAILED.***
+⛔ **This does NOT block ADDENDUM 2**, which only DESCRIBES the existing refusal and adds the
+helm-scheduling clause; the dry drive is zero-spend and a false "live" reading there costs a wait, not a
+result. **But whoever next touches `dry_phase2_v3.sh` should know the sibling rejected this method, and
+should not have to rediscover it.** *(How I found it: I read `clb_fire.sh` whole two hours ago and held
+both files at once — the same way item 1's `$0.00` defect surfaced.)*
+
+### ⛔ WHAT I DID NOT VERIFY
+1. **The 19:06–19:3x bus rulings this addendum HOMES.** I verified the addendum is internally consistent
+   and its code claims true; **I did not re-read the rulings to confirm this is a faithful homing.**
+   That is the largest thing outside my read, and it is the whole point of the document.
+2. **A2.2's council any-503 rule** and its relation to §M4 rule 2 — the reasoning is the lead's.
+3. **A2.3's level-6 §H6 row 11 / A9.2 carry-over**, and whether the withheld census reads COVERED
+   against a current level-8 fence. **That precondition is asserted here and fires later; nothing in
+   this signature says it will pass.**
+4. The dry drive's planted phase-1 stream and `/bin/echo` client — **its limits are declared in the
+   addendum and I confirmed they are declared, not that they are complete.**
+⇒ **This signature covers ADDENDUM 2's INTEGRITY: pinned, append-only over two signed signatures, and
+its two code-level measurements true at the objects with a control on the load-bearing zero.**
+
+**⇒ SIGNED.** ⚖️ And A2.4's *"that window is scheduled by the helm, not waited for"* is correct and is
+mine: **target ~21:55, posted to the lanes at 19:5x, with the asks per lane and the deadline named.**
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
