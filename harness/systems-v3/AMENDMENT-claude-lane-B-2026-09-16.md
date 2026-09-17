@@ -735,8 +735,15 @@ client build, HC1's own registered confounds. **It is a token-volume reading wit
 **⇒ SIGNED.** A3.0–A3.7 are internally exact, their load-bearing claim is true at the census by an independent derivation with a control that fails, and their scope is honestly bounded by their author. Nothing fires before the release addendum names the export sha and carries the `rates.tsv` re-read.
 
 ## ⚖️ ADDENDUM 4 — THE RELEASE: THE EXPORT IS NAMED, THE CENSUS IS RE-RUN, THE RATES ARE RE-READ, AND T-O's READING LIST. APPENDED; all text above, signatures included, untouched.
-**bench (lead), 2026-09-16.** This is the addendum §Q0 row 4 and A1.1 require before the first cell. **It fires nothing by itself:** T-O fires only
-after a non-author signs it. Every figure is read from `evidence/claude-lane-b-release-2026-09-16/`.
+**bench (lead), 2026-09-16, completed and renumbered 2026-09-17.** This is the addendum §Q0 row 4 and A1.1 require before the first cell.
+**It fires nothing by itself:** the lane's first cell fires only after a non-author signs it. Every figure is read from
+`evidence/claude-lane-b-release-2026-09-16/`.
+⛔ **TWO POINTERS RESOLVED HERE, BECAUSE ADDENDUM 3 IS SIGNED AND IS NEVER EDITED:**
+1. **§A3.0 names this addendum's sections by their PRE-RENUMBER labels, `R3.5` and `R3.6`. They are `R4.5` and `R4.6` below.** A3.0 was
+   describing the draft as it then stood, which was correct when written; the labels moved in the same act that renumbered the addendum.
+2. ⛔ **THE FIRST CELL IS `T-S` (`SG · LRU · plain · greenfield bare`, id `clbglp01`), NOT `T-O` (`clbols01`)** — ADDENDUM 3 §A3.4. Every
+   "first cell" in the sections below means T-S. **The ids are derived from the harness's own maps** (`clb_harvest.py`'s `BLOCKS`/`PROBS`/`ARMS`),
+   never typed: `SG LRU plain 1` → root `cells-clb-sg-lru-plain`, id `clbglp01`; `SB LRU salt-diet 1` → `cells-clb-sb-lru-saltdiet`, id `clbbls01`.
 
 ### R4.1 · §Q0 ROW 4 — THE EXPORT IS `bcd2205`
 - **Why not `2822925`, which ADDENDUM 2 A2.4 measured:** `bcd2205` is `2822925` plus ONE file, `clb_stage.sh` (ruled (A) by the helm and read by
@@ -760,7 +767,13 @@ after a non-author signs it. Every figure is read from `evidence/claude-lane-b-r
 - **The instrument** is `withheld_exposure_census.py`, a COPY of #184's instrument. It differs ONLY by a guard that REFUSES when `~` holds no
   `cells-*` root, and by a printed host-role line (`census-guard.diff`). Driven on the build box: `REFUSE`, rc 1. #184's original is untouched,
   because it backs a published MANIFEST digest.
-- **The fences:** the Claude fence of T-O's cell, staged from the `bcd2205` export, and a current agy fence.
+- **The fences:** the Claude fence of **the lane's FIRST STAGED cell**, staged from the `bcd2205` export, and a current agy fence.
+  ⛔ **AMENDED BY ADDENDUM 3 (⑤(a)): this line read *"the Claude fence of T-O's cell"*** and was true when written. Under ⑤(a) the first
+  staged cell is **T-S's, `clbglp01`** (root `cells-clb-sg-lru-plain`), so that is the fence the census covers. ⚠️ **It is written as a ROLE
+  ("the first staged cell") and not as a second hard-coded id**, because the first cell is exactly the thing this campaign has now moved twice.
+  📌 The step that renders it is generic in its arguments despite its name: `fence-only-TO.sh` takes `<block> <Problem> <arm> <n>` and derives
+  the root and id from them (its line 27), so **only the ARGUMENTS change — `SG LRU plain 1`.** *(The name says T-O; the instrument is not
+  its label, and a reader who trusts the name will think it is being run on the wrong cell.)*
 - ⏳ **`census.out`: NOT YET TAKEN.** **Every tree must read COVERED**, or this addendum is not offered for signature. A1.1 item 3's limits
   ride with it.
 
@@ -818,8 +831,14 @@ its fire log WHOLE, then:
   - An HC stage 1 cell copy scored end to end.
   - A never-ended brownfield probe cell was REFUSED as UNDETERMINED, which is the right refusal.
   - ⚠️ **It is a plumbing drive, not a result.** It scores ONE HC1 cell and states no HC1 rate.
-  - **The `w1_fenced` column has not yet been read on a brownfield COPY** (no ended Claude brownfield cell existed). **T-O is its first
-    reading, and it joins T-O's list:** `w1_fenced` must read COVERED on the harvested copy.
+  - **The `w1_fenced` column has not yet been read on a brownfield COPY** (no ended Claude brownfield cell existed).
+    ⛔ **AMENDED BY ADDENDUM 3 (⑤(a)): its first reading is `T-SB`, not `T-O`.** This line said *"T-O is its first reading"* — true only while
+    block O fired first. ⑤(a) moves the lane's first BROWNFIELD cell into block SB, so **`w1_fenced` must read COVERED on T-SB's harvested copy**,
+    and it joins **T-SB's** list (ADDENDUM 3 §A3.4, where T-SB's list is the union of this one and R4.6's). **It stays on T-O's list too** — a
+    column read once is not a column proved on every block.
+    ⇒ 🔑 ***THIS IS THE THIRD SENTENCE ⑤(a) FALSIFIED, AND THE ONLY ONE NOT IN A SECTION ABOUT THE ORDER.*** The first two were found by reading
+    R4.5 and R4.6, which are *about* tripwires; this one is inside a SCORING paragraph and names T-O only in passing. **Defects cluster in the
+    incidental**, and a spot-check of the sections a ruling is "about" will not find them — only a census of every mention will.
 
 ### R4.6 · T-S — THE READING LIST'S ADDITIONS (§Q3.3 T-S, plus A2.2), SO BLOCK SG DOES NOT OPEN ON §Q3.3's LIST ALONE
 **T-S** is `clb_fire.sh SG LRU plain 1`, the campaign's first Sonnet-headed cell.
