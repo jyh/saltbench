@@ -360,3 +360,14 @@ line names `199c791`.**
 **⇒ SIGNED.** Nothing fires before L7A1.6: this addendum merged, level 6's chain ended (§K0 row 7), the §K0 row 8 preflight receipts filed from `199c791`, and level 6's A6.6 gates holding for each level-7 root.
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+
+---
+## ⚖️ ADDENDUM 2 — §K4 CORRECTED TO THE CAPS THE LANE ENFORCES (level 6 ADDENDUM 7). APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-16 17:5x PDT. Before level 7's first cell. No cell, condition or void changes. It goes to a non-author for signature.*
+
+**L7A2.1** · §K4's *"token cap T1_TOK 250,000,000"* binds nothing on the agy lane. The census, the end-kind vocabulary, the record and the
+control are in level 6 ADDENDUM 7 (A7.1). **The caps in force per phase are A7.2's:** `AGY_MAX_TURNS 40 · AGY_MAX_WALL 21600 s ·
+AGY_PRINT_TIMEOUT 1800s · AGY_TURN_TIMEOUT 2100 s`, all from `agy_wave_v3.sh` at `199c791`. T is metered and reported, and is never a stop reason.
+**L7A2.2** · §K4's reporting line and §K7 row 6 read `TURN-CAP · WALL-CAP · TURN-TIMEOUT · TURNS-CUT · CELL-KILLED`, split by arm, NOT void.
+`CAP-TOKENS` is struck. §K4's own measured prior, *"every truncation in level 4 was a salt-diet cell (5 of 12, 0 of 12 plain)"*, is why the
+wall cap's incidence by arm is the reading that matters.

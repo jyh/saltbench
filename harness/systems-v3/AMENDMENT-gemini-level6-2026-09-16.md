@@ -714,3 +714,46 @@ this sha by its own addendum, and fires only after level 6's chain ends (level 7
 **⇒ SIGNED.** Nothing fires before A6.8: this addendum merged, the lead's release line naming `199c791`, F1–F3 for the root, and T1–T3 before the first table.
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+
+---
+## ⚖️ ADDENDUM 7 — §H3 CORRECTED TO THE CAPS THE LANE ENFORCES: THE TOKEN CAP BINDS NOTHING, AND TURNS AND WALL DO. APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-16 17:5x PDT. Written while level 6 fires from `199c791`, and **before any level-6 table is read**. No cell is
+voided, no condition changes and nothing is halted: the caps in force are the ones every agy level has run under. **What changes is what
+the freeze SAYS is in force.** It goes to a non-author for signature.*
+
+**A7.1 · THE DEFECT, MEASURED THREE WAYS.** §H3 registers *"token cap T1_TOK 250,000,000"*, and §H6 row 6 and §H8 report CAP-TOKENS per
+arm. **No agy-lane script enforces `T1_TOK`.**
+```
+  1  census      18 agy-path files at 199c791 (agy_*.sh · agy_*.py · fire_agy_v3.sh · gemini_*.sh): T1_TOK occurs ONCE, in a comment
+                 (agy_wave_v3.sh:106 "Cost is bounded by budgets.env (T1_TOK, C1_USD)"); budgets.env is read by none of them.
+                 positive control: cell-watch.sh — the CLAUDE lane's watcher — reads T1_TOK 8 times and budgets.env 9. No agy file calls it.
+  2  vocabulary  agy_turnloop_v3.py's end kinds are TURN-CAP · WALL-CAP · TURN-TIMEOUT · TURN-DENIED. There is no token-cap end.
+  3  record      CAP-TOKENS occurs in 0 of the 7 agy result files (RESULT-agy-* · RESULT-gemini-* · RESULT-p1-greenfield)
+```
+`cell_build.py --budgets pricing` still WRITES `T1_TOK=250000000` into each cell's budgets file, which is why the value looked armed.
+⚠️ **The same census at `2419dcf`** (the level-8 branch, 19 files): `T1_TOK` once, the same comment (:120); `budgets.env` is named only in the
+phase aside's KEEP list, which moves nothing and enforces nothing. **The data are not affected:** the largest agy cell on record is `l5fs02` at
+57,655,873 T, 4.34× under the value (RESULT-gemini-flash-level5-2026-09-15.md, cap incidence). The error is in what the freezes say.
+
+**A7.2 · THE CAPS IN FORCE, REGISTERED — per cell, from `agy_wave_v3.sh` at `199c791`:**
+```
+  AGY_MAX_TURNS      40        a turn loop reaching it ends TURN-CAP             (:107)
+  AGY_MAX_WALL       21600 s   a turn loop reaching it ends WALL-CAP             (:107)
+  AGY_PRINT_TIMEOUT  1800s     the client's per-turn deadline                     (:64)
+  AGY_TURN_TIMEOUT   2100 s    the controller's patience per turn; TURN-TIMEOUT   (:67)
+  T1_TOK             —         NOT A CAP ON THIS LANE. T is still metered, reported per cell, and never a stop reason.
+```
+These are the values levels 4 and 5 registered by name (`max_wall 21600 · max_turns 40 · print_timeout 1800s · turn_timeout 2100`).
+Levels 6 and 7 carried the per-turn pair and the token value and dropped the two that bind. **`agy_wave_v3.sh` is byte-identical
+across `5f70ee8`, `c419bdc` and `199c791`** (A4.1, A6.1), so every level-6 cell ran, and runs, under exactly these.
+
+**A7.3 · WHAT THE TABLES CARRY INSTEAD.**
+- **§H6 row 6** reads `TURN-CAP · WALL-CAP · TURN-TIMEOUT · TURNS-CUT · CELL-KILLED` — NOT void, reported per arm. `CAP-TOKENS` is
+  struck from it, because the lane cannot produce it.
+- **§H8's split by arm** is TURN-CAP and WALL-CAP incidence beside TURNS-CUT. A column that can only read 0 is not a column.
+- ⛔ **WHICH ARM TRIPS THEM (§H3's own rule):** every truncation in level 4 was a salt-diet cell. Pro greenfield salt-diet walls ran
+  3,635–13,700 s against plain's 738–798 s (RESULT-p1-greenfield-2026-09-13.md §3). **The wall cap is the cap most likely to bind one arm.**
+  Its incidence by arm is therefore a reported result, never averaged away.
+
+**A7.4 · THE COMMENT THAT CARRIED IT.** `agy_wave_v3.sh:106` claims `budgets.env` bounds cost. It does not on this lane. **It is NOT edited
+at `199c791`**, because any byte there moves the export level 6 fires from. It is routed to the builder for master, beside level 8's merge.
