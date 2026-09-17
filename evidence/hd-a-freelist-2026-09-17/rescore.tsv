@@ -1,0 +1,13 @@
+# HD (a) re-scoring receipt — bench, 2026-09-17. Driven on the referee box.
+# VERUS pinned BY SHA from ~/cells/toolchain.env: measured == declared 7a7b319b170692d3...
+# Each cell's solution.rs fetched read-only from the run box; no cell was written to.
+# CONTROLS: s3fp01 (published PASS 7/7) and s3fq01 (published PASS 7/7) must reproduce.
+cell	tree	rc	verdict	tests	role
+s3fp01	s2g	0	PASS	TESTS 7/7	CONTROL-published-7/7
+s3fq01	s2g	0	PASS	TESTS 7/7	CONTROL-published-7/7
+s3fpk01	s2g	1	FAIL	TESTS 6/7	TARGET
+s3fpk02	s2g	1	FAIL	TESTS 6/7	TARGET
+s3fp01	s2k	0	PASS	TESTS 7/7	CONTROL-published-7/7
+s3fq01	s2k	0	PASS	TESTS 7/7	CONTROL-published-7/7
+s3fpk01	s2k	1	FAIL	TESTS 6/7	TARGET
+s3fpk02	s2k	1	FAIL	TESTS 6/7	TARGET

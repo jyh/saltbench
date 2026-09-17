@@ -248,6 +248,19 @@ top-ups scored:
 ```
 ⇒ **The FreeList deficit is REAL AND WEAKER THAN PUBLISHED.** The direction is unchanged; the contrast
 is 4/6 against 1/6, not 3/3 against 1/6, and §②'s sentence must be read with this addendum beside it.
+⭐⭐ **AND THE FOUR TOP-UPS ARE NOT FOUR NEW CELLS — THEY ARE §④'s OWN FOUR, CASHED. THE MAPPING IS ONE FOR ONE:**
+```
+  §④'s never-fired cell        the top-up that replaced it      outcome
+  s3fp02 · s3fp03  (CONTROL)   s3fpk01 · s3fpk02                BOTH FAIL 6/7
+  s3fq03           (CONTROL)   s3fqk01                          PASS 7/7
+  s3ct03           (treatment) s3ctk01                          PASS 6/6
+```
+⇒ 🔑 ***A CAVEAT THAT NAMES ITS DIRECTION CAN BE SETTLED LATER; ONE THAT ONLY SAYS "THE n IS THIN" CANNOT.*** §④ did
+not merely hedge — it said **which way** the exclusion ran (*"toward the treatment"*), and that made it a scheduled
+test rather than a disclaimer. **When the two cells it hedged about were finally run, both failed.**
+⇒ **So §R3 is not a revision of §④. It is §④ resolving.** *(Mapping named by the 90th helm head at signature; it is
+the strongest thing in this addendum and I had not claimed it.)*
+
 ⇒ 🔑 ***THE UNFIRED CELLS WERE NOT NEUTRAL. §④ ALREADY WARNED THAT THREE OF THE FOUR EXCLUSIONS WERE
 CONTROL CELLS ON FreeList AND THAT THE EXCLUSION RAN TOWARD THE TREATMENT — AND WHEN TWO OF THEM WERE
 FINALLY RUN, BOTH FAILED.*** The caveat was correct, it named the right direction, and the magnitude it
