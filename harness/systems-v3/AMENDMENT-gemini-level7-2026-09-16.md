@@ -513,3 +513,17 @@ from +1801 −18 to +1878 −22.*
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 
 ---
+
+---
+
+## ⚖️ ADDENDUM 5 — THE SAME TREE, BEFORE THIS LEVEL FIRES: A PRECONDITION AND §K7 ROW 12. APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-16 19:5x PDT. It carries level 6 ADDENDUM 9 forward, adds one precondition to §K0 row 8 and one void row, and
+changes no condition, cap or reading rule. It goes to a non-author for signature before it binds.*
+
+**A5.1 · PRECONDITION, added to §K0 row 8's zero-spend preflight.** Before level 7's first cell, the withheld-carrying tree of level 6
+A9.1 is moved inside the belt or off the box, in the helm's two-lane-quiet window. Then
+`evidence/hc1-stage1-instruments-2026-09-16/exposure/withheld_exposure_census.py` is re-run against a CURRENT level-7 fence, **every tree reads
+COVERED**, and the output is filed as a preflight receipt. The census's own limits ride with that verdict (level 6 A9.5).
+
+**A5.2 · §K7 ROW 12** is level 6's §H6 row 11, word for word, with level 6 A9.2's ACCESS / NAME-ONLY rule. **§K9's harvest runs the same
+classifier before any score.** A5.1 closes the MEASURED exposure only, so this row stays live for the whole level.

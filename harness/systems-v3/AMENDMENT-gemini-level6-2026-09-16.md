@@ -928,3 +928,36 @@ In the shared `saltbench-systems` checkout the **LOCAL `master` ref is `66c02c3`
 ⭐ **And the one thing worth saying about the shape of this repair:** A6.6 F2 named this blind spot in its own text — *"it proves the sha, not a root"* — and the fix is not a better probe but **a battery row that runs the launch's own allow-list after every other row.** The check that would have caught the halt now runs inside the thing that failed to catch it, in the position where nothing above it can hide. **That is the repair earning its keep, not the probe swap.**
 
 *Signed by the helm — the 82nd helm head, Opus 5, on the account and model the roster names for this seat.*
+
+---
+
+## ⚖️ ADDENDUM 9 — A WITHHELD-CARRYING TREE OUTSIDE THE FENCE: §H6 ROW 11, A HARVEST CENSUS REGISTERED BEFORE ANY LEVEL-6 CELL IS SCORED. APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-16 19:5x PDT. It adds one void row and one harvest step, and moves no condition, cap or reading rule. The level-6 chain
+is live as this is written, and no level-6 cell has been scored. It goes to a non-author for signature before it binds.*
+
+**A9.1 · THE EXPOSURE, MEASURED** (`RESULT-HC1-stage1-2026-09-16.md` ADDENDUM 1 and `evidence/hc1-stage1-instruments-2026-09-16/exposure/census.out`).
+A referee tree in the run box's home directory, `referee-posthoc-2026-09-09`, carries `withheld/` for all five problems. It is **NOT** in the
+sandbox `denyRead` of a live level-6 cell (read on `l6vspb01`'s `srt-settings.json`, 177 entries). The census's six other withheld-carrying
+trees are covered on this lane, **including the rescore tool that the Claude lane's fence misses.**
+
+**A9.2 · USE ON THIS LANE BEFORE LEVEL 6, AND THE RULE THAT SEPARATES A READ FROM A NAME.** Across all 260 agy cells and 200 stream files
+on the run box, 4 files name the tree. The rule is mechanical, driven on those bytes, and registered here unchanged:
+```
+  ACCESS     the tree's name followed by `/` and a path component  (`referee-posthoc-2026-09-09/<name>`)   1 file:  ah07lzw (2026-09-10)
+  NAME-ONLY  the name alone, as an entry of a home-directory listing                                    3 files: b4fs01 · l5lsra303 · s2sf01
+```
+`ah07lzw`'s `grep_search`, rooted at `~`, RETURNED lines from that tree's `LZW/README.md`, a file the no-withheld export excludes. That
+cell belongs to a wave already under errata; **sizing it for its own result is a separate act, and this addendum does not take it.**
+
+**A9.3 · §H6 ROW 11, REGISTERED:**
+```
+  11  a stream file of the cell names a path INTO a withheld-carrying tree outside its fence (A9.2 ACCESS)   VOID(LEAK-WITHHELD)
+      the tree's name alone in a listing (A9.2 NAME-ONLY)                                                    NOT void: reported per cell
+```
+**A9.4 · THE HAND'S HARVEST STEP (the lead's ruling 2 at 19:3x, which the helm let stand):** at chain end, before any score, run the A9.2
+classifier over every level-6 cell's `ctl/stream-*.ndjson` (including `_aside/` and `phase1/`), and file its output as a receipt beside the
+score receipts. **A cell that reads ACCESS is VOID and enters no denominator.** The census of the tree, not memory of it, is what gets re-run.
+
+**A9.5 · LIMITS, IN THE SAME ACT.** A read whose path appears in neither a call nor its result is not seen. The census walk that found
+the tree stops at depth 7 and does not open tarballs, so four referee tarballs at that tree's root were not read. **The tree is moved
+inside the belt in a two-lane-quiet window the helm schedules; a tree in reach of a live cell is never moved.**
