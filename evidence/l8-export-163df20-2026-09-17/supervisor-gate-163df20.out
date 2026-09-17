@@ -1,0 +1,28 @@
+supervisor at 163df20d20c0287c58ff0ec2ca1b97f78c4d04c2  sha256/16 7b03c644726146e4
+== 1 · --selftest
+  rc=0  gemini_canary_wave_v1 --selftest: 88 of 88 passed  FAIL lines 0
+  gate extracted: lines 113..212
+== 2 · the level-8 templates as drafted   (unset | 1 | 1,2)
+  l8u-Crc32-flash.tsv      d7800e51335adefc  rows=2  REFUSE:2[A2.1] | REFUSE:2[A2.1] | REFUSE:2[R6]
+  l8u-Crc32-pro.tsv        ad73f433e93ae7ab  rows=2  REFUSE:2[A2.1] | REFUSE:2[A2.1] | REFUSE:2[R6]
+  l8u-FreeList-flash.tsv   9ea2388510db90a9  rows=2  REFUSE:2[A2.1] | REFUSE:2[A2.1] | REFUSE:2[R6]
+  l8u-FreeList-pro.tsv     2d59acf0118ceb6f  rows=2  REFUSE:2[A2.1] | REFUSE:2[A2.1] | REFUSE:2[R6]
+  l8u-LRU-flash.tsv        cad2cbea8e0a9066  rows=2  REFUSE:2[A2.1] | REFUSE:2[A2.1] | REFUSE:2[R6]
+  l8u-LRU-pro.tsv          c3e5514908c29a5d  rows=2  REFUSE:2[A2.1] | REFUSE:2[A2.1] | REFUSE:2[R6]
+  l8u-LZW-flash.tsv        c9d44d326032bbb8  rows=2  REFUSE:2[A2.1] | REFUSE:2[A2.1] | REFUSE:2[R6]
+  l8u-LZW-pro.tsv          b4a777b77342448e  rows=2  REFUSE:2[A2.1] | REFUSE:2[A2.1] | REFUSE:2[R6]
+  l8u-Paxos-flash.tsv      0c22c2f9cbb67505  rows=2  REFUSE:2[A2.1] | REFUSE:2[A2.1] | REFUSE:2[R6]
+  l8u-Paxos-pro.tsv        0ef42049d1d584ee  rows=2  REFUSE:2[A2.1] | REFUSE:2[A2.1] | REFUSE:2[R6]
+  l8u-TRIP.tsv             914cf0f8089ba70b  rows=1  REFUSE:1[A2.1] | REFUSE:1[A2.1] | REFUSE:1[R6]
+== 3 · CONTROL: the same templates with the extra column emptied (every other byte unchanged), at 1,2
+  l8u-Crc32-flash.tsv      extras-left=0  bytes-changed-only-in-extra=yes  OK
+  l8u-Crc32-pro.tsv        extras-left=0  bytes-changed-only-in-extra=yes  OK
+  l8u-FreeList-flash.tsv   extras-left=0  bytes-changed-only-in-extra=yes  OK
+  l8u-FreeList-pro.tsv     extras-left=0  bytes-changed-only-in-extra=yes  OK
+  l8u-LRU-flash.tsv        extras-left=0  bytes-changed-only-in-extra=yes  OK
+  l8u-LRU-pro.tsv          extras-left=0  bytes-changed-only-in-extra=yes  OK
+  l8u-LZW-flash.tsv        extras-left=0  bytes-changed-only-in-extra=yes  OK
+  l8u-LZW-pro.tsv          extras-left=0  bytes-changed-only-in-extra=yes  OK
+  l8u-Paxos-flash.tsv      extras-left=0  bytes-changed-only-in-extra=yes  OK
+  l8u-Paxos-pro.tsv        extras-left=0  bytes-changed-only-in-extra=yes  OK
+  l8u-TRIP.tsv             extras-left=0  bytes-changed-only-in-extra=yes  OK

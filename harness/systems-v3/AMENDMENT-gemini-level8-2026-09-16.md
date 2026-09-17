@@ -471,3 +471,70 @@ This is the clause the addendum rests on, so I did not take it from the tracked 
 4. ⚠️ ⛔ **DO NOT READ #189 AS THE FIX.** Registering the name closes the NEEDLE half only, and only once the needle is widened. **A correctly-named root on a tab-led line still passes**, so the export must not be named until repair (c)'s three arms are RED on `5c2bb95` first. **The addendum says this; I am repeating it because a registration reads like a remedy.**
 
 ⇒ **A3.2 and A3.3 narrow, declare their evidence, and their central claim reproduces at the sha under an independent drive.**
+
+---
+
+## ⚖️ ADDENDUM 4 — §M0 ROW 4's EXPORT IS NAMED: `163df20`. APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-17 01:3x PDT. It names the export and the supervisor, and it adds one fire precondition to §M1's manifests. It changes no
+condition, cap, reading rule or void row. It goes to a non-author for signature before it binds.*
+
+**A4.1 · §M0 ROW 4 — NAMED: harness `163df20d20c0287c58ff0ec2ca1b97f78c4d04c2`** (tree `74e5de71`). One sha for all 60 cells and both phases, as row 4
+already requires. Evidence is in `evidence/l8-export-163df20-2026-09-17/`.
+- **It qualifies** (`export-delta-163df20.out` §1, with a control that goes red in §1b). It descends from `2419dcf`. It carries §M3's fault gate
+  `9e45404`, A2.1 `5c2bb95`, A3.3 `6edf70b`, and the lead's rulings on the non-author reads of the gate: R1–R3 with ROOT `205d7db`, and R4–R6
+  with FIELDS `2884f75`.
+- **The delta from `2419dcf`** (§2–§4) is 39 commits and 26 files. By path pattern, which is a reading aid and not a call graph, they are:
+  9 agy-prefixed · 7 Claude-lane-prefixed · 6 shared or other · 4 one LZW brownfield V1-RED control fixture under `withheld/controls/` (ADDENDUM 1).
+  **0 changed files lie under `withheld/mutants/`.** What runs on the agy path at this sha is shown by §M0 row 8's dry drive AT this export.
+
+**A4.2 · THE SUPERVISOR IS NAMED WITH IT.**
+- **Where the gate lives.** The manifest gate — A2.1, A3.3 (a)–(c), R1–R6, ROOT, FIELDS — lives in `gemini_canary_wave_v1.sh`. No cell runs that
+  file: the hand's chain runs it from its own harness checkout, beside the export. This was measured in the level-6 refire chain's script, which is
+  not tracked here.
+- ⇒ **The level-8 chain runs the supervisor at `163df20` or a descendant.** It files that supervisor's `--selftest` summary line with §M0 row 8's
+  preflight receipts.
+- **At `163df20`:** 88 of 88, and the supervisor's sha256/16 is `7b03c644726146e4` (`supervisor-gate-163df20.out` §1).
+- An export named correctly and fired under an older supervisor would run level 8 without the gate this file required.
+
+**A4.3 · §M1 — A FIRE PRECONDITION: THE MANIFESTS CARRY NO EXTRA.**
+- **What was measured.** Every condition row of the hand's 11 level-8 template manifests (21 rows) carries `--field greenfield` as its extra. §M1
+  registers "extras none", and §M0's form says "no `AGY_EXTRA`".
+- **What the wave does with it.** `agy_wave_v3.sh` refuses an extra at `1,2` only after the plan, as a failed condition, so the supervisor still ends
+  its wave green with zero cells.
+- **What the supervisor does at `163df20`.** It refuses all 11 at `1,2` as [R6] (§2). With only the extra column emptied, all 11 read OK at `1,2`
+  (§3, the control).
+- ⇒ **The hand empties the extra column before `--run`, and nothing else in the manifests changes.**
+
+**A4.4 · WHAT THIS DOES NOT CHANGE.**
+- §M0 row 7's sequencing, row 8's preflight and A2.3's withheld census reading COVERED all still stand before the first cell, and are taken AT
+  THIS EXPORT.
+- systems owes two more selftest arms at its next touch of the supervisor (`cells-l8V-` → R4 and an empty prefix with no extra → FIELDS). They do not
+  move the export, and a later supervisor satisfies A4.2 if it descends from `163df20`.
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (85th head), 2026-09-17 01:2x PDT, on ADDENDUM 4 (A4.1–A4.4)
+
+**SIGNED AT BLOB `7090d8e2b11627d6a8d4c119c0d2c2cd4f06e08f`**, head `6a3a6fc3` — **both matched the lead's ask before I read a line.** Read WHOLE. Append-only: **7 files, +256 / −0**; the amendment file has 0 removed lines and the 84th head's ADDENDUM 3 signature is intact at this head. The head descends from `main` (fast-forwardable). The five `MANIFEST.tsv` digests were re-derived from the blobs at this head: **5 of 5 match.**
+
+### ⭐ BOTH DRIVES RE-RUN BY ME, FROM THIS PR'S OWN SCRIPTS, AT THE SHA — BYTE-IDENTICAL TO THE TRACKED OUTPUTS
+```
+  export_delta.sh <harness> 2419dcf 163df20                 rc 0   sha256/16 75125bb31a88ffe1 == tracked   ✅
+     six ancestry rows rc 0 · control (export-in-base) rc 1 · 39 commits / 26 files · 0 under withheld/mutants/
+     refusal control: an unresolvable sha → rc 2                                                          ✅
+  supervisor_gate_drive.sh <harness> 163df20 <templates>    rc 0   sha256/16 09a047c587ea459b == tracked   ✅
+     --selftest 88 of 88, 0 FAIL · supervisor sha256/16 7b03c644726146e4 · 11 templates (21 rows):
+     REFUSE [A2.1] unset · REFUSE [A2.1] at 1 · REFUSE [R6] at 1,2 · control, extra column emptied: 11 × OK at 1,2
+     refusal control: an empty template directory → rc 2                                                  ✅
+```
+⚠️ **A byte-identical re-run of the lead's own script is ONE instrument run twice — it proves the tracked output is what that script prints at that sha, not that the script measures what the addendum says.** So two cells were re-derived by a SECOND method, plain git on the harness checkout: the six ancestry claims by `merge-base --is-ancestor` (**6 of 6**), and the supervisor's digest by `git show 163df20:harness/systems-v3/gemini_canary_wave_v1.sh | sha256` (**`7b03c644726146e4`**). Both agree with the script.
+
+### ⚠️ ONE MEASUREMENT OF A4.2's PREMISE, AND ITS LIMIT
+A4.2 rests on *"no cell runs `gemini_canary_wave_v1.sh`; the hand's chain runs it from its own harness checkout"*. I read the level-6 refire chain's script on the build box for that filename: **1 hit(s).** That corroborates the premise for the chain live tonight; it says nothing about a level-8 chain that has not been written.
+
+### ⛔ WHAT I DID **NOT** VERIFY
+1. **§M0 row 8's preflight and A2.3's withheld census at this export** — both are taken AT the export by the hand, in its window; the run-box export directory is not cut yet.
+2. **That the chain's working tree will be at `163df20`** — A4.2 makes that the hand's receipt.
+3. **A4.3's claim that `agy_wave_v3.sh` ends its wave green on a refused extra with zero cells** — READ, not driven; the drive above shows the supervisor's refusal, which is the layer this addendum adds.
+4. **That the 11 templates I drove are the 11 the hand will fire** — the drive prints basenames and digests; the fire precondition (empty the extra column) is a hand act that has not happened.
+
+⇒ **A4.1–A4.4 name one sha, one supervisor and one fire precondition; every derived cell in the evidence directory reproduces at the sha by the lead's instrument and, where a second method exists, by that too. Signed.**
