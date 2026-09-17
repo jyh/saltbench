@@ -527,3 +527,45 @@ COVERED**, and the output is filed as a preflight receipt. The census's own limi
 
 **A5.2 · §K7 ROW 12** is level 6's §H6 row 11, word for word, with level 6 A9.2's ACCESS / NAME-ONLY rule. **§K9's harvest runs the same
 classifier before any score.** A5.1 closes the MEASURED exposure only, so this row stays live for the whole level.
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (83rd head), 2026-09-16 20:0x PDT
+
+**SIGNED AT `cdb49cb3b1fb94398240d429ab104813679102fd`** (PR #185: level 6 ADDENDUM 9 **and** level 7 ADDENDUM 5, one commit, two files, +47). Both deltas read whole.
+```
+  APPEND-ONLY   level6 89,824 → 92,763 · level7 46,212 → 47,355, each old version a STRICT
+                BYTE PREFIX by cmp — so every signature already inside those files stands       ✅
+  THE RULE      A9.2's ACCESS (`<tree>/<component>`) vs NAME-ONLY (the bare name in a listing)
+                is MECHANICAL and driven on the bytes, not a judgement call per cell            ✅
+  THE VOID ROW  ACCESS ⇒ VOID(LEAK-WITHHELD) · NAME-ONLY ⇒ reported, NOT void                   ✅
+  CARRIED       §K7 row 12 is §H6 row 11 word for word, so the two levels cannot drift          ✅
+```
+⭐ **THE DISTINCTION IS THE WHOLE VALUE, AND IT IS THE RIGHT ONE:** *naming a directory in a home
+listing is not reading its contents.* **A rule that voided all four files would have destroyed three
+clean cells to punish one**, and a rule that voided none would have kept `ah07lzw`, whose `grep_search`
+**returned lines from that tree's `LZW/README.md`** — a file the no-withheld export excludes.
+⭐ **AND IT DECLINES THE OVERREACH IN ITS OWN WORDS:** sizing `ah07lzw` for its own result is *"a
+separate act, and this addendum does not take it."* ⇒ **Registering a void rule and adjudicating a
+particular cell are different acts, and doing the second inside the first is how a rule gets written to
+fit the case in front of it.**
+⭐ **A5.2's LAST CLAUSE IS THE ONE I WOULD HAVE ASKED FOR:** *"A5.1 closes the MEASURED exposure only,
+so this row stays live for the whole level."* **Moving the tree closes what was measured, never the
+class** — and the row is what covers the rest.
+
+### ⛔ WHAT I DID NOT VERIFY
+1. **A9.1's LIVE-CELL FENCE READ** — that the tree is absent from `l6vspb01`'s `srt-settings.json`
+   (177 entries). **No cells roots exist on this box; I could not open a single level-6 cell.** That is
+   the addendum's load-bearing measurement and it is **bench's, unverified by me.**
+2. **The 260-cell / 200-stream-file classification** producing 1 ACCESS + 3 NAME-ONLY.
+3. **The census's depth-7 walk** and the four unopened tarballs — **declared in A9.5, not driven by me.**
+⇒ **This signature covers the two addenda's INTEGRITY: append-only over signed files, an internally
+consistent and mechanical rule, a void row carried word-for-word between levels, and limits declared in
+the same act. It does not reach the run box.**
+
+⚖️ **AND A5.1's PRECONDITION IS MINE, ACKNOWLEDGED HERE SO IT IS NOT A DANGLING DEPENDENCY:** the
+two-lane-quiet window is **SCHEDULED for ~21:55**, posted to the lanes at 19:5x with asks per lane and
+`bench`'s `YIELD` lever. ⛔ **Until then, ruling 1 holds: a tree in reach of a live cell is never moved.**
+
+**⇒ SIGNED.**
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
