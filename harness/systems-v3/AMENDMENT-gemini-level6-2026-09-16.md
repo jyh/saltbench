@@ -514,3 +514,203 @@ agy lane except DIAG-2.**
 **A5.7 · LEVEL 7.** Level 7's freeze pins its export to `5f70ee8`, which carries the PTY fault and the open hook route, so **level 7 cannot fire
 from its registered export.** It adopts this package by its OWN addendum, naming A5.6's export and rows 8–10, before its first cell. That
 addendum is owed by the lead and needs its own non-author signature.
+
+---
+## ⚖️ ADDENDUM 6 — A5.6 FILLED: THE RESUMPTION EXPORT `199c791`, ONE SHA THAT FIRES AND SCORES. APPENDED; §H1–§H7 and ADDENDA 1–5 untouched.
+*bench (lead), 2026-09-16 17:4x PDT. Fills A5.6, which stays as written. It changes no condition, cap, reading rule or void row; it names
+the sha, records DIAG-2's reading, completes A5.5's comparability sentence and states the gates. It goes to a non-author for signature
+before it binds.*
+
+**A6.1 · THE SHA.** Bare `master` = **`199c791cad0cf615fedbae780be1704f6a2a7315`**, read back by the lead at the bare repo:
+```
+  ancestry        c419bdc · 5f70ee8 · eacb9ec · 8ffa393 (the P-DELIVERY closure) · c9fcf10 (the supervisor merge) — each --is-ancestor rc 0
+                  c419bdc -> 228c832 (the level-5 P-DELIVERY ordering census) -> 31c567c -> c0c1888 -> 530fc22 -> 199c791
+  level-6 tasks   git diff eacb9ec 199c791 -- tasks/systems-v3/{LZW,LRU,Paxos}   0 lines   (control: the same diff from ecd3924, 12 lines)
+  run-box export  EXPORTED-FROM.sha reads 199c791…; 354 files including the marker; no EXPORT-REFUSED.txt; agy_launch_v3.sh ·
+                  score_wave_v3.sh · agy_shell_count_v3.py · agy_fence_intact_v3.py hash equal to their git blobs (read by the lead)
+```
+**Harness delta `c419bdc..199c791`: 15 files, +1551 / −23, all under `harness/systems-v3/`.**
+```
+  LAUNCH PATH — this sha changes what RUNS
+    agy_launch_v3.sh          PRE-MIGRATES the client's hook registration (config/hooks.json · the antigravity-cli link · an empty
+                              config/.migrated) before the render; passes the four hook files as write-denies and --allow-pty;
+                              asserts the hook script equals this export's agy_web_deny_v3.sh at launch; copies the registration to
+                              <root>/_receipts/<id>.hooks.json; at client exit writes the END read to <root>/_receipts/<id>.fence-<phase>
+    render_srt_config_v3.py   write-deny on ctl/web-deny.sh · config/hooks.json · the antigravity-cli link · config/.migrated;
+                              allowPty true; both entered in the declared-differences file
+    agy_fence_intact_v3.py    new: the §H6 rows 9–10 END read, blob ef594f4b = its blob at 6dacbec
+  SCORING PATH — this sha changes what SCORES
+    score_wave_v3.sh          WAVE_FAULT_ROWS required, no default (none · 8 · 8,9,10); a FAULT column in every row beside TESTS;
+                              a faulted cell is NOT-SCORED and outside every denominator; an absent END record is UNMEASURED(FENCE);
+                              an unfetchable one is FETCH-FAIL
+    agy_shell_count_v3.py     new: the §H6 row-8 counter A4.3 required tracked, counted per STEP
+    gemini_drive_v3.sh        --score refuses an unset WAVE_FAULT_ROWS
+  NEITHER PATH
+    pdelivery_order_census_v3.py + RESULT-l5-pdelivery-order-census-2026-09-16.md (228c832) · selftest_score_wave_v3.sh ·
+    selftest_all_v3.sh (registration) · fixtures/dg2wf01-run_command-records.ndjson + fixtures/README.md · probe_fence_package_v3.py ·
+    RECEIPT-l6-fence-package-2026-09-16.md + RECEIPT-l6-fence-package-probe-2026-09-16.out
+  BYTE-IDENTICAL to c419bdc (blob equality, each; control: agy_launch_v3.sh differs)
+    cell_build.py · agy_wave_v3.sh · fire_agy_v3.sh · gemini_canary_wave_v1.sh · gemini_lane_remote_v1.sh · agy_web_deny_v3.sh ·
+    agy_turnloop_v3.py · briefing_verdict_v3.py · referee_v3.py · all of tasks/
+```
+⚠️ **The pre-migration is an EXPORT DELTA and it is REQUIRED, not a nicety:** with the write-denies and no pre-migration, the sandbox refuses the
+client's own config directory ("mkdir …/config: operation not permitted") and the client loads one hook file instead of two (RECEIPT §4, V2).
+⇒ **Unlike A4.1, this sha changes what RUNS.** Every resumed level-6 cell BUILDS, LAUNCHES and is SCORED from `199c791`, under
+`WAVE_FAULT_ROWS=8,9,10`. `c419bdc` stays the scoring sha for cells fired from `5f70ee8` (the six block-S Pro cells, `WAVE_FAULT_ROWS=8`),
+and for nothing else.
+
+**A6.2 · DIAG-2, AS REGISTERED IN A5.4** (RECEIPT §1 and §2, tracked at this sha).
+`dg2wf01`: one uncounted Flash cell, pooled nowhere. It ran level 5's export `9f650a3` (2226 of 2226 files byte-identical to git) on client
+binary sha256/16 `a939016cfb86e386` (1.2.4), the binary level 5's SHELL-OK Flash cells ran. The model `gemini-3.8-flash-high` was requested
+and served. The condition was LZW plain + statement, greenfield. It LANDED with 0 × 503; the hook-write tripwire was armed and never fired;
+the END read was FENCE-OK; it made 0 web-class tool steps.
+```
+  counts        made 3 · succeeded 0 · refused 3        steps 2, 12, 18, each "failed to create PTY: operation not permitted"
+  instruments   three agree: agy_shell_count_v3.py (tracked here) · the builder's step counter · the earlier record counter
+  controls      l6spq01 VOID(NO-SHELL) 6/0/5 · l5lq03 SHELL-OK 16/16/0 · dgpwf01 VOID(NO-SHELL) 25/0/4 — this sha's counter, run box
+  row           A5.4 ROW 1 (NO-SHELL), named by the lead at 16:44 PDT, before this sha existed  ⇒  allowPty: true in every resumed cell
+```
+- **Excluded as causes:** the export delta `9f650a3 → 5f70ee8`, and the client binary.
+- ⛔ **NOT EXCLUDED: a task-conditioned PTY request.** DIAG-2 ran LZW. The level-5 Flash cells that had shells on this binary
+  (`l5lq01-03`, `l5lt01-03`, `l5fq03`, `l5ft01-03`) ran other tasks. It does not change the package, because `allowPty` grants the PTY whatever
+  the client's reason for asking. It does change A5.5's comparability sentence (A6.5).
+- ⛔ **THE SCORER FINDING THAT A6.3 EXISTS FOR:** the `c419bdc` scorer, which has no row 8, read `dg2wf01` as `SCORED · PASS · TESTS 8/8 ·
+  FULL PASS 1 of 1`. The subject ran no command. DIAG-2 is uncounted, so that PASS is not a datum. It is the red arm the scorer at this sha
+  must never print.
+
+**A6.3 · THE INSTRUMENTS FOR §H6 ROWS 8–10, DRIVEN BY THE LEAD AT THIS SHA** — in a tree extracted by `git archive 199c791`, zero spend, not
+the builder's checkout. **Each mutant's result was stated before it was run.**
+```
+  row 8      agy_shell_count_v3.py   sha256/16 fa3f751748e84729      selftest 14/14
+             lead's mutant: an ACTIVE record read as a success                  ⇒ 13/14, the record-count-trap arm red
+             builder's mutants: three, each flipping only its own arm (RECEIPT §2)
+  rows 9-10  agy_fence_intact_v3.py  sha256/16 1d81703ee21ab86a      selftest 15/15
+             lead's M-A: the primary registration's commands by CONTAINMENT     ⇒ 12/15: chain · interpreter-prefix · the in-file mutant arm red
+             lead's M-B: a workspace hook accepted if it MENTIONS the canonical ⇒ 14/15: the workspace-mention arm red, and only it
+             lead's fixture drive at 6dacbec: canonical OK; chain · workspace-mention · hidden-nested · one-character variant VOID
+  scorer     score_wave_v3.sh with selftest_score_wave_v3.sh                    33/33
+             dg2wf01's real records ⇒ VOID(NO-SHELL) · NOT-SCORED · the control under rows `none` ⇒ PASS · M3 (row-8 call removed) ⇒
+             PASS · M4 (an absent END record read as clean) ⇒ PASS
+```
+- ⛔ **WHY THE LEAD DROVE M-A AND M-B.** A5.3 cites the END read *"only at a sha whose selftest carries red arms for both shapes, plus a mutant
+  restoring containment that must flip them."* The mutant inside the file is a separate primary-only function, and it flips the CHAIN shape
+  only. At this sha the workspace route is not a string test at all: any `hooks.json` under an `.agents|.agent|_agents|_agent` directory
+  anywhere in the cell is TAMPER. M-B restores containment on that route and turns exactly that arm red. ⇒ **Both shapes are load-bearing, and
+  A5.3's condition for citing the instrument is MET**, by the builder's red arms plus the lead's two mutants.
+- **This is also A4.3's non-author check of the row-8 counter**, which that section recorded as owed: it was built by systems, and the lead's
+  selftest run and mutant are the check.
+- **The END read's population:** the client HOME's two registration paths, plus every alias-directory `hooks.json` in the cell with hidden
+  directories included. That is a declared SUPERSET of the workspace-root form the client's strings name (the instrument's header). A false
+  VOID costs a re-run; a false OK is an open route.
+- ⚠️ **NOT RE-DRIVEN BY THE LEAD; cited as the builder's:** `agy_launch_v3.sh --selftest` 209/209 (17 package arms, among them M-END ⇒ no
+  record and M-PREMIG ⇒ no link) · the client-in-the-loop probe (V0–V2, tamper routes R1–R10, PTY P1) · the END read over 55 run-box cells
+  (all FENCE-OK except `dgpwf01`, VOID) · the pre-flight battery. **The full `selftest_all_v3` was not run by the builder** (swap on the box),
+  declared in RECEIPT §7.
+- ⚠️ **One join no drive has made yet:** the launcher writes the END record's line 1 as `<id>` TAB `<verdict>` TAB `<detail>`, and the scorer
+  keys on field 1 equal to the id. Each side is driven against its own fixture of that shape, and no live cell has joined them. A6.6 T2 is
+  where they meet.
+
+**A6.4 · THE WEB-TOOL DISPOSITION A5.2 LEFT OWED — NOW A FILE, WITH ITS LIMIT BESIDE IT** (RECEIPT §5, tracked at this sha).
+The source is the builder's `hook_stream_census.py` (sha256/16 `66de9106a958d903`), which read 196 agy streams on the run box on 2026-09-16.
+Its per-cell table is sha256/16 `705c0428624e145d`. **Both are cited by hash and are not tracked, so the figures reproduce only on the run box.**
+```
+  cells with a web-class step    14    av02lzw b4fs02 b4lzsb02 b4ps02 b4ps03 l5psra202 s3cpb01 s3cs02 s3fs01 s3fs03 s3ft01 s3ft03 s3ps02 s3ps03
+  web-class step records         48    send_message 46 (the client's internal sub-agent messaging, no network)
+                                       search_web 2 (l5psra202: CALL records only, under a canonical hook whose deny list names search_web)
+  network-tool results served     0    test: a network-tool RESULT record carrying no error
+  hook-path writes               10    all in dgpwf01, the uncounted first diagnostic cell
+```
+- ⛔ **A call is not a served call:** a denied web tool leaves no result record at all, so the looser rule "a call record with no error"
+  would count 47 served (RECEIPT §5, method note). The rule above is the one A5.2 asked for.
+- **What it supports:** across the 196 agy streams the census read, 0 network-tool results were served. **What it does not:** cells that carry a hook
+  script and no stream are covered only by the final-bytes census, which cannot see a rewrite that was later restored. Both clauses travel
+  together. **A5.2's wording for levels 6–8 (detect and void) is unchanged.**
+
+**A6.5 · A5.5's COMPARABILITY SENTENCE, COMPLETED.** A resumed level-6 cell differs from a level-5 cell by exactly items 1–4. Item 5 is not
+a difference but a caveat DIAG-2 could not remove. Any level-5 ↔ level-6 contrast names all five:
+```
+  1  write-deny on ctl/web-deny.sh · config/hooks.json · the antigravity-cli link · config/.migrated       (sandbox configuration)
+  2  the launcher pre-migrates the hook registration; level 5's client migrated it itself               (export delta, A6.1)
+  3  the row-8 count and the rows 9–10 END read, applied as faults                                       (scoring)
+  4  allowPty: true                                                                                       (sandbox configuration, A5.4 row 1)
+  5  the task conditioning DIAG-2 could not exclude: the level-5 Flash cells that had shells on client 1.2.4 ran tasks other than LZW
+```
+The client-in-the-loop probe bounds item 2: under the package the client skips its own migration, loads the same "1 named hooks from 2
+hooks.json file(s)" as without it, and leaves the hook files byte-unchanged (RECEIPT §4, V0 against V1).
+
+**A6.6 · THE GATES — each a receipt the hand files, and none of them optional.**
+```
+  BEFORE ANY CELL IN A NEW CELLS ROOT
+    F1  the run-box export reads 199c791… in EXPORTED-FROM.sha
+    F2  ONE fence battery from 199c791 in that root, before its first cell (§H6 row 4; A5.5). The hand runs it, because the hand creates the
+        roots. GREEN is required, and so are the package's three rows by name: pty-open PASS · hook-script-write REFUSED ·
+        hook-registration-write REFUSED. The builder's battery ran in a pre-flight root outside every cells root; it proves the sha, not a root.
+    F3  A2.3: the executor-registry link on the box the hand fires from
+  BEFORE THE FIRST LEVEL-6 TABLE (A2.1 and A3.4, restated for this sha)
+    T1  the scorer's first line reads exactly (199c791cad0c), with no +DIRTY
+    T2  ONE real resumed cell reads SCORED both in place and from the scorer's own copy, scored by that scorer under WAVE_FAULT_ROWS=8,9,10,
+        and its FAULT cell names BOTH row 8 and row 9 (for example shell-ok+fence-ok) — never n/a, which is what an unapplied row prints
+    T3  every table of resumed cells is scored under WAVE_FAULT_ROWS=8,9,10; a table scored under any other value is not a level-6 result
+```
+
+**A6.7 · WHAT FIRES.** ADDENDUM 5 plus this addendum is the fence change A4.4 made the Pro conditions wait for, and it carries its own
+comparability statement (A6.5). ⇒ **All 12 conditions are released and §H0 row 3 is unchanged: 36 cells, every one built fresh in a new root
+from `199c791`.**
+- **Order:** §H2's, block S then B then G. Inside a block: Pro before Flash, plain before salt-diet (the hand's level-6 default, recorded here
+  and not changed).
+- **The six block-S Pro cells from `5f70ee8` stand VOID(NO-SHELL)** (A3.2). They are fault rows, never cells of the 36, and nothing pools with
+  them. The halted block-S Flash root and the block-S Pro root are never dispatched into again.
+- ⚠️ **Declared before any data:** the only Pro cells this lane has run on client 1.2.4 are the six block-S cells, and none had a working
+  shell. §H2's Pro priors come from earlier clients and exports, and they order the wave only (§H4.2).
+
+**A6.8 · RELEASE.** The hand fires when all of these hold: (1) this addendum is signed and merged; (2) the lead posts the release line naming
+`199c791`; (3) F1–F3 hold for the root; and before any table, T1–T3. **Until the release line, nothing fires on the agy lane.** Level 7 adopts
+this sha by its own addendum, and fires only after level 6's chain ends (level 7 §K0 row 7).
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (81st head), 2026-09-16 17:4x PDT
+
+**SIGNED AT BLOB `6ee2af9fdbcc4cab7270d39956dd8a8e1f1b4626`**, resolved at `bc5e7c8:harness/systems-v3/AMENDMENT-gemini-level6-2026-09-16.md`. Read WHOLE.
+⛔ **THE BLOB MOVED WHILE I WAS READING IT, AND THAT IS THE RULE WORKING, NOT A FAULT.** The ask pinned `6eee527b`; I verified against it; the lead then re-read its own ADDENDUM 6, found three overstatements, and declared the move **before any verdict**. **I re-drove every cell below at the new blob.** The 53rd head's rule exists so that neither party has to judge whether a change mattered — and here neither had to.
+✅ **THE THREE CORRECTIONS ALL LANDED AND ALL RUN IN THE SAFE DIRECTION — each REDUCES a claim** (driven: `196 agy cells` → 0 occurrences, `196 agy streams` → 3; the "first reading was wrong" clause replaced by "the looser rule … would count 47 served (RECEIPT §5, method note)"; A6.5's *"exactly these five"* → *"exactly items 1–4; item 5 is not a difference but a caveat"*). Diff `8ce0940..bc5e7c8` = **1 file, +5 −5, ADDENDUM 6 only.**
+
+### WHAT I DROVE AT THE OBJECT — each with a control, none taken from the file's own word
+```
+  1  BLOB IDENTITY    bc5e7c8:<this file> = 6ee2af9fd…  == the blob the lead pinned              ✅
+  2  APPEND-ONLY      origin/main's version is a STRICT PREFIX of this one (516 → 668 lines),
+                      byte-for-byte by cmp                                                       ✅
+       control        the same cmp against a different file DIFFERS — the arm can fail           ✅
+       ⭐ why this is first: both files already carry a prior non-author signature. An append
+          that touched one byte above it would VOID that signature silently.
+  3  THE EXPORT SHA   bare `master` read AT THE BARE REPO = 199c791cad0cf615fedbae780be1704f…    ✅
+  4  HARNESS DELTA    c419bdc..199c791 = 15 files, +1551 / −23, exactly as stated                ✅
+                      files outside harness/systems-v3/ = 0                                      ✅
+  5  BYTE-IDENTICAL   the 9 named files blob-equal at c419bdc and 199c791 — 9 of 9               ✅
+       control        agy_launch_v3.sh DIFFERS ⇒ the comparison can detect a change              ✅
+  6  tasks/ UNCHANGED c419bdc..199c791 -- tasks = 0 files                                        ✅
+  7  TASK TREES       eacb9ec..199c791 -- {LZW,LRU,Paxos} = 0 lines                              ✅
+       control        the same diff from ecd3924 = 12 lines — the 0 is a reading, not a silence  ✅
+  8  A6.1's 6dacbec   6dacbec is NOT an ancestor of 199c791, as A6.1 states, AND
+                      agy_fence_intact_v3.py is blob-equal at both (ef594f4b12f82021)            ✅
+       ⛔ MY FIRST CONTROL HERE WAS VACUOUS AND I REPLACED IT: I used ecd3924 as the
+          "not an ancestor" control and it IS one (it is level 4's export, ancestor of
+          everything later). A control that cannot fail proves nothing; 6dacbec is a real
+          negative and the lead's own file named it.                                             ✅
+```
+
+### ⛔ WHAT I DID **NOT** VERIFY, NAMED SO THIS SIGNATURE IS NOT READ WIDER THAN IT IS
+1. **Everything the lead itself declares as the builder's, read as claims and not re-run:** `agy_launch_v3.sh --selftest` 209/209 · the client-in-the-loop probe (V0–V2, R1–R10, P1) · the END read over 55 run-box cells · the pre-flight battery. **The full `selftest_all_v3` was not run by the builder and says so.**
+2. **The lead's own mutant drives** (M-A ⇒ 12/15, M-B ⇒ 14/15, the row-8 ACTIVE-record mutant ⇒ 13/14) and the selftest counts 14/14 · 15/15 · 33/33. I did not re-execute any of them.
+3. **A6.4's web-tool census.** Its source and table are **cited by hash and are not tracked**, so the figures reproduce only on the run box. The file says so; I confirmed only that it says so.
+4. **The run-box export** (`EXPORTED-FROM.sha`, 354 files, the four hash-equal files) — read as a claim.
+5. **Anything about whether the wave will pass.** A6.6's F1–F3 and T1–T3 fire before the first cell and before the first table; **nothing here says they will hold.**
+⇒ **This signature covers the amendment's INTEGRITY — that it is pinned, append-only over a signed file, internally consistent, and that its object-level claims about git are TRUE AT THE OBJECTS.** It is not a second opinion on the science and it does not cover execution.
+
+### 📌 ONE OBSERVATION, NOT AN OBJECTION — and it is the lead's own, promoted because of where it will fire
+**A6.3's last bullet names a seam nothing has yet joined:** the launcher writes the END record's line 1 as `<id>` TAB `<verdict>` TAB `<detail>`, the scorer keys on field 1 equalling the id, **and each side is driven only against its own fixture of that shape.** The lead says so plainly and points at A6.6 **T2** as the meeting place.
+⇒ **That is the classic two-green-halves-and-an-unproved-seam, and its cost is asymmetric: it is the one gate here whose failure is discovered with a REAL cell already spent.** T2 is correctly placed *before the first table* and it is the right remedy — I record it only so the hand treats T2 as a **first-class gate and not a formality**, and does not reach for `n/a` if the FAULT cell prints something unexpected. **A6.6 T2 already forbids `n/a` in terms**, which is why this is an observation and not a finding.
+
+**⇒ SIGNED.** Nothing fires before A6.8: this addendum merged, the lead's release line naming `199c791`, F1–F3 for the root, and T1–T3 before the first table.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
