@@ -733,3 +733,106 @@ client build, HC1's own registered confounds. **It is a token-volume reading wit
 - **bench's correction to the helm is accepted and it is mine, not the lead's:** the minute's ⑤ chain and the helm's gate line to bench both name **T-O** as the tripwire read before the block continues. Under ⑤(a) **the campaign's first cell is T-S (`SG · LRU · plain · greenfield bare`)**, and T-O is no longer first. **The minute and the gate are corrected by the helm in the same act as this signature.**
 
 **⇒ SIGNED.** A3.0–A3.7 are internally exact, their load-bearing claim is true at the census by an independent derivation with a control that fails, and their scope is honestly bounded by their author. Nothing fires before the release addendum names the export sha and carries the `rates.tsv` re-read.
+
+## ⚖️ ADDENDUM 4 — THE RELEASE: THE EXPORT IS NAMED, THE CENSUS IS RE-RUN, THE RATES ARE RE-READ, AND T-O's READING LIST. APPENDED; all text above, signatures included, untouched.
+**bench (lead), 2026-09-16.** This is the addendum §Q0 row 4 and A1.1 require before the first cell. **It fires nothing by itself:** T-O fires only
+after a non-author signs it. Every figure is read from `evidence/claude-lane-b-release-2026-09-16/`.
+
+### R4.1 · §Q0 ROW 4 — THE EXPORT IS `bcd2205`
+- **Why not `2822925`, which ADDENDUM 2 A2.4 measured:** `bcd2205` is `2822925` plus ONE file, `clb_stage.sh` (ruled (A) by the helm and read by
+  it, AGREES). The stager now reads ONE block table, and `--roots` REFUSES before creating anything unless the enumeration equals §Q1's
+  64 = 18 + 46. Before that, the ROOTS line typed the split and never compared its count. Under §Q0 row 4 (one sha for all 192 cells), release
+  was the last moment this fix cost an addendum rather than a split lane.
+- **A2.4's run-box drive is RE-RUN against this export, not inherited** (`runbox-drive-bcd2205.out`): the marker reads `bcd2205682c7…` ·
+  362 files plus the marker · 0 withheld/mutants directories · 1 path carrying the word (the leak instrument) · givens 5/5 as in A2.4 · the
+  export's own `served_models_v3.py` reads 45 of 45 HC1 cells clean as Opus and SUBSTITUTED as Sonnet. Beside the 2822925 export on the run
+  box, a content digest of every file differs in exactly one: `clb_stage.sh`.
+- **(i) Lineage:** it descends from `cc227b4`, and so from `eacb9ec` (`git merge-base --is-ancestor`, both yes). The five brownfield givens in
+  the export's bytes equal `eacb9ec`'s blobs, 5 of 5.
+- **(ii) §Q2's build items:** items 1, 2 and 5 at merge `e9124f3` · item 3 at merge `33d8016` · item 4 at `1e84112` · the item 1↔3 integration
+  at merge `b7eb4f1` · the follow-ups at merge `3853baf` · A2.2's rule at `2822925` · the one-table stager at `bcd2205`. Each is an ancestor of
+  `bcd2205`.
+- **The delta from `9f650a3`** (HC stage 1's export) is `harness-delta-9f650a3-bcd2205.tsv`: 65 commits and 54 paths
+  (harness/systems-v3 23 A · 21 M; tasks/systems-v3 7 A · 3 M). `rates.tsv`, `cost_caps.tsv` and `models.tsv` are blob-identical at both ends.
+- **One sha for all 192 cells,** recorded per cell by the stager.
+
+### R4.2 · A1.1 ITEM 2 — THE WITHHELD CENSUS, RE-RUN AT RELEASE — ⏳ PENDING THE HELM'S WINDOW
+- **The instrument** is `withheld_exposure_census.py`, a COPY of #184's instrument. It differs ONLY by a guard that REFUSES when `~` holds no
+  `cells-*` root, and by a printed host-role line (`census-guard.diff`). Driven on the build box: `REFUSE`, rc 1. #184's original is untouched,
+  because it backs a published MANIFEST digest.
+- **The fences:** the Claude fence of T-O's cell, staged from the `bcd2205` export, and a current agy fence.
+- ⏳ **`census.out`: NOT YET TAKEN.** **Every tree must read COVERED**, or this addendum is not offered for signature. A1.1 item 3's limits
+  ride with it.
+
+### R4.3 · RATES — RE-READ, TWO SIDES, BY SCRIPT — ✅ **TAKEN 2026-09-17, `VERDICT ALL-EQUAL`, rc 0**
+`rates_reread.py` compares the prompt-caching page that `rates.tsv` cites, row by row and figure by figure, for the three served models.
+**The tracked reading is `evidence/claude-lane-b-release-2026-09-16/rates-reread.out`:**
+```
+  page 157,459 B  sha256/16 0bde1d1be67c46c4      (the URL is rates.tsv's own SOURCE line; fetched HTTP 200)
+  claude-opus-5     EQUAL   page 5 · 6.25 · 10 · 0.5 · 25       rates 5 · 6.25 · 10 · 0.5 · 25
+  claude-sonnet-5   EQUAL   page 2 · 2.5 · 4 · 0.2 · 10         rates 2 · 2.5 · 4 · 0.2 · 10
+  claude-fable-5-1  EQUAL   page 10 · 12.5 · 20 · 0.25 · 50     rates 10 · 12.5 · 20 · 0.25 · 50
+  VERDICT ALL-EQUAL
+```
+⭐ **THREE RED ARMS WERE DRIVEN ON THIS PAGE READ, not inherited from the pre-window drive** (`rates-reread-red-arms.out`) — a check is
+validated by its ability to FAIL, and a control taken against different bytes is a different control:
+```
+  a one-figure mutant on the RATES side    rc 1   DIFFERS, and it names claude-sonnet-5
+  a one-figure mutant on the PAGE side     rc 1   DIFFERS, and it names claude-opus-5 — the page sha CHANGES with it,
+                                                  which is how the instrument shows it read the bytes it names
+  a MISSING row on the rates side          rc 1   MISSING (page row found · rates row absent), never "equal"
+```
+⛔ **THE ROWS STAND UN-REDATED, AND THAT IS A CONSEQUENCE OF THE FREEZE, NOT A PREFERENCE:** `rates.tsv` is a blob **inside the named
+export** (`8756904f2d1117114c7767133f083ae2b8fd642d`, identical at the export sha, at harness master and on disk), so re-dating `read_on`
+would change the export and re-open §Q0 row 4. **The verification is recorded HERE instead.**
+⚠️ **AND THE READER OF A PRICE DOES NOT SEE THIS PAGE:** `cell_meter.py` prints `rates rates.tsv read_on 2026-09-05` in EVERY run, so a cell
+receipt carries the date the rows were WRITTEN and not the date they were last VERIFIED. **This section is that surface** — a limit must ride
+where its verdicts ride, and this one cannot, so it is named at both ends.
+
+### R4.4 · A1.5 — THE LANE ENV FILE'S KEYS
+`CLB_CFG` · `CLB_BIN` · `CLB_PINSHA` · `CLB_EXPORT` · `CLB_PROBE_OUTSIDE`. `CLB_PINSHA` asserts `884baa38fe1a624b` (§Q0 row 5), and the client
+at `CLB_BIN` reads the same. `CLB_EXPORT` names the `bcd2205` export, and its marker, read through the env file, is `bcd2205682c7`. The values that identify an account or a host are untracked.
+
+### R4.5 · T-O — WHAT THE LEAD READS BEFORE BLOCK O CONTINUES (§Q3.3 + A1.4, in one list)
+⛔ **AMENDED BY ADDENDUM 3 (⑤(a)): T-O IS NO LONGER THE FIRST CELL OF THE LANE.** This section was written when block O fired first and its
+original heading said *"WHAT FIRES"*. **The list below is unchanged and still binds T-O**; what moved is only its position — the lane's first
+cell is now **T-S**, and its first BROWNFIELD cell is **T-SB**, whose reading list is the UNION of this list and R4.6's.
+**T-O** is `clb_fire.sh O LRU salt-diet 1`: one sandbox probe turn, then the cell, registered as an executor (`shape=process`). The lead reads
+its fire log WHOLE, then:
+```
+  staging      ctl/field · ctl/card_extras · the given at the first commit byte-identical to the export's · the export sha in the cell record
+  fire path    SETTINGS … read back · TRUST SEEDED · FENCE CONVERGES (sha16 …) · CHECK CLEAN · P-SANDBOX GREEN for fence … ·
+               the receipt under <root>/_audit/sandbox-probe/ for that sha · the pin sha in the launch record
+  in the cell  W1 COVERED · the end marker verbatim · run_state terminal (item 2) · the served set, clean (item 3)
+  after        the scorer's first line naming the export sha (item 5, off the box, A1.2) · the concurrency column
+```
+**All read ⇒ block O continues, on one bus line.** Any row that does not read HOLDS the block.
+
+**WHERE AND HOW T-O IS SCORED (A1.2 made concrete, and driven across boxes on a harvested copy, `score-xbox-drive.out`):**
+- **Harvest:** copy the ended cell off the run box, excluding `repo/target/` (read-only at the source).
+- **Tree:** on the build box, where the withheld suite lives, `git archive bcd2205 harness/systems-v3 tasks/systems-v3`. ⛔ **Then write
+  `EXPORTED-FROM.sha` = `bcd2205` into that tree.** Without the marker the scorer's first line reads *"not a git tree, no
+  EXPORTED-FROM.sha"*, and §Q3.3's row *"the scorer's first line naming the export sha"* cannot read (driven: RUN 1 against RUN 2).
+- **Score:** `score_claude_v3.py --tasks <tree>/tasks/systems-v3 --declared <file>`.
+- **The drive:**
+  - An HC stage 1 cell copy scored end to end.
+  - A never-ended brownfield probe cell was REFUSED as UNDETERMINED, which is the right refusal.
+  - ⚠️ **It is a plumbing drive, not a result.** It scores ONE HC1 cell and states no HC1 rate.
+  - **The `w1_fenced` column has not yet been read on a brownfield COPY** (no ended Claude brownfield cell existed). **T-O is its first
+    reading, and it joins T-O's list:** `w1_fenced` must read COVERED on the harvested copy.
+
+### R4.6 · T-S — THE READING LIST'S ADDITIONS (§Q3.3 T-S, plus A2.2), SO BLOCK SG DOES NOT OPEN ON §Q3.3's LIST ALONE
+**T-S** is `clb_fire.sh SG LRU plain 1`, the campaign's first Sonnet-headed cell.
+⛔ **AMENDED BY ADDENDUM 3 (⑤(a)).** This sentence read *"It fires after block O and block OS, in §Q3.2's order"* — **true when written and
+false since the 09-17 council.** **T-S now fires FIRST of the entire lane**, so §Q3.4 item 2 (the cells' config-dir IDENTITY, from the
+credential tool and never from the directory's name) is read at T-S, not at T-O. ⭐ **And its token reading answers ⑤'s caveat the same hour**,
+against `hc1lp01/02/03` — T-S's exact condition one model up, n=3, already landed (ADDENDUM 3 §A3.6).
+Besides §Q3.3's rows, the lead reads:
+```
+  launch     the ARGV line's "env names:" carries BOTH CLAUDE_CODE_SUBAGENT_MODEL and CLAUDE_CODE_SUBAGENT_MODEL_FORCE
+             (cell-claude.sh prints the env NAMES on every launch); an Opus root's ARGV line carries NEITHER (T-O is the control)
+  probe      the sandbox probe turn ran with the same two names (cell-claude.sh --env)
+  served     served_models_v3.py check-cell --condition sonnet: clean, EVERY assistant record head and sidechain claude-sonnet-5,
+             no COST-BLIND; any Agent spawn input carrying a `model` key is itself a finding (FORCE removes the parameter)
+```
+**Any row that does not read HOLDS block SG,** and A2.2's rule is then unverified at the object. It is posted, never assumed.

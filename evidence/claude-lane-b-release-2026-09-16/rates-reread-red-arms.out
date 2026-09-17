@@ -1,0 +1,29 @@
+# rates-reread-red-arms.out — the three RED arms driven 2026-09-17 against THE SAME page read as rates-reread.out
+# (page sha256/16 0bde1d1be67c46c4). A check is validated by its ability to FAIL, and a control taken against
+# different bytes is a different control — these are not inherited from the 09-16 pre-window drive.
+# The rates.tsv under test is the blob INSIDE the named export: 8756904f2d1117114c7767133f083ae2b8fd642d.
+
+=== ARM 1 — one figure mutated on the RATES side (claude-sonnet-5 cache_read 0.20 -> 0.21); seed verified non-identical
+page 157459 B sha256/16 0bde1d1be67c46c4
+claude-opus-5	EQUAL	page 5 · 6.25 · 10 · 0.5 · 25	rates 5 · 6.25 · 10 · 0.5 · 25
+claude-sonnet-5	DIFFERS	page 2 · 2.5 · 4 · 0.2 · 10	rates 2 · 2.5 · 4 · 0.21 · 10
+claude-fable-5-1	EQUAL	page 10 · 12.5 · 20 · 0.25 · 50	rates 10 · 12.5 · 20 · 0.25 · 50
+VERDICT NOT-EQUAL
+rc 1
+
+=== ARM 2 — one figure mutated on the PAGE side (Claude Opus 5 output $25 -> $26); seed reported 1 row mutated
+#   note the page sha CHANGES with the mutation: the instrument names the bytes it read.
+page 157459 B sha256/16 ba8c2e6f99f899ba
+claude-opus-5	DIFFERS	page 5 · 6.25 · 10 · 0.5 · 26	rates 5 · 6.25 · 10 · 0.5 · 25
+claude-sonnet-5	EQUAL	page 2 · 2.5 · 4 · 0.2 · 10	rates 2 · 2.5 · 4 · 0.2 · 10
+claude-fable-5-1	EQUAL	page 10 · 12.5 · 20 · 0.25 · 50	rates 10 · 12.5 · 20 · 0.25 · 50
+VERDICT NOT-EQUAL
+rc 1
+
+=== ARM 3 — the claude-opus-5 row REMOVED from rates.tsv: MISSING, never 'equal'
+page 157459 B sha256/16 0bde1d1be67c46c4
+claude-opus-5	MISSING (page row found · rates row absent)
+claude-sonnet-5	EQUAL	page 2 · 2.5 · 4 · 0.2 · 10	rates 2 · 2.5 · 4 · 0.2 · 10
+claude-fable-5-1	EQUAL	page 10 · 12.5 · 20 · 0.25 · 50	rates 10 · 12.5 · 20 · 0.25 · 50
+VERDICT NOT-EQUAL
+rc 1

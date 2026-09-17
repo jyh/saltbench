@@ -1,0 +1,12 @@
+9a10,14
+> 
+> RELEASE COPY (Claude lane (B), 2026-09-16), differing from evidence/hc1-stage1-instruments-2026-09-16/exposure/ ONLY by
+> the guard below and the host-role line it prints: a census of $HOME names no host, so on a machine that holds no cells it
+> would print a clean, empty table. It REFUSES instead when $HOME holds no cells-* root. The original is unchanged because it
+> backs a published MANIFEST digest.
+33a39,41
+>     ncells = sum(1 for d in os.listdir(home) if d.startswith("cells-") and os.path.isdir(os.path.join(home, d)))
+>     if ncells == 0:
+>         raise SystemExit("REFUSE: no cells-* root under ~ -- this is not the box the cells ran on, and a census here would read clean")
+51a60
+>     print("# host role: the run box (cells-* roots under ~: %d)" % ncells)
