@@ -292,6 +292,7 @@ THE MEDIAN NOT AT ALL.** Recomputed over all 18 salt-diet cells the medians and 
 robust to the exclusion decision, which is the first thing a sceptic would ask about and is worth one line.**
 
 ### ⛔ THE FINDING — **ONE BLOCK CELL USES A DENOMINATOR THIS DOCUMENT ELSEWHERE FORBIDS**
+✅ **TAKEN BY THE AUTHOR AT `bed0e9e`, AND BETTER THAN I ASKED FOR: the block table now carries `declared` and `scorable` as SEPARATE COLUMNS with a totals row tied to §1's own denominator, which makes the distinction unquotable-wrong rather than merely correct.** ⛔ **THE PARAGRAPH BELOW THEREFORE DESCRIBES BLOB `fdffacd33`, WHICH I SIGNED, AND NOT THE CURRENT FILE** — it is left standing because a finding that is silently deleted once it is fixed leaves no evidence that the check worked. ⇒ 🔑 ***A SIGNATURE THAT REPORTS A DEFECT GOES STALE THE MOMENT ITS AUTHOR IS LISTENED TO, AND THE BETTER THE AUTHOR RESPONDS THE FASTER IT ROTS — a failure mode of being right, and the reason a superseded figure is marked where a quoter meets it rather than at the foot.***
 §3 says of `l6vgfs02`: *"It is a VOID cell, not a failure, and it enters no pass/fail denominator."*
 ADDENDUM 9 §P2 says it again, in the same commit. **§1's block table, and §P3's reprint of it, then give
 it one.**
