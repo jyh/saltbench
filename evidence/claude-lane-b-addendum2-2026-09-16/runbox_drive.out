@@ -1,0 +1,57 @@
+EXPORT marker: 2822925e3f5ba921d0e177f30e211004bdc1636a
+EXPORT files: 363
+EXPORT dirs named withheld|mutants: 0
+EXPORT paths containing 'withheld' or 'mutant' (case-insensitive): 1
+EXPORT refused-file: absent
+GIVEN Crc32 blob 3e3107549e5d6d1b56a1d87b1ecd9a61714c5626 (1638 B)
+GIVEN FreeList blob c330b6312132a247794e0c08e42a93daac47cbdd (6636 B)
+GIVEN LRU blob a911477d17d07fe5ff64fda6ae45d6569edde58e (2883 B)
+GIVEN LZW blob 10db31a6aacdb3bea18ba63f4989205420f0c2f7 (2748 B)
+GIVEN Paxos blob 9e536cad8fd0a84f52327cc88b6e08666bbd8713 (10519 B)
+CELL cells-hc1-crc32-placebo/hc1cb01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-crc32-placebo/hc1cb02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-crc32-placebo/hc1cb03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-crc32-plain/hc1cp01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-crc32-plain/hc1cp02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-crc32-plain/hc1cp03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-crc32-saltdiet/hc1cs01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-crc32-saltdiet/hc1cs02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-crc32-saltdiet/hc1cs03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-freelist-placebo/hc1fb01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-freelist-placebo/hc1fb02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-freelist-placebo/hc1fb03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-freelist-plain/hc1fp01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-freelist-plain/hc1fp02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-freelist-plain/hc1fp03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-freelist-saltdiet/hc1fs01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-freelist-saltdiet/hc1fs02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-freelist-saltdiet/hc1fs03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lru-placebo/hc1lb01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lru-placebo/hc1lb02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lru-placebo/hc1lb03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lru-plain/hc1lp01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lru-plain/hc1lp02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lru-plain/hc1lp03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lru-saltdiet/hc1ls01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lru-saltdiet/hc1ls02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lru-saltdiet/hc1ls03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lzw-placebo/hc1zb01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lzw-placebo/hc1zb02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lzw-placebo/hc1zb03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lzw-plain/hc1zp01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lzw-plain/hc1zp02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lzw-plain/hc1zp03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lzw-saltdiet/hc1zs01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lzw-saltdiet/hc1zs02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-lzw-saltdiet/hc1zs03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-paxos-placebo/hc1pb01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-paxos-placebo/hc1pb02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-paxos-placebo/hc1pb03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-paxos-plain/hc1pp01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-paxos-plain/hc1pp02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-paxos-plain/hc1pp03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-paxos-saltdiet/hc1ps01	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-paxos-saltdiet/hc1ps02	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELL cells-hc1-paxos-saltdiet/hc1ps03	opus=clean/set=clean/rc0	sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1
+CELLS 45
+TALLY opus=clean/set=clean/rc0 sonnet=SUBSTITUTED/set=SUBSTITUTED/rc1 : 45

@@ -408,3 +408,74 @@ A1.6 reads *"item 1 … awaiting a non-author read"* and items 2 and 5 at `4dfca
 5. **Whether the two uncovered trees will in fact be moved.** That is the helm's ~21:55 window, which this head owns; **this signature asserts the requirement, never its discharge.**
 
 ⇒ **A1.1–A1.6 tighten a freeze that fires nothing, their cross-references to #184 are exact, and every code claim I could reach is true at the source.** ⛔ **The two trees move, and the census re-runs green against the release export, BEFORE the first cell.**
+
+---
+
+## ⚖️ ADDENDUM 2 — §Q2 ITEMS 3 AND 4 AS LANDED, THE SONNET SUBAGENT-MODEL RULE (VISIBLE), AND THE RELEASE EXPORT'S BYTES. APPENDED; all text above, signatures included, untouched.
+**bench (lead), 2026-09-16.** Every clause narrows a check or declares a difference; none loosens one. It goes to a non-author before it binds.
+**Every figure below is read from `evidence/claude-lane-b-addendum2-2026-09-16/`**, the lead's two read-only drives on the run box at 20:2x PDT. None is retyped from a message.
+
+### A2.1 · §Q2 ITEM 3 AS LANDED — THE HEAD IS HELD EXACTLY, NOT TO THE SET (a narrowing, accepted by the lead)
+`served_models_v3.py` (systems; helm-signed at the branch tip `43e44b5`, merged to harness master at `33d8016`) reads every assistant line, head and
+sidechain, against the CONDITION. A set check alone would pass a Sonnet HEAD under the Opus condition, because the Opus set contains
+`claude-sonnet-5`. ⇒ **Registered:**
+- the head is held to the condition's head model EXACTLY;
+- a sidechain spawned with no `model` is held to the launcher's assignment for its role;
+- everything else is held to the condition's set;
+- `set_verdict` prints §Q2.3(b)'s literal set reading beside the verdict.
+
+**Control on the real object, re-driven by the lead with the RELEASE EXPORT'S OWN COPY of the tool** (`runbox_drive.out`, `TALLY`): all 45 HC1
+cells read `clean` (set `clean`, rc 0) as Opus, and `SUBSTITUTED` (set `SUBSTITUTED`, rc 1) as Sonnet.
+
+### A2.2 · §Q5 ROW 7 — IN A SONNET CELL THE SUBAGENT MODEL IS FORCED, AND THE SUBJECT CAN SEE THAT IT IS
+**Why** (`hc1-subject-model-census.out`, `# ARM` and `# TOTAL`):
+- In HC1, the head passed an explicit per-call `model` on at least one Agent spawn in **11 of 45** cells, and asked for `opus` in **7**.
+- By arm, the `opus` requests were salt-diet **5/15** · plain **2/15** · placebo **0/15**.
+- A Sonnet head doing the same would be served Opus. That is VOID(MODEL) under §Q7 row 1, and the void would fall mostly on the treatment arm.
+- The builder's independent census, taken over a pulled copy by a different method, reads the same 11, 7 and spawn totals.
+
+**The rule** (harness master `2822925`):
+- When the root's `_bin/models.tsv` requests ONE model for every role, `cell-claude.sh`'s launch environment sets `CLAUDE_CODE_SUBAGENT_MODEL=<head>`
+  and `CLAUDE_CODE_SUBAGENT_MODEL_FORCE=1`.
+- The rule is derived from the table, never from the word "sonnet".
+- The probe turn gets the same environment (`cell-claude.sh --env`), and the ARGV line names both variables.
+- Opus roots get neither variable, so their environment is HC1's.
+
+**The mechanism, measured by the builder at the object on the pinned client (`884baa38fe1a624b`), in two turns:**
+- WITH the variables, the spawn carried no `model`, and the worker-opus sidechain was served `claude-sonnet-5` (check-cell: clean).
+- CONTROL, WITHOUT them, the same head passed `"model": "opus"` and was served `claude-opus-5` (SUBSTITUTED, "the SUBJECT requested model=opus").
+
+⚠️ **The lead did not reproduce these two turns; the builder holds their receipts.** The reading that binds is T-S (§Q3.3): every sidechain is
+served `claude-sonnet-5`, and the ARGV line names both variables.
+
+⛔ **VISIBLE TO THE SUBJECT, AND DECLARED AS SUCH:** under FORCE, the client removes the Agent tool's optional `model` parameter from its schema.
+- **Both arms of a Sonnet condition see the identical schema**, so the registered reading (§Q6 rule 7, arm within condition) is untouched.
+- An Opus-versus-Sonnet reading is not registered. It carries this difference beside §Q5.1–3.
+
+### A2.3 · §Q2 ITEM 4 AS LANDED — HARDER THAN §Q2.4 ASKED
+`cell-claude.sh --launch` (systems; helm-signed at `1e84112`) runs `probe_sandbox_v3.sh --require <cell> --bin <client>`. It HOLDs before any
+run-cfg, LAUNCHING or ARGV line. `--require` additionally refuses:
+- a receipt whose recorded `fence_sha256` is not this fence's;
+- a receipt driven with another client;
+- a receipt with NO client field (`f97ddcb`, merged at `3853baf`; the lead's surviving mutant, now killed).
+
+The DRY-stub exemption is by BYTES, never by name. **§Q2.4's "driven on the DRY stub" is read as "driven on `/usr/bin/true`"**, because the stub
+is the exemption and cannot also be the test.
+
+### A2.4 · THE RELEASE EXPORT'S BYTES (the release addendum still names the census, the window, the toolchain and the rates re-read; this clause names only what was measured here)
+```
+  harness master   2822925 = items 1–5 (item 3 at merge 33d8016, item 4 at 1e84112) + the item1↔3 integration (merge b7eb4f1)
+                   + the follow-ups (merge 3853baf) + the A2.2 rule (2822925). It descends from cc227b4, and so from eacb9ec (§Q0 row 4 (i)).
+  export           on the run box, cut by studio_export.sh (the allowlist exporter), --no-toolchain. Its marker reads 2822925e3f5b….
+                   362 files plus the marker · 0 directories named withheld or mutants · exactly 1 path containing either word:
+                   harness/systems-v3/check_withheld_leak_v3.py, the leak INSTRUMENT · no refusal file              (runbox_drive.out)
+  givens           tasks/systems-v3/<P>/brownfield/solution.rs, blob ids computed from the export's bytes:
+                   Crc32 3e31075 (1638 B) · FreeList c330b63 (6636 B) · LRU a911477 (2883 B) · LZW 10db31a (2748 B) · Paxos 9e536ca (10519 B)
+                   (runbox_drive.out). They are equal, 5 of 5, to eacb9ec's blobs at those paths (git rev-parse), i.e. §Q0 row 4's repaired givens.
+  lane env keys    CLB_CFG · CLB_BIN · CLB_PINSHA · CLB_EXPORT · CLB_PROBE_OUTSIDE (names only; the values are untracked: the infra-name gate)
+```
+⚠️ **Owed, non-blocking** (from systems' read of the integration):
+- `clb_stage.sh`'s `cond_of` is a second copy of the block→model map.
+- The ROOTS line types 18 and 46 without comparing their sum to 64.
+
+Both are right today, and both are follow-ups.
