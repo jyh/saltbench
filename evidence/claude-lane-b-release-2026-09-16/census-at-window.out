@@ -1,0 +1,10 @@
+# host role: the run box (cells-* roots under ~: 190)
+# fences: claude ~/cells-clb-sg-lru-plain/clbglp01/ctl/fence.json (denyRead 223) · agy ~/cells-l6v-lzw-flash-salt-bare/l6vgfs03/ctl/srt-settings.json (denyRead 190)
+# withheld-shaped entries: 194 in 6 top-level trees (a FLOOR: depth 7, no tarballs, name-based)
+tree	entries	claude	agy
+~/projects	58	COVERED	COVERED
+~/bench-v2	34	COVERED	COVERED
+~/bench-v2-smoke	34	COVERED	COVERED
+~/bench-dry	32	COVERED	COVERED
+~/bench-v2-amend6	18	COVERED	COVERED
+~/bench-v2-census-a6	18	COVERED	COVERED
