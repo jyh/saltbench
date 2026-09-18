@@ -991,3 +991,50 @@ total moved, "all COVERED" would have been the more alarming reading, and a sign
 fetch with my own red arm, the instrument in R4.2 is the published one plus three appends and nothing else, the append leaves every
 signed word intact, and the document's scope is honestly bounded by its author — including the two places it amends itself against ⑤(a)
 in sections that are not about the order. **This addendum still fires nothing. The lane's first cell, and when it fires, are the lead's.**
+
+---
+
+## ⚖️ ADDENDUM 5 — THE PROCESSING LIMIT: ONE LIVE CELL PER POOL, NEVER TWO IN ONE ROOT, FIRES SERIALIZED. §Q3.2 AND §Q3.4(3) AMENDED. APPENDED; all text above, signatures included, untouched.
+bench (SaltBench lead), 2026-09-18. **Registered BEFORE the lane's first concurrent cell**, which is this repo's rule for any change to
+what a run measures. ⛔ **UNSIGNED UNTIL A NON-AUTHOR SIGNS IT, and no second concurrent cell fires before that signature.**
+
+### A5.1 · WHY
+Council 2026-09-18, the Captain, verbatim: *"run all the unblocked cells from top priority down, within the processing limit"*, after
+*"run the highest priority level that is not blocked"*; and, the same sitting, a **second pool** for the lane: a second account logged
+in on the run box, *"use [it] as fail-over"*. The lead states the limit and its reasons; this addendum is that statement, made binding.
+
+### A5.2 · THE LIMIT, AND EACH OF ITS REASONS MEASURED
+```
+  (a) ONE LIVE CELL PER POOL      a pool = one config dir = one account = one day line. Each fire reads ITS pool fresh and is
+                                  held by ITS pool's day line only; the pool is chosen earliest-room-first. An unmeasured pool
+                                  HOLDS (fail-closed), as the lane's chain already does for one pool.
+  (b) NEVER TWO LIVE CELLS IN ONE ROOT
+                                  a cell's belt enumerates its root's siblings AT RENDER; a sibling staged or live beside it
+                                  later is outside that belt, so a Bash subprocess could read its work. Different roots are
+                                  denied to each other since 2026-09-18 (every other `cells*` root is in every Claude belt).
+  (c) FIRES SERIALIZED            the sandbox probe's decoy sits under one shared canary dir, so two probes never overlap;
+                                  cells may overlap, probes may not.
+  (d) NO CONFIG DIR IS CREATED OR REMOVED WHILE A CLAUDE-LANE CELL IS LIVE
+                                  every Claude belt denies the `~/.claude*` glob AT RENDER. Measured the day this was written:
+                                  the second pool's login landed mid-fire and the launcher REFUSED on fence drift whose only
+                                  difference was that one new dir. A new pool is a quiet-window act, as a new cells root is (A1.3).
+```
+**What LANE QUIET was, stated so it is not over-read:** §Q3.2's *"one cell at a time"* and §Q3.4(3) were a registered rule, not a mechanism
+the fence needs. The run config's hooks are named by the last-fired root's `_bin` path, but both hooks key on the session's own
+`CELLS_ROOT`, and every root's `_bin` resolves to byte-identical scripts, so a re-render beside a live cell is benign. Pools do not share
+a run config at all.
+
+### A5.3 · WHAT IT CHANGES ABOUT THE DATA, SAID BEFORE ANY CONCURRENT CELL
+- **The concurrency column gains the live Claude-lane cells at fire**, beside the agy census: REPORTED, never a refusal, as §Q3.4(3)
+  already does for agy. Stage 1 measured load moving wall time directly and cost only through behaviour.
+- **A cell's pool is RECORDED** (the config dir in its own build record, and the pool in the fire log). **No arm is assigned by pool.**
+  Rows take the pool that has room, so a pool can carry more of one arm than the other. That is reported as a column. It is not balanced
+  by design, because the served model, the pinned client, the settings and the fence are identical across pools.
+- **Identity per pool** (§Q3.4 item 2): the second pool's expected digest is **`8bfcdc8ab8e00d11`**. It was READ from the dir and bound
+  to the account the Captain named by an independent read of the dir's own account record, taken by the helm at his word. The
+  credential tool's warning, that an expectation taken from the box blesses whatever is there, is answered by that second reader,
+  not by the tool.
+
+### A5.4 · WHAT THIS DOES NOT CHANGE
+The arms, the models, the caps, the fence, the P4 probe, the scorer, the tripwires, the list order (A3.1), the one-root-at-a-time staging
+rule for new roots (A1.3), or any result already recorded. **Until a second pool is fired, the limit is 1, and the chain says so.**
