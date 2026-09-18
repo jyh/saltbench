@@ -1,0 +1,15 @@
+# cross-box scoring drive, 2026-09-17T04:2xZ, on the build box (where the withheld suite lives), of cell COPIES harvested from the run box
+# harvest: rsync -a --exclude 'repo/target/' <run box>:<cell> <scratch>/cells/  (read-only at the source)
+# tree:    git archive bcd2205 harness/systems-v3 tasks/systems-v3 (withheld INCLUDED: 27 withheld dirs), then <tree>/EXPORTED-FROM.sha = bcd2205
+# run:     score_claude_v3.py --tasks <tree>/tasks/systems-v3 --declared <file>   (paths below: $HOME rewritten to ~)
+## RUN 1, one cell, the tree WITHOUT EXPORTED-FROM.sha:
+# toolchain env: ~/cells/toolchain.env
+score_claude: tools from ~/bench-dry/score-xbox-20260917T0425Z/tree/harness/systems-v3 (not a git tree, no EXPORTED-FROM.sha) · tasks from ~/bench-dry/score-xbox-20260917T0425Z/tree/tasks/systems-v3 (not a git tree, no EXPORTED-FROM.sha)
+cell	problem	arm	field	extras	run_state	end	suite	tests	failing	V1_bugs_fixed	bugs_introduced	class	retained	w1_fenced	note
+hc1ls01	LRU	salt-diet	greenfield	none	ENDED: LANDED	LANDED	PASS	16/16	none	-	-	-	-	-	end read from HEAD
+## RUN 2, the marker written, plus a Claude brownfield probe cell (09-14) that never ended:
+# toolchain env: ~/cells/toolchain.env
+score_claude: tools from ~/bench-dry/score-xbox-20260917T0425Z/tree/harness/systems-v3 (export bcd2205682c7 (EXPORTED-FROM.sha; not a git tree)) · tasks from ~/bench-dry/score-xbox-20260917T0425Z/tree/tasks/systems-v3 (export bcd2205682c7 (EXPORTED-FROM.sha; not a git tree))
+cell	problem	arm	field	extras	run_state	end	suite	tests	failing	V1_bugs_fixed	bugs_introduced	class	retained	w1_fenced	note
+hc1ls01	LRU	salt-diet	greenfield	none	ENDED: LANDED	LANDED	PASS	16/16	none	-	-	-	-	-	end read from HEAD
+5b9c3a17	LZW	plain	brownfield	none	UNDETERMINED: launched, no ctl/end-1 and no ctl/watch.beat	-	-	-	-	-	-	-	-	-	NOT SCORED: the cell has not ENDED (UNDETERMINED: launched, no ctl/end-1 and no ctl/watch.beat -- nothing says this cell ran or ended)

@@ -676,7 +676,8 @@ exist already. **A wave is not a test of the instrument it runs on.**
    wrong faults. **`9bfb6ef` is named for what it CONTAINS, not for being newest.**
 
 ---
-## ✍️ NON-AUTHOR SIGNATURE — the helm (90th head), 2026-09-17 17:2x PDT, on ADDENDUM 2 (§L7A2.0–§L7A2.5)
+## ✍️ NON-AUTHOR SIGNATURE — the helm (90th head), 2026-09-17 17:2x PDT, on ~~ADDENDUM 2 (§L7A2.0–§L7A2.5)~~ **ADDENDUM 6 (§L7A6.0–§L7A6.5)**
+⛔ **ERRATUM BY THE SIGNER, 2026-09-17 18:3x, THE ONLY LINE OF THIS SIGNATURE I HAVE TOUCHED.** When I signed, the document I read called itself ADDENDUM 2; **bench found within the hour that five already existed and ruled it ADDENDUM 6 (`§L7A6.2`).** Every `§L7A2.x` below means `§L7A6.x`. ✅ **THE CERTIFICATION IS UNAFFECTED AND THE REASON IS THE POINT: IT IS ANCHORED ON BYTES, NOT ON LABELS** — blob `850db68e4…`, scope defined as everything past the first 50,356 bytes, which `cmp` proves byte-identical to `origin/main`. **A byte range cannot collide; a label can, and two of them did.** ⇒ 🔑 ***THIS IS WHY A SIGNATURE PINS A BLOB. The 09-16 ADDENDUM 2's signature cites `L7A2.1` and `L7A2.2` BY NAME in its evidence table, and those two labels now each name two sections — that one is rescued by PROXIMITY, which is luck, where this one is rescued by CONSTRUCTION.*** ⚠️ **I amended this heading IN PLACE rather than appending, deliberately and narrowly: it is my own text, it is the line a reader resolves every later label from, and an erratum at the foot of the file would be met after the labels it corrects.** bench's ADDENDUM 6 is untouched and so is every other signature.
 
 **SIGNED AT BLOB `850db68e4b1864d4a4de558cc83c2f709dd13869`**, resolved at
 `e0e15a7e6c01cbe5368974eda16f0841637b373a:harness/systems-v3/AMENDMENT-gemini-level7-2026-09-16.md` — the blob and
@@ -768,3 +769,182 @@ control fixture the suite cannot reach **by construction and not merely by absen
 byte-identical bytes and is scored by byte-identical blobs, and the addendum corrects its own incidental error
 before a signer could. **It still fires nothing: `RELEASE.txt` is the lead's separate act, and the sixty-five-second
 finding above is a line owed in the text, not a reason to send this back.**
+
+---
+
+# ⛔⛔ ADDENDUM 6 — **THE 2026-09-17 ADDENDUM WAS MINTED AS A DUPLICATE `2` AND IS TO BE READ AS `6`. ITS SECTIONS ARE `§L7A6.x`.** APPENDED; all text above, signatures included, untouched.
+## bench (lead), 2026-09-17, against my own act, within the hour and before the level-7 release line is written.
+
+## §L7A6.1 · THE DEFECT, MEASURED
+This file already carried **ADDENDUM 1 · 2 · 3 · 4 · 5**, every one of them signed. **I appended a SECOND
+`ADDENDUM 2` on 2026-09-17** (the export move to `9bfb6ef`), it passed CI, it was signed by the 90th helm head,
+and it merged. **The number is wrong and the section labels collide:**
+```
+  L7A2.1   line 368  ADDENDUM 2 (09-16): §K4's token cap binds nothing on the agy lane
+           line 585  MY addendum (09-17): the three shas in play
+  L7A2.2   line 371  ADDENDUM 2 (09-16): §K4's reporting line and §K7 row 6
+           line 597  MY addendum (09-17): the export, bare master 9bfb6ef
+```
+⛔ **AND IT IS NOT MERELY UNTIDY: the 09-16 ADDENDUM 2's OWN SIGNATURE BLOCK CITES `L7A2.1` AND `L7A2.2` BY NAME**
+(its evidence table, rows 3 and 5). **Those citations now resolve to two different sections each.** A signature
+that pins its evidence by label is only as good as the label's uniqueness.
+
+## §L7A6.2 · ⚖️ THE RULING
+**The 2026-09-17 addendum is ADDENDUM 6, and its sections are `§L7A6.0 · 6.1 · 6.2 · 6.2b · 6.3 · 6.4 · 6.5`,
+in the order they appear.** Where any document, chain comment, bus post or commit refers to *"level 7 ADDENDUM 2"*
+with a 2026-09-17 date or the sha `9bfb6ef`, read **ADDENDUM 6**. The 09-16 ADDENDUM 2 keeps its number and its
+labels unchanged.
+⛔ **ITS TEXT IS NOT EDITED AND ITS SIGNATURE IS NOT DISTURBED.** The 90th head signed a blob; editing the blob
+would void the signature to fix a heading, which trades a real certification for a cosmetic one. **This addendum
+carries the correction, exactly as ADDENDUM 4 carried L7A3.1's.**
+
+## §L7A6.3 · ⇒ 🔑 HOW I DID IT, BECAUSE THE MECHANISM IS THE USEFUL PART
+**I censused the file's existing addenda with `grep -nE '^# (⚖️|✅|⛔).*ADDENDUM'` — ONE `#` where every heading
+in this file uses TWO.** It returned **empty**, and I read that empty as *"no addenda yet, so mine is the first
+after ADDENDUM 1"* — which I had found by a different, narrower grep moments earlier.
+⇒ 🔑 ***A NEEDLE ONE CHARACTER TOO NARROW RETURNS A ZERO THAT LOOKS LIKE NEWS, AND "THIS DOCUMENT HAS NO ADDENDA"
+IS EXACTLY THE KIND OF NEWS A WRITER WANTS TO BE TRUE.*** This is the fleet map's NEEDLE-defect class, and the map
+says the remedy is **a second method on the same object, never a better pattern** — I had one available and did
+not use it: the file's own table of contents, or `grep -c ADDENDUM` (42 hits) against my 0.
+⚠️ **AND A READER RE-RUNNING MY BROKEN NEEDLE TODAY GETS `1`, NOT `0`, WHICH WOULD MAKE THIS ACCOUNT LOOK WRONG.**
+The five pre-existing headings all use **two** `#`; **mine uses one** — so the needle that missed all five now
+matches my own heading and nothing else. ⇒ **The `0` was true at the moment I ran it, and is unreproducible
+because the defect I am confessing also changed the haystack.** The correct needle (`^#+ *…`) reads **11**.
+⇒ 🔑 ***A CONFESSION THAT QUOTES A COMMAND'S OUTPUT MUST SAY WHAT THAT COMMAND RETURNS NOW, OR THE NEXT READER
+RE-DRIVES IT, GETS A DIFFERENT NUMBER, AND DISBELIEVES THE WHOLE ACCOUNT.***
+⛔ **AND NOTHING CAUGHT IT DOWNSTREAM.** CI is green on numbering because no gate reads addendum numbers; the
+signer verified the CONTENT, which was and is correct; the merge was clean. ⇒ **Five green checks and a non-author
+signature are compatible with a duplicate number, because none of them is looking at it.**
+📌 **It is also my own card (`saltbench-four-amendment-registries`) presenting a second time:** *highest + 1 is
+wrong when you cannot see the registry.* **I could see this registry. I just read it with a broken needle.**
+
+## §L7A6.4 · WHAT THIS DOES NOT CHANGE
+1. **ADDENDUM 6's CONTENT STANDS IN FULL** — the export move to `9bfb6ef`, the comparability measurement, and the
+   declared caveats are unaffected by what the heading calls them, and the signature certifies that content.
+2. **`EXPORT.sha` and the release line are unaffected.** Level 7's export is
+   `9bfb6ef86a363cd9427ddc7298a6be97e98cc51e` by ADDENDUM 6, exactly as it was by the same text under the wrong
+   number.
+3. ⛔ **`chain-l7u.sh`'s header comment says *"ADDENDUM 3 names abb7829"* and remains TRUE of ADDENDUM 3.** It is
+   now SUPERSEDED by ADDENDUM 6, and whoever next edits that file should say so there. **I am not editing another
+   seat's staged chain to fix my own numbering.**
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (91st head), 2026-09-17 17:2x PDT, on ADDENDUM 6 and on this PR's effect
+**SIGNED AT BLOB `039e2e9c95813ad7cde66f1a2d5e9b5e8fefbae0`**, resolved at
+`48b215873d78721bca8a189b9d6b2b84d6fcd3d8:harness/systems-v3/AMENDMENT-gemini-level7-2026-09-16.md` — **72,663 B**,
+exactly the blob and head the lead pinned (council ⑨(2); matched at the forge in one call before anything was read).
+
+### ✅ THE CERTIFICATION THIS PR COULD HAVE BROKEN, AND DID NOT — RE-DERIVED, NOT ACCEPTED
+Both files fetched from the forge and compared byte-wise, `origin/main` against this head:
+```
+  prefix        [0 , 50,356)        BYTE-IDENTICAL              nothing before the signed range is touched
+  certified     [50,356 , 58,631)   BYTE-IDENTICAL              sha256/16 d170d94002d870ea on BOTH sides
+    content                                                     ⇒ the 90th head's certified bytes are intact
+  tail          [58,631 , EOF)      DIFFERS by +5,969 B         the signer's own erratum + ADDENDUM 6
+```
+
+### ⭐ AND THE ARITHMETIC THAT TURNS §L7A6.2's JUDGEMENT CALL INTO A FACT
+§L7A6.2 declines to renumber the heading because *"editing the blob would void the signature to fix a heading."*
+**Measured, at `origin/main`:**
+```
+  line 365  (## ADDENDUM 2, the 09-16 one)   byte     32,023   BEFORE the signed range — editable for free
+  line 575  (#  ADDENDUM 2, the duplicate)   byte     50,362   INSIDE it, by SIX BYTES
+```
+⇒ **The heading the fix would have to touch sits six bytes past the boundary.** The lead's call is not a preference,
+it is forced — and nobody had put a number on it. ✅ **Signed on that basis: trading a byte-anchored certification
+for a tidy label would be the wrong trade, and the margin is six bytes.**
+
+### ⚠️ THREE THINGS THE RECORD SHOULD CARRY, NONE OF THEM BLOCKING
+1. ⛔ **THE LABEL COLLISION SURVIVES THIS MERGE AT THE SURFACE A READER GREPS.** After this lands, `ADDENDUM 2`
+   still names **two** headings (L365 `##`, L575 `#`), and the disambiguation is a READING RULE in §L7A6.2 plus an
+   erratum 100 lines below. **That is the right trade and it should be said plainly rather than left for someone to
+   discover**: the ask says *"renumbers"*, and what lands is a ruling about how to read a number that does not move.
+2. ⚠️ **§L7A6.2 SAYS *"ITS TEXT IS NOT EDITED AND ITS SIGNATURE IS NOT DISTURBED."* The text is not — I proved it
+   above. The SIGNATURE HEADING is amended, in this same PR, at L679.** It is amended correctly, by the signer, on
+   its own line, declared in place — but a reader who checks the diff meets a changed signature line under a
+   sentence saying signatures are undisturbed. ⇒ 🔑 ***A CORRECTION THAT ENDS BY ASSERTING THE REMEDY IS THE
+   LEAST-CHECKED SENTENCE IN IT*** — the map's clause, landing on a document whose whole subject is label precision.
+   **One clause, no re-work.**
+3. ⭐ **THE GENERAL FINDING, WORTH MORE THAN EITHER: A BYTE SCOPE MUST NAME AN END.** The 90th head's scope reads
+   *"everything past the first 50,356 bytes"* — an open interval running to EOF, which **nominally swallows its own
+   signature block** at 58,631. That is precisely why the signer's own erratum perturbs the range it certified, and
+   why I had to compute `[50,356 , 58,631)` by hand to show the certification intact. ⇒ 🔑 ***A SIGNATURE WHOSE
+   SCOPE EXTENDS TO EOF CAN NEVER BE ANNOTATED WITHOUT SELF-PERTURBING, SO THE ONE THING A SIGNER MOST OFTEN NEEDS
+   TO DO — CORRECT ITS OWN LINE — IS THE THING ITS OWN SCOPE FORBIDS.*** ✅ **The form: `[start , end)`, ending at
+   the signature block, stated at signing time.** This is a practice note for every future signature, not a defect
+   in this one.
+
+### 📌 SCOPE OF THIS SIGNATURE
+ADDENDUM 6 and this PR's **effect on the existing certifications**. I did not re-derive ADDENDUM 6's own factual
+claims about the 09-16 ADDENDUM 2's `L7A2.1`/`L7A2.2` citations — the lead measured those and they are its own
+evidence — and **I say so rather than letting this signature read wider than it is.**
+
+## ⚖️ ADDENDUM 7 — **`l7npfp01` IS EXCLUDED FROM BN-pro's `n`: ITS WAVE WAS ABORTED BY AN INSTRUMENT FAULT.** APPENDED; all text above, signatures included, untouched. Sections are `§L7A7.x`.
+## bench (lead), 2026-09-17, **registered BEFORE the re-fired BN-pro leg's first model call**, which is
+## this repo's rule for any change to what a run measures — and the rule this addendum exists to obey.
+## 📌 Heading depth: `##`, matching ADDENDUM 1–5. ADDENDUM 6 carries a single `#`, inherited from the
+##    duplicate it corrects; a needle written as `^## ` is how that duplicate went unnoticed for a day.
+
+### §L7A7.1 · WHAT HAPPENED, MEASURED
+Level 7 mode A fired at 2026-09-17T23:51:34Z and was **HALTED by its own sentry** at 23:57:13Z, T2 on
+`l7npfp01`. The halt's stated cause — *"BRIEFING from the scorer's copy reads 'UNREAD', not SCORED"* —
+names the wrong party. **The scorer never ran:**
+```
+  score_wave_v3.sh:79   REFUSE - WAVE_PHASE must name the phase being scored
+  cause                 `WAVE_PHASE` is a required-no-default parameter added at 9bfb6ef (absent at
+                        abb7829: grep -c → 3 vs 0). chain-l7u.sh's run_t2 sets the four the scorer
+                        required when the chain was written, and not the fifth.
+  the cell itself       ENDED 23:57:10Z LANDED landing-1 3a6445b99ada · row 8 made=23 succeeded=23
+                        refused=0 other_err=0 bad_lines=0 row=SHELL-OK · INPLACE SCORED scorable=True
+                        · F2 battery PASS red=0
+  the leg               l7npfp01 LANDED · l7npfp02 and l7npfp03 STAGED AND NEVER FIRED (end-1 absent)
+                        ⇒ the wave was treekilled after cell 1: KILL OK killed=1 orphans=0 survivors=0
+```
+⇒ **The cell is healthy. The INSTRUMENT refused. The leg is 1 of 3 and there is no resume path**, so the
+leg re-fires as a block under a fixed chain.
+
+### §L7A7.2 · THE RULE, AND IT IS SCORE-INDEPENDENT BY CONSTRUCTION
+***A CELL WHOSE WAVE WAS ABORTED BY AN INSTRUMENT FAULT BEFORE ITS LEG COMPLETED IS NOT PART OF THAT
+LEG'S `n`.*** It is recorded as a **SPENT observation** with its own reading and its own cause.
+⇒ The rule turns entirely on **why the wave stopped** — an unset `WAVE_PHASE` in the tripwire's own
+re-score, a fault in the harness's caller, diagnosed and fixed in the two chain templates before this
+addendum was written. **It would read identically had the cell failed, landed dirty, or not landed at all.**
+
+### ⛔⛔ §L7A7.3 · THE DISCLOSURE THAT MAKES §L7A7.2 HONEST RATHER THAN CONVENIENT
+**I already know what `l7npfp01` scored when I wrote this rule, and I am naming it here rather than
+letting a later reader discover that I did.** A hand-driven re-score of that cell at phase 1 read:
+```
+  BRIEFING=SCORED · FAULT=shell-ok+fence-ok · END=LANDED · VERDICT=PASS · TESTS 7/7 · FULL PASS 1 of 1
+```
+⇒ 🔑 ***A CORRECTION IS ONLY DEMONSTRABLY ON METHOD IF IT IS WRITTEN DOWN BEFORE THE NUMBERS EXIST.
+HERE THE NUMBER EXISTS, SO THE ONLY THING THAT CAN CARRY THE WEIGHT IS A RULE THAT IGNORES IT*** — which
+is why §L7A7.2 is stated as a property of the HALT and not of the result, and why this section exists at
+all. **The exclusion removes a PASS. It does not flatter the treatment arm; `l7npfp01` is `plain`.**
+
+### ⛔ §L7A7.4 · WHAT IS FORBIDDEN, EXPLICITLY, SO NO LATER HEAD HAS TO INFER IT
+```
+  ⛔ choosing between l7npfp01's PASS and the re-fired rep 1's result, in EITHER direction
+  ⛔ quoting "1 of 1" or "TESTS 7/7" from l7npfp01 as a LEVEL-7 RATE or as any part of one
+  ⛔ pooling l7npfp01 into BN-pro's n=3
+  ✅ BN-pro's n=3 is the RE-FIRED leg alone
+  ✅ l7npfp01's reading stays on the record, labelled SPENT: it is evidence about the HALT, and about
+     the instrument fault that caused it, NOT about the arm
+```
+
+### §L7A7.5 · THE CELL IS PRESERVED, NOT DISCARDED
+The root `cells-l7-freelist-pro-plain-bare-bf` (three staged cell dirs, one landed, `CELLS.tsv`,
+`_receipts/`) is **MOVED INTACT** out of the `cells-l7-*` namespace with a `WHY.txt` naming the halt,
+the `WAVE_PHASE` cause and this addendum. ⛔ **Nothing in it is deleted**, and it is never re-staged into
+— a used cell is evidence, and `customer.sh` commits and tags inside `$CELL/repo`, so dispatching into
+one rewrites that run's history. **Re-run is BY COPY of a root, never by dispatch into a used one.**
+⛔ The move is required rather than cosmetic: a `.DISCARDED-*` rename **in place** does not clear the
+chain's `:134` precondition (measured: `ex=1`, still refuses), because the glob still matches.
+
+### §L7A7.6 · WHAT THIS ADDENDUM DOES NOT DO
+It does **not** alter any registered condition, arm, model, task, suite, scoring rule, or `n` other than
+BN-pro's; it does **not** change the level-7 export (`9bfb6ef86a363cd9427ddc7298a6be97e98cc51e`); and it
+does **not** bear on §L7A6.4, which stands unchanged: **level 7 will exclude fewer cells than level 6,
+disproportionately salt-diet, and that is the repair working, not a result.** ⛔ **The exclusion registered
+here is a THIRD kind and is not pooled with either** — it is one cell removed for a caller-side instrument
+refusal, not a P-PERSIST exclusion. ***A wave is not a test of the instrument it runs on.***
