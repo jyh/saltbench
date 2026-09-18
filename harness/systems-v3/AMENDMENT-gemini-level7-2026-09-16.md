@@ -879,3 +879,72 @@ for a tidy label would be the wrong trade, and the margin is six bytes.**
 ADDENDUM 6 and this PR's **effect on the existing certifications**. I did not re-derive ADDENDUM 6's own factual
 claims about the 09-16 ADDENDUM 2's `L7A2.1`/`L7A2.2` citations — the lead measured those and they are its own
 evidence — and **I say so rather than letting this signature read wider than it is.**
+
+## ⚖️ ADDENDUM 7 — **`l7npfp01` IS EXCLUDED FROM BN-pro's `n`: ITS WAVE WAS ABORTED BY AN INSTRUMENT FAULT.** APPENDED; all text above, signatures included, untouched. Sections are `§L7A7.x`.
+## bench (lead), 2026-09-17, **registered BEFORE the re-fired BN-pro leg's first model call**, which is
+## this repo's rule for any change to what a run measures — and the rule this addendum exists to obey.
+## 📌 Heading depth: `##`, matching ADDENDUM 1–5. ADDENDUM 6 carries a single `#`, inherited from the
+##    duplicate it corrects; a needle written as `^## ` is how that duplicate went unnoticed for a day.
+
+### §L7A7.1 · WHAT HAPPENED, MEASURED
+Level 7 mode A fired at 2026-09-17T23:51:34Z and was **HALTED by its own sentry** at 23:57:13Z, T2 on
+`l7npfp01`. The halt's stated cause — *"BRIEFING from the scorer's copy reads 'UNREAD', not SCORED"* —
+names the wrong party. **The scorer never ran:**
+```
+  score_wave_v3.sh:79   REFUSE - WAVE_PHASE must name the phase being scored
+  cause                 `WAVE_PHASE` is a required-no-default parameter added at 9bfb6ef (absent at
+                        abb7829: grep -c → 3 vs 0). chain-l7u.sh's run_t2 sets the four the scorer
+                        required when the chain was written, and not the fifth.
+  the cell itself       ENDED 23:57:10Z LANDED landing-1 3a6445b99ada · row 8 made=23 succeeded=23
+                        refused=0 other_err=0 bad_lines=0 row=SHELL-OK · INPLACE SCORED scorable=True
+                        · F2 battery PASS red=0
+  the leg               l7npfp01 LANDED · l7npfp02 and l7npfp03 STAGED AND NEVER FIRED (end-1 absent)
+                        ⇒ the wave was treekilled after cell 1: KILL OK killed=1 orphans=0 survivors=0
+```
+⇒ **The cell is healthy. The INSTRUMENT refused. The leg is 1 of 3 and there is no resume path**, so the
+leg re-fires as a block under a fixed chain.
+
+### §L7A7.2 · THE RULE, AND IT IS SCORE-INDEPENDENT BY CONSTRUCTION
+***A CELL WHOSE WAVE WAS ABORTED BY AN INSTRUMENT FAULT BEFORE ITS LEG COMPLETED IS NOT PART OF THAT
+LEG'S `n`.*** It is recorded as a **SPENT observation** with its own reading and its own cause.
+⇒ The rule turns entirely on **why the wave stopped** — an unset `WAVE_PHASE` in the tripwire's own
+re-score, a fault in the harness's caller, diagnosed and fixed in the two chain templates before this
+addendum was written. **It would read identically had the cell failed, landed dirty, or not landed at all.**
+
+### ⛔⛔ §L7A7.3 · THE DISCLOSURE THAT MAKES §L7A7.2 HONEST RATHER THAN CONVENIENT
+**I already know what `l7npfp01` scored when I wrote this rule, and I am naming it here rather than
+letting a later reader discover that I did.** A hand-driven re-score of that cell at phase 1 read:
+```
+  BRIEFING=SCORED · FAULT=shell-ok+fence-ok · END=LANDED · VERDICT=PASS · TESTS 7/7 · FULL PASS 1 of 1
+```
+⇒ 🔑 ***A CORRECTION IS ONLY DEMONSTRABLY ON METHOD IF IT IS WRITTEN DOWN BEFORE THE NUMBERS EXIST.
+HERE THE NUMBER EXISTS, SO THE ONLY THING THAT CAN CARRY THE WEIGHT IS A RULE THAT IGNORES IT*** — which
+is why §L7A7.2 is stated as a property of the HALT and not of the result, and why this section exists at
+all. **The exclusion removes a PASS. It does not flatter the treatment arm; `l7npfp01` is `plain`.**
+
+### ⛔ §L7A7.4 · WHAT IS FORBIDDEN, EXPLICITLY, SO NO LATER HEAD HAS TO INFER IT
+```
+  ⛔ choosing between l7npfp01's PASS and the re-fired rep 1's result, in EITHER direction
+  ⛔ quoting "1 of 1" or "TESTS 7/7" from l7npfp01 as a LEVEL-7 RATE or as any part of one
+  ⛔ pooling l7npfp01 into BN-pro's n=3
+  ✅ BN-pro's n=3 is the RE-FIRED leg alone
+  ✅ l7npfp01's reading stays on the record, labelled SPENT: it is evidence about the HALT, and about
+     the instrument fault that caused it, NOT about the arm
+```
+
+### §L7A7.5 · THE CELL IS PRESERVED, NOT DISCARDED
+The root `cells-l7-freelist-pro-plain-bare-bf` (three staged cell dirs, one landed, `CELLS.tsv`,
+`_receipts/`) is **MOVED INTACT** out of the `cells-l7-*` namespace with a `WHY.txt` naming the halt,
+the `WAVE_PHASE` cause and this addendum. ⛔ **Nothing in it is deleted**, and it is never re-staged into
+— a used cell is evidence, and `customer.sh` commits and tags inside `$CELL/repo`, so dispatching into
+one rewrites that run's history. **Re-run is BY COPY of a root, never by dispatch into a used one.**
+⛔ The move is required rather than cosmetic: a `.DISCARDED-*` rename **in place** does not clear the
+chain's `:134` precondition (measured: `ex=1`, still refuses), because the glob still matches.
+
+### §L7A7.6 · WHAT THIS ADDENDUM DOES NOT DO
+It does **not** alter any registered condition, arm, model, task, suite, scoring rule, or `n` other than
+BN-pro's; it does **not** change the level-7 export (`9bfb6ef86a363cd9427ddc7298a6be97e98cc51e`); and it
+does **not** bear on §L7A6.4, which stands unchanged: **level 7 will exclude fewer cells than level 6,
+disproportionately salt-diet, and that is the repair working, not a result.** ⛔ **The exclusion registered
+here is a THIRD kind and is not pooled with either** — it is one cell removed for a caller-side instrument
+refusal, not a P-PERSIST exclusion. ***A wave is not a test of the instrument it runs on.***
