@@ -100,6 +100,14 @@ peak. **Do not turn 4 points / 36 cells into a per-cell price.**
 ---
 # §6 · PER-CELL, THE FULL TABLE (⑯ asks for per cell AND per lane)
 
+⚠️ **36 rows, and ONE of them is not in series `l6v`: `l6uspq01` is the `l6u` SENTRY cell, which the 09-16 18:56
+ruling kept as cell 1 of the LZW · Pro · plain · statement condition.** That condition's three cells are therefore
+`l6uspq01`, `l6vspb01`, `l6vspb02`, and there is no `l6vspb03`: the chain's `harvest-S-pro/conditions.tsv` lists that
+condition (`…-lzw-pro-plain-stmt-b`) with exactly two cells, and cell 1 is its own `cell1-l6uspq01/` directory beside the
+harvests. Same population as `RESULT-gemini-level6-2026-09-17.md`
+§4 (its first row) and `CENSUS-full-matrix-2026-09-14.md` §P1 (*"35 in series `l6v` + the `l6u` sentry cell"*).
+⛔ **A census keyed on the `l6v` prefix reads 35 here and is wrong.** Count the rows, not the prefix.
+
 ```
   cell      arm        model            T        input     output   cache_read   thinking  note
   l6uspq01  plain      Pro     1,000,293     127,019    13,197      860,077      8,264  
@@ -161,4 +169,5 @@ peak. **Do not turn 4 points / 36 cells into a per-cell price.**
   HC1 comparison  harness/systems-v3/RESULT-HC1-stage1-2026-09-16.md ADDENDUM 2, at origin/main
                   (merged cbfc290): T 2.168x · output 1.324x, both verified in that file
   population   the 36 of the level-6 manifest; ids cross-checked between conditions.tsv and cells.tsv
+               = 35 in series l6v + the l6u sentry cell l6uspq01 (cell 1 of LZW·Pro·plain·statement)
 ```
