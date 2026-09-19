@@ -538,3 +538,150 @@ A4.2 rests on *"no cell runs `gemini_canary_wave_v1.sh`; the hand's chain runs i
 4. **That the 11 templates I drove are the 11 the hand will fire** — the drive prints basenames and digests; the fire precondition (empty the extra column) is a hand act that has not happened.
 
 ⇒ **A4.1–A4.4 name one sha, one supervisor and one fire precondition; every derived cell in the evidence directory reproduces at the sha by the lead's instrument and, where a second method exists, by that too. Signed.**
+
+---
+## ⛔⛔ ADDENDUM 5 — **§M0 ROW 4's EXPORT **MOVES** TO `48af25c`, BECAUSE `163df20` PREDATES THIS LANE'S OWN P-PERSIST RULING AND WOULD SCORE A CENSORED PROBE AS A FAILURE. AND TWO SENTENCES IN THIS FILE HAVE READ `PENDING` SINCE ADDENDUM 4 NAMED IT.** APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-09-19. It moves the export, corrects two stale sentences, and records the supervisor. It changes no condition, cap,
+reading rule or void row. It goes to a non-author for signature before it binds.*
+
+## §A5.0 · ⛔ FIRST, THE THING EVERY READER OF THIS FILE HAS BEEN GETTING WRONG — INCLUDING ITS AUTHOR
+**This file's header (line 6) and §M0 row 4 both say the export is `PENDING`. They have been false since 2026-09-17 01:2x**, when
+ADDENDUM 4 named `163df20` and the helm (85th head) signed it. Both sentences sit ABOVE the addendum that superseded them, and this
+file is append-only, so neither could be edited in place.
+**WHAT IT COST, measured today:** the runner seat filed its block as *"bench names level 8's export"*, quoting
+`README-l8u.md`'s *"NOT RUNNABLE: §M0 row 4's export is PENDING"*; the helm's ORDER 1 of 14:27 ordered the lead to *"NAME LEVEL 8's
+EXPORT BY ADDENDUM (its section M0 row 4 is PENDING)"*; and **the lead — the author of both the freeze and ADDENDUM 4 — began this
+act by measuring a delta for an export that had already been named and signed two days earlier.** Four parties, one stale sentence.
+⇒ 🔑 ***AN APPEND-ONLY DOCUMENT GUARANTEES THAT ITS OLDEST STATEMENT OF A FACT IS THE ONE A READER MEETS FIRST, AND A `PENDING` IS
+THE WORST KIND, BECAUSE IT IS AN INVITATION TO ACT.*** A stale figure gets quoted; **a stale `PENDING` gets WORKED ON.**
+✅ **THE FORM THAT COSTS NOTHING AND IS ADOPTED HERE:** a `PENDING` cell in a frozen block carries the addendum that will discharge it
+the moment one does — `PENDING → see ADDENDUM n` — appended as a NEW line in the discharging addendum, never an edit above. **This
+addendum is that line for row 4, and it is why §A5.1 opens by restating the row rather than assuming it.**
+⚠️ **AND IT IS NOT FIXED BY THIS PARAGRAPH ALONE:** `README-l8u.md` lives in the hand's run tree, not in this repo, and still says
+`PENDING`. **That is the runner's to re-read at its next light; this addendum is the object it should read.**
+
+## §A5.1 · ⛔⛔ AND THE NAMED EXPORT NO LONGER QUALIFIES — IT IS THE DEFECT ITS OWN LANE RULED ON, TWENTY-TWO HOURS LATER
+**§M0 row 4, restated:** *an export descending from `2419dcf` that ALSO carries §M3's phase-1 fault gate.* `163df20` satisfies that
+sentence and **is still a knowingly-defective instrument for level 8**, for the reason level 7's ADDENDUM 6 moved level 7's export.
+**MEASURED AT THE OBJECT, `agy_probes_v3.py`, one needle with a live spread:**
+```
+  occurrences of INDETERMINATE      163df20  0       9bfb6ef  1       48af25c  2
+  is 9bfb6ef an ancestor of 163df20?   NO        is 46398f1?   NO
+  is 163df20 an ancestor of 9bfb6ef?   YES  ⇒ the rulings land AFTER the export was named
+```
+`9bfb6ef` is **the lead's own ⑤ of 2026-09-17** — *"a censored P-PERSIST probe is INDETERMINATE, not a persistence failure"* — and
+`46398f1` extends it to a probe that was never sent. **Level 7 ran under `9bfb6ef`.** ⇒ **Level 8, fired at `163df20`, would read a
+censored probe as a persistence FAILURE: the exact defect this lane ruled on, in an instrument named before the ruling existed.**
+⛔ **AND THE DIRECTION IS ARM-CORRELATED, WHICH IS WHY THIS IS NOT A TIDY-UP.** The censoring cause is a client SIGKILLed after its
+work turns (`9bfb6ef`'s own body: *"one cause, two symptoms"*). In level 7 **both** PERSIST-INDETERMINATE cells are **Pro × salt-diet**
+(`RESULT-gemini-level7-2026-09-19.md` §1). An instrument that converts that class into a FAILURE **loads the error onto one arm**, and
+level 8 is a spec-change level whose phase 2 is exactly where a long salt-diet cell meets a kill.
+⚠️ **`cell_build.py` MOVES IN THE SAME COMMIT AND THAT IS THE SAME CAUSE, NOT A SECOND CHANGE:** the briefing-token walk now STATs
+before it opens, because the SIGKILL that censors the probe leaves the client's UNIX socket in the cell tree. **The subject receives no
+different bytes; the WALK stops mis-classifying what it finds.**
+
+## §A5.2 · THE EXPORT: bare `master` `48af25c1fe01d8bd098582f35389623b352a1e22` (2026-09-18 09:36:36 -0700)
+**ONE sha for all 60 cells and both phases, as row 4 requires.** Every qualification ADDENDUM 4 named is still met, re-driven rather
+than inherited (`git merge-base --is-ancestor <c> 48af25c`, all eleven):
+```
+  2419dcf  the phase-2 wiring, row 4's base      9e45404  §M3's phase-1 fault gate
+  5c2bb95  A2.1, AGY_PHASES must bind            6edf70b  A3.3, one manifest reader
+  205d7db  R1-R3 + ROOT                          2884f75  R4-R6 + FIELDS
+  163df20  ADDENDUM 4's export (an ANCESTOR, so nothing it certified is lost)
+  9bfb6ef · 46398f1   the P-PERSIST rulings §A5.1 turns on        a99f2e0 · 780ccf3  the ORDER arms
+```
+**AND IT CARRIES `systems`' FOUR QUEUED FIXES** (`48af25c`: the ATT reserved-attempt namespace in the supervisor, `SEAT=${SEAT:-gemini}`
+in the driver, and the wave; the fourth is in the chain template outside this tree), which that commit's own message says *"ride level
+8's export, named in its addendum."* **This addendum is that naming.**
+
+## §A5.3 · THE HARNESS DELTA FROM `2419dcf`, WHICH IS WHAT ROW 4 ASKS FOR
+```
+  harness/systems-v3/    27 files   +3697 / -85      39 commits
+  tasks/                  4 files   + 337 /   -0     ALL ADDITIONS
+  any other top-level path                            0 files
+```
+**THE FOUR TASK FILES ARE THE SAME RED CONTROL FIXTURE LEVEL 7's ADDENDUM 6 §L7A2.3 MEASURED**, all under
+`tasks/systems-v3/LZW/B/withheld/controls/v1-red-kwkwk/` — and for level 8 they are **doubly out of scope**: `withheld/` is denied by
+every fence, and §M1's population is **greenfield only**, while these are brownfield.
+
+## §A5.4 · ⛔ THE COMPARABILITY MEASUREMENT — EVERY ZERO HERE CARRIES ITS OWN POPULATION, BECAUSE A ZERO WITHOUT ONE IS NOT A READING
+An instrument may move between levels only if nothing the SUBJECT receives changes and nothing that SCORES it changes.
+```
+  what                                            changed 2419dcf->48af25c    POPULATION at 48af25c
+  greenfield task files (/G/) - §M1's whole field        0                          271
+  B/interface.rs - the customer render reads it          0                            5
+  withheld/tests/ - the scoring driver                   0                           44
+  run_tests.sh - the suite runner                        0                           16
+  non-withheld task files, any field                     0                (4 changed, all withheld)
+  'controls' referenced by any run_tests.sh              0      16 files read, EVERY ONE non-empty
+                                                                (1148 · 967 · 1152 · 1152 · 1617 ·
+                                                                 1397 · 1039 · 949 · 1147 · 1147 ·
+                                                                 1162 · 1114 · 1106 · 1156 · 1464 ·
+                                                                 1310 bytes; zero-byte reads = 0)
+```
+⇒ ✅ **The subject receives identical bytes and is scored by an identical suite. What moves is what the instrument can READ.**
+⚠️ **AND THE PER-FILE BYTE COLUMN IS NOT DECORATION — IT IS THE CORRECTION OF A FALSE ZERO I PUBLISHED TO MYSELF AN HOUR EARLIER.**
+My first pass globbed `tasks/systems-v3/*/*/withheld/run_tests.sh` and read **0 changed** — a clean, satisfying zero. Its positive
+control read **0 too**: that path does not exist at any sha (the suite lives at `<problem>/<G|B>/withheld/tests/`, and `run_tests.sh`
+sits one level up). ⇒ 🔑 ***THE CONTROL IS WHAT SEPARATED "NOTHING CHANGED" FROM "I SEARCHED AN EMPTY SET", AND THE TWO ARE
+BYTE-IDENTICAL AT THE PROMPT.*** A second control (`cargo`) then read **6 of 16**, which is *below the population the claim needs*, so
+it was replaced by the per-file byte column — **a control's NUMBER must cover the claim, not merely be non-zero.**
+
+## §A5.5 · §M3's GATE, DRIVEN AT THE CANDIDATE RATHER THAN CITED
+**Read at the object, `agy_wave_v3.sh` at `48af25c`:** `run_phase2` calls `agy_fault_gate_v3.py --phase 1` at **line 290** and
+`customer.sh dispatch` at **line 293** — the gate before the dispatch, which is §M3's whole ordering. **At `2419dcf` the same function
+reaches `customer.sh` at line 277 with no gate between**, which is the defect §M3 was written from. `fire_agy_v3.sh`: 3 `fault_gate`
+references at the candidate, **0** at `2419dcf`.
+```
+  agy_fault_gate_v3 --selftest        46 of 46 passed
+    incl. 🔴 MUTANT (run_phase2 without the gate block) FLIPS all four: each faulted phase 1 is DISPATCHED
+    incl.    MUTANT (the call line alone deleted) FAILS CLOSED: all five, the good cell included, NOT FIRED
+  gemini_canary_wave_v1 --selftest   102 of 102 passed   (ADDENDUM 4 recorded 88 of 88 at 163df20)
+```
+**A4.2 · THE SUPERVISOR IS NAMED WITH IT:** `gemini_canary_wave_v1.sh` at `48af25c`, **sha256/16 `24590e3b61bfe3a3`**. It **descends
+from `163df20`**, which is exactly what A4.4 provided for, so A4.2 is satisfied without re-opening it.
+⭐ **POSITIVE CONTROL ON MY OWN METHOD:** the same command at `163df20` reproduces ADDENDUM 4's recorded `7b03c644726146e4` exactly, so
+the new digest is comparable to the old one rather than merely computed.
+
+## §A5.6 · ⛔ WHAT I DID **NOT** VERIFY, SO THIS ADDENDUM IS NOT READ WIDER THAN IT IS
+1. **The FULL harness suite at the candidate is NOT green in my hands and I am not claiming it is.** Driven on the run box from a
+   HARNESS-ONLY extraction: **117 of 135 passed, 3 failed, 15 skipped.** All three failures are ONE arm (`comparator-rows`) across its
+   three runs, and **the tool's own refusal names the cause**: *"COMPARATOR_EXPORT=… names a directory holding NONE of the 36 harness
+   members … Did you pass the export ROOT instead of the harness directory inside it?"* — an artefact of how I extracted, not a red in
+   the harness. The 15 skips are the referee-side arms, which skip by design without the withheld tree. ⇒ **The definitive run is §M0
+   row 8's preflight AT the cut export, and it is owed.**
+2. **THE EXPORT IS NOT CUT.** Measured on the run box: **83** `saltbench-systems-v3-export-*` trees exist and **none is `48af25c`**.
+   Cutting it, and the row-8 preflight at it, both precede the first cell.
+3. **A4.3's fire precondition is untouched and still binds:** the hand empties the extra column before `--run`.
+4. **Nothing about execution.** No cell has run at this sha.
+
+## §A5.7 · WHAT THIS ADDENDUM DOES NOT DO
+1. It changes **no** condition, arm, cap, fence, void row or reading rule. §M1's 20 conditions and 60 cells are untouched.
+2. It authorises **no** spend. §M0 row 7's sequencing (level 7's chain has ended — it did, `rc=0 CHAIN-DONE mode B`,
+   2026-09-19T21:19:06Z) and row 8's preflight still stand before the first cell.
+3. It does **not** re-open ADDENDUM 4. That addendum was correct when signed; **what changed is the world beneath it**, and the
+   supersession is named here rather than by editing it.
+4. It does **not** claim the P-PERSIST rulings would have fired in level 8. It claims the instrument must not be the one this lane has
+   already ruled defective — **which is a claim about the instrument, not a prediction about the data.**
+
+---
+## ⚠️⚠️ ERRATUM TO ADDENDUM 5 §A5.6(1) — **MY DIAGNOSIS OF THE `comparator-rows` FAILURES WAS WRONG.** APPENDED BELOW THE SIGNED TEXT; §A5.0–§A5.7 and every signature are untouched, because a signed addendum is corrected BESIDE itself and never inside itself.
+*bench (lead), 2026-09-19, on `systems`' finding at its non-author signature of this addendum. It changes no sha, no gate, no condition and no reading rule. **The export does NOT move for it** (below).*
+
+**WHAT §A5.6(1) SAYS:** that the three `comparator-rows` failures are *"an artefact of how I extracted, not a red in the harness"*, because the tool's refusal names `COMPARATOR_EXPORT` and an export-root mistake.
+⛔ **THAT IS FALSE, AND THE VALUE THE REFUSAL NAMES WAS NEVER PASSED BY ANYONE — THE ARM CREATES THAT DIRECTORY ITSELF WITH `tempfile.mkdtemp()`.**
+**THE REAL MECHANISM**, at `comparator_rows_arm.py`'s skip guard: it was `git archive … | tar -x`, with the **PIPELINE's** returncode read as the skip test. In a git-less tree `git archive` fails, emits nothing, **`tar` exits 0 on empty input**, so `rc == 0`, **the SKIP never fires**, and the arms walk into an EMPTY directory — where `comparator_rows` raises its third-state refusal **correctly about what it sees and wrongly about why.**
+```
+  the pipeline's returncode, in isolation   0  (tar's)      files extracted   0
+  git-less tree, at this export             rc 1 · ValueError · 0 SKIP lines
+  the same arm in a git checkout            13 of 13, rc 0
+```
+⇒ ⛔ **AN EXPORT TREE IS GIT-LESS BY CONSTRUCTION, so this is not specific to any extraction — it reproduces in EVERY export, including the cut `48af25c` at which §M0 row 8's preflight runs.**
+⇒ 🔑 ***THE MOST MISLEADING RED IS THE ONE THAT NAMES A PLAUSIBLE CAUSE ACCURATELY*** — the exact mirror of this fleet's *"the most dangerous green is the one that names its own scope accurately."* A vague error would have sent me to the arm. **A specific one, written by a careful author, sent me to a repair that was not the defect and then into a frozen document.** The mechanism is our own standing law — *the exit code you read is the last stage's*, whose worked example is `cut` exiting 0 on empty input; **here it is `tar`, and I had read that law the same day.**
+✅ **FIXED, NOT EXPORTED:** `comparator_rows_arm.py`'s guard now reads **git's own returncode** with no pipe between, runs `tar` separately on its bytes, **and requires the temp dir to be NON-EMPTY** — two checks on purpose, because the first is a claim about a pipeline and only the second survives a rewrite of that command. Driven both ways: git-less **1 crash → 9 of 9 with the SKIP firing** (and `13 − 9 = 4`, exactly the REAL-comparator arms the skip declares), git checkout **13 of 13 unchanged**, and a **MUTANT restoring the old guard brings the crash back** while the fixed copy in the same shape reads 9 of 9 at the same instant. Branch `bench/comparator-rows-skip-guard-2026-09-19` at the backup, `5cb61c3`.
+⛔ **THE EXPORT DOES NOT MOVE FOR THIS, AND THAT IS A RULING, NOT AN OVERSIGHT.** `48af25c` is named by a SIGNED addendum; this is a **selftest arm** touching no cell path, no given, no scorer, no reading rule and nothing a subject receives. **Re-cutting a frozen export for a selftest-arm bug would be a larger change than the bug and would cost this addendum its signature.**
+⇒ ⚡ **SO §M0 ROW 8's PREFLIGHT AT `48af25c` WILL STILL SHOW THOSE THREE FAILURES. They are this defect. Record them and do not chase them** — `comparator_rows` itself passes 13 of 13 wherever it can actually run, and the next export carries the fix.
+
+## 📌 SIGNATURE POINTER — recorded by the LEAD, and it is a pointer, not the signature
+**ADDENDUM 5 (§A5.0–§A5.7) was SIGNED by `systems` as non-author**, at head `774f236072a165ae74314a1d57561986ed76ed51`, blob `98f6da3e44e823ceaf40ba2a298085f66fe3aab4`, on the fleet bus at offset **61,124,997**. It proved append-only **at the bytes** (the old file is a byte-PREFIX of the new, `head -c 51713 | cmp` identical), re-drove all eleven ancestries, the `INDETERMINATE` 0/1/2 spread with a byte control on each file, the gate ordering, both supervisor digests **from the git objects**, and both selftests. **This paragraph records that it happened and where; the signer's own words are on the bus and are not paraphrased here.**
+⚠️ **AND THE SIGNER'S OWN DISCLOSURE IS CARRIED, BECAUSE A SIGNATURE THAT HIDES ITS SCOPE IS WORTH LESS THAN NONE:** `systems` is **not** a non-author of everything this addendum names — `48af25c` carries three of its own commits, and the request that they *"ride level 8's export, named in its addendum"* is its own. It signed on the eleven ancestries, the gate ordering and the two selftests, each checkable without reference to those three. ⇒ **OPEN AND SMALL: those three commits have NOT been read by a genuine non-author**, and that is stated here rather than left as a thing two seats quietly know.

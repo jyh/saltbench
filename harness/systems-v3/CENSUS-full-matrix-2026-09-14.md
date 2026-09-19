@@ -117,8 +117,24 @@ adding the two numbers gets the wrong denominator.**
 >   ADDENDUM 5        DONE 57 · OWED 127 · BLOCKED   0 · INEXPR 16     level 5's 7 flash conditions
 >   ADDENDUM 6        DONE 53 · OWED 131 · BLOCKED   0 · INEXPR 16     4 level-4 conditions reverted
 >   ADDENDUM 7        DONE 60 · OWED 124 · BLOCKED   0 · INEXPR 16     level 5 complete: +7 flash conditions
->   LIVE (ADDENDUM 8) DONE 60 · OWED 124 · BLOCKED   0 · INEXPR 16     HC stage 1 complete: +0 (a replication; §J3)
+>   ADDENDUM 8        DONE 60 · OWED 124 · BLOCKED   0 · INEXPR 16     HC stage 1 complete: +0 (a replication; §J3)
+>   ADDENDUM 9        DONE 72 · OWED 112 · BLOCKED   0 · INEXPR 16     level 6 complete: +12
+>   LIVE (ADDENDUM 10) DONE 99 · OWED 85 · BLOCKED   0 · INEXPR 16     level 7 complete: +27 (§Q1)
 > ```
+> ⛔⛔ **THE `ADDENDUM 9` ROW ABOVE WAS ADDED ON 2026-09-19 BY ADDENDUM 10, TWO DAYS LATE. FOR THOSE TWO DAYS
+> THIS BOX'S `LIVE` ROW READ `DONE 60` WHILE THE FILE'S LIVE FIGURE WAS `DONE 72`** — a whole level behind,
+> in the one table this section declares to be the only current figure in the document.
+> ⇒ 🔑 ***THE INSTRUMENT BUILT TO STOP A STALE HEADLINE WENT STALE, AND THE SENTENCE THAT WAS SUPPOSED TO
+> PREVENT IT — "Any future addendum to this file updates the box above, in the same edit" — IS THE
+> INSTRUCTION ITS OWN AUTHOR DID NOT FOLLOW IN THE VERY NEXT ADDENDUM.***
+> ⚠️ **AND THE SELF-DESCRIPTION IS WHAT MADE IT INVISIBLE: the paragraph below claims the `LIVE` row is
+> always current "as a property of the FORM rather than of anyone remembering to re-point a sentence."
+> It is not. The row is appended BY HAND, so it is exactly as reliable as remembering — and the claim that
+> it is structural is what stops a reader checking it.** ⇒ ***A FORM THAT DEPENDS ON A HABIT WHILE
+> ADVERTISING THAT IT DOES NOT IS WORSE THAN A HABIT, BECAUSE IT SPENDS THE READER'S SUSPICION.***
+> ✅ **The trajectory rows are now DERIVABLE: each addendum's own headline states its before→after, so a
+> reader who distrusts this box can rebuild it from the `ADDENDUM n` headings alone.** That is the check
+> this box should have had, and it does not require anyone to remember anything.
 > **Superseded by: the Captain's two words (11:4x) · ADDENDUM 2, the 503 correction (12:0x) · ADDENDUM 3,
 > §B7 row 3 lifted (12:1x).** The numbers below are preserved **because a record of an observation must
 > not change** — they are true *as of 11:3x* and false as a description of the matrix.
@@ -610,3 +626,98 @@ FROM THE LAST ADDENDUM INHERITS ITS CONCLUSION, AND THE NUMBER GETS FITTED TO IT
    §K2's RE-VERIFIED/CARRIED column is still owed and still not built.
 3. **It does not make the matrix read `FULL`:** 112 conditions are owed.
 4. **It does not revisit** the level-4 void of ADDENDUM 6, which stands.
+
+---
+# ✅✅ ADDENDUM 10 — **LEVEL 7 COMPLETES: `DONE 72 → 99`, `OWED 112 → 85`. THE LARGEST SINGLE MOVE THIS CENSUS HAS MADE.**
+## bench, 2026-09-19. **Landed in the SAME COMMIT as its result of record** (`RESULT-gemini-level7-2026-09-19.md`),
+## per council 2026-09-16 ⑤d, so this census never reads ahead of its evidence.
+## ⚠️ It also repairs the `§C5` trajectory box, whose `LIVE` row had been two days and one whole level stale. See the box.
+
+## §Q1 · THE ARITHMETIC, MAPPED CONDITION BY CONDITION ONTO §C4 RATHER THAN ASSERTED
+Level 7 fired **28 conditions / 84 cells** (blocks BN · BS · C, export `9bfb6ef86a36`). **Twenty-seven of
+the twenty-eight move to `DONE`; one does not, and §Q2 is why.** Every one of the twenty-seven was `OWED`
+in §C4 — **none was already `DONE`, none was inexpressible, and none is a replication**:
+```
+  gemini-3.1-pro-high    brownfield x FreeList x {plain,salt} x none      §C4 + ADDENDUM 6's revert   +2
+                         brownfield x LZW      x {plain,salt} x none      §C4 + ADDENDUM 6's revert   +2
+                         brownfield x Crc32    x {plain,salt} x none      §C4 "Crc32 OWED 2"          +2
+                         brownfield x FreeList x {plain,salt} x statement of §C4 "bf x stmt OWED 10"  +2
+                         brownfield x LRU      x {plain,salt} x statement          "                  +2
+                         brownfield x LZW      x {plain,salt} x statement          "                  +2
+                         brownfield x Crc32    x {plain,salt} x statement          "                  +2
+  gemini-3.8-flash-high  brownfield x FreeList x {plain,salt} x none      of §C4 flash "bf 18"        +2
+                         brownfield x LZW      x {plain,salt} x none               "                  +2
+                         brownfield x Crc32    x {plain,salt} x none               "                  +2
+                         brownfield x FreeList x {plain,salt} x statement          "                  +2
+                         brownfield x LRU      x {plain,salt} x statement          "                  +2
+                         brownfield x LZW      x {plain,salt} x statement          "                  +2
+                         brownfield x Crc32    x {plain}      x statement          "                  +1
+                         brownfield x Crc32    x {salt-diet}  x statement  ⛔ STAYS OWED — §Q2         +0
+  ---------------------------------------------------------------------------------------------------------
+                                                                                                     +27
+  per model      gemini-3.1-pro-high  DONE +14      gemini-3.8-flash-high  DONE +13
+  MATRIX         DONE 99 · OWED 85 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **99 + 85 + 0 + 16 = 200.** The 240-view differs only by the 40 inexpressible `brownfield × spec-change`
+conditions, exactly as §J4 published: **240-view `DONE 99 · OWED 85 · BLOCKED 0 · INEXPR 56`** (= 240).
+📌 **No per-model TOTAL is restated**, for ADDENDUM 9 §P1's reason: §C4's per-model rows annotate some
+conditions as both `OWED` and `INEXPRESSIBLE`, so a per-model total derived from them is a new claim.
+
+## §Q2 · ⛔ THE TWENTY-EIGHTH CONDITION RAN **1 OF 3 CELLS** AND IS NOT `DONE`
+`gemini-3.8-flash-high × brownfield × Crc32 × salt-diet × statement` declared 3 cells and ran one. The wave
+**refused** to launch the other two on a credential window and said so correctly in its own log; the chain,
+the leg supervisor, the driver and harvest arm 4 all reported GREEN (`RESULT-…-level7…` §2 has all ten
+receipts, three one-line detectors, and the mechanism).
+⇒ **IT STAYS `OWED`, AT n = 1 OF 3.** The scored cell (`l7cfss01`, LANDED, PASS 6/6) is recorded and reusable.
+⛔ **THE PRECEDENT IS THIS FILE'S OWN, NOT A JUDGMENT INVENTED TODAY:** §C4's flash row was held on exactly
+the ground that *"⛔ n = 1 on the Flash side"* was not a condition. **Counting it `DONE` would let the matrix
+read fuller than the evidence on the one axis the Captain reads it for.** One cell is not a condition.
+⚠️ **AND IT IS THE CHEAP KIND OF OWED:** it needs two cells, not a wave. Whoever fires them re-cuts this row.
+
+## §Q3 · ⭐ WHAT IS NOW STRUCTURALLY TRUE, AND IT IS A *DERIVED* VIEW — CITED, NOT ASSERTED
+**Both Gemini models' BROWNFIELD halves are now essentially complete**, which no model's was before today.
+Per model the 200-view carries 20 brownfield conditions (5 problems × 2 arms × {none, statement}), of which
+Paxos × statement (2) is `INEXPRESSIBLE` ⇒ **18 expressible**:
+```
+  gemini-3.1-pro-high    none      LRU · Paxos      level 4      (§C4; ADDENDUM 6 kept these four)    4
+                                   FreeList · LZW · Crc32   level 7                                   6
+                         statement FreeList · LRU · LZW · Crc32  level 7                              8
+                                                                              ⇒ 18 of 18   COMPLETE
+  gemini-3.8-flash-high  none      LRU · Paxos      level 6      (ADDENDUM 9 §P1)                      4
+                                   FreeList · LZW · Crc32   level 7                                   6
+                         statement FreeList · LRU · LZW   level 7                                     6
+                                   Crc32 plain      level 7 · Crc32 salt-diet OWED (§Q2)              1
+                                                                              ⇒ 17 of 18
+```
+⚠️ **STATED AS DERIVED, AND THE REASON MATTERS:** §J4's own rule is that *a derived view inherits the
+citation without inheriting the check*. This one rests on §C4 + ADDENDUM 6 + ADDENDUM 9 §P1 + §Q1, each
+named above, **and I have not re-verified level 4's or level 6's conditions at their own objects today.**
+It is a map of where the matrix now stands, not a re-audit of the rows it stands on.
+
+## §Q4 · ⛔ `DONE` MEANS A RESULT OF RECORD, AND THREE OF THE TWENTY-SEVEN CARRY A NAMED LOSS
+Per §C6(4) a condition with a result of record is `DONE` and the result names its voids. **The column
+cannot show these, so they are written here:**
+```
+  gemini-3.1-pro-high x brownfield x Crc32 x salt-diet x none       DONE on 2 of 3 cells — l7cpbs03 is
+    VOID(NO-BRIEFING): the arm never reached the subject (done_reason NO-FIRST-RESULT, ARM-NOT-RECEIVED).
+    ⚠️ It burned 9,956,601 T and is in no pass denominator and no cost pool. Same mechanism as level 6's
+    l6vgfs02 (ADDENDUM 9 §P2) — the standing receipt gate, NOT one of the amendment's §K7 void rows.
+  gemini-3.1-pro-high x brownfield x FreeList x salt-diet x none    3 of 3 SCORABLE; 2 cells LANDED.
+  gemini-3.1-pro-high x brownfield x LZW      x salt-diet x none    3 of 3 SCORABLE; 2 cells LANDED,
+    2 TRUNCATED by the per-turn deadline (pass/fail stands as a floor; token/turn/wall not poolable).
+```
+⛔ **AND A STANDING CONFOUND THAT TRAVELS WITH EVERY ONE OF THESE 27 ROWS:** all ten TRUNCATED / SELF-NOT /
+PERSIST-INDETERMINATE / false_done cells in level 7 are **Pro · salt-diet** — ten of ten, zero plain, zero
+Flash. **The cap is arm-correlated, so no pass-rate contrast on the Pro row survives it**, and the result
+of record makes none. `DONE` here means *measured and written down*, never *resolved*.
+
+## §Q5 · WHAT THIS ADDENDUM DOES NOT DO
+1. **It authorises no spend.** What fires next is the Captain's call; level 8 is 20 conditions / 60 cells
+   and is gated on its export being named, not on this file.
+2. **It re-verifies no other row.** Every row but the twenty-seven above is CARRIED from ADDENDUM 9, and
+   §K2's RE-VERIFIED/CARRIED column is still owed and still not built — **four addenda running.**
+3. **It does not make the matrix read `FULL`:** **85 conditions are owed**, and every one of them is
+   greenfield × spec-change, a Flash or Pro greenfield gap, the unnamed fourth model's 50, or §Q2's one cell-pair.
+4. **It does not revisit** the level-4 void of ADDENDUM 6, which stands.
+5. **It claims no arm result.** §1 and §Q4 say why: three of the four (model × arm) quadrants are at the
+   pass ceiling and the fourth is confounded by an arm-correlated cap.
