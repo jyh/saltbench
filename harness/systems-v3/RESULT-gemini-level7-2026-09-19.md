@@ -46,7 +46,7 @@ problem) PAIRS** — §K6 rule 10's primary brownfield separator, per cell, neve
   Flash  FreeList  0.664 [0.392-0.831] n=6         0.390 [0.237-0.466] n=6           overlap
   Flash  LRU       0.948 [0.610-0.952] n=3         0.231 [0.188-0.344] n=3           DISJOINT
   Flash  LZW       0.443 [0.291-0.725] n=6         0.446 [0.193-0.586] n=6           overlap  <- ⛔ NOT
-  Pro    Crc32     0.694 [0.364-0.980] n=6         0.237 [0.224-0.289] n=6           DISJOINT
+  Pro    Crc32     0.694 [0.364-0.980] n=6         0.236 [0.224-0.246] n=5           DISJOINT
   Pro    FreeList  0.885 [0.646-1.000] n=6         0.610 [0.287-0.693] n=6           overlap
   Pro    LRU       0.976 [0.961-0.981] n=3         0.309 [0.126-0.318] n=3           DISJOINT
   Pro    LZW       0.990 [0.511-0.990] n=6         0.306 [0.107-0.531] n=6           overlap
@@ -57,6 +57,28 @@ salt-diet median (0.446) is ABOVE its plain median (0.443).** The first draft of
 ⇒ 🔑 ***A DIRECTION THAT HOLDS IN SEVEN CELLS OF A TABLE IS THE EASIEST PLACE IN THE WORLD TO PUT AN
 EIGHTH, AND THE ONLY THING THAT STOPS YOU IS COMPUTING IT.*** *(Same defect the census's own ADDENDUM 9
 §P3 recorded against itself two days ago: a section copied from the last addendum inherits its conclusion.)*
+
+## §1b · ⛔ THE RETENTION POPULATION, STATED — AND IT IS A CORRECTION MADE AT SIGNATURE
+**A retention band contains only cells that RAN THE EXPERIMENT: ended, and received their arm.** The same
+population as the pass quadrants, and for the same reason the scorer's own header gives — *a cell whose arm
+never arrived did not run the experiment this table is about.*
+⚠️ **THE TABLE ABOVE READ `Pro × Crc32 × salt-diet 0.237 [0.224-0.289] n=6` UNTIL THIS CORRECTION, AND THAT
+BAND INCLUDED `l7cpbs03` — THE ONE CELL THIS DOCUMENT EXCLUDES FROM SCORABLE** (VOID(NO-BRIEFING),
+ARM-NOT-RECEIVED, §3). Found by `systems` at signature, by asking the same question of **all sixteen bands**
+and finding **exactly one** in which a `NOT-SCORED`/`INCOMPLETE` row carried a pooled retention value.
+⇒ 🔑 ***TWO SECTIONS OF THIS DOCUMENT WERE USING TWO DIFFERENT POPULATIONS AND NEITHER SAID SO. §1 EXCLUDED
+THAT CELL FROM EVERY PASS RATE IN THE SAME BREATH AS INCLUDING IT IN A BAND*** — and the tell was free: the
+excluded cell's `0.289` **was the band's printed upper bound.**
+✅ **RE-DERIVED ON THE STATED POPULATION, ONE BAND MOVES AND FIFTEEN ARE BIT-IDENTICAL:** `0.236 [0.224-0.246]
+n=5`. **SAME DIRECTION IN 7 OF 8 pairs, 4 on DISJOINT bands** — both unchanged, and the direction **strengthens** — against plain's
+`[0.364-0.980]` the salt edge moves from 0.289 to 0.246, further from disjointness' boundary, not toward it.
+⇒ **A correction that makes a claim stronger is the one most likely to go unmade**, which is why it is here
+and not in a footnote. The band's new population is now asserted by an arm (§9b), where it had none.
+⚠️ **AND THE OTHER TWO EXCLUDED ROWS:** `l7cfss02`/`l7cfss03` carry `retained=1.000 · UNTOUCHED` in §4's
+table. They never ran, so that is a **measurement-shaped value with no measurement behind it** — the same
+class this result names for `retention.txt` in §2, now found in its own table by its signer. **They are in
+no band** (the rule above excludes them) and the raw value is kept because §4 records what the receipts
+said; **it is inert today and would cost something the first time a band is cut without the filter.**
 
 ⭐ **AND THE COST PREMIUM IS THE LARGEST THIS CAMPAIGN HAS MEASURED: `4.295x` TOTAL TOKENS, `2.676x`
 OUTPUT.** §7 has the figures, the exclusions, and the robustness check.
@@ -435,8 +457,20 @@ supplies one and silently drops the other.
 figure from the receipts and the cell TSV and asserts it against **the bytes of this document and of the
 census**: population, the four pass quadrants, scorable, FULL PASS, the ten flagged cells and their ids,
 the poolable n's, both medians, all three ratios, the four §K7 zero-columns, the card_extras split, the
-census `LIVE` row's sum, the 240-view's sum, and that the two census views agree on `DONE`. **27 verdict
-lines, 0 typed expectations, `FAILS: NONE`.** *(That count is read from the tool's own output — the first
+census `LIVE` row's sum, the 240-view's sum, and that the two census views agree on `DONE` — **and, since
+`systems`' signature, all eight RETENTION bands, the 7-of-8 direction, the DISJOINT count and the named
+exception. 39 verdict lines, 0 typed expectations, `FAILS: NONE`.**
+⛔ **THREE OF THOSE ARMS EXIST BECAUSE THE SIGNER FOUND THEM MISSING, AND TWO OF THE ORIGINAL 27 WERE
+VACUOUS.** `systems` drove, rather than read, that `check(name, derived, needle)` tests `needle in doc` and
+nothing else — so where the needle was a **hard-typed literal** the derived value was computed, printed
+where a reader sees it, and **never compared**: with the score-file glob pointed at a directory that does
+not exist, `declared derived=0 needle='84 cells'` printed **OK**. ⇒ 🔑 ***AN ARM THAT PRINTS A DERIVED
+NUMBER BESIDE A TYPED NEEDLE READS AS A MEASUREMENT AND IS A TYPED EXPECTATION*** — the idiom law's clause 1
+failing inside the tool written to enforce it. Both needles are now computed (`'%d cells' % len(rows)`).
+⛔ **AND RETENTION — the registered primary separator and this result's ⭐ headline — WAS TOUCHED BY ZERO OF
+THE 27 ARMS** (`"retain"` occurred 0 times in the verifier, against a live control that `retained` is a TSV
+column). **27 green lines sat directly above a claim none of them tested, and a reader carries the green
+forward.** That is the most dangerous shape a verified document can have, and it was invisible from inside. *(That count is read from the tool's own output — the first
 draft of this sentence said "24 arms", typed, and it is 27. The third typed number in one document, and
 the third one this section's own discipline caught.)*
 ⭐ **IT CAUGHT TWO THINGS BEFORE THIS FILE WAS COMMITTED, AND THE SECOND ONE WAS IN ITSELF:**
@@ -448,7 +482,21 @@ the third one this section's own discipline caught.)*
   ⇒ 🔑 ***A CHECK THAT TAKES THE FIRST MATCH IN AN APPEND-ONLY DOCUMENT VERIFIES THE OLDEST CLAIM THAT
   FITS ITS PATTERN, AND AN APPEND-ONLY DOCUMENT IS EXACTLY WHERE YOU PUT A CHECK.*** Now it takes the
   LAST, asserts the population is ≥ 2, and cross-checks the two views against each other.
-✅ **DRIVEN BACKWARDS, because the fixes had already landed and a new arm can then only be green:** three
+✅ **THE THREE REPAIRS ARE DRIVEN BACKWARDS TOO, AND THE DECISIVE MUTANT IS THE SIGNER'S OWN:**
+```
+  M-a  systems' defect RESTORED: the excluded cell put back in its band   RED band Pro Crc32
+  M-b  one cell's retained flipped in the TSV (0.126 -> 0.826)            RED band Pro LRU
+  M-c  systems' OWN mutant: one table row deleted                         RED cells  (+10 neighbours)
+       ⇒ it printed `OK cells derived=83 needle='84 cells'` FOR systems AN HOUR AGO.
+         It now reads `RED cells derived=83 needle='83 cells'`. THE VACUITY IS CLOSED, AND THE
+         PROOF IS THE SIGNER'S OWN MUTANT FLIPPING DIRECTION.
+```
+**Both files `cmp` byte-identical to their pre-mutation state afterwards; control green.**
+⇒ 🔑 ***EVERY ONE OF THESE ARMS EXISTS BECAUSE SOMEONE WHO DID NOT WRITE THE DOCUMENT DROVE IT. I PROVED MY
+SUITE BACKWARDS AND IT WAS STILL VACUOUS IN TWO ARMS AND SILENT ON ITS OWN HEADLINE*** — a fourth-pair-of-eyes
+result in the idiom law's clause 4 sense, and the arm count (27) was exactly the number that said otherwise.
+
+✅ **AND THE ORIGINAL THREE, from before the signature:** three
 mutants — the original `24/24` typo restored, the census `DONE 99 → 98`, and one digit of the salt median —
 each reddened exactly the arms that name it, and **mutant 2 was caught by the cross-check rather than by
 the sum** (`240-view DONE (99) == LIVE-row DONE (98)` RED). Both files `cmp` byte-identical to their

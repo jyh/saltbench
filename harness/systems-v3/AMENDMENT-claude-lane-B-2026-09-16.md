@@ -1038,3 +1038,73 @@ a run config at all.
 ### A5.4 · WHAT THIS DOES NOT CHANGE
 The arms, the models, the caps, the fence, the P4 probe, the scorer, the tripwires, the list order (A3.1), the one-root-at-a-time staging
 rule for new roots (A1.3), or any result already recorded. **Until a second pool is fired, the limit is 1, and the chain says so.**
+
+---
+## ⚖️ ADDENDUM 6 — THE LANE WIDENS TO **THREE** POOLS, NOT FIVE: POOL 3 IS ADMITTED AND MEASURED; POOL 4 AND POOL 5 **DO NOT EXIST ON THE RUN BOX** AND NEED THE CAPTAIN'S HAND IN A QUIET WINDOW. POOL BECOMES A REGISTERED CONFOUND, AND A CELL FIRE READS THE **WALL**, NEVER THE DAY LINE. APPENDED; all text above, signatures included, untouched.
+bench (SaltBench lead), 2026-09-19. **Registered BEFORE the first cell fires on a new pool.** ⛔ **UNSIGNED UNTIL A NON-AUTHOR SIGNS IT, and no cell fires on a newly admitted pool before that signature.**
+
+### A6.1 · THE ORDER, AND THE ONE MEASUREMENT THAT CHANGES ITS ARITHMETIC
+Council 2026-09-19 §R, the Captain's *"yes please"*, relayed as helm ORDER 3: *"admit the three named pools to lane B for this weekend, so the lane runs wider than two."*
+⛔ **MEASURED WITH THE CHAIN'S OWN `pool_env_probe`, DRIVEN PER POOL AGAINST THE RUN BOX — not inferred, and not read from any document:**
+```
+  pool         chain's env probe                                              config dir on the RUN BOX
+  POOL 1       OK  $HOME/.fleet/saltbench/claude-lane.env                     EXISTS   (lane pool 1)
+  POOL 2       OK  $HOME/.fleet/saltbench/claude-lane-<pool 2>.env              EXISTS   (lane pool 2)
+  POOL 3       NONE  no claude-lane-<pool 3>.env; the default's CLB_CFG      EXISTS   ⇒ admittable
+                     basename is .claude-account-<pool 1>
+  POOL 4       NONE  (same fallback)                                          ABSENT   ⛔ cannot be admitted
+  POOL 5       NONE  (same fallback)                                          ABSENT   ⛔ cannot be admitted
+```
+⇒ **TWO OF THE THREE POOLS THE ORDER NAMES HAVE NO CONFIG DIR ON THE BOX WHERE CELLS RUN.** A pool is *"one config dir = one account = one day line"* (A5.2(a)), and the fleet-wide quota pools POOL 4 and POOL 5 are **seat** accounts on the driving box; the lane's pools are **cell** config dirs on the run box. **They are different objects that share a name**, and that is the whole of the gap.
+⛔ **AND CREATING THEM IS NOT MINE AND NOT TODAY'S:** it needs a login by the Captain (a config dir holds credentials), and **A5.2(d) makes it a QUIET-WINDOW act** — every Claude belt denies the `~/.claude*` glob AT RENDER, and A5.2(d) records the measured precedent: *"the second pool's login landed mid-fire and the launcher REFUSED on fence drift whose only difference was that one new dir."* **The chain is live as this is written (two cells).**
+⇒ 🔑 ***AN ORDER TO ADMIT N POOLS IS AN ORDER ABOUT N DIRECTORIES, AND THE ONLY PLACE THAT IS FALSIFIABLE IS THE BOX.*** The order is executed to the extent the objects allow, the remainder is declared with its owner and its condition, and **nothing waits on a question.**
+
+### A6.2 · WHAT IS ADMITTED NOW: POOL 3. THE LANE RUNS **THREE**.
+`~/.claude-account-<pool 3>` **exists on the run box**; what is missing is a one-line env file, and **writing it is not a `~/.claude*` act, so it is not a quiet-window act**. On signature: `~/.fleet/saltbench/claude-lane-<pool 3>.env` with `CLB_CFG=$HOME/.claude-account-<pool 3>`, after which the chain's own probe resolves it.
+**IDENTITY PER POOL (§Q3.4 item 2, A5.3's rule), MEASURED AT THE OBJECT TODAY:**
+```
+  POOL 1  ec327a3712cc4adc        POOL 2  8bfcdc8ab8e00d11        POOL 3  2d67864f7a9226e6
+```
+⭐ **AND THE CONTROL THAT MAKES THE NEW ONE MEAN SOMETHING:** POOL 2 is the lane's SECOND pool, and **A5.3 recorded its expected digest as `8bfcdc8ab8e00d11`**. My reading reproduces it **exactly**. ⇒ **POOL 3's digest is produced by a method already proven against a value this file recorded two days ago**, rather than by a tool asked to bless itself.
+⛔ **THE TOOL'S OWN WARNING STILL BINDS AND IS NOT ANSWERED BY THE ABOVE:** `lane_identity --print-digest` prints *"THIS IS NOT A CHECK … comparing this to itself blesses whatever is there."* **A5.3 answers it with a SECOND, INDEPENDENT READER binding the dir to the account the Captain named.** ⇒ **That second read is OWED for POOL 3 and is the signer's, not mine.** Until it is taken, `2d67864f7a9226e6` is *what the dir authenticates as*, **not** *the account we intend*. **A cell may not fire on POOL 3 on my reading alone.**
+
+### A6.3 · POOL IS A REGISTERED CONFOUND AND TRAVELS WITH EVERY TABLE
+A5.3 already records a cell's pool and forbids assigning an arm by pool. **This addendum makes POOL a first-class registered confound**, in §Q5's sense, for every table this lane produces from here:
+1. **Every table that reports an arm contrast names the pool composition of each arm.** Rows take the pool with room, so a pool can carry more of one arm than the other; **that is reported as a column, never balanced by design** — the served model, the pinned client, the settings and the fence are identical across pools.
+2. **A pool is never an arm and never a covariate in a claim.** No result of this lane may attribute a difference to a pool: with three pools and n=3 per condition the design cannot separate pool from condition, **and saying so before the data is the point.**
+3. **A pool's ACCOUNT is recorded by digest, not by name**, because a config dir's name is not an account (a standing fleet finding, and this lane's own A5.3).
+4. ⚠️ **WHAT WIDENING COSTS THE SCIENCE, STATED PLAINLY:** at two pools the composition was near-balanced by accident; at three it will not be. **The confound column is the price of the throughput, and it is cheap only because it is declared now.**
+
+### A6.4 · ⛔⛔ HOW THE CHAIN READS A POOL BEFORE EACH FIRE — AND THE RULE CHANGES: A CELL FIRE HONOURS THE **WALL**, NOT THE DAY LINE
+**As built:** `pool_ok <pool>` runs `quota-triples.sh <pool>` and `day-line-check.sh bench <pool>` once per pass, fail-closed (an unmeasured pool HOLDS), and a pool that fails its reading leaves `FREE_POOLS` for the rest of that fill.
+⛔ **AND IT HOLDS ON THE WRONG QUANTITY. MEASURED TODAY IN THE LIVE CHAIN'S OWN LOG:**
+```
+  21:03:17Z  DONE clbszs02 pool=<pool 2>        the pool falls idle
+  21:06:28Z  POOL <pool 2> rc=3 · 21:13:49 · 21:18:00 · 21:22:12 · 21:26:24 · 21:30:35 · 21:34:47
+  21:38:59Z  POOL <pool 2> rc=3                 EIGHT consecutive refusals, 32m31s
+  21:42:11Z  STAGED clbszp03                  ← the helm raises that pool's DAY LINE 49 -> 60
+  21:45:03Z  FIRED  clbszp03 … LAUNCH [all:51/60]     41m46s after the pool fell idle
+  and it is not a one-off: `POOL <pool 2> rc=3` occurs 74 times in this chain's life (control: 320 log lines)
+```
+⇒ **The lane ran ONE-WIDE for 36 minutes on the Captain's stated top priority because a CELL FIRE was held by a seat's PACE.**
+⚖️ **THE RULE, and it is the §R exemption applied to the object it actually binds:** council 2026-09-19 §R exempts *the lead, the runner and the verification seat* from day-line holds while any pool is under its WALL. **A cell fire is none of those three: it is not a seat, holds no roster row, and would miss any exempt list keyed by seat name.** The helm took this finding at 14:49 and re-keyed its checker design on the **LANE**, never a seat name. ⇒ **A Claude-lane cell fire is a pilot-lane act and reads the WALL — the schedule's per-pool reserve, and ~95 on the three draining pools by council ⑩ — never the day line.** The day-line reading is still TAKEN and LOGGED beside it, as information; it no longer HOLDS a fire.
+⛔ **FAIL-CLOSED IS UNCHANGED AND IS THE HALF THAT MATTERS:** an unmeasured pool still HOLDS, a stale reading still HOLDS after three re-reads, and **no cell starts on a pool at its wall.** This relaxes *which line*, not *whether a line is read*.
+⚠️ **UNTIL `day-line-check.sh` CARRIES THE LANE KEY (the helm's build, desk TN), THIS CLAUSE IS NOT ENFORCEABLE THROUGH THE LOOP** and the chain will keep holding on the day line. **That is a declared gap, not a silent one**, and the interim is what happened today: a hand raise on the pool's line. **This addendum does not authorise a chain edit to work around it** — ⛔ never edit a running chain file.
+
+### A6.5 · THE WIDTH — MINE TO SET, AND THE HONEST ANSWER IS THAT THE BOX IS NOT THE BINDING CONSTRAINT
+The order left the width to the lead and framed it as a load question (*"five concurrent cells on one box"*). **Measured through the fleet's own memory instrument — `bench/heavy_slot.py`'s `free_inactive_gb`, driven on the RUN BOX's own `vm_stat` bytes, with the page size read from that box's own header (16384) and never assumed:**
+```
+  run box        32.0 GiB total (hw.memsize 34359738368) · 12 CPUs · page size 16384
+  free+inactive  12.7 GiB, WITH TWO CELLS LIVE
+  two live cells 0.99 GiB total RSS (0.52 + 0.45; every other cell process < 0.01 GiB)
+  load average   3.90 / 3.92 / 3.75  ⇒ about 2 cores per live cell, of 12
+```
+⇒ **A cell costs about 0.5 GiB and ~2 cores. Memory alone would carry roughly twenty; CPU would carry about six.**
+⇒ ⭐ **SO THE WIDTH IS NOT A LOAD ANSWER AT ALL: IT IS `3`, BECAUSE A5.2(a) ALLOWS ONE LIVE CELL PER POOL AND ONLY THREE POOLS RESOLVE.** The load question the order posed **does not arise** — the pool count binds first, by a factor of two on the tighter of the two resources. **If POOL 4 and POOL 5 are ever created, the width becomes 5 and CPU becomes the next constraint to measure; it is not measured here and I make no claim about 5.**
+⛔ **`heavy_slot` IS NOT THE GATE HERE AND I AM NOT PRETENDING IT IS.** It guards the *driving* box's one-heavy-job lock, against Lean elaborations and FDFD solves; the cells run on the *other* box, take no such lock, and are two orders of magnitude smaller. **What I took from it is its READING METHOD — free+inactive, page size from the header — which is the thing the fleet map's 4× under-read exists to protect.** *(I also nearly reported that file missing: it is in the verso SEAT's checkout, not the top-level verso tree I searched first. An accurate measurement of the wrong directory.)*
+
+### A6.6 · WHAT THIS ADDENDUM DOES NOT CHANGE
+1. **A5.2's limit is untouched in every clause:** one live cell PER POOL, never two in one root, fires serialized, no config dir created or removed while a cell is live. **This adds a pool; it relaxes nothing.**
+2. The arms, models, caps, fence, P4 probe, scorer, tripwires, list order (A3.1), the one-root-at-a-time staging rule (A1.3), or any result already recorded.
+3. **It admits no pool that does not resolve**, and **it fires no cell on POOL 3** before the signature AND A6.2's independent second read of that dir's account.
+4. It authorises no chain edit. The running chain is handed over, never edited.

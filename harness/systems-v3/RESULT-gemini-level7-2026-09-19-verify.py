@@ -1,6 +1,6 @@
 """Re-derive every headline figure in RESULT-gemini-level7 from the receipts and
 compare it against the bytes of the document. Nothing here is typed from the prose."""
-import csv, re, statistics, glob, os, sys
+import csv, re, statistics, glob, os, sys, collections
 doc = open('harness/systems-v3/RESULT-gemini-level7-2026-09-19.md').read()
 cen = open('harness/systems-v3/CENSUS-full-matrix-2026-09-14.md').read()
 rows = list(csv.DictReader(open('harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv'), delimiter='\t'))
@@ -12,7 +12,7 @@ def check(name, derived, needle):
     if not ok: fails.append(name)
 
 # 1 population
-check('cells', len(rows), '84 cells')
+check('cells', len(rows), '%d cells' % len(rows))          # was '84 cells': a TYPED needle (systems, rider 1)
 # 2 pass by quadrant
 q = {}
 for r in rows:
@@ -31,7 +31,7 @@ for f in glob.glob(os.path.expanduser('~/.fleet/executors/gemini.runs/l7u-*-2026
     tot['declared'] += int(re.search(r'ENDED \d+/(\d+)', last).group(1))
     tot['scorable'] += int(re.search(r'SCORABLE (\d+)', last).group(1))
     tot['passn']    += int(re.search(r'FULL PASS (\d+) of', last).group(1))
-check('declared',  tot['declared'],  '84 cells')
+check('declared',  tot['declared'],  '%d cells' % tot['declared'])   # was '84 cells': typed (rider 1)
 check('scorable',  tot['scorable'],  '%d scorable' % tot['scorable'])
 check('full pass', tot['passn'],     '%d FULL PASS' % tot['passn'])
 # 4 arm-correlated flags: all Pro salt-diet
@@ -84,5 +84,43 @@ print('  %s  240-view DONE (%d) == LIVE-row DONE (%d)' % ('OK ' if d2==d else 'R
 print('  %s  delta 72->%d is +%d, addendum claims +27' % ('OK ' if d-72==27 else 'RED', d, d-72))
 if d-72 != 27: fails.append('delta')
 mm = re.findall(r'\+(\d+)\n?', cen.split('§Q1')[1].split('---------')[0])
+
+# ── RIDER 2 + 3 (systems, at signature): RETENTION is the registered primary separator and had ZERO
+#    arms, and one band pooled a cell the document EXCLUDES. Both are asserted here, from the TSV.
+#    THE POPULATION RULE: a band holds only cells that ran the experiment -- ended AND got their arm.
+import statistics as _st
+_M = {'gemini-3.1-pro-high': 'Pro', 'gemini-3.8-flash-high': 'Flash'}
+def _in_band(r):
+    return r['verdicts'] not in ('NOT-SCORED', 'INCOMPLETE')
+_bands = collections.defaultdict(list)
+_excluded = [r['cell'] for r in rows if not _in_band(r)]
+for r in rows:
+    if _in_band(r):
+        _bands[(_M.get(r['served'], '?'), r['ret_task'], r['arm'])].append(float(r['retained']))
+print('  OK   retention population: %d of %d cells; EXCLUDED %s'
+      % (sum(len(v) for v in _bands.values()), len(rows), ','.join(sorted(_excluded))))
+if sum(len(v) for v in _bands.values()) + len(_excluded) != len(rows):
+    fails.append('retention population')
+_same = 0
+_disj = 0
+for (_m, _t) in sorted({(k[0], k[1]) for k in _bands}):
+    _pl = sorted(_bands[(_m, _t, 'plain')])
+    _sa = sorted(_bands[(_m, _t, 'salt-diet')])
+    if _st.median(_sa) < _st.median(_pl):
+        _same += 1
+    if max(_sa) < min(_pl):
+        _disj += 1
+    # the band as the document prints it, rebuilt from the TSV and asserted against the doc's bytes
+    _needle = '%.3f [%.3f-%.3f] n=%d         %.3f [%.3f-%.3f] n=%d' % (
+        _st.median(_pl), min(_pl), max(_pl), len(_pl),
+        _st.median(_sa), min(_sa), max(_sa), len(_sa))
+    check('band %s %s' % (_m, _t), _needle.split('         ')[1], _needle)
+check('salt-median-below-plain pairs', _same, 'SAME DIRECTION IN %d OF 8' % _same)
+check('DISJOINT bands', _disj, '%d on DISJOINT bands' % _disj)
+# and the exception must be NAMED, not buried: the one pair where it does not hold
+_exc = [(m, t) for (m, t) in sorted({(k[0], k[1]) for k in _bands})
+        if _st.median(_bands[(m, t, 'salt-diet')]) >= _st.median(_bands[(m, t, 'plain')])]
+check('the named exception', _exc, '`%s × %s` IS THE EXCEPTION' % (_exc[0][0], _exc[0][1]))
+
 print('\nFAILS:', fails if fails else 'NONE')
 sys.exit(1 if fails else 0)
