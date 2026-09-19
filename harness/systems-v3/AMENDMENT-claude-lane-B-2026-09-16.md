@@ -1108,3 +1108,42 @@ The order left the width to the lead and framed it as a load question (*"five co
 2. The arms, models, caps, fence, P4 probe, scorer, tripwires, list order (A3.1), the one-root-at-a-time staging rule (A1.3), or any result already recorded.
 3. **It admits no pool that does not resolve**, and **it fires no cell on POOL 3** before the signature AND A6.2's independent second read of that dir's account.
 4. It authorises no chain edit. The running chain is handed over, never edited.
+
+---
+## ⚠️⚠️ ERRATUM TO ADDENDUM 6 §A6.2 — **THE OWED "SECOND INDEPENDENT READ" IS NOT PERFORMABLE, BECAUSE THE INTENDED ACCOUNT IS NOT IN THE BYTES.** AND §A6.1's PROBE TESTS EXISTENCE WHERE IT MEANS AUTHENTICABLE. APPENDED BELOW THE SIGNED TEXT; A6.1–A6.6 and every signature untouched.
+*bench (lead), 2026-09-19, on `systems`' finding at its non-author signature of ADDENDUM 6. It replaces one release condition and adds one precondition. It admits no pool, changes no arm, cap, fence or reading rule, and **no cell fires on the newly admitted pool** — which was already the case.*
+
+### E6.1 · ⛔ WHAT I ASKED THE SIGNER FOR CANNOT BE DONE BY ANY READER
+§A6.2 makes a cell's fire on the new pool conditional on *"a SECOND, INDEPENDENT READER binding the dir to the account the Captain named."* **`systems` went to do exactly that and the object carries nothing to bind with.** Measured on all three pool dirs, **keys printed, never values**:
+```
+  claudeAiOauth.accessToken · .refreshToken · .expiresAt · .refreshTokenExpiresAt
+  claudeAiOauth.rateLimitTier · .scopes · .subscriptionType
+  ⇒ NO email · NO account id · NO subject · NO organisation.  IDENTICAL KEY SET ON ALL THREE.
+```
+⇒ 🔑 ***NO READ OF THAT DIRECTORY CAN BIND IT TO AN ACCOUNT, BECAUSE THE ACCOUNT IS NOT IN IT.*** The only place the account appears is **the directory's own name** — and this fleet's standing law, earned the evening a login into a correctly-named directory authenticated as the WRONG account and a 21-arm preflight passed it, is that **a directory's name is not an account.**
+⇒ ⛔ **SO A "SECOND INDEPENDENT READER" OF THE SAME BYTES IS NOT INDEPENDENT EVIDENCE — IT IS THE SAME NON-EVIDENCE READ TWICE**, which is the seven-needles-one-axis shape: the second reader crosses no axis at all. **I wrote a release condition that FEELS like a control and is one only if the bytes hold the answer. They do not.**
+⚠️ **AND MY OWN §A6.2 HALF-SAW IT** — *"`2d67864f7a9226e6` is what the dir AUTHENTICATES AS, not the account we INTEND"* — **which is exactly right, and I then assigned the gap to a reader instead of naming it as a gap in the method.** ⇒ ***SEEING THAT A CLAIM IS UNSUPPORTED AND ASSIGNING SOMEONE ELSE TO SUPPORT IT ARE DIFFERENT ACTS, AND THE FIRST ONE MAKES THE SECOND FEEL DISCHARGED.***
+
+### E6.2 · ✅ THE RELEASE CONDITION, REPLACED
+**§A6.2's owed act becomes: THE CAPTAIN'S WORD — *which account was logged into that directory* — carried with the POOL 4 / POOL 5 question already going to him, since those need his hand anyway.** It is one sentence, needs no machine act, and **mutates nothing.** ⛔ **If a machine act is ever preferred instead, it is taken in the SAME QUIET WINDOW pools 4 and 5 already require, never against a live chain, and recorded as a WRITE** — see E6.3. **One act, one window, three pools.**
+⛔ **UNCHANGED: no cell fires on the newly admitted pool until this is answered.** The addendum binds; the pool waits.
+
+### E6.3 · ⛔ AND THE ONLY INSTRUMENT THAT WOULD BIND IT IS NOT A READ — THAT POOL'S ACCESS TOKEN IS THREE DAYS STALE
+```
+  POOL 1   access VALID to 2026-09-20T00:24:30Z     refresh VALID to 2026-10-15
+  POOL 2   access VALID to 2026-09-20T01:16:15Z     refresh VALID to 2026-10-16
+  POOL 3   access EXPIRED 2026-09-17T00:55:18Z      refresh VALID to 2026-10-10
+```
+The only thing that returns an identity is an **authenticated call**, and on this pool that call **REFRESHES the token — a WRITE to the lane's own credential file**, on a pool the chain is about to fire on, while the chain is live. **That is §A5.2(d)'s concern one object over.**
+⚖️ **NOT FATAL, AND SAID AS LOUDLY AS THE REST: the refresh token is valid for three more weeks, so that pool CAN authenticate.** This is not the blanked-credential case where a target cannot authenticate at all.
+⇒ 🔑 ***BUT §A6.1's PROBE COULD NOT HAVE TOLD THE DIFFERENCE. IT TESTS THAT A DIRECTORY EXISTS AND CONCLUDES THE POOL IS ADMITTABLE — EXISTENCE STANDING IN FOR AN AUTHENTICATION CLAIM.*** Here the answer happens to be yes; **the instrument would have said yes either way**, which is the identical shape to *a blanked credential is a file that exists*.
+✅ **ADDED PRECONDITION, and it is the small honest fix:** before the first cell on any NEWLY ADMITTED pool, its credential's **token state is read and recorded** (access validity, refresh validity), and an EXPIRED access token is **declared, not silently refreshed at launch**. Existence is no longer sufficient to call a pool admittable; **authenticable is the claim, and it is now made explicitly or not at all.**
+
+### E6.4 · ✅ `systems`' §A6.3 RIDER, TAKEN
+**The first cells on the newly admitted pool are the likeliest in this lane's history to meet a token refresh at launch.** If one dies there, it is **ARM-CORRELATED BY ACCIDENT** — whichever arm the fill happened to schedule first — and §A6.3's confound column is what will make that legible instead of mysterious.
+⇒ **THEREFORE: that pool's FIRST cell is fired DELIBERATELY and singly, not taken as the next row off the queue**, and its outcome is recorded whichever way it goes. **A first cell chosen by a scheduler is a first cell nobody can interpret.**
+
+### E6.5 · WHAT THIS ERRATUM DOES NOT DO
+1. It admits no pool and fires no cell. The lane still runs **two** until the replaced condition is answered.
+2. It changes no arm, cap, fence, scorer, reading rule, or any recorded result.
+3. It does not re-open ADDENDUM 6, which was correct in everything it measured; **what it got wrong is an act it assigned, and that is corrected beside it rather than inside it.**
