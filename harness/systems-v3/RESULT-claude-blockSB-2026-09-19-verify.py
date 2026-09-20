@@ -25,7 +25,9 @@ except OSError as e:
     print("CANNOT READ INPUT: %s" % e); sys.exit(2)
 
 N = [0, 0]
-def arm(label, ok, shown=""):
+DATA_ARMS = [0]          # arms minted per-row rather than per-program: see the LIMITS block at the end
+def arm(label, ok, shown="", data_dependent=False):
+    if data_dependent: DATA_ARMS[0] += 1
     N[0] += 1; N[1] += 0 if ok else 1
     print("  %s  %s%s" % ("ok  " if ok else "RED ", label, ("   [%s]" % shown) if shown else ""))
 
@@ -125,7 +127,8 @@ arm("⭐ the cap binds ONE arm only, which is what makes §6 a treatment claim",
 caps = set(r["cap"] for r in rows)
 arm("one cap value across the block, and it appears", len(caps) == 1 and insrc(list(caps)[0]), str(caps))
 for r in [x for x in rows if x["capped"] == "YES"]:
-    arm("capped cell %s and its cost appear" % r["cell"], insrc(r["cell"]) and insrc(r["final_COST"]))
+    arm("capped cell %s and its cost appear" % r["cell"], insrc(r["cell"]) and insrc(r["final_COST"]),
+        data_dependent=True)
 
 print("\nTOKENS AND COST (§7)")
 for col, fmt, xf in (("final_T", "{:,.0f}", "%.2fx"), ("final_COST", "{:.4f}", "%.2fx")):
@@ -176,5 +179,23 @@ globals()["doc"] = saved
 arm("⭐ MUTANT: changing the total-token ratio by 0.01 in the document reddens the arm that names it", would_red)
 arm("⭐ a value NOT in the document is not found (insrc is not vacuously true)", not insrc("__NOT_IN_THIS_DOCUMENT__"))
 
-print("\n%d arms, %d RED" % (N[0], N[1]))
+# ⛔⛔ THE LIMITS RIDE WITH THE VERDICT, AND THEY DID NOT UNTIL 2026-09-19.
+#    `systems` found it at its non-author signature: this file's docstring carries the header
+#    "limits ride with verdicts" and named four limits, and ZERO of them appeared in the 5,784 B
+#    this program printed. A reader ran it, saw "90 arms, 0 RED", and never met the sentence saying
+#    this cannot tell you the table is right. ⇒ THE IDIOM LAW'S CLAUSE (b) FAILING INSIDE A TOOL
+#    WHOSE DOCSTRING NAMES THE LAW. The fix is a print, in the same act as the count.
+# ⛔ AND THE ARM COUNT IS DATA-DEPENDENT — `systems`' finding (C). The capped-cell loop mints one arm
+#    per capped cell, so a table with one fewer capped cell prints 89 and still reads as success.
+#    The count is therefore SPLIT below, so a reader can tell an instrument change from a data change.
+print("\n%d arms, %d RED   (%d fixed + %d data-dependent: 1 per capped cell, %d capped here)"
+      % (N[0], N[1], N[0] - DATA_ARMS[0], DATA_ARMS[0], DATA_ARMS[0]))
+print("LIMITS, beside the verdict and not only in the source:")
+print("  · this checks that the DOCUMENT agrees with the TABLE and that the CENSUS's move equals the")
+print("    table's condition count. IT CANNOT TELL YOU THE TABLE IS RIGHT.")
+print("  · it does not re-score a cell, does not re-run a suite, and does not reach the run box.")
+print("  · the arm COUNT is partly a claim about the data (see the split above), so a changed count")
+print("    is not by itself an instrument failure — read the split, never the total.")
+print("  · a COMPENSATED forgery of the census (every surface moved consistently) is caught by exactly")
+print("    ONE arm here, the cross-object MOVE arm. That class has no redundancy in this file.")
 sys.exit(1 if N[1] else 0)
