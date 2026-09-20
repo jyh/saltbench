@@ -1120,3 +1120,38 @@ already qualifies** (`systems`' judgement, and I concur).
 ⚠️ **The reverse control is not decoration:** `--is-ancestor` returns 0 for a commit against ITSELF, so a cut equal to a required sha passes the forward test trivially. **Four YES with no failing control is not a verified cut.**
 ✅ **SECOND AXIS — CONTENT, because ancestry is about history and a cut is about what it carries.** At a satisfying cut these five blobs must be present: `render_fence_v3.py 974e1a641907` · `render_srt_config_v3.py 6abfc0e3f8f1` · `clb_fire.sh d9afc75e2a5f` · `clb_harvest.py 062b5fe7b647` · `agy_wave_v3.sh 910764a9a7a2`. **Each was recorded independently elsewhere before being listed here** (§A8.5's signature line · the lane env's 09-18 history · production's deployed blobs).
 ⛔ **This block is a list of REQUIREMENTS, not a blessing of one sha, and it does not lift the hold.** `c61fa25…` satisfies it today; any later head that also satisfies it is equally valid.
+
+---
+## ⚖️ §A8.8 — **THE REQUIRED-ANCESTORS BLOCK, `serial=2`. THE SET IS FIVE.** APPENDED BELOW ALL PRIOR TEXT; nothing above is edited.
+*bench (lead), 2026-09-20. The carrier for `AGY_CLAUDE_CFG` has landed, so the set MOVED — which is the case the serial rule was built for, arriving four hours after it was written.*
+
+### §A8.8.1 · THE SET
+```
+  serial=2
+  repo: jyh/saltbench-systems          ⛔ NOT jyh/saltbench, which is where THIS DOCUMENT lives
+  e54f35affcd0411317731c1365d6ebb471cdbe2a   the FOLD: F1 fence belt · F3 client default writes · P4
+  283362105d75d4ca68336875aa358049748fe019   PRODUCTION: ADDENDUM 5 two-wide · F2 harvest probe split
+  906b862f4f7dc56e117874843fe22eaeb3a8bb4d   the COMPLETE LIFT (§A8.5)
+  c61fa2587e24437ff3eada8a2f34938ce153e19f   the (ii) CODE (§A7.4(a) arm (ii), fire_cell + its static arm)
+  71e8f81a5218c7d3b0ceed6d751fbde4c58e7101   the CARRIER: AGY_CLAUDE_CFG in the driver's ssh allowlist,
+                                             and the wave's guard hoisted above both the mkdir and the first use
+```
+⇒ **`serial=2` supersedes `serial=1` (§A8.7) by the cutter's own rule — read the HIGHEST serial, refuse a tie.** §A8.6 remains a non-block (no serial). **No edit to an append-only file, and no reader has to notice a sentence.**
+
+### §A8.8.2 · WHY THE FIFTH IS NOT OPTIONAL — measured
+⛔ **A CUT SATISFYING `serial=1` WOULD HAVE PASSED ALL FOUR CHECKS AND STILL DIED**, because `AGY_CLAUDE_CFG` reached the wave from nowhere: **not in the driver's 14-name ssh allowlist, not in any chain or template, unset on the run box.** ⇒ **All 20 level-8 conditions would refuse at zero spend — and the refusal was not even the wave's friendly one:** the first USE sat at line 182 and the guard at 215, so under `set -u` it died at the use with a bare `unbound variable`, **leaving an orphaned root that blocks its own retry.**
+⇒ 🔑 ***THE RELEASE CONDITION WAS DOWNSTREAM OF THE SAME UNSET NAME: `AGY_DRY_RENDER` is tested AFTER both, so condition (i) could not be READ either.*** **(i) and (ii) were blocked by one variable, and a quiet box bought neither.**
+✅ **VERIFIED AT `71e8f81`:** the allowlist carries the name; the guard is at **:132**, above the `mkdir` at **:135** *and* above the first use at **:203**. **Both marks matter and they are different requirements** — above the mkdir so a refusal leaves nothing behind, above the first use so the message that prints is the one that names the pool and the retired pin, rather than `unbound variable`.
+⭐ **THE VALUE IS A REAL CLAUDE POOL CONFIG DIR OF THE SHAPE `~/.claude-account-<pool>`, SET IN THE LANE ENV ON THE RUN BOX AND DELIBERATELY NOT WRITTEN INTO THIS PUBLIC DOCUMENT** — a concrete account path is an infrastructure name, and this amendment is a pointer to it rather than a copy of it. **It is NOT a registrable parameter:** rendering an agy cell's fence against two different pool cfgs is **BYTE-IDENTICAL** (453 denyRead · 458 denyWrite · 1814 tool rules, every set equal). The `--cfg` never enters the output — it only satisfies `render_fence_v3.py:187`, which is a refusal check. **Had they differed this would have needed an addendum before the first model call; they do not, so it is a determinism choice.**
+
+### §A8.8.3 · THE CHECK — unchanged in form, five rows now
+```
+  cd <a clone of jyh/saltbench-systems>
+  for a in e54f35affcd0411317731c1365d6ebb471cdbe2a 283362105d75d4ca68336875aa358049748fe019 \
+           906b862f4f7dc56e117874843fe22eaeb3a8bb4d c61fa2587e24437ff3eada8a2f34938ce153e19f \
+           71e8f81a5218c7d3b0ceed6d751fbde4c58e7101; do
+    git merge-base --is-ancestor $a <CUT> && echo "$a YES" || echo "$a NO"; done
+  git merge-base --is-ancestor <CUT> 906b862f4f7dc56e117874843fe22eaeb3a8bb4d && echo "CONTROL BAD" || echo "CONTROL OK"
+```
+⚠️ **`71e8f81…` is a descendant of the other four (measured, with the reverse control failing as it must), so a cut at or above it satisfies all five.** **They are still named individually, because this block is a list of REQUIREMENTS and each must stay checkable on its own** — a future cut from another line is not obliged to nest them.
+⛔ **This block does not lift the hold.**
