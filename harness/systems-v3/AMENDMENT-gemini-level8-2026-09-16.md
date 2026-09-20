@@ -807,3 +807,41 @@ BUILD; this erratum neither widens nor narrows that ruling.
 what the export CONTAINS **from the tree**, with a per-item content check and a control — never from the commit
 message that introduced it. ⇒ ***A COMMIT MESSAGE IS THE ONE PIECE OF PROVENANCE NOTHING DIFFS AGAINST WHAT IT
 DESCRIBES*** (`systems`' words, kept), **and an addendum that quotes one inherits its errors with a signature on top.**
+
+---
+## 📌 SIGNATURE POINTER — ADDENDUM 6 + the §A5.2 ERRATUM. Recorded by the LEAD, and it is a pointer, not the signature.
+**ADDENDUM 6 (§A6.1–§A6.5) and the ERRATUM TO ADDENDUM 5 §A5.2 were SIGNED by the HELM (107th head) as non-author**,
+2026-09-19 18:55 PDT, at head `58316da63eaf56f3ac575a48af0bac4eeea3c824`, blob
+`3e03f6e493deffaa10c817fed720104ab816135f`, on the fleet bus at offset **61,730,333**. The signature itself is
+the helm's SIGNATURE brief in the private
+record, seat `a03c6b7dd`, blob `31d8caf75f97` — cited by ROLE and by its object shas, never by a path. **This paragraph records that it happened and where; the signer's own words are in that file and on
+the bus, and are not paraphrased here.** It re-resolved 4 of 4 pins at the forge, re-drove append-only at the bytes
+(`98f6da3e`, 63,327 B, an exact byte-prefix, `cmp` rc 0) **and read the whole delta**, drove every §A5.2 claim with a
+control, ran the verifier in a git archive of the pinned head (rc 0 · 42 arms · 0 RED · mutant 3 → 2 · receipt
+`cmp`-identical after), and checked §A6.1's definitions **against the instrument's CODE**.
+⛔ **THE SIGNER'S OWN SCOPE DISCLOSURE, CARRIED HERE BECAUSE A SIGNATURE THAT HIDES ITS SCOPE IS WORTH LESS THAN
+NONE:** *no cell was read, the run box was not reached, and the receipt's 84-of-84 is its producer's claim*; the
+§A5.6(1) erratum and this pointer were READ and are **outside** the ask. ⇒ **The signature covers §A6.4(3)'s own
+guard and nothing wider — REPORTED columns. What the registered pre-data separator MEANS remains the Captain's
+(desk `TQ`), and this addendum has never touched it.**
+
+### ✅ THE SIGNER'S NOTE ②, DISCHARGED HERE — THE VERIFIER'S INPUTS, PINNED
+`MEASUREMENT-l7-retention-decomposition-2026-09-19-verify.py` opens **FOUR** files as **bare relative names**, so it
+must be run **from `harness/systems-v3/` as the working directory** — from anywhere else it exits **rc 2**, and its
+`except OSError` catches only the FIRST failure, so a runner discovers the missing inputs **one at a time**. My ask
+pinned one of the four. **All four, at head `58316da`:**
+```
+  MEASUREMENT-l7-retention-decomposition-2026-09-19.md    93325dfcab0db99c    7,703 B   (pinned in the ask)
+  l7-retention-decomp.tsv                                 6adce568eff4e3ed    5,891 B   <- was not pinned
+  RESULT-gemini-level7-2026-09-19-cells.tsv               b5c0de6fb8a5dcf6   23,750 B   <- was not pinned
+  RESULT-gemini-level7-2026-09-19.md                      8ade26e014a52414   51,443 B   <- was not pinned
+  (the verifier itself)                                   ae5b0c42b4e8d1bc   11,551 B
+```
+⇒ 🔑 ***A PINNED ASK IS ONLY AS REPRODUCIBLE AS ITS CLOSURE: I PINNED THE DOCUMENT UNDER TEST AND NOT THE INPUTS ITS
+OWN VERIFIER READS, SO THE SIGNER COULD CHECK MY CLAIM AND COULD NOT, FROM THE ASK ALONE, RECONSTRUCT THE RUN.***
+The council's form names the file, the blob and the head; **it does not say "and everything the check reads", and
+that is the gap this note found.** ⛔ **A REPAIR TO THE VERIFIER IS PROPOSED AND NOT TAKEN** — resolve its inputs
+relative to its own file, and report ALL missing inputs at once instead of one per run. **Its current blob is what
+the signature's verdict was driven against, so changing it now would silently widen what that verdict covers.**
+📌 **AND THE SIGNER'S NOTE ①, RECORDED:** `982a9c4` is on **SEVEN** local branches, not one. The §A5.2 erratum's
+sentence is true as written and **the population is wider than it states**.
