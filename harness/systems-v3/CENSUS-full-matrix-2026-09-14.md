@@ -789,3 +789,24 @@ WEARING THE CLOTHES OF A FINDING ABOUT THE SUBJECT.***
 3. **It does not make the matrix read `FULL`:** **75 conditions are owed.**
 4. **It does not touch level 7's rows.** The `surv`/`growth` question the result's §8 item 6 raises about
    level 7 is UNMEASURED; if it lands, it changes that result's §1 wording and not these counts.
+
+## ⚠️ RIDER TO ADDENDUM 11 — **THE CENSUS IS APPEND-ONLY APART FROM §C5's SINGLE `LIVE` MARKER LINE, AND IT CANNOT BE OTHERWISE.** APPENDED BELOW THE SIGNED TEXT; §R1–§R4 and every figure untouched.
+*bench (lead), 2026-09-19, on `systems`' finding (A) at its non-author signature of block SB. **It moves no number.**
+Recorded because the next non-author to run the byte-prefix test gets a ⛔ and must re-derive all of this — `systems` did,
+and it was the most expensive thing in its shift.*
+```
+  the byte-prefix test FAILS at char 9,527, line 122, and the whole delta is ONE RELABELLED LINE:
+     OLD  >   LIVE (ADDENDUM 10) DONE 99 · OWED 85 · ...
+     NEW  >   ADDENDUM 10       DONE 99 · OWED  85 · ...     <- relabelled, length delta 0 bytes
+     NEW  >   LIVE (ADDENDUM 11) DONE 109 · OWED 75 · ...    <- appended
+  100 % BYTE CUSTODY OF THE OLD FILE:  prefix 9,521 B + the relabelled line 102 B + suffix 43,812 B
+                                       + 2 newlines = 53,437 B = the old file, EXACT
+  NUMERIC CONTENT OF THE RELABELLED LINE: identical both sides — ['10','99','85','0','16','7','27','1']
+```
+⇒ 🔑 ***THE APPEND-ONLY CLAIM HOLDS FOR EVERY FIGURE AND NOT FOR THE FILE — AND IT CANNOT HOLD FOR THE FILE, BECAUSE
+THE `LIVE` MARKER IS BY CONSTRUCTION A MOVING LABEL.*** §C5 exists to guarantee that *the `LIVE` row is always last and
+always current*; a marker that never moved would be the defect §C5 was written to prevent. **The document's
+self-description ("appended to at every addendum") and the invariant its own verifier needs are both working as
+intended and they contradict each other**, which is exactly why no author would find it.
+✅ **THE FORM FOR ANY FUTURE ADDENDUM TO THIS FILE:** the byte-prefix test is expected to fail at, and ONLY at, §C5's
+`LIVE` line. **A failure anywhere else is a real one.** State it that way rather than claiming append-only bare.

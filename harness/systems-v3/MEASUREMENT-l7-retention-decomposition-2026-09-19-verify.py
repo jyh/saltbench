@@ -125,5 +125,16 @@ arm("⭐ and the receipt is restored bit-for-bit, so the mutant cannot leak into
     _back == same_s, "restored to %d" % _back)
 arm("⛔ the document does NOT modify level 7 (it must say so)", "does not amend" in doc.lower() or "DOES NOT AMEND" in doc)
 
+# ⛔ THE LIMITS RIDE WITH THE VERDICT — `systems`' finding (B) on the block-SB verifier, applied here
+#    in the same act rather than waiting for the same finding to be made twice. The docstring's limits
+#    were printed NOWHERE; a reader met "40 arms, 0 RED" and never met them.
 print("\n%d arms, %d RED" % (N[0], N[1]))
+print("LIMITS, beside the verdict and not only in the source:")
+print("  · this checks that the DOCUMENT agrees with the RECEIPT, and that the receipt reproduces")
+print("    level 7's published bands. IT CANNOT TELL YOU THE RECEIPT IS RIGHT.")
+print("  · the receipt's own guarantee is separate: its producer imported the level-7 export's OWN")
+print("    classifier and asserted every `retained` against it, 84 of 84, and fails otherwise.")
+print("  · no cell was re-run and the run box was not reached by this program.")
+print("  · `surv` counts lines the differ MATCHED, so it is a LOWER bound on survival — a direction")
+print("    that works AGAINST the finding this document makes, never for it.")
 sys.exit(1 if N[1] else 0)
