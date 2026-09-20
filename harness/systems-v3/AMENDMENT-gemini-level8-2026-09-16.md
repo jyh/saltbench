@@ -1082,3 +1082,41 @@ already qualifies** (`systems`' judgement, and I concur).
 **`c61fa25` (branch `systems/export-union-2026-09-20`, wave blob `910764a`) carries all four**: `e54f35a` YES · `2833621` YES · `906b862` YES · `f5b9430` YES, with the reverse control (`c61fa25` ancestor of `906b862`) **NO**. Content at that head: `CLIENT_DEFAULT_WRITES` 2 · `EVERY OTHER CELLS ROOT` 2 · `CLB_CONCURRENT` 5 · harvest probe lines 36 · srt `denyWrite` 33 · `fire_cell` 7.
 ⚠️ **THIS SECTION IS A LIST OF REQUIREMENTS, NOT A BLESSING OF ONE SHA.** `c61fa25` satisfies it today; a later head that also satisfies it is equally valid, and a cut is checked against the FOUR, never against this paragraph.
 ⛔ **AND IT DOES NOT LIFT THE HOLD.** Level 8 stays held; the release conditions are §A8.4's, unchanged.
+
+---
+## ⚖️ §A8.7 — **THE REQUIRED-ANCESTORS BLOCK, `serial=1`. THIS SUPERSEDES §A8.6 IN FULL.** APPENDED BELOW ALL PRIOR TEXT; nothing above is edited.
+*bench (lead), 2026-09-20, adopting the harness owner's format findings. §A8.6 landed 30 minutes ago and was **unverifiable from the repository it lives in** — that is a measurement, not a preference, and it is why this supersedes rather than waits.*
+
+### §A8.7.1 · THE CUTTER'S RULE — read this before the table
+```
+  1  A required-ancestors block is any section carrying a `serial=N` line.
+  2  THE CUTTER READS THE HIGHEST N.        3  ON A TIE IT REFUSES, and cuts nothing.
+  4  EVERY BLOCK IS THE COMPLETE SET, NEVER A DELTA.
+```
+⛔ **WHY NOT "the last block in the file", which is the tempting rule:** a later addendum that QUOTES a block in prose — **or the very post that proposed this rule, pasted as an example** — becomes the block the cutter reads, silently. **The serial makes that failure LOUD: a quotation either reuses a serial and the cutter refuses on the tie, or it carries none and is not a block at all.**
+⇒ ✅ **AND THAT RETIRES §A8.6 MECHANICALLY RATHER THAN BY THIS SENTENCE: §A8.6 CARRIES NO `serial`, SO IT IS NOT A CANDIDATE BLOCK.** The supersession needs no edit to an append-only file and no reader's goodwill.
+⇒ **A delta is forbidden for the same reason: it would make the cutter replay history to learn the present, and a reader could not see the answer in one place.**
+
+### §A8.7.2 · THE SET
+```
+  serial=1
+  repo: jyh/saltbench-systems          ⛔ NOT jyh/saltbench, which is where THIS DOCUMENT lives
+  e54f35affcd0411317731c1365d6ebb471cdbe2a   the FOLD: F1 fence belt · F3 client default writes · P4
+  283362105d75d4ca68336875aa358049748fe019   PRODUCTION: ADDENDUM 5 two-wide · F2 harvest probe split
+  906b862f4f7dc56e117874843fe22eaeb3a8bb4d   the COMPLETE LIFT (§A8.5)
+  c61fa2587e24437ff3eada8a2f34938ce153e19f   the (ii) CODE (§A7.4(a) arm (ii), fire_cell + its static arm)
+```
+⛔⛔ **THE REPO LINE IS LOAD-BEARING AND IT IS THE DEFECT §A8.6 SHIPPED. MEASURED, WITH A CONTROL:** all four shas are `unknown revision` in **saltbench**, and all four resolve in **saltbench-systems**; a saltbench sha resolves in saltbench (the control fires). ⇒ 🔑 ***THE DOCUMENT THAT CARRIES THE LIST IS IN A DIFFERENT REPOSITORY FROM EVERY COMMIT THE LIST CONSTRAINS — so a reader standing where the amendment is gets NO on every row and CANNOT TELL A WRONG SHA FROM A WRONG REPO. Those need opposite actions and look identical.***
+✅ **FULL 40-CHARACTER SHAS, never a prefix:** a short sha is a claim about one repository's current object set and decays as the repo grows.
+
+### §A8.7.3 · THE CHECK, AND ITS CONTROL
+```
+  cd <a clone of jyh/saltbench-systems>
+  for a in e54f35affcd0411317731c1365d6ebb471cdbe2a 283362105d75d4ca68336875aa358049748fe019 \
+           906b862f4f7dc56e117874843fe22eaeb3a8bb4d c61fa2587e24437ff3eada8a2f34938ce153e19f; do
+    git merge-base --is-ancestor $a <CUT> && echo "$a YES" || echo "$a NO"; done
+  git merge-base --is-ancestor <CUT> 906b862f4f7dc56e117874843fe22eaeb3a8bb4d && echo "CONTROL BAD" || echo "CONTROL OK"
+```
+⚠️ **The reverse control is not decoration:** `--is-ancestor` returns 0 for a commit against ITSELF, so a cut equal to a required sha passes the forward test trivially. **Four YES with no failing control is not a verified cut.**
+✅ **SECOND AXIS — CONTENT, because ancestry is about history and a cut is about what it carries.** At a satisfying cut these five blobs must be present: `render_fence_v3.py 974e1a641907` · `render_srt_config_v3.py 6abfc0e3f8f1` · `clb_fire.sh d9afc75e2a5f` · `clb_harvest.py 062b5fe7b647` · `agy_wave_v3.sh 910764a9a7a2`. **Each was recorded independently elsewhere before being listed here** (§A8.5's signature line · the lane env's 09-18 history · production's deployed blobs).
+⛔ **This block is a list of REQUIREMENTS, not a blessing of one sha, and it does not lift the hold.** `c61fa25…` satisfies it today; any later head that also satisfies it is equally valid.
