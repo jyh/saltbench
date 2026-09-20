@@ -170,6 +170,65 @@ if cen:
         arm("no condition is BLOCKED", b == 0)
         arm("the result document and the census agree on the condition count", insrc(str(len(conds))))
 
+print("\nCLOSURE ARMS — `systems`' finding of 2026-09-19 against its own signature of this tool")
+# ⛔⛔ `insrc()` IS PURE CONTAINMENT, so an edit to ONE occurrence of a figure the document states
+#    MORE THAN ONCE is invisible: `systems` drove three (M7/M8/M9) that each left the document
+#    SELF-CONTRADICTING — two different total-token premiums, two different suite ceilings — with
+#    this program printing 90 arms, 0 RED. It is the containment defect bench had found in the
+#    SIBLING verifier NINE MINUTES EARLIER and did not carry across. ⇒ A DEFECT REPAIRED IN ONE
+#    TOOL IS NOT REPAIRED IN ITS CLASS.
+# ✅ THE FORM HERE IS DELIBERATELY *NOT* LABEL-ANCHORED, because `systems`' own remedy missed M9 on
+#    a SINGLE EXTRA SPACE in `suite··PASS`: an anchored arm only moves the question to "does my label
+#    select every line that makes this claim?". These arms take EVERY token OF THE RIGHT SHAPE in the
+#    whole document and require each to be a value DERIVED from the table. No label, no population
+#    judgement, nothing for a space to defeat.
+derived_ratios = set()
+for col, in (("final_T",), ("final_COST",)):
+    for t in sorted(set(r["problem"] for r in rows)) + ["TOTAL"]:
+        sel = (lambda L: L if t == "TOTAL" else [r for r in L if r["problem"] == t])
+        p_ = sum(F(r, col) for r in sel(P)); s_ = sum(F(r, col) for r in sel(S))
+        derived_ratios.add("%.2fx" % (s_ / p_))
+for L in (P, S):
+    for fn in (min, max):
+        derived_ratios.add("%.2fx" % fn(F(r, "growth") for r in L))
+seen_ratios = set(re.findall(r"\d+\.\d\dx", doc))
+stray = sorted(seen_ratios - derived_ratios)
+arm("⭐ EVERY `N.NNx` IN THE DOCUMENT IS A RATIO DERIVED FROM THE TABLE", not stray,
+    "%d distinct in doc, %d derived, stray %s" % (len(seen_ratios), len(derived_ratios), stray or "none"))
+derived_pass = {"PASS %d/%d" % (npass, len(rows))}
+seen_pass = set(re.findall(r"PASS\s+\d+/\d+", doc))
+seen_pass = {" ".join(x.split()) for x in seen_pass}
+arm("⭐ EVERY `PASS n/m` IN THE DOCUMENT IS THE DERIVED SUITE VERDICT", seen_pass <= derived_pass,
+    "in doc %s, derived %s" % (sorted(seen_pass), sorted(derived_pass)))
+cell_vals = set()
+for r in rows:
+    for c in ("retained", "surv"): cell_vals.add("%.3f" % F(r, c))
+for L in (P, S):
+    for c in ("retained", "surv"):
+        cell_vals.add("%.3f" % min(F(r, c) for r in L)); cell_vals.add("%.3f" % max(F(r, c) for r in L))
+# ⛔ AND THE DERIVED SET HAS TO INCLUDE WHAT THE DOCUMENT LEGITIMATELY QUOTES FROM ELSEWHERE, or the
+#    arm reddens on correct text. Three strays on the first run — 0.001, 0.107, 0.291 — were all real:
+#    §5's "lower by 0.001" (a DIFFERENCE) and §8 item 6's level-7 band (ANOTHER DOCUMENT'S numbers).
+#    They are DERIVED here too, from the objects they came from, rather than typed into an allow-list.
+blockmin_surv = min(F(r, "surv") for r in rows); plainmin_surv = min(F(r, "surv") for r in P)
+cell_vals.add("%.3f" % (plainmin_surv - blockmin_surv))          # §5's caveat, a difference
+try:
+    L7 = [r for r in csv.DictReader(open("RESULT-gemini-level7-2026-09-19-cells.tsv", encoding="utf-8"),
+                                    delimiter="\t") if r["field"] == "brownfield" and r["retained"] not in ("-", "")]
+    for a_ in ("plain", "salt-diet"):
+        v = [float(r["retained"]) for r in L7 if r["arm"] == a_]
+        cell_vals.add("%.3f" % min(v)); cell_vals.add("%.3f" % max(v))
+    l7ok = True
+except OSError:
+    l7ok = False
+arm("§8 item 6's level-7 band is derived FROM LEVEL 7's OWN TABLE, not typed", l7ok)
+seen3 = set(re.findall(r"(?<![\d.])0\.\d{3}(?![\d])", doc))
+stray3 = sorted(seen3 - cell_vals)
+arm("⭐ EVERY THREE-DECIMAL 0.xyz IN THE DOCUMENT IS A VALUE THE TABLE CARRIES", not stray3,
+    "%d distinct in doc, stray %s" % (len(seen3), stray3 or "none"))
+arm("⛔ and these three arms are NOT label-anchored, which is the point",
+    True, "shape-scoped: N.NNx / PASS n/m / 0.xyz — no section, no heading, no spacing assumption")
+
 print("\nANTI-VACUITY — these arms must be able to go RED")
 mut = doc.replace("18.59x", "18.60x")   # ALL occurrences: the ratio is quoted in three sections
 saved, globals()["doc"] = doc, mut
