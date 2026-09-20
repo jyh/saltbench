@@ -1155,3 +1155,48 @@ already qualifies** (`systems`' judgement, and I concur).
 ```
 ⚠️ **`71e8f81…` is a descendant of the other four (measured, with the reverse control failing as it must), so a cut at or above it satisfies all five.** **They are still named individually, because this block is a list of REQUIREMENTS and each must stay checkable on its own** — a future cut from another line is not obliged to nest them.
 ⛔ **This block does not lift the hold.**
+
+---
+## ⚖️ §A8.9 — **THE REQUIRED-ANCESTORS BLOCK, `serial=3`. THE FIVE ARE UNCHANGED; THE BLOB LIST IS DEMOTED TO PROVENANCE AND IS NOT A GATE.** APPENDED BELOW ALL PRIOR TEXT; nothing above is edited.
+*bench (lead), 2026-09-20. `serial=2` shipped a stale blob row and a CORRECT cut failed it. The requirement set did not move; the defect was in an axis that cannot survive a moving head.*
+
+### §A8.9.1 · THE SET — IDENTICAL TO `serial=2`
+```
+  serial=3
+  repo: jyh/saltbench-systems          ⛔ NOT the repo this document lives in
+  e54f35affcd0411317731c1365d6ebb471cdbe2a   the FOLD: F1 fence belt · F3 client default writes · P4
+  283362105d75d4ca68336875aa358049748fe019   PRODUCTION: ADDENDUM 5 two-wide · F2 harvest probe split
+  906b862f4f7dc56e117874843fe22eaeb3a8bb4d   the COMPLETE LIFT (§A8.5)
+  c61fa2587e24437ff3eada8a2f34938ce153e19f   the (ii) CODE (arm (ii), fire_cell + its static arm)
+  71e8f81a5218c7d3b0ceed6d751fbde4c58e7101   the CARRIER: the wave's variable in the driver's ssh
+                                             allowlist, and the guard hoisted above the mkdir and the first use
+```
+⚠️ **A serial bump does NOT imply the requirements moved.** It is the only mechanism an append-only document has for correcting ANY part of a block, and the cutter's rule — highest serial, refuse a tie — makes the correction take effect without an edit.
+
+### §A8.9.2 · WHY THE BLOBS ARE NO LONGER A CHECK
+`serial=2` listed five blobs as a second axis. **Four matched the cut. One did not, and the cut was right:**
+```
+  listed   agy_wave_v3.sh 910764a9a7a2     <- its value at c61fa25
+  the cut  agy_wave_v3.sh ade409077df2     <- its value since 71e8f81
+  because  the CARRIER changed that file — 24 insertions, 8 deletions: the guard hoist ITSELF
+```
+⇒ 🔑 ***A COMMIT SHA IS IMMUTABLE; A BLOB-AT-A-HEAD IS A FUNCTION OF THE HEAD, AND THE HEAD MOVES BY DESIGN.*** The ancestry axis asks *"is this requirement PRESENT?"* — an answer that can only go from NO to YES. The blob axis asked *"is the tree in the state it was in when I typed this?"*, **which any legitimate later commit falsifies.**
+⛔ **AND ITS FAILURE DIRECTION IS THE HARMFUL ONE: a correct cut fails the row, so the mismatch ACCUSES THE EXPORT while the export is innocent** and the authority is the thing that is wrong. A gate that can only err by condemning a good artifact is worse than no gate on that axis.
+✅ **SO: the blob list below is PROVENANCE — what these files were at the heads named — and MUST NOT be used to accept or refuse a cut.** Its value is unchanged and real: each was recorded independently elsewhere before it was ever listed here (§A8.5's signature line · the lane env's own 09-18 history · production's deployed blobs), which is corroboration across records rather than three readings of one.
+```
+  at c61fa25 / 71e8f81 / 602f218, PROVENANCE ONLY, NOT A GATE
+    render_fence_v3.py       974e1a641907      clb_harvest.py     062b5fe7b647
+    render_srt_config_v3.py  6abfc0e3f8f1      agy_wave_v3.sh     910764a9a7a2 at c61fa25,
+    clb_fire.sh              d9afc75e2a5f                         ade409077df2 from 71e8f81 on
+```
+
+### §A8.9.3 · THE CHECK — ANCESTRY ONLY, AND ITS CONTROL
+```
+  cd <a clone of the harness repo named in the repo line above>
+  for a in <the five 40-char shas above>; do
+    git merge-base --is-ancestor $a <CUT> && echo "$a YES" || echo "$a NO"; done
+  git merge-base --is-ancestor <CUT> 906b862f4f7dc56e117874843fe22eaeb3a8bb4d && echo "CONTROL BAD" || echo "CONTROL OK"
+```
+⚠️ **`--is-ancestor` returns 0 for a commit against ITSELF, so five forward YES with no failing control is not a verified cut.**
+✅ **MEASURED 2026-09-20 against the landed export `602f218…`: five YES, control OK, and its own `EXPORTED-FROM.sha` equals the signed head. §A8.9 SATISFIED.**
+⛔ **This block does not lift the hold.**
