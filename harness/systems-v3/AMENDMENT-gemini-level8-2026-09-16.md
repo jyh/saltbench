@@ -685,3 +685,75 @@ the new digest is comparable to the old one rather than merely computed.
 ## 📌 SIGNATURE POINTER — recorded by the LEAD, and it is a pointer, not the signature
 **ADDENDUM 5 (§A5.0–§A5.7) was SIGNED by `systems` as non-author**, at head `774f236072a165ae74314a1d57561986ed76ed51`, blob `98f6da3e44e823ceaf40ba2a298085f66fe3aab4`, on the fleet bus at offset **61,124,997**. It proved append-only **at the bytes** (the old file is a byte-PREFIX of the new, `head -c 51713 | cmp` identical), re-drove all eleven ancestries, the `INDETERMINATE` 0/1/2 spread with a byte control on each file, the gate ordering, both supervisor digests **from the git objects**, and both selftests. **This paragraph records that it happened and where; the signer's own words are on the bus and are not paraphrased here.**
 ⚠️ **AND THE SIGNER'S OWN DISCLOSURE IS CARRIED, BECAUSE A SIGNATURE THAT HIDES ITS SCOPE IS WORTH LESS THAN NONE:** `systems` is **not** a non-author of everything this addendum names — `48af25c` carries three of its own commits, and the request that they *"ride level 8's export, named in its addendum"* is its own. It signed on the eleven ancestries, the gate ordering and the two selftests, each checkable without reference to those three. ⇒ **OPEN AND SMALL: those three commits have NOT been read by a genuine non-author**, and that is stated here rather than left as a thing two seats quietly know.
+
+---
+## ⚖️ ADDENDUM 6 — **LEVEL 8 REGISTERS `surv` AND `growth` AS REPORTED COLUMNS BESIDE `retained`. THE PRIMARY SEPARATOR IS UNCHANGED.** APPENDED BELOW ALL SIGNED TEXT; §M0–§M8, ADDENDA 1–5 and every signature untouched.
+*bench (lead), 2026-09-19, answering a question the helm named and deliberately did not rule (bus 61,520,997).
+It changes no sha, no export, no cell, no arm, no cap, no fence and no reading rule. **`48af25c` does not move and
+ADDENDUM 5's signature stands.** Registered PRE-DATA: level 8 has fired nothing.*
+
+### §A6.1 · WHAT IS REGISTERED, IN ONE BLOCK
+```
+  UNCHANGED   `retained` remains level 8's REGISTERED PRIMARY BROWNFIELD SEPARATOR (§K6 rule 10, §B5's
+              classes REPAIRED / REPLACED / REMOVED / UNTOUCHED, threshold REPLACED below 0.20).
+              Nothing about it is altered, softened, or given a competitor.
+  ADDED       the result of record's per-cell table CARRIES TWO MORE COLUMNS beside it:
+                surv    = seed lines MATCHED by the classifier's own differ / seed lines
+                growth  = end lines / seed lines
+              both from the SAME differ the classifier already runs (difflib, autojunk=False, the end
+              file chosen by `end_text`: the working tree if dirty, else HEAD).
+  CARRIES     NO threshold · NO class · NO band · NO direction claim · NO arm claim. They are REPORTED.
+```
+⛔⛔ **REPORTING A QUANTITY AND REGISTERING IT AS A SEPARATOR ARE DIFFERENT ACTS, AND CONFLATING THEM IS EXACTLY
+THE MOVE THAT WOULD TRESPASS ON A RESERVED MATTER.** What a registered pre-data separator MEANS is the Captain's
+(helm, 106th, 2026-09-19), and **this addendum does not touch it.** A column with no threshold makes no claim.
+
+### §A6.2 · WHY — AND IT IS AN ASYMMETRY OF COST, NOT A VIEW ABOUT THE ANSWER
+Two lanes now carry one signature: `RESULT-claude-blockSB-2026-09-19.md` §5 and
+`MEASUREMENT-l7-retention-decomposition-2026-09-19.md` §3, each having reproduced its own published figure
+before decomposing it. **Whether that changes what `retained` means is the Captain's, and goes to him Monday.**
+Level 8 fires before that. So the question is only what level 8 should be holding when he rules:
+```
+  REGISTER, he rules retained is sound      two unused columns.                        cost ~ 0
+  REGISTER, he rules it is misleading       level 8 already carries the alternative.    cost ~ 0
+  DO NOT,   he rules retained is sound      nothing lost.                               cost ~ 0
+  DO NOT,   he rules it is misleading       60 cells scored on a deprecated separator,
+                                            with no alternative in the table.           cost REAL
+```
+⇒ **One of the four cells is expensive and the other three are free, so the choice is not close.**
+⭐ **AND THE PRICE IS ZERO BECAUSE THEY ARE POST HOC:** both quantities were computed for 30 SB cells and 84
+level-7 cells **by importing the export's own `brownfield_rewrite_class.py` and calling nothing new** — no
+harness change, no export change, no cell re-run, `difflib` from the standard library. **Nothing in level 8's
+export needs to know this addendum exists.**
+
+### §A6.3 · ⛔ IT BLOCKS NOTHING, AND THAT IS THE POINT MOST WORTH SAYING PLAINLY
+**This requirement lands on the LEAD at SCORING time. It lands on no builder, no wave, no driver and no cell.**
+⇒ **`gemini` needs nothing from this addendum.** Level 8's release condition — *"bench names §M0 row 4's export
+by addendum"* — was discharged by **ADDENDUM 5**, which is SIGNED and names `48af25c`. **This addendum neither
+adds to that condition nor re-opens it**, and a reader who meets this file at build time should build.
+
+### §A6.4 · WHAT WOULD MAKE THIS WRONG, STATED SO IT IS CHECKABLE RATHER THAN TRUSTED
+1. **If `surv`/`growth` could not be derived post hoc from level 8's artifacts.** They can: the inputs are the
+   seed in the export's `tasks/` tree and the end file the classifier already reads. ⚠️ **It relies on the cells
+   surviving to scoring time, which every other per-cell column already relies on.**
+2. **If reporting them changed how a cell is CLASSED.** It cannot: no code path reads them; §B5's classifier is
+   untouched and is still the only thing that assigns a class.
+3. **If two columns with no threshold amounted to a second separator by the back door.** ⇒ **The guard is in
+   §A6.1 and it is the sentence a future reader should hold me to: no threshold, no class, no direction claim.
+   If level 8's result of record draws an ARM CONCLUSION from `surv` or `growth`, this registration did not
+   authorise it** and that result owes its own registered basis.
+4. ⚠️ **`surv` is a LOWER BOUND on survival** — it counts lines the differ MATCHED, and a moved line may not
+   match. **Recorded here so the bound travels with the column and not only with the results that use it.**
+
+### §A6.5 · WHAT THIS ADDENDUM DOES NOT DO
+1. **It does not amend, weaken or annotate `retained`**, here or anywhere.
+2. **It does not touch level 7 or block SB**, both of which are landed; SB's signed text and level 7's are
+   byte-unchanged by this commit.
+3. **It does not decide the campaign question.** Whether the campaign reports these columns generally, and what
+   they mean, remains the Captain's, unprejudiced by a column that asserts nothing.
+4. **It authorises no spend and moves no condition.**
+
+## ✍️ NON-AUTHOR SIGNATURE — OWED
+A pinned ask follows: file, blob and head, per council 2026-09-17 ⑨(2). ⛔ **Level 8's build does not wait on
+it** (§A6.3): this addendum binds the lead at scoring time and the signature is owed before that, not before
+the export is cut.
