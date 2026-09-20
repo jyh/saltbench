@@ -845,3 +845,77 @@ relative to its own file, and report ALL missing inputs at once instead of one p
 the signature's verdict was driven against, so changing it now would silently widen what that verdict covers.**
 📌 **AND THE SIGNER'S NOTE ①, RECORDED:** `982a9c4` is on **SEVEN** local branches, not one. The §A5.2 erratum's
 sentence is true as written and **the population is wider than it states**.
+
+---
+## ⚖️ ADDENDUM 7 — **THE agy LANE'S CLAUDE FENCE IS RENDERED FRESH AT WAVE TIME, NOT LIFTED FROM A PINNED CELL. LEVEL 8 ONWARD.** APPENDED BELOW ALL SIGNED TEXT; §M0–§M8, ADDENDA 1–6, the §A5.2 ERRATUM and every signature untouched.
+*bench (lead), 2026-09-20, on `gemini`'s life-11 finding (bus 62,096,039), which `gemini` posted as a design fork
+and deliberately did not take. Ruling: the lead's RULING brief in the private record, seat `b297e7161`, blob `5a592e1fac8877a7` — cited by
+ROLE and object shas, never by a path (this repo is public). Registered
+**PRE-DATA: level 8 has fired nothing.** It changes no separator, no population, no arm, no cap, no scorer rule
+and no reading rule.*
+
+### §A7.1 · WHAT IS REGISTERED, IN ONE BLOCK
+```
+  WAS       agy_wave_v3.sh:98 exports AGY_CLAUDE_FENCE=<one Claude cell>/ctl/fence.json — an artifact
+            rendered 2026-09-10 18:05 from export 912c787, born b103d4f, NEVER edited on any ref.
+            The agy arm does not render a fence; it lifts a frozen one.
+  IS        the Claude fence is RENDERED FRESH at wave time, from THE EXPORT THE CELLS ARE BUILT FROM,
+            the way every other receipt in this lane already tracks that export.
+  SCOPE     LEVEL 8 AND ANY LATER agy LEVEL. Levels 5, 6 and 7 are UNCHANGED and are NOT RE-RUN.
+  CARRIES   NO change to any separator, population, arm, cap, fence-for-the-CLAUDE-lane, scorer rule or
+            reading rule. Containment only.
+```
+
+### §A7.2 · THE MEASUREMENT THAT MADE IT NECESSARY — AND THE ONE THAT MADE IT URGENT
+**gemini's**, at the object, `render_fence_v3.py --diff` (selftest 65/0 before use), same cell, fresh vs pinned:
+```
+                   PINNED (Sep 10)   master fresh   F3 fresh
+  denyRead              63              233           454
+  denyWrite             69              236           459
+  permissions.deny     254              934          1818
+```
+Among the paths the pinned fence does not deny: `.claude-account-saltforge` and `.claude-v3-saltforge` — **a
+config dir the fleet map dates to 09-12, TWO DAYS AFTER that fence was rendered, carrying four live seats'
+credentials.** This is the render-time-glob class the fleet map already records, frozen for ten days rather
+than three minutes, and pinned by a hardcoded path rather than re-taken at each render.
+⛔⛔ **AND THE MEASUREMENT THAT DECIDED IT, WHICH IS THE LEAD's:** gemini stated, correctly, that it had NOT
+PROVEN any subject reached those paths. **It is not merely unproven — it is UNRECORDABLE.**
+```
+  audit / deny / fence-log files under ~/cells-agy-*     0      CONTROL ~/cells-clb-*   102
+  `saltforge` in any agy cell's ctl/                     0      CONTROL `Users/jyh`     413 files
+```
+**The Claude lane carries `_audit/{deny.log, fence.log, sandbox-probe}` per root; the agy lane carries no such
+surface.** Its cells carry rich TURN logs, but a client transcript is not an access record: in a 131-line
+`agy-client-1.log`, `Users/jyh` appears 11 times and `.claude` **zero**.
+⇒ 🔑 ***THE ZERO IS ABSENCE IN THE RECORD, NOT ABSENCE OF ACCESS. NO EXPOSURE IS CLAIMED IN EITHER DIRECTION,
+AND A CONTAINMENT FAILURE IN THAT LANE WOULD HAVE LEFT NO TRACE.***
+⇒ ⚖️ ***WHERE YOU CANNOT DETECT, YOU MUST PREVENT.*** The case for leaving a stale fence alone is that nothing
+has gone wrong; in this lane that sentence is unfalsifiable, and an unfalsifiable reassurance is not evidence.
+
+### §A7.3 · WHAT THIS DOES **NOT** DO
+1. **It does not touch WITHIN-LANE comparability, which is the campaign's primary contrast.** Every agy cell in
+   every landed wave lifted the SAME pinned fence, so plain-vs-salt-diet inside the agy lane carries no fence
+   asymmetry. gemini established this and it is adopted unchanged.
+2. **It re-runs nothing.** Levels 5, 6 and 7 are internally consistent and stand as published.
+3. **It claims no exposure**, and registers none.
+4. **It does not amend any separator**, here or anywhere, and does not touch ADDENDUM 6's REPORTED columns.
+
+### §A7.4 · TWO THINGS OWED, AND THEY ARE NOT THE SAME THING
+⛔ **(a) THE CODE, BEFORE LEVEL 8's FIRST MODEL CALL.** This addendum is PRE-REGISTRATION: it registers what
+will be true of level 8's runs. The change to `agy_wave_v3.sh` is owed before the first cell, **with its own
+non-author read** — an amendment registering a change that never lands is the defect this campaign keeps
+finding in the other direction.
+⚠️ **(b) THE EQUIVALENCE SENTENCE, FOR LEVELS 5/6/7, REGARDLESS OF (a).** They ran under the pin and cannot be
+retro-fixed. `agy_launch_v3.sh:389` calls the lift *"the whole basis of the equivalence claim"*;
+`render_srt_config_v3.py` calls srt *"the SAME RUNTIME the Claude CLI uses — which is what makes the two arms
+equivalent by construction rather than by resemblance."* **That is true of a Claude fence rendered 2026-09-10
+at export `912c787`, and not of the Claude arm as it runs today.** Any publication says the former or says
+something false.
+⛔⛔ **(c) THE STANDING LIMIT, WHICH OUTLIVES BOTH: THE agy LANE HAS NO CONTAINMENT AUDIT SURFACE, SO NO
+CONTAINMENT CLAIM ABOUT ANY PAST agy CELL CAN BE MADE FROM ARTIFACTS.** It rides beside every agy verdict, not
+in a footnote. **Rendering the fence fresh makes FUTURE cells safer; it does not make PAST ones auditable.**
+
+## ✍️ NON-AUTHOR SIGNATURE — OWED
+A pinned ask follows: file, blob and head, per council 2026-09-17 ⑨(2). ⛔ **This addendum is a LEAD's ruling on
+a fork a runner declined to take, and it changes the treatment arm mid-campaign — so the helm or the Captain
+may overturn it. It is cheap to overturn before the code in §A7.4(a) lands and expensive after.**
