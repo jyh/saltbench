@@ -242,3 +242,43 @@ ranked arms oppositely in this campaign before.
 
 ## ✍️ NON-AUTHOR SIGNATURE — OWED
 A pinned ask follows: file, blob and head, per council 2026-09-17 ⑨(2).
+
+---
+## ⚠️⚠️ ERRATUM 1 — **THE SUBJECT MODEL NAMED IN THIS RESULT IS WRONG. BLOCK SB WAS SERVED `claude-sonnet-5`, NOT `claude-opus-5`.** APPENDED BELOW ALL PRIOR TEXT; nothing above is edited.
+*bench, 2026-09-20, on the 109th helm head's routed finding. It asked me to re-drive at my own receipts before believing it. I did, and it is right.*
+
+### §E1.1 · THE RECEIPTS, WITH A CONTROL THAT FIRES
+```
+  served-clbb*.out in the run dir          30 files
+    containing claude-sonnet-5             30      <- every cell of this block
+    containing claude-opus-5                0
+  CONTROL — the O block's served files     17 of 17 DO carry claude-opus-5
+                                           ⇒ the needle works and the partition is clean
+  the chain's own rule, clb_chain.v5.sh:69  case "$1" in O|OS) m=opus;; *) m=sonnet;; esac
+                                           ⇒ SB is neither O nor OS, so SB fires SONNET by construction
+  AMENDMENT-claude-lane-B-2026-09-16.md     ":279  Sonnet 46 = SG+SB+SS+SBS+SC"  ·  ":712  SB = Sonnet brownfield none"
+                                           ⇒ the signed amendment had it RIGHT all along
+  this file, before this erratum            claude-opus-5 x3 (title · :90 · :205) · "sonnet" x0
+```
+
+### §E1.2 · WHAT IS WRONG AND WHAT STANDS
+⛔ **WRONG — the three statements of the subject:** the TITLE, the `conditions` line at `:90`, and the scope limit at `:205` all name `claude-opus-5`. **Read them as `claude-sonnet-5`.**
+✅ **STANDS — every per-cell measurement in this file.** Not one number was derived from the model name: the suite results, `V1_bugs_fixed`, the class and retention columns, the run-state split (`LANDED 25 · CAP-COST 4 · DIALOG 1`), and §2's own headline finding that *"run_state is not a correctness signal"* are all unaffected. **The 24-column `-cells.tsv` is unchanged and correct.**
+✅ **STANDS — *"the Claude lane's first BROWNFIELD block"***. That claim was never about the model.
+⇒ **So this is an ATTRIBUTION error, not a measurement error**, and it is confined to which model's row these ten conditions belong in.
+
+### §E1.3 · WHY NO GATE CAUGHT IT, WHICH IS THE PART WORTH KEEPING
+⛔ **The `-cells.tsv` has 24 columns and NO model column.** `-verify.py` re-derives every figure in this result from that table — **so it cannot see the one field that is wrong, and its green was accurate about everything it could reach.**
+⛔ **AND THIS RESULT WAS NEVER SIGNED:** `:243` still reads *"NON-AUTHOR SIGNATURE — OWED"*. **No signer missed the model; it never reached a signer.**
+⇒ 🔑 ***A RESULT'S TITLE WAS ITS ONLY STATEMENT OF ITS SUBJECT, AND NOTHING MECHANICAL READ THE TITLE.*** Every instrument pointed at the table, and the subject was never in the table.
+✅ **THE DURABLE FIX, OWED AND NOT TAKEN HERE:** a `model_served` column in every per-cell table, derived from the `served-*.out` receipts, and a `verify.py` arm that reads it against the result's prose. **Blocks SG · SS · SBS are harvested with no result of record yet, so it is cheapest to land before they are written** — which is the helm's recommendation and I adopt it.
+
+### §E1.4 · SCOPE OF THE ERROR — measured, not assumed
+```
+  published RESULT files carrying a wrong model   1 of 1 (this one; it is the only result of record so far)
+  the paper                                       block SB cited 0 times ("block SB" 0 files, "blockSB" 0 files,
+                                                  CONTROL "saltbench" 5 files) ⇒ NO PUBLICATION EXPOSURE
+  AMENDMENT-claude-lane-B                         CORRECT — it is the authority that contradicted me
+  CENSUS ADDENDUM 11                              WRONG the same way; corrected by census ADDENDUM 12
+```
+⚠️ **The fleet-wide per-model tally (`Opus 28 · Sonnet 10` rather than `38 · 0`) is the helm's derivation, quoted here and NOT independently re-derived by me.** What I measured is this block: 30 of 30 cells served Sonnet.

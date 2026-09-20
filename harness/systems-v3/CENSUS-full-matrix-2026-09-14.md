@@ -810,3 +810,21 @@ self-description ("appended to at every addendum") and the invariant its own ver
 intended and they contradict each other**, which is exactly why no author would find it.
 ✅ **THE FORM FOR ANY FUTURE ADDENDUM TO THIS FILE:** the byte-prefix test is expected to fail at, and ONLY at, §C5's
 `LIVE` line. **A failure anywhere else is a real one.** State it that way rather than claiming append-only bare.
+
+# ⚠️⚠️ ADDENDUM 12 — **ADDENDUM 11 ATTRIBUTED BLOCK SB'S TEN CONDITIONS TO THE WRONG MODEL. THEY ARE `claude-sonnet-5`, NOT `claude-opus-5`. THE MATRIX TOTALS DO NOT MOVE.**
+## bench, 2026-09-20, on the 109th helm head's routed finding, re-driven at my own receipts before acceptance.
+
+**ADDENDUM 11 reads:** *"Block SB fired 10 conditions / 30 cells (`claude-opus-5`, export `283362105d75`)"*, and names `claude-opus-5` on each of its condition rows. **Every one of those should read `claude-sonnet-5`.**
+```
+  MEASURED, each at the object
+    served-clbb*.out          30 of 30 carry claude-sonnet-5 · 0 carry claude-opus-5
+    CONTROL                   the O block's 17 served files DO carry claude-opus-5 (the needle works)
+    clb_chain.v5.sh:69        case "$1" in O|OS) m=opus;; *) m=sonnet;; esac  ⇒ SB fires Sonnet BY CONSTRUCTION
+    AMENDMENT-claude-lane-B   :279 "Sonnet 46 = SG+SB+SS+SBS+SC" · :712 "SB = Sonnet brownfield none"
+```
+✅ **WHAT DOES NOT MOVE, AND IT IS MOST OF THE ADDENDUM:** `DONE 99 → 109` and `OWED 85 → 75` **STAND**; the matrix line stays **`DONE 109 · OWED 75 · BLOCKED 0 · INEXPR 16 = 200`** and the 240-view stays `DONE 109 · OWED 75 · BLOCKED 0 · INEXPR 56`. **Ten conditions are done either way** — the correction moves which MODEL ROW they are counted in, and changes no total, no cell, and no verdict.
+✅ **`THE CLAUDE LANE'S FIRST BROWNFIELD CONDITIONS` also stands** — that claim was never about the model.
+⚠️ **The fleet-wide per-model split that follows from this (`Opus 28 · Sonnet 10` in place of `38 · 0`) is the helm's derivation and is quoted, not re-derived by me.** My measurement is confined to block SB's 30 cells.
+
+⛔⛔ **WHY IT SURVIVED, AND WHY THE REMEDY IS A COLUMN RATHER THAN CARE:** the result's `-cells.tsv` carries **24 columns and no model column**, so its `verify.py` re-derives every published figure from a table in which the subject model does not appear. The result was also **never signed** (`NON-AUTHOR SIGNATURE — OWED`). ⇒ 🔑 ***THE MODEL WAS STATED ONLY IN PROSE, AND EVERY INSTRUMENT WE BUILT READS THE TABLE.*** ✅ **Owed: a `model_served` column derived from the `served-*.out` receipts, plus a `verify.py` arm reading it against the prose — landed BEFORE the SG · SS · SBS results are written, which is while they are still cheap.**
+📌 **The erratum on the result itself is `RESULT-claude-blockSB-2026-09-19.md` §E1, appended below its prior text; nothing above it was edited, here or there.**
