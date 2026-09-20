@@ -106,6 +106,33 @@ inv_r = st.median([float(D[k]["retained"]) for k in allc if "-salt" in C[k]["con
 inv_s = st.median([float(D[k]["surv"]) for k in allc if "-salt" in C[k]["cond"]])     > st.median([float(D[k]["surv"]) for k in allc if "-plain" in C[k]["cond"]])
 arm("⭐ THE INVERSION IS REAL: retained says salt LOWER and survival says salt HIGHER, over all 84", inv_r and inv_s)
 
+print("\nCLOSURE ARMS — the containment defect, swept ACROSS the class and not only fixed where it was found")
+# ⛔ `x in doc` cannot see an edit to ONE occurrence of a figure stated more than once. `systems` drove
+#    three such mutants against the SIBLING verifier and all three went green. The tally arms above are
+#    position-anchored, which handles the tallies; these two handle EVERY OTHER FIGURE, by SHAPE, with
+#    no label and no spacing assumption — because an anchored label failed `systems` on a single space.
+med = lambda m, p_, a, c: st.median(band(m, p_, a, c))
+derived3, derivedx = set(), set()
+for m, p_ in PAIRS:
+    for a in ("plain", "salt-diet"):
+        for c in ("retained", "surv"):
+            derived3.add("%.3f" % med(m, p_, a, c))
+        derivedx.add("%.2fx" % med(m, p_, a, "growth"))
+for a, key in ((("-plain"), "plain"), (("-salt"), "salt")):
+    sel = [k for k in D if a in C[k]["cond"]]
+    for c in ("retained", "surv"): derived3.add("%.3f" % st.median([float(D[k][c]) for k in sel]))
+    derivedx.add("%.2fx" % st.median([float(D[k]["growth"]) for k in sel]))
+for c in ("retained", "surv"):                     # the per-cell values the document may quote
+    for k in D: derived3.add("%.3f" % float(D[k][c]))
+gmed = [med(m, p_, a, "growth") for m, p_ in PAIRS for a in ("plain", "salt-diet")]
+derivedx.add("%.2fx" % min(gmed)); derivedx.add("%.2fx" % max(gmed))
+seen3 = set(re.findall(r"(?<![\d.])0\.\d{3}(?![\d])", doc))
+seenx = set(re.findall(r"\d+\.\d\dx", doc))
+arm("⭐ EVERY THREE-DECIMAL 0.xyz IN THE DOCUMENT IS DERIVED FROM THE RECEIPT", not (seen3 - derived3),
+    "%d distinct, stray %s" % (len(seen3), sorted(seen3 - derived3) or "none"))
+arm("⭐ EVERY `N.NNx` IN THE DOCUMENT IS A DERIVED GROWTH FIGURE", not (seenx - derivedx),
+    "%d distinct, stray %s" % (len(seenx), sorted(seenx - derivedx) or "none"))
+
 print("\nANTI-VACUITY")
 arm("a value not in the document is not found", "__NOT_IN_THIS_DOCUMENT__" not in doc)
 # ⛔ AN INTERNAL MUTANT MUST ACTUALLY MUTATE. An arm whose two disjuncts cannot both be false is
