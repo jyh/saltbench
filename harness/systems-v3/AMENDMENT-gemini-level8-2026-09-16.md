@@ -874,7 +874,8 @@ and no reading rule.*
   denyWrite             69              236           459
   permissions.deny     254              934          1818
 ```
-Among the paths the pinned fence does not deny: `.claude-account-saltforge` and `.claude-v3-saltforge` — **a
+Among the paths the pinned fence does not deny: **TWO CONFIG DIRECTORIES OF ONE FLEET ACCOUNT** (named in the
+lead's private-record ruling, never here) — **a
 config dir the fleet map dates to 09-12, TWO DAYS AFTER that fence was rendered, carrying four live seats'
 credentials.** This is the render-time-glob class the fleet map already records, frozen for ten days rather
 than three minutes, and pinned by a hardcoded path rather than re-taken at each render.
@@ -882,7 +883,7 @@ than three minutes, and pinned by a hardcoded path rather than re-taken at each 
 PROVEN any subject reached those paths. **It is not merely unproven — it is UNRECORDABLE.**
 ```
   audit / deny / fence-log files under ~/cells-agy-*     0      CONTROL ~/cells-clb-*   102
-  `saltforge` in any agy cell's ctl/                     0      CONTROL `Users/jyh`     413 files
+  that account's name in any agy cell's ctl/            0      CONTROL `Users/jyh`     413 files
 ```
 **The Claude lane carries `_audit/{deny.log, fence.log, sandbox-probe}` per root; the agy lane carries no such
 surface.** Its cells carry rich TURN logs, but a client transcript is not an access record: in a 131-line
