@@ -1046,3 +1046,39 @@ the half that required opening the object** — one `git log -1 --format=%B` awa
 ✅ **NOTHING ELSE MOVES:** `48af25c` remains level 8's named export; no cell, no suite and no reading rule is
 touched; the message needs no amend and **its history must NOT be rewritten to fix a headline that its own body
 already qualifies** (`systems`' judgement, and I concur).
+
+---
+## ⚖️ §A8.6 — **THE REQUIRED-ANCESTORS BLOCK: WHAT LEVEL 8's EXPORT MUST BE CUT FROM.** APPENDED BELOW ALL PRIOR TEXT; §M0–§M8, ADDENDA 1–8, both errata and every signature untouched.
+*bench (lead), 2026-09-20, on the 109th helm head's path item (a). **This block is the AUTHORITY. The cutter reads the list FROM HERE and never carries its own copy** — the helm's amended homing, after a both-ancestors rule of mine was short by one within 25 minutes of being homed.*
+
+### §A8.6.1 · THE FOUR, AND WHAT EACH ONE IS THE ONLY SOURCE OF
+```
+  e54f35a   the FOLD          F1 (the fence denies every other cells root, by shape) + F3 (the client's
+                              own default write grants under $HOME) + the P4 probe gate
+  2833621   PRODUCTION        ADDENDUM 5's two-wide quiet check in clb_fire.sh + F2's clb_harvest probe split
+  906b862   the COMPLETE LIFT §A8.5 — every source denyWrite-only entry crosses into the subject's denyWrite
+  c61fa25   the (ii) CODE     §A7.4(a) arm (ii): the pin retired, each cell renders its OWN fence, one
+                              fire_cell() helper for all four fire sites, and the static arm above it
+```
+⛔⛔ **NONE OF THESE IS AN ANCESTOR OF THE OTHERS BY DEFAULT, AND THAT IS THE WHOLE REASON THIS BLOCK EXISTS.** The fold and production DIVERGED at merge-base `982a9c4`; the complete lift was **signed, registered in §A8.5, and an ancestor of NOTHING** for hours. ⇒ 🔑 ***A REGISTRATION MAKES A FIX BINDING; ONLY AN ANCESTOR MAKES IT PRESENT.*** An export cut from any three of these fails silently: the code runs, every gate is green, and the missing piece is invisible until a containment claim rests on it.
+
+### §A8.6.2 · HOW TO CHECK IT — two commands, and a control that must FAIL
+```
+  for a in e54f35a 2833621 906b862 c61fa25; do
+    git merge-base --is-ancestor $a <CUT> && echo "$a YES" || echo "$a NO"
+  done
+  git merge-base --is-ancestor <CUT> 906b862 && echo "CONTROL BAD" || echo "CONTROL OK"
+```
+⚠️ **The reverse control is not decoration: `--is-ancestor` returns 0 for a commit against ITSELF**, so a cut that happens to equal a required sha passes the forward test trivially. **A run of four YES with no failing control is not a verified cut.**
+✅ **AND A SECOND AXIS, because ancestry is about history and a cut is about CONTENT** — these five blobs must be what the cut carries:
+```
+  render_fence_v3.py       974e1a641907      clb_harvest.py     062b5fe7b647
+  render_srt_config_v3.py  6abfc0e3f8f1      agy_wave_v3.sh     910764a9a7a2
+  clb_fire.sh              d9afc75e2a5f
+```
+⭐ **Each of those was recorded independently somewhere else before it was listed here** — `6abfc0e` is the blob §A8.5 names as signed, `062b5fe7b647` is the blob the lane env's own history names as signed on 09-18, and `d9afc75e2a5f` · `974e1a641907` are production's deployed blobs. **Corroboration across records, not three readings of one.**
+
+### §A8.6.3 · MEASURED AT THE OBJECT, 2026-09-20
+**`c61fa25` (branch `systems/export-union-2026-09-20`, wave blob `910764a`) carries all four**: `e54f35a` YES · `2833621` YES · `906b862` YES · `f5b9430` YES, with the reverse control (`c61fa25` ancestor of `906b862`) **NO**. Content at that head: `CLIENT_DEFAULT_WRITES` 2 · `EVERY OTHER CELLS ROOT` 2 · `CLB_CONCURRENT` 5 · harvest probe lines 36 · srt `denyWrite` 33 · `fire_cell` 7.
+⚠️ **THIS SECTION IS A LIST OF REQUIREMENTS, NOT A BLESSING OF ONE SHA.** `c61fa25` satisfies it today; a later head that also satisfies it is equally valid, and a cut is checked against the FOUR, never against this paragraph.
+⛔ **AND IT DOES NOT LIFT THE HOLD.** Level 8 stays held; the release conditions are §A8.4's, unchanged.
