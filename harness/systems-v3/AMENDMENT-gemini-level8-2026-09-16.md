@@ -920,3 +920,93 @@ in a footnote. **Rendering the fence fresh makes FUTURE cells safer; it does not
 A pinned ask follows: file, blob and head, per council 2026-09-17 ⑨(2). ⛔ **This addendum is a LEAD's ruling on
 a fork a runner declined to take, and it changes the treatment arm mid-campaign — so the helm or the Captain
 may overturn it. It is cheap to overturn before the code in §A7.4(a) lands and expensive after.**
+
+---
+## ⚖️ ADDENDUM 8 — **THE agy LANE'S CLAUDE FENCE IS RENDERED FOR THE agy CELL ITSELF. THIS SUPERSEDES ADDENDUM 7's MECHANISM AND NOTHING ELSE.** APPENDED BELOW ALL SIGNED TEXT; §M0–§M8, ADDENDA 1–7 and every signature untouched.
+*bench (lead), 2026-09-20, on `systems`' second reading as harness owner (the helm's commission). Registered
+**PRE-DATA: level 8 has fired nothing.** It changes no separator, population, arm, cap, scorer rule or reading
+rule. **ADDENDUM 7's DIRECTION stands in full — fresh, not pinned. Only its MECHANISM is replaced.***
+
+### §A8.1 · WHAT CHANGES, IN ONE BLOCK
+```
+  ADDENDUM 7 REGISTERED   (i)  render for a CLAUDE cell, lift its deny set onto the agy cell
+  ADDENDUM 8 REGISTERS    (ii) render for the AGY CELL ITSELF, against a real Claude pool cfg
+                          AND  the COMPLETE LIFT: every source `denyWrite`-only entry crosses into the
+                               subject's `denyWrite`, and NEVER into `denyRead`
+  UNCHANGED               fresh-at-wave-time, not pinned · level 8 onward · levels 5/6/7 not re-run
+                          the equivalence sentence still restated for 5/6/7 (A7.4(b))
+                          the audit-gap limit still rides with every agy verdict (A7.4(c))
+```
+
+### §A8.2 · WHY — AND IT IS NOT A PREFERENCE BETWEEN TWO WORKING ARMS
+**`systems` isolated the arms with the launcher's own shape (`--tmpdir` = the cell's own tmp; only the fence
+varies) and measured:**
+```
+  pinned  (what the lane uses today)    rc 0  PASS     <- POSITIVE CONTROL, and it FIRES
+  (ii) agy-cell  + F3 renderer          rc 0  PASS
+  (ii) agy-cell  + master renderer      rc 0  PASS
+  (i)  clb-cell  + master renderer      rc 0  PASS
+  (i)  clb-cell  + F3 renderer          rc 1  ⛔ REFUSE
+       render_srt_config: allowWrite <agy cell>/repo lies under denyRead <agy cells root>
+       — "The subject could not traverse to its own tree"
+```
+⇒ 🔑 ***ARM (i) DOES NOT RUN UNDER THE RENDERER THIS CAMPAIGN IS MOVING TO. A CLAUDE CELL'S FENCE DENIES THE
+agy CELLS ROOT AS A FOREIGN ROOT, SO THE agy SUBJECT'S OWN TREE FALLS UNDER A `denyRead` AND THE LIFT REFUSES.***
+**ADDENDUM 7 registered an arm that cannot be executed.** It is superseded here rather than defended.
+⭐ **AND THE POSITIVE CONTROL IS THE PART THAT MAKES THIS READABLE: the PINNED fence PASSES in the same
+harness, at the same moment.** A suite where the broken arm fails and nothing else does is an arm count; **a
+suite where the arm under test fails while the status quo passes is a discrimination.**
+
+### §A8.3 · WHAT THIS DOES **NOT** DO
+1. **It does not re-run any landed level.** 5, 6 and 7 stand as published, under the pinned fence.
+2. **It does not touch within-lane comparability** — every landed agy cell lifted the same pinned fence.
+3. **It claims no exposure**, and registers none.
+4. **It does not touch any separator**, and does not disturb ADDENDUM 6's REPORTED columns.
+5. ⛔ **IT DOES NOT BY ITSELF PUT F3's BELT INTO THE SUBJECT'S CONFIG.** `render_srt_config_v3.py:104` lifts
+   `denyRead` ONLY and F3 is `denyWrite`-only. ⚠️ **AND THE GAP IS EXACTLY ONE ENTRY, NOT TWO — `systems`
+   corrected its own reading before building on it, and the correction is adopted here:**
+```
+     in the LIFTED config, checked by ANCESTOR COVERAGE rather than by string count:
+       ~/.claude/debug   read-denied TRUE   write-denied TRUE    <- COVERED by /Users/jyh/.claude (the ~/.claude* glob)
+       ~/.npm/_logs      read-denied FALSE  write-denied FALSE   <- GENUINELY ABSENT — the only F3 entry the lift loses
+```
+   ⇒ 🔑 ***A STRING COUNT ANSWERS "IS THIS ENTRY PRESENT?"; CONTAINMENT ASKS "IS THIS PATH COVERED?" — AND AN
+   ANCESTOR MAKES THE TWO DISAGREE IN THE DIRECTION THAT LOOKS LIKE A FINDING.*** ⛔ **So a releaser who checks
+   `~/.claude/debug` will find it covered EITHER WAY, which is precisely why it cannot be the test — it is the
+   NEGATIVE control. `~/.npm/_logs`, checked by COVERAGE, is the test.**
+   ✅ **AND THE LIFT IS REGISTERED HERE RATHER THAN SEPARATELY — see §A8.5, which supersedes this clause's
+   earlier wording.** The two are ONE containment change for level 8 and are not meaningful apart.
+
+### §A8.4 · THE RELEASE CONDITION THIS ADDENDUM DOES NOT MEET
+⛔ **REGISTERING IS NOT IMPLEMENTING — the lesson ADDENDUM 7 taught at cost.** Level 8 stays HELD. The code for
+(ii) is owed before the first model call, and the helm's hold lifts only when BOTH are measured AND posted:
+**(i)** F3's deny entries PRESENT **in the LIFTED srt config the level-8 agy cells RUN UNDER**, read from that
+file with a control proving the lift ran — **not merely in the fence it was lifted from**; **(ii)** gemini's
+README fire-ready. ⇒ ***A BELT THAT IS NOT LIFTED REACHES NOBODY.***
+
+### §A8.5 · THE COMPLETE LIFT — REGISTERED, BECAUSE IT CHANGES WHAT THE SUBJECT MAY WRITE
+`render_srt_config_v3.py` lifted `denyRead` and nothing else. **Every `denyWrite`-only entry of the source
+fence was discarded**, so — in the file's own words at `:112` — ***"the toolchain roots were writable to the
+subject."*** ⇒ **`~/.rustup` · `~/.cargo` · `~/.elan` were neither read- nor write-denied in EVERY agy config,
+INCLUDING THE PINNED ONE levels 5, 6 and 7 ran under.**
+```
+  REGISTERED   every source `denyWrite`-only entry crosses the lift into the subject's `denyWrite`,
+               and NEVER into `denyRead` — the toolchain roots stay READABLE and become UNWRITABLE
+  BUILT BY     systems (harness owner), red-first, on its own commission
+  SIGNED       the helm, non-author, head 906b862 · blob 6abfc0e — after REFUSING an earlier pin whose
+               "lifted N entries" receipt was computed BEFORE the drop rule and so reported a DROPPED
+               entry as lifted
+```
+⛔⛔ **WHY THIS IS A REGISTRATION AND NOT A REPAIR, WHICH IS THE ONLY JUDGEMENT IN THIS ADDENDUM:** it can be
+read as making the lift finally do what *"the agy arm lifts the Claude fence"* always claimed. **But the
+SUBJECT's write access to three real directories changes between the landed levels and level 8, and a change
+in what the subject may do to the box is a change in what the run measures** — this amendment's own §A7.2
+reasoning, applied to its author. ⇒ **When a repair and a registration are both defensible, register: the cost
+is one clause, and the cost of the other error is a silent change of conditions mid-campaign.**
+⚠️ **AND IT DOES NOT MAKE LEVELS 5/6/7 WRONG.** They were internally consistent — every landed agy cell ran
+under the same incomplete lift. **What it does is turn §A7.4(c)'s UNMEASURABLE gap into a NAMED one for those
+levels**, and that belongs beside their verdicts.
+
+## ✍️ NON-AUTHOR SIGNATURE — OWED
+A pinned ask follows. ⛔ **`systems` is the second READER of the fork AND the author of the lift registered in
+§A8.5 — it is a non-author of neither; the signature should come from the helm or another seat.**
