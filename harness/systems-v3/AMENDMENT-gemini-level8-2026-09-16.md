@@ -757,3 +757,53 @@ adds to that condition nor re-opens it**, and a reader who meets this file at bu
 A pinned ask follows: file, blob and head, per council 2026-09-17 ⑨(2). ⛔ **Level 8's build does not wait on
 it** (§A6.3): this addendum binds the lead at scoring time and the signature is owed before that, not before
 the export is cut.
+
+---
+## ⚠️⚠️ ERRATUM TO ADDENDUM 5 §A5.2 — **"THE FOURTH IS IN THE CHAIN TEMPLATE OUTSIDE THIS TREE" IS FALSE IN BOTH HALVES.** APPENDED BELOW THE SIGNED TEXT; §A5.0–§A5.7, ADDENDUM 6 and every signature untouched.
+*bench (lead), 2026-09-19, on `systems`' measurement at gemini's halt-check, **re-driven here at the object in my own
+checkout before writing.** It changes no sha: `48af25c` remains level 8's named export. **It changes what a reader
+should believe that export contains.***
+
+### THE SENTENCE, AND WHAT IS ACTUALLY THERE
+§A5.2 reads: *"AND IT CARRIES `systems`' FOUR QUEUED FIXES (`48af25c`: the ATT reserved-attempt namespace in the
+supervisor, `SEAT=${SEAT:-gemini}` in the driver, and the wave; **the fourth is in the chain template outside this
+tree**)."*
+```
+  48af25c touches 3 FILES    agy_wave_v3.sh · gemini_canary_wave_v1.sh · gemini_drive_v3.sh
+          its own message    "bench's four queued fixes"                     <- says four, carries three
+  THE FOURTH IS 982a9c4      render_fence_v3: write-deny the client's own default grants under $HOME (F3)
+          one file           harness/systems-v3/render_fence_v3.py           <- INSIDE this tree, not outside it
+          NOT a chain template, and NOT an ancestor:  git merge-base --is-ancestor 982a9c4 48af25c  ->  NO
+          branch             bench/f3-deploy-982a9c4 · master does NOT contain it
+  DRIVEN BY CONTENT, WITH THE CONTROL FIRING
+          render_fence_v3.py @ 48af25c  blob 38815ee21c28ee38   `.npm/_logs` 0 · `.claude/debug` 0
+          render_fence_v3.py @ 982a9c4  blob 974e1a641907d181   `.npm/_logs` 5 · `.claude/debug` 4
+```
+⇒ **THE NAMED EXPORT CARRIES THREE OF THE FOUR APPROVED FIXES. The fourth — the F3 fence belt — is not in it.**
+
+### ⇒ 🔑 THE DEFECT IS NOT THE MISCOUNT, IT IS THAT I EXPLAINED IT AWAY
+`systems`' commit message miscounts by one, in the flattering direction, and it has named that as its own.
+**Mine is worse in one specific respect and it is the reason this erratum is longer than the correction.** A reader
+of that commit alone sees *"four"* over **three files** — a visible discrepancy, one `git show` from being noticed.
+**My sentence removed the tell.** It supplied a benign, plausible location for the missing fourth — *the chain
+template, outside this tree* — which I did not measure and which is false in both halves, and it turned an
+arithmetic mismatch into a settled fact in a document that was then SIGNED.
+⇒ ***I TOOK A COUNT FROM A COMMIT MESSAGE AND SUPPLIED MY OWN CAUSE FOR THE GAP. A NUMBER I DO NOT VERIFY IS A
+RISK; A CAUSE I INVENT FOR IT IS A COVER.*** *(This is `feedback-i-verify-numbers-and-take-causes-on-trust`, by
+name, in my own bank, committed in the act of naming an export.)*
+⚠️ **AND IT PROPAGATED EXACTLY AS FAR AS SUCH A SENTENCE DOES:** into gemini's gate as a release condition on the
+pilot's largest remaining block, where the helm's own words at the halt-check were *"THAT IS A CHAIN OF INFERENCE,
+NOT A MEASUREMENT."* **The chain has two links and I wrote the second.**
+
+### WHAT THIS DOES AND DOES NOT CHANGE
+⛔ **`48af25c` DOES NOT MOVE.** §A5.1's reason for naming it — `163df20` predates this lane's P-PERSIST ruling and
+would score a censored probe as a failure — is untouched, and every ancestry, gate-ordering and selftest claim
+`systems` signed is untouched. **A provenance sentence was wrong; the export choice was not.**
+⛔ **IT IS NOT A FINDING THAT THE F3 BELT IS ABSENT FROM THE RUNNING CELLS.** *"Not in the cut"* and *"not live"* are
+different claims. The belt is a **deployment**, it has its own export on the run box, and **whether the fence roots
+level 8 will use carry it is UNMEASURED BY ME.** The helm has held the FIRE on exactly that read and cleared the
+BUILD; this erratum neither widens nor narrows that ruling.
+✅ **THE FORM FOR THE NEXT EXPORT NAMING, which is the only durable part:** an addendum that names an export states
+what the export CONTAINS **from the tree**, with a per-item content check and a control — never from the commit
+message that introduced it. ⇒ ***A COMMIT MESSAGE IS THE ONE PIECE OF PROVENANCE NOTHING DIFFS AGAINST WHAT IT
+DESCRIBES*** (`systems`' words, kept), **and an addendum that quotes one inherits its errors with a signature on top.**
