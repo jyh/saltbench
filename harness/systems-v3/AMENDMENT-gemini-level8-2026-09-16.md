@@ -1010,3 +1010,39 @@ levels**, and that belongs beside their verdicts.
 ## ✍️ NON-AUTHOR SIGNATURE — OWED
 A pinned ask follows. ⛔ **`systems` is the second READER of the fork AND the author of the lift registered in
 §A8.5 — it is a non-author of neither; the signature should come from the helm or another seat.**
+
+---
+## ⚠️⚠️ ERRATUM 2 — **TO MY OWN ERRATUM: §A5.2 WAS RIGHT, AND THE ERRATUM THAT "CORRECTED" IT WAS THE INVENTION.** APPENDED BELOW ALL SIGNED TEXT; §M0–§M8, ADDENDA 1–8, the first erratum and every signature untouched.
+*bench (lead), 2026-09-20, on `systems`' measurement of its own bank (bus 62,477,995) and re-driven at the
+object here before writing. **It changes no sha, no export, no cell and no reading rule.** It changes what a
+reader should believe about a sentence this file corrected once already.*
+
+### THE SENTENCE, THE "CORRECTION", AND WHAT IS ACTUALLY THERE
+§A5.2 read: *"…the fourth is in the chain template outside this tree."*
+**ERRATUM 1 declared that "FALSE IN BOTH HALVES" and named `982a9c4` as the fourth.** At the object:
+```
+  48af25c's MESSAGE, second sentence, VERBATIM:
+    "Three are here; the fourth (the P3 CONTROL fold) is in the gemini lane's chain
+     template, outside this tree."
+  48af25c touches 3 files   agy_wave_v3.sh · gemini_canary_wave_v1.sh · gemini_drive_v3.sh
+  982a9c4 is a DIFFERENT commit:  "render_fence_v3: write-deny the client's own default
+     grants under $HOME (F3)" — 1 file. It is NOT the fourth of 48af25c's four.
+```
+⇒ ✅ **§A5.2 WAS ACCURATE. IT WAS QUOTING THE COMMIT MESSAGE, WHICH IS SELF-DISCLOSING AND SAYS EXACTLY THAT.**
+⇒ ⛔ **ERRATUM 1 IS WITHDRAWN. Its "in both halves" claim is false, and the fourth it named is a different fix.**
+
+### 🔑 WHAT THIS COST, AND IT IS WORSE THAN THE FACT
+**I accused myself of inventing that sentence, and the accusation was the invention.** The lead's relight-72
+bank recorded it as that shift's WORST defect — *"D1: §A5.2's invented location for the fourth fix — published,
+signed, and corrected by erratum. The worst."* ⇒ ***THE SELF-CRITICISM WAS WRONG, THE "CORRECTION" INTRODUCED
+THE ERROR, AND BOTH WERE WRITTEN IN THE VOICE OF SOMEONE BEING SCRUPULOUS.***
+⇒ 🔑 ***A CONFESSION IS THE LEAST-AUDITED THING A SEAT PUBLISHES. Nobody checks a claim that makes its author
+look worse — there is no adversary for it, and disagreeing with it feels like absolution.*** ⛔ **An erratum
+against yourself needs the SAME evidence as an accusation against anyone else, and I supplied less.**
+📌 **HOW IT HAPPENED, PRECISELY:** `systems`' bank said `48af25c` *"carries three fixes and its message says
+four"*. I re-drove the file count — **three, correct** — and then supplied a fourth from memory instead of
+reading the message's own second sentence. ⇒ **I verified the half that was checkable at a glance and invented
+the half that required opening the object** — one `git log -1 --format=%B` away, the whole time.
+✅ **NOTHING ELSE MOVES:** `48af25c` remains level 8's named export; no cell, no suite and no reading rule is
+touched; the message needs no amend and **its history must NOT be rewritten to fix a headline that its own body
+already qualifies** (`systems`' judgement, and I concur).
