@@ -119,7 +119,8 @@ adding the two numbers gets the wrong denominator.**
 >   ADDENDUM 7        DONE 60 · OWED 124 · BLOCKED   0 · INEXPR 16     level 5 complete: +7 flash conditions
 >   ADDENDUM 8        DONE 60 · OWED 124 · BLOCKED   0 · INEXPR 16     HC stage 1 complete: +0 (a replication; §J3)
 >   ADDENDUM 9        DONE 72 · OWED 112 · BLOCKED   0 · INEXPR 16     level 6 complete: +12
->   LIVE (ADDENDUM 10) DONE 99 · OWED 85 · BLOCKED   0 · INEXPR 16     level 7 complete: +27 (§Q1)
+>   ADDENDUM 10       DONE 99 · OWED  85 · BLOCKED   0 · INEXPR 16     level 7 complete: +27 (§Q1)
+>   LIVE (ADDENDUM 11) DONE 109 · OWED 75 · BLOCKED   0 · INEXPR 16    block SB complete: +10 (§R1)
 > ```
 > ⛔⛔ **THE `ADDENDUM 9` ROW ABOVE WAS ADDED ON 2026-09-19 BY ADDENDUM 10, TWO DAYS LATE. FOR THOSE TWO DAYS
 > THIS BOX'S `LIVE` ROW READ `DONE 60` WHILE THE FILE'S LIVE FIGURE WAS `DONE 72`** — a whole level behind,
@@ -721,3 +722,70 @@ of record makes none. `DONE` here means *measured and written down*, never *reso
 4. **It does not revisit** the level-4 void of ADDENDUM 6, which stands.
 5. **It claims no arm result.** §1 and §Q4 say why: three of the four (model × arm) quadrants are at the
    pass ceiling and the fourth is confounded by an arm-correlated cap.
+
+---
+# ✅✅ ADDENDUM 11 — **BLOCK SB COMPLETES: `DONE 99 → 109`, `OWED 85 → 75`. THE CLAUDE LANE'S FIRST BROWNFIELD CONDITIONS.**
+## bench, 2026-09-19. **Landed in the SAME COMMIT as its result of record** (`RESULT-claude-blockSB-2026-09-19.md`),
+## per council 2026-09-16 ⑤d, so this census never reads ahead of its evidence.
+## ⚠️ The `§C5` trajectory box is appended to in this same edit — ADDENDUM 10's own finding, applied to itself.
+
+## §R1 · THE ARITHMETIC, MAPPED CONDITION BY CONDITION ONTO §C4 RATHER THAN ASSERTED
+Block SB fired **10 conditions / 30 cells** (`claude-opus-5`, export `283362105d75`). **All ten move to `DONE`.**
+Every one was `OWED` in §C4 — **none was already `DONE`, none is inexpressible, and none is a replication**:
+```
+  claude-opus-5   brownfield x Crc32    x {plain,salt-diet} x none    §C4 "brownfield x everything" 30,   +2
+                  brownfield x FreeList x {plain,salt-diet} x none    BLOCKED until ADDENDUM 3 lifted     +2
+                  brownfield x LRU      x {plain,salt-diet} x none    §B7 row 3, then OWED                +2
+                  brownfield x LZW      x {plain,salt-diet} x none              "                        +2
+                  brownfield x Paxos    x {plain,salt-diet} x none              "                        +2
+  ---------------------------------------------------------------------------------------------------------
+                                                                                                        +10
+  MATRIX         DONE 109 · OWED 75 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **109 + 75 + 0 + 16 = 200.** The 240-view differs only by the 40 inexpressible `brownfield × spec-change`
+conditions, exactly as §J4 published: **240-view `DONE 109 · OWED 75 · BLOCKED 0 · INEXPR 56`** (= 240).
+✅ **CHECKED RATHER THAN ASSUMED, because HC stage 1 is the near-miss:** ADDENDUM 8 moved **+0** for
+`claude-opus-5` on §J3's replication rule. **Its 45 cells were `greenfield × none` (§N1, verbatim), not
+brownfield** — so these ten are not that population and are not a replication of it.
+📌 **No per-model TOTAL is restated**, for ADDENDUM 9 §P1's reason: §C4's per-model rows annotate some
+conditions as both `OWED` and `INEXPRESSIBLE`, so a per-model total derived from them is a new claim.
+
+## §R2 · ⭐ WHAT IS NOW STRUCTURALLY TRUE — AND IT IS A *DERIVED* VIEW, CITED, NOT ASSERTED
+`claude-opus-5` carries 20 brownfield conditions in the 200-view (5 problems × 2 arms × {none, statement}).
+**Block SB completes the `none` half: 10 of 10.** The `statement` half — 10 conditions — **stays `OWED`.**
+⇒ **This is the first BROWNFIELD evidence of any kind on the Claude lane**, whose row was BLOCKED in its
+entirety from §C4 until ADDENDUM 3.
+⚠️ **STATED AS DERIVED:** it rests on §C4 + ADDENDUM 3 + §R1, each named, **and I have not re-verified the
+Claude lane's greenfield conditions at their own objects today.** §J4's rule applies — *a derived view
+inherits the citation without inheriting the check.*
+
+## §R3 · ⛔⛔ `DONE` HERE MEANS A RESULT OF RECORD, AND ALL TEN CARRY THE SAME NAMED LIMIT
+Per §C6(4) a condition with a result of record is `DONE`, and the result names its limits. **The column
+cannot show these, so they are written here:**
+```
+  ALL TEN    the suite pass rate is a TOTAL CEILING (30/30) and V1 bugs_fixed is ALSO at ceiling (30/30)
+             ⇒ NEITHER DISCRIMINATES THE ARMS. These ten conditions are DONE and they RESOLVE NOTHING
+               about plain vs salt-diet on correctness. `DONE` is a claim about EVIDENCE EXISTING.
+  ALL TEN    `bugs_introduced` is a FLOOR on every row (`>=0 (suite-limited)`), never a measurement.
+  4 CELLS    across the FreeList and Paxos salt-diet conditions, CENSORED at the cost cap; 0 plain cells
+             were. Every cost figure in the result is a LOWER BOUND, and a cap that binds one arm is
+             part of that arm's treatment (result §6).
+  ALL TEN    the registered brownfield primary separator (§B5 `retained`) separates the arms DISJOINTLY
+             on 5 of 5 problems, and the result's §5 establishes it is reading GROWTH rather than
+             rewriting. ⛔ NO ARM CLAIM RESTS ON IT HERE, and whether the separator's MEANING changes
+             is the Captain's, not this census's.
+```
+⛔ **AND ONE THING THAT DID *NOT* HAPPEN, RECORDED BECAUSE IT NEARLY DID:** the first scoring pass returned
+18 of these 30 cells as `class REFUSED`, which reading rule §241 item 6 would have entered here as
+`VOID(GIVEN)` — a finding **against the harness**. **It was the scoring invocation's seed tree, not the
+cells** (result §2). ⇒ 🔑 ***A CENSUS IS DOWNSTREAM OF AN INVOCATION, AND AN INVOCATION DEFECT ARRIVES
+WEARING THE CLOTHES OF A FINDING ABOUT THE SUBJECT.***
+
+## §R4 · WHAT THIS ADDENDUM DOES NOT DO
+1. **It authorises no spend.** What the Claude lane fires next — its 10 owed `brownfield × statement`
+   conditions — is not decided here.
+2. **It re-verifies no other row.** Every row other than `claude-opus-5 × brownfield × none` is CARRIED
+   from ADDENDUM 10, and §K2's RE-VERIFIED/CARRIED column is still owed and still not built.
+3. **It does not make the matrix read `FULL`:** **75 conditions are owed.**
+4. **It does not touch level 7's rows.** The `surv`/`growth` question the result's §8 item 6 raises about
+   level 7 is UNMEASURED; if it lands, it changes that result's §1 wording and not these counts.
