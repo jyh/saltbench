@@ -145,6 +145,30 @@ def read_served(path):
     models = sorted(set(re.findall(r'([A-Za-z0-9._-]+)=\d+', head[0])))
     return models[0] if len(models) == 1 else None
 
+# ⛔⛔ ONE SITE, BECAUSE THIS FILE HAS TWO TABLE WRITERS AND A FIX PUT IN ONE DOES NOT REACH THE OTHER.
+#   Measured, by its author, the same day: the `read_score` length guard was missed because `read_score2`
+#   had it and nobody looked for a third reader; then the model_served declaration below was written into
+#   the PLAIN writer and silently did nothing for --spec-change, which is the path block SC actually uses.
+#   ⇒ 🔑 A FIX DOES NOT TRAVEL TO ITS SIBLINGS. The remedy is not to remember the sibling, it is to leave
+#   only one place where the thing can be written.
+def write_table_comments(out, excl, served_dir):
+    """Every declared absence that rides ABOVE the header, for BOTH writers."""
+    for c in sorted(excl):
+        out.write("# EXCLUDED\t%s\t%s\n" % (c, excl[c]))
+    # ⛔ A BLANK COLUMN THAT IS NOT DECLARED IS THE ADDENDUM-12 DEFECT, REACHABLE BY OMISSION. Without
+    #   --served-dir every row's `model_served` is "" and nothing said so — not the table, not stderr.
+    #   ⇒ AN EMPTY CELL READS AS "NOT RECORDED" AND AS "UNKNOWN" INDISTINGUISHABLY, and only the person who
+    #   typed the command knows which. DECLARATION, not refusal: a block with no served receipts is a real
+    #   case, and a tool that refused it would be worked around.
+    if not served_dir:
+        out.write("# model_served UNPOPULATED\tno --served-dir was given\t"
+                  "the column is EMPTY on every row below. A DECLARED absence, not a measurement: the "
+                  "model was not derived, which is NOT the same as the model being unknown.\n")
+        print("⚠️  model_served is UNPOPULATED on every row — no --served-dir was given; the table declares "
+              "this in its header. Pass --served-dir <run dir> to derive the model from each cell's own "
+              "receipt (ADDENDUM 12 had to correct a block's model after the fact for exactly this).",
+              file=sys.stderr)
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--stage", required=True, help="the directory holding one dir per staged cell")
@@ -278,7 +302,7 @@ def main():
             print("REFUSE: block SC is greenfield only, but the field(s) are %s" % sorted(fields),
                   file=sys.stderr); return 1
         out = open(a.out, "w", encoding="utf-8") if a.out else sys.stdout
-        for c in sorted(excl): out.write("# EXCLUDED\t%s\t%s\n" % (c, excl[c]))
+        write_table_comments(out, excl, a.served_dir)
         out.write("\t".join(SPECCHANGE_COLS) + "\n")
         for r in rows: out.write("\t".join(str(r.get(c, "")) for c in SPECCHANGE_COLS) + "\n")
         if a.out: out.close()
@@ -337,8 +361,7 @@ def main():
         print("REFUSE: no --retention but the block's field(s) are %s — a brownfield block owes its "
               "retention decomposition" % sorted(fields), file=sys.stderr); return 1
     out = open(a.out, "w", encoding="utf-8") if a.out else sys.stdout
-    for c in sorted(excl):
-        out.write("# EXCLUDED\t%s\t%s\n" % (c, excl[c]))
+    write_table_comments(out, excl, a.served_dir)
     out.write("\t".join(cols) + "\n")
     for r in rows: out.write("\t".join(str(r.get(c, "")) for c in cols) + "\n")
     if a.out: out.close()
