@@ -1,6 +1,15 @@
 # private_paths_history_baseline.tsv -- ACCEPTED historical commits whose ADDED LINES carry a private-record path (check_private_paths.py --history).
 # sha<TAB>what. NEVER the line itself: an excerpt would put the path into the tree, where the tree ratchet reds on it.
 # A pushed commit's content cannot be repaired without a force-push (ruled out 08/30), so this list does not shrink; a growth is a reviewed diff.
+# d30ef38c6c28 — ACCEPTED ON THE CAPTAIN'S WORD 2026-09-21, verbatim "accept saltbench"; THIS ONE
+#   INSTANCE ONLY, it does not pre-accept the next. The debt is bench's and is declared as such:
+#   three per-seat config-dir paths were hardcoded in a census tool's glob AND its selftest fixture,
+#   merged to public main at 10:28 in #230 and REWRITTEN OUT OF THE TREE at 11:5x in #231 (e6163119).
+#   Exposure declared by their author: 58 min 34 s on public main. The TREE is clean; the BLOBS are
+#   permanent in public history, and a forward rewrite does not unpublish them — a force-push on a
+#   protected public default branch was ruled out 08/30 and is ruled out again here. So an accepted
+#   entry is the only thing that clears this arm. The stale config-dir pattern that let them through
+#   is what PR #224 fixes: holding this entry would leave saltbench running the gate that missed it.
 16dbad8040ec	a path into a private-record repo
 16dbad8040ec	a rootless path into the private record (briefs-/fleet-shape)
 1d8591b2eebe	a path into a private-record repo
@@ -14,5 +23,6 @@
 9ef690a95308	a path into a private-record repo
 a03bd3cdaaef	a path into a private-record repo
 cb8cea300463	a path into a private-record repo
+d30ef38c6c28	a per-seat runtime config directory
 e09e6a1d32d9	a path into a private-record repo
 efd41256026e	the kit run surface
