@@ -1147,3 +1147,37 @@ The only thing that returns an identity is an **authenticated call**, and on thi
 1. It admits no pool and fires no cell. The lane still runs **two** until the replaced condition is answered.
 2. It changes no arm, cap, fence, scorer, reading rule, or any recorded result.
 3. It does not re-open ADDENDUM 6, which was correct in everything it measured; **what it got wrong is an act it assigned, and that is corrected beside it rather than inside it.**
+
+## ⚖️ §CLB-A — **THE CLAUDE LANE'S REQUIRED-ANCESTORS BLOCK, `serial=1`.** APPENDED BELOW ALL PRIOR TEXT; §Q1–§Q3, ADDENDA 1–6, the erratum and every signature untouched.
+*bench (lead), 2026-09-21, on the 112th helm head's ruling that a gate keyed to an authority is keyed to WHICH authority, never to whether one exists. **This block is the Claude lane's AUTHORITY: `studio_export.sh` reads the list FROM HERE, via `--amendment`, and never carries its own copy.***
+
+### §CLB-A.1 · WHY THIS EXISTS — IT IS A **SUPPLY**, NOT AN EXEMPTION
+`studio_export.sh`'s required-ancestors gate became a REFUSAL (rc 9) on 2026-09-20, correctly: *a gate that announces its own absence and proceeds is a log line, not a gate.* **But it was keyed to ONE amendment — level 8's — and made mandatory for EVERY export the tool cuts, and the tool cuts for TWO lanes.**
+⇒ 🔑 ***THAT IS AN ARITY DEFECT, NOT A SEVERITY ONE: a TWO-state classifier (the required ancestors are PRESENT or ABSENT) over a THREE-state world, whose third state is `THIS LANE HAS NO SUCH AUTHORITY, BY CONSTRUCTION`. A two-state classifier over a three-state surface FAILS CONFIDENTLY*** — the refusal named four shas, quoted why each mattered, and was wrong about the question, which is exactly why no reader would have doubted it.
+⛔ **THE REFUSAL WAS CORRECT ABOUT THE COMMITS AND WRONG ABOUT THE QUESTION.** A Claude-lane export has no relationship to level 8's fold, lift, (ii) code or carrier; **it should not carry them, and nothing about a Claude-lane cut wants it to.**
+✅ **SO THE REPAIR IS TO SUPPLY THE MISSING AUTHORITY, NOT TO WEAKEN THE GATE.** No severity is changed, no arm is weakened, and `--allow-missing-ancestor` is NOT used. ⇒ **An exemption says *skip the check here*; this says *here is what the check should be checking against*.**
+⚠️ **AND THE RECEIPT IS WHY IT MATTERS, not the convenience:** a waived cut prints *"4 required ancestors ABSENT"* on a cut where that is the CORRECT state — **a true line indistinguishable, to every later reader, from the failure the gate exists to catch.**
+
+### §CLB-A.2 · THE SET
+```
+serial=1
+repo: jyh/saltbench-systems
+283362105d75d4ca68336875aa358049748fe019   PRODUCTION: ADDENDUM 5's two-wide quiet check in clb_fire.sh + F2's clb_harvest probe split
+```
+
+### §CLB-A.3 · THE CUTTER'S RULE — unchanged from §A8.7.1, restated so this block is readable alone
+```
+  1  A required-ancestors block is any section carrying a `serial=N` line.
+  2  THE CUTTER READS THE HIGHEST N.        3  ON A TIE IT REFUSES, and cuts nothing.
+  4  EVERY BLOCK IS THE COMPLETE SET, NEVER A DELTA.
+```
+⛔ **IF THE CLAUDE LANE'S REQUIRED SET EVER MOVES, APPEND A NEW BLOCK AT `serial=2`.** Never edit this one: the serial is what makes a superseding block LOUD, and a quotation of this block either reuses the serial (the cutter refuses on the tie) or carries none (it is not a block at all).
+⛔ **AND THIS BLOCK LIVES IN THE CLAUDE LANE'S OWN AMENDMENT, NOT IN LEVEL 8's, DELIBERATELY** — `--amendment` names the file, so two lanes' blocks can both be `serial=1` without ever competing. **Putting a second lane's block in level 8's file would make the highest serial win across lanes, which is precisely the silent override §A8.7.1 was written to prevent.**
+
+### §CLB-A.4 · HOW TO CHECK IT — and the reverse control must FAIL
+```
+  git merge-base --is-ancestor 283362105d75d4ca68336875aa358049748fe019 <CUT> && echo YES || echo NO
+  git merge-base --is-ancestor <CUT> 283362105d75d4ca68336875aa358049748fe019 && echo "CONTROL BAD" || echo "CONTROL OK"
+```
+⚠️ **The reverse control is not decoration: `--is-ancestor` returns 0 for a commit against ITSELF**, so a cut that happens to equal the required sha passes the forward test trivially. **A YES with no failing control is not a verified cut.**
+⛔ **A ONE-SHA SET IS NOT A WEAK GATE, AND THE DISTINCTION IS THE POINT:** level 8 needs four because *none of them is an ancestor of the others* — they diverged, and an export cut from any three fails silently. **The Claude lane's production line is linear today, so one sha is the complete and honest answer.** If it ever forks, this block grows at `serial=2` and the gate keeps meaning what it says.

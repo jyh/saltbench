@@ -1,0 +1,25 @@
+cell	problem	arm	field	extras	run_state	suite	tests	w1_fenced	final_T	final_COST	cap_unit	cap	capped	model_served
+clbscp01	Crc32	plain	greenfield	statement	ENDED: LANDED	PASS	6/6	-	2401900	1.1939	COST	37.21	no	claude-sonnet-5
+clbscp02	Crc32	plain	greenfield	statement	ENDED: LANDED	PASS	6/6	-	2181020	0.9779	COST	37.21	no	claude-sonnet-5
+clbscp03	Crc32	plain	greenfield	statement	ENDED: LANDED	PASS	6/6	-	1879690	0.8430	COST	37.21	no	claude-sonnet-5
+clbscs01	Crc32	salt-diet	greenfield	statement	ENDED: LANDED	PASS	6/6	-	10489614	3.7965	COST	37.21	no	claude-sonnet-5
+clbscs02	Crc32	salt-diet	greenfield	statement	ENDED: LANDED	PASS	6/6	-	11335722	4.1607	COST	37.21	no	claude-sonnet-5
+clbscs03	Crc32	salt-diet	greenfield	statement	ENDED: LANDED	PASS	6/6	-	15926283	5.5165	COST	37.21	no	claude-sonnet-5
+clbsfp01	FreeList	plain	greenfield	statement	ENDED: LANDED	PASS	7/7	-	4083049	2.7284	COST	37.21	no	claude-sonnet-5
+clbsfp02	FreeList	plain	greenfield	statement	ENDED: LANDED	PASS	7/7	-	6054020	3.3273	COST	37.21	no	claude-sonnet-5
+clbsfp03	FreeList	plain	greenfield	statement	ENDED: LANDED	PASS	7/7	-	4524503	2.8059	COST	37.21	no	claude-sonnet-5
+clbsfs01	FreeList	salt-diet	greenfield	statement	ENDED: LANDED	PASS	7/7	-	123975714	35.0810	COST	37.21	no	claude-sonnet-5
+clbsfs02	FreeList	salt-diet	greenfield	statement	ENDED: CAP-COST	FAIL	6/7	-	131994064	37.4618	COST	37.21	yes	claude-sonnet-5
+clbsfs03	FreeList	salt-diet	greenfield	statement	ENDED: LANDED	PASS	7/7	-	77734284	23.3558	COST	37.21	no	claude-sonnet-5
+clbslp01	LRU	plain	greenfield	statement	ENDED: LANDED	PASS	16/16	-	2359212	1.3835	COST	37.21	no	claude-sonnet-5
+clbslp02	LRU	plain	greenfield	statement	ENDED: LANDED	PASS	16/16	-	3258928	1.5949	COST	37.21	no	claude-sonnet-5
+clbslp03	LRU	plain	greenfield	statement	ENDED: LANDED	PASS	16/16	-	1613442	0.8539	COST	37.21	no	claude-sonnet-5
+clbsls01	LRU	salt-diet	greenfield	statement	ENDED: LANDED	PASS	16/16	-	13494723	4.8285	COST	37.21	no	claude-sonnet-5
+clbsls02	LRU	salt-diet	greenfield	statement	ENDED: LANDED	PASS	16/16	-	22909164	7.2774	COST	37.21	no	claude-sonnet-5
+clbsls03	LRU	salt-diet	greenfield	statement	ENDED: LANDED	PASS	16/16	-	20783719	6.6651	COST	37.21	no	claude-sonnet-5
+clbszp01	LZW	plain	greenfield	statement	ENDED: LANDED	PASS	8/8	-	3842229	1.8862	COST	37.21	no	claude-sonnet-5
+clbszp02	LZW	plain	greenfield	statement	ENDED: LANDED	PASS	8/8	-	3148365	1.7492	COST	37.21	no	claude-sonnet-5
+clbszp03	LZW	plain	greenfield	statement	ENDED: LANDED	PASS	8/8	-	3555507	2.2932	COST	37.21	no	claude-sonnet-5
+clbszs01	LZW	salt-diet	greenfield	statement	ENDED: LANDED	PASS	8/8	-	30210414	10.4782	COST	37.21	no	claude-sonnet-5
+clbszs02	LZW	salt-diet	greenfield	statement	ENDED: CAP-COST	BUILD-FAIL	0/0	-	134678654	37.3123	COST	37.21	yes	claude-sonnet-5
+clbszs03	LZW	salt-diet	greenfield	statement	ENDED: LANDED	PASS	8/8	-	25368840	12.3552	COST	37.21	no	claude-sonnet-5

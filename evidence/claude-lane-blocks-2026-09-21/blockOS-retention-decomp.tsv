@@ -1,0 +1,28 @@
+# retention_decompose.py — surv and growth beside retained (level 8 ADDENDUM 6)
+# harness /Users/jyh/bench-dry/clb-score-trees/283362105d75/harness/systems-v3
+# tasks   /Users/jyh/bench-dry/clb-score-trees/283362105d75/tasks/systems-v3   <- MUST be the export the cells were BUILT from
+# every `retained` below is ASSERTED EQUAL to brownfield_rewrite_class.classify()'s own value
+# surv is a LOWER BOUND on survival: it counts lines the differ MATCHED
+cell	task	class	retained	surv	growth	seed_lines	end_lines	kept	end_from	err
+clbtcp01	Crc32	REPAIRED	0.327	0.540	2.30	50	115	27	HEAD	
+clbtcs01	Crc32	REPLACED	0.162	0.540	5.68	50	284	27	HEAD	
+clbtcs02	Crc32	REPLACED	0.160	0.680	7.50	50	375	34	HEAD	
+clbtcs03	Crc32	REPLACED	0.182	0.720	6.90	50	345	36	HEAD	
+clbtfp01	FreeList	REPAIRED	0.384	0.516	1.68	192	323	99	HEAD	
+clbtfp02	FreeList	REPAIRED	0.574	0.807	1.81	192	348	155	HEAD	
+clbtfp03	FreeList	REPAIRED	0.257	0.573	3.46	192	664	110	HEAD	
+clbtfs01	FreeList	REPLACED	0.107	0.641	10.97	192	2107	123	HEAD	
+clbtfs02	FreeList	REPLACED	0.062	0.464	13.85	192	2659	89	HEAD	
+clbtfs03	FreeList	REPLACED	0.125	0.599	8.62	192	1655	115	HEAD	
+clbtlp01	LRU	REPAIRED	0.551	0.922	2.34	102	239	94	HEAD	
+clbtlp02	LRU	REPAIRED	0.307	0.676	3.40	102	347	69	HEAD	
+clbtlp03	LRU	REPAIRED	0.583	0.951	2.26	102	231	97	HEAD	
+clbtls01	LRU	REPLACED	0.169	0.873	9.31	102	950	89	HEAD	
+clbtls02	LRU	REPLACED	0.136	0.657	8.67	102	884	67	HEAD	
+clbtls03	LRU	REPLACED	0.164	0.755	8.22	102	838	77	HEAD	
+clbtzp01	LZW	REPLACED	0.186	0.300	2.23	100	223	30	HEAD	
+clbtzp02	LZW	REPAIRED	0.322	0.480	1.98	100	198	48	HEAD	
+clbtzp03	LZW	REPAIRED	0.429	0.570	1.66	100	166	57	HEAD	
+clbtzs01	LZW	REPLACED	0.071	0.500	13.00	100	1300	50	HEAD	
+clbtzs02	LZW	REPLACED	0.110	0.620	10.27	100	1027	62	HEAD	
+clbtzs03	LZW	REPLACED	0.054	0.360	12.45	100	1245	36	HEAD	

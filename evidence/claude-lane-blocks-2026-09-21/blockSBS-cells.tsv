@@ -1,0 +1,25 @@
+cell	problem	arm	field	extras	run_state	suite	tests	V1_bugs_fixed	bugs_introduced	class	retained	surv	growth	seed_lines	end_lines	kept	w1_fenced	end_from	final_T	final_COST	cap_unit	cap	capped	model_served
+clbucp01	Crc32	plain	brownfield	statement	ENDED: LANDED	PASS	6/6	5 of 5	>=0 (suite-limited)	REPAIRED	0.980	0.980	1.00	50	50	49	COVERED	HEAD	1627339	0.9366	COST	37.21	no	claude-sonnet-5
+clbucp02	Crc32	plain	brownfield	statement	ENDED: LANDED	PASS	6/6	5 of 5	>=0 (suite-limited)	REPAIRED	0.980	0.980	1.00	50	50	49	COVERED	HEAD	2055677	1.0121	COST	37.21	no	claude-sonnet-5
+clbucp03	Crc32	plain	brownfield	statement	ENDED: LANDED	PASS	6/6	5 of 5	>=0 (suite-limited)	REPAIRED	0.980	0.980	1.00	50	50	49	COVERED	HEAD	3041997	1.5639	COST	37.21	no	claude-sonnet-5
+clbucs01	Crc32	salt-diet	brownfield	statement	ENDED: LANDED	PASS	6/6	5 of 5	>=0 (suite-limited)	REPAIRED	0.236	0.800	5.78	50	289	40	COVERED	HEAD	10051058	3.9395	COST	37.21	no	claude-sonnet-5
+clbucs02	Crc32	salt-diet	brownfield	statement	ENDED: LANDED	PASS	6/6	5 of 5	>=0 (suite-limited)	REPAIRED	0.236	0.820	5.94	50	297	41	COVERED	HEAD	8063545	3.3458	COST	37.21	no	claude-sonnet-5
+clbucs03	Crc32	salt-diet	brownfield	statement	ENDED: LANDED	PASS	6/6	5 of 5	>=0 (suite-limited)	REPAIRED	0.275	0.860	5.26	50	263	43	COVERED	HEAD	12317970	4.3831	COST	37.21	no	claude-sonnet-5
+clbufp01	FreeList	plain	brownfield	statement	ENDED: LANDED	PASS	7/7	1 of 1	>=0 (suite-limited)	REPAIRED	0.984	0.984	1.00	192	192	189	COVERED	HEAD	5160232	2.3408	COST	37.21	no	claude-sonnet-5
+clbufp02	FreeList	plain	brownfield	statement	ENDED: LANDED	PASS	7/7	1 of 1	>=0 (suite-limited)	REPAIRED	0.982	0.995	1.03	192	197	191	COVERED	HEAD	5463328	2.9368	COST	37.21	no	claude-sonnet-5
+clbufp03	FreeList	plain	brownfield	statement	ENDED: LANDED	PASS	7/7	1 of 1	>=0 (suite-limited)	REPAIRED	0.940	0.974	1.07	192	206	187	COVERED	HEAD	4284702	2.2493	COST	37.21	no	claude-sonnet-5
+clbufs01	FreeList	salt-diet	brownfield	statement	ENDED: CAP-COST	PASS	7/7	1 of 1	>=0 (suite-limited)	REPLACED	0.113	0.849	13.96	192	2681	163	COVERED	working tree	142876385	38.5807	COST	37.21	yes	claude-sonnet-5
+clbufs02	FreeList	salt-diet	brownfield	statement	ENDED: CAP-COST	BUILD-FAIL	0/0	UNMEASURED	UNMEASURED	REPLACED	0.119	0.646	9.85	192	1891	124	COVERED	working tree	140700178	37.4583	COST	37.21	yes	claude-sonnet-5
+clbufs03	FreeList	salt-diet	brownfield	statement	ENDED: CAP-COST	PASS	7/7	1 of 1	>=0 (suite-limited)	REPLACED	0.102	0.854	15.77	192	3027	164	COVERED	working tree	136827691	37.5983	COST	37.21	yes	claude-sonnet-5
+clbulp01	LRU	plain	brownfield	statement	ENDED: LANDED	PASS	16/16	6 of 6	>=0 (suite-limited)	REPAIRED	0.981	0.990	1.02	102	104	101	COVERED	HEAD	2113686	1.0875	COST	37.21	no	claude-sonnet-5
+clbulp02	LRU	plain	brownfield	statement	ENDED: LANDED	PASS	16/16	6 of 6	>=0 (suite-limited)	REPAIRED	0.976	0.990	1.03	102	105	101	COVERED	HEAD	2460543	1.1020	COST	37.21	no	claude-sonnet-5
+clbulp03	LRU	plain	brownfield	statement	ENDED: LANDED	PASS	16/16	6 of 6	>=0 (suite-limited)	REPAIRED	0.981	0.990	1.02	102	104	101	COVERED	HEAD	1785078	0.9325	COST	37.21	no	claude-sonnet-5
+clbuls01	LRU	salt-diet	brownfield	statement	ENDED: LANDED	PASS	16/16	6 of 6	>=0 (suite-limited)	REPAIRED	0.256	0.824	5.43	102	554	84	COVERED	HEAD	9775413	4.0008	COST	37.21	no	claude-sonnet-5
+clbuls02	LRU	salt-diet	brownfield	statement	ENDED: LANDED	PASS	16/16	6 of 6	>=0 (suite-limited)	REPAIRED	0.279	0.882	5.33	102	544	90	COVERED	HEAD	14571647	5.2670	COST	37.21	no	claude-sonnet-5
+clbuls03	LRU	salt-diet	brownfield	statement	ENDED: LANDED	PASS	16/16	6 of 6	>=0 (suite-limited)	REPAIRED	0.239	0.676	4.66	102	475	69	COVERED	HEAD	14564237	5.5829	COST	37.21	no	claude-sonnet-5
+clbuzp01	LZW	plain	brownfield	statement	ENDED: LANDED	PASS	8/8	5 of 5	>=0 (suite-limited)	REPAIRED	0.741	0.700	0.89	100	89	70	COVERED	HEAD	2641673	1.7949	COST	37.21	no	claude-sonnet-5
+clbuzp02	LZW	plain	brownfield	statement	ENDED: LANDED	PASS	8/8	5 of 5	>=0 (suite-limited)	REPAIRED	0.832	0.820	0.97	100	97	82	COVERED	HEAD	4075553	2.2099	COST	37.21	no	claude-sonnet-5
+clbuzp03	LZW	plain	brownfield	statement	ENDED: LANDED	PASS	8/8	5 of 5	>=0 (suite-limited)	REPAIRED	0.611	0.590	0.93	100	93	59	COVERED	HEAD	2403130	1.5196	COST	37.21	no	claude-sonnet-5
+clbuzs01	LZW	salt-diet	brownfield	statement	ENDED: LANDED	PASS	8/8	5 of 5	>=0 (suite-limited)	REPLACED	0.140	0.740	9.57	100	957	74	COVERED	HEAD	22230424	8.9140	COST	37.21	no	claude-sonnet-5
+clbuzs02	LZW	salt-diet	brownfield	statement	ENDED: LANDED	PASS	8/8	5 of 5	>=0 (suite-limited)	REPLACED	0.121	0.670	10.04	100	1004	67	COVERED	HEAD	66700375	21.4795	COST	37.21	no	claude-sonnet-5
+clbuzs03	LZW	salt-diet	brownfield	statement	ENDED: LANDED	PASS	8/8	5 of 5	>=0 (suite-limited)	REPLACED	0.101	0.680	12.50	100	1250	68	COVERED	HEAD	58601805	18.1427	COST	37.21	no	claude-sonnet-5

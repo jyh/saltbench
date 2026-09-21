@@ -828,3 +828,186 @@ intended and they contradict each other**, which is exactly why no author would 
 
 ⛔⛔ **WHY IT SURVIVED, AND WHY THE REMEDY IS A COLUMN RATHER THAN CARE:** the result's `-cells.tsv` carries **24 columns and no model column**, so its `verify.py` re-derives every published figure from a table in which the subject model does not appear. The result was also **never signed** (`NON-AUTHOR SIGNATURE — OWED`). ⇒ 🔑 ***THE MODEL WAS STATED ONLY IN PROSE, AND EVERY INSTRUMENT WE BUILT READS THE TABLE.*** ✅ **Owed: a `model_served` column derived from the `served-*.out` receipts, plus a `verify.py` arm reading it against the prose — landed BEFORE the SG · SS · SBS results are written, which is while they are still cheap.**
 📌 **The erratum on the result itself is `RESULT-claude-blockSB-2026-09-19.md` §E1, appended below its prior text; nothing above it was edited, here or there.**
+
+---
+# ✅✅ ADDENDUM 13 — **BLOCK O COMPLETES: `DONE 109 → 119`, `OWED 75 → 65`. THE OPUS BROWNFIELD ROW OPENS.**
+## bench, 2026-09-21. **Landed in the SAME COMMIT as its result of record** (`RESULT-claude-blockO-2026-09-21.md`),
+## per council 2026-09-16 ⑤d, so this census never reads ahead of its evidence.
+
+## §S1 · THE ARITHMETIC, MAPPED CONDITION BY CONDITION RATHER THAN ASSERTED
+Block O fired **10 conditions / 30 cells** (`claude-opus-5`, export `283362105d75`). **All ten move to `DONE`.**
+Every one was `OWED`; none was already `DONE`, none is inexpressible, and none is a replication:
+```
+  claude-opus-5   brownfield x Crc32    x {plain,salt-diet} x none    §C4 "brownfield x everything" 30,   +2
+                  brownfield x FreeList x {plain,salt-diet} x none    BLOCKED until ADDENDUM 3 lifted     +2
+                  brownfield x LRU      x {plain,salt-diet} x none    then OWED                           +2
+                  brownfield x LZW      x {plain,salt-diet} x none              "                        +2
+                  brownfield x Paxos    x {plain,salt-diet} x none              "                        +2
+  ---------------------------------------------------------------------------------------------------------
+                                                                                                        +10
+  MATRIX         DONE 119 · OWED 65 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **119 + 65 + 0 + 16 = 200.** The 240-view is `DONE 119 · OWED 65 · BLOCKED 0 · INEXPR 56` (= 240).
+
+## §S2 · ⛔ THE MODEL IS DERIVED, NOT TAKEN FROM THE BLOCK NAME — AND THAT IS ADDENDUM 12's REMEDY IN USE
+`model_served_v3.py` reads each cell's own `served-<cell>.out`: **30 of 30 served `claude-opus-5`**, and the
+model is **column 25 of the table of record**. ⇒ **ADDENDUM 12 had to correct block SB's attribution after the
+fact because the 24-column table carried no model column and the verifier could not see the one field that was
+wrong.** Block O's verifier carries an arm that reddens on a wrong model, driven.
+⚠️ **The cells' SIDECHAIN is mixed by the subject's own choice** (a `worker-sonnet` role appears in several
+receipts). **The attribution above is the HEAD model**, which is what a condition's model row means.
+
+## §S3 · WHAT THE BLOCK FOUND, IN ONE LINE EACH — THE ARGUMENT IS IN THE RESULT, NOT HERE
+```
+  correctness  suite PASS 30 of 30, both arms, every problem; V1 fixes the FULL complement everywhere.
+               ⚠️ A SATURATED MEASURE: it cannot rank the arms, and that is its limit, not a finding.
+  retention    `retained` separates the arms with NO overlap (plain 0.263–0.872 · salt-diet 0.041–0.222)
+               while `surv` OVERLAPS (0.305–0.958 · 0.360–0.755) and `growth` is DISJOINT (≤3.00x · ≥5.16x).
+               ⇒ the separator is reading GROWTH, not survival — block SB's §5 shape, at a second model.
+  cost         salt-diet median $19.07 vs plain $10.11 (1.89x), and it is a LOWER BOUND: one cell is
+               CAP-COST censored at the $37.21 cap and still passes 7/7.
+```
+
+## §S4 · WHAT THIS ADDENDUM DOES NOT DO
+- **It does not touch any other block.** SG · SS · SBS · OS are harvested, scored and have tables of record,
+  and each still owes its own result. They are **not** moved here.
+- **It makes no claim about the salt METHOD.** These are `plain` vs `salt-diet` arms on brownfield givens.
+- **It does not re-verify any earlier block**, and it does not restate a per-model total (ADDENDUM 9 §P1's rule).
+
+---
+# ✅✅ ADDENDUM 14 — **BLOCK SG COMPLETES: `DONE 119 → 129`, `OWED 65 → 55`.**
+## bench, 2026-09-21. **Landed in the SAME COMMIT as its result of record** (`RESULT-claude-blockSG-2026-09-21.md`), per council 2026-09-16 ⑤d.
+
+## §T1 · THE ARITHMETIC
+Block SG fired **10 conditions / 30 cells** (`claude-sonnet-5`, greenfield, extras=none). **All ten move to `DONE`.**
+```
+  claude-sonnet-5   greenfield x {Crc32,FreeList,LRU,LZW,Paxos} x {plain,salt-diet} x none        +10
+  ---------------------------------------------------------------------------------------------------
+  MATRIX         DONE 129 · OWED 55 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **129 + 55 + 0 + 16 = 200.** The 240-view is `DONE 129 · OWED 55 · BLOCKED 0 · INEXPR 56` (= 240).
+
+## §T2 · ⛔ TWO CONDITIONS REST ON n=2 RATHER THAN n=3, AND BOTH ARE NAMED HERE RATHER THAN AVERAGED AWAY
+```
+  LRU x plain              n=2 in the table. `clbglp01` was fired and harvested BY HAND and has NO
+                           served-*.out anywhere, so its SERVED model cannot be derived and it is
+                           DECLARED-EXCLUDED rather than carried on its REQUESTED model (ADDENDUM 12's
+                           whole lesson). The cell RAN and IS scored; what is missing is its attribution.
+  FreeList x salt-diet     n=2 SCORABLE. `clbgfs02` is BUILD-FAIL at 0/0 AND CAP-COST at the $37.21 cap
+                           — a cell CUT OFF, not a cell that failed — and is in NO denominator.
+```
+⇒ **The conditions are DONE (they ran and were scored); their n is smaller and is stated, because a condition resting on two cells is a weaker fact than one resting on three.**
+
+## §T3 · ⛔⛔ THE FINDING THAT BOUNDS THIS BLOCK: **THE COST CAP IS ARM-CORRELATED**
+```
+  plain       0 of 14 capped        salt-diet     5 of 15 capped        cap $37.21, unit COST
+```
+⇒ 🔑 ***A CAP THAT BINDS ONE ARM AND NEVER THE OTHER IS NOT A BUDGET, IT IS A TREATMENT.*** Its direction is known — it can only REMOVE salt-diet work — so **every salt-diet figure in this block is a LOWER BOUND on cost and a FLOOR on correctness.** The cost ratios (median **8.27×**, total **9.83×**, T **20.77×**) are bounds, not measurements.
+⚠️ **AND THE ONLY UNAMBIGUOUS CORRECTNESS FAILURE IS IN THE *PLAIN* ARM** (`clbgfp03`, FreeList, LANDED, uncapped, suite 6/7). The salt-diet arm's single non-PASS is the capped BUILD-FAIL above.
+
+## §T4 · WHAT THIS ADDENDUM DOES NOT DO
+- **It does not compare SG with block O.** The result notes that the median cost ratio is 1.89× on `brownfield × none` at Opus and 8.27× here — **two things differ at once, the FIELD and the MODEL, so neither block can attribute the gap.** That is a pair of readings, not a decomposition.
+- **It moves no other block.** SS · SBS · OS are harvested, scored and have tables of record, and each still owes its result.
+
+---
+# ✅✅ ADDENDUM 15 — **BLOCK SS COMPLETES: `DONE 129 → 137`, `OWED 55 → 47`.**
+## bench, 2026-09-21. **Landed in the SAME COMMIT as its result of record** (`RESULT-claude-blockSS-2026-09-21.md`), per council 2026-09-16 ⑤d.
+
+## §U1 · THE ARITHMETIC
+Block SS fired **8 conditions / 24 cells** (`claude-sonnet-5`, greenfield, `statement`), every condition at full n=3.
+```
+  claude-sonnet-5   greenfield x {Crc32,FreeList,LRU,LZW} x {plain,salt-diet} x statement          +8
+       ⛔ Paxos x statement is INEXPRESSIBLE (§C4) — 4 problems, not 5, BY DESIGN and not by loss.
+  ---------------------------------------------------------------------------------------------------
+  MATRIX         DONE 137 · OWED 47 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **137 + 47 + 0 + 16 = 200.** The 240-view is `DONE 137 · OWED 47 · BLOCKED 0 · INEXPR 56` (= 240).
+
+## §U2 · ⛔⛔ THE ARM-CORRELATED CAP REPEATS UNDER A SECOND TREATMENT — AND HERE IT ACCOUNTS FOR *EVERY* FAILURE
+```
+  plain       0 of 12 capped · PASS 12 of 12        salt-diet   2 of 12 capped · PASS 10 of 12
+  BOTH non-PASS cells ARE the two capped cells:  clbsfs02 FAIL 6/7 · clbszs02 BUILD-FAIL 0/0
+```
+⇒ 🔑 ***THERE IS NO UNCAPPED SALT-DIET FAILURE IN THIS BLOCK AND NO PLAIN FAILURE AT ALL, SO THE APPARENT CORRECTNESS GAP COINCIDES EXACTLY WITH THE CENSORING.*** This block cannot separate *"the treatment produced worse code"* from *"the treatment ran out of money."*
+⇒ **Block SG (§T3) found the same thing under `none`. Two blocks, two treatments, same model and field, same direction ⇒ the CAP is the common cause, not the treatment.**
+⭐ **The direction is known, so these are bounds:** salt-diet's 10/12 is a FLOOR and its costs are LOWER BOUNDS.
+
+## §U3 · THE ONE CLEAN CONTRAST THIS CAMPAIGN NOW HAS, STATED AS A READING RATHER THAN A RESULT
+Blocks SG and SS differ in **exactly one factor** — the treatment (`none` vs `statement`) — at the same model and field:
+```
+  median COST ratio (salt-diet : plain)      SG `none` 8.27x        SS `statement` 5.32x
+```
+⚠️ **BOTH FIGURES ARE LOWER BOUNDS CENSORED BY AN ARM-CORRELATED CAP, SO THE DIFFERENCE BETWEEN THEM IS *NOT* BOUNDED IN A KNOWN DIRECTION.** It is a pair of readings to be re-taken when the cap is not binding — **not a result about the statement treatment**, and it is recorded here so a later reader does not mistake it for one.
+
+## §U4 · WHAT THIS ADDENDUM DOES NOT DO
+- **It moves no other block.** SBS and OS are harvested, scored and have tables of record, and each still owes its result.
+- **It makes no claim about the salt METHOD.**
+
+---
+# ✅✅ ADDENDUM 16 — **BLOCK SBS COMPLETES: `DONE 137 → 145`, `OWED 47 → 39`.**
+## bench, 2026-09-21. **Landed in the SAME COMMIT as its result of record** (`RESULT-claude-blockSBS-2026-09-21.md`), per council 2026-09-16 ⑤d.
+
+## §V1 · THE ARITHMETIC
+Block SBS fired **8 conditions / 24 cells** (`claude-sonnet-5`, brownfield, `statement`), every condition at full n=3.
+```
+  claude-sonnet-5   brownfield x {Crc32,FreeList,LRU,LZW} x {plain,salt-diet} x statement         +8
+       ⛔ Paxos x statement is INEXPRESSIBLE (§C4) — 4 problems BY DESIGN.
+  ---------------------------------------------------------------------------------------------------
+  MATRIX         DONE 145 · OWED 39 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **145 + 39 + 0 + 16 = 200.** The 240-view is `DONE 145 · OWED 39 · BLOCKED 0 · INEXPR 56` (= 240).
+
+## §V2 · ⭐⭐ THE RETENTION FINDING REACHES ITS STRONGEST FORM — AND IT NOW BINDS THE `class` COLUMN
+```
+                  retained (DISJOINT)    surv                    growth (DISJOINT)
+  plain           0.611 .. 0.984         0.590 .. 0.995          0.89x ..  1.07x
+  salt-diet       0.101 .. 0.279         0.646 .. 0.882          4.66x .. 15.77x
+```
+⇒ 🔑 ***THE SALT-DIET ARM'S WORST SURVIVAL (0.646) IS HIGHER THAN THE PLAIN ARM'S WORST (0.590), AND ITS WHOLE `surv` RANGE SITS INSIDE PLAIN'S — WHILE `retained` PUTS THEM IN DISJOINT BANDS AND CLASSES SIX SALT-DIET CELLS `REPLACED`.*** The arm the classifier calls *"rewritten wholesale"* is the arm that **preserved more of the seed**; what it did was write 4.66×–15.77× as much code around it (`end_lines` to **3,027** against plain's ceiling of **206**).
+⇒ **Three blocks now carry this shape** — SB §5 (Sonnet/brownfield/none), O §3 (Opus/brownfield/none), SBS (Sonnet/brownfield/statement). **In the first two `surv` overlapped; here it is strictly contained with a higher floor.**
+⛔ **`class` IS DERIVED FROM `retained`, SO IT INHERITS THE DEFECT.** Six `REPLACED` cells in this block are not cells that destroyed the seed, and any reading that treats `REPLACED` as evidence of destruction is wrong on this block's own numbers.
+⭐ **AND THE CLAIM IS CONSERVATIVE:** `surv` is a LOWER BOUND (matched lines only), so the true survival gap can only move further in salt-diet's favour.
+
+## §V3 · THE ARM-CORRELATED CAP, FOR THE THIRD TIME
+`plain 0 of 12 capped · salt-diet 3 of 12` (all three FreeList; **two still PASS 7/7**). Direction known ⇒ salt-diet's correctness is a FLOOR and its costs (median **4.71×**, total **9.58×**, T **17.17×**) are LOWER BOUNDS. The single non-PASS is a capped `0/0` BUILD-FAIL, in no denominator.
+⚠️ **One `V1_bugs_fixed` reads `UNMEASURED`** — FreeList's MARGIN-1 rule working as designed (`RECORD-brownfield-givens`). **A declared absence, not a zero.**
+
+## §V4 · WHAT THIS ADDENDUM DOES NOT DO
+- **It moves no other block.** **OS is the last of the five** — harvested, scored, table of record built, result still owed.
+- **It makes no claim about the salt METHOD.**
+
+---
+# ✅✅ ADDENDUM 17 — **BLOCK OS COMPLETES 7 OF ITS 8: `DONE 145 → 152`, `OWED 39 → 32`. THE FIVE HARVESTED BLOCKS ARE NOW ALL WRITTEN UP.**
+## bench, 2026-09-21. **Landed in the SAME COMMIT as its result of record** (`RESULT-claude-blockOS-2026-09-21.md`), per council 2026-09-16 ⑤d.
+
+## §W1 · THE ARITHMETIC — AND ONE CONDITION IS DELIBERATELY NOT MOVED
+```
+  claude-opus-5   brownfield x {FreeList,LRU,LZW} x {plain,salt-diet} x statement            +6
+                  brownfield x Crc32 x salt-diet x statement                                 +1
+  ⛔ NOT MOVED:   brownfield x Crc32 x PLAIN x statement — n=1. Reps 02 and 03 (clbtcp02,
+                  clbtcp03) are FLAGGED on the second pool credential blanked at 01:17:19Z.
+  ---------------------------------------------------------------------------------------------------
+                                                                                             +7
+  MATRIX         DONE 152 · OWED 32 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **152 + 32 + 0 + 16 = 200.** The 240-view is `DONE 152 · OWED 32 · BLOCKED 0 · INEXPR 56` (= 240).
+⇒ **This is EXACTLY the 2026-09-21 partition's class (b), arriving from the other side:** *"blocked on the blanked credential — 1 condition, 2 cells."* **It is held at n=1 rather than reported, because a condition resting on one cell is a different measurement, not a weaker one.**
+
+## §W2 · ⭐ THE ONLY UNCENSORED ARM COMPARISON IN THE FIVE, AND IT CHANGES HOW THE OTHERS READ
+**Block OS has ZERO capped cells in either arm** — the only one of the five that does.
+```
+  median COST ratio (salt-diet : plain)
+    SG   `none`      Sonnet greenfield   8.27x   LOWER BOUND (5 of 15 salt-diet capped)
+    SS   `statement` Sonnet greenfield   5.32x   LOWER BOUND (2 of 12 capped)
+    SBS  `statement` Sonnet brownfield   4.71x   LOWER BOUND (3 of 12 capped)
+    OS   `statement` Opus   brownfield   1.23x   ⭐ UNCENSORED — 0 of 22 capped
+```
+⇒ 🔑 ***THE ONE RATIO TAKEN WITH NO CAP BINDING IS BY FAR THE SMALLEST*** — ⚠️ **and it CANNOT be attributed here, because OS differs from the others in MODEL as well as in censoring, and its cells cost more in both arms (plain median $12.08 against SBS's $1.54), which is WHY the cap was never reached.** **It is the question these blocks raise, not one they answer**, and it is recorded so nobody reads the three bounded ratios as if they were measurements.
+
+## §W3 · RETENTION — A FOURTH BLOCK, AND THE SEPARATOR HOLDS BY FOUR THOUSANDTHS
+`retained` plain **0.186**–0.583 against salt-diet 0.054–**0.182** — **disjoint by 0.004**, the narrowest of the four brownfield blocks — while `surv` OVERLAPS (0.300–0.951 vs 0.360–0.873) and `growth` is disjoint by a wide margin (≤3.46× vs ≥5.68×).
+⇒ 🔑 ***A SEPARATOR THAT HOLDS BY FOUR THOUSANDTHS IS ONE SAMPLE FROM NOT HOLDING, WHILE THE THING IT IS ACTUALLY READING — GROWTH — IS NOWHERE NEAR ITS BOUNDARY.*** ⛔ **Do not build a threshold on `retained`.** (Relevant to §B5's 0.20 threshold, which the 2026-09-21 TQ draft amendment leaves at 0.20 and names the defect rather than tuning it.)
+⛔ **And `plain` carries its first `REPLACED` cell in any of these blocks** (REPAIRED 9 · REPLACED 1), sitting right beside that 0.004 margin.
+
+## §W4 · WHERE THE CAMPAIGN STANDS AFTER ADDENDA 13–17
+**The 43 conditions that were run, harvested and metered with no result of record are now written up: `DONE 109 → 152`, `OWED 75 → 32`.** The remaining 32 are **(a) 10** on the UM cut / SC driver · **(b) 1** on the blanked credential (§W1) · **(c) 21** on the AGY lane's level 8. **None of the 32 is a cell waiting for the Claude lane to be free.**
