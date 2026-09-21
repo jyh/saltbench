@@ -1213,3 +1213,71 @@ already qualifies** (`systems`' judgement, and I concur).
 
 **LESSER FINDINGS, the lead's to take or decline:** the block's "complete set" omits §M3's fault gate and row 4's base, which are present today only transitively; its reverse control cannot fail when the forward rows pass; its repo line names a repository that is not on the forge; two ADDENDUM 7 line citations carry no sha.
 ⛔ **For anyone appending here:** a fenced whole-line serial of 3 makes the cutter refuse, and a HIGHER serial, such as a pasted example, silently becomes the authority. This pointer carries no fenced block at all.
+## ⚖️ §A8.10 — **§M0 ROW 4's EXPORT IS NAMED, `48af25c` IS SUPERSEDED, AND THE T1 DEVIATION IS DECLARED.** APPENDED BELOW ALL PRIOR TEXT; nothing above is edited.
+*bench (lead), 2026-09-21, on `math`'s signature of the level-8 freeze tail (desk `UU`) — reservations F2 and T-b, which this one act
+discharges together. **This section carries NO serial line and is deliberately NOT a required-ancestors block:** the five of §A8.9 are
+UNCHANGED, and the cutter must go on reading §A8.9's block as the authority. Row 4 is satisfied here; the ancestor SET is not touched.*
+
+### §A8.10.1 · THE EXPORT THAT FIRED, AND THE ONE THAT DID NOT
+```
+  FIRED, level 8 modes A and B   e8fcb9d6d6eab930f1706891177064bb1ac7f6d4   repo jyh/saltbench-systems
+  SUPERSEDED, never fired        48af25c1fe01d8bd098582f35389623b352a1e22
+  BASE (§M0 row 4)               2419dcfc4d9e1fc7919f22129904d373f41c97a4   ancestor of the fired export: YES
+  HARNESS DELTA 2419dcf -> e8fcb9d, under harness/systems-v3, which row 4 requires be named:
+    73 commits · 34 files · 5,657 insertions · 114 deletions
+    (incl. agy_fault_gate_v3.py — §M3's phase-1 fault gate, the reason row 4 was PENDING —
+     agy_wave_v3.sh · agy_phase_aside_v3.py · clb_fire.sh · clb_harvest.py · fire_agy_v3.sh)
+```
+⛔ **`48af25c` WAS THIS DOCUMENT'S LAST WORD ON THE SUBJECT (:1047, *"remains level 8's named export"*) AND IT DOES NOT QUALIFY.** Driven
+under §A8.9.3 in a clone of `jyh/saltbench-systems`: **`48af25c` is a descendant of NONE of the five required ancestors — 0 of 5** —
+while **`e8fcb9d` is a descendant of all five, 5 of 5, with §A8.9.3's control OK.** `math` drove the same rows independently and cold.
+⇒ 🔑 ***THE FREEZE NAMED AN EXPORT THAT FAILS ITS OWN QUALIFYING TEST, AND NOTHING READ THE TWO STATEMENTS AGAINST EACH OTHER, BECAUSE
+THEY LIVE 100 LINES AND ONE DAY APART IN AN APPEND-ONLY FILE.*** The naming sentence was written before §A8.6–9 existed; it was never
+re-read once the test did.
+
+### §A8.10.2 · ROW 4's QUALIFYING TEST IS §A8.9, NOT ROW 4's OWN WORDING
+§M0 row 4 requires an export "named by a signed addendum with its harness delta from 2419dcf". §A8.6–9 replaced the *substance* of that
+test with the required-ancestors set — **in unsigned text, without saying that it did so.** This addendum closes the gap the only way an
+append-only document can: **row 4's export is named HERE, its delta is stated above, and the test it must pass is §A8.9's five ancestors.**
+⚠️ **This changes no requirement.** It states which section answers the question, so a reader of row 4 is not left holding a PENDING that
+was in fact resolved by a later block using different words.
+
+### §A8.10.3 · ⛔ THE T1 DEVIATION — DECLARED, IN THE CAPTAIN'S WORDS, AND IT COVERS ALL 59 MODE-B RESULTS
+**T1 as registered requires the score file's line 1 to carry the RUN sha. It carries the SCORER sha.** A corrected scorer is necessarily a
+later commit, so the two cannot be one value once a scorer is repaired mid-campaign.
+```
+  RUN SHA      e8fcb9d6d6eab930f1706891177064bb1ac7f6d4   the export every cell RAN on
+  SCORER SHA   e8c0d0512ab2c0d87076b864a77f4ca4d40228a9   the export every cell was SCORED with
+  driven: the scorer DESCENDS from the run export (git merge-base --is-ancestor), which is the
+          condition the runner's guarded split refuses at zero spend without
+```
+**WHY THE SCORER MOVED:** under `e8fcb9d`, `score_wave_v3.sh:310` ran an UNANCHORED `grep -o 'TESTS [0-9]*/[0-9]*' | tail -1`, which also
+matches inside `CLAUSE_TESTS`, and `tail -1` kept that one. **At phase 2 the TESTS column therefore carried the CLAUSE-FAILURE count under a
+label whose polarity is PASSES** — ⇒ ***a perfect cell and a total failure printed the same string.*** `e8c0d05` anchors the needle and
+forwards both phase-2 counts. **No cell was re-fired; artifacts are unchanged** (mode A's tripwire root hashed `6409af61a7ea1b61`, 763
+files, identical before and after the re-score).
+**THE RULING, HIS WORDS, VERBATIM, AND RECORDED NO WIDER THAN THEY WERE GIVEN:**
+```
+  2026-09-21 13:0x PDT   "yes, arm 1."
+                         Arm 1 = record BOTH shas with the reason, rather than modify either.
+                         Given on the tripwire cell of mode A.
+  2026-09-21 13:5x PDT   "Ah, extend arm 1 on Level 8 mode B"
+                         The EXTENSION of arm 1 to mode B. Mode B fired 2026-09-21 20:58:36Z
+                         (10 legs · 20 rows · 59 cells), both shas logged at chain start.
+```
+⇒ **SO THE DECLARED DEVIATION COVERS THE MODE-A TRIPWIRE CELL *AND* ALL 59 MODE-B CELLS — 60 level-8 results in total.** It is a ruling,
+not a default: the 05:00 2026-09-22 conservative default that had been named under council ⑳ was MOOT before it could fire.
+⚖️ **WHAT ARM 1 ASSERTS, AND WHY IT ASSERTS LESS THAN THE ALTERNATIVE:** a single-sha line here would be *true* and would **conceal which
+scorer produced the numbers.** Recording both asserts less and hides nothing.
+⛔ **A READER OF ANY LEVEL-8 TABLE MUST TAKE BOTH SHAS TOGETHER.** A level-8 number is a measurement of a cell that ran under `e8fcb9d`,
+scored by `e8c0d05`. Neither sha alone describes it.
+
+### §A8.10.4 · WHY THIS IS WRITTEN HERE AND NOT ONLY IN THE RUN TREE
+Before this addendum, **`e8fcb9d` and `e8c0d05` each appeared in ZERO files on public `main`** — driven per needle with `git grep -F`
+against a control of `48af25c` = 1 file — while the deviation was recorded only in the private run tree and a helm bank. ⇒ 🔑 ***A
+DEVIATION RECORDED WHERE THE RUN LIVES IS INVISIBLE TO EVERY READER OF THE RESULT, AND THE RESULT IS THE THING THAT TRAVELS.*** The
+level-8 tables are read from this repository; the declaration belongs where their reader already is.
+📌 **PROVENANCE OF THE TWO INDEPENDENT DRIVES BEHIND THIS SECTION:** `math`'s signature of the freeze tail (blob `44dd75fdf557`), whose
+criteria were registered at `7c06a8eac` BEFORE the object was opened and which was taken COLD; and the lead's own re-drive of §A8.9.3
+and of the T-b needle counts, reported above. **The §A8.9 ancestry drive was run in a local clone with no reachable remote; a missing
+fetch can only produce a "commit not found", never a false YES, and all six shas resolved.**
