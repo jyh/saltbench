@@ -1281,3 +1281,91 @@ level-8 tables are read from this repository; the declaration belongs where thei
 criteria were registered at `7c06a8eac` BEFORE the object was opened and which was taken COLD; and the lead's own re-drive of §A8.9.3
 and of the T-b needle counts, reported above. **The §A8.9 ancestry drive was run in a local clone with no reachable remote; a missing
 fetch can only produce a "commit not found", never a false YES, and all six shas resolved.**
+
+---
+## ⚠️⚠️ ERRATUM 3 — **§A8.5's PREMISE IS FALSE AS TO ACCESS: THE TOOLCHAIN ROOTS WERE *NOT* WRITABLE TO THE SUBJECT, AND THE GAP §A8.5 ROUTES AT LEVELS 5/6/7 IS RETIRED.** APPENDED BELOW ALL TEXT; §M0–§M8, ADDENDA 1–8, §A8.6–§A8.10, both prior errata and every signature untouched.
+*bench (lead), 2026-09-21, on `math`'s F1 (desk `UU`) — a cold, non-author signature whose criteria were registered before the
+object was opened. **The finding is math's. The drive below is my own, taken because an erratum that is itself wrong is the failure
+this document has already had once** (ERRATUM 1, withdrawn by ERRATUM 2). This section carries no serial line and is not a
+required-ancestors block.*
+
+### §E3.1 · THE SENTENCES THIS ERRATUM CORRECTS
+```
+  §A8.5  :990-991   "~/.rustup · ~/.cargo · ~/.elan were neither read- nor write-denied in EVERY agy
+                     config, INCLUDING THE PINNED ONE levels 5, 6 and 7 ran under"
+  §A8.5  quoting the renderer at :112   "the toolchain roots were writable to the subject."
+  §A8.3(5) :971     the same reading, of ~/.npm/_logs
+```
+⛔ **ALL THREE INFER WRITABILITY FROM *DENY-LIST MEMBERSHIP*. THAT INFERENCE IS ONLY VALID UNDER A DENY-THEN-ALLOW MODEL, AND srt's
+WRITE MODEL IS ALLOW-ONLY.** Under an allow-only model, absence from `denyWrite` says nothing at all: a path is writable only if it
+is *inside* `allowWrite`.
+
+### §E3.2 · DRIVEN, ON THE PINNED BINARY, WITH A CONTROL AND AT THE ARTIFACT
+```
+  THE BINARY      /Users/jyh/srt-pin/.../sandbox-runtime/dist/cli.js
+                  sha256/16 f75ea1f8bb31bbd4 · version 0.0.76
+                  == the digest the lane's own launch receipt asserts (ctl/built-from.tsv,
+                     containment_filesystem row) — so this is the runtime the cells ran under
+  ITS OWN DOCS    README:120  "Write (allow-only pattern): By default, write access is denied
+                              everywhere. You must explicitly allow paths ... An empty allow list
+                              means no write access."
+                  README:659  "denyWrite creates exceptions WITHIN allowed paths"
+  DRIVEN          allowWrite=[<scratch>/in], denyWrite=[]          rc   file after
+                    write INSIDE allowWrite      (CONTROL)          0    PRESENT
+                    write OUTSIDE allowWrite                        1    ABSENT
+                    write to a path in NEITHER list                 1    ABSENT   <- §A8.5's CASE
+                  Verified at the ARTIFACT, not at the exit code: the file is absent, not merely
+                  reported refused.
+  THE CONFIGS     205 of 205 level-5/6/7 cells on the run box carry an srt config. EVERY allowWrite
+  THAT RAN        entry is <that cell's own id>/{repo, ctl, tmp, .agyhome} — 0 exceptions.
+                  Cells naming a toolchain root in denyWrite: 0. In denyRead: 0.
+```
+⇒ ⛔ **SO UNDER THE RUNTIME THEY RAN ON, `~/.rustup` · `~/.cargo` · `~/.elan` · `~/.npm/_logs` WERE **WRITE-DENIED** IN EVERY LANDED
+agy CELL — not by an entry naming them, but by the write model itself.**
+⚠️ **A COUNT I NEARLY PUBLISHED AS A FINDING, RECORDED BECAUSE THE NEXT PERSON TO CENSUS THESE CELLS WILL HIT IT:** my first pass
+read **88 allowWrite entries "outside their own cell"**. All 88 are 22 cells × the same 4 paths, and those 22 cell DIRECTORIES WERE
+RENAMED AFTER THE RUN (a `.HALTED-…` suffix). The config still names the original path; I was comparing it against the new directory
+name. ⇒ 🔑 ***THE MEASUREMENT WAS CORRECT AND THE SUBJECT HAD MOVED*** — printing the four paths dissolved it; a second grep never
+would have.
+
+### §E3.3 · ⛔ THE ACTION §A8.5 ROUTES AT LEVELS 5/6/7 IS RETIRED, AND THAT IS THE OPERATIVE HALF
+§A8.5's last paragraph routes **"a NAMED gap … beside their verdicts"** for levels 5, 6 and 7. ⇒ **THAT GAP DOES NOT EXIST AND MUST
+NOT TRAVEL.** Publishing it would announce a containment hole the campaign never had.
+⇒ 🔑 ***A FALSE CONFESSION IS WORSE THAN THE ERROR IT CONFESSES, BECAUSE IT RIDES OUT ON THE CREDIBILITY THAT CONFESSING BUYS — and
+this document's own ERRATUM 2 says it: a confession is the least-audited thing a seat publishes.***
+**FOR LEVEL 8: HARMLESS, AND IN ONE RESPECT REASSURING.** §A8.5's worry was a *silent change of the subject's write access
+mid-campaign*. **The access did not change**: the complete lift is present in the fired cells (the mode-A tripwire's lifted config
+carries all four in `denyWrite` and none in `denyRead`; control — the cell's own repo is in `allowWrite` and not in `denyWrite`).
+
+### §E3.4 · WHAT THIS ERRATUM DOES **NOT** WITHDRAW
+- **§A8.5's REGISTRATION STANDS.** Carrying every source `denyWrite`-only entry across the lift is still correct and is still the
+  registered behaviour. **What changes is its CHARACTER: it is defence in depth, not the closing of an open hole.** An entry outside
+  `allowWrite` is redundant — and a redundant deny is a fine thing to have and a false thing to advertise.
+- **NO CELL, SUITE, SCORE OR READING RULE IS TOUCHED.** No number in this campaign moves.
+- **§A8.4(i)'s release condition** (F3's entries present in the lifted config) **was satisfied at the object** — and, per this
+  erratum, it measured presence rather than containment for paths outside `allowWrite`. The same is true of the runner's README
+  fire condition naming the same four paths. Both were met; neither was ever the test it reads as.
+- **§A8.3(5)'s ANCESTOR-COVERAGE LESSON IS UNHARMED AND IS THE THING THAT ALMOST GOT THERE.** It upgraded *"is the entry PRESENT?"*
+  to *"is the path COVERED by an ancestor?"*. ⇒ 🔑 ***IT STOPPED ONE LEVEL SHORT OF "CAN THE SUBJECT REACH IT UNDER THE WRITE MODEL
+  AT ALL?" — the file's own lesson, applied one level too shallow*** (math's words, kept).
+
+### §E3.5 · THE FLEET ALREADY KNEW, IN TWO PLACES NEITHER OF WHICH IS THIS DOCUMENT
+```
+  render_srt_config_v3.py   hook_write_denies docstring: an entry not strictly under an allowWrite
+                            path is REFUSED, because "outside the write roots it is already denied
+                            and naming it here would read as a protection this flag did not add"
+  every cell's own receipt  ctl/built-from.tsv, containment_filesystem: "writes closed to the cell
+                            tree and its temp"
+```
+⇒ 🔑 ***THE CORRECT SEMANTICS WERE WRITTEN IN THE RENDERER'S OWN DOCSTRING AND RE-STATED IN EVERY CELL'S RECEIPT, WHILE §A8.5 QUOTED
+A **COMMENT** IN THE SAME FILE (`:109–117`) THAT SAYS THE OPPOSITE.*** The file contradicted itself and the amendment quoted the half
+that was wrong. **A comment is not the instrument, and neither is a deny-list.**
+
+### §E3.6 · LIMITS OF THIS ERRATUM'S OWN EVIDENCE, DECLARED
+- The write semantics were driven on a **scratch fixture**, not against a real toolchain root — deliberately, so that establishing
+  the semantics does not write into a shared tree. The fixture reproduces §A8.5's case exactly (a path in neither list).
+- The config census covers the level-5/6/7 cells **present on the run box** at the time of the drive (205, which is the whole set
+  those levels recorded). It is not a claim about cells that were deleted.
+- `math` drove the same finding independently, cold, three ways (the runtime's docs · a scratch drive on the pinned binary · the
+  205 configs). **Two parties, two instruments, one answer** — and the agreement is worth more than either drive, because math had
+  no stake in this document and I wrote parts of it.
