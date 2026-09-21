@@ -828,3 +828,48 @@ intended and they contradict each other**, which is exactly why no author would 
 
 ⛔⛔ **WHY IT SURVIVED, AND WHY THE REMEDY IS A COLUMN RATHER THAN CARE:** the result's `-cells.tsv` carries **24 columns and no model column**, so its `verify.py` re-derives every published figure from a table in which the subject model does not appear. The result was also **never signed** (`NON-AUTHOR SIGNATURE — OWED`). ⇒ 🔑 ***THE MODEL WAS STATED ONLY IN PROSE, AND EVERY INSTRUMENT WE BUILT READS THE TABLE.*** ✅ **Owed: a `model_served` column derived from the `served-*.out` receipts, plus a `verify.py` arm reading it against the prose — landed BEFORE the SG · SS · SBS results are written, which is while they are still cheap.**
 📌 **The erratum on the result itself is `RESULT-claude-blockSB-2026-09-19.md` §E1, appended below its prior text; nothing above it was edited, here or there.**
+
+---
+# ✅✅ ADDENDUM 13 — **BLOCK O COMPLETES: `DONE 109 → 119`, `OWED 75 → 65`. THE OPUS BROWNFIELD ROW OPENS.**
+## bench, 2026-09-21. **Landed in the SAME COMMIT as its result of record** (`RESULT-claude-blockO-2026-09-21.md`),
+## per council 2026-09-16 ⑤d, so this census never reads ahead of its evidence.
+
+## §S1 · THE ARITHMETIC, MAPPED CONDITION BY CONDITION RATHER THAN ASSERTED
+Block O fired **10 conditions / 30 cells** (`claude-opus-5`, export `283362105d75`). **All ten move to `DONE`.**
+Every one was `OWED`; none was already `DONE`, none is inexpressible, and none is a replication:
+```
+  claude-opus-5   brownfield x Crc32    x {plain,salt-diet} x none    §C4 "brownfield x everything" 30,   +2
+                  brownfield x FreeList x {plain,salt-diet} x none    BLOCKED until ADDENDUM 3 lifted     +2
+                  brownfield x LRU      x {plain,salt-diet} x none    then OWED                           +2
+                  brownfield x LZW      x {plain,salt-diet} x none              "                        +2
+                  brownfield x Paxos    x {plain,salt-diet} x none              "                        +2
+  ---------------------------------------------------------------------------------------------------------
+                                                                                                        +10
+  MATRIX         DONE 119 · OWED 65 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **119 + 65 + 0 + 16 = 200.** The 240-view is `DONE 119 · OWED 65 · BLOCKED 0 · INEXPR 56` (= 240).
+
+## §S2 · ⛔ THE MODEL IS DERIVED, NOT TAKEN FROM THE BLOCK NAME — AND THAT IS ADDENDUM 12's REMEDY IN USE
+`model_served_v3.py` reads each cell's own `served-<cell>.out`: **30 of 30 served `claude-opus-5`**, and the
+model is **column 25 of the table of record**. ⇒ **ADDENDUM 12 had to correct block SB's attribution after the
+fact because the 24-column table carried no model column and the verifier could not see the one field that was
+wrong.** Block O's verifier carries an arm that reddens on a wrong model, driven.
+⚠️ **The cells' SIDECHAIN is mixed by the subject's own choice** (a `worker-sonnet` role appears in several
+receipts). **The attribution above is the HEAD model**, which is what a condition's model row means.
+
+## §S3 · WHAT THE BLOCK FOUND, IN ONE LINE EACH — THE ARGUMENT IS IN THE RESULT, NOT HERE
+```
+  correctness  suite PASS 30 of 30, both arms, every problem; V1 fixes the FULL complement everywhere.
+               ⚠️ A SATURATED MEASURE: it cannot rank the arms, and that is its limit, not a finding.
+  retention    `retained` separates the arms with NO overlap (plain 0.263–0.872 · salt-diet 0.041–0.222)
+               while `surv` OVERLAPS (0.305–0.958 · 0.360–0.755) and `growth` is DISJOINT (≤3.00x · ≥5.16x).
+               ⇒ the separator is reading GROWTH, not survival — block SB's §5 shape, at a second model.
+  cost         salt-diet median $19.07 vs plain $10.11 (1.89x), and it is a LOWER BOUND: one cell is
+               CAP-COST censored at the $37.21 cap and still passes 7/7.
+```
+
+## §S4 · WHAT THIS ADDENDUM DOES NOT DO
+- **It does not touch any other block.** SG · SS · SBS · OS are harvested, scored and have tables of record,
+  and each still owes its own result. They are **not** moved here.
+- **It makes no claim about the salt METHOD.** These are `plain` vs `salt-diet` arms on brownfield givens.
+- **It does not re-verify any earlier block**, and it does not restate a per-model total (ADDENDUM 9 §P1's rule).
