@@ -942,3 +942,36 @@ Blocks SG and SS differ in **exactly one factor** — the treatment (`none` vs `
 ## §U4 · WHAT THIS ADDENDUM DOES NOT DO
 - **It moves no other block.** SBS and OS are harvested, scored and have tables of record, and each still owes its result.
 - **It makes no claim about the salt METHOD.**
+
+---
+# ✅✅ ADDENDUM 16 — **BLOCK SBS COMPLETES: `DONE 137 → 145`, `OWED 47 → 39`.**
+## bench, 2026-09-21. **Landed in the SAME COMMIT as its result of record** (`RESULT-claude-blockSBS-2026-09-21.md`), per council 2026-09-16 ⑤d.
+
+## §V1 · THE ARITHMETIC
+Block SBS fired **8 conditions / 24 cells** (`claude-sonnet-5`, brownfield, `statement`), every condition at full n=3.
+```
+  claude-sonnet-5   brownfield x {Crc32,FreeList,LRU,LZW} x {plain,salt-diet} x statement         +8
+       ⛔ Paxos x statement is INEXPRESSIBLE (§C4) — 4 problems BY DESIGN.
+  ---------------------------------------------------------------------------------------------------
+  MATRIX         DONE 145 · OWED 39 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **145 + 39 + 0 + 16 = 200.** The 240-view is `DONE 145 · OWED 39 · BLOCKED 0 · INEXPR 56` (= 240).
+
+## §V2 · ⭐⭐ THE RETENTION FINDING REACHES ITS STRONGEST FORM — AND IT NOW BINDS THE `class` COLUMN
+```
+                  retained (DISJOINT)    surv                    growth (DISJOINT)
+  plain           0.611 .. 0.984         0.590 .. 0.995          0.89x ..  1.07x
+  salt-diet       0.101 .. 0.279         0.646 .. 0.882          4.66x .. 15.77x
+```
+⇒ 🔑 ***THE SALT-DIET ARM'S WORST SURVIVAL (0.646) IS HIGHER THAN THE PLAIN ARM'S WORST (0.590), AND ITS WHOLE `surv` RANGE SITS INSIDE PLAIN'S — WHILE `retained` PUTS THEM IN DISJOINT BANDS AND CLASSES SIX SALT-DIET CELLS `REPLACED`.*** The arm the classifier calls *"rewritten wholesale"* is the arm that **preserved more of the seed**; what it did was write 4.66×–15.77× as much code around it (`end_lines` to **3,027** against plain's ceiling of **206**).
+⇒ **Three blocks now carry this shape** — SB §5 (Sonnet/brownfield/none), O §3 (Opus/brownfield/none), SBS (Sonnet/brownfield/statement). **In the first two `surv` overlapped; here it is strictly contained with a higher floor.**
+⛔ **`class` IS DERIVED FROM `retained`, SO IT INHERITS THE DEFECT.** Six `REPLACED` cells in this block are not cells that destroyed the seed, and any reading that treats `REPLACED` as evidence of destruction is wrong on this block's own numbers.
+⭐ **AND THE CLAIM IS CONSERVATIVE:** `surv` is a LOWER BOUND (matched lines only), so the true survival gap can only move further in salt-diet's favour.
+
+## §V3 · THE ARM-CORRELATED CAP, FOR THE THIRD TIME
+`plain 0 of 12 capped · salt-diet 3 of 12` (all three FreeList; **two still PASS 7/7**). Direction known ⇒ salt-diet's correctness is a FLOOR and its costs (median **4.71×**, total **9.58×**, T **17.17×**) are LOWER BOUNDS. The single non-PASS is a capped `0/0` BUILD-FAIL, in no denominator.
+⚠️ **One `V1_bugs_fixed` reads `UNMEASURED`** — FreeList's MARGIN-1 rule working as designed (`RECORD-brownfield-givens`). **A declared absence, not a zero.**
+
+## §V4 · WHAT THIS ADDENDUM DOES NOT DO
+- **It moves no other block.** **OS is the last of the five** — harvested, scored, table of record built, result still owed.
+- **It makes no claim about the salt METHOD.**
