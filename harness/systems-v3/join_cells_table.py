@@ -87,14 +87,50 @@ def read_meter(path):
     rows = list(_csv.DictReader(open(path, encoding="utf-8"), delimiter="\t"))
     return rows[0] if rows else None
 
+# ⛔ THE HIGHEST INDEX read_score READS IS f[14], SO A ROW WITH FEWER THAN 15 FIELDS CANNOT BE READ
+#   POSITIONALLY. read_score2 has carried `if len(f) < 13: return None` since it was written; this
+#   reader was its sibling and never got the guard, so a short row raised IndexError and took the whole
+#   block down with a stack trace — the SAME failure read_served's comment below records being fixed
+#   once already. ⇒ A FIX DOES NOT TRAVEL TO ITS SIBLINGS; it has to be carried.
+#   (Found by a non-author read of PR #227 — the author had the guard in mind in one function of two.)
+_SCORE_MIN_FIELDS = 15
+
+class ShortScoreRow(Exception):
+    """A score.out row for this cell EXISTS but is too short to read positionally.
+
+    ⛔ THIS IS A DIFFERENT FACT FROM `None` ("no row for this cell") AND MUST NOT SHARE ITS MESSAGE.
+      Both call sites turn a None into "has no row for this cell"; reporting a malformed row that way
+      would be a confident, accurate-sounding sentence about the wrong defect, and would send whoever
+      reads it looking for a missing cell that is present.
+    """
+    def __init__(self, cell, n):
+        super().__init__("score.out has a row for %s with only %d field(s) — this reader indexes f[14] "
+                         "and needs %d. The row is MALFORMED, which is NOT the same as absent."
+                         % (cell, n, _SCORE_MIN_FIELDS))
+
 def read_score(path, cell):
     for line in open(path, encoding="utf-8", errors="replace"):
         if line.startswith(cell + "\t"):
             f = line.rstrip("\n").split("\t")
+            if len(f) < _SCORE_MIN_FIELDS: raise ShortScoreRow(cell, len(f))
             return {"problem": f[1], "arm": f[2], "field": f[3], "extras": f[4], "run_state": f[5],
                     "suite": f[7], "tests": f[8], "V1_bugs_fixed": f[10], "bugs_introduced": f[11],
                     "class": f[12], "retained": f[13], "w1_fenced": f[14]}
     return None
+
+def score_or_bad(path, cell, label, bad):
+    """read_score, with BOTH refusals routed to `bad` under their own distinct messages.
+
+    Returns the row, or None having already appended the reason. Used at every call site so the two
+    failures can never be conflated by a caller that only remembers to test for None.
+    """
+    try:
+        s = read_score(path, cell)
+    except ShortScoreRow as e:
+        bad.append((cell, str(e))); return None
+    if s is None:
+        bad.append((cell, "%s has no row for this cell" % label)); return None
+    return s
 
 def read_served(path):
     # ⛔ A MISSING RECEIPT IS A REFUSAL, NEVER AN EXCEPTION AND NEVER A BLANK. `clbglp01` was fired and
@@ -190,8 +226,8 @@ def main():
                                 ("phase-2 frozen meter (post-end-2.tsv)", m2p)):
                 if not os.path.exists(path): bad.append((cell, "no %s" % label)); break
             else:
-                s1 = read_score(sp1, cell)
-                if s1 is None: bad.append((cell, "phase-1 score.out has no row for this cell")); continue
+                s1 = score_or_bad(sp1, cell, "phase-1 score.out", bad)
+                if s1 is None: continue
                 s2 = read_score2(sp2, cell)
                 if s2 is None:
                     bad.append((cell, "phase-2 score.out has no row for this cell WITH phase==2 — the "
@@ -263,8 +299,8 @@ def main():
         if not os.path.exists(sp): bad.append((cell, "no score.out")); continue
         if a.retention and cell not in ret: bad.append((cell, "no retention row")); continue
         if not os.path.exists(cp):bad.append((cell, "no ctl/post-end-1.tsv (the frozen meter)")); continue
-        s = read_score(sp, cell)
-        if s is None: bad.append((cell, "score.out has no row for this cell")); continue
+        s = score_or_bad(sp, cell, "score.out", bad)
+        if s is None: continue
         r = ret.get(cell)
         # ⛔ THE ASSERTION — two independent producers must agree, or this is not a join.
         if r is not None and s["class"] != r["class"]:
