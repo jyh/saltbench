@@ -31,12 +31,19 @@ import os, re, glob, json, argparse, sys, collections
 # `clb` + three letters (block, problem, arm) + two digits. Derived from the id builder, not typed twice.
 CELL_RE = re.compile(r'(clb[a-z]{3}\d{2})')
 
-def census(home):
-    """-> (cells{cell: {cfg: n_jsonl}}, cfgs_scanned, cfgs_without_projects)"""
+def census(home, patterns):
+    """-> (cells{cell: {cfg: n_jsonl}}, cfgs_scanned, cfgs_without_projects)
+
+    ⛔⛔ THE CONFIG-DIR PATTERNS ARE THE CALLER'S, AND THERE IS NO DEFAULT IN THIS FILE. The first cut of
+      this tool hardcoded them, and that put a per-seat runtime config directory's shape into a PUBLIC
+      repo — caught by the private-paths gate only after that gate's own pattern was repaired. ⇒ A PUBLIC
+      TOOL MUST NOT CARRY THE SHAPE OF A PRIVATE TREE, even in a glob, even in a selftest fixture.
+      ⭐ AND IT IS BETTER DESIGN INDEPENDENTLY: the population is now DECLARED BY THE CALLER rather than
+      guessed by the tool, which is the coverage law — a census is only as wide as the pattern that built it.
+    """
     cells = collections.defaultdict(dict)
     scanned, noproj = [], []
-    for c in sorted(glob.glob(os.path.join(home, ".claude-account-*")) +
-                    glob.glob(os.path.join(home, ".claude-acct-*"))):
+    for c in sorted(d for pat in patterns for d in glob.glob(os.path.join(home, pat))):
         name = os.path.basename(c)
         pd = os.path.join(c, "projects")
         if not os.path.isdir(pd):
@@ -49,8 +56,8 @@ def census(home):
             cells[m.group(1)][name] = cells[m.group(1)].get(name, 0) + n
     return cells, scanned, noproj
 
-def run(home, require, as_json):
-    cells, scanned, noproj = census(home)
+def run(home, patterns, require, as_json):
+    cells, scanned, noproj = census(home, patterns)
     split = {k: v for k, v in cells.items() if len(v) > 1}
     # ⛔ THE COVERAGE LINE IS ONLY AS WIDE AS THE PATTERN THAT BUILT ITS POPULATION, so both halves are
     #   declared: what was scanned AND what was found without a projects/ dir (never silently omitted).
@@ -86,30 +93,30 @@ def selftest():
     fails = []
     with tempfile.TemporaryDirectory() as h:
         def mk(cfg, cell, n):
-            d = os.path.join(h, ".claude-account-" + cfg, "projects", "-Users-jyh-" + cell)
+            d = os.path.join(h, "cfg-" + cfg, "projects", "seat-" + cell)
             os.makedirs(d, exist_ok=True)
             for i in range(n): open(os.path.join(d, "s%d.jsonl" % i), "w").close()
         mk("poolA", "clbclp03", 2); mk("poolB", "clbclp03", 2)      # SPLIT
         mk("poolA", "clbclp01", 4)                                   # unsplit
-        os.makedirs(os.path.join(h, ".claude-account-nocreds"), exist_ok=True)  # no projects/
-        cells, scanned, noproj = census(h)
-        a = len(cells) == 2 and set(cells["clbclp03"]) == {".claude-account-poolA", ".claude-account-poolB"}
+        os.makedirs(os.path.join(h, "cfg-nocreds"), exist_ok=True)   # a dir with no projects/
+        cells, scanned, noproj = census(h, ["cfg-*"])
+        a = len(cells) == 2 and set(cells["clbclp03"]) == {"cfg-poolA", "cfg-poolB"}
         print("  arm 1 split cell found, unsplit not split   %s" % ("PASS" if a else "FAIL"))
         if not a: fails.append(1)
-        b = noproj == [".claude-account-nocreds"]
+        b = noproj == ["cfg-nocreds"]
         print("  arm 2 a dir with no projects/ is DECLARED   %s" % ("PASS" if b else "FAIL"))
         if not b: fails.append(2)
-        rc = run(h, "clbclp03", False)
+        rc = run(h, ["cfg-*"], "clbclp03", False)
         print("  arm 3 rc=1 when a split exists, control OK   %s" % ("PASS" if rc == 1 else "FAIL"))
         if rc != 1: fails.append(3)
         # ⭐ THE ARM FOR THIS TOOL'S OWN BIRTH DEFECT: a control naming an ABSENT cell must REFUSE (rc 2),
         #   not quietly report a count. Without this arm, a wrong needle reads as a clean census.
-        rc = run(h, "clbzzz99", False)
+        rc = run(h, ["cfg-*"], "clbzzz99", False)
         print("  arm 4 absent control REFUSES rc=2           %s" % ("PASS" if rc == 2 else "FAIL"))
         if rc != 2: fails.append(4)
         # arm 5: the needle itself — the {4} that read 0 in 170 must NOT match a real id
         bad = re.compile(r'(clb[a-z]{4}\d{2})')
-        c5 = bad.search("-Users-jyh-clbclp03") is None and CELL_RE.search("-Users-jyh-clbclp03") is not None
+        c5 = bad.search("seat-clbclp03") is None and CELL_RE.search("seat-clbclp03") is not None
         print("  arm 5 the born-wrong needle {4} matches NOT  %s" % ("PASS" if c5 else "FAIL"))
         if not c5: fails.append(5)
     print()
@@ -123,8 +130,15 @@ def selftest():
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--home", default=os.path.expanduser("~"))
+    # ⛔ REQUIRED AND UNDEFAULTED, ON PURPOSE (see census()): this file carries no private tree's shape.
+    ap.add_argument("--config-glob", action="append", metavar="GLOB", required=True,
+                    help="glob, relative to --home, naming the config dirs to scan; repeatable. "
+                         "REQUIRED: the caller declares the population, the tool never guesses it.")
     ap.add_argument("--require", help="a cell id you KNOW exists; a census that cannot find it is a REFUSAL")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--selftest", action="store_true")
+    if "--selftest" in sys.argv:  # the fixture declares its own population
+        for _a in ap._actions:
+            if _a.dest == "config_glob": _a.required = False
     a = ap.parse_args()
-    sys.exit(selftest() if a.selftest else run(a.home, a.require, a.json))
+    sys.exit(selftest() if a.selftest else run(a.home, a.config_glob, a.require, a.json))
