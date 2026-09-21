@@ -975,3 +975,39 @@ Block SBS fired **8 conditions / 24 cells** (`claude-sonnet-5`, brownfield, `sta
 ## §V4 · WHAT THIS ADDENDUM DOES NOT DO
 - **It moves no other block.** **OS is the last of the five** — harvested, scored, table of record built, result still owed.
 - **It makes no claim about the salt METHOD.**
+
+---
+# ✅✅ ADDENDUM 17 — **BLOCK OS COMPLETES 7 OF ITS 8: `DONE 145 → 152`, `OWED 39 → 32`. THE FIVE HARVESTED BLOCKS ARE NOW ALL WRITTEN UP.**
+## bench, 2026-09-21. **Landed in the SAME COMMIT as its result of record** (`RESULT-claude-blockOS-2026-09-21.md`), per council 2026-09-16 ⑤d.
+
+## §W1 · THE ARITHMETIC — AND ONE CONDITION IS DELIBERATELY NOT MOVED
+```
+  claude-opus-5   brownfield x {FreeList,LRU,LZW} x {plain,salt-diet} x statement            +6
+                  brownfield x Crc32 x salt-diet x statement                                 +1
+  ⛔ NOT MOVED:   brownfield x Crc32 x PLAIN x statement — n=1. Reps 02 and 03 (clbtcp02,
+                  clbtcp03) are FLAGGED on the second pool credential blanked at 01:17:19Z.
+  ---------------------------------------------------------------------------------------------------
+                                                                                             +7
+  MATRIX         DONE 152 · OWED 32 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **152 + 32 + 0 + 16 = 200.** The 240-view is `DONE 152 · OWED 32 · BLOCKED 0 · INEXPR 56` (= 240).
+⇒ **This is EXACTLY the 2026-09-21 partition's class (b), arriving from the other side:** *"blocked on the blanked credential — 1 condition, 2 cells."* **It is held at n=1 rather than reported, because a condition resting on one cell is a different measurement, not a weaker one.**
+
+## §W2 · ⭐ THE ONLY UNCENSORED ARM COMPARISON IN THE FIVE, AND IT CHANGES HOW THE OTHERS READ
+**Block OS has ZERO capped cells in either arm** — the only one of the five that does.
+```
+  median COST ratio (salt-diet : plain)
+    SG   `none`      Sonnet greenfield   8.27x   LOWER BOUND (5 of 15 salt-diet capped)
+    SS   `statement` Sonnet greenfield   5.32x   LOWER BOUND (2 of 12 capped)
+    SBS  `statement` Sonnet brownfield   4.71x   LOWER BOUND (3 of 12 capped)
+    OS   `statement` Opus   brownfield   1.23x   ⭐ UNCENSORED — 0 of 22 capped
+```
+⇒ 🔑 ***THE ONE RATIO TAKEN WITH NO CAP BINDING IS BY FAR THE SMALLEST*** — ⚠️ **and it CANNOT be attributed here, because OS differs from the others in MODEL as well as in censoring, and its cells cost more in both arms (plain median $12.08 against SBS's $1.54), which is WHY the cap was never reached.** **It is the question these blocks raise, not one they answer**, and it is recorded so nobody reads the three bounded ratios as if they were measurements.
+
+## §W3 · RETENTION — A FOURTH BLOCK, AND THE SEPARATOR HOLDS BY FOUR THOUSANDTHS
+`retained` plain **0.186**–0.583 against salt-diet 0.054–**0.182** — **disjoint by 0.004**, the narrowest of the four brownfield blocks — while `surv` OVERLAPS (0.300–0.951 vs 0.360–0.873) and `growth` is disjoint by a wide margin (≤3.46× vs ≥5.68×).
+⇒ 🔑 ***A SEPARATOR THAT HOLDS BY FOUR THOUSANDTHS IS ONE SAMPLE FROM NOT HOLDING, WHILE THE THING IT IS ACTUALLY READING — GROWTH — IS NOWHERE NEAR ITS BOUNDARY.*** ⛔ **Do not build a threshold on `retained`.** (Relevant to §B5's 0.20 threshold, which the 2026-09-21 TQ draft amendment leaves at 0.20 and names the defect rather than tuning it.)
+⛔ **And `plain` carries its first `REPLACED` cell in any of these blocks** (REPAIRED 9 · REPLACED 1), sitting right beside that 0.004 margin.
+
+## §W4 · WHERE THE CAMPAIGN STANDS AFTER ADDENDA 13–17
+**The 43 conditions that were run, harvested and metered with no result of record are now written up: `DONE 109 → 152`, `OWED 75 → 32`.** The remaining 32 are **(a) 10** on the UM cut / SC driver · **(b) 1** on the blanked credential (§W1) · **(c) 21** on the AGY lane's level 8. **None of the 32 is a cell waiting for the Claude lane to be free.**
