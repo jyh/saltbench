@@ -908,3 +908,37 @@ Block SG fired **10 conditions / 30 cells** (`claude-sonnet-5`, greenfield, extr
 ## §T4 · WHAT THIS ADDENDUM DOES NOT DO
 - **It does not compare SG with block O.** The result notes that the median cost ratio is 1.89× on `brownfield × none` at Opus and 8.27× here — **two things differ at once, the FIELD and the MODEL, so neither block can attribute the gap.** That is a pair of readings, not a decomposition.
 - **It moves no other block.** SS · SBS · OS are harvested, scored and have tables of record, and each still owes its result.
+
+---
+# ✅✅ ADDENDUM 15 — **BLOCK SS COMPLETES: `DONE 129 → 137`, `OWED 55 → 47`.**
+## bench, 2026-09-21. **Landed in the SAME COMMIT as its result of record** (`RESULT-claude-blockSS-2026-09-21.md`), per council 2026-09-16 ⑤d.
+
+## §U1 · THE ARITHMETIC
+Block SS fired **8 conditions / 24 cells** (`claude-sonnet-5`, greenfield, `statement`), every condition at full n=3.
+```
+  claude-sonnet-5   greenfield x {Crc32,FreeList,LRU,LZW} x {plain,salt-diet} x statement          +8
+       ⛔ Paxos x statement is INEXPRESSIBLE (§C4) — 4 problems, not 5, BY DESIGN and not by loss.
+  ---------------------------------------------------------------------------------------------------
+  MATRIX         DONE 137 · OWED 47 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **137 + 47 + 0 + 16 = 200.** The 240-view is `DONE 137 · OWED 47 · BLOCKED 0 · INEXPR 56` (= 240).
+
+## §U2 · ⛔⛔ THE ARM-CORRELATED CAP REPEATS UNDER A SECOND TREATMENT — AND HERE IT ACCOUNTS FOR *EVERY* FAILURE
+```
+  plain       0 of 12 capped · PASS 12 of 12        salt-diet   2 of 12 capped · PASS 10 of 12
+  BOTH non-PASS cells ARE the two capped cells:  clbsfs02 FAIL 6/7 · clbszs02 BUILD-FAIL 0/0
+```
+⇒ 🔑 ***THERE IS NO UNCAPPED SALT-DIET FAILURE IN THIS BLOCK AND NO PLAIN FAILURE AT ALL, SO THE APPARENT CORRECTNESS GAP COINCIDES EXACTLY WITH THE CENSORING.*** This block cannot separate *"the treatment produced worse code"* from *"the treatment ran out of money."*
+⇒ **Block SG (§T3) found the same thing under `none`. Two blocks, two treatments, same model and field, same direction ⇒ the CAP is the common cause, not the treatment.**
+⭐ **The direction is known, so these are bounds:** salt-diet's 10/12 is a FLOOR and its costs are LOWER BOUNDS.
+
+## §U3 · THE ONE CLEAN CONTRAST THIS CAMPAIGN NOW HAS, STATED AS A READING RATHER THAN A RESULT
+Blocks SG and SS differ in **exactly one factor** — the treatment (`none` vs `statement`) — at the same model and field:
+```
+  median COST ratio (salt-diet : plain)      SG `none` 8.27x        SS `statement` 5.32x
+```
+⚠️ **BOTH FIGURES ARE LOWER BOUNDS CENSORED BY AN ARM-CORRELATED CAP, SO THE DIFFERENCE BETWEEN THEM IS *NOT* BOUNDED IN A KNOWN DIRECTION.** It is a pair of readings to be re-taken when the cap is not binding — **not a result about the statement treatment**, and it is recorded here so a later reader does not mistake it for one.
+
+## §U4 · WHAT THIS ADDENDUM DOES NOT DO
+- **It moves no other block.** SBS and OS are harvested, scored and have tables of record, and each still owes its result.
+- **It makes no claim about the salt METHOD.**
