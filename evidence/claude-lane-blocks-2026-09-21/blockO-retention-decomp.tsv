@@ -1,0 +1,36 @@
+# retention_decompose.py — surv and growth beside retained (level 8 ADDENDUM 6)
+# harness /Users/jyh/bench-dry/clb-score-trees/283362105d75/harness/systems-v3
+# tasks   /Users/jyh/bench-dry/clb-score-trees/283362105d75/tasks/systems-v3   <- MUST be the export the cells were BUILT from
+# every `retained` below is ASSERTED EQUAL to brownfield_rewrite_class.classify()'s own value
+# surv is a LOWER BOUND on survival: it counts lines the differ MATCHED
+cell	task	class	retained	surv	growth	seed_lines	end_lines	kept	end_from	err
+clbocp01	Crc32	REPAIRED	0.324	0.440	1.72	50	86	22	HEAD	
+clbocp02	Crc32	REPAIRED	0.333	0.400	1.40	50	70	20	HEAD	
+clbocp03	Crc32	REPAIRED	0.371	0.460	1.48	50	74	23	HEAD	
+clbocs01	Crc32	REPLACED	0.160	0.680	7.52	50	376	34	HEAD	
+clbocs02	Crc32	REPLACED	0.148	0.660	7.90	50	395	33	HEAD	
+clbocs03	Crc32	REPAIRED	0.200	0.700	6.00	50	300	35	HEAD	
+clbofp01	FreeList	REPAIRED	0.423	0.542	1.56	192	300	104	HEAD	
+clbofp02	FreeList	REPAIRED	0.450	0.589	1.61	192	310	113	HEAD	
+clbofp03	FreeList	REPAIRED	0.414	0.531	1.57	192	301	102	HEAD	
+clbofs01	FreeList	REPLACED	0.089	0.589	12.23	192	2349	113	HEAD	
+clbofs02	FreeList	REPLACED	0.059	0.432	13.71	192	2632	83	working tree	
+clbofs03	FreeList	REPLACED	0.172	0.557	5.48	192	1052	107	HEAD	
+clbolp01	LRU	REPAIRED	0.380	0.716	2.76	102	282	73	HEAD	
+clbolp02	LRU	REPAIRED	0.343	0.686	3.00	102	306	70	HEAD	
+clbolp03	LRU	REPAIRED	0.415	0.686	2.30	102	235	70	HEAD	
+clbols01	LRU	REPLACED	0.109	0.647	10.89	102	1111	66	HEAD	
+clbols02	LRU	REPLACED	0.155	0.696	7.97	102	813	71	HEAD	
+clbols03	LRU	REPLACED	0.132	0.755	10.42	102	1063	77	HEAD	
+clbopp01	Paxos	REPAIRED	0.872	0.958	1.20	377	451	361	HEAD	
+clbopp02	Paxos	REPAIRED	0.361	0.305	0.69	377	261	115	HEAD	
+clbopp03	Paxos	REPAIRED	0.388	0.337	0.73	377	277	127	HEAD	
+clbops01	Paxos	REPLACED	0.160	0.493	5.16	377	1945	186	HEAD	
+clbops02	Paxos	REPLACED	0.130	0.430	5.63	377	2122	162	HEAD	
+clbops03	Paxos	REPAIRED	0.222	0.687	5.19	377	1956	259	HEAD	
+clbozp01	LZW	REPAIRED	0.307	0.370	1.41	100	141	37	HEAD	
+clbozp02	LZW	REPAIRED	0.263	0.390	1.97	100	197	39	HEAD	
+clbozp03	LZW	REPAIRED	0.302	0.390	1.58	100	158	39	HEAD	
+clbozs01	LZW	REPLACED	0.103	0.610	10.81	100	1081	61	HEAD	
+clbozs02	LZW	REPLACED	0.041	0.360	16.55	100	1655	36	HEAD	
+clbozs03	LZW	REPLACED	0.089	0.580	11.97	100	1197	58	HEAD	
