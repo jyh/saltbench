@@ -1,0 +1,31 @@
+# EXCLUDED	clbglp01	fired and harvested BY HAND (the work list header says so); it has NO served-*.out anywhere, so its SERVED model cannot be derived. Its own ctl records claude-sonnet-5, which is the REQUESTED model and a weaker claim.
+cell	problem	arm	field	extras	run_state	suite	tests	w1_fenced	final_T	final_COST	cap_unit	cap	capped	model_served
+clbgcp01	Crc32	plain	greenfield	none	ENDED: LANDED	PASS	6/6	-	2474488	1.1441	COST	37.21	no	claude-sonnet-5
+clbgcp02	Crc32	plain	greenfield	none	ENDED: LANDED	PASS	6/6	-	2042023	1.1857	COST	37.21	no	claude-sonnet-5
+clbgcp03	Crc32	plain	greenfield	none	ENDED: LANDED	PASS	6/6	-	2009210	0.9107	COST	37.21	no	claude-sonnet-5
+clbgcs01	Crc32	salt-diet	greenfield	none	ENDED: LANDED	PASS	6/6	-	12950272	4.7903	COST	37.21	no	claude-sonnet-5
+clbgcs02	Crc32	salt-diet	greenfield	none	ENDED: LANDED	PASS	6/6	-	11381650	4.4955	COST	37.21	no	claude-sonnet-5
+clbgcs03	Crc32	salt-diet	greenfield	none	ENDED: LANDED	PASS	6/6	-	13836693	5.0968	COST	37.21	no	claude-sonnet-5
+clbgfp01	FreeList	plain	greenfield	none	ENDED: LANDED	PASS	7/7	-	4448454	2.9173	COST	37.21	no	claude-sonnet-5
+clbgfp02	FreeList	plain	greenfield	none	ENDED: LANDED	PASS	7/7	-	3106464	1.8239	COST	37.21	no	claude-sonnet-5
+clbgfp03	FreeList	plain	greenfield	none	ENDED: LANDED	FAIL	6/7	-	6063783	4.0542	COST	37.21	no	claude-sonnet-5
+clbgfs01	FreeList	salt-diet	greenfield	none	ENDED: CAP-COST	PASS	7/7	-	139276603	37.7207	COST	37.21	yes	claude-sonnet-5
+clbgfs02	FreeList	salt-diet	greenfield	none	ENDED: CAP-COST	BUILD-FAIL	0/0	-	127433176	37.6969	COST	37.21	yes	claude-sonnet-5
+clbgfs03	FreeList	salt-diet	greenfield	none	ENDED: CAP-COST	PASS	7/7	-	135942796	37.9785	COST	37.21	yes	claude-sonnet-5
+clbglp02	LRU	plain	greenfield	none	ENDED: LANDED	PASS	16/16	-	3058181	1.5657	COST	37.21	no	claude-sonnet-5
+clbglp03	LRU	plain	greenfield	none	ENDED: LANDED	PASS	16/16	-	1564566	0.8940	COST	37.21	no	claude-sonnet-5
+clbgls01	LRU	salt-diet	greenfield	none	ENDED: LANDED	PASS	16/16	-	16469774	5.7545	COST	37.21	no	claude-sonnet-5
+clbgls02	LRU	salt-diet	greenfield	none	ENDED: LANDED	PASS	16/16	-	12476238	4.6801	COST	37.21	no	claude-sonnet-5
+clbgls03	LRU	salt-diet	greenfield	none	ENDED: LANDED	PASS	16/16	-	32457693	10.2738	COST	37.21	no	claude-sonnet-5
+clbgpp01	Paxos	plain	greenfield	none	ENDED: LANDED	PASS	17/17	-	4996639	3.3769	COST	37.21	no	claude-sonnet-5
+clbgpp02	Paxos	plain	greenfield	none	ENDED: LANDED	PASS	17/17	-	4868329	3.3142	COST	37.21	no	claude-sonnet-5
+clbgpp03	Paxos	plain	greenfield	none	ENDED: LANDED	PASS	17/17	-	6148643	3.6489	COST	37.21	no	claude-sonnet-5
+clbgps01	Paxos	salt-diet	greenfield	none	ENDED: CAP-COST	PASS	17/17	-	123495570	37.8011	COST	37.21	yes	claude-sonnet-5
+clbgps02	Paxos	salt-diet	greenfield	none	ENDED: CAP-COST	PASS	17/17	-	149820582	37.6062	COST	37.21	yes	claude-sonnet-5
+clbgps03	Paxos	salt-diet	greenfield	none	ENDED: LANDED	PASS	17/17	-	86587129	25.8810	COST	37.21	no	claude-sonnet-5
+clbgzp01	LZW	plain	greenfield	none	ENDED: LANDED	PASS	8/8	-	2920748	1.7755	COST	37.21	no	claude-sonnet-5
+clbgzp02	LZW	plain	greenfield	none	ENDED: LANDED	PASS	8/8	-	2373486	1.6974	COST	37.21	no	claude-sonnet-5
+clbgzp03	LZW	plain	greenfield	none	ENDED: LANDED	PASS	8/8	-	1835927	1.4864	COST	37.21	no	claude-sonnet-5
+clbgzs01	LZW	salt-diet	greenfield	none	ENDED: LANDED	PASS	8/8	-	43370291	15.8936	COST	37.21	no	claude-sonnet-5
+clbgzs02	LZW	salt-diet	greenfield	none	ENDED: LANDED	PASS	8/8	-	45674079	14.3901	COST	37.21	no	claude-sonnet-5
+clbgzs03	LZW	salt-diet	greenfield	none	ENDED: LANDED	PASS	8/8	-	43839178	12.8070	COST	37.21	no	claude-sonnet-5
