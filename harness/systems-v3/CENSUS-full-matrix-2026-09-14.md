@@ -873,3 +873,38 @@ receipts). **The attribution above is the HEAD model**, which is what a conditio
   and each still owes its own result. They are **not** moved here.
 - **It makes no claim about the salt METHOD.** These are `plain` vs `salt-diet` arms on brownfield givens.
 - **It does not re-verify any earlier block**, and it does not restate a per-model total (ADDENDUM 9 §P1's rule).
+
+---
+# ✅✅ ADDENDUM 14 — **BLOCK SG COMPLETES: `DONE 119 → 129`, `OWED 65 → 55`.**
+## bench, 2026-09-21. **Landed in the SAME COMMIT as its result of record** (`RESULT-claude-blockSG-2026-09-21.md`), per council 2026-09-16 ⑤d.
+
+## §T1 · THE ARITHMETIC
+Block SG fired **10 conditions / 30 cells** (`claude-sonnet-5`, greenfield, extras=none). **All ten move to `DONE`.**
+```
+  claude-sonnet-5   greenfield x {Crc32,FreeList,LRU,LZW,Paxos} x {plain,salt-diet} x none        +10
+  ---------------------------------------------------------------------------------------------------
+  MATRIX         DONE 129 · OWED 55 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **129 + 55 + 0 + 16 = 200.** The 240-view is `DONE 129 · OWED 55 · BLOCKED 0 · INEXPR 56` (= 240).
+
+## §T2 · ⛔ TWO CONDITIONS REST ON n=2 RATHER THAN n=3, AND BOTH ARE NAMED HERE RATHER THAN AVERAGED AWAY
+```
+  LRU x plain              n=2 in the table. `clbglp01` was fired and harvested BY HAND and has NO
+                           served-*.out anywhere, so its SERVED model cannot be derived and it is
+                           DECLARED-EXCLUDED rather than carried on its REQUESTED model (ADDENDUM 12's
+                           whole lesson). The cell RAN and IS scored; what is missing is its attribution.
+  FreeList x salt-diet     n=2 SCORABLE. `clbgfs02` is BUILD-FAIL at 0/0 AND CAP-COST at the $37.21 cap
+                           — a cell CUT OFF, not a cell that failed — and is in NO denominator.
+```
+⇒ **The conditions are DONE (they ran and were scored); their n is smaller and is stated, because a condition resting on two cells is a weaker fact than one resting on three.**
+
+## §T3 · ⛔⛔ THE FINDING THAT BOUNDS THIS BLOCK: **THE COST CAP IS ARM-CORRELATED**
+```
+  plain       0 of 14 capped        salt-diet     5 of 15 capped        cap $37.21, unit COST
+```
+⇒ 🔑 ***A CAP THAT BINDS ONE ARM AND NEVER THE OTHER IS NOT A BUDGET, IT IS A TREATMENT.*** Its direction is known — it can only REMOVE salt-diet work — so **every salt-diet figure in this block is a LOWER BOUND on cost and a FLOOR on correctness.** The cost ratios (median **8.27×**, total **9.83×**, T **20.77×**) are bounds, not measurements.
+⚠️ **AND THE ONLY UNAMBIGUOUS CORRECTNESS FAILURE IS IN THE *PLAIN* ARM** (`clbgfp03`, FreeList, LANDED, uncapped, suite 6/7). The salt-diet arm's single non-PASS is the capped BUILD-FAIL above.
+
+## §T4 · WHAT THIS ADDENDUM DOES NOT DO
+- **It does not compare SG with block O.** The result notes that the median cost ratio is 1.89× on `brownfield × none` at Opus and 8.27× here — **two things differ at once, the FIELD and the MODEL, so neither block can attribute the gap.** That is a pair of readings, not a decomposition.
+- **It moves no other block.** SS · SBS · OS are harvested, scored and have tables of record, and each still owes its result.
