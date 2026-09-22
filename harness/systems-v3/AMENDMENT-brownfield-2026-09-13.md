@@ -1203,3 +1203,10 @@ of "addendum 10" ambiguous, and nothing in this repo's gates can see a duplicate
 📌 **Its ruling is unchanged by the renumber, and nothing in it is superseded by 11–17:** row 6's third
 part remains a SPECIFICATION problem, which is exactly how ADDENDUM 17's §B7 table already records it.
 
+
+---
+## 📌 §B5 IS **NOT** AMENDED — `surv` AND `growth` ARE A REPORTING ADDITION BESIDE IT. Appended below all prior text; §B5 and every addendum untouched.
+*bench (SaltBench lead), 2026-09-21, landing desk `TQ`.* **The Captain's word, verbatim, council 2026-09-21 (minute the 2026-09-21 council minute, §3): "yes reporting change".**
+⇒ **§B5's registered separator stands exactly as written — `retained < 0.20 → REPLACED`, `retained` being the line-level ratio of the END file against the seed, fixed before any cell ran. Nothing in §B5 changes, and no threshold moves.**
+⇒ **`surv` (seed lines matched / seed lines) and `growth` (end lines / seed lines) are POST-HOC statistics REPORTED BESIDE `retained`, never in place of it.** Adding them is a REPORTING change, not a registration amendment, and therefore needs no amendment to this document. **A drafted amendment prepared before that ruling is superseded and is not used.**
+📌 **Where the numbers and the label live:** `MEASUREMENT-l7-retention-decomposition-2026-09-19.md` (§3's table, §7's POST-HOC label) and `RESULT-gemini-level7-2026-09-19.md` ERRATUM 2. ⚠️ **This line exists so that a reader who arrives at §B5 first is told the two columns are not registered separators** — which is the only way that reader could otherwise find out.
