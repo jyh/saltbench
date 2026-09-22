@@ -106,6 +106,19 @@ def run(doc, table):
         print("   Desk VV: the column is cumulative only when a cell's two phases ran on ONE pool. The "
               "per-phase harvest figures (p1_*, p2_*) are the sound ones and are asserted below; NO "
               "cumulative figure is re-derived, and the document must not quote one.")
+    # ⛔⛔ A MISSING DOCUMENT IS A REFUSAL, NOT A TRACEBACK. Before this guard `open(doc)` raised an
+    #   uncaught FileNotFoundError, and the crash exited 1 — the SAME code this tool uses for a FAILED
+    #   verification. Worse, the desk-VV warning above prints FIRST, so the output read as "the verifier
+    #   ran and found 2 problems" when it had in fact died before checking a single figure.
+    #   ⇒ 🔑 AN rc WHOSE MEANING THE READER SUPPLIES. Driven 2026-09-21 against the real joined table
+    #   at a moment the document did not yet exist — which is the NORMAL state at a harvest, because the
+    #   table is built before the document is written. rc 2 is reserved for "I could not look".
+    if not os.path.exists(doc):
+        print("⛔ NOT A VERIFICATION — the document does not exist: %s" % doc)
+        print("   The table was READ and parsed (%d row(s)); no figure was checked against any prose." % len(rows))
+        print("   This is rc 2 ('I could not look'), deliberately NOT rc 1 ('I looked and it failed').")
+        print("   Write the result document first, or pass --doc at the one you mean.")
+        return 2
     text = open(doc, encoding="utf-8").read()
     ck = checks(rows)
     bad = [(l, v) for l, v in ck if v not in text and v.replace("  ", " ") not in text]
@@ -206,11 +219,25 @@ def selftest():
         t6 = os.path.join(d,"t6.tsv"); open(t6,"w",encoding="utf-8").write("\t".join(cols)+"\n")
         rc = run(dc, t6); print("  arm 6 empty table is not a pass             rc=%d  %s" % (rc,"PASS" if rc==1 else "FAIL"))
         if rc != 1: fails.append(6)
+
+        # arm 9: A MISSING DOCUMENT IS rc 2, NOT rc 1 — "I could not look" must not wear the code of
+        #   "I looked and it failed". Before the guard this raised an uncaught FileNotFoundError whose
+        #   exit was ALSO 1, and the desk-VV warning printed first, so a crash read as a verdict.
+        missing = os.path.join(d, "no-such-document.md")
+        assert not os.path.exists(missing), "fixture is vacuous: the missing doc exists"
+        rc = run(missing, t); print("  arm 9 missing document refuses rc 2        rc=%d  %s" % (rc,"PASS" if rc==2 else "FAIL"))
+        if rc != 2: fails.append(9)
+        # arm 9b CONTROL: the SAME table with a doc that DOES exist still verifies green, so arm 9
+        #   is about the document's ABSENCE and not about the table.
+        open(dc,"w",encoding="utf-8").write(base)
+        rc = run(dc, t); print("  arm 9b CONTROL same table, doc present      rc=%d  %s" % (rc,"PASS" if rc==0 else "FAIL"))
+        if rc != 0: fails.append(9.5)
     print()
     if fails: print("⛔ SELFTEST FAILED on arm(s) %s" % fails); return 1
-    print("✅ SELFTEST 8/8 — control green; a cumulative-for-phase-2 swap, a wrong model, a wrong n, an\n"
+    print("✅ SELFTEST 10/10 — control green; a cumulative-for-phase-2 swap, a wrong model, a wrong n, an\n"
           "   undeclarable model column and an empty table each redden it; a phase-2-only end-2 meter is\n"
-          "   NAMED (desk VV) and an all-cumulative table stays quiet, so that arm is not vacuous.")
+          "   NAMED (desk VV) and an all-cumulative table stays quiet, so that arm is not vacuous;\n"
+          "   and a MISSING DOCUMENT refuses rc 2 rather than 1, with a doc-present control beside it.")
     return 0
 
 if __name__ == "__main__":
