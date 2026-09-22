@@ -1,0 +1,9 @@
+block  n_plain n_saltdiet  PROBE-IN  PROBE-APART  shift
+o           15         15     1.89x        1.89x   +0.2%
+os          10         12     1.22x        1.22x   -0.0%
+sb          15         15    12.73x       13.53x   +6.3%
+sbs         12         12     4.70x        5.12x   +8.9%
+sc          10         10     4.99x        5.10x   +2.2%
+sg          15         15     8.48x        9.28x   +9.5%
+ss          12         12     5.31x        5.54x   +4.4%
+LIMIT: population = this table's cells; a census line computed on another n may differ.

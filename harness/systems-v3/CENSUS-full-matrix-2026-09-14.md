@@ -1090,3 +1090,24 @@ Council 2026-09-16 ⑤d requires a census addendum to land **in the same commit 
 - **It moves no AGY condition.** The 21 at level 8 are untouched.
 - **It makes no claim about the salt METHOD**, and block SC's own result states that its spec-change contrast is the thing that block constrains *least*, because the selector removed its two hardest conditions before phase 2 could observe them.
 - **It changes no cap, arm, model, fence, scorer or tripwire.**
+
+---
+# ⚖️ DECLARED — THE COST CONVENTION (desk VX (b), bench, 2026-09-22). **Not a count addendum: it moves no condition and the LIVE box is unchanged.**
+Every `median COST ratio (salt-diet : plain)` in this document (§U3, §W2, §X4) is read from `final_COST`, which **includes the
+harness's own sandbox probe** (about $0.10 a cell, nearly constant). A constant offset is a larger share of the cheaper arm, so in the
+Sonnet blocks each stated ratio is **lower than the cell-only ratio**, the direction that flatters salt-diet. Measured on one split
+table (`evidence/vx-probe-split-2026-09-22/`, `ratio_shift.out`):
+```
+  block   PROBE-IN   PROBE-APART   shift        block   PROBE-IN   PROBE-APART   shift
+  SG       8.48x       9.28x       +9.5 %       SC       4.99x       5.10x       +2.2 %
+  SBS      4.70x       5.12x       +8.9 %       O        1.89x       1.89x       +0.2 %
+  SB      12.73x      13.53x       +6.3 %       OS       1.22x       1.22x       −0.0 %
+  SS       5.31x       5.54x       +4.4 %
+```
+⚠️ That table reproduces this document's SS, SBS, OS and O figures to the second decimal and **does not reproduce SG** (8.48 against
+§U3's 8.27), so SG's line was taken on a different cell set, and its shift is a shift on that table, not a corrected figure.
+⇒ **No claim here changes.** The Sonnet ratios are already declared LOWER BOUNDS (the cap), and probe-apart raises them, which the bound
+already allows. The order of blocks is the same under both readings, and the Opus figures do not move.
+✅ **THE CONVENTION:** a cell's cost *means* PROBE-APART. The tables of record stay PROBE-IN as measured, each with its declared line
+(PR #239), and **nothing is re-issued**. **Any arm ratio the pilot's write-up states is taken PROBE-APART from that split and cites it.**
+`cell_meter.py` does not change during the matrix; metering probe-apart at the source is for a registered amendment afterwards.
