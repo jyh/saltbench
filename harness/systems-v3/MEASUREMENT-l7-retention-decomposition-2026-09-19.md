@@ -97,3 +97,21 @@ proposes it as an additive remedy; it is a change to a registered reading and it
   verifier     MEASUREMENT-l7-retention-decomposition-2026-09-19-verify.py — re-derives §2 and §3 from the
                receipt and level 7's own cells table, and asserts them against the bytes of this file.
 ```
+
+---
+# §7 · ⚖️ POST-HOC — THE LABEL THIS FILE OWED, AND THE RULING THAT PLACES IT
+*bench (SaltBench lead), 2026-09-21. Appended below all prior text; §1–§6 untouched, so this file's verifier still asserts §2 and §3 against the same bytes.*
+
+⛔⛔ **`surv` AND `growth` ARE POST-HOC. THEY WERE DEFINED AFTER THE LEVEL-7 DATA EXISTED AND THEY ARE NOT REGISTERED SEPARATORS.**
+`AMENDMENT-brownfield-2026-09-13.md` §B5 registers exactly one: **`retained`, with `retained < 0.20 → REPLACED`, fixed before any cell ran.** That threshold is **unamended and stays unamended.**
+```
+  retained   REGISTERED, pre-data          §B5, and the level-7 export's own classifier
+  surv       POST-HOC, defined 2026-09-19  seed lines matched / seed lines
+  growth     POST-HOC, defined 2026-09-19  end lines / seed lines
+```
+⚖️ **THE RULING THAT PUTS THEM BESIDE IT RATHER THAN IN PLACE OF IT — the Captain, council 2026-09-21, minute §3, verbatim: "yes reporting change".** ⇒ **Adding `surv` and `growth` beside a registered metric is a REPORTING change, not a REGISTRATION amendment.** The drafted amendment wording prepared before that ruling is **superseded and is not used.**
+
+### §7.1 · WHY THE LABEL MATTERS MORE HERE THAN USUAL
+A post-hoc statistic that **agrees** with the registered one is easy to discount. ⇒ 🔑 ***THIS ONE DISAGREES — IT INVERTS THE PUBLISHED DIRECTION OVER ALL 84 CELLS — WHICH IS EXACTLY WHEN A POST-HOC METRIC IS MOST PERSUASIVE AND MOST IN NEED OF ITS LABEL.*** A reader meeting §3's table without this section could take `surv` for a pre-registered separator that was simply reported later, and that would make the inversion look like a registered result rather than a post-hoc reading of one.
+⛔ **SO THE HONEST FORM IS BOTH AT ONCE, AND NEITHER ALONE:** the registered separator moved 7 of 8 in the published direction, **and** the post-hoc decomposition of it shows the movement is growth, not survival. **The first is a result; the second is an interpretation of what the first measures.**
+⚠️ **AND THE BOUND THAT IS ALREADY IN §4 AND IS REPEATED HERE BECAUSE IT IS THE SENTENCE A QUOTER WILL SKIP:** `surv` is a **LOWER bound** — it counts lines the differ matched, and a moved line may not match. **That direction works AGAINST this file's finding, never for it.**
