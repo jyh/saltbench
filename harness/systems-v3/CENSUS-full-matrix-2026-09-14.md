@@ -120,8 +120,32 @@ adding the two numbers gets the wrong denominator.**
 >   ADDENDUM 8        DONE 60 · OWED 124 · BLOCKED   0 · INEXPR 16     HC stage 1 complete: +0 (a replication; §J3)
 >   ADDENDUM 9        DONE 72 · OWED 112 · BLOCKED   0 · INEXPR 16     level 6 complete: +12
 >   ADDENDUM 10       DONE 99 · OWED  85 · BLOCKED   0 · INEXPR 16     level 7 complete: +27 (§Q1)
->   LIVE (ADDENDUM 11) DONE 109 · OWED 75 · BLOCKED   0 · INEXPR 16    block SB complete: +10 (§R1)
+>   ADDENDUM 11       DONE 109 · OWED  75 · BLOCKED   0 · INEXPR 16     block SB complete: +10 (§R1)
+>   ADDENDUM 12       DONE 109 · OWED  75 · BLOCKED   0 · INEXPR 16     +0 — an ATTRIBUTION correction, no count moves
+>   ADDENDUM 13       DONE 119 · OWED  65 · BLOCKED   0 · INEXPR 16     block O complete: +10
+>   ADDENDUM 14       DONE 129 · OWED  55 · BLOCKED   0 · INEXPR 16     block SG complete: +10
+>   ADDENDUM 15       DONE 137 · OWED  47 · BLOCKED   0 · INEXPR 16     block SS complete: +8
+>   ADDENDUM 16       DONE 145 · OWED  39 · BLOCKED   0 · INEXPR 16     block SBS complete: +8
+>   ADDENDUM 17       DONE 152 · OWED  32 · BLOCKED   0 · INEXPR 16     block OS completes 7 of its 8: +7
+>   LIVE (ADDENDUM 18) DONE 160 · OWED 24 · BLOCKED   0 · INEXPR 16    block SC completes the CLAUDE LANE'S v3 LIST, and block OS's held condition reaches n=3: +8
 > ```
+> ⛔⛔⛔ **AND THEN IT HAPPENED AGAIN, SEVEN TIMES, IN THE BOX THAT CONTAINS THE PARAGRAPH BELOW.**
+> Rows **12–18 were added on 2026-09-22 by `bench`**, after the council read this box's `LIVE` row as
+> `ADDENDUM 11 · DONE 109 · OWED 75` while the file's own live figure was **`DONE 160 · OWED 24`** —
+> **seven addenda and fifty-one conditions behind, in the one table this section declares to be the only
+> current figure in the document, about the Captain's stated top priority.**
+> ⇒ 🔑 ***THE PARAGRAPH BELOW DIAGNOSED THIS EXACT FAILURE, NAMED ITS CAUSE, AND QUOTED THE INSTRUCTION
+> ITS OWN AUTHOR HAD NOT FOLLOWED — AND THE BOX THEN FAILED THE SAME WAY SEVEN MORE TIMES. WRITING THE
+> POST-MORTEM INTO THE INSTRUMENT CHANGED NOTHING, BECAUSE A POST-MORTEM IS SOMETHING A READER READS AND
+> THE LAPSE IS SOMETHING A WRITER COMMITS.***
+> ⛔ **The remedy it reached for was READER-SIDE:** *"the trajectory rows are now DERIVABLE, so a reader
+> who distrusts this box can rebuild it."* True, and it asks the reader to do the work at every read while
+> leaving the writer free to skip it at every write. **A reader-side remedy for a writer-side defect is a
+> permanent tax that never fixes anything.**
+> ✅ **SO THE FIX IS NOT THESE SEVEN ROWS.** It is `CENSUS-full-matrix-2026-09-14-verify.py`, which DERIVES
+> this box from the `ADDENDUM n` headlines — the source this paragraph already identified — and **REFUSES**
+> on any mismatch, missing row or broken chain. The eighth lapse is now a red, not a discovery.
+>
 > ⛔⛔ **THE `ADDENDUM 9` ROW ABOVE WAS ADDED ON 2026-09-19 BY ADDENDUM 10, TWO DAYS LATE. FOR THOSE TWO DAYS
 > THIS BOX'S `LIVE` ROW READ `DONE 60` WHILE THE FILE'S LIVE FIGURE WAS `DONE 72`** — a whole level behind,
 > in the one table this section declares to be the only current figure in the document.
