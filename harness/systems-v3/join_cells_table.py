@@ -155,6 +155,26 @@ def write_table_comments(out, excl, served_dir):
     """Every declared absence that rides ABOVE the header, for BOTH writers."""
     for c in sorted(excl):
         out.write("# EXCLUDED\t%s\t%s\n" % (c, excl[c]))
+    # ⛔⛔ THE COLUMNS BELOW CARRY THE HARNESS'S OWN SANDBOX PROBE, AND NOTHING USED TO SAY SO (desk VX).
+    #   `final_T`/`final_COST` are read from ctl/post-end-<n>.tsv, which `cell_meter.py` produces over EVERY
+    #   session under the cell's slug — and `clb_fire.sh` runs a sandbox probe under that SAME slug before
+    #   each launch. `clb_harvest.split_slug` separates probe heads from cell heads DELIBERATELY (and refuses
+    #   rather than guess); `cell_meter` never did, and these columns come from `cell_meter`.
+    #   ⇒ 🔑 THE PROBE'S COST IS NEAR-CONSTANT WHILE A CELL'S IS NOT, so it is a LARGER SHARE OF A CHEAPER
+    #     CELL — which makes it ARM-CORRELATED, and a constant offset is neutral in a DIFFERENCE and
+    #     BIASING IN A RATIO. It is declared unconditionally because it is true of every row this tool has
+    #     ever written, not of some configuration of it.
+    out.write("# final_T / final_COST INCLUDE THE HARNESS'S OWN SANDBOX PROBE\t"
+              "the per-cell meter sums every session under the cell's slug, and a sandbox probe runs "
+              "under that same slug before each launch; clb_harvest.split_slug separates them, cell_meter "
+              "does not, and these columns come from cell_meter\t"
+              "MEASURED 2026-09-22 over 180 cells with those two tools and no reimplementation (desk VX): "
+              "the probe is 0.25%-18.52% of final_COST (median 2.58% in the Sonnet blocks, 1.27% in the "
+              "Opus blocks) and a median 3.2x SMALLER share of final_T, so checking this in tokens "
+              "understates it threefold. Its ABSOLUTE cost is near-constant ($0.065-$0.287), so any ratio "
+              "taken BETWEEN ARMS carries it: plain:salt-diet COST was inflated in 22 of 22 matched "
+              "block/problem groups, median +5.2%, max +13.0%, understating salt-diet's cost disadvantage. "
+              "AN ABSOLUTE FIGURE IN THESE COLUMNS IS THE TASK PLUS THE PROBE.\n")
     # ⛔ A BLANK COLUMN THAT IS NOT DECLARED IS THE ADDENDUM-12 DEFECT, REACHABLE BY OMISSION. Without
     #   --served-dir every row's `model_served` is "" and nothing said so — not the table, not stderr.
     #   ⇒ AN EMPTY CELL READS AS "NOT RECORDED" AND AS "UNKNOWN" INDISTINGUISHABLY, and only the person who
