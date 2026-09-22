@@ -154,17 +154,43 @@ if cen:
     if mv:
         d, o, b, i = (int(x) for x in mv[-1])
         arm("200-view closes: DONE+OWED+BLOCKED+INEXPR == 200", d + o + b + i == 200, "%d+%d+%d+%d" % (d, o, b, i))
+        # ⛔⛔ THESE ARMS ANCHOR ON **THIS BLOCK'S OWN FROZEN ROWS**, NEVER ON THE CENSUS'S LIVE TOTAL.
+        #   Until 2026-09-22 the MOVE arm compared ADDENDUM 10's DONE against `d` — the LAST 200-view
+        #   total anywhere in the census, i.e. whatever the campaign stands at TODAY. It was correct on
+        #   the day it was written and FALSE from the next addendum onward: by ADDENDUM 18 it read
+        #   `DONE 99 -> 160 = +61` against this table's 10 conditions, and the suite sat 2 RED of 95
+        #   through ADDENDA 12-18 with nobody acting on it.
+        #   ⇒ 🔑 AN ARM PINNED TO A LIVE TOTAL IN AN APPEND-ONLY DOCUMENT IS CORRECT EXACTLY ONCE, AND
+        #     ITS AUTHOR CANNOT TELL — THE DAY IT IS WRITTEN IS THE ONLY DAY IT PASSES.
+        #   ⚠️ AND THE COST IS NOT THE RED, IT IS THE HABIT: a 95-arm suite that is permanently 2-RED
+        #     trains its readers to run it and look away, which is the one state in which its other 93
+        #     arms stop protecting anything.
+        #   ✅ The trajectory box is FROZEN — it carries ADDENDUM 10's row and the `LIVE (ADDENDUM 11)`
+        #     row this block wrote — so anchoring here can never go stale however far the census runs.
         prev = re.findall(r">\s+ADDENDUM 10\s+DONE (\d+) · OWED\s+(\d+)", cen)
         arm("the trajectory box carries the PREVIOUS addendum's row", bool(prev), str(prev[-1:]))
-        if prev:
-            pd, po = int(prev[-1][0]), int(prev[-1][1])
-            arm("⭐ THE MOVE EQUALS THE TABLE'S CONDITION COUNT", d - pd == len(conds),
-                "DONE %d -> %d = +%d, conditions in the table %d" % (pd, d, d - pd, len(conds)))
-            arm("⭐ OWED FALLS BY THE SAME AMOUNT (no condition invented or lost)", po - o == d - pd,
-                "OWED %d -> %d = -%d" % (po, o, po - o))
         live = re.findall(r">\s+LIVE \(ADDENDUM \d+\) DONE (\d+) · OWED (\d+)", cen)
-        arm("the trajectory box's LIVE row exists and matches the §R1 total", bool(live) and (int(live[-1][0]), int(live[-1][1])) == (d, o),
-            str(live[-1:]))
+        arm("the trajectory box carries THIS block's own row", bool(live), str(live[-1:]))
+        if prev and live:
+            pd, po = int(prev[-1][0]), int(prev[-1][1])
+            md, mo = int(live[-1][0]), int(live[-1][1])
+            arm("⭐ THE MOVE EQUALS THE TABLE'S CONDITION COUNT", md - pd == len(conds),
+                "DONE %d -> %d = +%d, conditions in the table %d" % (pd, md, md - pd, len(conds)))
+            arm("⭐ OWED FALLS BY THE SAME AMOUNT (no condition invented or lost)", po - mo == md - pd,
+                "OWED %d -> %d = -%d" % (po, mo, po - mo))
+            # ⛔ THE ARM THAT REPLACES THE OLD "LIVE row matches the §R1 total", AND MY FIRST CUT OF IT
+            #   WAS WRONG IN THE OTHER DIRECTION: it looked for `DONE 109` in THIS RESULT DOCUMENT, which
+            #   never states the census's totals — §R1 is a section of the CENSUS, not of this file. The
+            #   arm went RED against a document that had claimed nothing. ⇒ 🔑 A WRONG SUBJECT IS AN
+            #   ACCURATE MEASUREMENT OF SOMETHING ELSE, and it reads like a finding.
+            #   ✅ The pairing that was always meant is INSIDE the census: the trajectory box's row for
+            #     this block must equal the MATRIX line of the addendum that wrote it. Both are frozen,
+            #     so this can never go stale — and it is located BY IDENTITY (the addendum whose DONE is
+            #     this block's), never by position, so a later addendum cannot shift it.
+            mine = [t for t in mv if int(t[0]) == md]
+            arm("⭐ this block's trajectory row equals its own addendum's MATRIX line",
+                bool(mine) and (int(mine[-1][0]), int(mine[-1][1])) == (md, mo),
+                "box DONE %d · OWED %d vs MATRIX %s" % (md, mo, str(mine[-1:])))
         arm("the 240-view is stated and closes", ("DONE %d · OWED %d · BLOCKED 0 · INEXPR %d" % (d, o, i + 40)) in cen,
             "240-view INEXPR %d, total %d" % (i + 40, d + o + i + 40))
         arm("no condition is BLOCKED", b == 0)
