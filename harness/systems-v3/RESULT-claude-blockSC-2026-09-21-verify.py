@@ -120,6 +120,38 @@ def run(doc, table):
         print("   Write the result document first, or pass --doc at the one you mean.")
         return 2
     text = open(doc, encoding="utf-8").read()
+    # ⛔⛔ ARM 11 — THE GAP THAT LET A WRONG FIGURE THROUGH A GREEN VERIFICATION ON 2026-09-22.
+    #   Everything above asserts figures this file DERIVES FROM THE TABLE. The block-SC result's first
+    #   draft quoted `cell_COST_at_end2` as phase 2's cost in three places, taken from the HARVEST
+    #   MARKER -- `CAP-COST cost 24.2912 of 18.60 USD`, where the number is the CELL's and the cap is
+    #   the PHASE's -- a source this verifier never reads. It passed, correctly and uselessly.
+    #   ⇒ 🔑 A FIGURE A VERIFIER DOES NOT DERIVE IS A FIGURE NOTHING CHECKS, and the docstring above
+    #     claims this file makes that exact mistake impossible. It did not until this arm existed.
+    #   THE RULE, and it states its own limit: a `cell_*_at_end2` value may appear in the document ONLY
+    #   on a line that also says `cumulative`. That is deliberately crude -- it cannot tell a correct
+    #   cumulative quotation from an incorrect one, only a LABELLED one from a BARE one -- and a bare
+    #   one is the defect. Scoped to the two end-2 columns; it makes no claim about any other number.
+    import re as _re
+    cumvals = {r[c] for r in rows for c in ("cell_T_at_end2", "cell_COST_at_end2") if r[c] not in ("", "-")}
+    # THE WINDOW IS THE BLOCK, NOT THE LINE. A table's rows carry bare numbers and the word belongs in
+    #   its header; a line-scoped rule would force `cumulative` onto every data row, which is unreadable
+    #   and would be worked around rather than obeyed. Blocks are blank-line separated, so a fenced
+    #   table is one block. ⛔ DRIVEN AGAINST THE FIRST DRAFT: its §4 block said `phase-2 cost vs cap`
+    #   and contained the word NOWHERE, so the block rule fires on it exactly as the line rule did.
+    bare = []
+    for block in text.split("\n\n"):
+        if "cumulative" in block.lower():
+            continue
+        for line in block.splitlines():
+            for v in cumvals:
+                if _re.search(r"(?<![\d.])" + _re.escape(v) + r"(?![\d.])", line):
+                    bare.append((v, line.strip()[:90]))
+    if bare:
+        print("⛔ %d BARE CUMULATIVE FIGURE(S) IN THE DOCUMENT -- a `cell_*_at_end2` value on a line that "
+              "does not say `cumulative`. This is desk VV's defect and the harvest marker is how it "
+              "arrives (its `cost N of CAP USD` puts the CELL's number beside the PHASE's cap):" % len(bare))
+        for v, l in bare: print("   %-14s on: %s" % (v, l))
+        return 1
     ck = checks(rows)
     bad = [(l, v) for l, v in ck if v not in text and v.replace("  ", " ") not in text]
     print("block SC verifier: %d PAIR(s), %d figure(s) re-derived from the table" % (len(rows), len(ck)))
@@ -215,6 +247,20 @@ def selftest():
         print("  arm 8 CONTROL all-cumulative stays quiet     rc=%d  %s" % (rc, "PASS" if (rc == 0 and quiet) else "FAIL"))
         if not (rc == 0 and quiet): fails.append(8)
 
+        # ⭐ arm 11, RED BACKWARDS (jas's law): the defect is already fixed in the real document, so
+        #   RESTORE it as a mutant and require the arm to fire. The number planted is the fixture's own
+        #   cumulative value, quoted BARE -- exactly the shape the first draft shipped.
+        cumv = rows[0]["cell_COST_at_end2"]
+        assert cumv not in base, "fixture is vacuous: the cumulative value is already in the control doc"
+        open(dc,"w",encoding="utf-8").write(base + "\nphase-2 cost was $%s\n" % cumv)
+        rc = run(dc, t); print("  arm 11 mutant: BARE cumulative in the doc   rc=%d  %s" % (rc,"PASS" if rc==1 else "FAIL"))
+        if rc != 1: fails.append(11)
+        # ⭐ arm 12, the CONTROL for arm 11: the SAME value LABELLED `cumulative` must pass, or arm 9 is
+        #   just a ban on a number and the document could never report the cell total at all.
+        open(dc,"w",encoding="utf-8").write(base + "\nthe cell's cumulative cost at end-2 was $%s\n" % cumv)
+        rc = run(dc, t); print("  arm 12 CONTROL labelled cumulative passes  rc=%d  %s" % (rc,"PASS" if rc==0 else "FAIL"))
+        if rc != 0: fails.append(12)
+
         # arm 6: an EMPTY table is not a green verification
         t6 = os.path.join(d,"t6.tsv"); open(t6,"w",encoding="utf-8").write("\t".join(cols)+"\n")
         rc = run(dc, t6); print("  arm 6 empty table is not a pass             rc=%d  %s" % (rc,"PASS" if rc==1 else "FAIL"))
@@ -234,10 +280,14 @@ def selftest():
         if rc != 0: fails.append(9.5)
     print()
     if fails: print("⛔ SELFTEST FAILED on arm(s) %s" % fails); return 1
-    print("✅ SELFTEST 10/10 — control green; a cumulative-for-phase-2 swap, a wrong model, a wrong n, an\n"
+    print("✅ SELFTEST 12/12 — control green; a cumulative-for-phase-2 swap, a wrong model, a wrong n, an\n"
           "   undeclarable model column and an empty table each redden it; a phase-2-only end-2 meter is\n"
           "   NAMED (desk VV) and an all-cumulative table stays quiet, so that arm is not vacuous;\n"
-          "   and a MISSING DOCUMENT refuses rc 2 rather than 1, with a doc-present control beside it.")
+          "   and a MISSING DOCUMENT refuses rc 2 rather than 1, with a doc-present control beside it;\n"
+          "   and a BARE `cell_*_at_end2` value in the prose reddens it while the SAME value LABELLED\n"
+          "   `cumulative` passes — the arm added 2026-09-22 after the first draft of the result shipped\n"
+          "   that exact defect past a green verification, because the figure came from the harvest\n"
+          "   marker rather than from the table this file derives from.")
     return 0
 
 if __name__ == "__main__":
