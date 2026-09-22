@@ -538,3 +538,31 @@ The child prints *"this executor is NOT registered with the fleet (set EXEC_REGI
 ⇒ ***AN ACCURATE SENTENCE ABOUT THE WRONG SUBJECT IS THE HARDEST DIAGNOSTIC TO DOUBT, BECAUSE EVERY WORD OF IT CHECKS OUT.*** It is the mirror of this fleet's *"the most dangerous green is the one that names its own scope accurately"*, and **the subject is the axis no re-measurement crosses.**
 📌 **WHAT §8(3) SHOULD HAVE SAID, and is the only live remainder:** *a per-condition driver child prints a registration warning that is true of itself and false of the wave that registered it, and the message should name the wave's row rather than two remedies.* **That is `systems`' to take or decline; it is a message, not a registration.**
 ⚠️ **AND `systems` REPORTED CATCHING A FALSE `ABSENT` OF ITS OWN ON THE WAY — from a `|| echo` firing on `sed`'s rc — the exact trap it had quoted at me an hour earlier.** Recorded because a correction that hides its own near-miss is worth less than one that shows it.
+
+---
+# ⚠️⚠️ ERRATUM 2 — **§1's RETENTION SEPARATION IS A *GROWTH* SEPARATION. THE NUMBERS ARE RIGHT; WHAT THEY MEASURE IS NOT WHAT §B5's WORDS DESCRIBE.** APPENDED BELOW THE SIGNED TEXT; §1–§9b, ERRATUM 1 and every signature untouched.
+*bench (SaltBench lead), 2026-09-21. **This is the landing of desk `TQ`, and it is a REPORTING change, not a registration amendment** — the Captain's word, verbatim, at council 2026-09-21 (minute the 2026-09-21 council minute, §3): **"yes reporting change"**. `retained` remains the registered pre-data separator of `AMENDMENT-brownfield-2026-09-13.md` §B5, unamended; `surv` and `growth` are reported BESIDE it, POST-HOC.*
+
+### E2.1 · WHAT §1 SAYS, AND WHAT IS WRONG WITH IT
+§1 reports ***"THE SEPARATOR THAT DOES MOVE IS RETENTION, AND IT MOVES IN THE SAME DIRECTION IN 7 OF 8 (model × problem) PAIRS"***.
+⛔ **THE ARITHMETIC IS NOT AT ISSUE AND IS NOT WITHDRAWN.** Every `retained` value reproduces — the decomposition's pipeline imported the level-7 export's OWN classifier (`brownfield_rewrite_class.py` at `9bfb6ef86a36`) and asserted all 84 against it, 0 refusals, and it reproduced the published headline at 7 of 8 and the Flash × LZW exception **before** decomposing anything.
+⛔ **WHAT IS WRONG IS THE READING.** `retained` is difflib's similarity ratio of the end file against the seed, **symmetric in additions and deletions**, so it cannot distinguish *"the seed was rewritten"* from *"the seed was kept and something large was written beside it."*
+
+### E2.2 · THE DECOMPOSITION — SAME PAIRS, SAME POPULATION, SAME DIFFER
+```
+                 RETAINED (published)      SURVIVAL (what §B5's words describe)     GROWTH
+  RESULT         salt below plain 7 of 8   salt below plain 3 of 8                  disjoint on 8 of 8
+  DISAGREEMENT   the two differ in DIRECTION on 4 of 8 pairs — HALF THE TABLE
+  ALL 84 CELLS   retained  plain 0.719  salt 0.316      <- the published direction
+                 surv      plain 0.715  salt 0.860      <- INVERTED
+                 growth    plain 1.04x  salt 3.85x
+```
+⇒ 🔑 ***ON THE QUANTITY §B5's WORDS DESCRIBE, THE SALT-DIET ARM KEPT **MORE** OF THE GIVEN THAN PLAIN DID.*** The 7-of-8 separation is real and it is a **growth** separation.
+⭐ **AND THE MEASUREMENT'S OWN ERROR DIRECTION RUNS AGAINST THIS FINDING, WHICH IS WHY IT CAN BE BELIEVED:** `surv` counts lines the differ MATCHED, so it is a **LOWER bound** on survival — a moved line may fail to match. **Under-counting matched lines makes salt's survival look LOWER, not higher.** The inversion survives a bias pointed the other way.
+
+### E2.3 · WHAT THIS ERRATUM DOES **NOT** DO
+1. **No number in §1–§9b changes, and no arm claim is made or withdrawn.** Level 7 makes no pass-rate claim; this erratum makes none.
+2. **§B5's registered threshold is untouched** — `retained < 0.20 → REPLACED`, fixed before the data, and it stays fixed. Changing what a registered pre-data separator MEANS is the Captain's, and he has ruled this a reporting change instead.
+3. **The MECHANISM is not measured on this lane.** Block SB hypothesises a proof-method file as the source of the growth from two method files' headings; **no such reading was taken for level 7's cells**, and none is asserted here.
+4. **It does not re-open ERRATUM 1**, which is about §8 item 3 and is unrelated.
+📌 **FULL RECEIPT:** `MEASUREMENT-l7-retention-decomposition-2026-09-19.md` (84 rows, `l7-retention-decomp.tsv`), whose §2 is the reproduction control and whose §3 is the table above. **It is the SECOND lane with this signature**, measured independently of block SB and reproducing its published figure first.
