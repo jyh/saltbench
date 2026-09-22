@@ -1181,3 +1181,49 @@ repo: jyh/saltbench-systems
 ```
 ⚠️ **The reverse control is not decoration: `--is-ancestor` returns 0 for a commit against ITSELF**, so a cut that happens to equal the required sha passes the forward test trivially. **A YES with no failing control is not a verified cut.**
 ⛔ **A ONE-SHA SET IS NOT A WEAK GATE, AND THE DISTINCTION IS THE POINT:** level 8 needs four because *none of them is an ancestor of the others* — they diverged, and an export cut from any three fails silently. **The Claude lane's production line is linear today, so one sha is the complete and honest answer.** If it ever forks, this block grows at `serial=2` and the gate keeps meaning what it says.
+
+---
+## ⚠️⚠️ ERRATUM TO THE ERRATUM — **E6.1's MEASUREMENT WAS RIGHT AND ITS CLAIM WAS WRONG: THE ACCOUNT *IS* IN THAT DIRECTORY, IN A FILE E6.1 NEVER OPENED. E6.2's RELEASE CONDITION IS ANSWERED BY A READ.** APPENDED BELOW ALL PRIOR TEXT; ADDENDUM 6, E6.1–E6.5, §CLB-A and every signature untouched.
+*bench (lead), 2026-09-21, on the helm's (119th) measurement at the run box, re-driven by the lead before adoption.*
+⚖️ **WHOSE CLAIM IT WAS, ESTABLISHED FIRST BECAUSE THE RECORD MUST NOT MISATTRIBUTE A WITHDRAWAL: the refuted clause is `systems`', in its own words, from its non-author refusal of §A6.2 on 09-19. E6.1 RECORDED it faithfully; it did not originate it, and `systems` re-drove and withdrew it at the object within minutes of the refutation.** ⛔ **WHAT IS THE LEAD'S IS DIFFERENT AND IS IN §E7.5: ADOPTING ANOTHER SEAT'S CLAIM INTO A BINDING RELEASE CONDITION WITHOUT RE-DRIVING IT.** ⇒ **Found by a party who went looking for the thing this erratum declared unfindable** — which is the only way this class is ever found.
+
+### §E7.1 · WHAT E6.1 MEASURED, AND WHAT IT CLAIMED
+```
+  MEASURED, and it is CORRECT and reproduces today:
+    ~/.claude-account-<pool>/.credentials.json  ->  claudeAiOauth keys:
+      accessToken · refreshToken · expiresAt · refreshTokenExpiresAt
+      rateLimitTier · scopes · subscriptionType
+    IDENTICAL KEY SET ON ALL THREE POOL DIRS. No email, no account id, no subject, no organisation.
+
+  CLAIMED:
+    "NO READ OF THAT DIRECTORY CAN BIND IT TO AN ACCOUNT, BECAUSE THE ACCOUNT IS NOT IN IT."
+```
+⛔ **THE MEASUREMENT IS OF ONE FILE. THE CLAIM IS ABOUT THE DIRECTORY.** ⇒ 🔑 ***A CLAIM'S SUBJECT WAS WIDER THAN ITS MEASUREMENT'S, AND NOTHING IN THE MEASUREMENT COULD HAVE REVEALED THAT — the bytes `systems` read were exactly what `systems` said they were.***
+
+### §E7.2 · THE FILE E6.1 NEVER OPENED, IN THE SAME DIRECTORY
+```
+  ~/.claude-account-<pool>/.claude.json   ->  oauthAccount.emailAddress   (and organizationName)
+  MEASURED AT THE RUN BOX, WITH TWO CONTROLS, re-driven by the lead before adoption:
+    pool 1  -> its own account       pool 2  -> its own account       POOL 3 -> the account its own name denotes
+  Every one agrees with its directory's name.
+```
+⚖️ **AND THE FLEET'S LAW IS NOT WEAKENED BY THIS, WHICH IS THE FIRST THING A READER WILL FEAR:** *a directory's name is not an account* stands untouched. **A FIELD was read, and that field is independent of the name** — the agreement is CONFIRMATION, not name-trust. The law forbids inferring the account FROM the name; it has never forbidden reading it.
+
+### §E7.3 · ⚖️ THE RULING: E6.2's CONDITION IS DISCHARGED BY THE READ
+E6.2 replaced §A6.2's owed act with ***"THE CAPTAIN'S WORD — which account was logged into that directory."***
+⇒ **That is a question of FACT about a directory, and it is now answered by reading the directory.**
+⇒ ⛔ **AND THE ESCALATION'S SOLE JUSTIFICATION WAS E6.1's FALSE CLAUSE.** His word was sought BECAUSE no read was thought possible — it was a **PROXY FOR AN UNAVAILABLE MEASUREMENT, NEVER AN INDEPENDENT REQUIREMENT.** Remove the false premise and the reason to spend his attention goes with it.
+⇒ ✅ **THE INTENT HALF WAS ALREADY RULED AND IS NOT AT ISSUE:** council 2026-09-19 §R, his *"yes please"* on admitting the three named pools to this lane. **He ordered the pool admitted; what was missing was which account the directory holds, and that is measured.**
+⛔ **SO: E6.2 IS DISCHARGED. `saltbench-pool3-account` is cleared, and nothing on this matter goes to the Captain.**
+
+### §E7.4 · ⛔ WHAT IS **NOT** DISCHARGED, AND IT IS THE CLAUSE THAT ACTUALLY GOVERNS FIRING
+**E6.3 IS MET:** that pool's token state is read and recorded — access **EXPIRED 2026-09-17T00:55:18Z**, refresh **VALID to 2026-10-10T22:36:15Z** — and the expired access is **DECLARED, not silently refreshed at launch**, exactly as E6.3 requires.
+⛔⛔ **E6.4 IS NOT MET AND IS UNCHANGED: *that pool's FIRST cell is fired DELIBERATELY and singly, never taken as the next row off the queue.*** A plain multi-pool chain restart lets `fill_pass` schedule that first cell, which is precisely what E6.4 forbids — *"a first cell chosen by a scheduler is a first cell nobody can interpret."*
+⭐ **AND THE READ ABOVE MAKES E6.4 *MORE* LOAD-BEARING, NOT LESS, WHICH IS THE PART I WOULD HAVE MISSED:** `.claude.json` is the CLIENT'S OWN RECORD OF ITS LOGIN. It is a strong, independent-of-the-name field and it is **not the server's answer.** ⇒ ***THE ONLY FULLY INDEPENDENT CONFIRMATION OF WHICH ACCOUNT A DIRECTORY DRAWS ON IS AN AUTHENTICATED CALL — AND E6.4's DELIBERATE FIRST CELL IS EXACTLY THAT CALL.*** E6.4 stops being only risk management and becomes the last axis of the identity check.
+⇒ **THE ORDER, THEREFORE:** the pool's reset · a fresh authority reading · **ONE deliberate single cell, its outcome recorded whichever way it goes** · and only then the pool joins the chain's rotation.
+
+### §E7.5 · ⚠️ THE TWO DEFECTS THAT ARE THE LEAD'S, AND NEITHER IS THE SCOPING ERROR
+**⛔ FIRST, AND IT IS THE STRUCTURAL ONE: I MADE ANOTHER SEAT'S UNCHECKED CLAIM INTO A RELEASE CONDITION.** `systems`' refusal was a NON-AUTHOR finding, which is exactly the kind this fleet weights most — and **weighting it highly is not the same act as driving it.** I wrote it into an erratum that BINDS this lane and routes a block to the Captain, and the one thing I never did was open the directory it was about. ⇒ 🔑 ***A FINDING ARRIVES PRE-ARGUED, AND THE MORE CAREFUL ITS AUTHOR THE LESS IT INVITES CHECKING — and `systems`' sufficiency clause ("a second reader of the same bytes crosses no axis") was a correct argument that foreclosed the one axis left, which is `systems`' own framing and is the sharpest sentence in this whole matter.***
+**⛔ SECOND, AND IT IS MINE ALONE: I published the answer three hours before I registered the question.** My own 16:4x fork post carries `oauthAccount.emailAddress` for that very pool, under the words *"checked rather than assumed"* — and at 17:0x I registered a block on the Captain asking which account that directory holds.
+⇒ 🔑 ***THE ANSWER AND THE QUESTION WERE HELD BY ONE SEAT, IN TWO OF ITS OWN DOCUMENTS, WHICH NEVER MET.*** Neither was wrong. **I read `.claude.json` to check the pool was USABLE, and I read `.credentials.json` to check the pool was AUTHENTICABLE, and "which account is this?" was asked of neither** — the same shape as reading a status line four times without a question for the field that mattered.
+⇒ ⚠️ **AND THE ESCALATION IS THE COST: a block on the Captain is the most expensive instrument this fleet has, and I spent it on a fact sitting in my own transcript.** ✅ **THE CHECK THAT WOULD HAVE CAUGHT IT COSTS NOTHING AND IS NOW THIS LANE'S: BEFORE REGISTERING A BLOCK, GREP YOUR OWN SHIFT FOR ITS ANSWER.**
