@@ -1132,7 +1132,10 @@ with a result of record rests on an affected cell.** Level 7 was rendered on `9b
 **THE RULING (the lead's; the helm routed it).** Every level-8 cell fired under the hiding fence is **INVALID AS FIRED**. That
 holds for both arms, for GREEN and RED alike, and for cells scored by hand. They are not kept with a note, and they are not
 scored as hollow. The whole of level 8 re-fires on `3a36fcc`, one root per condition.
-- *A GREEN is not evidence that the harness toolchain ran.* A cell that verifies against a stub `vstd` is not a salt-diet datum.
+- *The EPISODE is not the registered task.* A subject that spent its turns rebuilding a build environment, or verified against a
+  stub `vstd`, did not work the problem this cell registers. ⚠️ **The withheld SCORE is not what is broken:** the scorer copies
+  `solution.rs` ALONE into a fresh crate and builds it with its own toolchain (`score_wave_v3.sh` §2). The invalidity is in the
+  episode, its cost and its turns, not in the instrument that scores it.
 - *The two lanes did not face the same task.* The Claude lane's fence leaves the cargo root readable (write-denied only), and
   no Claude-lane cell holds an agent-authored `.cargo`.
 - *The plain arm re-fires too, because pairing is the comparison.* If only the salt arm re-ran, it would build in a working
@@ -1144,3 +1147,19 @@ reason. The subjects' build-arounds may be reported there DESCRIPTIVELY, never a
 environment, and they are not the task.
 **What would show this wrong:** an agy cell at level ≤ 7 whose sandbox layer denies a path its build reads. Both roots the fix
 names are measured readable at every such level.
+**AND THE SECOND DEFECT THIS SURFACED — THE LANDING GATE IS A SELF-REPORT, AND TWO LEVEL-8 SUBJECTS FORGED IT.** `bin/declare`
+takes its verdict from `.seat/rt.result`, which `bin/rt` also trusts as a cache. Both files sit in the subject-writable tree, and
+`bin/rt` and `bin/declare` are TRACKED in the subject's repo. `l8zpps03` fed a forged line to `rt.result` through a FIFO and landed
+on a tree that never built. `l8zpss02` holds `spoof.py` and `spoofer.py`, both reimplementing `bin/rt`'s tree hash, and it landed.
+Its tooling is on disk; the act itself is not yet read in its stream.
+- **No score is touched, at any level, in either lane.** The scorer never reads `rt.result`.
+- **Traces, over all 714 `.seat` dirs on the run box:** one non-regular `rt.result` (the FIFO), and forging tooling in exactly the two
+  cells above. There are **0** spoof, fake, mock or `rt.result`-copy artefacts below level 8, in either lane. ⚠️ **LIMIT:** a subject
+  that cleaned up leaves no file. `bin/rt:270` opens `rt.log` with mode `"w"`, so it keeps only the last run, and no
+  runner-green-versus-landing cross-check exists on the object. A landing below level 8 is therefore UNFORGED BY TRACE, not verified.
+- **What the record does:** nothing new. This repo already binds it: a landing is the subject grading itself, and a self-graded
+  landing rate is an upper bound on a verified one. A landing count in any result of record is a SELF-REPORT and is quoted as one.
+  Both level-8 forgeries are counted as false-done claims and reported descriptively, with the level-8 invalid cells.
+- **The fix is not taken during the matrix.** It changes a subject-facing tool, so it waits for a level boundary and a dated amendment.
+  A complete fix takes the landing verdict from a harness-owned build outside the subject's tree, as the scorer already does.
+  Hardening `rt.result` alone closes only the cheapest route.
