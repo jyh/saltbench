@@ -1111,3 +1111,36 @@ already allows. The order of blocks is the same under both readings, and the Opu
 ✅ **THE CONVENTION:** a cell's cost *means* PROBE-APART. The tables of record stay PROBE-IN as measured, each with its declared line
 (PR #239), and **nothing is re-issued**. **Any arm ratio the pilot's write-up states is taken PROBE-APART from that split and cites it.**
 `cell_meter.py` does not change during the matrix; metering probe-apart at the source is for a registered amendment afterwards.
+
+---
+# ⚖️ DECLARED — LEVEL 8 FIRED UNDER A FENCE THAT HID THE CARGO ROOT (bench, 2026-09-23, on the helm's routing). **Not a count addendum: it moves no condition and the LIVE box is unchanged.**
+**The defect.** The agy wave's sandbox layer lists the parent of the harness cargo root in `denyRead`, with no read carve-out. The
+salt-diet build resolves `vstd` from that registry offline, so `bin/rt` cannot build. Some cells went RED 101 (`no matching package
+named vstd`). Others went GREEN because the subject rebuilt the build environment itself: a hand-written 61-byte `vendor/vstd`, a
+`[patch]` onto the Verus release's `vstd` (rt.log: `0 verified`), or a private `CARGO_HOME`. Plain cells did the same. The fix is
+systems' `3a36fcc` (the render carves both roots, and an artifact check refuses a wave whose toolchain root is denied).
+**The population, measured by two methods over every agy cell's own `ctl/srt-settings.json`:** (1) name equality on the root's
+parent; (2) whether ANY `denyRead` entry equals the cargo root or is an ancestor of it. The two agree:
+```
+  level   cells   cargo root          level   cells   cargo root
+  b4       26     readable            l6v      35     readable
+  l5       67     readable            l7       88     readable
+  l6/r/u   15     readable            l8       43     HIDDEN       (+3 dry renders HIDDEN; the 3-cell rerun root readable)
+```
+The Verus root is readable in every cell at every level, 8 included. ⇒ **The defect is a property of level 8 alone. No condition
+with a result of record rests on an affected cell.** Level 7 was rendered on `9bfb6ef86a36` before the export that introduced it.
+**THE RULING (the lead's; the helm routed it).** Every level-8 cell fired under the hiding fence is **INVALID AS FIRED**. That
+holds for both arms, for GREEN and RED alike, and for cells scored by hand. They are not kept with a note, and they are not
+scored as hollow. The whole of level 8 re-fires on `3a36fcc`, one root per condition.
+- *A GREEN is not evidence that the harness toolchain ran.* A cell that verifies against a stub `vstd` is not a salt-diet datum.
+- *The two lanes did not face the same task.* The Claude lane's fence leaves the cargo root readable (write-denied only), and
+  no Claude-lane cell holds an agent-authored `.cargo`.
+- *The plain arm re-fires too, because pairing is the comparison.* If only the salt arm re-ran, it would build in a working
+  environment while plain kept the broken one. That biases salt-diet against plain in the direction that flatters the hypothesis.
+  So leg 7's plain `3 of 3` is withdrawn as of record, although it scored FULL PASS: two of its three agents authored build config.
+- *One root, one healthy window* (2026-09-15). A window with a harness defect is not healthy.
+**The cells stay on disk.** A cell directory is evidence. Level 8's result file lists each invalid cell with its verdict and the
+reason. The subjects' build-arounds may be reported there DESCRIPTIVELY, never as a rate: they are a real behaviour under a broken
+environment, and they are not the task.
+**What would show this wrong:** an agy cell at level ≤ 7 whose sandbox layer denies a path its build reads. Both roots the fix
+names are measured readable at every such level.
