@@ -120,8 +120,32 @@ adding the two numbers gets the wrong denominator.**
 >   ADDENDUM 8        DONE 60 · OWED 124 · BLOCKED   0 · INEXPR 16     HC stage 1 complete: +0 (a replication; §J3)
 >   ADDENDUM 9        DONE 72 · OWED 112 · BLOCKED   0 · INEXPR 16     level 6 complete: +12
 >   ADDENDUM 10       DONE 99 · OWED  85 · BLOCKED   0 · INEXPR 16     level 7 complete: +27 (§Q1)
->   LIVE (ADDENDUM 11) DONE 109 · OWED 75 · BLOCKED   0 · INEXPR 16    block SB complete: +10 (§R1)
+>   ADDENDUM 11       DONE 109 · OWED  75 · BLOCKED   0 · INEXPR 16     block SB complete: +10 (§R1)
+>   ADDENDUM 12       DONE 109 · OWED  75 · BLOCKED   0 · INEXPR 16     +0 — an ATTRIBUTION correction, no count moves
+>   ADDENDUM 13       DONE 119 · OWED  65 · BLOCKED   0 · INEXPR 16     block O complete: +10
+>   ADDENDUM 14       DONE 129 · OWED  55 · BLOCKED   0 · INEXPR 16     block SG complete: +10
+>   ADDENDUM 15       DONE 137 · OWED  47 · BLOCKED   0 · INEXPR 16     block SS complete: +8
+>   ADDENDUM 16       DONE 145 · OWED  39 · BLOCKED   0 · INEXPR 16     block SBS complete: +8
+>   ADDENDUM 17       DONE 152 · OWED  32 · BLOCKED   0 · INEXPR 16     block OS completes 7 of its 8: +7
+>   LIVE (ADDENDUM 18) DONE 160 · OWED 24 · BLOCKED   0 · INEXPR 16    block SC completes the CLAUDE LANE'S v3 LIST, and block OS's held condition reaches n=3: +8
 > ```
+> ⛔⛔⛔ **AND THEN IT HAPPENED AGAIN, SEVEN TIMES, IN THE BOX THAT CONTAINS THE PARAGRAPH BELOW.**
+> Rows **12–18 were added on 2026-09-22 by `bench`**, after the council read this box's `LIVE` row as
+> `ADDENDUM 11 · DONE 109 · OWED 75` while the file's own live figure was **`DONE 160 · OWED 24`** —
+> **seven addenda and fifty-one conditions behind, in the one table this section declares to be the only
+> current figure in the document, about the Captain's stated top priority.**
+> ⇒ 🔑 ***THE PARAGRAPH BELOW DIAGNOSED THIS EXACT FAILURE, NAMED ITS CAUSE, AND QUOTED THE INSTRUCTION
+> ITS OWN AUTHOR HAD NOT FOLLOWED — AND THE BOX THEN FAILED THE SAME WAY SEVEN MORE TIMES. WRITING THE
+> POST-MORTEM INTO THE INSTRUMENT CHANGED NOTHING, BECAUSE A POST-MORTEM IS SOMETHING A READER READS AND
+> THE LAPSE IS SOMETHING A WRITER COMMITS.***
+> ⛔ **The remedy it reached for was READER-SIDE:** *"the trajectory rows are now DERIVABLE, so a reader
+> who distrusts this box can rebuild it."* True, and it asks the reader to do the work at every read while
+> leaving the writer free to skip it at every write. **A reader-side remedy for a writer-side defect is a
+> permanent tax that never fixes anything.**
+> ✅ **SO THE FIX IS NOT THESE SEVEN ROWS.** It is `CENSUS-full-matrix-2026-09-14-verify.py`, which DERIVES
+> this box from the `ADDENDUM n` headlines — the source this paragraph already identified — and **REFUSES**
+> on any mismatch, missing row or broken chain. The eighth lapse is now a red, not a discovery.
+>
 > ⛔⛔ **THE `ADDENDUM 9` ROW ABOVE WAS ADDED ON 2026-09-19 BY ADDENDUM 10, TWO DAYS LATE. FOR THOSE TWO DAYS
 > THIS BOX'S `LIVE` ROW READ `DONE 60` WHILE THE FILE'S LIVE FIGURE WAS `DONE 72`** — a whole level behind,
 > in the one table this section declares to be the only current figure in the document.
@@ -1011,3 +1035,79 @@ Block SBS fired **8 conditions / 24 cells** (`claude-sonnet-5`, brownfield, `sta
 
 ## §W4 · WHERE THE CAMPAIGN STANDS AFTER ADDENDA 13–17
 **The 43 conditions that were run, harvested and metered with no result of record are now written up: `DONE 109 → 152`, `OWED 75 → 32`.** The remaining 32 are **(a) 10** on the UM cut / SC driver · **(b) 1** on the blanked credential (§W1) · **(c) 21** on the AGY lane's level 8. **None of the 32 is a cell waiting for the Claude lane to be free.**
+
+---
+# ✅✅ ADDENDUM 18 — **BLOCK SC COMPLETES THE CLAUDE LANE'S v3 LIST, AND BLOCK OS's HELD CONDITION REACHES n=3: `DONE 152 → 160`, `OWED 32 → 24`. THE CLAUDE LANE NOW OWES NOTHING.**
+## bench, 2026-09-22. ⚠️ **NOT landed in the same commit as block SC's result of record, and that is a miss against council 2026-09-16 ⑤d — see §X5.**
+
+## §X1 · THE ARITHMETIC — AND THREE CONDITIONS ARE DELIBERATELY NOT MOVED
+```
+  claude-sonnet-5  greenfield x spec-change x {LRU,LZW,Crc32,FreeList,Paxos} x plain        +5
+                   greenfield x spec-change x {LRU,Crc32} x salt-diet                       +2
+  claude-opus-5    brownfield x Crc32 x plain x statement   (block OS, was held at n=1)     +1
+  ⛔ NOT MOVED:    greenfield x spec-change x Paxos    x salt-diet — REACH 0 of 3
+                   greenfield x spec-change x FreeList x salt-diet — REACH 0 of 3
+                   greenfield x spec-change x LZW      x salt-diet — REACH 3 of 3, but see §X3
+  -------------------------------------------------------------------------------------------------
+                                                                                            +8
+  MATRIX         DONE 160 · OWED 24 · BLOCKED 0 · INEXPR 16  = 200
+```
+⇒ **160 + 24 + 0 + 16 = 200.** The 240-view is `DONE 160 · OWED 24 · BLOCKED 0 · INEXPR 56` (= 240).
+⇒ **THE REMAINING 24 ARE ALL ONE LANE'S:** **(a) 3** the block-SC conditions above · **(b) 0** — the blanked-credential class is DISCHARGED · **(c) 21** the AGY lane's level 8. ⛔ **Not one of the 24 is a Claude-lane cell waiting to run.** The v3 list the chain walked is COMPLETE: `STOPPED rc=0 2026-09-22T13:59:04Z strands=0 — LIST COMPLETE`, censused row by row as **191 harvested · 0 flagged outstanding · 0 never-run**.
+
+## §X2 · ⛔ WHY TWO CONDITIONS PRODUCED NOTHING, AND WHY THE OBVIOUS FIX WOULD NOT HAVE HELPED
+`Paxos × salt-diet` and `FreeList × salt-diet` are **REACH 0 of 3**: every rep's phase 1 ended `CAP-COST` against the uniform `C1_USD = 37.21`, so no phase 2 ever ran. **4 of those 6 cells PASSED their phase-1 suites**, so this is a statement about the purse and not about the code — and the two that failed are named per cell in the result, never as an aggregate.
+⛔⛔ **AND RAISING THE PHASE-1 CAP WOULD HAVE PRODUCED ZERO PHASE-2 RESULTS** (desk `WU`, measured this shift): the phase-2 cap `C2_USD = 18.60` is compared against the **cell's cumulative cost**, not phase 2's spend, and is **lower** than `C1_USD`. All six cells spent ≈$37 at phase 1, so each would have entered phase 2 far above `C2_USD` and been cut at its first meter read. ⇒ **These two conditions are not recoverable by loosening the phase-1 cap, and a later reader reaching for that fix should know it was measured.**
+
+## §X3 · ⚖️ THE MARGINAL CALL, MADE EXPLICITLY SO IT CAN BE DISAGREED WITH RATHER THAN REVERSE-ENGINEERED
+`LZW × salt-diet` is the one condition where the two available standards disagree, so the decision is named rather than buried in the `+8`.
+```
+  by §CLB-R clause 5 (REACH)      3 of 3 reached phase 2      ⇒ it is COMPLETE
+  by usable phase-2 OUTCOME       1 of 3 produced a score     ⇒ it is n=1
+    clbczs01  BUILD-FAIL 0/0, cut 32 cents into phase 2   clbczs03  PASS 15/15
+    clbczs02  BUILD-FAIL 0/0, cut 20 cents into phase 2
+```
+⛔ **HELD, on the second standard**, because `BUILD-FAIL 0/0` is the signature of a suite that **never ran** and the result of record places both cells in **no correctness denominator** — so counting the condition DONE would claim an outcome the block does not carry. ⇒ **This follows ADDENDUM 17 §W1's precedent** (a condition at n=1 was held, not moved), applied to a thinner case than that one. ⚠️ **It is the marginal one of the three and a later reader may reasonably take the other view; what must not happen is that it moves silently.**
+
+## §X4 · ⭐ ONE PUBLISHED FIGURE IS SUPERSEDED BY THIS ADDENDUM, AND IT IS THE HEADLINE OF §W2
+Block OS's two new cells are both **plain**, and they are cheaper than its plain median was, so **§W2's uncensored median COST ratio moves from `1.23x` to `1.40x`** (total `1.56x → 1.38x`, T `1.85x → 1.62x`; plain median `$12.08 → $10.57` over n=10 → n=12).
+```
+  median COST ratio (salt-diet : plain)
+    SG   `none`      Sonnet greenfield   8.27x   LOWER BOUND (5 of 15 salt-diet capped)
+    SS   `statement` Sonnet greenfield   5.32x   LOWER BOUND (2 of 12 capped)
+    SBS  `statement` Sonnet brownfield   4.71x   LOWER BOUND (3 of 12 capped)
+    OS   `statement` Opus   brownfield   1.40x   ⭐ UNCENSORED — 0 of 24 capped  (was 1.23x at n=22)
+```
+⇒ **§W2's conclusion is UNCHANGED and its number is not**: the one ratio taken with no cap binding is still by far the smallest, and still cannot be attributed, because OS differs in MODEL as well as in censoring. ⚠️ **The figure is restated here because §W2 is the section a later reader quotes, and a superseded headline that is corrected only in a trajectory section at the foot is a headline that keeps being quoted.**
+⚠️ **AND THE TWO NEW CELLS CARRY A DIFFERENT EXPORT** (`eb18e5d7769b` against the block's `283362105d75`). Measured inert for a phase-1 block three ways — identical task trees, an additive scorer change whose `def score()` is byte-identical, and `clbtcp01` driven under BOTH scorers producing a byte-identical row — and **declared in block OS's §1 rather than absorbed.**
+
+## §X5 · ⚠️ THIS ADDENDUM IS LATE, AND THE RULE IT MISSES IS ONE I QUOTED IN ADDENDUM 17
+Council 2026-09-16 ⑤d requires a census addendum to land **in the same commit as its block's result of record**. ADDENDUM 17's own subtitle says so. **Block SC's result of record merged as saltbench `a4388f19` (#242) with no census addendum beside it**, and this one follows in a later commit.
+⇒ 🔑 ***THE RULE WAS NOT FORGOTTEN — IT WAS NEVER CONSULTED, BECAUSE THE HARVEST'S OWN CHECKLIST ENDED AT "THE RESULT IS A RESULT OF RECORD" AND THE CENSUS IS A DIFFERENT DOCUMENT.*** I went to the census to answer *"what is owed next?"*, not to discharge an obligation, and found the obligation there. **A rule that binds the closing act of a job, but lives in the document the job does not touch, is reachable only by someone who goes looking for more work.**
+✅ **What would have caught it: block SC's result document is the artifact whose landing triggers the duty, so the duty belongs beside it** — in the result's own template or in a gate over `RESULT-claude-block*.md`, not in a council minute and an earlier addendum's subtitle. **Recorded, not fixed here:** a gate is a separate act and this addendum is already late.
+
+## §X6 · WHAT THIS ADDENDUM DOES NOT DO
+- **It moves no AGY condition.** The 21 at level 8 are untouched.
+- **It makes no claim about the salt METHOD**, and block SC's own result states that its spec-change contrast is the thing that block constrains *least*, because the selector removed its two hardest conditions before phase 2 could observe them.
+- **It changes no cap, arm, model, fence, scorer or tripwire.**
+
+---
+# ⚖️ DECLARED — THE COST CONVENTION (desk VX (b), bench, 2026-09-22). **Not a count addendum: it moves no condition and the LIVE box is unchanged.**
+Every `median COST ratio (salt-diet : plain)` in this document (§U3, §W2, §X4) is read from `final_COST`, which **includes the
+harness's own sandbox probe** (about $0.10 a cell, nearly constant). A constant offset is a larger share of the cheaper arm, so in the
+Sonnet blocks each stated ratio is **lower than the cell-only ratio**, the direction that flatters salt-diet. Measured on one split
+table (`evidence/vx-probe-split-2026-09-22/`, `ratio_shift.out`):
+```
+  block   PROBE-IN   PROBE-APART   shift        block   PROBE-IN   PROBE-APART   shift
+  SG       8.48x       9.28x       +9.5 %       SC       4.99x       5.10x       +2.2 %
+  SBS      4.70x       5.12x       +8.9 %       O        1.89x       1.89x       +0.2 %
+  SB      12.73x      13.53x       +6.3 %       OS       1.22x       1.22x       −0.0 %
+  SS       5.31x       5.54x       +4.4 %
+```
+⚠️ That table reproduces this document's SS, SBS, OS and O figures to the second decimal and **does not reproduce SG** (8.48 against
+§U3's 8.27), so SG's line was taken on a different cell set, and its shift is a shift on that table, not a corrected figure.
+⇒ **No claim here changes.** The Sonnet ratios are already declared LOWER BOUNDS (the cap), and probe-apart raises them, which the bound
+already allows. The order of blocks is the same under both readings, and the Opus figures do not move.
+✅ **THE CONVENTION:** a cell's cost *means* PROBE-APART. The tables of record stay PROBE-IN as measured, each with its declared line
+(PR #239), and **nothing is re-issued**. **Any arm ratio the pilot's write-up states is taken PROBE-APART from that split and cites it.**
+`cell_meter.py` does not change during the matrix; metering probe-apart at the source is for a registered amendment afterwards.
