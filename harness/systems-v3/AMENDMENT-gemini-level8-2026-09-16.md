@@ -1397,8 +1397,8 @@ over `end-1`. So the gate read the probe's verdict as the cell's landing, which 
 Every NOT FIRED is still said, never silent, and it names which of the three conditions failed.
 
 ### §A9.3 · THE EXPORT FOR MODE F — §M0 ROW 4's ONE-SHA RULE IS BROKEN HERE, DECLARED
-Mode F fires on a new export that carries §A9.2's gate and the shortened probe cap (§A9.5). **Its sha is named by a further addendum before
-F's first model call, and no F cell fires on an unnamed export.** Chain D's 23 cells and mode E's tripwire keep `3a36fcc`. So level 8 runs on
+Mode F fires on a new export that carries §A9.2's gate and the shortened probe cap (§A9.5). **Its sha is named in THIS addendum, in §A9.3.1 below, once systems' zero-spend
+drive of the copy path (ARM-C fresh → phase 2, ARM-D stale → refused) passes on it; no F cell fires on an unnamed export.** Chain D's 23 cells and mode E's tripwire keep `3a36fcc`. So level 8 runs on
 two exports, and every per-cell table carries the export column so no reader pools across them without seeing it.
 
 ### §A9.4 · THE TWO LANDED-AND-REFUSED CELLS — PHASE 2 ON COPIES, NEVER BY DISPATCH INTO THE CELLS OF RECORD
@@ -1452,17 +1452,25 @@ refreshes is written only at first use, and concurrent first use races it).
 ```
   chains        3, ONE PROBLEM EACH: Paxos · FreeList · LZW, each carrying Pro and Flash × plain and salt-diet of its problem (4 conditions,
                 12 cells). So any load effect of parallel running hits BOTH ARMS of a condition over the same hours, and never one arm.
-  lock          a mkdir-lock around the token warm-up + copy on the run box (systems, in F's export). The credential half of capacity is
+  lock          a mkdir-lock around the token warm-up + copy on the run box (systems, in F's export). Built at `a7c13c7` (mkdir, 10-min takeover). The credential half of capacity is
                 MEASURED CLEAR: one refresh token across 354 master backups 09-11→09-24, and each cell copies at launch, so the lock only closes
                 a TORN copy.
   stagger       chain k's first cell fires only after chain k−1's first cell has LAUNCHED CLEAN. That is the within-wave first-cell law applied
                 across chains, because three waves starting together would race the shared token three times.
   price         F ≈ 38 h serial (the plan at 68,282,814) → ≈ 13 h with three chains, before capacity. The room said ≈ 10 h.
-  capacity      ⟦the MEMORY half: systems' sampler (mem-sampler-20260924) reads a cell's tree-RSS peak from mode E's cells; 3 chains if 3 × peak fits
-                under ~12 GB with swap unused, else systems' number⟧ — a RECEIPT owed
+  capacity      STAGED, because the peak that decides it is a salt-diet Pro cell's and no such cell had run under the sampler
+                (systems' mem-sampler-20260924 reads each live turn loop's tree RSS, an UPPER bound, every 30 s; E's tripwire is plain Flash,
+                the LOW end):
+                  RELEASE 1   at F-RELEASE: chain 1 = PAXOS (§M2 order 1, VARIES, a CAP-COST stop in each arm of its borrowed prior, so
+                              likely the longest; the longest first shortens the total), plus §A9.4's two copies (Pro × Crc32 × salt-diet phase 2, the class that decides)
+                  RELEASE 2   chains 2 and 3, on bench's second release line, only when the sampler has read at least one salt-diet Pro
+                              peak AND 3 × that peak fits under ~12 GB of free+inactive with swap unused. If not, the number of chains
+                              systems prices, and the problems pair up.
+                Neither release waits on the other's cells to FINISH, only on the measurement.
                 before F-RELEASE. If systems prices fewer than 3, this line takes systems' number and the problems pair up.
 ```
 ⛔ **WHAT PARALLEL RUNNING CAN DO TO THE DATA, DECLARED:** a loaded box lengthens walls, and long walls are where probes are censored and
 cells killed (§A9.1). The per-problem split keeps that inside each condition's own arms. §M5's caps are unchanged. Wall figures from F
 are not compared with chain D's, which ran alone.
-⛔ **This addendum does not go to `main` while the capacity receipt is open.**
+⛔ **Release 2 is a measured trigger, not an open blank:** the addendum lands with the rule, and the bus line that releases chains 2–3 carries
+the sampler's peak and the 3 × peak arithmetic in its body.
