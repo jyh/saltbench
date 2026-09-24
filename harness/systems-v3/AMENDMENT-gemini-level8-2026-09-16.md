@@ -1512,3 +1512,40 @@ cells killed (§A9.1). The per-problem split keeps that inside each condition's 
 are not compared with chain D's, which ran alone.
 ⛔ **Release 2 is a measured trigger, not an open blank:** the addendum lands with the rule, and the bus line that releases chains 2–3 carries
 the sampler's peak and the 3 × peak arithmetic in its body.
+
+---
+## ⚖️ ADDENDUM 10 — **§M0 ROWS 7 AND 5 ARE AMENDED FOR MODE F, UNDER HIS "yes to F in parallel": ONE SUPERVISOR PER LANE; THE ACROSS-PROBLEM ORDER BECOMES THE LANES' START ORDER. AND §A9.6's CLAIM THAT THE REGISTRATION DID NOT FORBID IT WAS FALSE.** APPENDED BELOW ALL PRIOR TEXT; nothing above is edited.
+### bench, 2026-09-24, after mode F's freelist and lzw lanes refused at their first fire on the chain's guard for row 7.
+
+### §A10.1 · WHAT WAS WRONG, IN THIS FILE, BY ITS AUTHOR
+§A9.6 says: *"The pre-registration does not forbid it. No text in §M0–§M10 or its addenda requires chains to be serial."* **§M0 row 7 does:**
+*"SEQUENCING — one agy supervisor at a time on the one Google pool."* The search behind §A9.6's sentence used the needles
+`serial|parallel|concurren|one chain|one wave at`, and none of them matches *"one supervisor at a time"*. So the sentence asserted an absence
+its instrument could not detect. The chain's guard enforced row 7 as written, and it was right to. Re-read by a second method (§M0 read whole,
+not searched), row 5 is also touched: *"FIRE ORDER — by expected discrimination (§M2) … Inside a problem: Pro before Flash, plain before
+salt-diet."* Rows 4 (one sha) and 8 (the pre-flight) are already answered in §A9.3 and §A9.3.1.
+
+### §A10.2 · THE AUTHORITY
+The Captain, 2026-09-24 sitting (minute `439e23040` §1.5), (i): *"yes to F in parallel"*, recorded there as *"the fan-out ban carrying that one
+exception in his word"*. Row 7 is that one-at-a-time rule written at level 8's scale. This addendum writes down what his word already
+decided, and it decides nothing new.
+
+### §A10.3 · THE AMENDMENTS, FOR MODE F ONLY (every earlier mode keeps rows 5 and 7 as written)
+```
+  row 7   ONE SUPERVISOR PER LANE, at most three lanes (paxos · freelist · lzw), on the one Google pool. What "one pool" protected is now
+          held by: the credential lock (§A9.6, a mkdir lock around warm-up + copy) · ONE canary health across all lanes (a 503 anywhere
+          degrades all three) · the run-box capacity receipt (§A9.6, 3 × peak ≪ free memory).
+          The chain's guard becomes LANE-SCOPED: it refuses on a live wave IN ITS OWN LANE, and on an UNREADABLE wave ANYWHERE (unreadable
+          stays fail-closed); another lane's live, readable wave passes. Red arms: same-lane live → refuse · other-lane live → pass ·
+          unreadable → refuse · no lane (levels 5–7, modes A–E) → byte-identical behaviour.
+  row 5   ACROSS PROBLEMS the order is the lanes' START ORDER: paxos first (§A9.6, RELEASE 1), then freelist and lzw under the stagger.
+          From then on the three run concurrently, so no problem waits on another's result. INSIDE A PROBLEM row 5 holds unchanged:
+          each lane fires Pro before Flash and plain before salt-diet.
+```
+⚠️ **WHAT THIS CHANGES IN THE DATA, DECLARED:** row 5 ordered the wave by expected discrimination so that the informative problems ran
+first. With concurrent lanes, no problem's result can shape another's firing. Nothing in this level reads one problem's result before
+firing the next (§M2's orders are borrowed priors, which *"order the wave and predict nothing"*), so no decision depended on that order.
+
+### §A10.4 · THE FIRE
+The freelist and lzw lanes re-fire on bench's line after this addendum is on `main` and gemini's lane-scoped guard passes its red arms.
+The paxos lane was never affected: its wave is the live supervisor both refusals read.
