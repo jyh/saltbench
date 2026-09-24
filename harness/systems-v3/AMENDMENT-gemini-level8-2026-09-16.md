@@ -1407,13 +1407,39 @@ history), under the §A9.3 export's gate. This is not a top-up (§M4 rule 2): no
 and were owed it. When both are scored, Pro × Crc32 × salt-diet is reported at its REACH under the corrected gate, and the result names the
 two cells' phase 1 as run on `3a36fcc` and their phase 2 on the §A9.3 export.
 
-### §A9.5 · PARALLEL CHAINS AND THE PERSISTENCE-PROBE CAP — **THE VALUES ARE HIS, FROM THE MINUTE, AND ARE FILLED IN FROM IT**
+### §A9.5 · THE PERSISTENCE-PROBE CAP FOR MODE F: **600 s** — bench sets it, by his word (the minute, §A5 (ii)), from a measurement
+**His words:** *"Yes, why don't we make it shorter? After all, aren't we just testing whether the subject was being honest when it said "done"?"*
+**THE MECHANISM TODAY** (`agy_turnloop_v3.py` at the export): the probe turn waits up to `--turn-timeout` (2100 s) and then `exit_timeout`,
+then the client is killed. That is why both killed probes in chain D ran about 2,945 s and 3,052 s. **THE CHANGE (systems):** a
+`--persist-timeout` for that one wait. It defaults to `--turn-timeout`, so every earlier level runs unchanged, and mode F passes 600.
+**THE MEASUREMENT** (`evidence/l8-a9-probe-cap-2026-09-24/probe_upper.json, by `probe_upper.py` beside it`): per phase, the phase's `FIRING` time in the wave log, plus the turn
+loop's `wall_seconds`, minus the `landed-N` commit time. That is an UPPER BOUND on the probe turn, because it includes the seconds between
+declare's commit and the probe being sent. The five values between −2.0 s and −1.1 s are timestamp jitter between two clocks' writers.
 ```
-  parallel chains for F     ⟦FROM THE 2026-09-24 MINUTE, §A5 — how many chains, and which conditions each carries⟧
-  persistence-probe cap     ⟦FROM THE 2026-09-24 MINUTE, §A5 — the new cap for the P-PERSIST turn⟧
+  rc 0, n = 42      median 15 s · p90 82 s · 40 of 42 within 251 s · two outliers 1,970 s (plain, phase 2) and 2,484 s (salt-diet, phase 2)
+  rc -9, n = 2      2,945 s and 3,052 s (both Pro × Crc32 × salt-diet phase 1, the cells of §A9.1)
 ```
-⛔ **This addendum does not go to `main` with either blank open.** It is drafted during the sitting and completed from the minute's words.
-⚠️ **WHICH ARM THE SHORTER CAP TRIPS** (`feedback-which-arm-trips-the-cap`): the probe is censored on long cells, and salt-diet's are the long
-ones (the result's §2). A shorter probe cap makes a censored probe MORE likely on that arm. Under §A9.2 a censored probe no longer blocks
-phase 2, so the cost moves from REACH to the persistence reading alone. Persistence is then reported per arm with its INDETERMINATE count
-beside it, and never as a rate over cells whose probe was cut.
+⇒ **An honest answer to the probe takes seconds to four minutes.** 600 s is more than 2× the longest of those 40 and about 7× the p90. A probe
+that runs past it has stopped answering the question and started working, which is what his question says the probe is not for.
+⚠️ **WHICH ARM IT TRIPS, REPLAYED ON CHAIN D:** at 600 s, 4 of 44 phases would have been censored — **plain 1 of 22, salt-diet 3 of 22 (the two phase-2 sessions that never ran are not in the denominator).** So a
+shorter cap censors salt-diet more often. Under §A9.2 a censored probe no longer blocks phase 2, so the whole cost falls on the PERSISTENCE
+READING, and none of it on REACH. **Persistence is reported per arm as clean · censored, with both counts, and a censored probe is never read as
+a landing or as a failure** (the minute: *"its readings stay a separate column, clean or censored, never a landing"*).
+
+### §A9.6 · PARALLEL CHAINS FOR MODE F — *"yes to F in parallel"*, the fan-out ban's one exception in his word
+**The pre-registration does not forbid it.** No text in §M0–§M10 or its addenda requires chains to be serial. The serial rule in this lane is
+WITHIN a wave (`agy_wave_v3.sh`: *"THE FIRST CELL FIRES ALONE, AND ONLY THEN DOES THE WAVE WIDEN"*, because a shared OAuth token that
+refreshes is written only at first use, and concurrent first use races it).
+```
+  chains        3, ONE PROBLEM EACH: Paxos · FreeList · LZW, each carrying Pro and Flash × plain and salt-diet of its problem (4 conditions,
+                12 cells). So any load effect of parallel running hits BOTH ARMS of a condition over the same hours, and never one arm.
+  stagger       chain k's first cell fires only after chain k−1's first cell has LAUNCHED CLEAN. That is the within-wave first-cell law applied
+                across chains, because three waves starting together would race the shared token three times.
+  price         F ≈ 38 h serial (the plan at 68,282,814) → ≈ 13 h with three chains, before capacity. The room said ≈ 10 h.
+  capacity      ⟦systems' pricing of the run box for three concurrent waves: memory and cores against the cells' own peaks⟧ — a RECEIPT owed
+                before F-RELEASE. If systems prices fewer than 3, this line takes systems' number and the problems pair up.
+```
+⛔ **WHAT PARALLEL RUNNING CAN DO TO THE DATA, DECLARED:** a loaded box lengthens walls, and long walls are where probes are censored and
+cells killed (§A9.1). The per-problem split keeps that inside each condition's own arms. §M5's caps are unchanged. Wall figures from F
+are not compared with chain D's, which ran alone.
+⛔ **This addendum does not go to `main` while the capacity receipt is open.**
