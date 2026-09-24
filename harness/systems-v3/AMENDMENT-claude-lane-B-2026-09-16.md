@@ -1181,3 +1181,184 @@ repo: jyh/saltbench-systems
 ```
 ⚠️ **The reverse control is not decoration: `--is-ancestor` returns 0 for a commit against ITSELF**, so a cut that happens to equal the required sha passes the forward test trivially. **A YES with no failing control is not a verified cut.**
 ⛔ **A ONE-SHA SET IS NOT A WEAK GATE, AND THE DISTINCTION IS THE POINT:** level 8 needs four because *none of them is an ancestor of the others* — they diverged, and an export cut from any three fails silently. **The Claude lane's production line is linear today, so one sha is the complete and honest answer.** If it ever forks, this block grows at `serial=2` and the gate keeps meaning what it says.
+
+---
+## ⚠️⚠️ ERRATUM TO THE ERRATUM — **E6.1's MEASUREMENT WAS RIGHT AND ITS CLAIM WAS WRONG: THE ACCOUNT *IS* IN THAT DIRECTORY, IN A FILE E6.1 NEVER OPENED. E6.2's RELEASE CONDITION IS ANSWERED BY A READ.** APPENDED BELOW ALL PRIOR TEXT; ADDENDUM 6, E6.1–E6.5, §CLB-A and every signature untouched.
+*bench (lead), 2026-09-21, on the helm's (119th) measurement at the run box, re-driven by the lead before adoption.*
+⚖️ **WHOSE CLAIM IT WAS, ESTABLISHED FIRST BECAUSE THE RECORD MUST NOT MISATTRIBUTE A WITHDRAWAL: the refuted clause is `systems`', in its own words, from its non-author refusal of §A6.2 on 09-19. E6.1 RECORDED it faithfully; it did not originate it, and `systems` re-drove and withdrew it at the object within minutes of the refutation.** ⛔ **WHAT IS THE LEAD'S IS DIFFERENT AND IS IN §E7.5: ADOPTING ANOTHER SEAT'S CLAIM INTO A BINDING RELEASE CONDITION WITHOUT RE-DRIVING IT.** ⇒ **Found by a party who went looking for the thing this erratum declared unfindable** — which is the only way this class is ever found.
+
+### §E7.1 · WHAT E6.1 MEASURED, AND WHAT IT CLAIMED
+```
+  MEASURED, and it is CORRECT and reproduces today:
+    ~/.claude-account-<pool>/.credentials.json  ->  claudeAiOauth keys:
+      accessToken · refreshToken · expiresAt · refreshTokenExpiresAt
+      rateLimitTier · scopes · subscriptionType
+    IDENTICAL KEY SET ON ALL THREE POOL DIRS. No email, no account id, no subject, no organisation.
+
+  CLAIMED:
+    "NO READ OF THAT DIRECTORY CAN BIND IT TO AN ACCOUNT, BECAUSE THE ACCOUNT IS NOT IN IT."
+```
+⛔ **THE MEASUREMENT IS OF ONE FILE. THE CLAIM IS ABOUT THE DIRECTORY.** ⇒ 🔑 ***A CLAIM'S SUBJECT WAS WIDER THAN ITS MEASUREMENT'S, AND NOTHING IN THE MEASUREMENT COULD HAVE REVEALED THAT — the bytes `systems` read were exactly what `systems` said they were.***
+
+### §E7.2 · THE FILE E6.1 NEVER OPENED, IN THE SAME DIRECTORY
+```
+  ~/.claude-account-<pool>/.claude.json   ->  oauthAccount.emailAddress   (and organizationName)
+  MEASURED AT THE RUN BOX, WITH TWO CONTROLS, re-driven by the lead before adoption:
+    pool 1  -> its own account       pool 2  -> its own account       POOL 3 -> the account its own name denotes
+  Every one agrees with its directory's name.
+```
+⚖️ **AND THE FLEET'S LAW IS NOT WEAKENED BY THIS, WHICH IS THE FIRST THING A READER WILL FEAR:** *a directory's name is not an account* stands untouched. **A FIELD was read, and that field is independent of the name** — the agreement is CONFIRMATION, not name-trust. The law forbids inferring the account FROM the name; it has never forbidden reading it.
+
+### §E7.3 · ⚖️ THE RULING: E6.2's CONDITION IS DISCHARGED BY THE READ
+E6.2 replaced §A6.2's owed act with ***"THE CAPTAIN'S WORD — which account was logged into that directory."***
+⇒ **That is a question of FACT about a directory, and it is now answered by reading the directory.**
+⇒ ⛔ **AND THE ESCALATION'S SOLE JUSTIFICATION WAS E6.1's FALSE CLAUSE.** His word was sought BECAUSE no read was thought possible — it was a **PROXY FOR AN UNAVAILABLE MEASUREMENT, NEVER AN INDEPENDENT REQUIREMENT.** Remove the false premise and the reason to spend his attention goes with it.
+⇒ ✅ **THE INTENT HALF WAS ALREADY RULED AND IS NOT AT ISSUE:** council 2026-09-19 §R, his *"yes please"* on admitting the three named pools to this lane. **He ordered the pool admitted; what was missing was which account the directory holds, and that is measured.**
+⛔ **SO: E6.2 IS DISCHARGED. `saltbench-pool3-account` is cleared, and nothing on this matter goes to the Captain.**
+
+### §E7.4 · ⛔ WHAT IS **NOT** DISCHARGED, AND IT IS THE CLAUSE THAT ACTUALLY GOVERNS FIRING
+**E6.3 IS MET:** that pool's token state is read and recorded — access **EXPIRED 2026-09-17T00:55:18Z**, refresh **VALID to 2026-10-10T22:36:15Z** — and the expired access is **DECLARED, not silently refreshed at launch**, exactly as E6.3 requires.
+⛔⛔ **E6.4 IS NOT MET AND IS UNCHANGED: *that pool's FIRST cell is fired DELIBERATELY and singly, never taken as the next row off the queue.*** A plain multi-pool chain restart lets `fill_pass` schedule that first cell, which is precisely what E6.4 forbids — *"a first cell chosen by a scheduler is a first cell nobody can interpret."*
+⭐ **AND THE READ ABOVE MAKES E6.4 *MORE* LOAD-BEARING, NOT LESS, WHICH IS THE PART I WOULD HAVE MISSED:** `.claude.json` is the CLIENT'S OWN RECORD OF ITS LOGIN. It is a strong, independent-of-the-name field and it is **not the server's answer.** ⇒ ***THE ONLY FULLY INDEPENDENT CONFIRMATION OF WHICH ACCOUNT A DIRECTORY DRAWS ON IS AN AUTHENTICATED CALL — AND E6.4's DELIBERATE FIRST CELL IS EXACTLY THAT CALL.*** E6.4 stops being only risk management and becomes the last axis of the identity check.
+⇒ **THE ORDER, THEREFORE:** the pool's reset · a fresh authority reading · **ONE deliberate single cell, its outcome recorded whichever way it goes** · and only then the pool joins the chain's rotation.
+
+### §E7.5 · ⚠️ THE TWO DEFECTS THAT ARE THE LEAD'S, AND NEITHER IS THE SCOPING ERROR
+**⛔ FIRST, AND IT IS THE STRUCTURAL ONE: I MADE ANOTHER SEAT'S UNCHECKED CLAIM INTO A RELEASE CONDITION.** `systems`' refusal was a NON-AUTHOR finding, which is exactly the kind this fleet weights most — and **weighting it highly is not the same act as driving it.** I wrote it into an erratum that BINDS this lane and routes a block to the Captain, and the one thing I never did was open the directory it was about. ⇒ 🔑 ***A FINDING ARRIVES PRE-ARGUED, AND THE MORE CAREFUL ITS AUTHOR THE LESS IT INVITES CHECKING — and `systems`' sufficiency clause ("a second reader of the same bytes crosses no axis") was a correct argument that foreclosed the one axis left, which is `systems`' own framing and is the sharpest sentence in this whole matter.***
+**⛔ SECOND, AND IT IS MINE ALONE: I published the answer three hours before I registered the question.** My own 16:4x fork post carries `oauthAccount.emailAddress` for that very pool, under the words *"checked rather than assumed"* — and at 17:0x I registered a block on the Captain asking which account that directory holds.
+⇒ 🔑 ***THE ANSWER AND THE QUESTION WERE HELD BY ONE SEAT, IN TWO OF ITS OWN DOCUMENTS, WHICH NEVER MET.*** Neither was wrong. **I read `.claude.json` to check the pool was USABLE, and I read `.credentials.json` to check the pool was AUTHENTICABLE, and "which account is this?" was asked of neither** — the same shape as reading a status line four times without a question for the field that mattered.
+⇒ ⚠️ **AND THE ESCALATION IS THE COST: a block on the Captain is the most expensive instrument this fleet has, and I spent it on a fact sitting in my own transcript.** ✅ **THE CHECK THAT WOULD HAVE CAUGHT IT COSTS NOTHING AND IS NOW THIS LANE'S: BEFORE REGISTERING A BLOCK, GREP YOUR OWN SHIFT FOR ITS ANSWER.**
+
+## ⚠️⚠️ §E8 — **THE POOL WAS FIRED AT AND IT COULD NOT AUTHENTICATE: THE TOKEN IS *REVOKED*.** §E6.3's "NOT FATAL … that pool CAN authenticate" IS REFUTED AT THE OBJECT, AND THE BYTES IT REASONED FROM STILL SAY OTHERWISE TODAY. APPENDED BELOW ALL PRIOR TEXT; §Q1–§Q3, ADDENDA 1–6, the E6 erratum, §CLB-A and §E7 and every signature untouched.
+*bench (lead), 2026-09-21 20:1x PDT, executing §E7.4's own order: the pool's reset · a fresh authority reading · ONE deliberate single cell, **its outcome recorded whichever way it goes**. It went the other way. This admits no pool, fires no further cell, changes no arm, cap, fence, scorer or reading rule, and **removes a pool that was never in the rotation.***
+
+### §E8.1 · WHAT WAS RUN, AND WHAT CAME BACK
+```
+  step 1-2   the pool's weekly reset landed and was read ONCE from the authority:
+             QUOTA-LOG row  20:01:16  <pool 3>  0 0 0 0  below-90  MEASURED
+             weekly_all rolled Sep 21 -> Sep 28 IN THE ROW ITSELF · day-line-check rc 0
+             ⇒ and its STAMP was verified to POSTDATE the reset, per the procedure's 18:5x
+               amendment: a reading's AGE and which side of an event it falls on are two clocks.
+  step 3     E6.4's DELIBERATE SINGLE CELL — clbczp02 (SC · LZW · plain · n=2 · phase 1),
+             chosen by hand, CLB_CONCURRENT=1, on that pool's env
+  result     clb_fire REFUSE — sandbox probe rc 5 INDETERMINATE, arm `no-marker`
+             the client's own reply:
+               Failed to authenticate. API Error: 401 OAuth access token has been revoked.
+  spend      ZERO. The refusal is PRE-LAUNCH: no session, no cell record, no metered tokens.
+```
+⭐ **EVERYTHING UPSTREAM OF THE AUTH WAS GREEN, which is what makes the diagnosis clean rather than a mystery:** client pin OK · root exists · models table agrees with block SC · settings rendered (`cleanupPeriodDays` read back 3650) · trust seeded · **fence CONVERGES (re-renders byte-identical)** · `CHECK CLEAN` · and the rendered fence denies all three pool dirs symmetrically (12 entries each, of 1,826). **The admission work was sound; the credential is not.**
+
+### §E8.2 · ⛔⛔ WHAT IT REFUTES — AND THE DIRECTION IS THE POINT
+§E6.3 wrote, deliberately as loudly as its warning: ***"NOT FATAL, AND SAID AS LOUDLY AS THE REST: the refresh token is valid for three more weeks, so that pool CAN authenticate. This is not the blanked-credential case where a target cannot authenticate at all."***
+⛔ **IT IS THE BLANKED-CREDENTIAL CASE IN EVERY WAY THAT MATTERS, AND THE FILE DOES NOT KNOW:**
+```
+  access   EXPIRED 2026-09-17T00:55:18Z    refresh  nominally VALID to 2026-10-10T22:36:15Z
+  .credentials.json mtime  2026-09-16T16:55:19Z — UNMOVED BY THE CALL
+  ⇒ the call never authenticated, and the file reads exactly as healthy AFTER as BEFORE
+```
+⇒ 🔑 ***`refreshTokenExpiresAt` IS THE TOKEN'S **NOMINAL** EXPIRY. IT IS NEVER A STATEMENT THAT THE SERVER STILL HONOURS THE TOKEN.***
+⚠️ **AND THE STRONGER CLAIM I FIRST WROTE HERE — *"a revocation is structurally absent from the credential"* — IS WRONG, AND THE HELM REFUTED IT WITH ONE COLUMN (2026-09-21 20:53, against its own identical clause). IT IS ABSENT FROM THE TOKEN'S **CONTENTS** AND PRESENT IN **WHETHER THE FILE IS STILL BEING WRITTEN**: a live credential is REWRITTEN at every refresh.** Measured at the run box: the two working pools' credentials were touched **within nine hours**; POOL 3's had not moved in **five days**.
+⛔ **THE CONFOUND, WITHOUT WHICH THAT IS A FALSE DETECTOR: POOL 3 WAS NOT IN USE AS A CELL POOL UNTIL THE NIGHT IT WAS ADMITTED, SO A STALE mtime ON AN IDLE POOL IS EXPECTED AND PROVES NOTHING.** Stale **and in use** ⇒ the refresh is failing. Stale **and idle** ⇒ uninformative.
+✅ **SO THE USABLE FORM IS A MOMENT, NOT A WATCHER, AND IT IS ADOPTED INTO THIS LANE'S ADMISSION STEPS: AT THE INSTANT A POOL IS ADMITTED, COMPARE ITS CREDENTIAL mtime AGAINST THE POOLS ALREADY FIRING.** At admission tonight that was a one-command red flag — five days against nine hours — and it is the check nobody ran, including me, because nobody knew to run it.
+⇒ ⚠️ **AND THE ERROR POINTED THE REASSURING WAY: it priced a pool as usable and admitted it to a lane on the Captain's stated top priority.** An instrument that says *fine* is the one nobody re-drives.
+
+### §E8.3 · ⚖️ THE STRUCTURAL FINDING: §E6.3 IS §E6.1's OWN LESSON, ONE LEVEL DOWN
+§E6.1 established that no read of that directory binds it to an account, and named the shape precisely: *"a SECOND INDEPENDENT READER of the same bytes is not independent evidence — it is the same non-evidence read twice … the second reader crosses no axis at all."*
+⇒ **§E6.3 then replaced *"the directory EXISTS"* with *"the token FIELDS look valid"* — a strictly better read, and a read of THE SAME BYTES.** It even named the right instrument in its next breath (*"the only thing that returns an identity is an authenticated call"*) — **and then priced the risk from the file anyway.**
+⇒ 🔑 ***UPGRADING THE QUALITY OF A READ IS NOT THE SAME ACT AS CHANGING THE AXIS, AND IT FEELS LIKE IT IS.*** §E6.3's own added precondition — *"existence is no longer sufficient … authenticable is the claim"* — is correct and was **discharged by reading fields that cannot carry the answer.**
+✅ **SO THE PRECONDITION IS AMENDED, AND THIS IS THE ONE BINDING CHANGE IN §E8:** ⇒ ***A POOL IS "AUTHENTICABLE" ONLY ON THE EVIDENCE OF AN AUTHENTICATED CALL. A TOKEN-STATE READ IS RECORDED AS **DECLARED STATE**, NEVER AS AN AUTHENTICATION CLAIM, AND NO CLAUSE OF THIS LANE MAY PRICE A POOL'S USABILITY FROM IT.***
+⭐ **§E6.4 AND §E7.4 GOT THIS EXACTLY RIGHT AND ARE WHY IT COST NOTHING.** §E7.4: *"THE ONLY FULLY INDEPENDENT CONFIRMATION OF WHICH ACCOUNT A DIRECTORY DRAWS ON IS AN AUTHENTICATED CALL — AND E6.4's DELIBERATE FIRST CELL IS EXACTLY THAT CALL … E6.4 stops being only risk management and becomes the last axis of the identity check."* **It was the last axis, it was the only axis, and firing singly turned a hard 401 into a fifteen-second zero-spend result instead of an ambiguity inside a widened chain.**
+
+### §E8.4 · ⛔ THE POOL IS OUT, AND IT MUST NOT BE LISTED "SO IT IS PICKED UP AUTOMATICALLY"
+The lane runs **TWO**. The chain was relaunched on the two pools that authenticate, verified at its START line (`POOL-ENV` ×2, `SC EXPORT CHECK ok` ×2).
+⛔⛔ **AND THE TRAP THAT WOULD OTHERWISE BE TAKEN IN GOOD FAITH, BECAUSE THE PROCEDURE'S OWN APPENDED RULING ARGUES FOR IT:** that ruling (*"KEEP the OFF pool in the relaunch list — a reset is then picked up automatically with NO further restart"*) was derived for a pool held by its **METER**, and it does not extend here.
+```
+  pool_ok reads quota-triples + day-line-check. NEITHER touches authentication.
+  the revoked pool now meters 0% / below-90 — the BEST of the three.
+  ⇒ listed, it is CHOSEN whenever another pool is busy, REFUSES at the probe, and
+    fire_row classes the failure `ENDED`-family -> return 10 -> FLAGS the row.
+    A flag means "a human must look" AND "never attempt this row again" — i.e. a STRAND,
+    and for an SC row it silently forfeits a due phase 2.
+```
+⇒ 🔑 ***KEEP AN **OFF** POOL LISTED; NEVER LIST AN **UNAUTHENTICABLE** ONE. An OFF pool self-clears at its reset and costs one cheap reading per pass; a revoked pool never self-clears and costs a STRANDED ROW per attempt.*** The two look identical to every instrument the chain owns.
+
+### §E8.5 · ⚖️ THE RELEASE CONDITION, AND IT IS THE CAPTAIN'S
+Registered as a block on the Captain for POOL 3 (since 2026-09-21; the fleet-alert path fired). ⚠️ **The block's registered id names the pool's ACCOUNT and is therefore in the private record only** — this lane's public text names pools by NUMBER, which is the convention every other clause here already uses.
+**OWED: a re-login of that pool's config dir ON THE RUN BOX.** A config dir holds credentials, so it is the Captain's hand, and **§A5.2(d) makes it a QUIET-WINDOW act** — never against a live chain.
+**PROVEN BY:** re-running this exact deliberate single fire, which must reach `LAUNCH OBSERVED` instead of `REFUSE`. ⛔ **§E6.4 STILL GOVERNS THAT RE-RUN** — it is still that pool's first authenticated call, and it is still fired deliberately and singly.
+⚠️ **THE COST OF THE GAP, STATED BECAUSE IT IS ON HIS STATED TOP PRIORITY AND NOT BECAUSE IT IS ANYONE'S FAULT:** the lane is SINGLE-POOL for ~43 hours — one pool at **89 %** against a wall at **96**, no reset until Thu Sep 24 18:00, the second OFF until Wed Sep 23 15:00. **If the live pool crosses its wall the lane goes DARK, and the third pool — which has its entire week untouched — is the one that cannot be spent.**
+
+### §E8.6 · WHAT THIS ERRATUM DOES NOT DO
+1. It admits no pool and fires no further cell. **The lane runs TWO**, as it did before ARM 1.
+2. It changes no arm, cap, model, fence, P4 probe, scorer, tripwire, list order (A3.1), the one-root-at-a-time staging rule (A1.3), or any recorded result. **No cell ran, so there is no result to record.**
+3. It does not re-open §E7, which was correct in everything it measured and ruled: E6.2 **is** discharged by the read, and E6.3's *requirement* (read and record the token state) **was** met. ⇒ **What §E8 corrects is the INFERENCE E6.3 drew from that reading, not the reading and not §E7's ruling.**
+4. It authorises no chain edit. The chain was HALTed and relaunched, never edited.
+
+## ⚖️ §CLB-R · **REACH — THE SELECTION EVERY BLOCK-SC PHASE-2 NUMBER CARRIES, REGISTERED BEFORE THE HARVEST.** APPENDED BELOW ALL PRIOR TEXT; §Q1–§Q3, ADDENDA 1–6, the E6 erratum, §CLB-A, §E7 and §E8 and every signature untouched.
+*bench (lead), 2026-09-22, discharging desk `WJ` rec (e): **a reporting rule written after seeing the numbers is fitted to them**, so this is registered while block SC is still running and before any phase-2 contrast exists. It is the Claude lane's equivalent of the level-8 freeze's §M4, which this lane had no version of. **It changes no arm, cap, model, fence, scorer or tripwire, and excludes no cell.***
+
+### §CLB-R.1 · WHY A PHASE-2 RATE IS NOT A RATE OVER THE CONDITION
+A block-SC phase 2 exists only on a phase 1 that LANDED. **So every phase-2 figure is a figure over the cells that REACHED phase 2, never over all cells of the condition** — and on this lane the thing that decides REACH is the COST CAP.
+```
+  REACH, per condition and arm  =  cells whose phase 1 LANDED  /  cells fired minus fault rows
+```
+⛔ **THE PRIOR IS DIRECT, MEASURED ON THIS LANE'S OWN CELLS, AND IT POINTS AT ONE ARM.** Counted 2026-09-22 over every block-SC cell carrying a `ctl/end-1`, arm read from the cell id:
+```
+  plain        10 cells    0 CAP-COST
+  salt-diet     9 cells    5 CAP-COST      clbcfs01 · clbcfs02 · clbcps01 · clbcps02 · clbcps03
+  by problem   Paxos salt-diet   3 of 3 capped      LRU salt-diet   0 of 3 capped
+               FreeList salt-diet 2 of 2 capped     every plain cell 0 of 10
+  the capped cells' phase-1 T:  122–148 M, against LRU salt-diet's 12–40 M — a 3–12x span
+```
+✅ **AND THE CAP IS UNIFORM TO THE CENT: `C1_USD = 37.21` on ALL 21 staged SC cells — ONE distinct value, re-verified at the object.** ⇒ 🔑 ***THE SELECTOR'S VALUE IS IDENTICAL FOR BOTH ARMS AND ITS INCIDENCE IS NOT, WHICH IS EXACTLY HOW AN ARM-CORRELATED SELECTOR HIDES: a default that binds one arm and not the other is a TREATMENT, however even-handedly it is written.***
+
+### §CLB-R.2 · REGISTERED
+1. **REACH IS PRINTED BESIDE EVERY PHASE-2 FIGURE, PER ARM *AND* PER PROBLEM.** ⛔ Per-arm alone is not sufficient and is actively misleading here: the entire loss is Paxos and FreeList, and an arm-level number invites the reader to attribute to the ARM what belongs to a PROBLEM × ARM interaction.
+2. **A CAPPED CELL IS DECLARED, WITH ITS OWN SUITE RESULT, AND NEVER SILENTLY EXCLUDED** — ⛔ **per cell, never as an aggregate.** *Measured reason, not a preference:* on 2026-09-21 the true statement was *"all four capped cells passed their suites"*; by 2026-09-22 a fifth had capped and **FAILED** (`clbcfs02`, `FAIL 3/7`), so the aggregate form would now be publishing a falsehood from a sentence that was true when written. **A per-cell declaration cannot rot that way.**
+3. **THE CAP IS NAMED AS THE SELECTOR, WITH ITS SINGLE VALUE**, so an exclusion reads as a BUDGET BOUNDARY and not as an outcome. `CAP-COST` is a statement about the purse; whether the code also failed is a *separate* fact and is carried by clause 2.
+4. **A CELL WHOSE PHASE 1 DID NOT LAND IS NOT A PHASE-2 FAILURE.** It is a REACH loss, reported with its phase-1 end kind.
+5. **NO TOP-UP RE-FIRES.** Re-firing a condition until it reaches n selects again on the very property that stopped it. **A condition with REACH < 3 is reported at the n it reached** — and `Paxos salt-diet` is currently REACH 0 of 3, i.e. a whole condition with no phase-2 data, which is reported as such and never quietly dropped.
+6. ⛔ **THE CAP IS NOT CHANGED.** Raising it mid-block is arm-correlated in the OTHER direction and is a registration change, not a lead's act.
+
+### §CLB-R.3 · WHAT THIS DOES NOT DO
+1. It excludes no cell, changes no arm, cap, model, fence, P4 probe, scorer, tripwire or list order, and alters no recorded result.
+2. It does not predict the phase-2 contrast. **It fixes how the contrast must be REPORTED before the contrast exists**, which is the whole of its value.
+3. ⚠️ **THE COUNTS ABOVE ARE A READING, DATED.** Block SC was still running when they were taken. **The RULE is what is registered; every number here is a reading with a date on it**, per the stale-matter law — and clause 1 is what makes the final counts legible whatever they turn out to be.
+
+### §CLB-R.4 · ⚠️ DATED ADDENDUM, 2026-09-22 14:0xZ — **THE BLOCK FINISHED. THE READINGS IN §CLB-R.1 AND `WJ` ARE SUPERSEDED; THE RULE IN §CLB-R.2 IS UNCHANGED, AND THAT SEPARATION IS THE WHOLE POINT OF REC (e).**
+*Appended after block SC completed, so that a reader who meets §CLB-R.1's prior does not carry it away as the result. **Not one word of §CLB-R.2 is edited** — the rule was registered before the contrast existed and stays as written. Every figure below was derived at the object from the chain's own harvest receipts.*
+
+⛔⛔ **THE PROJECTION IN DESK `WJ` IS REFUTED, AND IT WAS MINE.** `WJ` projected *"BLOCK SC WILL PAUSE INCOMPLETE … ROUGHLY 9 OF 13 COMPLETE, AND THAT IS AN UPPER BOUND"* from a 0.78-points-per-cell average against the live pool's wall. **It did not pause.** The chain wrote `STOPPED rc=0 2026-09-22T13:59:04Z strands=0 — LIST COMPLETE — every row harvested or flagged`, and a row-by-row census of its 191-row list finds **191 harvested, 0 flagged outstanding, 0 never-run**. ⇒ 🔑 ***A PROJECTION THAT FAILS IN THE GENEROUS DIRECTION IS STILL A FAILED PROJECTION, AND IT IS THE ONE NOBODY GOES BACK TO CORRECT — the work arrived, so the estimate is never audited.*** The per-cell average was dominated by the expensive salt-diet rows that had already run; the tail was cheap plain and Crc32/LZW work.
+
+**FINAL REACH — clause 1's table, per arm AND per problem, over all 30 block-SC cells:**
+```
+                plain        salt-diet
+  LRU           3/3          3/3
+  Paxos         3/3          0/3     ⛔ a whole condition with NO phase-2 data
+  FreeList      3/3          0/3     ⛔ a whole condition with NO phase-2 data
+  LZW           3/3          3/3
+  Crc32         3/3          3/3
+  TOTAL        15/15         9/15
+```
+⛔ **TWO conditions are REACH 0 of 3, not one.** §CLB-R.1 was written when `FreeList salt-diet` stood at 2 of 2 capped; the third capped on 2026-09-22T05:09:01Z. **Clause 5 governs both: reported at the n they reached, never topped up.**
+
+**THE SELECTOR, PER CELL WITH ITS OWN COST AGAINST THE CAP — clause 2, and there are now SIX at phase 1, not five:**
+```
+  clbcfs01  FreeList salt-diet n=1   37.5795 of 37.21 USD      clbcps01  Paxos salt-diet n=1   37.6169 of 37.21
+  clbcfs02  FreeList salt-diet n=2   37.4995 of 37.21 USD      clbcps02  Paxos salt-diet n=2   37.4009 of 37.21
+  clbcfs03  FreeList salt-diet n=3   37.2789 of 37.21 USD      clbcps03  Paxos salt-diet n=3   37.3077 of 37.21
+```
+**Incidence: 6 of 15 salt-diet, 0 of 15 plain.** The direction §CLB-R.1 registered is unchanged and is now measured over the complete block.
+
+⛔⛔ **AND A SECOND SELECTOR THE DRAFT DID NOT NAME, BECAUSE IT ACTS AT THE OTHER PHASE: PHASE 2 HAS ITS OWN CAP, `C2_USD = 18.60`, AND IT TOOK `LZW salt-diet` 3 OF 3.**
+```
+  clbczs01-p2   24.2912 of 18.60 USD      clbczs02-p2   22.0034 of 18.60      clbczs03-p2   18.6136 of 18.60
+```
+⇒ **`LZW salt-diet` is REACH 3/3 and phase-2 LANDED 0/3** — it passed the phase-1 selector and was taken by the phase-2 one. ⇒ 🔑 ***CLAUSE 4 SEPARATES "DID NOT REACH PHASE 2" FROM "FAILED PHASE 2", AND THIS BLOCK CONTAINS A THIRD THING BOTH OF THEM HIDE: REACHED PHASE 2 AND WAS STOPPED BY A DIFFERENT PURSE.*** Counting it as a phase-2 failure would attribute to the CODE what belongs to a BUDGET, which is exactly the error clause 3 exists to prevent — **one phase down from where the clause was aimed.** ✅ **Clause 3 is therefore read as binding on BOTH caps: a phase-2 `CAP-COST` is declared with its cell, its cost and `C2_USD = 18.60` named as the selector.**
+
+✅ **CAP UNIFORMITY, RE-VERIFIED OVER THE COMPLETE BLOCK AND ON BOTH AXES, WITH ITS COVERAGE DECLARED:** `C1_USD = 37.21` and `C2_USD = 18.60`, **one distinct value each**, across **29 of 30** block-SC stage receipts, agreeing with all 9 CAP-COST markers. ⚠️ **The thirtieth is `clbczp02`, which has NO stage receipt in this run directory** — it is the cell ARM 1 hand-fired at pool 3, where it refused pre-launch at zero spend; the chain later ran it normally and it LANDED (`2026-09-22T05:33:47Z landing-1 1b36a06920f8`). **Declared rather than rounded to 30, because a coverage line is only as wide as the population that built it.**
+
+⚠️ **AND §E8.5's COST-OF-THE-GAP PARAGRAPH IS DISCHARGED FOR THIS BLOCK, NOT REFUTED.** It warned that a single-pool lane goes DARK if the live pool crosses its wall. **The lane stayed single-pool and the list completed anyway**, with the tail running under the saltbench lane exemption at 93 against a day line of 90. The warning was sound and the risk did not land; **POOL 3's release condition is untouched and still the Captain's.**
+
+⛔⛔ **AND A DECLARATION THAT BELONGS IN THE RECORD RATHER THAN IN A COMMIT MESSAGE: THESE TWO SECTIONS ARE *NOT* BYTE-VERBATIM FROM THE DRAFT, BECAUSE VERBATIM DOES NOT PASS THIS REPOSITORY'S GATES.** The drafts brief carried explicit landing instructions to append both sections unchanged, and the first push did exactly that — and `check_infra_names.py` turned the PR red on **three occurrences of two account names**, twice inside a block-registration id (`clb-pool3-<account>-revoked`) and once in a prose reference to the live pool by its account. **Three tokens changed; every claim, figure and clause is untouched**, and the pools are now named by NUMBER, which is the convention the rest of this document already used.
+⇒ 🔑 ***A DRAFT AUTHORED IN A PRIVATE REPOSITORY AND DESTINED FOR A PUBLIC ONE IS NOT VALIDATED BY BEING CAREFULLY WRITTEN OR BY BEING COMMITTED — IT IS VALIDATED BY THE DESTINATION'S OWN GATE, AND NOTHING IN THE PRIVATE REPOSITORY RUNS IT.*** The instruction *"append verbatim"* was written in good faith by an author who could not have discovered the problem from where they stood, **and "verbatim" is exactly the word that discourages the one check that would have caught it.**
+✅ **THE FORM, and it costs one command: before writing a landing instruction that says VERBATIM, run the destination repository's gates over the draft text.** Here that is `python3 scripts/check_infra_names.py` and `scripts/check_private_paths.py` from a saltbench checkout, against the draft file, before it is ever appended.

@@ -1200,3 +1200,172 @@ already qualifies** (`systems`' judgement, and I concur).
 ⚠️ **`--is-ancestor` returns 0 for a commit against ITSELF, so five forward YES with no failing control is not a verified cut.**
 ✅ **MEASURED 2026-09-20 against the landed export `602f218…`: five YES, control OK, and its own `EXPORTED-FROM.sha` equals the signed head. §A8.9 SATISFIED.**
 ⛔ **This block does not lift the hold.**
+
+---
+## 📌 SIGNATURE POINTER — ADDENDUM 7, ADDENDUM 8, ERRATUM 2 and §A8.6–§A8.9. Recorded by the SIGNER at the helm's order; it is a pointer, not the signature. APPENDED BELOW ALL PRIOR TEXT; nothing above is edited.
+**SIGNED WITH RESERVATIONS by `math` as non-author**, 2026-09-21, at blob `44dd75fdf5577446ed89a008df49f0353c84741b` (head `e86bdfa61cd2`; the blob is unchanged at `3c5c0561`), on the fleet bus at offset **66,236,887**. The signature itself is math's SIGNATURE brief in the private record, seat commit `50fd8ca6a`, blob `3a0a0be3ae37` — cited by ROLE and by its object shas, never by a path. Its criteria were committed before the object was opened (seat `7c06a8eac`). **The signer had no part in level 8, and declares that a harness freeze is outside its domain:** it signs what it DROVE or READ, and names what it did not evaluate.
+
+**WHAT HOLDS, DRIVEN:** append-only over every signature (the one in-place change is the declared SCRUB inside the then-unsigned ADDENDUM 7); both earlier signature pointers resolve at the forge; the harness's own block parser reads `serial` 3 as the unique authority, with a set identical to `serial` 2's; every blob and line cited in §A8.6–§A8.9 is as stated; ERRATUM 2 is right. **The export that fired, `e8fcb9d6d6ea`, satisfies §A8.9 and every requirement the signed text above names.**
+
+**TWO RESERVATIONS BLOCK THE RESULT OF RECORD:**
+1. **§A8.5 and §A8.3(5) read deny-lists, and the runtime's write model is allow-only.** The pinned sandbox-runtime refuses any write outside `allowWrite` whether or not the path is in `denyWrite` (its own documentation, and driven on the pinned binary with a control). Every landed level-5/6/7 cell's `allowWrite` is cell-internal (205 of 205). So the toolchain roots and `~/.npm/_logs` were not writable to the subject in any landed level. The complete lift is present in level 8's cells and changes nothing there. **The "named gap beside the verdicts of levels 5, 6 and 7" must not travel:** it would publish a gap that did not exist. §A7.4(c)'s audit-surface limit is untouched.
+2. **This file names `48af25c` as the export last (ERRATUM 2), and never names the export that fired or the scorer that scored it.** `48af25c` fails §A8.9 on every row. §A8.6–§A8.9 replace §M0 row 4's "named by a signed addendum" with "satisfies the block" without saying so, and the Captain's T1 ruling (two shas, the scorer descending from the run export) appears nowhere in this repository. **One addendum naming `e8fcb9d6d6ea`, the scorer `e8c0d0512ab2`, the T1 deviation and the supersession of `48af25c` discharges both halves.**
+
+**LESSER FINDINGS, the lead's to take or decline:** the block's "complete set" omits §M3's fault gate and row 4's base, which are present today only transitively; its reverse control cannot fail when the forward rows pass; its repo line names a repository that is not on the forge; two ADDENDUM 7 line citations carry no sha.
+⛔ **For anyone appending here:** a fenced whole-line serial of 3 makes the cutter refuse, and a HIGHER serial, such as a pasted example, silently becomes the authority. This pointer carries no fenced block at all.
+## ⚖️ §A8.10 — **§M0 ROW 4's EXPORT IS NAMED, `48af25c` IS SUPERSEDED, AND THE T1 DEVIATION IS DECLARED.** APPENDED BELOW ALL PRIOR TEXT; nothing above is edited.
+*bench (lead), 2026-09-21, on `math`'s signature of the level-8 freeze tail (desk `UU`) — reservations F2 and T-b, which this one act
+discharges together. **This section carries NO serial line and is deliberately NOT a required-ancestors block:** the five of §A8.9 are
+UNCHANGED, and the cutter must go on reading §A8.9's block as the authority. Row 4 is satisfied here; the ancestor SET is not touched.*
+
+### §A8.10.1 · THE EXPORT THAT FIRED, AND THE ONE THAT DID NOT
+```
+  FIRED, level 8 modes A and B   e8fcb9d6d6eab930f1706891177064bb1ac7f6d4   repo jyh/saltbench-systems
+  SUPERSEDED, never fired        48af25c1fe01d8bd098582f35389623b352a1e22
+  BASE (§M0 row 4)               2419dcfc4d9e1fc7919f22129904d373f41c97a4   ancestor of the fired export: YES
+  HARNESS DELTA 2419dcf -> e8fcb9d, under harness/systems-v3, which row 4 requires be named:
+    73 commits · 34 files · 5,657 insertions · 114 deletions
+    (incl. agy_fault_gate_v3.py — §M3's phase-1 fault gate, the reason row 4 was PENDING —
+     agy_wave_v3.sh · agy_phase_aside_v3.py · clb_fire.sh · clb_harvest.py · fire_agy_v3.sh)
+```
+⛔ **`48af25c` WAS THIS DOCUMENT'S LAST WORD ON THE SUBJECT (:1047, *"remains level 8's named export"*) AND IT DOES NOT QUALIFY.** Driven
+under §A8.9.3 in a clone of `jyh/saltbench-systems`: **`48af25c` is a descendant of NONE of the five required ancestors — 0 of 5** —
+while **`e8fcb9d` is a descendant of all five, 5 of 5, with §A8.9.3's control OK.** `math` drove the same rows independently and cold.
+⇒ 🔑 ***THE FREEZE NAMED AN EXPORT THAT FAILS ITS OWN QUALIFYING TEST, AND NOTHING READ THE TWO STATEMENTS AGAINST EACH OTHER, BECAUSE
+THEY LIVE 100 LINES AND ONE DAY APART IN AN APPEND-ONLY FILE.*** The naming sentence was written before §A8.6–9 existed; it was never
+re-read once the test did.
+
+### §A8.10.2 · ROW 4's QUALIFYING TEST IS §A8.9, NOT ROW 4's OWN WORDING
+§M0 row 4 requires an export "named by a signed addendum with its harness delta from 2419dcf". §A8.6–9 replaced the *substance* of that
+test with the required-ancestors set — **in unsigned text, without saying that it did so.** This addendum closes the gap the only way an
+append-only document can: **row 4's export is named HERE, its delta is stated above, and the test it must pass is §A8.9's five ancestors.**
+⚠️ **This changes no requirement.** It states which section answers the question, so a reader of row 4 is not left holding a PENDING that
+was in fact resolved by a later block using different words.
+
+### §A8.10.3 · ⛔ THE T1 DEVIATION — DECLARED, IN THE CAPTAIN'S WORDS, AND IT COVERS ALL 59 MODE-B RESULTS
+**T1 as registered requires the score file's line 1 to carry the RUN sha. It carries the SCORER sha.** A corrected scorer is necessarily a
+later commit, so the two cannot be one value once a scorer is repaired mid-campaign.
+```
+  RUN SHA      e8fcb9d6d6eab930f1706891177064bb1ac7f6d4   the export every cell RAN on
+  SCORER SHA   e8c0d0512ab2c0d87076b864a77f4ca4d40228a9   the export every cell was SCORED with
+  driven: the scorer DESCENDS from the run export (git merge-base --is-ancestor), which is the
+          condition the runner's guarded split refuses at zero spend without
+```
+**WHY THE SCORER MOVED:** under `e8fcb9d`, `score_wave_v3.sh:310` ran an UNANCHORED `grep -o 'TESTS [0-9]*/[0-9]*' | tail -1`, which also
+matches inside `CLAUSE_TESTS`, and `tail -1` kept that one. **At phase 2 the TESTS column therefore carried the CLAUSE-FAILURE count under a
+label whose polarity is PASSES** — ⇒ ***a perfect cell and a total failure printed the same string.*** `e8c0d05` anchors the needle and
+forwards both phase-2 counts. **No cell was re-fired; artifacts are unchanged** (mode A's tripwire root hashed `6409af61a7ea1b61`, 763
+files, identical before and after the re-score).
+**THE RULING, HIS WORDS, VERBATIM, AND RECORDED NO WIDER THAN THEY WERE GIVEN:**
+```
+  2026-09-21 13:0x PDT   "yes, arm 1."
+                         Arm 1 = record BOTH shas with the reason, rather than modify either.
+                         Given on the tripwire cell of mode A.
+  2026-09-21 13:5x PDT   "Ah, extend arm 1 on Level 8 mode B"
+                         The EXTENSION of arm 1 to mode B. Mode B fired 2026-09-21 20:58:36Z
+                         (10 legs · 20 rows · 59 cells), both shas logged at chain start.
+```
+⇒ **SO THE DECLARED DEVIATION COVERS THE MODE-A TRIPWIRE CELL *AND* ALL 59 MODE-B CELLS — 60 level-8 results in total.** It is a ruling,
+not a default: the 05:00 2026-09-22 conservative default that had been named under council ⑳ was MOOT before it could fire.
+⚖️ **WHAT ARM 1 ASSERTS, AND WHY IT ASSERTS LESS THAN THE ALTERNATIVE:** a single-sha line here would be *true* and would **conceal which
+scorer produced the numbers.** Recording both asserts less and hides nothing.
+⛔ **A READER OF ANY LEVEL-8 TABLE MUST TAKE BOTH SHAS TOGETHER.** A level-8 number is a measurement of a cell that ran under `e8fcb9d`,
+scored by `e8c0d05`. Neither sha alone describes it.
+
+### §A8.10.4 · WHY THIS IS WRITTEN HERE AND NOT ONLY IN THE RUN TREE
+Before this addendum, **`e8fcb9d` and `e8c0d05` each appeared in ZERO files on public `main`** — driven per needle with `git grep -F`
+against a control of `48af25c` = 1 file — while the deviation was recorded only in the private run tree and a helm bank. ⇒ 🔑 ***A
+DEVIATION RECORDED WHERE THE RUN LIVES IS INVISIBLE TO EVERY READER OF THE RESULT, AND THE RESULT IS THE THING THAT TRAVELS.*** The
+level-8 tables are read from this repository; the declaration belongs where their reader already is.
+📌 **PROVENANCE OF THE TWO INDEPENDENT DRIVES BEHIND THIS SECTION:** `math`'s signature of the freeze tail (blob `44dd75fdf557`), whose
+criteria were registered at `7c06a8eac` BEFORE the object was opened and which was taken COLD; and the lead's own re-drive of §A8.9.3
+and of the T-b needle counts, reported above. **The §A8.9 ancestry drive was run in a local clone with no reachable remote; a missing
+fetch can only produce a "commit not found", never a false YES, and all six shas resolved.**
+
+---
+## ⚠️⚠️ ERRATUM 3 — **§A8.5's PREMISE IS FALSE AS TO ACCESS: THE TOOLCHAIN ROOTS WERE *NOT* WRITABLE TO THE SUBJECT, AND THE GAP §A8.5 ROUTES AT LEVELS 5/6/7 IS RETIRED.** APPENDED BELOW ALL TEXT; §M0–§M8, ADDENDA 1–8, §A8.6–§A8.10, both prior errata and every signature untouched.
+*bench (lead), 2026-09-21, on `math`'s F1 (desk `UU`) — a cold, non-author signature whose criteria were registered before the
+object was opened. **The finding is math's. The drive below is my own, taken because an erratum that is itself wrong is the failure
+this document has already had once** (ERRATUM 1, withdrawn by ERRATUM 2). This section carries no serial line and is not a
+required-ancestors block.*
+
+### §E3.1 · THE SENTENCES THIS ERRATUM CORRECTS
+```
+  §A8.5  :990-991   "~/.rustup · ~/.cargo · ~/.elan were neither read- nor write-denied in EVERY agy
+                     config, INCLUDING THE PINNED ONE levels 5, 6 and 7 ran under"
+  §A8.5  quoting the renderer at :112   "the toolchain roots were writable to the subject."
+  §A8.3(5) :971     the same reading, of ~/.npm/_logs
+```
+⛔ **ALL THREE INFER WRITABILITY FROM *DENY-LIST MEMBERSHIP*. THAT INFERENCE IS ONLY VALID UNDER A DENY-THEN-ALLOW MODEL, AND srt's
+WRITE MODEL IS ALLOW-ONLY.** Under an allow-only model, absence from `denyWrite` says nothing at all: a path is writable only if it
+is *inside* `allowWrite`.
+
+### §E3.2 · DRIVEN, ON THE PINNED BINARY, WITH A CONTROL AND AT THE ARTIFACT
+```
+  THE BINARY      /Users/jyh/srt-pin/.../sandbox-runtime/dist/cli.js
+                  sha256/16 f75ea1f8bb31bbd4 · version 0.0.76
+                  == the digest the lane's own launch receipt asserts (ctl/built-from.tsv,
+                     containment_filesystem row) — so this is the runtime the cells ran under
+  ITS OWN DOCS    README:120  "Write (allow-only pattern): By default, write access is denied
+                              everywhere. You must explicitly allow paths ... An empty allow list
+                              means no write access."
+                  README:659  "denyWrite creates exceptions WITHIN allowed paths"
+  DRIVEN          allowWrite=[<scratch>/in], denyWrite=[]          rc   file after
+                    write INSIDE allowWrite      (CONTROL)          0    PRESENT
+                    write OUTSIDE allowWrite                        1    ABSENT
+                    write to a path in NEITHER list                 1    ABSENT   <- §A8.5's CASE
+                  Verified at the ARTIFACT, not at the exit code: the file is absent, not merely
+                  reported refused.
+  THE CONFIGS     205 of 205 level-5/6/7 cells on the run box carry an srt config. EVERY allowWrite
+  THAT RAN        entry is <that cell's own id>/{repo, ctl, tmp, .agyhome} — 0 exceptions.
+                  Cells naming a toolchain root in denyWrite: 0. In denyRead: 0.
+```
+⇒ ⛔ **SO UNDER THE RUNTIME THEY RAN ON, `~/.rustup` · `~/.cargo` · `~/.elan` · `~/.npm/_logs` WERE **WRITE-DENIED** IN EVERY LANDED
+agy CELL — not by an entry naming them, but by the write model itself.**
+⚠️ **A COUNT I NEARLY PUBLISHED AS A FINDING, RECORDED BECAUSE THE NEXT PERSON TO CENSUS THESE CELLS WILL HIT IT:** my first pass
+read **88 allowWrite entries "outside their own cell"**. All 88 are 22 cells × the same 4 paths, and those 22 cell DIRECTORIES WERE
+RENAMED AFTER THE RUN (a `.HALTED-…` suffix). The config still names the original path; I was comparing it against the new directory
+name. ⇒ 🔑 ***THE MEASUREMENT WAS CORRECT AND THE SUBJECT HAD MOVED*** — printing the four paths dissolved it; a second grep never
+would have.
+
+### §E3.3 · ⛔ THE ACTION §A8.5 ROUTES AT LEVELS 5/6/7 IS RETIRED, AND THAT IS THE OPERATIVE HALF
+§A8.5's last paragraph routes **"a NAMED gap … beside their verdicts"** for levels 5, 6 and 7. ⇒ **THAT GAP DOES NOT EXIST AND MUST
+NOT TRAVEL.** Publishing it would announce a containment hole the campaign never had.
+⇒ 🔑 ***A FALSE CONFESSION IS WORSE THAN THE ERROR IT CONFESSES, BECAUSE IT RIDES OUT ON THE CREDIBILITY THAT CONFESSING BUYS — and
+this document's own ERRATUM 2 says it: a confession is the least-audited thing a seat publishes.***
+**FOR LEVEL 8: HARMLESS, AND IN ONE RESPECT REASSURING.** §A8.5's worry was a *silent change of the subject's write access
+mid-campaign*. **The access did not change**: the complete lift is present in the fired cells (the mode-A tripwire's lifted config
+carries all four in `denyWrite` and none in `denyRead`; control — the cell's own repo is in `allowWrite` and not in `denyWrite`).
+
+### §E3.4 · WHAT THIS ERRATUM DOES **NOT** WITHDRAW
+- **§A8.5's REGISTRATION STANDS.** Carrying every source `denyWrite`-only entry across the lift is still correct and is still the
+  registered behaviour. **What changes is its CHARACTER: it is defence in depth, not the closing of an open hole.** An entry outside
+  `allowWrite` is redundant — and a redundant deny is a fine thing to have and a false thing to advertise.
+- **NO CELL, SUITE, SCORE OR READING RULE IS TOUCHED.** No number in this campaign moves.
+- **§A8.4(i)'s release condition** (F3's entries present in the lifted config) **was satisfied at the object** — and, per this
+  erratum, it measured presence rather than containment for paths outside `allowWrite`. The same is true of the runner's README
+  fire condition naming the same four paths. Both were met; neither was ever the test it reads as.
+- **§A8.3(5)'s ANCESTOR-COVERAGE LESSON IS UNHARMED AND IS THE THING THAT ALMOST GOT THERE.** It upgraded *"is the entry PRESENT?"*
+  to *"is the path COVERED by an ancestor?"*. ⇒ 🔑 ***IT STOPPED ONE LEVEL SHORT OF "CAN THE SUBJECT REACH IT UNDER THE WRITE MODEL
+  AT ALL?" — the file's own lesson, applied one level too shallow*** (math's words, kept).
+
+### §E3.5 · THE FLEET ALREADY KNEW, IN TWO PLACES NEITHER OF WHICH IS THIS DOCUMENT
+```
+  render_srt_config_v3.py   hook_write_denies docstring: an entry not strictly under an allowWrite
+                            path is REFUSED, because "outside the write roots it is already denied
+                            and naming it here would read as a protection this flag did not add"
+  every cell's own receipt  ctl/built-from.tsv, containment_filesystem: "writes closed to the cell
+                            tree and its temp"
+```
+⇒ 🔑 ***THE CORRECT SEMANTICS WERE WRITTEN IN THE RENDERER'S OWN DOCSTRING AND RE-STATED IN EVERY CELL'S RECEIPT, WHILE §A8.5 QUOTED
+A **COMMENT** IN THE SAME FILE (`:109–117`) THAT SAYS THE OPPOSITE.*** The file contradicted itself and the amendment quoted the half
+that was wrong. **A comment is not the instrument, and neither is a deny-list.**
+
+### §E3.6 · LIMITS OF THIS ERRATUM'S OWN EVIDENCE, DECLARED
+- The write semantics were driven on a **scratch fixture**, not against a real toolchain root — deliberately, so that establishing
+  the semantics does not write into a shared tree. The fixture reproduces §A8.5's case exactly (a path in neither list).
+- The config census covers the level-5/6/7 cells **present on the run box** at the time of the drive (205, which is the whole set
+  those levels recorded). It is not a claim about cells that were deleted.
+- `math` drove the same finding independently, cold, three ways (the runtime's docs · a scratch drive on the pinned binary · the
+  205 configs). **Two parties, two instruments, one answer** — and the agreement is worth more than either drive, because math had
+  no stake in this document and I wrote parts of it.

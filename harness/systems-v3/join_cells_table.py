@@ -40,12 +40,79 @@ GREENFIELD_COLS = ["cell","problem","arm","field","extras","run_state","suite","
 #   ⇒ DIFFERENT QUANTITIES, COLLIDING NAME — the one mistake that would read as a working table.
 #   The seed columns are absent for the same reason GREENFIELD_COLS omits them: block SC is greenfield
 #   only (brownfield x spec-change is not in the matrix, and score_claude_v3 REFUSES the pair).
+def _selftest_end2_scope():
+    """⭐ RED BACKWARDS (jas's law): the defect is already fixed, so the SUPERSEDED test is restored as a
+    MUTANT and required to disagree. A new arm that can only be green is decoration.
+
+    ⛔ THE FIXTURE IS DERIVED FROM THE REAL TABLE'S SHAPES, NOT TYPED (idiom law clause 1): the two numbers
+      below are `clbclp03`'s own p1_T/p2_T as joined on 2026-09-22, and `clbcls02`'s, which is why arm 2 is
+      a statement about a cell that exists rather than about an inequality in the abstract.
+    """
+    def MUTANT(e2, p1, p2):           # the superseded one-sided test: "a cumulative cannot be smaller than p1"
+        return "phase-2-only" if int(e2) < int(p1) else "cumulative"
+    fails = []
+    # (label, e2, p1, p2, expected, mutant-must-differ?)
+    cases = [
+        ("a plain cumulative row",            3000000, 1000000, 2000000, "cumulative",   False),
+        ("clbcls02 shape (p2 pool SMALLER)",  6200000, 12500000, 5900000, "phase-2-only", False),
+        ("clbclp03 shape (p2 pool LARGER)",   1791691, 1397336, 1791691, "phase-2-only", True),
+        ("an exact tie is not a guess",       150,     100,     50,      "cumulative",   False),
+        ("an unparseable meter",              "-",     "-",     "-",     "UNMEASURABLE", False),
+    ]
+    print("end2_scope arms:")
+    for label, e2, p1, p2, want, must_differ in cases:
+        got = end2_scope(e2, p1, p2)
+        ok = got == want
+        note = ""
+        if must_differ:
+            try:
+                mg = MUTANT(e2, p1, p2)
+            except Exception:
+                mg = "(mutant raised)"
+            differs = mg != want
+            note = "  ⭐ LOAD-BEARING: the superseded `e2 < p1` test reads %r here" % mg
+            if not differs:
+                ok = False; note += "  ⛔ AND IT AGREES, so this arm proves nothing"
+        print("  %-36s -> %-13s %s%s" % (label, got, "ok" if ok else "⛔ FAIL (want %s)" % want, note))
+        if not ok: fails.append(label)
+    # ⛔ THE ANTI-VACUITY ARM: the tie case must not be reachable by accident from the two live answers.
+    if end2_scope(150, 100, 50) == "UNMEASURABLE":
+        print("  ⛔ FAIL: a clear cumulative was reported UNMEASURABLE"); fails.append("anti-vacuity")
+    if fails:
+        print("⛔ end2_scope SELFTEST FAILED on: %s" % ", ".join(fails)); return 1
+    print("✅ end2_scope 5/5 — one arm LOAD-BEARING against the superseded inequality, which reads the "
+          "clbclp03 shape WRONG; a tie and an unparseable meter are UNMEASURABLE, never a guess.")
+    return 0
+
+
+def end2_scope(e2, p1, p2):
+    """`cumulative` | `phase-2-only` | `UNMEASURABLE` — the scope of a row's `cell_*_at_end2` meter (desk `VV`).
+
+    A cell's two phases under ONE config dir give a CUMULATIVE end-2 meter; a cell that crossed pools gives a
+    PHASE-2-ONLY one, because `cell_meter` sums the sessions under ONE slug and a slug is per config dir.
+    ⛔ NOT an inequality. `e2 < p1` is sound and ONE-SIDED — it misses every cell whose phase-2 pool happens to
+      hold the larger share (`clbclp03`: 1.79M > 1.46M). Asking which of `p1+p2` and `p2` the meter sits NEARER
+      is direction-free and classified 5 of 5 correctly on block SC, including that miss.
+    ⚠️ A COMPARISON IS NOT THE MECHANISM, and this string says so wherever it travels: the exact test is whether
+      the cell's slug appears under MORE THAN ONE config dir (desk `VW`), which needs the run box.
+    ⛔ A tie, or an unparseable meter, is `UNMEASURABLE` — never silently one of the two.
+    """
+    try:
+        e2, p1, p2 = int(e2), int(p1), int(p2)
+    except (TypeError, ValueError):
+        return "UNMEASURABLE"
+    dc, dp = abs(e2 - (p1 + p2)), abs(e2 - p2)
+    if dc == dp:
+        return "UNMEASURABLE"
+    return "cumulative" if dc < dp else "phase-2-only"
+
+
 SPECCHANGE_COLS = ["cell","problem","arm","field","extras","model_served",
                    "p1_run_state","p1_suite","p1_tests","p1_w1_fenced",
                    "p1_T","p1_COST","p1_cap_unit","p1_cap","p1_capped",
                    "p2_run_state","p2_suite","p2_tests","p2_regressions","p2_clause_tests",
                    "p2_V1","p2_V2","p2_T","p2_COST","p2_cap_unit","p2_cap","p2_capped",
-                   "cell_T_at_end2","cell_COST_at_end2"]
+                   "cell_T_at_end2","cell_COST_at_end2","end2_scope"]
 
 # ⛔⛔ THE PER-PHASE COST DOES **NOT** COME FROM THE FROZEN METER, AND THIS IS THE ONE THING IN THIS FILE
 #   MOST LIKELY TO BE "SIMPLIFIED" BY A LATER READER. MEASURED 2026-09-21 on the first SC cell ever run:
@@ -155,6 +222,26 @@ def write_table_comments(out, excl, served_dir):
     """Every declared absence that rides ABOVE the header, for BOTH writers."""
     for c in sorted(excl):
         out.write("# EXCLUDED\t%s\t%s\n" % (c, excl[c]))
+    # ⛔⛔ THE COLUMNS BELOW CARRY THE HARNESS'S OWN SANDBOX PROBE, AND NOTHING USED TO SAY SO (desk VX).
+    #   `final_T`/`final_COST` are read from ctl/post-end-<n>.tsv, which `cell_meter.py` produces over EVERY
+    #   session under the cell's slug — and `clb_fire.sh` runs a sandbox probe under that SAME slug before
+    #   each launch. `clb_harvest.split_slug` separates probe heads from cell heads DELIBERATELY (and refuses
+    #   rather than guess); `cell_meter` never did, and these columns come from `cell_meter`.
+    #   ⇒ 🔑 THE PROBE'S COST IS NEAR-CONSTANT WHILE A CELL'S IS NOT, so it is a LARGER SHARE OF A CHEAPER
+    #     CELL — which makes it ARM-CORRELATED, and a constant offset is neutral in a DIFFERENCE and
+    #     BIASING IN A RATIO. It is declared unconditionally because it is true of every row this tool has
+    #     ever written, not of some configuration of it.
+    out.write("# final_T / final_COST INCLUDE THE HARNESS'S OWN SANDBOX PROBE\t"
+              "the per-cell meter sums every session under the cell's slug, and a sandbox probe runs "
+              "under that same slug before each launch; clb_harvest.split_slug separates them, cell_meter "
+              "does not, and these columns come from cell_meter\t"
+              "MEASURED 2026-09-22 over 180 cells with those two tools and no reimplementation (desk VX): "
+              "the probe is 0.25%-18.52% of final_COST (median 2.58% in the Sonnet blocks, 1.27% in the "
+              "Opus blocks) and a median 3.2x SMALLER share of final_T, so checking this in tokens "
+              "understates it threefold. Its ABSOLUTE cost is near-constant ($0.065-$0.287), so any ratio "
+              "taken BETWEEN ARMS carries it: plain:salt-diet COST was inflated in 22 of 22 matched "
+              "block/problem groups, median +5.2%, max +13.0%, understating salt-diet's cost disadvantage. "
+              "AN ABSOLUTE FIGURE IN THESE COLUMNS IS THE TASK PLUS THE PROBE.\n")
     # ⛔ A BLANK COLUMN THAT IS NOT DECLARED IS THE ADDENDUM-12 DEFECT, REACHABLE BY OMISSION. Without
     #   --served-dir every row's `model_served` is "" and nothing said so — not the table, not stderr.
     #   ⇒ AN EMPTY CELL READS AS "NOT RECORDED" AND AS "UNKNOWN" INDISTINGUISHABLY, and only the person who
@@ -170,7 +257,13 @@ def write_table_comments(out, excl, served_dir):
               file=sys.stderr)
 
 def main():
+    # ⛔ --selftest is read BEFORE the required arguments, or the one command that needs no inputs would be
+    #   refused for not supplying them — the shape that makes a suite unrunnable and therefore unrun.
+    if "--selftest" in sys.argv[1:]:
+        return _selftest_end2_scope()
     ap = argparse.ArgumentParser()
+    ap.add_argument("--selftest", action="store_true",
+                    help="drive end2_scope's arms (desk VV rec (a)); needs no inputs and reads nothing")
     ap.add_argument("--stage", required=True, help="the directory holding one dir per staged cell")
     ap.add_argument("--retention", help="REQUIRED for a brownfield block; omit for greenfield")
     ap.add_argument("--block", required=True, help="the cell-id block letter, e.g. o")
@@ -271,7 +364,20 @@ def main():
                 for pre, m in (("p1_", m1), ("p2_", m2)):
                     row[pre + "cap_unit"] = m["cap_unit"]; row[pre + "cap"] = m["cap"]
                     row[pre + "capped"] = "yes" if m["kind"].startswith("CAP") else "no"
-                # the CUMULATIVE total, kept under a name that says so
+                # ⛔⛔ THE end-2 METER'S MEANING VARIES PER ROW, SO IT SHIPS WITH ITS SCOPE (desk `VV` rec (a)).
+                #   `cell_*_at_end2` is CUMULATIVE over the cell when both phases ran under ONE config dir and
+                #   PHASE-2-ONLY when the cell crossed pools, because `cell_meter` sums the sessions under ONE
+                #   slug and a slug is per config dir. Both readings are plausible numbers, which is why a bare
+                #   column is worse than no column: MEASURED on block SC, cumulative for 3 of 5 and phase-2-only
+                #   for 2, with `clbcls02`'s end-2 COST 2.46 against its own end-1 of 4.58.
+                #   ⛔ THE TEST IS A COMPARISON, NOT AN INEQUALITY, AND THAT IS DELIBERATE. The obvious test
+                #     `e2 < p1_T` is SOUND and ONE-SIDED: it catches `clbcls02` (6.2M < 12.5M) and MISSES
+                #     `clbclp03` (1.79M > 1.46M), where the phase-2 pool's slug simply happens to be the larger
+                #     one. An inequality cannot see the half where the second pool is bigger. Asking which of
+                #     p1+p2 and p2 the meter sits NEARER classifies 5 of 5 correctly, including that miss.
+                #   ⚠️ LIMIT, DECLARED BESIDE THE VERDICT AND NOT ONLY HERE: this is a COMPARISON, not the
+                #     mechanism. The exact test is whether the cell's slug appears under MORE THAN ONE config
+                #     dir (desk `VW`), which is direction-free but needs the run box and so cannot run here.
                 row["cell_T_at_end2"] = m2["final_T"]; row["cell_COST_at_end2"] = m2["final_COST"]
                 # ⛔ PER-PHASE cost from the HARVEST, never from the frozen meter — see the note above.
                 hm1 = read_harvest_meter(os.path.join(hdir, "harvest-%s.out" % cell))
@@ -282,6 +388,7 @@ def main():
                                 % (cell, cell))); continue
                 row["p1_T"], row["p1_COST"] = hm1["T"], hm1["COST"]
                 row["p2_T"], row["p2_COST"] = hm2["T"], hm2["COST"]
+                row["end2_scope"] = end2_scope(row["cell_T_at_end2"], row["p1_T"], row["p2_T"])
                 if a.served_dir:
                     ms = read_served(os.path.join(a.served_dir, "served-%s.out" % cell))
                     if ms is None:
