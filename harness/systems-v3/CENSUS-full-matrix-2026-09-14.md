@@ -127,7 +127,8 @@ adding the two numbers gets the wrong denominator.**
 >   ADDENDUM 15       DONE 137 · OWED  47 · BLOCKED   0 · INEXPR 16     block SS complete: +8
 >   ADDENDUM 16       DONE 145 · OWED  39 · BLOCKED   0 · INEXPR 16     block SBS complete: +8
 >   ADDENDUM 17       DONE 152 · OWED  32 · BLOCKED   0 · INEXPR 16     block OS completes 7 of its 8: +7
->   LIVE (ADDENDUM 18) DONE 160 · OWED 24 · BLOCKED   0 · INEXPR 16    block SC completes the CLAUDE LANE'S v3 LIST, and block OS's held condition reaches n=3: +8
+>   ADDENDUM 18       DONE 160 · OWED  24 · BLOCKED   0 · INEXPR 16     block SC completes the CLAUDE LANE'S v3 LIST, and block OS's held condition reaches n=3: +8
+>   LIVE (ADDENDUM 19) DONE 160 · OWED 21 · BLOCKED   0 · INEXPR 16 · DECLARED 3   the three block-SC residue conditions DECLARED, not owed (his (a), 2026-09-23)
 > ```
 > ⛔⛔⛔ **AND THEN IT HAPPENED AGAIN, SEVEN TIMES, IN THE BOX THAT CONTAINS THE PARAGRAPH BELOW.**
 > Rows **12–18 were added on 2026-09-22 by `bench`**, after the council read this box's `LIVE` row as
@@ -1163,3 +1164,41 @@ Its tooling is on disk; the act itself is not yet read in its stream.
 - **The fix is not taken during the matrix.** It changes a subject-facing tool, so it waits for a level boundary and a dated amendment.
   A complete fix takes the landing verdict from a harness-owned build outside the subject's tree, as the scorer already does.
   Hardening `rt.result` alone closes only the cheapest route.
+
+---
+# ⚖️ ADDENDUM 19 — **THE THREE BLOCK-SC RESIDUE CONDITIONS ARE DECLARED, NOT OWED: `OWED 24 → 21`, `DECLARED 0 → 3`. DONE STAYS AT 160.**
+## bench, 2026-09-23, on the Captain's ruling at the evening sitting (the sitting's minute, §A1), his words verbatim: *"Yes, let's do (a)"*.
+
+## §Y1 · THE ARITHMETIC
+```
+  claude-sonnet-5  greenfield x spec-change x Paxos    x salt-diet   OWED -> DECLARED   REACH 0 of 3
+                   greenfield x spec-change x FreeList x salt-diet   OWED -> DECLARED   REACH 0 of 3
+                   greenfield x spec-change x LZW      x salt-diet   OWED -> DECLARED   REACH 3 of 3, usable phase-2 outcome 1 of 3 (§X3)
+  -------------------------------------------------------------------------------------------------
+  MATRIX         DONE 160 · OWED 21 · BLOCKED 0 · INEXPR 16 · DECLARED 3   = 200
+```
+⇒ **160 + 21 + 0 + 16 + 3 = 200.** The denominator does not change. The three conditions stay in the 200. They are not dropped, and they are not counted DONE.
+⇒ **All 21 OWED conditions are the AGY lane's level 8** (§X1 class (c)). Level 8 is re-firing on `3a36fcc` under the fence ruling above. **The Claude lane owes nothing and holds 3 declarations.**
+⇒ **When level 8 completes, the result of record accounts for 200 conditions: 181 DONE + 16 INEXPR = 197 with an outcome, plus 3 DECLARED.** That is the helm's "197 results + 3 declarations", with the 16 inexpressible conditions counted among the 197 as conditions accounted for, not as data.
+
+## §Y2 · WHAT `DECLARED` MEANS, SO IT IS NOT READ AS EITHER NEIGHBOUR
+A DECLARED condition was **fired as registered and reported whole**, and it **did not produce the phase-2 outcome the matrix asks for, because of the uniform cost cap.** It is reported as **UNREACHED AT THE CAP**, with its reach figure and each cell's own record. Nothing is re-fired.
+- **Not OWED:** no act of any seat can move it. §CLB-R clause 5 forbids topping up n, because a re-fire selects on cheapness, the property that stopped it. §X2 measured that raising the phase-1 cap would still give zero phase-2 results, because `C2_USD` is compared against the cell's cumulative cost.
+- **Not DONE:** DONE means a result of record carrying the condition's outcome. These three carry a REACH outcome, which is a different kind of outcome. A later reader must not add them to a correctness denominator.
+- **Not INEXPR:** the harness can express these conditions and did fire them. The cap stopped them, and that is a property of this pilot's purse, which the write-up has to state.
+
+## §Y3 · THE RECEIPTS, EACH FROM THE FILE THAT CARRIES IT
+```
+  REACH figures      harness/systems-v3/RESULT-claude-blockSC-2026-09-21.md:26-27 (Paxos 0/3, FreeList 0/3), :33 (not re-fired, clause 5)
+  per-cell phase 1   evidence/claude-lane-blocks-2026-09-21/blockSC-cells.tsv lines 1-6, one '# EXCLUDED' row per cell:
+                       clbcps01-03  Paxos     CAP-COST 37.6169 · 37.4009 · 37.3077 of C1_USD 37.21   own suite PASS 17/17 x3
+                       clbcfs01-03  FreeList  CAP-COST 37.5795 · 37.4995 · 37.2789 of C1_USD 37.21   own suite PASS 7/7 · FAIL 3/7 · FAIL 6/7
+  LZW phase 2        the same tsv, rows clbczs01-03: BUILD-FAIL 0/0 · BUILD-FAIL 0/0 · PASS 15/15, each phase 2 cut COST 18.60 (cumulative)
+  the cap mechanism  §X2 above (desk WU)
+```
+⚠️ The LZW condition carries the most information of the three: one real phase-2 PASS 15/15 and two phase-2 builds that never ran. §X3 held it on the usable-outcome standard, and it is DECLARED on that same standard. **Its one PASS is reported as a single cell and never as a condition-level rate.**
+
+## §Y4 · WHAT THIS ADDENDUM DOES NOT DO
+- **It moves no DONE condition and no AGY condition.** The 21 at level 8 are untouched.
+- **It changes no cap, arm, model, fence or scorer**, and it re-fires nothing.
+- **It makes no claim about the salt method.** An arm-correlated cap is what stopped these three conditions (§T3, §U2, §V3). The fact that all three are salt-diet conditions is itself that finding, and the write-up states it beside them rather than leaving them out.
