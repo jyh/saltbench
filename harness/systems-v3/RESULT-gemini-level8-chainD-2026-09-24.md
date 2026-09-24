@@ -144,3 +144,70 @@ The census is re-cut in the same commit (ADDENDUM 20).
   chain end          l8u-2026-09-23/END-MARKER-D: "rc=0 2026-09-24T15:06:58Z CHAIN-DONE mode D"
   verifier           RESULT-gemini-level8-chainD-2026-09-24-verify.py re-derives every figure in §1–§6 from the cells TSV and phase_facts.json
 ```
+
+---
+# ⚠️ ERRATUM 1 — **THIS RESULT NAMED ONE SHA, AND A LEVEL-8 NUMBER IS DESCRIBED BY TWO. THE PAIR IT WAS SCORED UNDER IS OUTSIDE THE RULED T1 DEVIATION.** APPENDED; nothing above is edited.
+## bench, 2026-09-24, found at mode E's tripwire, where E's sentry halted on the same pair.
+
+## §E1 · WHAT IS WRONG
+The header says the cells ran on export `3a36fcc`, and that is true. **Every score in §1 was produced by the scorer `e8c0d05`** (each score file's
+line 1: `score_wave: tools from …-gemini-e8c0d05/… (e8c0d0512ab2)`). The level-8 amendment requires a reader to *"take both shas together"*
+(§A8.10.3), and this result named only one.
+**And the pair is not covered by that deviation.** §A8.10.3 declares the T1 deviation (his *"yes, arm 1"*, extended to mode B) for a scorer that
+*"DESCENDS from the run export"*. Driven:
+```
+  git merge-base --is-ancestor e8c0d05 3a36fcc   rc 1        git merge-base --is-ancestor 3a36fcc e8c0d05   rc 1
+  control:  e8fcb9d → e8c0d05  rc 0  (modes A and B, which the ruling covers)
+```
+⇒ **`e8c0d05` and `3a36fcc` are SIBLINGS** (both from `e8fcb9d`). Modes D and E ran and were scored under a pair no ruling covers.
+
+## §E2 · WHY THE NUMBERS ARE EXPECTED TO STAND, AND WHY EXPECTED IS NOT ENOUGH
+The scoring surface differs between the siblings in ONE file: `score_wave_v3.sh`, where `e8c0d05` carries the TESTS-needle fix and the phase axis.
+`referee_v3.py`, `cell-puller.sh` and every problem's `tasks/` are byte-identical. The run-side commits unique to `3a36fcc` touch only
+`agy_wave_v3.sh`. So `e8c0d05` is the CORRECT scorer: `3a36fcc`'s own `score_wave` still has the needle that printed a perfect cell and a total
+failure as the same string. **That is a prediction about the numbers, not a check of them.**
+
+## §E3 · THE REPAIR, INSIDE THE EXISTING RULING
+`git merge-tree --write-tree 3a36fcc e8c0d05` is CLEAN (tree `95eb6856f3d3`). In it `score_wave` equals `e8c0d05`'s and `agy_wave` equals
+`3a36fcc`'s. A merge commit M DESCENDS from the run export, so §A8.10.3's condition holds for it literally. The 23 cells of §1 are re-scored with
+M's scorer (zero spend, new score dirs, the old ones kept as evidence), and every row is compared with this result's table.
+```
+  M                      fb808a1b41b6da0af7cb357f228ef4993803e38a   parents 3a36fcc + e8c0d05, tree 95eb6856f3d3; 3a36fcc and e8c0d05 are
+                         BOTH ancestors of M, so §A8.10.3's condition holds for M literally. score_wave blob a9894ab9 == e8c0d05's.
+  re-score dirs          l8u-<leg>-2026-09-23-rescore-Mfb808a1, receipts in l8u-rescore-M-2026-09-24/ (SUMMARY.txt); the old dirs are kept
+  rows byte-identical    8 of 8 condition score files IDENTICAL-BELOW-LINE-1 by `cmp` of `tail -n +2` (SUMMARY.txt: 8 CMP lines, 8
+                         IDENTICAL), 23 rows old and 23 new; line 1 moves (e8c0d0512ab2) → (fb808a1b41b6) and nothing else does
+  triple-landed cells    l8cfps02 · l8rfss02 · l8rpsra202 (and the tripwire l8rfwra201): repo HEAD == the commit end-2 names ==
+                         the last landed tag, working tree clean (0 dirty paths), and score_wave runs the B suite over the cell's
+                         working tree (score_wave_v3.sh:331, `run_tests.sh "$W/$id"`) ⇒ each was scored at the commit phase 2 ended on
+```
+⇒ **NO NUMBER IN §1–§6 MOVES.** The prediction in §E2 held, measured. `cell-puller.sh:101`'s `--ref landed-$PHASE` is real code and was not on
+the path that scored these cells. It is a hazard for any consumer that takes it, and it is recorded in §E4.
+✅ **All four are filled from measurements; no row moved, so the census moves only for §E5's condition (ADDENDUM 21).**
+
+## §E4 · A SHAPE THE TABLE DOES NOT SHOW: DECLARE CALLS ARE NOT PHASES
+Three cells above declared three times (twice in phase 1, once in phase 2): `l8cfps02`, `l8rfss02`, `l8rpsra202`. Tags count declare CALLS, and
+end markers count PHASES, so for these cells `end-2` names `landed-3`'s commit, and `landed-2` is phase 1's code. `cell-puller.sh:101` scores
+`--ref landed-$PHASE`, which for this shape would score phase 1's code against the phase-2 suite. §E3's re-score checks each one against the
+commit `end-2` names.
+⚠️ **And my own probe-cap measurement had this defect** (level-8 ADDENDUM 9 §A9.5): it took phase 2's landing time from `landed-2`. Its two
+"long" rc-0 probes, 1,970 s and 2,484 s, are `l8cfps02` and `l8rfss02`, which are exactly two of these cells. So those two values are ARTEFACTS
+of the same shape, and ADDENDUM 9 is corrected before it lands.
+
+## §E5 · THE TRIPWIRE'S ID
+§5 item 7 and §6 name mode E's tripwire as `l8rfwr01`. **Its attempt 1 was DISCARDED on a 503** (ledger, 15:35:47Z), and the cell of record is
+**`l8rfwra201`** (root `…-tripwire-rerun-a2`). It passed all five §M2 reads (bus, 2026-09-24). With `l8rfpb01`–`02`, LRU × Flash × plain
+reaches n = 3, and it moves by a census addendum after §E3.
+
+## §E6 · LRU × FLASH × PLAIN COMPLETES: THE TRIPWIRE IS ITS THIRD CELL
+```
+  l8rfwra201   ran on 3a36fcc (mode E, attempt 2), scored by M: l8u-TRIP-rr-2026-09-24-rescoreMfb808a1-score
+               "ENDED 1/1 · LANDED 1 · SCORABLE 1 · … · FULL PASS 1 of 1 scored - PHASE 2", interface 1b182292f444a1ea (the same interface as
+               l8rfpb01-02, so the three pool) · TESTS 23/23 · REGRESSIONS 0/16 · CLAUSE_TESTS 0/7
+               phase 1: T 3,372,268 · wall 365.1 s · 3 turns · LANDED · rc 0      phase 2: T 3,285,054 · wall 261.8 s · 4 turns · LANDED · rc 0
+               (phase_facts.py on the run box; agy-meter-N.json and agy-turnloop-N.json, phase 1 from _aside/)
+               harvest: l8u-rescore-M-2026-09-24/harvest-TRIP-rr/, taken from the STOOD -a2 root, because E's own harvest was empty (its
+               supervisor was TERMed by the sentry's halt before the driver wrote receipts); conditions.tsv reads CLEAN-BY-RULING
+  condition    3 of 3 reached, scored, FULL PASS · UNRESOLVED-BY-CEILING, like every condition in §1
+```
+It moves OWED → DONE by census ADDENDUM 21, in this commit.

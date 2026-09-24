@@ -129,7 +129,8 @@ adding the two numbers gets the wrong denominator.**
 >   ADDENDUM 17       DONE 152 · OWED  32 · BLOCKED   0 · INEXPR 16     block OS completes 7 of its 8: +7
 >   ADDENDUM 18       DONE 160 · OWED  24 · BLOCKED   0 · INEXPR 16     block SC completes the CLAUDE LANE'S v3 LIST, and block OS's held condition reaches n=3: +8
 >   ADDENDUM 19       DONE 160 · OWED  21 · BLOCKED   0 · INEXPR 16 · DECLARED 3   the three block-SC residue conditions DECLARED, not owed (his (a), 2026-09-23)
->   LIVE (ADDENDUM 20) DONE 166 · OWED 15 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 chain D: six of its eight conditions reach n=3, scored at ceiling: +6
+>   ADDENDUM 20       DONE 166 · OWED  15 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 chain D: six of its eight conditions reach n=3, scored at ceiling: +6
+>   LIVE (ADDENDUM 21) DONE 167 · OWED 14 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 mode E's tripwire completes Flash x LRU x plain: +1
 > ```
 > ⛔⛔⛔ **AND THEN IT HAPPENED AGAIN, SEVEN TIMES, IN THE BOX THAT CONTAINS THE PARAGRAPH BELOW.**
 > Rows **12–18 were added on 2026-09-22 by `bench`**, after the council read this box's `LIVE` row as
@@ -1265,3 +1266,27 @@ phase-2 gate refused them on a censored persistence probe (the result's §2). He
 - It moves no Claude-lane condition and no DECLARED one.
 - It does not move the two chain-D conditions that are short of n. Each keeps its closer in §Z2.
 - It makes no claim about the salt method. A ceiling says nothing about the arms (§M9.6).
+
+---
+# ⚖️ ADDENDUM 21 — **LEVEL 8: MODE E's TRIPWIRE COMPLETES FLASH × LRU × PLAIN. `DONE 166 → 167`, `OWED 15 → 14`.**
+## bench, 2026-09-24, with ERRATUM 1 to `RESULT-gemini-level8-chainD-2026-09-24.md` in the same commit (its §E6 is the condition's record).
+
+## §AA1 · THE ARITHMETIC
+```
+  gemini-3.8-flash-high  greenfield x spec-change x LRU x plain   OWED -> DONE   3 of 3 (l8rfpb01 · l8rfpb02 · l8rfwra201) reached, scored, FULL PASS
+  -------------------------------------------------------------------------------------------------
+  MATRIX         DONE 167 · OWED 14 · BLOCKED 0 · INEXPR 16 · DECLARED 3   = 200
+```
+⇒ **167 + 14 + 0 + 16 + 3 = 200.**
+⚠️ **The tripwire cell is `l8rfwra201`, not `l8rfwr01`** as §Z2 above names it: attempt 1 was discarded on a 503 (ERRATUM 1 §E5).
+
+## §AA2 · THE 14 STILL OWED
+```
+  12  level 8   FreeList · LZW · Paxos × Pro · Flash × plain · salt-diet    mode F on level-8 ADDENDUM 9's export, on bench's F-RELEASE
+   1  level 8   gemini-3.1-pro-high × Crc32 × salt-diet                     phase 2 for l8cpss01/03 on COPIES (his (B), ADDENDUM 9 §A9.4)
+   1  level 7   gemini-3.8-flash-high × brownfield × Crc32 × salt-diet      l7cfss02 + l7cfss03 under level 7's registration, after F
+```
+
+## §AA3 · AND WHAT ERRATUM 1 CHANGES HERE: NOTHING IN ADDENDUM 20's SIX
+The chain-D scores were re-scored under M `fb808a1b41b6` (both shas' descendant), and 8 of 8 condition files are identical below line 1.
+ADDENDUM 20's six DONE conditions stand as moved.
