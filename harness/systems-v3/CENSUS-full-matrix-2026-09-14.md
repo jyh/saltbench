@@ -130,7 +130,8 @@ adding the two numbers gets the wrong denominator.**
 >   ADDENDUM 18       DONE 160 · OWED  24 · BLOCKED   0 · INEXPR 16     block SC completes the CLAUDE LANE'S v3 LIST, and block OS's held condition reaches n=3: +8
 >   ADDENDUM 19       DONE 160 · OWED  21 · BLOCKED   0 · INEXPR 16 · DECLARED 3   the three block-SC residue conditions DECLARED, not owed (his (a), 2026-09-23)
 >   ADDENDUM 20       DONE 166 · OWED  15 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 chain D: six of its eight conditions reach n=3, scored at ceiling: +6
->   LIVE (ADDENDUM 21) DONE 167 · OWED 14 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 mode E's tripwire completes Flash x LRU x plain: +1
+>   ADDENDUM 21       DONE 167 · OWED  14 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 mode E's tripwire completes Flash x LRU x plain: +1
+>   LIVE (ADDENDUM 22) DONE 168 · OWED 13 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 Pro x Crc32 x salt-diet closes on the two copies: +1
 > ```
 > ⛔⛔⛔ **AND THEN IT HAPPENED AGAIN, SEVEN TIMES, IN THE BOX THAT CONTAINS THE PARAGRAPH BELOW.**
 > Rows **12–18 were added on 2026-09-22 by `bench`**, after the council read this box's `LIVE` row as
@@ -1290,3 +1291,22 @@ phase-2 gate refused them on a censored persistence probe (the result's §2). He
 ## §AA3 · AND WHAT ERRATUM 1 CHANGES HERE: NOTHING IN ADDENDUM 20's SIX
 The chain-D scores were re-scored under M `fb808a1b41b6` (both shas' descendant), and 8 of 8 condition files are identical below line 1.
 ADDENDUM 20's six DONE conditions stand as moved.
+
+---
+# ⚖️ ADDENDUM 22 — **LEVEL 8: PRO × CRC32 × SALT-DIET CLOSES ON THE TWO COPIES. `DONE 167 → 168`, `OWED 14 → 13`.**
+## bench, 2026-09-24, with ADDENDUM A of `RESULT-gemini-level8-chainD-2026-09-24.md` in the same commit (the condition's record).
+
+## §AB1 · THE ARITHMETIC
+```
+  gemini-3.1-pro-high  greenfield x spec-change x Crc32 x salt-diet   OWED -> DONE   3 of 3 (l8cpss02 + the copies l8cpss01, l8cpss03)
+                                                                                      reached, scored, FULL PASS; pooling measured (one interface)
+  -------------------------------------------------------------------------------------------------
+  MATRIX         DONE 168 · OWED 13 · BLOCKED 0 · INEXPR 16 · DECLARED 3   = 200
+```
+⇒ **168 + 13 + 0 + 16 + 3 = 200.** His (B) (minute `439e23040` §1.5) is what closed it: without phase 2 on copies, this condition would have been reported at REACH 1/3.
+
+## §AB2 · THE 13 STILL OWED
+```
+  12  level 8   FreeList · LZW · Paxos × Pro · Flash × plain · salt-diet    mode F: paxos lane (RELEASE 1) live · freelist + lzw (RELEASE 2) released
+   1  level 7   gemini-3.8-flash-high × brownfield × Crc32 × salt-diet      l7cfss02 + l7cfss03 under level 7's registration, after F
+```
