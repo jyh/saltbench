@@ -1,2 +1,15 @@
 # private_paths_baseline.tsv -- ACCEPTED residue for the tree ratchet (check_private_paths.py --tree).
 # file<TAB>line-sha16<TAB>what. Shrink it after a repair with --tree --write-baseline; a growth is a reviewed diff.
+harness/systems-v3/PREREGISTRATION-matrix-opus-1-2026-09-08.md	8802dff87b03303c	a path into a private-record repo
+harness/systems-v3/RESULT-gemini-level6-2026-09-17.md	db350922dafc95a2	a path into a private-record repo
+harness/systems-v3/l7-retention-decomp.tsv	9d89c8b2b7ea8906	a path into a private-record repo
+harness/systems-v3/sb-class-correct-witness.tsv	f6714481cf0d6e93	a path into a private-record repo
+harness/systems-v3/sb-retention-decomp.tsv	03bc23c513eed5bb	a path into a private-record repo
+harness/systems-v3/sb-score1-pinned-tree.tsv	c95048a5a1ba2edb	a path into a private-record repo
+harness/systems-v3/sb-score1-pinned-tree.tsv	3da48cffa4b901b7	a path into a private-record repo
+harness/systems-v3/sb-score1-pinned-tree.tsv	774b440cf5213e3f	a path into a private-record repo
+harness/systems-v3/sb-score1-pinned-tree.tsv	fb78c08af7aac993	a path into a private-record repo
+harness/systems-v3/sb-score1-pinned-tree.tsv	578eb9874e64d2c6	a path into a private-record repo
+harness/systems-v3/sb-score1-pinned-tree.tsv	1e5b2531dce0c218	a path into a private-record repo
+harness/systems-v3/sb-score1-pinned-tree.tsv	d64a877b7ae928d0	a path into a private-record repo
+harness/systems-v3/sb-score2-composed.tsv	d6c5a3b24f3e5f7e	a path into a private-record repo

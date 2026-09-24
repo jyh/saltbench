@@ -26,3 +26,11 @@ cb8cea300463	a path into a private-record repo
 d30ef38c6c28	a per-seat runtime config directory
 e09e6a1d32d9	a path into a private-record repo
 efd41256026e	the kit run surface
+# ROW XK (2026-09-24, evidence) — PROPOSED, NOT ACCEPTED UNTIL THE OWNER'S WORD OR THE HELM'S UNDER XF: four commits whose added
+#   lines cite a worktree of the private benchmark harness tree by path. Each was clean under the gate of its day; the owner's
+#   2026-09-23 ruling made the family private, so they surface now. Names and a box path only, no content. Like d30ef38c6c28
+#   above, this does not pre-accept the next.
+036b4ab7f32c	a path into a private-record repo
+3f22b6fd27a7	a path into a private-record repo
+4203df158365	a path into a private-record repo
+c6d62fd31b9d	a path into a private-record repo
