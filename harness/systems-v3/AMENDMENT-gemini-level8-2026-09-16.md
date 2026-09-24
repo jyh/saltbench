@@ -1383,7 +1383,7 @@ over `end-1`. So the gate read the probe's verdict as the cell's landing, which 
 `l8zpps03`) and 1 had not (`l8rpss01`, no `landed-1` tag), so the end kind cannot tell the two apart. The full record, with sources, is
 `RESULT-gemini-level8-chainD-2026-09-24.md` §2.
 
-### §A9.2 · THE GATE (systems builds it; red arms before any F cell)
+### §A9.2 · THE GATE — BUILT by systems at `9b91a98` (`phase2_landed_gate_v3.py`, wired into `run_phase2`): selftest 35/35 red-first, the full suite 73 of 75 with 2 skips declared
 ```
   phase 2 fires iff   ctl/agy-turnloop-1.json   landed == true                (harness-written, outside the subject's repo)
                 AND   tag landed-1 == .seat/landing-1                         (bin/declare's receipt; the tag alone is subject-writable)
@@ -1402,10 +1402,29 @@ F's first model call, and no F cell fires on an unnamed export.** Chain D's 23 c
 two exports, and every per-cell table carries the export column so no reader pools across them without seeing it.
 
 ### §A9.4 · THE TWO LANDED-AND-REFUSED CELLS — PHASE 2 ON COPIES, NEVER BY DISPATCH INTO THE CELLS OF RECORD
-`l8cpss01` and `l8cpss03` each get phase 2 on a COPY of the cell (this repo's rule: a cell directory is evidence, and a dispatch rewrites its git
-history), under the §A9.3 export's gate. This is not a top-up (§M4 rule 2): nothing is re-selected, and these are the cells that reached phase 2
-and were owed it. When both are scored, Pro × Crc32 × salt-diet is reported at its REACH under the corrected gate, and the result names the
-two cells' phase 1 as run on `3a36fcc` and their phase 2 on the §A9.3 export.
+`l8cpss01` and `l8cpss03` each get phase 2 on a COPY. This repo's rule is that a cell directory is evidence, and a dispatch rewrites its git
+history. This is not a top-up (§M4 rule 2): nothing is re-selected, and these are cells that reached the phase-2 gate and were owed phase 2.
+**`cell_copy_v3.py` refuses agy cells by design**, because it builds a new PHASE 1 from a copy, and a copied `ctl/` would hand that subject
+the source's transcript. So the copy here is a different act, and it is only admissible because of the aside:
+```
+  WHY IT IS THE SAME SHAPE   agy_phase_aside_v3.py moves .agyhome/ WHOLE, recreates tmp/ empty and keeps in ctl/ only the KEEP set
+                             (spec plus per-phase receipts, "no transcript and no token") BEFORE EVERY PHASE 2. So every phase 2 in this
+                             level is already a fresh client over the same repo (§M1 F2), and a copy is the same shape if it runs the
+                             same pipeline.
+  1  copy                    the WHOLE source cell (repo/ with history, tags and .seat · ctl/ · .agyhome/ · tmp/) plus
+                             <root>/_receipts/<id>.fence-1, to a NEW path
+  2  re-render               everything keyed to the path: fence.json, srt-settings*, trust, the phase-2 briefing receipt. Lineage goes
+                             in ctl/copied-from.tsv. A copy whose fence was not re-rendered is REFUSED at launch (a red arm).
+  3  the standard path       §A9.2 gate → §M3 (stream-1 and fence-1 were copied) → customer dispatch → aside → phase 2, entered by a
+                             phase-2-only path (AGY_PHASES=2) that refuses a cell with no end-1 or an existing end-2
+```
+**Declared differences:** the path; phase 2 runs on the §A9.3 export while phase 1 ran on `3a36fcc`; and phase 2 starts about a day after phase 1
+in wall-clock time. When both copies are scored, Pro × Crc32 × salt-diet is reported at its REACH under the corrected gate, and every one of
+these differences travels with its row.
+⚠️ **`l8zpps03` is NOT copied, deliberately.** It is a cell of the invalid-as-fired 2026-09-22 legs, and mode F re-fires LZW × Pro × plain from
+scratch. It is also the scoped `rt.result` landing forgery (census, the landing-gate section), and the §A9.2 gate reads it LANDED: tag and
+receipt are subject-reachable bytes, so they prove agreement, not authorship. That is the gate's printed LIMIT. The remedy is a harness-owned
+build, which waits for a level boundary.
 
 ### §A9.5 · THE PERSISTENCE-PROBE CAP FOR MODE F: **600 s** — bench sets it, by his word (the minute, §A5 (ii)), from a measurement
 **His words:** *"Yes, why don't we make it shorter? After all, aren't we just testing whether the subject was being honest when it said "done"?"*
@@ -1433,10 +1452,14 @@ refreshes is written only at first use, and concurrent first use races it).
 ```
   chains        3, ONE PROBLEM EACH: Paxos · FreeList · LZW, each carrying Pro and Flash × plain and salt-diet of its problem (4 conditions,
                 12 cells). So any load effect of parallel running hits BOTH ARMS of a condition over the same hours, and never one arm.
+  lock          a mkdir-lock around the token warm-up + copy on the run box (systems, in F's export). The credential half of capacity is
+                MEASURED CLEAR: one refresh token across 354 master backups 09-11→09-24, and each cell copies at launch, so the lock only closes
+                a TORN copy.
   stagger       chain k's first cell fires only after chain k−1's first cell has LAUNCHED CLEAN. That is the within-wave first-cell law applied
                 across chains, because three waves starting together would race the shared token three times.
   price         F ≈ 38 h serial (the plan at 68,282,814) → ≈ 13 h with three chains, before capacity. The room said ≈ 10 h.
-  capacity      ⟦systems' pricing of the run box for three concurrent waves: memory and cores against the cells' own peaks⟧ — a RECEIPT owed
+  capacity      ⟦the MEMORY half: systems' sampler (mem-sampler-20260924) reads a cell's tree-RSS peak from mode E's cells; 3 chains if 3 × peak fits
+                under ~12 GB with swap unused, else systems' number⟧ — a RECEIPT owed
                 before F-RELEASE. If systems prices fewer than 3, this line takes systems' number and the problems pair up.
 ```
 ⛔ **WHAT PARALLEL RUNNING CAN DO TO THE DATA, DECLARED:** a loaded box lengthens walls, and long walls are where probes are censored and
