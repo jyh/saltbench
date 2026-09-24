@@ -211,3 +211,31 @@ reaches n = 3, and it moves by a census addendum after §E3.
   condition    3 of 3 reached, scored, FULL PASS · UNRESOLVED-BY-CEILING, like every condition in §1
 ```
 It moves OWED → DONE by census ADDENDUM 21, in this commit.
+
+---
+# ⚖️ ADDENDUM A — **PRO × CRC32 × SALT-DIET CLOSES: THE TWO LANDED-AND-REFUSED CELLS RAN PHASE 2 ON COPIES, AND BOTH PASS.** APPENDED; nothing above is edited.
+## bench, 2026-09-24, on the Captain's (B) (minute `439e23040` §1.5) and level-8 ADDENDUM 9 §A9.4 (saltbench main `628f70c`).
+```
+  the copies     l8cpss01, l8cpss03: phase 1 on 3a36fcc (chain D, §2), copied WHOLE into cells-l8-crc32-pro-salt-sc-cp/ keeping their ids,
+                 path-keyed registrations re-rendered, then the unchanged gate → §M3 → customer → aside → phase 2, on export 2e342dc
+                 (mode F RELEASE 1, the paxos lane's copy leg, fired 17:22:08Z)
+  score          l8u-Crc32-pro-cp-2026-09-24-paxos-score/cells-l8-crc32-pro-salt-sc-cp.p2.score.txt, line 1 (2e342dcc02d1), one sha:
+                   l8cpss01  SCORED shell-ok+fence-ok LANDED PASS TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4   end-2 landing 5a9dc83b3621
+                   l8cpss03  SCORED shell-ok+fence-ok LANDED PASS TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4   end-2 landing 3fac277d2526
+                 "ENDED 2/2 · LANDED 2 · SCORABLE 2 · … · FULL PASS 2 of 2 scored - PHASE 2"
+  the condition  l8cpss02 (§1, re-scored under M, ERRATUM 1) + the two copies = 3 of 3 reached, scored, FULL PASS. UNRESOLVED-BY-CEILING,
+                 like every Crc32 condition here, and Crc32's V2 is uninformative (§M7 rule 12).
+```
+**WHY THE THREE POOL, MEASURED RATHER THAN ASSUMED.** They were scored by two trees, M `fb808a1` (`l8cpss02`) and `2e342dc` (the copies):
+- **The same scoring code.** `score_wave_v3.sh` a9894ab9461e · `referee_v3.py` 37610865dfaf · `tasks/systems-v3/Crc32` 1633ee9d9c51 have identical blobs
+  in both trees.
+- **The same problem.** The interface hash is score_wave's own method (REQUIREMENTS.md at the scored commit, the per-cell `work order #…` line
+  normalised, sha256, 16 characters). It reads **540e026180fa6c3a for all three**: `l8cpss02` at HEAD 0c128c859cd4, and the copies at 5a9dc83b3621 and
+  3fac277d2526. The method is validated by its control: the copies' own score file prints POOLABLE on that same hash. `l8cpss02`'s own score file
+  never printed one, because that wave was incomplete (2 of 3 never reached phase 2), so the pooling of this condition had never been measured until now.
+**DECLARED DIFFERENCES THAT TRAVEL WITH THE ROW** (§A9.4): the copies' path; phase 2 on 2e342dc while phase 1 ran on 3a36fcc; phase 2 about a day
+after phase 1 in wall-clock time; and the copies ran NO pre-flight battery (their fence proof is phase 2's own P-SANDBOX, as for any dispatched cell).
+⚠️ **A RECORD DEFECT NOT TO QUOTE:** the copy leg's harvest `conditions.tsv` reads `landed=0 "ran-not-landed PERSIST-INDETERMINATE"`, because
+`gemini_lane_remote_v1.sh:52` builds its token from `end-1`, the SOURCE's, on a phase-2-only cell (gemini's read). The score and `end-2` above are
+the landing record. That line is not.
+It moves OWED → DONE by census ADDENDUM 22, in this commit.
