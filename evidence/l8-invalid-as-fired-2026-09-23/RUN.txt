@@ -1,0 +1,2 @@
+# run on the run box 2026-09-24T01:53:05Z: python3 hidden_root_census.py > hidden_root_census.out
+# 55 rows · 46 HIDDEN (43 wave cells + 3 dry renders) · 9 readable (the 3a36fcc re-run roots, the positive control)
