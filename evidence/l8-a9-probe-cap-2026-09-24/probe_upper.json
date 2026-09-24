@@ -18,14 +18,14 @@
   "phase": 1,
   "rc": 0,
   "wall_seconds": 597.1,
-  "probe_upper_s": 250.1
+  "probe_upper_s": 17.1
  },
  {
   "id": "l8cfps02",
   "phase": 2,
   "rc": 0,
   "wall_seconds": 315.5,
-  "probe_upper_s": 1969.5
+  "probe_upper_s": 39.5
  },
  {
   "id": "l8cfps03",
@@ -95,21 +95,21 @@
   "phase": 2,
   "rc": 0,
   "wall_seconds": 209.6,
-  "probe_upper_s": 75.6
+  "probe_upper_s": -1.4
  },
  {
   "id": "l8cpps02",
   "phase": 1,
   "rc": 0,
   "wall_seconds": 194.9,
-  "probe_upper_s": 61.9
+  "probe_upper_s": -5.1
  },
  {
   "id": "l8cpps02",
   "phase": 2,
   "rc": 0,
   "wall_seconds": 214.8,
-  "probe_upper_s": 56.8
+  "probe_upper_s": 7.8
  },
  {
   "id": "l8cpps03",
@@ -200,14 +200,14 @@
   "phase": 1,
   "rc": 0,
   "wall_seconds": 984.3,
-  "probe_upper_s": 175.3
+  "probe_upper_s": 58.3
  },
  {
   "id": "l8rfss02",
   "phase": 2,
   "rc": 0,
   "wall_seconds": 652.5,
-  "probe_upper_s": 2484.5
+  "probe_upper_s": 15.5
  },
  {
   "id": "l8rfss03",
@@ -235,7 +235,7 @@
   "phase": 2,
   "rc": 0,
   "wall_seconds": 196.6,
-  "probe_upper_s": 78.6
+  "probe_upper_s": 14.6
  },
  {
   "id": "l8rppr02",
@@ -263,7 +263,7 @@
   "phase": 2,
   "rc": 0,
   "wall_seconds": 206.2,
-  "probe_upper_s": 74.2
+  "probe_upper_s": 6.2
  },
  {
   "id": "l8rpsra201",
@@ -291,7 +291,7 @@
   "phase": 2,
   "rc": 0,
   "wall_seconds": 651.6,
-  "probe_upper_s": 63.6
+  "probe_upper_s": -5.4
  },
  {
   "id": "l8rpsra203",

@@ -1431,19 +1431,25 @@ build, which waits for a level boundary.
 **THE MECHANISM TODAY** (`agy_turnloop_v3.py` at the export): the probe turn waits up to `--turn-timeout` (2100 s) and then `exit_timeout`,
 then the client is killed. That is why both killed probes in chain D ran about 2,945 s and 3,052 s. **THE CHANGE (systems):** a
 `--persist-timeout` for that one wait. It defaults to `--turn-timeout`, so every earlier level runs unchanged, and mode F passes 600.
-**THE MEASUREMENT** (`evidence/l8-a9-probe-cap-2026-09-24/probe_upper.json, by `probe_upper.py` beside it`): per phase, the phase's `FIRING` time in the wave log, plus the turn
-loop's `wall_seconds`, minus the `landed-N` commit time. That is an UPPER BOUND on the probe turn, because it includes the seconds between
-declare's commit and the probe being sent. The five values between −2.0 s and −1.1 s are timestamp jitter between two clocks' writers.
+**THE MEASUREMENT** (`evidence/l8-a9-probe-cap-2026-09-24/probe_upper.json`, by `probe_upper.py` beside it): per phase, the phase's
+`FIRING` time in the wave log, plus the turn loop's `wall_seconds`, minus the time of the commit the phase's END MARKER names (its last
+landing). That is an UPPER bound on the probe turn, because it includes the seconds between declare's commit and the probe being sent. The eight
+values between −5.4 s and −0.4 s are jitter between the writers' clocks.
 ```
-  rc 0, n = 42      median 15 s · p90 82 s · 40 of 42 within 251 s · two outliers 1,970 s (plain, phase 2) and 2,484 s (salt-diet, phase 2)
-  rc -9, n = 2      2,945 s and 3,052 s (both Pro × Crc32 × salt-diet phase 1, the cells of §A9.1)
+  rc 0, n = 42      median 10 s · p90 53 s · ALL 42 within 93 s (max 92.3 s)
+  rc -9, n = 2      2,945 s and 3,052 s (both Pro × Crc32 × salt-diet phase 1, the cells of §A9.1, which never answered)
 ```
-⇒ **An honest answer to the probe takes seconds to four minutes.** 600 s is more than 2× the longest of those 40 and about 7× the p90. A probe
-that runs past it has stopped answering the question and started working, which is what his question says the probe is not for.
-⚠️ **WHICH ARM IT TRIPS, REPLAYED ON CHAIN D:** at 600 s, 4 of 44 phases would have been censored — **plain 1 of 22, salt-diet 3 of 22 (the two phase-2 sessions that never ran are not in the denominator).** So a
-shorter cap censors salt-diet more often. Under §A9.2 a censored probe no longer blocks phase 2, so the whole cost falls on the PERSISTENCE
-READING, and none of it on REACH. **Persistence is reported per arm as clean · censored, with both counts, and a censored probe is never read as
-a landing or as a failure** (the minute: *"its readings stay a separate column, clean or censored, never a landing"*).
+⚠️ **CORRECTED BEFORE LANDING.** The first cut of this measurement took phase N's landing from tag `landed-N`, and it reported two long rc-0
+probes. Tags count declare CALLS, and those two cells (`l8cfps02`, `l8rfss02`) declared twice in phase 1, so `landed-2` was phase 1's code and
+the "probe" figure spanned all of phase 2. Both values were ARTEFACTS (the chain-D result's ERRATUM 1 §E4). The arm split drawn from them is
+withdrawn with them.
+⇒ **An honest answer to the probe takes seconds: at most 93 s here.** 600 s is 6.5× the longest. A probe that runs past it has stopped answering
+the question and started working, which is what his question says the probe is not for.
+**WHICH ARM IT TRIPS, REPLAYED ON CHAIN D:** at 600 s, plain 0 of 22 phases and salt-diet 2 of 22, and those two are the killed cells that never
+answered at 2,100 s either. **So on chain D's data the shorter cap censors no probe that would have answered.** It is still declared, because
+the arm with long cells is where a censored probe will appear if F produces one. Under §A9.2 a censored probe no longer blocks phase 2, so any
+cost falls on the PERSISTENCE READING and none on REACH. **Persistence is reported per arm as clean · censored, with both counts, and a censored
+probe is never read as a landing or as a failure** (the minute: *"its readings stay a separate column, clean or censored, never a landing"*).
 
 ### §A9.6 · PARALLEL CHAINS FOR MODE F — *"yes to F in parallel"*, the fan-out ban's one exception in his word
 **The pre-registration does not forbid it.** No text in §M0–§M10 or its addenda requires chains to be serial. The serial rule in this lane is

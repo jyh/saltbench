@@ -2,14 +2,16 @@
   probe_upper_s = FIRING time of the phase (wave fire log) + the turn loop's wall_seconds - the landed-N commit time
 Inputs, all in this directory:
   phase_fire_times.txt       `grep -o '<ts> widen-<task> FIRING <id> phase <n>'` over chain D's wave fire logs (last firing wins)
-  landing_commit_times.txt   `<id> <phase> <committer ISO time of tag landed-<phase>>` read from each cell's repo on the run box
+  landing_commit_times.txt   `<id> <phase> <ISO time> <source> <sha>`: the commit the phase's END MARKER names (end-N 'LANDED landing-k <sha>'),
+                             i.e. the phase's LAST landing; `only-landed-1` where end-1 names no sha (a censored probe). NOT tag landed-<phase>:
+                             tags count declare CALLS, and a cell that declares twice in one phase shifts every later tag (ERRATUM 1 §E4).
   phase_facts.json           wall_seconds and rc per cell and phase (ctl/agy-turnloop-N.json, or _aside/<id>/phase1/ctl/)
 It is an UPPER bound: it includes the seconds between bin/declare's commit and the probe being sent."""
 import json, datetime as dt, statistics as st, os
 here = os.path.dirname(os.path.abspath(__file__))
 ts = lambda s: dt.datetime.fromisoformat(s.replace('Z', '+00:00'))
 pf = {(x['id'], x['phase']): x for x in json.load(open(os.path.join(here, 'phase_facts.json')))}
-land = {(c, int(p)): ts(t) for c, p, t in (l.split() for l in open(os.path.join(here, 'landing_commit_times.txt'))) if t != 'NONE'}
+land = {(w[0], int(w[1])): ts(w[2]) for w in (l.split() for l in open(os.path.join(here, 'landing_commit_times.txt'))) if w[2] != 'NONE'}
 fire = {}
 for l in open(os.path.join(here, 'phase_fire_times.txt')):
     w = l.split(); fire[(w[3], int(w[5]))] = ts(w[0])
