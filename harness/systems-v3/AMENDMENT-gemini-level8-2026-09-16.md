@@ -1461,6 +1461,11 @@ refreshes is written only at first use, and concurrent first use races it).
   lock          a mkdir-lock around the token warm-up + copy on the run box (systems, in F's export). Built at `a7c13c7` (mkdir, 10-min takeover). The credential half of capacity is
                 MEASURED CLEAR: one refresh token across 354 master backups 09-11→09-24, and each cell copies at launch, so the lock only closes
                 a TORN copy.
+  lanes         one DRIVER LANE per chain: gemini_drive's one-live-driver-per-seat claim becomes one per LANE
+                ($RUNS/.current-<lane>, lane in paxos | freelist | lzw, any other name refused), so the law still holds within a
+                population (gemini's finding: as built, chain 2's first fire would die at claim).
+  health        ONE canary health across all three chains, because there is one credential: a 503 in any chain degrades all three.
+                Declared, because a DEGRADED pause stretches all three chains' walls together.
   stagger       chain k's first cell fires only after chain k−1's first cell has LAUNCHED CLEAN. That is the within-wave first-cell law applied
                 across chains, because three waves starting together would race the shared token three times.
   price         F ≈ 38 h serial (the plan at 68,282,814) → ≈ 13 h with three chains, before capacity. The room said ≈ 10 h.
