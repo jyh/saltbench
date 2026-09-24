@@ -1397,12 +1397,33 @@ over `end-1`. So the gate read the probe's verdict as the cell's landing, which 
 Every NOT FIRED is still said, never silent, and it names which of the three conditions failed.
 
 ### §A9.3 · THE EXPORT FOR MODE F — §M0 ROW 4's ONE-SHA RULE IS BROKEN HERE, DECLARED
-Mode F fires on a new export that carries §A9.2's gate and the shortened probe cap (§A9.5). **Its sha is named in THIS addendum, in §A9.3.1 below, once systems' zero-spend
+Mode F fires on a new export that carries §A9.2's gate and the shortened probe cap (§A9.5). **Its sha is named in THIS addendum, in §A9.3.1, once systems' zero-spend
 drive of the copy path (ARM-C fresh → phase 2, ARM-D stale → refused) passes on it THROUGH THE ROUTE F FIRES BY (canary → drive →
 wave), not at the wave alone; no F cell fires on an unnamed export.**
 ⚠️ The first such pass (`a7c13c7`) drove `dry_phase2_v3.sh`, which enters at the wave, and two of the three layers above it refused a copy
 (gemini's read). **A pass on a layer is not a pass on the route.** Chain D's 23 cells and mode E's tripwire keep `3a36fcc`. So level 8 runs on
 two exports, and every per-cell table carries the export column so no reader pools across them without seeing it.
+
+### §A9.3.1 · THE EXPORT FOR MODE F IS NAMED: `2e342dcc02d1ad022884ebc6576a2415780796f9`
+```
+  lineage     2e342dc is on systems/F-on-M-2026-09-24, above M = fb808a1b41b6 (a merge of 3a36fcc and e8c0d05, tree 95eb6856f3d3).
+              It is 3a36fcc..a7c13c7 rebased onto M, where the ONLY difference from a7c13c7 is e8c0d05's five files, each byte-identical,
+              then 4d59f83 · 5fe2e90 · bac460b · c1e2b91 · 93ee790 · 2e342dc. studio_export: ancestor gate 5/5 OK, withheld-shaped 0 both sides.
+  ONE SHA     F RUNS and is SCORED on 2e342dc: the scorer is the export, so §A8.10.3's deviation is not needed and the T1 needle reads
+              one sha. (Chain D ran on 3a36fcc and is scored under M: the chain-D result's ERRATUM 1.)
+  carries     §A9.2's gate · §A9.5's --persist-timeout (F passes AGY_PERSIST_TIMEOUT=600) · §A9.6's lane key and credential lock ·
+              §A9.4's copy path (agy_cell_copy_v3.py, AGY_PHASES=2 with AGY_COPY_FROM, carried by the drive and the canary)
+  THE DRIVE   zero spend, THROUGH THE ROUTE (canary → drive → wave, DRIVE_LANE=paxos, the real copy manifest, AGY_DRY_RENDER=1):
+              CONDITION-CLEAN on attempt 4. Attempts 1-3 each found a defect no fixture had (a socket in the source's tmp/ ·
+              the pre-flight battery on a copy's un-asided HOME · an mtime proxy that refused a correct copy), and each was fixed. Sources
+              untouched every time.
+  ITS LIMIT   the route stops before warm-up, so run_phase2 (the §A9.2 gate) is proved AT THE WAVE on this export: dry_phase2 --copy
+              fresh ⇒ ARM-C REACHED (gate → §M3 → customer → aside → phase 2) · --copy stale ⇒ ARM-D HELD (LAUNCH-REFUSED). ARM-D is
+              unreachable through the route by construction (the wave always re-renders, and the copy tool deletes the old fence).
+  a copy      runs NO pre-flight battery (its HOME is phase 1's until the aside). Its fence proof is phase 2's own P-SANDBOX on a fresh
+              HOME, exactly a dispatched cell's, and the log says so.
+  SUITE       ⟦selftest_all_v3 on 2e342dc — systems' tally⟧
+```
 
 ### §A9.4 · THE TWO LANDED-AND-REFUSED CELLS — PHASE 2 ON COPIES, NEVER BY DISPATCH INTO THE CELLS OF RECORD
 `l8cpss01` and `l8cpss03` each get phase 2 on a COPY. This repo's rule is that a cell directory is evidence, and a dispatch rewrites its git
