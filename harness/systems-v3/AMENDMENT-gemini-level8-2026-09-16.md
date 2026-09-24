@@ -1398,7 +1398,10 @@ Every NOT FIRED is still said, never silent, and it names which of the three con
 
 ### §A9.3 · THE EXPORT FOR MODE F — §M0 ROW 4's ONE-SHA RULE IS BROKEN HERE, DECLARED
 Mode F fires on a new export that carries §A9.2's gate and the shortened probe cap (§A9.5). **Its sha is named in THIS addendum, in §A9.3.1 below, once systems' zero-spend
-drive of the copy path (ARM-C fresh → phase 2, ARM-D stale → refused) passes on it; no F cell fires on an unnamed export.** Chain D's 23 cells and mode E's tripwire keep `3a36fcc`. So level 8 runs on
+drive of the copy path (ARM-C fresh → phase 2, ARM-D stale → refused) passes on it THROUGH THE ROUTE F FIRES BY (canary → drive →
+wave), not at the wave alone; no F cell fires on an unnamed export.**
+⚠️ The first such pass (`a7c13c7`) drove `dry_phase2_v3.sh`, which enters at the wave, and two of the three layers above it refused a copy
+(gemini's read). **A pass on a layer is not a pass on the route.** Chain D's 23 cells and mode E's tripwire keep `3a36fcc`. So level 8 runs on
 two exports, and every per-cell table carries the export column so no reader pools across them without seeing it.
 
 ### §A9.4 · THE TWO LANDED-AND-REFUSED CELLS — PHASE 2 ON COPIES, NEVER BY DISPATCH INTO THE CELLS OF RECORD
@@ -1415,6 +1418,8 @@ the source's transcript. So the copy here is a different act, and it is only adm
                              <root>/_receipts/<id>.fence-1, to a NEW path
   2  re-render               everything keyed to the path: fence.json, srt-settings*, trust, the phase-2 briefing receipt. Lineage goes
                              in ctl/copied-from.tsv. A copy whose fence was not re-rendered is REFUSED at launch (a red arm).
+  ids                      taken from the copies (l8cpss01 and l8cpss03, kept as-is), never from prefix + reps, which would name 01 and 02.
+                           A manifest that disagrees with the copy list is REFUSED. The copy root is `<source root>-cp`.
   3  the standard path       §A9.2 gate → §M3 (stream-1 and fence-1 were copied) → customer dispatch → aside → phase 2, entered by a
                              phase-2-only path (AGY_PHASES=2) that refuses a cell with no end-1 or an existing end-2
 ```
