@@ -28,6 +28,12 @@
 #      name in a commit body (desk QA). A pushed subject cannot be edited
 #      without a history rewrite, and a merge subject quotes the ref name where
 #      no hook runs, so this is the last moment either is free to change.
+#   4. scripts/check_infra_names.py --range -- no infrastructure name (a host,
+#      an account) in a line the push ADDS. This is the CI arm the first three
+#      did not carry: on 2026-09-22 a push went red in CI on it while this hook
+#      printed OK naming its three arms, accurately (desk QS). A hook that names
+#      its own scope reads as complete, and the gap it does not name stays
+#      exactly where it was -- so the fourth question is asked here too.
 #
 # WHAT IT DELIBERATELY DOES NOT DO: the --tree and --messages ratchets. Those
 # scan whole history / the whole tree and are CI's job. A pre-push hook that is
@@ -45,6 +51,7 @@ set -u
 ZERO=0000000000000000000000000000000000000000
 GATE=scripts/check_private_paths.py
 SUBJECT_GATE=scripts/check_pr_descriptions.py
+INFRA_GATE=scripts/check_infra_names.py
 
 # Interpreter chosen by EXECUTION, never by `command -v` -- on Windows the Store
 # ships an app-execution-alias stub named `python3` that is on PATH, answers the
@@ -61,7 +68,7 @@ if [ -z "$PY" ]; then
 fi
 
 ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || ROOT=.
-for need in "$GATE" "$SUBJECT_GATE"; do
+for need in "$GATE" "$SUBJECT_GATE" "$INFRA_GATE"; do
   if [ ! -f "$ROOT/$need" ]; then
     echo "pre-push REFUSED: $need is not in this working tree." >&2
     echo "  This hook derives its verdict from that gate and will not guess it." >&2
@@ -198,13 +205,24 @@ while read -r local_ref local_sha remote_ref remote_sha; do
     bad=1
   fi
 
+  # ---- ARM 4: infrastructure names in what the push ADDS (desk QS) ----------
+  # The gate assembles its forbidden set and never spells it; its findings name
+  # the file and line. The same --range arm CI runs, one step earlier.
+  if ! ( cd "$ROOT" && "$PY" "$INFRA_GATE" --range "$RANGE" ) < /dev/null; then
+    echo "pre-push REFUSED: the infra-names gate RED on ${RANGE} (${local_ref:-<ref>} -> ${remote_ref:-<ref>})." >&2
+    echo "  A host or account name sits in a line this push adds. Replace it with" >&2
+    echo "  its role word (the tree's own convention) and AMEND the commit that" >&2
+    echo "  added it -- a fix on top leaves the blob in history for --history to find." >&2
+    bad=1
+  fi
+
   if [ "$bad" -ne 0 ]; then
     status=1
     continue
   fi
 
   n=$(git rev-list --count "$RANGE" 2>/dev/null) || n="?"
-  echo "pre-push OK [session-trailer + private-paths + subject gate --range]: ${local_ref:-<ref>} -> ${remote_ref:-<ref>}, range ${RANGE} (${WHY}), ${n} commit(s) scanned."
+  echo "pre-push OK [session-trailer + private-paths + subject gate --range + infra-names --range]: ${local_ref:-<ref>} -> ${remote_ref:-<ref>}, range ${RANGE} (${WHY}), ${n} commit(s) scanned."
 done < "$TMPIN"
 
 if [ "$seen" -eq 0 ]; then

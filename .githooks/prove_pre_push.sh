@@ -32,11 +32,14 @@ set -u
 
 HERE=$(cd "$(dirname "$0")" && pwd)
 REPO=$(cd "$HERE/.." && pwd)
-HOOK="$HERE/pre-push"
+# PROVE_HOOK: drive a DIFFERENT hook file through the same arms -- the red-first form:
+#   PROVE_HOOK=<old hook> sh .githooks/prove_pre_push.sh  must FAIL on the arm a change adds.
+HOOK=${PROVE_HOOK:-$HERE/pre-push}
 PATHS_GATE="$REPO/scripts/check_private_paths.py"
 TRAILER_GATE="$REPO/scripts/check_commit_trailers.py"
 SUBJECT_GATE="$REPO/scripts/check_pr_descriptions.py"
 SUBJECT_BASELINE="$REPO/scripts/subject_debt_baseline.tsv"
+INFRA_GATE="$REPO/scripts/check_infra_names.py"
 
 fail=0
 note() { printf '%s\n' "$*"; }
@@ -77,6 +80,13 @@ TRAILER_KEY=$(read_const "$TRAILER_GATE" '_SESSION_KEY') || TRAILER_KEY=
 # its arm is vacuous. Neither word is ever spelled in this file.
 [ -f "$SUBJECT_GATE" ] || { note "FAIL: no $SUBJECT_GATE"; exit 2; }
 [ -f "$SUBJECT_BASELINE" ] || { note "FAIL: no $SUBJECT_BASELINE"; exit 2; }
+[ -f "$INFRA_GATE" ] || { note "FAIL: no $INFRA_GATE"; exit 2; }
+# The infra fixture is READ OUT OF THE GATE (it assembles its names and never spells them; so does this
+# prover), and its own scan must find exactly ONE occurrence on the planted line or the arm proves nothing.
+INFRA_NAME=$(read_const "$INFRA_GATE" 'sorted(FORBIDDEN, key=len)[0]') || INFRA_NAME=
+[ -n "$INFRA_NAME" ] || { note "FAIL: could not read an infrastructure name out of the infra gate"; exit 2; }
+n=$(read_const "$INFRA_GATE" 'len(scan([("f", "the run box for tonight is " + sorted(FORBIDDEN, key=len)[0] + ", per the roster")]))') || n=
+[ "$n" = "1" ] || { note "FAIL: the infra-gate fixture is not exactly one finding (got '${n}') -- its arm would prove nothing"; exit 2; }
 LANE_WORD=$(read_const "$SUBJECT_GATE" 'sorted(lane_words(), key=len)[-1]') || LANE_WORD=
 KIN_WORD=$(read_const "$SUBJECT_GATE" '_KIN[0]') || KIN_WORD=
 [ -n "$LANE_WORD" ] || { note "FAIL: could not read a lane word out of the subject gate"; exit 2; }
@@ -123,6 +133,7 @@ cp "$PATHS_GATE" "$W/scripts/check_private_paths.py"
 cp "$TRAILER_GATE" "$W/scripts/check_commit_trailers.py"
 cp "$SUBJECT_GATE" "$W/scripts/check_pr_descriptions.py"
 cp "$SUBJECT_BASELINE" "$W/scripts/subject_debt_baseline.tsv"
+cp "$INFRA_GATE" "$W/scripts/check_infra_names.py"
 git -C "$W" config core.hooksPath .githooks
 
 commit_file() { # <path> <content> <message>
@@ -330,6 +341,39 @@ expect_out fail-closed-no-subject-gate "check_pr_descriptions.py is not in this 
 mv "$SBX/check_pr_descriptions.py.hidden" "$W/scripts/check_pr_descriptions.py"
 git -C "$W" reset -q --hard "$GOOD"
 
+note "ARM 14 an infrastructure name in an ADDED FILE LINE          expect 1"
+BEFORE_TIP=$(remote_tip main)
+commit_file infra14.txt "the run box for tonight is $INFRA_NAME, per the roster" "docs: a clean message over a line naming a host"
+if older_arms_pass "$GOOD..HEAD" \
+   && ( cd "$W" && "$PY" scripts/check_pr_descriptions.py --range "$GOOD..HEAD" ) >/dev/null 2>&1; then
+  printf '       +   red-infra-name: CONTROL -- the paths, trailer and subject gates all pass this range\n'
+else
+  bad "red-infra-name: an older gate already refuses this range, so the arm tests nothing new"
+fi
+run_push 1 red-infra-name origin main
+expect_out red-infra-name "the infra-names gate RED"
+expect_out red-infra-name "an infrastructure name (account or host)"
+if grep -qF -- "$INFRA_NAME" "$OUT"; then
+  bad "red-infra-name: the output ECHOES the infrastructure name (the gate withholds matched text; the hook must too)"
+else
+  printf '       +   red-infra-name: output does not echo the infrastructure name\n'
+fi
+if [ "$(remote_tip main)" = "$BEFORE_TIP" ]; then
+  printf '       +   red-infra-name: the remote ref did NOT move\n'
+else
+  bad "red-infra-name: THE REMOTE REF MOVED"
+  git -C "$REMOTE" update-ref refs/heads/main "$BEFORE_TIP"
+fi
+git -C "$W" reset -q --hard "$GOOD"
+
+note "ARM 15 the infra gate is missing: a clean push is refused     expect 1"
+mv "$W/scripts/check_infra_names.py" "$SBX/check_infra_names.py.hidden"
+commit_file clean15.txt "nothing wrong with this line" "clean: nothing forbidden here"
+run_push 1 fail-closed-no-infra-gate origin main
+expect_out fail-closed-no-infra-gate "check_infra_names.py is not in this working tree"
+mv "$SBX/check_infra_names.py.hidden" "$W/scripts/check_infra_names.py"
+git -C "$W" reset -q --hard "$GOOD"
+
 note ""
 if [ "$fail" -eq 0 ]; then
   note "prove_pre_push: PASS -- 3 clean pushes each SUCCEED and print a receipt"
@@ -337,9 +381,10 @@ if [ "$fail" -eq 0 ]; then
   note "  session trailer) and the subject gate's 3 (a lane name or family"
   note "  reference in a subject, a lane name in a body) are each REFUSED with the"
   note "  remote ref unmoved, and so is a branch whose name carries a refused word;"
-  note "  a missing subject gate refuses a clean push; a delete is allowed; and the"
-  note "  mutation control lands the same commit with the hook bypassed, so the"
-  note "  refusals are attributable to the hook."
+  note "  an infrastructure name in an added line is REFUSED without being echoed;"
+  note "  a missing subject gate or infra gate refuses a clean push; a delete is"
+  note "  allowed; and the mutation control lands the same commit with the hook"
+  note "  bypassed, so the refusals are attributable to the hook."
   exit 0
 fi
 note "prove_pre_push: FAILED ($fail arm(s))"
