@@ -1369,3 +1369,51 @@ that was wrong. **A comment is not the instrument, and neither is a deny-list.**
 - `math` drove the same finding independently, cold, three ways (the runtime's docs · a scratch drive on the pinned binary · the
   205 configs). **Two parties, two instruments, one answer** — and the agreement is worth more than either drive, because math had
   no stake in this document and I wrote parts of it.
+
+---
+## ⚖️ ADDENDUM 9 — **THE PHASE-2 GATE READS THE LANDING, NEVER THE END MARKER'S FIRST WORD; MODE F FIRES IN PARALLEL CHAINS; THE PERSISTENCE PROBE'S CAP IS SHORTENED FOR F.** APPENDED BELOW ALL PRIOR TEXT; nothing above is edited.
+### bench, 2026-09-24, on the Captain's ruling at the 2026-09-24 sitting, pack §A5: **(B)**, plus parallel chains for F and a shortened persistence-probe cap for F, both by addendum. Written before mode F's first model call.
+
+### §A9.1 · WHY — MEASURED BEFORE THE RULING
+Chain D's Crc32-pro salt-diet condition reached phase 2 in 1 of 3 cells. The other two, `l8cpss01` and `l8cpss03`, **LANDED phase 1** and were
+never dispatched, because `run_phase2` (export `3a36fcc`, `agy_wave_v3.sh`) fires phase 2 only when the first word of `ctl/end-1` is `LANDED`.
+Their persistence probe was SIGKILLed (rc -9) at phase-1 walls of 3780.7 s and 5523.2 s, and a censored probe writes `PERSIST-INDETERMINATE`
+over `end-1`. So the gate read the probe's verdict as the cell's landing, which this lane's ruling `9bfb6ef` forbids and §M4 rule 3 does not cover
+(it covers a phase 1 that did not LAND). Across all 62 level-8 phase-1 fires, 4 were refused this way: 3 had landed (`l8cpss01`, `l8cpss03`,
+`l8zpps03`) and 1 had not (`l8rpss01`, no `landed-1` tag), so the end kind cannot tell the two apart. The full record, with sources, is
+`RESULT-gemini-level8-chainD-2026-09-24.md` §2.
+
+### §A9.2 · THE GATE (systems builds it; red arms before any F cell)
+```
+  phase 2 fires iff   ctl/agy-turnloop-1.json   landed == true                (harness-written, outside the subject's repo)
+                AND   tag landed-1 == .seat/landing-1                         (bin/declare's receipt; the tag alone is subject-writable)
+                AND   §M3                                                     (shell-ok + fence-ok, unchanged)
+  never on            the first word of ctl/end-1                              (last writer wins; it names the persistence probe)
+  red arms            PERSIST-INDETERMINATE end-1 + landed true + tag == receipt  -> FIRED
+                      PERSIST-INDETERMINATE end-1 + no landed-1 tag              -> NOT FIRED (the l8rpss01 shape)
+                      a bare landed-1 tag with no .seat receipt                  -> NOT FIRED
+                      landed true + §M3 fence tampered                           -> NOT FIRED (§M3 unchanged)
+```
+Every NOT FIRED is still said, never silent, and it names which of the three conditions failed.
+
+### §A9.3 · THE EXPORT FOR MODE F — §M0 ROW 4's ONE-SHA RULE IS BROKEN HERE, DECLARED
+Mode F fires on a new export that carries §A9.2's gate and the shortened probe cap (§A9.5). **Its sha is named by a further addendum before
+F's first model call, and no F cell fires on an unnamed export.** Chain D's 23 cells and mode E's tripwire keep `3a36fcc`. So level 8 runs on
+two exports, and every per-cell table carries the export column so no reader pools across them without seeing it.
+
+### §A9.4 · THE TWO LANDED-AND-REFUSED CELLS — PHASE 2 ON COPIES, NEVER BY DISPATCH INTO THE CELLS OF RECORD
+`l8cpss01` and `l8cpss03` each get phase 2 on a COPY of the cell (this repo's rule: a cell directory is evidence, and a dispatch rewrites its git
+history), under the §A9.3 export's gate. This is not a top-up (§M4 rule 2): nothing is re-selected, and these are the cells that reached phase 2
+and were owed it. When both are scored, Pro × Crc32 × salt-diet is reported at its REACH under the corrected gate, and the result names the
+two cells' phase 1 as run on `3a36fcc` and their phase 2 on the §A9.3 export.
+
+### §A9.5 · PARALLEL CHAINS AND THE PERSISTENCE-PROBE CAP — **THE VALUES ARE HIS, FROM THE MINUTE, AND ARE FILLED IN FROM IT**
+```
+  parallel chains for F     ⟦FROM THE 2026-09-24 MINUTE, §A5 — how many chains, and which conditions each carries⟧
+  persistence-probe cap     ⟦FROM THE 2026-09-24 MINUTE, §A5 — the new cap for the P-PERSIST turn⟧
+```
+⛔ **This addendum does not go to `main` with either blank open.** It is drafted during the sitting and completed from the minute's words.
+⚠️ **WHICH ARM THE SHORTER CAP TRIPS** (`feedback-which-arm-trips-the-cap`): the probe is censored on long cells, and salt-diet's are the long
+ones (the result's §2). A shorter probe cap makes a censored probe MORE likely on that arm. Under §A9.2 a censored probe no longer blocks
+phase 2, so the cost moves from REACH to the persistence reading alone. Persistence is then reported per arm with its INDETERMINATE count
+beside it, and never as a rate over cells whose probe was cut.
