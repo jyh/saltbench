@@ -1422,7 +1422,8 @@ two exports, and every per-cell table carries the export column so no reader poo
               unreachable through the route by construction (the wave always re-renders, and the copy tool deletes the old fence).
   a copy      runs NO pre-flight battery (its HOME is phase 1's until the aside). Its fence proof is phase 2's own P-SANDBOX on a fresh
               HOME, exactly a dispatched cell's, and the log says so.
-  SUITE       ⟦selftest_all_v3 on 2e342dc — systems' tally⟧
+  SUITE       selftest_all_v3 --runs 1 on 2e342dc: 74 of 76 passed, 0 failed, 2 skipped (the two placebo arms, PLACEBO_V2_PATH absent,
+              declared by design)
 ```
 
 ### §A9.4 · THE TWO LANDED-AND-REFUSED CELLS — PHASE 2 ON COPIES, NEVER BY DISPATCH INTO THE CELLS OF RECORD
