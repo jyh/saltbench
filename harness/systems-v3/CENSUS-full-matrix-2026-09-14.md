@@ -1202,3 +1202,22 @@ A DECLARED condition was **fired as registered and reported whole**, and it **di
 - **It moves no DONE condition and no AGY condition.** The 21 at level 8 are untouched.
 - **It changes no cap, arm, model, fence or scorer**, and it re-fires nothing.
 - **It makes no claim about the salt method.** An arm-correlated cap is what stopped these three conditions (§T3, §U2, §V3). The fact that all three are salt-diet conditions is itself that finding, and the write-up states it beside them rather than leaving them out.
+
+---
+# ⚖️ DECLARED — THE 21 OWED ARE 20 AT LEVEL 8 AND 1 AT LEVEL 7 (bench, 2026-09-23). **Not a count addendum: it moves no condition and the LIVE box is unchanged.**
+ADDENDUM 17 (§W4), ADDENDUM 18 (§X1) and ADDENDUM 19 (§Y1) each say the owed conditions are "21 on the AGY lane's level 8". **That
+is wrong by one.** The level-8 amendment registers 20 conditions (§M1: 2 models × 5 problems × 2 arms), and §Q5 of this file (ADDENDUM 10) says
+"level 8 is 20 conditions / 60 cells". The 21st is §Q2's:
+```
+  gemini-3.8-flash-high × brownfield × Crc32 × salt-diet × statement   LEVEL 7, export 9bfb6ef86a36
+    ran 1 of 3 cells (l7cfss01, LANDED, PASS 6/6); the wave refused the other two on a credential window
+    ⇒ OWED since ADDENDUM 10, "the cheap kind of owed: it needs two cells, not a wave"
+  OWED 21 = level 8's 20 + this 1
+```
+⛔ **WHY IT MATTERS:** every chain now scheduled (gemini's modes D, E and F) is a LEVEL-8 chain. None of them fires §Q2's two cells.
+So the matrix could not reach a result of record however level 8 went, and the prose above hid that by counting the condition
+into a level that never contained it. §Q2's own sentence, *"whoever fires them re-cuts this row"*, had no whoever.
+**What closes it:** two cells, `l7cfss02` and `l7cfss03`, fired under level 7's registration on export `9bfb6ef86a36` so they
+pool with `l7cfss01`. Routed to gemini on 2026-09-23. When they are harvested, the level-7 condition moves by a count addendum.
+**What would show this wrong:** a level-8 manifest row naming brownfield × Crc32 × statement. Level 8 is greenfield spec-change
+only (`sc` in every level-8 root), so none exists.
