@@ -149,10 +149,11 @@ def selftest():
 
     drive("control-unmodified", src, 0)
     # ⭐ RED BACKWARDS: restore the pre-2026-09-22 box — LIVE at ADDENDUM 11 with rows 12-18 gone.
-    stale = src
-    for n in (12, 13, 14, 15, 16, 17):
-        stale = re.sub(r'^>   ADDENDUM %d .*\n' % n, '', stale, flags=re.M)
-    stale = re.sub(r'^>   LIVE \(ADDENDUM 18\).*\n' % (), '', stale, flags=re.M)
+    # ⛔ Every row after 11 and the LIVE row are stripped BY SHAPE, never by a typed list: the first form
+    #   named rows 12-17 and `LIVE (ADDENDUM 18)`, and ADDENDUM 19 left its LIVE row standing beside the
+    #   restored one, so the mutant read as "two LIVE rows" and the arm stopped testing staleness.
+    stale = re.sub(r'^>   ADDENDUM (1[2-9]|[2-9]\d) .*\n', '', src, flags=re.M)
+    stale = re.sub(r'^>   LIVE \(ADDENDUM \d+\).*\n', '', stale, flags=re.M)
     stale = stale.replace(">   ADDENDUM 11       DONE 109 · OWED  75",
                           ">   LIVE (ADDENDUM 11) DONE 109 · OWED 75")
     out = drive("RED-the-actual-lapse", stale, 1)
