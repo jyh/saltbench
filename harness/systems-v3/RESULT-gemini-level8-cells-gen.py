@@ -1,4 +1,7 @@
-"""Build the level-8 per-cell table of record (AMENDMENT-gemini-level8 §M10) from the chain's
+"""Build the level-8 per-cell table of record. `served` is the model and `cond` the condition (problem-arm, per served model),
+the two columns pilot-grid reads from a result's cells TSV.
+
+Build the level-8 per-cell table of record (AMENDMENT-gemini-level8 §M10) from the chain's
 harvest receipts. Nothing is typed: every column is read from a file the chain wrote, and a
 value that could not be read is UNREAD, never blank and never zero.
 
@@ -7,7 +10,7 @@ Population: the legs of the chain run directories named on the command line. Leg
 import csv, glob, os, re, sys
 
 RUNS = os.path.expanduser('~/.fleet/executors/gemini.runs')
-COLS = ['id', 'leg', 'model', 'problem', 'arm', 'm3record', 'dispatchedP1', 'foldbus', 'payloadsha',
+COLS = ['id', 'leg', 'cond', 'served', 'problem', 'arm', 'm3record', 'dispatchedP1', 'foldbus', 'payloadsha',
         'p1_end', 'p2_end', 'p1_turns', 'p2_turns', 'p2_wall_s', 'p2_false_done', 'p2_caps',
         'score_status', 'verdict', 'TESTS', 'REGRESSIONS', 'CLAUSE_TESTS', 'declared_after_P1',
         'score_receipt', 'adds_src']
@@ -58,7 +61,7 @@ def main(rundirs):
                 f = ' '.join(facts.get(cid, []))
                 g = lambda k: (re.search(r'\b%s=(\S+)' % k, f) or [None, 'UNREAD'])[1]
                 s = sc.get(cid, {})
-                w.writerow([cid, leg, model, prob, arm] + r[1:9] + [g('wall_s'), g('false_done'), g('caps')] +
+                w.writerow([cid, leg, '%s-%s' % (prob, arm), model, prob, arm] + r[1:9] + [g('wall_s'), g('false_done'), g('caps')] +
                            [s.get(k, 'UNREAD') for k in ('score_status', 'verdict', 'TESTS', 'REGRESSIONS', 'CLAUSE_TESTS')] +
                            [r[11], s.get('score_receipt', 'UNREAD'), src])
 

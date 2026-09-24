@@ -128,7 +128,8 @@ adding the two numbers gets the wrong denominator.**
 >   ADDENDUM 16       DONE 145 · OWED  39 · BLOCKED   0 · INEXPR 16     block SBS complete: +8
 >   ADDENDUM 17       DONE 152 · OWED  32 · BLOCKED   0 · INEXPR 16     block OS completes 7 of its 8: +7
 >   ADDENDUM 18       DONE 160 · OWED  24 · BLOCKED   0 · INEXPR 16     block SC completes the CLAUDE LANE'S v3 LIST, and block OS's held condition reaches n=3: +8
->   LIVE (ADDENDUM 19) DONE 160 · OWED 21 · BLOCKED   0 · INEXPR 16 · DECLARED 3   the three block-SC residue conditions DECLARED, not owed (his (a), 2026-09-23)
+>   ADDENDUM 19       DONE 160 · OWED  21 · BLOCKED   0 · INEXPR 16 · DECLARED 3   the three block-SC residue conditions DECLARED, not owed (his (a), 2026-09-23)
+>   LIVE (ADDENDUM 20) DONE 166 · OWED 15 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 chain D: six of its eight conditions reach n=3, scored at ceiling: +6
 > ```
 > ⛔⛔⛔ **AND THEN IT HAPPENED AGAIN, SEVEN TIMES, IN THE BOX THAT CONTAINS THE PARAGRAPH BELOW.**
 > Rows **12–18 were added on 2026-09-22 by `bench`**, after the council read this box's `LIVE` row as
@@ -1221,3 +1222,46 @@ into a level that never contained it. §Q2's own sentence, *"whoever fires them 
 pool with `l7cfss01`. Routed to gemini on 2026-09-23. When they are harvested, the level-7 condition moves by a count addendum.
 **What would show this wrong:** a level-8 manifest row naming brownfield × Crc32 × statement. Level 8 is greenfield spec-change
 only (`sc` in every level-8 root), so none exists.
+
+---
+# ⚖️ ADDENDUM 20 — **LEVEL 8 CHAIN D: SIX CONDITIONS OWED → DONE. `DONE 160 → 166`, `OWED 21 → 15`.**
+## bench, 2026-09-24, with `RESULT-gemini-level8-chainD-2026-09-24.md` in the same commit (§M10: the lead re-cuts the census with the result).
+
+## §Z1 · THE ARITHMETIC
+```
+  gemini-3.8-flash-high  greenfield x spec-change x Crc32 x plain       OWED -> DONE   3 of 3 reached, scored, FULL PASS
+  gemini-3.8-flash-high  greenfield x spec-change x Crc32 x salt-diet   OWED -> DONE   3 of 3 reached, scored, FULL PASS
+  gemini-3.1-pro-high    greenfield x spec-change x Crc32 x plain       OWED -> DONE   3 of 3 reached, scored, FULL PASS
+  gemini-3.8-flash-high  greenfield x spec-change x LRU   x salt-diet   OWED -> DONE   3 of 3 reached, scored, FULL PASS
+  gemini-3.1-pro-high    greenfield x spec-change x LRU   x plain       OWED -> DONE   3 of 3 reached, scored, FULL PASS
+  gemini-3.1-pro-high    greenfield x spec-change x LRU   x salt-diet   OWED -> DONE   3 of 3 reached, scored, FULL PASS
+  -------------------------------------------------------------------------------------------------
+  MATRIX         DONE 166 · OWED 15 · BLOCKED 0 · INEXPR 16 · DECLARED 3   = 200
+```
+⇒ **166 + 15 + 0 + 16 + 3 = 200.** Every DONE above is a result of record at UNRESOLVED-BY-CEILING on pass rate (the result's §1; level 8 §M2
+registered both problems AT CEILING before any data). DONE records that the outcome exists. It says nothing about the arms.
+
+## §Z2 · THE 15 STILL OWED, EACH WITH THE ACT THAT CLOSES IT
+```
+  12  level 8   FreeList · LZW · Paxos × Pro · Flash × plain · salt-diet    mode F, fired only on bench's F-RELEASE
+   1  level 8   gemini-3.8-flash-high × LRU × plain                         n = 2 of 3: mode E's tripwire l8rfwr01 is cell 1 of it (§M2)
+   1  level 8   gemini-3.1-pro-high × Crc32 × salt-diet                     phase 2 for l8cpss01/03 on COPIES under ADDENDUM 9 (his (B))
+   1  level 7   gemini-3.8-flash-high × brownfield × Crc32 × salt-diet      l7cfss02 + l7cfss03 under level 7's registration, after F
+  --
+  15
+```
+⚠️ **The Pro × Crc32 × salt-diet condition is held OWED, not DONE, even though one cell passed.** Two of its cells LANDED phase 1 and the
+phase-2 gate refused them on a censored persistence probe (the result's §2). He ruled (B) (minute `439e23040` §1.5): it completes on copies.
+
+## §Z3 · THE RECEIPTS
+```
+  per-cell         harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24-cells.tsv  (23 rows)
+  per-phase        evidence/l8-chainD-2026-09-24/phase_facts.json  (46 records)
+  verifier         harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24-verify.py  VERIFY GREEN, and red on a planted wrong value
+  chain end        l8u-2026-09-23/END-MARKER-D: "rc=0 2026-09-24T15:06:58Z CHAIN-DONE mode D"
+```
+
+## §Z4 · WHAT THIS ADDENDUM DOES NOT DO
+- It moves no Claude-lane condition and no DECLARED one.
+- It does not move the two chain-D conditions that are short of n. Each keeps its closer in §Z2.
+- It makes no claim about the salt method. A ceiling says nothing about the arms (§M9.6).
