@@ -146,3 +146,18 @@ ITS conditions read MET. The Claude row is NOT released by this addendum.
 cell in a FRESH root created in a window the lead announces (the render-time-glob law, while another lane's cell is live). **§X6.4 as
 ruled:** the Claude row's cells carry `CLAUDE_CODE_TMPDIR=$CELL/tmp` (the client's scratch inside the cell), and the subject's own
 `$TMPDIR` is a declared, arm-identical confound; the agy row sets its own in-cell TMPDIR, and the battery's row prints it.
+
+---
+
+## ⚖️ ADDENDUM 2 — THE RELEASE OF THE CLAUDE ROW. APPENDED; all text above untouched.
+- **R6 CLAUDE, MET** (systems, 2026-09-25 20:26 UTC): xc01, plain, built FROM the cut 311a588 in an EXISTING root (no new root). Fence
+  drive GREEN, and ONE P turn read P-NET yes on the run box pool's own account dir. With ADDENDUM 1's R1–R5, **all six conditions read MET
+  for the Claude row.**
+- **THE CLAUDE ROW IS RELEASED:** claude-opus-5 (the served set per condition as lane B §Q0 row 1), the smoke pair first (§X2), from cut
+  311a588, refereed only through `referee_x86.sh`, with `CLAUDE_CODE_TMPDIR=$CELL/tmp` (§X6.4 as ruled).
+- **THE POOL DIR IS SINGLE-CELL** across this row and O37 block N. x86 goes first, but only where no block-N cell is LIVE on the dir (a
+  cell is never interrupted), and each smoke cell needs a FRESH root, created in a window under the one-root-creating-fire rule.
+- **A DEFECT FOUND ON THE AGY ROW BEFORE ANY SPEND, recorded for both rows:** the agy smoke's first cell (xasp01) was LAUNCH-REFUSED at
+  spawn (rc 13), because the x86 battery's scratch view had copied the arm file into the cell's tmp/, a second home for the briefing
+  token. The P-DELIVERY spawn walk refused it as designed. It was fixed at 640d6b4, and a mutant restoring the copy reproduces the refusal
+  verbatim. The agy smoke re-fires as r2 in a later window.
