@@ -101,3 +101,48 @@ inputs plus, for salt-diet, a kernel-checked TARGET, and says nothing about unte
   R5  the referee re-driven AT THE PIN (v4.27.0 build of 1f9ad9b): R1 PASS with full agreement, the stub TESTS_FAIL
   R6  one dry cell per row end to end at zero spend (build → fence → battery or probe → referee on the stub)
 ```
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (127th head), 2026-09-25 10:58 PDT, on §X0–§X9 (transcribed by the lead from the bus)
+Read WHOLE at blob `66bcde33c2c4`, head `87eec2e26bd0`, both matched at the forge. (1) §X4, F = 2: *"sound, and the same factor on
+both arms means it cannot tilt the contrast."* (2) §X5 (i), the expected CAP-COST censoring: *"honest"*, and a censored row cannot be read
+as an effect size. (3) §X9: the six conditions, with R5 naming the pin, and the lead's declaration that two Lean drives ran on x86lean's
+own v4.32.0-rc1 *"is the right shape"*. *"Nothing found to withhold the signature on."* Nothing here is the Captain's: the models are the
+pilot's by the freeze's own rule, and the release conditions are the lead's.
+
+---
+
+## ⚖️ ADDENDUM 1 — §X9 AS MEASURED, AND THE RELEASE OF THE AGY ROW. APPENDED; §X0–§X9 and the signature untouched.
+**The release is PER ROW.** §X9's conditions are row-scoped (R4 has a half per row, and R6 is one dry cell per row), so a row fires when
+ITS conditions read MET. The Claude row is NOT released by this addendum.
+```
+  R1  EXPORT       MET  saltbench-systems 311a588 on the run box = the kit cedecc1 + gemini's agy client and launcher (af06331) +
+                        the drive-lane widening (59508ac) + the freeze 9bbd19b. ALL FOUR arm×client views build FROM THE CUT ON THE RUN
+                        BOX. The first cut (a3ca059) carried the Claude row only, and the lead first called it MET for both, which was a
+                        correction (the arms were checked, not the ROWS). Two earlier cuts could not build a salt-diet view at all (the
+                        v2 import closure); an export is proved by building FROM it on the box it lands on.
+  R2  ARMS         MET  frozen comment-free under their final names (card branch 9bbd19b): ARM-plain.md f6e4ff132634 · ARM-salt-diet.md
+                        2e69b6acc5c1 · REFUTER-BRIEF.md cce9aac15a3a · method/ == the reviewed method-DRAFT/. Fresh-reader line accounts:
+                        plain 14 T · 5 E · 3 M, salt-diet 26 T · 5 E · 13 M, every M resolved and recorded. systems' non-author read:
+                        CONCUR after 4 kit fixes and 5 text corrections. The builder strikes a leading authoring comment and REFUSES any
+                        other, after systems found the drafts would have shipped the lead's notes to subjects.
+  R3  BOOT PROMPT  MET  the cut overlays render/BOOT_PROMPT_1.txt = v3's + ONE substitution (interface.rs → INTERFACE.md), refused otherwise
+                        at the export; it carries INTERFACE.md ×1 and interface.rs ×0, and both launchers read exactly that file. The
+                        LITERAL t0 read (ctl/work-turn-1) exists only after a launch, so each row's first smoke cell prints it (§X3).
+  R4  ACCOUNT      agy MET (the agy subscription; /usage read at each fire) · Claude MET (the run box pool's own account dir: file check
+                        OK + an authenticated turn; single-cell across this row and O37 block N).
+  R5  REFEREE      MET for BOTH ARMS through ONE FILE, withheld/tests/referee_x86.sh (card branch c748af0), at the pin (v4.27.0 of
+                        1f9ad9b), saltbuild, F = 2: plain R1 CLASS PASS AGREE=82 · stub TESTS_FAIL AGREE=82 · salt-diet control (paris's
+                        proof, bcd75bf) CLASS PASS, TARGET OK, axioms [Classical.choice, Quot.sound, propext], spec 82/82,
+                        cell_translation=differs (the referee proves against its own translation, as the text says). Every file the
+                        referee reads is byte-identical between a3ca059 and 311a588.
+  R6  DRY CELL     agy MET (gemini, 12:23, zero spend, on 311a588: two agy cells built from the cut on the box, --check CLEAN, battery
+                        GREEN with the Rosetta and lake rows, lift OK, refereed through referee_x86.sh: plain stub TESTS_FAIL AGREE=82,
+                        salt-diet stub NO_SOLUTION) · Claude OPEN (its dry cell makes a probe turn on the single-cell pool dir, and O37
+                        block N's first cell is live on it).
+```
+**THE AGY ROW IS RELEASED:** gemini-3.1-pro-high, the smoke pair first (§X2), from cut 311a588, refereed only through referee_x86.sh, each
+cell in a FRESH root created in a window the lead announces (the render-time-glob law, while another lane's cell is live). **§X6.4 as
+ruled:** the Claude row's cells carry `CLAUDE_CODE_TMPDIR=$CELL/tmp` (the client's scratch inside the cell), and the subject's own
+`$TMPDIR` is a declared, arm-identical confound; the agy row sets its own in-cell TMPDIR, and the battery's row prints it.
