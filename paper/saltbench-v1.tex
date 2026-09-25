@@ -33,7 +33,7 @@ SaltBench is a benchmark protocol for one question: How does a machine referee c
 
 An agent's account of its own work is the least reliable evidence about that work. A benchmark that lets the agent grade itself, or lets the experimenter choose the reading after the run, measures the story and not the outcome. SaltBench is built on two refusals. The outcome is decided by a machine referee the agent cannot argue with --- a proof kernel, a program verifier, or a withheld test suite, run outside the agent's own toolchain --- and the comparison is fixed before the agent runs, so that it cannot be narrated afterwards. The comparison is pre-registered~\cite{nosek2018preregistration}: the population is drawn by a committed seed, the arms are byte-pinned, the predictions are written down, the adverse outcomes are named, and the freeze commit is the authorization. Everything that happens afterwards is a dated amendment appended to the record.
 
-Here we report the benchmark's design and its first measurement, taken end to end on an experiment whose subject is the working seat rather than the model. Section~\ref{sec:design} states the design and how much of it this paper runs. We claim the protocol; the seat-as-subject design and its authored population; the cost reading the run returned, together with the qualifiers registered beside it; a set of instrument findings that we think transfer to any benchmark of this kind; and the complete pilot matrix of Section~\ref{sec:matrix}, new in this version, as a record of what was run and of what each result of record can carry, never as a verdict on the arms. We do not claim an effect of the method under test on what a referee accepts, and we report no magnitude for the population; Section~\ref{sec:open} states the tests that could produce one. Three earlier reads on drawn populations are reported in Section~\ref{sec:priorreads}, compressed to the role they now play, which is the reason this design is shaped as it is. One note on labels, because two of them are numbers: this document is version~2 of the SaltBench report, and \emph{v3} names the campaign generation whose matrix it reports, not an edition of this document. Version~2 adds Section~\ref{sec:matrix}, the complete pilot matrix over four models, updates the status of the task forms in Section~\ref{sec:design}, and adds two instrument findings the matrix taught; it changes no number that version~1 printed. One sentence of Section~\ref{sec:fence} is scoped to the population its evidence covers, and the scope is marked there.
+Here we report the benchmark's design and its first measurement, taken end to end on an experiment whose subject is the working seat rather than the model. Section~\ref{sec:design} states the design and how much of it this paper runs. We claim the protocol; the seat-as-subject design and its authored population; the cost reading the run returned, together with the qualifiers registered beside it; a set of instrument findings that we think transfer to any benchmark of this kind; and the complete pilot matrix of Section~\ref{sec:matrix}, new in this version, as a record of what was run and of what each result of record can carry, never as a verdict on the arms. We do not claim an effect of the method under test on what a referee accepts, and we report no magnitude for the population; Section~\ref{sec:open} states the tests that could produce one. Three earlier reads on drawn populations are reported in Section~\ref{sec:priorreads}, compressed to the role they now play, which is the reason this design is shaped as it is. One note on labels, because two of them are numbers: this document is version~2 of the SaltBench report, and \emph{v3} names the campaign generation whose matrix it reports, not an edition of this document. Version~2 adds Section~\ref{sec:matrix}, the complete pilot matrix over four models, updates the status of the task forms in Section~\ref{sec:design}, and adds two instrument findings the matrix taught; it changes no number that version~1 printed. Nineteen prices in Appendix~\ref{app:cells} carry a flag that version~1 did not print, and the flag changes no number. One sentence of Section~\ref{sec:fence} is scoped to the population its evidence covers, and the scope is marked there.
 
 The method under test, the Salt method~\cite{hickey2026saltmethod,hickey2026authority}, is the working discipline the author uses in a formal mathematics project: machine-checked development in which claims travel as kernel-checked artifacts and human attention is reserved for statements and rulings. Its rendering as an arm is described in Section~\ref{sec:arms}; only the part of it that a single sealed agent can carry is rendered, and that limit was registered before the first call.
 
@@ -623,29 +623,31 @@ Reading~A is every row as printed. Reading~B is every row with the \underline{un
 \toprule
 problem & arm & cells \\
 \midrule
-Crc32 & plain-bare & \$5.36 \$6.21 \$7.64 \\
-Crc32 & diet-bare & \$6.19 \$7.21 \$7.63 \\
-FreeList & plain-bare & \$13.02 \$23.38 \underline{\$13.77} \$13.01 \\
+Crc32 & plain-bare & \$5.36 \$6.21$^\dagger$ \$7.64 \\
+Crc32 & diet-bare & \$6.19$^\dagger$ \$7.21$^\dagger$ \$7.63 \\
+FreeList & plain-bare & \$13.02$^\dagger$ \$23.38 \underline{\$13.77}$^\dagger$ \$13.01$^\dagger$ \\
 FreeList & diet-bare & \$37.95 \$37.60 \$35.41 \\
-LRU & plain-bare & \$7.75 \$9.73 \underline{\$6.68} \$9.87 \\
+LRU & plain-bare & \$7.75$^\dagger$ \$9.73$^\dagger$ \underline{\$6.68} \$9.87 \\
 LRU & diet-bare & \$11.19 \$11.21 \$14.63 \\
-LZW & plain-bare & \$8.15 \$20.95 \$13.95 \\
-LZW & plain-statement & \$10.24 \$11.39 \$9.82 \\
+LZW & plain-bare & \$8.15 \$20.95$^\dagger$ \$13.95 \\
+LZW & plain-statement & \$10.24 \$11.39 \$9.82$^\dagger$ \\
 LZW & diet-bare & \$31.70 \$19.18 \$18.16 \\
-LZW & diet-statement & \$22.53 \$15.34 \$18.54 \\
-Paxos & plain-bare & \$9.49 \underline{\$14.20} \$16.78 \$20.16 \\
-Paxos & diet-bare & \$37.93 \$37.65 \$23.52 \\
+LZW & diet-statement & \$22.53 \$15.34$^\dagger$ \$18.54 \\
+Paxos & plain-bare & \$9.49$^\dagger$ \underline{\$14.20}$^\dagger$ \$16.78$^\dagger$ \$20.16 \\
+Paxos & diet-bare & \$37.93$^\dagger$ \$37.65 \$23.52 \\
 \midrule
-Crc32 & plain-statement & \$6.36 \$6.66 \$8.64 \\
-Crc32 & diet-statement & \$5.65 \$6.25 \$8.56 \\
-FreeList & plain-statement & \$17.72 \$18.26 \$18.42 \\
+Crc32 & plain-statement & \$6.36 \$6.66 \$8.64$^\dagger$ \\
+Crc32 & diet-statement & \$5.65 \$6.25 \$8.56$^\dagger$ \\
+FreeList & plain-statement & \$17.72$^\dagger$ \$18.26 \$18.42 \\
 FreeList & diet-statement & \$21.18 \$27.84 \$29.00 \\
 LRU & plain-statement & \$8.92 \$9.36 \$15.12 \\
-LRU & diet-statement & \$13.65 \$14.24 \$18.65 \\
+LRU & diet-statement & \$13.65 \$14.24 \$18.65$^\dagger$ \\
 \bottomrule
 \end{tabular}
 \end{center}
 
 \noindent Four cells of the matrix root are refused by the scorer rather than defaulted, because their cost line does not open with a bare price: a void meter carries a zero in its prose, and a scanner that reads on would price an unmetered cell at nothing. They are excluded from every reading.\src{harness/systems-v3/RESULT-n3-topup-2026-09-09.md section 3, the refused cells}
+
+Nineteen of the 57 prices in this table, marked $^\dagger$, come from cells whose own meter declares the total a lower bound: each contains at least one interrupted turn, a record with no stop reason, whose usage was written only up to the interrupt, so what is recorded of that turn is known and what is missing from it is not. Two methods classify every price, the meter's own declaration and the count of such records in the cell's record table, and they agree on 57 of 57. The recorded cost of the interrupted records is 0.0583 to 0.7579 percent of each affected cell's cost; that figure is a share of what was recorded and not a bound on what was not. A lower bound on a \arm{plain} cell overstates a diet-to-plain premium and one on a \arm{diet} cell understates it, and only a lower-bound cell that a median rests on can move a premium: on \texttt{Crc32} both medians rest on one, so the direction is not determined; on \texttt{FreeList}, \texttt{LRU} and \texttt{Paxos} the plain median alone does, so those premiums are overstated by this cause; on \texttt{LZW} neither does; and in the statement arm no median rests on one. No sign, floor count or verdict of Section~\ref{sec:s3} changes unless an interrupted turn's unrecorded remainder is at least 77 times what was recorded of it, and at least 121 times for the bare matrix. The prices are printed as recorded; this note adds a flag and not a number, and version~1 of this report printed the same prices without it.\src{paper/ERRATUM-lower-bound-cells-2026-09-16.md sections 2 to 5; harness/systems-v3/RECEIPT-ol-lower-bound-cells-2026-09-16.txt; harness/systems-v3/ol\_lower\_bound\_margins.py}
 
 \end{document}
