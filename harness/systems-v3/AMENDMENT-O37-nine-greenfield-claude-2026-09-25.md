@@ -187,3 +187,52 @@ gate on built views runs in the builder at each cell's stage, and it is read at 
 problems, with a scope refusal in both directions, and gives `--roots` a block-N mode with its own registered 24, leaving lane B's
 check unchanged. It is built red-first on a branch off `eb18e5d`. **The release addendum names the resulting export sha and that
 change's receipts; no cell fires on `eb18e5d` itself.**
+
+---
+
+## ⚖️ ADDENDUM 2 — THE RELEASE. APPENDED; §N0–§N9, the signature and ADDENDUM 1 untouched.
+### A2.1 · THE EXPORT (§N0 row 4): saltbench-systems `6087b54`
+`6087b54` = lane B's last export `eb18e5d` plus ONE commit, the stager learning block N (A2.2). It descends from `eb18e5d`, and therefore
+from `2833621` (Block O's result of record). Its six task trees are byte-identical, by git tree hash, to the ones ADDENDUM 1 drove.
+On the run box by `studio_export.sh --ref 6087b54` into its OWN destination, so lane B's `eb18e5d` export is untouched: 367 files, 0
+withheld-shaped names on either side, the Verus sha equal on both boxes (`7a7b319b170692d3`), CARGO_ROOT 633 = 633.
+### A2.2 · THE STAGER (the §N2 gap ADDENDUM 1 §A1.4 found)
+`clb_stage.sh` and `clb_fire.sh` gain blocks `NS` (claude-sonnet-5) and `NO` (claude-opus-5), greenfield × `none`, and the six problems.
+A scope rule REFUSES any cross combination in both directions, naming both freeze files. `--roots` keeps lane B's registered 64 by
+default and gains an explicit `--freeze N` with its own registered 24 (12 + 12). Letters: blocks `n` `m`, problems `a h r v y x`, none
+shared with lane B, so every id and root is distinct (192 + 72 ids, 64 + 24 roots, measured).
+Selftest `fixtures/clb_blockN_selftest.sh`: **5/13 on the `eb18e5d` originals · 13/13 on `6087b54` · 12/13 and 9/13 on its two
+mutants** (scope refusal removed; NS served by the Opus model). **All 210 lane-B (block, problem, arm, n) derive byte-identically to
+`eb18e5d`**, the 18 Paxos × statement refusals included. It was written by a delegated build agent and re-run by the lead.
+The harvester's letters (`clb_harvest.py`, `08a3a41`, on the build box where scoring runs) are checked against the stager's own tables
+by `fixtures/clb_harvest_tables_check.py`: DISAGREE on 8 at `eb18e5d` · AGREE 9 blocks / 11 problems · DISAGREE on a one-letter mutant.
+### A2.3 · THE ACCOUNT (§N0 row 8), and what 2026-09-25 taught it
+At 10:24 the pool's previous config dir on the run box read `ACCOUNT-CHECK OK` (the FILE: right identity, credential present), and the
+first launch against it failed: *"OAuth session expired and could not be refreshed"*. The failed refresh then BLANKED the file (509 →
+281 B). ⇒ **The account check is necessary and never sufficient, as its own verdict line says.** From this release on, the sequence
+before T-N-S is: (1) `cells_account_check.sh --expect <the pool's identity>` OK on the NEW dir; (2) ONE authenticated read through the
+pinned client from that dir, checked by its BODY; (3) the cell. §N7 row 11 stays per cell. The dir: **the run box pool's OWN ACCOUNT DIR on the run box**, refreshed by the Captain at 11:01 (desk YG; his words: *"I refreshed all
+the accounts on [the run box]"*). ⚠️ It is the pool's EXISTING account dir, not the fresh dedicated dir the ask named, because his refresh
+covered the five per-pool account dirs, while the lane's older cell-credential dir for that pool stayed blanked (kent, 11:02). (1) READ: systems' per-dir table 11:03,
+OK on the file · (2) AUTHENTICATED: systems' x86 P-probe turn on this dir, rc 0, credential unchanged after · (1) again on block N's
+OWN env by a derived check (`CLAUDE_CONFIG_DIR` taken from the env's `CLB_CFG`, so the check and the launch read one value):
+`ACCOUNT-CHECK OK … (== --expect)`, and a wrong `--expect` reads RED, rc 1.
+⛔ **ONE LIVE CELL ON THIS DIR AT A TIME, ACROSS BLOCK N AND THE x86 CLAUDE ROW, x86 FIRST** (lane B ADDENDUM 5's per-pool rule,
+widened to both lanes): two lanes refreshing one credential file concurrently is how a credential gets blanked, so the dir is a
+single-cell resource.
+### A2.4 · THE LANE ENV (untracked, on the run box: block N's OWN lane env file, beside lane B's and never replacing it)
+Keys: `CLB_CFG` = A2.3's dir · `CLB_BIN` = the 2.1.259 client by absolute path, sha256/16 `884baa38fe1a624b` read on the box ·
+`CLB_EXPORT` = A2.1 · `CLB_PROBE_TRANSPARENT=1` · `CLB_PROBE_OUTSIDE` = lane B's, unchanged. Lane B's own env file is not touched.
+### A2.5 · §N5 GAINS A FOURTH CONFOUND, MEASURED BY systems ON 2026-09-25 AND DECLARED RATHER THAN FIXED
+**Every Claude-lane cell, the pilot's and this block's, runs with an unusable TMPDIR.** The client gives each sandboxed command
+`TMPDIR=/tmp/claude-501`, and every v3 fence denies `/tmp`. A pilot transcript shows `ls -d $TMPDIR` → *Operation not permitted*, and
+process substitution failing on `/dev/fd`. It is ARM-NEUTRAL (both arms, every cell). **Block N keeps the pilot's launch env on
+purpose**: the nine join the five as one matrix, and fixing it here would put a harness delta on exactly the axis the matrix compares
+across. A subject's workaround or failure caused by it is reported per cell, never read as an arm effect.
+### A2.6 · ROOTS
+`clb_stage.sh --roots --freeze N` in a window with NO Claude-lane cell live (the render-time-glob law), AFTER A2.3's dir exists,
+because a fresh root is settings → fence → trust and trust is keyed to the config dir. Receipt, 18:52:11Z, in a window with NO cell of either lane live (checked by process listing on the run box): `ROOTS: 24 cells roots
+present with _bin linked into export 6087b5487b97, each root's model table read back … (12 opus, 12 sonnet — … equal to the registered
+24)`, after a `--dry` run of the same into `~/bench-dry` (rc 0). ⚠️ **AND THE LAW BINDS BOTH WAYS:** block NA's remaining roots are
+created BEFORE T-N-S is live, or only in a window where no block N cell is live.
+### A2.7 · RELEASED. T-N-S (Sonnet · Luby · salt-diet#1) is the first cell; the block continues only on its reading (§N3).
