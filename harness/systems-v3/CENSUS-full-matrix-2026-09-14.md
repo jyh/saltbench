@@ -131,7 +131,8 @@ adding the two numbers gets the wrong denominator.**
 >   ADDENDUM 19       DONE 160 · OWED  21 · BLOCKED   0 · INEXPR 16 · DECLARED 3   the three block-SC residue conditions DECLARED, not owed (his (a), 2026-09-23)
 >   ADDENDUM 20       DONE 166 · OWED  15 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 chain D: six of its eight conditions reach n=3, scored at ceiling: +6
 >   ADDENDUM 21       DONE 167 · OWED  14 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 mode E's tripwire completes Flash x LRU x plain: +1
->   LIVE (ADDENDUM 22) DONE 168 · OWED 13 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 Pro x Crc32 x salt-diet closes on the two copies: +1
+>   ADDENDUM 22       DONE 168 · OWED 13 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 Pro x Crc32 x salt-diet closes on the two copies: +1
+>   LIVE (ADDENDUM 23) DONE 180 · OWED  1 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 mode F: its twelve conditions reach n=3, scored: +12
 > ```
 > ⛔⛔⛔ **AND THEN IT HAPPENED AGAIN, SEVEN TIMES, IN THE BOX THAT CONTAINS THE PARAGRAPH BELOW.**
 > Rows **12–18 were added on 2026-09-22 by `bench`**, after the council read this box's `LIVE` row as
@@ -1310,3 +1311,26 @@ ADDENDUM 20's six DONE conditions stand as moved.
   12  level 8   FreeList · LZW · Paxos × Pro · Flash × plain · salt-diet    mode F: paxos lane (RELEASE 1) live · freelist + lzw (RELEASE 2) released
    1  level 7   gemini-3.8-flash-high × brownfield × Crc32 × salt-diet      l7cfss02 + l7cfss03 under level 7's registration, after F
 ```
+
+---
+# ⚖️ ADDENDUM 23 — **LEVEL 8 MODE F: TWELVE CONDITIONS OWED → DONE. `DONE 168 → 180`, `OWED 13 → 1`.**
+## bench, 2026-09-25, with `RESULT-gemini-level8-chainF-2026-09-24.md` in the same commit (the twelve conditions' record).
+
+## §AC1 · THE ARITHMETIC
+```
+  gemini-3.1-pro-high    greenfield x spec-change x {Paxos, FreeList, LZW} x {plain, salt-diet}   6 conditions   OWED -> DONE
+  gemini-3.8-flash-high  greenfield x spec-change x {Paxos, FreeList, LZW} x {plain, salt-diet}   6 conditions   OWED -> DONE
+                         each at 3 of 3 reached phase 2 and scored on the withheld suite (the result's §1)
+  -------------------------------------------------------------------------------------------------
+  MATRIX         DONE 180 · OWED 1 · BLOCKED 0 · INEXPR 16 · DECLARED 3   = 200
+```
+⇒ **180 + 1 + 0 + 16 + 3 = 200.** With chain D's eight (ADDENDA 20–22), all twenty level-8 conditions are DONE.
+⚠️ **A DONE here means n = 3 reached and scored, never a verdict on the arms.** The result's §1 and §8 say what the twelve can and cannot carry.
+⚠️ **Three conditions needed more than one attempt** (503 discards, A2.2); their discarded attempts are outside every count above (result §2).
+Flash × Paxos ran on the successor export `2a674d7662b9` (level-8 ADDENDUM 11), the other ten on `2e342dcc02d1`.
+
+## §AC2 · THE ONE STILL OWED
+```
+   1  level 7   gemini-3.8-flash-high × brownfield × Crc32 × salt-diet      l7cfss02 + l7cfss03 under level 7's registration, after F — F is done
+```
+Its closer is gemini's `--plan` for l7cfss02+03 on level 7's export, checked by the lead before any fire.

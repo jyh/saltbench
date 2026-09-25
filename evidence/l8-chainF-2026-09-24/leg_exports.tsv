@@ -1,0 +1,8 @@
+leg	ran_on	scored_on	score_files	verdict
+Crc32-pro-cp	2e342dcc02d1	2e342dcc02d1	1	OK
+Paxos-pro-rr	2e342dcc02d1	2e342dcc02d1	2	OK
+FreeList-flash-rr	2e342dcc02d1	2e342dcc02d1	2	OK
+FreeList-pro-rr	2e342dcc02d1	2e342dcc02d1	2	OK
+LZW-flash-rr	2e342dcc02d1	2e342dcc02d1	2	OK
+LZW-pro-rr	2e342dcc02d1	2e342dcc02d1	2	OK
+Paxos-flash-rr2	2a674d7662b9	2a674d7662b9	2	OK
