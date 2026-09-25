@@ -142,3 +142,48 @@ Lane B §Q9's per-cell list, less its brownfield columns, plus: the pool per cel
 table (per task: verify count · both reference pass counts · per-mutant pass count · the trace matrix). ⇒ **A result of record per
 model, with the census re-cut in the same commit.** O37's population joins the census as its own section, because the pilot's census
 is a result of record and is not re-opened. Any public sentence, and any claim about the method, is the Captain's.
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (127th head), 2026-09-25 10:10 PDT, on §N0–§N9 (transcribed by the lead from the bus, offset 69282852)
+Read WHOLE at blob `4da5ad9d7080`, head `90cf4cfb2989`, matched at the forge in one command, PR #265 10/10 checks green. The three
+named things were refuted and held: §N0 row 1 (the pilot's two Claude ids, a newer model not substituted) · §N0 row 8 (the run box's
+pool named per cell through Mon 15:59, no start after 13:30, identity string checked before each fire, the box's default env neither
+awaited nor touched) · §N8 item 4 (the selection declared before any table). *"Nothing found to withhold the signature on. RELEASE
+stays a second act, as written."* Ruling on §N0 row 8: CONCUR, the helm's under the delegation, reversible by the Captain's word.
+§N0 row 1 goes to the Captain as one ask, and until he answers, the row IS the default.
+
+---
+
+## ⚖️ ADDENDUM 1 — §N2's ITEMS AS DRIVEN. APPENDED; §N0–§N9 and the signature untouched. NOT THE RELEASE.
+### A1.1 · §N2 item 1 — the six tasks, re-driven by a non-builder at the pinned verifier sha (`VERUS_SHA256` 7a7b319b…ffb36)
+On a `git archive` of saltbench-systems master `e54f35a`. **The six task trees are byte-identical, by git tree hash, at `e54f35a`,
+`2833621`, `eb18e5d` and `0da916f`**, so this drive covers the task bytes of any of those exports.
+```
+  task          Verus (reference)        hidden tests: ref · plain   mutants (tests PASSED of total; every one FAILS the suite)   trace matrix
+  Luby          67 verified, 0 errors    12/12 · 12/12               7 8 8 6 8 8            of 12                                 6 × (mutant false, reference true)
+  AES           107 verified, 0 errors    8/8  ·  8/8                3 3 3 3                of 8                                  4 ×
+  Liveness      81 verified, 0 errors    11/11 · 11/11               3 7 6 7 6 5 6          of 11                                 7 ×
+  MaxFlow       70 verified, 0 errors     8/8  ·  8/8                6 3 4 5                of 8                                  4 ×
+  BinomialHeap  68 verified, 0 errors    13/13 · 13/13               6 5 7 6 8 6 8          of 13                                 7 ×
+  LinearScan    130 verified, 0 errors    9/9  ·  9/9                8 7 6 6 5 4            of 9                                  6 ×
+```
+**Trivial-predicate control (the second half of (d)):** `TRACE_OK true` on all 34 of 34 mutant columns across the six tasks, so it
+kills nothing, as required. ⇒ **No task is withdrawn; the population stays 24.**
+⚠️ **One margin-1 mutant, declared:** LinearScan `AlwaysReserveScratch` passes 8 of 9, so ONE hidden test kills it. It is a valid
+planted defect, and it is also the most fragile in the set. A cell that ships its defect is scored by that one test.
+### A1.2 · §N2 item 2 — the account check, driven on the run box
+`cells_account_check.sh` (saltbench-systems `0da916f`, selftest 11 pass / 0 fail on the build box) with the run box's pool as
+`--expect` and a dead pool as `--refuse` → **`ACCOUNT-CHECK OK`**: identity == `--expect`, credential PRESENT (access and refresh
+non-empty), rc 0. Its own limit rides with it: *"the FILE identity; a launch is what proves it authenticates."* **It is re-run before
+EVERY fire (§N7 row 11); this is the first reading, not a standing clearance.**
+### A1.3 · §N2 item 3 — leaks
+`check_withheld_leak_v3.py` over the export: **CLEAN** — 186 identifiers across 11 tasks (the six new ones: AES 9 · BinomialHeap 17 ·
+LinearScan 13 · Liveness 15 · Luby 13 · MaxFlow 9), every positive control fired, 668 view-file reads, 0 in any view. The treatment
+gate on built views runs in the builder at each cell's stage, and it is read at the tripwires.
+### A1.4 · WHAT THE DRIVE FOUND THAT THE FREEZE DID NOT PREDICT: the stager does not know this block
+`clb_stage.sh` and `clb_fire.sh` at the lane's last export (`eb18e5d`) hard-code lane B's seven blocks and five problems, and
+`--roots` checks lane B's registered 64. **No block-N cell can be staged on the existing export.** The change adds two blocks and six
+problems, with a scope refusal in both directions, and gives `--roots` a block-N mode with its own registered 24, leaving lane B's
+check unchanged. It is built red-first on a branch off `eb18e5d`. **The release addendum names the resulting export sha and that
+change's receipts; no cell fires on `eb18e5d` itself.**
