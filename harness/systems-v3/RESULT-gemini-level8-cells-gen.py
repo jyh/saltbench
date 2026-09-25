@@ -45,6 +45,12 @@ def main(rundirs):
             if not os.path.exists(os.path.join(h, 'HARVESTED')):
                 continue
             model, arms = leg_meta(rundir, leg)
+            if model == 'UNREAD':
+                # a manifest without a '# LEG … — <model>' header (level-8 ADDENDUM 11's rr2 override) names no model; the harvest's
+                # flags.tsv records what was SERVED per cell, and one leg serves one model, so a single distinct value is taken, never a mix
+                fl = os.path.join(h, 'flags.tsv')
+                served = {m.group(1) for l in (open(fl) if os.path.exists(fl) else []) for m in [re.search(r'\bserved=(\S+)', l)] if m}
+                model = served.pop() if len(served) == 1 else 'UNREAD'
             # A by-hand re-read supersedes the chain's adds when the chain named cells that never ran
             # (LRU-pro-rr: the chain wrote l8rpsr01..03, the cells are l8rpsra201..03). Its source is a column.
             byhand = sorted(glob.glob(os.path.join(h, 'byhand-adds-*', 'l8-cells.tsv')))
