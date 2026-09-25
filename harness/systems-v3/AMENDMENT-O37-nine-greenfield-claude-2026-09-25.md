@@ -1,0 +1,144 @@
+# AMENDMENT — O37 BLOCK N: THE SIX BUILT NEW PROBLEMS, GREENFIELD × `none`, CLAUDE LANE. FROZEN BEFORE THE FIRST CALL
+## bench (SaltBench lead), 2026-09-25. The Captain, council 2026-09-25, in words: *"bench can start the remaining 9(?) problems. Can we
+## finish in 1 month? If not let's aim for 2 months. At this point let's set the remaning problems on bench to P3 -- it can run if it does
+## not use quota needed for higher priority tasks. But at this point, [the run box's pool] is full throttle, so the condition is lifted."*
+## His standing objective is *"fill out the 14 problems (greenfield only)"* (2026-09-10). This freeze covers the FIRST SLICE of that
+## objective: the 24 Claude conditions the harness can express TODAY. bench is lead AND hand on this lane, as in lane B.
+## ⛔ **UNSIGNED UNTIL A NON-AUTHOR SIGNS IT.** ⛔ **NO CELL FIRES BEFORE §N2's ITEMS ARE DRIVEN AND A RELEASE ADDENDUM NAMES THE EXPORT SHA.**
+## Signature and release are two acts, as in lane B.
+
+**What this file does not change.** It is a new block under `AMENDMENT-claude-lane-B-2026-09-16.md`, and it CARRIES that freeze's
+machinery BY CITATION: the preflight (§Q3.4, with ADDENDUM 5's one-live-cell-per-pool rule and §CLB-A's required ancestors), the caps
+(§Q4), the confounds (§Q5), the reading rules (§Q6), the void table (§Q7) and the deliverables (§Q9). A clause below that differs from
+lane B says so, and says why.
+
+---
+
+## §N0 · THE INPUTS
+```
+  1  MODEL IDs     claude-opus-5 · claude-sonnet-5 — the pilot's two Claude models, and the served set PER CONDITION exactly as
+                   lane B §Q0 row 1 (Opus condition: HC stage 1's team; Sonnet condition: claude-sonnet-5 in EVERY role).
+                   ⚖️ A newer model is NOT substituted: the nine are to join the pilot's five as ONE matrix, and a model change
+                   changes what that matrix asserts, which is the Captain's word (put to him with this file; the default is this row).
+  2  n             3 per condition.
+  3  POPULATION    24 conditions, 72 cells (§N1). Nothing is added, dropped or substituted.
+  4  EXPORT        ONE bare-master sha of saltbench-systems, named in the release addendum BEFORE the first cell, that (i) carries
+                   the six tasks at the blobs §N2 item 1 drove (master e54f35a carries all six) and (ii) descends from lane B's last
+                   release export, so every lane-B build item is present. One sha for all 72 cells, recorded per cell.
+  5  CLIENT PIN    lane B §Q0 row 5, unchanged (the versioned client by ABSOLUTE PATH, its sha asserted per launch).
+  6  TASK TREE     the EXPORT's own tasks/systems-v3, and nothing else.
+  7  CAPS          lane B §Q4, unchanged: C1_USD $37.21 (cost_caps.tsv), W1_SEC 144,000; CAP-COST and CAP-WALL armed.
+  8  ACCOUNT       ⚖️ THE CHANGE FROM LANE B: through Mon 2026-09-28 15:59 PDT, the run box's own pool, released at full throttle
+                   by the Captain's word above, NAMED PER CELL, with `cells_account_check.sh --expect <that pool's identity>` reading
+                   OK before each fire (it reads the resolved config dir's IDENTITY STRING, never its name). That pool is retired
+                   at that instant, so NO cell starts after 13:30 PDT that day (≈ 2 × the pilot's ~40 min/cell proxy). After it:
+                   P3 — a pool the higher lanes leave idle, named per cell under the same check. The box's DEFAULT cell env is a
+                   separate matter, and this block neither waits on it nor touches it.
+  9  FIRE ORDER    §N3, one cell per pool, pairs kept whole; a tripwire cell opens each model.
+```
+
+---
+
+## §N1 · THE POPULATION — 24 CONDITIONS, 72 CELLS
+Derived, not typed. O37's population is 9 problems × 4 models × 2 arms × {none, statement, spec-change} = 216 conditions. This block
+takes the part the harness can express today:
+```
+  problems   AES · BinomialHeap · LinearScan · Liveness · Luby · MaxFlow      the six with a v3 greenfield rung (saltbench-systems,
+                                                                                first commits 09c2504 … d8abefb, 2026-09-09)
+  models     claude-opus-5 · claude-sonnet-5                                   the Claude lane (the agy half is a sibling freeze)
+  arms       plain · salt-diet
+  field      greenfield            extras   none
+  ⇒ 6 × 2 × 2 = 24 conditions · × n 3 = 72 cells
+```
+**What is NOT in this block, and why, so a reader never takes 24 for 216:**
+- `statement` × the six (48 conditions): no card carries a `## Statement` section yet. The extractor runs rc 0 on all six (read-only,
+  to stdout, 0 `proof fn`), and the statement-arm amendment §2 requires the Captain to read each statement before a cell fires.
+- `spec-change` × the six (48): no `B/` phase-2 tree exists for any of the six on any ref, and BinomialHeap's card carries no change
+  request at all (`AMENDMENT-specchange-taskshape` §1 says what `B/` must hold).
+- LU · NTT · WHT (72): no v3 rung on any ref. The 2026-09-09 "not feasible" verdicts were withdrawn, never re-judged.
+- the agy lane's 24 `none` conditions: a sibling freeze, on the agy lane's own machinery.
+Each of those is a later dated block, written before its own first call.
+
+---
+
+## §N2 · ⛔⛔ THE BUILD ITEMS — EACH DRIVEN, WITH A CONTROL, BEFORE THE CELLS IT GATES
+1. **THE SIX TASKS ARE RE-DRIVEN BY A NON-BUILDER, ON THE EXPORT'S BYTES.** Each task's README reports its builder's own validation. A
+   builder's report is the subject grading itself. The lead re-drives, on a `git archive` of the export and at the pinned verifier sha:
+   (a) Verus on `withheld/reference/solution.rs` (`--rlimit 250 --smt-option smt.random_seed=0`), verified with 0 errors;
+   (b) `run_tests.sh` on the reference in BOTH forms, full pass;
+   (c) `run_tests.sh` on EVERY mutant, with the pass count recorded, because a mutant's MARGIN (hidden tests it fails) is what makes it a
+       planted defect rather than noise, and margin 1 is fragile;
+   (d) `run_trace.sh`: the reference predicate is `TRACE_OK true` on each counter-trace's reference column and `false` on its mutant
+       column; the TRIVIAL-PREDICATE control kills nothing (`true` on every mutant column).
+   A task whose drive disagrees with its README on any of (a)–(d) is WITHDRAWN from this block by name, its three conditions reported as
+   NOT-FIRED(TASK), and this file's population shrinks by an addendum, never silently.
+   *Status at this writing: (a)–(d) running on master e54f35a. Luby: 67 verified / 0 errors, both references 12/12, every mutant fails
+   (6–8 of 12 pass), the reference predicate reads `false` on all 6 mutant columns and `true` on all 6 reference columns. AES: 107
+   verified / 0 errors. ⚠️ The trivial-predicate half of (d) is NOT YET DRIVEN: the first drive ran the reference predicate only. It is
+   owed for all six before release. The full table goes in the release addendum.*
+2. **THE ACCOUNT CHECK** (§N0 row 8): `cells_account_check.sh` (saltbench-systems 0da916f, selftest 11/11, including a mutant with the
+   refuse test removed) is DRIVEN on the run box against the named pool, with the expected identity passed as an ARGUMENT, before the
+   first cell. Its limit rides with its verdict: an OK means *the right identity, a credential present*, never *a launch authenticates*.
+3. **NO LEAK INTO A VIEW:** `check_withheld_leak_v3.py` over the export, and the treatment gate on one built view per problem and arm.
+   A new task is where a withheld name is most likely to reach a view.
+
+---
+
+## §N3 · THE ORDER, THE TRIPWIRES
+```
+  models    Sonnet first, then Opus — lane B ADDENDUM 3's reasoning carries: the cheaper model buys the first read of new
+            problems, and nothing here compares the models.
+  problems  Luby → AES → Liveness → MaxFlow → BinomialHeap → LinearScan
+            (ascending reference size by `wc -l` on solution.rs: 743 · 1,104 · 1,128 · 1,193 · 1,709 · 1,885, so the draw is
+            measured on the cheapest problem first, and each later problem is priced by the ones before it)
+  cells     per problem: plain#1 · salt-diet#1 · plain#2 · salt-diet#2 · plain#3 · salt-diet#3
+```
+**Tripwires, each ONE cell, read by the lead and posted before its model continues:** `T-N-S` = Sonnet · Luby · salt-diet#1 · `T-N-O` =
+Opus · Luby · salt-diet#1. The treatment arm is read first, because it is the arm the caps bind (lane B §Q4 (ii)). The reading list is
+lane B §Q3.3's, with its brownfield rows dropped, plus the account-check line.
+**THE FIRST COMPLETE LUBY TRIPLE REPLACES THE PRICE.** The O37 price (2026-09-25) estimated ≈ 0.45 quota points per Opus cell and ≈ 0.18
+per Sonnet cell from the pilot, and said that its direction of error is LIKELY UNDER, not certain. The Luby cells measure it on these
+problems, and the price is re-cut from that measurement before the second problem fires.
+
+---
+
+## §N4 · CAPS AND PREDICTIONS — REGISTERED BEFORE ANY DATA
+Caps: lane B §Q4, unchanged. A cap-out is a RESULT and enters its median at the cap. No cap is raised.
+Predictions, reported per arm and model, where a miss is a result:
+(i) within a condition, salt-diet's CAP-COST incidence is ≥ plain's (the pilot's CENSUS §T3/§U2: the cap binds the treatment arm);
+(ii) CAP-COST incidence rises with reference size across the six (the §N3 order is also the prediction's order);
+(iii) CAP-WALL binds no cell.
+⛔ **No prediction is made about pass rate or premium.** These problems have never run on any lane, so there is no prior to register one against.
+
+---
+
+## §N5 · CONFOUNDS — lane B §Q5 carried, plus three that are new here
+1. **NEW PROBLEMS, NEW AUTHOR.** The six were ported from Lean v1 to Rust/Verus in one sitting (2026-09-09) by the systems lane's
+   executors. The pilot's five had weeks of cells against them before a result of record, and these have none. A defect in a new task
+   is a HARNESS finding, reported as such, and never read as an arm effect.
+2. **THE CAP IS THE PILOT'S.** $37.21 was derived from one Crc32 pair (cost_caps.tsv's own caveat 1). These references run 743–1,885
+   lines against the pilot's 291–2,461. A larger problem meeting the same cap is a heavier censoring of the arm that works longer.
+3. **TWO POOLS, ONE BLOCK.** Cells before Mon 13:30 run on the run box's pool, and cells after it on a P3 pool. The pool is recorded per
+   cell and is never the other arm of a contrast. Pairs are kept whole within one pool wherever the window allows, and a pair that
+   straddles is reported as straddling.
+
+## §N6 · READING RULES — lane B §Q6 rules 1, 2, 3, 6–9 carried. Rules 4–5 (retention, find-the-defect) are brownfield and do not apply.
+The expected verdict kind for every premium is registered now as **UNRESOLVED-UNDERPOWERED** (read CENSORED where the cap's arithmetic
+forbids a clearing median, NOT-SCORED where §N7 removes cells). **This block fills the matrix with signs and correctness, and cannot
+produce evidence about effect size.**
+
+## §N7 · VOIDS — lane B §Q7, with rows 6–7 (the brownfield given; W1 class) not applying, and ONE ROW ADDED
+```
+ 11  cells_account_check.sh does not read OK against the pool named for the cell                    DO NOT FIRE
+```
+
+## §N8 · WHAT THIS BLOCK CANNOT ESTABLISH, SAID BEFORE ANY DATA
+1. No magnitude and no effect size. 2. Nothing about Opus versus Sonnet as models. 3. Nothing about the 192 conditions outside §N1.
+4. Nothing about whether the six are representative of the nine: they are the six that were judged feasible to port, and the three
+that were not are the three still missing. **That is a selection, and it is declared here rather than discovered in a table.**
+
+## §N9 · WHAT THE HAND DELIVERS
+Lane B §Q9's per-cell list, less its brownfield columns, plus: the pool per cell · the account-check line per cell · the §N2 item 1
+table (per task: verify count · both reference pass counts · per-mutant pass count · the trace matrix). ⇒ **A result of record per
+model, with the census re-cut in the same commit.** O37's population joins the census as its own section, because the pilot's census
+is a result of record and is not re-opened. Any public sentence, and any claim about the method, is the Captain's.
