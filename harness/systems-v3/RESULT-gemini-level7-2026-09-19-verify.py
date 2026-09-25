@@ -66,7 +66,11 @@ ce = {}
 for r in rows: ce[r['card_extras']] = ce.get(r['card_extras'],0)+1
 check('card_extras split', ce, 'none %d /\n                                                        statement %d' % (ce['none'], ce['statement']))
 # 7 census arithmetic
-m = re.search(r'LIVE \(ADDENDUM 10\) DONE (\d+) · OWED (\d+) · BLOCKED\s+(\d+) · INEXPR (\d+)', cen)
+# The row is ADDENDUM 10's own, whether or not it is still the LIVE one: later addenda move the LIVE marker down the box and
+# re-align the columns (`OWED  85`), and a pattern keyed on the marker read nothing and crashed from ADDENDUM 11 on (2026-09-25).
+m = re.search(r'(?:LIVE \()?ADDENDUM 10\)?\s+DONE (\d+) · OWED\s+(\d+) · BLOCKED\s+(\d+) · INEXPR (\d+)', cen)
+if m is None:
+    print('  RED  census row for ADDENDUM 10 not found'); fails.append('census row'); m = re.match(r'(0)(0)(0)(0)', '0000')
 d,o,b,i = map(int, m.groups())
 print('  %s  census LIVE row  %d+%d+%d+%d = %d' % ('OK ' if d+o+b+i==200 else 'RED', d,o,b,i, d+o+b+i))
 if d+o+b+i != 200: fails.append('census sum')
@@ -76,7 +80,13 @@ if d+o+b+i != 200: fails.append('census sum')
 all240 = re.findall(r'240-view `DONE (\d+) · OWED (\d+) · BLOCKED 0 · INEXPR (\d+)`', cen)
 print('  OK   240-view lines found: %d (one per addendum that states one)' % len(all240))
 if len(all240) < 2: fails.append('240 population')
-d2,o2,i2 = map(int, all240[-1])
+# "The LAST" was ADDENDUM 10's line only until ADDENDUM 11 wrote one below it (2026-09-25: it read 109 against this level's 99).
+# The subject is ADDENDUM 10's own section, so the line is taken from inside it and nowhere else.
+# headers carry varying markers (✅✅ here, ⚖️ elsewhere), so the needle keys on the heading level and the number, never the glyph
+sec10 = re.split(r'\n# \S+ ADDENDUM 11 —', re.split(r'\n# \S+ ADDENDUM 10 —', cen, maxsplit=1)[1], maxsplit=1)[0]
+own = re.findall(r'240-view `DONE (\d+) · OWED (\d+) · BLOCKED 0 · INEXPR (\d+)`', sec10)
+if len(own) != 1: fails.append('240 line in ADDENDUM 10: %d found' % len(own))
+d2,o2,i2 = map(int, own[0] if own else all240[-1])
 print('  %s  census 240-view (LAST)  %d+%d+0+%d = %d' % ('OK ' if d2+o2+i2==240 else 'RED', d2,o2,i2, d2+o2+i2))
 if d2+o2+i2 != 240: fails.append('240 sum')
 if d2 != d: fails.append('240 DONE disagrees with 200 DONE')
