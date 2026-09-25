@@ -11,3 +11,7 @@ cd paper && tectonic saltbench-v1.tex
 ```
 
 (any pdflatex with booktabs, enumitem, microtype and hyperref also works: `pdflatex saltbench-v1.tex` twice).
+
+Version 2 of the report adds the complete pilot matrix. Its table is derived, not typed:
+`matrix_census_table.py` reads the matrix census's live row, checks the twenty rows against it, and
+with `--check` refuses if the rows in the tex differ from what it derives.
