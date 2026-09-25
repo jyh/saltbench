@@ -120,3 +120,28 @@ the cell's fence denies a sibling staged root, and the spawn walk read OK.
 creation event (32 roots across NA and the x86 agy row, 32/32 STAGED), and the fence law holds because every root existed before any cell
 that could need to deny it rendered.
 **Pooling across the move** is measured per cell, by the tree-hash line and the interface hash, never assumed (NA1.2's shape rule).
+
+---
+
+## ⚖️ ADDENDUM 3 — THE EXPORT MOVES FROM eadcfe8 TO e10f420 (THE CLIENT REAP), AND NO SUBJECT EVER RAN ON eadcfe8. APPENDED.
+**What moved.** saltbench-systems `e10f420` = `eadcfe8` + ONE commit touching ONE file, `harness/systems-v3/agy_turnloop_v3.py` (+77/−1):
+at the end of a cell the turn loop now reaps the agy client's whole process TREE, not its direct child. The client starts in its own
+session; `reap_client` kills (1) its process group, TERM then KILL, then (2) any process whose argv names THIS cell's `--log-file`, the
+loop's own ancestry excepted. The summary gains `client_reaped`. **Why:** on the x86 agy smoke cell xass01 the loop's `proc.kill()` reached
+only the wrapper (rc −9 in the loop record), and the agy client, reparented to init, ran on in the finished cell writing its log. It was
+killed by hand with the cell unchanged. The same file is byte-identical on the x86 line (`245f0d8`, blob `0004386efa3c`), so one fix serves both.
+**The task trees did not move:** `tasks/systems-v3` at e10f420 is tree `0ef1daea4de8`, identical to e54f35a's (all 15 entries by hash).
+**The fix, re-driven by a non-author (the lead), from a `git archive` of e10f420:** `--selftest` → **52 passed / 0 failed**. RED BACKWARDS, one
+line each: the group kill removed → **51/1**, failing only `REAP: a client grandchild (group)`; the argv scan removed → **51/1**, failing
+only `REAP: a client grandchild (escape)`. Both belts are load-bearing. ⚠️ **Scope, beside the verdict:** the fixture proves both
+mechanisms on a FAKE client; which belt fires on the real sandboxed client is not measured, and each cell's `REAPED` line in its launch
+log will say.
+**Which cells ran on which export, measured per cell from its own `ctl/` record:**
+```
+  59508ac   T-NA-F (Flash · Luby · salt, cell 1)                                   LANDED 18:48:36Z
+  eadcfe8   Flash · Luby · plain, 3 cells BUILT (battery GREEN), LAUNCHING × 0 — no subject call; not results, never pooled
+  e10f420   Flash · Luby · plain r2, 3 cells LANDED 22:25–22:40Z · Flash · Luby · salt r2, live at this writing, and every later NA cell
+```
+⇒ **No NA subject ran on eadcfe8, so ADDENDUM 2's export carries no data.** The move is allowed mid-block on ADDENDUM 2's own rule: it
+changes the END of a cell (process cleanup after the subject's last turn), never what a subject reads, and the task trees are identical.
+**Pooling across the move** remains per cell, by the tree-hash line and the interface hash, never assumed (NA1.2's shape rule).
