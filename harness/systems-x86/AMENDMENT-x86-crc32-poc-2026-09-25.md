@@ -161,3 +161,22 @@ ruled:** the Claude row's cells carry `CLAUDE_CODE_TMPDIR=$CELL/tmp` (the client
   spawn (rc 13), because the x86 battery's scratch view had copied the arm file into the cell's tmp/, a second home for the briefing
   token. The P-DELIVERY spawn walk refused it as designed. It was fixed at 640d6b4, and a mutant restoring the copy reproduces the refusal
   verbatim. The agy smoke re-fires as r2 in a later window.
+
+---
+
+## ⚖️ ADDENDUM 3 — THE CUT MOVES FROM 311a588 TO 4d960d3 BEFORE ANY SCORED x86 CELL. APPENDED.
+**What moved** (saltbench-systems `4d960d3`, cut by systems, 2026-09-25 ~20:5x UTC):
+1. **The `<Task>` fix, a kit defect found BEFORE any scored cell.** v3's builder substitutes `<Task>` in the arm file, and the x86 builder
+   did not, so every x86 view opened with the literal `# <Task>: …`. The first x86 agy smoke plain cell (xaspr01) ran with it. It is
+   plumbing, never pooled, and it is DECLARED in its reading, not voided. From 4d960d3 on, all four ARM × CLIENT views read `# Crc32: …`
+   with 0 `<Task>`, built FROM the cut on the run box.
+2. **(A), the renderer that denies other cells roots at EVERY level up to $HOME** (the nested-root hole systems found and drove). It lands
+   here as the ruling required: in the lane's NEXT export, never mid-block, before any scored x86 cell. A top-level cell's fence is
+   byte-identical under (A).
+3. **x86_clb.sh, the Claude row's fire route** (--roots · stage · fire, clb_fire.sh's path; the pool-rule by name across block N and this
+   row; STAGED roots claimed). Nothing a cell reads changes.
+4. The agy lane's production line as released (gemini's b7e5a3e through 87c1771: the agy client, launcher, staging, the three existence
+   guards, and the battery's scratch-view fix, after the P-DELIVERY walk refused xasp01 at spawn with nothing spent).
+**The referee is unchanged in what it reads** (systems: every referee-read file byte-identical 311a588 → 4d960d3). `referee_x86.sh` moves
+to c19fb00, which now prints `REFEREE export=… referee_blob=… arm pin fuel inputs` first and refuses an unnameable export (gemini's §X3 gap).
+**Every x86 cell from here on, both rows, fires from 4d960d3.** The smoke plain cell on 311a588 stands as plumbing only.
