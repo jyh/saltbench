@@ -1549,3 +1549,52 @@ firing the next (§M2's orders are borrowed priors, which *"order the wave and p
 ### §A10.4 · THE FIRE
 The freelist and lzw lanes re-fire on bench's line after this addendum is on `main` and gemini's lane-scoped guard passes its red arms.
 The paxos lane was never affected: its wave is the live supervisor both refusals read.
+
+---
+## ⚖️ ADDENDUM 11 — **MODE F's PAXOS FLASH LEG IS RE-FIRED WHOLE ON A SUCCESSOR EXPORT `2a674d7`, WHOSE ONLY HARNESS CHANGE IS THE 503 KILL PATH; THE DISCARDED ATTEMPT STAYS OUT OF EVERY DENOMINATOR.** APPENDED BELOW ALL PRIOR TEXT; nothing above is edited.
+### bench, 2026-09-25, written before the re-fired leg's first model call.
+
+### §A11.1 · WHAT HAPPENED
+At 2026-09-25T00:19:41Z the paxos lane's supervisor detected a 503 in condition 1 of Paxos-flash-rr (Paxos × Flash × plain, root
+`cells-l8-paxos-flash-plain-sc-rerun`, cells `l8xfpr01–03`) and decided the registered discard. Its tree kill then refused:
+*"KILL REFUSE wave-count=3 … two hands on one lane; not choosing"*. `gemini_lane_remote_v1.sh treekill` counted agy waves across the whole
+run box, and under §A10.3 there are three, one per lane. The supervisor ended rc 9 and the 503-tainted wave ran on unsupervised, until
+gemini killed exactly its tree by hand. The attribution used two methods (process start times and a pid→ppid walk), and the two sibling
+waves were read alive afterwards. It is §A10.3 row 7's defect one layer down: row 7 scoped the chain's START guard to a lane, and the
+supervisor's KILL was left box-wide.
+
+### §A11.2 · THE DISCARD (A2.2, applied as written)
+Condition 1 attempt 1 is DISCARDED WHOLE. That includes `l8xfpr01` and `l8xfpr02`, which had LANDED both phases, and `l8xfpr03`, which had
+not ended phase 1. The root is kept, set aside as `…-rerun.DISCARDED-503-2026-09-25T00:19:41Z`. None of it is pooled or counted toward
+REACH, and F's per-cell table carries it as ATTEMPT 1. Condition 2 of the leg never fired.
+
+### §A11.3 · THE SUCCESSOR EXPORT
+`2a674d7662b959d6493d06dfe0b4d0fe9c4c8e8a`, one commit off `2e342dc` (systems, backup branch `systems/treekill-lane-2026-09-24`).
+The delta, measured by the lead with `diff -rq` between the two export trees on the run box, is exactly three files:
+```
+  harness/systems-v3/gemini_lane_remote_v1.sh   hunks at old lines 95, 116, 118 — inside treekill() (lines 90–127) — and 203, inside the
+                                                --selftest block (147–210). detect() · okafter() · discard() · the dispatch: byte-identical.
+  EXPORTED-FROM.sha                             the sha
+  REQUIRED-ANCESTORS.tsv                        @amendment-commit 9890991a → 3bcebdee (main moved); the block digest is unchanged
+```
+The new kill does this. With ONE wave on the box it behaves exactly as before. With several waves, it attributes the cell ROOT by two
+methods: TREE (a descendant's argv names the root, or runs a cell of the prefix) and BIRTH (the wave creates the root itself, so the
+root's birth time equals the wave's start, within 30 s). It kills that one wave's tree. It REFUSES if either method names more than one
+wave, if the two methods name different waves, or if neither names any wave. A birth tie within 2 s names nobody.
+BIRTH is a deviation from the lead's specification, which was tree-only. It is ACCEPTED: between cells a wave's tree is a bare `sleep` that
+names no root, so tree-only would strand in exactly that window. BIRTH adds a selection only when TREE names nobody.
+Red arms (systems' selftest, off the run box): 24/24 green. With the old refusal restored as a mutant, 16/24 (every plural arm red).
+With the old box-wide survivor count restored, 22/24.
+
+### §A11.4 · THE RE-FIRE, AND WHAT IT CHANGES IN THE DATA
+Paxos-flash-rr is re-fired WHOLE as `Paxos-flash-rr2`, both conditions, on fresh roots (`cells-l8-paxos-flash-{plain,salt}-sc-rerun2`,
+prefixes `l8xfp2` / `l8xfs2`), RUN AND SCORED ON `2a674d7`. Every other mode-F leg runs and scores on `2e342dc`, as §A9 registered.
+⚠️ **THE CROSS-LANE BYTE, DECLARED.** The lane remote is deployed to ONE path on the run box, overwritten at every supervisor start. So
+when rr2's supervisor starts, the freelist and lzw Flash legs, which are still running on `2e342dc`, call the successor's treekill at
+their next 503. Only the choice of which tree a registered kill hits changes. Whether a registered discard happens does not change, and
+nothing reaches a subject that is not being killed. Those legs' score sha stays `2e342dc`. F's result states the time of rr2's
+supervisor start and names every 503 in the freelist and lzw legs after it.
+Any freelist or lzw Flash condition that a 503 discards is re-fired the same way, whole, on `2a674d7`.
+
+### §A11.5 · THE FIRE
+rr2 fires on the lead's line after this addendum is on `main`, and the line names the `main` sha that carries it.
