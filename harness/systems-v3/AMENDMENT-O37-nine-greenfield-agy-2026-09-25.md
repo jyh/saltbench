@@ -103,3 +103,20 @@ salt-diet #2/#3 go in a fresh root; pooling is MEASURED (the interface hash plus
 It now rests on THIS lane's battery row: a v3 agy cell built from 2a674d7 read `tmpdir-write … OK TMPDIR=<cell>/tmp; identity checked
 from outside the fence`. T-NA-F prints its own row, per the signature's limit.
 ### NA1.4 · RELEASED. T-NA-F first; /usage read at the fire; the block continues only on its reading.
+
+---
+
+## ⚖️ ADDENDUM 2 — THE EXPORT MOVES FROM 59508ac TO eadcfe8 BEFORE NA's SECOND CELL, AND WHY NO HARNESS DELTA REACHES A SUBJECT. APPENDED.
+**What moved.** NA's cells from Flash condition 2 onward fire from saltbench-systems `eadcfe8` = `59508ac` + two commits (4 files, +95/−4):
+`8069abd` STAGED ROOTS (staged_root_v3.sh; the wave fires into an existing root only if it holds exactly the staging marker, which is
+claimed first) and `eadcfe8` (the third existence guard, in the drive). **The six task trees are identical to e54f35a's by tree hash at
+eadcfe8**, as at 59508ac. T-NA-F (condition 1, cell 1) ran on 59508ac.
+**Why it is allowed mid-block (the lead's ruling, 2026-09-25 ~13:24):** a root-ACCEPTANCE rule changes nothing a subject sees, unlike a
+renderer change, which is refused mid-block. PROVED rather than asserted: staged_root_v3 --selftest 12/12, red backwards on two mutants
+(one accepts a marker beside other entries, and it "claims" a USED root; one drops the all-or-nothing pre-check). And the CLAIM PROOF on
+the run box: a v3 dry wave into a staged root printed STAGED ROOT CLAIMED · BATTERY GREEN · DRY RENDER COMPLETE, the marker was gone,
+the cell's fence denies a sibling staged root, and the spawn walk read OK.
+**Why staging:** under the one-root-creating-fire-per-window law, NA's 23 remaining roots needed 23 windows. Staging made them in ONE
+creation event (32 roots across NA and the x86 agy row, 32/32 STAGED), and the fence law holds because every root existed before any cell
+that could need to deny it rendered.
+**Pooling across the move** is measured per cell, by the tree-hash line and the interface hash, never assumed (NA1.2's shape rule).
