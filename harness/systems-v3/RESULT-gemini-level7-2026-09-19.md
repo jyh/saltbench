@@ -566,3 +566,39 @@ The child prints *"this executor is NOT registered with the fleet (set EXEC_REGI
 3. **The MECHANISM is not measured on this lane.** Block SB hypothesises a proof-method file as the source of the growth from two method files' headings; **no such reading was taken for level 7's cells**, and none is asserted here.
 4. **It does not re-open ERRATUM 1**, which is about §8 item 3 and is unrelated.
 📌 **FULL RECEIPT:** `MEASUREMENT-l7-retention-decomposition-2026-09-19.md` (84 rows, `l7-retention-decomp.tsv`), whose §2 is the reproduction control and whose §3 is the table above. **It is the SECOND lane with this signature**, measured independently of block SB and reproducing its published figure first.
+
+---
+# ⚖️ ADDENDUM A — **§2's CONDITION CLOSES: `Flash × brownfield × Crc32 × salt-diet × statement` REACHES n = 3, AND ALL THREE PASS.** APPENDED BELOW THE SIGNED TEXT AND BOTH ERRATA; nothing above is edited.
+*bench (SaltBench lead), 2026-09-25. The two cells §2 found refused on a credential window ran on 2026-09-25, under this level's registration
+and its export `9bfb6ef86a363cd9427ddc7298a6be97e98cc51e`, released by the lead on the census's §Q2 ("it needs two cells, not a wave").*
+📌 **The two rows are a FILE: `RESULT-gemini-level7-2026-09-19-q2-cells.tsv`**, in this result's per-cell column order, built by level 7's own
+harvest arm (`chain-l7u.sh` harvest_leg, run verbatim; gemini). **The signed per-cell file is untouched.**
+📌 **The figures below are re-derived from that file by `RESULT-gemini-level7-2026-09-19-q2-verify.py`, which fails on any mismatch.**
+
+### A.1 · THE CONDITION, AT n = 3
+```
+  cell        root                                   T            wall_s   verdict  tests  retained  ret_class  given     w1       tokenscan
+  l7cfss01    cells-l7-crc32-flash-salt-stmt-bf      13,141,849   494.3    PASS     6/6    0.235     REPAIRED   GIVEN-OK  COVERED  CLEAN      <- §4, 2026-09-19
+  l7cfssq01   cells-l7-crc32-flash-salt-stmt-bf-q2   15,862,634   1059.0   PASS     6/6    0.187     REPLACED   GIVEN-OK  COVERED  CLEAN
+  l7cfssq02   cells-l7-crc32-flash-salt-stmt-bf-q2   10,546,546   899.7    PASS     6/6    0.223     REPAIRED   GIVEN-OK  COVERED  CLEAN
+```
+**3 of 3 LANDED · 3 of 3 FULL PASS (TESTS 6/6).** One attempt, no discard; the credential refusal of 2026-09-19 did not recur (the warm-up
+advanced the token and launched with a full window).
+
+### A.2 · THE IDS, AND THE POOLING, MEASURED
+- **The ids are `l7cfssq01` and `l7cfssq02`, not `l7cfss02` and `l7cfss03`.** The wave numbers ids from 1, and the old root is evidence
+  (`l7cfss01`'s record; its 02/03 dirs were built and never launched), so it was not dispatched into (this repository's CLAUDE.md: reuse a cell
+  by copy, never by dispatch). A fresh root `…-q2` with prefix `l7cfssq` was used instead.
+- **Pooling across the two roots is a measurement:** the scorer prints ONE interface hash, `85f8cadc62e1b42f`, over the new root's two cells
+  and over a control re-score of `l7cfss01` under the same scorer and environment. That control reproduces `l7cfss01`'s published score line
+  and its eight meter columns exactly.
+
+### A.3 · ⚠️ ONE CELL IS `REPLACED` BY §B5's REGISTERED THRESHOLD — A CLASS, NOT A VOID
+`l7cfssq01` reads `retained` 0.187, below §B5's `retained < 0.20 → REPLACED`. Its validity columns all hold (GIVEN-OK, COVERED, CLEAN), so
+it counts. **ERRATUM 2 applies to this reading as to every other:** `retained` is symmetric in additions and deletions and moves with growth,
+so REPLACED here says the end file is far from the seed and does NOT say the seed was discarded. No survival or growth reading is taken for
+these cells in this addendum.
+
+### A.4 · WHAT THIS ADDENDUM DOES NOT DO
+- It changes no number in §1–§9b, and §1's headline figures, which were computed over 84 cells, are not recomputed with these two.
+- It makes no arm claim. Level 7 makes none, and a single condition at n = 3 cannot carry one.

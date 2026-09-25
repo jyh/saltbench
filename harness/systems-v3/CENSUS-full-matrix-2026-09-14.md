@@ -132,7 +132,8 @@ adding the two numbers gets the wrong denominator.**
 >   ADDENDUM 20       DONE 166 · OWED  15 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 chain D: six of its eight conditions reach n=3, scored at ceiling: +6
 >   ADDENDUM 21       DONE 167 · OWED  14 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 mode E's tripwire completes Flash x LRU x plain: +1
 >   ADDENDUM 22       DONE 168 · OWED 13 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 Pro x Crc32 x salt-diet closes on the two copies: +1
->   LIVE (ADDENDUM 23) DONE 180 · OWED  1 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 mode F: its twelve conditions reach n=3, scored: +12
+>   ADDENDUM 23       DONE 180 · OWED  1 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 8 mode F: its twelve conditions reach n=3, scored: +12
+>   LIVE (ADDENDUM 24) DONE 181 · OWED  0 · BLOCKED   0 · INEXPR 16 · DECLARED 3   level 7 §Q2 reaches n=3: the complete pilot matrix has no OWED condition: +1
 > ```
 > ⛔⛔⛔ **AND THEN IT HAPPENED AGAIN, SEVEN TIMES, IN THE BOX THAT CONTAINS THE PARAGRAPH BELOW.**
 > Rows **12–18 were added on 2026-09-22 by `bench`**, after the council read this box's `LIVE` row as
@@ -1334,3 +1335,24 @@ Flash × Paxos ran on the successor export `2a674d7662b9` (level-8 ADDENDUM 11),
    1  level 7   gemini-3.8-flash-high × brownfield × Crc32 × salt-diet      l7cfss02 + l7cfss03 under level 7's registration, after F — F is done
 ```
 Its closer is gemini's `--plan` for l7cfss02+03 on level 7's export, checked by the lead before any fire.
+
+---
+# ⚖️ ADDENDUM 24 — **LEVEL 7 §Q2 CLOSES: THE LAST OWED CONDITION REACHES n = 3. `DONE 180 → 181`, `OWED 1 → 0`.**
+## bench, 2026-09-25, with ADDENDUM A of `RESULT-gemini-level7-2026-09-19.md` in the same commit (the condition's record).
+
+## §AD1 · THE ARITHMETIC
+```
+  gemini-3.8-flash-high  brownfield x statement x Crc32 x salt-diet   OWED -> DONE   3 of 3 (l7cfss01 + l7cfssq01, l7cfssq02) LANDED,
+                                                                                      scored, FULL PASS; pooling measured (one interface)
+  -------------------------------------------------------------------------------------------------
+  MATRIX         DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3   = 200
+```
+⇒ **181 + 0 + 0 + 16 + 3 = 200.** §Q2's own sentence, *"whoever fires them re-cuts this row"*, is discharged by this addendum.
+⚠️ **The ids are `l7cfssq01/02`, not the `l7cfss02/03` that §Q2 and ADDENDA 21–23 name**: the old root is evidence and was not dispatched into
+(the level-7 result's ADDENDUM A §A.2).
+
+## §AD2 · WHAT OWED 0 MEANS, AND WHAT IT DOES NOT
+- **Every condition of the Captain's 200-condition pilot matrix is DONE, INEXPRESSIBLE (16) or DECLARED unreached at the cap (3).** None is owed.
+- **A DONE means n = 3 reached and scored on the withheld suite, never a verdict on the arms.** Each level's result of record says what its
+  conditions can and cannot carry, and none of them claims that the salt method helps or hurts.
+- **The 16 INEXPRESSIBLE and the 3 DECLARED are not DONE**, and a reader summing "complete" must say which of the three states is meant.
