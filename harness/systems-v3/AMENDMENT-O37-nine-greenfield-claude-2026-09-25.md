@@ -256,3 +256,11 @@ the harvester and scorer. Both arms move together. An account is a billing pool,
 sibling already exists for the new dir, because it has been a cell pool before.
 **Which cell ran on which dir** is read per cell from its own `ctl/run-cfg.tsv` (`cfg`), never assumed. Every block N cell to this
 addendum ran on A2.3's first dir.
+
+---
+
+## ⚖️ ADDENDUM 4 — ADDENDUM 3's MOVE IS NOT TAKEN; IT STANDS AS THE DECLARED FALLBACK. APPENDED.
+The first pool's owner will lift its ceiling himself before the wall (the helm's relay, 2026-09-26 ~01:47 UTC), so **block N stays on
+A2.3's dir.** ADDENDUM 3's second dir is the FALLBACK, on the same triggers as x86 PoC #267 ADDENDUM 5: at a fire, the first dir fails
+its account check, or its probe turn does not authenticate, or the helm's all-models reading of the first pool is at or over 92 % with no
+reset yet taken. Taking it gets its own addendum naming the first cell. No block N cell has run on the second dir.
