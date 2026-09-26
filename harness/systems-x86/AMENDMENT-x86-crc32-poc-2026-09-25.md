@@ -332,3 +332,20 @@ not registered. The Claude row interleaved, so this confound is the agy row's al
 **Unchanged:** the model (gemini-3.1-pro-high), the caps (level 6 §H3), the referee (`referee_x86.sh`), §X3's smoke reading, and the
 statement conditions' own cut (ADDENDUM 9). The agy statement pair is not released by this addendum. Its wave wiring is still being
 built, and it fires on its own release line.
+
+---
+
+## ⚖️ ADDENDUM 13 — THE AGY ROW's `statement` PAIR FIRES FROM CUT 5 = ec67091, BY CONDITION, AFTER THE `none` PAIR. APPENDED.
+**Why a fifth cut.** The agy wave had no statement arm at cut 4. `ec67091` adds it (`AGY_EXTRA=--statement`, with the hand-outs asserted in
+the export by blob). It is one commit and one file on top of cut 4 (`harness/systems-v3/agy_wave_v3.sh`, +31 −3). **The lead diffed
+both exports on the run box:** cut 5 differs from cut 4 in `agy_wave_v3.sh` and the three provenance files (`EXPORTED-FROM.sha`,
+`RENDER-OVERLAY.txt`, `REQUIRED-ANCESTORS.tsv`), and in nothing else. So nothing a Claude cell, a `none` view or the referee reads differs
+from cut 4.
+**Measured by the hand at zero spend, before this release** (gemini, 2026-09-26): the export's `agy_wave_v3.sh` is the committed blob.
+Each hand-out hashes to its pin in `STATEMENT-PIN.tsv`: statement `630a37ba2545`, spec `b336720df2e1`. A dry render of both statement
+arms reads rc 0, BATTERY GREEN, `ctl/statement=yes`, and both hand-outs are in the view. The launch `--check` is rc 0 on both, and the
+briefing-token walk is OK on both. The canary `--plan` is clean: 2 conditions, 6 cells, into staged roots.
+**ORDER:** by condition, plain ×3 then salt-diet ×3, as ADDENDUM 12, whose time-order confound carries here unchanged. **This pair fires only after the
+`none` pair's supervisor has written its end marker**, because the agy credential is width 1.
+**Each condition runs on exactly one cut:** Claude `none` on 4d960d3; Claude `statement` and agy `none` on cut 4; agy `statement` on
+cut 5. No pooling across cuts is needed.
