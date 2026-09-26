@@ -284,3 +284,18 @@ Nothing else, and **nothing a `none` view or the referee reads**.
 x86 cell uses; the lead's `898c7e2` export ran it on the same box minutes earlier and it read equal.
 **`none` stays on 4d960d3** (complete at n = 3, PR #268). The statement conditions, both arms and both rows, fire from cut 4. Pooling across
 the two cuts is never needed, because each condition runs on exactly one cut.
+
+---
+
+## ⚖️ ADDENDUM 10 — THE FALLBACK IS TAKEN ON TRIGGER (c), FROM THE STATEMENT BLOCK's THIRD CELL. APPENDED.
+The helm's hourly reader recorded the first pool at **92 % all-models** (2026-09-26 08:25 UTC), with no reset taken. That is trigger (c) of
+ADDENDUM 5, which sits below the wall so that no cell starts where it could meet 95 % mid-run. The live cell (clbkcs01, statement ·
+salt-diet · #1) finishes on the first dir, because a cell is never interrupted. **From the next cell that starts, statement · plain · #2,
+the row runs on ADDENDUM 4's second dir.** Its state was checked before that cell:
+- no `chrome/` and no client temp file;
+- the browser-integration default is still false (ADDENDUM 7);
+- account check OK, both tokens present;
+- 31 % all-models on the same reader.
+
+**The return** to the first dir is taken, with its own addendum, only after the first pool is reset. Everything ADDENDUM 4 lists as unchanged
+is unchanged. Which dir each cell ran on stays per cell, from `ctl/run-cfg.tsv`, and each condition's RESULT names the dir per cell.
