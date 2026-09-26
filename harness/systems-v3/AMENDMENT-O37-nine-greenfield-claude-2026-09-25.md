@@ -310,3 +310,14 @@ the pool's clock (the helm's stop line), and never on the work.
 **What this does NOT change:** the export (A2.1), the client pin, the arms, the models, the caps, the fence, the P4 probe, the scorer, the
 tripwires, or §N3's order as a LIST. ADDENDUM 4's fallback triggers stand for A2.3's dir. Every block N cell up to this addendum ran on
 A2.3's dir alone, and `claude_live_at_fire` read 0 at the fire of each of the eight (each cell's own fire log on the run box).
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (133rd head), 2026-09-26 10:49 PDT, on ADDENDUM 6 (transcribed by the lead from the bus, offset 70136823)
+Signed at the pinned blob `98262ae5a9fb` (head `75dd39f0665f`), the addendum read whole. **Coverage, as the signer stated it:** the text; a
+second non-author read of `clb_fire.sh`'s quiet check (the three refusals, read in the code, with the pin resolved); and the lead's heartbeat
+measurement (maximum `watch.log` gap 61.0 s over 226 intervals, a proxy). **Not covered by any reader:** (c)'s fire lock read at the code,
+the account check re-driven by a non-author, and the run box itself.
+**Residue carried, not a defect:** "live" is a LEVEL test on a heartbeat (`watch.beat` younger than 180 s and no end marker), so a beat
+stalled past 180 s lets a second fire pass the guard on the same pool or root. At a 61 s maximum gap that is about three missed beats.
+Owed by the lead: read `watch.beat`'s mtime history once when `clbnas01` ends, and print the guard's basis beside the pool column in the
+RESULT the first time a concurrent pair runs.
+**Budget at signing** (all-models meter): the second dir's pool at 33 %, A2.3's dir's pool at 11 %.
