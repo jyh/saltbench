@@ -256,3 +256,31 @@ The first pool's all-models reading at the move was 86 % (the helm's hourly read
 access token, with copy and race both excluded by the bytes. Why the server refused remains unmeasured. It is not a cell-level confound:
 no subject turn ran on a failing credential.
 **Which dir each cell ran on** stays per cell, from `ctl/run-cfg.tsv`.
+
+---
+
+## ⚖️ ADDENDUM 9 — THE STATEMENT ROWS FIRE FROM CUT 4 = 5d3267b; THE `none` ROWS ARE COMPLETE ON 4d960d3. APPENDED.
+**Why a cut, before any statement cell:** the route every `none` cell fired through carries a launch-fence re-assertion (`d0d54b5`). The
+statement wiring (`898c7e2`, the hand-out pinned by blob per §X0 row 4) was built beside it, not on it, so firing from `898c7e2` alone
+would have dropped a launch check the `none` cells had. **Cut 4 = `5d3267b` = `d0d54b5` + `898c7e2` + `245f0d8`** (the agy client reap, so
+one cut serves both rows). It was cut by the harness's builder, and its tree `e6ec8048d128` equals the lead's merge-tree reading, with no
+conflict.
+**What differs from 4d960d3's export, by an independent file-sha diff on the run box:**
+- the route `x86_clb.sh`: the statement condition, plus root-counting lines that run only in `--roots` mode;
+- `agy_turnloop_v3.py`: the reap, agy row only;
+- `studio_export.sh`;
+- `STATEMENT-PIN.tsv` and its two hand-outs, whose landed copies hash to the pins: statement `630a37ba2545`, spec `b336720df2e1`;
+- the provenance files: `EXPORTED-FROM.sha`, `RENDER-OVERLAY.txt`, and `REQUIRED-ANCESTORS.tsv`, whose only difference is the same
+  authority commit written short.
+
+Nothing else, and **nothing a `none` view or the referee reads**.
+**Views, measured:** the builder's dry stage of all four conditions from cut 4 is rc 0. A cut-4 dry `none` view against a real 4d960d3
+`none` view differs in two ways only, and both are explained:
+- `absent` ancestor rows `up5..up7`: the dry cells sit three directories deeper;
+- `tools/mnemonics.py`: the same member sets printed in a different order. Python's hash-randomised set order also differs between two
+  real 4d960d3 cells, so it is a per-build nondeterminism, content-identical and arm-neutral. It is noted for the builder, not repaired.
+
+⚠️ This export was taken with the toolchain check SKIPPED (a block N cell was live). The skipped check covers the Rust/Verus pins, which no
+x86 cell uses; the lead's `898c7e2` export ran it on the same box minutes earlier and it read equal.
+**`none` stays on 4d960d3** (complete at n = 3, PR #268). The statement conditions, both arms and both rows, fire from cut 4. Pooling across
+the two cuts is never needed, because each condition runs on exactly one cut.
