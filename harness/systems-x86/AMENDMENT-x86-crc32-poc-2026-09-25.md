@@ -225,3 +225,20 @@ credential: `cells_account_check.sh` now reads RED CRED-BLANKED, both tokens emp
 as unchanged still unchanged. clbqcp02 was built but never launched on the first dir, and it fires on the second.
 **Before the first fire, both credential files were copied to the run box's backup dirs**: the blanked one for the record, and the
 second dir's before its first refresh. The first dir returns only by a new login, which is its owner's act, and only with an addendum.
+
+---
+
+## ⚖️ ADDENDUM 7 — ONE CONFIG DIFFERENCE IN THE SECOND DIR, FOUND AT clbqcs02's CHECK, AND WHAT IT MEANS FOR clbqcp02. APPENDED.
+**The finding.** The second dir's client config carried `claudeInChromeDefaultEnabled: true`, left by an interactive login. The first
+dir carries no such key. At clbqcp02's launch (01:57:11 UTC) the cell's own client regenerated a `chrome/` native-host wrapper in the
+dir (mtime 01:57:13). At clbqcs02's `--check-only` the run-dir guard refused it (`HOLD the run dir holds chrome`), so the difference was
+caught by the guard and not by a reader.
+**The repair, before clbqcs02's first model call:** the config was backed up and the key set to `false`, and `chrome/` was moved into the
+dir's backups sibling. The check read CLEAN. The cause is CONFIRMED by the next launch: clbqcs02 launched at 02:39:23 and did NOT
+regenerate `chrome/`.
+**clbqcp02 (plain · none · #2) ran with the key true, DECLARED, not voided:**
+- Its three transcripts carry 0 occurrences of `chrome` and 0 of `mcp__`.
+- Its launch passed the same explicit `--tools` allowlist and `--strict-mcp-config` as every cell, neither of which admits an MCP tool.
+- What the client OFFERED the subject is not recorded in any transcript, so "no browser tool was offered" is UNMEASURED; "none was
+  used" is measured.
+- It is refereed like every cell, and its flag rides beside its verdict wherever the verdict is quoted.
