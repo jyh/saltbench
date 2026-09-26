@@ -309,3 +309,26 @@ salt-diet · #2, the row runs on the first dir again.** clbkcp02 (statement · p
 The reset is a quota event, not a login: the first dir's credential is unchanged by it (cred_ledger reads it UNCHANGED), and it is
 still the login of ADDENDUM 8. ADDENDUM 5's fallback and its three triggers stand. Which dir each cell ran on stays per cell, from
 `ctl/run-cfg.tsv`.
+
+---
+
+## ⚖️ ADDENDUM 12 — THE AGY ROW's `none` PAIR FIRES FROM CUT 4 = 5d3267b, BY CONDITION. APPENDED.
+**Why cut 4 for the agy `none` pair.** ADDENDUM 9 kept `none` on 4d960d3, and that sentence was written about the CLAUDE row: its `none`
+pair was complete there at n = 3 (PR #268). The AGY row's `none` pair has not fired. Its salt-diet smoke (xass01) ended with an orphaned
+client tree, and its slice was held on the client reap (`245f0d8`), which only cut 4 carries. ADDENDUM 9's file-sha diff names everything
+cut 4 changes against 4d960d3. Of those changes, the reap is the only one on the agy row, and nothing a `none` view or the referee reads
+differs. **So the agy `none` pair fires from cut 4.** Each condition still runs on exactly one cut: Claude `none` on 4d960d3, agy `none`
+and every `statement` condition on cut 4. No pooling across cuts is needed.
+**Measured by the hand before this release, at zero spend** (gemini, 2026-09-26, the run box, inside an existing root, no new `$HOME`
+entry): a dry render of both arms from cut 4 reads BUILT · FENCE RENDERED · BATTERY GREEN · DRY RENDER COMPLETE. The launch `--check` is
+rc 0 on both arms, and the briefing-token walk is OK on both. The walk's control, the pre-640d6b4 dry cell, still refuses. The canary
+`--plan` is clean: 2 conditions, 6 cells, into staged roots.
+**ORDER: by CONDITION, not by cell.** §X2's per-cell interleave (plain#1 · salt-diet#1 · #2 · #3) is REPLACED for the agy row's `none`
+pair by plain ×3, then salt-diet ×3. The agy wave's unit is the condition, and its fresh-root guard gives one root per condition. An
+interleave would need six roots created in quiet windows while block N is live, and the time order it buys is not worth that.
+⚠️ **Declared as a confound of the agy row, before any cell:** the salt-diet cells run hours after the plain cells, on the same caps, the
+same credential and the same box. A drift in the served model or in the agy pool over those hours falls on salt-diet alone. Its sign is
+not registered. The Claude row interleaved, so this confound is the agy row's alone, and its RESULT prints it beside every agy table.
+**Unchanged:** the model (gemini-3.1-pro-high), the caps (level 6 §H3), the referee (`referee_x86.sh`), §X3's smoke reading, and the
+statement conditions' own cut (ADDENDUM 9). The agy statement pair is not released by this addendum. Its wave wiring is still being
+built, and it fires on its own release line.
