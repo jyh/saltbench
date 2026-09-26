@@ -299,3 +299,13 @@ the row runs on ADDENDUM 4's second dir.** Its state was checked before that cel
 
 **The return** to the first dir is taken, with its own addendum, only after the first pool is reset. Everything ADDENDUM 4 lists as unchanged
 is unchanged. Which dir each cell ran on stays per cell, from `ctl/run-cfg.tsv`, and each condition's RESULT names the dir per cell.
+
+---
+
+## ⚖️ ADDENDUM 11 — THE FIRST POOL IS RESET; THE ROW RETURNS TO IT FROM THE STATEMENT BLOCK's FOURTH CELL. APPENDED.
+The first pool's owner took its one-time reset at 2026-09-26 09:14 UTC. The helm's hourly reader recorded all-models 94 → 0; the weekly
+reset date is unchanged. That discharges the condition of ADDENDUM 10's return clause. **From the next cell that starts, statement ·
+salt-diet · #2, the row runs on the first dir again.** clbkcp02 (statement · plain · #2) finishes on the second dir, where it started.
+The reset is a quota event, not a login: the first dir's credential is unchanged by it (cred_ledger reads it UNCHANGED), and it is
+still the login of ADDENDUM 8. ADDENDUM 5's fallback and its three triggers stand. Which dir each cell ran on stays per cell, from
+`ctl/run-cfg.tsv`.
