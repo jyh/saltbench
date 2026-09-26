@@ -180,3 +180,26 @@ ruled:** the Claude row's cells carry `CLAUDE_CODE_TMPDIR=$CELL/tmp` (the client
 **The referee is unchanged in what it reads** (systems: every referee-read file byte-identical 311a588 → 4d960d3). `referee_x86.sh` moves
 to c19fb00, which now prints `REFEREE export=… referee_blob=… arm pin fuel inputs` first and refuses an unnameable export (gemini's §X3 gap).
 **Every x86 cell from here on, both rows, fires from 4d960d3.** The smoke plain cell on 311a588 stands as plumbing only.
+
+---
+
+## ⚖️ ADDENDUM 4 — THE CLAUDE ROW'S POOL DIR MOVES, ON THE RUN BOX, BEFORE ITS THIRD SCORED CELL. APPENDED.
+**What moves:** only the account directory the Claude row's cells authenticate from. From the first cell that STARTS after
+clbqcs01 (salt-diet · none · #1) onward, the row uses a SECOND subscription pool dir on the same run box instead of the run box pool's
+own dir. **Why:** the first pool reaches its weekly ceiling tonight (the helm's reading, 2026-09-25 ~01:45 UTC), 2.5 days before its
+reset. No cell is interrupted: clbqcs01 finishes where it started.
+**What does NOT move:** the model (claude-opus-5, the served set per condition checked by `served_models_v3 check-cell` on every cell),
+the client pin (2.1.259, sha16 884baa38fe1a624b), the cut (4d960d3), the route (d0d54b5), the arm views, the fence render, the budgets and
+the $37.21 cost cap, the referee (`referee_x86.sh`, blob 8cfbf8113196). An account is a billing pool, not a treatment. Both arms move
+together, and every remaining cell of every condition runs on the second dir.
+**Measured before the move (2026-09-26 ~01:4x UTC):**
+- `cells_account_check.sh` on the second dir reads ACCOUNT-CHECK OK: the file identity == --expect, credential PRESENT with access and
+  refresh non-empty. The RED control fires: the same dir with a wrong --expect reads RED NOT-EXPECTED.
+- The dir has been a cell pool before (trust-seed lock and backups present), so the move creates NO new $HOME entry.
+- 0 transcripts written there in the last 3 h.
+**What gates its first cell:** the fire's own P-SANDBOX and P-NET probe turns run through the client on that dir, and they are its
+authenticated read. A probe that is not GREEN refuses the launch.
+**Which cell ran on which dir** is read per cell from its own `ctl/run-cfg.tsv` (`cfg`), never assumed. On the first dir: the smoke pair
+(clbwcp01, clbwcs01), clbqcp01 and clbqcs01.
+**The single-cell rule carries over unchanged** (ADDENDUM 2): one Claude cell on the pool dir at a time, across this row and O37
+block N, which moves with it.
