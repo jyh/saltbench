@@ -273,3 +273,40 @@ credential blanked at a probe turn (x86 PoC ADDENDUM 6), and its owner then ran 
 04:59 UTC). The fresh credential was backed up before any turn, and step (1) of A2.3's sequence reads OK, with a wrong --expect reading
 RED. Steps (2) and (3) are block N's next fire, whose own probe turn is the authenticated read. ADDENDUM 4's fallback triggers stand
 unchanged, and the single-cell rule still spans both lanes.
+
+---
+
+## ⚖️ ADDENDUM 6 — BLOCK N RUNS ON BOTH POOL DIRS AT ONCE, ONE CELL PER DIR: LANE B ADDENDUM 5's PROCESSING LIMIT, ADOPTED. APPENDED.
+**Registered before block N's first concurrent cell.** ⛔ **No second concurrent block N cell fires before a non-author signs this addendum.**
+
+**Why.** Council 2026-09-26 §1, the Captain: *"With the pilot done, the remainder of saltbench is P3, now I'm happy to move salt back to
+the fore."* and *"Let's plan on using that quota."* The helm routed it to the lead the same morning: O37's P3 remainder is to run NOW on
+ADDENDUM 3's second dir, whose weekly points are lost at its reset whatever runs on them. **This is not ADDENDUM 4's fallback.** None of
+its three triggers has fired: A2.3's dir authenticates and is carrying a live cell (`clbnas01`). The second dir is added as a second,
+concurrent pool, and A2.3's dir stays in use.
+
+**The limit** is lane B ADDENDUM 5 §A5.2 (a)–(d), adopted by reference and unchanged: (a) one live cell per pool · (b) never two live
+cells in one root · (c) fires serialized · (d) no config dir created or removed while a Claude-lane cell is live. It is enforced by the
+export's own `clb_fire.sh` (6087b54, the quiet check and the fire lock) under `CLB_CONCURRENT=1`. That check refuses a fire if a live cell
+sits in the same root or on the same pool, and it refuses (fail-closed) if a live cell's pool cannot be read. A2.3's single-cell rule is
+(a) applied to each dir, and it still spans the x86 row, x86 first on either dir.
+
+**The second dir** is used under A2.3's sequence: (1) `cells_account_check.sh` reads OK with the second pool's expected identity, and a
+wrong `--expect` reads RED; (2) the fire's own probe turn authenticates, checked by its body; (3) the cell. A second block N lane env file,
+beside the first and never replacing it, differs from the first in `CLB_CFG` only. Both files carry `CLB_CONCURRENT=1`.
+**Budget:** before each fire on the second dir, the lead reads that pool's all-models meter. A reading at or over 95 % holds the fire on
+the pool's clock (the helm's stop line), and never on the work.
+
+**What it changes about the data, said before any concurrent cell** (lane B §A5.3 and its ADDENDUM 6's pool confound, carried):
+- **Pool is recorded per cell** (`ctl/run-cfg.tsv`, `cfg`). It is read per cell and never assumed.
+- **No arm is assigned by pool, but arm and pool will be CORRELATED.** §N3's list alternates plain and salt-diet inside one problem, and
+  (b) keeps two cells of one root apart. So a concurrent pair is usually one cell of each arm, and the dir that frees first takes the next
+  cell in list order. The pool is reported as a column beside every table and is never balanced. The served model, the pinned client,
+  the settings, the fence and the caps are identical across the two dirs.
+- **`claude_live_at_fire` is reported per cell**, beside the agy census. Load moves wall time directly and cost only through behaviour.
+  The wall cap (W1 = 144,000 s) is 10.8× the live cell's elapsed wall at this drafting (13,350 s for `clbnas01`, from its own
+  `ctl/watch.log`).
+
+**What this does NOT change:** the export (A2.1), the client pin, the arms, the models, the caps, the fence, the P4 probe, the scorer, the
+tripwires, or §N3's order as a LIST. ADDENDUM 4's fallback triggers stand for A2.3's dir. Every block N cell up to this addendum ran on
+A2.3's dir alone, and `claude_live_at_fire` read 0 at the fire of each of the eight (each cell's own fire log on the run box).
