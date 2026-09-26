@@ -213,3 +213,15 @@ reset (the helm's relay, 2026-09-26 ~01:47 UTC). With its cause gone, the move w
 FALLBACK. It is taken, with its own addendum naming the first cell, only if, at a fire, the first dir fails its account check, or its
 probe turn does not authenticate, or the helm's all-models reading of the first pool is at or over 92 % with no reset yet taken.
 **Which dir each cell ran on** is still read per cell from `ctl/run-cfg.tsv`, and no cell has run on the second dir.
+
+---
+
+## ⚖️ ADDENDUM 6 — THE FALLBACK IS TAKEN ON TRIGGER (b), FROM clbqcp02. APPENDED.
+At clbqcp02's fire (plain · none · #2, 2026-09-26 01:54 UTC), the first dir's P-SANDBOX turn read GREEN at 01:54:35. Its P-NET turn four
+seconds later read INDETERMINATE (unreachable). The client exited 1 with *"Failed to authenticate: OAuth session expired and could not
+be refreshed"*, and the route REFUSED the launch, so nothing was spent on a subject. The failed refresh BLANKED the first dir's
+credential: `cells_account_check.sh` now reads RED CRED-BLANKED, both tokens empty. This is the same cliff block N's A2.3 records.
+⇒ **Trigger (b) of ADDENDUM 5. From clbqcp02 onward the Claude row runs on ADDENDUM 4's second dir**, with everything ADDENDUM 4 lists
+as unchanged still unchanged. clbqcp02 was built but never launched on the first dir, and it fires on the second.
+**Before the first fire, both credential files were copied to the run box's backup dirs**: the blanked one for the record, and the
+second dir's before its first refresh. The first dir returns only by a new login, which is its owner's act, and only with an addendum.
