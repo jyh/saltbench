@@ -59,3 +59,55 @@ A reads what was WRITTEN. Both arms received the same `LANDING.md` template and 
 TABLE 1 byte sizes), so less text is available to carry a cue, and that is part of what "documented less" measures. B covers only the problems
 with a `B/` tree, is not blind, and has no Opus regression record. **No claim about correctness of the shipped code follows from A.** The
 pilot's own withheld suites measure that, and they are a different instrument.
+
+---
+
+## ⚖️ ADDENDUM 1 — THE NON-AUTHOR READ, AND THE LIMITS IT ADDS. APPENDED; §1–§5 untouched.
+bench, 2026-09-26. §4's owed read is **TAKEN**. The reader was systems. Its criteria were committed before it opened `hg_scan.py`
+(saltbench-systems **3730b87**, 07:17:41 PDT), and its verdict came after (**e953fc5**, 07:23:43 PDT). The helm read both at the object
+and concurred. Every figure in this addendum is quoted from that verdict file at e953fc5, and none is re-typed from a message.
+
+**VERDICT: CONFIRM-WITH-LIMITS.** The reader re-derived every figure in §1 and §2 exactly, with its own code over the cells. That code
+shares nothing with `hg_scan.py` except the registered scanner (`ambiguity_scan.py` at `git archive e54f35a`). The reader found the
+24 no-LANDING directories by searching the run box, not by `hg_scan`'s rule, and they agreed 24/24. **The limits change magnitudes,
+not the direction of any verdict.** §1's four falsifications STAND as registered.
+
+### A1.1 · ⛔ THE LIMIT THAT GOVERNS HOW §1 IS QUOTED: THE REGISTERED SURFACE IS ARM-CORRELATED BY THE ARM TEXTS THEMSELVES
+Each arm's text names a SECOND file for decisions, the file differs by arm, and the registered scan reads none of them:
+plain → `BANK.md` · salt-diet → `docs/STATEMENTS.md` · placebo → `docs/decisions.md`. **Salt-diet is also told that `BANK.md` and
+`BUS.md` are NOT a place to restate a decision**, so reading (ii) scores a salt-diet cell with no LANDING.md on the one surface its arm
+text tells it to keep free of decisions.
+⇒ **§1 is quotable in ONE form only: "plain wrote more ON THE REGISTERED SURFACE (LANDING.md, and BUS.md where LANDING.md is absent)",
+with this limit printed beside it.** How much more depends on which files count as "written down", and the arm texts make that choice
+arm-correlated.
+The reader's SENSITIVITY run is **NOT REGISTERED and is not a figure of this result.** It is printed here only as the size of the limit.
+It used the same scanner over LANDING + BUS + BANK.md + docs/STATEMENTS.md + docs/decisions.md where present:
+```
+  grid (i)    DOCUMENTED plain 49.3 % · salt-diet 42.5 %     SILENT 31.1 % · 39.7 %     (registered 45.2 · 34.7 / 34.8 · 47.6)
+  Claude (ii) DOCUMENTED 65.7 · 60.8                         (registered 59.9 · 44.2)
+  HC1 (i)     DOCUMENTED plain 73.3 · salt-diet 76.9 · placebo 88.9     A5 still FALSIFIED; the ORDER changes
+```
+The direction of A1 and A2 survives on the grid. The DOCUMENTED gap shrinks from 10.5 to 6.8 points on the grid and from 15.7 to 4.9 in
+the Claude lane. On HC1, salt-diet rises above plain.
+**A re-read over each arm's own decision file (A′) is a new reading.** It is registered before it is scanned, with the surface named per
+arm and the predictions written blind. Until then, any such figure is EXPLORATORY and is labelled so wherever it appears.
+
+### A1.2 · B2 CARRIES ONE CELL'S WEIGHT
+One cell, `l8xpsr01` (Paxos · salt-diet, phase 2 PERSIST-INDETERMINATE, REGRESSIONS 13/16), carries **13 of salt-diet's 19** failed
+regressions. Without it, salt-diet reads 355/361 = 98.3 % against plain's 98.95 %, which is still FALSIFIED, by 0.6 points. Cells with no
+failed regression: plain 40/45 · salt-diet 30/35. Sonnet's salt-diet arm covers only Crc32 and LRU.
+
+### A1.3 · THE REGISTRATION ERRORS §3 DECLARED, WEIGHED
+§3's unit error (FAILED/total written as a pass count) **could have moved a verdict**. Read literally, B2 would be plain 5/461 = 1.1 %
+against salt-diet 19/365 = 5.2 %, and it would flip to HOLDS. The reader confirms that the error did not propagate. The "47" enters no
+figure, and B is 37 conditions / 104 cells.
+
+### A1.4 · THE READER'S SMALLER CORRECTIONS TO §4–§5
+- §5's "61 of 86" is **grid-only**. It is 66 of 91 with HC1.
+- §5's "decision" counts 4 · 4 · 9 are **LINES**, matched case-insensitively. As occurrences they are 5 · 4 · 10.
+- §4's declared overlap (resolved but not detected ⇒ SILENT) trips salt-diet 138 times and plain 105. Scoring those items DOCUMENTED
+  instead keeps the direction: grid (ii) DOCUMENTED plain 58.1 % vs salt-diet 49.3 %.
+- The reader did not re-check the registration's TABLE 1 against census ADDENDUM 24 itself.
+
+**Nothing here says the method helps or hurts.** The registration said these reads claim neither, and with the limits beside them they
+still do not.
