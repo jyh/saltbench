@@ -354,3 +354,22 @@ mode ADDENDUM 5 and `claude_live_at_fire=1 (clbnas03)`. The pair crosses arm AND
 declared exactly that correlation.
 **The guard's basis, as the signature asked:** a 1-s sampler of every live cell's `watch.beat` age runs on the run box from 21:45:56Z
 (`~/bench-dry/beat-samples-2026-09-26.tsv`). Its maximum per cell is printed beside the pool column in this block's RESULT.
+
+---
+
+## ⚖️ ADDENDUM 9 — A RUN-BOX FAULT WINDOW, AND THE RULE FOR THE CELLS THAT RAN THROUGH IT. APPENDED.
+**The window.** From about 21:50Z to 22:08Z on 2026-09-26, an agy cell of another lane stacked orphaned builds on the run box. The box
+reached load 46 on 12 CPUs, and swap got within about 1 GB of exhaustion. That cell was ended as a harness fault in its own lane.
+**Block N cells live in the window:** `clbnas03` (AES · salt-diet #3, A2.3's dir) and `clbnvp01` (Liveness · plain #1, the second dir).
+**The rule, stated by the lead and ruled by the helm (non-author) before either cell's reading was fixed:** a cell is VOID only on FAULT
+EVIDENCE IN THE CELL, meaning a tool call that failed BECAUSE of the box. It is never voided on its outcome, and the rule is applied to both
+cells alike. The author proposed this rule rather than ruling on it himself, because a void here would have removed a FAIL from the
+salt-diet arm.
+**The reading:** every `tool_result` in each cell's session transcript within 21:40–22:20Z was matched for timed out · timeout · killed ·
+signal 9 · sigkill · cannot allocate · out of memory. `clbnas03` had 67 tool calls in the window and 0 flagged; `clbnvp01` had 39 and 0
+flagged. The same detector over `clbnas03`'s whole run flags 2 (`Command timed out after 5m 0s`, at 20:19Z and 20:55Z, both before the
+window), so it can see the class.
+`clbnas03` sat idle twice for about 10 minutes inside the window, with its cost flat and one watcher poke each time. No tool call failed in
+either span. What the subject waited on is UNMEASURED.
+⇒ **Both stand as RESULTS:** `clbnas03` CAP-COST (cost 37.75 of 37.21), withheld suite FAIL 1/8; `clbnvp01` PASS 11/11. **The fault
+window is a declared confound column** beside every table that holds either cell.
