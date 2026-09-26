@@ -242,3 +242,17 @@ regenerate `chrome/`.
 - What the client OFFERED the subject is not recorded in any transcript, so "no browser tool was offered" is UNMEASURED; "none was
   used" is measured.
 - It is refereed like every cell, and its flag rides beside its verdict wherever the verdict is quoted.
+
+---
+
+## ⚖️ ADDENDUM 8 — THE CLAUDE ROW RETURNS TO THE FIRST DIR AFTER ITS OWNER'S NEW LOGIN, FROM THE CELL AFTER clbqcs03. APPENDED.
+The first dir's owner ran a new `/login` into it on the run box (2026-09-26 04:59 UTC). Before any turn touched the new credential:
+- it was copied into the dir's backups sibling (cmp-identical);
+- `cells_account_check.sh` read OK (file identity == --expect, both tokens present) and RED on a wrong --expect.
+**From the first cell that starts after clbqcs03** (the statement block's first cell), the row runs on the first dir again. ADDENDUM 5's
+fallback and its three triggers stand unchanged, so a repeat death moves the row to the second dir at $0, as ADDENDUM 6 recorded.
+The first pool's all-models reading at the move was 86 % (the helm's hourly reader, 04:13 UTC), below trigger (c)'s 92 %.
+**The mechanism of the earlier death** was measured by the harness's builder without a refresh: it was the first refresh of an 8-hour
+access token, with copy and race both excluded by the bytes. Why the server refused remains unmeasured. It is not a cell-level confound:
+no subject turn ran on a failing credential.
+**Which dir each cell ran on** stays per cell, from `ctl/run-cfg.tsv`.
