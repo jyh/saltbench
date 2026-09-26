@@ -203,3 +203,13 @@ authenticated read. A probe that is not GREEN refuses the launch.
 (clbwcp01, clbwcs01), clbqcp01 and clbqcs01.
 **The single-cell rule carries over unchanged** (ADDENDUM 2): one Claude cell on the pool dir at a time, across this row and O37
 block N, which moves with it.
+
+---
+
+## ⚖️ ADDENDUM 5 — ADDENDUM 4's MOVE IS NOT TAKEN; IT STANDS AS THE DECLARED FALLBACK. APPENDED.
+Minutes after ADDENDUM 4 was written, the first pool's owner said he will lift its ceiling himself, before the wall, with that pool's
+reset (the helm's relay, 2026-09-26 ~01:47 UTC). With its cause gone, the move would only spend a second pool that live seats run on.
+**So the Claude row stays on the run box pool's own dir.** ADDENDUM 4's second dir, and every measurement recorded there, stand as a
+FALLBACK. It is taken, with its own addendum naming the first cell, only if, at a fire, the first dir fails its account check, or its
+probe turn does not authenticate, or the helm's all-models reading of the first pool is at or over 92 % with no reset yet taken.
+**Which dir each cell ran on** is still read per cell from `ctl/run-cfg.tsv`, and no cell has run on the second dir.
