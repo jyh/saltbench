@@ -236,3 +236,23 @@ present with _bin linked into export 6087b5487b97, each root's model table read 
 24)`, after a `--dry` run of the same into `~/bench-dry` (rc 0). ⚠️ **AND THE LAW BINDS BOTH WAYS:** block NA's remaining roots are
 created BEFORE T-N-S is live, or only in a window where no block N cell is live.
 ### A2.7 · RELEASED. T-N-S (Sonnet · Luby · salt-diet#1) is the first cell; the block continues only on its reading (§N3).
+
+---
+
+## ⚖️ ADDENDUM 3 — THE POOL DIR MOVES ON THE RUN BOX, WITH THE x86 ROW, BEFORE BLOCK N's NEXT CELL. APPENDED.
+**What moves:** A2.3's dir only. The run box pool's own dir reaches its weekly ceiling tonight (the helm's reading, 2026-09-25 ~01:45
+UTC), 2.5 days before its reset. From block N's next cell onward, `CLB_CFG` names a SECOND subscription pool dir on the same run box, the
+same one the x86 Claude row moves to (x86 PoC #267 ADDENDUM 4). The single-cell rule of A2.3 carries over to it, across both lanes.
+**What does NOT move:** A2.1's export, the client pin (2.1.259, `884baa38fe1a624b`), the probe mode and outside file, the budgets and caps,
+the harvester and scorer. Both arms move together. An account is a billing pool, not a treatment, and A2.5's TMPDIR confound is unchanged.
+**A2.3's sequence, on the new dir:**
+- (1) `cells_account_check.sh` reads ACCOUNT-CHECK OK: the file identity == --expect, credential PRESENT with access and refresh
+  non-empty, and a wrong --expect reads RED (2026-09-26 ~01:4x UTC).
+- (2) ONE authenticated read through the pinned client from that dir, checked by its BODY. It is the first fire's own probe turn, which
+  `clb_fire.sh` checks by its body and which refuses the launch unless it is GREEN, and the x86 row's first fire on the dir drives the
+  same read.
+- (3) the cell.
+**No new $HOME entry:** both routes' per-fire trust seed creates one `~/.claude*` sibling for its config dir (`clb_fire.sh:12`), and that
+sibling already exists for the new dir, because it has been a cell pool before.
+**Which cell ran on which dir** is read per cell from its own `ctl/run-cfg.tsv` (`cfg`), never assumed. Every block N cell to this
+addendum ran on A2.3's first dir.
