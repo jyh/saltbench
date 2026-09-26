@@ -264,3 +264,12 @@ The first pool's owner will lift its ceiling himself before the wall (the helm's
 A2.3's dir.** ADDENDUM 3's second dir is the FALLBACK, on the same triggers as x86 PoC #267 ADDENDUM 5: at a fire, the first dir fails
 its account check, or its probe turn does not authenticate, or the helm's all-models reading of the first pool is at or over 92 % with no
 reset yet taken. Taking it gets its own addendum naming the first cell. No block N cell has run on the second dir.
+
+---
+
+## ⚖️ ADDENDUM 5 — A2.3's DIR HAS A NEW LOGIN; BLOCK N's NEXT CELL RUNS ON IT UNDER A2.3's SEQUENCE. APPENDED.
+Block N's lane env never left A2.3's dir: ADDENDUM 3's move was not taken (ADDENDUM 4). While the x86 row ran on the fallback, A2.3's
+credential blanked at a probe turn (x86 PoC ADDENDUM 6), and its owner then ran a new `/login` into it on the run box (2026-09-26
+04:59 UTC). The fresh credential was backed up before any turn, and step (1) of A2.3's sequence reads OK, with a wrong --expect reading
+RED. Steps (2) and (3) are block N's next fire, whose own probe turn is the authenticated read. ADDENDUM 4's fallback triggers stand
+unchanged, and the single-cell rule still spans both lanes.
