@@ -321,3 +321,22 @@ stalled past 180 s lets a second fire pass the guard on the same pool or root. A
 Owed by the lead: read `watch.beat`'s mtime history once when `clbnas01` ends, and print the guard's basis beside the pool column in the
 RESULT the first time a concurrent pair runs.
 **Budget at signing** (all-models meter): the second dir's pool at 33 %, A2.3's dir's pool at 11 %.
+
+---
+
+## ⚖️ ADDENDUM 7 — THE SECOND DIR COULD NOT AUTHENTICATE AT ITS FIRST FIRE, AND ITS CREDENTIAL BLANKED. NO CELL RAN ON IT. APPENDED.
+**What happened** (2026-09-26, the run box, every line from `~/bench-dry/cred-ledger.tsv` and the fire log). A2.3 step (1) read OK on the
+second dir's lane env: file identity == `--expect`, credential present, and a wrong `--expect` read RED. `clbnap02` (Sonnet · AES · plain #2)
+staged at 17:50:12Z. The pre-fire ledger row read a 524 B credential whose access token had expired seven hours earlier. The fire reached
+A2.3 step (2), the probe turn: `P-SANDBOX INDETERMINATE (no-marker)` at 17:50:24Z, then `REFUSE … do not launch` (rc 3). The post-refusal
+ledger row read the credential **BLANKED: 296 B, access and refresh both empty.** This is A2.3's 2026-09-25 failure again: a refresh the
+server refused, then a blanked file.
+**No subject ran.** `clbnap02` was built and never launched, and $0 was spent on it. It will fire on A2.3's dir when that dir is free, as
+§N3's next cell. `claude_live_at_fire=1 (clbnas01)` was reported at the refused fire, and the concurrency guard behaved as ADDENDUM 6 says.
+**What is not known, declared.** Why the server refused is in no local byte. The lead's hypothesis is that this copy shares an account
+session with a live seat on another machine, whose refreshes rotate the token. It is UNMEASURED. ⛔ **The credential was not backed up
+before the fire.** Had the token still been refreshable, a backup would have kept it. Because it was refused, the backup most likely would
+not have mattered, but that is an inference, not a measurement.
+**From here:** the second dir is OUT until its owner runs a fresh login into it on the run box. That is a person's act, and it is taken in a
+quiet window (lane B §A5.2 (d)). Before the next fire on it, the credential is backed up, then A2.3's sequence runs whole. Block N
+continues on A2.3's dir, one cell at a time, as it did before ADDENDUM 6. ADDENDUM 6's rules stand for when the second dir returns.
