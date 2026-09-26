@@ -340,3 +340,17 @@ not have mattered, but that is an inference, not a measurement.
 **From here:** the second dir is OUT until its owner runs a fresh login into it on the run box. That is a person's act, and it is taken in a
 quiet window (lane B §A5.2 (d)). Before the next fire on it, the credential is backed up, then A2.3's sequence runs whole. Block N
 continues on A2.3's dir, one cell at a time, as it did before ADDENDUM 6. ADDENDUM 6's rules stand for when the second dir returns.
+
+---
+
+## ⚖️ ADDENDUM 8 — THE SECOND DIR RETURNS AFTER ITS OWNER'S FRESH LOGIN; THE FIRST CONCURRENT PAIR. APPENDED.
+The owner logged the second dir in afresh on the run box at 14:44 PDT (desk YL). ADDENDUM 7's conditions for its return, in order:
+- **The credential was backed up** before any turn (524 B, 21:45:40Z).
+- **A2.3 (1):** ACCOUNT-CHECK OK == `--expect`, credential present with access and refresh; a wrong `--expect` reads RED, rc 1.
+- **A2.3 (2):** `clbnvp01`'s probe turn: P-SANDBOX GREEN at 21:47:58Z. The ledger read the credential UNCHANGED before and after the fire.
+- **A2.3 (3):** `clbnvp01` (Sonnet · Liveness · plain #1) launched at 21:50:28Z.
+**The first concurrent pair:** `clbnvp01` on the second dir, beside `clbnas03` (Sonnet · AES · salt-diet #3) on A2.3's dir. The fire logged
+mode ADDENDUM 5 and `claude_live_at_fire=1 (clbnas03)`. The pair crosses arm AND pool (plain on dir 2, salt-diet on dir 1), and ADDENDUM 6
+declared exactly that correlation.
+**The guard's basis, as the signature asked:** a 1-s sampler of every live cell's `watch.beat` age runs on the run box from 21:45:56Z
+(`~/bench-dry/beat-samples-2026-09-26.tsv`). Its maximum per cell is printed beside the pool column in this block's RESULT.
