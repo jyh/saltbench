@@ -80,3 +80,25 @@ this reading.**
   so every `≥` is an arm-correlated censoring. A capped salt-diet numerator makes its ratio an UNDERSTATEMENT: the true
   ratio is at least the printed one.
 - n = 3 per condition. A median of three is one cell's figure.
+
+---
+
+## ⚖️ ADDENDUM 1 — FOUR DEFINITIONS THE SOURCES REQUIRE, FIXED BEFORE THE RUN. APPENDED; §D1–§D6 untouched.
+The coverage census of the tracked per-cell sources, taken before any median was computed, found four questions §D2–§D3
+did not answer. Each is fixed here, still before the instrument runs.
+- **A1.1 · A spec-change cell's figure is the SUM of its phases.** Spec-change cells are metered per phase (phase 1, the
+  greenfield landing, and phase 2, the change). The cell's total tokens is phase 1 + phase 2, each read from its own
+  tracked source. A cell missing either phase is `unmeasured`.
+- **A1.2 · A figure is a lower bound for any of three recorded reasons, not only the cap.** The first is CAP-COST: the
+  cell ended at the cost cap. The second is FLOOR: the meter itself records the figure as an under-read (the all-roots
+  table's status column). The third is DEADLINE: a registered turn or wall deadline cut the cell off before it finished,
+  as its record classifies it (the agy lane has no binding cost cap, so its stops are deadlines). All three are marked `≥`
+  by §D3's rule, and the result file names the reason per cell.
+- **A1.3 · The Claude lane's block figures include the harness's own sandbox probe**, in both arms alike (`final_T`, as
+  each block's cells file states in its header). A file that splits the probe out exists for most cells but not all, so
+  the uniform choice is the figure every cell has. Matrix-1 and the specchange-1 cells predate the probe.
+- **A1.4 · Where two records disagree on a condition's cells, the result of record's scored cells govern.** This happens
+  once: Pro × Crc32 × plain × none.
+- **The census's count, stated before the run:** of the 181 DONE conditions, 171 have every cell covered by a tracked
+  figure, 1 is partly covered, and 9 have none (every level-5 Flash condition whose cells come from level-5 ADDENDUM 3). By
+  §D2 those 10 print `unmeasured`, and the check then fails visibly. Nothing is recovered by hand for this run.
