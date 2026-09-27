@@ -102,3 +102,29 @@ did not answer. Each is fixed here, still before the instrument runs.
 - **The census's count, stated before the run:** of the 181 DONE conditions, 171 have every cell covered by a tracked
   figure, 1 is partly covered, and 9 have none (every level-5 Flash condition whose cells come from level-5 ADDENDUM 3). By
   §D2 those 10 print `unmeasured`, and the check then fails visibly. Nothing is recovered by hand for this run.
+
+---
+
+## ⚖️ ADDENDUM 2 — THE FIRST PRINTED FILE DROPPED FOUR CELLS THIS REGISTRATION DOES NOT LET IT DROP. REPRINTED WITH EVERY CELL OF RECORD. APPENDED; §D1–§D6 and ADDENDUM 1 untouched.
+**What happened.** The first file of record (saltbench `643cac00`, merged at `084f2fe9`) left four fired cells out of their
+conditions: `s3ps02`, `s3ps03` (Pro × Paxos × salt-diet × none) and `s3ft02`, `s3ft03` (Pro × FreeList × salt-diet × statement).
+The lead did it under A1.4, on the ground that the level-1 record scores a smaller population for those two conditions. **A1.4
+does not say that.** It says the record's scored cells govern where two records DISAGREE, and it names the one condition where
+that happens (Pro × Crc32 × plain × none). §D1 says no cell is added or dropped. The fresh non-author read found it (verdict
+REPAIR), and the helm ruled that the registration governs as written.
+**Why it matters.** All four dropped cells are salt-diet cells, and all four were cut off by the per-turn deadline. Dropping them
+removed lower bounds from the treatment arm only: the arm-correlated removal §D6 warns about. The rule was also uneven, because
+Sonnet's BUILD-FAIL cells stayed in.
+**The reprint.** Every cell of record is in its condition. The four are lower bounds (DEADLINE, A1.2). The reader's recomputation
+and the reprint agree: Pro × Paxos × salt-diet (T1) reads `≥ 14,987,158`, and Pro × FreeList × statement × salt-diet reads
+`≥ 12,610,137`. No sign in T4 changes. The check is unchanged: 171 + 16 + 3 + 10 unmeasured = 200. Conditions with fewer than 3
+cells of record: 10.
+**The order of events, stated exactly** (the reader's question). §D1–§D6 were committed at 14:25 PDT (`368d925`), before any
+map existed. ADDENDUM 1 was committed at 14:32 (`ad1b6b2`). It came after a coverage census that located each cell's source and
+computed no median. The instrument's first run, a scratch dry run, came after ADDENDUM 1. The first file of record was printed
+at 14:39 (`643cac00`). So the registration was written before any median was computed, and ADDENDUM 1 followed a coverage
+census, not a result.
+**One definition the captions must carry** (the reader's question, measured). A Claude-lane cell's `T` counts every session
+under the cell, including subordinate worker sessions on another model. Most Opus matrix-1 and statement cells record
+`claude-opus-5+claude-sonnet-5` in the all-roots table. The row's model is the cell's SUBJECT model. The result file's header now
+says so.
