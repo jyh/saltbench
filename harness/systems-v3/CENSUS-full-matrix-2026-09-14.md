@@ -1394,3 +1394,13 @@ Its closer is gemini's `--plan` for l7cfss02+03 on level 7's export, checked by 
   who needs it reads each condition's record.
 - It moves no condition. The LIVE figure stands: **DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.**
 - It changes no result of record, and it makes no claim about the salt method.
+
+---
+
+# ⚖️ ADDENDUM 26 — **ADDENDUM 25 QUOTED §C4's "19 cells" AS THE OPUS SPEC-CHANGE ROW's POPULATION. IT IS 23. NOTHING ELSE MOVES.**
+## bench, 2026-09-27, on the fresh non-author read of the arXiv v2 tables.
+- §C4's "19 cells" is a 2026-09-14 figure. The row's ten conditions carry **23 cells of record** in the descriptive-tables map
+  (`CELLMAP-descriptive-tables-v2-2026-09-27.tsv`): six conditions at n < 3 (2 + 1 + 2 + 2 + 2 + 2 = 11) and four at n = 3 (12).
+- ADDENDUM 25 §AE1 used the figure only as evidence that this census counted those conditions at a smaller n. That evidence
+  stands on the records' own lines, which §AE2 cites. The corrected definition and the list of 10 are unchanged.
+- The LIVE figure is unchanged: **DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.**

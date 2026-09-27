@@ -414,7 +414,9 @@ def main():
         "remain §4's.** Every number below is a median of total tokens over a condition's cells of record (n = 3 for most; the n of each condition is printed in the output-token table).",
         "",
         "- **`T` differs between lanes, so compare arms WITHIN a row.** Claude lane: input + cache writes + cache reads + output, "
-        "from the session meter; the block cells include the harness's sandbox probe in both arms (ADDENDUM 1 A1.3). agy lane "
+        "from the session meter, counting EVERY session under the cell, including subordinate worker sessions on another model (most "
+        "Opus matrix-1 and statement cells record claude-opus-5+claude-sonnet-5); the row's model is the cell's SUBJECT model. The "
+        "block cells include the harness's sandbox probe in both arms (ADDENDUM 1 A1.3). agy lane "
         "(both Gemini models): input + output + cache read, with thinking inside output, as the vendor reports it.",
         "- **`≥`** the median is a floor, because a cell at or below the median position stopped at the cost cap (CAP-COST), "
         "carries a meter that records an under-read (FLOOR), or was cut off by a registered turn or wall deadline (DEADLINE). "
@@ -434,7 +436,7 @@ def main():
         "| map row | cell | why |",
         "|---|---|---|",
     ] + ["| %s | %s | %s |" % (" / ".join([r["model"].replace("#EXCLUDED-BY-RECORD ", ""), r["problem"], r["field"], r["arm"], r["extras"]]),
-                              r["cell"], r["note"].split(". ")[0]) for r in EXCLUDED]
+                              r["cell"], r["note"].split(". ")[0]) for r in EXCLUDED] + ([] if EXCLUDED else ["| none | - | every cell of record is in its condition |"])
     txt = "\n".join(hdr + body) + "\n"
     if a.out:
         open(a.out, "w", encoding="utf-8").write(txt)

@@ -1,11 +1,11 @@
 # RESULT: FOUR DESCRIPTIVE TABLES OVER THE COMPLETE PILOT MATRIX (arXiv v2)
-## Printed by `harness/systems-v3/tables_v2.py` at repo head `9f9a5d9b1d5b` from the cell map `harness/systems-v3/CELLMAP-descriptive-tables-v2-2026-09-27.tsv`. Registered in `REGISTRATION-descriptive-tables-v2-2026-09-27.md` (§D1–§D6 and ADDENDUM 1), which was committed before this ran.
+## Printed by `harness/systems-v3/tables_v2.py` at repo head `084f2fe9d41d` from the cell map `harness/systems-v3/CELLMAP-descriptive-tables-v2-2026-09-27.tsv`. Registered in `REGISTRATION-descriptive-tables-v2-2026-09-27.md` (§D1–§D6 and ADDENDUM 1), which was committed before this ran.
 
 **CHECK numbers 171 + — 16 + declared 3 = 200 (other 10) against 181 + 16 + 3 = 200 ⇒ THE CHECK FAILS, AS REGISTERED (§D2): a DONE condition with any cell lacking a tracked figure prints `unmeasured`, and nothing is recovered by hand.**
 
 ⛔ **A descriptive reading over the complete matrix: no test, no p-value, no verdict on the arms. The registered tests remain §4's.** Every number below is a median of total tokens over a condition's cells of record (n = 3 for most; the n of each condition is printed in the output-token table).
 
-- **`T` differs between lanes, so compare arms WITHIN a row.** Claude lane: input + cache writes + cache reads + output, from the session meter; the block cells include the harness's sandbox probe in both arms (ADDENDUM 1 A1.3). agy lane (both Gemini models): input + output + cache read, with thinking inside output, as the vendor reports it.
+- **`T` differs between lanes, so compare arms WITHIN a row.** Claude lane: input + cache writes + cache reads + output, from the session meter, counting EVERY session under the cell, including subordinate worker sessions on another model (most Opus matrix-1 and statement cells record claude-opus-5+claude-sonnet-5); the row's model is the cell's SUBJECT model. The block cells include the harness's sandbox probe in both arms (ADDENDUM 1 A1.3). agy lane (both Gemini models): input + output + cache read, with thinking inside output, as the vendor reports it.
 - **`≥`** the median is a floor, because a cell at or below the median position stopped at the cost cap (CAP-COST), carries a meter that records an under-read (FLOOR), or was cut off by a registered turn or wall deadline (DEADLINE). The reason is named per cell at the foot of this file. The cap binds the salt-diet arm more often (census §T3, §U2, §V3).
 - **`—`** inexpressible: Paxos × statement, both task forms, all four models (an arm-neutral formal statement cannot exist for a proof-obligation task). **`declared`** unreached at the cap (census ADDENDUM 19). **`unmeasured`** a DONE condition some of whose cells have no tracked token figure (listed next).
 - A spec-change cell's figure is phase 1 + phase 2 (ADDENDUM 1 A1.1). For the Opus spec-change cells, phase 1 is the reused matrix-1 landing, so the same phase-1 figure also appears in that landing's own row.
@@ -27,10 +27,7 @@
 ## Cells in the map but OUTSIDE a condition's population (the result of record's scored cells govern, ADDENDUM 1 A1.4)
 | map row | cell | why |
 |---|---|---|
-| gemini-3.1-pro-high / Paxos / greenfield / salt-diet / none | s3ps02 | not in the result of record's scored population (RESULT-p1-greenfield-2026-09-13.md:28-29 scores n=1 for this condition; registration ADDENDUM 1 A1.4) |
-| gemini-3.1-pro-high / Paxos / greenfield / salt-diet / none | s3ps03 | not in the result of record's scored population (RESULT-p1-greenfield-2026-09-13.md:28-29 scores n=1 for this condition; registration ADDENDUM 1 A1.4) |
-| gemini-3.1-pro-high / FreeList / greenfield / salt-diet / statement | s3ft02 | not in the result of record's scored population (RESULT-p1-greenfield-2026-09-13.md:28-29 scores n=1 for this condition; registration ADDENDUM 1 A1.4) |
-| gemini-3.1-pro-high / FreeList / greenfield / salt-diet / statement | s3ft03 | not in the result of record's scored population (RESULT-p1-greenfield-2026-09-13.md:28-29 scores n=1 for this condition; registration ADDENDUM 1 A1.4) |
+| none | - | every cell of record is in its condition |
 
 ## T1 · greenfield — median total tokens per condition (n per condition in the output-token table below)
 
@@ -48,9 +45,9 @@
 | claude-sonnet-5 | Paxos | 4,996,639 | ≥ 123,495,570 | — | — |
 | gemini-3.1-pro-high | Crc32 | 861,120 | 9,675,734 | 1,222,527 | ≥ 17,220,747 |
 | gemini-3.1-pro-high | LRU | 1,466,321 | 9,543,326 | 1,080,062 | 10,360,342 |
-| gemini-3.1-pro-high | FreeList | 1,290,763 | 10,498,033 | 1,699,106 | 25,100,454 |
+| gemini-3.1-pro-high | FreeList | 1,290,763 | 10,498,033 | 1,699,106 | ≥ 12,610,137 |
 | gemini-3.1-pro-high | LZW | 1,232,089 | 12,471,112 | 1,598,032 | ≥ 17,892,929 |
-| gemini-3.1-pro-high | Paxos | 1,176,979 | 8,572,636 | — | — |
+| gemini-3.1-pro-high | Paxos | 1,176,979 | ≥ 14,987,158 | — | — |
 | gemini-3.8-flash-high | Crc32 | 3,993,025 | 12,112,123 | unmeasured | unmeasured |
 | gemini-3.8-flash-high | LRU | 5,413,078 | unmeasured | unmeasured | unmeasured |
 | gemini-3.8-flash-high | FreeList | 6,495,950 | 24,187,669 | unmeasured | unmeasured |
@@ -123,9 +120,9 @@
 | claude-sonnet-5 | Paxos | ≥ 24.72 | — | — |
 | gemini-3.1-pro-high | Crc32 | 11.24 | ≥ 14.09 | — |
 | gemini-3.1-pro-high | LRU | 6.51 | 9.59 | 5.71 |
-| gemini-3.1-pro-high | FreeList | 8.13 | 14.77 | 5.87 |
+| gemini-3.1-pro-high | FreeList | 8.13 | ≥ 7.42 | 5.87 |
 | gemini-3.1-pro-high | LZW | 10.12 | ≥ 11.20 | 9.45 |
-| gemini-3.1-pro-high | Paxos | 7.28 | — | ≥ 5.41 |
+| gemini-3.1-pro-high | Paxos | ≥ 12.73 | — | ≥ 5.41 |
 | gemini-3.8-flash-high | Crc32 | 3.03 | — | 2.36 |
 | gemini-3.8-flash-high | LRU | — | — | 2.88 |
 | gemini-3.8-flash-high | FreeList | 3.72 | — | 2.30 |
@@ -142,8 +139,8 @@
 | claude-sonnet-5 | bare | 5 of 5 | none | 18.47 | 2 |
 | claude-sonnet-5 | statement | 4 of 4 | none | 8.65 | 0 |
 | claude-sonnet-5 | spec-change | 2 of 2 | none | 8.08 | 0 |
-| gemini-3.1-pro-high | bare | 5 of 5 | none | 8.13 | 0 |
-| gemini-3.1-pro-high | statement | 4 of 4 | none | 12.64 | 2 |
+| gemini-3.1-pro-high | bare | 5 of 5 | none | 10.12 | 1 |
+| gemini-3.1-pro-high | statement | 4 of 4 | none | 10.39 | 3 |
 | gemini-3.1-pro-high | spec-change | 4 of 4 | none | 5.79 | 1 |
 | gemini-3.8-flash-high | bare | 3 of 3 | none | 3.72 | 1 |
 | gemini-3.8-flash-high | statement | 1 of 1 | none | 3.54 | 0 |
@@ -286,7 +283,7 @@
 | gemini-3.1-pro-high | FreeList | greenfield | plain | statement | 2 | 25,360 |  |
 | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | 3 | 97,646 |  |
 | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | spec-change | 3 | unmeasured | - |
-| gemini-3.1-pro-high | FreeList | greenfield | salt-diet | statement | 1 | 143,047 |  |
+| gemini-3.1-pro-high | FreeList | greenfield | salt-diet | statement | 3 | 80,906 | ≥ |
 | gemini-3.1-pro-high | LRU | brownfield | plain | none | 3 | unmeasured | - |
 | gemini-3.1-pro-high | LRU | brownfield | plain | statement | 3 | 15,062 |  |
 | gemini-3.1-pro-high | LRU | brownfield | salt-diet | none | 3 | unmeasured | - |
@@ -311,7 +308,7 @@
 | gemini-3.1-pro-high | Paxos | brownfield | salt-diet | none | 3 | unmeasured | - |
 | gemini-3.1-pro-high | Paxos | greenfield | plain | none | 3 | 19,368 |  |
 | gemini-3.1-pro-high | Paxos | greenfield | plain | spec-change | 3 | unmeasured | - |
-| gemini-3.1-pro-high | Paxos | greenfield | salt-diet | none | 1 | 63,331 |  |
+| gemini-3.1-pro-high | Paxos | greenfield | salt-diet | none | 3 | 117,176 | ≥ |
 | gemini-3.1-pro-high | Paxos | greenfield | salt-diet | spec-change | 3 | unmeasured | - |
 | gemini-3.8-flash-high | Crc32 | brownfield | plain | none | 3 | 39,336 |  |
 | gemini-3.8-flash-high | Crc32 | brownfield | plain | statement | 3 | 42,034 |  |
@@ -652,6 +649,8 @@
 | gemini-3.1-pro-high | Paxos | greenfield | plain | none | s3pp02 | 1,176,979 | 18,636 | - | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3pp02].T |
 | gemini-3.1-pro-high | Paxos | greenfield | plain | none | s3pp03 | 2,315,056 | 40,060 | - | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3pp03].T |
 | gemini-3.1-pro-high | Paxos | greenfield | salt-diet | none | s3ps01 | 8,572,636 | 63,331 | - | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3ps01].T |
+| gemini-3.1-pro-high | Paxos | greenfield | salt-diet | none | s3ps02 | 14,987,158 | 117,176 | DEADLINE | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3ps02].T |
+| gemini-3.1-pro-high | Paxos | greenfield | salt-diet | none | s3ps03 | 23,396,293 | 132,908 | DEADLINE | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3ps03].T |
 | gemini-3.1-pro-high | Crc32 | greenfield | plain | statement | s3cq01 | 1,014,677 | 14,042 | - | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3cq01].T |
 | gemini-3.1-pro-high | Crc32 | greenfield | plain | statement | s3cq02 | 1,222,527 | 11,611 | - | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3cq02].T |
 | gemini-3.1-pro-high | Crc32 | greenfield | plain | statement | s3cq03 | 1,409,097 | 13,836 | - | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3cq03].T |
@@ -666,6 +665,8 @@
 | gemini-3.1-pro-high | FreeList | greenfield | plain | statement | s3fq01 | 1,652,193 | 27,694 | - | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3fq01].T |
 | gemini-3.1-pro-high | FreeList | greenfield | plain | statement | s3fq02 | 1,746,019 | 23,026 | - | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3fq02].T |
 | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | statement | s3ft01 | 25,100,454 | 143,047 | - | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3ft01].T |
+| gemini-3.1-pro-high | FreeList | greenfield | salt-diet | statement | s3ft02 | 12,610,137 | 80,594 | DEADLINE | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3ft02].T |
+| gemini-3.1-pro-high | FreeList | greenfield | salt-diet | statement | s3ft03 | 12,008,781 | 80,906 | DEADLINE | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3ft03].T |
 | gemini-3.1-pro-high | LRU | brownfield | plain | none | b4lrp01 | 689,672 | - | - | harness/systems-v3/RESULT-per-cell-table-levels-1-and-4-2026-09-14.md:56 col 'T (tokens)' |
 | gemini-3.1-pro-high | LRU | brownfield | plain | none | b4lrp02 | 938,991 | - | - | harness/systems-v3/RESULT-per-cell-table-levels-1-and-4-2026-09-14.md:57 col 'T (tokens)' |
 | gemini-3.1-pro-high | LRU | brownfield | plain | none | b4lrp03 | 1,094,683 | - | - | harness/systems-v3/RESULT-per-cell-table-levels-1-and-4-2026-09-14.md:58 col 'T (tokens)' |
