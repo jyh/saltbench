@@ -145,3 +145,32 @@ log will say.
 ⇒ **No NA subject ran on eadcfe8, so ADDENDUM 2's export carries no data.** The move is allowed mid-block on ADDENDUM 2's own rule: it
 changes the END of a cell (process cleanup after the subject's last turn), never what a subject reads, and the task trees are identical.
 **Pooling across the move** remains per cell, by the tree-hash line and the interface hash, never assumed (NA1.2's shape rule).
+
+---
+
+## ⚖️ ADDENDUM 4 — THE PER-TURN DEADLINE BINDS SALT-DIET, MEASURED ON NA'S OWN PAIR; THE PILOT'S RULE IS KEPT AND MADE AN OUTCOME. APPENDED.
+**The measurement (T-NA-P and its plain pair, same problem, interface `c8dcc289c952e710`, model, export `e10f420`, caps and box):**
+```
+  plain      nalbpp01   3 turns ·    206 s wall · 0 of 3 turns cut at the 1800 s print deadline · PASS 12/12
+  salt-diet  nalbpst01 10 turns · 14,414 s wall · 7 turns cut (the client's own stderr)         · PASS 12/12, TRUNCATED
+```
+And on Flash: `nabhfs03` (BinomialHeap · salt-diet #3), 12 of 12 turns cut, a non-landing. Its briefing was in context: the non-author
+read at the object reclassified it from VOID(NO-BRIEFING) to a RESULT, the helm ruling on the discriminator the lead posted.
+⇒ **The per-turn deadline binds the salt-diet arm and did not bind plain.** By the lead's own rule, a cap that binds one arm is a
+TREATMENT and not a default.
+**What is chosen, and why not the other arms.** This is NOT new to the benchmark. The pilot's Pro greenfield already carried plain 18
+LANDED / 0 truncated against salt-diet 15 LANDED / 4 NOT-LANDED / 3 truncated (level 8 §M4, from `RESULT-p1-greenfield-2026-09-13.md`
+§3), under this same 1800 s. Its rules read a truncated pass as a FLOOR and declare the arm-correlated cut (level 4 §L5 rule 2, level 6
+§H5). **Raising the deadline for block NA alone** (the hand's arm (a)) would give the benchmark two methods: the pilot's five problems
+under 1800 s and the new nine under another, and every cross-problem table would carry the seam. **So the registered cap is KEPT, and
+its arm-binding is registered as an OUTCOME:**
+- Per arm, per model, the block reports **cut turns ÷ turns** and **truncated cells ÷ cells**. The source is the client's stderr
+  (`print timeout after …`), never the turn loop's TURN-DENIED line, whose cause text is a constant and reads every empty response as
+  a sandbox denial.
+- A truncated PASS is a FLOOR, and its cost and turns are not poolable (level 4 §L5).
+- A non-landing whose every turn was cut is labelled **CUT-BOUND** in its own column. It is never merged with a non-landing that had
+  another cause, and it is never quoted as the arm's failure without that label.
+- The arm-correlated cut is printed beside every NA table, as the pilot prints it.
+**Not measured, and stated:** n = 1 per arm on one problem for Pro. Flash's second wave carried 1 truncated of 28. Whether the binding is
+Pro-specific or problem-specific is not established.
+**Released:** NA Pro continues under §NA2's order, with the caps unchanged.
