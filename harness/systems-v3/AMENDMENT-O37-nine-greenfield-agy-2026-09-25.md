@@ -174,3 +174,14 @@ its arm-binding is registered as an OUTCOME:**
 **Not measured, and stated:** n = 1 per arm on one problem for Pro. Flash's second wave carried 1 truncated of 28. Whether the binding is
 Pro-specific or problem-specific is not established.
 **Released:** NA Pro continues under §NA2's order, with the caps unchanged.
+
+---
+
+## ⚖️ ADDENDUM 5 — LINEARSCAN IS RELEASED ON EXPORT 8ed8cb3 = e10f420 + THE RE-WORDED CARD (desk YM). APPENDED.
+The same card defect and fix as block N's ADDENDUM 12. `8ed8cb3` is `e10f420` plus the card blob `9e2e1b3c` of saltbench-systems `23485e5`,
+with one file changed. The lead's `diff -rq` against the e10f420 export lists the card and the provenance marker only. systems proved it on
+the run box: the old rendering has 1 hit, the new has 0, and the required-ancestor gate reads 5 of 5 with a digest identical to e10f420's.
+**It does NOT carry `2044b40`** (the empty-turn cause label), so NA's turn-loop reporting is unchanged mid-block, and ADDENDUM 4's
+stderr-derived truncation outcome stands as the source for cause. **Only LinearScan's two NA conditions fire from 8ed8cb3.** Every other
+NA condition stays on e10f420. The two LinearScan cells refused at build (c11a1, c12a1) are records of the refusal, never results, and no
+subject ran in them.
