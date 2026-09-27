@@ -409,3 +409,21 @@ alternation, read at the code, and the wiring of the swap hold. Both are driven 
 **Residue carried, not blocking:** the dollar cap is the same for both models, and Opus spends about 1.5–2× the Sonnet rate per hour, so
 Opus cells will reach CAP-COST sooner on the same problems. Nothing in this block compares the models, so this is not a confound here. It
 is printed beside any per-model CAP-COST count in the block's RESULT.
+
+---
+
+## ⚖️ ADDENDUM 11 — A2.3's DIR COULD NOT REFRESH AT A FIRE AND ITS CREDENTIAL BLANKED. NO CELL RAN. BLOCK N CONTINUES ONE-WIDE ON THE SECOND DIR. APPENDED.
+**What happened** (2026-09-27, the run box; every line from `~/bench-dry/cred-ledger.tsv` and the fire logs):
+- `clbnxp03` (Sonnet · MaxFlow · plain #3) staged, and its fire reached the probe turn at 04:47:15Z. It read `P-SANDBOX INDETERMINATE
+  (no-marker)` and then REFUSE, rc 3. The probe session's transcript reads `authentication_failed`, "OAuth session expired and could not
+  be refreshed". The post-refusal ledger row reads the credential BLANKED (296 B).
+- **This time the credential WAS backed up before the fire** (ADDENDUM 7's order). The backup was restored once and the fire was retried:
+  the ledger read the restored refresh token as the same one the server had just refused, with the access token 1.6 min from expiry. It
+  was refused again and blanked again.
+- The refresh token had been UNCHANGED since its last clean refresh (the ledger row at 23:0xZ) through six later fires and cells on
+  that dir. The cells use the pool dir itself (`clb_fire.sh` exports it as the run config), not a per-cell copy.
+**Why the server refused is in no local byte.** It is UNMEASURED. It is not the per-cell-copy mechanism, which this lane does not use.
+**No subject ran.** `clbnxp03` was built and never launched, and $0 was spent on it. It fires as the Sonnet column's next cell when a
+dir is free.
+**From here:** A2.3's dir is OUT until its owner runs a fresh login on the run box. Block N runs ONE-WIDE on the second dir, under
+ADDENDUM 10's order (a dir takes the column it did not last run). ADDENDUM 6's rules stand for when A2.3's dir returns.
