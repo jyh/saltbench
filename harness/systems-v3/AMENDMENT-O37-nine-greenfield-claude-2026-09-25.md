@@ -373,3 +373,32 @@ window), so it can see the class.
 either span. What the subject waited on is UNMEASURED.
 ⇒ **Both stand as RESULTS:** `clbnas03` CAP-COST (cost 37.75 of 37.21), withheld suite FAIL 1/8; `clbnvp01` PASS 11/11. **The fault
 window is a declared confound column** beside every table that holds either cell.
+
+---
+
+## ⚖️ ADDENDUM 10 — OPUS MOVES FORWARD: THE TWO MODEL COLUMNS RUN INTERLEAVED FROM NOW, T-N-O FIRST. §N3's MODEL ORDER AMENDED. APPENDED.
+⛔ **No Opus cell fires before a non-author signs this addendum.**
+**Why.** §N3 put Sonnet first "because the cheaper model buys the first read of new problems, and nothing here compares the models." That
+first read has been bought for four of the six problems: Luby, AES, Liveness and MaxFlow each have Sonnet cells scored. LinearScan waits on
+its card (desk YM) in both columns. The Captain's word of 2026-09-26 is to spend the week's lapsing points. Block N is the work pointed at
+the two lapsing pools, and it is bounded by one cell per pool (ADDENDUM 6 (a)). So the lever left is the DOLLAR RATE per cell. Measured
+from each cell's own `ctl/watch.log` (final cost ÷ wall):
+```
+  Opus  (the x86 Claude row, 2026-09-26, 12 cells)   plain 10.7–18.1 $/h   salt-diet 19.2–32.7 $/h
+  Sonnet (block N to this addendum, 16 ended cells)  plain  4.7–12.2 $/h   salt-diet  8.7–26.6 $/h
+```
+These are different problems, so the rates are an ESTIMATE of the direction, not a price.
+**The order, amended.**
+- **T-N-O** (Opus · Luby · salt-diet #1) fires first, on whichever dir frees first. It is read by the lead under §N3's tripwire rule
+  before any further Opus cell.
+- After T-N-O's reading, each dir that frees takes the next cell from the model column OTHER than the one that dir last ran. Inside each
+  column, the order is §N3's problem list and per-problem cell order, with ADDENDUM 6's next-free-cell rule. Alternating by dir keeps
+  model from correlating with pool. It is declared anyway: nothing in this block compares the models.
+- The Sonnet column continues where it stands: Liveness salt-diet #2 and #3, MaxFlow plain #2 and #3 and salt-diet #2 and #3, then
+  BinomialHeap. The Opus column is §N3's list from Luby.
+**What does NOT change:** the arms, the caps (the same dollar cap for both models), the export, the client pin, the fence, the probe, the
+scorer, one cell per pool, or the 95 % stop on the second dir.
+**The box, after 2026-09-26's hazard:** that hazard's mechanism was an agy client returning control while a build still ran, with the
+subject unable to see its own processes. On this lane the Claude client KILLS a timed-out command (`Exit code 143, Command timed out
+after 5m 0s`, seen twice in `clbnas03`'s transcript), so that mechanism has no measured path here. UNMEASURED: a subject's own
+background job. The lead holds new fires (never kills a live cell) while the run box's `vm.swapusage` used exceeds 20,480 MB.
