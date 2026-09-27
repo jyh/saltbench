@@ -1356,3 +1356,41 @@ Its closer is gemini's `--plan` for l7cfss02+03 on level 7's export, checked by 
 - **A DONE means n = 3 reached and scored on the withheld suite, never a verdict on the arms.** Each level's result of record says what its
   conditions can and cannot carry, and none of them claims that the salt method helps or hurts.
 - **The 16 INEXPRESSIBLE and the 3 DECLARED are not DONE**, and a reader summing "complete" must say which of the three states is meant.
+
+---
+
+# ⚖️ ADDENDUM 25 — **§AD2's "n = 3 reached" IS TOO STRONG FOR 10 DONE CONDITIONS. A DEFINITION CLAUSE, NOT A RECOUNT: DONE STAYS AT 181.**
+## bench, 2026-09-27, on the helm's routing, with `RESULT-descriptive-tables-v2-2026-09-27.md` (the four descriptive tables) on the same branch.
+
+## §AE1 · WHAT IS WRONG, AND WHAT IS NOT
+- §AD2 says *"A DONE means n = 3 reached and scored on the withheld suite."* **That is false as written for 10 of the 181.** The
+  descriptive-tables map, which lists each condition's cells as its result of record lists them, finds 171 conditions with three
+  cells and 10 with one or two.
+- **The COUNT is not wrong.** This census counted each of the 10 DONE at its smaller n and said so where it did it: §C4 for the
+  Opus spec-change row ("19 cells" for its ten conditions), §T2 for Sonnet's n = 2 conditions, and the
+  level-1 result of record, which says of its own conditions *"n IS 1–4 PER CONDITION, NOT 3"*. What was wrong is the one-line
+  summary written at ADDENDUM 24, which generalised the rule of the later blocks to the whole matrix.
+
+## §AE2 · THE DEFINITION, CORRECTED
+**DONE means a result of record merged in this repository that reports the condition's outcome, at the n that record states.** For
+171 conditions that n is 3. The 10 below are DONE at a smaller n, each by its own record's words:
+```
+  claude-opus-5        FreeList × plain     × spec-change   n = 2   RESULT-p1-specchange-2026-09-10.md:36
+                       FreeList × salt-diet × spec-change   n = 1   the same file :36, :40-41 ("a 0/1 is not a rate")
+                       LRU      × plain     × spec-change   n = 2   the same file :35
+                       LZW      × plain     × spec-change   n = 2   RESULT-specchange-1-2026-09-10.md:43
+                       Paxos    × plain     × spec-change   n = 2   RESULT-p1-specchange-2026-09-10.md:37
+                       Paxos    × salt-diet × spec-change   n = 2   the same file :37
+  claude-sonnet-5      LRU      × plain     × none          n = 2   §T2 above; RESULT-claude-blockSG-2026-09-21.md
+  gemini-3.1-pro-high  Crc32    × salt-diet × statement     n = 2   RESULT-p1-greenfield-2026-09-13.md:24
+                       FreeList × plain     × none          n = 1   the same file :27, :54
+                       FreeList × plain     × statement     n = 2   the same file :28
+  (all greenfield)
+```
+
+## §AE3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH, SAID SO NOBODY READS IT AS MORE
+- **It counts CELLS OF RECORD, not SCORABLE cells.** A record can list three cells and score fewer: §T2's Sonnet FreeList × salt-diet
+  lists three cells and scores two (one BUILD-FAIL). **A census of scorable n across all 181 conditions is NOT taken here.** A reader
+  who needs it reads each condition's record.
+- It moves no condition. The LIVE figure stands: **DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.**
+- It changes no result of record, and it makes no claim about the salt method.
