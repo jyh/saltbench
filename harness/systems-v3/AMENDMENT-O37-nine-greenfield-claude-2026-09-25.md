@@ -402,3 +402,10 @@ scorer, one cell per pool, or the 95 % stop on the second dir.
 subject unable to see its own processes. On this lane the Claude client KILLS a timed-out command (`Exit code 143, Command timed out
 after 5m 0s`, seen twice in `clbnas03`'s transcript), so that mechanism has no measured path here. UNMEASURED: a subject's own
 background job. The lead holds new fires (never kills a live cell) while the run box's `vm.swapusage` used exceeds 20,480 MB.
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (134th head), 2026-09-26 17:19 PDT, on ADDENDUM 10 (transcribed by the lead from the bus, offset 70416508)
+Signed at the pinned blob `828af7901a5b` (head `d7463acc`), the addendum read whole. **Not covered by the signer:** the dispatcher's
+alternation, read at the code, and the wiring of the swap hold. Both are driven at the first Opus fire and the first alternation.
+**Residue carried, not blocking:** the dollar cap is the same for both models, and Opus spends about 1.5–2× the Sonnet rate per hour, so
+Opus cells will reach CAP-COST sooner on the same problems. Nothing in this block compares the models, so this is not a confound here. It
+is printed beside any per-model CAP-COST count in the block's RESULT.
