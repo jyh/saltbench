@@ -427,3 +427,23 @@ is printed beside any per-model CAP-COST count in the block's RESULT.
 dir is free.
 **From here:** A2.3's dir is OUT until its owner runs a fresh login on the run box. Block N runs ONE-WIDE on the second dir, under
 ADDENDUM 10's order (a dir takes the column it did not last run). ADDENDUM 6's rules stand for when A2.3's dir returns.
+
+---
+
+## ⚖️ ADDENDUM 12 — LINEARSCAN IS RELEASED ON EXPORT 23485e5 (desk YM). EVERY OTHER PROBLEM STAYS ON 6087b54. APPENDED.
+**Why.** At 6087b54, LinearScan's card said "FULL SEMANTIC PRESERVATION AS A THEOREM IS NOT ASKED FOR … a compiler-verification project",
+which names a proof and a verifier to the plain arm. The neutrality gate refused every LinearScan cell at build, in both lanes, and no
+subject ran. The card was re-worded (saltbench-systems `23485e5`, systems' wording, desk YM) to: *"The requirements ask that the output
+compute what the input computed. A general argument that the rewrite preserves meaning for every possible function is a project of its own
+and is not asked for."* It keeps R7 explicit and bounds only the general argument.
+**Checked before any LinearScan call.**
+- A non-builder re-drive by the lead: the diff is card-only (+3 −2).
+- Each card was rendered through its own tree's renderer and neutrality scan. The old card has 1 hit (`THEOREM`, the control firing)
+  and the new card has 0.
+- The export `saltbench-systems-v3-export-23485e5` was proved on the run box by systems: the same figures, and the renderings are
+  cmp-identical.
+- The lead's `diff -rq` against the 6087b54 export lists the card, `clb_harvest.py` with one new fixture (harvest-side, reached by no
+  subject), and the provenance marker. Nothing else differs.
+**Each condition runs on exactly one export.** LinearScan's cells, both models and both arms, fire from 23485e5 by a lane env that differs
+from the running one in `CLB_EXPORT` only. The other five problems stay on 6087b54, so no condition straddles two exports. No LinearScan
+cell ran before this addendum.
