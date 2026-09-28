@@ -1,0 +1,37 @@
+cell	pool	export	claude_live_at_fire	live_with	fault_window	beat_max_s	beat_samples	end_from
+clbnap01	dir1	6087b54	0	-	no	-	0	HEAD
+clbnap02	dir1	6087b54	0	-	no	-	0	HEAD
+clbnap03	dir1	6087b54	0	-	no	-	0	HEAD
+clbnas01	dir1	6087b54	0	-	no	-	0	HEAD
+clbnas02	dir1	6087b54	0	-	no	-	0	HEAD
+clbnas03	dir1	6087b54	0	-	yes	117	3807	HEAD
+clbnhp01	dir2	6087b54	0	-	no	-	0	HEAD
+clbnhp02	dir1	6087b54	1	clbmas02	no	-	0	HEAD
+clbnhp03	dir1	6087b54	0	-	no	-	0	HEAD
+clbnhs01	dir2	6087b54	0	-	no	-	0	HEAD
+clbnhs02	dir1	6087b54	0	-	no	-	0	HEAD
+clbnhs03	dir2	6087b54	1	clbmvp01	no	-	0	HEAD
+clbnrp01	dir2	23485e5	1	clbmvs01	no	-	0	HEAD
+clbnrp02	dir1	23485e5	0	-	no	-	0	HEAD
+clbnrp03	dir2	23485e5	1	clbnrs02	no	-	0	HEAD
+clbnrs01	dir1	23485e5	1	clbnrp01	no	-	0	working tree
+clbnrs02	dir1	23485e5	0	-	no	-	0	HEAD
+clbnrs03	dir2	23485e5	1	clbmxs01	no	-	0	working tree
+clbnvp01	dir2	6087b54	1	clbnas03	yes	181	1038	HEAD
+clbnvp02	dir1	6087b54	1	clbnvs01	no	80	967	HEAD
+clbnvp03	dir1	6087b54	1	clbnvs01	no	80	856	HEAD
+clbnvs01	dir2	6087b54	1	clbnas03	no	79	7427	HEAD
+clbnvs02	dir2	6087b54	1	clbnxs01	no	79	4500	HEAD
+clbnvs03	dir1	6087b54	1	clbmys02	no	80	4316	HEAD
+clbnxp01	dir1	6087b54	1	clbnvs01	no	80	853	HEAD
+clbnxp02	dir1	6087b54	1	clbnvs02	no	80	521	HEAD
+clbnxp03	dir2	6087b54	0	-	no	-	0	HEAD
+clbnxs01	dir1	6087b54	1	clbnvs01	no	80	7234	HEAD
+clbnxs02	dir2	6087b54	1	clbnvs03	no	80	7537	working tree
+clbnxs03	dir2	6087b54	0	-	no	-	0	HEAD
+clbnyp01	dir1	6087b54	0	-	no	-	0	HEAD
+clbnyp02	dir1	6087b54	0	-	no	-	0	HEAD
+clbnyp03	dir1	6087b54	0	-	no	-	0	HEAD
+clbnys01	dir1	6087b54	0	-	no	-	0	HEAD
+clbnys02	dir1	6087b54	0	-	no	-	0	HEAD
+clbnys03	dir1	6087b54	0	-	no	-	0	HEAD

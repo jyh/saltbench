@@ -1404,3 +1404,31 @@ Its closer is gemini's `--plan` for l7cfss02+03 on level 7's export, checked by 
 - ADDENDUM 25 §AE1 used the figure only as evidence that this census counted those conditions at a smaller n. That evidence
   stands on the records' own lines, which §AE2 cites. The corrected definition and the list of 10 are unchanged.
 - The LIVE figure is unchanged: **DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.**
+
+---
+
+# ⚖️ ADDENDUM 27 — **O37 JOINS AS ITS OWN SECTION: BLOCK N's SONNET COLUMN IS A RESULT OF RECORD. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-09-28, with `RESULT-claude-blockNS-2026-09-28.md` in the same commit (the column's record), as the block's registration §N9 requires.
+
+## §AF1 · WHY A SECTION AND NOT A ROW
+O37's registration (`AMENDMENT-O37-nine-greenfield-claude-2026-09-25.md` §N9) says its population *"joins the census as its own section,
+because the pilot's census is a result of record and is not re-opened."* The six problems here (Luby · AES · Liveness · MaxFlow ·
+BinomialHeap · LinearScan) are not among the pilot's five, so no pilot condition changes state and **the pilot's line stands as ADDENDUM 26
+left it: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AF2 · THE O37 SECTION — BLOCK N (Claude lane, greenfield × none), 24 conditions
+```
+  claude-sonnet-5  6 problems x {plain, salt-diet}   12 conditions   OWED -> DONE   36 cells, n = 3 each, scored on the withheld suite
+                                                                                    (RESULT-claude-blockNS-2026-09-28.md)
+  claude-opus-5    6 problems x {plain, salt-diet}   12 conditions   OWED           no result of record yet (block N's second, §N9)
+  -------------------------------------------------------------------------------------------------
+  BLOCK N        DONE 12 · OWED 12   = 24
+```
+⚠️ **OWED is this census's definition (ADDENDUM 25): no result of record.** It is not "unrun": ten of the Opus conditions already have three
+scored cells, and the last two (LinearScan salt-diet #2 and #3) are firing on 2026-09-28. They become DONE when the Opus column's result of record lands, and not before.
+⚠️ **O37's other 192 conditions** (statement and spec-change on these six, the three problems with no v3 rung, and the agy lane's sibling block)
+are outside block N (§N1) and are not counted here. Each enters this section with its own block's result.
+
+## §AF3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+A DONE is a merged result of record at the n it states (ADDENDUM 25), never a verdict on the arms. The Sonnet column's premiums are all
+UNRESOLVED by registration, and its own §7 says what it cannot carry.
