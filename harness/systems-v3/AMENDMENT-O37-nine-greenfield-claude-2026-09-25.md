@@ -499,3 +499,44 @@ subject-facing moved.** LinearScan salt-diet's three cells of record will then b
 the second dir. **That condition straddles two pools and is reported as straddling** (§N5.3).
 
 **What this does NOT change:** the arms, the caps, the export, the client pin, the fence, the probe, the scorer, or any other cell.
+
+---
+
+## ⚖️ ADDENDUM 14 — THE RELEASE OF ADDENDUM 13's RE-FIRE. APPENDED; ADDENDUM 13 (signed at blob `27f8c21972ec`) UNTOUCHED.
+**The signer's condition, met: the needle over EVERY block N cell of record** (a census script on the run box. It reads each cell's own
+`ctl/run-cfg.tsv` for its config dir and scans every transcript under that cell's slug, head and sidechains, with the needle exactly as
+ADDENDUM 13 registers it):
+```
+  cells scanned 72 (every cells-clb-n{s,o}-* cell with a ctl/run-cfg.tsv) · slug absent 0
+  with the needle 1 — clbmrs03: 5 needle records, T 2026-09-28T17:18:53.273Z, 0 real records after T, 703 records read
+  CONTROL  an account-class record planted in a scratch copy of clbmrs01's transcripts   → needle 1   (must match; did)
+  CONTROL  an overloaded_error record planted in a second scratch copy                    → needle 0   (must NOT match; did not)
+```
+**So the rule applies to exactly one cell, `clbmrs03`, by its own words.**
+
+**THE EXPORT: saltbench-systems `9d87318`** = 23485e5 + two commits, built by `studio_export.sh` (the allowlist export): 368 files,
+withheld-shaped names 0 in the listing and 0 on the host. `diff -rq` against the 23485e5 export lists exactly three harness files and the
+marker, and **nothing a subject reads**:
+- `cell-watch.sh` (07b571f): an account-class error is its own class, `HOLD ACCOUNT`, and the session ends `ACCOUNT-REFUSED` once a RETRY
+  sent inside the hold is 120 s old and still refused. QUOTA and OVERLOADED holds wait exactly as before. **Selftest 77 arms ok.** It went red
+  first on 23485e5 (4 FAIL). Red backwards on two mutants: an always-end decision reddens 4 arms, and an everything-is-ACCOUNT classifier
+  reddens the quota, invalid-request and overload controls. ⚠️ The pre-existing `HOLD AUTH authentication_failed` arm's expectation moved to
+  `HOLD ACCOUNT` with the class, and this is declared rather than hidden.
+- `clb_stage.sh` · `clb_fire.sh` (9d87318): `n` also accepts `r1..r3`, a registered re-fire, whose id is `clb…r<k>`. The original cell must
+  exist AND carry `ctl/end-1`. **Driven on the run box against a fixture root, through this export, in both scripts:** plain `3` REFUSED (the
+  cell exists; `clbmrs03` is never re-used), `r3` REFUSED while the original has no end marker, `r4` REFUSED (range), `r1` REFUSED (no
+  original). The positive control `r2` passed the guard and derived `clbmrsr2` on export 9d873183acab.
+- ⚠️ **The toolchain check was skipped for this export** (`--unreferenced-dest --no-toolchain`, because a cell was live on the box). The
+  toolchain is the one 23485e5's export checked on the same box, and the cell's own launch asserts the client pin and resolves cargo and
+  verus at `--check`.
+
+**THE RE-FIRE:** `clbmrsr3`, Opus · LinearScan · salt-diet, on the second dir after its pool's reset, from a lane env that differs from the
+second dir's LinearScan env in `CLB_EXPORT` only, with the account check read before the fire. **It runs under the fixed watcher; every other
+LinearScan cell ran under 23485e5's.** The two differ only when a head record carries an account-class error, and no other cell's does (the
+census above).
+
+**ENDING `clbmrs03` FIRST** (the stager refuses a re-fire beside a live cell). 23485e5's watcher has no signal trap, so it cannot be ended by
+its own path. At the fire, the lead signals its driver and its client **by pid** and writes `ctl/end-1` as
+`<UTC> ACCOUNT-REFUSED ended by the lead under ADDENDA 13–14; the 23485e5 watcher held it as OVERLOADED`, then tags the snapshot. **No
+post-end meter reading is taken, and this is declared**: the cell spent nothing after T. Its cost to T is `cell_meter.py` over its
+transcripts, printed in the block's table beside NOT-SCORED(HARNESS).
