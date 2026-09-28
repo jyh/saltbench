@@ -10,3 +10,10 @@
 - The tool's selftest has 13 arms. A pick-the-first-candidate mutant reddens 3 of them.
 
 Nothing here is a registration, and no figure is printed from it. It is the input steps c and d read.
+
+## Step d (Claude wall), raw: `claude-wall-raw.tsv`, produced on the run box by `claude-wall-raw.sh`
+For each CLAUDE-shape cell in `cellroots.tsv` (245) and each phase with an end marker, the last `METER … wall N/CAP` line of that phase
+in the cell's own `ctl/watch.log`. There are 269 phase readings (245 phase 1, 24 phase 2) and none is missing. **Limits, beside the figure:**
+the watcher computes `wall` NET of held time (`t - T0 - hold_total`), so a hold is printed in its own column (1 cell). The last METER line
+precedes the end marker by up to one tick (about 60 s), so the figure understates a cell's wall by at most one tick. It is a raw
+extraction, not the registered reading.
