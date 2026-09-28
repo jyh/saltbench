@@ -87,7 +87,7 @@ that no agy script enforces `T1_TOK` and that the turn loop has no token-cap end
   other 3 tied at zero.
 - **(ii) MISSED in both models for salt-diet:** incidence does not rise with reference size (the §2 and §3 lines). For plain it holds only
   vacuously, at zero.
-- **(iii) HELD BY LABEL:** no cell ended `CELL-KILLED`. ⚠️ **Declared beside it:**
+- **(iii) HELD:** no cell ended `CELL-KILLED`. ⚠️ **Declared beside it:**
 ```
 not LANDED by done_reason: naaeps01 TURN-TIMEOUT 11524 s NOT-LANDED · naaeps02 TURN-TIMEOUT 21725 s PASS · nabhfs03 TURN-TIMEOUT 21724 s NOT-SCORED
 ```
@@ -96,13 +96,23 @@ not LANDED by done_reason: naaeps01 TURN-TIMEOUT 11524 s NOT-LANDED · naaeps02 
   the caps the lane enforces: `AGY_MAX_TURNS` 40 (ends TURN-CAP), **`AGY_MAX_WALL` 21,600 s (ends WALL-CAP)**, the 1800 s print deadline and
   the 2100 s turn timeout (ends TURN-TIMEOUT). It also strikes `T1_TOK` as a cap. *(This section first called the 21,600 s wall
   "unregistered", from the pre-A7 list. kent's non-author read of 2026-09-28 found A7.2. The reading below is re-derived from it.)*
-  - **TURN-CAP and WALL-CAP incidence, the split A7.3 asks for:** by `done_reason`, **0 and 0** in both models and both arms.
-  - ⚠️ **But two salt-diet cells reached the wall's VALUE:** `naaeps02` (21,725 s) and `nabhfs03` (21,724 s). Both carry `done_reason`
-    TURN-TIMEOUT, not WALL-CAP. **Either the turn timeout fired in the same window as the wall, or the end kind was recorded under the wrong
-    name.** This result does not decide which. It needs each cell's turn loop and the wave's `CAPS` line, which A7.2 asks the hand to file
-    with the receipts (a wave whose line differs from A7.2 is reported as such). **Neither has been read for NA.** Until it is, the wall's
-    incidence by arm reads **0 recorded · 2 salt-diet cells at the wall's value · 0 plain**. A7.3 names the wall as the cap most likely to
-    bind one arm, and here it bound only salt-diet cells, whichever name the end carries.
+  - **The CAPS in force, read at every wave** (`evidence/blockNA-2026-09-28/CAPS-AND-WALL-ENDS.md` (a), the hand's; A7.2 asks for it): the
+    31 NA fire logs carry one CAPS line each, covering all 28 table roots. Every line reads 1800 s · 2100 s · 21,600 s · 40 turns, and
+    **no wave differs from A7.2.** Each cell's own `ctl/caps.tsv` agrees (73 of 73). Each line also prints `probe patience 2100s`, which A7.2
+    does not register, and it is reported as that, not as a difference.
+  - **The wall bound TWO salt-diet cells and ZERO plain cells** (the same file (b), from each cell's own client log and loop start). `naaeps02`
+    and `nabhfs03` each reached W = start + 21,600 s while waiting on a turn, and the awaited result arrived 5 s and 4 s after W. The control,
+    `naaeps01`, ended its TURN-TIMEOUT 10,076 s before its wall.
+  - ⛔ **They carry `done_reason` TURN-TIMEOUT because of how the loop labels them, not because of when they ended.** `agy_turnloop_v3.py` (at
+    e10f420) waits on the earlier of the wall and the turn patience, records any wait that returns empty as TURN-TIMEOUT, and checks
+    WALL-CAP only at the top of the loop after a result arrives. **So `done_reason` cannot count a wall reached mid-wait, and "WALL-CAP 0"
+    describes the labeller, not the cells.** Wall incidence is therefore read by timing, never by label: **2 salt-diet, 0 plain.** A7.3 names
+    the wall as the cap most likely to bind one arm, and here it bound only salt-diet cells.
+  - ⚠️ **This is a harness finding that reaches past this block.** Any level that reads WALL-CAP incidence from `done_reason` on this loop
+    reads zero by construction. No other level is re-read here.
+  - ⚠️ **One more line in the same file, declared and not decided:** among the three out-of-table roots is `cells-na-luby-flash-plain`, whose
+    CAPS line is at export `eadcfe8`. NA ADDENDUM 3's title says *"NO SUBJECT EVER RAN ON eadcfe8"*. The root is outside the table and in no
+    count here. Whether a subject ran in it is not read by this result, and its fire log says only that a wave started.
   - `naaeps02` LANDED before it stopped (PASS 8/8, truncated, a floor). `nabhfs03` did not.
   - **(iii) itself is about CELL-KILLED, and by label it HELD** (0 cells).
 
