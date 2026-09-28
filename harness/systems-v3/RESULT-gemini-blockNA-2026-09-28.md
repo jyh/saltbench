@@ -112,7 +112,9 @@ not LANDED by done_reason: naaeps01 TURN-TIMEOUT 11524 s NOT-LANDED · naaeps02 
     reads zero by construction. No other level is re-read here.
   - ⚠️ **One more line in the same file, declared and not decided:** among the three out-of-table roots is `cells-na-luby-flash-plain`, whose
     CAPS line is at export `eadcfe8`. NA ADDENDUM 3's title says *"NO SUBJECT EVER RAN ON eadcfe8"*. The root is outside the table and in no
-    count here. Whether a subject ran in it is not read by this result, and its fire log says only that a wave started.
+    count here. **The hand read it at the object (bus, 2026-09-28 09:21:29 PDT; not a tracked file): no subject turn ran.** The wave was
+    stopped by TERM during its credential-window wait, and its three cells end at `BATTERY GREEN` with 0 `LAUNCHING` lines and no stream,
+    turn loop, client log or end marker. So the line is the wave's banner, printed before any launch, and it is consistent with ADDENDUM 3.
   - `naaeps02` LANDED before it stopped (PASS 8/8, truncated, a floor). `nabhfs03` did not.
   - **(iii) itself is about CELL-KILLED, and by label it HELD** (0 cells).
 
