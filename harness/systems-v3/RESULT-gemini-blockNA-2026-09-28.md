@@ -81,7 +81,8 @@ done_reason LANDED 69 · TURN-TIMEOUT 3
 ---
 # §4 · THE THREE REGISTERED PREDICTIONS (§NA3), PER MODEL AND ARM; A MISS IS A RESULT
 Incidence is counted as **cells with at least one cut turn**, from each cell's client-stderr cut count (ADDENDUM 4's source, never the turn
-loop's TURN-DENIED line). CAP-TOKENS is included in (i) and bound no cell (`done_reason` carries no CAP value; §1).
+loop's TURN-DENIED line). (i) also names CAP-TOKENS, which **cannot occur on this lane**: level 6 ADDENDUM 7 (A7.2) records
+that no agy script enforces `T1_TOK` and that the turn loop has no token-cap end.
 - **(i) HELD in both models:** salt-diet ≥ plain in 6 of 6 problems each. It holds strictly in all 6 for Pro and in 3 for Flash, with the
   other 3 tied at zero.
 - **(ii) MISSED in both models for salt-diet:** incidence does not rise with reference size (the §2 and §3 lines). For plain it holds only
@@ -90,10 +91,20 @@ loop's TURN-DENIED line). CAP-TOKENS is included in (i) and bound no cell (`done
 ```
 not LANDED by done_reason: naaeps01 TURN-TIMEOUT 11524 s NOT-LANDED · naaeps02 TURN-TIMEOUT 21725 s PASS · nabhfs03 TURN-TIMEOUT 21724 s NOT-SCORED
 ```
-  Two of these ended at ~21,725 s, a cell-level wall of 21,600 s. **That wall is not in level 6 §H3's registered cap list** (T1_TOK, the 1800 s
-  print deadline, the 2100 s turn patience), so it is reported here as a cap INCIDENCE rather than read into (iii). It bound 2 salt-diet
-  cells and 0 plain cells, and by the lead's own rule a cap that binds one arm is a treatment. `naaeps02` LANDED before the wall stopped it
-  (PASS 8/8, truncated, a floor). `nabhfs03` did not.
+  **The caps in force are level 6 ADDENDUM 7's A7.2, not the §H3 list that §NA0 row 5 copied.** §NA0 row 5 says "level 6 §H3, unchanged"
+  and lists `T1_TOK`, the 1800 s print deadline and the 2100 s turn patience. That is §H3 as it stood BEFORE A7 corrected it. A7.2 registers
+  the caps the lane enforces: `AGY_MAX_TURNS` 40 (ends TURN-CAP), **`AGY_MAX_WALL` 21,600 s (ends WALL-CAP)**, the 1800 s print deadline and
+  the 2100 s turn timeout (ends TURN-TIMEOUT). It also strikes `T1_TOK` as a cap. *(This section first called the 21,600 s wall
+  "unregistered", from the pre-A7 list. kent's non-author read of 2026-09-28 found A7.2. The reading below is re-derived from it.)*
+  - **TURN-CAP and WALL-CAP incidence, the split A7.3 asks for:** by `done_reason`, **0 and 0** in both models and both arms.
+  - ⚠️ **But two salt-diet cells reached the wall's VALUE:** `naaeps02` (21,725 s) and `nabhfs03` (21,724 s). Both carry `done_reason`
+    TURN-TIMEOUT, not WALL-CAP. **Either the turn timeout fired in the same window as the wall, or the end kind was recorded under the wrong
+    name.** This result does not decide which. It needs each cell's turn loop and the wave's `CAPS` line, which A7.2 asks the hand to file
+    with the receipts (a wave whose line differs from A7.2 is reported as such). **Neither has been read for NA.** Until it is, the wall's
+    incidence by arm reads **0 recorded · 2 salt-diet cells at the wall's value · 0 plain**. A7.3 names the wall as the cap most likely to
+    bind one arm, and here it bound only salt-diet cells, whichever name the end carries.
+  - `naaeps02` LANDED before it stopped (PASS 8/8, truncated, a floor). `nabhfs03` did not.
+  - **(iii) itself is about CELL-KILLED, and by label it HELD** (0 cells).
 
 ---
 # §5 · ⛔ WHAT THIS DOES **NOT** SAY
