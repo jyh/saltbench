@@ -1,0 +1,5 @@
+# Registered classifications that are RULINGS, not measurements. Each row names where the ruling lives. The generator applies a row only
+# to the cell it names (a clause that names one case is not a class).
+id	class	in_registered_n	source
+nabhfs03	RESULT-CUT-BOUND-NON-LANDING	yes	NA ADDENDUM 4; the helm 09-26 19:50:25 (desk XF); the non-author read under XF 09-26; quoted by bench on the bus 2026-09-28 08:52:22 (offset 71248126). The score file prints VOID(NO-BRIEFING); this row supersedes that reading for this cell only.
+nabhfsr01	OUTSIDE-REGISTERED-N (re-fire of a cell later classified a RESULT)	no	bench, bus 2026-09-28 08:52:22 (offset 71248126): no registered clause admits an extra cell into a condition n; printed with receipts, in no denominator or median.
