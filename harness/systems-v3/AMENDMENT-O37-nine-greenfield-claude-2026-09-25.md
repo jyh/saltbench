@@ -479,6 +479,16 @@ cell ran 70 minutes of real work before the server withdrew access. That is a se
 - **This rule does not look at the outcome.** The cell had no withheld-suite reading when access ended, and none is taken before this
   addendum is signed. So the rule cannot be chosen by what the cell would have scored.
 
+**The needle and the window, registered here before any result of this cell is read:**
+- **NEEDLE:** a head-transcript assistant record that is synthetic (`isApiErrorMessage`, or model `<synthetic>`) and whose error is
+  account-class. That means one of `oauth_org_not_allowed`, `authentication_failed`, or any error naming the organization, the OAuth grant or
+  the account. A rate limit, an overload or a server error is NOT account-class.
+- **WINDOW:** from the first such record T to the cell's end. The rule fires only if the window holds NO real (non-synthetic) assistant
+  record, in the head or any sidechain. A single real record after T means access returned, and the cell is read as it ends.
+- **SYMMETRIC:** the rule names no arm. It voids a plain cell exactly as it voids a salt-diet cell, and it is applied to every block N cell
+  whose transcript carries the needle. On this addendum's date that is one cell, `clbmrs03`, measured by its transcript: 5 needle records and
+  no real record after 17:18:51Z.
+
 **Where the re-fire runs, and what it needs first.** It runs on the second dir after its pool's reset (Mon 20:00 PDT = Tue 03:00Z), when
 the helm's tilt on that pool ends. The second dir has run block N cells since ADDENDUM 8. **The stager cannot produce the new cell id
 today:** `clb_stage.sh` at 23485e5 derives a cell id from block, problem, arm and `n`, accepts `n` in 1..3 only (§Q0 row 2), and refuses a
