@@ -513,6 +513,17 @@ ADDENDUM 13 registers it):
   CONTROL  an overloaded_error record planted in a second scratch copy                    → needle 0   (must NOT match; did not)
 ```
 **So the rule applies to exactly one cell, `clbmrs03`, by its own words.**
+⚠️ **The population's boundary, declared so a wider search does not read two cells as missed** (kent's non-author read, 2026-09-28, grepping
+every transcript on the run box rather than each cell's own slug). `authentication_failed` also appears in **two block N slugs under the OTHER
+pool's config dir**, each with no real assistant record:
+- `clbnap02`, under the second dir, at 2026-09-26 17:50:23Z. That is ADDENDUM 7's refused fire: the probe turn failed, the credential blanked,
+  and no subject ran. The cell later ran on A2.3's dir (its `run-cfg.tsv`).
+- `clbnxp03`, under A2.3's dir, at 2026-09-27 04:47:20Z. That is ADDENDUM 11's refused fire, the same shape. It later ran on the second dir.
+
+**Both are refused PROBE sessions before any subject turn, already recorded as such.** The census reads each cell from its own `run-cfg.tsv`,
+so they are outside its population by construction, and the rule does not reach them. ⚠️ The re-fire guard checks only that
+`ctl/end-1` is non-empty, not what it says, so the lead's hand-written end line satisfies it by construction. This is intended here, and
+no one should read the guard as validating the end reason.
 
 **THE EXPORT: saltbench-systems `9d87318`** = 23485e5 + two commits, built by `studio_export.sh` (the allowlist export): 368 files,
 withheld-shaped names 0 in the listing and 0 on the host. `diff -rq` against the 23485e5 export lists exactly three harness files and the
