@@ -8,7 +8,8 @@ FROM ITS TWO TABLES, and assert each derived line against the BYTES of the resul
 
 --print   print the derived lines (the document quotes them verbatim) and exit 0.
 default   rc 0 iff every derived line occurs in the document; rc 1 names each one that does not.
---selftest  mutate one table value in memory and require the check to go RED (rc 1), then require the
+--selftest  two mutants, each must go RED: one PASS turned FAIL in memory, and a capped cell's cost taken at the
+          METER instead of at the cap (lane B §Q6 rule 6); then require the
           unmutated check GREEN. A verifier that cannot fail is decoration.
 
 No expected value is typed here. Every line below is computed from the tables; the only literals are the
@@ -32,6 +33,12 @@ def read_tsv(path):
 
 def med(xs):
     return statistics.median(xs)
+
+
+def cost(c):
+    # lane B §Q6 rule 6: "a capped cell's pass result is a floor and its cost ENTERS AT THE CAP" — the registered
+    # convention. The METERED figure of a capped cell overshoots the cap by up to one turn; it is printed on its own line.
+    return float(c["cap"]) if c["capped"] == "yes" else float(c["final_COST"])
 
 
 def derive(cells, facts):
@@ -67,7 +74,7 @@ def derive(cells, facts):
         m, capped = {}, {}
         for a in ARMS:
             rs = [c for c in cells if c["problem"] == p and c["arm"] == a]
-            m[a] = med([float(c["final_COST"]) for c in rs])
+            m[a] = med([cost(c) for c in rs])
             capped[a] = sum(c["capped"] == "yes" for c in rs)
         k = len([c for c in cells if c["problem"] == p and c["arm"] == "salt-diet"])
         # the median of n cells sits AT the cap when more than half are capped: the cap's arithmetic forbids a clearing median
@@ -76,8 +83,12 @@ def derive(cells, facts):
             p, m["plain"], m["salt-diet"], m["salt-diet"] / m["plain"], capped["plain"], capped["salt-diet"], kind))
     for a in ARMS:
         rs = [c for c in cells if c["arm"] == a]
-        L.append("total COST %s $%.2f · total T %s" % (a, sum(float(c["final_COST"]) for c in rs),
+        L.append("total COST (capped at the cap) %s $%.2f · total T %s" % (a, sum(cost(c) for c in rs),
                                                       format(sum(int(c["final_T"]) for c in rs), ",")))
+    capd = sorted((c for c in cells if c["capped"] == "yes"), key=lambda c: c["cell"])
+    L.append("capped cells METERED (not used above): %d, $%.2f .. $%.2f against cap $%s · metered salt-diet total $%.2f" % (
+        len(capd), min(float(c["final_COST"]) for c in capd), max(float(c["final_COST"]) for c in capd), capd[0]["cap"],
+        sum(float(c["final_COST"]) for c in cells if c["arm"] == "salt-diet")))
     over = [c for c in cells if c["capped"] == "no" and float(c["final_COST"]) > float(c["cap"])]
     L.append("uncapped cells ending above the cap: %d%s" % (len(over), "".join(
         " (%s $%.2f %s)" % (c["cell"], float(c["final_COST"]), c["run_state"]) for c in over)))
@@ -122,9 +133,17 @@ def main():
         mut[i]["suite"] = "FAIL"
         red = check(derive(mut, facts), doc)
         green = check(derive(cells, facts), doc)
-        ok = bool(red) and not green
+        # arm 2 — the convention kent's read found: a capped cell's cost at the METER instead of at the cap (rule 6)
+        global cost
+        keep = cost
+        cost = lambda c: float(c["final_COST"])
+        red2 = check(derive(cells, facts), doc)
+        cost = keep
+        ok = bool(red) and bool(red2) and not green
         print("selftest: mutant (one PASS -> FAIL in %s) %s with %d missing line(s); unmutated %s" % (
             mut[i]["cell"], "RED" if red else "GREEN (DEFECT)", len(red), "GREEN" if not green else "RED"))
+        print("selftest: mutant (capped cost at the METER, not the cap) %s with %d missing line(s)" % (
+            "RED" if red2 else "GREEN (DEFECT)", len(red2)))
         return 0 if ok else 1
     miss = check(derive(cells, facts), doc)
     for m in miss: print("MISSING from the document: " + m)
