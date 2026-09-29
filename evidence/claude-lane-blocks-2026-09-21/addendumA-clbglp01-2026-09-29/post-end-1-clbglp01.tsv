@@ -1,0 +1,2 @@
+kind	at_end_T	at_end_COST	final_T	final_COST	delta_T	delta_COST	cap_unit	cap	last_record_ts	in_flight_window_s	rate_COST_per_s	in_flight_est_COST	max_record_COST
+LANDED	1651696	1.2420	2161085	1.4621	509389	0.2201	COST	37.21	2026-09-18T16:06:26.165Z	15	0.000027	0.0004	0.1193
