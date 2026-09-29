@@ -1,0 +1,5 @@
+2026-09-18T16:06:41Z LANDED landing-1 62661a4fc88d
+2026-09-18T01:15:46Z HOLD the run dir holds settings.json.bak-retention-20260911T100557Z (not one of the client's runtime names)
+2026-09-18T01:18:00Z P-SANDBOX INDETERMINATE (no-marker) the subject's reply carries no SBPROBE-BEGIN/SBPROBE-END pair, so nothing says the command ran at all. ABSENCE IS NOT A DENIAL: this is exactly the failure §S3 names, and it is scored INDETERMINATE rather than yes. [fence 4e1b5a049592c5b3; probe_sandbox_v3 clbglp01]
+2026-09-18T16:01:12Z P-SANDBOX yes (TRANSPARENT: a decoy under covering entry ~/projects DENIED, inside readable, driven on this cell's own rendered fence 4e1b5a049592c5b3 through the client itself) [probe_sandbox_v3 clbglp01]
+2026-09-18T16:01:15Z LAUNCHING clbglp01 phase 1 model claude-sonnet-5 client ~/.local/share/claude/versions/2.1.259

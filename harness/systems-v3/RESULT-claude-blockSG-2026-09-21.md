@@ -69,3 +69,28 @@
   verifier     RESULT-claude-blockSG-2026-09-21-verify.py — re-derives every figure FROM the table
                and asserts it against the BYTES of this document. No typed expectations.
 ```
+
+---
+# ADDENDUM A (2026-09-29, bench) — `clbglp01` IS RESTORED: ITS SERVED MODEL IS NOW DERIVED BY THE SAME INSTRUMENT AS ITS SIBLINGS'
+§1 excluded `clbglp01` for one reason only: it had no `served-<cell>.out`, so its SERVED model could not be derived. That receipt now
+exists. It was made by the same instrument the block's harvest used (`served_models_v3.py check-cell`, run on the run box against the
+cell's own transcript slug), and a CONTROL was run in the same act. The table above and its verifier are not changed. This addendum and
+its evidence directory carry the one cell.
+```
+  cell      served (head / sidechain)                    verdict  suite  tests   final_T    final_COST  cap_unit  cap    capped
+  clbglp01  claude-sonnet-5=62 / claude-sonnet-5=58      clean    PASS   16/16   2161085    1.4621      COST      37.21  no
+  control   clbglp02: the re-derived receipt equals the harvest's receipt line for line, except the root table's PATH (its sha
+            a479e1be5414704f is identical); its re-score reproduces the table's PASS 16/16.
+```
+- **Scored** with `score_claude_v3.py` from `283362105d75`'s harness, the block's own scorer (§6), over a declared file naming
+  `clbglp02` (control) and `clbglp01`. The staged tree's HEAD is the run-box cell's HEAD `62661a4fc88d` (clean) and the cell's own
+  landing hash in `ctl/end-1`. (A first score on 2026-09-18 with export `bcd2205682c7`'s scorer read the same PASS 16/16.)
+- **Meter** is the cell's own `ctl/post-end-1.tsv`, as for every row (§6). Like every row, it includes the harness's sandbox probe
+  (the table's first comment line). ⚠️ **This cell carries one more probe than its siblings:** its first launch on 2026-09-18T01:1xZ
+  was HELD, with P-SANDBOX INDETERMINATE (no marker), and that probe's session is under the same slug. The launch of record is
+  16:01:15Z. The extra probe is a small share of final_T and it is NOT separated here.
+- **It was fired and harvested by hand**, as §1 says. That is a statement about its provenance, and it stays true.
+⇒ **LRU × plain × none (Sonnet, greenfield) now stands at n = 3 of record:** `clbglp01` · `clbglp02` · `clbglp03`, all PASS 16/16.
+The census moves this condition out of ADDENDUM 25's n < 3 list in its own addendum. Nothing here is a claim about the salt method.
+Evidence: `evidence/claude-lane-blocks-2026-09-21/addendumA-clbglp01-2026-09-29/`. Home paths are written `~`, and the run account's
+config directory is written as a role (`.claude-<the run account>`), per this repository's scrub gates. No other byte is changed.

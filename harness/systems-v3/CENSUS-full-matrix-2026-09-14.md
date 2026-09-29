@@ -1481,3 +1481,29 @@ change on these six, and the three problems with no v3 rung) are outside both bl
   count here. That condition's three cells straddle two pools, declared in its record.
 - A DONE is a merged result of record at the n it states (ADDENDUM 25), never a verdict on the arms. The Opus record's premiums are all
   UNRESOLVED by registration, and its §7 says what it cannot carry, including any comparison with the other model column.
+
+---
+# ⚖️ ADDENDUM 30 — **STEP g, THE ZERO-SPEND PART: SONNET LRU × PLAIN × none REACHES n = 3 OF RECORD. ADDENDUM 25's LIST OF TEN IS NINE.**
+## bench, 2026-09-29, with ADDENDUM A of `RESULT-claude-blockSG-2026-09-21.md` in the same commit (the condition's record).
+
+## §AF1 · WHAT MOVES
+```
+  claude-sonnet-5  greenfield × none × LRU × plain   n = 2 → 3   clbglp01 · clbglp02 · clbglp03, all PASS 16/16
+```
+§T2's reason for n = 2 was one missing receipt: `clbglp01` had no `served-<cell>.out`. blockSG ADDENDUM A derives it with the block's
+own instrument (control equal to the harvest's receipt), and re-scores the cell under the block's own scorer (control reproduces). The
+cell is a cell of record at n = 3. Its extra held probe and its by-hand provenance are stated there.
+
+## §AF2 · WHAT DOES NOT MOVE YET, AND WHY
+The three `gemini-3.1-pro-high` conditions in ADDENDUM 25's list (Crc32 × salt-diet × statement · FreeList × plain × none · FreeList ×
+plain × statement) each have a THIRD cell that ran and landed: the top-ups `s3ctk01` · `s3fpk01`, `s3fpk02` · `s3fqk01`
+(`RESULT-stage3-2026-09-12.md` ADDENDUM 1 §R3). **They are not yet cells of record here.** The descriptive-tables map counts a cell only
+through a score receipt, and the map says of each one "in no score receipt". ADDENDUM 1 re-drove two of them in prose and carries the
+other two as another seat's readings. The receipt is commissioned from the lane that owns them (gemini, zero spend). These three move
+in a later addendum that cites it, with ADDENDUM 1 §R6.5's limit printed beside the n: the top-ups ran on export s2k and another client.
+The v2 tables applied their registered rule correctly. They are a dated reading and are not changed.
+
+## §AF3 · THE LIST, AS IT NOW STANDS
+ADDENDUM 25 §AE2 less Sonnet LRU × plain × none: **nine conditions at n < 3.** Six are the Opus spec-change row, which the step-g freeze
+(`AMENDMENT-stepg-opus-specchange-2026-09-29.md`, a separate PR) takes to n = 3 with seven cells. The other three wait on the receipt.
+The LIVE figure is unchanged: **DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** Nothing here is a claim about the salt method.
