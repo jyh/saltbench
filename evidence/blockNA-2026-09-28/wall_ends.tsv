@@ -1,0 +1,4 @@
+cell	done_reason	wall_seconds	continue_turns	loop_on	W_wall_deadline	last_send_lb	patience_deadline_lb	awaited_result_at	awaited_minus_W_s	loop_end	messages_vs_results	bound_by
+cells-na-aes-pro-salt/naaeps01	TURN-TIMEOUT	11524.5	4	2026-09-27T04:56:14Z	2026-09-27T10:56:14Z	-	-	-	-	2026-09-27T08:08:18Z	7/5 NOT ALIGNED: timing columns not read	TURN-PATIENCE (the loop ended 10076s before W)
+cells-na-aes-pro-salt/naaeps02	TURN-TIMEOUT	21725.3	11	2026-09-27T08:09:16Z	2026-09-27T14:09:16Z	2026-09-27T13:39:21Z	2026-09-27T14:14:21Z	2026-09-27T14:09:21Z	+5	2026-09-27T14:11:21Z	13/13	WALL (W precedes the patience deadline by >= 305s)
+cells-na-binomialheap-flash-salt/nabhfs03	TURN-TIMEOUT	21724.2	11	2026-09-26T11:28:38Z	2026-09-26T17:28:38Z	2026-09-26T16:58:42Z	2026-09-26T17:33:42Z	2026-09-26T17:28:42Z	+4	2026-09-26T17:30:42Z	13/13	WALL (W precedes the patience deadline by >= 304s)

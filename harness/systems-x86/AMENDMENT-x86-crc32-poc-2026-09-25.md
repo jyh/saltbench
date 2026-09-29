@@ -309,3 +309,76 @@ salt-diet · #2, the row runs on the first dir again.** clbkcp02 (statement · p
 The reset is a quota event, not a login: the first dir's credential is unchanged by it (cred_ledger reads it UNCHANGED), and it is
 still the login of ADDENDUM 8. ADDENDUM 5's fallback and its three triggers stand. Which dir each cell ran on stays per cell, from
 `ctl/run-cfg.tsv`.
+
+---
+
+## ⚖️ ADDENDUM 12 — THE AGY ROW's `none` PAIR FIRES FROM CUT 4 = 5d3267b, BY CONDITION. APPENDED.
+**Why cut 4 for the agy `none` pair.** ADDENDUM 9 kept `none` on 4d960d3, and that sentence was written about the CLAUDE row: its `none`
+pair was complete there at n = 3 (PR #268). The AGY row's `none` pair has not fired. Its salt-diet smoke (xass01) ended with an orphaned
+client tree, and its slice was held on the client reap (`245f0d8`), which only cut 4 carries. ADDENDUM 9's file-sha diff names everything
+cut 4 changes against 4d960d3. Of those changes, the reap is the only one on the agy row, and nothing a `none` view or the referee reads
+differs. **So the agy `none` pair fires from cut 4.** Each condition still runs on exactly one cut: Claude `none` on 4d960d3, agy `none`
+and every `statement` condition on cut 4. No pooling across cuts is needed.
+**Measured by the hand before this release, at zero spend** (gemini, 2026-09-26, the run box, inside an existing root, no new `$HOME`
+entry): a dry render of both arms from cut 4 reads BUILT · FENCE RENDERED · BATTERY GREEN · DRY RENDER COMPLETE. The launch `--check` is
+rc 0 on both arms, and the briefing-token walk is OK on both. The walk's control, the pre-640d6b4 dry cell, still refuses. The canary
+`--plan` is clean: 2 conditions, 6 cells, into staged roots.
+**ORDER: by CONDITION, not by cell.** §X2's per-cell interleave (plain#1 · salt-diet#1 · #2 · #3) is REPLACED for the agy row's `none`
+pair by plain ×3, then salt-diet ×3. The agy wave's unit is the condition, and its fresh-root guard gives one root per condition. An
+interleave would need six roots created in quiet windows while block N is live, and the time order it buys is not worth that.
+⚠️ **Declared as a confound of the agy row, before any cell:** the salt-diet cells run hours after the plain cells, on the same caps, the
+same credential and the same box. A drift in the served model or in the agy pool over those hours falls on salt-diet alone. Its sign is
+not registered. The Claude row interleaved, so this confound is the agy row's alone, and its RESULT prints it beside every agy table.
+**Unchanged:** the model (gemini-3.1-pro-high), the caps (level 6 §H3), the referee (`referee_x86.sh`), §X3's smoke reading, and the
+statement conditions' own cut (ADDENDUM 9). The agy statement pair is not released by this addendum. Its wave wiring is still being
+built, and it fires on its own release line.
+
+---
+
+## ⚖️ ADDENDUM 13 — THE AGY ROW's `statement` PAIR FIRES FROM CUT 5 = ec67091, BY CONDITION, AFTER THE `none` PAIR. APPENDED.
+**Why a fifth cut.** The agy wave had no statement arm at cut 4. `ec67091` adds it (`AGY_EXTRA=--statement`, with the hand-outs asserted in
+the export by blob). It is one commit and one file on top of cut 4 (`harness/systems-v3/agy_wave_v3.sh`, +31 −3). **The lead diffed
+both exports on the run box:** cut 5 differs from cut 4 in `agy_wave_v3.sh` and the three provenance files (`EXPORTED-FROM.sha`,
+`RENDER-OVERLAY.txt`, `REQUIRED-ANCESTORS.tsv`), and in nothing else. So nothing a Claude cell, a `none` view or the referee reads differs
+from cut 4.
+**Measured by the hand at zero spend, before this release** (gemini, 2026-09-26): the export's `agy_wave_v3.sh` is the committed blob.
+Each hand-out hashes to its pin in `STATEMENT-PIN.tsv`: statement `630a37ba2545`, spec `b336720df2e1`. A dry render of both statement
+arms reads rc 0, BATTERY GREEN, `ctl/statement=yes`, and both hand-outs are in the view. The launch `--check` is rc 0 on both, and the
+briefing-token walk is OK on both. The canary `--plan` is clean: 2 conditions, 6 cells, into staged roots.
+**ORDER:** by condition, plain ×3 then salt-diet ×3, as ADDENDUM 12, whose time-order confound carries here unchanged. **This pair fires only after the
+`none` pair's supervisor has written its end marker**, because the agy credential is width 1.
+**Each condition runs on exactly one cut:** Claude `none` on 4d960d3; Claude `statement` and agy `none` on cut 4; agy `statement` on
+cut 5. No pooling across cuts is needed.
+
+---
+
+## ⚖️ ADDENDUM 14 — THE AGY `statement · salt-diet` CONDITION: ITS FIRST CELL WAS KILLED FOR BOX SAFETY, AND ITS OTHER TWO ARE HELD. APPENDED.
+bench (lead), 2026-09-29 07:0x PDT. It records events of 2026-09-26 that no addendum carried. Every text above is untouched.
+**What happened.** The first cell of the condition (xass201, cut 5 = ec67091) was ended by the operators at 15:08 PDT on 2026-09-26.
+Its lean/lake tree had taken the run box to 27.4 of 28.7 GB swap used, with load at 46. The hand read the cell's own stream
+(`ctl/stream-1.ndjson`, gemini, 15:09 PDT). Three `lake build` calls never returned while the subject went on building. The fence
+denied the subject `ps`, so it could neither see nor stop the builds that piled up. The line that started the 17 GB `lean` process is
+**not measured**. The supervisor was stopped (rc 143), so xass202 and xass203 never started. Three seats signalled the cell within one
+minute (gemini, the helm, the lead), and all three acts are declared on the bus.
+**How it is reported.** Level 6 §H6, which §X7 imports for the agy row, lists `CELL-KILLED` in row 6: **NOT void: reported per arm.**
+So xass201 goes in the salt-diet column as CELL-KILLED, with the cause above printed beside it. It is not a VOID, because no row of
+§H6 or §X7 voids it. It is never counted as a landing. If its end state is refereed, the verdict is of the end state, as for the Claude
+row's CAP-COST cell (PR #269).
+⚠️ **The asymmetry is declared, and its direction is against the arm:** a runaway Lean build can only happen in an arm that builds Lean.
+Only salt-diet does. Voiding the cell as a harness fault would take a salt-diet failure out of the record. The cause is a harness gap,
+and it is printed beside the class, never used in place of it.
+**The hold.** xass202 and xass203 do not fire until a per-cell memory ceiling on the cell's process tree exists. This was the lead's
+ruling of 2026-09-26 17:19 PDT, arm (a) of gemini's fork. The ceiling is set at a multiple of the lane's measured normal per-cell
+peak, so that it catches only the pathology. A trip ends the cell as a declared cap class beside the arm column, and like row 6 it is
+not void. ⚠️ **It binds salt-diet far more than plain**, since plain builds no Lean. That is why it is declared here before any cell
+runs under it. It applies to this condition's two remaining cells only. The plain cells ran without it.
+**OWNER · RELEASE · CLOCK.** The ceiling is gemini's to build, with a red drive on a planted runaway. It is released by the lead's
+ADDENDUM 15, which names the cut and the multiple. The re-measure is 2026-10-02. **Default if nothing is released by then:** the
+condition closes at one cell (xass201, CELL-KILLED), and xass202 and xass203 are DECLARED unreached. The RESULT prints n = 1 beside
+every figure of the condition.
+**Unchanged:** every other condition, both rows, the referee, §X5, §X6 and §X8. The agy row's RESULT files are the hand's (gemini's),
+as the Claude row's are the lead's (#268, #269).
+**ADDENDUM 14, a pooling fact it omitted** (appended 2026-09-29 on a non-author read; the text above is untouched). The asymmetry is
+not only against plain. Inside this one condition, xass201 ran WITHOUT the ceiling and xass202 and xass203 would run WITH it. The
+agy `none · salt-diet` cells also ran without it. So at n = 3 the condition mixes two cap regimes. Its RESULT prints each cell's regime
+beside its class, as ADDENDUM 12's time-order confound is printed, and never pools the cells as if they had one regime.

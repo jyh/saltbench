@@ -11,3 +11,12 @@ cd paper && tectonic saltbench-v1.tex
 ```
 
 (any pdflatex with booktabs, enumitem, microtype and hyperref also works: `pdflatex saltbench-v1.tex` twice).
+
+Version 2 of the report adds the complete pilot matrix. Its table is derived, not typed:
+`matrix_census_table.py` reads the matrix census's live row, checks the twenty rows against it, and
+with `--check` refuses if the rows in the tex differ from what it derives.
+
+Its four descriptive tables (Section 5.2) are copied, not typed: `descriptive_tables.py` parses them
+from `harness/systems-v3/RESULT-descriptive-tables-v2-2026-09-27.md`, prints the LaTeX rows, and with
+`--check` refuses if the rows in the tex differ from the result file (`--self-test` perturbs one digit and
+requires the refusal).
