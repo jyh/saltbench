@@ -43,9 +43,10 @@ discarded.** BATTERY GREEN, the TMPDIR row OK and `reap nothing-left` on all six
 needs LEAN_TOOLCHAIN_BIN, the PINNED Lean bin with lake"* — before any build, because the hand's fire environment lacked it. The root
 held only its staging marker. It was re-fired identically (same export, same condition) at 18:50:07Z (its ledger's FIRE row), and those are the cells below.
 **The 24 min 51 s gap between xasn02's end and xasn03's start is the wave's credential-window wait, outside every cell.** The
-wave's own fire log reads, at 19:55:16Z, *"CREDENTIAL WINDOW 1676s remaining, below the 2400s a cell needs"*. It waited 1,426 s for the
-client's refresh window, and at 20:19:22Z the token advanced and it fired xasn03. `wall_s` counts from a cell's launch, so no cell's
-wall includes the wait. No model was reached during it.
+wave's own fire log, verbatim stamps: 19:55:16Z *"CREDENTIAL WINDOW 1676s remaining, below the 2400s a cell needs"*; 19:55:26Z
+*"waiting 1426s for its refresh window"* (19:55:26 + 1,426 s = 20:19:12); 20:19:12Z *"CREDENTIAL WINDOW 240s remaining"*; 20:19:22Z the
+token ADVANCED and *"FIRING xasn03"*. `wall_s` counts from a cell's launch, so no cell's wall includes the wait. No model was reached
+during it.
 The smoke pair (§X3) was read as plumbing and is **not** in this table.
 
 ## 2 · THE TABLE (verbatim output; tokens from each cell's own meter)
@@ -91,7 +92,8 @@ landing rate here is 6/6; the refereed pass rate is 3/3 plain and 0/3 salt-diet.
 - **The arm-level contrast is not a finding.** 3/3 against 0/3 at n = 3 on one problem is inside what §X8 forbids reading as an effect.
   The salt-diet cells did something the plain cells were never asked to do (write and prove a Lean TARGET), and failed at that.
 - **CAP REGIME: no memory ceiling on any of the six cells.** The ceiling (ADDENDA 14–15, `AGY_MEM_CAP_MB`) did not exist when they
-  ran. The statement RESULT's cells #2 and #3 of salt-diet run under it; these six are the baseline it is read against.
+  ran, and that is printed as their regime, nothing more. **No contrast between `none` and `statement` is registered or claimed**,
+  and no regime is pooled with another (ADDENDUM 14).
 - **Tokens are not a comparison either:** a salt-diet cell carries a proof attempt, which is the treatment, not overhead to subtract.
 - **Cross-row (Claude versus agy) is not a registered contrast** (§X6 5). The Claude row's `none` pair is on a different cut (4d960d3),
   a different client and a different environment.
