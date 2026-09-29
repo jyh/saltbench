@@ -1,0 +1,39 @@
+# per-cell served models, from served_models_v3.py check-cell --condition opus (one output per cell, run on the run box); the head
+# and sidechain lines are copied as model=count, and the transcript path the tool also prints is left out.
+cell	verdict	head	sidechain
+clbmap01	clean	claude-opus-5=140	claude-opus-5=59
+clbmap02	clean	claude-opus-5=114	claude-opus-5=61 claude-sonnet-5=21
+clbmap03	clean	claude-opus-5=147	claude-opus-5=32 claude-sonnet-5=20
+clbmas01	clean	claude-opus-5=223	claude-opus-5=24 claude-sonnet-5=63
+clbmas02	clean	claude-opus-5=257	claude-opus-5=86
+clbmas03	clean	claude-opus-5=277	claude-opus-5=56
+clbmhp01	clean	claude-opus-5=185	claude-opus-5=51 claude-sonnet-5=27
+clbmhp02	clean	claude-opus-5=126	claude-opus-5=27 claude-sonnet-5=88
+clbmhp03	clean	claude-opus-5=111	claude-opus-5=22 claude-sonnet-5=31
+clbmhs01	clean	claude-opus-5=164	claude-sonnet-5=23
+clbmhs02	clean	claude-opus-5=193	claude-sonnet-5=24
+clbmhs03	clean	claude-opus-5=206	claude-opus-5=7 claude-sonnet-5=37
+clbmrp01	clean	claude-opus-5=264	claude-opus-5=192
+clbmrp02	clean	claude-opus-5=252	claude-opus-5=127
+clbmrp03	clean	claude-opus-5=243	claude-opus-5=128 claude-sonnet-5=91
+clbmrs01	clean	claude-opus-5=275	claude-sonnet-5=31
+clbmrs02	clean	claude-opus-5=296	claude-opus-5=6 claude-sonnet-5=28
+clbmrsr3	clean	claude-opus-5=174	claude-opus-5=413
+clbmvp01	clean	claude-opus-5=123	claude-opus-5=22 claude-sonnet-5=25
+clbmvp02	clean	claude-opus-5=111	claude-opus-5=57
+clbmvp03	clean	claude-opus-5=137	claude-opus-5=33 claude-sonnet-5=19
+clbmvs01	clean	claude-opus-5=200	claude-opus-5=29
+clbmvs02	clean	claude-opus-5=167	claude-opus-5=37
+clbmvs03	clean	claude-opus-5=142	claude-opus-5=27
+clbmxp01	clean	claude-opus-5=148	claude-opus-5=63 claude-sonnet-5=22
+clbmxp02	clean	claude-opus-5=143	claude-opus-5=68
+clbmxp03	clean	claude-opus-5=233	claude-opus-5=70 claude-sonnet-5=31
+clbmxs01	clean	claude-opus-5=242	claude-opus-5=6 claude-sonnet-5=22
+clbmxs02	clean	claude-opus-5=282	claude-opus-5=66
+clbmxs03	clean	claude-opus-5=242	claude-opus-5=23 claude-sonnet-5=19
+clbmyp01	clean	claude-opus-5=221	claude-opus-5=33 claude-sonnet-5=32
+clbmyp02	clean	claude-opus-5=120	claude-opus-5=28 claude-sonnet-5=22
+clbmyp03	clean	claude-opus-5=140	claude-opus-5=62 claude-sonnet-5=35
+clbmys01	clean	claude-opus-5=240	claude-opus-5=22 claude-sonnet-5=42
+clbmys02	clean	claude-opus-5=171	claude-opus-5=41
+clbmys03	clean	claude-opus-5=179	claude-opus-5=10 claude-sonnet-5=24

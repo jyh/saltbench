@@ -1,0 +1,2 @@
+{"test": "(a) thinking vs output", "streams": 332, "steps": 36510, "thinking_gt_output": 0, "thinking_eq_output": 0, "thinking_zero": 36, "max_thinking_over_output": 0.9981, "first_gt": null}
+{"test": "(b) cache_read vs input", "streams": 332, "steps": 36510, "cache_read_gt_input": 34406, "cache_read_eq_input": 0, "cache_read_zero": 1771, "max_cache_read_over_input": 124.5853, "first_gt": ["s3cp01", 1, 5397, 8089]}
