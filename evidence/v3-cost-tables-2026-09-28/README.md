@@ -41,3 +41,16 @@ which is a question about the fold, not yet answered); 60 have NO STREAM (all le
 No Pro request in any stream has a prompt over 200,000 tokens; the largest observed is 144,717. **Limits, beside the figures:** that
 maximum covers observed requests only, so a PARTIAL or NO-STREAM Pro row cannot be put in a tier from this file. The served labels are
 the lane's thinking-level ids, not the price page's ids (ADDENDUM 2 of the price plan). It is a raw extraction, not the registered reading.
+
+## Step b (list rates), tracked: `rates-gemini-2026-09-29.tsv`, derived by `rates-reread.py` from the page text
+Both price pages were fetched by curl at 2026-09-29T03:28Z and their tags stripped: the Gemini API pricing page (257286 B, sha256/16
+`c90575411bc6866b`, which reads "Last updated 2026-09-24 UTC") and the Claude pricing page (820915 B, sha256/16 `36ab2abda5cad48c`). Neither page is
+tracked here; the digests say which bytes were read. Every rate in the TSV is matched out of the page text, each inside its own model's
+Standard block, and a pattern that matches zero or several times refuses by name. **Three facts the registration must carry:** thinking
+tokens are billed as OUTPUT (the page's column header); Pro has a tier on the PROMPT SIZE of each request (200k); Flash's rates are
+dated (valid through 2026-12-31, and every cell ran in 2026). The page's context-caching STORAGE price per hour is not in the TSV,
+because no agy stream records cache-hours. The lane's served labels are not the page's ids, and the TSV states the mapping it assumes.
+**The Claude rows the meter prices with (`claude-opus-5`, `claude-sonnet-5`) AGREE with the Claude page on all five columns**, so
+`rates.tsv`'s 2026-09-05 rows stand at the 2026-09-29 read. **Red drives:** a changed Sonnet cache-read rate in a copy of `rates.tsv`
+gives DISAGREE and rc 1; Flash's output label removed from the page text refuses (this caught an unscoped first pattern that had read a
+later model's row, rc 0); Pro's cache row made single-tier refuses.
