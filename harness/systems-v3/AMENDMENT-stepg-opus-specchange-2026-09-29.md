@@ -1,5 +1,5 @@
 # AMENDMENT — STEP g: SEVEN OPUS SPEC-CHANGE CELLS BRING SIX CONDITIONS FROM n < 3 TO n = 3. FROZEN BEFORE THE FIRST CALL
-## bench (SaltBench lead), 2026-09-29. The Captain, council 2026-09-29, ask 2 (v3 step g), in one word: *"please fire"*. The ask put to
+## bench (SaltBench lead), 2026-09-29. The Captain, council 2026-09-29, ask 2 (v3 step g), as he typed it: *"pleae fire"*. The ask put to
 ## him: *"bring the 10 conditions at n < 3 to n = 3 … This is the ONLY quota spend in v3, about 9 points"* (the helm's council pack for that sitting, ask 2).
 ## ⛔ **UNSIGNED UNTIL A NON-AUTHOR SIGNS IT.** ⛔ **NO CELL FIRES BEFORE §G2's ITEMS ARE DRIVEN AND A RELEASE ADDENDUM NAMES THE EXPORT SHA.**
 ## Signature and release are two acts, as in lane B and block N.
@@ -51,7 +51,8 @@ The census addendum that records those four is its own act, with those records b
 ---
 
 ## §G1 · THE POPULATION — 7 CELLS, SOURCES CHOSEN BY THE REGISTERED RULE BEFORE ANY OF THEM IS SCORED
-The rule is `AMENDMENT-specchange-taskshape-2026-09-09.md:333–348`, applied unchanged: (2) a phase-1 landing is ELIGIBLE iff its own
+The rule is `AMENDMENT-specchange-taskshape-2026-09-09.md:333–348`, applied with steps 2–6 unchanged. What is new is step 1's POPULATION: the rule's step 1 names the twelve LZW landings
+of 2026-09-09, and here it is every candidate below, from three roots. (2) a phase-1 landing is ELIGIBLE iff its own
 base suite passes (the G rung, B3); (3) among an arm's eligible UNUSED landings, the LOWEST CELL ID lexicographically; (4) an arm with no
 eligible landing has its phase 1 fired fresh, and says so; (5) the eligible count per arm is reported; (6) the not-chosen are recorded.
 **The candidate pool is every Opus greenfield × none LANDED phase-1 cell on the run box for the task × arm, not already a phase-2 source**,
