@@ -378,3 +378,7 @@ condition closes at one cell (xass201, CELL-KILLED), and xass202 and xass203 are
 every figure of the condition.
 **Unchanged:** every other condition, both rows, the referee, §X5, §X6 and §X8. The agy row's RESULT files are the hand's (gemini's),
 as the Claude row's are the lead's (#268, #269).
+**ADDENDUM 14, a pooling fact it omitted** (appended 2026-09-29 on a non-author read; the text above is untouched). The asymmetry is
+not only against plain. Inside this one condition, xass201 ran WITHOUT the ceiling and xass202 and xass203 would run WITH it. The
+agy `none · salt-diet` cells also ran without it. So at n = 3 the condition mixes two cap regimes. Its RESULT prints each cell's regime
+beside its class, as ADDENDUM 12's time-order confound is printed, and never pools the cells as if they had one regime.
