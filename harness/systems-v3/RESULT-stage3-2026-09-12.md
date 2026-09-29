@@ -393,3 +393,60 @@ record it amends. I certify nothing measured on the run box.**
 **⇒ SIGNED.** Every cross-reference is real and quoted correctly, every table closes, §④'s hedge and
 these top-ups are the same event four days apart, and the addendum reaches the conclusion that costs its
 author most. **What it owes is a receipt, not a rethink.**
+
+---
+
+# ADDENDUM B — **STEP g: A SCORE RECEIPT FOR THE FOUR TOP-UPS, WITH THREE PUBLISHED CONTROLS RE-SCORED IN THE SAME ACT**
+## gemini (agy runner), 2026-09-29, on bench's ask (bus 2026-09-29 11:02:35). Zero model spend: no cell was fired or written to.
+## **Appended, never edited in.** §①, §② and ADDENDUM 1 above stand unaltered.
+
+## §B1 · WHY THIS EXISTS
+`CELLMAP-descriptive-tables-v2-2026-09-27.tsv` counts a cell only through a score receipt, and its rows 282, 296 and 303 say
+of each top-up *"in no score receipt"*. ADDENDUM 1 §R2 re-drove `s3fpk01`/`s3fpk02` in prose and carried `s3fqk01` and
+`s3ctk01` as *"gemini's readings, not re-driven here"*, and its signer certified nothing measured on the run box. This
+addendum is the tracked receipt: one row per cell in `RESULT-stage3-ADDENDUM-B-cells-2026-09-29.tsv` (sha256/16
+`96c654510137dbb7`), produced by `evidence/stepg-agy-topups-2026-09-29/score-topups.sh` (sha256/16 `91a3349ed4933a93`).
+
+## §B2 · METHOD
+Each cell's `ctl/` and `repo/solution.rs` were fetched READ-ONLY from the run box into a local copy; the referee's own
+`run_tests.sh` was driven over the copy; the meter columns were read exactly as this file's generator `s3-result-tsv.sh`
+(`8c3adb406d2eff44`) reads them. Three columns stage 3 did not carry are added: `served_model` (from each cell's
+`agy-meter-1.json` census), `export_sha` (`ctl/built-from.tsv`) and `client_sha` (the `LAUNCHING` line of `ctl/launch.log`).
+The referee's `run_tests.sh` is hashed before and after every drive and must equal this file's header (FreeList
+`cc555a74d71f2689`, Crc32 `3f1d7e4497d86c0e`); a mismatch rewrites the verdict to `REFEREE-MISMATCH(…)`. **That arm was
+driven red** against a mutated copy of the referee tree: every FreeList row read `REFEREE-MISMATCH`. VERUS is pinned by
+sha from `~/cells/toolchain.env` (declared `7a7b319b…`, the same pin as `evidence/hd-a-freelist-2026-09-17/rescore.tsv`).
+The referee's per-test logs are NOT tracked here, because they name withheld test cases. They are kept on the scoring box.
+
+## §B3 · THE CONTROLS REPRODUCE, EVERY COLUMN
+The expected values were read from `RESULT-stage3-cells-2026-09-12.tsv`, not typed. For each control, **all 16 columns
+that the stage-3 TSV and this receipt share are byte-equal**: verdict, tests, N, trunc, turns, results, wall, caps,
+done_reason, landed, cred_fault, false_done, T, cache_read, output_tok, end marker.
+```
+  role     cell     condition                 verdict  tests  served model          export    client
+  CONTROL  s3fp01   FreeList plain            PASS     7/7    gemini-3.1-pro-high   156fcb9   98724c5370d91a2f
+  CONTROL  s3fq01   FreeList plain+stmt       PASS     7/7    gemini-3.1-pro-high   156fcb9   cabadc15a6194437
+  CONTROL  s3ct02   Crc32 salt-diet+stmt      PASS     6/6    gemini-3.1-pro-high   156fcb9   98724c5370d91a2f
+  TARGET   s3fpk01  FreeList plain            FAIL     6/7    gemini-3.1-pro-high   3f83a69   cabadc15a6194437
+  TARGET   s3fpk02  FreeList plain            FAIL     6/7    gemini-3.1-pro-high   3f83a69   cabadc15a6194437
+  TARGET   s3fqk01  FreeList plain+stmt       PASS     7/7    gemini-3.1-pro-high   3f83a69   cabadc15a6194437
+  TARGET   s3ctk01  Crc32 salt-diet+stmt      PASS     6/6    gemini-3.1-pro-high   3f83a69   cabadc15a6194437
+```
+All seven cells: LANDED, landed=True, trunc 0, cred_fault 0, false_done 0, caps 40 turns / 21,600 s, requested model =
+served model. The four target verdicts equal both earlier readings (gemini 09-13; ADDENDUM 1 §R2), and the client column
+agrees row for row with `evidence/hd-a-freelist-2026-09-17/client-split.tsv`.
+
+## §B4 · ⛔ THE LIMIT THAT RIDES BESIDE ANY n THESE CELLS RAISE (ADDENDUM 1 §R6.5)
+**Every top-up differs from its condition's original cells in export (`156fcb9` → `3f83a69`), and three of the four
+also differ in client.** Measured at each cell's `ctl/launch.log`: FreeList plain `s3fp01` is on `98724c5370d91a2f` and both
+top-ups on `cabadc15a6194437`. Crc32 salt-diet+stmt `s3ct01` and `s3ct02` are both on `98724c5370d91a2f` and `s3ctk01` on
+`cabadc15a6194437`. FreeList plain+stmt `s3fq01`, `s3fq02` and `s3fqk01` are all on `cabadc15a6194437`, so that
+condition differs in export only. A condition carried to n = 3 by a top-up is n = 3 across two exports. This receipt settles what the cells
+SCORE; it does not settle the export axis, and it does not re-open §R5's reading.
+⚠️ **One fact this receipt adds that the census rows do not carry:** the Crc32 salt-diet+stmt condition spans both
+binaries once `s3ctk01` joins it, the same shape as FreeList plain. `s3ct01` is also TRUNCATED (trunc 1 in the stage-3
+TSV), so its PASS stands and its cost figures do not pool.
+
+## §B5 · WHAT THIS ADDENDUM DOES NOT DO
+No fire, no re-fire, no change to any cell. It moves no census figure: moving those three conditions to n = 3 is bench's
+census addendum, with §B4 beside the figure. It pools nothing across problems or fields, and it makes no p-value claim.
