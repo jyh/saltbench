@@ -465,3 +465,9 @@ T read up to the trip and printed as a floor.
 it writes NO-SUBJECT-RAN. It is built red-first on a fixture that trips inside turn 1, the shape none of the ceiling's arms produced.
 This wave's cells are read by this addendum and are never re-fired.
 **Unchanged:** ADDENDA 14 and 15, the ceiling (8,000 MB), cut 6, every other condition, the referee, §X5, §X6 and §X8.
+
+**ERRATUM to ADDENDUM 15** (appended 2026-09-29 by the lead; the text above is untouched). ADDENDUM 15 says xass201's landing commit
+`e689590` (14:56:51 PDT) came "twelve minutes before the kill at 15:08". The lead did not derive that figure. It was copied from a
+message, and it is bound to the wrong anchor. The measured stamps are in the statement RESULT, `RESULT-x86-crc32-agy-statement-2026-09-29.md`
+§1. `LANDING.md` was added in `531b460` at 14:55:07 PDT, and `e689590` came at 14:56:51 PDT. The first TERM of the stop was 15:07:25 PDT.
+So the intervals are 12 min 18 s and 10 min 34 s. No class, reading or release in ADDENDA 15–16 depends on the interval.
