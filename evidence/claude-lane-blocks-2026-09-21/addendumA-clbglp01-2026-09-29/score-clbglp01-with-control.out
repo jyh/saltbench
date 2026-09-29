@@ -1,0 +1,5 @@
+# toolchain env: ~/cells/toolchain.env
+score_claude: tools from ~/bench-dry/clb-score-trees/283362105d75/harness/systems-v3 (export 283362105d75 (EXPORTED-FROM.sha; not a git tree)) · tasks from ~/bench-dry/clb-score-trees/283362105d75/tasks/systems-v3 (export 283362105d75 (EXPORTED-FROM.sha; not a git tree))
+cell	problem	arm	field	extras	run_state	end	suite	tests	failing	V1_bugs_fixed	bugs_introduced	class	retained	w1_fenced	note
+clbglp02	LRU	plain	greenfield	none	ENDED: LANDED	LANDED	PASS	16/16	none	-	-	-	-	-	end read from HEAD
+clbglp01	LRU	plain	greenfield	none	ENDED: LANDED	LANDED	PASS	16/16	none	-	-	-	-	-	end read from HEAD
