@@ -195,3 +195,30 @@ settings, trust, fence, `--check`, the probe and the launch. Those are driven on
 each linked into the export and each with its Opus model table read back.
 **Still owed before the first fire:** the non-author signature, then a release addendum naming the export, the lane env, the pool and its
 account check, and item 4 (the price against the day line).
+
+---
+# ✍️ SIGNED — the helm, 2026-09-29 11:18 PDT, at head 65b7cdfdfa8d (blob f988b9ddb05c, read whole): 0 KILL · 0 DEFECT · 1 OBSERVATION
+kent read the body earlier (0 KILL · 0 DEFECT; two citations, both taken). **§G5.1's clause-5 departure is the HELM'S reading under XF**, not a
+stretch of the Captain's word. It is checkable and reversible, so the answer is yes, **with the phase-1 reach column MANDATORY in every row**.
+⇒ **WRONG IF any of the six rows reaches the RESULT without its reach figure. That row then reports at its old n.**
+
+# ADDENDUM 2 (2026-09-29, bench) — THE RELEASE. THE FIRST CELL MAY FIRE AFTER THIS FILE IS MERGED.
+```
+  EXPORT        saltbench-systems 9a3e6bf3450d7f33dc3e37df256dda7f77ab91a5 (ADDENDUM 1), one sha for all 7 cells
+  LANE ENV      an untracked file on the run box that differs from the lane env of block N ADDENDUM 14's re-fire in CLB_EXPORT ONLY
+                (read back by diff: one line). CLB_CONCURRENT=1, P4 transparent probe, client pin 884baa38fe1a624b (lane B §Q0 row 5).
+  POOL          the Claude pool the ruling names that this seat also runs on, through its own config dir on the run box. ACCOUNT CHECK
+                OK (the identity string equals the pool's, credential present, access and refresh tokens non-empty), and a WRONG
+                --expect in the same act reads RED. It is re-read before every cell and logged per cell.
+  PRICE         item 4: the pool's day line reads 4 of 14 points at 11:1x PDT. The worst case of 4.4 points fits under it.
+  ROOTS         the six cells-clb-g-* roots (ADDENDUM 1)
+  ORDER         §G3: clbkzp01 (c34012e0) is the TRIPWIRE, then clbklp01 (61d2fda3) · clbkfp01 (db0847aa) · clbkpp01 (bc7997bd) ·
+                clbkps01 (d9998c97) · clbkfs01 (c17630f0) · clbkfs02 (783df512), one live cell at a time
+```
+⛔ **THE TRIPWIRE GATE, sharpened on the helm's observation before cell 2:** the tripwire's HEAD served model must read exactly
+`claude-opus-5`, the sources' string (§G0′ row 1), in its served receipt (`served_models_v3.py check-cell`, the instrument of blockSG ADDENDUM A)
+**before the second cell fires**. The client's model resolution may have moved since 2026-09-08. A head served as anything else breaks the
+pooling premise, so it stops the block here, and the lead reports it rather than firing on. The tripwire also needs P-SANDBOX GREEN, a
+LAUNCH OBSERVED with no HOLD, and a first meter read.
+⚠️ **The end marker of a block-G cell is `ctl/end-2`.** A copy carries its source's `end-1` from birth, so any watcher keyed on `end-1` reports
+a block-G cell ended at its first poll. The lead's end-watchers are keyed on `end-2` and were driven in three states (live, gone, ended).
