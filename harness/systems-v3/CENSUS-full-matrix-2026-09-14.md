@@ -1432,3 +1432,28 @@ are outside block N (§N1) and are not counted here. Each enters this section wi
 ## §AF3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
 A DONE is a merged result of record at the n it states (ADDENDUM 25), never a verdict on the arms. The Sonnet column's premiums are all
 UNRESOLVED by registration, and its own §7 says what it cannot carry.
+
+---
+
+# ⚖️ ADDENDUM 28 — **O37 BLOCK NA (the agy lane) IS A RESULT OF RECORD: ALL 24 CONDITIONS DONE. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-09-28, with `RESULT-gemini-blockNA-2026-09-28.md` in the same commit (both models' records), as §NA6 requires.
+
+## §AG1 · THE O37 SECTION, RE-CUT
+```
+  BLOCK N  (Claude lane)   claude-sonnet-5        12 conditions   DONE    (ADDENDUM 27; RESULT-claude-blockNS-2026-09-28.md)
+                           claude-opus-5          12 conditions   OWED    no result of record yet
+  BLOCK NA (agy lane)      gemini-3.1-pro-high    12 conditions   DONE    RESULT-gemini-blockNA-2026-09-28.md §2
+                           gemini-3.8-flash-high  12 conditions   DONE    RESULT-gemini-blockNA-2026-09-28.md §3
+  -------------------------------------------------------------------------------------------------
+  O37 (the 48 conditions the harness can express today)   DONE 36 · OWED 12   = 48
+```
+⚠️ **The 48 are O37's expressible slice, not its population.** O37's own population is 216 conditions, and the other 168 (statement and spec-
+change on these six, and the three problems with no v3 rung) are outside both blocks. Each enters this section with its own block's result.
+
+## §AG2 · WHAT A DONE HERE CARRIES, BESIDE THE FIGURE
+- Every NA condition FIRED 3 cells. Two conditions carry a non-landing inside their n, and their records print it in its own column: Pro AES
+  salt-diet (`naaeps01`, NOT-LANDED, 2 scored of 3) and Flash BinomialHeap salt-diet (`nabhfs03`, a RESULT labelled CUT-BOUND, 2 scored of 3).
+  **A DONE is a merged result of record at the n it states (ADDENDUM 25), and "n = 3" here means three cells fired, not three scored.**
+- `nabhfsr01` is outside every n and every count here (the XF ruling: a re-fire never replaces a RESULT).
+- A DONE is never a verdict on the arms. Both NA records print the arm-correlated deadline cut beside every table, and neither claims the
+  salt method helps or hurts.
