@@ -119,3 +119,23 @@ Lean check inside the cell, the statement hash, and the fence allowlist. 4. The 
    Lean spec, such as the GF(2)[x] remainder (§A3.3's row, real and not trivial); (ii) the named vector check of item 1 plus the non-author
    read of the pairing file, the ceiling available. **Which lemma the pilot's registration owes is the helm's word. It does not block the
    spike act, which spends nothing.**
+
+---
+## ADDENDUM 2 (2026-09-29, bench) — THE HELM'S RE-RULING ON §A3, AND THE SPIKE ACT (§A5, first bullet), DONE AT ZERO MODEL SPEND
+1. **§A3 RE-RULED by the helm on kent's finding (bus 13:31:50). ADDENDUM 1 item 3's "a mechanised equivalence lemma is owed before the pilot"
+   is WITHDRAWN**, because under §A3.1 that lemma is `rfl`. **The head-to-head is carried by reading (ii)**: the named vector check against the
+   Verus reference's outputs, plus the non-author read of the pairing file. **The pilot's registration owes the lemma of reading (i) as its
+   SEPARATE row**: the transcription related to an independent Lean spec, such as the GF(2)[x] remainder. It never counts as the head-to-head.
+2. **THE SPIKE ACT: the emitted CRC-32 Lean TYPECHECKS against Aeneas's library at the pin.** In a checkout of Aeneas at the nightly's commit
+   (`b08bf81f2524`, Lean `v4.31.0`), the mathlib cache was fetched (8,542 files, rc 0) and the nightly's prebuilt library build was installed.
+   The Aeneas output for the CRC-32 reference was then elaborated through the fleet build wrapper, under its one-heavy-job lock:
+```
+  the emitted file, with #print axioms on crc32 and make_table     wrapper EXIT=0 · 7.1 s wall
+  crc32 · make_table depend on axioms                               [propext, Classical.choice, Quot.sound]: Lean's standard three,
+                                                                    no sorryAx, and no axiom of Aeneas's own
+  RED CONTROL: the same file plus one planted type error            wrapper EXIT=1 · "Type mismatch" at the planted line
+```
+   ⇒ **The translation is well-typed Lean at the pin, and it carries no hidden axiom.** Nothing is PROVED about it yet. That is the arm's
+   work, and the pilot measures it.
+3. **What the spike did not do:** no proof, no cell, no harness change, no fence rendering. The mathlib cache (several GB) now sits on the
+   lead's box, not the run box. The run box needs the same toolchain before any cell, and that is in the pilot's registration.
