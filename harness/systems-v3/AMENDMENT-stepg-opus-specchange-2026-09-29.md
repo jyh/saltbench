@@ -143,3 +143,55 @@ all six.
 ## §G9 · DELIVERABLES
 The release addendum (export, stager change, §G2 results, pool) · the 7 cells · a RESULT file with its verify script and cells TSV ·
 a census addendum moving the six to n = 3 · the census addendum for §G0's four, filed beside it.
+
+---
+# ADDENDUM 1 (2026-09-29, bench) — §G2 ITEMS 1–3 DRIVEN. ZERO MODEL SPEND. NO CELL HAS FIRED.
+**Item 2, the P1 baseline (the G rung's `run_tests.sh` on each landing, taskshape B3), every candidate in §G1, local, toolchain from the host's
+pinned file.** Each source's `solution.rs` was read at its own `ctl/end-1` landing sha on the run box. Four candidates already carry a recorded
+figure, and they are the controls: each reproduces it.
+```
+  row                   candidate   G rung    recorded (posthoc TSV / taskshape B4)   role
+  FreeList plain        db0847aa    7/7       —                                        CHOSEN
+                        n301free    7/7       7/7                                      control, not chosen
+  FreeList salt-diet    c17630f0    7/7       —                                        CHOSEN
+                        783df512    7/7       —                                        CHOSEN
+  LRU plain             61d2fda3    16/16     —                                        CHOSEN
+                        n302lru     16/16     16/16                                    control, not chosen
+  LZW plain             c34012e0    8/8       8/8                                      CHOSEN
+                        d91f137b    8/8       8/8                                      not chosen
+  Paxos plain           bc7997bd    17/17     —                                        CHOSEN
+                        n303paxo    17/17     17/17                                    control, not chosen
+  Paxos salt-diet       d9998c97    17/17     —                                        CHOSEN
+```
+⇒ **Every candidate is ELIGIBLE (rule 2), so rule 3's lowest-id pick stands in every row and no substitution is made.** Rule 5's eligible count
+per row is its candidate count: plain rows 2 of 2, FreeList salt-diet 2 of 2, Paxos salt-diet 1 of 1. Runner sha256/16 (G): FreeList
+`cc555a74d71f2689` · LRU `4f2ec741635ee2c5` · LZW `7c6d2cea42891fab` · Paxos `c7e978a28ea85697`, the first two equal to stage 3's referee header.
+⚠️ LZW's `G/run_tests.sh` and `B/run_tests.sh` are byte-identical (`7c6d2cea42891fab`). The runner reads its own directory, so the same bytes
+give the G reading (8/8) on a phase-1 tree and the B reading (15/15 · REGRESSIONS 0/8 · CLAUSE_TESTS 0/7) on a phase-2 tree. The hash names
+the script, and the directory names the rung.
+
+**Item 3, the pooling control: one P1-wave phase-2 cell per task, re-scored with `B/run_tests.sh` at its own `end-2` landing (HEAD, clean).**
+```
+  cell       task      B runner sha16      re-score                                       published
+  188f422b   FreeList  1f93e4ffe9b45996    TESTS 9/9   · REGRESSIONS 0/7  · CLAUSE 0/2    9/9    RESULT-p1-specchange-2026-09-10.tsv
+  3bdcbcbd   LRU       4df6c86e63420d31    TESTS 23/23 · REGRESSIONS 0/16 · CLAUSE 0/7    23/23  the same file
+  60a056e6   Paxos     b154a6f7557b68c1    TESTS 24/24 · REGRESSIONS 0/16 · CLAUSE 0/8    24/24  the same file
+  93323249   LZW       7c6d2cea42891fab    TESTS 15/15 · REGRESSIONS 0/8  · CLAUSE 0/7    15/15  RESULT-specchange-1-2026-09-10.md:74
+```
+(REGRESSIONS and CLAUSE_TESTS print FAILED counts, per taskshape B3's polarity note.) Together with §G0′ row 6 (the B trees are byte-identical
+across the P1 wave's export and this block's), the seven cells are scored by the instrument that scored the cells they pool with.
+
+**Item 1, the stager and the fire script:** saltbench-systems `9a3e6bf` (on 9d87318). Block G, letter `k`, freeze G; the source table is §G1's
+chosen column. `fixtures/clb_blockG_selftest.sh` reads **22/22** on this tree. 9d87318 fails all 12 block-G arms. Mutant (a), a fresh build for
+block G, reddens 9 arms. Mutant (b), phase 2 on the SOURCE path, reddens the arm that requires the copy to carry P1 and the source none.
+Lane-B and block-N dry staging are byte-identical in 7 forms.
+**The export `9a3e6bf`**, cut by `studio_export.sh` onto the run box, has 369 files and 0 withheld-shaped names in the listing and on the host.
+The host's Verus sha equals this box's (`7a7b319b170692d3`), the rust toolchain pin is present, and the cargo registry has 633 = 633 files.
+**Driven on the run box through that export, dry, against a scratch COPY of `db0847aa` under the bench-dry tree:** the stage copied it
+(10 run records moved to `ctl/phase1/`), and the phase-2 fire read the client pin, found no live cell in root or pool, found the run dir
+ready, and DISPATCHED the real FreeList change request onto the copy (tag P1). The source carries no P1. It stopped, as `--dry` does, before
+settings, trust, fence, `--check`, the probe and the launch. Those are driven only by the first real fire, which is §G3's tripwire.
+**The six roots** were created by `clb_stage.sh --roots --freeze G` in a two-lane-quiet window (claude and agy live at that minute: 0 and 0),
+each linked into the export and each with its Opus model table read back.
+**Still owed before the first fire:** the non-author signature, then a release addendum naming the export, the lane env, the pool and its
+account check, and item 4 (the price against the day line).
