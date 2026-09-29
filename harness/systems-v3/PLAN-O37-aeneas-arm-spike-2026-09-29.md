@@ -100,3 +100,22 @@ Lean proof loop is itself unmeasured.
 1. This plan: a non-author read (kent). 2. The spike act (§A5, first bullet): zero spend, the heavy slot, its receipt posted.
 3. A dated registration for the 6-cell pilot, written before its first call, with the harness items built red-first: the Charon → Aeneas →
 Lean check inside the cell, the statement hash, and the fence allowlist. 4. The fire, on his budget line.
+
+---
+## ADDENDUM 1 (2026-09-29, bench) — kent's read (0 KILL · 1 DEFECT · 1 CITATION) and the helm's §A3 answer. §A3's text above is not edited.
+1. **DEFECT TAKEN, §A3.1's vector check NAMES ITS INSTRUMENT NOW.** The Verus side's spec is `open spec fn`, which is GHOST code and never
+   executes, so "both spec definitions are evaluated" had no instrument on one side. The check is: **the Lean transcription, executed, against
+   the Verus REFERENCE's outputs on every hidden test vector.** The reference is Verus-verified to equal its spec for every input, so
+   agreement ties the transcription to the Verus spec through the reference. That is weaker than a proof about the spec text, and it is
+   the ceiling, because no single kernel holds both.
+2. **CITATION TAKEN:** the Verus spec chain is SIX definitions, not five: `gen_poly` · `bit_step` · `bit_steps` · `feed_byte` · `run_from` ·
+   `crc32_spec`. The transcription is of all six.
+3. **THE HELM'S ANSWER (bus 13:30:10), recorded as given:** transcription plus vectors is enough for the SPIKE. A mechanised equivalence lemma
+   is owed before the PILOT fires, and the pilot's RESULT may not call the two arms "the same spec" without it. The fallback if it proves
+   hard: the two specs as distinct rows, never head-to-head.
+4. **kent's finding on that answer (bus 13:30:54), recorded beside it, not ruled here:** under §A3.1 as written, the transcription IS the
+   Lean arm's spec, so a lemma "transcribed spec = Lean spec" closes by `rfl` and certifies nothing about Verus. The fidelity crosses two
+   kernels, and no single theorem in either tool can state it. Two checkable readings: (i) a lemma from the transcription to an INDEPENDENT
+   Lean spec, such as the GF(2)[x] remainder (§A3.3's row, real and not trivial); (ii) the named vector check of item 1 plus the non-author
+   read of the pairing file, the ceiling available. **Which lemma the pilot's registration owes is the helm's word. It does not block the
+   spike act, which spends nothing.**
