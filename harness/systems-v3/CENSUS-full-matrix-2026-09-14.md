@@ -1457,3 +1457,27 @@ change on these six, and the three problems with no v3 rung) are outside both bl
 - `nabhfsr01` is outside every n and every count here (the XF ruling: a re-fire never replaces a RESULT).
 - A DONE is never a verdict on the arms. Both NA records print the arm-correlated deadline cut beside every table, and neither claims the
   salt method helps or hurts.
+
+---
+
+# ⚖️ ADDENDUM 29 — **O37 BLOCK N's OPUS COLUMN IS A RESULT OF RECORD: THE 48 EXPRESSIBLE CONDITIONS ARE ALL DONE. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-09-29, with `RESULT-claude-blockNO-2026-09-28.md` in the same commit (the column's record), as §N9 requires.
+
+## §AH1 · THE O37 SECTION, RE-CUT
+```
+  BLOCK N  (Claude lane)   claude-sonnet-5        12 conditions   DONE    (ADDENDUM 27; RESULT-claude-blockNS-2026-09-28.md)
+                           claude-opus-5          12 conditions   DONE    RESULT-claude-blockNO-2026-09-28.md
+  BLOCK NA (agy lane)      gemini-3.1-pro-high    12 conditions   DONE    (ADDENDUM 28)
+                           gemini-3.8-flash-high  12 conditions   DONE    (ADDENDUM 28)
+  -------------------------------------------------------------------------------------------------
+  O37 (the 48 conditions the harness can express today)   DONE 48 · OWED 0   = 48
+```
+⚠️ **The 48 are O37's expressible slice, not its population** (ADDENDUM 28 §AG1): the other 168 of O37's 216 are outside both blocks.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AH2 · WHAT A DONE HERE CARRIES, BESIDE THE FIGURE
+- Every Opus condition has three scored cells of record. **LinearScan salt-diet's third is a re-fire** (`clbmrsr3`, under block N ADDENDA
+  13–14, on saltbench PR #265): the cell it replaces, `clbmrs03`, lost its credential mid-run and is NOT-SCORED(HARNESS), in no n and no
+  count here. That condition's three cells straddle two pools, declared in its record.
+- A DONE is a merged result of record at the n it states (ADDENDUM 25), never a verdict on the arms. The Opus record's premiums are all
+  UNRESOLVED by registration, and its §7 says what it cannot carry, including any comparison with the other model column.
