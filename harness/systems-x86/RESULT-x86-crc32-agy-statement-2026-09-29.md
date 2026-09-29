@@ -50,8 +50,9 @@ carry host and account paths. A reader reproduces the table by re-running the re
   on its code alone, so these PASSes say nothing about the statement (the lead's ruling of 2026-09-26, as the Claude row carries it).
 - **salt-diet #1, `xass201`, was ended by the operators at 15:08 PDT on 2026-09-26** with the run box at 27.4 of 28.7 GB swap (ADDENDUM 14).
   Its supervisor was stopped (rc 143), so the wave's cells #2 and #3 never started. It wrote no end marker, loop summary or meter, which
-  is why its row reads `MISSING` in every column but `mem_cap_mb` (from its `caps.tsv`: none) and `agreement` (§4). Class: **CELL-KILLED** (level 6 §H6 row 6, not void). Its repo carries commit `e689590`
-  ("landing 1"), with `LANDING.md` committed at 14:55 PDT, 13 minutes before the kill. That fact is printed beside the class, never in
+  is why its row reads `MISSING` in every column but `mem_cap_mb` (from its `caps.tsv`: none) and `agreement` (§4). Class: **CELL-KILLED** (level 6 §H6 row 6, not void). Its repo carries `LANDING.md`, added in
+  commit `531b460` at 14:55:07 PDT, and the landing commit `e689590` ("landing 1") at 14:56:51 PDT. The first TERM of the stop was
+  22:07:25Z = 15:07:25 PDT, so 12 min 18 s after the first and 10 min 34 s after the second. That fact is printed beside the class, never in
   place of it (ADDENDUM 15). Its tokens are UNMEASURED.
 - **salt-diet #2 and #3, `xass301` and `xass302`,** fired from cut 6 under `AGY_MEM_CAP_MB=8000` (ADDENDUM 15), one supervisor, into a
   fresh staged root. Ledger: FIRE 14:57:48Z, CONDITION-CLEAN 15:33:55Z, `a503=0` on both. Each cell's `caps.tsv` carried
@@ -117,7 +118,11 @@ condition's ceiling, the same for all three and never more. xass201's cell itsel
   xass302  CLASS SCREEN · Submission/Proof.lean:34 sorry        PASS    AGREE=82    82/82   1,183 MB            none
 ```
 xass201's agreement and steps are from its `work/agree.out` (`SUMMARY AGREE=82`, `STEPS a+1==b on 82 of 82`), written at 08:44:19 PDT,
-before the kill. **No tests verdict is printed for it**, because the referee wrote none. The stage that ran into the kill is the proof
+before the kill. **No tests verdict is printed for it**, because the referee wrote none.
+⚠️ **A LIMIT OF THIS TABLE'S INSTRUMENT:** the wrapper also carried a 3,600 s wall cap, and that wall counted the time the referee
+spent queued on the fleet lock (xass201's queued behind two other builds for most of its 1,915.9 s). A wall kill would therefore have
+measured the queue, not the submission. **No row here was ended by the wall:** xass201 was killed by MEMORY (`killed mem`, 8,023 MB), and
+xass301/302 finished in 266.3 s and 60.0 s. The stage that ran into the kill is the proof
 stage (a Lean process after both executors), which the referee did not name, since it wrote no out.json.
 ⇒ **All three salt-diet routines agree with the harness's executor on all 82 withheld inputs (tests PASS for the two whose referee wrote
 a tests verdict); none carries a proof the referee accepts.** Two
