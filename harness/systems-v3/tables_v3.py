@@ -22,6 +22,23 @@ TIER = 200000
 COST_COL = {"final_T": ["final_COST"], "p1_T": ["p1_COST"], "p2_T": ["p2_COST"], "T": ["cost", "cost_usd"]}
 
 
+INPUTS = ["cellroots.tsv", "claude-cost-raw.tsv", "claude-wall-raw.tsv", "claude-wall-raw-allroots.tsv", "agy-steps-raw.tsv",
+          "opus-split-raw.tsv", "rates-gemini-2026-09-29.tsv"]
+
+
+def blob(path):
+    return subprocess.run(["git", "hash-object", path], capture_output=True, text=True).stdout.strip()[:12] or "UNHASHED"
+
+
+def repro_cause(f):
+    """ADDENDUM 3 A3.2's two causes, per row, so the limit rides beside the figure; anything else is named UNEXPLAINED."""
+    if f.get("wall_copy_root"):
+        return "A3.1 copy root: the re-run metered the landing's slug (phase 1) only"
+    if "p1_COST" in f.get("usd_src", "") and "p2_COST" in f.get("usd_src", ""):
+        return "SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it"
+    return "UNEXPLAINED"
+
+
 def tsv(path):
     rows = [l.rstrip("\n").split("\t") for l in open(path, encoding="utf-8") if l.strip() and not l.startswith("#")]
     return [dict(zip(rows[0], r)) for r in rows[1:]]
@@ -382,6 +399,8 @@ def selftest():
     ok(summarise(c, "usd") == (2.0, True, ""), "v2's median rule, imported unchanged")
     ok(summarise({"status": "INEXPR", "cells": []}, "usd")[2] == "—" and summarise({"status": "DECLARED", "cells": []}, "usd")[2] == "declared", "marks")
     ok(show((2.0, True, ""), "usd") == "≥ $2.00" and show((61.4, False, ""), "wall") == "61 s", "formatting")
+    ok(repro_cause({"wall_copy_root": "x"}).startswith("A3.1") and repro_cause({"usd_src": "a.p1_COST + b.p2_COST"}).startswith("SC")
+       and repro_cause({"usd_src": "a.final_COST"}) == "UNEXPLAINED", "every reproduction row carries its cause, or UNEXPLAINED")
     print("selftest OK (%d arms)" % n)
     return 0
 
@@ -410,9 +429,13 @@ def main():
     dis = [(k, f) for k, f in repro if abs(f["rerun"] - f["usd"]) >= 0.01 and "cap" not in f.get("usd_src", "")]
     capped = [(k, f) for k, f in prov if f.get("lb_reason") == "CAP-COST"]
     body.append("\n## Rule 1's reproduction (ADDENDUM 2 A2.3): tracked cost of record against the cell_meter re-run\n")
-    body.append("%d cells carry both; %d differ by a cent or more (listed; they do NOT stop the run)." % (len(repro), len(dis)))
-    body.append("\n| cell | tracked (of record) | re-run | difference |\n|---|---|---|---|")
-    body += ["| %s | %.4f | %.4f | %+.4f |" % (f["cell"], f["usd"], f["rerun"], f["rerun"] - f["usd"]) for k, f in dis]
+    unexpl = sum(1 for k, f in dis if repro_cause(f) == "UNEXPLAINED")
+    body.append("%d cells carry both; %d differ by a cent or more (listed; they do NOT stop the run); %d of them have no registered cause." % (
+        len(repro), len(dis), unexpl))
+    body.append("\n| cell | tracked (of record) | re-run | difference | cause (ADDENDUM 3 A3.2) |\n|---|---|---|---|---|")
+    body += ["| %s | %.4f | %.4f | %+.4f | %s |" % (f["cell"], f["usd"], f["rerun"], f["rerun"] - f["usd"], repro_cause(f)) for k, f in dis]
+    if unexpl:
+        fails.append("%d reproduction difference(s) with no registered cause" % unexpl)
     body.append("\n## The CAP-COST cells (A1.3): the cap, the metered dollars and which entered\n")
     body.append("| cell | condition | cap named by its end marker | figure entered | source |\n|---|---|---|---|---|")
     body += ["| %s | %s | %s | %s | %s |" % (f["cell"], "/".join(k), "-" if f.get("cap") is None else "%.2f" % f["cap"],
@@ -426,9 +449,12 @@ def main():
             "unmeasured" if f["wall"] is None else ("≥ " if f["wall_b"] else "") + "%.1f" % f["wall"],
             f["lb_reason"], f.get("usd_src", "-"), f.get("wall_src", "-") + ("; second method: " + ", ".join(f["facts"]) if f.get("facts") else "")))
     hdr = ["# RESULT: THE COMPLETE PILOT MATRIX IN DOLLARS AND WALL TIME (arXiv v3)",
-           "## Printed by `harness/systems-v3/tables_v3.py` at repo head `%s` from `%s` and `%s`. Registered in "
-           "`REGISTRATION-cost-tables-v3-2026-09-29.md` (§V1–§V6, ADDENDA 1–2), committed before this ran." % (
-               head, os.path.relpath(os.path.abspath(a.map), REPO), os.path.relpath(os.path.abspath(a.ev), REPO)), ""]
+           "## Printed by `harness/systems-v3/tables_v3.py` over the working tree at repo head `%s`, from `%s` and `%s`. Registered in "
+           "`REGISTRATION-cost-tables-v3-2026-09-29.md` (§V1–§V6, ADDENDA 1–3), committed before this ran. The instrument and its "
+           "inputs may be newer than that head, so they are named by CONTENT (git blob ids, checkable at any commit with "
+           "`git hash-object <file>`): %s." % (head, os.path.relpath(os.path.abspath(a.map), REPO), os.path.relpath(os.path.abspath(a.ev), REPO),
+               " · ".join("`%s` %s" % (os.path.basename(f), blob(f)) for f in [os.path.abspath(__file__), os.path.abspath(a.map)] +
+                          [os.path.join(a.ev, n) for n in INPUTS])), ""]
     hdr += ["**%s**" % c for c in checks] + ["**Second methods: %d disagreement(s)%s.**" % (len(fails) - sum(1 for f in fails if "CHECK" in f),
             "" if not fails else "; " + "; ".join(fails[:6]))]
     exceeds = sorted({f["cell"] for k, f in prov if "EXCEEDS-METER" in f.get("usd_src", "")})

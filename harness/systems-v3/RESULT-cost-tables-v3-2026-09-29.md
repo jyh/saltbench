@@ -1,5 +1,5 @@
 # RESULT: THE COMPLETE PILOT MATRIX IN DOLLARS AND WALL TIME (arXiv v3)
-## Printed by `harness/systems-v3/tables_v3.py` at repo head `53c1faef1f56` from `harness/systems-v3/CELLMAP-descriptive-tables-v2-2026-09-27.tsv` and `evidence/v3-cost-tables-2026-09-28`. Registered in `REGISTRATION-cost-tables-v3-2026-09-29.md` (§V1–§V6, ADDENDA 1–2), committed before this ran.
+## Printed by `harness/systems-v3/tables_v3.py` over the working tree at repo head `a2d28c036944`, from `harness/systems-v3/CELLMAP-descriptive-tables-v2-2026-09-27.tsv` and `evidence/v3-cost-tables-2026-09-28`. Registered in `REGISTRATION-cost-tables-v3-2026-09-29.md` (§V1–§V6, ADDENDA 1–3), committed before this ran. The instrument and its inputs may be newer than that head, so they are named by CONTENT (git blob ids, checkable at any commit with `git hash-object <file>`): `tables_v3.py` 636d91092996 · `CELLMAP-descriptive-tables-v2-2026-09-27.tsv` 27c8f4ec4bc0 · `cellroots.tsv` 6d37b2c23049 · `claude-cost-raw.tsv` 145040287173 · `claude-wall-raw.tsv` c87c69df47dd · `claude-wall-raw-allroots.tsv` 2ef4a5f77a63 · `agy-steps-raw.tsv` b033e71f9eb0 · `opus-split-raw.tsv` 938dc0af806b · `rates-gemini-2026-09-29.tsv` 78092ada6219.
 
 **$ CHECK numbers 178 + — 16 + declared 3 + unmeasured 3 = 200 (other 0) against 200**
 **W CHECK numbers 181 + — 16 + declared 3 + unmeasured 0 = 200 (other 0) against 200**
@@ -358,56 +358,56 @@
 
 ## Rule 1's reproduction (ADDENDUM 2 A2.3): tracked cost of record against the cell_meter re-run
 
-262 cells carry both; 46 differ by a cent or more (listed; they do NOT stop the run).
+262 cells carry both; 46 differ by a cent or more (listed; they do NOT stop the run); 0 of them have no registered cause.
 
-| cell | tracked (of record) | re-run | difference |
-|---|---|---|---|
-| 2d0c65b3 | 17.7782 | 5.3582 | -12.4200 |
-| 746d7d4e | 19.8949 | 6.2149 | -13.6800 |
-| a87b7740 | 23.1550 | 7.6350 | -15.5200 |
-| 11165871 | 16.4842 | 6.1942 | -10.2900 |
-| 3e95075c | 15.0411 | 7.2111 | -7.8300 |
-| 57a33630 | 17.3184 | 7.6284 | -9.6900 |
-| 188f422b | 23.2072 | 13.0172 | -10.1900 |
-| 9cb8ce96 | 35.6199 | 23.3799 | -12.2400 |
-| f33c7e65 | 50.2241 | 35.4141 | -14.8100 |
-| 3bdcbcbd | 21.1099 | 7.7499 | -13.3600 |
-| 69e8c2c4 | 23.4207 | 9.7307 | -13.6900 |
-| 011fe22f | 23.7683 | 11.1883 | -12.5800 |
-| b71994e3 | 19.9863 | 11.2063 | -8.7800 |
-| d6b53ee4 | 22.3326 | 14.6326 | -7.7000 |
-| 93323249 | 20.1528 | 8.1528 | -12.0000 |
-| 22ee7d33 | 27.3946 | 10.2446 | -17.1500 |
-| 7ac56e4e | 34.8378 | 19.1778 | -15.6600 |
-| 18fb3eed | 48.9775 | 31.6975 | -17.2800 |
-| 6d58f1ec | 41.2416 | 22.5316 | -18.7100 |
-| 60a056e6 | 24.0243 | 9.4943 | -14.5300 |
-| f6462d47 | 36.5631 | 16.7831 | -19.7800 |
-| 9e6c8d4d | 56.2679 | 37.6479 | -18.6200 |
-| b22d1000 | 43.0766 | 23.5166 | -19.5600 |
-| clbccp01 | 2.4900 | 2.6766 | +0.1866 |
-| clbccp02 | 2.0300 | 2.1706 | +0.1406 |
-| clbccp03 | 1.8600 | 1.9992 | +0.1392 |
-| clbccs01 | 10.9500 | 11.1224 | +0.1724 |
-| clbccs02 | 9.1500 | 9.3446 | +0.1946 |
-| clbccs03 | 7.5700 | 7.7512 | +0.1812 |
-| clbcfp01 | 4.7800 | 4.9200 | +0.1400 |
-| clbcfp02 | 6.6600 | 6.8254 | +0.1654 |
-| clbcfp03 | 6.9300 | 7.2164 | +0.2864 |
-| clbclp01 | 2.3000 | 2.4805 | +0.1805 |
-| clbclp02 | 1.5000 | 1.6579 | +0.1579 |
-| clbclp03 | 1.5300 | 1.6932 | +0.1632 |
-| clbcls01 | 10.2900 | 10.5232 | +0.2332 |
-| clbcls02 | 6.7600 | 7.0384 | +0.2784 |
-| clbcls03 | 14.4400 | 14.7180 | +0.2780 |
-| clbcpp01 | 9.9200 | 10.0679 | +0.1479 |
-| clbcpp02 | 7.1300 | 7.3051 | +0.1751 |
-| clbcpp03 | 11.5400 | 11.6891 | +0.1491 |
-| clbczp01 | 5.2800 | 5.4306 | +0.1506 |
-| clbczp02 | 5.0300 | 5.1938 | +0.1638 |
-| clbczp03 | 4.0800 | 4.2397 | +0.1597 |
-| clbczs01 | 24.0300 | 24.2912 | +0.2612 |
-| clbczs02 | 21.7300 | 22.0034 | +0.2734 |
+| cell | tracked (of record) | re-run | difference | cause (ADDENDUM 3 A3.2) |
+|---|---|---|---|---|
+| 2d0c65b3 | 17.7782 | 5.3582 | -12.4200 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 746d7d4e | 19.8949 | 6.2149 | -13.6800 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| a87b7740 | 23.1550 | 7.6350 | -15.5200 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 11165871 | 16.4842 | 6.1942 | -10.2900 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 3e95075c | 15.0411 | 7.2111 | -7.8300 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 57a33630 | 17.3184 | 7.6284 | -9.6900 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 188f422b | 23.2072 | 13.0172 | -10.1900 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 9cb8ce96 | 35.6199 | 23.3799 | -12.2400 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| f33c7e65 | 50.2241 | 35.4141 | -14.8100 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 3bdcbcbd | 21.1099 | 7.7499 | -13.3600 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 69e8c2c4 | 23.4207 | 9.7307 | -13.6900 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 011fe22f | 23.7683 | 11.1883 | -12.5800 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| b71994e3 | 19.9863 | 11.2063 | -8.7800 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| d6b53ee4 | 22.3326 | 14.6326 | -7.7000 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 93323249 | 20.1528 | 8.1528 | -12.0000 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 22ee7d33 | 27.3946 | 10.2446 | -17.1500 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 7ac56e4e | 34.8378 | 19.1778 | -15.6600 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 18fb3eed | 48.9775 | 31.6975 | -17.2800 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 6d58f1ec | 41.2416 | 22.5316 | -18.7100 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 60a056e6 | 24.0243 | 9.4943 | -14.5300 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| f6462d47 | 36.5631 | 16.7831 | -19.7800 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| 9e6c8d4d | 56.2679 | 37.6479 | -18.6200 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| b22d1000 | 43.0766 | 23.5166 | -19.5600 | A3.1 copy root: the re-run metered the landing's slug (phase 1) only |
+| clbccp01 | 2.4900 | 2.6766 | +0.1866 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbccp02 | 2.0300 | 2.1706 | +0.1406 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbccp03 | 1.8600 | 1.9992 | +0.1392 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbccs01 | 10.9500 | 11.1224 | +0.1724 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbccs02 | 9.1500 | 9.3446 | +0.1946 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbccs03 | 7.5700 | 7.7512 | +0.1812 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbcfp01 | 4.7800 | 4.9200 | +0.1400 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbcfp02 | 6.6600 | 6.8254 | +0.1654 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbcfp03 | 6.9300 | 7.2164 | +0.2864 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbclp01 | 2.3000 | 2.4805 | +0.1805 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbclp02 | 1.5000 | 1.6579 | +0.1579 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbclp03 | 1.5300 | 1.6932 | +0.1632 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbcls01 | 10.2900 | 10.5232 | +0.2332 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbcls02 | 6.7600 | 7.0384 | +0.2784 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbcls03 | 14.4400 | 14.7180 | +0.2780 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbcpp01 | 9.9200 | 10.0679 | +0.1479 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbcpp02 | 7.1300 | 7.3051 | +0.1751 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbcpp03 | 11.5400 | 11.6891 | +0.1491 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbczp01 | 5.2800 | 5.4306 | +0.1506 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbczp02 | 5.0300 | 5.1938 | +0.1638 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbczp03 | 4.0800 | 4.2397 | +0.1597 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbczs01 | 24.0300 | 24.2912 | +0.2612 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
+| clbczs02 | 21.7300 | 22.0034 | +0.2734 | SC probe-separated: the tracked phases exclude the sandbox probe; the re-run includes it |
 
 ## The CAP-COST cells (A1.3): the cap, the metered dollars and which entered
 
