@@ -133,3 +133,24 @@ computed; the facts below are per-cell properties of the inputs.
 - **A2.5 · Wall `≥` by timing errs toward the floor.** Marking a cell `≥` because its wall came within one turn timeout of the cap can
   mark a TRUE figure as a floor, never the reverse. The result says so beside the mark. None of this population's cells carries the
   `wait_bound` field (it was built on 2026-09-28, after every cell here ran), so no second method exists for this mark here.
+
+---
+
+## ⚖️ ADDENDUM 3 — A DRY RUN TO SCRATCH FOUND ONE RULE MISSING AND EXPLAINED THE REPRODUCTION'S GAPS. APPENDED; everything above untouched.
+**What was run and what was read, exactly.** The instrument ran once to a scratch file outside the repo. Read from it: the two checks'
+counts, the reason each unmeasured cell gave, and the reproduction's list of differing cells. **No table cell, median or ratio was
+read.** The checks then read: dollars 178 numbers + 16 — + 3 declared + 3 unmeasured = 200; wall 171 + 16 + 3 + 10 = 200.
+- **A3.1 · A spec-change cell whose phase 2 ran in a COPY is read from the copy.** The ten wall conditions came from 23 Opus
+  spec-change cells whose phase 1 is the reused matrix-1 landing: the cell id resolves (step a) to the landing's root, while phase 2
+  ran in a copy of that cell under another root (`cells-specchange-2`), which also holds the INHERITED phase-1 end marker (the
+  reuse-by-copy rule in this repository's instructions). **Rule:** where the cell's own root holds phase 1 only, its wall is read from
+  the ONE other root, listed in `cellroots-inventory.tsv`, that holds both phases, and only if that root's phase-1 row equals the own
+  root's phase-1 row (wall, held time and end kind: the copy check). Zero or several such roots leave it `unmeasured`.
+  `claude-wall-raw-allroots.tsv` is the step-d extraction over every CLAUDE (cell, root) pair in the inventory (315 phase rows).
+  After the rule, the wall check reads 181 + 16 + 3 + 0 = 200; the six cells still unmeasured sit in DECLARED conditions.
+- **A3.2 · Every reproduction difference has one of two causes, both shown at the object.** 46 of 262 cell rows differ by a cent or more,
+  all spec-change cells. (a) 23 are block SC cells: their tracked figure is `p1_COST + p2_COST`, which the SC file separates from the
+  harness's sandbox probe, exactly as v2 read their `T` (v2's cell map: "per-phase harvest T (probe separated)"); the re-run meters the
+  whole slug, probe included, and equals the file's own cumulative `cell_COST_at_end2` to the cent in 22 of 24 SC cells (the other two
+  record `end2_scope = phase-2-only`). (b) 23 are the A3.1 cells: the re-run metered the landing's slug, which holds phase 1 only.
+  **Neither is an error in a figure of record,** so, by A2.3, the tracked figures stand and the differences are printed.
