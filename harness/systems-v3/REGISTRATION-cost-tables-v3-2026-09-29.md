@@ -87,3 +87,23 @@ on the arms; dollars are list-price models, not invoices, one schedule per vendo
   makes a ratio an UNDERSTATEMENT.
 - Wall time depends on what else the box was doing, and on the vendor's service at that hour. It is a description of these runs.
 - n = 3 per condition (n < 3 for ten). A median of three is one cell's figure.
+
+---
+
+## ⚖️ ADDENDUM 1 — THREE DEFINITIONS THE EXTRACTIONS REQUIRE, FIXED BEFORE THE INSTRUMENT RUNS. APPENDED; §V1–§V6 untouched.
+Building the instrument's inputs found three things §V2–§V3 did not settle. No median, ratio or per-condition figure has been
+computed; the facts below are per-cell properties of the inputs.
+- **A1.1 · Level 8's phase 1 is read from where level 8 put it.** §V2 names level 8 phase 1 as a phase with no turn-loop file. That was
+  a reading of the cell's own `ctl/` only. Level 8 set each finished phase ASIDE before the next ran, and its tracked `phase_facts.json`
+  names the path (`<root>/_aside/<cell>/phase1/ctl/`). The stream and the turn loop are read there; the meter file stays the cell's
+  own. With it, every one of the 332 agy phase rows has a stream: 321 COMPLETE · 8 EXCEEDS-METER · 3 PARTIAL (Pro: 154 · 7 · 3).
+  **Second method for those 60 walls:** `phase_facts.json`'s `wall_seconds` must equal the turn loop's to 0.1 s, or the run exits non-zero.
+- **A1.2 · The Claude extraction covers every Claude cell, and it carries each cell's own caps.** `claude-cost-raw.tsv`: cell_meter
+  over all 245 Claude cells (two cells ran their phases under two config dirs and are summed), with `C1_USD`/`C2_USD` read from each
+  cell's own `ctl/budgets.env` (37.21 / 18.60 in all 245).
+- **A1.3 · WHAT "ENTERS AT THE CAP" MEANS WHEN THE METER RAN PAST IT.** Lane B rule 6 says a capped cell's cost enters at the cap. Two
+  facts of record make that literal reading print a figure BELOW money the cell had already spent: the watcher prints an overrun and
+  never clips it, and **the phase-2 cap is CUMULATIVE** (the SC block's result: `clbczs01` was cut 32 cents into phase 2 at 24.29 of
+  18.60, `clbczs02` likewise). So a CAP-COST cell's dollar figure is **the larger of its metered COST and the cap its end marker names,
+  marked `≥`**. This departs from the literal rule in the upward direction only, and only by spend the meter recorded; every such figure
+  is a floor either way. The result file prints, per capped cell, the cap, the metered COST and which one entered.
