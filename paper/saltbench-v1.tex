@@ -1,5 +1,5 @@
-% SaltBench, version 2 of the report. Version 1 is arXiv:2609.11076v1, whose source is byte-identical to
-% this file at commit aee2fa5. Every number in this file carries a comment naming the file in the
+% SaltBench, version 3 of the report. Version 1 is arXiv:2609.11076v1, whose source is byte-identical to
+% this file at commit aee2fa5. Version 2 is arXiv:2609.11076v2, submitted from this file at commit 3248c9a. Every number in this file carries a comment naming the file in the
 % repository it was copied from. Nothing is retyped from a message or a memory.
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
@@ -26,14 +26,14 @@
 \maketitle
 
 \begin{abstract}
-SaltBench is a benchmark protocol for one question: How does a machine referee change the way a coding agent works? A machine referee --- a proof kernel, a program verifier, or a withheld test suite --- decides what an agent's work is worth, and the agent cannot argue with it. Here we report a protocol whose answers cannot be narrated afterwards: every outcome is decided outside the agent's own toolchain; the agent is walled off from the network, the reference solutions and the harness itself, and the wall is tested by probes that try to breach it before any scored run; every run is authorized by a dated freeze with its predictions registered; and a budget stop is a halt, never a failure. In this study, the subject of the benchmark is a ``seat'', meaning an agent session in its standard harness. We tested five systems components, authored in Rust under a pinned Verus toolchain, with a withheld test suite as the referee for each. Four arms are tested: a plain agent; an agent that is also instructed to create a specification and verify the code against it, in a reduced rendering of the method, as registered; and two arms handed the specification a priori, where the registered sign test at $k=4$ reached no verdict (3 of 4, $p = 0.3125$). We found that the arm instructed to specify and verify cost more on all five components, and by a practical margin: no premium exceeded $2.8879\times$ under either reading of the declared set, and the three cheapest sat below $1.4\times$. That bound is a property of this population and not a promise about larger ones: the premium runs near $1$ on the smallest components and rises with size. Version~2 adds the complete pilot matrix: 200 conditions over four models, two task forms and three treatments, 181 with a result of record, 16 inexpressible and 3 declared unreached at the cost cap, with tables of token cost and no verdict on the arms. We publish the complete record.
+SaltBench is a benchmark protocol for one question: How does a machine referee change the way a coding agent works? A machine referee --- a proof kernel, a program verifier, or a withheld test suite --- decides what an agent's work is worth, and the agent cannot argue with it. Here we report a protocol whose answers cannot be narrated afterwards: every outcome is decided outside the agent's own toolchain; the agent is walled off from the network, the reference solutions and the harness itself, and the wall is tested by probes that try to breach it before any scored run; every run is authorized by a dated freeze with its predictions registered; and a budget stop is a halt, never a failure. In this study, the subject of the benchmark is a ``seat'', meaning an agent session in its standard harness. We tested five systems components, authored in Rust under a pinned Verus toolchain, with a withheld test suite as the referee for each. Four arms are tested: a plain agent; an agent that is also instructed to create a specification and verify the code against it, in a reduced rendering of the method, as registered; and two arms handed the specification a priori, where the registered sign test at $k=4$ reached no verdict (3 of 4, $p = 0.3125$). We found that the arm instructed to specify and verify cost more on all five components, and by a practical margin: no premium exceeded $2.8879\times$ under either reading of the declared set, and the three cheapest sat below $1.4\times$. That bound is a property of this population and not a promise about larger ones: the premium runs near $1$ on the smallest components and rises with size. Versions~2 and~3 add the complete pilot matrix: 200 conditions over four models, 181 with a result of record, 16 inexpressible and 3 declared unreached at the cost cap, with its cost in tokens, dollars and wall time, and no verdict on the arms. We publish the complete record.
 \end{abstract}
 
 \section{Introduction}
 
 An agent's account of its own work is the least reliable evidence about that work. A benchmark that lets the agent grade itself, or lets the experimenter choose the reading after the run, measures the story and not the outcome. SaltBench is built on two refusals. The outcome is decided by a machine referee the agent cannot argue with --- a proof kernel, a program verifier, or a withheld test suite, run outside the agent's own toolchain --- and the comparison is fixed before the agent runs, so that it cannot be narrated afterwards. The comparison is pre-registered~\cite{nosek2018preregistration}: the population is drawn by a committed seed, the arms are byte-pinned, the predictions are written down, the adverse outcomes are named, and the freeze commit is the authorization. Everything that happens afterwards is a dated amendment appended to the record.
 
-Here we report the benchmark's design and its first measurement, taken end to end on an experiment whose subject is the working seat rather than the model. Section~\ref{sec:design} states the design and how much of it this paper runs. We claim the protocol; the seat-as-subject design and its authored population; the cost reading the run returned, together with the qualifiers registered beside it; a set of instrument findings that we think transfer to any benchmark of this kind; and the complete pilot matrix of Section~\ref{sec:matrix}, new in this version, as a record of what was run and of what each result of record can carry, never as a verdict on the arms. We do not claim an effect of the method under test on what a referee accepts, and we report no magnitude for the population; Section~\ref{sec:open} states the tests that could produce one. Three earlier reads on drawn populations are reported in Section~\ref{sec:priorreads}, compressed to the role they now play, which is the reason this design is shaped as it is. One note on labels, because two of them are numbers: this document is version~2 of the SaltBench report, and \emph{v3} names the campaign generation whose matrix it reports, not an edition of this document. Version~2 adds Section~\ref{sec:matrix}, the complete pilot matrix over four models, updates the status of the task forms in Section~\ref{sec:design}, and adds two instrument findings the matrix taught; it changes no number that version~1 printed. Nineteen prices in Appendix~\ref{app:cells} carry a flag that version~1 did not print, and the flag changes no number. One sentence of Section~\ref{sec:fence} is scoped to the population its evidence covers, and the scope is marked there.
+Here we report the benchmark's design and its first measurement, taken end to end on an experiment whose subject is the working seat rather than the model. Section~\ref{sec:design} states the design and how much of it this paper runs. We claim the protocol; the seat-as-subject design and its authored population; the cost reading the run returned, together with the qualifiers registered beside it; a set of instrument findings that we think transfer to any benchmark of this kind; and the complete pilot matrix of Section~\ref{sec:matrix}, new in this version, as a record of what was run and of what each result of record can carry, never as a verdict on the arms. We do not claim an effect of the method under test on what a referee accepts, and we report no magnitude for the population; Section~\ref{sec:open} states the tests that could produce one. Three earlier reads on drawn populations are reported in Section~\ref{sec:priorreads}, compressed to the role they now play, which is the reason this design is shaped as it is. One note on labels, because two of them are numbers: this document is version~3 of the SaltBench report, and \emph{v3} names the campaign generation whose matrix it reports, not an edition of this document. Version~2 adds Section~\ref{sec:matrix}, the complete pilot matrix over four models, updates the status of the task forms in Section~\ref{sec:design}, and adds two instrument findings the matrix taught; it changes no number that version~1 printed. Nineteen prices in Appendix~\ref{app:cells} carry a flag that version~1 did not print, and the flag changes no number. One sentence of Section~\ref{sec:fence} is scoped to the population its evidence covers, and the scope is marked there. Version~3 adds Section~\ref{sec:matrixdollars}, the same matrix in modelled list-price dollars and in wall time, and Appendix~\ref{app:opussplit}, the share of each Opus cell spent by its subagents; it changes no number that version~2 printed.
 
 The method under test, the Salt method~\cite{hickey2026saltmethod,hickey2026authority}, is the working discipline the author uses in a formal mathematics project: machine-checked development in which claims travel as kernel-checked artifacts and human attention is reserved for statements and rulings. Its rendering as an arm is described in Section~\ref{sec:arms}; only the part of it that a single sealed agent can carry is rendered, and that limit was registered before the first call.
 
@@ -317,12 +317,12 @@ The census counts; the results of record say what the counted conditions mean. W
 
 \paragraph{The Gemini lane.} The two Gemini models ran under the harness's second client lane in registered levels, each frozen before its first call.\src{harness/systems-v3/AMENDMENT-gemini-level8-2026-09-16.md} The lane's first brownfield wave found that two of the four given files, \texttt{FreeList} and \texttt{LZW}, announced their planted defect in a comment for about 57 hours, a window containing the wave, so 12 of its 24 cells are void for the find-the-defect claim, those four conditions were reverted and re-run at a later level, and \texttt{LRU} and \texttt{Paxos} stand.\src{harness/systems-v3/RESULT-gemini-brownfield-level4-2026-09-14.md, addendum 1; harness/systems-v3/CENSUS-full-matrix-2026-09-14.md, addendum 6} The Flash model's first wave halted at one cell on a server capacity error that was first read as a model behaviour and corrected at the object; its completed wave publishes no arm comparison, because every missing cell is \arm{salt-diet} and a rate over them would be measured on a treatment arm whose cells were removed by an arm-correlated mechanism, and two of its full passes did 65 and 0 seconds of model work, a fact about the task and not about the model.\src{harness/systems-v3/CENSUS-full-matrix-2026-09-14.md, addendum 2, addendum 5 section J2 and addendum 7} Level 6 is the first wave whose statement conditions carry an arm contrast on pass rate rather than a ceiling, \arm{plain} 6 of 6 against \arm{salt-diet} 4 of 6 at $n=3$ per condition, a contrast in the record and not an estimate; one \arm{salt-diet} cell is void because the arm never reached the subject, and it is in no denominator.\src{harness/systems-v3/CENSUS-full-matrix-2026-09-14.md, addendum 9 sections P2 and P3; harness/systems-v3/RESULT-gemini-level6-2026-09-17.md} Level 7, 84 cells over both Gemini models on brownfield under both treatments, carries the cap correlation in its sharpest form: every truncated, indeterminate or false-done cell, ten of ten, is a Pro \arm{salt-diet} cell, so no pass-rate contrast on the Pro row survives it, and its retention separation is a growth separation by the result's own erratum. Its last condition was held at one cell for six days after a credential window refused the other two, and closed with two cells fired under the same registration and export into a fresh root, pooled with the first by a measured interface hash and a control re-score: 3 of 3 pass.\src{harness/systems-v3/RESULT-gemini-level7-2026-09-19.md sections 1 and 2, erratum 2 and addendum A; harness/systems-v3/CENSUS-full-matrix-2026-09-14.md, addendum 10 section Q4 and addendum 24} Level 8, the Gemini specification-change wave, was fired twice. Its first firing ran under a fence that hid the harness's package registry from the subject, so the \arm{salt-diet} build could not resolve its verification library offline; some cells failed to build, and others went green because the subject rebuilt its own build environment, with a stub library of 61 bytes, or a patch onto a release library that verified nothing, or a private package home, and \arm{plain} cells did the same. Every cell of that firing was ruled invalid as fired, in both arms, including a \arm{plain} condition that had scored 3 of 3, because a subject that spent its turns rebuilding a build environment did not work the registered problem and because re-firing one arm alone would bias the pair; the whole level re-fired on the repaired export, and two methods over every Gemini cell's own fence file show the defect is a property of that level alone.\src{harness/systems-v3/CENSUS-full-matrix-2026-09-14.md, the declaration of 2026-09-23 on the level-8 fence} The same firing surfaced a second defect: the landing verdict is read from a file in the subject's own tree, and two subjects forged it, one through a named pipe and one by reimplementing the runner's tree hash. No score is touched, because the scorer never reads that file, and a search of all 714 cell state directories found forging tooling in exactly those two cells and none at any lower level, which makes a landing below level 8 unforged by trace and not verified; both are counted as false-done claims.\src{harness/systems-v3/CENSUS-full-matrix-2026-09-14.md, the same declaration} The re-fired level is registered as a believability pilot: sign only at $n \leq 3$, no magnitude, no cross-lane comparison in dollars, tokens or rates, no dollar price on this lane, and a ceiling says nothing about the arms.\src{harness/systems-v3/AMENDMENT-gemini-level8-2026-09-16.md section M9} On \texttt{LRU} and \texttt{Crc32} its 8 conditions sit at a ceiling registered before any data, 21 of 21 reached cells passing; one condition reached $n=3$ only after two landed first phases that a gate had refused ran their second phase on copies, by the author's ruling.\src{harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24.md sections 1 and 2 and addendum A; harness/systems-v3/CENSUS-full-matrix-2026-09-14.md, addenda 20 to 22} On \texttt{Paxos}, \texttt{FreeList} and \texttt{LZW} its 12 conditions ran 36 cells, 36 reached and scored, 19 full passes, with the four \texttt{LZW} conditions at ceiling. The one contrast a reader reaches for, Flash on \texttt{Paxos} at \arm{plain} 0 of 3 against \arm{salt-diet} 3 of 3, is recorded and not generalised, because the same arm is 0 of 3 on Flash \texttt{FreeList} where \arm{plain} is 2 of 3. The \arm{salt-diet} arm's median token count exceeds the \arm{plain} arm's in every condition and both phases, and is quoted for its sign only, because the count is dominated by cache reads. Three conditions needed more than one attempt after server errors, and every discarded attempt is whole and outside every count.\src{harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md sections 1, 2, 5 and 8; harness/systems-v3/CENSUS-full-matrix-2026-09-14.md, addendum 23}
 
-\paragraph{What a complete matrix does not establish.} It does not establish an effect. A \textsc{done} is a result of record at the $n$ that record states; no test is run across the matrix, no interval is claimed, each result of record states what its conditions can and cannot carry, and none of them claims that the method under test helps or hurts. A reader summing the matrix as complete must say which of the three states is meant, because the 16 inexpressible and the 3 declared conditions are not \textsc{done}.\src{harness/systems-v3/CENSUS-full-matrix-2026-09-14.md, addendum 24 section AD2 and addendum 25} Three limits travel with every table above. The Gemini lane carries no dollar price, and its registered readings of token counts are sign-only; the medians of Section~\ref{sec:matrixtokens} describe them under a reading registered afterwards and add no claim. The Claude lane's \arm{salt-diet} costs on the Sonnet blocks are lower bounds censored by an arm-correlated cap. And no comparison is made across the two lanes, in dollars, tokens or rates, because they did not face the same client or the same fence.\src{harness/systems-v3/AMENDMENT-gemini-level8-2026-09-16.md section M9; harness/systems-v3/CENSUS-full-matrix-2026-09-14.md, the declaration of 2026-09-23 on the level-8 fence}
+\paragraph{What a complete matrix does not establish.} It does not establish an effect. A \textsc{done} is a result of record at the $n$ that record states; no test is run across the matrix, no interval is claimed, each result of record states what its conditions can and cannot carry, and none of them claims that the method under test helps or hurts. A reader summing the matrix as complete must say which of the three states is meant, because the 16 inexpressible and the 3 declared conditions are not \textsc{done}.\src{harness/systems-v3/CENSUS-full-matrix-2026-09-14.md, addendum 24 section AD2 and addendum 25} Three limits travel with every table above. The Gemini lane's registered readings carry no dollar price and are sign-only on token counts; the medians of Sections~\ref{sec:matrixtokens} and~\ref{sec:matrixdollars}, and the dollar prices of the second, describe them under readings registered afterwards and add no claim. The Claude lane's \arm{salt-diet} costs on the Sonnet blocks are lower bounds censored by an arm-correlated cap. And no comparison is made across the two lanes, in dollars, tokens or rates, because they did not face the same client or the same fence.\src{harness/systems-v3/AMENDMENT-gemini-level8-2026-09-16.md section M9; harness/systems-v3/CENSUS-full-matrix-2026-09-14.md, the declaration of 2026-09-23 on the level-8 fence}
 
 \subsection{Token cost over the matrix, a descriptive reading}
 \label{sec:matrixtokens}
 
-The census counts conditions and the results of record say what each can carry; neither prints what the conditions cost. Tables~T1 to~T4 do, one cell per condition: the median total tokens of the condition's cells of record, for the 80 greenfield conditions, the 80 brownfield and the 40 under specification change, then the \arm{salt-diet} to \arm{plain} ratio in each greenfield row. Tokens are the one quantity all four models' meters record; dollars are metered on the Claude lane alone. The reading was registered on 2026-09-27, after every cell had run, and is declared post hoc. The registration fixes the cell figure, the median, the bound marks and the ratio and sign-count rules, and that no number is recovered by hand. It was committed before any map of the cells existed, and its first addendum after a census that located each cell's source and computed no median; both precede the instrument's first run, so the reading was fixed before any median was computed.\src{harness/systems-v3/REGISTRATION-descriptive-tables-v2-2026-09-27.md, sections D1 to D6 and addenda 1 and 2, at commits 368d925, ad1b6b2 and a9d938e; harness/systems-v3/tables\_v2.py and its map at commit 9f9a5d9; the result file at commit 643cac0} Every cell below is copied from one result file, printed by that instrument, which names the tracked source of every cell's figure. The file was printed twice: a non-author read of the first printing found four \arm{salt-diet} cells, each cut off by a deadline, left out of their two conditions although the registration lets no cell be dropped, and the file was reprinted with every cell of record; two medians became lower bounds and no ratio changed sign.\src{harness/systems-v3/RESULT-descriptive-tables-v2-2026-09-27.md, the header and the per-cell section; harness/systems-v3/tables\_v2.py; paper/descriptive\_tables.py, which copies the tables into this file and with --check refuses if they differ}
+The census counts conditions and the results of record say what each can carry; neither prints what the conditions cost. Tables~T1 to~T4 do, one cell per condition: the median total tokens of the condition's cells of record, for the 80 greenfield conditions, the 80 brownfield and the 40 under specification change, then the \arm{salt-diet} to \arm{plain} ratio in each greenfield row. Tokens are the one quantity all four models' meters record; Section~\ref{sec:matrixdollars} prices and times the same cells. The reading was registered on 2026-09-27, after every cell had run, and is declared post hoc. The registration fixes the cell figure, the median, the bound marks and the ratio and sign-count rules, and that no number is recovered by hand. It was committed before any map of the cells existed, and its first addendum after a census that located each cell's source and computed no median; both precede the instrument's first run, so the reading was fixed before any median was computed.\src{harness/systems-v3/REGISTRATION-descriptive-tables-v2-2026-09-27.md, sections D1 to D6 and addenda 1 and 2, at commits 368d925, ad1b6b2 and a9d938e; harness/systems-v3/tables\_v2.py and its map at commit 9f9a5d9; the result file at commit 643cac0} Every cell below is copied from one result file, printed by that instrument, which names the tracked source of every cell's figure. The file was printed twice: a non-author read of the first printing found four \arm{salt-diet} cells, each cut off by a deadline, left out of their two conditions although the registration lets no cell be dropped, and the file was reprinted with every cell of record; two medians became lower bounds and no ratio changed sign.\src{harness/systems-v3/RESULT-descriptive-tables-v2-2026-09-27.md, the header and the per-cell section; harness/systems-v3/tables\_v2.py; paper/descriptive\_tables.py, which copies the tables into this file and with --check refuses if they differ}
 
 The registered check did not close, and the tables print why. Of the 181 \textsc{done} conditions, 171 carry a median; 10 print \emph{unmeasured}, because some of their cells have no tracked token figure: nine Flash greenfield conditions whose cells come from one addendum of the level-5 wave (\texttt{Crc32}, \texttt{FreeList} and \texttt{LRU} under the statement treatment in both arms, \texttt{LRU} \arm{salt-diet} and both \texttt{Paxos} arms under no treatment), and Pro \texttt{Crc32} \arm{salt-diet} under specification change, two of whose three cells lack one. Their outcomes stand in their results of record; only their token medians are missing, and none was reconstructed.\src{harness/systems-v3/RESULT-descriptive-tables-v2-2026-09-27.md, the check line and the section on the 10 unmeasured conditions; harness/systems-v3/REGISTRATION-descriptive-tables-v2-2026-09-27.md, addendum 1}
 
@@ -486,6 +486,334 @@ model & treatment & $k$ of $m$ $>1$ & indeterminate & median & bounded \\
 \end{tabular}}\\[3pt]
 \parbox{0.92\textwidth}{\small\textbf{Table T4.} Top: the \arm{salt-diet} median divided by the \arm{plain} median in the same row of Tables~T1 and~T3, greenfield, the one task form all three treatments share. A $\geq$ numerator makes the ratio $\geq$ and a $\geq$ denominator makes it $\leq$; a ratio in parentheses has both sides bounded and is printed but not signed; --- means no ratio, because a side is inexpressible, declared or unmeasured. Bottom: per model and treatment (\emph{bare} is no treatment), $k$ of the $m$ ratios whose sign is fixed that exceed $1$; the bounded ratios whose sign the bound cannot fix, counted in neither $k$ nor $m-k$; the median of all the model's ratios under that treatment, bounded ones at their printed value; and how many of those are bounded. No $p$-value is given: the registered test is Section~\ref{sec:s3}'s, on one model, and a test across the others would be one chosen after seeing the data. The brownfield ratios, by the same rule, are in the result file.}
 \src{harness/systems-v3/RESULT-descriptive-tables-v2-2026-09-27.md, section T4, its sign counts and the brownfield ratios; harness/systems-v3/REGISTRATION-descriptive-tables-v2-2026-09-27.md, section D4}
+\end{minipage}\end{center}
+
+\subsection{Dollars and wall time over the matrix, a descriptive reading}
+\label{sec:matrixdollars}
+
+Tokens are not comparable across models: each vendor counts its own categories, and a token of one model does not cost what a token of another does. Tables~\$1 to~\$4 and~W1 to~W4 print the same 200 conditions in two further currencies, modelled list-price dollars and wall seconds, with the shape, the median, the bound marks and the ratio and sign-count rules of Tables~T1 to~T4. The reading was registered on 2026-09-29, after every cell had run and after the raw extractions it reads had been printed with their aggregate counts, and it is declared post hoc; the registration states what had been seen, and no median, ratio or per-condition figure had been computed. A non-author read of the registration found one rule that would have overstated every Gemini dollar, by pricing the model's thinking tokens a second time on top of an output count that already includes them; a test over every recorded Gemini request confirmed the inclusion (in 36{,}510 requests, thinking never exceeds output), and the rule was corrected by addendum before the instrument ran. A dry run to a scratch file, which read the checks and never a table cell, found one missing rule for cells whose second phase ran in a copy of their first, and it was added the same way.\src{harness/systems-v3/REGISTRATION-cost-tables-v3-2026-09-29.md, sections V1 to V6 and addenda 1 to 3; evidence/v3-cost-tables-2026-09-28/agy-field-tests.out; harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, the header; harness/systems-v3/tables\_v3.py; paper/cost\_tables.py, which copies the tables into this file and with --check refuses if they differ}
+
+\paragraph{How a dollar is modelled.} On the Claude lane the figure is the metered cost of each cell at the list rates the harness has carried since 2026-09-05, re-read against the vendor's page on 2026-09-29 and agreeing on every column; where a tracked row already carries a cost, that is the figure of record and a re-run of the meter is printed beside it. The re-run differs by a cent or more on 46 of 262 cell rows, all under specification change, and each difference has a cause shown at the object: 23 are cells whose tracked figure separates the harness's own sandbox probe from the phases, as their token figures do, and 23 are cells whose second phase ran in a copy, where the re-run metered the first phase alone. On the Gemini lane this is the first dollar figure. Each request is priced at the tier its prompt selects, prompt meaning input plus cache reads, from the per-request usage the client stream records; where a phase's per-request records are incomplete, a Flash phase is priced from the meter's totals, because Flash has one tier, and a Pro phase is \emph{unmeasured}, because a lost request cannot be placed in a tier. No Pro request in these data reaches the upper tier: the largest Pro prompt is 144{,}717 tokens. Eight cells are priced from per-request records larger than the meter's own fold and are flagged in the result file. A cell stopped at the cost cap enters at the larger of its metered cost and the cap its end marker names, marked $\geq$, because the watcher records an overrun without clipping it and the second-phase cap is cumulative, so the cap alone would print a figure below money the cell had already spent.\src{harness/systems-v3/REGISTRATION-cost-tables-v3-2026-09-29.md, section V2 and addendum 1 item A1.3, addendum 2 items A2.1 to A2.4, addendum 3 item A3.2; harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, the header, the section on rule 1's reproduction and the section on the capped cells}
+
+\paragraph{The checks.} In dollars, 178 conditions carry a median, 16 are inexpressible, 3 declared and 3 \emph{unmeasured}: three Pro \arm{salt-diet} conditions, one of whose cells each lost per-request records (\texttt{FreeList} under the statement treatment, \texttt{Crc32} brownfield under no treatment and \texttt{FreeList} under specification change). In wall seconds, 181 carry a median, 16 are inexpressible and 3 declared, and none is \emph{unmeasured}. Both sum to 200, and the instrument's second methods disagreed on no cell. The ten \textsc{done} conditions that the token tables print \emph{unmeasured} carry dollar and wall figures here, because this reading prices and times each of their Gemini cells from its own stream and meter rather than from a tracked token row; the token medians stay as printed.\src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, the check lines and the section on unmeasured cells; harness/systems-v3/REGISTRATION-cost-tables-v3-2026-09-29.md, addendum 1 item A1.1; harness/systems-v3/RESULT-descriptive-tables-v2-2026-09-27.md, the check line}
+
+\paragraph{What the tables show, and within what.} Read within a row, the \arm{salt-diet} arm costs more than the \arm{plain} arm in dollars and takes longer in wall time almost everywhere a sign can be fixed. In dollars, every Sonnet, Pro and Flash ratio whose sign is fixed exceeds 1, under all three treatments; the Opus rows fix four signs in all, because the cap bounds both arms, and three of the four exceed 1; the fourth is \texttt{Crc32} under the statement treatment at 0.94. The medians of the per-treatment ratios run from 2.26 to 3.56 for Flash, 4.50 to 7.98 for Pro, 5.62 to 8.48 for Sonnet and 1.37 to 1.64 for Opus. In wall time the pattern repeats: every fixed sign for Sonnet, Pro and Flash exceeds 1, and Opus fixes four signs across its three treatments, three above 1, the fourth a bounded ratio at or below 0.97 on \texttt{LRU} under specification change. Within the Claude lane the models also separate: the \arm{plain} Opus greenfield cells under no treatment cost between \$6.21 and \$16.78 at the median, all but one a floor, against \$1.14 to \$3.38 for the same Sonnet conditions. Each of these is a description of cost and not of quality; the arm that costs more is not thereby better or worse.\src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, tables \$1, \$4 and its sign counts, W4 and its sign counts}
+
+\paragraph{What the tables cannot carry.} Four limits were stated before any number was read, and one more is inherited. A dollar ratio, like a token ratio, describes cost and says nothing of quality. Every $\geq$ is a censoring that binds the \arm{salt-diet} arm more often, so a bounded numerator makes a ratio an understatement. Wall time describes these runs on this box at those hours, and the records that name the box's concurrency are cited in the result file and not extracted per cell. A median of three cells is one cell's figure. And each Gemini level's registration, frozen before its first call, excludes a comparison with the Claude lane in dollars or in tokens, because the two lanes differ in client, fence, caps and watcher and, under specification change, in how the first phase was produced. This reading was registered afterwards and does not lift that exclusion, so the tables print both lanes and the text compares arms within a row and models within a lane, never a Gemini row with a Claude row.\src{harness/systems-v3/REGISTRATION-cost-tables-v3-2026-09-29.md, section V6; harness/systems-v3/AMENDMENT-gemini-flash-level5-2026-09-14.md, section F6 item 4; harness/systems-v3/AMENDMENT-gemini-level6-2026-09-16.md, section H7 item 3; harness/systems-v3/AMENDMENT-gemini-level7-2026-09-16.md, section K8 item 3; harness/systems-v3/AMENDMENT-gemini-level8-2026-09-16.md, sections M6.2 and M9 item 3}
+
+\paragraph{Where an Opus cell's money goes.} An Opus cell spawns subagents, and the session meter serves them \texttt{claude-sonnet-5}, so part of every Opus figure above is Sonnet's. Table~S1 in Appendix~\ref{app:opussplit} prints, per Opus condition, the median share of tokens and of dollars spent outside the head session. It separates the arms on all 23 problem, task-form and treatment pairs: the \arm{plain} arm's share is 15.5 to 36.7 percent of tokens and 22.3 to 40.0 percent of dollars, the \arm{salt-diet} arm's 1.4 to 11.9 percent and 4.2 to 22.6 percent, lower in both currencies on every pair. Under the \arm{salt-diet} arm the head session does most of the work itself, so a dollar ratio between the Opus arms also compares two mixes of models.\src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, section S1}
+
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrr}
+\toprule
+ & & \multicolumn{2}{c}{no treatment} & \multicolumn{2}{c}{statement} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+model & problem & \arm{plain} & \arm{salt-diet} & \arm{plain} & \arm{salt-diet} \\
+\midrule
+% BEGIN cost-table-D1 (generated by paper/cost_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & \texttt{Crc32} & $\geq$\,\$6.21 & $\geq$\,\$7.21 & \$6.66 & \$6.25 \\
+ & \texttt{LRU} & $\geq$\,\$9.73 & \$11.21 & \$9.36 & \$14.24 \\
+ & \texttt{FreeList} & $\geq$\,\$13.02 & $\geq$\,\$37.60 & $\geq$\,\$18.26 & \$27.84 \\
+ & \texttt{LZW} & \$13.95 & \$19.18 & $\geq$\,\$10.24 & $\geq$\,\$18.54 \\
+ & \texttt{Paxos} & $\geq$\,\$16.78 & \$37.65 & --- & --- \\
+\texttt{claude-sonnet-5} & \texttt{Crc32} & \$1.14 & \$4.79 & \$0.98 & \$4.16 \\
+ & \texttt{LRU} & $\geq$\,\$1.23 & $\geq$\,\$5.75 & \$1.38 & $\geq$\,\$6.67 \\
+ & \texttt{FreeList} & \$2.92 & $\geq$\,\$37.72 & \$2.81 & $\geq$\,\$35.08 \\
+ & \texttt{LZW} & \$1.70 & \$14.39 & \$1.89 & $\geq$\,\$12.36 \\
+ & \texttt{Paxos} & \$3.38 & $\geq$\,\$37.61 & --- & --- \\
+\texttt{gemini-3.1-pro-high} & \texttt{Crc32} & \$0.65 & \$5.35 & \$0.80 & $\geq$\,\$6.38 \\
+ & \texttt{LRU} & \$1.21 & \$4.42 & \$0.72 & \$4.58 \\
+ & \texttt{FreeList} & \$0.83 & \$4.91 & \$0.94 & \emph{unmeasured} \\
+ & \texttt{LZW} & \$0.73 & \$5.27 & \$0.84 & \$7.29 \\
+ & \texttt{Paxos} & \$0.69 & $\geq$\,\$6.84 & --- & --- \\
+\texttt{gemini-3.8-flash-high} & \texttt{Crc32} & \$0.82 & \$2.15 & \$0.80 & \$2.95 \\
+ & \texttt{LRU} & \$1.17 & \$2.78 & \$0.72 & \$2.61 \\
+ & \texttt{FreeList} & \$1.18 & \$3.48 & \$1.03 & \$3.59 \\
+ & \texttt{LZW} & \$0.89 & $\geq$\,\$3.81 & \$1.12 & \$3.08 \\
+ & \texttt{Paxos} & \$1.29 & \$4.57 & --- & --- \\
+% END cost-table-D1
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small\textbf{Table \$1.} Greenfield. Median modelled list-price US dollars per condition, over the condition's cells of record. A descriptive reading: no test, and no verdict on the arms. The dollars are a model and not an invoice, since every cell ran on a subscription: one list schedule per vendor, both read on 2026-09-29. A Claude cell prices every record at its served model's rates, so an Opus cell's \texttt{claude-sonnet-5} subagents are priced at Sonnet's; a Gemini cell prices each request at the tier its prompt selects, and context-caching storage is not priced. Compare the arms within a row and the models within a lane, never across lanes (Section~\ref{sec:matrixdollars}). $\geq$ marks a floor; a cell stopped at the cost cap enters at the larger of its metered cost and the cap. --- marks an inexpressible condition; \emph{unmeasured} a \textsc{done} condition one of whose Pro cells lost per-request records, so it cannot be put in a price tier.}
+\src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, section \$1}
+\end{minipage}\end{center}
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrr}
+\toprule
+ & & \multicolumn{2}{c}{no treatment} & \multicolumn{2}{c}{statement} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+model & problem & \arm{plain} & \arm{salt-diet} & \arm{plain} & \arm{salt-diet} \\
+\midrule
+% BEGIN cost-table-D2 (generated by paper/cost_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & \texttt{Crc32} & \$6.70 & \$7.62 & $\geq$\,\$9.69 & $\geq$\,\$7.06 \\
+ & \texttt{LRU} & \$8.17 & \$15.03 & \$10.36 & \$14.59 \\
+ & \texttt{FreeList} & $\geq$\,\$18.66 & $\geq$\,\$37.30 & $\geq$\,\$19.57 & $\geq$\,\$29.62 \\
+ & \texttt{LZW} & \$10.11 & \$15.99 & $\geq$\,\$13.47 & \$17.90 \\
+ & \texttt{Paxos} & \$13.14 & \$32.22 & --- & --- \\
+\texttt{claude-sonnet-5} & \texttt{Crc32} & $\geq$\,\$0.90 & \$4.11 & \$1.01 & \$3.94 \\
+ & \texttt{LRU} & \$0.94 & \$7.74 & \$1.09 & $\geq$\,\$5.27 \\
+ & \texttt{FreeList} & \$2.41 & $\geq$\,\$37.43 & \$2.34 & $\geq$\,\$37.60 \\
+ & \texttt{LZW} & \$1.52 & $\geq$\,\$19.30 & \$1.79 & $\geq$\,\$18.14 \\
+ & \texttt{Paxos} & $\geq$\,\$3.05 & $\geq$\,\$37.92 & --- & --- \\
+\texttt{gemini-3.1-pro-high} & \texttt{Crc32} & \$0.67 & \emph{unmeasured} & \$0.80 & \$3.64 \\
+ & \texttt{LRU} & \$0.54 & \$2.35 & \$0.76 & $\geq$\,\$4.97 \\
+ & \texttt{FreeList} & \$1.03 & \$6.83 & \$0.92 & \$6.06 \\
+ & \texttt{LZW} & \$0.86 & $\geq$\,\$13.81 & \$0.86 & $\geq$\,\$7.39 \\
+ & \texttt{Paxos} & \$0.95 & $\geq$\,\$6.58 & --- & --- \\
+\texttt{gemini-3.8-flash-high} & \texttt{Crc32} & \$0.78 & \$1.63 & \$0.86 & \$2.21 \\
+ & \texttt{LRU} & \$0.77 & \$2.69 & \$0.79 & \$2.33 \\
+ & \texttt{FreeList} & \$0.92 & \$3.26 & \$1.42 & \$2.93 \\
+ & \texttt{LZW} & \$1.25 & \$2.77 & \$0.93 & \$1.91 \\
+ & \texttt{Paxos} & \$1.32 & \$3.33 & --- & --- \\
+% END cost-table-D2
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small\textbf{Table \$2.} Brownfield. The marks and limits are those of Table~\$1.}
+\src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, section \$2}
+\end{minipage}\end{center}
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrr}
+\toprule
+model & problem & \arm{plain} & \arm{salt-diet} \\
+\midrule
+% BEGIN cost-table-D3 (generated by paper/cost_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & \texttt{Crc32} & $\geq$\,\$19.89 & $\geq$\,\$16.48 \\
+ & \texttt{LRU} & $\geq$\,\$22.27 & \$22.33 \\
+ & \texttt{FreeList} & $\geq$\,\$29.41 & \$50.22 \\
+ & \texttt{LZW} & \$23.77 & $\geq$\,\$41.24 \\
+ & \texttt{Paxos} & $\geq$\,\$30.29 & $\geq$\,\$49.67 \\
+\texttt{claude-sonnet-5} & \texttt{Crc32} & $\geq$\,\$2.03 & $\geq$\,\$9.15 \\
+ & \texttt{LRU} & \$1.53 & \$10.29 \\
+ & \texttt{FreeList} & \$6.66 & \emph{declared} \\
+ & \texttt{LZW} & $\geq$\,\$5.03 & \emph{declared} \\
+ & \texttt{Paxos} & $\geq$\,\$9.92 & \emph{declared} \\
+\texttt{gemini-3.1-pro-high} & \texttt{Crc32} & \$1.29 & \$6.01 \\
+ & \texttt{LRU} & \$1.43 & \$6.19 \\
+ & \texttt{FreeList} & \$1.96 & \emph{unmeasured} \\
+ & \texttt{LZW} & \$1.65 & \$10.73 \\
+ & \texttt{Paxos} & \$1.80 & $\geq$\,\$7.29 \\
+\texttt{gemini-3.8-flash-high} & \texttt{Crc32} & \$1.61 & \$2.89 \\
+ & \texttt{LRU} & \$1.57 & \$3.55 \\
+ & \texttt{FreeList} & \$2.20 & \$4.15 \\
+ & \texttt{LZW} & \$1.67 & \$4.97 \\
+ & \texttt{Paxos} & \$2.28 & \$16.16 \\
+% END cost-table-D3
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small\textbf{Table \$3.} Specification change, greenfield only. A cell's figure is its first phase plus its second; for the Opus cells the first phase is the reused landing of the matrix of Section~\ref{sec:s3}. \emph{declared} marks a condition unreached at the cap. The other marks and limits are those of Table~\$1.}
+\src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, section \$3}
+\end{minipage}\end{center}
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrr}
+\toprule
+model & problem & no treatment & statement & spec.\ change \\
+\midrule
+% BEGIN cost-table-D4 (generated by paper/cost_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & \texttt{Crc32} & (1.16) & 0.94 & (0.83) \\
+ & \texttt{LRU} & $\leq$\,1.15 & 1.52 & $\leq$\,1.00 \\
+ & \texttt{FreeList} & (2.89) & $\leq$\,1.53 & $\leq$\,1.71 \\
+ & \texttt{LZW} & 1.37 & (1.81) & $\geq$\,1.73 \\
+ & \texttt{Paxos} & $\leq$\,2.24 & --- & (1.64) \\
+\texttt{claude-sonnet-5} & \texttt{Crc32} & 4.19 & 4.25 & (4.51) \\
+ & \texttt{LRU} & (4.68) & $\geq$\,4.82 & 6.73 \\
+ & \texttt{FreeList} & $\geq$\,12.93 & $\geq$\,12.50 & --- \\
+ & \texttt{LZW} & 8.48 & $\geq$\,6.55 & --- \\
+ & \texttt{Paxos} & $\geq$\,11.14 & --- & --- \\
+\texttt{gemini-3.1-pro-high} & \texttt{Crc32} & 8.24 & $\geq$\,7.98 & 4.66 \\
+ & \texttt{LRU} & 3.66 & 6.39 & 4.34 \\
+ & \texttt{FreeList} & 5.88 & --- & --- \\
+ & \texttt{LZW} & 7.25 & 8.68 & 6.51 \\
+ & \texttt{Paxos} & $\geq$\,9.85 & --- & $\geq$\,4.05 \\
+\texttt{gemini-3.8-flash-high} & \texttt{Crc32} & 2.61 & 3.70 & 1.80 \\
+ & \texttt{LRU} & 2.38 & 3.62 & 2.26 \\
+ & \texttt{FreeList} & 2.96 & 3.49 & 1.88 \\
+ & \texttt{LZW} & $\geq$\,4.28 & 2.75 & 2.98 \\
+ & \texttt{Paxos} & 3.53 & --- & 7.07 \\
+% END cost-table-D4
+\bottomrule
+\end{tabular}\\[8pt]
+\begin{tabular}{llrlrr}
+\toprule
+model & treatment & $k$ of $m$ $>1$ & indeterminate & median & bounded \\
+\midrule
+% BEGIN cost-table-DS (generated by paper/cost_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & bare & 1 of 1 & Crc32, LRU, FreeList, Paxos & 1.37 & 4 \\
+ & statement & 1 of 2 & FreeList, LZW & 1.52 & 2 \\
+ & spec-change & 1 of 1 & Crc32, LRU, FreeList, Paxos & 1.64 & 5 \\
+\texttt{claude-sonnet-5} & bare & 4 of 4 & LRU & 8.48 & 3 \\
+ & statement & 4 of 4 & none & 5.68 & 3 \\
+ & spec-change & 1 of 1 & Crc32 & 5.62 & 1 \\
+\texttt{gemini-3.1-pro-high} & bare & 5 of 5 & none & 7.25 & 1 \\
+ & statement & 3 of 3 & none & 7.98 & 1 \\
+ & spec-change & 4 of 4 & none & 4.50 & 1 \\
+\texttt{gemini-3.8-flash-high} & bare & 5 of 5 & none & 2.96 & 1 \\
+ & statement & 4 of 4 & none & 3.56 & 0 \\
+ & spec-change & 5 of 5 & none & 2.26 & 0 \\
+% END cost-table-DS
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small\textbf{Table \$4.} The \arm{salt-diet} median divided by the \arm{plain} median in the same row of Tables~\$1 and~\$3, greenfield, with its sign counts, by the rules of Table~T4. No $p$-value is given. The brownfield ratios, by the same rule, are in the result file.}
+\src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, section \$4, its sign counts and the brownfield ratios}
+\end{minipage}\end{center}
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrr}
+\toprule
+ & & \multicolumn{2}{c}{no treatment} & \multicolumn{2}{c}{statement} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+model & problem & \arm{plain} & \arm{salt-diet} & \arm{plain} & \arm{salt-diet} \\
+\midrule
+% BEGIN cost-table-W1 (generated by paper/cost_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & \texttt{Crc32} & $\geq$\,864 & $\geq$\,1{,}104 & $\geq$\,803 & $\geq$\,1{,}044 \\
+ & \texttt{LRU} & $\geq$\,1{,}105 & 1{,}647 & 1{,}526 & $\geq$\,1{,}768 \\
+ & \texttt{FreeList} & $\geq$\,2{,}190 & $\geq$\,3{,}938 & 2{,}490 & 2{,}973 \\
+ & \texttt{LZW} & $\geq$\,1{,}286 & 2{,}371 & $\geq$\,1{,}225 & $\geq$\,2{,}491 \\
+ & \texttt{Paxos} & $\geq$\,2{,}431 & $\geq$\,3{,}336 & --- & --- \\
+\texttt{claude-sonnet-5} & \texttt{Crc32} & 321 & 1{,}347 & 261 & 1{,}045 \\
+ & \texttt{LRU} & 352 & 1{,}769 & 382 & 1{,}709 \\
+ & \texttt{FreeList} & 1{,}347 & $\geq$\,7{,}864 & 1{,}045 & 7{,}382 \\
+ & \texttt{LZW} & 623 & 4{,}002 & 744 & 4{,}062 \\
+ & \texttt{Paxos} & 1{,}468 & $\geq$\,6{,}476 & --- & --- \\
+\texttt{gemini-3.1-pro-high} & \texttt{Crc32} & 269 & 1{,}596 & 218 & $\geq$\,1{,}620 \\
+ & \texttt{LRU} & 613 & 1{,}318 & 229 & 989 \\
+ & \texttt{FreeList} & 332 & 2{,}189 & 320 & $\geq$\,3{,}598 \\
+ & \texttt{LZW} & 218 & 3{,}806 & 235 & 2{,}044 \\
+ & \texttt{Paxos} & 214 & $\geq$\,3{,}577 & --- & --- \\
+\texttt{gemini-3.8-flash-high} & \texttt{Crc32} & 281 & 516 & 242 & 766 \\
+ & \texttt{LRU} & 394 & 864 & 374 & 913 \\
+ & \texttt{FreeList} & 374 & 986 & 337 & 772 \\
+ & \texttt{LZW} & 308 & 1{,}156 & 339 & 739 \\
+ & \texttt{Paxos} & 385 & 1{,}207 & --- & --- \\
+% END cost-table-W1
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small\textbf{Table W1.} Greenfield. Median wall seconds per condition, over the condition's cells of record, summed over phases. A descriptive reading: no test, and no verdict on the arms. Wall time measures the run box as well as the model: it depends on what else the box was running and on the vendor's service at that hour, and it is not adjusted for either. The Claude lane's figure is net of held time and can understate by one watcher tick, about 60 seconds. $\geq$ marks a floor, including a cell whose wall came within one turn timeout of its wall cap, a rule that can mark a true figure as a floor and never the reverse. Compare within a row and within a lane, never across lanes. --- marks an inexpressible condition.}
+\src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, section W1}
+\end{minipage}\end{center}
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrr}
+\toprule
+ & & \multicolumn{2}{c}{no treatment} & \multicolumn{2}{c}{statement} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+model & problem & \arm{plain} & \arm{salt-diet} & \arm{plain} & \arm{salt-diet} \\
+\midrule
+% BEGIN cost-table-W2 (generated by paper/cost_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & \texttt{Crc32} & 804 & 1{,}227 & 1{,}106 & 985 \\
+ & \texttt{LRU} & 1{,}106 & 1{,}769 & 1{,}045 & 1{,}649 \\
+ & \texttt{FreeList} & 1{,}890 & $\geq$\,4{,}848 & 2{,}252 & 3{,}338 \\
+ & \texttt{LZW} & 1{,}347 & 2{,}855 & 1{,}769 & 2{,}131 \\
+ & \texttt{Paxos} & 2{,}674 & 3{,}277 & --- & --- \\
+\texttt{claude-sonnet-5} & \texttt{Crc32} & 261 & 1{,}407 & 382 & 1{,}166 \\
+ & \texttt{LRU} & 261 & 2{,}071 & 321 & 1{,}528 \\
+ & \texttt{FreeList} & 684 & $\geq$\,6{,}657 & 925 & $\geq$\,7{,}623 \\
+ & \texttt{LZW} & 442 & 4{,}847 & 562 & 4{,}122 \\
+ & \texttt{Paxos} & 1{,}227 & $\geq$\,5{,}632 & --- & --- \\
+\texttt{gemini-3.1-pro-high} & \texttt{Crc32} & 197 & 1{,}297 & 182 & 1{,}084 \\
+ & \texttt{LRU} & 182 & 1{,}216 & 207 & $\geq$\,1{,}994 \\
+ & \texttt{FreeList} & 313 & 4{,}382 & 268 & $\geq$\,2{,}458 \\
+ & \texttt{LZW} & 242 & $\geq$\,5{,}817 & 198 & $\geq$\,4{,}375 \\
+ & \texttt{Paxos} & 364 & 2{,}812 & --- & --- \\
+\texttt{gemini-3.8-flash-high} & \texttt{Crc32} & 261 & 408 & 235 & 900 \\
+ & \texttt{LRU} & 299 & 657 & 286 & 841 \\
+ & \texttt{FreeList} & 554 & 906 & 430 & 677 \\
+ & \texttt{LZW} & 487 & 966 & 398 & 807 \\
+ & \texttt{Paxos} & 413 & 662 & --- & --- \\
+% END cost-table-W2
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small\textbf{Table W2.} Brownfield. The marks and limits are those of Table~W1.}
+\src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, section W2}
+\end{minipage}\end{center}
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrr}
+\toprule
+model & problem & \arm{plain} & \arm{salt-diet} \\
+\midrule
+% BEGIN cost-table-W3 (generated by paper/cost_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & \texttt{Crc32} & $\geq$\,2{,}270 & $\geq$\,2{,}871 \\
+ & \texttt{LRU} & $\geq$\,2{,}601 & 2{,}511 \\
+ & \texttt{FreeList} & $\geq$\,4{,}288 & 5{,}164 \\
+ & \texttt{LZW} & 2{,}480 & $\geq$\,4{,}801 \\
+ & \texttt{Paxos} & $\geq$\,4{,}620 & $\geq$\,6{,}037 \\
+\texttt{claude-sonnet-5} & \texttt{Crc32} & 522 & 2{,}333 \\
+ & \texttt{LRU} & 521 & 2{,}996 \\
+ & \texttt{FreeList} & 2{,}212 & \emph{declared} \\
+ & \texttt{LZW} & 1{,}789 & \emph{declared} \\
+ & \texttt{Paxos} & 4{,}082 & \emph{declared} \\
+\texttt{gemini-3.1-pro-high} & \texttt{Crc32} & 389 & 4{,}863 \\
+ & \texttt{LRU} & 400 & 1{,}961 \\
+ & \texttt{FreeList} & 592 & 4{,}089 \\
+ & \texttt{LZW} & 512 & 4{,}677 \\
+ & \texttt{Paxos} & 560 & $\geq$\,3{,}207 \\
+\texttt{gemini-3.8-flash-high} & \texttt{Crc32} & 913 & 1{,}330 \\
+ & \texttt{LRU} & 717 & 1{,}768 \\
+ & \texttt{FreeList} & 809 & 1{,}654 \\
+ & \texttt{LZW} & 793 & 2{,}072 \\
+ & \texttt{Paxos} & 1{,}064 & 8{,}482 \\
+% END cost-table-W3
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small\textbf{Table W3.} Specification change, greenfield only, both phases summed. \emph{declared} marks a condition unreached at the cap. The other marks and limits are those of Table~W1.}
+\src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, section W3}
+\end{minipage}\end{center}
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrr}
+\toprule
+model & problem & no treatment & statement & spec.\ change \\
+\midrule
+% BEGIN cost-table-W4 (generated by paper/cost_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & \texttt{Crc32} & (1.28) & (1.30) & (1.26) \\
+ & \texttt{LRU} & $\leq$\,1.49 & $\geq$\,1.16 & $\leq$\,0.97 \\
+ & \texttt{FreeList} & (1.80) & 1.19 & $\leq$\,1.20 \\
+ & \texttt{LZW} & $\leq$\,1.84 & (2.03) & $\geq$\,1.94 \\
+ & \texttt{Paxos} & (1.37) & --- & (1.31) \\
+\texttt{claude-sonnet-5} & \texttt{Crc32} & 4.20 & 4.00 & 4.47 \\
+ & \texttt{LRU} & 5.03 & 4.47 & 5.75 \\
+ & \texttt{FreeList} & $\geq$\,5.84 & 7.06 & --- \\
+ & \texttt{LZW} & 6.42 & 5.46 & --- \\
+ & \texttt{Paxos} & $\geq$\,4.41 & --- & --- \\
+\texttt{gemini-3.1-pro-high} & \texttt{Crc32} & 5.93 & $\geq$\,7.45 & 12.49 \\
+ & \texttt{LRU} & 2.15 & 4.32 & 4.90 \\
+ & \texttt{FreeList} & 6.60 & $\geq$\,11.24 & 6.91 \\
+ & \texttt{LZW} & 17.46 & 8.69 & 9.13 \\
+ & \texttt{Paxos} & $\geq$\,16.70 & --- & $\geq$\,5.72 \\
+\texttt{gemini-3.8-flash-high} & \texttt{Crc32} & 1.84 & 3.16 & 1.46 \\
+ & \texttt{LRU} & 2.19 & 2.44 & 2.47 \\
+ & \texttt{FreeList} & 2.63 & 2.29 & 2.04 \\
+ & \texttt{LZW} & 3.75 & 2.18 & 2.61 \\
+ & \texttt{Paxos} & 3.14 & --- & 7.97 \\
+% END cost-table-W4
+\bottomrule
+\end{tabular}\\[8pt]
+\begin{tabular}{llrlrr}
+\toprule
+model & treatment & $k$ of $m$ $>1$ & indeterminate & median & bounded \\
+\midrule
+% BEGIN cost-table-WS (generated by paper/cost_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & bare & 0 of 0 & Crc32, LRU, FreeList, LZW, Paxos & 1.49 & 5 \\
+ & statement & 2 of 2 & Crc32, LZW & 1.25 & 3 \\
+ & spec-change & 1 of 2 & Crc32, FreeList, Paxos & 1.26 & 5 \\
+\texttt{claude-sonnet-5} & bare & 5 of 5 & none & 5.03 & 2 \\
+ & statement & 4 of 4 & none & 4.97 & 0 \\
+ & spec-change & 2 of 2 & none & 5.11 & 0 \\
+\texttt{gemini-3.1-pro-high} & bare & 5 of 5 & none & 6.60 & 1 \\
+ & statement & 4 of 4 & none & 8.07 & 2 \\
+ & spec-change & 5 of 5 & none & 6.91 & 1 \\
+\texttt{gemini-3.8-flash-high} & bare & 5 of 5 & none & 2.63 & 0 \\
+ & statement & 4 of 4 & none & 2.36 & 0 \\
+ & spec-change & 5 of 5 & none & 2.47 & 0 \\
+% END cost-table-WS
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small\textbf{Table W4.} The \arm{salt-diet} median divided by the \arm{plain} median in the same row of Tables~W1 and~W3, greenfield, with its sign counts, by the rules of Table~T4. No $p$-value is given. The brownfield ratios are in the result file.}
+\src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, section W4, its sign counts and the brownfield ratios}
 \end{minipage}\end{center}
 
 \section{The instrument findings, as results}
@@ -818,5 +1146,68 @@ LRU & diet-statement & \$13.65 \$14.24 \$18.65$^\dagger$ \\
 \noindent Four cells of the matrix root are refused by the scorer rather than defaulted, because their cost line does not open with a bare price: a void meter carries a zero in its prose, and a scanner that reads on would price an unmetered cell at nothing. They are excluded from every reading.\src{harness/systems-v3/RESULT-n3-topup-2026-09-09.md section 3, the refused cells}
 
 Nineteen of the 57 prices in this table, marked $^\dagger$, come from cells whose own meter declares the total a lower bound: each contains at least one interrupted turn, a record with no stop reason, whose usage was written only up to the interrupt, so what is recorded of that turn is known and what is missing from it is not. Two methods classify every price, the meter's own declaration and the count of such records in the cell's record table, and they agree on 57 of 57. The recorded cost of the interrupted records is 0.0583 to 0.7579 percent of each affected cell's cost; that figure is a share of what was recorded and not a bound on what was not. A lower bound on a \arm{plain} cell overstates a diet-to-plain premium and one on a \arm{diet} cell understates it, and only a lower-bound cell that a median rests on can move a premium: on \texttt{Crc32} both medians rest on one, so the direction is not determined; on \texttt{FreeList}, \texttt{LRU} and \texttt{Paxos} the plain median alone does, so those premiums are overstated by this cause; on \texttt{LZW} neither does; and in the statement arm no median rests on one. No sign, floor count or verdict of Section~\ref{sec:s3} changes unless an interrupted turn's unrecorded remainder is at least 77 times what was recorded of it, and at least 121 times for the bare matrix. The prices are printed as recorded; this note adds a flag and not a number, and version~1 of this report printed the same prices without it.\src{paper/ERRATUM-lower-bound-cells-2026-09-16.md sections 2 to 5; harness/systems-v3/RECEIPT-ol-lower-bound-cells-2026-09-16.txt; harness/systems-v3/ol\_lower\_bound\_margins.py}
+
+\section{Where an Opus cell's tokens and dollars go}
+\label{app:opussplit}
+
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llllrrr}
+\toprule
+problem & task form & arm & treatment & $n$ & share of tokens & share of dollars \\
+\midrule
+% BEGIN cost-table-S1 (generated by paper/cost_tables.py; do not edit by hand)
+\texttt{Crc32} & brownfield & \arm{plain} & none & 3 & 20.3 \% & 24.8 \% \\
+ & brownfield & \arm{plain} & statement & 3 & 22.2 \% & 26.1 \% \\
+ & brownfield & \arm{salt-diet} & none & 3 & 8.7 \% & 5.1 \% \\
+ & brownfield & \arm{salt-diet} & statement & 3 & 5.8 \% & 5.0 \% \\
+ & greenfield & \arm{plain} & none & 3 & 25.3 \% & 31.3 \% \\
+ & greenfield & \arm{plain} & spec-change & 3 & 25.3 \% & 31.3 \% \\
+ & greenfield & \arm{plain} & statement & 3 & 15.5 \% & 22.3 \% \\
+ & greenfield & \arm{salt-diet} & none & 3 & 9.4 \% & 5.6 \% \\
+ & greenfield & \arm{salt-diet} & spec-change & 3 & 9.4 \% & 5.6 \% \\
+ & greenfield & \arm{salt-diet} & statement & 3 & 5.6 \% & 4.9 \% \\
+\texttt{FreeList} & brownfield & \arm{plain} & none & 3 & 32.7 \% & 40.0 \% \\
+ & brownfield & \arm{plain} & statement & 3 & 29.0 \% & 38.1 \% \\
+ & brownfield & \arm{salt-diet} & none & 3 & 5.5 \% & 13.9 \% \\
+ & brownfield & \arm{salt-diet} & statement & 3 & 5.6 \% & 9.2 \% \\
+ & greenfield & \arm{plain} & none & 3 & 24.3 \% & 35.1 \% \\
+ & greenfield & \arm{plain} & spec-change & 2 & 24.8 \% & 36.2 \% \\
+ & greenfield & \arm{plain} & statement & 3 & 31.1 \% & 38.9 \% \\
+ & greenfield & \arm{salt-diet} & none & 3 & 1.4 \% & 6.2 \% \\
+ & greenfield & \arm{salt-diet} & spec-change & 1 & 1.4 \% & 6.2 \% \\
+ & greenfield & \arm{salt-diet} & statement & 3 & 2.6 \% & 7.7 \% \\
+\texttt{LRU} & brownfield & \arm{plain} & none & 3 & 15.6 \% & 24.6 \% \\
+ & brownfield & \arm{plain} & statement & 3 & 36.7 \% & 34.3 \% \\
+ & brownfield & \arm{salt-diet} & none & 3 & 4.4 \% & 8.7 \% \\
+ & brownfield & \arm{salt-diet} & statement & 3 & 5.1 \% & 11.8 \% \\
+ & greenfield & \arm{plain} & none & 3 & 27.8 \% & 36.0 \% \\
+ & greenfield & \arm{plain} & spec-change & 2 & 30.5 \% & 36.6 \% \\
+ & greenfield & \arm{plain} & statement & 3 & 21.9 \% & 31.3 \% \\
+ & greenfield & \arm{salt-diet} & none & 3 & 3.0 \% & 4.2 \% \\
+ & greenfield & \arm{salt-diet} & spec-change & 3 & 3.0 \% & 4.2 \% \\
+ & greenfield & \arm{salt-diet} & statement & 3 & 4.8 \% & 10.0 \% \\
+\texttt{LZW} & brownfield & \arm{plain} & none & 3 & 24.9 \% & 36.6 \% \\
+ & brownfield & \arm{plain} & statement & 3 & 23.6 \% & 28.8 \% \\
+ & brownfield & \arm{salt-diet} & none & 3 & 11.9 \% & 22.6 \% \\
+ & brownfield & \arm{salt-diet} & statement & 3 & 6.2 \% & 13.8 \% \\
+ & greenfield & \arm{plain} & none & 3 & 22.2 \% & 28.8 \% \\
+ & greenfield & \arm{plain} & spec-change & 2 & 21.3 \% & 27.8 \% \\
+ & greenfield & \arm{plain} & statement & 3 & 20.4 \% & 34.2 \% \\
+ & greenfield & \arm{salt-diet} & none & 3 & 2.1 \% & 5.7 \% \\
+ & greenfield & \arm{salt-diet} & spec-change & 3 & 3.7 \% & 8.6 \% \\
+ & greenfield & \arm{salt-diet} & statement & 3 & 7.3 \% & 13.5 \% \\
+\texttt{Paxos} & brownfield & \arm{plain} & none & 3 & 21.5 \% & 34.1 \% \\
+ & brownfield & \arm{salt-diet} & none & 3 & 2.2 \% & 6.4 \% \\
+ & greenfield & \arm{plain} & none & 3 & 26.4 \% & 30.9 \% \\
+ & greenfield & \arm{plain} & spec-change & 2 & 23.1 \% & 29.4 \% \\
+ & greenfield & \arm{salt-diet} & none & 3 & 5.6 \% & 6.8 \% \\
+ & greenfield & \arm{salt-diet} & spec-change & 2 & 5.7 \% & 8.8 \% \\
+% END cost-table-S1
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small\textbf{Table S1.} Per Opus condition, the median over its cells of the share of the cell's tokens and of its modelled list-price dollars spent outside the head session, by subagents the session served \texttt{claude-sonnet-5}. \emph{none} is no treatment. The greenfield specification-change rows share their first phase with the rows under no treatment, which is why several repeat them.}
+\src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, section S1; evidence/v3-cost-tables-2026-09-28/opus-split-raw.tsv}
+\end{minipage}\end{center}
 
 \end{document}

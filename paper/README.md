@@ -20,3 +20,8 @@ Its four descriptive tables (Section 5.2) are copied, not typed: `descriptive_ta
 from `harness/systems-v3/RESULT-descriptive-tables-v2-2026-09-27.md`, prints the LaTeX rows, and with
 `--check` refuses if the rows in the tex differ from the result file (`--self-test` perturbs one digit and
 requires the refusal).
+
+Version 3 adds the same matrix in modelled list-price dollars and in wall time (Section 5.3), and the
+Opus head-versus-subagent split (Appendix S1). Those eleven blocks are copied the same way:
+`cost_tables.py` parses them from `harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md`, and
+`--check` refuses on any difference (`--self-test` perturbs one dollar, one wall and one share digit).
