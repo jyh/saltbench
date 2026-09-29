@@ -42,9 +42,9 @@ No classification of that test's failure is made here.
 Luby         median COST plain $1.88 · salt-diet $32.78 · ratio 17.5x · CAP-COST plain 0 salt-diet 0 · UNRESOLVED-UNDERPOWERED
 AES          median COST plain $1.76 · salt-diet $35.18 · ratio 19.9x · CAP-COST plain 0 salt-diet 1 · UNRESOLVED-UNDERPOWERED
 Liveness     median COST plain $1.94 · salt-diet $21.07 · ratio 10.9x · CAP-COST plain 0 salt-diet 0 · UNRESOLVED-UNDERPOWERED
-MaxFlow      median COST plain $1.95 · salt-diet $37.21 · ratio 19.0x · CAP-COST plain 0 salt-diet 2 · UNRESOLVED-CENSORED
+MaxFlow      median COST plain $1.95 · salt-diet $37.21 · ratio ≥ 19.0x · CAP-COST plain 0 salt-diet 2 · UNRESOLVED-CENSORED
 BinomialHeap median COST plain $1.62 · salt-diet $13.08 · ratio 8.1x · CAP-COST plain 0 salt-diet 0 · UNRESOLVED-UNDERPOWERED
-LinearScan   median COST plain $13.74 · salt-diet $37.21 · ratio 2.7x · CAP-COST plain 0 salt-diet 3 · UNRESOLVED-CENSORED
+LinearScan   median COST plain $13.74 · salt-diet $37.21 · ratio ≥ 2.7x · CAP-COST plain 0 salt-diet 3 · UNRESOLVED-CENSORED
 total COST (capped at the cap) plain $68.10 · total T 130,118,457
 total COST (capped at the cap) salt-diet $511.03 · total T 1,856,566,593
 capped cells METERED (not used above): 6, $37.54 .. $38.09 against cap $37.21 · metered salt-diet total $514.54
@@ -52,7 +52,8 @@ uncapped cells ending above the cap: 1 (clbnxs03 $37.74 ENDED: LANDED)
 ```
 **The verdict kinds are the ones §N6 registered before any data.** CENSORED where more than half a condition's salt-diet cells are capped, so
 its median sits at the cap; UNDERPOWERED everywhere else. No premium is RESOLVED, and none can be under rule 2.
-⚠️ **The CENSORED ratios are LOWER BOUNDS** (a capped cell's cost enters at the cap, rule 6). **All six premiums are also understated by the
+⚠️ **The CENSORED ratios are LOWER BOUNDS, and their lines print `≥`** (a capped cell's cost enters at the cap, rule 6). *(The mark was added
+to the lines after kent's read of the Opus column found the limit carried only in prose; no figure moved.)* **All six premiums are also understated by the
 harness's own sandbox probe**, which the table's header declares: its near-constant absolute cost inflates the cheaper arm's cost by the
 larger share (desk VX, measured 2026-09-22 over 180 cells). ⇒ The sign is the reading; the magnitudes are not.
 ⚠️ **Every capped cost here ENTERS AT THE CAP, as lane B §Q6 rule 6 registers.** The meter is read periodically, so a cell overshoots the

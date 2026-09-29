@@ -447,3 +447,107 @@ and is not asked for."* It keeps R7 explicit and bounds only the general argumen
 **Each condition runs on exactly one export.** LinearScan's cells, both models and both arms, fire from 23485e5 by a lane env that differs
 from the running one in `CLB_EXPORT` only. The other five problems stay on 6087b54, so no condition straddles two exports. No LinearScan
 cell ran before this addendum.
+
+---
+
+## ⚖️ ADDENDUM 13 — A2.3's DIR LOST SERVER ACCESS MID-RUN. THE LIVE CELL IS NOT-SCORED(HARNESS) AND RE-FIRES AS A NEW CELL ID ON THE SECOND DIR. APPENDED.
+⛔ **Registered BEFORE the re-fire. No re-fire before a non-author signs this addendum.**
+
+**What happened** (2026-09-28; every line from the cell's own head transcript and `ctl/watch.log` on the run box):
+- `clbmrs03` (Opus · LinearScan · salt-diet #3), block N's last cell, launched on A2.3's dir at 16:07:38Z with P-SANDBOX GREEN and the account
+  check reading OK before the fire.
+- Its last real assistant record is at **17:18:51Z**. From **17:18:53Z**, every model request returned a synthetic error record,
+  `oauth_org_not_allowed`: five such records by 17:49:31Z, one per watcher retry. The credential file on the dir was unchanged throughout.
+  **The server refused the account; the file did not change.** The account check reads the FILE's identity, so it still reads OK, and that is
+  the limit it states beside its own verdict.
+- This dir's pool was named in §N0 row 8 as released until **15:59 PDT that day**. The refusal began at 10:18 PDT, about 5 h 40 m earlier.
+  Why the server refused is in no local byte.
+- The cell was frozen at **$24.15** (its last METER line, 17:18:22Z) and spent nothing after the refusal.
+
+**The watcher filed it as an overload, and that is a harness finding.** `cell-watch.sh`'s `last_assistant_state` maps `rate_limit`,
+`authentication_failed` and `invalid_request`, and files every other error class as `HOLD OVERLOADED`. A hold freezes the caps and the stall arm
+and retries every 600 s. So an account-level refusal reads as a transient overload and holds indefinitely, and the cell ends only at W1 or by hand.
+
+**The rule for this cell, stated as a NEW CASE and not as a stretch of an old one.** Lane B §Q7 row 8, *"FAILED BOOT / a credential that did
+not authenticate → NOT-SCORED(HARNESS), re-fired as a new cell id"*, names a credential that fails at BOOT. This one authenticated, and the
+cell ran 70 minutes of real work before the server withdrew access. That is a second case, so it is registered here:
+- **A cell whose every model call from time T onward fails on the ACCOUNT** (fault evidence in the cell: synthetic records carrying an
+  account-class error, and no real record after T) **is NOT-SCORED(HARNESS)**. It is never scored on its partial tree and never enters a
+  median. It is printed in its block's table with its receipts, its cost to T, and this addendum's name.
+- **Its condition re-fires the missing cell as a NEW cell id**, on a pool that authenticates, under §N0 row 8's second clause (the P3 pool,
+  named per cell, with the account check before the fire). The original cell is ended and never re-dispatched into (lane B §Q7 row 10).
+- **This rule does not look at the outcome.** The cell had no withheld-suite reading when access ended, and none is taken before this
+  addendum is signed. So the rule cannot be chosen by what the cell would have scored.
+
+**The needle and the window, registered here before any result of this cell is read:**
+- **NEEDLE:** a head-transcript assistant record that is synthetic (`isApiErrorMessage`, or model `<synthetic>`) and whose error is
+  account-class. That means one of `oauth_org_not_allowed`, `authentication_failed`, or any error naming the organization, the OAuth grant or
+  the account. A rate limit, an overload or a server error is NOT account-class.
+- **WINDOW:** from the first such record T to the cell's end. The rule fires only if the window holds NO real (non-synthetic) assistant
+  record, in the head or any sidechain. A single real record after T means access returned, and the cell is read as it ends.
+- **SYMMETRIC:** the rule names no arm. It voids a plain cell exactly as it voids a salt-diet cell, and it is applied to every block N cell
+  whose transcript carries the needle. On this addendum's date that is one cell, `clbmrs03`, measured by its transcript: 5 needle records and
+  no real record after 17:18:51Z.
+
+**Where the re-fire runs, and what it needs first.** It runs on the second dir after its pool's reset (Mon 20:00 PDT = Tue 03:00Z), when
+the helm's tilt on that pool ends. The second dir has run block N cells since ADDENDUM 8. **The stager cannot produce the new cell id
+today:** `clb_stage.sh` at 23485e5 derives a cell id from block, problem, arm and `n`, accepts `n` in 1..3 only (§Q0 row 2), and refuses a
+directory that exists (a cell is evidence). So the re-fire needs a stager change that mints a re-fire id without touching the dead cell. That
+change is a harness delta, and it reaches no subject. **It is named in a RELEASE line appended here BEFORE the fire: the export sha, the
+new id, the stager's selftest (including a red arm that refuses re-using `clbmrs03`), and the diff against 23485e5 showing that nothing
+subject-facing moved.** LinearScan salt-diet's three cells of record will then be `clbmrs01` and `clbmrs02` on A2.3's dir plus the re-fire on
+the second dir. **That condition straddles two pools and is reported as straddling** (§N5.3).
+
+**What this does NOT change:** the arms, the caps, the export, the client pin, the fence, the probe, the scorer, or any other cell.
+
+---
+
+## ⚖️ ADDENDUM 14 — THE RELEASE OF ADDENDUM 13's RE-FIRE. APPENDED; ADDENDUM 13 (signed at blob `27f8c21972ec`) UNTOUCHED.
+**The signer's condition, met: the needle over EVERY block N cell of record** (a census script on the run box. It reads each cell's own
+`ctl/run-cfg.tsv` for its config dir and scans every transcript under that cell's slug, head and sidechains, with the needle exactly as
+ADDENDUM 13 registers it):
+```
+  cells scanned 72 (every cells-clb-n{s,o}-* cell with a ctl/run-cfg.tsv) · slug absent 0
+  with the needle 1 — clbmrs03: 5 needle records, T 2026-09-28T17:18:53.273Z, 0 real records after T, 703 records read
+  CONTROL  an account-class record planted in a scratch copy of clbmrs01's transcripts   → needle 1   (must match; did)
+  CONTROL  an overloaded_error record planted in a second scratch copy                    → needle 0   (must NOT match; did not)
+```
+**So the rule applies to exactly one cell, `clbmrs03`, by its own words.**
+⚠️ **The population's boundary, declared so a wider search does not read two cells as missed** (kent's non-author read, 2026-09-28, grepping
+every transcript on the run box rather than each cell's own slug). `authentication_failed` also appears in **two block N slugs under the OTHER
+pool's config dir**, each with no real assistant record:
+- `clbnap02`, under the second dir, at 2026-09-26 17:50:23Z. That is ADDENDUM 7's refused fire: the probe turn failed, the credential blanked,
+  and no subject ran. The cell later ran on A2.3's dir (its `run-cfg.tsv`).
+- `clbnxp03`, under A2.3's dir, at 2026-09-27 04:47:20Z. That is ADDENDUM 11's refused fire, the same shape. It later ran on the second dir.
+
+**Both are refused PROBE sessions before any subject turn, already recorded as such.** The census reads each cell from its own `run-cfg.tsv`,
+so they are outside its population by construction, and the rule does not reach them. ⚠️ The re-fire guard checks only that
+`ctl/end-1` is non-empty, not what it says, so the lead's hand-written end line satisfies it by construction. This is intended here, and
+no one should read the guard as validating the end reason.
+
+**THE EXPORT: saltbench-systems `9d87318`** = 23485e5 + two commits, built by `studio_export.sh` (the allowlist export): 368 files,
+withheld-shaped names 0 in the listing and 0 on the host. `diff -rq` against the 23485e5 export lists exactly three harness files and the
+marker, and **nothing a subject reads**:
+- `cell-watch.sh` (07b571f): an account-class error is its own class, `HOLD ACCOUNT`, and the session ends `ACCOUNT-REFUSED` once a RETRY
+  sent inside the hold is 120 s old and still refused. QUOTA and OVERLOADED holds wait exactly as before. **Selftest 77 arms ok.** It went red
+  first on 23485e5 (4 FAIL). Red backwards on two mutants: an always-end decision reddens 4 arms, and an everything-is-ACCOUNT classifier
+  reddens the quota, invalid-request and overload controls. ⚠️ The pre-existing `HOLD AUTH authentication_failed` arm's expectation moved to
+  `HOLD ACCOUNT` with the class, and this is declared rather than hidden.
+- `clb_stage.sh` · `clb_fire.sh` (9d87318): `n` also accepts `r1..r3`, a registered re-fire, whose id is `clb…r<k>`. The original cell must
+  exist AND carry `ctl/end-1`. **Driven on the run box against a fixture root, through this export, in both scripts:** plain `3` REFUSED (the
+  cell exists; `clbmrs03` is never re-used), `r3` REFUSED while the original has no end marker, `r4` REFUSED (range), `r1` REFUSED (no
+  original). The positive control `r2` passed the guard and derived `clbmrsr2` on export 9d873183acab.
+- ⚠️ **The toolchain check was skipped for this export** (`--unreferenced-dest --no-toolchain`, because a cell was live on the box). The
+  toolchain is the one 23485e5's export checked on the same box, and the cell's own launch asserts the client pin and resolves cargo and
+  verus at `--check`.
+
+**THE RE-FIRE:** `clbmrsr3`, Opus · LinearScan · salt-diet, on the second dir after its pool's reset, from a lane env that differs from the
+second dir's LinearScan env in `CLB_EXPORT` only, with the account check read before the fire. **It runs under the fixed watcher; every other
+LinearScan cell ran under 23485e5's.** The two differ only when a head record carries an account-class error, and no other cell's does (the
+census above).
+
+**ENDING `clbmrs03` FIRST** (the stager refuses a re-fire beside a live cell). 23485e5's watcher has no signal trap, so it cannot be ended by
+its own path. At the fire, the lead signals its driver and its client **by pid** and writes `ctl/end-1` as
+`<UTC> ACCOUNT-REFUSED ended by the lead under ADDENDA 13–14; the 23485e5 watcher held it as OVERLOADED`, then tags the snapshot. **No
+post-end meter reading is taken, and this is declared**: the cell spent nothing after T. Its cost to T is `cell_meter.py` over its
+transcripts, printed in the block's table beside NOT-SCORED(HARNESS).
