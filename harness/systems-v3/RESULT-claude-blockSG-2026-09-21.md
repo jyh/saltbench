@@ -93,4 +93,5 @@ its evidence directory carry the one cell.
 ⇒ **LRU × plain × none (Sonnet, greenfield) now stands at n = 3 of record:** `clbglp01` · `clbglp02` · `clbglp03`, all PASS 16/16.
 The census moves this condition out of ADDENDUM 25's n < 3 list in its own addendum. Nothing here is a claim about the salt method.
 Evidence: `evidence/claude-lane-blocks-2026-09-21/addendumA-clbglp01-2026-09-29/`. Home paths are written `~`, and the run account's
-config directory is written as a role (`.claude-<the run account>`), per this repository's scrub gates. No other byte is changed.
+config directory is written as a role (`.claude-<the run account>`), per this repository's scrub gates, and the
+served receipts' root-table PATH (into the private harness tree) is written as a role with its sha kept. No other byte is changed.
