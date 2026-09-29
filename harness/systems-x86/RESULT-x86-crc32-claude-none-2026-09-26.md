@@ -6,8 +6,8 @@
 > ## ⛔ READ THIS BEFORE ANY NUMBER BELOW
 > **This is ONE problem at n = 3 per arm. It carries NO effect size and NO premium, and it says nothing about "x86" in general, or
 > about the method, beyond this card** (§X8, registered before any data). A PASS means: behaviour on 82 withheld inputs agrees with the
-> harness's own executor, plus, for salt-diet, a kernel-checked TARGET. For plain, a PASS says nothing about inputs the suite does not
-> test.
+> harness's own executor, plus, for salt-diet, a kernel-checked TARGET whose post does NOT pin the halt reason (§4). For plain, a PASS says
+> nothing about inputs the suite does not test.
 
 ---
 
@@ -59,6 +59,13 @@ harvest. It is not a table column because the script above does not read it. It 
 - **(iii) no plain cell reads `cell_translation=differs`:** HOLDS, 3 of 3 (plain ships no Lean, so the line is absent).
 
 ## 4 · WHAT EACH VERDICT CARRIES BESIDE IT
+- **THE HALT-REASON LIMIT OF THE TARGET** (added 2026-09-29 on a non-author read; the `statement` RESULT, PR #269, declared it first):
+  the referee proves each salt-diet TARGET against `tasks/systems-x86/Crc32/interface/Crc32X86Interface.lean`, which is the same blob
+  (`f1d0c2b6a610`) at `4d960d3`, cut 4 and cut 5. Its `CorrectFor` post, `t.stopped ∧ t.rip = ret`, does not pin WHY the run stopped,
+  because a fault is also `stopped`. The argument that a faulting halt at `ret` is unreachable (`SysVCall`: `prog.at? ret = none`) is
+  sound but **UNPROVED**. So the three salt-diet PASSes here carry this limit. AGREEMENT=82 bounds behaviour on the 82 withheld inputs
+  only; off the suite, nothing here restores the gap. The fix belongs to the next revision of the interface, by a new blob and a new
+  amendment.
 - **clbqcp02 (plain · #2) is DECLARED, not voided (ADDENDUM 7).** Its pool dir's client config had a browser-integration default set.
   Its transcripts carry 0 uses of any browser or MCP tool, but what the client OFFERED is unmeasured. The flag travels with its PASS.
 - **Two pool dirs** (column `pool_dir`, ADDENDA 4–6): cells 1–2 ran on the first and 3–6 on the second, after the first dir's credential
