@@ -21,9 +21,10 @@
 
 ```
   end_marker, verbatim         each cell's own ctl/end-1, on the run box
-  done_reason · turns · wall_s · false_done · mem_cap_mb · mem_peak_mb
+  done_reason · turns · wall_s · false_done · mem_peak_mb
                                each cell's own ctl/agy-turnloop-1.json (done_reason, turns_sent, wall_seconds, false_done_claims,
-                               mem_cap_mb, mem_tree_peak_mb; the last two exist only where the ceiling was on, else "none" / "n/a")
+                               mem_tree_peak_mb, which exists only where the ceiling was on, else "n/a")
+  mem_cap_mb                   each cell's own ctl/caps.tsv, written at its launch (its `mem_cap_mb` row, or "none" where it has none)
   T_tokens · vendor_tokens · served · meter_verdict
                                each cell's own ctl/agy-meter-1.json (T, vendor_total_tokens, served_models, verdict), written by
                                agy_meter_v3.py from the client's stream at the cell's end
@@ -49,7 +50,7 @@ carry host and account paths. A reader reproduces the table by re-running the re
   on its code alone, so these PASSes say nothing about the statement (the lead's ruling of 2026-09-26, as the Claude row carries it).
 - **salt-diet #1, `xass201`, was ended by the operators at 15:08 PDT on 2026-09-26** with the run box at 27.4 of 28.7 GB swap (ADDENDUM 14).
   Its supervisor was stopped (rc 143), so the wave's cells #2 and #3 never started. It wrote no end marker, loop summary or meter, which
-  is why its row reads `MISSING` in every column but `agreement` (§4). Class: **CELL-KILLED** (level 6 §H6 row 6, not void). Its repo carries commit `e689590`
+  is why its row reads `MISSING` in every column but `mem_cap_mb` (from its `caps.tsv`: none) and `agreement` (§4). Class: **CELL-KILLED** (level 6 §H6 row 6, not void). Its repo carries commit `e689590`
   ("landing 1"), with `LANDING.md` committed at 14:55 PDT, 13 minutes before the kill. That fact is printed beside the class, never in
   place of it (ADDENDUM 15). Its tokens are UNMEASURED.
 - **salt-diet #2 and #3, `xass301` and `xass302`,** fired from cut 6 under `AGY_MEM_CAP_MB=8000` (ADDENDUM 15), one supervisor, into a
@@ -64,7 +65,7 @@ id	arm	n	end_marker	done_reason	turns	wall_s	false_done	T_tokens	vendor_tokens	s
 xaps01	plain	1	2026-09-26T20:39:15Z LANDED landing-1 29dac11771fa	LANDED	3	199.2	0	1088001	156992	gemini-3.1-pro-high	OK	none	n/a	PASS	PASS	AGREE=82	n/a	n/a	n/a	n/a
 xaps02	plain	2	2026-09-26T21:19:20Z LANDED landing-1 b0890798501f	LANDED	3	217.0	0	1472654	192471	gemini-3.1-pro-high	OK	none	n/a	PASS	PASS	AGREE=82	n/a	n/a	n/a	n/a
 xaps03	plain	3	2026-09-26T21:23:28Z LANDED landing-1 10d68821dbcd	LANDED	3	214.5	0	854258	122395	gemini-3.1-pro-high	OK	none	n/a	PASS	PASS	AGREE=82	n/a	n/a	n/a	n/a
-xass201	salt-diet	1	MISSING	MISSING	MISSING	MISSING	MISSING	MISSING	MISSING	MISSING	MISSING	MISSING	MISSING	MISSING	MISSING	AGREE=82 (work/agree.out; out.json not written)	MISSING	MISSING	MISSING	MISSING
+xass201	salt-diet	1	MISSING	MISSING	MISSING	MISSING	MISSING	MISSING	MISSING	MISSING	MISSING	none	MISSING	MISSING	MISSING	AGREE=82 (work/agree.out; out.json not written)	MISSING	MISSING	MISSING	MISSING
 xass301	salt-diet	2	2026-09-29T15:14:22Z NO-SUBJECT-RAN phase-1 no turn and no tokens: no model was reached and NOTHING WAS SPENT. Infrastructure, not a statement about the arm (check the vendor credential window first)	MEM-CAP	2	925.5	0	0	0		VOID(NO-MODEL)	8000	8159	SCREEN	PASS	AGREE=82	None	n/a	n/a	n/a
 xass302	salt-diet	3	2026-09-29T15:33:50Z NO-SUBJECT-RAN phase-1 no turn and no tokens: no model was reached and NOTHING WAS SPENT. Infrastructure, not a statement about the arm (check the vendor credential window first)	MEM-CAP	2	1122.1	0	0	0		VOID(NO-MODEL)	8000	8083	SCREEN	PASS	AGREE=82	None	n/a	n/a	n/a
 ```
@@ -83,7 +84,9 @@ loop's own tree peak, which is the trip sample.
   xass301  925.4 s      8,159 MB    8           5,703 MB          0         189                   23
   xass302  1,121.9 s    8,083 MB    7           5,223 MB          0         259 (last step 156)   34
 ```
-Both trips came **inside the subject's first turn**, before the client wrote any result record. The subject ran in both: it wrote and
+Both trips came **inside the subject's first turn**, before the client wrote any result record. (`turns 2` in the table is the
+opening's two sends: each cell's turns file has three lines, the loop sends all but the last up front, and holds the last, the
+P-PERSIST probe, for the end. No continue turn had been sent.) The subject ran in both: it wrote and
 tested `crc32.s`, ran the method's translation script, and (xass302) elaborated `Submission/Proof.lean` four times (steps 129–148).
 **The launcher's P-RAN gate and the meter both read "no result record" as "no subject"**, and wrote `NO-SUBJECT-RAN … NOTHING WAS SPENT`
 and `VOID(NO-MODEL)`, T 0. Both statements are false at the object. **Class `MEM-CAP` (ADDENDUM 16 (1)); price UNMEASURED (ADDENDUM 16 (2)),
@@ -95,7 +98,8 @@ with the ceiling's own instrument and a 12 GB kill of its own:
   xass302  lake env lean Submission/Proof.lean        2,172 MB @22 s · 5,670 @65 s · 6,281 @86 s · 9,571 @108 s · KILLED 12,114 MB @115.8 s
   xass301  lake env lean Submission/TableEqTest.lean  2,201 MB @22 s · 5,753 @65 s · 6,231 @86 s · 10,617 @108 s · KILLED 12,170 MB @112.7 s
   xass201  lake build Submission.TableMatch           1,364 MB @16 s · 4,204 @48 s · 6,058 @81 s · 10,391 @113 s · KILLED 12,074 MB @118.6 s
-  normal   lake build Submission, 9 landed cells      175 – 1,080 MB (agy none ×3, Claude none ×3, Claude statement ×3)
+  normal   lake build Submission, 9 landed cells      175 – 1,080 MB (agy none ×3, Claude none ×3, Claude statement ×3;
+                                                      one, xasn01, is a failing build, rc 1, peak 176 MB like its siblings)
 ```
 **In all three salt-diet cells, the subject's own table proof runs away when elaborated alone, along one curve shape** (a plateau near
 6.2 GB around 86 s, then a climb). Each passes 11× the highest normal build. What the replay cannot say: which process held 5.2–5.7 GB
@@ -104,8 +108,8 @@ at each trip (they were dead before they could be measured), and whether the liv
 ## 4 · THE THREE SALT-DIET END STATES, REFEREED UNDER THE CELL'S OWN CEILING (the lead's ruling, 2026-09-29)
 The referee runs TRANSLATE and both executors, which score tests and agreement, before its SCREEN and COMPILE/TARGET stages build any
 Lean. Each end state was refereed on a hash-checked copy (digest equal before, after, and to the cell's own on the run box), inside
-the fleet's one-heavy-job lock (the referee's Lean goes through saltbuild), with the whole referee tree under an 8,000 MB kill, the
-cell's own ceiling and never more.
+the fleet's one-heavy-job lock (the referee's Lean goes through saltbuild), with the whole referee tree under an 8,000 MB kill: the
+condition's ceiling, the same for all three and never more. xass201's cell itself ran without one (§1).
 ```
   cell     referee end-state verdict                           tests   agreement   steps   referee tree peak   kill
   xass201  proof stage KILLED at the ceiling; no out.json      —       AGREE=82    82/82   8,023 MB            8,000 MB
@@ -141,4 +145,5 @@ For each cell id, it reads, by one ssh per cell and read-only, the run box's `ct
 `ctl/agy-meter-1.json`. It then reads the build box's referee `out.json`. A condition split over two roots is numbered on, never
 restarted (xass201 = n 1, xass301 = n 2, xass302 = n 3). Where out.json is absent, the agreement column reads the referee's own
 `work/agree.out` SUMMARY line and says so; no other column is ever filled from a partial run. A missing source prints `MISSING` and is
-never filled. It printed MISSING on one row, xass201, whose end marker, loop summary, meter and out.json do not exist (§1, §4).
+never filled. It printed MISSING on one row, xass201, whose end marker, loop summary, meter and out.json do not exist (§1, §4). The
+`mem_cap_mb` column is read from each cell's `ctl/caps.tsv`, which every cell has, xass201 included.
