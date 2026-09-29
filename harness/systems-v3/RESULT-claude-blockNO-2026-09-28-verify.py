@@ -21,6 +21,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 CELLS = os.path.join(ROOT, "evidence/claude-lane-blockN-2026-09-28/blockNO-cells.tsv")
 FACTS = os.path.join(ROOT, "evidence/claude-lane-blockN-2026-09-28/blockNO-cellfacts.tsv")
+SERVED = os.path.join(ROOT, "evidence/claude-lane-blockN-2026-09-28/blockNO-served.tsv")
 DOC = os.path.join(HERE, "RESULT-claude-blockNO-2026-09-28.md")
 
 ORDER = ["Luby", "AES", "Liveness", "MaxFlow", "BinomialHeap", "LinearScan"]   # §N3, ascending reference size
@@ -79,8 +80,15 @@ def derive(cells, facts):
         k = len([c for c in cells if c["problem"] == p and c["arm"] == "salt-diet"])
         # the median of n cells sits AT the cap when more than half are capped: the cap's arithmetic forbids a clearing median
         kind = "UNRESOLVED-CENSORED" if capped["salt-diet"] * 2 > k else "UNRESOLVED-UNDERPOWERED"
-        L.append("%-12s median COST plain $%.2f · salt-diet $%.2f · ratio %.1fx · CAP-COST plain %d salt-diet %d · %s" % (
-            p, m["plain"], m["salt-diet"], m["salt-diet"] / m["plain"], capped["plain"], capped["salt-diet"], kind))
+        # the ratio carries its own limit (kent's read of #277): a median is a floor when a capped cell sits at or below its
+        # position; a floored numerator makes the ratio >=, a floored denominator makes it <=
+        def floored(a):
+            rs = sorted((cost(c), c["capped"] == "yes") for c in cells if c["problem"] == p and c["arm"] == a)
+            return any(cp for _, cp in rs[:len(rs) // 2 + 1])
+        nb, db = floored("salt-diet"), floored("plain")
+        mark = "bounds only " if nb and db else ("≥ " if nb else ("≤ " if db else ""))
+        L.append("%-12s median COST plain $%.2f · salt-diet $%.2f · ratio %s%.1fx · CAP-COST plain %d salt-diet %d · %s" % (
+            p, m["plain"], m["salt-diet"], mark, m["salt-diet"] / m["plain"], capped["plain"], capped["salt-diet"], kind))
     for a in ARMS:
         rs = [c for c in cells if c["arm"] == a]
         L.append("total COST (capped at the cap) %s $%.2f · total T %s" % (a, sum(cost(c) for c in rs),
@@ -100,7 +108,11 @@ def derive(cells, facts):
     for a in ARMS:
         seq = [inc[p][a] for p in ORDER]
         mono = all(x <= y for x, y in zip(seq, seq[1:]))
-        L.append("(ii) %s CAP-COST in reference-size order %s · non-decreasing %s" % (a, " ".join(map(str, seq)), "yes" if mono else "NO"))
+        rise = all(x < y for x, y in zip(seq, seq[1:]))
+        # §N4 registers "rises with reference size across the six" and states no test, so BOTH readings print and neither is
+        # called the registration's (kent's read of #277)
+        L.append("(ii) %s CAP-COST in reference-size order %s · non-decreasing (weakest reading) %s · strictly rising %s" % (
+            a, " ".join(map(str, seq)), "yes" if mono else "NO", "yes" if rise else "NO"))
     wall = sum("CAP-WALL" in c["run_state"] for c in cells)
     L.append("(iii) CAP-WALL cells %d" % wall)
     # §5 the declared columns (ADDENDA 6, 8, 9)
@@ -118,6 +130,12 @@ def derive(cells, facts):
         L.append("beat sampler: %d cells sampled · max %s s (%s)" % (len(sampled), top["beat_max_s"], top["cell"]))
     else:
         L.append("beat sampler: 0 cells sampled")
+    # the served models per cell (served_models_v3.py), so the sidechain count in §3 is a derived line
+    if os.path.exists(SERVED):
+        sv = read_tsv(SERVED)
+        L.append("served: %d of %d cells clean · head claude-opus-5 only in %d · sidechains served claude-sonnet-5 in %d of %d cells" % (
+            sum(r["verdict"] == "clean" for r in sv), len(sv), sum(set(x.split("=")[0] for x in r["head"].split()) == {"claude-opus-5"} for r in sv),
+            sum("claude-sonnet-5" in r["sidechain"] for r in sv), len(sv)))
     return L
 
 

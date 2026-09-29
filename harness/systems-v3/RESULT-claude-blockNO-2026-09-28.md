@@ -48,7 +48,7 @@ AES          median COST plain $8.28 · salt-diet $26.57 · ratio 3.2x · CAP-CO
 Liveness     median COST plain $9.44 · salt-diet $14.12 · ratio 1.5x · CAP-COST plain 0 salt-diet 0 · UNRESOLVED-UNDERPOWERED
 MaxFlow      median COST plain $12.50 · salt-diet $22.64 · ratio 1.8x · CAP-COST plain 0 salt-diet 0 · UNRESOLVED-UNDERPOWERED
 BinomialHeap median COST plain $9.01 · salt-diet $18.73 · ratio 2.1x · CAP-COST plain 0 salt-diet 0 · UNRESOLVED-UNDERPOWERED
-LinearScan   median COST plain $35.07 · salt-diet $37.21 · ratio 1.1x · CAP-COST plain 1 salt-diet 3 · UNRESOLVED-CENSORED
+LinearScan   median COST plain $35.07 · salt-diet $37.21 · ratio ≥ 1.1x · CAP-COST plain 1 salt-diet 3 · UNRESOLVED-CENSORED
 total COST (capped at the cap) plain $255.35 · total T 261,516,586
 total COST (capped at the cap) salt-diet $414.26 · total T 472,972,601
 capped cells METERED (not used above): 4, $37.43 .. $37.71 against cap $37.21 · metered salt-diet total $415.43
@@ -57,13 +57,16 @@ uncapped cells ending above the cap: 0
 **The verdict kinds are §N6's, registered before any data.** LinearScan is CENSORED: all three salt-diet cells are capped, so its median sits
 at the cap. The other five are UNDERPOWERED. No premium is RESOLVED, and none can be under rule 2.
 ⚠️ **Every capped cost ENTERS AT THE CAP (lane B §Q6 rule 6).** The four capped cells metered $37.43–$37.71; those figures are printed on their
-own line and used in no median, ratio or total. **LinearScan's 1.1x is a LOWER BOUND** (a capped numerator), and one of its plain cells
+own line and used in no median, ratio or total. **LinearScan's ratio is a LOWER BOUND, and its line prints it `≥`** (a capped numerator), and one of its plain cells
 (`clbmrp01`) is capped too, so its denominator's median is exact but that arm touched the same cap.
 ⚠️ **All six premiums are also understated by the harness's own sandbox probe** (the table's header declares it; desk VX): its near-constant
 absolute cost inflates the cheaper arm's share. ⇒ The sign is the reading; the magnitudes are not.
-⚠️ **The figures count every session under a cell, including subagents on another model.** In 23 of the 36 cells the subject's own sidechains
-were served `claude-sonnet-5` (each cell's served-model record), and `cell_meter.py` prices each record at its SERVED model's rate. The row's
-model is the cell's SUBJECT model.
+⚠️ **The figures count every session under a cell, including subagents on another model** (`blockNO-served.tsv`, one row per cell from
+`served_models_v3.py`, models and counts only):
+```
+served: 36 of 36 cells clean · head claude-opus-5 only in 36 · sidechains served claude-sonnet-5 in 23 of 36 cells
+```
+`cell_meter.py` prices each record at its SERVED model's rate. The row's model is the cell's SUBJECT model.
 ⚠️ **One dollar cap for both model columns (ADDENDUM 10: "the same dollar cap for both models").** ADDENDUM 10's own table measured Opus's dollars
 per hour above the other column's on every range it printed, so the same cap is reached in less work here. Stated as the count it produces, and not as a comparison: **4 CAP-COST
 cells in this column** (the other column's own record carries its count).
@@ -72,13 +75,15 @@ cells in this column** (the other column's own record carries its count).
 # §4 · THE THREE REGISTERED PREDICTIONS (§N4), REPORTED PER ARM; A MISS IS A RESULT
 ```
 (i) salt-diet CAP-COST >= plain in 6 of 6 problems (1 strictly, 5 ties)
-(ii) plain CAP-COST in reference-size order 0 0 0 0 0 1 · non-decreasing yes
-(ii) salt-diet CAP-COST in reference-size order 0 0 0 0 0 3 · non-decreasing yes
+(ii) plain CAP-COST in reference-size order 0 0 0 0 0 1 · non-decreasing (weakest reading) yes · strictly rising NO
+(ii) salt-diet CAP-COST in reference-size order 0 0 0 0 0 3 · non-decreasing (weakest reading) yes · strictly rising NO
 (iii) CAP-WALL cells 0
 ```
 - **(i) HELD** in every problem, strictly only in LinearScan; the other five are ties at zero.
-- **(ii) HELD for both arms**, but only at the last step: every capped cell is LinearScan, the largest reference. Five zeros then a non-zero is
-  non-decreasing, and it is weak evidence for an ordering.
+- **(ii) NOT REFUTED under the weakest reading, and "rises across the six" is NOT SHOWN.** §N4 registers "CAP-COST incidence rises with
+  reference size across the six" and states no test, so the line prints two readings and calls neither the registration's: the sequence is
+  non-decreasing in both arms, and it is not strictly rising in either (five ties at zero, then LinearScan, the largest reference). *(This
+  bullet read "HELD" until kent's non-author read of 2026-09-28, which found that "non-decreasing" was the result's own choice of test.)*
 - **(iii) HELD.** No cell reached the wall cap.
 
 ---
@@ -125,8 +130,12 @@ fire.** ⛔ No cell is voided on this (§N7 row 11 voids a NOT OK, and none read
   meter        each cell's own ctl/post-end-1.tsv (final_T, final_COST, cap_unit, cap, kind)
   model        served_models_v3.py check-cell --condition opus, run on the run box over each cell's transcript (36 of 36 clean)
   joined by    join_cells_table.py --block m --served-dir (greenfield shape)
+  served       blockNO-served.tsv: each cell's served_models_v3.py verdict with its head and sidechain model counts (the transcript path
+               that tool prints is left out)
   cellfacts    pool from ctl/run-cfg.tsv · export from ctl/built-from.tsv · claude_live_at_fire from each fire log's CONCURRENCY line ·
                fault window from ADDENDUM 9 · beat maximum from ADDENDUM 8's sampler · end_from from the scorer's note
-  verifier     RESULT-claude-blockNO-2026-09-28-verify.py — the other column's verifier with the file names changed and one guard for an
-               empty beat sample; re-derives every figure line above and asserts it against this document's bytes
+  verifier     RESULT-claude-blockNO-2026-09-28-verify.py — the other column's verifier with the file names changed, a guard for an empty
+               beat sample, and three changes from kent's non-author read: the ratio line carries its own ≥ / ≤ mark, prediction (ii)
+               prints both readings, and the served-model line is derived; re-derives every figure line above and asserts it against this
+               document's bytes. Its selftest reddens on two mutants; the ratio mark has no mutant of its own.
 ```
