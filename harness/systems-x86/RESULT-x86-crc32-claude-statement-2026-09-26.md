@@ -51,7 +51,9 @@ clbkcs03	salt-diet	3	2026-09-26T13:23:07Z LANDED landing-1 110dea1c967b	31.6514	
 
 ## 3 · THE REGISTERED PREDICTIONS (§X5), READ
 - **(i) salt-diet's cap incidence ≥ plain's:** HOLDS, **1 of 3 ≥ 0 of 3.** clbkcs02 is CAP-COST at 38.0216 against the 37.21 cap, with
-  the overrun printed and never clipped. Its cost is a FLOOR (§X5 (i)). Separately, clbkcs01 LANDED at 36.2658 and its post-END metering
+  the overrun printed and never clipped. Its cost is a FLOOR (§X5 (i)). The end marker says never to quote this cost as a phase-1
+  figure. Quoting it against the cap is sound here only because the card has no phase 2 (§X1), so the cell-cumulative and phase-1
+  scopes coincide. Separately, clbkcs01 LANDED at 36.2658 and its post-END metering
   (the client gone) took its final figure to 37.2308. Both figures are shown and neither is rounded.
 - **(ii) every salt-diet cell that reaches TARGET reads the three standard axioms:** HOLDS, 3 of 3, including the CAP-COST cell's end
   state; `cell_translation=identical` in all three.
@@ -63,8 +65,9 @@ clbkcs03	salt-diet	3	2026-09-26T13:23:07Z LANDED landing-1 110dea1c967b	31.6514	
   landing rate.**
 - **THE HALT-REASON LIMIT OF THE STATEMENT** (routed by x86lean's refuters, held by the lead): `CorrectFor`'s post, `t.stopped ∧ t.rip =
   ret`, does not pin WHY the run stopped, because a fault is also `stopped`. The argument that a faulting halt at `ret` is unreachable
-  (`SysVCall`: `prog.at? ret = none`) is sound but **UNPROVED**. What bounds every PASS here regardless is AGREEMENT=82: a routine that
-  faults instead of returning disagrees with the native run. The fix belongs to the NEXT statement revision, by a new blob and a new
+  (`SysVCall`: `prog.at? ret = none`) is sound but **UNPROVED**. On the 82 withheld inputs, what bounds every PASS regardless is AGREEMENT=82: a routine that
+  faults instead of returning disagrees with the native run. Off the suite, nothing here restores the gap, since the TARGET is a claim
+  over all inputs (corrected 2026-09-29 on a non-author read). The fix belongs to the NEXT statement revision, by a new blob and a new
   amendment, never mid-block.
 - **Two pool dirs** (column `pool_dir`): clbkcp02 ran on the second (ADDENDUM 10, trigger (c), with the first pool at 92 %), and the other
   five ran on the first. The model, pin, cut, views, fence render, budgets and referee are the same on both.
