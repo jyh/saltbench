@@ -13,17 +13,20 @@ either says so and says why.
 ---
 
 ## §G0 · WHICH OF THE TEN THIS BLOCK FIRES, AND WHY ONLY SEVEN CELLS
-Census ADDENDUM 25 §AE2 lists ten DONE conditions at n < 3. Four of them close on records that already exist, at zero spend, and are
-NOT in this block (the helm concurred, bus 2026-09-29 10:54:01):
+Census ADDENDUM 25 §AE2 lists ten DONE conditions at n < 3. Four of them are NOT in this block, because their third cell already ran
+and landed and needs only a record, at zero spend (the helm concurred, bus 2026-09-29 10:54):
 ```
-  gemini-3.1-pro-high  Crc32 × salt-diet × statement     s3ct01 · s3ct02 · s3ctk01          n = 3   RESULT-stage3-2026-09-12.md ADDENDUM 1
-                       FreeList × plain × none           s3fp01 · s3fpk01 · s3fpk02         n = 3     §R2–§R3 (signed 2026-09-17); limit §R6.5:
-                       FreeList × plain × statement      s3fq01 · s3fq02 · s3fqk01          n = 3     the top-ups ran on export s2k and another client
-  claude-sonnet-5      LRU × plain × none                clbglp01 · clbglp02 · clbglp03     n = 3   clbglp01 RAN and was SCORED (blockSG :15);
-                                                                                                    restored by its own dated addendum (served model
-                                                                                                    read from its transcripts, 62 of 62 claude-sonnet-5)
+  claude-sonnet-5      LRU × plain × none                clbglp01 · clbglp02 · clbglp03     restored by blockSG ADDENDUM A (census
+                                                                                            ADDENDUM 30): served receipt by the block's
+                                                                                            own instrument, re-scored PASS 16/16
+  gemini-3.1-pro-high  Crc32 × salt-diet × statement     s3ct01 · s3ct02 · top-up s3ctk01   the top-ups landed (RESULT-stage3-2026-09-12.md
+                       FreeList × plain × none           s3fp01 · top-ups s3fpk01, s3fpk02    ADDENDUM 1 §R3) and are "in no score receipt"
+                       FreeList × plain × statement      s3fq01 · s3fq02 · top-up s3fqk01     (the descriptive-tables map). The receipt is the
+                                                                                            owning lane's, commissioned; its limit §R6.5
+                                                                                            (another export and client) rides beside the n
 ```
-The census addendum that records those four is its own act, with those records beside it. **This block is the other six.**
+If that receipt's controls do not reproduce, those three stay at their n and the census says so. No cell is fired for them here.
+**This block is the other six conditions.**
 
 ## §G0′ · THE INPUTS
 ```
