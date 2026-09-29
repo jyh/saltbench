@@ -17,3 +17,15 @@ in the cell's own `ctl/watch.log`. There are 269 phase readings (245 phase 1, 24
 the watcher computes `wall` NET of held time (`t - T0 - hold_total`), so a hold is printed in its own column (1 cell). The last METER line
 precedes the end marker by up to one tick (about 60 s), so the figure understates a cell's wall by at most one tick. It is a raw
 extraction, not the registered reading.
+
+## Step e (the Opus head-vs-subagent split), raw: `opus-split-raw.tsv`, produced on the run box by `opus-split-raw.sh`
+`cell_meter.py` (export `9d873183acab`) `--json` over every CLAUDE-shape cell in `cellroots.tsv`, one row per (cell, config dir). The tracked script differs from the one run in its line 4 only: the meter's path is taken from `CELL_METER` rather than written out, because that path names a private tree. A cell
+without `ctl/run-cfg.tsv` (the 09-09/09-10 roots) is metered from the one config dir that holds its slug; none was missing or ambiguous.
+The tracked file keeps the 108 Opus-headed cells and drops the config-dir column. **Second method:** for the 54 cells it shares with
+`harness/systems-v3-analysis/RESULT-tokens-table-all-roots-2026-09-10.tsv`, T agrees exactly in 54 of 54. Each row's
+`T_head + T_exec_opus + T_exec_sonnet + T_wf == T` is asserted as it is written.
+Over the 108 cells (computed from the file, not typed): 11.65 % of T is outside the head session; 90 cells carry Opus subagent tokens and
+74 carry Sonnet subagent tokens; no cell has no subagent. **Limits, beside the figures:** 30 rows carry `VOID(UNDERSTATED)` (an interrupted
+turn whose usage the client never finished writing), so their T and COST are LOWER BOUNDS. COST is modelled at list rates from `rates.tsv`
+read on 2026-09-05, not an invoice, and the rates page is owed a re-read before any dollar is registered. Block N (#274, and the Opus column
+still running) is not in this population. It is a raw extraction, not the registered reading.
