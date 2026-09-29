@@ -59,3 +59,8 @@ later model's row, rc 0); Pro's cache row made single-tier refuses.
 Per request, over every agy stream of record (332 streams, 36,510 requests): (a) thinking > output never occurs (max ratio 0.998), so
 `output` includes thinking; (b) cache_read > input occurs on 34,406 requests, so `input` excludes cache reads. Run on the run box
 against `cellroots.tsv`.
+
+## The inputs `tables_v3.py` reads (registration ADDENDA 1 and 3)
+`claude-cost-raw.tsv` (cell_meter over all 245 Claude cells, each cell's own caps; `claude-cost-raw.sh`), `claude-wall-raw-allroots.tsv`
+(step d's extraction over every CLAUDE (cell, root) pair in the inventory; `claude-wall-raw-list.sh`), and `agy-steps-raw.tsv` as re-run
+with per-tier sums, each phase's wall cap and turn timeout, and level 8's phase 1 read from its `_aside` directory.

@@ -21,7 +21,7 @@ def records(path):
 cols = ['cell', 'root', 'phase', 'served', 'meter_input', 'meter_cache_read', 'meter_output', 'meter_thinking', 'meter_T',
         'steps', 'step_input', 'step_cache_read', 'step_output', 'step_thinking', 'coverage', 'max_prompt', 'n_over_200k',
         'bad_lines', 'recovered', 'lo_input', 'lo_output', 'lo_cache_read', 'lo_thinking', 'hi_input', 'hi_output',
-        'hi_cache_read', 'hi_thinking', 'wall_s', 'done_reason', 'note']
+        'hi_cache_read', 'hi_thinking', 'wall_s', 'done_reason', 'max_wall', 'turn_timeout', 'note']
 TIER = 200000   # Pro's price tier is on each request's PROMPT = input + cache_read (the Gemini price page; step b)
 print('\t'.join(cols))
 for row in csv.DictReader((l for l in open(sys.argv[1]) if not l.startswith('#')), delimiter='\t'):
@@ -63,4 +63,9 @@ for row in csv.DictReader((l for l in open(sys.argv[1]) if not l.startswith('#')
         if os.path.exists(tl):
             t = json.load(open(tl)); out += [t.get('wall_seconds', '-'), t.get('done_reason', '-')]
         else: out += ['-', '-']; note.append('NO-TURNLOOP')
+        caps = {}   # the cell's own ctl/caps.tsv (the wall cap and the turn timeout the loop ran under), else the phase's aside copy
+        for cp in ('%s/caps.tsv' % ctl, '%s/caps.tsv' % aside):
+            if os.path.exists(cp):
+                caps = dict(l.rstrip('\n').split('\t', 1) for l in open(cp) if '\t' in l); break
+        out += [caps.get('max_wall', '-'), caps.get('turn_timeout', '-')]
         print('\t'.join(map(str, out + [';'.join(note) or '-'])))
