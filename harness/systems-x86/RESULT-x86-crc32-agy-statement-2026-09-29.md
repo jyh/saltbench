@@ -106,7 +106,7 @@ with the ceiling's own instrument and a 12 GB kill of its own:
 6.2 GB around 86 s, then a climb). Each passes 11× the highest normal build. What the replay cannot say: which process held 5.2–5.7 GB
 at each trip (they were dead before they could be measured), and whether the live run would have finished.
 
-## 4 · THE THREE SALT-DIET END STATES, REFEREED UNDER THE CELL'S OWN CEILING (the lead's ruling, 2026-09-29)
+## 4 · THE THREE SALT-DIET END STATES, REFEREED UNDER THE CONDITION'S CEILING, 8,000 MB (the lead's ruling, 2026-09-29)
 The referee runs TRANSLATE and both executors, which score tests and agreement, before its SCREEN and COMPILE/TARGET stages build any
 Lean. Each end state was refereed on a hash-checked copy (digest equal before, after, and to the cell's own on the run box), inside
 the fleet's one-heavy-job lock (the referee's Lean goes through saltbuild), with the whole referee tree under an 8,000 MB kill: the
