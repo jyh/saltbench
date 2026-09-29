@@ -29,3 +29,15 @@ Over the 108 cells (computed from the file, not typed): 11.65 % of T is outside 
 turn whose usage the client never finished writing), so their T and COST are LOWER BOUNDS. COST is modelled at list rates from `rates.tsv`
 read on 2026-09-05, not an invoice, and the rates page is owed a re-read before any dollar is registered. Block N (#274, and the Opus column
 still running) is not in this population. It is a raw extraction, not the registered reading.
+
+## Step c (agy token categories, per request, and wall), raw: `agy-steps-raw.tsv`, produced on the run box by `agy-steps-raw.py`
+For each AGY-shape cell in `cellroots.tsv` (272 cells; 332 phase rows, 60 of them a phase 2) and each phase with `ctl/agy-meter-N.json`:
+the meter's turn-level fold (which is T), the per-REQUEST usage the stream carries on each DONE `agent_response` step (deduped by
+conversation and step, with whole records recovered from interleaved lines), and the turn loop's wall. **Why per request:** Pro's list
+price has a 200k-prompt tier, so a price needs each request's prompt (`input + cache_read`), and a per-cell total cannot give it.
+**What it shows (computed from the file):** 264 phase rows are COMPLETE (the step sums equal the meter on all four keys); 2 are
+PARTIAL (`s3ft02`, `l7cpbs03`: steps lost in interleaved lines); 6 EXCEED the meter (the step sums are larger than the turn-level fold,
+which is a question about the fold, not yet answered); 60 have NO STREAM (all level 8 phase 1: a meter file and no stream in the cell; where the stream lives is not measured here).
+No Pro request in any stream has a prompt over 200,000 tokens; the largest observed is 144,717. **Limits, beside the figures:** that
+maximum covers observed requests only, so a PARTIAL or NO-STREAM Pro row cannot be put in a tier from this file. The served labels are
+the lane's thinking-level ids, not the price page's ids (ADDENDUM 2 of the price plan). It is a raw extraction, not the registered reading.
