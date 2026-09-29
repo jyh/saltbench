@@ -79,8 +79,15 @@ def derive(cells, facts):
         k = len([c for c in cells if c["problem"] == p and c["arm"] == "salt-diet"])
         # the median of n cells sits AT the cap when more than half are capped: the cap's arithmetic forbids a clearing median
         kind = "UNRESOLVED-CENSORED" if capped["salt-diet"] * 2 > k else "UNRESOLVED-UNDERPOWERED"
-        L.append("%-12s median COST plain $%.2f · salt-diet $%.2f · ratio %.1fx · CAP-COST plain %d salt-diet %d · %s" % (
-            p, m["plain"], m["salt-diet"], m["salt-diet"] / m["plain"], capped["plain"], capped["salt-diet"], kind))
+        # the ratio carries its own limit (kent's read of the Opus column, 2026-09-28, applied here): a median is a floor when a
+        # capped cell sits at or below its position; a floored numerator makes the ratio >=, a floored denominator makes it <=
+        def floored(a):
+            rs = sorted((cost(c), c["capped"] == "yes") for c in cells if c["problem"] == p and c["arm"] == a)
+            return any(cp for _, cp in rs[:len(rs) // 2 + 1])
+        nb, db = floored("salt-diet"), floored("plain")
+        mark = "bounds only " if nb and db else ("≥ " if nb else ("≤ " if db else ""))
+        L.append("%-12s median COST plain $%.2f · salt-diet $%.2f · ratio %s%.1fx · CAP-COST plain %d salt-diet %d · %s" % (
+            p, m["plain"], m["salt-diet"], mark, m["salt-diet"] / m["plain"], capped["plain"], capped["salt-diet"], kind))
     for a in ARMS:
         rs = [c for c in cells if c["arm"] == a]
         L.append("total COST (capped at the cap) %s $%.2f · total T %s" % (a, sum(cost(c) for c in rs),
