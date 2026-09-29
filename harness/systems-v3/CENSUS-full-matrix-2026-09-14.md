@@ -1356,3 +1356,128 @@ Its closer is gemini's `--plan` for l7cfss02+03 on level 7's export, checked by 
 - **A DONE means n = 3 reached and scored on the withheld suite, never a verdict on the arms.** Each level's result of record says what its
   conditions can and cannot carry, and none of them claims that the salt method helps or hurts.
 - **The 16 INEXPRESSIBLE and the 3 DECLARED are not DONE**, and a reader summing "complete" must say which of the three states is meant.
+
+---
+
+# ⚖️ ADDENDUM 25 — **§AD2's "n = 3 reached" IS TOO STRONG FOR 10 DONE CONDITIONS. A DEFINITION CLAUSE, NOT A RECOUNT: DONE STAYS AT 181.**
+## bench, 2026-09-27, on the helm's routing, with `RESULT-descriptive-tables-v2-2026-09-27.md` (the four descriptive tables) on the same branch.
+
+## §AE1 · WHAT IS WRONG, AND WHAT IS NOT
+- §AD2 says *"A DONE means n = 3 reached and scored on the withheld suite."* **That is false as written for 10 of the 181.** The
+  descriptive-tables map, which lists each condition's cells as its result of record lists them, finds 171 conditions with three
+  cells and 10 with one or two.
+- **The COUNT is not wrong.** This census counted each of the 10 DONE at its smaller n and said so where it did it: §C4 for the
+  Opus spec-change row ("19 cells" for its ten conditions), §T2 for Sonnet's n = 2 conditions, and the
+  level-1 result of record, which says of its own conditions *"n IS 1–4 PER CONDITION, NOT 3"*. What was wrong is the one-line
+  summary written at ADDENDUM 24, which generalised the rule of the later blocks to the whole matrix.
+
+## §AE2 · THE DEFINITION, CORRECTED
+**DONE means a result of record merged in this repository that reports the condition's outcome, at the n that record states.** For
+171 conditions that n is 3. The 10 below are DONE at a smaller n, each by its own record's words:
+```
+  claude-opus-5        FreeList × plain     × spec-change   n = 2   RESULT-p1-specchange-2026-09-10.md:36
+                       FreeList × salt-diet × spec-change   n = 1   the same file :36, :40-41 ("a 0/1 is not a rate")
+                       LRU      × plain     × spec-change   n = 2   the same file :35
+                       LZW      × plain     × spec-change   n = 2   RESULT-specchange-1-2026-09-10.md:43
+                       Paxos    × plain     × spec-change   n = 2   RESULT-p1-specchange-2026-09-10.md:37
+                       Paxos    × salt-diet × spec-change   n = 2   the same file :37
+  claude-sonnet-5      LRU      × plain     × none          n = 2   §T2 above; RESULT-claude-blockSG-2026-09-21.md
+  gemini-3.1-pro-high  Crc32    × salt-diet × statement     n = 2   RESULT-p1-greenfield-2026-09-13.md:24
+                       FreeList × plain     × none          n = 1   the same file :27, :54
+                       FreeList × plain     × statement     n = 2   the same file :28
+  (all greenfield)
+```
+
+## §AE3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH, SAID SO NOBODY READS IT AS MORE
+- **It counts CELLS OF RECORD, not SCORABLE cells.** A record can list three cells and score fewer: §T2's Sonnet FreeList × salt-diet
+  lists three cells and scores two (one BUILD-FAIL). **A census of scorable n across all 181 conditions is NOT taken here.** A reader
+  who needs it reads each condition's record.
+- It moves no condition. The LIVE figure stands: **DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.**
+- It changes no result of record, and it makes no claim about the salt method.
+
+---
+
+# ⚖️ ADDENDUM 26 — **ADDENDUM 25 QUOTED §C4's "19 cells" AS THE OPUS SPEC-CHANGE ROW's POPULATION. IT IS 23. NOTHING ELSE MOVES.**
+## bench, 2026-09-27, on the fresh non-author read of the arXiv v2 tables.
+- §C4's "19 cells" is a 2026-09-14 figure. The row's ten conditions carry **23 cells of record** in the descriptive-tables map
+  (`CELLMAP-descriptive-tables-v2-2026-09-27.tsv`): six conditions at n < 3 (2 + 1 + 2 + 2 + 2 + 2 = 11) and four at n = 3 (12).
+- ADDENDUM 25 §AE1 used the figure only as evidence that this census counted those conditions at a smaller n. That evidence
+  stands on the records' own lines, which §AE2 cites. The corrected definition and the list of 10 are unchanged.
+- The LIVE figure is unchanged: **DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.**
+
+---
+
+# ⚖️ ADDENDUM 27 — **O37 JOINS AS ITS OWN SECTION: BLOCK N's SONNET COLUMN IS A RESULT OF RECORD. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-09-28, with `RESULT-claude-blockNS-2026-09-28.md` in the same commit (the column's record), as the block's registration §N9 requires.
+
+## §AF1 · WHY A SECTION AND NOT A ROW
+O37's registration (`AMENDMENT-O37-nine-greenfield-claude-2026-09-25.md` §N9) says its population *"joins the census as its own section,
+because the pilot's census is a result of record and is not re-opened."* The six problems here (Luby · AES · Liveness · MaxFlow ·
+BinomialHeap · LinearScan) are not among the pilot's five, so no pilot condition changes state and **the pilot's line stands as ADDENDUM 26
+left it: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AF2 · THE O37 SECTION — BLOCK N (Claude lane, greenfield × none), 24 conditions
+```
+  claude-sonnet-5  6 problems x {plain, salt-diet}   12 conditions   OWED -> DONE   36 cells, n = 3 each, scored on the withheld suite
+                                                                                    (RESULT-claude-blockNS-2026-09-28.md)
+  claude-opus-5    6 problems x {plain, salt-diet}   12 conditions   OWED           no result of record yet (block N's second, §N9)
+  -------------------------------------------------------------------------------------------------
+  BLOCK N        DONE 12 · OWED 12   = 24
+```
+⚠️ **OWED is this census's definition (ADDENDUM 25): no result of record.** It is not "unrun": ten of the Opus conditions already have three
+scored cells, and the last two (LinearScan salt-diet #2 and #3) are firing on 2026-09-28. They become DONE when the Opus column's result of record lands, and not before.
+⚠️ **O37's other 192 conditions** (statement and spec-change on these six, the three problems with no v3 rung, and the agy lane's sibling block)
+are outside block N (§N1) and are not counted here. Each enters this section with its own block's result.
+
+## §AF3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+A DONE is a merged result of record at the n it states (ADDENDUM 25), never a verdict on the arms. The Sonnet column's premiums are all
+UNRESOLVED by registration, and its own §7 says what it cannot carry.
+
+---
+
+# ⚖️ ADDENDUM 28 — **O37 BLOCK NA (the agy lane) IS A RESULT OF RECORD: ALL 24 CONDITIONS DONE. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-09-28, with `RESULT-gemini-blockNA-2026-09-28.md` in the same commit (both models' records), as §NA6 requires.
+
+## §AG1 · THE O37 SECTION, RE-CUT
+```
+  BLOCK N  (Claude lane)   claude-sonnet-5        12 conditions   DONE    (ADDENDUM 27; RESULT-claude-blockNS-2026-09-28.md)
+                           claude-opus-5          12 conditions   OWED    no result of record yet
+  BLOCK NA (agy lane)      gemini-3.1-pro-high    12 conditions   DONE    RESULT-gemini-blockNA-2026-09-28.md §2
+                           gemini-3.8-flash-high  12 conditions   DONE    RESULT-gemini-blockNA-2026-09-28.md §3
+  -------------------------------------------------------------------------------------------------
+  O37 (the 48 conditions the harness can express today)   DONE 36 · OWED 12   = 48
+```
+⚠️ **The 48 are O37's expressible slice, not its population.** O37's own population is 216 conditions, and the other 168 (statement and spec-
+change on these six, and the three problems with no v3 rung) are outside both blocks. Each enters this section with its own block's result.
+
+## §AG2 · WHAT A DONE HERE CARRIES, BESIDE THE FIGURE
+- Every NA condition FIRED 3 cells. Two conditions carry a non-landing inside their n, and their records print it in its own column: Pro AES
+  salt-diet (`naaeps01`, NOT-LANDED, 2 scored of 3) and Flash BinomialHeap salt-diet (`nabhfs03`, a RESULT labelled CUT-BOUND, 2 scored of 3).
+  **A DONE is a merged result of record at the n it states (ADDENDUM 25), and "n = 3" here means three cells fired, not three scored.**
+- `nabhfsr01` is outside every n and every count here (the XF ruling: a re-fire never replaces a RESULT).
+- A DONE is never a verdict on the arms. Both NA records print the arm-correlated deadline cut beside every table, and neither claims the
+  salt method helps or hurts.
+
+---
+
+# ⚖️ ADDENDUM 29 — **O37 BLOCK N's OPUS COLUMN IS A RESULT OF RECORD: THE 48 EXPRESSIBLE CONDITIONS ARE ALL DONE. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-09-29, with `RESULT-claude-blockNO-2026-09-28.md` in the same commit (the column's record), as §N9 requires.
+
+## §AH1 · THE O37 SECTION, RE-CUT
+```
+  BLOCK N  (Claude lane)   claude-sonnet-5        12 conditions   DONE    (ADDENDUM 27; RESULT-claude-blockNS-2026-09-28.md)
+                           claude-opus-5          12 conditions   DONE    RESULT-claude-blockNO-2026-09-28.md
+  BLOCK NA (agy lane)      gemini-3.1-pro-high    12 conditions   DONE    (ADDENDUM 28)
+                           gemini-3.8-flash-high  12 conditions   DONE    (ADDENDUM 28)
+  -------------------------------------------------------------------------------------------------
+  O37 (the 48 conditions the harness can express today)   DONE 48 · OWED 0   = 48
+```
+⚠️ **The 48 are O37's expressible slice, not its population** (ADDENDUM 28 §AG1): the other 168 of O37's 216 are outside both blocks.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AH2 · WHAT A DONE HERE CARRIES, BESIDE THE FIGURE
+- Every Opus condition has three scored cells of record. **LinearScan salt-diet's third is a re-fire** (`clbmrsr3`, under block N ADDENDA
+  13–14, on saltbench PR #265): the cell it replaces, `clbmrs03`, lost its credential mid-run and is NOT-SCORED(HARNESS), in no n and no
+  count here. That condition's three cells straddle two pools, declared in its record.
+- A DONE is a merged result of record at the n it states (ADDENDUM 25), never a verdict on the arms. The Opus record's premiums are all
+  UNRESOLVED by registration, and its §7 says what it cannot carry, including any comparison with the other model column.
