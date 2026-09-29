@@ -1507,3 +1507,25 @@ The v2 tables applied their registered rule correctly. They are a dated reading 
 ADDENDUM 25 §AE2 less Sonnet LRU × plain × none: **nine conditions at n < 3.** Six are the Opus spec-change row, which the step-g freeze
 (`AMENDMENT-stepg-opus-specchange-2026-09-29.md`, a separate PR) takes to n = 3 with seven cells. The other three wait on the receipt.
 The LIVE figure is unchanged: **DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** Nothing here is a claim about the salt method.
+
+---
+# ⚖️ ADDENDUM 31 — **STEP g: THE THREE PRO CONDITIONS REACH n = 3 OF RECORD ON stage 3 ADDENDUM B's SCORE RECEIPT. THE LIST IS SIX.**
+## bench, 2026-09-29, on `RESULT-stage3-2026-09-12.md` ADDENDUM B and its `RESULT-stage3-ADDENDUM-B-cells-2026-09-29.tsv` (gemini; saltbench #286,
+## read by bench as non-author, merged).
+
+## §AG1 · WHAT MOVES, WITH THE LIMIT BESIDE EVERY ROW
+```
+  gemini-3.1-pro-high  greenfield  condition                     n       cells of record (full passes)                       spans
+                                   FreeList × plain × none       1 → 3   s3fp01 PASS 7/7 · s3fpk01 FAIL 6/7 · s3fpk02 FAIL 6/7  (1 of 3)   2 exports · 2 clients
+                                   FreeList × plain × statement  2 → 3   s3fq01 · s3fq02 · s3fqk01, all PASS 7/7              (3 of 3)   2 exports · 1 client
+                                   Crc32 × salt-diet × statement 2 → 3   s3ct01 · s3ct02 · s3ctk01, all PASS 6/6              (3 of 3)   2 exports · 2 clients
+```
+⛔ **The limit (ADDENDUM B §B4, ADDENDUM 1 §R6.5):** each top-up was built from export `3f83a69` while its condition's original cells were built
+from `156fcb9`, and three of the four top-ups also ran on a different client binary. **Each of these three n = 3 figures spans two exports, and two of
+them also span two clients.** The receipt settles what the cells SCORE. It does not settle the export axis. `s3ct01` is TRUNCATED: its PASS stands,
+and its cost figures do not pool (§B4).
+
+## §AG2 · THE LIST, AS IT NOW STANDS
+ADDENDUM 25 §AE2's ten, less Sonnet LRU (ADDENDUM 30) and these three: **six conditions at n < 3, all in the Opus spec-change row**, which the
+step-g freeze (`AMENDMENT-stepg-opus-specchange-2026-09-29.md`) takes to n = 3 with seven cells.
+The LIVE figure is unchanged: **DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** Nothing here is a claim about the salt method.
