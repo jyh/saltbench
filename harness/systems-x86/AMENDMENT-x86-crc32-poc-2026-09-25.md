@@ -382,3 +382,50 @@ as the Claude row's are the lead's (#268, #269).
 not only against plain. Inside this one condition, xass201 ran WITHOUT the ceiling and xass202 and xass203 would run WITH it. The
 agy `none · salt-diet` cells also ran without it. So at n = 3 the condition mixes two cap regimes. Its RESULT prints each cell's regime
 beside its class, as ADDENDUM 12's time-order confound is printed, and never pools the cells as if they had one regime.
+
+---
+
+## ⚖️ ADDENDUM 15 — THE RELEASE OF ADDENDUM 14's HOLD: THE CONDITION's CELLS #2 AND #3 FIRE FROM CUT 6 = 3e9289c, UNDER A CEILING OF 8,000 MB. APPENDED.
+bench (lead), 2026-09-29 07:4x PDT. Every text above is untouched.
+**The cut.** Cut 6 = `3e9289c` (gemini, 2026-09-29), one commit on cut 5 = `ec67091`. **The lead diffed them** (`git diff --stat
+ec67091 3e9289c`, 5 files): the ceiling in `agy_turnloop_v3.py` and `agy_launch_v3.sh`, one display line each in `agy_wave_v3.sh` and
+`gemini_canary_wave_v1.sh`, and one allowlisted variable in `gemini_drive_v3.sh`. Nothing a view, a card or the referee reads changes. With
+`AGY_MEM_CAP_MB` unset, the loop starts no watcher and the summary and `caps.tsv` carry no ceiling field. The launcher's arm 3h drives
+exactly that (set, unset, refused). So a cell with the ceiling unset reads what cut 5 gave it.
+**The ceiling: `AGY_MEM_CAP_MB=8000`**, on the physical footprint of the cell's process tree, sampled every 2 s. A trip ends the cell
+`MEM-CAP`. Like row 6 of level 6 §H6, that class is declared beside the arm column, it is not void, and it is never counted as a landing.
+**The basis** is the hand's replay table (`evidence-memcap-2026-09-29/memprobe.tsv` at `6c4ebec`, cut 6's child, which adds that directory and nothing else). It replays final repo states on copies,
+at zero spend. Nine `lake build Submission` runs of final states peak between 175 and 1,080 MB; one of them (xasn01, rc 1 in 6.5 s) is a failing
+build, and its peak (176) matches its two siblings'. The highest is a Claude `statement · salt-diet`
+cell. xass201's committed `Submission/TableMatch.lean`, built alone, reaches 12,074 MB at 118.6 s and is still rising when the replay
+kills it. 8,000 MB is ≈7.4× the highest normal build. The runaway's curve crosses it between 102.4 s (7,216 MB) and 107.8 s (8,699 MB).
+**Why 8,000 and not the hand's recommended 6,000.** Both values are box-safe. Both stop the runaway within two minutes, so the
+choice does not change what the ceiling is for. What differs is which arm pays. The ceiling can bind only an arm that builds Lean, and
+here that is salt-diet alone (ADDENDUM 14). So of two box-safe values the lower one is a larger treatment effect of the harness, and it
+buys no safety that the higher one lacks. Two measured facts point the same way. **(i)** The replays exclude the client (srt, node,
+agy), whose footprint is NOT MEASURED, and every live cell carries it. So the true margin over a normal live cell is smaller than the
+replay's ratio, by that amount. **(ii)** The runaway's tree footprint (the column the ceiling reads) plateaus at 6,058–6,361 MB from 75.4 s to 91.6 s,
+having crossed 6,000 between 70.0 s (5,864) and 75.4 s (6,058). A ceiling at 6,000 MB would trip at that plateau's start, which is also where a heavy but finishing proof build could stop. 8,000 MB is above the plateau.
+**What the RESULT prints for these two cells.** For each cell: its cap regime (the ceiling at 8,000 MB, beside xass201's none). If the
+ceiling trips, the class is `MEM-CAP`. Either way it prints the loop's own `mem_tree_peak_mb`. That peak is the first live measure of
+the client's footprint in this lane. It is printed as a measurement, and it does not change the ceiling for these two cells.
+**The cell ids.** The wave mints `<prefix>01..<reps>`, so a prefix of `xass2` would mint a second xass201. The cells are **xass301 and
+xass302**, a fresh wave with prefix `xass3` and `AGY_REPS=2`, into a staged empty root. They are recorded as the condition's cells #2 and
+#3, which ADDENDUM 14 called xass202 and xass203. No id repeats, for the reason cut 5 used `xass2`.
+**Order and confound.** xass301, then xass302, on one supervisor, after ADDENDUM 13's order. They fire at least three days after
+xass201 and after every other agy cell. ADDENDUM 12's time-order confound carries here with a longer gap, and it falls on salt-diet
+alone. Its sign is not registered.
+**gemini's question (2026-09-29 07:45), answered.** xass201's repo holds a landing commit (`e689590`, "landing 1: …", 14:56:51 PDT,
+with `LANDING.md` committed at 14:55) twelve minutes before the kill at 15:08. The loop never read it: it was blocked mid-turn on the
+builds, and no `ctl/end-1` was written. **The class stays `CELL-KILLED`, and the landing file is printed beside it.** The class
+records how the cell ended, and the kill ended it; a file written earlier does not change that. The x86 freeze registers no LANDED
+column for the agy row: §X7 imports level 6 §H6 and not §H5, whose rule 9 defines LANDED on the agy lane as "`LANDING.md` exists". If
+the hand's RESULT carries that column by level 6's convention, xass201 reads LANDED under that definition, beside `CELL-KILLED`, with
+the `declared` tag read from the repo. That is the rule every other agy cell is read by. Neither column is a pass. ADDENDUM 14's "never
+counted as a landing" means the kill is never reported as one, and it stays true under this reading. If the end state is refereed, the
+referee reads the committed tree, which includes `e689590`, and the RESULT prints a verdict of the end state (ADDENDUM 14).
+**OWNER · CLOCK.** The fire is the hand's (gemini's), on the agy credential, once nothing else holds it. ADDENDUM 14's re-measure date,
+2026-10-02, stands as the clock. If neither cell has fired by then, ADDENDUM 14's default takes the unfired cells: they are DECLARED
+unreached, and the condition's n is the count of cells that ran.
+**Unchanged:** every other condition and cell, both rows, the referee, the caps of level 6 §H3, §X5, §X6 and §X8, and ADDENDUM 14's
+pooling rule (each cell's regime is printed; the three cells are never pooled as one regime).
