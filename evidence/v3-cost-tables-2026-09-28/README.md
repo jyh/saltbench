@@ -54,3 +54,8 @@ because no agy stream records cache-hours. The lane's served labels are not the 
 `rates.tsv`'s 2026-09-05 rows stand at the 2026-09-29 read. **Red drives:** a changed Sonnet cache-read rate in a copy of `rates.tsv`
 gives DISAGREE and rc 1; Flash's output label removed from the page text refuses (this caught an unscoped first pattern that had read a
 later model's row, rc 0); Pro's cache row made single-tier refuses.
+
+## Registration ADDENDUM 2's field tests: `agy-field-tests.py` → `agy-field-tests.out`
+Per request, over every agy stream of record (332 streams, 36,510 requests): (a) thinking > output never occurs (max ratio 0.998), so
+`output` includes thinking; (b) cache_read > input occurs on 34,406 requests, so `input` excludes cache reads. Run on the run box
+against `cellroots.tsv`.

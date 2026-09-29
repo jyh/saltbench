@@ -107,3 +107,29 @@ computed; the facts below are per-cell properties of the inputs.
   18.60, `clbczs02` likewise). So a CAP-COST cell's dollar figure is **the larger of its metered COST and the cap its end marker names,
   marked `≥`**. This departs from the literal rule in the upward direction only, and only by spend the meter recorded; every such figure
   is a floor either way. The result file prints, per capped cell, the cap, the metered COST and which one entered.
+
+---
+
+## ⚖️ ADDENDUM 2 — THE NON-AUTHOR READ (kent, blob 2445c62ba3b6 at head 00d5d67de4b0): 1 KILL · 2 DEFECT, ALL TAKEN, BEFORE THE RUN. APPENDED; §V1–§V6 and ADDENDUM 1 untouched.
+- **A2.1 · KILL TAKEN: `output` INCLUDES thinking, so thinking is NOT added.** §V2 priced `(output + thinking) × out` on the evidence
+  `total_tokens == input + output`, which holds under BOTH readings and so decides nothing (the reader's point). The discriminating
+  test is per request: if `output` contains thinking, no request can show thinking > output. **Over every agy stream of record
+  (332 streams, 36,510 requests; `agy-field-tests.py`, output in `agy-field-tests.out`): thinking > output on 0, thinking = output on 0,
+  and the largest thinking/output is 0.998.** A ratio that hugs 1 from below and never reaches it is what inclusion predicts. ⇒ **A
+  request's price is `input × in + cache_read × cache + output × out`**, and `thinking` is a part of `output`, printed beside it and
+  never priced again. The rates file's own column name (`output_incl_thinking`) already said so.
+- **A2.2 · DEFECT 2 TAKEN: `input` excludes cache reads, now shown per request.** The same test in the other field: if `input`
+  contained cache reads, no request could show cache_read > input. **34,406 of the 36,510 requests do** (the largest ratio is 124.6).
+  A field's definition belongs to the client, not to a cell, so this covers the one row the per-row inference left undecided
+  (`l6vgfs02` phase 1, Flash, 9 requests).
+- **A2.3 · DEFECT 1 TAKEN: rule 1's check is a REPRODUCTION, not a second method.** The tracked cost columns and the extraction both
+  come from `cell_meter.py` and `rates.tsv`, so agreement tests that the same meter, over the same slug, at the same rates, gives the
+  same figure. A disagreement detects a rate change, a different slug, or a meter version change, and never an independent error.
+  ⇒ **The dollar figure is the tracked row's cost where one exists (it is the figure of record), and the re-run is printed beside it
+  per cell with the difference.** Disagreements are counted in the result's header and do NOT stop the run, because a meter fixed after
+  a cell ran would otherwise fail a true figure (the reader's case).
+- **A2.4 · The Pro upper tier is never selected by these data.** The largest Pro request prompt is 144,717; all 1,399 requests over
+  200k are Flash, which has one tier. Only the instrument's selftest exercises the upper-tier arm, and the result file says so.
+- **A2.5 · Wall `≥` by timing errs toward the floor.** Marking a cell `≥` because its wall came within one turn timeout of the cap can
+  mark a TRUE figure as a floor, never the reverse. The result says so beside the mark. None of this population's cells carries the
+  `wait_bound` field (it was built on 2026-09-28, after every cell here ran), so no second method exists for this mark here.
