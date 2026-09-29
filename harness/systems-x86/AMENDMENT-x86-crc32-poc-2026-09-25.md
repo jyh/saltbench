@@ -429,3 +429,39 @@ referee reads the committed tree, which includes `e689590`, and the RESULT print
 unreached, and the condition's n is the count of cells that ran.
 **Unchanged:** every other condition and cell, both rows, the referee, the caps of level 6 §H3, §X5, §X6 and §X8, and ADDENDUM 14's
 pooling rule (each cell's regime is printed; the three cells are never pooled as one regime).
+
+---
+
+## ⚖️ ADDENDUM 16 — HOW A CEILING TRIP INSIDE TURN 1 IS READ: CLASS `MEM-CAP`, PRICE UNMEASURED. APPENDED AFTER DATA, AND SAID SO.
+bench (lead), 2026-09-29 08:1x PDT. Every text above is untouched. ⚠️ **This addendum is written AFTER a cell's data exists** (xass301,
+cell #2, reported by the hand at 2026-09-29 08:16 PDT), and BEFORE the condition's RESULT and before xass302 has ended. It settles an
+overlap that ADDENDUM 15 did not see. It does not change a cap, a cut, a cell, the referee or any other condition.
+**What happened.** xass301 tripped the ceiling at 925.4 s (loop summary `ctl/agy-turnloop-1.json`: `done_reason MEM-CAP`, turns_sent 2,
+`mem_tree_peak_mb 8159` over 8 processes, the largest 5,703 MB). The trip came inside the subject's first turn, before the client wrote
+any result record. The client's stream holds 189 step records, and the subject ran commands (builds, tests, the method's translation
+script). Two instruments read the missing result record as an absence. **(i)** The launcher's P-RAN gate wrote `ctl/end-1` =
+`NO-SUBJECT-RAN … no model was reached and NOTHING WAS SPENT`. That is false at the object. **(ii)** The meter read T 0 and
+`VOID(NO-MODEL)`, because it takes tokens only from result records.
+**The overlap.** Level 6 §H6 row 2 voids a cell that ends METER-BLIND, with no readable T: `VOID(UNPRICED)`. ADDENDUM 15 says a trip
+ends the cell `MEM-CAP`, a declared class, not void. xass301 meets both texts, and ADDENDUM 15 did not foresee that its own trip could
+cause the meter blindness.
+**The reading.** **(1) CLASS: `MEM-CAP`**, read from the loop's summary. ADDENDUM 15 governs the specific mechanism, and it was
+registered before any cell ran under it. The meter blindness is a CONSEQUENCE of the harness's own kill, so it is not an independent
+fault. Voiding the cell would take a salt-diet outcome out of the record because of a mechanism that can bind only salt-diet, which is
+ADDENDUM 14's reason for not voiding xass201. **It is also the conservative direction, which is the property a post-data rule
+is checked for first:** xass301 did not land, so `MEM-CAP` keeps a non-landing IN salt-diet's column, while the void would remove it. **(2) PRICE: `UNPRICED`**, which is row 2's own word, applied to what it names. The cell
+enters no token, cost or wall-per-token figure, and it is printed as UNMEASURED, never as 0 (925 s of a live subject ran). If the
+client's own log carries usage, the RESULT prints it as the client's statement, beside UNPRICED and not in place of it. **(3) BOTH FALSE
+VERDICTS are printed verbatim beside the class, each declared as the kill's consequence:** the end marker (`NO-SUBJECT-RAN … NOTHING
+WAS SPENT`) and the meter's (`VOID(NO-MODEL)`, T 0). Neither is ever read as the class, and the meter's is never read as T = 0 or as
+a reason to drop the cell. **(4) It is not a landing, and
+it is not refereed as a landing.** If its end state is refereed, the RESULT prints a verdict of the end state, as for xass201.
+**The other reading, stated so that it can be taken instead:** under row 2 alone, xass301 is VOID and the condition's n drops by one
+on the salt-diet side. The lead does not take it, for the reason in (1). A non-author reader who holds that row 2 governs should say so
+before the RESULT is written.
+**xass302** is read the same way if it trips inside turn 1. A trip after a result record exists is plain `MEM-CAP` (ADDENDUM 15), with
+T read up to the trip and printed as a floor.
+**The harness fix is NOT in this wave.** For a later cut only: P-RAN consults the loop's `done_reason`, or counts step records, before
+it writes NO-SUBJECT-RAN. It is built red-first on a fixture that trips inside turn 1, the shape none of the ceiling's arms produced.
+This wave's cells are read by this addendum and are never re-fired.
+**Unchanged:** ADDENDA 14 and 15, the ceiling (8,000 MB), cut 6, every other condition, the referee, §X5, §X6 and §X8.
