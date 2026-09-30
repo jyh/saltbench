@@ -89,7 +89,8 @@ and reads **PASS 24/24, rc 0**. The 09-10 runner output that produced "0/0" is n
 ```
 ⇒ **§1's "the two headline numbers disagree about which cells" holds more strongly.** There are now TWO cells at full pass that did not land
 (`9e6c8d4d` and `b22d1000`, both CAP-COST at 24/24) and one landed cell that is not a full pass (`f33c7e65`, 8/9). §3's sentence "the arms are
-level on every task except FreeList and Paxos" now reads: Paxos plain 1/2, salt-diet 2/2. §4's cost medians exclude every censored cell, and
+level on every task except FreeList and Paxos" now reads: Paxos plain 1/2, salt-diet 2/2. ⚠️ **As published, that sentence was FALSE for Paxos**
+(1/2 against 1/2 is level, kent's note on this addendum's read). It becomes true only through this correction, and neither text said so until now. §4's cost medians exclude every censored cell, and
 they do not move. **Nothing here licenses an arm comparison, for §5's reasons**, and nothing is a claim about the salt method.
 **Downstream:** the step-g RESULT's Paxos × salt-diet row reads 2 of 3 on this verdict (its own ADDENDUM A). arXiv v2 tex :314 counts this
 wave "16 passed". That is paper's ERRATUM candidate, and a posting is the Captain's word, through the helm.
