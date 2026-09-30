@@ -162,7 +162,10 @@ A.2, so any BUILD-FAIL it printed is a build failure OR a 600 s timeout until th
 held by kent's non-author read on a second vocabulary and case axis over harness/, evidence/ and paper/ at main `c177fced`) holds every
 BUILD-FAIL 0/0 of record, and it contains exactly two agy cells: `l8fpsr03` (moved here) and `av02lzw`. `av02lzw`'s own result names its
 compile error, `error: literal out of range for u16` (`RESULT-agy-lzw-scored-2026-09-10.md` :42–43). That is a build failure by its own
-record. The census adds 2 compile errors at the working tree. **So no other agy verdict of record changes class.**
+record. The census adds 2 compile errors at the working tree. **So no other agy BUILD-FAIL verdict of record ON MAIN (harness/, evidence/,
+paper/ at `c177fced`) changes class.** That is the population the census and kent's read searched, and no wider one. It says nothing about
+an agy result not yet merged, the x86 lane's referee verdicts (a different runner, not searched), or any later score that runs on an export
+still carrying the mapping in A.2.
 ⚠️ NOT READ HERE: which tree (working or HEAD) the 09-10 tooling scored for `av02lzw`, which the census's §C4 also leaves unread. The fix to
 `score_wave_v3.sh` (key on the runner's printed reason, as the census's §C5.3 offers for `score_claude_v3.py`) is the tool owner's, systems'.
 It is not made here, because any later export that carries the old mapping repeats the class.
