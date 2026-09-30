@@ -1,0 +1,10 @@
+served_models: clean condition sonnet (table models-sonnet.tsv sha256/16=a479e1be5414704f) | set_verdict clean
+  transcript  ~/.claude-<the run account>/projects/-~-cells-clb-sg-lru-plain-clbglp01-repo (--slug): 6 file(s), 120 line(s) read, synthetic 0, model-absent 0, unreadable 0
+  served head      claude-sonnet-5=62
+  served sidechain claude-sonnet-5=58
+  role (head)                       claude-sonnet-5=62   allowed claude-sonnet-5
+  role reviewer                     claude-sonnet-5=31   allowed claude-sonnet-5
+  role worker-sonnet                claude-sonnet-5=27   allowed claude-sonnet-5
+  launch      phase1:claude-sonnet-5
+  root table  sonnet (the harness export's models-sonnet.tsv; sha256/16=a479e1be5414704f)
+rc=0

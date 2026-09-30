@@ -72,3 +72,25 @@ before the client started. Run 2 is this run. ⇒ **A fresh cells root needs `se
 before the first launch unless all three hold for that root, driven RED before it was trusted.
 📌 **Zero spurious `landing-1` declarations across all 19 cells**, against 4 of 4 in the pilot's voided
 run, which is the marker gate working.
+
+---
+# ADDENDUM A (2026-09-30, bench) — `b22d1000` RE-SCORED: PASS 24/24, NOT "0/0, does not build". §1–§3 ABOVE ARE NOT EDITED.
+**Source:** `CENSUS-rc3-verdicts-2026-09-30.md` §C3–§C4 and `evidence/rc3-census-2026-09-30/census.tsv` (non-author read, merged). Paxos's
+`B/run_tests.sh` runs over `b22d1000`'s end `solution.rs` (sha256/16 `121ec765779f83ae`, byte-identical to this wave's harvest; HEAD == working tree)
+and reads **PASS 24/24, rc 0**. The 09-10 runner output that produced "0/0" is not tracked, so its cause is UNMEASURED.
+**The figures this changes, recounted from this file's own TSV** (the same recount first reproduces every published figure below exactly):
+```
+                         as published (§1–§3)      with b22d1000 re-scored
+  FULL PASS              16/19                     17/19
+    plain                8/9                       8/9
+    salt-diet            8/10                      9/10
+  Paxos                  plain 1/2 · salt-diet 1/2  plain 1/2 · salt-diet 2/2
+  LANDED                 16/19                     16/19   (b22d1000 stays CAP-COST: the cap is the selector, not the verdict)
+```
+⇒ **§1's "the two headline numbers disagree about which cells" holds more strongly.** There are now TWO cells at full pass that did not land
+(`9e6c8d4d` and `b22d1000`, both CAP-COST at 24/24) and one landed cell that is not a full pass (`f33c7e65`, 8/9). §3's sentence "the arms are
+level on every task except FreeList and Paxos" now reads: Paxos plain 1/2, salt-diet 2/2. ⚠️ **As published, that sentence was FALSE for Paxos**
+(1/2 against 1/2 is level, kent's note on this addendum's read). It becomes true only through this correction, and neither text said so until now. §4's cost medians exclude every censored cell, and
+they do not move. **Nothing here licenses an arm comparison, for §5's reasons**, and nothing is a claim about the salt method.
+**Downstream:** the step-g RESULT's Paxos × salt-diet row reads 2 of 3 on this verdict (its own ADDENDUM A). arXiv v2 tex :314 counts this
+wave "16 passed". That is paper's ERRATUM candidate, and a posting is the Captain's word, through the helm.

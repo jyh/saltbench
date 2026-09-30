@@ -1,0 +1,8 @@
+cell	task	arm	end2_kind	suite	tests	regressions_failed	clause_failed	final_T	final_COST	at_end_COST	cap	served_head	served_sidechain	served_verdict	client_versions	source	source_end12	export12	head12	B_runner_sha16
+clbkzp01	LZW	plain	LANDED	PASS	15/15	0/8	0/7	17804860	18.9612	18.2539	18.60	claude-opus-5=155	claude-opus-5=139	clean	2.1.259	cells-matrix1/c34012e0	2cb14ffc3e41	9a3e6bf3450d	543bffb7c26a	7c6d2cea42891fab
+clbklp01	LRU	plain	LANDED	PASS	23/23	0/16	0/7	10696851	9.5760	9.3894	18.60	claude-opus-5=176	claude-opus-5=55 claude-sonnet-5=24	clean	2.1.259	cells-gf-topup-1/61d2fda3	8aa5526e9d42	9a3e6bf3450d	209fa33d88aa	4df6c86e63420d31
+clbkfp01	FreeList	plain	LANDED	PASS	9/9	0/7	0/2	17977130	17.4579	17.1160	18.60	claude-opus-5=187	claude-opus-5=134	clean	2.1.259	cells-gf-topup-1/db0847aa	5fe325fb89f3	9a3e6bf3450d	6b2f83624656	1f93e4ffe9b45996
+clbkpp01	Paxos	plain	CAP-COST	PASS	24/24	0/16	0/8	15765030	18.7961	18.7961	18.60	claude-opus-5=161	claude-opus-5=96	clean	2.1.259	cells-gf-topup-1/bc7997bd	f3baafe759c2	9a3e6bf3450d	de30d68a0258	b154a6f7557b68c1
+clbkps01	Paxos	salt-diet	LANDED	TIMEOUT	0/0	-	-	22212725	18.7233	18.1186	18.60	claude-opus-5=223	claude-opus-5=18	clean	2.1.259	cells-gf-topup-1/d9998c97	dc71802f4ad9	9a3e6bf3450d	cfb5cb9df9d9	b154a6f7557b68c1
+clbkfs01	FreeList	salt-diet	LANDED	PASS	9/9	0/7	0/2	16532828	12.4407	11.8040	18.60	claude-opus-5=195	claude-sonnet-5=72	clean	2.1.259	cells-gf-topup-1/c17630f0	bd75964a8209	9a3e6bf3450d	5ec7b3d68683	1f93e4ffe9b45996
+clbkfs02	FreeList	salt-diet	LANDED	PASS	9/9	0/7	0/2	10736717	9.6885	9.5791	18.60	claude-opus-5=159	claude-sonnet-5=24	clean	2.1.259	cells-gf-topup-1/783df512	1fc1e6cd178b	9a3e6bf3450d	b28ca785c035	1f93e4ffe9b45996

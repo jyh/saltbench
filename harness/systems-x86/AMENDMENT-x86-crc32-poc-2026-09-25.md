@@ -1,0 +1,473 @@
+# AMENDMENT — THE x86 LANE's PROOF OF CONCEPT: CRC-32 IN SCALAR x86-64, TWO ROWS, FROZEN BEFORE THE FIRST CALL
+## bench (SaltBench lead), 2026-09-25. The Captain, council 2026-09-16: *"we need to develop x86 saltbench soon"* · *"CRC32 sounds like a
+## good choice for a PoC … it might make sense to produce a proposal with CRC32 x86 saltbench as the target."* Council 2026-09-25, on the
+## run box's points: *"#1 the x86 lane on both sides (paris's proposal …; gemini's side commences)"*. The slice is paris's proposal v1 §5
+## (S7), mirrored for the agy lane as gemini proposed (X4). bench is lead; the Claude row's hand is bench, the agy row's is `gemini`.
+## ⛔ **UNSIGNED UNTIL A NON-AUTHOR SIGNS IT.** ⛔ **NO CELL FIRES BEFORE THE RELEASE ADDENDUM (§X9) NAMES THE EXPORT AND EVERY
+## RELEASE CONDITION READS MET.** Signature and release are two acts.
+
+---
+
+## §X0 · THE INPUTS
+```
+  1  ROWS / MODELS   CLAUDE row  claude-opus-5 (the pilot's; the served set per condition as lane B §Q0 row 1)
+                     AGY row     gemini-3.1-pro-high (the pilot's; re-asserted served at launch; a mismatch VOIDS)
+                     A newer model is not substituted, for block N §N0 row 1's reason: the x86 lane is a new substrate,
+                     and a model change on top of it would leave two variables and no contrast.
+  2  PROBLEM         Crc32, scalar x86-64, the card at saltbench-systems tasks/systems-x86/Crc32/ (card S4, bench).
+  3  ARMS            plain · salt-diet, each an arm TEXT (CLAUDE.md for the Claude row, AGENTS.md for the agy row, same bytes)
+  4  EXTRAS          none · statement (the statement arm delivers paris's Lean statement FILE, pinned BY BLOB; plain + statement
+                     receives the same bytes as salt-diet + statement, which is v3's neutrality rule)
+  5  n               SMOKE PAIR first, per row: plain·none + salt-diet·none at n = 1. These are PLUMBING, never pooled.
+                     Then the SLICE: n = 3 per condition.
+  6  POPULATION      per row 1 problem × 2 arms × 2 extras = 4 conditions, 12 cells; two rows = 8 conditions, 24 cells (§X1)
+  7  x86lean         pinned 1f9ad9b, vendored STRIPPED (vendor_x86lean.py; 16 raw treatment-word hits → 0, controls fired),
+                     Lean v4.27.0 (the harness pin, proposal v1 §2 — NOT x86lean's own v4.32.0-rc1).
+  8  REFEREE         check_x86.py: executor (a) native under Rosetta, executor (b) the Lean model, AGREEMENT required per input,
+                     TARGET for salt-diet (three standard axioms only; `bv_decide`'s native axiom is refused here).
+                     WITHHELD SET: 82 inputs from gen_hidden.py (expected values from zlib, cross-checked bit-serial).
+                     FUEL: F = 2 (§X4).
+  9  CAPS            CLAUDE row: lane B §Q4, unchanged (C1_USD $37.21, W1_SEC 144,000; CAP-COST and CAP-WALL armed).
+                     AGY row: level 6 §H3, unchanged (T1_TOK 250,000,000; AGY_PRINT_TIMEOUT 1800 s; AGY_TURN_TIMEOUT 2100 s).
+ 10  ACCOUNT         CLAUDE row: the run box's pool per block N §N0 row 8 and ADDENDUM 2 §A2.3 (a dedicated dir, the account check
+                     AND one authenticated read before the first cell, the check per cell); after that pool retires, a P1-capacity
+                     pool named per cell. AGY row: the agy subscription.
+ 11  PRECEDENCE      O4 is first on the run box's points (council 2026-09-25). This lane's cells go BEFORE O37's (blocks N and NA).
+```
+
+---
+
+## §X1 · THE POPULATION
+```
+  row     model                 field        arms                 extras             conditions   cells
+  CLAUDE  claude-opus-5         greenfield   plain · salt-diet    none · statement        4          12   (+ 2 smoke)
+  AGY     gemini-3.1-pro-high   greenfield   plain · salt-diet    none · statement        4          12   (+ 2 smoke)
+```
+Not proposed here: brownfield, spec-change (the card has no phase 2), other models, LZW (U1 first), the vector add-on (after P2).
+
+## §X2 · THE ORDER
+Per row: smoke plain·none → smoke salt-diet·none → READ BOTH (§X3) → the slice, cells in the order none plain#1 · salt-diet#1 · #2 ·
+#3, then statement the same. The agy row may fire before the Claude row: the Claude row's pool waits on the Captain's login (desk YG),
+and the agy row does not.
+
+## §X3 · THE SMOKE PAIR IS THE TRIPWIRE, AND WHAT IT MUST SHOW
+Read by the lead and posted before the slice fires. Each of these reads, or the row HOLDS:
+the arm file present and the neutrality gate green in the built view · the fence sha with a probe receipt (a network-denial arm for the
+Claude row; the battery for the agy row, whose TMPDIR-identity row is printed) · `bin/rt check: OK` at t0 on the stub · the client
+pin or served model · at least ONE working shell call in the transcript (the agy lane has landed cells with zero working calls: the
+shell proof, gemini's X3, folded into the smoke) · the end marker verbatim · the referee's verdict line, carrying the export sha,
+`cell_translation`, and for salt-diet the TARGET line and `#print axioms`. **A smoke cell's pass or fail is NOT a result and is
+never quoted;** only its PLUMBING is read.
+
+## §X4 · THE FUEL FACTOR, F = 2, AND WHY
+Executor (b) gets F × executor (a)'s retired-instruction count + 1 per input. The model and the native run agree exactly on a halting
+routine (systems measured (b) = (a) + 1, the off-program fetch), and K10 drives F = 1 end to end. So F matters only where the two
+DISAGREE, and there it is a harness finding (a model-native divergence), never a subject failure. F = 2 leaves that margin, and the
+lead's referee drives (R1 PASS AGREE=82) ran at F = 2. **It binds neither arm more**, since both arms' routines run under the same
+factor. A cell that exhausts it is reported as REFEREE-FUEL with the counts, and is not scored.
+
+## §X5 · PREDICTIONS — REGISTERED BEFORE ANY DATA
+(i) salt-diet's cap incidence (CAP-COST on the Claude row, TURNS-CUT or CAP-TOKENS on the agy row) is ≥ plain's, within each row and
+extras; the proposal priced salt-diet up to $40 against a $37.21 cap, so **CAP-COST CENSORING OF THE CLAUDE ROW's salt-diet cells is
+EXPECTED** and is reported as a floor, never raised; (ii) every salt-diet cell that reaches TARGET reads the three standard axioms or is
+refused at AXIOMS; (iii) no plain cell reads a `cell_translation=differs` line (plain ships no Lean). ⛔ **No prediction about pass rate or
+premium** at n = 3 on one problem.
+
+## §X6 · CONFOUNDS — REGISTERED, AND THEY TRAVEL WITH EVERY TABLE
+1. **ONE PROBLEM.** Everything here is about CRC-32 in scalar x86-64. Nothing generalises to "x86", let alone to the method.
+2. **THE ARM IS A NEW TEXT.** The x86 salt-diet text is v3's with 26 target-forced changes and 13 method changes RESOLVED (reverted,
+   justified or declared: the card's ARM-salt-diet-ACCOUNT.md). Its differences from v3 are part of the treatment on this lane.
+3. **THE CAP IS THE PILOT'S** and is expected to bind salt-diet (§X5 (i)).
+4. **TWO LANES, TWO ENVIRONMENTS:** the Claude row's cells carry the pilot's unusable TMPDIR (block N ADDENDUM 2 §A2.5), unless the
+   release adopts systems' `CLAUDE_CODE_TMPDIR` fix for this new lane after its one client-in-loop turn (the lead's ruling, 2026-09-25).
+   The agy row sets its own. The release says which, and it is never a contrast.
+5. **Cross-row (Claude versus agy) is NOT a registered contrast.**
+
+## §X7 · VOIDS (faults only)
+Lane B §Q7 rows 1–5 and 8–10 (Claude row) · level 6 §H6 (agy row) · plus: `x86_cell_build.py` refuses (NON-EMPTY · TREATMENT ·
+NEUTRALITY) → DO NOT FIRE · the smoke's working-shell count is 0 → the row HOLDS · REFEREE-FUEL → NOT-SCORED(HARNESS).
+
+## §X8 · WHAT THIS CANNOT ESTABLISH
+No effect size and no premium (n = 3, one problem) · nothing about models · nothing cross-lane · a PASS is behaviour on 82 withheld
+inputs plus, for salt-diet, a kernel-checked TARGET, and says nothing about untested inputs for plain.
+
+## §X9 · RELEASE CONDITIONS — each MET, with its receipt, in the release addendum before the first smoke cell
+```
+  R1  the export: ONE saltbench-systems sha carrying the harness (systems-x86: fence, declare (A), rt TMPDIR/bytecode fixes, the export
+      route), gemini's agy client and launcher branch, the card with its withheld set, paris's statement file and R1 control
+  R2  BOTH ARM TEXTS FROZEN: plain and salt-diet, each with a non-author read (salt-diet: its ACCOUNT's remaining items; plain: its own)
+  R3  the x86 turn prompts FROZEN (the card's, bench's)
+  R4  the Claude row: the dedicated dir, the account check, one authenticated read (desk YG); the agy row: /usage read
+  R5  the referee re-driven AT THE PIN (v4.27.0 build of 1f9ad9b): R1 PASS with full agreement, the stub TESTS_FAIL
+  R6  one dry cell per row end to end at zero spend (build → fence → battery or probe → referee on the stub)
+```
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (127th head), 2026-09-25 10:58 PDT, on §X0–§X9 (transcribed by the lead from the bus)
+Read WHOLE at blob `66bcde33c2c4`, head `87eec2e26bd0`, both matched at the forge. (1) §X4, F = 2: *"sound, and the same factor on
+both arms means it cannot tilt the contrast."* (2) §X5 (i), the expected CAP-COST censoring: *"honest"*, and a censored row cannot be read
+as an effect size. (3) §X9: the six conditions, with R5 naming the pin, and the lead's declaration that two Lean drives ran on x86lean's
+own v4.32.0-rc1 *"is the right shape"*. *"Nothing found to withhold the signature on."* Nothing here is the Captain's: the models are the
+pilot's by the freeze's own rule, and the release conditions are the lead's.
+
+---
+
+## ⚖️ ADDENDUM 1 — §X9 AS MEASURED, AND THE RELEASE OF THE AGY ROW. APPENDED; §X0–§X9 and the signature untouched.
+**The release is PER ROW.** §X9's conditions are row-scoped (R4 has a half per row, and R6 is one dry cell per row), so a row fires when
+ITS conditions read MET. The Claude row is NOT released by this addendum.
+```
+  R1  EXPORT       MET  saltbench-systems 311a588 on the run box = the kit cedecc1 + gemini's agy client and launcher (af06331) +
+                        the drive-lane widening (59508ac) + the freeze 9bbd19b. ALL FOUR arm×client views build FROM THE CUT ON THE RUN
+                        BOX. The first cut (a3ca059) carried the Claude row only, and the lead first called it MET for both, which was a
+                        correction (the arms were checked, not the ROWS). Two earlier cuts could not build a salt-diet view at all (the
+                        v2 import closure); an export is proved by building FROM it on the box it lands on.
+  R2  ARMS         MET  frozen comment-free under their final names (card branch 9bbd19b): ARM-plain.md f6e4ff132634 · ARM-salt-diet.md
+                        2e69b6acc5c1 · REFUTER-BRIEF.md cce9aac15a3a · method/ == the reviewed method-DRAFT/. Fresh-reader line accounts:
+                        plain 14 T · 5 E · 3 M, salt-diet 26 T · 5 E · 13 M, every M resolved and recorded. systems' non-author read:
+                        CONCUR after 4 kit fixes and 5 text corrections. The builder strikes a leading authoring comment and REFUSES any
+                        other, after systems found the drafts would have shipped the lead's notes to subjects.
+  R3  BOOT PROMPT  MET  the cut overlays render/BOOT_PROMPT_1.txt = v3's + ONE substitution (interface.rs → INTERFACE.md), refused otherwise
+                        at the export; it carries INTERFACE.md ×1 and interface.rs ×0, and both launchers read exactly that file. The
+                        LITERAL t0 read (ctl/work-turn-1) exists only after a launch, so each row's first smoke cell prints it (§X3).
+  R4  ACCOUNT      agy MET (the agy subscription; /usage read at each fire) · Claude MET (the run box pool's own account dir: file check
+                        OK + an authenticated turn; single-cell across this row and O37 block N).
+  R5  REFEREE      MET for BOTH ARMS through ONE FILE, withheld/tests/referee_x86.sh (card branch c748af0), at the pin (v4.27.0 of
+                        1f9ad9b), saltbuild, F = 2: plain R1 CLASS PASS AGREE=82 · stub TESTS_FAIL AGREE=82 · salt-diet control (paris's
+                        proof, bcd75bf) CLASS PASS, TARGET OK, axioms [Classical.choice, Quot.sound, propext], spec 82/82,
+                        cell_translation=differs (the referee proves against its own translation, as the text says). Every file the
+                        referee reads is byte-identical between a3ca059 and 311a588.
+  R6  DRY CELL     agy MET (gemini, 12:23, zero spend, on 311a588: two agy cells built from the cut on the box, --check CLEAN, battery
+                        GREEN with the Rosetta and lake rows, lift OK, refereed through referee_x86.sh: plain stub TESTS_FAIL AGREE=82,
+                        salt-diet stub NO_SOLUTION) · Claude OPEN (its dry cell makes a probe turn on the single-cell pool dir, and O37
+                        block N's first cell is live on it).
+```
+**THE AGY ROW IS RELEASED:** gemini-3.1-pro-high, the smoke pair first (§X2), from cut 311a588, refereed only through referee_x86.sh, each
+cell in a FRESH root created in a window the lead announces (the render-time-glob law, while another lane's cell is live). **§X6.4 as
+ruled:** the Claude row's cells carry `CLAUDE_CODE_TMPDIR=$CELL/tmp` (the client's scratch inside the cell), and the subject's own
+`$TMPDIR` is a declared, arm-identical confound; the agy row sets its own in-cell TMPDIR, and the battery's row prints it.
+
+---
+
+## ⚖️ ADDENDUM 2 — THE RELEASE OF THE CLAUDE ROW. APPENDED; all text above untouched.
+- **R6 CLAUDE, MET** (systems, 2026-09-25 20:26 UTC): xc01, plain, built FROM the cut 311a588 in an EXISTING root (no new root). Fence
+  drive GREEN, and ONE P turn read P-NET yes on the run box pool's own account dir. With ADDENDUM 1's R1–R5, **all six conditions read MET
+  for the Claude row.**
+- **THE CLAUDE ROW IS RELEASED:** claude-opus-5 (the served set per condition as lane B §Q0 row 1), the smoke pair first (§X2), from cut
+  311a588, refereed only through `referee_x86.sh`, with `CLAUDE_CODE_TMPDIR=$CELL/tmp` (§X6.4 as ruled).
+- **THE POOL DIR IS SINGLE-CELL** across this row and O37 block N. x86 goes first, but only where no block-N cell is LIVE on the dir (a
+  cell is never interrupted), and each smoke cell needs a FRESH root, created in a window under the one-root-creating-fire rule.
+- **A DEFECT FOUND ON THE AGY ROW BEFORE ANY SPEND, recorded for both rows:** the agy smoke's first cell (xasp01) was LAUNCH-REFUSED at
+  spawn (rc 13), because the x86 battery's scratch view had copied the arm file into the cell's tmp/, a second home for the briefing
+  token. The P-DELIVERY spawn walk refused it as designed. It was fixed at 640d6b4, and a mutant restoring the copy reproduces the refusal
+  verbatim. The agy smoke re-fires as r2 in a later window.
+
+---
+
+## ⚖️ ADDENDUM 3 — THE CUT MOVES FROM 311a588 TO 4d960d3 BEFORE ANY SCORED x86 CELL. APPENDED.
+**What moved** (saltbench-systems `4d960d3`, cut by systems, 2026-09-25 ~20:5x UTC):
+1. **The `<Task>` fix, a kit defect found BEFORE any scored cell.** v3's builder substitutes `<Task>` in the arm file, and the x86 builder
+   did not, so every x86 view opened with the literal `# <Task>: …`. The first x86 agy smoke plain cell (xaspr01) ran with it. It is
+   plumbing, never pooled, and it is DECLARED in its reading, not voided. From 4d960d3 on, all four ARM × CLIENT views read `# Crc32: …`
+   with 0 `<Task>`, built FROM the cut on the run box.
+2. **(A), the renderer that denies other cells roots at EVERY level up to $HOME** (the nested-root hole systems found and drove). It lands
+   here as the ruling required: in the lane's NEXT export, never mid-block, before any scored x86 cell. A top-level cell's fence is
+   byte-identical under (A).
+3. **x86_clb.sh, the Claude row's fire route** (--roots · stage · fire, clb_fire.sh's path; the pool-rule by name across block N and this
+   row; STAGED roots claimed). Nothing a cell reads changes.
+4. The agy lane's production line as released (gemini's b7e5a3e through 87c1771: the agy client, launcher, staging, the three existence
+   guards, and the battery's scratch-view fix, after the P-DELIVERY walk refused xasp01 at spawn with nothing spent).
+**The referee is unchanged in what it reads** (systems: every referee-read file byte-identical 311a588 → 4d960d3). `referee_x86.sh` moves
+to c19fb00, which now prints `REFEREE export=… referee_blob=… arm pin fuel inputs` first and refuses an unnameable export (gemini's §X3 gap).
+**Every x86 cell from here on, both rows, fires from 4d960d3.** The smoke plain cell on 311a588 stands as plumbing only.
+
+---
+
+## ⚖️ ADDENDUM 4 — THE CLAUDE ROW'S POOL DIR MOVES, ON THE RUN BOX, BEFORE ITS THIRD SCORED CELL. APPENDED.
+**What moves:** only the account directory the Claude row's cells authenticate from. From the first cell that STARTS after
+clbqcs01 (salt-diet · none · #1) onward, the row uses a SECOND subscription pool dir on the same run box instead of the run box pool's
+own dir. **Why:** the first pool reaches its weekly ceiling tonight (the helm's reading, 2026-09-25 ~01:45 UTC), 2.5 days before its
+reset. No cell is interrupted: clbqcs01 finishes where it started.
+**What does NOT move:** the model (claude-opus-5, the served set per condition checked by `served_models_v3 check-cell` on every cell),
+the client pin (2.1.259, sha16 884baa38fe1a624b), the cut (4d960d3), the route (d0d54b5), the arm views, the fence render, the budgets and
+the $37.21 cost cap, the referee (`referee_x86.sh`, blob 8cfbf8113196). An account is a billing pool, not a treatment. Both arms move
+together, and every remaining cell of every condition runs on the second dir.
+**Measured before the move (2026-09-26 ~01:4x UTC):**
+- `cells_account_check.sh` on the second dir reads ACCOUNT-CHECK OK: the file identity == --expect, credential PRESENT with access and
+  refresh non-empty. The RED control fires: the same dir with a wrong --expect reads RED NOT-EXPECTED.
+- The dir has been a cell pool before (trust-seed lock and backups present), so the move creates NO new $HOME entry.
+- 0 transcripts written there in the last 3 h.
+**What gates its first cell:** the fire's own P-SANDBOX and P-NET probe turns run through the client on that dir, and they are its
+authenticated read. A probe that is not GREEN refuses the launch.
+**Which cell ran on which dir** is read per cell from its own `ctl/run-cfg.tsv` (`cfg`), never assumed. On the first dir: the smoke pair
+(clbwcp01, clbwcs01), clbqcp01 and clbqcs01.
+**The single-cell rule carries over unchanged** (ADDENDUM 2): one Claude cell on the pool dir at a time, across this row and O37
+block N, which moves with it.
+
+---
+
+## ⚖️ ADDENDUM 5 — ADDENDUM 4's MOVE IS NOT TAKEN; IT STANDS AS THE DECLARED FALLBACK. APPENDED.
+Minutes after ADDENDUM 4 was written, the first pool's owner said he will lift its ceiling himself, before the wall, with that pool's
+reset (the helm's relay, 2026-09-26 ~01:47 UTC). With its cause gone, the move would only spend a second pool that live seats run on.
+**So the Claude row stays on the run box pool's own dir.** ADDENDUM 4's second dir, and every measurement recorded there, stand as a
+FALLBACK. It is taken, with its own addendum naming the first cell, only if, at a fire, the first dir fails its account check, or its
+probe turn does not authenticate, or the helm's all-models reading of the first pool is at or over 92 % with no reset yet taken.
+**Which dir each cell ran on** is still read per cell from `ctl/run-cfg.tsv`, and no cell has run on the second dir.
+
+---
+
+## ⚖️ ADDENDUM 6 — THE FALLBACK IS TAKEN ON TRIGGER (b), FROM clbqcp02. APPENDED.
+At clbqcp02's fire (plain · none · #2, 2026-09-26 01:54 UTC), the first dir's P-SANDBOX turn read GREEN at 01:54:35. Its P-NET turn four
+seconds later read INDETERMINATE (unreachable). The client exited 1 with *"Failed to authenticate: OAuth session expired and could not
+be refreshed"*, and the route REFUSED the launch, so nothing was spent on a subject. The failed refresh BLANKED the first dir's
+credential: `cells_account_check.sh` now reads RED CRED-BLANKED, both tokens empty. This is the same cliff block N's A2.3 records.
+⇒ **Trigger (b) of ADDENDUM 5. From clbqcp02 onward the Claude row runs on ADDENDUM 4's second dir**, with everything ADDENDUM 4 lists
+as unchanged still unchanged. clbqcp02 was built but never launched on the first dir, and it fires on the second.
+**Before the first fire, both credential files were copied to the run box's backup dirs**: the blanked one for the record, and the
+second dir's before its first refresh. The first dir returns only by a new login, which is its owner's act, and only with an addendum.
+
+---
+
+## ⚖️ ADDENDUM 7 — ONE CONFIG DIFFERENCE IN THE SECOND DIR, FOUND AT clbqcs02's CHECK, AND WHAT IT MEANS FOR clbqcp02. APPENDED.
+**The finding.** The second dir's client config carried `claudeInChromeDefaultEnabled: true`, left by an interactive login. The first
+dir carries no such key. At clbqcp02's launch (01:57:11 UTC) the cell's own client regenerated a `chrome/` native-host wrapper in the
+dir (mtime 01:57:13). At clbqcs02's `--check-only` the run-dir guard refused it (`HOLD the run dir holds chrome`), so the difference was
+caught by the guard and not by a reader.
+**The repair, before clbqcs02's first model call:** the config was backed up and the key set to `false`, and `chrome/` was moved into the
+dir's backups sibling. The check read CLEAN. The cause is CONFIRMED by the next launch: clbqcs02 launched at 02:39:23 and did NOT
+regenerate `chrome/`.
+**clbqcp02 (plain · none · #2) ran with the key true, DECLARED, not voided:**
+- Its three transcripts carry 0 occurrences of `chrome` and 0 of `mcp__`.
+- Its launch passed the same explicit `--tools` allowlist and `--strict-mcp-config` as every cell, neither of which admits an MCP tool.
+- What the client OFFERED the subject is not recorded in any transcript, so "no browser tool was offered" is UNMEASURED; "none was
+  used" is measured.
+- It is refereed like every cell, and its flag rides beside its verdict wherever the verdict is quoted.
+
+---
+
+## ⚖️ ADDENDUM 8 — THE CLAUDE ROW RETURNS TO THE FIRST DIR AFTER ITS OWNER'S NEW LOGIN, FROM THE CELL AFTER clbqcs03. APPENDED.
+The first dir's owner ran a new `/login` into it on the run box (2026-09-26 04:59 UTC). Before any turn touched the new credential:
+- it was copied into the dir's backups sibling (cmp-identical);
+- `cells_account_check.sh` read OK (file identity == --expect, both tokens present) and RED on a wrong --expect.
+**From the first cell that starts after clbqcs03** (the statement block's first cell), the row runs on the first dir again. ADDENDUM 5's
+fallback and its three triggers stand unchanged, so a repeat death moves the row to the second dir at $0, as ADDENDUM 6 recorded.
+The first pool's all-models reading at the move was 86 % (the helm's hourly reader, 04:13 UTC), below trigger (c)'s 92 %.
+**The mechanism of the earlier death** was measured by the harness's builder without a refresh: it was the first refresh of an 8-hour
+access token, with copy and race both excluded by the bytes. Why the server refused remains unmeasured. It is not a cell-level confound:
+no subject turn ran on a failing credential.
+**Which dir each cell ran on** stays per cell, from `ctl/run-cfg.tsv`.
+
+---
+
+## ⚖️ ADDENDUM 9 — THE STATEMENT ROWS FIRE FROM CUT 4 = 5d3267b; THE `none` ROWS ARE COMPLETE ON 4d960d3. APPENDED.
+**Why a cut, before any statement cell:** the route every `none` cell fired through carries a launch-fence re-assertion (`d0d54b5`). The
+statement wiring (`898c7e2`, the hand-out pinned by blob per §X0 row 4) was built beside it, not on it, so firing from `898c7e2` alone
+would have dropped a launch check the `none` cells had. **Cut 4 = `5d3267b` = `d0d54b5` + `898c7e2` + `245f0d8`** (the agy client reap, so
+one cut serves both rows). It was cut by the harness's builder, and its tree `e6ec8048d128` equals the lead's merge-tree reading, with no
+conflict.
+**What differs from 4d960d3's export, by an independent file-sha diff on the run box:**
+- the route `x86_clb.sh`: the statement condition, plus root-counting lines that run only in `--roots` mode;
+- `agy_turnloop_v3.py`: the reap, agy row only;
+- `studio_export.sh`;
+- `STATEMENT-PIN.tsv` and its two hand-outs, whose landed copies hash to the pins: statement `630a37ba2545`, spec `b336720df2e1`;
+- the provenance files: `EXPORTED-FROM.sha`, `RENDER-OVERLAY.txt`, and `REQUIRED-ANCESTORS.tsv`, whose only difference is the same
+  authority commit written short.
+
+Nothing else, and **nothing a `none` view or the referee reads**.
+**Views, measured:** the builder's dry stage of all four conditions from cut 4 is rc 0. A cut-4 dry `none` view against a real 4d960d3
+`none` view differs in two ways only, and both are explained:
+- `absent` ancestor rows `up5..up7`: the dry cells sit three directories deeper;
+- `tools/mnemonics.py`: the same member sets printed in a different order. Python's hash-randomised set order also differs between two
+  real 4d960d3 cells, so it is a per-build nondeterminism, content-identical and arm-neutral. It is noted for the builder, not repaired.
+
+⚠️ This export was taken with the toolchain check SKIPPED (a block N cell was live). The skipped check covers the Rust/Verus pins, which no
+x86 cell uses; the lead's `898c7e2` export ran it on the same box minutes earlier and it read equal.
+**`none` stays on 4d960d3** (complete at n = 3, PR #268). The statement conditions, both arms and both rows, fire from cut 4. Pooling across
+the two cuts is never needed, because each condition runs on exactly one cut.
+
+---
+
+## ⚖️ ADDENDUM 10 — THE FALLBACK IS TAKEN ON TRIGGER (c), FROM THE STATEMENT BLOCK's THIRD CELL. APPENDED.
+The helm's hourly reader recorded the first pool at **92 % all-models** (2026-09-26 08:25 UTC), with no reset taken. That is trigger (c) of
+ADDENDUM 5, which sits below the wall so that no cell starts where it could meet 95 % mid-run. The live cell (clbkcs01, statement ·
+salt-diet · #1) finishes on the first dir, because a cell is never interrupted. **From the next cell that starts, statement · plain · #2,
+the row runs on ADDENDUM 4's second dir.** Its state was checked before that cell:
+- no `chrome/` and no client temp file;
+- the browser-integration default is still false (ADDENDUM 7);
+- account check OK, both tokens present;
+- 31 % all-models on the same reader.
+
+**The return** to the first dir is taken, with its own addendum, only after the first pool is reset. Everything ADDENDUM 4 lists as unchanged
+is unchanged. Which dir each cell ran on stays per cell, from `ctl/run-cfg.tsv`, and each condition's RESULT names the dir per cell.
+
+---
+
+## ⚖️ ADDENDUM 11 — THE FIRST POOL IS RESET; THE ROW RETURNS TO IT FROM THE STATEMENT BLOCK's FOURTH CELL. APPENDED.
+The first pool's owner took its one-time reset at 2026-09-26 09:14 UTC. The helm's hourly reader recorded all-models 94 → 0; the weekly
+reset date is unchanged. That discharges the condition of ADDENDUM 10's return clause. **From the next cell that starts, statement ·
+salt-diet · #2, the row runs on the first dir again.** clbkcp02 (statement · plain · #2) finishes on the second dir, where it started.
+The reset is a quota event, not a login: the first dir's credential is unchanged by it (cred_ledger reads it UNCHANGED), and it is
+still the login of ADDENDUM 8. ADDENDUM 5's fallback and its three triggers stand. Which dir each cell ran on stays per cell, from
+`ctl/run-cfg.tsv`.
+
+---
+
+## ⚖️ ADDENDUM 12 — THE AGY ROW's `none` PAIR FIRES FROM CUT 4 = 5d3267b, BY CONDITION. APPENDED.
+**Why cut 4 for the agy `none` pair.** ADDENDUM 9 kept `none` on 4d960d3, and that sentence was written about the CLAUDE row: its `none`
+pair was complete there at n = 3 (PR #268). The AGY row's `none` pair has not fired. Its salt-diet smoke (xass01) ended with an orphaned
+client tree, and its slice was held on the client reap (`245f0d8`), which only cut 4 carries. ADDENDUM 9's file-sha diff names everything
+cut 4 changes against 4d960d3. Of those changes, the reap is the only one on the agy row, and nothing a `none` view or the referee reads
+differs. **So the agy `none` pair fires from cut 4.** Each condition still runs on exactly one cut: Claude `none` on 4d960d3, agy `none`
+and every `statement` condition on cut 4. No pooling across cuts is needed.
+**Measured by the hand before this release, at zero spend** (gemini, 2026-09-26, the run box, inside an existing root, no new `$HOME`
+entry): a dry render of both arms from cut 4 reads BUILT · FENCE RENDERED · BATTERY GREEN · DRY RENDER COMPLETE. The launch `--check` is
+rc 0 on both arms, and the briefing-token walk is OK on both. The walk's control, the pre-640d6b4 dry cell, still refuses. The canary
+`--plan` is clean: 2 conditions, 6 cells, into staged roots.
+**ORDER: by CONDITION, not by cell.** §X2's per-cell interleave (plain#1 · salt-diet#1 · #2 · #3) is REPLACED for the agy row's `none`
+pair by plain ×3, then salt-diet ×3. The agy wave's unit is the condition, and its fresh-root guard gives one root per condition. An
+interleave would need six roots created in quiet windows while block N is live, and the time order it buys is not worth that.
+⚠️ **Declared as a confound of the agy row, before any cell:** the salt-diet cells run hours after the plain cells, on the same caps, the
+same credential and the same box. A drift in the served model or in the agy pool over those hours falls on salt-diet alone. Its sign is
+not registered. The Claude row interleaved, so this confound is the agy row's alone, and its RESULT prints it beside every agy table.
+**Unchanged:** the model (gemini-3.1-pro-high), the caps (level 6 §H3), the referee (`referee_x86.sh`), §X3's smoke reading, and the
+statement conditions' own cut (ADDENDUM 9). The agy statement pair is not released by this addendum. Its wave wiring is still being
+built, and it fires on its own release line.
+
+---
+
+## ⚖️ ADDENDUM 13 — THE AGY ROW's `statement` PAIR FIRES FROM CUT 5 = ec67091, BY CONDITION, AFTER THE `none` PAIR. APPENDED.
+**Why a fifth cut.** The agy wave had no statement arm at cut 4. `ec67091` adds it (`AGY_EXTRA=--statement`, with the hand-outs asserted in
+the export by blob). It is one commit and one file on top of cut 4 (`harness/systems-v3/agy_wave_v3.sh`, +31 −3). **The lead diffed
+both exports on the run box:** cut 5 differs from cut 4 in `agy_wave_v3.sh` and the three provenance files (`EXPORTED-FROM.sha`,
+`RENDER-OVERLAY.txt`, `REQUIRED-ANCESTORS.tsv`), and in nothing else. So nothing a Claude cell, a `none` view or the referee reads differs
+from cut 4.
+**Measured by the hand at zero spend, before this release** (gemini, 2026-09-26): the export's `agy_wave_v3.sh` is the committed blob.
+Each hand-out hashes to its pin in `STATEMENT-PIN.tsv`: statement `630a37ba2545`, spec `b336720df2e1`. A dry render of both statement
+arms reads rc 0, BATTERY GREEN, `ctl/statement=yes`, and both hand-outs are in the view. The launch `--check` is rc 0 on both, and the
+briefing-token walk is OK on both. The canary `--plan` is clean: 2 conditions, 6 cells, into staged roots.
+**ORDER:** by condition, plain ×3 then salt-diet ×3, as ADDENDUM 12, whose time-order confound carries here unchanged. **This pair fires only after the
+`none` pair's supervisor has written its end marker**, because the agy credential is width 1.
+**Each condition runs on exactly one cut:** Claude `none` on 4d960d3; Claude `statement` and agy `none` on cut 4; agy `statement` on
+cut 5. No pooling across cuts is needed.
+
+---
+
+## ⚖️ ADDENDUM 14 — THE AGY `statement · salt-diet` CONDITION: ITS FIRST CELL WAS KILLED FOR BOX SAFETY, AND ITS OTHER TWO ARE HELD. APPENDED.
+bench (lead), 2026-09-29 07:0x PDT. It records events of 2026-09-26 that no addendum carried. Every text above is untouched.
+**What happened.** The first cell of the condition (xass201, cut 5 = ec67091) was ended by the operators at 15:08 PDT on 2026-09-26.
+Its lean/lake tree had taken the run box to 27.4 of 28.7 GB swap used, with load at 46. The hand read the cell's own stream
+(`ctl/stream-1.ndjson`, gemini, 15:09 PDT). Three `lake build` calls never returned while the subject went on building. The fence
+denied the subject `ps`, so it could neither see nor stop the builds that piled up. The line that started the 17 GB `lean` process is
+**not measured**. The supervisor was stopped (rc 143), so xass202 and xass203 never started. Three seats signalled the cell within one
+minute (gemini, the helm, the lead), and all three acts are declared on the bus.
+**How it is reported.** Level 6 §H6, which §X7 imports for the agy row, lists `CELL-KILLED` in row 6: **NOT void: reported per arm.**
+So xass201 goes in the salt-diet column as CELL-KILLED, with the cause above printed beside it. It is not a VOID, because no row of
+§H6 or §X7 voids it. It is never counted as a landing. If its end state is refereed, the verdict is of the end state, as for the Claude
+row's CAP-COST cell (PR #269).
+⚠️ **The asymmetry is declared, and its direction is against the arm:** a runaway Lean build can only happen in an arm that builds Lean.
+Only salt-diet does. Voiding the cell as a harness fault would take a salt-diet failure out of the record. The cause is a harness gap,
+and it is printed beside the class, never used in place of it.
+**The hold.** xass202 and xass203 do not fire until a per-cell memory ceiling on the cell's process tree exists. This was the lead's
+ruling of 2026-09-26 17:19 PDT, arm (a) of gemini's fork. The ceiling is set at a multiple of the lane's measured normal per-cell
+peak, so that it catches only the pathology. A trip ends the cell as a declared cap class beside the arm column, and like row 6 it is
+not void. ⚠️ **It binds salt-diet far more than plain**, since plain builds no Lean. That is why it is declared here before any cell
+runs under it. It applies to this condition's two remaining cells only. The plain cells ran without it.
+**OWNER · RELEASE · CLOCK.** The ceiling is gemini's to build, with a red drive on a planted runaway. It is released by the lead's
+ADDENDUM 15, which names the cut and the multiple. The re-measure is 2026-10-02. **Default if nothing is released by then:** the
+condition closes at one cell (xass201, CELL-KILLED), and xass202 and xass203 are DECLARED unreached. The RESULT prints n = 1 beside
+every figure of the condition.
+**Unchanged:** every other condition, both rows, the referee, §X5, §X6 and §X8. The agy row's RESULT files are the hand's (gemini's),
+as the Claude row's are the lead's (#268, #269).
+**ADDENDUM 14, a pooling fact it omitted** (appended 2026-09-29 on a non-author read; the text above is untouched). The asymmetry is
+not only against plain. Inside this one condition, xass201 ran WITHOUT the ceiling and xass202 and xass203 would run WITH it. The
+agy `none · salt-diet` cells also ran without it. So at n = 3 the condition mixes two cap regimes. Its RESULT prints each cell's regime
+beside its class, as ADDENDUM 12's time-order confound is printed, and never pools the cells as if they had one regime.
+
+---
+
+## ⚖️ ADDENDUM 15 — THE RELEASE OF ADDENDUM 14's HOLD: THE CONDITION's CELLS #2 AND #3 FIRE FROM CUT 6 = 3e9289c, UNDER A CEILING OF 8,000 MB. APPENDED.
+bench (lead), 2026-09-29 07:4x PDT. Every text above is untouched.
+**The cut.** Cut 6 = `3e9289c` (gemini, 2026-09-29), one commit on cut 5 = `ec67091`. **The lead diffed them** (`git diff --stat
+ec67091 3e9289c`, 5 files): the ceiling in `agy_turnloop_v3.py` and `agy_launch_v3.sh`, one display line each in `agy_wave_v3.sh` and
+`gemini_canary_wave_v1.sh`, and one allowlisted variable in `gemini_drive_v3.sh`. Nothing a view, a card or the referee reads changes. With
+`AGY_MEM_CAP_MB` unset, the loop starts no watcher and the summary and `caps.tsv` carry no ceiling field. The launcher's arm 3h drives
+exactly that (set, unset, refused). So a cell with the ceiling unset reads what cut 5 gave it.
+**The ceiling: `AGY_MEM_CAP_MB=8000`**, on the physical footprint of the cell's process tree, sampled every 2 s. A trip ends the cell
+`MEM-CAP`. Like row 6 of level 6 §H6, that class is declared beside the arm column, it is not void, and it is never counted as a landing.
+**The basis** is the hand's replay table (`evidence-memcap-2026-09-29/memprobe.tsv` at `6c4ebec`, cut 6's child, which adds that directory and nothing else). It replays final repo states on copies,
+at zero spend. Nine `lake build Submission` runs of final states peak between 175 and 1,080 MB; one of them (xasn01, rc 1 in 6.5 s) is a failing
+build, and its peak (176) matches its two siblings'. The highest is a Claude `statement · salt-diet`
+cell. xass201's committed `Submission/TableMatch.lean`, built alone, reaches 12,074 MB at 118.6 s and is still rising when the replay
+kills it. 8,000 MB is ≈7.4× the highest normal build. The runaway's curve crosses it between 102.4 s (7,216 MB) and 107.8 s (8,699 MB).
+**Why 8,000 and not the hand's recommended 6,000.** Both values are box-safe. Both stop the runaway within two minutes, so the
+choice does not change what the ceiling is for. What differs is which arm pays. The ceiling can bind only an arm that builds Lean, and
+here that is salt-diet alone (ADDENDUM 14). So of two box-safe values the lower one is a larger treatment effect of the harness, and it
+buys no safety that the higher one lacks. Two measured facts point the same way. **(i)** The replays exclude the client (srt, node,
+agy), whose footprint is NOT MEASURED, and every live cell carries it. So the true margin over a normal live cell is smaller than the
+replay's ratio, by that amount. **(ii)** The runaway's tree footprint (the column the ceiling reads) plateaus at 6,058–6,361 MB from 75.4 s to 91.6 s,
+having crossed 6,000 between 70.0 s (5,864) and 75.4 s (6,058). A ceiling at 6,000 MB would trip at that plateau's start, which is also where a heavy but finishing proof build could stop. 8,000 MB is above the plateau.
+**What the RESULT prints for these two cells.** For each cell: its cap regime (the ceiling at 8,000 MB, beside xass201's none). If the
+ceiling trips, the class is `MEM-CAP`. Either way it prints the loop's own `mem_tree_peak_mb`. That peak is the first live measure of
+the client's footprint in this lane. It is printed as a measurement, and it does not change the ceiling for these two cells.
+**The cell ids.** The wave mints `<prefix>01..<reps>`, so a prefix of `xass2` would mint a second xass201. The cells are **xass301 and
+xass302**, a fresh wave with prefix `xass3` and `AGY_REPS=2`, into a staged empty root. They are recorded as the condition's cells #2 and
+#3, which ADDENDUM 14 called xass202 and xass203. No id repeats, for the reason cut 5 used `xass2`.
+**Order and confound.** xass301, then xass302, on one supervisor, after ADDENDUM 13's order. They fire at least three days after
+xass201 and after every other agy cell. ADDENDUM 12's time-order confound carries here with a longer gap, and it falls on salt-diet
+alone. Its sign is not registered.
+**gemini's question (2026-09-29 07:45), answered.** xass201's repo holds a landing commit (`e689590`, "landing 1: …", 14:56:51 PDT,
+with `LANDING.md` committed at 14:55) twelve minutes before the kill at 15:08. The loop never read it: it was blocked mid-turn on the
+builds, and no `ctl/end-1` was written. **The class stays `CELL-KILLED`, and the landing file is printed beside it.** The class
+records how the cell ended, and the kill ended it; a file written earlier does not change that. The x86 freeze registers no LANDED
+column for the agy row: §X7 imports level 6 §H6 and not §H5, whose rule 9 defines LANDED on the agy lane as "`LANDING.md` exists". If
+the hand's RESULT carries that column by level 6's convention, xass201 reads LANDED under that definition, beside `CELL-KILLED`, with
+the `declared` tag read from the repo. That is the rule every other agy cell is read by. Neither column is a pass. ADDENDUM 14's "never
+counted as a landing" means the kill is never reported as one, and it stays true under this reading. If the end state is refereed, the
+referee reads the committed tree, which includes `e689590`, and the RESULT prints a verdict of the end state (ADDENDUM 14).
+**OWNER · CLOCK.** The fire is the hand's (gemini's), on the agy credential, once nothing else holds it. ADDENDUM 14's re-measure date,
+2026-10-02, stands as the clock. If neither cell has fired by then, ADDENDUM 14's default takes the unfired cells: they are DECLARED
+unreached, and the condition's n is the count of cells that ran.
+**Unchanged:** every other condition and cell, both rows, the referee, the caps of level 6 §H3, §X5, §X6 and §X8, and ADDENDUM 14's
+pooling rule (each cell's regime is printed; the three cells are never pooled as one regime).
+
+---
+
+## ⚖️ ADDENDUM 16 — HOW A CEILING TRIP INSIDE TURN 1 IS READ: CLASS `MEM-CAP`, PRICE UNMEASURED. APPENDED AFTER DATA, AND SAID SO.
+bench (lead), 2026-09-29 08:1x PDT. Every text above is untouched. ⚠️ **This addendum is written AFTER a cell's data exists** (xass301,
+cell #2, reported by the hand at 2026-09-29 08:16 PDT), and BEFORE the condition's RESULT and before xass302 has ended. It settles an
+overlap that ADDENDUM 15 did not see. It does not change a cap, a cut, a cell, the referee or any other condition.
+**What happened.** xass301 tripped the ceiling at 925.4 s (loop summary `ctl/agy-turnloop-1.json`: `done_reason MEM-CAP`, turns_sent 2,
+`mem_tree_peak_mb 8159` over 8 processes, the largest 5,703 MB). The trip came inside the subject's first turn, before the client wrote
+any result record. The client's stream holds 189 step records, and the subject ran commands (builds, tests, the method's translation
+script). Two instruments read the missing result record as an absence. **(i)** The launcher's P-RAN gate wrote `ctl/end-1` =
+`NO-SUBJECT-RAN … no model was reached and NOTHING WAS SPENT`. That is false at the object. **(ii)** The meter read T 0 and
+`VOID(NO-MODEL)`, because it takes tokens only from result records.
+**The overlap.** Level 6 §H6 row 2 voids a cell that ends METER-BLIND, with no readable T: `VOID(UNPRICED)`. ADDENDUM 15 says a trip
+ends the cell `MEM-CAP`, a declared class, not void. xass301 meets both texts, and ADDENDUM 15 did not foresee that its own trip could
+cause the meter blindness.
+**The reading.** **(1) CLASS: `MEM-CAP`**, read from the loop's summary. ADDENDUM 15 governs the specific mechanism, and it was
+registered before any cell ran under it. The meter blindness is a CONSEQUENCE of the harness's own kill, so it is not an independent
+fault. Voiding the cell would take a salt-diet outcome out of the record because of a mechanism that can bind only salt-diet, which is
+ADDENDUM 14's reason for not voiding xass201. **It is also the conservative direction, which is the property a post-data rule
+is checked for first:** xass301 did not land, so `MEM-CAP` keeps a non-landing IN salt-diet's column, while the void would remove it. **(2) PRICE: `UNPRICED`**, which is row 2's own word, applied to what it names. The cell
+enters no token, cost or wall-per-token figure, and it is printed as UNMEASURED, never as 0 (925 s of a live subject ran). If the
+client's own log carries usage, the RESULT prints it as the client's statement, beside UNPRICED and not in place of it. **(3) BOTH FALSE
+VERDICTS are printed verbatim beside the class, each declared as the kill's consequence:** the end marker (`NO-SUBJECT-RAN … NOTHING
+WAS SPENT`) and the meter's (`VOID(NO-MODEL)`, T 0). Neither is ever read as the class, and the meter's is never read as T = 0 or as
+a reason to drop the cell. **(4) It is not a landing, and
+it is not refereed as a landing.** If its end state is refereed, the RESULT prints a verdict of the end state, as for xass201.
+**The other reading, stated so that it can be taken instead:** under row 2 alone, xass301 is VOID and the condition's n drops by one
+on the salt-diet side. The lead does not take it, for the reason in (1). A non-author reader who holds that row 2 governs should say so
+before the RESULT is written.
+**xass302** is read the same way if it trips inside turn 1. A trip after a result record exists is plain `MEM-CAP` (ADDENDUM 15), with
+T read up to the trip and printed as a floor.
+**The harness fix is NOT in this wave.** For a later cut only: P-RAN consults the loop's `done_reason`, or counts step records, before
+it writes NO-SUBJECT-RAN. It is built red-first on a fixture that trips inside turn 1, the shape none of the ceiling's arms produced.
+This wave's cells are read by this addendum and are never re-fired.
+**Unchanged:** ADDENDA 14 and 15, the ceiling (8,000 MB), cut 6, every other condition, the referee, §X5, §X6 and §X8.
+
+**ERRATUM to ADDENDUM 15** (appended 2026-09-29 by the lead; the text above is untouched). ADDENDUM 15 says xass201's landing commit
+`e689590` (14:56:51 PDT) came "twelve minutes before the kill at 15:08". The lead did not derive that figure. It was copied from a
+message, and it is bound to the wrong anchor. The measured stamps are in the statement RESULT, `RESULT-x86-crc32-agy-statement-2026-09-29.md`
+§1. `LANDING.md` was added in `531b460` at 14:55:07 PDT, and `e689590` came at 14:56:51 PDT. The first TERM of the stop was 15:07:25 PDT.
+So the intervals are 12 min 18 s and 10 min 34 s. No class, reading or release in ADDENDA 15–16 depends on the interval.
