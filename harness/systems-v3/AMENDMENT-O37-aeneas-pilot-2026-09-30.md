@@ -301,3 +301,12 @@ that pool's weekly reset lands in its new week (the PM's line).
    build host's. Cell `clbeca01` was built from 6004ebe's identical cell-build bytes and was never launched. It is fired as itself: the
    rule that a cell is built once is about a cell that has RUN, and this one has an empty meter. Its root's `_bin` is relinked to 865290f
    before the fire.
+
+---
+## ADDENDUM 6 (2026-09-30 12:43 PDT, bench) — ADDENDUM 5 item 4 CORRECTED before the fire: cell 1 is REBUILT on 865290f, not relinked
+The root's relink tool refused a relink under a built cell (`built-from.tsv` records the export and the watcher sha at build: 6004ebe and
+2c2ec7b7f398d504). Relinking would have left cell 1 recorded under an export and a watcher it did not run under, while the other five
+record 865290f. So the never-launched cell was MOVED ASIDE, intact with its HOLD record, to a directory outside every cells root
+(`cells-clb-HELD-before-call-2026-09-30/clbeca01-export-6004ebe`). Both block-A roots were relinked to 865290f while no cell was built
+in either, and `clbeca01` was built afresh. Its `built-from.tsv` reads `export_sha 865290f216370f20…` · `watcher feb0b5331034199a`.
+**All six cells record one export.** No model call has been made under any of it.
