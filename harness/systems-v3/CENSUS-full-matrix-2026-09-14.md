@@ -1529,3 +1529,27 @@ and its cost figures do not pool (§B4).
 ADDENDUM 25 §AE2's ten, less Sonnet LRU (ADDENDUM 30) and these three: **six conditions at n < 3, all in the Opus spec-change row**, which the
 step-g freeze (`AMENDMENT-stepg-opus-specchange-2026-09-29.md`) takes to n = 3 with seven cells.
 The LIVE figure is unchanged: **DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** Nothing here is a claim about the salt method.
+
+---
+# ⚖️ ADDENDUM 32 — **STEP g: THE SIX OPUS SPEC-CHANGE CONDITIONS REACH n = 3 OF RECORD. ADDENDUM 25's LIST OF TEN IS EMPTY.**
+## bench, 2026-09-29, with `RESULT-stepg-opus-specchange-2026-09-29.md` in the same commit (the six conditions' record).
+
+## §AH1 · WHAT MOVES, WITH THE PHASE-1 REACH BESIDE EVERY ROW (the helm's ruling on the step-g freeze makes the column mandatory)
+```
+  claude-opus-5  greenfield × spec-change   condition            n       reach (phase-1 landed / with an end)
+                                            FreeList × plain     2 → 3   4 / 4
+                                            FreeList × salt-diet 1 → 3   3 / 6
+                                            LRU × plain          2 → 3   4 / 5
+                                            LZW × plain          2 → 3   3 / 3
+                                            Paxos × plain        2 → 3   4 / 4
+                                            Paxos × salt-diet    2 → 3   3 / 5
+```
+Each condition's three cells and their suites are in the result's §3. **Paxos × salt-diet carries two verdicts for one of its cells
+(`b22d1000`: published "0/0, does not build"; re-scored today, PASS 24/24 on byte-identical code), and this addendum moves n, never a
+verdict.** The census of rc-3 verdicts of record that the helm ordered comes before any correction.
+
+## §AH2 · THE LIST AND THE LIVE FIGURE
+ADDENDUM 25 §AE2's ten: Sonnet LRU (ADDENDUM 30), the three Pro conditions (ADDENDUM 31) and these six. **None remains at n < 3.**
+The LIVE figure is unchanged: **DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** Every DONE now reports its condition at
+n = 3 CELLS OF RECORD (ADDENDUM 25 §AE3: cells of record, not scorable cells; a census of scorable n is still not taken). The 3 DECLARED are a
+separate state. It is never a verdict on the arms, and nothing here is a claim about the salt method.

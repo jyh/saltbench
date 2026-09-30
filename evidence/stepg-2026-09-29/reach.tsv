@@ -1,0 +1,7 @@
+task	arm	landed	with_end1	not_landed_kinds
+LZW	plain	3	3	-
+LRU	plain	4	5	FAILED-BOOTS=1 
+FreeList	plain	4	4	-
+Paxos	plain	4	4	-
+Paxos	salt-diet	3	5	FAILED-BOOTS=1 CAP-COST=1 
+FreeList	salt-diet	3	6	FAILED-BOOTS=1 CAP-COST=2 
