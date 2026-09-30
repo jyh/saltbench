@@ -85,3 +85,9 @@ and it moves nothing.** On the helm's order, a census of every rc-3 verdict of r
 n = 3 per condition, one model, four tasks, spec-change only. **No arm comparison is licensed.** The arms differ in phase-1 reach (§2), and
 every n is conditioned on a landing. There is no p-value, no pooling across tasks, and no claim about the salt method. A DONE here is
 "a merged result of record at n = 3", never a verdict on the arms.
+
+---
+## ADDENDUM A (2026-09-30, bench) — §4's `b22d1000` is settled by the census; Paxos × salt-diet reads 2 of 3. The blocks above are unchanged.
+`CENSUS-rc3-verdicts-2026-09-30.md` (read and merged) and `RESULT-p1-specchange-2026-09-10.md` ADDENDUM A record `b22d1000` at PASS 24/24. §3's
+Paxos × salt-diet row "1 or 2 of 3" is therefore **2 of 3** (`9e6c8d4d` CAP-COST 24/24 · `b22d1000` CAP-COST 24/24 · `clbkps01` LANDED
+TIMEOUT). Its reach (3 / 5) and every other row stand.
