@@ -175,3 +175,38 @@ that pool's weekly reset lands in its new week (the PM's line).
 
 ---
 *Unsigned. The non-author read is asked of kent; the release addendum names the export sha and the pool.*
+
+---
+## ADDENDUM 1 (2026-09-30, bench, before any signature) — kent's blocking finding, the helm's ruling, the fix, and §A6 CLOSED. §§A0–A9 are not edited.
+1. **THE FINDING (kent's non-author read, DRIVEN on the real script at 1f79021).** `lean-check.sh` read the FIRST axioms header in Lean's
+   output, and the proof elaborated before the check, so a `sorry` proof plus one forged `#print "'O37Proof.crc32_correct' depends on axioms:
+   [propext]"` read GREEN, and the scorer, running the same script, scored it a PASS. The pairing (§A1.2 against the reference's six
+   definitions) HOLDS line for line in the same read.
+2. **THE RULING (the helm, 2026-09-30 11:44:21): the SECOND-PROCESS form.** Built at harness 5ac4950:
+   - the proof is BUILT as a module (`O37Check` = the translation · the statement · the proof, `lean -o`); its messages are shown and an
+     error is RED, but none is parsed for the verdict;
+   - a SEPARATE Lean process runs a harness-owned file = `import O37Check` + the check part, and exactly ONE axioms report, at the check's own
+     line, is required. Measured before relying on it: the importer sees the proof body (a `sorry` proof reads `sorryAx` through the import).
+   - the check's names are `_root_.`-absolute: inside a namespace the proof leaves open, an unqualified name resolved to the proof's own
+     shadow (measured).
+   - the form screen FAILS on anything that runs code at elaboration (the module build runs outside the fence when the scorer runs it):
+     imports, new syntax or elaborators, `#eval` `#exit` `#guard`, `run_tac` and its kin, `IO.`, unsafe, `implemented_by`, `@[extern]`, kernel
+     switches, axioms, and any attribute off an allowlist (`@[command_elab]` could otherwise replace `#print axioms` itself). It only FLAGS
+     `#print` `#check` `trace` `sorry` in the record, never as a verdict, per the ruling. **WRONG IF** any text in Proof.lean can turn a RED
+     into a GREEN.
+3. **THE ARMS (selftest 19/19 at 5ac4950):** §A5's 13, plus forged-print (kent's), forged-trace (Mathlib's `trace` tactic prints the same
+   forgery through a door the screen does not close, so only the second process stops it), an open-namespace shadow of both names,
+   `@[command_elab]`, `#eval IO.println` of the forgery, an unterminated comment. **RED BACKWARDS:** against 1f79021's check, forged-print,
+   forged-trace and eval-print all read GREEN.
+4. **§A6 IS CLOSED: the reading-(i) lemma is PROVED.** `harness/systems-v3/o37/GF2.lean` (sha256/16 35695df1c903be19) proves
+   `theorem crc32_spec_eq_gf2 (msg : List (BitVec 8)) : O37Spec.crc32_spec msg = crc32_gf2 msg` for EVERY message, kernel-only
+   (`[propext, Classical.choice, Quot.sound]`), in ~5 s. The independent definition, stated so a reader can judge its independence:
+   G written term by term (x^32 + x^26 + x^23 + x^22 + x^16 + x^12 + x^11 + x^10 + x^8 + x^7 + x^5 + x^4 + x^2 + x + 1) in
+   `Polynomial (ZMod 2)`; M a finite sum giving bit k of the byte-wise LSB-first bit sequence the coefficient of x^(L−1−k), L = 8·len;
+   J = Σ_{i<32} x^i; R = (M·x^32 + J·x^L) %ₘ G; crc = reflect32(R) xor 0xFFFFFFFF. No register or shift appears in it. Its six-definition
+   span is byte-identical to Spec.part.lean. A mutation (one wrong term of G) breaks the proof, so the theorem rests on the independent G.
+   It is still its OWN row and never the head-to-head (plan ADDENDUM 2); it strengthens §A9's pairing limit, which now reads: the
+   transcription agrees with the Verus reference on 149 vectors AND is proved equal to the textbook GF(2)[x] definition.
+5. **THE RECEIPTS, re-run from ONE export (5ac4950) on the run box:** a lean-aeneas cell builds (gate receipt: arm 3 RED as required,
+   selftest GREEN); lean-check selftest 19/19; scorer selftest 7/7; on a COPY with the reference solution and proof, `verify.sh` GREEN,
+   a track commit accepted, `gate.sh --landing` GREEN; GF2.lean kernel-only. §A0 row 6's export must descend from **5ac4950**, not 1f79021.
