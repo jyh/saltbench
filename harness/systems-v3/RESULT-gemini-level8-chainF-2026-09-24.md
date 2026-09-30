@@ -130,3 +130,39 @@ the same commit carries the arithmetic.
   verifier         harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24-verify.py    VERIFY GREEN, and red on a planted wrong value
   chain ends       CHAIN-DONE mode F: freelist 2026-09-25T05:19:02Z · lzw 2026-09-25T07:12:51Z · paxos (rr2) 2026-09-25T12:25:41Z
 ```
+
+---
+# ADDENDUM A (gemini, 2026-09-29) · `l8fpsr03` IS A TIMEOUT, NOT A BUILD FAILURE — THE CLASS MOVES, NO COUNT DOES
+⛔ **Appended. Nothing above this line is edited**, including §1's `<- one BUILD-FAIL` and the cells TSV's `BUILD-FAIL` / `0/0` for
+`l8fpsr03`: they are what the scorer of record printed, and this addendum says what they mean.
+
+**A.1 · THE CORRECTION.** `CENSUS-rc3-verdicts-2026-09-30.md` §C4 re-scored `l8fpsr03` (Pro × FreeList × salt-diet, phase 2) on its clean
+tree with the B runner and read rc 3 with the runner's own printed reason, `the driver did not finish inside 600s`
+(`evidence/rc3-census-2026-09-30/census.tsv`, row `l8fpsr03`, sol_sha16 `bfd6e9208d605cc7`). Read it as **TIMEOUT 0/0**, where §1 and the
+cells TSV read BUILD-FAIL 0/0.
+
+**A.2 · WHY THIS LANE WROTE BUILD-FAIL — THE SAME MECHANISM AS THE CENSUS'S §C1, IN THE AGY SCORER.** Read at the export this cell was
+scored on (`2e342dcc02d1`, the score file's line 1): `score_wave_v3.sh:340` maps the runner's exit code alone,
+`case $trc in 0) PASS;; 3) BUILD-FAIL;; *) FAIL;; esac`. The FreeList B runner (`tasks/systems-v3/FreeList/B/run_tests.sh` at that export)
+exits 3 on a failed build (:25) and ALSO on its own 600 s alarm (:28, rc 142 ⇒ `TESTS 0/0` + the printed reason + `exit 3`). So a timed-out
+suite prints BUILD-FAIL in this lane too, exactly as it does in `score_claude_v3.py`.
+
+**A.3 · A SECOND AXIS, FROM THIS LANE'S OWN RECEIPT (not a re-score).** The score drive's log
+(`~/.fleet/executors/gemini.runs/l8u-FreeList-pro-rr-2026-09-24-freelist-score/drive.log`, run-side, not tracked) scored the plain condition's
+three cells in 26 s (23:34:21Z → 23:34:47Z) and the salt-diet condition's three in 622 s (23:34:47Z → 23:45:09Z). That is one 600 s alarm plus
+two ordinary cells. A build failure returns in seconds. The 2026-09-24 timing therefore agrees with the census's printed reason.
+
+**A.4 · WHAT MOVES.** Only the CLASS of one non-pass. FULL PASS stays 0/3 for 3.1-pro-high × FreeList × salt-diet, §1's 19 of 36 is
+unchanged, V1 and V2 for that row are unchanged (both were ABSENT for this cell and are still absent, because a timed-out driver prints no
+REGRESSIONS or CLAUSE_TESTS lines), and §7's census movement is unchanged. The per-cell reading of that row is `TIMEOUT 0/0 · 8/9 · 8/9`.
+Nothing here is a claim about the salt method.
+
+**A.5 · SCOPE: DOES THE SAME CLASS SIT IN THIS LANE'S OTHER RESULTS?** Every agy result scored by `score_wave_v3.sh` carries the mapping in
+A.2, so any BUILD-FAIL it printed is a build failure OR a 600 s timeout until the reason is read. The census's population (§C2, 8 cells,
+held by kent's non-author read on a second vocabulary and case axis over harness/, evidence/ and paper/ at main `c177fced`) holds every
+BUILD-FAIL 0/0 of record, and it contains exactly two agy cells: `l8fpsr03` (moved here) and `av02lzw`. `av02lzw`'s own result names its
+compile error, `error: literal out of range for u16` (`RESULT-agy-lzw-scored-2026-09-10.md` :42–43). That is a build failure by its own
+record. The census adds 2 compile errors at the working tree. **So no other agy verdict of record changes class.**
+⚠️ NOT READ HERE: which tree (working or HEAD) the 09-10 tooling scored for `av02lzw`, which the census's §C4 also leaves unread. The fix to
+`score_wave_v3.sh` (key on the runner's printed reason, as the census's §C5.3 offers for `score_claude_v3.py`) is the tool owner's, systems'.
+It is not made here, because any later export that carries the old mapping repeats the class.
