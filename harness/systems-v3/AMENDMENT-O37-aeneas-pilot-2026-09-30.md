@@ -285,3 +285,19 @@ that pool's weekly reset lands in its new week (the PM's line).
    - **Scoring needs the scorer's box to reach the network UNCONFINED** (kent, 12:35:28). Otherwise the network control is UNMEASURED
      and every run reads RED. That fails closed, and it is stated here so nobody reads such a RED as a proof failure.
 4. **FIRE ORDER, as §A7:** AO 1 first, alone. It is READ at its first in-cell `lean-check` before AS 1 fires.
+
+---
+## ADDENDUM 5 (2026-09-30 12:41 PDT, bench) — the first fire HELD before any model call; the release moves to export 865290f, which differs from 6004ebe by ONE line
+1. **WHAT HAPPENED.** `clb_fire.sh AO Crc32 lean-aeneas 1` on export 6004ebe: client pin OK, fence converged (sha16 e9cb8f919d980041),
+   CHECK CLEAN, and the sandbox probe GREEN. Then the watcher's launch was **HELD**: its pre-launch `cell-claude.sh --check`
+   re-rendered the fence **without** the read-only root and read DRIFT. The launch log says *"nothing was spent"*, and no model call
+   was made.
+2. **CAUSE.** `cell-watch.sh` passes the launch window only the names in its `LAUNCH_NAMES` list, and `O37_ROOT` was not in it. This is
+   one more registry the arm had to join, found by the fire itself.
+3. **FIX, harness 865290f** (on the arm branch, directly above 6004ebe): `O37_ROOT` is added to `LAUNCH_NAMES`. Unset names are skipped
+   and scrubbed from the session, so no other cell's launch changes. cell-watch --selftest 77/77. `git diff --stat 6004ebe 865290f` is
+   **one file, one line** (cell-watch.sh), so everything `cell_build.py` writes into a cell is byte-identical under either export.
+4. **THE RELEASE MOVES TO EXPORT 865290f**, for all 6 cells. It sits at a dest of its own on the run box, and its Verus sha equals the
+   build host's. Cell `clbeca01` was built from 6004ebe's identical cell-build bytes and was never launched. It is fired as itself: the
+   rule that a cell is built once is about a cell that has RUN, and this one has an empty meter. Its root's `_bin` is relinked to 865290f
+   before the fire.
