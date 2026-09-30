@@ -210,3 +210,34 @@ that pool's weekly reset lands in its new week (the PM's line).
 5. **THE RECEIPTS, re-run from ONE export (5ac4950) on the run box:** a lean-aeneas cell builds (gate receipt: arm 3 RED as required,
    selftest GREEN); lean-check selftest 19/19; scorer selftest 7/7; on a COPY with the reference solution and proof, `verify.sh` GREEN,
    a track commit accepted, `gate.sh --landing` GREEN; GF2.lean kernel-only. §A0 row 6's export must descend from **5ac4950**, not 1f79021.
+
+---
+## ADDENDUM 2 (2026-09-30, bench, before any signature) — kent's delta-read findings, the helm's CONTAIN-AND-RE-CHECK ruling, built at harness c122a11. ADDENDUM 1 item 2's mechanism is REPLACED as below; nothing above is edited.
+1. **THE FINDINGS (kent, DRIVEN on 5ac4950):** (a) the form screen was line-anchored: `/- c -/ #eval …` and `… := trivial #eval …`
+   passed it, and both RAN `Process.run` in the module build, which at scoring runs outside the cell fence; (b) an `initialize` in
+   the subject's module does not run at the build and DOES run at IMPORT in a normal Lean frontend, so the importing `#print axioms`
+   file of ADDENDUM 1 ran subject code. kent's GF(2) independence read (item 4 of ADDENDUM 1) JUDGED the definition independent,
+   with one citation correction: the six DEFINITIONS are identical to Spec.part.lean; the SPAN is not (one docstring line differs).
+   ADDENDUM 1 item 4's "span is byte-identical" should read **definition-identical**.
+2. **THE RULING (the helm, 11:59, amended 12:00): stop screening text; CONTAIN and RE-CHECK.** Built:
+   - **CONTAIN.** With `O37_CONFINE=1`, which the scorer sets, every process that loads subject code (Charon, Aeneas, the module build,
+     the re-check) runs under ONE Seatbelt profile: writes only inside the check's scratch dir, no network, exec only inside the
+     toolchain root. The profile is tested before each use: an exec outside the root must be denied, or the check is RED. In a
+     cell, the fence is the containment.
+   - **RE-CHECK.** `o37/O37Axioms.lean` is a harness Lean PROGRAM (`lean --run`), and it elaborates nothing of the subject's. It
+     imports the built module with `loadExts := false` and never enables initializers. It replays every constant the module
+     declares through the KERNEL (`Lean.Environment.replay`), on top of the module's own imports. It requires
+     `O37Proof.crc32_correct` to have exactly the type `O37Spec.Statement`. Then it walks the theorem's axioms by hand over the
+     KERNEL environment. That last choice is measured, not assumed: `replay`'s returned wrapper does not see the replayed constants
+     through `find?`, so a collector reading the wrapper would report no axioms at all, a false green.
+   - The text screen is now a FLAG in the record, never a verdict. The harness file `O37Axioms.lean` replaces `Check.part.lean`
+     everywhere that file was used: the statement tree the gate protects, cell_build's byte-equality assert, and the scorer.
+3. **THE ARMS, from export c122a11 on the run box.** Selftest 19/19 unconfined (in-cell mode); 24/24 under `O37_CONFINE=1`
+   (scoring mode), adding kent's two `#eval Process.run` forms and an `initialize` that writes a file. Each reads RED, and **every
+   target file is ABSENT after the whole check**. The earlier RED arms keep their RED under the new stages: forged text from the proof
+   cannot reach the verdict, a type other than `O37Spec.Statement` fails at TYPE, and a missing or namespaced theorem fails at REPLAY.
+4. **RECEIPTS, all from ONE export (c122a11):** a lean-aeneas cell builds (gate arm 3 RED as required); lean-check selftests 19/19 and
+   24/24; scorer 7/7; on a copy with the reference solution and proof, `verify.sh` GREEN and `gate.sh --landing` GREEN; `GF2.lean`
+   kernel-only. **§A0 row 6's export must descend from c122a11.**
+5. **WRONG IF** any text in `proof/Proof.lean` can turn a RED verdict GREEN, or any code in it can write outside the scratch dir or
+   exec outside the toolchain root while the scorer runs.
