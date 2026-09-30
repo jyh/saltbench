@@ -265,3 +265,23 @@ that pool's weekly reset lands in its new week (the PM's line).
    **§A0 row 6's export must descend from 6004ebe.**
 6. **STILL NOT CLAIMED:** an adversarial review of the Seatbelt profile as a boundary. The controls prove that each denial is in force
    at use time. They do not prove that no path around the profile exists.
+
+---
+## ADDENDUM 4 — SIGNED AND RELEASED (2026-09-30 12:37 PDT, bench, before the first model call)
+1. **SIGNATURE.** Three non-author reads by kent: #293 at blob 770342102ae0 (one blocking finding, closed by ADDENDUM 1), the delta at
+   0e99b838d24b (findings closed by ADDENDUM 2), the delta at 15094975ee7d (findings closed by ADDENDUM 3), and the delta at a65ba8bcfaf2,
+   which he read **CLEAR BY READING** (2026-09-30 12:35:28). The helm's ruling of 12:18:56 reads: *"kent reads that one delta, then the
+   registration is SIGNED and the pilot FIRES"* on the pool the PM named. **This file is signed as of ADDENDUM 3.**
+2. **THE HELM'S WRONG-IF, carried as a stop (12:18:56).** If any pilot cell's process writes outside its scratch dir, connects out, or execs
+   outside the root, that cell is **VOID (not RED)**, the pilot halts, and the adversarial Seatbelt review moves ahead of any further run.
+   That review is a SEPARATE row, owed before any run whose subjects are not our own. It never gates this pilot.
+3. **RELEASE.**
+   - Export **6004ebe** (6004ebef3b36): one export for all 6 cells, a dest of its own on the run box. 388 files, 0 withheld-shaped names.
+     The run box's Verus binary sha equals the build host's (7a7b319b170692d3). Its toolchain root is §A0 row 8's.
+   - The pool: the one the PM's 2026-09-30 midday re-cut names. The run box's account check reads **OK** on the lane env's config
+     (identity string equal to the named pool's, access and refresh present). The launch is what proves it authenticates, and the fire's
+     sandbox probe is that launch.
+   - The client pin, the cap and the watcher are §A0's, unchanged.
+   - **Scoring needs the scorer's box to reach the network UNCONFINED** (kent, 12:35:28). Otherwise the network control is UNMEASURED
+     and every run reads RED. That fails closed, and it is stated here so nobody reads such a RED as a proof failure.
+4. **FIRE ORDER, as §A7:** AO 1 first, alone. It is READ at its first in-cell `lean-check` before AS 1 fires.
