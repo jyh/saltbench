@@ -241,3 +241,27 @@ that pool's weekly reset lands in its new week (the PM's line).
    kernel-only. **§A0 row 6's export must descend from c122a11.**
 5. **WRONG IF** any text in `proof/Proof.lean` can turn a RED verdict GREEN, or any code in it can write outside the scratch dir or
    exec outside the toolchain root while the scorer runs.
+
+---
+## ADDENDUM 3 (2026-09-30, bench, before any signature) — the three USE-TIME containment controls (kent's delta read #2, ruled 12:18). Harness 6004ebe.
+1. **THE FINDING (kent, by reading):** the re-check reads SOUND as written. The profile's use-time self-test proved only the exec
+   denial; the write and network denials rested on the profile's text and on arms run after the fact. kent declared he did NOT probe
+   the profile adversarially: a null in his read is not clearance of the sandbox.
+2. **THE RULING (the helm):** all three denials get a use-time positive control; each must fail, or the run is RED.
+3. **BUILT (every scoring run, before any subject code loads):**
+   - **EXEC:** `/usr/bin/true`, outside the toolchain root, is refused.
+   - **WRITE:** the root's own `lean` writing an `.olean` one directory ABOVE the scratch dir fails and leaves no file. The same write
+     INSIDE the scratch dir succeeds; that is the control's other half.
+   - **NETWORK:** `o37/O37NetProbe.lean`, a harness `lean --run` program, makes one UDP connect to 1.1.1.1:53. It must CONNECT
+     unconfined and be REFUSED confined. If it cannot connect unconfined, the network control is UNMEASURED and the run is RED.
+     Measured before wiring: it connects unconfined; confined it gets "operation not permitted".
+4. **THE CONTROLS' OWN RED ARMS, from export 6004ebe.** Three mutants of the check, each with exactly ONE denial deleted from the profile
+   (the removed-line count is printed and must be 1). Each reads RED and names its own denial: *did not deny the network (NET-PROBE
+   connected)* · *did not deny a write outside the scratch dir* · *did not deny an exec outside the toolchain root*. (The first cut of
+   these arms removed NOTHING: in ERE the parentheses of `(deny network*)` are grouping. The printed count of 0 exposed it; they now use
+   fixed strings.)
+5. **RECEIPTS from ONE export (6004ebe):** a cell builds (gate arm 3 RED as required); selftests 19/19 in-cell, 24/24 scoring mode (the
+   escape arms' target files absent); the three mutants RED; scorer 7/7; reference landing GREEN; GF2.lean kernel-only.
+   **§A0 row 6's export must descend from 6004ebe.**
+6. **STILL NOT CLAIMED:** an adversarial review of the Seatbelt profile as a boundary. The controls prove that each denial is in force
+   at use time. They do not prove that no path around the profile exists.
