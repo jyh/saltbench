@@ -1,0 +1,25 @@
+problem	arm	published	cell	T	void
+Crc32	plain	$6.36	st01crc3	6324774	-
+Crc32	plain	$6.66	st03crc3	6206287	-
+Crc32	plain	$8.64	st02crc3	9099627	VOID(UNDERSTATED)
+Crc32	salt-diet	$5.65	st05crc3	5927487	-
+Crc32	salt-diet	$6.25	st06crc3	5828821	-
+Crc32	salt-diet	$8.56	st04crc3	10673708	VOID(UNDERSTATED)
+FreeList	plain	$17.72	-	UNMEASURED	0 tracked rows at this cent
+FreeList	plain	$18.26	-	UNMEASURED	0 tracked rows at this cent
+FreeList	plain	$18.42	-	UNMEASURED	0 tracked rows at this cent
+FreeList	salt-diet	$21.18	-	UNMEASURED	0 tracked rows at this cent
+FreeList	salt-diet	$27.84	-	UNMEASURED	0 tracked rows at this cent
+FreeList	salt-diet	$29.00	-	UNMEASURED	0 tracked rows at this cent
+LRU	plain	$8.92	st08lru	8098356	-
+LRU	plain	$9.36	st07lru	8352122	-
+LRU	plain	$15.12	st09lru	16832223	-
+LRU	salt-diet	$13.65	st12lru	16265999	-
+LRU	salt-diet	$14.24	st11lru	16081193	-
+LRU	salt-diet	$18.65	st10lru	21652262	VOID(UNDERSTATED)
+LZW	plain	$9.82	-	UNMEASURED	0 tracked rows at this cent
+LZW	plain	$10.24	-	UNMEASURED	0 tracked rows at this cent
+LZW	plain	$11.39	-	UNMEASURED	0 tracked rows at this cent
+LZW	salt-diet	$15.34	-	UNMEASURED	0 tracked rows at this cent
+LZW	salt-diet	$18.54	-	UNMEASURED	0 tracked rows at this cent
+LZW	salt-diet	$22.53	-	UNMEASURED	0 tracked rows at this cent

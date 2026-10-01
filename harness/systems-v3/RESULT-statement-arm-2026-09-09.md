@@ -156,3 +156,39 @@ axis for pricing a pattern found by inspection.
   archive     run box  ~/harvest-v3/<cell>-*/METER.txt
   frozen      PRESPEC 437ea70 · AMENDMENT + addenda 1-2 7180387 · score_matrix1.py d31e482
 ```
+
+## §T · THE TOKEN FIGURE BESIDE §3's DOLLARS (desk KS, the Captain's order of 2026-09-11). Everything above is unedited.
+bench (lead), 2026-10-01. §3's dollars were read from the archive's `METER.txt` on 09-09. No later re-read stands in for that reading
+(desk KS's trap: the archive moves between readings). A cell's T is taken from the 09-28 cost-table reading
+(`evidence/v3-cost-tables-2026-09-28/claude-cost-raw.tsv`) ONLY where that reading's COST, to the cent, equals §3's figure, uniquely.
+Equal cents show the two readings agree on that cell. Each matched cell's arm is cross-checked against
+`CELLMAP-descriptive-tables-v2-2026-09-27.tsv` (st01–03 · st07–09 plain, st04–06 · st10–12 salt-diet: they agree).
+`evidence/ks-tokens-2026-10-01/statement_arm.py`, output `statement_arm.tsv`:
+```
+  Crc32     plain        $6.36  st01crc3     6,324,774 T  
+  Crc32     plain        $6.66  st03crc3     6,206,287 T  
+  Crc32     plain        $8.64  st02crc3     9,099,627 T  FLOOR (VOID(UNDERSTATED))
+  Crc32     salt-diet    $5.65  st05crc3     5,927,487 T  
+  Crc32     salt-diet    $6.25  st06crc3     5,828,821 T  
+  Crc32     salt-diet    $8.56  st04crc3    10,673,708 T  FLOOR (VOID(UNDERSTATED))
+  FreeList  plain       $17.72  -             UNMEASURED  
+  FreeList  plain       $18.26  -             UNMEASURED  
+  FreeList  plain       $18.42  -             UNMEASURED  
+  FreeList  salt-diet   $21.18  -             UNMEASURED  
+  FreeList  salt-diet   $27.84  -             UNMEASURED  
+  FreeList  salt-diet   $29.00  -             UNMEASURED  
+  LRU       plain        $8.92  st08lru      8,098,356 T  
+  LRU       plain        $9.36  st07lru      8,352,122 T  
+  LRU       plain       $15.12  st09lru     16,832,223 T  
+  LRU       salt-diet   $13.65  st12lru     16,265,999 T  
+  LRU       salt-diet   $14.24  st11lru     16,081,193 T  
+  LRU       salt-diet   $18.65  st10lru     21,652,262 T  FLOOR (VOID(UNDERSTATED))
+  LZW       plain        $9.82  -             UNMEASURED  
+  LZW       plain       $10.24  -             UNMEASURED  
+  LZW       plain       $11.39  -             UNMEASURED  
+  LZW       salt-diet   $15.34  -             UNMEASURED  
+  LZW       salt-diet   $18.54  -             UNMEASURED  
+  LZW       salt-diet   $22.53  -             UNMEASURED  
+```
+**FreeList and LZW stay UNMEASURED here:** no tracked reading carries their T at the cents §3 printed. They are owed by desk KS from their
+own harvest generation, never by a re-read pasted in.
