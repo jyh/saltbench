@@ -91,3 +91,17 @@ every n is conditioned on a landing. There is no p-value, no pooling across task
 `CENSUS-rc3-verdicts-2026-09-30.md` (read and merged) and `RESULT-p1-specchange-2026-09-10.md` ADDENDUM A record `b22d1000` at PASS 24/24. §3's
 Paxos × salt-diet row "1 or 2 of 3" is therefore **2 of 3** (`9e6c8d4d` CAP-COST 24/24 · `b22d1000` CAP-COST 24/24 · `clbkps01` LANDED
 TIMEOUT). Its reach (3 / 5) and every other row stand.
+
+## §T · THE TOKEN FIGURE BESIDE EVERY DOLLAR FIGURE (desk KS, the Captain's order of 2026-09-11). Everything above is unedited.
+bench (lead), 2026-10-01. §1 printed each cell's phase-2 dollars and SPEND printed their sum, both without tokens. `evidence/ks-tokens-2026-10-01/blocks_stepg.py` reads the same
+rows of `evidence/stepg-2026-09-29/cells.tsv` (final_COST, final_T), and it reproduces SPEND's $105.64.
+```
+  clbkzp01  LZW       plain      $ 18.96 · 17,804,860 T
+  clbklp01  LRU       plain      $  9.58 · 10,696,851 T
+  clbkfp01  FreeList  plain      $ 17.46 · 17,977,130 T
+  clbkpp01  Paxos     plain      $ 18.80 · 15,765,030 T
+  clbkps01  Paxos     salt-diet  $ 18.72 · 22,212,725 T
+  clbkfs01  FreeList  salt-diet  $ 12.44 · 16,532,828 T
+  clbkfs02  FreeList  salt-diet  $  9.69 · 10,736,717 T
+  total      7 cells   $105.64 · 111,726,141 T      (clbkpp01 is CAP-COST: its T is a floor, as its dollars are)
+```
