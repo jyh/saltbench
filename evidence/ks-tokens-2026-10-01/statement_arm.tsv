@@ -1,0 +1,25 @@
+problem	arm	published	cell	T	void	cellmap
+Crc32	plain	$6.36	st01crc3	6324774	-	AGREES
+Crc32	plain	$6.66	st03crc3	6206287	-	AGREES
+Crc32	plain	$8.64	st02crc3	9099627	VOID(UNDERSTATED)	AGREES
+Crc32	salt-diet	$5.65	st05crc3	5927487	-	AGREES
+Crc32	salt-diet	$6.25	st06crc3	5828821	-	AGREES
+Crc32	salt-diet	$8.56	st04crc3	10673708	VOID(UNDERSTATED)	AGREES
+FreeList	plain	$17.72	sf01free	20122928	VOID(UNDERSTATED)	AGREES
+FreeList	plain	$18.26	sf02free	15520144	-	AGREES
+FreeList	plain	$18.42	sf03free	19470666	-	AGREES
+FreeList	salt-diet	$21.18	sf05free	21944368	-	AGREES
+FreeList	salt-diet	$27.84	sf06free	32830752	-	AGREES
+FreeList	salt-diet	$29.00	sf04free	38764962	-	AGREES
+LRU	plain	$8.92	st08lru	8098356	-	AGREES
+LRU	plain	$9.36	st07lru	8352122	-	AGREES
+LRU	plain	$15.12	st09lru	16832223	-	AGREES
+LRU	salt-diet	$13.65	st12lru	16265999	-	AGREES
+LRU	salt-diet	$14.24	st11lru	16081193	-	AGREES
+LRU	salt-diet	$18.65	st10lru	21652262	VOID(UNDERSTATED)	AGREES
+LZW	plain	$9.82	f795e96f	8859916	VOID(UNDERSTATED)	AGREES
+LZW	plain	$10.24	22ee7d33	10003364	-	AGREES (the id is also under 1 other condition row(s); the cent match pins the reading)
+LZW	plain	$11.39	922d1ff0	8337703	-	AGREES
+LZW	salt-diet	$15.34	9aca67c5	16166097	VOID(UNDERSTATED)	AGREES
+LZW	salt-diet	$18.54	f5f66c47	21418493	-	AGREES
+LZW	salt-diet	$22.53	6d58f1ec	26366793	-	AGREES (the id is also under 1 other condition row(s); the cent match pins the reading)

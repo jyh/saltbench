@@ -120,3 +120,23 @@ reading and a measured null print the same word in a grid, and only the first is
 matrix cell or the paper carries that distinction is an open question, raised for the 2026-09-17 sitting.
 It does not make matrix-#1's cells substitutable. **With Paxos complete, HC stage 1 is complete**; the stage result, with
 the matrix count re-cut in the same commit (council 2026-09-16 ⑤d), is its own file.
+
+## §T · THE TOKEN FIGURE BESIDE THE PER-CELL DOLLARS (desk KS, the Captain's order of 2026-09-11). Everything above is unedited.
+bench (lead), 2026-10-01. Each cell's own `ctl/post-end-1.tsv` carries final_T beside the final_COST this result printed. It was read on
+the run box by `evidence/ks-tokens-2026-10-01/gather_hc1.sh` (`hc1_post_end.tsv`), and `hc1.py` (`hc1.tsv`) matches every published dollar
+to exactly one cell's final_COST to the cent: 9 of 9 here. That is the same record, so the T is the same reading's. Where §3 marks a dollar `*` (an understated meter, a BOUND) or `^` (CAP-OUT), the T beside it is the same reading's T, so it is a floor in the same sense. Under §4.2 the capped cell enters the dollar median at the cap; its T is printed as metered and never clipped.
+The price BANDS above are registered predictions, not costs, and get no T.
+```
+  plain        $20.23  hc1pp01      20,158,048 T
+  plain        $16.51  hc1pp02      14,171,776 T
+  plain        $22.01  hc1pp03      26,533,104 T
+  placebo      $15.19  hc1pb01      16,352,713 T
+  placebo      $23.17  hc1pb02      27,533,406 T
+  placebo      $16.89  hc1pb03      17,276,116 T
+  salt-diet    $37.63  hc1ps01      50,614,418 T
+  salt-diet    $36.76  hc1ps02      51,016,255 T
+  salt-diet    $36.78  hc1ps03      43,980,434 T
+  plain      median T 20,158,048 (the T column's own median)
+  placebo    median T 17,276,116 (the T column's own median)
+  salt-diet  median T 50,614,418 (the T column's own median)
+```

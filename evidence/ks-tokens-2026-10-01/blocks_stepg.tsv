@@ -1,0 +1,94 @@
+## block OS (24 cells)
+cell	problem	arm	final_COST	final_T	capped
+clbtcp01	Crc32	plain	9.6926	10004941	no
+clbtcp02	Crc32	plain	8.3509	8965677	no
+clbtcp03	Crc32	plain	9.8684	10088207	no
+clbtcs01	Crc32	salt-diet	7.0576	7779504	no
+clbtcs02	Crc32	salt-diet	7.2653	7250392	no
+clbtcs03	Crc32	salt-diet	6.5712	6758082	no
+clbtfp01	FreeList	plain	23.0588	22226064	no
+clbtfp02	FreeList	plain	19.5729	18887102	no
+clbtfp03	FreeList	plain	14.9115	15254481	no
+clbtfs01	FreeList	salt-diet	36.2217	48426494	no
+clbtfs02	FreeList	salt-diet	29.6196	35880068	no
+clbtfs03	FreeList	salt-diet	27.8217	35794655	no
+clbtlp01	LRU	plain	10.3596	10581714	no
+clbtlp02	LRU	plain	10.6956	9747753	no
+clbtlp03	LRU	plain	8.0443	8213518	no
+clbtls01	LRU	salt-diet	15.0002	17007405	no
+clbtls02	LRU	salt-diet	14.1448	16074704	no
+clbtls03	LRU	salt-diet	14.5941	15643247	no
+clbtzp01	LZW	plain	16.5588	17582989	no
+clbtzp02	LZW	plain	13.4688	12724584	no
+clbtzp03	LZW	plain	10.4423	10051429	no
+clbtzs01	LZW	salt-diet	17.8990	17558716	no
+clbtzs02	LZW	salt-diet	13.9543	14894719	no
+clbtzs03	LZW	salt-diet	23.3102	26951777	no
+# OS plain: n=12  median COST 10.57  median T 10334960  total COST 155.02  total T 154328459
+# OS salt-diet: n=12  median COST 14.80  median T 16541054  total COST 213.46  total T 250019763
+## block SBS (24 cells)
+cell	problem	arm	final_COST	final_T	capped
+clbucp01	Crc32	plain	0.9366	1627339	no
+clbucp02	Crc32	plain	1.0121	2055677	no
+clbucp03	Crc32	plain	1.5639	3041997	no
+clbucs01	Crc32	salt-diet	3.9395	10051058	no
+clbucs02	Crc32	salt-diet	3.3458	8063545	no
+clbucs03	Crc32	salt-diet	4.3831	12317970	no
+clbufp01	FreeList	plain	2.3408	5160232	no
+clbufp02	FreeList	plain	2.9368	5463328	no
+clbufp03	FreeList	plain	2.2493	4284702	no
+clbufs01	FreeList	salt-diet	38.5807	142876385	yes
+clbufs02	FreeList	salt-diet	37.4583	140700178	yes
+clbufs03	FreeList	salt-diet	37.5983	136827691	yes
+clbulp01	LRU	plain	1.0875	2113686	no
+clbulp02	LRU	plain	1.1020	2460543	no
+clbulp03	LRU	plain	0.9325	1785078	no
+clbuls01	LRU	salt-diet	4.0008	9775413	no
+clbuls02	LRU	salt-diet	5.2670	14571647	no
+clbuls03	LRU	salt-diet	5.5829	14564237	no
+clbuzp01	LZW	plain	1.7949	2641673	no
+clbuzp02	LZW	plain	2.2099	4075553	no
+clbuzp03	LZW	plain	1.5196	2403130	no
+clbuzs01	LZW	salt-diet	8.9140	22230424	no
+clbuzs02	LZW	salt-diet	21.4795	66700375	no
+clbuzs03	LZW	salt-diet	18.1427	58601805	no
+# SBS plain: n=12  median COST 1.54  median T 2551108  total COST 19.69  total T 37112938
+# SBS salt-diet: n=12  median COST 7.25  median T 18401035  total COST 188.69  total T 637280728
+## block SS (24 cells)
+cell	problem	arm	final_COST	final_T	capped
+clbscp01	Crc32	plain	1.1939	2401900	no
+clbscp02	Crc32	plain	0.9779	2181020	no
+clbscp03	Crc32	plain	0.8430	1879690	no
+clbscs01	Crc32	salt-diet	3.7965	10489614	no
+clbscs02	Crc32	salt-diet	4.1607	11335722	no
+clbscs03	Crc32	salt-diet	5.5165	15926283	no
+clbsfp01	FreeList	plain	2.7284	4083049	no
+clbsfp02	FreeList	plain	3.3273	6054020	no
+clbsfp03	FreeList	plain	2.8059	4524503	no
+clbsfs01	FreeList	salt-diet	35.0810	123975714	no
+clbsfs02	FreeList	salt-diet	37.4618	131994064	yes
+clbsfs03	FreeList	salt-diet	23.3558	77734284	no
+clbslp01	LRU	plain	1.3835	2359212	no
+clbslp02	LRU	plain	1.5949	3258928	no
+clbslp03	LRU	plain	0.8539	1613442	no
+clbsls01	LRU	salt-diet	4.8285	13494723	no
+clbsls02	LRU	salt-diet	7.2774	22909164	no
+clbsls03	LRU	salt-diet	6.6651	20783719	no
+clbszp01	LZW	plain	1.8862	3842229	no
+clbszp02	LZW	plain	1.7492	3148365	no
+clbszp03	LZW	plain	2.2932	3555507	no
+clbszs01	LZW	salt-diet	10.4782	30210414	no
+clbszs02	LZW	salt-diet	37.3123	134678654	yes
+clbszs03	LZW	salt-diet	12.3552	25368840	no
+# SS plain: n=12  median COST 1.67  median T 3203646  total COST 21.64  total T 38901865
+# SS salt-diet: n=12  median COST 8.88  median T 24139002  total COST 188.29  total T 618901195
+## step g (7 cells, phase 2 only)
+cell	task	arm	final_COST	final_T
+clbkzp01	LZW	plain	18.9612	17804860
+clbklp01	LRU	plain	9.5760	10696851
+clbkfp01	FreeList	plain	17.4579	17977130
+clbkpp01	Paxos	plain	18.7961	15765030
+clbkps01	Paxos	salt-diet	18.7233	22212725
+clbkfs01	FreeList	salt-diet	12.4407	16532828
+clbkfs02	FreeList	salt-diet	9.6885	10736717
+# stepg: total COST 105.64  total T 111726141

@@ -80,3 +80,20 @@ clbkcs03	salt-diet	3	2026-09-26T13:23:07Z LANDED landing-1 110dea1c967b	31.6514	
 between `none` and `statement`** is claimed either: they ran on different cuts by design (ADDENDUM 9), and the pairing was never
 registered as a contrast. **The cost column is not a comparison:** salt-diet cells carry a proof, which is the treatment, and one is
 censored at the cap.
+
+## 7 · THE TOKEN FIGURE BESIDE EVERY DOLLAR FIGURE (desk KS, the Captain's order of 2026-09-11). §§1–6 above are not edited.
+bench (lead), 2026-10-01. §2's table published dollars only. Each cell's own `ctl/post-end-1.tsv`, the file §2 names for the dollars, also
+carries the tokens (at_end_T = col 2, final_T = col 4). They were read on the run box by `evidence/x86-crc32-tokens-2026-10-01/gather.sh`
+into `tokens.tsv`. `check.txt` shows all 12 Claude-row cells' COST columns agree with the two RESULTs' tables (0 mismatches), so the tokens
+come from the same rows.
+```
+  cell      arm          at_end USD ·     T              final USD ·      T
+  clbkcp01  plain          7.1430 ·   6,281,137         7.2281 ·   6,390,265
+  clbkcs01  salt-diet     36.2658 ·  50,313,376        37.2308 ·  52,067,831
+  clbkcp02  plain          8.5273 ·   8,282,359         8.6901 ·   8,527,285
+  clbkcs02  salt-diet     38.0216 ·  52,032,777        38.0216 ·  52,032,777
+  clbkcp03  plain          7.8533 ·   7,313,355         8.0586 ·   7,587,447
+  clbkcs03  salt-diet     31.6514 ·  39,735,754        32.6979 ·  41,591,482
+```
+The units are not interchangeable: T is mostly cache reads, priced far below fresh input and output. Both are printed, and neither is
+the "true" cost. §2's limits ride on the token column unchanged.
