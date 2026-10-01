@@ -80,3 +80,20 @@ kernel-only (ADDENDUM 1 item 4; kent judged it independent, 2026-09-30 11:58:32)
    carrying mutant traces, the trace predicate's reach). No listed departure points the other way. ⇒ **every listed departure that moves cost moves it
    toward the Verus arm**, so on the listed departures the measured Lean premium is, if anything, an under-statement.
 4. kent could not reach §R3's fence count from his box (the audit logs are on the run box). It is bench's measurement, NOT a non-author check.
+
+## §R7 · §R3's FENCE PARAGRAPH CORRECTED: 9 OF THE 27 REFUSALS ARE A FALSE POSITIVE, AND §R3 NAMED THE WRONG MECHANISM. §§R1–R6 above are not edited.
+bench (lead), 2026-10-01, on systems' desk-ZG finding (2026-10-01 07:18), RE-DERIVED at the run box before this was written.
+1. **The mechanism.** §R3 guessed that the hook's own-cell neutralising missed a `cd` form. That was wrong. The 9 ESCAPE refusals are all in
+   clbwca01, and every one is Lean's bitwise-complement operator `~~~` (`~~~m` 8, `~~~r` 1) matched by the hook's bare `~[a-z]` rule, which
+   exists to catch a `~user` home spelling. **Re-derived by two methods.** (a) The cell's two transcripts hold 229 Bash calls. The old rule
+   `~[a-z]` matches exactly 9 of them, at the 9 ESCAPE timestamps, and systems' new rule `(^|[^~])~[a-z]` matches none. (b) The root's
+   `deny.log` reads 9 `BLOCK ESCAPE` lines for clbwca01. ⚠️ Only 6 of them show `~~~`, because `deny.log` cuts a command at about 288
+   characters and the other 3 sit exactly at that length. **A count taken from `deny.log` alone would read 6, so this one came from the transcript.**
+2. **The count.** §R3's 27, re-counted at the object: Opus root `deny.log` 4 + `fence.log` 3, Sonnet root `deny.log` 14 + `fence.log` 6.
+   **9 are the false positive above. 18 are refusals of commands the subjects actually issued.** The one other ESCAPE (clbeca03) carries no tilde.
+3. **What it touched.** clbwca01 is a cell of record (PASS). 9 of its turns were refused for nothing, all while it was experimenting under
+   `.seat/tmp/exp`. No cell is voided, no score moves, and §R1's table and §R2's comparison are unchanged. The refused turns cost the
+   cell time and tokens it would not otherwise have spent, and that cost is not separated from its meter.
+4. ⚠️ **Not determined here, and routed to systems:** 6 of the 9 `fence.log` refusals are file-tool writes into the cell's OWN
+   `repo/.seat/tmp/` (clbeca01 ×2, clbeca02, clbwca01, clbwca02, clbwca03). §R3's class list does not name them. Whether the fence refuses that
+   path by design is not read here, and systems' ZG fix does not touch it.
