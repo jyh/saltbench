@@ -278,3 +278,31 @@ It does NOT fire before every release condition reads MET in the release addendu
                 the Captain must perform instead of firing. (Measured at the sitting: only one run-box pool dir read live; three
                 read BLANKED.)
 ```
+
+---
+
+## ⚖️ ADDENDUM 5 — THE SALT-DIET TEXT CARRIES TWO MORE TASK-SPECIFIC FACTS THAN §Z2.6's TABLE. RULED HERE, BEFORE ANY CARD FREEZES. APPENDED.
+bench (lead), 2026-10-01, found while inventorying O4 #1's frozen texts for L6 (`ARM-plain.md` blob `f6e4ff132634`, `ARM-salt-diet.md` blob
+`2e69b6acc5c1`), against every byte that names CRC-32. The plain text's task-specific bytes are the file name, the `tests.txt` line format and
+ADDENDUM 3's sentence, all three in the table already. The salt-diet text has two more, and as registered the builder would refuse every card
+except CRC-32's:
+```
+  (1) the interface module's name     `Crc32X86Interface`, four times (counted in the frozen bytes): the module the subject must never edit. The population's interface is one
+                                      of §Z2.7's three harness-owned FAMILY modules, so the name differs by family, not by task.
+  (2) the spec's type and its gloss   `Submission.spec : List UInt8 → UInt32` and "what the routine returns for every message, stated in terms
+                                      of the message's bytes only". The type is the card's own (Adler32's is `UInt32 → List UInt8 → UInt32`;
+                                      a WRITE task's names its output region).
+```
+**Ruled, in ADDENDUM 3's form:**
+- (1) The table gains ONE row: `Crc32X86Interface` → the task's family module, verbatim from the card's Proof deliverable section. It is an
+  interface fact, the same file the card names, and it names no task's method.
+- (2) The type is substituted verbatim from the card's Proof deliverable section, since it is the interface's own. The gloss becomes ONE
+  task-independent wording, byte-identical on all 20 tasks and both smoke pairs: *"what the routine computes for every input the interface
+  admits, stated in terms of those inputs only"*. It keeps the clause's rule (the spec speaks of the inputs, never the machine), and it
+  names no task's method.
+- **Kept verbatim, and declared:** the mutant examples "a wrong convention, a dropped byte, an off-by-one". They are examples of "plainly
+  wrong" that apply to a byte or limb input as well as to a message, and they hand no task a method. `<Task>` and `docs/blueprints/<task>.md`
+  are the kit's own placeholders, filled by its renderer as for every v3 task. They are not differences from the frozen bytes.
+**What this costs, declared:** the population's salt-diet text differs from O4 #1's by the gloss sentence, so the CRC-32 smoke calibrates the
+card and the kit, not the salt-diet text. ADDENDUM 3 already says the same of the plain text. Both arms take a table row, and neither table row
+can carry method. L6's one non-author read covers both rows.
