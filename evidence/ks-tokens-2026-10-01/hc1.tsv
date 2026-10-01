@@ -1,0 +1,28 @@
+## crc32
+arm	published	cell	final_COST	final_T
+plain	$9.66	hc1cp01	9.6619	10733384
+plain	$6.89	hc1cp02	6.8919	5248242
+plain	$8.82	hc1cp03	8.8230	8688113
+# crc32 plain: median T 8688113 (the T column's own median)
+placebo	$9.27	hc1cb01	9.2728	9482633
+placebo	$5.17	hc1cb02	5.1685	4823563
+placebo	$12.46	hc1cb03	12.4632	14819366
+# crc32 placebo: median T 9482633 (the T column's own median)
+salt-diet	$14.53	hc1cs01	14.5264	15881104
+salt-diet	$9.51	hc1cs02	9.5081	9387107
+salt-diet	$8.39	hc1cs03	8.3901	8759050
+# crc32 salt-diet: median T 9387107 (the T column's own median)
+## paxos
+arm	published	cell	final_COST	final_T
+plain	$20.23	hc1pp01	20.2315	20158048
+plain	$16.51	hc1pp02	16.5068	14171776
+plain	$22.01	hc1pp03	22.0065	26533104
+# paxos plain: median T 20158048 (the T column's own median)
+placebo	$15.19	hc1pb01	15.1916	16352713
+placebo	$23.17	hc1pb02	23.1678	27533406
+placebo	$16.89	hc1pb03	16.8880	17276116
+# paxos placebo: median T 17276116 (the T column's own median)
+salt-diet	$37.63	hc1ps01	37.6287	50614418
+salt-diet	$36.76	hc1ps02	36.7601	51016255
+salt-diet	$36.78	hc1ps03	36.7836	43980434
+# paxos salt-diet: median T 50614418 (the T column's own median)
