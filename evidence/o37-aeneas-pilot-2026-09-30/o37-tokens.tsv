@@ -1,0 +1,19 @@
+# source	cell	condition	USD	T	note
+cells.tsv	clbeca01	lean-aeneas opus	13.8698	16662395	-
+cells.tsv	clbwca01	lean-aeneas sonnet	20.8473	81640888	-
+cells.tsv	clbeca02	lean-aeneas opus	16.6597	22001839	-
+cells.tsv	clbwca02	lean-aeneas sonnet	19.6846	71410930	-
+cells.tsv	clbeca03	lean-aeneas opus	13.1300	15349682	-
+cells.tsv	clbwca03	lean-aeneas sonnet	24.8527	88069402	-
+blockSS-cells.tsv	clbscs01	verus-statement sonnet	3.7965	10489614	final_T includes the sandbox probe (file header)
+blockSS-cells.tsv	clbscs02	verus-statement sonnet	4.1607	11335722	final_T includes the sandbox probe (file header)
+blockSS-cells.tsv	clbscs03	verus-statement sonnet	5.5165	15926283	final_T includes the sandbox probe (file header)
+claude-cost-raw.tsv	st04crc3	verus-statement opus	8.5560657	10673708	void=VOID(UNDERSTATED)
+claude-cost-raw.tsv	st05crc3	verus-statement opus	5.6526189	5927487	void=-
+claude-cost-raw.tsv	st06crc3	verus-statement opus	6.2530466	5828821	void=-
+# lean-aeneas opus: n=3  median USD 13.8698  median T 16662395  sum USD 43.6595  sum T 54013916
+# lean-aeneas sonnet: n=3  median USD 20.8473  median T 81640888  sum USD 65.3846  sum T 241121220
+# verus-statement sonnet: n=3  median USD 4.1607  median T 11335722  sum USD 13.4737  sum T 37751619
+# verus-statement opus: n=3  median USD 6.2530  median T 5927487  sum USD 20.4617  sum T 22430016
+# ratio opus lean/verus at the median: USD 2.22x  T 2.81x
+# ratio sonnet lean/verus at the median: USD 5.01x  T 7.20x

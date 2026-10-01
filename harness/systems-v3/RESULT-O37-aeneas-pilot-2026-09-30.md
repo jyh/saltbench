@@ -97,3 +97,25 @@ bench (lead), 2026-10-01, on systems' desk-ZG finding (2026-10-01 07:18), RE-DER
 4. ⚠️ **Not determined here, and routed to systems:** 6 of the 9 `fence.log` refusals are file-tool writes into the cell's OWN
    `repo/.seat/tmp/` (clbeca01 ×2, clbeca02, clbwca01, clbwca02, clbwca03). §R3's class list does not name them. Whether the fence refuses that
    path by design is not read here, and systems' ZG fix does not touch it.
+
+## §R8 · THE TOKEN FIGURE BESIDE EVERY DOLLAR FIGURE ABOVE (desk KS, the Captain's order of 2026-09-11). §§R1–R7 above are not edited.
+bench (lead), 2026-10-01. §§R1–R2 published dollars only. KS rules that a dollar figure without its token figure is an incomplete cost.
+Every T below is DERIVED by `evidence/o37-aeneas-pilot-2026-09-30/o37-tokens.py` (output `o37-tokens.tsv`, sha256/16 `ef82bb32dfbba583`) from
+the same files and the same rows the dollars came from. The script reproduces each published dollar median exactly, which is its check.
+```
+  condition                      cells (USD · T)                                                         median USD · T        sum USD · T
+  lean-aeneas  claude-opus-5     clbeca01 13.8698 · 16,662,395   clbeca02 16.6597 · 22,001,839            13.8698 · 16,662,395   43.6595 · 54,013,916
+                                 clbeca03 13.1300 · 15,349,682
+  lean-aeneas  claude-sonnet-5   clbwca01 20.8473 · 81,640,888   clbwca02 19.6846 · 71,410,930            20.8473 · 81,640,888   65.3846 · 241,121,220
+                                 clbwca03 24.8527 · 88,069,402
+  verus × statement  opus        st04crc3 8.5561 · 10,673,708 (VOID(UNDERSTATED), a floor)                6.2530 · 5,927,487     (not a run of this pilot)
+                                 st05crc3 5.6526 · 5,927,487   st06crc3 6.2530 · 5,828,821
+  verus × statement  sonnet      clbscs01 3.7965 · 10,489,614   clbscs02 4.1607 · 11,335,722            4.1607 · 11,335,722    (not a run of this pilot)
+                                 clbscs03 5.5165 · 15,926,283
+```
+**§R2's ratios in both units, at the median:** Opus **2.22× in dollars, 2.81× in tokens**; Sonnet **5.01× in dollars, 7.20× in tokens**. The
+token ratio is larger in both models. **The pilot's spend, §R1's $109.04, is 295,135,136 T.**
+⚠️ **The units are not interchangeable, and that is why both are printed.** T is dominated by cache reads, which are priced far below
+fresh input and output. So two cells with equal T can cost different dollars, and the ratio between arms differs by unit. Neither unit is the
+"true" premium. The comparison's instrument limits (§R6 item 1: the Opus Verus figures are the cost-table pipeline's; the Sonnet Verus T,
+like the Lean cells' T, includes the harness's sandbox probe) apply to the token column exactly as to the dollar column.
