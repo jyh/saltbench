@@ -69,3 +69,12 @@
   verifier   RESULT-claude-blockOS-2026-09-21-verify.py — re-derives every figure FROM the table and
              asserts it against the BYTES of this document. No typed expectations.
 ```
+
+## §T · THE TOKEN FIGURE BESIDE EVERY DOLLAR FIGURE (desk KS, the Captain's order of 2026-09-11). Everything above is unedited.
+bench (lead), 2026-10-01. The totals above already carried T. The MEDIANS and the per-cell dollars did not. `evidence/ks-tokens-2026-10-01/blocks_stepg.py`, which writes
+`blocks_stepg.tsv`, reads the same rows of `evidence/claude-lane-blocks-2026-09-21/blockOS-cells.tsv` this result was printed from. It
+reproduces every median and total dollar figure above, and it prints each cell's T beside its final_COST.
+```
+  plain      n=12   median $10.57 · 10,334,960 T      total $155.02 · 154,328,459 T
+  salt-diet  n=12   median $14.80 · 16,541,054 T      total $213.46 · 250,019,763 T
+```
