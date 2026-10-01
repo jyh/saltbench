@@ -240,3 +240,26 @@ salt-diet cell here writes Lean, so the defect would fall on that arm alone. sys
                BY BLOB before its first cell. The O37 pilot's roots are evidence and are NEVER re-cut.
 ```
 The fix does not stand in for a red drive in this lane: L7's dry cells exercise it on a Lean command that carries `~~~`.
+
+---
+
+## ⚖️ ADDENDUM 3 — ONE SENTENCE OF THE PLAIN ARM IS TASK-SPECIFIC, AND §Z2.6's TABLE CANNOT CHANGE IT. RULED HERE, BEFORE ANY CARD FREEZES. APPENDED.
+bench (lead), 2026-10-01, found while building the first card (Adler32, the template) against §Z2.
+**The finding.** O4 #1's frozen plain text (`ARM-plain.md`, blob `f6e4ff132634`) has one bullet of testing method whose example is CRC-32's
+own oracle: it tells the subject to test a checksum against a reference vector or a bit-serial reference it computes itself. The
+salt-diet text has no counterpart, so the sentence is the plain arm's own method. On 19 of the 20 tasks "bit-serial" names nothing
+(no bignum, field or hash task has a bit-serial form), and on the CRC-32 smoke it is exact. §Z2.6's substitution table lists the file
+name, the entry symbol and the test-line format, and "nothing else", so as registered the builder would REFUSE every card except CRC-32's.
+**The three ways, and the one taken:**
+```
+  (A) keep the sentence verbatim on every task      an inapplicable CRC-specific example in the control arm of 19 tasks
+  (B) a per-task example (e.g. arbitrary-precision  a per-task METHOD hint handed to the control arm alone, written by the lead
+      arithmetic for the bignum rows)               who also wrote the cards: a treatment the registration never declared
+  (C) ONE task-independent rewording, the same on   TAKEN. The example becomes "for a function with a published definition,
+      all 20 tasks AND on both smoke pairs           against a reference you compute yourself from that definition". It is still
+                                                    an oracle instruction, names no task's method, and is byte-identical across tasks.
+```
+**What (C) costs, declared:** the population's plain text differs from O4 #1's by this one sentence, so the CRC-32 smoke pair (§Z4,
+ADDENDUM 1) calibrates the CARD and the kit against O4 #1's cells, NOT the arm text. Its plain cell's text differs from clbqcp01–03's
+by that sentence, and the smoke's reading says so. §Z2.6's table gains exactly this one row (the sentence, the same replacement on every
+task), and L6's one non-author read covers it. Every other byte of both arm texts stays as frozen.
