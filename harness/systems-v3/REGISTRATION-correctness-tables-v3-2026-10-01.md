@@ -95,3 +95,32 @@ pair reads `?`, never `+`. It is the reading under which a halt can never turn a
 kent's display note at the non-author read (2026-10-01 10:40, no defect): every result of record uses `0/0` for BUILD-FAIL, so a condition
 whose cells are all censored or unscorable prints `n = 0 (+c censored, +u unscorable)` and never `0/0`. Presentation only: no class, count
 or sign rule changes. The fixture arm for the touching-interval case (the helm, 10:38:57) is owed in the instrument's selftest, red-first.
+
+## ⚖️ ADDENDUM 3 — FIVE SOURCE SHAPES THE CELL VERDICT MEETS, FIXED BEFORE ANY TABLE OR SIGN IS READ. §P1–§P6 and ADDENDA 1–2 untouched.
+bench, 2026-10-01. ⚠️ **Written after trial runs of the instrument over a draft map printed the 200 check, the class totals and the list of
+unmeasured cells. No table, no condition's k / n and no sign had been read.** The trials found that the results of record print a cell's
+verdict in more shapes than §P2's one ("a line naming the cell"). Each rule below says how the instrument reads one shape, and none of them
+lets a verdict be typed.
+- **(a) A halt with no suite verdict is CENSORED.** Some records print a landing word in their verdict column (`NOT-LANDED`, "no
+  LANDING.md") because the scorer of record did not score a cell that did not land. That word is not a suite verdict. When such a cell's
+  end is a registered halt, its class is CENSORED, because it halted and the record shows no pass. `TURN-TIMEOUT` is the per-turn deadline,
+  which §P2 lists as "a turn ... DEADLINE". Where another file prints a score for such a cell, that score is printed as a second-method row
+  and is never folded in.
+- **(b) A verdict word that says the suite gave none comes before the halt test.** VOID, NOT-SCORED, TIMEOUT (the runner's own), ABORT and
+  INCOMPLETE make a cell UNSCORABLE even when its end is also a halt, because §P2 names "a VOID the record declares" there. A pass is still
+  a pass, whatever the end. This changes no interval: censored and unscorable cells widen it the same way.
+- **(c) A verdict printed once for a whole wave** (e.g. "wave 2 (6 cells): PASS 6 (TESTS 7/7 each)") reaches a cell only through bytes. The
+  verdict line names the wave and its size, a line of the same result names the wave and its run root, and the tracked roots table puts
+  the cell in that root, which holds exactly that many cells. Otherwise the cell is `unmeasured`.
+- **(d) A record that prints only a per-condition count gives that condition its k / n directly, and only under two conditions.** The
+  count's n equals the condition's cells of record. Every one of those cells is shown LANDED by a tracked line (its own per-cell end, or a
+  line of the same table stating that all its cells landed). Then k cells are PASS and n − k are FAIL, no cell is censored, and the cells
+  are printed `by condition`, never as individual verdicts. The whole condition is read this way or not at all: a prose line that names
+  one of its cells (e.g. "its PASS stands") is cited in that cell's note and is not read. If either condition fails, every cell of the
+  condition is `unmeasured`.
+- **(e) The population is the census's at its current head (§P1).** v2's map dates from 2026-09-27. Census ADDENDA 30–32 (2026-09-29) made
+  twelve more cells cells of record: `clbglp01`; `s3fpk01`, `s3fpk02`, `s3fqk01` and `s3ctk01`; and step g's seven `clbk*`. They enter this
+  map as rows marked ADDED. No cell is dropped.
+- **Second method, read the same way:** printed counts include figures an addendum has since superseded, and counts over other populations
+  (landed cells only, a smoke cell included). They are compared and every disagreement is listed with its source's own description. A
+  disagreement is not resolved. The run's exit code reports the 200 check and the unmeasured cells, and it does not gate on these rows.
