@@ -86,3 +86,20 @@ comparison either:** salt-diet cells carry a proof, which is the treatment, not 
 For each of the six cell ids, it reads the run box's `ctl/end-1`, then `ctl/post-end-1.tsv` columns 3 and 5, then `ctl/run-cfg.tsv`'s
 `cfg`, mapped to FIRST or SECOND. It then reads the build box's referee `out.json` (`class`, `tests`, `agreement`, `spec_strength`,
 `target.class`, `target.axioms`, `target.cell_translation`). A missing source prints `MISSING` and is never filled. It printed none.
+
+## 7 · THE TOKEN FIGURE BESIDE EVERY DOLLAR FIGURE (desk KS, the Captain's order of 2026-09-11). §§1–6 above are not edited.
+bench (lead), 2026-10-01. §2's table published dollars only. Each cell's own `ctl/post-end-1.tsv`, the file §2 names for the dollars, also
+carries the tokens (at_end_T = col 2, final_T = col 4). They were read on the run box by `evidence/x86-crc32-tokens-2026-10-01/gather.sh`
+into `tokens.tsv`. `check.txt` shows all 12 Claude-row cells' COST columns agree with the two RESULTs' tables (0 mismatches), so the tokens
+come from the same rows.
+```
+  cell      arm          at_end USD ·     T              final USD ·      T
+  clbqcp01  plain          5.1896 ·   4,250,496         5.2591 ·   4,345,846
+  clbqcs01  salt-diet     32.6659 ·  40,460,609        32.8430 ·  40,769,031
+  clbqcp02  plain         10.4061 ·  10,695,724        10.4989 ·  10,837,922
+  clbqcs02  salt-diet     26.7035 ·  35,402,322        27.5359 ·  36,825,260
+  clbqcp03  plain          7.1446 ·   6,871,100         7.2947 ·   7,081,227
+  clbqcs03  salt-diet     30.3255 ·  40,403,976        30.5436 ·  40,789,486
+```
+The units are not interchangeable: T is mostly cache reads, priced far below fresh input and output. Both are printed, and neither is
+the "true" cost. §2's limits ride on the token column unchanged.
