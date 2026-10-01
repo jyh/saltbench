@@ -455,6 +455,14 @@ names that pool with both rows MET. Only then do the smoke pairs fire, then the 
   L10 POOL      OPEN evidence's, at the fire: the pool's own config dir reads LIVE (both tokens, one authenticated turn). If none reads LIVE,
                      that addendum names the login the Captain must perform instead of firing.
 ```
+**The run as it fires, 44 cells** (the dry stage's own count, by condition and arm): `o60` 20 tasks × {plain, salt-diet} = 40 ·
+`o60smoke` BignumMux × 2 (ADDENDUM 1) · `smoke` CRC-32 × 2 (§Z4, O4 #1's calibration). **No task is withdrawn under §Z8:** L5 PASSes all 22 rows.
+**A figure in ADDENDUM 7 is corrected here (ADDENDUM 7 itself is not edited):** the TREATMENT needles are **155 for 21 tasks**, not 156.
+O60-NEEDLES.tsv reads 155 data rows at 96c6458, at ed1890c and at 977a753. The 156 was 213a5be's. 96c6458 dropped Lookup3's `0xFFFFFF`
+when the generator was made to test absence with the TREATMENT gate's own substring rule: the needle is a substring of `0xFFFFFFFF` in the
+harness's own Lean. Every other task's needle set is unchanged, and the positive control reads 21/21.
+**spec_strength is unchanged from ADDENDUM 7's Limits:** "UNAVAILABLE (frame carries no spec directive)" on 19 of 22 rows, never 0. It is a
+metric, never a gate.
 **Declared, because a reader of the cells would otherwise have to ask:**
 - **The population has TWO build shas.** clbps01, clbps11, clbps13 and clbvs01 were staged at ed1890c. clbpp01 was staged at 977a753, today,
   so that the plain arm's --check-only could be driven. No cell-facing byte differs between them (L1's 36 of 36), and every cell staged from
