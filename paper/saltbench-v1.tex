@@ -33,7 +33,7 @@ SaltBench is a benchmark protocol for one question: How does a machine referee c
 
 An agent's account of its own work is the least reliable evidence about that work. A benchmark that lets the agent grade itself, or lets the experimenter choose the reading after the run, measures the story and not the outcome. SaltBench is built on two refusals. The outcome is decided by a machine referee the agent cannot argue with --- a proof kernel, a program verifier, or a withheld test suite, run outside the agent's own toolchain --- and the comparison is fixed before the agent runs, so that it cannot be narrated afterwards. The comparison is pre-registered~\cite{nosek2018preregistration}: the population is drawn by a committed seed, the arms are byte-pinned, the predictions are written down, the adverse outcomes are named, and the freeze commit is the authorization. Everything that happens afterwards is a dated amendment appended to the record.
 
-Here we report the benchmark's design and its first measurement, taken end to end on an experiment whose subject is the working seat rather than the model. Section~\ref{sec:design} states the design and how much of it this paper runs. We claim the protocol; the seat-as-subject design and its authored population; the cost reading the run returned, together with the qualifiers registered beside it; a set of instrument findings that we think transfer to any benchmark of this kind; and the complete pilot matrix of Section~\ref{sec:matrix}, new in this version, as a record of what was run and of what each result of record can carry, never as a verdict on the arms. We do not claim an effect of the method under test on what a referee accepts, and we report no magnitude for the population; Section~\ref{sec:open} states the tests that could produce one. Three earlier reads on drawn populations are reported in Section~\ref{sec:priorreads}, compressed to the role they now play, which is the reason this design is shaped as it is. One note on labels, because two of them are numbers: this document is version~3 of the SaltBench report, and \emph{v3} names the campaign generation whose matrix it reports, not an edition of this document. Version~2 adds Section~\ref{sec:matrix}, the complete pilot matrix over four models, updates the status of the task forms in Section~\ref{sec:design}, and adds two instrument findings the matrix taught; it changes no number that version~1 printed. Nineteen prices in Appendix~\ref{app:cells} carry a flag that version~1 did not print, and the flag changes no number. One sentence of Section~\ref{sec:fence} is scoped to the population its evidence covers, and the scope is marked there. Version~3 adds Section~\ref{sec:matrixdollars}, the same matrix in modelled list-price dollars and in wall time, and Appendix~\ref{app:opussplit}, the share of each Opus cell spent by its subagents, and a paragraph on related work; it changes no number that version~2 printed.
+Here we report the benchmark's design and its first measurement, taken end to end on an experiment whose subject is the working seat rather than the model. Section~\ref{sec:design} states the design and how much of it this paper runs. We claim the protocol; the seat-as-subject design and its authored population; the cost reading the run returned, together with the qualifiers registered beside it; a set of instrument findings that we think transfer to any benchmark of this kind; and the complete pilot matrix of Section~\ref{sec:matrix}, new in this version, as a record of what was run and of what each result of record can carry, never as a verdict on the arms. We do not claim an effect of the method under test on what a referee accepts, and we report no magnitude for the population; Section~\ref{sec:open} states the tests that could produce one. Three earlier reads on drawn populations are reported in Section~\ref{sec:priorreads}, compressed to the role they now play, which is the reason this design is shaped as it is. One note on labels, because two of them are numbers: this document is version~3 of the SaltBench report, and \emph{v3} names the campaign generation whose matrix it reports, not an edition of this document. Version~2 adds Section~\ref{sec:matrix}, the complete pilot matrix over four models, updates the status of the task forms in Section~\ref{sec:design}, and adds two instrument findings the matrix taught; it changes no number that version~1 printed. Nineteen prices in Appendix~\ref{app:cells} carry a flag that version~1 did not print, and the flag changes no number. One sentence of Section~\ref{sec:fence} is scoped to the population its evidence covers, and the scope is marked there. Version~3 adds Section~\ref{sec:matrixdollars}, the same matrix in modelled list-price dollars and in wall time, and Appendix~\ref{app:opussplit}, the share of each Opus cell spent by its subagents, Section~\ref{sec:matrixcorrect}, the same matrix read for correctness under a reading declared post hoc, and a paragraph on related work; it changes no number that version~2 printed.
 
 The method under test, the Salt method~\cite{hickey2026saltmethod,hickey2026authority}, is the working discipline the author uses in a formal mathematics project: machine-checked development in which claims travel as kernel-checked artifacts and human attention is reserved for statements and rulings. Its rendering as an arm is described in Section~\ref{sec:arms}; only the part of it that a single sealed agent can carry is rendered, and that limit was registered before the first call.
 
@@ -818,6 +818,190 @@ model & treatment & $k$ of $m$ $>1$ & indeterminate & median & bounded \\
 \end{tabular}}\\[3pt]
 \parbox{0.92\textwidth}{\small\textbf{Table W4.} The \arm{salt-diet} median divided by the \arm{plain} median in the same row of Tables~W1 and~W3, greenfield, with its sign counts, by the rules of Table~T4. No $p$-value is given. The brownfield ratios are in the result file.}
 \src{harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md, section W4, its sign counts and the brownfield ratios}
+\end{minipage}\end{center}
+
+\subsection{Correctness over the matrix, a declared post-hoc reading}
+\label{sec:matrixcorrect}
+
+The tables above describe what the conditions cost. Tables~P1 to~P4 read the same 200 conditions for whether the work passed its referee. The reading was registered on 2026-10-01, after every verdict it reads existed and after many had been read by its author, and it is declared post hoc: what was fixed before the instrument ran is the method, never the data. A cell's verdict is the one the condition's result of record prints, as amended by that file's own dated addenda. The withheld suite is the grader, and a cell's own claim to have finished is never read as a pass. A pass is defined per task form as each condition's freeze registered it: every test of the withheld suite on greenfield, every test of the brownfield suite on the end state, and under specification change every test of the second phase with no regression and no clause failure. On the \arm{salt-diet} arm the proof's verdict is printed beside the suite's in the result file and never folded into it, so a pass means the same thing in both arms.\src{harness/systems-v3/REGISTRATION-correctness-tables-v3-2026-10-01.md, sections P1 and P2}
+
+\paragraph{How a halt is read.} Each cell falls in one of four classes. \textsc{pass} and \textsc{fail} are the suite's verdicts. A cell that halted at a registered budget and whose end state did not pass is \textsc{censored}, and a halt is never a failure; a halted cell whose end state passed is a pass. A cell on which the suite gave no verdict is \textsc{unscorable}. A condition prints $k/n$, where $n$ counts only \textsc{pass} and \textsc{fail} cells, with its censored and unscorable cells beside it. The sign of a row compares intervals: each arm's pass rate is bounded by counting every censored and unscorable cell first as a failure and then as a pass, a sign is printed only when the two intervals are strictly apart, so that a shared endpoint is not a separation, $=$ only when both are the same single point, and $?$ otherwise. A halt therefore cannot produce a sign in either direction, and since the cap binds the \arm{salt-diet} arm more often, that is the arm the rule protects.\src{harness/systems-v3/REGISTRATION-correctness-tables-v3-2026-10-01.md, sections P2 to P4 and addendum 1} A third addendum, written after trial runs had printed only the 200 check, the class totals and the list of unmeasured cells, fixed how five shapes of record are read: among them, a halt with no suite verdict is censored, and a record that prints only a condition's count gives that condition its $k/n$ only when the count covers every cell of record and every one of those cells is shown landed.\src{harness/systems-v3/REGISTRATION-correctness-tables-v3-2026-10-01.md, addendum 3}
+
+\paragraph{The checks.} 181 conditions carry a pass count, 16 are inexpressible and 3 declared, and none is unmeasured: 200. Over the cells, 447 pass, 40 fail, 10 are censored and 4 unscorable, and 42 are read from their condition's count. The reading's second method compares the instrument's count with every count a result of record already prints: 94 counts are compared and 19 disagree, and each disagreement is listed in the result file with the population its source counts and is never resolved by hand. 51 conditions have a printed count that agrees, 8 have printed counts none of which agrees, and 122 have no printed count anywhere, so for those the instrument's reading is the only one.\src{harness/systems-v3/RESULT-correctness-tables-v3-2026-10-01.md, the header}
+
+\paragraph{What the tables show, and within what.} Most conditions pass every cell in both arms. In Table~P4 the \arm{salt-diet} interval lies wholly above the \arm{plain} one on two rows, Pro and Flash on \texttt{Paxos} under specification change, where the \arm{plain} arm passed 0 of 3. It lies wholly below on \texttt{FreeList} under no treatment at Opus, Pro and Flash and under specification change at Opus and Flash, and on \texttt{LZW} at Pro under no treatment and under the statement treatment and at Flash under the statement treatment. The Sonnet rows carry no $+$ and no $-$. Every $?$ has a censored or unscorable cell on at least one side, and the lower block of Table~P4 says on which. On brownfield, by the same rule and printed in the result file, the Claude and Flash rows carry no $+$ and no $-$, and Pro's \arm{salt-diet} interval lies below on \texttt{LRU} and \texttt{FreeList} under both treatments and on \texttt{Paxos} under no treatment.\src{harness/systems-v3/RESULT-correctness-tables-v3-2026-10-01.md, sections P4, the P4 counts, where each ? comes from, and the brownfield signs}
+
+\paragraph{What the tables cannot carry.} These are descriptions, with no test and no $p$-value, and the registered tests remain those of Section~\ref{sec:s3}. At $n=3$ a rate moves in thirds, so a sign is one cell's difference. A pass is bounded by the strength of the suite that grants it, and the suites' mutant scores are ceilings and not strengths. Censoring is arm-correlated, so the count of $?$ is arm-correlated too. The two lanes are graded by different scorers of record, so a row compares arms within one model and one problem and never a Gemini row with a Claude row. Section~\ref{sec:posthoc} read Matrix~1's landed cells under that pass's own classes; these tables read the census's cells of record under this registration's, so a row here need not equal a row there. None of it says the method under test makes code more or less correct.\src{harness/systems-v3/REGISTRATION-correctness-tables-v3-2026-10-01.md, section P6}
+
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrr}
+\toprule
+ & & \multicolumn{2}{c}{no treatment} & \multicolumn{2}{c}{statement} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+model & problem & \arm{plain} & \arm{salt-diet} & \arm{plain} & \arm{salt-diet} \\
+\midrule
+% BEGIN correctness-table-P1 (generated by paper/correctness_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & \texttt{Crc32} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{LRU} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{FreeList} & 3/3 & 2/3 & 3/3 & 3/3 \\
+ & \texttt{LZW} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{Paxos} & 3/3 & 3/3 & --- & --- \\
+\texttt{claude-sonnet-5} & \texttt{Crc32} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{LRU} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{FreeList} & 2/3 & 2/2 (+1c) & 3/3 & 2/2 (+1c) \\
+ & \texttt{LZW} & 3/3 & 3/3 & 3/3 & 2/2 (+1c) \\
+ & \texttt{Paxos} & 3/3 & 3/3 & --- & --- \\
+\texttt{gemini-3.1-pro-high} & \texttt{Crc32} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{LRU} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{FreeList} & 1/3 & 0/3 & 3/3 & 1/1 (+2c) \\
+ & \texttt{LZW} & 3/3 & 2/3 & 3/3 & 2/3 \\
+ & \texttt{Paxos} & 1/3 & 0/1 (+2c) & --- & --- \\
+\texttt{gemini-3.8-flash-high} & \texttt{Crc32} & 3/3$^\dagger$ & 3/3$^\dagger$ & 3/3$^\dagger$ & 3/3$^\dagger$ \\
+ & \texttt{LRU} & 3/3$^\dagger$ & 3/3$^\dagger$ & 3/3$^\dagger$ & 3/3$^\dagger$ \\
+ & \texttt{FreeList} & 1/3$^\dagger$ & 0/3$^\dagger$ & 3/3$^\dagger$ & 3/3$^\dagger$ \\
+ & \texttt{LZW} & 3/3 & 2/2 (+1u) & 3/3 & 2/3 \\
+ & \texttt{Paxos} & 2/3$^\dagger$ & 2/3$^\dagger$ & --- & --- \\
+% END correctness-table-P1
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small \textbf{Table P1.} Greenfield. Full passes $k/n$ per condition, over the condition's cells of record, declared post hoc; $n$ counts \textsc{pass} and \textsc{fail} cells only. A mark such as (+1c) or (+1u) counts the cells censored at a registered budget or the cells the suite gave no verdict on, which enter neither $k$ nor $n$. $^\dagger$ marks a condition whose record prints only its count, read under addendum~3. --- marks an inexpressible condition. A descriptive reading: no test, and no verdict on the arms.}
+\src{harness/systems-v3/RESULT-correctness-tables-v3-2026-10-01.md, section P1}
+\end{minipage}\end{center}
+
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrr}
+\toprule
+ & & \multicolumn{2}{c}{no treatment} & \multicolumn{2}{c}{statement} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+model & problem & \arm{plain} & \arm{salt-diet} & \arm{plain} & \arm{salt-diet} \\
+\midrule
+% BEGIN correctness-table-P2 (generated by paper/correctness_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & \texttt{Crc32} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{LRU} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{FreeList} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{LZW} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{Paxos} & 3/3 & 3/3 & --- & --- \\
+\texttt{claude-sonnet-5} & \texttt{Crc32} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{LRU} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{FreeList} & 3/3 & 3/3 & 3/3 & 2/2 (+1c) \\
+ & \texttt{LZW} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{Paxos} & 3/3 & 3/3 & --- & --- \\
+\texttt{gemini-3.1-pro-high} & \texttt{Crc32} & 3/3 & 2/2 (+1u) & 3/3 & 3/3 \\
+ & \texttt{LRU} & 3/3 & 2/3 & 3/3 & 2/3 \\
+ & \texttt{FreeList} & 3/3 & 1/3 & 2/3 & 1/3 \\
+ & \texttt{LZW} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{Paxos} & 3/3 & 2/3 & --- & --- \\
+\texttt{gemini-3.8-flash-high} & \texttt{Crc32} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{LRU} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{FreeList} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{LZW} & 3/3 & 3/3 & 3/3 & 3/3 \\
+ & \texttt{Paxos} & 3/3 & 3/3 & --- & --- \\
+% END correctness-table-P2
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small \textbf{Table P2.} Brownfield. The marks and limits are those of Table~P1.}
+\src{harness/systems-v3/RESULT-correctness-tables-v3-2026-10-01.md, section P2}
+\end{minipage}\end{center}
+
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrr}
+\toprule
+model & problem & \arm{plain} & \arm{salt-diet} \\
+\midrule
+% BEGIN correctness-table-P3 (generated by paper/correctness_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & \texttt{Crc32} & 3/3 & 3/3 \\
+ & \texttt{LRU} & 3/3 & 3/3 \\
+ & \texttt{FreeList} & 3/3 & 2/3 \\
+ & \texttt{LZW} & 3/3 & 3/3 \\
+ & \texttt{Paxos} & 2/2 (+1c) & 2/2 (+1u) \\
+\texttt{claude-sonnet-5} & \texttt{Crc32} & 3/3 & 3/3 \\
+ & \texttt{LRU} & 3/3 & 3/3 \\
+ & \texttt{FreeList} & 1/3 & \emph{declared} \\
+ & \texttt{LZW} & 3/3 & \emph{declared} \\
+ & \texttt{Paxos} & 2/3 & \emph{declared} \\
+\texttt{gemini-3.1-pro-high} & \texttt{Crc32} & 3/3 & 3/3 \\
+ & \texttt{LRU} & 3/3 & 3/3 \\
+ & \texttt{FreeList} & 1/3 & 0/2 (+1u) \\
+ & \texttt{LZW} & 3/3 & 3/3 \\
+ & \texttt{Paxos} & 0/3 & 1/2 (+1c) \\
+\texttt{gemini-3.8-flash-high} & \texttt{Crc32} & 3/3 & 3/3 \\
+ & \texttt{LRU} & 3/3 & 3/3 \\
+ & \texttt{FreeList} & 2/3 & 0/3 \\
+ & \texttt{LZW} & 3/3 & 3/3 \\
+ & \texttt{Paxos} & 0/3 & 3/3 \\
+% END correctness-table-P3
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small \textbf{Table P3.} Specification change, greenfield only. Full passes of the second phase, with no regression and no clause failure. \emph{declared} marks a condition unreached at the cap. The other marks and limits are those of Table~P1.}
+\src{harness/systems-v3/RESULT-correctness-tables-v3-2026-10-01.md, section P3}
+\end{minipage}\end{center}
+
+\begin{center}\begin{minipage}{\textwidth}\centering
+{\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llccc}
+\toprule
+model & problem & no treatment & statement & spec.\ change \\
+\midrule
+% BEGIN correctness-table-P4 (generated by paper/correctness_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & \texttt{Crc32} & $=$ & $=$ & $=$ \\
+ & \texttt{LRU} & $=$ & $=$ & $=$ \\
+ & \texttt{FreeList} & $-$ & $=$ & $-$ \\
+ & \texttt{LZW} & $=$ & $=$ & $=$ \\
+ & \texttt{Paxos} & $=$ & --- & ? \\
+\texttt{claude-sonnet-5} & \texttt{Crc32} & $=$ & $=$ & $=$ \\
+ & \texttt{LRU} & $=$ & $=$ & $=$ \\
+ & \texttt{FreeList} & ? & ? & --- \\
+ & \texttt{LZW} & $=$ & ? & --- \\
+ & \texttt{Paxos} & $=$ & --- & --- \\
+\texttt{gemini-3.1-pro-high} & \texttt{Crc32} & $=$ & $=$ & $=$ \\
+ & \texttt{LRU} & $=$ & $=$ & $=$ \\
+ & \texttt{FreeList} & $-$ & ? & ? \\
+ & \texttt{LZW} & $-$ & $-$ & $=$ \\
+ & \texttt{Paxos} & ? & --- & $+$ \\
+\texttt{gemini-3.8-flash-high} & \texttt{Crc32} & $=$ & $=$ & $=$ \\
+ & \texttt{LRU} & $=$ & $=$ & $=$ \\
+ & \texttt{FreeList} & $-$ & $=$ & $-$ \\
+ & \texttt{LZW} & ? & $-$ & $=$ \\
+ & \texttt{Paxos} & $=$ & --- & $+$ \\
+% END correctness-table-P4
+\bottomrule
+\end{tabular}\\[8pt]
+\begin{tabular}{llrrrrr}
+\toprule
+model & treatment & $+$ & $=$ & $-$ & $?$ & --- \\
+\midrule
+% BEGIN correctness-table-PS (generated by paper/correctness_tables.py; do not edit by hand)
+\texttt{claude-opus-5} & bare & 0 & 4 & 1 & 0 & 0 \\
+ & statement & 0 & 4 & 0 & 0 & 1 \\
+ & spec-change & 0 & 3 & 1 & 1 & 0 \\
+\texttt{claude-sonnet-5} & bare & 0 & 4 & 0 & 1 & 0 \\
+ & statement & 0 & 2 & 0 & 2 & 1 \\
+ & spec-change & 0 & 2 & 0 & 0 & 3 \\
+\texttt{gemini-3.1-pro-high} & bare & 0 & 2 & 2 & 1 & 0 \\
+ & statement & 0 & 2 & 1 & 1 & 1 \\
+ & spec-change & 1 & 3 & 0 & 1 & 0 \\
+\texttt{gemini-3.8-flash-high} & bare & 0 & 3 & 1 & 1 & 0 \\
+ & statement & 0 & 3 & 1 & 0 & 1 \\
+ & spec-change & 1 & 3 & 1 & 0 & 0 \\
+% END correctness-table-PS
+\bottomrule
+\end{tabular}\\[8pt]
+\begin{tabular}{lrrr}
+\toprule
+treatment & \arm{salt-diet} only & \arm{plain} only & both \\
+\midrule
+% BEGIN correctness-table-PQ (generated by paper/correctness_tables.py; do not edit by hand)
+bare & 3 & 0 & 0 \\
+statement & 3 & 0 & 0 \\
+spec-change & 1 & 0 & 1 \\
+% END correctness-table-PQ
+\bottomrule
+\end{tabular}}\\[3pt]
+\parbox{0.92\textwidth}{\small \textbf{Table P4.} Top: the sign of the \arm{salt-diet} arm's pass-rate interval against the \arm{plain} arm's in the same row of Tables~P1 and~P3, greenfield. Each interval counts every censored and unscorable cell first as a failure and then as a pass; $+$ and $-$ only when the intervals are strictly apart, $=$ only when both are the same single point, $?$ otherwise; --- means no sign, because a side is inexpressible or declared. Middle: the signs per model and treatment (\emph{bare} is no treatment). Bottom: for each $?$, which arm carries the censored or unscorable cells that make it. No $p$-value is given. The brownfield signs, by the same rule, are in the result file.}
+\src{harness/systems-v3/RESULT-correctness-tables-v3-2026-10-01.md, section P4, the P4 counts and where each ? comes from}
 \end{minipage}\end{center}
 
 \section{The instrument findings, as results}
