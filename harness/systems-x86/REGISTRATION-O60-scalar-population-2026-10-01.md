@@ -397,7 +397,7 @@ that wrote its own `pre` could write `pre := False` and pass. O4 #1 never met th
                           Xxh64           "the xxHash specification" (×2) → "the xxHash format document" (×2)
                         All 21 plain views and all 21 salt-diet views now build.
 ```
-**What the release addendum reads with these** (the private tree, branch at 59e3f6f). Each is red-first or driven, and none of them is a
+**What the release addendum reads with these** (the private tree, branch at 96c6458). Each is red-first or driven, and none of them is a
 registration change:
 - The builder ships X86CallFrame + the family + <T>Call as libs, and generates the probe.
 - The method gate guards every harness-owned file and refuses one absent at the root. Its selftest drives each file by name; three mutants were refused.
@@ -406,7 +406,8 @@ registration change:
 - The export allowlist now ships interface/frame.txt, which the builder reads by default and the allowlist lacked, plus O60's inputs.
 - The fire route gains conditions `o60` and `o60smoke`.
 - The TREATMENT needles are DERIVED from the references (156 for 21 tasks; the positive control reads every needle in its own reference), as the helm ruled at 14:43:16.
-**Limits.** No proof of any aliased mode exists for these four routines. What shows the form is provable and discriminating is the frame's
-red-first package; the Targets' satisfiability on the routines is what the salt-diet cells test. spec_strength reads UNAVAILABLE on 19 of
+**Limits.** No proof of any aliased mode exists for FsubVale and the two Bignum muls. Cswap2's equal call is PROVED for the CONTROL's
+routine at de04273 (paris: the reference's own routine, both modes of Cswap2ValeCall.Target), not for any subject's. What shows the form
+is provable and discriminating is that proof and the frame's red-first package; the Targets' satisfiability on the routines is what the salt-diet cells test. spec_strength reads UNAVAILABLE on 19 of
 22 tasks, because only three frames carry a `spec` directive. It is a metric, never a gate, and the RESULT prints it as "UNAVAILABLE
 (frame carries no spec directive)", never as 0.
