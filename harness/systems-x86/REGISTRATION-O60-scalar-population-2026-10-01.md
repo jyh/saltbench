@@ -411,3 +411,67 @@ routine at de04273 (paris: the reference's own routine, both modes of Cswap2Vale
 is provable and discriminating is that proof and the frame's red-first package; the Targets' satisfiability on the routines is what the salt-diet cells test. spec_strength reads UNAVAILABLE on 19 of
 22 tasks, because only three frames carry a `spec` directive. It is a metric, never a gate, and the RESULT prints it as "UNAVAILABLE
 (frame carries no spec directive)", never as 0.
+
+---
+
+## ⚖️ ADDENDUM 8 — §Z10 AS MEASURED AT ONE EXPORT, 977a753. EIGHT OF TEN CONDITIONS MET; L8 AND L10 ARE OPEN, SO NOTHING FIRES ON THIS ADDENDUM. APPENDED.
+bench (lead), 2026-10-01, 22:25–22:40 UTC. Every receipt below was taken at saltbench-systems `977a753` (EXPORTED-FROM
+`977a7532955047705aa0204e0434dee4902907fc`), or at a commit that `977a753` contains. Each line names who measured it and where. Zero
+model spend. **The release is NOT given here.** L8 and L10 are read on the new-week pool at the fire (ADDENDUM 4), and a later addendum
+names that pool with both rows MET. Only then do the smoke pairs fire, then the 40.
+```
+  L1  EXPORT    MET  ONE sha, 977a753: systems' kit, the 20 cards and both smokes (22 task dirs, each with withheld/tests/expected.txt in
+                     the private tree; the run box's cut carries 0 withheld dirs, by construction), the three family modules
+                     (X86RetInterface · X86ReadRetInterface · X86WriteInterface) on X86CallFrame, the 21 call modules of ADDENDUM 7 (1),
+                     and arm_builder.py. kent's non-author reads cover the harness delta through 977a753 and the objects each read names; the cards and call
+                     modules are paris's read (kent read 3 of the 21). Read by NO non-author: the L4 control proofs and the aliasing red-first package
+                     (kernel-checked, not read), and the withheld sets. The four cell
+                     roots' _bin were RE-POINTED to this export
+                     before any cell fired, after a measurement that all 36 link targets are byte-equal between ed1890c and 977a753 (0 of 36
+                     differ). So the re-point changed the path a cell resolves and no byte it runs.
+  L2  x86lean   MET  e5d7f36 (PR #79 merged; ADDENDUM 6 (1)) vendored STRIPPED, built at the harness Lean pin v4.27.0 (paris, harness
+                     da9eca0, an ancestor of 977a753).
+  L3  FORMS     MET  tasks/systems-x86/FORMS.tsv at 977a753, derived by make_forms.py from x86lean e5d7f36. Its own header reads
+                     "allowed 507 · excluded 237 (SIMD/FP classes) + 194 (the pinned translator refuses every instance)", which is ADDENDUM 6's
+                     701 = 507 + 194 over the vector instances. paris re-derived it with `check`, byte for byte.
+  L4  FAMILIES  MET  RET · READ-RET · WRITE, each with a kernel-checked control proof at e5d7f36 (paris, da9eca0). The controls were re-pointed
+                     at the harness call modules (paris, de04273, its own branch), and Cswap2's control proves both modes of its Target
+                     (ADDENDUM 7, Limits).
+  L5  PER TASK  MET  The referee, referee_o60.sh blob 447082fea41b, from the 977a753 cut, on all 22 rows (the 20, CRC-32 and BignumMux):
+                     each reference PASS with full agreement ×22, each stub TESTS_FAIL ×22, and no REFUSE in any of the 44 logs. All 44
+                     verdict lines are byte-identical to the first run at d3c4e00. Between d3c4e00 and 977a753 the withheld sets,
+                     frame.txt, check_x86.py and frame.py are unchanged; only the referee moved (the salt-diet path and the TASKS check).
+                     (a) = (b), the stack bands and the equality relations are the cards' own (ADDENDUM 6 (3) for the two mod-p rows).
+  L6  ARMS      MET  `arm_builder.py table` over the 21 cards at the cut prints a table that is byte-equal to the one kent read (13:03:34 PDT), at
+                     sha256/16 3041a0c3f51c14a9. The builder's selftest passes 16 of 16 arms.
+  L7  DRY CELL  MET  (i) all 44 cells built --dry at 96c6458 (an ancestor; 96c6458..977a753 touches only referee_o60.sh and x86_clb.sh). (ii) On the
+                     run box, at 977a753: --check-only CLEAN on one salt-diet cell per family plus the WRITE smoke, clbps01 Adler32 · clbps13
+                     WordClz · clbps11 FsubVale · clbvs01 BignumMux, and on one plain cell, clbpp01 Adler32. Every one renders the pool's
+                     settings with cleanupPeriodDays "read back = 3650". (iii) The referee on a stub per family, salt-diet, from the cut:
+                     NO_SOLUTION ×4, with the TASKS-vs-export blob check passing ×4. Its red: one byte appended to one card in a scratch
+                     TASKS copy gives rc 2, "REFEREE REFUSE: TASKS's card.md is not the export's".
+                     ⚠️ NOT DRIVEN, by design: the probe TURNS, which are model calls. They run at each cell's own fire.
+  L8  POOL      OPEN evidence's, at the fire: the day line names the pool, plus the account check and one authenticated read.
+  L9  HOOK      MET  hook-deny-v3.sh at blob 16f37ada78ed in 977a753 (git hash-object), and read back BY BLOB in each of the four roots'
+                     _bin after the re-point. fence-hook.sh is at e783a6b5ad11 in all four.
+  L10 POOL      OPEN evidence's, at the fire: the pool's own config dir reads LIVE (both tokens, one authenticated turn). If none reads LIVE,
+                     that addendum names the login the Captain must perform instead of firing.
+```
+**The run as it fires, 44 cells** (the dry stage's own count, by condition and arm): `o60` 20 tasks × {plain, salt-diet} = 40 ·
+`o60smoke` BignumMux × 2 (ADDENDUM 1) · `smoke` CRC-32 × 2 (§Z4, O4 #1's calibration). **No task is withdrawn under §Z8:** L5 PASSes all 22 rows.
+**A figure in ADDENDUM 7 is corrected here (ADDENDUM 7 itself is not edited):** the TREATMENT needles are **155 for 21 tasks**, not 156.
+O60-NEEDLES.tsv reads 155 data rows at 96c6458, at ed1890c and at 977a753. The 156 was 213a5be's. 96c6458 dropped Lookup3's `0xFFFFFF`
+when the generator was made to test absence with the TREATMENT gate's own substring rule: the needle is a substring of `0xFFFFFFFF` in the
+harness's own Lean. Every other task's needle set is unchanged, and the positive control reads 21/21.
+**spec_strength is unchanged from ADDENDUM 7's Limits:** "UNAVAILABLE (frame carries no spec directive)" on 19 of 22 rows, never 0. It is a
+metric, never a gate.
+**Declared, because a reader of the cells would otherwise have to ask:**
+- **The population has TWO build shas.** clbps01, clbps11, clbps13 and clbvs01 were staged at ed1890c. clbpp01 was staged at 977a753, today,
+  so that the plain arm's --check-only could be driven. No cell-facing byte differs between them (L1's 36 of 36), and every cell staged from
+  now on is staged at 977a753. Each cell's manifest records its own export.
+- **The plain cell's launch env has no Lean on PATH and the salt-diet cells' does.** That is the arm design: the route unsets the pinned Lean
+  for the plain arm. It is not a defect.
+- **The salt-diet referee path on a REAL submission** has been driven on paris's RET control (ADDENDUM 7: CLASS PASS, TARGET OK). Every other
+  family's salt-diet verdict is first produced by a cell.
+- **Monday re-runs --check-only on all five cells after the weekend's outlet drill**, which may power-cycle the run box, and before L8/L10
+  are read.
