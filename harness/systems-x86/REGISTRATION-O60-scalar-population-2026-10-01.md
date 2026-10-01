@@ -350,3 +350,64 @@ form is typed.
 **The lead's recommendation: all three.** Without (1) the population is one task. (2) keeps the population as drawn and is still the same
 verified C at the same commit. (3) adds nothing that §Z2.5 did not already allow. **Each of the three is reversible by a dated addendum
 before the fire.**
+
+---
+
+## ⚖️ ADDENDUM 7 — HIS WORD (a) ON ALIASING, THE CALL MODULE THAT FIXES EACH TARGET, AND FOUR PHRASES OF REQUIREMENTS PROSE. APPENDED; everything above is untouched.
+bench (lead), 2026-10-01. **His word, 14:3x in the helm's window, on the fork put to him: "(a)".** ADDENDUM 6 merged on his earlier word
+("yes, fire through addendum 6", 13:42; #307). Every object below is in the private harness tree, named by sha and blob, at zero spend.
+**Why this addendum exists.** Wiring §Z10 L7 found that no salt-diet TARGET could be stated for an O60 task. §Z2.7's families are
+parametrised (`CorrectFor … pre args …`, and for WRITE a `rel` and the spec's adapter), and no card fixed those terms in Lean. A subject
+that wrote its own `pre` could write `pre := False` and pass. O4 #1 never met this, because its one interface baked its frame in.
+```
+  (1) THE CALL MODULE   (the helm's ruling, 14:10:50: it RESTORES §Z2.4's "a literal in the card and in the ascription"; not his word)
+                        Each task's interface/<T>Call.lean is HARNESS-OWNED. It holds the task's SpecShape, Input, pre and args, and,
+                        for WRITE, the adapter from the spec to the family's `f` and the `rel`. It is written from the card's printed
+                        contract and frame.txt, with a source line named for every clause, and ends in ONE `abbrev Target prog image
+                        entry spec`, with the card's K as a literal. The probe is two lines GENERATED from the task name. Each card's
+                        Proof deliverable names its call module and the statement to prove. The arm texts do not move: the L6 table is
+                        byte-equal, sha256/16 3041a0c3f51c14a9.
+                        Driven per family (RET, READ-RET, WRITE): a real control proof stated against Target passes the probe, and a
+                        planted pre := False submission builds against its own pre and is REFUSED by the probe. The fidelity read of
+                        all 21 against their cards is paris's (19 HOLD, 2 findings, both closed by (2)). kent made a second,
+                        independent read of the three author-adjacent modules, with his own mutants (pre := False; an argument
+                        narrowed or reordered): all REFUSED.
+  (2) ALIASING          (his word (a)) X86CallFrame gains `Arg.same i`, "the same pointer as argument i" (paris; blob 210ce6b4ec2a at
+                        7e2d2ac, docstring-only over b8d2d4b; kent's read HOLDS). It binds its slot to its target's pointer, names no region, and adds no conjunct to
+                        Setup, so it can bind a Target but never empty one. Red-first both ways: an in-place routine that stores before
+                        it loads is REFUTED in-place and PROVED disjoint, and a safe one is PROVED in both. L4's three controls
+                        elaborate unchanged. Each Target below is the CONJUNCTION over the calls its card permits:
+                          Cswap2ValeCall          92ced1fbc909   disjoint ∧ p0 = p1
+                          FsubValeCall            a01eb6fb7b2c   disjoint ∧ out = f1 ∧ out = f2 ∧ f1 = f2 ∧ out = f1 = f2  (mod-p rel)
+                          BignumMul4x8AltCall     ea2915e731b7   disjoint ∧ x = y      (paris's finding F1, ruled under (a), 14:51:18)
+                          BignumMulP25519AltCall  4c65c37de4e4   disjoint ∧ x = y
+                        The cards' sentences stay AS WRITTEN; they now match what is checked.
+  (3) DECLARED          (paris's F2) Read-only regions are pairwise disjoint in every Target. Overlapping READ-ONLY inputs are
+                        TESTED, NOT PROVED, except where a card names the mode (2): Modadd x/y/m · Mul · Mux · Sub · SipHash24 and
+                        HalfSipHash in/k. No write reaches a read-only region, so no correct routine is refused by this.
+  (4) REQUIREMENTS ×4   (the helm's call, concurred 14:43:16: it ENFORCES v3's neutrality control 26) These four cards could build NO
+                        view in EITHER arm, because REQUIREMENTS.md ships to both arms and carried a control-26 word. Reworded with
+                        each card's own vocabulary. No contract, figure or check value moved.
+                          Adler32         "so that our streams verify in any zlib-compatible reader"
+                                        → "so that any zlib-compatible reader accepts our streams"
+                          Murmur3X86_32   "The SMHasher verification above must give 0xB0F57EE3."
+                                        → "The SMHasher acceptance check above must give 0xB0F57EE3."
+                          Murmur3X64_128  "The SMHasher verification above must give 0x6384BA69."
+                                        → "The SMHasher acceptance check above must give 0x6384BA69."
+                          Xxh64           "the xxHash specification" (×2) → "the xxHash format document" (×2)
+                        All 21 plain views and all 21 salt-diet views now build.
+```
+**What the release addendum reads with these** (the private tree, branch at 96c6458). Each is red-first or driven, and none of them is a
+registration change:
+- The builder ships X86CallFrame + the family + <T>Call as libs, and generates the probe.
+- The method gate guards every harness-owned file and refuses one absent at the root. Its selftest drives each file by name; three mutants were refused.
+- The referee takes salt-diet with those owned files. Driven on paris's RET control: CLASS PASS, AGREE=108, TARGET OK, axioms {propext,
+  Classical.choice, Quot.sound}.
+- The export allowlist now ships interface/frame.txt, which the builder reads by default and the allowlist lacked, plus O60's inputs.
+- The fire route gains conditions `o60` and `o60smoke`.
+- The TREATMENT needles are DERIVED from the references (156 for 21 tasks; the positive control reads every needle in its own reference), as the helm ruled at 14:43:16.
+**Limits.** No proof of any aliased mode exists for FsubVale and the two Bignum muls. Cswap2's equal call is PROVED for the CONTROL's
+routine at de04273 (paris: the reference's own routine, both modes of Cswap2ValeCall.Target), not for any subject's. What shows the form
+is provable and discriminating is that proof and the frame's red-first package; the Targets' satisfiability on the routines is what the salt-diet cells test. spec_strength reads UNAVAILABLE on 19 of
+22 tasks, because only three frames carry a `spec` directive. It is a metric, never a gate, and the RESULT prints it as "UNAVAILABLE
+(frame carries no spec directive)", never as 0.
