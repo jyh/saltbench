@@ -306,3 +306,47 @@ except CRC-32's:
 **What this costs, declared:** the population's salt-diet text differs from O4 #1's by the gloss sentence, so the CRC-32 smoke calibrates the
 card and the kit, not the salt-diet text. ADDENDUM 3 already says the same of the plain text. Both arms take a table row, and neither table row
 can carry method. L6's one non-author read covers both rows.
+
+---
+
+## ⚖️ ADDENDUM 6 — AS REGISTERED, 19 OF THE 20 TASKS CANNOT BE REFEREED. THREE CHANGES FOR HIS WORD, EACH WITH ITS MEASURED COST. APPENDED.
+bench (lead), 2026-10-01. Every figure below is paris's or mine, measured on the private harness tree, at zero spend. **Nothing here takes
+effect before his word, and nothing fires without the release addendum either way.**
+**The finding (paris, the helm's order of 11:26:48).** At the registered pin, x86lean `dfb26e2`, the translator reads the reference routine
+end to end for only 3 of 22 rows: vale-cswap2 and both smokes. Five rows are refused on clang's NOP padding alone. Twelve need a closed set of
+instructions the model already has: adc · sbb · mul · bsr · bswap · shld · bts · btr · cltq. BLAKE2s/2b as the census built them carry SSE
+`movups` (8 and 16 of them), which is outside the lane's own FORMS list. BLAKE2b's SSE-free build of (2) adds one more need, `rep movs`. Under §Z10 L5 ("the reference itself
+through the referee: PASS"), a task whose reference the referee cannot read can never be released.
+```
+  (1) THE PIN    x86lean dfb26e2 → x86lean PR #79 as measured at head 57b445d. The pin names the merge commit only if its TREE equals 57b445d's;
+                 otherwise the coverage is re-taken at the merge before the pin moves. The translator's CORE widened by exactly the measured
+                 set. Every addition is checked by asm_front's own selftest, which translates all 1,158 vectors and compares each with its
+                 hand-written instruction: 612 core EQUAL · 546 non-core REFUSED · 0 BAD, on both the LLVM and the GNU disassembler.
+                 btc · xadd · shrd · xchg · repe/repne stay refused, because no reference executes them. Coverage at 57b445d
+                 (TRANSLATE-COVERAGE-O60-widened-57b445d.tsv): 22 of 24 rows PASS, including every population task's reference
+                 under (2). COST: merge #79, re-vendor (L2, scripted, ~1 min) and re-derive FORMS (L3, scripted; the vectors are
+                 unchanged). CRC-32's smoke calibrates against O4 #1 across the move (§Z6 5).
+  (2) BLAKE2's   tasks 8–9's source (a) becomes clang's compilation of the SAME verified C at the SAME commit with
+      (a)        -mno-sse -mno-sse2 -D_FORTIFY_SOURCE=0. BLAKE2s: 1,827 instructions (census 1,786), 0 SSE forms (census 8).
+                 BLAKE2b: 2,139 (census 2,108), 0 SSE forms (census 16). Each build's only branch relocation is the in-file update_block.
+                 (Without -D_FORTIFY_SOURCE=0, BLAKE2b's copy becomes a call to __memcpy_chk, which clang does not inline once SSE is off.)
+                 Both agree with (b) on every withheld input, and their stack bands are unchanged (K 256 · 512). The cards build
+                 both with the flag (private harness tree, cards branch d60c252); on BLAKE2s the flag changes no instruction (disassembly cmp-identical). §Z1's ref.instrs column
+                 stays the census's figure; the RESULT prints both. THE ALTERNATIVE: withdraw tasks 8–9 and draw two replacements by
+                 §Z1's R5. That keeps the census's objects and changes the population.
+  (3) RELATION   §Z2.5 already admits an output defined only up to a stated relation. This names the form the referee and the proof use.
+      OUTPUTS    X86WriteInterface (paris, L4) takes `rel`, with `exact` the default. fsub_e is ≡ mod 2^255 − 19 over its 4 LE limbs (the
+                 reference leaves 78 of 171 withheld outputs unreduced). x64_poly1305 with finish = 0 uses its accumulator relation
+                 (≡ mod 2^130 − 5, top word below 5; the reference leaves 3 of 19 unreduced). Every other task is exact. expected.txt
+                 carries the reduced value, and the referee checks the relation.
+```
+**And the list a subject sees moves with (1).** §Z2.3's lane-wide list was "the scalar forms the pinned vectors execute". It becomes those
+forms **intersected with the forms the pinned translator reads**, by `make_forms.py derive --front <the pinned asm_front.py>` (paris, L3).
+Without it a card would call a form "allowed" that its own referee refuses to translate, which is a non-scoring outcome on an allowed
+instruction. Counted on every vector instance (no form is read in some instances and refused in others): at dfb26e2, 701 = 402 allowed +
+299 refused; at #79's 57b445d, **701 = 507 allowed + 194 refused** (still refused, among others: xchg · bt · btc · div/idiv · lzcnt · tzcnt
+· popcnt · rcl/rcr · shrd · cmpxchg · xadd · leave · movbe). `check` re-derives the list byte for byte, and both halves are derived, so no
+form is typed.
+**The lead's recommendation: all three.** Without (1) the population is one task. (2) keeps the population as drawn and is still the same
+verified C at the same commit. (3) adds nothing that §Z2.5 did not already allow. **Each of the three is reversible by a dated addendum
+before the fire.**
