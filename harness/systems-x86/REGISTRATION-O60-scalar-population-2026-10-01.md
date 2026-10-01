@@ -372,8 +372,8 @@ that wrote its own `pre` could write `pre := False` and pass. O4 #1 never met th
                         all 21 against their cards is paris's (19 HOLD, 2 findings, both closed by (2)). kent made a second,
                         independent read of the three author-adjacent modules, with his own mutants (pre := False; an argument
                         narrowed or reordered): all REFUSED.
-  (2) ALIASING          (his word (a)) X86CallFrame gains `Arg.same i`, "the same pointer as argument i" (paris; blob c3095111085f at
-                        b8d2d4b; kent's read HOLDS). It binds its slot to its target's pointer, names no region, and adds no conjunct to
+  (2) ALIASING          (his word (a)) X86CallFrame gains `Arg.same i`, "the same pointer as argument i" (paris; blob 210ce6b4ec2a at
+                        7e2d2ac, docstring-only over b8d2d4b; kent's read HOLDS). It binds its slot to its target's pointer, names no region, and adds no conjunct to
                         Setup, so it can bind a Target but never empty one. Red-first both ways: an in-place routine that stores before
                         it loads is REFUTED in-place and PROVED disjoint, and a safe one is PROVED in both. L4's three controls
                         elaborate unchanged. Each Target below is the CONJUNCTION over the calls its card permits:
@@ -397,7 +397,7 @@ that wrote its own `pre` could write `pre := False` and pass. O4 #1 never met th
                           Xxh64           "the xxHash specification" (×2) → "the xxHash format document" (×2)
                         All 21 plain views and all 21 salt-diet views now build.
 ```
-**What the release addendum reads with these** (the private tree, branch at 97ce300). Each is red-first or driven, and none of them is a
+**What the release addendum reads with these** (the private tree, branch at 747ed3e). Each is red-first or driven, and none of them is a
 registration change:
 - The builder ships X86CallFrame + the family + <T>Call as libs, and generates the probe.
 - The method gate guards every harness-owned file and refuses one absent at the root. Its selftest drives each file by name; three mutants were refused.
