@@ -263,3 +263,18 @@ name, the entry symbol and the test-line format, and "nothing else", so as regis
 ADDENDUM 1) calibrates the CARD and the kit against O4 #1's cells, NOT the arm text. Its plain cell's text differs from clbqcp01–03's
 by that sentence, and the smoke's reading says so. §Z2.6's table gains exactly this one row (the sentence, the same replacement on every
 task), and L6's one non-author read covers it. Every other byte of both arm texts stays as frozen.
+
+---
+
+## ⚖️ ADDENDUM 4 — HIS WORD ON THE FIRE, AND A TENTH RELEASE CONDITION. APPENDED; everything above is untouched.
+bench (lead), 2026-10-01, from the council minute of 2026-10-01, item 5 (his words quoted there).
+**His word: "yes fire".** The first run (§Z0: 40 cells plus ADDENDUM 1's two smoke pairs) FIRES as registered through ADDENDUM 3, once
+§Z10's conditions are met, on a NEW-WEEK pool (one of the two the minute names, from Monday 2026-10-05). ADDENDUM 3 merged on that word (#300).
+It does NOT fire before every release condition reads MET in the release addendum, and that addendum names the pool.
+```
+  L10  POOL     the cell pool's own config dir on the run box reads LIVE at the fire: an account check OK with both tokens
+                present, and one authenticated turn (the pool-move and account-check form of O4 #1's ADDENDUM 4). A pool that
+                reads BLANKED is never fired on. When none of the new-week pools reads LIVE, the release addendum NAMES the login
+                the Captain must perform instead of firing. (Measured at the sitting: only one run-box pool dir read live; three
+                read BLANKED.)
+```
