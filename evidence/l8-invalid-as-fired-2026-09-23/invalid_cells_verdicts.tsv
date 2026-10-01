@@ -1,0 +1,46 @@
+# population: 43 HIDDEN wave cells (dry renders excluded) · score files read: 15
+root	cell	verdict	end	tests	scorer	score_file	note
+cells-l8-freelist-flash-plain-sc	l8ffps01	FAIL	LANDED	TESTS 8/9 REGRESSIONS 1/7 CLAUSE_TESTS 0/2	e8c0d0512ab2	l8u-FreeList-flash-2026-09-22-score/cells-l8-freelist-flash-plain-sc.p2.score.txt	-
+cells-l8-freelist-flash-plain-sc	l8ffps02	PASS	LANDED	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	e8c0d0512ab2	l8u-FreeList-flash-2026-09-22-score/cells-l8-freelist-flash-plain-sc.p2.score.txt	-
+cells-l8-freelist-flash-plain-sc	l8ffps03	FAIL	LANDED	TESTS 8/9 REGRESSIONS 1/7 CLAUSE_TESTS 0/2	e8c0d0512ab2	l8u-FreeList-flash-2026-09-22-score/cells-l8-freelist-flash-plain-sc.p2.score.txt	-
+cells-l8-freelist-flash-salt-sc	l8ffss01	PASS	LANDED	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	e8c0d0512ab2	l8u-FreeList-flash-2026-09-22-score/cells-l8-freelist-flash-salt-sc.p2.score.txt	-
+cells-l8-freelist-flash-salt-sc	l8ffss02	PASS	LANDED	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	e8c0d0512ab2	l8u-FreeList-flash-2026-09-22-score/cells-l8-freelist-flash-salt-sc.p2.score.txt	-
+cells-l8-freelist-flash-salt-sc	l8ffss03	PASS	LANDED	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	e8c0d0512ab2	l8u-FreeList-flash-2026-09-22-score/cells-l8-freelist-flash-salt-sc.p2.score.txt	-
+cells-l8-freelist-pro-plain-sc	l8fpps01	FAIL	LANDED	TESTS 8/9 REGRESSIONS 1/7 CLAUSE_TESTS 0/2	e8c0d0512ab2	l8u-FreeList-pro-2026-09-22-score/cells-l8-freelist-pro-plain-sc.p2.score.txt	-
+cells-l8-freelist-pro-plain-sc	l8fpps02	FAIL	LANDED	TESTS 8/9 REGRESSIONS 1/7 CLAUSE_TESTS 0/2	e8c0d0512ab2	l8u-FreeList-pro-2026-09-22-score/cells-l8-freelist-pro-plain-sc.p2.score.txt	-
+cells-l8-freelist-pro-plain-sc	l8fpps03	FAIL	LANDED	TESTS 8/9 REGRESSIONS 1/7 CLAUSE_TESTS 0/2	e8c0d0512ab2	l8u-FreeList-pro-2026-09-22-score/cells-l8-freelist-pro-plain-sc.p2.score.txt	-
+cells-l8-freelist-pro-salt-sc	l8fpss01	FAIL	LANDED	TESTS 8/9 REGRESSIONS 1/7 CLAUSE_TESTS 0/2	e8c0d0512ab2	l8u-FreeList-pro-2026-09-22-score/cells-l8-freelist-pro-salt-sc.p2.score.txt	-
+cells-l8-freelist-pro-salt-sc	l8fpss02	FAIL	LANDED	TESTS 8/9 REGRESSIONS 1/7 CLAUSE_TESTS 0/2	e8c0d0512ab2	l8u-FreeList-pro-2026-09-22-score/cells-l8-freelist-pro-salt-sc.p2.score.txt	-
+cells-l8-freelist-pro-salt-sc	l8fpss03	PASS	LANDED	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	e8c0d0512ab2	l8u-FreeList-pro-2026-09-22-score/cells-l8-freelist-pro-salt-sc.p2.score.txt	-
+cells-l8-lru-flash-plain-sc-tripwire	l8rfpw01	PASS	LANDED	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-TRIP-2026-09-22-rescore-e8c0d05/cells-l8-lru-flash-plain-sc-tripwire.p2.score.txt	2 verdict rows in 2 file(s); the scorer of record e8c0d0512ab2 is used
+cells-l8-lru-pro-plain-sc	l8rpps01	PASS	LANDED	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LRU-pro-2026-09-22-score/cells-l8-lru-pro-plain-sc.p2.score.txt	-
+cells-l8-lru-pro-plain-sc	l8rpps02	PASS	LANDED	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LRU-pro-2026-09-22-score/cells-l8-lru-pro-plain-sc.p2.score.txt	-
+cells-l8-lru-pro-plain-sc	l8rpps03	PASS	LANDED	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LRU-pro-2026-09-22-score/cells-l8-lru-pro-plain-sc.p2.score.txt	-
+cells-l8-lru-pro-salt-sc	l8rpss01	UNREAD	-	-	-	-	no score file under the runs dir holds this cell's row
+cells-l8-lru-pro-salt-sc	l8rpss02	UNREAD	-	-	-	-	no score file under the runs dir holds this cell's row
+cells-l8-lru-pro-salt-sc	l8rpss03	UNREAD	-	-	-	-	no score file under the runs dir holds this cell's row
+cells-l8-lzw-flash-plain-sc	l8zfps01	PASS	LANDED	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LZW-flash-2026-09-22-score/cells-l8-lzw-flash-plain-sc.p2.score.txt	-
+cells-l8-lzw-flash-plain-sc	l8zfps02	PASS	LANDED	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LZW-flash-2026-09-22-score/cells-l8-lzw-flash-plain-sc.p2.score.txt	-
+cells-l8-lzw-flash-plain-sc	l8zfps03	PASS	LANDED	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LZW-flash-2026-09-22-score/cells-l8-lzw-flash-plain-sc.p2.score.txt	-
+cells-l8-lzw-flash-salt-sc	l8zfss01	PASS	LANDED	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LZW-flash-2026-09-22-score/cells-l8-lzw-flash-salt-sc.p2.score.txt	-
+cells-l8-lzw-flash-salt-sc	l8zfss02	PASS	LANDED	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LZW-flash-2026-09-22-score/cells-l8-lzw-flash-salt-sc.p2.score.txt	-
+cells-l8-lzw-flash-salt-sc	l8zfss03	FAIL	LANDED	TESTS 13/15 REGRESSIONS 2/8 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LZW-flash-2026-09-22-score/cells-l8-lzw-flash-salt-sc.p2.score.txt	-
+cells-l8-lzw-pro-plain-sc	l8zpps01	PASS	LANDED	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LZW-pro-2026-09-22-score/cells-l8-lzw-pro-plain-sc.p2.score.txt	-
+cells-l8-lzw-pro-plain-sc	l8zpps02	PASS	LANDED	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LZW-pro-2026-09-22-score/cells-l8-lzw-pro-plain-sc.p2.score.txt	-
+cells-l8-lzw-pro-plain-sc	l8zpps03	INCOMPLETE	running	no end marker yet — not a void	e8c0d0512ab2	l8u-LZW-pro-2026-09-22-score/cells-l8-lzw-pro-plain-sc.p2.score.txt	-
+cells-l8-lzw-pro-salt-sc	l8zpss01	PASS	LANDED	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LZW-pro-2026-09-22-score/cells-l8-lzw-pro-salt-sc.p2.score.txt	-
+cells-l8-lzw-pro-salt-sc	l8zpss02	PASS	LANDED	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	e8c0d0512ab2	l8u-LZW-pro-2026-09-22-score/cells-l8-lzw-pro-salt-sc.p2.score.txt	-
+cells-l8-lzw-pro-salt-sc	l8zpss03	FAIL	LANDED	<none> REGRESSIONS ABSENT CLAUSE_TESTS ABSENT	e8c0d0512ab2	l8u-LZW-pro-2026-09-22-score/cells-l8-lzw-pro-salt-sc.p2.score.txt	-
+cells-l8-paxos-flash-plain-sc	l8xfps01	PASS	LANDED	TESTS 24/24 REGRESSIONS 0/16 CLAUSE_TESTS 0/8	e8c0d0512ab2	l8u-Paxos-flash-2026-09-22-score/cells-l8-paxos-flash-plain-sc.p2.score.txt	-
+cells-l8-paxos-flash-plain-sc	l8xfps02	PASS	LANDED	TESTS 24/24 REGRESSIONS 0/16 CLAUSE_TESTS 0/8	e8c0d0512ab2	l8u-Paxos-flash-2026-09-22-score/cells-l8-paxos-flash-plain-sc.p2.score.txt	-
+cells-l8-paxos-flash-plain-sc	l8xfps03	FAIL	LANDED	TESTS 23/24 REGRESSIONS 0/16 CLAUSE_TESTS 1/8	e8c0d0512ab2	l8u-Paxos-flash-2026-09-22-score/cells-l8-paxos-flash-plain-sc.p2.score.txt	-
+cells-l8-paxos-flash-salt-sc	l8xfss01	PASS	LANDED	TESTS 24/24 REGRESSIONS 0/16 CLAUSE_TESTS 0/8	e8c0d0512ab2	l8u-Paxos-flash-2026-09-22-score/cells-l8-paxos-flash-salt-sc.p2.score.txt	-
+cells-l8-paxos-flash-salt-sc	l8xfss02	PASS	LANDED	TESTS 24/24 REGRESSIONS 0/16 CLAUSE_TESTS 0/8	e8c0d0512ab2	l8u-Paxos-flash-2026-09-22-score/cells-l8-paxos-flash-salt-sc.p2.score.txt	-
+cells-l8-paxos-flash-salt-sc	l8xfss03	PASS	LANDED	TESTS 24/24 REGRESSIONS 0/16 CLAUSE_TESTS 0/8	e8c0d0512ab2	l8u-Paxos-flash-2026-09-22-score/cells-l8-paxos-flash-salt-sc.p2.score.txt	-
+cells-l8-paxos-pro-plain-sc	l8xpps01	FAIL	LANDED	TESTS 23/24 REGRESSIONS 0/16 CLAUSE_TESTS 1/8	e8c0d0512ab2	l8u-Paxos-pro-2026-09-22-score/cells-l8-paxos-pro-plain-sc.p2.score.txt	-
+cells-l8-paxos-pro-plain-sc	l8xpps02	FAIL	LANDED	TESTS 23/24 REGRESSIONS 0/16 CLAUSE_TESTS 1/8	e8c0d0512ab2	l8u-Paxos-pro-2026-09-22-score/cells-l8-paxos-pro-plain-sc.p2.score.txt	-
+cells-l8-paxos-pro-plain-sc	l8xpps03	FAIL	LANDED	TESTS 23/24 REGRESSIONS 0/16 CLAUSE_TESTS 1/8	e8c0d0512ab2	l8u-Paxos-pro-2026-09-22-score/cells-l8-paxos-pro-plain-sc.p2.score.txt	-
+cells-l8-paxos-pro-salt-sc	l8xpss01	FAIL	LANDED	TESTS 23/24 REGRESSIONS 0/16 CLAUSE_TESTS 1/8	e8c0d0512ab2	l8u-Paxos-pro-2026-09-22-score/cells-l8-paxos-pro-salt-sc.p2.score.txt	-
+cells-l8-paxos-pro-salt-sc	l8xpss02	FAIL	LANDED	TESTS 5/24 REGRESSIONS 13/16 CLAUSE_TESTS 6/8	e8c0d0512ab2	l8u-Paxos-pro-2026-09-22-score/cells-l8-paxos-pro-salt-sc.p2.score.txt	the file also carries a SELF-NOT row (the subject's own LANDING.md says NOT); printed apart, never as the verdict
+cells-l8-paxos-pro-salt-sc	l8xpss03	BUILD-FAIL	LANDED	TESTS 0/0 REGRESSIONS ABSENT CLAUSE_TESTS ABSENT	e8c0d0512ab2	l8u-Paxos-pro-2026-09-22-score/cells-l8-paxos-pro-salt-sc.p2.score.txt	-
+# UNREAD: 3 of 43
