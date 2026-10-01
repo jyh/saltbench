@@ -1,0 +1,7 @@
+cell	condition	end1_kind	dirty	suite	tests	o37_lean	o37_axioms	o37_stmt	PASS	proof_lines	final_T	final_COST	at_end_COST	cap	served_head	served_sidechain	served_verdict	client_versions	export12	head12	G_runner_sha16
+clbeca01	opus	LANDED	0	PASS	6/6	GREEN	Classical.choice,Quot.sound,propext	UNCHANGED	PASS	246	16662395	13.8698	13.6060	37.21	claude-opus-5=211	-	clean	2.1.259	865290f21637	d8f4fd69b9a4	3f1d7e4497d86c0e
+clbwca01	sonnet	LANDED	0	PASS	6/6	GREEN	Classical.choice,Quot.sound,propext	UNCHANGED	PASS	243	81640888	20.8473	19.9507	37.21	claude-sonnet-5=529	claude-sonnet-5=13	clean	2.1.259	865290f21637	9d0a94af4393	3f1d7e4497d86c0e
+clbeca02	opus	LANDED	0	PASS	6/6	GREEN	Classical.choice,Quot.sound,propext	UNCHANGED	PASS	217	22001839	16.6597	16.3783	37.21	claude-opus-5=224	-	clean	2.1.259	865290f21637	15f1d3a2c931	3f1d7e4497d86c0e
+clbwca02	sonnet	LANDED	0	PASS	6/6	GREEN	Classical.choice,Quot.sound,propext	UNCHANGED	PASS	346	71410930	19.6846	19.3223	37.21	claude-sonnet-5=377	claude-sonnet-5=224	clean	2.1.259	865290f21637	3409dc13dad4	3f1d7e4497d86c0e
+clbeca03	opus	LANDED	0	PASS	6/6	GREEN	Classical.choice,Quot.sound,propext	UNCHANGED	PASS	253	15349682	13.1300	12.8692	37.21	claude-opus-5=194	-	clean	2.1.259	865290f21637	f6b09fa03ea0	3f1d7e4497d86c0e
+clbwca03	sonnet	LANDED	0	PASS	6/6	GREEN	Classical.choice,Quot.sound,propext	UNCHANGED	PASS	361	88069402	24.8527	24.3586	37.21	claude-sonnet-5=429	claude-sonnet-5=625	clean	2.1.259	865290f21637	7b469cedc75e	3f1d7e4497d86c0e
