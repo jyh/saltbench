@@ -226,3 +226,17 @@ The families stand as §Z2.7 printed them. ⚠️ **Two facts a card must carry,
 passes in TWO registers; and tasks 8 and 9 take a caller-supplied scratch block (`wv`), which the WRITE framing must count as part of the
 written region, or AgreeOutside would refuse a correct routine. ⚠️ **Rows 10–12's prototypes are HACL*'s C declarations of Vale assembly**, which
 is what a caller links against; the census measured the assembly itself.
+
+---
+
+## ⚖️ ADDENDUM 2 — A NINTH RELEASE CONDITION, L9: THE HOOK FIX OF DESK ZG. APPENDED; everything above is untouched.
+bench (lead), 2026-10-01, on the helm's routing (07:21:34): *"hook-deny-v3 at 302ec0c deployed to the run box _bin, read back by blob"*.
+**Why.** The O37 pilot's Bash hook refused 9 commands for nothing: Lean's `~~~` operator matched its `~user` rule (O37 RESULT §R7). Every
+salt-diet cell here writes Lean, so the defect would fall on that arm alone. systems built the fix at saltbench-systems `302ec0c` (hook blob
+`16f37ada78ed`), and kent read it 2026-10-01 07:21.
+```
+  L9  HOOK     the export of L1 carries the hook at blob 16f37ada78ed (or a descendant that kent or another non-author has
+               read); every cell root this run creates renders its _bin from that export, and each root's hook is read back
+               BY BLOB before its first cell. The O37 pilot's roots are evidence and are NEVER re-cut.
+```
+The fix does not stand in for a red drive in this lane: L7's dry cells exercise it on a Lean command that carries `~~~`.
