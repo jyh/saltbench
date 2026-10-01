@@ -178,3 +178,51 @@ strength is a separate measured number; for plain a PASS says nothing about unte
 ```
 **Proposed hands** (the helm routes; nothing here binds another seat): the kit and referee generalisation · `systems`; the vendoring and
 the three family control proofs · `paris`; the 20 cards and withheld sets · `bench`. Whoever builds a release condition does not read it.
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — `kent`, 2026-10-01 07:14 PDT, on §Z0–§Z10 (transcribed by the lead from the bus; the signer's own signature file is in the fleet's private record)
+Read at blob `3ed10c61fef7`, head `79cead7`, re-resolved at the forge. Re-derived by the signer's own runs: the census at dfb26e2 and the s2n header
+at 4d1356a hash-equal to §Z1; `draw.py` → `population.tsv` BYTE-EQUAL, and rc 1 REFUSED on 50dee87's census; `price.py` → `price.tsv` BYTE-EQUAL;
+the 2/3/3 quota by largest remainder; the families RET 2 · READ-RET 3 · WRITE 15 disjoint and complete. Three findings, answered in ADDENDUM 1.
+**Bound of the signature, in the signer's words:** NOT READ were O4 #1's arm texts and card.md, vendor_x86lean.py, lane B §Q4/§Q7, the 12
+non-s2n prototypes, and the model choice. The signature fires nothing; the fire is the Captain's word.
+
+---
+
+## ⚖️ ADDENDUM 1 — THE SIGNER's THREE FINDINGS AND THE HELM's WRITE SMOKE. APPENDED; §Z0–§Z10 and the signature are untouched.
+bench (lead), 2026-10-01. No card exists yet, so nothing here follows data.
+**1. A SECOND SMOKE PAIR, ON A WRITE TASK (the helm, 07:12; the signer concurs).** 15 of 20 tasks need the WRITE family, so a plumbing failure
+there would read as a model failure across 75 % of the population. §Z4's smoke is therefore TWO pairs, plain then salt-diet, each n = 1, plumbing
+only and never quoted: CRC-32 (READ-RET, the calibration against O4 #1), then **`s2n-bignum_mux`** (WRITE-VAR, 12 reference instructions,
+`void bignum_mux(uint64_t p, uint64_t k, uint64_t *z, const uint64_t *x, const uint64_t *y)`). It was chosen BY RULE, not by eye: *the undrawn s2n
+row in a WRITE stratum with the fewest reference instructions* (`evidence/o60-zd-registration-2026-10-01/smoke-write.txt`, using `draw.py`'s
+own functions). It is not in the population, so its smoke cells sit beside no scored cell. **§Z10 L7's dry cells and L4's WRITE control precede
+it**, and the 20 tasks fire only after BOTH smoke pairs read clean.
+**2. THE PRICE QUOTED IS THE RUN AS REGISTERED: 44 CELLS (the signer's finding 1).** `price.py`, unchanged, with 22 cells per arm
+(`price-44-with-smoke.tsv`): **LOW $721.49 · CENTRAL $889.84 · CEILING $1,672.95.** §Z7's 40-cell band stands as the population alone, and is
+never quoted as the run's price. *(The signer's $1,596.90 was 42 cells, before this addendum's second pair.)*
+**3. THE CEILING IS NOT A BOUND (the signer's finding 2).** Its overrun term (0.8116) is the largest of twelve CRC-32 cells. The cap is read on
+the cell watcher's beat, so a cell can overrun by whatever it spends between two reads. On the largest tasks (8, 9) one stretch of work may cost
+more than on a 12-instruction routine. **That overrun is UNMEASURED here**, and the ceiling is printed with this sentence beside it, as §Z7
+already does for the central figure. Every overrun is printed and never clipped (lane B §Q4, unchanged).
+**4. EVERY INTERFACE FAMILY READ FROM A PROTOTYPE (the signer's finding 3).** Each row's prototype, from its source at the census's commit:
+```
+  1  adler32_z         zlib 767c4c9 adler32.c:61     uLong adler32_z(uLong adler, const Bytef *buf, z_size_t len)                 READ-RET
+  2  XXH64             xxHash 680bf46 xxhash.h:3705  XXH64_hash_t XXH64(const void* input, size_t len, XXH64_hash_t seed)          READ-RET
+  3  MurmurHash3_x86_32  smhasher 07bb4de MurmurHash3.h:29   void (const void *key, int len, uint32_t seed, void *out)                WRITE
+  4  MurmurHash3_x64_128 smhasher 07bb4de MurmurHash3.h:33   void (const void *key, int len, uint32_t seed, void *out)                WRITE
+  5  lookup3           smhasher 07bb4de lookup3.cpp:28  uint32_t lookup3(const void *key, int length, uint32_t initval)             READ-RET
+  6  siphash           SipHash 32d0676 siphash.c:89     int siphash(const void *in, size_t inlen, const void *k, uint8_t *out, size_t outlen)   WRITE
+  7  halfsiphash       SipHash 32d0676 halfsiphash.c:82 int halfsiphash(… the same shape …)                                     WRITE
+  8  Hacl_Hash_Blake2s_update_multi  hacl-star 504c298 Hacl_Hash_Blake2s.c:596  (uint32_t len, uint32_t *wv, uint32_t *hash, uint64_t prev, uint8_t *blocks, uint32_t nb)   WRITE
+  9  Hacl_Hash_Blake2b_update_multi  hacl-star 504c298 Hacl_Hash_Blake2b.c:596  (uint32_t len, uint64_t *wv, uint64_t *hash, FStar_UInt128_uint128 prev, uint8_t *blocks, uint32_t nb)   WRITE
+ 10  x64_poly1305      hacl-star 504c298 internal/Vale.h:187  uint64_t x64_poly1305(uint8_t *x0, uint8_t *x1, uint64_t x2, uint64_t x3)    WRITE
+ 11  fsub_e            hacl-star 504c298 internal/Vale.h:185  uint64_t fsub_e(uint64_t *x0, uint64_t *x1, uint64_t *x2)               WRITE
+ 12  cswap2_e          hacl-star 504c298 internal/Vale.h:173  uint64_t cswap2_e(uint64_t x0, uint64_t *x1, uint64_t *x2)             WRITE
+ 13–20 and the smoke   s2n-bignum 4d1356a include/s2n-bignum.h (draw.py's own stratum reader)
+```
+The families stand as §Z2.7 printed them. ⚠️ **Two facts a card must carry, found here:** task 9's `prev` is a 128-bit argument, which System V
+passes in TWO registers; and tasks 8 and 9 take a caller-supplied scratch block (`wv`), which the WRITE framing must count as part of the
+written region, or AgreeOutside would refuse a correct routine. ⚠️ **Rows 10–12's prototypes are HACL*'s C declarations of Vale assembly**, which
+is what a caller links against; the census measured the assembly itself.
