@@ -1,0 +1,6 @@
+# rule: the undrawn s2n row in a WRITE stratum with the fewest reference instructions (ties: row id)
+# candidate (12, 's2n-bignum_mux', 'WRITE-VAR')
+# candidate (25, 's2n-bignum_neg_p256', 'WRITE-FIXED')
+# candidate (26, 's2n-bignum_add_p25519', 'WRITE-FIXED')
+# candidate (28, 's2n-bignum_add_p256', 'WRITE-FIXED')
+smoke_write	s2n-bignum_mux	WRITE-VAR	12

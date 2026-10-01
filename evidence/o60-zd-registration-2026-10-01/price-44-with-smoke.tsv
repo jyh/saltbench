@@ -1,0 +1,8 @@
+# RESULT-x86-crc32-claude-none-2026-09-26.md sha256/16=738ac1bb3f5a1576 rows=6
+# RESULT-x86-crc32-claude-statement-2026-09-26.md sha256/16=7b1a5968f2f952d6 rows=6
+# plain: n=6 min=5.2591 median=7.6767 max=10.4989
+# salt-diet: n=6 min=27.5359 median=32.7704 max=38.0216
+cells	44
+low_usd	721.49	= 22 x (min plain + min salt-diet)
+central_usd	889.84	= 22 x (median plain + median salt-diet)
+ceiling_usd	1672.95	= 44 cells x (cap 37.21 + largest observed overrun 0.8116)

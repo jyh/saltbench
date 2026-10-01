@@ -1,0 +1,32 @@
+# census sha256/16=76914f40057f24d6 bytes=16515 · header sha256/16=94cd42586fdb718d bytes=80873 · export=dfb26e28e00c1ad82443325f353aa44a279e1a83
+# census heading: 40 of 57 · rows parsed ALL COVERED: 40
+# excluded (R2): ['crc32-poc', 'zlib-crc32'] · non-s2n (R3): 12 · s2n eligible: 26
+# stratum RETURN: size 7 · exact 2.154 · quota 2
+# stratum WRITE-FIXED: size 8 · exact 2.462 · quota 3
+# stratum WRITE-VAR: size 11 · exact 3.385 · quota 3
+# seed: O60-ZD|x86lean|dfb26e28e00c1ad82443325f353aa44a279e1a83
+# rank RETURN: s2n-word_clz s2n-word_bytereverse s2n-bignum_eq s2n-bignum_bitsize s2n-word_negmodinv s2n-word_popcount s2n-bignum_ctz
+# rank WRITE-FIXED: s2n-bignum_mod_n256_alt s2n-bignum_mul_4_8_alt s2n-bignum_mul_p25519_alt s2n-bignum_montmul_p256_alt s2n-bignum_sqr_4_8_alt s2n-bignum_add_p256 s2n-bignum_neg_p256 s2n-bignum_add_p25519
+# rank WRITE-VAR: s2n-bignum_modadd s2n-bignum_sub s2n-bignum_mul s2n-bignum_montmul s2n-bignum_add s2n-bignum_sqr s2n-bignum_shl_small s2n-bignum_cmadd s2n-bignum_mux s2n-bignum_cmul s2n-bignum_demont
+row	family	reference	instrs	stratum
+zlib-adler32	checksum	spec	284	-
+xxh64	hash (non-crypto)	spec	219	-
+murmur3-x86-32	hash (non-crypto)	spec	96	-
+murmur3-x64-128	hash (non-crypto)	spec	192	-
+lookup3	hash (non-crypto)	spec	144	-
+siphash-2-4	hash (keyed)	spec	257	-
+halfsiphash	hash (keyed)	spec	235	-
+hacl-blake2s	hash compression	hacl	1786	-
+hacl-blake2b	hash compression	hacl	2108	-
+vale-poly1305	MAC	vale	189	-
+vale-fsub	field arithmetic	vale	23	-
+vale-cswap2	field arithmetic	vale	58	-
+s2n-word_clz	bignum limb	s2n	6	RETURN
+s2n-word_bytereverse	bignum limb	s2n	3	RETURN
+s2n-bignum_mod_n256_alt	bignum limb	s2n	94	WRITE-FIXED
+s2n-bignum_mul_4_8_alt	bignum limb	s2n	93	WRITE-FIXED
+s2n-bignum_mul_p25519_alt	bignum limb	s2n	139	WRITE-FIXED
+s2n-bignum_modadd	bignum limb	s2n	31	WRITE-VAR
+s2n-bignum_sub	bignum limb	s2n	55	WRITE-VAR
+s2n-bignum_mul	bignum limb	s2n	47	WRITE-VAR
+# population: 20
