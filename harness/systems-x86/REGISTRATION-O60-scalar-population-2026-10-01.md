@@ -377,7 +377,7 @@ that wrote its own `pre` could write `pre := False` and pass. O4 #1 never met th
                         Setup, so it can bind a Target but never empty one. Red-first both ways: an in-place routine that stores before
                         it loads is REFUTED in-place and PROVED disjoint, and a safe one is PROVED in both. L4's three controls
                         elaborate unchanged. Each Target below is the CONJUNCTION over the calls its card permits:
-                          Cswap2ValeCall          93c488e14aba   disjoint ∧ p0 = p1
+                          Cswap2ValeCall          92ced1fbc909   disjoint ∧ p0 = p1
                           FsubValeCall            a01eb6fb7b2c   disjoint ∧ out = f1 ∧ out = f2 ∧ f1 = f2 ∧ out = f1 = f2  (mod-p rel)
                           BignumMul4x8AltCall     ea2915e731b7   disjoint ∧ x = y      (paris's finding F1, ruled under (a), 14:51:18)
                           BignumMulP25519AltCall  4c65c37de4e4   disjoint ∧ x = y
@@ -397,7 +397,7 @@ that wrote its own `pre` could write `pre := False` and pass. O4 #1 never met th
                           Xxh64           "the xxHash specification" (×2) → "the xxHash format document" (×2)
                         All 21 plain views and all 21 salt-diet views now build.
 ```
-**What the release addendum reads with these** (the private tree, branch at 747ed3e). Each is red-first or driven, and none of them is a
+**What the release addendum reads with these** (the private tree, branch at 59e3f6f). Each is red-first or driven, and none of them is a
 registration change:
 - The builder ships X86CallFrame + the family + <T>Call as libs, and generates the probe.
 - The method gate guards every harness-owned file and refuses one absent at the root. Its selftest drives each file by name; three mutants were refused.
