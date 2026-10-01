@@ -67,3 +67,16 @@ kernel-only (ADDENDUM 1 item 4; kent judged it independent, 2026-09-30 11:58:32)
 - "One trust base with x86lean" is not met (Lean 4.31 here); the claim is "kernel-checked in Lean 4.31".
 - The Seatbelt profile as a boundary is unreviewed (desk ZE). The pilot's subjects are our own models on our own box.
 - Nothing here makes a claim about the salt method.
+
+## §R6 · kent's non-author read (2026-09-30 18:33:01), TAKEN; §§R1–R5 above are not edited
+1. **The Opus comparison is a different instrument from the Lean cells' meter.** The $6.25 is `RESULT-cost-tables-v3-2026-09-29.md` §$1, the
+   median over `claude-cost-raw.tsv`'s st04 · st05 · st06crc3 ($8.5561 · $5.6526 · $6.2530). Those are 09-09 cells priced by the cost-table pipeline,
+   and whether a sandbox probe ran under their slug is not established. If none did, the Lean side carries a probe the Verus side lacks. That cost
+   is ≈ $0.07–$0.29 per cell (block SS's header), so it could OVERSTATE the Lean premium by at most ≈ 0.05× on 2.22×. "About 2×" stands.
+   (Sonnet is like for like: block SS's final_COST is the same cell_meter, probe included.)
+2. **st04crc3 is VOID(UNDERSTATED), a FLOOR (≥ $8.56)**, as the cost table marks it. The Opus median of {≥ 8.56, 5.65, 6.25} is $6.25 whatever the
+   floor's true value, so the figure is robust. It is still a floor, and it is said here.
+3. **§R5's departure claim widens:** departures 1, 4 and 5 also add work only the Verus subjects did (writing the statement into solution.rs,
+   carrying mutant traces, the trace predicate's reach). No listed departure points the other way. ⇒ **every listed departure that moves cost moves it
+   toward the Verus arm**, so on the listed departures the measured Lean premium is, if anything, an under-statement.
+4. kent could not reach §R3's fence count from his box (the audit logs are on the run box). It is bench's measurement, NOT a non-author check.
