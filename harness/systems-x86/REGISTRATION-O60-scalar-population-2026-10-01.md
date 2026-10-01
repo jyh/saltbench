@@ -423,7 +423,8 @@ names that pool with both rows MET. Only then do the smoke pairs fire, then the 
   L1  EXPORT    MET  ONE sha, 977a753: systems' kit, the 20 cards and both smokes (22 task dirs, each with withheld/tests/expected.txt in
                      the private tree; the run box's cut carries 0 withheld dirs, by construction), the three family modules
                      (X86RetInterface · X86ReadRetInterface · X86WriteInterface) on X86CallFrame, the 21 call modules of ADDENDUM 7 (1),
-                     and arm_builder.py. The helm records that kent has read every commit up to it (15:15:42 PDT); the last was the retention fix. The four cell
+                     and arm_builder.py. kent's non-author reads cover the harness delta through 977a753 and the objects each read names; the cards and call
+                     modules are paris's read (kent read 3 of the 21). The four cell
                      roots' _bin were RE-POINTED to this export
                      before any cell fired, after a measurement that all 36 link targets are byte-equal between ed1890c and 977a753 (0 of 36
                      differ). So the re-point changed the path a cell resolves and no byte it runs.
