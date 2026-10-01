@@ -1568,6 +1568,10 @@ where two files hold a row, and the scorer sha is printed beside every verdict. 
   verdicts as scored   PASS 23 · FAIL 15 · BUILD-FAIL 1 · INCOMPLETE 1 · UNREAD 3        (43)
   the reason, all 43   the agy sandbox layer denied the cargo root's parent with no read carve-out (this file, 09-23 fence section)
 ```
+⚠️ **THE BOUND OF THESE COUNTS, beside them (kent's read, 2026-10-01 07:35; the helm's order before merging): the 43 verdicts were
+derived by the lead, on the lead box, from the agy lane's own runs directory, and NO non-author has re-run them.** The non-author read
+checked that the TSV is exactly the census's 43 cells and that its counts are its own. The score files themselves are unreachable from the
+reader's box, so every verdict here is the author's reading of the run's files.
 ## §AI2 · WHAT THE VERDICTS ARE, AND ARE NOT
 - **They are NOT results and never enter a rate**, by the 09-23 ruling: the episode was not the registered task. They are printed so a
   reader of the level-8 results can see which fired cells were set aside, and what each read when it was scored.
