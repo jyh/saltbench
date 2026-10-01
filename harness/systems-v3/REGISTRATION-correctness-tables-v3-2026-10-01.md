@@ -83,3 +83,10 @@ by hand, the cost tables' form.
   serves both.
 - Post hoc: the method was fixed after the verdicts existed and had been read. Only the method's being fixed before THIS instrument ran is
   claimed.
+
+---
+## ⚖️ ADDENDUM 1 — TOUCHING INTERVALS DO NOT SEPARATE (STRICT). APPENDED BEFORE THE INSTRUMENT RUNS; §P1–§P6 untouched.
+paper's boundary question (2026-10-01 10:38, as the copier, not a signature): §P4's "wholly above" did not say whether intervals that SHARE
+an endpoint separate. **STRICT: they do not.** `+` needs salt-diet's lower end strictly greater than plain's upper end, and `−` the mirror.
+A shared endpoint is `?`. paper's example: plain 2/3 with none censored is [2/3, 2/3], salt-diet k = 2, n = 2, c = 1 is [2/3, 1], and that
+pair reads `?`, never `+`. It is the reading under which a halt can never turn a `?` into a sign.
