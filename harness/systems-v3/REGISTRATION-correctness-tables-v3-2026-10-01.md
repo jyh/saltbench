@@ -90,3 +90,8 @@ paper's boundary question (2026-10-01 10:38, as the copier, not a signature): §
 an endpoint separate. **STRICT: they do not.** `+` needs salt-diet's lower end strictly greater than plain's upper end, and `−` the mirror.
 A shared endpoint is `?`. paper's example: plain 2/3 with none censored is [2/3, 2/3], salt-diet k = 2, n = 2, c = 1 is [2/3, 1], and that
 pair reads `?`, never `+`. It is the reading under which a halt can never turn a `?` into a sign.
+
+## ⚖️ ADDENDUM 2 — A CONDITION WITH NO PASS-OR-FAIL CELL PRINTS `n = 0`, NEVER `0/0`. APPENDED BEFORE THE INSTRUMENT RUNS.
+kent's display note at the non-author read (2026-10-01 10:40, no defect): every result of record uses `0/0` for BUILD-FAIL, so a condition
+whose cells are all censored or unscorable prints `n = 0 (+c censored, +u unscorable)` and never `0/0`. Presentation only: no class, count
+or sign rule changes. The fixture arm for the touching-interval case (the helm, 10:38:57) is owed in the instrument's selftest, red-first.
