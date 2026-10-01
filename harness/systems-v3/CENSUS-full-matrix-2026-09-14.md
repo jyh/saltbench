@@ -1553,3 +1553,31 @@ ADDENDUM 25 §AE2's ten: Sonnet LRU (ADDENDUM 30), the three Pro conditions (ADD
 The LIVE figure is unchanged: **DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** Every DONE now reports its condition at
 n = 3 CELLS OF RECORD (ADDENDUM 25 §AE3: cells of record, not scorable cells; a census of scorable n is still not taken). The 3 DECLARED are a
 separate state. It is never a verdict on the arms, and nothing here is a claim about the salt method.
+
+---
+# ⚖️ ADDENDUM 33 — **NOT A COUNT ADDENDUM: THE 43 LEVEL-8 CELLS FIRED UNDER THE HIDING FENCE, EACH WITH ITS VERDICT AS SCORED. NO CONDITION MOVES.**
+## bench (lead), 2026-10-01, desk ZI. It keeps a promise of this file's own 09-23 fence section: *"Level 8's result file lists each invalid
+## cell with its verdict and the reason."* Neither level-8 RESULT does (`invalid` occurs 0 times in each), so the list goes here, beside the ruling.
+
+## §AI1 · THE LIST, DERIVED
+`evidence/l8-invalid-as-fired-2026-09-23/invalid_cells_verdicts.tsv` (sha256/16 `9f854047badbc815`), written by `invalid_cells_verdicts.py` in
+the same directory. Its population is `hidden_root_census.out`'s HIDDEN wave cells (43; the three dry renders are excluded). Each verdict is
+the cell's own row in a score file the run wrote. The declared scorer of record `e8c0d0512ab2` (AMENDMENT-gemini-level8 §A8.10.3) is preferred
+where two files hold a row, and the scorer sha is printed beside every verdict. Nothing in it was typed.
+```
+  verdicts as scored   PASS 23 · FAIL 15 · BUILD-FAIL 1 · INCOMPLETE 1 · UNREAD 3        (43)
+  the reason, all 43   the agy sandbox layer denied the cargo root's parent with no read carve-out (this file, 09-23 fence section)
+```
+## §AI2 · WHAT THE VERDICTS ARE, AND ARE NOT
+- **They are NOT results and never enter a rate**, by the 09-23 ruling: the episode was not the registered task. They are printed so a
+  reader of the level-8 results can see which fired cells were set aside, and what each read when it was scored.
+- **UNREAD 3** = LRU × Pro × salt-diet (`l8rpss01–03`). The 09-22 leg's score directory holds the plain condition alone (its drive log reads
+  "hand score of the plain condition"), and no score file anywhere under the runs directory holds those three rows (control: `l8rpps01` is found).
+- **INCOMPLETE 1** = `l8zpps03`, scored before its end marker. This file's 09-23 section records that this cell forged `.seat/rt.result`.
+  Its verdict is printed as the scorer wrote it and means nothing about the routine.
+- **BUILD-FAIL 1** = `l8xpss03` (`TESTS 0/0`). This is the agy scorer's reading of the runner's exit 3, which the rc-3 split (CORRECTION 3;
+  the agy lane's desk YU) separates into TIMEOUT · BUILD-FAIL · ABORT. It is not re-read here, and the cell is invalid either way.
+- **One SELF-NOT row** (`l8xpss02`: the subject's own LANDING.md declares requirements NOT met) sits beside that cell's scored FAIL in the same
+  file. It is printed apart as a note, never as the verdict.
+- **The tripwire `l8rfpw01`** has two score files. The first, before the TESTS-needle fix, reads `TESTS 0/7` (the clause-failure count under
+  a PASSES label, §A8.10.3). The list uses the re-score at `e8c0d05`.
