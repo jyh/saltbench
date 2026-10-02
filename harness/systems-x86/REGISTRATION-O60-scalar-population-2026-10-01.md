@@ -615,7 +615,10 @@ ACCEPTED, as §D4's declared limit says. **THE SIGN (the helm, 15:41:24):** the 
 a routine that depends on the constant address cannot discharge TARGET, and on salt-diet it reads REJECTED. A plain routine faces no such
 check. The limit can therefore only RAISE the plain arm's ACCEPTED count. **On these 18 tasks, an arm difference in favour of salt-diet is a
 LOWER bound, and one in favour of plain may be inflated by up to the number of plain cells that rely on the constant.** The referee is kept
-as registered. A post-run detector: re-referee each ACCEPTED plain cell with one shifted region base. G4 was driven through the referee alone (the private tree holds it). G5 is NOT driven; each needs a per-task generator, and they are declared here.
+as registered. A post-run detector: re-referee each ACCEPTED plain cell with one shifted region base. G5 is driven on ONE task, Adler32, salt-diet: the reference routine, a constant `Submission.spec`, and no `Submission.correct`.
+It read exactly as §D4 states: `tests=PASS`, `AGREE=92`, token TARGET, `target_unknown = [Submission.correct]`, REJECTED. It is the first
+salt-diet member through the classifier, and it proves the Lean path runs at the cut. G5 on the other 21 tasks is NOT driven. G4 was
+driven through the referee alone (the private tree holds it); each needs a per-task generator, and they are declared here.
 **THE OUTCOME OF RECORD IS THE CLASSIFIER'S READING, NEVER THE REFEREE'S TOKEN (the helm, 14:53:49).** No table or figure, public or private,
 reports a token count as a result. The token is in every log, so it is the number a later reader or script reaches for, and this battery
 shows it calling a callee-saved violation a pass on 20 of 22 tasks. **The agreement rider, from the MODEL executor, is the SINGLE point of
