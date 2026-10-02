@@ -532,11 +532,12 @@ every cell is rendered at the fire by 51bd1e9's renderer, and each cell's manife
 bench (lead). Drafted 2026-10-02 (PDT), before any O60 cell fired. **Every line marked OWED is taken on Monday 10-05 in the order of (6),
 and this addendum merges only when each reads MET or is declared below, before the first model call.** Zero model spend in everything
 drafted here. The design it applies is `DESIGN-correctness-primary-2026-10-02.md` (PR #311): its §D2 classes, §D4 battery and §D5 harvest.
-**(1) L1 moves to the re-cut.** ADDENDUM 9 named 51bd1e9. The export is re-cut from saltbench-systems ≥ `a3db4f6` (the sha is OWED at the
-cut; EXPORTED-FROM names it), so the 40 run on these changes, each driven red-first on its own commit:
+**(1) L1 moves to the re-cut.** ADDENDUM 9 named 51bd1e9. The export is re-cut from saltbench-systems ≥ `8eca9d8`, the merge holding both
+the cut's changes (`a3db4f6`) and the harvest of record (`53420bc`); `merge-base --is-ancestor` reads TRUE for each. The sha actually cut is
+OWED, and EXPORTED-FROM names it. The 40 run on these changes, each driven red-first on its own commit:
 ```
   de04273  the L4 control proofs re-pointed at the harness call modules                       harness
-  target.py   on timeout, kill the build's whole PROCESS GROUP (a grandchild held the fleet build lock)     harness
+  c1172c7, e34db16  target.py: on timeout, kill the build's whole PROCESS GROUP (a grandchild held the fleet build lock)  harness
   782835d  the referee's RUNNER is the canonical build wrapper; its blob is printed per run           harness
   54d4fc8, 82ccbf8  the watcher logs its SNAPSHOT line unconditionally and runs no `git status`;
                     `bin/declare done` records the declared sha                                      SUBJECT-FACING (declare)
@@ -551,7 +552,7 @@ OWED: kent's non-author read of 51bd1e9..the cut · the four roots' `_bin` re-po
 is the ONLY harvest of an O60 cell. No model-written cell is harvested by any other tool. Its classes are §D2's, with these readings, each
 ruled before any O60 cell:
 - **The commit each end is judged on.** The tree is materialised from that commit's objects in the cell's own store, never from a
-  worktree. Each row is pinned by an arm of `test_harvest_pin.py` at saltbench-systems `e10e673`:
+  worktree. Each row is pinned by an arm of `test_harvest_pin.py` at the harvest's own sha, `53420bc`:
   ```
   LANDED        the end line's `landing-N <sha>`; watch.log's DECLARED line must agree; a landed-N tag, if present, must peel to it
   DONE          the sha `bin/declare done` recorded, which must be on the history of the commit the session ended at
@@ -573,7 +574,8 @@ ruled before any O60 cell:
   seed-invariant: the routine's, on that member.
 - **REFUSED has a class.** A cell the harvest cannot pin or materialise for a cause IN ITS TREE or in a ref it owns is TREE: REJECTED on a
   declared end, HALTED on a halt, charge ARM, record NONE, `TREE-REFUSE: <cause>`. A cause counts only where it is PROVABLY the subject's
-  act: a gitfile, symlinked or commondir `.git`; a symlink inside `.git`; a pin its own store lacks; `down -`; a DONE sha off its history;
+  act. The causes, all of them: a gitfile, symlinked or commondir `.git`; a ref whose exact name `show-ref` does not return once, or that
+  does not peel to a commit; a parent directory that resolves elsewhere; an extracted path that is not a file, link or directory; a symlink inside `.git`; a pin its own store lacks; `down -`; a DONE sha off its history;
   a moved landing tag; and unsafe, absolute, outside, colliding or gitlink paths. **`SNAPSHOT -` stays REFUSED** (the helm, 13:47:05). The
   watcher writes it for an unresolvable HEAD, a rewired `.git`, and ANY failure of its `.git` enumeration, environmental ones included, so
   charging it to the arm would be an arm-correlated gate. A human disposes of it. A later split (the watcher naming which term refused) may
@@ -592,6 +594,12 @@ route is declared here with its count, unless the harvest fails to refuse it, an
   the cells' own meter files or not at all, and this addendum claims neither.
 - **The control is PLAIN only.** The Lean path is first exercised by a salt-diet cell. A salt-diet-only box failure reads HARNESS, so the
   whole arm lands in UNSCORABLE; this is the safe direction, declared.
+**§D8 item 1, the deviation declared (the helm, 14:08:20):** the design's refuter pass on revision 4 (blob 8df15e066245) was a non-author
+text-vs-code read, not a re-fired Fable round; rounds 1–4 covered the code it describes. A claim that read found DIFFERS from the code, or a
+design claim with no code site, goes to a Fable refuter before Monday's fire.
+**§D8 item 3, MET at 53420bc:** the harvest driven end to end on two real cell records (a LANDED plain cell and a CAP-COST salt-diet cell,
+from a fresh fetch, with the cut's harness at a3db4f6). Control ACCEPTED, both cells ACCEPTED, and the table printed under its manifest with
+all three SEPARATE counts at 0.
 **(5) The served-model guard.** The smoke pair's `model_served` must read the registered model, or the fire HOLDS: a newer model is priced
 VOID by the cut's rate table.
 **(6) The order on Monday, and what each step leaves as a receipt (OWED):**
