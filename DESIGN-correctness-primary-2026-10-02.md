@@ -5,6 +5,8 @@
 ## Revision 2 took refuter round 1 (blob `e1c16efcfd3f`, PR #311 comment 5955729360). Revision 3 takes round 2 (blob `32b0d219b6a4`, comment 5956165509).
 ## Revision 4 writes the text to the code that rounds 3 and 4 (comments 5957499892 · 5958937235) and the helm's rulings of 2026-10-02 produced: harvest saltbench-systems ≥ `d71edf0`, the cut ≥ `a3db4f6`.
 ## Every repair is mapped in §D10–§D13.
+## WHICH REPO A PATH IS IN: a registration or amendment (`harness/…/REGISTRATION-*`, `AMENDMENT-*`) is in THIS public repository; the harness code
+## (`classify_cell.py`, `harvest_o60.py`, `target.py`, `referee_o60.sh`, `frame.py`, `cell-watch.sh`, the G-battery) is in the private saltbench-systems.
 
 The Captain's question at the table: *"How is it that we know the agent doesn't just submit an arbitrary program, like a constant function?
 We should have put correctness in as a primary criterion, so let's commission a design phase."*
@@ -53,7 +55,8 @@ of cells and is never pooled across classes. That covers cost, tokens, wall time
 - Its inputs are the referee's record, target.py's own record (salt-diet), the watcher's end kind, the task's `inputs.txt` (N is
   derived from it), a FORM verdict for REFUSED-TRANSLATE, and whether this is the re-referee.
 - It prints the CLASS and, beside it, the CHARGE (`ARM` or `SUNK`, §D3 2).
-- A token, rider, end kind or record it does not map is a REFUSAL (exit 3). It is never a default class.
+- A token, rider, end kind or record it does not map is a REFUSAL (exit 3). It is never a default class. (A missing `--inputs` file is a
+  traceback, rc 1, not exit 3: declared.) N < 1 REFUSES.
 
 **The END decides which question the referee answers:**
 - A **DECLARED** end (LANDED · DONE · EXIT-FORCED) is the subject saying it finished. It takes the referee's class.
@@ -63,7 +66,8 @@ of cells and is never pooled across classes. That covers cost, tokens, wall time
 - The 15 kinds are read from `cell-watch.sh`'s `end_session` emitters, never from its header comment.
 - **The tree the referee reads** is PINNED BY THE HARNESS'S OWN RECORD, never by a ref the subject owns (round 3, K1/K3):
   - LANDED: the end line's `landing-N <sha>`; the watcher's DECLARED line must agree, and a `landed-N` tag, if present, must peel to it;
-  - DONE: the sha `bin/declare done` recorded, which must be on the history of the commit the session ended at;
+  - DONE: the sha `bin/declare done` recorded. That record is SUBJECT-WRITABLE, and it is bounded by the history check: it must be on the
+    history of the commit the session ended at;
   - every other end, EXIT-FORCED after a landing included: the watcher's `SNAPSHOT s<P> <sha>`, HEAD at the end on any branch, read
     only from the cell's own store. A rewired `.git` or a failed enumeration of it logs `-`. The `s<P>` tag is cosmetic.
   - Uncommitted work is NOT MEASURED: no worktree is read. The column prints `-`.
@@ -74,7 +78,7 @@ of cells and is never pooled across classes. That covers cost, tokens, wall time
 |---|---|
 | **ACC** | `class == PASS`, the agreement field reads exactly `AGREE=N` (N = the task's withheld inputs), no harness finding |
 | **REJ** | `PASS` with any footprint/ABI rider (MODEL-OUTSIDE · MODEL-CLOBBERED · MODEL-FAULT · NATIVE-OUTSIDE), and any such rider dominates every UNS rider · TESTS_FAIL · NO_SOLUTION · ASSEMBLE-FAIL · REFUSED-LINK · SCREEN · AXIOMS · COMPILE/TARGET with a non-zero rc other than 75 or 124, unless its positioned diagnostic is in a harness file (`Submission/` is the subject's except `Submission/Translation.lean`, which the referee writes; the root `Submission.lean` is the subject's in any spelling; so is `Probe.lean` for TARGET) · REFUSED-TRANSLATE whose instance the cut's `forms.py` reads OUTSIDE the allowed list |
-| **UNS** | `PASS` with INCONCLUSIVE-(b) · DISAGREE · MISSING, a count ≠ N, or no agreement field · COMPILE/TARGET rc 75 (the lock's wait-abort), rc 124 on the FIRST referee run, rc 124 on the re-referee whose build is not shown to have held the lock for the bound (the build QUEUE's wait runs before the lock's bound and inside the 1800 s), a re-referee reading that is not the first's, a diagnostic in a harness file, or no target record · REFUSED-TRANSLATE on an ALLOWED form (a translator gap) or not yet split · HARNESS · no referee record on the FIRST run |
+| **UNS** | `PASS` with INCONCLUSIVE-(b) · DISAGREE · MISSING, a count ≠ N, or no agreement field · COMPILE/TARGET rc 75 (the lock's wait-abort), rc 124 on the FIRST referee run, rc 124 on the re-referee whose build is not shown to have held the lock for the bound (the build QUEUE's wait runs before the lock's bound and inside the 1800 s), a re-referee 124 or no-record that the first run did not also read, a diagnostic in a harness file, or no target record · REFUSED-TRANSLATE on an ALLOWED form (a translator gap) or not yet split · HARNESS · no referee record on the FIRST run |
 | **TREE** | the SAME reading twice, on the RE-REFEREE of the same tree with the lock measured free (marker, flock and no live queue ticket): rc 124 at the same stage with BOTH builds shown, by the build lock's own log, to have held the lock for the bound; or no record after no record. Also a cell the harvest cannot pin or materialise for a cause PROVABLY in its tree or a ref it owns (`TREE-REFUSE`, §D5). It is the subject's |
 
 | end | ACC | REJ / TREE | UNS |
@@ -91,8 +95,9 @@ subject's (the helm, 13:47:05). PASS with DISAGREE stays UNSCORABLE and is count
 **Re-referee and re-fire are different acts:**
 - The harvest re-referees ONCE: on rc 124 or 75, on a HARNESS record naming the lock's abort, and on no record. It does this only after the
   lock is measured free, and it waits at most `--lock-wait` seconds.
-- A cell is RE-FIRED only for a zero-spend instrument end (FAILED-BOOTS, QUOTA-BLOCKED, BOX-UNREADABLE at boot), per lane B §CLB-R.2 5
-  (`harness/systems-v3/AMENDMENT-claude-lane-B-2026-09-16.md:1319`: no top-up re-fires).
+- A cell is RE-FIRED only for a zero-spend instrument end (FAILED-BOOTS, QUOTA-BLOCKED, BOX-UNREADABLE at boot). **This set is a NEW
+  rule of this design, not a citation:** lane B (public saltbench `harness/systems-v3/AMENDMENT-claude-lane-B-2026-09-16.md`) says only
+  "no top-up re-fires" (:1319) and re-fires a FAILED BOOT alone (§Q7 row 8). It is an OPERATOR rule; no harvest code re-fires anything.
 - Every other UNSCORABLE is reported, by name, at the n it reached.
 
 ## §D3 · THE OUTCOME HIERARCHY
@@ -138,7 +143,8 @@ subject's (the helm, 13:47:05). PASS with DISAGREE stays UNSCORABLE and is count
 - The landing claim against the class.
 - The halted cells' run states.
 - **spec_strength.** It is a DIAGNOSTIC printed beside REJECTED(TARGET) rows, and it is not an outcome.
-  - On the x86 lane it is N/N by construction on every ACCEPTED cell where it is available (Adler32 · BignumSub · Crc32) and UNAVAILABLE on
+  - On the x86 lane it is N/N by construction on every ACCEPTED cell where it is available: Adler32 · BignumSub · Crc32, the three
+    whose `frame.txt` carries a `spec` directive (known only from those directives; the O60 registration names the count, not the tasks), and UNAVAILABLE on
     the rest (`REGISTRATION-O60-…:410-413`).
 
 ## §D4 · REFEREE ADEQUACY: THE DEGENERATE BATTERY
@@ -183,8 +189,15 @@ subject's (the helm, 13:47:05). PASS with DISAGREE stays UNSCORABLE and is count
   and model executors start callee-saved registers differently, and NULL is never passed. A survivor that lives in one of them is a
   DECLARED LIMIT, never a suite hole; its remedy (frame noise) is a referee change named for the n = 3 run.
 
-**What the battery found (G2 and G4 driven through the O60 referee from the cut, zero model spend; figures that describe a withheld set
-are in the private tree):** G2 REJECTED on all 22 tasks. Every G4 survivor traced to a frame blind spot above, and one task's G4 margin is
+**What the battery found (zero model spend; figures that describe a withheld set are in the private tree).** THROUGH THE CLASSIFIER
+(`harvest_o60.py battery` at saltbench-systems 8eca9d8, each member after its task's control, on the PLAIN arm only): G2 22/22, G6a 20/20
+(2 not applicable by name), G6b 22/22 and G6c 22/22 are all REJECTED. 20 of the G6c members and every G6a and G6b member read token PASS
+and are rejected only by the agreement rider. **G6 "REJECTED on both arms" is UNMEASURED on salt-diet.** G4's figures were driven through
+the referee DIRECTLY (battery.py), by hand, not through the classifier. G5 is driven once (Adler32, salt-diet) as a PATH CONTROL: the member
+carries no `Submission.correct`, so its REJECTED is a missing obligation, and the vacuous-spec property is NOT DRIVEN. **`target_unknown` is
+PRINTED beside the class and never read by it,** so a G5 reading needs the printed column. G7's limit is measured from the referee's own
+frames (18 of 20 pointer-taking tasks pass constant pointers). G1 and G3 are not driven. **Not shipped, declared:** nothing aggregates
+BATTERY.tsv (no `G-UNDRIVEN`, no task exclusion, no per-member print), and no generator writes `published.txt`. Every G4 survivor traced to a frame blind spot above, and one task's G4 margin is
 named FRAGILE. The battery's one PASS+DISAGREE member was probed under two more callee-saved seeds. Its disagreement held at both nonzero
 seeds, it agreed at the native caller's state, and its reference was seed-invariant: on that member, the routine's. It stays UNSCORABLE as
 registered (§D2).
@@ -199,7 +212,8 @@ registered (§D2).
   - The watcher logs its SNAPSHOT line unconditionally, from the cell's own store only. It runs no porcelain git in the cell's repo
     (`status` and `tag` each ran cell-set configuration on the host; the tag is now written by `update-ref`). `bin/declare done` records
     the declared sha.
-  - The fence drive probes a WRITE into `../ctl`, which must be denied.
+  - The fence drive probes a WRITE into `../ctl`, which must be denied. Nothing on the fire route runs the drive (the launcher only
+    renders), so the probe is as current as its last hand drive.
 - **THE HARVEST STEP — a freeze condition (§D8). It exists before the first model call, or this design does not govern the run.** For every
   cell it:
   1. fetches `ctl/` and then `repo/` with the git control files excluded, and writes its OWN `.git/config`. Git never runs with the
@@ -242,7 +256,7 @@ registered (§D2).
   - how the v3 paper's post-hoc correctness tables are described relative to this design;
   - the sentence that answers the Captain's question for a reader.
 - **bench:**
-  - `classify_cell.py` (done: v2, selftest 69/69);
+  - `classify_cell.py` (done: v2, selftest 77/77 at 8eca9d8);
   - the harvest step (§D5);
   - the G2–G7 drives through the classifier;
   - `published.txt` per generator;
