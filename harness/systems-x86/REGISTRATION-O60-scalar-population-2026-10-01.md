@@ -550,6 +550,15 @@ OWED: kent's non-author read of 51bd1e9..the cut · the four roots' `_bin` re-po
 **(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `d71edf0` (blob f51fb5b5d80c) with `classify_cell.py` d3459b8f1d55
 is the ONLY harvest of an O60 cell. No model-written cell is harvested by any other tool. Its classes are §D2's, with these readings, each
 ruled before any O60 cell:
+- **The commit each end is judged on.** The tree is materialised from that commit's objects in the cell's own store, never from a
+  worktree. Each row is pinned by an arm of `test_harvest_pin.py` at saltbench-systems `e10e673`:
+  ```
+  LANDED        the end line's `landing-N <sha>`; watch.log's DECLARED line must agree; a landed-N tag, if present, must peel to it
+  DONE          the sha `bin/declare done` recorded, which must be on the history of the commit the session ended at
+  EXIT-FORCED   the watcher's SNAPSHOT commit: HEAD at the kill, on any branch. EVEN AFTER A LANDING: the DECLARED landing is
+                recorded and NOT judged (refuter B, round 4). This is a declared disposition, not a closed item
+  a HALT end    the watcher's SNAPSHOT commit, HEAD at the stop
+  ```
 - **TREE is the SAME reading twice.** A re-referee rc 124 is the tree's only when the first run also read 124 at the same stage and BOTH
   builds are shown, by the build lock's own log, to have held the lock for the bound. Every other 124 is the QUEUE's: UNSCORABLE.
   The queue wait runs before the lock's bound and inside the referee's 1800 s, so without this a busy box charged the subject.
