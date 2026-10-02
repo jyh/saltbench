@@ -145,3 +145,44 @@ referee passes a **degenerate battery**.
   registration (descriptive). This design first governs O60's n = 3 run.
   - It never governs a run after that run's first model call. Writing it afterwards would make it post hoc, which is the defect it
     exists to remove.
+
+## §D9 · THE KILL-CHECKS FOR THE NON-AUTHOR REFUTER PASS
+
+The helm ruled at 08:04:50 PDT on 10-02: kent fires this pass as Fable subagents, and the verdicts go to this PR. Each check is a
+REFUTATION TARGET, and a refuter that finds nothing says what it tried. **K1 comes first.** K3 and K7 are the author's own suspicions,
+named here rather than fixed quietly, so that the refuter tests them and does not merely confirm them.
+
+- **K1 · ACCEPTED-AND-WRONG.**
+  - Ask: construct a submission for any O60 task that the referee would ACCEPT and that is wrong on some input.
+  - Where to look: the input classes each `gen_hidden.py` population omits, such as lengths past the longest tested, alignments,
+    key/length combinations, and carries that never propagate.
+  - What counts: an argument from the withheld population's own docstring and the card's contract.
+- **K2 · CLASS FROM ANYTHING BUT THE CODE.**
+  - Ask: show a cell whose class moves when only something other than the code under test changes. Candidates are its LANDING
+    text, its spec text (plain), the order of files, harness timing, or the pool.
+- **K3 · HALT AS AN ESCAPE (the author suspects a hole).**
+  - §D2 removes HALTED cells from the primary's denominator.
+  - Ask: can a subject that is failing convert a REJECTED into a HALTED by spending to a cap, and so raise its arm's acceptance rate?
+    Does reporting the halted tree's referee verdict beside the class close this, or does the primary need that verdict?
+- **K4 · THE BIAS GUARD.**
+  - Ask: construct arm outcomes in which both §D3 3 figures (cost per accepted cell over accepted cells, and over all fired cells)
+    rank the arms wrongly together.
+- **K5 · MEMORISATION (G3).**
+  - Ask: find a task whose withheld set is mostly PUBLISHED vectors, and whose remaining inputs a lookup-plus-a-cheap-rule would
+    still pass.
+  - Where to look: each withheld generator, in the private tree, labels which of its inputs are published vectors.
+- **K6 · VACUOUS SPEC (G5).**
+  - Ask: show a salt-diet cell that is ACCEPTED, reaches TARGET, and reports a spec_strength above 0 while its spec constrains
+    nothing the behavioural suite does not already test.
+- **K7 · CLASS BOUNDARIES (the author suspects a misfiling).**
+  - §D2 files TRANSLATE under REJECTED. The O60 registration (`harness/systems-x86/REGISTRATION-O60-scalar-population-2026-10-01.md:345`)
+    calls a translator refusal of an ALLOWED form a non-scoring outcome, which would be UNSCORABLE.
+  - Ask: find every verdict that can be the subject's fault on one input and the instrument's on another, and every outcome that
+    lands in no class or in two.
+
+### Measured for G2 at the author's hand, before the pass (static, from the withheld oracles; not driven through the referee)
+- **G2 (a constant answer) fails on every one of the 22 x86 tasks.** This holds both for a constant equal to input 0's answer and for
+  a constant equal to the most common answer, each by a margin of many inputs.
+- ⛔ **The per-task figures stay in the private tree until the run's result is of record.** Input counts and population shapes
+  describe the withheld sets, and this repository is public before the run.
+- ⚠️ **Limit:** this assumes TESTS_FAIL fires on any one mismatching expected line. It is not a driven referee run.
