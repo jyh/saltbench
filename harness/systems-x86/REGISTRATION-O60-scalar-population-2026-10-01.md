@@ -594,9 +594,10 @@ route is declared here with its count, unless the harvest fails to refuse it, an
   the cells' own meter files or not at all, and this addendum claims neither.
 - **The control is PLAIN only.** The Lean path is first exercised by a salt-diet cell. A salt-diet-only box failure reads HARNESS, so the
   whole arm lands in UNSCORABLE; this is the safe direction, declared.
-**§D8 item 1, the deviation declared (the helm, 14:08:20):** the design's refuter pass on revision 4 (blob 8df15e066245) was a non-author
-text-vs-code read, not a re-fired Fable round; rounds 1–4 covered the code it describes. A claim that read found DIFFERS from the code, or a
-design claim with no code site, goes to a Fable refuter before Monday's fire.
+**§D8 item 1 — OWED.** The refuter pass on design revision 4 (blob 8df15e066245) is to be a non-author, claim-by-claim read of its text
+against the code at 8eca9d8 (the helm, 14:08:20 and 14:17:44), not a re-fired Fable round; rounds 1–4 covered the code it describes. It
+is NOT yet taken. Each claim reads HOLDS or DIFFERS; a claim with no code site is flagged. Any DIFFERS or flagged claim goes to a Fable
+refuter before the fire. This line reads MET only when that read is on record.
 **§D8 item 3, MET at 53420bc:** the harvest driven end to end on two real cell records (a LANDED plain cell and a CAP-COST salt-diet cell,
 from a fresh fetch, with the cut's harness at a3db4f6). Control ACCEPTED, both cells ACCEPTED, and the table printed under its manifest with
 all three SEPARATE counts at 0.
