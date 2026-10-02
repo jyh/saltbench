@@ -601,6 +601,11 @@ refuter before the fire. This line reads MET only when that read is on record.
 **§D8 item 3, MET at 53420bc:** the harvest driven end to end on two real cell records (a LANDED plain cell and a CAP-COST salt-diet cell,
 from a fresh fetch, with the cut's harness at a3db4f6). Control ACCEPTED, both cells ACCEPTED, and the table printed under its manifest with
 all three SEPARATE counts at 0.
+**§D8 item 4 — the battery THROUGH THE CLASSIFIER (`harvest_o60.py battery` at 8eca9d8, plain, zero model spend), each member after its
+task's control (ACCEPTED 44/44):** G2 22/22 REJECTED. G6c (the reference with a callee-saved register moved before every return) 22/22
+REJECTED, and 20 of those read token PASS with every test passing and are rejected ONLY by the agreement column's clobber rider. On those
+tasks the referee's token alone would call the violation a pass. G4 was driven through the referee alone (the private tree holds it). G5,
+G6a/b and G7 are NOT driven; each needs a per-task generator, and they are declared here.
 **(5) The served-model guard.** The smoke pair's `model_served` must read the registered model, or the fire HOLDS: a newer model is priced
 VOID by the cut's rate table.
 **(6) The order on Monday, and what each step leaves as a receipt (OWED):**
