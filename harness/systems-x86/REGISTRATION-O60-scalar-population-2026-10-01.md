@@ -550,7 +550,7 @@ OWED, and EXPORTED-FROM names it. The 40 run on these changes, each driven red-f
            symlink, commondir/gitdir, alternates or unlistable dir under .git, and HEAD^{commit}      harness
 ```
 OWED: kent's non-author read of 51bd1e9..the cut · the four roots' `_bin` re-pointed to the cut after the drill's failback.
-**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `b629652` (blob 375ec63069e7) with `classify_cell.py` 22585074bc0c
+**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `ca74578` (blob 5c49bf396275) with `classify_cell.py` 22585074bc0c
 is the ONLY harvest of an O60 cell. No model-written cell is harvested by any other tool. Its classes are §D2's, with these readings, each
 ruled before any O60 cell:
 - **The commit each end is judged on.** The tree is materialised from that commit's objects in the cell's own store, never from a
@@ -632,6 +632,9 @@ it, so **G6a, G6b and G6c are regression arms, re-run at any change to `exec_mod
 **THE PRIMARY OUTCOME IS NOT COMPUTED ON RUN 1'S ROWS UNTIL ITS PRODUCER IS REFUTED (the helm, 15:50:45, O1).** The fire's table reports
 per-row CLASS and the three SEPARATE counts only. The design's §D3 1 producer ((i)/(ii)/DISCORDANT) is landed and refuted on battery rows,
 the two real cells and synthetic rows BEFORE run 1's rows are read; until then no rate is computed. The fire does not wait for it.
+**BUILT at ca74578 (`harvest_o60.py primary`), refuted on synthetic rows (DISCORDANT, NO ENDED CELL, +s, u: 9/9 after 7 RED) and on the
+two real cells against an answer derived by hand first, which it matched exactly.** Its reading is still not taken on run 1 until this
+addendum's refuter verdict is on record.
 **(5) The served-model guard.** The smoke pair's `model_served` must read the registered model, or the fire HOLDS: a newer model is priced
 VOID by the cut's rate table.
 **(6) The order on Monday, and what each step leaves as a receipt (OWED):**
