@@ -608,8 +608,9 @@ tasks the referee's token alone would call the violation a pass. G6b (one word w
 REJECTED, ALL 22 with token PASS, rejected only by the MODEL-OUTSIDE rider. G6a (one byte into the guard before the first pointer argument's region)
 20/20 REJECTED on the 20 tasks that take a pointer (2 NOT APPLICABLE by name), ALL token PASS and labelled MODEL-OUTSIDE. The native
 executor ALSO saw it: its raw output reports `OUTSIDE=` on every member (on all inputs but one each). `agree.py` labels an input from
-the model's class FIRST, so a write both executors see reads MODEL-OUTSIDE, and NATIVE-OUTSIDE appears only when the model returned clean. G4 was driven through the referee alone (the private tree holds it). G5 and G7
-are NOT driven; each needs a per-task generator, and they are declared here.
+the model's class FIRST, so a write both executors see reads MODEL-OUTSIDE, and NATIVE-OUTSIDE appears only when the model returned clean. G7, the constant-pointer limit, is MEASURED from the referee's own lowered frames rather than built: of the 20 tasks that take a
+pointer, 18 pass every pointer argument as ONE constant on every withheld input. On those, a plain routine that hard-codes its addresses is
+ACCEPTED, as §D4's declared limit says. G4 was driven through the referee alone (the private tree holds it). G5 is NOT driven; each needs a per-task generator, and they are declared here.
 **THE OUTCOME OF RECORD IS THE CLASSIFIER'S READING, NEVER THE REFEREE'S TOKEN (the helm, 14:53:49).** No table or figure, public or private,
 reports a token count as a result. The token is in every log, so it is the number a later reader or script reaches for, and this battery
 shows it calling a callee-saved violation a pass on 20 of 22 tasks. **The agreement rider, from the MODEL executor, is the SINGLE point of
