@@ -532,11 +532,13 @@ every cell is rendered at the fire by 51bd1e9's renderer, and each cell's manife
 bench (lead). Drafted 2026-10-02 (PDT), before any O60 cell fired. **Every line marked OWED is taken on Monday 10-05 in the order of (6),
 and this addendum merges only when each reads MET or is declared below, before the first model call.** Zero model spend in everything
 drafted here. The design it applies is `DESIGN-correctness-primary-2026-10-02.md` (PR #311): its §D2 classes, §D4 battery and §D5 harvest.
-**(1) L1 moves to the re-cut.** ADDENDUM 9 named 51bd1e9. The export is re-cut from saltbench-systems ≥ `8eca9d8`, the merge holding both
+**(1) L1 moves to the re-cut.** ADDENDUM 9 named 51bd1e9. The export is re-cut from saltbench-systems ≥ `b629652` (four one-line fixes on the merge `8eca9d8`, below), the merge holding both
 the cut's changes (`a3db4f6`) and the harvest of record (`53420bc`); `merge-base --is-ancestor` reads TRUE for each. The sha actually cut is
 OWED, and EXPORTED-FROM names it. The 40 run on these changes, each driven red-first on its own commit:
 ```
   de04273  the L4 control proofs re-pointed at the harness call modules                       harness
+  b629652  N < 1 refuses (D2.14) · --limits prints the frame's blind spots (B6) · a LANDED end with no DECLARED line
+           refuses (T2) · cell-watch --harvest RETIRED, refused at arm (C3)                                  harness
   c1172c7, e34db16  target.py: on timeout, kill the build's whole PROCESS GROUP (a grandchild held the fleet build lock)  harness
   782835d  the referee's RUNNER is the canonical build wrapper; its blob is printed per run           harness
   54d4fc8, 82ccbf8  the watcher logs its SNAPSHOT line unconditionally and runs no `git status`;
@@ -548,13 +550,13 @@ OWED, and EXPORTED-FROM names it. The 40 run on these changes, each driven red-f
            symlink, commondir/gitdir, alternates or unlistable dir under .git, and HEAD^{commit}      harness
 ```
 OWED: kent's non-author read of 51bd1e9..the cut · the four roots' `_bin` re-pointed to the cut after the drill's failback.
-**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `53420bc` (blob f11b0d027785) with `classify_cell.py` 0e69400bacd0
+**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `b629652` (blob 375ec63069e7) with `classify_cell.py` 22585074bc0c
 is the ONLY harvest of an O60 cell. No model-written cell is harvested by any other tool. Its classes are §D2's, with these readings, each
 ruled before any O60 cell:
 - **The commit each end is judged on.** The tree is materialised from that commit's objects in the cell's own store, never from a
   worktree. Each row is pinned by an arm of `test_harvest_pin.py` at the harvest's own sha, `53420bc`:
   ```
-  LANDED        the end line's `landing-N <sha>`; watch.log's DECLARED line must agree; a landed-N tag, if present, must peel to it
+  LANDED        the end line's `landing-N <sha>`; watch.log's DECLARED line must EXIST and agree (absent REFUSES); a landed-N tag, if present, must peel to it
   DONE          the sha `bin/declare done` recorded, which must be on the history of the commit the session ended at
   EXIT-FORCED   the watcher's SNAPSHOT commit: HEAD at the kill, on any branch. EVEN AFTER A LANDING: the DECLARED landing is
                 recorded and NOT judged (refuter B, round 4). This is a declared disposition, not a closed item. The cells are
@@ -615,9 +617,9 @@ ACCEPTED, as §D4's declared limit says. **THE SIGN (the helm, 15:41:24):** the 
 a routine that depends on the constant address cannot discharge TARGET, and on salt-diet it reads REJECTED. A plain routine faces no such
 check. The limit can therefore only RAISE the plain arm's ACCEPTED count. **On these 18 tasks, an arm difference in favour of salt-diet is a
 LOWER bound, and one in favour of plain may be inflated by up to the number of plain cells that rely on the constant.** The referee is kept
-as registered. A post-run detector: re-referee each ACCEPTED plain cell with one shifted region base. G5 is driven on ONE task, Adler32, salt-diet: the reference routine, a constant `Submission.spec`, and no `Submission.correct`.
-It read exactly as §D4 states: `tests=PASS`, `AGREE=92`, token TARGET, `target_unknown = [Submission.correct]`, REJECTED. It is the first
-salt-diet member through the classifier, and it proves the Lean path runs at the cut. G5 on the other 21 tasks is NOT driven. G4 was
+as registered. A post-run detector: re-referee each ACCEPTED plain cell with one shifted region base. G5 Adler32 is a PATH CONTROL (the helm, 15:51:51): the reference routine, a constant `Submission.spec`, and no `Submission.correct`. It
+read `tests=PASS`, `AGREE=92`, token TARGET, `target_unknown = [Submission.correct]`, REJECTED for a MISSING OBLIGATION. It proves the
+salt-diet Lean path runs at the cut. **The vacuous-spec property (a constant spec WITH a proof that discharges it) is NOT DRIVEN.** G5 on the other 21 tasks is NOT driven. G4 was
 driven through the referee alone (the private tree holds it); each needs a per-task generator, and they are declared here.
 **THE OUTCOME OF RECORD IS THE CLASSIFIER'S READING, NEVER THE REFEREE'S TOKEN (the helm, 14:53:49).** No table or figure, public or private,
 reports a token count as a result. The token is in every log, so it is the number a later reader or script reaches for, and this battery
@@ -627,6 +629,9 @@ by design, and reported OUTSIDE on 0 of 22 G6b members. A guard byte (G6a) has T
 BATTERY.tsv, blob 57f8ca6f386f, controls ACCEPTED on
 every member). A change that weakens the model executor's frame silently re-opens
 it, so **G6a, G6b and G6c are regression arms, re-run at any change to `exec_model.py`.**
+**THE PRIMARY OUTCOME IS NOT COMPUTED ON RUN 1'S ROWS UNTIL ITS PRODUCER IS REFUTED (the helm, 15:50:45, O1).** The fire's table reports
+per-row CLASS and the three SEPARATE counts only. The design's §D3 1 producer ((i)/(ii)/DISCORDANT) is landed and refuted on battery rows,
+the two real cells and synthetic rows BEFORE run 1's rows are read; until then no rate is computed. The fire does not wait for it.
 **(5) The served-model guard.** The smoke pair's `model_served` must read the registered model, or the fire HOLDS: a newer model is priced
 VOID by the cut's rate table.
 **(6) The order on Monday, and what each step leaves as a receipt (OWED):**
