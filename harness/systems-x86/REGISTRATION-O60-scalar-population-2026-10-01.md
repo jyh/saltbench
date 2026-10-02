@@ -610,7 +610,12 @@ REJECTED, ALL 22 with token PASS, rejected only by the MODEL-OUTSIDE rider. G6a 
 executor ALSO saw it: its raw output reports `OUTSIDE=` on every member (on all inputs but one each). `agree.py` labels an input from
 the model's class FIRST, so a write both executors see reads MODEL-OUTSIDE, and NATIVE-OUTSIDE appears only when the model returned clean. G7, the constant-pointer limit, is MEASURED from the referee's own lowered frames rather than built: of the 20 tasks that take a
 pointer, 18 pass every pointer argument as ONE constant on every withheld input. On those, a plain routine that hard-codes its addresses is
-ACCEPTED, as §D4's declared limit says. G4 was driven through the referee alone (the private tree holds it). G5 is NOT driven; each needs a per-task generator, and they are declared here.
+ACCEPTED, as §D4's declared limit says. **THE SIGN (the helm, 15:41:24):** the salt-diet TARGET is
+`CorrectFor`, which reaches `CorrectCall` (`X86CallFrame.lean`), and that holds `∀ ptrs`, over every separated placement of the regions. So
+a routine that depends on the constant address cannot discharge TARGET, and on salt-diet it reads REJECTED. A plain routine faces no such
+check. The limit can therefore only RAISE the plain arm's ACCEPTED count. **On these 18 tasks, an arm difference in favour of salt-diet is a
+LOWER bound, and one in favour of plain may be inflated by up to the number of plain cells that rely on the constant.** The referee is kept
+as registered. A post-run detector: re-referee each ACCEPTED plain cell with one shifted region base. G4 was driven through the referee alone (the private tree holds it). G5 is NOT driven; each needs a per-task generator, and they are declared here.
 **THE OUTCOME OF RECORD IS THE CLASSIFIER'S READING, NEVER THE REFEREE'S TOKEN (the helm, 14:53:49).** No table or figure, public or private,
 reports a token count as a result. The token is in every log, so it is the number a later reader or script reaches for, and this battery
 shows it calling a callee-saved violation a pass on 20 of 22 tasks. **The agreement rider, from the MODEL executor, is the SINGLE point of
