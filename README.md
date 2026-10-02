@@ -97,7 +97,7 @@ python3 morning_line.py <state-root> <a0-report> <a1-report>
 Code (`harness/`, `scripts/`, `select_tasks.py`) under Apache-2.0 (`LICENSE`, the unmodified
 licence text); data and documents under CC BY 4.0 (`LICENSE-DATA`). Both were chosen by the
 repository owner on 2026-09-02.
-Third-party material keeps its own licence: CLEVER (MIT, Trishul, UT Austin), VeruSAGE-Bench and
+Third-party material redistributed here keeps its own licence and attribution: CLEVER (MIT, Trishul, UT Austin), VeruSAGE-Bench and
 lynette (MIT, Microsoft), SWE-bench (MIT) and the source repositories of the drawn issues. See
 `PROVENANCE.md`.
 
