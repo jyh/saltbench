@@ -604,13 +604,15 @@ all three SEPARATE counts at 0.
 **§D8 item 4 — the battery THROUGH THE CLASSIFIER (`harvest_o60.py battery` at 8eca9d8, plain, zero model spend), each member after its
 task's control (ACCEPTED 44/44):** G2 22/22 REJECTED. G6c (the reference with a callee-saved register moved before every return) 22/22
 REJECTED, and 20 of those read token PASS with every test passing and are rejected ONLY by the agreement column's clobber rider. On those
-tasks the referee's token alone would call the violation a pass. G4 was driven through the referee alone (the private tree holds it). G5,
-G6a/b and G7 are NOT driven; each needs a per-task generator, and they are declared here.
+tasks the referee's token alone would call the violation a pass. G6b (one word written past the frame's stack band at entry) 22/22
+REJECTED, ALL 22 with token PASS, rejected only by the MODEL-OUTSIDE rider. G4 was driven through the referee alone (the private tree
+holds it). G5, G6a and G7 are NOT driven; each needs a per-task generator, and they are declared here.
 **THE OUTCOME OF RECORD IS THE CLASSIFIER'S READING, NEVER THE REFEREE'S TOKEN (the helm, 14:53:49).** No table or figure, public or private,
 reports a token count as a result. The token is in every log, so it is the number a later reader or script reaches for, and this battery
-shows it calling a callee-saved violation a pass on 20 of 22 tasks. **The agreement rider is the SINGLE point of detection for that class**
-(receipt: the battery's BATTERY.tsv, blob 670995172684, controls 44/44). A change that weakens the model executor's frame silently re-opens
-it, so **G6c is a regression arm, re-run at any change to `exec_model.py`.**
+shows it calling a callee-saved violation a pass on 20 of 22 tasks. **The agreement rider is the SINGLE point of detection for both classes,
+callee-saved (G6c) and out-of-band stack writes (G6b)** (receipt: the battery's BATTERY.tsv, blob 80a8eabb4b07, controls ACCEPTED on
+every member). A change that weakens the model executor's frame silently re-opens
+it, so **G6b and G6c are regression arms, re-run at any change to `exec_model.py`.**
 **(5) The served-model guard.** The smoke pair's `model_served` must read the registered model, or the fire HOLDS: a newer model is priced
 VOID by the cut's rate table.
 **(6) The order on Monday, and what each step leaves as a receipt (OWED):**
