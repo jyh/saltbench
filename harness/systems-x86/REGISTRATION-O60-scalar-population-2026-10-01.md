@@ -606,13 +606,15 @@ task's control (ACCEPTED 44/44):** G2 22/22 REJECTED. G6c (the reference with a 
 REJECTED, and 20 of those read token PASS with every test passing and are rejected ONLY by the agreement column's clobber rider. On those
 tasks the referee's token alone would call the violation a pass. G6b (one word written past the frame's stack band at entry) 22/22
 REJECTED, ALL 22 with token PASS, rejected only by the MODEL-OUTSIDE rider. G6a (one byte into the guard before the first pointer argument's region)
-20/20 REJECTED on the 20 tasks that take a pointer (2 NOT APPLICABLE by name), ALL token PASS, rejected only by MODEL-OUTSIDE: the
-native executor's own NATIVE-OUTSIDE rider fired on none. G4 was driven through the referee alone (the private tree holds it). G5 and G7
+20/20 REJECTED on the 20 tasks that take a pointer (2 NOT APPLICABLE by name), ALL token PASS and labelled MODEL-OUTSIDE. The native
+executor ALSO saw it: its raw output reports `OUTSIDE=` on every member (on all inputs but one each). `agree.py` labels an input from
+the model's class FIRST, so a write both executors see reads MODEL-OUTSIDE, and NATIVE-OUTSIDE appears only when the model returned clean. G4 was driven through the referee alone (the private tree holds it). G5 and G7
 are NOT driven; each needs a per-task generator, and they are declared here.
 **THE OUTCOME OF RECORD IS THE CLASSIFIER'S READING, NEVER THE REFEREE'S TOKEN (the helm, 14:53:49).** No table or figure, public or private,
 reports a token count as a result. The token is in every log, so it is the number a later reader or script reaches for, and this battery
 shows it calling a callee-saved violation a pass on 20 of 22 tasks. **The agreement rider, from the MODEL executor, is the SINGLE point of
-detection for all three G6 classes: callee-saved (G6c), stack past the band (G6b), a guard byte (G6a)** (receipt: the battery's
+detection for two G6 classes, callee-saved (G6c) and stack past the band (G6b): the native executor checks only regions and their guards,
+by design, and reported OUTSIDE on 0 of 22 G6b members. A guard byte (G6a) has TWO detectors** (receipt: the battery's
 BATTERY.tsv, blob 57f8ca6f386f, controls ACCEPTED on
 every member). A change that weakens the model executor's frame silently re-opens
 it, so **G6a, G6b and G6c are regression arms, re-run at any change to `exec_model.py`.**
