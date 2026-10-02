@@ -53,9 +53,9 @@ of cells and is never pooled across classes. That covers cost, tokens, wall time
 | class | the record reads | notes |
 |---|---|---|
 | **ACCEPTED** | referee `class == PASS` **and** agreement reads `AGREE=n` with `n` = the number of withheld inputs (no other rider) **and** no harness finding | whether or not the cell declared: a tree stopped by a cap that the referee passes is ACCEPTED, and its run state is a reported column |
-| **REJECTED** | referee `class` ∈ {TESTS_FAIL, NO_SOLUTION, ASSEMBLE-FAIL, REFUSED-LINK, SCREEN, SCREEN(spec), AXIOMS} · or `COMPILE`/`TARGET` **with** a Lean diagnostic (`build_first_error` non-null) · or `PASS` with any of MODEL-OUTSIDE · MODEL-CLOBBERED · MODEL-FAULT · NATIVE-OUTSIDE · MISSING · or a referee crash caused by the cell's own tree | a footprint or ABI violation is a failing verdict |
-| **HALTED** | the cell was stopped by a registered limit or ended without declaring (watcher end kinds CAP-COST · CAP-WALL · STALLED · IDLE · POKED-OUT · EXIT-FORCED, or a `done` with no landing) **and** the referee, run on the stopped tree, did not return ACCEPTED's reading | the referee is ALWAYS run on a halted tree, by the harvest and not by hand |
-| **UNSCORABLE** | `COMPILE`/`TARGET` with build rc 124 or 75 or no Lean diagnostic (a timeout or the build lock's wait-abort) · `PASS` with INCONCLUSIVE-(b) (fuel) or DISAGREE · `REFUSED-TRANSLATE` (see below) · `CLASS HARNESS` · `REFEREE REFUSE` · no CLASS line within the referee's wall bound (`REFEREE-TIME`) · watcher CRASH · METER-BLIND · COST-BLIND · BOX-UNREADABLE · QUOTA-BLOCKED · FAILED-BOOTS · DIALOG | the instrument failed, or the record cannot say whose fault it was |
+| **REJECTED** | referee `class` ∈ {TESTS_FAIL, NO_SOLUTION, ASSEMBLE-FAIL, REFUSED-LINK, SCREEN, SCREEN(spec), AXIOMS} · or `COMPILE`/`TARGET` **with** a Lean diagnostic (`build_first_error` non-null) · or `PASS` with any of MODEL-OUTSIDE · MODEL-CLOBBERED · MODEL-FAULT · NATIVE-OUTSIDE (which dominates any UNSCORABLE rider) · or a referee crash caused by the cell's own tree | a footprint or ABI violation is a failing verdict. MISSING is not here, against K7's suggestion: an input absent from one executor's output cannot say whose fault it is |
+| **HALTED** | the cell ended without a landing (watcher end kinds DONE · CAP-TOKENS · CAP-COST · CAP-WALL · POKED-OUT · STALLED · EXIT-FORCED) **and** the referee, run on the stopped tree, read REJECTED. A stopped tree the referee cannot score is UNSCORABLE: re-referee | the referee is ALWAYS run on a halted tree, by the harvest and not by hand |
+| **UNSCORABLE** | `COMPILE`/`TARGET` with no Lean diagnostic (`build_first_error` null, or `target_errors` empty). This covers a timeout (rc 124) and the build lock's wait-abort (rc 75). The referee's record carries no rc, so the diagnostic is the tell · `PASS` with INCONCLUSIVE-(b) (fuel), DISAGREE or MISSING, or an AGREE count short of the inputs · `REFUSED-TRANSLATE` (see below) · `CLASS HARNESS` · `REFEREE REFUSE` · no CLASS line within the referee's wall bound (`REFEREE-TIME`) · watcher CRASH · METER-BLIND · COST-BLIND · BOX-UNREADABLE · QUOTA-BLOCKED · FAILED-BOOTS · DIALOG | the instrument failed, or the record cannot say whose fault it was |
 
 **The rules that the table needs.**
 - **The subject's claim never classifies.** LANDED, `LANDING.md` and `false_done_claims` are reported beside the class. Declaring routes a
@@ -67,8 +67,9 @@ of cells and is never pooled across classes. That covers cost, tokens, wall time
   - The split, which needs the cut's FORM screen run on the refused instance, is OWED. Until it exists, the registration's own word holds:
     a non-scoring outcome (`REGISTRATION-O60-…:345`).
 - **A fault the record cannot attribute is UNSCORABLE, not REJECTED.**
-  - For DIALOG, POKED-OUT, STALLED and IDLE, the end kind maps to HALTED only when the record carries no instrument tell.
-  - The tell set is the classifier's and is selftested.
+  - DIALOG (the client's own dialog) is an instrument end.
+  - POKED-OUT and STALLED are filed as the subject's halts, because no instrument tell for them exists yet. That tell is OWED (§D7),
+    and the limit is printed beside the classifier's verdicts.
 - **UNSCORABLE cells are RE-REFEREED or RE-FIRED, and the two are distinct.**
   - A referee re-run on the same tree is not a new cell.
   - A re-fire is a new cell and is counted as one.
@@ -135,7 +136,9 @@ of cells and is never pooled across classes. That covers cost, tokens, wall time
 
 - **No cell changes, and no export changes.** Arms, cards, caps, the fence and the referee are untouched.
 - **What is new is a CLASSIFIER over records the referee and the watcher already write:**
-  - `classify_cell.py` lives OUTSIDE the export allowlist, so the cut's sha does not move.
+  - saltbench-systems `harness/analysis/classify_cell.py`: a selftest of 46 arms, one per emitted token, plus a refusal for any unmapped
+    token. The end-kind population is READ from `cell-watch.sh`, never typed.
+  - It lives OUTSIDE the export allowlist, so the cut's sha does not move.
   - It runs at the harvest, and it runs the referee on every halted tree.
 - **Two instrument additions are OWED, and each is a referee change that would move an export:**
   - the FORM split of REFUSED-TRANSLATE (§D2);
