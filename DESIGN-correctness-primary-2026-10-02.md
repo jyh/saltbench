@@ -1,9 +1,10 @@
 # DESIGN: CORRECTNESS AS THE PRIMARY OUTCOME. The referee's verdict decides what a cell is before anything is counted about it.
 ## bench (SaltBench lead), 2026-10-02. Objectives O57 · O60. Commissioned at council 2026-10-02 (minute seat `865727d77`, item 9).
 ## Statistics: evidence. Text: paper. A refuter pass precedes any wave run under it.
-## ⛔ DRAFT, REVISION 3. Not a registration. It binds nothing until a dated AMENDMENT freezes it (§D8), before the first model call of the run it governs.
+## ⛔ DRAFT, REVISION 4. Not a registration. It binds nothing until a dated AMENDMENT freezes it (§D8), before the first model call of the run it governs.
 ## Revision 2 took refuter round 1 (blob `e1c16efcfd3f`, PR #311 comment 5955729360). Revision 3 takes round 2 (blob `32b0d219b6a4`, comment 5956165509).
-## Every repair is mapped in §D10 and §D11.
+## Revision 4 writes the text to the code that rounds 3 and 4 (comments 5957499892 · 5958937235) and the helm's rulings of 2026-10-02 produced: harvest saltbench-systems ≥ `d71edf0`, the cut ≥ `a3db4f6`.
+## Every repair is mapped in §D10–§D13.
 
 The Captain's question at the table: *"How is it that we know the agent doesn't just submit an arbitrary program, like a constant function?
 We should have put correctness in as a primary criterion, so let's commission a design phase."*
@@ -60,18 +61,21 @@ of cells and is never pooled across classes. That covers cost, tokens, wall time
   whether the stopped tree is ACCEPTED.
 - An **INSTRUMENT** end (CRASH · METER-BLIND · COST-BLIND · FAILED-BOOTS · BOX-UNREADABLE · QUOTA-BLOCKED · DIALOG) is UNSCORABLE.
 - The 15 kinds are read from `cell-watch.sh`'s `end_session` emitters, never from its header comment.
-- **The tree the referee reads:**
-  - for LANDED, the landing tag `landed-N`;
-  - for every other end, HEAD of the cell's `main` at the end.
-  - The harness refuses work left uncommitted. It is a reported column, never refereed.
-  - The tree is always read from a COPY, never by dispatching into the cell.
+- **The tree the referee reads** is PINNED BY THE HARNESS'S OWN RECORD, never by a ref the subject owns (round 3, K1/K3):
+  - LANDED: the end line's `landing-N <sha>`; the watcher's DECLARED line must agree, and a `landed-N` tag, if present, must peel to it;
+  - DONE: the sha `bin/declare done` recorded, which must be on the history of the commit the session ended at;
+  - every other end, EXIT-FORCED after a landing included: the watcher's `SNAPSHOT s<P> <sha>`, HEAD at the end on any branch, read
+    only from the cell's own store. A rewired `.git` or a failed enumeration of it logs `-`. The `s<P>` tag is cosmetic.
+  - Uncommitted work is NOT MEASURED: no worktree is read. The column prints `-`.
+  - The tree is materialised from the commit's objects into a fresh dir and verified by hash. Git never runs with the cell's own
+    configuration, and nothing is dispatched into the cell.
 
 | referee reading | from the record |
 |---|---|
 | **ACC** | `class == PASS`, the agreement field reads exactly `AGREE=N` (N = the task's withheld inputs), no harness finding |
-| **REJ** | `PASS` with any footprint/ABI rider (MODEL-OUTSIDE · MODEL-CLOBBERED · MODEL-FAULT · NATIVE-OUTSIDE), and any such rider dominates every UNS rider · TESTS_FAIL · NO_SOLUTION · ASSEMBLE-FAIL · REFUSED-LINK · SCREEN · AXIOMS · COMPILE/TARGET with a non-zero rc other than 75 or 124, unless its positioned diagnostic is in a harness file (`Submission/` is the subject's, and so is `Probe.lean` for TARGET) · REFUSED-TRANSLATE whose instance the cut's `forms.py` reads OUTSIDE the allowed list |
-| **UNS** | `PASS` with INCONCLUSIVE-(b) · DISAGREE · MISSING, a count ≠ N, or no agreement field · COMPILE/TARGET rc 75 (the lock's wait-abort), rc 124 on the FIRST referee run, a diagnostic in a harness file, or no target record · REFUSED-TRANSLATE on an ALLOWED form (a translator gap) or not yet split · HARNESS · no referee record on the FIRST run |
-| **TREE** | on the RE-REFEREE of the same tree, with the lock measured free: rc 124 again, or no record again (the tree crashes or hangs the referee). It is the subject's |
+| **REJ** | `PASS` with any footprint/ABI rider (MODEL-OUTSIDE · MODEL-CLOBBERED · MODEL-FAULT · NATIVE-OUTSIDE), and any such rider dominates every UNS rider · TESTS_FAIL · NO_SOLUTION · ASSEMBLE-FAIL · REFUSED-LINK · SCREEN · AXIOMS · COMPILE/TARGET with a non-zero rc other than 75 or 124, unless its positioned diagnostic is in a harness file (`Submission/` is the subject's except `Submission/Translation.lean`, which the referee writes; the root `Submission.lean` is the subject's in any spelling; so is `Probe.lean` for TARGET) · REFUSED-TRANSLATE whose instance the cut's `forms.py` reads OUTSIDE the allowed list |
+| **UNS** | `PASS` with INCONCLUSIVE-(b) · DISAGREE · MISSING, a count ≠ N, or no agreement field · COMPILE/TARGET rc 75 (the lock's wait-abort), rc 124 on the FIRST referee run, rc 124 on the re-referee whose build is not shown to have held the lock for the bound (the build QUEUE's wait runs before the lock's bound and inside the 1800 s), a re-referee reading that is not the first's, a diagnostic in a harness file, or no target record · REFUSED-TRANSLATE on an ALLOWED form (a translator gap) or not yet split · HARNESS · no referee record on the FIRST run |
+| **TREE** | the SAME reading twice, on the RE-REFEREE of the same tree with the lock measured free (marker, flock and no live queue ticket): rc 124 at the same stage with BOTH builds shown, by the build lock's own log, to have held the lock for the bound; or no record after no record. Also a cell the harvest cannot pin or materialise for a cause PROVABLY in its tree or a ref it owns (`TREE-REFUSE`, §D5). It is the subject's |
 
 | end | ACC | REJ / TREE | UNS |
 |---|---|---|---|
@@ -79,8 +83,14 @@ of cells and is never pooled across classes. That covers cost, tokens, wall time
 | halt | **ACCEPTED** | **HALTED** | **UNSCORABLE**, charge ARM (a halt's spend is always the arm's) |
 | instrument | **UNSCORABLE**, charge SUNK | | |
 
+**REFUSED is the harvest's, never a class.** A refusal raised by the harness's own inputs (no SNAPSHOT line, a malformed record, a failed
+copy of `repo/` named `FETCH-REFUSE`, identity, hash verification, a referee that cannot run, a failed control) writes a REFUSED row and the
+table does not print until a human disposes of it. `SNAPSHOT -` is REFUSED too: the watcher writes it for causes that are not provably the
+subject's (the helm, 13:47:05). PASS with DISAGREE stays UNSCORABLE and is counted SEPARATELY beside the table, as is the queue's 124.
+
 **Re-referee and re-fire are different acts:**
-- The harvest re-referees ONCE: on rc 124, and on no record.
+- The harvest re-referees ONCE: on rc 124 or 75, on a HARNESS record naming the lock's abort, and on no record. It does this only after the
+  lock is measured free, and it waits at most `--lock-wait` seconds.
 - A cell is RE-FIRED only for a zero-spend instrument end (FAILED-BOOTS, QUOTA-BLOCKED, BOX-UNREADABLE at boot), per lane B §CLB-R.2 5
   (`harness/systems-v3/AMENDMENT-claude-lane-B-2026-09-16.md:1319`: no top-up re-fires).
 - Every other UNSCORABLE is reported, by name, at the n it reached.
@@ -169,23 +179,47 @@ of cells and is never pooled across classes. That covers cost, tokens, wall time
   means only not refuted"*). Its detector, the kernel-equality spec method, is owed (§D7).
 - **`tests=FAIL(native-crash)` is REJECTED whatever killed the native executor.** The kill's rc is not read.
 - The population limits that describe one task's withheld set are in the private tree (see "How the battery runs").
+- **The call frame has three BLIND SPOTS, found by the battery's G4 live survivors.** Unused argument registers are always 0, the native
+  and model executors start callee-saved registers differently, and NULL is never passed. A survivor that lives in one of them is a
+  DECLARED LIMIT, never a suite hole; its remedy (frame noise) is a referee change named for the n = 3 run.
+
+**What the battery found (G2 and G4 driven through the O60 referee from the cut, zero model spend; figures that describe a withheld set
+are in the private tree):** G2 REJECTED on all 22 tasks. Every G4 survivor traced to a frame blind spot above, and one task's G4 margin is
+named FRAGILE. The battery's one PASS+DISAGREE member was probed under two more callee-saved seeds. Its disagreement held at both nonzero
+seeds, it agreed at the native caller's state, and its reference was seed-invariant: on that member, the routine's. It stays UNSCORABLE as
+registered (§D2).
 
 ## §D5 · WHAT CHANGES FOR A RUN, AND WHAT DOES NOT
 
 - **Arms, cards, caps and the fence are untouched.**
-- **The referee changes in ONE place**, and that move is declared, with its own red-first:
-  - `target.py`'s `run()` now starts the build in its own session and, on timeout, kills the whole process GROUP.
-  - The old form left the `lake` grandchild holding the FLEET-WIDE build lock (refuter round 2, K2; the helm's order of 2026-10-02 08:58:56).
-  - So the export moves, and ADDENDUM 10 names the re-cut.
+- **The cut moves, and O60's ADDENDUM 10 names the re-cut (saltbench-systems ≥ `a3db4f6`).** Each change below was driven red-first:
+  - `target.py`'s `run()` starts the build in its own session and, on timeout, kills the whole process GROUP. The old form left the `lake`
+    grandchild holding the FLEET-WIDE build lock (refuter round 2, K2; the helm's order of 2026-10-02 08:58:56).
+  - The referee's RUNNER is the canonical build wrapper, and its blob is printed per run.
+  - The watcher logs its SNAPSHOT line unconditionally, from the cell's own store only. It runs no porcelain git in the cell's repo
+    (`status` and `tag` each ran cell-set configuration on the host; the tag is now written by `update-ref`). `bin/declare done` records
+    the declared sha.
+  - The fence drive probes a WRITE into `../ctl`, which must be denied.
 - **THE HARVEST STEP — a freeze condition (§D8). It exists before the first model call, or this design does not govern the run.** For every
   cell it:
-  1. copies the tree §D2 names;
-  2. runs `referee_o60.sh` on the copy, into a fresh work dir, after removing any prior record so a stale record cannot be read as current;
-  3. runs the cut's `forms.py` on the retained `sub.elf` when the token is REFUSED-TRANSLATE;
-  4. classifies, re-referees once where §D2 says to, and writes one row per cell.
-  - The result table REFUSES to print while any non-instrument cell has no referee record.
+  1. fetches `ctl/` and then `repo/` with the git control files excluded, and writes its OWN `.git/config`. Git never runs with the
+     cell's configuration, and a failed copy is a named `FETCH-REFUSE` row;
+  2. pins the commit §D2 names and materialises it from objects, verified by hash. A subject-caused failure is `TREE-REFUSE`;
+  3. referees the task's REFERENCE once per session (the control; a failure STOPS the harvest), then the cell's tree, into a fresh work dir;
+     a referee that cannot run STOPS the harvest and is never charged to a subject;
+  4. runs the cut's `forms.py` on the retained `sub.elf` when the token is REFUSED-TRANSLATE;
+  5. classifies, re-referees once where §D2 says to (after the lock, including its queue, is measured free), and writes one row per
+     cell, keyed by cell.
+  - The result table REFUSES to print while any non-instrument cell has no referee record, any row is REFUSED, or its required
+    `--manifest` (the fire's own record of the cells it staged) differs from the rows. Beside the table it prints three SEPARATE
+    per-arm counts, each from the classifier's own constant: PASS+DISAGREE · QUEUE-124 · EXIT-FORCED after a landing (with each landing
+    sha). It also prints the LIMITS.
+  - Battery members run through the same harvest (`battery`), never by hand.
 - **OWED, each a referee change that would move an export again:**
-  - a referee wall bound that emits `REFEREE-TIME` (`translate_and_test.sh` runs the model executor with no bound);
+  - a referee wall bound that emits `REFEREE-TIME`, and a `cwd` on the referee call. Until it lands, one non-returning routine wedges the
+    harvest, which the operator kills and then re-runs per cell (O60 ADDENDUM 10 §(4));
+  - a cost producer that joins the cells' post-end meter into the row. Until it lands, §D3 2 does not govern run 1;
+  - a salt-diet member in the control;
   - `check_x86.py` copying `build_rc`/`probe_rc` into its own record;
   - a stat-before-open screen that emits `TREE-UNREADABLE`.
   - Until they land, the classifier's conservative and re-referee rules above stand.
@@ -282,3 +316,24 @@ is declared as a limit (§D4) instead.
 | K6 | HOLDS-WITH-LIMIT: G5's reading needs its token, not only its class | §D4 the member reads class, token, `tests=` and agreement · G5 rewritten · spec_strength is descriptive |
 | K7 | REFUTED: DONE and EXIT-FORCED; a diagnostic outside `Submission/`; REFUSED-TRANSLATE splittable now | §D2 diagnostic path · `--forms` · end kinds from the emitters |
 | K8 | REFUTED: the crash-on-tree clause had no instrument; unreadable records | §D2 TREE by re-referee · an unreadable record REFUSES · SCREEN(spec) is not a token |
+
+## §D12 · THE REFUTER PASS ON REVISION 3 (PR #311, comment 5957499892), AND WHERE EACH REPAIR WENT
+
+| check | verdict | taken into |
+|---|---|---|
+| K1 | REFUTED: the judged tree could be chosen by the subject (a tag named `main`) | §D2 the tree is pinned by the harness's own record (landing line · declared sha · SNAPSHOT) |
+| K2 | REFUTED: a referee that cannot run was charged to the subject; the lock wait reversed; the root `Submission.lean` misread | §D5 a referee refusal STOPS the harvest · `SALTBUILD_MAXWAIT` 1500 < 1800 · §D2 the root file in any spelling |
+| K3 | HOLDS-WITH-LIMIT: DONE and EXIT-FORCED judged `main` at fetch | §D2 DONE pins its declared sha; EXIT-FORCED pins the SNAPSHOT |
+| K4 | REFUTED: one box condition marked every subject failing | §D5 the control first, and a STOP is never a class |
+| K5 | HOLDS-WITH-LIMIT: battery members reached the classifier by hand | §D5 `battery` through the harvest |
+| K6 | HOLDS-WITH-LIMIT | G5 drivable; unchanged |
+| K7 | REFUTED: rows could vanish or double | §D5 one row per cell, keyed; every exception a REFUSED row; `--manifest` |
+| K8 | REFUTED: git ran in the fetched repo with the cell's own configuration | §D5 the harvest's own config, objects only, verified by hash |
+
+## §D13 · THE REFUTER PASS ON THE HARVEST (round 4, PR #311, comment 5958937235), AND WHERE EACH REPAIR WENT
+
+| refuter | verdict | taken into |
+|---|---|---|
+| A · git safety | HOLDS-WITH-LIMIT; one driven end-of-session OWED | Driven, it FAILED: the watcher's `git tag` ran cell-set configuration on the host. Fixed (`update-ref`). The drive then found the pin could be moved to another repo through `.git` (a gitfile, a symlink, commondir, inner symlinks, alternates, packed-refs, reftable, an unlistable dir); each was closed red-first, the watcher line was FROZEN, and the harvest refused every route at the object. Cell configs on both boxes were read as data: 0 armed |
+| B · the judged tree and the rows | HOLDS-WITH-LIMIT | LIMIT 1: REFUSED has a class (TREE-REFUSE for provably-subject causes; `SNAPSHOT -` stays REFUSED) · LIMIT 2: the `../ctl` write probe, driven · LIMIT 3: §D2's tree text now matches the code; EXIT-FORCED after a landing judges HEAD, DECLARED and counted separately · LIMIT 4: `--manifest` required |
+| C · classes, rc, cost | REFUTED | C2: a 124 is the tree's only with lock-held proof; the lock check reads the queue · C3: TREE is the same reading twice · C4/C5: Translation.lean the referee's, the root file any spelling · C6/C7: PASS+DISAGREE reverted to UNSCORABLE, counted separately, two-seed probe run · C8/C9/C10: declared in §D5 and O60 ADDENDUM 10 §(4) · C11 (a `rereferee=owed` row prints; `forms.py` rc on a traceback): NOT taken, named |
