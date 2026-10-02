@@ -476,7 +476,7 @@ metric, never a gate.
 - **Monday re-runs --check-only on all five cells after the weekend's outlet drill**, which may power-cycle the run box, and before L8/L10
   are read.
 
-## ⚖️ ADDENDUM 9 — THE CELLS' BELT DID NOT DENY THE FLEET'S MACHINE-STATE TREE, AND THE RETENTION RULE IS RAISED TO max(present, 3650). L1 MOVES TO 2a5b4da; NOTHING FIRES ON THIS ADDENDUM. APPENDED.
+## ⚖️ ADDENDUM 9 — THE CELLS' BELT DID NOT DENY THE FLEET'S MACHINE-STATE TREE, AND THE RETENTION RULE IS RAISED TO max(present, 3650). L1 MOVES TO 51bd1e9; NOTHING FIRES ON THIS ADDENDUM. APPENDED.
 bench (lead), 2026-10-02, 00:58–01:10 UTC (17:58–18:10 PDT 10-01). Zero model spend, no cell launched, no staged cell written. The pool (L8, L10) is named by
 ADDENDUM 10 at the fire, as ADDENDUM 8 said of "a later addendum".
 **(1) The gap.** Found by `systems` on the run box (one staged fence parsed, rendered 15:27 PDT): the fence's sandbox `denyRead` (627 entries)
@@ -503,9 +503,10 @@ first, on the route's own block extracted from `x86_clb.sh` with fixture setting
 selftest 32 passed, 0 failed, 5 skipped (environment-gated, not passes).
 **(4) What ADDENDUM 8 said that this moves, and what it does not.**
 ```
-  L1  EXPORT    MOVES  to 2a5b4da (EXPORTED-FROM 2a5b4da8efbd2db142dd204b455270185cfdb476). 977a753..2a5b4da touches THREE files:
-                       render_fence_v3.py, x86_clb.sh, and the new retention_want.py. The four roots' _bin are re-pointed to the new
-                       export at the fire, never before the drill's failback (below).
+  L1  EXPORT    MOVES  to 51bd1e9 (EXPORTED-FROM 51bd1e9039a83606b446676ad08eb56a16582d5c). 977a753..51bd1e9 touches THREE files:
+                       render_fence_v3.py, x86_clb.sh, and the new retention_want.py. 2a5b4da..51bd1e9 changes two COMMENTS and no
+                       code line (kent's read found them stale). The four roots' _bin are re-pointed to the new export at the fire,
+                       never before the drill's failback (below).
   L5  PER TASK  UNMOVED  referee_o60.sh is blob 447082fea41b at both shas.
   L6  ARMS      UNMOVED  arm_builder.py is blob f9ab01dc922d at both shas.
   L7  DRY CELL  OWED AGAIN  --check-only ×5 re-runs on the re-rendered fences (the order below). Its 15:27 receipts are of fences this
@@ -514,8 +515,15 @@ selftest 32 passed, 0 failed, 5 skipped (environment-gated, not passes).
 ```
 **(5) The order on Monday, and why it is this order.** A fence is a list rendered at a moment: an entry created under `$HOME` after the render
 is outside it. The weekend's drill creates such entries on the run box. So: **the drill's failback → the run box's cells census diffs clean →
-the _bin re-pointed to 2a5b4da → the five staged fences re-rendered → --check-only ×5 → a non-author reads the delta → ADDENDUM 10 (L8, L10)
+the _bin re-pointed to 51bd1e9 → the five staged fences re-rendered → --check-only ×5 → a non-author reads the delta → ADDENDUM 10 (L8, L10)
 → the smoke pairs → the 40.** The launcher re-renders every fence at the moment of use and refuses on any difference, so a fence left stale by
 the drill holds the fire. It cannot launch it unfenced. That check is why the order is safe, not a reason to skip it.
-**Declared:** the population's build shas become THREE (ed1890c ×4 and 977a753 ×1 staged, 2a5b4da the route that fires them). The fence of
-every cell is rendered at the fire by 2a5b4da's renderer, and each cell's manifest keeps its own staging export.
+**Declared:** the population's build shas become THREE (ed1890c ×4 and 977a753 ×1 staged, 51bd1e9 the route that fires them). The fence of
+every cell is rendered at the fire by 51bd1e9's renderer, and each cell's manifest keeps its own staging export.
+**Declared on kent's read (`kent`, non-author, 2026-10-01 18:09 PDT, at this addendum's first head 9c715e046cf6 against 977a753..2a5b4da):**
+- **The renderer is shared.** The Gemini lane renders through `render_fence_v3.py` too, so its cells' belt now also denies the tree. The
+  "nothing a cell runs reads it" measurement covered the Claude-lane cell scripts only. That lane's subject runs as a separate user, and it
+  fires no O60 cell. UNMEASURED there, not claimed.
+- **The v3 route's sibling, `clb_fire.sh`, still PRESERVES a present retention value.** It fires no O60 cell, and the ruling named the O60
+  route.
+- kent did NOT read the run-box receipts (the belt drive, the `--diff`, the uid ×5) or the systems-x86 selftest. Those are the lead's alone.
