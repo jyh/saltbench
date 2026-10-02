@@ -547,7 +547,7 @@ cut; EXPORTED-FROM names it), so the 40 run on these changes, each driven red-fi
            symlink, commondir/gitdir, alternates or unlistable dir under .git, and HEAD^{commit}      harness
 ```
 OWED: kent's non-author read of 51bd1e9..the cut · the four roots' `_bin` re-pointed to the cut after the drill's failback.
-**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `d71edf0` (blob f51fb5b5d80c) with `classify_cell.py` d3459b8f1d55
+**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `53420bc` (blob f11b0d027785) with `classify_cell.py` 0e69400bacd0
 is the ONLY harvest of an O60 cell. No model-written cell is harvested by any other tool. Its classes are §D2's, with these readings, each
 ruled before any O60 cell:
 - **The commit each end is judged on.** The tree is materialised from that commit's objects in the cell's own store, never from a
@@ -556,7 +556,9 @@ ruled before any O60 cell:
   LANDED        the end line's `landing-N <sha>`; watch.log's DECLARED line must agree; a landed-N tag, if present, must peel to it
   DONE          the sha `bin/declare done` recorded, which must be on the history of the commit the session ended at
   EXIT-FORCED   the watcher's SNAPSHOT commit: HEAD at the kill, on any branch. EVEN AFTER A LANDING: the DECLARED landing is
-                recorded and NOT judged (refuter B, round 4). This is a declared disposition, not a closed item
+                recorded and NOT judged (refuter B, round 4). This is a declared disposition, not a closed item. The cells are
+                COUNTED SEPARATELY per arm, each with its landing sha (`SEPARATE EXIT-FORCED-AFTER-LANDING`), so the other
+                reading is recoverable without a re-run (the helm, 13:58:33)
   a HALT end    the watcher's SNAPSHOT commit, HEAD at the stop
   ```
 - **TREE is the SAME reading twice.** A re-referee rc 124 is the tree's only when the first run also read 124 at the same stage and BOTH
@@ -578,7 +580,7 @@ ruled before any O60 cell:
   make a subject-provable cause TREE. A refusal from the harness's own inputs stays REFUSED, and the table does not print.
 - **`table --manifest` is REQUIRED,** and the manifest is the fire's own record of the cells it staged, never a typed count.
 **(3) DECLARED LIMITS, each printed with its COUNT at harvest:** `TREE-REFUSE` rows, by cause · `FETCH-REFUSE` rows (a failed copy, named,
-blocking the table until disposed) · `SEPARATE QUEUE-124` per arm · `SEPARATE PASS+DISAGREE` per arm · a DONE judged on the declared sha,
+blocking the table until disposed) · `SEPARATE QUEUE-124` per arm · `SEPARATE PASS+DISAGREE` per arm · `SEPARATE EXIT-FORCED-AFTER-LANDING` per arm, with each landing sha · a DONE judged on the declared sha,
 an ancestor by design · a missing SNAPSHOT line REFUSES · a failed control STOPS the harvest. The watcher's SNAPSHOT line is a RECORD; the
 pin is the harvest's own resolution in the cell's own store. The watcher line was FROZEN at a3db4f6 after five routes were closed. A further
 route is declared here with its count, unless the harvest fails to refuse it, and that one stops the run.
