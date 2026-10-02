@@ -527,3 +527,64 @@ every cell is rendered at the fire by 51bd1e9's renderer, and each cell's manife
 - **The v3 route's sibling, `clb_fire.sh`, still PRESERVES a present retention value.** It fires no O60 cell, and the ruling named the O60
   route.
 - kent did NOT read the run-box receipts (the belt drive, the `--diff`, the uid ×5) or the systems-x86 selftest. Those are the lead's alone.
+
+## ⚖️ ADDENDUM 10 — THE RE-CUT, THE HARVEST OF RECORD, ITS DECLARED LIMITS, AND THE FIRE (L8, L10). APPENDED.
+bench (lead). Drafted 2026-10-02 (PDT), before any O60 cell fired. **Every line marked OWED is taken on Monday 10-05 in the order of (6),
+and this addendum merges only when each reads MET or is declared below, before the first model call.** Zero model spend in everything
+drafted here. The design it applies is `DESIGN-correctness-primary-2026-10-02.md` (PR #311): its §D2 classes, §D4 battery and §D5 harvest.
+**(1) L1 moves to the re-cut.** ADDENDUM 9 named 51bd1e9. The export is re-cut from saltbench-systems ≥ `a3db4f6` (the sha is OWED at the
+cut; EXPORTED-FROM names it), so the 40 run on these changes, each driven red-first on its own commit:
+```
+  de04273  the L4 control proofs re-pointed at the harness call modules                       harness
+  target.py   on timeout, kill the build's whole PROCESS GROUP (a grandchild held the fleet build lock)     harness
+  782835d  the referee's RUNNER is the canonical build wrapper; its blob is printed per run           harness
+  54d4fc8, 82ccbf8  the watcher logs its SNAPSHOT line unconditionally and runs no `git status`;
+                    `bin/declare done` records the declared sha                                      SUBJECT-FACING (declare)
+  dccb36f  the fence drive probes a WRITE into ../ctl (relative and absolute): denied, 0 landed        harness (drive)
+  f386975  the watcher writes its cosmetic s<P> tag by update-ref, never `git tag`, which ran a
+           cell-set core.editor / gpg.program outside the fence (0 of 1,882 cell configs armed it)  harness
+  fc8c9df, 3518f30, a3db4f6  the watcher reads HEAD only from the cell's OWN store: no gitfile,
+           symlink, commondir/gitdir, alternates or unlistable dir under .git, and HEAD^{commit}      harness
+```
+OWED: kent's non-author read of 51bd1e9..the cut · the four roots' `_bin` re-pointed to the cut after the drill's failback.
+**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `d71edf0` (blob f51fb5b5d80c) with `classify_cell.py` d3459b8f1d55
+is the ONLY harvest of an O60 cell. No model-written cell is harvested by any other tool. Its classes are §D2's, with these readings, each
+ruled before any O60 cell:
+- **TREE is the SAME reading twice.** A re-referee rc 124 is the tree's only when the first run also read 124 at the same stage and BOTH
+  builds are shown, by the build lock's own log, to have held the lock for the bound. Every other 124 is the QUEUE's: UNSCORABLE.
+  The queue wait runs before the lock's bound and inside the referee's 1800 s, so without this a busy box charged the subject.
+  No record twice is TREE; anything else is UNSCORABLE.
+- **`Submission/Translation.lean` is the referee's.** The referee writes it, so a diagnostic there is UNSCORABLE. The root `Submission.lean`
+  is the subject's in any spelling.
+- **PASS with DISAGREE stays UNSCORABLE, as registered, and is COUNTED SEPARATELY per arm** (the table's `SEPARATE PASS+DISAGREE` line).
+  A REJECTED reading for it waits on a later addendum with evidence. The two-seed probe (zero spend, n = 1, the G-battery's only such
+  member) found that member's disagreement stable across seeds, AGREE at the native caller's register state, and its reference
+  seed-invariant: the routine's, on that member.
+- **REFUSED has a class.** A cell the harvest cannot pin or materialise for a cause IN ITS TREE or in a ref it owns is TREE: REJECTED on a
+  declared end, HALTED on a halt, charge ARM, record NONE, `TREE-REFUSE: <cause>`. A cause counts only where it is PROVABLY the subject's
+  act: a gitfile, symlinked or commondir `.git`; a symlink inside `.git`; a pin its own store lacks; `down -`; a DONE sha off its history;
+  a moved landing tag; and unsafe, absolute, outside, colliding or gitlink paths. **`SNAPSHOT -` stays REFUSED** (the helm, 13:47:05). The
+  watcher writes it for an unresolvable HEAD, a rewired `.git`, and ANY failure of its `.git` enumeration, environmental ones included, so
+  charging it to the arm would be an arm-correlated gate. A human disposes of it. A later split (the watcher naming which term refused) may
+  make a subject-provable cause TREE. A refusal from the harness's own inputs stays REFUSED, and the table does not print.
+- **`table --manifest` is REQUIRED,** and the manifest is the fire's own record of the cells it staged, never a typed count.
+**(3) DECLARED LIMITS, each printed with its COUNT at harvest:** `TREE-REFUSE` rows, by cause · `FETCH-REFUSE` rows (a failed copy, named,
+blocking the table until disposed) · `SEPARATE QUEUE-124` per arm · `SEPARATE PASS+DISAGREE` per arm · a DONE judged on the declared sha,
+an ancestor by design · a missing SNAPSHOT line REFUSES · a failed control STOPS the harvest. The watcher's SNAPSHOT line is a RECORD; the
+pin is the harvest's own resolution in the cell's own store. The watcher line was FROZEN at a3db4f6 after five routes were closed. A further
+route is declared here with its count, unless the harvest fails to refuse it, and that one stops the run.
+**(4) Not shipped, and what follows from it (the helm's ruling (3), 2026-10-02 11:43:46):**
+- **The referee call has no wall bound and no cwd.** One non-returning routine wedges the harvest. The operator kills it and re-runs the
+  remaining cells one by one; a hang has no emitter, so it is never a class. A routine that `.include`s a file assembles from the cell root
+  only.
+- **Cost does not govern run 1's reading.** No producer joins `post-end` cost into the row, so §D3 2's cost rules are produced by hand from
+  the cells' own meter files or not at all, and this addendum claims neither.
+- **The control is PLAIN only.** The Lean path is first exercised by a salt-diet cell. A salt-diet-only box failure reads HARNESS, so the
+  whole arm lands in UNSCORABLE; this is the safe direction, declared.
+**(5) The served-model guard.** The smoke pair's `model_served` must read the registered model, or the fire HOLDS: a newer model is priced
+VOID by the cut's rate table.
+**(6) The order on Monday, and what each step leaves as a receipt (OWED):**
+the drill's failback → the run box's cells census diffs clean → the re-cut (sha) → kent reads 51bd1e9..cut → deploy, `_bin` ×4 re-pointed
+→ the five fences re-rendered → `--check-only` ×5 → the build lock's holder named (`lsof`) → **L8 and L10** (the pool, by the PM at the
+fire; one authenticated read) → the smoke pairs (the served-model guard) → the 40. The harvest runs per cell after each end, from a copy,
+never from a live worktree.
