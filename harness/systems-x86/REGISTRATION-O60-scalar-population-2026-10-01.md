@@ -475,3 +475,47 @@ metric, never a gate.
   family's salt-diet verdict is first produced by a cell.
 - **Monday re-runs --check-only on all five cells after the weekend's outlet drill**, which may power-cycle the run box, and before L8/L10
   are read.
+
+## ⚖️ ADDENDUM 9 — THE CELLS' BELT DID NOT DENY THE FLEET'S MACHINE-STATE TREE, AND THE RETENTION RULE IS RAISED TO max(present, 3650). L1 MOVES TO 2a5b4da; NOTHING FIRES ON THIS ADDENDUM. APPENDED.
+bench (lead), 2026-10-02, 00:58–01:10 UTC (17:58–18:10 PDT 10-01). Zero model spend, no cell launched, no staged cell written. The pool (L8, L10) is named by
+ADDENDUM 10 at the fire, as ADDENDUM 8 said of "a later addendum".
+**(1) The gap.** Found by `systems` on the run box (one staged fence parsed, rendered 15:27 PDT): the fence's sandbox `denyRead` (627 entries)
+and its tool rules carried **0 entries under `~/.fleet`**, the fleet's machine-state tree: an API key, the cold spare, the lanes' pool env
+files. `render_fence_v3.py` denies a fixed list of dot-directories and `~/.fleet` was not on it. Re-measured here, on all five staged cells:
+the subject runs as the box's own user (`cell-claude.sh` execs the client with `env -i` and no user switch; all five cells are that user's,
+on one `_bin`), and the tree is that user's, mode 700. **So the belt was the only layer that could deny it, and it did not.** The file-tool
+hook (`fence-hook.sh`, blob e783a6b5ad11, unchanged) is an allowlist and already blocked it: `Read` and `Grep` of a path under `~/.fleet` read
+`FENCE-OUTSIDE`, driven on a fixture cell. **No cell has fired on these fences**, so there is no exposure to declare.
+**(2) The fix, two commits on 977a753.** `8704870` (systems' 6ace1f8, folded) named two children of the tree; `434a64b` (bench) denies the
+WHOLE tree instead, because a named child cannot cover one born after the render, and the weekend's failover drill creates one. Nothing a
+cell runs reads the tree: every use in the harness is the launcher's env file or the harvest, both outside the session.
+- **Red backwards, selftest:** with 977a753's list the four tree arms FAIL (74 of 78); with the two named children, the arms for a child
+  born after the render and for the pool env files FAIL (76 of 78); at 434a64b, 78 of 78.
+- **Red then green, the belt itself,** under the pinned sandbox-runtime on the run box, a planted NON-SECRET probe file, removed after:
+  the staged fence reads `<tree>/secrets/<probe>` and a probe directly under the tree with rc 0; the 434a64b rendering refuses both,
+  `Operation not permitted`. Controls under BOTH: a file in the cell's own `repo/` reads rc 0, `~/.ssh` is denied.
+- **The rendering's whole delta** (`--diff` against the staged fence of the plain cell): `denyRead` 627 → 628 and `denyWrite` 635 → 636,
+  each `+` the tree alone; four tool rules added. Nothing else moved, so `$HOME` has not changed since the 15:27 render.
+**(3) Retention, ruled by the helm 2026-10-01 15:59:21 PDT.** 977a753 wrote `cleanupPeriodDays` 3650 only when the key was ABSENT and kept any
+present value. `2a5b4da` writes **max(present, 3650)** through `retention_want.py`, and a value that is not an integer REFUSES the route. Red
+first, on the route's own block extracted from `x86_clb.sh` with fixture settings: present 30 reads back **30** at 977a753 and **3650** at
+2a5b4da; 10000 → 10000 and absent → 3650 under both; "thirty" → REFUSE, rc 3. `retention_want.py --selftest` 11 of 11; the systems-x86
+selftest 32 passed, 0 failed, 5 skipped (environment-gated, not passes).
+**(4) What ADDENDUM 8 said that this moves, and what it does not.**
+```
+  L1  EXPORT    MOVES  to 2a5b4da (EXPORTED-FROM 2a5b4da8efbd2db142dd204b455270185cfdb476). 977a753..2a5b4da touches THREE files:
+                       render_fence_v3.py, x86_clb.sh, and the new retention_want.py. The four roots' _bin are re-pointed to the new
+                       export at the fire, never before the drill's failback (below).
+  L5  PER TASK  UNMOVED  referee_o60.sh is blob 447082fea41b at both shas.
+  L6  ARMS      UNMOVED  arm_builder.py is blob f9ab01dc922d at both shas.
+  L7  DRY CELL  OWED AGAIN  --check-only ×5 re-runs on the re-rendered fences (the order below). Its 15:27 receipts are of fences this
+                       addendum supersedes.
+  L9  HOOK      UNMOVED  hook-deny-v3.sh 16f37ada78ed and fence-hook.sh e783a6b5ad11 at both shas.
+```
+**(5) The order on Monday, and why it is this order.** A fence is a list rendered at a moment: an entry created under `$HOME` after the render
+is outside it. The weekend's drill creates such entries on the run box. So: **the drill's failback → the run box's cells census diffs clean →
+the _bin re-pointed to 2a5b4da → the five staged fences re-rendered → --check-only ×5 → a non-author reads the delta → ADDENDUM 10 (L8, L10)
+→ the smoke pairs → the 40.** The launcher re-renders every fence at the moment of use and refuses on any difference, so a fence left stale by
+the drill holds the fire. It cannot launch it unfenced. That check is why the order is safe, not a reason to skip it.
+**Declared:** the population's build shas become THREE (ed1890c ×4 and 977a753 ×1 staged, 2a5b4da the route that fires them). The fence of
+every cell is rendered at the fire by 2a5b4da's renderer, and each cell's manifest keeps its own staging export.
