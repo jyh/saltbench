@@ -652,6 +652,12 @@ other prints `TIE-IN-(i)` or `TIE-IN-(ii)` (the helm, 17:19:11), quoting (i)'s o
 row on any unforeseen error; `classify_cell.py --selftest` runs D2.14 and B6 (82/82). `test_primary.py` 17/17 (10 GREEN / 7 RED before).
 **(5) The served-model guard.** The smoke pair's `model_served` must read the registered model, or the fire HOLDS: a newer model is priced
 VOID by the cut's rate table.
+**(5b) The native executor's reach (desk ZP, the helm 18:46:21) — OWED, a RELEASE CONDITION OF THE FIRE.** `exec_native` runs the
+subject's routine natively, and until ZP closes, the translate gate is the only thing in front of it. Its completeness is a design review,
+not a search. systems: (a) state whether the gate is an allowlist (closed by construction) or a denylist (open by construction), with a
+hostile red-first battery, each member refused at translate beside a live control, and/or (b) run the native executor ISOLATED (no write
+outside its scratch, no network, the harness tree read-only or absent). kent reads. The cut carries ZP's fix. **Default if unmet by
+Sunday 20:00: the fire WAITS.**
 **(6) The order on Monday, and what each step leaves as a receipt (OWED):**
 the drill's failback → the run box's cells census diffs clean → the re-cut (sha) → kent reads 51bd1e9..cut → deploy, `_bin` ×4 re-pointed
 → the five fences re-rendered → `--check-only` ×5 → the build lock's holder named (`lsof`) → **L8 and L10** (the pool, by the PM at the
