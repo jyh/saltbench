@@ -532,8 +532,8 @@ every cell is rendered at the fire by 51bd1e9's renderer, and each cell's manife
 bench (lead). Drafted 2026-10-02 (PDT), before any O60 cell fired. **Every line marked OWED is taken on Monday 10-05 in the order of (6),
 and this addendum merges only when each reads MET or is declared below, before the first model call.** Zero model spend in everything
 drafted here. The design it applies is `DESIGN-correctness-primary-2026-10-02.md` (PR #311): its §D2 classes, §D4 battery and §D5 harvest.
-**(1) L1 moves to the re-cut.** ADDENDUM 9 named 51bd1e9. The export is re-cut from saltbench-systems ≥ `6de3f4e` (2026-10-02 18:5x: the merge of the harvest of record `f6cf86f` and systems'
-ELSE-3/4 `acd7593`, because `x86_cell_fence.sh` runs on the fire route at `x86_clb.sh:414`; it was ≥ `b629652` (four one-line fixes on the merge `8eca9d8`, below)), the merge holding both
+**(1) L1 moves to the re-cut.** ADDENDUM 9 named 51bd1e9. The export is re-cut from saltbench-systems ≥ `c2074e7` (2026-10-02 19:33, desk ZP's isolated native executor, over ≥ `6de3f4e` (18:5x: the merge of the harvest of record `f6cf86f` and systems'
+ELSE-3/4 `acd7593`, because `x86_cell_fence.sh` runs on the fire route at `x86_clb.sh:414`; it was ≥ `b629652` (four one-line fixes on the merge `8eca9d8`, below))), the merge holding both
 the cut's changes (`a3db4f6`) and the harvest of record (`53420bc`); `merge-base --is-ancestor` reads TRUE for each. The sha actually cut is
 OWED, and EXPORTED-FROM names it. The 40 run on these changes, each driven red-first on its own commit:
 ```
@@ -652,12 +652,20 @@ other prints `TIE-IN-(i)` or `TIE-IN-(ii)` (the helm, 17:19:11), quoting (i)'s o
 row on any unforeseen error; `classify_cell.py --selftest` runs D2.14 and B6 (82/82). `test_primary.py` 17/17 (10 GREEN / 7 RED before).
 **(5) The served-model guard.** The smoke pair's `model_served` must read the registered model, or the fire HOLDS: a newer model is priced
 VOID by the cut's rate table.
-**(5b) The native executor's reach (desk ZP, the helm 18:46:21) — OWED, a RELEASE CONDITION OF THE FIRE.** `exec_native` runs the
+**(5b) The native executor's reach (desk ZP, the helm 18:46:21) — MET 2026-10-02 19:33:40 (desk ZP DONE), a RELEASE CONDITION OF THE FIRE.** `exec_native` runs the
 subject's routine natively, and until ZP closes, the translate gate is the only thing in front of it. Its completeness is a design review,
 not a search. systems: (a) state whether the gate is an allowlist (closed by construction) or a denylist (open by construction), with a
 hostile red-first battery, each member refused at translate beside a live control, and/or (b) run the native executor ISOLATED (no write
 outside its scratch, no network, the harness tree read-only or absent). kent reads. The cut carries ZP's fix. **Default if unmet by
 Sunday 20:00: the fire WAITS.**
+**MET AT saltbench-systems `c2074e7`:** `exec_native` runs only under `exec_native.sb` (blob 3449b615af60): reads are an ALLOWLIST
+("/" · WORK · /usr/lib · /System · /Library/Apple · /usr/bin/arch · /dev), and network, mach-lookup, fork, exec and writes are denied.
+**DECLARED LIMIT:** file METADATA is readable everywhere (the launch aborts without it, bisected), so a routine can learn a path's existence,
+size and times, never its content. Read by kent (19:12, 19:33: HOLDS). Controls under it: Crc32's reference, byte-identical to the
+unsandboxed run, and the full referee PASS AGREE=82 (plain). The G5 Adler32 salt-diet member reads REJECTED at TARGET, tests=PASS AGREE=92,
+its record identical to the unsandboxed run but for a queue pid and the work path. **Bound: the salt-diet arm is controlled up to a REFUSED
+proof; no salt-diet ACCEPTED was driven under the profile.** `target.py` is not inside the profile and the commit does not touch it.
+(a), the translator's own correctness, follows Monday.
 **(6) The order on Monday, and what each step leaves as a receipt (OWED):**
 the drill's failback → the run box's cells census diffs clean → the re-cut (sha) → kent reads 51bd1e9..cut → deploy, `_bin` ×4 re-pointed
 → the five fences re-rendered → `--check-only` ×5 → the build lock's holder named (`lsof`) → **L8 and L10** (the pool, by the PM at the
