@@ -598,10 +598,18 @@ route is declared here with its count, unless the harvest fails to refuse it, an
   the cells' own meter files or not at all, and this addendum claims neither.
 - **The control is PLAIN only.** The Lean path is first exercised by a salt-diet cell. A salt-diet-only box failure reads HARNESS, so the
   whole arm lands in UNSCORABLE; this is the safe direction, declared.
-**§D8 item 1 — OWED.** The refuter pass on design revision 4 (blob 8df15e066245) is to be a non-author, claim-by-claim read of its text
-against the code at 8eca9d8 (the helm, 14:08:20 and 14:17:44), not a re-fired Fable round; rounds 1–4 covered the code it describes. It
-is NOT yet taken. Each claim reads HOLDS or DIFFERS; a claim with no code site is flagged. Any DIFFERS or flagged claim goes to a Fable
-refuter before the fire. This line reads MET only when that read is on record.
+**§D8 item 1 — MET (CLOSED by the helm, 2026-10-02 17:29:34).** The refuter pass on design revision 4 is on record, as this chain, each
+link a post on the fleet record:
+- systems' claim-by-claim non-author read of revision 4 against the code (15:49:57: 59 claims, 44 HOLD / 9 DIFFER / 6 flagged);
+- the helm's sort of it (15:50:45);
+- bench's fixes (16:05:59: saltbench-systems b629652 · design 9c4715d, blob d7134b44d479);
+- ONE Fable refuter, non-author, over that revision 4 and this addendum (cccaedd2be4a) against b629652 (17:05:23: 15 HOLD, 6 of them with
+  a limit · 1 REFUTED, the O1 text contradiction between the two documents · 5 further findings);
+- bench's alignment (17:23:25: design e019464, blob d78c1f067ff1 · saltbench-systems f6cf86f);
+- kent's non-author read of that delta (17:28:13, HOLDS).
+**THE DEVIATION, DECLARED IN THE HELM'S WORDS:** §D8 item 1 reads literally "the re-fired refuter pass on this revision's blob". The pass that
+ran was one Fable refuter over revised revision 4 + this addendum, AFTER a claim-by-claim read, and the alignment it forced was read by a
+non-author rather than re-refuted. The merge of this addendum still waits on every other line marked OWED.
 **§D8 item 3, MET at 53420bc:** the harvest driven end to end on two real cell records (a LANDED plain cell and a CAP-COST salt-diet cell,
 from a fresh fetch, with the cut's harness at a3db4f6). Control ACCEPTED, both cells ACCEPTED, and the table printed under its manifest with
 all three SEPARATE counts at 0.
