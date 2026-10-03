@@ -1585,3 +1585,23 @@ reader's box, so every verdict here is the author's reading of the run's files.
   file. It is printed apart as a note, never as the verdict.
 - **The tripwire `l8rfpw01`** has two score files. The first, before the TESTS-needle fix, reads `TESTS 0/7` (the clause-failure count under
   a PASSES label, §A8.10.3). The list uses the re-score at `e8c0d05`.
+
+---
+
+# ⚖️ ADDENDUM 34 — **NOT A COUNT ADDENDUM: NO CONDITION OF THE 181 WAS SCORED PASS ON AN UNMEASURED SUITE. NO CONDITION MOVES.**
+## bench, 2026-10-02, on the helm's orders of 17:06:13 and 17:43:10 (O57 · O64), before the arXiv v3 replacement. Two defects of one class, one line each.
+- **D0.3 (the v3 referee read PASS when the hidden suite was not measured, a hang or a timeout):** NO condition of the 181 was scored by
+  `referee_v3`. Every RESULT of record names an rc-based scorer (systems' scorer map, 181 of 181 by RESULT file). The referee is fixed in the
+  private tree.
+- **Its sibling (`score_wave_v3.sh`, the top-up and step-g scorers read PASS on the runner's rc 0 alone, so a solution that calls
+  `process::exit(0)` before the suite prints `TESTS` would read PASS):** ZERO occurrences over the groups those scorers scored. Every PASS
+  row carries `TESTS p/p` with p > 0, and each group's PASS count equals its RESULT's own:
+```
+  p1-greenfield 28 (RESULT §2: 28) · level 4 19 (12 + 7) · level 5 the 15 of §A2, in a superset of 26 · level 6 32 (18 + 14)
+  blocks O · OS · SBS · SG · SS · SC (the evidence tables of record): every PASS with full p/t · step g 6 (cells.tsv) · p1-specchange 16 of 19 (its tsv)
+```
+  Method, and its bounds beside it: the scorers' own per-cell output was read as data, with a planted `<none>` row as a positive control
+  (found). Separately, every `solution.rs` on both boxes was searched for a process exit, with a planted `exit(0)` as a positive control
+  (found): 0 exits to status 0. The score files are in the private tree, so these counts are the lead's reading; no non-author has
+  re-run them. One user tree on the run box was unreadable to that search; the score-file axis does not depend on it. The scorers are being
+  changed to read a missing `TESTS` line as NOT-MEASURED, never PASS.
