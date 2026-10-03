@@ -663,7 +663,10 @@ Sunday 20:00: the fire WAITS.**
 **DECLARED LIMIT:** file METADATA is readable everywhere (the launch aborts without it, bisected), so a routine can learn a path's existence,
 size and times, never its content. Read by kent (19:12, 19:33: HOLDS). Controls under it: Crc32's reference, byte-identical to the
 unsandboxed run, and the full referee PASS AGREE=82 (plain). The G5 Adler32 salt-diet member reads REJECTED at TARGET, tests=PASS AGREE=92,
-its record identical to the unsandboxed run but for a queue pid and the work path. **Bound: the salt-diet arm is controlled up to a REFUSED
+its record identical to the unsandboxed run in 26 of 28 fields. The two that differ are run-identity, never a reading:
+`work` (each run's own fresh work directory) and `target.spec_dependence.tail`, whose first line is the build queue's
+`saltqueue: ticket P2 seat=… pid=…` (a per-run ticket id and process id). Its other two lines, `SPECDEP-CLEAN reached=242` and
+`saltbuild EXIT=0`, are equal. No class, token, count, agreement, target error or blob field differs. **Bound: the salt-diet arm is controlled up to a REFUSED
 proof; no salt-diet ACCEPTED was driven under the profile.** `target.py` is not inside the profile and the commit does not touch it.
 (a), the translator's own correctness, follows Monday.
 **(6) The order on Monday, and what each step leaves as a receipt (OWED):**
