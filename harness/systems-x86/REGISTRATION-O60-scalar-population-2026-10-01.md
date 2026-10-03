@@ -550,7 +550,9 @@ OWED, and EXPORTED-FROM names it. The 40 run on these changes, each driven red-f
            symlink, commondir/gitdir, alternates or unlistable dir under .git, and HEAD^{commit}      harness
 ```
 OWED: kent's non-author read of 51bd1e9..the cut · the four roots' `_bin` re-pointed to the cut after the drill's failback.
-**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `ca74578` (blob 5c49bf396275) with `classify_cell.py` 22585074bc0c
+**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `f6cf86f` (blob 54ba19296281) with `classify_cell.py` 6f6e4b0cc223
+(it was ≥ `ca74578`, blobs 5c49bf396275 / 22585074bc0c, until the rev-4 refuter's ELSE-1/ELSE-2 and kent's `primary` read moved it;
+the three changes are below, under the primary outcome)
 is the ONLY harvest of an O60 cell. No model-written cell is harvested by any other tool. Its classes are §D2's, with these readings, each
 ruled before any O60 cell:
 - **The commit each end is judged on.** The tree is materialised from that commit's objects in the cell's own store, never from a
@@ -635,6 +637,10 @@ the two real cells and synthetic rows BEFORE run 1's rows are read; until then n
 **BUILT at ca74578 (`harvest_o60.py primary`), refuted on synthetic rows (DISCORDANT, NO ENDED CELL, +s, u: 9/9 after 7 RED) and on the
 two real cells against an answer derived by hand first, which it matched exactly.** Its reading is still not taken on run 1 until this
 addendum's refuter verdict is on record.
+**AND AT f6cf86f, red-first, after the rev-4 refuter (16:59) and kent's non-author read (16:56):** an arm label outside {plain, salt-diet}
+REFUSES (it was counted in no rate); DISCORDANT is reserved for OPPOSITE strict orders, and a tie on one rate with a strict order on the
+other prints `TIE-IN-(i)` or `TIE-IN-(ii)` (the helm, 17:19:11), quoting (i)'s order in none of the three; `battery` writes a REFUSED
+row on any unforeseen error; `classify_cell.py --selftest` runs D2.14 and B6 (82/82). `test_primary.py` 17/17 (10 GREEN / 7 RED before).
 **(5) The served-model guard.** The smoke pair's `model_served` must read the registered model, or the fire HOLDS: a newer model is priced
 VOID by the cut's rate table.
 **(6) The order on Monday, and what each step leaves as a receipt (OWED):**
