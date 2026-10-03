@@ -1597,11 +1597,12 @@ reader's box, so every verdict here is the author's reading of the run's files.
   `process::exit(0)` before the suite prints `TESTS` would read PASS):** ZERO occurrences over the groups those scorers scored. Every PASS
   row carries `TESTS p/p` with p > 0, and each group's PASS count equals its RESULT's own:
 ```
-  p1-greenfield 28 (RESULT §2: 28) · level 4 19 (12 + 7) · level 5 the 15 of §A2, in a superset of 26 · level 6 32 (18 + 14)
+  p1-greenfield 28 (RESULT §2: 28) · level 4 19 (12 + 7) · level 5: §A2's 15 PASS cells all lie in a 26-PASS superset, each with full TESTS · level 6 32 (18 + 14)
   blocks O · OS · SBS · SG · SS · SC (the evidence tables of record): every PASS with full p/t · step g 6 (cells.tsv) · p1-specchange 16 of 19 (its tsv)
 ```
   Method, and its bounds beside it: the scorers' own per-cell output was read as data, with a planted `<none>` row as a positive control
   (found). Separately, every `solution.rs` on both boxes was searched for a process exit, with a planted `exit(0)` as a positive control
-  (found): 0 exits to status 0. The score files are in the private tree, so these counts are the lead's reading; no non-author has
-  re-run them. One user tree on the run box was unreadable to that search; the score-file axis does not depend on it. The scorers are being
+  (found): 0 exits to status 0. The score files are in the private tree. kent re-ran the wave-format score files on the lead box with an
+  independent parser and population (204 files, 385 PASS rows): 0 hits in the 181. The evidence tables, p1-specchange's tsv, the run box's
+  own score files and the source search remain the lead's reading alone. One user tree on the run box was unreadable to that search; the score-file axis does not depend on it. The scorers are being
   changed to read a missing `TESTS` line as NOT-MEASURED, never PASS.
