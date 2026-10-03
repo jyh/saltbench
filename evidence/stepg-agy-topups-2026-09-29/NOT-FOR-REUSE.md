@@ -8,4 +8,5 @@ A solution that calls `process::exit(0)` before the suite prints its count there
   every PASS it scored: each carries `TESTS p/p` with p > 0.
 - **The script is left byte-for-byte as it ran**, because a RESULT cites it by hash. Editing it would falsify that receipt.
 - **Any NEW scoring takes `score_wave_v3.sh`'s rule as fixed on 2026-10-02:** PASS needs `TESTS p/t` with p = t > 0, and anything else at
-  rc 0 is NOT-MEASURED.
+  rc 0 is NOT-MEASURED. That rule closes the SILENT exit only: the count it trusts is read from output the subject can also write,
+  so a forged count is NOT closed by it. New scoring takes that rule AND a count from a channel the subject cannot write (open, 2026-10-02).
