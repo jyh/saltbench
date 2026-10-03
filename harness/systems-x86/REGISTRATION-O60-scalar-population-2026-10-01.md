@@ -532,7 +532,8 @@ every cell is rendered at the fire by 51bd1e9's renderer, and each cell's manife
 bench (lead). Drafted 2026-10-02 (PDT), before any O60 cell fired. **Every line marked OWED is taken on Monday 10-05 in the order of (6),
 and this addendum merges only when each reads MET or is declared below, before the first model call.** Zero model spend in everything
 drafted here. The design it applies is `DESIGN-correctness-primary-2026-10-02.md` (PR #311): its §D2 classes, §D4 battery and §D5 harvest.
-**(1) L1 moves to the re-cut.** ADDENDUM 9 named 51bd1e9. The export is re-cut from saltbench-systems ≥ `b629652` (four one-line fixes on the merge `8eca9d8`, below), the merge holding both
+**(1) L1 moves to the re-cut.** ADDENDUM 9 named 51bd1e9. The export is re-cut from saltbench-systems ≥ `6de3f4e` (2026-10-02 18:5x: the merge of the harvest of record `f6cf86f` and systems'
+ELSE-3/4 `acd7593`, because `x86_cell_fence.sh` runs on the fire route at `x86_clb.sh:414`; it was ≥ `b629652` (four one-line fixes on the merge `8eca9d8`, below)), the merge holding both
 the cut's changes (`a3db4f6`) and the harvest of record (`53420bc`); `merge-base --is-ancestor` reads TRUE for each. The sha actually cut is
 OWED, and EXPORTED-FROM names it. The 40 run on these changes, each driven red-first on its own commit:
 ```
