@@ -4,9 +4,12 @@
 ## ⛔ DRAFT, REVISION 4. Not a registration. It binds nothing until a dated AMENDMENT freezes it (§D8), before the first model call of the run it governs.
 ## Revision 2 took refuter round 1 (blob `e1c16efcfd3f`, PR #311 comment 5955729360). Revision 3 takes round 2 (blob `32b0d219b6a4`, comment 5956165509).
 ## Revision 4 writes the text to the code that rounds 3 and 4 (comments 5957499892 · 5958937235) and the helm's rulings of 2026-10-02 produced: harvest saltbench-systems ≥ `d71edf0`, the cut ≥ `a3db4f6`.
-## Every repair is mapped in §D10–§D13.
+## Revision 4 then took the refuter pass on itself (round 5: systems' Fable refuter on blob `d7134b44d479` + O60 ADDENDUM 10 `cccaedd2be4a`,
+## against `b629652`; the helm's ruling 17:06:13 (2) and 17:19:11). Every repair is mapped in §D10–§D14.
 ## WHICH REPO A PATH IS IN: a registration or amendment (`harness/…/REGISTRATION-*`, `AMENDMENT-*`) is in THIS public repository; the harness code
 ## (`classify_cell.py`, `harvest_o60.py`, `target.py`, `referee_o60.sh`, `frame.py`, `cell-watch.sh`, the G-battery) is in the private saltbench-systems.
+## Two files cited bare are outside both rules: `harness/systems-v3/PRESPEC-posthoc-…` is in THIS repository; `CARD-TARGET.md` is the private
+## `tasks/systems-x86/Crc32/CARD-TARGET.md` in saltbench-systems.
 
 The Captain's question at the table: *"How is it that we know the agent doesn't just submit an arbitrary program, like a constant function?
 We should have put correctness in as a primary criterion, so let's commission a design phase."*
@@ -65,9 +68,13 @@ of cells and is never pooled across classes. That covers cost, tokens, wall time
 - An **INSTRUMENT** end (CRASH · METER-BLIND · COST-BLIND · FAILED-BOOTS · BOX-UNREADABLE · QUOTA-BLOCKED · DIALOG) is UNSCORABLE.
 - The 15 kinds are read from `cell-watch.sh`'s `end_session` emitters, never from its header comment.
 - **The tree the referee reads** is PINNED BY THE HARNESS'S OWN RECORD, never by a ref the subject owns (round 3, K1/K3):
-  - LANDED: the end line's `landing-N <sha>`; the watcher's DECLARED line must agree, and a `landed-N` tag, if present, must peel to it;
-  - DONE: the sha `bin/declare done` recorded. That record is SUBJECT-WRITABLE, and it is bounded by the history check: it must be on the
-    history of the commit the session ended at;
+  - LANDED: the end line's `landing-N <sha>`; the watcher's DECLARED line must agree, and a `landed-N` tag, if present, must peel to it.
+    The DECLARED line is the watcher's copy of the subject's own `.seat/<id>` first line, so this pin is SUBJECT-WRITABLE too, and it has
+    NO history bound;
+  - DONE: the sha `bin/declare done` recorded. That record is SUBJECT-WRITABLE. It must be on the history of the commit the session ended
+    at, and that anchor is the subject's own HEAD: **the bound catches a typo, never a choice.** A subject can put any commit on that
+    history (a merge whose second parent is an unrelated commit pins it; refuter round 5, item 12, driven). Either pin is therefore the
+    tree the subject DECLARED, which is what a declared end asks the referee to judge, and nothing more;
   - every other end, EXIT-FORCED after a landing included: the watcher's `SNAPSHOT s<P> <sha>`, HEAD at the end on any branch, read
     only from the cell's own store. A rewired `.git` or a failed enumeration of it logs `-`. The `s<P>` tag is cosmetic.
   - Uncommitted work is NOT MEASURED: no worktree is read. The column prints `-`.
@@ -98,6 +105,10 @@ subject's (the helm, 13:47:05). PASS with DISAGREE stays UNSCORABLE and is count
 - A cell is RE-FIRED only for a zero-spend instrument end (FAILED-BOOTS, QUOTA-BLOCKED, BOX-UNREADABLE at boot). **This set is a NEW
   rule of this design, not a citation:** lane B (public saltbench `harness/systems-v3/AMENDMENT-claude-lane-B-2026-09-16.md`) says only
   "no top-up re-fires" (:1319) and re-fires a FAILED BOOT alone (§Q7 row 8). It is an OPERATOR rule; no harvest code re-fires anything.
+  - **"Zero-spend" is a MEASUREMENT, not the end's name.** The watcher emits QUOTA-BLOCKED at ANY tick (`cell-watch.sh:576`), so a cell
+    that bought turns before the vendor's wall carries the same end. Such a cell is re-fired only when its post-end meter line
+    (`cell-watch.sh:360`) reads zero spend; a cell whose meter reads any spend, or is VOID, is not re-fired and is reported UNSCORABLE at
+    its n.
 - Every other UNSCORABLE is reported, by name, at the n it reached.
 
 ## §D3 · THE OUTCOME HIERARCHY
@@ -107,6 +118,11 @@ subject's (the helm, 13:47:05). PASS with DISAGREE stays UNSCORABLE and is count
   finished.
   - Halted trees that pass are printed BESIDE it as `+s accepted at the cap`, never inside it.
   - With no declared cell, it prints `NO ENDED CELL`.
+  - (ii) with no scorable cell prints `NO SCORABLE CELL`, §D3 2 rule 2's word.
+  - **`DISCORDANT` is reserved for OPPOSITE STRICT orders** (the helm, 17:19:11, on kent's 16:56 ③(b)). A TIE in (i) with a strict order
+    in (ii) prints `TIE-IN-(i)`; a strict order in (i) with a TIE in (ii) prints `TIE-IN-(ii)`. A tie fails to confirm the other rate;
+    it does not contradict it. In every one of these three cases no sentence quotes (i)'s order: (i)'s order is quoted only where (ii)
+    orders the arms the same way, strictly.
 - **(ii) THE PER-ATTEMPT RATE:** every ACCEPTED / (ACCEPTED + REJECTED + HALTED). This is the rate at the registered cap, and a floor on the
   rate at any larger budget.
 - **When (i) and (ii) order the arms differently, the row prints `DISCORDANT`, and no sentence quotes (i)'s order.**
@@ -172,7 +188,8 @@ subject's (the helm, 13:47:05). PASS with DISAGREE stays UNSCORABLE and is count
 | G6 | the reference plus ONE write outside its footprint: a byte into each guard, a word past the stack band K, a callee-saved register left moved | REJECTED on both arms | a class that reads only executor (a) |
 | G7 | the reference with each pointer argument replaced by its frame constant | **expected ACCEPTED on plain, REJECTED(TARGET) on salt-diet.** Its reading is the MEASURED size of the limit below, not a pass/fail | the constant-pointer limit, measured rather than asserted |
 
-**Declared limits.** They ride with every result table, and they are printed by `classify_cell.py --limits` and beside each row.
+**Declared limits.** They ride with every result table: the harvest prints them ONCE, BELOW the table (never beside each row), and
+`classify_cell.py --limits` prints them alone. BATTERY.tsv carries none.
 - **Every pointer the referee passes is a per-task CONSTANT.** It is the same address on every input, 64-byte aligned, and the cell's own
   `tools/frame.py` states it; `bin/rt` confirms it locally.
   - A plain routine that ignores its pointer arguments, or whose misaligned-head path is wrong, is ACCEPTED. The first is REJECTED at TARGET
@@ -241,8 +258,11 @@ registered (§D2).
 ## §D6 · THE FIRST RUN UNDER IT
 
 **O60's first run: 20 tasks × 2 arms at n = 1.**
-- At n = 1 per condition, §D3's figures are a description of the classes, never a per-task result.
-- (c2) equals (c1) when the one cell is accepted. Otherwise rule 2 prints `NO ACCEPTED CELL`.
+- **THE FIRE'S TABLE IS CLASSES ONLY (the helm, 15:50:45, O1; O60 ADDENDUM 10).** Run 1 reports each row's CLASS and the three SEPARATE
+  counts of §D5 (PASS+DISAGREE · QUEUE-124 · EXIT-FORCED after a landing). **No rate is computed on run 1's rows until the §D3 1
+  producer (`harvest_o60.py primary`) is refuted and that refutation is on record.** The fire does not wait for it.
+- §D3 2's cost figures ((c0), (c1), (c2)) do not govern run 1: their producer is OWED (§D5), so run 1 prints none of them.
+- At n = 1 per condition, once the producer's reading is taken, §D3 1's figures are a description of the classes, never a per-task result.
 - The n = 3 run is the first to which evidence attaches statistics.
 - CRC-32's smoke cell is never quoted (O60 §Z4).
 
@@ -256,7 +276,7 @@ registered (§D2).
   - how the v3 paper's post-hoc correctness tables are described relative to this design;
   - the sentence that answers the Captain's question for a reader.
 - **bench:**
-  - `classify_cell.py` (done: v2, selftest 77/77 at 8eca9d8);
+  - `classify_cell.py` (done: v2 at the cut b629652, blob `22585074bc0c`; its `--selftest` count is pinned in §D8 item 2);
   - the harvest step (§D5);
   - the G2–G7 drives through the classifier;
   - `published.txt` per generator;
@@ -281,7 +301,10 @@ registered (§D2).
 - **Target:** a dated AMENDMENT frozen BEFORE the first model call of O60's 40-cell run, riding Monday 10-05's ADDENDUM 10 step.
 - **It needs all five of these:**
   1. the re-fired refuter pass on this revision's blob;
-  2. `classify_cell.py` at a named blob, with its selftest;
+  2. `classify_cell.py` at a named blob, with its selftest: saltbench-systems `f6cf86f` (≥ the cut `b629652`), blob `6f6e4b0cc223`,
+     `--selftest` 82/82, which now runs D2.14 (N < 1 refuses) and B6 (`--limits`): the refuter's mutant with the N guard removed read
+     77/77 under the old selftest and reads 79/3 under this one. The harvest at the same commit, blob `54ba19296281`, carries
+     `test_r4_fixes.py` 8/8 and `test_primary.py` 17/17;
   3. THE HARVEST STEP (§D5) at a named blob, driven once end to end on a real cell record;
   4. the battery's readings through the classifier;
   5. `target.py`'s group-kill in the cut (red-first, `test_target_run_group.py`).
@@ -351,3 +374,22 @@ is declared as a limit (§D4) instead.
 | A · git safety | HOLDS-WITH-LIMIT; one driven end-of-session OWED | Driven, it FAILED: the watcher's `git tag` ran cell-set configuration on the host. Fixed (`update-ref`). The drive then found the pin could be moved to another repo through `.git` (a gitfile, a symlink, commondir, inner symlinks, alternates, packed-refs, reftable, an unlistable dir); each was closed red-first, the watcher line was FROZEN, and the harvest refused every route at the object. Cell configs on both boxes were read as data: 0 armed |
 | B · the judged tree and the rows | HOLDS-WITH-LIMIT | LIMIT 1: REFUSED has a class (TREE-REFUSE for provably-subject causes; `SNAPSHOT -` stays REFUSED) · LIMIT 2: the `../ctl` write probe, driven · LIMIT 3: §D2's tree text now matches the code; EXIT-FORCED after a landing judges HEAD, DECLARED and counted separately · LIMIT 4: `--manifest` required |
 | C · classes, rc, cost | REFUTED | C2: a 124 is the tree's only with lock-held proof; the lock check reads the queue · C3: TREE is the same reading twice · C4/C5: Translation.lean the referee's, the root file any spelling · C6/C7: PASS+DISAGREE reverted to UNSCORABLE, counted separately, two-seed probe run · C8/C9/C10: declared in §D5 and O60 ADDENDUM 10 §(4) · C11 (a `rereferee=owed` row prints; `forms.py` rc on a traceback): NOT taken, named |
+
+## §D14 · THE REFUTER PASS ON REVISION 4 (round 5, systems' Fable refuter, verdict 2026-10-02 16:59), AND WHERE EACH REPAIR WENT
+
+Verdict file in the private tree (sha256/16 `edad5c8f95633f8c`), posted verbatim to the fleet record. 15 HOLD (6 with a limit), 1 REFUTED.
+
+| item | verdict | taken into |
+|---|---|---|
+| 1 · O1 | REFUTED: this design carried no classes-only clause, and §D6 promised run 1 §D3 2's (c1)/(c2)/`NO ACCEPTED CELL`; O60 ADDENDUM 10 HOLDS | §D6: the fire's table is classes and the three SEPARATE counts only; no rate until `primary` is refuted on record; §D3 2 does not govern run 1 |
+| 3 | HOLDS-WITH-LIMIT: limits print once below the table, not beside each row | §D4 "Declared limits" |
+| 7 | HOLDS-WITH-LIMIT: QUOTA-BLOCKED is emitted at any tick, so "zero-spend" had no instrument | §D2 re-fire: the post-end meter line must read zero spend |
+| 12 | HOLDS-WITH-LIMIT: the DONE history bound catches a typo, not a choice; the LANDED pin has no bound | §D2 the tree the referee reads: both pins are SUBJECT-WRITABLE, and judge the tree the subject declared |
+| 14 | HOLDS-WITH-LIMIT: `CARD-TARGET.md` and `PRESPEC-posthoc-…` were cited outside the header's repo rule | the header names both |
+| ELSE-1 | `--selftest` did not run D2.14 (a mutant read 77/77) | code: `--selftest` runs D2.14 and B6, 82/82; the mutant reads 79/3 · §D8 item 2 |
+| ELSE-2 | `battery` had no catch-all | code: an unforeseen error is a REFUSED row, rc 2 (`test_r4_fixes.py` 8/8) |
+| ELSE-5 | §D8 item 2's blob was the stale one | §D8 item 2 pins `f6cf86f`, blob `6f6e4b0cc223` |
+| ELSE-3 · ELSE-4 | `dry_cells.sh` still passes `--harvest`; the fence drive runs porcelain git in the cell repo | systems', by its own taking (17:05:23) |
+| kent 16:56 ③(a) | `primary` silently dropped a row whose arm is not plain/salt-diet | code: it REFUSES and names the arm (`test_primary.py` 17/17) |
+| kent ③(b) → the helm 17:19:11 | a tie was printed DISCORDANT | §D3 1: DISCORDANT is opposite strict orders only; `TIE-IN-(i)` / `TIE-IN-(ii)` |
+| kent ① | `NO SCORABLE CELL` on (ii) was unwritten | §D3 1 |
