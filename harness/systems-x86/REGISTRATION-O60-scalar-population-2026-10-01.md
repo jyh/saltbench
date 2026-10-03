@@ -527,3 +527,150 @@ every cell is rendered at the fire by 51bd1e9's renderer, and each cell's manife
 - **The v3 route's sibling, `clb_fire.sh`, still PRESERVES a present retention value.** It fires no O60 cell, and the ruling named the O60
   route.
 - kent did NOT read the run-box receipts (the belt drive, the `--diff`, the uid ×5) or the systems-x86 selftest. Those are the lead's alone.
+
+## ⚖️ ADDENDUM 10 — THE RE-CUT, THE HARVEST OF RECORD, ITS DECLARED LIMITS, AND THE FIRE (L8, L10). APPENDED.
+bench (lead). Drafted 2026-10-02 (PDT), before any O60 cell fired. **Every line marked OWED is taken on Monday 10-05 in the order of (6),
+and this addendum merges only when each reads MET or is declared below, before the first model call.** Zero model spend in everything
+drafted here. The design it applies is `DESIGN-correctness-primary-2026-10-02.md` (PR #311): its §D2 classes, §D4 battery and §D5 harvest.
+**(1) L1 moves to the re-cut.** ADDENDUM 9 named 51bd1e9. The export is re-cut from saltbench-systems ≥ `c2074e7` (2026-10-02 19:33, desk ZP's isolated native executor, over ≥ `6de3f4e` (18:5x: the merge of the harvest of record `f6cf86f` and systems'
+ELSE-3/4 `acd7593`, because `x86_cell_fence.sh` runs on the fire route at `x86_clb.sh:414`; it was ≥ `b629652` (four one-line fixes on the merge `8eca9d8`, below))), the merge holding both
+the cut's changes (`a3db4f6`) and the harvest of record (`53420bc`); `merge-base --is-ancestor` reads TRUE for each. The sha actually cut is
+OWED, and EXPORTED-FROM names it. The 40 run on these changes, each driven red-first on its own commit:
+```
+  de04273  the L4 control proofs re-pointed at the harness call modules                       harness
+  b629652  N < 1 refuses (D2.14) · --limits prints the frame's blind spots (B6) · a LANDED end with no DECLARED line
+           refuses (T2) · cell-watch --harvest RETIRED, refused at arm (C3)                                  harness
+  c1172c7, e34db16  target.py: on timeout, kill the build's whole PROCESS GROUP (a grandchild held the fleet build lock)  harness
+  782835d  the referee's RUNNER is the canonical build wrapper; its blob is printed per run           harness
+  54d4fc8, 82ccbf8  the watcher logs its SNAPSHOT line unconditionally and runs no `git status`;
+                    `bin/declare done` records the declared sha                                      SUBJECT-FACING (declare)
+  dccb36f  the fence drive probes a WRITE into ../ctl (relative and absolute): denied, 0 landed        harness (drive)
+  f386975  the watcher writes its cosmetic s<P> tag by update-ref, never `git tag`, which ran a
+           cell-set core.editor / gpg.program outside the fence (0 of 1,882 cell configs armed it)  harness
+  fc8c9df, 3518f30, a3db4f6  the watcher reads HEAD only from the cell's OWN store: no gitfile,
+           symlink, commondir/gitdir, alternates or unlistable dir under .git, and HEAD^{commit}      harness
+```
+OWED: kent's non-author read of 51bd1e9..the cut · the four roots' `_bin` re-pointed to the cut after the drill's failback.
+**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `f6cf86f` (blob 54ba19296281) with `classify_cell.py` 6f6e4b0cc223
+(it was ≥ `ca74578`, blobs 5c49bf396275 / 22585074bc0c, until the rev-4 refuter's ELSE-1/ELSE-2 and kent's `primary` read moved it;
+the three changes are below, under the primary outcome)
+is the ONLY harvest of an O60 cell. No model-written cell is harvested by any other tool. Its classes are §D2's, with these readings, each
+ruled before any O60 cell:
+- **The commit each end is judged on.** The tree is materialised from that commit's objects in the cell's own store, never from a
+  worktree. Each row is pinned by an arm of `test_harvest_pin.py` at the harvest's own sha, `53420bc`:
+  ```
+  LANDED        the end line's `landing-N <sha>`; watch.log's DECLARED line must EXIST and agree (absent REFUSES); a landed-N tag, if present, must peel to it
+  DONE          the sha `bin/declare done` recorded, which must be on the history of the commit the session ended at
+  EXIT-FORCED   the watcher's SNAPSHOT commit: HEAD at the kill, on any branch. EVEN AFTER A LANDING: the DECLARED landing is
+                recorded and NOT judged (refuter B, round 4). This is a declared disposition, not a closed item. The cells are
+                COUNTED SEPARATELY per arm, each with its landing sha (`SEPARATE EXIT-FORCED-AFTER-LANDING`), so the other
+                reading is recoverable without a re-run (the helm, 13:58:33)
+  a HALT end    the watcher's SNAPSHOT commit, HEAD at the stop
+  ```
+- **TREE is the SAME reading twice.** A re-referee rc 124 is the tree's only when the first run also read 124 at the same stage and BOTH
+  builds are shown, by the build lock's own log, to have held the lock for the bound. Every other 124 is the QUEUE's: UNSCORABLE.
+  The queue wait runs before the lock's bound and inside the referee's 1800 s, so without this a busy box charged the subject.
+  No record twice is TREE; anything else is UNSCORABLE.
+- **`Submission/Translation.lean` is the referee's.** The referee writes it, so a diagnostic there is UNSCORABLE. The root `Submission.lean`
+  is the subject's in any spelling.
+- **PASS with DISAGREE stays UNSCORABLE, as registered, and is COUNTED SEPARATELY per arm** (the table's `SEPARATE PASS+DISAGREE` line).
+  A REJECTED reading for it waits on a later addendum with evidence. The two-seed probe (zero spend, n = 1, the G-battery's only such
+  member) found that member's disagreement stable across seeds, AGREE at the native caller's register state, and its reference
+  seed-invariant: the routine's, on that member.
+- **REFUSED has a class.** A cell the harvest cannot pin or materialise for a cause IN ITS TREE or in a ref it owns is TREE: REJECTED on a
+  declared end, HALTED on a halt, charge ARM, record NONE, `TREE-REFUSE: <cause>`. A cause counts only where it is PROVABLY the subject's
+  act. The causes, all of them: a gitfile, symlinked or commondir `.git`; a ref whose exact name `show-ref` does not return once, or that
+  does not peel to a commit; a parent directory that resolves elsewhere; an extracted path that is not a file, link or directory; a symlink inside `.git`; a pin its own store lacks; `down -`; a DONE sha off its history;
+  a moved landing tag; and unsafe, absolute, outside, colliding or gitlink paths. **`SNAPSHOT -` stays REFUSED** (the helm, 13:47:05). The
+  watcher writes it for an unresolvable HEAD, a rewired `.git`, and ANY failure of its `.git` enumeration, environmental ones included, so
+  charging it to the arm would be an arm-correlated gate. A human disposes of it. A later split (the watcher naming which term refused) may
+  make a subject-provable cause TREE. A refusal from the harness's own inputs stays REFUSED, and the table does not print.
+- **`table --manifest` is REQUIRED,** and the manifest is the fire's own record of the cells it staged, never a typed count.
+**(3) DECLARED LIMITS, each printed with its COUNT at harvest:** `TREE-REFUSE` rows, by cause · `FETCH-REFUSE` rows (a failed copy, named,
+blocking the table until disposed) · `SEPARATE QUEUE-124` per arm · `SEPARATE PASS+DISAGREE` per arm · `SEPARATE EXIT-FORCED-AFTER-LANDING` per arm, with each landing sha · a DONE judged on the declared sha,
+an ancestor by design · a missing SNAPSHOT line REFUSES · a failed control STOPS the harvest. The watcher's SNAPSHOT line is a RECORD; the
+pin is the harvest's own resolution in the cell's own store. The watcher line was FROZEN at a3db4f6 after five routes were closed. A further
+route is declared here with its count, unless the harvest fails to refuse it, and that one stops the run.
+**(4) Not shipped, and what follows from it (the helm's ruling (3), 2026-10-02 11:43:46):**
+- **The referee call has no wall bound and no cwd.** One non-returning routine wedges the harvest. The operator kills it and re-runs the
+  remaining cells one by one; a hang has no emitter, so it is never a class. A routine that `.include`s a file assembles from the cell root
+  only.
+- **Cost does not govern run 1's reading.** No producer joins `post-end` cost into the row, so §D3 2's cost rules are produced by hand from
+  the cells' own meter files or not at all, and this addendum claims neither.
+- **The control is PLAIN only.** The Lean path is first exercised by a salt-diet cell. A salt-diet-only box failure reads HARNESS, so the
+  whole arm lands in UNSCORABLE; this is the safe direction, declared.
+**§D8 item 1 — MET (CLOSED by the helm, 2026-10-02 17:29:34).** The refuter pass on design revision 4 is on record, as this chain, each
+link a post on the fleet record:
+- systems' claim-by-claim non-author read of revision 4 against the code (15:49:57: 59 claims, 44 HOLD / 9 DIFFER / 6 flagged);
+- the helm's sort of it (15:50:45);
+- bench's fixes (16:05:59: saltbench-systems b629652 · design 9c4715d, blob d7134b44d479);
+- ONE Fable refuter, non-author, over that revision 4 and this addendum (cccaedd2be4a) against b629652 (17:05:23: 15 HOLD, 6 of them with
+  a limit · 1 REFUTED, the O1 text contradiction between the two documents · 5 further findings);
+- bench's alignment (17:23:25: design e019464, blob d78c1f067ff1 · saltbench-systems f6cf86f);
+- kent's non-author read of that delta (17:28:13, HOLDS).
+**THE DEVIATION, DECLARED IN THE HELM'S WORDS:** §D8 item 1 reads literally "the re-fired refuter pass on this revision's blob". The pass that
+ran was one Fable refuter over revised revision 4 + this addendum, AFTER a claim-by-claim read, and the alignment it forced was read by a
+non-author rather than re-refuted. The merge of this addendum still waits on every other line marked OWED.
+**§D8 item 3, MET at 53420bc:** the harvest driven end to end on two real cell records (a LANDED plain cell and a CAP-COST salt-diet cell,
+from a fresh fetch, with the cut's harness at a3db4f6). Control ACCEPTED, both cells ACCEPTED, and the table printed under its manifest with
+all three SEPARATE counts at 0.
+**§D8 item 4 — the battery THROUGH THE CLASSIFIER (`harvest_o60.py battery` at 8eca9d8, plain, zero model spend), each member after its
+task's control (ACCEPTED 44/44):** G2 22/22 REJECTED. G6c (the reference with a callee-saved register moved before every return) 22/22
+REJECTED, and 20 of those read token PASS with every test passing and are rejected ONLY by the agreement column's clobber rider. On those
+tasks the referee's token alone would call the violation a pass. G6b (one word written past the frame's stack band at entry) 22/22
+REJECTED, ALL 22 with token PASS, rejected only by the MODEL-OUTSIDE rider. G6a (one byte into the guard before the first pointer argument's region)
+20/20 REJECTED on the 20 tasks that take a pointer (2 NOT APPLICABLE by name), ALL token PASS and labelled MODEL-OUTSIDE. The native
+executor ALSO saw it: its raw output reports `OUTSIDE=` on every member (on all inputs but one each). `agree.py` labels an input from
+the model's class FIRST, so a write both executors see reads MODEL-OUTSIDE, and NATIVE-OUTSIDE appears only when the model returned clean. G7, the constant-pointer limit, is MEASURED from the referee's own lowered frames rather than built: of the 20 tasks that take a
+pointer, 18 pass every pointer argument as ONE constant on every withheld input. On those, a plain routine that hard-codes its addresses is
+ACCEPTED, as §D4's declared limit says. **THE SIGN (the helm, 15:41:24):** the salt-diet TARGET is
+`CorrectFor`, which reaches `CorrectCall` (`X86CallFrame.lean`), and that holds `∀ ptrs`, over every separated placement of the regions. So
+a routine that depends on the constant address cannot discharge TARGET, and on salt-diet it reads REJECTED. A plain routine faces no such
+check. The limit can therefore only RAISE the plain arm's ACCEPTED count. **On these 18 tasks, an arm difference in favour of salt-diet is a
+LOWER bound, and one in favour of plain may be inflated by up to the number of plain cells that rely on the constant.** The referee is kept
+as registered. A post-run detector: re-referee each ACCEPTED plain cell with one shifted region base. G5 Adler32 is a PATH CONTROL (the helm, 15:51:51): the reference routine, a constant `Submission.spec`, and no `Submission.correct`. It
+read `tests=PASS`, `AGREE=92`, token TARGET, `target_unknown = [Submission.correct]`, REJECTED for a MISSING OBLIGATION. It proves the
+salt-diet Lean path runs at the cut. **The vacuous-spec property (a constant spec WITH a proof that discharges it) is NOT DRIVEN.** G5 on the other 21 tasks is NOT driven. G4 was
+driven through the referee alone (the private tree holds it); each needs a per-task generator, and they are declared here.
+**THE OUTCOME OF RECORD IS THE CLASSIFIER'S READING, NEVER THE REFEREE'S TOKEN (the helm, 14:53:49).** No table or figure, public or private,
+reports a token count as a result. The token is in every log, so it is the number a later reader or script reaches for, and this battery
+shows it calling a callee-saved violation a pass on 20 of 22 tasks. **The agreement rider, from the MODEL executor, is the SINGLE point of
+detection for two G6 classes, callee-saved (G6c) and stack past the band (G6b): the native executor checks only regions and their guards,
+by design, and reported OUTSIDE on 0 of 22 G6b members. A guard byte (G6a) has TWO detectors** (receipt: the battery's
+BATTERY.tsv, blob 57f8ca6f386f, controls ACCEPTED on
+every member). A change that weakens the model executor's frame silently re-opens
+it, so **G6a, G6b and G6c are regression arms, re-run at any change to `exec_model.py`.**
+**THE PRIMARY OUTCOME IS NOT COMPUTED ON RUN 1'S ROWS UNTIL ITS PRODUCER IS REFUTED (the helm, 15:50:45, O1).** The fire's table reports
+per-row CLASS and the three SEPARATE counts only. The design's §D3 1 producer ((i)/(ii)/DISCORDANT) is landed and refuted on battery rows,
+the two real cells and synthetic rows BEFORE run 1's rows are read; until then no rate is computed. The fire does not wait for it.
+**BUILT at ca74578 (`harvest_o60.py primary`), refuted on synthetic rows (DISCORDANT, NO ENDED CELL, +s, u: 9/9 after 7 RED) and on the
+two real cells against an answer derived by hand first, which it matched exactly.** Its reading is still not taken on run 1 until this
+addendum's refuter verdict is on record.
+**AND AT f6cf86f, red-first, after the rev-4 refuter (16:59) and kent's non-author read (16:56):** an arm label outside {plain, salt-diet}
+REFUSES (it was counted in no rate); DISCORDANT is reserved for OPPOSITE strict orders, and a tie on one rate with a strict order on the
+other prints `TIE-IN-(i)` or `TIE-IN-(ii)` (the helm, 17:19:11), quoting (i)'s order in none of the three; `battery` writes a REFUSED
+row on any unforeseen error; `classify_cell.py --selftest` runs D2.14 and B6 (82/82). `test_primary.py` 17/17 (10 GREEN / 7 RED before).
+**(5) The served-model guard.** The smoke pair's `model_served` must read the registered model, or the fire HOLDS: a newer model is priced
+VOID by the cut's rate table.
+**(5b) The native executor's reach (desk ZP, the helm 18:46:21) — MET 2026-10-02 19:33:40 (desk ZP DONE), a RELEASE CONDITION OF THE FIRE.** `exec_native` runs the
+subject's routine natively, and until ZP closes, the translate gate is the only thing in front of it. Its completeness is a design review,
+not a search. systems: (a) state whether the gate is an allowlist (closed by construction) or a denylist (open by construction), with a
+hostile red-first battery, each member refused at translate beside a live control, and/or (b) run the native executor ISOLATED (no write
+outside its scratch, no network, the harness tree read-only or absent). kent reads. The cut carries ZP's fix. **Default if unmet by
+Sunday 20:00: the fire WAITS.**
+**MET AT saltbench-systems `c2074e7`:** `exec_native` runs only under `exec_native.sb` (blob 3449b615af60): reads are an ALLOWLIST
+("/" · WORK · /usr/lib · /System · /Library/Apple · /usr/bin/arch · /dev), and network, mach-lookup, fork, exec and writes are denied.
+**DECLARED LIMIT:** file METADATA is readable everywhere (the launch aborts without it, bisected), so a routine can learn a path's existence,
+size and times, never its content. Read by kent (19:12, 19:33: HOLDS). Controls under it: Crc32's reference, byte-identical to the
+unsandboxed run, and the full referee PASS AGREE=82 (plain). The G5 Adler32 salt-diet member reads REJECTED at TARGET, tests=PASS AGREE=92,
+its record identical to the unsandboxed run in 26 of 28 fields. The two that differ are run-identity, never a reading:
+`work` (each run's own fresh work directory) and `target.spec_dependence.tail`, whose first line is the build queue's
+`saltqueue: ticket P2 seat=… pid=…` (a per-run ticket id and process id). Its other two lines, `SPECDEP-CLEAN reached=242` and
+`saltbuild EXIT=0`, are equal. No class, token, count, agreement, target error or blob field differs. **Bound: the salt-diet arm is controlled up to a REFUSED
+proof; no salt-diet ACCEPTED was driven under the profile.** `target.py` is not inside the profile and the commit does not touch it.
+(a), the translator's own correctness, follows Monday.
+**(6) The order on Monday, and what each step leaves as a receipt (OWED):**
+the drill's failback → the run box's cells census diffs clean → the re-cut (sha) → kent reads 51bd1e9..cut → deploy, `_bin` ×4 re-pointed
+→ the five fences re-rendered → `--check-only` ×5 → the build lock's holder named (`lsof`) → **L8 and L10** (the pool, by the PM at the
+fire; one authenticated read) → the smoke pairs (the served-model guard) → the 40. The harvest runs per cell after each end, from a copy,
+never from a live worktree.
