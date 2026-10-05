@@ -553,14 +553,15 @@ the host; is-ancestor TRUE for a3db4f6, 53420bc, f6cf86f, acd7593, 6de3f4e, 51bd
 ```
 MET 2026-10-05: kent's non-author read of 51bd1e9..c2074e7 (00:18:32: nothing in the cell-run route stops the re-point; findings
 C1–C5 are the harvest's, below) · the four roots' `_bin` re-pointed to the cut ((6)).
-**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `d79faa6` (blob 7f387733921f) with `classify_cell.py` d1d6df75cdc2
+**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `3498ce6` (blob 7c2b062e5ca9) with `classify_cell.py` 66416ea5c429
 (kent's 2026-10-05 read, C1 and C3, and the helm's 00:18:51 ruling moved it from ≥ `f6cf86f`, blobs 54ba19296281 / 6f6e4b0cc223;
-`7cbf4a1` and `d79faa6` are two commits on the cut and touch only the harvest, never a file a cell runs:
+`7cbf4a1`, `d79faa6` and `3498ce6` are three commits on the cut and touch only the harvest, never a file a cell runs:
 - **C1:** the forms verdict was the exit code of `forms.py` alone, so ANY uncaught Python error (rc 1) read OUTSIDE: REJECTED,
   charged ARM. OUTSIDE now needs rc 1, the script's own `FORMS RED` line and an `OUTSIDE ` line; FORMS-OK needs rc 0 and
   `FORMS OK (`; anything else is not split, UNSCORABLE.
 - **C3, arm-correlated (the helm):** a Lean build or probe killed by a signal (rc 137 or 143) read REJECTED. A memory kill lands on
   the arm that builds the large proofs, salt-diet. It is now re-refereed, then UNSCORABLE, counted SEPARATELY (`SEPARATE KILLED-137/143`).
+  At `3498ce6` (kent's 00:29:15 residual) a NEGATIVE rc, the direct child killed by a signal, reads the same.
 - **C2 and C4, declared (no arm skew found):** no referee record on both runs keeps TREE, and a declared sha prefix matching no
   commit keeps TREE-REFUSE. Each is counted SEPARATELY (`SEPARATE NO-RECORD-TWICE`, `SEPARATE PREFIX-MATCHES-NO-COMMIT`) and named
   in the printed limits.
@@ -658,7 +659,8 @@ by design, and reported OUTSIDE on 0 of 22 G6b members. A guard byte (G6a) has T
 BATTERY.tsv, blob 57f8ca6f386f, controls ACCEPTED on
 every member). A change that weakens the model executor's frame silently re-opens
 it, so **G6a, G6b and G6c are regression arms, re-run at any change to `exec_model.py`.**
-**THE READING RULE FOR RUN 1, RULED BY THE HELM 2026-10-05 00:26:00 (§D6, open since 10-02 17:30:43):** the table is the CLASSES and
+**THE READING RULE FOR RUN 1, RULED BY THE HELM 2026-10-05 00:26:00 (§D6, open since 10-02 17:30:43); BOTH CONDITIONS MET AT `d79faa6`
+(kent's read HOLDS, 00:29:15; the helm 00:29:47):** the table is the CLASSES and
 the SEPARATE counts until BOTH C5's guard has landed red-first AND kent's read of it HOLDS. After that, run 1's rates MAY be computed
 by `primary` and printed BESIDE the classes, never instead of them, each labelled as a POPULATION READ. It is wrong if a run-1 rate
 is printed from rows of more than one export or referee blob, or with no class table beside it.
