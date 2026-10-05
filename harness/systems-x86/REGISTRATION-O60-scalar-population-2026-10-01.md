@@ -725,10 +725,11 @@ never from a live worktree.
   The fences carry the drill's new config directories and `~/.fleet`. The check rendered settings and trust in the env's pool of
   last week; L8 and L10 name the pool and the fire re-runs every step there.
 - **The build lock's holder** (on the lead box, where the referee runs): another seat's registered `lake build`, named by `lsof`.
-- **L8, the pool: MET 2026-10-05 16:02:37 (PDT).** The PM's report of 2026-10-05 (00:12:45) named one of the two new-week pools the
+- **L8, the pool: MET 2026-10-05 16:01:24 (PDT).** The PM's report of 2026-10-05 (00:12:45) named one of the two new-week pools the
   council minute allows, to be fired on at or after its 16:00 reset; the helm concurred (00:13:21) and carried the reading because the
-  PM is dark until 10-06. The helm's quota read at 16:02:37 gives that pool 0 all-models, 0 Fable-only and 0 session, with its next
-  weekly reset a week out (the helm, 16:03:08). That is the authenticated read on the pool.
+  PM is dark until 10-06. The helm's quota run (16:01–16:02) read that pool at 16:01:24: 0 all-models, 0 Fable-only and 0 session, with its
+  next weekly reset a week out (the helm, 16:03:08, which named the run's last row, 16:02:37, another pool's; kent's read). A second
+  run read it the same at 16:08:19. That is the authenticated read on the pool.
 - **L10, the pool's own dir on the run box: MET 2026-10-05 16:08–16:09 (PDT), up to the authenticated turn, which the fire takes.**
   The o60 lane env's `CLB_CFG` and `CLAUDE_CONFIG_DIR` moved to that pool's own dir on the run box (two lines; a backup kept). Nothing
   else in the env moved.
