@@ -680,8 +680,12 @@ never from a live worktree.
   is 10-10. On the run box: no client or seat loop running, the drill checker reading `idle`, both drills archived.
 - **The run box's cells census: CLEAN.** Reference: the 10-01 15:27 render. In the four O60 roots, 124 of 1,355 entries postdate it,
   all of them clbpp01's own staging at 15:27–15:29; nothing later. Seven `$HOME` entries were born after the render, none inside a
-  cell: five drill spare config directories, one further client config directory, and one directory of another seat's service. The
-  re-render at the cut brings them under the belt.
+  cell: five drill spare config directories, one further client config directory, and one directory of another seat's service.
+  A preview with the cut's renderer (`--diff`, read-only, against the staged fences of clbpp01 and clbvs01) adds the six config
+  directories and `~/.fleet` to both deny sets, and drops eight config directories that no longer exist in `$HOME` (retired on
+  10-02 into `~/.fleet`, which the cut denies whole). The service directory is not a dot directory, so the belt does not deny it,
+  like 460 other non-dot entries in `$HOME`. It holds no benchmark material. The file-tool hook, an allowlist, refuses it.
+  Deny-by-default for `$HOME` is on the post-40 list, after its census (the helm, 2026-10-01 18:10:07).
 - **The re-cut: `c2074e7907ac`**, as in (1). Of the 36 links in each root's `_bin`, 35 are byte-equal between 977a753 and the cut;
   `render_fence_v3.py` differs.
 - **THE FIVE PRE-STAGED CELLS ARE RE-STAGED AT THE CUT (found 2026-10-05 at the object).** `bin/declare` is copied into a cell's
