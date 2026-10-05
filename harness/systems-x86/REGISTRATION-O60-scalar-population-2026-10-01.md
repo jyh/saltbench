@@ -725,3 +725,30 @@ never from a live worktree.
   The fences carry the drill's new config directories and `~/.fleet`. The check rendered settings and trust in the env's pool of
   last week; L8 and L10 name the pool and the fire re-runs every step there.
 - **The build lock's holder** (on the lead box, where the referee runs): another seat's registered `lake build`, named by `lsof`.
+- **L8, the pool: MET 2026-10-05 16:02:37 (PDT).** The PM's report of 2026-10-05 (00:12:45) named one of the two new-week pools the
+  council minute allows, to be fired on at or after its 16:00 reset; the helm concurred (00:13:21) and carried the reading because the
+  PM is dark until 10-06. The helm's quota read at 16:02:37 gives that pool 0 all-models, 0 Fable-only and 0 session, with its next
+  weekly reset a week out (the helm, 16:03:08). That is the authenticated read on the pool.
+- **L10, the pool's own dir on the run box: MET 2026-10-05 16:08–16:09 (PDT), up to the authenticated turn, which the fire takes.**
+  The o60 lane env's `CLB_CFG` and `CLAUDE_CONFIG_DIR` moved to that pool's own dir on the run box (two lines; a backup kept). Nothing
+  else in the env moved.
+  ```
+  RED control   cells_account_check.sh (saltbench-systems 0da916f, blob 76f59182ad70, selftest 11/11) on the env BEFORE the move,
+                --expect <the new pool>: RED NOT-EXPECTED, rc 1 (the env still resolved to last week's pool)
+  the check     the same, AFTER the move, with last week's pool as --refuse: ACCOUNT-CHECK OK, rc 0 — the file identity == --expect,
+                credential PRESENT, access and refresh both non-empty
+  re-run        --check-only ×5 in the new pool (clbpp01 · clbps01 · clbps11 · clbps13 · clbvs01), every step re-run there: CLIENT PIN OK,
+                POOL QUIET (claude_live_at_fire = 0), settings rendered and retention read back 3650 (clbpp01's was ABSENT in the new
+                dir and is now set), each fence CONVERGES, CHECK CLEAN ×5, zero spend
+  ```
+  Against the 00:20 receipts, the only differences are the five fences' hashes and clbpp01's retention line. The pool dir had not
+  been a cell pool before, so its first render created two `$HOME` entries beside it (its backups dir and an empty trust-seed lock,
+  the same pair every earlier pool dir carries). The re-rendered fences deny the pool dir and its backups dir at both layers
+  (`denyRead`/`denyWrite` and the tool `deny` rules), as they deny every other pool dir. The `DECLARED` read beyond the render is
+  the same single path as at 00:20.
+  **The authenticated turn is the fire's own:** as under the crc32 row's ADDENDUM 4, the P-SANDBOX and P-NET probe turns of the first
+  smoke cell run through the client on this dir, and a probe that is not GREEN refuses the launch. The account check reads the FILE
+  identity; only that launch proves the dir authenticates. If it does not, nothing has spent, and a later addendum names the login
+  the Captain must perform.
+- **Every line of (6) up to the smoke pairs is MET.** The smoke pairs (with the served-model guard, (5)) and then the 40 follow,
+  each harvested from a copy after its end with the harvest of record at `3498ce6`.
