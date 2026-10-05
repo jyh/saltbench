@@ -553,9 +553,9 @@ the host; is-ancestor TRUE for a3db4f6, 53420bc, f6cf86f, acd7593, 6de3f4e, 51bd
 ```
 MET 2026-10-05: kent's non-author read of 51bd1e9..c2074e7 (00:18:32: nothing in the cell-run route stops the re-point; findings
 C1–C5 are the harvest's, below) · the four roots' `_bin` re-pointed to the cut ((6)).
-**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `7cbf4a1` (blob 16f097a99002) with `classify_cell.py` d1d6df75cdc2
+**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `d79faa6` (blob 7f387733921f) with `classify_cell.py` d1d6df75cdc2
 (kent's 2026-10-05 read, C1 and C3, and the helm's 00:18:51 ruling moved it from ≥ `f6cf86f`, blobs 54ba19296281 / 6f6e4b0cc223;
-`7cbf4a1` is one commit on the cut and touches only the harvest, never a file a cell runs:
+`7cbf4a1` and `d79faa6` are two commits on the cut and touch only the harvest, never a file a cell runs:
 - **C1:** the forms verdict was the exit code of `forms.py` alone, so ANY uncaught Python error (rc 1) read OUTSIDE: REJECTED,
   charged ARM. OUTSIDE now needs rc 1, the script's own `FORMS RED` line and an `OUTSIDE ` line; FORMS-OK needs rc 0 and
   `FORMS OK (`; anything else is not split, UNSCORABLE.
@@ -563,7 +563,11 @@ C1–C5 are the harvest's, below) · the four roots' `_bin` re-pointed to the cu
   the arm that builds the large proofs, salt-diet. It is now re-refereed, then UNSCORABLE, counted SEPARATELY (`SEPARATE KILLED-137/143`).
 - **C2 and C4, declared (no arm skew found):** no referee record on both runs keeps TREE, and a declared sha prefix matching no
   commit keeps TREE-REFUSE. Each is counted SEPARATELY (`SEPARATE NO-RECORD-TWICE`, `SEPARATE PREFIX-MATCHES-NO-COMMIT`) and named
-  in the printed limits. C5 (`primary` lacks `table`'s mixed-export guard) is moot until the primary is read, which waits on the helm.
+  in the printed limits.
+- **C5, at `d79faa6`:** `primary` refuses rows of more than one export or referee blob, as `table` does; every rate line is labelled
+  `POPULATION READ, n = 1 per condition (REGISTRATION §Z0 5), never a per-task result`; an arm with no rows prints `no rows`, never
+  `u0`; an owed re-referee row is counted SEPARATELY (`SEPARATE REREFEREE-OWED`) in `primary` and `table`. Red first:
+  `test_primary_c5.py` 2 of 12 at `7cbf4a1`, 12 of 12 at `d79faa6`.
 - Red first: `test_harvest_c1c3.py` 4 of 23 at the cut (19 RED, its 4 controls green), 23 of 23 at `7cbf4a1`; every existing suite
   unchanged (`classify_cell.py --selftest` 82 of 82, nine test files green).
 It was ≥ `ca74578`, blobs 5c49bf396275 / 22585074bc0c, until the rev-4 refuter's ELSE-1/ELSE-2 and kent's `primary` read moved it;
@@ -654,6 +658,10 @@ by design, and reported OUTSIDE on 0 of 22 G6b members. A guard byte (G6a) has T
 BATTERY.tsv, blob 57f8ca6f386f, controls ACCEPTED on
 every member). A change that weakens the model executor's frame silently re-opens
 it, so **G6a, G6b and G6c are regression arms, re-run at any change to `exec_model.py`.**
+**THE READING RULE FOR RUN 1, RULED BY THE HELM 2026-10-05 00:26:00 (§D6, open since 10-02 17:30:43):** the table is the CLASSES and
+the SEPARATE counts until BOTH C5's guard has landed red-first AND kent's read of it HOLDS. After that, run 1's rates MAY be computed
+by `primary` and printed BESIDE the classes, never instead of them, each labelled as a POPULATION READ. It is wrong if a run-1 rate
+is printed from rows of more than one export or referee blob, or with no class table beside it.
 **THE PRIMARY OUTCOME IS NOT COMPUTED ON RUN 1'S ROWS UNTIL ITS PRODUCER IS REFUTED (the helm, 15:50:45, O1).** The fire's table reports
 per-row CLASS and the three SEPARATE counts only. The design's §D3 1 producer ((i)/(ii)/DISCORDANT) is landed and refuted on battery rows,
 the two real cells and synthetic rows BEFORE run 1's rows are read; until then no rate is computed. The fire does not wait for it.
