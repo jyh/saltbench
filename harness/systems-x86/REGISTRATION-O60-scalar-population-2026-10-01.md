@@ -753,3 +753,41 @@ never from a live worktree.
   the Captain must perform.
 - **Every line of (6) up to the smoke pairs is MET.** The smoke pairs (with the served-model guard, (5)) and then the 40 follow,
   each harvested from a copy after its end with the harvest of record at `3498ce6`.
+
+## ⚖️ ADDENDUM 11 — L10's AUTHENTICATED TURN FAILED ON THE FIRST DIR; THE CELLS MOVE TO THE SAME POOL'S OTHER RUN-BOX DIR. AND THE CRC-32 SMOKE CANNOT BE STAGED AT THE CUT. APPENDED.
+bench (lead), 2026-10-05 16:15–16:19 (PDT). No subject turn has run: zero task spend.
+**(1) What failed.** The first smoke cell (clbvp01, `o60smoke` plain BignumMux) was fired at 16:15:05 on ADDENDUM 10's dir. The fire's
+P-SANDBOX probe turn is L10's authenticated turn, and it did not reach a subject. The client exited 1 with `Failed to authenticate: OAuth
+session expired and could not be refreshed` (the probe's own reply file), the probe read INDETERMINATE (unreachable), and the launch was
+REFUSED. The account check had read OK on that dir, and its own limit says why that was not enough: it reads the FILE identity and the
+token's presence, never whether the server will refresh it. The dir's credential dates from the pool's login of 09-25.
+**(2) The move.** The same pool has a second dir on the run box, logged in on 10-02. It is the same account (the `accountUuid` is
+equal in both dirs). The move is a billing dir, never a treatment, as in the crc32 row's ADDENDUM 4. Everything that ADDENDUM lists as
+unchanged is unchanged here, and both arms move together. Nothing has run on the first dir, so no cell is split across the two.
+```
+  authenticated turn  the pinned client (2.1.259) on the second dir, one turn, haiku, "Reply with the single word OK." in an empty temp
+                      dir: rc 0, reply "OK", the credential refreshed (the file rewritten). That turn's transcript is in the dir; it
+                      touches no cell.
+  onboarding          the fire's run-dir readiness check REFUSED the dir ("onboarding not complete"): its login never ran the client
+                      interactively. Six onboarding keys were copied IN SHAPE from the first dir of the same account (the form of the
+                      lane's earlier fix for the same refusal), with a backup outside the run dir; read back in a separate process,
+                      hasCompletedOnboarding = true. No credential was touched.
+  the env             CLB_CFG and CLAUDE_CONFIG_DIR moved to the second dir (two lines; a backup kept).
+  account check       cells_account_check.sh: ACCOUNT-CHECK OK, == --expect, access and refresh both present.
+  --check-only ×6     the five re-staged cells and clbvp01 (staged 16:12 at the cut, bin/declare 679d2bf55912df91, the same as the
+                      five): CHECK CLEAN ×6, settings rendered, retention read back 3650, each fence CONVERGES. The first render
+                      created the dir's backups dir and trust-seed lock; every fence denies the dir and its backups dir at both layers.
+```
+The authenticated turn of record is still the fire's own P-SANDBOX and P-NET probes, as ADDENDUM 10 says. The turn above shows the dir
+authenticates; it is not the probe. **L10 reads MET on the second dir up to the fire's probes.** If they are not GREEN, nothing has run
+on a subject, and a further addendum names the login the Captain must perform.
+**(3) The CRC-32 smoke pair cannot be staged at the cut (found at the object, 16:1x, zero spend).** §Z4 registers it as "the CRC-32 card
+rebuilt by the generalised kit, plain then salt-diet, n = 1", and ADDENDUM 1 says the 20 tasks fire only after BOTH smoke pairs read clean.
+At `c2074e7`, the route's `smoke` condition is O4 #1's: its own builder, never §Z2.6's render, and cell ids that already exist on the
+run box, holding O4 #1's cells. The route refuses to stage an existing cell (a cell is evidence) and allows n = 1 only. `o60smoke --task
+Crc32` refuses because the Crc32 card's first line carries no `SMOKE TASK`, and its id would be BignumMux's. So no CRC-32 smoke can be
+staged without a harness or export change, which would move L1 off the cut.
+**This changes what the registered launch gate checks before the 20.** The helm (16:13:11) put it to the Captain with a recommendation:
+the BignumMux (WRITE) pair is the plumbing gate, and the CRC-32 pair runs AFTER the 40 under a route fix, with its registered role
+unchanged (never quoted, never pooled; the calibration against O4 #1). **The BignumMux pair fires on this addendum. The 40 HOLD until
+his word, which a later addendum records.**
