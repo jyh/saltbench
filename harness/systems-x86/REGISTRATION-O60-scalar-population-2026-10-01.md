@@ -534,8 +534,9 @@ and this addendum merges only when each reads MET or is declared below, before t
 drafted here. The design it applies is `DESIGN-correctness-primary-2026-10-02.md` (PR #311): its §D2 classes, §D4 battery and §D5 harvest.
 **(1) L1 moves to the re-cut.** ADDENDUM 9 named 51bd1e9. The export is re-cut from saltbench-systems ≥ `c2074e7` (2026-10-02 19:33, desk ZP's isolated native executor, over ≥ `6de3f4e` (18:5x: the merge of the harvest of record `f6cf86f` and systems'
 ELSE-3/4 `acd7593`, because `x86_cell_fence.sh` runs on the fire route at `x86_clb.sh:414`; it was ≥ `b629652` (four one-line fixes on the merge `8eca9d8`, below))), the merge holding both
-the cut's changes (`a3db4f6`) and the harvest of record (`53420bc`); `merge-base --is-ancestor` reads TRUE for each. The sha actually cut is
-OWED, and EXPORTED-FROM names it. The 40 run on these changes, each driven red-first on its own commit:
+the cut's changes (`a3db4f6`) and the harvest of record (`53420bc`); `merge-base --is-ancestor` reads TRUE for each. **THE CUT, MET 2026-10-05: `c2074e7907ac`** (EXPORTED-FROM
+c2074e7907ac08828f57d1d47c33350e87e602c0; 507 files, listing sha256/16 03e1927a4f65acad, 0 withheld-shaped names in the listing or on
+the host; is-ancestor TRUE for a3db4f6, 53420bc, f6cf86f, acd7593, 6de3f4e, 51bd1e9 and b629652). The 40 run on these changes, each driven red-first on its own commit:
 ```
   de04273  the L4 control proofs re-pointed at the harness call modules                       harness
   b629652  N < 1 refuses (D2.14) · --limits prints the frame's blind spots (B6) · a LANDED end with no DECLARED line
@@ -550,7 +551,7 @@ OWED, and EXPORTED-FROM names it. The 40 run on these changes, each driven red-f
   fc8c9df, 3518f30, a3db4f6  the watcher reads HEAD only from the cell's OWN store: no gitfile,
            symlink, commondir/gitdir, alternates or unlistable dir under .git, and HEAD^{commit}      harness
 ```
-OWED: kent's non-author read of 51bd1e9..the cut · the four roots' `_bin` re-pointed to the cut after the drill's failback.
+OWED: kent's non-author read of 51bd1e9..c2074e7 · the four roots' `_bin` re-pointed to the cut (the drill's failback is MET, (6)).
 **(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `f6cf86f` (blob 54ba19296281) with `classify_cell.py` 6f6e4b0cc223
 (it was ≥ `ca74578`, blobs 5c49bf396275 / 22585074bc0c, until the rev-4 refuter's ELSE-1/ELSE-2 and kent's `primary` read moved it;
 the three changes are below, under the primary outcome)
@@ -674,3 +675,20 @@ the drill's failback → the run box's cells census diffs clean → the re-cut (
 → the five fences re-rendered → `--check-only` ×5 → the build lock's holder named (`lsof`) → **L8 and L10** (the pool, by the PM at the
 fire; one authenticated read) → the smoke pairs (the served-model guard) → the 40. The harvest runs per cell after each end, from a copy,
 never from a live worktree.
+**(6) RECEIPTS, taken in order on 2026-10-05 (PDT):**
+- **The drill's failback: MET.** The 10-03 drill was a reboot drill (run 2 PASS); no failover was in effect, and the failover drill
+  is 10-10. On the run box: no client or seat loop running, the drill checker reading `idle`, both drills archived.
+- **The run box's cells census: CLEAN.** Reference: the 10-01 15:27 render. In the four O60 roots, 124 of 1,355 entries postdate it,
+  all of them clbpp01's own staging at 15:27–15:29; nothing later. Seven `$HOME` entries were born after the render, none inside a
+  cell: five drill spare config directories, one further client config directory, and one directory of another seat's service. The
+  re-render at the cut brings them under the belt.
+- **The re-cut: `c2074e7907ac`**, as in (1). Of the 36 links in each root's `_bin`, 35 are byte-equal between 977a753 and the cut;
+  `render_fence_v3.py` differs.
+- **THE FIVE PRE-STAGED CELLS ARE RE-STAGED AT THE CUT (found 2026-10-05 at the object).** `bin/declare` is copied into a cell's
+  repository at STAGING, while the watcher and every `_bin` tool come from the export at fire. All five cells staged before the cut
+  (clbpp01 plain; clbps01, clbps11, clbps13 and clbvs01 salt-diet) carry 977a753's `bin/declare` (sha256/16 b45a8708ee618aa5; the
+  cut's is 679d2bf55912df91). Under it, `bin/declare done` writes `down -` always, which (2) charges to the ARM as `TREE-REFUSE`.
+  It is the only repository file in those cells that changed at the cut. The fire route does not check that a cell was staged at
+  the current export. None of the five has fired, so none is run evidence: each moves whole out of its root (kept, never deleted),
+  and each is staged again from the cut, with its `bin/declare` checked by hash before `--check-only`. A guard in the fire route
+  is a harness change, so it waits until after the 40. After the re-stage, no cell staged at an earlier export remains.
