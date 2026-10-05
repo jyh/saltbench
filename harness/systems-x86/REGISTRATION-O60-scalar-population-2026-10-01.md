@@ -278,3 +278,252 @@ It does NOT fire before every release condition reads MET in the release addendu
                 the Captain must perform instead of firing. (Measured at the sitting: only one run-box pool dir read live; three
                 read BLANKED.)
 ```
+
+---
+
+## ⚖️ ADDENDUM 5 — THE SALT-DIET TEXT CARRIES TWO MORE TASK-SPECIFIC FACTS THAN §Z2.6's TABLE. RULED HERE, BEFORE ANY CARD FREEZES. APPENDED.
+bench (lead), 2026-10-01, found while inventorying O4 #1's frozen texts for L6 (`ARM-plain.md` blob `f6e4ff132634`, `ARM-salt-diet.md` blob
+`2e69b6acc5c1`), against every byte that names CRC-32. The plain text's task-specific bytes are the file name, the `tests.txt` line format and
+ADDENDUM 3's sentence, all three in the table already. The salt-diet text has two more, and as registered the builder would refuse every card
+except CRC-32's:
+```
+  (1) the interface module's name     `Crc32X86Interface`, four times (counted in the frozen bytes): the module the subject must never edit. The population's interface is one
+                                      of §Z2.7's three harness-owned FAMILY modules, so the name differs by family, not by task.
+  (2) the spec's type and its gloss   `Submission.spec : List UInt8 → UInt32` and "what the routine returns for every message, stated in terms
+                                      of the message's bytes only". The type is the card's own (Adler32's is `UInt32 → List UInt8 → UInt32`;
+                                      a WRITE task's names its output region).
+```
+**Ruled, in ADDENDUM 3's form:**
+- (1) The table gains ONE row: `Crc32X86Interface` → the task's family module, verbatim from the card's Proof deliverable section. It is an
+  interface fact, the same file the card names, and it names no task's method.
+- (2) The type is substituted verbatim from the card's Proof deliverable section, since it is the interface's own. The gloss becomes ONE
+  task-independent wording, byte-identical on all 20 tasks and both smoke pairs: *"what the routine computes for every input the interface
+  admits, stated in terms of those inputs only"*. It keeps the clause's rule (the spec speaks of the inputs, never the machine), and it
+  names no task's method.
+- **Kept verbatim, and declared:** the mutant examples "a wrong convention, a dropped byte, an off-by-one". They are examples of "plainly
+  wrong" that apply to a byte or limb input as well as to a message, and they hand no task a method. `<Task>` and `docs/blueprints/<task>.md`
+  are the kit's own placeholders, filled by its renderer as for every v3 task. They are not differences from the frozen bytes.
+**What this costs, declared:** the population's salt-diet text differs from O4 #1's by the gloss sentence, so the CRC-32 smoke calibrates the
+card and the kit, not the salt-diet text. ADDENDUM 3 already says the same of the plain text. Both arms take a table row, and neither table row
+can carry method. L6's one non-author read covers both rows.
+
+---
+
+## ⚖️ ADDENDUM 6 — AS REGISTERED, 19 OF THE 20 TASKS CANNOT BE REFEREED. THREE CHANGES FOR HIS WORD, EACH WITH ITS MEASURED COST. APPENDED.
+bench (lead), 2026-10-01. Every figure below is paris's or mine, measured on the private harness tree, at zero spend. **Nothing here takes
+effect before his word, and nothing fires without the release addendum either way.**
+**The finding (paris, the helm's order of 11:26:48).** At the registered pin, x86lean `dfb26e2`, the translator reads the reference routine
+end to end for only 3 of 22 rows: vale-cswap2 and both smokes. Five rows are refused on clang's NOP padding alone. Twelve need a closed set of
+instructions the model already has: adc · sbb · mul · bsr · bswap · shld · bts · btr · cltq. BLAKE2s/2b as the census built them carry SSE
+`movups` (8 and 16 of them), which is outside the lane's own FORMS list. BLAKE2b's SSE-free build of (2) adds one more need, `rep movs`. Under §Z10 L5 ("the reference itself
+through the referee: PASS"), a task whose reference the referee cannot read can never be released.
+```
+  (1) THE PIN    x86lean dfb26e2 → x86lean PR #79 as measured at head 57b445d. The pin names the merge commit only if its TREE equals 57b445d's;
+                 otherwise the coverage is re-taken at the merge before the pin moves. The translator's CORE widened by exactly the measured
+                 set. Every addition is checked by asm_front's own selftest, which translates all 1,158 vectors and compares each with its
+                 hand-written instruction: 612 core EQUAL · 546 non-core REFUSED · 0 BAD, on both the LLVM and the GNU disassembler.
+                 btc · xadd · shrd · xchg · repe/repne stay refused, because no reference executes them. Coverage at 57b445d
+                 (TRANSLATE-COVERAGE-O60-widened-57b445d.tsv): 22 of 24 rows PASS, including every population task's reference
+                 under (2). COST: merge #79, re-vendor (L2, scripted, ~1 min) and re-derive FORMS (L3, scripted; the vectors are
+                 unchanged). CRC-32's smoke calibrates against O4 #1 across the move (§Z6 5).
+  (2) BLAKE2's   tasks 8–9's source (a) becomes clang's compilation of the SAME verified C at the SAME commit with
+      (a)        -mno-sse -mno-sse2 -D_FORTIFY_SOURCE=0. BLAKE2s: 1,827 instructions (census 1,786), 0 SSE forms (census 8).
+                 BLAKE2b: 2,139 (census 2,108), 0 SSE forms (census 16). Each build's only branch relocation is the in-file update_block.
+                 (Without -D_FORTIFY_SOURCE=0, BLAKE2b's copy becomes a call to __memcpy_chk, which clang does not inline once SSE is off.)
+                 Both agree with (b) on every withheld input, and their stack bands are unchanged (K 256 · 512). The cards build
+                 both with the flag (private harness tree, cards branch d60c252); on BLAKE2s the flag changes no instruction (disassembly cmp-identical). §Z1's ref.instrs column
+                 stays the census's figure; the RESULT prints both. THE ALTERNATIVE: withdraw tasks 8–9 and draw two replacements by
+                 §Z1's R5. That keeps the census's objects and changes the population.
+  (3) RELATION   §Z2.5 already admits an output defined only up to a stated relation. This names the form the referee and the proof use.
+      OUTPUTS    X86WriteInterface (paris, L4) takes `rel`, with `exact` the default. fsub_e is ≡ mod 2^255 − 19 over its 4 LE limbs (the
+                 reference leaves 78 of 171 withheld outputs unreduced). x64_poly1305 with finish = 0 uses its accumulator relation
+                 (≡ mod 2^130 − 5, top word below 5; the reference leaves 3 of 19 unreduced). Every other task is exact. expected.txt
+                 carries the reduced value, and the referee checks the relation.
+```
+**And the list a subject sees moves with (1).** §Z2.3's lane-wide list was "the scalar forms the pinned vectors execute". It becomes those
+forms **intersected with the forms the pinned translator reads**, by `make_forms.py derive --front <the pinned asm_front.py>` (paris, L3).
+Without it a card would call a form "allowed" that its own referee refuses to translate, which is a non-scoring outcome on an allowed
+instruction. Counted on every vector instance (no form is read in some instances and refused in others): at dfb26e2, 701 = 402 allowed +
+299 refused; at #79's 57b445d, **701 = 507 allowed + 194 refused** (still refused, among others: xchg · bt · btc · div/idiv · lzcnt · tzcnt
+· popcnt · rcl/rcr · shrd · cmpxchg · xadd · leave · movbe). `check` re-derives the list byte for byte, and both halves are derived, so no
+form is typed.
+**The lead's recommendation: all three.** Without (1) the population is one task. (2) keeps the population as drawn and is still the same
+verified C at the same commit. (3) adds nothing that §Z2.5 did not already allow. **Each of the three is reversible by a dated addendum
+before the fire.**
+
+---
+
+## ⚖️ ADDENDUM 7 — HIS WORD (a) ON ALIASING, THE CALL MODULE THAT FIXES EACH TARGET, AND FOUR PHRASES OF REQUIREMENTS PROSE. APPENDED; everything above is untouched.
+bench (lead), 2026-10-01. **His word, 14:3x in the helm's window, on the fork put to him: "(a)".** ADDENDUM 6 merged on his earlier word
+("yes, fire through addendum 6", 13:42; #307). Every object below is in the private harness tree, named by sha and blob, at zero spend.
+**Why this addendum exists.** Wiring §Z10 L7 found that no salt-diet TARGET could be stated for an O60 task. §Z2.7's families are
+parametrised (`CorrectFor … pre args …`, and for WRITE a `rel` and the spec's adapter), and no card fixed those terms in Lean. A subject
+that wrote its own `pre` could write `pre := False` and pass. O4 #1 never met this, because its one interface baked its frame in.
+```
+  (1) THE CALL MODULE   (the helm's ruling, 14:10:50: it RESTORES §Z2.4's "a literal in the card and in the ascription"; not his word)
+                        Each task's interface/<T>Call.lean is HARNESS-OWNED. It holds the task's SpecShape, Input, pre and args, and,
+                        for WRITE, the adapter from the spec to the family's `f` and the `rel`. It is written from the card's printed
+                        contract and frame.txt, with a source line named for every clause, and ends in ONE `abbrev Target prog image
+                        entry spec`, with the card's K as a literal. The probe is two lines GENERATED from the task name. Each card's
+                        Proof deliverable names its call module and the statement to prove. The arm texts do not move: the L6 table is
+                        byte-equal, sha256/16 3041a0c3f51c14a9.
+                        Driven per family (RET, READ-RET, WRITE): a real control proof stated against Target passes the probe, and a
+                        planted pre := False submission builds against its own pre and is REFUSED by the probe. The fidelity read of
+                        all 21 against their cards is paris's (19 HOLD, 2 findings, both closed by (2)). kent made a second,
+                        independent read of the three author-adjacent modules, with his own mutants (pre := False; an argument
+                        narrowed or reordered): all REFUSED.
+  (2) ALIASING          (his word (a)) X86CallFrame gains `Arg.same i`, "the same pointer as argument i" (paris; blob 210ce6b4ec2a at
+                        7e2d2ac, docstring-only over b8d2d4b; kent's read HOLDS). It binds its slot to its target's pointer, names no region, and adds no conjunct to
+                        Setup, so it can bind a Target but never empty one. Red-first both ways: an in-place routine that stores before
+                        it loads is REFUTED in-place and PROVED disjoint, and a safe one is PROVED in both. L4's three controls
+                        elaborate unchanged. Each Target below is the CONJUNCTION over the calls its card permits:
+                          Cswap2ValeCall          92ced1fbc909   disjoint ∧ p0 = p1
+                          FsubValeCall            a01eb6fb7b2c   disjoint ∧ out = f1 ∧ out = f2 ∧ f1 = f2 ∧ out = f1 = f2  (mod-p rel)
+                          BignumMul4x8AltCall     ea2915e731b7   disjoint ∧ x = y      (paris's finding F1, ruled under (a), 14:51:18)
+                          BignumMulP25519AltCall  4c65c37de4e4   disjoint ∧ x = y
+                        The cards' sentences stay AS WRITTEN; they now match what is checked.
+  (3) DECLARED          (paris's F2) Read-only regions are pairwise disjoint in every Target. Overlapping READ-ONLY inputs are
+                        TESTED, NOT PROVED, except where a card names the mode (2): Modadd x/y/m · Mul · Mux · Sub · SipHash24 and
+                        HalfSipHash in/k. No write reaches a read-only region, so no correct routine is refused by this.
+  (4) REQUIREMENTS ×4   (the helm's call, concurred 14:43:16: it ENFORCES v3's neutrality control 26) These four cards could build NO
+                        view in EITHER arm, because REQUIREMENTS.md ships to both arms and carried a control-26 word. Reworded with
+                        each card's own vocabulary. No contract, figure or check value moved.
+                          Adler32         "so that our streams verify in any zlib-compatible reader"
+                                        → "so that any zlib-compatible reader accepts our streams"
+                          Murmur3X86_32   "The SMHasher verification above must give 0xB0F57EE3."
+                                        → "The SMHasher acceptance check above must give 0xB0F57EE3."
+                          Murmur3X64_128  "The SMHasher verification above must give 0x6384BA69."
+                                        → "The SMHasher acceptance check above must give 0x6384BA69."
+                          Xxh64           "the xxHash specification" (×2) → "the xxHash format document" (×2)
+                        All 21 plain views and all 21 salt-diet views now build.
+```
+**What the release addendum reads with these** (the private tree, branch at 96c6458). Each is red-first or driven, and none of them is a
+registration change:
+- The builder ships X86CallFrame + the family + <T>Call as libs, and generates the probe.
+- The method gate guards every harness-owned file and refuses one absent at the root. Its selftest drives each file by name; three mutants were refused.
+- The referee takes salt-diet with those owned files. Driven on paris's RET control: CLASS PASS, AGREE=108, TARGET OK, axioms {propext,
+  Classical.choice, Quot.sound}.
+- The export allowlist now ships interface/frame.txt, which the builder reads by default and the allowlist lacked, plus O60's inputs.
+- The fire route gains conditions `o60` and `o60smoke`.
+- The TREATMENT needles are DERIVED from the references (156 for 21 tasks; the positive control reads every needle in its own reference), as the helm ruled at 14:43:16.
+**Limits.** No proof of any aliased mode exists for FsubVale and the two Bignum muls. Cswap2's equal call is PROVED for the CONTROL's
+routine at de04273 (paris: the reference's own routine, both modes of Cswap2ValeCall.Target), not for any subject's. What shows the form
+is provable and discriminating is that proof and the frame's red-first package; the Targets' satisfiability on the routines is what the salt-diet cells test. spec_strength reads UNAVAILABLE on 19 of
+22 tasks, because only three frames carry a `spec` directive. It is a metric, never a gate, and the RESULT prints it as "UNAVAILABLE
+(frame carries no spec directive)", never as 0.
+
+---
+
+## ⚖️ ADDENDUM 8 — §Z10 AS MEASURED AT ONE EXPORT, 977a753. EIGHT OF TEN CONDITIONS MET; L8 AND L10 ARE OPEN, SO NOTHING FIRES ON THIS ADDENDUM. APPENDED.
+bench (lead), 2026-10-01, 22:25–22:40 UTC. Every receipt below was taken at saltbench-systems `977a753` (EXPORTED-FROM
+`977a7532955047705aa0204e0434dee4902907fc`), or at a commit that `977a753` contains. Each line names who measured it and where. Zero
+model spend. **The release is NOT given here.** L8 and L10 are read on the new-week pool at the fire (ADDENDUM 4), and a later addendum
+names that pool with both rows MET. Only then do the smoke pairs fire, then the 40.
+```
+  L1  EXPORT    MET  ONE sha, 977a753: systems' kit, the 20 cards and both smokes (22 task dirs, each with withheld/tests/expected.txt in
+                     the private tree; the run box's cut carries 0 withheld dirs, by construction), the three family modules
+                     (X86RetInterface · X86ReadRetInterface · X86WriteInterface) on X86CallFrame, the 21 call modules of ADDENDUM 7 (1),
+                     and arm_builder.py. kent's non-author reads cover the harness delta through 977a753 and the objects each read names; the cards and call
+                     modules are paris's read (kent read 3 of the 21). Read by NO non-author: the L4 control proofs and the aliasing red-first package
+                     (kernel-checked, not read), and the withheld sets. The four cell
+                     roots' _bin were RE-POINTED to this export
+                     before any cell fired, after a measurement that all 36 link targets are byte-equal between ed1890c and 977a753 (0 of 36
+                     differ). So the re-point changed the path a cell resolves and no byte it runs.
+  L2  x86lean   MET  e5d7f36 (PR #79 merged; ADDENDUM 6 (1)) vendored STRIPPED, built at the harness Lean pin v4.27.0 (paris, harness
+                     da9eca0, an ancestor of 977a753).
+  L3  FORMS     MET  tasks/systems-x86/FORMS.tsv at 977a753, derived by make_forms.py from x86lean e5d7f36. Its own header reads
+                     "allowed 507 · excluded 237 (SIMD/FP classes) + 194 (the pinned translator refuses every instance)", which is ADDENDUM 6's
+                     701 = 507 + 194 over the vector instances. paris re-derived it with `check`, byte for byte.
+  L4  FAMILIES  MET  RET · READ-RET · WRITE, each with a kernel-checked control proof at e5d7f36 (paris, da9eca0). The controls were re-pointed
+                     at the harness call modules (paris, de04273, its own branch), and Cswap2's control proves both modes of its Target
+                     (ADDENDUM 7, Limits).
+  L5  PER TASK  MET  The referee, referee_o60.sh blob 447082fea41b, from the 977a753 cut, on all 22 rows (the 20, CRC-32 and BignumMux):
+                     each reference PASS with full agreement ×22, each stub TESTS_FAIL ×22, and no REFUSE in any of the 44 logs. All 44
+                     verdict lines are byte-identical to the first run at d3c4e00. Between d3c4e00 and 977a753 the withheld sets,
+                     frame.txt, check_x86.py and frame.py are unchanged; only the referee moved (the salt-diet path and the TASKS check).
+                     (a) = (b), the stack bands and the equality relations are the cards' own (ADDENDUM 6 (3) for the two mod-p rows).
+  L6  ARMS      MET  `arm_builder.py table` over the 21 cards at the cut prints a table that is byte-equal to the one kent read (13:03:34 PDT), at
+                     sha256/16 3041a0c3f51c14a9. The builder's selftest passes 16 of 16 arms.
+  L7  DRY CELL  MET  (i) all 44 cells built --dry at 96c6458 (an ancestor; 96c6458..977a753 touches only referee_o60.sh and x86_clb.sh). (ii) On the
+                     run box, at 977a753: --check-only CLEAN on one salt-diet cell per family plus the WRITE smoke, clbps01 Adler32 · clbps13
+                     WordClz · clbps11 FsubVale · clbvs01 BignumMux, and on one plain cell, clbpp01 Adler32. Every one renders the pool's
+                     settings with cleanupPeriodDays "read back = 3650". (iii) The referee on a stub per family, salt-diet, from the cut:
+                     NO_SOLUTION ×4, with the TASKS-vs-export blob check passing ×4. Its red: one byte appended to one card in a scratch
+                     TASKS copy gives rc 2, "REFEREE REFUSE: TASKS's card.md is not the export's".
+                     ⚠️ NOT DRIVEN, by design: the probe TURNS, which are model calls. They run at each cell's own fire.
+  L8  POOL      OPEN evidence's, at the fire: the day line names the pool, plus the account check and one authenticated read.
+  L9  HOOK      MET  hook-deny-v3.sh at blob 16f37ada78ed in 977a753 (git hash-object), and read back BY BLOB in each of the four roots'
+                     _bin after the re-point. fence-hook.sh is at e783a6b5ad11 in all four.
+  L10 POOL      OPEN evidence's, at the fire: the pool's own config dir reads LIVE (both tokens, one authenticated turn). If none reads LIVE,
+                     that addendum names the login the Captain must perform instead of firing.
+```
+**The run as it fires, 44 cells** (the dry stage's own count, by condition and arm): `o60` 20 tasks × {plain, salt-diet} = 40 ·
+`o60smoke` BignumMux × 2 (ADDENDUM 1) · `smoke` CRC-32 × 2 (§Z4, O4 #1's calibration). **No task is withdrawn under §Z8:** L5 PASSes all 22 rows.
+**A figure in ADDENDUM 7 is corrected here (ADDENDUM 7 itself is not edited):** the TREATMENT needles are **155 for 21 tasks**, not 156.
+O60-NEEDLES.tsv reads 155 data rows at 96c6458, at ed1890c and at 977a753. The 156 was 213a5be's. 96c6458 dropped Lookup3's `0xFFFFFF`
+when the generator was made to test absence with the TREATMENT gate's own substring rule: the needle is a substring of `0xFFFFFFFF` in the
+harness's own Lean. Every other task's needle set is unchanged, and the positive control reads 21/21.
+**spec_strength is unchanged from ADDENDUM 7's Limits:** "UNAVAILABLE (frame carries no spec directive)" on 19 of 22 rows, never 0. It is a
+metric, never a gate.
+**Declared, because a reader of the cells would otherwise have to ask:**
+- **The population has TWO build shas.** clbps01, clbps11, clbps13 and clbvs01 were staged at ed1890c. clbpp01 was staged at 977a753, today,
+  so that the plain arm's --check-only could be driven. No cell-facing byte differs between them (L1's 36 of 36), and every cell staged from
+  now on is staged at 977a753. Each cell's manifest records its own export.
+- **The plain cell's launch env has no Lean on PATH and the salt-diet cells' does.** That is the arm design: the route unsets the pinned Lean
+  for the plain arm. It is not a defect.
+- **The salt-diet referee path on a REAL submission** has been driven on paris's RET control (ADDENDUM 7: CLASS PASS, TARGET OK). Every other
+  family's salt-diet verdict is first produced by a cell.
+- **Monday re-runs --check-only on all five cells after the weekend's outlet drill**, which may power-cycle the run box, and before L8/L10
+  are read.
+
+## ⚖️ ADDENDUM 9 — THE CELLS' BELT DID NOT DENY THE FLEET'S MACHINE-STATE TREE, AND THE RETENTION RULE IS RAISED TO max(present, 3650). L1 MOVES TO 51bd1e9; NOTHING FIRES ON THIS ADDENDUM. APPENDED.
+bench (lead), 2026-10-02, 00:58–01:10 UTC (17:58–18:10 PDT 10-01). Zero model spend, no cell launched, no staged cell written. The pool (L8, L10) is named by
+ADDENDUM 10 at the fire, as ADDENDUM 8 said of "a later addendum".
+**(1) The gap.** Found by `systems` on the run box (one staged fence parsed, rendered 15:27 PDT): the fence's sandbox `denyRead` (627 entries)
+and its tool rules carried **0 entries under `~/.fleet`**, the fleet's machine-state tree: an API key, the cold spare, the lanes' pool env
+files. `render_fence_v3.py` denies a fixed list of dot-directories and `~/.fleet` was not on it. Re-measured here, on all five staged cells:
+the subject runs as the box's own user (`cell-claude.sh` execs the client with `env -i` and no user switch; all five cells are that user's,
+on one `_bin`), and the tree is that user's, mode 700. **So the belt was the only layer that could deny it, and it did not.** The file-tool
+hook (`fence-hook.sh`, blob e783a6b5ad11, unchanged) is an allowlist and already blocked it: `Read` and `Grep` of a path under `~/.fleet` read
+`FENCE-OUTSIDE`, driven on a fixture cell. **No cell has fired on these fences**, so there is no exposure to declare.
+**(2) The fix, two commits on 977a753.** `8704870` (systems' 6ace1f8, folded) named two children of the tree; `434a64b` (bench) denies the
+WHOLE tree instead, because a named child cannot cover one born after the render, and the weekend's failover drill creates one. Nothing a
+cell runs reads the tree: every use in the harness is the launcher's env file or the harvest, both outside the session.
+- **Red backwards, selftest:** with 977a753's list the four tree arms FAIL (74 of 78); with the two named children, the arms for a child
+  born after the render and for the pool env files FAIL (76 of 78); at 434a64b, 78 of 78.
+- **Red then green, the belt itself,** under the pinned sandbox-runtime on the run box, a planted NON-SECRET probe file, removed after:
+  the staged fence reads `<tree>/secrets/<probe>` and a probe directly under the tree with rc 0; the 434a64b rendering refuses both,
+  `Operation not permitted`. Controls under BOTH: a file in the cell's own `repo/` reads rc 0, `~/.ssh` is denied.
+- **The rendering's whole delta** (`--diff` against the staged fence of the plain cell): `denyRead` 627 → 628 and `denyWrite` 635 → 636,
+  each `+` the tree alone; four tool rules added. Nothing else moved, so `$HOME` has not changed since the 15:27 render.
+**(3) Retention, ruled by the helm 2026-10-01 15:59:21 PDT.** 977a753 wrote `cleanupPeriodDays` 3650 only when the key was ABSENT and kept any
+present value. `2a5b4da` writes **max(present, 3650)** through `retention_want.py`, and a value that is not an integer REFUSES the route. Red
+first, on the route's own block extracted from `x86_clb.sh` with fixture settings: present 30 reads back **30** at 977a753 and **3650** at
+2a5b4da; 10000 → 10000 and absent → 3650 under both; "thirty" → REFUSE, rc 3. `retention_want.py --selftest` 11 of 11; the systems-x86
+selftest 32 passed, 0 failed, 5 skipped (environment-gated, not passes).
+**(4) What ADDENDUM 8 said that this moves, and what it does not.**
+```
+  L1  EXPORT    MOVES  to 51bd1e9 (EXPORTED-FROM 51bd1e9039a83606b446676ad08eb56a16582d5c). 977a753..51bd1e9 touches THREE files:
+                       render_fence_v3.py, x86_clb.sh, and the new retention_want.py. 2a5b4da..51bd1e9 changes two COMMENTS and no
+                       code line (kent's read found them stale). The four roots' _bin are re-pointed to the new export at the fire,
+                       never before the drill's failback (below).
+  L5  PER TASK  UNMOVED  referee_o60.sh is blob 447082fea41b at both shas.
+  L6  ARMS      UNMOVED  arm_builder.py is blob f9ab01dc922d at both shas.
+  L7  DRY CELL  OWED AGAIN  --check-only ×5 re-runs on the re-rendered fences (the order below). Its 15:27 receipts are of fences this
+                       addendum supersedes.
+  L9  HOOK      UNMOVED  hook-deny-v3.sh 16f37ada78ed and fence-hook.sh e783a6b5ad11 at both shas.
+```
+**(5) The order on Monday, and why it is this order.** A fence is a list rendered at a moment: an entry created under `$HOME` after the render
+is outside it. The weekend's drill creates such entries on the run box. So: **the drill's failback → the run box's cells census diffs clean →
+the _bin re-pointed to 51bd1e9 → the five staged fences re-rendered → --check-only ×5 → a non-author reads the delta → ADDENDUM 10 (L8, L10)
+→ the smoke pairs → the 40.** The launcher re-renders every fence at the moment of use and refuses on any difference, so a fence left stale by
+the drill holds the fire. It cannot launch it unfenced. That check is why the order is safe, not a reason to skip it.
+**Declared:** the population's build shas become THREE (ed1890c ×4 and 977a753 ×1 staged, 51bd1e9 the route that fires them). The fence of
+every cell is rendered at the fire by 51bd1e9's renderer, and each cell's manifest keeps its own staging export.
+**Declared on kent's read (`kent`, non-author, 2026-10-01 18:09 PDT, at this addendum's first head 9c715e046cf6 against 977a753..2a5b4da):**
+- **The renderer is shared.** The Gemini lane renders through `render_fence_v3.py` too, so its cells' belt now also denies the tree. The
+  "nothing a cell runs reads it" measurement covered the Claude-lane cell scripts only. That lane's subject runs as a separate user, and it
+  fires no O60 cell. UNMEASURED there, not claimed.
+- **The v3 route's sibling, `clb_fire.sh`, still PRESERVES a present retention value.** It fires no O60 cell, and the ruling named the O60
+  route.
+- kent did NOT read the run-box receipts (the belt drive, the `--diff`, the uid ×5) or the systems-x86 selftest. Those are the lead's alone.
