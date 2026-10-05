@@ -551,9 +551,22 @@ the host; is-ancestor TRUE for a3db4f6, 53420bc, f6cf86f, acd7593, 6de3f4e, 51bd
   fc8c9df, 3518f30, a3db4f6  the watcher reads HEAD only from the cell's OWN store: no gitfile,
            symlink, commondir/gitdir, alternates or unlistable dir under .git, and HEAD^{commit}      harness
 ```
-OWED: kent's non-author read of 51bd1e9..c2074e7 · the four roots' `_bin` re-pointed to the cut (the drill's failback is MET, (6)).
-**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `f6cf86f` (blob 54ba19296281) with `classify_cell.py` 6f6e4b0cc223
-(it was ≥ `ca74578`, blobs 5c49bf396275 / 22585074bc0c, until the rev-4 refuter's ELSE-1/ELSE-2 and kent's `primary` read moved it;
+MET 2026-10-05: kent's non-author read of 51bd1e9..c2074e7 (00:18:32: nothing in the cell-run route stops the re-point; findings
+C1–C5 are the harvest's, below) · the four roots' `_bin` re-pointed to the cut ((6)).
+**(2) The harvest of record.** `harvest_o60.py` at saltbench-systems ≥ `7cbf4a1` (blob 16f097a99002) with `classify_cell.py` d1d6df75cdc2
+(kent's 2026-10-05 read, C1 and C3, and the helm's 00:18:51 ruling moved it from ≥ `f6cf86f`, blobs 54ba19296281 / 6f6e4b0cc223;
+`7cbf4a1` is one commit on the cut and touches only the harvest, never a file a cell runs:
+- **C1:** the forms verdict was the exit code of `forms.py` alone, so ANY uncaught Python error (rc 1) read OUTSIDE: REJECTED,
+  charged ARM. OUTSIDE now needs rc 1, the script's own `FORMS RED` line and an `OUTSIDE ` line; FORMS-OK needs rc 0 and
+  `FORMS OK (`; anything else is not split, UNSCORABLE.
+- **C3, arm-correlated (the helm):** a Lean build or probe killed by a signal (rc 137 or 143) read REJECTED. A memory kill lands on
+  the arm that builds the large proofs, salt-diet. It is now re-refereed, then UNSCORABLE, counted SEPARATELY (`SEPARATE KILLED-137/143`).
+- **C2 and C4, declared (no arm skew found):** no referee record on both runs keeps TREE, and a declared sha prefix matching no
+  commit keeps TREE-REFUSE. Each is counted SEPARATELY (`SEPARATE NO-RECORD-TWICE`, `SEPARATE PREFIX-MATCHES-NO-COMMIT`) and named
+  in the printed limits. C5 (`primary` lacks `table`'s mixed-export guard) is moot until the primary is read, which waits on the helm.
+- Red first: `test_harvest_c1c3.py` 4 of 23 at the cut (19 RED, its 4 controls green), 23 of 23 at `7cbf4a1`; every existing suite
+  unchanged (`classify_cell.py --selftest` 82 of 82, nine test files green).
+It was ≥ `ca74578`, blobs 5c49bf396275 / 22585074bc0c, until the rev-4 refuter's ELSE-1/ELSE-2 and kent's `primary` read moved it;
 the three changes are below, under the primary outcome)
 is the ONLY harvest of an O60 cell. No model-written cell is harvested by any other tool. Its classes are §D2's, with these readings, each
 ruled before any O60 cell:
@@ -691,8 +704,14 @@ never from a live worktree.
 - **THE FIVE PRE-STAGED CELLS ARE RE-STAGED AT THE CUT (found 2026-10-05 at the object).** `bin/declare` is copied into a cell's
   repository at STAGING, while the watcher and every `_bin` tool come from the export at fire. All five cells staged before the cut
   (clbpp01 plain; clbps01, clbps11, clbps13 and clbvs01 salt-diet) carry 977a753's `bin/declare` (sha256/16 b45a8708ee618aa5; the
-  cut's is 679d2bf55912df91). Under it, `bin/declare done` writes `down -` always, which (2) charges to the ARM as `TREE-REFUSE`.
+  cut's is 679d2bf55912df91; the change is `82ccbf8`). Under it, `bin/declare done` writes `down -` always, which (2) charges to the ARM as `TREE-REFUSE`.
   It is the only repository file in those cells that changed at the cut. The fire route does not check that a cell was staged at
   the current export. None of the five has fired, so none is run evidence: each moves whole out of its root (kept, never deleted),
   and each is staged again from the cut, with its `bin/declare` checked by hash before `--check-only`. A guard in the fire route
   is a harness change, so it waits until after the 40. After the re-stage, no cell staged at an earlier export remains.
+- **DONE (00:19–00:21):** the o60 env's `X86_EXPORT` moved to the cut (one line; a backup kept); `_bin` ×4 re-pointed, 36 of 36 links
+  into the cut on each root, hook blobs unchanged; the old five moved whole to `~/bench-dry`; the five staged again from the cut
+  (`bin/declare` 679d2bf55912df91 ×5, no end files); `--check-only` ×5 CLEAN, each fence converging, retention read back 3650.
+  The fences carry the drill's new config directories and `~/.fleet`. The check rendered settings and trust in the env's pool of
+  last week; L8 and L10 name the pool and the fire re-runs every step there.
+- **The build lock's holder** (on the lead box, where the referee runs): another seat's registered `lake build`, named by `lsof`.
