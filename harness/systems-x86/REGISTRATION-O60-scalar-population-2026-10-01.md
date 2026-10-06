@@ -834,8 +834,8 @@ fixture's real path) is a harness change and goes on the post-40 list; it is not
 **(5) What fires on this addendum.** The BignumMux (WRITE) smoke pair, plain (clbvp01) then salt-diet (clbvs01), each with the served-model
 guard. **The 40 still HOLD for his word on the CRC-32 smoke (ADDENDUM 11 (3)).**
 
-## ⚖️ ADDENDUM 13 — THE BIGNUMMUX (WRITE) SMOKE PAIR READS CLEAN. THE 40 WAIT ONLY ON HIS CRC-32 WORD. APPENDED.
-bench (lead), 2026-10-05 17:23–18:4x (PDT). DRAFT: this addendum merges only with (3) filled from his word.
+## ⚖️ ADDENDUM 13 — THE BIGNUMMUX (WRITE) SMOKE PAIR READS CLEAN. HIS CRC-32 WORD IS (B), SO THE 40 FIRE. APPENDED.
+bench (lead), 2026-10-05 17:23–18:4x (PDT); (3) filled 2026-10-06 from his word at the 10-06 sitting.
 **(1) The pair, at the cut `874e623` (ADDENDUM 12), on the same pool's second dir (ADDENDUM 11).** Each cell was fired through the route
 (CLIENT PIN OK, CHECK CLEAN, the fence CONVERGED, P-SANDBOX and P-NET GREEN for that fence, LAUNCH OBSERVED with no HOLD), ended under its
 watcher, and was harvested from a fresh fetch after its end by the harvest of record (`harvest_o60.py` at saltbench-systems `3498ce6`, the
@@ -852,5 +852,12 @@ the two cells is not a reading.
 **(2) What the pair establishes, and what it does not.** The route stages, fences, probes, launches, watches, ends and harvests a cell of
 each arm at this cut, on this dir, and the referee scores it against the withheld suite. It says nothing about any task of the 20, about
 the arms' relative performance, or about the CRC-32 calibration against O4 #1, which this pair is not.
-**(3) His word on the CRC-32 fork (ADDENDUM 11 (3)).** OWED. Put to him by the helm 2026-10-05 16:13 with recommendation (B): the BignumMux
-pair is the plumbing gate, and the CRC-32 pair runs after the 40 under a route fix with its registered role unchanged.
+**(3) His word on the CRC-32 fork (ADDENDUM 11 (3)): (B).** The option as the helm put it to him, 2026-10-05 16:13 (verbatim): *"(A)
+red-first route fix, the registered order kept, the 40 likely past tonight · (B) the WRITE pair + ADDENDUM 8's L7 dry cells as the gate; the
+CRC-32 pair DECLARED NOT RUN BEFORE THE 40, run after under (A)'s fix, never quoted, never pooled. Helm REC (B)."* His word, at the council
+sitting of 2026-10-06, 16:28:41Z: *"accept rec"* (the sitting's minute, ruling 6).
+So the gate before the 40 is the WRITE pair in (1) above, both ACCEPTED, together with L7's dry cells: `--check-only` CLEAN on all six
+staged cells at the cut `874e623` (ADDENDUM 12 (1)). **The CRC-32 smoke pair is declared NOT RUN before the 40.** It runs after them, under
+(A)'s route fix. It keeps its registered calibration role (ADDENDUM 1), it is never quoted, and it is never pooled with the 40.
+**(4) What fires on this addendum.** The 40, each harvested from a fresh fetch by the harvest of record at `3498ce6` with the cut `874e623`
+as its harness.
