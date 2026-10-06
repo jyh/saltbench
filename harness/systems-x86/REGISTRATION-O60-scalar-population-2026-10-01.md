@@ -870,7 +870,7 @@ duplicated row, and a header with no export. Each task fires its plain cell and 
 A cell whose end is not a cell outcome (LANDED, CAP-COST or CAP-WALL) stops the run for the lead. It is never re-fired in place: a cell
 directory is evidence. Any re-fire is its own addendum.
 
-## ⚖️ ADDENDUM 14 — THE 40 MOVE TO ANOTHER POOL BEFORE THEIR FIRST MODEL CALL: THE RELEASE POOL'S RUN-BOX LOGIN WAS REVOKED. APPENDED.
+## ⚖️ ADDENDUM 14 — THE 40 MOVE POOLS BEFORE THEIR FIRST MODEL CALL: TWO RUN-BOX LOGINS WERE REVOKED AT THE SERVER. APPENDED.
 bench (lead), 2026-10-06 10:2x–11:0x (PDT). §Z0 9 lets the pool vary per cell, read from `ctl/run-cfg.tsv`; this records which pool and why.
 **(1) What stopped the first fire.** At 10:20:44 the first of the 40 (rank 1, plain) was REFUSED at P-SANDBOX, INDETERMINATE: the client,
 in the release pool's run-box dir (ADDENDUM 11), returned rc 1, *"Failed to authenticate: OAuth session expired and could not be
@@ -901,4 +901,7 @@ destination pool.
 P-SANDBOX with the same client line, 16 s after `auth status` read `loggedIn true` in that dir. One minimal turn per run-box dir then
 read: that dir rc 1 (the same line), two other pools' dirs rc 0. Nothing launched. **From here every cell's fire is preceded by ONE
 minimal live turn on the pool's dir (one short reply from a small model); a turn that does not answer stops the run before the fire.**
-That turn is the only check in this record that asks the server. The pool the 40 then fire on: DESTINATION OWED (the helm's word).
+That turn is the only check in this record that asks the server.
+**(6) The pool the 40 fire on: a third run-box dir, by the helm's word (10:59:57), the one the login default first named.** It is checked
+the same way as (3), plus the live turn: env moved (two lines; backup kept); account check OK and its RED control RED; one minimal live
+turn answered, rc 0; `--check-only` x40, rc 0 x40, CHECK CLEAN. The run resumes at rank 1 on this pool.
