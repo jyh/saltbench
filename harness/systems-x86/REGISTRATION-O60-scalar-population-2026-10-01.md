@@ -869,3 +869,43 @@ duplicated row, and a header with no export. Each task fires its plain cell and 
 ```
 A cell whose end is not a cell outcome (LANDED, CAP-COST or CAP-WALL) stops the run for the lead. It is never re-fired in place: a cell
 directory is evidence. Any re-fire is its own addendum.
+
+## ⚖️ ADDENDUM 14 — THE 40 MOVE POOLS BEFORE THEIR FIRST MODEL CALL: TWO RUN-BOX LOGINS WERE REVOKED AT THE SERVER. APPENDED.
+bench (lead), 2026-10-06 10:2x–11:0x (PDT). §Z0 9 lets the pool vary per cell, read from `ctl/run-cfg.tsv`; this records which pool and why.
+**(1) What stopped the first fire.** At 10:20:44 the first of the 40 (rank 1, plain) was REFUSED at P-SANDBOX, INDETERMINATE: the client,
+in the release pool's run-box dir (ADDENDUM 11), returned rc 1, *"Failed to authenticate: OAuth session expired and could not be
+refreshed"*. Nothing launched and no subject turn ran. One minimal turn in the same dir minutes later failed the same way, and the client's
+own `auth status` read `loggedIn false` at 10:45. The file identity still read the right account, both tokens present, expiry 2026-10-31.
+So the file check (ADDENDUM 10, L10) reads "the right account, a credential present", as its own printed limit says. Neither it nor
+`auth status` asks the server ((3) below shows `auth status` reading true on a revoked login); only a call shows the login is live.
+**(2) The decision.** The lead's ask (10:21) was the owner's login in that dir, with a pool move as the alternative. A login was offered
+to him with a 10:45 default; none landed, the default fired, and the helm moved the 40 (10:45:50) to another of the account pool's
+run-box dirs. Its reasons: the pool the default named would compete with the helm's own week, this one had room on its day line, and its
+unspent points expire on 2026-10-08. The helm's stated check on it: if this pool's day line holds the run before the 40 finish while
+another pool had room, the helm re-decides.
+**(3) The move, and what it was checked against, at zero spend.**
+```
+  env          the o60 lane env's CLB_CFG and CLAUDE_CONFIG_DIR moved to the destination dir (two lines; backup kept); nothing else moved
+  the check    cells_account_check.sh, --expect <the destination>: ACCOUNT-CHECK OK, credential PRESENT, access and refresh non-empty;
+               its RED control, --expect <a wrong identity>: RED NOT-EXPECTED
+  auth status  the client's own `auth status` in the destination dir: loggedIn true. ⚠️ NOT a server check: see (5)
+  --check-only x40, first pass: rc 3 x40, the launcher's own check HELD on two files in the run dir that are not client runtime
+               names (a 2026-09-11 settings backup and a 2026-09-15 credential backup left by earlier tools). Both were MOVED,
+               never deleted, to a scratch dir that every cell fence denies at both layers.
+  --check-only x40, second pass: rc 0 x40, CHECK CLEAN, each fence CONVERGES; the fence denies the destination dir at both layers
+```
+**(4) What does not move.** The cut (`874e623`), the 40 staged cells (staged before the move; no staged file names a pool), the order and
+the stop rule of ADDENDUM 13 (4), and the harvest of record. The chain resumes at rank 1, and each cell's day-line check now reads the
+destination pool.
+**(5) The destination's login was ALSO revoked, and `auth status` did not see it.** The resumed run's first fire (17:58:15Z) refused at
+P-SANDBOX with the same client line, 16 s after `auth status` read `loggedIn true` in that dir. One minimal turn per run-box dir then
+read: that dir rc 1 (the same line), two other pools' dirs rc 0. Nothing launched. **From here every cell's fire is preceded by ONE
+minimal live turn on the pool's dir (one short reply from a small model); a turn that does not answer stops the run before the fire.**
+That turn is the only check in this record that asks the server.
+**(6) The pool the 40 fire on: a third run-box dir, by the helm's word (10:59:57), the one the login default first named.** It is checked
+the same way as (3), plus the live turn: env moved (two lines; backup kept); account check OK and its RED control RED; one minimal live
+turn answered, rc 0; `--check-only` x40, rc 0 x40, CHECK CLEAN. The run resumes at rank 1 on this pool.
+The helm's reasons: the pool answered a live turn, it had the most room on its day line, and its reason against it at 10:45 (the
+helm's own week on that pool) is weaker than a stalled run; the PM's measurement of the helm's spend counts this run. Its stated check: if
+this pool's login dies mid-run, the run stops cleanly as built (the next cell's live turn fails before its fire) and nothing re-fires.
+The remedy then is an independent login per run-box dir, not a fourth pool.
