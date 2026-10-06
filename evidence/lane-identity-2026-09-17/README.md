@@ -14,7 +14,7 @@ all-whitespace value passes too, since `[ -n "   " ]` is true.
 ⇒ ***THE COMMENT ABOVE IT NAMES THE RIGHT LAW AND THE CODE IMPLEMENTS ONLY ITS WEAKER HALF.*** It says
 *"identity by the account the dir authenticates as, never by its name"*: **"never by its name" is satisfied;
 "the account it authenticates as" is read and compared to nothing.** The log line *"ACCOUNT identity read"* is
-accurate, which is exactly why a lead reads it as *verified*.
+accurate, which is exactly why a lead reads it as *verified*. <!-- claim-check: not-a-claim: names how a reader misreads a log line; nothing is claimed verified -->
 ⛔ **This campaign has already had a correctly-named config dir authenticate as a different account with a
 21-arm preflight passing it**, and a lane that MOVES between accounts meets the hazard at every move.
 

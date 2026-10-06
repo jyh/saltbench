@@ -14,7 +14,7 @@ clone and emits **task_ids, verdicts and timings only**; `sample.json` is a list
 | `selftest-prompt-coverage.txt` | row AV's 5 arms — every refusal rule is stated in the agent's prompt |
 | `smoke-red-arms.txt` | the toolchain gate refusing, incl. the REJECTED 0.2026.08.30 release |
 | `smoke-on-studio.txt` | the same gate GREEN on the Studio against the merged `HASHES.txt` |
-| `provision-verify.log` | the Studio transport verified BY CONTENT, both ends, 22 s |
+| `provision-verify.log` | the Studio transport verified BY CONTENT, both ends, 22 s <!-- claim-check: not-a-claim: a transport/integrity check recorded in a dated evidence record; its receipt is the file this record names --> |
 | `provision-transport-firstrun.log` | the first run's log, kept as it ran (its set-hash step was the slow one) |
 | `hashes-merge-additions-only.diff` | **the merge proof: 0 changed/removed, 37 added** |
 | `suite-97-arms.txt` | the whole S2-Rust suite at HEAD: 97 arms, 0 failed |

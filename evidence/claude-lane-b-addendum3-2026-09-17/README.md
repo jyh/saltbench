@@ -26,7 +26,7 @@ and two account-directory names, which the tree's own gate forbids (`scripts/che
 ⚠️ **The second rule exists because the first one missed it.** A first pass checked for the residual home path in its
 **slashed** form, read 0, and was wrong: a session slug is the path with every `/` replaced by `-`, so `-Users-jyh-`
 survived a check whose positive control (`RECEIPT`) only ever proved the file readable. ⇒ ***A POSITIVE CONTROL PROVES
-THE HAYSTACK, NEVER THE NEEDLE*** — the residual check was re-run in both forms, each against a control.
+THE HAYSTACK, NEVER THE NEEDLE*** — the residual check was re-run in both forms, each against a control. <!-- claim-check: not-a-claim: describes what a control established in a dated record, not a verification of an artifact -->
 
 ## The reading, in one line each
 - **ARM A is `VOID(UNMETERED)` on 3 of 3** — a manufactured absence: the slug is derived from a mutable env key that has

@@ -33,7 +33,7 @@ a verdict):
 ```
 
 ⇒ 🔑 **Case C is the finding the specification did not name: before FIX 3 a cell that did NOTHING AT ALL
-scored 12 OK · 0 FAIL while the cell that PROVED the theorem scored 10 OK · 2 FAIL.** An absence of
+scored 12 OK · 0 FAIL while the cell that PROVED the theorem scored 10 OK · 2 FAIL.** An absence of <!-- claim-check: not-a-claim: describes a benchmark cell's outcome as the harness this README documents scored it -->
 measurement scored better than the measurement would have.
 
 **Five arms RED-driven on the new worktree path**, each flipping exactly one arm and no other:
