@@ -833,3 +833,39 @@ path is what the sandbox and the harvest see. No O60 cell is affected: every O60
 fixture's real path) is a harness change and goes on the post-40 list; it is not on the fire route and does not move L1.
 **(5) What fires on this addendum.** The BignumMux (WRITE) smoke pair, plain (clbvp01) then salt-diet (clbvs01), each with the served-model
 guard. **The 40 still HOLD for his word on the CRC-32 smoke (ADDENDUM 11 (3)).**
+
+## ⚖️ ADDENDUM 13 — THE BIGNUMMUX (WRITE) SMOKE PAIR READS CLEAN. HIS CRC-32 WORD IS (B), SO THE 40 FIRE. APPENDED.
+bench (lead), 2026-10-05 17:23–18:4x (PDT); (3) filled 2026-10-06 from his word at the 10-06 sitting.
+**(1) The pair, at the cut `874e623` (ADDENDUM 12), on the same pool's second dir (ADDENDUM 11).** Each cell was fired through the route
+(CLIENT PIN OK, CHECK CLEAN, the fence CONVERGED, P-SANDBOX and P-NET GREEN for that fence, LAUNCH OBSERVED with no HOLD), ended under its
+watcher, and was harvested from a fresh fetch after its end by the harvest of record (`harvest_o60.py` at saltbench-systems `3498ce6`, the
+cut's x86 harness), on the lead box. The task's control (its reference, plain arm) read ACCEPTED, PASS, AGREE = 95 of 95, before each row.
+```
+  cell     arm        end (UTC)                       class     referee            cost / cap     served model (assistant msgs)
+  clbvp01  plain      LANDED 00:56:54, landing 67a73473ad79   ACCEPTED  PASS, 95 of 95     14.08 / 37.21  claude-opus-5, 163 of 163
+  clbvs01  salt-diet  LANDED 01:41:42, landing 137d89551533   ACCEPTED  PASS, 95 of 95     21.67 / 37.21  claude-opus-5, 259 of 259
+```
+Both rows: charge ARM, no re-referee, the judged commit pinned by the end line and equal to the watcher's DECLARED landing, referee blob
+8fc88698b5b3, runner blob c20b70ef84d1, uncommitted work not measured (by design). **The served-model guard (ADDENDUM 10 (5)) is MET for
+both.** n = 1 each: this is the plumbing gate. It is never quoted beside the 40 and never pooled with them, and the cost difference between
+the two cells is not a reading.
+**(2) What the pair establishes, and what it does not.** The route stages, fences, probes, launches, watches, ends and harvests a cell of
+each arm at this cut, on this dir, and the referee scores it against the withheld suite. It says nothing about any task of the 20, about
+the arms' relative performance, or about the CRC-32 calibration against O4 #1, which this pair is not.
+**(3) His word on the CRC-32 fork (ADDENDUM 11 (3)): (B).** The option as the helm put it to him, 2026-10-05 16:13 (verbatim): *"(A)
+red-first route fix, the registered order kept, the 40 likely past tonight · (B) the WRITE pair + ADDENDUM 8's L7 dry cells as the gate; the
+CRC-32 pair DECLARED NOT RUN BEFORE THE 40, run after under (A)'s fix, never quoted, never pooled. Helm REC (B)."* His word, at the council
+sitting of 2026-10-06, 16:28:41Z: *"accept rec"* (the sitting's minute, ruling 6).
+So the gate before the 40 is the WRITE pair in (1) above, both ACCEPTED, together with L7's dry cells: `--check-only` CLEAN on all six
+staged cells at the cut `874e623` (ADDENDUM 12 (1)). **The CRC-32 smoke pair is declared NOT RUN before the 40.** It runs after them, under
+(A)'s route fix. It keeps its registered calibration role (ADDENDUM 1), it is never quoted, and it is never pooled with the 40.
+**(4) What fires on this addendum, and in what order.** The 40, one cell at a time on the pool (§Z0 9), each harvested from a fresh fetch
+by the harvest of record at `3498ce6` with the cut `874e623` as its harness. The order is §Z4's, derived and not chosen: `order.py` beside
+`population.tsv` ranks the 20 rows by sha256("O60-ZD-order|<export>|<row>"), where the export is the one §Z1's draw names, x86lean
+`dfb26e28e00c1ad82443325f353aa44a279e1a83` (population.tsv's header). Its output is `order.tsv`. Two red controls refuse with rc 1: a
+duplicated row, and a header with no export. Each task fires its plain cell and then its salt-diet cell. The §Z1 task numbers, in that order:
+```
+  17 · 12 · 10 · 6 · 16 · 7 · 9 · 2 · 14 · 4 · 3 · 5 · 1 · 8 · 19 · 18 · 13 · 11 · 15 · 20
+```
+A cell whose end is not a cell outcome (LANDED, CAP-COST or CAP-WALL) stops the run for the lead. It is never re-fired in place: a cell
+directory is evidence. Any re-fire is its own addendum.
