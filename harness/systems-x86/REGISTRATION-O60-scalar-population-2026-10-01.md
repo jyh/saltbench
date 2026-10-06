@@ -876,8 +876,8 @@ bench (lead), 2026-10-06 10:2x–11:0x (PDT). §Z0 9 lets the pool vary per cell
 in the release pool's run-box dir (ADDENDUM 11), returned rc 1, *"Failed to authenticate: OAuth session expired and could not be
 refreshed"*. Nothing launched and no subject turn ran. One minimal turn in the same dir minutes later failed the same way, and the client's
 own `auth status` read `loggedIn false` at 10:45. The file identity still read the right account, both tokens present, expiry 2026-10-31.
-So the file check (ADDENDUM 10, L10) reads "the right account, a credential present", as its own printed limit says; only a call to the
-server can show the login is still live.
+So the file check (ADDENDUM 10, L10) reads "the right account, a credential present", as its own printed limit says. Neither it nor
+`auth status` asks the server ((3) below shows `auth status` reading true on a revoked login); only a call shows the login is live.
 **(2) The decision.** The lead's ask (10:21) was the owner's login in that dir, with a pool move as the alternative. A login was offered
 to him with a 10:45 default; none landed, the default fired, and the helm moved the 40 (10:45:50) to another of the account pool's
 run-box dirs. Its reasons: the pool the default named would compete with the helm's own week, this one had room on its day line, and its
@@ -888,7 +888,7 @@ another pool had room, the helm re-decides.
   env          the o60 lane env's CLB_CFG and CLAUDE_CONFIG_DIR moved to the destination dir (two lines; backup kept); nothing else moved
   the check    cells_account_check.sh, --expect <the destination>: ACCOUNT-CHECK OK, credential PRESENT, access and refresh non-empty;
                its RED control, --expect <a wrong identity>: RED NOT-EXPECTED
-  the server   the client's own `auth status` in the destination dir: loggedIn true (the check (1) shows the file read cannot make)
+  auth status  the client's own `auth status` in the destination dir: loggedIn true. ⚠️ NOT a server check: see (5)
   --check-only x40, first pass: rc 3 x40, the launcher's own check HELD on two files in the run dir that are not client runtime
                names (a 2026-09-11 settings backup and a 2026-09-15 credential backup left by earlier tools). Both were MOVED,
                never deleted, to a scratch dir that every cell fence denies at both layers.
@@ -897,3 +897,8 @@ another pool had room, the helm re-decides.
 **(4) What does not move.** The cut (`874e623`), the 40 staged cells (staged before the move; no staged file names a pool), the order and
 the stop rule of ADDENDUM 13 (4), and the harvest of record. The chain resumes at rank 1, and each cell's day-line check now reads the
 destination pool.
+**(5) The destination's login was ALSO revoked, and `auth status` did not see it.** The resumed run's first fire (17:58:15Z) refused at
+P-SANDBOX with the same client line, 16 s after `auth status` read `loggedIn true` in that dir. One minimal turn per run-box dir then
+read: that dir rc 1 (the same line), two other pools' dirs rc 0. Nothing launched. **From here every cell's fire is preceded by ONE
+minimal live turn on the pool's dir (one short reply from a small model); a turn that does not answer stops the run before the fire.**
+That turn is the only check in this record that asks the server. The pool the 40 then fire on: DESTINATION OWED (the helm's word).
