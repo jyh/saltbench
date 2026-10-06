@@ -859,5 +859,13 @@ sitting of 2026-10-06, 16:28:41Z: *"accept rec"* (the sitting's minute, ruling 6
 So the gate before the 40 is the WRITE pair in (1) above, both ACCEPTED, together with L7's dry cells: `--check-only` CLEAN on all six
 staged cells at the cut `874e623` (ADDENDUM 12 (1)). **The CRC-32 smoke pair is declared NOT RUN before the 40.** It runs after them, under
 (A)'s route fix. It keeps its registered calibration role (ADDENDUM 1), it is never quoted, and it is never pooled with the 40.
-**(4) What fires on this addendum.** The 40, each harvested from a fresh fetch by the harvest of record at `3498ce6` with the cut `874e623`
-as its harness.
+**(4) What fires on this addendum, and in what order.** The 40, one cell at a time on the pool (§Z0 9), each harvested from a fresh fetch
+by the harvest of record at `3498ce6` with the cut `874e623` as its harness. The order is §Z4's, derived and not chosen: `order.py` beside
+`population.tsv` ranks the 20 rows by sha256("O60-ZD-order|<export>|<row>"), where the export is the one §Z1's draw names, x86lean
+`dfb26e28e00c1ad82443325f353aa44a279e1a83` (population.tsv's header). Its output is `order.tsv`. Two red controls refuse with rc 1: a
+duplicated row, and a header with no export. Each task fires its plain cell and then its salt-diet cell. The §Z1 task numbers, in that order:
+```
+  17 · 12 · 10 · 6 · 16 · 7 · 9 · 2 · 14 · 4 · 3 · 5 · 1 · 8 · 19 · 18 · 13 · 11 · 15 · 20
+```
+A cell whose end is not a cell outcome (LANDED, CAP-COST or CAP-WALL) stops the run for the lead. It is never re-fired in place: a cell
+directory is evidence. Any re-fire is its own addendum.
