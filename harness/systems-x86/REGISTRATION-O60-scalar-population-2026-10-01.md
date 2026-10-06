@@ -791,3 +791,45 @@ staged without a harness or export change, which would move L1 off the cut.
 the BignumMux (WRITE) pair is the plumbing gate, and the CRC-32 pair runs AFTER the 40 under a route fix, with its registered role
 unchanged (never quoted, never pooled; the calibration against O4 #1). **The BignumMux pair fires on this addendum. The 40 HOLD until
 his word, which a later addendum records.**
+
+## ⚖️ ADDENDUM 12 — THE CLIENT'S OWN `~/.claude/bridge-spawn` IS NO DRIFT AND NO HOLD. L1 MOVES TO `874e623`; L1 RE-MET; THE LAUNCHER-PATH SELFTEST FAILS RULED. APPENDED.
+bench (lead), 2026-10-05 17:15–17:2x (PDT). No subject turn has run: zero task spend.
+**(1) What stopped the fire under ADDENDUM 11.** clbvp01's P-SANDBOX and P-NET probes read GREEN on the second dir (16:21). The launch-time
+check then HELD twice, on two lines: the cell manifest (`absent up2/.claude: ABSENT -> PRESENT`) and the fence (`DRIFT`). The run box had
+no `~/.claude` at staging. The pinned client (2.1.259) creates `~/.claude/bridge-spawn` (mode 0700, empty) before EVERY sandbox-wrapped
+command, gated only on the sandbox being on (systems' read of the binary). So the fire's own sandboxed probe turn created the path the
+launch check then refused. Nothing ran on a subject; the watcher was stopped by pid before it could end the cell.
+**(2) The fix, and L1.** saltbench-systems `874e623` (two commits on `c2074e7`; kent's non-author read, 17:02: no defect in the diff, and the selftest
+reproduced both ways off the run box; the live drive was not covered (it is (3) below)). `render_fence_v3.py` names `~/.claude` in the deny set whether or not it exists, so its birth is not drift; it was
+already denied whenever it existed. `cell_manifest.py` reads a `$HOME/.claude` holding ONLY an empty `bridge-spawn` dir as ABSENT, and
+still HOLDs on any other shape (a file in it, any other entry, a symlink at either level, the same shape at another ancestor). Neither file
+is copied into a cell: both reach a cell only through its root's `_bin` links, so no cell is re-staged.
+```
+  the cut        874e623465cc (EXPORTED-FROM 874e623465cc5e8de28065485764e4202533b9ff), run box: 508 files, listing sha256/16
+                 895b6b568eeb86af, 0 withheld-shaped names in the listing or on the host; required-ancestor gate OK (5 of 5);
+                 is-ancestor TRUE for c2074e7, a3db4f6, 53420bc, f6cf86f, acd7593, 6de3f4e, 51bd1e9 and b629652
+  export diff    against the c2074e7 export: cell_manifest.py, render_fence_v3.py, one new selftest file, and the two provenance
+                 files (EXPORTED-FROM.sha; REQUIRED-ANCESTORS.tsv, whose rows and digest are unchanged and whose @amendment-commit
+                 line names this repository's main at the cut). Nothing else.
+  re-point       the o60 env's X86_EXPORT (one line; a backup kept); _bin x4, 36 of 36 links into the cut on each root
+  --check-only   x6 (clbvp01, clbvs01, clbpp01, clbps01, clbps11, clbps13): rc 0, CHECK CLEAN x6, each fence CONVERGES, export=874e623
+```
+**(3) Driven live on the run box at zero spend (no client run), on clbvp01, against both exports.**
+```
+  ~/.claude absent                     874e623 manifest clean · c2074e7 manifest clean · 874e623 fence CURRENT
+  ~/.claude/bridge-spawn, empty        874e623 manifest clean · c2074e7 manifest HOLD (the fire's own line) · 874e623 fence CURRENT;
+                                       874e623 renders byte-identical with and without it, c2074e7's render differs by one entry
+  a file planted in bridge-spawn       874e623 manifest HOLD
+  a second entry beside bridge-spawn   874e623 manifest HOLD
+  restored (~/.claude removed)         874e623 manifest clean · fence CURRENT
+```
+The fence that converged at `--check-only` (sha256/16 8d5f81e7c452c8c8) is the one rendered in both states. **L1 is RE-MET at `874e623`.**
+L8 and L10 are unchanged (the same pool, the same second dir). The fire's own probes are again the authenticated turn.
+**(4) The launcher-path selftest FAILs (3 of the suite's 228 arms; systems, 17:12: the same three fail identically at `c2074e7`). RULED: the
+ARM gives way, the launcher stands.** The launcher derives the cell from `pwd -P`, so an x86 cell's `CLAUDE_CODE_TMPDIR` names the cell's
+real path. The arm builds its fixture under `/tmp`, which this OS resolves to `/private/tmp`, and compares against the spelling. The real
+path is what the sandbox and the harvest see. No O60 cell is affected: every O60 cells root's real path equals its spelling (systems,
+17:07, on the run box), and each `--check-only` above reads `CLAUDE_CODE_TMPDIR=$CELL/tmp` CLEAN. The arm's fix (compare against the
+fixture's real path) is a harness change and goes on the post-40 list; it is not on the fire route and does not move L1.
+**(5) What fires on this addendum.** The BignumMux (WRITE) smoke pair, plain (clbvp01) then salt-diet (clbvs01), each with the served-model
+guard. **The 40 still HOLD for his word on the CRC-32 smoke (ADDENDUM 11 (3)).**
