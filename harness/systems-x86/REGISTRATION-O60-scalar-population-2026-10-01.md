@@ -905,3 +905,7 @@ That turn is the only check in this record that asks the server.
 **(6) The pool the 40 fire on: a third run-box dir, by the helm's word (10:59:57), the one the login default first named.** It is checked
 the same way as (3), plus the live turn: env moved (two lines; backup kept); account check OK and its RED control RED; one minimal live
 turn answered, rc 0; `--check-only` x40, rc 0 x40, CHECK CLEAN. The run resumes at rank 1 on this pool.
+The helm's reasons: the pool answered a live turn, it had the most room on its day line, and its reason against it at 10:45 (the
+helm's own week on that pool) is weaker than a stalled run; the PM's measurement of the helm's spend counts this run. Its stated check: if
+this pool's login dies mid-run, the run stops cleanly as built (the next cell's live turn fails before its fire) and nothing re-fires.
+The remedy then is an independent login per run-box dir, not a fourth pool.
