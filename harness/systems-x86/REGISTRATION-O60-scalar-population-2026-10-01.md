@@ -833,3 +833,24 @@ path is what the sandbox and the harvest see. No O60 cell is affected: every O60
 fixture's real path) is a harness change and goes on the post-40 list; it is not on the fire route and does not move L1.
 **(5) What fires on this addendum.** The BignumMux (WRITE) smoke pair, plain (clbvp01) then salt-diet (clbvs01), each with the served-model
 guard. **The 40 still HOLD for his word on the CRC-32 smoke (ADDENDUM 11 (3)).**
+
+## ⚖️ ADDENDUM 13 — THE BIGNUMMUX (WRITE) SMOKE PAIR READS CLEAN. THE 40 WAIT ONLY ON HIS CRC-32 WORD. APPENDED.
+bench (lead), 2026-10-05 17:23–18:4x (PDT). DRAFT: this addendum merges only with (3) filled from his word.
+**(1) The pair, at the cut `874e623` (ADDENDUM 12), on the same pool's second dir (ADDENDUM 11).** Each cell was fired through the route
+(CLIENT PIN OK, CHECK CLEAN, the fence CONVERGED, P-SANDBOX and P-NET GREEN for that fence, LAUNCH OBSERVED with no HOLD), ended under its
+watcher, and was harvested from a fresh fetch after its end by the harvest of record (`harvest_o60.py` at saltbench-systems `3498ce6`, the
+cut's x86 harness), on the lead box. The task's control (its reference, plain arm) read ACCEPTED, PASS, AGREE = 95 of 95, before each row.
+```
+  cell     arm        end (UTC)                       class     referee            cost / cap     served model (assistant msgs)
+  clbvp01  plain      LANDED 00:56:54, landing 67a73473ad79   ACCEPTED  PASS, 95 of 95     14.08 / 37.21  claude-opus-5, 163 of 163
+  clbvs01  salt-diet  LANDED 01:41:42, landing 137d89551533   ACCEPTED  PASS, 95 of 95     21.67 / 37.21  claude-opus-5, 259 of 259
+```
+Both rows: charge ARM, no re-referee, the judged commit pinned by the end line and equal to the watcher's DECLARED landing, referee blob
+8fc88698b5b3, runner blob c20b70ef84d1, uncommitted work not measured (by design). **The served-model guard (ADDENDUM 10 (5)) is MET for
+both.** n = 1 each: this is the plumbing gate. It is never quoted beside the 40 and never pooled with them, and the cost difference between
+the two cells is not a reading.
+**(2) What the pair establishes, and what it does not.** The route stages, fences, probes, launches, watches, ends and harvests a cell of
+each arm at this cut, on this dir, and the referee scores it against the withheld suite. It says nothing about any task of the 20, about
+the arms' relative performance, or about the CRC-32 calibration against O4 #1, which this pair is not.
+**(3) His word on the CRC-32 fork (ADDENDUM 11 (3)).** OWED. Put to him by the helm 2026-10-05 16:13 with recommendation (B): the BignumMux
+pair is the plumbing gate, and the CRC-32 pair runs after the 40 under a route fix with its registered role unchanged.
