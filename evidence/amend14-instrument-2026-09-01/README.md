@@ -19,4 +19,4 @@ Zero model tokens. Every number here was measured at an artifact on the Studio o
 The routed finding was **measured at a real file with a real sha, and was still wrong**, because the file was
 the harness's own composition rather than anything the agent wrote. Nothing downstream could have caught it.
 ⇒ ***"Verified at the artifact" names a habit, not a guarantee — the question is always which artifact, and
-who wrote it.***
+who wrote it.*** <!-- claim-check: not-a-claim: quotes the phrase in order to criticise it -->

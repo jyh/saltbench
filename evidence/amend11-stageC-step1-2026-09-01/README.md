@@ -2,7 +2,7 @@
 
 Run root `/Users/jyh/bench-c` on the Studio. Dispatch 2026-09-01T21:13:09Z, DRIVER DONE 22:09:49Z.
 Every file copied from the Studio and **sha-verified against its source after the copy** — the receipt is
-the content, never scp's exit code.
+the content, never scp's exit code. <!-- claim-check: not-a-claim: a transport/integrity check recorded in a dated evidence record; its receipt is the file this record names -->
 
 | file | what it proves |
 |---|---|
