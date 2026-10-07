@@ -913,10 +913,10 @@ The remedy then is an independent login per run-box dir, not a fourth pool.
 ## ⚖️ ADDENDUM 15 — FIVE FIRED CELLS RAN WITHOUT THEIR EXECUTOR. THEY ARE VOID. THE RUN MOVES OFF ROSETTA TO A NATIVE x86_64 HOST. APPENDED.
 bench (lead), 2026-10-07 (PDT). Written before any further model call in this registration.
 **(1) What was found.** The run box is an Apple-silicon Mac. Executor (a) (`exec_native`, an x86_64 binary run under `/usr/bin/arch
--x86_64`) needs macOS's Rosetta 2 translator there, and Rosetta 2 was ABSENT. The likely cause is an OS upgrade on 2026-10-03, which does
-not keep it installed. Read on 2026-10-07 at the object: `/usr/bin/arch -x86_64 /usr/bin/uname -m` prints *"Bad CPU type in executable"*.
-So the subject's own `bin/rt run`, `test` and `declare` could not execute the subject's routine. Every cell fired on that box since the
-upgrade met the error and worked on without its executor. The five cells below each carry the error in their own committed files
+-x86_64`) needs macOS's Rosetta 2 translator there, and Rosetta 2 was ABSENT. The likely cause, NOT measured, is an OS upgrade on
+2026-10-03, which may not keep it installed. Read on 2026-10-07 at the object: `/usr/bin/arch -x86_64 /usr/bin/uname -m` prints *"Bad CPU type in executable"*.
+So the subject's own `bin/rt run`, `test` and `declare` could not execute the subject's routine. Each of the five cells below met the error
+and worked on without its executor (this is a claim about these five, not a census of every cell dir on the box). Each carries the error in their own committed files
 (`grep -F "Bad CPU type"` over the cell directory: 3 to 6 files per cell, at least once in each).
 ```
   cell     role                                    end                     where it was recorded
@@ -926,6 +926,9 @@ upgrade met the error and worked on without its executor. The five cells below e
   clbps17  the 40, task 17, salt-diet               CAP-COST                harvested, not reported
   clbpp12  the 40, task 12, plain                   ended DONE              harvested, not reported
 ```
+clbpp12's end, DONE, is not one of ADDENDUM 13 (4)'s cell outcomes (LANDED, CAP-COST, CAP-WALL), so that stop rule halted the run
+there (the chain log: `CHAIN END rc=5 … not a cell outcome; the lead decides`). That is why task 12's salt-diet cell never fired.
+The subject's own final line in that cell names the cause: its landing *"refused only because this box is arm64 with no Rosetta"*.
 **(2) Why the gate did not catch it.** ADDENDUM 13's smoke pair read ACCEPTED because the REFEREE ran on the lead box, which has
 Rosetta 2. The subject ran on the run box, which did not. The gate exercised the referee's executor and assumed the subject's. The
 pair established that the route stages, fences, launches, watches, ends and harvests a cell. It did not establish that the subject could
