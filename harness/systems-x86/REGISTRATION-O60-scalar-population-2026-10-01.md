@@ -909,3 +909,45 @@ The helm's reasons: the pool answered a live turn, it had the most room on its d
 helm's own week on that pool) is weaker than a stalled run; the PM's measurement of the helm's spend counts this run. Its stated check: if
 this pool's login dies mid-run, the run stops cleanly as built (the next cell's live turn fails before its fire) and nothing re-fires.
 The remedy then is an independent login per run-box dir, not a fourth pool.
+
+## ⚖️ ADDENDUM 15 — FIVE FIRED CELLS RAN WITHOUT THEIR EXECUTOR. THEY ARE VOID. THE RUN MOVES OFF ROSETTA TO A NATIVE x86_64 HOST. APPENDED.
+bench (lead), 2026-10-07 (PDT). Written before any further model call in this registration.
+**(1) What was found.** The run box is an Apple-silicon Mac. Executor (a) (`exec_native`, an x86_64 binary run under `/usr/bin/arch
+-x86_64`) needs macOS's Rosetta 2 translator there, and Rosetta 2 was ABSENT. The likely cause, NOT measured, is an OS upgrade on
+2026-10-03, which may not keep it installed. Read on 2026-10-07 at the object: `/usr/bin/arch -x86_64 /usr/bin/uname -m` prints *"Bad CPU type in executable"*.
+So the subject's own `bin/rt run`, `test` and `declare` could not execute the subject's routine. Each of the five cells below met the error
+and worked on without its executor (this is a claim about these five, not a census of every cell dir on the box). Each carries the error in their own committed files
+(`grep -F "Bad CPU type"` over the cell directory: 3 to 6 files per cell, at least once in each).
+```
+  cell     role                                    end                     where it was recorded
+  clbvp01  smoke pair, plain      (ADDENDUM 13 (1))  LANDED                  ADDENDUM 13 (1)
+  clbvs01  smoke pair, salt-diet  (ADDENDUM 13 (1))  LANDED                  ADDENDUM 13 (1)
+  clbpp17  the 40, task 17, plain                   LANDED                  harvested, not reported
+  clbps17  the 40, task 17, salt-diet               CAP-COST                harvested, not reported
+  clbpp12  the 40, task 12, plain                   ended DONE              harvested, not reported
+```
+clbpp12's end, DONE, is not one of ADDENDUM 13 (4)'s cell outcomes (LANDED, CAP-COST, CAP-WALL), so that stop rule halted the run
+there (the chain log: `CHAIN END rc=5 … not a cell outcome; the lead decides`). That is why task 12's salt-diet cell never fired.
+The subject's own final line in that cell names the cause: its landing *"refused only because this box is arm64 with no Rosetta"*.
+**(2) Why the gate did not catch it.** ADDENDUM 13's smoke pair read ACCEPTED because the REFEREE ran on the lead box, which has
+Rosetta 2. The subject ran on the run box, which did not. The gate exercised the referee's executor and assumed the subject's. The
+pair established that the route stages, fences, launches, watches, ends and harvests a cell. It did not establish that the subject could
+execute its own routine.
+**(3) His word, at the council sitting of 2026-10-07 (verbatim):** *"yes void, but we should not be using rosetta, [a named
+host] is a x86_64 machine."* (The bracket replaces a host name, which this public tree does not carry.) **So:**
+- **The five are VOID.** None is scored, quoted, or pooled with anything. Each cell directory is kept unchanged as evidence of this
+  addendum, and none is re-fired in place.
+- **ADDENDUM 13 (1)'s pair is withdrawn as the gate for the 40.** A new smoke pair, on the new host, under (4), replaces it. ADDENDUM
+  13 (3) (the CRC-32 pair declared NOT RUN before the 40) is unchanged.
+- **The three real tasks of the 40 that ran (task 17 both arms, task 12 plain) are re-fired** in new cell directories, at their
+  registered places in §Z4's order, after the new smoke pair reads clean. Task 12's salt-diet cell never fired, and fires in its place.
+**(4) The run moves to a native x86_64 host the owner named, with no translator.** Nothing fires there until the cell's confinement is
+measured on that host and recorded in a later addendum, before its first model call. The harness confines a cell with macOS Seatbelt
+profiles (the agent's sandbox, executor (a)'s isolation, and the scorer's containment), and the named host runs another operating system.
+A confinement of equal strength on that host is therefore a build, not a move. Each of its denials gets a use-time positive control, as
+the scorer's containment already has.
+From that addendum on, **every cell's fire is preceded by the executor preflight:** the fire reads the OUTPUT of an x86_64 probe on the
+host the subject runs on (never its exit code) and refuses unless it prints `x86_64`. That probe has been built and red-driven on the box
+that lacked Rosetta (it refused with rc 3), and it rides the next cut.
+**(5) What this addendum does not change.** The 20 tasks, §Z1's draw, §Z4's order, the arms' texts, the stop rule of ADDENDUM 13 (4),
+and the harvest of record. The cut and the staged cells will be re-recorded for the new host by the addendum in (4).
