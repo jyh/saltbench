@@ -951,3 +951,106 @@ host the subject runs on (never its exit code) and refuses unless it prints `x86
 that lacked Rosetta (it refused with rc 3), and it rides the next cut.
 **(5) What this addendum does not change.** The 20 tasks, §Z1's draw, §Z4's order, the arms' texts, the stop rule of ADDENDUM 13 (4),
 and the harvest of record. The cut and the staged cells will be re-recorded for the new host by the addendum in (4).
+
+
+## ⚖️ ADDENDUM 16 — THE NATIVE x86_64 HOST, ITS CONFINEMENT MEASURED THERE, AND TWO REFEREE CORRECTIONS THE MEASUREMENT FOUND. APPENDED.
+bench (lead), 2026-10-08 (PDT). Written before any model call on the new host.
+**(1) The host.** His word at the council sitting of 2026-10-08 (verbatim): *"Yes then let's do (C)"*, which is a cloud x86_64 Linux virtual
+machine: 4 vCPU, 16 GB, Ubuntu 24.04 LTS, kernel 7.0 (a cloud vendor build). It runs x86_64 natively, with no translator. Its cost was posted and
+read before it was created. It is stopped between bursts and deleted at the end of the run.
+**(2) The confinement on that host, measured there.** ADDENDUM 15 (4) required this. Each denial was driven with its positive control: the same act,
+unconfined, succeeds.
+```
+  layer                          mechanism on the host                                   measured on the host
+  host requirement H1            an AppArmor grant of user namespaces to bubblewrap      bwrap runs with it; with it removed,
+                                 ALONE (the system-wide restriction stays on)            bwrap fails (RTM_NEWADDR); restored, runs
+  executor (a)                   seccomp self-confinement inside + bubblewrap outside    14 probes x {confined, control, outer
+                                 + five use-time controls before every subject run       layer}: 14 of 14 as required
+     red-backwards               three mutants of the filter                             11, 14 and 1 (the PROT_EXEC row alone)
+                                                                                         probes red of 14
+  the referee's suite            the x86 selftest, front end and built model present     141 passed / 0 failed / 0 skipped; with
+                                                                                         the filter never installed, 35 fail, 22
+                                                                                         of them REFUSED at the use-time control
+  the fence render               the Linux branch (scratch roots, keyring)               80 passed / 0 failed
+  the agent sandbox (client)     the client's own sandbox on bubblewrap                  NOT YET: (6)
+```
+The suite figure in the table is the reading at bring-up. At the cut named in (6), which adds the arms of (4), the same suite on
+the host reads 163 passed / 0 failed / 0 skipped.
+
+**(3) A referee correction: the subject's Lean is now elaborated confined.** The salt-diet arm's referee builds the subject's `Submission/`
+Lean and imports it in its probes. Lean elaboration can run file and process operations, and the referee's runner on the previous host was
+a build-lock wrapper, not a sandbox. On the new host every Lean process the referee starts runs under bubblewrap: no network, an empty
+environment, a read-only empty home directory, and one writable directory (the scratch root). A use-time control runs before every call
+and refuses the run if it can write the home directory or read outside its binds. Measured: an unconfined two-line file wrote into the home
+directory and read a system file. Confined, both fail, the network fails and an inherited environment variable is absent, while a write
+into the scratch root succeeds. With a mutant runner that refuses, 57 arms of the referee's suite fail, so the suite does call it.
+**No x86 cell runs on macOS until that path's runner is confined; until then it refuses.**
+**(4) A second referee correction, the helm's rulings of 2026-10-08: the referee's verdicts no longer
+come from text a subject can rewrite.** The referee read three verdicts from a probe elaborated in an environment the subject's modules
+extend: AXIOMS (`#print axioms`), specification independence, and TARGET (the card's `#check` of the theorem's statement). Driven on Lean
+4.27.0, a subject module could forge each one: code run at import printed a pass line and exited 0; a macro rewrote `#print axioms` so a
+proof using `sorry` read as using no axioms; and a macro erased `#check`, so a theorem stating the wrong thing passed TARGET. From this
+addendum:
+- A harness program imports the compiled modules WITHOUT running their initializers and elaborates no subject syntax. It refuses at SCREEN
+  any environment extension a subject module contributed that is not on an allow-list. The list is derived from the 64 Lean modules real past
+  cells wrote, not typed. It then reads AXIOMS and specification independence from the environment. It runs BEFORE any textual probe; on a
+  refusal no textual probe is launched.
+- **TARGET is decided from the environment too, because an ALLOWED extension can still change what the card's text means.** Driven on Lean
+  4.27.0: a subject instance of high priority for the numeral `256` made a false statement pass the textual `#check`, while the same statement
+  failed against a tree without it. Instances are on the allow-list (real cells declare them), so SCREEN cannot refuse this. From this addendum
+  the card's statement is elaborated in a second environment that holds only the harness's own modules and the core library. The subject's
+  constants that the statement and the stored theorem type reach are supplied there as opaque declarations, under their original names and
+  with the types the subject's environment gives them: types only, with no definitions and no instances. The theorem's stored type must
+  typecheck there first; a type that needs a subject definition's value, or a constant not supplied, is refused at SCREEN by name. The
+  statement elaborated there is then compared with the stored type IN THE SUBJECT'S REAL ENVIRONMENT, by definitional equality at reducible
+  transparency, and the kernel checks the resulting declaration last. A subject instance defined as the core operation unfolds and meets the
+  statement; one that means something else does not. The textual probe still runs and is kept in the record; it no longer decides the class,
+  and a disagreement between the two is recorded.
+- Proved red-first. Against the previous referee, three new plants read OK: the numeral instance, an addition instance that multiplies, and a
+  stored type that typechecks only by unfolding a subject definition. Against this referee the first two fail TARGET and the third is refused
+  at SCREEN by name, while two controls hold: the clean tree against the false statement fails TARGET, and an instance defined as the core
+  addition passes. The receipt names the transparency and the kernel.
+- **The trust base: what the verdict imports, from where, and the kernel replay.** Every verdict above reads an environment imported from
+  compiled module files, and importing never re-runs the kernel on what it loads. The subject's build runs its own code and can write any
+  file in its working directory. Driven on Lean 4.27.0 under the confined runner, two plants read OK against the referee of (T1a): a subject
+  file that, while the build ran, replaced the harness interface's compiled file with a copy whose correctness predicate is `True`, then
+  proved it by `trivial`; and a subject file that rewrote its own compiled theorem, proved by `sorry`, to a proof term of `True`. From this
+  addendum: (α) the referee builds the harness modules (the interface over the x86 model) in a directory of their own, BEFORE any subject
+  code runs and outside the directory the subject's build is given, and the verdict program reads them from there first, read-only, then
+  the toolchain's own library, and only then the subject's; a harness module not found there refuses the run; (β) the digests of that directory's files and of the subject root's toolchain
+  and build files are taken before the subject's build and again after the verdict, and any change refuses the run; (δ) every constant of
+  every subject module is re-checked by the kernel against that environment before any verdict reads it, and a rejection refuses the run
+  at SCREEN with no textual probe launched. Constants marked `unsafe` or `partial` cannot be kernel-checked; they and anything that reaches
+  them are excluded and counted, and none of them may be among what the verdict reads. The Lean that reads the verdict must be the
+  toolchain the harness directory was built for. Red-first: both plants read OK against the referee of (T1a) and are refused by the
+  kernel after this change, by name and for the planted reason. Without (α), the replay alone still passes the first plant, because it
+  re-checks the proof against the forged interface, so (α) is necessary and (δ) is not sufficient alone.
+  The cell's own check (`verify`, run where the cell stands) has no separate harness directory; it replays the subject's constants but
+  reads the interface from the cell's tree, so it does not close the first plant. It is the subject's own check, not the verdict.
+- The cost, measured on the 9 real trees that contain Lean, each judged on a copy by the previous referee and by this one (with the
+  trust base above): 8 passed before and 8 pass now; the ninth failed TARGET before and fails it now (it has no theorem of the card's
+  name). No verdict changed. The kernel re-checked 144 to 304 constants per tree in 2.2 to 15.0 seconds with a peak memory of 2.1 to 2.8 GB;
+  0 to 7 per tree were `unsafe` or `partial` and were excluded, none of them among what the verdict reads.
+  Its limit, stated beside it: in none of the 8 that state the theorem does its stored type mention a subject instance (each supplied the same 4 opaques), so the real population never
+  exercises the unfolding of one; only the planted control above does. The 8 passes do rule out the defect that would refuse every
+  cell (opaque copies under the wrong names).
+- The cell's own screen (its guard and `verify`, which run the same program) names the refused constructs, so the subject is told the rule.
+- Proved red-first with four plants (code run at import; two macros; an elaborator attribute that no screen word names), each refused by the
+  extension it leaves, and three live controls (a used axiom is reported; a specification reaching the routine is refused; a wrong-type
+  theorem with no hook fails TARGET). With the previous referee, the four plants and the clean control all read OK.
+Past exposure, measured and not assumed: of the 28 x86 cell repositories on the previous run box, 9 contain Lean (64 files; the other 19 hold
+none). None of the 64 contains code run at import, a syntax extension, `#eval`, or a file or process operation. Built and read by the program
+above, none contributes an extension outside the allow-list. A planted file matches the same search.
+**(5) Two corrections for the new host, found by the measurement.** (a) A fence probe read `/etc/hostname`, which this image does not have,
+so its control failed and the row tested nothing. The suite refused it as designed. It now reads `/etc/passwd`. (b) The FORM screen a
+subject runs disassembled with whichever `objdump` came first. On macOS that is LLVM's, the tool the allowed list was drawn with. On Linux
+it is GNU's, which prints instructions without their size suffix, so every memory form read as outside the list. On Linux the screen now
+uses LLVM's and refuses without it. Both arms run the same screen.
+**(6) The order from here.** The client's own probes (its sandbox and its network fence, one small turn each; preflight turns, not cells,
+never scored), on an independent login made on the host itself, never a copied credential. Then the launch preflight (x86_64 by output;
+`lake`, `llvm-objdump`, bubblewrap's namespaces and the confined runner all present). Then the cut 66fb6a5, exported for this host, with the
+client at version 2.1.259 (its Linux binary sha256/16 f7dd62ae41537801). Then a new smoke pair, then the 3 voided tasks and the 37 in §Z4's
+order. **The withheld tests are absent from the host while any cell runs.** They are copied in only to score, after the cell (or the
+batch) has ended, and removed again before the next cell fires.
+**(7) What this addendum does not change.** The 20 tasks, §Z1's draw, §Z4's order, the arms' texts, ADDENDUM 13 (4)'s stop rule and the
+harvest of record.
