@@ -1069,3 +1069,52 @@ vacuous: the old side refused for an unrelated reason (an uncommitted working tr
 **What changes.** 6e34f2e replaces 66fb6a5 as the cut of record in (6). The cut is exported from it before R2.
 **What did not happen.** No cell ran in between. No x86 cell has fired since the five voided by ADDENDUM 15, and the run's host is
 Linux, where the referee was already confined.
+
+## ⚖️ SECOND CORRECTION TO ADDENDUM 16 (6): THE CELL LAUNCHER HAD NEVER RUN ON LINUX, AND THE CUT MOVES TO ab822d7. APPENDED; ADDENDUM 16 AND THE FIRST CORRECTION ARE UNCHANGED.
+bench (lead), 2026-10-09 (PDT), on the helm's concurrence the same morning. Written before any model call on the new host.
+**What was found.** (6) puts the launch preflight after the login and before the smoke pair. At 6e34f2e no cell could have launched on
+the new host. The first staging of a smoke cell refused, and reading the fire path found the reason: the cell launcher, its launch PATH
+and its toolchain environment had only ever run on macOS with the Rust toolchain installed, and this host, by the contract (4) declares,
+holds no Rust and no Verus. Found at zero model calls, by staging and by the launcher's own check.
+**The changes** (three commits on 6e34f2e). The macOS launch OUTPUT is unchanged: the new mode is declared only on the new host, and
+the developer-tool branch runs only on macOS. Two changes do run on both hosts: the file ages are read GNU-first (on macOS that form
+fails with nothing printed and the old form follows, so the value is the same), and the agent-fence hook's deny set is wider on both.
+- The no-Rust host is ONE declared value, decided in one place: the toolchain pin and the verifier digest both read `none-x86-lane`, the
+  three toolchain directories must be READABLE and EMPTY, and automatic toolchain installation must be off. A host that declares it
+  by halves, holds any toolchain byte under it, or has a toolchain directory it cannot read, is refused by name. In this mode no
+  toolchain command runs. (The readability check was added after the steward's read: at the second commit an unreadable directory
+  holding a file passed as empty.)
+- The launch PATH on such a host is the system directories alone (`/usr/bin:/bin:/usr/sbin:/sbin`); a salt-diet cell adds the pinned
+  Lean toolchain's bin, as on macOS. The launcher's check no longer asks for cargo, rustc or verus there.
+- The macOS developer-tool settings (a developer directory and an SDK root) are not derived or set on Linux.
+- File ages (the launcher's deadman and the fire's live-cell census) are read with the GNU form first. On Linux the old form printed
+  file-system status and failed, so an age would have been read as text.
+- **The fence's second layer.** The agent-fence hook's path rules named the macOS home layout only. On this host its absolute- and
+  relative-path denials for the harness, the cells roots, the client's own directories and the lead's scratch did not match, so those
+  paths had the operating-system sandbox as their only layer. They now match both layouts, on both hosts. No cell had run on the host.
+- The x86 fence's toolchain-root assertion names the git binary's own directory on Linux; without it a plain cell's fire refused.
+**Receipts.** On a macOS host: the harness suite at ab822d7, 225 of 231 passed, 0 failed, 6 skipped (the placebo arms, declared not driven); the new no-Rust arm's first checks, run by hand against the 6e34f2e
+files, fail there (both refuse, exit 4), and its unreadable-root check reads the mode valid (exit 0) against the second commit's file.
+The hook's rules: 91 of 91 on both hosts, with five new arms that fail on the old rules and two controls that pass on both. On the new
+host at ab822d7: the x86 suite, confined, 163 passed, 0 failed, 0 skipped; both smoke cells staged from the cut, and the launcher's
+check CLEAN for both, each fence converging (plain sha256/16 0e0204e9e40c9cf1, salt-diet 949153a97f3d0150). **The scorer on Linux,
+against a known answer:** with no cell running (the two smoke cells were staged and not launched), the cut's full tree, the task's reference and the two cells of the 10-05 smoke
+pair (ADDENDUM 12, scored on the previous host) were copied in, scored, and removed. The verdicts reproduce: the control ACCEPTED,
+95 of 95, and both cells ACCEPTED, 95 of 95, at the same landing commits, now with the confined Linux runner.
+**The launch environment on this host, stated:** the PATH above; no developer-directory or SDK-root variables; the toolchain names
+exported as before with the verifier digest reading the no-Rust token. The two arms differ only by the Lean bin, as on macOS. The
+client's first-run interface state was written into the run directory (the form ADDENDUM 11 records): interface state, not a credential.
+**A declared exposure.** At 07:04 PDT, before the allow-list export, the lead wrote a plain archive of the cut to the host's export path.
+That archive carries the withheld tests. It was removed whole about a minute later, and the allow-list export then wrote the path
+(withheld-shaped names on the host: 0). No client session existed on the host in that minute: no cell, no probe turn, no terminal session.
+A census of the whole host taken after the scorer's run found more: twelve full-tree copies of the harness and two archives, made on
+2026-10-08 for the referee and fence work this addendum reports, each carrying the withheld tests. No cell or probe turn has ever run on
+the host, so no subject could have read them. They were archived to the lead's machine (entry counts equal) and removed from the host;
+the census then read no withheld-shaped directory on the host (a planted one was found by the same search) and none inside the two
+archives still on the host, which are a copy of 28 cells from the previous host and the pinned translator front end.
+The scorer's run above is the same class and is declared beside them: the cut's full tree, which carries the withheld tests, was on
+the host from 08:12 to 08:14 PDT, in a directory the cells' fence denies (mode 0700), with no cell and no probe turn running. That is
+the form (6) prescribes for scoring; it is stated here so that every time the withheld tests were on this host is in one place.
+**What changes.** ab822d7 replaces 6e34f2e as the cut of record. It is exported for the host (514 files, withheld-shaped names 0).
+**What did not happen.** No model call and no launch. The cells staged under the intermediate cuts (one refused at staging under
+6e34f2e; two checked and never launched under each of the first two commits) are kept aside on the host as evidence and are not fired.
