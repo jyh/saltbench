@@ -1129,7 +1129,7 @@ client's sandbox hides a denied directory rather than refusing access to it, so 
 needed no change: on this host it read the expected refusal (an HTTP 403 from the client's proxy) and passed.
 **The change** (one commit on ab822d7). "No such file or directory" now counts as a denial only on Linux, and only when the harness saw
 the file exist immediately before and immediately after the client ran; then the file was present and the client could not see it,
-which is what the fence is for. Without that reading it remains unidentified, as before. A permission error is still not a denial. The
+which is what the fence is for. The pair of readings is required: without both, it remains unidentified, as before, and a GREEN is never scored on ENOENT alone. A permission error is still not a denial. The
 probe's record carries the two readings beside its verdict.
 **What the gate asserts does not change:** the outside file was not readable to the cell's own shell and the inside file was. Only the
 evidence the probe accepts for "not readable" on this host changes.
