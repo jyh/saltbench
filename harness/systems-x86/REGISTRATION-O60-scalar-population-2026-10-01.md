@@ -1118,3 +1118,24 @@ the form (6) prescribes for scoring; it is stated here so that every time the wi
 **What changes.** ab822d7 replaces 6e34f2e as the cut of record. It is exported for the host (514 files, withheld-shaped names 0).
 **What did not happen.** No model call and no launch. The cells staged under the intermediate cuts (one refused at staging under
 6e34f2e; two checked and never launched under each of the first two commits) are kept aside on the host as evidence and are not fired.
+
+## ⚖️ THIRD CORRECTION TO ADDENDUM 16 (6): THE SANDBOX PROBE READ A LINUX DENIAL AS UNIDENTIFIED, AND THE CUT MOVES TO 884f4f1. APPENDED; THE ADDENDUM AND THE TWO CORRECTIONS ABOVE ARE UNCHANGED.
+bench (lead), 2026-10-09 (PDT). Written before any cell launched on the new host.
+**What was found.** The smoke pair's first fire (the plain cell, at ab822d7, 08:47 PDT) stopped at its first gate: the sandbox probe,
+one turn of the client run under the cell's own fence, which must show that a file outside the cell cannot be read and a file inside
+it can. Inside was read. Outside, the read failed with "No such file or directory", and the probe accepts only "Operation not
+permitted" as a denial, because a missing file also fails. It read the result as unidentified and the launch was refused. On Linux the
+client's sandbox hides a denied directory rather than refusing access to it, so a denied file is reported as absent. The network probe
+needed no change: on this host it read the expected refusal (an HTTP 403 from the client's proxy) and passed.
+**The change** (one commit on ab822d7). "No such file or directory" now counts as a denial only on Linux, and only when the harness saw
+the file exist immediately before and immediately after the client ran; then the file was present and the client could not see it,
+which is what the fence is for. Without that reading it remains unidentified, as before. A permission error is still not a denial. The
+probe's record carries the two readings beside its verdict.
+**What the gate asserts does not change:** the outside file was not readable to the cell's own shell and the inside file was. Only the
+evidence the probe accepts for "not readable" on this host changes.
+**Receipts.** The probe's own suite: 67 of 67 on a macOS host and 57 of 57 on this host, where its macOS-only end-to-end arms do not
+run; its five new arms, and the first of them fails against the ab822d7 scorer. The cut exported for the host (514 files,
+withheld-shaped names 0); both smoke cells staged from it and the launcher's check CLEAN for both, the fences unchanged.
+**What did not happen.** No cell launched. The two probe turns at ab822d7 are the only model calls on the host besides the
+authentication turns; their cells were set aside unlaunched, with the probes' transcripts.
+**What changes.** 884f4f1 replaces ab822d7 as the cut of record.
