@@ -1142,3 +1142,38 @@ withheld-shaped names 0); both smoke cells staged from it and the launcher's che
 authentication turns; their cells were set aside unlaunched, with the probes' transcripts, and the pair staged at the intermediate commit was checked
 and set aside unlaunched.
 **What changes.** 20446e1 replaces ab822d7 as the cut of record.
+
+## ⚖️ FOURTH CORRECTION TO ADDENDUM 16 (6): THE WATCHER COULD NOT SEE AN EMPTY INPUT BOX ON LINUX; THE FIRST SMOKE CELL IS AN ATTEMPT, AND THE CUT MOVES TO 34a65d3. APPENDED; THE ADDENDUM AND THE THREE CORRECTIONS ABOVE ARE UNCHANGED.
+bench (lead), 2026-10-09 (PDT). Written before the smoke pair was fired again.
+**What was found.** The smoke pair's plain cell launched at 20446e1 at 09:00. Its first two boots failed at once, at zero cost: the
+watcher opens the client in a named terminal session the new host did not have (the previous host always did). Once that session
+existed, the third boot ran normally. The cell declared its landing at 09:26 and went idle. The watcher ends a declared cell when
+its input box is empty, and it never saw an empty box. The client's prompt is a mark followed by a no-break space; the text tool
+that reads the box trims that character on macOS and not on Linux, so an empty box read as one typed character. The watcher does
+not send keys over typed text, so the cell sat idle until its exit timer forced it out at 09:56 (the client had exited by 09:59). Its cost on the client's meter was
+8.50 USD, with nothing bought after the end. The watcher's own test suite fails the same way on this host at 20446e1 (three of its
+box-reading arms). It had not been run on Linux before.
+**The change** (one commit on 20446e1). The box reader turns the no-break space into an ordinary space before trimming. The
+watcher's suite then passes, 69 of 69, on this host and on a macOS host, and the live pane read empty through the fixed reader.
+**The whole harness suite on this host**, run before this correction so that it is the last one for this host: 114 of 153 arm-runs
+passed, 21 failed and 18 skipped (each arm runs three times). The 21 are seven arms. Four test the Rust path (the toolchain
+environment, the launch PATH with Rust, and two of the build tool's arms), which cannot run on a host that by (4)'s contract holds
+no Rust. One needs a git checkout, and the suite was run from an unpacked copy. Two belong to the other client's lane (a memory
+reading in its turn loop, and one mutant arm of its fault gate) and are not on the Claude cells' path. None of the seven is
+changed by this correction. One of the four Rust arms stops at its first check (a real Rust build) and so never reached its later
+checks, which are not about Rust and do sit on the cells' path: the cell's own tools must refuse a stand-in git by name before
+running it (the build tool, the bus tool and the declare tool) and must call no tool by a bare name. The steward found this; the lead
+drove those checks by hand on this host, each passing, with a live control showing the stand-in leaves its marker when it does run.
+One further check in that arm asserts that the system git is refused as a macOS stand-in; on this host the system git is the pinned
+git, so that check does not apply here. The skips are the referee-side and task-tree arms, which need material that is absent from this host by
+design.
+**The first smoke cell is an attempt.** It is kept, with its transcripts, as evidence and is scored beside the new pair, with its
+end named as caused by the harness. It is not counted as the smoke pair. The smoke pair will be fired again, both cells, from 34a65d3.
+The terminal session is now a precondition the fire route checks before every launch.
+**Declared events.** (a) To run the harness suite the lead unpacked the cut's harness directory on the host, which includes
+withheld-named directories of the previous suite's toy test fixtures (not this run's tests). It sat in a directory the cells' fence
+denies from 09:43 for under a minute while the first smoke cell was live but idle after its declaration, and was removed; it was
+unpacked again from 09:59 to 10:07 with no cell live. (b) That suite run left an empty directory that the next fence render picked
+up as a new denied path; it was removed before the cells were staged again, and the two fences read the same digests as before.
+After each removal a search of the host for withheld-named directories found none.
+**What changes.** 34a65d3 replaces 20446e1 as the cut of record.
