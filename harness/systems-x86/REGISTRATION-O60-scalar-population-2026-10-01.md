@@ -1150,7 +1150,7 @@ watcher opens the client in a named terminal session the new host did not have (
 existed, the third boot ran normally. The cell declared its landing at 09:26 and went idle. The watcher ends a declared cell when
 its input box is empty, and it never saw an empty box. The client's prompt is a mark followed by a no-break space; the text tool
 that reads the box trims that character on macOS and not on Linux, so an empty box read as one typed character. The watcher does
-not send keys over typed text, so the cell sat idle until its exit timer forced it out at 09:59. Its cost on the client's meter was
+not send keys over typed text, so the cell sat idle until its exit timer forced it out at 09:56 (the client had exited by 09:59). Its cost on the client's meter was
 8.50 USD, with nothing bought after the end. The watcher's own test suite fails the same way on this host at 20446e1 (three of its
 box-reading arms). It had not been run on Linux before.
 **The change** (one commit on 20446e1). The box reader turns the no-break space into an ordinary space before trimming. The
@@ -1163,7 +1163,7 @@ reading in its turn loop, and one mutant arm of its fault gate) and are outside 
 changed by this correction. The skips are the referee-side and task-tree arms, which need material that is absent from this host by
 design.
 **The first smoke cell is an attempt.** It is kept, with its transcripts, as evidence and is scored beside the new pair, with its
-end named as caused by the harness. It is not counted as the smoke pair. The smoke pair is fired again, both cells, from 34a65d3.
+end named as caused by the harness. It is not counted as the smoke pair. The smoke pair will be fired again, both cells, from 34a65d3.
 The terminal session is now a precondition the fire route checks before every launch.
 **Declared events.** (a) To run the harness suite the lead unpacked the cut's harness directory on the host, which includes
 withheld-named directories of the previous suite's toy test fixtures (not this run's tests). It sat in a directory the cells' fence
