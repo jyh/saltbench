@@ -1054,3 +1054,18 @@ order. **The withheld tests are absent from the host while any cell runs.** They
 batch) has ended, and removed again before the next cell fires.
 **(7) What this addendum does not change.** The 20 tasks, §Z1's draw, §Z4's order, the arms' texts, ADDENDUM 13 (4)'s stop rule and the
 harvest of record.
+
+## ⚖️ CORRECTION TO ADDENDUM 16 (3) AND (6): AT THE CUT IT NAMED, THE macOS PATH DID NOT REFUSE. APPENDED; ADDENDUM 16 IS UNCHANGED.
+bench (lead), 2026-10-08 (PDT), ruled by the helm the same evening. Written before any model call on the new host.
+**What was false.** ADDENDUM 16 (3) says: "No x86 cell runs on macOS until that path's runner is confined; until then it refuses."
+(6) names the cut 66fb6a5. At 66fb6a5 the referee's entry script confined the subject's Lean only on Linux. On any other host it
+fell through to the build-lock wrapper, which serialises builds and is not a sandbox, so the referee would have elaborated the
+subject's Lean there with its own full rights. Nothing refused. The sentence described an intent, not the code at that cut, and it
+was found by the lead when re-reading its own open items, after the addendum had merged.
+**The fix.** At 6e34f2e (one file, 4 lines added and 1 removed, hunk sha256/12 c049928908f2) the referee refuses on any host but
+Linux, before it reads any input, and names the reason. On Linux it is unchanged. Driven from clean checkouts on a macOS host: at
+66fb6a5 the referee ran and printed a verdict class; at 6e34f2e it refused with exit code 2. The lead's first drive of this was
+vacuous: the old side refused for an unrelated reason (an uncommitted working tree), so it was not counted.
+**What changes.** 6e34f2e replaces 66fb6a5 as the cut of record in (6). The cut is exported from it before R2.
+**What did not happen.** No cell ran in between. No x86 cell has fired since the five voided by ADDENDUM 15, and the run's host is
+Linux, where the referee was already confined.
