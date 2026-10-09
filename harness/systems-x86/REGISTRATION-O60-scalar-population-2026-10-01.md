@@ -1159,8 +1159,13 @@ watcher's suite then passes, 69 of 69, on this host and on a macOS host, and the
 passed, 21 failed and 18 skipped (each arm runs three times). The 21 are seven arms. Four test the Rust path (the toolchain
 environment, the launch PATH with Rust, and two of the build tool's arms), which cannot run on a host that by (4)'s contract holds
 no Rust. One needs a git checkout, and the suite was run from an unpacked copy. Two belong to the other client's lane (a memory
-reading in its turn loop, and one mutant arm of its fault gate) and are outside the Claude cells' path. None of the seven is
-changed by this correction. The skips are the referee-side and task-tree arms, which need material that is absent from this host by
+reading in its turn loop, and one mutant arm of its fault gate) and are not on the Claude cells' path. None of the seven is
+changed by this correction. One of the four Rust arms stops at its first check (a real Rust build) and so never reached its later
+checks, which are not about Rust and do sit on the cells' path: the cell's own tools must refuse a stand-in git by name before
+running it (the build tool, the bus tool and the declare tool) and must call no tool by a bare name. The steward found this; the lead
+drove those checks by hand on this host, each passing, with a live control showing the stand-in leaves its marker when it does run.
+One further check in that arm asserts that the system git is refused as a macOS stand-in; on this host the system git is the pinned
+git, so that check does not apply here. The skips are the referee-side and task-tree arms, which need material that is absent from this host by
 design.
 **The first smoke cell is an attempt.** It is kept, with its transcripts, as evidence and is scored beside the new pair, with its
 end named as caused by the harness. It is not counted as the smoke pair. The smoke pair will be fired again, both cells, from 34a65d3.
