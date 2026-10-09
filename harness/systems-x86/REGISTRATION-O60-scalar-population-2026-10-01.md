@@ -1135,8 +1135,8 @@ probe's record carries the two readings beside its verdict.
 **What the gate asserts does not change:** the outside file was not readable to the cell's own shell and the inside file was. Only the
 evidence the probe accepts for "not readable" on this host changes.
 **Receipts.** The probe's own suite: 69 of 69 on a macOS host and 59 of 59 on this host, where its macOS-only end-to-end arms do not
-run; of its seven new arms, the hidden-file arm fails against the ab822d7 scorer and the wrong-path arm passes there wrongly (the
-second commit, from the steward's read, closes it). The cut exported for the host (514 files,
+run; of its seven new arms, the hidden-file arm fails against the ab822d7 scorer, and the wrong-path arm passes wrongly against the
+first commit's scorer (the second commit, from the steward's read, closes it). The cut exported for the host (514 files,
 withheld-shaped names 0); both smoke cells staged from it and the launcher's check CLEAN for both, the fences unchanged.
 **What did not happen.** No cell launched. The two probe turns at ab822d7 are the only model calls on the host besides the
 authentication turns; their cells were set aside unlaunched, with the probes' transcripts, and the pair staged at the intermediate commit was checked
