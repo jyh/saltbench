@@ -1111,7 +1111,10 @@ A census of the whole host taken after the scorer's run found more: twelve full-
 2026-10-08 for the referee and fence work this addendum reports, each carrying the withheld tests. No cell or probe turn has ever run on
 the host, so no subject could have read them. They were archived to the lead's machine (entry counts equal) and removed from the host;
 the census then read no withheld-shaped directory on the host (a planted one was found by the same search) and none inside the two
-archives that remain there.
+archives still on the host, which are a copy of 28 cells from the previous host and the pinned translator front end.
+The scorer's run above is the same class and is declared beside them: the cut's full tree, which carries the withheld tests, was on
+the host from 08:12 to 08:14 PDT, in a directory the cells' fence denies (mode 0700), with no cell and no probe turn running. That is
+the form (6) prescribes for scoring; it is stated here so that every time the withheld tests were on this host is in one place.
 **What changes.** ab822d7 replaces 6e34f2e as the cut of record. It is exported for the host (514 files, withheld-shaped names 0).
 **What did not happen.** No model call and no launch. The cells staged under the intermediate cuts (one refused at staging under
 6e34f2e; two checked and never launched under each of the first two commits) are kept aside on the host as evidence and are not fired.
