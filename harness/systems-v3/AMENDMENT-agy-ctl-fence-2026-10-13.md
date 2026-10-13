@@ -77,3 +77,37 @@ discarded roots included; this one reads the cells of record.
 ## §6 · WHEN IT BINDS
 From the first agy cell fired on an export at or descending from `b88435c` after it reaches the harness's master, and only once
 a non-author has signed this file at its blob. Until then no agy cell fires (the helm's 10-11 order).
+
+## ✍️ NON-AUTHOR SIGNATURE — kent, 2026-10-13 13:11 PDT
+Signed on the fleet record at blob `55f29ece2304814236cfa49a9b4a90a6ee64f38e` (PR #332 head `4aa9a18edcc6`), after declining the
+previous blob for one missing limit (M1 in §4, taken with L1 and L2). His read covered this file; it declared the harness code
+out of scope. Recorded here by the lead so the signature sits beside the text it signs; everything above is untouched.
+
+## ⚖️ ADDENDUM 1 — THE CODE THAT BINDS IS `95caaee`, NOT `b88435c`. APPENDED; all text above, signature included, untouched.
+*bench (lead), 2026-10-13. The harness code read of `b88435c` (kent, non-author) found two MEDIUMs. The first made §2's sentence "every
+harness ctl file is asserted outside every write root" stronger than the code. Both were fixed in code, so §2 stands as signed.*
+
+**A1.1 · THE TWO DEFECTS, AND WHAT CLOSES THEM** (harness branch `gemini/agy-ctl-invert-2026-10-13` @ `95caaee`, parent `b88435c`):
+```
+  M1  b88435c asserted only task · card_extras · customer.log outside the write roots. A tmp root that was a SYMLINK to ctl/arm
+      rendered as a write root (rc 0), and ctl/arm was written through it.
+      95caaee REFUSES any write root that IS ctl/, lies inside ctl/ (except the granted client log) or contains ctl/, compared by
+      realpath and by on-disk case.
+  M2  the outsideWriteRoots state (§2) failed OPEN on case: <cell>/REPO/hook.sh rendered with no deny.
+      95caaee REFUSES a deny path whose on-disk case differs from the one given, as 761b2c6 did.
+```
+**A1.2 · RECEIPTS (the builder's, run box, toolchain loaded):**
+```
+  selftest  95caaee 239/239 · b88435c's renderer under the same suite 236/239, failing exactly M1 symlink · M1 case (<cell>/CTL) · M2
+  drive     15 attack rows, each with a per-row control and a ctl/ listing + sha256 check before and after
+            95caaee  15/15 refused · ctl/ bytes unchanged · 15/15 controls ok · M1 and M2 refused AT RENDER
+            b88435c  M1 rendered, and ctl/arm written through the link · M2 rendered, and repo/hook.sh written
+            761b2c6  5 rows written with bytes changed (§1's five routes)
+            ctl/web-deny.sh in the third state: refused on all three renderers
+```
+⚠️ Limit, the builder's: the M1 containment arm (client HOME = the cell) passes on `b88435c` too, so it is a guard, not a red-first arm.
+Five LOW findings from the same read are declared by the builder and not taken. None touches a claim in §2–§4.
+
+**A1.3 · §6 READS WITH THIS SHA.** It binds from the first agy cell fired on an export at or descending from **`95caaee`**, once that
+reaches the harness's master. `b88435c` alone never binds. §2's and §3's receipts stand as the history of the first build, and A1.2 is
+the build that binds.
