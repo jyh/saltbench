@@ -26,6 +26,9 @@
                   dir. WHICH chain fires each of the 46 conditions is the hand's to show in the PLAN (§G6); no level-7 cell of record
                   is greenfield, so greenfield legs are not assumed to exist in chain-l7u as it stands. desk VQ(b)+VT(b) (`APPLY.txt`, staged 2026-10-01 for exactly this chain's start) is APPLIED at that
                   start and never into a running chain. Its selftest runs in a FULL template, and its receipt goes in the release addendum.
+                  These are LANE files on the lead's box, NOT tracked in either repository: APPLY.txt md5 d8e559f7447944ce4cd6dc324a45a83c,
+                  its base chain-l8u.sh md5 b3f3a62f886d7814177a098bcbbd76bd (as APPLY.txt names it), and chain-l7u.sh in the l7u lane dirs.
+                  The release addendum quotes each file's md5 at the chain's start, so a reader checks the files rather than this sentence.
   5  POOL         the agy subscription pool: one Google pool, separate from every Claude pool, with NO PM day line (the PM's
                   instruments carry the four Claude pools only). The pool reads as 5-hour and weekly percentages in the lane's QUOTA-LOG, and
                   agy is unthrottled by the Captain's ruling of 2026-09-17. The Claude-side cost (bench and gemini driving and scoring)
@@ -52,8 +55,8 @@ pair shares client, harness, pool state and time of day.
   gemini-3.1-pro-high     164 phases · 60.4 h wall · 1,139 M tokens (meter T)
   gemini-3.8-flash-high   168 phases · 42.2 h wall · 2,285 M tokens
 ```
-  ⇒ Order of magnitude: **~40 h of serial wall for the 138 control cells** (Flash's own figure) **plus 40–60 h for the 138 Gemini 4 cells**
-  if it behaves like either 3.x model. That describes the 3.x models, not a prediction for Gemini 4.
+  ⇒ Order of magnitude: Pro's 60.4 h is over 134 cells and Flash's 42.2 h over 138, so **~42 h of serial wall for the 138 control cells**
+  **plus ≈ 40–65 h for the 138 Gemini 4 cells** if it behaves like either 3.x model. That describes the 3.x models, not a prediction for Gemini 4.
 - **Stop rule.** If the tripwire price puts the set past the ZF review date (2026-10-28) on the pool this lane can draw, the lead posts that
   with an order (spec-change last, then brownfield/statement) before any cell beyond the tripwires. **A cut removes WHOLE CONDITION PAIRS,
   never one model's arm alone. n is never reduced quietly**, and a condition left short is reported short.
@@ -64,7 +67,8 @@ withheld suite) for Gemini 4 beside its control. The 3.x cells of record are a H
 
 ## §G4 · CONFOUNDS — level 6 §H4 carried, plus these, each stated wherever a comparison is
 1. **(The HISTORICAL column only.) The 3.x cells of record are a PATCHWORK:** one condition's 3.x cells came from different levels with different machinery. For example,
-   Pro greenfield × none is levels s3 and l6v, and Flash brownfield × none is l6v and l7. This set runs every condition on ONE export.
+   Pro greenfield × none is levels s3 and l6v plus conditions carried DONE by an addendum (the `CONDITION … ADDENDUM 3d` rows, which are
+   not cells: 18 of that condition's 48 CELLMAP rows), and Flash brownfield × none is l6v and l7. This set runs every condition on ONE export.
    ⇒ A 3.x-of-record ↔ 4 difference on a condition confounds the model with the harness version. The same-day pair does not have this
    confound, which is why it is primary.
 2. **The client moved** (agy 1.3.3 → 1.3.4 on 2026-10-13, and older for the earlier levels). This is the same confound, for the historical
