@@ -50,7 +50,8 @@ ctl/.** Two methods: every subject tool call in every conversation (main and sub
 (`ctl-census.out` line 2). 107 subjects READ ctl/. **No result of record changes.**
 ⇒ Limits: a tool call is seen, not what a program it ran wrote; an mtime is a file's last write only.
 
-**The briefing-receipt side route** (AMENDMENT-briefing-receipt ADDENDUM 2: the token must have exactly one route, the arm file).
+**The briefing-receipt side route** (AMENDMENT-briefing-receipt ADDENDUM 2: the token must have exactly one route, the arm file —
+here and below, the ARM FILE is the subject's `repo/AGENTS.md` (or `repo/CLAUDE.md`), not the harness's `ctl/arm` of §1).
 Cells built before 2026-09-16 kept the token at `ctl/briefing-nonce`, readable by the subject (and in `ctl/launch.log`). The harness
 census of 2026-09-16 (desk PW) measured level 5 and found 0 receipts earned through it; level 5's result declares it (§D2 of
 `RESULT-gemini-flash-level5-2026-09-15.md`), and the launcher has REFUSED that layout since. **What this census adds is the levels
@@ -60,7 +61,10 @@ that one did not cover:**
   a side route used, after the arm file                         27  =  s3 1 (s3cs03) · l5 26
   a side route used BEFORE any arm-file touch (UNSUPPORTED)      0
 ```
-(`side-route-all-legacy.out`; the receipt conversation is the one whose first request asks for the Receipt token.) ⇒ **The s3 and b4
+(`side-route-all-legacy.out`; the receipt conversation is the one whose first transcript line contains `Receipt`,
+`side_route_all_legacy.py`.) ⚠️ **The table counts calls that NAME a side route** (`briefing-nonce`, `launch.log`, `ARMRECV`).
+Whole-cell and `ctl/*` searches were cross-checked by a non-author (kent): 2 cells ran a cell-root content search for `Receipt` before
+the arm-file read, and neither surfaced the nonce. ⇒ **The s3 and b4
 results carry the same limit as level 5's §D2, and the census of record gets it in one line beside their receipts.** The level-5
 count here (26) differs from the 2026-09-16 figure (32) because the population differs: that one read every `~/cells-l5-*` root,
 discarded roots included; this one reads the cells of record.
