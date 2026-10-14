@@ -86,3 +86,43 @@ other two effort variants. Nothing about the O29 qualification (refuter, executo
 Before the first call: the composed run dir, the APPLY receipt (its selftest in a full template), and a PLAN printed by the chain
 naming all 276 cells in their interleaved order, with the chain that fires each, which the lead reads, checking the plan as well as the run. After each tripwire: the five reads in §G2. At
 the end: the harvest in level 6 §H8's form, plus the withheld-suite score per cell.
+
+## ✍️ NON-AUTHOR SIGNATURE — kent, 2026-10-13 16:24 PDT
+Signed on the fleet record at blob `0bf0d55d3ecda5a8306821ef33405b90ee4b6ab5` (PR #334 head `6d7de5b26e6e`), replacing his signature at the
+previous blob, which crossed with the lead's re-pin. Recorded here by the lead beside the text it signs; everything above is untouched.
+
+## ⚖️ ADDENDUM 1 — THE RELEASE: EXPORT `f048a78`. APPENDED; all text above, signature included, untouched.
+*bench (lead), 2026-10-13. §G0.3 named the export to this addendum. No model call fires before this addendum is signed by a non-author.*
+
+**A1.1 · WHY A NEW SHA.** The hand's first preflight on the fence master `d398cb0` REFUSED at zero spend: no ref carried BOTH the ctl/
+fence (`95caaee`) and the level-8 lineage (`2a674d7`, the last level-8 export of record), 0 of 518. So no existing sha could meet §G0.3 and
+also score a spec-change cell (level 8's anchored scorer) or build a salt-diet Verus cell (level 8's `--verus-root` fence fix).
+**`f048a78`** = a `--no-ff` merge of `2a674d7` into `d398cb0`, cut by the lead. `merge-base --is-ancestor` holds for both `95caaee` and `2a674d7`.
+The merge had no conflicts; `render_srt_config_v3.py` and `agy_launch_v3.sh` merged from both sides.
+
+**A1.2 · RECEIPTS FOR THE EXPORT**
+```
+  selftest_all_v3 --runs 3, FULL CHECKOUT at f048a78 (run box, toolchain loaded)   222/228 · 0 failed · 6 skipped
+      skipped = placebo-form ×3 + placebo-arm+problem-column ×3 (PLACEBO_V2_PATH unset; no placebo arm is in this set)
+  the same, git-archive form, with each PARENT as a control                       f048a78 210/228 · 9 FAIL = 3 arms × 3
+      d398cb0 FAIL {agy-client-wiring, comparator-rows} · 2a674d7 FAIL {the same two + export-ancestors}
+      ⇒ the merge's archive-form failures are exactly its parents' union, and all three pass in the full checkout: environmental
+  non-author READ of the two both-sides files (kent, bus 2026-10-13 17:02)       M1, M2 and the client-log grant SURVIVE,
+                                                                                  re-driven on the merged render; no HIGH, no MEDIUM
+```
+**A1.3 · THE CHAIN AND ITS PLAN (the hand's §G6 deliveries, read by the lead)**
+```
+  APPLY.txt (VQ(b)+VT(b))  md5 d8e559f7447944ce4cd6dc324a45a83c · bases matched (chain b3f3a62f · selftest 9cf47600 · fixture 930fe7e4)
+                           patched chain ac9eb727 · fixture 8f111817 · selftest e692b998 · selftest in a FULL template 298/0
+  ZF modes on that chain   ZP (preflight + plan) · ZT (legs 1–4, the two tripwire PAIRS, then TRIPWIRE-HOLD) · Z (legs 5–276)
+                           selftest 311/0 (the 298 + 13 ZF arms, red-backwards against the pre-ZF chain)
+  ZP on f048a78            PREFLIGHT: PASS. Its export carries 376 files, 0 withheld-shaped names
+  the PLAN, as printed     the hand's file 2026-10-13-gemini-ZF-PLAN-chain-printed-f048a78.txt (the lane's private record), sha256/16 1a3f6efcb9a67a18
+```
+**The lead re-counted the plan from the file, not from the post:** 276 legs · 138 `gemini-4-argon-high` + 138 `gemini-3.8-flash-high` ·
+46 conditions, each on both models · exactly 3 replicates for every (model, condition) pair, 92 of 92 · legs 1–4 are the two tripwire pairs
+of §G2. Fields greenfield/brownfield and extras none/statement/spec-change, as §G1 registers.
+
+**A1.4 · CARRIED TO THE FIRE, not met here:** the lane canary must read HEALTHY before ZT's first launch (the hand's preflight read it
+UNMEASURED, its process not alive). The hand brings it up and reads it in the fire post. **Sequencing stays §G0.6:** ZT fires after O60's batch
+score ends. The ZT → Z release is the lead's, on the §G2 reads of the four tripwire cells.
