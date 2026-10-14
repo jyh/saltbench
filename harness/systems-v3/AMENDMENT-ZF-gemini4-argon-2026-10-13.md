@@ -141,3 +141,49 @@ of phase 1 prints sub-agent T as `≥ N` (control `STALE`), and a sub-agent the 
 `UNMEASURED(named-no-db:k)`. This closes the gap that left 60 level-8 cells as floors.
 **WHAT IT DOES NOT CHANGE:** the 276 legs, the export, the caps (wall and turns; T is never a cap here), the tripwire reads (§G2 adds
 sub-agent T beside T), and the historical 3.x column, which keeps its published T with the O57 limit printed beside it.
+
+## ⚖️ ADDENDUM 3 — SCORING RUNS UNDER THE BELT, AND THE SUBJECT-CONTROLLED VERDICT CLASS IS DECLARED OPEN. APPENDED; all text above, signature included, untouched.
+*bench (lead), 2026-10-13, on systems' measurement (21:36) and the lead's and the helm's ruling (arm A, 21:37). A change to how a cell is SCORED,
+registered before any ZF figure is read. Cells are not touched.*
+**WHY:** desk ZQ's default is *"no v3 cell runs without at least the belt"*. At the export `f048a78`, every score executes the subject's
+`solution.rs` linked with the withheld driver ON THE SCORING BOX: `score_wave_v3.sh` runs the rung's `run_tests.sh`, which runs the built
+driver through `run_limited`, whose `EXEC_PREFIX` is empty and set by no scorer. So a ZF score ran subject-authored code, from a model no cell
+had met, with network open and the scoring user's home readable and writable. The CELL runs inside the client's fence; the gap was the SCORE.
+Levels 6–8 were scored the same way. Nothing here re-opens their record (census ADDENDUM 34).
+**THE TWO SHAS:**
+```
+  CELLS     fire from f048a78 as ADDENDUM 1 released it. Unchanged: the belt is inert unless a scorer sets V3_DRIVER_BELT.
+  SCORING   runs from 3947740 = f048a78 + the belt (cdc74b4, re-cut f91f88c) + its drive receipts; f048a78 is its ancestor.
+            f048a78..3947740 touches 9 files, all under harness/systems-v3/, and NO file under tasks/.
+```
+**THE RULE FOR THIS SET:**
+1. Every ZF score runs from `3947740`'s scorer, which sets `V3_DRIVER_BELT` to `driver_belt.sb` (sha256/16 `9906210a6f8ee100`) and refuses
+   to run without it. The ONE binary each suite runs (the withheld driver linked with `solution.rs`) runs under that profile, and
+   `run_limited` closes inherited file descriptors 3 to min(OPEN_MAX, 4096) before the exec (a profile cannot gate an fd that is already open).
+   **What the profile is, read at the object:** `(deny default)`, then allows for exec of the binary itself, `sysctl-read`, `process-info*`
+   and `signal` targeted at the process ITSELF, a write to `/dev/null`, file METADATA, and file reads of an allowlist (the binary, `/`,
+   `/usr/lib`, `/System`, `/Library/Apple`, `/dev`). The Rust runtime aborts at start-up without the three self-targeted allows (measured).
+   **Driven** (`harness/systems-v3/RECEIPT-zq-belt-2026-10-13.md` at `3947740`, on Crc32's real rung): with no belt, every probe succeeds
+   (read · list · write · a network connect · exec · fork · a signal to another process · POSIX shared memory · a write to the scorer's open fd 9);
+   with the belt, all nine are DENIED and the suite still scores TESTS 6/6. Each allow re-added to the profile flips exactly its own probe,
+   and removing `run_limited`'s fd closing on the committed tree turns the fd arm red. The sweep reads "16 of 16 rungs with a reference
+   AGREE" belted and unbelted, each belted run with one belt line. The signal, shared-memory and fd channels were found by kent's
+   non-author probe of the first cut (21:53), which was an allow-default denylist; this cut is the answer to that probe.
+2. A score whose output does not carry EXACTLY one belt line for that sha is UNBELTED: it is not a ZF score, never PASS, and in no
+   denominator (as a score not run on the released export is not, T1).
+3. **Z001's score of 2026-10-14T04:21:30Z ran UNBELTED.** It stays in the receipts, labelled so, and no table reads it. Z001 is re-scored
+   under the belt from its existing cell, by copy, never by re-dispatch. Because it had already run, it was audited statically at zero spend
+   (systems, 21:38, corrected 21:38:45): a table-driven CRC-32 with no `use`, I/O, macro or `unsafe`; the crate's one dependency is the
+   harness's pinned `vstd`, the same in both arms, and the template has no build script; no withheld-suite or scorer file and none of the
+   27 credential files changed after 04:20Z. CLEAN.
+4. The scoring HOLD (the hand's `SCORE-HOLD` file, 21:41) is released when this addendum is merged with a non-author signature, and not before.
+**DECLARED OPEN, NOT CLOSED BY THE BELT (desk ZQ):** (a) the driver and the subject's code are ONE process, so the rc, the TESTS line and
+anything printed are reachable by the subject's code. The belt removes SIDE channels, not the verdict channel. A forged verdict needs an
+adversarial subject, and no ZF result claims the absence of one. (b) A compile-time `include_str!`/`include!` in `solution.rs` can read a file
+into the binary during `cargo build`, which is not under the profile, because the build needs the registry. (c) File METADATA stays readable
+(existence, size, times; not content), and `sysctl-read` stays allowed. (d) Denied by the default but NOT probed: mach-lookup, sysctl write,
+IOKit, other IPC. (e) An inherited fd ABOVE 4096 survives the close loop; the scorer holds none today (kent's LOW-1, 22:04). (f) Creating a socket still
+succeeds; connect and bind are what is denied (kent's LOW-2). (g) Measured on one macOS host, one OS version. The full form (observations only, with an external comparator) is ZQ's
+re-freeze for the next v3 campaign.
+**WHAT IT DOES NOT CHANGE:** the 276 legs, the cell export, the caps, the meter (ADDENDUM 2), and the tripwire reads, except that a
+tripwire's PASS read waits for its belted score.
