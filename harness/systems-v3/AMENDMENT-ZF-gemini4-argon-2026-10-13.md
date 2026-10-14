@@ -153,19 +153,22 @@ Levels 6–8 were scored the same way. Nothing here re-opens their record (censu
 **THE TWO SHAS:**
 ```
   CELLS     fire from f048a78 as ADDENDUM 1 released it. Unchanged: the belt is inert unless a scorer sets V3_DRIVER_BELT.
-  SCORING   runs from 7444d96 = f048a78 + cdc74b4 (the belt) + the drive receipt; a fast-forward (f048a78 is its ancestor).
-            f048a78..7444d96 touches 9 files, all under harness/systems-v3/, and NO file under tasks/.
+  SCORING   runs from 3947740 = f048a78 + the belt (cdc74b4, re-cut f91f88c) + its drive receipts; f048a78 is its ancestor.
+            f048a78..3947740 touches 9 files, all under harness/systems-v3/, and NO file under tasks/.
 ```
 **THE RULE FOR THIS SET:**
-1. Every ZF score runs from `7444d96`'s scorer, which sets `V3_DRIVER_BELT` to `driver_belt.sb` (sha256/16 `c2e0649d31622c71`) and refuses
-   to run without it. The ONE binary each suite runs (the withheld driver linked with `solution.rs`) runs under that profile.
-   **What the profile is, read at the object:** it starts `(allow default)` and then DENIES network, mach-lookup, process-fork, process-exec
-   (except the binary itself), every file write (except `/dev/null`) and every file read except an allowlist (the binary, `/`, `/usr/lib`,
-   `/System`, `/Library/Apple`, `/dev`). Operations it does not name stay allowed. It is NOT deny-default in the strict sense, and this file
-   does not call it that.
-   Its drive (`harness/systems-v3/RECEIPT-zq-belt-2026-10-13.md` at `7444d96`): with no belt, a hostile reference's six probes (read · list ·
-   write · net · exec · fork) all succeed; with the belt, all six are denied and the Crc32 suite still scores TESTS 6/6. The sweep reads "16 of 16
-   rungs with a reference AGREE" belted and unbelted, each belted run with one belt line.
+1. Every ZF score runs from `3947740`'s scorer, which sets `V3_DRIVER_BELT` to `driver_belt.sb` (sha256/16 `9906210a6f8ee100`) and refuses
+   to run without it. The ONE binary each suite runs (the withheld driver linked with `solution.rs`) runs under that profile, and
+   `run_limited` closes every inherited file descriptor ≥ 3 before the exec (a profile cannot gate an fd that is already open).
+   **What the profile is, read at the object:** `(deny default)`, then allows for exec of the binary itself, `sysctl-read`, `process-info*`
+   and `signal` targeted at the process ITSELF, a write to `/dev/null`, file METADATA, and file reads of an allowlist (the binary, `/`,
+   `/usr/lib`, `/System`, `/Library/Apple`, `/dev`). The Rust runtime aborts at start-up without the three self-targeted allows (measured).
+   **Driven** (`harness/systems-v3/RECEIPT-zq-belt-2026-10-13.md` at `3947740`, on Crc32's real rung): with no belt, every probe succeeds
+   (read · list · write · network · exec · fork · a signal to another process · POSIX shared memory · a write to the scorer's open fd 9);
+   with the belt, all nine are DENIED and the suite still scores TESTS 6/6. Each allow re-added to the profile flips exactly its own probe,
+   and removing `run_limited`'s fd closing on the committed tree turns the fd arm red. The sweep reads "16 of 16 rungs with a reference
+   AGREE" belted and unbelted, each belted run with one belt line. The signal, shared-memory and fd channels were found by kent's
+   non-author probe of the first cut (21:53), which was an allow-default denylist; this cut is the answer to that probe.
 2. A score whose output does not carry EXACTLY one belt line for that sha is UNBELTED: it is not a ZF score, never PASS, and in no
    denominator (as a score not run on the released export is not, T1).
 3. **Z001's score of 2026-10-14T04:21:30Z ran UNBELTED.** It stays in the receipts, labelled so, and no table reads it. Z001 is re-scored
@@ -175,10 +178,11 @@ Levels 6–8 were scored the same way. Nothing here re-opens their record (censu
    27 credential files changed after 04:20Z. CLEAN.
 4. The scoring HOLD (the hand's `SCORE-HOLD` file, 21:41) is released when this addendum is merged with a non-author signature, and not before.
 **DECLARED OPEN, NOT CLOSED BY THE BELT (desk ZQ):** (a) the driver and the subject's code are ONE process, so the rc, the TESTS line and
-anything printed are reachable by the subject's code. The belt removes the SIDE channels, not the verdict channel. A forged verdict needs an
+anything printed are reachable by the subject's code. The belt removes SIDE channels, not the verdict channel. A forged verdict needs an
 adversarial subject, and no ZF result claims the absence of one. (b) A compile-time `include_str!`/`include!` in `solution.rs` can read a file
 into the binary during `cargo build`, which is not under the profile, because the build needs the registry. (c) File METADATA stays readable
-(existence, size, times; not content). (d) mach-lookup is denied but not probed. The full form (observations only, with an external
-comparator) is ZQ's re-freeze for the next v3 campaign.
+(existence, size, times; not content), and `sysctl-read` stays allowed. (d) Denied by the default but NOT probed: mach-lookup, sysctl write,
+IOKit, other IPC. (e) Measured on one macOS host, one OS version. The full form (observations only, with an external comparator) is ZQ's
+re-freeze for the next v3 campaign.
 **WHAT IT DOES NOT CHANGE:** the 276 legs, the cell export, the caps, the meter (ADDENDUM 2), and the tripwire reads, except that a
 tripwire's PASS read waits for its belted score.
