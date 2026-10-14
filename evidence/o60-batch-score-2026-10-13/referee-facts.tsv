@@ -1,0 +1,41 @@
+cell	arm	harvest_class	ref_class	target_reached	axioms	cell_translation	spec_strength
+clbpp01	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps01	salt-diet	ACCEPTED	PASS	True	Classical.choice,Quot.sound,propext	identical	agree 92 of 92
+clbpp15	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps15	salt-diet	HALTED	TARGET	True	-	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp18	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps18	salt-diet	ACCEPTED	PASS	True	Classical.choice,Quot.sound,propext	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp20	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps20	salt-diet	HALTED	SCREEN	False	-	-	-
+clbpp16	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps16	salt-diet	HALTED	TARGET	True	-	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp17	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps17	salt-diet	HALTED	TARGET	True	-	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp19	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps19	salt-diet	ACCEPTED	PASS	True	Classical.choice,Quot.sound,propext	identical	agree 156 of 156
+clbpp09	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps09	salt-diet	REJECTED	TARGET	True	-	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp08	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps08	salt-diet	HALTED	SCREEN	True	-	identical	UNAVAILABLE: the spec was not evaluated (class SCREEN)
+clbpp12	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps12	salt-diet	ACCEPTED	PASS	True	Classical.choice,Quot.sound,propext	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp11	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps11	salt-diet	ACCEPTED	PASS	True	Classical.choice,Quot.sound,propext	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp07	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps07	salt-diet	HALTED	TARGET	True	-	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp05	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps05	salt-diet	HALTED	TARGET	True	-	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp04	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps04	salt-diet	REJECTED	TARGET	True	-	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp03	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps03	salt-diet	HALTED	TARGET	True	-	differs	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp10	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps10	salt-diet	HALTED	SCREEN	True	-	identical	UNAVAILABLE: the spec was not evaluated (class SCREEN)
+clbpp06	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps06	salt-diet	HALTED	COMPILE	True	-	identical	UNAVAILABLE: the spec was not evaluated (class COMPILE)
+clbpp14	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps14	salt-diet	ACCEPTED	PASS	True	Classical.choice,Quot.sound,propext	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp13	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps13	salt-diet	ACCEPTED	PASS	True	Classical.choice,Quot.sound,propext	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
+clbpp02	plain	ACCEPTED	PASS	False	-	-	n/a
+clbps02	salt-diet	HALTED	TARGET	True	-	identical	UNAVAILABLE: frame_spec.py: REFUSE: the descriptor has no `spec` directive
