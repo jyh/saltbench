@@ -24,7 +24,7 @@ def walk(b, path, out, depth=0):
 if __name__ == '__main__':
   for db in sys.argv[1:]:
       out = collections.Counter()
-      for (d,) in sqlite3.connect(db).execute("select data from gen_metadata"):
+      for (d,) in sqlite3.connect("file:%s?mode=ro&immutable=1" % db, uri=True).execute("select data from gen_metadata"):
           walk(d, (), out)
       print("==", db.split('/')[-1][:8], len(out), "paths")
       for p, v in sorted(out.items(), key=lambda x: -x[1])[:40]:

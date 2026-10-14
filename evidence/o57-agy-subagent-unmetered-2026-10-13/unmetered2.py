@@ -6,7 +6,7 @@ import csv, glob, json, os, re, sys, collections, sqlite3
 sys.path.insert(0, os.path.expanduser('~/bench-dry')); from pbsum import walk
 def dbT(db):
     out = collections.Counter()
-    for (d,) in sqlite3.connect(db).execute("select data from gen_metadata"): walk(d, (), out)
+    for (d,) in sqlite3.connect("file:%s?mode=ro&immutable=1" % db, uri=True).execute("select data from gen_metadata"): walk(d, (), out)
     return out[(1,4,2)] + out[(1,4,3)] + out[(1,4,5)]
 arm = dict(l.rstrip("\n").split("\t") for l in open(os.path.expanduser('~/bench-dry/cellarm.tsv')))
 rows = [r for r in csv.DictReader((l for l in open(sys.argv[1]) if not l.startswith('#')), delimiter='\t') if r['shape'] == 'AGY']
