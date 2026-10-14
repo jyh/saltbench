@@ -6,8 +6,10 @@ WHY THIS EXISTS
 Section "The complete pilot matrix" of paper/saltbench-v1.tex prints four tables of median total
 tokens (T1 greenfield, T2 brownfield, T3 specification change, T4 salt-diet / plain ratios with the
 per-model sign counts). Every cell is printed by harness/systems-v3/tables_v2.py into
-harness/systems-v3/RESULT-descriptive-tables-v2-2026-09-27.md, as registered in
-REGISTRATION-descriptive-tables-v2-2026-09-27.md. This script parses those markdown tables from the
+harness/systems-v3/RESULT-descriptive-tables-v2-2026-09-27.md (versions 1-3), as registered in
+REGISTRATION-descriptive-tables-v2-2026-09-27.md. Version 4 copies from
+harness/systems-v3/RESULT-descriptive-tables-v2-O57-remeter-2026-10-13.md, printed by the same tool with
+--add-T (O57: each Gemini cell's sub-agent conversations added to its T). This script parses those markdown tables from the
 result file's bytes and prints them as LaTeX rows, cell for cell, changing only typography (the
 thousands comma, the bound marks, the model names). With --check it extracts the rows between each
 pair of markers in the tex and refuses if they differ from what it derives, so the tex cannot drift
@@ -27,7 +29,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-RESULT = os.path.join(ROOT, "harness", "systems-v3", "RESULT-descriptive-tables-v2-2026-09-27.md")
+RESULT = os.path.join(ROOT, "harness", "systems-v3", "RESULT-descriptive-tables-v2-O57-remeter-2026-10-13.md")
 TEX = os.path.join(HERE, "saltbench-v1.tex")
 
 SECTIONS = {
