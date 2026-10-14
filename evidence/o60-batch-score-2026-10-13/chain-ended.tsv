@@ -1,0 +1,40 @@
+clbpp17	cells-clb-x86p-o60-plain	BignumMulP25519Alt	plain	2026-10-09T19:18:50Z LANDED landing-1 f92988b7387e
+clbps17	cells-clb-x86p-o60-saltdiet	BignumMulP25519Alt	salt-diet	2026-10-09T20:51:06Z CAP-COST cost 37.2513 USD CELL-CUMULATIVE (every session of BOTH phases) >= cap 37.21 USD PHASE-1 ONLY -- TWO SCOPES: never quote this cost as a phase-1 figure; overrun printed, never clipped; T 37817451 read beside it (also cell-cumulative), never the cap
+clbpp12	cells-clb-x86p-o60-plain	Cswap2Vale	plain	2026-10-09T21:19:21Z LANDED landing-1 51083a0306da
+clbps12	cells-clb-x86p-o60-saltdiet	Cswap2Vale	salt-diet	2026-10-09T22:19:33Z LANDED landing-1 5e5c7dbedbc1
+clbpp10	cells-clb-x86p-o60-plain	Poly1305Vale	plain	2026-10-09T22:48:52Z LANDED landing-1 7a2657d3a10b
+clbps10	cells-clb-x86p-o60-saltdiet	Poly1305Vale	salt-diet	2026-10-10T01:23:53Z CAP-COST cost 37.3418 USD CELL-CUMULATIVE (every session of BOTH phases) >= cap 37.21 USD PHASE-1 ONLY -- TWO SCOPES: never quote this cost as a phase-1 figure; overrun printed, never clipped; T 43237891 read beside it (also cell-cumulative), never the cap
+clbpp06	cells-clb-x86p-o60-plain	SipHash24	plain	2026-10-10T02:01:15Z LANDED landing-1 b78a06783dd9
+clbps06	cells-clb-x86p-o60-saltdiet	SipHash24	salt-diet	2026-10-10T03:59:58Z CAP-COST cost 37.5189 USD CELL-CUMULATIVE (every session of BOTH phases) >= cap 37.21 USD PHASE-1 ONLY -- TWO SCOPES: never quote this cost as a phase-1 figure; overrun printed, never clipped; T 43957605 read beside it (also cell-cumulative), never the cap
+clbpp16	cells-clb-x86p-o60-plain	BignumMul4x8Alt	plain	2026-10-10T04:32:05Z LANDED landing-1 f8ddc5838af4
+clbps16	cells-clb-x86p-o60-saltdiet	BignumMul4x8Alt	salt-diet	2026-10-10T06:44:06Z CAP-COST cost 38.9227 USD CELL-CUMULATIVE (every session of BOTH phases) >= cap 37.21 USD PHASE-1 ONLY -- TWO SCOPES: never quote this cost as a phase-1 figure; overrun printed, never clipped; T 48136537 read beside it (also cell-cumulative), never the cap
+clbpp07	cells-clb-x86p-o60-plain	HalfSipHash	plain	2026-10-10T07:10:17Z LANDED landing-1 82e936ce15bd
+clbps07	cells-clb-x86p-o60-saltdiet	HalfSipHash	salt-diet	2026-10-10T08:25:56Z CAP-COST cost 37.4682 USD CELL-CUMULATIVE (every session of BOTH phases) >= cap 37.21 USD PHASE-1 ONLY -- TWO SCOPES: never quote this cost as a phase-1 figure; overrun printed, never clipped; T 49427518 read beside it (also cell-cumulative), never the cap
+clbpp09	cells-clb-x86p-o60-plain	Blake2bUpdateMulti	plain	2026-10-10T08:55:40Z LANDED landing-1 05141868b146
+clbps09	cells-clb-x86p-o60-saltdiet	Blake2bUpdateMulti	salt-diet	2026-10-10T10:57:28Z LANDED landing-1 94d9e018d126
+clbpp02	cells-clb-x86p-o60-plain	Xxh64	plain	2026-10-10T11:19:21Z LANDED landing-1 bcef22b91ebb
+clbps02	cells-clb-x86p-o60-saltdiet	Xxh64	salt-diet	2026-10-10T13:03:50Z CAP-COST cost 38.1238 USD CELL-CUMULATIVE (every session of BOTH phases) >= cap 37.21 USD PHASE-1 ONLY -- TWO SCOPES: never quote this cost as a phase-1 figure; overrun printed, never clipped; T 47507874 read beside it (also cell-cumulative), never the cap
+clbpp14	cells-clb-x86p-o60-plain	WordBytereverse	plain	2026-10-10T13:31:29Z LANDED landing-1 a139ee188c46
+clbps14	cells-clb-x86p-o60-saltdiet	WordBytereverse	salt-diet	2026-10-10T14:00:21Z LANDED landing-1 1838bbc88821
+clbpp04	cells-clb-x86p-o60-plain	Murmur3X64_128	plain	2026-10-10T14:22:13Z LANDED landing-1 4e98641dc9d7
+clbps04	cells-clb-x86p-o60-saltdiet	Murmur3X64_128	salt-diet	2026-10-10T15:35:25Z LANDED landing-1 95eeba776371
+clbpp03	cells-clb-x86p-o60-plain	Murmur3X86_32	plain	2026-10-10T16:04:47Z LANDED landing-1 77f05aaa0dd9
+clbps03	cells-clb-x86p-o60-saltdiet	Murmur3X86_32	salt-diet	2026-10-10T17:18:09Z CAP-COST cost 37.5824 USD CELL-CUMULATIVE (every session of BOTH phases) >= cap 37.21 USD PHASE-1 ONLY -- TWO SCOPES: never quote this cost as a phase-1 figure; overrun printed, never clipped; T 51196713 read beside it (also cell-cumulative), never the cap
+clbpp05	cells-clb-x86p-o60-plain	Lookup3	plain	2026-10-10T17:50:25Z LANDED landing-1 323cc2fee0c5
+clbps05	cells-clb-x86p-o60-saltdiet	Lookup3	salt-diet	2026-10-10T19:21:02Z CAP-COST cost 37.2900 USD CELL-CUMULATIVE (every session of BOTH phases) >= cap 37.21 USD PHASE-1 ONLY -- TWO SCOPES: never quote this cost as a phase-1 figure; overrun printed, never clipped; T 45016572 read beside it (also cell-cumulative), never the cap
+clbpp01	cells-clb-x86p-o60-plain	Adler32	plain	2026-10-11T07:42:14Z LANDED landing-1 13c4f7c9752f
+clbps01	cells-clb-x86p-o60-saltdiet	Adler32	salt-diet	2026-10-11T08:40:23Z LANDED landing-1 164eb67cddbe
+clbpp08	cells-clb-x86p-o60-plain	Blake2sUpdateMulti	plain	2026-10-11T09:40:49Z LANDED landing-1 9646907797b8
+clbps08	cells-clb-x86p-o60-saltdiet	Blake2sUpdateMulti	salt-diet	2026-10-11T11:43:19Z CAP-COST cost 37.3941 USD CELL-CUMULATIVE (every session of BOTH phases) >= cap 37.21 USD PHASE-1 ONLY -- TWO SCOPES: never quote this cost as a phase-1 figure; overrun printed, never clipped; T 43317005 read beside it (also cell-cumulative), never the cap
+clbpp19	cells-clb-x86p-o60-plain	BignumSub	plain	2026-10-11T12:05:44Z LANDED landing-1 8b387669a1e6
+clbps19	cells-clb-x86p-o60-saltdiet	BignumSub	salt-diet	2026-10-11T13:24:59Z LANDED landing-1 00ff3c176040
+clbpp18	cells-clb-x86p-o60-plain	BignumModadd	plain	2026-10-11T13:55:29Z LANDED landing-1 398a1ca2d3f5
+clbps18	cells-clb-x86p-o60-saltdiet	BignumModadd	salt-diet	2026-10-11T15:21:05Z CAP-COST cost 37.3008 USD CELL-CUMULATIVE (every session of BOTH phases) >= cap 37.21 USD PHASE-1 ONLY -- TWO SCOPES: never quote this cost as a phase-1 figure; overrun printed, never clipped; T 43055007 read beside it (also cell-cumulative), never the cap
+clbpp13	cells-clb-x86p-o60-plain	WordClz	plain	2026-10-11T15:42:35Z LANDED landing-1 e2573b52c76b
+clbps13	cells-clb-x86p-o60-saltdiet	WordClz	salt-diet	2026-10-11T16:12:46Z LANDED landing-1 8ee9489ed246
+clbpp11	cells-clb-x86p-o60-plain	FsubVale	plain	2026-10-11T16:44:42Z LANDED landing-1 b80aa4c82ae9
+clbps11	cells-clb-x86p-o60-saltdiet	FsubVale	salt-diet	2026-10-11T18:10:19Z LANDED landing-1 240a26ede3ac
+clbpp15	cells-clb-x86p-o60-plain	BignumModN256Alt	plain	2026-10-13T20:23:29Z LANDED landing-1 f9d2c6fefd42
+clbps15	cells-clb-x86p-o60-saltdiet	BignumModN256Alt	salt-diet	2026-10-13T21:50:03Z CAP-COST cost 37.3940 USD CELL-CUMULATIVE (every session of BOTH phases) >= cap 37.21 USD PHASE-1 ONLY -- TWO SCOPES: never quote this cost as a phase-1 figure; overrun printed, never clipped; T 45233466 read beside it (also cell-cumulative), never the cap
+clbpp20	cells-clb-x86p-o60-plain	BignumMul	plain	2026-10-13T22:32:34Z LANDED landing-1 17640108ebf3
+clbps20	cells-clb-x86p-o60-saltdiet	BignumMul	salt-diet	2026-10-13T23:55:37Z CAP-COST cost 37.4384 USD CELL-CUMULATIVE (every session of BOTH phases) >= cap 37.21 USD PHASE-1 ONLY -- TWO SCOPES: never quote this cost as a phase-1 figure; overrun printed, never clipped; T 45387761 read beside it (also cell-cumulative), never the cap
