@@ -159,12 +159,12 @@ Levels 6–8 were scored the same way. Nothing here re-opens their record (censu
 **THE RULE FOR THIS SET:**
 1. Every ZF score runs from `3947740`'s scorer, which sets `V3_DRIVER_BELT` to `driver_belt.sb` (sha256/16 `9906210a6f8ee100`) and refuses
    to run without it. The ONE binary each suite runs (the withheld driver linked with `solution.rs`) runs under that profile, and
-   `run_limited` closes every inherited file descriptor ≥ 3 before the exec (a profile cannot gate an fd that is already open).
+   `run_limited` closes inherited file descriptors 3 to min(OPEN_MAX, 4096) before the exec (a profile cannot gate an fd that is already open).
    **What the profile is, read at the object:** `(deny default)`, then allows for exec of the binary itself, `sysctl-read`, `process-info*`
    and `signal` targeted at the process ITSELF, a write to `/dev/null`, file METADATA, and file reads of an allowlist (the binary, `/`,
    `/usr/lib`, `/System`, `/Library/Apple`, `/dev`). The Rust runtime aborts at start-up without the three self-targeted allows (measured).
    **Driven** (`harness/systems-v3/RECEIPT-zq-belt-2026-10-13.md` at `3947740`, on Crc32's real rung): with no belt, every probe succeeds
-   (read · list · write · network · exec · fork · a signal to another process · POSIX shared memory · a write to the scorer's open fd 9);
+   (read · list · write · a network connect · exec · fork · a signal to another process · POSIX shared memory · a write to the scorer's open fd 9);
    with the belt, all nine are DENIED and the suite still scores TESTS 6/6. Each allow re-added to the profile flips exactly its own probe,
    and removing `run_limited`'s fd closing on the committed tree turns the fd arm red. The sweep reads "16 of 16 rungs with a reference
    AGREE" belted and unbelted, each belted run with one belt line. The signal, shared-memory and fd channels were found by kent's
@@ -182,7 +182,8 @@ anything printed are reachable by the subject's code. The belt removes SIDE chan
 adversarial subject, and no ZF result claims the absence of one. (b) A compile-time `include_str!`/`include!` in `solution.rs` can read a file
 into the binary during `cargo build`, which is not under the profile, because the build needs the registry. (c) File METADATA stays readable
 (existence, size, times; not content), and `sysctl-read` stays allowed. (d) Denied by the default but NOT probed: mach-lookup, sysctl write,
-IOKit, other IPC. (e) Measured on one macOS host, one OS version. The full form (observations only, with an external comparator) is ZQ's
+IOKit, other IPC. (e) An inherited fd ABOVE 4096 survives the close loop; the scorer holds none today (kent's LOW-1, 22:04). (f) Creating a socket still
+succeeds; connect and bind are what is denied (kent's LOW-2). (g) Measured on one macOS host, one OS version. The full form (observations only, with an external comparator) is ZQ's
 re-freeze for the next v3 campaign.
 **WHAT IT DOES NOT CHANGE:** the 276 legs, the cell export, the caps, the meter (ADDENDUM 2), and the tripwire reads, except that a
 tripwire's PASS read waits for its belted score.
