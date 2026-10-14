@@ -30,3 +30,10 @@ Version 3 also reads the matrix for correctness (Section 5.4, Tables P1–P4, de
 blocks are copied the same way: `correctness_tables.py` parses them from
 `harness/systems-v3/RESULT-correctness-tables-v3-2026-10-01.md`, `--check` refuses on any difference, and
 `--self-test` perturbs one pass count and one sign.
+
+Version 4 corrects Tables T1–T4 (O57): the Gemini lane's meter had read each cell's parent conversation and none of its
+sub-agent conversations. `descriptive_tables.py` now copies from
+`harness/systems-v3/RESULT-descriptive-tables-v2-O57-remeter-2026-10-13.md`, printed by the same `tables_v2.py` with
+`--add-T`; `harness/systems-v3/DIFF-O57-remeter-2026-10-13.md` lists every changed row against version 3's file, which
+stays as printed. No Claude row changes and no fixed sign flips. The dollar and wall tables are not re-computed; the
+Gemini dollars carry the declared O57 limit.
