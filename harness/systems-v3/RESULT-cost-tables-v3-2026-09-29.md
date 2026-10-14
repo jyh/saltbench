@@ -987,3 +987,15 @@
 | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | l8xfs201 | 16.1554 | 11401.6 | - | agy-steps-raw.tsv: p1 per request (COMPLETE); p2 per request (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-chainF-2026-09-24/phase_facts.json |
 | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | l8xfs202 | 14.0587 | 5512.6 | - | agy-steps-raw.tsv: p1 per request (COMPLETE); p2 per request (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-chainF-2026-09-24/phase_facts.json |
 | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | l8xfs203 | 21.6983 | 8482.5 | - | agy-steps-raw.tsv: p1 per request (COMPLETE); p2 per request (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-chainF-2026-09-24/phase_facts.json |
+
+## ⚖️ ADDENDUM — O57, 2026-10-13: EVERY agy FIGURE ABOVE EXCLUDES SUB-AGENT CONVERSATIONS. APPENDED; every table above is unchanged.
+*bench, on the helm's order (O57 · O1, 2026-10-13 17:57). The limit rides beside every Gemini row above, in T, wall-free dollars, and every
+salt-diet ÷ plain ratio for `gemini-3.1-pro-high` and `gemini-3.8-flash-high`.*
+
+**agy T excludes sub-agent conversations: ≥ 15.2 % unmetered on salt-diet, 0.2 % on plain.** The salt-diet ÷ plain ratios for
+gemini-3.1-pro-high and gemini-3.8-flash-high are therefore biased LOW (toward salt-diet) by at least that.
+Source: `evidence/o57-agy-subagent-unmetered-2026-10-13/` (README, the decoder with its positive control, and one row per cell). Over the
+272 AGY cells of record, salt-diet has 434,359,169 sub-agent T unmetered against a metered 2,858,155,649, in 76 of 137 cells; plain has 884,196
+against 566,780,515, in 2 of 135. The salt-diet figure is a FLOOR: 60 level-8 phase-1 conversations left no record. The dollar rows above
+inherit the same exclusion; their re-pricing is the re-meter's (O57 (b)), not this addendum's. The Claude rows are a different meter and are
+not touched by this finding.
