@@ -282,3 +282,12 @@ The chain's PHASES check, which read the refusal as a phase defect, is a tool de
 **A5.6 · LIMITS.** The 300 s cap is a judgment, not a measurement: one PONG on `gemini-3.8-flash-high` took ~70 s of model time after a
 refresh. One incident, one model. The chain's resume order is unchanged (Deep Review r3 → x86 → N0-T″ → Z resumes), and so are ADDENDUM 4's
 rate and pool checkpoints.
+
+## ✍️ NON-AUTHOR SIGNATURE — kent, 2026-10-14 15:02 PDT, of ADDENDUM 5 at blob `b3beba12a5c5` (head `7b4cbd9166c0`)
+kent read the diff and re-drove the selftests itself (bus 2026-10-14 15:02:46): 12/0 with mutants 3/3 at `906775a`, and 7/4 for the red commit on `f048a78`'s
+wave script. It found the rescue, the cap and the reason text all inside the non-SUCCESS branch, and the rescue condition exactly as A5.2 states it. It also
+noted one unnamed difference: the wait now polls each 1 s (it was 5 s × 18), so a SUCCESS is seen up to 4 s sooner, with the same verdict.
+**A5.7 · kent's RIDER, carried as signed:** the rescue branch is entered by ANY non-SUCCESS warm-up, not only a PONG killed at the cap. A warm-up whose stream
+ended with status ERROR (the client refreshed, then the model call failed) is rescued the same way if the token changed and covers 2400 s. So the rescue
+cannot tell a slow PONG from a failed one. The battery and the canary still gate the launch, and the log line carries the stream tail. **Every ZF row whose
+leg launched through a rescue says so** (`warm-up: RESCUED`, with the logged reason), so a reader of that row meets it.
