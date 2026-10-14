@@ -996,6 +996,6 @@ salt-diet ÷ plain ratio for `gemini-3.1-pro-high` and `gemini-3.8-flash-high`.*
 gemini-3.1-pro-high and gemini-3.8-flash-high are therefore biased LOW (toward salt-diet) by at least that.
 Source: `evidence/o57-agy-subagent-unmetered-2026-10-13/` (README, the decoder with its positive control, and one row per cell). Over the
 272 AGY cells of record, salt-diet has 434,359,169 sub-agent T unmetered against a metered 2,858,155,649, in 76 of 137 cells; plain has 884,196
-against 566,780,515, in 2 of 135. The salt-diet figure is a FLOOR: 60 level-8 phase-1 conversations left no record. The dollar rows above
+against 566,780,515, in 2 of 135. Both figures are FLOORS: 60 level-8 phase-1 conversations, in cells of both arms, left no record. The dollar rows above
 inherit the same exclusion; their re-pricing is the re-meter's (O57 (b)), not this addendum's. The Claude rows are a different meter and are
 not touched by this finding.

@@ -1613,7 +1613,9 @@ reader's box, so every verdict here is the author's reading of the run's files.
   `ctl/briefing-nonce` (§D2 of `RESULT-gemini-flash-level5-2026-09-15.md`). **The s3 and b4 receipts carry the same limit:** across the 92
   legacy-layout cells of record (s3 38 · b4 12 · l5 42), 27 subjects used a side route (`ctl/briefing-nonce`, `ctl/launch.log` or an `ARMRECV`
   search), every one AFTER opening the arm file (s3 1, `s3cs03` · l5 26 · b4 0), and 0 echoed through a side route before touching the arm
-  file. So no receipt of record changes. Source: `evidence/agy-ctl-census-2026-10-13/side-route-all-legacy.out`.
+  file. So no receipt of record changes. Source: `evidence/agy-ctl-census-2026-10-13/side-route-all-legacy.out`. ⚠️ The count is of calls that
+  NAME a side route. Whole-cell and `ctl/*` searches were cross-checked by a non-author (kent): 2 cells ran a cell-root content search for
+  `Receipt` before the arm-file read, and neither surfaced the nonce (`AMENDMENT-agy-ctl-fence-2026-10-13.md` §4).
 - **agy T excludes sub-agent conversations: ≥ 15.2 % unmetered on salt-diet, 0.2 % on plain** (`evidence/o57-agy-subagent-unmetered-2026-10-13/`).
   The census reports no token figure, so no count moves here. The limit is recorded because the paper's Tables T1–T4 print Gemini medians
   and salt-diet ÷ plain ratios from that meter, and those ratios are biased LOW (toward salt-diet) by at least that.

@@ -19,7 +19,7 @@ the run box at zero spend. `unmetered2.out` holds one row per cell and the per-a
 **The defect is arm-correlated, and its sign favours the arm under test:** salt-diet's method dispatches refuter sub-agents and plain's does
 not. Every agy salt-diet ÷ plain token or dollar ratio is biased LOW, toward salt-diet looking cheaper.
 
-**Limits.** +15.2 % is a FLOOR. 60 of the 332 metered conversations have no db, one per level-8 cell (the phase-1 conversation of a
-spec-change cell, set aside before phase 2), so a sub-agent inside one of those phases is missing too. The metered conversations' db T is NOT
+**Limits.** Both arms' figures are FLOORS. 60 of the 332 metered conversations have no db, one per level-8 cell of either arm (the phase-1
+conversation of a spec-change cell, set aside before phase 2), so a sub-agent inside one of those phases is missing too. The metered conversations' db T is NOT
 reconciled with the meter cell by cell here, and nothing is claimed about the meter's own accuracy. Price impact (per-model tier rules) is
 not computed here. The Claude lane is a different meter and is not covered by this finding.
