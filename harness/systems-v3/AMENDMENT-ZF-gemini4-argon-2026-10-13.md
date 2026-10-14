@@ -135,7 +135,9 @@ arm-correlated hole in favour of the arm under test (`evidence/o57-agy-subagent-
 **THE RULE FOR THIS SET:** each cell's T is the meter's T PLUS the T of every conversation in the cell's client home that the parent stream
 does not carry, read from that conversation's own `conversations/<id>.db` by the O57 decoder. Both are printed per cell: `meter T`,
 `sub-agent T`, `conversations`. **A cell whose parent db does NOT reproduce its meter's T (the decoder's positive control, cell by cell)
-prints its sub-agent T as UNMEASURED**, never as 0. No db may be moved aside before it is read: a spec-change cell's phase-1 conversation is
-read BEFORE phase 2 is set up, which is the gap that left 60 level-8 cells as floors.
+prints its sub-agent T as UNMEASURED**, never as 0. **What runs (kent's read, 2026-10-13 19:23):** a copy-only sentry snapshots every
+conversation db every 60 s, and a conversation set aside before it is read is read from its newest snapshot. A snapshot older than the end
+of phase 1 prints sub-agent T as `≥ N` (control `STALE`), and a sub-agent the stream names whose db exists nowhere prints
+`UNMEASURED(named-no-db:k)`. This closes the gap that left 60 level-8 cells as floors.
 **WHAT IT DOES NOT CHANGE:** the 276 legs, the export, the caps (wall and turns; T is never a cap here), the tripwire reads (§G2 adds
 sub-agent T beside T), and the historical 3.x column, which keeps its published T with the O57 limit printed beside it.
