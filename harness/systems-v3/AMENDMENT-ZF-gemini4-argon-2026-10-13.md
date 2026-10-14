@@ -229,3 +229,56 @@ the lead to post an order before any cell beyond the tripwires, and this is it:
 result), the row carries `verdict channel: OPEN (ZQ (a), ADDENDUM 3)` beside it. The scorer's header already prints it once per file. This
 puts it on each row, so a reader of a single row meets it.
 **LIMITS ride beside every PASS above and in every ZF table:** ADDENDUM 3 (a)–(g); the verdict channel is the subject's own stdout.
+
+## ⚖️ ADDENDUM 5 — THE RUN EXPORT MOVES TO `906775a` FROM THE RESUME (A FALSE WARM-UP REFUSAL). APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-10-14, on systems' measurement (bus 14:23) and gemini's (14:23). A change to the harness that LAUNCHES a cell, registered
+before the first model call it governs. Nothing a cell measures changes, and the scorer stays ADDENDUM 3's. ⛔ **No leg fires on `906775a`
+before a non-author signs this addendum.***
+
+**A5.1 · WHAT HAPPENED.** Leg Z018 (FreeList · greenfield · none · plain · r3 · `gemini-3.8-flash-high`) stopped on 2026-10-14 at 21:20:26Z
+with **zero model spend**: its cell was BUILT, FENCED and BATTERY GREEN, then the credential warm-up REFUSED with an empty reason, and the cell
+was never launched. At the objects (the wave log on the run box, the client log, the token file): the client REFRESHED the token at
+21:18:56Z (a full window, expiry 22:18:55Z). The warm-up's PONG on the `-high` model then ran past a FIXED 90 s cap (18 × 5 s) and was killed,
+so `agy_wave_v3.sh` refused a window the refresh had just provided. Downstream the same cause was labelled twice more, as the driver's
+`MODEL UNREAD` and the chain's `phases 1,2` stop. Neither label is the cause. **The refusal was FALSE.**
+
+**A5.2 · THE CHANGE: `f048a78` → `906775a`** (saltbench-systems, two commits by systems, `f048a78` an ancestor):
+```
+  70049f2  selftest_agy_warm_v3.sh, committed RED on the unfixed wave script: 7 passed, 4 failed (the incident reproduced, empty reason included)
+  906775a  agy_wave_v3.sh, _warm_credential_locked + warm_window_rescues; selftest_all_v3.sh registers the new arm
+           (a) after a non-SUCCESS warm-up, a cell launches only if the master token CHANGED **and** now covers AGY_CRED_MIN_SECONDS
+               (2400 s). A change alone is refused, because a failed refresh is a write too.
+           (b) the cap is declared, AGY_WARM_SECONDS, default 300 s (was a fixed 90 s). A kill at the cap is SAID, with stderr and the
+               stream tail. The reason is never empty.
+  diff f048a78..906775a: 3 files, all harness/systems-v3/ (agy_wave_v3.sh +31/-4 · selftest_agy_warm_v3.sh new · selftest_all_v3.sh +3)
+```
+**Unchanged, read in the code:** the order FENCE RENDERED → BATTERY GREEN → CREDENTIAL WINDOW → fire, and the canary gate in the supervisor
+above it. The battery and the canary still gate every launch. The fix changes only the warm-up's own verdict. A warm-up that advanced the
+token proves the credential's window, never the model. A warm-up that returns SUCCESS takes the same path as before.
+
+**A5.3 · RECEIPTS**
+```
+  selftest_agy_warm_v3.sh --mutants @906775a, lead box (the lead, re-driven)       12 passed · 0 failed · mutants 3/3 killed
+      no-window-rescue → 1 arm red · silent-kill → 2 arms red · advance-is-enough → 1 arm red
+  the RED commit's selftest @70049f2 on the UNFIXED wave script (f048a78's bytes)  7 passed · 4 failed (the lead, re-driven)
+  selftest_all_v3.sh @906775a (systems' receipt; NOT re-run by the lead)          225/231 · 0 failed · 6 skipped by design (withheld-tree arms)
+  THE EXPORT, cut by the lead: studio_export.sh <run box> --ref 906775a --no-toolchain --unreferenced-dest
+      dest ~/projects/claude/saltbench-systems-v3-export-906775a · 377 files · listing sha256/16 cba51ae0483b9b25 · withheld-shaped names 0
+      required-ancestor gate OK (5 of 5; serial=3, block digest 6b3de761118f9f42, amendment read at saltbench bdbb89bbdd05)
+      diff -rq against the f048a78 export: the 3 files above + EXPORTED-FROM.sha + REQUIRED-ANCESTORS.tsv (its non-comment rows IDENTICAL)
+      agy_wave_v3.sh on the host sha256/16 6868e0a2ea9a0c39 == git show 906775a
+      selftest_agy_warm_v3.sh --mutants, on the run box from that export            12 passed · 0 failed · mutants 3/3 killed
+  --no-toolchain: the toolchain is unchanged from the f048a78 export (the change touches no toolchain path), and a cell was running on the box.
+```
+**A5.4 · WHICH CELLS RAN ON WHICH EXPORT.** Read from each leg's `drive.log` (`drive EXPORT …`): **Z001–Z018 attempt 1, 18 of 18, ran on
+`f048a78`.** Every leg fired after this addendum's signature runs on `906775a`, and every ZF table row carries its export sha. The two
+exports launch a cell identically whenever the warm-up returns SUCCESS, which it did for every cell that launched before Z018.
+
+**A5.5 · Z018 IS RE-QUEUED, NEVER CARRIED** (gemini's default, ruled by the lead, bus 14:2x). Its END-MARKER reads `rc=0 … WAVE-DONE`, so a
+plain resume would CARRY it as done when it never ran. Its END-MARKER and its run-box cell dir are renamed `…REFUSED-CREDENTIAL-<time>`, and
+the chain re-fires the leg. Attempt 1 spent no model call and is **not a replicate**: n stays 3 and the leg's replicate is the re-fire.
+The chain's PHASES check, which read the refusal as a phase defect, is a tool defect (gemini's, red-first), and it does not touch a cell.
+
+**A5.6 · LIMITS.** The 300 s cap is a judgment, not a measurement: one PONG on `gemini-3.8-flash-high` took ~70 s of model time after a
+refresh. One incident, one model. The chain's resume order is unchanged (Deep Review r3 → x86 → N0-T″ → Z resumes), and so are ADDENDUM 4's
+rate and pool checkpoints.
