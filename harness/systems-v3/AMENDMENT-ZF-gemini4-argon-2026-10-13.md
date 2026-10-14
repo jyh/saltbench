@@ -187,3 +187,34 @@ succeeds; connect and bind are what is denied (kent's LOW-2). (g) Measured on on
 re-freeze for the next v3 campaign.
 **WHAT IT DOES NOT CHANGE:** the 276 legs, the cell export, the caps, the meter (ADDENDUM 2), and the tripwire reads, except that a
 tripwire's PASS read waits for its belted score.
+
+## ⚖️ ADDENDUM 4 — THE TRIPWIRE READS AND THE SET'S PRICE (§G2). APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-10-13. §G2: "The set's price is written into an addendum from those four cells, and from them alone." The four cells are
+read from the hand's harvest receipts and its per-leg §G2 posts (2026-10-13 21:21–23:38 PDT). Every score is BELTED (ADDENDUM 3; scorer
+`39477409d58e`, profile `9906210a6f8ee100`). n = 1 per cell: these are tripwire reads, not results, and no comparison is drawn from them.*
+```
+  cell                          landed  belted score  served (client echo)     turns  wall s   T (meter + sub-agent)          pool AFTER (5h / weekly)
+  Z001 Crc32 gf none plain  r1  YES     PASS 6/6      gemini-4-argon-high       3      763.1    1,777,609 +   213,722            98 / 98  (04:21:43Z)
+  Z002 Crc32 gf none plain  r1  YES     PASS 6/6      gemini-3.8-flash-high     3      345.0    3,843,838 +   543,436            98 / 98  (05:00:27Z)
+  Z003 Crc32 gf none salt   r1  YES     PASS 6/6      gemini-4-argon-high       3     1301.7    6,536,722 +    28,533            95 / 98  (05:24:34Z)
+  Z004 Crc32 gf none salt   r1  YES     PASS 6/6      gemini-3.8-flash-high     4     2859.7   19,453,186 +   954,332            99 / 98  (06:38:34Z, after the 5h reset)
+```
+Pool BEFORE the first cell: 99 / 99 (20:56:41 PDT). Z001's first score (04:21:30Z) ran UNBELTED and is not a figure; its belted re-score is
+the row above and is identical to it. The /usage reading moves in whole points with ±1 noise (the hand's declaration).
+**THE PRICE, two ways, because one pair cannot choose between them:**
+```
+  A  four-cell mean wall × 138 cells per model     Gemini 4  39.6 h · control  61.4 h · total 101.0 h serial cell wall
+  B  §G2's 3.x Flash basis (42.2 h / 138 cells)    control   42.2 h · Gemini 4  27.2 h (× the pair's wall ratio 0.644) · total 69.4 h
+  elapsed, measured: ZT's four cells took 2.67 h from first fire to last end (incl. tonight's ZQ hold) = 0.67 h per cell ⇒ 184 h ≈ 7.7 days for 276
+```
+The pair's wall ratios point in OPPOSITE directions (Gemini 4 ÷ control: plain 2.21, salt-diet 0.455), so neither arm's ratio prices the set, and
+the n = 1 Flash salt-diet cell (2,859.7 s) is longer than all 18 3.x Flash Crc32 salt-diet phase rows in `evidence/v3-cost-tables-2026-09-28/agy-steps-raw.tsv`
+(any field; their longest is 2,095.7 s).
+Crc32 is the smallest problem, so A is not an upper bound.
+**THE STOP RULE (§G2) DOES NOT FIRE:** at the measured 0.67 h per cell the set ends ≈ 7.7 days after release, before the ZF review date
+(2026-10-28). **The binding uncertainty is the WEEKLY pool**, which moved by one point over four cells, inside its own reading noise. So:
+**CHECKPOINT (the lead's, written now):** the hand reads /usage at each condition's dispatch, as it does. If the weekly reading falls to
+**25 % or below before its 2026-10-20 reset**, the set pauses at the next condition boundary and the lead applies §G2's order (spec-change
+last, then brownfield/statement), cutting whole condition pairs, never one model's arm, and n is never reduced quietly.
+**THE RELEASE:** the set continues from the tripwires in §G2's order, interleaved by condition (§G1), on this addendum.
+**LIMITS ride beside every PASS above and in every ZF table:** ADDENDUM 3 (a)–(g); the verdict channel is the subject's own stdout.
