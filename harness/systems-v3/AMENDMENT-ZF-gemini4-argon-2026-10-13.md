@@ -126,3 +126,16 @@ of §G2. Fields greenfield/brownfield and extras none/statement/spec-change, as 
 **A1.4 · CARRIED TO THE FIRE, not met here:** the lane canary must read HEALTHY before ZT's first launch (the hand's preflight read it
 UNMEASURED, its process not alive). The hand brings it up and reads it in the fire post. **Sequencing stays §G0.6:** ZT fires after O60's batch
 score ends. The ZT → Z release is the lead's, on the §G2 reads of the four tripwire cells.
+
+## ⚖️ ADDENDUM 2 — THE SET'S TOKEN FIGURE INCLUDES SUB-AGENT CONVERSATIONS, FROM THE FIRST CELL. APPENDED before any model call; all text above, signature included, untouched.
+*bench (lead), 2026-10-13, on the helm's O57 ruling (17:57). A change to what the run MEASURES, so it is registered before ZT's first call.*
+**WHY:** the lane's meter (`agy_meter_v3.py`) reads the parent conversation's stream only, so a sub-agent the subject dispatches is never
+metered. Over the 272 Gemini 3.x cells of record that left 434 M T unmetered on salt-diet (≥ +15.2 %) against 0.9 M on plain (+0.2 %), an
+arm-correlated hole in favour of the arm under test (`evidence/o57-agy-subagent-unmetered-2026-10-13/`).
+**THE RULE FOR THIS SET:** each cell's T is the meter's T PLUS the T of every conversation in the cell's client home that the parent stream
+does not carry, read from that conversation's own `conversations/<id>.db` by the O57 decoder. Both are printed per cell: `meter T`,
+`sub-agent T`, `conversations`. **A cell whose parent db does NOT reproduce its meter's T (the decoder's positive control, cell by cell)
+prints its sub-agent T as UNMEASURED**, never as 0. No db may be moved aside before it is read: a spec-change cell's phase-1 conversation is
+read BEFORE phase 2 is set up, which is the gap that left 60 level-8 cells as floors.
+**WHAT IT DOES NOT CHANGE:** the 276 legs, the export, the caps (wall and turns; T is never a cap here), the tripwire reads (§G2 adds
+sub-agent T beside T), and the historical 3.x column, which keeps its published T with the O57 limit printed beside it.
