@@ -201,6 +201,16 @@ def sign(r):
     return None
 
 
+ADD_T = {}   # O57 (b): cell -> (sub-agent T, floor flag, why), from --add-T; empty ⇒ the tables of record, byte for byte
+
+
+def read_add_t(path):
+    out = {}
+    for r in csv.DictReader(open(path, encoding="utf-8"), delimiter="\t"):
+        out[r["cell"]] = (int(r["subT"]), r["floor"] == "1", r["why"])
+    return out
+
+
 def build(map_path):
     allrows = list(csv.DictReader(open(map_path, encoding="utf-8"), delimiter="\t"))
     rows = [r for r in allrows if not r["model"].startswith("#")]
@@ -213,8 +223,14 @@ def build(map_path):
             c["status"] = "CONFLICT"
         if r["status"] == "DONE" or (r["status"] == "DECLARED" and r["cell"] != "-"):
             t, o, p = read_cell(r, cache)
-            c["cells"].append((r["cell"], t, o, r["lower_bound"] == "1", p))
-            prov.append((k, r["cell"], t, o, r["lb_reason"] if r["lower_bound"] == "1" else "-", p))
+            cap, why = r["lower_bound"] == "1", (r["lb_reason"] if r["lower_bound"] == "1" else "-")
+            if r["cell"] in ADD_T and t is not None:
+                sub, floor, fwhy = ADD_T[r["cell"]]
+                t, p = t + sub, p + " + O57 sub-agent T %d" % sub
+                if floor:
+                    cap, why = True, (why + "; " if why != "-" else "") + fwhy
+            c["cells"].append((r["cell"], t, o, cap, p))
+            prov.append((k, r["cell"], t, o, why, p))
     return conds, prov
 
 
@@ -389,11 +405,14 @@ def main():
     ap.add_argument("--map")
     ap.add_argument("--out")
     ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--add-T", dest="add_t", help="O57 (b): TSV cell/subT/floor/why; adds each listed cell's sub-agent T (agy lane)")
     a = ap.parse_args()
     if a.selftest:
         return selftest()
     if not a.map:
         ap.error("--map is required")
+    if a.add_t:
+        ADD_T.update(read_add_t(a.add_t))
     conds, prov = build(a.map)
     body, check, ok, fails = render(conds, prov)
     head = subprocess.run(["git", "-C", REPO, "rev-parse", "--short=12", "HEAD"], capture_output=True, text=True).stdout.strip()
