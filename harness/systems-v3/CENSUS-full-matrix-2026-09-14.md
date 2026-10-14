@@ -1606,3 +1606,16 @@ reader's box, so every verdict here is the author's reading of the run's files.
   independent parser and population (204 files, 385 PASS rows): 0 hits in the 181. The evidence tables, p1-specchange's tsv, the run box's
   own score files and the source search remain the lead's reading alone. One user tree on the run box was unreadable to that search; the score-file axis does not depend on it. The scorers are being
   changed to read a missing `TESTS` line as NOT-MEASURED, never PASS.
+
+# ⚖️ ADDENDUM 35 — **NOT A COUNT ADDENDUM: TWO DECLARED LIMITS ON THE GEMINI LANE. NO CONDITION MOVES.**
+## bench, 2026-10-13, on the helm's orders of 13:07 (the briefing route) and 17:57 (O57). Each limit rides beside the verdicts it limits.
+- **The briefing receipt's second route (s3 and b4).** Level 5's result already declares that its receipt token was also readable at
+  `ctl/briefing-nonce` (§D2 of `RESULT-gemini-flash-level5-2026-09-15.md`). **The s3 and b4 receipts carry the same limit:** across the 92
+  legacy-layout cells of record (s3 38 · b4 12 · l5 42), 27 subjects used a side route (`ctl/briefing-nonce`, `ctl/launch.log` or an `ARMRECV`
+  search), every one AFTER opening the arm file (s3 1, `s3cs03` · l5 26 · b4 0), and 0 echoed through a side route before touching the arm
+  file. So no receipt of record changes. Source: `evidence/agy-ctl-census-2026-10-13/side-route-all-legacy.out`. ⚠️ The count is of calls that
+  NAME a side route. Whole-cell and `ctl/*` searches were cross-checked by a non-author (kent): 2 cells ran a cell-root content search for
+  `Receipt` before the arm-file read, and neither surfaced the nonce (`AMENDMENT-agy-ctl-fence-2026-10-13.md` §4).
+- **agy T excludes sub-agent conversations: ≥ 15.2 % unmetered on salt-diet, 0.2 % on plain** (`evidence/o57-agy-subagent-unmetered-2026-10-13/`).
+  The census reports no token figure, so no count moves here. The limit is recorded because the paper's Tables T1–T4 print Gemini medians
+  and salt-diet ÷ plain ratios from that meter, and those ratios are biased LOW (toward salt-diet) by at least that.
