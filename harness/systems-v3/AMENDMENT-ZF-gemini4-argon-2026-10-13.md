@@ -220,6 +220,8 @@ the lead to post an order before any cell beyond the tripwires, and this is it:
 2. **RATE CHECKPOINT, 2026-10-20 (the weekly reset):** the lead projects the finish from the cells completed by then (their own elapsed per
    phase, scaled per problem by the 3.x ratios above). If the projection passes 2026-10-27, the lead posts the cut, as WHOLE condition
    pairs from the tail, never one model's arm. Every condition left short is reported short, and n is never reduced quietly.
+   **That choice is the Captain's** (the helm, 23:53): cutting tail pairs or moving ZF's 2026-10-28 review date is an intention, so it goes
+   to him as a pack ask, with the measured projection and the pairs that would be cut. **Default if he does not rule at that sitting: the cut**.
 3. **POOL CHECKPOINT:** the hand reads /usage at each condition's dispatch. If the weekly reading falls to **25 % or below before its
    2026-10-20 reset**, the set pauses at the next condition boundary and rule 2's cut is applied then.
 **THE RELEASE:** the set continues from the tripwires on this addendum, under the order and checkpoints above.
