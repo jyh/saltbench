@@ -201,20 +201,29 @@ read from the hand's harvest receipts and its per-leg §G2 posts (2026-10-13 21:
 ```
 Pool BEFORE the first cell: 99 / 99 (20:56:41 PDT). Z001's first score (04:21:30Z) ran UNBELTED and is not a figure; its belted re-score is
 the row above and is identical to it. The /usage reading moves in whole points with ±1 noise (the hand's declaration).
-**THE PRICE, two ways, because one pair cannot choose between them:**
+**THE PRICE, two ways, because one pair cannot choose between them.** Crc32 is the cheapest problem in the 3.x Flash record: its 36
+phase rows average 561.8 s against 903.5 s over all 168 (`evidence/v3-cost-tables-2026-09-28/agy-steps-raw.tsv`), a factor of 1.608. And a
+model's 138 cells are 168 phases, because a spec-change cell has two. So a Crc32-only mean must be scaled before it prices the set:
 ```
-  A  four-cell mean wall × 138 cells per model     Gemini 4  39.6 h · control  61.4 h · total 101.0 h serial cell wall
-  B  §G2's 3.x Flash basis (42.2 h / 138 cells)    control   42.2 h · Gemini 4  27.2 h (× the pair's wall ratio 0.644) · total 69.4 h
-  elapsed, measured: ZT's four cells took 2.67 h from first fire to last end (incl. tonight's ZQ hold) = 0.67 h per cell ⇒ 184 h ≈ 7.7 days for 276
+  A  four-cell mean wall per phase × 1.608 × 168 phases per model    Gemini 4  77.5 h · control 120.2 h · total 197.7 h serial cell wall
+  B  §G2's 3.x Flash basis (42.2 h, all 168 phases, all problems)     control   42.2 h · Gemini 4  27.2 h (× the pair's wall ratio 0.644) · total 69.4 h
+  elapsed ÷ cell wall, measured on ZT: 2.67 h ÷ 1.46 h = 1.83 (it INCLUDES tonight's ZQ hold, so it is an upper figure, not a rate)
+  ⇒ elapsed   A: ≈ 362 h ≈ 15.1 days    B: ≈ 127 h ≈ 5.3 days
 ```
 The pair's wall ratios point in OPPOSITE directions (Gemini 4 ÷ control: plain 2.21, salt-diet 0.455), so neither arm's ratio prices the set, and
-the n = 1 Flash salt-diet cell (2,859.7 s) is longer than all 18 3.x Flash Crc32 salt-diet phase rows in `evidence/v3-cost-tables-2026-09-28/agy-steps-raw.tsv`
-(any field; their longest is 2,095.7 s).
-Crc32 is the smallest problem, so A is not an upper bound.
-**THE STOP RULE (§G2) DOES NOT FIRE:** at the measured 0.67 h per cell the set ends ≈ 7.7 days after release, before the ZF review date
-(2026-10-28). **The binding uncertainty is the WEEKLY pool**, which moved by one point over four cells, inside its own reading noise. So:
-**CHECKPOINT (the lead's, written now):** the hand reads /usage at each condition's dispatch, as it does. If the weekly reading falls to
-**25 % or below before its 2026-10-20 reset**, the set pauses at the next condition boundary and the lead applies §G2's order (spec-change
-last, then brownfield/statement), cutting whole condition pairs, never one model's arm, and n is never reduced quietly.
-**THE RELEASE:** the set continues from the tripwires in §G2's order, interleaved by condition (§G1), on this addendum.
+the n = 1 Flash salt-diet cell (2,859.7 s) is longer than all 18 3.x Flash Crc32 salt-diet phase rows in that file (any field; their longest is
+2,095.7 s). The two projections straddle the review date.
+**THE STOP RULE (§G2) APPLIES IN ITS POSTED-ORDER FORM.** Projection A puts the set past the ZF review date (2026-10-28); B does not. §G2 asks
+the lead to post an order before any cell beyond the tripwires, and this is it:
+1. The set runs in §G2's order: greenfield (none · statement), then brownfield (none · statement), then spec-change, condition by condition,
+   n = 3 each, interleaved by condition. So a cut at the tail removes spec-change first, as §G2 orders, then brownfield/statement.
+2. **RATE CHECKPOINT, 2026-10-20 (the weekly reset):** the lead projects the finish from the cells completed by then (their own elapsed per
+   phase, scaled per problem by the 3.x ratios above). If the projection passes 2026-10-27, the lead posts the cut, as WHOLE condition
+   pairs from the tail, never one model's arm. Every condition left short is reported short, and n is never reduced quietly.
+3. **POOL CHECKPOINT:** the hand reads /usage at each condition's dispatch. If the weekly reading falls to **25 % or below before its
+   2026-10-20 reset**, the set pauses at the next condition boundary and rule 2's cut is applied then.
+**THE RELEASE:** the set continues from the tripwires on this addendum, under the order and checkpoints above.
+**EVERY ZF SCORE ROW CARRIES ITS LIMIT (the helm, 23:51):** wherever a belted verdict is printed (the hand's harvest receipts, any table, the
+result), the row carries `verdict channel: OPEN (ZQ (a), ADDENDUM 3)` beside it. The scorer's header already prints it once per file. This
+puts it on each row, so a reader of a single row meets it.
 **LIMITS ride beside every PASS above and in every ZF table:** ADDENDUM 3 (a)–(g); the verdict channel is the subject's own stdout.
