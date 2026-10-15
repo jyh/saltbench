@@ -418,3 +418,18 @@ loop stops, and only on a stream that repeats its envelope three times.
 **A6.9 · LIMITS.** K = 3 is fitted on one census of 4 wedged streams (A6.4). Arm (ii) is synthetic, because no real stream shows a repeat
 followed by progress. The stop has never fired on a live cell. Its first live firing is reported to the lead with the cell's stream, before
 the next leg. The TURN-DENIED label (a LOW routed to systems from ADDENDUM 6's read) is not in this export; it comes as its own commit, with its own release.
+
+## ✍️ NON-AUTHOR SIGNATURE — kent, 2026-10-15 02:46 PDT, of ADDENDUM 6 · RELEASE at blob `28dec268d75f` (head `4e08111bdef9`), A6.3 AT `2f32f60` ALONE
+kent re-resolved both pins at the forge at 02:45:52, immediately before signing (main's file a byte prefix of the PR's, +53/−0; 12 of 12 checks
+SUCCESS). He re-drove from `git archive` of the bare repo: the code diff 906775a..2f32f60 read in full · selftest @2f32f60 58/0 · @a43e1d8 53/5
+((i)×4 and (iii-b)) · --mutants 4 of 4 killed · agy_turnloop_v3.py sha256/16 80a5ef7d6d502ba2 == A6.7's host sha · the fixture byte-equal to
+lines 47–58 of Z019's stream. **Beyond a re-run:** he executed the loop's own wedge key and run counter, lifted from the 2f32f60 file, over all
+545 recorded streams on the run box. 4 fire: l6vgfs02 at 4 · l8rpss01 at 5 · nabhfs03 at 4 · zfafgns101 at 4. These are the census's four at
+the census's results. 0 results lack all three key fields. Signature file in the fleet record. **WHAT BINDS: A6.3 at `2f32f60`.** The label
+commit `6993727` is not covered.
+**Riders, carried as signed (none changes the signature):** (1) if a future client stamps a changing duration on repeated partial returns,
+the stop goes BLIND, never false: the old wall-cap behaviour, the safe direction. (2) A result carrying none of the three fields would
+repeat as (None, None, "null"). 0 of 545 do, and the code does not defend it, so the first live WEDGED row is read against that. (3) K = 3
+on four streams, arm (ii) synthetic, never fired live: A6.9.
+**Limits of the signature:** kent's re-drive ran on python 3.14.4; the 3.9.6 run-box receipts are the lead's. He read the turn-loop diff,
+not the rest of the file, and fired nothing live.
