@@ -433,3 +433,45 @@ repeat as (None, None, "null"). 0 of 545 do, and the code does not defend it, so
 on four streams, arm (ii) synthetic, never fired live: A6.9.
 **Limits of the signature:** kent's re-drive ran on python 3.14.4; the 3.9.6 run-box receipts are the lead's. He read the turn-loop diff,
 not the rest of the file, and fired nothing live.
+
+## ⚖️ ADDENDUM 6 · RELEASE 2 — THE EMPTY-TURN LABEL AT EXPORT `6993727`. APPENDED; all text above, signatures included, untouched.
+*⛔ It binds no leg until a non-author signs it. Until then legs run on `2f32f60` (A6.8), and their logs carry the old label.*
+
+**A6.10 · THE CHANGE: `2f32f60` → `6993727`** (saltbench-systems, two commits by systems, `2f32f60` an ancestor; agy_turnloop_v3.py +46/−6):
+```
+  0c9c64f  selftest, committed RED on the current label: 57 passed, 3 failed
+  6993727  every empty turn is logged "EMPTY-TURN n produced NO OUTPUT". A cause is printed only when the client's own stderr (the loop's
+           --err file) carries the client's auto-denial sentence, `a tool required the "unsandboxed" permission`; otherwise the log says
+           "cause NOT READ". The count is per run, as the new summary field empty_turn_denial_markers, because stderr is not keyed to a turn.
+           turns_no_output, the existing field names and the rc-13 dead-run rule are unchanged.
+```
+**WHY:** the loop labelled every empty turn "TURN-DENIED … a tool needed `unsandboxed`" without reading any cause. On Z019 the 12 such
+lines are the loop's own label; the client's stderr and the client log carry 0 of the client's denial sentence. Under `6993727` those turns
+read "EMPTY-TURN, cause NOT READ". It changes a LOG LINE and adds one summary field. It changes no stop, cap, score or outcome.
+**CONSUMERS (systems' search, git grep -F):** no code parses the old line. Public hits are prose in amendments and one RESULT, plus
+cell_facts.py, whose comment says it never reads that line.
+
+**A6.11 · RECEIPTS**
+```
+  selftest @0c9c64f (RED), lead box, re-driven by the lead          57 passed · 3 failed (the three empty-turn arms)
+  selftest @6993727, lead box, re-driven by the lead                60 passed · 0 failed
+  --mutants @6993727, lead box, re-driven by the lead               5 of 5 killed (A6.3's four, plus cause-assumed, killed by the NOT-READ arm)
+  THE EXPORT, cut by the lead: studio_export.sh <run box> --ref 6993727 --no-toolchain
+      dest ~/projects/claude/saltbench-systems-v3-export-6993727 · 378 files · withheld-shaped names 0 · ancestors 5 of 5, digest 6b3de761118f9f42
+      diff -rq against the 2f32f60 export: agy_turnloop_v3.py + EXPORTED-FROM.sha only
+      agy_turnloop_v3.py sha256/16 51ff30a6fc14eb3e · on the run box from that export, python 3.9.6: 60 passed · 0 failed · mutants 5 of 5
+```
+**A6.12 · LIMITS.** The marker sentence was read in one earlier cell's stderr; a client that words a denial differently is reported as
+"cause NOT READ", which is the safe direction. The count is per run, so it cannot say which turn was denied.
+
+## ✍️ NON-AUTHOR SIGNATURE — kent, 2026-10-15 02:53 PDT, of ADDENDUM 6 · RELEASE 2 at blob `3ea43f2e273d` (head `17e1a1fa188c`), THE LABEL AT `6993727`
+kent re-resolved both pins at the forge at 02:52:57 (main's file a byte prefix of the PR's, +30/−0). He re-drove from `git archive` of the
+bare repo: the diff 2f32f60..6993727 read in full · selftest 60/0 · RED 0c9c64f 57/3 (the three empty-turn arms) · --mutants 5/5 ·
+agy_turnloop_v3.py sha256/16 51ff30a6fc14eb3e == A6.11's host sha. **The premise, at the object on the run box:** Z019's client stderr
+(1,414 B) and client log carry 0 occurrences of "unsandboxed". The only file in its ctl that does is the loop's own stderr (12 lines, the old label). The
+`--err` file is the client's stderr, so the new check cannot read the loop's own label. The marker sentence is real: 40 lines across earlier
+pilot cells. A different denial sentence appears 3 times and is correctly not matched. **WHAT BINDS: the label at `6993727`.**
+**Riders, carried as signed (none changes the signature):** (1) "cause READ" is counted per run, so one denial anywhere in a run's client
+stderr prints READ over every empty turn of that run. The line says "counted per run, not attributed per turn", and it is read that way.
+(2) A reworded client sentence reports NOT READ, the safe direction. (3) systems' consumer search was not re-driven.
+**Limits of the signature:** python 3.14.4; the 3.9.6 run-box receipts are the lead's; nothing fired live.
