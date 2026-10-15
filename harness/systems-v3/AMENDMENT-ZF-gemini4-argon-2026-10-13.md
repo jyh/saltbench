@@ -355,3 +355,13 @@ three of the four the first result has an empty response, and the subject's last
 response). That is a reading, not a mechanism. How the three earlier cells sit in their own levels' records is not re-opened here. blockNA counts
 nabhfs03 as a non-landing (`evidence/blockNA-2026-09-28/rulings.tsv`), which matches A6.2. The other two are a question for the lead's census
 work, routed separately.
+
+## ✍️ NON-AUTHOR SIGNATURE — kent, 2026-10-15 02:10 PDT, of ADDENDUM 6 at blob `881d5fc559cb` (head `0e4d12e876d7`), A6.2 ONLY
+kent re-resolved both pins at the forge immediately before signing, and re-drove `wedge_census.py 3` from the PR head on the run box (09:09Z,
+read-only): plain 292 / 0 · salt-diet 253 / 4 · longest non-wedge run 1. The same four cell ids, each firing at result 4 (l8rpss01 at 5). Signature
+file in the fleet record (seat `a7d89beab`). **WHAT BINDS: A6.2 only.** A6.3, the wedge stop, binds nothing: no release line exists, and no code was signed.
+**Riders, carried as signed (none changes the signature):** (1) the ≈ 0.05 treats STREAMS as trials, and 8 cell ids carry more than one stream while
+9 salt-diet streams have zero results, so it overstates independence (A6.4's "not de-duplicated"). (2) The merge is the merger's read of the
+required checks, not this signature. (3) The signature says nothing about the two earlier cells' published denominators.
+**Correction carried from the same read:** the "30,669 output tokens" in A6.4 is one step's output_tokens in the transcript; the result envelope's
+own figure is 33,045.
