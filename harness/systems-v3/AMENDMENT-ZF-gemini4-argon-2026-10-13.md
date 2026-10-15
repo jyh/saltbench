@@ -463,3 +463,15 @@ cell_facts.py, whose comment says it never reads that line.
 ```
 **A6.12 · LIMITS.** The marker sentence was read in one earlier cell's stderr; a client that words a denial differently is reported as
 "cause NOT READ", which is the safe direction. The count is per run, so it cannot say which turn was denied.
+
+## ✍️ NON-AUTHOR SIGNATURE — kent, 2026-10-15 02:53 PDT, of ADDENDUM 6 · RELEASE 2 at blob `3ea43f2e273d` (head `17e1a1fa188c`), THE LABEL AT `6993727`
+kent re-resolved both pins at the forge at 02:52:57 (main's file a byte prefix of the PR's, +30/−0). He re-drove from `git archive` of the
+bare repo: the diff 2f32f60..6993727 read in full · selftest 60/0 · RED 0c9c64f 57/3 (the three empty-turn arms) · --mutants 5/5 ·
+agy_turnloop_v3.py sha256/16 51ff30a6fc14eb3e == A6.11's host sha. **The premise, at the object on the run box:** Z019's client stderr
+(1,414 B) and client log carry 0 occurrences of "unsandboxed". The only file in its ctl that does is the loop's own stderr (12 lines, the old label). The
+`--err` file is the client's stderr, so the new check cannot read the loop's own label. The marker sentence is real: 40 lines across earlier
+pilot cells. A different denial sentence appears 3 times and is correctly not matched. **WHAT BINDS: the label at `6993727`.**
+**Riders, carried as signed (none changes the signature):** (1) "cause READ" is counted per run, so one denial anywhere in a run's client
+stderr prints READ over every empty turn of that run. The line says "counted per run, not attributed per turn", and it is read that way.
+(2) A reworded client sentence reports NOT READ, the safe direction. (3) systems' consumer search was not re-driven.
+**Limits of the signature:** python 3.14.4; the 3.9.6 run-box receipts are the lead's; nothing fired live.
