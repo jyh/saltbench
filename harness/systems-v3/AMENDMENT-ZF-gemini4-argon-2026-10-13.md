@@ -365,3 +365,71 @@ file in the fleet record (seat `a7d89beab`). **WHAT BINDS: A6.2 only.** A6.3, th
 required checks, not this signature. (3) The signature says nothing about the two earlier cells' published denominators.
 **Correction carried from the same read:** the "30,669 output tokens" in A6.4 is one step's output_tokens in the transcript; the result envelope's
 own figure is 33,045.
+
+## ⚖️ ADDENDUM 6 · RELEASE — A6.3 AT EXPORT `2f32f60`. APPENDED; all text above, signatures included, untouched.
+*This is the release line A6.3 asks for. ⛔ It binds no leg until a non-author signs A6.3 and this release below. Legs fired before that
+signature run on `906775a` without the stop, and their rows say so.*
+
+**A6.5 · THE CHANGE: `906775a` → `2f32f60`** (saltbench-systems, two commits by systems, `906775a` an ancestor):
+```
+  a43e1d8  agy_turnloop_v3.py selftest, committed RED on the unfixed loop: 53 passed, 5 failed
+  2f32f60  agy_turnloop_v3.py, the stop: once a continue turn has returned, if the last 3 results each repeat the one before on
+           (conversation_id, duration_seconds, json.dumps(usage, sort_keys=True)), done_reason = WEDGED, the loop breaks, and the
+           P-PERSIST probe is sent as on every stop. The key is wedge_census.py's key, character for character. The response text is
+           never read. The summary gains wedge_k and wedged_at_result. rc stays 0, as for the caps.
+  diff 906775a..2f32f60: 3 files, all harness/systems-v3/ (agy_turnloop_v3.py +138/-1 · fixtures/README.md +6 ·
+           fixtures/zf-z019-stream-1.results.ndjson new, 12 lines)
+```
+**ORDER (systems' one choice, accepted by the lead):** the wedge check runs AFTER the LANDED check and BEFORE the claim and cap checks. A cell
+whose artefact exists still ends LANDED, and a wedged cell is named WEDGED rather than by the cap it would reach later.
+
+**A6.6 · THE ARMS A6.3 OWES, AS BUILT**
+```
+  (i)     Z019's own 12 result records, byte-exact (lines 47-58 of its ctl/stream-1.ndjson, source sha256/16 765d8284c90edabb; the
+          fixture's sha256/16 27b0c2b3b2e3da4b, re-hashed by the lead against both). Replayed with --max-turns 40: WEDGED at result 4,
+          after 3 continue turns, the probe sent last.
+  (ii)    one repeat, then a differing result: TURN-CAP, not WEDGED. SYNTHETIC: the census's four single-repeat salt-diet streams all
+          end on the repeat, so none is a repeat followed by progress (systems read all four).
+  (iii-a) two repeats, then a differing result: TURN-CAP.        (iii-b) an identical envelope under a different response each turn: WEDGED at result 5.
+  MUTANTS (agy_turnloop_v3.py --mutants): k-is-2 · compare-reads-response · no-stop · stop-skips-probe. All four killed.
+```
+The fake client now gives each turn its own duration_seconds. Otherwise its constant envelope would trip the stop on the 50 older arms,
+which are unchanged and green.
+
+**A6.7 · RECEIPTS**
+```
+  selftest @a43e1d8 (RED commit, unfixed loop), lead box, re-driven by the lead     53 passed · 5 failed: (i) ×4 and (iii-b)
+  selftest @2f32f60, lead box, re-driven by the lead                                58 passed · 0 failed
+  --mutants @2f32f60, lead box, re-driven by the lead                               4 of 4 killed (k-is-2 by 5 arms · compare-reads-response by
+                                                                                    (iii-b) · no-stop by 5 · stop-skips-probe by (i))
+  THE EXPORT, cut by the lead from a throwaway clone at 2f32f60:
+      studio_export.sh <run box> --ref 2f32f60a06dd --no-toolchain
+      dest ~/projects/claude/saltbench-systems-v3-export-2f32f60 · 378 files · listing sha256/16 dd179d14e5f23979 · withheld-shaped names 0
+      required-ancestor gate OK (5 of 5; serial=3, block digest 6b3de761118f9f42, amendment read at saltbench 7cbe2153f1e5)
+      diff -rq against the 906775a export: the 3 files above + EXPORTED-FROM.sha + REQUIRED-ANCESTORS.tsv (only its @amendment-commit line differs)
+      agy_turnloop_v3.py on the host sha256/16 80a5ef7d6d502ba2 == git show 2f32f60
+      selftest and --mutants, on the run box from that export, python 3.9.6           58 passed · 0 failed · mutants 4 of 4 killed
+  --no-toolchain: the change touches no toolchain path, and ZF legs use no Verus (the host keeps none at this box's path).
+```
+**A6.8 · WHICH LEGS RUN ON WHICH EXPORT.** Every leg fired after the signature below runs on `2f32f60`, and its row carries that sha. A leg
+already running when the signature lands finishes on `906775a`. The two exports launch a cell identically; they differ only in when the turn
+loop stops, and only on a stream that repeats its envelope three times.
+
+**A6.9 · LIMITS.** K = 3 is fitted on one census of 4 wedged streams (A6.4). Arm (ii) is synthetic, because no real stream shows a repeat
+followed by progress. The stop has never fired on a live cell. Its first live firing is reported to the lead with the cell's stream, before
+the next leg. The TURN-DENIED label (a LOW routed to systems from ADDENDUM 6's read) is not in this export; it comes as its own commit, with its own release.
+
+## ✍️ NON-AUTHOR SIGNATURE — kent, 2026-10-15 02:46 PDT, of ADDENDUM 6 · RELEASE at blob `28dec268d75f` (head `4e08111bdef9`), A6.3 AT `2f32f60` ALONE
+kent re-resolved both pins at the forge at 02:45:52, immediately before signing (main's file a byte prefix of the PR's, +53/−0; 12 of 12 checks
+SUCCESS). He re-drove from `git archive` of the bare repo: the code diff 906775a..2f32f60 read in full · selftest @2f32f60 58/0 · @a43e1d8 53/5
+((i)×4 and (iii-b)) · --mutants 4 of 4 killed · agy_turnloop_v3.py sha256/16 80a5ef7d6d502ba2 == A6.7's host sha · the fixture byte-equal to
+lines 47–58 of Z019's stream. **Beyond a re-run:** he executed the loop's own wedge key and run counter, lifted from the 2f32f60 file, over all
+545 recorded streams on the run box. 4 fire: l6vgfs02 at 4 · l8rpss01 at 5 · nabhfs03 at 4 · zfafgns101 at 4. These are the census's four at
+the census's results. 0 results lack all three key fields. Signature file in the fleet record. **WHAT BINDS: A6.3 at `2f32f60`.** The label
+commit `6993727` is not covered.
+**Riders, carried as signed (none changes the signature):** (1) if a future client stamps a changing duration on repeated partial returns,
+the stop goes BLIND, never false: the old wall-cap behaviour, the safe direction. (2) A result carrying none of the three fields would
+repeat as (None, None, "null"). 0 of 545 do, and the code does not defend it, so the first live WEDGED row is read against that. (3) K = 3
+on four streams, arm (ii) synthetic, never fired live: A6.9.
+**Limits of the signature:** kent's re-drive ran on python 3.14.4; the 3.9.6 run-box receipts are the lead's. He read the turn-loop diff,
+not the rest of the file, and fired nothing live.
