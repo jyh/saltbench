@@ -291,3 +291,77 @@ noted one unnamed difference: the wait now polls each 1 s (it was 5 s × 18), so
 ended with status ERROR (the client refreshed, then the model call failed) is rescued the same way if the token changed and covers 2400 s. So the rescue
 cannot tell a slow PONG from a failed one. The battery and the canary still gate the launch, and the log line carries the stream tail. **Every ZF row whose
 leg launched through a rescue says so** (`warm-up: RESCUED`, with the logged reason), so a reader of that row meets it.
+
+## ⚖️ ADDENDUM 6 — Z019'S WEDGE: AN ARM-CORRELATED LOSS, NOT RE-FIRED; AND A WEDGE STOP FROM ITS OWN RELEASE. APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-10-15, on gemini's Z019 cap report (bus 2026-10-15 01:59) and the lead's census of the run box. Clause A6.2 rules on a cell
+that has ended. Clause A6.3 changes the turn loop's stop rule. It is registered here before any model call it governs, and ⛔ **it binds no leg
+before a non-author signs this addendum AND a release line below names the export that carries it.** It never enters a running wave.*
+
+**A6.1 · WHAT HAPPENED.** Leg Z019 (FreeList · greenfield · none · salt-diet · r1 · `gemini-4-argon-high`, export `906775a`) fired 02:51:16Z and
+ended at 08:54:17Z, wall 21,724.7 s, T 231,734 (sub-agents 0). Its first result arrived at 389.6 s with status SUCCESS and an EMPTY response. Every
+later result (continue turns 1–11) was identical to it in conversation, duration and usage. So the conversation advanced nothing for about 5.9 h,
+and each continue turn came back as a 30-minute partial return. The loop counted each partial return as a turn and stopped on TURN-TIMEOUT at the
+wall. The cell's END reads `ARM-NOT-RECEIVED phase-1 the subject never echoed its delivery nonce`. The belted score row reads
+`BRIEFING VOID(NO-BRIEFING) · FAULT shell-ok+fence-ok · END ARM-NO · NOT-SCORED, excluded by its own receipt`. The lead ruled at 2026-10-14 22:12
+(bus) to touch nothing and let the wall cap end it. That ruling stands: no hand touched the cell.
+⚠️ The turn loop labels all 12 empty turns `TURN-DENIED … a tool needed unsandboxed`. The cell's client log contains no occurrence of
+"unsandbox". The label is inferred from an empty response, not read from the client, so **no ZF row carries that cause.**
+
+**A6.2 · THE CENSUS, AND WHY Z019 IS NOT RE-FIRED.** `evidence/zf-wedge-census-2026-10-15/` (script, and its output at K = 2 and K = 3, run on the
+run box over every `~/cells*/*/ctl/stream-*.ndjson`) keys each result on its envelope only (conversation, duration, usage), never on the response
+text, so it cannot read either arm's vocabulary:
+```
+  arm (ctl/arm)   streams   wedge (>= 2 consecutive identical results)   a single repeat only
+  salt-diet         253       4                                          4
+  plain             292       0                                          0
+  the 4 wedged cells: l6vgfs02 (level 6, LZW, Flash) · l8rpss01 (level 8, LRU, Pro, spec-change) · nabhfs03 (block NA, BinomialHeap, Flash) · zfafgns101 (Z019)
+  every wedged cell stayed identical from result 2 to its cap; NONE recovered. The longest identical run in any non-wedged stream is 1.
+```
+If the arm did not matter, the chance that all 4 fall in salt-diet is about (253/545)^4 ≈ 0.05. This suggests a link but does not settle it.
+**THE RULING, on the sign:** if the salt-diet arm leads the subject into this state, the wedge is an OUTCOME of the treatment, not a transport fault.
+Re-firing it is the top-up that level 8 refuses (`AMENDMENT-gemini-level8-2026-09-16.md` §M4 rule 2). Not re-firing keeps a loss on the arm under
+test, and a bias against that arm cannot manufacture a positive for it. So:
+1. **Z019 is NOT re-fired.** Its score row stands as written: NOT-SCORED, with its own VOID(NO-BRIEFING) reading.
+2. **EVERY ZF PASS RATE IS REPORTED TWO WAYS, SIDE BY SIDE** (the helm, bus 2026-10-15 02:05, adopted). If the wedge is a treatment outcome,
+   then leaving it out of the denominator removes the arm's own failures from its rate. That favours the arm that hits it. So:
+   (a) **counted:** each wedge cell is a FAIL in its arm's denominator (intention-to-treat over the cells fired);
+   (b) **excluded:** the scored cells only, as the score file reads.
+   **Where (a) and (b) differ, (a) is the headline**, because it is the reading that goes against the arm. Every ZF table also prints, per arm,
+   `fired · scored · wedge · other VOID` beside the two rates, so a reader of either rate sees which cells it covers. Z019's condition
+   (FreeList-gf-none-salt, `gemini-4-argon-high`) is reported at the n it reached.
+3. **Any later ZF cell that wedges takes the same treatment**: no re-fire, and it is counted under point 2.
+4. The lead's 2026-10-15 BOOTED post ordered a re-fire. It was withdrawn by the same lead before any call (bus, the post after it), on this census.
+
+**A6.3 · THE WEDGE STOP.** In `agy_turnloop_v3.py`, after each continue turn returns, the loop compares the new result with the previous one on
+(conversation_id, duration_seconds, usage). **When THREE consecutive results are each identical to the one before, the loop stops with
+`done_reason = "WEDGED"`.** The P-PERSIST probe still goes last, exactly as on every other stop. The cell is scored as it lands, like a cap-ended cell.
+- **Why 3:** at K = 2 and at K = 3 the census fires on the same 4 cells and on nothing else (`census-K2.tsv`, `census-K3.tsv`). The longest
+  identical run outside a wedge is 1, so K = 3 leaves a margin of 2. On Z019, K = 3 stops at result 4: about 1.5 h after the first result,
+  where the wall cap stopped it at about 5.9 h.
+- **It reads the envelope, never the response text,** so it is blind to which arm wrote the response. ⚠️ **It is NOT arm-blind in what it binds:**
+  on the census it binds salt-diet cells only. On this evidence it changes WALL and TOKENS, never an outcome, because no wedged cell recovered.
+  A WEDGED cell's row carries `done_reason WEDGED` and its own wall. Every cost comparison prints the WEDGED count per arm beside it. Where a
+  historical column ran wedges to the cap, that comparison names the difference.
+- **What it does NOT do:** it does not end a slow cell. A cell whose results differ from each other, however slowly, never trips it. It does not
+  change the caps, the scorer (ADDENDUM 3's), the meter (ADDENDUM 2) or the set's order.
+- **OWED BEFORE IT BINDS (systems' or gemini's build, the lead's read):** a red-first selftest, committed red on the current turn loop, with
+  (i) Z019's own stream as the positive fixture (it must stop WEDGED at result 4), (ii) a stream with one repeat followed by progress (it must NOT
+  stop), and (iii) a mutant at K = 2 and a mutant that compares the response text, each of which an arm must kill. Then an export cut from the
+  green head, and a release line below naming that sha. Legs fired before that line run without the stop, and their rows say which rule they ran under.
+
+**A6.4 · LIMITS.** The census counts streams on the run box, including copied cell dirs. It was not de-duplicated, but the 4 wedged cells are 4
+distinct cells. Four events is a small number, and the salt-diet link is suggestive, not established. The cause of the wedge is UNMEASURED: in
+three of the four the first result has an empty response, and the subject's last output step was large (Z019: 30,669 output tokens in one
+response). That is a reading, not a mechanism. How the three earlier cells sit in their own levels' records is not re-opened here. blockNA counts
+nabhfs03 as a non-landing (`evidence/blockNA-2026-09-28/rulings.tsv`), which matches A6.2. The other two are a question for the lead's census
+work, routed separately.
+
+## ✍️ NON-AUTHOR SIGNATURE — kent, 2026-10-15 02:10 PDT, of ADDENDUM 6 at blob `881d5fc559cb` (head `0e4d12e876d7`), A6.2 ONLY
+kent re-resolved both pins at the forge immediately before signing, and re-drove `wedge_census.py 3` from the PR head on the run box (09:09Z,
+read-only): plain 292 / 0 · salt-diet 253 / 4 · longest non-wedge run 1. The same four cell ids, each firing at result 4 (l8rpss01 at 5). Signature
+file in the fleet record (seat `a7d89beab`). **WHAT BINDS: A6.2 only.** A6.3, the wedge stop, binds nothing: no release line exists, and no code was signed.
+**Riders, carried as signed (none changes the signature):** (1) the ≈ 0.05 treats STREAMS as trials, and 8 cell ids carry more than one stream while
+9 salt-diet streams have zero results, so it overstates independence (A6.4's "not de-duplicated"). (2) The merge is the merger's read of the
+required checks, not this signature. (3) The signature says nothing about the two earlier cells' published denominators.
+**Correction carried from the same read:** the "30,669 output tokens" in A6.4 is one step's output_tokens in the transcript; the result envelope's
+own figure is 33,045.
