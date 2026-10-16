@@ -120,7 +120,7 @@ is the scoring export `34a65d3f2a57`):
   metric does not render, so it reads UNAVAILABLE and never 0. This check cannot see two arguments of ONE type given in the wrong order;
   the agreements below can.
 - *The fix moves no earlier reading:* systems' weak-spec drive reproduces its own numbers exactly (Adler32 88·83·37/92 · BignumSub
-  132·143·142/156 · Crc32 0·2·0/82, separated 3/3; `drive-weakspec-at-698612e.txt`), and its mutant still goes red (separated 0/3, rc 1;
+  132·143·142/156 · Crc32 0·2·0/82, separated 3/3; `drive-weakspec-at-698612e.txt`), and its mutant still goes red (separated 0/3, STOP-A fires;
   `drive-weakspec-mutant-at-698612e.txt`).
 - *Each comparison can fail:* beside every row below, a spec of the card's type that answers `default` everywhere reads below of/of on that
   task (0 to 25 agreements; the rows' own files). A row whose control could not fail would make the tool exit 1. None did.
@@ -142,8 +142,8 @@ precondition. What the 7 rows add is that the measured values agree with that de
   BignumModN256Alt 57/57 · BignumMul4x8Alt 82/82 · BignumMulP25519Alt 79/79
 ```
 These are the cells for which the metric is NOT forced: no proof bound the spec to the routine. Two of them are the landings the withheld suite
-REJECTED (Murmur3X64_128, Blake2bUpdateMulti). Their specs agree with the reference on every withheld input, so in those two cells the
-**routine** was wrong and the **spec** was right. In all 9, the salt-diet subject wrote a spec that matches the card on every withheld input,
+REJECTED (Murmur3X64_128, Blake2bUpdateMulti). In those two cells the **routine** was wrong, and the **spec** agrees with the reference on every
+withheld input. In all 9, the salt-diet subject wrote a spec that matches the card on every withheld input,
 and the cell failed in the routine or the proof.
 
 **§R3 (iv), RE-READ.** On the 7-cell reading, it now HOLDS IN VALUE: 7 of 7 report a measured spec_strength, each of/of. On the 19-cell reading,
@@ -159,6 +159,8 @@ checks and refuses otherwise. Each one was evaluated from the text the referee j
   exercised, and the same one systems' drive declares.
 - The text evaluated is the referee's own copy of each judged tree, kept with the 10-13 scoring outputs. It was not re-derived from the cell
   repositories this time.
+- Two of the 18 directives are exercised by no cell above: BignumMul's (its x and y are commutative) and SipHash24's (identical to HalfSipHash's,
+  which the 176/176 row confirms). Each is checked only by the stub-shape check.
 - n = 1 per task, one model. A spec agreeing with the card says nothing about the method's effect (§Z9 stands whole).
 - **What this result does NOT say:** that a salt-diet spec cannot be weak. Under a target shape that leaves the result relational (a form
   under consideration, not registered), a proven spec need not pin every output, and this metric is the instrument that would see it.
