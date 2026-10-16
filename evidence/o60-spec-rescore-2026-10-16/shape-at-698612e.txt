@@ -1,0 +1,23 @@
+rescore_spec_o60 shape: lean <lean v4.27.0>
+  Adler32              AVAILABLE
+  BignumModN256Alt     AVAILABLE
+  BignumModadd         AVAILABLE
+  BignumMul            AVAILABLE
+  BignumMul4x8Alt      AVAILABLE
+  BignumMulP25519Alt   AVAILABLE
+  BignumSub            AVAILABLE
+  Blake2bUpdateMulti   AVAILABLE
+  Blake2sUpdateMulti   AVAILABLE
+  Cswap2Vale           AVAILABLE
+  FsubVale             AVAILABLE
+  HalfSipHash          AVAILABLE
+  Lookup3              AVAILABLE
+  Murmur3X64_128       AVAILABLE
+  Murmur3X86_32        AVAILABLE
+  Poly1305Vale         UNAVAILABLE (frame_spec.py: REFUSE: the card's expected layout is per input (`expect`); this metric renders only `<ret> <show…>`, so it reads UNAVAILABLE here, never 0)
+  SipHash24            AVAILABLE
+  WordBytereverse      AVAILABLE
+  WordClz              AVAILABLE
+  Xxh64                AVAILABLE
+VERDICT rows 20 · unavailable 1
+LIMITS: hidden-input comparison only (a spec that agrees on every withheld input reads of/of) · the spec is evaluated inline from Spec.lean's text, not imported from the built cell

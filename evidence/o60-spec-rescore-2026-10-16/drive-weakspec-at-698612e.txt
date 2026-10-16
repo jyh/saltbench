@@ -1,0 +1,24 @@
+drive_weakspec: lean <lean v4.27.0>
+  Adler32    noncomputable noncomputable    UNAVAILABLE (rc 1, 0 of 92 values; <tmp>/SpecEval.lean:35:0: error(lean.dependsOnNoncomputable): failed to compile definition, consider mark)  meets
+  Adler32    ref           ref              92/92  meets
+  Adler32    ref           ref_alt          92/92  meets
+  Adler32    weak          weak_defer32     88/92  meets
+  Adler32    weak          weak_fresh       83/92  meets
+  Adler32    weak          weak_mask        37/92  meets
+  Adler32    SEPARATES
+  BignumSub  noncomputable noncomputable    UNAVAILABLE (rc 1, 0 of 156 values; <tmp>/SpecEval.lean:35:0: error(lean.dependsOnNoncomputable): failed to compile definition, consider mark)  meets
+  BignumSub  ref           ref              156/156  meets
+  BignumSub  ref           ref_alt          156/156  meets
+  BignumSub  weak          weak_fullborrow  132/156  meets
+  BignumSub  weak          weak_p0          143/156  meets
+  BignumSub  weak          weak_zerofill    142/156  meets
+  BignumSub  SEPARATES
+  Crc32      noncomputable noncomputable    UNAVAILABLE (rc 1, 0 of 82 values; <tmp>/SpecEval.lean:35:0: error(lean.dependsOnNoncomputable): failed to compile definition, consider mark)  meets
+  Crc32      ref           ref              82/82  meets
+  Crc32      ref           ref_alt          82/82  meets
+  Crc32      weak          weak_init0       0/82  meets
+  Crc32      weak          weak_msbfirst    2/82  meets
+  Crc32      weak          weak_noxorout    0/82  meets
+  Crc32      SEPARATES
+VERDICT separated 3/3 · rows missing their expectation 0 · STOP-A does not fire
+LIMITS: hidden-input comparison only (a weak spec that agrees on every withheld input reads of/of) · planted from the cards' own ambiguities, which the inputs were written to probe (an upper bound, not a rate) · spec defined inline, not imported from a built cell
