@@ -1,0 +1,10 @@
+rescore_spec_o60 rescore: lean <lean v4.27.0>
+  clbps01  Adler32              92/92      control(default spec) 0/92 can fail
+  clbps18  BignumModadd         99/99      control(default spec) 1/99 can fail
+  clbps19  BignumSub            156/156    control(default spec) 25/156 can fail
+  clbps12  Cswap2Vale           34/34      control(default spec) 0/34 can fail
+  clbps11  FsubVale             171/171    control(default spec) 0/171 can fail
+  clbps14  WordBytereverse      108/108    control(default spec) 1/108 can fail
+  clbps13  WordClz              200/200    control(default spec) 6/200 can fail
+VERDICT rows 7 · unavailable 0
+LIMITS: hidden-input comparison only (a spec that agrees on every withheld input reads of/of) · the spec is evaluated inline from Spec.lean's text, not imported from the built cell

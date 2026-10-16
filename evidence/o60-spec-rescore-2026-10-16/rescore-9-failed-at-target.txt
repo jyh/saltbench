@@ -1,0 +1,12 @@
+rescore_spec_o60 rescore: lean <lean v4.27.0>
+  clbps02  Xxh64                146/146    control(default spec) 1/146 can fail
+  clbps03  Murmur3X86_32        312/312    control(default spec) 0/312 can fail
+  clbps04  Murmur3X64_128       333/333    control(default spec) 0/333 can fail
+  clbps05  Lookup3              316/316    control(default spec) 1/316 can fail
+  clbps07  HalfSipHash          176/176    control(default spec) 0/176 can fail
+  clbps09  Blake2bUpdateMulti   48/48      control(default spec) 0/48 can fail
+  clbps15  BignumModN256Alt     57/57      control(default spec) 0/57 can fail
+  clbps16  BignumMul4x8Alt      82/82      control(default spec) 0/82 can fail
+  clbps17  BignumMulP25519Alt   79/79      control(default spec) 0/79 can fail
+VERDICT rows 9 · unavailable 0
+LIMITS: hidden-input comparison only (a spec that agrees on every withheld input reads of/of) · the spec is evaluated inline from Spec.lean's text, not imported from the built cell

@@ -97,3 +97,68 @@ end lines (`chain-ended.tsv`).
   firing nothing, because the run box's tmux session had died, and was re-fired. The cells were fired one at a time, so no two shared a
   window.
 - The referee's declared limits ride with every verdict above (`table.log`'s LIMITS block, printed by `classify_cell.py --limits`).
+
+---
+
+## ADDENDUM 1 · 2026-10-16 · §R3 (iv) MEASURED IN VALUE: the spec-strength metric over the 16 salt-diet cells whose spec could be evaluated
+*bench (SaltBench lead), on the helm's order of 2026-10-16 (O60 Step A, the campaign's own WRONG-IF; no model call, no cell re-run). Appended, never
+an edit: every line above stands as the 10-13 record. Every number below is read from `evidence/o60-spec-rescore-2026-10-16/`, never typed.*
+
+**WHAT CHANGED, AND WHERE.** Two things in the private harness tree, at bench's commit `698612e` (on systems' Step A drive, `d525400`, whose parent
+is the scoring export `34a65d3f2a57`):
+- the 18 population descriptors that lacked a `spec` directive now carry one, each read from the task's own harness-owned interface (its
+  `SpecShape` gives the argument types, its `Input` the order) and the descriptor's result order. The cell builder drops that line from every
+  cell's view, so no cell, past or future, sees it.
+- the metric's Lean generator carried a `dec` field only as a `Nat`, so a card whose parameter is a fixed-width word (Cswap2Vale's `bit`,
+  HalfSipHash's and SipHash24's `outlen`) could not be evaluated at all: its metric would have read UNAVAILABLE by a type error, not by
+  anything the cell wrote. It now carries the value to the parameter's own type.
+
+**THE CHECKS, each with its file.**
+- *The directives match the cards' signatures:* a stub spec of exactly each task's `SpecShape` is evaluated through each directive.
+  Before the generator fix 16 of 20 are available and 3 fail on the type error named above (`shape-RED-frame_spec-at-d525400.txt`); after it,
+  19 of 20 (`shape-at-698612e.txt`). The 20th, Poly1305Vale, is refused by design: its expected lines are per-input (`expect`), which this
+  metric does not render, so it reads UNAVAILABLE and never 0. This check cannot see two arguments of ONE type given in the wrong order;
+  the agreements below can.
+- *The fix moves no earlier reading:* systems' weak-spec drive reproduces its own numbers exactly (Adler32 88·83·37/92 · BignumSub
+  132·143·142/156 · Crc32 0·2·0/82, separated 3/3; `drive-weakspec-at-698612e.txt`), and its mutant still goes red (separated 0/3, rc 1;
+  `drive-weakspec-mutant-at-698612e.txt`).
+- *Each comparison can fail:* beside every row below, a spec of the card's type that answers `default` everywhere reads below of/of on that
+  task (0 to 25 agreements; the rows' own files). A row whose control could not fail would make the tool exit 1. None did.
+
+**THE 7 ACCEPTED salt-diet landings (`rescore-7-accepted.txt`): 7 of 7 read of/of.**
+```
+  Adler32 92/92 · BignumModadd 99/99 · BignumSub 156/156 · Cswap2Vale 34/34 · FsubVale 171/171 · WordBytereverse 108/108 · WordClz 200/200
+```
+Adler32 and BignumSub reproduce the two values the 10-13 record measured, which is the check that this path is the referee's.
+⛔ **This half was expected and is a consistency reading, not a finding about the subjects.** Under today's target shape (a total function,
+the exact result register and output regions, the precondition fixed by the harness), an ACCEPTED cell has a kernel-checked proof that the
+routine computes its spec, and the routine passed the withheld tests. So its spec MUST agree on every withheld input that meets the
+precondition. What the 7 rows add is that the measured values agree with that derivation.
+
+**THE 9 cells that failed AT TARGET (`rescore-9-failed-at-target.txt`), separable from the commissioned 7 and declared as bench's addition:
+9 of 9 read of/of.**
+```
+  Xxh64 146/146 · Murmur3X86_32 312/312 · Murmur3X64_128 333/333 · Lookup3 316/316 · HalfSipHash 176/176 · Blake2bUpdateMulti 48/48 ·
+  BignumModN256Alt 57/57 · BignumMul4x8Alt 82/82 · BignumMulP25519Alt 79/79
+```
+These are the cells for which the metric is NOT forced: no proof bound the spec to the routine. Two of them are the landings the withheld suite
+REJECTED (Murmur3X64_128, Blake2bUpdateMulti). Their specs agree with the reference on every withheld input, so in those two cells the
+**routine** was wrong and the **spec** was right. In all 9, the salt-diet subject wrote a spec that matches the card on every withheld input,
+and the cell failed in the routine or the proof.
+
+**§R3 (iv), RE-READ.** On the 7-cell reading, it now HOLDS IN VALUE: 7 of 7 report a measured spec_strength, each of/of. On the 19-cell reading,
+16 of 19 do. The other 3 are the SCREEN and COMPILE cells (Blake2sUpdateMulti, Poly1305Vale, SipHash24), which the referee never evaluated
+and which are not re-scored here. Poly1305Vale's metric would read UNAVAILABLE in any case (`expect`).
+
+**THE CAMPAIGN'S WRONG-IF does not fire.** No row needed a cell re-run: every judged `Submission/Spec.lean` imports nothing, which the tool
+checks and refuses otherwise. Each one was evaluated from the text the referee judged, recorded by git blob and sha256 in `spec-lean-blobs.tsv`.
+
+**LIMITS, which ride with every row above.**
+- A finite hidden-input comparison. A spec that agrees on every withheld input reads of/of whether or not it is the card's function.
+- The spec is evaluated INLINE from Spec.lean's text, not imported from the cell's built modules. This is the one part of the referee's path not
+  exercised, and the same one systems' drive declares.
+- The text evaluated is the referee's own copy of each judged tree, kept with the 10-13 scoring outputs. It was not re-derived from the cell
+  repositories this time.
+- n = 1 per task, one model. A spec agreeing with the card says nothing about the method's effect (§Z9 stands whole).
+- **What this result does NOT say:** that a salt-diet spec cannot be weak. Under a target shape that leaves the result relational (a form
+  under consideration, not registered), a proven spec need not pin every output, and this metric is the instrument that would see it.
