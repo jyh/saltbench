@@ -1,0 +1,7 @@
+# OD identity cells, built by build_od_triple_tsv.py from the run's records (harvest/served/escape outputs, chain.log, each cell's ctl/launch.log ARGV and end-1)
+cell	config	n	role	client	argv_model	argv_effort	argv_utc	end_utc	wall_s	run_state	suite	T	output	input	cache_creation	cache_read	list_usd	served_verdict	served_head	served_sidechain	escape_hits
+clbxcp01	FX	1	identity-only	2.1.259	claude-fable-5-1	xhigh	2026-10-17T09:48:24Z	2026-10-17T10:06:55Z	1111	ENDED: LANDED	PASS 6/6	3210879	109347	1309	251840	2848383	8.34	clean:fable51	claude-fable-5-1=113	claude-opus-5=47,claude-sonnet-5=27	0
+clbhcp01	FH	1	identity-only	2.1.259	claude-fable-5-1	high	2026-10-17T10:08:29Z	2026-10-17T10:19:57Z	688	ENDED: LANDED	PASS 6/6	2879746	66273	1528	172620	2639325	5.01	clean:fable51	claude-fable-5-1=87	claude-opus-5=45,claude-sonnet-5=41	0
+clbxcp02	FX	2	matrix	2.1.280	claude-fable-5-1	xhigh	2026-10-17T11:05:53Z	2026-10-17T11:24:24Z	1111	ENDED: LANDED	PASS 6/6	3966280	106224	928	248348	3610780	7.96	clean:fable51	claude-fable-5-1=96	claude-opus-5=50,claude-sonnet-5=46	0
+clbhcp02	FH	2	matrix	2.1.280	claude-fable-5-1	high	2026-10-17T11:26:15Z	2026-10-17T11:38:44Z	749	ENDED: LANDED	PASS 6/6	2381690	62720	986	164006	2153978	4.66	clean:fable51	claude-fable-5-1=87	claude-opus-5=29,claude-sonnet-5=23	0
+clbwcp01	OX	1	matrix	2.1.280	claude-opus-5-5	xhigh	2026-10-17T11:39:38Z	2026-10-17T11:53:08Z	810	ENDED: LANDED	PASS 6/6	4219849	116039	186	288784	3814840	4.79	clean:opus55	claude-opus-5-5=118	claude-opus-5=52,claude-sonnet-5=46	0
