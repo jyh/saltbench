@@ -1619,3 +1619,21 @@ reader's box, so every verdict here is the author's reading of the run's files.
 - **agy T excludes sub-agent conversations: ≥ 15.2 % unmetered on salt-diet, 0.2 % on plain** (`evidence/o57-agy-subagent-unmetered-2026-10-13/`).
   The census reports no token figure, so no count moves here. The limit is recorded because the paper's Tables T1–T4 print Gemini medians
   and salt-diet ÷ plain ratios from that meter, and those ratios are biased LOW (toward salt-diet) by at least that.
+
+# ⚖️ ADDENDUM 36 — **NOT A COUNT ADDENDUM: THE BROWNFIELD GIVENS' REFUTER PASS (desk KT), AND TWO LIMITS ON ABSOLUTE DIFFICULTY. NO CONDITION MOVES.**
+## bench, 2026-10-17, on the helm's routing of desk KT (rec (4): the five frozen givens get the refuter pass a card gets). A non-author (kent) ran it.
+- **The population.** 72 brownfield conditions of record, 18 per model, each consumed the given at saltbench-systems `eacb9ec` for its
+  problem: Crc32 16 · FreeList 16 · LRU 16 · LZW 16 · Paxos 8. By block: Pro L4 4 · Pro L7 14 · Flash L6 4 · Flash L7 13 + §Q2 1 · Sonnet SB 10
+  · SBS 8 · Opus O 10 · OS 8. The export each one was built from (`ecd3924` for L4's LRU and Paxos, which have one blob in all history;
+  `abb7829` · `9bfb6ef` · `2833621` · `eb18e5d` for the rest) carries the `eacb9ec` blob, read at the object. The four Pro L4 FreeList/LZW
+  conditions that consumed the PRE-repair givens are the ones ADDENDUM 6 already reverted. They are not in the 72.
+- **The pass.** Each given is real, reachable through the v3 interface, and leaks no withheld reference. The given's own test results re-drive
+  equal to the record's (tests PASSED by the given: Crc32 1/6 · FreeList 6/7 · LRU 10/16 · LZW 3/8 · Paxos 11/17; the plain reference passes all, as control). Each
+  given differs from its reference by the planted line(s) alone. A disagreement between readers on LRU is resolved toward CLEAN on a
+  measurement of the file's style.
+- **⚠️ LIMIT, ABSOLUTE DIFFICULTY (Crc32, 16 conditions).** The given's doc comment states eight bit-steps above a loop that runs seven. A
+  reader who trusts the comment is pointed at the planted defect. **LIMIT (LZW, 16 conditions):** the given's comment repeats the card. Both are
+  comment/code contradictions that the containment audit passes by construction (the comment is in the reference). Both arms of a condition
+  received the same bytes. So a tell can make the problem easier in absolute terms, and it cannot by itself produce an arm difference.
+  ⚠️ **UNMEASURED:** whether the method changes how closely a subject reads comments, which would let a constant tell interact with the arm.
+- **What this does not change:** no condition's status, no score, no figure. It is a limit that rides beside the Crc32 and LZW brownfield rows.
