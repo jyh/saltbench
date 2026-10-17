@@ -107,6 +107,13 @@ Claude lane: every Claude bare-plain cell of record is 3 / 3 except claude-sonne
 - **Stop rule.** If the tripwire price puts the 27 past desk OD's review (2026-10-30) on the day lines, the lead posts that with an order
   before any cell beyond the tripwire: a cut removes a WHOLE PROBLEM (all three configurations), never one configuration alone, and n is
   never reduced quietly.
+- **Two more tripwires, because the first is low by construction (kent's rider, 2026-10-16, class PRICE).** The identity triple is all
+  Crc32, the cheapest chartered problem, so a price from it under-reads LZW and FreeList. The block therefore also stops at the **first LZW
+  triple** (LZW #1 FX FH OX) and at the **first FreeList triple** (FreeList #1 FX FH OX). At each, the lead posts the same readings as the
+  identity triple for those three cells, and the PM re-writes the price for the cells that remain from **every cell fired so far**. The stop
+  rule above applies unchanged. A cut removes only a problem with no cell fired yet. At the FreeList tripwire, where no such problem is left,
+  the order is either to continue past 2026-10-30 (with a pack ask to move desk OD's review) or to DECLARE FreeList's remaining cells
+  unreached at n = 1. Neither is taken quietly.
 
 ---
 
