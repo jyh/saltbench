@@ -179,24 +179,27 @@ re-read against it. Any public sentence, and any claim about the method, is the 
 ---
 
 ## ⚖️ ADDENDUM 1 — THE RELEASE. APPENDED; all text above, the signature included, untouched.
-**bench (lead), drafted 2026-10-17.** ⛔ **DRAFT: it fires nothing, and every row marked OWED is OWED.** The first cell fires only
+**bench (lead), drafted 2026-10-17.** ⛔ **DRAFT: it fires nothing, and every row marked OWED is OWED.** *(R1.1 named `0d97b68` until R1.7 was built; it now names `811dc09`.)* The first cell fires only
 after every OWED row below is TAKEN and a non-author signs this addendum. Every figure is read from `evidence/od-release-2026-10-17/`.
 
-### R1.1 · §D0 ROW 4, THE EXPORT IS `0d97b68` — ✅ TAKEN 2026-10-17
-saltbench-systems master was fast-forwarded `d398cb0` → `0d97b68073305fe5a99d55a439d0410c49bb7f96` after non-author reads of every commit in
-the range (kent: `d398cb0..20401330`, `20401330..6e9c7ce`, `6e9c7ce..0d97b68`). Contents over `d398cb0`: S1 (`cf0033e`) · the rates rows
-(R1.2) · `cells_account_check.sh` (§D2 4(e), blob `76f59182ad70`, taken ALONE from `0da916f`) · the head-only model tables and the R4 and
-empty-effort arms (R1.3, R1.4). **One sha for all 27 cells, recorded per cell.**
-- **Exported** to the run box under a destination of its own, `--no-toolchain` (the Z chain was live on that box and reads the cargo
-  cache that step rsyncs, so a release must not touch it; the toolchain is checked read-only at the first cell): 374 files, listing
-  sha256/16 `de72b2ce4294cb9c`, 0 withheld-shaped names on either side, the marker written last.
-- **The run-box drive, re-run against this export, not inherited** (`runbox-drive-0d97b68.out`, lane B's `runbox_drive.py` unchanged): marker
-  `0d97b68…` · 375 files (374 + the marker) · 0 withheld/mutants directories · 2 paths carrying the word, both INSTRUMENTS
-  (`check_withheld_leak_v3.py`, as at `bcd2205`, and `withheld_access_census.py`, added since; NAMED from the run box's export itself in
-  `runbox-word-paths-0d97b68.out`, kent's finding: the drive prints only the count) · the five brownfield givens · the export's own
-  `served_models_v3.py` reads 45 of 45 HC1 cells clean as Opus and SUBSTITUTED as Sonnet.
-- **The OD conditions, read from the export** (`served-tables-0d97b68.out`): `fable51` launches `--model claude-fable-5-1`, `opus55`
+### R1.1 · §D0 ROW 4, THE EXPORT IS `811dc09` — ✅ TAKEN 2026-10-17
+saltbench-systems master was fast-forwarded `d398cb0` → `0d97b68` → `811dc09657b47d42c65bba8653c0e7b62f6e69dc`, each step after a non-author
+read of every commit in it (kent: `d398cb0..20401330` · `20401330..6e9c7ce` · `6e9c7ce..0d97b68` · `0d97b68..811dc09`, the last with the suite
+reproduced). Contents over `d398cb0`: S1 (`cf0033e`) · the rates rows (R1.2) · `cells_account_check.sh` (§D2 4(e), blob `76f59182ad70`,
+taken ALONE from `0da916f`) · the head-only model tables, the R4 and empty-effort arms (R1.3, R1.4) · OD's blocks in the stager, fire and
+harvest, with the effort carried by the cell (R1.7). **One sha for all 27 cells, recorded per cell.** `0d97b68` was an interim export and
+fires nothing.
+- **Exported** to the run box under a destination of its own, `--no-toolchain` (the Z chain was live there and reads the cargo cache that
+  step rsyncs; the toolchain is checked read-only at the first cell): 374 files, listing sha256/16 `de72b2ce4294cb9c`, 0 withheld-shaped
+  names on either side, the marker written last (`export-811dc09.out`).
+- **The run-box drive, re-run against this export** (`runbox-drive-811dc09.out`, lane B's `runbox_drive.py` unchanged): marker `811dc09…` ·
+  375 files (374 + the marker) · 0 withheld/mutants directories · 2 paths carrying the word, both INSTRUMENTS, named from the export itself
+  in `runbox-word-paths-811dc09.out` (`check_withheld_leak_v3.py`, as at `bcd2205`; `withheld_access_census.py`, added since; kent's finding:
+  the drive prints only the count) · the five brownfield givens · the export's own `served_models_v3.py` reads 45 of 45 HC1 cells clean
+  as Opus and SUBSTITUTED as Sonnet.
+- **The OD conditions, read from the export** (`served-tables-811dc09.out`): `fable51` launches `--model claude-fable-5-1`, `opus55`
   launches `--model claude-opus-5-5`, every sub-agent row is the Opus table's, rc 0 for both.
+- The `0d97b68` evidence files stay in this directory as the interim export's record.
 
 ### R1.2 · §D2 ITEM 2, THE RATES — ✅ TAKEN 2026-10-17T05:01Z, `VERDICT ALL-EQUAL`, rc 0
 The page `rates.tsv` cites, read as raw bytes (160,503 B, sha256/16 `12219c9d9fe4d5c1`), by two methods. (a) Lane B's `rates_reread.py`,
@@ -239,6 +242,23 @@ that is a SUBSTITUTION (§D7), never a silent re-mapping.
   present (access and refresh non-empty). **Its limit rides with it: the FILE identity, never "a launch will authenticate".** The fire runs it
   as the tool takes it (kent's finding 1), `--refuse <the account named as dead> --expect <the pool the PM names>`.
 - (b) The `declined-subject` row form is quoted from the RESULT template when the RESULT file is opened.
+
+### R1.7 · OD's BLOCKS AND THE EFFORT'S CARRIER — ✅ BUILT (in `811dc09`)
+The stager, fire and harvest knew only lane B's seven blocks, so no OD cell could be staged. `clb_stage.sh`'s block table gains
+`cond · effort · lane` columns and FX · FH · OX rows; `--roots` stays lane B's 64, and `--roots-od` makes exactly OD's 9 roots (three blocks
+× Crc32 · LZW · FreeList × plain). An OD block refuses any other problem or arm before creating anything.
+- ⛔ **THE EFFORT IS A PROPERTY OF THE CELL, NOT OF THE FIRE'S ENVIRONMENT.** `cell-watch.sh` starts the client in a new tmux window whose
+  environment is built from a fixed list that does not carry `CELL_EFFORT`, so an effort exported at fire would never arrive, and every
+  OD cell would have launched at `high` with every check green. The stager writes `ctl/effort`; `cell-claude.sh` reads it, and a SET
+  `CELL_EFFORT` that disagrees HOLDs; `clb_fire.sh` refuses an OD cell whose `ctl/effort` is not its block's, and a lane-B cell carrying
+  one, before anything is driven. Lane-B cells carry none, so their argv is unchanged.
+- Arms: S1(e)/(f) and `clb_stage-od` (six behaviours, `--dry` on a fixture export). Suite 72 / 74, 0 failed, 2 SKIP. Mutants: the stager
+  writes no `ctl/effort` → red on that clause only; the fire's effort check bypassed → red on that clause only.
+- ⚠️ **LIMIT:** the subject can READ its own `ctl/`; whether the Claude fence lets it WRITE `ctl/effort` is not driven. A rewritten file would
+  change a RE-launch's effort, so the RESULT reads each cell's effort from the ARGV line in its launch log, never from `ctl/effort`.
+- ⚠️ **LIMIT (kent's environment finding):** with stdin at `/dev/null` the suite's `probe-sandbox` arm reads 47 / 52 (five runtime arms
+  INDETERMINATE) at this sha and at its parent; with a real stdin it reads 52 / 52. The suite's tallies above were taken with a real stdin.
+  An unattended suite run reads that one arm red while the code is fine; the root cause is not established.
 
 ### R1.6 · THE WITHHELD CENSUS — OWED
 Lane B ADDENDUM 4 §R4.2's census is re-run on the fence of OD's first staged cell (FX · Crc32 · #1), and its table is quoted with the
