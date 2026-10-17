@@ -204,6 +204,10 @@ other row byte-identical); conditions `fable51` and `opus55` in `served_models_v
 them. **F3' is taken on its recommendation: OX's head is `claude-opus-5-5`, the fleet's current Opus.** OX is therefore a NEW baseline,
 not linked to the pilot's `claude-opus-5` cells (kent's R2), and every table says so. If the OX identity cell is served another id,
 that is a SUBSTITUTION (§D7), never a silent re-mapping.
+- ⚠️ **A label that moved with nothing under it (kent's note 2):** in both head tables the `source` cells of `worker-opus` and `reviewer`
+  read *"as head"*. They were copied byte for byte from `models.tsv`, and an arm keeps them that way, so *"head"* there means
+  `models.tsv`'s head, `claude-opus-5`, and NOT the table's own head. No tool parses that column; the arms read `requested` and `served`.
+- **The head id is tied outside its table:** each head table's id must be exactly one row of `rates.tsv` (kent's note 1; mutant red).
 
 ### R1.4 · §D2 ITEM 1 AND ITEM 3 — ✅ BUILT AND DRIVEN ON THE CANDIDATE
 - S1 (item 1): the lead's re-drive on `cf0033e`, 69 / 71 with the hard-wired mutant red on S1(b) only. kent's finding 2 (an EMPTY
