@@ -1627,9 +1627,12 @@ reader's box, so every verdict here is the author's reading of the run's files.
   · SBS 8 · Opus O 10 · OS 8. The export each one was built from (`ecd3924` for L4's LRU and Paxos, which have one blob in all history;
   `abb7829` · `9bfb6ef` · `2833621` · `eb18e5d` for the rest) carries the `eacb9ec` blob, read at the object. The four Pro L4 FreeList/LZW
   conditions that consumed the PRE-repair givens are the ones ADDENDUM 6 already reverted. They are not in the 72.
-- **The pass.** Each given is real, reachable through the v3 interface, and leaks no withheld reference. The given's own test results re-drive
+- **The pass.** Each given is real and reachable through the v3 interface, and NO LEAK of a withheld reference was FOUND by three checks (the
+  code delta against the reference · the tell audit, rc 0 · a search of the givens and addenda for the withheld driver's test names and for
+  withheld/hidden/mutant words); for Paxos the test-name check is PARTIAL (its tests live in `driver_main.rs` and its traces). The given's own test results re-drive
   equal to the record's (tests PASSED by the given: Crc32 1/6 · FreeList 6/7 · LRU 10/16 · LZW 3/8 · Paxos 11/17; the plain reference passes all, as control). Each
-  given differs from its reference by the planted line(s) alone. A disagreement between readers on LRU is resolved toward CLEAN on a
+  given differs from its reference IN CODE (comments stripped) by the planted line(s) alone; the comments and banner also differ, which the tell
+  audit's containment rule covers. A disagreement between readers on LRU is resolved toward CLEAN on a
   measurement of the file's style.
 - **⚠️ LIMIT, ABSOLUTE DIFFICULTY (Crc32, 16 conditions).** The given's doc comment states eight bit-steps above a loop that runs seven. A
   reader who trusts the comment is pointed at the planted defect. **LIMIT (LZW, 16 conditions):** the given's comment repeats the card. Both are
