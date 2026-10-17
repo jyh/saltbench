@@ -376,5 +376,8 @@ substitution, and §D7 had no row for it.
 - ⚠️ **LIMITS:** the three probes are OX's configuration only. FX and FH meet the same probe at their own fires, which gates each launch.
   A GREEN probe keeps no client stderr, so whether 2.1.280 still prints an unknown-model note for `claude-opus-5-5` (a 200k context
   window) is read from OX's own launch and watch logs at the re-run. The binary carries that id 14 times against 0 in 2.1.259.
+  A cell root born AFTER a cell's render remains readable to that cell's subprocesses under this client, as under the old one (a separate
+  open finding). For this triple it is covered only by a per-cell check at harvest: every root born inside the cell's window is listed, and
+  its name is counted in the cell's transcript and logs, with the transcript's size as the control.
   §D3's PM re-price follows the re-run, and nothing beyond the triple fires until it exists.
 - The evidence is in the lead's record at seat commit `f253e0b36`.
