@@ -34,3 +34,13 @@ efd41256026e	the kit run surface
 3f22b6fd27a7	a path into a private-record repo
 4203df158365	a path into a private-record repo
 c6d62fd31b9d	a path into a private-record repo
+# ITEM 11 (systems, 2026-10-16) — the gate learned a path ending AT a private root (saltbench #354's miss). These five
+#   commits' added lines were already on public main and clean under the gate of their day: four frozen-amendment export
+#   destinations and one 09-02 checklist grep pattern naming the seat path. Accepted residue, like row XK's above, on the
+#   non-author read of this change; it does not pre-accept the next. Written by APPENDING: `--history --write-baseline`
+#   REGENERATES this file and drops every annotation above, so it is not used to grow it.
+17e1a1fa188c	a path ending AT a private-record root
+4e08111bdef9	a path ending AT a private-record root
+7b4cbd9166c0	a path ending AT a private-record root
+b70e1d2737b2	a path ending AT a private-record root
+efd41256026e	a path ending AT a private-record root

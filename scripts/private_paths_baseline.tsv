@@ -1,5 +1,9 @@
 # private_paths_baseline.tsv -- ACCEPTED residue for the tree ratchet (check_private_paths.py --tree).
 # file<TAB>line-sha16<TAB>what. Shrink it after a repair with --tree --write-baseline; a growth is a reviewed diff.
+harness/systems-v3/AMENDMENT-ZF-gemini4-argon-2026-10-13.md	038dc121a90780db	a path ending AT a private-record root
+harness/systems-v3/AMENDMENT-ZF-gemini4-argon-2026-10-13.md	89e268d86cf969b1	a path ending AT a private-record root
+harness/systems-v3/AMENDMENT-ZF-gemini4-argon-2026-10-13.md	b4cbcb7a99099d82	a path ending AT a private-record root
+harness/systems-v3/AMENDMENT-specchange-taskshape-2026-09-09.md	ae740b3f87f77c9d	a path ending AT a private-record root
 harness/systems-v3/PREREGISTRATION-matrix-opus-1-2026-09-08.md	8802dff87b03303c	a path into a private-record repo
 harness/systems-v3/RESULT-gemini-level6-2026-09-17.md	db350922dafc95a2	a path into a private-record repo
 harness/systems-v3/l7-retention-decomp.tsv	9d89c8b2b7ea8906	a path into a private-record repo
