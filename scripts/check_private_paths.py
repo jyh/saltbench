@@ -748,6 +748,12 @@ def self_test() -> int:
         ("xk-wt", "tools from /Users/x/" + "saltbench-sys" + "tems-v3-export-2833621" + "/harness"),
         ("xk-wt2", "scorer/walk " + "saltbench-sys" + "tems-v3-gemini-abb7829" + "/harness/systems-v3"),
         ("xk-bs", "at C:" + chr(92) + "saltbench-sys" + "tems-x86r1" + chr(92) + "t.md"),
+        # ⛔ A PATH THAT ENDS *AT* A ROOT (systems, 2026-10-16, the helm's item 11): saltbench #354 carried bench's exact line,
+        #   unflagged beside two flagged twins, because every pattern above wants a CHILD after the root. Split differently again.
+        ("end-host", "studio_export: DONE → <the run box>:~/projects/claude/" + "saltbench-sy" + "stems-v3-export-0d97b68" + " (marker)"),
+        ("end-tilde", "dest ~/projects/claude/" + "saltbench-sy" + "stems-v3-export-906775a" + " · 377 files"),
+        ("end-scp", "pushed to host:" + "saltbench-sy" + "stems-v3" + " tonight"),
+        ("end-url", "https://github.com/jyh/" + "se" + "at" + " is the memory mirror"),
         # ROOTLESS SHAPES (row J, 08/31). Assembled, never spelled.
         ("r-rl-b", "ruled in " + _ROOTLESS[0] + "/2026-08-30-x.md"),
         ("r-rl-f", "the row in " + _ROOTLESS[1] + "/RULING-x.md"),
@@ -792,6 +798,9 @@ def self_test() -> int:
         ("xk-c-public", "see " + "saltbench" + "/harness/systems-v3/x.md"),
         ("xk-c-prose", "the " + "saltbench-sys" + "tems" + " harness runs the cells"),
         ("xk-c-near", "a dir named " + "saltbench-sys" + "temsx" + "/x is not the tree"),
+        # item 11's guard: an owner/repo COORDINATE names a repo, it is not a path, and frozen amendments carry it.
+        ("end-c-coord", "repo: jyh/" + "saltbench-sy" + "stems" + "          not the public repo"),
+        ("end-c-clone", "cd <a clone of jyh/" + "saltbench-sy" + "stems" + ">"),
         ("c-meta", "this gate forbids paths into the private record"),
         # ROOTLESS guards: a bare name stays softened by the ruling; a MID-PATH
         # component of the same ordinary word is the declared consequence of
