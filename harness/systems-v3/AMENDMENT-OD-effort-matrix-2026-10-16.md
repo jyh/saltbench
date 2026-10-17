@@ -280,18 +280,24 @@ no withheld material exists anywhere. The nine OD roots existed before the next 
 
 ---
 
-## ⚖️ ADDENDUM 2 — THE CHAIN IS `clb_chain.v9.sh`, NOT v8 (§D0 row 8). APPENDED; all text above, both signatures included, untouched.
+## ⚖️ ADDENDUM 2 — THE CHAIN IS `clb_chain.v10.sh`, NOT v8 (§D0 row 8). APPENDED; all text above, both signatures included, untouched.
 **bench (lead), 2026-10-17.** Found after ADDENDUM 1 merged, while preparing the identity triple: the registered chain cannot run an OD cell.
 `clb_chain.v8.sh` (sha256/16 `f443719751e7a3ed`) carries a third copy of lane B's block list. Its `ids()` refuses FX · FH · OX as a bad row,
 and it would have checked the served set against an `opus`/`sonnet` condition. It also picks a pool's env file by pool name alone and takes
-it only when `CLB_CFG` names `.claude-account-<pool>`, so it would never read OD's env, whose config dir is the v3 dir R1.6's fence was
-rendered under.
-- **v9** (sha256/16 `dc25a883e741bb5b`) = v8 plus three changes: `ids()` knows FX · FH · OX, and the served-model condition follows the block
-  (FX · FH `fable51`, OX `opus55`); `CLB_CHAIN_ENV_PREFIX` picks `<prefix>-<pool>.env`, so OD's env is chosen by lane and pool
-  (`claude-lane-od-<pool>.env`); a pool's env is taken when its `CLB_CFG` basename is `.claude-account-<pool>` or `.claude-v3-<pool>`, still
-  keyed by the pool's name. Nothing else changes, including the single-instance lock, the day lines, the breaker and the escape scan.
-- **Arms, on the stub box, zero spend** (`arms_v9_od.sh`, v8 against v9): A1 (an FX row: v9 starts, records `cond fable51` and flags no bad row;
-  v8 stops rc 2 on a bad row) and A2 (OD's env by prefix with the v3 dir: v9 resolves it; v8 refuses the start, rc 9) are LOAD-BEARING;
-  C1 (lane B's form) is a control, green on both. v8's own arms hold on v9: `arms_v7.sh` load-bearing 4 of 4, `arms_v8_lock.sh` 1 of 1, no
-  control broken.
-- R1.5 (a)'s sha is therefore `dc25a883e741bb5b` for OD's cells. v8 stays the lane-B chain, which is now finished.
+it only when `CLB_CFG` names `.claude-account-<pool>`. It builds the harvest's transcript slug from a HARD-CODED `.claude-account-<pool>`,
+so an OD cell's served-set read would look in the wrong config dir.
+- **v10** (sha256/16 `ad5cf236ebbaceb0`) = v8 plus four changes, in two steps (v9 `dc25a883e741bb5b`, then v10 on kent's defect in v9):
+  (1) `ids()` knows FX · FH · OX, and the served-model condition follows the block (FX · FH `fable51`, OX `opus55`); (2) `CLB_CHAIN_ENV_PREFIX`
+  picks `<prefix>-<pool>.env`, so OD's env is chosen by lane and pool (`claude-lane-od-<pool>.env`), and the prefix is validated; (3) a pool's
+  env is taken when its `CLB_CFG` basename is `.claude-account-<pool>` or `.claude-v3-<pool>`, still keyed by the pool's name (OD stays on
+  the v3 dir that R1.6's fence was rendered under); (4) `pool_cfg`, which builds the served-set read's slug, returns the config dir THAT ENV
+  FILE names, never a hard-coded one. Nothing else changes, including the single-instance lock, the day lines, the breaker and the escape scan.
+- **Arms, on the stub box, zero spend.** `arms_v9_od.sh` (v8 against v10): A1 (an FX row: v10 starts, records `cond fable51`, no bad row;
+  v8 stops rc 2) and A2 (OD's env by prefix with the v3 dir: v10 resolves it; v8 refuses the start, rc 9) are LOAD-BEARING; C1 (lane B's
+  form) is a control, green on both. `arms_v10_harvest.sh` (v9 against v10), which reaches the HARVEST past START: H1 (an FX row under OD's
+  env) has the served check's `--slug` under the fixture pool's v3 config dir on v10 and under its account config dir on v9, so it is LOAD-BEARING; HC (lane
+  B's form) reads the account config dir on both, a control. v8's own arms hold on v10: `arms_v7.sh` load-bearing 4 of 4, `arms_v8_lock.sh`
+  1 of 1, no control broken.
+- ⚠️ **LIMIT:** every arm runs against a stub run box. The real run box's first measurement is the identity triple, and the served-set read
+  of each identity cell is the check that this change reaches the right directory.
+- R1.5 (a)'s sha is therefore `ad5cf236ebbaceb0` for OD's cells. v8 stays the lane-B chain, which is now finished.
