@@ -1,0 +1,65 @@
+LANE: AGY · streams read: 340 · glob: ~/cells-*
+
+ARM        CLASS        SEEN     DONE   FAILED ERRSTATE      HAZARD        MIX
+UNKNOWN    git           300      146      146        4      100.0%      13.2%
+UNKNOWN    python3       126       58       56        5       96.6%       5.6%
+UNKNOWN    other        1840      851      370       68       43.5%      81.2%
+plain      git          1980      986      803        4       81.4%      28.3%
+plain      python3       344      172      169        0       98.3%       4.9%
+plain      other        4676     2284     1397       54       61.2%      66.8%
+salt-diet  git          4459     2227     2153        2       96.7%      19.0%
+salt-diet  python3      2870     1434     1418        0       98.9%      12.3%
+salt-diet  other       16083     8011     2435       26       30.4%      68.7%
+
+⚠️  HAZARD is failures/DONE WITHIN the class — a class-local rate, so it cannot be inflated by
+   an arm merely running more commands. MIX is the class's share of that arm's invocations.
+⚠️  ERRSTATE counts invocations the METER CANNOT SEE AT ALL (state=ERROR, no output): they are
+   in neither its numerator nor its denominator. Reported, never folded in.
+⛔ 43 ROOT(S) GAVE arm=UNKNOWN AND ARE NAMED HERE, never left as a total — an arm this
+   function does not know is a DESIGN arm it was not told about, not a bad name:
+     cells-PRESERVED-stage1-2026-09-11T0540Z
+     cells-agy-battery
+     cells-agy-lzw-1
+     cells-agy-pilot
+     cells-agy-pilot2
+     cells-agy-shakedown
+     cells-agy-turnloop
+     cells-agy-wave2
+     cells-agy-widen-crc32
+     cells-b4-lzw-saltdiet.SUPERSEDED-unfired-2026-09-13T2304Z
+     cells-dry-2026-09-04
+     cells-gemini-bfprobe
+     cells-gemini-buildpeak-crc32
+     cells-gf-topup-1
+     cells-l5-crc32-plain.HALTED-flash-turn-stall-2026-09-14T1703Z
+     cells-l5-crc32-plain.VOID-WRONG-MODEL-pro-under-flash-ids-2026-09-14T1617Z
+     cells-l8u-dry-noshell-20260920T164330Z
+     cells-l8u-dry-noshell-20260921T013757Z
+     cells-l8u-dry-pass-20260920T164330Z
+     cells-l8u-dry-pass-20260921T013757Z
+     cells-l8u-dryrender-20260920T164330Z
+     cells-l8u-dryrender-20260921T013757Z
+     cells-l8u-dryrender-20260921T020049Z
+     cells-matrix1
+     cells-mq-sbprobe2
+     cells-n3-topup
+     cells-n3-topup.superseded-2cell-154442
+     cells-p2-1
+     cells-p2-opus-specchange
+     cells-p2b-opus-specchange
+     cells-probe-sonnet46-turnloop.STOOD-DOWN-battery-red-no-model-call-2026-09-14T1845Z
+     cells-r3-fencearm-20260912T150850Z
+     cells-s1-lzw-sd-topup
+     cells-s2-lzw-sd-stmt
+     cells-s2b-lzw-sd-stmt
+     cells-s2e-lzw-sd-stmt
+     cells-s2f-lzw-sd-stmt
+     cells-s2g-lzw-sd-stmt
+     cells-specchange-1
+     cells-specchange-2
+     cells-srt-probe
+     cells-stmt-2026-09-09
+     cells-stmt-free-2026-09-09
+⚠️  A HAZARD MARKED `!` IS BELOW n=20 AND IS AN ANECDOTE, NOT A RATE — read its DONE column.
+⛔ THIS FILE DECLARES NO ARM EFFECT. Two rates differing is not an effect; the reading is the
+   lead's, and the confounds NR names are not discharged by this census.

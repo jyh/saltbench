@@ -1,0 +1,19 @@
+LANE: AGY · streams read: 24 · glob: ~/cells-b4-*
+
+ARM        CLASS        SEEN     DONE   FAILED ERRSTATE      HAZARD        MIX
+plain      git            58       29       29        0      100.0%      16.6%
+plain      other         292      146      103        0       70.5%      83.4%
+salt-diet  git           604      302      292        0       96.7%      16.7%
+salt-diet  python3       542      271      261        0       96.3%      15.0%
+salt-diet  other        2478     1239      296        0       23.9%      68.4%
+
+⚠️  HAZARD is failures/DONE WITHIN the class — a class-local rate, so it cannot be inflated by
+   an arm merely running more commands. MIX is the class's share of that arm's invocations.
+⚠️  ERRSTATE counts invocations the METER CANNOT SEE AT ALL (state=ERROR, no output): they are
+   in neither its numerator nor its denominator. Reported, never folded in.
+⛔ 1 ROOT(S) GAVE arm=UNKNOWN AND ARE NAMED HERE, never left as a total — an arm this
+   function does not know is a DESIGN arm it was not told about, not a bad name:
+     cells-b4-lzw-saltdiet.SUPERSEDED-unfired-2026-09-13T2304Z
+⚠️  A HAZARD MARKED `!` IS BELOW n=20 AND IS AN ANECDOTE, NOT A RATE — read its DONE column.
+⛔ THIS FILE DECLARES NO ARM EFFECT. Two rates differing is not an effect; the reading is the
+   lead's, and the confounds NR names are not discharged by this census.
