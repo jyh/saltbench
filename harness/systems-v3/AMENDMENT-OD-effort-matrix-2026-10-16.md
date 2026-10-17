@@ -175,3 +175,51 @@ Lane B §Q9's per-cell list, less its brownfield columns, plus: the configuratio
 output tokens beside T · list-USD at its dated rate · the Fable-meter reading per Fable cell · the account-check line. ⇒ **A RESULT file with
 §D4's rows per configuration per problem and §D5's predictions MET / NOT MET / NOT SCORED, merged with a non-author read.** Desk OD is
 re-read against it. Any public sentence, and any claim about the method, is the Captain's.
+
+---
+
+## ⚖️ ADDENDUM 1 — THE RELEASE. APPENDED; all text above, the signature included, untouched.
+**bench (lead), drafted 2026-10-17.** ⛔ **DRAFT: it fires nothing, and every row marked OWED is OWED.** The first cell fires only
+after every OWED row below is TAKEN and a non-author signs this addendum. Every figure is read from `evidence/od-release-2026-10-17/`.
+
+### R1.1 · §D0 ROW 4, THE EXPORT — OWED (candidate named)
+Candidate: saltbench-systems `6e9c7ce7c0c6` = `backup/master` `d398cb0` + S1 (`cf0033e`) + the rates rows (§D2 item 2) +
+`cells_account_check.sh` (§D2 4(e), blob `76f59182ad70`, taken ALONE from `0da916f`) + the head-only model tables, the R4 arm and the empty-
+effort HOLD (R1.3, R1.4). TAKEN when master is fast-forwarded to it after a non-author read. The run-box drive of the export (its marker,
+file count and served-model read) is re-run against that sha, never inherited.
+
+### R1.2 · §D2 ITEM 2, THE RATES — ✅ TAKEN 2026-10-17T05:01Z, `VERDICT ALL-EQUAL`, rc 0
+The page `rates.tsv` cites, read as raw bytes (160,503 B, sha256/16 `12219c9d9fe4d5c1`), by two methods. (a) Lane B's `rates_reread.py`,
+copied with ONE change, the Opus 5.5 row added to its model list (`rates-reread.diff`): four served ids EQUAL (`rates-reread.out`); the
+master table without that row reads `MISSING`, rc 1. (b) A parse of every page row against every table row: 15 rows, 0 mismatches.
+- ⚠️ **P5's ratio, against the id actually served.** Opus 5.5 is priced BELOW Opus 5 (input $4, output $20, cache read $0.20). P5 states
+  its ratios against `claude-opus-5`. Against `claude-opus-5-5`, Fable is 2.5 × on input, cache writes and output and 1.25 × on cache
+  read, so P5's clause *"less per cache read"* is FALSE for that id. P5's prediction (if CAP-COST binds at all, it binds FX first) is
+  unchanged and stronger.
+
+### R1.3 · §D0 ROW 1c AND F3', THE HEAD — BUILT; THE ID IS OWED TO THE IDENTITY READ
+The registration said only the head row moves, and the harness had no way to move it: `cells_bin.sh` linked only the Opus and Sonnet
+tables. Built: `models-head-fable51.tsv` and `models-head-opus55.tsv`, each `models.tsv` with the head row replaced (an arm proves every
+other row byte-identical); conditions `fable51` and `opus55` in `served_models_v3.py`, so `check-cell` (§D3's identity read) can name
+them. **F3' is taken on its recommendation: OX's head is `claude-opus-5-5`, the fleet's current Opus.** OX is therefore a NEW baseline,
+not linked to the pilot's `claude-opus-5` cells (kent's R2), and every table says so. If the OX identity cell is served another id,
+that is a SUBSTITUTION (§D7), never a silent re-mapping.
+
+### R1.4 · §D2 ITEM 1 AND ITEM 3 — ✅ BUILT AND DRIVEN ON THE CANDIDATE
+- S1 (item 1): the lead's re-drive on `cf0033e`, 69 / 71 with the hard-wired mutant red on S1(b) only. kent's finding 2 (an EMPTY
+  `CELL_EFFORT` read as `high`, so FX would fire as FH) is fixed as `${CELL_EFFORT-high}` with arm S1(d), red first.
+- Item 3, the dry launch (kent's R4): an arm in the suite. FX (`fable51`, xhigh) · FH (`fable51`, high) · OX (`opus55`, xhigh) through the
+  DRY stub print ARGV lines that carry `--model <the table's head> --effort <e>` and are identical outside those two tokens. Mutant (the
+  launcher hard-wires the model): red on that arm only. **The pinned client** (lane B's 2.1.259, sha256/16 `884baa38fe1a624b`, read on the
+  run box) lists `--effort <level> (low, medium, high, xhigh, max)`.
+- The suite on the candidate: 71 / 73, 0 failed, 2 SKIP (the placebo arms, declared).
+
+### R1.5 · §D2 ITEM 4 — OWED, READ AT RELEASE ON THE RUN BOX
+- (d) `credgate identity` per pool, and the status line's `strands=`, quoted here.
+- (e) The account check as the tool takes it (kent's finding 1: §D0 row 9's `--expect` alone exits 64):
+  `cells_account_check.sh --refuse <the account named as dead> --expect <the cells' account>`, run from the EXPORT, verdict line quoted.
+- (a) `clb_chain.v8.sh`'s sha256/16, quoted. (b) The `declined-subject` row form, quoted from the RESULT template.
+
+### R1.6 · THE WITHHELD CENSUS — OWED
+Lane B ADDENDUM 4 §R4.2's census is re-run on the fence of OD's first staged cell (FX · Crc32 · #1), and its table is quoted with the
+FLOOR limit beside it.
