@@ -2,6 +2,12 @@
 ## bench (SaltBench lead), 2026-10-02. Objectives O57 · O60. Commissioned at council 2026-10-02 (minute seat `865727d77`, item 9).
 ## Statistics: evidence. Text: paper. A refuter pass precedes any wave run under it.
 ## ⛔ DRAFT, REVISION 4. Not a registration. It binds nothing until a dated AMENDMENT freezes it (§D8), before the first model call of the run it governs.
+## ✅ STATUS 2026-10-16, AT THE MERGE (kent's read rider 1): this design was APPLIED to O60's run 1 by `harness/systems-x86/REGISTRATION-O60-scalar-population-
+## 2026-10-01.md` ADDENDUM 10 (its §D2 classes, §D4 battery and §D5 harvest; §D8 items 1, 3 and 4 MET, item 1 with a deviation declared there), and the 40
+## cells were scored on 10-13 (`RESULT-O60-scalar-population-2026-10-13.md`). The `primary` producer was refuted on record before run 1's rates were
+## read (the same registration: "THE PRIMARY OUTCOME IS NOT COMPUTED ON RUN 1'S ROWS UNTIL ITS PRODUCER IS REFUTED"). "Binds nothing" therefore
+## means: no amendment freezes it for the NEXT run; that run's own §D8 amendment does. Two facts below are true of 10-02 and not today: §D3's three
+## spec-directive tasks (#350 made it 18 descriptors), and every line-number citation (living files drift; the phrase beside each is the durable form).
 ## Revision 2 took refuter round 1 (blob `e1c16efcfd3f`, PR #311 comment 5955729360). Revision 3 takes round 2 (blob `32b0d219b6a4`, comment 5956165509).
 ## Revision 4 writes the text to the code that rounds 3 and 4 (comments 5957499892 · 5958937235) and the helm's rulings of 2026-10-02 produced: harvest saltbench-systems ≥ `d71edf0`, the cut ≥ `a3db4f6`.
 ## Revision 4 then took the refuter pass on itself (round 5: systems' Fable refuter on blob `d7134b44d479` + O60 ADDENDUM 10 `cccaedd2be4a`,
