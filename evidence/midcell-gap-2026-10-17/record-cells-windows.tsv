@@ -1,0 +1,555 @@
+#model	problem	field	arm	extras	cell	root	status	resolved_by	born_inside
+claude-opus-5	Crc32	greenfield	plain	none	2d0c65b3	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Crc32	greenfield	plain	none	746d7d4e	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Crc32	greenfield	plain	none	a87b7740	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Crc32	greenfield	salt-diet	none	11165871	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Crc32	greenfield	salt-diet	none	3e95075c	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Crc32	greenfield	salt-diet	none	57a33630	cells-matrix1	CLEAN	map root=	
+claude-opus-5	FreeList	greenfield	plain	none	188f422b	cells-matrix1	CLEAN	map root=	
+claude-opus-5	FreeList	greenfield	plain	none	9cb8ce96	cells-matrix1	EXPOSED	map root=	cells-placebo
+claude-opus-5	FreeList	greenfield	plain	none	n301free	cells-n3-topup	EXPOSED	map root=	cells-agy-shakedown
+claude-opus-5	FreeList	greenfield	salt-diet	none	161b5a34	cells-matrix1	EXPOSED	single	cells-placebo
+claude-opus-5	FreeList	greenfield	salt-diet	none	de4de8f2	cells-matrix1	CLEAN	single	
+claude-opus-5	FreeList	greenfield	salt-diet	none	f33c7e65	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LRU	greenfield	plain	none	3bdcbcbd	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LRU	greenfield	plain	none	69e8c2c4	cells-matrix1	EXPOSED	map root=	cells-placebo
+claude-opus-5	LRU	greenfield	plain	none	n302lru	cells-n3-topup	EXPOSED	single	cells-agy-shakedown
+claude-opus-5	LRU	greenfield	salt-diet	none	011fe22f	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LRU	greenfield	salt-diet	none	b71994e3	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LRU	greenfield	salt-diet	none	d6b53ee4	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LZW	greenfield	plain	none	93323249	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LZW	greenfield	plain	none	c34012e0	cells-matrix1	CLEAN	single	
+claude-opus-5	LZW	greenfield	plain	none	d91f137b	cells-matrix1	CLEAN	single	
+claude-opus-5	LZW	greenfield	salt-diet	none	18fb3eed	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LZW	greenfield	salt-diet	none	7ac56e4e	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LZW	greenfield	salt-diet	none	eb558398	cells-matrix1	CLEAN	single	
+claude-opus-5	Paxos	greenfield	plain	none	60a056e6	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Paxos	greenfield	plain	none	f6462d47	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Paxos	greenfield	plain	none	n303paxo	cells-n3-topup	EXPOSED	single	cells-agy-shakedown
+claude-opus-5	Paxos	greenfield	salt-diet	none	6fc49f7c	cells-matrix1	CLEAN	single	
+claude-opus-5	Paxos	greenfield	salt-diet	none	9e6c8d4d	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Paxos	greenfield	salt-diet	none	b22d1000	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Crc32	greenfield	plain	statement	st01crc3	cells-stmt-2026-09-09	CLEAN	single	
+claude-opus-5	Crc32	greenfield	plain	statement	st02crc3	cells-stmt-2026-09-09	CLEAN	single	
+claude-opus-5	Crc32	greenfield	plain	statement	st03crc3	cells-stmt-2026-09-09	CLEAN	single	
+claude-opus-5	Crc32	greenfield	salt-diet	statement	st04crc3	cells-stmt-2026-09-09	CLEAN	single	
+claude-opus-5	Crc32	greenfield	salt-diet	statement	st05crc3	cells-stmt-2026-09-09	CLEAN	single	
+claude-opus-5	Crc32	greenfield	salt-diet	statement	st06crc3	cells-stmt-2026-09-09	CLEAN	single	
+claude-opus-5	LRU	greenfield	plain	statement	st07lru	cells-stmt-2026-09-09	CLEAN	single	
+claude-opus-5	LRU	greenfield	plain	statement	st08lru	cells-stmt-2026-09-09	CLEAN	single	
+claude-opus-5	LRU	greenfield	plain	statement	st09lru	cells-stmt-2026-09-09	CLEAN	single	
+claude-opus-5	LRU	greenfield	salt-diet	statement	st10lru	cells-stmt-2026-09-09	CLEAN	single	
+claude-opus-5	LRU	greenfield	salt-diet	statement	st11lru	cells-stmt-2026-09-09	CLEAN	single	
+claude-opus-5	LRU	greenfield	salt-diet	statement	st12lru	cells-stmt-2026-09-09	CLEAN	single	
+claude-opus-5	FreeList	greenfield	plain	statement	sf01free	cells-stmt-free-2026-09-09	CLEAN	single	
+claude-opus-5	FreeList	greenfield	plain	statement	sf02free	cells-stmt-free-2026-09-09	CLEAN	single	
+claude-opus-5	FreeList	greenfield	plain	statement	sf03free	cells-stmt-free-2026-09-09	CLEAN	single	
+claude-opus-5	FreeList	greenfield	salt-diet	statement	sf04free	cells-stmt-free-2026-09-09	CLEAN	single	
+claude-opus-5	FreeList	greenfield	salt-diet	statement	sf05free	cells-stmt-free-2026-09-09	CLEAN	single	
+claude-opus-5	FreeList	greenfield	salt-diet	statement	sf06free	cells-stmt-free-2026-09-09	CLEAN	single	
+claude-opus-5	LZW	greenfield	plain	statement	22ee7d33	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LZW	greenfield	plain	statement	922d1ff0	cells-matrix1	CLEAN	single	
+claude-opus-5	LZW	greenfield	plain	statement	f795e96f	cells-matrix1	CLEAN	single	
+claude-opus-5	LZW	greenfield	salt-diet	statement	6d58f1ec	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LZW	greenfield	salt-diet	statement	9aca67c5	cells-matrix1	EXPOSED	single	cells-placebo
+claude-opus-5	LZW	greenfield	salt-diet	statement	f5f66c47	cells-matrix1	CLEAN	single	
+claude-opus-5	Crc32	greenfield	plain	spec-change	2d0c65b3	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Crc32	greenfield	plain	spec-change	746d7d4e	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Crc32	greenfield	plain	spec-change	a87b7740	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Crc32	greenfield	salt-diet	spec-change	11165871	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Crc32	greenfield	salt-diet	spec-change	3e95075c	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Crc32	greenfield	salt-diet	spec-change	57a33630	cells-matrix1	CLEAN	map root=	
+claude-opus-5	FreeList	greenfield	plain	spec-change	188f422b	cells-matrix1	CLEAN	map root=	
+claude-opus-5	FreeList	greenfield	plain	spec-change	9cb8ce96	cells-matrix1	EXPOSED	map root=	cells-placebo
+claude-opus-5	FreeList	greenfield	salt-diet	spec-change	f33c7e65	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LRU	greenfield	plain	spec-change	3bdcbcbd	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LRU	greenfield	plain	spec-change	69e8c2c4	cells-matrix1	EXPOSED	map root=	cells-placebo
+claude-opus-5	LRU	greenfield	salt-diet	spec-change	011fe22f	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LRU	greenfield	salt-diet	spec-change	b71994e3	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LRU	greenfield	salt-diet	spec-change	d6b53ee4	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LZW	greenfield	plain	spec-change	93323249	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LZW	greenfield	plain	spec-change	22ee7d33	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LZW	greenfield	salt-diet	spec-change	7ac56e4e	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LZW	greenfield	salt-diet	spec-change	18fb3eed	cells-matrix1	CLEAN	map root=	
+claude-opus-5	LZW	greenfield	salt-diet	spec-change	6d58f1ec	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Paxos	greenfield	plain	spec-change	60a056e6	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Paxos	greenfield	plain	spec-change	f6462d47	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Paxos	greenfield	salt-diet	spec-change	9e6c8d4d	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Paxos	greenfield	salt-diet	spec-change	b22d1000	cells-matrix1	CLEAN	map root=	
+claude-opus-5	Crc32	brownfield	plain	none	clbocp01	cells-clb-o-crc32-plain	CLEAN	single	
+claude-opus-5	Crc32	brownfield	plain	none	clbocp02	cells-clb-o-crc32-plain	CLEAN	single	
+claude-opus-5	Crc32	brownfield	plain	none	clbocp03	cells-clb-o-crc32-plain	CLEAN	single	
+claude-opus-5	Crc32	brownfield	salt-diet	none	clbocs01	cells-clb-o-crc32-saltdiet	CLEAN	single	
+claude-opus-5	Crc32	brownfield	salt-diet	none	clbocs02	cells-clb-o-crc32-saltdiet	CLEAN	single	
+claude-opus-5	Crc32	brownfield	salt-diet	none	clbocs03	cells-clb-o-crc32-saltdiet	CLEAN	single	
+claude-opus-5	FreeList	brownfield	plain	none	clbofp01	cells-clb-o-freelist-plain	CLEAN	single	
+claude-opus-5	FreeList	brownfield	plain	none	clbofp02	cells-clb-o-freelist-plain	CLEAN	single	
+claude-opus-5	FreeList	brownfield	plain	none	clbofp03	cells-clb-o-freelist-plain	CLEAN	single	
+claude-opus-5	FreeList	brownfield	salt-diet	none	clbofs01	cells-clb-o-freelist-saltdiet	CLEAN	single	
+claude-opus-5	FreeList	brownfield	salt-diet	none	clbofs02	cells-clb-o-freelist-saltdiet	CLEAN	single	
+claude-opus-5	FreeList	brownfield	salt-diet	none	clbofs03	cells-clb-o-freelist-saltdiet	CLEAN	single	
+claude-opus-5	LRU	brownfield	plain	none	clbolp01	cells-clb-o-lru-plain	CLEAN	single	
+claude-opus-5	LRU	brownfield	plain	none	clbolp02	cells-clb-o-lru-plain	CLEAN	single	
+claude-opus-5	LRU	brownfield	plain	none	clbolp03	cells-clb-o-lru-plain	CLEAN	single	
+claude-opus-5	LRU	brownfield	salt-diet	none	clbols01	cells-clb-o-lru-saltdiet	CLEAN	single	
+claude-opus-5	LRU	brownfield	salt-diet	none	clbols02	cells-clb-o-lru-saltdiet	CLEAN	single	
+claude-opus-5	LRU	brownfield	salt-diet	none	clbols03	cells-clb-o-lru-saltdiet	CLEAN	single	
+claude-opus-5	Paxos	brownfield	plain	none	clbopp01	cells-clb-o-paxos-plain	CLEAN	single	
+claude-opus-5	Paxos	brownfield	plain	none	clbopp02	cells-clb-o-paxos-plain	CLEAN	single	
+claude-opus-5	Paxos	brownfield	plain	none	clbopp03	cells-clb-o-paxos-plain	CLEAN	single	
+claude-opus-5	Paxos	brownfield	salt-diet	none	clbops01	cells-clb-o-paxos-saltdiet	CLEAN	single	
+claude-opus-5	Paxos	brownfield	salt-diet	none	clbops02	cells-clb-o-paxos-saltdiet	CLEAN	single	
+claude-opus-5	Paxos	brownfield	salt-diet	none	clbops03	cells-clb-o-paxos-saltdiet	CLEAN	single	
+claude-opus-5	LZW	brownfield	plain	none	clbozp01	cells-clb-o-lzw-plain	CLEAN	single	
+claude-opus-5	LZW	brownfield	plain	none	clbozp02	cells-clb-o-lzw-plain	CLEAN	single	
+claude-opus-5	LZW	brownfield	plain	none	clbozp03	cells-clb-o-lzw-plain	CLEAN	single	
+claude-opus-5	LZW	brownfield	salt-diet	none	clbozs01	cells-clb-o-lzw-saltdiet	CLEAN	single	
+claude-opus-5	LZW	brownfield	salt-diet	none	clbozs02	cells-clb-o-lzw-saltdiet	CLEAN	single	
+claude-opus-5	LZW	brownfield	salt-diet	none	clbozs03	cells-clb-o-lzw-saltdiet	CLEAN	single	
+claude-opus-5	Crc32	brownfield	plain	statement	clbtcp01	cells-clb-os-crc32-plain	CLEAN	single	
+claude-opus-5	Crc32	brownfield	plain	statement	clbtcp02	cells-clb-os-crc32-plain	CLEAN	single	
+claude-opus-5	Crc32	brownfield	plain	statement	clbtcp03	cells-clb-os-crc32-plain	CLEAN	single	
+claude-opus-5	Crc32	brownfield	salt-diet	statement	clbtcs01	cells-clb-os-crc32-saltdiet	CLEAN	single	
+claude-opus-5	Crc32	brownfield	salt-diet	statement	clbtcs02	cells-clb-os-crc32-saltdiet	CLEAN	single	
+claude-opus-5	Crc32	brownfield	salt-diet	statement	clbtcs03	cells-clb-os-crc32-saltdiet	CLEAN	single	
+claude-opus-5	FreeList	brownfield	plain	statement	clbtfp01	cells-clb-os-freelist-plain	CLEAN	single	
+claude-opus-5	FreeList	brownfield	plain	statement	clbtfp02	cells-clb-os-freelist-plain	CLEAN	single	
+claude-opus-5	FreeList	brownfield	plain	statement	clbtfp03	cells-clb-os-freelist-plain	CLEAN	single	
+claude-opus-5	FreeList	brownfield	salt-diet	statement	clbtfs01	cells-clb-os-freelist-saltdiet	CLEAN	single	
+claude-opus-5	FreeList	brownfield	salt-diet	statement	clbtfs02	cells-clb-os-freelist-saltdiet	CLEAN	single	
+claude-opus-5	FreeList	brownfield	salt-diet	statement	clbtfs03	cells-clb-os-freelist-saltdiet	CLEAN	single	
+claude-opus-5	LRU	brownfield	plain	statement	clbtlp01	cells-clb-os-lru-plain	CLEAN	single	
+claude-opus-5	LRU	brownfield	plain	statement	clbtlp02	cells-clb-os-lru-plain	CLEAN	single	
+claude-opus-5	LRU	brownfield	plain	statement	clbtlp03	cells-clb-os-lru-plain	CLEAN	single	
+claude-opus-5	LRU	brownfield	salt-diet	statement	clbtls01	cells-clb-os-lru-saltdiet	CLEAN	single	
+claude-opus-5	LRU	brownfield	salt-diet	statement	clbtls02	cells-clb-os-lru-saltdiet	CLEAN	single	
+claude-opus-5	LRU	brownfield	salt-diet	statement	clbtls03	cells-clb-os-lru-saltdiet	CLEAN	single	
+claude-opus-5	LZW	brownfield	plain	statement	clbtzp01	cells-clb-os-lzw-plain	CLEAN	single	
+claude-opus-5	LZW	brownfield	plain	statement	clbtzp02	cells-clb-os-lzw-plain	CLEAN	single	
+claude-opus-5	LZW	brownfield	plain	statement	clbtzp03	cells-clb-os-lzw-plain	CLEAN	single	
+claude-opus-5	LZW	brownfield	salt-diet	statement	clbtzs01	cells-clb-os-lzw-saltdiet	CLEAN	single	
+claude-opus-5	LZW	brownfield	salt-diet	statement	clbtzs02	cells-clb-os-lzw-saltdiet	CLEAN	single	
+claude-opus-5	LZW	brownfield	salt-diet	statement	clbtzs03	cells-clb-os-lzw-saltdiet	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	plain	none	clbgcp01	cells-clb-sg-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	plain	none	clbgcp02	cells-clb-sg-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	plain	none	clbgcp03	cells-clb-sg-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	salt-diet	none	clbgcs01	cells-clb-sg-crc32-saltdiet	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	salt-diet	none	clbgcs02	cells-clb-sg-crc32-saltdiet	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	salt-diet	none	clbgcs03	cells-clb-sg-crc32-saltdiet	CLEAN	single	
+claude-sonnet-5	FreeList	greenfield	plain	none	clbgfp01	cells-clb-sg-freelist-plain	EXPOSED	single	cells-l7-lru-pro-plain-stmt-bf
+claude-sonnet-5	FreeList	greenfield	plain	none	clbgfp02	cells-clb-sg-freelist-plain	EXPOSED	single	cells-l7-lru-pro-salt-stmt-bf
+claude-sonnet-5	FreeList	greenfield	plain	none	clbgfp03	cells-clb-sg-freelist-plain	CLEAN	single	
+claude-sonnet-5	FreeList	greenfield	salt-diet	none	clbgfs01	cells-clb-sg-freelist-saltdiet	CLEAN	single	
+claude-sonnet-5	FreeList	greenfield	salt-diet	none	clbgfs02	cells-clb-sg-freelist-saltdiet	CLEAN	single	
+claude-sonnet-5	FreeList	greenfield	salt-diet	none	clbgfs03	cells-clb-sg-freelist-saltdiet	EXPOSED	single	cells-l7-freelist-flash-plain-stmt-bf,cells-l7-freelist-flash-salt-stmt-bf
+claude-sonnet-5	LRU	greenfield	plain	none	clbglp02	cells-clb-sg-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	plain	none	clbglp03	cells-clb-sg-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	salt-diet	none	clbgls01	cells-clb-sg-lru-saltdiet	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	salt-diet	none	clbgls02	cells-clb-sg-lru-saltdiet	EXPOSED	single	cells-l7-freelist-pro-salt-stmt-bf-tripwire-a2
+claude-sonnet-5	LRU	greenfield	salt-diet	none	clbgls03	cells-clb-sg-lru-saltdiet	CLEAN	single	
+claude-sonnet-5	Paxos	greenfield	plain	none	clbgpp01	cells-clb-sg-paxos-plain	EXPOSED	single	cells-l7-freelist-pro-salt-stmt-bf-b
+claude-sonnet-5	Paxos	greenfield	plain	none	clbgpp02	cells-clb-sg-paxos-plain	CLEAN	single	
+claude-sonnet-5	Paxos	greenfield	plain	none	clbgpp03	cells-clb-sg-paxos-plain	CLEAN	single	
+claude-sonnet-5	Paxos	greenfield	salt-diet	none	clbgps01	cells-clb-sg-paxos-saltdiet	EXPOSED	single	cells-l7-freelist-pro-salt-stmt-bf-b,cells-l7-lru-pro-plain-stmt-bf
+claude-sonnet-5	Paxos	greenfield	salt-diet	none	clbgps02	cells-clb-sg-paxos-saltdiet	CLEAN	single	
+claude-sonnet-5	Paxos	greenfield	salt-diet	none	clbgps03	cells-clb-sg-paxos-saltdiet	EXPOSED	single	cells-l7-lzw-pro-plain-stmt-bf,cells-l7-lzw-pro-salt-stmt-bf
+claude-sonnet-5	LZW	greenfield	plain	none	clbgzp01	cells-clb-sg-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	greenfield	plain	none	clbgzp02	cells-clb-sg-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	greenfield	plain	none	clbgzp03	cells-clb-sg-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	greenfield	salt-diet	none	clbgzs01	cells-clb-sg-lzw-saltdiet	CLEAN	single	
+claude-sonnet-5	LZW	greenfield	salt-diet	none	clbgzs02	cells-clb-sg-lzw-saltdiet	EXPOSED	single	cells-l7-freelist-flash-plain-stmt-bf,cells-l7-freelist-flash-salt-stmt-bf
+claude-sonnet-5	LZW	greenfield	salt-diet	none	clbgzs03	cells-clb-sg-lzw-saltdiet	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	plain	statement	clbscp01	cells-clb-ss-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	plain	statement	clbscp02	cells-clb-ss-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	plain	statement	clbscp03	cells-clb-ss-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	salt-diet	statement	clbscs01	cells-clb-ss-crc32-saltdiet	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	salt-diet	statement	clbscs02	cells-clb-ss-crc32-saltdiet	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	salt-diet	statement	clbscs03	cells-clb-ss-crc32-saltdiet	CLEAN	single	
+claude-sonnet-5	FreeList	greenfield	plain	statement	clbsfp01	cells-clb-ss-freelist-plain	CLEAN	single	
+claude-sonnet-5	FreeList	greenfield	plain	statement	clbsfp02	cells-clb-ss-freelist-plain	CLEAN	single	
+claude-sonnet-5	FreeList	greenfield	plain	statement	clbsfp03	cells-clb-ss-freelist-plain	CLEAN	single	
+claude-sonnet-5	FreeList	greenfield	salt-diet	statement	clbsfs01	cells-clb-ss-freelist-saltdiet	EXPOSED	single	cells-l7-lzw-flash-plain-stmt-bf
+claude-sonnet-5	FreeList	greenfield	salt-diet	statement	clbsfs02	cells-clb-ss-freelist-saltdiet	EXPOSED	single	cells-l7-crc32-flash-plain-stmt-bf,cells-l7-crc32-flash-salt-bare-bf,cells-l7-crc32-flash-salt-stmt-bf
+claude-sonnet-5	FreeList	greenfield	salt-diet	statement	clbsfs03	cells-clb-ss-freelist-saltdiet	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	plain	statement	clbslp01	cells-clb-ss-lru-plain	EXPOSED	single	cells-l7-lru-flash-plain-stmt-bf
+claude-sonnet-5	LRU	greenfield	plain	statement	clbslp02	cells-clb-ss-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	plain	statement	clbslp03	cells-clb-ss-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	salt-diet	statement	clbsls01	cells-clb-ss-lru-saltdiet	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	salt-diet	statement	clbsls02	cells-clb-ss-lru-saltdiet	EXPOSED	single	cells-l7-lru-flash-salt-stmt-bf
+claude-sonnet-5	LRU	greenfield	salt-diet	statement	clbsls03	cells-clb-ss-lru-saltdiet	EXPOSED	single	cells-l7-crc32-flash-plain-bare-bf
+claude-sonnet-5	LZW	greenfield	plain	statement	clbszp01	cells-clb-ss-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	greenfield	plain	statement	clbszp02	cells-clb-ss-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	greenfield	plain	statement	clbszp03	cells-clb-ss-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	greenfield	salt-diet	statement	clbszs01	cells-clb-ss-lzw-saltdiet	CLEAN	single	
+claude-sonnet-5	LZW	greenfield	salt-diet	statement	clbszs02	cells-clb-ss-lzw-saltdiet	EXPOSED	single	cells-l7-crc32-flash-plain-stmt-bf,cells-l7-crc32-flash-salt-stmt-bf
+claude-sonnet-5	LZW	greenfield	salt-diet	statement	clbszs03	cells-clb-ss-lzw-saltdiet	CLEAN	single	
+claude-sonnet-5	Crc32	brownfield	plain	statement	clbucp01	cells-clb-sbs-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	brownfield	plain	statement	clbucp02	cells-clb-sbs-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	brownfield	plain	statement	clbucp03	cells-clb-sbs-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	brownfield	salt-diet	statement	clbucs01	cells-clb-sbs-crc32-saltdiet	CLEAN	single	
+claude-sonnet-5	Crc32	brownfield	salt-diet	statement	clbucs02	cells-clb-sbs-crc32-saltdiet	CLEAN	single	
+claude-sonnet-5	Crc32	brownfield	salt-diet	statement	clbucs03	cells-clb-sbs-crc32-saltdiet	CLEAN	single	
+claude-sonnet-5	FreeList	brownfield	plain	statement	clbufp01	cells-clb-sbs-freelist-plain	CLEAN	single	
+claude-sonnet-5	FreeList	brownfield	plain	statement	clbufp02	cells-clb-sbs-freelist-plain	CLEAN	single	
+claude-sonnet-5	FreeList	brownfield	plain	statement	clbufp03	cells-clb-sbs-freelist-plain	CLEAN	single	
+claude-sonnet-5	FreeList	brownfield	salt-diet	statement	clbufs01	cells-clb-sbs-freelist-saltdiet	CLEAN	single	
+claude-sonnet-5	FreeList	brownfield	salt-diet	statement	clbufs02	cells-clb-sbs-freelist-saltdiet	CLEAN	single	
+claude-sonnet-5	FreeList	brownfield	salt-diet	statement	clbufs03	cells-clb-sbs-freelist-saltdiet	CLEAN	single	
+claude-sonnet-5	LRU	brownfield	plain	statement	clbulp01	cells-clb-sbs-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	brownfield	plain	statement	clbulp02	cells-clb-sbs-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	brownfield	plain	statement	clbulp03	cells-clb-sbs-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	brownfield	salt-diet	statement	clbuls01	cells-clb-sbs-lru-saltdiet	CLEAN	single	
+claude-sonnet-5	LRU	brownfield	salt-diet	statement	clbuls02	cells-clb-sbs-lru-saltdiet	CLEAN	single	
+claude-sonnet-5	LRU	brownfield	salt-diet	statement	clbuls03	cells-clb-sbs-lru-saltdiet	CLEAN	single	
+claude-sonnet-5	LZW	brownfield	plain	statement	clbuzp01	cells-clb-sbs-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	brownfield	plain	statement	clbuzp02	cells-clb-sbs-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	brownfield	plain	statement	clbuzp03	cells-clb-sbs-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	brownfield	salt-diet	statement	clbuzs01	cells-clb-sbs-lzw-saltdiet	CLEAN	single	
+claude-sonnet-5	LZW	brownfield	salt-diet	statement	clbuzs02	cells-clb-sbs-lzw-saltdiet	CLEAN	single	
+claude-sonnet-5	LZW	brownfield	salt-diet	statement	clbuzs03	cells-clb-sbs-lzw-saltdiet	CLEAN	single	
+claude-sonnet-5	Crc32	brownfield	plain	none	clbbcp01	cells-clb-sb-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	brownfield	plain	none	clbbcp02	cells-clb-sb-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	brownfield	plain	none	clbbcp03	cells-clb-sb-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	brownfield	salt-diet	none	clbbcs01	cells-clb-sb-crc32-saltdiet	EXPOSED	single	cells-l7-crc32-pro-salt-stmt-bf-a2
+claude-sonnet-5	Crc32	brownfield	salt-diet	none	clbbcs02	cells-clb-sb-crc32-saltdiet	CLEAN	single	
+claude-sonnet-5	Crc32	brownfield	salt-diet	none	clbbcs03	cells-clb-sb-crc32-saltdiet	EXPOSED	single	cells-l7-crc32-flash-plain-bare-bf
+claude-sonnet-5	FreeList	brownfield	plain	none	clbbfp01	cells-clb-sb-freelist-plain	CLEAN	single	
+claude-sonnet-5	FreeList	brownfield	plain	none	clbbfp02	cells-clb-sb-freelist-plain	CLEAN	single	
+claude-sonnet-5	FreeList	brownfield	plain	none	clbbfp03	cells-clb-sb-freelist-plain	EXPOSED	single	cells-l7-crc32-pro-salt-stmt-bf.DISCARDED-503-2026-09-19T15:36:40Z
+claude-sonnet-5	FreeList	brownfield	salt-diet	none	clbbfs01	cells-clb-sb-freelist-saltdiet	EXPOSED	single	cells-l7-crc32-pro-plain-bare-bf,cells-l7-crc32-pro-salt-bare-bf
+claude-sonnet-5	FreeList	brownfield	salt-diet	none	clbbfs02	cells-clb-sb-freelist-saltdiet	EXPOSED	single	cells-l7-crc32-pro-plain-stmt-bf,cells-l7-crc32-pro-salt-stmt-bf.DISCARDED-503-2026-09-19T15:36:40Z
+claude-sonnet-5	FreeList	brownfield	salt-diet	none	clbbfs03	cells-clb-sb-freelist-saltdiet	CLEAN	single	
+claude-sonnet-5	LRU	brownfield	plain	none	clbblp01	cells-clb-sb-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	brownfield	plain	none	clbblp02	cells-clb-sb-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	brownfield	plain	none	clbblp03	cells-clb-sb-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	brownfield	salt-diet	none	clbbls01	cells-clb-sb-lru-saltdiet	EXPOSED	single	cells-l7-lru-flash-plain-stmt-bf
+claude-sonnet-5	LRU	brownfield	salt-diet	none	clbbls02	cells-clb-sb-lru-saltdiet	CLEAN	single	
+claude-sonnet-5	LRU	brownfield	salt-diet	none	clbbls03	cells-clb-sb-lru-saltdiet	EXPOSED	single	cells-l7-lzw-flash-plain-stmt-bf
+claude-sonnet-5	Paxos	brownfield	plain	none	clbbpp01	cells-clb-sb-paxos-plain	CLEAN	single	
+claude-sonnet-5	Paxos	brownfield	plain	none	clbbpp02	cells-clb-sb-paxos-plain	EXPOSED	single	cells-l7-lzw-flash-salt-stmt-bf
+claude-sonnet-5	Paxos	brownfield	plain	none	clbbpp03	cells-clb-sb-paxos-plain	CLEAN	single	
+claude-sonnet-5	Paxos	brownfield	salt-diet	none	clbbps01	cells-clb-sb-paxos-saltdiet	EXPOSED	single	cells-l7-lzw-flash-salt-stmt-bf
+claude-sonnet-5	Paxos	brownfield	salt-diet	none	clbbps02	cells-clb-sb-paxos-saltdiet	EXPOSED	single	cells-l7-crc32-pro-plain-bare-bf,cells-l7-crc32-pro-salt-bare-bf
+claude-sonnet-5	Paxos	brownfield	salt-diet	none	clbbps03	cells-clb-sb-paxos-saltdiet	EXPOSED	single	cells-l7-crc32-pro-plain-stmt-bf
+claude-sonnet-5	LZW	brownfield	plain	none	clbbzp01	cells-clb-sb-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	brownfield	plain	none	clbbzp02	cells-clb-sb-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	brownfield	plain	none	clbbzp03	cells-clb-sb-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	brownfield	salt-diet	none	clbbzs01	cells-clb-sb-lzw-saltdiet	CLEAN	single	
+claude-sonnet-5	LZW	brownfield	salt-diet	none	clbbzs02	cells-clb-sb-lzw-saltdiet	EXPOSED	single	cells-l7-crc32-pro-salt-stmt-bf-a2
+claude-sonnet-5	LZW	brownfield	salt-diet	none	clbbzs03	cells-clb-sb-lzw-saltdiet	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	plain	spec-change	clbccp01	cells-clb-sc-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	plain	spec-change	clbccp02	cells-clb-sc-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	plain	spec-change	clbccp03	cells-clb-sc-crc32-plain	CLEAN	single	
+claude-sonnet-5	Crc32	greenfield	salt-diet	spec-change	clbccs01	cells-clb-sc-crc32-saltdiet	EXPOSED	single	cells-l8-freelist-pro-plain-sc
+claude-sonnet-5	Crc32	greenfield	salt-diet	spec-change	clbccs02	cells-clb-sc-crc32-saltdiet	EXPOSED	single	cells-l8-freelist-pro-salt-sc
+claude-sonnet-5	Crc32	greenfield	salt-diet	spec-change	clbccs03	cells-clb-sc-crc32-saltdiet	CLEAN	single	
+claude-sonnet-5	FreeList	greenfield	plain	spec-change	clbcfp01	cells-clb-sc-freelist-plain	CLEAN	single	
+claude-sonnet-5	FreeList	greenfield	plain	spec-change	clbcfp02	cells-clb-sc-freelist-plain	EXPOSED	single	cells-l8-paxos-pro-salt-sc
+claude-sonnet-5	FreeList	greenfield	plain	spec-change	clbcfp03	cells-clb-sc-freelist-plain	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	plain	spec-change	clbclp01	cells-clb-sc-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	plain	spec-change	clbclp02	cells-clb-sc-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	plain	spec-change	clbclp03	cells-clb-sc-lru-plain	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	salt-diet	spec-change	clbcls01	cells-clb-sc-lru-saltdiet	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	salt-diet	spec-change	clbcls02	cells-clb-sc-lru-saltdiet	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	salt-diet	spec-change	clbcls03	cells-clb-sc-lru-saltdiet	CLEAN	single	
+claude-sonnet-5	Paxos	greenfield	plain	spec-change	clbcpp01	cells-clb-sc-paxos-plain	EXPOSED	single	cells-l8-lru-flash-plain-sc-tripwire
+claude-sonnet-5	Paxos	greenfield	plain	spec-change	clbcpp02	cells-clb-sc-paxos-plain	CLEAN	single	
+claude-sonnet-5	Paxos	greenfield	plain	spec-change	clbcpp03	cells-clb-sc-paxos-plain	CLEAN	single	
+claude-sonnet-5	LZW	greenfield	plain	spec-change	clbczp01	cells-clb-sc-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	greenfield	plain	spec-change	clbczp02	cells-clb-sc-lzw-plain	CLEAN	single	
+claude-sonnet-5	LZW	greenfield	plain	spec-change	clbczp03	cells-clb-sc-lzw-plain	CLEAN	single	
+gemini-3.1-pro-high	Crc32	greenfield	plain	none	s3cp01	cells-s3-crc32-plain	EXPOSED	single	cells-s3-crc32-plain-stmt.ABORTED-unfired-2026-09-11T1642Z
+gemini-3.1-pro-high	Crc32	greenfield	plain	none	s3cp02	cells-s3-crc32-plain	EXPOSED	single	cells-s3-crc32-plain-stmt.ABORTED-unfired-2026-09-11T1642Z
+gemini-3.1-pro-high	Crc32	greenfield	plain	none	s3cp03	cells-s3-crc32-plain	EXPOSED	single	cells-s3-crc32-plain-stmt.ABORTED-unfired-2026-09-11T1642Z
+gemini-3.1-pro-high	Crc32	greenfield	salt-diet	none	s3cs01	cells-s3-crc32-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	Crc32	greenfield	salt-diet	none	s3cs02	cells-s3-crc32-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	Crc32	greenfield	salt-diet	none	s3cs03	cells-s3-crc32-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	plain	none	s3lp01	cells-s3-lru-plain	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	plain	none	s3lp02	cells-s3-lru-plain	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	plain	none	s3lp03	cells-s3-lru-plain	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	salt-diet	none	s3ls01	cells-s3-lru-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	salt-diet	none	s3ls02	cells-s3-lru-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	salt-diet	none	s3ls03	cells-s3-lru-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	plain	none	s3fp01	cells-s3-freelist-plain	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	salt-diet	none	s3fs01	cells-s3-freelist-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	salt-diet	none	s3fs02	cells-s3-freelist-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	salt-diet	none	s3fs03	cells-s3-freelist-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	Paxos	greenfield	plain	none	s3pp01	cells-s3-paxos-plain	CLEAN	single	
+gemini-3.1-pro-high	Paxos	greenfield	plain	none	s3pp02	cells-s3-paxos-plain	CLEAN	single	
+gemini-3.1-pro-high	Paxos	greenfield	plain	none	s3pp03	cells-s3-paxos-plain	CLEAN	single	
+gemini-3.1-pro-high	Paxos	greenfield	salt-diet	none	s3ps01	cells-s3-paxos-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	Paxos	greenfield	salt-diet	none	s3ps02	cells-s3-paxos-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	Paxos	greenfield	salt-diet	none	s3ps03	cells-s3-paxos-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	Crc32	greenfield	plain	statement	s3cq01	cells-s3-crc32-plain-stmt	CLEAN	dead-suffix rule	
+gemini-3.1-pro-high	Crc32	greenfield	plain	statement	s3cq02	cells-s3-crc32-plain-stmt	CLEAN	dead-suffix rule	
+gemini-3.1-pro-high	Crc32	greenfield	plain	statement	s3cq03	cells-s3-crc32-plain-stmt	CLEAN	dead-suffix rule	
+gemini-3.1-pro-high	Crc32	greenfield	salt-diet	statement	s3ct01	cells-s3-crc32-saltdiet-stmt	CLEAN	dead-suffix rule	
+gemini-3.1-pro-high	Crc32	greenfield	salt-diet	statement	s3ct02	cells-s3-crc32-saltdiet-stmt	CLEAN	dead-suffix rule	
+gemini-3.1-pro-high	LRU	greenfield	plain	statement	s3lq01	cells-s3-lru-plain-stmt	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	plain	statement	s3lq02	cells-s3-lru-plain-stmt	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	plain	statement	s3lq03	cells-s3-lru-plain-stmt	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	salt-diet	statement	s3lt01	cells-s3-lru-saltdiet-stmt	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	salt-diet	statement	s3lt02	cells-s3-lru-saltdiet-stmt	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	salt-diet	statement	s3lt03	cells-s3-lru-saltdiet-stmt	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	plain	statement	s3fq01	cells-s3-freelist-plain-stmt	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	plain	statement	s3fq02	cells-s3-freelist-plain-stmt	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	salt-diet	statement	s3ft01	cells-s3-freelist-saltdiet-stmt	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	salt-diet	statement	s3ft02	cells-s3-freelist-saltdiet-stmt	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	salt-diet	statement	s3ft03	cells-s3-freelist-saltdiet-stmt	CLEAN	single	
+gemini-3.1-pro-high	LRU	brownfield	plain	none	b4lrp01	cells-b4-lru-plain	CLEAN	single	
+gemini-3.1-pro-high	LRU	brownfield	plain	none	b4lrp02	cells-b4-lru-plain	CLEAN	single	
+gemini-3.1-pro-high	LRU	brownfield	plain	none	b4lrp03	cells-b4-lru-plain	CLEAN	single	
+gemini-3.1-pro-high	LRU	brownfield	salt-diet	none	b4lrs01	cells-b4-lru-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	LRU	brownfield	salt-diet	none	b4lrs02	cells-b4-lru-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	LRU	brownfield	salt-diet	none	b4lrs03	cells-b4-lru-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	Paxos	brownfield	plain	none	b4pp01	cells-b4-paxos-plain	CLEAN	single	
+gemini-3.1-pro-high	Paxos	brownfield	plain	none	b4pp02	cells-b4-paxos-plain	CLEAN	single	
+gemini-3.1-pro-high	Paxos	brownfield	plain	none	b4pp03	cells-b4-paxos-plain	CLEAN	single	
+gemini-3.1-pro-high	Paxos	brownfield	salt-diet	none	b4ps01	cells-b4-paxos-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	Paxos	brownfield	salt-diet	none	b4ps02	cells-b4-paxos-saltdiet	CLEAN	single	
+gemini-3.1-pro-high	Paxos	brownfield	salt-diet	none	b4ps03	cells-b4-paxos-saltdiet	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	plain	none	l5cp01	cells-l5-crc32-plain	CLEAN	measured: its ctl logs read T 3993025 = RESULT-gemini-flash-level5-2026-09-15.md:30; the -a1 copy reads T 4526170	
+gemini-3.8-flash-high	Crc32	greenfield	plain	none	l5cp02	cells-l5-crc32-plain	CLEAN	dead-suffix rule	
+gemini-3.8-flash-high	Crc32	greenfield	plain	none	l5cp03	cells-l5-crc32-plain	CLEAN	dead-suffix rule	
+gemini-3.8-flash-high	Crc32	greenfield	salt-diet	none	l5cs01	cells-l5-crc32-saltdiet	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	salt-diet	none	l5cs02	cells-l5-crc32-saltdiet	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	salt-diet	none	l5cs03	cells-l5-crc32-saltdiet	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	plain	none	l5fp01	cells-l5-freelist-plain	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	plain	none	l5fp02	cells-l5-freelist-plain	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	plain	none	l5fp03	cells-l5-freelist-plain	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	salt-diet	none	l5fs01	cells-l5-freelist-saltdiet	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	salt-diet	none	l5fs02	cells-l5-freelist-saltdiet	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	salt-diet	none	l5fs03	cells-l5-freelist-saltdiet	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	plain	none	l5lp01	cells-l5-lru-plain	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	plain	none	l5lp02	cells-l5-lru-plain	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	plain	none	l5lp03	cells-l5-lru-plain	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	salt-diet	none	l5lsra301	cells-l5-lru-saltdiet-refire-a3	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	salt-diet	none	l5lsra302	cells-l5-lru-saltdiet-refire-a3	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	salt-diet	none	l5lsra303	cells-l5-lru-saltdiet-refire-a3	CLEAN	single	
+gemini-3.8-flash-high	Paxos	greenfield	plain	none	l5ppr01	cells-l5-paxos-plain-refire	CLEAN	single	
+gemini-3.8-flash-high	Paxos	greenfield	plain	none	l5ppr02	cells-l5-paxos-plain-refire	CLEAN	single	
+gemini-3.8-flash-high	Paxos	greenfield	plain	none	l5ppr03	cells-l5-paxos-plain-refire	EXPOSED	single	cells-hc1-freelist-plain
+gemini-3.8-flash-high	Paxos	greenfield	salt-diet	none	l5psra201	cells-l5-paxos-saltdiet-refire-a2	CLEAN	single	
+gemini-3.8-flash-high	Paxos	greenfield	salt-diet	none	l5psra202	cells-l5-paxos-saltdiet-refire-a2	CLEAN	single	
+gemini-3.8-flash-high	Paxos	greenfield	salt-diet	none	l5psra203	cells-l5-paxos-saltdiet-refire-a2	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	plain	statement	l5cq01	cells-l5-crc32-plain-stmt	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	plain	statement	l5cq02	cells-l5-crc32-plain-stmt	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	plain	statement	l5cq03	cells-l5-crc32-plain-stmt	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	salt-diet	statement	l5ct01	cells-l5-crc32-saltdiet-stmt	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	salt-diet	statement	l5ct02	cells-l5-crc32-saltdiet-stmt	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	salt-diet	statement	l5ct03	cells-l5-crc32-saltdiet-stmt	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	plain	statement	l5fq01	cells-l5-freelist-plain-stmt	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	plain	statement	l5fq02	cells-l5-freelist-plain-stmt	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	plain	statement	l5fq03	cells-l5-freelist-plain-stmt	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	salt-diet	statement	l5ft01	cells-l5-freelist-saltdiet-stmt	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	salt-diet	statement	l5ft02	cells-l5-freelist-saltdiet-stmt	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	salt-diet	statement	l5ft03	cells-l5-freelist-saltdiet-stmt	EXPOSED	single	cells-hc1-lru-plain
+gemini-3.8-flash-high	LRU	greenfield	plain	statement	l5lq01	cells-l5-lru-plain-stmt	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	plain	statement	l5lq02	cells-l5-lru-plain-stmt	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	plain	statement	l5lq03	cells-l5-lru-plain-stmt	EXPOSED	single	cells-hc1-lru-placebo,cells-hc1-lru-saltdiet
+gemini-3.8-flash-high	LRU	greenfield	salt-diet	statement	l5lt01	cells-l5-lru-saltdiet-stmt	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	salt-diet	statement	l5lt02	cells-l5-lru-saltdiet-stmt	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	salt-diet	statement	l5lt03	cells-l5-lru-saltdiet-stmt	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	plain	none	l6vgpp01	cells-l6v-lzw-pro-plain-bare	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	plain	none	l6vgpp02	cells-l6v-lzw-pro-plain-bare	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	plain	none	l6vgpp03	cells-l6v-lzw-pro-plain-bare	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	salt-diet	none	l6vgps01	cells-l6v-lzw-pro-salt-bare	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	salt-diet	none	l6vgps02	cells-l6v-lzw-pro-salt-bare	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	salt-diet	none	l6vgps03	cells-l6v-lzw-pro-salt-bare	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	plain	statement	l6uspq01	cells-l6u-lzw-pro-plain-stmt	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	plain	statement	l6vspb01	cells-l6v-lzw-pro-plain-stmt-b	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	plain	statement	l6vspb02	cells-l6v-lzw-pro-plain-stmt-b	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	salt-diet	statement	l6vspt01	cells-l6v-lzw-pro-salt-stmt	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	salt-diet	statement	l6vspt02	cells-l6v-lzw-pro-salt-stmt	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	salt-diet	statement	l6vspt03	cells-l6v-lzw-pro-salt-stmt	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	plain	none	l6vgfp01	cells-l6v-lzw-flash-plain-bare	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	plain	none	l6vgfp02	cells-l6v-lzw-flash-plain-bare	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	plain	none	l6vgfp03	cells-l6v-lzw-flash-plain-bare	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	salt-diet	none	l6vgfs01	cells-l6v-lzw-flash-salt-bare	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	salt-diet	none	l6vgfs02	cells-l6v-lzw-flash-salt-bare	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	salt-diet	none	l6vgfs03	cells-l6v-lzw-flash-salt-bare	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	plain	statement	l6vsfq01	cells-l6v-lzw-flash-plain-stmt	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	plain	statement	l6vsfq02	cells-l6v-lzw-flash-plain-stmt	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	plain	statement	l6vsfq03	cells-l6v-lzw-flash-plain-stmt	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	salt-diet	statement	l6vsft01	cells-l6v-lzw-flash-salt-stmt	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	salt-diet	statement	l6vsft02	cells-l6v-lzw-flash-salt-stmt	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	salt-diet	statement	l6vsft03	cells-l6v-lzw-flash-salt-stmt	CLEAN	single	
+gemini-3.8-flash-high	LRU	brownfield	plain	none	l6vblp01	cells-l6v-lru-flash-plain-bf	CLEAN	single	
+gemini-3.8-flash-high	LRU	brownfield	plain	none	l6vblp02	cells-l6v-lru-flash-plain-bf	CLEAN	single	
+gemini-3.8-flash-high	LRU	brownfield	plain	none	l6vblp03	cells-l6v-lru-flash-plain-bf	CLEAN	single	
+gemini-3.8-flash-high	LRU	brownfield	salt-diet	none	l6vbls01	cells-l6v-lru-flash-salt-bf	CLEAN	single	
+gemini-3.8-flash-high	LRU	brownfield	salt-diet	none	l6vbls02	cells-l6v-lru-flash-salt-bf	CLEAN	single	
+gemini-3.8-flash-high	LRU	brownfield	salt-diet	none	l6vbls03	cells-l6v-lru-flash-salt-bf	CLEAN	single	
+gemini-3.8-flash-high	Paxos	brownfield	plain	none	l6vbpp01	cells-l6v-paxos-flash-plain-bf	CLEAN	single	
+gemini-3.8-flash-high	Paxos	brownfield	plain	none	l6vbpp02	cells-l6v-paxos-flash-plain-bf	CLEAN	single	
+gemini-3.8-flash-high	Paxos	brownfield	plain	none	l6vbpp03	cells-l6v-paxos-flash-plain-bf	CLEAN	single	
+gemini-3.8-flash-high	Paxos	brownfield	salt-diet	none	l6vbps01	cells-l6v-paxos-flash-salt-bf	CLEAN	single	
+gemini-3.8-flash-high	Paxos	brownfield	salt-diet	none	l6vbps02	cells-l6v-paxos-flash-salt-bf	CLEAN	single	
+gemini-3.8-flash-high	Paxos	brownfield	salt-diet	none	l6vbps03	cells-l6v-paxos-flash-salt-bf	CLEAN	single	
+gemini-3.8-flash-high	Crc32	brownfield	plain	none	l7cfbp01	cells-l7-crc32-flash-plain-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	Crc32	brownfield	plain	none	l7cfbp02	cells-l7-crc32-flash-plain-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	Crc32	brownfield	plain	none	l7cfbp03	cells-l7-crc32-flash-plain-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	Crc32	brownfield	salt-diet	none	l7cfbs01	cells-l7-crc32-flash-salt-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	Crc32	brownfield	salt-diet	none	l7cfbs02	cells-l7-crc32-flash-salt-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	Crc32	brownfield	salt-diet	none	l7cfbs03	cells-l7-crc32-flash-salt-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	Crc32	brownfield	plain	statement	l7cfsp01	cells-l7-crc32-flash-plain-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	Crc32	brownfield	plain	statement	l7cfsp02	cells-l7-crc32-flash-plain-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	Crc32	brownfield	plain	statement	l7cfsp03	cells-l7-crc32-flash-plain-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	Crc32	brownfield	salt-diet	statement	l7cfss01	cells-l7-crc32-flash-salt-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	Crc32	brownfield	salt-diet	statement	l7cfssq01	cells-l7-crc32-flash-salt-stmt-bf-q2	CLEAN	single	
+gemini-3.8-flash-high	Crc32	brownfield	salt-diet	statement	l7cfssq02	cells-l7-crc32-flash-salt-stmt-bf-q2	CLEAN	single	
+gemini-3.1-pro-high	Crc32	brownfield	plain	none	l7cpbp01	cells-l7-crc32-pro-plain-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	Crc32	brownfield	plain	none	l7cpbp02	cells-l7-crc32-pro-plain-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	Crc32	brownfield	plain	none	l7cpbp03	cells-l7-crc32-pro-plain-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	Crc32	brownfield	salt-diet	none	l7cpbs01	cells-l7-crc32-pro-salt-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	Crc32	brownfield	salt-diet	none	l7cpbs02	cells-l7-crc32-pro-salt-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	Crc32	brownfield	salt-diet	none	l7cpbs03	cells-l7-crc32-pro-salt-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	Crc32	brownfield	plain	statement	l7cpsp01	cells-l7-crc32-pro-plain-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	Crc32	brownfield	plain	statement	l7cpsp02	cells-l7-crc32-pro-plain-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	Crc32	brownfield	plain	statement	l7cpsp03	cells-l7-crc32-pro-plain-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	Crc32	brownfield	salt-diet	statement	l7cpssa201	cells-l7-crc32-pro-salt-stmt-bf-a2	CLEAN	single	
+gemini-3.1-pro-high	Crc32	brownfield	salt-diet	statement	l7cpssa202	cells-l7-crc32-pro-salt-stmt-bf-a2	CLEAN	single	
+gemini-3.1-pro-high	Crc32	brownfield	salt-diet	statement	l7cpssa203	cells-l7-crc32-pro-salt-stmt-bf-a2	CLEAN	single	
+gemini-3.8-flash-high	FreeList	brownfield	plain	none	l7nffp01	cells-l7-freelist-flash-plain-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	FreeList	brownfield	plain	none	l7nffp02	cells-l7-freelist-flash-plain-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	FreeList	brownfield	plain	none	l7nffp03	cells-l7-freelist-flash-plain-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	FreeList	brownfield	salt-diet	none	l7nffs01	cells-l7-freelist-flash-salt-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	FreeList	brownfield	salt-diet	none	l7nffs02	cells-l7-freelist-flash-salt-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	FreeList	brownfield	salt-diet	none	l7nffs03	cells-l7-freelist-flash-salt-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	LZW	brownfield	plain	none	l7nfzp01	cells-l7-lzw-flash-plain-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	LZW	brownfield	plain	none	l7nfzp02	cells-l7-lzw-flash-plain-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	LZW	brownfield	plain	none	l7nfzp03	cells-l7-lzw-flash-plain-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	LZW	brownfield	salt-diet	none	l7nfzs01	cells-l7-lzw-flash-salt-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	LZW	brownfield	salt-diet	none	l7nfzs02	cells-l7-lzw-flash-salt-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	LZW	brownfield	salt-diet	none	l7nfzs03	cells-l7-lzw-flash-salt-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	FreeList	brownfield	plain	none	l7npfp01	cells-l7-freelist-pro-plain-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	FreeList	brownfield	plain	none	l7npfp02	cells-l7-freelist-pro-plain-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	FreeList	brownfield	plain	none	l7npfp03	cells-l7-freelist-pro-plain-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	FreeList	brownfield	salt-diet	none	l7npfs01	cells-l7-freelist-pro-salt-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	FreeList	brownfield	salt-diet	none	l7npfs02	cells-l7-freelist-pro-salt-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	FreeList	brownfield	salt-diet	none	l7npfs03	cells-l7-freelist-pro-salt-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	LZW	brownfield	plain	none	l7npzp01	cells-l7-lzw-pro-plain-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	LZW	brownfield	plain	none	l7npzp02	cells-l7-lzw-pro-plain-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	LZW	brownfield	plain	none	l7npzp03	cells-l7-lzw-pro-plain-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	LZW	brownfield	salt-diet	none	l7npzs01	cells-l7-lzw-pro-salt-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	LZW	brownfield	salt-diet	none	l7npzs02	cells-l7-lzw-pro-salt-bare-bf	CLEAN	single	
+gemini-3.1-pro-high	LZW	brownfield	salt-diet	none	l7npzs03	cells-l7-lzw-pro-salt-bare-bf	CLEAN	single	
+gemini-3.8-flash-high	FreeList	brownfield	plain	statement	l7sffp01	cells-l7-freelist-flash-plain-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	FreeList	brownfield	plain	statement	l7sffp02	cells-l7-freelist-flash-plain-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	FreeList	brownfield	plain	statement	l7sffp03	cells-l7-freelist-flash-plain-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	FreeList	brownfield	salt-diet	statement	l7sffs01	cells-l7-freelist-flash-salt-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	FreeList	brownfield	salt-diet	statement	l7sffs02	cells-l7-freelist-flash-salt-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	FreeList	brownfield	salt-diet	statement	l7sffs03	cells-l7-freelist-flash-salt-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	LRU	brownfield	plain	statement	l7sfrp01	cells-l7-lru-flash-plain-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	LRU	brownfield	plain	statement	l7sfrp02	cells-l7-lru-flash-plain-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	LRU	brownfield	plain	statement	l7sfrp03	cells-l7-lru-flash-plain-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	LRU	brownfield	salt-diet	statement	l7sfrs01	cells-l7-lru-flash-salt-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	LRU	brownfield	salt-diet	statement	l7sfrs02	cells-l7-lru-flash-salt-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	LRU	brownfield	salt-diet	statement	l7sfrs03	cells-l7-lru-flash-salt-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	LZW	brownfield	plain	statement	l7sfzp01	cells-l7-lzw-flash-plain-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	LZW	brownfield	plain	statement	l7sfzp02	cells-l7-lzw-flash-plain-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	LZW	brownfield	plain	statement	l7sfzp03	cells-l7-lzw-flash-plain-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	LZW	brownfield	salt-diet	statement	l7sfzs01	cells-l7-lzw-flash-salt-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	LZW	brownfield	salt-diet	statement	l7sfzs02	cells-l7-lzw-flash-salt-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	LZW	brownfield	salt-diet	statement	l7sfzs03	cells-l7-lzw-flash-salt-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	FreeList	brownfield	salt-diet	statement	l7spfb01	cells-l7-freelist-pro-salt-stmt-bf-b	CLEAN	single	
+gemini-3.1-pro-high	FreeList	brownfield	salt-diet	statement	l7spfb02	cells-l7-freelist-pro-salt-stmt-bf-b	CLEAN	single	
+gemini-3.1-pro-high	FreeList	brownfield	salt-diet	statement	l7spfwa201	cells-l7-freelist-pro-salt-stmt-bf-tripwire-a2	CLEAN	single	
+gemini-3.1-pro-high	FreeList	brownfield	plain	statement	l7spfp01	cells-l7-freelist-pro-plain-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	FreeList	brownfield	plain	statement	l7spfp02	cells-l7-freelist-pro-plain-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	FreeList	brownfield	plain	statement	l7spfp03	cells-l7-freelist-pro-plain-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	LRU	brownfield	plain	statement	l7sprp01	cells-l7-lru-pro-plain-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	LRU	brownfield	plain	statement	l7sprp02	cells-l7-lru-pro-plain-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	LRU	brownfield	plain	statement	l7sprp03	cells-l7-lru-pro-plain-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	LRU	brownfield	salt-diet	statement	l7sprs01	cells-l7-lru-pro-salt-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	LRU	brownfield	salt-diet	statement	l7sprs02	cells-l7-lru-pro-salt-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	LRU	brownfield	salt-diet	statement	l7sprs03	cells-l7-lru-pro-salt-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	LZW	brownfield	plain	statement	l7spzp01	cells-l7-lzw-pro-plain-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	LZW	brownfield	plain	statement	l7spzp02	cells-l7-lzw-pro-plain-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	LZW	brownfield	plain	statement	l7spzp03	cells-l7-lzw-pro-plain-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	LZW	brownfield	salt-diet	statement	l7spzs01	cells-l7-lzw-pro-salt-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	LZW	brownfield	salt-diet	statement	l7spzs02	cells-l7-lzw-pro-salt-stmt-bf	CLEAN	single	
+gemini-3.1-pro-high	LZW	brownfield	salt-diet	statement	l7spzs03	cells-l7-lzw-pro-salt-stmt-bf	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	plain	spec-change	l8cfps01	cells-l8-crc32-flash-plain-sc	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	plain	spec-change	l8cfps02	cells-l8-crc32-flash-plain-sc	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	plain	spec-change	l8cfps03	cells-l8-crc32-flash-plain-sc	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	salt-diet	spec-change	l8cfss01	cells-l8-crc32-flash-salt-sc	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	salt-diet	spec-change	l8cfss02	cells-l8-crc32-flash-salt-sc	CLEAN	single	
+gemini-3.8-flash-high	Crc32	greenfield	salt-diet	spec-change	l8cfss03	cells-l8-crc32-flash-salt-sc	CLEAN	single	
+gemini-3.1-pro-high	Crc32	greenfield	plain	spec-change	l8cpps01	cells-l8-crc32-pro-plain-sc	CLEAN	single	
+gemini-3.1-pro-high	Crc32	greenfield	plain	spec-change	l8cpps02	cells-l8-crc32-pro-plain-sc	CLEAN	single	
+gemini-3.1-pro-high	Crc32	greenfield	plain	spec-change	l8cpps03	cells-l8-crc32-pro-plain-sc	CLEAN	single	
+gemini-3.1-pro-high	Crc32	greenfield	salt-diet	spec-change	l8cpss01	cells-l8-crc32-pro-salt-sc-cp	CLEAN	ADDENDUM 22 rule	
+gemini-3.1-pro-high	Crc32	greenfield	salt-diet	spec-change	l8cpss02	cells-l8-crc32-pro-salt-sc	CLEAN	single	
+gemini-3.1-pro-high	Crc32	greenfield	salt-diet	spec-change	l8cpss03	cells-l8-crc32-pro-salt-sc-cp	CLEAN	ADDENDUM 22 rule	
+gemini-3.8-flash-high	LRU	greenfield	plain	spec-change	l8rfpb01	cells-l8-lru-flash-plain-sc-b	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	plain	spec-change	l8rfpb02	cells-l8-lru-flash-plain-sc-b	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	plain	spec-change	l8rfwra201	cells-l8-lru-flash-plain-sc-tripwire-rerun-a2	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	salt-diet	spec-change	l8rfss01	cells-l8-lru-flash-salt-sc	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	salt-diet	spec-change	l8rfss02	cells-l8-lru-flash-salt-sc	CLEAN	single	
+gemini-3.8-flash-high	LRU	greenfield	salt-diet	spec-change	l8rfss03	cells-l8-lru-flash-salt-sc	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	plain	spec-change	l8rppr01	cells-l8-lru-pro-plain-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	plain	spec-change	l8rppr02	cells-l8-lru-pro-plain-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	plain	spec-change	l8rppr03	cells-l8-lru-pro-plain-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	salt-diet	spec-change	l8rpsra201	cells-l8-lru-pro-salt-sc-rerun-a2	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	salt-diet	spec-change	l8rpsra202	cells-l8-lru-pro-salt-sc-rerun-a2	CLEAN	single	
+gemini-3.1-pro-high	LRU	greenfield	salt-diet	spec-change	l8rpsra203	cells-l8-lru-pro-salt-sc-rerun-a2	CLEAN	single	
+gemini-3.1-pro-high	Paxos	greenfield	plain	spec-change	l8xppr01	cells-l8-paxos-pro-plain-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	Paxos	greenfield	plain	spec-change	l8xppr02	cells-l8-paxos-pro-plain-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	Paxos	greenfield	plain	spec-change	l8xppr03	cells-l8-paxos-pro-plain-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	Paxos	greenfield	salt-diet	spec-change	l8xpsr01	cells-l8-paxos-pro-salt-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	Paxos	greenfield	salt-diet	spec-change	l8xpsr02	cells-l8-paxos-pro-salt-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	Paxos	greenfield	salt-diet	spec-change	l8xpsr03	cells-l8-paxos-pro-salt-sc-rerun	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	plain	spec-change	l8ffpr01	cells-l8-freelist-flash-plain-sc-rerun	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	plain	spec-change	l8ffpr02	cells-l8-freelist-flash-plain-sc-rerun	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	plain	spec-change	l8ffpr03	cells-l8-freelist-flash-plain-sc-rerun	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	salt-diet	spec-change	l8ffsra201	cells-l8-freelist-flash-salt-sc-rerun-a2	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	salt-diet	spec-change	l8ffsra202	cells-l8-freelist-flash-salt-sc-rerun-a2	CLEAN	single	
+gemini-3.8-flash-high	FreeList	greenfield	salt-diet	spec-change	l8ffsra203	cells-l8-freelist-flash-salt-sc-rerun-a2	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	plain	spec-change	l8fppr01	cells-l8-freelist-pro-plain-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	plain	spec-change	l8fppr02	cells-l8-freelist-pro-plain-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	plain	spec-change	l8fppr03	cells-l8-freelist-pro-plain-sc-rerun	EXPOSED	single	cells-l8-lzw-pro-salt-sc-rerun,cells-l8-paxos-pro-salt-sc-rerun
+gemini-3.1-pro-high	FreeList	greenfield	salt-diet	spec-change	l8fpsr01	cells-l8-freelist-pro-salt-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	salt-diet	spec-change	l8fpsr02	cells-l8-freelist-pro-salt-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	salt-diet	spec-change	l8fpsr03	cells-l8-freelist-pro-salt-sc-rerun	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	plain	spec-change	l8zfpra201	cells-l8-lzw-flash-plain-sc-rerun-a2	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	plain	spec-change	l8zfpra202	cells-l8-lzw-flash-plain-sc-rerun-a2	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	plain	spec-change	l8zfpra203	cells-l8-lzw-flash-plain-sc-rerun-a2	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	salt-diet	spec-change	l8zfsr01	cells-l8-lzw-flash-salt-sc-rerun	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	salt-diet	spec-change	l8zfsr02	cells-l8-lzw-flash-salt-sc-rerun	CLEAN	single	
+gemini-3.8-flash-high	LZW	greenfield	salt-diet	spec-change	l8zfsr03	cells-l8-lzw-flash-salt-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	plain	spec-change	l8zppr01	cells-l8-lzw-pro-plain-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	plain	spec-change	l8zppr02	cells-l8-lzw-pro-plain-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	plain	spec-change	l8zppr03	cells-l8-lzw-pro-plain-sc-rerun	EXPOSED	single	cells-l8-paxos-pro-salt-sc-rerun
+gemini-3.1-pro-high	LZW	greenfield	salt-diet	spec-change	l8zpsr01	cells-l8-lzw-pro-salt-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	salt-diet	spec-change	l8zpsr02	cells-l8-lzw-pro-salt-sc-rerun	CLEAN	single	
+gemini-3.1-pro-high	LZW	greenfield	salt-diet	spec-change	l8zpsr03	cells-l8-lzw-pro-salt-sc-rerun	EXPOSED	single	cells-l8-paxos-flash-plain-sc-rerun.DISCARDED-503-2026-09-25T00:19:41Z
+gemini-3.8-flash-high	Paxos	greenfield	plain	spec-change	l8xfp2a201	cells-l8-paxos-flash-plain-sc-rerun2-a2	CLEAN	single	
+gemini-3.8-flash-high	Paxos	greenfield	plain	spec-change	l8xfp2a202	cells-l8-paxos-flash-plain-sc-rerun2-a2	CLEAN	single	
+gemini-3.8-flash-high	Paxos	greenfield	plain	spec-change	l8xfp2a203	cells-l8-paxos-flash-plain-sc-rerun2-a2	EXPOSED	single	cells-l8-lzw-flash-salt-sc-rerun
+gemini-3.8-flash-high	Paxos	greenfield	salt-diet	spec-change	l8xfs201	cells-l8-paxos-flash-salt-sc-rerun2	CLEAN	single	
+gemini-3.8-flash-high	Paxos	greenfield	salt-diet	spec-change	l8xfs202	cells-l8-paxos-flash-salt-sc-rerun2	CLEAN	single	
+gemini-3.8-flash-high	Paxos	greenfield	salt-diet	spec-change	l8xfs203	cells-l8-paxos-flash-salt-sc-rerun2	CLEAN	single	
+claude-opus-5	LZW	greenfield	plain	spec-change	clbkzp01	cells-clb-g-lzw-plain	CLEAN	single	
+claude-opus-5	LRU	greenfield	plain	spec-change	clbklp01	cells-clb-g-lru-plain	CLEAN	single	
+claude-opus-5	FreeList	greenfield	plain	spec-change	clbkfp01	cells-clb-g-freelist-plain	CLEAN	single	
+claude-opus-5	Paxos	greenfield	plain	spec-change	clbkpp01	cells-clb-g-paxos-plain	CLEAN	single	
+claude-opus-5	Paxos	greenfield	salt-diet	spec-change	clbkps01	cells-clb-g-paxos-saltdiet	CLEAN	single	
+claude-opus-5	FreeList	greenfield	salt-diet	spec-change	clbkfs01	cells-clb-g-freelist-saltdiet	CLEAN	single	
+claude-opus-5	FreeList	greenfield	salt-diet	spec-change	clbkfs02	cells-clb-g-freelist-saltdiet	CLEAN	single	
+claude-sonnet-5	LRU	greenfield	plain	none	clbglp01	cells-clb-sg-lru-plain	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	plain	none	s3fpk01	cells-s3-freelist-plain-topup-s2k	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	plain	none	s3fpk02	cells-s3-freelist-plain-topup-s2k	CLEAN	single	
+gemini-3.1-pro-high	FreeList	greenfield	plain	statement	s3fqk01	cells-s3-freelist-plain-stmt-topup-s2k	EXPOSED	single	cells-p2b-opus-specchange
+gemini-3.1-pro-high	Crc32	greenfield	salt-diet	statement	s3ctk01	cells-s3-crc32-saltdiet-stmt-topup-s2k	CLEAN	single	
+# record rows by cell: 543 (520 distinct ids)
+# claude-opus-5 CLEAN 129
+# claude-opus-5 EXPOSED 9
+# claude-sonnet-5 CLEAN 99
+# claude-sonnet-5 EXPOSED 30
+# gemini-3.1-pro-high CLEAN 131
+# gemini-3.1-pro-high EXPOSED 7
+# gemini-3.8-flash-high CLEAN 134
+# gemini-3.8-flash-high EXPOSED 4
+# UNMEASURABLE-BY-CELL CONDITION rows: 14 (no per-cell id in the map)
+# UNMEASURABLE-BY-CELL COUNT rows: 94 (no per-cell id in the map)
