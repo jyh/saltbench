@@ -192,7 +192,8 @@ empty-effort arms (R1.3, R1.4). **One sha for all 27 cells, recorded per cell.**
   sha256/16 `de72b2ce4294cb9c`, 0 withheld-shaped names on either side, the marker written last.
 - **The run-box drive, re-run against this export, not inherited** (`runbox-drive-0d97b68.out`, lane B's `runbox_drive.py` unchanged): marker
   `0d97b68…` · 375 files (374 + the marker) · 0 withheld/mutants directories · 2 paths carrying the word, both INSTRUMENTS
-  (`check_withheld_leak_v3.py`, as at `bcd2205`, and `withheld_access_census.py`, added since) · the five brownfield givens · the export's own
+  (`check_withheld_leak_v3.py`, as at `bcd2205`, and `withheld_access_census.py`, added since; NAMED from the run box's export itself in
+  `runbox-word-paths-0d97b68.out`, kent's finding: the drive prints only the count) · the five brownfield givens · the export's own
   `served_models_v3.py` reads 45 of 45 HC1 cells clean as Opus and SUBSTITUTED as Sonnet.
 - **The OD conditions, read from the export** (`served-tables-0d97b68.out`): `fable51` launches `--model claude-fable-5-1`, `opus55`
   launches `--model claude-opus-5-5`, every sub-agent row is the Opus table's, rc 0 for both.
