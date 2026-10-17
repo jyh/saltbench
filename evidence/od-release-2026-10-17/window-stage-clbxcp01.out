@@ -1,0 +1,18 @@
+2026-10-17T08:44:16Z STAGE clbxcp01 block=FX lane=OD model=claude-fable-5-1 condition=fable51 effort=xhigh problem=Crc32 arm=plain field=greenfield extras=none n=1 export=811dc09657b4 dry=0
+2026-10-17T08:44:17Z CLIENT PIN OK sha16=884baa38fe1a624b
+2026-10-17T08:44:17Z ACCOUNT identity read (not printed: the infra-name gate)
+2026-10-17T08:44:17Z ROOT EXISTS cells-clb-fx-crc32-plain
+2026-10-17T08:44:17Z MODELS TABLE agrees with block FX: condition fable51, read back by served_models check-root
+R1	`crc32` returns the CRC-32 of the message determined by the IEEE 802.3 generator polynomial 0x04C11DB7 — the same 32-bit answer that zlib, PNG and gzip produce for the same bytes.
+R2	The nine ASCII bytes `123456789` must have the checksum 0xCBF43926.
+R3	The checksum must be computed a byte at a time from a 256-entry lookup table, one lookup per message byte, and not one bit at a time.
+R4	Messages of any length are accepted, from a handful of bytes to at least a few thousand, and every byte value from 0x00 to 0xFF may occur at any position in a message.
+R5	The answer depends only on the bytes of the message: the same bytes give the same 32-bit answer every time, and no call leaves anything behind that changes what a later call returns.
+     Locking 14 packages to latest compatible versions
+cell_build: item-10 paths at t0: 9/9 in the tree (SEAT.md, bin/rt, bin/declare, bin/bus, LANDING.md.template, .gitignore, .gitattributes, Cargo.toml, Cargo.lock); target/ .seat/ BUDGET.md .claude/ absent
+cell_build: budgets profile pricing (T1_TOK=250000000 W1_SEC=144000 T2_TOK=120000000 W2_SEC=72000) cost caps C1_USD=37.21 C2_USD=18.60 (frozen in cost_caps.tsv, set_on 2026-09-05)
+cell_build: copied 8 files into clbxcp01 (plain arm): repo/SEAT.md, repo/LANDING.md.template, bin/rt, bin/declare, bin/bus, repo/interface.rs, repo/solution.rs, repo/CLAUDE.md
+cell_build: NO briefing receipt written (client=claude). The receipt is agy-only today because the claude launcher has no echo gate; a token nothing reads would change the arm's bytes and buy nothing. OWED: the gate, then a registered wave boundary.
+cell_build: clbxcp01 Crc32 plain built at ~/cells-clb-fx-crc32-plain/clbxcp01/repo root 4dac42ef2105 nonce c26c97ccdec15fdc755f483d card-extras none
+2026-10-17T08:44:19Z EFFORT ctl/effort=xhigh (block FX), read back
+2026-10-17T08:44:19Z STAGED clbxcp01 in cells-clb-fx-crc32-plain (export 811dc09657b4) — fire with clb_fire.sh FX Crc32 plain 1

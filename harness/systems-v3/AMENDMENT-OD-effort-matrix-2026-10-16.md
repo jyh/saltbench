@@ -175,3 +175,105 @@ Lane B §Q9's per-cell list, less its brownfield columns, plus: the configuratio
 output tokens beside T · list-USD at its dated rate · the Fable-meter reading per Fable cell · the account-check line. ⇒ **A RESULT file with
 §D4's rows per configuration per problem and §D5's predictions MET / NOT MET / NOT SCORED, merged with a non-author read.** Desk OD is
 re-read against it. Any public sentence, and any claim about the method, is the Captain's.
+
+---
+
+## ⚖️ ADDENDUM 1 — THE RELEASE. APPENDED; all text above, the signature included, untouched.
+**bench (lead), 2026-10-17. COMPLETE AND OFFERED FOR A NON-AUTHOR SIGNATURE; it fires nothing by itself.** *(R1.1 named `0d97b68` until R1.7
+was built; it now names `811dc09`.)* Three reads are taken AT FIRE by design and are not owed here: the server identity of the pool (R1.5 (d),
+after the client's own refresh), the chain's `strands=` (R1.5 (d)), and the head id the identity cell is SERVED (R1.3). The first cell fires
+only after a non-author signs this addendum. Every figure is read from `evidence/od-release-2026-10-17/`.
+
+### R1.1 · §D0 ROW 4, THE EXPORT IS `811dc09` — ✅ TAKEN 2026-10-17
+saltbench-systems master was fast-forwarded `d398cb0` → `0d97b68` → `811dc09657b47d42c65bba8653c0e7b62f6e69dc`, each step after a non-author
+read of every commit in it (kent: `d398cb0..20401330` · `20401330..6e9c7ce` · `6e9c7ce..0d97b68` · `0d97b68..811dc09`, the last with the suite
+reproduced). Contents over `d398cb0`: S1 (`cf0033e`) · the rates rows (R1.2) · `cells_account_check.sh` (§D2 4(e), blob `76f59182ad70`,
+taken ALONE from `0da916f`) · the head-only model tables, the R4 and empty-effort arms (R1.3, R1.4) · OD's blocks in the stager, fire and
+harvest, with the effort carried by the cell (R1.7). **One sha for all 27 cells, recorded per cell.** `0d97b68` was an interim export and
+fires nothing.
+- **Exported** to the run box under a destination of its own, `--no-toolchain` (the Z chain was live there and reads the cargo cache that
+  step rsyncs; the toolchain is checked read-only at the first cell): 374 files, listing sha256/16 `de72b2ce4294cb9c`, 0 withheld-shaped
+  names on either side, the marker written last (`export-811dc09.out`).
+- **The run-box drive, re-run against this export** (`runbox-drive-811dc09.out`, lane B's `runbox_drive.py` unchanged): marker `811dc09…` ·
+  375 files (374 + the marker) · 0 withheld/mutants directories · 2 paths carrying the word, both INSTRUMENTS, named from the export itself
+  in `runbox-word-paths-811dc09.out` (`check_withheld_leak_v3.py`, as at `bcd2205`; `withheld_access_census.py`, added since; kent's finding:
+  the drive prints only the count) · the five brownfield givens · the export's own `served_models_v3.py` reads 45 of 45 HC1 cells clean
+  as Opus and SUBSTITUTED as Sonnet.
+- **The OD conditions, read from the export** (`served-tables-811dc09.out`): `fable51` launches `--model claude-fable-5-1`, `opus55`
+  launches `--model claude-opus-5-5`, every sub-agent row is the Opus table's, rc 0 for both.
+- The `0d97b68` evidence files stay in this directory as the interim export's record.
+
+### R1.2 · §D2 ITEM 2, THE RATES — ✅ TAKEN 2026-10-17T05:01Z, `VERDICT ALL-EQUAL`, rc 0
+The page `rates.tsv` cites, read as raw bytes (160,503 B, sha256/16 `12219c9d9fe4d5c1`), by two methods. (a) Lane B's `rates_reread.py`,
+copied with ONE change, the Opus 5.5 row added to its model list (`rates-reread.diff`): four served ids EQUAL (`rates-reread.out`); the
+master table without that row reads `MISSING`, rc 1. (b) A parse of every page row against every table row: 15 rows, 0 mismatches.
+- ⚠️ **P5's ratio, against the id actually served.** Opus 5.5 is priced BELOW Opus 5 (input $4, output $20, cache read $0.20). P5 states
+  its ratios against `claude-opus-5`. Against `claude-opus-5-5`, Fable is 2.5 × on input, cache writes and output and 1.25 × on cache
+  read, so P5's clause *"less per cache read"* is FALSE for that id. P5's prediction (if CAP-COST binds at all, it binds FX first) is
+  unchanged and stronger.
+
+### R1.3 · §D0 ROW 1c AND F3', THE HEAD — BUILT; THE ID IS OWED TO THE IDENTITY READ
+The registration said only the head row moves, and the harness had no way to move it: `cells_bin.sh` linked only the Opus and Sonnet
+tables. Built: `models-head-fable51.tsv` and `models-head-opus55.tsv`, each `models.tsv` with the head row replaced (an arm proves every
+other row byte-identical); conditions `fable51` and `opus55` in `served_models_v3.py`, so `check-cell` (§D3's identity read) can name
+them. **F3' is taken on its recommendation: OX's head is `claude-opus-5-5`, the fleet's current Opus.** OX is therefore a NEW baseline,
+not linked to the pilot's `claude-opus-5` cells (kent's R2), and every table says so. If the OX identity cell is served another id,
+that is a SUBSTITUTION (§D7), never a silent re-mapping.
+- ⚠️ **A label that moved with nothing under it (kent's note 2):** in both head tables the `source` cells of `worker-opus` and `reviewer`
+  read *"as head"*. They were copied byte for byte from `models.tsv`, and an arm keeps them that way, so *"head"* there means
+  `models.tsv`'s head, `claude-opus-5`, and NOT the table's own head. No tool parses that column; the arms read `requested` and `served`.
+- **The head id is tied outside its table:** each head table's id must be exactly one row of `rates.tsv` (kent's note 1; mutant red).
+
+### R1.4 · §D2 ITEM 1 AND ITEM 3 — ✅ BUILT AND DRIVEN ON THE CANDIDATE
+- S1 (item 1): the lead's re-drive on `cf0033e`, 69 / 71 with the hard-wired mutant red on S1(b) only. kent's finding 2 (an EMPTY
+  `CELL_EFFORT` read as `high`, so FX would fire as FH) is fixed as `${CELL_EFFORT-high}` with arm S1(d), red first.
+- Item 3, the dry launch (kent's R4): an arm in the suite. FX (`fable51`, xhigh) · FH (`fable51`, high) · OX (`opus55`, xhigh) through the
+  DRY stub print ARGV lines that carry `--model <the table's head> --effort <e>` and are identical outside those two tokens. Mutant (the
+  launcher hard-wires the model): red on that arm only. **The pinned client** (lane B's 2.1.259, sha256/16 `884baa38fe1a624b`, read on the
+  run box) lists `--effort <level> (low, medium, high, xhigh, max)`.
+- The suite on the candidate: 71 / 73, 0 failed, 2 SKIP (the placebo arms, declared).
+
+### R1.5 · §D2 ITEM 4 — PARTLY TAKEN 2026-10-17; THE REST IS READ AT FIRE
+- (a) ✅ `clb_chain.v8.sh` sha256/16 `f443719751e7a3ed` (the chain runs from the build box and drives the run box).
+- (d) ⚠️ **`credgate identity`, a server read, over the six cells config dirs on the run box: NO IDENTITY READ.** Three hold an EXPIRED
+  access token with a live refresh (`EXPIRED-REFRESHABLE`); a refresh is a write, so a read-only release cannot turn them into identities.
+  Three are `DEAD-REFRESH` and need a human `/login` before they can carry a cell. ⇒ **The pool the PM names for the identity cells is read
+  by `credgate identity` at fire, after the client's own refresh, and that line is quoted beside the cell.** `strands=` is a chain status
+  field and is read from v8's own status line before the first cell.
+- (e) ✅ (file identity) `cells_account_check.sh` from the export, against the run box's default cell env: `ACCOUNT-CHECK OK`, credential
+  present (access and refresh non-empty). **Its limit rides with it: the FILE identity, never "a launch will authenticate".** The fire runs it
+  as the tool takes it (kent's finding 1), `--refuse <the account named as dead> --expect <the pool the PM names>`.
+- (b) The `declined-subject` row form is quoted from the RESULT template when the RESULT file is opened.
+
+### R1.7 · OD's BLOCKS AND THE EFFORT'S CARRIER — ✅ BUILT (in `811dc09`)
+The stager, fire and harvest knew only lane B's seven blocks, so no OD cell could be staged. `clb_stage.sh`'s block table gains
+`cond · effort · lane` columns and FX · FH · OX rows; `--roots` stays lane B's 64, and `--roots-od` makes exactly OD's 9 roots (three blocks
+× Crc32 · LZW · FreeList × plain). An OD block refuses any other problem or arm before creating anything.
+- ⛔ **THE EFFORT IS A PROPERTY OF THE CELL, NOT OF THE FIRE'S ENVIRONMENT.** `cell-watch.sh` starts the client in a new tmux window whose
+  environment is built from a fixed list that does not carry `CELL_EFFORT`, so an effort exported at fire would never arrive, and every
+  OD cell would have launched at `high` with every check green. The stager writes `ctl/effort`; `cell-claude.sh` reads it, and a SET
+  `CELL_EFFORT` that disagrees HOLDs; `clb_fire.sh` refuses an OD cell whose `ctl/effort` is not its block's, and a lane-B cell carrying
+  one, before anything is driven. Lane-B cells carry none, so their argv is unchanged.
+- Arms: S1(e)/(f) and `clb_stage-od` (six behaviours, `--dry` on a fixture export). Suite 72 / 74, 0 failed, 2 SKIP. Mutants: the stager
+  writes no `ctl/effort` → red on that clause only; the fire's effort check bypassed → red on that clause only.
+- ⚠️ **LIMIT:** the subject can READ its own `ctl/`; whether the Claude fence lets it WRITE `ctl/effort` is not driven. A rewritten file would
+  change a RE-launch's effort, so the RESULT reads each cell's effort from the ARGV line in its launch log, never from `ctl/effort`.
+- ⚠️ **LIMIT (kent's environment finding):** with stdin at `/dev/null` the suite's `probe-sandbox` arm reads 47 / 52 (five runtime arms
+  INDETERMINATE) at this sha and at its parent; with a real stdin it reads 52 / 52. The suite's tallies above were taken with a real stdin.
+  An unattended suite run reads that one arm red while the code is fine; the root cause is not established.
+
+### R1.6 · THE WITHHELD CENSUS, AT A HELD Z BOUNDARY — ✅ TAKEN 2026-10-17 08:44–08:45Z, ALL SIX TREES `COVERED · COVERED`, rc 0
+The window: the Z chain held before Z073 (gemini), no cell process live on the run box (checked at the object; the long-running agy pool
+canary was the only harness process). In order, each stopping on its own refusal: `clb_stage.sh --roots-od` (9 roots, each on its block's
+table) · `clb_stage.sh FX Crc32 plain 1` (`clbxcp01`, client pin `884baa38fe1a624b`, table `fable51`, `ctl/effort` xhigh read back) ·
+`fence-only-OD.sh FX Crc32 plain 1` (the export's own `clb_fire.sh` with the YIELD line removed and cut after FENCE CONVERGES, as lane B's
+fence-only step was): **FENCE CONVERGES sha16 `b418ca420995a805`**, no launch, nothing spent · lane B's `withheld_exposure_census.py`, unchanged,
+on that fence and the newest agy fence (`census-at-window.out`):
+```
+  # host role: the run box (cells-* roots under ~: 478)
+  # fences: claude clbxcp01 (denyRead 712) · agy zffcgss301 (denyRead 702)
+  # withheld-shaped entries: 666 in 6 top-level trees (a FLOOR: depth 7, no tarballs, name-based)
+  ~/bench-dry 384 · ~/projects 178 · ~/bench-v2 34 · ~/bench-v2-smoke 34 · ~/bench-v2-amend6 18 · ~/bench-v2-census-a6 18   ALL COVERED · COVERED
+```
+**Its limit rides with it:** 666 is a FLOOR, not a ceiling. Everything this method can see is denied to both lanes; it is not a proof that
+no withheld material exists anywhere. The nine OD roots existed before the next Z cell's fence render, so later Z cells glob them.
