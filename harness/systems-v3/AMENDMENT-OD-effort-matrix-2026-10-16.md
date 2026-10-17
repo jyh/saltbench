@@ -415,3 +415,39 @@ with skills the registration never contained. The chain was halted.
   probe does not, and the after-each-cell check exists for that case. The restore deleted the synced copies only after a byte copy and a
   per-file hash list were kept. The re-run is the identity triple of ADDENDUM 5 (FX#2, FH#2, OX#1), unchanged.
 - The evidence is in the lead's record at seat commit `c19edde32`.
+
+## ⚖️ ADDENDUM 7 — FX AND FH TAKE n 4 ON Crc32, AND THE BLOCK'S REMAINING CELLS RUN ON ONE NEW EXPORT. APPENDED; all text above, every signature included, untouched.
+**bench (lead), 2026-10-17, relight 149. The helm concurred on the direction (05:13 PDT) with a condition: every reader of the cell index n
+is listed, not only the two that refused. The change admits a label; it changes no measurement.**
+**What was found.** ADDENDUM 5 numbered FX's and FH's matrix Crc32 cells #2 to #4, because their #1 is an identity reading on client
+2.1.259. The harness bounded n to 1..3 in three places, so FX#4 and FH#4 could not be staged, and Crc32 could not reach n = 3 for FX and FH.
+It was found when the Crc32 #2–#3 list was pre-staged (the stager refused, with no spend). LZW and FreeList are unaffected: all three
+configurations start there at #1.
+- **The change.** In harness `eb50811fe861` (one commit on `9f42a53548a0`), the stager's and the fire's bound reads the block with n:
+  1..3 for every block, and 4 for FX and FH only. OX, every lane-B block, and n 5 still refuse. The chain is `clb_chain.v13.sh`
+  (sha256/16 `402e47ecba72cc5d`), which is v12 plus the same one-line change to its row parser. Nothing else changes in either.
+- **Every reader of n.** Read in the code, not only searched for. **Refusers of n 4: three** (the stager, the fire, the chain's row
+  parser), all changed. **Readers that take any n, unchanged:** the harvest's `cell` mode and the cell-id builders (two-digit, any n); the
+  served-set check, the escape scan and the post-launch root check, which take the cell's path and never n. **A reader that never sees an
+  OD n:** the harvest's `receipt` mode lists cells #1–#3 only; it prices lane B's plain/salt-diet pairs, and the chain never calls it.
+  ⚠️ **LIMIT (the helm's):** if `receipt` were ever used for FX or FH, it would read #1–#3 and miss #4. The OD result reads its cells from
+  their own records, as the identity result does.
+- **Driven, red first, zero spend.** A new suite arm stages FX and FH at n 4 and carries each past the fire's n check to its effort check,
+  and refuses OX n 4, a lane-B n 4 and FX n 5 at both. Suite: 213 of 222 with 3 failed (that arm, at the stager) before the change; 216 of
+  222 with 0 failed and the same 6 named skips after. A mutant reverting only the fire's bound reddens that arm at its fire clause. The
+  chain's arm drives its row parser extracted verbatim from v12 and v13: FX and FH n 4 refused by v12 and named by v13, the three refusals
+  equal on both, an n 3 control equal. v12's six inherited arm suites re-run with v13 give the same verdicts line for line. kent read the
+  build with no defect found, including a truth table of the bound over 12 block values and 15 n values: the only change is FX 4 and FH 4.
+- **The export** is harness `eb50811fe861`, exported to the run box under a destination of its own (375 files, listing sha256/16
+  `c8ca237b60a167fe`, 0 withheld-shaped names on either side, marker written last). A new pool env differs from ADDENDUM 5's in
+  `CLB_EXPORT` alone. **All nine OD roots were repointed to it**, read back launcher and head table per root. That includes the LZW and
+  FreeList roots, which still carried the release export `811dc09`, so ADDENDUM 6's sync-off settings now reach every remaining cell.
+- **The real run box, zero spend:** FX#4 and FH#4 were staged at n 4 under this export, each with its client pin, head table and
+  `ctl/effort` read back.
+- **The cells already run, and the one staged before this export.** Crc32 FX#3, FH#3 and OX#2 ran on chain v12 and export `9f42a53`
+  (each LANDED, PASS 6/6, served clean, escape 0, per-cell checks clean). OX#3 was staged under `9f42a53` before the export and fires
+  under `eb50811`. The stager differs between the two only in the n bound, so its cell bytes are the same.
+- From the next fire, every remaining cell runs on chain v13, export `eb50811` and client 2.1.280. The order is unchanged: FX#4, FH#4,
+  OX#3, then LZW #1–#3 and FreeList #1–#3, FX FH OX interleaved, with the LZW tripwire after the first LZW triple.
+- The evidence is in the lead's record at seat commits `c975872f8` (the chain and its arms) and `3340a9207` (the export, the repoint and the
+  staging).
