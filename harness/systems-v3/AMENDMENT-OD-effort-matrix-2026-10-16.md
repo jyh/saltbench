@@ -381,3 +381,34 @@ substitution, and §D7 had no row for it.
   its name is counted in the cell's transcript and logs, with the transcript's size as the control.
   §D3's PM re-price follows the re-run, and nothing beyond the triple fires until it exists.
 - The evidence is in the lead's record at seat commit `f253e0b36`.
+
+## ⚖️ ADDENDUM 6 — THE NEW CLIENT RUNS WITH THE ACCOUNT SYNC OFF, AND A HARNESS EXPORT THAT ADMITS ITS EMPTY STAGING DIR. APPENDED; all text above, every signature included, untouched.
+**bench (lead), 2026-10-17, relight 148, under the helm's rulings (A′) and (A″) (03:43 and 03:54 PDT), each the helm's because it configures
+the instrument and keeps the design whole.**
+**What happened after ADDENDUM 5 merged.** The re-run fired, and all three cells were refused before launch by the hermetic run-dir check.
+No cell launched and nothing was spent. During ADDENDUM 5's own probe turns, client 2.1.280 had copied the signed-in account's claude.ai
+skills into the cells' config directory, and it had created a client staging directory there. A subject on that client would have started
+with skills the registration never contained. The chain was halted.
+- **The sync is off by the client's own documented keys.** The client's changelog at 2.1.275 names the opt-out keys
+  `syncClaudeAiSkills: false` and `syncClaudeAiPlugins: false`. The settings renderer now writes both, its check refuses a config directory
+  where either is missing or true, and the fire reads both back from the file the client reads. That is the lead's acceptance of a red-first
+  build (the selftest red before the change and green after, and a mutant rendering one key true reddens it). Under the keys, a probe turn
+  on the restored directory left no skills folder behind.
+- **The staging directory is admitted only when empty.** The client also creates `seed-admin` at startup. Its changelog names this as the
+  staging directory for `/ultrareview` uploads (2.1.292 and 2.1.295), which a headless cell never runs. The run-dir check now admits it only
+  as a real, readable, EMPTY directory. A file, a dotfile, a subdirectory, a symlink or an unreadable listing still refuses by name, and a
+  mutant removing each guard reddens its own arm. The directory sits inside the pool configuration directory, which every cell's fence
+  denies to subprocesses.
+- **The export** is harness `9f42a53548a0`. Against the export ADDENDUM 1 released, it changes only the settings renderer, the fire's
+  read-back, the run-dir check and its test. The fence renderer and the sandbox probe are byte-identical, so ADDENDUM 5's denials carry. The
+  OD cell roots' launcher links were repointed to this export, because a root keeps the links of the export it was first staged under, and a
+  fire would otherwise mix two exports.
+- **Re-driven on the restored directory, under the new client and this configuration, before any cell.** The sandbox probe was GREEN three
+  times (the cell's own pool credential, a credential directory outside the pool, and a file in a root that existed at render, each DENIED,
+  with the inside read returning its nonce). Afterwards: no skills folder, an empty `seed-admin`, and the run-dir check GREEN.
+- **A harvest-side check after every cell** (the helm's (A″) condition): the staging directory must still be empty and no skills folder may
+  exist. It runs together with ADDENDUM 5's per-cell check of roots born inside the cell's window, which is now bounded by the cell's end.
+- ⚠️ **LIMITS:** the keys' effect is measured on probe turns, not yet on a full cell. A cell-length session could reach a sync path that a
+  probe does not, and the after-each-cell check exists for that case. The restore deleted the synced copies only after a byte copy and a
+  per-file hash list were kept. The re-run is the identity triple of ADDENDUM 5 (FX#2, FH#2, OX#1), unchanged.
+- The evidence is in the lead's record at seat commit `c19edde32`.
