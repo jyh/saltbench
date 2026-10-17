@@ -182,11 +182,20 @@ re-read against it. Any public sentence, and any claim about the method, is the 
 **bench (lead), drafted 2026-10-17.** ⛔ **DRAFT: it fires nothing, and every row marked OWED is OWED.** The first cell fires only
 after every OWED row below is TAKEN and a non-author signs this addendum. Every figure is read from `evidence/od-release-2026-10-17/`.
 
-### R1.1 · §D0 ROW 4, THE EXPORT — OWED (candidate named)
-Candidate: saltbench-systems `6e9c7ce7c0c6` = `backup/master` `d398cb0` + S1 (`cf0033e`) + the rates rows (§D2 item 2) +
-`cells_account_check.sh` (§D2 4(e), blob `76f59182ad70`, taken ALONE from `0da916f`) + the head-only model tables, the R4 arm and the empty-
-effort HOLD (R1.3, R1.4). TAKEN when master is fast-forwarded to it after a non-author read. The run-box drive of the export (its marker,
-file count and served-model read) is re-run against that sha, never inherited.
+### R1.1 · §D0 ROW 4, THE EXPORT IS `0d97b68` — ✅ TAKEN 2026-10-17
+saltbench-systems master was fast-forwarded `d398cb0` → `0d97b68073305fe5a99d55a439d0410c49bb7f96` after non-author reads of every commit in
+the range (kent: `d398cb0..20401330`, `20401330..6e9c7ce`, `6e9c7ce..0d97b68`). Contents over `d398cb0`: S1 (`cf0033e`) · the rates rows
+(R1.2) · `cells_account_check.sh` (§D2 4(e), blob `76f59182ad70`, taken ALONE from `0da916f`) · the head-only model tables and the R4 and
+empty-effort arms (R1.3, R1.4). **One sha for all 27 cells, recorded per cell.**
+- **Exported** to the run box under a destination of its own, `--no-toolchain` (the Z chain was live on that box and reads the cargo
+  cache that step rsyncs, so a release must not touch it; the toolchain is checked read-only at the first cell): 374 files, listing
+  sha256/16 `de72b2ce4294cb9c`, 0 withheld-shaped names on either side, the marker written last.
+- **The run-box drive, re-run against this export, not inherited** (`runbox-drive-0d97b68.out`, lane B's `runbox_drive.py` unchanged): marker
+  `0d97b68…` · 375 files (374 + the marker) · 0 withheld/mutants directories · 2 paths carrying the word, both INSTRUMENTS
+  (`check_withheld_leak_v3.py`, as at `bcd2205`, and `withheld_access_census.py`, added since) · the five brownfield givens · the export's own
+  `served_models_v3.py` reads 45 of 45 HC1 cells clean as Opus and SUBSTITUTED as Sonnet.
+- **The OD conditions, read from the export** (`served-tables-0d97b68.out`): `fable51` launches `--model claude-fable-5-1`, `opus55`
+  launches `--model claude-opus-5-5`, every sub-agent row is the Opus table's, rc 0 for both.
 
 ### R1.2 · §D2 ITEM 2, THE RATES — ✅ TAKEN 2026-10-17T05:01Z, `VERDICT ALL-EQUAL`, rc 0
 The page `rates.tsv` cites, read as raw bytes (160,503 B, sha256/16 `12219c9d9fe4d5c1`), by two methods. (a) Lane B's `rates_reread.py`,
@@ -218,12 +227,21 @@ that is a SUBSTITUTION (§D7), never a silent re-mapping.
   run box) lists `--effort <level> (low, medium, high, xhigh, max)`.
 - The suite on the candidate: 71 / 73, 0 failed, 2 SKIP (the placebo arms, declared).
 
-### R1.5 · §D2 ITEM 4 — OWED, READ AT RELEASE ON THE RUN BOX
-- (d) `credgate identity` per pool, and the status line's `strands=`, quoted here.
-- (e) The account check as the tool takes it (kent's finding 1: §D0 row 9's `--expect` alone exits 64):
-  `cells_account_check.sh --refuse <the account named as dead> --expect <the cells' account>`, run from the EXPORT, verdict line quoted.
-- (a) `clb_chain.v8.sh`'s sha256/16, quoted. (b) The `declined-subject` row form, quoted from the RESULT template.
+### R1.5 · §D2 ITEM 4 — PARTLY TAKEN 2026-10-17; THE REST IS READ AT FIRE
+- (a) ✅ `clb_chain.v8.sh` sha256/16 `f443719751e7a3ed` (the chain runs from the build box and drives the run box).
+- (d) ⚠️ **`credgate identity`, a server read, over the six cells config dirs on the run box: NO IDENTITY READ.** Three hold an EXPIRED
+  access token with a live refresh (`EXPIRED-REFRESHABLE`); a refresh is a write, so a read-only release cannot turn them into identities.
+  Three are `DEAD-REFRESH` and need a human `/login` before they can carry a cell. ⇒ **The pool the PM names for the identity cells is read
+  by `credgate identity` at fire, after the client's own refresh, and that line is quoted beside the cell.** `strands=` is a chain status
+  field and is read from v8's own status line before the first cell.
+- (e) ✅ (file identity) `cells_account_check.sh` from the export, against the run box's default cell env: `ACCOUNT-CHECK OK`, credential
+  present (access and refresh non-empty). **Its limit rides with it: the FILE identity, never "a launch will authenticate".** The fire runs it
+  as the tool takes it (kent's finding 1), `--refuse <the account named as dead> --expect <the pool the PM names>`.
+- (b) The `declined-subject` row form is quoted from the RESULT template when the RESULT file is opened.
 
 ### R1.6 · THE WITHHELD CENSUS — OWED
 Lane B ADDENDUM 4 §R4.2's census is re-run on the fence of OD's first staged cell (FX · Crc32 · #1), and its table is quoted with the
 FLOOR limit beside it.
+⛔ **NOT BEFORE A Z BOUNDARY WITH NO Z CELL LIVE.** Staging that cell creates a new `cells-*` root under the run box's `$HOME`, and a live
+cell's fence is a render-time glob: a root created after a live Z cell's render is outside that cell's fence until its next render (the
+fleet map's render-time clause). So the stage and the census wait for the Z chain's next boundary with no Z cell live.
