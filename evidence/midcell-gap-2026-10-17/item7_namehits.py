@@ -32,6 +32,8 @@ def main():
         model, cell, root, inside = (line.rstrip("\n").split("\t") + [""] * 4)[:4]
         cd = os.path.join(H, root, cell)
         FENCE = ("fence.json", "srt-settings.json")   # the cell's OWN deny-list renders: a name there means DENIED, never a read
+        if os.environ.get("NAMEHITS_CONTROL") == "1":   # POSITIVE CONTROL: read the fence renders AS record; every FENCED name must then count > 0
+            FENCE = ()
         files = [p for p in glob.glob(cd + "/ctl/**", recursive=True) if os.path.isfile(p)]
         fence = slurp(p for p in files if os.path.basename(p) in FENCE)
         ctl = slurp(p for p in files if os.path.basename(p) not in FENCE)

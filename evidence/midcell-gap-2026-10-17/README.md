@@ -14,3 +14,5 @@ Zero spend; every file here was produced on the run box or the lead box by the s
   the cell's own root strictly inside its window, and each such sibling's id counted in the cell's record. A transcript record of type
   `attachment` is the client echoing the cell's own settings (its deny list) and is not counted; the run before that exclusion found the echo
   (6 hits per cell in four cells), which is the evidence that the transcripts are in the haystack.
+- `exposed-namehits-control.tsv` — the POSITIVE CONTROL on the name count: the same script with `NAMEHITS_CONTROL=1`, which reads the cell's own
+  fence renders as part of its record. Every one of the 7 FENCED cells then counts its fenced names (2 to 6 hits); the other 41 stay at 0.

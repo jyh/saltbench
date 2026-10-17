@@ -1655,7 +1655,8 @@ cell's own record names what it could have reached. Evidence: `evidence/midcell-
 - **Another root born inside a cell's window:** 50 rows, 48 distinct cells (Claude 37, Gemini 11). In 7 of the 48, every such root is on the
   cell's OWN deny list, so it was denied, not exposed. In the other 41, it was not. **In all 48, no such root's name occurs in the cell's own
   record outside its fence render** (the agy lane's record is its `ctl/` stream and logs; a Claude cell's adds every session file of its
-  transcript). Controls per cell: the record is non-empty and holds the cell's own id; all 48 pass.
+  transcript). Controls per cell: the record is non-empty and holds the cell's own id; all 48 pass. A positive control on the count itself: a run
+  that read the fence renders as part of the record found every one of the 7 fenced names (2 to 6 hits each; `exposed-namehits-control.tsv`, `NAMEHITS_CONTROL=1`), so the count finds a name when it is there.
 - **A sibling born inside the cell's own root:** of the 520 cells, 503 had none. 13 had one and never named it. 4 had two, both on the
   cell's own deny list. A transcript record that is the client echoing the cell's settings is not counted. A run that counted it found
   the echo, which shows that the transcripts were in the haystack.
@@ -1664,10 +1665,10 @@ cell's own record names what it could have reached. Evidence: `evidence/midcell-
   on 2026-10-17 by the same scanner over their surviving transcripts. Each of the 62 read 58 to 284 tool inputs. **The agy lane has no such
   scanner** (it reads Claude tool records), so for Gemini cells the evidence is the name census above, over the cells that were exposed. It is
   not a measurement of other-root access in general.
-- ⚠️ **LIMITS, beside the verdicts.** (1) A root deleted before this census is invisible to it. (2) 11 of the cells counted EXPOSED (7
-  other-root and 4 in-root) carried the "born inside" root on their own deny list, which means that root existed at render. So a window's start
-  can predate its render, or a birth time is not a root's first appearance. The EXPOSED counts lean HIGH, and that is the conservative
-  direction for this question. (3) A name census finds a reach by NAME. A wildcard or a parent-directory listing that never prints the name
+- ⚠️ **LIMITS, beside the verdicts.** (1) A root deleted before this census is invisible to it. (2) 11 cells (7 other-root, 4 in-root) had a born-inside root on
+  their own deny list, so that root existed at render, and they are counted FENCED, not EXPOSED. A window's start can therefore predate its
+  render, or a birth time is not a root's first appearance, so the EXPOSED counts (41 other-root, 13 in-root) may lean HIGH, which is the
+  conservative direction for this question. (3) A name census finds a reach by NAME. A wildcard or a parent-directory listing that never prints the name
   is not counted. The escape scan reads every Claude tool input for another root's path, so it closes that hole for the Claude lane only.
   (4) None of this re-scores a cell.
 - **What this does not change:** no condition's status, no score, no figure. The paper's limits section carries one sentence for it: *"A cell
