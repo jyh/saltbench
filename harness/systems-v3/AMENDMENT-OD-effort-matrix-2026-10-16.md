@@ -301,3 +301,31 @@ so an OD cell's served-set read would look in the wrong config dir.
 - ⚠️ **LIMIT:** every arm runs against a stub run box. The real run box's first measurement is the identity triple, and the served-set read
   of each identity cell is the check that this change reaches the right directory.
 - R1.5 (a)'s sha is therefore `ad5cf236ebbaceb0` for OD's cells. v8 stays the lane-B chain, which is now finished.
+
+## ⚖️ ADDENDUM 3 — THE CHAIN IS `clb_chain.v11.sh`, NOT v10. APPENDED; all text above, every signature included, untouched.
+**bench (lead), 2026-10-17, relight 148.** v10 was fired for the identity triple at 02:30:29 PDT, after the three riders, and REFUSED AT START
+(rc 9), before any cell was staged or fired: no spend. Its ssh default named the run box by its RETIRED host name, which no longer resolves.
+The same name was hard-coded a second time in `score_cell`'s harvest copy (`rsync`), which `CLB_CHAIN_SSH` never reached. Every arm since
+v5 replaced ssh with a stub AND set `CLB_CHAIN_NOSCORE=1`, so neither use was ever driven. The helm's sweep of v10 found a third retired
+default: `POOLS` defaulted to a pool retired on 2026-10-14.
+- **v11** (sha256/16 `6cc95561062920c0`) = v10 (`ad5cf236ebbaceb0`) plus two changes. (1) ONE variable, `RUNBOX`, names the run box (by
+  default its current name), and both the ssh default and the harvest `rsync` use it, so the START probe that reaches the box covers the
+  harvest's host too. (2) There is NO pool default. An unset or empty `CLB_CHAIN_POOLS` refuses the start (rc 9), as does any pool listed in
+  the fleet's retired-pool list, or that list being unreadable (fail-closed). Nothing else changes.
+- **Arms on the REAL run box, zero model spend** (`arms_v11_runbox.sh`). R1: the ssh default as the chain evaluates it (v10 rc 255, v11
+  rc 0). R2: `score_cell`, extracted verbatim from each chain, harvests and scores an ENDED past lane-B cell (`clbglp01`) under a scratch
+  `HOME`. v11 prints `PASS 16/16`, EQUAL to that cell's row of record, which was read and not written; v10 fails. A MUTANT of v11 with only
+  the `rsync` host reverted passes R1 and fails R2 with `FAIL:harvest copy`, so the second site is load-bearing on its own.
+- **Arms on the stub box** (`arms_v11_pools.sh`, v10 against v11). P1 (pools unset: v10 aims at its retired default, v11 refuses), P2 (a
+  retired pool with a valid env file: v10 resolves it, v11 refuses) and P3 (an unreadable retired list: v11 refuses) are LOAD-BEARING. C1
+  (a live pool) is a control and is green on both. v10's own arms re-run on v11 give verdicts identical to v10's: `arms_v7.sh` (only a pid
+  differs), `arms_v8_lock.sh`, `arms_v9_od.sh` and `arms_v10_harvest.sh`.
+- **The names sweep** (`sweep_v11_names.md`): 23 needles, derived from the retired-pool list, the ssh host list and the roster's pool column,
+  each grepped case-insensitively as a literal. v11 carries exactly ONE live host or pool literal, the current run box (the positive
+  control). Every other hit is a comment or a receipt label. A census by kent of the export's box-side scripts that the chain calls (stager,
+  fire, harvest, served-set check, watcher, account check) found 0 retired names, and the OD env file on the box carries none.
+- ⚠️ **LIMITS:** R2 drives a lane-B cell built from an earlier export, because no OD cell has ended. The served-set read under OD's v3 config
+  dir is still first measured by the identity triple itself, as ADDENDUM 2 said. The sweep covers NAMES, not other environment-bound paths.
+  `score_cell`'s paths were exercised by R2 on this box.
+- R1.5 (a)'s sha is therefore `6cc95561062920c0` for OD's cells. v10 is RETIRED: it is out of the run dir, kept beside its refused run as
+  evidence. The chain, its arms and their outputs are in the lead's chain record at seat commit `702d35ca3`.
