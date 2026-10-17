@@ -1,6 +1,6 @@
 # The command-hazard census (desk row NR), 2026-09-22
 
-The cells' fence broke some invocations of `git` and `python3` in both arms. This directory holds the census that
+Many of the cells' own `git` and `python3` invocations failed, in both arms. This directory holds the census that
 asks whether the breakage fell harder on one arm. The paper's limits paragraph cites these files.
 
 ## The instrument
@@ -47,8 +47,20 @@ was replaced by `~/`. Nothing else was changed. The originals' sha256/16: all `8
 | Gemini, block s3 | 100.0 % (n 58) | 97.6 % (n 254) | −2.4 | `agy-out-s3.txt` |
 | Claude, pooled | 91.1 % (n 775) | 92.9 % (n 1,614) | +1.8 | `claude-pooled-2026-09-22.tsv` |
 
+For comparison, the `other` class (every command that is not `git` or `python3`):
+
+| reading | plain | salt-diet | file |
+|---|---|---|---|
+| Gemini, pooled | 61.2 % (n 2,284) | 30.4 % (n 8,011) | `agy-out-all.txt` |
+| Claude, pooled | 89.4 % (n 3,039) | 83.2 % (n 7,024) | `claude-pooled-2026-09-22.tsv` |
+
+On the Gemini lane `git` and `python3` fail far more often than `other`, so a tool-specific breakage shows. On the Claude
+lane, where the client's error flag is the measure, every class reads between 83 and 93 %, so that file cannot separate a
+breakage of `git` from the rest. kent's read of PR #351 (rider 1) raised this.
+
 The pooled Gemini row also holds roots that carry only one arm. Of the three blocks that carry both, one (l5)
-shows a large gap and the other two show a small gap the other way. The Claude lane's per-block reading was taken
+shows a large gap and the other two show a small gap the other way, against a plain arm whose `git` invocations
+all failed (29 of 29 and 58 of 58), so those two sit at a ceiling and are not a vote. The Claude lane's per-block reading was taken
 on 2026-09-22 but its output was not kept, so only the pooled Claude row is on file. **So no arm difference
 in `git` hazard is established on either lane, and the question NR asks stays open.** No census of the existing
 streams can settle it.
