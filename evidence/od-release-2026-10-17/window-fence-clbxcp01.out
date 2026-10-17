@@ -1,0 +1,18 @@
+2026-10-17T08:44:23Z FIRE clbxcp01 block=FX problem=Crc32 arm=plain n=1 export=811dc09657b4 dry=0
+2026-10-17T08:44:23Z EFFORT ctl/effort=xhigh = block FX's
+2026-10-17T08:44:23Z CLIENT PIN OK sha16=884baa38fe1a624b
+2026-10-17T08:44:24Z CLAUDE LANE QUIET (0 live clb cells by watch.beat)
+2026-10-17T08:44:29Z CONCURRENCY agy_live_at_fire=0 — REPORTED, not a refusal (§Q3.4 item 3 (b))
+run_settings_v3: the previous ~/<the pool config dir>/settings.json backed up to ~/bench-dry/clb/settings-backups/settings.json.pre-render-20261017T084429Z (OUTSIDE the run dir)
+run_settings_v3: RENDERED ~/<the pool config dir>/settings.json
+run_settings_v3: OK — ~/<the pool config dir>/settings.json registers 2 PreToolUse hooks (hook-deny-v3.sh, fence-hook.sh) and skipDangerousModePermissionPrompt; the Bash hook stands aside on ALLOW (no --decide, §30)
+2026-10-17T08:44:29Z SETTINGS rendered for the root; cleanupPeriodDays read back = 3650
+cell_trust_v3: SEEDED hasTrustDialogAccepted=true for ~/cells-clb-fx-crc32-plain/clbxcp01/repo (backup ~/<the pool config dir>-bench-backups/claude.json.pre-trust-seed, OUTSIDE the run dir)
+2026-10-17T08:44:29Z TRUST SEEDED and WATCH FILE present BEFORE the fence render
+render_fence_v3: WROTE ~/cells-clb-fx-crc32-plain/clbxcp01/ctl/fence.json (712 denyRead, 720 denyWrite, 2850 tool rules)
+render_fence_v3: CURRENT ~/cells-clb-fx-crc32-plain/clbxcp01/ctl/fence.json — byte-identical to a fresh rendering
+2026-10-17T08:44:30Z FENCE CONVERGES (sha16 b418ca420995a805)
+--- read-back after the window (ctl/effort; fence.json sha256/16; count of launch.log/end-* in ctl):
+xhigh
+b418ca420995a805
+0
