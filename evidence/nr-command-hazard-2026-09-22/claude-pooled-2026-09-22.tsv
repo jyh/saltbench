@@ -1,0 +1,10 @@
+arm	class	seen	done	done_failed	error_state	hazard_pct	mix_pct
+UNKNOWN	git	126	126	115	0	91.2698	15.0000
+UNKNOWN	python3	39	39	38	0	97.4359	4.6429
+UNKNOWN	other	675	675	590	0	87.4074	80.3571
+plain	git	775	775	706	0	91.0968	19.7755
+plain	python3	105	105	90	0	85.7143	2.6793
+plain	other	3039	3039	2718	0	89.4373	77.5453
+salt-diet	git	1614	1614	1500	0	92.9368	17.7675
+salt-diet	python3	446	446	390	0	87.4439	4.9097
+salt-diet	other	7024	7024	5843	0	83.1862	77.3228
