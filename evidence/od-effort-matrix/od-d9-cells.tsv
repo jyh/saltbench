@@ -1,0 +1,29 @@
+# desk OD §D1 population, 27 registered matrix cells keyed on root + cell; built by od_d9_extract.py from the run's own records
+root	cell	config	problem	n	status	client	argv_model	argv_effort	argv_utc	end_utc	wall_s	run_state	suite	T	output	input	cache_creation	cache_read	list_usd	served_verdict	served_head	served_sidechain	escape_hits	stage_export	fire_export	roots_born_in_window	root_name_hits	config_dir_after
+cells-clb-fx-crc32-plain	clbxcp02	FX	Crc32	2	HARVESTED	2.1.280	claude-fable-5-1	xhigh	2026-10-17T11:05:53Z	2026-10-17T11:24:24Z	1111	ENDED: LANDED	PASS 6/6	3966280	106224	928	248348	3610780	7.96	clean:fable51	claude-fable-5-1=96	claude-opus-5=50,claude-sonnet-5=46	0	811dc09657b4	9f42a53548a0	0	-	baseline(posted@83,010,571)
+cells-clb-fx-crc32-plain	clbxcp03	FX	Crc32	3	HARVESTED	2.1.280	claude-fable-5-1	xhigh	2026-10-17T12:01:52Z	2026-10-17T12:27:26Z	1534	ENDED: LANDED	PASS 6/6	4066600	138686	822	264120	3662972	9.84	clean:fable51	claude-fable-5-1=114	claude-opus-5=67,claude-sonnet-5=19	0	9f42a53548a0	9f42a53548a0	0	-	baseline
+cells-clb-fx-crc32-plain	clbxcp04	FX	Crc32	4	HARVESTED	2.1.280	claude-fable-5-1	xhigh	2026-10-17T13:04:39Z	2026-10-17T13:21:09Z	990	ENDED: LANDED	PASS 6/6	3328498	90798	818	214336	3022546	6.81	clean:fable51	claude-fable-5-1=91	claude-opus-5=55,claude-sonnet-5=27	0	eb50811fe861	eb50811fe861	0	-	baseline
+cells-clb-fh-crc32-plain	clbhcp02	FH	Crc32	2	HARVESTED	2.1.280	claude-fable-5-1	high	2026-10-17T11:26:15Z	2026-10-17T11:38:44Z	749	ENDED: LANDED	PASS 6/6	2381690	62720	986	164006	2153978	4.66	clean:fable51	claude-fable-5-1=87	claude-opus-5=29,claude-sonnet-5=23	0	811dc09657b4	9f42a53548a0	1	cells-zf-freelist-argon-salt-gf-stmt-r1=0	baseline(posted@83,026,221)
+cells-clb-fh-crc32-plain	clbhcp03	FH	Crc32	3	HARVESTED	2.1.280	claude-fable-5-1	high	2026-10-17T12:29:17Z	2026-10-17T12:40:45Z	688	ENDED: LANDED	PASS 6/6	2617108	64673	876	167245	2384314	4.93	clean:fable51	claude-fable-5-1=91	claude-opus-5=39,claude-sonnet-5=27	0	9f42a53548a0	9f42a53548a0	1	cells-zf-freelist-flash-salt-gf-stmt-r1=0	baseline
+cells-clb-fh-crc32-plain	clbhcp04	FH	Crc32	4	HARVESTED	2.1.280	claude-fable-5-1	high	2026-10-17T13:22:05Z	2026-10-17T13:31:33Z	568	ENDED: LANDED	PASS 6/6	2043399	55335	736	154780	1832548	4.31	clean:fable51	claude-fable-5-1=68	claude-opus-5=40,claude-sonnet-5=17	0	eb50811fe861	eb50811fe861	0	-	baseline
+cells-clb-ox-crc32-plain	clbwcp01	OX	Crc32	1	HARVESTED	2.1.280	claude-opus-5-5	xhigh	2026-10-17T11:39:38Z	2026-10-17T11:53:08Z	810	ENDED: LANDED	PASS 6/6	4219849	116039	186	288784	3814840	4.79	clean:opus55	claude-opus-5-5=118	claude-opus-5=52,claude-sonnet-5=46	0	811dc09657b4	9f42a53548a0	0	-	baseline(posted@83,029,131)
+cells-clb-ox-crc32-plain	clbwcp02	OX	Crc32	2	HARVESTED	2.1.280	claude-opus-5-5	xhigh	2026-10-17T12:41:31Z	2026-10-17T12:58:02Z	991	ENDED: LANDED	PASS 6/6	5352777	105105	222	238023	5009427	4.83	clean:opus55	claude-opus-5-5=129	claude-opus-5=54,claude-sonnet-5=56	0	9f42a53548a0	9f42a53548a0	0	-	baseline
+cells-clb-ox-crc32-plain	clbwcp03	OX	Crc32	3	HARVESTED	2.1.280	claude-opus-5-5	xhigh	2026-10-17T13:32:34Z	2026-10-17T13:49:04Z	990	ENDED: LANDED	PASS 6/6	4826978	132546	200	261329	4432903	5.02	clean:opus55	claude-opus-5-5=98	claude-opus-5=64,claude-sonnet-5=59	0	9f42a53548a0	eb50811fe861	0	-	baseline
+cells-clb-fx-lzw-plain	clbxzp01	FX	LZW	1	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-fx-lzw-plain	clbxzp02	FX	LZW	2	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-fx-lzw-plain	clbxzp03	FX	LZW	3	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-fh-lzw-plain	clbhzp01	FH	LZW	1	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-fh-lzw-plain	clbhzp02	FH	LZW	2	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-fh-lzw-plain	clbhzp03	FH	LZW	3	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-ox-lzw-plain	clbwzp01	OX	LZW	1	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-ox-lzw-plain	clbwzp02	OX	LZW	2	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-ox-lzw-plain	clbwzp03	OX	LZW	3	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-fx-freelist-plain	clbxfp01	FX	FreeList	1	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-fx-freelist-plain	clbxfp02	FX	FreeList	2	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-fx-freelist-plain	clbxfp03	FX	FreeList	3	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-fh-freelist-plain	clbhfp01	FH	FreeList	1	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-fh-freelist-plain	clbhfp02	FH	FreeList	2	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-fh-freelist-plain	clbhfp03	FH	FreeList	3	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-ox-freelist-plain	clbwfp01	OX	FreeList	1	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-ox-freelist-plain	clbwfp02	OX	FreeList	2	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+cells-clb-ox-freelist-plain	clbwfp03	OX	FreeList	3	OWED	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
