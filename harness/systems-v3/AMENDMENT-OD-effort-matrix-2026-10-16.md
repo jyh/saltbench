@@ -329,3 +329,24 @@ default: `POOLS` defaulted to a pool retired on 2026-10-14.
   `score_cell`'s paths were exercised by R2 on this box.
 - R1.5 (a)'s sha is therefore `6cc95561062920c0` for OD's cells. v10 is RETIRED: it is out of the run dir, kept beside its refused run as
   evidence. The chain, its arms and their outputs are in the lead's chain record at seat commit `702d35ca3`.
+
+## ⚖️ ADDENDUM 4 — FROM THE LIST AFTER THE IDENTITY TRIPLE, THE CHAIN IS `clb_chain.v12.sh`. APPENDED; all text above, every signature included, untouched.
+**bench (lead), 2026-10-17, relight 148.** The identity triple runs on v11 as ADDENDUM 3 signed it. This addendum governs the NEXT list only.
+**What v11 did on the triple's first pass** (09:45–09:46 UTC, no spend). FX was HELD at launch: its fence had drifted, because a root of another
+lane was created 14 seconds after the render, and the launch gate refused it ("nothing was spent"). The chain flagged FX. FH was then
+refused by the fire script as busy, because the held cell's heartbeat was still under the fire script's 180-second liveness window. The
+chain classes that refusal "not fired this pass" (rc 20), which the code's own comments say must stay retryable. But the walk left the row
+out of the list of owed rows, so with nothing fired and nothing live, the chain wrote `LIST COMPLETE` with FH and OX still owed. The
+`20) break;;` line has been in every chain since v5. Lane B never met it, because there a busy refusal always came with a live row.
+- **v12** (sha256/16 `34937fc1052c5c8d`) = v11 (`6cc95561062920c0`) plus one code line: a not-fired-this-pass row is named among the owed
+  rows with its class, so the walk waits and retries. Nothing else changes.
+- **Arms, on the stub box, zero spend** (`arms_v12_rc20.sh`, v11 against v12). B1 (one busy refusal served while nothing is live): v11
+  harvests 0 and writes LIST COMPLETE; v12 names the row as owed, retries, harvests 1, and then completes. It is LOAD-BEARING. C1 (no busy
+  refusal) harvests on both, a control. v11's own suites re-run on v12 give identical verdicts (pools, v9_od, v10_harvest, v8_lock), except
+  v7's arm 4. Under v11 that arm's export refusal returned rc 20 once and then completed; under v12 the refusal is repeated every walk until
+  the arm's idle cap stops it. v11's green there was this defect. The phase-2 fire stays at 0 on both, which is what the arm proves.
+  `score_cell` is byte-identical, so the real-box arms of ADDENDUM 3 carry over.
+- ⚠️ **LIMIT:** every arm here is on the stub box. The busy refusal is the real fire script's text, reproduced, not driven on the run box.
+- The triple's own record states that its first pass ended early, and that v11 was re-fired on the same list with FX's flag set aside
+  (cause: the drift, which is transient). FX then launched at 09:50:52 UTC with a fresh fence. The artifacts are in the lead's chain record
+  at seat commit `8051aedfc`.
