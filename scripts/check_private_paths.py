@@ -768,6 +768,9 @@ def self_test() -> int:
         ("end-tilde", "dest ~/projects/claude/" + "saltbench-sy" + "stems-v3-export-906775a" + " · 377 files"),
         ("end-scp", "pushed to host:" + "saltbench-sy" + "stems-v3" + " tonight"),
         ("end-url", "https://github.com/jyh/" + "se" + "at" + " is the memory mirror"),
+        # kent's read of #355 (2026-10-16 23:49:51): a SENTENCE-FINAL period hid the root; and a RELATIVE sibling path is a location.
+        ("end-period", "the export is ~/projects/claude/" + "saltbench-sy" + "stems" + ". Next sentence"),
+        ("end-dotdot", "cd ../" + "saltbench-sy" + "stems-v3" + " and build"),
         # ROOTLESS SHAPES (row J, 08/31). Assembled, never spelled.
         ("r-rl-b", "ruled in " + _ROOTLESS[0] + "/2026-08-30-x.md"),
         ("r-rl-f", "the row in " + _ROOTLESS[1] + "/RULING-x.md"),
@@ -815,6 +818,7 @@ def self_test() -> int:
         # item 11's guard: an owner/repo COORDINATE names a repo, it is not a path, and frozen amendments carry it.
         ("end-c-coord", "repo: jyh/" + "saltbench-sy" + "stems" + "          not the public repo"),
         ("end-c-clone", "cd <a clone of jyh/" + "saltbench-sy" + "stems" + ">"),
+        ("end-c-dotgit", "the bare repo ~/x/" + "saltbench-sy" + "stems" + ".git" + "x is a longer name"),
         ("c-meta", "this gate forbids paths into the private record"),
         # ROOTLESS guards: a bare name stays softened by the ruling; a MID-PATH
         # component of the same ordinary word is the declared consequence of
