@@ -350,3 +350,31 @@ out of the list of owed rows, so with nothing fired and nothing live, the chain 
 - The triple's own record states that its first pass ended early, and that v11 was re-fired on the same list with FX's flag set aside
   (cause: the drift, which is transient). FX then launched at 09:50:52 UTC with a fresh fence. The artifacts are in the lead's chain record
   at seat commit `8051aedfc`.
+
+## ⚖️ ADDENDUM 5 — ONE CLIENT FOR ALL THREE CONFIGURATIONS: 2.1.280, AND THE IDENTITY TRIPLE RE-RUN ON IT. APPENDED; all text above, every signature included, untouched.
+**bench (lead), 2026-10-17, relight 148, under the helm's ruling (A) of 03:23 PDT, which classified the fork as the helm's because it changes
+the instrument's version and keeps the registered design whole (§D7.4, ONE CLIENT VERSION; the charter's arm, §D8.3).**
+**What the tripwire found.** FX and FH ran on client 2.1.259 and both passed 6/6, each serving its registered head id. OX could not run: the
+pre-launch sandbox probe's own model call returned `API Error: 400 Claude Code 2.1.259 does not support this model; version 2.1.280 or newer
+is required`. The probe scored that INDETERMINATE and refused the launch; there was no model work and no spend. That is a refusal, not a
+substitution, and §D7 had no row for it.
+- **The client.** 2.1.280, the oldest version the refusal names, which is the conservative pick. It was fetched from the official release
+  distribution, and its sha256 equals the release manifest's checksum for this platform (sha256/16 `387a5c5dcdbb8150`). It was installed by
+  copy beside the old pin, by absolute path, and the run box's default client is unchanged. It is pinned for FX, FH and OX alike through a
+  new pool env whose only differences from the old one are the client path and its sha. The old env stays as the record of the 2.1.259 cells.
+- **Re-driven under the new client before any cell, each with its control, zero cells.** The sandbox probe was driven on OX's own staged cell
+  and rendered fence, in the fire script's own environment, with no launch. Three targets each read DENIED, with the inside read returning
+  its nonce as the control: the cell's own pool credential file; a credential directory outside the pool; and a file in another cell root that
+  existed at render. The credential path is the class that a deny-only fence was ruled for, because an allow entry once re-opened such a path
+  on an older client. The served-set read through the v3 config dir on those probe turns is clean for `opus55` (head `claude-opus-5-5`, 9
+  lines). The new client's `--help` lists `xhigh`. The three argv lines are the stub-driven suite arm and are not client-bound; each cell's
+  real argv is read from its launch log.
+- **The cells.** FX#1 and FH#1 (2.1.259) stay on record as IDENTITY READINGS ONLY, never matrix cells, and the result says so beside them.
+  They are ended and are never re-fired. The re-run triple is FX#2, FH#2 and OX#1 (OX#1 never launched). The matrix's Crc32 cells per
+  configuration are therefore numbered from 2 for FX and FH and from 1 for OX. The numbers are labels and carry no order effect.
+- **The chain** is `clb_chain.v12.sh` (ADDENDUM 4) for the re-run as well: it is v11 plus the rc-20 fix, and it is signed.
+- ⚠️ **LIMITS:** the three probes are OX's configuration only. FX and FH meet the same probe at their own fires, which gates each launch.
+  A GREEN probe keeps no client stderr, so whether 2.1.280 still prints an unknown-model note for `claude-opus-5-5` (a 200k context
+  window) is read from OX's own launch and watch logs at the re-run. The binary carries that id 14 times against 0 in 2.1.259.
+  §D3's PM re-price follows the re-run, and nothing beyond the triple fires until it exists.
+- The evidence is in the lead's record at seat commit `f253e0b36`.
