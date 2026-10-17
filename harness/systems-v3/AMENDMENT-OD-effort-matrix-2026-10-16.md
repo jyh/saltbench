@@ -451,3 +451,32 @@ configurations start there at #1.
   OX#3, then LZW #1–#3 and FreeList #1–#3, FX FH OX interleaved, with the LZW tripwire after the first LZW triple.
 - The evidence is in the lead's record at seat commits `c975872f8` (the chain and its arms) and `3340a9207` (the export, the repoint and the
   staging).
+
+## ⚖️ ADDENDUM 8 — P2 AND P4 ARE SCORED PER PAIR UNDER R1. APPENDED BEFORE ANY LZW OR FREELIST DATA; all text above, every signature included, untouched.
+**bench (lead), 2026-10-17, relight 150. The helm ruled the reading at 07:03 PDT (bus @83,148,945), on kent's read of #370 (@83,145,336).
+It changes how two predictions are scored. It changes no Crc32 reading: all nine Crc32 cells are PASS, so every pair there is at 3 / 3.**
+**What was ambiguous.** §D5 scores P2 and P4 *"only on a problem where some configuration falls below 3 / 3 (R1)"*. §D4 registers R1 first,
+and pair by pair: if every cell of two configurations on a problem passes, the ability reading for that pair is NO INFORMATION, never
+"equal". Read literally, "some configuration" means any of the three. Take a problem where FH is 2 / 3 and FX and OX are both 3 / 3: R1
+makes the OX-vs-FX ability reading NO INFORMATION, yet the literal reading scores P4 on it, and it reads "=" and MET.
+- **The reading.** P2 (FX vs FH) and P4 (OX vs FX) cite R1 by name, so they take R1's unit, which is the pair. A problem is scored for a
+  prediction only when at least one member of THAT PAIR falls below 3 / 3. A pair both at 3 / 3 is NOT SCORED on that problem, whatever the
+  third configuration did. Each prediction aggregates over its own scored problems, and with none it reads NOT SCORED. In the case above,
+  P2 is scored on that problem and P4 is not.
+- **The author's check (the helm's WRONG IF).** The phrase is not in the design of record: `DESIGN-correctness-primary-2026-10-02.md`
+  contains 0 occurrences of "some configuration". It was this amendment's own wording, and R1 was meant to bind P2 and P4. That is why
+  the brackets cite it.
+- **The tool.** `od_d9_result.py` scores each prediction over its own pair's problems. P2 reads MET unless some scored problem has FX below
+  FH by §P4's interval rule ("-"). P4 reads MET only if every scored problem reads "=". A "?" does not meet P4. The withholding is unchanged:
+  nothing is compared until all 27 cells are in.
+- **Arms (kent's five plus his ceiling case), on in-memory fixtures built from the 9 real cells; `--selftest` 14 / 14.** (1) A FX/FH median
+  output ratio of exactly 1.2 on one problem: P3 NOT MET. (2) FX above FH on 1 of 3 problems: P1 NOT MET. (3) FX 0 / 3 against FH 3 / 3
+  on one problem, then on two: P2 NOT MET both times. (4) OX [2/3, 1] against FX [2/3, 2/3]: the sign is "?", and P4 NOT MET. (5) An
+  UNSCORABLE cell enters the interval's upper bound. (6) The ceiling case (FH 2 / 3, FX and OX 3 / 3): P2 is scored on that problem and P4
+  reads NOT SCORED. This arm replaces #370's arm that asserted P4 WAS scored there, which encoded the literal reading.
+- **Mutants, each red, on its own arm.** kent's five: P3 `>` to `>=` · P1 `>= 2` to `>= 1` · P2 refusing only on two "-" · P4 accepting
+  "?" · the upper bound ignoring UNSCORABLE. His sixth, P5 `== 0` to `<= 1`, is caught by the capped-cell arm. The literal "some
+  configuration" scoring is caught by arm (6). #370's five (withholding off · root key off · sign non-strict · ceiling always on ·
+  censoring off) are still red. Twelve mutants, twelve red. The UNSCORABLE and non-strict-sign mutants also redden arm (4), which uses
+  both.
+- **Order.** This addendum is signed before LZW #1 fires. If it is not signed by Sunday's fire, LZW waits a day (the helm's condition).
