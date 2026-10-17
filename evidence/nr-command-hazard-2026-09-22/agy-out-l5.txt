@@ -1,0 +1,24 @@
+LANE: AGY · streams read: 56 · glob: ~/cells-l5-*
+
+ARM        CLASS        SEEN     DONE   FAILED ERRSTATE      HAZARD        MIX
+UNKNOWN    git            12        6        6        0     100.0%!      21.4%
+UNKNOWN    python3         2        1        1        0     100.0%!       3.6%
+UNKNOWN    other          42       21       16        0       76.2%      75.0%
+plain      git           578      289      183        0       63.3%      44.2%
+plain      python3        94       47       47        0      100.0%       7.2%
+plain      other         636      318      271        0       85.2%      48.6%
+salt-diet  git          1022      511      482        0       94.3%      29.8%
+salt-diet  python3       295      147      147        0      100.0%       8.6%
+salt-diet  other        2118     1059      363        0       34.3%      61.7%
+
+⚠️  HAZARD is failures/DONE WITHIN the class — a class-local rate, so it cannot be inflated by
+   an arm merely running more commands. MIX is the class's share of that arm's invocations.
+⚠️  ERRSTATE counts invocations the METER CANNOT SEE AT ALL (state=ERROR, no output): they are
+   in neither its numerator nor its denominator. Reported, never folded in.
+⛔ 2 ROOT(S) GAVE arm=UNKNOWN AND ARE NAMED HERE, never left as a total — an arm this
+   function does not know is a DESIGN arm it was not told about, not a bad name:
+     cells-l5-crc32-plain.HALTED-flash-turn-stall-2026-09-14T1703Z
+     cells-l5-crc32-plain.VOID-WRONG-MODEL-pro-under-flash-ids-2026-09-14T1617Z
+⚠️  A HAZARD MARKED `!` IS BELOW n=20 AND IS AN ANECDOTE, NOT A RATE — read its DONE column.
+⛔ THIS FILE DECLARES NO ARM EFFECT. Two rates differing is not an effect; the reading is the
+   lead's, and the confounds NR names are not discharged by this census.

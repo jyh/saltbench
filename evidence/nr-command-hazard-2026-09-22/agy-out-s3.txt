@@ -1,0 +1,17 @@
+LANE: AGY · streams read: 45 · glob: ~/cells-s3-*
+
+ARM        CLASS        SEEN     DONE   FAILED ERRSTATE      HAZARD        MIX
+plain      git           116       58       58        0      100.0%      17.0%
+plain      python3        18        9        9        0     100.0%!       2.6%
+plain      other         550      273      168        2       61.5%      80.4%
+salt-diet  git           508      254      248        0       97.6%      13.7%
+salt-diet  python3       326      163      163        0      100.0%       8.8%
+salt-diet  other        2883     1437      435        1       30.3%      77.6%
+
+⚠️  HAZARD is failures/DONE WITHIN the class — a class-local rate, so it cannot be inflated by
+   an arm merely running more commands. MIX is the class's share of that arm's invocations.
+⚠️  ERRSTATE counts invocations the METER CANNOT SEE AT ALL (state=ERROR, no output): they are
+   in neither its numerator nor its denominator. Reported, never folded in.
+⚠️  A HAZARD MARKED `!` IS BELOW n=20 AND IS AN ANECDOTE, NOT A RATE — read its DONE column.
+⛔ THIS FILE DECLARES NO ARM EFFECT. Two rates differing is not an effect; the reading is the
+   lead's, and the confounds NR names are not discharged by this census.
