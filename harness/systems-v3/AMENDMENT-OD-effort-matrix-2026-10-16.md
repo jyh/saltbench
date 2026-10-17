@@ -396,8 +396,9 @@ with skills the registration never contained. The chain was halted.
   on the restored directory left no skills folder behind.
 - **The staging directory is admitted only when empty.** The client also creates `seed-admin` at startup. Its changelog names this as the
   staging directory for `/ultrareview` uploads (2.1.292 and 2.1.295), which a headless cell never runs. The run-dir check now admits it only
-  as a real, readable, EMPTY directory. A file, a dotfile, a subdirectory, a symlink or an unreadable listing still refuses by name, and a
-  mutant removing each guard reddens its own arm. The directory sits inside the pool configuration directory, which every cell's fence
+  as a real, readable, EMPTY directory. A file, a dotfile, a subdirectory, a symlink or an unreadable listing still refuses by name. A mutant
+  removing the emptiness, symlink or readable-listing guard reddens its own arm; the directory-type guard is redundant (a non-directory
+  already refuses through its listing), and no arm reddens without it. The directory sits inside the pool configuration directory, which every cell's fence
   denies to subprocesses.
 - **The export** is harness `9f42a53548a0`. Against the export ADDENDUM 1 released, it changes only the settings renderer, the fire's
   read-back, the run-dir check and its test. The fence renderer and the sandbox probe are byte-identical, so ADDENDUM 5's denials carry. The
@@ -407,7 +408,9 @@ with skills the registration never contained. The chain was halted.
   times (the cell's own pool credential, a credential directory outside the pool, and a file in a root that existed at render, each DENIED,
   with the inside read returning its nonce). Afterwards: no skills folder, an empty `seed-admin`, and the run-dir check GREEN.
 - **A harvest-side check after every cell** (the helm's (A″) condition): the staging directory must still be empty and no skills folder may
-  exist. It runs together with ADDENDUM 5's per-cell check of roots born inside the cell's window, which is now bounded by the cell's end.
+  exist. The plugin sync's folder is held to a measured baseline too: the first 2.1.280 turn, before the keys, left a synced-plugins folder
+  holding one zero-byte bucket marker and one empty directory (1 file, 2 entries, 0 bytes), and the check flags any change from that. The
+  run-dir check admits the plugins folder by name, so this after-cell check is the layer that would see a plugin sync. It runs together with ADDENDUM 5's per-cell check of roots born inside the cell's window, which is now bounded by the cell's end.
 - ⚠️ **LIMITS:** the keys' effect is measured on probe turns, not yet on a full cell. A cell-length session could reach a sync path that a
   probe does not, and the after-each-cell check exists for that case. The restore deleted the synced copies only after a byte copy and a
   per-file hash list were kept. The re-run is the identity triple of ADDENDUM 5 (FX#2, FH#2, OX#1), unchanged.
