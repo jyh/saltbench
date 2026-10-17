@@ -179,8 +179,10 @@ re-read against it. Any public sentence, and any claim about the method, is the 
 ---
 
 ## ⚖️ ADDENDUM 1 — THE RELEASE. APPENDED; all text above, the signature included, untouched.
-**bench (lead), drafted 2026-10-17.** ⛔ **DRAFT: it fires nothing, and every row marked OWED is OWED.** *(R1.1 named `0d97b68` until R1.7 was built; it now names `811dc09`.)* The first cell fires only
-after every OWED row below is TAKEN and a non-author signs this addendum. Every figure is read from `evidence/od-release-2026-10-17/`.
+**bench (lead), 2026-10-17. COMPLETE AND OFFERED FOR A NON-AUTHOR SIGNATURE; it fires nothing by itself.** *(R1.1 named `0d97b68` until R1.7
+was built; it now names `811dc09`.)* Three reads are taken AT FIRE by design and are not owed here: the server identity of the pool (R1.5 (d),
+after the client's own refresh), the chain's `strands=` (R1.5 (d)), and the head id the identity cell is SERVED (R1.3). The first cell fires
+only after a non-author signs this addendum. Every figure is read from `evidence/od-release-2026-10-17/`.
 
 ### R1.1 · §D0 ROW 4, THE EXPORT IS `811dc09` — ✅ TAKEN 2026-10-17
 saltbench-systems master was fast-forwarded `d398cb0` → `0d97b68` → `811dc09657b47d42c65bba8653c0e7b62f6e69dc`, each step after a non-author
@@ -260,9 +262,18 @@ The stager, fire and harvest knew only lane B's seven blocks, so no OD cell coul
   INDETERMINATE) at this sha and at its parent; with a real stdin it reads 52 / 52. The suite's tallies above were taken with a real stdin.
   An unattended suite run reads that one arm red while the code is fine; the root cause is not established.
 
-### R1.6 · THE WITHHELD CENSUS — OWED
-Lane B ADDENDUM 4 §R4.2's census is re-run on the fence of OD's first staged cell (FX · Crc32 · #1), and its table is quoted with the
-FLOOR limit beside it.
-⛔ **NOT BEFORE A Z BOUNDARY WITH NO Z CELL LIVE.** Staging that cell creates a new `cells-*` root under the run box's `$HOME`, and a live
-cell's fence is a render-time glob: a root created after a live Z cell's render is outside that cell's fence until its next render (the
-fleet map's render-time clause). So the stage and the census wait for the Z chain's next boundary with no Z cell live.
+### R1.6 · THE WITHHELD CENSUS, AT A HELD Z BOUNDARY — ✅ TAKEN 2026-10-17 08:44–08:45Z, ALL SIX TREES `COVERED · COVERED`, rc 0
+The window: the Z chain held before Z073 (gemini), no cell process live on the run box (checked at the object; the long-running agy pool
+canary was the only harness process). In order, each stopping on its own refusal: `clb_stage.sh --roots-od` (9 roots, each on its block's
+table) · `clb_stage.sh FX Crc32 plain 1` (`clbxcp01`, client pin `884baa38fe1a624b`, table `fable51`, `ctl/effort` xhigh read back) ·
+`fence-only-OD.sh FX Crc32 plain 1` (the export's own `clb_fire.sh` with the YIELD line removed and cut after FENCE CONVERGES, as lane B's
+fence-only step was): **FENCE CONVERGES sha16 `b418ca420995a805`**, no launch, nothing spent · lane B's `withheld_exposure_census.py`, unchanged,
+on that fence and the newest agy fence (`census-at-window.out`):
+```
+  # host role: the run box (cells-* roots under ~: 478)
+  # fences: claude clbxcp01 (denyRead 712) · agy zffcgss301 (denyRead 702)
+  # withheld-shaped entries: 666 in 6 top-level trees (a FLOOR: depth 7, no tarballs, name-based)
+  ~/bench-dry 384 · ~/projects 178 · ~/bench-v2 34 · ~/bench-v2-smoke 34 · ~/bench-v2-amend6 18 · ~/bench-v2-census-a6 18   ALL COVERED · COVERED
+```
+**Its limit rides with it:** 666 is a FLOOR, not a ceiling. Everything this method can see is denied to both lanes; it is not a proof that
+no withheld material exists anywhere. The nine OD roots existed before the next Z cell's fence render, so later Z cells glob them.

@@ -1,0 +1,12 @@
+agy-fence: cells-zf-crc32-flash-salt-gf-stmt-r3/zffcgss301/ctl/srt-settings.json
+# host role: the run box (cells-* roots under ~: 478)
+# fences: claude ~/cells-clb-fx-crc32-plain/clbxcp01/ctl/fence.json (denyRead 712) · agy ~/cells-zf-crc32-flash-salt-gf-stmt-r3/zffcgss301/ctl/srt-settings.json (denyRead 702)
+# withheld-shaped entries: 666 in 6 top-level trees (a FLOOR: depth 7, no tarballs, name-based)
+tree	entries	claude	agy
+~/bench-dry	384	COVERED	COVERED
+~/projects	178	COVERED	COVERED
+~/bench-v2	34	COVERED	COVERED
+~/bench-v2-smoke	34	COVERED	COVERED
+~/bench-v2-amend6	18	COVERED	COVERED
+~/bench-v2-census-a6	18	COVERED	COVERED
+rc=0
