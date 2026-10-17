@@ -342,8 +342,12 @@ _INTO = rf"(?<![A-Za-z0-9_.-])(?:{_ROOT_ALT}){_SEP}[A-Za-z0-9_.-]+"
 #   location. MEASURED before adding, across the six gated repos' tracked trees: 4 new lines here (frozen amendments,
 #   accepted residue in the baseline) · 1 in saltworks · 0 in salt, jas, x86lean, tt-neural-dataflow-fabric.
 _PSEG = r"[A-Za-z0-9_.$>-]+"
-_END_ROOT = (rf"(?:~|{_PSEG}{_SEP}{_PSEG}|{_PSEG}:~?){_SEP}(?:{_ROOT_ALT})(?![A-Za-z0-9_.-])(?!{_SEP}[A-Za-z0-9_.-])"
-             rf"|(?<=[A-Za-z0-9>_-]):(?:{_ROOT_ALT})(?![A-Za-z0-9_.-])")
+# kent's read (2026-10-16 23:49:51): `(?![A-Za-z0-9_.-])` read a sentence-final `.` as part of the name, so `…/<root>.` hid
+#   the root; now a `.` ends the name unless a name character follows it (`<root>.git` is still a longer name). And `./` and
+#   `../` are anchors: a RELATIVE sibling-checkout path is a location, not a coordinate.
+_END_NAME = r"(?![A-Za-z0-9_-])(?!\.[A-Za-z0-9_-])"
+_END_ROOT = (rf"(?:~|\.\.?|{_PSEG}{_SEP}{_PSEG}|{_PSEG}:~?){_SEP}(?:{_ROOT_ALT}){_END_NAME}(?!{_SEP}[A-Za-z0-9_.-])"
+             rf"|(?<=[A-Za-z0-9>_-]):(?:{_ROOT_ALT}){_END_NAME}")
 
 FORBIDDEN = [
     (re.compile(_INTO),
