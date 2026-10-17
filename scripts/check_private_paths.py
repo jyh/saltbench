@@ -332,10 +332,24 @@ _SEP = r"[/\\]+"
 #   assembled the literal in the SCRIPT THAT WROTE THE FILE rather than in the file.
 #   ⇒ ASSEMBLY MUST LIVE IN THE ARTIFACT, NOT IN ITS GENERATOR.
 _INTO = rf"(?<![A-Za-z0-9_.-])(?:{_ROOT_ALT}){_SEP}[A-Za-z0-9_.-]+"
+# ⛔⛔ A PATH THAT ENDS *AT* A ROOT (systems, 2026-10-16, the helm's item 11). Every pattern here wants a CHILD after the
+#   root, so `<host>:~/projects/claude/<tree>-v3-export-0d97b68 (marker…)` — bench's line on saltbench #354 — passed in BOTH
+#   pushes, beside two flagged twins that continued with `/harness/…`. Driven one variable at a time: the `host:` prefix is
+#   irrelevant (with a trailing child the same line is caught); the missing CHILD is the whole cause.
+# ✅ THE FORM: the root as the LAST segment of a path that has a path anchor before it — `~`, `<seg>:`, or at least two
+#   segments — plus the scp form `<host>:<root>`. ⛔ A bare owner/repo COORDINATE (one segment, `jyh/<tree>`) is a NAME, not
+#   a path: it is left alone, as the bare root in prose already is, because frozen amendments carry it and it discloses no
+#   location. MEASURED before adding, across the six gated repos' tracked trees: 4 new lines here (frozen amendments,
+#   accepted residue in the baseline) · 1 in saltworks · 0 in salt, jas, x86lean, tt-neural-dataflow-fabric.
+_PSEG = r"[A-Za-z0-9_.$>-]+"
+_END_ROOT = (rf"(?:~|{_PSEG}{_SEP}{_PSEG}|{_PSEG}:~?){_SEP}(?:{_ROOT_ALT})(?![A-Za-z0-9_.-])(?!{_SEP}[A-Za-z0-9_.-])"
+             rf"|(?<=[A-Za-z0-9>_-]):(?:{_ROOT_ALT})(?![A-Za-z0-9_.-])")
 
 FORBIDDEN = [
     (re.compile(_INTO),
      "a path into a private-record repo"),
+    (re.compile(_END_ROOT),
+     "a path ending AT a private-record root"),
     (re.compile(_CFGDIR),
      "a per-" + _SEAT + " runtime config directory"),
     (re.compile(rf"(?<![A-Za-z0-9_-]){_KIT_RE}(?:{_SEP}|\b)"),
