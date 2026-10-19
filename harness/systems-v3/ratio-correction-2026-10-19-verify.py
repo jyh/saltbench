@@ -79,11 +79,13 @@ def checks():
     # the paper: the corrected sentence, and the OS ratio it compares against
     t = lambda x: "$%s\\times$" % x[:-1]
     w = ("tex", TEX, None)
-    out += [(w, "sonnet ratios", "are %s, %s and %s." % (t(sg["med"]), t(ss["med"]), t(sbs["med"]))),
+    out += [(w, "sonnet ratios", "all lower bounds, are %s, %s and %s." % (t(sg["med"]), t(ss["med"]), t(sbs["med"]))),
             (w, "OS ratio", "is %s at twelve cells an arm" % t(os_["med"])),
             (w, "split equal", "probe-in readings of %s and %s, equal to the record's" % (t(ss["med"]), t(sbs["med"]))),
-            (w, "SG record", "where the record reads %s" % t(sg["med"]))]
-    gone = [t(sg["med_p"]) + ", " + t(ss["med_p"]) + " and " + t(sbs["med_p"]), "a hundredth below the record",
+            (w, "SG record", "where the record reads %s" % t(sg["med"])),
+            (w, "v4 note", "printed as %s, %s and %s: each was a ratio of two rounded medians, and from the unrounded tables they are %s, %s and %s"
+                % (t(sg["med_p"]), t(ss["med_p"]), t(sbs["med_p"]), t(sg["med"]), t(ss["med"]), t(sbs["med"])))]
+    gone = ["all lower bounds, are " + t(sg["med_p"]) + ", " + t(ss["med_p"]) + " and " + t(sbs["med_p"]), "a hundredth below the record",
             "where the record reads %s" % t(sg["med_p"])]
     return out, gone
 
