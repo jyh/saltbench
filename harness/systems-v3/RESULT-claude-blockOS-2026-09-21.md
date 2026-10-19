@@ -78,3 +78,8 @@ reproduces every median and total dollar figure above, and it prints each cell's
   plain      n=12   median $10.57 · 10,334,960 T      total $155.02 · 154,328,459 T
   salt-diet  n=12   median $14.80 · 16,541,054 T      total $213.46 · 250,019,763 T
 ```
+
+## §C · CORRECTION FROM A SCORED REFUTER PASS (bench, 2026-10-19; `RESULT-argon-refuter-2026-10-19.md`, F4). Everything above is unedited.
+The three Sonnet ratios this file quotes (8.27× SG, 5.32× SS, 4.71× SBS) were ratios of ROUNDED medians. From the unrounded block tables
+they are **8.29× (SG), 5.31× (SS) and 4.70× (SBS)**. Each of those files carries its own correction. The comparison is unchanged: every
+one is a lower bound and every one is far above this block's ratio. `ratio-correction-2026-10-19-verify.py` re-derives each figure here.
