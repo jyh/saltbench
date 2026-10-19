@@ -1,0 +1,8 @@
+# served-model evidence, O86 refuter run (gemini life 67, read from the run's own agy store)
+conversation 8c3e20bd-d7a3-496d-bac7-b58836116c3a · requested gemini-4-argon-high (gen_metadata row 3 config) · agy 1.4.2
+gen_row	model	ResponseID(store)	trace(store)	log_line
+0	gemini-4-argon	32vWatL9B4zQz7IPkJHIyQM	8b8abec9b79ddf06	I1019 12:13:39.877794     696 
+1	gemini-4-argon	5GvWaqy-E_idz7IP5IWekQQ	7eea32509161acb5	I1019 12:14:00.120132     997 
+2	gemini-4-argon	-2vWarayBr2Ez7IPse_RwAs	e7e067e96acb8766	I1019 12:14:10.731211    1117 
+# the log's other 3 streamGenerateContent calls (12:13:35 · 12:21:08 · 12:21:21) have no generation row; the log carries 11 sir_flash_lite + 1 MODEL_TIER_FLASH_LITE lines (agy's safety monitor, as in the 10-19 minute ③). LIMIT (minute ③): the store cannot show whether the model string is the server's or the request's.
+# fence: hook.log =  4 ALLOW view_file; 1 ALLOW write_to_file; 0 DENY
