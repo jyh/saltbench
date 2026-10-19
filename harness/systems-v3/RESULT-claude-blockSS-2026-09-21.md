@@ -67,3 +67,8 @@ reproduces every median and total dollar figure above, and it prints each cell's
   plain      n=12   median $1.67 · 3,203,646 T      total $21.64 · 38,901,865 T
   salt-diet  n=12   median $8.88 · 24,139,002 T      total $188.29 · 618,901,195 T
 ```
+
+## §C · CORRECTION FROM A SCORED REFUTER PASS (bench, 2026-10-19; `RESULT-argon-refuter-2026-10-19.md`, F4). Everything above is unedited.
+The median COST ratio is a ratio of the ROUNDED medians. From the unrounded `blockSS-cells.tsv` it is **5.31x** (printed 5.32x). The
+total COST ratio 8.70x and the T ratio 15.91x are right. The comparison with block SG is an observation and does not change; nor does
+the bound. This file's quoted block-SG figure (8.27×) is likewise **8.29×** unrounded. Re-derived by `ratio-correction-2026-10-19-verify.py`.

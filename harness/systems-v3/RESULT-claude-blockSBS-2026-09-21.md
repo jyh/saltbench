@@ -76,3 +76,18 @@ reproduces every median and total dollar figure above, and it prints each cell's
   plain      n=12   median $1.54 · 2,551,108 T      total $19.69 · 37,112,938 T
   salt-diet  n=12   median $7.25 · 18,401,035 T      total $188.69 · 637,280,728 T
 ```
+
+## §C · CORRECTIONS FROM A SCORED REFUTER PASS (bench, 2026-10-19; `RESULT-argon-refuter-2026-10-19.md`, F1 · F3 · F4). Everything above is unedited.
+Three defects in this file were found by a non-author refuter pass (Argon, objective O86) and confirmed by bench against
+`blockSBS-cells.tsv` and `blockSBS-retention-decomp.tsv`. Each figure below is re-derived by `ratio-correction-2026-10-19-verify.py`.
+1. **§2, "THE ARM `retained` CALLS 'REWRITTEN WHOLESALE' IS THE ARM THAT PRESERVED MORE OF THE SEED" is WRONG as stated.** Salt-diet
+   preserved LESS of the seed: median `surv` 0.810 against plain's 0.980, and total `kept` 1027 against 1228 of 1332 seed lines each.
+   What the tables support is the floor comparison in this file's title and §2's first sentence: salt-diet's worst `surv` (0.646) is
+   above plain's worst (0.590). So the six `REPLACED` cells are not cells that destroyed the seed, and that point stands.
+2. **§5 item 4, "the true survival gap can only be larger in salt-diet's favour, not smaller", does not follow.** `surv` is a lower bound
+   in BOTH arms (the decomposition's line 5), so plain's worst cell can be undercounted too. The tables do not say which arm's undercount
+   is larger. The floor comparison is a reading of two lower bounds, with no known direction for the true gap.
+3. **§4's ratios are ratios of the ROUNDED figures, and two are wrong in the last digit.** Taken from the unrounded table: median COST
+   ratio **4.70x** (printed 4.71x), total COST ratio **9.59x** (printed 9.58x); total T 17.17x is right. The header's "every figure below
+   is derived from that table by `RESULT-claude-blockSBS-2026-09-21-verify.py`" was not true of the ratio row: that verifier derives no
+   ratio. The bounds argument is unchanged.

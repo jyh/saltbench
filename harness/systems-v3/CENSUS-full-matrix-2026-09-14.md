@@ -1674,3 +1674,26 @@ cell's own record names what it could have reached. Evidence: `evidence/midcell-
 - **What this does not change:** no condition's status, no score, no figure. The paper's limits section carries one sentence for it: *"A cell
   root created during a run was not covered by that run's fence; over the cells of record, no cell's record names such a root, and every
   Claude cell's escape scan reads zero other-root accesses."*
+
+---
+# ⚖️ ADDENDUM 38 — THREE SONNET MEDIAN COST RATIOS CORRECTED IN THE LAST DIGIT (bench, 2026-10-19). No condition, score or count moves.
+Found by a non-author refuter pass (`RESULT-argon-refuter-2026-10-19.md`, F4, objective O86) and confirmed by bench on the tables of
+record. The ratios in §U3, §W2 and §X4 (and the per-block lines above them) were ratios of the ROUNDED medians. From the unrounded
+`final_COST` columns:
+```
+  block   printed   unrounded   table of record
+  SG       8.27x      8.29x     blockSG-cells.tsv (29 cells)
+  SS       5.32x      5.31x     blockSS-cells.tsv
+  SBS      4.71x      4.70x     blockSBS-cells.tsv     (and its total COST ratio: 9.58x printed, 9.59x unrounded)
+  O        1.89x      1.89x     right
+  OS       1.40x      1.40x     right
+```
+⚠️ **The DECLARED cost-convention section above (desk VX (b)) already read SS 5.31x and SBS 4.70x**, while it said its table *"reproduces
+this document's SS, SBS, OS and O figures to the second decimal"*. It did not: the document printed 5.32x and 4.71x. **The agreement
+claimed there was wrong in the last digit, and nobody re-read it.**
+**What this does not change:** the order of the blocks, every bound, and every sign. The three Sonnet ratios are still lower bounds, and
+the Opus OS ratio is still the smallest. The paper's three ratios are corrected in the same PR.
+⚠️ **AND THE PAPER'S CONVENTION SENTENCE MOVES WITH IT.** The paper already takes SS and SBS PROBE-APART from the VX split (5.54x,
+5.12x), and states SG and OS PROBE-IN because the split was taken on a different cell set. Its clause that the split's probe-in
+readings sit *"a hundredth below the record's"* stops being true once the record reads 5.31x and 4.70x, so the same PR changes it to
+*"equal to the record's"*, and the record's SG figure it quotes from 8.27x to 8.29x.

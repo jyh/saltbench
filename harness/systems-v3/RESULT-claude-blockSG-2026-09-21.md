@@ -95,3 +95,9 @@ The census moves this condition out of ADDENDUM 25's n < 3 list in its own adden
 Evidence: `evidence/claude-lane-blocks-2026-09-21/addendumA-clbglp01-2026-09-29/`. Home paths are written `~`, and the run account's
 config directory is written as a role (`.claude-<the run account>`), per this repository's scrub gates, and the
 served receipts' root-table PATH (into the private harness tree) is written as a role with its sha kept. No other byte is changed.
+
+## §C · CORRECTION FROM A SCORED REFUTER PASS (bench, 2026-10-19; `RESULT-argon-refuter-2026-10-19.md`, F4). Everything above is unedited.
+The median COST ratio is a ratio of the ROUNDED medians. On this file's table of record (`blockSG-cells.tsv`, 29 cells; the 30th,
+`clbglp01`, came by the addendum above and is not in that table), the unrounded ratio is **8.29x** (printed 8.27x). The total COST
+ratio 9.83x and the T ratio 20.77x are right. Re-derived by `ratio-correction-2026-10-19-verify.py`. This corrects the arithmetic on
+the stated table only. It does not re-take the ratio with `clbglp01` in it, and it does not take it probe-apart.
