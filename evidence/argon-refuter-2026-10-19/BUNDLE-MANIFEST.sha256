@@ -1,0 +1,4 @@
+310ba7e8f48057e2559b6c9fd6455bfd53a25b8a9a73b286e710e910a243454a  ./BRIEF.md
+2306fe6e5afa61053507dffaa0f9513804a98e3e3aeef92f45f88433a20fb920  ./evidence/claude-lane-blocks-2026-09-21/blockSBS-cells.tsv
+78326853373382c1dd5adf717031178320c44038dee78f019d417363cc6c3765  ./evidence/claude-lane-blocks-2026-09-21/blockSBS-retention-decomp.tsv
+906a4602ad786e8b959420d0238628dc336c4697d3f7768d8b6b505559d8821c  ./harness/systems-v3/RESULT-claude-blockSBS-2026-09-21.md

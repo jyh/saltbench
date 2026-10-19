@@ -1,0 +1,10 @@
+SEALED KEY — Argon refuter scored test (council 10-19 ③). Written by bench 2026-10-19 10:03:31 PDT. Do not open before both reads are filed.
+subject     harness/systems-v3/RESULT-claude-blockSBS-2026-09-21.md at saltbench origin/main 213ec38c9463cf594e63c03df01918210dfdf9c4
+original    sha256 0a3f86cd92af3d1f18760c4cec3b3f202fce3821ff6e9706217bfc83e3e15450
+planted     sha256 906a4602ad786e8b959420d0238628dc336c4697d3f7768d8b6b505559d8821c
+PLANT (exactly one, margin 1: one figure, one occurrence, no internal cross-check; only a re-derivation from the cells table finds it)
+  location  §2 table, row 'salt-diet  n=12', column 'retained (DISJOINT)', the range's MAXIMUM
+  original  0.101 .. 0.279
+  planted   0.101 .. 0.297   (digit transposition)
+  truth     max(retained) over the 12 salt-diet rows of blockSBS-cells.tsv = 0.279 (cell set: 0.101 0.102 0.113 0.119 0.121 0.14 0.236 0.236 0.239 0.256 0.275 0.279)
+  mechanical ground truth: the shipped verifier on the planted doc -> rc 1, exactly one figure: "salt-diet retained expected '0.101 .. 0.279'"; on the original -> rc 0, 25/25.
