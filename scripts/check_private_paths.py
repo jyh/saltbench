@@ -163,7 +163,9 @@ _EMPLOYER = ["lo" + "ca", "ho" + "ll", "pcc-" + "bios", "safe_" + "dav1d", "safe
 # content + studio ADDED 2026-09-27 (fleet map bullets, born 2026-09-26; scrub-roots-census UNWATCHED 12 pairs → 0), ordinary words ⇒ qualified forms only, like home and social.
 # jaguar ADDED 2026-10-09 (the private-lane tree, O63, born 2026-10-02; the Captain at council 2026-10-09, "ABS (a)": its NAME is
 #   watched by the public gates, never its contents; scrub-roots-census UNWATCHED 6 pairs → 0), an ordinary word ⇒ qualified forms only.
-_LOCALONLY = ["ho" + "me", "soc" + "ial", "con" + "tent", "stu" + "dio", "jag" + "uar"]
+# tutor ADDED 2026-10-20 (the coaching tree, O87, born 2026-10-19 at council ⑩; local-only; the fleet map lists it private;
+#   scrub-roots-census UNWATCHED 6 pairs → 0), an ordinary word ⇒ qualified forms only.
+_LOCALONLY = ["ho" + "me", "soc" + "ial", "con" + "tent", "stu" + "dio", "jag" + "uar", "tu" + "tor"]
 _PRIVATE_PROJ = ["soc" + "ial-run", "si" + "la", "mor" + "pho",
                  "emanu" + "ensis",                               # PRIVATE FOREVER, born 2026-09-03
                  "ver" + "so"]                                    # PRIVATE at the forge
@@ -232,9 +234,9 @@ ROOTS_DIGEST = hashlib.sha256("|".join(sorted(_ROOTS) + sorted("~" + w for w in 
 # ⛔ ROW MK: these three were ABSENT from this repo alone -- the date lived inline in the f-string
 #   below, with no owner and no re-measure clock, so nobody was accountable for it and nothing
 #   aged. The other five gated repos have carried all three since row IB.
-ROOTS_RECONCILED = "2026-10-09"
+ROOTS_RECONCILED = "2026-10-20"
 ROOTS_OWNER = "evidence (PM)"
-ROOTS_REMEASURE_DUE = "2026-11-09"
+ROOTS_REMEASURE_DUE = "2026-11-20"
 
 # ⛔ THE DURABLE LOCAL TIER (born 2026-08-25) IS A PRIVATE ROOT WHOSE NAME IS AN
 # ORDINARY WORD, so it CANNOT join _ROOTS. Measured before deciding: a bare
@@ -763,6 +765,10 @@ def self_test() -> int:
         ("ja-jaguar", "see projects/claude/" + "ja" + "guar" + "/notes/x.md"),
         ("ja-jaguar-bs", "see projects" + chr(92) + "claude" + chr(92) + "ja" + "guar" + chr(92) + "x.md"),
         ("ja-jaguar-repo", "pushed to Saltworks/" + "ja" + "guar" + ".git"),
+        # 2026-10-20: tutor (the coaching tree), qualified forms only. Split differently from `_LOCALONLY`.
+        ("tu-tutor", "see projects/claude/" + "tut" + "or" + "/log/x.md"),
+        ("tu-tutor-bs", "see projects" + chr(92) + "claude" + chr(92) + "tut" + "or" + chr(92) + "x.md"),
+        ("tu-tutor-repo", "pushed to Saltworks/" + "tut" + "or" + ".git"),
         ("vd-run", "receipts in ~/" + "so" + "cial-run" + "/receipts.tsv"),
         # ROW XK (2026-09-24): the family, the bare tree and three real worktree shapes. Split differently from
         #   `_FAMILY` so the plant never shares a constant with the pattern.
@@ -824,6 +830,9 @@ def self_test() -> int:
         # 2026-10-09: jaguar is an ordinary word and must never fire unqualified.
         ("ja-c-jaguar", "a " + "jaguar" + " in the rainforest"),
         ("ja-c-jaguar-dir", "docs/" + "jaguar" + "/x.md nests a PUBLIC dir"),
+        # 2026-10-20: tutor is an ordinary word and must never fire unqualified.
+        ("tu-c-tutor", "a maths " + "tutor" + " after school"),
+        ("tu-c-tutor-dir", "docs/" + "tutor" + "/x.md nests a PUBLIC dir"),
         # ROW XK: the PUBLIC benchmark repo, and the family name in prose, must never fire.
         ("xk-c-public", "see " + "saltbench" + "/harness/systems-v3/x.md"),
         ("xk-c-prose", "the " + "saltbench-sys" + "tems" + " harness runs the cells"),
