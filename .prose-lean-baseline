@@ -1,0 +1,41 @@
+# ACCEPTED DEBT at the gate's birth (council 2026-10-20 1(b)): claim sentences that predate it, by sha + path + class.
+# class 'shape' = a sentence matching one of the lexicon's shapes (read off the 2026-10-19 census; matching is NOT thereby an overclaim, and each census correction, being the Captain's wording, shrinks this file); 'predates' = a claim word in a headline carrier.
+# A line whose sentence is gone is refused (STALE-BASELINE): delete it. A NEW claim is refused until a .prose-lean-reads record names its Lean statement and a non-author reader.
+c4b9ddc8b2e6	AMENDMENT-13-AW-2026-09-01.md	shape
+90dfcfcb4f17	README.md	predates
+a837adfa40c3	README.md	predates
+c0e35bbcb120	README.md	predates
+4f9fddb448bc	RESULT-amend16-driver-2026-09-02.md	shape
+564781dde06d	RESULTS-stage0-2026-08-29.md	shape
+3bf11e9603f9	harness/systems-v3/AMENDMENT-OD-effort-matrix-2026-10-16.md	shape
+7056ddc85907	harness/systems-v3/AMENDMENT-gemini-level7-2026-09-16.md	shape
+c4f2d3ff505a	harness/systems-v3/DESIGN-claude-sandbox-probe-2026-09-13.md	shape
+1c149040e180	harness/systems-v3/RESULT-claude-blockNO-2026-09-28.md	shape
+80a706f45f53	harness/systems-v3/bin/README.md	predates
+ad34d6254e1c	paper/V3-RESTRUCTURE-PLAN.md	shape
+05c0d1c8aaf5	paper/saltbench-v1.tex	predates
+1152ec9146be	paper/saltbench-v1.tex	predates
+1862e3753a3b	paper/saltbench-v1.tex	predates
+2b8129b2cf34	paper/saltbench-v1.tex	predates
+36a4c787ac3c	paper/saltbench-v1.tex	predates
+39818e033ece	paper/saltbench-v1.tex	predates
+517686f54a40	paper/saltbench-v1.tex	shape
+523b3420ffbe	paper/saltbench-v1.tex	predates
+77b785d2304b	paper/saltbench-v1.tex	predates
+7bd6cc607416	paper/saltbench-v1.tex	predates
+7fecfaf7d864	paper/saltbench-v1.tex	predates
+825becf53c83	paper/saltbench-v1.tex	predates
+8762b8986724	paper/saltbench-v1.tex	predates
+8838d8940c83	paper/saltbench-v1.tex	shape
+94b865d34965	paper/saltbench-v1.tex	predates
+a3c1841904ca	paper/saltbench-v1.tex	predates
+c1bab88c2cf2	paper/saltbench-v1.tex	predates
+cfad6323e9b8	paper/saltbench-v1.tex	predates
+d0da3d8c1eb2	paper/saltbench-v1.tex	predates
+d11dc237747b	paper/saltbench-v1.tex	predates
+d63b58bb7caf	paper/saltbench-v1.tex	predates
+de85af591677	paper/saltbench-v1.tex	predates
+e32282598a0a	paper/saltbench-v1.tex	predates
+e38b4adedf8b	paper/saltbench-v1.tex	predates
+ebe9a68a1692	paper/saltbench-v1.tex	predates
+f58d8e3ad379	paper/saltbench-v1.tex	predates
