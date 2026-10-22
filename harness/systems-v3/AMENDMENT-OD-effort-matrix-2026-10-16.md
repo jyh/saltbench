@@ -480,3 +480,33 @@ makes the OX-vs-FX ability reading NO INFORMATION, yet the literal reading score
   censoring off) are still red. Twelve mutants, twelve red. The UNSCORABLE and non-strict-sign mutants also redden arm (4), which uses
   both.
 - **Order.** This addendum is signed before LZW #1 fires. If it is not signed by Sunday's fire, LZW waits a day (the helm's condition).
+
+## ⚖️ ADDENDUM 9 — THE REMAINING CELLS RUN ON THE POOL'S ACCOUNT CONFIG DIR, NOT ITS v3 DIR. APPENDED BEFORE ANY LZW OR FREELIST CELL FIRES; all text above, every signature included, untouched.
+**bench (lead), 2026-10-22, relight 160, under the Captain's ruling (B) on the run box's config dirs (his words, given in the helm's window
+about 12:5x PDT: *"I think we should use B, for fewer logins"*; the helm's order, bus @86,414,391; desk AEH). It changes the directory
+the client reads its credential, settings and trust from. It changes no task, arm, model, effort, client, harness export or chain.**
+**What was found.** ADDENDUM 2 kept OD on the pool's v3 config dir, the one R1.6's fence was rendered under. On 2026-10-18 that dir's
+credential was blanked by a failed refresh, and LZW #1 was refused before launch at zero spend. It has waited on an interactive login
+since. The same account has a second config dir on the run box, of the `.claude-account-<pool>` form, whose refresh token is live. That dir has
+held cells before (lane B's SG block, 2026-09-29). Its `settings.json` differs from the v3 dir's only in the per-root hook path and the two
+sync keys, which the fire renders on every launch (ADDENDUM 6).
+- **The change.** A new pool env, prefix `claude-lane-od4`, differs from ADDENDUM 7's in `CLB_CFG` alone (`diff`: that line and a
+  header comment). The chain picks it by its prefix, as ADDENDUM 2 (2) provides, and takes it because its basename is
+  `.claude-account-<pool>` (ADDENDUM 2 (3)). The served-set read follows the env's dir (ADDENDUM 2 (4)). Chain `clb_chain.v13.sh`,
+  export `eb50811`, client 2.1.280 and the order of ADDENDUM 7 are unchanged.
+- **The identity is the same account.** The dir's `oauthAccount` label is OD's pool account, and its sha256/16 equals the env's
+  `CLB_ACCOUNT_SHA16` (`2d67864f7a9226e6`). `credgate identity` on the run box reads EXPIRED-REFRESHABLE on it, the idle reading
+  of an idle cells dir (another pool's live v3 dir reads the same). No interactive login is needed.
+- **Driven, red first, zero spend.** One fixture cell, FX LZW plain #1, staged under `--dry` in a scratch parent with this export. The
+  fire's `--dry` under the v3 env REFUSES at the run-dir readiness check (*"no refresh token"*, rc 3). Under the new env it reads
+  RUN-DIR READY and reaches the dry stop (rc 0). Nothing else differs between the two drives.
+- ⚠️ **LIMIT: the dry drive stops before the settings render.** Settings, trust, the fence render and its convergence, the launcher's
+  `--check`, the sandbox probe and the launch are driven only by a real fire. The fire's renderer refuses a scratch config dir, which is
+  the guard working. **So the first LZW cell on the new dir is the test of those steps, and the client's first refresh on it is the same
+  act that blanked the v3 dir.** The lead reads that cell's fire log before the second fires.
+- **What it can and cannot confound.** All nine Crc32 cells ran on the v3 dir. Every LZW and FreeList cell runs on the account dir, for
+  all three configurations. The dir therefore varies with the problem and never with the configuration within a problem, and P1–P5 are
+  read per problem (§D5, ADDENDUM 8). A between-problem comparison of OD cells carries this as a declared difference beside the problem
+  itself.
+- **What is not touched.** The v3 dir is not deleted or copied from. It is moved aside with a date suffix only after a cell runs green on
+  the new dir (the helm's order, step 4). Lanes other than OD keep their envs until they have a cell to run.
