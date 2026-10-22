@@ -137,11 +137,18 @@ def parse_signature(sig):
 
 def spec_binder_uses(spec):
     """(binder name, uses in the spec outside comments). 2 = the binder and the final `∃ result, f x = result`."""
-    body = re.sub(r'--[^\n]*', '', spec)
+    body = re.sub(r'--[^\n]*', '', re.sub(r'/-.*?-/', '', spec, flags=re.S))
     m = re.search(r'def problem_spec\s*\(\s*(\w+)\s*:', body)
     if not m:
         raise Unreached('problem_spec binder')
     return m.group(1), len(re.findall(rf'\b{m.group(1)}\b', body))
+
+
+def has_final_application(spec, name):
+    """True iff the spec ends in CLEVER's template `∃ result, <name> … = result ∧ …` (comments stripped). With a count of 2,
+    this is what makes the second use THE final application rather than a call on another input (kent's read, (a))."""
+    body = re.sub(r'--[^\n]*', '', re.sub(r'/-.*?-/', '', spec, flags=re.S))
+    return re.search(rf'∃\s*(\w+)\s*,\s*{re.escape(name)}\b[^=∧]*=\s*\1\s*∧', body) is not None
 
 
 # ---------- values, rendered as Lean source ----------
@@ -209,6 +216,9 @@ def read_ref(pid):
 def plan(pid, seed, n_random):
     j = json.load(open(os.path.join(VIEWS, f'problem_{pid}', 'frozen.json')))
     name, uses = spec_binder_uses(j['problem_spec'])
+    if uses == 2 and not has_final_application(j['problem_spec'], name):
+        raise SpecRecursive(f'`{name}` is used twice but the spec does not end in `∃ result, {name} … = result ∧ …`, so the '
+                            'second use is not the final application')
     if uses != 2:
         raise SpecRecursive(f'`{name}` is used {uses} times (2 = binder + final application): the spec calls the '
                             'implementation on other inputs, so fixing it to a constant does not ask membership')
@@ -439,6 +449,12 @@ def selftest():
     check('draw: stratum from the input source', {r_[9] for r_ in d if r_[0] == '9'} == {'test-input'})
     check('draw: reproducible', draw(rows, 's') == d)
     check('draw: the seed moves it', [r_[1] for r_ in draw(rows, 't')] != [r_[1] for r_ in d])
+    check('final application: the template is found', has_final_application(plain, 'impl'))
+    nofinal = 'def problem_spec\n(impl: List Int → Int)\n(xs: List Int) :=\nimpl xs.tail = 0'
+    check('final application: one call on ANOTHER input and no template reads 2 and is NOT final (kent (a))',
+          spec_binder_uses(nofinal)[1] == 2 and not has_final_application(nofinal, 'impl'))
+    blockc = plain.replace('let spec', '/- impl is documented here -/\nlet spec')
+    check('binder uses: a block comment is not a use (kent (b))', spec_binder_uses(blockc)[1] == 2)
     print('SELFTEST', 'FAIL' if fails else 'OK', f'({fails} failed)')
     return 1 if fails else 0
 
