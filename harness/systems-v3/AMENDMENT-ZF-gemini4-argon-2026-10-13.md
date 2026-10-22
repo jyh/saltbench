@@ -511,10 +511,14 @@ that stopped at its turn cap with hits in its stderr is the case to read first. 
 still running (Z235 live at the count).
 
 **A7.5 · THE TURN-CAP CASE, READ.** A7.4(3) named a leg that stopped at its turn cap with hits as the case to read first.
-`evidence/zf-print-timeout-census-2026-10-22/turnloop-of-hit-roots.tsv` (by `turnloop_of_hits.py`, read 2026-10-22) is the turn loop record
-of every cell in the 34 roots with a hit: 33 records, and 1 root (`cells-l8zf-freelist-argon-salt-r2-sc`) holds no turn loop record at the
-read. **No hit leg stopped at its turn cap.** 30 LANDED, using 3 to 8 of their 40 turns. The 3 that did not land are FreeList · argon ·
-salt-diet · greenfield · bare, r1 to r3: `TURN-TIMEOUT` (14 turns, 12 with no output, 21,725 s) and `WEDGED` twice (6 turns, 5 with no
-output, about 9,128 s each), and all three end markers read `ARM-NOT-RECEIVED`. In those three the timeout is most of what happened: the
-subject produced nothing on most turns. Limits: this reads the loop's own record, not a score; whether the lost partial turn changed any
-LANDED leg's score is still NOT MEASURED; and whether those three roots are cells of record is not read here.
+`evidence/zf-print-timeout-census-2026-10-22/turnloop-of-hit-roots.tsv` (by `turnloop_of_hits.py census.txt`, read 2026-10-22) is the turn
+loop record of every phase of every cell in census.txt's 34 roots with a hit. The population is census.txt's, not a fresh glob of the run
+box, and a phase that a spec-change harvest set aside is read from `_aside/`. All 34 roots hold a record: 35 phase records, because the
+one spec-change root with a hit, `cells-l8zf-freelist-argon-salt-r1-sc-a2`, has both phases. **No hit leg stopped at its turn cap, in any
+phase read.** 32 phase records LANDED, using 3 to 8 of their 40 turns. The 3 that did not land are FreeList · argon · salt-diet ·
+greenfield · bare, r1 to r3: `TURN-TIMEOUT` (14 turns, 12 with no output, 21,725 s) and `WEDGED` twice (6 turns, 5 with no output, about
+9,128 s each), and all three end markers read `ARM-NOT-RECEIVED`. In those three the timeout is most of what happened: the subject
+produced nothing on most turns. The tsv's hits equal census.txt's for 33 roots. For r1-sc-a2 the tsv reads 4 hits (phase 1, LANDED in
+8 turns; phase 2 has 0) where census.txt reads 3, because the census was taken while that leg was still running. A7.2's table is left
+as counted. Limits: this reads the loop's own record, not a score; whether the lost partial turn changed any LANDED leg's score is still
+NOT MEASURED; and whether those three roots are cells of record is not read here.
