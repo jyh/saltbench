@@ -39,6 +39,7 @@ usage:
   u1_gen.py plan   --ids 0 73 … [--seed S] [--n-random N] --out DIR     # writes eval files, no Lean
   u1_gen.py run    --ids 0 73 … [--seed S] [--n-random N] --out DIR     # plan + Lean + key → DIR/items.tsv
   u1_gen.py summary --out DIR                                            # re-print the counts from DIR/items.tsv
+  u1_gen.py draw   [--seed S] --out DIR                                  # leg (a) draw → DIR/drawn.tsv (KERNEL only, <= 8/problem)
   u1_gen.py --selftest
 env:
   VIEWS      frozen views dir (default <this dir>/views)
@@ -368,6 +369,26 @@ def summary(rows):
           f'problems with a no: {off or "none"} (each is a spec that rejects its own test, or a defect here)')
 
 
+def draw(rows, seed, cap=8):
+    """The leg (a) draw (the PM's ruling F2/F3): per problem, KERNEL-keyed items only, a seeded shuffle, up to cap//2
+    yes and cap//2 no, then filled to cap from the larger side. Returns rows with a stratum column appended:
+    test-input (a frozen #test input) or generated-input (boundary or random)."""
+    out = []
+    for pid in sorted({r_[0] for r_ in rows}, key=int):
+        pool = sorted((r_ for r_ in rows if r_[0] == pid and r_[8] == 'KERNEL' and r_[6] in ('yes', 'no')),
+                      key=lambda r_: r_[1])
+        r = random.Random(f'{seed}:draw:{pid}')
+        r.shuffle(pool)
+        yes = [r_ for r_ in pool if r_[6] == 'yes']; no = [r_ for r_ in pool if r_[6] == 'no']
+        half = cap // 2
+        take = yes[:half] + no[:half]
+        rest = yes[half:] + no[half:]
+        take += rest[:max(0, cap - len(take))]
+        for r_ in sorted(take, key=lambda r_: r_[1]):
+            out.append(list(r_) + ['test-input' if r_[2] == 'test' else 'generated-input'])
+    return out
+
+
 def selftest():
     fails = 0
     def check(name, ok):
@@ -404,6 +425,20 @@ def selftest():
     check('binder uses: a comment is not a use', spec_binder_uses(commented)[1] == 2)
     check('binder uses: `impl` inside `implementation` is not counted', spec_binder_uses(
           plain.replace('r = 0', 'r = implementation_size')) [1] == 2)
+    def row(pid, i, key, trust='KERNEL', src='random'):
+        return [pid, f'p{pid}-{i}', src, 'ref', 'x', 'y', key, 'R1', trust]
+    rows = [row('7', i, 'yes') for i in range(10)] + [row('7', 10 + i, 'no') for i in range(2)] + \
+           [row('7', 20, 'yes', 'COMPILED'), row('7', 21, 'DROPPED', '-')] + [row('9', i, 'no', src='test') for i in range(3)]
+    d = draw(rows, 's')
+    d7 = [r_ for r_ in d if r_[0] == '7']
+    check('draw: cap 8 per problem', len(d7) == 8)
+    check('draw: balanced where possible (2 no available, so 2 no + 6 yes)', sum(r_[6] == 'no' for r_ in d7) == 2)
+    check('draw: COMPILED never drawn', all(r_[8] == 'KERNEL' for r_ in d))
+    check('draw: DROPPED never drawn', all(r_[6] in ('yes', 'no') for r_ in d))
+    check('draw: a small problem gives all it has', len([r_ for r_ in d if r_[0] == '9']) == 3)
+    check('draw: stratum from the input source', {r_[9] for r_ in d if r_[0] == '9'} == {'test-input'})
+    check('draw: reproducible', draw(rows, 's') == d)
+    check('draw: the seed moves it', [r_[1] for r_ in draw(rows, 't')] != [r_[1] for r_ in d])
     print('SELFTEST', 'FAIL' if fails else 'OK', f'({fails} failed)')
     return 1 if fails else 0
 
@@ -412,12 +447,27 @@ def main():
     if sys.argv[1:] == ['--selftest']:
         sys.exit(selftest())
     ap = argparse.ArgumentParser()
-    ap.add_argument('mode', choices=['plan', 'run', 'summary'])
+    ap.add_argument('mode', choices=['plan', 'run', 'summary', 'draw'])
     ap.add_argument('--ids', nargs='+', type=int)
     ap.add_argument('--seed', default='o90-u1-2026-10-22')
     ap.add_argument('--n-random', type=int, default=4)
     ap.add_argument('--out', required=True)
     a = ap.parse_args()
+    if a.mode == 'draw':
+        hdr = open(os.path.join(a.out, 'items.tsv')).readline().rstrip('\n').split('\t')
+        rows = [l.rstrip('\n').split('\t') for l in open(os.path.join(a.out, 'items.tsv'))][1:]
+        d = draw(rows, a.seed)
+        with open(os.path.join(a.out, 'drawn.tsv'), 'w') as f:
+            f.write('\t'.join(hdr + ['stratum']) + '\n')
+            for r_ in d:
+                f.write('\t'.join(r_) + '\n')
+        by = {}
+        for r_ in d:
+            by.setdefault(r_[0], [0, 0]); by[r_[0]][r_[6] == 'no'] += 1
+        print(f'DRAW seed={a.seed}: {len(d)} items · yes {sum(v[0] for v in by.values())} · no {sum(v[1] for v in by.values())} · '
+              f'test-input {sum(r_[9] == "test-input" for r_ in d)} · generated-input {sum(r_[9] == "generated-input" for r_ in d)}')
+        print('per problem (yes/no): ' + ' '.join(f'{k}:{v[0]}/{v[1]}' for k, v in sorted(by.items(), key=lambda kv: int(kv[0]))))
+        return
     if a.mode == 'summary':
         rows = [l.rstrip('\n').split('\t') for l in open(os.path.join(a.out, 'items.tsv'))][1:]
         summary(rows)

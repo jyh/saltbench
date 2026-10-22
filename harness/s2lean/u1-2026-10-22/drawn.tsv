@@ -1,0 +1,67 @@
+problem	item	input_source	output_source	input	output	key	rung	trust	stratum
+0	p0-0-ref	test	ref	([1, 2, 3]: List Rat) 0.5	false	yes	R1	KERNEL	test-input
+0	p0-1-perturb	test	perturb	([1, 2.8, 3, 4, 5, 2]: List Rat) 0.3	false	no	R1	KERNEL	test-input
+0	p0-2-perturb	boundary	perturb	(([]) : List Rat) ((0) : Rat)	true	yes	R0	KERNEL	generated-input
+0	p0-4-perturb	boundary	perturb	(([0, 1]) : List Rat) ((-1) : Rat)	true	no	R1	KERNEL	generated-input
+0	p0-5-perturb	boundary	perturb	(([0, 1, -1]) : List Rat) ((1/2) : Rat)	true	no	R1	KERNEL	generated-input
+0	p0-6-ref	random	ref	(([8/2, -2/3]) : List Rat) ((-5/2) : Rat)	false	yes	R1	KERNEL	generated-input
+0	p0-8-perturb	random	perturb	(([3/3, 9/3, -3/1]) : List Rat) ((-5/3) : Rat)	true	no	R1	KERNEL	generated-input
+0	p0-9-ref	random	ref	(([-5/1, -2/3, 5/3, 7/2]) : List Rat) ((6/2) : Rat)	true	yes	R1	KERNEL	generated-input
+4	p4-0-perturb	test	perturb	[1.0, 2.0, 3.0, 4.0]	2	no	R1	KERNEL	test-input
+4	p4-1-perturb	boundary	perturb	(([]) : List Rat)	2	yes	R0	KERNEL	generated-input
+4	p4-2-perturb	boundary	perturb	(([0]) : List Rat)	1	no	R0	KERNEL	generated-input
+4	p4-2-ref	boundary	ref	(([0]) : List Rat)	0	yes	R0	KERNEL	generated-input
+4	p4-5-perturb	random	perturb	(([-4/3, 3/2]) : List Rat)	(29 : Rat)/12	no	R1	KERNEL	generated-input
+4	p4-5-ref	random	ref	(([-4/3, 3/2]) : List Rat)	(17 : Rat)/12	yes	R1	KERNEL	generated-input
+4	p4-6-ref	random	ref	(([-2/4, -3/2]) : List Rat)	(1 : Rat)/2	yes	R1	KERNEL	generated-input
+4	p4-7-perturb	random	perturb	(([-9/4, 0/4, -1/4, 0/4]) : List Rat)	(29 : Rat)/16	no	R1	KERNEL	generated-input
+16	p16-0-perturb	test	perturb	"xyzXYZ"	4	no	R1	KERNEL	test-input
+16	p16-1-perturb	test	perturb	"Jerry"	5	no	R1	KERNEL	test-input
+16	p16-2-perturb	boundary	perturb	(("") : String)	1	no	R0	KERNEL	generated-input
+16	p16-2-ref	boundary	ref	(("") : String)	0	yes	R0	KERNEL	generated-input
+16	p16-4-ref	boundary	ref	(("ab") : String)	2	yes	R1	KERNEL	generated-input
+16	p16-6-ref	random	ref	(("AA") : String)	1	yes	R1	KERNEL	generated-input
+16	p16-7-perturb	random	perturb	(("A") : String)	2	no	R1	KERNEL	generated-input
+16	p16-7-ref	random	ref	(("A") : String)	1	yes	R1	KERNEL	generated-input
+18	p18-10-perturb	random	perturb	(("") : String) (("B.") : String)	1	no	R1	KERNEL	generated-input
+18	p18-12-ref	random	ref	((" ") : String) (("  ") : String)	0	yes	R1	KERNEL	generated-input
+18	p18-2-ref	test	ref	"" "a"	0	yes	R0	KERNEL	test-input
+18	p18-5-perturb	boundary	perturb	(("") : String) (("") : String)	1	no	R0	KERNEL	generated-input
+18	p18-8-perturb	boundary	perturb	(("Ab b") : String) (("Ab b") : String)	2	no	R1	KERNEL	generated-input
+18	p18-8-ref	boundary	ref	(("Ab b") : String) (("Ab b") : String)	1	yes	R1	KERNEL	generated-input
+18	p18-9-perturb	random	perturb	((" AA .") : String) (("") : String)	6	no	R1	KERNEL	generated-input
+18	p18-9-ref	random	ref	((" AA .") : String) (("") : String)	5	yes	R1	KERNEL	generated-input
+31	p31-10-perturb	boundary	perturb	((3) : Nat)	false	no	R1	KERNEL	generated-input
+31	p31-10-ref	boundary	ref	((3) : Nat)	true	yes	R1	KERNEL	generated-input
+31	p31-12-ref	random	ref	((13) : Nat)	true	yes	R1	KERNEL	generated-input
+31	p31-4-perturb	test	perturb	61	false	no	R1	KERNEL	test-input
+31	p31-4-ref	test	ref	61	true	yes	R1	KERNEL	test-input
+31	p31-7-perturb	boundary	perturb	((0) : Nat)	true	no	R0	KERNEL	generated-input
+31	p31-8-perturb	boundary	perturb	((1) : Nat)	true	no	R0	KERNEL	generated-input
+31	p31-9-ref	boundary	ref	((2) : Nat)	true	yes	R1	KERNEL	generated-input
+73	p73-8-perturb	boundary	perturb	(([]) : List Int)	1	no	R0	KERNEL	generated-input
+73	p73-8-ref	boundary	ref	(([]) : List Int)	0	yes	R1	KERNEL	generated-input
+74	p74-0-perturb	test	perturb	[] []	[""]	no	R0	KERNEL	test-input
+74	p74-0-test	test	test	[] []	[]	yes	R0	KERNEL	test-input
+74	p74-2-test	test	test	["hi", "admin"] ["hi", "hi", "admin", "project"]	["hi", "admin"]	yes	R1	KERNEL	test-input
+74	p74-3-test	test	test	["4"] ["1", "2", "3", "4", "5"]	["4"]	yes	R1	KERNEL	test-input
+74	p74-4-perturb	test	perturb	["hi", "admin"] ["hI", "Hi"]	["Hi"]	no	R0	KERNEL	test-input
+74	p74-4-test	test	test	["hi", "admin"] ["hI", "Hi"]	["hI", "Hi"]	yes	R1	KERNEL	test-input
+74	p74-5-perturb	test	perturb	["hi", "admin"] ["hI", "hi", "hi"]	["hi", "hi"]	no	R0	KERNEL	test-input
+74	p74-7-perturb	test	perturb	[] ["this"]	[""]	no	R0	KERNEL	test-input
+96	p96-0-perturb	test	perturb	5	[3]	no	R1	KERNEL	test-input
+96	p96-0-test	test	test	5	[2, 3]	yes	R1	KERNEL	test-input
+96	p96-1-perturb	test	perturb	11	[3, 5, 7]	no	R1	KERNEL	test-input
+96	p96-3-perturb	test	perturb	20	[3, 5, 7, 11, 13, 17, 19]	no	R1	KERNEL	test-input
+96	p96-3-test	test	test	20	[2, 3, 5, 7, 11, 13, 17, 19]	yes	R1	KERNEL	test-input
+96	p96-4-perturb	test	perturb	1	[0]	no	R1	KERNEL	test-input
+96	p96-4-test	test	test	1	[]	yes	R1	KERNEL	test-input
+96	p96-5-test	test	test	18	[2, 3, 5, 7, 11, 13, 17]	yes	R1	KERNEL	test-input
+127	p127-0-perturb	test	perturb	(1, 2) (2, 3)	"NOa"	no	R0	KERNEL	test-input
+127	p127-0-test	test	test	(1, 2) (2, 3)	"NO"	yes	R1	KERNEL	test-input
+127	p127-1-perturb	test	perturb	(-1, 1) (0, 4)	"NOa"	no	R0	KERNEL	test-input
+127	p127-1-test	test	test	(-1, 1) (0, 4)	"NO"	yes	R1	KERNEL	test-input
+127	p127-2-perturb	test	perturb	(-3, -1) (-5, 5)	"YESa"	no	R0	KERNEL	test-input
+127	p127-2-test	test	test	(-3, -1) (-5, 5)	"YES"	yes	R1	KERNEL	test-input
+141	p141-0-perturb	test	perturb	"example.txt"	"Yesa"	no	R0	KERNEL	test-input
+141	p141-1-perturb	test	perturb	"1example.dll"	"Noa"	no	R0	KERNEL	test-input
