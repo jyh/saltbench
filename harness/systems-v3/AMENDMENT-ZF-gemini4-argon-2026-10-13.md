@@ -475,3 +475,35 @@ pilot cells. A different denial sentence appears 3 times and is correctly not ma
 stderr prints READ over every empty turn of that run. The line says "counted per run, not attributed per turn", and it is read that way.
 (2) A reworded client sentence reports NOT READ, the safe direction. (3) systems' consumer search was not re-driven.
 **Limits of the signature:** python 3.14.4; the 3.9.6 run-box receipts are the lead's; nothing fired live.
+
+## ⚖️ ADDENDUM 7 — THE 30-MINUTE PER-TURN PRINT TIMEOUT BINDS THE TREATED ARM: A DECLARED LIMIT, NOT A CHANGE. APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-10-22, on gemini's Z235 observation (bus 2026-10-22 05:39). This addendum changes nothing that any leg measures: no cap, no
+export, no re-fire. It declares a limit that every ZF table carries, and it is written before the set's RESULT.*
+
+**A7.1 · WHAT GEMINI SAW.** In Z235 (FreeList · greenfield · spec-change · salt-diet · argon · r1), agy's per-turn wall clock
+(`--print-timeout 1800s`) fired: the client printed `[agy] print timeout after 30m0s with turn in progress; returning partial output` and the
+turn loop sent the next continue turn. 3 hits in attempt 2 (live at count time) and 1 in the attempt discarded on a 503. gemini counted 0 in the
+FreeList plain spec-change legs and the Crc32 argon salt-diet ones, and left the rest of the set uncounted.
+
+**A7.2 · THE CENSUS OF THE WHOLE SET.** `evidence/zf-print-timeout-census-2026-10-22/`: `census.txt` is one line per ZF cell root on the run
+box (`grep -c -F "print timeout"` over the root's `ctl/agy-stderr-*.txt`), and `tally.py` reads it. Output, 2026-10-22:
+```
+  arm        roots   roots with >= 1 hit   hits
+  plain        120                     3      5
+  salt-diet    115                    31     71
+```
+By model: argon plain 3 of 60, argon salt-diet 19 of 58; flash plain 0 of 60, flash salt-diet 12 of 57. The per-condition rows are in
+`tally.py`'s output. This is the campaign's own finding again: stage 1 measured `plain 0·0·0` against `salt-diet 2·4·3·3·5`, and the level-4
+amendment ruled that a per-turn wall clock cannot be made arm-neutral for an arm that runs a verifier, only non-binding
+(`AMENDMENT-gemini-brownfield-level4-2026-09-13.md`). ZF registered the 1800 s value and did not declare that it binds.
+
+**A7.3 · WHAT IT MEANS FOR A RESULT.** A hit costs the subject a partial turn: the loop counts it against the 40-turn cap and the conversation
+continues. A cap that binds one arm is a treatment applied to that arm. Here it falls on salt-diet, so its sign is AGAINST the arm under test:
+it can lower salt-diet's rates and cannot raise them. **Every ZF table carries this limit beside its rates, by model and arm, with the counts
+above.** It is not grounds to re-fire any leg, and the value is not changed inside the set.
+
+**A7.4 · LIMITS.** (1) The count is per cell ROOT, not per cell of record: a root that was re-fired under another name is counted under that
+name, and the 503-discarded roots are excluded. (2) A spec-change root on the run box holds phase 2's client stderr; phase 1 lives in an
+aside, so the spec-change rows are phase 2 only. (3) A hit says the clock fired; whether it changed a verdict is NOT MEASURED here — a leg
+that stopped at its turn cap with hits in its stderr is the case to read first. (4) The salt-diet spec-change rows are incomplete: the set is
+still running (Z235 live at the count).
