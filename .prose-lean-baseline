@@ -67,3 +67,8 @@ dff0c97be4a4	paper/saltbench-v1.tex	lexicon-e2
 e4408ef0c2af	paper/saltbench-v1.tex	lexicon-e2
 fb9147f3c36e	paper/saltbench-v1.tex	lexicon-e2
 fe60717b08b0	paper/saltbench-v1.tex	lexicon-e2
+# lexicon epoch 3 (R2, council 2026-10-22 item 3): Lean docstring claim sentences, gated from epoch 3 and accepted as debt by the WIDENING arm; class docstring-cited marks a declaration a public carrier names (read those first).
+1506ee4f7381	harness/s2lean/views/problem_81/A.lean	docstring
+1506ee4f7381	harness/s2lean/views/problem_81/C.lean	docstring
+d383f46558a5	harness/s2lean/views/problem_84/A.lean	docstring
+d383f46558a5	harness/s2lean/views/problem_84/C.lean	docstring
