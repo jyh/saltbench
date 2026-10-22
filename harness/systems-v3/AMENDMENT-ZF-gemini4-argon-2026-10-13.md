@@ -509,3 +509,12 @@ name, and the 503-discarded roots are excluded. (2) A spec-change root on the ru
 aside, so the spec-change rows are phase 2 only. (3) A hit says the clock fired; whether it changed a verdict is NOT MEASURED here — a leg
 that stopped at its turn cap with hits in its stderr is the case to read first. (4) The salt-diet spec-change rows are incomplete: the set is
 still running (Z235 live at the count).
+
+**A7.5 · THE TURN-CAP CASE, READ.** A7.4(3) named a leg that stopped at its turn cap with hits as the case to read first.
+`evidence/zf-print-timeout-census-2026-10-22/turnloop-of-hit-roots.tsv` (by `turnloop_of_hits.py`, read 2026-10-22) is the turn loop record
+of every cell in the 34 roots with a hit: 33 records, and 1 root (`cells-l8zf-freelist-argon-salt-r2-sc`) holds no turn loop record at the
+read. **No hit leg stopped at its turn cap.** 30 LANDED, using 3 to 8 of their 40 turns. The 3 that did not land are FreeList · argon ·
+salt-diet · greenfield · bare, r1 to r3: `TURN-TIMEOUT` (14 turns, 12 with no output, 21,725 s) and `WEDGED` twice (6 turns, 5 with no
+output, about 9,128 s each), and all three end markers read `ARM-NOT-RECEIVED`. In those three the timeout is most of what happened: the
+subject produced nothing on most turns. Limits: this reads the loop's own record, not a score; whether the lost partial turn changed any
+LANDED leg's score is still NOT MEASURED; and whether those three roots are cells of record is not read here.
