@@ -486,7 +486,8 @@ turn loop sent the next continue turn. 3 hits in attempt 2 (live at count time) 
 FreeList plain spec-change legs and the Crc32 argon salt-diet ones, and left the rest of the set uncounted.
 
 **A7.2 · THE CENSUS OF THE WHOLE SET.** `evidence/zf-print-timeout-census-2026-10-22/`: `census.txt` is one line per ZF cell root on the run
-box (`grep -c -F "print timeout"` over the root's `ctl/agy-stderr-*.txt`), and `tally.py` reads it. Output, 2026-10-22:
+box (`grep -c -F "print timeout"` over the concatenation of the root's `ctl/agy-stderr-*.txt`, one total per root; every root holds exactly one
+such file, `files=1` on all 238 lines), and `tally.py` reads it. Output, 2026-10-22:
 ```
   arm        roots   roots with >= 1 hit   hits
   plain        120                     3      5
@@ -498,8 +499,9 @@ amendment ruled that a per-turn wall clock cannot be made arm-neutral for an arm
 (`AMENDMENT-gemini-brownfield-level4-2026-09-13.md`). ZF registered the 1800 s value and did not declare that it binds.
 
 **A7.3 · WHAT IT MEANS FOR A RESULT.** A hit costs the subject a partial turn: the loop counts it against the 40-turn cap and the conversation
-continues. A cap that binds one arm is a treatment applied to that arm. Here it falls on salt-diet, so its sign is AGAINST the arm under test:
-it can lower salt-diet's rates and cannot raise them. **Every ZF table carries this limit beside its rates, by model and arm, with the counts
+continues. A cap that binds one arm is a treatment applied to that arm. Here it falls on salt-diet, so its sign is EXPECTED to be against the
+arm under test: it is expected to lower salt-diet's rates. That direction is an expectation; the counts above are the measurement (a partial
+turn followed by a continue turn is also a second prompt, and the census does not exclude that one helped a leg). **Every ZF table carries this limit beside its rates, by model and arm, with the counts
 above.** It is not grounds to re-fire any leg, and the value is not changed inside the set.
 
 **A7.4 · LIMITS.** (1) The count is per cell ROOT, not per cell of record: a root that was re-fired under another name is counted under that

@@ -2,7 +2,7 @@
 """Tally agy per-turn print-timeout hits in ZF cell roots, by model, arm and condition.
 
 Input: census.txt, one line per cell root on the run box:
-  <root> files=<n agy-stderr-*.txt> hits=<grep -c -F "print timeout" over them>
+  <root> files=<n agy-stderr-*.txt> hits=<grep -c -F "print timeout" over their concatenation: one total per root>
 Produced on the run box 2026-10-22 by:
   for d in ~/cells-*; do cat $d/ctl/agy-stderr-*.txt | grep -c -F "print timeout"; done
 DISCARDED roots are excluded (their re-fire is counted instead).
