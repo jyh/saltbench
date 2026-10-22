@@ -475,3 +475,50 @@ pilot cells. A different denial sentence appears 3 times and is correctly not ma
 stderr prints READ over every empty turn of that run. The line says "counted per run, not attributed per turn", and it is read that way.
 (2) A reworded client sentence reports NOT READ, the safe direction. (3) systems' consumer search was not re-driven.
 **Limits of the signature:** python 3.14.4; the 3.9.6 run-box receipts are the lead's; nothing fired live.
+
+## ⚖️ ADDENDUM 7 — THE 30-MINUTE PER-TURN PRINT TIMEOUT BINDS THE TREATED ARM: A DECLARED LIMIT, NOT A CHANGE. APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-10-22, on gemini's Z235 observation (bus 2026-10-22 05:39). This addendum changes nothing that any leg measures: no cap, no
+export, no re-fire. It declares a limit that every ZF table carries, and it is written before the set's RESULT.*
+
+**A7.1 · WHAT GEMINI SAW.** In Z235 (FreeList · greenfield · spec-change · salt-diet · argon · r1), agy's per-turn wall clock
+(`--print-timeout 1800s`) fired: the client printed `[agy] print timeout after 30m0s with turn in progress; returning partial output` and the
+turn loop sent the next continue turn. 3 hits in attempt 2 (live at count time) and 1 in the attempt discarded on a 503. gemini counted 0 in the
+FreeList plain spec-change legs and the Crc32 argon salt-diet ones, and left the rest of the set uncounted.
+
+**A7.2 · THE CENSUS OF THE WHOLE SET.** `evidence/zf-print-timeout-census-2026-10-22/`: `census.txt` is one line per ZF cell root on the run
+box (`grep -c -F "print timeout"` over the concatenation of the root's `ctl/agy-stderr-*.txt`, one total per root; every root holds exactly one
+such file, `files=1` on all 238 lines), and `tally.py` reads it. Output, 2026-10-22:
+```
+  arm        roots   roots with >= 1 hit   hits
+  plain        120                     3      5
+  salt-diet    115                    31     71
+```
+By model: argon plain 3 of 60, argon salt-diet 19 of 58; flash plain 0 of 60, flash salt-diet 12 of 57. The per-condition rows are in
+`tally.py`'s output. This is the campaign's own finding again: stage 1 measured `plain 0·0·0` against `salt-diet 2·4·3·3·5`, and the level-4
+amendment ruled that a per-turn wall clock cannot be made arm-neutral for an arm that runs a verifier, only non-binding
+(`AMENDMENT-gemini-brownfield-level4-2026-09-13.md`). ZF registered the 1800 s value and did not declare that it binds.
+
+**A7.3 · WHAT IT MEANS FOR A RESULT.** A hit costs the subject a partial turn: the loop counts it against the 40-turn cap and the conversation
+continues. A cap that binds one arm is a treatment applied to that arm. Here it falls on salt-diet, so its sign is EXPECTED to be against the
+arm under test: it is expected to lower salt-diet's rates. That direction is an expectation; the counts above are the measurement (a partial
+turn followed by a continue turn is also a second prompt, and the census does not exclude that one helped a leg). **Every ZF table carries this limit beside its rates, by model and arm, with the counts
+above.** It is not grounds to re-fire any leg, and the value is not changed inside the set.
+
+**A7.4 · LIMITS.** (1) The count is per cell ROOT, not per cell of record: a root that was re-fired under another name is counted under that
+name, and the 503-discarded roots are excluded. (2) A spec-change root on the run box holds phase 2's client stderr; phase 1 lives in an
+aside, so the spec-change rows are phase 2 only. (3) A hit says the clock fired; whether it changed a verdict is NOT MEASURED here — a leg
+that stopped at its turn cap with hits in its stderr is the case to read first. (4) The salt-diet spec-change rows are incomplete: the set is
+still running (Z235 live at the count).
+
+**A7.5 · THE TURN-CAP CASE, READ.** A7.4(3) named a leg that stopped at its turn cap with hits as the case to read first.
+`evidence/zf-print-timeout-census-2026-10-22/turnloop-of-hit-roots.tsv` (by `turnloop_of_hits.py census.txt`, read 2026-10-22) is the turn
+loop record of every phase of every cell in census.txt's 34 roots with a hit. The population is census.txt's, not a fresh glob of the run
+box, and a phase that a spec-change harvest set aside is read from `_aside/`. All 34 roots hold a record: 35 phase records, because the
+one spec-change root with a hit, `cells-l8zf-freelist-argon-salt-r1-sc-a2`, has both phases. **No hit leg stopped at its turn cap, in any
+phase read.** 32 phase records LANDED, using 3 to 8 of their 40 turns. The 3 that did not land are FreeList · argon · salt-diet ·
+greenfield · bare, r1 to r3: `TURN-TIMEOUT` (14 turns, 12 with no output, 21,725 s) and `WEDGED` twice (6 turns, 5 with no output, about
+9,128 s each), and all three end markers read `ARM-NOT-RECEIVED`. In those three the timeout is most of what happened: the subject
+produced nothing on most turns. The tsv's hits equal census.txt's for 33 roots. For r1-sc-a2 the tsv reads 4 hits (phase 1, LANDED in
+8 turns; phase 2 has 0) where census.txt reads 3, because the census was taken while that leg was still running. A7.2's table is left
+as counted. Limits: this reads the loop's own record, not a score; whether the lost partial turn changed any LANDED leg's score is still
+NOT MEASURED; and whether those three roots are cells of record is not read here.
