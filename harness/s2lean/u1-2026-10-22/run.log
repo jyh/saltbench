@@ -1,0 +1,21 @@
+DROPPED problem_146: SPEC-RECURSIVE: `impl` is used 4 times (2 = binder + final application): the spec calls the implementation on other inputs, so fixing it to a constant does not ask membership
+DROPPED problem_142: SPEC-RECURSIVE: `impl` is used 5 times (2 = binder + final application): the spec calls the implementation on other inputs, so fixing it to a constant does not ask membership
+DROPPED problem_112: SPEC-RECURSIVE: `implementation` is used 3 times (2 = binder + final application): the spec calls the implementation on other inputs, so fixing it to a constant does not ask membership
+problem_73: yes 1 · no 1 · dropped 26
+problem_0: yes 12 · no 8 · dropped 0
+problem_146: yes 0 · no 0 · dropped 1
+problem_16: yes 9 · no 9 · dropped 0
+problem_4: yes 9 · no 7 · dropped 0
+problem_38: yes 0 · no 0 · dropped 6
+problem_142: yes 0 · no 0 · dropped 1
+problem_96: yes 6 · no 6 · dropped 0
+problem_112: yes 0 · no 0 · dropped 1
+problem_141: yes 0 · no 2 · dropped 2
+problem_31: yes 11 · no 11 · dropped 6
+problem_54: yes 0 · no 0 · dropped 12
+problem_127: yes 3 · no 3 · dropped 0
+problem_18: yes 10 · no 10 · dropped 6
+problem_74: yes 9 · no 9 · dropped 0
+TOTAL: yes 70 · no 66 · dropped 61 over 15 problems
+POLARITY CONTROL: 18 of 18 keyed NOREF test pairs read yes; problems with a no: none (each is a spec that rejects its own test, or a defect here)
+EXIT=0
