@@ -1,0 +1,6 @@
+selftest pristine            PASS (5/5 fixtures)
+selftest mutant nosorry      RED as required: sorry: first_green 2 want 3
+selftest mutant noerrtag     RED as required: errtag: first_green 1 want 2
+selftest mutant norc         RED as required: rc: first_green 1 want 2
+selftest mutant nofilter     RED as required: filter: first_green 1 want 2
+SELFTEST PASS

@@ -1,0 +1,15 @@
+LEAN fixture: rc 0 · errors 0 · end True · file constants 10 · imported described 21 · lean ['4.27.0', '9790']
+PASS derive: the Direct fixture's proof term names library theorems (['List.append_nil', 'congrArg'])
+PASS non-vacuous: FxVia's own proof term lacks ['List.append_nil']
+PASS transitivity: FxVia reports every theorem Direct reports
+PASS non-vacuous: FxPriv's own proof term lacks ['List.append_nil']
+PASS transitivity: FxPriv reports every theorem Direct reports
+PASS filter live: the induction fixture reaches an INSTANCE and a COMPILER-AUX (['COMPILER-AUX', 'INSTANCE'])
+PASS filter live: no used name fires a FILTER rule
+PASS filter live: no used name is a Lean-flagged instance/recursor/matcher
+PASS private: FxPriv's helper is a _private file constant
+MUTANT M-SKIP-LOCALS: RED (3 arms failed: ['transitivity: FxVia reports every theorem Direct reports', 'transitivity: FxPriv reports every theorem Direct reports', 'filter live: the induction fixture reaches an INSTANCE and a COMPILER-AUX ([])'])
+MUTANT M-FILTER-LOCALS: RED (1 arms failed: ['transitivity: FxPriv reports every theorem Direct reports'])
+MUTANT M-NO-FILTER: RED (3 arms failed: ['filter live: the induction fixture reaches an INSTANCE and a COMPILER-AUX ([])', 'filter live: no used name fires a FILTER rule', 'filter live: no used name is a Lean-flagged instance/recursor/matcher'])
+LEAN-SELFTEST OK (9 arms, 3 mutants, 0 failed)
+EXIT=0

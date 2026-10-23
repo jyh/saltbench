@@ -134,6 +134,9 @@ for id in $ids; do
     if has_terminal "$t" "$STAGE" "$arm"; then echo "skip $t $STAGE $arm (terminal landing exists)"; continue; fi
     if [ "$STAGE" = "B" ] && [ ! -s "$SROOT/$t/$arm/A.bodies.json" ]; then synthetic "$t" B "$arm" "NOT_PROVEN(no_stage_A_pass)"; continue; fi
     if [ "$STAGE" = "C" ]; then case " $cdead " in *" $t "*) synthetic "$t" C "$arm" "NOT_RUN(view_dead)"; continue ;; esac; fi
+    # O90 (desk AEY): a U3 arm reuses a scored stage-B artifact; without one it lands NOT_RUN, never a skip (as D5 for stage B)
+    if [ "$STAGE" = "C" ]; then pa=""; case "$arm" in a6) pa=a0 ;; a7) pa=a5 ;; esac
+      [ -n "$pa" ] && [ ! -s "$SROOT/$t/$pa/B.artifact/B.artifact.json" ] && { synthetic "$t" C "$arm" "NOT_RUN(no_stage_B_artifact)"; continue; }; fi
     echo "$(stamp) START #$n $t stage=$STAGE" | tee -a "$RL"
     term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"
     case "$term" in REFUSED*) echo "$(stamp) HALT: the episode refused ($term) — deterministic, not retried" | tee -a "$RL"; exit 2 ;; esac

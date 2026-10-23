@@ -1872,3 +1872,10 @@ repo is the file that ran. Evidence:
 ⛔ **NON-RETROACTIVE, as registered.** `ep-6b5540c0` keeps `class = SCREEN` in its manifest; the amendment-8
 reading of record keeps `a2 = 10/15`. The 11/15 of §9.4 is a DIAGNOSTIC and is labelled one everywhere it appears.
 The clause governs **future** runs only.
+
+
+### Amendment O90-STAGE1 — 2026-10-23, registered in its own file BEFORE its first call: `AMENDMENT-O90-stage1-2026-10-23.md`
+
+The understanding arm (`a5`, P+U), the reuse probe (stage C with the stage-B artifact beside the view: `a6`, `a7`; C0 = `a0`),
+the thirty ids (U15 + the next fifteen unflagged, k = 66), the client re-pin and the stage's own config dir and state root.
+Cited by name and date, not by a number, because this repository already has four amendment registries.

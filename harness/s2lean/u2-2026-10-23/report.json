@@ -1,0 +1,450 @@
+{
+ "artifacts": [
+  {
+   "arm": "a0",
+   "canonical_sha256": "4317e5df554be8487f919ba132937320ac0077cde3ec2103ee35e29a71d3da2f",
+   "dropped": 90,
+   "dropped_by_rule": {
+    "AUX-NAME": 2,
+    "COMPILER-AUX": 4,
+    "INSTANCE": 57,
+    "TACTIC-INTERNAL": 27
+   },
+   "episode": "ep-a1644525",
+   "file_constants": 10,
+   "items": 4,
+   "lean": [
+    "4.27.0",
+    "9790"
+   ],
+   "passed": true,
+   "pool": {
+    "def": {
+     "candidates": 9357,
+     "dropped": {
+      "AUX-NAME": 523,
+      "COMPILER-AUX": 870,
+      "DEPRECATED": 145,
+      "EQN-LEMMA": 280,
+      "INSTANCE": 2168,
+      "NOT-LIBRARY": 24,
+      "SYNTAX": 1321,
+      "TACTIC-INTERNAL": 58
+     },
+     "dup_type": 8,
+     "eligible": 3936,
+     "in_used": 24
+    },
+    "theorem": {
+     "candidates": 42499,
+     "dropped": {
+      "AUX-NAME": 1882,
+      "COMPILER-AUX": 124,
+      "DEPRECATED": 530,
+      "EQN-LEMMA": 1208,
+      "INSTANCE": 1883,
+      "TACTIC-INTERNAL": 48
+     },
+     "dup_type": 5,
+     "eligible": 36794,
+     "in_used": 25
+    }
+   },
+   "pool_rows": 120496,
+   "probe_sha256": "dbccf4d6fed2422789d80d966cf1318913ce05af3fb75a9f8cd2e421fba0c2ad",
+   "problem": "74",
+   "reached_imported": 161,
+   "run_leanproj_manifest_sha256": "75f31318f4fa140ab4b413b36f7d2eae80edebc87ffe6e5b93c373be60ecbf81",
+   "stage": "B",
+   "used": 71,
+   "used_by_kind": {
+    "ctor": 11,
+    "def": 24,
+    "inductive": 11,
+    "theorem": 25
+   },
+   "used_direct_in_proof_term": 40,
+   "used_only_via_problem_spec": 0
+  },
+  {
+   "arm": "a2",
+   "canonical_sha256": "07987f2297864676b17ac1617fb1181de1ac447d52a709b5900cc9d4da6c51b2",
+   "dropped": 93,
+   "dropped_by_rule": {
+    "AUX-NAME": 2,
+    "COMPILER-AUX": 5,
+    "INSTANCE": 60,
+    "TACTIC-INTERNAL": 26
+   },
+   "episode": "ep-1a75f80f",
+   "file_constants": 7,
+   "items": 4,
+   "lean": [
+    "4.27.0",
+    "9790"
+   ],
+   "passed": true,
+   "pool": {
+    "def": {
+     "candidates": 9353,
+     "dropped": {
+      "AUX-NAME": 522,
+      "COMPILER-AUX": 868,
+      "DEPRECATED": 145,
+      "EQN-LEMMA": 280,
+      "INSTANCE": 2168,
+      "NOT-LIBRARY": 24,
+      "SYNTAX": 1321,
+      "TACTIC-INTERNAL": 58
+     },
+     "dup_type": 8,
+     "eligible": 3935,
+     "in_used": 24
+    },
+    "theorem": {
+     "candidates": 42564,
+     "dropped": {
+      "AUX-NAME": 1882,
+      "COMPILER-AUX": 124,
+      "DEPRECATED": 530,
+      "EQN-LEMMA": 1208,
+      "INSTANCE": 1883,
+      "TACTIC-INTERNAL": 48
+     },
+     "dup_type": 6,
+     "eligible": 36857,
+     "in_used": 26
+    }
+   },
+   "pool_rows": 120514,
+   "probe_sha256": "91c94380f67073d64b578d8429718c9361672febcd7a3350afe4ac88bb16062b",
+   "problem": "74",
+   "reached_imported": 165,
+   "run_leanproj_manifest_sha256": "75f31318f4fa140ab4b413b36f7d2eae80edebc87ffe6e5b93c373be60ecbf81",
+   "stage": "B",
+   "used": 72,
+   "used_by_kind": {
+    "ctor": 11,
+    "def": 24,
+    "inductive": 11,
+    "theorem": 26
+   },
+   "used_direct_in_proof_term": 40,
+   "used_only_via_problem_spec": 1
+  },
+  {
+   "arm": "a0",
+   "canonical_sha256": "92f75f1f858f71bfae68019506ddd20009183e6ad1e2a199c84466981837ac03",
+   "dropped": 17,
+   "dropped_by_rule": {
+    "AUX-NAME": 3,
+    "COMPILER-AUX": 3,
+    "INSTANCE": 11
+   },
+   "episode": "ep-05b2f46c",
+   "file_constants": 10,
+   "items": 4,
+   "lean": [
+    "4.27.0",
+    "9790"
+   ],
+   "passed": true,
+   "pool": {
+    "def": {
+     "candidates": 8866,
+     "dropped": {
+      "AUX-NAME": 411,
+      "COMPILER-AUX": 662,
+      "DEPRECATED": 146,
+      "EQN-LEMMA": 215,
+      "INSTANCE": 2246,
+      "NOT-LIBRARY": 24,
+      "SYNTAX": 1371
+     },
+     "dup_type": 28,
+     "eligible": 3742,
+     "in_used": 21
+    },
+    "theorem": {
+     "candidates": 47863,
+     "dropped": {
+      "AUX-NAME": 2745,
+      "COMPILER-AUX": 109,
+      "DEPRECATED": 578,
+      "EQN-LEMMA": 1034,
+      "INSTANCE": 1917
+     },
+     "dup_type": 2,
+     "eligible": 41462,
+     "in_used": 16
+    }
+   },
+   "pool_rows": 56935,
+   "probe_sha256": "ec85435466689951759ebf174000a719ffd508e36ecdb7f8e3d2cf87b95c65d6",
+   "problem": "16",
+   "reached_imported": 70,
+   "run_leanproj_manifest_sha256": "75f31318f4fa140ab4b413b36f7d2eae80edebc87ffe6e5b93c373be60ecbf81",
+   "stage": "B",
+   "used": 53,
+   "used_by_kind": {
+    "axiom": 1,
+    "ctor": 4,
+    "def": 21,
+    "inductive": 11,
+    "theorem": 16
+   },
+   "used_direct_in_proof_term": 31,
+   "used_only_via_problem_spec": 0
+  },
+  {
+   "arm": "a2",
+   "canonical_sha256": "703a1a542f6064d39b5e63fc8cc75032825656e410cd046965daff8e7a1300b8",
+   "dropped": 16,
+   "dropped_by_rule": {
+    "AUX-NAME": 2,
+    "COMPILER-AUX": 3,
+    "INSTANCE": 11
+   },
+   "episode": "ep-e3da4a44",
+   "file_constants": 11,
+   "items": 4,
+   "lean": [
+    "4.27.0",
+    "9790"
+   ],
+   "passed": true,
+   "pool": {
+    "def": {
+     "candidates": 8866,
+     "dropped": {
+      "AUX-NAME": 411,
+      "COMPILER-AUX": 662,
+      "DEPRECATED": 146,
+      "EQN-LEMMA": 215,
+      "INSTANCE": 2246,
+      "NOT-LIBRARY": 24,
+      "SYNTAX": 1371
+     },
+     "dup_type": 28,
+     "eligible": 3742,
+     "in_used": 21
+    },
+    "theorem": {
+     "candidates": 47882,
+     "dropped": {
+      "AUX-NAME": 2745,
+      "COMPILER-AUX": 109,
+      "DEPRECATED": 578,
+      "EQN-LEMMA": 1034,
+      "INSTANCE": 1917
+     },
+     "dup_type": 3,
+     "eligible": 41477,
+     "in_used": 19
+    }
+   },
+   "pool_rows": 56959,
+   "probe_sha256": "3206e03c902c6296815965c75ec28e99b9c53bc3591bf53e7d3f180b19a458dd",
+   "problem": "16",
+   "reached_imported": 72,
+   "run_leanproj_manifest_sha256": "75f31318f4fa140ab4b413b36f7d2eae80edebc87ffe6e5b93c373be60ecbf81",
+   "stage": "B",
+   "used": 56,
+   "used_by_kind": {
+    "axiom": 1,
+    "ctor": 4,
+    "def": 21,
+    "inductive": 11,
+    "theorem": 19
+   },
+   "used_direct_in_proof_term": 12,
+   "used_only_via_problem_spec": 0
+  },
+  {
+   "arm": "a0",
+   "canonical_sha256": "e95f9082417441485d6e9f779a3e979c8ee7959eeb7d221925cef27ce284be7e",
+   "dropped": 24,
+   "dropped_by_rule": {
+    "AUX-NAME": 2,
+    "COMPILER-AUX": 6,
+    "DEPRECATED": 1,
+    "INSTANCE": 15
+   },
+   "episode": "ep-e45d67b9",
+   "file_constants": 9,
+   "items": 4,
+   "lean": [
+    "4.27.0",
+    "9790"
+   ],
+   "passed": true,
+   "pool": {
+    "def": {
+     "candidates": 8015,
+     "dropped": {
+      "AUX-NAME": 398,
+      "COMPILER-AUX": 606,
+      "DEPRECATED": 144,
+      "EQN-LEMMA": 211,
+      "INSTANCE": 2014,
+      "NOT-LIBRARY": 24,
+      "SYNTAX": 1254
+     },
+     "dup_type": 18,
+     "eligible": 3323,
+     "in_used": 23
+    },
+    "theorem": {
+     "candidates": 27692,
+     "dropped": {
+      "AUX-NAME": 301,
+      "COMPILER-AUX": 81,
+      "DEPRECATED": 335,
+      "EQN-LEMMA": 97,
+      "INSTANCE": 1734
+     },
+     "dup_type": 6,
+     "eligible": 25120,
+     "in_used": 18
+    }
+   },
+   "pool_rows": 43407,
+   "probe_sha256": "e036edd461bf46c731d031a5839a396c3d2cbc0e16584c6e1d2e7f2a96a7491e",
+   "problem": "141",
+   "reached_imported": 91,
+   "run_leanproj_manifest_sha256": "75f31318f4fa140ab4b413b36f7d2eae80edebc87ffe6e5b93c373be60ecbf81",
+   "stage": "B",
+   "used": 67,
+   "used_by_kind": {
+    "axiom": 1,
+    "ctor": 10,
+    "def": 23,
+    "inductive": 15,
+    "theorem": 18
+   },
+   "used_direct_in_proof_term": 46,
+   "used_only_via_problem_spec": 0
+  },
+  {
+   "arm": "a2",
+   "canonical_sha256": "b47d55057f65cbde118fd4b6915de00a79a20fe46cd1e04603ee033b87319ccc",
+   "dropped": 23,
+   "dropped_by_rule": {
+    "AUX-NAME": 3,
+    "COMPILER-AUX": 6,
+    "DEPRECATED": 1,
+    "INSTANCE": 13
+   },
+   "episode": "ep-51311316",
+   "file_constants": 10,
+   "items": 4,
+   "lean": [
+    "4.27.0",
+    "9790"
+   ],
+   "passed": true,
+   "pool": {
+    "def": {
+     "candidates": 8015,
+     "dropped": {
+      "AUX-NAME": 398,
+      "COMPILER-AUX": 605,
+      "DEPRECATED": 144,
+      "EQN-LEMMA": 211,
+      "INSTANCE": 2014,
+      "NOT-LIBRARY": 24,
+      "SYNTAX": 1254
+     },
+     "dup_type": 19,
+     "eligible": 3322,
+     "in_used": 24
+    },
+    "theorem": {
+     "candidates": 34464,
+     "dropped": {
+      "AUX-NAME": 1041,
+      "COMPILER-AUX": 100,
+      "DEPRECATED": 527,
+      "EQN-LEMMA": 721,
+      "INSTANCE": 1765
+     },
+     "dup_type": 2,
+     "eligible": 30295,
+     "in_used": 13
+    }
+   },
+   "pool_rows": 42901,
+   "probe_sha256": "6ed5dda63127fc671c399adbc952596c572665bc874ccffaf9dd34f62e7b61d3",
+   "problem": "141",
+   "reached_imported": 81,
+   "run_leanproj_manifest_sha256": "75f31318f4fa140ab4b413b36f7d2eae80edebc87ffe6e5b93c373be60ecbf81",
+   "stage": "B",
+   "used": 58,
+   "used_by_kind": {
+    "ctor": 9,
+    "def": 24,
+    "inductive": 12,
+    "theorem": 13
+   },
+   "used_direct_in_proof_term": 46,
+   "used_only_via_problem_spec": 0
+  }
+ ],
+ "filter": [
+  [
+   "NOT-LIBRARY",
+   "defining module root not in LIBRARY_ROOTS (e.g. the task's Imports.* helpers)"
+  ],
+  [
+   "INSTANCE",
+   "tagged [instance] (Lean Meta.isInstanceCore)"
+  ],
+  [
+   "SYNTAX",
+   "the head of its type is in SYNTAX_TYPEHEADS (notation, parser, macro, elaborator, simproc, meta code)"
+  ],
+  [
+   "COMPILER-AUX",
+   "Lean flags it auxiliary recursor / noConfusion / matcher / recursor, or its last component is in AUX_LAST"
+  ],
+  [
+   "EQN-LEMMA",
+   "last component matches EQN_LAST (eq_N, eq_def, _unfold, _sunfold, eq_unfold, _eq_N)"
+  ],
+  [
+   "AUX-NUMBERED",
+   "a name component matches match_N or proof_N"
+  ],
+  [
+   "AUX-NAME",
+   "name contains one of NAME_SUBSTR (_private, ._, _auxLemma)"
+  ],
+  [
+   "TACTIC-INTERNAL",
+   "name starts with one of TACTIC_PREFIXES (tactic certificate machinery)"
+  ],
+  [
+   "DEPRECATED",
+   "tagged @[deprecated] (Lean Linter.isDeprecated)"
+  ]
+ ],
+ "items_per_kind": 2,
+ "k": 4,
+ "leanproj_manifest_sha256_now": "75f31318f4fa140ab4b413b36f7d2eae80edebc87ffe6e5b93c373be60ecbf81",
+ "library_roots": [
+  "Init",
+  "Std",
+  "Lean",
+  "Mathlib",
+  "Batteries",
+  "Aesop",
+  "Qq",
+  "ProofWidgets",
+  "Plausible",
+  "ImportGraph",
+  "LeanSearchClient"
+ ],
+ "m": 4,
+ "refused": [],
+ "seed": "o90-u2-2026-10-23"
+}
