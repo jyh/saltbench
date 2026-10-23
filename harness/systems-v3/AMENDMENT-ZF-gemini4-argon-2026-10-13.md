@@ -522,3 +522,153 @@ produced nothing on most turns. The tsv's hits equal census.txt's for 33 roots. 
 8 turns; phase 2 has 0) where census.txt reads 3, because the census was taken while that leg was still running. A7.2's table is left
 as counted. Limits: this reads the loop's own record, not a score; whether the lost partial turn changed any LANDED leg's score is still
 NOT MEASURED; and whether those three roots are cells of record is not read here.
+
+## ⚖️ ADDENDUM 8 — RELEASE: THE CREDENTIAL WINDOW READ FROM BOTH EXPIRY FIELDS, AT EXPORT `0b783cf` (Z240). APPENDED; all text above, signatures included, untouched.
+*bench (lead), 2026-10-23, on gemini's Z240 stop report and systems' fix (bus 2026-10-23). A change to the harness that LAUNCHES a cell,
+registered before the first model call it governs. Nothing a cell measures changes; the scorer stays ADDENDUM 3's. ⛔ **It binds no leg until a
+non-author signs it.** Until then the chain stays stopped at Z240, because `6993727` cannot read the client's new credential file (A8.1).*
+
+**A8.1 · WHAT HAPPENED (Z240).** Leg Z240 (FreeList · greenfield · spec-change · salt-diet · r3 · `gemini-3.8-flash-high`, cell `zfffgxs301`,
+export `6993727`) stopped at zero spend: the cell was BUILT and never launched. gemini's reading of the client logs: every client start through
+`cli-20261022_180604` reads agy 1.4.5, and Z240's first start, `cli-20261023_140948`, reads 1.4.6. The credential file on the run box no longer
+carries an `id_token` key; its window is `token.expiry`, an ISO-8601 time. `credential_seconds_left` in `agy_wave_v3.sh` read only the
+`id_token` exp and printed `0` on ANY exception, so a token with time left read "0s remaining" four times and every attempt refused: `REFUSE -
+could not obtain a 2400s credential window after 4 attempts`. A `0` for "I could not read it" and a `0` for "it has expired" were the same `0`.
+The driver then recorded the leg as `MODEL UNREAD`, because its refusal pattern matched only the em-dash spelling `REFUSE — ` and this line
+uses an ASCII hyphen. **Which event rewrote the file is not measured here:** the commit message says the auto-update, the code comment says a
+re-login. The fix does not depend on which.
+**Re-driven by the lead on the live file (run box, 2026-10-23T21:48:07Z, read only through the readers, which print seconds or key names and
+never a value):** the `0b783cf` reader reads **1300 s**; the `6993727` reader, on the same file a moment later, reads **0**. The defect
+reproduces live, and the fix reads it.
+
+**A8.2 · THE CHANGE: `6993727` → `0b783cf`** (saltbench-systems, six commits by systems, `69937276` an ancestor; `merge-base --is-ancestor`
+holds; the branch is the NAS backup remote's `systems/warm-credential-network-2026-10-19`, head `0b783cf35902`):
+```
+  db1bf46b  selftest_agy_warm_v3.sh, committed RED on the current wave script: the Z145 network-error warm-up (2026-10-19)
+  ab0ac100  agy_wave_v3.sh: a warm-up failure whose client log (only logs written SINCE this warm-up began) says "due to network error"
+            is named CREDENTIAL-NETWORK and retried ONCE after AGY_WARM_NET_RETRY_SECONDS (default 45); a second failure refuses with
+            the class named. Any other failure refuses as before, with no retry.
+  7d1d01a9  gemini_drive_v3.sh: wave_refusal() returns the wave's FIRST "REFUSE — " line, and the model-unread branch consults it first
+            and says "WAVE REFUSED in <root>: <line>" (same stop). gemini_canary_wave_v1.sh: CONDITION-FAILED quotes the driver's stated
+            reason. agy_wave_v3.sh: one retry rm reverted to the file's own form (the driver's allowlist derivation read `${w:?}` as a
+            variable the wave requires; that arm was red at ab0ac100).
+  9ef62d17  gemini_drive_v3.sh selftest only: the first-refusal arm also requires exactly ONE line (a mutant dropping -m1 survived it).
+  da8ee8ba  selftest_agy_warm_v3.sh, committed RED on the current wave script: the Z240 file shape (no id_token; window in token.expiry)
+  0b783cf3  agy_wave_v3.sh:
+            (a) credential_seconds_left reads token.expiry (a trailing Z, and 9 fraction digits, normalised for Python before 3.11) AND
+                the id_token exp, and takes the EARLIER, so a disagreement is conservative;
+            (b) an expiry that neither field yields prints "UNREADABLE (keys: …)" with the file's key NAMES, never a value and never 0;
+                ensure_credential_window then refuses at once, "REFUSE — CREDENTIAL-UNREADABLE: …", with NO warm-up; warm_window_rescues
+                treats UNREADABLE as no rescue;
+            gemini_drive_v3.sh: (c) wave_refusal matches "REFUSE — " AND "REFUSE - " (the four-attempt refusal is written with a hyphen).
+  diff 69937276..0b783cf3: 5 files, all harness/systems-v3/ (agy_wave_v3.sh +72/−8 · gemini_drive_v3.sh +43/−0 ·
+            gemini_canary_wave_v1.sh +3/−1 · selftest_agy_warm_v3.sh +132/−10 · selftest_all_v3.sh +2/−1, a comment only)
+```
+**Two things in the range that the Z240 report does not describe, named here so the release covers what it ships:** (1) the Z145 carry-up is
+TWO behaviour changes, not one: the CREDENTIAL-NETWORK retry in `agy_wave_v3.sh` (ab0ac100) and the verbatim REFUSE in the driver and the
+canary wave (7d1d01a9), plus a selftest-only commit (9ef62d17). (2) `gemini_canary_wave_v1.sh` changes (one CONDITION-FAILED line gains the
+driver's reason). Neither changes a stop, cap, score or outcome.
+**Unchanged, read in the diff:** the order FENCE RENDERED → BATTERY GREEN → CREDENTIAL WINDOW → fire; the 2400 s need; the warm-up's own
+rescue rule (A5.2, A5.7). A cell launches only on a window the reader READ. The new refusals stop a wave; they never launch one.
+
+**A8.3 · CONSUMERS** (the lead's search, `grep -rF` over the `0b783cf` tree, and `git grep -F` over saltbench at `3c582142`):
+```
+  credential_seconds_left · CREDENTIAL-UNREADABLE · CREDENTIAL-NETWORK   agy_wave_v3.sh and selftest_agy_warm_v3.sh only (+ a comment in
+                                                                          selftest_all_v3.sh). Public repo: 0 files.
+  wave_refusal                                                            gemini_drive_v3.sh only. Public repo: 0 files.
+  WAVE REFUSED                                                            gemini_drive_v3.sh (writes it), gemini_canary_wave_v1.sh (quotes it). Public: 0.
+  MODEL UNREAD · credential window                                        the same scripts; public hits are prose (this file, the census, two RESULTs, the paper)
+  control                                                                 warm_window_rescues: 1 public hit (A5.7), found
+```
+No script in either tree parses the credential reader's output except its two callers in the same file. **The chain (`chain-l8u.sh`, a lane
+file, not tracked in either repo, md5 a689dd84b231386a4501c9bcb4768648 as read at this release) derives the export as
+`saltbench-systems-v3-export-<first 7 of EXPORT.sha>` and the driver's worktree on the lead box as `saltbench-systems-v3-gemini-<same 7>`.**
+So the dest below is the name the chain will look for. Its `EXPORT.sha` still reads `69937276…`, and the `-gemini-0b783cf` worktree does not
+exist yet. Both are the hand's acts at the resume, after the signature, never before it.
+
+**A8.4 · RECEIPTS** (every line re-driven by the lead; systems' own figures are not used as receipts)
+```
+  lead box, each commit's tree from git archive, python 3.14.4 (bash run of the selftests):
+                           selftest_agy_warm_v3.sh   --mutants              gemini_drive_v3.sh --selftest
+  69937276 (the export)     12 passed · 0 failed      3 of 3 killed           24 of 24
+  db1bf46b (RED, Z145)      16 passed · 5 failed      (base red)              24 of 24
+  ab0ac100                  22 passed · 0 failed      7 of 7 killed           23 of 24 (the allowlist arm: `${w:?}`, as 7d1d01a9 says)
+  7d1d01a9                  22 passed · 0 failed      7 of 7 killed           27 of 27
+  9ef62d17                  22 passed · 0 failed      7 of 7 killed           27 of 27
+  da8ee8ba (RED, Z240)      22 passed · 8 failed      (base red)              27 of 27
+      the 8: newfull ×2 (a readable window read as 0 s) · newadv (the four-attempt refusal) · both (the later id_token exp taken) ·
+             noexp ×4 (warmed instead of refusing; not named CREDENTIAL-UNREADABLE; keys not named; printed as 0 s)
+  0b783cf3                  35 passed · 0 failed      12 of 12 killed         28 of 28
+      the 5 new mutants: z240-id-token-only (7 arms red) · z240-later-wins (1) · z240-unread-is-zero (5) · z240-no-unread-refusal (2) · z240-no-keys (1)
+  the lead's OWN mutant of gemini_drive_v3.sh at 0b783cf3: the pattern `REFUSE (—|-) ` cut back to `REFUSE — `
+                                                                                    27 of 28: the ONE red arm is "the HYPHEN spelling is a refusal too"
+  selftest_all_v3.sh --runs 1, a full git worktree at 0b783cf3, the lead box's toolchain contract loaded
+                                                                                    75 of 77 passed · 0 failed · 2 skipped (placebo-form,
+                                                                                    placebo-arm+problem-column: PLACEBO_V2_PATH unset, as A1.2); agy-warm and canary-wave ok
+  THE EXPORT, cut by the lead from that throwaway worktree:
+      studio_export.sh <run box> --ref 0b783cf3 --no-toolchain --dest <the dest below>
+                       --amendment AMENDMENT-gemini-level8-2026-09-16.md (as at saltbench origin/main 3c582142e726) --amendment-commit 3c582142e726…
+      dest saltbench-systems-v3-export-0b783cf, beside the earlier exports on the run box · 378 files (380 with EXPORTED-FROM.sha and REQUIRED-ANCESTORS.tsv) ·
+      listing sha256/16 dd179d14e5f23979 · withheld-shaped names 0 in the listing and 0 on the host · rc 0, marker written last
+      required-ancestor gate OK (5 of 5; serial=3, block digest 6b3de761118f9f42, amendment read at saltbench 3c582142e726)
+      diff -rq against the 6993727 export on the run box: exactly 7 files ·
+          harness/systems-v3/{agy_wave_v3.sh, gemini_drive_v3.sh, gemini_canary_wave_v1.sh, selftest_agy_warm_v3.sh, selftest_all_v3.sh}
+          + EXPORTED-FROM.sha + REQUIRED-ANCESTORS.tsv (only its @amendment-commit line differs: 7cbe2153 → 3c582142; rows identical)
+      on the host, sha256/16 == git show 0b783cf3, file by file:
+          agy_wave_v3.sh 7754e92b7eca7857 · gemini_drive_v3.sh 458bd8564691e1a8 · gemini_canary_wave_v1.sh 77fa2b49b933a9dd ·
+          selftest_agy_warm_v3.sh 02b139aec8001351 · selftest_all_v3.sh 1d8dc5a1a06e4de6
+      on the run box FROM THAT EXPORT, python 3.9.6, bash 3.2.57:
+          selftest_agy_warm_v3.sh 35 passed · 0 failed (the five expiry spellings PASS under 3.9.6) · --mutants 12 of 12 killed
+          gemini_drive_v3.sh --selftest 28 of 28 (run with WAVE_HOST=selftest-host: the run box carries no run-box name file, and the
+              driver refuses rc 4 without one before any arm; the driver runs on the lead box in the chain)
+          gemini_canary_wave_v1.sh --selftest 110 of 110
+          the new reader on the live credential file: 1300 s · the 6993727 reader on the same file: 0 (A8.1)
+  --no-toolchain: the change touches no toolchain path, and ZF legs use no Verus.
+```
+
+**A8.5 · WHICH LEGS RUN ON WHICH EXPORT.** Z001–Z239 ran on the exports A5.4, A6.8 and A6.10 name, each row carrying its sha. Z240's attempt
+spent no model call and is **not a replicate**: as Z018 (A5.5), its cell is re-queued, never carried, and its replicate is the re-fire. Every leg
+fired after the signature below, Z240 first, runs on `0b783cf` and its row carries that sha. Under `6993727` no leg can launch on this file
+shape at all, so there is no leg the two exports would launch differently: they differ only in (i) reading `token.expiry`, (ii) refusing an
+unreadable file at once instead of after four warm-ups, (iii) one bounded retry of a warm-up that failed on the network, and (iv) the label
+the driver and the canary wave print for a refusal.
+
+**A8.6 · THE CLIENT VERSION (the helm's question, bus 14:19): RECORDED, AND THE SET HAS ALREADY CROSSED SEVEN CLIENT VERSIONS BEFORE THIS ONE.**
+Measured read-only on the run box, over every ZF cell root (`~/cells*zf*/*/ctl/built-from.tsv`, 243 files):
+```
+  (1) RECORDED, per cell, at LAUNCH: ctl/built-from.tsv rows `client_version_claim` (the client's --version label) and `client_sha256`
+      (the binary's content hash, the evidence). 242 of 243 roots carry both; the one without is Z240's own cell, built and never launched.
+      NOT in the root's PROVENANCE-<date>.tsv (it is written at build and reads client_sha256 "NOT MEASURED"), not in _receipts/, and in
+      no public ZF table (git grep -F client_version: 0 ZF files). gemini's census is right that no RECEIPT carries it.
+  (2) THE VERSIONS THE SET RAN ON, one sha each:
+      1.3.5 ebd71c4db14f79fc ×25 · 1.3.6 827ba22b4aa33557 ×19 · 1.4.0 a4502aaf310b2fd6 ×48 · 1.4.1 da7e0766b076e411 ×4 ·
+      1.4.2 74935642426b5bb1 ×65 · 1.4.3 836c446f6118140e ×39 · 1.4.4 9abb478686dc08d4 ×30 · 1.4.5 b89677b741d8d9d3 ×12
+      the client now installed: 1.4.6, sha256/16 cab004f3c5c6cb7d (binary mtime 2026-10-22 21:27 run-box local time)
+  (3) PAIRS (§G1 interleaving), keyed by cell name with the model letter masked: 120 complete pairs, 2 STRADDLE a version
+      (zf?pbnp201: argon 1.4.3 · flash 1.4.2;  zf?zgns101: argon 1.3.6 · flash 1.4.0). Z240's pair will be the third: its argon half
+      (zfafgxs301) ran on 1.4.5, its flash half re-fires on 1.4.6.
+  (4) The Claude CLI version: no ZF cell runs a Claude client (built-from: the agy per-cell HOME), so a ZF cell has none to record.
+```
+**THE RELEASE DECLARES THE 1.4.5 → 1.4.6 BOUNDARY AT Z240:** every leg before Z240 ran 1.4.5 or earlier, as its built-from row says, and every leg
+from Z240 on runs the client its built-from row names. §G4.2 already registers the rule this needs ("If agy moves mid-set, every pair names its
+client version"), and the set had moved seven times before the boundary the bus reported. **So every ZF table row carries `client_version_claim`
+and `client_sha256/16` from its cell's built-from.tsv, and every pair whose halves differ is flagged in the table.** This is the receipt gap gemini
+named, closed at the harvest, not in the harness.
+**A SWITCH, READ AND NOT TOUCHED:** `agy --help` lists an `update` subcommand ("Update CLI") and no flag that disables automatic updates. The
+client's settings.json carries three keys (colorScheme, model, trustedWorkspaces), none about updates. The binary carries the string
+`AGY_CLI_DISABLE_AUTO_UPDATE`, shaped like an environment variable; it is undocumented in --help and its effect is UNMEASURED. The updater's
+status file was last written at Z240's first start and reads "Already on the latest version." **Recommendation, not done here:** pin only if the
+switch is first driven to show that it holds (an unchanged client sha across a client start with it set), and only on a ruling, because setting
+it changes the run box for every agy lane. Until then the set is RECORD-AND-DECLARE, per (1)–(3) above. No setting was changed by this release.
+
+**A8.7 · LIMITS.** (1) The reader takes the EARLIER of two expiries: if a future client writes a stale `id_token` beside a fresh
+`token.expiry`, the wave warms (or refuses) on a window shorter than the real one. That is the conservative direction, and it costs a warm-up,
+never a cell. (2) The new shape has been read on ONE live file, at one time; the full warm-up on it (a refresh that moves `token.expiry`) is
+driven in the selftest's fake client only, and has not run live. The first live warm-up on 1.4.6 is reported to the lead with its window
+lines before the next leg. (3) The CREDENTIAL-NETWORK retry classifies by one sentence in the client's own log ("due to network error"); a
+client that words it differently is refused as before, with no retry, which is the old behaviour. (4) The 1.4.6 client itself is a new client
+for the cells that follow; nothing here measures whether it behaves like 1.4.5 inside a cell. That is what A8.6's per-row version is for.
+(5) The A8.6 census reads cell ROOT names, as A7.4 did: a root re-fired under another name is counted under that name (three names are
+unpaired for that reason), and a version label is the client's own claim, which is why each row also carries the sha. (6) `agy --help`,
+`agy update --help` and `agy --version` were run on the run box to read the version and the switch; the client's sha, read after
+`--version` and again after the two `--help` calls, was cab004f3c5c6cb7d both times, and its mtime did not move.
