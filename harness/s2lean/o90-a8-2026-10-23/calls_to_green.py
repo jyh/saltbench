@@ -252,7 +252,16 @@ def analyse(epdir):
             first_green = rows[-1]
         if first_maybe is None and v in ("GREEN", "GREEN_NORT", "UNDET"):
             first_maybe = rows[-1]
+    # O90 (desk AEY, systems' re-read F2): the P+U deliverable can be written BEFORE the first green, and then its calls count
+    # as proving — the case the design says strikes the clause. So count, among the calls before the first green, those
+    # whose input writes a docstring ("/--") or names EXPLAIN.md. evidence rules whether the clause runs at that share.
+    fg = first_green["idx"] if first_green else len(calls) + 1
+    pre = [json.dumps(c["input"]) for c in calls[: fg - 1]]
+    doc_w = sum(1 for x in pre if "/--" in x) if MUTANT != "nodeliv" else 0
+    exp_w = sum(1 for x in pre if "EXPLAIN.md" in x) if MUTANT != "nodeliv" else 0
     return {
+        "deliverable_calls_before_first_green": sum(1 for x in pre if "/--" in x or "EXPLAIN.md" in x) if MUTANT != "nodeliv" else 0,
+        "docstring_writes_before_first_green": doc_w, "explain_writes_before_first_green": exp_w,
         "ep": os.path.basename(epdir), "problem": man.get("instance_id"), "arm": man.get("arm"),
         "stage": man.get("stage"), "passed": bool(man.get("passed")), "class": (man.get("check") or {}).get("class"),
         "manifest_calls": man.get("calls"), "tool_calls": len(calls), "tool_results": sum(1 for c in calls if c["id"] in results),
@@ -331,6 +340,13 @@ def run(a):
                 y, x, sum(gy > gx for _, gx, gy, _, _ in pairs), n, sum(gy < gx for _, gx, gy, _, _ in pairs),
                 sum(gy == gx for _, gx, gy, _, _ in pairs), med))
             tot["paired"] = [dict(problem=p, **{x: gx, y: gy, x + "_total": tx, y + "_total": ty}) for p, gx, gy, tx, ty in pairs]
+    pu = [r for r in out if r.get("arm") == "a5"]
+    if pu:   # O90 F2: the P+U deliverable written before the first green; evidence rules whether calls-to-proof runs at this share
+        print("\nP+U (a5) deliverable calls BEFORE the first green (docstring writes · EXPLAIN.md writes):")
+        for r in pu:
+            print("  %-12s %-12s %3d  (%d · %d)" % (r["ep"], r["problem"], r["deliverable_calls_before_first_green"],
+                  r["docstring_writes_before_first_green"], r["explain_writes_before_first_green"]))
+        print("  share of a5 episodes with >= 1: %d of %d" % (sum(1 for r in pu if r["deliverable_calls_before_first_green"]), len(pu)))
     if a.json:
         json.dump({"totals": tot, "episodes": out}, open(a.json, "w"), indent=1, sort_keys=True)
     print("CROSS-CHECK: %s" % ("every passed episode has a first green" if not fails else "FAILED: " + " | ".join(fails)))
@@ -379,8 +395,11 @@ def selftest():
     # F5 a scratch file compile is not a compile call; a task.lean.bak mention is not either
     F.append(("scratch", [(EP + " lake env lean scratch.lean", ""), ("rm -f task.lean.bak", ""), (EP + " lake env lean task.lean", "")],
               [(0, "lake env lean scratch.lean ", 0), (2, "lake env lean task.lean ", 0)], 3))
+    # F6 (O90 F2) a docstring written through Bash BEFORE the first green: first green 2, one deliverable call before it
+    F.append(("deliv", [("printf '/-- states x -/\\n' >> task.lean", ""), (EP + " lake env lean task.lean", "")],
+              [(1, "lake env lean task.lean ", 0)], 2))
     ok = True
-    for mut in ("", "nosorry", "noerrtag", "norc", "nofilter"):
+    for mut in ("", "nosorry", "noerrtag", "norc", "nofilter", "nodeliv"):
         global MUTANT
         MUTANT = mut
         bad = []
@@ -389,8 +408,10 @@ def selftest():
             r = analyse(d)
             if r["first_green_idx"] != want:
                 bad.append("%s: first_green %s want %s" % (name, r["first_green_idx"], want))
+            if name == "deliv" and r["deliverable_calls_before_first_green"] != 1:
+                bad.append("deliv: deliverable_calls_before_first_green %s want 1" % r["deliverable_calls_before_first_green"])
         if mut == "":
-            print("selftest pristine            %s" % ("PASS (5/5 fixtures)" if not bad else "FAIL " + "; ".join(bad)))
+            print("selftest pristine            %s" % ("PASS (6/6 fixtures)" if not bad else "FAIL " + "; ".join(bad)))
             ok &= not bad
         else:
             print("selftest mutant %-12s %s" % (mut, ("RED as required: " + "; ".join(bad)) if bad else "GREEN -- the mutant was NOT caught"))

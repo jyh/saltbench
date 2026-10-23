@@ -108,7 +108,8 @@ which are not C-dead. The checker is the S2-Lean stage-C checker, unchanged.
   0 of 96 distractors in the used set; a second Lean run byte-identical.
   ⚠️ **Limits:** the re-elaboration runs outside `check.py`'s sandbox against the current environment, guarded by the sha256 pin
   and the screen; `def` items are mostly notation operators, so the `theorem` items are likely the informative ones; six
-  artifacts test the instrument and are not a reading of any arm.
+  artifacts test the instrument and are not a reading of any arm. ⚠️ (systems' F6, declared, not remedied here) U2's Lean
+  re-elaboration is not run under `sandbox_check.sb`; its inputs are scored artifacts whose bodies passed the screen.
 
 ## 6 · The two inputs the design asked bench to measure
 
@@ -129,6 +130,10 @@ command's rc. "Calls to the first green replay" = tool calls up to the first com
 output carries no task-file error (either Lean form) and no `declaration uses 'sorry'`; a compile whose output is filtered or
 redirected is never green. On amendment 8: all 20 passed stage-B episodes have a first green; transcript API calls equal the
 manifest's `calls` in 30 of 30. ⚠️ **Limit:** it sees only the compiles the agent chose to run.
+⚠️ **And the P+U deliverable can land BEFORE the first green** (systems' F2): (b) asks for the lemma split, and calls spent
+writing docstrings or `EXPLAIN.md` before the first green would count as proving. So the tool prints, per `a5` episode, the
+calls before its first green whose input writes a docstring (`/--`) or names `EXPLAIN.md`, and the share of `a5` episodes with
+at least one. **The PM rules, at the read, whether the calls-to-proof clause runs at that share or is struck** (design §4 [H3]).
 
 ## 7 · The truth axis's flag log [F8c], with the PM's leg (c) reading
 
@@ -148,11 +153,16 @@ figure at no extra spend. It scores no reader against a key: stage 1 has none.
   both pinned and recorded. Amendment 8's client is context only: every O90 comparison is within this run.
 - ⛔ **A served-model halt, added because the client moved:** an unrecognised model id can be SUBSTITUTED by the client rather
   than refused. The calibration pair's manifests must read `models` = {`claude-opus-5`} (plus the client's own small auxiliary
-  model, as amendment 8's did); anything else halts the run before cell 2.
+  model, as amendment 8's did); anything else halts the run before cell 2. **Enforced, not stated** (systems' F3): after every
+  real episode the driver reads its manifest and, on any served model other than the requested one (the client's auxiliary
+  `claude-haiku*` excepted), writes `HALT` with the reason and exits 4 before the next episode starts.
 - **Pool and config dir:** one pool, the one his 10-23 word names, through a NEW hermetic config dir on the run box holding only
   the pinned `settings.s2.json` and **its own fresh login** — never a copy of a live credential, because these credentials carry
   a rotating refresh token and two live copies can blank each other at the first refresh. The calibration pair is that dir's
-  first-refresh test, read before cell 2. Passed as `CFG` to the driver.
+  first-refresh test, read before cell 2. Passed as `CFG` to the driver. **That dir is in the sandbox's `denyRead`**
+  (systems' re-read F1: a rule on `~/.claude` does not cover a SIBLING `~/.claude-…` dir, measured), and smoke probe S3 now
+  lists the LIVE `CFG` and must see the OS deny it. Until this amendment S3 listed `~/.claude-bench`, a dir the run box no longer
+  has, so its `ls` read "No such file" — not a denial — and S3 could not have passed for the right reason.
 - **Host:** the run box (the harness, the shared Lean project, the views and amendment 8's state are there; S2-Lean is native
   Lean, no container).
 - **State root: NEW, and INSIDE the sandbox's read-denied `~/bench`** — `BENCH=~/bench/o90`. A new regime gets a new state root
@@ -193,7 +203,15 @@ body for problem 31, so B1/B2's passes are the kernel's. Outputs verbatim in `ha
   run 2 (the fix)          10 PASS · 0 FAIL   R1 R2 A1 B1 B2 C1 C2 C3 R3 D1
   mutant M1 (no paragraph)  8 PASS · 2 FAIL   B2 prompt · C1 prompt                  — red on exactly its two arms
   mutant M2 (no capture)    8 PASS · 2 FAIL   B2 explain-capture · C2 explain        — red on exactly its two arms
+  ── after systems' re-read (F1–F5), run 3, the arms extended (B2 feeds a DOCSTRINGED helper through the real checker,
+     C2 asserts a7's prompt, B3 a scored failed B supersedes the artifact, H1 the driver's served-model halt) ──
+  run 3                    12 PASS · 0 FAIL   R1 R2 A1 B1 B2 C1 C2 C3 R3 B3 H1 D1
+  mutant M1 (no paragraph)  9 PASS · 3 FAIL   B2 · C1 · C2 prompt
+  mutant M2 (no capture)   10 PASS · 2 FAIL   B2 explain-capture · C2 explain
+  mutant M3 (no supersede) 11 PASS · 1 FAIL   B3
+  mutant M4 (halt off)     11 PASS · 1 FAIL   H1                                     — every mutant red on exactly its arms
 ```
+Not driven, declared: a NON-scored stage B keeping an earlier artifact (no stub path produces a non-scored landing).
 `o90_ids.py`: the thirty, and a flag-list mutant refuses. `o90_flaglog.py --selftest`: PASS, 7 refusals fired; two mutants
 (an axis that ignores the confirmation; an author read accepted) each fail it. `spread.py` and `calls_to_green.py` were
 re-run by the lead from an independent copy of amendment 8's state: both outputs byte-identical to the committed ones.

@@ -139,6 +139,22 @@ for id in $ids; do
       [ -n "$pa" ] && [ ! -s "$SROOT/$t/$pa/B.artifact/B.artifact.json" ] && { synthetic "$t" C "$arm" "NOT_RUN(no_stage_B_artifact)"; continue; }; fi
     echo "$(stamp) START #$n $t stage=$STAGE" | tee -a "$RL"
     term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"
+    # O90 (desk AEY, systems' re-read F3): THE SERVED-MODEL HALT, with an enforcer. A client can SUBSTITUTE a model id it does
+    # not recognise rather than refuse it, so every real episode's manifest must show only the requested model (the client's
+    # own small auxiliary haiku calls excepted). Anything else writes HALT with the reason and stops the run here, between
+    # episodes, before another starts. Off in DRY_RUN (the stub reports a fixed model).
+    if [ "$DRY" != "1" ]; then lep=$(tail -1 "$L" | cut -d' ' -f1)
+      case "$lep" in ep-*) sm=$(python3 - "$BENCH/state/$lep/manifest.json" <<'PY'
+import json,sys
+try: m=json.load(open(sys.argv[1]))
+except Exception as e: print("MANIFEST-UNREADABLE %s" % e); raise SystemExit
+want=m.get("model_requested"); bad=sorted(k for k in (m.get("models") or {}) if k!=want and not k.startswith("claude-haiku"))
+if bad: print("SERVED %s, REQUESTED %s" % (",".join(bad), want))
+PY
+)
+        if [ -n "$sm" ]; then echo "SERVED-MODEL HALT ($lep $t $STAGE $arm): $sm" > "$BENCH/HALT"; echo "$(stamp) SERVED-MODEL HALT: $sm" | tee -a "$RL"; exit 4; fi ;;
+      esac
+    fi
     case "$term" in REFUSED*) echo "$(stamp) HALT: the episode refused ($term) — deterministic, not retried" | tee -a "$RL"; exit 2 ;; esac
     if ! is_terminal "$term"; then
       case "$term" in QUOTA*|AUTH*) held=0; while ! is_terminal "$term" && [ "$held" -lt 12 ]; do held=$((held+1)); echo "$(stamp) HOLD #$n $t ($term) step $held/12" | tee -a "$RL"; sleep 1800; term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED(hold) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; done ;;
