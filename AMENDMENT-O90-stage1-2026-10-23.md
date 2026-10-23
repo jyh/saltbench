@@ -131,9 +131,14 @@ output carries no task-file error (either Lean form) and no `declaration uses 's
 redirected is never green. On amendment 8: all 20 passed stage-B episodes have a first green; transcript API calls equal the
 manifest's `calls` in 30 of 30. ⚠️ **Limit:** it sees only the compiles the agent chose to run.
 ⚠️ **And the P+U deliverable can land BEFORE the first green** (systems' F2): (b) asks for the lemma split, and calls spent
-writing docstrings or `EXPLAIN.md` before the first green would count as proving. So the tool prints, per `a5` episode, the
-calls before its first green whose input writes a docstring (`/--`) or names `EXPLAIN.md`, and the share of `a5` episodes with
-at least one. **The PM rules, at the read, whether the calls-to-proof clause runs at that share or is struck** (design §4 [H3]).
+writing docstrings or `EXPLAIN.md` before the first green would count as proving. So the tool prints, per episode and for
+EVERY arm, the calls before its first green that write a NEW docstring or name `EXPLAIN.md`, and the share per arm. "New"
+(systems' G3): every task file already carries the problem's own `/--` docstring (161 of 161 views), so a whole-file rewrite
+counts only above the file's own count K (canonical.lean's `/--` count minus the bodies'), an Edit counts when it adds a `/--`.
+**The baseline, amendment 8 (no P+U paragraph in either arm): `a0` 3 of 15 episodes, `a2` 9 of 15** — read at the object, the
+`a0` hits are the agent's own docstrings on its own helper lemmas, not the problem's. So the plain arm already writes them at
+that rate. **The PM rules, at the read, whether the calls-to-proof clause runs at P+U's share against that baseline, or is
+struck** (design §4 [H3]).
 
 ## 7 · The truth axis's flag log [F8c], with the PM's leg (c) reading
 
@@ -153,9 +158,12 @@ figure at no extra spend. It scores no reader against a key: stage 1 has none.
   both pinned and recorded. Amendment 8's client is context only: every O90 comparison is within this run.
 - ⛔ **A served-model halt, added because the client moved:** an unrecognised model id can be SUBSTITUTED by the client rather
   than refused. The calibration pair's manifests must read `models` = {`claude-opus-5`} (plus the client's own small auxiliary
-  model, as amendment 8's did); anything else halts the run before cell 2. **Enforced, not stated** (systems' F3): after every
-  real episode the driver reads its manifest and, on any served model other than the requested one (the client's auxiliary
-  `claude-haiku*` excepted), writes `HALT` with the reason and exits 4 before the next episode starts.
+  model, as amendment 8's did); anything else halts the run before cell 2. **Enforced, not stated** (systems' F3, G1, G2):
+  `harness/s2lean/served_model_check.py` HALTS unless the requested model was served (count > 0) on an episode that made calls;
+  a `claude-haiku*` entry is admitted only BESIDE it, so a haiku-only, empty or missing record halts. The driver calls it after
+  EVERY landing — the first run, each HOLD re-run and each RETRY re-run, because a quota or auth fallback lands on a re-run —
+  and on a halt writes `HALT` with the reason and exits 4 before another episode starts. Its selftest has 9 cases; all 60 of
+  amendment 8's manifests pass it (no false halt).
 - **Pool and config dir:** one pool, the one his 10-23 word names, through a NEW hermetic config dir on the run box holding only
   the pinned `settings.s2.json` and **its own fresh login** — never a copy of a live credential, because these credentials carry
   a rotating refresh token and two live copies can blank each other at the first refresh. The calibration pair is that dir's
@@ -210,7 +218,14 @@ body for problem 31, so B1/B2's passes are the kernel's. Outputs verbatim in `ha
   mutant M2 (no capture)   10 PASS · 2 FAIL   B2 explain-capture · C2 explain
   mutant M3 (no supersede) 11 PASS · 1 FAIL   B3
   mutant M4 (halt off)     11 PASS · 1 FAIL   H1                                     — every mutant red on exactly its arms
+  ── after systems' delta re-read (G1–G3), run 4: H1 now drives served_model_check.py (selftest 9 cases + a clean and four
+     bad records), W1 reads the driver's three call sites ──
+  run 4                    13 PASS · 0 FAIL   R1 R2 A1 B1 B2 C1 C2 C3 R3 B3 H1 W1 D1
+  M1 10/3 (B2 C1 C2) · M2 11/2 (B2 C2) · M3 12/1 (B3) · M4 12/1 (H1: substituted, haiku-only, empty, missing all pass)
+  · M5 12/1 (W1: the RETRY site unwired)                                                — every mutant red on exactly its arms
 ```
+⚠️ W1 is STRUCTURAL: the served-model check is off under DRY_RUN, so its wiring is read from the driver's text at three named
+sites, and the check itself is driven on manifests (H1). A live substitution would first be seen at cell 1.
 Not driven, declared: a NON-scored stage B keeping an earlier artifact (no stub path produces a non-scored landing).
 `o90_ids.py`: the thirty, and a flag-list mutant refuses. `o90_flaglog.py --selftest`: PASS, 7 refusals fired; two mutants
 (an axis that ignores the confirmation; an author read accepted) each fail it. `spread.py` and `calls_to_green.py` were

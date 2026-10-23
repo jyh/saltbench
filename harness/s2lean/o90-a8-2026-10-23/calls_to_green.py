@@ -252,15 +252,36 @@ def analyse(epdir):
             first_green = rows[-1]
         if first_maybe is None and v in ("GREEN", "GREEN_NORT", "UNDET"):
             first_maybe = rows[-1]
-    # O90 (desk AEY, systems' re-read F2): the P+U deliverable can be written BEFORE the first green, and then its calls count
-    # as proving — the case the design says strikes the clause. So count, among the calls before the first green, those
-    # whose input writes a docstring ("/--") or names EXPLAIN.md. evidence rules whether the clause runs at that share.
+    # O90 (desk AEY; systems' re-reads F2, G3): the P+U deliverable can be written BEFORE the first green, and then its calls
+    # count as proving — the case the design says strikes the clause. So count, among the calls before the first green, those
+    # that write a NEW docstring or name EXPLAIN.md. G3: every task file already carries the problem's own `/--` docstring (161
+    # of 161 views), so a whole-file rewrite is not a deliverable write. K = the file's own docstrings = canonical.lean's count
+    # minus the bodies' count. An Edit counts when new_string adds a `/--` over old_string; a Write or a Bash input that carries
+    # the whole file (it names spec_isomorphism AND problem_spec) counts only above K; any other Bash input counts on a `/--`.
+    # Printed for EVERY arm, so a0's (and amendment 8's) column is the false-positive baseline for evidence's ruling.
+    try:
+        canon = open(os.path.join(epdir, "canonical.lean"), encoding="utf-8", errors="replace").read().count("/--")
+        bod = json.load(open(os.path.join(epdir, "bodies.json")))
+        K = canon - sum(v.count("/--") for k, v in bod.items() if isinstance(v, str) and not k.startswith("_"))
+    except Exception:
+        K = None
+    def new_doc(c):
+        i = c["input"]
+        if c["name"] in ("Edit", "MultiEdit"):
+            eds = i.get("edits") or [i]
+            return sum(e.get("new_string", "").count("/--") - e.get("old_string", "").count("/--") for e in eds) > 0
+        txt = i.get("content", "") if c["name"] == "Write" else json.dumps(i)
+        n = txt.count("/--")
+        if MUTANT == "nobaseline" or "spec_isomorphism" not in txt or "problem_spec" not in txt:
+            return n > 0
+        return K is None or n > K   # an unknown K never silently zeroes the count
     fg = first_green["idx"] if first_green else len(calls) + 1
-    pre = [json.dumps(c["input"]) for c in calls[: fg - 1]]
-    doc_w = sum(1 for x in pre if "/--" in x) if MUTANT != "nodeliv" else 0
-    exp_w = sum(1 for x in pre if "EXPLAIN.md" in x) if MUTANT != "nodeliv" else 0
+    pre = calls[: fg - 1]
+    doc_w = sum(1 for c in pre if new_doc(c)) if MUTANT != "nodeliv" else 0
+    exp_w = sum(1 for c in pre if "EXPLAIN.md" in json.dumps(c["input"])) if MUTANT != "nodeliv" else 0
+    deliv = sum(1 for c in pre if new_doc(c) or "EXPLAIN.md" in json.dumps(c["input"])) if MUTANT != "nodeliv" else 0
     return {
-        "deliverable_calls_before_first_green": sum(1 for x in pre if "/--" in x or "EXPLAIN.md" in x) if MUTANT != "nodeliv" else 0,
+        "deliverable_calls_before_first_green": deliv, "own_docstrings_K": K,
         "docstring_writes_before_first_green": doc_w, "explain_writes_before_first_green": exp_w,
         "ep": os.path.basename(epdir), "problem": man.get("instance_id"), "arm": man.get("arm"),
         "stage": man.get("stage"), "passed": bool(man.get("passed")), "class": (man.get("check") or {}).get("class"),
@@ -340,13 +361,15 @@ def run(a):
                 y, x, sum(gy > gx for _, gx, gy, _, _ in pairs), n, sum(gy < gx for _, gx, gy, _, _ in pairs),
                 sum(gy == gx for _, gx, gy, _, _ in pairs), med))
             tot["paired"] = [dict(problem=p, **{x: gx, y: gy, x + "_total": tx, y + "_total": ty}) for p, gx, gy, tx, ty in pairs]
-    pu = [r for r in out if r.get("arm") == "a5"]
-    if pu:   # O90 F2: the P+U deliverable written before the first green; evidence rules whether calls-to-proof runs at this share
-        print("\nP+U (a5) deliverable calls BEFORE the first green (docstring writes · EXPLAIN.md writes):")
+    pu = sorted(out, key=lambda r: (r.get("arm") or "", r.get("problem") or ""))
+    if pu:   # O90 F2/G3: deliverable writes before the first green, EVERY arm (a0's column is the false-positive baseline)
+        print("\ndeliverable calls BEFORE the first green, per episode (NEW docstring writes · EXPLAIN.md writes):")
         for r in pu:
-            print("  %-12s %-12s %3d  (%d · %d)" % (r["ep"], r["problem"], r["deliverable_calls_before_first_green"],
+            print("  %-12s %-3s %-12s %3d  (%d · %d)" % (r["ep"], r["arm"], r["problem"], r["deliverable_calls_before_first_green"],
                   r["docstring_writes_before_first_green"], r["explain_writes_before_first_green"]))
-        print("  share of a5 episodes with >= 1: %d of %d" % (sum(1 for r in pu if r["deliverable_calls_before_first_green"]), len(pu)))
+        for arm in sorted({r["arm"] for r in pu}):
+            rs = [r for r in pu if r["arm"] == arm]
+            print("  share of %s episodes with >= 1: %d of %d" % (arm, sum(1 for r in rs if r["deliverable_calls_before_first_green"]), len(rs)))
     if a.json:
         json.dump({"totals": tot, "episodes": out}, open(a.json, "w"), indent=1, sort_keys=True)
     print("CROSS-CHECK: %s" % ("every passed episode has a first green" if not fails else "FAILED: " + " | ".join(fails)))
@@ -367,6 +390,8 @@ def _fixture(tmp, name, cmds_results, rt_lines, passed=True):
             t2 = "2026-01-01T00:00:%02d.900Z" % (2 * k + 1)
             f.write(json.dumps({"type": "user", "timestamp": t2, "isSidechain": False, "message": {
                     "content": [{"type": "tool_result", "tool_use_id": "t%d" % k, "content": res}]}}) + "\n")
+    open(os.path.join(d, "canonical.lean"), "w").write("/-- the problem's own docstring -/\ndef problem_spec := 0\n")
+    json.dump({"spec_isomorphism_proof": "", "iso_helper_lemmas": ""}, open(os.path.join(d, "bodies.json"), "w"))
     with open(os.path.join(d, "rt.log"), "w") as f:
         for k, cmd, rc in rt_lines:
             f.write("2026-01-01T00:00:%02dZ\tSTART\t%s\n2026-01-01T00:00:%02dZ\tEND\trc=%d\t%s\n" % (2 * k, cmd, 2 * k + 1, rc, cmd))
@@ -398,8 +423,11 @@ def selftest():
     # F6 (O90 F2) a docstring written through Bash BEFORE the first green: first green 2, one deliverable call before it
     F.append(("deliv", [("printf '/-- states x -/\\n' >> task.lean", ""), (EP + " lake env lean task.lean", "")],
               [(1, "lake env lean task.lean ", 0)], 2))
+    # F7 (O90 G3) a WHOLE-FILE rewrite carrying only the file's own docstring before the first green: deliverable 0
+    F.append(("wholefile", [("cat > task.lean <<'X'\\n/-- the problem's own docstring -/\\ndef problem_spec := 0\\ntheorem spec_isomorphism : True := trivial\\nX", ""),
+                            (EP + " lake env lean task.lean", "")], [(1, "lake env lean task.lean ", 0)], 2))
     ok = True
-    for mut in ("", "nosorry", "noerrtag", "norc", "nofilter", "nodeliv"):
+    for mut in ("", "nosorry", "noerrtag", "norc", "nofilter", "nodeliv", "nobaseline"):
         global MUTANT
         MUTANT = mut
         bad = []
@@ -410,8 +438,10 @@ def selftest():
                 bad.append("%s: first_green %s want %s" % (name, r["first_green_idx"], want))
             if name == "deliv" and r["deliverable_calls_before_first_green"] != 1:
                 bad.append("deliv: deliverable_calls_before_first_green %s want 1" % r["deliverable_calls_before_first_green"])
+            if name == "wholefile" and r["deliverable_calls_before_first_green"] != 0:
+                bad.append("wholefile: deliverable_calls_before_first_green %s want 0" % r["deliverable_calls_before_first_green"])
         if mut == "":
-            print("selftest pristine            %s" % ("PASS (6/6 fixtures)" if not bad else "FAIL " + "; ".join(bad)))
+            print("selftest pristine            %s" % ("PASS (7/7 fixtures)" if not bad else "FAIL " + "; ".join(bad)))
             ok &= not bad
         else:
             print("selftest mutant %-12s %s" % (mut, ("RED as required: " + "; ".join(bad)) if bad else "GREEN -- the mutant was NOT caught"))

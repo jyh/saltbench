@@ -10,10 +10,11 @@
 # artifact incl. EXPLAIN.md · C3 a0@C (C0) has no prior/ and the plain prompt · R3 a tampered artifact refuses (a7@C) ·
 # D1 the driver lands NOT_RUN(no_stage_B_artifact) for a6/a7 with no artifact. Added on systems' re-read: B2 feeds a DOCSTRINGED
 # helper lemma through the real checker (F5) · C2 asserts a7's prompt · B3 a scored FAILED a0@B supersedes a0's artifact (F4) ·
-# H1 the driver's served-model halt fires on a substituted model and not on a clean manifest (F3).
+# H1 the served-model check halts a substituted, haiku-only, empty or missing record and not a clean one (F3, G2) ·
+# W1 the driver calls it after the first, hold and retry landings (G1).
 # Mutants (red backwards, on a scratch copy only): M1 removes the arm paragraph mapping (B2/C1 must go red);
 # M2 removes the EXPLAIN.md capture (B2 must go red). M3 removes the B.artifact supersede (B3 must go red).
-# M4 disables the served-model check (H1 must go red).
+# M4 silences the served-model check (H1 must go red). M5 unwires the RETRY site (W1 must go red).
 set -u
 SRC="${1:?harness dir}"; MUT="${3:-}"; [ "${2:-}" = "--mutant" ] || MUT=""
 R="$HOME/bench-dry/o90-2026-10-23${MUT:+-$MUT}"; A8="$HOME/bench-a8"
@@ -37,13 +38,17 @@ PY
 import sys; p=sys.argv[1]; s=open(p).read(); o='[ -e "$BA" ] && { rm -rf -- "${ABDIR:?}/B.artifact"; log "B_ARTIFACT superseded'; assert s.count(o)==1; open(p,'w').write(s.replace(o,'[ -e "$BA" ] && { log "B_ARTIFACT superseded'))
 PY
     ;;
-    M4) python3 - "$S2/run_s2_stage0.sh" <<'PY' || exit 2
-import sys; p=sys.argv[1]; s=open(p).read(); o='if bad: print("SERVED'; assert s.count(o)==1; open(p,'w').write(s.replace(o,'if False: print("SERVED'))
+    M4) python3 - "$S2/served_model_check.py" <<'PY' || exit 2
+import sys; p=sys.argv[1]; s=open(p).read(); o='    r = check(m)\n    if r: print(r)'; assert s.count(o)==1; open(p,'w').write(s.replace(o,'    r = check(m)'))
+PY
+    ;;
+    M5) python3 - "$S2/run_s2_stage0.sh" <<'PY' || exit 2
+import sys; p=sys.argv[1]; s=open(p).read(); o='| tee -a "$RL"; served_check "$t" "$arm" ;; esac'; assert s.count(o)==1; open(p,'w').write(s.replace(o,'| tee -a "$RL" ;; esac'))
 PY
     ;;
     *) echo "FATAL: unknown mutant $MUT"; exit 2 ;;
   esac
-  for f in episode_s2.sh run_s2_stage0.sh; do ns=$(shasum -a 256 "$S2/$f" | cut -d' ' -f1); sed -i '' "s|^s2lean/$f .*|s2lean/$f $ns|" "$H/HASHES.txt"; done
+  for f in episode_s2.sh run_s2_stage0.sh served_model_check.py; do ns=$(shasum -a 256 "$S2/$f" | cut -d' ' -f1); sed -i '' "s|^s2lean/$f .*|s2lean/$f $ns|" "$H/HASHES.txt"; done
   echo "MUTANT $MUT applied to the scratch copy (episode_s2.sh re-pinned in the scratch HASHES only)"
 fi
 cp "$H/settings.s2.json" "$R/cfg/settings.json"; cp "$S2/o90-2026-10-23/o90_stub.sh" "$R/stub/o90_stub.sh"; chmod +x "$R/stub/o90_stub.sh"
@@ -116,16 +121,20 @@ case "$tr3" in *HARNESS_ERROR*) if grep -q 'prior provenance' "$(st $er)/episode
 ep a0 31 B "$R/views"; eb3=$(eid)
 pb3=$(python3 -c "import json;m=json.load(open('$(st $eb3)/manifest.json'));print(m['passed'],m['termination'])" 2>/dev/null)
 if [ ! -e "$SR/a0/B.artifact" ] && grep -q 'B_ARTIFACT superseded' "$(st $eb3)/episode.log"; then ok "B3 a scored failed a0@B ($pb3) removed a0's B.artifact, logged"; else no "B3 artifact still present after a scored fail ($pb3, ep $eb3)"; fi
-# H1 (F3): the driver's served-model check, run on a clean manifest and on one with a substituted model
-python3 - "$S2/run_s2_stage0.sh" "$R/h1" <<'PY'
-import sys,re,os,json
-s=open(sys.argv[1]).read(); m=re.search(r"sm=\$\(python3 - \"\$BENCH/state/\$lep/manifest.json\" <<'PY'\n(.*?)\nPY\n", s, re.S)
-os.makedirs(sys.argv[2], exist_ok=True); open(os.path.join(sys.argv[2],"check.py"),"w").write(m.group(1) if m else "raise SystemExit('NO CHECK FOUND')")
-json.dump({"model_requested":"claude-opus-5","models":{"claude-opus-5":8,"claude-haiku-4-5":1}},open(os.path.join(sys.argv[2],"good.json"),"w"))
-json.dump({"model_requested":"claude-opus-5","models":{"claude-sonnet-5":8}},open(os.path.join(sys.argv[2],"bad.json"),"w"))
-PY
-hg=$(python3 "$R/h1/check.py" "$R/h1/good.json" 2>&1); hb=$(python3 "$R/h1/check.py" "$R/h1/bad.json" 2>&1)
-if [ -z "$hg" ] && case "$hb" in "SERVED claude-sonnet-5, REQUESTED claude-opus-5") true;; *) false;; esac; then ok "H1 served-model check: clean manifest silent, substituted model -> '$hb'"; else no "H1 good='$hg' bad='$hb'"; fi
+# H1 (F3, G2): the served-model check tool: its own selftest, then a clean manifest silent and four bad ones halting
+hs=$(python3 "$S2/served_model_check.py" --selftest 2>&1); mkdir -p "$R/h1"; h1=""
+for c in 'clean:{"model_requested":"claude-opus-5","calls":9,"models":{"claude-opus-5":8,"claude-haiku-4-5":1}}:0' \
+         'substituted:{"model_requested":"claude-opus-5","calls":9,"models":{"claude-sonnet-5":8}}:1' \
+         'haiku_only:{"model_requested":"claude-opus-5","calls":9,"models":{"claude-haiku-4-5":9}}:1' \
+         'empty:{"model_requested":"claude-opus-5","calls":9,"models":{}}:1' 'missing:{"model_requested":"claude-opus-5","calls":9}:1'; do
+  nm="${c%%:*}"; rest="${c#*:}"; js="${rest%:*}"; want="${rest##*:}"; printf '%s' "$js" > "$R/h1/$nm.json"
+  out=$(python3 "$S2/served_model_check.py" "$R/h1/$nm.json" 2>&1); got=0; [ -n "$out" ] && got=1; [ "$got" = "$want" ] || h1="$h1 $nm"; done
+if [ "$hs" = "SELFTEST PASS (9 cases)" ] && [ -z "$h1" ]; then ok "H1 served-model check: selftest 9 cases; clean silent; substituted, haiku-only, empty, missing all halt"; else no "H1 selftest='$hs' wrong:$h1"; fi
+# W1 (G1): the driver calls the check after EVERY run_one landing — first run, HOLD re-run, RETRY re-run (structural: the
+# check is off under DRY_RUN, so the wiring is read from the driver's text, three named sites)
+w1=""; for site in 'LANDED #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; served_check' 'LANDED(hold) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; served_check' 'LANDED(retry) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; served_check'; do
+  grep -qF -- "$site" "$S2/run_s2_stage0.sh" || w1="$w1 [${site%%#*}]"; done
+if [ -z "$w1" ] && grep -qF 'python3 "$H/s2lean/served_model_check.py"' "$S2/run_s2_stage0.sh"; then ok "W1 driver: served_check after the first, hold and retry landings (3 of 3 sites)"; else no "W1 unwired:$w1"; fi
 # D1: the driver, no artifact for problem 82 in either source arm
 (cd "$R" && env BENCH="$R/bench" H="$H" EPROOT="$R/work" DRY_RUN=1 CLAUDE_BIN="$R/stub/o90_stub.sh" CLAUDE_BIN_STUB=1 ARMS="a6 a7" ONLY_IDS=82 CAFFEINATED=1 bash "$S2/run_s2_stage0.sh" C 30 > "$R/driver.out" 2>&1)
 if grep -q '^<none> problem_82 C a6 NOT_RUN(no_stage_B_artifact) 0$' "$R/bench/logs/dryexec.log" && grep -q '^<none> problem_82 C a7 NOT_RUN(no_stage_B_artifact) 0$' "$R/bench/logs/dryexec.log"; then

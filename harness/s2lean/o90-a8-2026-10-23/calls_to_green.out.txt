@@ -44,4 +44,38 @@ paired, both passed (n = 9): first-green tool-call index a2 vs a0, and total too
   problem_142  a0   8  a2  11  ratio  1.38   |  total a0  11  a2  16
   problem_146  a0  25  a2  29  ratio  1.16   |  total a0  26  a2  34
   a2 needs more calls than a0 in 4 of 9 pairs, fewer in 4, equal in 1 · median ratio 1.000
+
+deliverable calls BEFORE the first green, per episode (NEW docstring writes · EXPLAIN.md writes):
+  ep-7b01bccf  a0  problem_0      1  (1 · 0)
+  ep-00d3d01c  a0  problem_112    0  (0 · 0)
+  ep-e0ac3d5c  a0  problem_127    0  (0 · 0)
+  ep-e45d67b9  a0  problem_141    0  (0 · 0)
+  ep-b449d07a  a0  problem_142    0  (0 · 0)
+  ep-aa926711  a0  problem_146    0  (0 · 0)
+  ep-05b2f46c  a0  problem_16     0  (0 · 0)
+  ep-d13d4e84  a0  problem_18     0  (0 · 0)
+  ep-7813014d  a0  problem_31     0  (0 · 0)
+  ep-c274a8a7  a0  problem_38     0  (0 · 0)
+  ep-7238fd78  a0  problem_4      4  (4 · 0)
+  ep-341703a2  a0  problem_54     0  (0 · 0)
+  ep-7dfd7731  a0  problem_73     0  (0 · 0)
+  ep-a1644525  a0  problem_74     0  (0 · 0)
+  ep-b004adf5  a0  problem_96     1  (1 · 0)
+  ep-6c4b39bf  a2  problem_0      1  (1 · 0)
+  ep-6b5540c0  a2  problem_112    1  (1 · 0)
+  ep-e8d34b5d  a2  problem_127    2  (2 · 0)
+  ep-51311316  a2  problem_141    0  (0 · 0)
+  ep-b12c70c9  a2  problem_142    0  (0 · 0)
+  ep-5cb9f2d4  a2  problem_146    0  (0 · 0)
+  ep-e3da4a44  a2  problem_16     1  (1 · 0)
+  ep-c453db45  a2  problem_18     1  (1 · 0)
+  ep-e4b2286f  a2  problem_31     1  (1 · 0)
+  ep-9cf06932  a2  problem_38     1  (1 · 0)
+  ep-f548619e  a2  problem_4      1  (1 · 0)
+  ep-891c4f0a  a2  problem_54     0  (0 · 0)
+  ep-ec75aa77  a2  problem_73     0  (0 · 0)
+  ep-1a75f80f  a2  problem_74     0  (0 · 0)
+  ep-b229cb44  a2  problem_96     5  (5 · 0)
+  share of a0 episodes with >= 1: 3 of 15
+  share of a2 episodes with >= 1: 9 of 15
 CROSS-CHECK: every passed episode has a first green

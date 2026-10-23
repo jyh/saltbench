@@ -115,6 +115,17 @@ run_one() { local t="$1" arm="$2" out ep land term
   case "$land" in "$ep $t $STAGE $arm "*) term=$(printf '%s\n' "${land#$ep $t $STAGE $arm }" | cut -d' ' -f1) ;; *) term="MISMATCH($ep:$land)" ;; esac
   if [ "$DRY" = "1" ]; then case "$term" in DRYEXEC\(*) term="${term#DRYEXEC(}"; term="${term%)}" ;; esac; fi
   printf '%s\n' "$term"; }
+# O90 (desk AEY; systems' re-reads F3, G1, G2): THE SERVED-MODEL HALT, with an enforcer, called after EVERY run_one — the first
+# run, each RETRY and each HOLD re-run (G1: a quota or auth fallback lands on a re-run, the likeliest moment for a substitution).
+# A client can SUBSTITUTE a model id it does not recognise rather than refuse it. HALT unless the requested model was served
+# (count > 0) on any episode that made calls; a claude-haiku* entry is admitted ONLY beside the requested model (the client's
+# own auxiliary calls), never instead of it (G2: {haiku} alone, {} and a missing key all passed silently before). Anything
+# else writes HALT with the reason and exits 4, between episodes. Off in DRY_RUN (the stub reports a fixed model).
+served_check() { [ "$DRY" = "1" ] && return 0
+  local lep sm; lep=$(tail -1 "$L" | cut -d' ' -f1)
+  case "$lep" in ep-*) ;; *) return 0 ;; esac
+  sm=$(python3 "$H/s2lean/served_model_check.py" "$BENCH/state/$lep/manifest.json" 2>&1)
+  if [ -n "$sm" ]; then echo "SERVED-MODEL HALT ($lep $1 $STAGE $2): $sm" > "$BENCH/HALT"; echo "$(stamp) SERVED-MODEL HALT: $sm" | tee -a "$RL"; exit 4; fi; }
 n=0
 for id in $ids; do
   t="problem_${id#problem_}"
@@ -138,27 +149,11 @@ for id in $ids; do
     if [ "$STAGE" = "C" ]; then pa=""; case "$arm" in a6) pa=a0 ;; a7) pa=a5 ;; esac
       [ -n "$pa" ] && [ ! -s "$SROOT/$t/$pa/B.artifact/B.artifact.json" ] && { synthetic "$t" C "$arm" "NOT_RUN(no_stage_B_artifact)"; continue; }; fi
     echo "$(stamp) START #$n $t stage=$STAGE" | tee -a "$RL"
-    term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"
-    # O90 (desk AEY, systems' re-read F3): THE SERVED-MODEL HALT, with an enforcer. A client can SUBSTITUTE a model id it does
-    # not recognise rather than refuse it, so every real episode's manifest must show only the requested model (the client's
-    # own small auxiliary haiku calls excepted). Anything else writes HALT with the reason and stops the run here, between
-    # episodes, before another starts. Off in DRY_RUN (the stub reports a fixed model).
-    if [ "$DRY" != "1" ]; then lep=$(tail -1 "$L" | cut -d' ' -f1)
-      case "$lep" in ep-*) sm=$(python3 - "$BENCH/state/$lep/manifest.json" <<'PY'
-import json,sys
-try: m=json.load(open(sys.argv[1]))
-except Exception as e: print("MANIFEST-UNREADABLE %s" % e); raise SystemExit
-want=m.get("model_requested"); bad=sorted(k for k in (m.get("models") or {}) if k!=want and not k.startswith("claude-haiku"))
-if bad: print("SERVED %s, REQUESTED %s" % (",".join(bad), want))
-PY
-)
-        if [ -n "$sm" ]; then echo "SERVED-MODEL HALT ($lep $t $STAGE $arm): $sm" > "$BENCH/HALT"; echo "$(stamp) SERVED-MODEL HALT: $sm" | tee -a "$RL"; exit 4; fi ;;
-      esac
-    fi
+    term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; served_check "$t" "$arm"
     case "$term" in REFUSED*) echo "$(stamp) HALT: the episode refused ($term) — deterministic, not retried" | tee -a "$RL"; exit 2 ;; esac
     if ! is_terminal "$term"; then
-      case "$term" in QUOTA*|AUTH*) held=0; while ! is_terminal "$term" && [ "$held" -lt 12 ]; do held=$((held+1)); echo "$(stamp) HOLD #$n $t ($term) step $held/12" | tee -a "$RL"; sleep 1800; term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED(hold) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; done ;;
-        *) echo "$(stamp) RETRY #$n $t after $term" | tee -a "$RL"; sleep "${RETRY_SLEEP_S:-60}"; term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED(retry) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL" ;; esac
+      case "$term" in QUOTA*|AUTH*) held=0; while ! is_terminal "$term" && [ "$held" -lt 12 ]; do held=$((held+1)); echo "$(stamp) HOLD #$n $t ($term) step $held/12" | tee -a "$RL"; sleep 1800; term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED(hold) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; served_check "$t" "$arm"; done ;;
+        *) echo "$(stamp) RETRY #$n $t after $term" | tee -a "$RL"; sleep "${RETRY_SLEEP_S:-60}"; term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED(retry) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; served_check "$t" "$arm" ;; esac
       if ! is_terminal "$term"; then echo "$(stamp) HALT: non-terminal ($term) after retry/hold" | tee -a "$RL"; exit 2; fi
     fi
   done

@@ -5,7 +5,7 @@ source, none of which this amendment touches. This tool recomputes ONLY the keys
 formulas (a file's sha256; a rendering = sha256(base + arm) with bytes=), and REFUSES unless every other line is unchanged.
   usage: o90_pins.py [--apply] [--client <version>]   (run from harness/; default prints the diff and changes nothing)
 Keys it may touch, and no others: s2lean/episode_s2.sh · s2lean/run_s2_stage0.sh · s2lean/prompt_B_pu.md · s2lean/prompt_C_prior.md
-· s2lean/o90_selftest.sh · s2lean/u1_gen.py · s2lean/u2_gen.py · s2lean/smoke_s2.sh · settings.s2.json · arms/a5.md arms/a6.md arms/a7.md · rendered-s2-a5|a6|a7(__EP__) · rendered-a5|a6|a7(__EP__) · claude-version."""
+· s2lean/o90_selftest.sh · s2lean/u1_gen.py · s2lean/u2_gen.py · s2lean/smoke_s2.sh · settings.s2.json · s2lean/served_model_check.py · arms/a5.md arms/a6.md arms/a7.md · rendered-s2-a5|a6|a7(__EP__) · rendered-a5|a6|a7(__EP__) · claude-version."""
 import hashlib, os, sys
 os.chdir(os.path.dirname(os.path.abspath(__file__)) + "/../..")
 def sha(p): return hashlib.sha256(open(p, "rb").read()).hexdigest()
@@ -17,7 +17,7 @@ lines = open("HASHES.txt").read().split("\n")
 # pinned: every S2-Lean episode synced from main since 10-22 would have refused (measured 2026-10-23 by a census of s2lean/*).
 FILES = ["s2lean/episode_s2.sh", "s2lean/run_s2_stage0.sh", "s2lean/prompt_B_pu.md", "s2lean/prompt_C_prior.md", "s2lean/o90_selftest.sh",
          "s2lean/u1_gen.py", "s2lean/u2_gen.py",
-         "s2lean/smoke_s2.sh", "settings.s2.json"]   # systems' re-read F1: the stage's config dir denied; S3 probes the live CFG
+         "s2lean/smoke_s2.sh", "settings.s2.json", "s2lean/served_model_check.py"]   # systems' re-read F1: the stage's config dir denied; S3 probes the live CFG
 NEW = {f: sha(f) for f in FILES if os.path.exists(f)}
 for a in ("a5", "a6", "a7"):
     NEW["arms/%s.md" % a] = sha("arms/%s.md" % a)
@@ -41,7 +41,7 @@ for l in lines:
     for after, newk in (("arms/a2.md", "arms/a5.md"), ("arms/a5.md", "arms/a6.md"), ("arms/a6.md", "arms/a7.md"),
                         ("s2lean/prompt_C.md", "s2lean/prompt_B_pu.md"), ("s2lean/prompt_B_pu.md", "s2lean/prompt_C_prior.md"),
                         ("s2lean/run_s2_stage0.sh", "s2lean/o90_selftest.sh"),
-                        ("s2lean/selftest_scaffold.py", "s2lean/u1_gen.py"), ("s2lean/u1_gen.py", "s2lean/u2_gen.py"),
+                        ("s2lean/selftest_scaffold.py", "s2lean/served_model_check.py"), ("s2lean/served_model_check.py", "s2lean/u1_gen.py"), ("s2lean/u1_gen.py", "s2lean/u2_gen.py"),
                         ("rendered-s2-a2(__EP__)", "rendered-s2-a5(__EP__)"), ("rendered-s2-a5(__EP__)", "rendered-s2-a6(__EP__)"), ("rendered-s2-a6(__EP__)", "rendered-s2-a7(__EP__)"),
                         ("rendered-a2(__EP__)", "rendered-a5(__EP__)"), ("rendered-a5(__EP__)", "rendered-a6(__EP__)"), ("rendered-a6(__EP__)", "rendered-a7(__EP__)")):
         if key(out[-1]) == after and newk in NEW and newk not in seen and not any(key(x) == newk for x in lines):
