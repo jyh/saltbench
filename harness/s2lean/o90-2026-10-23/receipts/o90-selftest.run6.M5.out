@@ -1,0 +1,17 @@
+MUTANT M5 applied to the scratch copy (episode_s2.sh re-pinned in the scratch HASHES only)
+PASS R1 a5@C refused rc 4
+PASS R2 a6@A refused rc 4
+PASS A1 stage A: a0/a5 canonical prompt 4783e203bff8 and arm rendering 8b7962f2a2d3 identical
+PASS B1 a0@B passed (kernel), B.artifact = its canonical.lean, no EXPLAIN, prompt = prompt_B.md
+PASS B2 a5@B passed (kernel) WITH a docstringed helper lemma in its body, prompt = prompt_B + prompt_B_pu, EXPLAIN.md captured (ac5a69c09bbe), not in bodies.json, in B.artifact
+PASS C1 a6@C: prior/stageB.lean = a0's artifact (b_episode ep-8e3c32d4), prompt = prompt_C + prompt_C_prior
+PASS C2 a7@C: prior/ = a5's artifact incl. EXPLAIN.md (b_episode ep-95aaaede), prompt = prompt_C + prompt_C_prior
+PASS C3 a0@C (C0): no prior/, prompt = prompt_C.md, manifest prior=None
+PASS R3 tampered artifact: DRYEXEC(HARNESS_ERROR), 'prior provenance' in the log
+PASS B3 a scored failed a0@B (False DRYEXEC(DONE)) removed a0's B.artifact, logged
+PASS H1 served-model check: SELFTEST PASS (10 cases); clean silent; substituted, haiku-only, empty, missing all halt
+FAIL W1 unwired: [LANDED(retry) ]
+PASS W2 the driver's served_check body: substituted rc 4 + HALT · clean 0 · QUOTA with no transcript 0, no HALT (K1)
+PASS D1 driver: a6/a7 on problem_82 land NOT_RUN(no_stage_B_artifact)
+SUMMARY o90_selftest MUTANT M5: 13 PASS, 1 FAIL  (scratch ~/bench-dry/o90-2026-10-23-M5; episodes.log there)
+ALLDONE

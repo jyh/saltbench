@@ -1,0 +1,29 @@
+episodes: 60   (stage A 30, stage B 30)
+  sum metered_sum              A   5,952,298  B  20,090,848  A+B  26,043,146  != amendment text 26,104,403
+  sum metered_sum_governing    A   5,982,892  B  20,121,511  A+B  26,104,403  == amendment text 26,104,403
+
+per problem, both arms passed at stage B (n = 9), field metered_sum_governing:
+  problem             a0 B        a2 B     r_B        a0 A+B      a2 A+B    r_AB
+  problem_16       384,790     427,296   1.110       452,015     749,972   1.659
+  problem_31       140,498     209,150   1.489       207,864     368,028   1.771
+  problem_38       605,836   1,190,213   1.965       705,686   1,478,689   2.095
+  problem_54        54,768     106,640   1.947       156,966     304,767   1.942
+  problem_73       832,471     664,691   0.798       938,865   1,023,940   1.091
+  problem_74       154,982     225,320   1.454       241,073     368,562   1.529
+  problem_141      180,396     424,885   2.355       484,340     731,976   1.511
+  problem_142      400,478     477,673   1.193       525,907     763,902   1.453
+  problem_146      967,038   1,876,634   1.941     1,064,075   2,614,511   2.457
+
+spread of r_B (n = 9):
+  aggregate (sum a2 / sum a0 over these problems) 1.5055
+  median r 1.489 · geometric mean 1.507 · r > 1 in 8 of 9 · r > 1.5 in 4 · r < 0.8 in 1
+  median |r-1| 48.9 %  ·  IQR(r) 0.754 (Q1 1.193, Q3 1.947)  ·  min 0.798  max 2.355  max/min 2.95
+  dispersion about its own centre, log scale: exp(MAD ln r) = 1.308 (i.e. +/-30.8 %)  ·  exp(median |ln r|) = 1.489
+
+spread of r_AB (n = 9):
+  aggregate (sum a2 / sum a0 over these problems) 1.7594
+  median r 1.659 · geometric mean 1.682 · r > 1 in 9 of 9 · r > 1.5 in 7 · r < 0.8 in 0
+  median |r-1| 65.9 %  ·  IQR(r) 0.430 (Q1 1.511, Q3 1.942)  ·  min 1.091  max 2.457  max/min 2.25
+  dispersion about its own centre, log scale: exp(MAD ln r) = 1.142 (i.e. +/-14.2 %)  ·  exp(median |ln r|) = 1.659
+
+INVARIANTS: I1 I2 I3 hold

@@ -22,6 +22,13 @@ PID="${1:?problem_id}"; STAGE="${2:?A|B|C}"; DRY="${3:-}"
 read -r arm || true; [ -n "${arm:-}" ] || { echo "REFUSE: the arm must arrive on stdin"; exit 4; }
 case "$arm" in a[0-9]|a[0-9][0-9]|s[0-9]) ;; *) echo "REFUSE: bad arm id '$arm'"; exit 4 ;; esac
 case "$STAGE" in A|B|C) ;; *) echo "REFUSE: stage must be A, B or C"; exit 4 ;; esac
+# O90 STAGE-1 AMENDMENT (2026-10-23, desk AEY): three arms whose CLAUDE.md is a0's, byte for byte (arms/a5|a6|a7.md are
+# copies of arms/a0.md, asserted by the pins and by o90_selftest.sh). What differs is the PROMPT, nothing else:
+#   a5  P+U  — stages A and B; at stage B, prompt_B.md + prompt_B_pu.md (the understanding deliverable, design §2 [F9]).
+#   a6  U3 C-with-P    — stage C only; the ordinary C view plus prior/ = a0's scored stage-B artifact (design §1 [F3]).
+#   a7  U3 C-with-P+U  — stage C only; the same, from a5's artifact.  (C0, the view alone, is a0 at stage C.)
+case "$arm:$STAGE" in a5:C|a6:A|a6:B|a7:A|a7:B) echo "REFUSE: arm $arm does not run stage $STAGE (O90: a5 is A/B only; a6/a7 are C only)"; exit 4 ;; esac
+PRIOR_ARM=""; case "$arm" in a6) PRIOR_ARM=a0 ;; a7) PRIOR_ARM=a5 ;; esac
 case "$PID" in ''|*[!0-9]*) echo "REFUSE: problem_id must be a number"; exit 4 ;; esac
 BENCH="${BENCH:-$HOME/bench}"; H="${H:-$BENCH/harness}"; S2="$H/s2lean"; CFG="${CFG:-$HOME/.claude-bench}"; EPROOT="${EPROOT:-$HOME/work}"
 LEANPROJ="${LEANPROJ:-$HOME/lean-shared/clever}"; VIEWS="${VIEWS:-$BENCH/s2views}"
@@ -37,6 +44,9 @@ mkdir -p "$EP" "$ST" "$BENCH/logs" "$EPROOT" "$ABDIR"
 log() { printf '%s %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$*" | tee -a "$ST/episode.log"; }
 now() { date -u +%s; }
 term="UNSET"; t0=$(now); crc=""; SID=""; JSONL=""; killed=""; finished=""; CPID=""; orphans=0; ARMFILE=""   # ARMFILE bound early so finish() survives a die() before it is set (EDH-1)
+# O90 (AEY): bound to its VALUE here, not "", because the manifest writer opens it: a die() before step 5 (the A/B/C view
+# preparation, and O90's prior-provenance refusal) otherwise lost the manifest to a FileNotFoundError (measured in the dry, R3).
+ARMFILE="$H/arms/$arm.md"; [ "$arm" = "a1" ] && [ -f "$S2/placebo.md" ] && ARMFILE="$S2/placebo.md"
 CLAUDE_BIN="${CLAUDE_BIN:-$(command -v claude)}"
 PINNED_CLAUDE=$(grep '^claude-version ' "$H/HASHES.txt" | cut -d' ' -f2)
 AGENT_PATH="${AGENT_PATH:-/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$REAL_HOME/.local/bin}"
@@ -95,6 +105,7 @@ else
   [ -s "$VIEWS/$TASK/frozen.json" ] || refuse "no frozen.json for $TASK (stage_views.sh ship BC first)"
   FZ="$VIEWS/$TASK/frozen.json"; want_f=$(pin3 frozen "$TASK"); [ -n "$want_f" ] && [ "$want_f" = "$(sha "$FZ")" ] || refuse "frozen.json sha $(sha "$FZ") != pinned '$want_f' for $TASK"
   [ "$STAGE" = "C" ] && { [ -s "$VIEWS/$TASK/C.lean" ] || refuse "no C view for $TASK"; }
+  [ -n "$PRIOR_ARM" ] && { [ -s "$SROOT/$TASK/$PRIOR_ARM/B.artifact/B.artifact.json" ] || refuse "no scored stage-B artifact for $TASK/$PRIOR_ARM (the driver lands NOT_RUN(no_stage_B_artifact))"; }
   [ "$STAGE" = "B" ] && { [ -s "$ABDIR/A.bodies.json" ] || refuse "no scored stage-A pass for $TASK/$arm (the driver lands NOT_PROVEN(no_stage_A_pass))"; }
 fi
 FROZEN_SHA=$(sha "$FZ")
@@ -149,6 +160,8 @@ m={"episode":ep,"substrate":"S2-Lean/CLEVER","instance_id":"problem_%s"%pid,"sta
    "checker_sha256":{f:sha(os.path.join(h,"s2lean",f)) for f in ("check.py","extract.py","assemble.py","s2audit.lean","screen.py","sandbox_check.sb","rt.template","build_views.py")},
    "task_file_sha256":sha(os.path.join(st,"eptree","repo","task.lean")),"bodies_sha256":sha(os.path.join(st,"bodies.json")),
    "a_episode":ab.get("a_episode"),"a_bodies_sha256":ab.get("a_bodies_sha256"),"a_termination":ab.get("a_termination"),"a_view_sha256":ab.get("a_view_sha256"),
+   "explain_sha256":sha(os.path.join(st,"EXPLAIN.md")),"explain_bytes":(os.path.getsize(os.path.join(st,"EXPLAIN.md")) if os.path.exists(os.path.join(st,"EXPLAIN.md")) else None),
+   "prior":jl(os.path.join(st,"prior.json")) or None,
    "rt_calls":ends,"rt_calls_rc0":ok,"rt_unfinished":max(0,starts-ends),"orphans_killed":int(E.get("ORPHANS") or 0),
    "metered_sum":mt_.get("metered_sum"),"metered_sum_governing":(mt_.get("crosscheck") or {}).get("metered_sum_governing"),
    "metered_sum_incl_compaction_floor":mt_.get("metered_sum_incl_compaction_floor"),
@@ -181,7 +194,22 @@ ln -s "$LEANPROJ/.lake" "$EP/repo/.lake" || die "lake link"
 # ── 4. the task file for this stage ──────────────────────────────────────────────────────────────
 case "$STAGE" in
   A) cp "$VIEWS/$TASK/A.lean" "$EP/repo/task.lean" || die "A view" ;;
-  C) cp "$VIEWS/$TASK/C.lean" "$EP/repo/task.lean" || die "C view" ;;
+  C) cp "$VIEWS/$TASK/C.lean" "$EP/repo/task.lean" || die "C view"
+     if [ -n "$PRIOR_ARM" ]; then
+       PB="$SROOT/$TASK/$PRIOR_ARM/B.artifact"; mkdir -p "$EP/repo/prior" || die "prior dir"
+       cp "$PB/stageB.lean" "$EP/repo/prior/stageB.lean" || die "prior stageB.lean"
+       [ -f "$PB/EXPLAIN.md" ] && { cp "$PB/EXPLAIN.md" "$EP/repo/prior/EXPLAIN.md" || die "prior EXPLAIN.md"; }
+       python3 - "$PB/B.artifact.json" "$EP/repo/prior" "$ST/prior.json" "$PRIOR_ARM" <<'PY' || die "prior provenance"
+import json,sys,hashlib,os
+meta=json.load(open(sys.argv[1])); d=sys.argv[2]
+def sha(p): return hashlib.sha256(open(p,"rb").read()).hexdigest()
+got={f:sha(os.path.join(d,f)) for f in sorted(os.listdir(d))}
+want={"stageB.lean":meta["stageB_sha256"]}
+if meta.get("explain_sha256"): want["EXPLAIN.md"]=meta["explain_sha256"]
+if got!=want: raise SystemExit("prior/ %r != the artifact record %r" % (got,want))
+json.dump({"prior_arm":sys.argv[4],"b_episode":meta["b_episode"],"files":got},open(sys.argv[3],"w"),indent=1)
+PY
+     fi ;;
   B) AB="$ABDIR/A.bodies.json"
      python3 - "$FZ" "$AB" "$S2/build_views.py" > "$EP/repo/task.lean" <<'PY' || die "B assemble"
 import json,sys,importlib.util
@@ -201,6 +229,8 @@ ARMFILE="$ARMFILE" python3 - "$STAGE" "$EP" "$ST" "$S2" "$arm" <<'PY' || die "pr
 import json,sys,hashlib,os
 stage,ep,st,s2,arm=sys.argv[1:]
 tmpl=open(os.path.join(s2,"prompt_%s.md"%stage)).read()
+extra={("a5","B"):"prompt_B_pu.md",("a6","C"):"prompt_C_prior.md",("a7","C"):"prompt_C_prior.md"}.get((arm,stage))
+if extra: tmpl=tmpl+open(os.path.join(s2,extra)).read()
 prompt=tmpl.replace("__EP__",ep); canon=tmpl
 base=open(os.path.join(s2,"base.md")).read().replace("__EP__",ep); armb=open(os.environ["ARMFILE"]).read()
 open(os.path.join(st,"prompt.md"),"w").write(prompt); open(os.path.join(ep,"CLAUDE.md"),"w").write(base+armb)
@@ -277,6 +307,9 @@ else case "$sub" in success) term="DONE" ;; error_max_turns|ERR:error_max_turns)
 fi
 printf '%s' "$msgs" | grep -Eio "$quota_rx|$auth_rx" | head -3 | tr '\n' ' ' > "$ST/quota_evidence.txt"
 python3 "$S2/extract.py" "$STAGE" "$EP/repo/task.lean" > "$ST/bodies.json" 2>"$ST/extract.err" || { : > "$ST/bodies.json"; term="${term}+NO_BODIES"; }
+# O90 [F9]: EXPLAIN.md is CAPTURED, never scored — copied beside bodies.json (which it never enters), for every arm, so the
+# readers and the truth axis get it while the referee sees exactly what it saw before this amendment.
+[ -f "$EP/repo/EXPLAIN.md" ] && cp "$EP/repo/EXPLAIN.md" "$ST/EXPLAIN.md"
 # the agent's whole task file is archived; the audit-relevant command tokens in it are counted (refuter NF4 tripwire)
 grep -Ec '#eval|run_cmd|run_tac|run_elab|initialize|IO\.Process|IO\.FS|elab_rules|macro_rules|set_option' "$EP/repo/task.lean" > "$ST/task_meta_tokens.txt" 2>/dev/null
 if [ -s "$ST/bodies.json" ]; then
@@ -340,6 +373,27 @@ PY
     [ -e "$ABDIR/A.bodies.json" ] && { rm -f "$ABDIR/A.bodies.json"; log "A_BODIES superseded (scored, not passed) for $TASK/$arm (term=$term passed=$passed)"; }
   else
     [ -e "$ABDIR/A.bodies.json" ] && log "A_BODIES kept: this episode is NON-scored ($term); an earlier scored pass for $TASK/$arm stands (F4)"
+  fi
+fi
+# ── 10. O90 [F3]: B.artifact is written ONLY for a scored, passed stage B (the D5 rule, applied one stage on) ──
+if [ "$STAGE" = "B" ] && [ -z "$PROMPT_OVERRIDE" ]; then
+  scored=""; case "$term" in DONE|ROUNDS_EXHAUSTED|WALLCLOCK|TOKEN_CEILING) scored=1 ;; esac
+  passed=$(python3 -c "import json;print(bool(json.load(open('$ST/check.json')).get('passed')))" 2>/dev/null)
+  BA="$ABDIR/B.artifact"
+  if [ -n "$scored" ] && [ "$passed" = "True" ]; then
+    rm -rf -- "${ABDIR:?}/B.artifact"; mkdir -p "$BA"
+    if [ -s "$ST/canonical.lean" ] && cp "$ST/canonical.lean" "$BA/stageB.lean" && { [ ! -f "$ST/EXPLAIN.md" ] || cp "$ST/EXPLAIN.md" "$BA/EXPLAIN.md"; } && \
+       python3 - "$BA" "$ep" "$term" <<'PY'
+import json,sys,hashlib,os
+d,ep,term=sys.argv[1:]
+def sha(p): return hashlib.sha256(open(p,"rb").read()).hexdigest() if os.path.exists(p) else None
+json.dump({"b_episode":ep,"b_termination":term,"b_passed":True,"stageB_sha256":sha(os.path.join(d,"stageB.lean")),"explain_sha256":sha(os.path.join(d,"EXPLAIN.md"))},open(os.path.join(d,"B.artifact.json"),"w"),indent=1)
+PY
+    then log "B_ARTIFACT written $BA"; else rm -rf -- "${ABDIR:?}/B.artifact"; term="HARNESS_ERROR(b_artifact:$term)"; fi
+  elif [ -n "$scored" ]; then
+    [ -e "$BA" ] && { rm -rf -- "${ABDIR:?}/B.artifact"; log "B_ARTIFACT superseded (scored, not passed) for $TASK/$arm (term=$term passed=$passed)"; }
+  else
+    [ -e "$BA" ] && log "B_ARTIFACT kept: this episode is NON-scored ($term); an earlier scored pass for $TASK/$arm stands"
   fi
 fi
 finish "$crc"

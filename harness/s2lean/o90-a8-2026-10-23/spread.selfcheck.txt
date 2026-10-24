@@ -1,0 +1,5 @@
+selfcheck  pristine          rc=0  (want 0)  INVARIANTS: I1 I2 I3 hold
+selfcheck  mutant swap       rc=1  (want 1)  INVARIANTS: FAILED: I3 problem_142 r_B 0.838394 != landings 1.192757 | I3 problem_31 r_B 0.671757 != landings 1.488633 | I3 problem_16 r_B 0.900523 != landings 1.110465 | I3 problem_74 r_B 0.687831 !=
+selfcheck  mutant allprob    rc=1  (want 1)  INVARIANTS: FAILED: I2 population ['problem_0', 'problem_112', 'problem_127', 'problem_141', 'problem_142', 'problem_146', 'problem_16', 'problem_18', 'problem_31', 'problem_38', 'problem_4', 'problem
+selfcheck  mutant field      rc=1  (want 1)  INVARIANTS: FAILED: I1 sum of metered_sum = 26043146 != amendment text 26104403 | I3 problem_142 r_B 1.193256 != landings 1.192757 | I3 problem_31 r_B 1.492224 != landings 1.488633 | I3 problem_16 r_B
+SELFCHECK PASS

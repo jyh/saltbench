@@ -13,7 +13,7 @@ OUT=HASHES.txt.tmp; trap 'rm -f HASHES.txt.tmp' EXIT   # atomic: a fail-loud exi
     printf '%s %s\n' "$f" "$(shasum -a 256 "$f" | cut -d' ' -f1)"
   done
   printf 'settings.json %s\n' "$(shasum -a 256 settings.bench.json | cut -d' ' -f1)"
-  printf 'claude-version %s\n' "2.1.251"
+  printf 'claude-version %s\n' "2.1.278"   # O90 (AEY, 2026-10-23): re-pinned to the run box's client; was 2.1.251
   # S2-Lean: the harness files, the arm renderings with the Lean base block, and every shipped view
   for f in s2lean/*.py s2lean/*.sh s2lean/*.md s2lean/rt.template s2lean/*.lean s2lean/*.sb; do [ -f "$f" ] && printf '%s %s\n' "$f" "$(shasum -a 256 "$f" | cut -d' ' -f1)"; done
   for a in arms/*.md; do id=$(basename "$a" .md); src="$a"; [ "$id" = a1 ] && [ -f s2lean/placebo.md ] && src=s2lean/placebo.md; printf 'rendered-s2-%s(__EP__) %s bytes=%s\n' "$id" "$(cat s2lean/base.md "$src" | shasum -a 256 | cut -d' ' -f1)" "$(cat s2lean/base.md "$src" | wc -c | tr -d ' ')"; done

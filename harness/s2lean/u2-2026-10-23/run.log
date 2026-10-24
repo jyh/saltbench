@@ -1,0 +1,14 @@
+ep-a1644525 problem_74 a0: reached 161 imported · dropped 90 {'COMPILER-AUX': 4, 'INSTANCE': 57, 'AUX-NAME': 2, 'TACTIC-INTERNAL': 27} · used 71 {'ctor': 11, 'def': 24, 'inductive': 11, 'theorem': 25} · items 4
+ep-1a75f80f problem_74 a2: reached 165 imported · dropped 93 {'COMPILER-AUX': 5, 'INSTANCE': 60, 'AUX-NAME': 2, 'TACTIC-INTERNAL': 26} · used 72 {'ctor': 11, 'def': 24, 'inductive': 11, 'theorem': 26} · items 4
+ep-05b2f46c problem_16 a0: reached 70 imported · dropped 17 {'COMPILER-AUX': 3, 'INSTANCE': 11, 'AUX-NAME': 3} · used 53 {'axiom': 1, 'ctor': 4, 'def': 21, 'inductive': 11, 'theorem': 16} · items 4
+ep-e3da4a44 problem_16 a2: reached 72 imported · dropped 16 {'INSTANCE': 11, 'COMPILER-AUX': 3, 'AUX-NAME': 2} · used 56 {'axiom': 1, 'ctor': 4, 'def': 21, 'inductive': 11, 'theorem': 19} · items 4
+ep-e45d67b9 problem_141 a0: reached 91 imported · dropped 24 {'COMPILER-AUX': 6, 'INSTANCE': 15, 'DEPRECATED': 1, 'AUX-NAME': 2} · used 67 {'axiom': 1, 'ctor': 10, 'def': 23, 'inductive': 15, 'theorem': 18} · items 4
+ep-51311316 problem_141 a2: reached 81 imported · dropped 23 {'COMPILER-AUX': 6, 'INSTANCE': 13, 'DEPRECATED': 1, 'AUX-NAME': 3} · used 58 {'ctor': 9, 'def': 24, 'inductive': 12, 'theorem': 13} · items 4
+SUMMARY ep-a1644525 p74 a0: used 71 {'ctor': 11, 'def': 24, 'inductive': 11, 'theorem': 25} (direct 40, only via problem_spec 0) · dropped 90 · items 4
+SUMMARY ep-1a75f80f p74 a2: used 72 {'ctor': 11, 'def': 24, 'inductive': 11, 'theorem': 26} (direct 40, only via problem_spec 1) · dropped 93 · items 4
+SUMMARY ep-05b2f46c p16 a0: used 53 {'axiom': 1, 'ctor': 4, 'def': 21, 'inductive': 11, 'theorem': 16} (direct 31, only via problem_spec 0) · dropped 17 · items 4
+SUMMARY ep-e3da4a44 p16 a2: used 56 {'axiom': 1, 'ctor': 4, 'def': 21, 'inductive': 11, 'theorem': 19} (direct 12, only via problem_spec 0) · dropped 16 · items 4
+SUMMARY ep-e45d67b9 p141 a0: used 67 {'axiom': 1, 'ctor': 10, 'def': 23, 'inductive': 15, 'theorem': 18} (direct 46, only via problem_spec 0) · dropped 24 · items 4
+SUMMARY ep-51311316 p141 a2: used 58 {'ctor': 9, 'def': 24, 'inductive': 12, 'theorem': 13} (direct 46, only via problem_spec 0) · dropped 23 · items 4
+TOTAL: 6 artifacts · used 377 · items 24 · refused 0
+EXIT=0

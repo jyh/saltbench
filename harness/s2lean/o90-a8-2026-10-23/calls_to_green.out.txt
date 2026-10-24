@@ -1,0 +1,81 @@
+problem      arm passed class            tools  api compiles 1st_green kind       api@1st 1st_maybe last      
+problem_0    a0  False  AXIOMS_FAIL          8    8        1         - -                -         - RED       
+problem_0    a2  False  AXIOMS_FAIL         17   17        4         - -                -         - RED       
+problem_4    a0  False  AXIOMS_FAIL         18   18        5         - -                -         - RED       
+problem_4    a2  True   PASS                 8    8        2         4 GREEN            4         4 GREEN     
+problem_16   a0  True   PASS                18   18        2        16 GREEN           16        16 GREEN     
+problem_16   a2  True   PASS                17   17        1        15 GREEN           15        15 GREEN     
+problem_18   a0  False  KERNEL_REJECTED     27   27        1         - -                -         - RED       
+problem_18   a2  False  AXIOMS_FAIL         16   16        2         - -                -         - RED       
+problem_31   a0  True   PASS                 7    7        2         6 GREEN            6         6 GREEN     
+problem_31   a2  True   PASS                 9    9        2         4 GREEN            4         4 GREEN     
+problem_38   a0  True   PASS                18   18        1        15 GREEN           15        15 GREEN     
+problem_38   a2  True   PASS                27   27        3        19 GREEN           19        19 GREEN     
+problem_54   a0  True   PASS                 3    3        2         3 GREEN            3         3 GREEN     
+problem_54   a2  True   PASS                 6    6        2         3 GREEN            3         3 GREEN     
+problem_73   a0  True   PASS                28   28        4        25 GREEN_NORT      25        25 GREEN_NORT
+problem_73   a2  True   PASS                22   22        5        17 GREEN           17        17 GREEN     
+problem_74   a0  True   PASS                 7    7        3         6 GREEN            6         6 GREEN     
+problem_74   a2  True   PASS                 9    9        3         5 GREEN            5         5 UNDET     
+problem_96   a0  False  AXIOMS_FAIL         14   14        3         - -                -         - RED       
+problem_96   a2  False  AXIOMS_FAIL         15   15        3         - -                -         - RED       
+problem_112  a0  True   PASS                55   55       11        50 GREEN           50        50 UNDET     
+problem_112  a2  False  SCREEN              55   55        4        47 GREEN           47        47 GREEN     
+problem_127  a0  False  AXIOMS_FAIL          8    8        1         - -                -         - RED       
+problem_127  a2  False  AXIOMS_FAIL         10   10        1         - -                -         - RED       
+problem_141  a0  True   PASS                 8    8        1         8 GREEN            8         8 GREEN     
+problem_141  a2  True   PASS                16   16        3        10 GREEN           10        10 UNDET     
+problem_142  a0  True   PASS                11   11        2         8 GREEN            8         8 GREEN     
+problem_142  a2  True   PASS                16   16        2        11 GREEN           11        11 GREEN     
+problem_146  a0  True   PASS                26   26        2        25 GREEN           25        25 GREEN     
+problem_146  a2  True   PASS                34   34        3        29 GREEN           29        29 GREEN     
+
+completeness: sidechain lines 0 · tool calls without a tool_result 0 · results carrying a truncation marker 1 · rt invocations unassigned 0 · transcript API calls == manifest calls in 30 of 30
+cross-check: passed with a first green 20 of 20 · failed with a first green 1 of 10 · ambiguous (first_green != first_maybe) 0
+
+paired, both passed (n = 9): first-green tool-call index a2 vs a0, and total tool calls
+  problem_16   a0  16  a2  15  ratio  0.94   |  total a0  18  a2  17
+  problem_31   a0   6  a2   4  ratio  0.67   |  total a0   7  a2   9
+  problem_38   a0  15  a2  19  ratio  1.27   |  total a0  18  a2  27
+  problem_54   a0   3  a2   3  ratio  1.00   |  total a0   3  a2   6
+  problem_73   a0  25  a2  17  ratio  0.68   |  total a0  28  a2  22
+  problem_74   a0   6  a2   5  ratio  0.83   |  total a0   7  a2   9
+  problem_141  a0   8  a2  10  ratio  1.25   |  total a0   8  a2  16
+  problem_142  a0   8  a2  11  ratio  1.38   |  total a0  11  a2  16
+  problem_146  a0  25  a2  29  ratio  1.16   |  total a0  26  a2  34
+  a2 needs more calls than a0 in 4 of 9 pairs, fewer in 4, equal in 1 · median ratio 1.000
+
+deliverable calls BEFORE the first green, per episode (NEW docstring writes · EXPLAIN.md writes):
+  ep-7b01bccf  a0  problem_0      1  (1 · 0)
+  ep-00d3d01c  a0  problem_112    0  (0 · 0)
+  ep-e0ac3d5c  a0  problem_127    0  (0 · 0)
+  ep-e45d67b9  a0  problem_141    0  (0 · 0)
+  ep-b449d07a  a0  problem_142    0  (0 · 0)
+  ep-aa926711  a0  problem_146    0  (0 · 0)
+  ep-05b2f46c  a0  problem_16     0  (0 · 0)
+  ep-d13d4e84  a0  problem_18     0  (0 · 0)
+  ep-7813014d  a0  problem_31     0  (0 · 0)
+  ep-c274a8a7  a0  problem_38     0  (0 · 0)
+  ep-7238fd78  a0  problem_4      4  (4 · 0)
+  ep-341703a2  a0  problem_54     0  (0 · 0)
+  ep-7dfd7731  a0  problem_73     0  (0 · 0)
+  ep-a1644525  a0  problem_74     0  (0 · 0)
+  ep-b004adf5  a0  problem_96     1  (1 · 0)
+  ep-6c4b39bf  a2  problem_0      1  (1 · 0)
+  ep-6b5540c0  a2  problem_112    1  (1 · 0)
+  ep-e8d34b5d  a2  problem_127    2  (2 · 0)
+  ep-51311316  a2  problem_141    0  (0 · 0)
+  ep-b12c70c9  a2  problem_142    0  (0 · 0)
+  ep-5cb9f2d4  a2  problem_146    0  (0 · 0)
+  ep-e3da4a44  a2  problem_16     1  (1 · 0)
+  ep-c453db45  a2  problem_18     1  (1 · 0)
+  ep-e4b2286f  a2  problem_31     1  (1 · 0)
+  ep-9cf06932  a2  problem_38     1  (1 · 0)
+  ep-f548619e  a2  problem_4      1  (1 · 0)
+  ep-891c4f0a  a2  problem_54     0  (0 · 0)
+  ep-ec75aa77  a2  problem_73     0  (0 · 0)
+  ep-1a75f80f  a2  problem_74     0  (0 · 0)
+  ep-b229cb44  a2  problem_96     5  (5 · 0)
+  share of a0 episodes with >= 1: 3 of 15
+  share of a2 episodes with >= 1: 9 of 15
+CROSS-CHECK: every passed episode has a first green

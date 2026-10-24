@@ -1,0 +1,8 @@
+selftest pristine            PASS (7/7 fixtures)
+selftest mutant nosorry      RED as required: sorry: first_green 2 want 3
+selftest mutant noerrtag     RED as required: errtag: first_green 1 want 2
+selftest mutant norc         RED as required: rc: first_green 1 want 2
+selftest mutant nofilter     RED as required: filter: first_green 1 want 2
+selftest mutant nodeliv      RED as required: deliv: deliverable_calls_before_first_green 0 want 1
+selftest mutant nobaseline   RED as required: wholefile: deliverable_calls_before_first_green 1 want 0
+SELFTEST PASS

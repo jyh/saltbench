@@ -1,0 +1,52 @@
+PASS closure: a lemma reached through a public helper (List.append_nil)
+PASS closure: a lemma reached through a PRIVATE helper (List.length_cons)
+PASS closure: an unreached file constant contributes nothing (Nat.succ_le)
+PASS filter: an instance reached is dropped as INSTANCE
+PASS filter: a task helper is dropped as NOT-LIBRARY
+PASS filter: a casesOn reached through a file matcher is dropped as COMPILER-AUX
+PASS filter: no used name fires a FILTER rule (non-vacuous: holds with no drops too)
+PASS only_via_problem_spec: List.foldl comes only from problem_spec
+PASS only_via_problem_spec: congrArg is in the proof term itself
+PASS filter: eq_self -> None
+PASS filter: proof_irrel -> None
+PASS filter: List.foo.eq_1 -> EQN-LEMMA
+PASS filter: List.foo.eq_def -> EQN-LEMMA
+PASS filter: Nat.add._sunfold -> EQN-LEMMA
+PASS filter: List.map.match_1 -> AUX-NUMBERED
+PASS filter: Nat.foo.proof_2 -> AUX-NUMBERED
+PASS filter: _private.Init.X.0.foo -> AUX-NAME
+PASS filter: Foo._simp_1 -> AUX-NAME
+PASS filter: Foo._auxLemma.3 -> AUX-NAME
+PASS filter: Nat.rec -> COMPILER-AUX
+PASS filter: Nat.recAux -> COMPILER-AUX
+PASS filter: List.below -> COMPILER-AUX
+PASS filter: Prod.mk.injEq -> COMPILER-AUX
+PASS filter: Nat.noConfusion -> COMPILER-AUX
+PASS filter: Lean.Omega.LinearCombo.add_eval -> TACTIC-INTERNAL
+PASS filter: Mathlib.Tactic.Ring.add_pf_add_zero -> TACTIC-INTERNAL
+PASS filter: Lean.Name -> None
+PASS filter: a notation def (type head Lean.ParserDescr) -> SYNTAX
+PASS filter: a deprecated alias -> DEPRECATED
+PASS filter: a matcher flagged by Lean -> COMPILER-AUX
+PASS draw: same seed gives byte-identical items
+PASS draw: another seed moves it
+PASS draw: every distractor is outside the used set
+PASS draw: every key option is in the used set
+PASS draw: options share their item kind
+PASS draw: distractors only from used namespaces (no Set.*)
+PASS draw: an exact alias (same type hash) is never a distractor
+PASS draw: filtered pool members never drawn
+PASS draw: no distractor reused within an artifact
+PASS draw: 1 theorem item of 4+4 (6 eligible < 8: no short distractor item), 1 def item of 3+4 (short used chunk)
+PASS draw: report counts the alias and the in-used duplicate
+PASS draw: matched distractors share their anchor's module family when the pool has one
+MUTANT M-SKIP-LOCALS: RED (6 arms failed: ['closure: a lemma reached through a public helper (List.append_nil)', 'closure: a lemma reached through a PRIVATE helper (List.length_cons)', 'filter: an instance reached is dropped as INSTANCE', 'filter: a task helper is dropped as NOT-LIBRARY', 'filter: a casesOn reached through a file matcher is dropped as COMPILER-AUX', 'only_via_problem_spec: List.foldl comes only from problem_spec'])
+MUTANT M-FILTER-LOCALS: RED (2 arms failed: ['closure: a lemma reached through a PRIVATE helper (List.length_cons)', 'filter: an instance reached is dropped as INSTANCE'])
+MUTANT M-NO-FILTER: RED (4 arms failed: ['filter: an instance reached is dropped as INSTANCE', 'filter: a task helper is dropped as NOT-LIBRARY', 'filter: a casesOn reached through a file matcher is dropped as COMPILER-AUX', 'filter: no used name fires a FILTER rule (non-vacuous: holds with no drops too)'])
+MUTANT M-DRAW-NO-EXCLUDE: RED (1 arms failed: ['draw: report counts the alias and the in-used duplicate'])
+MUTANT M-DRAW-NO-EXCLUDE+M-DRAW-NO-DUPTYPE: RED (4 arms failed: ['draw: every distractor is outside the used set', 'draw: an exact alias (same type hash) is never a distractor', 'draw: 1 theorem item of 4+4 (6 eligible < 8: no short distractor item), 1 def item of 3+4 (short used chunk)', 'draw: report counts the alias and the in-used duplicate'])
+MUTANT M-DRAW-NO-DUPTYPE: RED (2 arms failed: ['draw: an exact alias (same type hash) is never a distractor', 'draw: report counts the alias and the in-used duplicate'])
+MUTANT M-DRAW-UNSEEDED: RED (1 arms failed: ['draw: same seed gives byte-identical items'])
+MUTANT M-DRAW-NO-MODMATCH: RED (1 arms failed: ["draw: matched distractors share their anchor's module family when the pool has one"])
+SELFTEST OK (42 arms, 8 mutants, 0 failed)
+EXIT=0

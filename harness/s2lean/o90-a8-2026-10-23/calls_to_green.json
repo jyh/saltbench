@@ -1,0 +1,1438 @@
+{
+ "episodes": [
+  {
+   "api_calls": 8,
+   "api_calls_total": 9,
+   "arm": "a0",
+   "class": "AXIOMS_FAIL",
+   "compile_calls": 1,
+   "compiles": [
+    {
+     "api_calls_so_far": 7,
+     "idx": 7,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    }
+   ],
+   "deliverable_calls_before_first_green": 1,
+   "docstring_writes_before_first_green": 1,
+   "ep": "ep-7b01bccf",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": null,
+   "first_green_idx": null,
+   "first_green_verdict": null,
+   "first_maybe_idx": null,
+   "last_compile_verdict": "RED",
+   "manifest_calls": 9,
+   "own_docstrings_K": 1,
+   "passed": false,
+   "problem": "problem_0",
+   "rt_invocations": 5,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 8,
+   "tool_results": 8,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 17,
+   "api_calls_total": 18,
+   "arm": "a2",
+   "class": "AXIOMS_FAIL",
+   "compile_calls": 4,
+   "compiles": [
+    {
+     "api_calls_so_far": 4,
+     "idx": 4,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 13,
+     "idx": 13,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 14,
+     "idx": 14,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 17,
+     "idx": 17,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    }
+   ],
+   "deliverable_calls_before_first_green": 1,
+   "docstring_writes_before_first_green": 1,
+   "ep": "ep-6c4b39bf",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": null,
+   "first_green_idx": null,
+   "first_green_verdict": null,
+   "first_maybe_idx": null,
+   "last_compile_verdict": "RED",
+   "manifest_calls": 18,
+   "own_docstrings_K": 1,
+   "passed": false,
+   "problem": "problem_0",
+   "rt_invocations": 13,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 17,
+   "tool_results": 17,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 18,
+   "api_calls_total": 19,
+   "arm": "a0",
+   "class": "AXIOMS_FAIL",
+   "compile_calls": 5,
+   "compiles": [
+    {
+     "api_calls_so_far": 9,
+     "idx": 9,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 10,
+     "idx": 10,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 11,
+     "idx": 11,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 12,
+     "idx": 12,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 14,
+     "idx": 14,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    }
+   ],
+   "deliverable_calls_before_first_green": 4,
+   "docstring_writes_before_first_green": 4,
+   "ep": "ep-7238fd78",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": null,
+   "first_green_idx": null,
+   "first_green_verdict": null,
+   "first_maybe_idx": null,
+   "last_compile_verdict": "RED",
+   "manifest_calls": 19,
+   "own_docstrings_K": 1,
+   "passed": false,
+   "problem": "problem_4",
+   "rt_invocations": 8,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 18,
+   "tool_results": 18,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 8,
+   "api_calls_total": 9,
+   "arm": "a2",
+   "class": "PASS",
+   "compile_calls": 2,
+   "compiles": [
+    {
+     "api_calls_so_far": 4,
+     "idx": 4,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 8,
+     "idx": 8,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 1,
+   "docstring_writes_before_first_green": 1,
+   "ep": "ep-f548619e",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 4,
+   "first_green_idx": 4,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 4,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 9,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_4",
+   "rt_invocations": 5,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 8,
+   "tool_results": 8,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 18,
+   "api_calls_total": 19,
+   "arm": "a0",
+   "class": "PASS",
+   "compile_calls": 2,
+   "compiles": [
+    {
+     "api_calls_so_far": 15,
+     "idx": 15,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 16,
+     "idx": 16,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-05b2f46c",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 16,
+   "first_green_idx": 16,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 16,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 19,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_16",
+   "rt_invocations": 12,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 18,
+   "tool_results": 18,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 17,
+   "api_calls_total": 18,
+   "arm": "a2",
+   "class": "PASS",
+   "compile_calls": 1,
+   "compiles": [
+    {
+     "api_calls_so_far": 15,
+     "idx": 15,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 1,
+   "docstring_writes_before_first_green": 1,
+   "ep": "ep-e3da4a44",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 15,
+   "first_green_idx": 15,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 15,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 18,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_16",
+   "rt_invocations": 13,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 17,
+   "tool_results": 17,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 27,
+   "api_calls_total": 28,
+   "arm": "a0",
+   "class": "KERNEL_REJECTED",
+   "compile_calls": 1,
+   "compiles": [
+    {
+     "api_calls_so_far": 26,
+     "idx": 26,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-d13d4e84",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": null,
+   "first_green_idx": null,
+   "first_green_verdict": null,
+   "first_maybe_idx": null,
+   "last_compile_verdict": "RED",
+   "manifest_calls": 28,
+   "own_docstrings_K": 1,
+   "passed": false,
+   "problem": "problem_18",
+   "rt_invocations": 14,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 27,
+   "tool_results": 27,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 16,
+   "api_calls_total": 17,
+   "arm": "a2",
+   "class": "AXIOMS_FAIL",
+   "compile_calls": 2,
+   "compiles": [
+    {
+     "api_calls_so_far": 14,
+     "idx": 14,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 16,
+     "idx": 16,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    }
+   ],
+   "deliverable_calls_before_first_green": 1,
+   "docstring_writes_before_first_green": 1,
+   "ep": "ep-c453db45",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": null,
+   "first_green_idx": null,
+   "first_green_verdict": null,
+   "first_maybe_idx": null,
+   "last_compile_verdict": "RED",
+   "manifest_calls": 17,
+   "own_docstrings_K": 1,
+   "passed": false,
+   "problem": "problem_18",
+   "rt_invocations": 12,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 16,
+   "tool_results": 16,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 7,
+   "api_calls_total": 8,
+   "arm": "a0",
+   "class": "PASS",
+   "compile_calls": 2,
+   "compiles": [
+    {
+     "api_calls_so_far": 5,
+     "idx": 5,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 6,
+     "idx": 6,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-7813014d",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 6,
+   "first_green_idx": 6,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 6,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 8,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_31",
+   "rt_invocations": 3,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 7,
+   "tool_results": 7,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 9,
+   "api_calls_total": 10,
+   "arm": "a2",
+   "class": "PASS",
+   "compile_calls": 2,
+   "compiles": [
+    {
+     "api_calls_so_far": 4,
+     "idx": 4,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 9,
+     "idx": 9,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 1,
+   "docstring_writes_before_first_green": 1,
+   "ep": "ep-e4b2286f",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 4,
+   "first_green_idx": 4,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 4,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 10,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_31",
+   "rt_invocations": 6,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 9,
+   "tool_results": 9,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 18,
+   "api_calls_total": 19,
+   "arm": "a0",
+   "class": "PASS",
+   "compile_calls": 1,
+   "compiles": [
+    {
+     "api_calls_so_far": 15,
+     "idx": 15,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-c274a8a7",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 15,
+   "first_green_idx": 15,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 15,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 19,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_38",
+   "rt_invocations": 12,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 18,
+   "tool_results": 18,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 27,
+   "api_calls_total": 28,
+   "arm": "a2",
+   "class": "PASS",
+   "compile_calls": 3,
+   "compiles": [
+    {
+     "api_calls_so_far": 4,
+     "idx": 4,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 19,
+     "idx": 19,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 27,
+     "idx": 27,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 1,
+   "docstring_writes_before_first_green": 1,
+   "ep": "ep-9cf06932",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 19,
+   "first_green_idx": 19,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 19,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 28,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_38",
+   "rt_invocations": 25,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 27,
+   "tool_results": 27,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 3,
+   "api_calls_total": 4,
+   "arm": "a0",
+   "class": "PASS",
+   "compile_calls": 2,
+   "compiles": [
+    {
+     "api_calls_so_far": 2,
+     "idx": 2,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 3,
+     "idx": 3,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-341703a2",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 3,
+   "first_green_idx": 3,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 3,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 4,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_54",
+   "rt_invocations": 2,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 3,
+   "tool_results": 3,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 6,
+   "api_calls_total": 7,
+   "arm": "a2",
+   "class": "PASS",
+   "compile_calls": 2,
+   "compiles": [
+    {
+     "api_calls_so_far": 3,
+     "idx": 3,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 6,
+     "idx": 6,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-891c4f0a",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 3,
+   "first_green_idx": 3,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 3,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 7,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_54",
+   "rt_invocations": 4,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 6,
+   "tool_results": 6,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 28,
+   "api_calls_total": 29,
+   "arm": "a0",
+   "class": "PASS",
+   "compile_calls": 4,
+   "compiles": [
+    {
+     "api_calls_so_far": 16,
+     "idx": 16,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 25,
+     "idx": 25,
+     "verdict": "GREEN_NORT",
+     "why": "no rt record; clear output, no diagnostic"
+    },
+    {
+     "api_calls_so_far": 27,
+     "idx": 27,
+     "verdict": "GREEN_NORT",
+     "why": "no rt record; clear output, no diagnostic"
+    },
+    {
+     "api_calls_so_far": 28,
+     "idx": 28,
+     "verdict": "GREEN_NORT",
+     "why": "no rt record; clear output, no diagnostic"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-7dfd7731",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 25,
+   "first_green_idx": 25,
+   "first_green_verdict": "GREEN_NORT",
+   "first_maybe_idx": 25,
+   "last_compile_verdict": "GREEN_NORT",
+   "manifest_calls": 29,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_73",
+   "rt_invocations": 0,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 28,
+   "tool_results": 28,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 22,
+   "api_calls_total": 23,
+   "arm": "a2",
+   "class": "PASS",
+   "compile_calls": 5,
+   "compiles": [
+    {
+     "api_calls_so_far": 16,
+     "idx": 16,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 17,
+     "idx": 17,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 20,
+     "idx": 20,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 21,
+     "idx": 21,
+     "verdict": "GREEN_NORT",
+     "why": "no rt record; clear output, no diagnostic"
+    },
+    {
+     "api_calls_so_far": 22,
+     "idx": 22,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-ec75aa77",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 17,
+   "first_green_idx": 17,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 17,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 23,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_73",
+   "rt_invocations": 20,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 22,
+   "tool_results": 22,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 7,
+   "api_calls_total": 8,
+   "arm": "a0",
+   "class": "PASS",
+   "compile_calls": 3,
+   "compiles": [
+    {
+     "api_calls_so_far": 5,
+     "idx": 5,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 6,
+     "idx": 6,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 7,
+     "idx": 7,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-a1644525",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 6,
+   "first_green_idx": 6,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 6,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 8,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_74",
+   "rt_invocations": 3,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 7,
+   "tool_results": 7,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 9,
+   "api_calls_total": 10,
+   "arm": "a2",
+   "class": "PASS",
+   "compile_calls": 3,
+   "compiles": [
+    {
+     "api_calls_so_far": 4,
+     "idx": 4,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 5,
+     "idx": 5,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 9,
+     "idx": 9,
+     "verdict": "UNDET",
+     "why": "TRUNC_BIT:5"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-1a75f80f",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 5,
+   "first_green_idx": 5,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 5,
+   "last_compile_verdict": "UNDET",
+   "manifest_calls": 10,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_74",
+   "rt_invocations": 7,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 9,
+   "tool_results": 9,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 14,
+   "api_calls_total": 15,
+   "arm": "a0",
+   "class": "AXIOMS_FAIL",
+   "compile_calls": 3,
+   "compiles": [
+    {
+     "api_calls_so_far": 11,
+     "idx": 11,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 12,
+     "idx": 12,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 14,
+     "idx": 14,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    }
+   ],
+   "deliverable_calls_before_first_green": 1,
+   "docstring_writes_before_first_green": 1,
+   "ep": "ep-b004adf5",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": null,
+   "first_green_idx": null,
+   "first_green_verdict": null,
+   "first_maybe_idx": null,
+   "last_compile_verdict": "RED",
+   "manifest_calls": 15,
+   "own_docstrings_K": 1,
+   "passed": false,
+   "problem": "problem_96",
+   "rt_invocations": 8,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 14,
+   "tool_results": 14,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 15,
+   "api_calls_total": 16,
+   "arm": "a2",
+   "class": "AXIOMS_FAIL",
+   "compile_calls": 3,
+   "compiles": [
+    {
+     "api_calls_so_far": 10,
+     "idx": 10,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 11,
+     "idx": 11,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 13,
+     "idx": 13,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    }
+   ],
+   "deliverable_calls_before_first_green": 5,
+   "docstring_writes_before_first_green": 5,
+   "ep": "ep-b229cb44",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": null,
+   "first_green_idx": null,
+   "first_green_verdict": null,
+   "first_maybe_idx": null,
+   "last_compile_verdict": "RED",
+   "manifest_calls": 16,
+   "own_docstrings_K": 1,
+   "passed": false,
+   "problem": "problem_96",
+   "rt_invocations": 13,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 15,
+   "tool_results": 15,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 55,
+   "api_calls_total": 56,
+   "arm": "a0",
+   "class": "PASS",
+   "compile_calls": 11,
+   "compiles": [
+    {
+     "api_calls_so_far": 44,
+     "idx": 44,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 45,
+     "idx": 45,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 46,
+     "idx": 46,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 47,
+     "idx": 47,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 48,
+     "idx": 48,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 49,
+     "idx": 49,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    },
+    {
+     "api_calls_so_far": 50,
+     "idx": 50,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 51,
+     "idx": 51,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 52,
+     "idx": 52,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 54,
+     "idx": 54,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 55,
+     "idx": 55,
+     "verdict": "UNDET",
+     "why": "OPAQUE:redirect"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-00d3d01c",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 50,
+   "first_green_idx": 50,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 50,
+   "last_compile_verdict": "UNDET",
+   "manifest_calls": 56,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_112",
+   "rt_invocations": 41,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 55,
+   "tool_results": 55,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 55,
+   "api_calls_total": 56,
+   "arm": "a2",
+   "class": "SCREEN",
+   "compile_calls": 4,
+   "compiles": [
+    {
+     "api_calls_so_far": 46,
+     "idx": 46,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 47,
+     "idx": 47,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 52,
+     "idx": 52,
+     "verdict": "UNDET",
+     "why": "TRUNC_BIT:10"
+    },
+    {
+     "api_calls_so_far": 53,
+     "idx": 53,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 1,
+   "docstring_writes_before_first_green": 1,
+   "ep": "ep-6b5540c0",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 47,
+   "first_green_idx": 47,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 47,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 56,
+   "own_docstrings_K": 1,
+   "passed": false,
+   "problem": "problem_112",
+   "rt_invocations": 39,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 55,
+   "tool_results": 55,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 8,
+   "api_calls_total": 9,
+   "arm": "a0",
+   "class": "AXIOMS_FAIL",
+   "compile_calls": 1,
+   "compiles": [
+    {
+     "api_calls_so_far": 8,
+     "idx": 8,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-e0ac3d5c",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": null,
+   "first_green_idx": null,
+   "first_green_verdict": null,
+   "first_maybe_idx": null,
+   "last_compile_verdict": "RED",
+   "manifest_calls": 9,
+   "own_docstrings_K": 1,
+   "passed": false,
+   "problem": "problem_127",
+   "rt_invocations": 5,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 8,
+   "tool_results": 8,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 10,
+   "api_calls_total": 11,
+   "arm": "a2",
+   "class": "AXIOMS_FAIL",
+   "compile_calls": 1,
+   "compiles": [
+    {
+     "api_calls_so_far": 9,
+     "idx": 9,
+     "verdict": "RED",
+     "why": "diag:sorry"
+    }
+   ],
+   "deliverable_calls_before_first_green": 2,
+   "docstring_writes_before_first_green": 2,
+   "ep": "ep-e8d34b5d",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": null,
+   "first_green_idx": null,
+   "first_green_verdict": null,
+   "first_maybe_idx": null,
+   "last_compile_verdict": "RED",
+   "manifest_calls": 11,
+   "own_docstrings_K": 1,
+   "passed": false,
+   "problem": "problem_127",
+   "rt_invocations": 10,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 10,
+   "tool_results": 10,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 8,
+   "api_calls_total": 9,
+   "arm": "a0",
+   "class": "PASS",
+   "compile_calls": 1,
+   "compiles": [
+    {
+     "api_calls_so_far": 8,
+     "idx": 8,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-e45d67b9",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 8,
+   "first_green_idx": 8,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 8,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 9,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_141",
+   "rt_invocations": 4,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 8,
+   "tool_results": 8,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 16,
+   "api_calls_total": 17,
+   "arm": "a2",
+   "class": "PASS",
+   "compile_calls": 3,
+   "compiles": [
+    {
+     "api_calls_so_far": 10,
+     "idx": 10,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 11,
+     "idx": 11,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 16,
+     "idx": 16,
+     "verdict": "UNDET",
+     "why": "OPAQUE:unparsed,OPAQUE:redirect"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-51311316",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 10,
+   "first_green_idx": 10,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 10,
+   "last_compile_verdict": "UNDET",
+   "manifest_calls": 17,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_141",
+   "rt_invocations": 15,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 16,
+   "tool_results": 16,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 11,
+   "api_calls_total": 12,
+   "arm": "a0",
+   "class": "PASS",
+   "compile_calls": 2,
+   "compiles": [
+    {
+     "api_calls_so_far": 7,
+     "idx": 7,
+     "verdict": "RED",
+     "why": "diag:error"
+    },
+    {
+     "api_calls_so_far": 8,
+     "idx": 8,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-b449d07a",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 8,
+   "first_green_idx": 8,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 8,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 12,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_142",
+   "rt_invocations": 6,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 11,
+   "tool_results": 11,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 16,
+   "api_calls_total": 17,
+   "arm": "a2",
+   "class": "PASS",
+   "compile_calls": 2,
+   "compiles": [
+    {
+     "api_calls_so_far": 11,
+     "idx": 11,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 14,
+     "idx": 14,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-b12c70c9",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 11,
+   "first_green_idx": 11,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 11,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 17,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_142",
+   "rt_invocations": 11,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 16,
+   "tool_results": 16,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 26,
+   "api_calls_total": 27,
+   "arm": "a0",
+   "class": "PASS",
+   "compile_calls": 2,
+   "compiles": [
+    {
+     "api_calls_so_far": 25,
+     "idx": 25,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 26,
+     "idx": 26,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-aa926711",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 25,
+   "first_green_idx": 25,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 25,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 27,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_146",
+   "rt_invocations": 16,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 26,
+   "tool_results": 26,
+   "truncated_results": 0
+  },
+  {
+   "api_calls": 34,
+   "api_calls_total": 35,
+   "arm": "a2",
+   "class": "PASS",
+   "compile_calls": 3,
+   "compiles": [
+    {
+     "api_calls_so_far": 29,
+     "idx": 29,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    },
+    {
+     "api_calls_so_far": 33,
+     "idx": 33,
+     "verdict": "GREEN_NORT",
+     "why": "no rt record; clear output, no diagnostic"
+    },
+    {
+     "api_calls_so_far": 34,
+     "idx": 34,
+     "verdict": "GREEN",
+     "why": "rt rc=0, clear"
+    }
+   ],
+   "deliverable_calls_before_first_green": 0,
+   "docstring_writes_before_first_green": 0,
+   "ep": "ep-5cb9f2d4",
+   "explain_writes_before_first_green": 0,
+   "first_green_api_calls": 29,
+   "first_green_idx": 29,
+   "first_green_verdict": "GREEN",
+   "first_maybe_idx": 29,
+   "last_compile_verdict": "GREEN",
+   "manifest_calls": 35,
+   "own_docstrings_K": 1,
+   "passed": true,
+   "problem": "problem_146",
+   "rt_invocations": 21,
+   "rt_unassigned": 0,
+   "sidechain_lines": 0,
+   "stage": "B",
+   "tool_calls": 34,
+   "tool_results": 34,
+   "truncated_results": 1
+  }
+ ],
+ "totals": {
+  "ambiguous": 0,
+  "api_eq_manifest": 30,
+  "episodes": 30,
+  "failed": 10,
+  "failed_with_green": 1,
+  "missing_results": 0,
+  "paired": [
+   {
+    "a0": 16,
+    "a0_total": 18,
+    "a2": 15,
+    "a2_total": 17,
+    "problem": "problem_16"
+   },
+   {
+    "a0": 6,
+    "a0_total": 7,
+    "a2": 4,
+    "a2_total": 9,
+    "problem": "problem_31"
+   },
+   {
+    "a0": 15,
+    "a0_total": 18,
+    "a2": 19,
+    "a2_total": 27,
+    "problem": "problem_38"
+   },
+   {
+    "a0": 3,
+    "a0_total": 3,
+    "a2": 3,
+    "a2_total": 6,
+    "problem": "problem_54"
+   },
+   {
+    "a0": 25,
+    "a0_total": 28,
+    "a2": 17,
+    "a2_total": 22,
+    "problem": "problem_73"
+   },
+   {
+    "a0": 6,
+    "a0_total": 7,
+    "a2": 5,
+    "a2_total": 9,
+    "problem": "problem_74"
+   },
+   {
+    "a0": 8,
+    "a0_total": 8,
+    "a2": 10,
+    "a2_total": 16,
+    "problem": "problem_141"
+   },
+   {
+    "a0": 8,
+    "a0_total": 11,
+    "a2": 11,
+    "a2_total": 16,
+    "problem": "problem_142"
+   },
+   {
+    "a0": 25,
+    "a0_total": 26,
+    "a2": 29,
+    "a2_total": 34,
+    "problem": "problem_146"
+   }
+  ],
+  "passed": 20,
+  "passed_with_green": 20,
+  "rt_unassigned": 0,
+  "sidechain_lines": 0,
+  "truncated_results": 1
+ }
+}
