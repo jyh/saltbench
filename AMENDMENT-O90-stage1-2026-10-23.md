@@ -383,3 +383,14 @@ any 503, or at 3 failed reads in a row (the stage-0 machinery's halts, unchanged
 probe (one U1, one U2, never scored) plus a red mutant on the withholding of A2.2 (a U1 prompt that carries `problem_spec`'s body
 must refuse); bench reads the harness before the gap. ⚠️ **Limits:** one reader model; the reader is not blind to the arm (the
 design's own limit); `cannot tell` is scored wrong, which favours an artifact whose spec is complete enough to decide.
+**A2.8 · Riders (evidence, the design's author, read 10-24 08:42; neither changes A2.2–A2.6).**
+1. §4 reads "Consistent with you" only "if none of the three 'wrong' rules fires", and a rule that has not RUN has not "not
+   fired". **Until the truth reads run, stage 1's overall reading is INCOMPLETE, never "consistent"**: it may report success,
+   cost and the U-probes. The truth-read addendum is **due by 2026-10-28**, and no stage-1 verdict is quoted before it lands.
+2. With the Claude reader deferred, **every U1/U2 accuracy is "by one reader mechanism (Gemini)"**, and that phrase rides
+   beside the figure wherever it is quoted.
+**A2.9 · The withholding rule, driven (bench, before any read).** `o90-cutcheck-2026-10-24.py` (run box `~/bench-dry/`) applied
+A2.2's rule to all 47 artifacts: exactly one `def problem_spec` block in each, every cut contains the spec's `∃`, none reaches
+`generated_spec`; cuts are 13–26 lines; the line after each cut is `/--` 29 · `theorem` 13 · `namespace` 3 · `section` 1 ·
+`lemma` 1. ⚠️ The rule keys on a line starting `def problem_spec`; a file that defined it another way would fail the count
+check, not be cut silently.
