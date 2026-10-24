@@ -162,8 +162,11 @@ figure at no extra spend. It scores no reader against a key: stage 1 has none.
   `harness/s2lean/served_model_check.py` HALTS unless the requested model was served (count > 0) on an episode that made calls;
   a `claude-haiku*` entry is admitted only BESIDE it, so a haiku-only, empty or missing record halts. The driver calls it after
   EVERY landing — the first run, each HOLD re-run and each RETRY re-run, because a quota or auth fallback lands on a re-run —
-  and on a halt writes `HALT` with the reason and exits 4 before another episode starts. Its selftest has 9 cases; all 60 of
-  amendment 8's manifests pass it (no false halt).
+  and on a halt writes `HALT` with the reason and exits 4 before another episode starts — **on TERMINAL landings only**
+  (systems' K1): a QUOTA or AUTH wall at launch leaves no transcript and so no served-model record, and checking it there
+  halted the run instead of starting the 12 × 30 min hold; the re-run that lands is the one checked. Its selftest has 10 cases;
+  all 60 of amendment 8's manifests pass it (no false halt). The dry runs the driver's OWN function body on fixture landings
+  (W2, systems' K2), so a stubbed body cannot pass behind a green wiring check.
 - **Pool and config dir:** one pool, the one his 10-23 word names, through a NEW hermetic config dir on the run box holding only
   the pinned `settings.s2.json` and **its own fresh login** — never a copy of a live credential, because these credentials carry
   a rotating refresh token and two live copies can blank each other at the first refresh. The calibration pair is that dir's
@@ -223,6 +226,13 @@ body for problem 31, so B1/B2's passes are the kernel's. Outputs verbatim in `ha
   run 4                    13 PASS · 0 FAIL   R1 R2 A1 B1 B2 C1 C2 C3 R3 B3 H1 W1 D1
   M1 10/3 (B2 C1 C2) · M2 11/2 (B2 C2) · M3 12/1 (B3) · M4 12/1 (H1: substituted, haiku-only, empty, missing all pass)
   · M5 12/1 (W1: the RETRY site unwired)                                                — every mutant red on exactly its arms
+```
+```
+  ── after systems' second delta re-read (K1, K2, L1, L3), run 6: W1's needles carry the is_terminal gate; W2 runs the
+     driver's OWN served_check body (substituted → rc 4 + HALT · clean → 0 · QUOTA with no transcript → 0, no HALT) ──
+  run 6                    14 PASS · 0 FAIL   R1 R2 A1 B1 B2 C1 C2 C3 R3 B3 H1 W1 W2 D1
+  M1 11/3 (B2 C1 C2) · M2 12/2 (B2 C2) · M3 13/1 (B3) · M4 12/2 (H1 W2: both drive the silenced tool) · M5 13/1 (W1)
+  · M6 13/1 (W2: the function stubbed to `return 0`, W1 and H1 still green — the hole K2 named, now closed)
 ```
 ⚠️ W1 is STRUCTURAL: the served-model check is off under DRY_RUN, so its wiring is read from the driver's text at three named
 sites, and the check itself is driven on manifests (H1). A live substitution would first be seen at cell 1.

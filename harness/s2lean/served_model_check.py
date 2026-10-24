@@ -8,7 +8,7 @@ substituted id all HALT. An episode with calls == 0 (refused before the model) p
 import json, sys
 def check(m):
     want = m.get("model_requested"); calls = m.get("calls")
-    if calls == 0: return ""
+    if calls == 0 and not m.get("models"): return ""   # L3: calls 0 WITH a served-model record is checked like any other
     models = m.get("models")
     if not isinstance(models, dict) or not models: return "NO SERVED-MODEL RECORD (models=%r), REQUESTED %s" % (models, want)
     if not models.get(want): return "REQUESTED %s NOT SERVED (served %s)" % (want, ",".join(sorted(models)))
@@ -19,10 +19,11 @@ def selftest():
     cases = [("clean", {"models": {R: 8}}, False), ("clean+haiku", {"models": {R: 8, "claude-haiku-4-5": 1}}, False),
              ("substituted", {"models": {"claude-sonnet-5": 8}}, True), ("haiku_only", {"models": {"claude-haiku-4-5": 9}}, True),
              ("empty", {"models": {}}, True), ("missing", {}, True), ("zero", {"models": {R: 0, "claude-haiku-4-5": 1}}, True),
-             ("no calls", {"calls": 0, "models": {}}, False), ("mixed", {"models": {R: 4, "claude-sonnet-5": 4}}, True)]
+             ("no calls", {"calls": 0, "models": {}}, False), ("mixed", {"models": {R: 4, "claude-sonnet-5": 4}}, True),
+             ("calls0 substituted", {"calls": 0, "models": {"claude-sonnet-5": 1}}, True)]
     bad = []
     for name, m, halts in cases:
-        m = dict(m, model_requested=R); m.setdefault("calls", 9 if name != "no calls" else 0)
+        m = dict(m, model_requested=R); m.setdefault("calls", 9)
         if bool(check(m)) != halts: bad.append(name)
     print("SELFTEST %s (%d cases%s)" % ("PASS" if not bad else "FAIL", len(cases), (": " + ", ".join(bad)) if bad else ""))
     return 1 if bad else 0

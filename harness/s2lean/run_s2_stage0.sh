@@ -121,6 +121,8 @@ run_one() { local t="$1" arm="$2" out ep land term
 # (count > 0) on any episode that made calls; a claude-haiku* entry is admitted ONLY beside the requested model (the client's
 # own auxiliary calls), never instead of it (G2: {haiku} alone, {} and a missing key all passed silently before). Anything
 # else writes HALT with the reason and exits 4, between episodes. Off in DRY_RUN (the stub reports a fixed model).
+# K1: it is called only on a TERMINAL landing. A QUOTA/AUTH wall at launch leaves no transcript, so its manifest has no
+# served-model record; checking it there halted the run instead of starting the 12 x 30 min hold. The re-run that lands is checked.
 served_check() { [ "$DRY" = "1" ] && return 0
   local lep sm; lep=$(tail -1 "$L" | cut -d' ' -f1)
   case "$lep" in ep-*) ;; *) return 0 ;; esac
@@ -149,11 +151,11 @@ for id in $ids; do
     if [ "$STAGE" = "C" ]; then pa=""; case "$arm" in a6) pa=a0 ;; a7) pa=a5 ;; esac
       [ -n "$pa" ] && [ ! -s "$SROOT/$t/$pa/B.artifact/B.artifact.json" ] && { synthetic "$t" C "$arm" "NOT_RUN(no_stage_B_artifact)"; continue; }; fi
     echo "$(stamp) START #$n $t stage=$STAGE" | tee -a "$RL"
-    term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; served_check "$t" "$arm"
+    term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; is_terminal "$term" && served_check "$t" "$arm"
     case "$term" in REFUSED*) echo "$(stamp) HALT: the episode refused ($term) — deterministic, not retried" | tee -a "$RL"; exit 2 ;; esac
     if ! is_terminal "$term"; then
-      case "$term" in QUOTA*|AUTH*) held=0; while ! is_terminal "$term" && [ "$held" -lt 12 ]; do held=$((held+1)); echo "$(stamp) HOLD #$n $t ($term) step $held/12" | tee -a "$RL"; sleep 1800; term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED(hold) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; served_check "$t" "$arm"; done ;;
-        *) echo "$(stamp) RETRY #$n $t after $term" | tee -a "$RL"; sleep "${RETRY_SLEEP_S:-60}"; term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED(retry) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; served_check "$t" "$arm" ;; esac
+      case "$term" in QUOTA*|AUTH*) held=0; while ! is_terminal "$term" && [ "$held" -lt 12 ]; do held=$((held+1)); echo "$(stamp) HOLD #$n $t ($term) step $held/12" | tee -a "$RL"; sleep 1800; term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED(hold) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; is_terminal "$term" && served_check "$t" "$arm"; done ;;
+        *) echo "$(stamp) RETRY #$n $t after $term" | tee -a "$RL"; sleep "${RETRY_SLEEP_S:-60}"; term=$(run_one "$t" "$arm"); echo "$(stamp) LANDED(retry) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; is_terminal "$term" && served_check "$t" "$arm" ;; esac
       if ! is_terminal "$term"; then echo "$(stamp) HALT: non-terminal ($term) after retry/hold" | tee -a "$RL"; exit 2; fi
     fi
   done

@@ -14,7 +14,8 @@
 # W1 the driver calls it after the first, hold and retry landings (G1).
 # Mutants (red backwards, on a scratch copy only): M1 removes the arm paragraph mapping (B2/C1 must go red);
 # M2 removes the EXPLAIN.md capture (B2 must go red). M3 removes the B.artifact supersede (B3 must go red).
-# M4 silences the served-model check (H1 must go red). M5 unwires the RETRY site (W1 must go red).
+# M4 silences the served-model check (H1 must go red). M5 unwires the RETRY site (W1 must go red). M6 stubs the driver's
+# served_check body to `return 0` (W2 must go red, W1 and H1 stay green: the hole systems' K2 named).
 set -u
 SRC="${1:?harness dir}"; MUT="${3:-}"; [ "${2:-}" = "--mutant" ] || MUT=""
 R="$HOME/bench-dry/o90-2026-10-23${MUT:+-$MUT}"; A8="$HOME/bench-a8"
@@ -43,7 +44,11 @@ import sys; p=sys.argv[1]; s=open(p).read(); o='    r = check(m)\n    if r: prin
 PY
     ;;
     M5) python3 - "$S2/run_s2_stage0.sh" <<'PY' || exit 2
-import sys; p=sys.argv[1]; s=open(p).read(); o='| tee -a "$RL"; served_check "$t" "$arm" ;; esac'; assert s.count(o)==1; open(p,'w').write(s.replace(o,'| tee -a "$RL" ;; esac'))
+import sys; p=sys.argv[1]; s=open(p).read(); o='| tee -a "$RL"; is_terminal "$term" && served_check "$t" "$arm" ;; esac'; assert s.count(o)==1; open(p,'w').write(s.replace(o,'| tee -a "$RL" ;; esac'))
+PY
+    ;;
+    M6) python3 - "$S2/run_s2_stage0.sh" <<'PY' || exit 2
+import sys; p=sys.argv[1]; s=open(p).read(); o='served_check() { [ "$DRY" = "1" ] && return 0'; assert s.count(o)==1; open(p,'w').write(s.replace(o,'served_check() { return 0'))
 PY
     ;;
     *) echo "FATAL: unknown mutant $MUT"; exit 2 ;;
@@ -129,12 +134,25 @@ for c in 'clean:{"model_requested":"claude-opus-5","calls":9,"models":{"claude-o
          'empty:{"model_requested":"claude-opus-5","calls":9,"models":{}}:1' 'missing:{"model_requested":"claude-opus-5","calls":9}:1'; do
   nm="${c%%:*}"; rest="${c#*:}"; js="${rest%:*}"; want="${rest##*:}"; printf '%s' "$js" > "$R/h1/$nm.json"
   out=$(python3 "$S2/served_model_check.py" "$R/h1/$nm.json" 2>&1); got=0; [ -n "$out" ] && got=1; [ "$got" = "$want" ] || h1="$h1 $nm"; done
-if [ "$hs" = "SELFTEST PASS (9 cases)" ] && [ -z "$h1" ]; then ok "H1 served-model check: selftest 9 cases; clean silent; substituted, haiku-only, empty, missing all halt"; else no "H1 selftest='$hs' wrong:$h1"; fi
+if printf '%s\n' "$hs" | grep -qE '^SELFTEST PASS \([0-9]+ cases\)$' && [ -z "$h1" ]; then ok "H1 served-model check: $hs; clean silent; substituted, haiku-only, empty, missing all halt"; else no "H1 selftest='$hs' wrong:$h1"; fi
 # W1 (G1): the driver calls the check after EVERY run_one landing — first run, HOLD re-run, RETRY re-run (structural: the
 # check is off under DRY_RUN, so the wiring is read from the driver's text, three named sites)
-w1=""; for site in 'LANDED #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; served_check' 'LANDED(hold) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; served_check' 'LANDED(retry) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; served_check'; do
+w1=""; for site in 'LANDED #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; is_terminal "$term" && served_check' 'LANDED(hold) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; is_terminal "$term" && served_check' 'LANDED(retry) #$n $t $STAGE arm=$arm term=$term" | tee -a "$RL"; is_terminal "$term" && served_check'; do
   grep -qF -- "$site" "$S2/run_s2_stage0.sh" || w1="$w1 [${site%%#*}]"; done
 if [ -z "$w1" ] && grep -qF 'python3 "$H/s2lean/served_model_check.py"' "$S2/run_s2_stage0.sh"; then ok "W1 driver: served_check after the first, hold and retry landings (3 of 3 sites)"; else no "W1 unwired:$w1"; fi
+# W2 (K2): the driver's OWN served_check body, extracted verbatim with is_terminal and stamp, run with DRY unset on fixture
+# landings: a substituted model exits 4 and writes HALT · a clean one returns 0 · a QUOTA landing with no transcript, behind the
+# call site's own is_terminal gate (K1), returns 0 and writes no HALT
+mkdir -p "$R/w2"; awk '/^stamp\(\) \{/{print} /^is_terminal\(\) \{/{print} /^served_check\(\) \{/{f=1} f{print} f&&/; \}$/{f=0}' "$S2/run_s2_stage0.sh" > "$R/w2/fns.sh"
+w2=""; for c in 'substituted|{"model_requested":"claude-opus-5","calls":9,"models":{"claude-sonnet-5":8}}|DONE|4|halt' \
+               'clean|{"model_requested":"claude-opus-5","calls":9,"models":{"claude-opus-5":8}}|DONE|0|nohalt' \
+               'quota_nojsonl|{"model_requested":"claude-opus-5","calls":null,"models":null}|QUOTA(429)|0|nohalt'; do
+  IFS='|' read -r nm js tm want hw <<<"$c"; B="$R/w2/$nm"; mkdir -p "$B/state/ep-w2$nm" "$B/logs"; printf '%s' "$js" > "$B/state/ep-w2$nm/manifest.json"
+  printf 'ep-w2%s problem_31 B a0 %s 0\n' "$nm" "$tm" > "$B/logs/l.log"
+  ( DRY=""; BENCH="$B"; H="$H"; STAGE=B; L="$B/logs/l.log"; RL="$B/logs/rl.log"; term="$tm"; t=problem_31; arm=a0
+    . "$R/w2/fns.sh"; is_terminal "$term" && served_check "$t" "$arm"; exit 0 ) > /dev/null 2>&1; got=$?
+  hal=nohalt; [ -f "$B/HALT" ] && hal=halt; [ "$got" = "$want" ] && [ "$hal" = "$hw" ] || w2="$w2 $nm(rc=$got,$hal)"; done
+if [ -s "$R/w2/fns.sh" ] && grep -q '^served_check()' "$R/w2/fns.sh" && [ -z "$w2" ]; then ok "W2 the driver's served_check body: substituted rc 4 + HALT · clean 0 · QUOTA with no transcript 0, no HALT (K1)"; else no "W2:$w2 (fns $(wc -l < "$R/w2/fns.sh") lines)"; fi
 # D1: the driver, no artifact for problem 82 in either source arm
 (cd "$R" && env BENCH="$R/bench" H="$H" EPROOT="$R/work" DRY_RUN=1 CLAUDE_BIN="$R/stub/o90_stub.sh" CLAUDE_BIN_STUB=1 ARMS="a6 a7" ONLY_IDS=82 CAFFEINATED=1 bash "$S2/run_s2_stage0.sh" C 30 > "$R/driver.out" 2>&1)
 if grep -q '^<none> problem_82 C a6 NOT_RUN(no_stage_B_artifact) 0$' "$R/bench/logs/dryexec.log" && grep -q '^<none> problem_82 C a7 NOT_RUN(no_stage_B_artifact) 0$' "$R/bench/logs/dryexec.log"; then

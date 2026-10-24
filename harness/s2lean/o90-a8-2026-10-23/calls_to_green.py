@@ -267,6 +267,8 @@ def analyse(epdir):
         K = None
     def new_doc(c):
         i = c["input"]
+        if c["name"] in ("Read", "Grep", "Glob"):   # L1: a read of a docstring is not a write of one
+            return False
         if c["name"] in ("Edit", "MultiEdit"):
             eds = i.get("edits") or [i]
             return sum(e.get("new_string", "").count("/--") - e.get("old_string", "").count("/--") for e in eds) > 0
