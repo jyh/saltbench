@@ -322,3 +322,64 @@ Claude lane and did not carry it to this lane's settings file in the same act. T
 - **The green at the corrected head:** smoke S1–S5 **5/5 PASS** on `episode_s2.sh` `6fe1e77f…` (ep-95d65098 · ep-721fcfe3 ·
   ep-f6820b63 · ep-18f7d90f · ep-676811e0), with S2's curl again client-refused then hook-blocked, and no `skills/` in the config dir
   after. Dry `o90_selftest.sh` 14/0 on the same harness.
+
+## ⚖️ ADDENDUM 2 — 2026-10-24: THE STAGE-1 READ FORM FOR U1 AND U2 (ROW R). APPENDED; all text above untouched. Written before any stage-1 read.
+
+*bench (lead). The items were frozen first (bus 10-24 08:3x, the run box `~/bench-dry/o90-stage1-reads-cells12-2026-10-24/`,
+`SHA256SUMS` sha256/16 `1629c1c3912b0e69`); gemini (the reader) then reported the READ FORM unfrozen, in five parts (bus 10-24
+08:37). This addendum freezes those five. It changes no item, no generator and no key.*
+
+**A2.1 · The inputs, already frozen.** U1: `u1/drawn.tsv` (`u1_gen.py draw`, seed `o90-u1-2026-10-22`, the generator's pinned
+default): 107 items over 17 problems; the U15's rows are byte-identical to leg (a)'s merged `u1-2026-10-22/`. U2: `u2/items.tsv`
+(`u2_gen.py run`, seed `o90-u2-2026-10-23`): 185 items over the 47 scored stage-B passes of cells 1–2, 1,469 option rows, 0 of
+740 not-used options in their own artifact's used set.
+
+**A2.2 · What the reader sees (gemini's 1 and part of 3).** "The artifact" is the episode's checked `canonical.lean` (its sha256
+equal to `check.json`'s, as `u2_gen.py` requires) plus its `EXPLAIN.md` when one was captured (24 of the 47, the P+U arm's
+deliverable; design §1: "P+U's prose is visible; that is the point").
+- **U1 withholds `problem_spec`'s body.** U1's key is `problem_spec`; a reader shown its body can decide the item from the key's
+  own text, identically in both arms, and the read stops measuring the artifact. So for U1 the top-level `def problem_spec`
+  block (from that line to the line before the next top-level declaration or docstring) is replaced by the single line
+  `-- problem_spec: the task's own specification, withheld for this read`. Its NAME stays (the isomorphism theorem states it).
+  Everything the agent wrote stays, docstrings included.
+- **U2 shows the file whole.** U2's used set includes constants reached only through `problem_spec`
+  (`used.tsv` column `only_via_problem_spec`), so withholding it would hide part of the key's population.
+
+**A2.3 · U1 pairing and form (gemini's 2).** Each drawn item is read once against EACH stage-B-passed artifact of its problem.
+On these 17 problems every artifact-bearing problem has BOTH arms passed (13 problems, 69 items); 4 problems have no passed
+artifact (38 items) and are not read, counted. ⇒ **138 U1 reads**, scored paired per item across `a0`/`a5`.
+Prompt (one read, one fresh session; `__X__` / `__Y__` are the item's input and output exactly as `drawn.tsv` writes them):
+> Below is a Lean file written by an agent for a programming task, and possibly the agent's explanation of it. The task's own
+> specification is withheld; the file's `generated_spec` is the agent's version of it. Question: for the input `__X__`, does the
+> output `__Y__` satisfy the task's specification? Answer on the last line with exactly one of: `ANSWER: yes` · `ANSWER: no` ·
+> `ANSWER: cannot tell`.
+
+followed by the file and, when present, `EXPLAIN.md`. Scoring: `yes`/`no` against the kernel's key; `cannot tell` scored wrong
+and also counted separately; no `ANSWER:` line after one retry is UNSCORED, counted, never guessed.
+
+**A2.4 · U2 form (gemini's 3).** One read per item, listing its options (its k = 4 used + m = 4 distractors, in the `position`
+order `items.tsv` already froze). ⇒ **185 U2 reads.**
+> Below is a Lean file written by an agent (and possibly its explanation). Lean constants are listed after it. For EACH one, say
+> whether this file's proof of `spec_isomorphism` USES it, directly or through a lemma the file itself defines. Answer one line
+> per constant, in the order given, exactly `<name>: USED` or `<name>: NOT-USED`.
+
+Scoring: per option against `items.tsv` `key`; accuracy per artifact = correct options / options. A missing, duplicated or
+unparseable line leaves THAT option UNSCORED, counted; a read with no parseable line is retried once, then UNSCORED.
+
+**A2.5 · Truth reads (gemini's 4): NOT run at this gap.** Design §4 makes the confirmer a third non-author at the Lean, and
+`o90_flaglog.py` refuses a confirmer who is the reader; no confirmer is assigned and no sentence population is frozen. They
+need their own addendum before any truth read. Declared here so the gap is not read as their absence of findings.
+**The design's second reader** (a Claude reader on another account, §1) is likewise not run here: it spends a Claude pool and
+needs its own placement.
+
+**A2.6 · Plain only, and the halt (gemini's 5).** PLAIN only: at stage 0 the R1 form never helped (evidence's LEGA-SCORE, every
+comparison at ceiling), and running both doubles the reads for a form with no measured gain. Reader `gemini-4-argon-high`
+(evidence, 10-22). Halt: the read set stops when the Gemini pool's spend across it exceeds **12 points** (row R's ≤ ~12), at
+any 503, or at 3 failed reads in a row (the stage-0 machinery's halts, unchanged); a halted set is reported at the n it reached.
+**Where:** gemini's default, the reader's own box under its own `.agyhome`, the run box's directory copied across and checked against its
+`SHA256SUMS` before the first read. **When:** the Z265 hold, never inside the Z chain.
+
+**A2.7 · Before the first read.** gemini ports the stage-0 machinery to A2.2–A2.6 in one harness and drives it with a 2-read LIMIT
+probe (one U1, one U2, never scored) plus a red mutant on the withholding of A2.2 (a U1 prompt that carries `problem_spec`'s body
+must refuse); bench reads the harness before the gap. ⚠️ **Limits:** one reader model; the reader is not blind to the arm (the
+design's own limit); `cannot tell` is scored wrong, which favours an artifact whose spec is complete enough to decide.
