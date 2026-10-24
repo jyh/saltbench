@@ -248,6 +248,8 @@ p="$EP"; while [ "$p" != "/" ]; do p=$(dirname "$p"); [ -e "$p/CLAUDE.md" ] && d
 [ -z "$(ls -A "$CFG/projects" 2>/dev/null)" ] || die "config dir projects/ is not empty before the episode"
 for d in file-history session-env sessions todos shell-snapshots debug; do [ -z "$(ls -A "$CFG/$d" 2>/dev/null)" ] || die "config dir $d/ is not empty before the episode"; done
 for f in CLAUDE.md commands agents skills rules hooks .mcp.json; do [ -e "$CFG/$f" ] && die "config dir carries agent-influencing entry $f"; done
+# O90 ADDENDUM 1 (systems' L2): plugins/ is admitted for the marketplace CATALOG the client fetches at login; an INSTALLED plugin loads
+[ -e "$CFG/plugins/installed_plugins.json" ] && die "config dir carries agent-influencing entry plugins/installed_plugins.json"
 ls -A "$CFG" | grep -Ev '^(\.claude\.json|\.claude\.json\.bak[^ ]*|settings\.json|projects|sessions|backups|cache|plugins|history\.jsonl|shell-snapshots|todos|debug|statsig|file-history|\.last-[^ ]*|session-env)$' > "$ST/configdir_unexpected.txt" || true
 want_a=$(grep -F "rendered-s2-$arm(__EP__) " "$H/HASHES.txt" | cut -d' ' -f2); have_a=$(cat "$S2/base.md" "$ARMFILE" | shasum -a 256 | cut -d' ' -f1)
 [ -n "$want_a" ] && [ "$want_a" = "$have_a" ] || die "arm rendering sha $have_a != pinned '$want_a'"

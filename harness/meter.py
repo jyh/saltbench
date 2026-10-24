@@ -37,6 +37,8 @@ KNOWN_TOOLS = {"Bash", "Read", "Edit", "Write", "MultiEdit", "Glob", "Grep", "LS
                "BashOutput", "KillShell", "KillBash", "ExitPlanMode", "EnterPlanMode", "AskUserQuestion", "StructuredOutput", "Sleep", "ToolSearch"}
 TIMEOUT_MARK = "Command timed out after"
 BLOCKED_MARK = "BLOCKED by the episode harness"
+HOOK_PREFIX = "PreToolUse:"   # every stored hook block starts so (99 of 99, systems L1); an executed result starts "Exit code" or is stdout
+CLIENT_REFUSED_MARK = "<tool_use_error>"   # the client rejected the call's INPUT; the tool never ran (O90 addendum 1)
 # the rt-wrapper strip, the same as hook-deny-network.sh --pattern-rtstrip: `<path>/rt `, `../rt `, `./rt `, `rt ` → ` ; `
 RTSTRIP = re.compile(r"(^|[ ;&|(])([^ ;&|(]*/)?rt[ ]+")
 
@@ -75,14 +77,22 @@ def _tool_results(recs):
     return out
 
 
+def _tool_errors(recs):
+    """tool_use_ids whose tool_result carries is_error: true. A hook block and a client input refusal are both is_error and
+    are the tool's OWN text; an exit-0 command's result is its raw stdout, which the subject controls (systems' C1, #393)."""
+    return {c.get("tool_use_id") for r in recs if r.get("type") == "user"
+            for c in ((r.get("message") or {}).get("content") or [])
+            if isinstance(c, dict) and c.get("type") == "tool_result" and c.get("is_error") is True}
+
+
 def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0, neutral=None):
     neutral = [n.rstrip("/") for n in (neutral or []) if n]
     by_id = collections.OrderedDict()
     sidechain = 0; missing_class = []; models = collections.Counter(); tiers = collections.Counter()
     tool_uses = collections.Counter(); compactions = []; api_error = 0; no_call_id = 0
-    escapes_blocked = []; escapes_unblocked = []; url_mentions = 0; spawn_uses = 0; dotdot = 0
+    escapes_blocked = []; escapes_client_refused = []; escapes_unblocked = []; url_mentions = 0; spawn_uses = 0; dotdot = 0
     first_ts = None; last_ts = None; versions = set(); cost_state = None; unknown_tools = collections.Counter(); first_call = None
-    results = _tool_results(recs)
+    results = _tool_results(recs); errored = _tool_errors(recs)
     timeouts = sum(1 for v in results.values() if TIMEOUT_MARK in v)
     cwd = (ep + "/repo") if ep else None
     rx_e = re.compile(escape_re) if escape_re else None
@@ -176,7 +186,13 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0, neutral=None)
                     hit = bool(rx_e.search(inner.replace("'", "").replace('"', "")))
             if hit:
                 res = results.get(c.get("id"), "")
-                (escapes_blocked if BLOCKED_MARK in res else escapes_unblocked).append("%s %s" % (name, probe))
+                err = c.get("id") in errored   # never trust a mark in a result the subject could have printed (systems C1 · L1)
+                if err and res.startswith(HOOK_PREFIX) and BLOCKED_MARK in res:
+                    escapes_blocked.append("%s %s" % (name, probe))
+                elif err and res.startswith(CLIENT_REFUSED_MARK):
+                    escapes_client_refused.append("%s %s" % (name, probe))   # never executed: refused, not unblocked
+                else:
+                    escapes_unblocked.append("%s %s" % (name, probe))
             elif rx_u and rx_u.search(probe):
                 url_mentions += 1
     calls = len(by_id)
@@ -198,7 +214,8 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0, neutral=None)
         "metered_sum_incl_compaction_floor": metered + comp_floor,
         "missing_usage_class": missing_class[:5], "truncated_last_line": bool(truncated),
         "tool_uses": dict(tool_uses), "bash_commands": tool_uses.get("Bash", 0),
-        "escape_attempts_blocked": escapes_blocked, "escape_unblocked": escapes_unblocked,
+        "escape_attempts_blocked": escapes_blocked, "escape_attempts_client_refused": escapes_client_refused,
+        "escape_unblocked": escapes_unblocked,
         "url_mentions": url_mentions, "dotdot_paths": dotdot, "cost_state": cost_state,
         "tool_timeouts": timeouts, "unknown_tools": dict(unknown_tools), "first_call_usage": first_call,
         "first_call_ts": first_ts, "last_call_ts": last_ts,
@@ -252,7 +269,11 @@ def self_test():
     def a(mid, content, **kw):
         return dict({"type": "assistant", "message": {"id": mid, "model": "claude-sonnet-5", "usage": u, "content": content}, "timestamp": "t"}, **kw)
     def tu(name, inp, tid): return {"type": "tool_use", "name": name, "input": inp, "id": tid}
-    def tr(tid, text): return {"type": "user", "message": {"content": [{"type": "tool_result", "tool_use_id": tid, "content": text}]}}
+    def tr(tid, text, is_error=None):
+        r = {"type": "tool_result", "tool_use_id": tid, "content": text}
+        if is_error is not None: r["is_error"] = is_error
+        return {"type": "user", "message": {"content": [r]}}
+    HOOKBLOCK = "PreToolUse:Bash hook error: [hook-deny-network.sh]: " + BLOCKED_MARK   # the real shape: 99 of 99 stored (systems L1)
     recs = [a("m1", [{"type": "thinking"}]), a("m1", [{"type": "text", "text": "x"}]), a("m1", [tu("Bash", {"command": "ls"}, "t1")]),
             a("m2", [tu("Read", {"file_path": EP + "/repo/a.py"}, "t2")]), {"type": "user"}]
     m = meter(recs, ep=EP, escape_re=ESC, url_re=URL)
@@ -266,11 +287,27 @@ def self_test():
     check("SUBAGENT" in m2b["void_reasons"], "a spawn tool_use voids as SUBAGENT")
     m3 = meter(recs + [a("m4", [tu("Bash", {"command": "curl x"}, "t4")])], ep=EP, escape_re=ESC)
     check(m3["escape_unblocked"] == ["Bash curl x"] and "ESCAPE" in m3["void_reasons"], "an unblocked escape voids")
-    m3b = meter(recs + [a("m5", [tu("Bash", {"command": "curl x"}, "t5")]), tr("t5", BLOCKED_MARK + ": ...")], ep=EP, escape_re=ESC)
+    m3b = meter(recs + [a("m5", [tu("Bash", {"command": "curl x"}, "t5")]), tr("t5", HOOKBLOCK + ": ...", True)], ep=EP, escape_re=ESC)
     check(m3b["escape_attempts_blocked"] == ["Bash curl x"] and not m3b["void"], "a hook-BLOCKED escape is an attempt, not a void")
+    # O90 ADDENDUM 1 (2026-10-23): client 2.1.278 refuses a Bash call carrying `allowed_domains` BEFORE the hook runs, so the
+    # tool never executed and the hook never saw it. Refused, not unblocked: counted apart, never a void. Only the exact mark.
+    m3b2 = meter(recs + [a("m5b", [tu("Bash", {"command": "curl x", "allowed_domains": ["x"]}, "t5b")]), tr("t5b", CLIENT_REFUSED_MARK + "allowed_domains cannot widen network access in this session</tool_use_error>", True)], ep=EP, escape_re=ESC)
+    check(m3b2["escape_attempts_client_refused"] == ["Bash curl x"] and not m3b2["escape_unblocked"] and not m3b2["void"], "a CLIENT-refused escape (tool_use_error, never executed) is an attempt, not a void")
+    m3b3 = meter(recs + [a("m5c", [tu("Bash", {"command": "curl x"}, "t5c")]), tr("t5c", "HTTP/2 200 " + CLIENT_REFUSED_MARK)], ep=EP, escape_re=ESC)
+    check(m3b3["escape_unblocked"] == ["Bash curl x"] and m3b3["void"], "the client mark anywhere but the START of the result does not excuse an escape")
+    # systems' C1 + L1 (re-read of #393): an EXECUTED command's stdout is the result text, so the subject can print either mark.
+    # An exit-0 result is is_error false; a non-zero exit is is_error true but starts "Exit code N". Both forges must void.
+    for fid, ftxt, ferr, fwhy in (("f1", CLIENT_REFUSED_MARK, False, "exit-0 stdout opening with the client mark"),
+                                  ("f2", "\n" + CLIENT_REFUSED_MARK, False, "exit-0 stdout with the client mark after a newline"),
+                                  ("f3", "Exit code 1\n" + CLIENT_REFUSED_MARK, True, "a non-zero exit whose output carries the client mark"),
+                                  ("f4", "HTTP/1.1 200 OK\n" + BLOCKED_MARK, False, "exit-0 stdout carrying the hook's BLOCKED text"),
+                                  ("f5", "Exit code 7\n" + BLOCKED_MARK, True, "a non-zero exit whose output carries the hook's BLOCKED text"),
+                                  ("f6", "\n" + CLIENT_REFUSED_MARK, True, "an errored result with the client mark not at position 0 (no lstrip)")):
+        mf = meter(recs + [a("m" + fid, [tu("Bash", {"command": "curl x"}, fid)]), tr(fid, ftxt, ferr)], ep=EP, escape_re=ESC)
+        check(mf["escape_unblocked"] == ["Bash curl x"] and mf["void"], "a forged mark does not excuse an escape: " + fwhy)
     m3c = meter(recs + [a("m6", [tu("Read", {"file_path": "/Users/jyh/bench/harness/data/verified.json"}, "t6")])], ep=EP, escape_re=ESC)
     check(m3c["escape_unblocked"] and m3c["void"], "a Read of a host path outside the episode voids")
-    m3d = meter(recs + [a("m7", [tu("Bash", {"command": "grep -rn http://x docs/"}, "t7")]), tr("t7", BLOCKED_MARK)], ep=EP, escape_re=ESC, url_re=URL)
+    m3d = meter(recs + [a("m7", [tu("Bash", {"command": "grep -rn http://x docs/"}, "t7")]), tr("t7", HOOKBLOCK, True)], ep=EP, escape_re=ESC, url_re=URL)
     check(m3d["url_mentions"] == 1 and not m3d["void"], "a URL mention is counted, never a void")
     m3e = meter(recs + [a("m8", [tu("Bash", {"command": EP + "/rt python -m pytest"}, "t8")])], ep=EP, escape_re=ESC)
     check(not m3e["void"], "own rt (path under the episode) is not an escape")
@@ -298,7 +335,7 @@ def self_test():
     import os as _os; _home = _os.path.expanduser("~")
     m3o = meter(recs + [a("m8k", [tu("Read", {"file_path": "~/.elan/toolchains/x/src/lean/Init/Prelude.lean"}, "t8k")])], ep=EP, escape_re=ESC, neutral=[_home + "/.elan"])
     check(not m3o["void"], "a ~/ path is expanded and judged: ~/.elan under --neutral is not a void")
-    m3p = meter(recs + [a("m8l", [tu("Bash", {"command": EP + "/rt 'lake update'"}, "t8l")]), tr("t8l", BLOCKED_MARK)], ep=EP, escape_re="(^|[;&|(])[ ]*lake[ ]+update")
+    m3p = meter(recs + [a("m8l", [tu("Bash", {"command": EP + "/rt 'lake update'"}, "t8l")]), tr("t8l", HOOKBLOCK, True)], ep=EP, escape_re="(^|[;&|(])[ ]*lake[ ]+update")
     check(m3p["escape_attempts_blocked"] == ["Bash " + EP + "/rt 'lake update'"] and not m3p["void"], "a hook-BLOCKED rt-wrapped escape is counted as an attempt (rt strip mirrors the hook)")
     bad = a("m9", []); bad["message"]["usage"] = {"input_tokens": 1}
     m4 = meter(recs + [bad], ep=EP)
