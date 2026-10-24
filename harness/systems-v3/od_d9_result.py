@@ -143,8 +143,14 @@ def selftest(cells):
         real = derive(cells)
     except Exception as e:   # a partial table that reaches the median code CRASHES; that is the defect this arm names
         real = ["CRASH: %r" % e]
-    arm("the real table (%d harvested) WITHHOLDS: one withholding line, no condition row, no ceiling, no prediction" % sum(c["status"] == "HARVESTED" for c in cells),
-        any(l.startswith("COMPARISON WITHHELD") for l in real) and not any(l.startswith(("P1", "P2", "P3", "P4", "P5", "ability")) or "median T" in l for l in real))
+    nh = sum(c["status"] == "HARVESTED" for c in cells)
+    if nh < 27:   # partial: the real table must withhold
+        arm("the real table (%d harvested) WITHHOLDS: one withholding line, no condition row, no ceiling, no prediction" % nh,
+            any(l.startswith("COMPARISON WITHHELD") for l in real) and not any(l.startswith(("P1", "P2", "P3", "P4", "P5", "ability")) or "median T" in l for l in real))
+    else:         # complete (2026-10-24): the real table must print the whole result and no withholding line
+        arm("the real table (27 harvested) prints 9 condition rows, 6 ability rows and P1–P5, and NO withholding line",
+            not any(l.startswith("COMPARISON WITHHELD") for l in real) and sum("median T" in l for l in real) == 9
+            and sum(l.startswith("ability") for l in real) == 6 and all(any(l.startswith(p) for l in real) for p in ("P1", "P2", "P3", "P4", "P5")))
     full = derive(fixture_complete(cells))
     arm("a complete fixture prints 9 condition rows, 6 ability rows and P1–P5",
         sum("median T" in l for l in full) == 9 and sum(l.startswith("ability") for l in full) == 6 and all(any(l.startswith(p) for l in full) for p in ("P1", "P2", "P3", "P4", "P5")))
