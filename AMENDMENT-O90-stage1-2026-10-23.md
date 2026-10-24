@@ -350,7 +350,7 @@ On these 17 problems every artifact-bearing problem has BOTH arms passed (12 pro
 artifact (0 · 18 · 30 · 96 · 127, 38 items) and are not read, counted (corrected by A2.10 C2). ⇒ **138 U1 reads**, scored paired per item across `a0`/`a5`.
 Prompt (one read, one fresh session; `__X__` / `__Y__` are the item's input and output exactly as `drawn.tsv` writes them):
 > Below is a Lean file written by an agent for a programming task, and possibly the agent's explanation of it. The task's own
-> specification is not shown in the Lean file; the file's `generated_spec` is the agent's version of it. Question: for the input `__X__`, does the
+> `problem_spec` definition has been removed from the Lean file; the file's `generated_spec` is the agent's version of it. Question: for the input `__X__`, does the
 > output `__Y__` satisfy the task's specification? Answer on the last line with exactly one of: `ANSWER: yes` · `ANSWER: no` ·
 > `ANSWER: cannot tell`.
 
@@ -408,7 +408,9 @@ check, not be cut silently.
   **NO REDACTION** (it would change the arm under test; design §1: "P+U's prose is visible; that is the point"). **U1 is reported
   twice, side by side: on all 12 problems, and on the problems where neither arm is `yes` (6)**, with the per-arm `yes`/`partial`
   counts beside both. The prompt's sentence "The task's own specification is withheld" is replaced by "The task's own
-  specification is not shown in the Lean file", which stays true when the prose quotes it.
+  `problem_spec` definition has been removed from the Lean file" (systems' D1 wording: true even where the agent's own
+  lemma restates spec lines, 4 U1 artifacts), which stays true when the prose quotes it. The M2 guard keys on the withheld
+  block as ONE CONTIGUOUS RUN in the Lean part (systems' D2: a per-line guard refuses 24/24 real files).
   ⚠️ gemini's alternative (a), a line-level redaction of EXPLAIN.md, was BUILT and driven (bus 10-24 08:48) and is DECLINED
   here for the reason above and its own measured limit (10 artifacts keep fragments inside longer lines; a re-broken quote
   evades it). It is recorded so a reader of the U1 figure meets the alternative beside it.
