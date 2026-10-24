@@ -171,12 +171,13 @@ def derive(cells, hist, pt_lines, p1_lines):
         out.append(f"FAIL {r['z']} {r['cid']} {r['model']} {r['problem']} {r['field']} {r['card']} "
                    f"{'salt-diet' if r['arm'] == 'salt' else 'plain'} r{r['rep']}: {r['tests']}")
     agg = pt_tally(pt_lines, p1_lines)
+    legs = collections.Counter((r['model'], r['arm']) for r in cells)
     for m in MODELS:
         for arm in ('plain', 'salt'):
             a = agg[(m, arm)]
             out.append(f"A7 {MODEL_NAME[m]} {'salt-diet' if arm == 'salt' else 'plain'}: final-phase roots {a['roots']} · with a hit "
                        f"{a['roots_hit']} · hits {a['hits']} | spec-change phase 1 roots {a['p1_roots']} · with a hit {a['p1_roots_hit']} · "
-                       f"hits {a['p1_hits']} | roots with no stderr yet {a['nofile'] + a['p1_nofile']}")
+                       f"hits {a['p1_hits']} | roots with no stderr yet {a['nofile'] + a['p1_nofile']} | harvested legs {legs[(m, arm)]}")
     tr = collections.Counter((r['model'], r['arm']) for r in cells if r['trunc'] == 'TRUNC')
     out.append('TRUNCATED-ROW cells (a TRUNCATED score row beside the verdict): '
                + ' · '.join(f"{MODEL_NAME[m]} {'salt-diet' if a == 'salt' else 'plain'} {tr[(m, a)]}" for m in MODELS for a in ('plain', 'salt')))
@@ -206,7 +207,8 @@ inputs it names; `--check` proves this file still carries every one of them verb
 # §2 · LIMITS THAT RIDE WITH EVERY RATE
 1. **A7, the per-turn print timeout binds salt-diet.** The `A7` lines give hits by model and arm. The final-phase figures are the A7.2 command;
    the phase-1 figures are its complement, since A7.4 (2) declares that the A7.2 command reads phase 2 only. A hit says the clock fired.
-   Whether a hit changed a verdict is NOT MEASURED (A7.4 (3)).
+   Whether a hit changed a verdict is NOT MEASURED (A7.4 (3)). A7 counts ROOTS on the run box; the table counts HARVESTED LEGS, printed
+   last on each A7 line. A root whose leg has not yet harvested (a cell in flight at the census) is in A7 and not in the table.
 2. **§G4.** The historical column confounds model with harness, client and fence (§G4 1–3). The control is a Flash model, never Pro (§G4 4).
 3. **§G5.** Nothing about Gemini 4 against 3.x in general, the other two effort variants, or the O29 qualification.
 4. **TRUNCATED-ROW and EMPTY-TURN counts** are printed by arm because both are arm-correlated readings in this campaign (A6, A7). No ZF
