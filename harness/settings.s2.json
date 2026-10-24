@@ -1,6 +1,8 @@
 {
   "theme": "auto",
   "skipDangerousModePermissionPrompt": true,
+  "syncClaudeAiSkills": false,
+  "syncClaudeAiPlugins": false,
   "hooks": {
     "PreToolUse": [
       { "matcher": "Bash|Monitor",

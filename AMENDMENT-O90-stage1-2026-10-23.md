@@ -246,3 +246,38 @@ re-run by the lead from an independent copy of amendment 8's state: both outputs
 n = 30 detects only large effects (design §6). One model, one bed. U3 runs on ~16 problems. C0 also lacks the prior-work
 paragraph (§4). The spread is not a pure noise floor (§6). The per-call trace sees agent-chosen compiles only (§6). The client
 moved between amendment 8 and this run, so no O90 figure is compared with amendment 8's.
+
+## ⚖️ ADDENDUM 1 — 2026-10-23: THE STAGE'S CLIENT RUNS WITH THE ACCOUNT SYNC OFF. APPENDED; all text above untouched. Written before cell 1's first scored call.
+
+**What happened.** The run box's smoke gate (§10 step 1) ran on the stage's config dir after his login. S1 passed (one probe episode,
+44,310 metered, never scored). During S1, client 2.1.278 copied the signed-in account's claude.ai skills into the config dir
+(`skills/synced/<org>/`: 14 skills, among them docs, docx, pdf, pptx, xlsx, deep-research, computer-use and chrome-browser) and an
+account plugin-marketplace list into `plugins/synced/`. S2–S5 were then refused at launch by `episode_s2.sh`'s hermeticity
+assertion (`config dir carries agent-influencing entry skills`), the smoke failed, and the driver could not start. **No scored episode
+ran.** S1's own session names none of the skills checked, so they landed after its skill list was built. Amendment 8's client
+(2.1.251) never wrote this entry, and §2's arms do not contain these skills, so a subject that started with them would have run a
+treatment nobody registered.
+**The remedy is the client's own opt-out, and it is the one the Claude lane already registered** (OD ADDENDUM 6, 2026-10-17, on
+2.1.280): `"syncClaudeAiSkills": false` and `"syncClaudeAiPlugins": false` in `settings.s2.json`. In the 2.1.278 binary the sync is
+gated on those keys, and any settings source holding either one `false` vetoes that sync. The lead had registered the fix for the
+Claude lane and did not carry it to this lane's settings file in the same act. That is a defect of the lead's, recorded here.
+- **The pin moves:** `settings.s2.json` → `f29ba9381e6e246c…` in `HASHES.txt`, so `episode_s2.sh` (which refuses a config dir whose
+  `settings.json` is not byte-identical to the pin) cannot launch an episode without both keys. No script changes, and the fence's
+  `denyRead`/`denyWrite` lists are unchanged.
+- **The config dir is restored before the next probe:** `skills/` and `plugins/synced/` are removed from it, the pinned
+  `settings.s2.json` is copied in as `settings.json` (his login had re-serialised that file: the same keys in a different order), and
+  `projects/` is emptied.
+- **The drive is red-first, and the red has already happened:** the S1 above, under the old settings, wrote `skills/`. The green is
+  the full smoke S1–S5 on the restored dir under the new settings. Because S2–S5 refuse whenever `skills/` exists, a 5/5 PASS shows the
+  sync stayed off for all five probe episodes, and `skills/` is listed after the smoke as the receipt.
+- **Declared, not refused:** the client also creates an empty `.cc-writes/` in the config dir. `episode_s2.sh` records it in
+  `configdir_unexpected.txt` and does not refuse on it. It is recorded per episode and is not an agent-influencing entry.
+- **The controls record (§10 step 1):** amendment 8's record certifies an earlier checker, and `controls_gate.py` refuses it against
+  today's `check.py`, `s2audit.lean` and `screen.py`. The record carried into `~/bench/o90/state/s2-controls.json` is amendment 14's
+  (`s2-controls-2026-09-02-amend14.json`), which certifies the live checker: the gate passes for stages A, B and C. "Carried in" in §10
+  means the record that certifies the live checker.
+- **The state root's views** were built A-only, by hand, from `~/bench/s2views` (A.lean and frozenA.json per problem) and verified by
+  content: A-views set-hash `bc4d6eafc0430ed2` (the banked figure, recipe `<relative path> <sha256>` sorted and hashed), 161 problem
+  dirs, 0 ground-truth files under `~/bench/o90`.
+- **The population's first id** is 73 by `o90_ids.py` (§1). `draw.py 1` prints 109 because that id is flagged. Cell 1 runs as
+  `K=66 ONLY_IDS=73`.
