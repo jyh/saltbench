@@ -338,19 +338,19 @@ default): 107 items over 17 problems; the U15's rows are byte-identical to leg (
 equal to `check.json`'s, as `u2_gen.py` requires) plus its `EXPLAIN.md` when one was captured (24 of the 47, the P+U arm's
 deliverable; design §1: "P+U's prose is visible; that is the point").
 - **U1 withholds `problem_spec`'s body.** U1's key is `problem_spec`; a reader shown its body can decide the item from the key's
-  own text, identically in both arms, and the read stops measuring the artifact. So for U1 the top-level `def problem_spec`
-  block (from that line to the line before the next top-level declaration or docstring) is replaced by the single line
+  own text, identically in both arms, and the read stops measuring the artifact. So for U1 the `def problem_spec` block (as
+  corrected by A2.10 C1: the task view's own marked block, found line for line exactly once in the file) is replaced by the line
   `-- problem_spec: the task's own specification, withheld for this read`. Its NAME stays (the isomorphism theorem states it).
   Everything the agent wrote stays, docstrings included.
 - **U2 shows the file whole.** U2's used set includes constants reached only through `problem_spec`
   (`used.tsv` column `only_via_problem_spec`), so withholding it would hide part of the key's population.
 
 **A2.3 · U1 pairing and form (gemini's 2).** Each drawn item is read once against EACH stage-B-passed artifact of its problem.
-On these 17 problems every artifact-bearing problem has BOTH arms passed (13 problems, 69 items); 4 problems have no passed
-artifact (38 items) and are not read, counted. ⇒ **138 U1 reads**, scored paired per item across `a0`/`a5`.
+On these 17 problems every artifact-bearing problem has BOTH arms passed (12 problems, 69 items); 5 problems have no passed
+artifact (0 · 18 · 30 · 96 · 127, 38 items) and are not read, counted (corrected by A2.10 C2). ⇒ **138 U1 reads**, scored paired per item across `a0`/`a5`.
 Prompt (one read, one fresh session; `__X__` / `__Y__` are the item's input and output exactly as `drawn.tsv` writes them):
 > Below is a Lean file written by an agent for a programming task, and possibly the agent's explanation of it. The task's own
-> specification is withheld; the file's `generated_spec` is the agent's version of it. Question: for the input `__X__`, does the
+> specification is not shown in the Lean file; the file's `generated_spec` is the agent's version of it. Question: for the input `__X__`, does the
 > output `__Y__` satisfy the task's specification? Answer on the last line with exactly one of: `ANSWER: yes` · `ANSWER: no` ·
 > `ANSWER: cannot tell`.
 
@@ -394,3 +394,34 @@ A2.2's rule to all 47 artifacts: exactly one `def problem_spec` block in each, e
 `generated_spec`; cuts are 13–26 lines; the line after each cut is `/--` 29 · `theorem` 13 · `namespace` 3 · `section` 1 ·
 `lemma` 1. ⚠️ The rule keys on a line starting `def problem_spec`; a file that defined it another way would fail the count
 check, not be cut silently.
+**A2.10 · systems' non-author read (10-24 08:48, its read record at seat `ce3a342a3`), all taken.**
+- **C1 · the cut is the VIEW's block.** The withheld text is the task view's own `def problem_spec … -- end_def problem_spec`
+  block (marker stripped); the harness finds it line for line exactly once in `canonical.lean` and refuses the read otherwise.
+  systems measured it equal to A2.9's cut in 47/47. (The literal "declaration or docstring" sentence would also have taken a
+  `namespace`/`section`/`open` line in 4 files, leaving an orphan `end`.) A2.9's `generated_spec` arm cannot fire (it precedes
+  `problem_spec` in all 47) and its `∃` arm tests under-cut only; both are declared, not counted as coverage.
+- **C2 · counts.** 12 problems are read and 5 are not (A2.3 corrected above); 69 items, 138 reads stand.
+- **M1 · the withheld spec comes back through EXPLAIN.md, in ONE arm.** Frozen BEFORE any read: run box
+  `~/bench-dry/o90-u1-spec-recoverable-2026-10-24.tsv` (sha256/16 `00f1d80781af8607`; script `o90-specrec-2026-10-24.py`, systems'
+  rule unchanged: every informative spec line found verbatim in the shown text; a lower bound, paraphrase unseen). On the 24 U1
+  artifacts: a5 `yes` 6 (problems 31 · 52 · 59 · 73 · 82 · 148) · `partial` 2 · `no` 4; a0 `yes` 0 · `partial` 2 · `no` 10.
+  **NO REDACTION** (it would change the arm under test; design §1: "P+U's prose is visible; that is the point"). **U1 is reported
+  twice, side by side: on all 12 problems, and on the problems where neither arm is `yes` (6)**, with the per-arm `yes`/`partial`
+  counts beside both. The prompt's sentence "The task's own specification is withheld" is replaced by "The task's own
+  specification is not shown in the Lean file", which stays true when the prose quotes it.
+  ⚠️ gemini's alternative (a), a line-level redaction of EXPLAIN.md, was BUILT and driven (bus 10-24 08:48) and is DECLINED
+  here for the reason above and its own measured limit (10 artifacts keep fragments inside longer lines; a re-broken quote
+  evades it). It is recorded so a reader of the U1 figure meets the alternative beside it.
+- **M2 · the guard reads the LEAN part only.** The refusal (A2.7's mutant) is keyed on the withheld block's lines in the
+  `LEAN FILE` section, never in `EXPLAIN.md`, and is driven on the real a5 prompts as its control (it must PASS all 138).
+- **Q3 · `cannot tell` stays scored wrong, and two figures ride beside every U1 accuracy:** the per-arm `cannot tell` count, and
+  accuracy over answered items. (systems: under M1 abstentions fall on a0, so the scoring alone would turn the asymmetry into
+  an a5 advantage.)
+- **§4's U1 route out of VOID (evidence, the design's author, 10-24 08:49; registered here before any U1 read).** The design's
+  VOID clause can be escaped by "P+U's U1 accuracy is at least 10 points higher than P's across all artifacts". Under M1 that
+  +10 can be reached by P+U QUOTING THE KEY. So: (b) the U1 route lifts VOID only if the +10 holds on BOTH the whole set and the
+  neither-`yes` subset; on the whole only, the reading is "U1 difference explained by recovered spec text; VOID not lifted by
+  U1". (c) If the subset holds fewer than 4 problems, the U1 route is UNRESOLVABLE at this n, never passed. (At this freeze it
+  holds 6.) The U3 route and the three "wrong" rules are untouched: U3 reads stage C's checker, not a reader.
+- **The live probe:** gemini's default stands: its 2-read probe is the first act of the Z265 hold (agy rotates the refresh token
+  on a warm-up, so no read runs while a Z cell is live), posted before the 323 reads.
