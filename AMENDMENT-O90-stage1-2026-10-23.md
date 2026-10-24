@@ -319,3 +319,6 @@ Claude lane and did not carry it to this lane's settings file in the same act. T
   file present: refuses; the guard removed: passes). `episode_s2.sh` → `6fe1e77fbfe143f5…`, so the smoke re-runs on the new sha. S1's
   `episode.sh` carries the same allow-list and is out of this stage's scope, declared. `settings.json` cannot carry
   `enabledPlugins`: it is pinned byte-identical.
+- **The green at the corrected head:** smoke S1–S5 **5/5 PASS** on `episode_s2.sh` `6fe1e77f…` (ep-95d65098 · ep-721fcfe3 ·
+  ep-f6820b63 · ep-18f7d90f · ep-676811e0), with S2's curl again client-refused then hook-blocked, and no `skills/` in the config dir
+  after. Dry `o90_selftest.sh` 14/0 on the same harness.
