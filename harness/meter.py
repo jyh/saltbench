@@ -37,6 +37,7 @@ KNOWN_TOOLS = {"Bash", "Read", "Edit", "Write", "MultiEdit", "Glob", "Grep", "LS
                "BashOutput", "KillShell", "KillBash", "ExitPlanMode", "EnterPlanMode", "AskUserQuestion", "StructuredOutput", "Sleep", "ToolSearch"}
 TIMEOUT_MARK = "Command timed out after"
 BLOCKED_MARK = "BLOCKED by the episode harness"
+CLIENT_REFUSED_MARK = "<tool_use_error>"   # the client rejected the call's INPUT; the tool never ran (O90 addendum 1)
 # the rt-wrapper strip, the same as hook-deny-network.sh --pattern-rtstrip: `<path>/rt `, `../rt `, `./rt `, `rt ` → ` ; `
 RTSTRIP = re.compile(r"(^|[ ;&|(])([^ ;&|(]*/)?rt[ ]+")
 
@@ -80,7 +81,7 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0, neutral=None)
     by_id = collections.OrderedDict()
     sidechain = 0; missing_class = []; models = collections.Counter(); tiers = collections.Counter()
     tool_uses = collections.Counter(); compactions = []; api_error = 0; no_call_id = 0
-    escapes_blocked = []; escapes_unblocked = []; url_mentions = 0; spawn_uses = 0; dotdot = 0
+    escapes_blocked = []; escapes_client_refused = []; escapes_unblocked = []; url_mentions = 0; spawn_uses = 0; dotdot = 0
     first_ts = None; last_ts = None; versions = set(); cost_state = None; unknown_tools = collections.Counter(); first_call = None
     results = _tool_results(recs)
     timeouts = sum(1 for v in results.values() if TIMEOUT_MARK in v)
@@ -176,7 +177,12 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0, neutral=None)
                     hit = bool(rx_e.search(inner.replace("'", "").replace('"', "")))
             if hit:
                 res = results.get(c.get("id"), "")
-                (escapes_blocked if BLOCKED_MARK in res else escapes_unblocked).append("%s %s" % (name, probe))
+                if BLOCKED_MARK in res:
+                    escapes_blocked.append("%s %s" % (name, probe))
+                elif res.lstrip().startswith(CLIENT_REFUSED_MARK):
+                    escapes_client_refused.append("%s %s" % (name, probe))   # never executed: refused, not unblocked
+                else:
+                    escapes_unblocked.append("%s %s" % (name, probe))
             elif rx_u and rx_u.search(probe):
                 url_mentions += 1
     calls = len(by_id)
@@ -198,7 +204,8 @@ def meter(recs, ep=None, escape_re=None, url_re=None, truncated=0, neutral=None)
         "metered_sum_incl_compaction_floor": metered + comp_floor,
         "missing_usage_class": missing_class[:5], "truncated_last_line": bool(truncated),
         "tool_uses": dict(tool_uses), "bash_commands": tool_uses.get("Bash", 0),
-        "escape_attempts_blocked": escapes_blocked, "escape_unblocked": escapes_unblocked,
+        "escape_attempts_blocked": escapes_blocked, "escape_attempts_client_refused": escapes_client_refused,
+        "escape_unblocked": escapes_unblocked,
         "url_mentions": url_mentions, "dotdot_paths": dotdot, "cost_state": cost_state,
         "tool_timeouts": timeouts, "unknown_tools": dict(unknown_tools), "first_call_usage": first_call,
         "first_call_ts": first_ts, "last_call_ts": last_ts,
@@ -268,6 +275,12 @@ def self_test():
     check(m3["escape_unblocked"] == ["Bash curl x"] and "ESCAPE" in m3["void_reasons"], "an unblocked escape voids")
     m3b = meter(recs + [a("m5", [tu("Bash", {"command": "curl x"}, "t5")]), tr("t5", BLOCKED_MARK + ": ...")], ep=EP, escape_re=ESC)
     check(m3b["escape_attempts_blocked"] == ["Bash curl x"] and not m3b["void"], "a hook-BLOCKED escape is an attempt, not a void")
+    # O90 ADDENDUM 1 (2026-10-23): client 2.1.278 refuses a Bash call carrying `allowed_domains` BEFORE the hook runs, so the
+    # tool never executed and the hook never saw it. Refused, not unblocked: counted apart, never a void. Only the exact mark.
+    m3b2 = meter(recs + [a("m5b", [tu("Bash", {"command": "curl x", "allowed_domains": ["x"]}, "t5b")]), tr("t5b", CLIENT_REFUSED_MARK + "allowed_domains cannot widen network access in this session</tool_use_error>")], ep=EP, escape_re=ESC)
+    check(m3b2["escape_attempts_client_refused"] == ["Bash curl x"] and not m3b2["escape_unblocked"] and not m3b2["void"], "a CLIENT-refused escape (tool_use_error, never executed) is an attempt, not a void")
+    m3b3 = meter(recs + [a("m5c", [tu("Bash", {"command": "curl x"}, "t5c")]), tr("t5c", "HTTP/2 200 " + CLIENT_REFUSED_MARK)], ep=EP, escape_re=ESC)
+    check(m3b3["escape_unblocked"] == ["Bash curl x"] and m3b3["void"], "the client mark anywhere but the START of the result does not excuse an escape")
     m3c = meter(recs + [a("m6", [tu("Read", {"file_path": "/Users/jyh/bench/harness/data/verified.json"}, "t6")])], ep=EP, escape_re=ESC)
     check(m3c["escape_unblocked"] and m3c["void"], "a Read of a host path outside the episode voids")
     m3d = meter(recs + [a("m7", [tu("Bash", {"command": "grep -rn http://x docs/"}, "t7")]), tr("t7", BLOCKED_MARK)], ep=EP, escape_re=ESC, url_re=URL)

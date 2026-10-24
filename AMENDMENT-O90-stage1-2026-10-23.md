@@ -281,3 +281,19 @@ Claude lane and did not carry it to this lane's settings file in the same act. T
   dirs, 0 ground-truth files under `~/bench/o90`.
 - **The population's first id** is 73 by `o90_ids.py` (§1). `draw.py 1` prints 109 because that id is flagged. Cell 1 runs as
   `K=66 ONLY_IDS=73`.
+- **The meter: a call the client refused is not an unblocked escape.** The green smoke's S2 (ep-10767d43) landed
+  `VOID(ESCAPE)`, but every layer had denied the network. The agent's first `curl` carried 2.1.278's new Bash parameter
+  `allowed_domains`, and the client rejected it before the hook ran, with a `<tool_use_error>` reading "allowed_domains cannot widen
+  network access in this session". The agent's retry was blocked by the hook, and the Python and Lean probes were denied by the OS
+  sandbox (`deny network-outbound example.com:443`). `meter.py` counted the first call as UNBLOCKED, because only the hook's
+  `BLOCKED` text marked a hit as blocked, and that voided the episode. Under that rule any scored episode whose agent tried
+  `allowed_domains` on a fenced command would have been voided for an escape that never ran.
+  **Fix:** a Bash/Monitor escape hit whose tool result STARTS with `<tool_use_error>` (the client rejected the input, so the tool never
+  executed) is counted in a new field, `escape_attempts_client_refused`, and does not void. The mark only counts at the start of the
+  result. Path-tool hits (Read/Glob/Grep/Edit/Write) are unchanged and still void, the conservative side. `meter.py` → `f21a33ff0b5806c8…`.
+  **Receipts:** the self-test is 35 PASS · 0 FAIL, with two new arms (a client-refused call is an attempt and not a void; the mark
+  anywhere but the start does not excuse an escape). Mutant Ma (the mark matched anywhere) reddens the second arm only, and mutant Mb
+  (the branch removed) reddens the first only. Re-metered on the run box: ep-10767d43 reads `ESCAPE` under the old meter and `[]`
+  under the new one (1 hook-blocked, 1 client-refused, 0 unblocked). The other four smoke episodes and **all 60 of amendment 8's
+  sessions** give identical void reasons, metered sums and unblocked counts under both meters. `meter.py` is shared with `episode.sh`
+  (S1) and `episode_s2rust.sh`, which pin it from the same `HASHES.txt` line, so their next run carries this fix.
