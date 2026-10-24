@@ -297,3 +297,8 @@ Claude lane and did not carry it to this lane's settings file in the same act. T
   under the new one (1 hook-blocked, 1 client-refused, 0 unblocked). The other four smoke episodes and **all 60 of amendment 8's
   sessions** give identical void reasons, metered sums and unblocked counts under both meters. `meter.py` is shared with `episode.sh`
   (S1) and `episode_s2rust.sh`, which pin it from the same `HASHES.txt` line, so their next run carries this fix.
+- **The green, on the harness at this addendum's head (both fixes):** smoke S1–S5 **5/5 PASS** on the restored config dir
+  (episodes ep-6791fc1e · ep-233834f0 · ep-673dbedd · ep-d23e3a28 · ep-0435707e). S2's curl was again client-refused, then
+  hook-blocked, and it now passes. The config dir's listing after the five probes holds no `skills/` (receipt: the listing appended
+  to the run box's smoke log). The run-shaped dry `o90_selftest.sh` reads 14 PASS · 0 FAIL against the same harness. The three smoke
+  runs' pool cost, about 15 probe episodes and never scored, is read and reported with cell 1's, as §10 step 1 says.
