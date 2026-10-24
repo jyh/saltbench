@@ -57,8 +57,9 @@ P3 FX/FH median output ratio Crc32 1.69 · LZW 1.17 · FreeList 1.86: NOT MET
 P5 CAP-COST bound 0 cell(s): MET
 ```
 - **Which cells count.** Crc32 FX and FH are cells #2–#4: their #1 ran on client 2.1.259 and is an identity reading only (ADDENDA 5 and 7). Every
-  other condition is #1–#3. All 27 ran on client 2.1.280. The nine Crc32 cells ran on harness export `9f42a53548a0` or `eb50811fe861`, whose
-  stagers differ only in the n bound (ADDENDUM 7); all 18 LZW and FreeList cells ran on `eb50811fe861`.
+  other condition is #1–#3. All 27 ran on client 2.1.280. The nine Crc32 cells were FIRED by harness export `9f42a53548a0` or `eb50811fe861`,
+  whose stagers differ only in the n bound (ADDENDUM 7); three of them (FX#2, FH#2, OX#1) were STAGED by the release export `811dc09657b4`
+  (R1.1) and fired by `9f42a53548a0` (columns `stage_export`, `fire_export`). All 18 LZW and FreeList cells were staged and fired by `eb50811fe861`.
 - **Rows per configuration per problem** carry the median of 3 for T (input + output + cache reads + cache writes), OUTPUT tokens beside it,
   list-USD at `rates.tsv`'s dated rows, and wall time printed beside, never as a cost. No figure is pooled across problems (rule 3).
 - **`clean`** is printed only when the served-set check reads the set clean against the configuration's head table, the served head id is
@@ -86,15 +87,17 @@ P5 CAP-COST bound 0 cell(s): MET
    (`roots_born_in_window` 1): Crc32 FH#2 and FH#3, LZW FH#2, and FreeList OX#3. Each root's name occurs 0 times in that cell's transcripts and
    logs (`root_name_hits`). **This is exposure, not use.** The other 23 cells read 0.
 3. **The config dir varies with the problem, never with the configuration within one.** All nine Crc32 cells ran on the pool's v3 config
-   dir; all 18 LZW and FreeList cells ran on its account config dir (ADDENDUM 9). P1–P5 are read per problem, so no prediction crosses that
+   dir; all 18 LZW and FreeList cells ran on its account config dir (ADDENDUM 9). The table cannot show this: its `config_dir_after` column
+   reads `baseline` on all 27 rows, so the source is ADDENDUM 9 alone. P1–P5 are read per problem, so no prediction crosses that
    boundary. A comparison of one problem's figures with another's carries it as a declared difference beside the problem itself.
 4. **The Fable meter per Fable cell is not measured.** The pool's quota meter is a weekly percent with one-point resolution, read about hourly
    for the whole pool, which other seats share. The readings the PM priced the block's steps from are pool readings around a fire, not a
    reading per cell, and none is reproduced here as one.
 5. **The account check, and where its record is incomplete.** The identity read of the pool account (`cells_account_check.sh`, §D2 4(e))
-   occurs once in each of 22 staging logs in the lead's run record: Crc32 FX#2–#3, FH#2–#3 and OX#1–#3, LZW #1 and #3, and FreeList #1–#3,
-   all three configurations. ⚠️ **It is absent from 2 and unlocated for 3:** the staging logs of Crc32 FX#4 and FH#4 carry no such line, and
-   LZW #2's three staging logs are not in either record directory. Those five cells are not shown to have had the check. Each of the 18 LZW
+   occurs once in each of 24 staging logs in the lead's run record: Crc32 FX#2–#4, FH#2–#4 and OX#1–#3, LZW #1 and #3, and FreeList #1–#3,
+   all three configurations. Crc32 FX#4 and FH#4's are the re-stagings under `repoint-eb50811/` (12:59:06Z and 12:59:08Z, before their argv
+   stamps); the same-named logs one directory up are refused `n must be 1..3` attempts. ⚠️ **It is unlocated for 3:** LZW #2's three staging
+   logs are not in either record directory. Those three cells are not shown to have had the check. Each of the 18 LZW
    and FreeList fire logs reads RUN-DIR READY once before launch. The account's name is not printed here (the infra-name gate).
 6. **The cells were fired one at a time**, by the chain for Crc32 and by hand on the chain's harvest steps for LZW and FreeList (the lead's
    run record). The order of ADDENDUM 7 held, with the LZW tripwire after the first LZW triple and the PM's re-price at each.
