@@ -22,8 +22,10 @@ ANY unscored sentence (a read UNSCORED, or a confirmation UNSCORED) is UNSCORED 
 Fisher exact p, whole and doc-comment-only (A3.7 4's length-matched read), beside each arm's per-sentence FLAG rate per
 mechanism. (3) evidence's leg (c) analogue — the share of FALSE flags NOT confirmed, per mechanism and per arm.
 Nothing here scores a reader against a key: stage 1 has no planted key (schedule §4).
-  usage: o90_flaglog.py <log.tsv> --population <sentences.tsv>      ·      o90_flaglog.py --selftest"""
-import csv, collections, io, math, sys
+A set that stopped at an A3.5 halt is named with `--halted <mechanism>`: its rows are left out of the state and the report
+declares it, so the figures read "by one reader mechanism" rather than unscoring every sentence it did not reach (systems' E1).
+  usage: o90_flaglog.py <log.tsv> --population <sentences.tsv> [--halted gemini|claude]      ·      o90_flaglog.py --selftest"""
+import csv, collections, hashlib, io, math, sys
 COLS = ["problem", "arm", "b_episode", "sentence", "sentence_sha256", "reader", "mechanism", "verdict", "confirmer", "confirmed"]
 POP_COLS = ["problem", "arm", "b_episode", "sentence", "sentence_sha256", "given", "text"]
 def load_population(f):
@@ -36,7 +38,7 @@ def load_population(f):
 def load(f, pop):
     rows = list(csv.reader(f, delimiter="\t"))
     if not rows or rows[0] != COLS: raise SystemExit("REFUSE: header must be exactly: " + "\t".join(COLS))
-    out, seen, shas = [], set(), {}
+    out, seen, shas, conf = [], set(), {}, {}
     for n, r in enumerate(rows[1:], 2):
         if len(r) != len(COLS): raise SystemExit("REFUSE line %d: %d fields, want %d" % (n, len(r), len(COLS)))
         d = dict(zip(COLS, r))
@@ -48,6 +50,8 @@ def load(f, pop):
             if d["confirmer"] in ("-", "") or d["confirmed"] not in ("yes", "no", "UNSCORED"):
                 raise SystemExit("REFUSE line %d: a FALSE needs a confirmer and yes|no|UNSCORED" % n)
             if d["confirmer"] == d["reader"]: raise SystemExit("REFUSE line %d: the confirmer is the reader" % n)
+            c = conf.setdefault((d["b_episode"], d["sentence"], d["confirmer"]), d["confirmed"])
+            if c != d["confirmed"]: raise SystemExit("REFUSE line %d: confirmer %r answered %s and %s for one sentence (L3)" % (n, d["confirmer"], c, d["confirmed"]))
         elif (d["confirmer"], d["confirmed"]) != ("-", "-"): raise SystemExit("REFUSE line %d: an %s carries - and -" % (n, d["verdict"]))
         k = (d["b_episode"], d["sentence"], d["reader"])
         if k in seen: raise SystemExit("REFUSE line %d: duplicate read %r" % (n, k))
@@ -72,18 +76,23 @@ def fisher_greater(f5, n5, f0, n0):
     if N == 0 or n5 == 0: return float("nan")
     tot = math.comb(N, n5)
     return sum(math.comb(K, x) * math.comb(N - K, n5 - x) for x in range(f5, min(K, n5) + 1)) / tot
-def readings(rows, pop):
+def readings(rows, pop, halted=()):
+    """halted: mechanisms whose set stopped at an A3.5 halt; their rows are left out of the state and declared in the report."""
     by_s = collections.defaultdict(list)
-    for r in rows: by_s[(r["b_episode"], r["sentence"])].append(r)
+    for r in rows:
+        if r["mechanism"] not in halted: by_s[(r["b_episode"], r["sentence"])].append(r)
     state = {}
-    for k, rs in by_s.items():
-        if any(r["verdict"] == "UNSCORED" or r["confirmed"] == "UNSCORED" for r in rs): state[k] = "UNSCORED"
-        else: state[k] = "FALSE" if any(r["verdict"] == "FALSE" and r["confirmed"] == "yes" for r in rs) else "OK"
-    arts = sorted({(pop[k]["problem"], pop[k]["arm"], k[0]) for k in by_s})
+    for k, p in pop.items():
+        if p["given"] != "no": continue
+        rs = by_s.get(k, [])
+        # E1 (systems): a confirmed FALSE is a fact about the Lean, so it is decided FIRST, whatever another read failed to answer
+        if any(r["verdict"] == "FALSE" and r["confirmed"] == "yes" for r in rs): state[k] = "FALSE"
+        elif not rs or any(r["verdict"] == "UNSCORED" or r["confirmed"] == "UNSCORED" for r in rs): state[k] = "UNSCORED"
+        else: state[k] = "OK"
     axis = []
-    for p, a, e in arts:
+    for p_, a, e in sorted({(p["problem"], p["arm"], k[0]) for k, p in pop.items()}):
         ss = [v for k, v in state.items() if k[0] == e]
-        axis.append((p, a, e, "UNSCORED" if "UNSCORED" in ss else ss.count("FALSE")))
+        axis.append((p_, a, e, "no written prose" if not ss else "UNSCORED" if "UNSCORED" in ss else ss.count("FALSE")))
     per = {}
     for scope in ("whole", "doc"):
         c = {a: [0, 0] for a in ("a0", "a5")}
@@ -100,11 +109,16 @@ def readings(rows, pop):
             for key in ((r["mechanism"], r["arm"]), (r["mechanism"], "*"), ("*", r["arm"])):
                 fa[key][0] += 1; fa[key][1] += (r["confirmed"] == "no")
     return axis, per, dict(flag), dict(fa)
-def report(rows, pop):
-    axis, per, flag, fa = readings(rows, pop)
+def report(rows, pop, pop_sha, halted=()):
+    axis, per, flag, fa = readings(rows, pop, halted)
+    print("POPULATION sha256/16 %s · %d written sentences" % (pop_sha, sum(1 for p in pop.values() if p["given"] == "no")))
+    for m in sorted(halted):
+        print("HALTED %s: %d rows left out of the state (A3.5), so every figure below is by the other mechanism alone"
+              % (m, sum(1 for r in rows if r["mechanism"] == m)))
     print("PER ARTIFACT (a sentence is FALSE iff flagged AND confirmed yes; any unscored sentence makes it UNSCORED):")
-    for p, a, e, n in axis: print("  %s %s %s %s%s" % (p, a, e, n, "  <- carries a FALSE sentence" if n not in (0, "UNSCORED") else ""))
-    for a in ("a0", "a5"): print("  UNSCORED artifacts %s: %d" % (a, sum(1 for x in axis if x[1] == a and x[3] == "UNSCORED")))
+    for p, a, e, n in axis: print("  %s %s %s %s%s" % (p, a, e, n, "  <- carries a FALSE sentence" if isinstance(n, int) and n else ""))
+    for a in ("a0", "a5"): print("  UNSCORED artifacts %s: %d · no written prose %d" % (a, sum(1 for x in axis if x[1] == a and x[3] == "UNSCORED"),
+                                                                                  sum(1 for x in axis if x[1] == a and x[3] == "no written prose")))
     for scope, (c, p) in per.items():
         print("PER SENTENCE (%s): a5 %d / %d · a0 %d / %d confirmed FALSE of scored written sentences · one-sided Fisher p = %.4f"
               % (scope, c["a5"][0], c["a5"][1], c["a0"][0], c["a0"][1], p))
@@ -133,6 +147,25 @@ def selftest():
     assert abs(fisher_greater(0, 10, 5, 10) - 1.0) < 1e-12
     r2 = [list(x) for x in base]; r2[1][9] = "UNSCORED"
     assert readings(load(io.StringIO(H + "".join("\t".join(x) + "\n" for x in r2)), pop), pop)[0][1][3] == "UNSCORED"
+    # E1 (systems, shape D): a second read UNSCORED on a sentence read 1 confirmed FALSE does not erase the confirmed FALSE
+    r3 = [list(x) for x in base] + [["31", "a5", "ep-b5", "doc:1", "aa", "k1", "claude", "UNSCORED", "-", "-"],
+                                    ["31", "a5", "ep-b5", "explain:1", "bb", "k1", "claude", "OK", "-", "-"],
+                                    ["31", "a0", "ep-b0", "doc:1", "cc", "k2", "claude", "OK", "-", "-"],
+                                    ["32", "a5", "ep-c5", "explain:1", "ff", "k3", "claude", "OK", "-", "-"]]
+    a3, p3, _, _ = readings(load(io.StringIO(H + "".join("\t".join(x) + "\n" for x in r3)), pop), pop)
+    assert a3[1][3] == 1 and p3["whole"][0]["a5"][0] == 1, ("E1: a confirmed FALSE was erased", a3, p3)
+    # E1 (shape C): a HALTED mechanism, declared, is left out of the state rather than unscoring every sentence it did not reach
+    r4 = [list(x) for x in base] + [["31", "a5", "ep-b5", "doc:1", "aa", "k1", "claude", "UNSCORED", "-", "-"],
+                                    ["31", "a5", "ep-b5", "explain:1", "bb", "k1", "claude", "UNSCORED", "-", "-"],
+                                    ["31", "a0", "ep-b0", "doc:1", "cc", "k2", "claude", "UNSCORED", "-", "-"],
+                                    ["32", "a5", "ep-c5", "explain:1", "ff", "k3", "claude", "UNSCORED", "-", "-"]]
+    l4 = load(io.StringIO(H + "".join("\t".join(x) + "\n" for x in r4)), pop)
+    a4, p4, _, _ = readings(l4, pop, halted={"claude"})
+    assert [x[3] for x in a4] == [0, 1, "UNSCORED"] and p4["whole"][0] == {"a0": [0, 1], "a5": [1, 2]}, ("C: halted", a4, p4)
+    # L1: an artifact with no written sentence is listed as such, so the per-problem pairing need not infer it
+    P1 = P.replace("# TOTAL\n", "") + "\t".join(["33", "a0", "ep-d0", "doc:1", "gg", "yes", "given"]) + "\n"
+    pop1 = load_population(io.StringIO(P1)); a5_ = readings(load(io.StringIO(good), pop1), pop1)[0]
+    assert ("33", "a0", "ep-d0", "no written prose") in a5_, a5_
     bad = {"author reads": ["31", "a5", "ep-b5", "doc:1", "aa", "ep-b5", "claude", "OK", "-", "-"],
            "FALSE w/o confirmer": ["31", "a5", "ep-b5", "doc:1", "aa", "k2", "claude", "FALSE", "-", "-"],
            "confirmer is reader": ["31", "a5", "ep-b5", "doc:1", "aa", "k2", "claude", "FALSE", "k2", "yes"],
@@ -144,7 +177,8 @@ def selftest():
            "not in population": ["31", "a5", "ep-b5", "doc:9", "aa", "g9", "gemini", "OK", "-", "-"],
            "a GIVEN sentence read": ["31", "a0", "ep-b0", "doc:2", "ee", "g9", "gemini", "OK", "-", "-"],
            "sha differs from frozen": ["31", "a5", "ep-b5", "doc:1", "aa", "g9", "gemini", "OK", "-", "-"][:4] + ["xx", "g9", "gemini", "OK", "-", "-"],
-           "a mechanism that misses a written sentence": ["31", "a5", "ep-b5", "doc:1", "aa", "k1", "claude", "OK", "-", "-"]}
+           "a mechanism that misses a written sentence": ["31", "a5", "ep-b5", "doc:1", "aa", "k1", "claude", "OK", "-", "-"],
+           "one confirmer, two answers (L3)": ["31", "a5", "ep-b5", "doc:1", "aa", "g5", "gemini", "FALSE", "c1", "no"]}
     for name, row in bad.items():
         try: load(io.StringIO(good + "\t".join(row) + "\n"), pop); raise AssertionError("ACCEPTED: " + name)
         except SystemExit as e: assert str(e).startswith("REFUSE"), (name, e)
@@ -152,6 +186,10 @@ def selftest():
           " Fisher 5/10 vs 0/10 = 252/15504), an UNSCORED confirmation makes its artifact UNSCORED, %d refusals each fired" % len(bad))
 if __name__ == "__main__":
     if sys.argv[1:] == ["--selftest"]: selftest(); sys.exit(0)
-    if len(sys.argv) != 4 or sys.argv[2] != "--population": raise SystemExit(__doc__)
-    pop = load_population(open(sys.argv[3], newline=""))
-    report(load(open(sys.argv[1], newline=""), pop), pop)
+    a = sys.argv[1:]
+    if len(a) < 3 or a[1] != "--population" or (len(a) - 3) % 2 or any(x != "--halted" for x in a[3::2]): raise SystemExit(__doc__)
+    halted = set(a[4::2])
+    if halted - {"gemini", "claude"}: raise SystemExit("REFUSE: --halted names a mechanism outside gemini | claude")
+    raw = open(a[2], "rb").read()
+    pop = load_population(io.StringIO(raw.decode("utf-8")))
+    report(load(open(a[0], newline=""), pop), pop, hashlib.sha256(raw).hexdigest()[:16], halted)
