@@ -62,6 +62,9 @@ def check(u1key, u2, draw, reads, opts, spec, u1prob):
         if x['in_u1'] == 'yes': u1art[x['problem']].append((x['episode'], x['arm']))
     want = collections.Counter(('U2', it) for it in u2)
     want.update(('U1', it, ep) for it, p in u1prob.items() for ep, _ in u1art.get(p, []))
+    for r in list(draw.values()) + reads:   # G1 (systems on d350575): kind is the reader's label, so it must be one of two, and it must be the FROZEN one
+        if r['kind'] not in ('U1', 'U2'): refuse('seq %s kind %r is neither U1 nor U2' % (r['seq'], r['kind']))
+        if (r['kind'] == 'U1') != (r['item'] in u1prob) or (r['kind'] == 'U2') != (r['item'] in u2): refuse('seq %s says %s for %s, which the frozen keys file under the other kind' % (r['seq'], r['kind'], r['item']))
     got = collections.Counter(('U2', r['item']) if r['kind'] == 'U2' else ('U1', r['item'], r['episode']) for r in draw.values())
     if got != want: refuse('draw.tsv is not the frozen population: %d missing, %d extra (e.g. %s)' % (sum((want - got).values()), sum((got - want).values()),
                            sorted((want - got) | (got - want))[:2]))
@@ -138,7 +141,7 @@ def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
         acc = {}
         for arm in ('a0', 'a5'):
             u = [r for r in u1 if r['arm'] == arm and r['problem'] in ps]
-            sc = [r for r in u if r['answer'] in ('yes', 'no', 'cannot tell')]
+            sc = [r for r in u if r['status'] == 'OK' and r['answer'] in ('yes', 'no', 'cannot tell')]   # L3 (systems): never on the answer alone
             right = [r for r in sc if r['answer'] == u1key[r['item']]]
             ct = [r for r in sc if r['answer'] == 'cannot tell']
             ans = [r for r in sc if r['answer'] != 'cannot tell']
@@ -149,7 +152,7 @@ def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
                        pct(sum(r['answer'] == u1key[r['item']] for r in ans), len(ans)), len(ans), len(u) - len(sc), srs['yes'], srs['partial'], srs['no']))
         pair = collections.defaultdict(dict)
         for r in u1:
-            if r['problem'] in ps and r['answer'] in ('yes', 'no', 'cannot tell'): pair[r['item']][r['arm']] = r['answer'] == u1key[r['item']]
+            if r['problem'] in ps and r['status'] == 'OK' and r['answer'] in ('yes', 'no', 'cannot tell'): pair[r['item']][r['arm']] = r['answer'] == u1key[r['item']]
         pr = [v for v in pair.values() if len(v) == 2]
         out.append('  paired items %d: both right %d · a5 only %d · a0 only %d · neither %d' % (len(pr), sum(v['a0'] and v['a5'] for v in pr),
                    sum(v['a5'] and not v['a0'] for v in pr), sum(v['a0'] and not v['a5'] for v in pr), sum(not v['a0'] and not v['a5'] for v in pr)))
@@ -191,6 +194,14 @@ def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
         tails = [str(json.load(open(os.path.join(d, 'out', f))).get('stderr_tail', '')) for f in fails]
         return 'print timeout' if tails and all('print timeout' in x for x in tails) else 'parse'   # a row written before A6.3 names no cause
     cnt = collections.Counter((cause(r), kind(r), r['arm']) for r in reads if r['status'] != 'OK')
+    def timed_out_once(r):   # G2 (systems): any attempt of this read, in any process, ended in the print timeout
+        od = os.path.join(d, 'out')
+        if not os.path.isdir(od): return False
+        return any('print timeout' in str(json.load(open(os.path.join(od, f))).get('stderr_tail', '')) for f in os.listdir(od) if f.startswith('read-%s.FAIL-' % r['seq']))
+    resc = collections.Counter((kind(r), r['arm']) for r in reads if r['status'] == 'OK' and timed_out_once(r))
+    tot = collections.Counter((kind(r), r['arm']) for r in reads if timed_out_once(r) or (r['status'] != 'OK' and cause(r) == 'print timeout'))
+    out.append('Reads with a print-timeout attempt, rescued (answered later) / all, by kind × arm (A6.5 condition): '
+               + (' · '.join('%s %s %d/%d' % (k, a, resc[(k, a)], n) for (k, a), n in sorted(tot.items())) or 'none'))
     out.append('UNSCORED reads by cause × kind × arm (A6.3): ' + (' · '.join('%s %s %s %d' % (c, k, a, n) for (c, k, a), n in sorted(cnt.items())) or 'none'))
     to = {r['seq'] for r in reads if r['kind'] == 'U2' and u2meta[r['item']][2] == 'theorem' and cause(r) == 'print timeout'}
     b = {}
@@ -211,7 +222,7 @@ def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
     obs, lo, hi = sgn(k5, n5, k0, n0), sgn(k5, n5 + t5, k0 + t0, n0 + t0), sgn(k5 + t5, n5 + t5, k0, n0 + t0)   # lo: a5 worst, a0 best
     word = {1: 'a5 > a0', -1: 'a5 < a0', 0: 'a5 = a0', None: 'n/a'}
     out.append('U2-theorem a5 vs a0: observed %s · a5-worst/a0-best %s · a5-best/a0-worst %s ⇒ %s (A6.8)' % (word[obs], word[lo], word[hi],
-               theorem_verdict(lo, hi)))
+               theorem_verdict(lo, hi) if b['a0'][2] + b['a5'][2] else 'no timed-out option to bound: the observed figure stands alone'))
     return '\n'.join(out), complete
 
 
@@ -298,7 +309,17 @@ def selftest():
         txtl2, _ = score(dd, s16, r16, (5, 4))
         arm('L2: an artifact read only UNSCORED is listed as 0 scored and leaves the MEAN\'s n, stated',
             'U2 a0 e10: 0 scored (every option UNSCORED)' in txtl2 and 'U2 a0: artifacts read 1 (0 with a scored option)' in txtl2)
-        arm('A6.8: with no timeout the theorem bounds agree (a0 6/8, a5 8/8)', 'U2-theorem a5 vs a0: observed a5 > a0 · a5-worst/a0-best a5 > a0 · a5-best/a0-worst a5 > a0 ⇒ the bounds agree' in txt)
+        arm('A6.8: with no timed-out option the line says so and the observed figure stands alone (systems\' L2)',
+            'U2-theorem a5 vs a0: observed a5 > a0 · a5-worst/a0-best a5 > a0 · a5-best/a0-worst a5 > a0 ⇒ no timed-out option to bound' in txt)
+        arm('G1: a kind outside U1/U2 refuses', mut(lambda dd: both(dd, '2\tU1\tp1-a\te15', '2\tu1\tp1-a\te15'), 'neither U1 nor U2'))
+        arm('G1: a U1 item filed as U2 by the reader refuses against the frozen keys', mut(lambda dd: both(dd, '2\tU1\tp1-a\te15', '2\tU2\tp1-a\te15'), 'under the other kind'))
+        arm('L1: a U2 read with ZERO option rows refuses (the count check on its own)',
+            mut(lambda dd: drop(os.path.join(dd, 'u2-options.tsv'), '\tp1-a5-d-1\t'), 'carries 0 option rows'))
+        dd = os.path.join(t, 'l3'); shutil.copytree(d, dd); edit(os.path.join(dd, 'reads.tsv'), 'p4-a\te40\ta0\t4\tyes\tOK', 'p4-a\te40\ta0\t4\tyes\tUNSCORED(x)')
+        arm('L3: a U1 row whose status is not OK is never scored on its answer', 'a0: reads 6 · scored 5 · correct 2' in score(dd, s16, r16, (5, 4))[0])
+        dd = os.path.join(t, 'g2'); shutil.copytree(d, dd); os.makedirs(os.path.join(dd, 'out'))
+        json.dump({'stderr_tail': '[agy] print timeout after 30m0s with turn in progress'}, open(os.path.join(dd, 'out', 'read-14.FAIL-1.json'), 'w'))
+        arm('G2: a read that timed out once and then answered is counted rescued, from its FAIL record', 'U2-theorem a5 1/1' in score(dd, s16, r16, (5, 4))[0])
         dd = os.path.join(t, 'to'); shutil.copytree(d, dd)   # seq 13 = the a0 theorem read, timed out on both attempts, written BEFORE A6.3
         edit(os.path.join(dd, 'reads.tsv'), '13\tU2\tp1-a0-d-0\te10\ta0\t1\t\tOK', '13\tU2\tp1-a0-d-0\te10\ta0\t1\t\tUNSCORED(no parseable answer after one retry)')
         o3 = open(os.path.join(dd, 'u2-options.tsv')).read().splitlines(True)
