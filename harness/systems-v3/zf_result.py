@@ -128,6 +128,9 @@ def pt_tally(pt_lines, p1_lines):
 # Conditions CUT by ruling, whole (both arms, both models, n = 0): council 2026-10-20 ④, the conditional cut (AMENDMENT-ZF
 # ADDENDUM 4 rule 2), fired by bench's ADA line at Z264's harvest (2026-10-24 23:53). A cut pair is still printed SHORT with its
 # count; it does not hold the set PARTIAL. A cut condition with ANY harvested cell refuses: the ruling cut it whole.
+# ADDENDUM 4 (the helm, 23:51): wherever a belted verdict is printed, including the result, EACH ROW carries this, so a reader of one
+# row meets it. ROW, TOTAL and FAIL lines print belted Z verdicts; the 3.x column on a ROW is historical and was not belted.
+VC = 'Z verdict channel: OPEN (ZQ (a), ADDENDUM 3)'
 CUT = {('Paxos', 'gf', 'spec-change'): 'CUT by ruling, council 2026-10-20 ④ (ADA at Z264)'}
 
 
@@ -163,23 +166,23 @@ def derive(cells, hist, pt_lines, p1_lines, cut=CUT):
         cols = [fmt_cell(tally(by[(k, m)])) for m in MODELS]
         h = [hist.get((x,) + k, '?') for x in ('gemini-3.1-pro-high', 'gemini-3.8-flash-high')]
         out.append(f"ROW {k[0]} | {k[1]} | {k[2]} | {'salt-diet' if k[3] == 'salt' else 'plain'} | "
-                   + ' | '.join(cols) + f" | {h[0]} · {h[1]}")
+                   + ' | '.join(cols) + f" | {h[0]} · {h[1]} | {VC}")
     for m in MODELS:
         for arm in ('plain', 'salt'):
             t = tally([r for r in cells if r['model'] == m and r['arm'] == arm])
             c, e = rates(t)
             out.append(f"TOTAL {MODEL_NAME[m]} {'salt-diet' if arm == 'salt' else 'plain'}: COUNTED {c} · EXCLUDED {e} · "
-                       f"fired {t['fired']} · scored {t['scored']} · wedge {t['w']} · other {t['o']}")
+                       f"fired {t['fired']} · scored {t['scored']} · wedge {t['w']} · other {t['o']} | {VC}")
     for m in MODELS:
         t = tally([r for r in cells if r['model'] == m])
         c, e = rates(t)
-        out.append(f"TOTAL {MODEL_NAME[m]} both arms: COUNTED {c} · EXCLUDED {e} · fired {t['fired']} · wedge {t['w']} · other {t['o']}")
+        out.append(f"TOTAL {MODEL_NAME[m]} both arms: COUNTED {c} · EXCLUDED {e} · fired {t['fired']} · wedge {t['w']} · other {t['o']} | {VC}")
     for r in sorted((r for r in cells if klass(r) in ('wedge', 'other')), key=lambda r: int(r['z'][1:])):
         out.append(f"NOT-SCORED {r['z']} {r['cid']} {r['model']} {r['problem']} {r['field']} {r['card']} "
                    f"{'salt-diet' if r['arm'] == 'salt' else 'plain'} r{r['rep']}: {klass(r).upper()} ({r['done_reason']}; end {r['end']})")
     for r in sorted((r for r in cells if r['verdict'] == 'FAIL'), key=lambda r: int(r['z'][1:])):
         out.append(f"FAIL {r['z']} {r['cid']} {r['model']} {r['problem']} {r['field']} {r['card']} "
-                   f"{'salt-diet' if r['arm'] == 'salt' else 'plain'} r{r['rep']}: {r['tests']}")
+                   f"{'salt-diet' if r['arm'] == 'salt' else 'plain'} r{r['rep']}: {r['tests']} | {VC}")
     agg = pt_tally(pt_lines, p1_lines)
     legs = collections.Counter((r['model'], r['arm']) for r in cells)
     for m in MODELS:
@@ -277,6 +280,9 @@ def selftest(cells, hist, pt, p1):
     # 10 a cut condition that holds a harvested cell refuses
     c6 = [dict(r) for r in cells]; c6[0].update(problem='Paxos', field='gf', card='spec-change', rep='1')
     arm('a cell in a CUT condition refuses', run(c6)[0].startswith('RAISED'))
+    # 11 every line that prints a belted Z verdict carries the verdict-channel limit (ADDENDUM 4)
+    vlines = [l for l in base if l.startswith(('ROW ', 'TOTAL ', 'FAIL '))]
+    arm('every ROW, TOTAL and FAIL line carries the verdict-channel limit', vlines and all(l.endswith(VC) for l in vlines))
     print(f"SELFTEST {ok}/{n}")
     return ok == n
 
