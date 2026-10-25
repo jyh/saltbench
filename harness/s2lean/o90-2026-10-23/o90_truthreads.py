@@ -366,6 +366,10 @@ def selftest():
                             '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
         exp = 'USD per point %.4f' % (Meter(a7b.meter, 0, 2).first_usd(2) / 0.5)
         arm('USD per point is computed from the meter\'s own first reads and the point reading, and printed (systems\' T1)', exp in r.stdout)
+        r2_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
+                              '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.7'], capture_output=True, text=True)
+        arm('the point reading is recorded beside the meter, and a later run with a different one refuses (systems\' LOW)',
+            open(a7b.meter + '.points').read().strip() == '0.5' and r2_.returncode == 1 and 'records 0.5' in r2_.stdout + r2_.stderr)
         # G1 (systems): a later set's rows never count toward the first reads, so the guard does not move after confirm runs
         before = Meter(a7b.meter, 0, 2).first_usd(2); open(a7b.meter + '.RESUMED', 'w').write('')
         env('ok', 'c7c'); cmd_confirm(args(os.path.join(t, 'conf-g1'), meter=a7b.meter, flags=[r2rows], pause_after=2))
@@ -451,6 +455,10 @@ def main():
         if a.points_at_pause <= 0: raise SystemExit('REFUSE: --points-at-pause must be > 0 (a window that moved the pool 0 points prices nothing)')
         m = Meter(a.meter, 0, a.pause_after)
         if len(m.units()) < a.pause_after: raise SystemExit('REFUSE: --points-at-pause given before the first %d reads exist on the meter' % a.pause_after)
+        pf = a.meter + '.points'   # systems' LOW: the reading is RECORDED beside the meter, and every later run must give the same one
+        if os.path.exists(pf) and float(open(pf).read().split()[0]) != a.points_at_pause:
+            raise SystemExit('REFUSE: --points-at-pause %s, but %s records %s' % (a.points_at_pause, pf, open(pf).read().split()[0]))
+        if not os.path.exists(pf): open(pf, 'w').write('%r\n' % a.points_at_pause)
         rate = m.first_usd(a.pause_after) / a.points_at_pause; a.cap_usd = 3 * rate
         print('USD per point %.4f (%.4f USD over the first %d reads / %.3f points) · guard %.4f USD = 3 points'
               % (rate, m.first_usd(a.pause_after), a.pause_after, a.points_at_pause, a.cap_usd))
