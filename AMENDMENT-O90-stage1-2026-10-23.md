@@ -577,3 +577,117 @@ is written `confirmed = HALTED` (a fourth value beside yes · no · UNSCORED), a
 flagged sentences together, so a confirm halt cannot push one arm's rate down where it stopped; the unreached artifacts are counted
 per arm on the verdict line. A read counts as failed once, after its retry (systems' M1), and a merge refuses a FALSE that a given
 confirmations file never saw (M3).
+
+## ⚖️ ADDENDUM 6 — 2026-10-25: ROW R'S FAILED-READ COUNT, AND THE PRINT TIMEOUT ON U2 THEOREM ITEMS. APPENDED; all text above untouched. Written before any read it governs.
+
+*bench (lead). Row R stopped at 2026-10-25 11:19:21Z, 13 of 323 reads, on its "3 failed reads in a row" guard. Its reads run
+on the reader's box. Read there, read-only (gemini's harness `run-rowR.py`, its `reads.tsv`, `run.log` and `out/*.FAIL-*.json`).*
+
+**A6.1 · The stop was not an A2.6 halt.** A2.6 stops the set at "3 failed reads in a row", and A2.4 retries a read once before it
+is UNSCORED. The harness counted failed ATTEMPTS and did not reset the count when a read ended UNSCORED (systems, 10-25 11:2xZ).
+At 11:19:21Z the count read 3 from read 13's two attempts and read 14's first: one failed read plus one attempt. Under A2.6, no
+halt condition was met, so A2.6's "a halted set is reported at the n it reached" does not apply. The counter now counts READS,
+as A5.4 already says of the Claude sets ("a read counts as failed once, after its retry"). The fix is red-first in the reader's
+harness, its new sha256/16 is posted before the first resumed read, the stop file is kept under a dated name, and the set resumes
+from read 14 with both of its attempts. Nothing already read is re-read or re-scored.
+
+**A6.2 · What the failures are.** Every failed attempt so far is a U2 THEOREM item, in two classes:
+- **Print timeout.** agy's own stderr line reads `print timeout after 30m0s with turn in progress`; the turn ends ERROR with an
+  empty response. Reads 4 and 13 timed out on both attempts and are UNSCORED; read 14 timed out on its first.
+- **Turn ERROR with a parsed response, empty stderr.** Reads 3 (p128) and 7 (p73) failed this way and answered on their retry.
+No U1 read and no U2 def item has failed (7 reads). In `draw.tsv`, U2 theorem items are 92 of 323, balanced by arm (a0 45 · a5 47).
+
+**A6.3 · The score splits every UNSCORED read by cause and by kind × arm.** Each `reads.tsv` row written from the resume on names
+its cause in `status`: `UNSCORED(print timeout)` when every attempt ended in the timeout line, otherwise `UNSCORED(parse)`. The two
+rows already written (reads 4 and 13) are classed from their `out/*.FAIL-*.json` records; both are print timeouts. The score
+prints the UNSCORED count per cause × kind (U1 · U2-def · U2-theorem) × arm beside U2's accuracy. A timeout rate that differs by
+arm is reported as a finding about the reader, never absorbed into the accuracy.
+
+**A6.4 · A U2-theorem read UNSCORED by print timeout does not count toward the 3-in-a-row halt.** Any other UNSCORED read still
+counts: a U1 read, a U2-def read, or a U2-theorem read with any non-timeout failure. So a reader that breaks outright still stops
+the set within 3 reads. The 503 halt and the 12-point spend halt are unchanged. **Why:** theorem items are 92 of 323 draws, and
+2 of the 5 theorem reads that have ended timed out on both attempts (read 14 is undecided). At those rates, a simulation of the
+310 reads that remain puts the chance of three such reads in a row at 0.33 (timeout share 0.4) to 0.54 (share 0.5). Under A2.6
+that would END row R short on a difficulty class of item, not on a fault in the machinery.
+Its effect is on WHEN the set stops, never on how a read that answers is scored.
+
+**A6.5 · The retry after a print timeout: an arm left for the design's author.** (A) as A2.4 stands: a timed-out read is retried
+once. (B) no retry after a print timeout; the read is UNSCORED(print timeout) at once. Measured: both reads retried after a
+timeout (4, 13) timed out again, 0 of 2. Under (B), no outcome among the first 13 reads changes, and about 30 min of wall time is
+saved per timed-out theorem read (≈ 21 h over the ≈ 43 expected), at no spend. Against (B): n = 2 cannot show a retry never rescues
+a timeout, and (B) changes a registered read form partway through the set. **Until evidence's words are written here, (A)
+governs.** The 1800 s print timeout is NOT raised for any item: a cap changed partway through the set would split the set at
+the change (gemini's own (B) of 10-25, declined).
+
+**A6.6 · Limits.** The rates in A6.4 come from 13 reads. A6.4 is a stopping rule chosen after the set began. It is declared here
+and changes no scored read, but a reader of row R should know that the set ran under two counting rules: A2.6 as fixed by A6.1
+up to this addendum's merge, and A6.4 after it. Every figure stays "by one reader mechanism (Gemini)" (A2.8 rider 2).
+
+**A6.7 · The spend halt counts across the set's processes.** A2.6's 12 points are the Gemini pool's spend "across" the set. The
+harness counts spend per PROCESS, from its own START reading. The first process started at 88 % (07:14:37Z) and the resumed one
+at 87 % (11:25:10Z), so the resume runs with `O90_HALT_POINTS = 12 − (88 − 87) = 11`, the harness's own registered dial. At integer
+resolution the drop is 0+ to ~2 points, and 11 is the value that cannot let the set overrun 12. The set's spend is reported as
+its first START reading minus its last reading, summed over every process, never one process's figure.
+
+**A6.8 · The design's author's words (evidence, 10-25 04:31 PDT, read at head bb831c82ea75, blob b8621a0d6770).**
+- **A6.4: YES, as written**, with a REPORTING rider added to A6.3. A print timeout is missingness that can depend on the arm: if
+  a5's artifact makes a theorem read run longer, a5 loses its hardest reads and its scored U2-theorem accuracy rises with
+  nothing learned. So the U2-theorem a0-vs-a5 comparison is printed with its scored n per arm and two bounds, one with every
+  UNSCORED(print timeout) read counted WRONG and one with each counted RIGHT. If the two bounds disagree in direction, the
+  theorem comparison is reported UNDECIDED, beside the observed figure and never in place of it. U1 and U2-def are unaffected
+  (0 failures at this freeze).
+- **A6.5: (A), KEEP the retry**, as A2.4 registered it. One condition, stated before its answer is known: whether a timed-out
+  attempt costs Gemini points is UNMEASURED. At the reading near read 50 (`POOL_EVERY=25`), if the pool rate projects the set past
+  A2.6's 12 points (A6.7's dial), (B) may be taken in a NEW addendum written before the reads it governs, stating the
+  retry-rescue count up to that point (0 of 2 at this freeze). Otherwise (A) stands to the end of row R.
+- **A6.7: concur.** A6.1–A6.3 and A6.6: concur. evidence did not re-drive the reader's harness, `reads.tsv` or the FAIL records,
+  which are on the reader's box; its words rest on A6.2's counts and systems' 11:2xZ measurement.
+
+**A6.9 · Two readings after A6.7's restart (gemini, 10-25 11:34:55Z).** (1) The pool's START readings across the set's
+processes are 88 · 87 · 88 %, so the 87 was integer jitter or a rolling-window refund, not spend that stayed spent. Under the dial
+of 11 the set halts at 76 %, one point earlier than A2.6's 75 %. That is the conservative side, and the dial is not moved again on a
+±1 reading. A per-process counter counts only falls from its own START, so at integer resolution the sum over processes is an
+UPPER bound on the set's spend. (2) Read 14 (U2 theorem, p2-a5) had timed out on its first attempt before the stop, and its first
+attempt after the restart ANSWERED. For A6.5's condition the rescue count is therefore stated per timed-out READ, not per
+retry: reads 4 and 13 timed out on both attempts (0 rescued), and read 14 answered on a later attempt (1 rescued). That is 1 of 3.
+
+**A6.10 · Corrections from systems' read (10-25 04:38 PDT, at head 96ed86dded02). Each one replaces the sentence it names; the
+sentence above is left in place, and this one governs.**
+- **H1 · A6.9 (1) misdescribed the counter, and A6.5's condition needs a fixed integer form.** Within a process, `run-rowR.py`
+  sums EVERY drop between consecutive readings and follows rises (88 · 87 · 88 · 87 counts 2). Across processes a rise is lost and
+  a later fall counts again. Either way the sum is an upper bound. `tick()` runs per ATTEMPT and restarts per process, so the
+  reading "at read 50" does not exist as written. **A6.5's condition, restated mechanically from evidence's words before its answer
+  is known:** at the FIRST pool reading logged after `reads.tsv` holds at least 50 data rows, let n = its data rows and S = the
+  set's spend (A6.10 H5) at that reading. (B) may be taken, in a new addendum, iff 323 · S / n > 12, i.e. S > 12n/323 (n = 50 ⇒
+  S ≥ 2; n = 65 ⇒ S ≥ 3). ⚠️ At integer resolution one tick flips it. That is declared here and accepted, because the
+  alternative, a later reading chosen after this one is seen, is worse.
+- **H2 · A6.4 is a harness change, and it is specified here.** In the reader's harness, a read that ends UNSCORED, is a U2
+  THEOREM item, and has every attempt ending in the print-timeout line is TRANSPARENT to the failed-read count: it neither
+  increments nor resets it. Every other read is counted as A6.1 fixed it. The change is the only diff, built red-first with three
+  arms (three theorem timeouts in a row do not halt · three U2-def failures in a row do halt · a theorem timeout between two
+  failed U1 reads and a third does not reset the count, so that set halts). Its sha256/16 is posted before the first read it governs, and it
+  governs only after this addendum merges. **A6.4's "a reader that breaks outright still stops the set within 3 reads" is false
+  as written.** The true form: a breakage stops the set at its third consecutive NON-EXEMPT failed read. A breakage that shows only
+  as theorem-item print timeouts runs on, at about 1 h per such read under (A), until the next U1 or U2-def read fails, and theorem
+  items are 92 of 323 draws.
+- **H3 · A6.3's "each row from the resume names its cause in `status`" is false at the object:** the harness writes no cause. The
+  cause is classed by the lead's scorer (`o90_rowr_score.py`) from the `out/*.FAIL-*.json` records. A read is a print timeout only if
+  EVERY attempt's `stderr_tail` carries the timeout line. The A6.5 rescue count (reads with a print-timeout attempt that later
+  answered, per kind × arm) is printed by the same scorer from the same records, never stated by hand: at 16 reads, U2-theorem
+  a0 0/2 · a5 1/1.
+- **H4 · Declared:** a read that spans a stop and a resume can take more than two attempts. Read 14 took one before the 11:19 stop and
+  one after it. A6.7's restart killed read 15's first attempt about 1 s in, and it left no record. Read 15 then ran fresh.
+- **H5 · A6.7's "first START reading minus its last" is wrong and is replaced:** the set's spend is the SUM OF DROPS between
+  consecutive readings over every reading of the set in time order (`START-POOL` lines and `POOL` lines, all processes), which is
+  an upper bound. First-minus-last would go negative across the weekly reset (2026-10-30 21:59:49Z), which row R will cross.
+
+**A6.11 · A6.5's decision quantity, and the named reading made exact (evidence's word, 10-25 04:43 PDT; systems' N1 N2).**
+evidence keeps the reading and the threshold and changes the quantity. (B) may be taken iff **323 · D / n > 12**, where **D = the
+NET drop from the set's first START reading to the named reading**, not S. S is an upper bound on spend, which is the right side
+for a HALT (A6.7 stays on S, dial 11) and the wrong side for a change of read form: it already holds 1 point of measured jitter
+(88 · 87 · 88), so one more ±1 tick would meet S's threshold, real or not. n = 50 ⇒ D ≥ 2; n = 65 ⇒ D ≥ 3. If the named reading falls
+after the weekly reset (2026-10-30T21:59:49Z), it decides on S and says so. Exact terms: **the set's readings begin at its first
+START after the A2.7 probe** (07:14:37Z, 88 %; the 07:04:06Z line is the probe's, systems' N1). **The named reading is the first
+scheduled `POOL` line logged after `reads.tsv` holds ≥ 50 data rows; a START line is never the named reading**, because a restart
+can be timed and a scheduled reading cannot. The lead's scorer computes S, D and the decision from `run.log` (systems' N2), and
+at 16 reads it prints S 1 · D 0.
