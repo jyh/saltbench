@@ -500,7 +500,9 @@ read", passed on 0–2 and so hid that it could never be met; withdrawn by its a
 **A3.4b · The truth axis is DECIDED per sentence (the PM's design word, 2026-10-25 00:47; it changes the design's §4 truth rule
 and goes to the Captain's ledger as one line).** Over all WRITTEN, scored sentences, confirmed-FALSE against not, a5 against a0:
 a one-sided Fisher exact test, p ≤ 0.10. **"Wrong on truth" if a5's confirmed-FALSE rate is significantly higher than a0's.**
-Confirmer noise does not amplify this reading, because it inflates both arms' per-sentence rates alike.
+Confirmer noise inflates both arms' per-sentence rates alike ONLY IF the readers flag the two arms at the same per-sentence
+rate, because the confirmer sees flagged sentences only. **So each arm's per-sentence FLAG rate, read 1 and read 2 separately, is
+printed beside this test's figure**, which makes that assumption checkable (the PM's INFO, 2026-10-25 00:48).
 
 **A3.5 · Halts.** Read 1: the set stops when its Gemini spend exceeds **6 points**, at any 503, or at 3 failed reads in a row (A2.6's
 machinery); a halted set is reported at the n it reached. **The Claude reads (A3.3, A3.4a, A3.4) share ONE cap: 3 points on
