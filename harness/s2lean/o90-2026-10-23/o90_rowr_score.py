@@ -222,8 +222,39 @@ def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
     obs, lo, hi = sgn(k5, n5, k0, n0), sgn(k5, n5 + t5, k0 + t0, n0 + t0), sgn(k5 + t5, n5 + t5, k0, n0 + t0)   # lo: a5 worst, a0 best
     word = {1: 'a5 > a0', -1: 'a5 < a0', 0: 'a5 = a0', None: 'n/a'}
     out.append('U2-theorem a5 vs a0: observed %s · a5-worst/a0-best %s · a5-best/a0-worst %s ⇒ %s (A6.8)' % (word[obs], word[lo], word[hi],
-               theorem_verdict(lo, hi) if b['a0'][2] + b['a5'][2] else 'no timed-out option to bound: the observed figure stands alone'))
+               theorem_verdict(lo, hi) if None in (lo, hi) or b['a0'][2] + b['a5'][2] else 'no timed-out option to bound: the observed figure stands alone'))   # M2
+    out += pool_lines(d, reads)
     return '\n'.join(out), complete
+
+
+RESET = '2026-10-30T21:59:49Z'   # the Gemini weekly reset every START-POOL row of the set names
+
+
+def pool_lines(d, reads):
+    """A6.10 H5 / A6.11 (evidence's word; systems' N1 N2): the set's pool readings from run.log, from its first START after the A2.7
+    probe; S = the sum of drops (the halt's upper bound), D = the first START's reading minus the current one (A6.5's decision).
+    A6.5's named reading is the first SCHEDULED `POOL` line logged after reads.tsv holds >= 50 data rows; a START line never is."""
+    p = os.path.join(d, 'run.log')
+    if not os.path.exists(p): return ['POOL: no run.log, so no reading (A6.11)']
+    rd, probe_end = [], None
+    for l in open(p, encoding='utf-8', errors='replace'):
+        ts = l.split(' ', 1)[0]
+        if ' PROBE END ' in l: probe_end = ts
+        m = __import__('re').search(r' (START|POOL) .*?weekly=(\d+)%', l)
+        if m: rd.append((ts, m.group(1), int(m.group(2))))
+    rd = [x for x in rd if probe_end is None or x[0] > probe_end]   # N1: the probe's START is not the set's
+    if not rd: return ['POOL: no reading of the set yet (A6.11)']
+    first = rd[0][2]; S = sum(max(0, a[2] - b[2]) for a, b in zip(rd, rd[1:]))
+    ends = sorted(r['end'] for r in reads)
+    out = ['POOL readings of the set (A6.11): ' + ' · '.join('%s %s %d%%' % (t[11:16], k, w) for t, k, w in rd)
+           + ' ⇒ S (sum of drops; the halt) %d · D (net, %d − %d; A6.5) %d' % (S, first, rd[-1][2], first - rd[-1][2])]
+    named = next(((t, w) for t, k, w in rd if k == 'POOL' and sum(e <= t for e in ends) >= 50), None)
+    if named is None: out.append('A6.5 named reading: not yet (the first POOL line after 50 data rows)')
+    else:
+        t, w = named; n = sum(e <= t for e in ends); after = t > RESET; x = S if after else first - w
+        out.append('A6.5 named reading %s: n %d · %s %d · 323·x/n = %.2f ⇒ (B) %s' % (t, n, 'S (after the reset, A6.11)' if after else 'D', x, 323.0 * x / n,
+                   'MAY be taken, in a new addendum' if 323 * x > 12 * n else 'is NOT available; (A) stands to the end of row R'))
+    return out
 
 
 def selftest():
@@ -328,6 +359,7 @@ def selftest():
         for k_ in (1, 2): json.dump({'stderr_tail': '[agy] print timeout after 30m0s with turn in progress'}, open(os.path.join(dd, 'out', 'read-13.FAIL-%d.json' % k_), 'w'))
         txto, _ = score(dd, s16, r16, (5, 4))
         arm('A6.3: a pre-A6.3 UNSCORED row is classed print timeout from its FAIL records, by cause × kind × arm', 'print timeout U2-theorem a0 1' in txto)
+        arm('M1 (systems): a read that timed out on every attempt is in the rescue denominator, never the numerator', 'U2-theorem a0 0/1' in txto)
         arm('A6.8: a timed-out theorem read makes the bounds disagree, and the comparison reads UNDECIDED',
             'U2-theorem a0: options scored 0 · correct 0 · observed n/a · timed-out options 8 · bound WRONG 0.0% · bound RIGHT 100.0%' in txto
             and 'a5-worst/a0-best a5 = a0 · a5-best/a0-worst a5 > a0 ⇒ UNDECIDED' in txto)
@@ -347,6 +379,26 @@ def selftest():
         txt3, _ = score(dd, s16, sha16(os.path.join(dd, 'frozen-specrec.tsv')), (5, 4))
         arm('a NEITHER-YES count off the registration is flagged beside the figures', '⚠️ U1 problems ALL 5 · NEITHER-YES 2, NOT the registered 5 · 4' in txt3)
         arm('fewer than 4 NEITHER-YES problems reads UNRESOLVABLE (A2.10 (c))', 'UNRESOLVABLE at this n: NEITHER-YES holds 2' in txt3)
+        dd = os.path.join(t, 'pool'); shutil.copytree(d, dd)
+        rows = open(os.path.join(dd, 'reads.tsv')).read().splitlines()
+        hdr = rows[0].split('\t'); body = [r.split('\t') + ['2026-10-25T%02d:00:00Z' % (8 + i // 10)] for i, r in enumerate(rows[1:])]
+        open(os.path.join(dd, 'reads.tsv'), 'w').write('\t'.join(hdr + ['end']) + '\n' + ''.join('\t'.join(r) + '\n' for r in body))
+        def runlog(lines): open(os.path.join(dd, 'run.log'), 'w').write(''.join(l + '\n' for l in lines))
+        runlog(['2026-10-25T07:04:06Z START model=m weekly=88% halt=12.0pt', '2026-10-25T07:13:52Z PROBE END weekly=88%',
+                '2026-10-25T07:14:37Z START model=m weekly=88% halt=12.0pt', '2026-10-25T07:30:00Z POOL weekly=87% spent_across_set=1pt',
+                '2026-10-25T07:40:00Z START model=m weekly=88% halt=11.0pt', '2026-10-25T09:30:00Z POOL weekly=87% spent_across_set=1pt'])
+        global_ = score(dd, s16, r16, (5, 4))[0]
+        arm('A6.11: S sums every drop, D is the net from the first START after the probe; the named reading needs n >= 50 (here 15: not yet)',
+            'S (sum of drops; the halt) 2 · D (net, 88 − 87; A6.5) 1' in global_ and 'A6.5 named reading: not yet' in global_ and '07:04 START' not in global_)
+        nm = lambda lines, n_: (runlog(lines), pool_lines(dd, [{'end': '2026-10-25T08:00:00Z'}] * n_))[1]
+        a1 = nm(['2026-10-25T07:14:37Z START model=m weekly=88% halt=12.0pt', '2026-10-25T09:00:00Z START model=m weekly=85% halt=11.0pt',
+                 '2026-10-25T09:30:00Z POOL weekly=86% spent_across_set=0pt'], 50)
+        arm('A6.11: a START line is never the named reading; the POOL line is, on D (n 50, D 2 ⇒ 12.92 ⇒ MAY)', 'named reading 2026-10-25T09:30:00Z: n 50 · D 2 · 323·x/n = 12.92 ⇒ (B) MAY' in a1[-1])
+        a2 = nm(['2026-10-25T07:14:37Z START model=m weekly=88% halt=12.0pt', '2026-10-25T09:30:00Z POOL weekly=87% spent_across_set=1pt',
+                 '2026-10-25T09:40:00Z POOL weekly=88% spent_across_set=1pt', '2026-10-25T09:50:00Z POOL weekly=87% spent_across_set=2pt'], 50)
+        arm('A6.11: decided on D, not S (jitter 88·87·88·87: S 2 but D 1 at the named reading ⇒ NOT available)', 'D 1 · 323·x/n = 6.46 ⇒ (B) is NOT available' in a2[-1])
+        a3 = nm(['2026-10-25T07:14:37Z START model=m weekly=88% halt=12.0pt', '2026-10-31T09:30:00Z POOL weekly=99% spent_across_set=0pt'], 50)
+        arm('A6.11: a named reading after the weekly reset decides on S and says so', 'S (after the reset, A6.11) 0' in a3[-1])
     print('SELFTEST %d/%d' % (ok, n))
     return ok == n
 
