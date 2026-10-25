@@ -213,6 +213,9 @@ inputs it names; `--check` proves this file still carries every one of them verb
 3. **§G5.** Nothing about Gemini 4 against 3.x in general, the other two effort variants, or the O29 qualification.
 4. **TRUNCATED-ROW and EMPTY-TURN counts** are printed by arm because both are arm-correlated readings in this campaign (A6, A7). No ZF
    row carries a cause for an empty turn (A6.1).
+5. **No token figure is reported here.** The chain's per-leg §G2 reads carry them; on the bus, 4 of the 251 §G2 posts parsed read the
+   meter control FAIL with sub-agent tokens UNMEASURED (Z028 · Z172 · Z240 · Z263). Any token figure quoted from this set carries that
+   beside it. No rate in this file reads a token.
 """
 
 
