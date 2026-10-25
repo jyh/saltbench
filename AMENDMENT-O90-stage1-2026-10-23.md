@@ -561,3 +561,17 @@ leg (b)'s PLAIN-scored planted count. All 89 are presented to the confirmer, eac
 false-positive rate on the 45 TRUE is the gate's input (A3.4a)**; its recall is reported on the 42 `mut_true = NO`, and the 2
 `mut_true = YES` are reported apart, since a mutant a reader judged still true is not a planted falsehood. (The PM's design word,
 bus 2026-10-25 02:24, on bench's recommendation; `o90_truthreads.py calib` reports exactly this.)
+**A5.2 · No item shares a session with its own mutant, and every session is mixed (systems' B2; the PM's crossed split, bus
+2026-10-25 02:33).** Each problem is two confirmer sessions: A = its TRUE items of odd pair index K and its PLANTED items of even K;
+B = the complement. A TRUE-only session is not used: every item in it arrives "judged false" and is true, so a confirmer that holds
+back across a whole session would pull the false-positive rate DOWN, the gate-passing direction. 15 problems ⇒ 30 sessions, under
+the one cap.
+**A5.3 · The USD guard is DERIVED, never typed (systems' M2; the PM's word).** The cap of record stays A3.5's **3 POINTS**, and all
+three Claude sets (read 2, this calibration, the confirmer) append to ONE meter. After the first 2 metered reads (A3.5's > 0.5-point
+halt stands on them), bench registers USD per point — that window's metered USD against that window's point reading — in one
+appended line; **the USD guard is 3 × that rate, and no read past the first 2 runs until that line exists** (the driver refuses).
+**A5.4 · A confirmer halt is declared like a read halt (systems' M4; the PM's word).** An artifact the confirmer's set did not reach
+is written `confirmed = HALTED` (a fourth value beside yes · no · UNSCORED), and it **leaves the A3.4b denominator whole**, its OK and
+flagged sentences together, so a confirm halt cannot push one arm's rate down where it stopped; the unreached artifacts are counted
+per arm on the verdict line. A read counts as failed once, after its retry (systems' M1), and a merge refuses a FALSE that a given
+confirmations file never saw (M3).

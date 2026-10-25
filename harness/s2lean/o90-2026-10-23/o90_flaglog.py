@@ -9,7 +9,8 @@ One TSV row per (sentence, read). Columns, in order, all required:
   reader     the read's id (a session id)         mechanism   gemini | claude      (the reader's model family)
   verdict    OK | FALSE | UNSCORED | HALTED       (FALSE = the reader says the sentence is false of its Lean; UNSCORED = the
              read did not parse; HALTED = only the halt writes it, for a sentence its set did not reach — ADDENDUM 4)
-  confirmer  the third read's id, or -            confirmed   yes | no | UNSCORED | -   (- unless verdict is FALSE)
+  confirmer  the third read's id, or -            confirmed   yes | no | UNSCORED | HALTED | -   (- unless verdict is FALSE;
+             HALTED = the confirmer's set halted before this artifact, ADDENDUM 5 A5.4)
 Rules (each a refusal): a reader or confirmer is never the author (never equals b_episode); the confirmer is never the
 reader; a FALSE carries a confirmer and yes|no|UNSCORED; an OK, UNSCORED or HALTED carries - and -; one row per (b_episode,
 sentence, reader); one sentence_sha256 per (b_episode, sentence).
@@ -51,8 +52,8 @@ def load(f, pop):
         if d["verdict"] not in ("OK", "FALSE", "UNSCORED", "HALTED"): raise SystemExit("REFUSE line %d: verdict %r" % (n, d["verdict"]))
         if d["reader"] == d["b_episode"] or d["confirmer"] == d["b_episode"]: raise SystemExit("REFUSE line %d: a read by the author" % n)
         if d["verdict"] == "FALSE":
-            if d["confirmer"] in ("-", "") or d["confirmed"] not in ("yes", "no", "UNSCORED"):
-                raise SystemExit("REFUSE line %d: a FALSE needs a confirmer and yes|no|UNSCORED" % n)
+            if d["confirmer"] in ("-", "") or d["confirmed"] not in ("yes", "no", "UNSCORED", "HALTED"):
+                raise SystemExit("REFUSE line %d: a FALSE needs a confirmer and yes|no|UNSCORED|HALTED" % n)
             if d["confirmer"] == d["reader"]: raise SystemExit("REFUSE line %d: the confirmer is the reader" % n)
             c = conf.setdefault((d["b_episode"], d["sentence"], d["confirmer"]), d["confirmed"])
             if c != d["confirmed"]: raise SystemExit("REFUSE line %d: confirmer %r answered %s and %s for one sentence (L3)" % (n, d["confirmer"], c, d["confirmed"]))
@@ -91,19 +92,24 @@ def readings(rows, pop, halted=()):
         rs = by_s.get(k, [])
         # E1 (systems): a confirmed FALSE is a fact about the Lean, so it is decided FIRST, whatever another read failed to answer
         if any(r["verdict"] == "FALSE" and r["confirmed"] == "yes" for r in rs): state[k] = "FALSE"
-        elif not rs or any(r["verdict"] in ("UNSCORED", "HALTED") or r["confirmed"] == "UNSCORED" for r in rs): state[k] = "UNSCORED"
+        elif not rs or any(r["verdict"] in ("UNSCORED", "HALTED") or r["confirmed"] in ("UNSCORED", "HALTED") for r in rs): state[k] = "UNSCORED"
         else: state[k] = "OK"
+    # A5.4 (the PM's M4 word): an artifact the confirmer did not reach (any confirmed = HALTED) leaves the per-sentence
+    # denominator WHOLE, its OK sentences with its flagged ones, so a confirm halt cannot push one arm's rate down
+    unreached = {r["b_episode"] for r in rows if r["confirmed"] == "HALTED" and r["mechanism"] not in halted}
     axis = []
     for p_, a, e in sorted({(p["problem"], p["arm"], k[0]) for k, p in pop.items()}):
         ss = [v for k, v in state.items() if k[0] == e]
-        axis.append((p_, a, e, "no written prose" if not ss else "UNSCORED" if "UNSCORED" in ss else ss.count("FALSE")))
+        axis.append((p_, a, e, "no written prose" if not ss else "UNREACHED by the confirmer" if e in unreached
+                     else "UNSCORED" if "UNSCORED" in ss else ss.count("FALSE")))
     per = {}
     for scope in ("whole", "doc"):
         c = {a: [0, 0] for a in ("a0", "a5")}
         for k, v in state.items():
-            if v == "UNSCORED" or (scope == "doc" and not k[1].startswith("doc:")): continue
+            if v == "UNSCORED" or k[0] in unreached or (scope == "doc" and not k[1].startswith("doc:")): continue
             c[pop[k]["arm"]][0] += v == "FALSE"; c[pop[k]["arm"]][1] += 1
-        per[scope] = (c, fisher_greater(c["a5"][0], c["a5"][1], c["a0"][0], c["a0"][1]))
+        per[scope] = (c, fisher_greater(c["a5"][0], c["a5"][1], c["a0"][0], c["a0"][1]),
+                      {a: sum(1 for x in axis if x[1] == a and x[3] == "UNREACHED by the confirmer") for a in ("a0", "a5")})
     flag = collections.defaultdict(lambda: [0, 0])
     fa = collections.defaultdict(lambda: [0, 0])
     for r in rows:
@@ -125,9 +131,10 @@ def report(rows, pop, pop_sha, halted=()):
     for p, a, e, n in axis: print("  %s %s %s %s%s" % (p, a, e, n, "  <- carries a FALSE sentence" if isinstance(n, int) and n else ""))
     for a in ("a0", "a5"): print("  UNSCORED artifacts %s: %d · no written prose %d" % (a, sum(1 for x in axis if x[1] == a and x[3] == "UNSCORED"),
                                                                                   sum(1 for x in axis if x[1] == a and x[3] == "no written prose")))
-    for scope, (c, p) in per.items():
-        print("PER SENTENCE (%s): a5 %d / %d · a0 %d / %d confirmed FALSE of scored written sentences · one-sided Fisher p = %.4f%s"
-              % (scope, c["a5"][0], c["a5"][1], c["a0"][0], c["a0"][1], p, "".join(" · halted: %s" % m for m in sorted(halted))))
+    for scope, (c, p, un) in per.items():
+        print("PER SENTENCE (%s): a5 %d / %d · a0 %d / %d confirmed FALSE of scored written sentences · one-sided Fisher p = %.4f%s · "
+              "artifacts unreached by the confirmer a5 %d · a0 %d"
+              % (scope, c["a5"][0], c["a5"][1], c["a0"][0], c["a0"][1], p, "".join(" · halted: %s" % m for m in sorted(halted)), un["a5"], un["a0"]))
     print("FLAG RATE per sentence (mechanism, arm): FALSE flags / scored reads")
     for k in sorted(flag): print("  %-8s %-3s %d / %d" % (k[0], k[1], flag[k][0], flag[k][1]))
     print("FALSE FLAGS NOT CONFIRMED (mechanism, arm): not_confirmed / flags")
@@ -147,6 +154,11 @@ def selftest():
     rows = load(io.StringIO(good), pop); axis, per, flag, fa = readings(rows, pop)
     assert axis == [("31", "a0", "ep-b0", 0), ("31", "a5", "ep-b5", 1), ("32", "a5", "ep-c5", "UNSCORED")], axis
     assert per["whole"][0] == {"a0": [0, 1], "a5": [1, 2]} and per["doc"][0] == {"a0": [0, 1], "a5": [1, 1]}, per
+    # A5.4: a confirm halt on ep-b5 (confirmed HALTED) takes ep-b5 out of the per-sentence denominator WHOLE
+    # ep-b5 = one flagged sentence the confirmer never reached + one OK sentence; only the WHOLE-artifact rule drops the OK one
+    r6 = [list(x) for x in base]; r6[0][9] = "HALTED"; r6[1][7:] = ["OK", "-", "-"]
+    a6, p6, _, _ = readings(load(io.StringIO(H + "".join("\t".join(x) + "\n" for x in r6)), pop), pop)
+    assert a6[1][3] == "UNREACHED by the confirmer" and p6["whole"][0] == {"a0": [0, 1], "a5": [0, 0]} and p6["whole"][2]["a5"] == 1, (a6, p6)
     assert flag[("gemini", "a5")] == [2, 2] and flag[("gemini", "a0")] == [0, 1], flag
     assert fa[("gemini", "a5")] == [2, 1], fa
     assert abs(fisher_greater(5, 10, 0, 10) - 252 / 15504) < 1e-12, fisher_greater(5, 10, 0, 10)
