@@ -377,6 +377,11 @@ def selftest():
         r4_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
                               '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
         arm('an empty record refuses by name, not by a crash (L2)', r4_.returncode == 1 and 'empty or unreadable' in r4_.stdout + r4_.stderr)
+        mfresh = os.path.join(t, 'meter-fresh.tsv')
+        r5_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', os.path.join(t, 'r2-early'),
+                              '--cfg', t, '--client', stub, '--meter', mfresh, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
+        arm('a run refused before the window closes writes NO record, so the true reading is still accepted later (systems\' P1 on #404)',
+            r5_.returncode == 1 and 'before the first' in r5_.stdout + r5_.stderr and not os.path.exists(mfresh + '.points'))
         # G1 (systems): a later set's rows never count toward the first reads, so the guard does not move after confirm runs
         before = Meter(a7b.meter, 0, 2).first_usd(2); open(a7b.meter + '.RESUMED', 'w').write('')
         env('ok', 'c7c'); cmd_confirm(args(os.path.join(t, 'conf-g1'), meter=a7b.meter, flags=[r2rows], pause_after=2))
@@ -467,9 +472,9 @@ def main():
             except (IndexError, ValueError): raise SystemExit('REFUSE: %s is empty or unreadable (want "<points> <pause_after>")' % pf)
             if (rp, rw) != (a.points_at_pause, a.pause_after):
                 raise SystemExit('REFUSE: --points-at-pause %s over --pause-after %d, but %s records %s over %d' % (a.points_at_pause, a.pause_after, pf, rp, rw))
-        else: open(pf, 'w').write('%r %d\n' % (a.points_at_pause, a.pause_after))
         m = Meter(a.meter, 0, a.pause_after)
         if len(m.units()) < a.pause_after: raise SystemExit('REFUSE: --points-at-pause given before the first %d reads exist on the meter' % a.pause_after)
+        if not os.path.exists(pf): open(pf, 'w').write('%r %d\n' % (a.points_at_pause, a.pause_after))   # P1 (systems): written only once accepted
         rate = m.first_usd(a.pause_after) / a.points_at_pause; a.cap_usd = 3 * rate
         print('USD per point %.4f (%.4f USD over the first %d reads / %.3f points) · guard %.4f USD = 3 points'
               % (rate, m.first_usd(a.pause_after), a.pause_after, a.points_at_pause, a.cap_usd))
