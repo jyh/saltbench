@@ -552,3 +552,12 @@ choose AFTER the reads whose confirmed FALSEs count: driven, a complete set with
 a5 1 / 1 to 0 / 2 under `--halted`, at rc 0. **So `--halted m` refuses unless m's set carries at least one HALTED row, and a HALTED
 row of a mechanism not named with `--halted` refuses** (`o90_flaglog.py` at saltbench #401). The mark sits in the record that is
 scored, never in a receipt beside it.
+
+## ⚖️ ADDENDUM 5 — 2026-10-25: THE CALIBRATION'S ITEM SET (A3.4a). APPENDED; all text above untouched. Written before the calibration's first call.
+
+**A5.1 · A3.4a's "45 TRUE and 41 PLANTED" is a COUNT, not a set; the set is the file.** Stage 0 leg (b)'s `items.tsv` holds **89
+items: 45 TRUE and 44 PLANTED (42 judged still false by its `mut_true = NO`, 2 judged true anyway, `mut_true = YES`)**; the 41 was
+leg (b)'s PLAIN-scored planted count. All 89 are presented to the confirmer, each as "judged false". **The confirmer's
+false-positive rate on the 45 TRUE is the gate's input (A3.4a)**; its recall is reported on the 42 `mut_true = NO`, and the 2
+`mut_true = YES` are reported apart, since a mutant a reader judged still true is not a planted falsehood. (The PM's design word,
+bus 2026-10-25 02:24, on bench's recommendation; `o90_truthreads.py calib` reports exactly this.)
