@@ -17,7 +17,7 @@ retry). Every unit is PAUSED after the first --pause-after reads (A3.5's metered
          o90_truthreads.py confirm --population P --state S --flags LOG [--flags LOG2] --out D --cfg C [...]
          o90_truthreads.py merge   --flags LOG [--flags LOG2] [--confirmations D/confirmations.tsv] --out D   (no spend)
          o90_truthreads.py --selftest"""
-import argparse, collections, hashlib, json, math, os, re, subprocess, sys, tempfile
+import argparse, collections, hashlib, json, math, os, re, shutil, subprocess, sys, tempfile
 
 READ_PROMPT = ("Below is a Lean file written by an agent, then numbered sentences from that agent's documentation of it. For EACH "
                "sentence, say whether it is FALSE of this Lean file: it states something the file's definitions and theorems do not "
@@ -382,6 +382,21 @@ def selftest():
                               '--cfg', t, '--client', stub, '--meter', mfresh, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
         arm('a run refused before the window closes writes NO record, so the true reading is still accepted later (systems\' P1 on #404)',
             r5_.returncode == 1 and 'before the first' in r5_.stdout + r5_.stderr and not os.path.exists(mfresh + '.points'))
+        mq = os.path.join(t, 'meter-q1.tsv'); shutil.copy(a7b.meter, mq)
+        r6_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', os.path.join(t, 'r2-q1'),
+                              '--client', stub, '--meter', mq, '--expect-sha', psha, '--points-at-pause', '0.05'], capture_output=True, text=True)
+        r7_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', os.path.join(t, 'r2-q1b'),
+                              '--cfg', t, '--client', stub, '--meter', mq, '--expect-sha', '0' * 16, '--points-at-pause', '0.05'], capture_output=True, text=True)
+        arm('a run refused at the SET level (no --cfg; a wrong population sha) writes no record (systems\' Q1)',
+            r6_.returncode == 1 and '--cfg is required' in r6_.stdout + r6_.stderr and r7_.returncode == 1
+            and 'not the registered' in r7_.stdout + r7_.stderr and not os.path.exists(mq + '.points'))
+        r8_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', os.path.join(t, 'r2-q2'),
+                              '--cfg', t, '--client', stub, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
+        arm('--points-at-pause with no --meter refuses by name, not a TypeError (systems\' Q2)', r8_.returncode == 1 and '--meter is required' in r8_.stdout + r8_.stderr)
+        open(mq + '.points', 'w').write('0.5 2 junk\n')
+        r9_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', os.path.join(t, 'r2-p2'),
+                              '--cfg', t, '--client', stub, '--meter', mq, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
+        arm('a record with anything beside "<points> <pause_after>" refuses (systems\' P2)', r9_.returncode == 1 and 'empty or unreadable' in r9_.stdout + r9_.stderr)
         # G1 (systems): a later set's rows never count toward the first reads, so the guard does not move after confirm runs
         before = Meter(a7b.meter, 0, 2).first_usd(2); open(a7b.meter + '.RESUMED', 'w').write('')
         env('ok', 'c7c'); cmd_confirm(args(os.path.join(t, 'conf-g1'), meter=a7b.meter, flags=[r2rows], pause_after=2))
@@ -460,6 +475,13 @@ def main():
     ap.add_argument('--flags', action='append', default=[]); ap.add_argument('--model', default='claude-opus-5'); ap.add_argument('--client', default='claude')
     ap.add_argument('--points-at-pause', type=float); ap.add_argument('--pause-after', type=int, default=2)
     a = ap.parse_args(); os.makedirs(a.out, exist_ok=True)
+    # Q1/Q2 (systems on #404): every set-level refusal runs BEFORE the point record can be written, so no refused run leaves one
+    if a.set != 'merge':
+        for need in ('meter', 'cfg'):
+            if getattr(a, need) is None: raise SystemExit('REFUSE: --%s is required for a set that spends' % need.replace('_', '-'))
+        check_cfg(a.cfg)
+    if a.set in ('read2', 'confirm') and not a.expect_sha: raise SystemExit('REFUSE: --expect-sha (the registered population sha256/16) is required')
+    if a.set in ('read2', 'confirm'): load_pop(a.population, a.expect_sha)
     # A5.3 (systems' T1): the cap of record is 3 POINTS. The USD guard is DERIVED: the meter's own USD over the first metered reads,
     # divided by the pool's point reading over the same window (the one number the operator gives), times 3. Never a typed rate.
     a.cap_usd = float('inf')
@@ -468,7 +490,9 @@ def main():
         pf = a.meter + '.points'   # systems: the reading AND its window are RECORDED beside the meter; every later run must match both
         if os.path.exists(pf):
             rec = open(pf).read().split()
-            try: rp, rw = float(rec[0]), int(rec[1])
+            try:
+                if len(rec) != 2: raise ValueError(rec)   # P2 (systems): exactly "<points> <pause_after>", nothing beside it
+                rp, rw = float(rec[0]), int(rec[1])
             except (IndexError, ValueError): raise SystemExit('REFUSE: %s is empty or unreadable (want "<points> <pause_after>")' % pf)
             if (rp, rw) != (a.points_at_pause, a.pause_after):
                 raise SystemExit('REFUSE: --points-at-pause %s over --pause-after %d, but %s records %s over %d' % (a.points_at_pause, a.pause_after, pf, rp, rw))
@@ -478,11 +502,6 @@ def main():
         rate = m.first_usd(a.pause_after) / a.points_at_pause; a.cap_usd = 3 * rate
         print('USD per point %.4f (%.4f USD over the first %d reads / %.3f points) · guard %.4f USD = 3 points'
               % (rate, m.first_usd(a.pause_after), a.pause_after, a.points_at_pause, a.cap_usd))
-    if a.set != 'merge':
-        for need in ('meter', 'cfg'):
-            if getattr(a, need) is None: raise SystemExit('REFUSE: --%s is required for a set that spends' % need.replace('_', '-'))
-        check_cfg(a.cfg)
-    if a.set in ('read2', 'confirm') and not a.expect_sha: raise SystemExit('REFUSE: --expect-sha (the registered population sha256/16) is required')
     stop = {'read2': cmd_read2, 'calib': cmd_calib, 'confirm': cmd_confirm, 'merge': cmd_merge}[a.set](a)
     print('STOP %s' % stop if stop else 'DONE')
 
