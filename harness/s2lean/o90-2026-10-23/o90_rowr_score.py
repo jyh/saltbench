@@ -39,17 +39,38 @@ def load(d, sums16=SUMS16, specrec16=SPECREC16):
     for rel in ('u1/drawn.tsv', 'u2/items.tsv'):
         got = hashlib.sha256(open(os.path.join(fz, rel), 'rb').read()).hexdigest()
         if sums.get(rel) != got: refuse('frozen/%s does not match its SHA256SUMS line' % rel)
-    u1key = {r['item']: r['key'] for r in tsv(os.path.join(fz, 'u1', 'drawn.tsv'))}
+    drawn = tsv(os.path.join(fz, 'u1', 'drawn.tsv'))
+    u1key = {r['item']: r['key'] for r in drawn}; u1prob = {r['item']: r['problem'] for r in drawn}
     u2 = collections.defaultdict(dict)
-    for r in tsv(os.path.join(fz, 'u2', 'items.tsv')): u2[r['item']][int(r['position'])] = (r['option'], r['key'], r['episode'])
+    for r in tsv(os.path.join(fz, 'u2', 'items.tsv')):
+        u2[r['item']][int(r['position'])] = (r['option'], r['key'], r['episode']); u2meta[r['item']] = (r['problem'], r['arm'])
     spec = tsv(os.path.join(d, 'frozen-specrec.tsv'))
     draw = {r['seq']: r for r in tsv(os.path.join(d, 'draw.tsv'))}
     reads = tsv(os.path.join(d, 'reads.tsv'))
     opts = tsv(os.path.join(d, 'u2-options.tsv'))
-    return u1key, u2, spec, draw, reads, opts
+    return u1key, u2, spec, draw, reads, opts, u1prob
 
 
-def check(u1key, u2, draw, reads, opts):
+u2meta = {}
+
+
+def check(u1key, u2, draw, reads, opts, spec, u1prob):
+    # F1 (systems on #408): draw.tsv is the READER's file, so its arm/episode are joined to the FROZEN identities, and its
+    # population must be exactly the frozen one: each U2 item once; each drawn U1 item once per in_u1 artifact of its problem
+    u1art = collections.defaultdict(list)
+    for x in spec:
+        if x['in_u1'] == 'yes': u1art[x['problem']].append((x['episode'], x['arm']))
+    want = collections.Counter(('U2', it) for it in u2)
+    want.update(('U1', it, ep) for it, p in u1prob.items() for ep, _ in u1art.get(p, []))
+    got = collections.Counter(('U2', r['item']) if r['kind'] == 'U2' else ('U1', r['item'], r['episode']) for r in draw.values())
+    if got != want: refuse('draw.tsv is not the frozen population: %d missing, %d extra (e.g. %s)' % (sum((want - got).values()), sum((got - want).values()),
+                           sorted((want - got) | (got - want))[:2]))
+    for r in draw.values():
+        if r['kind'] == 'U2':
+            idt = {(ep, u2meta[r['item']][0], u2meta[r['item']][1]) for (_, _, ep) in u2[r['item']].values()}
+            if idt != {(r['episode'], r['problem'], r['arm'])}: refuse('draw seq %s U2 %s says %s %s %s, items.tsv freezes %s' % (r['seq'], r['item'], r['episode'], r['problem'], r['arm'], sorted(idt)))
+        elif (r['episode'], r['arm']) not in u1art.get(r['problem'], []) or u1prob.get(r['item']) != r['problem']:
+            refuse('draw seq %s U1 %s says %s %s %s, which is not an in_u1 artifact of its problem in the frozen specrec' % (r['seq'], r['item'], r['episode'], r['problem'], r['arm']))
     seen = set()
     for r in reads:
         dr = draw.get(r['seq'])
@@ -70,28 +91,37 @@ def check(u1key, u2, draw, reads, opts):
             if (o['item'], o['episode']) != (r['item'], r['episode']): refuse('u2-options seq %s names %s %s, its read %s %s' % (s, o['item'], o['episode'], r['item'], r['episode']))
             fr = u2[r['item']].get(int(o['position']))
             if fr is None or fr[0] != o['option'] or fr[2] != r['episode']: refuse('u2-options seq %s position %s is %s, items.tsv freezes %s' % (s, o['position'], o['option'], fr and fr[0]))
+        pos = [int(o['position']) for o in os_]   # F2 (systems): each frozen position exactly once
+        if sorted(pos) != sorted(u2[r['item']]): refuse('u2-options seq %s positions %s, items.tsv freezes %s' % (s, sorted(pos), sorted(u2[r['item']])))
     for r in reads:
         if r['kind'] == 'U2' and len(byseq.get(r['seq'], [])) != len(u2[r['item']]):
             refuse('U2 read seq %s carries %d option rows, items.tsv freezes %d' % (r['seq'], len(byseq.get(r['seq'], [])), len(u2[r['item']])))
     return byseq
 
 
+def plus10(acc):
+    """A2.10 (b): a5's accuracy is AT LEAST 10 points above a0's, exactly: 10·(k5·n0 − k0·n5) ≥ n5·n0."""
+    (k0, n0), (k5, n5) = acc['a0'], acc['a5']
+    return 10 * (k5 * n0 - k0 * n5) >= n5 * n0
+
+
 def pct(n, d): return '%.1f%%' % (100.0 * n / d) if d else 'n/a'
 
 
 def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
-    u1key, u2, spec, draw, reads, opts = load(d, sums16, specrec16)
-    byseq = check(u1key, u2, draw, reads, opts)
+    u2meta.clear(); u1key, u2, spec, draw, reads, opts, u1prob = load(d, sums16, specrec16)
+    byseq = check(u1key, u2, draw, reads, opts, spec, u1prob)
     complete = len(reads) == len(draw)
     halt = os.path.join(d, 'HALT') if os.path.exists(os.path.join(d, 'HALT')) else None
-    out = ['# O90 stage 1 row R, RE-SCORED by bench (o90_rowr_score.py), %s; the reader is not blind to the arm (A2.7)' % PHRASE,
+    over = ''.join(' ⚠️ %s OVERRIDDEN to %s (registered %s)' % (nm, v, reg) for nm, v, reg in (('SHA256SUMS', sums16, SUMS16), ('specrec', specrec16, SPECREC16)) if v != reg)   # L3
+    out = ['# O90 stage 1 row R, RE-SCORED by bench (o90_rowr_score.py), %s; the reader is not blind to the arm (A2.7)%s' % (PHRASE, over),
            '# inputs: reads.tsv %s · u2-options.tsv %s · draw.tsv %s · frozen/SHA256SUMS %s · frozen-specrec.tsv %s'
            % (sha16(os.path.join(d, 'reads.tsv')), sha16(os.path.join(d, 'u2-options.tsv')), sha16(os.path.join(d, 'draw.tsv')), sums16, specrec16),
            ('COMPLETE: %d of %d reads' % (len(reads), len(draw))) if complete else
            ('PARTIAL: %d of %d reads — NOT row R\'s score%s' % (len(reads), len(draw), '; HALT: ' + open(halt).read().strip() if halt else '; no HALT file'))]
     u1 = [r for r in reads if r['kind'] == 'U1']
     probs = sorted({r['problem'] for r in draw.values() if r['kind'] == 'U1'}, key=int)   # the drawn population, not the reads so far
-    yes_probs = {s['problem'] for s in spec if s['spec_recoverable'] == 'yes'}
+    yes_probs = {s['problem'] for s in spec if s['spec_recoverable'] == 'yes' and s['in_u1'] == 'yes'}   # M1 counts "on the 24 U1 artifacts"
     sub = [p for p in probs if p not in yes_probs]
     if (len(probs), len(sub)) != registered:
         out.append('⚠️ U1 problems ALL %d · NEITHER-YES %d, NOT the registered %d · %d (A2.10 C2, M1)' % ((len(probs), len(sub)) + registered))
@@ -117,18 +147,19 @@ def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
         out.append('  paired items %d: both right %d · a5 only %d · a0 only %d · neither %d' % (len(pr), sum(v['a0'] and v['a5'] for v in pr),
                    sum(v['a5'] and not v['a0'] for v in pr), sum(v['a0'] and not v['a5'] for v in pr), sum(not v['a0'] and not v['a5'] for v in pr)))
         if acc['a0'][1] and acc['a5'][1]:
-            diffs[name] = 100.0 * (acc['a5'][0] / acc['a5'][1] - acc['a0'][0] / acc['a0'][1])
-            out.append('  a5 − a0 accuracy %+.1f points (%s)' % (diffs[name], PHRASE))
+            diffs[name] = acc   # L1 (systems): the +10 test is exact integer cross-multiplication, never a float difference
+            out.append('  a5 − a0 accuracy %+.1f points (%s)' % (100.0 * (acc['a5'][0] / acc['a5'][1] - acc['a0'][0] / acc['a0'][1]), PHRASE))
     if len(sub) < 4: route = 'UNRESOLVABLE at this n: NEITHER-YES holds %d problems, fewer than 4 (A2.10 (c))' % len(sub)
     elif 'ALL' not in diffs or 'NEITHER-YES' not in diffs: route = 'NOT COMPUTABLE: an arm has no scored U1 read'
-    elif diffs['ALL'] >= 10 and diffs['NEITHER-YES'] >= 10: route = '+10 holds on ALL and on NEITHER-YES (A2.10 (b)): the U1 route condition is MET'
-    elif diffs['ALL'] >= 10: route = '+10 on ALL only: "U1 difference explained by recovered spec text; VOID not lifted by U1" (A2.10 (b))'
+    elif plus10(diffs['ALL']) and plus10(diffs['NEITHER-YES']): route = '+10 holds on ALL and on NEITHER-YES (A2.10 (b)): the U1 route condition is MET'
+    elif plus10(diffs['ALL']): route = '+10 on ALL only: "U1 difference explained by recovered spec text; VOID not lifted by U1" (A2.10 (b))'
     else: route = '+10 not reached on ALL: the U1 route condition is NOT MET'
     out.append('U1 ROUTE (a reading of A2.10 (b)/(c), deciding no VOID by itself): ' + route + ('' if complete else ' — PARTIAL set, not quotable'))
     keyed = {}
     for s, os_ in byseq.items():
         r = next(x for x in reads if x['seq'] == s)
         for o in os_:
+            keyed.setdefault((r['arm'], r['episode']), [])   # L2 (systems): an artifact read only UNSCORED is still listed
             if o['status'] != 'OK': continue
             fr = u2[r['item']][int(o['position'])]
             keyed.setdefault((r['arm'], r['episode']), []).append((o['verdict'] == 'USED') == (fr[1] == 'used'))
@@ -139,10 +170,10 @@ def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
         arts = sorted(e for (a, e) in keyed if a == arm)
         per = [(e, sum(keyed[(arm, e)]), len(keyed[(arm, e)])) for e in arts]
         n_ok, n_sc = sum(p[1] for p in per), sum(p[2] for p in per)
-        mean = sum(p[1] / p[2] for p in per) / len(per) if per else None
-        out.append('U2 %s: artifacts %d · options scored %d · UNSCORED options %d · POOLED accuracy %s · MEAN of per-artifact accuracy %s (%s)'
-                   % (arm, len(per), n_sc, unsc[arm], pct(n_ok, n_sc), '%.1f%%' % (100 * mean) if mean is not None else 'n/a', PHRASE))
-        for e, k, n in per: out.append('  U2 %s %s: %d/%d = %s' % (arm, e, k, n, pct(k, n)))
+        sc_ = [p for p in per if p[2]]; mean = sum(p[1] / p[2] for p in sc_) / len(sc_) if sc_ else None
+        out.append('U2 %s: artifacts read %d (%d with a scored option) · options scored %d · UNSCORED options %d · POOLED accuracy %s · MEAN of per-artifact accuracy %s over %d (%s)'
+                   % (arm, len(per), len(sc_), n_sc, unsc[arm], pct(n_ok, n_sc), '%.1f%%' % (100 * mean) if mean is not None else 'n/a', len(sc_), PHRASE))
+        for e, k, n in per: out.append('  U2 %s %s: %d/%d = %s' % (arm, e, k, n, pct(k, n)) if n else '  U2 %s %s: 0 scored (every option UNSCORED)' % (arm, e))
     return '\n'.join(out), complete
 
 
@@ -184,7 +215,8 @@ def selftest():
     with tempfile.TemporaryDirectory() as t:
         d = build(t); s16, r16 = sha16(os.path.join(d, 'frozen', 'SHA256SUMS')), sha16(os.path.join(d, 'frozen-specrec.tsv'))
         txt, comp = score(d, s16, r16, (5, 4)); print(txt)
-        arm('the drawn problem counts match the registration given, so no warning prints', '⚠️' not in txt)
+        arm('the drawn problem counts match the registration given, so no count warning prints', 'NOT the registered' not in txt)
+        arm('a hash given on the command line is flagged OVERRIDDEN beside the registered one (L3)', 'SHA256SUMS OVERRIDDEN to %s (registered %s)' % (s16, SUMS16) in txt)
         arm('a complete set reads COMPLETE', comp and 'COMPLETE: 15 of 15' in txt)
         # a0 U1 on ALL: p1-a no(wrong) p1-b no(right) p2-a cannot tell(wrong) p3 no(right) p4 yes(right) p5 yes(wrong) = 3/6;
         # a5: p1-a p1-b p2-a p3-a p4-a all right, p5-a empty = 5/5 scored, 1 UNSCORED
@@ -194,7 +226,7 @@ def selftest():
         arm('NEITHER-YES drops the problem whose a5 artifact is spec_recoverable=yes', 'U1 NEITHER-YES: 4 problems 2 3 4 5' in txt)
         arm('the a5 − a0 difference on ALL is printed with the one-mechanism phrase', 'a5 − a0 accuracy +50.0 points (%s)' % PHRASE in txt)
         arm('U2 is per artifact (A2.4), pooled and mean beside it',
-            'U2 a5: artifacts 1 · options scored 16 · UNSCORED options 0 · POOLED accuracy 75.0% · MEAN of per-artifact accuracy 75.0%' in txt
+            'U2 a5: artifacts read 1 (1 with a scored option) · options scored 16 · UNSCORED options 0 · POOLED accuracy 75.0% · MEAN of per-artifact accuracy 75.0% over 1' in txt
             and 'U2 a0 e10: 6/8 = 75.0%' in txt)
         arm('the U1 route reads the registered rule on both sets', 'U1 ROUTE' in txt and 'MET' in txt)
         # mutations of the INPUT, each must refuse or degrade by name
@@ -205,9 +237,29 @@ def selftest():
         def edit(p, a, b): s = open(p).read(); assert a in s; open(p, 'w').write(s.replace(a, b, 1))
         arm('a read whose arm disagrees with draw.tsv refuses', mut(lambda dd: edit(os.path.join(dd, 'reads.tsv'), '1\tU1\tp1-a\te10\ta0', '1\tU1\tp1-a\te10\ta5'), 'draw.tsv says'))
         arm('an option at the wrong position refuses', mut(lambda dd: edit(os.path.join(dd, 'u2-options.tsv'), '\t2\tC2\t', '\t2\tC3\t'), 'items.tsv freezes'))
-        arm('a U2 read missing an option row refuses', mut(lambda dd: edit(os.path.join(dd, 'u2-options.tsv'), [l for l in open(os.path.join(dd, 'u2-options.tsv'))][-1], ''), 'carries 7 option rows'))
+        arm('a U2 read missing an option row refuses', mut(lambda dd: edit(os.path.join(dd, 'u2-options.tsv'), [l for l in open(os.path.join(dd, 'u2-options.tsv'))][-1], ''), 'positions [0, 1, 2, 3, 4, 5, 6]'))
         arm('an edited key file refuses against SHA256SUMS', mut(lambda dd: edit(os.path.join(dd, 'frozen', 'u1', 'drawn.tsv'), 'p1-a\tyes', 'p1-a\tno'), 'SHA256SUMS line'))
         arm('a SHA256SUMS that is not the registered one refuses', mut(lambda dd: open(os.path.join(dd, 'frozen', 'SHA256SUMS'), 'a').write('x  ./y\n'), 'not the registered'))
+        def drop(p, needle): keep = [l for l in open(p) if needle not in l]; open(p, 'w').write(''.join(keep))   # read, THEN truncate
+        def both(dd, a, b): edit(os.path.join(dd, 'draw.tsv'), a, b); edit(os.path.join(dd, 'reads.tsv'), a, b)
+        arm('F1: a U2 read relabelled to the other arm in draw AND reads refuses against items.tsv',
+            mut(lambda dd: both(dd, '\tU2\tp1-a0-d-0\te10\ta0', '\tU2\tp1-a0-d-0\te10\ta5'), 'items.tsv freezes'))
+        arm('F1: a U1 read relabelled to the other arm in draw AND reads refuses against the frozen specrec',
+            mut(lambda dd: both(dd, '\tU1\tp3-a\te30\ta0', '\tU1\tp3-a\te30\ta5'), 'not an in_u1 artifact'))
+        arm('F1: a draw that drops a frozen read refuses as not the frozen population',
+            mut(lambda dd: [drop(os.path.join(dd, f), '\tp5-a\te55\t') for f in ('draw.tsv', 'reads.tsv')],
+                'not the frozen population: 1 missing'))
+        arm('F2: a duplicated option position refuses even with the right row count',
+            mut(lambda dd: edit(os.path.join(dd, 'u2-options.tsv'), [l for l in open(os.path.join(dd, 'u2-options.tsv')) if l.startswith('13\t') and '\t7\tC7\t' in l][0],
+                                [l for l in open(os.path.join(dd, 'u2-options.tsv')) if l.startswith('13\t') and '\t6\tC6\t' in l][0]), 'positions'))
+        arm('L1: exactly +10 points is MET, by integer arithmetic (3/5 vs 1/2; 30/60 vs 20/50)',
+            plus10({'a0': (1, 2), 'a5': (3, 5)}) and plus10({'a0': (20, 50), 'a5': (30, 60)}) and not plus10({'a0': (1, 2), 'a5': (59, 100)}))
+        dd = os.path.join(t, 'l2'); shutil.copytree(d, dd)
+        o2 = open(os.path.join(dd, 'u2-options.tsv')).read().splitlines(True)
+        open(os.path.join(dd, 'u2-options.tsv'), 'w').write(''.join(l.replace('\tOK\n', '\tUNSCORED(missing)\n') if l.startswith('13\t') else l for l in o2))
+        txtl2, _ = score(dd, s16, r16, (5, 4))
+        arm('L2: an artifact read only UNSCORED is listed as 0 scored and leaves the MEAN\'s n, stated',
+            'U2 a0 e10: 0 scored (every option UNSCORED)' in txtl2 and 'U2 a0: artifacts read 1 (0 with a scored option)' in txtl2)
         dd = os.path.join(t, 'p'); shutil.copytree(d, dd); l = open(os.path.join(dd, 'reads.tsv')).read().splitlines(True); open(os.path.join(dd, 'reads.tsv'), 'w').write(''.join(l[:-1]))
         o = open(os.path.join(dd, 'u2-options.tsv')).read().splitlines(True); open(os.path.join(dd, 'u2-options.tsv'), 'w').write(''.join(o[:-8]))
         txt2, comp2 = score(dd, s16, r16, (5, 4))
