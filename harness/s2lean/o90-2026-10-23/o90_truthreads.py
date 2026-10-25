@@ -73,6 +73,14 @@ class Meter:
         self.rows.append([unit, session, str(cost), 'yes' if ok else 'no', served])
 
 
+def require_read2_first(meter, args):
+    """P1 (the PM): the metered first reads, and so the pause, belong to read 2 (A3.6 order). calib and confirm have no resume,
+    so they refuse to run on a meter that has not yet passed them."""
+    if len(meter.rows) < args.pause_after:
+        raise SystemExit('REFUSE: %s runs after read 2 (A3.6): the shared meter holds %d reads, fewer than the %d metered first'
+                         % (args.set, len(meter.rows), args.pause_after))
+
+
 def run_units(units, head, pat, args, meter, done):
     """units: [(unit_id, lean, [sentences])]. -> {unit_id: (session, {i: answer} or None)}; writes HALT.txt / PAUSED on a stop."""
     res, halt = {}, None
@@ -173,7 +181,7 @@ def cmd_confirm(args):
         for r in (l.rstrip('\n').split('\t') for l in open(f)):
             if r[0] != 'problem' and r[7] == 'FALSE': flagged[(r[2], r[3])] = True
     arts = artifacts(pop, args.state, only=set(flagged))
-    meter = Meter(args.meter, args.cap_usd, args.pause_after)
+    meter = Meter(args.meter, args.cap_usd, args.pause_after); require_read2_first(meter, args)
     res, stop = run_units([('%s/%s/%s' % k, lean, [r['text'] for r in rs]) for k, lean, rs in arts], CONF_PROMPT, CONF_ANS, args, meter, set())
     with open(os.path.join(args.out, 'confirmations.tsv'), 'w') as f:
         f.write('b_episode\tsentence\tconfirmer\tconfirmed\n')
@@ -223,7 +231,7 @@ def cmd_calib(args):
         side = 'A' if (it['key'] == 'TRUE') == (kk % 2 == 1) else 'B'
         by.setdefault((it['problem'], side), []).append(it)
     units = [('%s/%s' % k, leg_b_spec(args.specs, k[0], manifest), [it['sentence'] for it in its]) for k, its in by.items()]
-    meter = Meter(args.meter, args.cap_usd, args.pause_after)
+    meter = Meter(args.meter, args.cap_usd, args.pause_after); require_read2_first(meter, args)
     res, stop = run_units(units, CONF_PROMPT, CONF_ANS, args, meter, set())
     with open(os.path.join(args.out, 'calib.tsv'), 'w') as f:
         f.write('item_id\tkey\tmut_true\tconfirmer\tanswer\n')
@@ -296,9 +304,12 @@ def selftest():
         k = [0]
         def args(out, meter=None, **kw):
             os.makedirs(out, exist_ok=True); k[0] += 1
-            a = argparse.Namespace(population=pop, state=st, out=out, cfg=t, model='claude-opus-5', client=stub, cap_usd=100.0, pause_after=99,
+            a = argparse.Namespace(set='test', population=pop, state=st, out=out, cfg=t, model='claude-opus-5', client=stub, cap_usd=100.0, pause_after=99,
                                    flags=[], legb=None, specs=None, confirmations=None, expect_sha=psha,
-                                   meter=meter or os.path.join(t, 'meter-%d.tsv' % k[0])); a.__dict__.update(kw); return a
+                                   meter=meter or os.path.join(t, 'meter-%d.tsv' % k[0])); a.__dict__.update(kw)
+            # pause_after=0 models a set that runs after read 2 on a meter already past its metered, resumed first reads
+            if a.pause_after == 0: open(a.meter + '.RESUMED', 'w').write('')
+            return a
         def env(mode, cnt, cost='0.5'): os.environ.update(STUB_MODE=mode, STUB_COUNT=os.path.join(t, cnt), STUB_COST=cost)
         here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here); import o90_flaglog as F
         popd = F.load_population(open(pop))
@@ -330,6 +341,9 @@ def selftest():
         arm('a 503 on a failed read halts the set', s and s.startswith('503'))
         env('ok-503-text', 'c6b'); s = cmd_read2(args(os.path.join(t, 'r2f2')))
         arm('a successful answer that quotes 503 does not halt (L1)', s is None)
+        try: cmd_confirm(args(os.path.join(t, 'conf-first'), flags=[r2rows], pause_after=2)); p1 = False
+        except SystemExit as e: p1 = 'runs after read 2' in str(e)
+        arm('confirm and calib refuse before read 2 has passed the metered first reads (P1)', p1)
         env('ok', 'c7'); a7 = args(os.path.join(t, 'r2g'), pause_after=2); s = cmd_read2(a7); lg = [l for l in open(os.path.join(a7.out, 'rows.tsv'))][1:]
         arm('the set PAUSES after the metered first reads, writing no HALTED', s == 'PAUSED' and os.path.exists(a7.meter + '.PAUSED') and not any('HALTED' in l for l in lg))
         open(a7.meter + '.RESUMED', 'w').write('')
@@ -343,7 +357,7 @@ def selftest():
         n2 = sum(r[7] != 'HALTED' for r in rows_of(os.path.join(t, 'r2i', 'rows.tsv'))) if os.path.exists(os.path.join(t, 'r2i', 'rows.tsv')) else -1
         # set 1 spends 0.9 (3 reads at 0.3) under the 1.0 cap; only a SHARED meter halts set 2 after its first read
         arm('ONE meter across sets: a second set halts on the first set\'s spend (M2)', s1 is None and s and s.startswith('spend') and n2 == 2)
-        env('ok', 'c9'); oc = os.path.join(t, 'conf'); cmd_confirm(args(oc, flags=[r2rows])); c = rows_of(os.path.join(oc, 'confirmations.tsv'))
+        env('ok', 'c9'); oc = os.path.join(t, 'conf'); cmd_confirm(args(oc, flags=[r2rows], pause_after=0)); c = rows_of(os.path.join(oc, 'confirmations.tsv'))
         arm('the confirmer reads only FALSE-flagged written sentences, one session per artifact',
             sorted(r[1] + r[0] for r in c) == sorted(['doc:1e55', 'doc:1e50', 'explain:1e65']) and len({r[2] for r in c}) == 3)
         om2 = os.path.join(t, 'merge'); cmd_merge(args(om2, flags=[r2rows], confirmations=os.path.join(oc, 'confirmations.tsv')))
@@ -355,7 +369,7 @@ def selftest():
         try: cmd_merge(args(os.path.join(t, 'merge-m3'), flags=[r2rows, extra], confirmations=os.path.join(oc, 'confirmations.tsv'))); m3 = False
         except SystemExit as e: m3 = 'no confirmations row' in str(e)
         arm('a FALSE the given confirmations never saw REFUSES the merge (M3)', m3)
-        env('ok', 'c10', cost='0.5'); oc2 = os.path.join(t, 'conf2'); cmd_confirm(args(oc2, flags=[r2rows], cap_usd=0.4)); c = rows_of(os.path.join(oc2, 'confirmations.tsv'))
+        env('ok', 'c10', cost='0.5'); oc2 = os.path.join(t, 'conf2'); cmd_confirm(args(oc2, flags=[r2rows], cap_usd=0.4, pause_after=0)); c = rows_of(os.path.join(oc2, 'confirmations.tsv'))
         arm('an artifact the confirmer did not reach is confirmed HALTED, and HALT.txt says so (N5, A5.4)',
             any(r[3] == 'HALTED' for r in c) and 'leaves the A3.4b denominator' in open(os.path.join(oc2, 'HALT.txt')).read())
         om3 = os.path.join(t, 'merge-chalt'); cmd_merge(args(om3, flags=[r2rows], confirmations=os.path.join(oc2, 'confirmations.tsv')))
@@ -372,7 +386,7 @@ def selftest():
             '\t'.join(x) + '\n' for x in [['b1T', '5', 'p5-s1', 'TRUE', '-', '-', '-', 'a'], ['b1M', '5', 'p5-s1', 'PLANTED', 'op', 'b1T', 'NO', 'b'],
                                           ['b3T', '5', 'p5-s2', 'TRUE', '-', '-', '-', 'e'], ['b3M', '5', 'p5-s2', 'PLANTED', 'op', 'b3T', 'NO', 'f'],
                                           ['b2T', '6', 'p6-s1', 'TRUE', '-', '-', '-', 'c'], ['b2M', '6', 'p6-s1', 'PLANTED', 'op', 'b2T', 'YES', 'd']]))
-        env('ok', 'c11'); ocal = os.path.join(t, 'cal'); cmd_calib(args(ocal, legb=lb, specs=sp)); cal = rows_of(os.path.join(ocal, 'calib.tsv'))
+        env('ok', 'c11'); ocal = os.path.join(t, 'cal'); cmd_calib(args(ocal, legb=lb, specs=sp, pause_after=0)); cal = rows_of(os.path.join(ocal, 'calib.tsv'))
         sm = open(os.path.join(ocal, 'calib-summary.txt')).read()
         arm('calibration reads leg (b)\'s own specs, reports TRUE false positives and PLANTED recall by mut_true (B1)',
             'TRUE scored 3 · ' in sm and 'mut_true=NO scored 2' in sm and 'mut_true=YES scored 1' in sm)
@@ -381,7 +395,7 @@ def selftest():
         arm('the crossed split: no TRUE shares a session with its own mutant, and the sessions are MIXED (B2, A5.2)',
             sess['b1T'] != sess['b1M'] and sess['b3T'] != sess['b3M'] and sess['b2T'] != sess['b2M'] and mixed)
         open(os.path.join(sp, 'p6.lean'), 'a').write('-- edited\n')
-        try: cmd_calib(args(os.path.join(t, 'cal2'), legb=lb, specs=sp)); b1 = False
+        try: cmd_calib(args(os.path.join(t, 'cal2'), legb=lb, specs=sp, pause_after=0)); b1 = False
         except SystemExit as e: b1 = 'MANIFEST' in str(e)
         arm('a spec file that does not match MANIFEST refuses (B1)', b1)
         cf = os.path.join(t, 'cfg-hook'); os.makedirs(cf); json.dump({'hooks': {'SessionStart': [{}]}}, open(os.path.join(cf, 'settings.json'), 'w'))
