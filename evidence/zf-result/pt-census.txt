@@ -256,6 +256,13 @@ cells-l8zf-lru-flash-salt-r2-sc files=1 hits=0
 cells-l8zf-lru-flash-salt-r3-sc files=1 hits=0
 cells-l8zf-lzw-argon-plain-r1-sc files=1 hits=1
 cells-l8zf-lzw-argon-plain-r2-sc files=1 hits=1
-cells-l8zf-lzw-argon-plain-r3-sc files=1 hits=0
+cells-l8zf-lzw-argon-plain-r3-sc files=1 hits=1
+cells-l8zf-lzw-argon-salt-r1-sc files=1 hits=1
+cells-l8zf-lzw-argon-salt-r2-sc files=1 hits=1
+cells-l8zf-lzw-argon-salt-r3-sc files=1 hits=0
 cells-l8zf-lzw-flash-plain-r1-sc files=1 hits=0
 cells-l8zf-lzw-flash-plain-r2-sc files=1 hits=0
+cells-l8zf-lzw-flash-plain-r3-sc files=1 hits=0
+cells-l8zf-lzw-flash-salt-r1-sc files=1 hits=0
+cells-l8zf-lzw-flash-salt-r2-sc files=1 hits=0
+cells-l8zf-lzw-flash-salt-r3-sc files=1 hits=0

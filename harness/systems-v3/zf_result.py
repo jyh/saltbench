@@ -125,7 +125,13 @@ def pt_tally(pt_lines, p1_lines):
     return agg
 
 
-def derive(cells, hist, pt_lines, p1_lines):
+# Conditions CUT by ruling, whole (both arms, both models, n = 0): council 2026-10-20 ④, the conditional cut (AMENDMENT-ZF
+# ADDENDUM 4 rule 2), fired by bench's ADA line at Z264's harvest (2026-10-24 23:53). A cut pair is still printed SHORT with its
+# count; it does not hold the set PARTIAL. A cut condition with ANY harvested cell refuses: the ruling cut it whole.
+CUT = {('Paxos', 'gf', 'spec-change'): 'CUT by ruling, council 2026-10-20 ④ (ADA at Z264)'}
+
+
+def derive(cells, hist, pt_lines, p1_lines, cut=CUT):
     pop = population(hist)
     popset = set(pop)
     out = []
@@ -140,13 +146,17 @@ def derive(cells, hist, pt_lines, p1_lines):
         assert all(v == 1 for v in reps.values()), ('a replicate harvested twice', k, m, reps)
     fired = len(cells)
     short = [(k, m, len(by[(k, m)])) for k in pop for m in MODELS if len(by[(k, m)]) < N]
-    complete = not short
+    for k, m, n in short:
+        assert not (k[:3] in cut and n), ('a CUT condition has harvested cells', k, m, n)
+    complete = all(k[:3] in cut for k, m, n in short)
     out.append(f"POPULATION §G1: {len(pop)} conditions x {len(MODELS)} models x n = {N} = {len(pop) * len(MODELS) * N} cells; "
                f"harvested {fired}; SHORT {len(short)} condition-model pairs")
-    out.append('STATE: COMPLETE' if complete else
+    out.append(f"STATE: COMPLETE — every SHORT pair is a condition CUT by ruling ({len(short)} pairs)" if complete and short else
+               'STATE: COMPLETE' if complete else
                'STATE: PARTIAL — the set has not ended; every figure below is a reading of the cells harvested so far, not the RESULT')
     for k, m, n in short:
-        out.append(f"SHORT {m:5} {k[0]} {k[1]} {k[2]} {'salt-diet' if k[3] == 'salt' else 'plain'}: {n} of {N}")
+        out.append(f"SHORT {m:5} {k[0]} {k[1]} {k[2]} {'salt-diet' if k[3] == 'salt' else 'plain'}: {n} of {N}"
+                   + (f" ({cut[k[:3]]})" if k[:3] in cut else ''))
     out.append('TABLE problem | field | card | arm | ' + ' | '.join(f"{MODEL_NAME[m]} counted (excl.) · fired/scored/wedge/other" for m in MODELS)
                + ' | 3.x of record (HISTORICAL) gemini-3.1-pro-high · gemini-3.8-flash-high')
     for k in pop:
@@ -259,6 +269,14 @@ def selftest(cells, hist, pt, p1):
     body = render(base)
     t = ln(base, 'TOTAL')[0]; bad = body.replace(t, t.replace('COUNTED ', 'COUNTED 1', 1))
     arm('--check reddens on an edited figure', check_text(base, bad) != [] and check_text(base, body) == [])
+    # 9 the registered cut makes a set whose only SHORT pairs are cut read COMPLETE; with no cut the same set is PARTIAL
+    st_cut = ln(base, 'STATE')[0]; st_nocut = ln(derive(cells, hist, pt, p1, cut={})[0], 'STATE')[0]
+    only_cut = all('CUT by ruling' in l for l in ln(base, 'SHORT '))
+    arm('a set SHORT only on cut conditions is COMPLETE; without the cut it is PARTIAL',
+        (st_cut.startswith('STATE: COMPLETE') and st_nocut.startswith('STATE: PARTIAL')) if only_cut else st_cut.startswith('STATE: PARTIAL'))
+    # 10 a cut condition that holds a harvested cell refuses
+    c6 = [dict(r) for r in cells]; c6[0].update(problem='Paxos', field='gf', card='spec-change', rep='1')
+    arm('a cell in a CUT condition refuses', run(c6)[0].startswith('RAISED'))
     print(f"SELFTEST {ok}/{n}")
     return ok == n
 
