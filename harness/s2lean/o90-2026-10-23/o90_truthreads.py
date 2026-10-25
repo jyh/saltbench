@@ -99,6 +99,8 @@ def run_units(units, head, pat, args, meter, done, label):
                 return res, 'PAUSED'
             if args.cap_usd == float('inf'):
                 raise SystemExit('REFUSE: no read past the first %d until the pool\'s point reading over them is given (A5.3): pass --points-at-pause' % args.pause_after)
+            pr = getattr(args, 'points_record', None)   # S1 (systems on #406): written just before the first call that USES the reading,
+            if pr and not os.path.exists(pr[0]): open(pr[0], 'w').write(pr[1])   # so no refusal before it, in main or in a set, leaves one
         ans, session = None, 'no-session'
         for attempt in (1, 2):
             ok, text, cost, session, t503, served = call(args.client, args.cfg, args.model, render(lean, sents, head))
@@ -362,6 +364,7 @@ def selftest():
         env('garbage-first', 'c7b'); a7b = args(os.path.join(t, 'r2g2'), pause_after=2); s = cmd_read2(a7b)
         arm('the pause counts READS, not attempts: a retried first read still leaves room for a second (systems\' L)',
             s == 'PAUSED' and len(Meter(a7b.meter, 0, 2).units()) == 2 and len(rows_of(a7b.meter)) == 3)
+        open(a7b.meter + '.RESUMED', 'w').write('')   # S1: the record is written at the reading's first USE, so this run must read past the pause
         r = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
                             '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
         exp = 'USD per point %.4f' % (Meter(a7b.meter, 0, 2).first_usd(2) / 0.5)
@@ -371,7 +374,7 @@ def selftest():
         r3_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
                               '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5', '--pause-after', '3'], capture_output=True, text=True)
         arm('the point reading AND its window are recorded; a different reading or a different window refuses (systems\' LOW, L1)',
-            open(a7b.meter + '.points').read().strip() == '0.5 2' and r2_.returncode == 1 and 'records 0.5 over 2' in r2_.stdout + r2_.stderr
+            os.path.exists(a7b.meter + '.points') and open(a7b.meter + '.points').read().strip() == '0.5 2' and r2_.returncode == 1 and 'records 0.5 over 2' in r2_.stdout + r2_.stderr
             and r3_.returncode == 1 and 'records 0.5 over 2' in r3_.stdout + r3_.stderr)
         open(a7b.meter + '.points', 'w').write('')
         r4_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
@@ -459,6 +462,13 @@ def selftest():
         try: cmd_calib(args(os.path.join(t, 'cal2'), legb=lb, specs=sp, pause_after=0)); b1 = False
         except SystemExit as e: b1 = 'MANIFEST' in str(e)
         arm('a spec file that does not match MANIFEST refuses (B1)', b1)
+        ms1 = os.path.join(t, 'meter-s1.tsv'); shutil.copy(a7b.meter, ms1); open(ms1 + '.RESUMED', 'w').write('')   # past its pause, resumed, no record
+        base = [sys.executable, os.path.abspath(__file__), 'calib', '--state', st, '--cfg', t, '--client', stub, '--meter', ms1, '--points-at-pause', '0.05']
+        rs1 = subprocess.run(base + ['--out', os.path.join(t, 'cal-s1'), '--legb', lb, '--specs', sp], capture_output=True, text=True)
+        rs1b = subprocess.run(base + ['--out', os.path.join(t, 'cal-s1b'), '--specs', sp], capture_output=True, text=True)
+        arm('a refusal INSIDE a set (a spec off its MANIFEST; no --legb) writes no record: it is written only before the first call that uses it (systems\' S1)',
+            rs1.returncode == 1 and 'MANIFEST' in rs1.stdout + rs1.stderr and rs1b.returncode == 1 and '--legb is required' in rs1b.stdout + rs1b.stderr
+            and 'Traceback' not in rs1b.stderr and not os.path.exists(ms1 + '.points'))
         cf = os.path.join(t, 'cfg-hook'); os.makedirs(cf); json.dump({'hooks': {'SessionStart': [{}]}}, open(os.path.join(cf, 'settings.json'), 'w'))
         try: check_cfg(cf); l2 = False
         except SystemExit as e: l2 = 'SessionStart' in str(e)
@@ -486,7 +496,7 @@ def main():
     a = ap.parse_args(); os.makedirs(a.out, exist_ok=True)
     # Q1/Q2 (systems on #404): every set-level refusal runs BEFORE the point record can be written, so no refused run leaves one
     if a.set != 'merge':
-        for need in ('meter', 'cfg'):
+        for need in ('meter', 'cfg') + (('legb', 'specs') if a.set == 'calib' else ()):
             if getattr(a, need) is None: raise SystemExit('REFUSE: --%s is required for a set that spends' % need.replace('_', '-'))
         check_cfg(a.cfg)
     if a.set in ('read2', 'confirm') and not a.expect_sha: raise SystemExit('REFUSE: --expect-sha (the registered population sha256/16) is required')
@@ -510,7 +520,7 @@ def main():
                 raise SystemExit('REFUSE: --points-at-pause %s over --pause-after %d, but %s records %s over %d' % (a.points_at_pause, a.pause_after, pf, rp, rw))
         m = Meter(a.meter, 0, a.pause_after)
         if len(m.units()) < a.pause_after: raise SystemExit('REFUSE: --points-at-pause given before the first %d reads exist on the meter' % a.pause_after)
-        if not os.path.exists(pf): open(pf, 'w').write('%r %d\n' % (a.points_at_pause, a.pause_after))   # P1 (systems): written only once accepted
+        a.points_record = (pf, '%r %d\n' % (a.points_at_pause, a.pause_after))   # P1/Q1/R1/S1 (systems): run_units writes it at first use
         rate = m.first_usd(a.pause_after) / a.points_at_pause; a.cap_usd = 3 * rate
         print('USD per point %.4f (%.4f USD over the first %d reads / %.3f points) · guard %.4f USD = 3 points'
               % (rate, m.first_usd(a.pause_after), a.pause_after, a.points_at_pause, a.cap_usd))
