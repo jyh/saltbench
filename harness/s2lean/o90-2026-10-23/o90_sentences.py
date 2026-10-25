@@ -5,7 +5,8 @@ Sources, per artifact (<state>/problem_<id>/<arm>/B.artifact/): `stageB.lean`'s 
 where present, `EXPLAIN.md`. Nothing else is prose for this axis: `--` line comments and Lean code are not read.
 Rules, in order (each one an arm of --selftest):
   1. EXPLAIN.md AND each doc comment's body: fenced code blocks (``` … ```) and heading lines (`#…`) are dropped; a bullet or
-     numbered-list marker is stripped and each list item starts a new sentence; a blank line ends a paragraph.
+     numbered-list marker is stripped and each list item starts a new sentence; a blank line ends a paragraph. A markdown
+     TABLE's header row and separator are dropped, and each body row is one piece, its cells joined by ` | ` (systems' D1).
   2. A paragraph or list item is split after `.`, `!` or `?` FOLLOWED BY WHITESPACE, except inside a backtick span (Lean's
      `xs[i]! ` stays whole) and after `i.e.` or `e.g.`; so dotted Lean names (`List.sum`) and decimals never split.
      Whitespace inside a sentence is collapsed to one space.
@@ -27,11 +28,20 @@ DOC = re.compile(r'/-[-!](.*?)-/', re.S)
 BULLET = re.compile(r'^\s*(?:[-*+]|\d+[.)])\s+')
 
 
+TABLE_SEP = re.compile(r'^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?\s*$')
+
+
 def pieces_of_explain(text):
     out, para, fence = [], [], False
+    lines = text.splitlines()
     def flush():
         if para: out.append(' '.join(para)); para.clear()
-    for line in text.splitlines():
+    for i, line in enumerate(lines):
+        if line.lstrip().startswith('|') and not fence:
+            flush()
+            nxt = lines[i + 1] if i + 1 < len(lines) else ''
+            if TABLE_SEP.match(line) or TABLE_SEP.match(nxt): continue   # the separator, and the header row above it
+            out.append(' | '.join(c.strip() for c in line.strip().strip('|').split('|'))); continue
         if line.strip().startswith('```'):
             flush(); fence = not fence; continue
         if fence: continue
@@ -131,6 +141,12 @@ def selftest():
           '- First item states one thing.\n- Second item states another thing! And a third.\n1. Numbered item is a sentence.\n'
           'Too short.\n\nValue 3.5 stays whole in this sentence.\n')
     k, dr = sentences(pieces_of_explain(ex))
+    tab = ('Intro line says the table follows.\n\n| lemma | what it states |\n|---|---|\n| `foo_le` | foo is at most bar here |\n'
+           '| `foo_pos` | foo is positive for all inputs |\n\nAfter the table comes this sentence.\n')
+    kt, _ = sentences(pieces_of_explain(tab))
+    arm('a table body row is one sentence; header and separator dropped (systems D1)',
+        kt == ['Intro line says the table follows.', '`foo_le` | foo is at most bar here', '`foo_pos` | foo is positive for all inputs',
+               'After the table comes this sentence.'])
     k2, _ = sentences(['Returns `xs[i]! + 1` for each i. It holds, i.e. the bound is tight here.'])
     arm('no split inside a backtick span or after i.e.', k2 == ['Returns `xs[i]! + 1` for each i.', 'It holds, i.e. the bound is tight here.'])
     arm('a heading line is dropped', not any('Heading' in s for s in k))

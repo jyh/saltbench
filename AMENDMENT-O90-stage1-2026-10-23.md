@@ -435,18 +435,21 @@ run; it is due by 2026-10-28. This addendum registers the sentence population, t
 halts and the order. The design governs (its §3 truth row and §4 "wrong on truth", [F7] [F8c]); the flag log is §7's.
 
 **A3.1 · The population, frozen.** Every prose sentence of the 47 scored stage-B artifacts (the 23 a0 and 24 a5 under the cell's
-state root, the same 47 that row R read), split by `harness/s2lean/o90-2026-10-23/o90_sentences.py` (sha256/16 152871ca1bef90fc;
-selftest 15/15; mutants of the split, code-fence, backtick/i.e., doc-comment-list and given rules each turn their own arm red).
+state root, the same 47 that row R read), split by `harness/s2lean/o90-2026-10-23/o90_sentences.py` (sha256/16 6c2092fefc4cd137;
+selftest 16/16; mutants of the split, code-fence, backtick/i.e., doc-comment-list and given rules each turn their own arm red, and
+the table rule's arm was red before the rule). A markdown table's header and separator are dropped and each BODY ROW is one
+sentence (systems' D1: a whole table had survived as one sentence, so one false row would have made ~10 claims one FALSE).
 Prose is `stageB.lean`'s doc comments (`/-- -/`, `/-! -/`) and `EXPLAIN.md`, each without fenced code and headings; a piece under
 3 words is dropped and counted. **A sentence present verbatim (whitespace-collapsed) in its problem's task view
 (`~/bench/o90/s2views/problem_<id>/`) is GIVEN** — the task's own docstring and test cases, copied into the artifact by both arms —
 **marked `given=yes`, kept in the file, and read by no one** (systems' B1, evidence concurring). Verbatim is a lower bound on
 copied text.
-At this freeze, on the run box (`~/bench-dry/o90-truth-sentences-2026-10-25-v2/sentences.tsv`, sha256/16 158ed108e78476de):
-**WRITTEN a0 39 (all in doc comments) · a5 877 (160 in doc comments, 717 in EXPLAIN.md); GIVEN a0 116 · a5 118; 64 pieces
+At this freeze, on the run box (`~/bench-dry/o90-truth-sentences-2026-10-25-v3/sentences.tsv`, sha256/16 334ac0b784d5dcc5):
+**WRITTEN a0 39 (all in doc comments) · a5 933 (160 in doc comments, 773 in EXPLAIN.md); GIVEN a0 116 · a5 118; 57 pieces
 dropped. 14 of the 23 a0 artifacts carry no written sentence.** The reads run on a byte-checked copy of that file, never a
-re-split. *(The first freeze, `…-2026-10-25/sentences.tsv` fc23f58ca8624c81 from script ccc3c4dd2b7881c9, counted 1,109
-sentences with the given text inside them and cut inline code; it is superseded and no read ran on it.)*
+re-split. *(Two earlier freezes are superseded and no read ran on either: `…-2026-10-25/` fc23f58ca8624c81 (script ccc3c4dd2b7881c9,
+1,109 sentences with the given text inside them and inline code cut), and `…-2026-10-25-v2/` 158ed108e78476de (script
+152871ca1bef90fc, a5 written 877, each table one sentence).)*
 
 **A3.2 · Read 1: Gemini, one read per artifact (PLAIN).** Reader `gemini-4-argon-high`, a fresh session per artifact, never the
 author. PLAIN only: R1 did not help in stage 0's legs (b) and (c) (evidence's LEGB-SCORE and legC-SCORE, 0 discordant pairs in
@@ -490,11 +493,11 @@ exists to remove.
 is run on stage 0 leg (b)'s CLEVER items (45 TRUE and 41 PLANTED, `~/.fleet/executors/gemini.runs/o90-stage0/legb`), each presented
 as "judged false" exactly as in the real set, with its problem's `problem_spec` as the Lean file, grouped per problem. Reported: the
 confirmer's false-positive rate on the 45 TRUE and its recall on the 41 PLANTED. **Why:** the per-artifact rule is amplified by
-that rate p, since P(an artifact carries >= 1 false confirmation) = 1 − (1 − p)^k, with k about 36.5 written sentences per a5 artifact and
-1.7 per a0 written (at p = 2 %: 52 % against 3 %; at the 6.4 % bound: 91 % against 11 %). Beside every per-artifact truth figure is printed the fire rate expected from confirmer
+that rate p, since P(an artifact carries >= 1 false confirmation) = 1 − (1 − p)^k, with k about 38.9 written sentences per a5 artifact and
+1.7 per a0 written (at p = 2 %: 54 % against 3 %; at the 6.4 % bound: 92 % against 11 %). Beside every per-artifact truth figure is printed the fire rate expected from confirmer
 noise alone at the 95 % upper bound of the measured rate (0 of 45 bounds it at 6.4 %). **The per-artifact rule is read as a verdict ONLY IF
-the a5 noise-only fire rate at the calibration's 95 % upper bound is at most 25 %.** That needs p ≤ 0.78 %, about 381 TRUE items at
-0 errors; at n = 45 even 0 of 45 bounds p at 6.4 % (a5 noise-only 91 %), so **at this n the per-artifact rule CANNOT pass: it is
+the a5 noise-only fire rate at the calibration's 95 % upper bound is at most 25 %.** That needs p ≤ 0.74 %, about 405 TRUE items at
+0 errors; at n = 45 even 0 of 45 bounds p at 6.4 % (a5 noise-only 92 %), so **at this n the per-artifact rule CANNOT pass: it is
 REPORTED, with its noise rate beside it, and it does not decide.** *(The PM's first gate here, "more than 2 of the 45 TRUE ⇒ not
 read", passed on 0–2 and so hid that it could never be met; withdrawn by its author, bus 2026-10-25 00:47, before any read.)*
 **A3.4b · The truth axis is DECIDED per sentence (the PM's design word, 2026-10-25 00:47; it changes the design's §4 truth rule
@@ -509,14 +512,14 @@ machinery); a halted set is reported at the n it reached. **The Claude reads (A3
 that pool** (the PM's). The first 2 Claude reads are metered; if they move the pool more than 0.5 point, the set halts and is
 re-priced before the rest. If they start after that pool's reset (Mon 2026-10-26 19:59), they move to the PM's second named pool under the same cap.
 
-**A3.6 · Order.** (1) the copy of `sentences.tsv` checked against 158ed108e78476de · (2) a 2-read LIMIT probe of A3.2, never
+**A3.6 · Order.** (1) the copy of `sentences.tsv` checked against 334ac0b784d5dcc5 · (2) a 2-read LIMIT probe of A3.2, never
 scored · (3) the 33 reads, written as flag-log rows with `verdict` OK or FALSE · (3b) read 2's 33 reads (A3.3), blind to read 1 ·
 (4a) the confirmer's calibration (A3.4a), posted before (4) · (4) the confirmer set over the UNION of FALSE rows · (5)
 `o90_flaglog.py` over the complete log, then the design's §4 truth rule on the paired problems. Read 1 runs on
 gemini's box after row R's reads end, never beside them.
 
 **A3.7 · Limits that ride with every truth figure.**
-1. **The axis is per artifact and the arms carry very different amounts of WRITTEN prose (a5 877 sentences, a0 39, about 22 to
+1. **The axis is per artifact and the arms carry very different amounts of WRITTEN prose (a5 933 sentences, a0 39, about 24 to
    1; doc comments alone a5 160, a0 39, printed beside the whole).** An artifact with more sentences has more chances to carry one
    false one, and **14 of 23 a0 artifacts carry no written sentence, so they cannot carry a false one at all**: the per-problem
    rule leans against a5 by construction. The ratio printed beside it is **false sentences per SENTENCE** (A3.7 3: the splitter is not a claim
@@ -528,5 +531,8 @@ gemini's box after row R's reads end, never beside them.
    call it OK or FALSE; only a confirmed FALSE counts.
 4. **The per-sentence test (A3.4b) pools sentences across artifacts**, so clustering within an artifact is ignored and its p is
    optimistic; a0 has 39 written sentences in 9 artifacts, so only a large difference can fire; and the calibration's Lean file
-   is the problem's `problem_spec`, shorter than a real `stageB.lean`, so its rates may not transfer.
+   is the problem's `problem_spec`, shorter than a real `stageB.lean`, so its rates may not transfer. **Sentence LENGTH differs
+   by arm (systems' D2): written words per sentence a0 15.5 · a5 27.9; on doc comments alone a0 15.5 · a5 19.2.** A longer
+   sentence may carry more chance of a false confirmation, which A3.4a's short items cannot test, so **the doc-comment-only
+   Fisher reading (a0 39 against a5 160) is printed beside the whole as the length-matched sensitivity read.**
 5. This addendum decides nothing about U1, U2 or U3, and its readings are not quoted until §4's truth rule has run on them.
