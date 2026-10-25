@@ -397,6 +397,15 @@ def selftest():
         r9_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', os.path.join(t, 'r2-p2'),
                               '--cfg', t, '--client', stub, '--meter', mq, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
         arm('a record with anything beside "<points> <pause_after>" refuses (systems\' P2)', r9_.returncode == 1 and 'empty or unreadable' in r9_.stdout + r9_.stderr)
+        mr1 = os.path.join(t, 'meter-r1.tsv'); shutil.copy(a7b.meter, mr1)   # past its first 2 reads, never RESUMED, no record
+        rr1 = subprocess.run([sys.executable, os.path.abspath(__file__), 'confirm', '--population', pop, '--state', st, '--out', os.path.join(t, 'conf-r1'),
+                              '--cfg', t, '--client', stub, '--meter', mr1, '--expect-sha', psha, '--flags', r2rows, '--points-at-pause', '0.05'], capture_output=True, text=True)
+        arm('a calib/confirm refused by the A3.6 order writes no record, so the true reading is still accepted after read 2 resumes (systems\' R1)',
+            rr1.returncode == 1 and 'past its pause' in rr1.stdout + rr1.stderr and not os.path.exists(mr1 + '.points'))
+        rr2 = subprocess.run([sys.executable, os.path.abspath(__file__), 'merge', '--out', os.path.join(t, 'merge-r2'), '--flags', r2rows,
+                              '--points-at-pause', '0.5'], capture_output=True, text=True)
+        arm('merge with --points-at-pause refuses by name, not a TypeError (systems\' R2)',
+            rr2.returncode == 1 and 'merge spends nothing' in rr2.stdout + rr2.stderr and 'Traceback' not in rr2.stderr)
         # G1 (systems): a later set's rows never count toward the first reads, so the guard does not move after confirm runs
         before = Meter(a7b.meter, 0, 2).first_usd(2); open(a7b.meter + '.RESUMED', 'w').write('')
         env('ok', 'c7c'); cmd_confirm(args(os.path.join(t, 'conf-g1'), meter=a7b.meter, flags=[r2rows], pause_after=2))
@@ -482,6 +491,9 @@ def main():
         check_cfg(a.cfg)
     if a.set in ('read2', 'confirm') and not a.expect_sha: raise SystemExit('REFUSE: --expect-sha (the registered population sha256/16) is required')
     if a.set in ('read2', 'confirm'): load_pop(a.population, a.expect_sha)
+    if a.set == 'merge' and a.points_at_pause is not None:   # R2 (systems on #405)
+        raise SystemExit('REFUSE: --points-at-pause prices a set that spends; merge spends nothing')
+    if a.set in ('calib', 'confirm'): require_read2_first(Meter(a.meter, 0, a.pause_after), a)   # R1 (systems on #405): the A3.6 order, before the record
     # A5.3 (systems' T1): the cap of record is 3 POINTS. The USD guard is DERIVED: the meter's own USD over the first metered reads,
     # divided by the pool's point reading over the same window (the one number the operator gives), times 3. Never a typed rate.
     a.cap_usd = float('inf')
