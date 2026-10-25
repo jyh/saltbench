@@ -239,7 +239,7 @@ def pool_lines(d, reads):
     rd, probe_end = [], None
     for l in open(p, encoding='utf-8', errors='replace'):
         ts = l.split(' ', 1)[0]
-        if ' PROBE END ' in l: probe_end = ts
+        if ' PROBE END ' in l and probe_end is None: probe_end = ts   # P2 (systems): the FIRST probe bounds the set
         m = __import__('re').search(r' (START|POOL) .*?weekly=(\d+)%', l)
         if m: rd.append((ts, m.group(1), int(m.group(2))))
     rd = [x for x in rd if probe_end is None or x[0] > probe_end]   # N1: the probe's START is not the set's
@@ -248,10 +248,11 @@ def pool_lines(d, reads):
     ends = sorted(r['end'] for r in reads)
     out = ['POOL readings of the set (A6.11): ' + ' · '.join('%s %s %d%%' % (t[11:16], k, w) for t, k, w in rd)
            + ' ⇒ S (sum of drops; the halt) %d · D (net, %d − %d; A6.5) %d' % (S, first, rd[-1][2], first - rd[-1][2])]
-    named = next(((t, w) for t, k, w in rd if k == 'POOL' and sum(e <= t for e in ends) >= 50), None)
+    # P1 (systems): tick() logs POOL BEFORE its read's row is written, in the same second, so only rows ending strictly earlier count
+    named = next(((t, w) for t, k, w in rd if k == 'POOL' and sum(e < t for e in ends) >= 50), None)
     if named is None: out.append('A6.5 named reading: not yet (the first POOL line after 50 data rows)')
     else:
-        t, w = named; n = sum(e <= t for e in ends); after = t > RESET; x = S if after else first - w
+        t, w = named; n = sum(e < t for e in ends); after = t > RESET; x = S if after else first - w
         out.append('A6.5 named reading %s: n %d · %s %d · 323·x/n = %.2f ⇒ (B) %s' % (t, n, 'S (after the reset, A6.11)' if after else 'D', x, 323.0 * x / n,
                    'MAY be taken, in a new addendum' if 323 * x > 12 * n else 'is NOT available; (A) stands to the end of row R'))
     return out
@@ -397,6 +398,12 @@ def selftest():
         a2 = nm(['2026-10-25T07:14:37Z START model=m weekly=88% halt=12.0pt', '2026-10-25T09:30:00Z POOL weekly=87% spent_across_set=1pt',
                  '2026-10-25T09:40:00Z POOL weekly=88% spent_across_set=1pt', '2026-10-25T09:50:00Z POOL weekly=87% spent_across_set=2pt'], 50)
         arm('A6.11: decided on D, not S (jitter 88·87·88·87: S 2 but D 1 at the named reading ⇒ NOT available)', 'D 1 · 323·x/n = 6.46 ⇒ (B) is NOT available' in a2[-1])
+        a4 = nm(['2026-10-25T07:14:37Z START model=m weekly=88% halt=12.0pt', '2026-10-25T08:00:00Z POOL weekly=86% spent_across_set=2pt'], 50)
+        arm('P1 (systems): a POOL line in the SAME second as read 50\'s row was logged before that row, so it is not the named reading', 'not yet' in a4[-1])
+        a5 = nm(['2026-10-25T07:04:06Z START model=m weekly=90% halt=12.0pt', '2026-10-25T07:13:52Z PROBE END weekly=90%',
+                 '2026-10-25T07:14:37Z START model=m weekly=88% halt=12.0pt', '2026-10-25T07:20:00Z PROBE END weekly=87%',
+                 '2026-10-25T07:30:00Z POOL weekly=86% spent_across_set=2pt'], 1)
+        arm('P2 (systems): a later PROBE END never erases the set\'s earlier readings (the FIRST one bounds the probe)', 'D (net, 88 − 86; A6.5) 2' in a5[0])
         a3 = nm(['2026-10-25T07:14:37Z START model=m weekly=88% halt=12.0pt', '2026-10-31T09:30:00Z POOL weekly=99% spent_across_set=0pt'], 50)
         arm('A6.11: a named reading after the weekly reset decides on S and says so', 'S (after the reset, A6.11) 0' in a3[-1])
     print('SELFTEST %d/%d' % (ok, n))
