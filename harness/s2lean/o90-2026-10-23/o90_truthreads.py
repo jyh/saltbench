@@ -82,6 +82,8 @@ def require_read2_first(meter, args):
     if len(meter.units()) < args.pause_after:
         raise SystemExit('REFUSE: %s runs after read 2 (A3.6): the shared meter holds %d reads, fewer than the %d metered first'
                          % (args.set, len(meter.units()), args.pause_after))
+    if args.pause_after and not os.path.exists(args.meter + '.RESUMED'):   # P1' (systems): read 2 PAUSED is not read 2 past its pause
+        raise SystemExit('REFUSE: %s runs after read 2 is past its pause (A3.6, A5.3): %s.RESUMED does not exist' % (args.set, args.meter))
 
 
 def run_units(units, head, pat, args, meter, done):
@@ -347,6 +349,10 @@ def selftest():
         try: cmd_confirm(args(os.path.join(t, 'conf-first'), flags=[r2rows], pause_after=2)); p1 = False
         except SystemExit as e: p1 = 'runs after read 2' in str(e)
         arm('confirm and calib refuse before read 2 has passed the metered first reads (P1)', p1)
+        envs = dict(os.environ); env('ok', 'c6c'); ap_ = args(os.path.join(t, 'r2-paused'), pause_after=2); cmd_read2(ap_)
+        try: cmd_confirm(args(os.path.join(t, 'conf-during-pause'), meter=ap_.meter, flags=[r2rows], pause_after=2)); p1b = False
+        except SystemExit as e: p1b = 'past its pause' in str(e)
+        arm('confirm refuses while read 2 is PAUSED, before writing anything (systems\' P1\')', p1b and not os.path.exists(os.path.join(t, 'conf-during-pause', 'confirmations.tsv')))
         env('ok', 'c7'); a7 = args(os.path.join(t, 'r2g'), pause_after=2); s = cmd_read2(a7); lg = [l for l in open(os.path.join(a7.out, 'rows.tsv'))][1:]
         arm('the set PAUSES after the metered first reads, writing no HALTED', s == 'PAUSED' and os.path.exists(a7.meter + '.PAUSED') and not any('HALTED' in l for l in lg))
         open(a7.meter + '.RESUMED', 'w').write('')
