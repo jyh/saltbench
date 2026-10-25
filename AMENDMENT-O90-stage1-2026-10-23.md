@@ -492,8 +492,15 @@ as "judged false" exactly as in the real set, with its problem's `problem_spec` 
 confirmer's false-positive rate on the 45 TRUE and its recall on the 41 PLANTED. **Why:** the per-artifact rule is amplified by
 that rate p, since P(an artifact carries >= 1 false confirmation) = 1 − (1 − p)^k, with k about 36.5 written sentences per a5 artifact and
 1.7 per a0 written (at p = 2 %: 52 % against 3 %; at the 6.4 % bound: 91 % against 11 %). Beside every per-artifact truth figure is printed the fire rate expected from confirmer
-noise alone at the 95 % upper bound of the measured rate (0 of 45 bounds it at 6.4 %). **If the confirmer confirms more than 2 of
-the 45 TRUE, the per-artifact rule is reported but NOT read as a verdict, and the per-sentence ratio carries the axis.**
+noise alone at the 95 % upper bound of the measured rate (0 of 45 bounds it at 6.4 %). **The per-artifact rule is read as a verdict ONLY IF
+the a5 noise-only fire rate at the calibration's 95 % upper bound is at most 25 %.** That needs p ≤ 0.78 %, about 381 TRUE items at
+0 errors; at n = 45 even 0 of 45 bounds p at 6.4 % (a5 noise-only 91 %), so **at this n the per-artifact rule CANNOT pass: it is
+REPORTED, with its noise rate beside it, and it does not decide.** *(The PM's first gate here, "more than 2 of the 45 TRUE ⇒ not
+read", passed on 0–2 and so hid that it could never be met; withdrawn by its author, bus 2026-10-25 00:47, before any read.)*
+**A3.4b · The truth axis is DECIDED per sentence (the PM's design word, 2026-10-25 00:47; it changes the design's §4 truth rule
+and goes to the Captain's ledger as one line).** Over all WRITTEN, scored sentences, confirmed-FALSE against not, a5 against a0:
+a one-sided Fisher exact test, p ≤ 0.10. **"Wrong on truth" if a5's confirmed-FALSE rate is significantly higher than a0's.**
+Confirmer noise does not amplify this reading, because it inflates both arms' per-sentence rates alike.
 
 **A3.5 · Halts.** Read 1: the set stops when its Gemini spend exceeds **6 points**, at any 503, or at 3 failed reads in a row (A2.6's
 machinery); a halted set is reported at the n it reached. **The Claude reads (A3.3, A3.4a, A3.4) share ONE cap: 3 points on
@@ -517,4 +524,7 @@ gemini's box after row R's reads end, never beside them.
    leans toward the hypothesis under test.
 3. The sentence rule is a splitter, not a claim detector: a sentence that states nothing checkable is still read. A reader may
    call it OK or FALSE; only a confirmed FALSE counts.
-4. This addendum decides nothing about U1, U2 or U3, and its readings are not quoted until §4's truth rule has run on them.
+4. **The per-sentence test (A3.4b) pools sentences across artifacts**, so clustering within an artifact is ignored and its p is
+   optimistic; a0 has 39 written sentences in 9 artifacts, so only a large difference can fire; and the calibration's Lean file
+   is the problem's `problem_spec`, shorter than a real `stageB.lean`, so its rates may not transfer.
+5. This addendum decides nothing about U1, U2 or U3, and its readings are not quoted until §4's truth rule has run on them.
