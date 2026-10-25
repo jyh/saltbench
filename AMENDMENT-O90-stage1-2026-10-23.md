@@ -680,3 +680,14 @@ sentence above is left in place, and this one governs.**
 - **H5 · A6.7's "first START reading minus its last" is wrong and is replaced:** the set's spend is the SUM OF DROPS between
   consecutive readings over every reading of the set in time order (`START-POOL` lines and `POOL` lines, all processes), which is
   an upper bound. First-minus-last would go negative across the weekly reset (2026-10-30 21:59:49Z), which row R will cross.
+
+**A6.11 · A6.5's decision quantity, and the named reading made exact (evidence's word, 10-25 04:43 PDT; systems' N1 N2).**
+evidence keeps the reading and the threshold and changes the quantity. (B) may be taken iff **323 · D / n > 12**, where **D = the
+NET drop from the set's first START reading to the named reading**, not S. S is an upper bound on spend, which is the right side
+for a HALT (A6.7 stays on S, dial 11) and the wrong side for a change of read form: it already holds 1 point of measured jitter
+(88 · 87 · 88), so one more ±1 tick would meet S's threshold, real or not. n = 50 ⇒ D ≥ 2; n = 65 ⇒ D ≥ 3. If the named reading falls
+after the weekly reset (2026-10-30T21:59:49Z), it decides on S and says so. Exact terms: **the set's readings begin at its first
+START after the A2.7 probe** (07:14:37Z, 88 %; the 07:04:06Z line is the probe's, systems' N1). **The named reading is the first
+scheduled `POOL` line logged after `reads.tsv` holds ≥ 50 data rows; a START line is never the named reading**, because a restart
+can be timed and a scheduled reading cannot. The lead's scorer computes S, D and the decision from `run.log` (systems' N2), and
+at 16 reads it prints S 1 · D 0.
