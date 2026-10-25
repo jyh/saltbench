@@ -577,3 +577,48 @@ is written `confirmed = HALTED` (a fourth value beside yes · no · UNSCORED), a
 flagged sentences together, so a confirm halt cannot push one arm's rate down where it stopped; the unreached artifacts are counted
 per arm on the verdict line. A read counts as failed once, after its retry (systems' M1), and a merge refuses a FALSE that a given
 confirmations file never saw (M3).
+
+## ⚖️ ADDENDUM 6 — 2026-10-25: ROW R'S FAILED-READ COUNT, AND THE PRINT TIMEOUT ON U2 THEOREM ITEMS. APPENDED; all text above untouched. Written before any read it governs.
+
+*bench (lead). Row R stopped at 2026-10-25 11:19:21Z, 13 of 323 reads, on its "3 failed reads in a row" guard. Its reads run
+on the reader's box. Read there, read-only (gemini's harness `run-rowR.py`, its `reads.tsv`, `run.log` and `out/*.FAIL-*.json`).*
+
+**A6.1 · The stop was not an A2.6 halt.** A2.6 stops the set at "3 failed reads in a row", and A2.4 retries a read once before it
+is UNSCORED. The harness counted failed ATTEMPTS and did not reset the count when a read ended UNSCORED (systems, 10-25 11:2xZ).
+At 11:19:21Z the count read 3 from read 13's two attempts and read 14's first: one failed read plus one attempt. Under A2.6, no
+halt condition was met, so A2.6's "a halted set is reported at the n it reached" does not apply. The counter now counts READS,
+as A5.4 already says of the Claude sets ("a read counts as failed once, after its retry"). The fix is red-first in the reader's
+harness, its new sha256/16 is posted before the first resumed read, the stop file is kept under a dated name, and the set resumes
+from read 14 with both of its attempts. Nothing already read is re-read or re-scored.
+
+**A6.2 · What the failures are.** Every failed attempt so far is a U2 THEOREM item, in two classes:
+- **Print timeout.** agy's own stderr line reads `print timeout after 30m0s with turn in progress`; the turn ends ERROR with an
+  empty response. Reads 4 and 13 timed out on both attempts and are UNSCORED; read 14 timed out on its first.
+- **Turn ERROR with a parsed response, empty stderr.** Reads 3 (p128) and 7 (p73) failed this way and answered on their retry.
+No U1 read and no U2 def item has failed (7 reads). In `draw.tsv`, U2 theorem items are 92 of 323, balanced by arm (a0 45 · a5 47).
+
+**A6.3 · The score splits every UNSCORED read by cause and by kind × arm.** Each `reads.tsv` row written from the resume on names
+its cause in `status`: `UNSCORED(print timeout)` when every attempt ended in the timeout line, otherwise `UNSCORED(parse)`. The two
+rows already written (reads 4 and 13) are classed from their `out/*.FAIL-*.json` records; both are print timeouts. The score
+prints the UNSCORED count per cause × kind (U1 · U2-def · U2-theorem) × arm beside U2's accuracy. A timeout rate that differs by
+arm is reported as a finding about the reader, never absorbed into the accuracy.
+
+**A6.4 · A U2-theorem read UNSCORED by print timeout does not count toward the 3-in-a-row halt.** Any other UNSCORED read still
+counts: a U1 read, a U2-def read, or a U2-theorem read with any non-timeout failure. So a reader that breaks outright still stops
+the set within 3 reads. The 503 halt and the 12-point spend halt are unchanged. **Why:** theorem items are 92 of 323 draws, and
+2 of the 5 theorem reads that have ended timed out on both attempts (read 14 is undecided). At those rates, a simulation of the
+310 reads that remain puts the chance of three such reads in a row at 0.33 (timeout share 0.4) to 0.54 (share 0.5). Under A2.6
+that would END row R short on a difficulty class of item, not on a fault in the machinery.
+Its effect is on WHEN the set stops, never on how a read that answers is scored.
+
+**A6.5 · The retry after a print timeout: an arm left for the design's author.** (A) as A2.4 stands: a timed-out read is retried
+once. (B) no retry after a print timeout; the read is UNSCORED(print timeout) at once. Measured: both reads retried after a
+timeout (4, 13) timed out again, 0 of 2. Under (B), no outcome among the first 13 reads changes, and about 30 min of wall time is
+saved per timed-out theorem read (≈ 21 h over the ≈ 43 expected), at no spend. Against (B): n = 2 cannot show a retry never rescues
+a timeout, and (B) changes a registered read form partway through the set. **Until evidence's words are written here, (A)
+governs.** The 1800 s print timeout is NOT raised for any item: a cap changed partway through the set would split the set at
+the change (gemini's own (B) of 10-25, declined).
+
+**A6.6 · Limits.** The rates in A6.4 come from 13 reads. A6.4 is a stopping rule chosen after the set began. It is declared here
+and changes no scored read, but a reader of row R should know that the set ran under two counting rules: A2.6 as fixed by A6.1
+up to this addendum's merge, and A6.4 after it. Every figure stays "by one reader mechanism (Gemini)" (A2.8 rider 2).
