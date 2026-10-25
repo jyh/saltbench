@@ -141,5 +141,9 @@ inputs it names; `--check` proves this file still carries every one of them verb
   `evidence/zf-result/pt-census-p1.txt` — the A7.2 command and its phase-1 complement (`pt_census.sh`, `pt_census_p1.sh`), run on the
   run box after Z264 with no Z cell live.
 - `harness/systems-v3/RESULT-correctness-tables-v3-2026-10-01.md` — the 3.x historical column.
+- **The cut's figures (§3) have NO input in this repository.** They come from the lead's ADA tools (`project.py`, `cut.py` v7) and their
+  output at Z264, kept in the lead's working directory on the fleet's machine, and from bench's ADA line on the bus (2026-10-24 23:55);
+  the F2 re-price was driven from `project.py`'s own ratio and means. No figure in the code block depends on them, and `--check` does not
+  cover them.
 - Rulings on single legs that this table relies on: Z019's wedge (ADDENDUM 6, not re-fired); Z263, LANDED and scored PASS although its
   supervisor line read PERSIST-INDETERMINATE, which is the persistence probe's verdict and not the cell's (bench, bus 2026-10-24 22:56).
