@@ -13,7 +13,7 @@ retry). Every unit is PAUSED after the first --pause-after reads (A3.5's metered
   usage: o90_truthreads.py read2   --population P --state S --out D --cfg C [--model M] [--client X] [--cap-usd U] [--pause-after N]
          o90_truthreads.py calib   --legb ITEMS --specs <legb>/specs --out D --cfg C [...]
    every spending set takes --meter M (ONE file shared by all three: A3.5's one cap); past the metered first reads it needs
-   --usd-per-point (registered from them, A5.3; the guard is 3 x it); read2/confirm take --expect-sha
+   --points-at-pause P, the pool's reading over them: USD per point = the meter's own USD over them / P, the guard 3 x it (A5.3)
          o90_truthreads.py confirm --population P --state S --flags LOG [--flags LOG2] --out D --cfg C [...]
          o90_truthreads.py merge   --flags LOG [--flags LOG2] [--confirmations D/confirmations.tsv] --out D   (no spend)
          o90_truthreads.py --selftest"""
@@ -67,6 +67,9 @@ class Meter:
         self.rows = [l.rstrip('\n').split('\t') for l in open(path)][1:] if os.path.exists(path) else []
         self.fails = 0
     def spent(self): return sum(float(r[2]) for r in self.rows)
+    def units(self): return list(dict.fromkeys(r[0] for r in self.rows))   # systems' L: a READ is a unit, its retry is not another
+    def first_usd(self, n):
+        first = set(self.units()[:n]); return sum(float(r[2]) for r in self.rows if r[0] in first)
     def record(self, unit, session, cost, ok, served):
         if not os.path.exists(self.path): open(self.path, 'w').write('unit\tsession\tcost_usd\tok\tserved_model\n')
         open(self.path, 'a').write('%s\t%s\t%.6f\t%s\t%s\n' % (unit, session, cost, 'yes' if ok else 'no', served))
@@ -76,9 +79,9 @@ class Meter:
 def require_read2_first(meter, args):
     """P1 (the PM): the metered first reads, and so the pause, belong to read 2 (A3.6 order). calib and confirm have no resume,
     so they refuse to run on a meter that has not yet passed them."""
-    if len(meter.rows) < args.pause_after:
+    if len(meter.units()) < args.pause_after:
         raise SystemExit('REFUSE: %s runs after read 2 (A3.6): the shared meter holds %d reads, fewer than the %d metered first'
-                         % (args.set, len(meter.rows), args.pause_after))
+                         % (args.set, len(meter.units()), args.pause_after))
 
 
 def run_units(units, head, pat, args, meter, done):
@@ -88,12 +91,12 @@ def run_units(units, head, pat, args, meter, done):
         if uid in done: continue
         if halt: break
         if meter.spent() > args.cap_usd: halt = 'spend: %.2f USD passed the cap %.2f' % (meter.spent(), args.cap_usd); break
-        if len(meter.rows) >= args.pause_after:
+        if len(meter.units()) >= args.pause_after:
             if not os.path.exists(args.meter + '.RESUMED'):
-                open(args.meter + '.PAUSED', 'w').write('PAUSED after %d reads (A3.5): read the pool, register USD per point, touch %s.RESUMED\n' % (len(meter.rows), args.meter))
+                open(args.meter + '.PAUSED', 'w').write('PAUSED after %d reads (A3.5): read the pool, then re-run with --points-at-pause and touch %s.RESUMED\n' % (len(meter.units()), args.meter))
                 return res, 'PAUSED'
             if args.cap_usd == float('inf'):
-                raise SystemExit('REFUSE: no read past the first %d until USD per point is registered (A5.3): pass --usd-per-point' % args.pause_after)
+                raise SystemExit('REFUSE: no read past the first %d until the pool\'s point reading over them is given (A5.3): pass --points-at-pause' % args.pause_after)
         ans, session = None, 'no-session'
         for attempt in (1, 2):
             ok, text, cost, session, t503, served = call(args.client, args.cfg, args.model, render(lean, sents, head))
@@ -348,8 +351,15 @@ def selftest():
         arm('the set PAUSES after the metered first reads, writing no HALTED', s == 'PAUSED' and os.path.exists(a7.meter + '.PAUSED') and not any('HALTED' in l for l in lg))
         open(a7.meter + '.RESUMED', 'w').write('')
         try: cmd_read2(args(a7.out, meter=a7.meter, pause_after=2, cap_usd=float('inf'))); norate = False
-        except SystemExit as e: norate = 'USD per point' in str(e)
-        arm('no read past the metered first reads until USD per point is registered (A5.3)', norate)
+        except SystemExit as e: norate = 'point reading' in str(e)
+        arm('no read past the metered first reads until the pool\'s point reading is given (A5.3)', norate)
+        env('garbage-first', 'c7b'); a7b = args(os.path.join(t, 'r2g2'), pause_after=2); s = cmd_read2(a7b)
+        arm('the pause counts READS, not attempts: a retried first read still leaves room for a second (systems\' L)',
+            s == 'PAUSED' and len(Meter(a7b.meter, 0, 2).units()) == 2 and len(rows_of(a7b.meter)) == 3)
+        r = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
+                            '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
+        exp = 'USD per point %.4f' % (Meter(a7b.meter, 0, 2).first_usd(2) / 0.5)
+        arm('USD per point is computed from the meter\'s own first reads and the point reading, and printed (systems\' T1)', exp in r.stdout)
         s2 = cmd_read2(a7); lg = rows_of(os.path.join(a7.out, 'rows.tsv'))
         arm('a resumed set reads only what it had not read', s2 is None and len(lg) == 4 and len({r[3] + r[2] for r in lg}) == 4)
         env('ok', 'c8', cost='0.3'); shared = os.path.join(t, 'shared-meter.tsv')
@@ -421,10 +431,18 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument('set', choices=['read2', 'calib', 'confirm', 'merge'])
     for a in ('--population', '--state', '--out', '--cfg', '--legb', '--specs', '--confirmations', '--meter', '--expect-sha'): ap.add_argument(a)
     ap.add_argument('--flags', action='append', default=[]); ap.add_argument('--model', default='claude-opus-5'); ap.add_argument('--client', default='claude')
-    ap.add_argument('--usd-per-point', type=float); ap.add_argument('--pause-after', type=int, default=2)
+    ap.add_argument('--points-at-pause', type=float); ap.add_argument('--pause-after', type=int, default=2)
     a = ap.parse_args(); os.makedirs(a.out, exist_ok=True)
-    # A5.3: the cap of record is 3 POINTS; the USD guard is 3 x the rate registered from the first metered reads, never typed
-    a.cap_usd = 3 * a.usd_per_point if a.usd_per_point else float('inf')
+    # A5.3 (systems' T1): the cap of record is 3 POINTS. The USD guard is DERIVED: the meter's own USD over the first metered reads,
+    # divided by the pool's point reading over the same window (the one number the operator gives), times 3. Never a typed rate.
+    a.cap_usd = float('inf')
+    if a.points_at_pause is not None:
+        if a.points_at_pause <= 0: raise SystemExit('REFUSE: --points-at-pause must be > 0 (a window that moved the pool 0 points prices nothing)')
+        m = Meter(a.meter, 0, a.pause_after)
+        if len(m.units()) < a.pause_after: raise SystemExit('REFUSE: --points-at-pause given before the first %d reads exist on the meter' % a.pause_after)
+        rate = m.first_usd(a.pause_after) / a.points_at_pause; a.cap_usd = 3 * rate
+        print('USD per point %.4f (%.4f USD over the first %d reads / %.3f points) · guard %.4f USD = 3 points'
+              % (rate, m.first_usd(a.pause_after), a.pause_after, a.points_at_pause, a.cap_usd))
     if a.set != 'merge':
         for need in ('meter', 'cfg'):
             if getattr(a, need) is None: raise SystemExit('REFUSE: --%s is required for a set that spends' % need.replace('_', '-'))
