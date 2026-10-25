@@ -86,7 +86,7 @@ def require_read2_first(meter, args):
         raise SystemExit('REFUSE: %s runs after read 2 is past its pause (A3.6, A5.3): %s.RESUMED does not exist' % (args.set, args.meter))
 
 
-def run_units(units, head, pat, args, meter, done):
+def run_units(units, head, pat, args, meter, done, label):
     """units: [(unit_id, lean, [sentences])]. -> {unit_id: (session, {i: answer} or None)}; writes HALT.txt / PAUSED on a stop."""
     res, halt = {}, None
     for uid, lean, sents in units:
@@ -103,7 +103,7 @@ def run_units(units, head, pat, args, meter, done):
         for attempt in (1, 2):
             ok, text, cost, session, t503, served = call(args.client, args.cfg, args.model, render(lean, sents, head))
             got = parse(text, pat, len(sents)) if ok else {}
-            meter.record(uid, session, cost, ok and bool(got), served)
+            meter.record('%s:%s' % (label, uid), session, cost, ok and bool(got), served)   # G1: one id space per SET
             if t503: halt = '503 on %s' % uid; break
             if got: ans = got; break
         meter.fails = 0 if ans else meter.fails + 1   # M1: a READ fails once, after its retry
@@ -147,7 +147,7 @@ def cmd_read2(args):
     arts = artifacts(pop, args.state)
     done = existing_units(args.out)
     meter = Meter(args.meter, args.cap_usd, args.pause_after)
-    res, stop = run_units([('%s/%s/%s' % k, lean, [r['text'] for r in rs]) for k, lean, rs in arts], READ_PROMPT, READ_ANS, args, meter, done)
+    res, stop = run_units([('%s/%s/%s' % k, lean, [r['text'] for r in rs]) for k, lean, rs in arts], READ_PROMPT, READ_ANS, args, meter, done, 'read2')
     rows = []
     for k, lean, rs in arts:
         uid = '%s/%s/%s' % k
@@ -187,7 +187,7 @@ def cmd_confirm(args):
             if r[0] != 'problem' and r[7] == 'FALSE': flagged[(r[2], r[3])] = True
     arts = artifacts(pop, args.state, only=set(flagged))
     meter = Meter(args.meter, args.cap_usd, args.pause_after); require_read2_first(meter, args)
-    res, stop = run_units([('%s/%s/%s' % k, lean, [r['text'] for r in rs]) for k, lean, rs in arts], CONF_PROMPT, CONF_ANS, args, meter, set())
+    res, stop = run_units([('%s/%s/%s' % k, lean, [r['text'] for r in rs]) for k, lean, rs in arts], CONF_PROMPT, CONF_ANS, args, meter, set(), 'confirm')
     with open(os.path.join(args.out, 'confirmations.tsv'), 'w') as f:
         f.write('b_episode\tsentence\tconfirmer\tconfirmed\n')
         for k, lean, rs in arts:
@@ -237,7 +237,7 @@ def cmd_calib(args):
         by.setdefault((it['problem'], side), []).append(it)
     units = [('%s/%s' % k, leg_b_spec(args.specs, k[0], manifest), [it['sentence'] for it in its]) for k, its in by.items()]
     meter = Meter(args.meter, args.cap_usd, args.pause_after); require_read2_first(meter, args)
-    res, stop = run_units(units, CONF_PROMPT, CONF_ANS, args, meter, set())
+    res, stop = run_units(units, CONF_PROMPT, CONF_ANS, args, meter, set(), 'calib')
     with open(os.path.join(args.out, 'calib.tsv'), 'w') as f:
         f.write('item_id\tkey\tmut_true\tconfirmer\tanswer\n')
         for k, its in by.items():
@@ -366,6 +366,11 @@ def selftest():
                             '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
         exp = 'USD per point %.4f' % (Meter(a7b.meter, 0, 2).first_usd(2) / 0.5)
         arm('USD per point is computed from the meter\'s own first reads and the point reading, and printed (systems\' T1)', exp in r.stdout)
+        # G1 (systems): a later set's rows never count toward the first reads, so the guard does not move after confirm runs
+        before = Meter(a7b.meter, 0, 2).first_usd(2); open(a7b.meter + '.RESUMED', 'w').write('')
+        env('ok', 'c7c'); cmd_confirm(args(os.path.join(t, 'conf-g1'), meter=a7b.meter, flags=[r2rows], pause_after=2))
+        arm('the guard\'s first-reads USD is unchanged after confirm runs on the same meter (systems\' G1)', Meter(a7b.meter, 0, 2).first_usd(2) == before
+            and all(':' in r[0] for r in rows_of(a7b.meter)))
         s2 = cmd_read2(a7); lg = rows_of(os.path.join(a7.out, 'rows.tsv'))
         arm('a resumed set reads only what it had not read', s2 is None and len(lg) == 4 and len({r[3] + r[2] for r in lg}) == 4)
         env('ok', 'c8', cost='0.3'); shared = os.path.join(t, 'shared-meter.tsv')
