@@ -1,0 +1,231 @@
+#!/usr/bin/env python3
+"""o90_rowr_score.py — the lead's INDEPENDENT re-score of O90 stage 1's row R (AMENDMENT-O90-stage1 ADDENDUM 2, A2.3–A2.10).
+gemini's harness carries its own `--score`; this is a second mechanism over the same raw rows, written apart from it, so the
+figures posted to evidence are two scorers agreeing rather than one scorer's word (STATUS-bench item 13).
+Inputs (all read, none written): the reader's `reads.tsv` and `u2-options.tsv`, its `draw.tsv`, and the frozen keys
+`frozen/u1/drawn.tsv` · `frozen/u2/items.tsv` · `frozen-specrec.tsv`. `frozen/SHA256SUMS` and the specrec file must hash to the
+registered sha256/16 (A2.1, A2.10 M1), and every key file must match its SHA256SUMS line, or it refuses.
+Joins, each a refusal: every reads row equals its draw.tsv row on (seq, kind, item, episode, arm, problem); every u2-options row
+names its read's item and episode, and its option is the one items.tsv freezes at that position; an OK U2 read carries 8 option
+rows. A read set is COMPLETE when every draw.tsv seq has a reads row; otherwise it prints PARTIAL with the n reached and the
+reader's HALT file (if any) beside it, and nothing is quoted from a PARTIAL set as row R's score.
+Scoring (A2.3, A2.4, A2.10 Q3): U1 — yes/no against the kernel's key, `cannot tell` scored wrong and counted, no answer UNSCORED;
+on ALL problems drawn (draw.tsv; registered 12) and on the NEITHER-YES subset (registered 6) (problems where no artifact is spec_recoverable=yes), per arm, with accuracy
+over answered and the per-arm spec_recoverable counts beside it. U2 — accuracy PER ARTIFACT = correct options / scored options
+(A2.4's own definition), printed per artifact, and per arm both POOLED over options and the MEAN of artifacts.
+The U1 route (A2.10 (b)/(c)) is printed as a reading of its registered rule and nothing else: +10 points a5 over a0 on ALL and
+on NEITHER-YES; fewer than 4 NEITHER-YES problems is UNRESOLVABLE. It decides no VOID by itself (§4 has other conditions).
+Every figure is "by one reader mechanism (Gemini)" (A2.8 rider 2); the reader is not blind to the arm (A2.7).
+usage: o90_rowr_score.py <rowR dir> [--sums16 1629c1c3912b0e69] [--specrec16 00f1d80781af8607] · o90_rowr_score.py --selftest
+"""
+import collections, hashlib, os, shutil, sys, tempfile
+
+SUMS16, SPECREC16 = '1629c1c3912b0e69', '00f1d80781af8607'
+PHRASE = 'by one reader mechanism (Gemini)'
+
+
+def refuse(msg): raise SystemExit('REFUSE: ' + msg)
+def sha16(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()[:16]
+def tsv(p):
+    rows = [l.rstrip('\n').split('\t') for l in open(p, encoding='utf-8') if l.strip() and not l.startswith('#')]
+    return [dict(zip(rows[0], r)) for r in rows[1:]]
+
+
+def load(d, sums16=SUMS16, specrec16=SPECREC16):
+    fz = os.path.join(d, 'frozen')
+    if sha16(os.path.join(fz, 'SHA256SUMS')) != sums16: refuse('frozen/SHA256SUMS sha256/16 %s, not the registered %s' % (sha16(os.path.join(fz, 'SHA256SUMS')), sums16))
+    if sha16(os.path.join(d, 'frozen-specrec.tsv')) != specrec16: refuse('frozen-specrec.tsv sha256/16 %s, not the registered %s' % (sha16(os.path.join(d, 'frozen-specrec.tsv')), specrec16))
+    sums = {l.split()[1].lstrip('./'): l.split()[0] for l in open(os.path.join(fz, 'SHA256SUMS')) if l.strip()}
+    for rel in ('u1/drawn.tsv', 'u2/items.tsv'):
+        got = hashlib.sha256(open(os.path.join(fz, rel), 'rb').read()).hexdigest()
+        if sums.get(rel) != got: refuse('frozen/%s does not match its SHA256SUMS line' % rel)
+    u1key = {r['item']: r['key'] for r in tsv(os.path.join(fz, 'u1', 'drawn.tsv'))}
+    u2 = collections.defaultdict(dict)
+    for r in tsv(os.path.join(fz, 'u2', 'items.tsv')): u2[r['item']][int(r['position'])] = (r['option'], r['key'], r['episode'])
+    spec = tsv(os.path.join(d, 'frozen-specrec.tsv'))
+    draw = {r['seq']: r for r in tsv(os.path.join(d, 'draw.tsv'))}
+    reads = tsv(os.path.join(d, 'reads.tsv'))
+    opts = tsv(os.path.join(d, 'u2-options.tsv'))
+    return u1key, u2, spec, draw, reads, opts
+
+
+def check(u1key, u2, draw, reads, opts):
+    seen = set()
+    for r in reads:
+        dr = draw.get(r['seq'])
+        if dr is None: refuse('reads seq %s is not in draw.tsv' % r['seq'])
+        for c in ('kind', 'item', 'episode', 'arm', 'problem'):
+            if r[c] != dr[c]: refuse('reads seq %s %s=%s, draw.tsv says %s' % (r['seq'], c, r[c], dr[c]))
+        if r['seq'] in seen: refuse('reads seq %s appears twice' % r['seq'])
+        seen.add(r['seq'])
+        if r['kind'] == 'U1' and r['item'] not in u1key: refuse('U1 item %s has no frozen key' % r['item'])
+        if r['kind'] == 'U2' and r['item'] not in u2: refuse('U2 item %s has no frozen key' % r['item'])
+    byseq = collections.defaultdict(list)
+    for o in opts: byseq[o['seq']].append(o)
+    rd = {r['seq']: r for r in reads}
+    for s, os_ in byseq.items():
+        r = rd.get(s)
+        if r is None or r['kind'] != 'U2': refuse('u2-options seq %s has no U2 read' % s)
+        for o in os_:
+            if (o['item'], o['episode']) != (r['item'], r['episode']): refuse('u2-options seq %s names %s %s, its read %s %s' % (s, o['item'], o['episode'], r['item'], r['episode']))
+            fr = u2[r['item']].get(int(o['position']))
+            if fr is None or fr[0] != o['option'] or fr[2] != r['episode']: refuse('u2-options seq %s position %s is %s, items.tsv freezes %s' % (s, o['position'], o['option'], fr and fr[0]))
+    for r in reads:
+        if r['kind'] == 'U2' and len(byseq.get(r['seq'], [])) != len(u2[r['item']]):
+            refuse('U2 read seq %s carries %d option rows, items.tsv freezes %d' % (r['seq'], len(byseq.get(r['seq'], [])), len(u2[r['item']])))
+    return byseq
+
+
+def pct(n, d): return '%.1f%%' % (100.0 * n / d) if d else 'n/a'
+
+
+def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
+    u1key, u2, spec, draw, reads, opts = load(d, sums16, specrec16)
+    byseq = check(u1key, u2, draw, reads, opts)
+    complete = len(reads) == len(draw)
+    halt = os.path.join(d, 'HALT') if os.path.exists(os.path.join(d, 'HALT')) else None
+    out = ['# O90 stage 1 row R, RE-SCORED by bench (o90_rowr_score.py), %s; the reader is not blind to the arm (A2.7)' % PHRASE,
+           '# inputs: reads.tsv %s · u2-options.tsv %s · draw.tsv %s · frozen/SHA256SUMS %s · frozen-specrec.tsv %s'
+           % (sha16(os.path.join(d, 'reads.tsv')), sha16(os.path.join(d, 'u2-options.tsv')), sha16(os.path.join(d, 'draw.tsv')), sums16, specrec16),
+           ('COMPLETE: %d of %d reads' % (len(reads), len(draw))) if complete else
+           ('PARTIAL: %d of %d reads — NOT row R\'s score%s' % (len(reads), len(draw), '; HALT: ' + open(halt).read().strip() if halt else '; no HALT file'))]
+    u1 = [r for r in reads if r['kind'] == 'U1']
+    probs = sorted({r['problem'] for r in draw.values() if r['kind'] == 'U1'}, key=int)   # the drawn population, not the reads so far
+    yes_probs = {s['problem'] for s in spec if s['spec_recoverable'] == 'yes'}
+    sub = [p for p in probs if p not in yes_probs]
+    if (len(probs), len(sub)) != registered:
+        out.append('⚠️ U1 problems ALL %d · NEITHER-YES %d, NOT the registered %d · %d (A2.10 C2, M1)' % ((len(probs), len(sub)) + registered))
+    diffs = {}
+    for name, ps in (('ALL', probs), ('NEITHER-YES', sub)):
+        out.append('U1 %s: %d problems %s' % (name, len(ps), ' '.join(ps)))
+        acc = {}
+        for arm in ('a0', 'a5'):
+            u = [r for r in u1 if r['arm'] == arm and r['problem'] in ps]
+            sc = [r for r in u if r['answer'] in ('yes', 'no', 'cannot tell')]
+            right = [r for r in sc if r['answer'] == u1key[r['item']]]
+            ct = [r for r in sc if r['answer'] == 'cannot tell']
+            ans = [r for r in sc if r['answer'] != 'cannot tell']
+            srs = collections.Counter(s['spec_recoverable'] for s in spec if s['arm'] == arm and s['problem'] in ps and s['in_u1'] == 'yes')
+            acc[arm] = (len(right), len(sc))
+            out.append('  %s: reads %d · scored %d · correct %d · accuracy %s · cannot-tell %d (scored wrong) · accuracy over answered %s (%d) · '
+                       'UNSCORED %d · spec_recoverable yes %d partial %d no %d' % (arm, len(u), len(sc), len(right), pct(len(right), len(sc)), len(ct),
+                       pct(sum(r['answer'] == u1key[r['item']] for r in ans), len(ans)), len(ans), len(u) - len(sc), srs['yes'], srs['partial'], srs['no']))
+        pair = collections.defaultdict(dict)
+        for r in u1:
+            if r['problem'] in ps and r['answer'] in ('yes', 'no', 'cannot tell'): pair[r['item']][r['arm']] = r['answer'] == u1key[r['item']]
+        pr = [v for v in pair.values() if len(v) == 2]
+        out.append('  paired items %d: both right %d · a5 only %d · a0 only %d · neither %d' % (len(pr), sum(v['a0'] and v['a5'] for v in pr),
+                   sum(v['a5'] and not v['a0'] for v in pr), sum(v['a0'] and not v['a5'] for v in pr), sum(not v['a0'] and not v['a5'] for v in pr)))
+        if acc['a0'][1] and acc['a5'][1]:
+            diffs[name] = 100.0 * (acc['a5'][0] / acc['a5'][1] - acc['a0'][0] / acc['a0'][1])
+            out.append('  a5 − a0 accuracy %+.1f points (%s)' % (diffs[name], PHRASE))
+    if len(sub) < 4: route = 'UNRESOLVABLE at this n: NEITHER-YES holds %d problems, fewer than 4 (A2.10 (c))' % len(sub)
+    elif 'ALL' not in diffs or 'NEITHER-YES' not in diffs: route = 'NOT COMPUTABLE: an arm has no scored U1 read'
+    elif diffs['ALL'] >= 10 and diffs['NEITHER-YES'] >= 10: route = '+10 holds on ALL and on NEITHER-YES (A2.10 (b)): the U1 route condition is MET'
+    elif diffs['ALL'] >= 10: route = '+10 on ALL only: "U1 difference explained by recovered spec text; VOID not lifted by U1" (A2.10 (b))'
+    else: route = '+10 not reached on ALL: the U1 route condition is NOT MET'
+    out.append('U1 ROUTE (a reading of A2.10 (b)/(c), deciding no VOID by itself): ' + route + ('' if complete else ' — PARTIAL set, not quotable'))
+    keyed = {}
+    for s, os_ in byseq.items():
+        r = next(x for x in reads if x['seq'] == s)
+        for o in os_:
+            if o['status'] != 'OK': continue
+            fr = u2[r['item']][int(o['position'])]
+            keyed.setdefault((r['arm'], r['episode']), []).append((o['verdict'] == 'USED') == (fr[1] == 'used'))
+    unsc = collections.Counter()
+    for s, os_ in byseq.items():
+        r = next(x for x in reads if x['seq'] == s); unsc[r['arm']] += sum(o['status'] != 'OK' for o in os_)
+    for arm in ('a0', 'a5'):
+        arts = sorted(e for (a, e) in keyed if a == arm)
+        per = [(e, sum(keyed[(arm, e)]), len(keyed[(arm, e)])) for e in arts]
+        n_ok, n_sc = sum(p[1] for p in per), sum(p[2] for p in per)
+        mean = sum(p[1] / p[2] for p in per) / len(per) if per else None
+        out.append('U2 %s: artifacts %d · options scored %d · UNSCORED options %d · POOLED accuracy %s · MEAN of per-artifact accuracy %s (%s)'
+                   % (arm, len(per), n_sc, unsc[arm], pct(n_ok, n_sc), '%.1f%%' % (100 * mean) if mean is not None else 'n/a', PHRASE))
+        for e, k, n in per: out.append('  U2 %s %s: %d/%d = %s' % (arm, e, k, n, pct(k, n)))
+    return '\n'.join(out), complete
+
+
+def selftest():
+    ok = n = 0
+    def arm(name, cond):
+        nonlocal ok, n
+        n += 1; ok += bool(cond); print(('PASS ' if cond else 'FAIL ') + name)
+    def w(p, rows): os.makedirs(os.path.dirname(p), exist_ok=True); open(p, 'w').write(''.join('\t'.join(r) + '\n' for r in rows))
+    def build(t):
+        d = os.path.join(t, 'rowR'); fz = os.path.join(d, 'frozen')
+        w(os.path.join(fz, 'u1', 'drawn.tsv'), [['problem', 'item', 'key'], ['1', 'p1-a', 'yes'], ['1', 'p1-b', 'no'], ['2', 'p2-a', 'yes'], ['3', 'p3-a', 'no'],
+                                                ['4', 'p4-a', 'yes'], ['5', 'p5-a', 'no']])
+        u2rows = [['item', 'episode', 'problem', 'arm', 'position', 'option', 'key']]
+        for it, ep, p, a in (('p1-a0-d-0', 'e10', '1', 'a0'), ('p1-a5-d-0', 'e15', '1', 'a5'), ('p1-a5-d-1', 'e15', '1', 'a5')):
+            u2rows += [[it, ep, p, a, str(i), 'C%d' % i, 'used' if i < 4 else 'not-used'] for i in range(8)]
+        w(os.path.join(fz, 'u2', 'items.tsv'), u2rows)
+        open(os.path.join(fz, 'SHA256SUMS'), 'w').write(''.join('%s  ./%s\n' % (hashlib.sha256(open(os.path.join(fz, r), 'rb').read()).hexdigest(), r)
+                                                                for r in ('u1/drawn.tsv', 'u2/items.tsv')))
+        sp = [['episode', 'problem', 'arm', 'in_u1', 'has_explain', 'info_lines', 'recovered_lines', 'spec_recoverable']]
+        for p in '12345':
+            sp += [['e%s0' % p, p, 'a0', 'yes', 'no', '1', '0', 'no'], ['e%s5' % p, p, 'a5', 'yes', 'yes', '1', '1' if p == '1' else '0', 'yes' if p == '1' else 'no']]
+        w(os.path.join(d, 'frozen-specrec.tsv'), sp)
+        dr = [['seq', 'kind', 'item', 'episode', 'arm', 'problem']]; rd = [['seq', 'kind', 'item', 'episode', 'arm', 'problem', 'answer', 'status']]
+        ans = {('p1-a', 'a0'): 'no', ('p1-a', 'a5'): 'yes', ('p1-b', 'a0'): 'no', ('p1-b', 'a5'): 'no', ('p2-a', 'a0'): 'cannot tell', ('p2-a', 'a5'): 'yes',
+               ('p3-a', 'a0'): 'no', ('p3-a', 'a5'): 'no', ('p4-a', 'a0'): 'yes', ('p4-a', 'a5'): 'yes', ('p5-a', 'a0'): 'yes', ('p5-a', 'a5'): ''}
+        s = 0
+        for (it, a), v in ans.items():
+            s += 1; p = it[1]; dr.append([str(s), 'U1', it, 'e%s%s' % (p, a[1]), a, p]); rd.append([str(s), 'U1', it, 'e%s%s' % (p, a[1]), a, p, v, 'OK' if v else 'UNSCORED'])
+        op = [['seq', 'item', 'episode', 'position', 'option', 'verdict', 'status']]
+        for it, ep, a, wrong in (('p1-a0-d-0', 'e10', 'a0', 2), ('p1-a5-d-0', 'e15', 'a5', 0), ('p1-a5-d-1', 'e15', 'a5', 4)):
+            s += 1; dr.append([str(s), 'U2', it, ep, a, '1']); rd.append([str(s), 'U2', it, ep, a, '1', '', 'OK'])
+            for i in range(8):
+                v = 'USED' if i < 4 else 'NOT-USED'
+                if i < wrong: v = 'NOT-USED' if v == 'USED' else 'USED'
+                op.append([str(s), it, ep, str(i), 'C%d' % i, v, 'OK'])
+        w(os.path.join(d, 'draw.tsv'), dr); w(os.path.join(d, 'reads.tsv'), rd); w(os.path.join(d, 'u2-options.tsv'), op)
+        return d
+    with tempfile.TemporaryDirectory() as t:
+        d = build(t); s16, r16 = sha16(os.path.join(d, 'frozen', 'SHA256SUMS')), sha16(os.path.join(d, 'frozen-specrec.tsv'))
+        txt, comp = score(d, s16, r16, (5, 4)); print(txt)
+        arm('the drawn problem counts match the registration given, so no warning prints', '⚠️' not in txt)
+        arm('a complete set reads COMPLETE', comp and 'COMPLETE: 15 of 15' in txt)
+        # a0 U1 on ALL: p1-a no(wrong) p1-b no(right) p2-a cannot tell(wrong) p3 no(right) p4 yes(right) p5 yes(wrong) = 3/6;
+        # a5: p1-a p1-b p2-a p3-a p4-a all right, p5-a empty = 5/5 scored, 1 UNSCORED
+        arm('U1 a0 ALL: cannot tell is scored wrong and counted; accuracy over answered excludes it',
+            'a0: reads 6 · scored 6 · correct 3 · accuracy 50.0% · cannot-tell 1 (scored wrong) · accuracy over answered 60.0% (5)' in txt)
+        arm('U1 a5 ALL: an empty answer is UNSCORED, never guessed', 'a5: reads 6 · scored 5 · correct 5 · accuracy 100.0%' in txt and 'UNSCORED 1' in txt)
+        arm('NEITHER-YES drops the problem whose a5 artifact is spec_recoverable=yes', 'U1 NEITHER-YES: 4 problems 2 3 4 5' in txt)
+        arm('the a5 − a0 difference on ALL is printed with the one-mechanism phrase', 'a5 − a0 accuracy +50.0 points (%s)' % PHRASE in txt)
+        arm('U2 is per artifact (A2.4), pooled and mean beside it',
+            'U2 a5: artifacts 1 · options scored 16 · UNSCORED options 0 · POOLED accuracy 75.0% · MEAN of per-artifact accuracy 75.0%' in txt
+            and 'U2 a0 e10: 6/8 = 75.0%' in txt)
+        arm('the U1 route reads the registered rule on both sets', 'U1 ROUTE' in txt and 'MET' in txt)
+        # mutations of the INPUT, each must refuse or degrade by name
+        def mut(fn, expect):
+            dd = os.path.join(t, 'm'); shutil.rmtree(dd, ignore_errors=True); shutil.copytree(d, dd); fn(dd)
+            try: score(dd, s16, r16, (5, 4)); return False
+            except SystemExit as e: return expect in str(e)
+        def edit(p, a, b): s = open(p).read(); assert a in s; open(p, 'w').write(s.replace(a, b, 1))
+        arm('a read whose arm disagrees with draw.tsv refuses', mut(lambda dd: edit(os.path.join(dd, 'reads.tsv'), '1\tU1\tp1-a\te10\ta0', '1\tU1\tp1-a\te10\ta5'), 'draw.tsv says'))
+        arm('an option at the wrong position refuses', mut(lambda dd: edit(os.path.join(dd, 'u2-options.tsv'), '\t2\tC2\t', '\t2\tC3\t'), 'items.tsv freezes'))
+        arm('a U2 read missing an option row refuses', mut(lambda dd: edit(os.path.join(dd, 'u2-options.tsv'), [l for l in open(os.path.join(dd, 'u2-options.tsv'))][-1], ''), 'carries 7 option rows'))
+        arm('an edited key file refuses against SHA256SUMS', mut(lambda dd: edit(os.path.join(dd, 'frozen', 'u1', 'drawn.tsv'), 'p1-a\tyes', 'p1-a\tno'), 'SHA256SUMS line'))
+        arm('a SHA256SUMS that is not the registered one refuses', mut(lambda dd: open(os.path.join(dd, 'frozen', 'SHA256SUMS'), 'a').write('x  ./y\n'), 'not the registered'))
+        dd = os.path.join(t, 'p'); shutil.copytree(d, dd); l = open(os.path.join(dd, 'reads.tsv')).read().splitlines(True); open(os.path.join(dd, 'reads.tsv'), 'w').write(''.join(l[:-1]))
+        o = open(os.path.join(dd, 'u2-options.tsv')).read().splitlines(True); open(os.path.join(dd, 'u2-options.tsv'), 'w').write(''.join(o[:-8]))
+        txt2, comp2 = score(dd, s16, r16, (5, 4))
+        arm('a partial set prints PARTIAL with its n and marks the route not quotable', not comp2 and 'PARTIAL: 14 of 15' in txt2 and 'not quotable' in txt2)
+        dd = os.path.join(t, 'u'); shutil.copytree(d, dd)
+        edit(os.path.join(dd, 'frozen-specrec.tsv'), 'e25\t2\ta5\tyes\tyes\t1\t0\tno', 'e25\t2\ta5\tyes\tyes\t1\t1\tyes')
+        edit(os.path.join(dd, 'frozen-specrec.tsv'), 'e35\t3\ta5\tyes\tyes\t1\t0\tno', 'e35\t3\ta5\tyes\tyes\t1\t1\tyes')
+        txt3, _ = score(dd, s16, sha16(os.path.join(dd, 'frozen-specrec.tsv')), (5, 4))
+        arm('a NEITHER-YES count off the registration is flagged beside the figures', '⚠️ U1 problems ALL 5 · NEITHER-YES 2, NOT the registered 5 · 4' in txt3)
+        arm('fewer than 4 NEITHER-YES problems reads UNRESOLVABLE (A2.10 (c))', 'UNRESOLVABLE at this n: NEITHER-YES holds 2' in txt3)
+    print('SELFTEST %d/%d' % (ok, n))
+    return ok == n
+
+
+if __name__ == '__main__':
+    if sys.argv[1:] == ['--selftest']: sys.exit(0 if selftest() else 1)
+    if not sys.argv[1:]: print(__doc__); sys.exit(2)
+    a = sys.argv[1:]; kw = {}
+    if '--sums16' in a: kw['sums16'] = a[a.index('--sums16') + 1]
+    if '--specrec16' in a: kw['specrec16'] = a[a.index('--specrec16') + 1]
+    txt, comp = score(a[0], **kw); print(txt); sys.exit(0 if comp else 3)
