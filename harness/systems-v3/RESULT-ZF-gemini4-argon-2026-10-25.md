@@ -115,8 +115,15 @@ inputs it names; `--check` proves this file still carries every one of them verb
 
 # §3 · THE CUT (AMENDMENT-ZF ADDENDUM 4 rule 2; council 2026-10-20 ④)
 - Rule 2 asks the lead to project the finish and, if it passes 2026-10-27, to cut WHOLE condition pairs from the tail, reporting every short
-  condition as short. The Captain ruled the conditional cut at council 2026-10-20 ④: the set ran to the last LZW spec-change leg (Z264) and
-  the cut was read there.
+  condition as short. Council 2026-10-20 ④ (his "accept rec") SUPERSEDED the rule's timing and owner: rule 2 schedules the projection at
+  the 10-20 checkpoint and sends the cut to him as a pack ask; ④ made it CONDITIONAL, moved the decision to the start of the Paxos
+  spec-change condition, and gave it to the lead (one line to the helm either way), with the projection taken from Z's own legs. So the
+  set ran to the last LZW spec-change leg (Z264) and the cut was read there; no 10-20 checkpoint reading decides anything in this file.
+- ④ also asked that the two large Paxos flash legs (Z164 and Z168, both Paxos bf none salt-diet) go into the projection. They are not in
+  its per-leg price, which is built on gf-none legs because the 3.x spec-change ratio (4.371 for Paxos) is defined against gf-none; Z168
+  is inside the W100 factor window and Z164 in none. Re-priced with them (flash salt-diet's Paxos legs priced from its bf-none mean, which
+  includes both: 3,356 s against a gf-none mean of 4,297 s, so including them LOWERS the price), the condition needs 47.8 h of wall and
+  76.3 · 94.0 · 136.3 · 118.2 · 110.4 h elapsed across the five windows against 72.1 h: it still misses in every window, and the cut stands.
 - The reading at Z264's harvest (bench's ADA line on the bus, 2026-10-24 23:55): 12 legs remained, all Paxos gf spec-change (plain and
   salt-diet, both models), priced at 51.2 h of wall from Z's own Paxos gf-none wall times the 3.x spec-change ratio, since no Z Paxos
   spec-change leg had run. The elapsed/wall factor over the last 10 · 16 · 30 · 60 · 100 legs was 1.598 · 1.968 · 2.853 · 2.474 · 2.310,
