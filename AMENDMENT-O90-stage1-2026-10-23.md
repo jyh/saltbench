@@ -427,3 +427,62 @@ check, not be cut silently.
   holds 6.) The U3 route and the three "wrong" rules are untouched: U3 reads stage C's checker, not a reader.
 - **The live probe:** gemini's default stands: its 2-read probe is the first act of the Z265 hold (agy rotates the refresh token
   on a warm-up, so no read runs while a Z cell is live), posted before the 323 reads.
+
+## ⚖️ ADDENDUM 3 — 2026-10-25: THE TRUTH READS (A2.5's deferral). APPENDED; all text above untouched. Written before any truth read.
+
+**Why now.** A2.5 deferred the truth reads to their own addendum, and A2.8 rider 1 makes stage 1's reading INCOMPLETE until they
+run; it is due by 2026-10-28. This addendum registers the sentence population, the read form, the readers, the confirmer, the
+halts and the order. The design governs (its §3 truth row and §4 "wrong on truth", [F7] [F8c]); the flag log is §7's.
+
+**A3.1 · The population, frozen.** Every prose sentence of the 47 scored stage-B artifacts (the 23 a0 and 24 a5 under the cell's
+state root, the same 47 that row R read), split by `harness/s2lean/o90-2026-10-23/o90_sentences.py` (sha256/16 ccc3c4dd2b7881c9;
+selftest 11/11; mutants of the split rule and of the code-fence rule each red). Prose is `stageB.lean`'s doc comments (`/-- -/`,
+`/-! -/`) and `EXPLAIN.md` without its fenced code and headings; a piece under 3 words is dropped and counted.
+At this freeze, on the run box (`~/bench-dry/o90-truth-sentences-2026-10-25/sentences.tsv`, sha256/16 fc23f58ca8624c81):
+**1,109 sentences, a0 110 · a5 999; 42 pieces dropped.** The reads run on a byte-checked copy of that file, never a re-split.
+
+**A3.2 · Read 1: Gemini, one read per artifact (PLAIN).** Reader `gemini-4-argon-high`, a fresh session per artifact, never the
+author. PLAIN only: R1 did not help in stage 0's legs (b) and (c) (evidence's LEGB-SCORE and legC-SCORE, 0 discordant pairs in
+each). The prompt is exactly:
+> Below is a Lean file written by an agent, then numbered sentences from that agent's documentation of it. For EACH sentence,
+> say whether it is FALSE of this Lean file: it states something the file's definitions and theorems do not say, or contradict.
+> Answer one line per sentence, in the order given, exactly `<n>: OK` or `<n>: FALSE`.
+The Lean file is the artifact's whole `stageB.lean`; the sentences are its rows of `sentences.tsv` in file order. A missing,
+duplicated or unparseable line leaves THAT sentence UNSCORED, counted; a read with no parseable line is retried once, then
+UNSCORED. **47 reads.**
+
+**A3.3 · Read 2, the design's Claude reader: registered, not placed.** Same form as A3.2, a Claude session on an account with no
+shared context. It spends a Claude pool, so its placement is the PM's, and it does not run until the PM places it. Until then
+every truth figure is **"by one reader mechanism (Gemini)"** (A2.8 rider 2), and the miss rate a second read would catch is
+UNMEASURED.
+
+**A3.4 · The confirmer, at the Lean.** For each artifact with at least one FALSE flag, ONE fresh Claude session (never the
+author's episode, never the reader; `o90_flaglog.py` refuses either) reads the whole `stageB.lean` and that artifact's flagged
+sentences, and is asked exactly:
+> Below is a Lean file written by an agent, then numbered sentences that a reader judged false of it. For EACH sentence, first
+> write the name of the Lean declaration the sentence is about and what that declaration states, then on its own line answer
+> exactly `<n>: CONFIRMED-FALSE` or `<n>: NOT-FALSE`.
+CONFIRMED-FALSE is `confirmed = yes` in the flag log, NOT-FALSE is `no`; an unparseable answer is retried once, then the flag is
+`no` and counted as UNCONFIRMED-BY-PARSE beside the axis. Model: claude-opus-5, the stage's model, so the confirmer is a different
+MECHANISM from the reader that flagged. **At most 47 reads.** Its pool placement is the PM's, like A3.3.
+⚠️ A Gemini confirmer is NOT registered: stage 0 measured this reader flagging most honest sentences (leg (c) false alarm 75.0 %
+PLAIN, 63.2 % R1; AEK 68.8 % / 53.3 %), so a confirmer of the same mechanism would inherit the bias it exists to remove.
+
+**A3.5 · Halts.** Read 1: the set stops when its Gemini spend exceeds **6 points**, at any 503, or at 3 failed reads in a row (A2.6's
+machinery); a halted set is reported at the n it reached. The confirmer set: the PM's cap at placement; absent one, it does not run.
+
+**A3.6 · Order.** (1) the copy of `sentences.tsv` checked against fc23f58ca8624c81 · (2) a 2-read LIMIT probe of A3.2, never
+scored · (3) the 47 reads, written as flag-log rows with `verdict` OK or FALSE · (4) on placement, the confirmer set over the
+FALSE rows · (5) `o90_flaglog.py` over the complete log, then the design's §4 truth rule on the paired problems. Read 1 runs on
+gemini's box after row R's reads end, never beside them.
+
+**A3.7 · Limits that ride with every truth figure.**
+1. **The axis is per artifact and the arms carry very different amounts of prose (a5 999 sentences, a0 110, about 9 to 1).** An
+   artifact with more sentences has more chances to carry one false one, so the per-problem rule leans against a5 by
+   construction. False sentences per claim sentence is printed beside it, as the design requires, and is the reading that
+   does not lean.
+2. One reader mechanism until A3.3 is placed; one confirmer; the reader and the confirmer are not blind to the arm (the design's
+   own limit, §1).
+3. The sentence rule is a splitter, not a claim detector: a sentence that states nothing checkable is still read. A reader may
+   call it OK or FALSE; only a confirmed FALSE counts.
+4. This addendum decides nothing about U1, U2 or U3, and its readings are not quoted until §4's truth rule has run on them.
