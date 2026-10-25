@@ -552,3 +552,28 @@ choose AFTER the reads whose confirmed FALSEs count: driven, a complete set with
 a5 1 / 1 to 0 / 2 under `--halted`, at rc 0. **So `--halted m` refuses unless m's set carries at least one HALTED row, and a HALTED
 row of a mechanism not named with `--halted` refuses** (`o90_flaglog.py` at saltbench #401). The mark sits in the record that is
 scored, never in a receipt beside it.
+
+## ⚖️ ADDENDUM 5 — 2026-10-25: THE CALIBRATION'S ITEM SET (A3.4a). APPENDED; all text above untouched. Written before the calibration's first call.
+
+**A5.1 · A3.4a's "45 TRUE and 41 PLANTED" is a COUNT, not a set; the set is the file.** Stage 0 leg (b)'s `items.tsv` holds **89
+items: 45 TRUE and 44 PLANTED (42 judged still false by its `mut_true = NO`, 2 judged true anyway, `mut_true = YES`)**; the 41 was
+leg (b)'s PLAIN-scored planted count. All 89 are presented to the confirmer, each as "judged false". **The confirmer's
+false-positive rate on the 45 TRUE is the gate's input (A3.4a)**; its recall is reported on the 42 `mut_true = NO`, and the 2
+`mut_true = YES` are reported apart, since a mutant a reader judged still true is not a planted falsehood. (The PM's design word,
+bus 2026-10-25 02:24, on bench's recommendation; `o90_truthreads.py calib` reports exactly this.)
+**A5.2 · No item shares a session with its own mutant, and every session is mixed (systems' B2; the PM's crossed split, bus
+2026-10-25 02:33).** Each problem is two confirmer sessions: A = its TRUE items of odd pair index K and its PLANTED items of even K;
+B = the complement. A TRUE-only session is not used: every item in it arrives "judged false" and is true, so a confirmer that holds
+back across a whole session would pull the false-positive rate DOWN, the gate-passing direction. 15 problems ⇒ 30 sessions, under
+the one cap.
+**A5.3 · The USD guard is DERIVED, never typed (systems' M2; the PM's word).** The cap of record stays A3.5's **3 POINTS**, and all
+three Claude sets (read 2, this calibration, the confirmer) append to ONE meter. After the first 2 metered reads (A3.5's > 0.5-point
+halt stands on them), **the driver computes USD per point itself**: the meter's own USD over those first 2 reads (a read is a unit;
+its retry is not a second read) divided by the pool's point reading over the same window, the one number the operator gives
+(`--points-at-pause`). **The USD guard is 3 × that rate, printed on the run's first line, and no read past the first 2 runs
+without it** (the driver refuses). A typed rate is not accepted (systems' T1).
+**A5.4 · A confirmer halt is declared like a read halt (systems' M4; the PM's word).** An artifact the confirmer's set did not reach
+is written `confirmed = HALTED` (a fourth value beside yes · no · UNSCORED), and it **leaves the A3.4b denominator whole**, its OK and
+flagged sentences together, so a confirm halt cannot push one arm's rate down where it stopped; the unreached artifacts are counted
+per arm on the verdict line. A read counts as failed once, after its retry (systems' M1), and a merge refuses a FALSE that a given
+confirmations file never saw (M3).
