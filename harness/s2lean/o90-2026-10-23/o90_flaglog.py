@@ -113,15 +113,15 @@ def report(rows, pop, pop_sha, halted=()):
     axis, per, flag, fa = readings(rows, pop, halted)
     print("POPULATION sha256/16 %s · %d written sentences" % (pop_sha, sum(1 for p in pop.values() if p["given"] == "no")))
     for m in sorted(halted):
-        print("HALTED %s: %d rows left out of the state (A3.5), so every figure below is by the other mechanism alone"
-              % (m, sum(1 for r in rows if r["mechanism"] == m)))
+        print("HALTED %s: %d rows left out of the state (A3.5); the per-artifact and per-sentence figures are by the other mechanism"
+              " alone, and the flag tables report the halted set at the n it reached" % (m, sum(1 for r in rows if r["mechanism"] == m)))
     print("PER ARTIFACT (a sentence is FALSE iff flagged AND confirmed yes; any unscored sentence makes it UNSCORED):")
     for p, a, e, n in axis: print("  %s %s %s %s%s" % (p, a, e, n, "  <- carries a FALSE sentence" if isinstance(n, int) and n else ""))
     for a in ("a0", "a5"): print("  UNSCORED artifacts %s: %d · no written prose %d" % (a, sum(1 for x in axis if x[1] == a and x[3] == "UNSCORED"),
                                                                                   sum(1 for x in axis if x[1] == a and x[3] == "no written prose")))
     for scope, (c, p) in per.items():
-        print("PER SENTENCE (%s): a5 %d / %d · a0 %d / %d confirmed FALSE of scored written sentences · one-sided Fisher p = %.4f"
-              % (scope, c["a5"][0], c["a5"][1], c["a0"][0], c["a0"][1], p))
+        print("PER SENTENCE (%s): a5 %d / %d · a0 %d / %d confirmed FALSE of scored written sentences · one-sided Fisher p = %.4f%s"
+              % (scope, c["a5"][0], c["a5"][1], c["a0"][0], c["a0"][1], p, "".join(" · halted: %s" % m for m in sorted(halted))))
     print("FLAG RATE per sentence (mechanism, arm): FALSE flags / scored reads")
     for k in sorted(flag): print("  %-8s %-3s %d / %d" % (k[0], k[1], flag[k][0], flag[k][1]))
     print("FALSE FLAGS NOT CONFIRMED (mechanism, arm): not_confirmed / flags")
@@ -190,6 +190,7 @@ if __name__ == "__main__":
     if len(a) < 3 or a[1] != "--population" or (len(a) - 3) % 2 or any(x != "--halted" for x in a[3::2]): raise SystemExit(__doc__)
     halted = set(a[4::2])
     if halted - {"gemini", "claude"}: raise SystemExit("REFUSE: --halted names a mechanism outside gemini | claude")
+    if halted == {"gemini", "claude"}: raise SystemExit("REFUSE: BOTH mechanisms halted: there is no deciding figure (evidence's F1)")
     raw = open(a[2], "rb").read()
     pop = load_population(io.StringIO(raw.decode("utf-8")))
     report(load(open(a[0], newline=""), pop), pop, hashlib.sha256(raw).hexdigest()[:16], halted)
