@@ -650,3 +650,33 @@ of 11 the set halts at 76 %, one point earlier than A2.6's 75 %. That is the con
 UPPER bound on the set's spend. (2) Read 14 (U2 theorem, p2-a5) had timed out on its first attempt before the stop, and its first
 attempt after the restart ANSWERED. For A6.5's condition the rescue count is therefore stated per timed-out READ, not per
 retry: reads 4 and 13 timed out on both attempts (0 rescued), and read 14 answered on a later attempt (1 rescued). That is 1 of 3.
+
+**A6.10 · Corrections from systems' read (10-25 04:38 PDT, at head 96ed86dded02). Each one replaces the sentence it names; the
+sentence above is left in place, and this one governs.**
+- **H1 · A6.9 (1) misdescribed the counter, and A6.5's condition needs a fixed integer form.** Within a process, `run-rowR.py`
+  sums EVERY drop between consecutive readings and follows rises (88 · 87 · 88 · 87 counts 2). Across processes a rise is lost and
+  a later fall counts again. Either way the sum is an upper bound. `tick()` runs per ATTEMPT and restarts per process, so the
+  reading "at read 50" does not exist as written. **A6.5's condition, restated mechanically from evidence's words before its answer
+  is known:** at the FIRST pool reading logged after `reads.tsv` holds at least 50 data rows, let n = its data rows and S = the
+  set's spend (A6.10 H5) at that reading. (B) may be taken, in a new addendum, iff 323 · S / n > 12, i.e. S > 12n/323 (n = 50 ⇒
+  S ≥ 2; n = 65 ⇒ S ≥ 3). ⚠️ At integer resolution one tick flips it. That is declared here and accepted, because the
+  alternative, a later reading chosen after this one is seen, is worse.
+- **H2 · A6.4 is a harness change, and it is specified here.** In the reader's harness, a read that ends UNSCORED, is a U2
+  THEOREM item, and has every attempt ending in the print-timeout line is TRANSPARENT to the failed-read count: it neither
+  increments nor resets it. Every other read is counted as A6.1 fixed it. The change is the only diff, built red-first with three
+  arms (three theorem timeouts in a row do not halt · three U2-def failures in a row do halt · a theorem timeout between two
+  failed U1 reads and a third does not reset the count, so that set halts). Its sha256/16 is posted before the first read it governs, and it
+  governs only after this addendum merges. **A6.4's "a reader that breaks outright still stops the set within 3 reads" is false
+  as written.** The true form: a breakage stops the set at its third consecutive NON-EXEMPT failed read. A breakage that shows only
+  as theorem-item print timeouts runs on, at about 1 h per such read under (A), until the next U1 or U2-def read fails, and theorem
+  items are 92 of 323 draws.
+- **H3 · A6.3's "each row from the resume names its cause in `status`" is false at the object:** the harness writes no cause. The
+  cause is classed by the lead's scorer (`o90_rowr_score.py`) from the `out/*.FAIL-*.json` records. A read is a print timeout only if
+  EVERY attempt's `stderr_tail` carries the timeout line. The A6.5 rescue count (reads with a print-timeout attempt that later
+  answered, per kind × arm) is printed by the same scorer from the same records, never stated by hand: at 16 reads, U2-theorem
+  a0 0/2 · a5 1/1.
+- **H4 · Declared:** a read that spans a stop and a resume can take more than two attempts. Read 14 took one before the 11:19 stop and
+  one after it. A6.7's restart killed read 15's first attempt about 1 s in, and it left no record. Read 15 then ran fresh.
+- **H5 · A6.7's "first START reading minus its last" is wrong and is replaced:** the set's spend is the SUM OF DROPS between
+  consecutive readings over every reading of the set in time order (`START-POOL` lines and `POOL` lines, all processes), which is
+  an upper bound. First-minus-last would go negative across the weekly reset (2026-10-30 21:59:49Z), which row R will cross.
