@@ -622,3 +622,9 @@ the change (gemini's own (B) of 10-25, declined).
 **A6.6 · Limits.** The rates in A6.4 come from 13 reads. A6.4 is a stopping rule chosen after the set began. It is declared here
 and changes no scored read, but a reader of row R should know that the set ran under two counting rules: A2.6 as fixed by A6.1
 up to this addendum's merge, and A6.4 after it. Every figure stays "by one reader mechanism (Gemini)" (A2.8 rider 2).
+
+**A6.7 · The spend halt counts across the set's processes.** A2.6's 12 points are the Gemini pool's spend "across" the set. The
+harness counts spend per PROCESS, from its own START reading. The first process started at 88 % (07:14:37Z) and the resumed one
+at 87 % (11:25:10Z), so the resume runs with `O90_HALT_POINTS = 12 − (88 − 87) = 11`, the harness's own registered dial. At integer
+resolution the drop is 0+ to ~2 points, and 11 is the value that cannot let the set overrun 12. The set's spend is reported as
+its first START reading minus its last reading, summed over every process, never one process's figure.
