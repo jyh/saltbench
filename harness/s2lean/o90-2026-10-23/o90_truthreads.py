@@ -366,6 +366,22 @@ def selftest():
                             '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
         exp = 'USD per point %.4f' % (Meter(a7b.meter, 0, 2).first_usd(2) / 0.5)
         arm('USD per point is computed from the meter\'s own first reads and the point reading, and printed (systems\' T1)', exp in r.stdout)
+        r2_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
+                              '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.7'], capture_output=True, text=True)
+        r3_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
+                              '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5', '--pause-after', '3'], capture_output=True, text=True)
+        arm('the point reading AND its window are recorded; a different reading or a different window refuses (systems\' LOW, L1)',
+            open(a7b.meter + '.points').read().strip() == '0.5 2' and r2_.returncode == 1 and 'records 0.5 over 2' in r2_.stdout + r2_.stderr
+            and r3_.returncode == 1 and 'records 0.5 over 2' in r3_.stdout + r3_.stderr)
+        open(a7b.meter + '.points', 'w').write('')
+        r4_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
+                              '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
+        arm('an empty record refuses by name, not by a crash (L2)', r4_.returncode == 1 and 'empty or unreadable' in r4_.stdout + r4_.stderr)
+        mfresh = os.path.join(t, 'meter-fresh.tsv')
+        r5_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', os.path.join(t, 'r2-early'),
+                              '--cfg', t, '--client', stub, '--meter', mfresh, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
+        arm('a run refused before the window closes writes NO record, so the true reading is still accepted later (systems\' P1 on #404)',
+            r5_.returncode == 1 and 'before the first' in r5_.stdout + r5_.stderr and not os.path.exists(mfresh + '.points'))
         # G1 (systems): a later set's rows never count toward the first reads, so the guard does not move after confirm runs
         before = Meter(a7b.meter, 0, 2).first_usd(2); open(a7b.meter + '.RESUMED', 'w').write('')
         env('ok', 'c7c'); cmd_confirm(args(os.path.join(t, 'conf-g1'), meter=a7b.meter, flags=[r2rows], pause_after=2))
@@ -449,8 +465,16 @@ def main():
     a.cap_usd = float('inf')
     if a.points_at_pause is not None:
         if a.points_at_pause <= 0: raise SystemExit('REFUSE: --points-at-pause must be > 0 (a window that moved the pool 0 points prices nothing)')
+        pf = a.meter + '.points'   # systems: the reading AND its window are RECORDED beside the meter; every later run must match both
+        if os.path.exists(pf):
+            rec = open(pf).read().split()
+            try: rp, rw = float(rec[0]), int(rec[1])
+            except (IndexError, ValueError): raise SystemExit('REFUSE: %s is empty or unreadable (want "<points> <pause_after>")' % pf)
+            if (rp, rw) != (a.points_at_pause, a.pause_after):
+                raise SystemExit('REFUSE: --points-at-pause %s over --pause-after %d, but %s records %s over %d' % (a.points_at_pause, a.pause_after, pf, rp, rw))
         m = Meter(a.meter, 0, a.pause_after)
         if len(m.units()) < a.pause_after: raise SystemExit('REFUSE: --points-at-pause given before the first %d reads exist on the meter' % a.pause_after)
+        if not os.path.exists(pf): open(pf, 'w').write('%r %d\n' % (a.points_at_pause, a.pause_after))   # P1 (systems): written only once accepted
         rate = m.first_usd(a.pause_after) / a.points_at_pause; a.cap_usd = 3 * rate
         print('USD per point %.4f (%.4f USD over the first %d reads / %.3f points) · guard %.4f USD = 3 points'
               % (rate, m.first_usd(a.pause_after), a.pause_after, a.points_at_pause, a.cap_usd))
