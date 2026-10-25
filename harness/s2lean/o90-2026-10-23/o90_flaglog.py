@@ -24,6 +24,7 @@ mechanism. (3) evidence's leg (c) analogue — the share of FALSE flags NOT conf
 Nothing here scores a reader against a key: stage 1 has no planted key (schedule §4).
 A set that stopped at an A3.5 halt is named with `--halted <mechanism>`: its rows are left out of the state and the report
 declares it, so the figures read "by one reader mechanism" rather than unscoring every sentence it did not reach (systems' E1).
+A `--halted` set must carry at least one UNSCORED verdict row (A3.5's mark), or the run refuses: a halt is a fact, not a choice.
   usage: o90_flaglog.py <log.tsv> --population <sentences.tsv> [--halted gemini|claude]      ·      o90_flaglog.py --selftest"""
 import csv, collections, hashlib, io, math, sys
 COLS = ["problem", "arm", "b_episode", "sentence", "sentence_sha256", "reader", "mechanism", "verdict", "confirmer", "confirmed"]
@@ -113,8 +114,10 @@ def report(rows, pop, pop_sha, halted=()):
     axis, per, flag, fa = readings(rows, pop, halted)
     print("POPULATION sha256/16 %s · %d written sentences" % (pop_sha, sum(1 for p in pop.values() if p["given"] == "no")))
     for m in sorted(halted):
-        print("HALTED %s: %d rows left out of the state (A3.5); the per-artifact and per-sentence figures are by the other mechanism"
-              " alone, and the flag tables report the halted set at the n it reached" % (m, sum(1 for r in rows if r["mechanism"] == m)))
+        mr = [r for r in rows if r["mechanism"] == m]
+        print("HALTED %s: %d rows left out of the state (A3.5), confirmed FALSE %d among them; the per-artifact and per-sentence"
+              " figures are by the other mechanism alone, and the flag tables report the halted set at the n it reached"
+              % (m, len(mr), sum(1 for r in mr if r["verdict"] == "FALSE" and r["confirmed"] == "yes")))
     print("PER ARTIFACT (a sentence is FALSE iff flagged AND confirmed yes; any unscored sentence makes it UNSCORED):")
     for p, a, e, n in axis: print("  %s %s %s %s%s" % (p, a, e, n, "  <- carries a FALSE sentence" if isinstance(n, int) and n else ""))
     for a in ("a0", "a5"): print("  UNSCORED artifacts %s: %d · no written prose %d" % (a, sum(1 for x in axis if x[1] == a and x[3] == "UNSCORED"),
@@ -182,6 +185,28 @@ def selftest():
     for name, row in bad.items():
         try: load(io.StringIO(good + "\t".join(row) + "\n"), pop); raise AssertionError("ACCEPTED: " + name)
         except SystemExit as e: assert str(e).startswith("REFUSE"), (name, e)
+    # H1 (systems) + the main-driving arm: a --halted set must carry A3.5's mark (an UNSCORED verdict row), and main's own
+    # checks (the value check, both-halted, the POPULATION sha line, the halted count) are driven through a subprocess.
+    import os, subprocess, tempfile
+    with tempfile.TemporaryDirectory() as t:
+        pp, lg = os.path.join(t, "pop.tsv"), os.path.join(t, "log.tsv")
+        open(pp, "w").write(P); r5 = [list(x) for x in base] + [["31", "a5", "ep-b5", "doc:1", "aa", "k1", "claude", "OK", "-", "-"],
+                                    ["31", "a5", "ep-b5", "explain:1", "bb", "k1", "claude", "OK", "-", "-"],
+                                    ["31", "a0", "ep-b0", "doc:1", "cc", "k2", "claude", "OK", "-", "-"],
+                                    ["32", "a5", "ep-c5", "explain:1", "ff", "k3", "claude", "OK", "-", "-"]]
+        open(lg, "w").write(H + "".join("\t".join(x) + "\n" for x in r5))
+        def run(*extra):
+            r = subprocess.run([sys.executable, os.path.abspath(__file__), lg, "--population", pp] + list(extra), capture_output=True, text=True)
+            return r.returncode, r.stdout + r.stderr
+        rc, out = run("--halted", "claude")
+        assert rc == 1 and "did not halt" in out, ("H1: a complete set accepted as halted", rc, out)
+        rc, out = run("--halted", "gemini")
+        assert rc == 0 and "HALTED gemini" in out and "confirmed FALSE 1" in out, ("H1: a halted set with its mark", rc, out)
+        rc, out = run()
+        assert rc == 0 and ("POPULATION sha256/16 %s" % hashlib.sha256(P.encode()).hexdigest()[:16]) in out, ("L2 via main", out)
+        # each refusal by its OWN text: the H1 refusal also exits 1, so an rc-only arm would pass with either check removed
+        rv, ov = run("--halted", "gpt"); rb, ob = run("--halted", "claude", "--halted", "gemini")
+        assert rv == 1 and "outside gemini | claude" in ov and rb == 1 and "BOTH mechanisms halted" in ob, ("main's refusals", ov, ob)
     print("SELFTEST PASS: 1 good log (per artifact 0 / 1 / UNSCORED; per sentence whole a5 1/2 a0 0/1, doc a5 1/1 a0 0/1;"
           " Fisher 5/10 vs 0/10 = 252/15504), an UNSCORED confirmation makes its artifact UNSCORED, %d refusals each fired" % len(bad))
 if __name__ == "__main__":
@@ -193,4 +218,8 @@ if __name__ == "__main__":
     if halted == {"gemini", "claude"}: raise SystemExit("REFUSE: BOTH mechanisms halted: there is no deciding figure (evidence's F1)")
     raw = open(a[2], "rb").read()
     pop = load_population(io.StringIO(raw.decode("utf-8")))
-    report(load(open(a[0], newline=""), pop), pop, hashlib.sha256(raw).hexdigest()[:16], halted)
+    rows = load(open(a[0], newline=""), pop)
+    for m in sorted(halted):   # H1 (systems): a halt is a fact about the set, never a choice made after the reads
+        if not any(r["mechanism"] == m and r["verdict"] == "UNSCORED" for r in rows):
+            raise SystemExit("REFUSE: --halted %s, but its set carries no UNSCORED verdict row, so it did not halt (A3.5's mark)" % m)
+    report(rows, pop, hashlib.sha256(raw).hexdigest()[:16], halted)
