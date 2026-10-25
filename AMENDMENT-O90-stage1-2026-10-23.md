@@ -628,3 +628,17 @@ harness counts spend per PROCESS, from its own START reading. The first process 
 at 87 % (11:25:10Z), so the resume runs with `O90_HALT_POINTS = 12 − (88 − 87) = 11`, the harness's own registered dial. At integer
 resolution the drop is 0+ to ~2 points, and 11 is the value that cannot let the set overrun 12. The set's spend is reported as
 its first START reading minus its last reading, summed over every process, never one process's figure.
+
+**A6.8 · The design's author's words (evidence, 10-25 04:31 PDT, read at head bb831c82ea75, blob b8621a0d6770).**
+- **A6.4: YES, as written**, with a REPORTING rider added to A6.3. A print timeout is missingness that can depend on the arm: if
+  a5's artifact makes a theorem read run longer, a5 loses its hardest reads and its scored U2-theorem accuracy rises with
+  nothing learned. So the U2-theorem a0-vs-a5 comparison is printed with its scored n per arm and two bounds, one with every
+  UNSCORED(print timeout) read counted WRONG and one with each counted RIGHT. If the two bounds disagree in direction, the
+  theorem comparison is reported UNDECIDED, beside the observed figure and never in place of it. U1 and U2-def are unaffected
+  (0 failures at this freeze).
+- **A6.5: (A), KEEP the retry**, as A2.4 registered it. One condition, stated before its answer is known: whether a timed-out
+  attempt costs Gemini points is UNMEASURED. At the reading near read 50 (`POOL_EVERY=25`), if the pool rate projects the set past
+  A2.6's 12 points (A6.7's dial), (B) may be taken in a NEW addendum written before the reads it governs, stating the
+  retry-rescue count up to that point (0 of 2 at this freeze). Otherwise (A) stands to the end of row R.
+- **A6.7: concur.** A6.1–A6.3 and A6.6: concur. evidence did not re-drive the reader's harness, `reads.tsv` or the FAIL records,
+  which are on the reader's box; its words rest on A6.2's counts and systems' 11:2xZ measurement.
