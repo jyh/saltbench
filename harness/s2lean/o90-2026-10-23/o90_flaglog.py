@@ -15,8 +15,9 @@ reader; a FALSE carries a confirmer and yes|no|UNSCORED; an OK, UNSCORED or HALT
 sentence, reader); one sentence_sha256 per (b_episode, sentence).
 THE POPULATION (A3.1, systems' C1) is REQUIRED: `--population sentences.tsv` is the frozen file `o90_sentences.py` wrote. Every
 log row must be a frozen `given=no` row with the same problem, arm and sha (a GIVEN sentence is read by no one), and for each
-mechanism in the log, every written sentence must have a row of that mechanism (a sentence not read is written UNSCORED, never
-left out, so a halted set is counted rather than shrunk).
+mechanism in the log, every written sentence must have a row of that mechanism, never left out: a read that does not parse is
+written UNSCORED, and a sentence a halted set did not reach is written HALTED (ADDENDUM 4), so a halted set is counted rather
+than shrunk.
 Readings: (1) PER ARTIFACT — a sentence is FALSE iff some read flagged it AND its confirmation is yes [F8c]; an artifact with
 ANY unscored sentence (a read UNSCORED, or a confirmation UNSCORED) is UNSCORED on this rule, printed per arm (A3.4 M2).
 (2) PER SENTENCE, the A3.4b decision — confirmed-FALSE against not over the written SCORED sentences, a5 against a0, one-sided
@@ -212,6 +213,14 @@ def selftest():
         assert r.returncode == 0 and "HALTED gemini" in r.stdout and "confirmed FALSE 1" in r.stdout, ("a marked halt", r.stdout, r.stderr)
         r = subprocess.run([sys.executable, os.path.abspath(__file__), lg_h, "--population", pp], capture_output=True, text=True)
         assert r.returncode == 1 and "undeclared" in r.stdout + r.stderr, ("a HALTED row of an undeclared mechanism", r.stdout, r.stderr)
+        # N1 (systems): a HALTED row is not a scored read, so the halted set's flag rate counts only the sentences it reached
+        r = subprocess.run([sys.executable, os.path.abspath(__file__), lg_h, "--population", pp, "--halted", "gemini"], capture_output=True, text=True)
+        fr = r.stdout.split("FLAG RATE")[1].split("FALSE FLAGS")[0]
+        assert "gemini   a5  2 / 2" in fr and "gemini   a0  0 / 1" in fr, ("N1: HALTED counted as a scored read", fr)
+        # N2: a declared mechanism with no rows is refused by its own text, not by the HALTED check's
+        lg_g = os.path.join(t, "log-gemini-only.tsv"); open(lg_g, "w").write(good)
+        r = subprocess.run([sys.executable, os.path.abspath(__file__), lg_g, "--population", pp, "--halted", "claude"], capture_output=True, text=True)
+        assert r.returncode == 1 and "claude has no rows" in r.stdout + r.stderr, ("N2", r.stdout, r.stderr)
         rc, out = run()
         assert rc == 0 and ("POPULATION sha256/16 %s" % hashlib.sha256(P.encode()).hexdigest()[:16]) in out, ("L2 via main", out)
         # each refusal by its OWN text: the H1 refusal also exits 1, so an rc-only arm would pass with either check removed
