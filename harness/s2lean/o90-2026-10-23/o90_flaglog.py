@@ -7,10 +7,11 @@ One TSV row per (sentence, read). Columns, in order, all required:
   b_episode  the scored stage-B episode whose artifact the sentence is in (its author)
   sentence   a stable id within the artifact      sentence_sha256  sha256 of the sentence's bytes as read
   reader     the read's id (a session id)         mechanism   gemini | claude      (the reader's model family)
-  verdict    OK | FALSE | UNSCORED                (FALSE = the reader says the sentence is false of its Lean)
+  verdict    OK | FALSE | UNSCORED | HALTED       (FALSE = the reader says the sentence is false of its Lean; UNSCORED = the
+             read did not parse; HALTED = only the halt writes it, for a sentence its set did not reach — ADDENDUM 4)
   confirmer  the third read's id, or -            confirmed   yes | no | UNSCORED | -   (- unless verdict is FALSE)
 Rules (each a refusal): a reader or confirmer is never the author (never equals b_episode); the confirmer is never the
-reader; a FALSE carries a confirmer and yes|no|UNSCORED; an OK or UNSCORED carries - and -; one row per (b_episode,
+reader; a FALSE carries a confirmer and yes|no|UNSCORED; an OK, UNSCORED or HALTED carries - and -; one row per (b_episode,
 sentence, reader); one sentence_sha256 per (b_episode, sentence).
 THE POPULATION (A3.1, systems' C1) is REQUIRED: `--population sentences.tsv` is the frozen file `o90_sentences.py` wrote. Every
 log row must be a frozen `given=no` row with the same problem, arm and sha (a GIVEN sentence is read by no one), and for each
@@ -24,7 +25,8 @@ mechanism. (3) evidence's leg (c) analogue — the share of FALSE flags NOT conf
 Nothing here scores a reader against a key: stage 1 has no planted key (schedule §4).
 A set that stopped at an A3.5 halt is named with `--halted <mechanism>`: its rows are left out of the state and the report
 declares it, so the figures read "by one reader mechanism" rather than unscoring every sentence it did not reach (systems' E1).
-A `--halted` set must carry at least one UNSCORED verdict row (A3.5's mark), or the run refuses: a halt is a fact, not a choice.
+A `--halted` set must carry at least one HALTED verdict row, and a HALTED row of an undeclared mechanism refuses: a halt is a
+fact recorded by the halt, not a choice made after the reads (systems' H1 and K1).
   usage: o90_flaglog.py <log.tsv> --population <sentences.tsv> [--halted gemini|claude]      ·      o90_flaglog.py --selftest"""
 import csv, collections, hashlib, io, math, sys
 COLS = ["problem", "arm", "b_episode", "sentence", "sentence_sha256", "reader", "mechanism", "verdict", "confirmer", "confirmed"]
@@ -45,7 +47,7 @@ def load(f, pop):
         d = dict(zip(COLS, r))
         if d["arm"] not in ("a0", "a5"): raise SystemExit("REFUSE line %d: arm %r" % (n, d["arm"]))
         if d["mechanism"] not in ("gemini", "claude"): raise SystemExit("REFUSE line %d: mechanism %r" % (n, d["mechanism"]))
-        if d["verdict"] not in ("OK", "FALSE", "UNSCORED"): raise SystemExit("REFUSE line %d: verdict %r" % (n, d["verdict"]))
+        if d["verdict"] not in ("OK", "FALSE", "UNSCORED", "HALTED"): raise SystemExit("REFUSE line %d: verdict %r" % (n, d["verdict"]))
         if d["reader"] == d["b_episode"] or d["confirmer"] == d["b_episode"]: raise SystemExit("REFUSE line %d: a read by the author" % n)
         if d["verdict"] == "FALSE":
             if d["confirmer"] in ("-", "") or d["confirmed"] not in ("yes", "no", "UNSCORED"):
@@ -88,7 +90,7 @@ def readings(rows, pop, halted=()):
         rs = by_s.get(k, [])
         # E1 (systems): a confirmed FALSE is a fact about the Lean, so it is decided FIRST, whatever another read failed to answer
         if any(r["verdict"] == "FALSE" and r["confirmed"] == "yes" for r in rs): state[k] = "FALSE"
-        elif not rs or any(r["verdict"] == "UNSCORED" or r["confirmed"] == "UNSCORED" for r in rs): state[k] = "UNSCORED"
+        elif not rs or any(r["verdict"] in ("UNSCORED", "HALTED") or r["confirmed"] == "UNSCORED" for r in rs): state[k] = "UNSCORED"
         else: state[k] = "OK"
     axis = []
     for p_, a, e in sorted({(p["problem"], p["arm"], k[0]) for k, p in pop.items()}):
@@ -104,7 +106,7 @@ def readings(rows, pop, halted=()):
     flag = collections.defaultdict(lambda: [0, 0])
     fa = collections.defaultdict(lambda: [0, 0])
     for r in rows:
-        if r["verdict"] != "UNSCORED":
+        if r["verdict"] not in ("UNSCORED", "HALTED"):
             flag[(r["mechanism"], r["arm"])][0] += r["verdict"] == "FALSE"; flag[(r["mechanism"], r["arm"])][1] += 1
         if r["verdict"] == "FALSE":
             for key in ((r["mechanism"], r["arm"]), (r["mechanism"], "*"), ("*", r["arm"])):
@@ -174,6 +176,7 @@ def selftest():
            "confirmer is reader": ["31", "a5", "ep-b5", "doc:1", "aa", "k2", "claude", "FALSE", "k2", "yes"],
            "OK with confirmer": ["31", "a5", "ep-b5", "doc:1", "aa", "k2", "claude", "OK", "c1", "yes"],
            "UNSCORED with confirmer": ["31", "a5", "ep-b5", "doc:1", "aa", "k2", "claude", "UNSCORED", "c1", "yes"],
+           "HALTED with confirmer": ["31", "a5", "ep-b5", "doc:1", "aa", "k2", "claude", "HALTED", "c1", "yes"],
            "two texts": ["31", "a5", "ep-b5", "doc:1", "zz", "g9", "gemini", "OK", "-", "-"],
            "duplicate read": ["31", "a5", "ep-b5", "doc:1", "aa", "g1", "gemini", "OK", "-", "-"],
            "bad mechanism": ["31", "a5", "ep-b5", "doc:1", "aa", "g2", "gpt", "OK", "-", "-"],
@@ -199,9 +202,16 @@ def selftest():
             r = subprocess.run([sys.executable, os.path.abspath(__file__), lg, "--population", pp] + list(extra), capture_output=True, text=True)
             return r.returncode, r.stdout + r.stderr
         rc, out = run("--halted", "claude")
-        assert rc == 1 and "did not halt" in out, ("H1: a complete set accepted as halted", rc, out)
+        assert rc == 1 and "has no HALTED row" in out, ("H1: a complete set accepted as halted", rc, out)
+        # K1 (systems): gemini's set carries an UNSCORED (a PARSE failure, ep-c5), which is not a halt, so it must refuse
         rc, out = run("--halted", "gemini")
-        assert rc == 0 and "HALTED gemini" in out and "confirmed FALSE 1" in out, ("H1: a halted set with its mark", rc, out)
+        assert rc == 1 and "has no HALTED row" in out, ("K1: a parse failure passed as a halt", rc, out)
+        lg_h = os.path.join(t, "log-halted.tsv"); rh = [list(x) for x in r5]; rh[3][7] = "HALTED"
+        open(lg_h, "w").write(H + "".join("\t".join(x) + "\n" for x in rh))
+        r = subprocess.run([sys.executable, os.path.abspath(__file__), lg_h, "--population", pp, "--halted", "gemini"], capture_output=True, text=True)
+        assert r.returncode == 0 and "HALTED gemini" in r.stdout and "confirmed FALSE 1" in r.stdout, ("a marked halt", r.stdout, r.stderr)
+        r = subprocess.run([sys.executable, os.path.abspath(__file__), lg_h, "--population", pp], capture_output=True, text=True)
+        assert r.returncode == 1 and "undeclared" in r.stdout + r.stderr, ("a HALTED row of an undeclared mechanism", r.stdout, r.stderr)
         rc, out = run()
         assert rc == 0 and ("POPULATION sha256/16 %s" % hashlib.sha256(P.encode()).hexdigest()[:16]) in out, ("L2 via main", out)
         # each refusal by its OWN text: the H1 refusal also exits 1, so an rc-only arm would pass with either check removed
@@ -219,7 +229,10 @@ if __name__ == "__main__":
     raw = open(a[2], "rb").read()
     pop = load_population(io.StringIO(raw.decode("utf-8")))
     rows = load(open(a[0], newline=""), pop)
-    for m in sorted(halted):   # H1 (systems): a halt is a fact about the set, never a choice made after the reads
-        if not any(r["mechanism"] == m and r["verdict"] == "UNSCORED" for r in rows):
-            raise SystemExit("REFUSE: --halted %s, but its set carries no UNSCORED verdict row, so it did not halt (A3.5's mark)" % m)
+    for m in sorted(halted):   # H1/K1 (systems): a halt is a fact recorded by the halt itself, never a choice made after the reads
+        if not any(r["mechanism"] == m for r in rows): raise SystemExit("REFUSE: --halted %s, but %s has no rows" % (m, m))
+        if not any(r["mechanism"] == m and r["verdict"] == "HALTED" for r in rows):
+            raise SystemExit("REFUSE: --halted %s, but its set has no HALTED row, so it did not halt (UNSCORED marks a parse failure, not a halt)" % m)
+    und = sorted({r["mechanism"] for r in rows if r["verdict"] == "HALTED"} - halted)
+    if und: raise SystemExit("REFUSE: HALTED rows of an undeclared mechanism (%s): name it with --halted" % ", ".join(und))
     report(rows, pop, hashlib.sha256(raw).hexdigest()[:16], halted)

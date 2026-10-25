@@ -540,3 +540,15 @@ gemini's box after row R's reads end, never beside them.
    sentence may carry more chance of a false confirmation, which A3.4a's short items cannot test, so **the doc-comment-only
    Fisher reading (a0 39 against a5 160) is printed beside the whole as the length-matched sensitivity read.**
 5. This addendum decides nothing about U1, U2 or U3, and its readings are not quoted until §4's truth rule has run on them.
+
+## ⚖️ ADDENDUM 4 — 2026-10-25: A HALT IS MARKED IN THE RECORD (the verdict HALTED). APPENDED; all text above untouched. Written before any truth read.
+
+**A4.1 · The flag log's verdict values are OK · FALSE · UNSCORED · HALTED.** A3.2 and A3.4 write UNSCORED for a read that does not
+parse. **HALTED is written only by an A3.5 halt, for each sentence its set did not reach** (spend, any 503, or 3 failed reads in a
+row), and carries `-` and `-` like an OK. It is never written for a parse failure.
+**A4.2 · Why (systems' K1, 2026-10-25 01:51).** `o90_flaglog.py --halted <mechanism>` leaves a halted set out of the state (A3.6 (5),
+the PM's design word). With UNSCORED as the only mark, one unparseable line made any complete set eligible, so the operator could
+choose AFTER the reads whose confirmed FALSEs count: driven, a complete set with one parse failure moved the deciding line from
+a5 1 / 1 to 0 / 2 under `--halted`, at rc 0. **So `--halted m` refuses unless m's set carries at least one HALTED row, and a HALTED
+row of a mechanism not named with `--halted` refuses** (`o90_flaglog.py` at saltbench #401). The mark sits in the record that is
+scored, never in a receipt beside it.
