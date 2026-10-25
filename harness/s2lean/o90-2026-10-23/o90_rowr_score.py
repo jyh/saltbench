@@ -18,7 +18,7 @@ on NEITHER-YES; fewer than 4 NEITHER-YES problems is UNRESOLVABLE. It decides no
 Every figure is "by one reader mechanism (Gemini)" (A2.8 rider 2); the reader is not blind to the arm (A2.7).
 usage: o90_rowr_score.py <rowR dir> [--sums16 1629c1c3912b0e69] [--specrec16 00f1d80781af8607] · o90_rowr_score.py --selftest
 """
-import collections, hashlib, os, shutil, sys, tempfile
+import collections, hashlib, json, os, shutil, sys, tempfile
 
 SUMS16, SPECREC16 = '1629c1c3912b0e69', '00f1d80781af8607'
 PHRASE = 'by one reader mechanism (Gemini)'
@@ -43,7 +43,7 @@ def load(d, sums16=SUMS16, specrec16=SPECREC16):
     u1key = {r['item']: r['key'] for r in drawn}; u1prob = {r['item']: r['problem'] for r in drawn}
     u2 = collections.defaultdict(dict)
     for r in tsv(os.path.join(fz, 'u2', 'items.tsv')):
-        u2[r['item']][int(r['position'])] = (r['option'], r['key'], r['episode']); u2meta[r['item']] = (r['problem'], r['arm'])
+        u2[r['item']][int(r['position'])] = (r['option'], r['key'], r['episode']); u2meta[r['item']] = (r['problem'], r['arm'], r['kind'])
     spec = tsv(os.path.join(d, 'frozen-specrec.tsv'))
     draw = {r['seq']: r for r in tsv(os.path.join(d, 'draw.tsv'))}
     reads = tsv(os.path.join(d, 'reads.tsv'))
@@ -97,6 +97,13 @@ def check(u1key, u2, draw, reads, opts, spec, u1prob):
         if r['kind'] == 'U2' and len(byseq.get(r['seq'], [])) != len(u2[r['item']]):
             refuse('U2 read seq %s carries %d option rows, items.tsv freezes %d' % (r['seq'], len(byseq.get(r['seq'], [])), len(u2[r['item']])))
     return byseq
+
+
+def theorem_verdict(lo, hi):
+    """A6.8: lo/hi are the signs of a5 − a0 under the two bounds (1 · 0 · −1, None if an arm has nothing to bound)."""
+    if lo is None or hi is None: return 'NOT COMPUTABLE (an arm has no U2-theorem option to bound)'
+    if lo == hi and lo != 0: return 'the bounds agree'
+    return 'UNDECIDED (the two bounds do not share one strict direction), beside the observed figure'
 
 
 def plus10(acc):
@@ -174,6 +181,37 @@ def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
         out.append('U2 %s: artifacts read %d (%d with a scored option) · options scored %d · UNSCORED options %d · POOLED accuracy %s · MEAN of per-artifact accuracy %s over %d (%s)'
                    % (arm, len(per), len(sc_), n_sc, unsc[arm], pct(n_ok, n_sc), '%.1f%%' % (100 * mean) if mean is not None else 'n/a', len(sc_), PHRASE))
         for e, k, n in per: out.append('  U2 %s %s: %d/%d = %s' % (arm, e, k, n, pct(k, n)) if n else '  U2 %s %s: 0 scored (every option UNSCORED)' % (arm, e))
+    # ADDENDUM 6 A6.3: every UNSCORED read by CAUSE x KIND x ARM. A6.8 (evidence): a print timeout is missingness that can depend on
+    # the arm, so the U2-theorem a0-vs-a5 comparison carries two bounds (every timed-out read's options WRONG, and RIGHT)
+    def kind(r): return 'U1' if r['kind'] == 'U1' else 'U2-' + u2meta[r['item']][2]
+    def cause(r):
+        if r['status'] == 'OK': return None
+        if 'timeout' in r['status']: return 'print timeout'
+        fails = [f for f in os.listdir(os.path.join(d, 'out')) if f.startswith('read-%s.FAIL-' % r['seq'])] if os.path.isdir(os.path.join(d, 'out')) else []
+        tails = [str(json.load(open(os.path.join(d, 'out', f))).get('stderr_tail', '')) for f in fails]
+        return 'print timeout' if tails and all('print timeout' in x for x in tails) else 'parse'   # a row written before A6.3 names no cause
+    cnt = collections.Counter((cause(r), kind(r), r['arm']) for r in reads if r['status'] != 'OK')
+    out.append('UNSCORED reads by cause × kind × arm (A6.3): ' + (' · '.join('%s %s %s %d' % (c, k, a, n) for (c, k, a), n in sorted(cnt.items())) or 'none'))
+    to = {r['seq'] for r in reads if r['kind'] == 'U2' and u2meta[r['item']][2] == 'theorem' and cause(r) == 'print timeout'}
+    b = {}
+    for arm in ('a0', 'a5'):
+        okn = scn = ton = 0
+        for s_, os_ in byseq.items():
+            r = next(x for x in reads if x['seq'] == s_)
+            if r['arm'] != arm or u2meta[r['item']][2] != 'theorem': continue
+            for o in os_:
+                if s_ in to: ton += 1
+                elif o['status'] == 'OK':
+                    scn += 1; okn += (o['verdict'] == 'USED') == (u2[r['item']][int(o['position'])][1] == 'used')
+        b[arm] = (okn, scn, ton)
+        out.append('U2-theorem %s: options scored %d · correct %d · observed %s · timed-out options %d · bound WRONG %s · bound RIGHT %s (A6.8)'
+                   % (arm, scn, okn, pct(okn, scn), ton, pct(okn, scn + ton), pct(okn + ton, scn + ton)))
+    def sgn(k5, n5, k0, n0): return (k5 * n0 > k0 * n5) - (k5 * n0 < k0 * n5) if n5 and n0 else None
+    (k0, n0, t0), (k5, n5, t5) = b['a0'], b['a5']
+    obs, lo, hi = sgn(k5, n5, k0, n0), sgn(k5, n5 + t5, k0 + t0, n0 + t0), sgn(k5 + t5, n5 + t5, k0, n0 + t0)   # lo: a5 worst, a0 best
+    word = {1: 'a5 > a0', -1: 'a5 < a0', 0: 'a5 = a0', None: 'n/a'}
+    out.append('U2-theorem a5 vs a0: observed %s · a5-worst/a0-best %s · a5-best/a0-worst %s ⇒ %s (A6.8)' % (word[obs], word[lo], word[hi],
+               theorem_verdict(lo, hi)))
     return '\n'.join(out), complete
 
 
@@ -187,9 +225,9 @@ def selftest():
         d = os.path.join(t, 'rowR'); fz = os.path.join(d, 'frozen')
         w(os.path.join(fz, 'u1', 'drawn.tsv'), [['problem', 'item', 'key'], ['1', 'p1-a', 'yes'], ['1', 'p1-b', 'no'], ['2', 'p2-a', 'yes'], ['3', 'p3-a', 'no'],
                                                 ['4', 'p4-a', 'yes'], ['5', 'p5-a', 'no']])
-        u2rows = [['item', 'episode', 'problem', 'arm', 'position', 'option', 'key']]
-        for it, ep, p, a in (('p1-a0-d-0', 'e10', '1', 'a0'), ('p1-a5-d-0', 'e15', '1', 'a5'), ('p1-a5-d-1', 'e15', '1', 'a5')):
-            u2rows += [[it, ep, p, a, str(i), 'C%d' % i, 'used' if i < 4 else 'not-used'] for i in range(8)]
+        u2rows = [['item', 'episode', 'problem', 'arm', 'kind', 'position', 'option', 'key']]
+        for it, ep, p, a, kd in (('p1-a0-d-0', 'e10', '1', 'a0', 'theorem'), ('p1-a5-d-0', 'e15', '1', 'a5', 'theorem'), ('p1-a5-d-1', 'e15', '1', 'a5', 'def')):
+            u2rows += [[it, ep, p, a, kd, str(i), 'C%d' % i, 'used' if i < 4 else 'not-used'] for i in range(8)]
         w(os.path.join(fz, 'u2', 'items.tsv'), u2rows)
         open(os.path.join(fz, 'SHA256SUMS'), 'w').write(''.join('%s  ./%s\n' % (hashlib.sha256(open(os.path.join(fz, r), 'rb').read()).hexdigest(), r)
                                                                 for r in ('u1/drawn.tsv', 'u2/items.tsv')))
@@ -260,6 +298,24 @@ def selftest():
         txtl2, _ = score(dd, s16, r16, (5, 4))
         arm('L2: an artifact read only UNSCORED is listed as 0 scored and leaves the MEAN\'s n, stated',
             'U2 a0 e10: 0 scored (every option UNSCORED)' in txtl2 and 'U2 a0: artifacts read 1 (0 with a scored option)' in txtl2)
+        arm('A6.8: with no timeout the theorem bounds agree (a0 6/8, a5 8/8)', 'U2-theorem a5 vs a0: observed a5 > a0 · a5-worst/a0-best a5 > a0 · a5-best/a0-worst a5 > a0 ⇒ the bounds agree' in txt)
+        dd = os.path.join(t, 'to'); shutil.copytree(d, dd)   # seq 13 = the a0 theorem read, timed out on both attempts, written BEFORE A6.3
+        edit(os.path.join(dd, 'reads.tsv'), '13\tU2\tp1-a0-d-0\te10\ta0\t1\t\tOK', '13\tU2\tp1-a0-d-0\te10\ta0\t1\t\tUNSCORED(no parseable answer after one retry)')
+        o3 = open(os.path.join(dd, 'u2-options.tsv')).read().splitlines(True)
+        open(os.path.join(dd, 'u2-options.tsv'), 'w').write(''.join(l.replace('\tOK\n', '\tUNSCORED(missing)\n') if l.startswith('13\t') else l for l in o3))
+        os.makedirs(os.path.join(dd, 'out'))
+        for k_ in (1, 2): json.dump({'stderr_tail': '[agy] print timeout after 30m0s with turn in progress'}, open(os.path.join(dd, 'out', 'read-13.FAIL-%d.json' % k_), 'w'))
+        txto, _ = score(dd, s16, r16, (5, 4))
+        arm('A6.3: a pre-A6.3 UNSCORED row is classed print timeout from its FAIL records, by cause × kind × arm', 'print timeout U2-theorem a0 1' in txto)
+        arm('A6.8: a timed-out theorem read makes the bounds disagree, and the comparison reads UNDECIDED',
+            'U2-theorem a0: options scored 0 · correct 0 · observed n/a · timed-out options 8 · bound WRONG 0.0% · bound RIGHT 100.0%' in txto
+            and 'a5-worst/a0-best a5 = a0 · a5-best/a0-worst a5 > a0 ⇒ UNDECIDED' in txto)
+        arm('A6.8: an arm with no theorem option reads NOT COMPUTABLE; a tie in either bound or opposite signs read UNDECIDED; one strict sign agrees',
+            theorem_verdict(None, None).startswith('NOT COMPUTABLE') and theorem_verdict(1, None).startswith('NOT COMPUTABLE')
+            and theorem_verdict(0, 0).startswith('UNDECIDED') and theorem_verdict(-1, 1).startswith('UNDECIDED') and theorem_verdict(-1, 0).startswith('UNDECIDED')
+            and theorem_verdict(1, 1) == theorem_verdict(-1, -1) == 'the bounds agree')
+        json.dump({'stderr_tail': ''}, open(os.path.join(dd, 'out', 'read-13.FAIL-2.json'), 'w'))
+        arm('A6.3: a read whose attempts were not ALL timeouts is classed parse, and leaves the theorem bounds', 'parse U2-theorem a0 1' in score(dd, s16, r16, (5, 4))[0])
         dd = os.path.join(t, 'p'); shutil.copytree(d, dd); l = open(os.path.join(dd, 'reads.tsv')).read().splitlines(True); open(os.path.join(dd, 'reads.tsv'), 'w').write(''.join(l[:-1]))
         o = open(os.path.join(dd, 'u2-options.tsv')).read().splitlines(True); open(os.path.join(dd, 'u2-options.tsv'), 'w').write(''.join(o[:-8]))
         txt2, comp2 = score(dd, s16, r16, (5, 4))
