@@ -515,7 +515,11 @@ re-priced before the rest. If they start after that pool's reset (Mon 2026-10-26
 **A3.6 · Order.** (1) the copy of `sentences.tsv` checked against 334ac0b784d5dcc5 · (2) a 2-read LIMIT probe of A3.2, never
 scored · (3) the 33 reads, written as flag-log rows with `verdict` OK or FALSE · (3b) read 2's 33 reads (A3.3), blind to read 1 ·
 (4a) the confirmer's calibration (A3.4a), posted before (4) · (4) the confirmer set over the UNION of FALSE rows · (5)
-`o90_flaglog.py` over the complete log, then the design's §4 truth rule on the paired problems. Read 1 runs on
+`o90_flaglog.py` over the complete log, then the design's §4 truth rule on the paired problems. **Before step (3) writes a
+flag row, the instrument gains (systems' C1, a follow-on PR with its own non-author read):** `--population sentences.tsv`, which
+refuses a row whose sentence is not a frozen `given=no` row, and makes every written sentence either read or UNSCORED; an
+`UNSCORED` value for a read's verdict and for `confirmed`; an artifact with any UNSCORED sentence printed UNSCORED per arm; and
+the A3.4b Fisher reading with its denominators, whole and doc-comment-only, beside each arm's per-sentence flag rate. Read 1 runs on
 gemini's box after row R's reads end, never beside them.
 
 **A3.7 · Limits that ride with every truth figure.**
