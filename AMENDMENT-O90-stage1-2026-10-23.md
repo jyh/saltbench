@@ -642,3 +642,11 @@ its first START reading minus its last reading, summed over every process, never
   retry-rescue count up to that point (0 of 2 at this freeze). Otherwise (A) stands to the end of row R.
 - **A6.7: concur.** A6.1–A6.3 and A6.6: concur. evidence did not re-drive the reader's harness, `reads.tsv` or the FAIL records,
   which are on the reader's box; its words rest on A6.2's counts and systems' 11:2xZ measurement.
+
+**A6.9 · Two readings after A6.7's restart (gemini, 10-25 11:34:55Z).** (1) The pool's START readings across the set's
+processes are 88 · 87 · 88 %, so the 87 was integer jitter or a rolling-window refund, not spend that stayed spent. Under the dial
+of 11 the set halts at 76 %, one point earlier than A2.6's 75 %. That is the conservative side, and the dial is not moved again on a
+±1 reading. A per-process counter counts only falls from its own START, so at integer resolution the sum over processes is an
+UPPER bound on the set's spend. (2) Read 14 (U2 theorem, p2-a5) had timed out on its first attempt before the stop, and its first
+attempt after the restart ANSWERED. For A6.5's condition the rescue count is therefore stated per timed-out READ, not per
+retry: reads 4 and 13 timed out on both attempts (0 rescued), and read 14 answered on a later attempt (1 rescued). That is 1 of 3.
