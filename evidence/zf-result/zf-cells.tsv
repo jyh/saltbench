@@ -1,0 +1,266 @@
+# ZF cells, one row per harvested leg; built by zf_flatten.py from extract_legs.py (zt.json) + empty_census.py v2 (run box)
+z	cid	problem	field	card	arm	rep	model	done_reason	score_phase	belt	trunc	scored	fault	end	verdict	tests	empty_final	empty_final_idx	empty_p1	empty_p1_idx	wall_s	turns	score_dir
+Z001	zfacgnp101	Crc32	gf	none	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	763.1	3	l8u-Z001-Crc32-gf-none-plain-r1-argon-2026-10-13-score-belted
+Z002	zffcgnp101	Crc32	gf	none	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	345.0	3	l8u-Z002-Crc32-gf-none-plain-r1-flash-2026-10-13-score-belted
+Z003	zfacgns101	Crc32	gf	none	salt	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	1301.7	3	l8u-Z003-Crc32-gf-none-salt-r1-argon-2026-10-13-score
+Z004	zffcgns101	Crc32	gf	none	salt	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	2859.7	4	l8u-Z004-Crc32-gf-none-salt-r1-flash-2026-10-13-score
+Z005	zffcgnp201	Crc32	gf	none	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	402.0	3	l8u-Z005-Crc32-gf-none-plain-r2-flash-2026-10-13-score
+Z006	zfacgnp201	Crc32	gf	none	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	734.1	3	l8u-Z006-Crc32-gf-none-plain-r2-argon-2026-10-13-score
+Z007	zfacgnp301	Crc32	gf	none	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	803.7	3	l8u-Z007-Crc32-gf-none-plain-r3-argon-2026-10-13-score
+Z008	zffcgnp301	Crc32	gf	none	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	406.3	3	l8u-Z008-Crc32-gf-none-plain-r3-flash-2026-10-13-score
+Z009	zffcgns201	Crc32	gf	none	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	1453.3	3	l8u-Z009-Crc32-gf-none-salt-r2-flash-2026-10-13-score
+Z010	zfacgns201	Crc32	gf	none	salt	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	1167.0	3	l8u-Z010-Crc32-gf-none-salt-r2-argon-2026-10-13-score
+Z011	zfacgns3a201	Crc32	gf	none	salt	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	1552.0	3	l8u-Z011-Crc32-gf-none-salt-r3-argon-2026-10-13-score
+Z012	zffcgns301	Crc32	gf	none	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	2268.5	4	l8u-Z012-Crc32-gf-none-salt-r3-flash-2026-10-13-score
+Z013	zfafgnp101	FreeList	gf	none	plain	1	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1923.5	3	l8u-Z013-FreeList-gf-none-plain-r1-argon-2026-10-13-score
+Z014	zfffgnp101	FreeList	gf	none	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	552.3	3	l8u-Z014-FreeList-gf-none-plain-r1-flash-2026-10-13-score
+Z015	zfffgnp201	FreeList	gf	none	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	FAIL	TESTS 6/7	0	[]	-	-	476.6	3	l8u-Z015-FreeList-gf-none-plain-r2-flash-2026-10-13-score
+Z016	zfafgnp201	FreeList	gf	none	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1636.2	3	l8u-Z016-FreeList-gf-none-plain-r2-argon-2026-10-13-score
+Z017	zfafgnp301	FreeList	gf	none	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1425.3	3	l8u-Z017-FreeList-gf-none-plain-r3-argon-2026-10-13-score
+Z018	zfffgnp301	FreeList	gf	none	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	634.6	3	l8u-Z018-FreeList-gf-none-plain-r3-flash-2026-10-13-score
+Z019	zfafgns101	FreeList	gf	none	salt	1	argon	TURN-TIMEOUT	p1	belted	-	VOID(NO-BRIEFING)	shell-ok+fence-ok	ARM-NO	NOT-SCORED	excluded by its own receipt	12	[1,2,3,4,5,6,7,8,9,10,11,12]	-	-	21724.7	14	l8u-Z019-FreeList-gf-none-salt-r1-argon-2026-10-13-score
+Z020	zfffgns101	FreeList	gf	none	salt	1	flash	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	FAIL	TESTS 6/7	0	[]	-	-	5755.6	6	l8u-Z020-FreeList-gf-none-salt-r1-flash-2026-10-13-score
+Z021	zfffgns201	FreeList	gf	none	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	FAIL	TESTS 6/7	0	[]	-	-	2006.5	4	l8u-Z021-FreeList-gf-none-salt-r2-flash-2026-10-13-score
+Z022	zfafgns201	FreeList	gf	none	salt	2	argon	WEDGED	p1	belted	-	VOID(NO-BRIEFING)	shell-ok+fence-ok	ARM-NO	NOT-SCORED	excluded by its own receipt	5	[1,2,3,4,5]	-	-	9127.3	6	l8u-Z022-FreeList-gf-none-salt-r2-argon-2026-10-13-score
+Z023	zfafgns301	FreeList	gf	none	salt	3	argon	WEDGED	p1	belted	-	VOID(NO-BRIEFING)	shell-ok+fence-ok	ARM-NO	NOT-SCORED	excluded by its own receipt	5	[1,2,3,4,5]	-	-	9128.8	6	l8u-Z023-FreeList-gf-none-salt-r3-argon-2026-10-13-score
+Z024	zfffgns301	FreeList	gf	none	salt	3	flash	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	FAIL	TESTS 6/7	0	[]	-	-	3021.6	4	l8u-Z024-FreeList-gf-none-salt-r3-flash-2026-10-13-score
+Z025	zfargnp101	LRU	gf	none	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	736.2	3	l8u-Z025-LRU-gf-none-plain-r1-argon-2026-10-13-score
+Z026	zffrgnp101	LRU	gf	none	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	442.1	3	l8u-Z026-LRU-gf-none-plain-r1-flash-2026-10-13-score
+Z027	zffrgnp201	LRU	gf	none	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	491.5	3	l8u-Z027-LRU-gf-none-plain-r2-flash-2026-10-13-score
+Z028	zfargnp201	LRU	gf	none	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	PERSIS	PASS	TESTS 16/16	0	[]	-	-	1061.7	3	l8u-Z028-LRU-gf-none-plain-r2-argon-2026-10-13-score
+Z029	zfargnp301	LRU	gf	none	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	822.9	3	l8u-Z029-LRU-gf-none-plain-r3-argon-2026-10-13-score
+Z030	zffrgnp301	LRU	gf	none	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	406.8	3	l8u-Z030-LRU-gf-none-plain-r3-flash-2026-10-13-score
+Z031	zfargns101	LRU	gf	none	salt	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1186.4	3	l8u-Z031-LRU-gf-none-salt-r1-argon-2026-10-13-score
+Z032	zffrgns101	LRU	gf	none	salt	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1139.0	3	l8u-Z032-LRU-gf-none-salt-r1-flash-2026-10-13-score
+Z033	zffrgns201	LRU	gf	none	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	949.7	3	l8u-Z033-LRU-gf-none-salt-r2-flash-2026-10-13-score
+Z034	zfargns201	LRU	gf	none	salt	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1295.4	3	l8u-Z034-LRU-gf-none-salt-r2-argon-2026-10-13-score
+Z035	zfargns301	LRU	gf	none	salt	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1218.8	3	l8u-Z035-LRU-gf-none-salt-r3-argon-2026-10-13-score
+Z036	zffrgns301	LRU	gf	none	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	948.1	3	l8u-Z036-LRU-gf-none-salt-r3-flash-2026-10-13-score
+Z037	zfazgnp101	LZW	gf	none	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	997.5	3	l8u-Z037-LZW-gf-none-plain-r1-argon-2026-10-13-score
+Z038	zffzgnp101	LZW	gf	none	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	585.1	3	l8u-Z038-LZW-gf-none-plain-r1-flash-2026-10-13-score
+Z039	zffzgnp201	LZW	gf	none	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	642.0	3	l8u-Z039-LZW-gf-none-plain-r2-flash-2026-10-13-score
+Z040	zfazgnp201	LZW	gf	none	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1404.4	3	l8u-Z040-LZW-gf-none-plain-r2-argon-2026-10-13-score
+Z041	zfazgnp301	LZW	gf	none	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1099.9	3	l8u-Z041-LZW-gf-none-plain-r3-argon-2026-10-13-score
+Z042	zffzgnp301	LZW	gf	none	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	461.1	3	l8u-Z042-LZW-gf-none-plain-r3-flash-2026-10-13-score
+Z043	zfazgns101	LZW	gf	none	salt	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1499.0	3	l8u-Z043-LZW-gf-none-salt-r1-argon-2026-10-13-score
+Z044	zffzgns101	LZW	gf	none	salt	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1289.8	3	l8u-Z044-LZW-gf-none-salt-r1-flash-2026-10-13-score
+Z045	zffzgns201	LZW	gf	none	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1639.0	3	l8u-Z045-LZW-gf-none-salt-r2-flash-2026-10-13-score
+Z046	zfazgns201	LZW	gf	none	salt	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1441.2	3	l8u-Z046-LZW-gf-none-salt-r2-argon-2026-10-13-score
+Z047	zfazgns301	LZW	gf	none	salt	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1609.2	3	l8u-Z047-LZW-gf-none-salt-r3-argon-2026-10-13-score
+Z048	zffzgns301	LZW	gf	none	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1157.0	3	l8u-Z048-LZW-gf-none-salt-r3-flash-2026-10-13-score
+Z049	zfapgnp101	Paxos	gf	none	plain	1	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	3364.6	4	l8u-Z049-Paxos-gf-none-plain-r1-argon-2026-10-13-score
+Z050	zffpgnp101	Paxos	gf	none	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	636.9	3	l8u-Z050-Paxos-gf-none-plain-r1-flash-2026-10-13-score
+Z051	zffpgnp201	Paxos	gf	none	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	FAIL	TESTS 16/17	0	[]	-	-	620.3	3	l8u-Z051-Paxos-gf-none-plain-r2-flash-2026-10-13-score
+Z052	zfapgnp201	Paxos	gf	none	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	2441.1	4	l8u-Z052-Paxos-gf-none-plain-r2-argon-2026-10-13-score
+Z053	zfapgnp301	Paxos	gf	none	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	1986.4	3	l8u-Z053-Paxos-gf-none-plain-r3-argon-2026-10-13-score
+Z054	zffpgnp301	Paxos	gf	none	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	478.0	3	l8u-Z054-Paxos-gf-none-plain-r3-flash-2026-10-13-score
+Z055	zfapgns101	Paxos	gf	none	salt	1	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	2	[2,3]	-	-	8177.8	7	l8u-Z055-Paxos-gf-none-salt-r1-argon-2026-10-13-score
+Z056	zffpgns101	Paxos	gf	none	salt	1	flash	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	1	[2]	-	-	5324.4	5	l8u-Z056-Paxos-gf-none-salt-r1-flash-2026-10-13-score
+Z057	zffpgns2a201	Paxos	gf	none	salt	2	flash	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	1	[3]	-	-	4872.9	6	l8u-Z057-Paxos-gf-none-salt-r2-flash-2026-10-13-score
+Z058	zfapgns201	Paxos	gf	none	salt	2	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	1	[1]	-	-	3346.9	4	l8u-Z058-Paxos-gf-none-salt-r2-argon-2026-10-13-score
+Z059	zfapgns301	Paxos	gf	none	salt	3	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	2	[2,3]	-	-	8228.9	7	l8u-Z059-Paxos-gf-none-salt-r3-argon-2026-10-13-score
+Z060	zffpgns301	Paxos	gf	none	salt	3	flash	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	2694.6	4	l8u-Z060-Paxos-gf-none-salt-r3-flash-2026-10-13-score
+Z061	zfacgsp101	Crc32	gf	statement	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	918.4	3	l8u-Z061-Crc32-gf-statement-plain-r1-argon-2026-10-13-score
+Z062	zffcgsp101	Crc32	gf	statement	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	458.5	3	l8u-Z062-Crc32-gf-statement-plain-r1-flash-2026-10-13-score
+Z063	zffcgsp201	Crc32	gf	statement	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	403.3	3	l8u-Z063-Crc32-gf-statement-plain-r2-flash-2026-10-13-score
+Z064	zfacgsp201	Crc32	gf	statement	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	750.1	3	l8u-Z064-Crc32-gf-statement-plain-r2-argon-2026-10-13-score
+Z065	zfacgsp301	Crc32	gf	statement	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	729.6	3	l8u-Z065-Crc32-gf-statement-plain-r3-argon-2026-10-13-score
+Z066	zffcgsp301	Crc32	gf	statement	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	PERSIS	PASS	TESTS 6/6	0	[]	-	-	1609.4	3	l8u-Z066-Crc32-gf-statement-plain-r3-flash-2026-10-13-score
+Z067	zfacgss101	Crc32	gf	statement	salt	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	1158.5	3	l8u-Z067-Crc32-gf-statement-salt-r1-argon-2026-10-13-score
+Z068	zffcgss101	Crc32	gf	statement	salt	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	1296.9	3	l8u-Z068-Crc32-gf-statement-salt-r1-flash-2026-10-13-score
+Z069	zffcgss201	Crc32	gf	statement	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	4217.4	5	l8u-Z069-Crc32-gf-statement-salt-r2-flash-2026-10-13-score
+Z070	zfacgss201	Crc32	gf	statement	salt	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	997.2	3	l8u-Z070-Crc32-gf-statement-salt-r2-argon-2026-10-13-score
+Z071	zfacgss301	Crc32	gf	statement	salt	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	966.3	3	l8u-Z071-Crc32-gf-statement-salt-r3-argon-2026-10-13-score
+Z072	zffcgss301	Crc32	gf	statement	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	735.6	3	l8u-Z072-Crc32-gf-statement-salt-r3-flash-2026-10-13-score
+Z073	zfafgsp101	FreeList	gf	statement	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1453.3	3	l8u-Z073-FreeList-gf-statement-plain-r1-argon-2026-10-13-score
+Z074	zfffgsp101	FreeList	gf	statement	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	407.5	3	l8u-Z074-FreeList-gf-statement-plain-r1-flash-2026-10-13-score
+Z075	zfffgsp201	FreeList	gf	statement	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	418.3	3	l8u-Z075-FreeList-gf-statement-plain-r2-flash-2026-10-13-score
+Z076	zfafgsp201	FreeList	gf	statement	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1860.0	3	l8u-Z076-FreeList-gf-statement-plain-r2-argon-2026-10-13-score
+Z077	zfafgsp301	FreeList	gf	statement	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1738.0	3	l8u-Z077-FreeList-gf-statement-plain-r3-argon-2026-10-13-score
+Z078	zfffgsp301	FreeList	gf	statement	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	595.4	3	l8u-Z078-FreeList-gf-statement-plain-r3-flash-2026-10-13-score
+Z079	zfafgss101	FreeList	gf	statement	salt	1	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	3759.9	4	l8u-Z079-FreeList-gf-statement-salt-r1-argon-2026-10-13-score
+Z080	zfffgss101	FreeList	gf	statement	salt	1	flash	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	4648.9	5	l8u-Z080-FreeList-gf-statement-salt-r1-flash-2026-10-13-score
+Z081	zfffgss201	FreeList	gf	statement	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1691.9	3	l8u-Z081-FreeList-gf-statement-salt-r2-flash-2026-10-13-score
+Z082	zfafgss201	FreeList	gf	statement	salt	2	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	4152.7	5	l8u-Z082-FreeList-gf-statement-salt-r2-argon-2026-10-13-score
+Z083	zfafgss301	FreeList	gf	statement	salt	3	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	2073.8	4	l8u-Z083-FreeList-gf-statement-salt-r3-argon-2026-10-13-score
+Z084	zfffgss301	FreeList	gf	statement	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	4275.7	5	l8u-Z084-FreeList-gf-statement-salt-r3-flash-2026-10-13-score
+Z085	zfargsp101	LRU	gf	statement	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	817.5	3	l8u-Z085-LRU-gf-statement-plain-r1-argon-2026-10-13-score
+Z086	zffrgsp101	LRU	gf	statement	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	602.3	3	l8u-Z086-LRU-gf-statement-plain-r1-flash-2026-10-13-score
+Z087	zffrgsp201	LRU	gf	statement	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	513.3	3	l8u-Z087-LRU-gf-statement-plain-r2-flash-2026-10-13-score
+Z088	zfargsp201	LRU	gf	statement	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	670.5	3	l8u-Z088-LRU-gf-statement-plain-r2-argon-2026-10-13-score
+Z089	zfargsp301	LRU	gf	statement	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	871.6	3	l8u-Z089-LRU-gf-statement-plain-r3-argon-2026-10-13-score
+Z090	zffrgsp301	LRU	gf	statement	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	405.2	3	l8u-Z090-LRU-gf-statement-plain-r3-flash-2026-10-13-score
+Z091	zfargss101	LRU	gf	statement	salt	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1254.7	3	l8u-Z091-LRU-gf-statement-salt-r1-argon-2026-10-13-score
+Z092	zffrgss101	LRU	gf	statement	salt	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1024.7	3	l8u-Z092-LRU-gf-statement-salt-r1-flash-2026-10-13-score
+Z093	zffrgss201	LRU	gf	statement	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	852.4	3	l8u-Z093-LRU-gf-statement-salt-r2-flash-2026-10-13-score
+Z094	zfargss201	LRU	gf	statement	salt	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1424.4	3	l8u-Z094-LRU-gf-statement-salt-r2-argon-2026-10-13-score
+Z095	zfargss301	LRU	gf	statement	salt	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1682.6	3	l8u-Z095-LRU-gf-statement-salt-r3-argon-2026-10-13-score
+Z096	zffrgss301	LRU	gf	statement	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1099.1	3	l8u-Z096-LRU-gf-statement-salt-r3-flash-2026-10-13-score
+Z097	zfazgsp101	LZW	gf	statement	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	978.4	3	l8u-Z097-LZW-gf-statement-plain-r1-argon-2026-10-13-score
+Z098	zffzgsp101	LZW	gf	statement	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	338.7	3	l8u-Z098-LZW-gf-statement-plain-r1-flash-2026-10-13-score
+Z099	zffzgsp201	LZW	gf	statement	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	410.4	3	l8u-Z099-LZW-gf-statement-plain-r2-flash-2026-10-13-score
+Z100	zfazgsp201	LZW	gf	statement	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	951.8	3	l8u-Z100-LZW-gf-statement-plain-r2-argon-2026-10-13-score
+Z101	zfazgsp301	LZW	gf	statement	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	870.0	3	l8u-Z101-LZW-gf-statement-plain-r3-argon-2026-10-13-score
+Z102	zffzgsp301	LZW	gf	statement	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	351.7	3	l8u-Z102-LZW-gf-statement-plain-r3-flash-2026-10-13-score
+Z103	zfazgss101	LZW	gf	statement	salt	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1267.3	3	l8u-Z103-LZW-gf-statement-salt-r1-argon-2026-10-13-score
+Z104	zffzgss101	LZW	gf	statement	salt	1	flash	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1955.8	3	l8u-Z104-LZW-gf-statement-salt-r1-flash-2026-10-13-score
+Z105	zffzgss201	LZW	gf	statement	salt	2	flash	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1920.2	3	l8u-Z105-LZW-gf-statement-salt-r2-flash-2026-10-13-score
+Z106	zfazgss201	LZW	gf	statement	salt	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1214.1	3	l8u-Z106-LZW-gf-statement-salt-r2-argon-2026-10-13-score
+Z107	zfazgss301	LZW	gf	statement	salt	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1431.4	3	l8u-Z107-LZW-gf-statement-salt-r3-argon-2026-10-13-score
+Z108	zffzgss301	LZW	gf	statement	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1794.1	3	l8u-Z108-LZW-gf-statement-salt-r3-flash-2026-10-13-score
+Z109	zfacbnp101	Crc32	bf	none	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	698.0	3	l8u-Z109-Crc32-bf-none-plain-r1-argon-2026-10-13-score
+Z110	zffcbnp101	Crc32	bf	none	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	479.7	3	l8u-Z110-Crc32-bf-none-plain-r1-flash-2026-10-13-score
+Z111	zffcbnp201	Crc32	bf	none	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	474.7	3	l8u-Z111-Crc32-bf-none-plain-r2-flash-2026-10-13-score
+Z112	zfacbnp201	Crc32	bf	none	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	629.3	3	l8u-Z112-Crc32-bf-none-plain-r2-argon-2026-10-13-score
+Z113	zfacbnp301	Crc32	bf	none	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	699.4	3	l8u-Z113-Crc32-bf-none-plain-r3-argon-2026-10-13-score
+Z114	zffcbnp301	Crc32	bf	none	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	439.6	3	l8u-Z114-Crc32-bf-none-plain-r3-flash-2026-10-13-score
+Z115	zfacbns101	Crc32	bf	none	salt	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	1198.9	3	l8u-Z115-Crc32-bf-none-salt-r1-argon-2026-10-13-score
+Z116	zffcbns101	Crc32	bf	none	salt	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	619.4	3	l8u-Z116-Crc32-bf-none-salt-r1-flash-2026-10-13-score
+Z117	zffcbns201	Crc32	bf	none	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	689.6	3	l8u-Z117-Crc32-bf-none-salt-r2-flash-2026-10-13-score
+Z118	zfacbns201	Crc32	bf	none	salt	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	921.4	3	l8u-Z118-Crc32-bf-none-salt-r2-argon-2026-10-13-score
+Z119	zfacbns301	Crc32	bf	none	salt	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	1122.3	3	l8u-Z119-Crc32-bf-none-salt-r3-argon-2026-10-13-score
+Z120	zffcbns301	Crc32	bf	none	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	823.4	3	l8u-Z120-Crc32-bf-none-salt-r3-flash-2026-10-13-score
+Z121	zfafbnp101	FreeList	bf	none	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	911.8	3	l8u-Z121-FreeList-bf-none-plain-r1-argon-2026-10-13-score
+Z122	zfffbnp101	FreeList	bf	none	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	557.3	3	l8u-Z122-FreeList-bf-none-plain-r1-flash-2026-10-13-score
+Z123	zfffbnp201	FreeList	bf	none	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	694.3	3	l8u-Z123-FreeList-bf-none-plain-r2-flash-2026-10-13-score
+Z124	zfafbnp201	FreeList	bf	none	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1585.8	3	l8u-Z124-FreeList-bf-none-plain-r2-argon-2026-10-13-score
+Z125	zfafbnp301	FreeList	bf	none	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1233.0	3	l8u-Z125-FreeList-bf-none-plain-r3-argon-2026-10-13-score
+Z126	zfffbnp301	FreeList	bf	none	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	471.4	3	l8u-Z126-FreeList-bf-none-plain-r3-flash-2026-10-13-score
+Z127	zfafbns101	FreeList	bf	none	salt	1	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	4	[1,2,3,4]	-	-	9188.8	8	l8u-Z127-FreeList-bf-none-salt-r1-argon-2026-10-13-score
+Z128	zfffbns101	FreeList	bf	none	salt	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1701.1	3	l8u-Z128-FreeList-bf-none-salt-r1-flash-2026-10-13-score
+Z129	zfffbns201	FreeList	bf	none	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	2043.8	4	l8u-Z129-FreeList-bf-none-salt-r2-flash-2026-10-13-score
+Z130	zfafbns201	FreeList	bf	none	salt	2	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	1	[2]	-	-	5544.1	6	l8u-Z130-FreeList-bf-none-salt-r2-argon-2026-10-13-score
+Z131	zfafbns301	FreeList	bf	none	salt	3	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	2	[1,2]	-	-	6182.6	6	l8u-Z131-FreeList-bf-none-salt-r3-argon-2026-10-13-score
+Z132	zfffbns301	FreeList	bf	none	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1779.1	3	l8u-Z132-FreeList-bf-none-salt-r3-flash-2026-10-13-score
+Z133	zfarbnp101	LRU	bf	none	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	833.7	3	l8u-Z133-LRU-bf-none-plain-r1-argon-2026-10-13-score
+Z134	zffrbnp101	LRU	bf	none	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	604.6	3	l8u-Z134-LRU-bf-none-plain-r1-flash-2026-10-13-score
+Z135	zffrbnp201	LRU	bf	none	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	391.9	3	l8u-Z135-LRU-bf-none-plain-r2-flash-2026-10-13-score
+Z136	zfarbnp201	LRU	bf	none	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	716.4	3	l8u-Z136-LRU-bf-none-plain-r2-argon-2026-10-13-score
+Z137	zfarbnp301	LRU	bf	none	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	837.3	3	l8u-Z137-LRU-bf-none-plain-r3-argon-2026-10-13-score
+Z138	zffrbnp301	LRU	bf	none	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	385.7	3	l8u-Z138-LRU-bf-none-plain-r3-flash-2026-10-13-score
+Z139	zfarbns101	LRU	bf	none	salt	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1422.8	3	l8u-Z139-LRU-bf-none-salt-r1-argon-2026-10-13-score
+Z140	zffrbns101	LRU	bf	none	salt	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	972.9	3	l8u-Z140-LRU-bf-none-salt-r1-flash-2026-10-13-score
+Z141	zffrbns201	LRU	bf	none	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	883.3	3	l8u-Z141-LRU-bf-none-salt-r2-flash-2026-10-13-score
+Z142	zfarbns201	LRU	bf	none	salt	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1559.6	3	l8u-Z142-LRU-bf-none-salt-r2-argon-2026-10-13-score
+Z143	zfarbns301	LRU	bf	none	salt	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1282.4	3	l8u-Z143-LRU-bf-none-salt-r3-argon-2026-10-13-score
+Z144	zffrbns301	LRU	bf	none	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1270.4	3	l8u-Z144-LRU-bf-none-salt-r3-flash-2026-10-13-score
+Z145	zfazbnp101	LZW	bf	none	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	749.8	3	l8u-Z145-LZW-bf-none-plain-r1-argon-2026-10-13-score
+Z146	zffzbnp101	LZW	bf	none	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	533.6	3	l8u-Z146-LZW-bf-none-plain-r1-flash-2026-10-13-score
+Z147	zffzbnp201	LZW	bf	none	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	500.3	3	l8u-Z147-LZW-bf-none-plain-r2-flash-2026-10-13-score
+Z148	zfazbnp201	LZW	bf	none	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	837.0	3	l8u-Z148-LZW-bf-none-plain-r2-argon-2026-10-13-score
+Z149	zfazbnp301	LZW	bf	none	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1108.3	3	l8u-Z149-LZW-bf-none-plain-r3-argon-2026-10-13-score
+Z150	zffzbnp301	LZW	bf	none	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	434.1	3	l8u-Z150-LZW-bf-none-plain-r3-flash-2026-10-13-score
+Z151	zfazbns101	LZW	bf	none	salt	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1249.7	3	l8u-Z151-LZW-bf-none-salt-r1-argon-2026-10-13-score
+Z152	zffzbns101	LZW	bf	none	salt	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	FAIL	<none>	0	[]	-	-	881.5	3	l8u-Z152-LZW-bf-none-salt-r1-flash-2026-10-13-score
+Z153	zffzbns201	LZW	bf	none	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	978.2	3	l8u-Z153-LZW-bf-none-salt-r2-flash-2026-10-13-score
+Z154	zfazbns201	LZW	bf	none	salt	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1611.8	3	l8u-Z154-LZW-bf-none-salt-r2-argon-2026-10-13-score
+Z155	zfazbns301	LZW	bf	none	salt	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1584.3	3	l8u-Z155-LZW-bf-none-salt-r3-argon-2026-10-13-score
+Z156	zffzbns301	LZW	bf	none	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1014.9	3	l8u-Z156-LZW-bf-none-salt-r3-flash-2026-10-13-score
+Z157	zfapbnp101	Paxos	bf	none	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	3390.0	4	l8u-Z157-Paxos-bf-none-plain-r1-argon-2026-10-13-score
+Z158	zffpbnp101	Paxos	bf	none	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	541.0	3	l8u-Z158-Paxos-bf-none-plain-r1-flash-2026-10-13-score
+Z159	zffpbnp201	Paxos	bf	none	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	398.5	3	l8u-Z159-Paxos-bf-none-plain-r2-flash-2026-10-13-score
+Z160	zfapbnp201	Paxos	bf	none	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	1938.6	3	l8u-Z160-Paxos-bf-none-plain-r2-argon-2026-10-13-score
+Z161	zfapbnp301	Paxos	bf	none	plain	3	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	2	[2,3]	-	-	6882.6	6	l8u-Z161-Paxos-bf-none-plain-r3-argon-2026-10-13-score
+Z162	zffpbnp301	Paxos	bf	none	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	473.2	3	l8u-Z162-Paxos-bf-none-plain-r3-flash-2026-10-13-score
+Z163	zfapbns101	Paxos	bf	none	salt	1	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	2664.5	4	l8u-Z163-Paxos-bf-none-salt-r1-argon-2026-10-13-score
+Z164	zffpbns101	Paxos	bf	none	salt	1	flash	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	1	[2]	-	-	4904.4	5	l8u-Z164-Paxos-bf-none-salt-r1-flash-2026-10-13-score
+Z165	zffpbns201	Paxos	bf	none	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	1731.5	4	l8u-Z165-Paxos-bf-none-salt-r2-flash-2026-10-13-score
+Z166	zfapbns201	Paxos	bf	none	salt	2	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	2216.1	4	l8u-Z166-Paxos-bf-none-salt-r2-argon-2026-10-13-score
+Z167	zfapbns301	Paxos	bf	none	salt	3	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	3202.8	4	l8u-Z167-Paxos-bf-none-salt-r3-argon-2026-10-13-score
+Z168	zffpbns301	Paxos	bf	none	salt	3	flash	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 17/17	0	[]	-	-	3431.1	4	l8u-Z168-Paxos-bf-none-salt-r3-flash-2026-10-13-score
+Z169	zfacbsp101	Crc32	bf	statement	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	675.3	3	l8u-Z169-Crc32-bf-statement-plain-r1-argon-2026-10-13-score
+Z170	zffcbsp101	Crc32	bf	statement	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	408.8	3	l8u-Z170-Crc32-bf-statement-plain-r1-flash-2026-10-13-score
+Z171	zffcbsp201	Crc32	bf	statement	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	429.4	3	l8u-Z171-Crc32-bf-statement-plain-r2-flash-2026-10-13-score
+Z172	zfacbsp201	Crc32	bf	statement	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	PERSIS	PASS	TESTS 6/6	0	[]	-	-	912.7	3	l8u-Z172-Crc32-bf-statement-plain-r2-argon-2026-10-13-score
+Z173	zfacbsp301	Crc32	bf	statement	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	646.0	3	l8u-Z173-Crc32-bf-statement-plain-r3-argon-2026-10-13-score
+Z174	zffcbsp301	Crc32	bf	statement	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	408.1	3	l8u-Z174-Crc32-bf-statement-plain-r3-flash-2026-10-13-score
+Z175	zfacbss101	Crc32	bf	statement	salt	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	910.4	3	l8u-Z175-Crc32-bf-statement-salt-r1-argon-2026-10-13-score
+Z176	zffcbss101	Crc32	bf	statement	salt	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	948.7	3	l8u-Z176-Crc32-bf-statement-salt-r1-flash-2026-10-13-score
+Z177	zffcbss201	Crc32	bf	statement	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	687.1	3	l8u-Z177-Crc32-bf-statement-salt-r2-flash-2026-10-13-score
+Z178	zfacbss201	Crc32	bf	statement	salt	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	984.5	3	l8u-Z178-Crc32-bf-statement-salt-r2-argon-2026-10-13-score
+Z179	zfacbss301	Crc32	bf	statement	salt	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 6/6	0	[]	-	-	975.4	3	l8u-Z179-Crc32-bf-statement-salt-r3-argon-2026-10-13-score
+Z180	zffcbss301	Crc32	bf	statement	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	PERSIS	PASS	TESTS 6/6	1	[2]	-	-	673.0	3	l8u-Z180-Crc32-bf-statement-salt-r3-flash-2026-10-13-score
+Z181	zfafbsp101	FreeList	bf	statement	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1249.8	3	l8u-Z181-FreeList-bf-statement-plain-r1-argon-2026-10-13-score
+Z182	zfffbsp101	FreeList	bf	statement	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	480.8	3	l8u-Z182-FreeList-bf-statement-plain-r1-flash-2026-10-13-score
+Z183	zfffbsp201	FreeList	bf	statement	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	405.5	3	l8u-Z183-FreeList-bf-statement-plain-r2-flash-2026-10-13-score
+Z184	zfafbsp201	FreeList	bf	statement	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	852.8	3	l8u-Z184-FreeList-bf-statement-plain-r2-argon-2026-10-13-score
+Z185	zfafbsp301	FreeList	bf	statement	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	860.5	3	l8u-Z185-FreeList-bf-statement-plain-r3-argon-2026-10-13-score
+Z186	zfffbsp301	FreeList	bf	statement	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	392.8	3	l8u-Z186-FreeList-bf-statement-plain-r3-flash-2026-10-13-score
+Z187	zfafbss101	FreeList	bf	statement	salt	1	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	2731.3	4	l8u-Z187-FreeList-bf-statement-salt-r1-argon-2026-10-13-score
+Z188	zfffbss101	FreeList	bf	statement	salt	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	1327.1	3	l8u-Z188-FreeList-bf-statement-salt-r1-flash-2026-10-13-score
+Z189	zfffbss201	FreeList	bf	statement	salt	2	flash	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	FAIL	TESTS 6/7	0	[]	-	-	3836.4	5	l8u-Z189-FreeList-bf-statement-salt-r2-flash-2026-10-13-score
+Z190	zfafbss201	FreeList	bf	statement	salt	2	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	2850.8	4	l8u-Z190-FreeList-bf-statement-salt-r2-argon-2026-10-13-score
+Z191	zfafbss301	FreeList	bf	statement	salt	3	argon	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 7/7	0	[]	-	-	2625.5	4	l8u-Z191-FreeList-bf-statement-salt-r3-argon-2026-10-13-score
+Z192	zfffbss301	FreeList	bf	statement	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	FAIL	TESTS 6/7	0	[]	-	-	1151.8	3	l8u-Z192-FreeList-bf-statement-salt-r3-flash-2026-10-13-score
+Z193	zfarbsp101	LRU	bf	statement	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	832.8	3	l8u-Z193-LRU-bf-statement-plain-r1-argon-2026-10-13-score
+Z194	zffrbsp101	LRU	bf	statement	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	399.6	3	l8u-Z194-LRU-bf-statement-plain-r1-flash-2026-10-13-score
+Z195	zffrbsp201	LRU	bf	statement	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	308.7	3	l8u-Z195-LRU-bf-statement-plain-r2-flash-2026-10-13-score
+Z196	zfarbsp201	LRU	bf	statement	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	636.3	3	l8u-Z196-LRU-bf-statement-plain-r2-argon-2026-10-13-score
+Z197	zfarbsp301	LRU	bf	statement	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	885.3	3	l8u-Z197-LRU-bf-statement-plain-r3-argon-2026-10-13-score
+Z198	zffrbsp301	LRU	bf	statement	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	300.2	3	l8u-Z198-LRU-bf-statement-plain-r3-flash-2026-10-13-score
+Z199	zfarbss101	LRU	bf	statement	salt	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1664.1	3	l8u-Z199-LRU-bf-statement-salt-r1-argon-2026-10-13-score
+Z200	zffrbss101	LRU	bf	statement	salt	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	779.9	3	l8u-Z200-LRU-bf-statement-salt-r1-flash-2026-10-13-score
+Z201	zffrbss201	LRU	bf	statement	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1102.9	3	l8u-Z201-LRU-bf-statement-salt-r2-flash-2026-10-13-score
+Z202	zfarbss201	LRU	bf	statement	salt	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1564.8	3	l8u-Z202-LRU-bf-statement-salt-r2-argon-2026-10-13-score
+Z203	zfarbss301	LRU	bf	statement	salt	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	1309.6	3	l8u-Z203-LRU-bf-statement-salt-r3-argon-2026-10-13-score
+Z204	zffrbss301	LRU	bf	statement	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 16/16	0	[]	-	-	793.3	3	l8u-Z204-LRU-bf-statement-salt-r3-flash-2026-10-13-score
+Z205	zfazbsp101	LZW	bf	statement	plain	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	912.8	3	l8u-Z205-LZW-bf-statement-plain-r1-argon-2026-10-13-score
+Z206	zffzbsp101	LZW	bf	statement	plain	1	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	339.7	3	l8u-Z206-LZW-bf-statement-plain-r1-flash-2026-10-13-score
+Z207	zffzbsp201	LZW	bf	statement	plain	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	490.7	3	l8u-Z207-LZW-bf-statement-plain-r2-flash-2026-10-13-score
+Z208	zfazbsp201	LZW	bf	statement	plain	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1044.6	3	l8u-Z208-LZW-bf-statement-plain-r2-argon-2026-10-13-score
+Z209	zfazbsp301	LZW	bf	statement	plain	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1072.8	3	l8u-Z209-LZW-bf-statement-plain-r3-argon-2026-10-13-score
+Z210	zffzbsp301	LZW	bf	statement	plain	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	469.0	3	l8u-Z210-LZW-bf-statement-plain-r3-flash-2026-10-13-score
+Z211	zfazbss101	LZW	bf	statement	salt	1	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1130.6	3	l8u-Z211-LZW-bf-statement-salt-r1-argon-2026-10-13-score
+Z212	zffzbss101	LZW	bf	statement	salt	1	flash	LANDED	p1	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	2010.3	4	l8u-Z212-LZW-bf-statement-salt-r1-flash-2026-10-13-score
+Z213	zffzbss201	LZW	bf	statement	salt	2	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1779.4	3	l8u-Z213-LZW-bf-statement-salt-r2-flash-2026-10-13-score
+Z214	zfazbss201	LZW	bf	statement	salt	2	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1446.1	3	l8u-Z214-LZW-bf-statement-salt-r2-argon-2026-10-13-score
+Z215	zfazbss301	LZW	bf	statement	salt	3	argon	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1071.6	3	l8u-Z215-LZW-bf-statement-salt-r3-argon-2026-10-13-score
+Z216	zffzbss301	LZW	bf	statement	salt	3	flash	LANDED	p1	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 8/8	0	[]	-	-	1460.9	3	l8u-Z216-LZW-bf-statement-salt-r3-flash-2026-10-13-score
+Z217	zfacgxp101	Crc32	gf	spec-change	plain	1	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4	0	[]	0	[]	1248.9	6	l8u-Z217-Crc32-gf-spec-change-plain-r1-argon-sc-2026-10-13-score
+Z218	zffcgxp101	Crc32	gf	spec-change	plain	1	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4	0	[]	0	[]	1418.5	6	l8u-Z218-Crc32-gf-spec-change-plain-r1-flash-sc-2026-10-13-score
+Z219	zffcgxp201	Crc32	gf	spec-change	plain	2	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4	0	[]	0	[]	749.3	6	l8u-Z219-Crc32-gf-spec-change-plain-r2-flash-sc-2026-10-13-score
+Z220	zfacgxp201	Crc32	gf	spec-change	plain	2	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4	0	[]	0	[]	1417.6	6	l8u-Z220-Crc32-gf-spec-change-plain-r2-argon-sc-2026-10-13-score
+Z221	zfacgxp301	Crc32	gf	spec-change	plain	3	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4	0	[]	0	[]	1491.6	6	l8u-Z221-Crc32-gf-spec-change-plain-r3-argon-sc-2026-10-13-score
+Z222	zffcgxp301	Crc32	gf	spec-change	plain	3	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4	0	[]	0	[]	696.1	6	l8u-Z222-Crc32-gf-spec-change-plain-r3-flash-sc-2026-10-13-score
+Z223	zfacgxs101	Crc32	gf	spec-change	salt	1	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4	0	[]	0	[]	2618.5	6	l8u-Z223-Crc32-gf-spec-change-salt-r1-argon-sc-2026-10-13-score
+Z224	zffcgxs101	Crc32	gf	spec-change	salt	1	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4	0	[]	0	[]	936.2	6	l8u-Z224-Crc32-gf-spec-change-salt-r1-flash-sc-2026-10-13-score
+Z225	zffcgxs201	Crc32	gf	spec-change	salt	2	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4	0	[]	0	[]	1187.2	6	l8u-Z225-Crc32-gf-spec-change-salt-r2-flash-sc-2026-10-13-score
+Z226	zfacgxs201	Crc32	gf	spec-change	salt	2	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4	0	[]	0	[]	3194.2999999999997	7	l8u-Z226-Crc32-gf-spec-change-salt-r2-argon-sc-2026-10-13-score
+Z227	zfacgxs301	Crc32	gf	spec-change	salt	3	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4	0	[]	0	[]	2714.1000000000004	6	l8u-Z227-Crc32-gf-spec-change-salt-r3-argon-sc-2026-10-13-score
+Z228	zffcgxs301	Crc32	gf	spec-change	salt	3	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 10/10 REGRESSIONS 0/6 CLAUSE_TESTS 0/4	0	[]	0	[]	999.3	6	l8u-Z228-Crc32-gf-spec-change-salt-r3-flash-sc-2026-10-13-score
+Z229	zfafgxp101	FreeList	gf	spec-change	plain	1	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	0	[]	0	[]	1617.8999999999999	6	l8u-Z229-FreeList-gf-spec-change-plain-r1-argon-sc-2026-10-13-score
+Z230	zfffgxp101	FreeList	gf	spec-change	plain	1	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	0	[]	0	[]	793.8	6	l8u-Z230-FreeList-gf-spec-change-plain-r1-flash-sc-2026-10-13-score
+Z231	zfffgxp201	FreeList	gf	spec-change	plain	2	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	0	[]	0	[]	851.9	6	l8u-Z231-FreeList-gf-spec-change-plain-r2-flash-sc-2026-10-13-score
+Z232	zfafgxp201	FreeList	gf	spec-change	plain	2	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	0	[]	0	[]	2386.9	7	l8u-Z232-FreeList-gf-spec-change-plain-r2-argon-sc-2026-10-13-score
+Z233	zfafgxp301	FreeList	gf	spec-change	plain	3	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	0	[]	0	[]	2397.4	6	l8u-Z233-FreeList-gf-spec-change-plain-r3-argon-sc-2026-10-13-score
+Z234	zfffgxp301	FreeList	gf	spec-change	plain	3	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	0	[]	0	[]	815.0999999999999	6	l8u-Z234-FreeList-gf-spec-change-plain-r3-flash-sc-2026-10-13-score
+Z235	zfafgxs1a201	FreeList	gf	spec-change	salt	1	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	0	[]	4	[1,2,3,4]	11878.099999999999	11	l8u-Z235-FreeList-gf-spec-change-salt-r1-argon-sc-2026-10-13-score
+Z236	zfffgxs101	FreeList	gf	spec-change	salt	1	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	FAIL	TESTS 8/9 REGRESSIONS 1/7 CLAUSE_TESTS 0/2	0	[]	0	[]	1995.5	6	l8u-Z236-FreeList-gf-spec-change-salt-r1-flash-sc-2026-10-13-score
+Z237	zfffgxs201	FreeList	gf	spec-change	salt	2	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	FAIL	TESTS 8/9 REGRESSIONS 1/7 CLAUSE_TESTS 0/2	0	[]	0	[]	2268.0	6	l8u-Z237-FreeList-gf-spec-change-salt-r2-flash-sc-2026-10-13-score
+Z238	zfafgxs201	FreeList	gf	spec-change	salt	2	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	0	[]	4	[2,3,4,5]	11454.7	11	l8u-Z238-FreeList-gf-spec-change-salt-r2-argon-sc-2026-10-13-score
+Z239	zfafgxs301	FreeList	gf	spec-change	salt	3	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 9/9 REGRESSIONS 0/7 CLAUSE_TESTS 0/2	0	[]	2	[2,3]	8966.7	10	l8u-Z239-FreeList-gf-spec-change-salt-r3-argon-sc-2026-10-13-score
+Z240	zfffgxs301	FreeList	gf	spec-change	salt	3	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	FAIL	TESTS 8/9 REGRESSIONS 1/7 CLAUSE_TESTS 0/2	0	[]	0	[]	1916.9	6	l8u-Z240-FreeList-gf-spec-change-salt-r3-flash-sc-2026-10-13-score
+Z241	zfargxp101	LRU	gf	spec-change	plain	1	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	0	[]	0	[]	2357.2	6	l8u-Z241-LRU-gf-spec-change-plain-r1-argon-sc-2026-10-13-score
+Z242	zffrgxp101	LRU	gf	spec-change	plain	1	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	0	[]	0	[]	791.7	6	l8u-Z242-LRU-gf-spec-change-plain-r1-flash-sc-2026-10-13-score
+Z243	zffrgxp201	LRU	gf	spec-change	plain	2	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	0	[]	0	[]	601.6	6	l8u-Z243-LRU-gf-spec-change-plain-r2-flash-sc-2026-10-13-score
+Z244	zfargxp201	LRU	gf	spec-change	plain	2	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	0	[]	0	[]	2376.9	6	l8u-Z244-LRU-gf-spec-change-plain-r2-argon-sc-2026-10-13-score
+Z245	zfargxp301	LRU	gf	spec-change	plain	3	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	0	[]	0	[]	2523.8	6	l8u-Z245-LRU-gf-spec-change-plain-r3-argon-sc-2026-10-13-score
+Z246	zffrgxp301	LRU	gf	spec-change	plain	3	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	0	[]	0	[]	785.5999999999999	6	l8u-Z246-LRU-gf-spec-change-plain-r3-flash-sc-2026-10-13-score
+Z247	zfargxs101	LRU	gf	spec-change	salt	1	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	0	[]	0	[]	2833.7	6	l8u-Z247-LRU-gf-spec-change-salt-r1-argon-sc-2026-10-13-score
+Z248	zffrgxs101	LRU	gf	spec-change	salt	1	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	0	[]	0	[]	1258.4	6	l8u-Z248-LRU-gf-spec-change-salt-r1-flash-sc-2026-10-13-score
+Z249	zffrgxs201	LRU	gf	spec-change	salt	2	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	0	[]	0	[]	1086.9	6	l8u-Z249-LRU-gf-spec-change-salt-r2-flash-sc-2026-10-13-score
+Z250	zfargxs201	LRU	gf	spec-change	salt	2	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	0	[]	0	[]	2710.5	6	l8u-Z250-LRU-gf-spec-change-salt-r2-argon-sc-2026-10-13-score
+Z251	zfargxs3a201	LRU	gf	spec-change	salt	3	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	0	[]	0	[]	2735.4	6	l8u-Z251-LRU-gf-spec-change-salt-r3-argon-sc-2026-10-13-score
+Z252	zffrgxs301	LRU	gf	spec-change	salt	3	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 23/23 REGRESSIONS 0/16 CLAUSE_TESTS 0/7	0	[]	0	[]	1556.8	6	l8u-Z252-LRU-gf-spec-change-salt-r3-flash-sc-2026-10-13-score
+Z253	zfazgxp101	LZW	gf	spec-change	plain	1	argon	LANDED	p2	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	0	[]	0	[]	3665.8	7	l8u-Z253-LZW-gf-spec-change-plain-r1-argon-sc-2026-10-13-score
+Z254	zffzgxp101	LZW	gf	spec-change	plain	1	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	0	[]	0	[]	763.6	6	l8u-Z254-LZW-gf-spec-change-plain-r1-flash-sc-2026-10-13-score
+Z255	zffzgxp201	LZW	gf	spec-change	plain	2	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	0	[]	0	[]	671.3	6	l8u-Z255-LZW-gf-spec-change-plain-r2-flash-sc-2026-10-13-score
+Z256	zfazgxp201	LZW	gf	spec-change	plain	2	argon	LANDED	p2	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	0	[]	0	[]	3748.1	6	l8u-Z256-LZW-gf-spec-change-plain-r2-argon-sc-2026-10-13-score
+Z257	zfazgxp301	LZW	gf	spec-change	plain	3	argon	LANDED	p2	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	0	[]	0	[]	3375.4	6	l8u-Z257-LZW-gf-spec-change-plain-r3-argon-sc-2026-10-13-score
+Z258	zffzgxp301	LZW	gf	spec-change	plain	3	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	0	[]	0	[]	1054.9	6	l8u-Z258-LZW-gf-spec-change-plain-r3-flash-sc-2026-10-13-score
+Z259	zfazgxs101	LZW	gf	spec-change	salt	1	argon	LANDED	p2	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	0	[]	0	[]	5506.7	8	l8u-Z259-LZW-gf-spec-change-salt-r1-argon-sc-2026-10-13-score
+Z260	zffzgxs101	LZW	gf	spec-change	salt	1	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	0	[]	0	[]	2289.0	6	l8u-Z260-LZW-gf-spec-change-salt-r1-flash-sc-2026-10-13-score
+Z261	zffzgxs201	LZW	gf	spec-change	salt	2	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	0	[]	0	[]	1509.4	6	l8u-Z261-LZW-gf-spec-change-salt-r2-flash-sc-2026-10-13-score
+Z262	zfazgxs201	LZW	gf	spec-change	salt	2	argon	LANDED	p2	belted	TRUNC	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	0	[]	0	[]	4932.5	8	l8u-Z262-LZW-gf-spec-change-salt-r2-argon-sc-2026-10-13-score
+Z263	zfazgxs301	LZW	gf	spec-change	salt	3	argon	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	0	[]	0	[]	4208.2	7	l8u-Z263-LZW-gf-spec-change-salt-r3-argon-sc-2026-10-13-score
+Z264	zffzgxs301	LZW	gf	spec-change	salt	3	flash	LANDED	p2	belted	-	SCORED	shell-ok+fence-ok	LANDED	PASS	TESTS 15/15 REGRESSIONS 0/8 CLAUSE_TESTS 0/7	0	[]	0	[]	1739.4	6	l8u-Z264-LZW-gf-spec-change-salt-r3-flash-sc-2026-10-13-score
