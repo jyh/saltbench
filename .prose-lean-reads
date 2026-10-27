@@ -1,1 +1,3 @@
 # a claim record: id, path, claim-sha12, lean-decl (<tracked .lean path>::<name>), stmt-sha12, author, reader, date  -- see scripts/check_prose_lean.py
+o88-2026-10-26-001	README.md	a837adfa40c3	evidence/step0-b-triage-2026-09-01/probe18_unsat.lean::stageC_problem18_unsatisfiable	27c489fc2dd2	paper	math	2026-10-26
+o88-2026-10-26-002	paper/saltbench-v1.tex	70498804bc5a	evidence/step0-b-triage-2026-09-01/probe18_unsat.lean::stageC_problem18_unsatisfiable	27c489fc2dd2	paper	math	2026-10-26

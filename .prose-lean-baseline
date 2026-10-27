@@ -3,7 +3,6 @@
 # A line whose sentence is gone is refused (STALE-BASELINE): delete it. A NEW claim is refused until a .prose-lean-reads record names its Lean statement and a non-author reader.
 c4b9ddc8b2e6	AMENDMENT-13-AW-2026-09-01.md	shape
 90dfcfcb4f17	README.md	predates
-a837adfa40c3	README.md	predates
 c0e35bbcb120	README.md	predates
 4f9fddb448bc	RESULT-amend16-driver-2026-09-02.md	shape
 564781dde06d	RESULTS-stage0-2026-08-29.md	shape
@@ -26,7 +25,6 @@ ad34d6254e1c	paper/V3-RESTRUCTURE-PLAN.md	shape
 538de6fda299	paper/saltbench-v1.tex	predates
 6c053e0d3958	paper/saltbench-v1.tex	predates
 6e3331d06682	paper/saltbench-v1.tex	predates
-70498804bc5a	paper/saltbench-v1.tex	predates
 7bd6cc607416	paper/saltbench-v1.tex	predates
 7fecfaf7d864	paper/saltbench-v1.tex	predates
 825becf53c83	paper/saltbench-v1.tex	predates
