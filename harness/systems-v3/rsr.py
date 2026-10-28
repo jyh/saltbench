@@ -399,8 +399,11 @@ def report(path):
             continue
         groups.setdefault((r['arm'], r['problem']), []).append(r)
 
-    def fmt(t):
-        return 'UNDEFINED' if t is None else '/'.join('%.3f' % v for v in t)
+    def fmt(xs, n):
+        # a row whose denominator is 0 (UNDEFINED) is left out of its summary; say how many rows the summary rests on
+        t = quartiles(xs)
+        s = 'UNDEFINED' if t is None else '/'.join('%.3f' % v for v in t)
+        return s if len(xs) == n else '%s (over %d of %d; %d UNDEFINED)' % (s, len(xs), n, n - len(xs))
     for (arm, prob) in sorted(groups):
         g = groups[(arm, prob)]
         ra = [float(r['ratio_all']) for r in g if r['ratio_all'] != 'UNDEFINED']
@@ -408,7 +411,7 @@ def report(path):
         med = lambda k: quartiles([int(r[k]) for r in g])[2]
         ti = [int(r['all_TEST']) / int(r['all_IMPL']) for r in g if int(r['all_IMPL'])]
         print('%s\t%s\t%d\t%s\t%s\t%g\t%g\t%g\t%s\t%d' % (
-            arm, prob, len(g), fmt(quartiles(ra)), fmt(quartiles(rs)), med('all_SPEC'), med('all_PROOF'),
+            arm, prob, len(g), fmt(ra, len(g)), fmt(rs, len(g)), med('all_SPEC'), med('all_PROOF'),
             med('all_IMPL'), '%.3f' % quartiles(ti)[2] if ti else 'UNDEFINED',
             sum(1 for r in g if int(r['all_PROOF']) == 0)))
     return 0

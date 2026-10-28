@@ -30,14 +30,14 @@ Five-number summaries (min / q1 / median / q3 / max). Line medians are for the f
 | arm | problem | n | ratio, all | ratio, subject-written | SPEC med | PROOF med | IMPL med | TEST/IMPL med | PROOF = 0 |
 |---|---|---|---|---|---|---|---|---|---|
 | plain | Crc32 | 60 | 0 (all) | 0 (all) | 0 | 0 | 36 | 5.068 | 60 |
-| plain | FreeList | 60 | 0 (all) | 0 (all) | 0 | 0 | 161 | 3.250 | 60 |
+| plain | FreeList | 60 | 0 (all) | 0 (all; over 59 of 60, 1 UNDEFINED) | 0 | 0 | 161 | 3.250 | 60 |
 | plain | LRU | 60 | 0 (all) | 0 (all) | 0 | 0 | 74 | 5.252 | 60 |
 | plain | LZW | 60 | 0 (all) | 0 (all) | 0 | 0 | 90.5 | 3.215 | 60 |
 | plain | Paxos | 36 | 0 (all) | 0 (all) | 0 | 0 | 230 | 2.187 | 36 |
 | salt-diet | Crc32 | 60 | 0.031 / 0.192 / 0.257 / 0.286 / 0.591 | 0.031 / 0.208 / 0.274 / 0.329 / 0.867 | 50 | 131 | 75.5 | 1.945 | 0 |
 | salt-diet | FreeList | 57 | 0.012 / 0.261 / 0.364 / 0.532 / 1.384 | 0.017 / 0.302 / 0.402 / 0.598 / 1.529 | 298 | 133 | 471 | 0.465 | 9 |
 | salt-diet | LRU | 60 | 0.188 / 0.304 / 0.406 / 0.486 / 0.939 | 0.195 / 0.333 / 0.445 / 0.595 / 1.227 | 142.5 | 150 | 212 | 1.106 | 1 |
-| salt-diet | LZW | 57 | 0.000 / 0.179 / 0.221 / 0.421 / 0.986 | 0.102 / 0.188 / 0.246 / 0.446 / 2.649 | 144 | 372 | 209 | 0.844 | 3 |
+| salt-diet | LZW | 57 | 0.000 / 0.179 / 0.221 / 0.421 / 0.986 | 0.102 / 0.188 / 0.246 / 0.446 / 2.649 (over 56 of 57, 1 UNDEFINED) | 144 | 372 | 209 | 0.844 | 3 |
 | salt-diet | Paxos | 33 | 0.140 / 0.222 / 0.239 / 0.305 / 1.265 | 0.143 / 0.238 / 0.256 / 0.455 / 1.871 | 243 | 619 | 420 | 0.564 | 0 |
 
 Row counts are 60 per problem and arm (4 models × 5 field-and-extras conditions × n 3) except where the matrix has
@@ -54,7 +54,9 @@ and extras columns this table pools over, are in `rsr-cells.tsv`.
    columns are not comparable across arms.
 2. **The classifier is lexical, not a Verus parser.** A line is classed by how it starts: a clause on its fn's header
    line is IMPL, and an assert after other code on the same line is IMPL. It is validated only by `--selftest`
-   against two hand-labelled fixtures (below).
+   against two hand-labelled fixtures (below). The run found a defect those fixtures missed (`assert!`, below), which
+   is the evidence that fixture coverage does not bound whole-file accuracy; how many other kinds of line the 520 files
+   hold that no fixture has is NOT MEASURED.
 3. **Where a lemma's statement goes is a choice.** A proof fn is PROOF in whole, its own requires/ensures included,
    because a lemma's statement is scaffolding for the proof and not the component's specification. Counting lemma
    statements as SPEC would raise every salt-diet ratio.
@@ -63,8 +65,12 @@ and extras columns this table pools over, are in `rsr-cells.tsv`.
 5. **13 salt-diet rows have PROOF = 0, all in the Gemini lane** (gemini-3.1-pro-high 7, gemini-3.8-flash-high 6; no
    Claude row). They wrote spec fns and ensures clauses with no proof constructs. Two were read at the object
    (`l5ft01`: every `decreases` in it is inside a recursive spec fn; `s3fs01`: no proof construct at all). One
-   (`l6vgfs02`, LZW) wrote a 49-line file with no Verus, so SPEC is 0 too. Those rows are in the table as measured.
-6. Counted over the cells of record only. A cell's correctness is not an input: a failed cell's lines are counted
+   (`l6vgfs02`, LZW) left the seed's 49-line file without a subject-written code line, so SPEC is 0 too (limit 6). Those rows are in the table as measured.
+6. **A ratio whose denominator is 0 is UNDEFINED and is left out of its summary**, and the report says so beside the
+   summary. Two rows read `ratio_sub` UNDEFINED, because the subject wrote no code line that is not already in the
+   seed: `l6vgfs02` (gemini-3.8-flash-high, LZW, greenfield, salt-diet) and `l7spfp03` (gemini-3.1-pro-high,
+   FreeList, brownfield, plain, statement). Their `ratio_all` is defined (0) and counted. (Kent's read of #412, F1.)
+7. Counted over the cells of record only. A cell's correctness is not an input: a failed cell's lines are counted
    like a passing cell's.
 
 ## How the instrument was checked
