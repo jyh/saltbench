@@ -1,0 +1,37 @@
+# Hand labels for synth.rs, written with the file (bench, relight 174). The decisions this fixture pins:
+#   a ghost field is SPEC (model state) · a type_invariant spec fn is SPEC · an exec fn's requires/ensures lines are SPEC
+#   (the clause keyword lines and their continuations) · an exec fn's `decreases` is PROOF · a multi-line assert ... by { }
+#   is PROOF through its close · a proof fn is PROOF in whole, its requires/ensures included (a lemma's statement is proof
+#   scaffolding, not the component's spec) · a brace in a string is not a brace · a line with code and a trailing comment is
+#   code · line 24's string carries an unbalanced { and ( so the string-blanking arm can fail (a balanced one could
+#   not: found by mutant, relight 174) · `#[cfg(test)] mod` in solution.rs is TEST · the `verus! {` opener and its close are IMPL (structure).
+# Hand totals: SPEC 10 · PROOF 12 · IMPL 21 · TEST 5 · COMMENT 2 · BLANK 7 = 57.
+# Line 49 `assert!(a < 100);` is a Rust runtime assertion, IMPL (added relight 174 after the population read 11 plain
+# cells with PROOF > 0: the statement rule matched `assert!`).
+# (First written as 57 lines with line 46 `} // verus!` as COMMENT; corrected against the bytes before rsr.py ran.)
+1 IMPL
+2-3 COMMENT
+4-6 IMPL
+7 SPEC
+8 IMPL
+9 BLANK
+10 IMPL
+11-13 SPEC
+14 BLANK
+15-16 SPEC
+17 BLANK
+18 IMPL
+19-22 SPEC
+23-25 IMPL
+26-31 PROOF
+32-33 IMPL
+34 BLANK
+35-39 PROOF
+40 BLANK
+41 IMPL
+42 PROOF
+43-46 IMPL
+47 BLANK
+48-51 IMPL
+52 BLANK
+53-57 TEST
