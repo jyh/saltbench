@@ -441,7 +441,7 @@ def repo_slug() -> str:
     """This repo's name from its origin URL. EXACT match, never a substring --
     two of the three repos this file ships to differ by a suffix."""
     out = subprocess.run(["git", "config", "--get", "remote.origin.url"],
-                         capture_output=True, text=True, encoding="utf-8")
+                         capture_output=True, text=True, encoding="utf-8", errors="replace")
     url = out.stdout.strip()
     if not url:
         return ""
@@ -542,7 +542,7 @@ def audit_pins(exempt):
             # published -- naming the object the answer is about.
             local_only.append(e)
         blob = subprocess.run(["git", "show", f'{found_ref}:{e["file"]}'],
-                              capture_output=True, text=True, encoding="utf-8")
+                              capture_output=True, text=True, encoding="utf-8", errors="replace")
         if blob.returncode != 0:
             drifted.append(e)               # ref IS here and the FILE is gone
             continue
@@ -591,7 +591,7 @@ def commit_messages(rev_range: str) -> list[tuple[str, str]]:
     sep = "@@PATHCOMMIT@@"
     out = subprocess.run(
         ["git", "log", f"--format=%H%x1f%B{sep}", rev_range],
-        capture_output=True, text=True, encoding="utf-8", check=True,
+        capture_output=True, text=True, encoding="utf-8", errors="replace", check=True,
     ).stdout
     rows = []
     for chunk in out.split(sep):
@@ -632,7 +632,7 @@ def added_lines(rev_range: str) -> list[tuple[str, str]]:
     """
     out = subprocess.run(
         ["git", "diff", "--unified=0", "--no-color", rev_range],
-        capture_output=True, text=True, encoding="utf-8", check=True,
+        capture_output=True, text=True, encoding="utf-8", errors="replace", check=True,
     ).stdout
     rows: list[tuple[str, str]] = []
     path = "?"
@@ -664,7 +664,7 @@ def _is_empty_scan_fatal(rows) -> bool:
 
 def is_shallow() -> bool:
     out = subprocess.run(["git", "rev-parse", "--is-shallow-repository"],
-                         capture_output=True, text=True, encoding="utf-8")
+                         capture_output=True, text=True, encoding="utf-8", errors="replace")
     return out.stdout.strip() == "true"
 
 
@@ -943,7 +943,7 @@ def self_test() -> int:
 
         def g(*a):
             return subprocess.run(["git", "-C", repo, *a], capture_output=True,
-                                  text=True, encoding="utf-8")
+                                  text=True, encoding="utf-8", errors="replace")
 
         g("config", "user.email", "selftest@example.invalid")
         g("config", "user.name", "selftest")
@@ -1024,7 +1024,7 @@ def self_test() -> int:
 
             def d(*a):
                 return subprocess.run(["git", "-C", div, *a], capture_output=True,
-                                      text=True, encoding="utf-8")
+                                      text=True, encoding="utf-8", errors="replace")
 
             d("config", "user.email", "selftest@example.invalid")
             d("config", "user.name", "selftest")
@@ -1228,7 +1228,7 @@ def self_test() -> int:
                 history_mode(False)
             out5 = buf.getvalue()
             real5 = len(subprocess.run(["git", "rev-list", "HEAD"], capture_output=True,
-                                       text=True, encoding="utf-8").stdout.split())
+                                       text=True, encoding="utf-8", errors="replace").stdout.split())
         finally:
             os.chdir(here5)
         if f"{real5} commits walked" not in out5.lower():
@@ -1649,11 +1649,11 @@ def history_rows() -> list:
                 if l.startswith("+") and not l.startswith("+++")]
 
     shas = subprocess.run(["git", "rev-list", "HEAD"], capture_output=True,
-                          text=True, encoding="utf-8", check=True).stdout.split()
+                          text=True, encoding="utf-8", errors="replace", check=True).stdout.split()
     rows = []
     for sha in shas:
         parents = subprocess.run(["git", "rev-list", "--parents", "-n", "1", sha],
-                                 capture_output=True, text=True, encoding="utf-8",
+                                 capture_output=True, text=True, encoding="utf-8", errors="replace",
                                  check=True).stdout.split()[1:]
         if not parents:
             # a ROOT commit against the empty tree: the first commit is exactly where a
@@ -1741,7 +1741,7 @@ def history_mode(write: bool) -> int:
     #   ⛔ Counted from git, not from `rows`: the walk is the thing being reported, and
     #     deriving it from the findings is how the two got conflated in the first place.
     nwalked = len(subprocess.run(["git", "rev-list", "HEAD"], capture_output=True,
-                                 text=True, encoding="utf-8", check=True).stdout.split())
+                                 text=True, encoding="utf-8", errors="replace", check=True).stdout.split())
     ncommits = len(set(r[0] for r in rows))
     if new:
         print(f"FAIL: {len(new)} NEW private-record path(s) in history, not in "
