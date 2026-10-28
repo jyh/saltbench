@@ -691,3 +691,51 @@ START after the A2.7 probe** (07:14:37Z, 88 %; the 07:04:06Z line is the probe's
 scheduled `POOL` line logged after `reads.tsv` holds ≥ 50 data rows; a START line is never the named reading**, because a restart
 can be timed and a scheduled reading cannot. The lead's scorer computes S, D and the decision from `run.log` (systems' N2), and
 at 16 reads it prints S 1 · D 0.
+
+## ⚖️ ADDENDUM 7 — 2026-10-28: THE TRUTH READS' UNIT IS A CHUNK OF AT MOST 7 SENTENCES. APPENDED; all text above untouched. Written before any scored truth read.
+
+*bench (lead), on gemini's A3.6 (2) probe (bus 2026-10-28 10:12:43 PDT). No read of A3.6 (3) or (3b) has run; the probe is never
+scored. evidence (the design's author) gives the words on the departure from A3.2; systems reads.*
+
+**A7.1 · What the probe measured.** A3.6 (2) read two artifacts under A3.2's form. `11/a5` (60 written sentences, the largest in
+the population) ended in agy's `print timeout after 30m0s with turn in progress` on both attempts (1,523 s and 1,575 s; about 68 k
+and 72 k thinking tokens; no parseable line): UNSCORED. `112/a0` (7 written sentences) parsed 7 of 7 in 390 s. No 503. The pool read
+75 % → 76 %, below the 1-point resolution.
+
+**A7.2 · Why the form changes: A3.2 puts an arm-correlated load on the reader.** In the frozen population (`sentences.tsv`,
+334ac0b784d5dcc5) every a0 artifact with a written sentence carries 2 to 7 of them, and every a5 artifact 28 to 60. Under one read
+per artifact, every a0 read asks for at most 7 verdicts and every a5 read for at least 28, and the probe shows that load decides
+whether a read FINISHES. Missingness would then fall on a5 alone, the arm the truth axis is about, and the a5 reads that did finish
+would have been read under a heavier load than any a0 read. Raising the print timeout (gemini's arm (a)) keeps that imbalance and
+buys an unmeasured window: `11/a5` was still mid-turn at 30 min.
+
+**A7.3 · The unit.** A read's unit is **(artifact, chunk)**: the artifact's WRITTEN rows (`given=no`) in file order, cut into
+consecutive chunks of **7**, the last chunk holding the remainder (1 to 7). Each read is a fresh session with A3.2's prompt
+exactly, the artifact's WHOLE `stageB.lean`, and that chunk's sentences numbered 1..k; the driver maps each answer line back to
+its `sentences.tsv` row. A3.2's parse rules apply per read (a missing, duplicated or unparseable line leaves that sentence
+UNSCORED; a read with no parseable line is retried once, then its sentences are UNSCORED). **Derived from `sentences.tsv` at
+334ac0b784d5dcc5, never typed: 33 artifacts (a0 9 · a5 24) ⇒ 153 reads (a0 9 · a5 144).** Every a0 artifact is one chunk, so a0's
+reads are unchanged.
+
+**A7.4 · Order and halts.** All chunks of one artifact run consecutively, artifacts in `sentences.tsv` order, so a halt splits at
+most ONE artifact; every sentence a halted set did not reach is `HALTED` (ADDENDUM 4). A3.5's halts keep their values: read 1
+stops above **6 points** of Gemini spend, at any 503, or at 3 failed READS in a row, where a read is a chunk read (A6.1's
+counting, after its retry). A6.4's theorem exemption does not apply (there are no U2 items here).
+
+**A7.5 · The price, before the set.** A3.6 (2) is re-run in this form: two reads, the first two chunks of `11/a5`, never scored.
+The set starts only if both parse with no 503 AND the spend projected from the probe's own readings over 153 reads is at most 6
+points. Otherwise the set is NOT started and goes to the PM to re-price; the lead does not move the cap.
+
+**A7.6 · Read 2 takes the same unit.** A3.3 is "the same form as A3.2", so read 2's unit is A7.3's: 153 fresh Claude sessions, not
+33. Each pays the client's own session overhead, so read 2's price moves; A3.5's metered first 2 reads and A5.3's derived USD
+guard price it before the rest and halt it if it does not fit the shared 3-point cap.
+
+**A7.7 · Not chunked: the confirmer and its calibration (A3.4, A3.4a).** They read flagged sentences only (and A5's item groups),
+on a client with no 30-minute print timeout. Declared as a limit: their unit is still one per artifact (per problem for A3.4a).
+
+**A7.8 · Limits.** (1) A chunk does not see its artifact's other sentences, so a sentence whose truth depends on a neighbour is read
+without it. A3.2's question asks only whether a sentence is false of the Lean file, and both arms are read this way. (2) The probe
+that motivates this is ONE a5 artifact, the largest; that most a5 reads would time out under A3.2 is an inference from the token
+counts, not a measurement. (3) K = 7 is the size the probe measured to finish (the largest a0 artifact), not a tuned value.
+(4) A5 now carries 144 reads to a0's 9, so a halt by spend is likelier to land inside a5's artifacts; A7.4's order keeps it to one
+split artifact, and the HALTED count is printed per arm.
