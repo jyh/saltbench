@@ -395,6 +395,8 @@ def selftest():
                             '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
         exp = 'USD per point %.4f' % (Meter(a7b.meter, 0, 2).first_usd(2) / 0.5)
         arm('USD per point is computed from the meter\'s own first reads and the point reading, and printed (systems\' T1)', exp in r.stdout)
+        exp2 = 'guard %.4f USD = 1.5 points (read 2\'s share, A7.6)' % (1.5 * Meter(a7b.meter, 0, 2).first_usd(2) / 0.5)
+        arm('A7.6: read 2\'s guard is 1.5 of the 3 points, derived from the same rate', exp2 in r.stdout)
         r2_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
                               '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.7'], capture_output=True, text=True)
         r3_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
@@ -572,9 +574,13 @@ def main():
         m = Meter(a.meter, 0, a.pause_after)
         if len(m.units()) < a.pause_after: raise SystemExit('REFUSE: --points-at-pause given before the first %d reads exist on the meter' % a.pause_after)
         a.points_record = (pf, '%r %d\n' % (a.points_at_pause, a.pause_after))   # P1/Q1/R1/S1 (systems): run_units writes it at first use
-        rate = m.first_usd(a.pause_after) / a.points_at_pause; a.cap_usd = 3 * rate
-        print('USD per point %.4f (%.4f USD over the first %d reads / %.3f points) · guard %.4f USD = 3 points'
-              % (rate, m.first_usd(a.pause_after), a.pause_after, a.points_at_pause, a.cap_usd))
+        # ADDENDUM 7 (A7.6, the PM's word 10-28): read 2 runs first on the shared meter and halts at 1.5 of the 3 points, so the
+        # calibration and the confirmer, which decide the axis, keep the rest. Their guard stays the whole 3 (the meter is shared).
+        share = 1.5 if a.set == 'read2' else 3.0
+        rate = m.first_usd(a.pause_after) / a.points_at_pause; a.cap_usd = share * rate
+        print('USD per point %.4f (%.4f USD over the first %d reads / %.3f points) · guard %.4f USD = %g points%s'
+              % (rate, m.first_usd(a.pause_after), a.pause_after, a.points_at_pause, a.cap_usd, share,
+                 " (read 2's share, A7.6)" if a.set == 'read2' else ''))
     stop = {'read2': cmd_read2, 'calib': cmd_calib, 'confirm': cmd_confirm, 'merge': cmd_merge}[a.set](a)
     print('STOP %s' % stop if stop else 'DONE')
 

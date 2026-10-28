@@ -718,17 +718,32 @@ UNSCORED; a read with no parseable line is retried once, then its sentences are 
 reads are unchanged.
 
 **A7.4 · Order and halts.** All chunks of one artifact run consecutively, artifacts in `sentences.tsv` order, so a halt splits at
-most ONE artifact; every sentence a halted set did not reach is `HALTED` (ADDENDUM 4). A3.5's halts keep their values: read 1
-stops above **6 points** of Gemini spend, at any 503, or at 3 failed READS in a row, where a read is a chunk read (A6.1's
+most ONE artifact; every sentence a halted set did not reach is `HALTED` (ADDENDUM 4). Read 1 stops above **12 points** of Gemini spend
+(row R's A2.6 value, on A6.7's dial convention; the PM's word, bus 2026-10-28 10:21:27 PDT, the one value of A3.5 it moves), at
+any 503, or at 3 failed READS in a row, where a read is a chunk read (A6.1's
 counting, after its retry). A6.4's theorem exemption does not apply (there are no U2 items here).
 
-**A7.5 · The price, before the set.** A3.6 (2) is re-run in this form: two reads, the first two chunks of `11/a5`, never scored.
-The set starts only if both parse with no 503 AND the spend projected from the probe's own readings over 153 reads is at most 6
-points. Otherwise the set is NOT started and goes to the PM to re-price; the lead does not move the cap.
+**A7.5 · The price, before the set (re-priced by the PM before the probe, bus 2026-10-28 10:21:27 PDT).** A3.6 (2) is re-run in
+this form: two reads, the first two chunks of `11/a5`, never scored. A pool reading cannot price it (the probe's 2 reads sit below
+the 1-point resolution), so the projection is in TOKENS, from row R's own records: 12 points over 319 OK reads of 9,128,755 tokens
+is **0.76 M tokens per point** counting OK reads only; counting all 137 failed attempts too (13,477,576 more) it is **1.88 M**. The
+set starts only if both probe reads parse with no 503 AND **(the probe's mean tokens per read, in + out) × 153 ÷ 0.76 M ≤ 12**,
+the CONSERVATIVE rate, which charges row R's failed-attempt cost to this set; the all-attempts figure (÷ 1.88 M) is printed beside
+it. Otherwise the set is NOT started and goes back to the PM; the lead does not move the cap. Measured at the A3.2 probe, before
+this form: 112/a0 48,064 tokens (7 sentences) · 11/a5 about 124-128 k per attempt (input 56 k against a0's 13.5 k), so 153 reads
+project 3.9 to 9.7 points at a0's size and 7.1 to 17.6 at a5's input: the start test can go either way.
 
 **A7.6 · Read 2 takes the same unit.** A3.3 is "the same form as A3.2", so read 2's unit is A7.3's: 153 fresh Claude sessions, not
 33. Each pays the client's own session overhead, so read 2's price moves; A3.5's metered first 2 reads and A5.3's derived USD
-guard price it before the rest and halt it if it does not fit the shared 3-point cap.
+guard price it. **Read 2 halts at 1.5 of the shared 3 points** (the PM's word, 10-28 10:21:27; HALTED, reported per arm), so the
+calibration and the confirmer, which DECIDE the axis (A3.4b), keep the rest; read 2 is the optional second mechanism (A3.3). The
+driver derives that guard as 1.5 × A5.3's USD-per-point rate. A3.5's "first 2 reads move > 0.5 point" test no longer protects
+anything at this n (break-even is about 0.02 point for 2 reads, below the meter's resolution), so A5.3's derived rate on read 2's
+1.5-point share is the binding guard.
+**Placement (the PM's 10-25 and 10-28 words, carried).** Read 1 serial is about 153 × 390 s ≈ 16.6 h, so read 2 cannot start
+before Thu 10-29 evening; the login on the PM's second named pool expires Fri 10-30 07:37. If read 2 cannot finish by then, it
+runs on the PM's fallback pool under the same cap, with one addendum line. The pause reading over the first 2 metered reads is taken wholly before or after the
+nearest reset of whichever pool it runs on, never across it.
 
 **A7.7 · Not chunked: the confirmer and its calibration (A3.4, A3.4a).** They read flagged sentences only (and A5's item groups),
 on a client with no 30-minute print timeout. Declared as a limit: their unit is still one per artifact (per problem for A3.4a).
@@ -738,4 +753,6 @@ without it. A3.2's question asks only whether a sentence is false of the Lean fi
 that motivates this is ONE a5 artifact, the largest; that most a5 reads would time out under A3.2 is an inference from the token
 counts, not a measurement. (3) K = 7 is the size the probe measured to finish (the largest a0 artifact), not a tuned value.
 (4) A5 now carries 144 reads to a0's 9, so a halt by spend is likelier to land inside a5's artifacts; A7.4's order keeps it to one
-split artifact, and the HALTED count is printed per arm.
+split artifact, and the HALTED count is printed per arm. (5) An a5 artifact now spans about 6 chunk reads, so one unparsed chunk makes it
+UNSCORED on A3.4's per-artifact rule far more often than an a0 artifact (one read). That rule does not decide (A3.4a), but its
+per-arm UNSCORED print leans against a5, and that is said beside it (the PM's word, 10-28).
