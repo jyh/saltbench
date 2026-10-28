@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """o90_truthreads.py — the O90 truth axis's CLAUDE-side reads (AMENDMENT-O90-stage1 ADDENDUM 3 A3.3 · A3.4 · A3.4a, ADDENDUM 4):
-read 2 (one fresh Claude session per artifact with a written sentence, blind to read 1), the confirmer's calibration on stage 0
+read 2 (one fresh Claude session per CHUNK of at most 7 of an artifact's written sentences, ADDENDUM 7; blind to read 1), the confirmer's calibration on stage 0
 leg (b)'s items, and the confirmer (one session per artifact with a FALSE flag, over the UNION of the reads' FALSE rows).
 Every set writes rows `o90_flaglog.py --population` accepts. This driver is the ONLY writer of HALTED for its sets, and only
 from an A3.5 trigger, which it keeps beside the set in HALT.txt (systems' N4). A confirmation the halt did not reach is written
@@ -28,6 +28,7 @@ CONF_PROMPT = ("Below is a Lean file written by an agent, then numbered sentence
                "then on its own line answer exactly `<n>: CONFIRMED-FALSE` or `<n>: NOT-FALSE`.")
 READ_ANS = re.compile(r'^\s*(\d+):\s*(OK|FALSE)\s*$', re.M)
 CONF_ANS = re.compile(r'^\s*(\d+):\s*(CONFIRMED-FALSE|NOT-FALSE)\s*$', re.M)
+READ_CHUNK = 7   # ADDENDUM 7 (A7.3): a read's unit is (artifact, chunk); a0's artifacts are one chunk each
 COLS = ["problem", "arm", "b_episode", "sentence", "sentence_sha256", "reader", "mechanism", "verdict", "confirmer", "confirmed"]
 
 
@@ -153,19 +154,25 @@ def leg_b_spec(specs, p, manifest):
     return txt
 
 
+def read_chunks(arts, k):
+    """A7.3/A7.4: each artifact's written rows in file order, cut into consecutive chunks of k (the last holds the rest);
+    an artifact's chunks are consecutive, so a halt splits at most one artifact. -> [(uid, lean, rows)]"""
+    return [('%s/%s/%s#%d' % (key + (j // k + 1,)), lean, rs[j:j + k]) for key, lean, rs in arts for j in range(0, len(rs), k)]
+
+
 def cmd_read2(args):
     pop, sha = load_pop(args.population, args.expect_sha)
-    arts = artifacts(pop, args.state)
-    done = existing_units(args.out)
+    units = read_chunks(artifacts(pop, args.state), getattr(args, 'chunk', READ_CHUNK))
+    have = existing_units(args.out)
+    done = {uid for uid, lean, rs in units if all((r['b_episode'], r['sentence']) in have for r in rs)}
     meter = Meter(args.meter, args.cap_usd, args.pause_after)
-    byuid = {'%s/%s/%s' % k: rs for k, lean, rs in arts}
+    byuid = {uid: rs for uid, lean, rs in units}
     def land(uid, session, ans):   # systems' M2: a read's rows are written the moment it lands, never only at the set's end
         append_rows(args.out, [[r['problem'], r['arm'], r['b_episode'], r['sentence'], r['sentence_sha256'], session, 'claude',
                                 (ans or {}).get(i, 'UNSCORED'), '-', '-'] for i, r in enumerate(byuid[uid], 1)], sha)
-    res, stop = run_units([('%s/%s/%s' % k, lean, [r['text'] for r in rs]) for k, lean, rs in arts], READ_PROMPT, READ_ANS, args, meter, done, 'read2', land)
+    res, stop = run_units([(uid, lean, [r['text'] for r in rs]) for uid, lean, rs in units], READ_PROMPT, READ_ANS, args, meter, done, 'read2', land)
     rows = []
-    for k, lean, rs in arts:
-        uid = '%s/%s/%s' % k
+    for uid, lean, rs in units:
         if uid in done or uid in res or stop == 'PAUSED': continue
         rows += [[r['problem'], r['arm'], r['b_episode'], r['sentence'], r['sentence_sha256'], 'halt-%s' % r['b_episode'], 'claude', 'HALTED', '-', '-'] for r in rs]
     append_rows(args.out, rows, sha)
@@ -173,9 +180,10 @@ def cmd_read2(args):
 
 
 def existing_units(out):
+    """-> {(b_episode, sentence)} already in rows.tsv; a chunk is done when every one of its sentences is (A7.3)."""
     p = os.path.join(out, 'rows.tsv')
     if not os.path.exists(p): return set()
-    return {'%s/%s/%s' % (r[0], r[1], r[2]) for r in (l.rstrip('\n').split('\t') for l in open(p)) if r[0] != 'problem'}
+    return {(r[2], r[3]) for r in (l.rstrip('\n').split('\t') for l in open(p)) if r[0] != 'problem'}
 
 
 def append_rows(out, rows, sha):
@@ -329,6 +337,19 @@ def selftest():
         arm('read 2 writes one row per WRITTEN sentence, never a given one', len(lg) == 4 and not any(r[3] == 'doc:2' for r in lg))
         arm('read 2 rows carry the parsed verdicts and the session as reader',
             [r[7] for r in lg] == ['FALSE', 'OK', 'FALSE', 'FALSE'] and all(r[5].startswith('s-') and r[6] == 'claude' for r in lg))
+        env('ok', 'c1k'); ak1 = args(os.path.join(t, 'r2-k1'), chunk=1); cmd_read2(ak1); lk = rows_of(os.path.join(ak1.out, 'rows.tsv'))
+        arm('A7.3: an artifact longer than the chunk is read in consecutive chunks, each numbered from 1 and mapped back to its own row',
+            len(Meter(ak1.meter, 0, 99).units()) == 4 and [(r[3], r[7]) for r in lk if r[2] == 'e55'] == [('doc:1', 'FALSE'), ('explain:1', 'FALSE')]
+            and len({r[5] for r in lk if r[2] == 'e55'}) == 2 and len(lg) == 4)
+        env('ok', 'c1h'); ah1 = args(os.path.join(t, 'r2-k1h'), chunk=1, cap_usd=0.4); sh = cmd_read2(ah1); lh = rows_of(os.path.join(ah1.out, 'rows.tsv'))
+        arm('A7.4: a spend halt between chunks splits that ONE artifact: its read chunk keeps its verdict, the rest is HALTED',
+            sh.startswith('spend') and [(r[3], r[7]) for r in lh if r[2] == 'e55'] == [('doc:1', 'FALSE'), ('explain:1', 'HALTED')]
+            and sum(r[7] == 'HALTED' for r in lh) == 3)
+        ok1 = os.path.join(t, 'r2-k1kill'); os.makedirs(ok1); hl = open(os.path.join(ak1.out, 'rows.tsv')).readlines()
+        open(os.path.join(ok1, 'rows.tsv'), 'w').write(hl[0] + [l for l in hl if '\te55\tdoc:1\t' in l][0])   # killed after e55's chunk 1 landed
+        env('ok', 'c1kill'); ak2 = args(ok1, chunk=1); cmd_read2(ak2); lr = rows_of(os.path.join(ok1, 'rows.tsv'))
+        arm('A7.3 + M2: a set killed between an artifact\'s chunks re-reads only the chunks that did not land (3 calls, each sentence once)',
+            len(Meter(ak2.meter, 0, 99).units()) == 3 and sorted((r[2], r[3]) for r in lr) == sorted({(r[2], r[3]) for r in lr}) and len(lr) == 4)
         try: F.load(open(r2rows), popd); raw_ok = True
         except SystemExit: raw_ok = False
         arm('read 2 rows alone are NOT a flag log (a FALSE needs its confirmation)', raw_ok is False)
@@ -374,6 +395,16 @@ def selftest():
                             '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5'], capture_output=True, text=True)
         exp = 'USD per point %.4f' % (Meter(a7b.meter, 0, 2).first_usd(2) / 0.5)
         arm('USD per point is computed from the meter\'s own first reads and the point reading, and printed (systems\' T1)', exp in r.stdout)
+        exp2 = 'guard %.4f USD = 1.5 points (read 2\'s share, A7.6)' % (1.5 * Meter(a7b.meter, 0, 2).first_usd(2) / 0.5)
+        arm('A7.6: read 2\'s guard is 1.5 of the 3 points, derived from the same rate', exp2 in r.stdout)
+        env('ok', 'c7p'); ap7 = args(os.path.join(t, 'r2-proj'), pause_after=2); sp = cmd_read2(ap7); open(ap7.meter + '.RESUMED', 'w').write('')
+        rp = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', ap7.out, '--cfg', t,
+                             '--client', stub, '--meter', ap7.meter, '--expect-sha', psha, '--points-at-pause', '1.5'], capture_output=True, text=True)
+        rq = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', os.path.join(t, 'r2-proj-ok'),
+                             '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5', '--cfg', t], capture_output=True, text=True)
+        arm('A7.6 (systems\' M1): read 2 REFUSES past its pause when its first reads project past its guard, reading nothing and recording no point reading',
+            sp == 'PAUSED' and rp.returncode != 0 and 'projects' in rp.stderr and len(Meter(ap7.meter, 0, 2).units()) == 2
+            and not os.path.exists(ap7.meter + '.points') and 'read 2 projected' in rq.stdout and rq.returncode == 0)
         r2_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
                               '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.7'], capture_output=True, text=True)
         r3_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
@@ -551,9 +582,23 @@ def main():
         m = Meter(a.meter, 0, a.pause_after)
         if len(m.units()) < a.pause_after: raise SystemExit('REFUSE: --points-at-pause given before the first %d reads exist on the meter' % a.pause_after)
         a.points_record = (pf, '%r %d\n' % (a.points_at_pause, a.pause_after))   # P1/Q1/R1/S1 (systems): run_units writes it at first use
-        rate = m.first_usd(a.pause_after) / a.points_at_pause; a.cap_usd = 3 * rate
-        print('USD per point %.4f (%.4f USD over the first %d reads / %.3f points) · guard %.4f USD = 3 points'
-              % (rate, m.first_usd(a.pause_after), a.pause_after, a.points_at_pause, a.cap_usd))
+        # ADDENDUM 7 (A7.6, the PM's word 10-28): read 2 runs first on the shared meter and halts at 1.5 of the 3 points, so the
+        # calibration and the confirmer, which decide the axis, keep the rest. Their guard stays the whole 3 (the meter is shared).
+        share = 1.5 if a.set == 'read2' else 3.0
+        rate = m.first_usd(a.pause_after) / a.points_at_pause; a.cap_usd = share * rate
+        print('USD per point %.4f (%.4f USD over the first %d reads / %.3f points) · guard %.4f USD = %g points%s'
+              % (rate, m.first_usd(a.pause_after), a.pause_after, a.points_at_pause, a.cap_usd, share,
+                 " (read 2's share, A7.6)" if a.set == 'read2' else ''))
+        if a.set == 'read2':   # A7.6 (systems' M1 on #415): read 2 is PROJECTED before it continues, as A7.5 projects read 1
+            pop, _ = load_pop(a.population, a.expect_sha); by = collections.OrderedDict()
+            for r in pop:
+                if r['given'] == 'no': by.setdefault((r['problem'], r['arm'], r['b_episode']), []).append(r)
+            n = len(read_chunks([(k, '', rs) for k, rs in by.items()], getattr(a, 'chunk', READ_CHUNK)))
+            proj = m.first_usd(a.pause_after) / a.pause_after * n
+            print('read 2 projected %.4f USD over %d reads (first %d reads\' mean) against its guard %.4f USD' % (proj, n, a.pause_after, a.cap_usd))
+            if proj > a.cap_usd:
+                raise SystemExit('REFUSE: read 2 projects %.4f USD over its %d reads, past its 1.5-point guard %.4f USD (A7.6): '
+                                 'it goes back to the PM to re-price, nothing past the pause is read' % (proj, n, a.cap_usd))
     stop = {'read2': cmd_read2, 'calib': cmd_calib, 'confirm': cmd_confirm, 'merge': cmd_merge}[a.set](a)
     print('STOP %s' % stop if stop else 'DONE')
 
