@@ -731,7 +731,8 @@ set starts only if both probe reads parse with no 503 AND **(the probe's mean to
 the CONSERVATIVE rate, which charges row R's failed-attempt cost to this set; the all-attempts figure (÷ 1.88 M) is printed beside
 it. Otherwise the set is NOT started and goes back to the PM; the lead does not move the cap. Measured at the A3.2 probe, before
 this form: 112/a0 48,064 tokens (7 sentences) · 11/a5 about 124-128 k per attempt (input 56 k against a0's 13.5 k), so 153 reads
-project 3.9 to 9.7 points at a0's size and 7.1 to 17.6 at a5's input: the start test can go either way.
+project 3.9 to 9.7 points at a0's size, and 7.4 to 18.2 at a5's input with a0's output (56,143 + 34,536 = 90,679 tokens per
+read; systems' LOW): the start test can go either way.
 
 **A7.6 · Read 2 takes the same unit.** A3.3 is "the same form as A3.2", so read 2's unit is A7.3's: 153 fresh Claude sessions, not
 33. Each pays the client's own session overhead, so read 2's price moves; A3.5's metered first 2 reads and A5.3's derived USD
