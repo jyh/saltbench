@@ -134,15 +134,22 @@ def read_cause(d, r):   # A6.3: an UNSCORED read's cause, from its row or else f
     return 'print timeout' if tails and all('print timeout' in x for x in tails) else 'parse'   # a row written before A6.3 names no cause
 
 
-def registered_halt(d, reads, htxt):
+def registered_halt(d, reads, draw, htxt):
     """A2.6's halt as the RECORD shows it, never the harness's sentence alone (systems' gaps on #413). Spend: the dial must be a
-    registered one. 3 failed reads: the last three reads.tsv rows that are not A6.4-exempt (a U2 theorem read whose every attempt
-    ended in the print timeout) must all be failed; the 10-25 counter-defect stop (A6.1) says it in words and fails this."""
+    registered one. 3 failed reads: the last three reads that are not A6.4-exempt (a U2 theorem read whose every attempt ended in
+    the print timeout) must all be failed, counting the HALTING read, which run-rowR.py never rows (it halts inside step()): the
+    lowest unrowed draw seq whose out/read-<seq>.json carries "dropped". The 10-25 counter-defect stop (A6.1) fails this."""
     m = HALT_RE.match(htxt)
     if not m: return False
     if m.group(2) is not None: return float(m.group(2)) in DIALS
     if m.group(1) == '3 consecutive failed reads':
-        live = [r for r in sorted(reads, key=lambda r: int(r['seq']))
+        rows = sorted(reads, key=lambda r: int(r['seq']))
+        got = {r['seq'] for r in reads}
+        nxt = min((sq for sq in draw if sq not in got), key=int, default=None)   # the harness halts before rowing the third failure
+        rec = os.path.join(d, 'out', 'read-%s.json' % nxt) if nxt else ''
+        if rec and os.path.exists(rec) and 'dropped' in json.load(open(rec)):
+            rows.append(dict(draw[nxt], status='UNSCORED(dropped, unrowed: the halting read)'))
+        live = [r for r in rows
                 if not (r['kind'] == 'U2' and u2meta[r['item']][2] == 'theorem' and read_cause(d, r) == 'print timeout')]
         return len(live) >= 3 and all(r['status'] != 'OK' for r in live[-3:])
     return True
@@ -154,7 +161,7 @@ def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
     complete = len(reads) == len(draw)
     halt = os.path.join(d, 'HALT') if os.path.exists(os.path.join(d, 'HALT')) else None
     htxt = open(halt).read().strip() if halt else ''
-    if not complete and registered_halt(d, reads, htxt): complete = 'HALTED'   # A2.6: "a halted set is reported at the n it reached"
+    if not complete and registered_halt(d, reads, draw, htxt): complete = 'HALTED'   # A2.6: "a halted set is reported at the n it reached"
     over = ''.join(' ⚠️ %s OVERRIDDEN to %s (registered %s)' % (nm, v, reg) for nm, v, reg in (('SHA256SUMS', sums16, SUMS16), ('specrec', specrec16, SPECREC16)) if v != reg)   # L3
     out = ['# O90 stage 1 row R, RE-SCORED by bench (o90_rowr_score.py), %s; the reader is not blind to the arm (A2.7)%s' % (PHRASE, over),
            '# inputs: reads.tsv %s · u2-options.tsv %s · draw.tsv %s · frozen/SHA256SUMS %s · frozen-specrec.tsv %s'
@@ -422,9 +429,11 @@ def selftest():
         arm('systems gap 1: a spend halt under an UNREGISTERED dial (4) is not a registered halt, and reads PARTIAL', score(dd, s16, r16, (5, 4))[1] is False)
         open(os.path.join(dd, 'HALT'), 'w').write('2026-10-25T11:19:21Z 3 consecutive failed reads\n')
         arm('systems gap 2 (A6.1\'s case): "3 consecutive failed reads" over a record whose last reads are OK reads PARTIAL', score(dd, s16, r16, (5, 4))[1] is False)
-        dd = os.path.join(t, 'f3'); shutil.copytree(d, dd)   # rows 1-13: U1 seqs 10 11 12 failed, then seq 13 a theorem read timed out on every attempt
-        rl = open(os.path.join(dd, 'reads.tsv')).read().splitlines(True)
-        rl = [l.replace('\tyes\tOK\n', '\t\tUNSCORED\n') if l.split('\t')[0] in ('10', '11') else l for l in rl[:14]]
+        # f3, in the HARNESS'S shape (systems' delta read of #413): run-rowR.py halts inside step() on the third failure, so that read
+        # is never rowed; its only trace is out/read-<seq>.json carrying "dropped". Rows 1-13 here: 11 OK, 12 failed (UNSCORED), 13 a
+        # theorem read timed out on every attempt (rowed, A6.4-exempt); seq 14 unrowed and dropped.
+        dd = os.path.join(t, 'f3'); shutil.copytree(d, dd)
+        rl = open(os.path.join(dd, 'reads.tsv')).read().splitlines(True)[:14]
         rl[13] = rl[13].replace('\tOK\n', '\tUNSCORED(no parseable answer after one retry)\n')
         open(os.path.join(dd, 'reads.tsv'), 'w').write(''.join(rl))
         o = open(os.path.join(dd, 'u2-options.tsv')).read().splitlines(True)
@@ -432,12 +441,14 @@ def selftest():
         os.makedirs(os.path.join(dd, 'out'), exist_ok=True)
         for k_ in (1, 2): json.dump({'stderr_tail': '[agy] print timeout after 30m0s with turn in progress'}, open(os.path.join(dd, 'out', 'read-13.FAIL-%d.json' % k_), 'w'))
         open(os.path.join(dd, 'HALT'), 'w').write('2026-10-28T09:00:00Z 3 consecutive failed reads\n')
-        txtf, compf = score(dd, s16, r16, (5, 4))
-        arm('systems gap 2: three failed reads at the record\'s end read HALTED, an A6.4-exempt theorem timeout after them skipped', compf == 'HALTED' and 'HALTED: 13 of 15' in txtf)
-        edit(os.path.join(dd, 'reads.tsv'), '10\tU1\tp4-a\te45\ta5\t4\t\tUNSCORED', '10\tU1\tp4-a\te45\ta5\t4\tyes\tOK')
-        arm('A6.4 exemption, discriminating: failed 11 12, exempt timeout 13, OK 10 ⇒ only two non-exempt failures ⇒ PARTIAL', score(dd, s16, r16, (5, 4))[1] is False)
+        arm('3-failed, harness shape, no dropped record behind the HALT (A6.1\'s case) ⇒ PARTIAL', score(dd, s16, r16, (5, 4))[1] is False)
+        json.dump({'key': 'read-14', 'dropped': 'no parseable answer after one retry'}, open(os.path.join(dd, 'out', 'read-14.json'), 'w'))
+        arm('A6.4 exemption, discriminating: 11 OK · 12 failed · 13 exempt · 14 dropped ⇒ two non-exempt failures ⇒ PARTIAL', score(dd, s16, r16, (5, 4))[1] is False)
         json.dump({'stderr_tail': ''}, open(os.path.join(dd, 'out', 'read-13.FAIL-2.json'), 'w'))
-        arm('... and with read 13 NOT exempt (one attempt was not a timeout) 11 12 13 are three failures ⇒ HALTED', score(dd, s16, r16, (5, 4))[1] == 'HALTED')
+        txtf, compf = score(dd, s16, r16, (5, 4))
+        arm('... and with 13 NOT exempt, 12 · 13 · the dropped unrowed 14 are three failures ⇒ HALTED at the 13 rowed', compf == 'HALTED' and 'HALTED: 13 of 15' in txtf)
+        json.dump({'key': 'read-14', 'parsed': {'C0': 'USED'}}, open(os.path.join(dd, 'out', 'read-14.json'), 'w'))
+        arm('an unrowed read whose record is NOT dropped (the spend halt\'s read-320 shape) is not a failure ⇒ PARTIAL', score(dd, s16, r16, (5, 4))[1] is False)
         dd = os.path.join(t, 'u'); shutil.copytree(d, dd)
         edit(os.path.join(dd, 'frozen-specrec.tsv'), 'e25\t2\ta5\tyes\tyes\t1\t0\tno', 'e25\t2\ta5\tyes\tyes\t1\t1\tyes')
         edit(os.path.join(dd, 'frozen-specrec.tsv'), 'e35\t3\ta5\tyes\tyes\t1\t0\tno', 'e35\t3\ta5\tyes\tyes\t1\t1\tyes')
