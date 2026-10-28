@@ -9,7 +9,9 @@ Joins, each a refusal: every reads row equals its draw.tsv row on (seq, kind, it
 names its read's item and episode, and its option is the one items.tsv freezes at that position; an OK U2 read carries 8 option
 rows. A read set is COMPLETE when every draw.tsv seq has a reads row; otherwise it prints PARTIAL with the n reached and the
 reader's HALT file (if any) beside it, and nothing is quoted from a PARTIAL set as row R's score. A short set whose HALT file
-names one of A2.6's three registered halts (spend · 503 · 3 failed reads, in the reader harness's own words) reads HALTED instead:
+names one of A2.6's three registered halts reads HALTED instead, checked against the RECORD and not taken on the harness's words
+(systems' read of #413): a spend halt's dial must be 12 (A2.6) or 11 (A6.7), and "3 consecutive failed reads" holds only if the last
+three reads.tsv rows that are not A6.4-exempt are failed (the 10-25 counter-defect stop, A6.1, says it in words and fails this).
 A2.6 says "a halted set is reported at the n it reached", so it is scored at that n with every unread seq named beside it.
 Exit: 0 COMPLETE · 4 HALTED · 3 PARTIAL.
 Scoring (A2.3, A2.4, A2.10 Q3): U1 — yes/no against the kernel's key, `cannot tell` scored wrong and counted, no answer UNSCORED;
@@ -26,7 +28,8 @@ import collections, hashlib, json, os, re, shutil, sys, tempfile
 SUMS16, SPECREC16 = '1629c1c3912b0e69', '00f1d80781af8607'
 PHRASE = 'by one reader mechanism (Gemini)'
 # A2.6's three halts, as the reader's harness writes them (run-rowR.py halt()); any other HALT text is not a registered halt
-HALT_RE = re.compile(r'^\S+Z (spend \S+pt > \S+pt|503 in agy stderr: .*|3 consecutive failed reads)$')
+HALT_RE = re.compile(r'^\S+Z (spend \S+pt > (\d+(?:\.\d+)?)pt|503 in agy stderr: .*|3 consecutive failed reads)$')
+DIALS = (11.0, 12.0)   # A2.6's 12 points and A6.7's resume dial of 11; any other dial is not a registered halt (systems' gap 1 on #413)
 
 
 def refuse(msg): raise SystemExit('REFUSE: ' + msg)
@@ -123,13 +126,35 @@ def plus10(acc):
 def pct(n, d): return '%.1f%%' % (100.0 * n / d) if d else 'n/a'
 
 
+def read_cause(d, r):   # A6.3: an UNSCORED read's cause, from its row or else from EVERY attempt's FAIL record
+    if r['status'] == 'OK': return None
+    if 'timeout' in r['status']: return 'print timeout'
+    fails = [f for f in os.listdir(os.path.join(d, 'out')) if f.startswith('read-%s.FAIL-' % r['seq'])] if os.path.isdir(os.path.join(d, 'out')) else []
+    tails = [str(json.load(open(os.path.join(d, 'out', f))).get('stderr_tail', '')) for f in fails]
+    return 'print timeout' if tails and all('print timeout' in x for x in tails) else 'parse'   # a row written before A6.3 names no cause
+
+
+def registered_halt(d, reads, htxt):
+    """A2.6's halt as the RECORD shows it, never the harness's sentence alone (systems' gaps on #413). Spend: the dial must be a
+    registered one. 3 failed reads: the last three reads.tsv rows that are not A6.4-exempt (a U2 theorem read whose every attempt
+    ended in the print timeout) must all be failed; the 10-25 counter-defect stop (A6.1) says it in words and fails this."""
+    m = HALT_RE.match(htxt)
+    if not m: return False
+    if m.group(2) is not None: return float(m.group(2)) in DIALS
+    if m.group(1) == '3 consecutive failed reads':
+        live = [r for r in sorted(reads, key=lambda r: int(r['seq']))
+                if not (r['kind'] == 'U2' and u2meta[r['item']][2] == 'theorem' and read_cause(d, r) == 'print timeout')]
+        return len(live) >= 3 and all(r['status'] != 'OK' for r in live[-3:])
+    return True
+
+
 def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
     u2meta.clear(); u1key, u2, spec, draw, reads, opts, u1prob = load(d, sums16, specrec16)
     byseq = check(u1key, u2, draw, reads, opts, spec, u1prob)
     complete = len(reads) == len(draw)
     halt = os.path.join(d, 'HALT') if os.path.exists(os.path.join(d, 'HALT')) else None
     htxt = open(halt).read().strip() if halt else ''
-    if not complete and HALT_RE.match(htxt): complete = 'HALTED'   # A2.6: "a halted set is reported at the n it reached"
+    if not complete and registered_halt(d, reads, htxt): complete = 'HALTED'   # A2.6: "a halted set is reported at the n it reached"
     over = ''.join(' ⚠️ %s OVERRIDDEN to %s (registered %s)' % (nm, v, reg) for nm, v, reg in (('SHA256SUMS', sums16, SUMS16), ('specrec', specrec16, SPECREC16)) if v != reg)   # L3
     out = ['# O90 stage 1 row R, RE-SCORED by bench (o90_rowr_score.py), %s; the reader is not blind to the arm (A2.7)%s' % (PHRASE, over),
            '# inputs: reads.tsv %s · u2-options.tsv %s · draw.tsv %s · frozen/SHA256SUMS %s · frozen-specrec.tsv %s'
@@ -199,12 +224,7 @@ def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
     # ADDENDUM 6 A6.3: every UNSCORED read by CAUSE x KIND x ARM. A6.8 (evidence): a print timeout is missingness that can depend on
     # the arm, so the U2-theorem a0-vs-a5 comparison carries two bounds (every timed-out read's options WRONG, and RIGHT)
     def kind(r): return 'U1' if r['kind'] == 'U1' else 'U2-' + u2meta[r['item']][2]
-    def cause(r):
-        if r['status'] == 'OK': return None
-        if 'timeout' in r['status']: return 'print timeout'
-        fails = [f for f in os.listdir(os.path.join(d, 'out')) if f.startswith('read-%s.FAIL-' % r['seq'])] if os.path.isdir(os.path.join(d, 'out')) else []
-        tails = [str(json.load(open(os.path.join(d, 'out', f))).get('stderr_tail', '')) for f in fails]
-        return 'print timeout' if tails and all('print timeout' in x for x in tails) else 'parse'   # a row written before A6.3 names no cause
+    def cause(r): return read_cause(d, r)
     cnt = collections.Counter((cause(r), kind(r), r['arm']) for r in reads if r['status'] != 'OK')
     def timed_out_once(r):   # G2 (systems): any attempt of this read, in any process, ended in the print timeout
         od = os.path.join(d, 'out')
@@ -398,6 +418,26 @@ def selftest():
         arm('the CLI exits 3 on a short set whose HALT names no registered cause', rc() == 3)
         arm('A2.6: a HALT file naming no registered cause (spend · 503 · 3 failed reads) is not a halt, and the set stays PARTIAL',
             score(dd, s16, r16, (5, 4))[1] is False and 'PARTIAL: 14 of 15' in score(dd, s16, r16, (5, 4))[0])
+        open(os.path.join(dd, 'HALT'), 'w').write('2026-10-28T14:35:17Z spend 5pt > 4.0pt\n')
+        arm('systems gap 1: a spend halt under an UNREGISTERED dial (4) is not a registered halt, and reads PARTIAL', score(dd, s16, r16, (5, 4))[1] is False)
+        open(os.path.join(dd, 'HALT'), 'w').write('2026-10-25T11:19:21Z 3 consecutive failed reads\n')
+        arm('systems gap 2 (A6.1\'s case): "3 consecutive failed reads" over a record whose last reads are OK reads PARTIAL', score(dd, s16, r16, (5, 4))[1] is False)
+        dd = os.path.join(t, 'f3'); shutil.copytree(d, dd)   # rows 1-13: U1 seqs 10 11 12 failed, then seq 13 a theorem read timed out on every attempt
+        rl = open(os.path.join(dd, 'reads.tsv')).read().splitlines(True)
+        rl = [l.replace('\tyes\tOK\n', '\t\tUNSCORED\n') if l.split('\t')[0] in ('10', '11') else l for l in rl[:14]]
+        rl[13] = rl[13].replace('\tOK\n', '\tUNSCORED(no parseable answer after one retry)\n')
+        open(os.path.join(dd, 'reads.tsv'), 'w').write(''.join(rl))
+        o = open(os.path.join(dd, 'u2-options.tsv')).read().splitlines(True)
+        open(os.path.join(dd, 'u2-options.tsv'), 'w').write(''.join(l.replace('\tOK\n', '\tUNSCORED(missing)\n') if l.startswith('13\t') else l for l in o[:9]))
+        os.makedirs(os.path.join(dd, 'out'), exist_ok=True)
+        for k_ in (1, 2): json.dump({'stderr_tail': '[agy] print timeout after 30m0s with turn in progress'}, open(os.path.join(dd, 'out', 'read-13.FAIL-%d.json' % k_), 'w'))
+        open(os.path.join(dd, 'HALT'), 'w').write('2026-10-28T09:00:00Z 3 consecutive failed reads\n')
+        txtf, compf = score(dd, s16, r16, (5, 4))
+        arm('systems gap 2: three failed reads at the record\'s end read HALTED, an A6.4-exempt theorem timeout after them skipped', compf == 'HALTED' and 'HALTED: 13 of 15' in txtf)
+        edit(os.path.join(dd, 'reads.tsv'), '10\tU1\tp4-a\te45\ta5\t4\t\tUNSCORED', '10\tU1\tp4-a\te45\ta5\t4\tyes\tOK')
+        arm('A6.4 exemption, discriminating: failed 11 12, exempt timeout 13, OK 10 ⇒ only two non-exempt failures ⇒ PARTIAL', score(dd, s16, r16, (5, 4))[1] is False)
+        json.dump({'stderr_tail': ''}, open(os.path.join(dd, 'out', 'read-13.FAIL-2.json'), 'w'))
+        arm('... and with read 13 NOT exempt (one attempt was not a timeout) 11 12 13 are three failures ⇒ HALTED', score(dd, s16, r16, (5, 4))[1] == 'HALTED')
         dd = os.path.join(t, 'u'); shutil.copytree(d, dd)
         edit(os.path.join(dd, 'frozen-specrec.tsv'), 'e25\t2\ta5\tyes\tyes\t1\t0\tno', 'e25\t2\ta5\tyes\tyes\t1\t1\tyes')
         edit(os.path.join(dd, 'frozen-specrec.tsv'), 'e35\t3\ta5\tyes\tyes\t1\t0\tno', 'e35\t3\ta5\tyes\tyes\t1\t1\tyes')
