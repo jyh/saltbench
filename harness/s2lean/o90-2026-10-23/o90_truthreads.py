@@ -76,6 +76,13 @@ class Meter:
         self.rows.append([unit, session, str(cost), 'yes' if ok else 'no', served])
 
 
+def refuse_rerun(meter, label):
+    """systems' M2 for the two sets with no intended stop: their rows are written at the end, so a set the meter already holds
+    reads of was interrupted (or ran); a second run would be a second, unrecorded draw of the same reads. The lead decides."""
+    if any(u.startswith(label + ':') for u in meter.units()):
+        raise SystemExit('REFUSE: the meter already holds %s reads; a %s set is never re-run on it (an interrupted set is a case for the lead)' % (label, label))
+
+
 def require_read2_first(meter, args):
     """P1 (the PM): the metered first reads, and so the pause, belong to read 2 (A3.6 order). calib and confirm have no resume,
     so they refuse to run on a meter that has not yet passed them."""
@@ -86,8 +93,9 @@ def require_read2_first(meter, args):
         raise SystemExit('REFUSE: %s runs after read 2 is past its pause (A3.6, A5.3): %s.RESUMED does not exist' % (args.set, args.meter))
 
 
-def run_units(units, head, pat, args, meter, done, label):
-    """units: [(unit_id, lean, [sentences])]. -> {unit_id: (session, {i: answer} or None)}; writes HALT.txt / PAUSED on a stop."""
+def run_units(units, head, pat, args, meter, done, label, on_unit=None):
+    """units: [(unit_id, lean, [sentences])]. -> {unit_id: (session, {i: answer} or None)}; writes HALT.txt / PAUSED on a stop.
+    on_unit(uid, session, ans) runs as each unit lands, so a killed set keeps every read it made (systems' M2, 10-28)."""
     res, halt = {}, None
     for uid, lean, sents in units:
         if uid in done: continue
@@ -110,6 +118,7 @@ def run_units(units, head, pat, args, meter, done, label):
             if got: ans = got; break
         meter.fails = 0 if ans else meter.fails + 1   # M1: a READ fails once, after its retry
         res[uid] = (session, ans)
+        if on_unit: on_unit(uid, session, ans)
         if meter.fails >= 3 and not halt: halt = '3 failed reads in a row (last %s)' % uid
     if halt: open(os.path.join(args.out, 'HALT.txt'), 'w').write('HALT %s\n' % halt)
     return res, halt
@@ -149,19 +158,16 @@ def cmd_read2(args):
     arts = artifacts(pop, args.state)
     done = existing_units(args.out)
     meter = Meter(args.meter, args.cap_usd, args.pause_after)
-    res, stop = run_units([('%s/%s/%s' % k, lean, [r['text'] for r in rs]) for k, lean, rs in arts], READ_PROMPT, READ_ANS, args, meter, done, 'read2')
+    byuid = {'%s/%s/%s' % k: rs for k, lean, rs in arts}
+    def land(uid, session, ans):   # systems' M2: a read's rows are written the moment it lands, never only at the set's end
+        append_rows(args.out, [[r['problem'], r['arm'], r['b_episode'], r['sentence'], r['sentence_sha256'], session, 'claude',
+                                (ans or {}).get(i, 'UNSCORED'), '-', '-'] for i, r in enumerate(byuid[uid], 1)], sha)
+    res, stop = run_units([('%s/%s/%s' % k, lean, [r['text'] for r in rs]) for k, lean, rs in arts], READ_PROMPT, READ_ANS, args, meter, done, 'read2', land)
     rows = []
     for k, lean, rs in arts:
         uid = '%s/%s/%s' % k
-        if uid in done: continue
-        if uid not in res:
-            if stop == 'PAUSED': continue
-            rows += [[r['problem'], r['arm'], r['b_episode'], r['sentence'], r['sentence_sha256'], 'halt-%s' % r['b_episode'], 'claude', 'HALTED', '-', '-'] for r in rs]
-            continue
-        session, ans = res[uid]
-        for i, r in enumerate(rs, 1):
-            v = (ans or {}).get(i, 'UNSCORED')
-            rows.append([r['problem'], r['arm'], r['b_episode'], r['sentence'], r['sentence_sha256'], session, 'claude', v, '-', '-'])
+        if uid in done or uid in res or stop == 'PAUSED': continue
+        rows += [[r['problem'], r['arm'], r['b_episode'], r['sentence'], r['sentence_sha256'], 'halt-%s' % r['b_episode'], 'claude', 'HALTED', '-', '-'] for r in rs]
     append_rows(args.out, rows, sha)
     return stop
 
@@ -175,9 +181,8 @@ def existing_units(out):
 def append_rows(out, rows, sha):
     p = os.path.join(out, 'rows.tsv')
     new = not os.path.exists(p)
-    with open(p, 'a') as f:
-        if new: f.write('\t'.join(COLS) + '\n')
-        for r in rows: f.write('\t'.join(r) + '\n')
+    with open(p, 'a') as f:   # ONE write per call, so a unit's rows reach the file together (systems' LOW 1 on #414)
+        f.write(('\t'.join(COLS) + '\n' if new else '') + ''.join('\t'.join(r) + '\n' for r in rows))
     open(os.path.join(out, 'POPULATION.sha'), 'w').write(sha + '\n')
 
 
@@ -188,7 +193,7 @@ def cmd_confirm(args):
         for r in (l.rstrip('\n').split('\t') for l in open(f)):
             if r[0] != 'problem' and r[7] == 'FALSE': flagged[(r[2], r[3])] = True
     arts = artifacts(pop, args.state, only=set(flagged))
-    meter = Meter(args.meter, args.cap_usd, args.pause_after); require_read2_first(meter, args)
+    meter = Meter(args.meter, args.cap_usd, args.pause_after); require_read2_first(meter, args); refuse_rerun(meter, 'confirm')
     res, stop = run_units([('%s/%s/%s' % k, lean, [r['text'] for r in rs]) for k, lean, rs in arts], CONF_PROMPT, CONF_ANS, args, meter, set(), 'confirm')
     with open(os.path.join(args.out, 'confirmations.tsv'), 'w') as f:
         f.write('b_episode\tsentence\tconfirmer\tconfirmed\n')
@@ -238,7 +243,7 @@ def cmd_calib(args):
         side = 'A' if (it['key'] == 'TRUE') == (kk % 2 == 1) else 'B'
         by.setdefault((it['problem'], side), []).append(it)
     units = [('%s/%s' % k, leg_b_spec(args.specs, k[0], manifest), [it['sentence'] for it in its]) for k, its in by.items()]
-    meter = Meter(args.meter, args.cap_usd, args.pause_after); require_read2_first(meter, args)
+    meter = Meter(args.meter, args.cap_usd, args.pause_after); require_read2_first(meter, args); refuse_rerun(meter, 'calib')
     res, stop = run_units(units, CONF_PROMPT, CONF_ANS, args, meter, set(), 'calib')
     with open(os.path.join(args.out, 'calib.tsv'), 'w') as f:
         f.write('item_id\tkey\tmut_true\tconfirmer\tanswer\n')
@@ -475,6 +480,31 @@ def selftest():
         cf2 = os.path.join(t, 'cfg-ok'); os.makedirs(cf2); json.dump({'hooks': {'PreToolUse': [{}]}}, open(os.path.join(cf2, 'settings.json'), 'w'))
         arm('a config dir with a non-tool hook refuses; a PreToolUse-only one passes (L2)', l2 and check_cfg(cf2) is None)
         arm('the 95 % upper bound at 0 of 45 is 6.4 %', abs(upper95(0, 45) - 0.0644) < 0.0005)
+        # systems' M2 (on gemini's read-1 driver, 10-28): a killed set must not lose the reads it made. The kill is modelled as an
+        # exception out of the SECOND call (a SIGKILL leaves the same files: whatever was written before it, nothing after).
+        g = globals(); real_call = g['call']; nk = [0]
+        def dying_call(*a_):
+            nk[0] += 1
+            if nk[0] == 2: raise KeyboardInterrupt('killed')
+            return real_call(*a_)
+        env('ok', 'c12'); ok12 = os.path.join(t, 'r2-kill'); ak = args(ok12); g['call'] = dying_call
+        try: cmd_read2(ak)
+        except KeyboardInterrupt: pass
+        finally: g['call'] = real_call
+        kept = rows_of(os.path.join(ok12, 'rows.tsv')) if os.path.exists(os.path.join(ok12, 'rows.tsv')) else []
+        arm('M2: read 2 killed during its 2nd artifact keeps the 1st artifact\'s rows', len(kept) == 2 and {r[2] for r in kept} == {'e55'})
+        env('ok', 'c12b'); cmd_read2(argparse.Namespace(**dict(vars(ak)))); allr = rows_of(os.path.join(ok12, 'rows.tsv'))
+        arm('M2: the re-run reads only what did not land (2 calls, not 3) and rows.tsv holds each sentence once',
+            int(open(os.path.join(t, 'c12b')).read()) == 2 and len(allr) == 4 and len({(r[2], r[3]) for r in allr}) == 4)
+        env('ok', 'c13'); oc3 = os.path.join(t, 'conf3'); a13 = args(oc3, flags=[r2rows], pause_after=0); cmd_confirm(a13)
+        try: cmd_confirm(argparse.Namespace(**dict(vars(a13)))); again = False
+        except SystemExit as e: again = 'confirm' in str(e)
+        arm('M2: confirm on a meter that already holds confirm reads REFUSES (no silent second draw)', again)
+        pf6 = os.path.join(sp, 'p6.lean'); b6 = open(pf6).read().replace('-- edited\n', ''); open(pf6, 'w').write(b6)   # undo B1's edit: read, THEN truncate
+        env('ok', 'c14'); ocal3 = os.path.join(t, 'cal3'); a14 = args(ocal3, legb=lb, specs=sp, pause_after=0); cmd_calib(a14)
+        try: cmd_calib(argparse.Namespace(**dict(vars(a14)))); again = False
+        except SystemExit as e: again = 'calib' in str(e)
+        arm('M2: calib on a meter that already holds calib reads REFUSES', again)
     print('SELFTEST %d/%d' % (ok, n))
     return ok == n
 
