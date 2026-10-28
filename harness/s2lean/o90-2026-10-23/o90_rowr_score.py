@@ -8,7 +8,10 @@ registered sha256/16 (A2.1, A2.10 M1), and every key file must match its SHA256S
 Joins, each a refusal: every reads row equals its draw.tsv row on (seq, kind, item, episode, arm, problem); every u2-options row
 names its read's item and episode, and its option is the one items.tsv freezes at that position; an OK U2 read carries 8 option
 rows. A read set is COMPLETE when every draw.tsv seq has a reads row; otherwise it prints PARTIAL with the n reached and the
-reader's HALT file (if any) beside it, and nothing is quoted from a PARTIAL set as row R's score.
+reader's HALT file (if any) beside it, and nothing is quoted from a PARTIAL set as row R's score. A short set whose HALT file
+names one of A2.6's three registered halts (spend · 503 · 3 failed reads, in the reader harness's own words) reads HALTED instead:
+A2.6 says "a halted set is reported at the n it reached", so it is scored at that n with every unread seq named beside it.
+Exit: 0 COMPLETE · 4 HALTED · 3 PARTIAL.
 Scoring (A2.3, A2.4, A2.10 Q3): U1 — yes/no against the kernel's key, `cannot tell` scored wrong and counted, no answer UNSCORED;
 on ALL problems drawn (draw.tsv; registered 12) and on the NEITHER-YES subset (registered 6) (problems where no artifact is spec_recoverable=yes), per arm, with accuracy
 over answered and the per-arm spec_recoverable counts beside it. U2 — accuracy PER ARTIFACT = correct options / scored options
@@ -18,10 +21,12 @@ on NEITHER-YES; fewer than 4 NEITHER-YES problems is UNRESOLVABLE. It decides no
 Every figure is "by one reader mechanism (Gemini)" (A2.8 rider 2); the reader is not blind to the arm (A2.7).
 usage: o90_rowr_score.py <rowR dir> [--sums16 1629c1c3912b0e69] [--specrec16 00f1d80781af8607] · o90_rowr_score.py --selftest
 """
-import collections, hashlib, json, os, shutil, sys, tempfile
+import collections, hashlib, json, os, re, shutil, sys, tempfile
 
 SUMS16, SPECREC16 = '1629c1c3912b0e69', '00f1d80781af8607'
 PHRASE = 'by one reader mechanism (Gemini)'
+# A2.6's three halts, as the reader's harness writes them (run-rowR.py halt()); any other HALT text is not a registered halt
+HALT_RE = re.compile(r'^\S+Z (spend \S+pt > \S+pt|503 in agy stderr: .*|3 consecutive failed reads)$')
 
 
 def refuse(msg): raise SystemExit('REFUSE: ' + msg)
@@ -123,12 +128,19 @@ def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
     byseq = check(u1key, u2, draw, reads, opts, spec, u1prob)
     complete = len(reads) == len(draw)
     halt = os.path.join(d, 'HALT') if os.path.exists(os.path.join(d, 'HALT')) else None
+    htxt = open(halt).read().strip() if halt else ''
+    if not complete and HALT_RE.match(htxt): complete = 'HALTED'   # A2.6: "a halted set is reported at the n it reached"
     over = ''.join(' ⚠️ %s OVERRIDDEN to %s (registered %s)' % (nm, v, reg) for nm, v, reg in (('SHA256SUMS', sums16, SUMS16), ('specrec', specrec16, SPECREC16)) if v != reg)   # L3
     out = ['# O90 stage 1 row R, RE-SCORED by bench (o90_rowr_score.py), %s; the reader is not blind to the arm (A2.7)%s' % (PHRASE, over),
            '# inputs: reads.tsv %s · u2-options.tsv %s · draw.tsv %s · frozen/SHA256SUMS %s · frozen-specrec.tsv %s'
            % (sha16(os.path.join(d, 'reads.tsv')), sha16(os.path.join(d, 'u2-options.tsv')), sha16(os.path.join(d, 'draw.tsv')), sums16, specrec16),
-           ('COMPLETE: %d of %d reads' % (len(reads), len(draw))) if complete else
-           ('PARTIAL: %d of %d reads — NOT row R\'s score%s' % (len(reads), len(draw), '; HALT: ' + open(halt).read().strip() if halt else '; no HALT file'))]
+           ('COMPLETE: %d of %d reads' % (len(reads), len(draw))) if complete is True else
+           ('HALTED: %d of %d reads, reported at the n it reached (A2.6); HALT: %s' % (len(reads), len(draw), htxt)) if complete else
+           ('PARTIAL: %d of %d reads — NOT row R\'s score%s' % (len(reads), len(draw), '; HALT: ' + htxt if halt else '; no HALT file'))]
+    if complete == 'HALTED':
+        got = {r['seq'] for r in reads}
+        out.append('NOT READ (declared missing): ' + ' · '.join('seq %s %s %s %s' % (s, draw[s]['kind'], draw[s]['item'], draw[s]['arm'])
+                                                               for s in sorted(draw, key=int) if s not in got))
     u1 = [r for r in reads if r['kind'] == 'U1']
     probs = sorted({r['problem'] for r in draw.values() if r['kind'] == 'U1'}, key=int)   # the drawn population, not the reads so far
     yes_probs = {s['problem'] for s in spec if s['spec_recoverable'] == 'yes' and s['in_u1'] == 'yes'}   # M1 counts "on the 24 U1 artifacts"
@@ -164,7 +176,7 @@ def score(d, sums16=SUMS16, specrec16=SPECREC16, registered=(12, 6)):
     elif plus10(diffs['ALL']) and plus10(diffs['NEITHER-YES']): route = '+10 holds on ALL and on NEITHER-YES (A2.10 (b)): the U1 route condition is MET'
     elif plus10(diffs['ALL']): route = '+10 on ALL only: "U1 difference explained by recovered spec text; VOID not lifted by U1" (A2.10 (b))'
     else: route = '+10 not reached on ALL: the U1 route condition is NOT MET'
-    out.append('U1 ROUTE (a reading of A2.10 (b)/(c), deciding no VOID by itself): ' + route + ('' if complete else ' — PARTIAL set, not quotable'))
+    out.append('U1 ROUTE (a reading of A2.10 (b)/(c), deciding no VOID by itself): ' + route + ('' if complete is True else ' — HALTED set, reported at the n it reached (A2.6)' if complete else ' — PARTIAL set, not quotable'))
     keyed = {}
     for s, os_ in byseq.items():
         r = next(x for x in reads if x['seq'] == s)
@@ -374,6 +386,18 @@ def selftest():
         o = open(os.path.join(dd, 'u2-options.tsv')).read().splitlines(True); open(os.path.join(dd, 'u2-options.tsv'), 'w').write(''.join(o[:-8]))
         txt2, comp2 = score(dd, s16, r16, (5, 4))
         arm('a partial set prints PARTIAL with its n and marks the route not quotable', not comp2 and 'PARTIAL: 14 of 15' in txt2 and 'not quotable' in txt2)
+        open(os.path.join(dd, 'HALT'), 'w').write('2026-10-28T14:35:17Z spend 12pt > 11.0pt\n')
+        txth, comph = score(dd, s16, r16, (5, 4))
+        arm('A2.6: a short set WITH a registered spend HALT reads HALTED at the n it reached, its missing seqs named, and is not COMPLETE',
+            comph == 'HALTED' and 'HALTED: 14 of 15 reads, reported at the n it reached (A2.6); HALT: 2026-10-28T14:35:17Z spend 12pt > 11.0pt' in txth
+            and 'NOT READ (declared missing): seq 15' in txth and 'HALTED set, reported at the n it reached' in txth and 'PARTIAL' not in txth)
+        import subprocess
+        rc = lambda: subprocess.run([sys.executable, os.path.abspath(__file__), dd, '--sums16', s16, '--specrec16', r16], capture_output=True).returncode
+        arm('the CLI exits 4 on a HALTED set (0 COMPLETE · 3 PARTIAL)', rc() == 4)
+        open(os.path.join(dd, 'HALT'), 'w').write('stopped by hand\n')
+        arm('the CLI exits 3 on a short set whose HALT names no registered cause', rc() == 3)
+        arm('A2.6: a HALT file naming no registered cause (spend · 503 · 3 failed reads) is not a halt, and the set stays PARTIAL',
+            score(dd, s16, r16, (5, 4))[1] is False and 'PARTIAL: 14 of 15' in score(dd, s16, r16, (5, 4))[0])
         dd = os.path.join(t, 'u'); shutil.copytree(d, dd)
         edit(os.path.join(dd, 'frozen-specrec.tsv'), 'e25\t2\ta5\tyes\tyes\t1\t0\tno', 'e25\t2\ta5\tyes\tyes\t1\t1\tyes')
         edit(os.path.join(dd, 'frozen-specrec.tsv'), 'e35\t3\ta5\tyes\tyes\t1\t0\tno', 'e35\t3\ta5\tyes\tyes\t1\t1\tyes')
@@ -416,4 +440,4 @@ if __name__ == '__main__':
     a = sys.argv[1:]; kw = {}
     if '--sums16' in a: kw['sums16'] = a[a.index('--sums16') + 1]
     if '--specrec16' in a: kw['specrec16'] = a[a.index('--specrec16') + 1]
-    txt, comp = score(a[0], **kw); print(txt); sys.exit(0 if comp else 3)
+    txt, comp = score(a[0], **kw); print(txt); sys.exit(0 if comp is True else 4 if comp else 3)   # 0 COMPLETE · 4 HALTED (A2.6) · 3 PARTIAL
