@@ -181,9 +181,8 @@ def existing_units(out):
 def append_rows(out, rows, sha):
     p = os.path.join(out, 'rows.tsv')
     new = not os.path.exists(p)
-    with open(p, 'a') as f:
-        if new: f.write('\t'.join(COLS) + '\n')
-        for r in rows: f.write('\t'.join(r) + '\n')
+    with open(p, 'a') as f:   # ONE write per call, so a unit's rows reach the file together (systems' LOW 1 on #414)
+        f.write(('\t'.join(COLS) + '\n' if new else '') + ''.join('\t'.join(r) + '\n' for r in rows))
     open(os.path.join(out, 'POPULATION.sha'), 'w').write(sha + '\n')
 
 
