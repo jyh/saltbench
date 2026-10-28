@@ -739,7 +739,11 @@ guard price it. **Read 2 halts at 1.5 of the shared 3 points** (the PM's word, 1
 calibration and the confirmer, which DECIDE the axis (A3.4b), keep the rest; read 2 is the optional second mechanism (A3.3). The
 driver derives that guard as 1.5 × A5.3's USD-per-point rate. A3.5's "first 2 reads move > 0.5 point" test no longer protects
 anything at this n (break-even is about 0.02 point for 2 reads, below the meter's resolution), so A5.3's derived rate on read 2's
-1.5-point share is the binding guard.
+1.5-point share is the binding guard. **And read 2 is PROJECTED before it continues, as A7.5 projects read 1 (systems' M1):**
+at the pause the driver refuses to read further unless the first 2 reads' mean USD × read 2's unit count (153, derived) is within
+that 1.5-point guard; otherwise read 2 goes back to the PM to re-price. Without it, 2 reads under the old 0.5-point test could
+pass and then spend the whole share about a tenth of the way in, leaving mostly a5 unreached, which is the arm-correlated
+missingness A7.2 exists to prevent.
 **Placement (the PM's 10-25 and 10-28 words, carried).** Read 1 serial is about 153 × 390 s ≈ 16.6 h, so read 2 cannot start
 before Thu 10-29 evening; the login on the PM's second named pool expires Fri 10-30 07:37. If read 2 cannot finish by then, it
 runs on the PM's fallback pool under the same cap, with one addendum line. The pause reading over the first 2 metered reads is taken wholly before or after the
@@ -751,7 +755,9 @@ on a client with no 30-minute print timeout. Declared as a limit: their unit is 
 **A7.8 · Limits.** (1) A chunk does not see its artifact's other sentences, so a sentence whose truth depends on a neighbour is read
 without it. A3.2's question asks only whether a sentence is false of the Lean file, and both arms are read this way. (2) The probe
 that motivates this is ONE a5 artifact, the largest; that most a5 reads would time out under A3.2 is an inference from the token
-counts, not a measurement. (3) K = 7 is the size the probe measured to finish (the largest a0 artifact), not a tuned value.
+counts, not a measurement. (3) K = 7 is the size the probe measured to finish (the largest a0 artifact), not a tuned value. Wall time is reported beside
+spend: 153 serial reads at the one 7-sentence read's 390 s is about 16.6 h, an inference from ONE read; the figure of record is
+the re-probe's own per-chunk time (systems' LOW).
 (4) A5 now carries 144 reads to a0's 9, so a halt by spend is likelier to land inside a5's artifacts; A7.4's order keeps it to one
 split artifact, and the HALTED count is printed per arm. (5) An a5 artifact now spans about 6 chunk reads, so one unparsed chunk makes it
 UNSCORED on A3.4's per-artifact rule far more often than an a0 artifact (one read). That rule does not decide (A3.4a), but its

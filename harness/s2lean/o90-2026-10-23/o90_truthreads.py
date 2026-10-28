@@ -397,6 +397,14 @@ def selftest():
         arm('USD per point is computed from the meter\'s own first reads and the point reading, and printed (systems\' T1)', exp in r.stdout)
         exp2 = 'guard %.4f USD = 1.5 points (read 2\'s share, A7.6)' % (1.5 * Meter(a7b.meter, 0, 2).first_usd(2) / 0.5)
         arm('A7.6: read 2\'s guard is 1.5 of the 3 points, derived from the same rate', exp2 in r.stdout)
+        env('ok', 'c7p'); ap7 = args(os.path.join(t, 'r2-proj'), pause_after=2); sp = cmd_read2(ap7); open(ap7.meter + '.RESUMED', 'w').write('')
+        rp = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', ap7.out, '--cfg', t,
+                             '--client', stub, '--meter', ap7.meter, '--expect-sha', psha, '--points-at-pause', '1.5'], capture_output=True, text=True)
+        rq = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', os.path.join(t, 'r2-proj-ok'),
+                             '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.5', '--cfg', t], capture_output=True, text=True)
+        arm('A7.6 (systems\' M1): read 2 REFUSES past its pause when its first reads project past its guard, reading nothing and recording no point reading',
+            sp == 'PAUSED' and rp.returncode != 0 and 'projects' in rp.stderr and len(Meter(ap7.meter, 0, 2).units()) == 2
+            and not os.path.exists(ap7.meter + '.points') and 'read 2 projected' in rq.stdout and rq.returncode == 0)
         r2_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
                               '--client', stub, '--meter', a7b.meter, '--expect-sha', psha, '--points-at-pause', '0.7'], capture_output=True, text=True)
         r3_ = subprocess.run([sys.executable, os.path.abspath(__file__), 'read2', '--population', pop, '--state', st, '--out', a7b.out, '--cfg', t,
@@ -581,6 +589,16 @@ def main():
         print('USD per point %.4f (%.4f USD over the first %d reads / %.3f points) · guard %.4f USD = %g points%s'
               % (rate, m.first_usd(a.pause_after), a.pause_after, a.points_at_pause, a.cap_usd, share,
                  " (read 2's share, A7.6)" if a.set == 'read2' else ''))
+        if a.set == 'read2':   # A7.6 (systems' M1 on #415): read 2 is PROJECTED before it continues, as A7.5 projects read 1
+            pop, _ = load_pop(a.population, a.expect_sha); by = collections.OrderedDict()
+            for r in pop:
+                if r['given'] == 'no': by.setdefault((r['problem'], r['arm'], r['b_episode']), []).append(r)
+            n = len(read_chunks([(k, '', rs) for k, rs in by.items()], getattr(a, 'chunk', READ_CHUNK)))
+            proj = m.first_usd(a.pause_after) / a.pause_after * n
+            print('read 2 projected %.4f USD over %d reads (first %d reads\' mean) against its guard %.4f USD' % (proj, n, a.pause_after, a.cap_usd))
+            if proj > a.cap_usd:
+                raise SystemExit('REFUSE: read 2 projects %.4f USD over its %d reads, past its 1.5-point guard %.4f USD (A7.6): '
+                                 'it goes back to the PM to re-price, nothing past the pause is read' % (proj, n, a.cap_usd))
     stop = {'read2': cmd_read2, 'calib': cmd_calib, 'confirm': cmd_confirm, 'merge': cmd_merge}[a.set](a)
     print('STOP %s' % stop if stop else 'DONE')
 
