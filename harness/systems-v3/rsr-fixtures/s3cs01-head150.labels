@@ -1,0 +1,65 @@
+# Hand labels for s3cs01-head150.rs: lines 1-150 of the run box's cells-s3-crc32-saltdiet/s3cs01/repo/solution.rs
+# (gemini-3.1-pro-high, Crc32, greenfield, salt-diet, none). Labelled by bench (relight 174, 2026-10-28) by reading
+# the listing line by line, BEFORE rsr.py existed. Form: <first>-<last> <CLASS>, or <line> <CLASS>.
+# Classes: SPEC PROOF IMPL COMMENT BLANK (TEST does not occur in this file).
+# Hand totals: SPEC 41 · PROOF 22 · IMPL 66 · COMMENT 6 · BLANK 15 = 150.
+1-2 IMPL
+3 BLANK
+4 IMPL
+5-7 COMMENT
+8-11 IMPL
+12 BLANK
+13-14 COMMENT
+15 IMPL
+16 SPEC
+17 IMPL
+18 BLANK
+19-21 IMPL
+22-25 PROOF
+26-28 IMPL
+29 PROOF
+30 BLANK
+31-32 PROOF
+33 BLANK
+34-35 IMPL
+36 PROOF
+37 IMPL
+38 PROOF
+39 IMPL
+40 BLANK
+41 IMPL
+42 COMMENT
+43 BLANK
+44-50 SPEC
+51 BLANK
+52-62 SPEC
+63 BLANK
+64-72 SPEC
+73 BLANK
+74-76 SPEC
+77 BLANK
+78-83 SPEC
+84 BLANK
+85 IMPL
+86 SPEC
+87-90 IMPL
+91-97 PROOF
+98-108 IMPL
+109 BLANK
+110 IMPL
+111 SPEC
+112-118 IMPL
+119 BLANK
+120 IMPL
+121 SPEC
+122-132 IMPL
+133 BLANK
+134 IMPL
+135 SPEC
+136-139 IMPL
+140-143 PROOF
+144-146 IMPL
+147 PROOF
+148 IMPL
+149 PROOF
+150 IMPL

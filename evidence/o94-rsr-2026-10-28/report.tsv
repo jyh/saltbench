@@ -1,0 +1,15 @@
+# rsr.py --report evidence/o94-rsr-2026-10-28/rsr-cells.tsv: 543 rows (cell x condition), 520 distinct cells, 0 without source
+# ratio = SPEC / (IMPL + PROOF), a PROXY for review attention, not a measure of it. A plain arm reads 0 by
+# construction (no Verus): its review surface is its tests, so TEST/IMPL is printed beside it.
+# all = the final source on disk; sub = lines not matched to the seed (root commit). Five-number summaries.
+arm	problem	n	ratio_all min/q1/med/q3/max	ratio_sub min/q1/med/q3/max	SPEC med	PROOF med	IMPL med	TEST/IMPL med	PROOF=0
+plain	Crc32	60	0.000/0.000/0.000/0.000/0.000	0.000/0.000/0.000/0.000/0.000	0	0	36	5.068	60
+plain	FreeList	60	0.000/0.000/0.000/0.000/0.000	0.000/0.000/0.000/0.000/0.000 (over 59 of 60; 1 UNDEFINED)	0	0	161	3.250	60
+plain	LRU	60	0.000/0.000/0.000/0.000/0.000	0.000/0.000/0.000/0.000/0.000	0	0	74	5.252	60
+plain	LZW	60	0.000/0.000/0.000/0.000/0.000	0.000/0.000/0.000/0.000/0.000	0	0	90.5	3.215	60
+plain	Paxos	36	0.000/0.000/0.000/0.000/0.000	0.000/0.000/0.000/0.000/0.000	0	0	230	2.187	36
+salt-diet	Crc32	60	0.031/0.192/0.257/0.286/0.591	0.031/0.208/0.274/0.329/0.867	50	131	75.5	1.945	0
+salt-diet	FreeList	57	0.012/0.261/0.364/0.532/1.384	0.017/0.302/0.402/0.598/1.529	298	133	471	0.465	9
+salt-diet	LRU	60	0.188/0.304/0.406/0.486/0.939	0.195/0.333/0.445/0.595/1.227	142.5	150	212	1.106	1
+salt-diet	LZW	57	0.000/0.179/0.221/0.421/0.986	0.102/0.188/0.246/0.446/2.649 (over 56 of 57; 1 UNDEFINED)	144	372	209	0.844	3
+salt-diet	Paxos	33	0.140/0.222/0.239/0.305/1.265	0.143/0.238/0.256/0.455/1.871	243	619	420	0.564	0
