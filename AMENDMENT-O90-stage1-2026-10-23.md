@@ -831,8 +831,9 @@ reach, under A4.1, exactly as an A3.5 halt does.** A4.1's "only by an A3.5 halt"
 other (systems' F3). It is implemented in `run_units` behind `args.unread_halt`, which read 1's
 new driver sets and `cmd_read2` sets for read 2 (A8.9, evidence's yes). Calib and confirm are unchanged. A halt already named
 (a 503, spend, 3 in a row) keeps its own cause in HALT.txt; the UNREAD rule never renames it. The self-test drives six arms
-(54/54). Five mutants each redden only their own arm: `>=` for `>`, the 15-chunk floor removed, the a0 rule loosened to two, the
-`not halt` guard dropped (systems' mutant: a 503 on an a0 chunk renamed an UNREAD halt), and read 2's default turned off. **Why:** the A3.5 halts all watch the MACHINERY (spend, 503, consecutive failures). Read 1
+(54/54). Five mutants are each red. Four redden only their own arm: `>=` for `>`, the 15-chunk floor removed, the a0 rule loosened
+to two, and read 2's default turned off. The fifth, the `not halt` guard dropped (systems' mutant: a 503 on an a0 chunk renamed an
+UNREAD halt), reddens two (52/54): its own arm and the existing "a 503 on a failed read halts the set". **Why:** the A3.5 halts all watch the MACHINERY (spend, 503, consecutive failures). Read 1
 failed 25 of 46 attempts and never met any of them, because a rescued retry resets the consecutive count. An ok=False at rc 0 was
 also no relight event for any watcher (evidence's point).
 
