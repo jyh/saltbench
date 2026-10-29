@@ -873,3 +873,62 @@ A8.4 (A) ACCEPTED, for the reason given. A8.3, A8.5 and A8.6 ACCEPTED with these
 - **evidence, 2026-10-29 00:15:01 PDT:** riders 1-4 CONCUR as written in. **Rider 2's premise is RETRACTED**: failures do not
   track size (A8.2 (1)), so the rider is moot as well as unmet. **Read 2 takes A8.6 and rider 4: YES**, because two reads cannot see
   a rate there either, and missing reads on either arm is the defect. `cmd_read2` sets the halt, and the CLI has no flag to unset it.
+
+## ⚖️ ADDENDUM 9 — 2026-10-29: READ 1 SPLITS A CHUNK THAT TIMES OUT INTO SINGLE-SENTENCE READS. APPENDED; all text above untouched. Written before any read it governs.
+
+*bench (lead), DRAFT for evidence's words and systems' read. A8.5's start test FAILED on 2026-10-29 at 09:59:47Z (gemini's
+run directory, `probe-a8/PROBED`). evidence's arm rule, registered before the diagnostic ran (bus 2026-10-29 03:06:15 PDT), chose
+between (A) and (D) mechanically, and the diagnostic chose (A).*
+
+**A9.1 · What the A8.5 probe measured.** 12 attempts on gemini-4-argon-medium. 8 read OK, at a mean of 32,675 tokens and 180 s
+(slowest 366 s). The 4 failures were `11/a5` #5 and #9, two attempts each, every one at agy's 30-minute print timeout with 63 k to 66 k
+thinking tokens and no response. Those are the same two chunks read 1 lost on -high, with the same signature. `11/a5` #8, which was
+UNREAD on -high, read OK. 2 of 10 UNREAD and 19.1 projected points failed the start test on both terms. **The lever A8.4 chose
+(effort) does not reach the failure: particular chunks send the reader into runaway thinking at either effort.**
+
+**A9.2 · The diagnostic (evidence's registration, run as registered).** 11 fresh sessions, one per written sentence of `11/a5` #5
+(explain:12–18) and #9 (explain:40–43). Each used A3.2's prompt with k = 1, the whole `stageB.lean`, argon-medium, a 600 s print
+timeout and one attempt, in its own directory and never scored (driver `run-diag.py` sha256/16 b3f6d1db98a78349, systems PASS;
+output `diag/diag.tsv` sha256/16 7b8c0e9fbd9f74b1). **T = 1 of 11:** explain:14 timed out at 603 s (43,460 tokens), and 10 answered.
+The pool read 74 % before and after. **By the rule (T ≤ 3 ⇒ (A)), the form is (A).** evidence's prediction (the runaways sit on
+sentences about the environment outside the file, its set E) is NOT refuted, at n = 1: the timeout is in E and no F sentence timed
+out. Beside it, every E read was slow (24–603 s, four of six over 300 s) and every F read fast (11–27 s). No verdict from the
+diagnostic is scored or quoted.
+
+**A9.3 · The form (A).** Every read 1 read, whole-chunk or single, has a **600 s** print timeout (1.6× the slowest OK whole-chunk
+read measured, n = 8). **A whole-chunk attempt that ends in the print timeout is not retried whole.** Its sentences are read one
+per fresh session (k = 1), in order, with A3.2's prompt and **one attempt each**, as the diagnostic measured. A single that times
+out, fails or does not parse leaves that sentence UNSCORED. A whole-chunk failure that is NOT a timeout keeps A3.2's one whole
+retry, unchanged. A 503 on any read halts the set (A3.5). Every single is a meter row `<set>:<chunk>~<j>` and a row of `split.tsv`
+beside `rows.tsv` (chunk · j · session · outcome). A split sentence's row carries ITS OWN session as reader. The rule is the same
+for both arms. How often it fires is not: on the record so far it has fired on a5 only (A9.6).
+**Implemented in `o90_truthreads.run_units`** behind `args.split_on_timeout`, with `call()` returning a 7th element, TIMED-OUT.
+Read 2's Claude call returns six and never splits. The self-test drives 7 split arms (61/61), and four mutants redden their arms:
+no split → 5, the sentence rule off → 2, the split-503 halt removed → 1, no whole retry without the split → 1.
+
+**A9.4 · A8.6 counts SENTENCES under the split** (evidence's word, 03:06:15). An a0 sentence UNREAD halts the set (rider 4). a5 halts
+when UNREAD a5 sentences × 5 exceed a5 sentences reached, once at least 15 a5 CHUNKS are reached (the floor stays a count of chunks).
+A sentence is UNREAD when it carries no verdict, whether its chunk was split or not. Read 2 keeps A8.6's chunk count.
+
+**A9.5 · The price, from the diagnostic's and the probe's own tokens.** Expected splits: 144 a5 chunks × 2/9 (the probe's a5 rate)
+≈ 32, each ≈ 43 k (one 600 s timeout) + 6.5 sentences × 24,655 (the diagnostic's single mean) ≈ 203 k. Total ≈ 121 × 32,675 + 32 ×
+203 k ≈ **10.5 M tokens: 13.8 points at A7.5's 0.76 M/pt, over the 12 cap; 8.2 points at ≈ 1.28 M/pt**, which is read 1's own meter
+(3 points as an upper-bounding sum of drops over 3.83 M tokens). Wall ≈ 21 h serial, 26 h with +25 %. Expected missingness ≈ 1 single
+in 11, so ≈ 19 of a5's 933 written sentences (≈ 2 %), where read 1 lost ≈ 1 chunk in 3.
+**THE START TEST'S PREDICTOR (evidence's word owed):** (i) 0.76 M/pt stays binding. The re-run start test then FAILS on price before it
+measures anything, and read 1 goes to (D) on price, not readability. (ii) The start test binds on the probe's OWN measured rate, with
+0.76's projection printed beside it. The 12-point cap is enforced DURING the set by the pool meter (A7.4's spend halt, rows kept per
+A8.3), so the set cannot overrun 12. At worst it HALTS partial at the n it reached. **bench recommends (ii).** The cap is unmoved; only
+the start test's predictor changes, and the meter that enforces the cap is the unit the cap is denominated in.
+
+**A9.6 · Limits.** (1) evidence's, kept: split reads see one sentence where a chunk read sees up to 7, and on the record they fall on a5.
+A3.4b's per-arm FLAG rate is therefore printed **split by k** (chunk reads vs split reads, from `split.tsv`), so any shift the split
+causes is visible. (2) The 600 s timeout was measured against 8 whole-chunk OK reads. A slower OK chunk now times out and is split,
+which costs time and tokens but loses no sentence that answers singly. (3) The diagnostic is one artifact's two chunks (n = 11
+sentences). The 2/9 split rate and the 1-in-11 single runaway rate are rates on those, not on all 24 a5 artifacts. (4) A split single
+is one meter unit, so `meter.units()` counts singles. Read 1 runs with no pause (`pause_after` 10⁹), and read 2 cannot split.
+(5) An UNREAD in E stays UNREAD and is never re-labelled OK (evidence's limit on A3.2's question).
+
+**A9.7 · Order.** On merge: gemini's driver passes `split_on_timeout` and `unread_halt`, sets the 600 s timeout, returns TIMED-OUT from
+its call, and writes each split sentence's own session in its rows. systems reads it. A8.5's 10-chunk start test is re-run under the
+new rule, with the predictor A9.5 settles. The set starts after the reboot (A8.7).
