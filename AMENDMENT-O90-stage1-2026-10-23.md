@@ -793,7 +793,10 @@ measurement, and no `rows.tsv` is written from them.
 per-arm failure fraction near one half cannot be seen in n = 2.
 
 **A8.3 · Rows are written per chunk.** In the new driver, each chunk's rows are appended to `rows.tsv` (verdicts, or UNSCORED)
-when that chunk's read ends, before the next chunk starts. A halt, a kill or a reboot then leaves the set's record at the n it
+when that chunk's read ends, before the next chunk starts. **The shared loop already does this:** `run_units`'s `on_unit` hook
+(#414, systems' M2, merged 2026-10-28 before read 1 fired) is how read 2 writes its rows. Read 1's driver called `run_units`
+without the hook and wrote its rows at the end. So a fix made in the shared library did not reach the one caller that needed it
+first. **The new read-1 driver passes `on_unit`**, and its reader's read (A8.5's probe is driven on it) checks that it does. A halt, a kill or a reboot then leaves the set's record at the n it
 reached. Everything not reached is HALTED (ADDENDUM 4), with the cause named in `HALT.txt`, or written by the lead's scorer as
 `killed` when the process left none. **A set is still never resumed** (A3.5 limit 4): a stopped set is reported at its n, and a
 new set is a new addendum's act.
@@ -818,7 +821,9 @@ under-priced read 1 by a factor of 3.7. Otherwise the set does not start and the
 
 **A8.6 · A failure fraction is a logged event.** The driver logs, at every pool reading, the per-arm count of chunks reached and
 UNREAD. **The set HALTS if, after at least 15 a5 chunks, more than 1 in 5 a5 chunks reached is UNREAD.** HALT.txt names the cause,
-and the rows written so far stand (A8.3). **Why:** the A3.5 halts all watch the MACHINERY (spend, 503, consecutive failures). Read 1
+and the rows written so far stand (A8.3). It is implemented in `run_units` behind `args.unread_halt`, which only a
+set governed by this addendum sets. Read 2, calib and confirm are unchanged. The self-test drives four arms (52/52), and three
+mutants (`>=` for `>`, the 15-chunk floor removed, the a0 rule loosened to two) each redden only their own arm. **Why:** the A3.5 halts all watch the MACHINERY (spend, 503, consecutive failures). Read 1
 failed 25 of 46 attempts and never met any of them, because a rescued retry resets the consecutive count. An ok=False at rc 0 was
 also no relight event for any watcher (evidence's point).
 
