@@ -892,20 +892,24 @@ timeout and one attempt, in its own directory and never scored (driver `run-diag
 output `diag/diag.tsv` sha256/16 7b8c0e9fbd9f74b1). **T = 1 of 11:** explain:14 timed out at 603 s (43,460 tokens), and 10 answered.
 The pool read 74 % before and after. **By the rule (T ≤ 3 ⇒ (A)), the form is (A).** evidence's prediction (the runaways sit on
 sentences about the environment outside the file, its set E) is NOT refuted, at n = 1: the timeout is in E and no F sentence timed
-out. Beside it, every E read was slow (24–603 s, four of six over 300 s) and every F read fast (11–27 s). No verdict from the
+out. Beside it, four of six E reads were over 300 s (:13 326 · :14 603 · :40 411 · :41 309), while :15 took 60 s and :43 24 s, and every F
+read took 11–27 s (systems' F1). The 300 s cut was chosen after the data, so this is a description, not a test (A9.6 (6)). No verdict from the
 diagnostic is scored or quoted.
 
 **A9.3 · The form (A).** Every read 1 read, whole-chunk or single, has a **600 s** print timeout (1.6× the slowest OK whole-chunk
 read measured, n = 8). **A whole-chunk attempt that ends in the print timeout is not retried whole.** Its sentences are read one
 per fresh session (k = 1), in order, with A3.2's prompt and **one attempt each**, as the diagnostic measured. A single that times
 out, fails or does not parse leaves that sentence UNSCORED. A whole-chunk failure that is NOT a timeout keeps A3.2's one whole
-retry, unchanged. A 503 on any read halts the set (A3.5). Every single is a meter row `<set>:<chunk>~<j>` and a row of `split.tsv`
+retry, unchanged. If that retry then times out, the chunk splits (systems' R3). **A read that timed out is never taken as an answer**,
+even if it returned text that parses (systems' R2): the library checks TIMED-OUT before it parses. A 503 on any read halts the set (A3.5). Every single is a meter row `<set>:<chunk>~<j>` and a row of `split.tsv`
 beside `rows.tsv` (chunk · j · session · outcome). A split sentence's row carries ITS OWN session as reader. The rule is the same
 for both arms. How often it fires is not: on the record so far it has fired on a5 only (A9.6).
 **Implemented in `o90_truthreads.run_units`** behind `args.split_on_timeout`, with `call()` returning a 7th element, TIMED-OUT.
-Read 2's Claude call returns six and never splits. The self-test drives 9 split arms (63/63), and the mutants redden their arms:
+Read 2's Claude call returns six and never splits. The self-test drives 14 split arms (68/68), and the mutants redden their arms:
 no split → 5, the sentence rule off → 2, the split-503 halt removed → 1, no whole retry without the split → 1, and for A9.4's a0
-rule: the old "any" rule → 3, a 1-sentence floor → 3, `>=` for `>` → 1.
+rule: the old "any" rule → 3, a 1-sentence floor → 3, `>=` for `>` → 1. systems' asks each have an arm that reddens on its own
+mutant: the singles' meter rows (F2), each sentence's own session (F3), a5 at exactly 21 of 105 (R1), a timed-out ok read taken whole
+(R2), and a split only on the first attempt (R3).
 
 **A9.4 · A8.6 counts SENTENCES under the split** (evidence's words, 03:06:15 and 04:17:57). **Both arms halt when UNREAD sentences ×
 5 exceed sentences reached**: a5 once at least 15 a5 CHUNKS are reached, a0 once at least 15 a0 SENTENCES are reached. a0's UNREAD
