@@ -96,8 +96,12 @@ def require_read2_first(meter, args):
 
 def run_units(units, head, pat, args, meter, done, label, on_unit=None):
     """units: [(unit_id, lean, [sentences])]. -> {unit_id: (session, {i: answer} or None)}; writes HALT.txt / PAUSED on a stop.
-    on_unit(uid, session, ans) runs as each unit lands, so a killed set keeps every read it made (systems' M2, 10-28)."""
-    res, halt, reached, unread = {}, None, {}, {}
+    on_unit(uid, session, ans) runs as each unit lands, so a killed set keeps every read it made (systems' M2, 10-28).
+    call() may return a 7th element, TIMED-OUT. With args.split_on_timeout set (ADDENDUM 9), an attempt that times out ends the
+    whole-unit attempts and the unit's sentences are read one per fresh session, one attempt each; each single is a meter row
+    '<label>:<uid>~<j>' and a split.tsv row (uid, j, session, outcome). A split unit's session is then a dict {j: session}."""
+    res, halt, reached, unread, sreached, sunread = {}, None, {}, {}, {}, {}
+    split = getattr(args, 'split_on_timeout', None)
     for uid, lean, sents in units:
         if uid in done: continue
         if halt: break
@@ -112,11 +116,27 @@ def run_units(units, head, pat, args, meter, done, label, on_unit=None):
             if pr and not os.path.exists(pr[0]): open(pr[0], 'w').write(pr[1])   # so no refusal before it, in main or in a set, leaves one
         ans, session = None, 'no-session'
         for attempt in (1, 2):
-            ok, text, cost, session, t503, served = call(args.client, args.cfg, args.model, render(lean, sents, head))
-            got = parse(text, pat, len(sents)) if ok else {}
+            r = call(args.client, args.cfg, args.model, render(lean, sents, head))
+            ok, text, cost, session, t503, served = r[:6]; timed_out = len(r) > 6 and bool(r[6])
+            got = parse(text, pat, len(sents)) if ok and not (timed_out and split) else {}   # A9.3 (systems R2): a timed-out read is never taken whole
             meter.record('%s:%s' % (label, uid), session, cost, ok and bool(got), served)   # G1: one id space per SET
             if t503: halt = '503 on %s' % uid; break
             if got: ans = got; break
+            if timed_out and split:   # ADDENDUM 9 (A): never retried whole; read one sentence per session
+                ans, session = {}, {}
+                for j, sent in enumerate(sents, 1):
+                    r = call(args.client, args.cfg, args.model, render(lean, [sent], head))
+                    ok, text, cost, sj, t503, served = r[:6]; tj = len(r) > 6 and bool(r[6])
+                    g = parse(text, pat, 1) if ok and not tj else {}
+                    meter.record('%s:%s~%d' % (label, uid, j), sj, cost, ok and bool(g), served)
+                    out = '503' if t503 else 'TIMEOUT' if tj else g[1] if g else 'NO-PARSE'
+                    sp = os.path.join(args.out, 'split.tsv'); new = not os.path.exists(sp)
+                    with open(sp, 'a') as f: f.write(('uid\tj\tsession\toutcome\n' if new else '') + '%s\t%d\t%s\t%s\n' % (uid, j, sj, out))
+                    session[j] = sj
+                    if t503: halt = '503 on %s~%d' % (uid, j); break
+                    if g: ans[j] = g[1]
+                ans = ans or None
+                break
         meter.fails = 0 if ans else meter.fails + 1   # M1: a READ fails once, after its retry
         res[uid] = (session, ans)
         if on_unit: on_unit(uid, session, ans)
@@ -124,7 +144,13 @@ def run_units(units, head, pat, args, meter, done, label, on_unit=None):
         if getattr(args, 'unread_halt', None) and not halt:   # ADDENDUM 8 A8.6 + A8.9 rider 4; a unit id is problem/arm/episode#chunk
             arm = uid.split('/')[1]
             reached[arm] = reached.get(arm, 0) + 1; unread[arm] = unread.get(arm, 0) + (ans is None)
-            if arm == 'a0' and unread['a0']:
+            sreached[arm] = sreached.get(arm, 0) + len(sents); sunread[arm] = sunread.get(arm, 0) + len(sents) - len(ans or {})
+            if split:   # ADDENDUM 9: under the split the rule counts SENTENCES (the 15-chunk floor stays a count of chunks)
+                if arm == 'a0' and sreached['a0'] >= 15 and sunread['a0'] * 5 > sreached['a0']:   # A9.4: rider 4 in sentences, not "any"
+                    halt = 'UNREAD on a0 (%d of %d a0 sentences, over 1 in 5; A9.4)' % (sunread['a0'], sreached['a0'])
+                elif arm == 'a5' and reached['a5'] >= 15 and sunread['a5'] * 5 > sreached['a5']:
+                    halt = 'UNREAD on a5 (%d of %d a5 sentences, over 1 in 5; A9)' % (sunread['a5'], sreached['a5'])
+            elif arm == 'a0' and unread['a0']:
                 halt = 'UNREAD on a0 (%d of %d a0 chunks; A8.9 rider 4)' % (unread['a0'], reached['a0'])
             elif arm == 'a5' and reached['a5'] >= 15 and unread['a5'] * 5 > reached['a5']:
                 halt = 'UNREAD on a5 (%d of %d a5 chunks, over 1 in 5; A8.6)' % (unread['a5'], reached['a5'])
@@ -575,6 +601,67 @@ def selftest():
         env('fail', 'c2u'); a2u = args(os.path.join(t, 'r2-unread')); s2u = cmd_read2(a2u); l2u = rows_of(os.path.join(a2u.out, 'rows.tsv'))
         arm('A8.9 (evidence 00:15:01): read 2 runs with unread_halt: its first a0 UNREAD halts it, and the unreached chunk is HALTED',
             (s2u or '').startswith('UNREAD on a0') and [r[7] for r in l2u if r[2] == 'e65'] == ['HALTED'])
+        # ADDENDUM 9: split on timeout. A sentence reading RUNAWAY makes any read that carries it time out; SOFT makes a WHOLE-chunk
+        # read fail without a timeout; S503 makes a SINGLE read of it a 503. The fake answers OK to every index it is asked.
+        calls, lastm = [], [None]
+        def fakesplit(client, cfg, model, prompt):
+            k = prompt.count('\n') - prompt.rstrip().rsplit('```', 1)[0].count('\n')   # numbered lines after the fence
+            calls.append(k)
+            single = '\n2. ' not in prompt
+            if 'RUNAWAY' in prompt: return (False, '', 0.0, 's-t', False, 'UNREAD', True)
+            if 'SINGLEOKTO' in prompt and single: return (True, '1: OK', 0.0, 's-o', False, 'm', True)
+            if 'S503' in prompt and single: return (False, '', 0.0, 's-5', True, 'UNREAD', False)
+            if 'SOFTTHENRUN' in prompt and not single:   # first whole attempt fails soft, the retry times out
+                return (False, '', 0.0, 's-f', False, 'UNREAD', sum(1 for c in calls if c) > 1)
+            if 'OKTIMEOUT' in prompt and not single: return (True, '1: OK\n2: OK', 0.0, 's-p', False, 'm', True)
+            if 'SOFT' in prompt and not single: return (False, '', 0.0, 's-f', False, 'UNREAD', False)
+            return (True, '\n'.join('%d: OK' % i for i in range(1, 8)), 0.0, 's-ok', False, 'm', False)
+        def drive9(us, **kw):
+            o = os.path.join(t, 'a9-%d' % len(os.listdir(t))); a = args(o, pause_after=10 ** 9, **kw); del calls[:]; lastm[0] = a.meter   # read 1's driver's own value
+            real = globals()['call']; globals()['call'] = fakesplit
+            try: res, h = run_units(us, READ_PROMPT, READ_ANS, a, Meter(a.meter, 0, 99), set(), 'u')
+            finally: globals()['call'] = real
+            sp = os.path.join(o, 'split.tsv')
+            return res, h, (rows_of(sp) if os.path.exists(sp) else []), list(calls)
+        u3 = [('9/a5/e#1', 'x', ['fine one', 'RUNAWAY two', 'fine three'])]
+        res, h, sp, cs = drive9(u3, split_on_timeout=True)
+        arm('A9: a chunk whose attempt times out is read one sentence per session, never retried whole; the runaway sentence alone is UNREAD',
+            res['9/a5/e#1'][1] == {1: 'OK', 3: 'OK'} and len(cs) == 4 and h is None
+            and [(r[1], r[3]) for r in sp] == [('1', 'OK'), ('2', 'TIMEOUT'), ('3', 'OK')])
+        m9 = [r[0] for r in rows_of(lastm[0])]
+        arm('A9.3 (systems F2): the whole attempt and EVERY split single are meter rows, so the price sees the singles',
+            m9 == ['u:9/a5/e#1', 'u:9/a5/e#1~1', 'u:9/a5/e#1~2', 'u:9/a5/e#1~3'])
+        arm('A9.3 (systems F3): a split chunk carries each sentence\'s OWN session', res['9/a5/e#1'][0] == {1: 's-ok', 2: 's-t', 3: 's-ok'})
+        res, h, sp, cs = drive9(u3)
+        arm('A9: with split_on_timeout unset the same chunk is retried whole and is UNREAD (A3.2 as before)', res['9/a5/e#1'][1] is None and len(cs) == 2 and sp == [])
+        res, h, sp, cs = drive9([('9/a5/e#1', 'x', ['SOFT one', 'fine two'])], split_on_timeout=True)
+        arm('A9: a failure that is NOT a timeout keeps A3.2\'s whole-chunk retry and is never split', len(cs) == 2 and sp == [])
+        res, h, sp, cs = drive9([('9/a5/e#1', 'x', ['SOFTTHENRUN one', 'fine two'])], split_on_timeout=True)
+        arm('A9.3 (systems R3): a soft failure, then a timeout on the retry, also splits', len(cs) == 4 and [r[1] for r in sp] == ['1', '2'])
+        res, h, sp, cs = drive9([('9/a5/e#1', 'x', ['OKTIMEOUT one', 'fine two'])], split_on_timeout=True)
+        arm('A9.3 (systems R2): a call that TIMED OUT is never taken whole, even if it returned ok with parseable text', len(cs) == 3 and len(sp) == 2)
+        res, h, sp, cs = drive9([('9/a5/e#1', 'x', ['RUNAWAY one', 'SINGLEOKTO two', 'fine three'])], split_on_timeout=True)
+        arm('A9.3 (systems, delta): a SPLIT single that timed out is UNREAD even if it returned ok with parseable text',
+            res['9/a5/e#1'][1] == {3: 'OK'} and [r[3] for r in sp] == ['TIMEOUT', 'TIMEOUT', 'OK'])
+        res, h, sp, cs = drive9([('9/a5/e#1', 'x', ['RUNAWAY one', 'S503 two', 'fine three']), ('9/a5/e#2', 'x', ['fine'])], split_on_timeout=True)
+        arm('A9: a 503 on a split single halts the set as a 503, and nothing after it is read', h == '503 on 9/a5/e#1~2' and len(cs) == 3 and '9/a5/e#2' not in res)
+        res, h, sp, cs = drive9([('9/a0/e#1', 'x', ['fine', 'RUNAWAY'])], split_on_timeout=True, unread_halt=True)
+        arm('A9.4 (evidence 04:17:57): under the split one a0 UNREAD sentence does NOT halt below the 15-sentence floor', h is None)
+        a0s = [('9/a0/e#%d' % i, 'x', ['fine'] * 3 + (['RUNAWAY'] if i in (1, 2, 3, 5) else ['fine'])) for i in range(1, 6)]   # 3 of 16, then 4 of 20: never over 1 in 5
+        res, h, sp, cs = drive9(a0s, split_on_timeout=True, unread_halt=True)
+        arm('A9.4: a0 at exactly 1 in 5 sentences (4 of 20) runs on', h is None and len(res) == 5)
+        a0s = [('9/a0/e#%d' % i, 'x', ['fine'] * 2 + ['RUNAWAY']) for i in range(1, 7)]   # 1 of 3 per chunk: 5 of 15 at chunk 5
+        res, h, sp, cs = drive9(a0s, split_on_timeout=True, unread_halt=True)
+        arm('A9.4: a0 UNREAD sentences over 1 in 5 halt once 15 a0 SENTENCES are reached', h == 'UNREAD on a0 (5 of 15 a0 sentences, over 1 in 5; A9.4)' and len(res) == 5)
+        many = [('9/a5/e#%d' % i, 'x', ['fine'] * 6 + (['RUNAWAY'] if i <= 4 else ['fine'])) for i in range(1, 16)]   # 4 of 105 UNREAD
+        res, h, sp, cs = drive9(many, split_on_timeout=True, unread_halt=True)
+        arm('A9: the a5 rule counts SENTENCES under the split: 4 of 105 UNREAD runs on', h is None and len(res) == 15)
+        edge = [('9/a5/e#%d' % i, 'x', ['fine'] * (7 - n) + ['RUNAWAY'] * n) for i, n in enumerate([1] * 14 + [7], 1)]   # 14 + 7 = 21 of 105
+        res, h, sp, cs = drive9(edge, split_on_timeout=True, unread_halt=True)
+        arm('A9.4 (systems R1): a5 at exactly 1 in 5 sentences (21 of 105) at the 15th chunk runs on', h is None and len(res) == 15)
+        many = [('9/a5/e#%d' % i, 'x', ['RUNAWAY'] * 2 + ['fine'] * 5) for i in range(1, 17)]   # 2 of 7 per chunk = 30 of 105 at 15
+        res, h, sp, cs = drive9(many, split_on_timeout=True, unread_halt=True)
+        arm('A9: a5 UNREAD sentences over 1 in 5 halt at the 15th a5 chunk, not before', h == 'UNREAD on a5 (30 of 105 a5 sentences, over 1 in 5; A9)' and len(res) == 15)
     print('SELFTEST %d/%d' % (ok, n))
     return ok == n
 
