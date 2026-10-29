@@ -903,11 +903,15 @@ retry, unchanged. A 503 on any read halts the set (A3.5). Every single is a mete
 beside `rows.tsv` (chunk · j · session · outcome). A split sentence's row carries ITS OWN session as reader. The rule is the same
 for both arms. How often it fires is not: on the record so far it has fired on a5 only (A9.6).
 **Implemented in `o90_truthreads.run_units`** behind `args.split_on_timeout`, with `call()` returning a 7th element, TIMED-OUT.
-Read 2's Claude call returns six and never splits. The self-test drives 7 split arms (61/61), and four mutants redden their arms:
-no split → 5, the sentence rule off → 2, the split-503 halt removed → 1, no whole retry without the split → 1.
+Read 2's Claude call returns six and never splits. The self-test drives 9 split arms (63/63), and the mutants redden their arms:
+no split → 5, the sentence rule off → 2, the split-503 halt removed → 1, no whole retry without the split → 1, and for A9.4's a0
+rule: the old "any" rule → 3, a 1-sentence floor → 3, `>=` for `>` → 1.
 
-**A9.4 · A8.6 counts SENTENCES under the split** (evidence's word, 03:06:15). An a0 sentence UNREAD halts the set (rider 4). a5 halts
-when UNREAD a5 sentences × 5 exceed a5 sentences reached, once at least 15 a5 CHUNKS are reached (the floor stays a count of chunks).
+**A9.4 · A8.6 counts SENTENCES under the split** (evidence's words, 03:06:15 and 04:17:57). **Both arms halt when UNREAD sentences ×
+5 exceed sentences reached**: a5 once at least 15 a5 CHUNKS are reached, a0 once at least 15 a0 SENTENCES are reached. a0's UNREAD
+count rides beside the result. **Rider 4's "any a0 UNREAD halts" is RETRACTED for the split form:** in chunks one UNREAD was ≈ 11 % of
+a0's 39 written sentences, but in sentences "any" is 2.6 % against a5's 20 %. At the diagnostic's rates (≈ 0.8 expected UNREAD a0
+sentences) it would halt the set more likely than not, on the arm it exists to protect. Read 2 keeps chunks and keeps rider 4.
 A sentence is UNREAD when it carries no verdict, whether its chunk was split or not. Read 2 keeps A8.6's chunk count.
 
 **A9.5 · The price, from the diagnostic's and the probe's own tokens.** Expected splits: 144 a5 chunks × 2/9 (the probe's a5 rate)
@@ -915,11 +919,15 @@ A sentence is UNREAD when it carries no verdict, whether its chunk was split or 
 203 k ≈ **10.5 M tokens: 13.8 points at A7.5's 0.76 M/pt, over the 12 cap; 8.2 points at ≈ 1.28 M/pt**, which is read 1's own meter
 (3 points as an upper-bounding sum of drops over 3.83 M tokens). Wall ≈ 21 h serial, 26 h with +25 %. Expected missingness ≈ 1 single
 in 11, so ≈ 19 of a5's 933 written sentences (≈ 2 %), where read 1 lost ≈ 1 chunk in 3.
-**THE START TEST'S PREDICTOR (evidence's word owed):** (i) 0.76 M/pt stays binding. The re-run start test then FAILS on price before it
-measures anything, and read 1 goes to (D) on price, not readability. (ii) The start test binds on the probe's OWN measured rate, with
-0.76's projection printed beside it. The 12-point cap is enforced DURING the set by the pool meter (A7.4's spend halt, rows kept per
-A8.3), so the set cannot overrun 12. At worst it HALTS partial at the n it reached. **bench recommends (ii).** The cap is unmoved; only
-the start test's predictor changes, and the meter that enforces the cap is the unit the cap is denominated in.
+**THE START TEST'S PREDICTOR: (ii), with the rate pinned (evidence, 04:17:57).** The probe's own rate is not measurable: ≈ 0.7 M tokens
+sit under the meter's 1-point resolution, and a 0-point drop would make the rate infinite and pass any price. **The binding rate is
+R = 1.28 M/pt** (read 1's meter: 3 points as an upper-bounding sum of drops over 3.83 M tokens, a bound in the conservative
+direction). It is replaced by the probe's own meter figure only when that figure is WORSE (rider 3's direction, kept). **The test:**
+(the probe's total tokens, all attempts and all singles, ÷ 10 chunks) × 153 ÷ R ≤ 12, with the same figure at 0.76 and at 1.88
+printed beside it. **This amends rider 3 and A8.8 (5) in the PERMISSIVE direction, and is stated as such.** A8.5 already counts every
+attempt, so 0.76, an OK-only rate that already charges row R's failures, charged failures twice. Under (A) that double charge would
+cost the whole set (→ (D), losing A3.4's different-mechanism property) to guard against an overrun the meter halt prevents. **The
+12-point cap is unmoved.** The in-set spend halt (A7.4) enforces it on the pool meter, with HALTED written per arm.
 
 **A9.6 · Limits.** (1) evidence's, kept: split reads see one sentence where a chunk read sees up to 7, and on the record they fall on a5.
 A3.4b's per-arm FLAG rate is therefore printed **split by k** (chunk reads vs split reads, from `split.tsv`), so any shift the split
@@ -927,8 +935,17 @@ causes is visible. (2) The 600 s timeout was measured against 8 whole-chunk OK r
 which costs time and tokens but loses no sentence that answers singly. (3) The diagnostic is one artifact's two chunks (n = 11
 sentences). The 2/9 split rate and the 1-in-11 single runaway rate are rates on those, not on all 24 a5 artifacts. (4) A split single
 is one meter unit, so `meter.units()` counts singles. Read 1 runs with no pause (`pause_after` 10⁹), and read 2 cannot split.
-(5) An UNREAD in E stays UNREAD and is never re-labelled OK (evidence's limit on A3.2's question).
+(5) An UNREAD in E stays UNREAD and is never re-labelled OK (evidence's limit on A3.2's question). (6) **UNREAD is likely NOT missing
+at random:** on the diagnostic it may track claims about the environment outside the file. A8.6 counts UNREAD and cannot see its
+type, so the report lists UNREAD sentences by id per arm. The slow/fast split in A9.2 is a description, not a test: its 300 s cut was
+chosen after the data (thinking tokens split the same way, 21–34 k against under 5 k). (7) 1.28 M/pt was measured under -high, and that
+tokens per point does not depend on the thinking setting is unmeasured. **Sensitivity:** at a 1/3 split rate (read 1's chunk failure
+rate) the projection is ≈ 13.1 M tokens ⇒ 10.3 points at R, still under 12. At 1/2 it is ≈ 17 M ⇒ 13.3 points, and the set halts
+partial on the meter. (8) A spend halt truncates in `sentences.tsv` order, which interleaves arms by problem, so its missingness is
+paired by problem, not by arm. (9) Whether a runaway sentence runs away again is unmeasured (one attempt per single, as measured). A
+re-read of explain:14 would cost ≈ 43 k tokens and is not required.
 
 **A9.7 · Order.** On merge: gemini's driver passes `split_on_timeout` and `unread_halt`, sets the 600 s timeout, returns TIMED-OUT from
 its call, and writes each split sentence's own session in its rows. systems reads it. A8.5's 10-chunk start test is re-run under the
-new rule, with the predictor A9.5 settles. The set starts after the reboot (A8.7).
+new rule: no 503 · **UNREAD sentences × 10 ≤ sentences reached**, over the probe's 67 written sentences (11/a5 #1–#9 = 60, 112/a0 #1
+= 7; evidence's restatement, since "1 of 10 chunks" is not defined for a split chunk) · A9.5's price test at R. The set starts after the reboot (A8.7).

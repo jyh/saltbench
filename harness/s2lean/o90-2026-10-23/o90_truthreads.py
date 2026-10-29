@@ -146,8 +146,8 @@ def run_units(units, head, pat, args, meter, done, label, on_unit=None):
             reached[arm] = reached.get(arm, 0) + 1; unread[arm] = unread.get(arm, 0) + (ans is None)
             sreached[arm] = sreached.get(arm, 0) + len(sents); sunread[arm] = sunread.get(arm, 0) + len(sents) - len(ans or {})
             if split:   # ADDENDUM 9: under the split the rule counts SENTENCES (the 15-chunk floor stays a count of chunks)
-                if arm == 'a0' and sunread['a0']:
-                    halt = 'UNREAD on a0 (%d of %d a0 sentences; A9)' % (sunread['a0'], sreached['a0'])
+                if arm == 'a0' and sreached['a0'] >= 15 and sunread['a0'] * 5 > sreached['a0']:   # A9.4: rider 4 in sentences, not "any"
+                    halt = 'UNREAD on a0 (%d of %d a0 sentences, over 1 in 5; A9.4)' % (sunread['a0'], sreached['a0'])
                 elif arm == 'a5' and reached['a5'] >= 15 and sunread['a5'] * 5 > sreached['a5']:
                     halt = 'UNREAD on a5 (%d of %d a5 sentences, over 1 in 5; A9)' % (sunread['a5'], sreached['a5'])
             elif arm == 'a0' and unread['a0']:
@@ -631,7 +631,13 @@ def selftest():
         res, h, sp, cs = drive9([('9/a5/e#1', 'x', ['RUNAWAY one', 'S503 two', 'fine three']), ('9/a5/e#2', 'x', ['fine'])], split_on_timeout=True)
         arm('A9: a 503 on a split single halts the set as a 503, and nothing after it is read', h == '503 on 9/a5/e#1~2' and len(cs) == 3 and '9/a5/e#2' not in res)
         res, h, sp, cs = drive9([('9/a0/e#1', 'x', ['fine', 'RUNAWAY'])], split_on_timeout=True, unread_halt=True)
-        arm('A9 + rider 4: one a0 SENTENCE UNREAD under the split halts the set', h == 'UNREAD on a0 (1 of 2 a0 sentences; A9)')
+        arm('A9.4 (evidence 04:17:57): under the split one a0 UNREAD sentence does NOT halt below the 15-sentence floor', h is None)
+        a0s = [('9/a0/e#%d' % i, 'x', ['fine'] * 3 + (['RUNAWAY'] if i in (1, 2, 3, 5) else ['fine'])) for i in range(1, 6)]   # 3 of 16, then 4 of 20: never over 1 in 5
+        res, h, sp, cs = drive9(a0s, split_on_timeout=True, unread_halt=True)
+        arm('A9.4: a0 at exactly 1 in 5 sentences (4 of 20) runs on', h is None and len(res) == 5)
+        a0s = [('9/a0/e#%d' % i, 'x', ['fine'] * 2 + ['RUNAWAY']) for i in range(1, 7)]   # 1 of 3 per chunk: 5 of 15 at chunk 5
+        res, h, sp, cs = drive9(a0s, split_on_timeout=True, unread_halt=True)
+        arm('A9.4: a0 UNREAD sentences over 1 in 5 halt once 15 a0 SENTENCES are reached', h == 'UNREAD on a0 (5 of 15 a0 sentences, over 1 in 5; A9.4)' and len(res) == 5)
         many = [('9/a5/e#%d' % i, 'x', ['fine'] * 6 + (['RUNAWAY'] if i <= 4 else ['fine'])) for i in range(1, 16)]   # 4 of 105 UNREAD
         res, h, sp, cs = drive9(many, split_on_timeout=True, unread_halt=True)
         arm('A9: the a5 rule counts SENTENCES under the split: 4 of 105 UNREAD runs on', h is None and len(res) == 15)
