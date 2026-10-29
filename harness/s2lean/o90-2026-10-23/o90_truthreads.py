@@ -177,6 +177,9 @@ def cmd_read2(args):
     def land(uid, session, ans):   # systems' M2: a read's rows are written the moment it lands, never only at the set's end
         append_rows(args.out, [[r['problem'], r['arm'], r['b_episode'], r['sentence'], r['sentence_sha256'], session, 'claude',
                                 (ans or {}).get(i, 'UNSCORED'), '-', '-'] for i, r in enumerate(byuid[uid], 1)], sha)
+    if getattr(args, 'unread_halt', None) is None: args.unread_halt = True   # ADDENDUM 8 A8.9: read 2 takes A8.6 + rider 4
+    # (evidence 2026-10-29 00:15:01 PDT). The CLI has no flag for it, so a registered read 2 always runs with it; only the self-test
+    # passes False, to drive the UNSCORED and M1 mechanisms on their own.
     res, stop = run_units([(uid, lean, [r['text'] for r in rs]) for uid, lean, rs in units], READ_PROMPT, READ_ANS, args, meter, done, 'read2', land)
     rows = []
     for uid, lean, rs in units:
@@ -363,7 +366,7 @@ def selftest():
         try: cmd_read2(args(os.path.join(t, 'r2-badsha'), expect_sha='0' * 16)); refused = False
         except SystemExit as e: refused = 'not the registered' in str(e)
         arm('a population that is not the registered sha refuses (L4)', refused)
-        env('drop-last', 'c2'); o = os.path.join(t, 'r2b'); cmd_read2(args(o)); lg = rows_of(os.path.join(o, 'rows.tsv'))
+        env('drop-last', 'c2'); o = os.path.join(t, 'r2b'); cmd_read2(args(o, unread_halt=False)); lg = rows_of(os.path.join(o, 'rows.tsv'))
         arm('a sentence with no parseable answer is UNSCORED, not dropped', sum(r[7] == 'UNSCORED' for r in lg) == 3 and len(lg) == 4)
         env('garbage-first', 'c3'); a3 = args(os.path.join(t, 'r2c')); cmd_read2(a3); m = rows_of(a3.meter)
         arm('a read with no parseable line is retried once, and the meter records the served model', len(m) == 4 and m[0][3] == 'no' and len(m[0]) == 5)
@@ -375,7 +378,7 @@ def selftest():
         except SystemExit as e: acc2 = str(e)
         arm('with no confirmer run, an unconfirmed FALSE merges as none/UNSCORED, never dropped, and the flag log accepts it',
             acc2 is True and any(r[7] == 'FALSE' and r[8:] == ['none', 'UNSCORED'] for r in mg))
-        env('fail', 'c5'); a5 = args(os.path.join(t, 'r2e')); s = cmd_read2(a5); m = rows_of(a5.meter)
+        env('fail', 'c5'); a5 = args(os.path.join(t, 'r2e'), unread_halt=False); s = cmd_read2(a5); m = rows_of(a5.meter)
         arm('3 failed READS halt the set, each read counted once after its retry (M1)', s and s.startswith('3 failed') and len(m) == 6)
         env('503', 'c6'); s = cmd_read2(args(os.path.join(t, 'r2f')))
         arm('a 503 on a failed read halts the set', s and s.startswith('503'))
@@ -560,7 +563,18 @@ def selftest():
         early = [('a5', i in (1, 4, 7, 10)) for i in range(1, 17)]               # 4 UNREAD by chunk 10, never 3 in a row
         arm('A8.6: a5 over 1 in 5 halts only once 15 a5 chunks are reached, and then at once',
             drive(early, True) == (15, 'UNREAD on a5 (4 of 15 a5 chunks, over 1 in 5; A8.6)'))
-        arm('A8.6: with unread_halt unset (read 2, calib, confirm) neither rule fires', drive(a0bad, None) == (3, None) and drive(early, None) == (16, None))
+        arm('A8.6: with unread_halt unset (calib, confirm) neither rule fires', drive(a0bad, None) == (3, None) and drive(early, None) == (16, None))
+        def fake503(client, cfg, model, prompt):   # systems on ca81a88: the guard decides which cause HALT.txt names
+            return (False, '', 0.0, 's-x', True, 'UNREAD') if 'FAILME' in prompt else (True, '1: OK', 0.0, 's-x', False, 'm')
+        real = globals()['call']; globals()['call'] = fake503
+        try:
+            a = args(os.path.join(t, 'u503'), unread_halt=True)
+            r503 = run_units([('9/a5/e#1', 'x', ['fine']), ('9/a0/e#2', 'x', ['FAILME'])], READ_PROMPT, READ_ANS, a, Meter(a.meter, 0, 99), set(), 'u')[1]
+        finally: globals()['call'] = real
+        arm('A8.6: a 503 on an a0 chunk under unread_halt halts as 503, not UNREAD', r503 == '503 on 9/a0/e#2')
+        env('fail', 'c2u'); a2u = args(os.path.join(t, 'r2-unread')); s2u = cmd_read2(a2u); l2u = rows_of(os.path.join(a2u.out, 'rows.tsv'))
+        arm('A8.9 (evidence 00:15:01): read 2 runs with unread_halt: its first a0 UNREAD halts it, and the unreached chunk is HALTED',
+            (s2u or '').startswith('UNREAD on a0') and [r[7] for r in l2u if r[2] == 'e65'] == ['HALTED'])
     print('SELFTEST %d/%d' % (ok, n))
     return ok == n
 

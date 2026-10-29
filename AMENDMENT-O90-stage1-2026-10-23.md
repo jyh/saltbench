@@ -828,9 +828,11 @@ under-priced read 1 by a factor of 3.7. Otherwise the set does not start and the
 UNREAD. **The set HALTS if, after at least 15 a5 chunks, more than 1 in 5 a5 chunks reached is UNREAD.** HALT.txt names the cause,
 and the rows written so far stand (A8.3). **An A8.6 halt, or a rider-4 halt (A8.9), writes HALTED for every sentence it did not
 reach, under A4.1, exactly as an A3.5 halt does.** A4.1's "only by an A3.5 halt" is widened to these two causes and to no
-other (systems' F3). It is implemented in `run_units` behind `args.unread_halt`, which only a
-set governed by this addendum sets. Read 2, calib and confirm are unchanged. The self-test drives four arms (52/52), and three
-mutants (`>=` for `>`, the 15-chunk floor removed, the a0 rule loosened to two) each redden only their own arm. **Why:** the A3.5 halts all watch the MACHINERY (spend, 503, consecutive failures). Read 1
+other (systems' F3). It is implemented in `run_units` behind `args.unread_halt`, which read 1's
+new driver sets and `cmd_read2` sets for read 2 (A8.9, evidence's yes). Calib and confirm are unchanged. A halt already named
+(a 503, spend, 3 in a row) keeps its own cause in HALT.txt; the UNREAD rule never renames it. The self-test drives six arms
+(54/54). Five mutants each redden only their own arm: `>=` for `>`, the 15-chunk floor removed, the a0 rule loosened to two, the
+`not halt` guard dropped (systems' mutant: a 503 on an a0 chunk renamed an UNREAD halt), and read 2's default turned off. **Why:** the A3.5 halts all watch the MACHINERY (spend, 503, consecutive failures). Read 1
 failed 25 of 46 attempts and never met any of them, because a rescued retry resets the consecutive count. An ok=False at rc 0 was
 also no relight event for any watcher (evidence's point).
 
@@ -867,3 +869,6 @@ A8.4 (A) ACCEPTED, for the reason given. A8.3, A8.5 and A8.6 ACCEPTED with these
   ad306fd516c1da07) and `calls/` were byte-unchanged across the stop. The in-flight call left no record. The registry's `ended`
   wrote its marker as `out/DONE` (`rc=143`) for about a minute, and gemini moved it out of `out/`, declared. That marker is not a
   driver DONE. **The new driver's registry marker is a path outside `out/`.**
+- **evidence, 2026-10-29 00:15:01 PDT:** riders 1-4 CONCUR as written in. **Rider 2's premise is RETRACTED**: failures do not
+  track size (A8.2 (1)), so the rider is moot as well as unmet. **Read 2 takes A8.6 and rider 4: YES**, because two reads cannot see
+  a rate there either, and missing reads on either arm is the defect. `cmd_read2` sets the halt, and the CLI has no flag to unset it.
