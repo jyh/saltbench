@@ -609,6 +609,7 @@ def selftest():
             calls.append(k)
             single = '\n2. ' not in prompt
             if 'RUNAWAY' in prompt: return (False, '', 0.0, 's-t', False, 'UNREAD', True)
+            if 'SINGLEOKTO' in prompt and single: return (True, '1: OK', 0.0, 's-o', False, 'm', True)
             if 'S503' in prompt and single: return (False, '', 0.0, 's-5', True, 'UNREAD', False)
             if 'SOFTTHENRUN' in prompt and not single:   # first whole attempt fails soft, the retry times out
                 return (False, '', 0.0, 's-f', False, 'UNREAD', sum(1 for c in calls if c) > 1)
@@ -639,6 +640,9 @@ def selftest():
         arm('A9.3 (systems R3): a soft failure, then a timeout on the retry, also splits', len(cs) == 4 and [r[1] for r in sp] == ['1', '2'])
         res, h, sp, cs = drive9([('9/a5/e#1', 'x', ['OKTIMEOUT one', 'fine two'])], split_on_timeout=True)
         arm('A9.3 (systems R2): a call that TIMED OUT is never taken whole, even if it returned ok with parseable text', len(cs) == 3 and len(sp) == 2)
+        res, h, sp, cs = drive9([('9/a5/e#1', 'x', ['RUNAWAY one', 'SINGLEOKTO two', 'fine three'])], split_on_timeout=True)
+        arm('A9.3 (systems, delta): a SPLIT single that timed out is UNREAD even if it returned ok with parseable text',
+            res['9/a5/e#1'][1] == {3: 'OK'} and [r[3] for r in sp] == ['TIMEOUT', 'TIMEOUT', 'OK'])
         res, h, sp, cs = drive9([('9/a5/e#1', 'x', ['RUNAWAY one', 'S503 two', 'fine three']), ('9/a5/e#2', 'x', ['fine'])], split_on_timeout=True)
         arm('A9: a 503 on a split single halts the set as a 503, and nothing after it is read', h == '503 on 9/a5/e#1~2' and len(cs) == 3 and '9/a5/e#2' not in res)
         res, h, sp, cs = drive9([('9/a0/e#1', 'x', ['fine', 'RUNAWAY'])], split_on_timeout=True, unread_halt=True)

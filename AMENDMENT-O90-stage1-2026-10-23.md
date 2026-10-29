@@ -905,11 +905,11 @@ even if it returned text that parses (systems' R2): the library checks TIMED-OUT
 beside `rows.tsv` (chunk · j · session · outcome). A split sentence's row carries ITS OWN session as reader. The rule is the same
 for both arms. How often it fires is not: on the record so far it has fired on a5 only (A9.6).
 **Implemented in `o90_truthreads.run_units`** behind `args.split_on_timeout`, with `call()` returning a 7th element, TIMED-OUT.
-Read 2's Claude call returns six and never splits. The self-test drives 14 split arms (68/68), and the mutants redden their arms:
+Read 2's Claude call returns six and never splits. The self-test drives 15 split arms (69/69), and the mutants redden their arms:
 no split → 5, the sentence rule off → 2, the split-503 halt removed → 1, no whole retry without the split → 1, and for A9.4's a0
 rule: the old "any" rule → 3, a 1-sentence floor → 3, `>=` for `>` → 1. systems' asks each have an arm that reddens on its own
 mutant: the singles' meter rows (F2), each sentence's own session (F3), a5 at exactly 21 of 105 (R1), a timed-out ok read taken whole
-(R2), and a split only on the first attempt (R3).
+(R2), the same for a split single (systems' delta read), and a split only on the first attempt (R3).
 
 **A9.4 · A8.6 counts SENTENCES under the split** (evidence's words, 03:06:15 and 04:17:57). **Both arms halt when UNREAD sentences ×
 5 exceed sentences reached**: a5 once at least 15 a5 CHUNKS are reached, a0 once at least 15 a0 SENTENCES are reached. a0's UNREAD
