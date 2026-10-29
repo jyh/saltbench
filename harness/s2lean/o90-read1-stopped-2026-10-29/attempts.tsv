@@ -48,4 +48,8 @@ read1k7:136/a5/ep-bd5beaa6#5	a5	5	d90d7036-adf8-4012-8eb8-ab3fda4200ef	no	print-
 # attempts 46 · ok 21 · tokens 3827569 · tokens per ok read 182265
 # by arm x cause: a0 ok 2 · a5 ok 19 · a5 print-timeout 17 · a5 stream-interrupted 8
 # chunks reached / UNREAD (every attempt failed): a0 2/0 · a5 29/10
+# cause ok: n 21 · mean tokens 50034 · mean seconds 356
+# cause print-timeout: n 17 · mean tokens 113331 · mean seconds 1605
+# cause stream-interrupted: n 8 · mean tokens 106278 · mean seconds 1212
+# failed attempts' share of tokens: 0.725
 # join: meter rows with no call record 0 · call records with no meter row 0

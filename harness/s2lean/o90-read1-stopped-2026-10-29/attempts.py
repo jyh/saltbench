@@ -37,6 +37,10 @@ def main(rundir, since):
     print(f"# attempts {len(rows)} · ok {okn} · tokens {tok} · tokens per ok read {tok // okn if okn else 'nan'}")
     print("# by arm x cause: " + " · ".join(f"{a} {c} {n}" for (a, c), n in sorted(by.items())))
     print("# chunks reached / UNREAD (every attempt failed): " + " · ".join(f"{a} {reached[a]}/{unread[a]}" for a in sorted(reached)))
+    for c in sorted({r[5] for r in rows if r[5] != "-"}):
+        cs = [r for r in rows if r[5] == c]
+        print(f"# cause {c}: n {len(cs)} · mean tokens {sum(r[6] for r in cs) / len(cs):.0f} · mean seconds {sum(r[7] for r in cs) / len(cs):.0f}")
+    print(f"# failed attempts' share of tokens: {sum(r[6] for r in rows if r[5] not in ('ok', '-')) / tok:.3f}")
     print(f"# join: meter rows with no call record {sum(1 for r in rows if r[5] == '-')} · call records with no meter row {len(orphans)}")
 
 if __name__ == "__main__":

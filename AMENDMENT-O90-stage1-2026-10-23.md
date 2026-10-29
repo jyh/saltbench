@@ -770,20 +770,25 @@ per-arm UNSCORED print leans against a5, and that is said beside it (the PM's wo
 reader's run directory (gemini's `run.log`, `out/meter.tsv`, `calls/*.json` since the 2026-10-28 17:43:37Z START). evidence measured
 the same record independently and agrees on every count (bus 2026-10-29 00:06:13 PDT).*
 
-**A8.1 · What read 1 did in 12.8 h.** 46 attempts: 21 reads OK, 25 attempts failed. **Every failure is arm a5** (a5 19 ok / 24
-failed attempts; a0 2 ok / 0). The failures are the reader running out of time while it thinks: 17 end in agy's `print timeout
+**A8.1 · What read 1 did in 13.3 h** (17:43:37Z START to its last recorded attempt, 07:03:21Z). 46 attempts: 21 reads OK, 25
+attempts failed. **Every failure is arm a5** (a5 19 ok / 25 failed attempts; a0 2 ok / 0). The failures are the reader running out of time while it thinks: 17 end in agy's `print timeout
 after 30m0s with turn in progress`, the rest in status ERROR "The stream was interrupted" (55 k to 77 k thinking tokens per call).
 Some ERROR turns carry an answer; under A3.2's parse they are failed attempts and this addendum does not change that. **By chunk:**
 of the 29 a5 chunks reached, 10 failed both attempts and are UNREAD (34 %). The retry rescued 5 of the 15 chunks whose first attempt
 failed. a0 lost 0 of 2. Every figure in this paragraph is printed by `harness/s2lean/o90-read1-stopped-2026-10-29/attempts.py` into
-`attempts.tsv` beside it, from the reader's own records joined by session id (46 of 46 joined). The good reads matched the A7.5 probe (mean ≈ 50 k tokens, ≈ 356 s). The 17 timed-out attempts
-did not (≈ 111 k tokens, ≈ 1,479 s each), and failed attempts are ≈ 72 % of the set's 3,827,569 tokens (evidence's figures).
+`attempts.tsv` beside it, from the reader's own records joined by session id (46 of 46 joined). The good reads matched the A7.5 probe (mean 50,034 tokens, 356 s). The failed attempts did not:
+the 17 timed out at a mean of 113,331 tokens and 1,605 s, the 8 interrupted at 106,278 tokens and 1,212 s. Failed attempts are
+72.5 % of the set's 3,827,569 tokens.
 
 **A8.2 · Why it is stopped and not run on.** (1) **Missingness falls on a5**, the arm the truth axis is about, at about one chunk in
 three. That is the defect A7.2 was written to remove. Its CAUSE is not established, and it is not the file's size: `112/a0`'s
 `stageB.lean` (10,897 B) read OK on its first attempt, while `136/a5`'s (5,553 B) failed 4 of 7 attempts. What is measured is
-the ending: the reader thinks past its time (A8.1). Whatever in an a5 chunk causes that, chunking did not remove it. (2) **It cannot finish.** 132 reads remain, 125 of them a5. At the measured 1.64 reads/h, DONE
-falls on about Sun 11-01. At the conservative 0.76 M tokens/point the set projects to ≈ 36.7 points against A7.4's 12. (3) **A
+the ending: the reader thinks past its time (A8.1). Whatever in an a5 chunk causes that, chunking did not remove it. (2) **It cannot finish.** A set is never resumed, so its 10 UNREAD chunks are not re-read, and 122
+chunks were never reached (a5 115 · a0 7; systems' F4). At the measured 2.3 chunks/h (31 in 13.3 h), the last is reached
+about Sat 10-31. On spend: A8.5's formula (182,265 tokens per OK read × 153 ÷ 0.76 M) PROJECTS ≈ 36.7 points against A7.4's
+12. That is a projection under a deliberate double charge (A8.8 (5)), not a measured spend. The driver's pool meter read 3
+points over 45 attempts and 20 OK reads (run.log, 06:33:18Z), which is ≈ 23 points at 153 at 1-point resolution (systems' F2).
+Either way the set does not finish under 12. (3) **A
 stop writes nothing.** `reads()` writes `rows.tsv` once, after `run_units` returns, and `run_units` stops only on spend, 503 or 3
 failed reads in a row. The reader box's reboot (council 10-28, Thu 10-29 ~18:00 PDT) would therefore kill it with no row written. A
 restart is refused by the driver's design (`meter.tsv` without DONE or HALT). Read 1 as fired is therefore **STOPPED by its owner
@@ -821,7 +826,9 @@ under-priced read 1 by a factor of 3.7. Otherwise the set does not start and the
 
 **A8.6 · A failure fraction is a logged event.** The driver logs, at every pool reading, the per-arm count of chunks reached and
 UNREAD. **The set HALTS if, after at least 15 a5 chunks, more than 1 in 5 a5 chunks reached is UNREAD.** HALT.txt names the cause,
-and the rows written so far stand (A8.3). It is implemented in `run_units` behind `args.unread_halt`, which only a
+and the rows written so far stand (A8.3). **An A8.6 halt, or a rider-4 halt (A8.9), writes HALTED for every sentence it did not
+reach, under A4.1, exactly as an A3.5 halt does.** A4.1's "only by an A3.5 halt" is widened to these two causes and to no
+other (systems' F3). It is implemented in `run_units` behind `args.unread_halt`, which only a
 set governed by this addendum sets. Read 2, calib and confirm are unchanged. The self-test drives four arms (52/52), and three
 mutants (`>=` for `>`, the 15-chunk floor removed, the a0 rule loosened to two) each redden only their own arm. **Why:** the A3.5 halts all watch the MACHINERY (spend, 503, consecutive failures). Read 1
 failed 25 of 46 attempts and never met any of them, because a rescued retry resets the consecutive count. An ok=False at rc 0 was
@@ -836,7 +843,11 @@ not on all 24. (2) Under (A), the reader is a different setting of the same mode
 pooled with a new set's reads. (3) The 1-in-5 threshold of A8.6 is chosen by the lead, not derived. It is declared here, before
 any read it governs, and its only effect is on WHEN the set stops. (4) **The rate probe measures COMPLETION, never accuracy**
 (evidence's rider 1). -medium's read quality against -high is unmeasured, so every read-1 figure is reported "by argon-medium",
-and no figure measured under -high carries over: not read 1's 21 OK reads, and not any A3 or A5 number that used -high.
+and no figure measured under -high carries over: not read 1's 21 OK reads, and not any A3 or A5 number that used -high. (5) **A8.5's start test charges failed attempts twice, and does so deliberately**
+(systems' F2). 0.76 M tokens/point is A7.5's OK-reads-only rate, whose conservatism already charges row R's failed attempts; A8.5
+then divides ALL attempts' tokens by it. The all-attempts rate (1.88 M) would charge them once. The test is kept as the
+conservative side, because read 1's failure rate is the thing it must not under-price, and rider 3's pool meter bounds it from
+the other side.
 
 **A8.9 · The design author's words (evidence, bus 2026-10-29 00:09:52 PDT, read at head 20ed07f46120, amendment blob 3629fbc25d14).**
 A8.4 (A) ACCEPTED, for the reason given. A8.3, A8.5 and A8.6 ACCEPTED with these riders, each written in here:
