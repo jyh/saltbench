@@ -1,0 +1,55 @@
+unit	arm	chunk	session	ok	cause	tokens	seconds
+read1k7:11/a5/ep-b958c4c0#1	a5	1	94f85215-5cc0-4638-80c4-6e7f632f70dc	yes	ok	38986	272
+read1k7:11/a5/ep-b958c4c0#2	a5	2	e864e773-254c-4133-addd-fdc6072a37c0	yes	ok	58791	507
+read1k7:11/a5/ep-b958c4c0#3	a5	3	ebbddaba-70b4-4c1f-84d8-6318850a202c	yes	ok	63883	454
+read1k7:11/a5/ep-b958c4c0#4	a5	4	60d55963-336a-4a9a-8581-56dffb8c15c3	no	stream-interrupted	107847	1086
+read1k7:11/a5/ep-b958c4c0#4	a5	4	b2515ace-5ac3-4fd8-b1ed-cddeea34e3e7	yes	ok	66194	521
+read1k7:11/a5/ep-b958c4c0#5	a5	5	6435941d-928f-4b78-8db6-7648ba17caa6	no	print-timeout	101191	1219
+read1k7:11/a5/ep-b958c4c0#5	a5	5	4dd8225f-d13e-496b-8e55-81031536c399	no	print-timeout	112938	1355
+read1k7:11/a5/ep-b958c4c0#6	a5	6	1c17d162-14ea-4ed9-a4ae-fa3fdcf678aa	yes	ok	39419	284
+read1k7:11/a5/ep-b958c4c0#7	a5	7	59c4c99e-5235-416d-ac1b-7d838fbd11eb	yes	ok	55657	441
+read1k7:11/a5/ep-b958c4c0#8	a5	8	5f1c3bfb-4f48-4bb9-8637-ac549d786da1	no	print-timeout	116219	1613
+read1k7:11/a5/ep-b958c4c0#8	a5	8	91668b73-1c32-4fb7-a0fc-26fd98c5c75e	no	print-timeout	109359	1606
+read1k7:11/a5/ep-b958c4c0#9	a5	9	8460fe4f-2011-40e1-b69a-c8cae85f19ec	no	print-timeout	108889	1717
+read1k7:11/a5/ep-b958c4c0#9	a5	9	7b0efed6-2735-48d4-9c77-c77afbaa45fc	no	print-timeout	110761	1728
+read1k7:112/a0/ep-558aedfa#1	a0	1	e1aef4fc-9c4f-4923-9b70-1e83fe353064	yes	ok	44407	339
+read1k7:112/a5/ep-6cc3ed48#1	a5	1	72926efb-6802-40d2-91f1-a3cd4eebd797	yes	ok	26588	145
+read1k7:112/a5/ep-6cc3ed48#2	a5	2	8acb0c1f-158f-46eb-9f07-f95a1e17c200	yes	ok	30190	173
+read1k7:112/a5/ep-6cc3ed48#3	a5	3	b248fc46-7451-4fc3-a94e-929cbf365a16	yes	ok	30265	182
+read1k7:112/a5/ep-6cc3ed48#4	a5	4	5aeb8995-59c6-4003-931b-3182d73579a9	no	print-timeout	98690	1511
+read1k7:112/a5/ep-6cc3ed48#4	a5	4	8d3c7c6b-f15e-4ab0-ba82-3b0bd190b198	no	print-timeout	105956	1605
+read1k7:112/a5/ep-6cc3ed48#5	a5	5	c085388c-82ee-4461-a3a8-000cfc2c4b95	no	stream-interrupted	97487	1219
+read1k7:112/a5/ep-6cc3ed48#5	a5	5	52cfe2ab-6224-4de8-a043-47e3f0830e30	no	stream-interrupted	159190	1665
+read1k7:112/a5/ep-6cc3ed48#6	a5	6	65904564-c654-4c2c-8707-f1f9953be763	yes	ok	27617	166
+read1k7:112/a5/ep-6cc3ed48#7	a5	7	896999f4-8734-45ad-b0d0-0252ea615e90	no	print-timeout	107747	1707
+read1k7:112/a5/ep-6cc3ed48#7	a5	7	c8348c49-a0da-4e97-9330-7658cf87445c	no	stream-interrupted	90067	919
+read1k7:112/a5/ep-6cc3ed48#8	a5	8	48eb9daf-c6a8-42d4-ae52-0c26329d2016	no	stream-interrupted	113734	1519
+read1k7:112/a5/ep-6cc3ed48#8	a5	8	55055590-5cdf-4b98-a1c1-7afe81ac760a	yes	ok	62745	532
+read1k7:128/a0/ep-15dd1d12#1	a0	1	fbc532d3-3832-4d5d-b2b8-8fe4010910e7	yes	ok	33651	267
+read1k7:128/a5/ep-7faf263a#1	a5	1	aefaa13a-29df-472e-987a-9430d5e9143a	no	print-timeout	110963	1546
+read1k7:128/a5/ep-7faf263a#1	a5	1	fd725197-f4bc-4dca-a549-98b671507753	yes	ok	75866	518
+read1k7:128/a5/ep-7faf263a#2	a5	2	dcc69cb0-7722-4a4f-8429-e6f9f1da911c	no	print-timeout	129192	1670
+read1k7:128/a5/ep-7faf263a#2	a5	2	d2a7c802-99a5-47a3-ba82-71199894a066	no	print-timeout	107954	1508
+read1k7:128/a5/ep-7faf263a#3	a5	3	b083e48a-9252-4c80-a2e3-2c7585fcb070	no	print-timeout	123936	1698
+read1k7:128/a5/ep-7faf263a#3	a5	3	4aa6bb43-efaa-41a8-a5c4-abe6bfcc43bd	yes	ok	95657	515
+read1k7:128/a5/ep-7faf263a#4	a5	4	2b234276-3a49-4d59-9166-511f1bb23433	no	stream-interrupted	91360	969
+read1k7:128/a5/ep-7faf263a#4	a5	4	17375a66-1c10-4266-823b-aad99d2da705	yes	ok	47594	364
+read1k7:128/a5/ep-7faf263a#5	a5	5	b0e4257f-b672-42af-9afc-57468daa6215	yes	ok	43240	355
+read1k7:128/a5/ep-7faf263a#6	a5	6	21d4d6c2-34a7-4da2-a90b-79d93217a154	no	print-timeout	132318	1752
+read1k7:128/a5/ep-7faf263a#6	a5	6	1a78f8e4-56f4-4f6f-8ef6-4ac4a0357755	no	print-timeout	127922	1760
+read1k7:128/a5/ep-7faf263a#7	a5	7	9bc6732a-fda8-4896-882b-2480c789996c	yes	ok	32992	227
+read1k7:136/a5/ep-bd5beaa6#1	a5	1	49a86349-ddd1-4cbe-9eaf-b57c58d31112	yes	ok	19571	103
+read1k7:136/a5/ep-bd5beaa6#2	a5	2	e89348c5-3dbe-4125-bd55-9847ccd1dbd2	yes	ok	38918	323
+read1k7:136/a5/ep-bd5beaa6#3	a5	3	ad56587c-e0f9-4373-aceb-6824c7ee99d6	no	stream-interrupted	108264	1464
+read1k7:136/a5/ep-bd5beaa6#3	a5	3	2f481127-9b53-4ec8-b3e4-9576a8b39dcf	no	stream-interrupted	82278	859
+read1k7:136/a5/ep-bd5beaa6#4	a5	4	11c2a5fb-13e9-424e-9f9b-c9f974b32339	yes	ok	118488	796
+read1k7:136/a5/ep-bd5beaa6#5	a5	5	c5090a7d-61ca-4d17-9b32-29d53865d8c9	no	print-timeout	105577	1612
+read1k7:136/a5/ep-bd5beaa6#5	a5	5	d90d7036-adf8-4012-8eb8-ab3fda4200ef	no	print-timeout	117011	1674
+# attempts 46 · ok 21 · tokens 3827569 · tokens per ok read 182265
+# by arm x cause: a0 ok 2 · a5 ok 19 · a5 print-timeout 17 · a5 stream-interrupted 8
+# chunks reached / UNREAD (every attempt failed): a0 2/0 · a5 29/10
+# cause ok: n 21 · mean tokens 50034 · mean seconds 356
+# cause print-timeout: n 17 · mean tokens 113331 · mean seconds 1605
+# cause stream-interrupted: n 8 · mean tokens 106278 · mean seconds 1212
+# failed attempts' share of tokens: 0.725
+# join: meter rows with no call record 0 · call records with no meter row 0

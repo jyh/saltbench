@@ -763,3 +763,113 @@ the re-probe's own per-chunk time (systems' LOW).
 split artifact, and the HALTED count is printed per arm. (5) An a5 artifact now spans about 6 chunk reads, so one unparsed chunk makes it
 UNSCORED on A3.4's per-artifact rule far more often than an a0 artifact (one read). That rule does not decide (A3.4a), but its
 per-arm UNSCORED print leans against a5, and that is said beside it (the PM's word, 10-28).
+
+## ⚖️ ADDENDUM 8 — 2026-10-29: READ 1 AS FIRED IS STOPPED, AND THE READ IS RE-FORMED BEFORE IT RUNS AGAIN. APPENDED; all text above untouched. Written before any read it governs.
+
+*bench (lead), DRAFT for evidence's words (the design's author) and systems' read. Measured 2026-10-29 07:02Z, read-only, at the
+reader's run directory (gemini's `run.log`, `out/meter.tsv`, `calls/*.json` since the 2026-10-28 17:43:37Z START). evidence measured
+the same record independently and agrees on every count (bus 2026-10-29 00:06:13 PDT).*
+
+**A8.1 · What read 1 did in 13.3 h** (17:43:37Z START to its last recorded attempt, 07:03:21Z). 46 attempts: 21 reads OK, 25
+attempts failed. **Every failure is arm a5** (a5 19 ok / 25 failed attempts; a0 2 ok / 0). The failures are the reader running out of time while it thinks: 17 end in agy's `print timeout
+after 30m0s with turn in progress`, the rest in status ERROR "The stream was interrupted" (55 k to 77 k thinking tokens per call).
+Some ERROR turns carry an answer; under A3.2's parse they are failed attempts and this addendum does not change that. **By chunk:**
+of the 29 a5 chunks reached, 10 failed both attempts and are UNREAD (34 %). The retry rescued 5 of the 15 chunks whose first attempt
+failed. a0 lost 0 of 2. Every figure in this paragraph is printed by `harness/s2lean/o90-read1-stopped-2026-10-29/attempts.py` into
+`attempts.tsv` beside it, from the reader's own records joined by session id (46 of 46 joined). The good reads matched the A7.5 probe (mean 50,034 tokens, 356 s). The failed attempts did not:
+the 17 timed out at a mean of 113,331 tokens and 1,605 s, the 8 interrupted at 106,278 tokens and 1,212 s. Failed attempts are
+72.5 % of the set's 3,827,569 tokens.
+
+**A8.2 · Why it is stopped and not run on.** (1) **Missingness falls on a5**, the arm the truth axis is about, at about one chunk in
+three. That is the defect A7.2 was written to remove. Its CAUSE is not established, and it is not the file's size: `112/a0`'s
+`stageB.lean` (10,897 B) read OK on its first attempt, while `136/a5`'s (5,553 B) failed 4 of 7 attempts. What is measured is
+the ending: the reader thinks past its time (A8.1). Whatever in an a5 chunk causes that, chunking did not remove it. (2) **It cannot finish.** A set is never resumed, so its 10 UNREAD chunks are not re-read, and 122
+chunks were never reached (a5 115 · a0 7; systems' F4). At the measured 2.3 chunks/h (31 in 13.3 h), the last is reached
+about Sat 10-31. On spend: A8.5's formula (182,265 tokens per OK read × 153 ÷ 0.76 M) PROJECTS ≈ 36.7 points against A7.4's
+12. That is a projection under a deliberate double charge (A8.8 (5)), not a measured spend. The driver's pool meter read 3
+points over 45 attempts and 20 OK reads (run.log, 06:33:18Z), which is ≈ 23 points at 153 at 1-point resolution (systems' F2).
+Either way the set does not finish under 12. (3) **A
+stop writes nothing.** `reads()` writes `rows.tsv` once, after `run_units` returns, and `run_units` stops only on spend, 503 or 3
+failed reads in a row. The reader box's reboot (council 10-28, Thu 10-29 ~18:00 PDT) would therefore kill it with no row written. A
+restart is refused by the driver's design (`meter.tsv` without DONE or HALT). Read 1 as fired is therefore **STOPPED by its owner
+(gemini) at 21 of 153 reads, not a result**. Its `out/meter.tsv` and `calls/` are kept as they stand, as the record of this
+measurement, and no `rows.tsv` is written from them.
+⇒ **Why the probe could not see this:** A7.5's probe was two reads, both OK. A plant proves reachability, never rate, and a
+per-arm failure fraction near one half cannot be seen in n = 2.
+
+**A8.3 · Rows are written per chunk.** In the new driver, each chunk's rows are appended to `rows.tsv` (verdicts, or UNSCORED)
+when that chunk's read ends, before the next chunk starts. **The shared loop already does this:** `run_units`'s `on_unit` hook
+(#414, systems' M2, merged 2026-10-28 before read 1 fired) is how read 2 writes its rows. Read 1's driver called `run_units`
+without the hook and wrote its rows at the end. So a fix made in the shared library did not reach the one caller that needed it
+first. **The new read-1 driver passes `on_unit`**, and its reader's read (A8.5's probe is driven on it) checks that it does. A halt, a kill or a reboot then leaves the set's record at the n it
+reached. Everything not reached is HALTED (ADDENDUM 4), with the cause named in `HALT.txt`, or written by the lead's scorer as
+`killed` when the process left none. **A set is still never resumed** (A3.5 limit 4): a stopped set is reported at its n, and a
+new set is a new addendum's act.
+
+**A8.4 · The reader's load on a5: three arms, for evidence's word.**
+- **(A) The same reader at a lower effort: `gemini-4-argon-medium`** for every chunk of both arms. agy lists it beside -high and
+  -low (`agy models`, run under the run's own HOME, 2026-10-29, no model call). The failures END in thinking length, and this is
+  the lever that acts on that ending without touching what is read. It changes A3.2's pinned model, for both arms alike, and every figure is
+  reported as by that model.
+- **(B) Argon-high with no print timeout** (`--print-timeout 0s`) and a driver wall cap per attempt. This removes the 17 timeout
+  endings and not the stream interruptions, so it buys an unmeasured window at ≈ 111 k tokens per failure, on a5 alone.
+- **(C) Argon-high with a smaller K.** Untested, and A7's K = 7 already cut the sentence list without curing a5. Every extra
+  chunk is another call carrying the whole artifact.
+**bench's recommendation: (A).** It is the only arm that acts on the measured ending (thinking past the time), and it applies equally to both arms.
+Its cost is a change of reader model, which evidence decides.
+
+**A8.5 · The start test measures RATE.** Before the set, a probe of the **first 10 chunks in population order** (`11/a5`'s 9 and
+`112/a0`'s 1; never scored). It includes 3 chunks that read 1 left UNREAD (`11/a5` #5 #8 #9), so it tests the failing case
+directly. **The set starts only if:** no 503; at most 1 of the 10 chunks is UNREAD after its retry; and (all attempts' tokens ÷
+the probe's OK reads) × 153 ÷ 0.76 M ≤ 12 points. The all-attempts form is required because A8.1 shows that the OK-only mean
+under-priced read 1 by a factor of 3.7. Otherwise the set does not start and the arms go back to evidence.
+
+**A8.6 · A failure fraction is a logged event.** The driver logs, at every pool reading, the per-arm count of chunks reached and
+UNREAD. **The set HALTS if, after at least 15 a5 chunks, more than 1 in 5 a5 chunks reached is UNREAD.** HALT.txt names the cause,
+and the rows written so far stand (A8.3). **An A8.6 halt, or a rider-4 halt (A8.9), writes HALTED for every sentence it did not
+reach, under A4.1, exactly as an A3.5 halt does.** A4.1's "only by an A3.5 halt" is widened to these two causes and to no
+other (systems' F3). It is implemented in `run_units` behind `args.unread_halt`, which read 1's
+new driver sets and `cmd_read2` sets for read 2 (A8.9, evidence's yes). Calib and confirm are unchanged. A halt already named
+(a 503, spend, 3 in a row) keeps its own cause in HALT.txt; the UNREAD rule never renames it. The self-test drives six arms
+(54/54). Five mutants are each red. Four redden only their own arm: `>=` for `>`, the 15-chunk floor removed, the a0 rule loosened
+to two, and read 2's default turned off. The fifth, the `not halt` guard dropped (systems' mutant: a 503 on an a0 chunk renamed an
+UNREAD halt), reddens two (52/54): its own arm and the existing "a 503 on a failed read halts the set". **Why:** the A3.5 halts all watch the MACHINERY (spend, 503, consecutive failures). Read 1
+failed 25 of 46 attempts and never met any of them, because a rescued retry resets the consecutive count. An ok=False at rc 0 was
+also no relight event for any watcher (evidence's point).
+
+**A8.7 · Placement.** The probe may run before the reboot. The set starts after the reboot, unless its projected wall time with
++25 % ends before Thu 16:00 PDT, in which case it may start before (evidence's wording). Read 2 keeps A7.6's form and comes after read 1's DONE or HALT. If the PM's second named pool's
+login (expiring Fri 10-30 07:37) has lapsed, read 2 runs on the fallback pool under A7.6's line.
+
+**A8.8 · Limits.** (1) A8.1 is one process's 46 attempts over 4 a5 artifacts. The a5 failure fraction is a measured rate on those,
+not on all 24. (2) Under (A), the reader is a different setting of the same model, so read 1's 21 OK reads under -high are NOT
+pooled with a new set's reads. (3) The 1-in-5 threshold of A8.6 is chosen by the lead, not derived. It is declared here, before
+any read it governs, and its only effect is on WHEN the set stops. (4) **The rate probe measures COMPLETION, never accuracy**
+(evidence's rider 1). -medium's read quality against -high is unmeasured, so every read-1 figure is reported "by argon-medium",
+and no figure measured under -high carries over: not read 1's 21 OK reads, and not any A3 or A5 number that used -high. (5) **A8.5's start test charges failed attempts twice, and does so deliberately**
+(systems' F2). 0.76 M tokens/point is A7.5's OK-reads-only rate, whose conservatism already charges row R's failed attempts; A8.5
+then divides ALL attempts' tokens by it. The all-attempts rate (1.88 M) would charge them once. The test is kept as the
+conservative side, because read 1's failure rate is the thing it must not under-price, and rider 3's pool meter bounds it from
+the other side.
+
+**A8.9 · The design author's words (evidence, bus 2026-10-29 00:09:52 PDT, read at head 20ed07f46120, amendment blob 3629fbc25d14).**
+A8.4 (A) ACCEPTED, for the reason given. A8.3, A8.5 and A8.6 ACCEPTED with these riders, each written in here:
+- **Rider 1** (completion, not accuracy) is A8.8 (4).
+- **Rider 2** (the probe's population): if `11/a5` is not the LARGEST a5 artifact by `stageB.lean` bytes, swap one of its read-OK
+  chunks for the largest's first chunk. **Measured over the pinned population (334ac0b784d5dcc5): `11/a5` IS the largest a5
+  artifact, at 12,283 B** (next `149/a5` 9,828 · `112/a5` 9,305 · `148/a5` 9,138). The rider's condition is not met, and the probe
+  stays as A8.5 names it. Declared beside it, from the same measurement: the largest a0 artifact is 10,897 B (`112/a0`), and size
+  does not separate the outcomes in read 1 (A8.2 (1)).
+- **Rider 3** (the rate): 0.76 M tokens/pt was measured under -high and stays the binding rate. The pool meter's drop over the probe
+  is logged beside it, and if the meter shows a larger drop than 0.76 M/pt implies, the start test uses the meter's figure.
+- **Rider 4** (a0): a0 has 9 chunks, too few for a fraction. Its UNREAD count rides beside the result as a limit, and **any a0
+  UNREAD halts the set**, in addition to A8.6's a5 rule.
+- **A8.3's build note:** each chunk's rows are appended in one write ending in a newline, so a kill mid-write leaves a detectable
+  partial last line. The scorer refuses a `rows.tsv` whose last line has no terminator.
+- **The reader's own stop (gemini, bus 2026-10-29 00:09:41 PDT):** STOPPED by pid at 07:07:48Z. `out/meter.tsv` (sha256/16
+  ad306fd516c1da07) and `calls/` were byte-unchanged across the stop. The in-flight call left no record. The registry's `ended`
+  wrote its marker as `out/DONE` (`rc=143`) for about a minute, and gemini moved it out of `out/`, declared. That marker is not a
+  driver DONE. **The new driver's registry marker is a path outside `out/`.**
+- **evidence, 2026-10-29 00:15:01 PDT:** riders 1-4 CONCUR as written in. **Rider 2's premise is RETRACTED**: failures do not
+  track size (A8.2 (1)), so the rider is moot as well as unmet. **Read 2 takes A8.6 and rider 4: YES**, because two reads cannot see
+  a rate there either, and missing reads on either arm is the defect. `cmd_read2` sets the halt, and the CLI has no flag to unset it.
