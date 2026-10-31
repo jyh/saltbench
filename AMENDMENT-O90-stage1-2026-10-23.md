@@ -953,3 +953,35 @@ re-read of explain:14 would cost ≈ 43 k tokens and is not required.
 its call, and writes each split sentence's own session in its rows. systems reads it. A8.5's 10-chunk start test is re-run under the
 new rule: no 503 · **UNREAD sentences × 10 ≤ sentences reached**, over the probe's 67 written sentences (11/a5 #1–#9 = 60, 112/a0 #1
 = 7; evidence's restatement, since "1 of 10 chunks" is not defined for a split chunk) · A9.5's price test at R. The set starts after the reboot (A8.7).
+
+## ⚖️ ADDENDUM 10 — 2026-10-31: READ 2'S PAUSE PRICE IS A PINNED RATE, NOT THE POOL'S DROP OVER 2 READS. APPENDED; all text above untouched. Written before any read past read 2's pause.
+
+**A10.1 · What happened.** Read 1 (A9) ended DONE rc 0 at 2026-10-30T18:07:35Z (153/153 chunks reached; gemini's harvest). Read 2 fired
+on the PM's named Claude pool at 2026-10-31T07:12:36Z with `--pause-after 2` and PAUSED after its 2 metered reads: both OK, 14 a5
+sentences read, 0.215690 USD on its meter, served `claude-opus-5`. Nothing has been read past the pause.
+
+**A10.2 · Why A5.3's input cannot be read here.** With guard = 1.5 × first_usd(2) / P and the projection first_usd(2) / 2 × 153, A7.6's
+test reduces to **P ≤ 1.5 × 2 / 153 ≈ 0.0196 points**, where P is the pool's drop over the 2 reads. The pool is read in whole points
+and is shared with other work, so P reads 0 (refused by the driver) or reads other work's spend. Entering the resolution floor
+(P = 1) fails the test by construction; it was run once at no cost, and refused before any read (receipt
+`receipts/a10-read2-rate-2026-10-31.txt`). This is A9.5's problem on the Claude side, and it takes A9.5's remedy.
+
+**A10.3 · The pinned rate.** **R = 19.44 USD per point.** Measured from the pool's own record: every billed request in every config
+dir logged in to the pool, over the window between two MEASURED weekly readings (0 → 18 points, 2026-10-28T22:43:12Z →
+2026-10-31T06:18:32Z), priced at list (`o90_pool_usd.py`, which reproduces read 2's own two client-reported costs to the cent):
+369.3584 USD. 369.3584 / 18 = 20.52; **the value pinned is the bracket's top, 369.3584 / 19 = 19.44**, because an integer reading of
+18 can hold at most 19 points of spend and a missed source can only add USD. Both directions make 19.44 a LOWER bound on R, so the
+guard it yields halts early, never late. **Read 2 resumes with `--points-at-pause` = first_usd(2) / R = 0.215690 / 19.44 = 0.0111.**
+P is rounded UP from 0.011095 (the conservative direction), so the driver prints USD per point 19.4315 · guard 29.1473 USD
+(1.5 points) · projected 16.5003 USD over 153 reads (0.8491 point), and A7.6's test passes (systems' F1 on #418). The 3-point cap of record, read 2's 1.5-point share, the in-set spend halt and the shared meter are unchanged. Calib and
+confirm price against the same `.points` record (A5.3), so R binds them too.
+**The PM's word: YES** (evidence, bus 2026-10-31 00:16:35 PDT, @93,109,815), with two riders, both written here. **Rider 1:** the
+limits in A10.4 ride with R wherever R is quoted. **Rider 2: R is pinned for THIS set's shared meter only** (read 2, and, through the
+driver's `.points` record, the calibration and the confirmer that share its one 3-point cap). It is not a fleet rate, and it is never
+re-used for any other run without a new measurement and a new line.
+
+**A10.4 · Limits.** (1) List prices are an API-equivalent unit. That the pool meters points in proportion to list price across model
+tiers is the working hypothesis, unmeasured here; the window's spend is 83 % `claude-opus-5-5` by USD, and read 2 runs
+`claude-opus-5`. (2) One window on one pool, at integer resolution. (3) The pricer is validated on 2 sessions of one model. (4) If
+read 2's own spend is later seen to move the pool faster than R implies, the in-set spend halt is still on USD at R, so the
+overrun it permits is bounded by the hypothesis in (1), and the PM re-prices.
