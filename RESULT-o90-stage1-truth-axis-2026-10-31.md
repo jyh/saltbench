@@ -1,0 +1,83 @@
+# RESULT — O90 stage 1, the truth axis (AMENDMENT-O90-stage1 A3.2–A3.5, ADDENDA 3–10) — 2026-10-31
+
+Every figure below is copied from a file in `harness/s2lean/o90-2026-10-23/truth-2026-10-31/`, named beside it. Nothing is
+retyped from a message.
+
+## The decision (A3.4b)
+
+Over all WRITTEN, scored sentences, confirmed-FALSE against not, a5 against a0, one-sided Fisher exact, p ≤ 0.10
+("wrong on truth" if a5's rate is significantly higher). From `flaglog.out`:
+
+```
+PER SENTENCE (whole): a5 39 / 915 · a0 0 / 39 confirmed FALSE of scored written sentences · one-sided Fisher p = 0.1898 · artifacts unreached by the confirmer a5 0 · a0 0
+PER SENTENCE (doc): a5 0 / 159 · a0 0 / 39 confirmed FALSE of scored written sentences · one-sided Fisher p = 1.0000 · artifacts unreached by the confirmer a5 0 · a0 0
+```
+
+**p = 0.1898 > 0.10: the test does not find a5 wrong on truth.** This is the registered test's outcome at this n. It is
+not a finding that the two arms are equally truthful: a0 contributes 39 written sentences, against a5's 915 (see Limits).
+
+## The assumption the test rests on, printed beside it (A3.4b)
+
+The confirmer sees flagged sentences only, so the per-sentence test is fair only if the readers flag the two arms at like
+rates. From `flaglog.out`:
+
+```
+FLAG RATE per sentence (mechanism, arm): FALSE flags / scored reads
+  claude   a0  0 / 39
+  claude   a5  32 / 922
+  gemini   a0  0 / 39
+  gemini   a5  103 / 928
+FALSE FLAGS NOT CONFIRMED (mechanism, arm): not_confirmed / flags
+  *        a5  62 / 135
+  claude   a5  2 / 32
+  gemini   a5  60 / 103
+```
+
+Neither reader flagged any a0 sentence. The two readers disagree on a5: of read 2's (Claude) 32 flags the confirmer
+rejected 2; of read 1's (Gemini) 103 it rejected 60.
+
+## Per artifact (A3.4a: REPORTED, does not decide)
+
+`flaglog.out`, PER ARTIFACT: 17 a5 artifacts carry at least one confirmed-FALSE sentence, 6 a5 artifacts are UNSCORED (a
+sentence in them was never scored), 1 a5 artifact reads 0. a0 (23 artifacts listed): 9 read 0, 14 have no written prose, 0 UNSCORED.
+By A3.4a this rule cannot decide at the calibration's n; its noise rate is the calibration's (next section).
+
+## The confirmer's calibration (A3.4a, ADDENDUM 5)
+
+`calib-summary.txt`:
+
+```
+CALIBRATION (A3.4a): TRUE scored 45 · confirmed FALSE 1 · rate 0.0222 · 95 % upper 0.1011 · UNSCORED 0
+  PLANTED mut_true=NO scored 42 · confirmed FALSE 38 (recall)
+  PLANTED mut_true=YES scored 2 · confirmed FALSE 0 (recall)
+```
+
+At the 95 % upper bound (10.1 %) the a5 noise-only per-artifact fire rate is far above A3.4a's 25 % line, so the
+per-artifact table above is reported and does not decide.
+
+## The sets as run
+
+| set | file | units | outcome |
+|---|---|---|---|
+| read 1 (Gemini, A9) | `read1-rows.tsv` | 153 chunks | DONE (its own run; rows copied by hash) |
+| read 2 (Claude, A3.3/A7.6) | `read2-rows.tsv`, `read2-run.log` | 153 chunks | DONE, no HALT |
+| calibration (A3.4a) | `calib.tsv`, `calib-run.log` | 30 sessions | DONE |
+| confirmer (A3.4) | `confirmations.tsv`, `confirm-run.log` | 24 artifacts | DONE: 39 yes · 61 no · 5 UNSCORED |
+| merge + flag log | `flaglog.tsv`, `flaglog.out` | — | rc 0 (tools by sha in `merge-tools.sha`) |
+
+Claude spend, one meter (`claude-meter.tsv`, summed by unit prefix): read 2 159 attempts (7 failed) 17.233731 USD ·
+calibration 30 (0 failed) 2.476885 USD · confirmer 27 (4 failed) 5.219255 USD · total 24.929871 USD = 1.283 points at
+ADDENDUM 10's R (19.4315 USD/pt as the driver printed it, `read2-run.log`), against the 3-point cap.
+
+## Limits (they ride with the decision)
+
+1. **a0's n is 39 written sentences** (14 of its 23 listed artifacts have no written prose). With 0 flags on a0, the test's power
+   against a small a5 excess is low; p = 0.1898 is a failure to find, not evidence of equality.
+2. **UNSCORED is not missing at random** (A9.6 (6)): 6 a5 artifacts are UNSCORED and leave the per-sentence denominators;
+   which sentences they are is listed by id in the runs' rows.
+3. **The two readers disagree on a5** (flag rates 32/922 vs 103/928; flags the confirmer rejected 2/32 vs 60/103). The confirmer is one
+   Claude model (A3.4), the same vendor as read 2; that agreement is not independent of read 2's flags.
+4. **The confirmer's false-positive rate is bounded at 10.1 %** (95 %, n = 45), so up to roughly a tenth of the 39 a5
+   confirmations may be noise; a0 has no flags to confirm, so noise cannot touch its rate.
+5. The Claude spend is priced at ADDENDUM 10's pinned R, with its four limits.
+6. This RESULT reports stage 1's truth axis only; it makes no claim about the salt method's effect beyond the registered test.

@@ -1,0 +1,5 @@
+USD per point 19.4315 (0.2157 USD over the first 2 reads / 0.011 points) · guard 58.2946 USD = 3 points
+CALIBRATION (A3.4a): TRUE scored 45 · confirmed FALSE 1 · rate 0.0222 · 95 % upper 0.1011 · UNSCORED 0
+  PLANTED mut_true=NO scored 42 · confirmed FALSE 38 (recall)
+  PLANTED mut_true=YES scored 2 · confirmed FALSE 0 (recall)
+DONE

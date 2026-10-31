@@ -1,0 +1,65 @@
+POPULATION sha256/16 334ac0b784d5dcc5 · 972 written sentences
+PER ARTIFACT (a sentence is FALSE iff flagged AND confirmed yes; any unscored sentence makes it UNSCORED):
+  11 a5 ep-b958c4c0 0
+  112 a0 ep-558aedfa 0
+  112 a5 ep-6cc3ed48 3  <- carries a FALSE sentence
+  128 a0 ep-15dd1d12 0
+  128 a5 ep-7faf263a 1  <- carries a FALSE sentence
+  136 a0 ep-3a028455 no written prose
+  136 a5 ep-bd5beaa6 UNSCORED
+  141 a0 ep-cf287720 0
+  141 a5 ep-430d18b0 2  <- carries a FALSE sentence
+  142 a0 ep-7034f448 0
+  142 a5 ep-093b5e2c 2  <- carries a FALSE sentence
+  146 a0 ep-9b8d5b10 no written prose
+  146 a5 ep-422ea521 UNSCORED
+  148 a0 ep-9862efe9 0
+  148 a5 ep-968c428f 3  <- carries a FALSE sentence
+  149 a0 ep-6e724ff5 0
+  149 a5 ep-32ec30df 1  <- carries a FALSE sentence
+  16 a0 ep-8e925cbb no written prose
+  16 a5 ep-50a56ccd 1  <- carries a FALSE sentence
+  2 a0 ep-e4978cbf no written prose
+  2 a5 ep-b30c0338 2  <- carries a FALSE sentence
+  31 a0 ep-3805ba91 no written prose
+  31 a5 ep-f9653fae UNSCORED
+  35 a0 ep-7e19f23e no written prose
+  35 a5 ep-907ac49e 2  <- carries a FALSE sentence
+  38 a0 ep-83e1d461 0
+  38 a5 ep-e400a693 UNSCORED
+  4 a0 ep-0851f3b6 0
+  4 a5 ep-b73b127c 1  <- carries a FALSE sentence
+  52 a0 ep-cbd5aec2 no written prose
+  52 a5 ep-9106ded7 1  <- carries a FALSE sentence
+  54 a0 ep-3f370f25 no written prose
+  54 a5 ep-00f56440 6  <- carries a FALSE sentence
+  56 a0 ep-23eae95a no written prose
+  56 a5 ep-09f7507d UNSCORED
+  59 a0 ep-6a4bc88d no written prose
+  59 a5 ep-7caea960 2  <- carries a FALSE sentence
+  60 a0 ep-ec5add71 no written prose
+  60 a5 ep-0144a0f3 1  <- carries a FALSE sentence
+  73 a0 ep-88778e4b 0
+  73 a5 ep-86c7c952 2  <- carries a FALSE sentence
+  74 a0 ep-eb175ef8 no written prose
+  74 a5 ep-ea480733 UNSCORED
+  82 a0 ep-2295b659 no written prose
+  82 a5 ep-47933543 1  <- carries a FALSE sentence
+  92 a0 ep-26a7ef9e no written prose
+  92 a5 ep-b0c972bb 1  <- carries a FALSE sentence
+  UNSCORED artifacts a0: 0 · no written prose 14
+  UNSCORED artifacts a5: 6 · no written prose 0
+PER SENTENCE (whole): a5 39 / 915 · a0 0 / 39 confirmed FALSE of scored written sentences · one-sided Fisher p = 0.1898 · artifacts unreached by the confirmer a5 0 · a0 0
+PER SENTENCE (doc): a5 0 / 159 · a0 0 / 39 confirmed FALSE of scored written sentences · one-sided Fisher p = 1.0000 · artifacts unreached by the confirmer a5 0 · a0 0
+FLAG RATE per sentence (mechanism, arm): FALSE flags / scored reads
+  claude   a0  0 / 39
+  claude   a5  32 / 922
+  gemini   a0  0 / 39
+  gemini   a5  103 / 928
+FALSE FLAGS NOT CONFIRMED (mechanism, arm): not_confirmed / flags
+  *        a5  62 / 135
+  claude   *   2 / 32
+  claude   a5  2 / 32
+  gemini   *   60 / 103
+  gemini   a5  60 / 103
+flaglog rc=0
