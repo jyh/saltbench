@@ -1,0 +1,13 @@
+ADDENDUM 10 receipt — read 2's USD per point (R), measured 2026-10-31 by bench. Pool names withheld (public tree); the pool is the PM's named Claude pool of A3.3.
+WINDOW  the pool's two MEASURED weekly readings: 2026-10-28T22:43:12Z all_weekly 0 (first reading after its weekly reset) -> 2026-10-31T06:18:32Z all_weekly 18
+SPEND   o90_pool_usd.py <config dir> 2026-10-28T22:43:12Z 2026-10-31T06:18:32Z, over every config dir logged in to the pool on the three boxes that hold one:
+  dir 1   files 1107 requests 3634   claude-fable-5-1 n=165 usd=61.1728 · claude-opus-5-5 n=3469 usd=308.1856   TOTAL usd=369.3584
+  dir 2   requests 0   TOTAL usd=0.0000
+  dir 3   requests 0   TOTAL usd=0.0000
+  dir 4   requests 0   TOTAL usd=0.0000
+CHECK   o90_pool_usd.py on read 2's own config dir, 2026-10-31T07:00Z..08:00Z: requests 2, claude-opus-5 usd=0.2157
+        = read 2's meter.tsv cost_usd 0.113682 + 0.102008 = 0.215690 (the client's own total_cost_usd)
+R       369.3584 / 18 = 20.52 USD/pt · at the bracket top 19 points: 369.3584 / 19 = 19.44 USD/pt (the value pinned)
+READ 2  first_usd(2) = 0.215690 · P = 0.215690 / 19.44 = 0.0111 pt · guard 1.5 x 19.44 = 29.16 USD · projected 0.215690 / 2 x 153 = 16.50 USD
+A7.6 test at P = 1 (the resolution floor), run 2026-10-31, refused before any read, verbatim:
+  REFUSE: read 2 projects 16.5003 USD over its 153 reads, past its 1.5-point guard 0.3235 USD (A7.6): it goes back to the PM to re-price, nothing past the pause is read
