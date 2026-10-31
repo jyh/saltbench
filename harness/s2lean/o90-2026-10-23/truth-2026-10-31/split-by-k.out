@@ -1,0 +1,6 @@
+A9.6 (1) FLAG RATE split by k, read 1 (gemini): FALSE flags / scored reads [unscored]
+  a0 chunk 0 / 39  [0]
+  a0 split 0 / 0  [0]
+  a5 chunk 69 / 830  [0]
+  a5 split 34 / 98  [5]
+split sessions in split.tsv: 103 · rows matched to one: 103
