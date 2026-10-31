@@ -972,8 +972,8 @@ dir logged in to the pool, over the window between two MEASURED weekly readings 
 369.3584 USD. 369.3584 / 18 = 20.52; **the value pinned is the bracket's top, 369.3584 / 19 = 19.44**, because an integer reading of
 18 can hold at most 19 points of spend and a missed source can only add USD. Both directions make 19.44 a LOWER bound on R, so the
 guard it yields halts early, never late. **Read 2 resumes with `--points-at-pause` = first_usd(2) / R = 0.215690 / 19.44 = 0.0111.**
-The driver then prints USD/pt 19.44 · guard 29.16 USD (1.5 points) · projected 16.50 USD over 153 reads (0.85 point), and A7.6's test
-passes. The 3-point cap of record, read 2's 1.5-point share, the in-set spend halt and the shared meter are unchanged. Calib and
+P is rounded UP from 0.011095 (the conservative direction), so the driver prints USD per point 19.4315 · guard 29.1473 USD
+(1.5 points) · projected 16.5003 USD over 153 reads (0.8491 point), and A7.6's test passes (systems' F1 on #418). The 3-point cap of record, read 2's 1.5-point share, the in-set spend halt and the shared meter are unchanged. Calib and
 confirm price against the same `.points` record (A5.3), so R binds them too.
 **The PM's word: YES** (evidence, bus 2026-10-31 00:16:35 PDT, @93,109,815), with two riders, both written here. **Rider 1:** the
 limits in A10.4 ride with R wherever R is quoted. **Rider 2: R is pinned for THIS set's shared meter only** (read 2, and, through the
