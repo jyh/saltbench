@@ -120,6 +120,6 @@ ADDENDUM 10's R (19.4315 USD/pt as the driver printed it, `read2-run.log`), agai
    artifact's only FALSE and only unscored sentence). A3.4 (M2) as registered reads "an artifact with ANY unscored sentence, AT
    A READ or at the confirmer, is UNSCORED", and the tool's own docstring and printed header say the same, so as printed they
    are false of these three rows. **Read literally, M2 gives** per artifact a5 14 FALSE · 9 UNSCORED · 1 zero, and per sentence
-   a5 36/912 vs a0 0/39, one-sided p = 0.2151 (`fisher-checks.out`, STRICT). E1 is the reading that leans toward firing, so the
+   a5 36/912 vs a0 0/39, one-sided p = 0.2151 (`fisher-checks.out`, STRICT and PER ARTIFACT, M2-literal). E1 is the reading that leans toward firing, so the
    reported p is the lower of the two; both are above 0.10 (systems' F1 on #419; the PM's ask 4).
 8. This RESULT reports stage 1's truth axis only; it makes no claim about the salt method's effect beyond the registered test.

@@ -32,3 +32,13 @@ for (arm, ep, s), rs in by.items():
     c[(arm, 'n')] += 1; c[(arm, 'f')] += any(r['verdict'] == 'FALSE' and r['confirmed'] == 'yes' for r in rs)
 print('CONTROL (rule E1 as flaglog applies it, recomputed here): a5 %d/%d vs a0 %d/%d one-sided p = %.4f' % (c[('a5','f')], c[('a5','n')], c[('a0','f')], c[('a0','n')],
       fisher_ge(c[('a5','f')], c[('a5','n')], c[('a0','f')], c[('a0','n')])))
+# per artifact under the M2-literal rule: an artifact with ANY unscored sentence (at a read or at the confirmer) is UNSCORED
+art = collections.defaultdict(list)
+for (arm, ep, s), rs in by.items(): art[(arm, ep)].append(rs)
+c = collections.Counter()
+for (arm, ep), sents in art.items():
+    if any(r['verdict'] not in ('OK', 'FALSE') or (r['verdict'] == 'FALSE' and r['confirmed'] not in ('yes', 'no')) for rs in sents for r in rs): c[(arm, 'UNSCORED')] += 1
+    elif any(r['verdict'] == 'FALSE' and r['confirmed'] == 'yes' for rs in sents for r in rs): c[(arm, 'FALSE')] += 1
+    else: c[(arm, 'zero')] += 1
+for arm in ('a5', 'a0'):
+    print('PER ARTIFACT, M2-literal: %s %d FALSE · %d UNSCORED · %d zero (artifacts with written prose)' % (arm, c[(arm, 'FALSE')], c[(arm, 'UNSCORED')], c[(arm, 'zero')]))
