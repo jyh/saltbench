@@ -36,6 +36,33 @@ FALSE FLAGS NOT CONFIRMED (mechanism, arm): not_confirmed / flags
 Neither reader flagged any a0 sentence. The two readers disagree on a5: of read 2's (Claude) 32 flags the confirmer
 rejected 2; of read 1's (Gemini) 103 it rejected 60.
 
+**The condition is read, not only printed** (`fisher-checks.out`, from `o90_fisher_checks.py`, whose control line reproduces
+the decision's 39 / 915 and p = 0.1898 exactly):
+
+```
+FLAG-RATE FISHER read 1 (gemini): a5 103/928 vs a0 0/39 one-sided p = 0.0113
+FLAG-RATE FISHER read 2 (claude): a5 32/922 vs a0 0/39 one-sided p = 0.2597
+```
+
+**The like-flag-rate condition FAILS for read 1** and is not rejected for read 2. Its direction: a5 is exposed to more
+confirmer noise than a0, which pushes the test TOWARD firing, so it does not weaken a test that did not fire.
+
+**A9.6 (1), the flag rate split by k** (read 1 only; read 2 cannot split, A9.6 (4)). `split-by-k.out`, from
+`o90_split_by_k.py` over `read1-rows.tsv` and `read1-split.tsv` (read 1's own `split.tsv`, copied by hash
+ef161369aca302eb; all 103 split sessions matched a row, and the split counts equal `split.tsv`'s 34 FALSE · 64 OK · 5 TIMEOUT):
+
+```
+A9.6 (1) FLAG RATE split by k, read 1 (gemini): FALSE flags / scored reads [unscored]
+  a0 chunk 0 / 39  [0]
+  a0 split 0 / 0  [0]
+  a5 chunk 69 / 830  [0]
+  a5 split 34 / 98  [5]
+```
+
+Every split read is a5, and split reads flag at a much higher rate than chunk reads (34/98 against 69/830). Since a split
+read sees one sentence where a chunk read sees up to 7, this is the shift A9.6 (1) exists to make visible. It acts on a5
+alone, in the direction of more flags.
+
 ## Per artifact (A3.4a: REPORTED, does not decide)
 
 `flaglog.out`, PER ARTIFACT: 17 a5 artifacts carry at least one confirmed-FALSE sentence, 6 a5 artifacts are UNSCORED (a
@@ -64,6 +91,7 @@ per-artifact table above is reported and does not decide.
 | calibration (A3.4a) | `calib.tsv`, `calib-run.log` | 30 sessions | DONE |
 | confirmer (A3.4) | `confirmations.tsv`, `confirm-run.log` | 24 artifacts | DONE: 39 yes · 61 no · 5 UNSCORED |
 | merge + flag log | `flaglog.tsv`, `flaglog.out` | — | rc 0 (tools by sha in `merge-tools.sha`) |
+| checks asked by the PM's read | `fisher-checks.out`, `split-by-k.out` | — | `o90_fisher_checks.py`, `o90_split_by_k.py` (no spend) |
 
 Claude spend, one meter (`claude-meter.tsv`, summed by unit prefix): read 2 159 attempts (7 failed) 17.233731 USD ·
 calibration 30 (0 failed) 2.476885 USD · confirmer 27 (4 failed) 5.219255 USD · total 24.929871 USD = 1.283 points at
@@ -77,7 +105,15 @@ ADDENDUM 10's R (19.4315 USD/pt as the driver printed it, `read2-run.log`), agai
    which sentences they are is listed by id in the runs' rows.
 3. **The two readers disagree on a5** (flag rates 32/922 vs 103/928; flags the confirmer rejected 2/32 vs 60/103). The confirmer is one
    Claude model (A3.4), the same vendor as read 2; that agreement is not independent of read 2's flags.
-4. **The confirmer's false-positive rate is bounded at 10.1 %** (95 %, n = 45), so up to roughly a tenth of the 39 a5
-   confirmations may be noise; a0 has no flags to confirm, so noise cannot touch its rate.
+4. **The confirmer's false-positive rate is bounded at 10.1 %** (95 %, n = 45). The bound applies to flagged sentences
+   that are in fact not false: the confirmer scored 100 a5 flagged sentences (`confirmations.tsv`: 39 yes + 61 no), so noise
+   alone can account for up to about 10 of the 39 confirmations, about a quarter. a0 has no flags to confirm, so noise cannot
+   touch its rate.
 5. The Claude spend is priced at ADDENDUM 10's pinned R, with its four limits.
-6. This RESULT reports stage 1's truth axis only; it makes no claim about the salt method's effect beyond the registered test.
+6. **The like-for-like read is 0 against 0.** All 39 of a0's written sentences are doc comments, and none of a5's 39
+   confirmed FALSE is a doc comment (`flaglog.out`, PER SENTENCE (doc): a5 0 / 159 · a0 0 / 39). So the decision compares a5's
+   doc and explanation prose with a0's doc prose only, and the doc-only read finds nothing in either arm.
+7. **Three of the 39 have an UNSCORED read 2.** The rule counts a sentence FALSE when either read flagged it and the confirmer
+   confirmed it (§3), so a half-unscored sentence is admitted only when it is FALSE, which leans toward firing. Dropping every
+   sentence with an UNSCORED read (`fisher-checks.out`): a5 36/912 vs a0 0/39, one-sided p = 0.2151. Both counts are above 0.10.
+8. This RESULT reports stage 1's truth axis only; it makes no claim about the salt method's effect beyond the registered test.

@@ -1,0 +1,4 @@
+FLAG-RATE FISHER read 1 (gemini): a5 103/928 vs a0 0/39 one-sided p = 0.0113
+FLAG-RATE FISHER read 2 (claude): a5 32/922 vs a0 0/39 one-sided p = 0.2597
+STRICT (drop any sentence with an UNSCORED read): a5 36/912 vs a0 0/39 one-sided p = 0.2151
+CONTROL (rule E1 as flaglog applies it, recomputed here): a5 39/915 vs a0 0/39 one-sided p = 0.1898
