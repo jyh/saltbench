@@ -1015,5 +1015,6 @@ paragraph is where a reader meets that.
 
 **A11.5 · Limits.** (1) This addendum is written after the result it governs; its only claim is that the rule the tool already
 ran is the one now named, and the RESULT's limit 7 states the same. (2) E1 is one-directional: it can only move a sentence from
-UNSCORED to FALSE, which raises a5's count and lowers p, so a future stage whose decision lands between the two readings must
-report both and say which one decides.
+UNSCORED to FALSE, and the arm whose sentence moves gains one in both its count and its denominator. A move in a5 lowers p and a
+move in a0 raises it; in this stage all three moved sentences were a5's, which lowered p (systems' F1 on #421). A future stage
+whose decision lands between the two readings must report both and say which one decides.

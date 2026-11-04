@@ -22,7 +22,7 @@ than shrunk.
 Readings: (1) PER ARTIFACT — a sentence is FALSE iff some read flagged it AND its confirmation is yes [F8c]; an artifact with
 ANY unscored sentence is UNSCORED on this rule, printed per arm (A3.4 M2), where a sentence's state is decided by E1
 (ADDENDUM 11): a confirmed FALSE is decided FIRST, so a sentence is UNSCORED only when it is not a confirmed FALSE and some
-read or confirmation of it is UNSCORED or HALTED. M2 read literally is the registered sensitivity (o90_fisher_checks.py).
+read or confirmation of it is UNSCORED or HALTED, or it has no row. M2 read literally is the registered sensitivity (o90_fisher_checks.py).
 (2) PER SENTENCE, the A3.4b decision — confirmed-FALSE against not over the written SCORED sentences, a5 against a0, one-sided
 Fisher exact p, whole and doc-comment-only (A3.7 4's length-matched read), beside each arm's per-sentence FLAG rate per
 mechanism. (3) evidence's leg (c) analogue — the share of FALSE flags NOT confirmed, per mechanism and per arm.
