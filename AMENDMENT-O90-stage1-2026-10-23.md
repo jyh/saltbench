@@ -985,3 +985,35 @@ tiers is the working hypothesis, unmeasured here; the window's spend is 83 % `cl
 `claude-opus-5`. (2) One window on one pool, at integer resolution. (3) The pricer is validated on 2 sessions of one model. (4) If
 read 2's own spend is later seen to move the pool faster than R implies, the in-set spend halt is still on USD at R, so the
 overrun it permits is bounded by the hypothesis in (1), and the PM re-prices.
+
+## ⚖️ ADDENDUM 11 — 2026-11-04: RULE E1 (A CONFIRMED FALSE IS DECIDED FIRST) IS REGISTERED, AND M2 READ LITERALLY IS ITS SENSITIVITY. APPENDED; all text above untouched. Written AFTER the truth-axis RESULT (#419, merged 1b8181e), and declared so; it changes no figure of that RESULT.
+
+**A11.1 · What happened.** `o90_flaglog.py` decides each written sentence's state by rule E1 (systems' E1, commit ad190cd,
+on main at #401 2026-10-25 01:58 PDT, before any truth read fired): a sentence that SOME read flagged FALSE and the confirmer
+answered `yes` is FALSE, and that is decided BEFORE any UNSCORED or HALTED row for the same sentence is looked at. Only a
+sentence that is not decided FALSE that way, and carries an UNSCORED or HALTED read or confirmation (or no row), is UNSCORED.
+A3.4 (systems' M2) as registered says "an artifact with ANY unscored sentence, at a read or at the confirmer, is UNSCORED", which
+read literally does not let a confirmed FALSE override another read's UNSCORED. The RESULT's limit 7 records the difference
+(systems' F1 on #419): three a5 sentences were flagged FALSE by read 1, left UNSCORED by read 2 and confirmed yes, each its
+artifact's only FALSE and only unscored sentence.
+
+**A11.2 · Registered.** E1 is the registered rule for A3.4's per-sentence state and so for the per-artifact rule: an artifact is
+UNSCORED iff one of its sentences is UNSCORED AFTER E1. A confirmed FALSE is a fact about the Lean file (A3.4's confirmer reads
+the whole file), and a read that failed to answer adds nothing against it. E1 is the reading that leans toward firing A3.4b.
+
+**A11.3 · The sensitivity, registered beside it.** M2 read literally, where a sentence with any UNSCORED read is UNSCORED
+whatever its confirmation, is reported beside every E1 figure of this stage, computed by `o90_fisher_checks.py` (its STRICT and
+PER ARTIFACT, M2-literal arms). For the truth axis the two readings are, from `truth-2026-10-31/flaglog.out` and
+`truth-2026-10-31/fisher-checks.out`: E1 a5 39/915 vs a0 0/39, one-sided p = 0.1898; M2-literal a5 36/912 vs a0 0/39,
+p = 0.2151, and per artifact a5 14 FALSE · 9 UNSCORED · 1 zero. Both are above A3.4b's 0.10, so the decision does not depend
+on the choice.
+
+**A11.4 · The tool's text.** `o90_flaglog.py`'s docstring and its printed PER ARTIFACT header described M2, not E1. Both are
+corrected in the same commit as this addendum; the computation is unchanged and its selftest is unchanged. The run records in
+`truth-2026-10-31/` (`flaglog.out` among them) are evidence and are NOT re-written: they print the old header, and this
+paragraph is where a reader meets that.
+
+**A11.5 · Limits.** (1) This addendum is written after the result it governs; its only claim is that the rule the tool already
+ran is the one now named, and the RESULT's limit 7 states the same. (2) E1 is one-directional: it can only move a sentence from
+UNSCORED to FALSE, which raises a5's count and lowers p, so a future stage whose decision lands between the two readings must
+report both and say which one decides.
