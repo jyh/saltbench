@@ -20,7 +20,9 @@ mechanism in the log, every written sentence must have a row of that mechanism, 
 written UNSCORED, and a sentence a halted set did not reach is written HALTED (ADDENDUM 4), so a halted set is counted rather
 than shrunk.
 Readings: (1) PER ARTIFACT — a sentence is FALSE iff some read flagged it AND its confirmation is yes [F8c]; an artifact with
-ANY unscored sentence (a read UNSCORED, or a confirmation UNSCORED) is UNSCORED on this rule, printed per arm (A3.4 M2).
+ANY unscored sentence is UNSCORED on this rule, printed per arm (A3.4 M2), where a sentence's state is decided by E1
+(ADDENDUM 11): a confirmed FALSE is decided FIRST, so a sentence is UNSCORED only when it is not a confirmed FALSE and some
+read or confirmation of it is UNSCORED or HALTED, or it has no row. M2 read literally is the registered sensitivity (o90_fisher_checks.py).
 (2) PER SENTENCE, the A3.4b decision — confirmed-FALSE against not over the written SCORED sentences, a5 against a0, one-sided
 Fisher exact p, whole and doc-comment-only (A3.7 4's length-matched read), beside each arm's per-sentence FLAG rate per
 mechanism. (3) evidence's leg (c) analogue — the share of FALSE flags NOT confirmed, per mechanism and per arm.
@@ -127,7 +129,7 @@ def report(rows, pop, pop_sha, halted=()):
         print("HALTED %s: %d rows left out of the state (A3.5), confirmed FALSE %d among them; the per-artifact and per-sentence"
               " figures are by the other mechanism alone, and the flag tables report the halted set at the n it reached"
               % (m, len(mr), sum(1 for r in mr if r["verdict"] == "FALSE" and r["confirmed"] == "yes")))
-    print("PER ARTIFACT (a sentence is FALSE iff flagged AND confirmed yes; any unscored sentence makes it UNSCORED):")
+    print("PER ARTIFACT (a sentence is FALSE iff flagged AND confirmed yes, decided first (E1); any other unscored sentence makes it UNSCORED):")
     for p, a, e, n in axis: print("  %s %s %s %s%s" % (p, a, e, n, "  <- carries a FALSE sentence" if isinstance(n, int) and n else ""))
     for a in ("a0", "a5"): print("  UNSCORED artifacts %s: %d · no written prose %d" % (a, sum(1 for x in axis if x[1] == a and x[3] == "UNSCORED"),
                                                                                   sum(1 for x in axis if x[1] == a and x[3] == "no written prose")))

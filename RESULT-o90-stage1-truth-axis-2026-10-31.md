@@ -122,4 +122,7 @@ ADDENDUM 10's R (19.4315 USD/pt as the driver printed it, `read2-run.log`), agai
    are false of these three rows. **Read literally, M2 gives** per artifact a5 14 FALSE · 9 UNSCORED · 1 zero, and per sentence
    a5 36/912 vs a0 0/39, one-sided p = 0.2151 (`fisher-checks.out`, STRICT and PER ARTIFACT, M2-literal). E1 is the reading that leans toward firing, so the
    reported p is the lower of the two; both are above 0.10 (systems' F1 on #419; the PM's ask 4).
+   *(2026-11-04: E1 is now registered by the amendment's ADDENDUM 11, with M2 read literally as its registered sensitivity,
+   and the tool's docstring and header are corrected to say E1. The run records in `truth-2026-10-31/` keep the old header.
+   No figure here changes.)*
 8. This RESULT reports stage 1's truth axis only; it makes no claim about the salt method's effect beyond the registered test.
