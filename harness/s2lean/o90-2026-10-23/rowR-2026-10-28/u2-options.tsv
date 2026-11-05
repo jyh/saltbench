@@ -1,0 +1,1438 @@
+seq	item	episode	position	option	verdict	status
+1	p142-a5-def-0	ep-093b5e2c	0	List.map	NOT-USED	OK
+1	p142-a5-def-0	ep-093b5e2c	1	List.head?	NOT-USED	OK
+1	p142-a5-def-0	ep-093b5e2c	2	Ne	USED	OK
+1	p142-a5-def-0	ep-093b5e2c	3	conformalGroupoid	NOT-USED	OK
+1	p142-a5-def-0	ep-093b5e2c	4	HSub.hSub	USED	OK
+1	p142-a5-def-0	ep-093b5e2c	5	HAdd.hAdd	USED	OK
+1	p142-a5-def-0	ep-093b5e2c	6	List.sum	USED	OK
+1	p142-a5-def-0	ep-093b5e2c	7	strictAnd	NOT-USED	OK
+3	p128-a0-theorem-1	ep-15dd1d12	0	List.map_congr_left	USED	OK
+3	p128-a0-theorem-1	ep-15dd1d12	1	ite_congr	USED	OK
+3	p128-a0-theorem-1	ep-15dd1d12	2	and_imp	NOT-USED	OK
+3	p128-a0-theorem-1	ep-15dd1d12	3	Nat.pow_lt_pow_iff_right	NOT-USED	OK
+3	p128-a0-theorem-1	ep-15dd1d12	4	Nat.add_mod	USED	OK
+3	p128-a0-theorem-1	ep-15dd1d12	5	List.getElem_modify_ne	NOT-USED	OK
+3	p128-a0-theorem-1	ep-15dd1d12	6	iff_self	NOT-USED	OK
+3	p128-a0-theorem-1	ep-15dd1d12	7	dite_cond_eq_true	NOT-USED	OK
+4	p31-a0-theorem-0	ep-3805ba91	0	Iff.subst		UNSCORED(missing)
+4	p31-a0-theorem-0	ep-3805ba91	1	congr		UNSCORED(missing)
+4	p31-a0-theorem-0	ep-3805ba91	2	Iff.mpr		UNSCORED(missing)
+4	p31-a0-theorem-0	ep-3805ba91	3	of_decide_eq_true		UNSCORED(missing)
+4	p31-a0-theorem-0	ep-3805ba91	4	Nat.lt_of_not_le		UNSCORED(missing)
+4	p31-a0-theorem-0	ep-3805ba91	5	Nat.lt_add_one		UNSCORED(missing)
+4	p31-a0-theorem-0	ep-3805ba91	6	Nat.prime_def		UNSCORED(missing)
+4	p31-a0-theorem-0	ep-3805ba91	7	Nat.minSqFac_dvd		UNSCORED(missing)
+5	p148-a0-def-0	ep-9862efe9	0	List.intersperseTR	NOT-USED	OK
+5	p148-a0-def-0	ep-9862efe9	1	Classical.decidableInhabited	NOT-USED	OK
+5	p148-a0-def-0	ep-9862efe9	2	absurd	USED	OK
+5	p148-a0-def-0	ep-9862efe9	3	List.splitBy.loop	NOT-USED	OK
+5	p148-a0-def-0	ep-9862efe9	4	getModify	NOT-USED	OK
+5	p148-a0-def-0	ep-9862efe9	5	Neg.neg	USED	OK
+5	p148-a0-def-0	ep-9862efe9	6	Eq.mpr	USED	OK
+5	p148-a0-def-0	ep-9862efe9	7	Classical.propDecidable	USED	OK
+7	p73-a0-theorem-0	ep-88778e4b	0	List.singleton_perm_singleton	NOT-USED	OK
+7	p73-a0-theorem-0	ep-88778e4b	1	Int.sub_nonneg_of_le	USED	OK
+7	p73-a0-theorem-0	ep-88778e4b	2	List.length_map	USED	OK
+7	p73-a0-theorem-0	ep-88778e4b	3	Int.toNat_zero	NOT-USED	OK
+7	p73-a0-theorem-0	ep-88778e4b	4	Eq.symm	USED	OK
+7	p73-a0-theorem-0	ep-88778e4b	5	Eq.subst	NOT-USED	OK
+7	p73-a0-theorem-0	ep-88778e4b	6	beq_false_of_ne	NOT-USED	OK
+7	p73-a0-theorem-0	ep-88778e4b	7	le_of_le_of_eq	NOT-USED	OK
+8	p141-a0-def-0	ep-cf287720	0	IsOrderRightAdjoint	NOT-USED	OK
+8	p141-a0-def-0	ep-cf287720	1	Decidable.decide	USED	OK
+8	p141-a0-def-0	ep-cf287720	2	List.isPrefixOf?	NOT-USED	OK
+8	p141-a0-def-0	ep-cf287720	3	InvImage	NOT-USED	OK
+8	p141-a0-def-0	ep-cf287720	4	Decidable.or_not_self	NOT-USED	OK
+8	p141-a0-def-0	ep-cf287720	5	List.filter	USED	OK
+8	p141-a0-def-0	ep-cf287720	6	bne	USED	OK
+8	p141-a0-def-0	ep-cf287720	7	OfNat.ofNat	USED	OK
+9	p141-a0-def-1	ep-cf287720	0	tryCatchThe	NOT-USED	OK
+9	p141-a0-def-1	ep-cf287720	1	Nat.cast	USED	OK
+9	p141-a0-def-1	ep-cf287720	2	List.contains	USED	OK
+9	p141-a0-def-1	ep-cf287720	3	Not	USED	OK
+9	p141-a0-def-1	ep-cf287720	4	ReaderT	NOT-USED	OK
+9	p141-a0-def-1	ep-cf287720	5	dite	USED	OK
+9	p141-a0-def-1	ep-cf287720	6	Nat.toSubscriptString	NOT-USED	OK
+9	p141-a0-def-1	ep-cf287720	7	List.partition	NOT-USED	OK
+11	p73-a0-def-1	ep-88778e4b	0	LE.le.hom	NOT-USED	OK
+11	p73-a0-def-1	ep-88778e4b	1	strictAnd	NOT-USED	OK
+11	p73-a0-def-1	ep-88778e4b	2	Ne	USED	OK
+11	p73-a0-def-1	ep-88778e4b	3	LE.le	USED	OK
+11	p73-a0-def-1	ep-88778e4b	4	Function.comp	USED	OK
+11	p73-a0-def-1	ep-88778e4b	5	Fin.Internal.ofNat	NOT-USED	OK
+11	p73-a0-def-1	ep-88778e4b	6	Function.const	NOT-USED	OK
+11	p73-a0-def-1	ep-88778e4b	7	Fin.val	USED	OK
+12	p82-a0-theorem-0	ep-2295b659	0	Iff.subst	NOT-USED	OK
+12	p82-a0-theorem-0	ep-2295b659	1	of_decide_eq_false	NOT-USED	OK
+12	p82-a0-theorem-0	ep-2295b659	2	Nat.dvd_of_mod_eq_zero	USED	OK
+12	p82-a0-theorem-0	ep-2295b659	3	Eq.trans	NOT-USED	OK
+12	p82-a0-theorem-0	ep-2295b659	4	Eq.symm	USED	OK
+12	p82-a0-theorem-0	ep-2295b659	5	congrArg	USED	OK
+12	p82-a0-theorem-0	ep-2295b659	6	Iff.symm	USED	OK
+12	p82-a0-theorem-0	ep-2295b659	7	Nat.mul_lt_mul_pow_succ	NOT-USED	OK
+13	p74-a0-theorem-1	ep-eb175ef8	0	Nat.cast_list_sum		UNSCORED(missing)
+13	p74-a0-theorem-1	ep-eb175ef8	1	CharP.natCast_eq_natCast_mod		UNSCORED(missing)
+13	p74-a0-theorem-1	ep-eb175ef8	2	Eq.subst		UNSCORED(missing)
+13	p74-a0-theorem-1	ep-eb175ef8	3	CharP.cast_eq_zero		UNSCORED(missing)
+13	p74-a0-theorem-1	ep-eb175ef8	4	Eq.symm		UNSCORED(missing)
+13	p74-a0-theorem-1	ep-eb175ef8	5	Int.sub_eq_zero_of_eq		UNSCORED(missing)
+13	p74-a0-theorem-1	ep-eb175ef8	6	Nat.ceil_lt_add_one		UNSCORED(missing)
+13	p74-a0-theorem-1	ep-eb175ef8	7	Int.bmod_sub_cancel_left		UNSCORED(missing)
+14	p2-a5-theorem-1	ep-b30c0338	0	Iff.mpr	USED	OK
+14	p2-a5-theorem-1	ep-b30c0338	1	Iff.mp	USED	OK
+14	p2-a5-theorem-1	ep-b30c0338	2	Iff.comm	NOT-USED	OK
+14	p2-a5-theorem-1	ep-b30c0338	3	Eq.symm	USED	OK
+14	p2-a5-theorem-1	ep-b30c0338	4	Eq.trans	USED	OK
+14	p2-a5-theorem-1	ep-b30c0338	5	Int.cast_sum	NOT-USED	OK
+14	p2-a5-theorem-1	ep-b30c0338	6	Int.floor_eq_iff	USED	OK
+14	p2-a5-theorem-1	ep-b30c0338	7	Iff.subst	NOT-USED	OK
+16	p31-a5-theorem-1	ep-f9653fae	0	and_congr_right'	USED	OK
+16	p31-a5-theorem-1	ep-f9653fae	1	Iff.of_eq	NOT-USED	OK
+16	p31-a5-theorem-1	ep-f9653fae	2	right_eq_dite_iff	NOT-USED	OK
+16	p31-a5-theorem-1	ep-f9653fae	3	Iff.rfl	USED	OK
+16	p31-a5-theorem-1	ep-f9653fae	4	exists₂_imp	NOT-USED	OK
+16	p31-a5-theorem-1	ep-f9653fae	5	forall_congr'	USED	OK
+16	p31-a5-theorem-1	ep-f9653fae	6	beq_self_eq_true'	NOT-USED	OK
+16	p31-a5-theorem-1	ep-f9653fae	7	iff_congr	USED	OK
+17	p52-a5-theorem-0	ep-9106ded7	0	Eq.subst		UNSCORED(missing)
+17	p52-a5-theorem-0	ep-9106ded7	1	congrArg		UNSCORED(missing)
+17	p52-a5-theorem-0	ep-9106ded7	2	And.left		UNSCORED(missing)
+17	p52-a5-theorem-0	ep-9106ded7	3	Iff.mp		UNSCORED(missing)
+17	p52-a5-theorem-0	ep-9106ded7	4	And.exists		UNSCORED(missing)
+17	p52-a5-theorem-0	ep-9106ded7	5	Eq.trans		UNSCORED(missing)
+17	p52-a5-theorem-0	ep-9106ded7	6	Iff.trans		UNSCORED(missing)
+17	p52-a5-theorem-0	ep-9106ded7	7	congr		UNSCORED(missing)
+20	p74-a5-def-0	ep-ea480733	0	Eq.mp	USED	OK
+20	p74-a5-def-0	ep-ea480733	1	String.length	USED	OK
+20	p74-a5-def-0	ep-ea480733	2	Nat.sub_lt_self	NOT-USED	OK
+20	p74-a5-def-0	ep-ea480733	3	List.head	NOT-USED	OK
+20	p74-a5-def-0	ep-ea480733	4	Nat.cast	USED	OK
+20	p74-a5-def-0	ep-ea480733	5	ReaderT	NOT-USED	OK
+20	p74-a5-def-0	ep-ea480733	6	String.slice!	NOT-USED	OK
+20	p74-a5-def-0	ep-ea480733	7	absurd	USED	OK
+22	p38-a5-def-0	ep-e400a693	0	LE.le	USED	OK
+22	p38-a5-def-0	ep-e400a693	1	LE.ofLT	NOT-USED	OK
+22	p38-a5-def-0	ep-e400a693	2	List.isPrefixOf?	NOT-USED	OK
+22	p38-a5-def-0	ep-e400a693	3	uniqueOfSurjectiveOne	NOT-USED	OK
+22	p38-a5-def-0	ep-e400a693	4	List.drop	USED	OK
+22	p38-a5-def-0	ep-e400a693	5	String.back	NOT-USED	OK
+22	p38-a5-def-0	ep-e400a693	6	HDiv.hDiv	USED	OK
+22	p38-a5-def-0	ep-e400a693	7	String.length	USED	OK
+25	p2-a0-def-1	ep-e4978cbf	0	HPow.hPow	USED	OK
+25	p2-a0-def-1	ep-e4978cbf	1	starContinuousMap	NOT-USED	OK
+25	p2-a0-def-1	ep-e4978cbf	2	Int.Linear.eq_def'_cert	NOT-USED	OK
+25	p2-a0-def-1	ep-e4978cbf	3	Rat.isInt	NOT-USED	OK
+25	p2-a0-def-1	ep-e4978cbf	4	Rat.floor	USED	OK
+25	p2-a0-def-1	ep-e4978cbf	5	SSet	NOT-USED	OK
+25	p2-a0-def-1	ep-e4978cbf	6	OfNat.ofNat	USED	OK
+25	p2-a0-def-1	ep-e4978cbf	7	Int.cast	USED	OK
+26	p2-a5-def-1	ep-b30c0338	0	GT.gt		UNSCORED(missing)
+26	p2-a5-def-1	ep-b30c0338	1	LE.ofOrd		UNSCORED(missing)
+26	p2-a5-def-1	ep-b30c0338	2	Int.beq'		UNSCORED(missing)
+26	p2-a5-def-1	ep-b30c0338	3	nsmulBinRec		UNSCORED(missing)
+26	p2-a5-def-1	ep-b30c0338	4	LE.le		UNSCORED(missing)
+26	p2-a5-def-1	ep-b30c0338	5	Int.rawCast		UNSCORED(missing)
+26	p2-a5-def-1	ep-b30c0338	6	Int.cast		UNSCORED(missing)
+26	p2-a5-def-1	ep-b30c0338	7	Int.Linear.eq_dvd_subst_cert		UNSCORED(missing)
+27	p136-a5-theorem-1	ep-bd5beaa6	0	exists_or_eq_left'	NOT-USED	OK
+27	p136-a5-theorem-1	ep-bd5beaa6	1	Iff.rfl	NOT-USED	OK
+27	p136-a5-theorem-1	ep-bd5beaa6	2	decide_eq_true_iff	NOT-USED	OK
+27	p136-a5-theorem-1	ep-bd5beaa6	3	Iff.of_eq	NOT-USED	OK
+27	p136-a5-theorem-1	ep-bd5beaa6	4	Iff.mpr	USED	OK
+27	p136-a5-theorem-1	ep-bd5beaa6	5	and_congr	USED	OK
+30	p82-a5-def-1	ep-47933543	0	Nat.size	NOT-USED	OK
+30	p82-a5-def-1	ep-47933543	1	modifyGetThe	NOT-USED	OK
+30	p82-a5-def-1	ep-47933543	2	successIfFail	NOT-USED	OK
+30	p82-a5-def-1	ep-47933543	3	getModify	NOT-USED	OK
+30	p82-a5-def-1	ep-47933543	4	Nat.Prime	USED	OK
+30	p82-a5-def-1	ep-47933543	5	OfNat.ofNat	USED	OK
+30	p82-a5-def-1	ep-47933543	6	Not	USED	OK
+30	p82-a5-def-1	ep-47933543	7	id	USED	OK
+31	p148-a5-def-0	ep-968c428f	0	bernoulliFun		UNSCORED(missing)
+31	p148-a5-def-0	ep-968c428f	1	Nat.repeat		UNSCORED(missing)
+31	p148-a5-def-0	ep-968c428f	2	Min.leftLeaningOfLE		UNSCORED(missing)
+31	p148-a5-def-0	ep-968c428f	3	Eq.mpr		UNSCORED(missing)
+31	p148-a5-def-0	ep-968c428f	4	Nat.cast		UNSCORED(missing)
+31	p148-a5-def-0	ep-968c428f	5	Neg.neg		UNSCORED(missing)
+31	p148-a5-def-0	ep-968c428f	6	Min.min		UNSCORED(missing)
+31	p148-a5-def-0	ep-968c428f	7	List.replaceFTR		UNSCORED(missing)
+32	p148-a5-def-1	ep-968c428f	0	Classical.inhabited_of_nonempty	NOT-USED	OK
+32	p148-a5-def-1	ep-968c428f	1	LE.ofOrd	NOT-USED	OK
+32	p148-a5-def-1	ep-968c428f	2	Classical.propDecidable	USED	OK
+32	p148-a5-def-1	ep-968c428f	3	LE.le	USED	OK
+32	p148-a5-def-1	ep-968c428f	4	List.Nodup	USED	OK
+32	p148-a5-def-1	ep-968c428f	5	Decidable.or_not_self	NOT-USED	OK
+32	p148-a5-def-1	ep-968c428f	6	Decidable.decide	USED	OK
+32	p148-a5-def-1	ep-968c428f	7	List.toArrayAux	NOT-USED	OK
+33	p59-a5-def-0	ep-7caea960	0	LT.lt	USED	OK
+33	p59-a5-def-0	ep-7caea960	1	id	USED	OK
+33	p59-a5-def-0	ep-7caea960	2	LT.ofOrd	NOT-USED	OK
+33	p59-a5-def-0	ep-7caea960	3	LE.le	USED	OK
+33	p59-a5-def-0	ep-7caea960	4	Eq.mp	NOT-USED	OK
+33	p59-a5-def-0	ep-7caea960	5	Eq.mpr	USED	OK
+33	p59-a5-def-0	ep-7caea960	6	LE.le.hom	NOT-USED	OK
+33	p59-a5-def-0	ep-7caea960	7	NonemptyType	NOT-USED	OK
+35	p11-a5-def-0	ep-b958c4c0	0	getThe		UNSCORED(missing)
+35	p11-a5-def-0	ep-b958c4c0	1	String.hash		UNSCORED(missing)
+35	p11-a5-def-0	ep-b958c4c0	2	String.pos!		UNSCORED(missing)
+35	p11-a5-def-0	ep-b958c4c0	3	String.utf8ByteSize		UNSCORED(missing)
+35	p11-a5-def-0	ep-b958c4c0	4	Unit		UNSCORED(missing)
+35	p11-a5-def-0	ep-b958c4c0	5	String.Slice.startInclusive		UNSCORED(missing)
+35	p11-a5-def-0	ep-b958c4c0	6	String.Pos.Raw.offsetBy		UNSCORED(missing)
+35	p11-a5-def-0	ep-b958c4c0	7	String.Legacy.Iterator.s		UNSCORED(missing)
+36	p54-a0-def-1	ep-3f370f25	0	rfl	USED	OK
+36	p54-a0-def-1	ep-3f370f25	1	DecidableRel	NOT-USED	OK
+36	p54-a0-def-1	ep-3f370f25	2	DecidablePred	NOT-USED	OK
+36	p54-a0-def-1	ep-3f370f25	3	cast	NOT-USED	OK
+36	p54-a0-def-1	ep-3f370f25	4	NonemptyType	NOT-USED	OK
+37	p59-a5-theorem-0	ep-7caea960	0	Nat.sub_succ'	NOT-USED	OK
+37	p59-a5-theorem-0	ep-7caea960	1	And.imp_right	NOT-USED	OK
+37	p59-a5-theorem-0	ep-7caea960	2	sSup_diff_singleton_bot	NOT-USED	OK
+37	p59-a5-theorem-0	ep-7caea960	3	Nat.zero_lt_one	USED	OK
+37	p59-a5-theorem-0	ep-7caea960	4	And.left	NOT-USED	OK
+37	p59-a5-theorem-0	ep-7caea960	5	lt_of_le_of_ne	USED	OK
+37	p59-a5-theorem-0	ep-7caea960	6	LT.lt.le	USED	OK
+37	p59-a5-theorem-0	ep-7caea960	7	LT.lt.eq_bot	NOT-USED	OK
+41	p142-a0-theorem-0	ep-7034f448	0	iff_self		UNSCORED(missing)
+41	p142-a0-theorem-0	ep-7034f448	1	List.idxOf_cons_self		UNSCORED(missing)
+41	p142-a0-theorem-0	ep-7034f448	2	List.concat_eq_append		UNSCORED(missing)
+41	p142-a0-theorem-0	ep-7034f448	3	List.length_append		UNSCORED(missing)
+41	p142-a0-theorem-0	ep-7034f448	4	congrArg		UNSCORED(missing)
+41	p142-a0-theorem-0	ep-7034f448	5	List.zipIdx_map_snd		UNSCORED(missing)
+41	p142-a0-theorem-0	ep-7034f448	6	and_iff_left_iff_imp		UNSCORED(missing)
+41	p142-a0-theorem-0	ep-7034f448	7	noConfusion_of_Nat		UNSCORED(missing)
+43	p136-a0-theorem-0	ep-3a028455	0	Iff.mpr		UNSCORED(missing)
+43	p136-a0-theorem-0	ep-3a028455	1	And.rotate		UNSCORED(missing)
+43	p136-a0-theorem-0	ep-3a028455	2	Iff.of_eq		UNSCORED(missing)
+43	p136-a0-theorem-0	ep-3a028455	3	And.right		UNSCORED(missing)
+43	p136-a0-theorem-0	ep-3a028455	4	congrArg		UNSCORED(missing)
+43	p136-a0-theorem-0	ep-3a028455	5	noConfusion_of_Nat		UNSCORED(missing)
+43	p136-a0-theorem-0	ep-3a028455	6	Iff.mp		UNSCORED(missing)
+43	p136-a0-theorem-0	ep-3a028455	7	Iff.rfl		UNSCORED(missing)
+44	p148-a0-theorem-1	ep-9862efe9	0	Or.intro_right	NOT-USED	OK
+44	p148-a0-theorem-1	ep-9862efe9	1	heq_eq_eq	NOT-USED	OK
+44	p148-a0-theorem-1	ep-9862efe9	2	Int.max_def	USED	OK
+44	p148-a0-theorem-1	ep-9862efe9	3	implies_congr	USED	OK
+44	p148-a0-theorem-1	ep-9862efe9	4	Or.elim	USED	OK
+44	p148-a0-theorem-1	ep-9862efe9	5	true_and	USED	OK
+44	p148-a0-theorem-1	ep-9862efe9	6	have_body_congr'	NOT-USED	OK
+44	p148-a0-theorem-1	ep-9862efe9	7	Int.two_pow_pred_sub_two_pow'	NOT-USED	OK
+46	p35-a5-def-0	ep-907ac49e	0	LE.ofOrd	NOT-USED	OK
+46	p35-a5-def-0	ep-907ac49e	1	EReal	NOT-USED	OK
+46	p35-a5-def-0	ep-907ac49e	2	OfNat.ofNat	USED	OK
+46	p35-a5-def-0	ep-907ac49e	3	rfl	USED	OK
+46	p35-a5-def-0	ep-907ac49e	4	instDecidableEqOfLawfulBEq	NOT-USED	OK
+46	p35-a5-def-0	ep-907ac49e	5	getModify	NOT-USED	OK
+46	p35-a5-def-0	ep-907ac49e	6	Ne	USED	OK
+46	p35-a5-def-0	ep-907ac49e	7	LE.le	USED	OK
+47	p149-a0-def-0	ep-6e724ff5	0	Decidable.decide	USED	OK
+47	p149-a0-def-0	ep-6e724ff5	1	LT.lt	USED	OK
+47	p149-a0-def-0	ep-6e724ff5	2	GE.ge	USED	OK
+47	p149-a0-def-0	ep-6e724ff5	3	EquicontinuousWithinAt	NOT-USED	OK
+47	p149-a0-def-0	ep-6e724ff5	4	List.Cursor.prefix	NOT-USED	OK
+47	p149-a0-def-0	ep-6e724ff5	5	Decidable.or_not_self	NOT-USED	OK
+47	p149-a0-def-0	ep-6e724ff5	6	Neg.neg	USED	OK
+47	p149-a0-def-0	ep-6e724ff5	7	LT.ofOrd	NOT-USED	OK
+48	p74-a0-def-0	ep-eb175ef8	0	DecidableRel	NOT-USED	OK
+48	p74-a0-def-0	ep-eb175ef8	1	String.length	USED	OK
+48	p74-a0-def-0	ep-eb175ef8	2	id	USED	OK
+48	p74-a0-def-0	ep-eb175ef8	3	HAdd.hAdd	USED	OK
+48	p74-a0-def-0	ep-eb175ef8	4	Unitization	NOT-USED	OK
+48	p74-a0-def-0	ep-eb175ef8	5	String.Slice.Pattern.ForwardSliceSearcher.startsWith	NOT-USED	OK
+48	p74-a0-def-0	ep-eb175ef8	6	Nat.divModEquiv	NOT-USED	OK
+48	p74-a0-def-0	ep-eb175ef8	7	HPow.hPow	USED	OK
+50	p56-a5-def-1	ep-09f7507d	0	HSub.hSub	USED	OK
+50	p56-a5-def-1	ep-09f7507d	1	id	USED	OK
+50	p56-a5-def-1	ep-09f7507d	2	ReaderT	NOT-USED	OK
+50	p56-a5-def-1	ep-09f7507d	3	MonovaryOrder	NOT-USED	OK
+50	p56-a5-def-1	ep-09f7507d	4	String.toList	USED	OK
+50	p56-a5-def-1	ep-09f7507d	5	HAdd.hAdd	USED	OK
+50	p56-a5-def-1	ep-09f7507d	6	String.Pos.sliceFrom	NOT-USED	OK
+50	p56-a5-def-1	ep-09f7507d	7	StrongConvexOn	NOT-USED	OK
+51	p4-a0-theorem-0	ep-0851f3b6	0	not_isRelPrime_zero_zero		UNSCORED(missing)
+51	p4-a0-theorem-0	ep-0851f3b6	1	one_mul		UNSCORED(missing)
+51	p4-a0-theorem-0	ep-0851f3b6	2	div_mul_eq_mul_div₀		UNSCORED(missing)
+51	p4-a0-theorem-0	ep-0851f3b6	3	List.length_filterMap_lt_length_iff_exists		UNSCORED(missing)
+51	p4-a0-theorem-0	ep-0851f3b6	4	inv_le_of_inv_le₀		UNSCORED(missing)
+51	p4-a0-theorem-0	ep-0851f3b6	5	List.mem_map		UNSCORED(missing)
+51	p4-a0-theorem-0	ep-0851f3b6	6	one_ne_zero		UNSCORED(missing)
+51	p4-a0-theorem-0	ep-0851f3b6	7	div_nonneg		UNSCORED(missing)
+54	p4-a5-def-0	ep-b73b127c	0	List.map	USED	OK
+54	p4-a5-def-0	ep-b73b127c	1	List.tail	NOT-USED	OK
+54	p4-a5-def-0	ep-b73b127c	2	List.sum	USED	OK
+54	p4-a5-def-0	ep-b73b127c	3	HSub.hSub	USED	OK
+54	p4-a5-def-0	ep-b73b127c	4	HAdd.hAdd	USED	OK
+54	p4-a5-def-0	ep-b73b127c	5	mulEquivIsoCommGroupIso	NOT-USED	OK
+54	p4-a5-def-0	ep-b73b127c	6	List.concat	NOT-USED	OK
+54	p4-a5-def-0	ep-b73b127c	7	IsSemisimpleRing	NOT-USED	OK
+55	p31-a0-def-1	ep-3805ba91	0	Neg.neg	USED	OK
+55	p31-a0-def-1	ep-3805ba91	1	DegLex	NOT-USED	OK
+55	p31-a0-def-1	ep-3805ba91	2	HMod.hMod	USED	OK
+55	p31-a0-def-1	ep-3805ba91	3	decidableEqOfDecidableLE	NOT-USED	OK
+55	p31-a0-def-1	ep-3805ba91	4	Nat.unpair	NOT-USED	OK
+55	p31-a0-def-1	ep-3805ba91	5	LE.ofOrd	NOT-USED	OK
+55	p31-a0-def-1	ep-3805ba91	6	Dvd.dvd	USED	OK
+55	p31-a0-def-1	ep-3805ba91	7	LE.le	USED	OK
+58	p92-a5-theorem-0	ep-b0c972bb	0	and_iff_left_of_imp		UNSCORED(missing)
+58	p92-a5-theorem-0	ep-b0c972bb	1	eq_true_of_ne_false		UNSCORED(missing)
+58	p92-a5-theorem-0	ep-b0c972bb	2	congr		UNSCORED(missing)
+58	p92-a5-theorem-0	ep-b0c972bb	3	eq_true		UNSCORED(missing)
+58	p92-a5-theorem-0	ep-b0c972bb	4	map_eq_zero_iff_eq_one		UNSCORED(missing)
+58	p92-a5-theorem-0	ep-b0c972bb	5	have_body_congr'		UNSCORED(missing)
+58	p92-a5-theorem-0	ep-b0c972bb	6	iff_congr		UNSCORED(missing)
+58	p92-a5-theorem-0	ep-b0c972bb	7	sub_eq_zero_of_eq		UNSCORED(missing)
+60	p128-a5-def-1	ep-7faf263a	0	LE.ofOrd	NOT-USED	OK
+60	p128-a5-def-1	ep-7faf263a	1	Decidable.decide	USED	OK
+60	p128-a5-def-1	ep-7faf263a	2	DecidableLT	NOT-USED	OK
+60	p128-a5-def-1	ep-7faf263a	3	Decidable.or_not_self	NOT-USED	OK
+60	p128-a5-def-1	ep-7faf263a	4	List.contains	NOT-USED	OK
+60	p128-a5-def-1	ep-7faf263a	5	Not	USED	OK
+60	p128-a5-def-1	ep-7faf263a	6	LE.le	USED	OK
+60	p128-a5-def-1	ep-7faf263a	7	List.filter	USED	OK
+63	p16-a0-def-1	ep-8e925cbb	0	GetElem.getElem	USED	OK
+63	p16-a0-def-1	ep-8e925cbb	1	String.length	USED	OK
+63	p16-a0-def-1	ep-8e925cbb	2	getThe	NOT-USED	OK
+63	p16-a0-def-1	ep-8e925cbb	3	String.isEmpty	NOT-USED	OK
+63	p16-a0-def-1	ep-8e925cbb	4	List.toFinset	USED	OK
+63	p16-a0-def-1	ep-8e925cbb	5	rfl	USED	OK
+63	p16-a0-def-1	ep-8e925cbb	6	nilradical	NOT-USED	OK
+63	p16-a0-def-1	ep-8e925cbb	7	List.twoStepInduction	NOT-USED	OK
+65	p128-a5-def-0	ep-7faf263a	0	HAdd.hAdd	USED	OK
+65	p128-a5-def-0	ep-7faf263a	1	rfl	USED	OK
+65	p128-a5-def-0	ep-7faf263a	2	affineSegment	NOT-USED	OK
+65	p128-a5-def-0	ep-7faf263a	3	cmpUsing	NOT-USED	OK
+65	p128-a5-def-0	ep-7faf263a	4	HDiv.hDiv	USED	OK
+65	p128-a5-def-0	ep-7faf263a	5	modifyThe	NOT-USED	OK
+65	p128-a5-def-0	ep-7faf263a	6	metricSpaceEMetricBall	NOT-USED	OK
+65	p128-a5-def-0	ep-7faf263a	7	Eq.mpr	USED	OK
+66	p54-a0-def-0	ep-3f370f25	0	String.Slice.Pattern.BackwardPattern.dropSuffix?	NOT-USED	OK
+66	p54-a0-def-0	ep-3f370f25	1	imaginaryPart	NOT-USED	OK
+66	p54-a0-def-0	ep-3f370f25	2	id	USED	OK
+66	p54-a0-def-0	ep-3f370f25	3	Membership.mem	USED	OK
+66	p54-a0-def-0	ep-3f370f25	4	modifyThe	NOT-USED	OK
+66	p54-a0-def-0	ep-3f370f25	5	Eq.mpr	USED	OK
+66	p54-a0-def-0	ep-3f370f25	6	Eq.mp	NOT-USED	OK
+66	p54-a0-def-0	ep-3f370f25	7	String.toList	USED	OK
+67	p82-a0-def-1	ep-2295b659	0	rfl	USED	OK
+67	p82-a0-def-1	ep-2295b659	1	String.length	USED	OK
+67	p82-a0-def-1	ep-2295b659	2	Nat.zeckendorf	NOT-USED	OK
+67	p82-a0-def-1	ep-2295b659	3	String.Slice.eqIgnoreAsciiCase	NOT-USED	OK
+67	p82-a0-def-1	ep-2295b659	4	Nat.Prime	USED	OK
+67	p82-a0-def-1	ep-2295b659	5	Not	USED	OK
+67	p82-a0-def-1	ep-2295b659	6	maxOfLe	NOT-USED	OK
+67	p82-a0-def-1	ep-2295b659	7	DecidableEq	NOT-USED	OK
+68	p35-a5-theorem-1	ep-907ac49e	0	List.none_eq_getElem?_iff	NOT-USED	OK
+68	p35-a5-theorem-1	ep-907ac49e	1	of_decide_eq_self_eq_true	NOT-USED	OK
+68	p35-a5-theorem-1	ep-907ac49e	2	forall_congr'	USED	OK
+68	p35-a5-theorem-1	ep-907ac49e	3	not_or_intro	NOT-USED	OK
+68	p35-a5-theorem-1	ep-907ac49e	4	Eq.symm	USED	OK
+68	p35-a5-theorem-1	ep-907ac49e	5	congrArg	USED	OK
+68	p35-a5-theorem-1	ep-907ac49e	6	Eq.subst	NOT-USED	OK
+68	p35-a5-theorem-1	ep-907ac49e	7	List.getElem_mem	USED	OK
+70	p56-a0-def-0	ep-23eae95a	0	Decidable.decide	USED	OK
+70	p56-a0-def-0	ep-23eae95a	1	id	USED	OK
+70	p56-a0-def-0	ep-23eae95a	2	List.all	USED	OK
+70	p56-a0-def-0	ep-23eae95a	3	Bool.or	USED	OK
+70	p56-a0-def-0	ep-23eae95a	4	List.count	NOT-USED	OK
+70	p56-a0-def-0	ep-23eae95a	5	Bool.dcond	NOT-USED	OK
+70	p56-a0-def-0	ep-23eae95a	6	absurd	NOT-USED	OK
+70	p56-a0-def-0	ep-23eae95a	7	Decidable.repr	NOT-USED	OK
+73	p11-a5-def-1	ep-b958c4c0	0	throwThe	NOT-USED	OK
+73	p11-a5-def-1	ep-b958c4c0	1	Std.TreeMap.Raw.getKeyD	NOT-USED	OK
+73	p11-a5-def-1	ep-b958c4c0	2	HAdd.hAdd	USED	OK
+73	p11-a5-def-1	ep-b958c4c0	3	Std.DHashMap.Internal.AssocList.getKey!	NOT-USED	OK
+73	p11-a5-def-1	ep-b958c4c0	4	dite	USED	OK
+73	p11-a5-def-1	ep-b958c4c0	5	String.toSlice	USED	OK
+73	p11-a5-def-1	ep-b958c4c0	6	String.Slice.Pos.get?	NOT-USED	OK
+73	p11-a5-def-1	ep-b958c4c0	7	Eq.mpr	USED	OK
+74	p38-a5-def-1	ep-e400a693	0	minOfLe		UNSCORED(missing)
+74	p38-a5-def-1	ep-e400a693	1	Ne		UNSCORED(missing)
+74	p38-a5-def-1	ep-e400a693	2	String.Pos.appendRight		UNSCORED(missing)
+74	p38-a5-def-1	ep-e400a693	3	Decidable.byCases		UNSCORED(missing)
+74	p38-a5-def-1	ep-e400a693	4	id		UNSCORED(missing)
+74	p38-a5-def-1	ep-e400a693	5	Superset		UNSCORED(missing)
+74	p38-a5-def-1	ep-e400a693	6	Decidable.decide		UNSCORED(missing)
+74	p38-a5-def-1	ep-e400a693	7	String.toList		UNSCORED(missing)
+75	p146-a5-theorem-1	ep-422ea521	0	Or.elim		UNSCORED(missing)
+75	p146-a5-theorem-1	ep-422ea521	1	gt_iff_lt		UNSCORED(missing)
+75	p146-a5-theorem-1	ep-422ea521	2	funext		UNSCORED(missing)
+75	p146-a5-theorem-1	ep-422ea521	3	Iff.mpr		UNSCORED(missing)
+75	p146-a5-theorem-1	ep-422ea521	4	Or.resolve_left		UNSCORED(missing)
+75	p146-a5-theorem-1	ep-422ea521	5	Nat.zero_le		UNSCORED(missing)
+75	p146-a5-theorem-1	ep-422ea521	6	Nat.ne_of_beq_eq_false		UNSCORED(missing)
+75	p146-a5-theorem-1	ep-422ea521	7	Iff.trans		UNSCORED(missing)
+77	p92-a5-theorem-1	ep-b0c972bb	0	implies_dep_congr_ctx	NOT-USED	OK
+77	p92-a5-theorem-1	ep-b0c972bb	1	Set.mem_insert_iff	USED	OK
+77	p92-a5-theorem-1	ep-b0c972bb	2	Iff.mp	USED	OK
+77	p92-a5-theorem-1	ep-b0c972bb	3	eq_false	USED	OK
+77	p92-a5-theorem-1	ep-b0c972bb	4	Rat.den_eq_one_iff	USED	OK
+77	p92-a5-theorem-1	ep-b0c972bb	5	Rat.num_one	NOT-USED	OK
+77	p92-a5-theorem-1	ep-b0c972bb	6	Iff.of_eq	NOT-USED	OK
+77	p92-a5-theorem-1	ep-b0c972bb	7	Set.Nonempty.some_mem	NOT-USED	OK
+78	p4-a5-theorem-0	ep-b73b127c	0	congrArg		UNSCORED(missing)
+78	p4-a5-theorem-0	ep-b73b127c	1	eq_false_of_ne_true		UNSCORED(missing)
+78	p4-a5-theorem-0	ep-b73b127c	2	one_mul		UNSCORED(missing)
+78	p4-a5-theorem-0	ep-b73b127c	3	addMonoidHomLequivNat_symm_apply		UNSCORED(missing)
+78	p4-a5-theorem-0	ep-b73b127c	4	ofAdd_image_multiples_eq_powers_ofAdd		UNSCORED(missing)
+78	p4-a5-theorem-0	ep-b73b127c	5	mul_right_cancel_iff		UNSCORED(missing)
+78	p4-a5-theorem-0	ep-b73b127c	6	abs_of_pos		UNSCORED(missing)
+78	p4-a5-theorem-0	ep-b73b127c	7	abs_nonneg		UNSCORED(missing)
+79	p146-a5-def-1	ep-422ea521	0	String.Slice.endsWith	NOT-USED	OK
+79	p146-a5-def-1	ep-422ea521	1	Eq.mp	USED	OK
+79	p146-a5-def-1	ep-422ea521	2	GT.gt	USED	OK
+79	p146-a5-def-1	ep-422ea521	3	Dvd.dvd	NOT-USED	OK
+79	p146-a5-def-1	ep-422ea521	4	List.mapIdxM.go	NOT-USED	OK
+79	p146-a5-def-1	ep-422ea521	5	String.toList	USED	OK
+79	p146-a5-def-1	ep-422ea521	6	String.Slice.slice!	NOT-USED	OK
+79	p146-a5-def-1	ep-422ea521	7	Int.Linear.not_le_of_le_cert	NOT-USED	OK
+80	p59-a0-def-0	ep-6a4bc88d	0	rfl	USED	OK
+80	p59-a0-def-0	ep-6a4bc88d	1	HSub.hSub	USED	OK
+80	p59-a0-def-0	ep-6a4bc88d	2	LT.lt	USED	OK
+80	p59-a0-def-0	ep-6a4bc88d	3	OfNat.ofNat	USED	OK
+80	p59-a0-def-0	ep-6a4bc88d	4	Nat.div.inductionOn	NOT-USED	OK
+80	p59-a0-def-0	ep-6a4bc88d	5	LT.ofOrd	NOT-USED	OK
+80	p59-a0-def-0	ep-6a4bc88d	6	OfLocalizationMaximal	NOT-USED	OK
+80	p59-a0-def-0	ep-6a4bc88d	7	ite	NOT-USED	OK
+82	p52-a0-def-1	ep-cbd5aec2	0	Membership.mem	USED	OK
+82	p52-a0-def-1	ep-cbd5aec2	1	List.tailD	NOT-USED	OK
+82	p52-a0-def-1	ep-cbd5aec2	2	DecidableLE	NOT-USED	OK
+82	p52-a0-def-1	ep-cbd5aec2	3	rfl	USED	OK
+82	p52-a0-def-1	ep-cbd5aec2	4	GradedMonoid	NOT-USED	OK
+82	p52-a0-def-1	ep-cbd5aec2	5	Eq.mp	USED	OK
+82	p52-a0-def-1	ep-cbd5aec2	6	addEquivIsoAddCommGroupIso	NOT-USED	OK
+82	p52-a0-def-1	ep-cbd5aec2	7	OfNat.ofNat	USED	OK
+84	p60-a0-theorem-1	ep-ec5add71	0	Or.neg_resolve_right		UNSCORED(missing)
+84	p60-a0-theorem-1	ep-ec5add71	1	Finset.Icc_self		UNSCORED(missing)
+84	p60-a0-theorem-1	ep-ec5add71	2	Eq.trans		UNSCORED(missing)
+84	p60-a0-theorem-1	ep-ec5add71	3	Eq.subst		UNSCORED(missing)
+84	p60-a0-theorem-1	ep-ec5add71	4	eq_false_of_decide		UNSCORED(missing)
+84	p60-a0-theorem-1	ep-ec5add71	5	Finset.Ico_toDual		UNSCORED(missing)
+84	p60-a0-theorem-1	ep-ec5add71	6	Or.elim		UNSCORED(missing)
+84	p60-a0-theorem-1	ep-ec5add71	7	eq_self		UNSCORED(missing)
+85	p73-a5-theorem-0	ep-86c7c952	0	and_congr_right_iff	NOT-USED	OK
+85	p73-a5-theorem-0	ep-86c7c952	1	not_true_eq_false	USED	OK
+85	p73-a5-theorem-0	ep-86c7c952	2	ite_cond_eq_true	USED	OK
+85	p73-a5-theorem-0	ep-86c7c952	3	ite_cond_eq_false	USED	OK
+85	p73-a5-theorem-0	ep-86c7c952	4	iff_true	NOT-USED	OK
+85	p73-a5-theorem-0	ep-86c7c952	5	congr	USED	OK
+85	p73-a5-theorem-0	ep-86c7c952	6	ne_true_of_eq_false	NOT-USED	OK
+85	p73-a5-theorem-0	ep-86c7c952	7	forall_prop_congr_dom	NOT-USED	OK
+86	p54-a5-def-0	ep-00f56440	0	rfl	USED	OK
+86	p54-a5-def-0	ep-00f56440	1	String.toList	USED	OK
+86	p54-a5-def-0	ep-00f56440	2	namedPattern	NOT-USED	OK
+86	p54-a5-def-0	ep-00f56440	3	String.Legacy.Iterator.atEnd	NOT-USED	OK
+86	p54-a5-def-0	ep-00f56440	4	throwThe	NOT-USED	OK
+86	p54-a5-def-0	ep-00f56440	5	Membership.mem	USED	OK
+86	p54-a5-def-0	ep-00f56440	6	fourier	NOT-USED	OK
+86	p54-a5-def-0	ep-00f56440	7	id	USED	OK
+88	p38-a5-theorem-0	ep-e400a693	0	Iff.rfl	NOT-USED	OK
+88	p38-a5-theorem-0	ep-e400a693	1	Int.sub_nonneg_of_le	USED	OK
+88	p38-a5-theorem-0	ep-e400a693	2	Nat.lt_of_not_le	USED	OK
+88	p38-a5-theorem-0	ep-e400a693	3	Iff.mp	USED	OK
+88	p38-a5-theorem-0	ep-e400a693	4	eq_false_of_ne_true	NOT-USED	OK
+88	p38-a5-theorem-0	ep-e400a693	5	Nat.not_succ_le_zero	NOT-USED	OK
+88	p38-a5-theorem-0	ep-e400a693	6	congrArg	USED	OK
+88	p38-a5-theorem-0	ep-e400a693	7	Int.bmod_le	NOT-USED	OK
+89	p92-a0-theorem-0	ep-26a7ef9e	0	neg_eq_zero		UNSCORED(missing)
+89	p92-a0-theorem-0	ep-26a7ef9e	1	eq_one_of_one_le_mul_right		UNSCORED(missing)
+89	p92-a0-theorem-0	ep-26a7ef9e	2	And.left		UNSCORED(missing)
+89	p92-a0-theorem-0	ep-26a7ef9e	3	false_iff_true		UNSCORED(missing)
+89	p92-a0-theorem-0	ep-26a7ef9e	4	beq_eq_false_iff_ne		UNSCORED(missing)
+89	p92-a0-theorem-0	ep-26a7ef9e	5	of_eq_true		UNSCORED(missing)
+89	p92-a0-theorem-0	ep-26a7ef9e	6	le_of_le_of_eq		UNSCORED(missing)
+89	p92-a0-theorem-0	ep-26a7ef9e	7	And.imp_left		UNSCORED(missing)
+90	p73-a0-def-0	ep-88778e4b	0	List.range	USED	OK
+90	p73-a0-def-0	ep-88778e4b	1	Decidable.decide	USED	OK
+90	p73-a0-def-0	ep-88778e4b	2	letFun	NOT-USED	OK
+90	p73-a0-def-0	ep-88778e4b	3	Decidable.byCases	USED	OK
+90	p73-a0-def-0	ep-88778e4b	4	dite	NOT-USED	OK
+90	p73-a0-def-0	ep-88778e4b	5	List.eraseRepsBy	NOT-USED	OK
+90	p73-a0-def-0	ep-88778e4b	6	List.finRange	USED	OK
+90	p73-a0-def-0	ep-88778e4b	7	List.any	NOT-USED	OK
+92	p52-a5-def-0	ep-9106ded7	0	throwThe	NOT-USED	OK
+92	p52-a5-def-0	ep-9106ded7	1	GetElem.getElem	USED	OK
+92	p52-a5-def-0	ep-9106ded7	2	LT.ofOrd	NOT-USED	OK
+92	p52-a5-def-0	ep-9106ded7	3	List.length	USED	OK
+92	p52-a5-def-0	ep-9106ded7	4	List.hasDecEq	NOT-USED	OK
+92	p52-a5-def-0	ep-9106ded7	5	rfl	USED	OK
+92	p52-a5-def-0	ep-9106ded7	6	LT.lt	USED	OK
+92	p52-a5-def-0	ep-9106ded7	7	toEuclidean	NOT-USED	OK
+93	p136-a0-def-1	ep-3a028455	0	Prod.Bipointed	NOT-USED	OK
+93	p136-a0-def-1	ep-3a028455	1	Orientation	NOT-USED	OK
+93	p136-a0-def-1	ep-3a028455	2	successIfFail	NOT-USED	OK
+93	p136-a0-def-1	ep-3a028455	3	Membership.mem	USED	OK
+93	p136-a0-def-1	ep-3a028455	4	Prod.fst	USED	OK
+93	p136-a0-def-1	ep-3a028455	5	absurd	NOT-USED	OK
+93	p136-a0-def-1	ep-3a028455	6	Eq.mpr	USED	OK
+93	p136-a0-def-1	ep-3a028455	7	Unit	USED	OK
+94	p38-a0-def-0	ep-83e1d461	0	upperBounds		UNSCORED(missing)
+94	p38-a0-def-0	ep-83e1d461	1	Nat.elimOffset		UNSCORED(missing)
+94	p38-a0-def-0	ep-83e1d461	2	cfcUnits		UNSCORED(missing)
+94	p38-a0-def-0	ep-83e1d461	3	Inhabited.default		UNSCORED(missing)
+94	p38-a0-def-0	ep-83e1d461	4	OfNat.ofNat		UNSCORED(missing)
+94	p38-a0-def-0	ep-83e1d461	5	cond		UNSCORED(missing)
+94	p38-a0-def-0	ep-83e1d461	6	dite		UNSCORED(missing)
+94	p38-a0-def-0	ep-83e1d461	7	Nat.toDigitsCore		UNSCORED(missing)
+95	p141-a0-theorem-1	ep-cf287720	0	List.cons_ne_nil		UNSCORED(missing)
+95	p141-a0-theorem-1	ep-cf287720	1	Or.elim		UNSCORED(missing)
+95	p141-a0-theorem-1	ep-cf287720	2	Int.ediv_le_ediv_iff_of_dvd_of_neg_of_neg		UNSCORED(missing)
+95	p141-a0-theorem-1	ep-cf287720	3	implies_congr		UNSCORED(missing)
+95	p141-a0-theorem-1	ep-cf287720	4	not_iff_self		UNSCORED(missing)
+95	p141-a0-theorem-1	ep-cf287720	5	List.contains_cons		UNSCORED(missing)
+95	p141-a0-theorem-1	ep-cf287720	6	Or.resolve_left		UNSCORED(missing)
+95	p141-a0-theorem-1	ep-cf287720	7	Int.sub_eq_zero_of_eq		UNSCORED(missing)
+98	p31-a5-theorem-0	ep-f9653fae	0	Nat.add_max_add_left	NOT-USED	OK
+98	p31-a5-theorem-0	ep-f9653fae	1	Iff.mpr	USED	OK
+98	p31-a5-theorem-0	ep-f9653fae	2	Iff.subst	NOT-USED	OK
+98	p31-a5-theorem-0	ep-f9653fae	3	Iff.symm	USED	OK
+98	p31-a5-theorem-0	ep-f9653fae	4	Nat.dvd_iff_mod_eq_zero	USED	OK
+98	p31-a5-theorem-0	ep-f9653fae	5	Iff.trans	NOT-USED	OK
+98	p31-a5-theorem-0	ep-f9653fae	6	congrArg	USED	OK
+98	p31-a5-theorem-0	ep-f9653fae	7	decide_eq_false	NOT-USED	OK
+99	p141-a0-theorem-0	ep-cf287720	0	Int.natCast_nonneg	USED	OK
+99	p141-a0-theorem-0	ep-cf287720	1	Decidable.not_and_iff_or_not	NOT-USED	OK
+99	p141-a0-theorem-0	ep-cf287720	2	Int.neg_ofNat_eq_negSucc_add_one_iff	NOT-USED	OK
+99	p141-a0-theorem-0	ep-cf287720	3	congrArg	USED	OK
+99	p141-a0-theorem-0	ep-cf287720	4	Iff.comm	NOT-USED	OK
+99	p141-a0-theorem-0	ep-cf287720	5	Decidable.byContradiction	USED	OK
+99	p141-a0-theorem-0	ep-cf287720	6	decide_eq_false	NOT-USED	OK
+99	p141-a0-theorem-0	ep-cf287720	7	Iff.mpr	USED	OK
+100	p112-a0-theorem-0	ep-558aedfa	0	Subtype.mk.congr_simp		UNSCORED(missing)
+100	p112-a0-theorem-0	ep-558aedfa	1	true_or		UNSCORED(missing)
+100	p112-a0-theorem-0	ep-558aedfa	2	exists_idem		UNSCORED(missing)
+100	p112-a0-theorem-0	ep-558aedfa	3	String.Pos.get_toSlice		UNSCORED(missing)
+100	p112-a0-theorem-0	ep-558aedfa	4	ne_of_apply_ne		UNSCORED(missing)
+100	p112-a0-theorem-0	ep-558aedfa	5	and_not_self		UNSCORED(missing)
+100	p112-a0-theorem-0	ep-558aedfa	6	String.remainingBytes_pastModify		UNSCORED(missing)
+100	p112-a0-theorem-0	ep-558aedfa	7	Subtype.coind_injective		UNSCORED(missing)
+101	p59-a0-theorem-0	ep-6a4bc88d	0	Eq.symm		UNSCORED(missing)
+101	p59-a0-theorem-0	ep-6a4bc88d	1	Eq.subst		UNSCORED(missing)
+101	p59-a0-theorem-0	ep-6a4bc88d	2	not_of_iff_false		UNSCORED(missing)
+101	p59-a0-theorem-0	ep-6a4bc88d	3	upperPolar_iUnion		UNSCORED(missing)
+101	p59-a0-theorem-0	ep-6a4bc88d	4	Nat.pos_of_mul_pos_left		UNSCORED(missing)
+101	p59-a0-theorem-0	ep-6a4bc88d	5	Nat.le_of_dvd		UNSCORED(missing)
+101	p59-a0-theorem-0	ep-6a4bc88d	6	lt_of_le_of_ne		UNSCORED(missing)
+101	p59-a0-theorem-0	ep-6a4bc88d	7	le_of_le_of_eq		UNSCORED(missing)
+105	p141-a5-theorem-0	ep-430d18b0	0	Iff.symm		UNSCORED(missing)
+105	p141-a5-theorem-0	ep-430d18b0	1	noConfusion_of_Nat		UNSCORED(missing)
+105	p141-a5-theorem-0	ep-430d18b0	2	Iff.of_eq		UNSCORED(missing)
+105	p141-a5-theorem-0	ep-430d18b0	3	String.toList_ofList		UNSCORED(missing)
+105	p141-a5-theorem-0	ep-430d18b0	4	congrFun		UNSCORED(missing)
+105	p141-a5-theorem-0	ep-430d18b0	5	List.any_eq_true		UNSCORED(missing)
+105	p141-a5-theorem-0	ep-430d18b0	6	List.exists_cons_of_ne_nil		UNSCORED(missing)
+105	p141-a5-theorem-0	ep-430d18b0	7	String.offset_endPos		UNSCORED(missing)
+106	p136-a0-def-0	ep-3a028455	0	LE.le	USED	OK
+106	p136-a0-def-0	ep-3a028455	1	LE.le.hom	NOT-USED	OK
+106	p136-a0-def-0	ep-3a028455	2	LT.toSBtw	NOT-USED	OK
+106	p136-a0-def-0	ep-3a028455	3	cond	NOT-USED	OK
+106	p136-a0-def-0	ep-3a028455	4	LipschitzOnWith	NOT-USED	OK
+106	p136-a0-def-0	ep-3a028455	5	id	NOT-USED	OK
+106	p136-a0-def-0	ep-3a028455	6	LT.lt	USED	OK
+106	p136-a0-def-0	ep-3a028455	7	Eq.mp	USED	OK
+109	p38-a5-theorem-1	ep-e400a693	0	Eq.trans		UNSCORED(missing)
+109	p38-a5-theorem-1	ep-e400a693	1	And.left		UNSCORED(missing)
+109	p38-a5-theorem-1	ep-e400a693	2	Eq.subst		UNSCORED(missing)
+109	p38-a5-theorem-1	ep-e400a693	3	And.exists		UNSCORED(missing)
+109	p38-a5-theorem-1	ep-e400a693	4	Eq.mpr_prop		UNSCORED(missing)
+109	p38-a5-theorem-1	ep-e400a693	5	List.length_drop		UNSCORED(missing)
+109	p38-a5-theorem-1	ep-e400a693	6	List.pmap_pmap		UNSCORED(missing)
+109	p38-a5-theorem-1	ep-e400a693	7	Eq.symm		UNSCORED(missing)
+110	p16-a0-def-0	ep-8e925cbb	0	fintypeOfFinsetCardLe	NOT-USED	OK
+110	p16-a0-def-0	ep-8e925cbb	1	Set.imageFactorization	NOT-USED	OK
+110	p16-a0-def-0	ep-8e925cbb	2	List.brecOn.go	NOT-USED	OK
+110	p16-a0-def-0	ep-8e925cbb	3	setOf	USED	OK
+110	p16-a0-def-0	ep-8e925cbb	4	id	USED	OK
+110	p16-a0-def-0	ep-8e925cbb	5	letFun	USED	OK
+110	p16-a0-def-0	ep-8e925cbb	6	Set.toFinset	USED	OK
+110	p16-a0-def-0	ep-8e925cbb	7	List.length	USED	OK
+111	p82-a0-theorem-1	ep-2295b659	0	Iff.refl	NOT-USED	OK
+111	p82-a0-theorem-1	ep-2295b659	1	Iff.trans	USED	OK
+111	p82-a0-theorem-1	ep-2295b659	2	Nat.mul_mod_right	USED	OK
+111	p82-a0-theorem-1	ep-2295b659	3	Nat.ceilRoot_ne_zero	NOT-USED	OK
+111	p82-a0-theorem-1	ep-2295b659	4	Nat.getD_toArray_rcc	NOT-USED	OK
+111	p82-a0-theorem-1	ep-2295b659	5	Iff.of_eq	NOT-USED	OK
+111	p82-a0-theorem-1	ep-2295b659	6	Nat.prime_def_lt'	USED	OK
+112	p52-a0-theorem-0	ep-cbd5aec2	0	getElem?_pos	NOT-USED	OK
+112	p52-a0-theorem-0	ep-cbd5aec2	1	Iff.trans	USED	OK
+112	p52-a0-theorem-0	ep-cbd5aec2	2	List.get?Internal_eq_getElem?	NOT-USED	OK
+112	p52-a0-theorem-0	ep-cbd5aec2	3	congrArg	USED	OK
+112	p52-a0-theorem-0	ep-cbd5aec2	4	List.getElem_mem	USED	OK
+112	p52-a0-theorem-0	ep-cbd5aec2	5	getElem!_pos	USED	OK
+112	p52-a0-theorem-0	ep-cbd5aec2	6	congr	NOT-USED	OK
+112	p52-a0-theorem-0	ep-cbd5aec2	7	Iff.mp	NOT-USED	OK
+113	p141-a5-def-0	ep-430d18b0	0	Char.toString	NOT-USED	OK
+113	p141-a5-def-0	ep-430d18b0	1	fourierLp	NOT-USED	OK
+113	p141-a5-def-0	ep-430d18b0	2	Char.isAlpha	USED	OK
+113	p141-a5-def-0	ep-430d18b0	3	OfNat.ofNat	USED	OK
+113	p141-a5-def-0	ep-430d18b0	4	String.ofList	USED	OK
+113	p141-a5-def-0	ep-430d18b0	5	Classical.inhabited_of_exists	NOT-USED	OK
+113	p141-a5-def-0	ep-430d18b0	6	Classical.propDecidable	USED	OK
+113	p141-a5-def-0	ep-430d18b0	7	String.toRawSubstring	NOT-USED	OK
+114	p2-a5-def-0	ep-b30c0338	0	Nat.superDigitChar	NOT-USED	OK
+114	p2-a5-def-0	ep-b30c0338	1	HSub.hSub	USED	OK
+114	p2-a5-def-0	ep-b30c0338	2	Eq.mp	USED	OK
+114	p2-a5-def-0	ep-b30c0338	3	HAdd.hAdd	USED	OK
+114	p2-a5-def-0	ep-b30c0338	4	Total	NOT-USED	OK
+114	p2-a5-def-0	ep-b30c0338	5	HMul.hMul	USED	OK
+114	p2-a5-def-0	ep-b30c0338	6	freeGroupEquivCoprodI	NOT-USED	OK
+114	p2-a5-def-0	ep-b30c0338	7	ofDegLex	NOT-USED	OK
+116	p2-a0-def-0	ep-e4978cbf	0	withTheReader		UNSCORED(missing)
+116	p2-a0-def-0	ep-e4978cbf	1	Nat.recDiag.left		UNSCORED(missing)
+116	p2-a0-def-0	ep-e4978cbf	2	HMul.hMul		UNSCORED(missing)
+116	p2-a0-def-0	ep-e4978cbf	3	id		UNSCORED(missing)
+116	p2-a0-def-0	ep-e4978cbf	4	modifyThe		UNSCORED(missing)
+116	p2-a0-def-0	ep-e4978cbf	5	rfl		UNSCORED(missing)
+116	p2-a0-def-0	ep-e4978cbf	6	Nat.rawCast		UNSCORED(missing)
+116	p2-a0-def-0	ep-e4978cbf	7	Int.Linear.Poly.isZero		UNSCORED(missing)
+119	p136-a5-def-0	ep-bd5beaa6	0	LT.toSBtw	NOT-USED	OK
+119	p136-a5-def-0	ep-bd5beaa6	1	isValidChar	NOT-USED	OK
+119	p136-a5-def-0	ep-bd5beaa6	2	id	USED	OK
+119	p136-a5-def-0	ep-bd5beaa6	3	maxOfLe	NOT-USED	OK
+119	p136-a5-def-0	ep-bd5beaa6	4	Membership.mem	USED	OK
+119	p136-a5-def-0	ep-bd5beaa6	5	LT.lt	USED	OK
+119	p136-a5-def-0	ep-bd5beaa6	6	Unit.unit	USED	OK
+119	p136-a5-def-0	ep-bd5beaa6	7	orderIsoIntOfLinearSuccPredArch	NOT-USED	OK
+120	p59-a5-def-1	ep-7caea960	0	Not	USED	OK
+120	p59-a5-def-1	ep-7caea960	1	letFun	USED	OK
+120	p59-a5-def-1	ep-7caea960	2	rfl	USED	OK
+120	p59-a5-def-1	ep-7caea960	3	Ne	USED	OK
+120	p59-a5-def-1	ep-7caea960	4	mixHash	NOT-USED	OK
+120	p59-a5-def-1	ep-7caea960	5	OfNat.ofNat	USED	OK
+120	p59-a5-def-1	ep-7caea960	6	bne	NOT-USED	OK
+120	p59-a5-def-1	ep-7caea960	7	seminormFromBounded'	NOT-USED	OK
+122	p149-a0-def-1	ep-6e724ff5	0	Membership.mem	USED	OK
+122	p149-a0-def-1	ep-6e724ff5	1	letFun	NOT-USED	OK
+122	p149-a0-def-1	ep-6e724ff5	2	MeromorphicNFOn	NOT-USED	OK
+122	p149-a0-def-1	ep-6e724ff5	3	List.filter	USED	OK
+122	p149-a0-def-1	ep-6e724ff5	4	List.eraseRepsBy.loop	NOT-USED	OK
+122	p149-a0-def-1	ep-6e724ff5	5	HSub.hSub	USED	OK
+122	p149-a0-def-1	ep-6e724ff5	6	Not	USED	OK
+122	p149-a0-def-1	ep-6e724ff5	7	String.Slice.dropSuffix	NOT-USED	OK
+123	p54-a5-theorem-0	ep-00f56440	0	Iff.comm	NOT-USED	OK
+123	p54-a5-theorem-0	ep-00f56440	1	forall_congr'	USED	OK
+123	p54-a5-theorem-0	ep-00f56440	2	or_right_comm	NOT-USED	OK
+123	p54-a5-theorem-0	ep-00f56440	3	Iff.trans	USED	OK
+123	p54-a5-theorem-0	ep-00f56440	4	Iff.subst	NOT-USED	OK
+123	p54-a5-theorem-0	ep-00f56440	5	Iff.of_eq	NOT-USED	OK
+123	p54-a5-theorem-0	ep-00f56440	6	Iff.symm	USED	OK
+123	p54-a5-theorem-0	ep-00f56440	7	Iff.rfl	USED	OK
+125	p60-a5-def-0	ep-0144a0f3	0	Finset.sum	USED	OK
+125	p60-a5-def-0	ep-0144a0f3	1	Finset.mul	NOT-USED	OK
+125	p60-a5-def-0	ep-0144a0f3	2	Eq.mpr	USED	OK
+125	p60-a5-def-0	ep-0144a0f3	3	seminormFromBounded	NOT-USED	OK
+125	p60-a5-def-0	ep-0144a0f3	4	LT.lt	USED	OK
+125	p60-a5-def-0	ep-0144a0f3	5	Nat.cast	USED	OK
+125	p60-a5-def-0	ep-0144a0f3	6	LT.toSBtw	NOT-USED	OK
+125	p60-a5-def-0	ep-0144a0f3	7	Nat.lt_iff_le_and_not_ge	NOT-USED	OK
+126	p56-a0-theorem-0	ep-23eae95a	0	eqRec_heq		UNSCORED(missing)
+126	p56-a0-theorem-0	ep-23eae95a	1	eq_true_of_decide		UNSCORED(missing)
+126	p56-a0-theorem-0	ep-23eae95a	2	Bool.not_true		UNSCORED(missing)
+126	p56-a0-theorem-0	ep-23eae95a	3	forall_congr		UNSCORED(missing)
+126	p56-a0-theorem-0	ep-23eae95a	4	funext		UNSCORED(missing)
+126	p56-a0-theorem-0	ep-23eae95a	5	eq_true_of_ne_false		UNSCORED(missing)
+126	p56-a0-theorem-0	ep-23eae95a	6	congr		UNSCORED(missing)
+126	p56-a0-theorem-0	ep-23eae95a	7	Bool.or_eq_true		UNSCORED(missing)
+127	p60-a0-theorem-0	ep-ec5add71	0	Nat.le_of_not_lt		UNSCORED(missing)
+127	p60-a0-theorem-0	ep-ec5add71	1	Finset.sum_range_sub'		UNSCORED(missing)
+127	p60-a0-theorem-0	ep-ec5add71	2	Finset.sum_congr		UNSCORED(missing)
+127	p60-a0-theorem-0	ep-ec5add71	3	iff_self		UNSCORED(missing)
+127	p60-a0-theorem-0	ep-ec5add71	4	implies_congr_ctx		UNSCORED(missing)
+127	p60-a0-theorem-0	ep-ec5add71	5	Nat.lt_or_gt_of_ne		UNSCORED(missing)
+127	p60-a0-theorem-0	ep-ec5add71	6	Nat.lcm_dvd_lcm_of_dvd_left		UNSCORED(missing)
+127	p60-a0-theorem-0	ep-ec5add71	7	Nat.add_sub_cancel		UNSCORED(missing)
+129	p60-a5-theorem-1	ep-0144a0f3	0	Finset.Icc_self	USED	OK
+129	p60-a5-theorem-1	ep-0144a0f3	1	Finset.mem_Icc	USED	OK
+129	p60-a5-theorem-1	ep-0144a0f3	2	congrArg	USED	OK
+129	p60-a5-theorem-1	ep-0144a0f3	3	ne_true_of_eq_false	USED	OK
+129	p60-a5-theorem-1	ep-0144a0f3	4	le_of_le_of_eq	NOT-USED	OK
+129	p60-a5-theorem-1	ep-0144a0f3	5	gt_iff_lt	NOT-USED	OK
+129	p60-a5-theorem-1	ep-0144a0f3	6	Finset.map_subtype_embedding_Ioi	NOT-USED	OK
+129	p60-a5-theorem-1	ep-0144a0f3	7	Finset.card_Ioo_eq_card_Ico_sub_one	NOT-USED	OK
+131	p82-a5-theorem-1	ep-47933543	0	Nat.toArray_rco_eq_singleton_iff	NOT-USED	OK
+131	p82-a5-theorem-1	ep-47933543	1	Nat.dvd_of_mod_eq_zero	USED	OK
+131	p82-a5-theorem-1	ep-47933543	2	Iff.rfl	USED	OK
+131	p82-a5-theorem-1	ep-47933543	3	Iff.comm	NOT-USED	OK
+131	p82-a5-theorem-1	ep-47933543	4	Iff.of_eq	NOT-USED	OK
+131	p82-a5-theorem-1	ep-47933543	5	Nat.pow_dvd_pow_iff	NOT-USED	OK
+136	p92-a0-def-0	ep-26a7ef9e	0	Nat.rawCast		UNSCORED(missing)
+136	p92-a0-def-0	ep-26a7ef9e	1	Lists		UNSCORED(missing)
+136	p92-a0-def-0	ep-26a7ef9e	2	List.union		UNSCORED(missing)
+136	p92-a0-def-0	ep-26a7ef9e	3	Membership.mem		UNSCORED(missing)
+136	p92-a0-def-0	ep-26a7ef9e	4	HasSubset.Subset		UNSCORED(missing)
+136	p92-a0-def-0	ep-26a7ef9e	5	DecidablePred		UNSCORED(missing)
+136	p92-a0-def-0	ep-26a7ef9e	6	Nat.unaryCast		UNSCORED(missing)
+136	p92-a0-def-0	ep-26a7ef9e	7	rfl		UNSCORED(missing)
+140	p146-a0-def-1	ep-9b8d5b10	0	tryCatchThe	NOT-USED	OK
+140	p146-a0-def-1	ep-9b8d5b10	1	bernsteinApproximation	NOT-USED	OK
+140	p146-a0-def-1	ep-9b8d5b10	2	PreTilt	NOT-USED	OK
+140	p146-a0-def-1	ep-9b8d5b10	3	List.zipWithAll	NOT-USED	OK
+140	p146-a0-def-1	ep-9b8d5b10	4	dite	USED	OK
+140	p146-a0-def-1	ep-9b8d5b10	5	OfNat.ofNat	USED	OK
+140	p146-a0-def-1	ep-9b8d5b10	6	Unit.unit	USED	OK
+140	p146-a0-def-1	ep-9b8d5b10	7	List.countP	USED	OK
+141	p82-a5-def-0	ep-47933543	0	String.length	USED	OK
+141	p82-a5-def-0	ep-47933543	1	cantorSetHomeomorphNatToBool	NOT-USED	OK
+141	p82-a5-def-0	ep-47933543	2	Eq.mpr	USED	OK
+141	p82-a5-def-0	ep-47933543	3	LT.lt	USED	OK
+141	p82-a5-def-0	ep-47933543	4	LT.toSBtw	NOT-USED	OK
+141	p82-a5-def-0	ep-47933543	5	HMod.hMod	USED	OK
+141	p82-a5-def-0	ep-47933543	6	Eq.mp	NOT-USED	OK
+141	p82-a5-def-0	ep-47933543	7	String.Slice.Pattern.ForwardPattern.defaultImplementation	NOT-USED	OK
+143	p142-a0-def-1	ep-7034f448	0	IsConjRoot		UNSCORED(missing)
+143	p142-a0-def-1	ep-7034f448	1	GT.gt		UNSCORED(missing)
+143	p142-a0-def-1	ep-7034f448	2	convexHullAddMonoidHom		UNSCORED(missing)
+143	p142-a0-def-1	ep-7034f448	3	OfNat.ofNat		UNSCORED(missing)
+143	p142-a0-def-1	ep-7034f448	4	HSub.hSub		UNSCORED(missing)
+143	p142-a0-def-1	ep-7034f448	5	Decidable.repr		UNSCORED(missing)
+143	p142-a0-def-1	ep-7034f448	6	Decidable.decide		UNSCORED(missing)
+143	p142-a0-def-1	ep-7034f448	7	smoothPresheafAddGroup		UNSCORED(missing)
+147	p149-a5-def-1	ep-32ec30df	0	nsmulAddMonoidHom	NOT-USED	OK
+147	p149-a5-def-1	ep-32ec30df	1	LT.toSBtw	NOT-USED	OK
+147	p149-a5-def-1	ep-32ec30df	2	Eq.mpr	USED	OK
+147	p149-a5-def-1	ep-32ec30df	3	LT.lt	USED	OK
+147	p149-a5-def-1	ep-32ec30df	4	absurd	USED	OK
+147	p149-a5-def-1	ep-32ec30df	5	Even	USED	OK
+147	p149-a5-def-1	ep-32ec30df	6	Nat.repr	NOT-USED	OK
+147	p149-a5-def-1	ep-32ec30df	7	EStateM	NOT-USED	OK
+148	p74-a5-theorem-1	ep-ea480733	0	of_eq_false	NOT-USED	OK
+148	p74-a5-theorem-1	ep-ea480733	1	sub_lt_of_abs_sub_lt_left	NOT-USED	OK
+148	p74-a5-theorem-1	ep-ea480733	2	Nat.brecOn.eq	NOT-USED	OK
+148	p74-a5-theorem-1	ep-ea480733	3	eq_self	USED	OK
+148	p74-a5-theorem-1	ep-ea480733	4	Nat.ordCompl_dvd	NOT-USED	OK
+148	p74-a5-theorem-1	ep-ea480733	5	Nat.cast_le	USED	OK
+148	p74-a5-theorem-1	ep-ea480733	6	add_zero	USED	OK
+148	p74-a5-theorem-1	ep-ea480733	7	Nat.lt_of_not_le	USED	OK
+149	p31-a5-def-1	ep-f9653fae	0	Eq.mpr	USED	OK
+149	p31-a5-def-1	ep-f9653fae	1	rfl	USED	OK
+149	p31-a5-def-1	ep-f9653fae	2	Not	USED	OK
+149	p31-a5-def-1	ep-f9653fae	3	EStateM	NOT-USED	OK
+149	p31-a5-def-1	ep-f9653fae	4	readThe	NOT-USED	OK
+149	p31-a5-def-1	ep-f9653fae	5	Eq.mp	NOT-USED	OK
+149	p31-a5-def-1	ep-f9653fae	6	LE.le	USED	OK
+149	p31-a5-def-1	ep-f9653fae	7	LE.le.hom	NOT-USED	OK
+152	p136-a5-def-1	ep-bd5beaa6	0	Not	USED	OK
+152	p136-a5-def-1	ep-bd5beaa6	1	LE.le	USED	OK
+152	p136-a5-def-1	ep-bd5beaa6	2	LE.le.hom	NOT-USED	OK
+152	p136-a5-def-1	ep-bd5beaa6	3	modifyThe	NOT-USED	OK
+152	p136-a5-def-1	ep-bd5beaa6	4	rfl	USED	OK
+152	p136-a5-def-1	ep-bd5beaa6	5	MDifferentiable	NOT-USED	OK
+152	p136-a5-def-1	ep-bd5beaa6	6	OfNat.ofNat	USED	OK
+152	p136-a5-def-1	ep-bd5beaa6	7	withTheReader	NOT-USED	OK
+157	p82-a0-def-0	ep-2295b659	0	matrixAlgEquivEndVecMulOpposite	NOT-USED	OK
+157	p82-a0-def-0	ep-2295b659	1	CauSeq	NOT-USED	OK
+157	p82-a0-def-0	ep-2295b659	2	IsTopologicallyNilpotent	NOT-USED	OK
+157	p82-a0-def-0	ep-2295b659	3	LE.ofOrd	NOT-USED	OK
+157	p82-a0-def-0	ep-2295b659	4	LE.le	USED	OK
+157	p82-a0-def-0	ep-2295b659	5	HMul.hMul	USED	OK
+157	p82-a0-def-0	ep-2295b659	6	Dvd.dvd	USED	OK
+157	p82-a0-def-0	ep-2295b659	7	OfNat.ofNat	USED	OK
+158	p16-a5-def-1	ep-50a56ccd	0	Finset.toList	USED	OK
+158	p16-a5-def-1	ep-50a56ccd	1	rfl	USED	OK
+158	p16-a5-def-1	ep-50a56ccd	2	GetElem?.getElem!	USED	OK
+158	p16-a5-def-1	ep-50a56ccd	3	dite	NOT-USED	OK
+158	p16-a5-def-1	ep-50a56ccd	4	LT.toSBtw	NOT-USED	OK
+158	p16-a5-def-1	ep-50a56ccd	5	Finset.toLeft	NOT-USED	OK
+158	p16-a5-def-1	ep-50a56ccd	6	GetElem?.getElem?	NOT-USED	OK
+158	p16-a5-def-1	ep-50a56ccd	7	LT.lt	USED	OK
+161	p142-a5-theorem-1	ep-093b5e2c	0	Nat.toArray_rcc_eq_singleton_iff		UNSCORED(missing)
+161	p142-a5-theorem-1	ep-093b5e2c	1	of_eq_true		UNSCORED(missing)
+161	p142-a5-theorem-1	ep-093b5e2c	2	bne_iff_ne		UNSCORED(missing)
+161	p142-a5-theorem-1	ep-093b5e2c	3	true_implies		UNSCORED(missing)
+161	p142-a5-theorem-1	ep-093b5e2c	4	forall_congr		UNSCORED(missing)
+161	p142-a5-theorem-1	ep-093b5e2c	5	Nat.le_of_not_lt		UNSCORED(missing)
+161	p142-a5-theorem-1	ep-093b5e2c	6	Eq.trans		UNSCORED(missing)
+161	p142-a5-theorem-1	ep-093b5e2c	7	Eq.subst		UNSCORED(missing)
+164	p52-a5-theorem-1	ep-9106ded7	0	ite_false	NOT-USED	OK
+164	p52-a5-theorem-1	ep-9106ded7	1	implies_congr	USED	OK
+164	p52-a5-theorem-1	ep-9106ded7	2	getElem!_pos	USED	OK
+164	p52-a5-theorem-1	ep-9106ded7	3	List.getElem_cons_succ	NOT-USED	OK
+164	p52-a5-theorem-1	ep-9106ded7	4	List.getElem_mem	USED	OK
+164	p52-a5-theorem-1	ep-9106ded7	5	getElem_congr	NOT-USED	OK
+164	p52-a5-theorem-1	ep-9106ded7	6	implies_true	USED	OK
+164	p52-a5-theorem-1	ep-9106ded7	7	dite_cond_eq_true	NOT-USED	OK
+170	p92-a0-theorem-1	ep-26a7ef9e	0	Int.add_nonpos		UNSCORED(missing)
+170	p92-a0-theorem-1	ep-26a7ef9e	1	Int.natCast_nonneg		UNSCORED(missing)
+170	p92-a0-theorem-1	ep-26a7ef9e	2	Iff.mp		UNSCORED(missing)
+170	p92-a0-theorem-1	ep-26a7ef9e	3	Int.add_neg_fmod_self		UNSCORED(missing)
+170	p92-a0-theorem-1	ep-26a7ef9e	4	congrFun		UNSCORED(missing)
+170	p92-a0-theorem-1	ep-26a7ef9e	5	congrArg		UNSCORED(missing)
+170	p92-a0-theorem-1	ep-26a7ef9e	6	Int.sub_nonneg_of_le		UNSCORED(missing)
+170	p92-a0-theorem-1	ep-26a7ef9e	7	Iff.symm		UNSCORED(missing)
+172	p56-a5-theorem-0	ep-09f7507d	0	Decidable.not_and_iff_or_not		UNSCORED(missing)
+172	p56-a5-theorem-0	ep-09f7507d	1	not_false_eq_true		UNSCORED(missing)
+172	p56-a5-theorem-0	ep-09f7507d	2	List.isEmpty_iff_length_eq_zero		UNSCORED(missing)
+172	p56-a5-theorem-0	ep-09f7507d	3	of_decide_eq_false		UNSCORED(missing)
+172	p56-a5-theorem-0	ep-09f7507d	4	List.take_of_length_le		UNSCORED(missing)
+172	p56-a5-theorem-0	ep-09f7507d	5	Decidable.byContradiction		UNSCORED(missing)
+172	p56-a5-theorem-0	ep-09f7507d	6	of_decide_eq_true		UNSCORED(missing)
+172	p56-a5-theorem-0	ep-09f7507d	7	iff_self		UNSCORED(missing)
+173	p59-a0-theorem-1	ep-6a4bc88d	0	Int.sub_nonneg_of_le		UNSCORED(missing)
+173	p59-a0-theorem-1	ep-6a4bc88d	1	Int.beq'_eq_beq		UNSCORED(missing)
+173	p59-a0-theorem-1	ep-6a4bc88d	2	And.right		UNSCORED(missing)
+173	p59-a0-theorem-1	ep-6a4bc88d	3	And.left		UNSCORED(missing)
+173	p59-a0-theorem-1	ep-6a4bc88d	4	Nat.le_of_not_lt		UNSCORED(missing)
+173	p59-a0-theorem-1	ep-6a4bc88d	5	And.symm		UNSCORED(missing)
+173	p59-a0-theorem-1	ep-6a4bc88d	6	And.comm		UNSCORED(missing)
+173	p59-a0-theorem-1	ep-6a4bc88d	7	Nat.mul_add_one		UNSCORED(missing)
+175	p35-a0-theorem-0	ep-7e19f23e	0	Iff.mp	USED	OK
+175	p35-a0-theorem-0	ep-7e19f23e	1	Iff.symm	NOT-USED	OK
+175	p35-a0-theorem-0	ep-7e19f23e	2	List.ne_nil_of_length_pos	USED	OK
+175	p35-a0-theorem-0	ep-7e19f23e	3	Eq.subst	NOT-USED	OK
+175	p35-a0-theorem-0	ep-7e19f23e	4	List.mem_rotate	NOT-USED	OK
+175	p35-a0-theorem-0	ep-7e19f23e	5	List.length_pos_of_ne_nil	USED	OK
+175	p35-a0-theorem-0	ep-7e19f23e	6	Eq.symm	USED	OK
+175	p35-a0-theorem-0	ep-7e19f23e	7	List.any_eq_false	NOT-USED	OK
+176	p2-a0-theorem-1	ep-e4978cbf	0	neg_div'		UNSCORED(missing)
+176	p2-a0-theorem-1	ep-e4978cbf	1	Int.ModEq.multisetProd_one		UNSCORED(missing)
+176	p2-a0-theorem-1	ep-e4978cbf	2	Not.intro		UNSCORED(missing)
+176	p2-a0-theorem-1	ep-e4978cbf	3	sub_eq_zero_of_eq		UNSCORED(missing)
+176	p2-a0-theorem-1	ep-e4978cbf	4	neg_eq_zero		UNSCORED(missing)
+176	p2-a0-theorem-1	ep-e4978cbf	5	max_mul		UNSCORED(missing)
+176	p2-a0-theorem-1	ep-e4978cbf	6	Int.floor_eq_iff		UNSCORED(missing)
+176	p2-a0-theorem-1	ep-e4978cbf	7	Not.imp		UNSCORED(missing)
+177	p52-a0-theorem-1	ep-cbd5aec2	0	List.getElem_of_mem	USED	OK
+177	p52-a0-theorem-1	ep-cbd5aec2	1	Iff.rfl	NOT-USED	OK
+177	p52-a0-theorem-1	ep-cbd5aec2	2	Nat.le_refl	NOT-USED	OK
+177	p52-a0-theorem-1	ep-cbd5aec2	3	Nat.not_lt_zero	USED	OK
+177	p52-a0-theorem-1	ep-cbd5aec2	4	Iff.mpr	USED	OK
+177	p52-a0-theorem-1	ep-cbd5aec2	5	Iff.subst	NOT-USED	OK
+177	p52-a0-theorem-1	ep-cbd5aec2	6	List.infix_map_iff	NOT-USED	OK
+177	p52-a0-theorem-1	ep-cbd5aec2	7	Iff.symm	USED	OK
+181	p16-a5-theorem-1	ep-50a56ccd	0	Finset.nodup_toList	USED	OK
+181	p16-a5-theorem-1	ep-50a56ccd	1	List.dlookup_kerase_ne	NOT-USED	OK
+181	p16-a5-theorem-1	ep-50a56ccd	2	eq_true_of_ne_false	NOT-USED	OK
+181	p16-a5-theorem-1	ep-50a56ccd	3	Iff.refl	NOT-USED	OK
+181	p16-a5-theorem-1	ep-50a56ccd	4	congr	USED	OK
+181	p16-a5-theorem-1	ep-50a56ccd	5	List.toFinset_card_of_nodup	USED	OK
+181	p16-a5-theorem-1	ep-50a56ccd	6	Iff.symm	USED	OK
+181	p16-a5-theorem-1	ep-50a56ccd	7	Finset.sup'_mem	NOT-USED	OK
+182	p141-a5-def-1	ep-430d18b0	0	SSuperset	NOT-USED	OK
+182	p141-a5-def-1	ep-430d18b0	1	Unitization	NOT-USED	OK
+182	p141-a5-def-1	ep-430d18b0	2	Decidable.decide	USED	OK
+182	p141-a5-def-1	ep-430d18b0	3	BEq.ofOrd	NOT-USED	OK
+182	p141-a5-def-1	ep-430d18b0	4	Decidable.byCases	USED	OK
+182	p141-a5-def-1	ep-430d18b0	5	bne	USED	OK
+182	p141-a5-def-1	ep-430d18b0	6	BEq.beq	USED	OK
+182	p141-a5-def-1	ep-430d18b0	7	Eq.mp	USED	OK
+183	p52-a5-def-1	ep-9106ded7	0	id	USED	OK
+183	p52-a5-def-1	ep-9106ded7	1	GetElem?.getElem?	NOT-USED	OK
+183	p52-a5-def-1	ep-9106ded7	2	Eq.mp	USED	OK
+183	p52-a5-def-1	ep-9106ded7	3	multiplesAddHom	NOT-USED	OK
+183	p52-a5-def-1	ep-9106ded7	4	rotation	NOT-USED	OK
+183	p52-a5-def-1	ep-9106ded7	5	Eq.mpr	USED	OK
+183	p52-a5-def-1	ep-9106ded7	6	optParam	NOT-USED	OK
+183	p52-a5-def-1	ep-9106ded7	7	GetElem?.getElem!	USED	OK
+184	p16-a5-theorem-0	ep-50a56ccd	0	iff_self	USED	OK
+184	p16-a5-theorem-0	ep-50a56ccd	1	Eq.trans	USED	OK
+184	p16-a5-theorem-0	ep-50a56ccd	2	beq_self_eq_true	NOT-USED	OK
+184	p16-a5-theorem-0	ep-50a56ccd	3	Finset.length_toList	USED	OK
+184	p16-a5-theorem-0	ep-50a56ccd	4	Finset.ext	USED	OK
+184	p16-a5-theorem-0	ep-50a56ccd	5	Finset.cons_empty	NOT-USED	OK
+184	p16-a5-theorem-0	ep-50a56ccd	6	Eq.subst	NOT-USED	OK
+184	p16-a5-theorem-0	ep-50a56ccd	7	Finset.sym2_map	NOT-USED	OK
+185	p35-a0-def-0	ep-7e19f23e	0	Ne	USED	OK
+185	p35-a0-def-0	ep-7e19f23e	1	GetElem?.getElem?	NOT-USED	OK
+185	p35-a0-def-0	ep-7e19f23e	2	Squash	NOT-USED	OK
+185	p35-a0-def-0	ep-7e19f23e	3	GetElem?.getElem!	USED	OK
+185	p35-a0-def-0	ep-7e19f23e	4	Eq.mp	USED	OK
+185	p35-a0-def-0	ep-7e19f23e	5	rfl	USED	OK
+185	p35-a0-def-0	ep-7e19f23e	6	unsafeCast	NOT-USED	OK
+185	p35-a0-def-0	ep-7e19f23e	7	factorization	NOT-USED	OK
+187	p149-a0-theorem-1	ep-6e724ff5	0	List.dropWhile_nil	NOT-USED	OK
+187	p149-a0-theorem-1	ep-6e724ff5	1	of_eq_true	USED	OK
+187	p149-a0-theorem-1	ep-6e724ff5	2	List.tail_eq_tailD	NOT-USED	OK
+187	p149-a0-theorem-1	ep-6e724ff5	3	Int.Linear.Poly.denote_combine_mul_k	NOT-USED	OK
+187	p149-a0-theorem-1	ep-6e724ff5	4	Int.add_one_le_of_lt	USED	OK
+187	p149-a0-theorem-1	ep-6e724ff5	5	List.mem_filter	USED	OK
+187	p149-a0-theorem-1	ep-6e724ff5	6	eq_true	NOT-USED	OK
+187	p149-a0-theorem-1	ep-6e724ff5	7	List.mem_cons	USED	OK
+190	p92-a5-def-0	ep-b0c972bb	0	Membership.mem	USED	OK
+190	p92-a5-def-0	ep-b0c972bb	1	Int.Linear.cooper_dvd_right_split	NOT-USED	OK
+190	p92-a5-def-0	ep-b0c972bb	2	Int.land	NOT-USED	OK
+190	p92-a5-def-0	ep-b0c972bb	3	Singleton.singleton	USED	OK
+190	p92-a5-def-0	ep-b0c972bb	4	GetElem?.getElem!	USED	OK
+190	p92-a5-def-0	ep-b0c972bb	5	decidable_of_decidable_of_iff	NOT-USED	OK
+190	p92-a5-def-0	ep-b0c972bb	6	GetElem?.getElem?	NOT-USED	OK
+190	p92-a5-def-0	ep-b0c972bb	7	Ne	USED	OK
+191	p31-a0-theorem-1	ep-3805ba91	0	Nat.map_add_toArray_rio'	NOT-USED	OK
+191	p31-a0-theorem-1	ep-3805ba91	1	Nat.Prime.one_lt	USED	OK
+191	p31-a0-theorem-1	ep-3805ba91	2	Int.shiftRight_eq	NOT-USED	OK
+191	p31-a0-theorem-1	ep-3805ba91	3	And.right	USED	OK
+191	p31-a0-theorem-1	ep-3805ba91	4	And.left	NOT-USED	OK
+191	p31-a0-theorem-1	ep-3805ba91	5	Int.sub_nonneg_of_le	USED	OK
+191	p31-a0-theorem-1	ep-3805ba91	6	Nat.primeFactorsList_prime	NOT-USED	OK
+191	p31-a0-theorem-1	ep-3805ba91	7	Nat.mod_eq_zero_of_dvd	USED	OK
+193	p128-a5-theorem-1	ep-7faf263a	0	finSuccEquiv'_above	NOT-USED	OK
+193	p128-a5-theorem-1	ep-7faf263a	1	eq_or_ne	USED	OK
+193	p128-a5-theorem-1	ep-7faf263a	2	and_self	NOT-USED	OK
+193	p128-a5-theorem-1	ep-7faf263a	3	Eq.subst	NOT-USED	OK
+193	p128-a5-theorem-1	ep-7faf263a	4	or_assoc	NOT-USED	OK
+193	p128-a5-theorem-1	ep-7faf263a	5	Eq.trans	USED	OK
+193	p128-a5-theorem-1	ep-7faf263a	6	iff_self_and	NOT-USED	OK
+193	p128-a5-theorem-1	ep-7faf263a	7	of_eq_true	USED	OK
+194	p73-a5-theorem-1	ep-86c7c952	0	List.filter_cons	USED	OK
+194	p73-a5-theorem-1	ep-86c7c952	1	Eq.subst	NOT-USED	OK
+194	p73-a5-theorem-1	ep-86c7c952	2	Decidable.decide.congr_simp	USED	OK
+194	p73-a5-theorem-1	ep-86c7c952	3	List.length_filter_eq_length_iff	NOT-USED	OK
+194	p73-a5-theorem-1	ep-86c7c952	4	List.length_map	USED	OK
+194	p73-a5-theorem-1	ep-86c7c952	5	Eq.trans	USED	OK
+194	p73-a5-theorem-1	ep-86c7c952	6	List.prefix_append	NOT-USED	OK
+194	p73-a5-theorem-1	ep-86c7c952	7	Decidable.not_and_not_right	NOT-USED	OK
+196	p56-a5-theorem-1	ep-09f7507d	0	le_of_le_of_eq		UNSCORED(missing)
+196	p56-a5-theorem-1	ep-09f7507d	1	dif_neg		UNSCORED(missing)
+196	p56-a5-theorem-1	ep-09f7507d	2	Eq.trans		UNSCORED(missing)
+196	p56-a5-theorem-1	ep-09f7507d	3	or_false		UNSCORED(missing)
+196	p56-a5-theorem-1	ep-09f7507d	4	Int.sub_nonneg_of_le		UNSCORED(missing)
+196	p56-a5-theorem-1	ep-09f7507d	5	Int.ofNat_natAbs_of_nonneg		UNSCORED(missing)
+196	p56-a5-theorem-1	ep-09f7507d	6	Eq.subst		UNSCORED(missing)
+196	p56-a5-theorem-1	ep-09f7507d	7	implies_congr		UNSCORED(missing)
+197	p128-a5-theorem-0	ep-7faf263a	0	Nat.lt_or_gt_of_ne		UNSCORED(missing)
+197	p128-a5-theorem-0	ep-7faf263a	1	Int.not_lt_eq		UNSCORED(missing)
+197	p128-a5-theorem-0	ep-7faf263a	2	Int.tmod_eq_emod		UNSCORED(missing)
+197	p128-a5-theorem-0	ep-7faf263a	3	Int.sign_zero		UNSCORED(missing)
+197	p128-a5-theorem-0	ep-7faf263a	4	And.right		UNSCORED(missing)
+197	p128-a5-theorem-0	ep-7faf263a	5	Nat.mod_one		UNSCORED(missing)
+197	p128-a5-theorem-0	ep-7faf263a	6	Int.sub_nonneg_of_le		UNSCORED(missing)
+197	p128-a5-theorem-0	ep-7faf263a	7	And.comm		UNSCORED(missing)
+199	p82-a5-theorem-0	ep-47933543	0	congrArg	USED	OK
+199	p82-a5-theorem-0	ep-47933543	1	Nat.factorization_div	NOT-USED	OK
+199	p82-a5-theorem-0	ep-47933543	2	Nat.mod_eq_zero_of_dvd	USED	OK
+199	p82-a5-theorem-0	ep-47933543	3	Nat.prime_def_lt'	USED	OK
+199	p82-a5-theorem-0	ep-47933543	4	forall_congr'	USED	OK
+199	p82-a5-theorem-0	ep-47933543	5	Nat.getElem?_toList_rcc	NOT-USED	OK
+199	p82-a5-theorem-0	ep-47933543	6	or_or_or_comm	NOT-USED	OK
+199	p82-a5-theorem-0	ep-47933543	7	of_decide_eq_true	NOT-USED	OK
+203	p4-a0-def-0	ep-0851f3b6	0	LT.lt	USED	OK
+203	p4-a0-def-0	ep-0851f3b6	1	addEquivIsoAddCommGroupIso	NOT-USED	OK
+203	p4-a0-def-0	ep-0851f3b6	2	Prod.ωSupImpl	NOT-USED	OK
+203	p4-a0-def-0	ep-0851f3b6	3	Prod.fst	NOT-USED	OK
+203	p4-a0-def-0	ep-0851f3b6	4	inferInstance	NOT-USED	OK
+203	p4-a0-def-0	ep-0851f3b6	5	absurd	NOT-USED	OK
+203	p4-a0-def-0	ep-0851f3b6	6	LT.toSBtw	NOT-USED	OK
+203	p4-a0-def-0	ep-0851f3b6	7	abs	USED	OK
+204	p148-a0-theorem-0	ep-9862efe9	0	or_self		UNSCORED(missing)
+204	p148-a0-theorem-0	ep-9862efe9	1	Decidable.not_or_of_imp		UNSCORED(missing)
+204	p148-a0-theorem-0	ep-9862efe9	2	Decidable.not_or_self		UNSCORED(missing)
+204	p148-a0-theorem-0	ep-9862efe9	3	Iff.mp		UNSCORED(missing)
+204	p148-a0-theorem-0	ep-9862efe9	4	List.idxOf_cons_ne		UNSCORED(missing)
+204	p148-a0-theorem-0	ep-9862efe9	5	Iff.symm		UNSCORED(missing)
+204	p148-a0-theorem-0	ep-9862efe9	6	beq_self_eq_true		UNSCORED(missing)
+204	p148-a0-theorem-0	ep-9862efe9	7	List.IsChain.sortedGE		UNSCORED(missing)
+205	p38-a0-theorem-0	ep-83e1d461	0	Nat.getD_toList_rio		UNSCORED(missing)
+205	p38-a0-theorem-0	ep-83e1d461	1	iff_of_false		UNSCORED(missing)
+205	p38-a0-theorem-0	ep-83e1d461	2	add_zero		UNSCORED(missing)
+205	p38-a0-theorem-0	ep-83e1d461	3	iff_self_and		UNSCORED(missing)
+205	p38-a0-theorem-0	ep-83e1d461	4	Nat.le_of_not_lt		UNSCORED(missing)
+205	p38-a0-theorem-0	ep-83e1d461	5	conjugate_nonneg_of_nonneg		UNSCORED(missing)
+205	p38-a0-theorem-0	ep-83e1d461	6	le_of_le_of_eq		UNSCORED(missing)
+205	p38-a0-theorem-0	ep-83e1d461	7	and_true		UNSCORED(missing)
+209	p148-a0-def-1	ep-9862efe9	0	HAdd.hAdd	USED	OK
+209	p148-a0-def-1	ep-9862efe9	1	LE.le	USED	OK
+209	p148-a0-def-1	ep-9862efe9	2	LE.le.hom	NOT-USED	OK
+209	p148-a0-def-1	ep-9862efe9	3	DecidableLT	NOT-USED	OK
+209	p148-a0-def-1	ep-9862efe9	4	rfl	USED	OK
+209	p148-a0-def-1	ep-9862efe9	5	HomRel	NOT-USED	OK
+209	p148-a0-def-1	ep-9862efe9	6	ite	USED	OK
+209	p148-a0-def-1	ep-9862efe9	7	EStateM	NOT-USED	OK
+212	p35-a5-def-1	ep-907ac49e	0	List.length	USED	OK
+212	p35-a5-def-1	ep-907ac49e	1	Membership.mem	USED	OK
+212	p35-a5-def-1	ep-907ac49e	2	List.toArray	NOT-USED	OK
+212	p35-a5-def-1	ep-907ac49e	3	NNReal	NOT-USED	OK
+212	p35-a5-def-1	ep-907ac49e	4	GT.gt	USED	OK
+212	p35-a5-def-1	ep-907ac49e	5	LT.lt	USED	OK
+212	p35-a5-def-1	ep-907ac49e	6	cfcₙHom_of_cfcHom	NOT-USED	OK
+212	p35-a5-def-1	ep-907ac49e	7	LT.ofOrd	NOT-USED	OK
+213	p149-a5-theorem-1	ep-32ec30df	0	List.Perm.symm	USED	OK
+213	p149-a5-theorem-1	ep-32ec30df	1	List.Perm.append	NOT-USED	OK
+213	p149-a5-theorem-1	ep-32ec30df	2	List.length_eq_zero_iff	USED	OK
+213	p149-a5-theorem-1	ep-32ec30df	3	Nat.odd_iff	USED	OK
+213	p149-a5-theorem-1	ep-32ec30df	4	Nat.ceil_lt_two_mul	NOT-USED	OK
+213	p149-a5-theorem-1	ep-32ec30df	5	Int.natCast_add	USED	OK
+213	p149-a5-theorem-1	ep-32ec30df	6	List.head?_map	NOT-USED	OK
+213	p149-a5-theorem-1	ep-32ec30df	7	Int.toNat_lt	NOT-USED	OK
+214	p60-a5-def-1	ep-0144a0f3	0	Eq.mp	USED	OK
+214	p60-a5-def-1	ep-0144a0f3	1	infClosure	NOT-USED	OK
+214	p60-a5-def-1	ep-0144a0f3	2	Nat.one_pos	USED	OK
+214	p60-a5-def-1	ep-0144a0f3	3	Neg.neg	USED	OK
+214	p60-a5-def-1	ep-0144a0f3	4	groupCohomologyIso	NOT-USED	OK
+214	p60-a5-def-1	ep-0144a0f3	5	HAdd.hAdd	USED	OK
+214	p60-a5-def-1	ep-0144a0f3	6	smulMonoidWithZeroHom	NOT-USED	OK
+214	p60-a5-def-1	ep-0144a0f3	7	Nat.superDigitChar	NOT-USED	OK
+215	p74-a0-theorem-0	ep-eb175ef8	0	Or.elim		UNSCORED(missing)
+215	p74-a0-theorem-0	ep-eb175ef8	1	Nat.ble_eq_true_of_le		UNSCORED(missing)
+215	p74-a0-theorem-0	ep-eb175ef8	2	Or.resolve_left		UNSCORED(missing)
+215	p74-a0-theorem-0	ep-eb175ef8	3	add_zero		UNSCORED(missing)
+215	p74-a0-theorem-0	ep-eb175ef8	4	zpow_natCast_sub_natCast₀		UNSCORED(missing)
+215	p74-a0-theorem-0	ep-eb175ef8	5	and_iff_right_of_imp		UNSCORED(missing)
+215	p74-a0-theorem-0	ep-eb175ef8	6	Nat.lt_of_not_le		UNSCORED(missing)
+215	p74-a0-theorem-0	ep-eb175ef8	7	implies_congr		UNSCORED(missing)
+216	p31-a5-def-0	ep-f9653fae	0	cond	NOT-USED	OK
+216	p31-a5-def-0	ep-f9653fae	1	normalizedGCDMonoidOfGCD	NOT-USED	OK
+216	p31-a5-def-0	ep-f9653fae	2	toAddUnits_homeomorph	NOT-USED	OK
+216	p31-a5-def-0	ep-f9653fae	3	OfNat.ofNat	USED	OK
+216	p31-a5-def-0	ep-f9653fae	4	HMod.hMod	USED	OK
+216	p31-a5-def-0	ep-f9653fae	5	id	USED	OK
+216	p31-a5-def-0	ep-f9653fae	6	EuclideanQuadrant	NOT-USED	OK
+216	p31-a5-def-0	ep-f9653fae	7	Dvd.dvd	USED	OK
+218	p31-a0-def-0	ep-3805ba91	0	optParam		UNSCORED(missing)
+218	p31-a0-def-0	ep-3805ba91	1	Eq.mpr		UNSCORED(missing)
+218	p31-a0-def-0	ep-3805ba91	2	id		UNSCORED(missing)
+218	p31-a0-def-0	ep-3805ba91	3	DecidableLE		UNSCORED(missing)
+218	p31-a0-def-0	ep-3805ba91	4	Not		UNSCORED(missing)
+218	p31-a0-def-0	ep-3805ba91	5	Eq.mp		UNSCORED(missing)
+218	p31-a0-def-0	ep-3805ba91	6	rfl		UNSCORED(missing)
+218	p31-a0-def-0	ep-3805ba91	7	decEq		UNSCORED(missing)
+221	p142-a0-def-0	ep-7034f448	0	WellFoundedGT		UNSCORED(missing)
+221	p142-a0-def-0	ep-7034f448	1	Nat.cast		UNSCORED(missing)
+221	p142-a0-def-0	ep-7034f448	2	readThe		UNSCORED(missing)
+221	p142-a0-def-0	ep-7034f448	3	Not		UNSCORED(missing)
+221	p142-a0-def-0	ep-7034f448	4	List.take		UNSCORED(missing)
+221	p142-a0-def-0	ep-7034f448	5	Nat.allM		UNSCORED(missing)
+221	p142-a0-def-0	ep-7034f448	6	List.flatMapM.loop		UNSCORED(missing)
+221	p142-a0-def-0	ep-7034f448	7	Eq.mp		UNSCORED(missing)
+224	p59-a5-theorem-1	ep-7caea960	0	And.right	NOT-USED	OK
+224	p59-a5-theorem-1	ep-7caea960	1	Nat.add_le_of_le_sub'	NOT-USED	OK
+224	p59-a5-theorem-1	ep-7caea960	2	Iff.mp	NOT-USED	OK
+224	p59-a5-theorem-1	ep-7caea960	3	forall_congr'	USED	OK
+224	p59-a5-theorem-1	ep-7caea960	4	And.exists	NOT-USED	OK
+224	p59-a5-theorem-1	ep-7caea960	5	Nat.le_of_dvd	USED	OK
+224	p59-a5-theorem-1	ep-7caea960	6	exists₂_imp	NOT-USED	OK
+224	p59-a5-theorem-1	ep-7caea960	7	Iff.rfl	USED	OK
+225	p128-a0-def-0	ep-15dd1d12	0	id	USED	OK
+225	p128-a0-def-0	ep-15dd1d12	1	NonemptyType	NOT-USED	OK
+225	p128-a0-def-0	ep-15dd1d12	2	Quotient	NOT-USED	OK
+225	p128-a0-def-0	ep-15dd1d12	3	Nat.forM	NOT-USED	OK
+225	p128-a0-def-0	ep-15dd1d12	4	Nat.cast	USED	OK
+225	p128-a0-def-0	ep-15dd1d12	5	Nat.rawCast	USED	OK
+225	p128-a0-def-0	ep-15dd1d12	6	Nat.primesBelow	NOT-USED	OK
+225	p128-a0-def-0	ep-15dd1d12	7	Ne	USED	OK
+226	p73-a5-def-0	ep-86c7c952	0	liftM	NOT-USED	OK
+226	p73-a5-def-0	ep-86c7c952	1	List.ofFn	NOT-USED	OK
+226	p73-a5-def-0	ep-86c7c952	2	Eq.mpr	USED	OK
+226	p73-a5-def-0	ep-86c7c952	3	Fin.Internal.ofNat	NOT-USED	OK
+226	p73-a5-def-0	ep-86c7c952	4	Fin.val	USED	OK
+226	p73-a5-def-0	ep-86c7c952	5	fontaineThetaInvertP	NOT-USED	OK
+226	p73-a5-def-0	ep-86c7c952	6	id	USED	OK
+226	p73-a5-def-0	ep-86c7c952	7	List.countP	USED	OK
+227	p56-a5-def-0	ep-09f7507d	0	Nat.all	NOT-USED	OK
+227	p56-a5-def-0	ep-09f7507d	1	List.take	USED	OK
+227	p56-a5-def-0	ep-09f7507d	2	toPullbackDiag	NOT-USED	OK
+227	p56-a5-def-0	ep-09f7507d	3	Eq.mpr	USED	OK
+227	p56-a5-def-0	ep-09f7507d	4	innerₗ	NOT-USED	OK
+227	p56-a5-def-0	ep-09f7507d	5	List.findSome?	NOT-USED	OK
+227	p56-a5-def-0	ep-09f7507d	6	Nat.cast	USED	OK
+227	p56-a5-def-0	ep-09f7507d	7	Eq.mp	USED	OK
+228	p146-a5-def-0	ep-422ea521	0	Eq.mpr	USED	OK
+228	p146-a5-def-0	ep-422ea521	1	rfl	USED	OK
+228	p146-a5-def-0	ep-422ea521	2	Nat.toInt32	NOT-USED	OK
+228	p146-a5-def-0	ep-422ea521	3	IsOpen	NOT-USED	OK
+228	p146-a5-def-0	ep-422ea521	4	Nat.toDigits	USED	OK
+228	p146-a5-def-0	ep-422ea521	5	ToString.toString	USED	OK
+228	p146-a5-def-0	ep-422ea521	6	runEST	NOT-USED	OK
+228	p146-a5-def-0	ep-422ea521	7	withTheReader	NOT-USED	OK
+230	p56-a0-def-1	ep-23eae95a	0	Char.ofNat	USED	OK
+230	p56-a0-def-1	ep-23eae95a	1	Char.utf8Size	NOT-USED	OK
+230	p56-a0-def-1	ep-23eae95a	2	Transitive	NOT-USED	OK
+230	p56-a0-def-1	ep-23eae95a	3	String.Pos.appendRight	NOT-USED	OK
+230	p56-a0-def-1	ep-23eae95a	4	Eq.mpr	USED	OK
+230	p56-a0-def-1	ep-23eae95a	5	String.toList	USED	OK
+230	p56-a0-def-1	ep-23eae95a	6	gaussSum	NOT-USED	OK
+230	p56-a0-def-1	ep-23eae95a	7	Eq.mp	USED	OK
+231	p128-a0-theorem-0	ep-15dd1d12	0	List.mem_map	USED	OK
+231	p128-a0-theorem-0	ep-15dd1d12	1	List.pairwise_filter	NOT-USED	OK
+231	p128-a0-theorem-0	ep-15dd1d12	2	Iff.mpr	USED	OK
+231	p128-a0-theorem-0	ep-15dd1d12	3	Nat.gcd_dvd_gcd_of_dvd_left	NOT-USED	OK
+231	p128-a0-theorem-0	ep-15dd1d12	4	Iff.symm	NOT-USED	OK
+231	p128-a0-theorem-0	ep-15dd1d12	5	Int.ofNat_toNat	NOT-USED	OK
+231	p128-a0-theorem-0	ep-15dd1d12	6	Nat.mod_succ	NOT-USED	OK
+231	p128-a0-theorem-0	ep-15dd1d12	7	Int.add_one_le_of_lt	USED	OK
+232	p74-a5-theorem-0	ep-ea480733	0	Nat.cast_list_sum		UNSCORED(missing)
+232	p74-a5-theorem-0	ep-ea480733	1	CharP.cast_eq_zero		UNSCORED(missing)
+232	p74-a5-theorem-0	ep-ea480733	2	decide_eq_true		UNSCORED(missing)
+232	p74-a5-theorem-0	ep-ea480733	3	CharP.isUnit_intCast_iff		UNSCORED(missing)
+232	p74-a5-theorem-0	ep-ea480733	4	Nat.preimage_floor_zero		UNSCORED(missing)
+232	p74-a5-theorem-0	ep-ea480733	5	of_decide_eq_true		UNSCORED(missing)
+232	p74-a5-theorem-0	ep-ea480733	6	Int.add_left_cancel		UNSCORED(missing)
+232	p74-a5-theorem-0	ep-ea480733	7	Int.add_one_le_of_lt		UNSCORED(missing)
+236	p11-a5-theorem-0	ep-b958c4c0	0	String.head_toList	NOT-USED	OK
+236	p11-a5-theorem-0	ep-b958c4c0	1	List.cons_append	USED	OK
+236	p11-a5-theorem-0	ep-b958c4c0	2	String.toList_singleton	USED	OK
+236	p11-a5-theorem-0	ep-b958c4c0	3	String.Slice.Pos.ext	USED	OK
+236	p11-a5-theorem-0	ep-b958c4c0	4	congrArg	USED	OK
+236	p11-a5-theorem-0	ep-b958c4c0	5	String.slice_eq_slice!	NOT-USED	OK
+236	p11-a5-theorem-0	ep-b958c4c0	6	eq_true_of_ne_false	NOT-USED	OK
+236	p11-a5-theorem-0	ep-b958c4c0	7	List.tail_drop	NOT-USED	OK
+237	p4-a0-def-1	ep-0851f3b6	0	Prod.fromJson?	NOT-USED	OK
+237	p4-a0-def-1	ep-0851f3b6	1	Nat.FermatPsp	NOT-USED	OK
+237	p4-a0-def-1	ep-0851f3b6	2	Eq.mpr	USED	OK
+237	p4-a0-def-1	ep-0851f3b6	3	Prod.snd	NOT-USED	OK
+237	p4-a0-def-1	ep-0851f3b6	4	Eq.mp	USED	OK
+237	p4-a0-def-1	ep-0851f3b6	5	Not	NOT-USED	OK
+237	p4-a0-def-1	ep-0851f3b6	6	id	USED	OK
+237	p4-a0-def-1	ep-0851f3b6	7	StateRefT'	NOT-USED	OK
+238	p74-a0-def-1	ep-eb175ef8	0	List.sum	USED	OK
+238	p74-a0-def-1	ep-eb175ef8	1	Eq.mp	USED	OK
+238	p74-a0-def-1	ep-eb175ef8	2	List.lengthTRAux	NOT-USED	OK
+238	p74-a0-def-1	ep-eb175ef8	3	List.map	USED	OK
+238	p74-a0-def-1	ep-eb175ef8	4	Nat.Partrec.Code.pappAck.step	NOT-USED	OK
+238	p74-a0-def-1	ep-eb175ef8	5	LT.ofOrd	NOT-USED	OK
+238	p74-a0-def-1	ep-eb175ef8	6	List.max	NOT-USED	OK
+238	p74-a0-def-1	ep-eb175ef8	7	LT.lt	USED	OK
+239	p112-a0-theorem-1	ep-558aedfa	0	List.idxOf?_eq_none_iff		UNSCORED(missing)
+239	p112-a0-theorem-1	ep-558aedfa	1	Int.sub_nonneg_of_le		UNSCORED(missing)
+239	p112-a0-theorem-1	ep-558aedfa	2	Bool.false_eq_true		UNSCORED(missing)
+239	p112-a0-theorem-1	ep-558aedfa	3	List.eq_nil_of_length_eq_zero		UNSCORED(missing)
+239	p112-a0-theorem-1	ep-558aedfa	4	Nat.ne_of_beq_eq_false		UNSCORED(missing)
+239	p112-a0-theorem-1	ep-558aedfa	5	Bool.not_ite_eq_true_eq_false		UNSCORED(missing)
+239	p112-a0-theorem-1	ep-558aedfa	6	Int.coe_lcm_dvd_iff		UNSCORED(missing)
+239	p112-a0-theorem-1	ep-558aedfa	7	Nat.succ_pos		UNSCORED(missing)
+240	p92-a0-def-1	ep-26a7ef9e	0	SimplexCategory		UNSCORED(missing)
+240	p92-a0-def-1	ep-26a7ef9e	1	Rat.den		UNSCORED(missing)
+240	p92-a0-def-1	ep-26a7ef9e	2	List.forDiagM		UNSCORED(missing)
+240	p92-a0-def-1	ep-26a7ef9e	3	OfNat.ofNat		UNSCORED(missing)
+240	p92-a0-def-1	ep-26a7ef9e	4	Insert.insert		UNSCORED(missing)
+240	p92-a0-def-1	ep-26a7ef9e	5	printNameHashMap		UNSCORED(missing)
+240	p92-a0-def-1	ep-26a7ef9e	6	GT.gt		UNSCORED(missing)
+240	p92-a0-def-1	ep-26a7ef9e	7	Rat.blt		UNSCORED(missing)
+243	p142-a5-def-1	ep-093b5e2c	0	LT.lt	USED	OK
+243	p142-a5-def-1	ep-093b5e2c	1	Nat.ModEq	NOT-USED	OK
+243	p142-a5-def-1	ep-093b5e2c	2	LT.ofOrd	NOT-USED	OK
+243	p142-a5-def-1	ep-093b5e2c	3	HPow.hPow	USED	OK
+243	p142-a5-def-1	ep-093b5e2c	4	deriv	NOT-USED	OK
+243	p142-a5-def-1	ep-093b5e2c	5	False.elim	USED	OK
+243	p142-a5-def-1	ep-093b5e2c	6	List.insertP.loop	NOT-USED	OK
+243	p142-a5-def-1	ep-093b5e2c	7	HMod.hMod	USED	OK
+244	p136-a5-theorem-0	ep-bd5beaa6	0	Eq.symm		UNSCORED(missing)
+244	p136-a5-theorem-0	ep-bd5beaa6	1	And.left		UNSCORED(missing)
+244	p136-a5-theorem-0	ep-bd5beaa6	2	And.symm		UNSCORED(missing)
+244	p136-a5-theorem-0	ep-bd5beaa6	3	And.right		UNSCORED(missing)
+244	p136-a5-theorem-0	ep-bd5beaa6	4	Eq.trans		UNSCORED(missing)
+244	p136-a5-theorem-0	ep-bd5beaa6	5	Iff.refl		UNSCORED(missing)
+244	p136-a5-theorem-0	ep-bd5beaa6	6	And.exists		UNSCORED(missing)
+244	p136-a5-theorem-0	ep-bd5beaa6	7	Iff.mp		UNSCORED(missing)
+245	p112-a0-def-1	ep-558aedfa	0	List.range.loop		UNSCORED(missing)
+245	p112-a0-def-1	ep-558aedfa	1	Unit		UNSCORED(missing)
+245	p112-a0-def-1	ep-558aedfa	2	absurd		UNSCORED(missing)
+245	p112-a0-def-1	ep-558aedfa	3	String.contains		UNSCORED(missing)
+245	p112-a0-def-1	ep-558aedfa	4	List.contains		UNSCORED(missing)
+245	p112-a0-def-1	ep-558aedfa	5	String.foldr		UNSCORED(missing)
+245	p112-a0-def-1	ep-558aedfa	6	Std.Rxi.Iterator.step		UNSCORED(missing)
+245	p112-a0-def-1	ep-558aedfa	7	Std.Shrink.inflate		UNSCORED(missing)
+249	p2-a0-theorem-0	ep-e4978cbf	0	Iff.mpr		UNSCORED(missing)
+249	p2-a0-theorem-0	ep-e4978cbf	1	Iff.refl		UNSCORED(missing)
+249	p2-a0-theorem-0	ep-e4978cbf	2	lt_of_not_ge		UNSCORED(missing)
+249	p2-a0-theorem-0	ep-e4978cbf	3	le_of_not_gt		UNSCORED(missing)
+249	p2-a0-theorem-0	ep-e4978cbf	4	id_eq		UNSCORED(missing)
+249	p2-a0-theorem-0	ep-e4978cbf	5	congrArg		UNSCORED(missing)
+249	p2-a0-theorem-0	ep-e4978cbf	6	wcovBy_iff_eq_or_covBy		UNSCORED(missing)
+249	p2-a0-theorem-0	ep-e4978cbf	7	exists_lt_lt_of_not_covBy		UNSCORED(missing)
+250	p148-a5-theorem-1	ep-968c428f	0	Or.elim		UNSCORED(missing)
+250	p148-a5-theorem-1	ep-968c428f	1	Eq.symm		UNSCORED(missing)
+250	p148-a5-theorem-1	ep-968c428f	2	Eq.subst		UNSCORED(missing)
+250	p148-a5-theorem-1	ep-968c428f	3	Int.one_dvd		UNSCORED(missing)
+250	p148-a5-theorem-1	ep-968c428f	4	Int.add_one_le_of_lt		UNSCORED(missing)
+250	p148-a5-theorem-1	ep-968c428f	5	Int.min_def		UNSCORED(missing)
+250	p148-a5-theorem-1	ep-968c428f	6	Or.resolve_left		UNSCORED(missing)
+250	p148-a5-theorem-1	ep-968c428f	7	Int.Linear.cooper_right_split_dvd		UNSCORED(missing)
+255	p142-a0-theorem-1	ep-7034f448	0	And.rotate	NOT-USED	OK
+255	p142-a0-theorem-1	ep-7034f448	1	Int.dvd_lcm_left	NOT-USED	OK
+255	p142-a0-theorem-1	ep-7034f448	2	List.eq_nil_or_concat	USED	OK
+255	p142-a0-theorem-1	ep-7034f448	3	List.head_filter_mem	NOT-USED	OK
+255	p142-a0-theorem-1	ep-7034f448	4	And.left	USED	OK
+255	p142-a0-theorem-1	ep-7034f448	5	Int.add_one_le_of_lt	USED	OK
+255	p142-a0-theorem-1	ep-7034f448	6	getElem?_eq_some_getElem_iff	NOT-USED	OK
+255	p142-a0-theorem-1	ep-7034f448	7	getElem!_pos	USED	OK
+256	p146-a0-theorem-0	ep-9b8d5b10	0	Nat.cast_add	USED	OK
+256	p146-a0-theorem-0	ep-9b8d5b10	1	Nat.xor_bit	NOT-USED	OK
+256	p146-a0-theorem-0	ep-9b8d5b10	2	ite_cond_eq_true	NOT-USED	OK
+256	p146-a0-theorem-0	ep-9b8d5b10	3	toBoolUsing_eq_true	NOT-USED	OK
+256	p146-a0-theorem-0	ep-9b8d5b10	4	add_neg_le_add_neg_iff	NOT-USED	OK
+256	p146-a0-theorem-0	ep-9b8d5b10	5	if_neg	USED	OK
+256	p146-a0-theorem-0	ep-9b8d5b10	6	decide_eq_true_eq	USED	OK
+256	p146-a0-theorem-0	ep-9b8d5b10	7	pow_succ'	USED	OK
+257	p59-a0-def-1	ep-6a4bc88d	0	circleIntegral	NOT-USED	OK
+257	p59-a0-def-1	ep-6a4bc88d	1	uniformity	NOT-USED	OK
+257	p59-a0-def-1	ep-6a4bc88d	2	Nat.cast	USED	OK
+257	p59-a0-def-1	ep-6a4bc88d	3	Dvd.dvd	USED	OK
+257	p59-a0-def-1	ep-6a4bc88d	4	nonunits	NOT-USED	OK
+257	p59-a0-def-1	ep-6a4bc88d	5	Neg.neg	USED	OK
+257	p59-a0-def-1	ep-6a4bc88d	6	Nat.foldRevM	NOT-USED	OK
+257	p59-a0-def-1	ep-6a4bc88d	7	HAdd.hAdd	USED	OK
+258	p136-a0-theorem-1	ep-3a028455	0	of_eq_true		UNSCORED(missing)
+258	p136-a0-theorem-1	ep-3a028455	1	and_iff_right_iff_imp		UNSCORED(missing)
+258	p136-a0-theorem-1	ep-3a028455	2	Eq.subst		UNSCORED(missing)
+258	p136-a0-theorem-1	ep-3a028455	3	beq_self_eq_true		UNSCORED(missing)
+258	p136-a0-theorem-1	ep-3a028455	4	Eq.trans		UNSCORED(missing)
+258	p136-a0-theorem-1	ep-3a028455	5	And.imp_left		UNSCORED(missing)
+258	p136-a0-theorem-1	ep-3a028455	6	And.left		UNSCORED(missing)
+258	p136-a0-theorem-1	ep-3a028455	7	iff_self		UNSCORED(missing)
+262	p146-a0-theorem-1	ep-9b8d5b10	0	of_decide_eq_false	NOT-USED	OK
+262	p146-a0-theorem-1	ep-9b8d5b10	1	Nat.prime_of_mem_primeFactors	NOT-USED	OK
+262	p146-a0-theorem-1	ep-9b8d5b10	2	Iff.mpr	USED	OK
+262	p146-a0-theorem-1	ep-9b8d5b10	3	Int.neg_of_mul_pos_right	NOT-USED	OK
+262	p146-a0-theorem-1	ep-9b8d5b10	4	Nat.cast_zero	USED	OK
+262	p146-a0-theorem-1	ep-9b8d5b10	5	Int.toNat_eq_max	USED	OK
+262	p146-a0-theorem-1	ep-9b8d5b10	6	Iff.subst	NOT-USED	OK
+262	p146-a0-theorem-1	ep-9b8d5b10	7	of_decide_eq_true	USED	OK
+263	p54-a0-theorem-0	ep-3f370f25	0	congrArg	USED	OK
+263	p54-a0-theorem-0	ep-3f370f25	1	congrFun	NOT-USED	OK
+263	p54-a0-theorem-0	ep-3f370f25	2	decide_eq_true	NOT-USED	OK
+263	p54-a0-theorem-0	ep-3f370f25	3	eq_of_heq	NOT-USED	OK
+263	p54-a0-theorem-0	ep-3f370f25	4	noConfusion_of_Nat	NOT-USED	OK
+264	p4-a0-theorem-1	ep-0851f3b6	0	List.sum_map_mul_left	USED	OK
+264	p4-a0-theorem-1	ep-0851f3b6	1	of_eq_true	USED	OK
+264	p4-a0-theorem-1	ep-0851f3b6	2	List.dropWhile_replicate_eq_filter_not	NOT-USED	OK
+264	p4-a0-theorem-1	ep-0851f3b6	3	ite_self	NOT-USED	OK
+264	p4-a0-theorem-1	ep-0851f3b6	4	List.headI_mul_tail_prod_of_ne_nil	NOT-USED	OK
+264	p4-a0-theorem-1	ep-0851f3b6	5	inv_eq_self	NOT-USED	OK
+264	p4-a0-theorem-1	ep-0851f3b6	6	abs_mul	USED	OK
+264	p4-a0-theorem-1	ep-0851f3b6	7	List.map_congr_left	USED	OK
+266	p35-a0-def-1	ep-7e19f23e	0	namedPattern	NOT-USED	OK
+266	p35-a0-def-1	ep-7e19f23e	1	OfNat.ofNat	USED	OK
+266	p35-a0-def-1	ep-7e19f23e	2	Membership.mem	USED	OK
+266	p35-a0-def-1	ep-7e19f23e	3	IsSemilinearSet	NOT-USED	OK
+266	p35-a0-def-1	ep-7e19f23e	4	id	NOT-USED	OK
+266	p35-a0-def-1	ep-7e19f23e	5	LE.le	USED	OK
+266	p35-a0-def-1	ep-7e19f23e	6	LE.toBtw	NOT-USED	OK
+266	p35-a0-def-1	ep-7e19f23e	7	tautoToGrindRegressions	NOT-USED	OK
+267	p60-a0-def-1	ep-ec5add71	0	LT.toSBtw	NOT-USED	OK
+267	p60-a0-def-1	ep-ec5add71	1	Finset.zpow	NOT-USED	OK
+267	p60-a0-def-1	ep-ec5add71	2	Decidable.decide	USED	OK
+267	p60-a0-def-1	ep-ec5add71	3	completedRiemannZeta	NOT-USED	OK
+267	p60-a0-def-1	ep-ec5add71	4	Finset.sum	USED	OK
+267	p60-a0-def-1	ep-ec5add71	5	Decidable.repr	NOT-USED	OK
+267	p60-a0-def-1	ep-ec5add71	6	Eq.mpr	USED	OK
+267	p60-a0-def-1	ep-ec5add71	7	LT.lt	USED	OK
+268	p38-a0-def-1	ep-83e1d461	0	List.take	USED	OK
+268	p38-a0-def-1	ep-83e1d461	1	Eq.mpr	USED	OK
+268	p38-a0-def-1	ep-83e1d461	2	Eq.mp	USED	OK
+268	p38-a0-def-1	ep-83e1d461	3	rootableByOfPowLeftSurj	NOT-USED	OK
+268	p38-a0-def-1	ep-83e1d461	4	List.contains	NOT-USED	OK
+268	p38-a0-def-1	ep-83e1d461	5	GetElem?.getElem?	USED	OK
+268	p38-a0-def-1	ep-83e1d461	6	List.unzipTR	NOT-USED	OK
+268	p38-a0-def-1	ep-83e1d461	7	IsAscendingCentralSeries	NOT-USED	OK
+269	p16-a0-theorem-1	ep-8e925cbb	0	heq_of_eq		UNSCORED(missing)
+269	p16-a0-theorem-1	ep-8e925cbb	1	List.mem_map		UNSCORED(missing)
+269	p16-a0-theorem-1	ep-8e925cbb	2	List.Perm.nodup		UNSCORED(missing)
+269	p16-a0-theorem-1	ep-8e925cbb	3	List.getElem_mem		UNSCORED(missing)
+269	p16-a0-theorem-1	ep-8e925cbb	4	List.getElem?_eq_none_iff		UNSCORED(missing)
+269	p16-a0-theorem-1	ep-8e925cbb	5	congr		UNSCORED(missing)
+269	p16-a0-theorem-1	ep-8e925cbb	6	imp_congr_left		UNSCORED(missing)
+269	p16-a0-theorem-1	ep-8e925cbb	7	funext		UNSCORED(missing)
+270	p112-a5-theorem-0	ep-6cc3ed48	0	Bool.not_true		UNSCORED(missing)
+270	p112-a5-theorem-0	ep-6cc3ed48	1	String.Pos.Raw.le_iff		UNSCORED(missing)
+270	p112-a5-theorem-0	ep-6cc3ed48	2	Bool.not_eq_false'		UNSCORED(missing)
+270	p112-a5-theorem-0	ep-6cc3ed48	3	eq_comm		UNSCORED(missing)
+270	p112-a5-theorem-0	ep-6cc3ed48	4	ne_false_of_self		UNSCORED(missing)
+270	p112-a5-theorem-0	ep-6cc3ed48	5	dite_cond_congr		UNSCORED(missing)
+270	p112-a5-theorem-0	ep-6cc3ed48	6	String.Slice.Pos.splits		UNSCORED(missing)
+270	p112-a5-theorem-0	ep-6cc3ed48	7	not_false_eq_true		UNSCORED(missing)
+272	p73-a5-def-1	ep-86c7c952	0	Nat.isPowerOfTwo	NOT-USED	OK
+272	p73-a5-def-1	ep-86c7c952	1	Nat.cast	USED	OK
+272	p73-a5-def-1	ep-86c7c952	2	Prod.fst	USED	OK
+272	p73-a5-def-1	ep-86c7c952	3	Prod.Lex.toLexOrderHom	NOT-USED	OK
+272	p73-a5-def-1	ep-86c7c952	4	LE.ofLT	NOT-USED	OK
+272	p73-a5-def-1	ep-86c7c952	5	ringHomEquivModuleIsScalarTower	NOT-USED	OK
+272	p73-a5-def-1	ep-86c7c952	6	LE.le	USED	OK
+272	p73-a5-def-1	ep-86c7c952	7	HAdd.hAdd	USED	OK
+273	p2-a5-theorem-0	ep-b30c0338	0	lt_of_not_ge	USED	OK
+273	p2-a5-theorem-0	ep-b30c0338	1	Iff.rfl	USED	OK
+273	p2-a5-theorem-0	ep-b30c0338	2	decide_eq_true	NOT-USED	OK
+273	p2-a5-theorem-0	ep-b30c0338	3	congrArg	USED	OK
+273	p2-a5-theorem-0	ep-b30c0338	4	sdiff_sup_sdiff_cancel'	NOT-USED	OK
+273	p2-a5-theorem-0	ep-b30c0338	5	Iff.of_eq	NOT-USED	OK
+273	p2-a5-theorem-0	ep-b30c0338	6	lowerBounds_iUnion	NOT-USED	OK
+273	p2-a5-theorem-0	ep-b30c0338	7	le_of_not_gt	USED	OK
+276	p141-a5-theorem-1	ep-430d18b0	0	BEq.rfl	USED	OK
+276	p141-a5-theorem-1	ep-430d18b0	1	Eq.subst	NOT-USED	OK
+276	p141-a5-theorem-1	ep-430d18b0	2	List.findRev?_eq_findRev?TR	NOT-USED	OK
+276	p141-a5-theorem-1	ep-430d18b0	3	Eq.trans	USED	OK
+276	p141-a5-theorem-1	ep-430d18b0	4	heq_of_eq	NOT-USED	OK
+276	p141-a5-theorem-1	ep-430d18b0	5	List.filter_congr	USED	OK
+276	p141-a5-theorem-1	ep-430d18b0	6	congr	USED	OK
+276	p141-a5-theorem-1	ep-430d18b0	7	BEq.neq_of_beq_of_neq	NOT-USED	OK
+279	p112-a5-def-0	ep-6cc3ed48	0	String.Slice.Pos.next	USED	OK
+279	p112-a5-def-0	ep-6cc3ed48	1	String.Slice.Pos.get?	NOT-USED	OK
+279	p112-a5-def-0	ep-6cc3ed48	2	String.Internal.foldl	NOT-USED	OK
+279	p112-a5-def-0	ep-6cc3ed48	3	Nat.reduceNatEqExpr	NOT-USED	OK
+279	p112-a5-def-0	ep-6cc3ed48	4	String.endPos	NOT-USED	OK
+279	p112-a5-def-0	ep-6cc3ed48	5	String.Slice.Pattern.BackwardCharPredSearcher.needle	NOT-USED	OK
+279	p112-a5-def-0	ep-6cc3ed48	6	String.Slice.endPos	USED	OK
+279	p112-a5-def-0	ep-6cc3ed48	7	False.elim	USED	OK
+280	p35-a5-theorem-0	ep-907ac49e	0	getElem!_pos	USED	OK
+280	p35-a5-theorem-0	ep-907ac49e	1	Iff.comm	NOT-USED	OK
+280	p35-a5-theorem-0	ep-907ac49e	2	Iff.mpr	USED	OK
+280	p35-a5-theorem-0	ep-907ac49e	3	isSome_getElem?	NOT-USED	OK
+280	p35-a5-theorem-0	ep-907ac49e	4	Iff.mp	USED	OK
+280	p35-a5-theorem-0	ep-907ac49e	5	List.mem_iff_getElem	USED	OK
+280	p35-a5-theorem-0	ep-907ac49e	6	Iff.symm	NOT-USED	OK
+280	p35-a5-theorem-0	ep-907ac49e	7	List.prefix_concat	NOT-USED	OK
+281	p4-a5-def-1	ep-b73b127c	0	Neg.neg		UNSCORED(missing)
+281	p4-a5-def-1	ep-b73b127c	1	LT.lt		UNSCORED(missing)
+281	p4-a5-def-1	ep-b73b127c	2	DecidableEq		UNSCORED(missing)
+281	p4-a5-def-1	ep-b73b127c	3	LT.toSBtw		UNSCORED(missing)
+281	p4-a5-def-1	ep-b73b127c	4	UniformCauchySeqOn		UNSCORED(missing)
+281	p4-a5-def-1	ep-b73b127c	5	finEquivPowers		UNSCORED(missing)
+281	p4-a5-def-1	ep-b73b127c	6	Eq.mpr		UNSCORED(missing)
+281	p4-a5-def-1	ep-b73b127c	7	OfNat.ofNat		UNSCORED(missing)
+284	p60-a0-def-0	ep-ec5add71	0	addEquivOfAddOrderOfEq		UNSCORED(missing)
+284	p60-a0-def-0	ep-ec5add71	1	id		UNSCORED(missing)
+284	p60-a0-def-0	ep-ec5add71	2	Classical.strongIndefiniteDescription		UNSCORED(missing)
+284	p60-a0-def-0	ep-ec5add71	3	modifyThe		UNSCORED(missing)
+284	p60-a0-def-0	ep-ec5add71	4	jacobiSum		UNSCORED(missing)
+284	p60-a0-def-0	ep-ec5add71	5	HAdd.hAdd		UNSCORED(missing)
+284	p60-a0-def-0	ep-ec5add71	6	Classical.propDecidable		UNSCORED(missing)
+284	p60-a0-def-0	ep-ec5add71	7	OfNat.ofNat		UNSCORED(missing)
+285	p146-a5-theorem-0	ep-422ea521	0	And.imp_right		UNSCORED(missing)
+285	p146-a5-theorem-0	ep-422ea521	1	ne_false_of_eq_true		UNSCORED(missing)
+285	p146-a5-theorem-0	ep-422ea521	2	Int.natCast_nonneg		UNSCORED(missing)
+285	p146-a5-theorem-0	ep-422ea521	3	Int.ble'_eq_true		UNSCORED(missing)
+285	p146-a5-theorem-0	ep-422ea521	4	Nat.one_shiftLeft		UNSCORED(missing)
+285	p146-a5-theorem-0	ep-422ea521	5	congrArg		UNSCORED(missing)
+285	p146-a5-theorem-0	ep-422ea521	6	Nat.ge_of_not_lt		UNSCORED(missing)
+285	p146-a5-theorem-0	ep-422ea521	7	And.right		UNSCORED(missing)
+286	p56-a0-theorem-1	ep-23eae95a	0	implies_congr	USED	OK
+286	p56-a0-theorem-1	ep-23eae95a	1	Bool.decide_or	USED	OK
+286	p56-a0-theorem-1	ep-23eae95a	2	congrArg	USED	OK
+286	p56-a0-theorem-1	ep-23eae95a	3	eq_self	NOT-USED	OK
+286	p56-a0-theorem-1	ep-23eae95a	4	noConfusion_of_Nat	NOT-USED	OK
+286	p56-a0-theorem-1	ep-23eae95a	5	decide_eq_true_eq	USED	OK
+286	p56-a0-theorem-1	ep-23eae95a	6	Bool.or_and_distrib_right	NOT-USED	OK
+286	p56-a0-theorem-1	ep-23eae95a	7	true_and	NOT-USED	OK
+290	p74-a5-def-1	ep-ea480733	0	Function.Embedding.pprodMap	NOT-USED	OK
+290	p74-a5-def-1	ep-ea480733	1	Not	USED	OK
+290	p74-a5-def-1	ep-ea480733	2	Function.comp	USED	OK
+290	p74-a5-def-1	ep-ea480733	3	Eq.mpr	USED	OK
+290	p74-a5-def-1	ep-ea480733	4	modify	NOT-USED	OK
+290	p74-a5-def-1	ep-ea480733	5	Function.const	NOT-USED	OK
+290	p74-a5-def-1	ep-ea480733	6	OfNat.ofNat	USED	OK
+290	p74-a5-def-1	ep-ea480733	7	RestrictScalars	NOT-USED	OK
+291	p38-a0-theorem-1	ep-83e1d461	0	Eq.trans		UNSCORED(missing)
+291	p38-a0-theorem-1	ep-83e1d461	1	Int.sub_nonneg_of_le		UNSCORED(missing)
+291	p38-a0-theorem-1	ep-83e1d461	2	getElem!_pos		UNSCORED(missing)
+291	p38-a0-theorem-1	ep-83e1d461	3	Int.max_self		UNSCORED(missing)
+291	p38-a0-theorem-1	ep-83e1d461	4	List.eraseIdx_modify_of_lt		UNSCORED(missing)
+291	p38-a0-theorem-1	ep-83e1d461	5	List.getElem?_take_of_lt		UNSCORED(missing)
+291	p38-a0-theorem-1	ep-83e1d461	6	Eq.subst		UNSCORED(missing)
+291	p38-a0-theorem-1	ep-83e1d461	7	getElem?_pos		UNSCORED(missing)
+293	p128-a0-def-1	ep-15dd1d12	0	Unit	USED	OK
+293	p128-a0-def-1	ep-15dd1d12	1	Int.rawCast	USED	OK
+293	p128-a0-def-1	ep-15dd1d12	2	GrpMaxAux	NOT-USED	OK
+293	p128-a0-def-1	ep-15dd1d12	3	LE.toBtw	NOT-USED	OK
+293	p128-a0-def-1	ep-15dd1d12	4	LE.le	USED	OK
+293	p128-a0-def-1	ep-15dd1d12	5	Int.Linear.Poly.addConst_k	NOT-USED	OK
+293	p128-a0-def-1	ep-15dd1d12	6	getThe	NOT-USED	OK
+293	p128-a0-def-1	ep-15dd1d12	7	abs	USED	OK
+297	p52-a0-def-0	ep-cbd5aec2	0	semiOutParam	NOT-USED	OK
+297	p52-a0-def-0	ep-cbd5aec2	1	GetElem?.getElem!	USED	OK
+297	p52-a0-def-0	ep-cbd5aec2	2	absurd	USED	OK
+297	p52-a0-def-0	ep-cbd5aec2	3	IsPathConnected	NOT-USED	OK
+297	p52-a0-def-0	ep-cbd5aec2	4	Eq.mpr	USED	OK
+297	p52-a0-def-0	ep-cbd5aec2	5	GetElem?.getElem?	NOT-USED	OK
+297	p52-a0-def-0	ep-cbd5aec2	6	panic	NOT-USED	OK
+297	p52-a0-def-0	ep-cbd5aec2	7	id	USED	OK
+298	p35-a0-theorem-1	ep-7e19f23e	0	outOfBounds_eq_default	NOT-USED	OK
+298	p35-a0-theorem-1	ep-7e19f23e	1	List.mem_iff_getElem	USED	OK
+298	p35-a0-theorem-1	ep-7e19f23e	2	List.mapFinIdx_congr	NOT-USED	OK
+298	p35-a0-theorem-1	ep-7e19f23e	3	congrArg	USED	OK
+298	p35-a0-theorem-1	ep-7e19f23e	4	List.getElem_mem	USED	OK
+298	p35-a0-theorem-1	ep-7e19f23e	5	List.none_eq_getElem?_iff	NOT-USED	OK
+298	p35-a0-theorem-1	ep-7e19f23e	6	congr	NOT-USED	OK
+298	p35-a0-theorem-1	ep-7e19f23e	7	getElem!_pos	USED	OK
+300	p11-a5-theorem-1	ep-b958c4c0	0	String.Pos.Raw.utf8PrevAux_lt_of_pos		UNSCORED(missing)
+300	p11-a5-theorem-1	ep-b958c4c0	1	Eq.symm		UNSCORED(missing)
+300	p11-a5-theorem-1	ep-b958c4c0	2	String.Slice.Pos.ofSliceFrom_inj		UNSCORED(missing)
+300	p11-a5-theorem-1	ep-b958c4c0	3	List.nil_append		UNSCORED(missing)
+300	p11-a5-theorem-1	ep-b958c4c0	4	Eq.subst		UNSCORED(missing)
+300	p11-a5-theorem-1	ep-b958c4c0	5	List.isEqv_cons₂		UNSCORED(missing)
+300	p11-a5-theorem-1	ep-b958c4c0	6	String.toList_empty		UNSCORED(missing)
+300	p11-a5-theorem-1	ep-b958c4c0	7	String.Slice.Pos.isAtEnd_iff		UNSCORED(missing)
+301	p142-a5-theorem-0	ep-093b5e2c	0	eq_true_of_decide		UNSCORED(missing)
+301	p142-a5-theorem-0	ep-093b5e2c	1	Or.intro_right		UNSCORED(missing)
+301	p142-a5-theorem-0	ep-093b5e2c	2	Int.add_one_le_of_lt		UNSCORED(missing)
+301	p142-a5-theorem-0	ep-093b5e2c	3	Or.elim		UNSCORED(missing)
+301	p142-a5-theorem-0	ep-093b5e2c	4	if_pos		UNSCORED(missing)
+301	p142-a5-theorem-0	ep-093b5e2c	5	mt		UNSCORED(missing)
+301	p142-a5-theorem-0	ep-093b5e2c	6	Int.mul_add_fmod_self_right		UNSCORED(missing)
+301	p142-a5-theorem-0	ep-093b5e2c	7	and_false		UNSCORED(missing)
+302	p149-a0-theorem-0	ep-6e724ff5	0	List.zipWith_map_left		UNSCORED(missing)
+302	p149-a0-theorem-0	ep-6e724ff5	1	sdiff_right_comm		UNSCORED(missing)
+302	p149-a0-theorem-0	ep-6e724ff5	2	Nat.le_of_not_lt		UNSCORED(missing)
+302	p149-a0-theorem-0	ep-6e724ff5	3	ne_true_of_eq_false		UNSCORED(missing)
+302	p149-a0-theorem-0	ep-6e724ff5	4	List.Perm.symm		UNSCORED(missing)
+302	p149-a0-theorem-0	ep-6e724ff5	5	congrArg		UNSCORED(missing)
+302	p149-a0-theorem-0	ep-6e724ff5	6	le_antisymm		UNSCORED(missing)
+302	p149-a0-theorem-0	ep-6e724ff5	7	Nat.gcd_eq_zero_iff		UNSCORED(missing)
+303	p112-a5-def-1	ep-6cc3ed48	0	Decidable.repr	NOT-USED	OK
+303	p112-a5-def-1	ep-6cc3ed48	1	QuasilinearOn	NOT-USED	OK
+303	p112-a5-def-1	ep-6cc3ed48	2	Decidable.decide	USED	OK
+303	p112-a5-def-1	ep-6cc3ed48	3	cond	NOT-USED	OK
+303	p112-a5-def-1	ep-6cc3ed48	4	dite	USED	OK
+303	p112-a5-def-1	ep-6cc3ed48	5	List.zipIdxLE	NOT-USED	OK
+303	p112-a5-def-1	ep-6cc3ed48	6	List.tail	USED	OK
+303	p112-a5-def-1	ep-6cc3ed48	7	HAppend.hAppend	USED	OK
+304	p16-a0-theorem-0	ep-8e925cbb	0	Eq.faithful_of_comp	NOT-USED	OK
+304	p16-a0-theorem-0	ep-8e925cbb	1	of_eq_true	USED	OK
+304	p16-a0-theorem-0	ep-8e925cbb	2	dite_false	NOT-USED	OK
+304	p16-a0-theorem-0	ep-8e925cbb	3	Eq.subst	NOT-USED	OK
+304	p16-a0-theorem-0	ep-8e925cbb	4	congrArg	USED	OK
+304	p16-a0-theorem-0	ep-8e925cbb	5	of_decide_eq_true	NOT-USED	OK
+304	p16-a0-theorem-0	ep-8e925cbb	6	Eq.trans	USED	OK
+304	p16-a0-theorem-0	ep-8e925cbb	7	Eq.symm	USED	OK
+305	p112-a5-theorem-1	ep-6cc3ed48	0	Eq.symm		UNSCORED(missing)
+305	p112-a5-theorem-1	ep-6cc3ed48	1	Eq.subst		UNSCORED(missing)
+305	p112-a5-theorem-1	ep-6cc3ed48	2	Bool.and_true		UNSCORED(missing)
+305	p112-a5-theorem-1	ep-6cc3ed48	3	Bool.or_false		UNSCORED(missing)
+305	p112-a5-theorem-1	ep-6cc3ed48	4	And.left		UNSCORED(missing)
+305	p112-a5-theorem-1	ep-6cc3ed48	5	Int.le_shiftRight_of_nonneg		UNSCORED(missing)
+305	p112-a5-theorem-1	ep-6cc3ed48	6	And.right		UNSCORED(missing)
+305	p112-a5-theorem-1	ep-6cc3ed48	7	Int.natCast_add		UNSCORED(missing)
+307	p73-a0-theorem-1	ep-88778e4b	0	List.partialSums_cons	NOT-USED	OK
+307	p73-a0-theorem-1	ep-88778e4b	1	and_false	NOT-USED	OK
+307	p73-a0-theorem-1	ep-88778e4b	2	List.map_coe_finRange_eq_range	USED	OK
+307	p73-a0-theorem-1	ep-88778e4b	3	eq_false	USED	OK
+307	p73-a0-theorem-1	ep-88778e4b	4	and_iff_left_of_imp	NOT-USED	OK
+307	p73-a0-theorem-1	ep-88778e4b	5	heq_eq_eq	NOT-USED	OK
+307	p73-a0-theorem-1	ep-88778e4b	6	have_congr'	NOT-USED	OK
+307	p73-a0-theorem-1	ep-88778e4b	7	not_true_eq_false	USED	OK
+308	p16-a5-def-0	ep-50a56ccd	0	Unit	NOT-USED	OK
+308	p16-a5-def-0	ep-50a56ccd	1	GetElem.getElem	USED	OK
+308	p16-a5-def-0	ep-50a56ccd	2	seminormFromConst'	NOT-USED	OK
+308	p16-a5-def-0	ep-50a56ccd	3	Eq.mpr	USED	OK
+308	p16-a5-def-0	ep-50a56ccd	4	DecidableEq	USED	OK
+308	p16-a5-def-0	ep-50a56ccd	5	id	NOT-USED	OK
+308	p16-a5-def-0	ep-50a56ccd	6	modifyThe	NOT-USED	OK
+308	p16-a5-def-0	ep-50a56ccd	7	List.Vector.casesOn₂	NOT-USED	OK
+309	p148-a5-theorem-0	ep-968c428f	0	cond_false		UNSCORED(missing)
+309	p148-a5-theorem-0	ep-968c428f	1	Int.natCast_add		UNSCORED(missing)
+309	p148-a5-theorem-0	ep-968c428f	2	List.eraseIdx_sublist		UNSCORED(missing)
+309	p148-a5-theorem-0	ep-968c428f	3	ite_congr		UNSCORED(missing)
+309	p148-a5-theorem-0	ep-968c428f	4	List.take_sublist		UNSCORED(missing)
+309	p148-a5-theorem-0	ep-968c428f	5	Int.mul_dvd_mul_left		UNSCORED(missing)
+309	p148-a5-theorem-0	ep-968c428f	6	decide_eq_false		UNSCORED(missing)
+309	p148-a5-theorem-0	ep-968c428f	7	congrArg		UNSCORED(missing)
+312	p60-a5-theorem-0	ep-0144a0f3	0	true_or	NOT-USED	OK
+312	p60-a5-theorem-0	ep-0144a0f3	1	Int.add_one_le_of_lt	USED	OK
+312	p60-a5-theorem-0	ep-0144a0f3	2	eq_self	USED	OK
+312	p60-a5-theorem-0	ep-0144a0f3	3	Int.sub_bmod	NOT-USED	OK
+312	p60-a5-theorem-0	ep-0144a0f3	4	Finset.sum_singleton	USED	OK
+312	p60-a5-theorem-0	ep-0144a0f3	5	Nat.lt_or_gt_of_ne	USED	OK
+312	p60-a5-theorem-0	ep-0144a0f3	6	Nat.min_le_right	NOT-USED	OK
+312	p60-a5-theorem-0	ep-0144a0f3	7	Finset.singletonMonoidHom_apply	NOT-USED	OK
+313	p149-a5-def-0	ep-32ec30df	0	OfNat.ofNat		UNSCORED(missing)
+313	p149-a5-def-0	ep-32ec30df	1	Unit.unit		UNSCORED(missing)
+313	p149-a5-def-0	ep-32ec30df	2	Unit		UNSCORED(missing)
+313	p149-a5-def-0	ep-32ec30df	3	dite		UNSCORED(missing)
+313	p149-a5-def-0	ep-32ec30df	4	HMod.hMod		UNSCORED(missing)
+313	p149-a5-def-0	ep-32ec30df	5	finsuppTensorFinsuppLid		UNSCORED(missing)
+313	p149-a5-def-0	ep-32ec30df	6	String.Legacy.Iterator.foldUntil		UNSCORED(missing)
+313	p149-a5-def-0	ep-32ec30df	7	mkFactorOrderIsoOfFactorDvdEquiv		UNSCORED(missing)
+314	p4-a5-theorem-1	ep-b73b127c	0	le_of_antisymmRel_of_le	NOT-USED	OK
+314	p4-a5-theorem-1	ep-b73b127c	1	eq_true_of_ne_false	NOT-USED	OK
+314	p4-a5-theorem-1	ep-b73b127c	2	ne_of_gt	USED	OK
+314	p4-a5-theorem-1	ep-b73b127c	3	dvd_prime_pow	NOT-USED	OK
+314	p4-a5-theorem-1	ep-b73b127c	4	and_congr_right_iff	NOT-USED	OK
+314	p4-a5-theorem-1	ep-b73b127c	5	of_eq_true	USED	OK
+314	p4-a5-theorem-1	ep-b73b127c	6	eq_div_iff	USED	OK
+314	p4-a5-theorem-1	ep-b73b127c	7	of_decide_eq_true	NOT-USED	OK
