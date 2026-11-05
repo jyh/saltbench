@@ -1,0 +1,320 @@
+seq	kind	item	episode	arm	problem	answer	on_last_line	u2_parsed	tokens	session_id	status	end
+1	U2	p142-a5-def-0	ep-093b5e2c	a5	142			8	38859	8be50185-f6c2-4dd3-8118-2dddcbae438e	OK	2026-10-25T07:19:29Z
+2	U1	p82-10-ref	ep-47933543	a5	82	yes	yes		15260	e98f59ac-0adf-4bbe-a639-a24954caaa3b	OK	2026-10-25T07:20:43Z
+3	U2	p128-a0-theorem-1	ep-15dd1d12	a0	128			8	57155	a812e8bf-42ae-40e4-ad70-b35efcc9d1c1	OK	2026-10-25T07:44:29Z
+4	U2	p31-a0-theorem-0	ep-3805ba91	a0	31			0	0		UNSCORED(no parseable answer after one retry)	2026-10-25T08:44:35Z
+5	U2	p148-a0-def-0	ep-9862efe9	a0	148			8	52953	16171e72-6dab-48a9-b279-aa4354e02c89	OK	2026-10-25T08:53:38Z
+6	U1	p2-7-ref	ep-e4978cbf	a0	2	yes	yes		35743	12751d95-fd42-4bb0-99b4-1978ed97b4e7	OK	2026-10-25T08:58:41Z
+7	U2	p73-a0-theorem-0	ep-88778e4b	a0	73			8	61361	92ba0212-7e1f-459f-af58-8975d6364c62	OK	2026-10-25T09:23:13Z
+8	U2	p141-a0-def-0	ep-cf287720	a0	141			8	43523	af9672fd-e5b1-468e-898c-074f2a69c4e8	OK	2026-10-25T09:28:26Z
+9	U2	p141-a0-def-1	ep-cf287720	a0	141			8	51038	42154599-a56d-4298-903a-4fe3749607b1	OK	2026-10-25T09:35:29Z
+10	U1	p16-2-perturb	ep-50a56ccd	a5	16	no	yes		18343	d393b63c-aea3-4e56-8e68-8c6a6ff4beeb	OK	2026-10-25T09:37:13Z
+11	U2	p73-a0-def-1	ep-88778e4b	a0	73			8	40617	fb533130-0bcb-47a8-a390-9a78f6f919dc	OK	2026-10-25T09:42:05Z
+12	U2	p82-a0-theorem-0	ep-2295b659	a0	82			8	47360	731aa535-192b-456c-8790-738761b22774	OK	2026-10-25T09:49:09Z
+13	U2	p74-a0-theorem-1	ep-eb175ef8	a0	74			0	0		UNSCORED(no parseable answer after one retry)	2026-10-25T10:49:17Z
+14	U2	p2-a5-theorem-1	ep-b30c0338	a5	2			8	62075	a5273b98-d5bc-47ae-a458-247e2adba206	OK	2026-10-25T11:34:48Z
+15	U1	p35-6-ref	ep-907ac49e	a5	35	yes	yes		12678	bad746ad-6629-49ab-84d9-85262dea8ceb	OK	2026-10-25T11:35:32Z
+16	U2	p31-a5-theorem-1	ep-f9653fae	a5	31			8	32961	1caae252-e25a-467a-8465-26a60cf78670	OK	2026-10-25T11:39:07Z
+17	U2	p52-a5-theorem-0	ep-9106ded7	a5	52			0	0		UNSCORED(no parseable answer after one retry)	2026-10-25T12:39:16Z
+18	U1	p2-5-perturb	ep-e4978cbf	a0	2	no	yes		41667	475e8f08-09ad-4771-9b37-38d3e0ddd1b2	OK	2026-10-25T12:45:11Z
+19	U1	p82-0-perturb	ep-2295b659	a0	82	no	yes		27371	591c7421-d6cd-4d9d-bee4-6e5f9ed3c463	OK	2026-10-25T12:48:41Z
+20	U2	p74-a5-def-0	ep-ea480733	a5	74			8	30601	19ecb912-d01c-4093-bdff-1d3d2eae3452	OK	2026-10-25T12:51:51Z
+21	U1	p16-2-ref	ep-8e925cbb	a0	16	yes	yes		28865	18a4e002-59dc-4651-b518-2d52e9662f68	OK	2026-10-25T12:55:10Z
+22	U2	p38-a5-def-0	ep-e400a693	a5	38			8	27164	d940518e-8afc-4b67-bff4-1a7cc29d14b3	OK	2026-10-25T12:57:48Z
+23	U1	p4-5-ref	ep-0851f3b6	a0	4	yes	yes		25526	c0febbcc-6412-45fc-bc17-779d1e75b56a	OK	2026-10-25T13:00:03Z
+24	U1	p4-7-perturb	ep-b73b127c	a5	4	no	yes		17967	ba80b65c-2703-4de9-8389-bb2287de3391	OK	2026-10-25T13:01:29Z
+25	U2	p2-a0-def-1	ep-e4978cbf	a0	2			8	48308	29b35cae-7729-4294-b511-268990aca60b	OK	2026-10-25T13:09:26Z
+26	U2	p2-a5-def-1	ep-b30c0338	a5	2			0	0		UNSCORED(no parseable answer after one retry)	2026-10-25T13:59:26Z
+27	U2	p136-a5-theorem-1	ep-bd5beaa6	a5	136			6	42705	9e62bc20-4542-4de5-bdb5-f461a26d9338	OK	2026-10-25T14:04:37Z
+28	U1	p31-8-perturb	ep-3805ba91	a0	31	no	yes		10202	80cac22a-c894-4872-a6a4-7faa98f2042e	OK	2026-10-25T14:05:12Z
+29	U1	p52-0-test	ep-cbd5aec2	a0	52	yes	yes		37289	47dc2f39-19f8-4f3a-87a2-91e875f96b50	OK	2026-10-25T14:08:38Z
+30	U2	p82-a5-def-1	ep-47933543	a5	82			8	41141	dbaabe4d-9fd6-4fab-8d8e-4f2f226f89fb	OK	2026-10-25T14:14:18Z
+31	U2	p148-a5-def-0	ep-968c428f	a5	148			0	0		UNSCORED(no parseable answer after one retry)	2026-10-25T15:11:34Z
+32	U2	p148-a5-def-1	ep-968c428f	a5	148			8	57334	39e7a162-0b28-4a43-8b51-26f2808d2f87	OK	2026-10-25T15:35:17Z
+33	U2	p59-a5-def-0	ep-7caea960	a5	59			8	47893	d2e85202-a1e8-408a-a4f8-a9547823927e	OK	2026-10-25T15:42:12Z
+34	U1	p2-7-ref	ep-b30c0338	a5	2	yes	yes		16847	878b8c19-b595-4023-aaf0-6890693c2e11	OK	2026-10-25T15:43:37Z
+35	U2	p11-a5-def-0	ep-b958c4c0	a5	11			0	0		UNSCORED(no parseable answer after one retry)	2026-10-25T16:43:47Z
+36	U2	p54-a0-def-1	ep-3f370f25	a0	54			5	35832	07ec9960-3559-4c85-9674-7218912e5fd7	OK	2026-10-25T16:48:27Z
+37	U2	p59-a5-theorem-0	ep-7caea960	a5	59			8	47016	8c8d3402-9cfa-434b-a4fa-88cf2d37df46	OK	2026-10-25T16:54:54Z
+38	U1	p31-4-ref	ep-f9653fae	a5	31	yes	yes		14105	603cfa61-cf10-4d21-b543-f92cd19f0527	OK	2026-10-25T16:55:54Z
+39	U1	p31-9-ref	ep-3805ba91	a0	31	yes	yes		29588	a33ce9bb-53ad-45f7-a2b9-f24aa7cad118	OK	2026-10-25T16:59:31Z
+40	U1	p16-0-perturb	ep-8e925cbb	a0	16	no	yes		37316	5f33af81-32d8-4499-9cec-dae09844a51c	OK	2026-10-25T17:04:38Z
+41	U2	p142-a0-theorem-0	ep-7034f448	a0	142			0	0		UNSCORED(no parseable answer after one retry)	2026-10-25T17:53:50Z
+42	U1	p148-1-perturb	ep-968c428f	a5	148	no	yes		18821	7ec77646-423a-474a-af41-258b855b350f	OK	2026-10-25T17:54:59Z
+43	U2	p136-a0-theorem-0	ep-3a028455	a0	136			0	0		UNSCORED(no parseable answer after one retry)	2026-10-25T18:55:06Z
+44	U2	p148-a0-theorem-1	ep-9862efe9	a0	148			8	56825	14267129-0a88-40f7-8bbc-abaea75ba103	OK	2026-10-25T19:34:07Z
+45	U1	p2-3-perturb	ep-e4978cbf	a0	2	yes	yes		30221	ddfd4baa-76c4-4c57-a362-22d08309608f	OK	2026-10-25T19:38:04Z
+46	U2	p35-a5-def-0	ep-907ac49e	a5	35			8	33850	a59f9bca-1dae-4402-af28-d677d502e542	OK	2026-10-25T19:42:10Z
+47	U2	p149-a0-def-0	ep-6e724ff5	a0	149			8	43895	2ad7ba68-b46f-4aab-9f33-0917720f3f9f	OK	2026-10-25T19:48:35Z
+48	U2	p74-a0-def-0	ep-eb175ef8	a0	74			8	56118	d6c4759d-55e5-4b42-bbd4-f0c10c19e185	OK	2026-10-25T19:57:53Z
+49	U1	p148-1-perturb	ep-9862efe9	a0	148	no	yes		28202	fcd38cf1-db5c-42c5-9cd0-619e9894209d	OK	2026-10-25T20:01:01Z
+50	U2	p56-a5-def-1	ep-09f7507d	a5	56			8	48785	8d0f479f-6826-4bed-b7a6-91769b4f2acf	OK	2026-10-25T20:08:16Z
+51	U2	p4-a0-theorem-0	ep-0851f3b6	a0	4			0	0		UNSCORED(no parseable answer after one retry)	2026-10-25T21:08:24Z
+52	U1	p35-3-ref	ep-7e19f23e	a0	35	yes	yes		38892	e9061507-2554-4e7c-bba3-426c917d61db	OK	2026-10-25T21:13:52Z
+53	U1	p4-2-ref	ep-0851f3b6	a0	4	yes	yes		33865	0be13b16-e61f-4bb2-a67d-308304ac4bf6	OK	2026-10-25T21:17:42Z
+54	U2	p4-a5-def-0	ep-b73b127c	a5	4			8	29995	091f1df8-da30-4f7a-9011-b3d2f4977702	OK	2026-10-25T21:21:02Z
+55	U2	p31-a0-def-1	ep-3805ba91	a0	31			8	44173	7e3bbb0a-7b00-488f-8311-1ca6a893c63d	OK	2026-10-25T21:27:55Z
+56	U1	p59-1-perturb	ep-7caea960	a5	59	no	yes		18878	eabd18f3-1d49-43e5-9bf1-0ed7c704e57e	OK	2026-10-25T21:29:36Z
+57	U1	p35-6-perturb	ep-907ac49e	a5	35	no	yes		21748	3d690dcd-8634-4217-ae80-001a9b45725a	OK	2026-10-25T21:31:10Z
+58	U2	p92-a5-theorem-0	ep-b0c972bb	a5	92			0	0		UNSCORED(no parseable answer after one retry)	2026-10-25T22:19:58Z
+59	U1	p31-12-ref	ep-3805ba91	a0	31	yes	yes		15720	941d799d-a981-49c7-b833-2ff973d38a0c	OK	2026-10-25T22:21:30Z
+60	U2	p128-a5-def-1	ep-7faf263a	a5	128			8	55666	c85ae409-5b2a-48ec-badd-220221734cb3	OK	2026-10-25T22:29:31Z
+61	U1	p31-4-perturb	ep-3805ba91	a0	31	no	yes		31051	39f3aa76-6a00-461b-8ea2-8d555e657778	OK	2026-10-25T22:33:27Z
+62	U1	p16-4-ref	ep-8e925cbb	a0	16	yes	yes		31995	286e309a-4836-4d92-be76-412dd95876d3	OK	2026-10-25T22:37:25Z
+63	U2	p16-a0-def-1	ep-8e925cbb	a0	16			8	33033	38d282b2-8d44-43ae-8cfc-a24737dad472	OK	2026-10-25T22:41:55Z
+64	U1	p4-1-perturb	ep-b73b127c	a5	4	yes	yes		19119	ef12016b-16e4-4e2b-9e3f-52c53d1dfbd9	OK	2026-10-25T22:43:40Z
+65	U2	p128-a5-def-0	ep-7faf263a	a5	128			8	44538	7e2884c3-5be6-477b-b84a-7e05916701ce	OK	2026-10-25T22:49:45Z
+66	U2	p54-a0-def-0	ep-3f370f25	a0	54			8	39055	497fab54-0687-4287-aad5-097c6da94198	OK	2026-10-25T22:55:30Z
+67	U2	p82-a0-def-1	ep-2295b659	a0	82			8	31783	8ae3788b-d9e2-44c3-9a23-6bf06be5035f	OK	2026-10-25T22:59:59Z
+68	U2	p35-a5-theorem-1	ep-907ac49e	a5	35			8	45385	9ddba4ea-7a94-4b5c-befe-1378395e9159	OK	2026-10-25T23:06:13Z
+69	U1	p4-6-ref	ep-b73b127c	a5	4	yes	yes		17872	45354a50-b539-4c7a-8d3a-369d69d2b5f4	OK	2026-10-25T23:07:44Z
+70	U2	p56-a0-def-0	ep-23eae95a	a0	56			8	54143	a35eb6d4-1f05-4851-9432-8d6ee2c94533	OK	2026-10-25T23:16:25Z
+71	U1	p16-7-ref	ep-8e925cbb	a0	16	yes	yes		33265	df363a6b-e089-4e45-b3a0-0c06b3569ada	OK	2026-10-25T23:21:00Z
+72	U1	p31-12-ref	ep-f9653fae	a5	31	yes	yes		13486	e95c1cc0-accb-4ceb-886c-e7bcad4e16c9	OK	2026-10-25T23:21:43Z
+73	U2	p11-a5-def-1	ep-b958c4c0	a5	11			8	40875	918ea47a-cabe-4efb-8882-dd0db1cc9fb5	OK	2026-10-25T23:26:06Z
+74	U2	p38-a5-def-1	ep-e400a693	a5	38			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T00:13:15Z
+75	U2	p146-a5-theorem-1	ep-422ea521	a5	146			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T01:13:22Z
+76	U1	p148-0-perturb	ep-968c428f	a5	148	no	yes		16935	fbcf2af9-60b7-4847-99c5-2ae3c60d4d97	OK	2026-10-26T01:14:05Z
+77	U2	p92-a5-theorem-1	ep-b0c972bb	a5	92			8	45394	d244e9c6-4a27-4040-8bfd-a27041d4291c	OK	2026-10-26T01:19:58Z
+78	U2	p4-a5-theorem-0	ep-b73b127c	a5	4			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T02:20:06Z
+79	U2	p146-a5-def-1	ep-422ea521	a5	146			8	61178	ce4a2bb3-d2b9-488e-b068-5ec0c292ab30	OK	2026-10-26T02:57:25Z
+80	U2	p59-a0-def-0	ep-6a4bc88d	a0	59			8	53223	1d4e3f5a-e7f5-40d2-9760-9c30c52f346c	OK	2026-10-26T03:05:58Z
+81	U1	p35-7-perturb	ep-907ac49e	a5	35	no	yes		22007	8ff45171-e536-492e-b8e5-9bd3e1dc0274	OK	2026-10-26T03:08:00Z
+82	U2	p52-a0-def-1	ep-cbd5aec2	a0	52			8	36499	19468ae5-235b-4846-afbd-5a81d9ba81e9	OK	2026-10-26T03:13:07Z
+83	U1	p82-2-ref	ep-47933543	a5	82	yes	yes		15158	3490ee14-9d1a-40b3-a31f-217659d5f390	OK	2026-10-26T03:14:17Z
+84	U2	p60-a0-theorem-1	ep-ec5add71	a0	60			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T04:14:25Z
+85	U2	p73-a5-theorem-0	ep-86c7c952	a5	73			8	63450	cd4eea17-fd26-4ab7-8e51-d277cf5cb32c	OK	2026-10-26T04:41:45Z
+86	U2	p54-a5-def-0	ep-00f56440	a5	54			8	39156	d7964fc6-665b-44e8-a21a-ed75b692b983	OK	2026-10-26T04:46:45Z
+87	U1	p74-2-test	ep-ea480733	a5	74	yes	yes		14558	a099b55e-098f-429b-bb99-982fde7c7eea	OK	2026-10-26T04:47:36Z
+88	U2	p38-a5-theorem-0	ep-e400a693	a5	38			8	68157	f4dfdd0f-ab8f-4e0c-b4ef-7ddfea1c7e16	OK	2026-10-26T04:57:36Z
+89	U2	p92-a0-theorem-0	ep-26a7ef9e	a0	92			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T05:57:43Z
+90	U2	p73-a0-def-0	ep-88778e4b	a0	73			8	58820	471aae99-a3cb-4f92-8fb5-74697dbab5e5	OK	2026-10-26T06:07:22Z
+91	U1	p35-3-ref	ep-907ac49e	a5	35	yes	yes		14442	f524db81-85b0-4d8d-9188-89e50852be1f	OK	2026-10-26T06:08:22Z
+92	U2	p52-a5-def-0	ep-9106ded7	a5	52			8	31534	74658090-4f83-4db2-8fbd-ebf9b3832416	OK	2026-10-26T06:12:13Z
+93	U2	p136-a0-def-1	ep-3a028455	a0	136			8	53591	3ec11698-b1f7-4466-8ece-e81baaba40b2	OK	2026-10-26T06:21:07Z
+94	U2	p38-a0-def-0	ep-83e1d461	a0	38			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T07:10:37Z
+95	U2	p141-a0-theorem-1	ep-cf287720	a0	141			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T07:47:48Z
+96	U1	p82-9-perturb	ep-47933543	a5	82	no	yes		13578	5dde3178-accc-472f-90ed-85d7dac7241c	OK	2026-10-26T07:48:41Z
+97	U1	p35-7-ref	ep-907ac49e	a5	35	yes	yes		14006	0b2b801e-c2e2-4442-b141-4a91ed9eb043	OK	2026-10-26T07:49:34Z
+98	U2	p31-a5-theorem-0	ep-f9653fae	a5	31			8	42695	4e160e4e-d7f2-4bda-8423-0467f9f8c443	OK	2026-10-26T08:21:17Z
+99	U2	p141-a0-theorem-0	ep-cf287720	a0	141			8	58973	a3bc7822-3765-4c0c-93b7-e00f28c20a11	OK	2026-10-26T08:30:22Z
+100	U2	p112-a0-theorem-0	ep-558aedfa	a0	112			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T09:30:29Z
+101	U2	p59-a0-theorem-0	ep-6a4bc88d	a0	59			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T10:15:44Z
+102	U1	p2-5-ref	ep-e4978cbf	a0	2	yes	yes		32666	da873b7d-bc3a-48d1-997d-ea4a1f82a6c3	OK	2026-10-26T10:20:28Z
+103	U1	p31-10-ref	ep-f9653fae	a5	31	yes	yes		12283	cc79a8cf-8b59-424b-8b54-b18106949017	OK	2026-10-26T10:21:04Z
+104	U1	p2-1-ref	ep-e4978cbf	a0	2	yes	yes		47320	d35b8e4f-0c4a-4d11-9dba-2062af26bc4d	OK	2026-10-26T10:27:55Z
+105	U2	p141-a5-theorem-0	ep-430d18b0	a5	141			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T11:28:03Z
+106	U2	p136-a0-def-0	ep-3a028455	a0	136			8	58538	b629dbf3-baf1-4206-bfe0-d6ca4154e2ed	OK	2026-10-26T11:37:31Z
+107	U1	p31-10-perturb	ep-f9653fae	a5	31	no	yes		12347	466203ab-cc8a-479c-aa24-aa602a25fb88	OK	2026-10-26T11:38:05Z
+108	U1	p35-0-ref	ep-907ac49e	a5	35	yes	yes		12040	53df6232-7b8f-465c-800c-d673a41a2f4d	OK	2026-10-26T11:38:37Z
+109	U2	p38-a5-theorem-1	ep-e400a693	a5	38			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T12:38:43Z
+110	U2	p16-a0-def-0	ep-8e925cbb	a0	16			8	57897	d49b334a-ab20-489f-a9b7-269d83cc6eea	OK	2026-10-26T13:18:17Z
+111	U2	p82-a0-theorem-1	ep-2295b659	a0	82			7	42122	1bc63a50-7e28-46f5-bf88-f1f781d83514	OK	2026-10-26T13:24:31Z
+112	U2	p52-a0-theorem-0	ep-cbd5aec2	a0	52			8	40529	00b78f45-f5c0-4b45-a02e-621ce6231759	OK	2026-10-26T13:29:47Z
+113	U2	p141-a5-def-0	ep-430d18b0	a5	141			8	51532	3cff3345-45f6-4b93-8794-06b520108640	OK	2026-10-26T13:35:58Z
+114	U2	p2-a5-def-0	ep-b30c0338	a5	2			8	41941	44dca038-cca8-4d66-9bab-dbcdfd2ea147	OK	2026-10-26T13:41:57Z
+115	U1	p74-0-test	ep-eb175ef8	a0	74	yes	yes		37111	4f56a7ee-5fb1-4629-9559-191934f7b42a	OK	2026-10-26T13:45:26Z
+116	U2	p2-a0-def-0	ep-e4978cbf	a0	2			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T14:45:33Z
+117	U1	p82-9-perturb	ep-2295b659	a0	82	no	yes		18489	5de5d1e8-c5e4-4825-8d41-153a094c672c	OK	2026-10-26T14:47:32Z
+118	U1	p59-1-perturb	ep-6a4bc88d	a0	59	no	yes		25168	c8cdccf8-e793-49b3-a58f-d9038fbbac03	OK	2026-10-26T14:50:51Z
+119	U2	p136-a5-def-0	ep-bd5beaa6	a5	136			8	48294	3b4f5ab5-82cc-4316-8223-7ef39b41355b	OK	2026-10-26T14:57:46Z
+120	U2	p59-a5-def-1	ep-7caea960	a5	59			8	56311	85a695ef-fa8d-432d-9f7d-7670e6550858	OK	2026-10-26T15:06:15Z
+121	U1	p2-5-ref	ep-b30c0338	a5	2	yes	yes		23055	2ea22722-951d-4212-8b72-7a01668b1b49	OK	2026-10-26T15:08:46Z
+122	U2	p149-a0-def-1	ep-6e724ff5	a0	149			8	42114	dcac8638-5732-4d64-a0fa-3cc776c1e48e	OK	2026-10-26T15:15:01Z
+123	U2	p54-a5-theorem-0	ep-00f56440	a5	54			8	31514	ec697d29-9afe-40a9-9093-158f3d1943c4	OK	2026-10-26T15:18:43Z
+124	U1	p74-7-perturb	ep-ea480733	a5	74	no	yes		15939	b458d688-e197-4f55-b397-44bef7ce22aa	OK	2026-10-26T15:19:53Z
+125	U2	p60-a5-def-0	ep-0144a0f3	a5	60			8	50727	65df8064-5787-4152-bc8e-efaf939b2821	OK	2026-10-26T15:27:15Z
+126	U2	p56-a0-theorem-0	ep-23eae95a	a0	56			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T16:08:17Z
+127	U2	p60-a0-theorem-0	ep-ec5add71	a0	60			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T16:55:19Z
+128	U1	p52-1-perturb	ep-9106ded7	a5	52	no	yes		16974	736fff86-c949-4c74-88de-6b4db596d75f	OK	2026-10-26T16:56:43Z
+129	U2	p60-a5-theorem-1	ep-0144a0f3	a5	60			8	45181	c67c4d74-1dfc-4d13-b474-e29cc2bc68dc	OK	2026-10-26T17:28:34Z
+130	U1	p4-6-ref	ep-0851f3b6	a0	4	yes	yes		29204	8ca24891-4ccb-4d0f-ad06-078dcedbfdc8	OK	2026-10-26T17:32:21Z
+131	U2	p82-a5-theorem-1	ep-47933543	a5	82			6	33494	8a818237-3dd1-4bba-8cb5-d2e5d93f94ef	OK	2026-10-26T17:36:19Z
+132	U1	p31-4-perturb	ep-f9653fae	a5	31	no	yes		13193	fe04705f-1820-43cf-b231-bacaecd2717d	OK	2026-10-26T17:37:05Z
+133	U1	p52-0-test	ep-9106ded7	a5	52	yes	yes		13291	2b9b961e-fe9e-4e3e-99f1-1698b41bb1b2	OK	2026-10-26T17:37:50Z
+134	U1	p35-0-perturb	ep-7e19f23e	a0	35	no	yes		32889	69c5d923-6fdd-4148-b4d5-bfd97afc8dec	OK	2026-10-26T17:41:44Z
+135	U1	p52-1-perturb	ep-cbd5aec2	a0	52				0		UNSCORED(no parseable answer after one retry)	2026-10-26T17:49:53Z
+136	U2	p92-a0-def-0	ep-26a7ef9e	a0	92			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T18:01:39Z
+137	U1	p82-6-ref	ep-2295b659	a0	82	yes	yes		16280	1aae307d-a9ae-47b8-b422-bc337abfcdcd	OK	2026-10-26T18:02:55Z
+138	U1	p74-0-perturb	ep-ea480733	a5	74	no	yes		18707	076b5a7e-b049-4574-a6d9-20ebeac314e9	OK	2026-10-26T18:04:21Z
+139	U1	p35-6-perturb	ep-7e19f23e	a0	35	no	yes		27506	59306c98-bfc4-48df-b07b-2d355e0d9441	OK	2026-10-26T18:06:59Z
+140	U2	p146-a0-def-1	ep-9b8d5b10	a0	146			8	55633	7e714a55-f47b-4b43-b49e-255a0a3ebacb	OK	2026-10-26T18:15:00Z
+141	U2	p82-a5-def-0	ep-47933543	a5	82			8	29432	ca6983a5-bdfa-4eea-be51-be05bf0aff57	OK	2026-10-26T18:18:36Z
+142	U1	p16-7-perturb	ep-8e925cbb	a0	16	no	yes		47213	c1c350db-a2a3-4b65-8bb5-f1722ad32fe7	OK	2026-10-26T18:26:06Z
+143	U2	p142-a0-def-1	ep-7034f448	a0	142			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T19:17:14Z
+144	U1	p82-4-ref	ep-47933543	a5	82	yes	yes		16480	df4854a0-4b74-438f-9eab-a2a9d5c40e15	OK	2026-10-26T19:18:35Z
+145	U1	p16-6-ref	ep-50a56ccd	a5	16	yes	yes		25667	f44f8cf1-baef-4234-a556-ad203b32d49b	OK	2026-10-26T19:21:12Z
+146	U1	p4-1-perturb	ep-0851f3b6	a0	4	yes	yes		34848	73b0e12e-9005-4cf5-b019-9b8bfed66be2	OK	2026-10-26T19:25:45Z
+147	U2	p149-a5-def-1	ep-32ec30df	a5	149			8	31492	9e542e5b-7c5f-4f5f-b203-bba828e3e441	OK	2026-10-26T19:29:03Z
+148	U2	p74-a5-theorem-1	ep-ea480733	a5	74			8	59208	22b75a1a-3e60-467d-aae7-3c529f58de6a	OK	2026-10-26T19:52:24Z
+149	U2	p31-a5-def-1	ep-f9653fae	a5	31			8	38345	5a787e5c-ef70-4f3d-a305-7ca5a72d63c9	OK	2026-10-26T19:57:27Z
+150	U1	p35-4-perturb	ep-7e19f23e	a0	35	no	yes		30414	565285cd-838b-4206-bef5-d300e21f5e32	OK	2026-10-26T20:01:42Z
+151	U1	p82-1-perturb	ep-2295b659	a0	82	no	yes		31062	00772aa0-b872-4ab1-80a0-c13d48dc3474	OK	2026-10-26T20:05:51Z
+152	U2	p136-a5-def-1	ep-bd5beaa6	a5	136			8	28727	862177d6-ae64-4de9-b57f-2934f23b7bab	OK	2026-10-26T20:08:57Z
+153	U1	p74-0-test	ep-ea480733	a5	74	yes	yes		16241	fc147d12-044a-4913-9a4b-66cb6e8b1190	OK	2026-10-26T20:10:06Z
+154	U1	p74-3-test	ep-ea480733	a5	74	yes	yes		16553	aa3a3324-a852-422c-8d9f-f05c6b775ece	OK	2026-10-26T20:11:14Z
+155	U1	p4-2-perturb	ep-0851f3b6	a0	4	no	yes		33497	b11bf54d-0ead-46be-a486-126b6995349b	OK	2026-10-26T20:15:29Z
+156	U1	p74-0-perturb	ep-eb175ef8	a0	74	no	yes		25232	8aca6901-58d1-487c-9d0a-ac7c2872e4c8	OK	2026-10-26T20:18:37Z
+157	U2	p82-a0-def-0	ep-2295b659	a0	82			8	29954	93e76d08-e346-4a8c-a444-b2d613f0cfb4	OK	2026-10-26T20:22:25Z
+158	U2	p16-a5-def-1	ep-50a56ccd	a5	16			8	37341	d6fcb007-be49-40ad-8304-678ebf685a9a	OK	2026-10-26T20:27:19Z
+159	U1	p35-7-ref	ep-7e19f23e	a0	35	yes	yes		18145	b9a5fb24-9e8b-4372-820b-a4878c17a7b6	OK	2026-10-26T20:29:21Z
+160	U1	p16-2-perturb	ep-8e925cbb	a0	16	no	yes		27905	d3e2caea-47c8-4aba-a651-336c9783a045	OK	2026-10-26T20:33:16Z
+161	U2	p142-a5-theorem-1	ep-093b5e2c	a5	142			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T21:21:29Z
+162	U1	p2-3-perturb	ep-b30c0338	a5	2	yes	yes		21744	42d47289-78cb-430a-8dc7-23631c761a9f	OK	2026-10-26T21:23:18Z
+163	U1	p148-0-perturb	ep-9862efe9	a0	148	no	yes		26693	4c023b79-fd9b-4d56-bf10-977427fd0a78	OK	2026-10-26T21:26:33Z
+164	U2	p52-a5-theorem-1	ep-9106ded7	a5	52			8	54901	10956afc-0d31-4edd-85d0-2f905498ed7a	OK	2026-10-26T21:35:07Z
+165	U1	p16-0-perturb	ep-50a56ccd	a5	16	no	yes		19765	f658fd0d-d847-427c-82de-b698fcdbafac	OK	2026-10-26T21:36:45Z
+166	U1	p16-6-ref	ep-8e925cbb	a0	16	yes	yes		35496	61375ac9-e746-465c-8ef9-edf0ec52ec7c	OK	2026-10-26T21:41:04Z
+167	U1	p31-10-perturb	ep-3805ba91	a0	31	no	yes		15869	d61ca346-28a6-4bce-a0d9-c0631dbfc913	OK	2026-10-26T21:42:46Z
+168	U1	p74-5-perturb	ep-eb175ef8	a0	74	no	yes		58160	b61aea82-031f-4009-af59-74d98ce32cf0	OK	2026-10-26T21:50:53Z
+169	U1	p35-0-perturb	ep-907ac49e	a5	35	no	yes		13297	c1b4c693-21df-4901-adc1-9f67b46efee4	OK	2026-10-26T21:51:43Z
+170	U2	p92-a0-theorem-1	ep-26a7ef9e	a0	92			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T22:51:53Z
+171	U1	p4-0-perturb	ep-0851f3b6	a0	4	no	yes		26845	bce8fa16-fd49-4b97-bcd6-f1e55a389969	OK	2026-10-26T22:54:54Z
+172	U2	p56-a5-theorem-0	ep-09f7507d	a5	56			0	0		UNSCORED(no parseable answer after one retry)	2026-10-26T23:55:57Z
+173	U2	p59-a0-theorem-1	ep-6a4bc88d	a0	59			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T00:56:05Z
+174	U1	p52-1-test	ep-9106ded7	a5	52	yes	yes		20573	47b243c3-3cbe-4cbd-9c48-e511274a3a1f	OK	2026-10-27T00:58:06Z
+175	U2	p35-a0-theorem-0	ep-7e19f23e	a0	35			8	36887	49306605-5391-4a24-91b9-c1d31df33340	OK	2026-10-27T01:03:30Z
+176	U2	p2-a0-theorem-1	ep-e4978cbf	a0	2			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T02:03:40Z
+177	U2	p52-a0-theorem-1	ep-cbd5aec2	a0	52			8	41998	0f674305-0dd0-4e16-9e5d-ba54ab5c686c	OK	2026-10-27T02:09:48Z
+178	U1	p35-0-ref	ep-7e19f23e	a0	35	yes	yes		30969	0ab01a56-d478-40be-9cfa-2cb401f863c5	OK	2026-10-27T02:12:40Z
+179	U1	p4-5-ref	ep-b73b127c	a5	4	yes	yes		23762	0ba2c5ff-2de8-48d3-954d-d1e14dd66161	OK	2026-10-27T02:14:37Z
+180	U1	p16-4-ref	ep-50a56ccd	a5	16	yes	yes		15769	330f8d7c-0f42-40cf-8dcf-eff426af42ba	OK	2026-10-27T02:15:52Z
+181	U2	p16-a5-theorem-1	ep-50a56ccd	a5	16			8	57852	bebee644-b7e6-4157-8df4-d539bddb4d8d	OK	2026-10-27T02:23:47Z
+182	U2	p141-a5-def-1	ep-430d18b0	a5	141			8	52683	88cfe2e6-a8bc-42fc-a2f5-d811e3f535ea	OK	2026-10-27T02:30:00Z
+183	U2	p52-a5-def-1	ep-9106ded7	a5	52			8	60595	70d76f7d-74aa-4fff-8dfd-6a4e6b3be98d	OK	2026-10-27T02:39:08Z
+184	U2	p16-a5-theorem-0	ep-50a56ccd	a5	16			8	46171	a6f91794-d343-4c17-86b0-3caf8d561786	OK	2026-10-27T02:45:17Z
+185	U2	p35-a0-def-0	ep-7e19f23e	a0	35			8	42404	d7b363af-092d-445a-ac15-c6c0e2ca59c3	OK	2026-10-27T02:52:02Z
+186	U1	p82-2-ref	ep-2295b659	a0	82	yes	yes		32132	9f1f21c2-7e3f-4401-aa74-ef27a72e6bd0	OK	2026-10-27T02:56:27Z
+187	U2	p149-a0-theorem-1	ep-6e724ff5	a0	149			8	51578	0190ef93-32ef-46dd-b77a-702bf4fdedf5	OK	2026-10-27T03:03:35Z
+188	U1	p141-0-perturb	ep-cf287720	a0	141	no	yes		56595	734d63b2-88a1-43f8-a8f8-1769c45c485a	OK	2026-10-27T03:09:21Z
+189	U1	p16-7-ref	ep-50a56ccd	a5	16	yes	yes		28765	589667a5-57ac-492c-a370-4537f56a302d	OK	2026-10-27T03:11:47Z
+190	U2	p92-a5-def-0	ep-b0c972bb	a5	92			8	58855	ba0308bb-96e2-449d-bcd9-9724e2dbc559	OK	2026-10-27T03:20:44Z
+191	U2	p31-a0-theorem-1	ep-3805ba91	a0	31			8	42717	4d6a004a-ff32-408b-b464-128dcb223ad1	OK	2026-10-27T03:27:27Z
+192	U1	p2-8-perturb	ep-b30c0338	a5	2	no	yes		18071	329ed626-53ff-4bf5-859a-e369bc51361d	OK	2026-10-27T03:29:10Z
+193	U2	p128-a5-theorem-1	ep-7faf263a	a5	128			8	64814	6f47c2e8-da19-4122-9a0d-82b9ffe4d4ca	OK	2026-10-27T03:58:17Z
+194	U2	p73-a5-theorem-1	ep-86c7c952	a5	73			8	47415	c734b1a3-6399-46ec-a801-79cf7206b634	OK	2026-10-27T04:03:56Z
+195	U1	p74-5-perturb	ep-ea480733	a5	74	no	yes		18017	2703f0ed-23d4-4170-893a-f7b481e0b64d	OK	2026-10-27T04:05:28Z
+196	U2	p56-a5-theorem-1	ep-09f7507d	a5	56			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T05:02:53Z
+197	U2	p128-a5-theorem-0	ep-7faf263a	a5	128			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T06:03:00Z
+198	U1	p2-2-perturb	ep-b30c0338	a5	2	no	yes		18876	fbeca19e-2fba-4020-8699-007f4b6f7768	OK	2026-10-27T06:05:03Z
+199	U2	p82-a5-theorem-0	ep-47933543	a5	82			8	27270	46d1d55b-d75d-49e7-94d5-55471b4eb358	OK	2026-10-27T06:07:47Z
+200	U1	p2-1-ref	ep-b30c0338	a5	2	yes	yes		29778	48c027ff-092f-4e01-9499-f4362b8ad0e3	OK	2026-10-27T06:11:09Z
+201	U1	p52-1-test	ep-cbd5aec2	a0	52	yes	yes		38130	d7f6a9f7-0719-42a6-ad9b-0b66e6799228	OK	2026-10-27T06:15:51Z
+202	U1	p4-2-perturb	ep-b73b127c	a5	4	no	yes		18849	4f5f2006-20a9-4ad6-b839-365b971b8535	OK	2026-10-27T06:17:34Z
+203	U2	p4-a0-def-0	ep-0851f3b6	a0	4			8	48562	5151f103-417c-4de9-bac7-bc0e48683dae	OK	2026-10-27T06:25:03Z
+204	U2	p148-a0-theorem-0	ep-9862efe9	a0	148			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T07:25:12Z
+205	U2	p38-a0-theorem-0	ep-83e1d461	a0	38			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T08:25:19Z
+206	U1	p31-8-perturb	ep-f9653fae	a5	31	no	yes		15128	a19d7a4b-505a-48bd-8216-f3cc72a7f8b7	OK	2026-10-27T08:26:44Z
+207	U1	p74-2-test	ep-eb175ef8	a0	74	yes	yes		31643	42a48c90-ac8c-4de1-9e16-45707aefc569	OK	2026-10-27T08:30:20Z
+208	U1	p73-8-perturb	ep-86c7c952	a5	73	no	yes		17648	85d79d7c-adb9-4623-b3f8-79067c0fc156	OK	2026-10-27T08:31:40Z
+209	U2	p148-a0-def-1	ep-9862efe9	a0	148			8	63209	c5031dc0-cbed-4fa7-aa70-9defd05423cb	OK	2026-10-27T08:41:23Z
+210	U1	p16-1-perturb	ep-8e925cbb	a0	16	no	yes		34578	7f689d5d-bd0e-4b00-84c4-97e5c0938be9	OK	2026-10-27T08:45:44Z
+211	U1	p4-5-perturb	ep-b73b127c	a5	4	no	yes		17471	b4b1b5f8-e6fc-4809-b08c-96108ef85dad	OK	2026-10-27T08:47:03Z
+212	U2	p35-a5-def-1	ep-907ac49e	a5	35			8	26783	c7c054f5-55e6-470f-9dc6-5b026165a727	OK	2026-10-27T08:52:55Z
+213	U2	p149-a5-theorem-1	ep-32ec30df	a5	149			8	53668	e67901f8-3e7f-4771-956b-4f43f00dd216	OK	2026-10-27T09:00:11Z
+214	U2	p60-a5-def-1	ep-0144a0f3	a5	60			8	51866	164f4789-fd2a-4ee0-a822-9caecad1cd51	OK	2026-10-27T09:23:30Z
+215	U2	p74-a0-theorem-0	ep-eb175ef8	a0	74			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T10:23:38Z
+216	U2	p31-a5-def-0	ep-f9653fae	a5	31			8	51465	ba2ae60b-ad66-4b19-8962-607333fd22f5	OK	2026-10-27T10:46:22Z
+217	U1	p82-2-perturb	ep-47933543	a5	82	no	yes		12268	f3430427-f66f-4179-b1f5-59828ebb1e90	OK	2026-10-27T10:46:56Z
+218	U2	p31-a0-def-0	ep-3805ba91	a0	31			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T11:47:03Z
+219	U1	p74-3-test	ep-eb175ef8	a0	74	yes	yes		22767	41ecb9b6-2d11-45ee-bf66-f16061ab9bc2	OK	2026-10-27T11:49:06Z
+220	U1	p35-7-perturb	ep-7e19f23e	a0	35	no	yes		32628	2a2388fe-fd7d-48a4-8ae7-b03d54c5d185	OK	2026-10-27T11:52:59Z
+221	U2	p142-a0-def-0	ep-7034f448	a0	142			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T12:28:07Z
+222	U1	p31-7-perturb	ep-3805ba91	a0	31	no	yes		27269	e3dd5a59-91c2-4011-9cba-be83a70125c0	OK	2026-10-27T12:31:32Z
+223	U1	p141-1-perturb	ep-430d18b0	a5	141	no	yes		20575	789ed8e0-c839-43a0-b7c7-9c8933cc5e43	OK	2026-10-27T12:33:13Z
+224	U2	p59-a5-theorem-1	ep-7caea960	a5	59			8	58884	07a5657c-22da-47e7-bf62-d17b48556762	OK	2026-10-27T12:42:24Z
+225	U2	p128-a0-def-0	ep-15dd1d12	a0	128			8	48523	09d36ad1-ebfa-4dae-941a-dbabf5edb053	OK	2026-10-27T13:09:09Z
+226	U2	p73-a5-def-0	ep-86c7c952	a5	73			8	59012	cd9846fd-d06a-42fe-9f49-943f7197dbf0	OK	2026-10-27T13:47:50Z
+227	U2	p56-a5-def-0	ep-09f7507d	a5	56			8	37940	44b407a6-790f-4722-a966-db673ab03c95	OK	2026-10-27T13:52:20Z
+228	U2	p146-a5-def-0	ep-422ea521	a5	146			8	36554	d965973a-eb59-4fb8-a626-386334debdfa	OK	2026-10-27T13:56:23Z
+229	U1	p59-1-test	ep-6a4bc88d	a0	59	yes	yes		42201	800ef097-de54-41ea-9dd6-62ca0c2f2f42	OK	2026-10-27T14:01:02Z
+230	U2	p56-a0-def-1	ep-23eae95a	a0	56			8	30357	19d21040-9f0c-4ae3-a12e-d38a70c7997d	OK	2026-10-27T14:05:00Z
+231	U2	p128-a0-theorem-0	ep-15dd1d12	a0	128			8	64319	de2df4f6-c015-4b0e-a4e6-81f1c33c573e	OK	2026-10-27T14:14:33Z
+232	U2	p74-a5-theorem-0	ep-ea480733	a5	74			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T15:01:56Z
+233	U1	p35-4-perturb	ep-907ac49e	a5	35	no	yes		13058	6d7652b8-128e-4525-aa28-9bd85b283db4	OK	2026-10-27T15:02:38Z
+234	U1	p82-0-perturb	ep-47933543	a5	82	no	yes		22848	114b47e2-4f65-452e-9bf8-09b464191447	OK	2026-10-27T15:04:36Z
+235	U1	p2-8-perturb	ep-e4978cbf	a0	2	no	yes		35397	50ae7854-78bc-48b5-82af-06f0d155dc5f	OK	2026-10-27T15:09:01Z
+236	U2	p11-a5-theorem-0	ep-b958c4c0	a5	11			8	47854	c6ad4802-b964-47d7-85eb-cbc2676e5bee	OK	2026-10-27T15:14:15Z
+237	U2	p4-a0-def-1	ep-0851f3b6	a0	4			8	50542	a837e839-8140-4f05-8c5f-250367864dcc	OK	2026-10-27T15:22:08Z
+238	U2	p74-a0-def-1	ep-eb175ef8	a0	74			8	38859	a005d745-2487-43d6-9b5d-b21dcf4bb902	OK	2026-10-27T15:27:38Z
+239	U2	p112-a0-theorem-1	ep-558aedfa	a0	112			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T16:27:48Z
+240	U2	p92-a0-def-1	ep-26a7ef9e	a0	92			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T17:27:52Z
+241	U1	p73-8-perturb	ep-88778e4b	a0	73	no	yes		40902	80de0021-0fd5-4818-b162-02c444c8116e	OK	2026-10-27T17:31:10Z
+242	U1	p52-0-perturb	ep-cbd5aec2	a0	52	no	yes		31801	803983f9-05bd-4cf6-9333-637d23b6b124	OK	2026-10-27T17:34:13Z
+243	U2	p142-a5-def-1	ep-093b5e2c	a5	142			8	43681	55779c2e-f487-4b3b-855f-993e1f614e9f	OK	2026-10-27T17:39:57Z
+244	U2	p136-a5-theorem-0	ep-bd5beaa6	a5	136			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T18:37:52Z
+245	U2	p112-a0-def-1	ep-558aedfa	a0	112			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T19:17:28Z
+246	U1	p31-4-ref	ep-3805ba91	a0	31	yes	yes		19669	934b389c-6c06-4da6-86fc-3d9ac713d70b	OK	2026-10-27T19:19:46Z
+247	U1	p82-4-ref	ep-2295b659	a0	82	yes	yes		15834	edde03dd-c625-47a6-bcef-d6cabeae751d	OK	2026-10-27T19:21:15Z
+248	U1	p73-8-ref	ep-88778e4b	a0	73	yes	yes		31096	56f10f43-ef0f-4e83-8c94-9f6957df2b1a	OK	2026-10-27T19:24:31Z
+249	U2	p2-a0-theorem-0	ep-e4978cbf	a0	2			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T20:12:40Z
+250	U2	p148-a5-theorem-1	ep-968c428f	a5	148			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T21:12:10Z
+251	U1	p2-2-perturb	ep-e4978cbf	a0	2	no	yes		44180	57d76c37-0e9d-400e-ac9c-346bd2ca81e4	OK	2026-10-27T21:17:12Z
+252	U1	p4-2-ref	ep-b73b127c	a5	4	yes	yes		15436	4cf9ffec-ce9a-4ca8-a5fd-cf5e0e2048bc	OK	2026-10-27T21:18:14Z
+253	U1	p74-7-perturb	ep-eb175ef8	a0	74	no	yes		25357	7f302768-f389-4d41-bab3-6b537a358d4b	OK	2026-10-27T21:21:57Z
+254	U1	p148-2-perturb	ep-968c428f	a5	148	no	yes		17230	4383bacd-b54f-4359-afa3-e2bc98b1d6c3	OK	2026-10-27T21:22:46Z
+255	U2	p142-a0-theorem-1	ep-7034f448	a0	142			8	55601	c10679af-2659-4779-ac4e-05bbac2776b3	OK	2026-10-27T21:30:09Z
+256	U2	p146-a0-theorem-0	ep-9b8d5b10	a0	146			8	61123	956fdc96-c672-471b-982d-068c1815e6cb	OK	2026-10-27T21:39:27Z
+257	U2	p59-a0-def-1	ep-6a4bc88d	a0	59			8	39040	7052c680-3e45-4286-9c88-27504036aabb	OK	2026-10-27T21:45:12Z
+258	U2	p136-a0-theorem-1	ep-3a028455	a0	136			0	0		UNSCORED(no parseable answer after one retry)	2026-10-27T22:21:37Z
+259	U1	p74-4-test	ep-eb175ef8	a0	74	yes	yes		15548	62971117-5301-40a8-878a-570347a48e50	OK	2026-10-27T22:22:47Z
+260	U1	p148-2-perturb	ep-9862efe9	a0	148	no	yes		27845	103c3255-d507-443b-b7d9-daf3ba322aea	OK	2026-10-27T22:25:35Z
+261	U1	p141-1-perturb	ep-cf287720	a0	141	no	yes		46771	8187c59d-59f1-4e6a-8e38-c66b6d5cae81	OK	2026-10-27T22:32:12Z
+262	U2	p146-a0-theorem-1	ep-9b8d5b10	a0	146			8	54078	1a580ecb-32bf-44a6-9459-4c6bcb196af2	OK	2026-10-27T23:10:35Z
+263	U2	p54-a0-theorem-0	ep-3f370f25	a0	54			5	52851	498063ed-ea37-4c5d-a389-dc69ca436eb6	OK	2026-10-27T23:19:06Z
+264	U2	p4-a0-theorem-1	ep-0851f3b6	a0	4			8	38841	78bcf89a-6046-4a54-87c0-2755a07875a8	OK	2026-10-27T23:24:50Z
+265	U1	p73-8-ref	ep-86c7c952	a5	73	yes	yes		24730	bd4964a2-4b7d-4155-97f2-2c003ccda68f	OK	2026-10-27T23:27:14Z
+266	U2	p35-a0-def-1	ep-7e19f23e	a0	35			8	48343	f30cc7fd-f981-4e22-b9e3-3199fc446a60	OK	2026-10-27T23:35:02Z
+267	U2	p60-a0-def-1	ep-ec5add71	a0	60			8	48610	4cdf780a-6c36-4971-8513-2af1276a6bcf	OK	2026-10-27T23:42:45Z
+268	U2	p38-a0-def-1	ep-83e1d461	a0	38			8	31030	426e866e-c956-4bf0-9538-19fd6e80d9fa	OK	2026-10-27T23:45:57Z
+269	U2	p16-a0-theorem-1	ep-8e925cbb	a0	16			0	0		UNSCORED(no parseable answer after one retry)	2026-10-28T00:46:05Z
+270	U2	p112-a5-theorem-0	ep-6cc3ed48	a5	112			0	0		UNSCORED(no parseable answer after one retry)	2026-10-28T01:46:12Z
+271	U1	p74-4-perturb	ep-ea480733	a5	74	no	yes		19511	3a266238-f5b8-40fd-9293-d0dc07f09219	OK	2026-10-28T01:47:54Z
+272	U2	p73-a5-def-1	ep-86c7c952	a5	73			8	41982	60af708f-7a82-4a31-be77-fdd014d4ac76	OK	2026-10-28T01:53:43Z
+273	U2	p2-a5-theorem-0	ep-b30c0338	a5	2			8	59021	dee6dac0-0895-45fa-909f-32f0ed4d23f1	OK	2026-10-28T02:01:22Z
+274	U1	p59-1-test	ep-7caea960	a5	59	yes	yes		13022	aeea1600-2d7f-4778-b643-ccf67bcb69b5	OK	2026-10-28T02:02:03Z
+275	U1	p2-0-perturb	ep-e4978cbf	a0	2	no	yes		34829	e7a15375-5c3c-405d-bd4a-3e972c3dd040	OK	2026-10-28T02:06:25Z
+276	U2	p141-a5-theorem-1	ep-430d18b0	a5	141			8	67198	bf5dac53-f02b-473a-899f-07985d658432	OK	2026-10-28T02:16:36Z
+277	U1	p2-5-perturb	ep-b30c0338	a5	2	no	yes		18799	bcb8947e-1741-41f1-b4b4-be8e7cd6f895	OK	2026-10-28T02:18:25Z
+278	U1	p35-6-ref	ep-7e19f23e	a0	35	yes	yes		30168	9bd8050c-eaa5-4be3-b261-6a6e5491dadf	OK	2026-10-28T02:22:36Z
+279	U2	p112-a5-def-0	ep-6cc3ed48	a5	112			8	71409	1b9e63ea-4bd3-49e7-b216-73698af070ec	OK	2026-10-28T02:31:00Z
+280	U2	p35-a5-theorem-0	ep-907ac49e	a5	35			8	37732	c231723a-bb60-40fa-bb6f-8f49cfbd0fac	OK	2026-10-28T02:35:57Z
+281	U2	p4-a5-def-1	ep-b73b127c	a5	4			0	0		UNSCORED(no parseable answer after one retry)	2026-10-28T03:36:09Z
+282	U1	p2-0-perturb	ep-b30c0338	a5	2	no	yes		16117	7ddeedd3-37c3-401f-98ff-231d26c87531	OK	2026-10-28T03:37:24Z
+283	U1	p82-6-ref	ep-47933543	a5	82	yes	yes		15413	0a76530d-05f5-4021-ae85-aaa77da7caf2	OK	2026-10-28T03:38:38Z
+284	U2	p60-a0-def-0	ep-ec5add71	a0	60			0	0		UNSCORED(no parseable answer after one retry)	2026-10-28T04:38:46Z
+285	U2	p146-a5-theorem-0	ep-422ea521	a5	146			0	0		UNSCORED(no parseable answer after one retry)	2026-10-28T05:39:00Z
+286	U2	p56-a0-theorem-1	ep-23eae95a	a0	56			8	52223	ef7b7ade-1484-4f69-92ce-4ca122321af7	OK	2026-10-28T05:47:03Z
+287	U1	p31-7-perturb	ep-f9653fae	a5	31	no	yes		6272	c264554a-72da-49cb-8948-aa98ea140dd9	OK	2026-10-28T05:47:40Z
+288	U1	p52-0-perturb	ep-9106ded7	a5	52	no	yes		14456	ce0fc667-1f53-4509-89d0-044058f17bd6	OK	2026-10-28T05:48:36Z
+289	U1	p4-5-perturb	ep-0851f3b6	a0	4	no	yes		34496	163f50c6-b71f-4710-8357-d406c2448f26	OK	2026-10-28T05:52:25Z
+290	U2	p74-a5-def-1	ep-ea480733	a5	74			8	46890	fc9157ba-2214-4ed4-811f-ab98cce28737	OK	2026-10-28T05:59:21Z
+291	U2	p38-a0-theorem-1	ep-83e1d461	a0	38			0	0		UNSCORED(no parseable answer after one retry)	2026-10-28T06:59:30Z
+292	U1	p82-2-perturb	ep-2295b659	a0	82	no	yes		33399	bb20db60-cb35-45f3-89e0-31335ba05b0e	OK	2026-10-28T07:03:50Z
+293	U2	p128-a0-def-1	ep-15dd1d12	a0	128			8	48338	57ea1c93-83a4-4c79-a5d8-3aab09532e83	OK	2026-10-28T07:31:06Z
+294	U1	p82-10-ref	ep-2295b659	a0	82	yes	yes		21214	ea7f41c0-a8d6-4d2e-9c88-9e228f6463e5	OK	2026-10-28T07:33:00Z
+295	U1	p4-0-perturb	ep-b73b127c	a5	4	no	yes		18116	c4e97d92-aca0-43be-8e15-853f899b9bb7	OK	2026-10-28T07:34:27Z
+296	U1	p74-4-perturb	ep-eb175ef8	a0	74	no	yes		34111	8ee18269-092e-4ae1-8ca2-6b1d133e1ca2	OK	2026-10-28T07:38:25Z
+297	U2	p52-a0-def-0	ep-cbd5aec2	a0	52			8	44061	1b29592b-0ba2-4259-94c8-249223ca83a9	OK	2026-10-28T07:45:25Z
+298	U2	p35-a0-theorem-1	ep-7e19f23e	a0	35			8	39056	9c35a2c8-1373-44de-b0a7-314d90d93440	OK	2026-10-28T07:51:03Z
+299	U1	p4-7-perturb	ep-0851f3b6	a0	4	no	yes		27070	9b14484f-803f-47c8-bb90-9d82c7879e22	OK	2026-10-28T07:54:38Z
+300	U2	p11-a5-theorem-1	ep-b958c4c0	a5	11			0	0		UNSCORED(no parseable answer after one retry)	2026-10-28T08:41:21Z
+301	U2	p142-a5-theorem-0	ep-093b5e2c	a5	142			0	0		UNSCORED(no parseable answer after one retry)	2026-10-28T09:41:34Z
+302	U2	p149-a0-theorem-0	ep-6e724ff5	a0	149			0	0		UNSCORED(no parseable answer after one retry)	2026-10-28T10:40:18Z
+303	U2	p112-a5-def-1	ep-6cc3ed48	a5	112			8	38945	f049908b-d05a-4161-be6c-5f40adb17090	OK	2026-10-28T10:45:39Z
+304	U2	p16-a0-theorem-0	ep-8e925cbb	a0	16			8	43685	5808c14f-db95-49aa-bf3e-f1530c83950b	OK	2026-10-28T10:52:00Z
+305	U2	p112-a5-theorem-1	ep-6cc3ed48	a5	112			0	0		UNSCORED(no parseable answer after one retry)	2026-10-28T11:40:18Z
+306	U1	p16-7-perturb	ep-50a56ccd	a5	16	no	yes		24315	504f047d-2fbf-4bc4-ba60-d97fc1b720b0	OK	2026-10-28T11:42:07Z
+307	U2	p73-a0-theorem-1	ep-88778e4b	a0	73			8	44761	745be32d-0909-4772-b474-b1a29c9bf208	OK	2026-10-28T12:11:12Z
+308	U2	p16-a5-def-0	ep-50a56ccd	a5	16			8	57105	21d97836-431d-4598-aba8-cb242c1e603d	OK	2026-10-28T12:19:51Z
+309	U2	p148-a5-theorem-0	ep-968c428f	a5	148			0	0		UNSCORED(no parseable answer after one retry)	2026-10-28T13:20:00Z
+310	U1	p31-9-ref	ep-f9653fae	a5	31	yes	yes		18280	8fe8fe11-7cbb-431c-8cc7-6db7f6e2b229	OK	2026-10-28T13:21:32Z
+311	U1	p16-2-ref	ep-50a56ccd	a5	16	yes	yes		20366	c6a0b9e2-bf6f-4336-b024-6b133b85ec41	OK	2026-10-28T13:22:53Z
+312	U2	p60-a5-theorem-0	ep-0144a0f3	a5	60			8	60015	ac7a9e1b-5e45-4ed1-9b7b-da21c2cdadae	OK	2026-10-28T13:31:36Z
+313	U2	p149-a5-def-0	ep-32ec30df	a5	149			0	0		UNSCORED(no parseable answer after one retry)	2026-10-28T14:05:22Z
+314	U2	p4-a5-theorem-1	ep-b73b127c	a5	4			8	55285	1673e207-5908-40f5-b439-cc7e877a4044	OK	2026-10-28T14:13:34Z
+315	U1	p82-1-perturb	ep-47933543	a5	82	no	yes		15703	9c00a7c0-2ac3-4f85-acac-fb01b4403efb	OK	2026-10-28T14:14:42Z
+316	U1	p16-1-perturb	ep-50a56ccd	a5	16	no	yes		23842	dfdad153-de1c-4364-aee4-3b8ccbc23420	OK	2026-10-28T14:17:22Z
+317	U1	p74-4-test	ep-ea480733	a5	74	yes	yes		15318	611b77fc-4a74-4d79-995d-119875341fca	OK	2026-10-28T14:18:18Z
+318	U1	p31-10-ref	ep-3805ba91	a0	31	yes	yes		40737	02a6b32d-f5cf-4331-a655-30a9ec9cda84	OK	2026-10-28T14:23:38Z
+319	U1	p141-0-perturb	ep-430d18b0	a5	141	no	yes		20411	8f8889bc-6eb6-467c-99ef-4a86559bd707	OK	2026-10-28T14:25:33Z
