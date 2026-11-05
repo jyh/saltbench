@@ -83,7 +83,10 @@ A6.5 named reading 2026-10-25T22:19:58Z: n 57 · D 2 · 323·x/n = 11.33 ⇒ (B)
 ```
 
 The Gemini pool fell from 88 % to 75 % across the set. S, the sum of drops and an upper bound, is 14 points. D, the net, is
-13. A2.6's cap is 12. The halt fired when the reading crossed the dial (A6.7). `score.out` lists all 19 pool readings.
+13. A2.6's cap is 12. The halt fired when the reading crossed the dial (A6.7). The `spend 12pt` in the HALT line is the
+last process's own count, from its START at 87 % (`run.log`, 2026-10-25T12:39:25Z) to 75 % (`run.log:450`,
+`spent_across_set=12pt`), and that is the count A6.7's dial of 11 is measured against. S and D are the set's spend, which A6.7
+says is reported "never one process's figure" (systems' N1 on #422). `score.out` lists all 19 pool readings.
 
 ## The record
 
