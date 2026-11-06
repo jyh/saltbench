@@ -1013,9 +1013,9 @@ spec-change & 1 & 0 & 1 \\
 \section{A second model run on the same matrix (added in version~5)}
 \label{sec:zf}
 
-After version~4 we ran a newer model, \texttt{gemini-4-argon-high}, beside a same-day control, \texttt{gemini-3.8-flash-high}, on the 46 Gemini-lane conditions of the pilot matrix at $n=3$ (276 registered cells). The two models were fired adjacent in time on one harness export, so the comparison is between the two model columns of each row. The 3.x cells of record reported in Section~\ref{sec:matrix} used a patchwork of harness levels and are not a same-day control.
+After version~4 we ran a newer model, \texttt{gemini-4-argon-high}, beside a same-day control, \texttt{gemini-3.8-flash-high}, on 46 conditions of the pilot matrix at $n=3$ (276 registered cells). The two models were fired adjacent in time on one harness export, so the comparison is between the two model columns of each row. The 3.x cells of record reported in Section~\ref{sec:matrix} used a patchwork of harness levels and are not a same-day control.
 
-264 of the 276 cells were fired and scored. The 12 not fired are the Paxos greenfield spec-change condition, both arms and both models: it was cut whole under a registered rate rule because its projected finish missed the set's deadline in every window read, and it is reported short at $n=0$. This section therefore says nothing about Paxos under a spec change for either model. A cell that wedged (stopped without a scorable result) is counted as a failure in its arm.
+264 of the 276 cells were fired; 261 of them were scored and 3 wedged. The 12 not fired are the Paxos greenfield spec-change condition, both arms and both models: it was cut whole under a registered rate rule because its projected finish missed the set's deadline in every window read, and it is reported short at $n=0$. This section therefore says nothing about Paxos under a spec change for either model. A cell that wedged (stopped without a scorable result) is counted as a failure in its arm.
 
 Counted passes: \texttt{gemini-4-argon-high} 66 of 66 \arm{plain} and 63 of 66 \arm{salt-diet}, where the three \arm{salt-diet} failures are the three wedged cells of one condition (FreeList, greenfield, no treatment); \texttt{gemini-3.8-flash-high} 64 of 66 \arm{plain} and 57 of 66 \arm{salt-diet}, with no wedges.
 
