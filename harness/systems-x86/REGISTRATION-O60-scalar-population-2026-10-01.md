@@ -1177,3 +1177,72 @@ unpacked again from 09:59 to 10:07 with no cell live. (b) That suite run left an
 up as a new denied path; it was removed before the cells were staged again, and the two fences read the same digests as before.
 After each removal a search of the host for withheld-named directories found none.
 **What changes.** 34a65d3 replaces 20446e1 as the cut of record.
+
+## ⚖️ ADDENDUM 17 — THE HALT REASON IS PINNED: `Returns` NOW REQUIRES A STOP BY RUNNING OFF THE PROGRAM. A NEW FRAME BLOB FOR THE NEXT REVISION; THE 40 SCORED CELLS ARE UNTOUCHED. APPENDED; everything above is untouched.
+bench (lead), 2026-11-06 17:12 (PDT), landing systems' draft (saltbench-systems `ded545c8`, file
+`tasks/systems-x86/o60-systems-drafts/halt-reason/ADDENDUM-DRAFT.md`; the text under (1) and (2) below is that file's, verbatim).
+No subject turn has run and nothing fires on this addendum: zero task spend. It changes only what the NEXT revision's statement asks.
+The 40 scored cells stay results of record under the interface they ran against (`X86CallFrame.lean` blob `210ce6b4`).
+**Numbering.** 17 is the next number in THIS file's series. Checked at landing: no ref of this repository or of saltbench-systems
+(575 refs) carries an ADDENDUM 17 of this registration.
+
+**(1) What changes, measured red-first (the author's, systems).**
+**What was wrong.** `Returns` (X86CallFrame.lean, blob `210ce6b4`, line 138) opened with `t.stopped`, which says that the model
+stopped and not why. `MsErr` has four ways to stop (x86lean `X86/State.lean` at the pin `e5d7f36`): `illegalOperands`,
+`unimplemented`, `byDesign` (a fault that is the instruction's meaning, e.g. #UD, #DE, #XM) and `outsideProgram` (no instruction at
+rip). Only the last is a return. A state stopped by any of the other three, with rip at the return address, rsp popped and the
+callee-saved registers intact, met `Returns`. Both Claude CRC-32 RESULTs declared this limit for the CRC-32 interface ("does not pin
+WHY the run stopped, because a fault is also `stopped`"), and it carried into the O60 frame unchanged.
+
+**The change.** The first conjunct becomes `∃ w, t.ms = some (.outsideProgram w)`. The string is the model's diagnostic, not its
+meaning, so it is left free. A new lemma `Returns.stopped` derives the old conjunct, so anything that consumed it keeps it.
+New frame blob: `07ad5135` (draft).
+
+**Measured, red-first** (`interface-o60-controls/halt-reason-redfirst/`, built through the fleet build wrapper at the pin):
+
+| theorem | revised frame | today's frame (mutant m1 = blob `210ce6b4`) |
+|---|---|---|
+| `old_accepts_fault`: today's `Returns` (restated verbatim) accepts a concrete state stopped by `byDesign "ud2: #UD"` | proved | proved |
+| `fault_rejected`: no state stopped by `byDesign`, `unimplemented` or `illegalOperands` meets `Returns` | proved | **REFUSED, at this theorem only** (line 41) |
+| `nonvacuous`: a concrete `outsideProgram` state meets `Returns` (its proof closes either form of the first conjunct) | proved | proved |
+| `Returns.stopped` | proved | — |
+
+Axioms: `propext` and `Quot.sound` only; the `sorryAx` control fires.
+
+**What it costs a submission, measured on the four family controls.** All four build green against today's frame, and all four
+fail against the revised one at the one place each proves the exit step. Each is repaired by restating its off-program step lemma
+as `ms = some (.outsideProgram "no instruction at RIP")` (its proof simplifies with one fewer lemma) and wrapping that in the
+existential where `Returns` is built: 3 to 5 one-line edits per control (ret-word_bytereverse 3, write-cswap2 4, readret-adler32 5,
+alias-redfirst 5). After the repair all four build green with the same axiom sets as before. The alias control's mutants are still
+refused at the same lines (m1: 180, 279). m2 (the pre-ADDENDUM-7 frame) is still refused at its own sites and now also at the
+halt-reason sites, because that older frame has the old `Returns` too.
+
+**What this does NOT claim.**
+- That any RUN of the model stops by a fault at the return address. Reading `X86/Semantics.lean` at `e5d7f36`, every fault halts
+  the pre-state (`s.halt …`, including inside `withSimd` and `setRipChecked`), whose rip is the faulting instruction's and lies
+  inside the program, while `Setup` places the return address outside it (`prog.at? ret = none`). That makes the faulting-return
+  state unreachable today. It is a reading, not a proof. The revision removes the frame's dependence on it, so a later x86lean pin
+  that halts after moving rip cannot make a fault read as a return.
+- Anything about the 40 scored cells. Their proofs are against blob `210ce6b4` and stay results of record under it. By the reading
+  above, no fault-return was reachable for them.
+
+**(2) Siblings, declared and not changed here.**
+**Siblings, declared and not changed here.**
+- `tasks/systems-x86/Crc32/interface/Crc32X86Interface.lean` (the CRC-32 PoC's interface) has the same `t.stopped ∧ t.rip = ret`.
+  Its RESULTs already declare the limit; a CRC-32 re-run would take this conjunct by its own amendment.
+- `harness/systems-x86/exec_model.py` classifies a run as `RETURNED` from `stopped`, rip and rsp, not from the stop reason. It is
+  the executor the scored cells were judged by, so changing it is a referee change and belongs to its own amendment. By the reading
+  above it cannot misclassify a run at `e5d7f36`.
+**(3) The non-author read (paris, x86lean's owner, 2026-11-06 16:24 PST, at `ded545c8`): CONCUR.** paris read the frame diff
+(blob `210ce6b4` → `07ad5135`), the red-first control and the draft; it did not build them, so the red-first table above is the
+author's. Against x86lean itself: `outsideProgram` has one producer (`stepP`'s no-instruction branch), and a stopped state is never
+relabelled, because `halt` keeps the first reason, so the new conjunct means exactly "returned by running off the code". `MsErr`
+has the same four constructors at `e5d7f36` and at x86lean master `1c4b114`, so `fault_rejected`'s three exclusions are the whole
+complement. paris turned the draft's "every fault halts the pre-state" reading into a syntactic census at `1c4b114`: all 69
+`.halt` sites are `s.halt`, the 6 `setRipChecked` sites pass the step input, `call`/`ret` halt before any push or rip move, and
+no rebinding touches rip. **Its limits, carried here:** it is a census, not a theorem; it did not re-read inside `withSimd`; and a
+fault-stopped state can carry partial memory or flag writes, which does not bear on `Returns` (whether `Writes` should care is
+a separate question, not asked here). Nothing in x86lean changes for this.
+
+**(4) What this addendum does.** It registers `07ad5135` as the frame blob that the next O60 revision's statement is written
+against. It adds no release condition and fires nothing. A revision that uses it is fired by its own addendum.
