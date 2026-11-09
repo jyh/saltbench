@@ -17,7 +17,9 @@ file names the clause and says how it differs and why. The one variable is the P
                     FULL, never as an alias. Read per cell from the transcripts' message.model, head and sidechain apart. ⚠️ Both ids are
                     UNMEASURED today: a pre-launch probe that is refused, or serves another id, HOLDS the cell at zero spend (§A7). A
                     substitute model is not this registration's to choose: it breaks the comparison by construction and needs a new one.
-  2  n              3 per model: 6 cells (clbeza01–03 Opus, clbwza01–03 Sonnet; both prefixes 0 hits in either repository at freeze).
+  2  n              3 per model: 6 cells (clbqza01–03 Opus, clbjza01–03 Sonnet; both prefixes 0 hits in either repository at freeze). Block
+                    letters q (ZO) and j (ZS) are NEW: the pilot's e/w belong to its freeze A, and w is already claimed twice (the pilot's AS
+                    and OD's OX, told apart today only by the arm letter), so this block reuses neither.
   3  PROBLEM, FIELD LZW × greenfield, phase 1 only (no customer dispatch, no spec-change).
   4  ARM            lean-aeneas, the pilot's §A1.1 unchanged: the salt-diet method with the VERIFIER swapped (a derived arm file).
   5  STATEMENT      GIVEN, harness-owned: the LZW `O37Spec.Statement` (§A1.2). REQUIREMENTS.md carries no statement section.
@@ -76,7 +78,9 @@ At the pin, `#print axioms` on the REFERENCE's translation reads `solution.encod
 reference reaches `alloc.vec.Vec.as_slice` (left by Aeneas as an axiom) only through the trace checker, which the statement does not include.
 A SUBJECT may call `as_slice` inside `encode`. **The harness supplies it**, after Aeneas and before `lean-check`'s kernel replay, as
 `def alloc.vec.Vec.as_slice … := ok v.slice` (Aeneas Std `structure Vec := slice : Slice`, so this is the Vec's own slice and never fails),
-and only when the axiom occurs exactly once in exactly the expected form. **Why the harness and not the subject:** Rust's `Vec::as_slice` has
+and only when the axiom occurs exactly once in exactly the expected form. **The model is applied INSIDE `lean-check.sh`**, which is one
+tool: the cell's `docs/method/lean-check.sh` is the harness's bytes (the statement check reads EDITED otherwise), so the subject's in-cell
+run, the gate and the scorer's replay all see the same `def`. A subject never proves against an axiom it cannot unfold. **Why the harness and not the subject:** Rust's `Vec::as_slice` has
 one meaning, and a RED for a library gap would measure Aeneas's coverage, not the subject. Any OTHER external a subject's code leaves as an
 axiom is the subject's and reads RED at the axiom check (the pilot's §A3 row 5: a subject stepping outside Aeneas's subset is a FINDING).
 **WRONG IF** a cell's Lean half is GREEN with an `as_slice` that is not the harness's bytes.
@@ -130,7 +134,9 @@ carries them as preconditions, and says so):
                    cell renders and scores BYTE-IDENTICALLY to the pilot's export 865290f (arm file, gate, spec, scorer selftests).
   2  SELFTESTS     o37_leancheck_selftest and o37_score_selftest re-run for LZW with the pilot's RED arm classes (sorry · axiom · import ·
                    wrong type · no theorem · native closure · a statement weakened in the cell's tree READ RED from the harness's bytes),
-                   plus two new: an `as_slice` axiom with no model → RED; a FOREIGN `as_slice` body in the cell → RED. RED BACKWARDS for each.
+                   plus three new: an `as_slice` axiom with no model → RED; a FOREIGN `as_slice` body in the cell → RED; and an IN-CELL arm (a
+                   reference-shaped solution that calls `as_slice` inside `encode`, driven through the cell's own `verify.sh`, not the scorer)
+                   → GREEN, with its mutant (the model step removed) → RED. RED BACKWARDS for each.
   3  FEASIBILITY   a REFERENCE PROOF of `O37Proof.lzw_correct` over the reference's translation, GREEN under the export's lean-check with
                    the standard three axioms, kept in the withheld tree (the pilot's §A5 "reference proof": "the task is feasible under the
                    arm's rules"). ⚠️ PRICE UNMEASURED: the statement carries the round-trip decode_model ∘ encode_model = id, which CRC-32's
@@ -141,19 +147,24 @@ carries them as preconditions, and says so):
                    `gate.sh --landing` GREEN.
   5  PROBE         the pre-launch sandbox probe serves the registered id (§A0 row 1) on the pinned client, per model, at zero cells.
 ```
+**ORDER: (3) FIRST.** It is the receipt most likely to end the block and the dearest, so receipts (0)–(2) and (4) wait on it.
+**THE FEASIBILITY STOP (paris's read, R2):** receipt (3) has a box of **2026-11-16** or **3 points of the lead's own pool spent on it**,
+whichever comes first. At the box without a GREEN reference proof, the block HOLDS and goes to the helm with what the attempt reached; it is
+**never released without the receipt** (a release without it changes what a verdict asserts, §A9 bullet 4).
 
 ## §A6 · THE SEPARATE ROW: FIDELITY
 The pilot's reading (i) (a lemma relating the transcription to an INDEPENDENT specification) has no LZW counterpart registered here. The
 pairing's ceiling is §A5's: transcription + an 8-row vector check + a non-author read. The RESULT says so beside the head-to-head.
 
 ## §A7 · FIRE ORDER, STOPS AND VOIDS
-- **Order:** ZO 1 (clbeza01), ZS 1 (clbwza01), ZO 2, ZS 2, ZO 3, ZS 3; one live cell at a time on the named pool; **day-line-check before
+- **Order:** ZO 1 (clbqza01), ZS 1 (clbjza01), ZO 2, ZS 2, ZO 3, ZS 3; one live cell at a time on the named pool; **day-line-check before
   EACH launch** — a pool over its day line HOLDS the next cell on the pool's clock, never on the work; P1/P2 work on that pool goes first.
 - **Cell 1 is read at its first in-cell `lean-check` run** before any other cell fires, with the pilot's §A7 rule for a harness-caused
   failure (stopped, NOT-SCORED(HARNESS), fixed on a new export named in an addendum, re-fired as the registered `r1`).
 - **THE RE-PRICE STOP (the helm's WRONG-IF, 10:09):** after ZO 1 and again after ZS 1, the cell's own `final $` is read against §A8's
-  projection. If a cell LANDS under the cap where all six were projected to bind, or the measured multiplier moves the projection past the
-  cap on fewer than all six, the next cell HOLDS and the price is re-posted to the helm before it fires.
+  projection. If a cell LANDS under the cap where all six were projected to bind, or, re-applied to §A8's anchors, the measured multiplier
+  projects ANY remaining cell under the cap, the next cell HOLDS and the price is re-posted to the helm before it fires.
+- **THE FEASIBILITY STOP** (§A5, after the owed list): no reference proof by its box ⇒ the block HOLDS, goes to the helm, never releases.
 - **A probe refused or serving another id** (§A0 row 1) HOLDS at zero spend; it is never a void and never a substitution.
 - The cap, the watcher and the voids are lane B's (the pilot's §A7), unchanged.
 
