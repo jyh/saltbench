@@ -208,3 +208,41 @@ the lane's. A trial merge (`git merge-tree`, nothing written) conflicts in exact
 **A SEVENTH DEPARTURE from the pilot, declared beside §A2's six:** under (b) the fire, stage and harvest machinery is the lane's of the
 release, not the pilot's of 2026-09-30, and the client pin may move (§A0 row 7). Neither touches what the Lean half accepts or what the suite
 scores; both are read beside every cost figure, because the chain and its watcher are what stop a cell at the cap.
+
+---
+## ADDENDUM 2 — RELEASED (2026-11-09 12:0x PST, bench, relight 188, before the first cell's model call). §§A0–A9 and ADDENDUM 1 are not edited.
+1. **SIGNATURE.** paris's non-author read, 2026-11-09 10:17 PST, at this file's blob 6e72ea0259b6 (head 0ef83a4e641d, which carries
+   paris's two repairs and the nit). This file is signed as of ADDENDUM 1.
+2. **THE EXPORT: 3ea54f5** (3ea54f5d9f13). One export for all 6 cells, at `~/o37-export-3ea54f5-lzw` on the run box: 404 files plus
+   `EXPORTED-FROM.sha`, **no `withheld/` directory and no reference solution or reference proof in it** (re-listed 2026-11-09 11:5x; the only
+   names matching `withheld` are two harness tools, `withheld_access_census.py` and `check_withheld_leak_v3.py`). It differs from 9b5fb42,
+   on which receipts (1)–(4) ran, in three files only: `clb_fire.sh` · `clb_stage.sh` · `clb_harvest.py`, adding blocks ZO (q) and ZS (j)
+   under freeze Z (`git diff --stat 9b5fb42 3ea54f5`: 18 insertions, 14 deletions). The o37 arm, statement, lean-check and scorer are 9b5fb42's.
+3. **THE FIVE RECEIPTS OF §A5, EACH MET** (the lead's private record, plan ADDENDA 10–14 and this addendum, is the source of each figure):
+   - **(0)** the merged tree's v3 suite at 3afbcd31, in a git clone on the run box: 73/75, 0 FAIL, 2 SKIP (placebo, declared).
+   - **(1)** keyed by problem (20cddc91); the CRC-32 regression with the pilot's receipt runner: build rc 0, gate arm 3 RED as required,
+     lean-check selftest 19/0/3 in-cell and 24/0/0 confined, three containment mutants RED, scorer 7/7, in-cell path GREEN.
+   - **(2)** the LZW selftests at 9b5fb42: in-cell 21/0/3 including asslice-model GREEN and asslice-nomodel RED, scoring 26/0/0, mutants RED,
+     scorer 7/7.
+   - **(3)** the reference proof of `O37Proof.lzw_correct : O37Spec.Statement` (842 lines, sha256/16 59fadb58f3caee67), GREEN under the
+     export's confined lean-check with its kernel replay and the standard three axioms. Inside the box of 2026-11-16.
+   - **(4)** a dry LZW cell built from the cells' export: build rc 0, gate arm 3 RED as required, the cell's spec byte-equal to the
+     registered statement (sha256/16 64eab54233415d93); in a copy with the reference solution and proof, verify GREEN and landing GREEN.
+   - **(5)** the pinned client 2.1.259 (sha256/16 884baa38fe1a624b, asserted) SERVES both registered ids on the named pool, at zero cells:
+     one `-p` turn per model from a scratch directory, 2026-11-09 19:47Z. claude-opus-5: rc 0, reply `OK`, the session's `message.model`
+     set is exactly `{claude-opus-5}`. claude-sonnet-5: rc 0, reply `OK`, `message.model` set exactly `{claude-sonnet-5}`. Spend $0.0574 on
+     the pool, outside every cell's meter. ⚠️ The client's `modelUsage` also lists `claude-haiku-4-5-20251001` on both turns: the
+     client's own side call, carried in no assistant message; the cells' served-id read (§A0 row 1) is from `message.model`, head and
+     sidechain apart, so that call cannot pass for a head. The cell's own fence is probed at its fire by `probe_sandbox_v3.sh --transparent`,
+     as in the pilot; a refusal there HOLDS at zero cells (§A7).
+4. **THE POOL: the one the PM (evidence) named 2026-11-09 11:43 PST**, with a second pool as its fallback, on spare quota at P3. Config dir on the run
+   box: the pool's ACCOUNT config dir, as in OD ADDENDUM 9. **The account check reads OK**: `lane_identity.py --expect` against the
+   expected digest (the one OD's env carries from the Captain's council word, not read from the box) returned IDENTITY OK, a refresh token
+   present; receipt (5)'s replies are the authenticated read. The lane env differs from the pilot's in three lines only (the config dir,
+   the account digest, the export); client pin, probe mode, probe outside file and the Aeneas root are the pilot's.
+   ⚠️ **The named pool's weekly quota resets 2026-11-09 18:59 PST.** A cell that would start after it runs in the pool's new week, and the
+   day-line-check before that launch decides it; a HOLD there is the budget working (the PM's condition 2).
+5. **The client pin, the caps and the watcher are §A0's, unchanged.** Scoring needs the scorer's box to reach the network unconfined, as in
+   the pilot's release, or the network control is UNMEASURED and every run reads RED.
+6. **FIRE ORDER, as §A7:** ZO 1 (clbqza01) first, alone, after day-line-check on the named pool. It is read at its first in-cell `lean-check`
+   before ZS 1 fires, and its `final $` is read against §A8 before ZS 1 fires (the re-price stop).
