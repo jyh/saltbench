@@ -178,3 +178,22 @@ Captain's word (the 2026-09-18 ① class (b)), asked only if this block's result
 
 ---
 *Unsigned. The non-author read is asked; the release addendum names the export sha, the pool, and §A5's five owed receipts as met.*
+
+---
+
+## ADDENDUM 1 (2026-11-09, bench, before any read) — THE EXPORT'S BASE: §A0 row 6 MADE PRECISE, AND A SEVENTH DEPARTURE DECLARED
+**Measured at the object (the harness tree):** the pilot's arm branch (export 865290f) was NEVER merged into the Claude lane's line. The
+latest Claude-lane export of record, OD's eb50811, does not contain 865290f; they part at 982a9c45, with 24 commits on the o37 side and 46 on
+the lane's. A trial merge (`git merge-tree`, nothing written) conflicts in exactly three files: `clb_fire.sh` · `clb_stage.sh` ·
+`clb_harvest.py`, the fire / stage / harvest core.
+**The two arms:**
+- **(a) build LZW on the pilot's line.** The o37 machinery is the pilot's by construction, but the lane's later fire path is absent, including
+  OD's move of the cells' credential to the pool's ACCOUNT config dir (OD ADDENDUM 9) after the per-lane config dirs were blanked by failed
+  refreshes. Firing from (a) today would mean porting that path onto it anyway, by hand, unreviewed by the lane's own selftests.
+- **(b) REC: merge the o37 arm into the current lane line** (a descendant of eb50811), resolve the three conflicts, and build LZW on that.
+**§A5's owed list gains a receipt 0 under (b):** the merged tree passes the lane's own `selftest_all_v3.sh` AND every o37 selftest, and
+§A5 (1)'s CRC-32 regression arm compares the o37 arm's bytes (arm file, gate, method tree, spec, axiom program, lean-check, scorer) to
+865290f's, file by file: identical, or each difference listed with its reason.
+**A SEVENTH DEPARTURE from the pilot, declared beside §A2's six:** under (b) the fire, stage and harvest machinery is the lane's of the
+release, not the pilot's of 2026-09-30, and the client pin may move (§A0 row 7). Neither touches what the Lean half accepts or what the suite
+scores; both are read beside every cost figure, because the chain and its watcher are what stop a cell at the cap.
