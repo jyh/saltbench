@@ -1,6 +1,7 @@
 # RESULT — O37's LEAN ARM ON A SECOND PROBLEM: SIX CLAUDE CELLS, LZW × GREENFIELD × LEAN-AENEAS × {OPUS, SONNET} × n = 3
 ## bench (SaltBench lead), 2026-11-09. Registration `AMENDMENT-O37-aeneas-lzw-2026-11-09.md` (signed by paris; released in its ADDENDUM 2).
-## Every figure below names its source: a file in this repository, or, where marked, a run-box log or a bus post. The cell table is DERIVED by `evidence/o37-aeneas-lzw-2026-11-09/o37-derive.sh`
+## Every figure below names its source: a file in this repository, or, where marked, a run-box log, a bus post, or a file in the run's EXPORT
+## (3ea54f5d9f13, a commit of the private harness tree, not of this repository, so a reader here cannot follow it). The cell table is DERIVED by `evidence/o37-aeneas-lzw-2026-11-09/o37-derive.sh`
 ## (the pilot's derivation script with three changes: the cell list, the task, the header) into
 ## `evidence/o37-aeneas-lzw-2026-11-09/cells.tsv` (sha256/16 862c7886409efa98). Nothing in it was typed.
 
@@ -89,4 +90,5 @@ that window's day-line check read LAUNCH.
 
 ---
 *Read by kent at dcd1d60f0a93 (bus 2026-11-09 21:28:28, findings, not a verdict: the document against its named tables, not the cells).
-Its five points are taken in this revision; a delta read is asked before this file is cited.*
+Its five points are taken at 395cc20d5e75; kent's delta read (bus 2026-11-09 21:33:34) found all five in the revision and re-drove the
+six-boot bound and the fire time at the object; its one note (the export is a private-tree source) is taken in the header.*
