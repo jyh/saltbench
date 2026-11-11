@@ -1,0 +1,248 @@
+# AMENDMENT — O37's SECOND LEAN PROBLEM: SIX CLAUDE CELLS, LZW × GREENFIELD × LEAN-AENEAS × {OPUS, SONNET} × n = 3. FROZEN BEFORE THE FIRST CALL
+## bench (SaltBench lead), 2026-11-09. The helm's decision of 2026-11-09 10:09 (arm (A) of the lead's price fork): fire at the pilot's terms,
+## on spare quota at P3, never ahead of P1/P2 work, under the day lines. The form is the CRC-32 pilot's, `AMENDMENT-O37-aeneas-pilot-2026-09-30.md`
+## (signed, ADDENDA 1–6, merged 0c8bf97b), cited below as "the pilot". Its RESULT is `RESULT-O37-aeneas-pilot-2026-09-30.md` (#294).
+## ⛔ **UNSIGNED UNTIL A NON-AUTHOR SIGNS IT.** ⛔ **NO CELL FIRES BEFORE A RELEASE ADDENDUM NAMES THE EXPORT SHA, THE POOL, AND EVERY
+## RECEIPT OF §A5 AS MET.** Signature and release are two acts, as in the pilot.
+
+**What this file is.** A second problem for the pilot's arm, and nothing else. Every clause of the pilot binds here BY CITATION unless this
+file names the clause and says how it differs and why. The one variable is the PROBLEM (CRC-32 → LZW). What the change of problem forces
+(a new statement, a new theorem name, one library model) is declared in §A1 and §A2 so a reader can weigh it.
+
+---
+
+## §A0 · THE INPUTS (the pilot's §A0, row by row)
+```
+  1  MODELS         claude-opus-5 (block ZO) and claude-sonnet-5 (block ZS): the pilot's ids and the comparison cells' ids (§A2), passed IN
+                    FULL, never as an alias. Read per cell from the transcripts' message.model, head and sidechain apart. ⚠️ Both ids are
+                    UNMEASURED today: a pre-launch probe that is refused, or serves another id, HOLDS the cell at zero spend (§A7). A
+                    substitute model is not this registration's to choose: it breaks the comparison by construction and needs a new one.
+  2  n              3 per model: 6 cells (clbqza01–03 Opus, clbjza01–03 Sonnet; both prefixes 0 hits in either repository at freeze). Block
+                    letters q (ZO) and j (ZS) are NEW: the pilot's e/w belong to its freeze A, and w is already claimed twice (the pilot's AS
+                    and OD's OX, told apart today only by the arm letter), so this block reuses neither.
+  3  PROBLEM, FIELD LZW × greenfield, phase 1 only (no customer dispatch, no spec-change).
+  4  ARM            lean-aeneas, the pilot's §A1.1 unchanged: the salt-diet method with the VERIFIER swapped (a derived arm file).
+  5  STATEMENT      GIVEN, harness-owned: the LZW `O37Spec.Statement` (§A1.2). REQUIREMENTS.md carries no statement section.
+  6  EXPORT         ONE bare sha of the harness tree, named in the release addendum, carrying §A5's build. One sha for all 6 cells.
+  7  CLIENT PIN     the pilot's: 2.1.259 by absolute path, its sha asserted per launch. ⚠️ A later block found 2.1.259 refuses a NEWER model id
+                    (OD ADDENDUM on 2.1.280); whether it still serves the two ids above is read by the probe (row 1). A client change is a
+                    release-addendum act with its own probe, never a silent swap.
+  8  TOOLCHAIN      the pilot's read-only root, unchanged: Aeneas + Charon nightly 2026.09.29-b08bf81, Lean 4.31.0, rust nightly-2026-09-17.
+                    KEPT ON PURPOSE: the lead measured 57 Aeneas nightlies and none was ever on Lean 4.32 (4.31 → 4.35-rc4), so a re-pin buys
+                    no shared trust base with x86lean, and would make the second problem differ from the first by more than the problem.
+  9  CAPS           the pilot's: C1_USD $37.21 on the cell's own meter; no turn cap. (§A8: it is projected to bind every cell.)
+ 10  ACCOUNT        the pool the release addendum names, from the PM's re-cut and that day's day-line-check (the 10 % reserve holds), named
+                    per cell; the run box's account check (identity string, never a directory name) reads OK before each fire.
+ 11  FIRE ORDER     §A7: one live cell at a time; P3, on spare quota only.
+```
+
+## §A1 · THE ARM, AND WHAT THE NEW PROBLEM CHANGES IN IT
+### §A1.1 · Unchanged
+The pilot's §A1.1 (the derived arm file, the swap table, the gate) and §A1.3 (PASS IS KERNEL-ONLY: `#print axioms` names only `propext`,
+`Classical.choice`, `Quot.sound`; a native closure is its own class) bind unchanged.
+
+### §A1.2 · The statement, given
+LZW's `trace_ok` is a THIN wrapper, as CRC-32's is (`op_ok` per op against `encode_model` / `decode_model`, `tasks/systems-v3/LZW/card.md`
+§Statement). So, as in the pilot (§A2 there), the Lean statement is the components' own Verus `ensures`: `encode`'s four and `decode`'s one,
+transcribed one for one with their spec closure of 17 definitions (`init_dict` · `first_idx` · `code_of` · `in_dict` · `enc` · `enc_dict` ·
+`dec_entry` · `dec` · `dec_dict` · `dec0_entry` · `dec0` · `dec0_dict` · `encode_model` · `decode_model` · `encode_dict` · `decode_dict` ·
+`codes_view`) onto `List`. The proposition:
+```
+  def Statement : Prop :=
+    (∀ input : Aeneas.Std.Slice Aeneas.Std.U8, input.val.length ≤ MAX_INPUT →
+      ∃ out, solution.encode input = Aeneas.Std.Result.ok out ∧
+        codes_view out.val = encode_model (input.val.map (·.bv)) ∧
+        decode_model (codes_view out.val) = input.val.map (·.bv) ∧
+        (∀ i : Nat, (h : i < out.val.length) → ((out.val[i]).val : Int) < 256 + i) ∧
+        decode_dict (codes_view out.val) = encode_dict (input.val.map (·.bv)))
+    ∧
+    (∀ codes : Aeneas.Std.Slice Aeneas.Std.U16, codes.val.length ≤ MAX_INPUT →
+      ∃ out, solution.decode codes = Aeneas.Std.Result.ok out ∧
+        out.val.map (·.bv) = decode_model (codes_view codes.val))
+```
+with `MAX_INPUT = 65280`. The subject proves `theorem O37Proof.lzw_correct : O37Spec.Statement` in `proof/Proof.lean`.
+**Four declared deviations from the Verus text**, each in the statement file's header:
+```
+  1  first_idx's index        Verus `int`, here `Nat`: its only caller passes 0, so the Verus `i < 0` arm is unreachable
+  2  carriers                 a byte is `BitVec 8`, a code `Int`
+  3  out-of-range prev[0]     Verus leaves it unspecified; here `getD … 0`, unreachable (every dictionary entry is non-empty)
+  4  decode's length bound    `codes.length ≤ MAX_INPUT`, a requires Verus does NOT have. Aeneas's `Vec.push` FAILS past `Usize.max` (Aeneas
+                              Std `Vec.lean`:156-162 at the pin) where Verus's cannot, so an unbounded decode half is FALSE of the reference.
+                              The bound keeps the output ≤ n(n+1)/2 = 2,130,771,840 < U32.max, and every test drives inside it.
+```
+(4) was a non-author reader's finding (paris, 2026-11-09), measured at the pin before it was taken. The reader's other arm, `∃ r, … = ok r ∨
+fail`, was NOT taken: it weakens the statement.
+
+### §A1.3 · The one library model, supplied by the harness (new: the pilot met none)
+At the pin, `#print axioms` on the REFERENCE's translation reads `solution.encode` and `solution.decode` on the standard three ONLY; the
+reference reaches `alloc.vec.Vec.as_slice` (left by Aeneas as an axiom) only through the trace checker, which the statement does not include.
+A SUBJECT may call `as_slice` inside `encode`. **The harness supplies it**, after Aeneas and before `lean-check`'s kernel replay, as
+`def alloc.vec.Vec.as_slice … := ok v.slice` (Aeneas Std `structure Vec := slice : Slice`, so this is the Vec's own slice and never fails),
+and only when the axiom occurs exactly once in exactly the expected form. **The model is applied INSIDE `lean-check.sh`**, which is one
+tool: the cell's `docs/method/lean-check.sh` is the harness's bytes (the statement check reads EDITED otherwise), so the subject's in-cell
+run, the gate and the scorer's replay all see the same `def`. A subject never proves against an axiom it cannot unfold. **Why the harness and not the subject:** Rust's `Vec::as_slice` has
+one meaning, and a RED for a library gap would measure Aeneas's coverage, not the subject. Any OTHER external a subject's code leaves as an
+axiom is the subject's and reads RED at the axiom check (the pilot's §A3 row 5: a subject stepping outside Aeneas's subset is a FINDING).
+**WRONG IF** a cell's Lean half is GREEN with an `as_slice` that is not the harness's bytes.
+
+## §A2 · THE COMPARISON
+The pilot's §A2 rule: the matrix's cells whose Verus statement is GIVEN, **`LZW × greenfield × salt-diet × statement`**, as of record:
+```
+  claude-opus-5     6d58f1ec · 9aca67c5 (lower bound: FLOOR) · f5f66c47
+  claude-sonnet-5   clbszs01 · clbszs02 (lower bound: CAP-COST) · clbszs03
+```
+(`CELLMAP-descriptive-tables-v2-2026-09-27.tsv`, columns cell · lower_bound · lb_reason.) The RESULT reads their verdicts from their own
+records, never re-scored here. ⚠️ **One comparison cell already ended CAP-COST at this same cap**, so the cap is not new to LZW.
+The pilot's five departures (§A2 there) carry, with one change: row 5 (the statement's reach) reads, for LZW, "Verus: the components' ensures
+plus trace_ok/check_trace · Lean: the components' ensures and the one theorem". §A1.2's deviation (4) is a SIXTH departure: the Lean
+decode half is bounded where the Verus one is not.
+
+## §A3 · WHAT IS SCORED, AND FROM WHOSE BYTES
+The pilot's §A3, unchanged, with LZW's hidden suite (`tasks/systems-v3/LZW/G/run_tests.sh`, its sha16 recorded per cell) in row 1 and
+`O37Proof.lzw_correct` in row 2. **A Lean-arm PASS** is suite FULL PASS ∧ O37-LEAN GREEN ∧ O37-STMT UNCHANGED. **No rate and no p-value.**
+**CAP-COST is an outcome of record on the cost axis** (the helm's 10:09 reading): a capped cell is scored as it stands at the cap, and its
+row says CAP-COST beside its suite, Lean-half and statement columns. It is never re-fired at a higher cap under this registration (§A8 (B)).
+
+## §A4 · THE FENCE AND THE SESSION
+The pilot's §A4, unchanged (the read-only root, `O37_ROOT` HOLD-by-name, `lean-check` writing only in the cell's scratch, the withheld tree
+never in the export), plus: **the withheld tree for LZW** (the reference proof of §A5 row 3, the vector file) is never in the export, and the
+export's withheld-name scan reads 0 for it.
+
+## §A5 · THE RECEIPTS — WHAT IS MEASURED AT FREEZE, AND WHAT THE RELEASE OWES
+**Measured at freeze, zero model spend, at the pin** (the lead's spike plan, ADDENDA 1–9, a private record; each figure below is that record's):
+```
+  translation     the LZW reference, Verus annotations stripped by a tool that prints its drops, as a plain crate: cargo build rc 0.
+                  RED CONTROL on the task's withheld counter-traces: reference TRACE_OK true 4/4 · mutant false 4/4.
+                  charon rc 0 · aeneas rc 0 · emitted Lean 594 lines (sha256/16 ef78a8ef31e36510) · lean rc 0, 0 errors, 0 warnings;
+                  a planted-error copy → rc 1 at the planted line. One external left: Vec.as_slice.
+  statement       the 17 definitions + Statement typecheck against the reference's translation: rc 0, 0 errors (file sha256/16
+                  64eab54233415d93, after the reader's repair).
+  pairing (ii)    the stripped Rust reference and the Lean spec run on the same inputs (5 encodes, 3 decodes on codes no encoder emits,
+                  including an out-of-range 300 and the kwkwk path): 8/8 AGREE; the four Lean round-trips read true. RED CONTROL: a
+                  one-token mutant of `enc` → DISAGREE on 4 of 8.
+  non-author read paris, 2026-11-09: all 17 definitions are the Verus ones; the deviations hold; the encode half says what the four ensures
+                  say, no more, no less; one repair (deviation 4), MEASURED and taken.
+  the model       §A1.3's model: with the axiom, `check_trace` lists `Vec.as_slice`; with the model, lean rc 0 and the standard three only.
+                  The model REFUSES unless the axiom occurs exactly once (driven on another problem's emit: found 0, rc 1).
+```
+**OWED before the release addendum, each with its receipt in that addendum** (the pilot carried all of these AT its freeze; this file
+carries them as preconditions, and says so):
+```
+  1  HARNESS       the o37 machinery KEYED BY PROBLEM (today it is CRC-32's by construction: the spec file, the theorem name in the
+                   axiom program, the arm file's statement paragraph). The LZW spec + statement under the harness's o37 dir; the
+                   theorem name a per-problem input; §A1.3's model applied inside lean-check after aeneas. REGRESSION ARM: a CRC-32
+                   cell renders and scores BYTE-IDENTICALLY to the pilot's export 865290f (arm file, gate, spec, scorer selftests).
+  2  SELFTESTS     o37_leancheck_selftest and o37_score_selftest re-run for LZW with the pilot's RED arm classes (sorry · axiom · import ·
+                   wrong type · no theorem · native closure · a statement weakened in the cell's tree READ RED from the harness's bytes),
+                   plus three new: an `as_slice` axiom with no model → RED; a FOREIGN `as_slice` body in the cell → RED; and an IN-CELL arm (a
+                   reference-shaped solution that calls `as_slice` inside `encode`, driven through the cell's own `verify.sh`, not the scorer)
+                   → GREEN, with its mutant (the model step removed) → RED. RED BACKWARDS for each.
+  3  FEASIBILITY   a REFERENCE PROOF of `O37Proof.lzw_correct` over the reference's translation, GREEN under the export's lean-check with
+                   the standard three axioms, kept in the withheld tree (the pilot's §A5 "reference proof": "the task is feasible under the
+                   arm's rules"). ⚠️ PRICE UNMEASURED: the statement carries the round-trip decode_model ∘ encode_model = id, which CRC-32's
+                   did not. Without this receipt a CAP-COST or a RED could not be told apart from an infeasible task, so it is a
+                   PRECONDITION, not a nicety. Releasing without it changes what a verdict asserts, and is not this file's to choose.
+  4  BUILD         an LZW lean-aeneas cell built from the export on the run box: gate receipt arm 3 RED (statement edit) and GREEN;
+                   verify.sh RED on the sorry skeleton; in a COPY with the reference solution and proof, verify GREEN and
+                   `gate.sh --landing` GREEN.
+  5  PROBE         the pre-launch sandbox probe serves the registered id (§A0 row 1) on the pinned client, per model, at zero cells.
+```
+**ORDER: (3) FIRST.** It is the receipt most likely to end the block and the dearest, so receipts (0)–(2) and (4) wait on it.
+**THE FEASIBILITY STOP (paris's read, R2):** receipt (3) has a box of **2026-11-16** or **3 points of the lead's own pool spent on it**,
+whichever comes first. At the box without a GREEN reference proof, the block HOLDS and goes to the helm with what the attempt reached; it is
+**never released without the receipt** (a release without it changes what a verdict asserts, §A9 bullet 4).
+
+## §A6 · THE SEPARATE ROW: FIDELITY
+The pilot's reading (i) (a lemma relating the transcription to an INDEPENDENT specification) has no LZW counterpart registered here. The
+pairing's ceiling is §A5's: transcription + an 8-row vector check + a non-author read. The RESULT says so beside the head-to-head.
+
+## §A7 · FIRE ORDER, STOPS AND VOIDS
+- **Order:** ZO 1 (clbqza01), ZS 1 (clbjza01), ZO 2, ZS 2, ZO 3, ZS 3; one live cell at a time on the named pool; **day-line-check before
+  EACH launch** — a pool over its day line HOLDS the next cell on the pool's clock, never on the work; P1/P2 work on that pool goes first.
+- **Cell 1 is read at its first in-cell `lean-check` run** before any other cell fires, with the pilot's §A7 rule for a harness-caused
+  failure (stopped, NOT-SCORED(HARNESS), fixed on a new export named in an addendum, re-fired as the registered `r1`).
+- **THE RE-PRICE STOP (the helm's WRONG-IF, 10:09):** after ZO 1 and again after ZS 1, the cell's own `final $` is read against §A8's
+  projection. If a cell LANDS under the cap where all six were projected to bind, or, re-applied to §A8's anchors, the measured multiplier
+  projects ANY remaining cell under the cap, the next cell HOLDS and the price is re-posted to the helm before it fires.
+- **THE FEASIBILITY STOP** (§A5, after the owed list): no reference proof by its box ⇒ the block HOLDS, goes to the helm, never releases.
+- **A probe refused or serving another id** (§A0 row 1) HOLDS at zero spend; it is never a void and never a substitution.
+- The cap, the watcher and the voids are lane B's (the pilot's §A7), unchanged.
+
+## §A8 · THE PRICE
+```
+  anchor   RESULT-cost-tables-v3-2026-09-29.md §$1, greenfield LZW statement-salt-diet medians: Opus ≥ $18.54 · Sonnet ≥ $12.36 (both FLOORS)
+  ratio    the pilot's MEASURED Lean ÷ Verus at the median (RESULT §R2): Opus 2.22× · Sonnet 5.01×   — n = 3, one problem
+  project  Opus ≥ $41.2 · Sonnet ≥ $61.9 per cell: BOTH ABOVE the $37.21 cap
+  ceiling  6 × $37.21 = $223.26, plus each cell's overrun past the cap, UNMEASURED for this arm (no pilot cell reached it)
+```
+⇒ **All six cells are EXPECTED to end CAP-COST.** The result is then mostly a censoring fact on the cost axis: whether the arm fits the
+pilot's budget on a second problem. A ratio carried from CRC-32 to LZW is an assumption about the arm, which is what the cells measure.
+**(B), a higher cap for the Lean arm, is NOT registered here:** it changes what a Lean verdict asserts beside the pilot's, so it is the
+Captain's word (the 2026-09-18 ① class (b)), asked only if this block's result says the budget is the whole story.
+
+## §A9 · WHAT THIS BLOCK CANNOT ESTABLISH
+- Two problems, n = 3 per model: no rate, no p-value, and nothing about Lean vs SMT in general.
+- The pairing's ceiling is §A6's; "the same spec" means that, and the bounded decode half (deviation 4) is a declared difference.
+- One trust base with x86lean is NOT met at this pin (Lean 4.31.0 here, 4.32.0-rc1 there), as in the pilot.
+- If §A8 holds, a CAP-COST row says the arm did not finish inside the pilot's budget. It says nothing about whether it would have.
+- Nothing here makes a claim about the salt method.
+
+---
+*Unsigned. The non-author read is asked; the release addendum names the export sha, the pool, and §A5's five owed receipts as met.*
+
+---
+
+## ADDENDUM 1 (2026-11-09, bench, before any read) — THE EXPORT'S BASE: §A0 row 6 MADE PRECISE, AND A SEVENTH DEPARTURE DECLARED
+**Measured at the object (the harness tree):** the pilot's arm branch (export 865290f) was NEVER merged into the Claude lane's line. The
+latest Claude-lane export of record, OD's eb50811, does not contain 865290f; they part at 982a9c45, with 24 commits on the o37 side and 46 on
+the lane's. A trial merge (`git merge-tree`, nothing written) conflicts in exactly three files: `clb_fire.sh` · `clb_stage.sh` ·
+`clb_harvest.py`, the fire / stage / harvest core.
+**The two arms:**
+- **(a) build LZW on the pilot's line.** The o37 machinery is the pilot's by construction, but the lane's later fire path is absent, including
+  OD's move of the cells' credential to the pool's ACCOUNT config dir (OD ADDENDUM 9) after the per-lane config dirs were blanked by failed
+  refreshes. Firing from (a) today would mean porting that path onto it anyway, by hand, unreviewed by the lane's own selftests.
+- **(b) REC: merge the o37 arm into the current lane line** (a descendant of eb50811), resolve the three conflicts, and build LZW on that.
+**§A5's owed list gains a receipt 0 under (b):** the merged tree passes the lane's own `selftest_all_v3.sh` AND every o37 selftest, and
+§A5 (1)'s CRC-32 regression arm compares the o37 arm's bytes (arm file, gate, method tree, spec, axiom program, lean-check, scorer) to
+865290f's, file by file: identical, or each difference listed with its reason.
+**A SEVENTH DEPARTURE from the pilot, declared beside §A2's six:** under (b) the fire, stage and harvest machinery is the lane's of the
+release, not the pilot's of 2026-09-30, and the client pin may move (§A0 row 7). Neither touches what the Lean half accepts or what the suite
+scores; both are read beside every cost figure, because the chain and its watcher are what stop a cell at the cap.
+
+---
+## ADDENDUM 2 — RELEASED (2026-11-09 12:0x PST, bench, relight 188, before the first cell's model call). §§A0–A9 and ADDENDUM 1 are not edited.
+1. **SIGNATURE.** paris's non-author read, 2026-11-09 10:17 PST, at this file's blob 6e72ea0259b6 (head 0ef83a4e641d, which carries
+   paris's two repairs and the nit). This file is signed as of ADDENDUM 1.
+2. **THE EXPORT: 3ea54f5** (3ea54f5d9f13). One export for all 6 cells, at `~/o37-export-3ea54f5-lzw` on the run box: 404 files plus
+   `EXPORTED-FROM.sha`, **no `withheld/` directory and no reference solution or reference proof in it** (re-listed 2026-11-09 11:5x; the only
+   names matching `withheld` are two harness tools, `withheld_access_census.py` and `check_withheld_leak_v3.py`). It differs from 9b5fb42,
+   on which receipts (1)–(4) ran, in three files only: `clb_fire.sh` · `clb_stage.sh` · `clb_harvest.py`, adding blocks ZO (q) and ZS (j)
+   under freeze Z (`git diff --stat 9b5fb42 3ea54f5`: 18 insertions, 14 deletions). The o37 arm, statement, lean-check and scorer are 9b5fb42's.
+3. **THE FIVE RECEIPTS OF §A5, EACH MET** (the lead's private record, plan ADDENDA 10–14 and this addendum, is the source of each figure):
+   - **(0)** the merged tree's v3 suite at 3afbcd31, in a git clone on the run box: 73/75, 0 FAIL, 2 SKIP (placebo, declared).
+   - **(1)** keyed by problem (20cddc91); the CRC-32 regression with the pilot's receipt runner: build rc 0, gate arm 3 RED as required,
+     lean-check selftest 19/0/3 in-cell and 24/0/0 confined, three containment mutants RED, scorer 7/7, in-cell path GREEN.
+   - **(2)** the LZW selftests at 9b5fb42: in-cell 21/0/3 including asslice-model GREEN and asslice-nomodel RED, scoring 26/0/0, mutants RED,
+     scorer 7/7.
+   - **(3)** the reference proof of `O37Proof.lzw_correct : O37Spec.Statement` (842 lines, sha256/16 59fadb58f3caee67), GREEN under the
+     export's confined lean-check with its kernel replay and the standard three axioms. Inside the box of 2026-11-16.
+   - **(4)** a dry LZW cell built from the cells' export: build rc 0, gate arm 3 RED as required, the cell's spec byte-equal to the
+     registered statement (sha256/16 64eab54233415d93); in a copy with the reference solution and proof, verify GREEN and landing GREEN.
+   - **(5)** the pinned client 2.1.259 (sha256/16 884baa38fe1a624b, asserted) SERVES both registered ids on the named pool, at zero cells:
+     one `-p` turn per model from a scratch directory, 2026-11-09 19:47Z. claude-opus-5: rc 0, reply `OK`, the session's `message.model`
+     set is exactly `{claude-opus-5}`. claude-sonnet-5: rc 0, reply `OK`, `message.model` set exactly `{claude-sonnet-5}`. Spend $0.0574 on
+     the pool, outside every cell's meter. ⚠️ The client's `modelUsage` also lists `claude-haiku-4-5-20251001` on both turns: the
+     client's own side call, carried in no assistant message; the cells' served-id read (§A0 row 1) is from `message.model`, head and
+     sidechain apart, so that call cannot pass for a head. The cell's own fence is probed at its fire by `probe_sandbox_v3.sh --transparent`,
+     as in the pilot; a refusal there HOLDS at zero cells (§A7).
+4. **THE POOL: the one the PM (evidence) named 2026-11-09 11:43 PST**, with a second pool as its fallback, on spare quota at P3. Config dir on the run
+   box: the pool's ACCOUNT config dir, as in OD ADDENDUM 9. **The account check reads OK**: `lane_identity.py --expect` against the
+   expected digest (the one OD's env carries from the Captain's council word, not read from the box) returned IDENTITY OK, a refresh token
+   present; receipt (5)'s replies are the authenticated read. The lane env differs from the pilot's in three lines only (the config dir,
+   the account digest, the export); client pin, probe mode, probe outside file and the Aeneas root are the pilot's.
+   ⚠️ **The named pool's weekly quota resets 2026-11-09 18:59 PST.** A cell that would start after it runs in the pool's new week, and the
+   day-line-check before that launch decides it; a HOLD there is the budget working (the PM's condition 2).
+5. **The client pin, the caps and the watcher are §A0's, unchanged.** Scoring needs the scorer's box to reach the network unconfined, as in
+   the pilot's release, or the network control is UNMEASURED and every run reads RED.
+6. **FIRE ORDER, as §A7:** ZO 1 (clbqza01) first, alone, after day-line-check on the named pool. It is read at its first in-cell `lean-check`
+   before ZS 1 fires, and its `final $` is read against §A8 before ZS 1 fires (the re-price stop).

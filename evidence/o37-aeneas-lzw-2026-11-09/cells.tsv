@@ -1,0 +1,7 @@
+cell	condition	end1_kind	dirty	suite	tests	o37_lean	o37_axioms	o37_stmt	PASS	proof_lines	final_T	final_COST	at_end_COST	cap	served_head	served_sidechain	served_verdict	client_versions	export12	head12	G_runner_sha16
+clbqza01	opus	LANDED	0	PASS	8/8	GREEN	Classical.choice,Quot.sound,propext	UNCHANGED	PASS	1338	30754396	27.3904	26.2025	37.21	claude-opus-5=230	-	clean	2.1.259	3ea54f5d9f13	862ddbabfcca	7c6d2cea42891fab
+clbjza01	sonnet	CAP-COST	2	PASS	8/8	RED	Classical.choice,Quot.sound,propext,sorryAx	UNCHANGED	NO	547	155335507	37.7316	37.7316	37.21	claude-sonnet-5=629	-	clean	2.1.259	3ea54f5d9f13	5ae94554a9a7	7c6d2cea42891fab
+clbqza02	opus	CAP-COST	2	PASS	8/8	RED	-	UNCHANGED	NO	894	52391648	37.4443	37.4443	37.21	claude-opus-5=325	-	clean	2.1.259	3ea54f5d9f13	a422422772d3	7c6d2cea42891fab
+clbjza02	sonnet	CAP-COST	1	PASS	8/8	RED	Classical.choice,Quot.sound,propext,sorryAx	UNCHANGED	NO	664	145580229	37.8090	37.8090	37.21	claude-sonnet-5=592	claude-sonnet-5=308	clean	2.1.259	3ea54f5d9f13	36212ccee6aa	7c6d2cea42891fab
+clbqza03	opus	LANDED	0	PASS	8/8	GREEN	Classical.choice,Quot.sound,propext	UNCHANGED	PASS	1398	48997613	36.5068	35.2327	37.21	claude-opus-5=332	-	clean	2.1.259	3ea54f5d9f13	eb8afb941853	7c6d2cea42891fab
+clbjza03	sonnet	CAP-COST	2	PASS	8/8	RED	-	UNCHANGED	NO	1112	137557868	37.6578	37.6578	37.21	claude-sonnet-5=373	claude-sonnet-5=667	clean	2.1.259	3ea54f5d9f13	1ad6024f710a	7c6d2cea42891fab
