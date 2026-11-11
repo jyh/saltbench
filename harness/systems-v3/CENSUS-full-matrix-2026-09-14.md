@@ -1697,3 +1697,35 @@ the Opus OS ratio is still the smallest. The paper's three ratios are corrected 
 5.12x), and states SG and OS PROBE-IN because the split was taken on a different cell set. Its clause that the split's probe-in
 readings sit *"a hundredth below the record's"* stops being true once the record reads 5.31x and 4.70x, so the same PR changes it to
 *"equal to the record's"*, and the record's SG figure it quotes from 8.27x to 8.29x.
+
+---
+# ⚖️ ADDENDUM 39 — **O37: LU IS DECLARED NOT FEASIBLE AS A RUST PORT. ITS 24 CONDITIONS ARE DECLARED BESIDE THE SECTION, AS THE PILOT'S 16 INEXPRESSIBLE ARE. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-11, on the Captain's council word of 2026-11-10 (ask 3, his whole word on the pack: "Accept recs, keep objectives").
+
+## §AJ1 · WHAT WAS RULED
+The recommendation he accepted read: LU is declared NOT FEASIBLE as a Rust port; its 24 conditions are reported as DECLARED beside the
+census, as the 16 inexpressible were; no harness-library spike. The port verdict it rests on is bench's of 2026-11-10 (systems lane, not
+in this repository). Its reasons, so a reader here need not follow it:
+- v1's LU card is exact rational arithmetic by construction, and its tests include Hilbert matrices, named for their rational growth.
+- A good answer is decidable (every entry of L and U is a ratio of minors), so the task is not disqualified for having no finite check.
+- The executable checker that a treatment submission must ship does not fit a machine word on the card's own tests: checking PA = LU
+  exactly needs a common denominator that leaves i128 at small orders, and Verus's standard library carries no verified bignum.
+- Each way to meet that changes what the arm measures on this card: every treatment submission verifies its own bignum (the cost is then
+  bignum verification, not elimination), or the harness supplies one as a given no other v3 card carries. Shrinking the inputs to fit
+  i128 drops the Hilbert growth, and a finite field is a different task.
+
+## §AJ2 · THE O37 SECTION, RE-CUT
+```
+  O37's population (ADDENDUM 28 §AG1)                                                     216
+    expressible slice, blocks N and NA (ADDENDUM 29)          DONE 48                      48
+    LU x {4 models} x {plain, salt-diet} x {none, statement, spec-change}   DECLARED       24   (this addendum)
+    NTT and WHT, 48 conditions                                 outside every block today   48
+    statement and spec-change on the six block-N problems      outside every block today   96
+```
+The 24 are 4 models (the two Claude and the two agy models of blocks N and NA) x 2 arms x 3 extras. A DECLARED condition is reported
+beside the section with its reason, never counted DONE and never silently removed from O37's 216.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AJ3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+It says the port was not built and why. It says nothing about LU in Lean, about any model's ability on LU, or about the salt method. NTT
+and WHT have v3 rungs built on the systems lane (2026-11-10); they enter this section only with their own block's result.
