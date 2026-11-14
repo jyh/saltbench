@@ -70,7 +70,7 @@ def main():
             name, n, landed, notl, ' '.join(r['cell'] for r in cells if r['run_state'] != 'ENDED: LANDED')))
     phase2 = 36 * mo + 36 * ms
     fresh_max = out['Opus'] + out['Sonnet']
-    print('estimate  phase 2: 36 x %.2f + 36 x %.2f = %.2f' % (mo, ms, phase2))
+    print('estimate  phase 2: 36 x %.3f + 36 x %.3f = %.2f + %.2f = %.2f' % (mo, ms, 36 * mo, 36 * ms, phase2))
     print('fresh phase 1 (upper bound before the baselines): %d cells x C1 %.2f = %.2f' % (fresh_max, c1, fresh_max * c1))
     print('ceiling   72 x C2 %.2f + %d x C1 %.2f = %.2f, plus each cell\'s overrun past its cap' % (
         c2, fresh_max, c1, 72 * c2 + fresh_max * c1))

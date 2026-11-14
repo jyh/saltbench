@@ -110,7 +110,7 @@ on salt-diet 9 of 10 times); (ii) within a condition, salt-diet's phase-2 CAP-CO
 ```
   phase-2 median per cell   Opus $13.36 (n = 19, the P1 wave, RESULT-p1-specchange-2026-09-10.tsv)
                             Sonnet $2.51 (n = 24, block SC, evidence/claude-lane-blocks-2026-09-21/blockSC-cells.tsv p2_COST)
-  estimate                  36 × 13.36 + 36 × 2.51 = $571.50 for phase 2
+  estimate                  36 × 13.36 + 36 × 2.515 = 480.96 + 90.54 = $571.50 for phase 2 (Sonnet's median is 2.515 unrounded)
   fresh phase 1             at most 10 cells before the baselines (the 10 untagged) × C1 $37.21 = $372.10; more if a baseline fails
   ceiling                   72 × $18.60 + 10 × $37.21 = $1,711.30, plus each cell's overrun past its cap, plus $37.21 per further shortfall
 ```
@@ -140,3 +140,38 @@ It cannot establish: 1. any magnitude or effect size; 2. anything about Opus ver
 reached from a phase 1 that did not land (none exists by construction); 4. anything about the O37 conditions outside §C1.
 Deliverable (block N §N9): a result of record per model, with the census's O37 section re-cut in the same commit. Any public sentence,
 and any claim about the method, is the Captain's.
+
+---
+# ✍️ SIGNED — the helm (210th head), 2026-11-13 21:29 PST, bus offset 101,918,579: blob 7ff00c7bfe82 at head ac515f783927, read whole (142 lines):
+COMPLETE WITH ONE LOW AND LIMITS. The LOW (§C5's printed factors gave $571.32) is fixed above by printing Sonnet's median to the precision used,
+no clause moved. The limits it named: price.py not run by the signer; step g, the rule, block N and lane B not read; the CAP-COST ids, the 72
+cells and export 36ca596b not checked. §C7 stands on its default (the helm, XF; a ledger line in the 11-14 pack).
+
+---
+# ADDENDUM 1 (2026-11-13, bench) — §C2 STEP 1's INSTRUMENT IS THE G RUNG (taskshape B3). WRITTEN BEFORE ANY BASELINE IS RUN.
+**The defect.** §C2 step 1 cites "the rule's §4" and glosses it as "a cargo build and B/'s REGRESSIONS on the source's landed-1", and step 2
+reads `p1_regressions_failed == 0`. The rule's §4 first sentence was REPLACED by its own ADDENDUM B3 (taskshape, "THE CORRECTED INSTRUMENT"):
+on a phase-1 tree `B/run_tests.sh` cannot build, because the clause tests name functions a phase-1 landing does not define. Measured at the
+export candidate 36ca596b, each of the six `B/run_tests.sh` builds ONE crate from the submission and the whole B driver, and on a build
+failure prints `TESTS 0/0` and exits 3 with no REGRESSIONS line. So the gloss as signed can produce no `p1_regressions_failed` at all, and a
+reader that took the absent line as 0 would make every cell eligible by accident (B3's own finding).
+The baseline drive runs `B/run_tests.sh` on ONE source as its control and must read exit 3 with no REGRESSIONS line; if it builds, this
+addendum's premise is wrong and the drive stops.
+**Registered, replacing step 1's gloss and step 2's field (the citation already resolves here, since §4 as amended IS B3):**
+```
+  1  The P1 baseline is the G rung's run_tests.sh (the EXPORT's tasks/systems-v3/<T>/G/run_tests.sh) on the source's landed-1 tree,
+     run on a COPY, zero model tokens. Recorded per cell: p1_base_passed / p1_base_total from its `TESTS <passed>/<total>` line
+     (⛔ POLARITY: PASSED, not the B runner's FAILED), the runner's exit code, and p1_solution_sha256.
+  2  ELIGIBLE iff landed-1 exists AND the runner exits 0 AND p1_base_passed == p1_base_total > 0. An exit 3 or 4, a missing TESTS line, or
+     a 0/0 is UNMEASURED and NOT ELIGIBLE, never a pass.
+```
+**What this changes in the expected outcome, said before the data:** §C2 already names two landed cells that fail their own G suite at block
+N (Sonnet LinearScan plain clbnrp01, clbnrp03, 8/9). Under this instrument they are expected INELIGIBLE, so that condition expects two
+fresh phase 1s under rule 4. The upper bound on fresh phase 1 (§C5) is unchanged in form: it is re-priced from the 72 baselines in the
+release addendum, and §C7's ask is untouched.
+**Why not the literal gloss with a separate build:** the B/ base suite is not always G's verbatim (LinearScan's B regressions call
+`allocate(prog, k, 0)` against B's widened interface), so B's REGRESSIONS cannot be compiled against a phase-1 tree for every task. The G rung
+is the phase-1 landing's own base suite, the reading step g ADDENDUM 1 item 2 took for its seven cells.
+**Signature.** This changes the instrument of a signed clause, so it is put to a non-author. The baselines are zero-token reads on copies
+whose eligibility rule is registered here first. They run after this addendum is on origin, and a reader who rejects it gets them re-read
+from the same run logs (each log carries the full runner output).
