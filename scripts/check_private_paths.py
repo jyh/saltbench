@@ -1370,6 +1370,7 @@ def self_test() -> int:
     finally:
         os.path.relpath = _relpath13
 
+    mem_receipt = _history_memory_arm(failures)
     for f in failures:
         print(f"SELF-TEST FAIL: {f}")
     if failures:
@@ -1380,8 +1381,62 @@ def self_test() -> int:
           f"shapes caught; {len(clean)} compliant forms passed; own source clean; "
           f"message-ratchet verdict driven on both arms; pin audit driven on a "
           f"real scratch repo — trichotomy, published-ref precedence in BOTH "
-          f"directions, local-only disclosure; every FAIL path NAMES findings)")
+          f"directions, local-only disclosure; every FAIL path NAMES findings; {mem_receipt})")
     return 0
+
+
+def _peak_rss_bytes(ru_maxrss: int) -> int:
+    """ru_maxrss is BYTES on macOS and KILOBYTES on Linux; a budget compared in the wrong unit passes everything."""
+    return ru_maxrss if sys.platform == "darwin" else ru_maxrss * 1024
+
+
+def _history_memory_arm(failures: list) -> str:
+    """THE HISTORY WALK MUST NOT HOLD THE HISTORY IN MEMORY (port of jyh/vir#67, 2026-11-14).
+
+    jyh/vir's Scrub hung five times on its history steps: two merges there diff 1.92 GB against one
+    parent, and its walk read every diff whole, peaking at 19 GB on a 16 GB runner. THIS copy is worse
+    in shape: history_rows() listed every added line of the WHOLE history before scanning. The arm: a
+    scratch repo whose one commit adds a SIZE-byte text file, history_mode() run in a child, and the
+    child's peak RSS compared against a child that only imports this module. The budget is derived
+    from the fixture: the walk may cost less than ONE copy of the diff it read.
+    """
+    size = 32 * 1024 * 1024
+    here = os.path.dirname(os.path.abspath(__file__))
+    probe = ("import resource, sys, io, contextlib; sys.path.insert(0, sys.argv[1]); import check_private_paths as c\n"
+             "with contextlib.redirect_stdout(io.StringIO()):\n"
+             "    r = c.history_mode(False) if sys.argv[2] == 'walk' else 0\n"
+             "print(r, resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)")
+    with tempfile.TemporaryDirectory() as repo:
+        g = ["git", "-C", repo, "-c", "user.name=memory arm", "-c", "user.email=arm@example.invalid"]
+        if subprocess.run(["git", "init", "-q", "-b", "trunk", repo], capture_output=True).returncode != 0:
+            failures.append("history memory arm: git init failed (the arm could not run)")
+            return "history memory arm NOT RUN"
+        line = "an ordinary added line of prose, nothing private\n"
+        with open(os.path.join(repo, "big.md"), "w", encoding="utf-8") as fh:
+            fh.write(line * (size // len(line)))
+        for a in (["add", "big.md"], ["commit", "-q", "-m", "one large added file"]):
+            if subprocess.run(g + a, capture_output=True).returncode != 0:
+                failures.append(f"history memory arm: git {a[0]} failed (the arm could not run)")
+                return "history memory arm NOT RUN"
+        peaks, rcs = {}, {}
+        for mode in ("idle", "walk"):
+            r = subprocess.run([sys.executable, "-c", probe, here, mode], cwd=repo,
+                               capture_output=True, text=True)
+            parts = r.stdout.split()
+            if r.returncode != 0 or len(parts) != 2 or not parts[1].isdigit():
+                failures.append(f"history memory arm: the {mode} child exited {r.returncode} with no peak")
+                return "history memory arm NOT RUN"
+            rcs[mode], peaks[mode] = parts[0], _peak_rss_bytes(int(parts[1]))
+    if rcs["walk"] != "0":
+        failures.append(f"history memory arm: history_mode over a clean one-commit repo returned {rcs['walk']}, "
+                        f"not 0 (a clean history must pass; an empty-scan rule must count lines READ, not lines KEPT)")
+    cost = peaks["walk"] - peaks["idle"]
+    if cost >= size:
+        failures.append(f"history memory arm: the walk over one {size} B added file cost {cost} B of peak RSS "
+                        f"beyond an idle import -- it holds the diff whole (the vir hang)")
+    shown = f"{cost // 1024} KiB" if cost > 0 else "0 KiB (below the idle noise)"
+    return (f"history walk cost {shown} over a {size // (1024 * 1024)} MiB diff (budget: under one copy; "
+            f"walk peak {peaks['walk'] // 1024} KiB, idle peak {peaks['idle'] // 1024} KiB)")
 
 
 # ---------------------------------------------------------------------------
