@@ -130,3 +130,30 @@ rows; the extractor commits; the model ids' served state (the zero-cell probe's 
    (a) THE ACCOUNT CHECK — ⛔ OPEN: owed on the pool the PM names (§W0 row 8, P3).
 5. THE ZERO-CELL PROBE — ⛔ OPEN: owed on that pool's client.
 **Pool:** ⛔ OPEN (the PM's cut). **Order:** §W3 as registered. Nothing fires before this heading loses its DRAFT mark.
+
+---
+# ADDENDUM 2 (2026-11-14, bench) — THE RELEASE. ADDENDUM 1's open items are filled here; this heading is the release
+The repo appends to a frozen file and never edits it, so ADDENDUM 1's heading keeps its DRAFT mark. Its condition ("not a release until
+items 4a and 5 are filled and the pool is named") is met by this addendum, which is the release. Nothing in ADDENDUM 1 is changed: the
+export, receipts 1–3 and 4(b) stand as written there.
+**Pool: the one the PM (evidence) named for block W on 2026-11-14 00:21 PST** (bus offset 102,064,641), from the 11-14 cut, at P3,
+with a second pool as its fallback if this pool's dir fails a check. day-line-check before each launch decides it; a HOLD there is the budget working. Config dir on the run box: the
+pool's ACCOUNT config dir. The lane env is block N's with the config dir and the export changed and the account digest added (a
+three-line diff, read back on the run box).
+**§W2 receipts, the two that were open:**
+4. (a) THE ACCOUNT CHECK — MET, 2026-11-14 00:24 PST. `lane_identity.py --expect` against the pool's expected digest (the one the
+   O37 LZW release's env carries, OD ADDENDUM 9's; not read off the box) returned IDENTITY OK, refresh token present. Controls: the
+   same dir against a digest one character off returns rc 5; another pool's dir against this digest returns rc 5. Receipt 5's replies
+   are the authenticated read. Per cell, `clb_fire.sh` re-checks the credential by body before each launch, as in block N.
+5. THE ZERO-CELL PROBE — MET, 2026-11-14 08:24Z. The pinned client 2.1.259 (sha256/16 884baa38fe1a624b, asserted) serves both
+   registered ids on this pool: one `-p` turn per model from a scratch directory. claude-opus-5: rc 0, reply `OK`, the session's
+   `message.model` set exactly `{claude-opus-5}`. claude-sonnet-5: rc 0, reply `OK`, set exactly `{claude-sonnet-5}`. Spend $0.1117 on
+   the pool, outside every cell's meter. As in the LZW release, the client's `modelUsage` also lists a Haiku id on both turns, its own
+   side call, carried in no assistant message.
+**Export on the run box:** `studio_export.sh` of 0916ef9a: 413 files, listing sha256/16 6e9c6d386e258fb3, withheld-shaped names 0
+both sides, the Verus sha equal both sides (7a7b319b170692d3), marker written last.
+**Dry drive on that export (zero tokens):** `clb_stage.sh --roots --freeze W --dry` → 8 roots, model tables read back (4 Opus, 4
+Sonnet); `clb_stage.sh WO WHT salt-diet 1 --dry` builds clbdws01 (salt-diet arm, card-extras none); `clb_fire.sh` on it `--dry` passes
+the client pin, the Claude-lane census and the credential, and stops before the settings render, naming what it did not drive.
+**Before the first cell:** the real roots are created by `clb_stage.sh --roots --freeze W` in a window with no agy cell live (the
+stager's own rule), then the order is §W3's, Opus's tripwire T-W-O first.
