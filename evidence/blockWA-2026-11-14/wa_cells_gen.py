@@ -1,5 +1,6 @@
 """Block WA (Flash half) per-cell table of record, and every figure the result quotes. Nothing is typed.
-  score receipts  ~/.fleet/executors/gemini.runs/wa-{wht,ntt}-flash-2026-11-14-score*/cells-wa-*.p1.score.txt   (the hand's, score_wave_v3.sh)
+  score receipts  ~/.fleet/executors/gemini.runs/<SCORE_DIRS>/cells-wa-*.p1.score.txt   (the hand's, score_wave_v3.sh), the two dirs named
+                  in SCORE_DIRS and no glob over them (an abandoned first WHT dir, wa-wht-flash-2026-11-14-score/, holds no receipts)
   cell facts      cell_facts.json beside this file (wa_facts.py, read on the run box from each cell's own ctl/)
 A value that cannot be read is UNREAD, never blank and never zero.
   python3 wa_cells_gen.py            -> the per-cell table (TSV, stdout)
@@ -8,7 +9,8 @@ A value that cannot be read is UNREAD, never blank and never zero.
 import glob, json, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-RUNS = os.path.expanduser('~/.fleet/executors/gemini.runs')
+RUNS = os.environ.get('WA_RUNS') or os.path.expanduser('~/.fleet/executors/gemini.runs')   # WA_RUNS: a test root only
+SCORE_DIRS = ('wa-wht-flash-2026-11-14-score2', 'wa-ntt-flash-2026-11-14-score')
 COLS = ['id', 'root', 'problem', 'arm', 'requested_model', 'init_model', 'client_sha256', 'export_sha', 'T', 'turns_sent',
         'cut_turns', 'cut_turns_all', 'wall_seconds', 'done_reason', 'landed', 'false_done_claims', 'end1', 'verdict', 'TESTS',
         'truncated', 'interface', 'landed_tags', 'score_receipt']
@@ -16,7 +18,7 @@ COLS = ['id', 'root', 'problem', 'arm', 'requested_model', 'init_model', 'client
 
 def receipts():
     out = {}
-    for f in sorted(glob.glob(os.path.join(RUNS, 'wa-*-flash-2026-11-14-score*', 'cells-wa-*.p1.score.txt'))):
+    for f in [g for d in SCORE_DIRS for g in sorted(glob.glob(os.path.join(RUNS, d, 'cells-wa-*.p1.score.txt')))]:
         text = open(f, errors='replace').read()
         iface = re.search(r'share interface (\w+)', text)
         tr = re.search(r'TRUNCATED (\d+)', text)
@@ -24,6 +26,8 @@ def receipts():
         for line in text.splitlines():
             m = re.match(r'(wa[a-z0-9]+)\s+\S+\s+\S+\s+\S+\s+(PASS|FAIL|NOT-LANDED|NOT-SCORED)\b(.*)$', line)
             if m:
+                if m.group(1) in out:
+                    sys.exit('REFUSE: cell %s has two receipts (%s and %s)' % (m.group(1), out[m.group(1)]['score_receipt'], os.path.relpath(f, RUNS)))
                 t = re.search(r'TESTS (\d+/\d+)', m.group(3))
                 out[m.group(1)] = dict(verdict=m.group(2), TESTS=t.group(1) if t else 'UNREAD',
                                        truncated=('UNREAD' if not tr or ncell != 1 else ('yes' if int(tr.group(1)) else 'no')),
