@@ -139,3 +139,17 @@ not LANDED by done_reason: naaeps01 TURN-TIMEOUT 11524 s NOT-LANDED · naaeps02 
   prose check  RESULT-gemini-blockNA-2026-09-28-prose-verify.py (the lead's): every figure line above re-derived from the table and
                asserted against this document; --selftest requires RED on a PASS turned FAIL and on the outside-n cell admitted
 ```
+
+---
+# ADDENDUM 2026-11-14 · A LIMIT ON MaxFlow's REQUIREMENT R6 (paper, placing bench's probe of 2026-11-13). No figure above changes.
+
+MaxFlow's requirement R6 asks that the second function, `answer_is_valid`, decide any pair it is handed, including a valid pair the
+component did not produce. The withheld suite does not ask that case: its two hand-built "true" pairs carry the reference's own set,
+and its battery arm asks only the component's own pair. A stub whose checker answers "equal to my own answer" passes the suite at 8 of 8.
+
+**The suite does not test a non-own valid pair; every cell of record was checked by probe on 2026-11-13, none rejects one.** The probe
+read each MaxFlow cell of record's scored `solution.rs` by `git show` (no checkout; the cell untouched), linked it through the harness's
+own build with a probe driver, and asked its checker about three valid pairs it did not produce and one invalid control. All 24 MaxFlow
+cells of record (block NO 6, block NS 6, block NA 12) accept the three and reject the control; this file's block holds 12 of them. The record is commit
+`ec868607` of the private harness tree, `evidence/o37-maxflow-r6-nonown-2026-11-13/`. The probe and the stub stay private, because they
+carry the withheld suite's networks and reference. A new MaxFlow cell would need the same check.
