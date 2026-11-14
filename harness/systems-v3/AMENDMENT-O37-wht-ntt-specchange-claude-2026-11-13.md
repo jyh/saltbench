@@ -88,3 +88,10 @@ and their direction of error is unknown.
 ## §WC7 · READING RULES, VOIDS, WHAT THIS BLOCK CANNOT ESTABLISH, DELIVERABLES
 NC §C8, unchanged, with "§C1" read as §WC1. A result of record per model, with the census's O37 section re-cut in the same commit. Any public
 sentence, and any claim about the method, is the Captain's.
+
+---
+# ✍️ SIGNED — the helm (210th head), 2026-11-13 23:13 PST, bus offset 102,010,364: blob 5921ece506ef at head b229e63ceaa1, read whole (90 lines):
+COMPLETE WITH LIMITS, no finding on the file (one nit on the post's line count, which said 97). The signer recomputed §WC1 (24 cells) and
+§WC5 ($190.50; ceiling $446.40; worst-case fresh $893.04). The limits it named: NC's cited clauses (step g, taskshape §A3/B3, block N
+ADDENDUM 10) not re-read beyond NC itself; export 0916ef9a and the B/ tree hashes not opened; the medians not re-derived. Order as written:
+no baseline before block W's result of record.
