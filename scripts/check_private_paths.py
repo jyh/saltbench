@@ -1371,6 +1371,47 @@ def self_test() -> int:
     finally:
         os.path.relpath = _relpath13
 
+    # 14. A GIT ERROR IN THE HISTORY WALK IS A FAILURE, NEVER AN EMPTY DIFF (STATUS-systems row 161, named in PR 434).
+    #     added_against ran `git diff` with stderr discarded and its exit code unread, so a diff git could not
+    #     produce read as a commit that added nothing: that commit passed clean. Driven on a scratch repo whose
+    #     second commit adds a planted path: CONTROL first (the walk charges that commit), then its blob object is
+    #     deleted, so `git diff` really fails; history_rows() must now raise CalledProcessError.
+    tmp14 = tempfile.mkdtemp(prefix="ppgate-giterr-")
+    here14 = os.getcwd()
+    try:
+        r14 = os.path.join(tmp14, "r")
+        os.makedirs(r14)
+        os.chdir(r14)
+        g14 = ["git", "-c", "user.name=t", "-c", "user.email=t@t", "-c", "commit.gpgsign=false"]
+        subprocess.run(["git", "init", "-q"], check=True)
+        plant14 = "see projects/claude/" + "saltbench-sys" + "tems" + "/tasks/g.md"
+        for name, text in (("ok.md", "nothing to see\n"), ("g.md", plant14 + "\n")):
+            with open(name, "w", encoding="utf-8", newline="") as fh:
+                fh.write(text)
+            subprocess.run(["git", "add", name], check=True)
+            subprocess.run(g14 + ["commit", "-q", "-m", "add " + name], check=True)
+        head14 = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True,
+                                check=True).stdout.strip()
+        charged14 = {sha for sha, _w, _l in scan(history_rows())}
+        if head14[:12] not in charged14:
+            failures.append("git-error arm: CONTROL failed, the intact walk must charge the planting commit "
+                            f"({head14[:12]} not in {sorted(charged14)}), or the arm tests nothing")
+        else:
+            blob14 = subprocess.run(["git", "rev-parse", "HEAD:g.md"], capture_output=True, text=True,
+                                    check=True).stdout.strip()
+            os.remove(os.path.join(".git", "objects", blob14[:2], blob14[2:]))
+            try:
+                rows14 = history_rows()
+            except subprocess.CalledProcessError:
+                pass
+            else:
+                failures.append("history_rows must RAISE when `git diff` fails (a blob is missing); it returned "
+                                f"{len(rows14)} row(s) and charged {sorted({s for s, _w, _l in scan(rows14)})}, "
+                                "so the planting commit read as a commit that added nothing")
+    finally:
+        os.chdir(here14)
+        shutil.rmtree(tmp14, ignore_errors=True)
+
     mem_receipt = _history_memory_arm(failures)
     for f in failures:
         print(f"SELF-TEST FAIL: {f}")
@@ -1719,18 +1760,24 @@ def history_rows(keep=None, counter=None) -> list:
     EMPTY_TREE = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
 
     def added_against(base, sha, filt=None):
-        # check=False is kept as it was: a git error here reads as an empty diff, exactly as before this
-        # change. (That is its own defect, outside this port; see the PR.)
-        p = subprocess.Popen(["git", "diff", "--unified=0", "--no-color", base, sha],
-                             stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+        # ⛔ A GIT ERROR RAISES (self-test arm 14, STATUS-systems row 161). Until 2026-11-14 stderr was discarded
+        #   and the exit code unread, so a diff git could not produce read as a commit that added nothing and
+        #   passed clean. The stream is drained first, so git can never block on a full pipe, then a nonzero
+        #   exit raises CalledProcessError, which history_mode reports as FAIL.
+        argv = ["git", "diff", "--unified=0", "--no-color", base, sha]
         got = []
-        with io.TextIOWrapper(p.stdout, encoding="utf-8", errors="replace", newline="") as out:
-            for physical in out:
-                for l in physical.splitlines():
-                    if l.startswith("+") and not l.startswith("+++"):
-                        if filt is None or filt(l[1:]):
-                            got.append(l[1:])
-        p.wait()
+        with tempfile.TemporaryFile() as err:
+            p = subprocess.Popen(argv, stdout=subprocess.PIPE, stderr=err)
+            with io.TextIOWrapper(p.stdout, encoding="utf-8", errors="replace", newline="") as out:
+                for physical in out:
+                    for l in physical.splitlines():
+                        if l.startswith("+") and not l.startswith("+++"):
+                            if filt is None or filt(l[1:]):
+                                got.append(l[1:])
+            rc = p.wait()
+            if rc != 0:
+                err.seek(0)
+                raise subprocess.CalledProcessError(rc, argv, stderr=err.read().decode("utf-8", "replace"))
         return got
 
     def kept(sha, line):
