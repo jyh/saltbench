@@ -1412,6 +1412,39 @@ def self_test() -> int:
         os.chdir(here14)
         shutil.rmtree(tmp14, ignore_errors=True)
 
+    # 15. THE HISTORY OK LINE REPORTS THE LINES IT READ, AND NAMES THE HITS AS HITS (STATUS-systems row 162).
+    #     Since PR 434 `rows` holds only the rows scan() flags, but the OK line still printed len(rows) as
+    #     "added lines" and the commits holding them as "contributed added lines". On a clean history that read
+    #     "0 added lines", which a non-author reader took for an empty scan. Driven on a scratch repo with three
+    #     clean added lines and no findings: the OK line must carry "3 added lines READ".
+    import io as _io15, contextlib as _ctx15
+    tmp15 = tempfile.mkdtemp(prefix="ppgate-okline-")
+    here15 = os.getcwd()
+    saved15 = globals()["HIST_BASELINE"]
+    try:
+        r15 = os.path.join(tmp15, "r")
+        os.makedirs(r15)
+        os.chdir(r15)
+        g15 = ["git", "-c", "user.name=t", "-c", "user.email=t@t", "-c", "commit.gpgsign=false"]
+        subprocess.run(["git", "init", "-q"], check=True)
+        for name, text in (("a.md", "one\ntwo\n"), ("b.md", "three\n")):
+            with open(name, "w", encoding="utf-8", newline="") as fh:
+                fh.write(text)
+            subprocess.run(["git", "add", name], check=True)
+            subprocess.run(g15 + ["commit", "-q", "-m", "add " + name], check=True)
+        globals()["HIST_BASELINE"] = os.path.join(tmp15, "absent-baseline.tsv")
+        buf15 = _io15.StringIO()
+        with _ctx15.redirect_stdout(buf15):
+            rc15 = history_mode(False)
+        out15 = buf15.getvalue()
+        if rc15 != 0 or "3 added lines READ" not in out15:
+            failures.append("--history's OK line must report the lines it READ (3 here) and never label the hit "
+                            f"rows as added lines: rc {rc15}, printed {out15.strip()[-200:]!r}")
+    finally:
+        globals()["HIST_BASELINE"] = saved15
+        os.chdir(here15)
+        shutil.rmtree(tmp15, ignore_errors=True)
+
     mem_receipt = _history_memory_arm(failures)
     for f in failures:
         print(f"SELF-TEST FAIL: {f}")
@@ -1910,8 +1943,10 @@ def history_mode(write: bool) -> int:
         for sha, what in new[:20]:
             print(f"  {sha}  {what}")
         return 1
+    # ⛔ `rows` holds only the rows scan() flags (PR 434), so len(rows) is HITS, never added lines; the lines
+    #   READ are read[0], the same population the empty-scan refusal above is keyed on (self-test arm 15).
     print(f"check_private_paths --history: OK ({nwalked} commits WALKED, "
-          f"{ncommits} of them contributed added lines, {len(rows)} added lines; "
+          f"{read[0]} added lines READ; {len(rows)} hit row(s) in {ncommits} commit(s); "
           f"{len(base)} accepted historical finding(s), 0 new)")
     return 0
 
