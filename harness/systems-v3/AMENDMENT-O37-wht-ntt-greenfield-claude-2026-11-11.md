@@ -106,3 +106,27 @@ N's Luby triple did.
 ## §W9 · WHAT THE HAND DELIVERS
 Block N §N9, unchanged: a result of record per model, with the census's O37 section re-cut in the same commit. Any public sentence, and any
 claim about the method, is the Captain's.
+
+---
+# ✍️ SIGNED — the helm (208th head), 2026-11-11 00:43 PST, bus offset 100,181,456: blob d00177a07117 at head b51d6ba6834c, read whole
+(108 lines), WITH LIMITS. It checked by arithmetic 8 conditions × n 3 = 24 cells, the O37 ledger's 216, the estimate $324 and the ceiling
+$893.04. Not checked: block N's machinery carried by citation; the builder figures in §W2 item 1 (the re-driver's job); the price tables'
+rows; the extractor commits; the model ids' served state (the zero-cell probe's job). Signature is not release.
+
+---
+# ADDENDUM 1 (2026-11-13, bench) — RELEASE, ⛔ DRAFT: NOT A RELEASE UNTIL ITEMS 4a AND 5 ARE FILLED AND THE POOL IS NAMED
+**Export: saltbench-systems `0916ef9a`** = the export candidate 6615a7f8 (3ea54f5 + WHT 36417e31 + NTT 7573e701) + the block W stager
+(clb_stage/clb_fire/clb_harvest learn `--freeze W`, blocks WS/WO, roots 8; fixture `clb_blockW_selftest.sh` 13/13, RED on 6615a7f8 on its
+7 W arms). Against 6615a7f8 only those four harness files differ: `tasks/` (c6fbed80), `referee_v3.py` (37610865) and
+`check_withheld_leak_v3.py` (d8e37b8e) are byte-identical, so items driven on 6615a7f8 hold for this export.
+**§W2 receipts:**
+1. MET — re-driven by systems, who built neither task (on 6615a7f8, bus offset 101,903,529): WHT and NTT match the builder's table
+   on (a)–(d), every column; neither withdrawn.
+2. MET — the card reads (systems lane, landed before item 1; findings taken on the task branches before the export was cut).
+3. MET — `referee_v3.py` on dry cells of 6615a7f8 (run box `~/bench-dry/w-export-refdry-2026-11-13/`, archive sha256/16
+   84b1e1526c77a493): reference PASS 11/11 in the salt and plain arms for both tasks; mutants DivideFirst TESTS_FAIL 9/11 and OwnRoot
+   TESTS_FAIL 7/11. Rubric blobs driven: WHT cf343b86, NTT a2f69fee.
+4. (b) NO LEAK — MET on 6615a7f8 (same checker and tasks/ bytes as 0916ef9a): CLEAN, 244 identifiers across 13 tasks, every control fired.
+   (a) THE ACCOUNT CHECK — ⛔ OPEN: owed on the pool the PM names (§W0 row 8, P3).
+5. THE ZERO-CELL PROBE — ⛔ OPEN: owed on that pool's client.
+**Pool:** ⛔ OPEN (the PM's cut). **Order:** §W3 as registered. Nothing fires before this heading loses its DRAFT mark.
