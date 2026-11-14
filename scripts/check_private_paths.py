@@ -1403,6 +1403,10 @@ def _history_memory_arm(failures: list) -> str:
     """
     size = 32 * 1024 * 1024
     here = os.path.dirname(os.path.abspath(__file__))
+    if sys.platform == "win32":
+        # ⛔ A DECLARED LIMIT, NOT A PASS: Windows has no `resource` module, so no peak RSS can be read
+        #   here. The arm runs on the Linux and macOS lanes; this lane says it did not measure.
+        return "history memory arm NOT MEASURABLE on win32 (no resource module; the Linux lane carries it)"
     probe = ("import resource, sys, io, contextlib; sys.path.insert(0, sys.argv[1]); import check_private_paths as c\n"
              "with contextlib.redirect_stdout(io.StringIO()):\n"
              "    r = c.history_mode(False) if sys.argv[2] == 'walk' else 0\n"
@@ -1413,7 +1417,7 @@ def _history_memory_arm(failures: list) -> str:
             failures.append("history memory arm: git init failed (the arm could not run)")
             return "history memory arm NOT RUN"
         line = "an ordinary added line of prose, nothing private\n"
-        with open(os.path.join(repo, "big.md"), "w", encoding="utf-8") as fh:
+        with open(os.path.join(repo, "big.md"), "w", encoding="utf-8", newline="") as fh:
             fh.write(line * (size // len(line)))
         for a in (["add", "big.md"], ["commit", "-q", "-m", "one large added file"]):
             if subprocess.run(g + a, capture_output=True).returncode != 0:
@@ -1421,8 +1425,8 @@ def _history_memory_arm(failures: list) -> str:
                 return "history memory arm NOT RUN"
         peaks, rcs = {}, {}
         for mode in ("idle", "walk"):
-            r = subprocess.run([sys.executable, "-c", probe, here, mode], cwd=repo,
-                               capture_output=True, text=True)
+            r = subprocess.run([sys.executable, "-c", probe, here, mode], cwd=repo, env={**os.environ, "PYTHONIOENCODING": "utf-8"},
+                               capture_output=True, text=True, encoding="utf-8", errors="replace")
             parts = r.stdout.split()
             if r.returncode != 0 or len(parts) != 2 or not parts[1].isdigit():
                 failures.append(f"history memory arm: the {mode} child exited {r.returncode} with no peak")
