@@ -109,3 +109,31 @@ re-read; gemini's account of 0b783cf3 not read.
 box, bus offset 101,945,641: WHT and NTT match block W's builder table on every column, and every VERUS / TESTS / MUTANT / TRACE / OWN line is
 identical to its own run on the Claude-lane candidate 6615a7f8. Neither task is withdrawn. Item 4 (the lane-live battery) and the release
 remain.
+
+---
+
+## ⚖️ ADDENDUM 1 (2026-11-13, bench) — THE FLASH HALF IS RELEASED; THE PRO HALF IS HELD, BECAUSE TODAY'S CLIENT DOES NOT SERVE ITS ID. APPENDED.
+**§WA2 item 4, the lane-live battery** (hand `gemini`, bus offset 101,971,201; run dir on the run box `gemini-wa-battery-2026-11-13`):
+```
+  export        6413289d by studio_export.sh: rc 0, 386 files, 0 withheld-shaped names on both sides, required-ancestors 5/5;
+                the verifier's sha equal on both boxes; TREE-HASH: WHT 4/4 and NTT 4/4 export files equal to the git blobs, and every
+                WHT file a dry cell's copied.tsv names is equal to the export's
+  client        agy 1.5.9. It SELF-UPDATED from 1.4.10 during the read (binary mtime 06:09Z), so the release names 1.5.9
+  pool          Gemini weekly 100 % / five-hour 100 % before each live turn; credential window about 55 min at Flash's turn (> 2400 s)
+  Flash         dry render: fence rendered, BATTERY GREEN, lifted. Live battery: TMPDIR identity OK, FENCE-OK, P-DELIVERY / P-PERSIST /
+                P-ANYWHERE / P-SANDBOX yes, SERVED gemini-3.8-flash-high verdict OK, the egress row failing as it must ⇒ GREEN
+  Pro           dry render GREEN; live battery: the client REFUSED the id: "model gemini-3.1-pro-high is not recognized". Its model
+                list carries no Gemini 3.1 Pro. Nothing served, nothing spent. Last served on this lane 2026-09-28 (NA)
+```
+**RELEASED: the Flash half.** Its four conditions (WHT and NTT × {plain, salt-diet} × gemini-3.8-flash-high, 12 cells) fire under §WA2's
+order, which already puts Flash first. Export **6413289d**; client **agy 1.5.9**; hand **gemini**; P3 on the agy pool, yielding to any O4
+agy cell live or queued, /usage read at each fire and bank. `T-WA-F` (Flash · WHT · salt-diet#1) opens it, and the lead reads it before
+Flash continues. Every §WA2 receipt: item 1 systems (offset 101,945,641), item 2 the lead (101,927,000), item 3 the lead (same post),
+item 4 above.
+**A CLIENT SEAM, declared beside §WA4 item 2:** NA and the Z wave ran on older agy clients; WA's cells run on 1.5.9. Nothing here compares
+a WA cell with a cell from another client.
+**THE PRO HALF IS HELD, NOT DECLARED.** §WA0 row 1 registers gemini-3.1-pro-high, and today's client cannot run it, so no Pro cell can be
+what this file registered. Substituting another id (the Z wave's Pro-slot legs fired gemini-4-argon-high) changes a registered input and
+what the block asserts about the agy lane's model set, so it is the Captain's word, put through the helm's pack. **DEFAULT, if no word
+comes:** Pro's four conditions (12 cells) are reported NOT-FIRED(MODEL) by a census addendum, naming this addendum and the client's
+refusal. The default asserts nothing about any Pro model. Not measured: whether the 1.4.10 binary still serves the id (gemini's limit).
