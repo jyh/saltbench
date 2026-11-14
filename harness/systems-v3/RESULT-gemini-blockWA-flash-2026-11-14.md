@@ -58,7 +58,8 @@ figure is registered); the agy pool read at or near its ceiling throughout, so p
 
 **Observations the hand carried, kept here because they bear on reading the table:**
 - the meter's `commands_failed` is a text heuristic; exit codes are the measure, and the hand counted those per cell;
-- the hand reports that every cell's first command hit the vendor sandbox's certificate-path denial (its `ftr` column); the lead did not
+- the hand reports that every cell's first command hit the vendor sandbox's certificate-path denial (the `ftr` column of the hand's table in its delivery post, bus offset 102,297,116; no file in this
+  repository carries it); the lead did not
   re-measure this;
 - some cells carry a `landed-2` tag in phase 1 (the P-PERSIST turn); the end marker and the score read `end-1` only. Counted from each
   cell's repo (the hand's post said seven; the tags say eight):
