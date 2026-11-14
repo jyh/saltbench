@@ -137,3 +137,43 @@ what this file registered. Substituting another id (the Z wave's Pro-slot legs f
 what the block asserts about the agy lane's model set, so it is the Captain's word, put through the helm's pack. **DEFAULT, if no word
 comes:** Pro's four conditions (12 cells) are reported NOT-FIRED(MODEL) by a census addendum, naming this addendum and the client's
 refusal. The default asserts nothing about any Pro model. Not measured: whether the 1.4.10 binary still serves the id (gemini's limit).
+
+---
+## ⚖️ ADDENDUM 2 (2026-11-14, bench) — THE PRO SLOT IS RE-REGISTERED ON `gemini-4-argon-high`, WITH A MODEL SEAM. PRICED BEFORE ANY PRO CALL. APPENDED.
+**Authority:** the Captain's council word of 2026-11-14 (ruling 3, recorded in the helm's council minute in the
+private run record): *"WA's Pro slot: YES, as the rec"*, the rec being this re-registration. It replaces ADDENDUM 1's default (NOT-FIRED(MODEL)),
+which therefore never fires.
+**What changes:** §WA0 row 1's Pro id. `gemini-3.1-pro-high` (which today's client does not serve, ADDENDUM 1) is replaced by
+`gemini-4-argon-high`, the id the Z wave fired in the Pro slot through 2026-10-24 (`AMENDMENT-ZF-gemini4-argon-2026-10-13.md`). Nothing
+else in §WA0–§WA6 moves: the population (4 Pro conditions, 12 cells), the export 6413289d, the arms, the caps, the order (WHT → NTT, the
+same per-problem cell order), the tripwire `T-WA-P` (Pro · WHT · salt-diet #1, read by the lead before Pro continues), P3 on the agy pool
+yielding to any O4 agy cell live or queued, and the hand (gemini).
+**⚖️ THE MODEL SEAM, declared:** a `gemini-4-argon-high` cell is never pooled, tabled beside or compared with any `gemini-3.1-pro-high`
+result (block NA's, the pilot's, or any other). WA's Pro result is a result about argon on WHT and NTT, and its census line names argon.
+§WA5 carries: nothing Claude-versus-agy, nothing Flash-versus-argon as models.
+**THE PRICE, before the first Pro call.** §WA3 prices in the agy pool's own unit, and that unit did not move over the 12 Flash cells (the
+hand read the pool at 100 % weekly at every fire), so no points-per-cell figure exists to scale. The lane's binding resource is cell wall,
+so the price is stated there. Every figure is printed by `evidence/blockWA-2026-11-14/pro_price.py` from two tracked files
+(`evidence/zf-result/zf-cells.tsv`, the Z wave's legs, and `evidence/blockWA-2026-11-14/cells.tsv`, WA Flash's cells):
+```
+Z gf-none plain: argon n 15 median wall 1099.9 s · flash n 15 median 478.0 s · ratio 2.301
+Z gf-none salt-diet: argon n 12 median wall 1470.1 s · flash n 15 median 2006.5 s · ratio 0.733
+Z gf-none plain, every harvested leg (wedges included): argon n 15 median 1099.9 s · flash n 15 median 478.0 s · ratio 2.301
+Z gf-none salt-diet, every harvested leg (wedges included): argon n 15 median 1552.0 s · flash n 15 median 2006.5 s · ratio 0.773
+WA WHT plain: Flash median wall 587.2 s · Pro price 3 x 587.2 x 2.301 = 4054 s
+WA WHT salt-diet: Flash median wall 1487.2 s · Pro price 3 x 1487.2 x 0.733 = 3269 s
+WA NTT plain: Flash median wall 614.1 s · Pro price 3 x 614.1 x 2.301 = 4239 s
+WA NTT salt-diet: Flash median wall 1263.0 s · Pro price 3 x 1263.0 x 0.733 = 2776 s
+Pro price, every leg: 14674 s = 4.1 h
+Pro price, 12 cells: 14338 s of cell wall = 4.0 h; agy pool points per cell UNMEASURED (pool read 100 % weekly through all 12 Flash cells)
+```
+The salt-diet ratio excludes three argon FreeList salt-diet wedges (the Z wave's), which lowers argon's median; the every-leg line beside
+it is the reading with them. Both rest on other problems (the Z wave's five), so the direction of error on WHT and NTT is unknown. The
+first Pro triple (WHT) re-cuts it before NTT fires, as block W's did.
+**BEFORE THE FIRST PRO CELL (the release conditions, in order):**
+1. The lane-live battery (§WA2 item 4) on one dry argon cell on the release's client, by the hand: credential window, the served model
+   (`gemini-4-argon-high`, and a mismatch VOIDS), fence intact, TMPDIR identity, the TREE-HASH line, and the client version and sha. If
+   agy 1.5.9 does not serve argon, the Pro slot HOLDS and the lead writes the next addendum; nothing substitutes silently.
+2. The agy pool read at that fire; a pool the hand's own O4 work needs comes first (P3).
+3. `T-WA-P` fires alone and the lead reads it before Pro continues.
+Nothing fires on Pro before a non-author has read this addendum.
