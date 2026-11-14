@@ -207,3 +207,31 @@ items driven on 36ca596b's task bytes hold for this export.
    (a) THE ACCOUNT CHECK — ⛔ OPEN: owed on the pool the PM names.
 5. THE ZERO-CELL PROBE — ⛔ OPEN: owed on that pool.
 **Pool:** ⛔ OPEN (the PM's cut). **Order:** §C4 as registered. Nothing fires before this heading loses its DRAFT mark.
+
+---
+# ADDENDUM 3 (2026-11-14, bench) — THE RELEASE. ADDENDUM 2's open items are filled here; this heading is the release
+The repo appends to a frozen file and never edits it, so ADDENDUM 2's heading keeps its DRAFT mark. Its condition is met by this addendum,
+which is the release. Nothing in ADDENDUM 2 is changed: the export and receipts 1–3 and 4(b) stand as written there.
+**Pool: the one the PM (evidence) named for block NC on 2026-11-14 00:21 PST** (bus offset 102,064,641), from the 11-14 cut, at P3. Its
+fallback is block W's pool once block W is done and while that pool's day line allows. day-line-check before each launch decides it.
+Config dir on the run box: the pool's ACCOUNT config dir. A second dir on the run box also authenticates as this account; the account
+dir is the one the releases use, so it is the one named in the lane env. The lane env is block N's with the config dir and the export
+changed and the account digest added (a three-line diff).
+**§C3 receipts, the two that were open:**
+4. (a) THE ACCOUNT CHECK — MET, 2026-11-14 00:27 PST. `lane_identity.py --expect` against this pool's REGISTERED digest (claude-lane B
+   ADDENDUM 5, A5.3; not read off the box) returned IDENTITY OK, refresh token present. Control: the same dir against a digest one character
+   off returns rc 5. Receipt 5's replies are the authenticated read. Per cell, `clb_fire.sh` re-checks the credential by body, as in block N.
+5. THE ZERO-CELL PROBE — MET, 2026-11-14 08:27Z, block W §W2 item 5's form on this pool: the pinned client 2.1.259 (sha256/16
+   884baa38fe1a624b, asserted), one `-p` turn per model from a scratch directory. claude-opus-5: rc 0, reply `OK`, `message.model` set
+   exactly `{claude-opus-5}`. claude-sonnet-5: rc 0, reply `OK`, set exactly `{claude-sonnet-5}`. Spend $0.1482 on the pool, outside every
+   cell's meter. The client's `modelUsage` also lists a Haiku id on both turns, its own side call, carried in no assistant message.
+**Export on the run box:** `studio_export.sh` of ee7450ce: 420 files, listing sha256/16 e52dc7d8a8b96b21, withheld-shaped names 0 both
+sides, the Verus sha equal both sides (7a7b319b170692d3), marker written last.
+**§C4's problem order, from this release's own `wc -l` of each B/withheld/reference/solution.rs at ee7450ce:** Luby 1156 · Liveness 1282 ·
+AES 1494 · MaxFlow 1956 · BinomialHeap 2035 · LinearScan 2460. So `T-NC-O` = Opus · Luby · salt-diet#1 and `T-NC-S` = Sonnet · Luby ·
+salt-diet#1.
+**Dry drive on that export (zero tokens):** `clb_stage.sh --roots --freeze NC --dry` → 30 roots (14 Opus, 16 Sonnet); `T-NC-O`'s copy
+staged dry from a scratch copy of its block-N source (LANDED landing-1, HEAD matches, never dispatched), and `clb_fire.sh --phase 2 --dry`
+passed the client pin, the census and the credential and dispatched the change request (tag P1); the real source's tree hash unchanged.
+**Roots:** created 2026-11-14 08:29:21Z by `clb_stage.sh --roots --freeze NC`, with no agy cell live (the agy hand paused its chain for
+the window), 30 roots, model tables read back.
