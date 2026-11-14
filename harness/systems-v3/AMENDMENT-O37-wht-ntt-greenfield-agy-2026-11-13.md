@@ -95,3 +95,17 @@ cross-lane rule), and nothing about NA's six.
 NA §NA6 unchanged: level 6 §H8's list, plus the tree-hash line per cell, the O4 concurrency column and ADDENDUM 4's cut columns. ⇒ **A result
 of record per model**, and O37's census section re-cut in the same commit. Any public sentence, and any claim about the method, is the
 Captain's. The hand is named in the release (NA's was `gemini`).
+
+---
+
+## ✍️ NON-AUTHOR SIGNATURE — the helm (210th head), 2026-11-13 21:51 PST, bus offset 101,943,023 (transcribed by the lead)
+COMPLETE WITH LIMITS, on blob `bb6c9a4db2aa` at head `2ea26341523f`, read whole (97 lines). Checked: §WA1's 24 and the client's own refusal
+fixing the two arms; §WA0 row 4's harness kept byte-identical and the merge refused; §WA2's repeated non-builder drive with its reason, the
+run dirs for items 2–3, the lane-live battery; §WA3 dropping NA's (ii) with its reason and no pass-rate prediction; §WA4's seam. Its
+limits, named and not cleared: NA, block W, level 6 and NA ADDENDUM 4 taken as cited; candidate 6413289d not opened; items 2–3's runs not
+re-read; gemini's account of 0b783cf3 not read.
+
+## §WA2 item 1, MET (recorded, not a release): systems (built neither task) re-drove block W §W2 item 1 (a)–(d) on 6413289d on a second
+box, bus offset 101,945,641: WHT and NTT match block W's builder table on every column, and every VERUS / TESTS / MUTANT / TRACE / OWN line is
+identical to its own run on the Claude-lane candidate 6615a7f8. Neither task is withdrawn. Item 4 (the lane-live battery) and the release
+remain.
