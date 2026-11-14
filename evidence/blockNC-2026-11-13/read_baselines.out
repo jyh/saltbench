@@ -1,0 +1,84 @@
+rows 73 in record 72 not in record: ['clbmrs03']
+Opus   AES          plain    clbmap01  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Opus   AES          plain    clbmap02  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Opus   AES          plain    clbmap03  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Opus   AES          saltdiet clbmas01  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Opus   AES          saltdiet clbmas02  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Opus   AES          saltdiet clbmas03  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Opus   BinomialHeap plain    clbmhp01  landed1=yes rc=0  G 13/13  blockN 13/13  LANDED ELIGIBLE
+Opus   BinomialHeap plain    clbmhp02  landed1=yes rc=0  G 13/13  blockN 13/13  LANDED ELIGIBLE
+Opus   BinomialHeap plain    clbmhp03  landed1=yes rc=0  G 13/13  blockN 13/13  LANDED ELIGIBLE
+Opus   BinomialHeap saltdiet clbmhs01  landed1=yes rc=0  G 13/13  blockN 13/13  LANDED ELIGIBLE
+Opus   BinomialHeap saltdiet clbmhs02  landed1=yes rc=0  G 13/13  blockN 13/13  LANDED ELIGIBLE
+Opus   BinomialHeap saltdiet clbmhs03  landed1=yes rc=0  G 13/13  blockN 13/13  LANDED ELIGIBLE
+Opus   LinearScan   plain    clbmrp01  landed1=no  rc=-  G -      blockN 9/9    CAP-COST not-eligible
+Opus   LinearScan   plain    clbmrp02  landed1=yes rc=0  G 9/9    blockN 9/9    LANDED ELIGIBLE
+Opus   LinearScan   plain    clbmrp03  landed1=yes rc=0  G 9/9    blockN 9/9    LANDED ELIGIBLE
+Opus   LinearScan   saltdiet clbmrs01  landed1=no  rc=-  G -      blockN 9/9    CAP-COST not-eligible
+Opus   LinearScan   saltdiet clbmrs02  landed1=no  rc=-  G -      blockN 9/9    CAP-COST not-eligible
+Opus   LinearScan   saltdiet clbmrsr3  landed1=no  rc=-  G -      blockN 9/9    CAP-COST not-eligible
+Opus   Liveness     plain    clbmvp01  landed1=yes rc=0  G 11/11  blockN 11/11  LANDED ELIGIBLE
+Opus   Liveness     plain    clbmvp02  landed1=yes rc=0  G 11/11  blockN 11/11  LANDED ELIGIBLE
+Opus   Liveness     plain    clbmvp03  landed1=yes rc=0  G 11/11  blockN 11/11  LANDED ELIGIBLE
+Opus   Liveness     saltdiet clbmvs01  landed1=yes rc=0  G 11/11  blockN 11/11  LANDED ELIGIBLE
+Opus   Liveness     saltdiet clbmvs02  landed1=yes rc=0  G 11/11  blockN 11/11  LANDED ELIGIBLE
+Opus   Liveness     saltdiet clbmvs03  landed1=yes rc=0  G 11/11  blockN 11/11  LANDED ELIGIBLE
+Opus   Luby         plain    clbmyp01  landed1=yes rc=0  G 12/12  blockN 12/12  LANDED ELIGIBLE
+Opus   Luby         plain    clbmyp02  landed1=yes rc=0  G 12/12  blockN 12/12  LANDED ELIGIBLE
+Opus   Luby         plain    clbmyp03  landed1=yes rc=0  G 12/12  blockN 12/12  LANDED ELIGIBLE
+Opus   Luby         saltdiet clbmys01  landed1=yes rc=0  G 12/12  blockN 12/12  LANDED ELIGIBLE
+Opus   Luby         saltdiet clbmys02  landed1=yes rc=0  G 12/12  blockN 12/12  LANDED ELIGIBLE
+Opus   Luby         saltdiet clbmys03  landed1=yes rc=0  G 12/12  blockN 12/12  LANDED ELIGIBLE
+Opus   MaxFlow      plain    clbmxp01  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Opus   MaxFlow      plain    clbmxp02  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Opus   MaxFlow      plain    clbmxp03  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Opus   MaxFlow      saltdiet clbmxs01  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Opus   MaxFlow      saltdiet clbmxs02  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Opus   MaxFlow      saltdiet clbmxs03  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Sonnet AES          plain    clbnap01  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Sonnet AES          plain    clbnap02  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Sonnet AES          plain    clbnap03  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Sonnet AES          saltdiet clbnas01  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Sonnet AES          saltdiet clbnas02  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Sonnet AES          saltdiet clbnas03  landed1=no  rc=-  G -      blockN 1/8    CAP-COST not-eligible
+Sonnet BinomialHeap plain    clbnhp01  landed1=yes rc=0  G 13/13  blockN 13/13  LANDED ELIGIBLE
+Sonnet BinomialHeap plain    clbnhp02  landed1=yes rc=0  G 13/13  blockN 13/13  LANDED ELIGIBLE
+Sonnet BinomialHeap plain    clbnhp03  landed1=yes rc=0  G 13/13  blockN 13/13  LANDED ELIGIBLE
+Sonnet BinomialHeap saltdiet clbnhs01  landed1=yes rc=0  G 13/13  blockN 13/13  LANDED ELIGIBLE
+Sonnet BinomialHeap saltdiet clbnhs02  landed1=yes rc=0  G 13/13  blockN 13/13  LANDED ELIGIBLE
+Sonnet BinomialHeap saltdiet clbnhs03  landed1=yes rc=0  G 13/13  blockN 13/13  LANDED ELIGIBLE
+Sonnet LinearScan   plain    clbnrp01  landed1=yes rc=1  G 8/9    blockN 8/9    LANDED not-eligible
+Sonnet LinearScan   plain    clbnrp02  landed1=yes rc=0  G 9/9    blockN 9/9    LANDED ELIGIBLE
+Sonnet LinearScan   plain    clbnrp03  landed1=yes rc=1  G 8/9    blockN 8/9    LANDED not-eligible
+Sonnet LinearScan   saltdiet clbnrs01  landed1=no  rc=-  G -      blockN 4/9    CAP-COST not-eligible
+Sonnet LinearScan   saltdiet clbnrs02  landed1=no  rc=-  G -      blockN 4/9    CAP-COST not-eligible
+Sonnet LinearScan   saltdiet clbnrs03  landed1=no  rc=-  G -      blockN 4/9    CAP-COST not-eligible
+Sonnet Liveness     plain    clbnvp01  landed1=yes rc=0  G 11/11  blockN 11/11  LANDED ELIGIBLE
+Sonnet Liveness     plain    clbnvp02  landed1=yes rc=0  G 11/11  blockN 11/11  LANDED ELIGIBLE
+Sonnet Liveness     plain    clbnvp03  landed1=yes rc=0  G 11/11  blockN 11/11  LANDED ELIGIBLE
+Sonnet Liveness     saltdiet clbnvs01  landed1=yes rc=0  G 11/11  blockN 11/11  LANDED ELIGIBLE
+Sonnet Liveness     saltdiet clbnvs02  landed1=yes rc=0  G 11/11  blockN 11/11  LANDED ELIGIBLE
+Sonnet Liveness     saltdiet clbnvs03  landed1=yes rc=0  G 11/11  blockN 11/11  LANDED ELIGIBLE
+Sonnet Luby         plain    clbnyp01  landed1=yes rc=0  G 12/12  blockN 12/12  LANDED ELIGIBLE
+Sonnet Luby         plain    clbnyp02  landed1=yes rc=0  G 12/12  blockN 12/12  LANDED ELIGIBLE
+Sonnet Luby         plain    clbnyp03  landed1=yes rc=0  G 12/12  blockN 12/12  LANDED ELIGIBLE
+Sonnet Luby         saltdiet clbnys01  landed1=yes rc=0  G 12/12  blockN 12/12  LANDED ELIGIBLE
+Sonnet Luby         saltdiet clbnys02  landed1=yes rc=0  G 12/12  blockN 12/12  LANDED ELIGIBLE
+Sonnet Luby         saltdiet clbnys03  landed1=yes rc=0  G 12/12  blockN 12/12  LANDED ELIGIBLE
+Sonnet MaxFlow      plain    clbnxp01  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Sonnet MaxFlow      plain    clbnxp02  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Sonnet MaxFlow      plain    clbnxp03  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+Sonnet MaxFlow      saltdiet clbnxs01  landed1=no  rc=-  G -      blockN 2/8    CAP-COST not-eligible
+Sonnet MaxFlow      saltdiet clbnxs02  landed1=no  rc=-  G -      blockN 2/8    CAP-COST not-eligible
+Sonnet MaxFlow      saltdiet clbnxs03  landed1=yes rc=0  G 8/8    blockN 8/8    LANDED ELIGIBLE
+
+eligible per model x arm: {'Opus plain': 17, 'Opus saltdiet': 15, 'Sonnet plain': 16, 'Sonnet saltdiet': 12}
+eligible total 60 of 72; shortfalls (fresh phase 1s): 12
+  SHORTFALL ('Opus', 'LinearScan', 'plain') 1
+  SHORTFALL ('Opus', 'LinearScan', 'saltdiet') 3
+  SHORTFALL ('Sonnet', 'AES', 'saltdiet') 1
+  SHORTFALL ('Sonnet', 'LinearScan', 'plain') 2
+  SHORTFALL ('Sonnet', 'LinearScan', 'saltdiet') 3
+  SHORTFALL ('Sonnet', 'MaxFlow', 'saltdiet') 2
+mismatches vs block N record: none
+sources changed: none
