@@ -175,3 +175,35 @@ is the phase-1 landing's own base suite, the reading step g ADDENDUM 1 item 2 to
 **Signature.** This changes the instrument of a signed clause, so it is put to a non-author. The baselines are zero-token reads on copies
 whose eligibility rule is registered here first. They run after this addendum is on origin, and a reader who rejects it gets them re-read
 from the same run logs (each log carries the full runner output).
+
+**✍️ ADDENDUM 1 SIGNED** — the helm (210th head), 2026-11-13 21:50 PST, bus offset 101,940,703: blob 61e3fe810d50 at head 6da31ba03f81 (also
+at 23ccd261, which adds only evidence/), COMPLETE WITH LIMITS. It verified at the object that 6da31ba0 is an ancestor of the baselines
+commit 23ccd261 and did not open the baseline results before signing. Its limits: taskshape B3 and step g ADDENDUM 1 taken as cited; the
+control's run not read; the push time of 6da31ba0 against the drive's start not checked.
+
+---
+# ADDENDUM 2 (2026-11-13, bench) — RELEASE, ⛔ DRAFT: NOT A RELEASE UNTIL ITEMS 4a AND 5 ARE FILLED AND THE POOL IS NAMED
+**Export: saltbench-systems `ee7450ce`** (the NC stager: block W's stager 0916ef9a + the B-suite + NCO/NCS copy blocks + NFO/NFS fresh blocks,
+`NC_SOURCES` 72 rows, `--roots --freeze NC` = 30 roots). Its tasks/ tree is byte-identical to 36ca596b's (git diff empty; the six tasks'
+trees AES 00b919ce · BinomialHeap df6427a9 · LinearScan a3c8ae15 · Liveness 143296d6 · Luby 6db3c763 · MaxFlow 5b89c4df at both), so
+items driven on 36ca596b's task bytes hold for this export.
+**§C3 receipts:**
+1. MET — systems (built none of the six), bus offset 102,018,867, on ee7450ce: Verus reference 0 errors for all six; tests on the reference
+   in both forms full pass; every mutant fails with its pass count, 46 of 46 equal to the builder's RUN files; run_trace rejects every
+   mutant column and accepts every reference column. Nothing withdrawn. Reported as stated: the margin-1 mutants (AES AcceptsBadPadding;
+   Liveness InPlaceSweeps; BinomialHeap DeleteRefusesMax; LinearScan AlwaysReservesScratch, ArgsReversed, ResultFromR1; MaxFlow's five
+   checker mutants), each killed by its own clause test; Verus panics on the plain-Rust TRIVIAL control of five tasks (never a Verus file;
+   its only role is (d), where it kills 0 everywhere).
+2. MET — `evidence/blockNC-2026-11-13/` (commit 23ccd261, after ADDENDUM 1 at 6da31ba0): 72 baselines, 62 reproduce block N's G figures
+   exactly; 60 eligible (Opus plain 17, salt-diet 15; Sonnet plain 16, salt-diet 12); 12 shortfalls ⇒ 12 fresh phase 1s; no source changed;
+   the B-runner control exited 3.
+3. MET — the copy form dry on 36ca596b (ncdry001 from clbmap01, ncdry002 from clbnap01; change-1.md = preamble + the card's section;
+   interface == B/interface.rs; sources' tree hashes unchanged), and the stager driven dry through ee7450ce on the run box
+   (`~/bench-dry/nc-stagedry-2026-11-13/`: 30 roots; NCO copy + phase-2 dispatch; NFS fresh build; NFS n=1 refused; source unchanged).
+   `clb_blockNC_selftest.sh` 31/31 at ee7450ce, the reference fails 14/14, a mutant reddens 8.
+4. (b) NO LEAK — MET at ee7450ce: `check_withheld_leak_v3.py` CLEAN, 343 identifiers across 13 tasks, every positive control fired,
+   1,372 view reads, 0 in any view; its --selftest 3/3 (run-box `~/bench-dry/nc-leak-ee7450ce-2026-11-13/leak.out` sha256/16
+   61232087f298b393).
+   (a) THE ACCOUNT CHECK — ⛔ OPEN: owed on the pool the PM names.
+5. THE ZERO-CELL PROBE — ⛔ OPEN: owed on that pool.
+**Pool:** ⛔ OPEN (the PM's cut). **Order:** §C4 as registered. Nothing fires before this heading loses its DRAFT mark.
