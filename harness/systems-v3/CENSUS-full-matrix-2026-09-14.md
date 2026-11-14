@@ -1729,3 +1729,37 @@ beside the section with its reason, never counted DONE and never silently remove
 ## §AJ3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
 It says the port was not built and why. It says nothing about LU in Lean, about any model's ability on LU, or about the salt method. NTT
 and WHT have v3 rungs built on the systems lane (2026-11-10); they enter this section only with their own block's result.
+
+---
+# ⚖️ ADDENDUM 40 — **O37: BLOCK WA's FLASH HALF IS A RESULT OF RECORD. FOUR CONDITIONS MOVE TO DONE (WHT and NTT × {plain, salt-diet} × gemini-3.8-flash-high). THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-14, in the same commit as `RESULT-gemini-blockWA-flash-2026-11-14.md` (§WA6: the census section is re-cut with the result).
+
+## §AK1 · WHAT MOVED
+The four Flash conditions of block WA (`AMENDMENT-O37-wht-ntt-greenfield-agy-2026-11-13.md`, ADDENDUM 1) each have n = 3 cells of record,
+all scored: FULL PASS 3 of 3 in each (the result's §2). DONE here means the condition has its cells of record and a result file; it is not
+a verdict on the arms, and with every cell at ceiling the result says nothing about one.
+
+## §AK2 · THE O37 SECTION, RE-CUT
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (this)      4
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+    NOT DONE     WHT and NTT, the other 44:
+                   x none, Claude lane, block W: released 2026-11-14, cells firing                   8
+                   x none, gemini-3.1-pro-high, block WA's Pro half: HELD (ADDENDUM 1)                4
+                   x spec-change, Claude lane, block WC: signed, gated on block W's result            8
+                   x statement, both lanes; x spec-change, agy lane: in no block                     24
+                 the six block-N problems x {statement, spec-change}, 96:
+                   x spec-change, Claude lane, block NC: released 2026-11-14, cells firing           24
+                   x statement, Claude lane, block T: signed, waits on the Captain's read            24
+                   x {statement, spec-change}, agy lane: in no block                                48
+```
+DONE 52 · DECLARED 24 · NOT DONE 140 = 216. A NOT DONE condition is only DONE when its block's result file lands, by a later addendum;
+"released" and "firing" are states of a registration, never of a result. Block WA's Pro half becomes NOT-FIRED(MODEL) only by the
+default ADDENDUM 1 names, through its own addendum here.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AK3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing about WHT or NTT on the Claude lane (block W has no result yet), nothing about any Pro model, nothing Claude-versus-agy, and
+nothing about the salt method. The registration states in §AK2 are as of this addendum's date and are not results.
