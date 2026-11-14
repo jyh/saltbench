@@ -157,3 +157,22 @@ Sonnet); `clb_stage.sh WO WHT salt-diet 1 --dry` builds clbdws01 (salt-diet arm,
 the client pin, the Claude-lane census and the credential, and stops before the settings render, naming what it did not drive.
 **Before the first cell:** the real roots are created by `clb_stage.sh --roots --freeze W` in a window with no agy cell live (the
 stager's own rule), then the order is §W3's, Opus's tripwire T-W-O first.
+
+---
+# ADDENDUM 3 (2026-11-14, bench) — THE WHT TRIPLE RE-CUTS THE PRICE BEFORE NTT FIRES (§W4). NOTHING ELSE MOVES
+All 12 WHT cells have ended. Their meter, one row per cell, is `evidence/blockW-2026-11-14/wht-costs.tsv` (copied from each cell's
+`ctl/post-end-1.tsv`), and every figure below is printed by `evidence/blockW-2026-11-14/reprice.py` from that file:
+```
+Opus plain: n 3 · final_COST 5.44 7.39 6.81 · median $6.81 · CAP-COST 0
+Opus salt-diet: n 3 · final_COST 37.28 38.35 18.53 · median $37.28 · CAP-COST 1
+Sonnet plain: n 3 · final_COST 2.09 2.42 1.62 · median $2.09 · CAP-COST 0
+Sonnet salt-diet: n 3 · final_COST 38.31 26.29 19.58 · median $26.29 · CAP-COST 1
+WHT spent $204.11 over 12 cells
+NTT estimate: 3 cells x each model x arm median = $217.42 · NTT ceiling 12 x $37.21 = $446.52
+```
+**The re-cut is taken per model × arm**, not per model as §W4's estimate was, because the two arms' cell costs on WHT do not overlap
+(plain $1.62–$7.39, salt-diet $18.53–$38.35); a per-model median would sit between them and describe neither. NTT is a different
+problem (924 reference lines against WHT's 816), so this is a reading of WHT, and its direction of error on NTT is unknown.
+**What does not change:** the caps, the ceiling ($893.04, which already assumes each cell reaches the cap: $204.11 spent plus NTT's $446.52
+is $650.63), the order, the export, the pool and the scoring. A cap-out stays a RESULT. No score is read here: WHT's per-cell suite
+verdicts belong to the result of record, not to a price.
