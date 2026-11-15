@@ -177,3 +177,71 @@ first Pro triple (WHT) re-cuts it before NTT fires, as block W's did.
 2. The agy pool read at that fire; a pool the hand's own O4 work needs comes first (P3).
 3. `T-WA-P` fires alone and the lead reads it before Pro continues.
 Nothing fires on Pro before a non-author has read this addendum.
+
+---
+## ⚖️ ADDENDUM 3 (2026-11-14, bench) — `T-WA-P`'s FIRST CELL IS NOT SCORED (A LANE FAULT); THE EXEBOX CERT PATH IS FIXED IN OUR OWN LAUNCHER, PER CELL. APPENDED.
+**Why:** every cell on agy 1.5.9 meets the same transient on its first command: `open /tmp/claude/exebox-cert-<n>.crt: operation not
+permitted` (counts from the hand's reads: the battery 3, `wawfs101` 1, `wanfs301` 1, `wawas101` 3; the F2 probe below 5). Flash and the
+battery recovered by re-running the command. In `wawas101` (`T-WA-P`, argon · WHT · salt-diet #1) argon instead asked to bypass the
+sandbox, the PreToolUse hook denied that, and argon then ran 0 commands in 5 turns.
+**1. `wawas101` is NOT-SCORED(HARNESS).** Its receipts are kept and it enters no denominator. Both causes belong to the lane: the
+cert-path transient (§2 shows it is our launcher's), and the harness's denial text, which turned a recoverable transient into a stop. So
+the cell measures the lane and not argon on WHT. It is replaced by ONE re-fire under block N ADDENDUM 13's `r<k>` form, `wawas1r1`, in a
+fresh root, after release conditions 1–4 below. It is still `T-WA-P`, and the lead reads it before Pro continues. A BUILD-FAIL score was
+rejected, because no command was ever attempted: that score would grade the harness's words, not the subject's code.
+**2. The cause, read from the code and the cells' own files** (the hand, 2026-11-14, no spend):
+- `agy_launch_v3.sh`'s client wrapper sets `CLAUDE_CODE_TMPDIR` to the cell's tmp on the sandbox-runtime arm. Only the battery and the
+  non-turn-loop launch use that wrapper.
+- A live cell runs the turn loop. `do_launch` writes `ctl/agy-turnloop-env-<phase>.json` from `HOME`, `PATH`, `TMPDIR` and the
+  toolchain variables only, and `agy_turnloop_v3.py` passes that JSON as the WHOLE environment of the sandbox runtime.
+- The runtime therefore never sees `CLAUDE_CODE_TMPDIR`, and it gives its child its default, `TMPDIR=/tmp/claude`. That path does not
+  exist on the run box (F2 read it absent before and after).
+Measured on the run box: F2's cell and `wawas101` each carry "TURN LOOP ON", a battery wrapper line WITH the variable, and an env JSON
+with 0 occurrences of it. The F2 probe (2026-11-14 22:51–22:58Z, one argon battery turn) saw `TMPDIR=/tmp/claude` and no
+`CLAUDE_CODE_TMPDIR` in the model's shell. **The drop is in our launcher, not in the client.**
+**3. The fix (arm L): on the sandbox-runtime arm only, the turn-loop env JSON carries `CLAUDE_CODE_TMPDIR` set to the cell's tmp**, the
+value the client wrapper already passes. Nothing else moves: no `/tmp/claude` is created, and no fence, hook text or other lane changes.
+The rejected arm was F1, a fresh box-global `/tmp/claude` per agy cell. It is a cross-cell channel that needs a quiet box (about 4 h with
+no Claude cell on the run box, from ADDENDUM 2's price), and its write allowance does not open the path while an ancestor stays in the
+deny list (the hand's zero-spend probe).
+The hook's denial text does NOT change: Flash's 12 cells ran under it, and changing it now would move a treatment input between the two
+models. If L removes the transient, the denial is never reached.
+**⚖️ AN ENVIRONMENT SEAM, declared beside ADDENDUM 2's model seam:** WA Flash's 12 cells ran with the subject's shell `TMPDIR` at
+`/tmp/claude`, a path that did not exist, and they met the transient. WA Pro runs with it at the cell's tmp. §WA5 already carries
+nothing Flash-versus-argon, and this is one more reason.
+**⚠️ A LIMIT ON EARLIER agy RESULTS, stated here and not yet measured:** levels 6–8 and WA Flash ran the same turn-loop env under the
+sandbox runtime, so their subjects' shells presumably saw `TMPDIR=/tmp/claude` too. Not measured: per cell, whether that path ever
+existed while the cell was live, and whether any command in it used `TMPDIR`. The one known instance of the path existing: the hand
+created it for about 30 s at 21:30:56Z on 2026-11-14 while one Claude cell was live (empty when read before removal). A census is owed
+before any of those results is quoted with a claim that rests on the subject's temporary files.
+**BEFORE `wawas1r1` (the release conditions, in order; ADDENDUM 2's three still stand):**
+1. The launcher change (arm L) with a RED arm: the turn-loop env JSON on the sandbox-runtime arm lacking the variable FAILS.
+2. **RED FIRST, then green, on one dry argon battery cell run through the TURN LOOP:** the transient reproduced without L (F2 is that
+   receipt, 5 failures), then the same battery with L shows 0 `exebox-cert` failures, the shell's `TMPDIR` equal to the cell's tmp, and
+   ADDENDUM 2's battery lines green.
+3. The scorer defect named by the hand (`agy_shell_count_v3.py` counts a DONE step with no error field as a working shell, while client
+   1.5.9 reports a failed start in the step's OUTPUT) is fixed with a RED fixture before any argon cell is scored. WA Flash's result does
+   not cite that column.
+4. A non-author has read this addendum.
+**Not established:** why a re-run succeeds. If 1–2 do not remove the transient, Pro HOLDS and the lead writes the next addendum.
+**THE EXPORT AND THE ID THE PRO HALF RUNS ON.** Pro fires on export **3796e6b4**, not ADDENDUM 1's 6413289d. It is 6413289d plus two commits
+(01d59f84, the scorer fix of condition 3; 3796e6b4, arm L), and `git diff --stat 6413289d 3796e6b4` names four harness files only:
+`agy_client_env_v3.py` (new), `agy_launch_v3.sh`, `agy_shell_count_v3.py`, `selftest_all_v3.sh`. No task, card, suite or treatment file
+moves, so the subject sees the same problem and arms. The lead read the launcher diff and the new helper: the variable is added on the
+sandbox-runtime arm only and refused on the others. The agy lane forms a cell id as a prefix plus a two-digit rep, so `wawas1r1` is
+fired as cell id **`wawas1r01`** in a fresh root, and its receipts write "wawas1r1 (cell id wawas1r01)".
+**Condition 2, MET (recorded, not a release):** one dry argon battery `waL01` on export 3796e6b4 through the turn loop (the hand,
+2026-11-15 00:55–01:00Z, client 1.5.9 at its pinned sha): 0 `exebox-cert` failures in the stream against F2's 5 on the same treatment;
+0 failed starts; the shell's `TMPDIR` and `CLAUDE_CODE_TMPDIR` both the cell's tmp; battery return codes as F2's; the fence intact; served
+`gemini-4-argon-high`; the fixed scorer counts 10 commands made, 10 succeeded; `/tmp/claude` absent before and after. Limit: one turn of
+the battery treatment, not argon on WHT.
+**Condition 4, MET: a non-author read** by kent (2026-11-14 19:37 PST, bus offset 102,997,856), at head 04a66d13 and blob 15b2a412,
+with saltbench-systems at 3796e6b4. A FINDING, not a signature. Every claim checked holds: append-only; four harness files; the cause
+read from the code; §1's exclusion and the limit are visible. Both new arms go RED under a mutant (the srt rule disabled: 8/10; the
+failed-start test removed: 17/19, red on `wawas101`'s shape). Three limits, recorded:
+- (1) the failed-start parser reads only the first line after the step header, so a blank line there would read as a success. An arm
+  for that shape is owed BEFORE `wawas1r01` is scored. It is not owed before the fire.
+- (2) the last link of the cause, the sandbox runtime's default, rests on the launcher's comment citing the vendor's file, plus the
+  measured contrast (0 against 5, one battery turn each).
+- (3) the rest of the launcher and the turn loop was not read beyond the changed lines.
+**Pro is RELEASED for `T-WA-P` = `wawas1r01` ALONE** on export 3796e6b4. The lead reads it before Pro continues.
