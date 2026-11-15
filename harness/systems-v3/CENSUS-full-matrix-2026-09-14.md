@@ -1842,3 +1842,36 @@ DONE 60 · DECLARED 24 · NOT DONE 132 = 216. "Released", "firing" and "gated" a
 ## §AN3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
 Nothing about WHT or NTT under any other extras or lane, nothing Opus-versus-Sonnet as models, nothing about the salt method. One cell's
 end kind (`clbdtp03`, EXIT-FORCED) is a harness fault, as the Opus result's §1 states; its score is the withheld suite's.
+
+# ⚖️ ADDENDUM 44 — **O37: BLOCK WA's PRO HALF IS A RESULT OF RECORD. FOUR CONDITIONS MOVE TO DONE (WHT and NTT × {plain, salt-diet} × gemini-4-argon-high). THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-15, in the same commit as `RESULT-gemini-blockWA-pro-2026-11-15.md` (§WA6: the census section is re-cut with the result).
+
+## §AO1 · WHAT MOVED
+The four Pro conditions of block WA (`AMENDMENT-O37-wht-ntt-greenfield-agy-2026-11-13.md`, re-registered on `gemini-4-argon-high` by its
+ADDENDUM 2 and released by ADDENDA 3–5) each have n = 3 cells of record, all scored: FULL PASS 3 of 3 in each (the result's §2), four
+salt-diet passes being floors (TRUNCATED). DONE here means the condition has its cells of record and a result file; it is not a verdict on
+the arms. The condition is argon's, under ADDENDUM 2's model seam; ADDENDUM 40's line for this slot read gemini-3.1-pro-high and HELD,
+and ADDENDUM 43's read argon and firing.
+
+## §AO2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-15)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (this)         4
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+    NOT DONE     WHT and NTT, the other 32:
+                   x spec-change, Claude lane, block WC: signed, baselines run, release drafted      8
+                   x statement, both lanes; x spec-change, agy lane: in no block                     24
+                 the six block-N problems x {statement, spec-change}, 96:
+                   x spec-change, Claude lane, block NC: released 2026-11-14, cells firing           24
+                   x statement, Claude lane, block T: released to build (council 2026-11-14)        24
+                   x {statement, spec-change}, agy lane: in no block                                48
+```
+DONE 64 · DECLARED 24 · NOT DONE 128 = 216. "Released", "firing" and "drafted" are states of a registration, never of a result.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AO3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing about any `gemini-3.1-pro-high` model, nothing Flash-versus-argon or Claude-versus-agy, nothing about the salt method. One cell's
+end kind (`wanas301`, PERSIST-INDETERMINATE) is ruled landed by WA ADDENDUM 6 item 3; its score is the withheld suite's.
