@@ -1246,3 +1246,58 @@ a separate question, not asked here). Nothing in x86lean changes for this.
 
 **(4) What this addendum does.** It registers `07ad5135` as the frame blob that the next O60 revision's statement is written
 against. It adds no release condition and fires nothing. A revision that uses it is fired by its own addendum.
+
+---
+
+## ⚖️ ADDENDUM 18 — O60 REVISION 2, REGISTERED: THE SAME 40 CELLS AGAINST FRAME `07ad5135`, ONE VARIABLE CHANGED. ⛔ UNSIGNED; NOTHING FIRES ON THIS ADDENDUM. APPENDED; everything above is untouched.
+bench (lead), 2026-11-09 (PDT), STATUS-bench row 32 (objective O4, sub-campaign 1: user-mode scalar). The proposal and its price are in the
+lead's 11-09 proposal brief in the seat record. **Numbering.** 18 is the next number in THIS file's series. Checked at
+writing over all 1,121 refs of this repository: `## ⚖️ ADDENDUM 17` is on 6 of them (the control), `ADDENDUM 18` on none.
+
+**(1) What revision 2 is.** The 20 tasks of §Z1 × {plain, salt-diet} × `claude-opus-5` × n = 1: 40 cells. **The one change from the 40 of
+record is the frame.** Every salt-diet statement is written against `X86CallFrame.lean` blob `07ad5135` (ADDENDUM 17 (4)), where `Returns`
+requires `∃ w, t.ms = some (.outsideProgram w)`. Everything else is held at what the 40 of record ran under:
+```
+  population  §Z1's 20 tasks, unchanged          arms   §Z2 and ADDENDA 3 · 5 · 7, unchanged
+  model       claude-opus-5                      n      1 per task per arm
+  caps        §Z0 item 8: C1_USD $37.21 · W1_SEC 144,000 · CAP-COST and CAP-WALL armed (NOT raised; see (4))
+  x86lean     the pin of record, e5d7f36 (paris, non-author, 2026-11-09 09:33: keep it; moving it re-opens L2, L3 and L4)
+  host        ADDENDUM 16's native x86_64 host       referee   classify_cell.py / referee_o60.sh as at the scoring export 34a65d3f2a57,
+                                                                plus the frame change only
+```
+⚠️ **The plain arm's card does not carry the frame** (§Z2: a plain card states no formal specification), so its 20 cells are a REPLICATE of
+the plain 20 of record under an unchanged card. They are kept as the same-time control: a salt-diet difference between the revisions can
+be read against plain's own run-to-run difference.
+
+**(2) Predictions, registered before any revision-2 card exists.**
+- (i) salt-diet's CAP-COST incidence ≥ plain's, as §Z5 (i). Rev 1 read 12 of 20 against 0 of 20.
+- (ii) **The halt conjunct is cheap:** salt-diet's all-cells-accepted count in revision 2 is ≥ 5 of 20, against revision 1's 7 of 20
+  (RESULT-O60 §R2). The claim is ONE-SIDED, because more acceptances do not argue the conjunct is expensive. ADDENDUM 17 (1) measured
+  the repair at 3–5 one-line edits on each of the four family controls. **WRONG-IF:** revision 2 accepts ≤ 4 of 20 salt-diet cells, or
+  more than 2 salt-diet cells that end LANDED are refused at the `Returns` conjunct itself.
+- (iii) plain accepts 20 of 20 again (RESULT-O60 §R2). A plain refusal is read as run-to-run variation of record, not as the frame's effect.
+⛔ n = 1 per task: a difference between two n = 1 runs includes run-to-run noise. Like the 40 of record, revision 2 is descriptive. No effect
+size, no p-value (§Z9 carried whole).
+
+**(3) Release conditions.** §Z10's L1–L10, re-measured at a NEW export named in revision 2's release addendum, plus:
+```
+  L11  FRAME     every one of the 20 salt-diet cards' interfaces carries X86CallFrame.lean blob 07ad5135, checked by blob hash at
+                 the export; a card carrying 210ce6b4 is a refusal
+  L12  CONTROLS  the four family controls (ret-word_bytereverse · write-cswap2 · readret-adler32 · alias-redfirst) build GREEN against
+                 07ad5135 at the export with ADDENDUM 17's repairs, and the FRAME mutant (blob 210ce6b4) is REFUSED at fault_rejected
+                 in interface-o60-controls/halt-reason-redfirst/. The repaired controls are, at this writing, at saltbench-systems
+                 ded545c851b7 (branch systems/o60-halt-reason-2026-11-06) under tasks/systems-x86/interface-o60-controls/, not in this tree;
+                 the export carries them
+  L13  PRICE     the helm's read of the price below, on the bus, before the smoke pair
+```
+**Proposed hands** (the helm routes): the export and L11 · `systems` (the frame's author); L12 · `systems`, re-driven by `paris`; the
+non-author SIGNATURE of this addendum · `paris` (offered 2026-11-09 09:33). Whoever builds a release condition does not read it.
+
+**(4) What this addendum does not change, and says why.** The cap is not raised. With 12 of 20 salt-diet cells censored in revision 1,
+a higher cap would change what a salt-diet verdict ASSERTS. Under the 2026-09-18 ① law that is the Captain's word, and it would be a
+second variable. It is not asked here, and not before revision 2 shows whether the censoring holds on the new frame. The CRC-32
+interface's sibling conjunct (ADDENDUM 17 (2)) is not touched.
+
+**(5) The price.** Revision 1 measured **$834.95** for the same 40 cells (RESULT-O60 §R5). Revision 2 is priced at that figure, with
+§Z7's band **$808.94 CENTRAL · $1,520.86 CEILING** (the ceiling binds, because the cap stops every cell). Dollars are the meter's
+list-price model on a subscription, not invoices.
