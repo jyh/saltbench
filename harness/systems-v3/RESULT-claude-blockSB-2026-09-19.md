@@ -282,3 +282,10 @@ A pinned ask follows: file, blob and head, per council 2026-09-17 ⑨(2).
   CENSUS ADDENDUM 11                              WRONG the same way; corrected by census ADDENDUM 12
 ```
 ⚠️ **The fleet-wide per-model tally (`Opus 28 · Sonnet 10` rather than `38 · 0`) is the helm's derivation, quoted here and NOT independently re-derived by me.** What I measured is this block: 30 of 30 cells served Sonnet.
+
+## ⚖️ ADDENDUM — O37, 2026-11-15: THE SALT-DIET GATE'S SELFTEST COULD NOT MAKE ITS TEMP DIR IN SIX CLAUDE-LANE CELLS OF RECORD. APPENDED; everything above is unchanged.
+*bench.* A command's output in these cells shows the salt-diet arm's own gate failing at its selftest: `mkdtemp failed on
+/tmp/claude-<uid>/gatest.XXXX: Operation not permitted`, then `gate: selftest in`. Cells this file names or holds that show it: clbbcs03, clbbzs01. Over the complete matrix's Claude DONE rows:
+**salt-diet 7 of 126 condition-rows (6 distinct cells), plain 0 of 133** (the plain arm has no gate). Whether a subject then ran its gate
+another way, and whether any outcome or cost above moved, is NOT read; its sign on either is not measured here. Source:
+`evidence/o37-claude-gate-mkdtemp-2026-11-15/` (README: method, controls, the two needles not used, limits).

@@ -1697,3 +1697,117 @@ the Opus OS ratio is still the smallest. The paper's three ratios are corrected 
 5.12x), and states SG and OS PROBE-IN because the split was taken on a different cell set. Its clause that the split's probe-in
 readings sit *"a hundredth below the record's"* stops being true once the record reads 5.31x and 4.70x, so the same PR changes it to
 *"equal to the record's"*, and the record's SG figure it quotes from 8.27x to 8.29x.
+
+---
+# ⚖️ ADDENDUM 39 — **O37: LU IS DECLARED NOT FEASIBLE AS A RUST PORT. ITS 24 CONDITIONS ARE DECLARED BESIDE THE SECTION, AS THE PILOT'S 16 INEXPRESSIBLE ARE. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-11, on the Captain's council word of 2026-11-10 (ask 3, his whole word on the pack: "Accept recs, keep objectives").
+
+## §AJ1 · WHAT WAS RULED
+The recommendation he accepted read: LU is declared NOT FEASIBLE as a Rust port; its 24 conditions are reported as DECLARED beside the
+census, as the 16 inexpressible were; no harness-library spike. The port verdict it rests on is bench's of 2026-11-10 (systems lane, not
+in this repository). Its reasons, so a reader here need not follow it:
+- v1's LU card is exact rational arithmetic by construction, and its tests include Hilbert matrices, named for their rational growth.
+- A good answer is decidable (every entry of L and U is a ratio of minors), so the task is not disqualified for having no finite check.
+- The executable checker that a treatment submission must ship does not fit a machine word on the card's own tests: checking PA = LU
+  exactly needs a common denominator that leaves i128 at small orders, and Verus's standard library carries no verified bignum.
+- Each way to meet that changes what the arm measures on this card: every treatment submission verifies its own bignum (the cost is then
+  bignum verification, not elimination), or the harness supplies one as a given no other v3 card carries. Shrinking the inputs to fit
+  i128 drops the Hilbert growth, and a finite field is a different task.
+
+## §AJ2 · THE O37 SECTION, RE-CUT
+```
+  O37's population (ADDENDUM 28 §AG1)                                                     216
+    expressible slice, blocks N and NA (ADDENDUM 29)          DONE 48                      48
+    LU x {4 models} x {plain, salt-diet} x {none, statement, spec-change}   DECLARED       24   (this addendum)
+    NTT and WHT, 48 conditions                                 outside every block today   48
+    statement and spec-change on the six block-N problems      outside every block today   96
+```
+The 24 are 4 models (the two Claude and the two agy models of blocks N and NA) x 2 arms x 3 extras. A DECLARED condition is reported
+beside the section with its reason, never counted DONE and never silently removed from O37's 216.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AJ3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+It says the port was not built and why. It says nothing about LU in Lean, about any model's ability on LU, or about the salt method. NTT
+and WHT have v3 rungs built on the systems lane (2026-11-10); they enter this section only with their own block's result.
+
+---
+# ⚖️ ADDENDUM 40 — **O37: BLOCK WA's FLASH HALF IS A RESULT OF RECORD. FOUR CONDITIONS MOVE TO DONE (WHT and NTT × {plain, salt-diet} × gemini-3.8-flash-high). THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-14, in the same commit as `RESULT-gemini-blockWA-flash-2026-11-14.md` (§WA6: the census section is re-cut with the result).
+
+## §AK1 · WHAT MOVED
+The four Flash conditions of block WA (`AMENDMENT-O37-wht-ntt-greenfield-agy-2026-11-13.md`, ADDENDUM 1) each have n = 3 cells of record,
+all scored: FULL PASS 3 of 3 in each (the result's §2). DONE here means the condition has its cells of record and a result file; it is not
+a verdict on the arms, and with every cell at ceiling the result says nothing about one.
+
+## §AK2 · THE O37 SECTION, RE-CUT
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (this)      4
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+    NOT DONE     WHT and NTT, the other 44:
+                   x none, Claude lane, block W: released 2026-11-14, cells firing                   8
+                   x none, gemini-3.1-pro-high, block WA's Pro half: HELD (ADDENDUM 1)                4
+                   x spec-change, Claude lane, block WC: signed, gated on block W's result            8
+                   x statement, both lanes; x spec-change, agy lane: in no block                     24
+                 the six block-N problems x {statement, spec-change}, 96:
+                   x spec-change, Claude lane, block NC: released 2026-11-14, cells firing           24
+                   x statement, Claude lane, block T: signed, waits on the Captain's read            24
+                   x {statement, spec-change}, agy lane: in no block                                48
+```
+DONE 52 · DECLARED 24 · NOT DONE 140 = 216. A NOT DONE condition is only DONE when its block's result file lands, by a later addendum;
+"released" and "firing" are states of a registration, never of a result. Block WA's Pro half becomes NOT-FIRED(MODEL) only by the
+default ADDENDUM 1 names, through its own addendum here.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AK3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing about WHT or NTT on the Claude lane (block W has no result yet), nothing about any Pro model, nothing Claude-versus-agy, and
+nothing about the salt method. The registration states in §AK2 are as of this addendum's date and are not results.
+
+# ⚖️ ADDENDUM 41 — **A LIMIT ON THE agy CELLS OF RECORD: THEIR TOOLS FAILED ON AN UNWRITABLE /tmp/claude, SALT-DIET 32 OF 141 CELLS, PLAIN 2 OF 139. NO COUNT MOVES.**
+## bench, 2026-11-15. Source: `evidence/o37-agy-tmpclaude-2026-11-15/` (README: method, controls, limits; one row per cell of record in `cellmap-join.tsv`).
+
+## §AL1 · WHAT WAS FOUND
+Before export 3796e6b4 (block WA ADDENDUM 3, arm L), 791 of the run box's 792 agy srt turn-loop env files omit `CLAUDE_CODE_TMPDIR`; without it the
+subject's shell has `TMPDIR=/tmp/claude` (block WA's F2 battery), which the sandbox does not let it write. The shell ran; a tool inside it that
+makes a temp file failed (`mktemp`, `patch`, rustc). Which fence arm (srt or seatbelt) each cell ran is not shown here: the cause is
+established for srt cells, and a hit is a printed failure whatever its cause. Over the matrix's agy cells of record (`CELLMAP-descriptive-tables-v2-2026-09-27.tsv`, arm as
+registered), the cells whose stream prints that failure:
+```
+  gemini-3.1-pro-high    plain 2 of 68      salt-diet 21 of 70 (+2 ambiguous ids)
+  gemini-3.8-flash-high  plain 0 of 71      salt-diet 11 of 71
+```
+
+## §AL2 · WHAT IT MEANS FOR THIS CENSUS
+Nothing in a count. A condition is DONE because it has its cells of record and a result file, and this census states no verdict on the arms.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** O37's line (§AK2) is unchanged.
+But any per-arm cost or correctness reading off the agy cells carries an environmental defect that hit salt-diet cells far more often
+than plain ones. It is not expected to manufacture a salt-diet advantage, but its sign on cost and outcome is not measured here. Each agy RESULT file that names a hit cell carries the same limit, appended.
+
+## §AL3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+That any cell's outcome or cost changed (a hit is a failure the stream printed; a subject can retry or work around it). Anything about the
+Claude lane, which this census of streams does not measure.
+
+# ⚖️ ADDENDUM 42 — **A LIMIT ON SIX CLAUDE-LANE SALT-DIET CELLS OF RECORD: THE ARM'S OWN GATE COULD NOT MAKE ITS TEMP DIR AT ITS SELFTEST. NO COUNT MOVES.**
+## bench, 2026-11-15. Source: `evidence/o37-claude-gate-mkdtemp-2026-11-15/` (README: method, controls, the two needles not used, limits; one row per condition-row in `claude-join.tsv`).
+
+## §AM1 · WHAT WAS FOUND
+In these cells a command's output shows `mkdtemp failed on /tmp/claude-<uid>/gatest.XXXX: Operation not permitted`, then `gate: selftest in`:
+the salt-diet gate's selftest could not make its directory under the sandbox's TMPDIR. Searched in tool results only, over every Claude-lane
+cell transcript on the run box (2,513), joined to the matrix's Claude DONE rows by cell id, arm as registered:
+```
+  claude-opus-5    plain 0 of 65      salt-diet 2 of 66     (one cell, d6b53ee4: LRU none and its spec-change)
+  claude-sonnet-5  plain 0 of 68      salt-diet 5 of 60     (clbgfs02, clbbcs03, clbbzs01, clbccs01, clbccs03)
+```
+The plain arm has no gate, so it cannot show this. Two more hits are in cells of two of the three DECLARED conditions (Sonnet LZW and
+Paxos, salt-diet, spec-change: clbczs01, clbcps01).
+
+## §AM2 · WHAT IT MEANS FOR THIS CENSUS
+Nothing in a count. ⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** A DECLARED condition
+stays DECLARED: it was unreached at the cap, and this addendum does not read why. Each RESULT file that names or holds a hit cell carries
+the same limit, appended. ADDENDUM 41 is the agy lane's (a different client and a different failure). The two are not the same kind of
+fact: there the count is arm-correlated in cells of both arms; here plain cannot show it, because only the treatment arm has the gate.
+
+## §AM3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+That any subject failed to run its gate in the end, or that any outcome or cost moved; its sign on either. That the DECLARED conditions'
+being unreached has anything to do with it.

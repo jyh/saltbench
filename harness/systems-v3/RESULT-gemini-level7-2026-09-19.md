@@ -602,3 +602,13 @@ these cells in this addendum.
 ### A.4 · WHAT THIS ADDENDUM DOES NOT DO
 - It changes no number in §1–§9b, and §1's headline figures, which were computed over 84 cells, are not recomputed with these two.
 - It makes no arm claim. Level 7 makes none, and a single condition at n = 3 cannot carry one.
+
+## ⚖️ ADDENDUM — O37, 2026-11-15: agy TOOLS FAILED ON AN UNWRITABLE /tmp/claude, MORE OFTEN IN SALT-DIET CELLS. APPENDED; everything above is unchanged.
+*bench.* Before export 3796e6b4 (block WA ADDENDUM 3, arm L), 791 of the run box's 792 agy srt turn-loop env files omit `CLAUDE_CODE_TMPDIR`;
+without it the subject's shell has `TMPDIR=/tmp/claude` (block WA's F2 battery), which the sandbox does not let it write, so a tool
+that makes a temp file failed (`mktemp`, `patch`, rustc) while the shell itself ran. Which fence arm (srt or seatbelt) each cell
+ran is not shown here: the cause is established for srt cells, and a hit is a printed failure whatever its cause. Cells this file names that print the failure: 10 salt-diet (arm from the cell directory's name).
+Over the complete matrix's agy cells of record: **salt-diet 32 of 141 (34 counting two ambiguous ids), plain 2 of 139.** It is not expected
+to manufacture a salt-diet advantage, but its sign on cost and outcome is not measured here. A hit is a failure the
+stream PRINTED, not a changed outcome, and no figure above is re-read. Source: `evidence/o37-agy-tmpclaude-2026-11-15/` (README: method, controls, limits).
+The Claude lane is not measured by it.
