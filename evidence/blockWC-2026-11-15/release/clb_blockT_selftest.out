@@ -1,0 +1,18 @@
+derived: lane-B blocks [O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO NCO NCS NFO NFS] · lane-B problems [ Crc32 FreeList LRU LZW Paxos ] · block-N (= block-T) problems [ AES BinomialHeap LinearScan Liveness Luby MaxFlow ] · other freezes' problems [ NTT WHT ]
+derived: TO expects claude-opus-5/greenfield/statement (opus) · TS expects claude-sonnet-5/greenfield/statement (sonnet)
+a1/a2: 0 first-read mismatch(es) re-driven once, both sides
+PASS a1 lane-B stage output == ee7450ce on all 690 combos (226 staged ids)
+PASS a2 lane-B fire output == ee7450ce on all 690 combos
+PASS a3 control: the reference reaches the STAGE line and fire finds the cell at stage's root
+PASS a4 block N's NO/NS stage output == ee7450ce on its six (24 combos)
+PASS b1 TO/TS × [ AES BinomialHeap LinearScan Liveness Luby MaxFlow ] derive model/field/extras/condition from the reference rows (72 cells)
+PASS b2 block T: 72 distinct ids, 24 distinct roots
+PASS b3 no block-T id or root collides with any older block (226+72 ids, 79+24 roots)
+PASS b4 fire derives stage's id and finds the cell at stage's root for every block-T cell
+PASS c1 28 cross combinations refuse (stage AND fire, rc 3, naming AMENDMENT-O37-statement-six-claude-2026-11-11), nothing created
+PASS c2 --phase 2 on TO refuses (SC or G only)
+PASS d1 --roots (default) output and the 64 roots it creates == ee7450ce
+PASS d2 default --roots creates no block-T root
+PASS d3 --roots --freeze T creates exactly the 24 staged block-T roots (12 opus, 12 sonnet)
+PASS d4 --roots --freeze <unknown> refuses and creates nothing
+SELFTEST clb_blockT: pass 14 · fail 0 · of 14 arms (candidate: this tree)

@@ -95,3 +95,43 @@ COMPLETE WITH LIMITS, no finding on the file (one nit on the post's line count, 
 §WC5 ($190.50; ceiling $446.40; worst-case fresh $893.04). The limits it named: NC's cited clauses (step g, taskshape §A3/B3, block N
 ADDENDUM 10) not re-read beyond NC itself; export 0916ef9a and the B/ tree hashes not opened; the medians not re-derived. Order as written:
 no baseline before block W's result of record.
+
+---
+# ADDENDUM 1 (2026-11-15, bench) — RELEASE, ⛔ DRAFT: NOT A RELEASE UNTIL ITEM 5(a), THE ZERO-CELL PROBE AND THE POOL ARE FILLED
+NC ADDENDUM 2's form. Nothing above this line is changed.
+**Export: saltbench-systems `d55062a6`** (branch `bench/o37-WC-export-candidate-2026-11-15`, backup remote): the block-T candidate `09516b81`
+plus the WC stager (WCO/WCS copy blocks, WFO/WFS fresh blocks, `WC_SOURCES` 24 rows, `--roots --freeze WC` = 11 roots). Being built on T's
+candidate, one export can carry both blocks (§WC0 row 4 allows a descendant of 0916ef9a whose task trees are identical). At `d55062a6`
+the WHT and NTT trees equal 0916ef9a's (`git rev-parse`: WHT 44b92115, its B 17d0b93b and G f5a9dbe7; NTT 77c64177, its B c5cdaed5 and
+G b868747b), and `customer.sh`, `cell_copy_v3.py` and `cell-claude.sh` are unchanged (empty diff), so item 1, driven on 0916ef9a, holds here.
+**§WC3 receipts** (files: `evidence/blockWC-2026-11-15/release/`, its README):
+1. MET — systems, a non-builder, bus offsets 103,352,799 and 103,355,962, on 0916ef9a: WHT B/ 50/50 and NTT B/ 45/45 compared items
+   equal the RUN files; README tables 17/17; containment as the READMEs say, NTT's driven in the second post (reference, plain form and
+   all 8 mutants OK; G's reference refused). Nothing withdrawn. The one limit that stands: OwnTwistRoot has only a builder-side reading,
+   because its file is not in the tree.
+2. MET — `evidence/blockWC-2026-11-15/` (commit 5e54a497): 20 of 24 ELIGIBLE (Opus plain 6/6, salt-diet 5/6; Sonnet plain 6/6, salt-diet
+   3/6). The 4 shortfalls (clbdws02, clbits01, clbits02, clbiws01) are block W's 4 CAP-COST cells, all salt-diet, so 4 fresh phase 1s.
+   The B-runner control exited 3. No source changed.
+3. MET — the copy form, one dry cell per model, on d55062a6's bytes (`copydry.log`). wcdry001 is a copy of clbdtp01 (Opus NTT) and
+   wcdry002 of clbiwp01 (Sonnet WHT). In each, change-1.md equals the preamble plus the card's section, by a comparer written apart from
+   the renderer (`wc_change_cmp.py`, which DIFFERs on a crossed control); the interface equals B/interface.rs; ctl/phase1 is present;
+   the slug is distinct; the source's tree hash is unchanged.
+4. MET — the stager. `WC_SOURCES` equals its derivation from the baselines (`derive-sources.out`; a one-row mutant gives DIFFERS, rc 1).
+   `clb_blockWC_selftest.sh` reads 44/44 at d55062a6. The stager before it (09516b81) fails all 15 WC arms, and the mutant (a fresh build
+   for WCO/WCS) reddens 8. Older blocks' dry output is byte-equal in 24 forms. NC 31/31, T 14/14, W 13/13. G reads 17/5, the five
+   pre-existing U arms ee7450ce declared. Driven dry on the run box through the export (`stagedry.log`): 11 roots (5 Opus, 6 Sonnet);
+   T-WC-O's copy staged from a scratch copy of clbdts01 and dispatched dry (tag P1); a WFS fresh build dry (clbzts02); refusals; the
+   real source's tree hash unchanged.
+   ⚠️ DECLARED: only block letters a and p were free, so WCO/WCS/WFO/WFS take NC's f/l/y/z, the same two shapes. NC stages block N's six
+   and WC stages WHT/NTT only, so ids differ by the problem letter. Arm WC15 derives both id sets from the two tables and asserts they
+   are disjoint (28 and 84 ids, 0 common). A mutant that collides one fresh id with NC's reddens WC15 and WC16.
+5. (b) NO LEAK — MET at d55062a6 (`leak.out` sha256/16 61232087f298b393): CLEAN, 343 identifiers across 13 tasks, every positive control
+   fired, 0 in any view. Both B/ withheld trees are screened (WHT 19 of 30 identifiers from B/withheld, NTT 17 of 28). Selftest 3/3.
+   (a) THE ACCOUNT CHECK — ⛔ OPEN, owed on the pool the PM names. **THE ZERO-CELL PROBE** — ⛔ OPEN, owed on that pool.
+**§WC4's problem order, from this addendum's own `wc -l` of each B/withheld/reference/solution.rs at d55062a6:** NTT 1147 · WHT 1186,
+equal to the registration's figures. So `T-WC-O` = Opus · NTT · salt-diet#1 (source clbdts01) and `T-WC-S` = Sonnet · NTT ·
+salt-diet#1 (source clbits03).
+**The price, re-cut from the baselines as §WC5 requires:** 4 shortfalls × $37.21 = $148.84 of fresh phase 1 at most. The ceiling is
+$446.40 + $148.84 = $595.24, plus each cell's overrun past its cap. The phase-2 estimate stays $190.50 as registered. No estimate is
+made for the 4 fresh phase 1s: they are the conditions where block W capped, so the cap is the honest bound.
+**Pool:** ⛔ OPEN (the PM's cut). **Order:** §WC4 as registered. Nothing fires before this heading loses its DRAFT mark.

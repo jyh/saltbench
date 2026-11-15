@@ -1,0 +1,14 @@
+  AES          24 identifier(s) screened, controls fired
+  BinomialHeap 40 identifier(s) screened, controls fired
+  Crc32        16 identifier(s) screened, controls fired
+  FreeList     28 identifier(s) screened, controls fired
+  LRU          18 identifier(s) screened, controls fired
+  LZW          23 identifier(s) screened, controls fired
+  LinearScan   28 identifier(s) screened, controls fired
+  Liveness     28 identifier(s) screened, controls fired
+  Luby         28 identifier(s) screened, controls fired
+  MaxFlow      27 identifier(s) screened, controls fired
+  NTT          28 identifier(s) screened, controls fired
+  Paxos        25 identifier(s) screened, controls fired
+  WHT          30 identifier(s) screened, controls fired
+check_withheld_leak: CLEAN — 343 identifier(s) across 13 task(s), every positive control fired, 1372 view-file read(s), 0 in any view

@@ -1,0 +1,92 @@
+PASS T  NC_SOURCES: 72 rows, 60 block-N sources, 12 fresh in 6 conditions
+== candidate
+PASS cand NC1 --roots --freeze NC creates exactly the 30 roots the table implies
+PASS cand NC2 NCO AES plain 1 stages a COPY of its registered source clbmap01
+PASS cand NC3 a source of the wrong arm is REFUSED
+PASS cand NC4 a source that did not land is REFUSED
+PASS cand NC5 an already-dispatched source is REFUSED
+PASS cand NC6 a dirty source is REFUSED
+PASS cand NC7 a FRESH phase-1 landing is a source like any other (NCO LinearScan salt-diet 1 ← clbyrs01)
+PASS cand NC8 every other row refuses on its absent source BY NAME (66 rows)
+PASS cand NC9 a problem outside block N's six is REFUSED by the scope rule
+PASS cand NC10 NFO for a row an ELIGIBLE source fills is REFUSED
+PASS cand NC11 NFS LinearScan plain 2 (a registered fresh row) passes the registration gate and reaches its STAGE line
+PASS cand NC12 NCO without --phase 2 is REFUSED
+PASS cand NC13 NFO with --phase 2 is REFUSED (a fresh cell's phase 2 is an NC copy)
+PASS cand NC14 phase 2 DISPATCHES on the COPY, and the SOURCE carries no dispatch
+== reference 0916ef9a (every block-NC arm must go RED)
+FAIL ref NC1 --roots --freeze NC creates exactly the 30 roots the table implies — rc 3, 1 roots
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE --freeze must be B (lane B, the default), N (block N), G (step g), A (O37 Aeneas), Z (O37 LZW), OD (the effort matrix) or W (block W), got 'NC'
+       rc=3
+FAIL ref NC2 NCO AES plain 1 stages a COPY of its registered source clbmap01 — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'NCO' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO)
+       rc=3
+FAIL ref NC3 a source of the wrong arm is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'NCO' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO)
+       rc=3
+FAIL ref NC4 a source that did not land is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'NCS' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO)
+       rc=3
+FAIL ref NC5 an already-dispatched source is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'NCS' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO)
+       rc=3
+FAIL ref NC6 a dirty source is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'NCS' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO)
+       rc=3
+FAIL ref NC7 a FRESH phase-1 landing is a source like any other (NCO LinearScan salt-diet 1 ← clbyrs01) — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'NCO' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO)
+       rc=3
+FAIL ref NC8 every other row refuses on its absent source BY NAME (66 rows) — NCO-AES-plain-2 NCO-AES-plain-3 NCO-AES-salt-diet-1 NCO-AES-salt-diet-2 NCO-AES-salt-diet-3 NCO-BinomialHeap-plain-1 NCO-BinomialHeap-plain-2 NCO-BinomialHeap-p
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'NCS' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO)
+       rc=3
+FAIL ref NC9 a problem outside block N's six is REFUSED by the scope rule — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'NCO' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO)
+       rc=3
+FAIL ref NC10 NFO for a row an ELIGIBLE source fills is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'NFO' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO)
+       rc=3
+FAIL ref NC11 NFS LinearScan plain 2 (a registered fresh row) passes the registration gate and reaches its STAGE line — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'NFS' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO)
+       rc=3
+FAIL ref NC12 NCO without --phase 2 is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'NCO'
+       rc=3
+FAIL ref NC13 NFO with --phase 2 is REFUSED (a fresh cell's phase 2 is an NC copy) — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE --phase 2 is block SC or G only (the customer dispatch, claude-lane-B §Q1; step g §G0′ row 3)
+       rc=3
+FAIL ref NC14 phase 2 DISPATCHES on the COPY, and the SOURCE carries no dispatch — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE --phase 2 is block SC or G only (the customer dispatch, claude-lane-B §Q1; step g §G0′ row 3)
+       rc=3
+PASS R  the reference fails all 14 block-NC arms
+== mutant
+PASS MA mutant (a) FRESH BUILD for NCO/NCS reddens 8 arm(s)
+== older blocks are byte-unchanged (dry)
+PASS U  stage 'SG LRU plain 1' identical
+PASS U  stage 'SC Paxos salt-diet 2' identical
+PASS U  stage 'O FreeList plain 3' identical
+PASS U  stage 'NO AES plain 1' identical
+PASS U  stage 'NS Luby salt-diet 2' identical
+PASS U  stage 'G FreeList plain 1' identical
+PASS U  stage 'WO WHT plain 1' identical
+PASS U  stage 'WS NTT salt-diet 3' identical
+PASS U  stage 'ZO LZW lean-aeneas 1' identical
+PASS U  stage 'FX Crc32 plain 4' identical
+PASS U  stage '--roots' identical
+PASS U  stage '--roots --freeze N' identical
+PASS U  stage '--roots --freeze G' identical
+PASS U  stage '--roots --freeze W' identical
+clb_blockNC_selftest: 31 passed, 0 failed (candidate SCRATCH/wcwt/harness/systems-v3, reference 0916ef9a)
