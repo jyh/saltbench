@@ -89,3 +89,12 @@ Over the complete matrix's agy cells of record: **salt-diet 32 of 141 (34 counti
 to manufacture a salt-diet advantage, but its sign on cost and outcome is not measured here. A hit is a failure the
 stream PRINTED, not a changed outcome, and no figure above is re-read. Source: `evidence/o37-agy-tmpclaude-2026-11-15/` (README: method, controls, limits).
 The Claude lane is not measured by it.
+
+## ⚖️ ADDENDUM — 2026-11-15: ALL 12 FLASH CELLS RAN IN THE CLIENT'S **AUTO** MODE. APPENDED; every figure above is unchanged.
+*bench.* agy 1.5.7 changed headless runs from Default to Auto mode, which runs each command in the client's own sandbox, and our cells'
+settings carried no `agentMode` key (block WA ADDENDUM 5). So every cell above ran in Auto mode (no review-monitor run is observed in
+these 12 cells' logs), which pre-WA
+agy cells (client 1.4.x) did not; the `exebox-cert` failures counted in ADDENDUM 3 were, as read, its symptom. The Pro half runs in Default mode
+(`"agentMode": ""`, export 3fd5edf1): a CLIENT-MODE SEAM beside the model seam, so nothing compares a Flash cell above with a Pro cell, and
+any reading of these cells beside a pre-WA agy cell names the mode change. Source: `AMENDMENT-O37-wht-ntt-greenfield-agy-2026-11-13.md`,
+ADDENDUM 5.
