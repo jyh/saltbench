@@ -72,3 +72,10 @@ reproduces every median and total dollar figure above, and it prints each cell's
 The median COST ratio is a ratio of the ROUNDED medians. From the unrounded `blockSS-cells.tsv` it is **5.31x** (printed 5.32x). The
 total COST ratio 8.70x and the T ratio 15.91x are right. The comparison with block SG is an observation and does not change; nor does
 the bound. This file's quoted block-SG figure (8.27×) is likewise **8.29×** unrounded. Re-derived by `ratio-correction-2026-10-19-verify.py`.
+
+## ⚖️ ADDENDUM — O37, 2026-11-15: THE SALT-DIET GATE'S SELFTEST COULD NOT MAKE ITS TEMP DIR IN SIX CLAUDE-LANE CELLS OF RECORD. APPENDED; everything above is unchanged.
+*bench.* A command's output in these cells shows the salt-diet arm's own gate failing at its selftest: `mkdtemp failed on
+/tmp/claude-<uid>/gatest.XXXX: Operation not permitted`, then `gate: selftest in`. Cells this file names or holds that show it: clbgfs02. Over the complete matrix's Claude DONE rows:
+**salt-diet 7 of 126 condition-rows (6 distinct cells), plain 0 of 133** (the plain arm has no gate). Whether a subject then ran its gate
+another way, and whether any outcome or cost above moved, is NOT read; its sign on either is not measured here. Source:
+`evidence/o37-claude-gate-mkdtemp-2026-11-15/` (README: method, controls, the two needles not used, limits).

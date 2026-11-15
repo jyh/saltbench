@@ -1787,3 +1787,27 @@ than plain ones. It is not expected to manufacture a salt-diet advantage, but it
 ## §AL3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
 That any cell's outcome or cost changed (a hit is a failure the stream printed; a subject can retry or work around it). Anything about the
 Claude lane, which this census of streams does not measure.
+
+# ⚖️ ADDENDUM 42 — **A LIMIT ON SIX CLAUDE-LANE SALT-DIET CELLS OF RECORD: THE ARM'S OWN GATE COULD NOT MAKE ITS TEMP DIR AT ITS SELFTEST. NO COUNT MOVES.**
+## bench, 2026-11-15. Source: `evidence/o37-claude-gate-mkdtemp-2026-11-15/` (README: method, controls, the two needles not used, limits; one row per condition-row in `claude-join.tsv`).
+
+## §AM1 · WHAT WAS FOUND
+In these cells a command's output shows `mkdtemp failed on /tmp/claude-<uid>/gatest.XXXX: Operation not permitted`, then `gate: selftest in`:
+the salt-diet gate's selftest could not make its directory under the sandbox's TMPDIR. Searched in tool results only, over every Claude-lane
+cell transcript on the run box (2,513), joined to the matrix's Claude DONE rows by cell id, arm as registered:
+```
+  claude-opus-5    plain 0 of 65      salt-diet 2 of 66     (one cell, d6b53ee4: LRU none and its spec-change)
+  claude-sonnet-5  plain 0 of 68      salt-diet 5 of 60     (clbgfs02, clbbcs03, clbbzs01, clbccs01, clbccs03)
+```
+The plain arm has no gate, so it cannot show this. Two more hits are in cells of two of the three DECLARED conditions (Sonnet LZW and
+Paxos, salt-diet, spec-change: clbczs01, clbcps01).
+
+## §AM2 · WHAT IT MEANS FOR THIS CENSUS
+Nothing in a count. ⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** A DECLARED condition
+stays DECLARED: it was unreached at the cap, and this addendum does not read why. Each RESULT file that names or holds a hit cell carries
+the same limit, appended. ADDENDUM 41 is the agy lane's (a different client and a different failure). The two are not the same kind of
+fact: there the count is arm-correlated in cells of both arms; here plain cannot show it, because only the treatment arm has the gate.
+
+## §AM3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+That any subject failed to run its gate in the end, or that any outcome or cost moved; its sign on either. That the DECLARED conditions'
+being unreached has anything to do with it.

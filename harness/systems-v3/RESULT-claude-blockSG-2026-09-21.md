@@ -101,3 +101,10 @@ The median COST ratio is a ratio of the ROUNDED medians. On this file's table of
 `clbglp01`, came by the addendum above and is not in that table), the unrounded ratio is **8.29x** (printed 8.27x). The total COST
 ratio 9.83x and the T ratio 20.77x are right. Re-derived by `ratio-correction-2026-10-19-verify.py`. This corrects the arithmetic on
 the stated table only. It does not re-take the ratio with `clbglp01` in it, and it does not take it probe-apart.
+
+## ⚖️ ADDENDUM — O37, 2026-11-15: THE SALT-DIET GATE'S SELFTEST COULD NOT MAKE ITS TEMP DIR IN SIX CLAUDE-LANE CELLS OF RECORD. APPENDED; everything above is unchanged.
+*bench.* A command's output in these cells shows the salt-diet arm's own gate failing at its selftest: `mkdtemp failed on
+/tmp/claude-<uid>/gatest.XXXX: Operation not permitted`, then `gate: selftest in`. Cells this file names or holds that show it: clbgfs02. Over the complete matrix's Claude DONE rows:
+**salt-diet 7 of 126 condition-rows (6 distinct cells), plain 0 of 133** (the plain arm has no gate). Whether a subject then ran its gate
+another way, and whether any outcome or cost above moved, is NOT read; its sign on either is not measured here. Source:
+`evidence/o37-claude-gate-mkdtemp-2026-11-15/` (README: method, controls, the two needles not used, limits).
