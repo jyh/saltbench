@@ -177,3 +177,49 @@ first Pro triple (WHT) re-cuts it before NTT fires, as block W's did.
 2. The agy pool read at that fire; a pool the hand's own O4 work needs comes first (P3).
 3. `T-WA-P` fires alone and the lead reads it before Pro continues.
 Nothing fires on Pro before a non-author has read this addendum.
+
+---
+## ⚖️ ADDENDUM 3 (2026-11-14, bench) — `T-WA-P`'s FIRST CELL IS NOT SCORED (A LANE FAULT); THE EXEBOX CERT PATH IS FIXED BY A PER-CELL `/tmp/claude` ON A QUIET BOX. APPENDED.
+**Why:** every cell on agy 1.5.9 meets the same transient on its first command: `open /tmp/claude/exebox-cert-<n>.crt: operation not
+permitted` (counts from the hand's reads: the battery 3, `wawfs101` 1, `wanfs301` 1, `wawas101` 3; the F2 probe below 5). Flash and the
+battery recovered by re-running the command. In `wawas101` (`T-WA-P`, argon · WHT · salt-diet #1) argon instead asked to bypass the
+sandbox, the PreToolUse hook denied that, and argon then ran 0 commands in 5 turns.
+**1. `wawas101` is NOT-SCORED(HARNESS).** Its receipts are kept and it enters no denominator. Both causes belong to the lane: the
+client's transient, and the harness's denial text, which turned a recoverable transient into a stop. So the cell measures the lane and
+not argon on WHT. It is replaced by ONE re-fire under block N ADDENDUM 13's `r<k>` form, `wawas1r1`, in a fresh root, after
+release conditions 1–4 below. It is still `T-WA-P`, and the lead reads it before Pro continues. A BUILD-FAIL score was rejected,
+because no command was ever attempted: that score would grade the harness's words, not the subject's code.
+**2. The cause, as measured by F2** (the hand, on a quiet run box, 2026-11-14 22:51–22:58Z, client 1.5.9 at its pinned sha, one argon
+battery turn, treatment unchanged). The launch wrapper sets `TMPDIR` and `CLAUDE_CODE_TMPDIR` to the cell's tmp. The model's command
+shell sees `TMPDIR=/tmp/claude` and no `CLAUDE_CODE_TMPDIR`. The sandbox runtime applies exactly that default when its child's env has
+no `CLAUDE_CODE_TMPDIR` (the hand's zero-spend probe). So some layer inside the client builds a fresh env and drops the variable.
+**The layer is NOT named:** `ps` is denied inside the shell, so that is an inference. No per-cell lever reaches it.
+**3. The fix (F1): a fresh `/tmp/claude` for each agy cell, on a quiet box, and that path in the cell's write allowance.**
+`/tmp/claude` is box-global, and neither lane's launcher sets a variable that would move it. A directory shared by live cells is
+therefore a cross-cell channel. These four guards close it:
+- (a) **QUIET BOX.** The agy driver REFUSES a fire while any cell of either lane is live on the run box. The Claude lane's fire drivers
+  REFUSE while `/tmp/claude` exists. So for the agy cell's whole wall it is the only cell on the box.
+- (b) **FRESH AND EMPTY.** The driver REFUSES if `/tmp/claude` already exists. It creates it mode 0700, owned by the run user, just
+  before launch, and records its listing.
+- (c) **MOVED ASIDE, NEVER DELETED.** At the cell's end the driver moves `/tmp/claude` into the cell's `ctl/` with its listing. The
+  next cell starts with no residue, and whatever the cell wrote there is evidence.
+- (d) **WRITE ALLOWANCE.** `/tmp/claude` is added to this block's agy fence render only. No other lane's fence changes.
+The hook's denial text does NOT change: Flash's 12 cells ran under it, and changing it now would move a treatment input between the two
+models. If F1 removes the transient, the denial is never reached.
+**⚖️ AN ENVIRONMENT SEAM, declared beside ADDENDUM 2's model seam:** WA Flash's 12 cells ran without `/tmp/claude` and met the
+transient; WA Pro runs with it. §WA5 already carries nothing Flash-versus-argon, and this is one more reason.
+**Price:** ADDENDUM 2 prices Pro at about 4.0 h of cell wall for 12 cells. Under guard (a) that is also about 4.0 h in which no Claude
+cell runs on the run box, taken in short gaps between Claude cells. Not measured: whether argon's walls change once the transient is
+gone.
+**BEFORE `wawas1r1` (the release conditions, in order; ADDENDUM 2's three still stand):**
+1. The hand's driver change carries guards (a)–(d), each with a RED arm: a fire refused with a cell live, a fire refused with
+   `/tmp/claude` present, `/tmp/claude` present in `ctl/` after a dry end and gone from `/tmp`. The two Claude-lane fire drivers get the
+   matching refusal.
+2. **RED FIRST, then green, on one dry argon battery cell:** the transient reproduced without F1 (F2 is that receipt, 5 failures),
+   then the same battery under F1 shows 0 `exebox-cert` failures and ADDENDUM 2's battery lines green.
+3. The scorer defect named by the hand (`agy_shell_count_v3.py` counts a DONE step with no error field as a working shell, while client
+   1.5.9 reports a failed start in the step's OUTPUT) is fixed with a RED fixture before any argon cell is scored. WA Flash's result does
+   not cite that column.
+4. A non-author has read this addendum.
+**Not established:** which client layer drops the variable, and why a re-run succeeds. If 1–2 do not remove the transient, Pro HOLDS and
+the lead writes the next addendum.
