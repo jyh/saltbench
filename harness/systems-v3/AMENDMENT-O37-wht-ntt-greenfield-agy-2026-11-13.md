@@ -309,3 +309,20 @@ A process-tree read is impossible because srt denies `ps`.
    and a reader of the fault cell reads that line too.
 **Pro is RELEASED for `wawas1r02` ALONE** on export 3fd5edf1, once a non-author has read this addendum. ADDENDUM 2's release
 conditions 1 and 2 (the lane-live battery on the release's client, the pool read at the fire) apply at that fire.
+
+---
+## ⚖️ ADDENDUM 6 (2026-11-15, bench) — THE NTT PRICE RE-CUT; A NAME CORRECTION TO ADDENDUM 5; THE PERSIST-INDETERMINATE CELL RULED. APPENDED.
+Written with Pro's result of record (`RESULT-gemini-blockWA-pro-2026-11-15.md`). Nothing above is changed.
+1. **THE NTT RE-CUT (ADDENDUM 2: "the first Pro triple (WHT) re-cuts it before NTT fires").** Done before NTT's first call and posted to
+   the hand (bus offset 103,435,747). The per-arm argon/flash ratio was re-read from WHT's own Pro cells: argon median wall 728.7 s over
+   Flash's 587.2 s (plain, 1.241) and 2020.4 s over 1487.2 s (salt-diet, 1.359), against ADDENDUM 2's Z-wave ratios 2.301 and 0.733. NTT's
+   price became 2286 s plain + 5147 s salt-diet = 7434 s (2.06 h; the total is summed before rounding, so the printed parts add to 7433), against ADDENDUM 2's 7016 s, so NTT fired as registered. The script and
+   its output are in the lead's private run record; its inputs are the hand's WHT tally and `evidence/blockWA-2026-11-14/cells.tsv`, and
+   it reproduces ADDENDUM 2's four Flash medians as its control. Measured afterwards (the hand's NTT post): NTT's walls came to 9153.2 s,
+   1.23× the re-cut, every NTT cell beside another seat's long run on the box. The salt-diet median is a TRUNCATED cell's wall: it priced
+   the lane's spend and is not a cost reading.
+2. **A NAME CORRECTION.** ADDENDUM 5 item 2 and its release line call the re-fire `wawas1r02`. The cell fired as **`wawas1r201`** (root
+   r2, refire 2), and that id is T-WA-P of record. Nothing else in ADDENDUM 5 moves.
+3. **`wanas301`'s end kind is PERSIST-INDETERMINATE** (the subject did not answer the post-landing persistence probe). It tagged
+   `landed-1`, and the landed gate and the cell facts both read LANDED. Ruled: a landed, scored cell of record, its end kind printed
+   beside it in the result.
