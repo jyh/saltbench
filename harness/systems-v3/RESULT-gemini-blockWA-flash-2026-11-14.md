@@ -79,3 +79,13 @@ Block W §W8 items 1, 3 and 4 and §WA5, carried: no effect size; nothing about 
 selection (the two of three judged feasible, and both new). Nothing Claude-versus-agy, and nothing about block NA's six problems
 (§WA4 item 2: a different harness and client). §WA4 item 1 is carried too: one author built both tasks and leads this block, and NTT's
 reference proves less than WHT's. With every cell at ceiling, nothing here says whether the salt method helps or hurts on these problems.
+
+## ⚖️ ADDENDUM — O37, 2026-11-15: agy TOOLS FAILED ON AN UNWRITABLE /tmp/claude, MORE OFTEN IN SALT-DIET CELLS. APPENDED; everything above is unchanged.
+*bench.* Before export 3796e6b4 (block WA ADDENDUM 3, arm L), 791 of the run box's 792 agy srt turn-loop env files omit `CLAUDE_CODE_TMPDIR`;
+without it the subject's shell has `TMPDIR=/tmp/claude` (block WA's F2 battery), which the sandbox does not let it write, so a tool
+that makes a temp file failed (`mktemp`, `patch`, rustc) while the shell itself ran. Which fence arm (srt or seatbelt) each cell
+ran is not shown here: the cause is established for srt cells, and a hit is a printed failure whatever its cause. Cells this file names that print the failure: 5 plain and 4 salt-diet (arm from the cell directory's name). In block WA's own cells both arms are hit (plain 6 of 6 streams, salt 7 of 8): there it is symmetric.
+Over the complete matrix's agy cells of record: **salt-diet 32 of 141 (34 counting two ambiguous ids), plain 2 of 139.** It is not expected
+to manufacture a salt-diet advantage, but its sign on cost and outcome is not measured here. A hit is a failure the
+stream PRINTED, not a changed outcome, and no figure above is re-read. Source: `evidence/o37-agy-tmpclaude-2026-11-15/` (README: method, controls, limits).
+The Claude lane is not measured by it.

@@ -1763,3 +1763,27 @@ default ADDENDUM 1 names, through its own addendum here.
 ## §AK3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
 Nothing about WHT or NTT on the Claude lane (block W has no result yet), nothing about any Pro model, nothing Claude-versus-agy, and
 nothing about the salt method. The registration states in §AK2 are as of this addendum's date and are not results.
+
+# ⚖️ ADDENDUM 41 — **A LIMIT ON THE agy CELLS OF RECORD: THEIR TOOLS FAILED ON AN UNWRITABLE /tmp/claude, SALT-DIET 32 OF 141 CELLS, PLAIN 2 OF 139. NO COUNT MOVES.**
+## bench, 2026-11-15. Source: `evidence/o37-agy-tmpclaude-2026-11-15/` (README: method, controls, limits; one row per cell of record in `cellmap-join.tsv`).
+
+## §AL1 · WHAT WAS FOUND
+Before export 3796e6b4 (block WA ADDENDUM 3, arm L), 791 of the run box's 792 agy srt turn-loop env files omit `CLAUDE_CODE_TMPDIR`; without it the
+subject's shell has `TMPDIR=/tmp/claude` (block WA's F2 battery), which the sandbox does not let it write. The shell ran; a tool inside it that
+makes a temp file failed (`mktemp`, `patch`, rustc). Which fence arm (srt or seatbelt) each cell ran is not shown here: the cause is
+established for srt cells, and a hit is a printed failure whatever its cause. Over the matrix's agy cells of record (`CELLMAP-descriptive-tables-v2-2026-09-27.tsv`, arm as
+registered), the cells whose stream prints that failure:
+```
+  gemini-3.1-pro-high    plain 2 of 68      salt-diet 21 of 70 (+2 ambiguous ids)
+  gemini-3.8-flash-high  plain 0 of 71      salt-diet 11 of 71
+```
+
+## §AL2 · WHAT IT MEANS FOR THIS CENSUS
+Nothing in a count. A condition is DONE because it has its cells of record and a result file, and this census states no verdict on the arms.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** O37's line (§AK2) is unchanged.
+But any per-arm cost or correctness reading off the agy cells carries an environmental defect that hit salt-diet cells far more often
+than plain ones. It is not expected to manufacture a salt-diet advantage, but its sign on cost and outcome is not measured here. Each agy RESULT file that names a hit cell carries the same limit, appended.
+
+## §AL3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+That any cell's outcome or cost changed (a hit is a failure the stream printed; a subject can retry or work around it). Anything about the
+Claude lane, which this census of streams does not measure.
