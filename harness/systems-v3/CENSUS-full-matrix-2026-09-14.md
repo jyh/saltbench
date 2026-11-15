@@ -1811,3 +1811,34 @@ fact: there the count is arm-correlated in cells of both arms; here plain cannot
 ## §AM3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
 That any subject failed to run its gate in the end, or that any outcome or cost moved; its sign on either. That the DECLARED conditions'
 being unreached has anything to do with it.
+
+# ⚖️ ADDENDUM 43 — **O37: BLOCK W IS A RESULT OF RECORD. EIGHT CONDITIONS MOVE TO DONE (WHT and NTT × {plain, salt-diet} × {Opus, Sonnet}, Claude lane). THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-15, in the same commit as `RESULT-claude-blockWO-2026-11-15.md` and `RESULT-claude-blockWS-2026-11-15.md` (§W9: the census section is re-cut with the result).
+
+## §AN1 · WHAT MOVED
+The eight conditions of block W (`AMENDMENT-O37-wht-ntt-greenfield-claude-2026-11-11.md`, released by its ADDENDUM 2) each have n = 3 cells
+of record, all scored against the withheld suite; the two result files print each condition's correctness and cost. DONE here means the
+condition has its cells of record and a result file; it is not a verdict on the arms.
+
+## §AN2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-15)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (this)      8
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+    NOT DONE     WHT and NTT, the other 36:
+                   x none, gemini-4-argon-high, block WA's Pro half: firing (WA ADDENDA 2, 4, 5)    4
+                   x spec-change, Claude lane, block WC: signed, gated on block W's result          8
+                   x statement, both lanes; x spec-change, agy lane: in no block                     24
+                 the six block-N problems x {statement, spec-change}, 96:
+                   x spec-change, Claude lane, block NC: released 2026-11-14, cells firing           24
+                   x statement, Claude lane, block T: released to build (council 2026-11-14)        24
+                   x {statement, spec-change}, agy lane: in no block                                48
+```
+DONE 60 · DECLARED 24 · NOT DONE 132 = 216. "Released", "firing" and "gated" are states of a registration, never of a result.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AN3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing about WHT or NTT under any other extras or lane, nothing Opus-versus-Sonnet as models, nothing about the salt method. One cell's
+end kind (`clbdtp03`, EXIT-FORCED) is a harness fault, as the Opus result's §1 states; its score is the withheld suite's.
