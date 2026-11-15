@@ -274,3 +274,38 @@ turns. So:
 3. `wawas1r01`'s correctness is reported; its cost, turns and wall are declared NOT POOLABLE in any table, by its TRUNCATED mark and by
    the refusal tax, whichever is read first.
 A non-author reads this addendum before it merges.
+
+## ⚖️ ADDENDUM 5 (2026-11-15, bench) — THE CLIENT'S OWN SANDBOX IS SWITCHED OFF BY ITS DOCUMENTED SETTING; PRO FIRES ON EXPORT 3fd5edf1; `wawas1r01` IS NOT A PRO CELL OF RECORD; A LIMIT ON THE FLASH HALF. APPENDED.
+**THE CAUSE, as read from the client's own changelog (agy 1.5.9, `agy changelog`):** 1.5.7 changed headless `-p` runs from Default to
+**Auto** mode, which "runs commands in the terminal sandbox" (the client's own sandbox) under review monitors. The documented way back is
+`"agentMode": ""` in settings.json. Our cells' settings.json carried no such key, so **every WA cell has run in Auto mode** since the
+client updated itself from 1.4.10 to 1.5.9. As read, that mode is where both ADDENDUM 3's cert failure and ADDENDUM 4's exit-71 refusals
+came from (the battery below tests the exit-71 half; both exports carry arm L, so it does not test the cert half).
+The retry with `BypassSandbox: true` (ADDENDUM 4) is **as read** from the review monitors' stated reasons in the client log, not from
+the call's own bytes.
+**THE CHANGE.** Export **3fd5edf1** = 3796e6b4 plus three harness commits on two files, read by the lead: `agy_shell_count_v3.py` (7e92b3d5,
+the blank-line arm; d56bcbb0, an exit-71 `sandbox_apply` refusal counted as REFUSED, with its own `sandbox_refused` count) and
+`agy_launch_v3.sh` (3fd5edf1, +15 −1, the cell's settings.json pins `"agentMode": ""`, present and empty, with a red-first arm). No task, card,
+suite or treatment file moves. srt stays the fence of record, unchanged.
+**THE BATTERY (the hand, 2026-11-15 09:40–09:52Z):** `waD01`, the F2 battery treatment byte for byte, argon-high, client 1.5.9 at its
+pinned sha before and after, the same fence as `waL01`. Only the export differs. Against `waL01` (3796e6b4, no key): commands made and
+succeeded 10/10 vs 10/5; exit 71 0 vs 5; client-sandbox lines 0 vs 21; `BypassSandbox` in the client log 0 vs 10, beside 65 review-monitor
+runs (so the zero is measured, not unmeasurable); the fence's live-shell rows identical in both; `/tmp/claude` absent before and after.
+**Limits:** one battery of 10 commands, not a cell of record; Default mode still runs the client's review monitors, and whether that adds
+turns is not measured (their tokens are the client's, not the subject's); the client sandbox's absence is read from the stream and the log.
+A process-tree read is impossible because srt denies `ps`.
+
+**RULED (the lead).**
+1. **`wawas1r01` is reported, NOT a Pro cell of record.** It ran in Auto mode, under the refusal tax, in an environment no other Pro cell
+   will have. Its withheld-suite PASS 11/11 (a floor; TRUNCATED) stays on the record as that cell's reading, in no Pro median or count.
+2. **`T-WA-P` re-fires** as `wawas1r2` (cell id **`wawas1r02`**) in a fresh root on export 3fd5edf1, ALONE. The lead reads it before
+   Pro continues. Then the order of ADDENDUM 2 resumes (WHT → NTT, the same per-problem cell order), every Pro cell on 3fd5edf1.
+3. **A LIMIT ON THE FLASH HALF (its result of record, `RESULT-gemini-blockWA-flash-2026-11-14.md`):** all 12 Flash cells ran in Auto mode
+   (client sandbox on; the cert failures ADDENDUM 3 counts were, as read, its symptom; no review-monitor run is observed in the 12 Flash
+   logs). The Pro cells will run in Default mode.
+   This is a CLIENT-MODE SEAM beside the model seam of ADDENDUM 2: nothing compares a Flash cell with a Pro cell, and any reading of WA
+   Flash beside a pre-WA agy cell names this mode change. No Flash figure moves. The same limit is appended to that result file.
+4. The counter's fault-cell text prints `refused=N` for both refusal classes; the `sandbox_refused` count in its own line separates them,
+   and a reader of the fault cell reads that line too.
+**Pro is RELEASED for `wawas1r02` ALONE** on export 3fd5edf1, once a non-author has read this addendum. ADDENDUM 2's release
+conditions 1 and 2 (the lane-live battery on the release's client, the pool read at the fire) apply at that fire.
