@@ -224,3 +224,14 @@ before any of those results is quoted with a claim that rests on the subject's t
    not cite that column.
 4. A non-author has read this addendum.
 **Not established:** why a re-run succeeds. If 1–2 do not remove the transient, Pro HOLDS and the lead writes the next addendum.
+**THE EXPORT AND THE ID THE PRO HALF RUNS ON.** Pro fires on export **3796e6b4**, not ADDENDUM 1's 6413289d. It is 6413289d plus two commits
+(01d59f84, the scorer fix of condition 3; 3796e6b4, arm L), and `git diff --stat 6413289d 3796e6b4` names four harness files only:
+`agy_client_env_v3.py` (new), `agy_launch_v3.sh`, `agy_shell_count_v3.py`, `selftest_all_v3.sh`. No task, card, suite or treatment file
+moves, so the subject sees the same problem and arms. The lead read the launcher diff and the new helper: the variable is added on the
+sandbox-runtime arm only and refused on the others. The agy lane forms a cell id as a prefix plus a two-digit rep, so `wawas1r1` is
+fired as cell id **`wawas1r01`** in a fresh root, and its receipts write "wawas1r1 (cell id wawas1r01)".
+**Condition 2, MET (recorded, not a release):** one dry argon battery `waL01` on export 3796e6b4 through the turn loop (the hand,
+2026-11-15 00:55–01:00Z, client 1.5.9 at its pinned sha): 0 `exebox-cert` failures in the stream against F2's 5 on the same treatment;
+0 failed starts; the shell's `TMPDIR` and `CLAUDE_CODE_TMPDIR` both the cell's tmp; battery return codes as F2's; the fence intact; served
+`gemini-4-argon-high`; the fixed scorer counts 10 commands made, 10 succeeded; `/tmp/claude` absent before and after. Limit: one turn of
+the battery treatment, not argon on WHT.
