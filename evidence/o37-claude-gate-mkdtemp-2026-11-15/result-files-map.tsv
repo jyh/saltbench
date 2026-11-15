@@ -1,0 +1,9 @@
+harness/systems-v3/RESULT-claude-blockSB-2026-09-19.md	clbbcs03 clbbzs01
+harness/systems-v3/RESULT-claude-blockSC-2026-09-21.md	clbccs01 clbccs03
+harness/systems-v3/RESULT-claude-blockSG-2026-09-21.md	clbgfs02
+harness/systems-v3/RESULT-claude-blockSS-2026-09-21.md	clbgfs02
+harness/systems-v3/RESULT-correctness-tables-v3-2026-10-01.md	clbbcs03 clbbzs01 clbccs01 clbccs03 clbgfs02 d6b53ee4
+harness/systems-v3/RESULT-cost-tables-v3-2026-09-29.md	clbbcs03 clbbzs01 clbccs01 clbccs03 clbgfs02 d6b53ee4
+harness/systems-v3/RESULT-descriptive-tables-v2-2026-09-27.md	clbbcs03 clbbzs01 clbccs01 clbccs03 clbgfs02 d6b53ee4
+harness/systems-v3/RESULT-descriptive-tables-v2-O57-remeter-2026-10-13.md	clbbcs03 clbbzs01 clbccs01 clbccs03 clbgfs02 d6b53ee4
+harness/systems-v3/RESULT-matrix-opus-1-2026-09-08.md	d6b53ee4
