@@ -235,3 +235,13 @@ fired as cell id **`wawas1r01`** in a fresh root, and its receipts write "wawas1
 0 failed starts; the shell's `TMPDIR` and `CLAUDE_CODE_TMPDIR` both the cell's tmp; battery return codes as F2's; the fence intact; served
 `gemini-4-argon-high`; the fixed scorer counts 10 commands made, 10 succeeded; `/tmp/claude` absent before and after. Limit: one turn of
 the battery treatment, not argon on WHT.
+**Condition 4, MET: a non-author read** by kent (2026-11-14 19:37 PST, bus offset 102,997,856), at head 04a66d13 and blob 15b2a412,
+with saltbench-systems at 3796e6b4. A FINDING, not a signature. Every claim checked holds: append-only; four harness files; the cause
+read from the code; §1's exclusion and the limit are visible. Both new arms go RED under a mutant (the srt rule disabled: 8/10; the
+failed-start test removed: 17/19, red on `wawas101`'s shape). Three limits, recorded:
+- (1) the failed-start parser reads only the first line after the step header, so a blank line there would read as a success. An arm
+  for that shape is owed BEFORE `wawas1r01` is scored. It is not owed before the fire.
+- (2) the last link of the cause, the sandbox runtime's default, rests on the launcher's comment citing the vendor's file, plus the
+  measured contrast (0 against 5, one battery turn each).
+- (3) the rest of the launcher and the turn loop was not read beyond the changed lines.
+**Pro is RELEASED for `T-WA-P` = `wawas1r01` ALONE** on export 3796e6b4. The lead reads it before Pro continues.
