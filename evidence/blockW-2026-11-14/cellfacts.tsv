@@ -1,0 +1,25 @@
+cell	pool	export12	claude_live_at_fire	agy_live_at_fire	fire_log
+clbdtp01	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clbfvp02(53s) )	agy_live_at_fire=0	fire-WO-NTT-plain-1-20261114T181605Z.log
+clbdtp02	pool 1	0916ef9a6d70	claude_live_at_fire=0	agy_live_at_fire=1 ( waF201 )	fire-WO-NTT-plain-2-20261114T230005Z.log
+clbdtp03	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clblvp03(24s) )	agy_live_at_fire=1 ( wawas1r01 )	fire-WO-NTT-plain-3-20261115T081428Z.log
+clbdts01	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clblvp02(27s) )	agy_live_at_fire=0	fire-WO-NTT-salt-diet-1-20261114T185220Z.log
+clbdts02	pool 1	0916ef9a6d70	claude_live_at_fire=0	agy_live_at_fire=0	fire-WO-NTT-salt-diet-2-20261114T233932Z.log
+clbdts03	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clbfvs03(16s) )	agy_live_at_fire=0	fire-WO-NTT-salt-diet-3-20261115T092707Z.log
+clbdwp01	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clblyp02(1s) )	agy_live_at_fire=1 ( wanfs101 )	fire-WO-WHT-plain-1-20261114T112210Z.log
+clbdwp02	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clbfys02(14s) )	agy_live_at_fire=1 ( wanfs201 )	fire-WO-WHT-plain-2-20261114T115900Z.log
+clbdwp03	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clbfvp01(56s) )	agy_live_at_fire=0	fire-WO-WHT-plain-3-20261114T153720Z.log
+clbdws01	pool 1	0916ef9a6d70	claude_live_at_fire=0	agy_live_at_fire=0	fire-clbdws01-20261114T082942Z.log
+clbdws02	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clbfyp03(19s) )	agy_live_at_fire=1 ( wanfp301 )	fire-WO-WHT-salt-diet-2-20261114T124357Z.log
+clbdws03	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clblvp01(23s) )	agy_live_at_fire=0	fire-WO-WHT-salt-diet-3-20261114T161916Z.log
+clbitp01	pool 1	0916ef9a6d70	claude_live_at_fire=0	agy_live_at_fire=0	fire-WS-NTT-plain-1-20261114T183935Z.log
+clbitp02	pool 1	0916ef9a6d70	claude_live_at_fire=0	agy_live_at_fire=1 ( waF201 )	fire-WS-NTT-plain-2-20261114T232746Z.log
+clbitp03	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clbfvs03(58s) )	agy_live_at_fire=0	fire-WS-NTT-plain-3-20261115T091946Z.log
+clbits01	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clbfvs02(16s) )	agy_live_at_fire=0	fire-WS-NTT-salt-diet-1-20261114T194553Z.log
+clbits02	pool 1	0916ef9a6d70	claude_live_at_fire=0	agy_live_at_fire=0	fire-WS-NTT-salt-diet-2-20261115T005239Z.log
+clbits03	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clblvs03(53s) )	agy_live_at_fire=2 ( waD01 wawas1r201 )	fire-WS-NTT-salt-diet-3-20261115T102440Z.log
+clbiwp01	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clbfys02(5s) )	agy_live_at_fire=1 ( wanfp201 )	fire-WS-WHT-plain-1-20261114T113943Z.log
+clbiwp02	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clblys02(8s) )	agy_live_at_fire=1 ( wanfp301 )	fire-WS-WHT-plain-2-20261114T122225Z.log
+clbiwp03	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clblvp01(26s) )	agy_live_at_fire=0	fire-WS-WHT-plain-3-20261114T160012Z.log
+clbiws01	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clblys01(51s) )	agy_live_at_fire=1 ( wawfp301 )	fire-WS-WHT-salt-diet-1-20261114T093858Z.log
+clbiws02	pool 1	0916ef9a6d70	claude_live_at_fire=1 ( clbfys03(45s) )	agy_live_at_fire=0	fire-WS-WHT-salt-diet-2-20261114T140529Z.log
+clbiws03	pool 1	0916ef9a6d70	claude_live_at_fire=0	agy_live_at_fire=0	fire-WS-WHT-salt-diet-3-20261114T170513Z.log
