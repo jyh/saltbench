@@ -245,3 +245,32 @@ failed-start test removed: 17/19, red on `wawas101`'s shape). Three limits, reco
   measured contrast (0 against 5, one battery turn each).
 - (3) the rest of the launcher and the turn loop was not read beyond the changed lines.
 **Pro is RELEASED for `T-WA-P` = `wawas1r01` ALONE** on export 3796e6b4. The lead reads it before Pro continues.
+
+## ⚖️ ADDENDUM 4 (2026-11-15, bench) — `T-WA-P` = `wawas1r01` READ: PASS 11/11 AS A FLOOR; HALF ITS COMMANDS WERE REFUSED BY A NESTED SANDBOX AND RETRIED BY THE MODEL. PRO HOLDS. A CORRECTION TO ADDENDUM 3's CONDITION 2. APPENDED.
+**THE CORRECTION.** ADDENDUM 3's condition 2 above says "the fixed scorer counts 10 commands made, 10 succeeded". That is the counter's
+reading by its own rule, and its rule cannot see the class below: in battery `waL01`'s stream, **5 of the 10 commands exited 71**,
+printing `sandbox-exec: sandbox_apply: Operation not permitted`. The condition's other claims (0 `exebox-cert` against F2's 5, the shell's
+temp variables, `/tmp/claude` absent) are not touched by this. Found and reported by the agy lane's hand (gemini), 2026-11-15 09:08Z.
+
+**`wawas1r01` (argon · WHT · salt-diet #1, export 3796e6b4; scored with the agy shell counter at 7e92b3d5, which is 3796e6b4 plus that one
+file).** SCORED · LANDED · withheld suite **PASS 11/11** · **TRUNCATED**: 6 turns were cut by the per-turn deadline, so the pass stands as a
+FLOOR and its token, turn and wall figures are **NOT POOLABLE**. Served `gemini-4-argon-high`; T 19,593,380; no `/tmp/claude` and no
+`exebox-cert` in the stream.
+**THE FINDING.** Exit codes in its stream: 71 ×50, 0 ×27, 1 ×20, 128, 70 and 4 ×1 each, over 100 commands. Every exit 71 is a NESTED
+sandbox that the OS refuses inside our sandbox-runtime fence. The sequence alternates over all 50 pairs: 71, then the model's next turn
+re-runs the command and gets a real code. So each refusal costs one model turn (about 50 in this cell). The class occurs in 2 of the run
+box's 1,608 cell streams, `wawas1r01` (50) and `waL01` (5): the only two arm-L cells. F2's root, every Flash cell and every pre-WA cell
+show 0. It appears only on arm L. **Not established:** whether arm L removed a failure that masked it or itself produces it; why
+the re-run is not refused; and whether a plain-arm cell on arm L shows the same rate (no plain cell has run on arm L).
+
+**RULED (the lead, under ADDENDUM 3's own rule: a transient that is not removed means Pro HOLDS and the lead writes the next addendum).**
+In this cell the suite passed despite the refusals and every command ran on its retry; whether the tax can cost a pass through
+truncation (it is spent against a per-turn deadline) is not established. Per-arm COST is affected, because the refusal is paid in model
+turns. So:
+1. **Pro HOLDS.** No further Pro cell fires until a later addendum releases it.
+2. Before that addendum: (c) the agy shell counter counts an exit-71 `sandbox_apply` refusal as REFUSED, built red-first, with its census
+   over every arm-L stream; and (b) the cause, meaning what the client sandboxes and why the retry is exempt, either found or stated as
+   NOT established beside the measured turn tax per cell.
+3. `wawas1r01`'s correctness is reported; its cost, turns and wall are declared NOT POOLABLE in any table, by its TRUNCATED mark and by
+   the refusal tax, whichever is read first.
+A non-author reads this addendum before it merges.
