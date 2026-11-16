@@ -135,3 +135,26 @@ salt-diet#1 (source clbits03).
 $446.40 + $148.84 = $595.24, plus each cell's overrun past its cap. The phase-2 estimate stays $190.50 as registered. No estimate is
 made for the 4 fresh phase 1s: they are the conditions where block W capped, so the cap is the honest bound.
 **Pool:** ⛔ OPEN (the PM's cut). **Order:** §WC4 as registered. Nothing fires before this heading loses its DRAFT mark.
+
+---
+# ADDENDUM 2 (2026-11-16, bench) — THE RELEASE. ADDENDUM 1's open items are filled here; this heading is the release
+The repo appends to a frozen file and never edits it, so ADDENDUM 1's heading keeps its DRAFT mark. Its condition is met by this addendum.
+Nothing in ADDENDUM 1 is changed: the export d55062a6 and receipts 1–4 and 5(b) stand as written there.
+**Pool: the one the PM (evidence) named for block WC on 2026-11-16 00:24:53 PST** (bus offset 103,876,671), at P3: drained until its
+weekly reset that evening, then its own day lines; day-line-check before each launch decides it. The PM's reason: the pool NC runs on
+resets later in the week, so WC would start late there. Config dir on the run box: the pool's ACCOUNT config dir, the one block W fired
+under. The lane env is block W's with the export line changed (a one-line diff, and a comment line).
+**§WC3 receipts, the two that were open:**
+5. (a) THE ACCOUNT CHECK — MET, 2026-11-16 08:25:49Z. `lane_identity.py --expect` against this pool's REGISTERED digest (the one block
+   W's lane env carries, OD ADDENDUM 9's) returned IDENTITY OK, refresh token present. Control: a digest one character off returns rc 5.
+   **THE ZERO-CELL PROBE** — MET, 2026-11-16 08:25:54Z, block W §W2 item 5's form on this pool: the pinned client 2.1.259 (sha256/16
+   884baa38fe1a624b, asserted), one `-p` turn per model from a scratch directory. claude-opus-5: rc 0, reply `OK`, `message.model` set
+   exactly `{claude-opus-5}`. claude-sonnet-5: rc 0, reply `OK`, set exactly `{claude-sonnet-5}`. Spend $0.1107 on the pool, outside every
+   cell's meter. The client's `modelUsage` lists a Haiku id on the Sonnet turn, its own side call, carried in no assistant message.
+**Toolchain at the release (the export was taken with `--no-toolchain`, so it is read here):** the run box's Verus binary sha256/16
+7a7b319b170692d3 equals the per-host contract's pin; the pinned rust toolchain is present. The export dir holds 423 files (ADDENDUM 1's 422
+plus its marker) and names d55062a6.
+**Order:** §WC4 as registered, from ADDENDUM 1's `wc -l` (NTT first): `T-WC-O` = Opus · NTT · salt-diet#1 (source clbdts01) first, read
+by the lead before Opus continues; `T-WC-S` = Sonnet · NTT · salt-diet#1 (source clbits03) likewise. Each fresh phase 1 runs immediately
+before the phase 2 it feeds, in its own root. Block NC fires on another pool beside it, as ADDENDUM 5 concurrency allows; each cell's
+fire records the other lane's live cells.
