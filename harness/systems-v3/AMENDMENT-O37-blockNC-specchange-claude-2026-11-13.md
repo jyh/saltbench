@@ -235,3 +235,23 @@ staged dry from a scratch copy of its block-N source (LANDED landing-1, HEAD mat
 passed the client pin, the census and the credential and dispatched the change request (tag P1); the real source's tree hash unchanged.
 **Roots:** created 2026-11-14 08:29:21Z by `clb_stage.sh --roots --freeze NC`, with no agy cell live (the agy hand paused its chain for
 the window), 30 roots, model tables read back.
+
+---
+# ADDENDUM 4 (2026-11-16, bench) — ONE COPY'S `core.hooksPath` IS NORMALIZED BEFORE ITS FIRE; THE REACH LOSSES SO FAR; THE POOL'S CREDENTIAL. APPENDED.
+Nothing above is changed.
+**1. `clblhs01` (Sonnet BinomialHeap salt-diet #1, a copy of block N's `clbnhs01`).** Its fire HELD at the manifest check: `.git/config
+forbidden keys: core.hookspath=/Users/jyh/cells-clb-ns-binomialheap-saltdiet/clbnhs01/repo/docs/method/hooks`. The salt-diet gate is
+installed by the builder as the RELATIVE value `docs/method/hooks`, which the manifest exempts for the salt arms. Of the 54 block-N, block-W
+and fresh sources on the run box that set the key, 53 carry the relative value and one, `clbnhs01`, carries the same directory as an
+ABSOLUTE path (its block-N subject rewrote it during phase 1). In the source the two forms name the same hooks. In a copy, the absolute
+form names ANOTHER cell's hooks, outside the copy's fence, while the relative form keeps its meaning. ⇒ **Ruled (the lead): the copy's
+value is set to the relative `docs/method/hooks` before its fire, and the act is recorded in the cell's own `ctl/` beside the copy record.**
+The source is not touched. Not taken: firing as copied (the check holds, and the hooks would be another cell's) or a NOT-FIRED for a
+condition whose source is eligible. It fires after a non-author read of this item.
+**2. REACH LOSSES (§C2 rule 4: one attempt), each a fresh phase 1 that ended CAP-COST at C1 $37.21 without landing:** Sonnet MaxFlow
+salt-diet #2 (`clbzxs02`, $37.42) and #3 (`clbzxs03`, $37.82). Neither watcher log shows a box misread before its cap (the only box read in
+each is at the cap stop, EMPTY). The other fresh phase 1s so far: `clbzas03` LANDED, G baseline 8/8, and fed Sonnet AES salt-diet #3.
+**3. THE POOL'S CREDENTIAL.** At 15:53Z on 2026-11-16 this block's pool config dir on the run box lost its refresh token (`lane_identity
+--credential` rc 6; the client: "OAuth session expired and could not be refreshed"). Every NC fire HOLDs at its probe turn until a fresh
+login. Registered as a block on the Captain the same minute. The cells staged before it (`clbfhp02`, `clblhs01`) wait staged; nothing ran
+under a dead credential (the probe turn refused, rc 1, at $0).
