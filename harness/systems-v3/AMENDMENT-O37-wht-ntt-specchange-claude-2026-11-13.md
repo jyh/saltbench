@@ -181,3 +181,23 @@ at 74b1e0b4. Export on the run box: 422 files, withheld-shaped names 0 both side
 d55062a6. It fires after a non-author has read this addendum and the commit.
 **ALSO RECORDED, the REACH LOSS of this block so far:** the fresh phase 1 `clbzts02` (Sonnet NTT salt-diet #2's source) ended CAP-COST,
 $37.60 of $37.21, without landing; by §WC2 that condition's n = 2 has no phase 2 and is never re-run.
+
+---
+# ADDENDUM 4 (2026-11-16, bench) — THE ONE CELL ADDENDUM 3 GOVERNS NAMES THE WRONG EXPORT IN ITS OWN RECORD. RECORDED, NOTHING RE-RUN. APPENDED.
+Nothing above is changed. Written after that cell (`clbftp03`, WC Opus NTT plain #3) ended, before WC's result.
+**THE FINDING.** ADDENDUM 3 says the cell is staged and fired by saltbench-systems `74b1e0b4`. The run box's stage and fire logs for the
+live cell (`stage-clbftp03-20261116T161329Z.log`, `fire-clbftp03-20261116T161330Z.log`) record `export=d55062a62b55` on their first line,
+because the scripts take the export from the lane env's `CLB_EXPORT`, which stayed d55062a6 for the block, and not from the tree the
+scripts were run from. The same stage log carries the line `end-1 is EXIT-FORCED; admitted by its landed-1 tag 97fcbd7e6339 (block WC §WC2
+reads the tag, ADDENDUM 3)`, and that line is in `74b1e0b4`'s `clb_stage.sh` and absent from d55062a6's (a search of d55062a6's script for
+`ADDENDUM 3` finds 0). So the stage and fire SCRIPTS were 74b1e0b4's, and every other harness file and the task tree came from d55062a6.
+**WHY NOTHING MOVES.** `git diff --stat d55062a6 74b1e0b4` touches three files: `clb_fire.sh` (+4 −1), `clb_stage.sh` (+13 −3) and the
+selftest fixture `clb_blockWC_selftest.sh` (+22). The diff of `tasks/` is empty. So the cell ran exactly ADDENDUM 3's code: the two
+scripts that differ came from 74b1e0b4, and the files that came from d55062a6 are byte-identical in both. The record reads d55062a6 and the
+true pair is (stage/fire 74b1e0b4, everything else identical in both); WC's result names this cell's export as that pair.
+**THE CELL.** end-2 `LANDED landing-2 47c8e54a42f3` at 2026-11-16T16:38:40Z; its post-end-2 meter COST 12.3112 of the 18.60 cap. Its
+withheld-suite score is reported in WC's result with the other cells, not here.
+**THE REACH LOSSES are the one ADDENDUM 3 records (`clbzts02`): no other fresh phase 1 has ended without landing at this writing.** Read
+from every end file under the WC and fresh-phase-1 roots at 2026-11-16 ~18:00Z: 10 phase-2 cells have ended, 9 LANDED and one CAP-COST
+(`clbftp01`, 19.1913 of 18.60); a capped phase 2 is a cell of the block, scored in WC's result; a reach loss is a source
+that never landed, so there is no phase 2 to score. The count is re-taken for WC's result.
