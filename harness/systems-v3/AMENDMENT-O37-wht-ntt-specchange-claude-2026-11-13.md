@@ -158,3 +158,26 @@ plus its marker) and names d55062a6.
 by the lead before Opus continues; `T-WC-S` = Sonnet · NTT · salt-diet#1 (source clbits03) likewise. Each fresh phase 1 runs immediately
 before the phase 2 it feeds, in its own root. Block NC fires on another pool beside it, as ADDENDUM 5 concurrency allows; each cell's
 fire records the other lane's live cells.
+
+---
+# ADDENDUM 3 (2026-11-16, bench) — ONE SOURCE THE STAGER REFUSED THAT §WC2 ADMITS: clbdtp03. A WC-ONLY STAGER FIX AND A ONE-CELL EXPORT. APPENDED.
+Nothing above is changed. Written after the first WC cells fired and before the one cell it governs.
+**THE FINDING.** `clb_stage.sh WCO NTT plain 3` (export d55062a6) refused its registered source `clbdtp03`: "did not LAND phase 1
+(end-1: EXIT-FORCED busy 1812 s after the declaration)". At the object: the tag `landed-1` equals HEAD (97fcbd7e6339), the tree is clean,
+and there is no dispatch and no end-2. It is block W's cell of record whose watcher forced the exit after the subject had declared and
+landed (block W's declared harness fault: the box reader's prompt strip under the C locale). §WC2, carrying NC ADDENDUM 1, admits a source
+by its `landed-1` tag and its G baseline, and never reads end-1's kind; WC's baselines (commit 5e54a497) read `clbdtp03` ELIGIBLE, 11/11.
+So the registered table and the stager disagreed on exactly this row. The other 19 block-W sources read LANDED at end-1.
+**THE FIX (taken; the other arm, a fresh Opus phase 1 in its place, departs from §WC2 and was not taken).** saltbench-systems `74b1e0b4`
+= d55062a6 + one commit to `clb_stage.sh` and `clb_fire.sh`: for WCO/WCS only, a source whose end-1 is EXIT-FORCED is admitted iff
+`landed-1` resolves, HEAD equals it and the tree is clean (the checks that already follow); the copy's carried end-1 must equal the
+source's; and phase 2 then requires the `landed-1` tag in the copy. Every other block keeps the end-1 LANDED gate byte for byte. The task
+trees are identical to d55062a6's (`git diff` of tasks/ is empty), so §WC0 row 4 holds.
+**RECEIPTS.** `clb_blockWC_selftest.sh` 49/49 at 74b1e0b4: arms WC18 (the EXIT-FORCED source with `landed-1` stages), WC19 (its copy
+fires phase 2, dry) and WC20 (one with no `landed-1` is refused) are new and fail on d55062a6's scripts (3 fail there); WC21 (an
+EXIT-FORCED NCO source with `landed-1` is still refused) is a parity arm and passes on both. Block NC's selftest 31/31 and block T's 14/14
+at 74b1e0b4. Export on the run box: 422 files, withheld-shaped names 0 both sides.
+**SCOPE.** 74b1e0b4 stages and fires ONE cell, WC Opus NTT plain #3 from `clbdtp03`, recorded per cell. Every other WC cell stays on
+d55062a6. It fires after a non-author has read this addendum and the commit.
+**ALSO RECORDED, the REACH LOSS of this block so far:** the fresh phase 1 `clbzts02` (Sonnet NTT salt-diet #2's source) ended CAP-COST,
+$37.60 of $37.21, without landing; by §WC2 that condition's n = 2 has no phase 2 and is never re-run.
