@@ -179,3 +179,24 @@ on every row: TMPDIR OK, FENCE-OK, P-DELIVERY/PERSIST/ANYWHERE/SANDBOX yes, SERV
 (clean); the difference stays unattributed. **The argon half (12 conditions, 36 cells) is RELEASED** on the terms of ADDENDUM 2 ruling 1
 and the client guard of ruling 3; it fires after Flash in §TA2's order, and `T-TA-P` (argon · Luby · salt-diet#1) fires alone and is read
 by the lead before argon continues.
+
+---
+## ⚖️ ADDENDUM 4 (2026-11-17, bench) — TA's ROOTS ARE MADE ONCE, BEFORE THE CELLS THEY MIGHT EXPOSE. APPENDED.
+**THE GAP (the lead's, in §TA2, and not seen at signature):** TA never said when its wave roots are made. Its form (WA's) makes each
+condition's root in `$HOME` when the condition starts. A Claude-lane cell's fence lists `$HOME` entries one by one at its render, so a root
+made after the render is readable by that cell for the rest of its run, and TA's roots hold work on the same six problems. Block T's
+cell clbvyp01 was refused at launch by the fence-drift check at 20:56Z (no spend), which is how it was found. Block T's tripwire T-T-S
+(live 19:21–20:51Z) was exposed to four TA roots born during its run. Measured on its five transcripts (main and subagents) on the run
+box: `/Users/jyh/cells-*` paths are its own root 1,617 times plus 3 bare prefixes, `cells-ta` 0 times, and no listing of `$HOME`. The control
+is its own cell id, 957 hits in the main transcripts. ⇒ open, NOT used; its score stands.
+**RULED (the lead, 2026-11-17; the helm read it and did not reverse):**
+1. All 68 remaining TA roots were created EMPTY in one act at 21:00:45Z while no Claude cell was live (hand gemini; list sha256/16
+   1b31420a135c07ad). The wave refuses an existing root, so the hand's chain removes a placeholder with an empty-only `rmdir` seconds before
+   its condition and the wave re-creates the same path. A path deny survives that re-create (driven: refused for a process sandboxed before
+   the re-create; a no-deny control reads). Block T's next fence (clbvyp01, re-fired 21:02Z) denies all 82 `cells-ta-*` roots.
+2. The hand's chain starts no placeholder `rmdir` while a block T cell is between stage and launch (it only spares a spurious refusal).
+3. **RESIDUAL, accepted with a check:** a 503 discard renames a root and queues a new `-a2` root, which are new `$HOME` entries born mid-run
+   (0 so far in TA). So every Claude-lane cell's read carries a census of `$HOME` entries born during its run, and a search of its
+   transcripts for each one.
+4. The per-task `agy-widen-*.log` files in `$HOME` predate every block T render (only their mtime moves). Moving them, and the wave's
+   unfenced /usage read, are harness changes for the next agy export.
