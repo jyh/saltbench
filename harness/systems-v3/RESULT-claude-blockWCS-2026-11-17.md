@@ -38,12 +38,13 @@ as equals.
 ```
 NTT  median COST plain $2.05 · salt-diet $4.40 · ratio 2.2x · CAP-COST plain 0 salt-diet 0 · n plain 3 n salt-diet 1 · UNRESOLVED-UNDERPOWERED
 WHT  median COST plain $1.84 · salt-diet $12.03 · ratio 6.5x · CAP-COST plain 0 salt-diet 0 · n plain 3 n salt-diet 3 · UNRESOLVED-UNDERPOWERED
-total COST (capped at the cap) plain $11.54 · total T 26,542,012
-total COST (capped at the cap) salt-diet $40.32 · total T 132,425,352
-capped cells METERED (not used above): 0
+total COST (capped at the cap) plain $11.54 · total T (metered, every cell) 26,542,012
+total COST (capped at the cap) salt-diet $40.32 · total T (metered, every cell) 132,425,352
+capped cells METERED COST (in no COST line above): 0
 uncapped cells ending above the cap: 0
 ```
-**Every capped cost ENTERS AT THE CAP;** the capped cells' metered figures are on their own line and used in no median, ratio or total.
+**Every capped cost ENTERS AT THE CAP;** the capped cells' metered COST is on its own line and used in no COST median, ratio or total. T is a metered figure for every cell, capped ones
+included (kent's read of #448, 2026-11-17: the first draft said "no median, ratio or total", which is false for the T total).
 ⚠️ **Sonnet NTT salt-diet is n = 1** (the two reach losses), so its median is one cell's figure. The sign is the reading; the magnitudes are not, and the figures include the harness's own sandbox probe (block W's declared limit).
 
 ---

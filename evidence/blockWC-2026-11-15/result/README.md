@@ -9,3 +9,8 @@
   (1) a relative out path left the task tree unextracted, so every row scored rc 127 (the runner guard);
   (2) a killed first run's loop subshell survived and appended into the re-run's table, giving 32 rows for 24 (the population guard,
   red on that discarded table, rc 3).
+- `wcgen.py` writes the two RESULT files; every figure block in them is the verifier's own `--print` output.
+- ⚠️ **What the verifier does NOT read (kent's read of #448, 2026-11-17, two of eight mutants survived it):** the `source` column and
+  `sol_sha16`. The tie of each phase-2 cell to its source, and the solution hash, are covered only by `wc-derive.sh` on the run box.
+  kent's own cross-check (24 distinct sources; the 20 reused ones are exactly the 20 ELIGIBLE baselines; the 4 others are the fresh
+  phase 1s; no phase-2 hash equals its phase-1 hash) is on the bus, not in a script here.

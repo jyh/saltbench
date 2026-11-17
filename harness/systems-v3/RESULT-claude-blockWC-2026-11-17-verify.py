@@ -9,7 +9,7 @@ first missing line). The form is block W's verifier, re-written for phase 2.
 Rules (AMENDMENT-O37-wht-ntt-specchange-claude-2026-11-13 §WC5/§WC7 = block NC §C5/§C8, lane B §Q6):
   - correctness is the withheld B suite's FULL PASS (rc 0, TESTS passed = total, 0 regressions failed, 0 clause tests failed);
     a capped cell's pass is a floor;
-  - a CAP-COST cell's cost ENTERS AT THE CAP; its metered figure is printed on its own line and used in no median, ratio or total;
+  - a CAP-COST cell's cost ENTERS AT THE CAP; its metered COST is printed on its own line and used in no COST median, ratio or total; T is metered for every cell, capped ones included;
   - a ratio whose numerator median is a capped figure prints >= ; whose denominator median is capped prints <= ;
   - every premium is registered UNRESOLVED-UNDERPOWERED (NC §C8);
   - a REACH-LOSS row is a condition-cell with no phase 2: it is counted, never scored, never priced.
@@ -102,13 +102,13 @@ def lines(block, cells, base):
         out.append('%s  median COST plain %s · salt-diet %s · %s · CAP-COST plain %d salt-diet %d · %s · UNRESOLVED-UNDERPOWERED' % (
             P, money(med['plain']), money(med['salt-diet']), ratio, ncap['plain'], ncap['salt-diet'], nn))
     for A in ARMS:
-        out.append('total COST (capped at the cap) %s %s · total T %s' % (A, money(tc[A]), format(tT[A], ',')))
+        out.append('total COST (capped at the cap) %s %s · total T (metered, every cell) %s' % (A, money(tc[A]), format(tT[A], ',')))
     capped = [r for r in S if r['capped'] == 'yes']
     if capped:
         m = sorted(float(r['final_COST']) for r in capped)
-        out.append('capped cells METERED (not used above): %d, %s .. %s against cap %s' % (len(m), money(m[0]), money(m[-1]), money(cap)))
+        out.append('capped cells METERED COST (in no COST line above): %d, %s .. %s against cap %s' % (len(m), money(m[0]), money(m[-1]), money(cap)))
     else:
-        out.append('capped cells METERED (not used above): 0')
+        out.append('capped cells METERED COST (in no COST line above): 0')
     over = [r['cell'] for r in S if r['capped'] != 'yes' and float(r['final_COST']) > cap]
     out.append('uncapped cells ending above the cap: %d%s' % (len(over), (' (' + ', '.join(over) + ')') if over else ''))
     # §4 predictions
