@@ -1946,3 +1946,10 @@ DONE 94 · DECLARED 26 · NOT DONE 96 = 216. "Released" is a state of a registra
 ## §AQ3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
 Nothing about a spec-change reached from a phase 1 that did not land, nothing Opus-versus-Sonnet, nothing about the salt method. Every
 premium in both results is UNRESOLVED-UNDERPOWERED as registered.
+
+---
+## ADDENDUM 46, NOTE 1 (2026-11-17, bench) — appended; no count moves
+ADDENDUM 46 put block NC's six Liveness clause failures to a non-builder read as a possible suite defect. systems' read (bus offset
+105,218,390) answers YES: the clause test fixes one reading of the card's "sweep" and all six cells counted another reading the card
+admits. The cells stand as they fell and no O37 count moves (DONE 94 · DECLARED 26 · NOT DONE 96 = 216); both block NC results carry
+it as their ADDENDUM 1; the card is amended before any later Liveness run.
