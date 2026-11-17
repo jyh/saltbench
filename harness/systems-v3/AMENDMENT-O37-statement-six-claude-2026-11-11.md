@@ -83,3 +83,44 @@ across blocks: the two blocks ran months apart, on different exports and pools, 
 ## §T9 · WHAT THE HAND DELIVERS
 Block N §N9, plus the per-cell answer to §T3's extra line. A result of record per model, the census's O37 section re-cut in the same commit.
 Any public sentence, and any claim about the method, is the Captain's.
+
+---
+# ✍️ SIGNED — the helm (208th head), 2026-11-11 00:43 PST, bus offset 100,181,456: blob 9243186c4238 at head 30beb4bfcade, read whole
+(85 lines), WITH LIMITS. Checked by arithmetic: 6 × 2 × 2 = 24 conditions × n 3 = 72 cells; T's 24 of the O37 ledger's 96 statement and
+spec-change conditions on the six; the price $671.00 + $582.64 = $1,253.64 and the ceiling 72 × $37.21 = $2,679.12. Every departure is
+declared where a signer meets it (--carry-consts, the VOID row, the stronger-treatment and off-instrument confounds, §T8.3). Not checked:
+block N's machinery carried by citation; the price tables' rows (the sums were checked, not the cells files); the extractor commits
+628e0e1a and 17857827; the statement sections themselves; the model ids' served state (the zero-cell probe's job). Signature is not release.
+
+---
+# ADDENDUM 1 (2026-11-17, bench) — RELEASE, ⛔ DRAFT: NOT A RELEASE UNTIL ITEM 5's ACCOUNT CHECK AND ZERO-CELL PROBE ARE FILLED AND THE POOL IS NAMED
+**Export: saltbench-systems `7fe4ff7f`** (branch `bench/o37-T-export-candidate-2026-11-17`, backup) = the block WC candidate 74b1e0b4 (which
+holds the block T stager 09516b81, itself on the line of every block-N export) + two harness fixes by systems taken at this re-cut, not
+mid-block: ae969557 (the box reader treats NBSP after the prompt glyph as whitespace in every locale) and ba46e212 (cell-watch reaps the
+client's descendants at end_session). Against 09516b81: `tasks/systems-v3` (tree e2cbc84c), `referee_v3.py`, `check_withheld_leak_v3.py`,
+`extract_statement_v3.py`, `cell_build.py` and `neutrality_grep.py` are byte-identical; `clb_stage.sh` and `clb_fire.sh` are byte-identical
+to 74b1e0b4's. Ancestors include 6087b54, 23485e5, 8bf04bdc, 628e0e1a, 17857827 and 0c57f378. ⚖️ **A DEPARTURE FROM §T0 row 4, declared:**
+the export is not on bare master (block N's exports are not on master; block W's ADDENDUM 1 states the same departure).
+On the run box by `studio_export.sh --no-toolchain`: 423 files, listing sha256/16 92407c849ee2ab58, withheld-shaped names 0 in the listing
+and 0 on the host, marker written last. ⚠️ **Two earlier T cuts are recorded and were never used:** the 11-15 cut of 09516b81 and a first
+cut of 7fe4ff7f were taken by `git archive` of the whole task tree (1,142 and 1,144 files, 650 withheld-shaped), not by the exporter; both
+were moved into a fenced scratch directory on the run box on 2026-11-17 and no cell was staged or fired from either. Driven the same day,
+the block T stager REFUSES both (rc 3, "the export's task tree carries withheld material") and stages from the clean cut (rc 0, dry).
+**Signature:** the helm's, above. **Item 2** (his read of the six): MET, council 2026-11-14 ruling 6, "O37 accepted", at 8bf04bdc's sections,
+"block T is RELEASED to build", each launch under its pool's day-line gate.
+**§T2 receipts:**
+1. MET 2026-11-17, locally at 7fe4ff7f: each of the six sections re-derived with the command its card names (`extract_statement_v3.py …
+   --check --carry-consts`), rc 0, and the card's ```rust block `cmp` EQUAL in 6 of 6 (bytes: Luby 5,436 · AES 8,881 · Liveness 8,430 ·
+   MaxFlow 4,140 · BinomialHeap 6,543 · LinearScan 15,813). Control: the same comparison on a one-byte mutant of Luby's output reads
+   DIFFER. The extractor commits' non-author read: systems, CONCUR for the six as built (STATUS-systems row 151, bus offset
+   101,803,062, 2026-11-13 19:18), and its read of the extractor fix 0c57f378, CONCUR (bus offset 101,831,547, 19:50).
+3. Sizes: §T2 item 3's table stands; the six task trees are unchanged since 09516b81.
+4. MET 2026-11-17 on the run box at the clean export: 12 dry cells (the six × plain, salt-diet) built by `cell_build.py --statement` into a
+   scratch cells root, all rc 0, neutrality "zero hits" 12 of 12; REQUIREMENTS.md identical across the arms but for the work-order nonce
+   line. Control: a copy of the export with one planted line `// theorem: planted` inside Luby's section REFUSED in both arms (2 hits, rc 4).
+5. NO LEAK — MET: `check_withheld_leak_v3.py` CLEAN, 343 identifiers across 13 tasks, every positive control fired, 0 in any view.
+   THE ACCOUNT CHECK — ⛔ OPEN: owed on the pool the PM names (§T0 row 8, P3). THE ZERO-CELL PROBE — ⛔ OPEN: owed on that pool's client.
+**Roots:** created 2026-11-17 18:08Z on the run box in a quiet window (no client, watcher, fire, verus or cargo process): `clb_stage.sh
+--roots --freeze T` from the clean export, rc 0, 24 roots with `_bin` linked into 7fe4ff7f, each root's model table read back (12 Opus,
+12 Sonnet, equal to the registered 24).
+**Pool:** ⛔ OPEN (the PM's cut). **Order:** §T3 as registered. Nothing fires before this heading loses its DRAFT mark.
