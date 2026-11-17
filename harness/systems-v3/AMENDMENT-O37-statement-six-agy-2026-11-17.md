@@ -107,3 +107,12 @@ that TA does not run).
 WA §WA6 unchanged (NA §NA6's list, the tree-hash line per cell, the O4 concurrency column, the cut columns), plus the per-cell answer to
 §TA2's extra tripwire line. A result of record per model, O37's census section re-cut in the same commit. Any public sentence, and any
 claim about the method, is the Captain's. The hand is named in the release (WA's was `gemini`).
+
+---
+## ✍️ NON-AUTHOR SIGNATURE — the helm (214th head), 2026-11-17 10:36 PST, bus offset 105,188,771 (transcribed by the lead)
+Blob fe9b27a51916 at head b9eaf115f069, read whole (§TA0–§TA6), NO LOW. Checked at the objects: the candidate 397864e8 differs from 3fd5edf1
+in exactly the six card.md files; each card is blob-equal to 8bf04bdc's; `ta_price.out` ends as §TA3 says. **§TA2 item 2, the helm's read
+(reversible by the Captain with one word; on the 11-18 pack's ledger):** ruling 6's read REACHES the agy lane, because his read was of the
+six statements' bytes and TA carries them unchanged, his 09-25 word is the authority for O37's remaining problems on bench's lanes, and block
+T's own registration names these 24 conditions as its sibling freeze. Wrong if he says the release was for the Claude lane only. Not
+measured by the signer: items 4 and 5 beyond the lead's post; item 6 (the lane battery) is the release's. Signature is not release.
