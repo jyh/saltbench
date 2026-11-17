@@ -138,3 +138,35 @@ required-ancestors 5/5, marker written last.
 **Hand:** gemini (as WA), on its confirmation. **Pool:** the agy pool at P3, yielding to any O4 agy cell live or queued. **Order:** §TA2 as
 registered (Flash first; Luby first; `T-TA-F` read by the lead before Flash continues). Nothing fires before this heading loses its DRAFT
 mark.
+
+---
+## ⚖️ ADDENDUM 2 (2026-11-17, bench) — THE FLASH HALF IS RELEASED; THE ARGON HALF HOLDS FOR ONE MORE BATTERY TURN. APPENDED.
+ADDENDUM 1's DRAFT heading stands as written; this addendum fills its item 6 and is the release for the half named here.
+**Item 6, the lane-live battery** (hand `gemini`, bus offset 105,303,770; receipts on the run box `gemini-ta-battery-r2-2026-11-17`). The
+client UPDATED ITSELF from agy 1.5.9 to **1.5.10** at 19:01Z during the first run (r1), through an unfenced agy call outside every cell (a
+/usage probe by the hand's canary). r1 (both models GREEN on 1.5.9) is superseded and kept as receipts. r2 refused unless the client before
+was 1.5.10, and read the same client after. **Client of record: agy 1.5.10, sha256/16 780ee763a9938a37.** Export 397864e8 (marker read;
+agentMode "" in both live cells' settings). TREE-HASH: Luby's three exported files are blob-equal to 397864e8 and equal in all four dry
+cells, with a control that fires. The statement block in REQUIREMENTS.md is sha256/16 87bfc07df2886179 in all four cells, equal to the card's.
+```
+  Flash  gemini-3.8-flash-high  dry: built rc 0, fence rendered, BATTERY GREEN · live: TMPDIR OK, FENCE-OK, P-DELIVERY/PERSIST/ANYWHERE/
+                                SANDBOX yes, SERVED gemini-3.8-flash-high OK, RC-1 0 · RC-2 0 · RC-3 1 (the egress row fails, as it must) ⇒ GREEN
+  argon  gemini-4-argon-high    dry: built rc 0, BATTERY GREEN · live: TMPDIR OK, FENCE-OK, P-SANDBOX yes, SERVED gemini-4-argon-high OK;
+                                P-DELIVERY LATE (the token came after a 1,050 s first turn spent on the task) and BATTERY.md carries RC-1
+                                only (RC-2, RC-3 never written, so the in-shell egress row did not run in the subject's shell). r1 on 1.5.9
+                                had neither. One sample per client: the cause is not attributed.
+```
+**RULED (the lead), on the hand's recommendation:**
+1. **THE FLASH HALF IS RELEASED**: its 12 conditions (36 cells), on export 397864e8, client agy 1.5.10/780ee763, hand gemini, P3 on the
+   agy pool yielding to any O4 agy cell live or queued, /usage read at each fire and bank. `T-TA-F` (Flash · Luby · salt-diet#1) fires ALONE
+   and the lead reads it before Flash continues; then §TA2's order.
+2. **THE ARGON HALF HOLDS** until ONE more argon battery turn on the same client. If that turn is GREEN on every row, including RC-1/2/3
+   written and P-DELIVERY on time, the argon half is released by a one-line addendum. If it repeats either difference, the lead writes what
+   the battery can and cannot show about the fence on this client before any argon cell. Item 6's rows as registered are each MET for argon;
+   the hold is about the battery's own unwritten rows, not about a failed one. Argon fires after Flash in §TA2's order anyway.
+3. **THE CLIENT GUARD (a release condition):** before each CONDITION the hand's wave driver reads the agy version and sha, and a mismatch
+   with 1.5.10/780ee763 HOLDS the wave. After each condition, the cell's own built-from client sha is read against it, and a mismatch holds
+   the next condition. Nothing running is voided. A held wave resumes only after a battery on the new client and a one-line addendum naming
+   it. The hand's canary now runs its agy calls under a profile that denies writes to the client's directory (shown: the updater logs
+   "skipping update", and a control write is refused). The wave driver's own /usage read is outside the hand's reach and can still update
+   the client; this guard is what catches that.
