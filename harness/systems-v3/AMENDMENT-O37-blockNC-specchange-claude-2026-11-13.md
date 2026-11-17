@@ -255,3 +255,27 @@ each is at the cap stop, EMPTY). The other fresh phase 1s so far: `clbzas03` LAN
 --credential` rc 6; the client: "OAuth session expired and could not be refreshed"). Every NC fire HOLDs at its probe turn until a fresh
 login. Registered as a block on the Captain the same minute. The cells staged before it (`clbfhp02`, `clblhs01`) wait staged; nothing ran
 under a dead credential (the probe turn refused, rc 1, at $0).
+
+---
+# ADDENDUM 5 (2026-11-17, bench) — NC's REMAINING FIRES MOVE TO THE FALLBACK POOL ADDENDUM 3 REGISTERED. APPENDED, BEFORE THE FIRST FIRE THERE.
+Nothing above is changed. ADDENDUM 3 named the pool and its fallback: "block W's pool once block W is done and while that pool's day line
+allows". Block W is done, and so is block WC (its result of record merged 2026-11-17 as saltbench #448). This addendum takes the fallback.
+**WHY NOW.** The PM (evidence, 2026-11-17 00:08 PST, bus offset 104,743,801) forecast that NC's pool walls on Tue 2026-11-17, about
+12:20–15:30 PST at its burn, before its Wed 11-18 14:00 reset. That pool is also the helm's home pool. The pool's readings since 11-16 08:21
+are tagged DUPLICATE-IDENTITY / DIR-NE-ACCOUNT (one config dir signed in as the other account), so day-line-check reads LAUNCH-UNMEASURED
+for it and holds nothing. The helm named the move (00:16:39 PST, bus offset 104,752,274; desk ABC: when the home pool binds, move the other
+seats first). The PM concurred (00:17:28 PST, bus offset 104,754,275) under its Tue day line for the fallback pool (16 all-models, with the
+10 % reserve). If that line binds before Wed 14:00, NC holds and resumes on its first pool after that pool's reset or a fresh login.
+**THE READINGS AT THE MOVE** (QUOTA-LOG, newest row of each): the first pool 2026-11-16 23:21 PST, all-models 80, MEASURED(DUPLICATE-
+IDENTITY), reset Nov 18 1:59pm; the fallback pool 2026-11-16 23:22 PST, all-models 3, MEASURED, reset Nov 23 6:59pm.
+**THE LANE ENV.** A new untracked env on the run box: block WC's fallback-pool env (config dir, client, pin, account digest), with
+`CLB_EXPORT` taken from NC's own env. So NC's export stays `ee7450ce`, and only the pool's four values change. `diff` against WC's env shows
+the one line, CLB_EXPORT. The seat's drivers select it per fire.
+**THE ACCOUNT CHECK — MET, 2026-11-17 08:18Z.** `lane_identity.py --expect` (the run box copy byte-identical to `scripts/lane_identity.py`)
+against the env's registered digest returned IDENTITY OK, refresh token present, rc 0. Control: a digest one character off returns rc 5.
+The zero-cell probe on this config dir and client is block WC ADDENDUM 2's (2026-11-16, both models served exactly). Per cell,
+`clb_stage.sh` re-reads the identity and `clb_fire.sh` re-checks the credential by body, as before.
+**WHAT MOVES AND WHAT DOES NOT.** Every NC fire after the one live cell moves: `clbzrs02` (fresh Sonnet LinearScan salt-diet #2's phase 1,
+fired 06:47Z on the first pool) runs to its end there. The order (§C4), the caps, the export, the sources and the scoring are unchanged.
+**CONFOUND ADDED (to §C6 item 3):** NC's cells now run on two accounts. Each cell's pool is in its fire log and its run-cfg.tsv. NC's
+result records the pool per cell, and no table sets the two pools against each other.
