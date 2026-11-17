@@ -158,5 +158,5 @@ carry the withheld suite's networks and reference. A new MaxFlow cell would need
 ### ERRATUM (2026-11-17, bench) — one sentence above is false for T. No figure line changes.
 The cost section says the capped cells' metered figures "are not used in any median, ratio or total". That is true of COST, which enters
 at the cap, and false of T: the "total T" on each total line sums final_T over every row of the arm, capped cells included. So read the
-total T as a metered figure over every cell. Found by kent's delta read of saltbench #448 (the same claim in different words in blocks W
-and NO, annotated in the same PR).
+total T as a metered figure over every cell. Found by kent's delta read of saltbench #448 (blocks W and NO carry the same claim in WC's
+words, "used in no"; this file's "not used in any" is the different wording; all annotated in that PR).
