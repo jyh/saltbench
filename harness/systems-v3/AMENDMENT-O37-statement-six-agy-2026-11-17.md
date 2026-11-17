@@ -116,3 +116,25 @@ in exactly the six card.md files; each card is blob-equal to 8bf04bdc's; `ta_pri
 six statements' bytes and TA carries them unchanged, his 09-25 word is the authority for O37's remaining problems on bench's lanes, and block
 T's own registration names these 24 conditions as its sibling freeze. Wrong if he says the release was for the Claude lane only. Not
 measured by the signer: items 4 and 5 beyond the lead's post; item 6 (the lane battery) is the release's. Signature is not release.
+
+---
+## ⚖️ ADDENDUM 1 (2026-11-17, bench) — RELEASE, ⛔ DRAFT: NOT A RELEASE UNTIL ITEM 6 (THE LANE BATTERY PER MODEL) IS FILLED AND THE CLIENT IS NAMED
+**Export: saltbench-systems `397864e8`**, the candidate §TA0 row 4 names, unchanged. On the run box by `studio_export.sh --no-toolchain
+--unreferenced-dest` (a block T cell was live there, and the exporter refuses a referenced dest while a client runs; this dest is new and
+nothing resolves into it): 387 files, listing sha256/16 4670ec729a6c3eb6, withheld-shaped names 0 in the listing and 0 on the host,
+required-ancestors 5/5, marker written last.
+**§TA2 receipts:**
+1. MET BY CITATION, with the identity shown: block T's ADDENDUM 1 item 1 (6/6 EQUAL at 7fe4ff7f, a one-byte control DIFFER). For each of
+   the six problems, `G/withheld/reference/solution.rs`, `verify.names` and `G/interface.rs` have the same git blob at 7fe4ff7f, 8bf04bdc
+   and 397864e8 (18 of 18 compared), and each card is blob-equal to 8bf04bdc's (the signer's check (2)).
+2. MET by the helm's read recorded above (ruling 6 reaches the agy lane; reversible; on the 11-18 pack's ledger).
+3. Sizes: block T §T2 item 3's table, unchanged.
+4. MET 2026-11-17 at this export on the run box: 12 cells built with `--client agy --statement` into a scratch cells root, all rc 0,
+   "neutrality: zero hits" 12 of 12; the planted `// theorem: planted` copy REFUSED in both arms (2 hits, rc 4).
+5. MET: `check_withheld_leak_v3.py` over 397864e8's tasks: CLEAN, 244 identifiers across 13 tasks, every positive control fired, 0 in any
+   view.
+6. ⛔ OPEN: the lane-live battery on one dry cell per model (gemini-3.8-flash-high, gemini-4-argon-high) on the release's client, by the
+   hand, with the client version and sha, the credential window, the served model, fence, TMPDIR identity and the TREE-HASH line.
+**Hand:** gemini (as WA), on its confirmation. **Pool:** the agy pool at P3, yielding to any O4 agy cell live or queued. **Order:** §TA2 as
+registered (Flash first; Luby first; `T-TA-F` read by the lead before Flash continues). Nothing fires before this heading loses its DRAFT
+mark.
