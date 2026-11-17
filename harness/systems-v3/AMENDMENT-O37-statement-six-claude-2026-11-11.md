@@ -124,3 +124,27 @@ the block T stager REFUSES both (rc 3, "the export's task tree carries withheld 
 --roots --freeze T` from the clean export, rc 0, 24 roots with `_bin` linked into 7fe4ff7f, each root's model table read back (12 Opus,
 12 Sonnet, equal to the registered 24).
 **Pool:** ⛔ OPEN (the PM's cut). **Order:** §T3 as registered. Nothing fires before this heading loses its DRAFT mark.
+
+---
+# ADDENDUM 2 (2026-11-17, bench) — THE RELEASE. ADDENDUM 1's open items are filled here; this heading is the release
+The repo appends to a frozen file and never edits it, so ADDENDUM 1's heading keeps its DRAFT mark. Its condition is met by this addendum.
+Nothing in ADDENDUM 1 is changed: the export 7fe4ff7f and its receipts stand as written there.
+**Pool: the one the PM (evidence) named for block T on 2026-11-17 10:31:49 PST** (bus offset 105,165,280), at P3: the Luby cells on the
+fallback pool block WC fired under, each launch under day-line-check; the other five problems on the pool block NC began on, from its weekly
+reset on 2026-11-18 14:00 PST; the first pool again, per launch, whenever its day-line-check reads LAUNCH and the second's does not. The
+PM's figure was "the Luby sextet (6 cells)"; Luby is 12 cells in this block (two models), which block N priced at $83.86 (Opus, 6 cells)
+plus $95.97 (Sonnet, 6 cells) in `evidence/claude-lane-blockN-2026-09-28/block{NO,NS}-cells.tsv`, so day-line-check paces them, and the
+correction is posted to the PM. The lane env is block WC's for that pool with one line changed (the export) and its comment lines.
+**§T2 item 5, the two that were open:**
+- THE ACCOUNT CHECK — MET, 2026-11-17 18:34Z. `lane_identity.py --expect` against the pool's REGISTERED digest (the one block WC's lane env
+  carries) returned IDENTITY OK, refresh token present. Control: a digest one character off returns rc 5.
+- THE ZERO-CELL PROBE — MET, 2026-11-17 18:34Z, block WC's form: the pinned client 2.1.259 (sha256/16 884baa38fe1a624b, asserted), one `-p`
+  turn per model from a scratch directory, `stream-json`. claude-opus-5: rc 0, reply `OK`, `message.model` set exactly `{claude-opus-5}`.
+  claude-sonnet-5: rc 0, reply `OK`, set exactly `{claude-sonnet-5}`. Spend $0.1105 on the pool, outside every cell's meter. As in WC, the
+  client's `modelUsage` lists a Haiku id on the Sonnet turn, its own side call, carried in no assistant message.
+**Toolchain at the release** (the export was taken with `--no-toolchain`, so it is read here): the run box's Verus binary sha256/16
+7a7b319b170692d3 equals the per-host contract's pin; the pinned rust toolchain is present. The export dir holds 424 files (ADDENDUM 1's 423
+plus its marker) and names 7fe4ff7f.
+**Order:** §T3 as registered: Luby first, models interleaved (block N ADDENDUM 10). `T-T-O` = Opus · Luby · salt-diet#1 fires first and
+the lead reads it before Opus continues, with block T's extra line (did the subject use, ignore or contradict the statement); `T-T-S` =
+Sonnet · Luby · salt-diet#1 likewise. The Luby cells re-cut the price before AES fires (§T4).
