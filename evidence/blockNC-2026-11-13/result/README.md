@@ -15,7 +15,8 @@
 - Harvest scores of `clblrp03` and later cells were DEFERRED at fire time (the disk hold); this table is their first score.
 - ⚠️ **The Liveness clause:** every Liveness failure is `answer_is_the_count_honest_pair` (1 of 5 clause tests, 0 regressions); the
   failing test is named in each cell's `b.out` on the run box (`~/bench-dry/nc-result-2026-11-17/out/sol/<cell>/b.out`). Put to a
-  non-builder read as a possible suite defect (§C6 item 4).
+  non-builder read (§C6 item 4): systems answered YES, a suite defect (the test fixes the PAIR reading of "a sweep"; all six
+  cells counted a composed reading the card admits); both RESULT files carry it as ADDENDUM 1, and no figure moves.
 - What the verifier does NOT read: `source`; `sol_sha16` on a phase-2 row (as block WC's). `served_head` and `export12` are read on
   phase-2 rows (they produce the `served:` and `export` lines). On a REACH-LOSS row the four phase-2 columns (`served_verdict`,
   `served_head`, `export12`, `sol_sha16`) must read `-`, and anything else refuses (added on kent's read, 2026-11-17).

@@ -84,3 +84,23 @@ arm-correlated and the sources are filtered by it, so the eligible count travels
 block N's export and its phase 2 at this block's (ee7450ce); one author wrote the six B/ suites (item 4). **ADDENDUM 5:** the fires after
 2026-11-17 00:16 PST moved to the fallback pool; of the phase-2 cells of record only `clblrp03` ran there (its pool is in its run-cfg.tsv).
 Any public sentence, and any claim about the method, is the Captain's.
+
+---
+# ADDENDUM 1 (2026-11-17, bench) — THE LIVENESS CLAUSE FAILURES ARE A SUITE DEFECT (§C6 item 4 answered). NO FIGURE MOVES. APPENDED.
+The non-builder read §1 and §C6 item 4 asked for (systems, who built none of the B/ suites; bus offset 105,218,390, 2026-11-17 10:55)
+answers YES: `answer_is_the_count_honest_pair` fixes ONE reading of the card's "a sweep is one pass in which every block's two sets are
+brought up to date from the sets as they stood at the start of that pass", the PAIR pass (in(b) from the old out(b), out(b) from the old
+in). It is neither of the two count readings the suite's README declares. Every failing cell counted a COMPOSED pass the sentence also
+admits (a block's own two sets made consistent within the pass), and each one cites the card's sentence in its own comment. Three
+pieces of the suite admit that reading too: mutant InPlaceSweeps' own comment, phase 1's oracle `d_solve`, and the README's "no test
+compares `sweeps` against a number other than the bound". On `loop` the first stable iterate is 5 under the pair pass and 3 under either
+composed pass, all three on the same least pair. The cells report 3 or 4, which is b.out's "after 3 / after 4 sweeps the pair is still
+changing". Each passes `counted_answer_is_least` and the other three clause tests, with 0 regressions. Read on the copied sources and
+b.out lines; the k* figures come from systems' hand simulation, not from a compile.
+**RULED (the lead), on systems' recommendation:** (a) the cells stand as they fell (this block's rule): a FULL PASS figure here does not
+move, and no cell is re-scored. In this model the three Liveness cells that failed this one test (`clblvp02` plain, `clblvs01` and `clblvs03` salt-diet) failed it
+by this defect, not by a wrong answer, so Liveness's FULL PASS gap in §2 is the suite's, in both arms. (b) For any later run on Liveness, the CARD is amended before that run's first model call, with a
+sentence that settles the pass (systems': "in(b) is computed from out(b) as it stood at the start of the pass, not from the out(b)
+computed in the same pass"), and the test is NOT widened: a black-box count test that accepts any reading would also pass CountOneShort
+and lose that kill. (c) With the card amended, InPlaceSweeps stays a valid mutant. Not read by systems: the reference solution, the
+Verus cells' verifier output, the other five clause mutants under the composed pass.
