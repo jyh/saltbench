@@ -1909,3 +1909,40 @@ DONE 72 · DECLARED 24 · NOT DONE 120 = 216. "Released" and "firing" are states
 ## §AP3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
 Nothing about a spec-change reached from a phase 1 that did not land (the two reach losses are counted, never scored), nothing
 Opus-versus-Sonnet, nothing about the salt method. Every premium in both results is UNRESOLVED-UNDERPOWERED as registered.
+
+---
+# ⚖️ ADDENDUM 46 — **O37: BLOCK NC IS A RESULT OF RECORD. 22 CONDITIONS MOVE TO DONE; 2 ARE DECLARED UNREACHED (LinearScan × spec-change × salt-diet, both models: no source reached phase 2). THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-17, in the same commit as `RESULT-claude-blockNCO-2026-11-17.md` and `RESULT-claude-blockNCS-2026-11-17.md` (§C8: the census section is re-cut with the result).
+
+## §AQ1 · WHAT MOVED
+Block NC (`AMENDMENT-O37-blockNC-specchange-claude-2026-11-13.md`, ADDENDA 1–5) has its 72 condition-cells ended and two result files.
+22 conditions have cells of record and move to DONE, at the n each record states (Opus LinearScan plain at n = 2, Sonnet MaxFlow
+salt-diet at n = 1, the rest n = 3). **Two conditions have NO cell of record:** Opus LinearScan salt-diet (three fresh sources ended
+CAP-COST) and Sonnet LinearScan salt-diet (two ended CAP-COST; one landed and failed its G baseline, 6 of 9). No phase 2 exists for
+either, and §C2 never re-runs a reach loss, so they are DECLARED unreached, beside the section, as the pilot's DECLARED are. DONE is not
+a verdict on the arms. ⚠️ Every Liveness failure in both results is one clause test (each result's §1); it is put to a non-builder read
+as a possible suite defect (§C6 item 4) and no arm reading rests on it.
+
+## §AQ2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-17)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (ADDENDUM 44)   4
+                 block WC: NTT, WHT x spec-change x {plain, salt-diet} x {Opus, Sonnet} (ADDENDUM 45)  8
+                 block NC: the six block-N problems x spec-change, Claude lane (this), 24 less 2  22
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+                 block NC: LinearScan x spec-change x salt-diet x {Opus, Sonnet}, unreached (this)  2
+    NOT DONE     WHT and NTT, the other 24:
+                   x statement, both lanes; x spec-change, agy lane: in no block                     24
+                 the six block-N problems x {statement, spec-change}, the other 72:
+                   x statement, Claude lane, block T: released to build (council 2026-11-14)        24
+                   x {statement, spec-change}, agy lane: in no block                                48
+```
+DONE 94 · DECLARED 26 · NOT DONE 96 = 216. "Released" is a state of a registration, never of a result.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AQ3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing about a spec-change reached from a phase 1 that did not land, nothing Opus-versus-Sonnet, nothing about the salt method. Every
+premium in both results is UNRESOLVED-UNDERPOWERED as registered.
