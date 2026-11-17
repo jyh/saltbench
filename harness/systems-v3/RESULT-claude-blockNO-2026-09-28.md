@@ -153,3 +153,10 @@ own build with a probe driver, and asked its checker about three valid pairs it 
 cells of record (block NO 6, block NS 6, block NA 12) accept the three and reject the control; this file's column holds 6 of them. The record is commit
 `ec868607` of the private harness tree, `evidence/o37-maxflow-r6-nonown-2026-11-13/`. The probe and the stub stay private, because they
 carry the withheld suite's networks and reference. A new MaxFlow cell would need the same check.
+
+---
+### ERRATUM (2026-11-17, bench) — one sentence above is false for T. No figure line changes.
+The cost section says the capped cells' metered figures are "used in no median, ratio or total". That is true of COST, which enters at
+the cap, and false of T: the "total T" on each total line sums `final_T` over every cell, capped cells included (this file's verifier sums
+the final_T column over all rows of the arm). So read the total T as a metered figure over every cell. Found by kent's read of block WC's result
+(saltbench #448), which carried the same sentence; corrected there and annotated here in the same act.
