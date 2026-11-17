@@ -139,3 +139,24 @@ the lead's, and it is recorded here rather than repaired after the fact.
   verifier     RESULT-claude-blockNS-2026-09-28-verify.py — re-derives every figure line above from the two tables and asserts
                it against this document's bytes; --selftest requires RED on two mutants (a PASS turned FAIL; capped cost at the meter)
 ```
+
+---
+# ADDENDUM 2026-11-14 · A LIMIT ON MaxFlow's REQUIREMENT R6 (paper, placing bench's probe of 2026-11-13). No figure above changes.
+
+MaxFlow's requirement R6 asks that the second function, `answer_is_valid`, decide any pair it is handed, including a valid pair the
+component did not produce. The withheld suite does not ask that case: its two hand-built "true" pairs carry the reference's own set,
+and its battery arm asks only the component's own pair. A stub whose checker answers "equal to my own answer" passes the suite at 8 of 8.
+
+**The suite does not test a non-own valid pair; every cell of record was checked by probe on 2026-11-13, none rejects one.** The probe
+read each MaxFlow cell of record's scored `solution.rs` by `git show` (no checkout; the cell untouched), linked it through the harness's
+own build with a probe driver, and asked its checker about three valid pairs it did not produce and one invalid control. All 24 MaxFlow
+cells of record (block NO 6, block NS 6, block NA 12) accept the three and reject the control; this file's column holds 6 of them. The record is commit
+`ec868607` of the private harness tree, `evidence/o37-maxflow-r6-nonown-2026-11-13/`. The probe and the stub stay private, because they
+carry the withheld suite's networks and reference. A new MaxFlow cell would need the same check.
+
+---
+### ERRATUM (2026-11-17, bench) — one sentence above is false for T. No figure line changes.
+The cost section says the capped cells' metered figures "are not used in any median, ratio or total". That is true of COST, which enters
+at the cap, and false of T: the "total T" on each total line sums final_T over every row of the arm, capped cells included. So read the
+total T as a metered figure over every cell. Found by kent's delta read of saltbench #448 (blocks W and NO carry the same claim in WC's
+words, "used in no"; this file's "not used in any" is the different wording; all annotated in that PR).

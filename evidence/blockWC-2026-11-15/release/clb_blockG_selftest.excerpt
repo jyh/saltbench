@@ -1,0 +1,19 @@
+=== clb_blockG_selftest.sh
+FAIL ref G1 --roots --freeze G creates the SIX registered roots — rc 3
+FAIL ref G2 stages FreeList plain 1 as a COPY of db0847aa — rc 3
+FAIL ref G2b the COPY exists AND the source is untouched by staging — source moved
+FAIL ref G3 an unregistered (problem, arm, n) is REFUSED — rc 3
+FAIL ref G4 a source of the wrong arm is REFUSED — rc 3
+FAIL ref G5 a source that did not land is REFUSED — rc 3
+FAIL ref G6 an already-dispatched source is REFUSED — rc 3
+FAIL ref G7 a dirty source is REFUSED — rc 3
+FAIL ref G8 block G without --phase 2 is REFUSED — rc 3
+FAIL ref G9 phase 2 DISPATCHES on the COPY — rc 3
+FAIL ref G9b the COPY carries P1 AND the SOURCE carries no dispatch — the source was dispatched into
+FAIL ref G10 a re-fire of an original with no end-2 and no HOLD is REFUSED — rc 3
+FAIL U  stage 'SG LRU plain 1' differs
+FAIL U  stage 'SC Paxos salt-diet 2' differs
+FAIL U  stage 'O FreeList plain 3' differs
+FAIL U  stage 'NO AES plain 1' differs
+FAIL U  stage 'NS Luby salt-diet 2' differs
+clb_blockG_selftest: 17 passed, 5 failed (candidate SCRATCH/wcwt/harness/systems-v3, reference 9d87318)

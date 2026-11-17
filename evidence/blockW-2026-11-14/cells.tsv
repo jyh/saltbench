@@ -1,0 +1,25 @@
+cell	problem	arm	model_block	end1_kind	end_from	suite	tests	final_T	final_COST	cap_unit	cap	capped	served_verdict	served_head	export12
+clbdwp01	WHT	plain	WO	LANDED	HEAD	PASS	11/11	5125450	5.4379	COST	37.21	no	clean	claude-opus-5=102	0916ef9a6d70
+clbdwp02	WHT	plain	WO	LANDED	HEAD	PASS	11/11	7074615	7.3914	COST	37.21	no	clean	claude-opus-5=124	0916ef9a6d70
+clbdwp03	WHT	plain	WO	LANDED	HEAD	PASS	11/11	5849821	6.8060	COST	37.21	no	clean	claude-opus-5=113	0916ef9a6d70
+clbdws01	WHT	salt-diet	WO	LANDED	HEAD	PASS	11/11	49059725	37.2803	COST	37.21	no	clean	claude-opus-5=314	0916ef9a6d70
+clbdws02	WHT	salt-diet	WO	CAP-COST	HEAD	PASS	11/11	50439955	38.3486	COST	37.21	yes	clean	claude-opus-5=321	0916ef9a6d70
+clbdws03	WHT	salt-diet	WO	LANDED	HEAD	PASS	11/11	22501417	18.5312	COST	37.21	no	clean	claude-opus-5=231	0916ef9a6d70
+clbdtp01	NTT	plain	WO	LANDED	HEAD	PASS	11/11	7946665	8.3914	COST	37.21	no	clean	claude-opus-5=135	0916ef9a6d70
+clbdtp02	NTT	plain	WO	LANDED	HEAD	PASS	11/11	9288234	9.7342	COST	37.21	no	clean	claude-opus-5=141	0916ef9a6d70
+clbdtp03	NTT	plain	WO	EXIT-FORCED	HEAD	PASS	11/11	11459047	11.5964	COST	37.21	no	clean	claude-opus-5=161	0916ef9a6d70
+clbdts01	NTT	salt-diet	WO	LANDED	HEAD	PASS	11/11	26081587	22.1570	COST	37.21	no	clean	claude-opus-5=248	0916ef9a6d70
+clbdts02	NTT	salt-diet	WO	LANDED	HEAD	PASS	11/11	45081503	35.3858	COST	37.21	no	clean	claude-opus-5=310	0916ef9a6d70
+clbdts03	NTT	salt-diet	WO	LANDED	HEAD	PASS	11/11	30980715	25.9900	COST	37.21	no	clean	claude-opus-5=233	0916ef9a6d70
+clbiwp01	WHT	plain	WS	LANDED	HEAD	PASS	11/11	3866736	2.0934	COST	37.21	no	clean	claude-sonnet-5=93	0916ef9a6d70
+clbiwp02	WHT	plain	WS	LANDED	HEAD	PASS	11/11	5756334	2.4174	COST	37.21	no	clean	claude-sonnet-5=104	0916ef9a6d70
+clbiwp03	WHT	plain	WS	LANDED	HEAD	PASS	11/11	3210387	1.6191	COST	37.21	no	clean	claude-sonnet-5=97	0916ef9a6d70
+clbiws01	WHT	salt-diet	WS	CAP-COST	working tree	FAIL	1/11	154514788	38.3113	COST	37.21	yes	clean	claude-sonnet-5=753	0916ef9a6d70
+clbiws02	WHT	salt-diet	WS	LANDED	HEAD	PASS	11/11	95031173	26.2947	COST	37.21	no	clean	claude-sonnet-5=511	0916ef9a6d70
+clbiws03	WHT	salt-diet	WS	LANDED	HEAD	PASS	11/11	72446407	19.5796	COST	37.21	no	clean	claude-sonnet-5=500	0916ef9a6d70
+clbitp01	NTT	plain	WS	LANDED	HEAD	PASS	11/11	3916732	1.7291	COST	37.21	no	clean	claude-sonnet-5=110	0916ef9a6d70
+clbitp02	NTT	plain	WS	LANDED	HEAD	PASS	11/11	3086538	1.4789	COST	37.21	no	clean	claude-sonnet-5=114	0916ef9a6d70
+clbitp03	NTT	plain	WS	LANDED	HEAD	PASS	11/11	2568578	1.1837	COST	37.21	no	clean	claude-sonnet-5=91	0916ef9a6d70
+clbits01	NTT	salt-diet	WS	CAP-COST	HEAD	FAIL	4/11	138783118	37.2326	COST	37.21	yes	clean	claude-sonnet-5=662	0916ef9a6d70
+clbits02	NTT	salt-diet	WS	CAP-COST	HEAD	PASS	11/11	122266918	37.3420	COST	37.21	yes	clean	claude-sonnet-5=502	0916ef9a6d70
+clbits03	NTT	salt-diet	WS	LANDED	HEAD	PASS	11/11	76968129	23.2314	COST	37.21	no	clean	claude-sonnet-5=472	0916ef9a6d70

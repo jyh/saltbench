@@ -1,0 +1,11 @@
+  Fake          1 identifier(s) screened, controls fired
+check_withheld_leak: CLEAN — 1 identifier(s) across 1 task(s), every positive control fired, 2 view-file read(s), 0 in any view
+  selftest 1 clean tree -> PASS
+  Fake          1 identifier(s) screened, controls fired
+  ⛔ LEAK Fake: withheld identifier 'ShiftRowsWrongWay' appears in the VIEW card.md
+check_withheld_leak: FAIL — 1 withheld identifier(s) in a view a cell can read
+  selftest 2 planted leak -> PASS
+  Fake          1 identifier(s) screened, controls fired
+  ⛔ Fake: the positive control for 'ShiftRowsWrongWay' did NOT fire (origin /var/folders/6g/vctfxpj12fb30906yg61rtm40000gn/T/wleak.nmdn9ona/Fake/G/withheld/mutants/ShiftRowsWrongWay.rs)
+check_withheld_leak: BROKEN INSTRUMENT — 1 control(s) did not fire; NO absence below is trustworthy
+  selftest 3 trailing-slash matcher -> PASS (must be BROKEN INSTRUMENT 3, not CLEAN 0)

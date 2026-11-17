@@ -1,0 +1,14 @@
+# the Flash generator's ROW count restored as a mutant (wa_pro_cells_gen.py with one line reverted); its summary lines that differ:
+FIXED : WHT salt-diet: FULL PASS 3 of 3 scored, of 3 fired [11/11 11/11 11/11] · cut turns 6 of 11 sent · truncated 2 · interface 89f1f28cf0773154
+MUTANT: WHT salt-diet: FULL PASS 3 of 3 scored, of 3 fired [11/11 11/11 11/11] · cut turns 6 of 11 sent · truncated 0 · interface 89f1f28cf0773154
+FIXED : NTT salt-diet: FULL PASS 3 of 3 scored, of 3 fired [11/11 11/11 11/11] · cut turns 6 of 10 sent · truncated 2 · interface 3d2d201dbe94cf64
+MUTANT: NTT salt-diet: FULL PASS 3 of 3 scored, of 3 fired [11/11 11/11 11/11] · cut turns 6 of 10 sent · truncated 0 · interface 3d2d201dbe94cf64
+FIXED : WHT T by rep (plain / salt-diet; (T) = TRUNCATED, not poolable): #1 2055806 / 11778076 (T) · #2 1238966 / 6845625 (T) · #3 1225379 / 4281863 · untruncated pairs 1 (#3)
+MUTANT: WHT T by rep (plain / salt-diet; (T) = TRUNCATED, not poolable): #1 2055806 / 11778076 · #2 1238966 / 6845625 · #3 1225379 / 4281863 · untruncated pairs 1 (#3)
+FIXED : WHT wall_s by rep (plain / salt-diet; (T) = TRUNCATED, not poolable): #1 704.0 / 2227.1 (T) · #2 728.7 / 2020.4 (T) · #3 760.5 / 1836.5 · untruncated pairs 1 (#3)
+MUTANT: WHT wall_s by rep (plain / salt-diet; (T) = TRUNCATED, not poolable): #1 704.0 / 2227.1 · #2 728.7 / 2020.4 · #3 760.5 / 1836.5 · untruncated pairs 1 (#3)
+FIXED : NTT T by rep (plain / salt-diet; (T) = TRUNCATED, not poolable): #1 1926854 / 7139885 (T) · #2 2810812 / 5397079 · #3 1681250 / 13302421 (T) · untruncated pairs 1 (#2)
+MUTANT: NTT T by rep (plain / salt-diet; (T) = TRUNCATED, not poolable): #1 1926854 / 7139885 · #2 2810812 / 5397079 · #3 1681250 / 13302421 · untruncated pairs 1 (#2)
+FIXED : NTT wall_s by rep (plain / salt-diet; (T) = TRUNCATED, not poolable): #1 740.0 / 2013.1 (T) · #2 1259.0 / 1450.8 · #3 847.6 / 2842.7 (T) · untruncated pairs 1 (#2)
+MUTANT: NTT wall_s by rep (plain / salt-diet; (T) = TRUNCATED, not poolable): #1 740.0 / 2013.1 · #2 1259.0 / 1450.8 · #3 847.6 / 2842.7 · untruncated pairs 1 (#2)
+MUTANT truncated column: wawas1r201=UNREAD wawap101=no wawap201=no wawas201=UNREAD wawap301=no wawas301=no wanap101=no wanas101=UNREAD wanap201=no wanas201=no wanap301=no wanas301=UNREAD

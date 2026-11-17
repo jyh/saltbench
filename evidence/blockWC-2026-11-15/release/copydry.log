@@ -1,0 +1,59 @@
+export commit: d55062a62b55f1f0825c9544ec64bb05c333ae30
+=== cells-clb-wo-ntt-plain/clbdtp01 -> wcdry001 (NTT)
+src tree before 246af3f4e82cab79
+copy rc=0
+cell_copy: 9 phase-1 run record(s) moved to ctl/phase1/, 14 cell file(s) kept
+cell_copy: ⛔ STILL OWED before this cell can launch: re-render ctl/fence.json for the NEW path, and re-seed trust for it. Both REFUSE loudly if you forget; neither is done here.
+dispatch rc=0
+customer: dispatched change request 1 to wcdry001 at 22a8bad (payload sha 5c9321045aab3e9d); phase 2 launches on this tree
+src tree after  246af3f4e82cab79
+SOURCE UNCHANGED
+change-1.md present (      19 lines)
+  MISSING:   `a_i · b_j` over the pairs with `i + j = m`, minus the sum over the pairs with `i + j = m + n`,
+  MISSING:   modulo `p`.
+  MISSING:   answer.
+  MISSING:   the twist, one cyclic product through the transform, and the untwist — never an `n^2`-term sum.
+  MISSING:   every vector and every root.
+card section lines in change-1.md: 14 of 19
+preamble present
+interface == B/interface.rs
+ctl/phase1 present
+slug distinct: -Users-jyh-bench-dry-wc-copydry-2026-11-15-cells-wcdry001-repo vs -Users-jyh-cells-clb-wo-ntt-plain-clbdtp01-repo
+copied_from	~/cells-clb-wo-ntt-plain/clbdtp01
+copied_from_id	clbdtp01
+copied_at	2026-11-15T13:35:45Z
+phase1_records	ctl/phase1/ (9 file(s); this cell did not produce them)
+22a8bad CUSTOMER: change request 1
+791e08f landing 1: NTT over p=998244353: ntt, intt and cyclic by the iterative radix-2 butterfly. check GREEN; driver 25/25, indep 227/227 (written from REQUIREMENTS.md alone), stress 8/8. R1-R7 each established by a named test; six seeded mutations turned the suites red; review found no defect.
+36466c5 LANDING.md: name all three suites in the header
+=== cells-clb-ws-wht-plain/clbiwp01 -> wcdry002 (WHT)
+src tree before 31c210df3eaddec5
+copy rc=0
+cell_copy: 9 phase-1 run record(s) moved to ctl/phase1/, 14 cell file(s) kept
+cell_copy: ⛔ STILL OWED before this cell can launch: re-render ctl/fence.json for the NEW path, and re-seed trust for it. Both REFUSE loudly if you forget; neither is done here.
+dispatch rc=0
+customer: dispatched change request 1 to wcdry002 at cdf7c63 (payload sha b719532a534fe2a2); phase 2 launches on this tree
+src tree after  31c210df3eaddec5
+SOURCE UNCHANGED
+change-1.md present (      21 lines)
+  MISSING:   `s_k(i)` of `wht(v)`.
+  MISSING:   `1` is `2^k` followed by zeros, and the entry `i` of `swht(v)` is the one that answers to `i` sign
+  MISSING:   changes.
+  MISSING:   by the fast butterfly and a reordering, never a sum of `2^k` products per entry.
+  MISSING:   vector.
+card section lines in change-1.md: 16 of 21
+preamble present
+interface == B/interface.rs
+ctl/phase1 present
+slug distinct: -Users-jyh-bench-dry-wc-copydry-2026-11-15-cells-wcdry002-repo vs -Users-jyh-cells-clb-ws-wht-plain-clbiwp01-repo
+copied_from	~/cells-clb-ws-wht-plain/clbiwp01
+copied_from_id	clbiwp01
+copied_at	2026-11-15T13:35:47Z
+phase1_records	ctl/phase1/ (9 file(s); this cell did not produce them)
+cdf7c63 CUSTOMER: change request 1
+7348516 landing 1: WHT: fast-butterfly wht/iwht, 336/336 tests passing, reviewed
+ca26b36 WHT: implement wht/iwht via shared fast butterfly, tests, landing notes
+COPYDRY-END
+=== change-cmp.out
+wcdry001: EQUAL: preamble + card section (17 lines, bullets unwrapped)
+wcdry002: EQUAL: preamble + card section (19 lines, bullets unwrapped)

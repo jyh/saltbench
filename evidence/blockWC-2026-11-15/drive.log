@@ -1,0 +1,27 @@
+0916ef9a6d70c103d7a21e79881814603c41bc8e
+Opus NTT plain clbdtp01 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Opus NTT plain clbdtp02 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Opus NTT plain clbdtp03 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Opus NTT salt-diet clbdts01 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Opus NTT salt-diet clbdts02 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Opus NTT salt-diet clbdts03 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Opus WHT plain clbdwp01 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Opus WHT plain clbdwp02 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Opus WHT plain clbdwp03 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Opus WHT salt-diet clbdws01 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Opus WHT salt-diet clbdws02 landed1=no rc=- TESTS=- eligible=NO SRC-UNCHANGED
+Opus WHT salt-diet clbdws03 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Sonnet NTT plain clbitp01 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Sonnet NTT plain clbitp02 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Sonnet NTT plain clbitp03 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Sonnet NTT salt-diet clbits01 landed1=no rc=- TESTS=- eligible=NO SRC-UNCHANGED
+Sonnet NTT salt-diet clbits02 landed1=no rc=- TESTS=- eligible=NO SRC-UNCHANGED
+Sonnet NTT salt-diet clbits03 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Sonnet WHT plain clbiwp01 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Sonnet WHT plain clbiwp02 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Sonnet WHT plain clbiwp03 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Sonnet WHT salt-diet clbiws01 landed1=no rc=- TESTS=- eligible=NO SRC-UNCHANGED
+Sonnet WHT salt-diet clbiws02 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+Sonnet WHT salt-diet clbiws03 landed1=yes rc=0 TESTS=11/11 eligible=YES SRC-UNCHANGED
+CONTROL B on clbdtp01 (NTT): rc=3 REGRESSIONS-lines=0 last=TESTS 0/0
+BASELINES-END

@@ -1,0 +1,17 @@
+derived: lane-B blocks [O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX] · lane-B problems [ AES BinomialHeap Crc32 FreeList LRU LZW LinearScan Liveness Luby MaxFlow Paxos ] · block-W problems [ NTT WHT ]
+derived: WS expects claude-sonnet-5/greenfield/none (sonnet) · WO expects claude-opus-5/greenfield/none (opus)
+a1/a2: 0 first-read mismatch(es) re-driven once, both sides
+PASS a1 lane-B stage output == 6615a7f8 on all 1122 combos (298 staged ids)
+PASS a2 lane-B fire output == 6615a7f8 on all 1122 combos
+PASS a3 control: the reference reaches the STAGE line and fire finds the cell at stage's root
+PASS b1 WS/WO × [ NTT WHT ] derive model/field/extras/condition from the reference rows (24 cells)
+PASS b2 block W: 24 distinct ids, 8 distinct roots
+PASS b3 no block-W id or root collides with any older block (298+24 ids, 103+8 roots)
+PASS b4 fire derives stage's id and finds the cell at stage's root for every block-W cell
+PASS c1 112 cross combinations refuse (stage AND fire, rc 3, naming AMENDMENT-O37-wht-ntt-greenfield-claude-2026-11-11), nothing created
+PASS c2 --phase 2 on WS refuses (SC or G only)
+PASS d1 --roots (default) output and the 64 roots it creates == 6615a7f8
+PASS d2 default --roots creates no block-W root
+PASS d3 --roots --freeze W creates exactly the 8 staged block-W roots (4 opus, 4 sonnet)
+PASS d4 --roots --freeze <unknown> refuses and creates nothing
+SELFTEST clb_blockW: pass 13 · fail 0 · of 13 arms (candidate: this tree)
