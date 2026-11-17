@@ -206,3 +206,14 @@ each `$HOME` entry's birth time (`stat %B`, 1,678 entries read), names cells-ta-
 2026-11-17-argon, cells-ta-luby-flash-salt-r1, cells-ta-luby-flash-plain-r1 and cells-ta-luby-flash-plain-r2. Each one appears 0 times in
 T-T-S's five transcripts (control: its own cell id, 1,214 hits across all five). The first version of the census used
 `find -newermt @<epoch>`, which read NONE on this box, a false zero caught against the hand's own list. Nothing else moves.
+
+---
+## ⚖️ ADDENDUM 5 (2026-11-17, bench) — THE FLASH PRICE RE-CUT AFTER THE LUBY SEXTET (§TA3). APPENDED.
+The six Flash Luby cells (hand gemini, bus offset 105,422,221): 6 of 6 PASS 12/12 on the withheld G suite (referee at 397864e8), TRUNCATED 0,
+exit 71 0, a503 0, every one on client 780ee763 and served gemini-3.8-flash-high. Statement line: the three salt-diet cells carry the
+contract verbatim; two plain cells re-implement the spec fns as executable code (one as a test oracle); one plain cell has no textual
+trace of it; no cell contradicts it by text. Printed by `evidence/blockTA-2026-11-17/ta_recut_luby.py` (output `ta_recut_luby.out`) from
+`ta_price.out` and the hand's tally copied as `flash-luby-tally.tsv`: the per-arm ratio of TA's Luby median wall to NA's is plain 1.110 and
+salt-diet 0.873 (the hand computed the same two figures independently). Flash Luby spent 3,622.9 s of cell wall against its registered
+4,062 s. **Flash AES…LinearScan re-cut: 34,459 s = 9.6 h** (registered 37,377 s = 10.4 h). The ratios rest on one problem; the argon price
+is re-cut by its own Luby sextet. **Flash continues with AES** in §TA2's order under ADDENDUM 2's client guard.
