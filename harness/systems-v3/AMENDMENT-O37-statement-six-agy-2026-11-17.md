@@ -170,3 +170,12 @@ cells, with a control that fires. The statement block in REQUIREMENTS.md is sha2
    it. The hand's canary now runs its agy calls under a profile that denies writes to the client's directory (shown: the updater logs
    "skipping update", and a control write is refused). The wave driver's own /usage read is outside the hand's reach and can still update
    the client; this guard is what catches that.
+
+---
+## ⚖️ ADDENDUM 3 (2026-11-17, bench) — THE ARGON HALF IS RELEASED (ADDENDUM 2 ruling 2's one-line addendum). APPENDED.
+The extra argon battery turn r3 (hand gemini, bus offset 105,325,266; cell tala03, client agy 1.5.10/780ee763 before and after) is GREEN
+on every row: TMPDIR OK, FENCE-OK, P-DELIVERY/PERSIST/ANYWHERE/SANDBOX yes, SERVED gemini-4-argon-high OK, BATTERY.md RC-1 0 · RC-2 0 · RC-3 1
+(all written; the egress row failed in the subject's own shell). The record on this client is r2 (late delivery, RC-1 only) and r3
+(clean); the difference stays unattributed. **The argon half (12 conditions, 36 cells) is RELEASED** on the terms of ADDENDUM 2 ruling 1
+and the client guard of ruling 3; it fires after Flash in §TA2's order, and `T-TA-P` (argon · Luby · salt-diet#1) fires alone and is read
+by the lead before argon continues.
