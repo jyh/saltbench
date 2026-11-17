@@ -1,0 +1,43 @@
+export: d55062a62b55f1f0825c9544ec64bb05c333ae30
+real source clbdts01 tree before 051a2ef101cdf605
+=== bash EXPORT/harness/systems-v3/clb_stage.sh --roots --freeze WC --dry
+ROOTS: 11 cells roots present with _bin linked into export d55062a62b55, each root's model table read back by served_models check-root (5 opus, 6 sonnet — enumerated from the block table and equal to the registered 11 = 
+rc=0
+cells-clb-wco-ntt-plain cells-clb-wco-ntt-saltdiet cells-clb-wco-wht-plain cells-clb-wco-wht-saltdiet cells-clb-wcs-ntt-plain cells-clb-wcs-ntt-saltdiet cells-clb-wcs-wht-plain cells-clb-wcs-wht-saltdiet cells-clb-wfo-wht-saltdiet cells-clb-wfs-ntt-saltdiet cells-clb-wfs-wht-saltdiet 
+roots: 11
+=== bash EXPORT/harness/systems-v3/clb_stage.sh WCO NTT salt-diet 1 --dry
+cell_copy: copied ~/bench-dry/wc-stagedry-2026-11-15/p/cells-clb-wo-ntt-saltdiet/clbdts01 -> ~/bench-dry/wc-stagedry-2026-11-15/p/cells-clb-wco-ntt-saltdiet/clbfts01
+cell_copy: 9 phase-1 run record(s) moved to ctl/phase1/, 14 cell file(s) kept
+cell_copy: ⛔ STILL OWED before this cell can launch: re-render ctl/fence.json for the NEW path, and re-seed trust for it. Both REFUSE loudly if you forget; neither is done here.
+STAGED clbfts01 in cells-clb-wco-ntt-saltdiet as a COPY of cells-clb-wo-ntt-saltdiet/clbdts01 (export d55062a62b55) — fire with clb_fire.sh WCO NTT salt-diet 1 --phase 2
+rc=0
+=== bash EXPORT/harness/systems-v3/clb_fire.sh WCO NTT salt-diet 1 --dry --phase 2
+FIRE clbfts01 block=WCO problem=NTT arm=salt-diet n=1 phase=2 export=d55062a62b55 dry=1
+CLIENT PIN OK sha16=884baa38fe1a624b
+CLAUDE LANE: none live in this root or on this pool (mode ADDENDUM 5) · CONCURRENCY claude_live_at_fire=0 — REPORTED
+CONCURRENCY agy_live_at_fire=1 ( wawap301 ) — REPORTED, not a refusal (§Q3.4 item 3 (b))
+RUN-DIR READY (onboarded, refresh token present)
+DISPATCHED the change request: tag P1 on d38fc6a
+DRY STOP before the settings render — NOT DRIVEN in dry: settings, trust, fence render and convergence, --check, the probe turn, the launch
+rc=0
+d38fc6a CUSTOMER: change request 1
+61f2ff9 landing 1: NTT over p=998244353: ntt/intt/cyclic by the radix-2 butterfly, verifie
+P1
+=== bash EXPORT/harness/systems-v3/clb_stage.sh WFS NTT salt-diet 2 --dry
+cell_build: NO briefing receipt written (client=claude). The receipt is agy-only today because the claude launcher has no echo gate; a token nothing reads would change the arm's bytes and buy nothing. OWED: the gate, the
+cell_build: clbzts02 NTT salt-diet built at ~/bench-dry/wc-stagedry-2026-11-15/p/cells-clb-wfs-ntt-saltdiet/clbzts02/repo root 13af246fcf71 nonce f05b40ce0b099367d62160fe card-extras none
+STAGED clbzts02 in cells-clb-wfs-ntt-saltdiet (export d55062a62b55) — fire with clb_fire.sh WFS NTT salt-diet 2
+rc=0
+_bin CELLS.tsv clbzts02 PROVENANCE-2026-11-15.tsv 
+=== bash EXPORT/harness/systems-v3/clb_stage.sh WFS NTT salt-diet 1 --dry
+REFUSE block WFS: NTT salt-diet n=1 is filled by an ELIGIBLE source (cells-clb-ws-ntt-saltdiet/clbits03), not a fresh phase 1 (block WC §WC2 rule 4)
+rc=3
+=== bash EXPORT/harness/systems-v3/clb_stage.sh WCO NTT salt-diet 1 --dry
+REFUSE ~/bench-dry/wc-stagedry-2026-11-15/p/cells-clb-wco-ntt-saltdiet/clbfts01 already exists — a cell is evidence; this script never reuses or removes one
+rc=3
+=== bash EXPORT/harness/systems-v3/clb_fire.sh WCO NTT plain 1 --dry
+REFUSE block WCO fires PHASE 2 ONLY — its phase 1 is a registered source's landing (block WC §WC2)
+rc=3
+real source clbdts01 tree after  051a2ef101cdf605
+REAL SOURCE UNCHANGED
+STAGEDRY-END

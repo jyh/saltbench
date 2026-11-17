@@ -108,3 +108,10 @@ dir's identity matched at that fire. No cell is voided on this.
                old cost-only sort) and one PIN (Opus WHT reads CENSORED, the rule a first draft got wrong by counting capped cells instead
                of reading the median). It refuses a condition with other than 3 cells (its median is the middle of three).
 ```
+
+---
+### ERRATUM (2026-11-17, bench) — one sentence above is false for T. No figure line changes.
+The cost section says the capped cells' metered figures are "used in no median, ratio or total". That is true of COST, which enters at
+the cap, and false of T: the "total T" on each total line sums `final_T` over every cell, capped cells included (this file's verifier sums
+the final_T column over all rows of the arm). So read the total T as a metered figure over every cell. Found by kent's read of block WC's result
+(saltbench #448), which carried the same sentence; corrected there and annotated here in the same act.

@@ -1,0 +1,109 @@
+PASS T  WC_SOURCES: 24 rows, 20 block-W sources, 4 fresh in 3 conditions
+PASS WC15 WC's 28 stageable ids and NC's 84 are DISJOINT (shared block letters f l y z)
+PASS WC16 every WC id is clb[flyz][wt][ps]NN (a problem letter block N's six never use)
+== candidate
+PASS cand WC1 --roots --freeze WC creates exactly the 11 roots the table implies
+PASS cand WC2 WCO NTT plain 1 stages a COPY of its registered source clbdtp01
+PASS cand WC3 a source of the wrong arm is REFUSED
+PASS cand WC4 a source that did not land is REFUSED
+PASS cand WC5 an already-dispatched source is REFUSED
+PASS cand WC6 a dirty source is REFUSED
+PASS cand WC7 a FRESH phase-1 landing is a source like any other (WCO WHT salt-diet 3 ← clbyws03)
+PASS cand WC8 every other row refuses on its absent source BY NAME (18 rows)
+PASS cand WC9 a problem outside WHT/NTT is REFUSED by the scope rule
+PASS cand WC10 WFO for a row an ELIGIBLE source fills is REFUSED
+PASS cand WC11 WFS NTT salt-diet 2 (a registered fresh row) passes the registration gate and reaches its STAGE line
+PASS cand WC12 WCO without --phase 2 is REFUSED
+PASS cand WC13 WFO with --phase 2 is REFUSED (a fresh cell's phase 2 is a WC copy)
+PASS cand WC14 phase 2 DISPATCHES on the COPY, and the SOURCE carries no dispatch
+PASS cand WC17 WFS NTT salt-diet 1 (filled by eligible clbits03) is REFUSED
+== reference 09516b81 (every block-WC arm must go RED)
+FAIL ref WC1 --roots --freeze WC creates exactly the 11 roots the table implies — rc 3, 1 roots
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE --freeze must be B (lane B, the default), N (block N), G (step g), A (O37 Aeneas), Z (O37 LZW), OD (the effort matrix), W (block W), NC (block NC) or T (block T), got 'WC'
+       rc=3
+FAIL ref WC2 WCO NTT plain 1 stages a COPY of its registered source clbdtp01 — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'WCO' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO NCO NCS NFO NFS TO TS)
+       rc=3
+FAIL ref WC3 a source of the wrong arm is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'WCO' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO NCO NCS NFO NFS TO TS)
+       rc=3
+FAIL ref WC4 a source that did not land is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'WCS' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO NCO NCS NFO NFS TO TS)
+       rc=3
+FAIL ref WC5 an already-dispatched source is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'WCS' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO NCO NCS NFO NFS TO TS)
+       rc=3
+FAIL ref WC6 a dirty source is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'WCS' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO NCO NCS NFO NFS TO TS)
+       rc=3
+FAIL ref WC7 a FRESH phase-1 landing is a source like any other (WCO WHT salt-diet 3 ← clbyws03) — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'WCO' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO NCO NCS NFO NFS TO TS)
+       rc=3
+FAIL ref WC8 every other row refuses on its absent source BY NAME (18 rows) — WCO-NTT-plain-2 WCO-NTT-plain-3 WCO-NTT-salt-diet-1 WCO-NTT-salt-diet-2 WCO-NTT-salt-diet-3 WCO-WHT-plain-2 WCO-WHT-plain-3 WCO-WHT-salt-diet-1 WCO-WHT-salt-die
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'WCS' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO NCO NCS NFO NFS TO TS)
+       rc=3
+FAIL ref WC9 a problem outside WHT/NTT is REFUSED by the scope rule — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'WCO' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO NCO NCS NFO NFS TO TS)
+       rc=3
+FAIL ref WC10 WFO for a row an ELIGIBLE source fills is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'WFO' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO NCO NCS NFO NFS TO TS)
+       rc=3
+FAIL ref WC11 WFS NTT salt-diet 2 (a registered fresh row) passes the registration gate and reaches its STAGE line — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'WFS' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO NCO NCS NFO NFS TO TS)
+       rc=3
+FAIL ref WC12 WCO without --phase 2 is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'WCO'
+       rc=3
+FAIL ref WC13 WFO with --phase 2 is REFUSED (a fresh cell's phase 2 is a WC copy) — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE --phase 2 is block SC or G only, or NCO/NCS (the customer dispatch, claude-lane-B §Q1; step g §G0′ row 3; block NC §C2)
+       rc=3
+FAIL ref WC14 phase 2 DISPATCHES on the COPY, and the SOURCE carries no dispatch — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE --phase 2 is block SC or G only, or NCO/NCS (the customer dispatch, claude-lane-B §Q1; step g §G0′ row 3; block NC §C2)
+       rc=3
+FAIL ref WC17 WFS NTT salt-diet 1 (filled by eligible clbits03) is REFUSED — rc 3
+       [ERROR] Opam has not been initialised, please run `opam init'
+       REFUSE unknown block 'WFS' (§Q1: O OS SG SB SS SBS SC NS NO G AO AS ZO ZS FX FH OX WS WO NCO NCS NFO NFS TO TS)
+       rc=3
+PASS R  the reference fails all 15 block-WC arms
+== mutant
+PASS MA mutant (a) FRESH BUILD for WCO/WCS reddens 8 arm(s)
+== older blocks are byte-unchanged (dry)
+PASS U  stage 'SG LRU plain 1' identical
+PASS U  stage 'SC Paxos salt-diet 2' identical
+PASS U  stage 'O FreeList plain 3' identical
+PASS U  stage 'NO AES plain 1' identical
+PASS U  stage 'NS Luby salt-diet 2' identical
+PASS U  stage 'G FreeList plain 1' identical
+PASS U  stage 'WO WHT plain 1' identical
+PASS U  stage 'WS NTT salt-diet 3' identical
+PASS U  stage 'ZO LZW lean-aeneas 1' identical
+PASS U  stage 'FX Crc32 plain 4' identical
+PASS U  stage 'NCO AES plain 1' identical
+PASS U  stage 'NCS Luby salt-diet 3' identical
+PASS U  stage 'NFO LinearScan salt-diet 1' identical
+PASS U  stage 'NFS LinearScan plain 2' identical
+PASS U  stage 'NFS AES plain 1' identical
+PASS U  stage 'NCO WHT plain 1' identical
+PASS U  stage 'TO AES plain 1' identical
+PASS U  stage 'TS MaxFlow salt-diet 2' identical
+PASS U  stage '--roots' identical
+PASS U  stage '--roots --freeze N' identical
+PASS U  stage '--roots --freeze G' identical
+PASS U  stage '--roots --freeze W' identical
+PASS U  stage '--roots --freeze NC' identical
+PASS U  stage '--roots --freeze T' identical
+clb_blockWC_selftest: 44 passed, 0 failed (candidate SCRATCH/wcwt/harness/systems-v3, reference 09516b81)
