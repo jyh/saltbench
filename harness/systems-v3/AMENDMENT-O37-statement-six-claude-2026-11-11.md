@@ -148,3 +148,11 @@ plus its marker) and names 7fe4ff7f.
 **Order:** §T3 as registered: Luby first, models interleaved (block N ADDENDUM 10). `T-T-O` = Opus · Luby · salt-diet#1 fires first and
 the lead reads it before Opus continues, with block T's extra line (did the subject use, ignore or contradict the statement); `T-T-S` =
 Sonnet · Luby · salt-diet#1 likewise. The Luby cells re-cut the price before AES fires (§T4).
+
+---
+# ADDENDUM 3 (2026-11-17, bench) — A CROSS-LANE FENCE GAP, MEASURED UNUSED; THE CHECK EACH CELL'S READ NOW CARRIES. APPENDED.
+The agy sibling block TA (`AMENDMENT-O37-statement-six-agy-2026-11-17.md` ADDENDUM 4) made its wave roots in `$HOME` per condition, outside
+the fence of any block T cell already running. Tripwire T-T-S (clbrys01) was exposed to four such roots; its five transcripts carry
+`cells-ta` 0 times (control: its own cell id 957 times), so the exposure was not used and its score stands. clbvyp01's first launch was
+refused by the drift check, no spend, and re-fired after TA pre-created its 68 remaining roots. **From clbvyp01 on, each block T cell's
+read carries:** a census of `$HOME` entries born during its run, and a search of its transcripts for each one.
