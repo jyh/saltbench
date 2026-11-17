@@ -52,6 +52,13 @@ def lines(block, cells, base):
         raise SystemExit('REFUSE: %d rows for %s, 36 expected' % (len(C), block))
     PROBLEMS = sorted({r['problem'] for r in C})
     S = [r for r in C if not r['end2_kind'].startswith('REACH-LOSS')]
+    # kent's read of #450 (2026-11-17): a REACH-LOSS row has no phase-2 cell, so its phase-2 columns feed no figure line and an edit
+    # of them passed --check. They must read '-' (no cell was dispatched), and anything else REFUSES.
+    for r in C:
+        if r['end2_kind'].startswith('REACH-LOSS'):
+            bad = [k for k in ('served_verdict', 'served_head', 'export12', 'sol_sha16') if r[k] != '-']
+            if bad:
+                raise SystemExit('REFUSE: %s is %s but carries phase-2 values in %s' % (r['cell'], r['end2_kind'], ', '.join(bad)))
     L = [r for r in C if r['end2_kind'].startswith('REACH-LOSS')]
     cap = float(S[0]['cap'])
     out = []
