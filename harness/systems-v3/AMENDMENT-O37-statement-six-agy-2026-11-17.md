@@ -200,3 +200,9 @@ is its own cell id, 957 hits in the main transcripts. ⇒ open, NOT used; its sc
    transcripts for each one.
 4. The per-task `agy-widen-*.log` files in `$HOME` predate every block T render (only their mtime moves). Moving them, and the wave's
    unfenced /usage read, are harness changes for the next agy export.
+
+**CORRECTION (2026-11-17, bench), appended:** the count above is FIVE TA roots born during T-T-S's run, not four. The census, re-run on
+each `$HOME` entry's birth time (`stat %B`, 1,678 entries read), names cells-ta-battery-r3-2026-11-17-argon, cells-ta-battery-live-r3-
+2026-11-17-argon, cells-ta-luby-flash-salt-r1, cells-ta-luby-flash-plain-r1 and cells-ta-luby-flash-plain-r2. Each one appears 0 times in
+T-T-S's five transcripts (control: its own cell id, 1,214 hits across all five). The first version of the census used
+`find -newermt @<epoch>`, which read NONE on this box, a false zero caught against the hand's own list. Nothing else moves.
