@@ -9,6 +9,7 @@ Block W's figure lines, DERIVED from the two tables (never typed):
 two problems and table shape.
 Rules applied (AMENDMENT-O37-wht-ntt-greenfield-claude-2026-11-11 §W6 = block N §N6, lane B §Q6):
   - a CAP-COST cell's cost ENTERS AT THE CAP; its metered figure is printed on its own line and used in no median, ratio or total;
+    (ERRATUM 2026-11-17: true of COST only; the total T below sums every cell's metered T, capped ones included)
   - a premium is UNRESOLVED-CENSORED when either arm's median IS a capped cell's figure (it sits at the cap), else UNRESOLVED-UNDERPOWERED;
   - a ratio whose numerator median is a capped figure prints >= ; whose denominator median is capped prints <= ;
   - correctness is the withheld suite's FULL PASS; a capped cell's pass is a floor.
