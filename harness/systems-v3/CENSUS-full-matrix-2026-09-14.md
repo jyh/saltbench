@@ -1875,3 +1875,37 @@ DONE 64 · DECLARED 24 · NOT DONE 128 = 216. "Released", "firing" and "drafted"
 ## §AO3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
 Nothing about any `gemini-3.1-pro-high` model, nothing Flash-versus-argon or Claude-versus-agy, nothing about the salt method. One cell's
 end kind (`wanas301`, PERSIST-INDETERMINATE) is ruled landed by WA ADDENDUM 6 item 3; its score is the withheld suite's.
+
+---
+# ⚖️ ADDENDUM 45 — **O37: BLOCK WC IS A RESULT OF RECORD. EIGHT CONDITIONS MOVE TO DONE (NTT and WHT × {plain, salt-diet} × {Opus, Sonnet}, spec-change, Claude lane). THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-17, in the same commit as `RESULT-claude-blockWCO-2026-11-17.md` and `RESULT-claude-blockWCS-2026-11-17.md` (§WC7 = NC §C8: the census section is re-cut with the result).
+
+## §AP1 · WHAT MOVED
+The eight conditions of block WC (`AMENDMENT-O37-wht-ntt-specchange-claude-2026-11-13.md`, released by its ADDENDA 1–2, with ADDENDA 3–4
+on one source and its export record) each have their cells of record and a result file. Seven have n = 3. **Sonnet NTT salt-diet has
+n = 1**: its #2 and #3 sources were fresh phase 1s that ended CAP-COST without landing, two REACH LOSSES (the WCS result's §1), never
+re-run. Every phase-2 cell of record passes its withheld B suite in full (each result's §2). DONE here means the condition has its cells
+of record and a result file, at the n its record states; it is not a verdict on the arms.
+
+## §AP2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-17)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (ADDENDUM 44)   4
+                 block WC: NTT, WHT x spec-change x {plain, salt-diet} x {Opus, Sonnet} (this)     8
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+    NOT DONE     WHT and NTT, the other 24:
+                   x statement, both lanes; x spec-change, agy lane: in no block                     24
+                 the six block-N problems x {statement, spec-change}, 96:
+                   x spec-change, Claude lane, block NC: released 2026-11-14, cells firing           24
+                   x statement, Claude lane, block T: released to build (council 2026-11-14)        24
+                   x {statement, spec-change}, agy lane: in no block                                48
+```
+DONE 72 · DECLARED 24 · NOT DONE 120 = 216. "Released" and "firing" are states of a registration, never of a result.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AP3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing about a spec-change reached from a phase 1 that did not land (the two reach losses are counted, never scored), nothing
+Opus-versus-Sonnet, nothing about the salt method. Every premium in both results is UNRESOLVED-UNDERPOWERED as registered.
