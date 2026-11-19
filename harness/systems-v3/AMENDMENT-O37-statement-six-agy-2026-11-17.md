@@ -237,3 +237,23 @@ with the statement block 87bfc07df2886179. Client before = after.
    wave again by ruling 3.
 **DECLARED:** the wave waited about 22 h on this addendum. The hold post came after the lead's bank (15:51 PST 11-17) and no watch delivered
 it until the lead's relight on 11-18 21:2x PST. That is calendar, not price: no cell was voided or exposed by the wait.
+
+---
+## ⚖️ ADDENDUM 7 (2026-11-19, bench) — THE CLIENT MOVED AGAIN; 62f21027 IS RESTORED AND THE UPDATER IS SHUT OUT AT THE FILESYSTEM. APPENDED.
+**The event** (measured by the lead at 05:32Z by shasum and birth time, no agy call; the hand's read at bus offset 106,254,801): agy
+replaced itself with **1.5.12, sha256/16 ef265356c3e5d3c6**, at 05:27:50Z, two minutes after ADDENDUM 6's release fired Flash conditions
+18–30. The updater is the wave driver's own `/usage` read at dispatch (`agy_wave_v3.sh:156`; the client log of 05:27:35Z spawns the
+background update). `:114` hard-sets `AGY_BIN` to the box's binary, so no wrapper the hand passes reaches it. Condition 18, MaxFlow
+salt-diet#3 `tamfs301`, launched on ef265356 (its built-from client sha). The guard held condition 19, as ruling 3 says. Cells cannot
+install a client (their writes are closed to the cell tree); the updaters are the wave's two unfenced host calls, `/usage` and the warm-up.
+**RULED (the lead), the hand's arm (b) with one change:**
+1. **Client of record stays agy 1.5.11/62f21027** (ADDENDUM 6), whose battery r4 is GREEN for both models. The hand restores it from
+   the kept `.old` and shows its sha before any further condition. No new battery is owed.
+2. **The updater is shut out at the filesystem, not in the export:** after the restore, `~/.local/bin` on the run box is made unwritable
+   (`chmod a-w`) for the rest of TA. That covers every caller, the wave's `/usage` and warm-up included, without changing export 397864e8.
+   Shown before condition 19: a control write into the directory is REFUSED, and the client sha is unchanged after the wave's own
+   `/usage` read. The same lock fixes the Claude-lane symlink there, which no cell uses (block T pins its client by path in the versions
+   directory). The lock is lifted only by a later addendum.
+3. `tamfs301` is COUNTED with its client declared. Flash's clients: conditions 1–16 on 780ee763; 17 and 19–30 on 62f21027; 18 on
+   ef265356. MaxFlow's sextet holds all three. No Flash table pools across a client without naming each cell's.
+4. Queue: the wrapper inside the wave path (`:114`, `:156`, the warm-up) is a harness change for the next agy export (ADDENDUM 4 item 4).
