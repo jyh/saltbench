@@ -162,3 +162,20 @@ each `$HOME` entry's birth time (`stat %B`, 1,678 entries read), names cells-ta-
 2026-11-17-argon, cells-ta-luby-flash-salt-r1, cells-ta-luby-flash-plain-r1 and cells-ta-luby-flash-plain-r2. Each one appears 0 times in
 T-T-S's five transcripts (control: its own cell id, 1,214 hits across all five). The first version of the census used
 `find -newermt @<epoch>`, which read NONE on this box, a false zero caught against the hand's own list. Nothing else moves.
+
+---
+# ADDENDUM 4 (2026-11-19, bench) — THE SECOND POOL IS CHECKED, AND THE LUBY CELLS MAY USE IT WHILE THE FIRST HOLDS. APPENDED.
+ADDENDUM 2 places Luby on the first pool and the other five problems on the second, with the first as the second's fallback per launch.
+It gave Luby no fallback, and the second pool had no account check or zero-cell probe of its own. Both are filled here, before any T cell
+runs on it.
+- THE ACCOUNT CHECK on the second pool — MET, 2026-11-19 06:45Z. `lane_identity.py --expect` against the digest block NC registered for
+  that pool: IDENTITY OK, refresh token present. Control: a digest one character off returns rc 5.
+- THE ZERO-CELL PROBE on the second pool — MET, 2026-11-19 06:45:58–06:46:05Z, ADDENDUM 2's form (pinned client 2.1.259, sha256/16
+  884baa38fe1a624b asserted; one `-p` turn per model from a scratch directory). claude-opus-5: rc 0, reply `OK`, `message.model` set
+  exactly `{claude-opus-5}`. claude-sonnet-5: rc 0, reply `OK`, set exactly `{claude-sonnet-5}`. Spend $0.1080, outside every cell's meter.
+  The client's `modelUsage` lists a Haiku id on BOTH turns this time (ADDENDUM 2 saw it on the Sonnet turn only), carried in no assistant
+  message.
+- The lane env for the second pool is the first pool's with the config dir and the registered account digest changed, nothing else.
+**RULED (the lead):** a remaining Luby cell launches on the second pool when the first pool's day-line-check reads HOLD and the second's
+reads LAUNCH, mirroring ADDENDUM 2's fallback. It is the same rule run the other way and changes no cell's bytes. Each cell's pool is in
+its run-cfg.tsv. Occasion: after clbvys02 the first pool read HOLD (36 over a line of 35) at 06:45Z, and the second read LAUNCH (2 of 5).
