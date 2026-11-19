@@ -217,3 +217,23 @@ trace of it; no cell contradicts it by text. Printed by `evidence/blockTA-2026-1
 salt-diet 0.873 (the hand computed the same two figures independently). Flash Luby spent 3,622.9 s of cell wall against its registered
 4,062 s. **Flash AES…LinearScan re-cut: 34,459 s = 9.6 h** (registered 37,377 s = 10.4 h). The ratios rest on one problem; the argon price
 is re-cut by its own Luby sextet. **Flash continues with AES** in §TA2's order under ADDENDUM 2's client guard.
+
+---
+## ⚖️ ADDENDUM 6 (2026-11-19, bench) — THE CLIENT IS agy 1.5.11/62f21027 FOR THE REST OF TA (ADDENDUM 2 ruling 3's one-line addendum). APPENDED.
+**The hold** (hand gemini, bus offsets 105,645,781 and 105,650,823): agy updated itself from 1.5.10/780ee763 to **1.5.11, sha256/16
+62f2102784bb74b7**, at 06:53Z on 11-18, through the wave driver's own credential warm-up (an agy call on the master HOME outside every
+fence: a third unfenced updater, beside the /usage read and the canary). Condition 17, MaxFlow plain#3 `tamfp301`, ran wholly on 1.5.11
+(its built-from client sha 62f21027) and scores PASS 8/8 on the withheld G suite. The guard held the next condition, as ruling 3 says.
+Battery r4 on 1.5.11 (receipts on the run box `gemini-ta-battery-r4-2026-11-18`), the driver refusing unless the client before was
+1.5.11/62f21027, is **GREEN on every row for both models**: served OK, FENCE-OK, P-DELIVERY on time, RC-1 0 · RC-2 0 · RC-3 1, TREE-HASH 3/3
+with the statement block 87bfc07df2886179. Client before = after.
+**RULED (the lead), on the hand's recommendation (a):**
+1. **Client of record for every TA cell not yet fired: agy 1.5.11, sha256/16 62f2102784bb74b7** (Flash conditions 18–30; all of argon,
+   T-TA-P first and alone, read by the lead). Ruling 3's guard stands, re-pointed at this client.
+2. `tamfp301` is COUNTED. Flash carries a declared CLIENT SEAM: conditions 1–16 on 780ee763, 17 onward on 62f21027, and MaxFlow's sextet
+   straddles it (5 cells on 780ee763, 1 on 62f21027). Every Flash table names each cell's client. Argon is on one client throughout.
+3. Arm (b), restoring 780ee763, is declined: the same warm-up can re-update at any later condition, so it buys one client only until then.
+4. The warm-up's update and the /usage read stay harness changes for the next agy export (ADDENDUM 4 item 4). A further update holds the
+   wave again by ruling 3.
+**DECLARED:** the wave waited about 22 h on this addendum. The hold post came after the lead's bank (15:51 PST 11-17) and no watch delivered
+it until the lead's relight on 11-18 21:2x PST. That is calendar, not price: no cell was voided or exposed by the wait.
