@@ -257,3 +257,20 @@ install a client (their writes are closed to the cell tree); the updaters are th
 3. `tamfs301` is COUNTED with its client declared. Flash's clients: conditions 1–16 on 780ee763; 17 and 19–30 on 62f21027; 18 on
    ef265356. MaxFlow's sextet holds all three. No Flash table pools across a client without naming each cell's.
 4. Queue: the wrapper inside the wave path (`:114`, `:156`, the warm-up) is a harness change for the next agy export (ADDENDUM 4 item 4).
+
+---
+## ⚖️ ADDENDUM 8 (2026-11-19, bench) — THE ARGON PRICE RE-CUT AFTER ARGON'S OWN LUBY SEXTET (§TA3, ADDENDUM 5's form). APPENDED.
+The six argon Luby cells (hand gemini, bus offset 106,670,684): 6 of 6 PASS 12/12 on the withheld G suite (referee at 397864e8, an argon
+score dir apart from Flash's), TRUNCATED 0, exit 71 0, a503 0, every one on client 62f21027 and served gemini-4-argon-high. Statement:
+salt-diet 3 of 3 USED, all contracts bound and VERIFIED (each cell's own run "N verified, 0 errors"); plain talap101 and talap301 TEST
+ORACLE, talap201 USED (unverified) (the statement whole in `verus!`, never run). Printed by `evidence/blockTA-2026-11-17/ta_recut_argon.py`
+(output `ta_recut_argon.out`) from `ta_price.out` (byte-equal to the hand's copy) and the hand's argon tally copied as
+`argon-luby-tally.tsv`: the ratio of TA's argon Luby median wall to the registered argon per-cell Luby price is **plain 1.781, salt-diet
+0.832** (the hand computed 1.782 against 458.5 s; the registered line rounds the plain price to 1,376 s, so 458.7 s per cell). Argon Luby
+spent 5,636.6 s against 5,492 s registered. **Argon AES…LinearScan re-cut: 51,512 s = 14.3 h** (registered 50,784 s = 14.1 h).
+The WA factor under-priced argon plain on this problem and over-priced salt-diet, on n 3 each. Flash's re-cut (ADDENDUM 5) went the same
+way in both arms (plain 1.110, salt-diet 0.873), less steeply.
+**RISK, declared before AES:** Flash's salt-diet hit the registered 1800 s print deadline in 5 of 15 non-Luby cells (BinomialHeap 3,
+LinearScan 2). Argon runs slower per turn, so its BinomialHeap and LinearScan salt-diet cells are likelier to truncate. A truncated cell
+keeps its PASS/FAIL and leaves every comparison, as ruled for Flash. The cap is registered and does not move.
+**Argon continues with AES** in §TA2's order, through the hand's chain under ADDENDUM 2's guard and ADDENDUM 7's lock.
