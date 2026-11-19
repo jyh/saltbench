@@ -179,3 +179,29 @@ runs on it.
 **RULED (the lead):** a remaining Luby cell launches on the second pool when the first pool's day-line-check reads HOLD and the second's
 reads LAUNCH, mirroring ADDENDUM 2's fallback. It is the same rule run the other way and changes no cell's bytes. Each cell's pool is in
 its run-cfg.tsv. Occasion: after clbvys02 the first pool read HOLD (36 over a line of 35) at 06:45Z, and the second read LAUNCH (2 of 5).
+
+---
+# ADDENDUM 5 (2026-11-19, bench) — THE PRICE RE-CUT FROM THE LUBY CELLS (§T4), BEFORE AES. APPENDED.
+**The Luby cells, all 12 read** (each posted on the bus with its score, meter, born-during census and statement line): 12 of 12 PASS 12/12
+on the withheld G suite of 7fe4ff7f, scored by copy; 0 capped. Their meters are gathered from each cell's own `ctl/post-end-1.tsv` on the run
+box by `evidence/blockT-2026-11-11/t_luby_tally.sh` (output `luby-tally.tsv`, which also names each cell's pool). The re-cut is printed by
+`t_recut_luby.py` (output `t_recut_luby.out`) from that table and block N's two tracked cell tables, nothing typed. Per model × arm, the ratio
+is T's mean Luby `final_COST` per cell over block N's (extras none), and it scales block N's spend on the other five problems:
+```
+  opus    plain      ratio 1.561   N rest $228.32  ->  $356.41
+  opus    salt-diet  ratio 1.242   N rest $358.82  ->  $445.71
+  sonnet  plain      ratio 1.289   N rest  $62.97  ->   $81.17
+  sonnet  salt-diet  ratio 0.696   N rest $423.70  ->  $294.99
+```
+**Luby spent $182.71. AES…LinearScan (60 cells) re-cut $1,178.27** (block N spent $1,073.81 there). **Block T re-cut $1,360.98**, against the
+registered $1,253.64 and the unchanged ceiling $2,679.12. Control on the inputs: block N's four sums per model reproduce §T4's registered
+totals (Opus $671.01 against $671.00, the cent being rounding in the registration; Sonnet $582.64 exact). The ratios rest on one problem, and
+two cells ran on the second pool (ADDENDUM 4), which the meter does not distinguish. Both meters count the cell's own sandbox probe, so like is
+compared with like.
+**§T4's predictions on Luby:** (i) CAP-COST incidence, salt-diet ≥ plain within each model: 0 ≥ 0, met trivially; (ii) CAP-WALL binds no cell: met.
+**The statement line on Luby**, in the categories the agy sibling's lead ruled (TA, bus offset 106,504,279), with USED checked by position:
+salt-diet 6 of 6 USED (`maximal_independent_set` carries the statement's ensures inside `verus!`); three of them (Opus #2, Sonnet #2,
+Sonnet #3) REDEFINE provided spec fns, each strictly STRONGER, at the same point: the statement's exec contract ensures `res.rounds <= g.n`
+unguarded, while the provided `s_op_ok` asks nothing of malformed input. Plain: Opus 3 of 3 cite the statement in test comments (WEAK
+TRACE); Sonnet #1 and #2 NO TRACE, #3 WEAK TRACE (LANDING only).
+**AES fires next**, in §T3's order, on the second pool from its reset as ADDENDUM 2 says, each launch under day-line-check.
