@@ -205,3 +205,16 @@ Sonnet #3) REDEFINE provided spec fns, each strictly STRONGER, at the same point
 unguarded, while the provided `s_op_ok` asks nothing of malformed input. Plain: Opus 3 of 3 cite the statement in test comments (WEAK
 TRACE); Sonnet #1 and #2 NO TRACE, #3 WEAK TRACE (LANDING only).
 **AES fires next**, in §T3's order, on the second pool from its reset as ADDENDUM 2 says, each launch under day-line-check.
+
+**CORRECTION to ADDENDUM 5's statement line, plain arm (2026-11-19, bench), appended:** the Luby plain labels there were read with a
+needle that matched the statement's names only as written or with a prefix added. A name whose `s_` is REPLACED (`ref_op_ok`, `r_chosen`,
+`sim_remaining`, bare `covered`) was invisible to it, and two cells' extra test files were not opened. Re-read 11-19 with the replaced form
+(drivers `tnames.sh` v2, the agy sibling's needle v2) and every test file's header read by hand:
+- clbvyp01 (Opus p#1): EXEC USE. Its solution transcribes `s_op_ok`, `s_input_wf` and siblings as exec fns (doc-cited by the statement's
+  names), and its `check_trace` uses them; `tests/indep.rs` also mirrors the statement's spec fns as `r_*` references.
+- clbvyp02 (Opus p#2): EXEC USE. `ref_*` transcriptions in the solution, doc-cited, called by its `check_trace` (:432).
+- clbvyp03 (Opus p#3): TEST ORACLE (partial). Test re-derivations of the round rule, with the statement's names in comments.
+- clbryp01, clbryp02 (Sonnet p#1, p#2): TEST ORACLE (partial). Test helpers that mirror `s_bit`/`s_vset`/`s_remaining` (`sim_chosen`,
+  `sim_remaining`). They were not NO TRACE.
+- clbryp03 (Sonnet p#3): WEAK TRACE stands.
+No score, figure or salt-diet label moves. The categories describe what a subject did with the statement and are not a score.
