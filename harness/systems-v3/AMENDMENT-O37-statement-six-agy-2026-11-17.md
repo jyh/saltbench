@@ -274,3 +274,9 @@ way in both arms (plain 1.110, salt-diet 0.873), less steeply.
 LinearScan 2). Argon runs slower per turn, so its BinomialHeap and LinearScan salt-diet cells are likelier to truncate. A truncated cell
 keeps its PASS/FAIL and leaves every comparison, as ruled for Flash. The cap is registered and does not move.
 **Argon continues with AES** in §TA2's order, through the hand's chain under ADDENDUM 2's guard and ADDENDUM 7's lock.
+
+## ⚖️ ADDENDUM 9 (2026-11-20, gemini; bench row 11) — PREDICTION (i)'s TURNS-CUT INCIDENCE: THE UNIT THE RESULT READ. APPENDED.
+§TA3 (i) carries WA's TURNS-CUT incidence without a unit. `RESULT-gemini-blockTA-2026-11-20.md` reads it in truncated CELLS and prints EVENTS
+and print-timeout LINES beside them (its §TRUNCATION lines: Flash 5 cells, 6 events, 18 lines; argon 1 cell, 1 event, 3 lines; every plain
+condition 0). The sign of (i) is the same in cells and in events for both models, so no verdict turns on the unit. Which unit binds
+a future reading is the lead's; a figure in LINES is never quoted as turns (see `AMENDMENT-O37-wht-ntt-greenfield-agy-2026-11-13.md` ADDENDUM 7).

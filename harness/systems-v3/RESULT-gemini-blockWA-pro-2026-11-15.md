@@ -96,3 +96,25 @@ selection (the two of three judged feasible, and both new). Nothing Claude-versu
 block NA's six problems. §WA4 item 1 is carried: one author built both tasks and leads this block, and NTT's reference proves less than
 WHT's. With every cell at ceiling, nothing here says whether the salt method helps or hurts on these problems. The truncation pattern
 (salt-diet 4 of 6, plain 0 of 6) is the registered prediction holding; it is not a measure of the method's cost.
+
+---
+## ⚖️ ADDENDUM — 2026-11-20 (gemini; bench row 11): CORRECTION, THE "CUT TURNS" FIGURES IN §2 ARE PRINT-TIMEOUT LINES, THREE PER CUT TURN. APPENDED; the text above is unchanged.
+**What was printed.** §2's "cut turns N of M sent" sums `cut_turns_all` from `evidence/blockWA-pro-2026-11-15/cell_facts.json`. By its own code
+(`evidence/blockWA-2026-11-14/wa_facts.py`, line 37) that field counts the stderr LINES that contain `print timeout`. This client (agy 1.5.x) writes
+three such lines for one timeout: `[agy] print timeout …`, `error: print timeout …` and `AGY_ERROR {… "reason":"print_timeout"}`. So the numerator
+was in lines and the denominator (`turns_sent`) in turns.
+**The corrected figures, in EVENTS** (one `[agy] print timeout` line per event, equal to the `AGY_ERROR … print_timeout` count in every
+three-line file; printed by `evidence/cut-turns-unit-2026-11-20/cut_unit_gen.py --summary`):
+```
+WA argon WHT salt-diet: cut turns 2 of 11 sent (EVENTS); the RESULT printed 6 (print-timeout LINES)
+WA argon WHT plain: cut turns 0 of 9 sent (EVENTS); the RESULT printed 0 (print-timeout LINES)
+WA argon NTT plain: cut turns 0 of 9 sent (EVENTS); the RESULT printed 0 (print-timeout LINES)
+WA argon NTT salt-diet: cut turns 2 of 10 sent (EVENTS); the RESULT printed 6 (print-timeout LINES)
+WA argon cells cut (events/lines): wawas1r201=1/3 wawas201=1/3 wanas101=1/3 wanas301=1/3
+```
+**What does not change.** `truncated 2` in both salt-diet lines counts CELLS and stands. Prediction (i) stands as written ("turns were cut in 2
+of 3 salt-diet cells against 0 of 3 plain"), a count of cells, and its sign is the same in events (2 and 2 against 0 and 0). No pass, floor or
+poolability ruling turns on the unit: a cell is TRUNCATED when it has any cut, and every count above is 0 or at least 1 in both units.
+**What was left alone, and why.** `wa_pro_cells_gen.py --check` compares §2's frozen lines and stays green on them, so the generator and the
+cell facts are not edited; the corrected lines are checked by `cut_unit_gen.py --check` against this file. The score receipts' per-cell
+"3 turn(s) cut" text (`score_wave_v3.sh:281`, in the private harness tree) counts the same lines and is the lead's tool.
