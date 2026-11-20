@@ -1958,18 +1958,22 @@ it as their ADDENDUM 1; the card is amended before any later Liveness run.
 
 ---
 
-## ⚖️ ADDENDUM — O37, 2026-11-20: A LIMIT ON THREE agy CELLS OF RECORD: THE CLIENT SERVED THEM A WEB SEARCH (WEB-SERVED). NO COUNT MOVES. APPENDED; everything above is unchanged.
+# ⚖️ ADDENDUM 47 — **O37: A LIMIT ON THREE agy CELLS OF RECORD: THE CLIENT SERVED THEM A WEB SEARCH (WEB-SERVED). NO COUNT MOVES; NOTHING IS VOIDED; THE THREE LEAVE EVERY COMPARISON.**
+## gemini (the hand), 2026-11-20, on the lead's ruling on the bus (2026-11-20 00:29:42, helm-reversible). Appended; everything above is unchanged.
 
-*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+## §AR1 · WHAT WAS FOUND
+The client's main stream records `search_web` as a step that goes ACTIVE then DONE with no result body, so a stream cannot tell a served call from a denied one; the client's own conversation record (the brain transcript under the cell's `.agyhome`) carries the result. Read there, every `search_web` call on the run box was served (96 of 96), and the canonical PreToolUse hook, registered in each of these cells, denied none. Level 6 AMENDMENT A5.2's "0 of the 48 served" and A6.4's "0 network-tool results were served" were stream censuses; both carry a correction addendum of this date.
 
-The client's main stream records `search_web` as a step that goes ACTIVE then DONE with no result body, so a stream cannot tell a served call from a denied one; the client's own conversation record (the brain transcript under the cell's `.agyhome`) carries the result. Read there, every `search_web` call on the run box was served (96 of 96), and the canonical PreToolUse hook, registered in each of these cells, denied none.
-
-**Declared WEB-SERVED, cells of record of this matrix** (of 272 agy cells of record, every one with a brain transcript; 269 were served nothing):
+## §AR2 · THE CELLS OF RECORD OF THIS MATRIX DECLARED WEB-SERVED
+Of 272 agy cells of record, every one with a brain transcript, 269 were served nothing and three were served a search:
 
 - `l5psra202` (gemini-3.8-flash-high, salt-diet): 1 search result(s) served; first query *"verus" "failed this postcondition" forall exists*
 - `l6vbpp02` (gemini-3.8-flash-high, plain): 1 search result(s) served; first query *"ARMRECV" receipt*
 - `l7npfs01` (gemini-3.1-pro-high, salt-diet): 1 search result(s) served; first query *docs/STATEMENTS.md*
 
-**No count in this census moves:** a DONE reports its condition's outcome, and nothing is voided. The three cells leave every comparison; the re-cut is a separate change. Blocks NA (5 cells) and ZF (2) carry the same declaration in their RESULTs; blocks WA and TA were served nothing.
+Blocks NA (5 cells) and ZF (2) carry the same declaration in their RESULTs; blocks WA and TA were served nothing.
 
-Source: `evidence/o37-agy-web-served-2026-11-20/`.
+## §AR3 · WHAT THIS ADDENDUM DOES NOT DO
+**No count in this census moves:** a DONE reports its condition's outcome, and nothing is voided (A5.2 voids only FENCE-TAMPER). The three cells leave every comparison; the re-cut of the tables is a separate change. Nothing here is about the salt method.
+
+Source: `evidence/o37-agy-web-served-2026-11-20/` (README: method, controls, limits).
