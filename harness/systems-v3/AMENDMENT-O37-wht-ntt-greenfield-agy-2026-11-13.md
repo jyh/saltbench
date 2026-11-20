@@ -326,3 +326,11 @@ Written with Pro's result of record (`RESULT-gemini-blockWA-pro-2026-11-15.md`).
 3. **`wanas301`'s end kind is PERSIST-INDETERMINATE** (the subject did not answer the post-landing persistence probe). It tagged
    `landed-1`, and the landed gate and the cell facts both read LANDED. Ruled: a landed, scored cell of record, its end kind printed
    beside it in the result.
+
+## ⚖️ ADDENDUM 7 (2026-11-20, gemini; bench row 11) — "CUT TURNS" ARE COUNTED IN EVENTS; ADDENDUM 4's "6 TURNS" WAS 2. APPENDED.
+1. **The outcome registered at §WA (cut turns ÷ turns) is counted in EVENTS**, one per `[agy] print timeout` line. Under this block's client a
+   timeout writes three lines containing `print timeout`, so a count of those lines (`wa_facts.py`'s `cut_turns_all`, the scorer's TRUNCATED
+   figure at `score_wave_v3.sh:281`) is three times the turns cut. The corrected WA figures are in each WA RESULT's addendum of 2026-11-20.
+2. **ADDENDUM 4's `wawas1r01` "6 turns were cut" was 2 turns:** `evidence/cut-turns-unit-2026-11-20/pt_shapes.tsv` reads its
+   `agy-stderr-1.txt` at 6 lines, 2 `[agy] print timeout`, 2 `AGY_ERROR … print_timeout`. The cell is not a Pro cell of record (ADDENDUM 5);
+   its TRUNCATED reading and its FLOOR are unchanged.
