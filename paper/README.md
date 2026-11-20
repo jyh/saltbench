@@ -37,3 +37,11 @@ sub-agent conversations. `descriptive_tables.py` now copies from
 `--add-T`; `harness/systems-v3/DIFF-O57-remeter-2026-10-13.md` lists every changed row against version 3's file, which
 stays as printed. No Claude row changes and no fixed sign flips. The dollar and wall tables are not re-computed; the
 Gemini dollars carry the declared O57 limit.
+
+Version 5 adds three dated sections (Sections 6 to 8: a second model run on the matrix, and two reads of the explanation
+arms' Lean) and corrects one sentence. The abstract's isolation clause is narrowed to the Claude lane: on the Gemini lane
+the client served web search results to 3 matrix cells of record and 2 of Section 6's
+(`evidence/o37-agy-web-served-2026-11-20/`, census ADDENDUM 47). Those cells keep their verdicts and leave every
+comparison. The tables stay the tables of record, still copied by the three scripts above. The re-cut without the five
+cells (`evidence/o37-agy-web-served-2026-11-20/recut/`) is stated in prose beside them in Section 5.1, entry by entry.
+Version 5 also carries the two temp-directory limits of census ADDENDA 41 and 42, which move no count.
