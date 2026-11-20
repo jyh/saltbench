@@ -1016,3 +1016,70 @@ The Claude lane is not measured by it.
 **salt-diet 7 of 126 condition-rows (6 distinct cells), plain 0 of 133** (the plain arm has no gate). Whether a subject then ran its gate
 another way, and whether any outcome or cost above moved, is NOT read; its sign on either is not measured here. Source:
 `evidence/o37-claude-gate-mkdtemp-2026-11-15/` (README: method, controls, the two needles not used, limits).
+
+## ⚖️ ADDENDUM — O37, 2026-11-20 (re-cut): THE THREE WEB-SERVED MATRIX CELLS OUT OF THESE TABLES: WHAT MOVES. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+Printed by `recut.py` in `evidence/o37-agy-web-served-2026-11-20/recut/`: the instrument that printed this file, run on its input of record (OLD, which reproduces this file's tables exactly: the control) and with the WEB-SERVED cells taken out (NEW, by the route the instrument already has). No instrument was changed. **Nothing above is replaced:** the tables of record stand as printed, and this is the comparison without the WEB-SERVED cells, beside them. It says nothing about the salt method.
+
+`recut/cost-v3-moved.txt`, verbatim (OLD = the record, NEW = without the WEB-SERVED cells; GONE/ADDED = a row on one side only):
+
+```
+## $1 · greenfield — median modelled list-price dollars per condition
+  GONE | gemini-3.8-flash-high | Paxos | $1.29 | $4.57 | — | — |
+
+## $2 · brownfield — median modelled list-price dollars per condition
+  GONE | gemini-3.8-flash-high | Paxos | $1.32 | $3.33 | — | — |
+
+## $4 · salt-diet ÷ plain, greenfield, modelled list-price dollars (v2 §D4's rule)
+  OLD  | gemini-3.8-flash-high | Paxos | 3.53 | — | 7.07 |
+  NEW  | gemini-3.8-flash-high | Paxos | 3.02 | — | 7.07 |
+
+### $ brownfield ratios (in the file, not in $4)
+  OLD  | gemini-3.1-pro-high | FreeList | 6.61 | 6.58 |
+  NEW  | gemini-3.1-pro-high | FreeList | 6.62 | 6.58 |
+  OLD  | gemini-3.8-flash-high | Paxos | 2.53 | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 2.61 | — |
+
+## W1 · greenfield — median wall seconds per condition
+  GONE | gemini-3.8-flash-high | Paxos | 385 s | 1,207 s | — | — |
+
+## W2 · brownfield — median wall seconds per condition
+  GONE | gemini-3.1-pro-high | FreeList | 313 s | 4,382 s | 268 s | ≥ 2,458 s |
+  GONE | gemini-3.8-flash-high | Paxos | 413 s | 662 s | — | — |
+
+## W4 · salt-diet ÷ plain, greenfield, wall seconds (v2 §D4's rule)
+  OLD  | gemini-3.8-flash-high | Paxos | 3.14 | — | 7.97 |
+  NEW  | gemini-3.8-flash-high | Paxos | 2.50 | — | 7.97 |
+
+### W4 sign counts, per model per treatment (no p-value)
+  OLD  | gemini-3.8-flash-high | bare | 5 of 5 | none | 2.63 | 0 |
+  NEW  | gemini-3.8-flash-high | bare | 5 of 5 | none | 2.50 | 0 |
+
+### W brownfield ratios (in the file, not in W4)
+  OLD  | gemini-3.1-pro-high | FreeList | 13.99 | ≥ 9.17 |
+  NEW  | gemini-3.1-pro-high | FreeList | 15.30 | ≥ 9.17 |
+  OLD  | gemini-3.8-flash-high | Paxos | 1.60 | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 1.65 | — |
+
+## Per-cell figures and their sources (every table number derives from these rows)
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra202 | ≥ 11.2678 | ≥ 2863.0 | DEADLINE | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | plain | none | l6vbpp02 | 1.3184 | 461.5 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | l7npfs01 | 6.8265 | 4381.8 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+
+## $1 · greenfield — median modelled list-price dollars per condition
+  ADDED | gemini-3.8-flash-high | Paxos | $1.29 | $3.91 | — | — |
+
+## $2 · brownfield — median modelled list-price dollars per condition
+  ADDED | gemini-3.8-flash-high | Paxos | $1.28 | $3.33 | — | — |
+
+## W1 · greenfield — median wall seconds per condition
+  ADDED | gemini-3.8-flash-high | Paxos | 385 s | 960 s | — | — |
+
+## W2 · brownfield — median wall seconds per condition
+  ADDED | gemini-3.1-pro-high | FreeList | 313 s | 4,793 s | 268 s | ≥ 2,458 s |
+  ADDED | gemini-3.8-flash-high | Paxos | 402 s | 662 s | — | — |
+
+#RECUT cost-v3: key width 0; old 905 rows, new 902; moved 7, gone 8, added 5
+```

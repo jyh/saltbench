@@ -844,3 +844,53 @@ The Claude lane is not measured by it.
 **salt-diet 7 of 126 condition-rows (6 distinct cells), plain 0 of 133** (the plain arm has no gate). Whether a subject then ran its gate
 another way, and whether any outcome or cost above moved, is NOT read; its sign on either is not measured here. Source:
 `evidence/o37-claude-gate-mkdtemp-2026-11-15/` (README: method, controls, the two needles not used, limits).
+
+## ⚖️ ADDENDUM — O37, 2026-11-20 (re-cut): THE THREE WEB-SERVED MATRIX CELLS OUT OF THESE TABLES: WHAT MOVES. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+Printed by `recut.py` in `evidence/o37-agy-web-served-2026-11-20/recut/`: the instrument that printed this file, run on its input of record (OLD, which reproduces this file's tables exactly: the control) and with the WEB-SERVED cells taken out (NEW, by the route the instrument already has). No instrument was changed. **Nothing above is replaced:** the tables of record stand as printed, and this is the comparison without the WEB-SERVED cells, beside them. It says nothing about the salt method.
+
+⚠️ **The instrument's own guard fires on one condition, and is right to:** Flash × Paxos × greenfield × salt-diet × none was recorded by condition (level 5 ADDENDUM 3d, 2 of 3), not per cell. Without `l5psra202` its pass count cannot be known, so the NEW run prints it `unmeasured` and the tool's arithmetic check reads *"conditions with a k/n 180 + — 16 + declared 3 + unmeasured 1 = 200"*. The lines below carry that as printed.
+
+`recut/correctness-v3-moved.txt`, verbatim (OLD = the record, NEW = without the WEB-SERVED cells; GONE/ADDED = a row on one side only):
+
+```
+## P1 · greenfield — full passes k / n per condition (n = PASS + FAIL; censored and unscorable beside)
+  OLD  | gemini-3.8-flash-high | Paxos | 2 / 3 † | 2 / 3 † | — | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 2 / 3 † | unmeasured | — | — |
+
+## P2 · brownfield — full passes k / n per condition
+  OLD  | gemini-3.1-pro-high | FreeList | 3 / 3 | 1 / 3 | 2 / 3 | 1 / 3 |
+  NEW  | gemini-3.1-pro-high | FreeList | 3 / 3 | 0 / 2 | 2 / 3 | 1 / 3 |
+  OLD  | gemini-3.8-flash-high | Paxos | 3 / 3 | 3 / 3 | — | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 2 / 2 | 3 / 3 | — | — |
+
+## P4 · signs, greenfield: salt-diet's pass-rate interval against plain's (ADDENDUM 1: STRICT)
+  OLD  | gemini-3.8-flash-high | Paxos | = | — | + |
+  NEW  | gemini-3.8-flash-high | Paxos | — | — | + |
+
+### P4 counts, per model per treatment (no test, no p-value)
+  OLD  | gemini-3.8-flash-high | bare | 0 | 3 | 1 | 1 | 0 |
+  NEW  | gemini-3.8-flash-high | bare | 0 | 2 | 1 | 1 | 1 |
+
+## Unmeasured cells
+  GONE | none | | | | | | |
+
+## Per-cell verdicts and their sources (every table entry derives from these rows)
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra201 | by condition | - | - | - | landed by harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:213 |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra202 | by condition | - | - | - | landed by harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:213 |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra203 | by condition | - | - | - | landed by harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:213 |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | plain | none | l6vbpp02 | PASS | PASS | 17/17 | LANDED | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:114 |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | l7npfs01 | PASS | PASS | 7/7 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:280 |
+
+## Unmeasured cells
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra201 | ADDENDUM 3d: printed n 3 against 2 cells of record |
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra203 | ADDENDUM 3d: printed n 3 against 2 cells of record |
+
+## Per-cell verdicts and their sources (every table entry derives from these rows)
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra201 | unmeasured | - | - | - | ADDENDUM 3d: printed n 3 against 2 cells of record |
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra203 | unmeasured | - | - | - | ADDENDUM 3d: printed n 3 against 2 cells of record |
+
+#RECUT correctness-v3: key width 0; old 770 rows, new 768; moved 5, gone 6, added 4
+```

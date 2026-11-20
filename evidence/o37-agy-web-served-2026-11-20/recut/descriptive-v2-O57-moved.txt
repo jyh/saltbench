@@ -1,0 +1,41 @@
+
+## The 10 unmeasured conditions and the cells with no tracked figure
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra201, l5psra202, l5psra203 |
+
+## Cells in the map but OUTSIDE a condition's population (the result of record's scored cells govern, ADDENDUM 1 A1.4)
+  GONE | none | - | every cell of record is in its condition |
+
+## T2 · brownfield — median total tokens per condition (n per condition in the output-token table below)
+  OLD  | gemini-3.1-pro-high | FreeList | 1,949,814 | 17,298,225 | 1,822,259 | 34,282,120 |
+  NEW  | gemini-3.1-pro-high | FreeList | 1,949,814 | 15,550,480 | 1,822,259 | 34,282,120 |
+  OLD  | gemini-3.8-flash-high | Paxos | 7,992,405 | 18,713,325 | — | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 7,084,768 | 18,713,325 | — | — |
+
+### brownfield ratios (in the file, not in T4)
+  OLD  | gemini-3.1-pro-high | FreeList | 8.87 | 18.81 |
+  NEW  | gemini-3.1-pro-high | FreeList | 7.98 | 18.81 |
+  OLD  | gemini-3.8-flash-high | Paxos | 2.34 | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 2.64 | — |
+
+## Per-condition medians of OUTPUT tokens (same rule; not in the tables)
+  OLD  | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | 3 | 107,906 |  |
+  NEW  | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | 2 | 105,158 |  |
+  OLD  | gemini-3.8-flash-high | Paxos | brownfield | plain | none | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | Paxos | brownfield | plain | none | 2 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | 2 | unmeasured | - |
+
+## Per-cell figures and their sources (every table number derives from these rows)
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra202 | unmeasured | - | DEADLINE | no tracked source |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | plain | none | l6vbpp02 | 8,133,242 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:114 field 5 + O57 sub-agent T 0 |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | l7npfs01 | 44,663,204 | 107,906 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7npfs01].T + O57 sub-agent T 29512739 |
+
+## The 10 unmeasured conditions and the cells with no tracked figure
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra201, l5psra203 |
+
+## Cells in the map but OUTSIDE a condition's population (the result of record's scored cells govern, ADDENDUM 1 A1.4)
+  ADDED | gemini-3.8-flash-high / Paxos / greenfield / salt-diet / none | l5psra202 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); DEADLINE: harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:242 truncated; cond: ADDENDUM 3 re-fire attempt 2; l5psra202 TRUNCATED (unpoolable); l5psr01 recorded set-aside; cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / Paxos / brownfield / plain / none | l6vbpp02 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:118 fields T=4 output=6 |
+  ADDED | gemini-3.1-pro-high / FreeList / brownfield / salt-diet / none | l7npfs01 |  |
+
+#RECUT descriptive-v2-O57: key width 0; old 854 rows, new 853; moved 7, gone 5, added 4
