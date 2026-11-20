@@ -16,7 +16,8 @@ AGY_ERROR count must equal it, or the file is reported MIXED and this tool exits
   python3 cut_unit_gen.py --eras       the shape census by month (1-line / 3-line / MIXED)
   python3 cut_unit_gen.py --control    LINES in pt_shapes.tsv per cell == the cell facts' line counts (NA cut_turns, WA cut_turns_all), every cell
   python3 cut_unit_gen.py --summary    the corrected WA lines (cut turns in EVENTS) and the per-cell list
-  python3 cut_unit_gen.py --check F    rc 0 iff every --summary line occurs verbatim in F
+  python3 cut_unit_gen.py --check F... rc 0 iff every --summary line occurs verbatim in the union of the files F...
+                                       (pass BOTH WA RESULTs: Flash's lines are in the Flash RESULT, argon's in the Pro RESULT)
 """
 import collections, json, os, sys
 
@@ -101,7 +102,8 @@ if __name__ == '__main__':
     if a[0] == '--summary':
         print('\n'.join(summary())); sys.exit(0)
     if a[0] == '--check' and len(a) > 1:
-        flat = ' '.join(open(a[1]).read().split())
+        # the 10 lines span TWO RESULTs (Flash half, Pro half): pass both; the check reads their union (bench's read of #456)
+        flat = ' '.join(' '.join(open(f).read().split()) for f in a[1:])
         miss = [l for l in summary() if ' '.join(l.split()) not in flat]
         for m in miss:
             print('MISSING ' + m)

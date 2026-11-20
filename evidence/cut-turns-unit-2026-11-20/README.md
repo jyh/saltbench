@@ -12,7 +12,13 @@ with a hit:
 | shape by month | `python3 cut_unit_gen.py --eras` | 2026-09: 1-line, 54 files · 2026-10: 1-line, 40 · 2026-11: 3-line, 11 · MIXED 0 |
 | line counts reproduce the cell facts | `python3 cut_unit_gen.py --control` | NA 73/73 (`cut_turns`), WA Flash 12/12 and WA Pro 12/12 (`cut_turns_all`) |
 | corrected WA figures | `python3 cut_unit_gen.py --summary` | WA Pro salt-diet: WHT 2 of 11 and NTT 2 of 10 (printed as 6 and 6); every other WA figure 0 |
-| corrected lines present in the RESULTs | `cut_unit_gen.py --check <file>` | red before the addenda (0 of 10 in the Pro RESULT), green after |
+| corrected lines present in the RESULTs | `cut_unit_gen.py --check <Pro RESULT> <Flash RESULT>` (both: the 10 lines are 5 per RESULT) | at `c78261ff`'s two files: `check: 0 of 10`, rc 1; with the addenda: `check: 10 of 10`, rc 0; one file alone reads 5 of 10, rc 1 |
+
+The green command, run from this directory:
+```
+python3 cut_unit_gen.py --check ../../harness/systems-v3/RESULT-gemini-blockWA-pro-2026-11-15.md ../../harness/systems-v3/RESULT-gemini-blockWA-flash-2026-11-14.md
+check: 10 of 10 summary lines present
+```
 
 `cut_units.sh` → `cut_units.tsv` is the first, narrower read: the 97 NA and WA cells of record in `cells-in.txt`. Block NA's
 client writes no `AGY_ERROR` line, so there the event is the one `[agy] print timeout` line.
