@@ -157,3 +157,20 @@ Over the complete matrix's agy cells of record: **salt-diet 32 of 141 (34 counti
 to manufacture a salt-diet advantage, but its sign on cost and outcome is not measured here. A hit is a failure the
 stream PRINTED, not a changed outcome, and no figure above is re-read. Source: `evidence/o37-agy-tmpclaude-2026-11-15/` (README: method, controls, limits).
 The Claude lane is not measured by it.
+
+## ⚖️ ADDENDUM — O37, 2026-11-20: TWO FLASH PAXOS CELLS OF THIS RECORD WERE SERVED WEB SEARCHES (WEB-SERVED), 26 RESULTS; ARGON 0. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+The client's main stream records `search_web` as a step that goes ACTIVE then DONE with no result body, so a stream cannot tell a served call from a denied one; the client's own conversation record (the brain transcript under the cell's `.agyhome`) carries the result. Read there, every `search_web` call on the run box was served (96 of 96), and the canonical PreToolUse hook, registered in each of these cells, denied none.
+
+**Declared WEB-SERVED, of this record** (one more call, a `read_url_content` in `zffpgns2a201`, was denied by the client's permission layer):
+
+- `zffpbns101` (flash, salt): 19 search result(s) served; first query *"Paxos" "inductive invariant" verus OR dafny*
+- `zffpgns2a201` (flash, salt): 7 search result(s) served; first query *"paxos" verus proof agreement validity*
+
+No argon cell of this record called a web tool. The other 262 cells of this record have a brain transcript and were served nothing.
+
+No cell is voided (level 6 A5.2 registered that the agy fence makes no web-isolation claim and voids only FENCE-TAMPER). A WEB-SERVED cell keeps its verdict and **leaves every comparison**: an input from outside the arm, of unknown sign. The table re-cuts, where a comparison loses a cell, are a separate change; no figure above is re-read here.
+
+Source: `evidence/o37-agy-web-served-2026-11-20/`.

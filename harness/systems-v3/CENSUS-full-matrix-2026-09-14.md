@@ -1953,3 +1953,23 @@ ADDENDUM 46 put block NC's six Liveness clause failures to a non-builder read as
 105,218,390) answers YES: the clause test fixes one reading of the card's "sweep" and all six cells counted another reading the card
 admits. The cells stand as they fell and no O37 count moves (DONE 94 · DECLARED 26 · NOT DONE 96 = 216); both block NC results carry
 it as their ADDENDUM 1; the card is amended before any later Liveness run.
+
+
+
+---
+
+## ⚖️ ADDENDUM — O37, 2026-11-20: A LIMIT ON THREE agy CELLS OF RECORD: THE CLIENT SERVED THEM A WEB SEARCH (WEB-SERVED). NO COUNT MOVES. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+The client's main stream records `search_web` as a step that goes ACTIVE then DONE with no result body, so a stream cannot tell a served call from a denied one; the client's own conversation record (the brain transcript under the cell's `.agyhome`) carries the result. Read there, every `search_web` call on the run box was served (96 of 96), and the canonical PreToolUse hook, registered in each of these cells, denied none.
+
+**Declared WEB-SERVED, cells of record of this matrix** (of 272 agy cells of record, every one with a brain transcript; 269 were served nothing):
+
+- `l5psra202` (gemini-3.8-flash-high, salt-diet): 1 search result(s) served; first query *"verus" "failed this postcondition" forall exists*
+- `l6vbpp02` (gemini-3.8-flash-high, plain): 1 search result(s) served; first query *"ARMRECV" receipt*
+- `l7npfs01` (gemini-3.1-pro-high, salt-diet): 1 search result(s) served; first query *docs/STATEMENTS.md*
+
+**No count in this census moves:** a DONE reports its condition's outcome, and nothing is voided. The three cells leave every comparison; the re-cut is a separate change. Blocks NA (5 cells) and ZF (2) carry the same declaration in their RESULTs; blocks WA and TA were served nothing.
+
+Source: `evidence/o37-agy-web-served-2026-11-20/`.

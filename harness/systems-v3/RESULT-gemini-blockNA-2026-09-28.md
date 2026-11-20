@@ -163,3 +163,23 @@ Over the complete matrix's agy cells of record: **salt-diet 32 of 141 (34 counti
 to manufacture a salt-diet advantage, but its sign on cost and outcome is not measured here. A hit is a failure the
 stream PRINTED, not a changed outcome, and no figure above is re-read. Source: `evidence/o37-agy-tmpclaude-2026-11-15/` (README: method, controls, limits).
 The Claude lane is not measured by it.
+
+## ⚖️ ADDENDUM — O37, 2026-11-20: FIVE LinearScan FLASH CELLS OF THIS RECORD WERE SERVED WEB SEARCHES (WEB-SERVED), 51 RESULTS. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+The client's main stream records `search_web` as a step that goes ACTIVE then DONE with no result body, so a stream cannot tell a served call from a denied one; the client's own conversation record (the brain transcript under the cell's `.agyhome`) carries the result. Read there, every `search_web` call on the run box was served (96 of 96), and the canonical PreToolUse hook, registered in each of these cells, denied none.
+
+**Declared WEB-SERVED, of this record** (one more call, a `read_url_content` in `nalsfp202`, was denied by the client's permission layer):
+
+- `nalsfp201` (gemini-3.8-flash-high, plain): 7 search result(s) served; first query *"Poletto and Sarkar" "Linear scan register allocation" spill*
+- `nalsfp202` (gemini-3.8-flash-high, plain): 16 search result(s) served; first query *"Poletto" "Sarkar" "Linear scan register allocation" spill*
+- `nalsfp203` (gemini-3.8-flash-high, plain): 22 search result(s) served; first query *"Linear scan register allocation" "Poletto" "live interval"*
+- `nalsfs202` (gemini-3.8-flash-high, salt-diet): 3 search result(s) served; first query *"Poletto" "Sarkar" "Linear scan register allocation" "live interval" endpoints overlap*
+- `nalsfs203` (gemini-3.8-flash-high, salt-diet): 3 search result(s) served; first query *"Poletto" "Sarkar" "Linear scan register allocation" spill register rewrite*
+
+The queries name the algorithm's source paper. All five are Flash × LinearScan, in the r2 roots; plain carries 45 of the 51.
+
+No cell is voided (level 6 A5.2 registered that the agy fence makes no web-isolation claim and voids only FENCE-TAMPER). A WEB-SERVED cell keeps its verdict and **leaves every comparison**: an input from outside the arm, of unknown sign. The table re-cuts, where a comparison loses a cell, are a separate change; no figure above is re-read here.
+
+Source: `evidence/o37-agy-web-served-2026-11-20/`. The other 68 cells of this record have a brain transcript and were served nothing.
