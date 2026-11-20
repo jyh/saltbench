@@ -1,0 +1,6 @@
+Luby Flash sextet: cell wall 3622.9 s against the registered price 4062 s
+AES Flash sextet: cell wall 3266.0 s against the registered price 5034 s
+Liveness Flash sextet: cell wall 3336.8 s against the registered price 4556 s
+MaxFlow Flash sextet: cell wall 3947.9 s against the registered price 5041 s
+BinomialHeap Flash sextet: cell wall 11685.6 s against the registered price 6992 s · SPENT, a LOWER BOUND (tabfs101, tabfs201, tabfs301 truncated)
+LinearScan Flash sextet: cell wall 8951.6 s against the registered price 15754 s · SPENT, a LOWER BOUND (tasfs201, tasfs301 truncated)

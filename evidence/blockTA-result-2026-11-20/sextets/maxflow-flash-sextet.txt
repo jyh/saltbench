@@ -1,0 +1,10 @@
+source: tally.tsv (wall_seconds from wa_facts.py) · price: ta_price.out at saltbench 01524618 · problem MaxFlow
+MaxFlow plain+statement Flash: n 3 · tamfp101 tamfp2a201 tamfp301 · walls 283.2 393.5 373.2 · median 373.2 s · NA median 458.3 · x0.814 · PASS 3/3 (8/8 8/8 8/8) · TRUNCATED 0 · exit71 0 · clients {'62f21027', '780ee763'} · interfaces {'94fa3a69d109dd9b'}
+MaxFlow salt-diet+statement Flash: n 3 · tamfs101 tamfs201 tamfs301 · walls 1050.1 909.4 938.5 · median 938.5 s · NA median 1222.1 · x0.768 · PASS 3/3 (8/8 8/8 8/8) · TRUNCATED 0 · exit71 0 · clients {'ef265356', '780ee763'} · interfaces {'94fa3a69d109dd9b'}
+MaxFlow Flash sextet: cell wall 3947.9 s against the registered price 5041 s
+  tamfp101 statement: NO TEXTUAL TRACE (0 real ensures lines, no verus; the reader's 1/7 was a bare "}," and its names at/throughput (and at/mask/square/throughput in tests) are ordinary words; LANDING restates R1/R2 in the REQUIREMENTS prose)
+  tamfs101 statement: USED (auto: 6/6 ensures lines verbatim; 19/19 spec names; subject verus last 59 verified 0 errors; assume/admit/external 0; self-reported)
+  tamfp2a201 statement: NO TEXTUAL TRACE (0/6 ensures, no verus; names at/square/throughput are ordinary words; LANDING maps R1-R5 to tests and a brute-force min-cut oracle, from the REQUIREMENTS prose)
+  tamfs201 statement: USED (auto: 6/6 ensures lines verbatim; 19/19 spec names; subject verus last 54 verified 0 errors; assume/admit/external 0; self-reported)
+  tamfp301 statement: NO TEXTUAL TRACE (0/6 ensures, no verus; at/throughput are ordinary words; LANDING maps R1-R5 to tests + CLRS/brute-force/Edmonds-Karp oracles) · ⚠️ RAN ON CLIENT 1.5.11/62f21027, NOT THE RELEASE'S 780ee763 (updated by the wave's own warm-up at 06:53Z); chain HELD after it; how it enters is bench's
+  tamfs301 statement: USED (auto: 6/6 ensures lines verbatim; 19/19 spec names; subject verus last 57 verified 0 errors; assume/admit/external 0; self-reported) · ⚠️ RAN ON CLIENT 1.5.12/ef265356, NOT ADDENDUM 6's 62f21027 (updated by the wave's own /usage at dispatch, agy_wave_v3.sh:156, 05:27:35Z); COUNTED with client declared, TA ADDENDUM 7 ruling 3 (saltbench 8911941)

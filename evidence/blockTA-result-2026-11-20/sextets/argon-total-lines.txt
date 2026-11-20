@@ -1,0 +1,6 @@
+Luby argon sextet: cell wall 5636.6 s against the registered price 5492 s
+AES argon sextet: cell wall 5700.8 s against the registered price 6815 s
+Liveness argon sextet: cell wall 6160.0 s against the registered price 6169 s
+MaxFlow argon sextet: cell wall 6446.7 s against the registered price 6811 s
+BinomialHeap argon sextet: cell wall 6965.6 s against the registered price 9521 s · SPENT, a LOWER BOUND (tabas101 truncated)
+LinearScan argon sextet: cell wall 7033.5 s against the registered price 21468 s
