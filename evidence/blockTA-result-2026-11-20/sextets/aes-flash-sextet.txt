@@ -1,0 +1,10 @@
+source: tally.tsv (wall_seconds from wa_facts.py) · price: ta_price.out at saltbench 01524618 · problem AES
+AES plain+statement Flash: n 3 · taafp101 taafp201 taafp301 · walls 393.4 420.5 323.5 · median 393.4 s · NA median 415.3 · x0.947 · PASS 3/3 (8/8 8/8 8/8) · TRUNCATED 0 · exit71 0 · clients {'780ee763'} · interfaces {'dd4b759c2c3a60e7'}
+AES salt-diet+statement Flash: n 3 · taafs101 taafs201 taafs301 · walls 558.0 866.5 704.1 · median 704.1 s · NA median 1262.6 · x0.558 · PASS 3/3 (8/8 8/8 8/8) · TRUNCATED 0 · exit71 0 · clients {'780ee763'} · interfaces {'dd4b759c2c3a60e7'}
+AES Flash sextet: cell wall 3266.0 s against the registered price 5034 s
+  taafp101 statement: WEAK TRACE (0/3 ensures lines, no verus; 2/30 spec names, pad16 and xtime, both ordinary AES vocabulary; LANDING cites pad16 padding behaviour)
+  taafs101 statement: USED (auto: 3/3 ensures lines verbatim; 30/30 spec names; subject verus last 46 verified 0 errors; assume/admit/external 0; self-reported)
+  taafp201 statement: PARTIAL EXEC USE (0/3 ensures, no verus; 3/30 spec names gmul/pad16/xtime; LANDING: pad16 taken "from REQUIREMENTS.md", S-box tables "from FIPS-197 and REQUIREMENTS.md")
+  taafs201 statement: USED (auto: 3/3 ensures lines verbatim; 30/30 spec names; subject verus last 45 verified 0 errors; assume/admit/external 0; self-reported)
+  taafp301 statement: PARTIAL EXEC USE (0/3 ensures, no verus; 3/30 spec names gmul/pad16/xtime; LANDING: "the spec pad16 semantics … are applied", "matching the formal specification functions spec_cipher")
+  taafs301 statement: USED (auto: 3/3 ensures lines verbatim; 30/30 spec names; subject verus last 49 verified 0 errors; assume/admit/external 0; self-reported)
