@@ -108,3 +108,41 @@ salt-diet cells whose solution REDEFINES a provided spec fn (specdefs DIFFERENT 
 4. §T8: no magnitude and no effect size; nothing about Opus versus Sonnet; **nothing about the statement arm versus `extras = none`
    across blocks** (block N ran months earlier, on another export and other pools, and that contrast is not registered). Every premium
    is UNRESOLVED-UNDERPOWERED as registered (§T6). Any public sentence, and any claim about the method, is the Captain's (§T9).
+
+---
+# ADDENDUM — 2026-11-22 (bench): A NON-AUTHOR AUDIT OF THE STATEMENT CATEGORIES. THREE SONNET PLAIN CELLS MOVE; NO OTHER FIGURE CHANGES. APPENDED; everything above is unchanged.
+**Why.** The 72 categories in §5 were the lead's readings, and no non-author had read one against its cell's code (the helm, bus offset
+108,871,500). kent read a sample of 13 drawn by `evidence/blockT-result-2026-11-22/t_audit_sample.py` (strata model × arm; every CAP-COST
+and DIALOG cell; every category value; seed = the blob of `categories.tsv`), and then 12 more cells under the rule below.
+
+**The rule** (the lead, bus offset 108,903,720, on kent's question). TEST ORACLE and EXEC USE name the STATEMENT used as a source. An
+oracle or exec form whose content the English requirements already state, with no Statement name, quote or derivation in code, comments or
+LANDING, is not a Statement use. Its category is WEAK TRACE where the Statement is mentioned, else NO TRACE. A name in code that only the
+Statement supplies (one the English never uses) counts as a derivation.
+
+**The reads.** 25 cells in all, each verdict in `audit-2026-11-22.tsv` with the post it came from (matched to the posts by script). The
+first sample: 12 AGREE, 1 DISAGREE (`clbrhp02`). The rule's reach (plain cells labelled TEST ORACLE* with `tnames_tests` ≤ 5, or EXEC USE*
+with `tnames_sol` ≤ 5: 14 cells, 2 already read): 10 AGREE, 2 DISAGREE. **Moved, all three Sonnet · BinomialHeap · plain:**
+`clbrhp01` TEST ORACLE (partial) → WEAK TRACE · `clbrhp02` TEST ORACLE (partial) → NO TRACE · `clbrhp03` TEST ORACLE (partial) → WEAK TRACE.
+`clbrhp02`'s tests check the forest shape against R6–R9's English ("the positions of the ones of the binary numeral", R9 verbatim) and
+name no Statement fn; the lead's 11-20 read had taken that oracle as the Statement's `bits` renamed. `clbrhp01`'s and `clbrhp03`'s tests and
+solutions carry no Statement name (03's tests say they were "written from REQUIREMENTS.md alone"); each LANDING mentions the Statement as a
+restatement of R1–R10 and derives nothing from it (kent's reads, bus offset 108,909,601). **Borderline, kept:** `clbrxp03` TEST ORACLE,
+on one name (`is_separator`) that only the Statement supplies.
+
+**§5 re-cut**, printed by `t_result_gen.py --block TS --categories categories-audited-2026-11-22.tsv` (the two lines that change; every other
+figure line is identical under both tables):
+```
+statement plain: EXEC USE (partial) 3 · NO TRACE 1 · TEST ORACLE 5 · TEST ORACLE (partial) 4 · WEAK TRACE 5
+statement BinomialHeap plain WEAK TRACE | NO TRACE | WEAK TRACE · salt-diet USED | USED | USED
+```
+Block TO's categories do not move (its RESULT carries the same audit note).
+
+**Three flags, no category moves.** USED is defined by the ensures text, its position inside `verus!` and a clean run, and the cells below
+redefine spec fns their ensures name (the specdefs line above prints the redefinitions). kent classified: `clbrxs01` `trace_ok` STRONGER
+(adds a same-call-same-answer conjunct), and its `max_flow` ensures `valid_answer`, stronger than the card's two conjuncts; `clbrrs01` and
+`clbrrs03` `s_expands_ok` have two inserted clauses, and `clbrrs01`'s `s_disj_inner` takes `s_same_loc` for `s_same_reg`, direction
+UNCLASSIFIED. (Opus `clbvys02` is in block TO's note.)
+
+**Not read:** 47 cells outside both samples; the Verus proofs' soundness; the withheld G suite. Block TA's categories (gemini's reads, the
+same words) were not re-read under the rule. `categories.tsv` stays as first read; the corrected table is `categories-audited-2026-11-22.tsv`.

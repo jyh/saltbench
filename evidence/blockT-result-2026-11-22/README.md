@@ -70,3 +70,8 @@ The protocol for the reader:
 3. Post one line per cell: AGREE, or DISAGREE with the category you read and the line that decides it. Name any cell you could
    not read, and why.
 A disagreement is a finding for the lead to rule on, in an addendum to the RESULT. It is never a silent edit of `categories.tsv`.
+
+**The audit's outcome (2026-11-22):** `audit-2026-11-22.tsv` holds the 25 non-author verdicts (13 drawn, 12 under the rule), each with its
+post. `categories-audited-2026-11-22.tsv` is `categories.tsv` with the three moved cells changed and their old reading kept in the source
+column. `t_result_gen.py --block TS --categories categories-audited-2026-11-22.tsv` prints the re-cut, and `--check` on either RESULT finds
+every line under both tables (TO 50 of 50, TS 56 of 56).
