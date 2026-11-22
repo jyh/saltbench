@@ -101,3 +101,13 @@ salt-diet cells whose solution REDEFINES a provided spec fn (specdefs DIFFERENT 
 4. §T8: no magnitude and no effect size; nothing about Opus versus Sonnet; **nothing about the statement arm versus `extras = none`
    across blocks** (block N ran months earlier, on another export and other pools, and that contrast is not registered). Every premium
    is UNRESOLVED-UNDERPOWERED as registered (§T6). Any public sentence, and any claim about the method, is the Captain's (§T9).
+
+---
+# ADDENDUM — 2026-11-22 (bench): A NON-AUTHOR AUDIT OF THE STATEMENT CATEGORIES. NO OPUS CATEGORY MOVES. APPENDED; everything above is unchanged.
+kent read 25 of block T's 72 categories against the cells' code. That was a drawn sample of 13 (`t_audit_sample.py`), then 12 more under a rule the lead ruled during the audit:
+an oracle the English requirements already state, with no Statement name, quote or derivation, is not a Statement use. Every verdict is in
+`evidence/blockT-result-2026-11-22/audit-2026-11-22.tsv`. The 10 Opus cells read (`clbvap01`, `clbvhp01`, `clbvhp02`, `clbvhp03`, `clbvrp02`,
+`clbvrs02`, `clbvvp03`, `clbvxs03`, `clbvyp03`, `clbvys02`) all AGREE, so §5 is unchanged here.
+Three Sonnet cells move, and the rule, the sample and the re-cut are in `RESULT-claude-blockTS-2026-11-22.md`'s addendum.
+**One flag, no move:** `clbvys02`'s `trace_ok` adds a determinism conjunct to the card's, so its USED ensures says more than the card's. ADDENDUM 5 classified
+the Luby redefinitions the same way.

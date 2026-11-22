@@ -98,3 +98,17 @@ agy cells (client 1.4.x) did not; the `exebox-cert` failures counted in ADDENDUM
 (`"agentMode": ""`, export 3fd5edf1): a CLIENT-MODE SEAM beside the model seam, so nothing compares a Flash cell above with a Pro cell, and
 any reading of these cells beside a pre-WA agy cell names the mode change. Source: `AMENDMENT-O37-wht-ntt-greenfield-agy-2026-11-13.md`,
 ADDENDUM 5.
+
+---
+## ⚖️ ADDENDUM — 2026-11-20 (gemini; bench row 11): THE "CUT TURNS" UNIT. APPENDED; every figure above is unchanged.
+§2's "cut turns N of M sent" lines and the note under them (`cut_turns_all`, `cut_turns`) count stderr LINES containing `print timeout`
+(`evidence/blockWA-2026-11-14/wa_facts.py`, line 37; block NA's `cell_facts.py`, line 41). Under this block's client one timeout writes three
+such lines. Every Flash cell here reads 0 lines, so every figure is 0 in events too, and nothing above moves:
+```
+WA Flash WHT plain: cut turns 0 of 9 sent (EVENTS); the RESULT printed 0 (print-timeout LINES)
+WA Flash WHT salt-diet: cut turns 0 of 9 sent (EVENTS); the RESULT printed 0 (print-timeout LINES)
+WA Flash NTT plain: cut turns 0 of 9 sent (EVENTS); the RESULT printed 0 (print-timeout LINES)
+WA Flash NTT salt-diet: cut turns 0 of 10 sent (EVENTS); the RESULT printed 0 (print-timeout LINES)
+WA Flash cells cut (events/lines): none
+```
+Source: `evidence/cut-turns-unit-2026-11-20/cut_unit_gen.py --summary`. The Pro half's non-zero figures are corrected in its own addendum.

@@ -185,3 +185,12 @@ the run box: the old rendering has 1 hit, the new has 0, and the required-ancest
 stderr-derived truncation outcome stands as the source for cause. **Only LinearScan's two NA conditions fire from 8ed8cb3.** Every other
 NA condition stays on e10f420. The two LinearScan cells refused at build (c11a1, c12a1) are records of the refusal, never results, and no
 subject ran in them.
+
+## ⚖️ ADDENDUM 6 (2026-11-20, gemini; bench row 11) — ADDENDUM 4's "CUT TURNS" ARE EVENTS, AND A LINE COUNT IS ONE ONLY WHILE THE CLIENT WRITES ONE LINE. APPENDED.
+ADDENDUM 4 takes cut turns from the client's stderr (`print timeout after …`), and block NA's `cell_facts.py` (line 41) counts the LINES that
+contain `print timeout`. **For block NA that count is the count of events:** every stderr file on the run box with a hit and dated
+before 2026-11-15 carries one line per timeout (94 files, September and October), and the line counts reproduce NA's `cut_turns` in all 73
+cells (`evidence/cut-turns-unit-2026-11-20/cut_unit_gen.py --eras` and `--control`). NA's figures (26 of 104, 18 of 72, `nalbpst01`'s 7 above) are
+therefore events, as printed. **From agy 1.5.x (blocks WA and TA, 11 files) one timeout writes three such lines**, so the rule's count is
+taken from `^[agy] print timeout` lines, which are one per event in both shapes. Files deleted from the run box before 2026-11-20 are outside
+the census.

@@ -1,0 +1,15 @@
+# seed (blob of categories.tsv): d6e631fcd43f8495c02a99821af47f1f4cdd5238
+cell	model_block	arm	problem	end1_kind	category	why
+clbvap01	TO	plain	AES	LANDED	TEST ORACLE	covers category
+clbvhp03	TO	plain	BinomialHeap	LANDED	EXEC USE	fill
+clbvrp02	TO	plain	LinearScan	LANDED	EXEC USE	covers category
+clbvrs02	TO	salt-diet	LinearScan	CAP-COST	USED	end1=CAP-COST
+clbvys02	TO	salt-diet	Luby	LANDED	USED	fill
+clbvxs03	TO	salt-diet	MaxFlow	DIALOG	USED	end1=DIALOG
+clbrap01	TS	plain	AES	LANDED	WEAK TRACE	covers category
+clbrhp02	TS	plain	BinomialHeap	LANDED	TEST ORACLE (partial)	covers category
+clbrvp01	TS	plain	Liveness	LANDED	EXEC USE (partial)	covers category
+clbrrs01	TS	salt-diet	LinearScan	CAP-COST	USED (unverified)	end1=CAP-COST
+clbrrs03	TS	salt-diet	LinearScan	DIALOG	USED (partial)	end1=DIALOG
+clbrxs01	TS	salt-diet	MaxFlow	CAP-COST	USED (unverified)	end1=CAP-COST
+clbrxs02	TS	salt-diet	MaxFlow	CAP-COST	USED	end1=CAP-COST
