@@ -1,2 +1,5 @@
-cell project dirs 748 · transcript files 3175 · control Bash tool_use 72597
+cell project dirs 748 · transcript files 3175 · control Bash tool_use 72616
 WEB CALLS 0 · {}
+distinct (slug, file) pairs 3175
+block types (lines holding tool_use or tool_result): {'tool_use': 127939, 'tool_result': 127919, 'thinking': 41470, 'text': 21764}
+tool_use names: {'Bash': 72616, 'Edit': 23613, 'Read': 20285, 'Write': 7841, 'Agent': 1811, 'Grep': 1252, 'Glob': 364, 'TaskStop': 149, 'SendMessage': 3, 'EndConversation': 2, 'Grash': 1, 'Grag': 1, 'Str_replace_editor': 1}

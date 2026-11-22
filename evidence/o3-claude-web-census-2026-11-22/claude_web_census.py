@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 """Census: Claude-lane cell transcripts on the run box, every WebSearch / WebFetch tool_use and its tool_result.
-Population: every *.jsonl under ~/.claude-account-*/projects/<slug> where <slug> names a cell root (contains 'cells').
+Population: every *.jsonl (recursive, subagents included) under ~/.claude*/projects/<slug> where <slug> names a cell root
+(contains 'cells'). The 2026-11-20 run read ~/.claude-account-* only (population-fix.diff).
 Per call: SERVED (result present, not is_error, no refusal text) / REFUSED (is_error or a permission/deny text) / NO-RESULT.
-Control: the same parse counts Bash tool_use, which every cell makes; a zero there means the parser is broken."""
+Control: the same parse counts Bash tool_use, which every cell makes; a zero there means the parser is broken.
+Also printed: distinct (slug, file name) pairs, since a config dir holding a copy of a transcript counts it twice in the
+file figure; and the Counter of EVERY tool_use name and every block type, so the absence of the two web names sits
+beside what the cells did call (a web call under another name or block type would show there)."""
 import glob, json, os, re, sys, collections
 
 home = os.path.expanduser('~')
@@ -13,9 +17,13 @@ calls = {}          # tool_use id -> (cell slug, tool name, file)
 results = {}        # tool_use id -> (is_error, text)
 bash_n = 0
 files = 0
+pairs = set()
+names = collections.Counter()
+btypes = collections.Counter()
 for d in dirs:
     for f in glob.glob(d + '/**/*.jsonl', recursive=True):
         files += 1
+        pairs.add((os.path.basename(d), os.path.relpath(f, d)))
         try:
             fh = open(f, encoding='utf-8', errors='replace')
         except OSError:
@@ -34,7 +42,9 @@ for d in dirs:
             for c in content:
                 if not isinstance(c, dict):
                     continue
+                btypes[c.get('type')] += 1
                 if c.get('type') == 'tool_use':
+                    names[c.get('name')] += 1
                     if c.get('name') == 'Bash':
                         bash_n += 1
                     if c.get('name') in WEB:
@@ -57,3 +67,6 @@ for tid, (cell, name, f) in calls.items():
     tally[(name, v)] += 1
     print('%s\t%s\t%s\t%s' % (v, name, cell[-60:], (r[1] if r else '')[:160].replace('\n', ' ')))
 print('WEB CALLS %d · %s' % (len(calls), dict(tally)))
+print('distinct (slug, file) pairs %d' % len(pairs))
+print('block types (lines holding tool_use or tool_result): %s' % dict(btypes.most_common()))
+print('tool_use names: %s' % dict(names.most_common()))

@@ -1,0 +1,7 @@
+launch.log without ARGV: 1223
+   908  agy · launched · -   e.g. ~/cells-PRESERVED-stage1-2026-09-11T0540Z/s1sd01/ctl/launch.log | ~/cells-PRESERVED-stage1-2026-09-11T0540Z/s1td01/ctl/launch.log
+   154  NO-CLIENT-FILE · launched · -   e.g. ~/cells-l8-crc32-flash-plain-sc/_aside/l8cfps01/phase1/ctl/launch.log | ~/cells-l8-crc32-flash-plain-sc/_aside/l8cfps02/phase1/ctl/launch.log
+    93  agy · not-launched · -   e.g. ~/cells-agy-battery/bt04lzw/ctl/launch.log | ~/cells-agy-battery/bt09lzw/ctl/launch.log
+    46  claude · not-launched · -   e.g. ~/cells-clb-HELD-before-call-2026-09-30/clbeca01-export-6004ebe/ctl/launch.log | ~/cells-clb-x86p-o60-plain/clbpp01/ctl/launch.log
+    18  NO-CLIENT-FILE · not-launched · -   e.g. ~/cells-p2-opus-specchange/p2c002/ctl/launch.log | ~/cells-x86net-20260924b/xf01/ctl/launch.log
+     4  NO-CLIENT-FILE · launched · stub   e.g. ~/cells-dry-2026-09-04/3eb44a1c/ctl/launch.log | ~/cells-dry-2026-09-04/f43c7d34/ctl/launch.log
