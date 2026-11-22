@@ -1991,3 +1991,47 @@ Paper v5 narrowed its abstract's isolation clause to the Claude lane. The CLI's 
 What the client would do with a `WebSearch` call that a subject emitted anyway, although it was not offered: none was emitted, and the client's handling of unoffered names is not uniform (`SendMessage` refused, `EndConversation` answered). It also says nothing about network use through the subjects' own shell commands, which is the subprocess sandbox's question. Run-box records only, joined to launches by cell id, not to the cells of record. **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** Nothing here is about the salt method.
 
 Source: `evidence/o3-claude-web-census-2026-11-22/` (README: the census, the launch surface, off-surface calls, the client's offered tool list, the population fix, controls, limits).
+
+---
+
+# ⚖️ ADDENDUM 49 — **O37: BLOCK T IS A RESULT OF RECORD. 24 CONDITIONS MOVE TO DONE (the six block-N problems × statement × {plain, salt-diet} × {Opus, Sonnet}, Claude lane), EACH AT n = 3. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-22, in the same commit as `RESULT-claude-blockTO-2026-11-22.md` and `RESULT-claude-blockTS-2026-11-22.md` (§T9: the census section is re-cut with the result).
+
+## §AT1 · WHAT MOVED
+Block T (`AMENDMENT-O37-statement-six-claude-2026-11-11.md`, ADDENDA 1–5) has its 72 cells ended and two result files. All 72 are cells
+of record: 66 LANDED, 4 CAP-COST (scored as they stood at the cap), and 2 DIALOG (of record by block SB's `clbbps01` precedent). No
+cell is VOID by §T7. One cell (`clbrrp03`) was staged inside the 2026-11-22 sitting; it stays of record by the helm's decision, written
+into the Sonnet result as a fact. The line, printed by `evidence/blockT-result-2026-11-22/t_result_gen.py --census`:
+```
+block T: the six block-N problems x statement, Claude lane: 24 conditions, 24 at n = 3, cells of record 72
+block T spend: COST (capped at the cap) $1,120.18 · metered $1,121.72 · Luby $182.71 metered
+```
+DONE is not a verdict on the arms. Block T's spend sits below the registered price of $1,253.64 and ADDENDUM 5's re-cut of $1,360.98, and
+inside the ceiling of $2,679.12.
+
+## §AT2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-22)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (ADDENDUM 44)   4
+                 block WC: NTT, WHT x spec-change x {plain, salt-diet} x {Opus, Sonnet} (ADDENDUM 45)  8
+                 block NC: the six block-N problems x spec-change, Claude lane (ADDENDUM 46)        22
+                 block T: the six block-N problems x statement, Claude lane (this)                  24
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+                 block NC: LinearScan x spec-change x salt-diet x {Opus, Sonnet}, unreached (ADDENDUM 46)  2
+    NOT DONE     WHT and NTT, the other 24:
+                   x statement, both lanes; x spec-change, agy lane: in no merged block              24
+                 the six block-N problems x {statement, spec-change}, agy lane, the other 48:
+                   x statement, agy lane: block TA, its result on its registration branch, unmerged  24
+                   x spec-change, agy lane: in no merged block                                       24
+```
+DONE 118 · DECLARED 26 · NOT DONE 72 = 216. Block TA's 24 move when its result reaches `main` with its own addendum, not here.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AT3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing Opus-versus-Sonnet, nothing about the statement arm versus `extras = none` across blocks (§T8.3), nothing about the salt method.
+Every premium in both results is UNRESOLVED-UNDERPOWERED as registered.
+
+Source: `evidence/blockT-result-2026-11-22/` (README: the per-cell table, the categories as read, the derive, the generator, the checks).
