@@ -224,3 +224,23 @@ argon prediction (i) holds in 6 of 6 problems · truncated cells plain 0, salt-d
 TA; nothing Flash-versus-argon as models; nothing about the statement arm versus `extras = none` across blocks. With every condition at
 ceiling in both models, nothing here says whether the salt method helps or hurts on these problems. The statement categories describe
 what the subjects did with the statement; they are not a score. Any public sentence, and any claim about the method, is the Captain's.
+
+---
+# ADDENDUM — 2026-11-22 (bench, the lead): THE STATEMENT CATEGORIES UNDER THE 11-22 RULE. THE REACH IS 7 PLAIN CELLS AND NONE MOVES. APPENDED; everything above is unchanged.
+**Why.** Block T's non-author audit produced a rule (`RESULT-claude-blockTS-2026-11-22.md`, its 2026-11-22 addendum). TEST ORACLE and EXEC
+USE name the STATEMENT used as a source, and an oracle the English requirements already state, with no Statement name, quote or
+derivation, is not a Statement use. This RESULT's categories use the same words, so the rule binds them too (the helm, bus offset 108,930,436).
+
+**The reach census**, block T's needle and threshold. `audit-2026-11-22/tnames.sh` (v2) ran over the 36 plain cells. The six Statement
+sections were re-derived from this block's export (397864e8) and compared byte for byte with block T's (all six equal). Output:
+`audit-2026-11-22/ta-tnames-2026-11-22.out` (36 cell lines; `tamfp2a201` is the cell of record after the 503 re-queue). In reach (TEST ORACLE*
+with tests-define ≤ 5, or EXEC USE* with solution-defines ≤ 5): 7 cells, `tavfp201` `taaap301` `tavap201` `tamap101` `tamap201` `tabap101` `tabap301`.
+
+**The reads.** A non-author (kent, not this block's hand) re-read all 7 against the cells' code: 7 AGREE (`audit-2026-11-22/audit-2026-11-22.tsv`,
+each with its post). **No category moves, and every figure line above stands** (`ta_result_gen.py --check`). Borderline and kept:
+`tamap101` TEST ORACLE. Its tests carry `set_capacity`, a name only the Statement supplies, inside failure messages, and its LANDING quotes
+the Statement's `throughput(flow, s) == set_capacity(cap, cut)`. That is a quote in LANDING, which the rule counts.
+
+**Not read:** the other 29 plain cells and every salt-diet cell. The 29 are outside the reach by label or by count: 22 hold more Statement
+names than the threshold, and 7 are at or under it but labelled NO TRACE or WEAK TRACE, which the rule cannot move down (`tamfp101`,
+`tamfp2a201`, `tamfp301`, `tabfp301` NO TRACE; `tabfp101`, `tabfp201`, `tabap201` WEAK TRACE; corrected on the non-author read, bus offset 108,945,262).
