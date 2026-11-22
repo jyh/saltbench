@@ -17,9 +17,9 @@ PROBS = ['Luby', 'AES', 'Liveness', 'MaxFlow', 'BinomialHeap', 'LinearScan']
 ARMS = ['plain', 'salt-diet']
 
 
-def load():
+def load(catfile='categories.tsv'):
     rows = list(csv.DictReader(open(os.path.join(HERE, 'cells.tsv')), delimiter='\t'))
-    cats = {r['cell']: r for r in csv.DictReader(open(os.path.join(HERE, 'categories.tsv')), delimiter='\t')}
+    cats = {r['cell']: r for r in csv.DictReader(open(os.path.join(HERE, catfile)), delimiter='\t')}
     ids = [r['cell'] for r in rows]
     assert len(rows) == 72 and len(set(ids)) == 72, f'population: {len(rows)} rows, {len(set(ids))} unique, not 72'
     assert set(ids) == set(cats), f'categories.tsv and cells.tsv name different cells: {sorted(set(ids) ^ set(cats))}'
@@ -157,7 +157,8 @@ def census(rows):
 
 
 def main(a):
-    rows = load()
+    # --categories FILE (beside this file): the audit's re-cut reads the corrected table; the default is the table as first read.
+    rows = load(a[a.index('--categories') + 1]) if '--categories' in a else load()
     if '--census' in a:
         print('\n'.join(census(rows))); return 0
     b = a[a.index('--block') + 1]
