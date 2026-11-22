@@ -31,3 +31,7 @@ asserts each occurs there verbatim (72 of 72; a control with one digit changed r
 `mutant-partial.out`: **a defect in this generator's first draft, fixed and shown by going red backwards.** The category reader tried the
 qualifier `USED (partial: k of n …)` after the plain `USED` prefix, so both partial Flash cells read USED (salt-diet `USED 17`). With the old
 order restored as a mutant the line reads `USED 17`; with the fix, `USED 15 · USED (partial) 2`.
+
+**The census lines** (added 2026-11-22, bench, when the branch landed on `main`): `ta_census_line.py` prints census ADDENDUM 50's three
+block TA lines from `cells.tsv` (conditions, n per condition, cells of record, LANDED, PASS, MODEL-SEAM flagged). `--check <census>`
+exits 1 unless each occurs there verbatim. A mutant of one figure fails it (2 of 3, rc 1).
