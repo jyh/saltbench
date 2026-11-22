@@ -35,3 +35,6 @@ order restored as a mutant the line reads `USED 17`; with the fix, `USED 15 · U
 **The census lines** (added 2026-11-22, bench, when the branch landed on `main`): `ta_census_line.py` prints census ADDENDUM 50's three
 block TA lines from `cells.tsv` (conditions, n per condition, cells of record, LANDED, PASS, MODEL-SEAM flagged). `--check <census>`
 exits 1 unless each occurs there verbatim. A mutant of one figure fails it (2 of 3, rc 1).
+
+**The 2026-11-22 category audit** (`audit-2026-11-22/`): `tnames.sh` (block T's needle v2) and its run-box driver `ta-tnames.sh`, the 36-cell
+output, and the 7 non-author verdicts. Nothing moved; the RESULT's addendum says why.

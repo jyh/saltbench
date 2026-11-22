@@ -1,0 +1,42 @@
+SECTION EQUAL aes-section.rs
+SECTION EQUAL binomialheap-section.rs
+SECTION EQUAL linearscan-section.rs
+SECTION EQUAL liveness-section.rs
+SECTION EQUAL luby-section.rs
+SECTION EQUAL maxflow-section.rs
+talfp101 tests-define 0/22 · solution-defines 9/22 · test files 1
+talfp201 tests-define 7/22 · solution-defines 0/22 · test files 1
+talfp301 tests-define 0/22 · solution-defines 17/22 · test files 1
+talap101 tests-define 15/22 · solution-defines 10/22 · test files 1
+talap201 tests-define 18/22 · solution-defines 22/22 · test files 1
+talap301 tests-define 21/22 · solution-defines 12/22 · test files 1
+taafp101 tests-define 21/30 · solution-defines 2/30 · test files 2
+taafp201 tests-define 28/30 · solution-defines 3/30 · test files 1
+taafp301 tests-define 19/30 · solution-defines 3/30 · test files 2
+taaap101 tests-define 17/30 · solution-defines 3/30 · test files 1
+taaap201 tests-define 16/30 · solution-defines 3/30 · test files 1
+taaap301 tests-define 4/30 · solution-defines 2/30 · test files 1
+tavfp101 tests-define 10/35 · solution-defines 2/35 · test files 2
+tavfp201 tests-define 3/35 · solution-defines 4/35 · test files 1
+tavfp301 tests-define 6/35 · solution-defines 4/35 · test files 2
+tavap101 tests-define 11/35 · solution-defines 11/35 · test files 1
+tavap201 tests-define 5/35 · solution-defines 10/35 · test files 1
+tavap301 tests-define 24/35 · solution-defines 8/35 · test files 1
+tamfp101 tests-define 1/19 · solution-defines 0/19 · test files 1
+tamfp301 tests-define 1/19 · solution-defines 0/19 · test files 2
+tamap101 tests-define 4/19 · solution-defines 2/19 · test files 1
+tamap201 tests-define 3/19 · solution-defines 3/19 · test files 1
+tamap301 tests-define 8/19 · solution-defines 2/19 · test files 2
+tabfp101 tests-define 0/25 · solution-defines 0/25 · test files 1
+tabfp201 tests-define 0/25 · solution-defines 0/25 · test files 1
+tabfp301 tests-define 0/25 · solution-defines 0/25 · test files 1
+tabap101 tests-define 2/25 · solution-defines 0/25 · test files 1
+tabap201 tests-define 0/25 · solution-defines 0/25 · test files 2
+tabap301 tests-define 2/25 · solution-defines 0/25 · test files 2
+tasfp101 tests-define 45/51 · solution-defines 9/51 · test files 1
+tasfp201 tests-define 12/51 · solution-defines 7/51 · test files 1
+tasfp301 tests-define 41/51 · solution-defines 9/51 · test files 1
+tasap101 tests-define 47/51 · solution-defines 8/51 · test files 1
+tasap201 tests-define 48/51 · solution-defines 5/51 · test files 1
+tasap301 tests-define 44/51 · solution-defines 24/51 · test files 2
+tamfp2a201 tests-define 1/19 · solution-defines 0/19 · test files 1

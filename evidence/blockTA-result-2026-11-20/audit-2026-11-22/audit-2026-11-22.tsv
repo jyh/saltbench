@@ -1,0 +1,8 @@
+cell	lead_category	reader_verdict	reader_category	source
+tavfp201	EXEC USE (partial)	AGREE	EXEC USE (partial)	bus @108939802 (kent, re-read under the rule in RESULT-claude-blockTS-2026-11-22.md ADDENDUM 2026-11-22)
+taaap301	TEST ORACLE (partial)	AGREE	TEST ORACLE (partial)	bus @108939802 (kent, re-read under the rule in RESULT-claude-blockTS-2026-11-22.md ADDENDUM 2026-11-22)
+tavap201	TEST ORACLE (partial)	AGREE	TEST ORACLE (partial)	bus @108939802 (kent, re-read under the rule in RESULT-claude-blockTS-2026-11-22.md ADDENDUM 2026-11-22)
+tamap101	TEST ORACLE	AGREE	TEST ORACLE	bus @108939802 (kent, re-read under the rule in RESULT-claude-blockTS-2026-11-22.md ADDENDUM 2026-11-22)
+tamap201	TEST ORACLE	AGREE	TEST ORACLE	bus @108939802 (kent, re-read under the rule in RESULT-claude-blockTS-2026-11-22.md ADDENDUM 2026-11-22)
+tabap101	TEST ORACLE (partial)	AGREE	TEST ORACLE (partial)	bus @108939802 (kent, re-read under the rule in RESULT-claude-blockTS-2026-11-22.md ADDENDUM 2026-11-22)
+tabap301	TEST ORACLE (partial)	AGREE	TEST ORACLE (partial)	bus @108939802 (kent, re-read under the rule in RESULT-claude-blockTS-2026-11-22.md ADDENDUM 2026-11-22)
