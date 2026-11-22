@@ -1,0 +1,5 @@
+opus   plain     N six 18 cells $255.56 · T six 18 cells $276.02 · ratio 1.080 · W WHT/NTT 6 cells $49.36 -> $53.31
+opus   salt-diet N six 18 cells $415.43 · T six 18 cells $404.63 · ratio 0.974 · W WHT/NTT 6 cells $177.69 -> $173.07
+sonnet plain     N six 18 cells $68.10 · T six 18 cells $59.47 · ratio 0.873 · W WHT/NTT 6 cells $10.52 -> $9.19
+sonnet salt-diet N six 18 cells $514.54 · T six 18 cells $381.61 · ratio 0.742 · W WHT/NTT 6 cells $181.99 -> $134.97
+block TW estimate $370.54 for 24 cells · ceiling 24 x $37.21 = $893.04, plus each cell overrun past the cap
