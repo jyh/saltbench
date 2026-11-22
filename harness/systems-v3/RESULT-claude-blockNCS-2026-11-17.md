@@ -104,3 +104,17 @@ sentence that settles the pass (systems': "in(b) is computed from out(b) as it s
 computed in the same pass"), and the test is NOT widened: a black-box count test that accepts any reading would also pass CountOneShort
 and lose that kill. (c) With the card amended, InPlaceSweeps stays a valid mutant. Not read by systems: the reference solution, the
 Verus cells' verifier output, the other five clause mutants under the composed pass.
+
+---
+# ADDENDUM — 2026-11-22 (bench): RULING (b)'S SETTLING SENTENCE WAS ONE-SIDED. THE CARD AMENDMENT IS NOW TWO-SIDED. APPENDED; no figure, verdict or ruling above changes.
+Ruling (b) above quotes systems' sentence: *"in(b) is computed from out(b) as it stood at the start of the pass, not from the out(b)
+computed in the same pass"*. systems' non-author read of the card amendment (bus offset 108,954,330) found that this sentence settles
+only one of the two composed passes. It rules out out-then-in, which four of the six Liveness cells took. It does not rule out in-then-out
+(in from the old out, then out from the new ins), which two took (`clbfvs03`, `clblvs01`). A subject reading that pass satisfies the
+sentence to the letter, and a one-line mutant of it (InThenOut) fails `answer_is_the_count_honest_pair` 15 of 16, as InPlaceSweeps does. That measurement and the four/two split are
+systems' (bus offset 108,954,330, re-run at the amended card's commit at 108,964,853, same outcome). They are not
+reproduced in this repository, because the mutant is a one-line edit of the WITHHELD reference solution, which never enters a public tree.
+The card amendment now carries the two-sided form, which is the driver's own pass: *"in(b) is computed from out(b) as it stood at the
+start of the pass, and out(b) from its successors' in(s) as they stood at the start of the pass; neither set is computed from a set
+computed in the same pass"*. Rulings (a) and (c) stand: the cells stand as they fell, and InPlaceSweeps stays a valid mutant. No export
+used for a cell of record carries either text. The amendment applies from the next phase-2 Liveness block, whose registration names it.
