@@ -1,0 +1,13 @@
+cell	block	arm	final_T	final_COST	cap	capped	pool
+clbvys01	TO	salt-diet	19102652	17.8506	37.21	no	1
+clbvys02	TO	salt-diet	30361601	26.0645	37.21	no	1
+clbvys03	TO	salt-diet	33465961	26.4134	37.21	no	1
+clbvyp01	TO	plain	11561846	11.3040	37.21	no	1
+clbvyp02	TO	plain	22533463	19.5700	37.21	no	1
+clbvyp03	TO	plain	11101078	11.6582	37.21	no	2
+clbrys01	TS	salt-diet	60988325	20.2182	37.21	no	1
+clbrys02	TS	salt-diet	54694759	15.8179	37.21	no	2
+clbrys03	TS	salt-diet	94979833	27.2090	37.21	no	1
+clbryp01	TS	plain	4041984	2.1570	37.21	no	1
+clbryp02	TS	plain	4739708	2.8295	37.21	no	1
+clbryp03	TS	plain	3340341	1.6193	37.21	no	1

@@ -1,0 +1,79 @@
+Luby 5436 bytes
+AES 8881 bytes
+Liveness 8430 bytes
+MaxFlow 4140 bytes
+BinomialHeap 6543 bytes
+LinearScan 15813 bytes
+clbvyp01 Luby plain to LANDED PASS 12/12
+clbvyp02 Luby plain to LANDED PASS 12/12
+clbvyp03 Luby plain to LANDED PASS 12/12
+clbvys01 Luby saltdiet to LANDED PASS 12/12
+clbvys02 Luby saltdiet to LANDED PASS 12/12
+clbvys03 Luby saltdiet to LANDED PASS 12/12
+clbvap01 AES plain to LANDED PASS 8/8
+clbvap02 AES plain to LANDED PASS 8/8
+clbvap03 AES plain to LANDED PASS 8/8
+clbvas01 AES saltdiet to LANDED PASS 8/8
+clbvas02 AES saltdiet to LANDED PASS 8/8
+clbvas03 AES saltdiet to LANDED PASS 8/8
+clbvvp01 Liveness plain to LANDED PASS 11/11
+clbvvp02 Liveness plain to LANDED PASS 11/11
+clbvvp03 Liveness plain to LANDED PASS 11/11
+clbvvs01 Liveness saltdiet to LANDED PASS 11/11
+clbvvs02 Liveness saltdiet to LANDED PASS 11/11
+clbvvs03 Liveness saltdiet to LANDED PASS 11/11
+clbvxp01 MaxFlow plain to LANDED PASS 8/8
+clbvxp02 MaxFlow plain to LANDED PASS 8/8
+clbvxp03 MaxFlow plain to LANDED PASS 8/8
+clbvxs01 MaxFlow saltdiet to LANDED PASS 8/8
+clbvxs02 MaxFlow saltdiet to LANDED PASS 8/8
+clbvxs03 MaxFlow saltdiet to DIALOG PASS 8/8
+clbvhp01 BinomialHeap plain to LANDED PASS 13/13
+clbvhp02 BinomialHeap plain to LANDED PASS 13/13
+clbvhp03 BinomialHeap plain to LANDED PASS 13/13
+clbvhs01 BinomialHeap saltdiet to LANDED PASS 13/13
+clbvhs02 BinomialHeap saltdiet to LANDED PASS 13/13
+clbvhs03 BinomialHeap saltdiet to LANDED PASS 13/13
+clbvrp01 LinearScan plain to LANDED PASS 9/9
+clbvrp02 LinearScan plain to LANDED PASS 9/9
+clbvrp03 LinearScan plain to LANDED PASS 9/9
+clbvrs01 LinearScan saltdiet to LANDED PASS 9/9
+clbvrs02 LinearScan saltdiet to CAP-COST PASS 9/9
+clbvrs03 LinearScan saltdiet to LANDED PASS 9/9
+clbryp01 Luby plain ts LANDED PASS 12/12
+clbryp02 Luby plain ts LANDED PASS 12/12
+clbryp03 Luby plain ts LANDED PASS 12/12
+clbrys01 Luby saltdiet ts LANDED PASS 12/12
+clbrys02 Luby saltdiet ts LANDED PASS 12/12
+clbrys03 Luby saltdiet ts LANDED PASS 12/12
+clbrap01 AES plain ts LANDED PASS 8/8
+clbrap02 AES plain ts LANDED PASS 8/8
+clbrap03 AES plain ts LANDED PASS 8/8
+clbras01 AES saltdiet ts LANDED PASS 8/8
+clbras02 AES saltdiet ts LANDED PASS 8/8
+clbras03 AES saltdiet ts LANDED PASS 8/8
+clbrvp01 Liveness plain ts LANDED PASS 11/11
+clbrvp02 Liveness plain ts LANDED PASS 11/11
+clbrvp03 Liveness plain ts LANDED PASS 11/11
+clbrvs01 Liveness saltdiet ts LANDED PASS 11/11
+clbrvs02 Liveness saltdiet ts LANDED PASS 11/11
+clbrvs03 Liveness saltdiet ts LANDED PASS 11/11
+clbrxp01 MaxFlow plain ts LANDED PASS 8/8
+clbrxp02 MaxFlow plain ts LANDED PASS 8/8
+clbrxp03 MaxFlow plain ts LANDED PASS 8/8
+clbrxs01 MaxFlow saltdiet ts CAP-COST PASS 8/8
+clbrxs02 MaxFlow saltdiet ts CAP-COST PASS 8/8
+clbrxs03 MaxFlow saltdiet ts LANDED PASS 8/8
+clbrhp01 BinomialHeap plain ts LANDED PASS 13/13
+clbrhp02 BinomialHeap plain ts LANDED PASS 13/13
+clbrhp03 BinomialHeap plain ts LANDED PASS 13/13
+clbrhs01 BinomialHeap saltdiet ts LANDED PASS 13/13
+clbrhs02 BinomialHeap saltdiet ts LANDED FAIL 11/13
+clbrhs03 BinomialHeap saltdiet ts LANDED PASS 13/13
+clbrrp01 LinearScan plain ts LANDED PASS 9/9
+clbrrp02 LinearScan plain ts LANDED PASS 9/9
+clbrrp03 LinearScan plain ts LANDED PASS 9/9
+clbrrs01 LinearScan saltdiet ts CAP-COST FAIL 4/9
+clbrrs02 LinearScan saltdiet ts LANDED PASS 9/9
+clbrrs03 LinearScan saltdiet ts DIALOG FAIL 4/9
+rows 72 unique 72

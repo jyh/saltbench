@@ -1,0 +1,37 @@
+clbvys01	Luby	USED	clean-run-after-last-write	ok
+clbvys02	Luby	USED	clean-run-after-last-write	ok
+clbvys03	Luby	USED	clean-run-after-last-write	ok
+clbvas01	AES	USED	clean-run-after-last-write	ok
+clbvas02	AES	USED	clean-run-after-last-write	ok
+clbvas03	AES	USED	clean-run-after-last-write	ok
+clbvvs01	Liveness	USED	clean-run-after-last-write	ok
+clbvvs02	Liveness	USED	clean-run-after-last-write	ok
+clbvvs03	Liveness	USED	clean-run-after-last-write	ok
+clbvxs01	MaxFlow	USED	clean-run-after-last-write	ok
+clbvxs02	MaxFlow	USED	clean-run-after-last-write	ok
+clbvxs03	MaxFlow	USED	clean-run-after-last-write	ok
+clbvhs01	BinomialHeap	USED	clean-run-after-last-write	ok
+clbvhs02	BinomialHeap	USED	clean-run-after-last-write	ok
+clbvhs03	BinomialHeap	USED	clean-run-after-last-write	ok
+clbvrs01	LinearScan	USED	clean-run-after-last-write	ok
+clbvrs02	LinearScan	USED	clean-run-after-last-write	ok
+clbvrs03	LinearScan	USED	clean-run-after-last-write	ok
+clbrys01	Luby	USED	clean-run-after-last-write	ok
+clbrys02	Luby	USED	clean-run-after-last-write	ok
+clbrys03	Luby	USED	clean-run-after-last-write	ok
+clbras01	AES	USED	clean-run-after-last-write	ok
+clbras02	AES	USED	clean-run-after-last-write	ok
+clbras03	AES	USED	clean-run-after-last-write	ok
+clbrvs01	Liveness	USED	clean-run-after-last-write	ok
+clbrvs02	Liveness	USED	clean-run-after-last-write	ok
+clbrvs03	Liveness	USED	clean-run-after-last-write	ok
+clbrxs01	MaxFlow	USED (unverified)	NO-clean-run-after-last-write	ok
+clbrxs02	MaxFlow	USED	clean-run-after-last-write	ok
+clbrxs03	MaxFlow	USED (partial)	clean-run-after-last-write	ok
+clbrhs01	BinomialHeap	USED	clean-run-after-last-write	ok
+clbrhs02	BinomialHeap	USED	clean-run-after-last-write	ok
+clbrhs03	BinomialHeap	USED	clean-run-after-last-write	ok
+clbrrs01	LinearScan	USED (unverified)	NO-clean-run-after-last-write	ok
+clbrrs02	LinearScan	USED	clean-run-after-last-write	ok
+clbrrs03	LinearScan	USED (partial)	clean-run-after-last-write	ok
+salt-diet cells 36 · conflicts 0
