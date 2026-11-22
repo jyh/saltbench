@@ -1,0 +1,4 @@
+source: tally.tsv (wall_seconds from wa_facts.py) · price: ta_price.out at saltbench 01524618
+Luby plain+statement Flash: n 3 · cells talfp101 talfp201 talfp301 · walls 387.0 401.0 492.5 · median 401.0 s · sum 1280.5 s · NA median 361.3 s · median ratio x1.110 · PASS 3/3 · TRUNCATED 0
+Luby salt-diet+statement Flash: n 3 · cells talfs101 talfs201 talfs301 · walls 866.9 961.6 513.9 · median 866.9 s · sum 2342.4 s · NA median 992.8 s · median ratio x0.873 · PASS 3/3 · TRUNCATED 0
+Luby Flash sextet: sum of cell wall 3622.9 s against the registered Luby Flash price 1084+2978 = 4062 s

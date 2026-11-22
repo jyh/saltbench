@@ -1,0 +1,14 @@
+Luby Flash plain: TA median 401.0 s · NA median 361.3 s · ratio 1.110
+Luby Flash salt-diet: TA median 866.9 s · NA median 992.8 s · ratio 0.873
+AES plain: registered 1246 s · re-cut 1383 s
+AES salt-diet: registered 3788 s · re-cut 3307 s
+Liveness plain: registered 1130 s · re-cut 1254 s
+Liveness salt-diet: registered 3426 s · re-cut 2992 s
+MaxFlow plain: registered 1375 s · re-cut 1526 s
+MaxFlow salt-diet: registered 3666 s · re-cut 3201 s
+BinomialHeap plain: registered 1255 s · re-cut 1393 s
+BinomialHeap salt-diet: registered 5737 s · re-cut 5009 s
+LinearScan plain: registered 2690 s · re-cut 2985 s
+LinearScan salt-diet: registered 13064 s · re-cut 11408 s
+Flash Luby spent 3622.9 s of cell wall (registered 4062 s)
+Flash AES..LinearScan: registered 37377 s = 10.4 h · re-cut 34459 s = 9.6 h

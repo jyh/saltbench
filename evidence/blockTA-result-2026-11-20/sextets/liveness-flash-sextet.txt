@@ -1,0 +1,10 @@
+source: tally.tsv (wall_seconds from wa_facts.py) · price: ta_price.out at saltbench 01524618 · problem Liveness
+Liveness plain+statement Flash: n 3 · tavfp101 tavfp201 tavfp301 · walls 317.0 378.6 412.4 · median 378.6 s · NA median 376.5 · x1.006 · PASS 3/3 (11/11 11/11 11/11) · TRUNCATED 0 · exit71 0 · clients {'780ee763'} · interfaces {'87ecc3aa5a6eea59'}
+Liveness salt-diet+statement Flash: n 3 · tavfs101 tavfs201 tavfs301 · walls 776.1 701.5 751.2 · median 751.2 s · NA median 1142.1 · x0.658 · PASS 3/3 (11/11 11/11 11/11) · TRUNCATED 0 · exit71 0 · clients {'780ee763'} · interfaces {'87ecc3aa5a6eea59'}
+Liveness Flash sextet: cell wall 3336.8 s against the registered price 4556 s
+  tavfp101 statement: USED-AS-EXEC IN TESTS (solution.rs 0/35 names, 0/3 ensures, no verus; tests/driver.rs transcribes the statement s_* fns as exec spec_* (spec_bit, spec_defs_mask, spec_is_term, spec_input_wf ...) as an oracle; LANDING quotes the clause !s_input_wf(prog@) ==> ...; NOTE my name needle misses the s_->spec_ rename)
+  tavfs101 statement: USED (auto: 3/3 ensures lines verbatim; 35/35 spec names; subject verus last 67 verified 0 errors; assume/admit/external 0; self-reported)
+  tavfp201 statement: PARTIAL EXEC USE (0/3 ensures, no verus; 3/35 spec names in solution.rs: s_bit, s_block_wf, s_labels_distinct; LANDING follows the statement by name: "matching s_input_wf from REQUIREMENTS.md", s_ud, s_bsucc, s_iter, s_step)
+  tavfs201 statement: USED (auto: 3/3 ensures lines verbatim; 35/35 spec names; subject verus last 59 verified 0 errors; assume/admit/external 0; self-reported)
+  tavfp301 statement: USED-AS-EXEC IN TESTS (solution.rs 0/35 names, 0/3 ensures, no verus; tests/ carry 1 statement name as-is and 6 as s_->spec_ renames; LANDING cites s_input_wf and s_index_of for its edge cases)
+  tavfs301 statement: USED (auto: 3/3 ensures lines verbatim; 35/35 spec names; subject verus last 77 verified 0 errors; assume/admit/external 0; self-reported)

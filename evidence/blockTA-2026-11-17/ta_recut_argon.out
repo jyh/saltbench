@@ -1,0 +1,14 @@
+Luby argon plain: TA median 816.9 s · registered per cell 458.7 s · ratio 1.781
+Luby argon salt-diet: TA median 1141.2 s · registered per cell 1372.0 s · ratio 0.832
+AES plain: registered 1581 s · re-cut 2816 s
+AES salt-diet: registered 5234 s · re-cut 4354 s
+Liveness plain: registered 1434 s · re-cut 2554 s
+Liveness salt-diet: registered 4735 s · re-cut 3938 s
+MaxFlow plain: registered 1745 s · re-cut 3108 s
+MaxFlow salt-diet: registered 5066 s · re-cut 4214 s
+BinomialHeap plain: registered 1593 s · re-cut 2837 s
+BinomialHeap salt-diet: registered 7928 s · re-cut 6594 s
+LinearScan plain: registered 3414 s · re-cut 6080 s
+LinearScan salt-diet: registered 18054 s · re-cut 15017 s
+argon Luby spent 5636.6 s of cell wall (registered 5492 s)
+argon AES..LinearScan: registered 50784 s = 14.1 h · re-cut 51512 s = 14.3 h
