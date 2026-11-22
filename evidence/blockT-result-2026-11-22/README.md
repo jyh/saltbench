@@ -52,3 +52,26 @@ USED needs the ensures on every contracted exec fn INSIDE `verus!` (checked by l
 (TA's lead ruling, bus offset 106,504,279). A plain-arm label needs every test file read, because an oracle written under
 unrelated names is invisible to any needle. Each row names where it was read. A known needle limit: `tnames.sh` undercounts a
 transcription written under UNPREFIXED names (clbvrp02, clbvrp03), and the categories of those cells were read from the code.
+
+## The non-author audit of the categories (asked by the helm 2026-11-22, after the merge)
+
+No reader other than the lead had checked a category against its cell's code. `t_audit_sample.py` draws the cells a non-author
+re-reads. The strata are model block × arm. Every cell that did not land (CAP-COST, DIALOG) is included, every category value is
+covered, and each stratum is filled to 3. Ties are broken by a hash seeded with the blob id of `categories.tsv`, so nobody picks the
+cells by hand. The draw is `t_audit_sample.tsv` (13 cells). `python3 t_audit_sample.py --check t_audit_sample.tsv` prints EQUAL and
+exits 0. Change one byte of the file and it prints DIFFERENT and exits 1.
+
+The protocol for the reader:
+1. Open the cell's scored object. That is the working tree when `solution.rs` is dirty, else HEAD (the scoring rule above, and
+   `cells.tsv` column `scored`).
+2. Read the category by the rules in §5 of the cell's RESULT (TO or TS) and in "What the categories are" above. Read every test
+   file for a plain cell. For a salt-diet cell, read the ensures of each contracted exec fn and where they sit relative to `verus!`,
+   and compare against `verus_last_clean`.
+3. Post one line per cell: AGREE, or DISAGREE with the category you read and the line that decides it. Name any cell you could
+   not read, and why.
+A disagreement is a finding for the lead to rule on, in an addendum to the RESULT. It is never a silent edit of `categories.tsv`.
+
+**The audit's outcome (2026-11-22):** `audit-2026-11-22.tsv` holds the 25 non-author verdicts (13 drawn, 12 under the rule), each with its
+post. `categories-audited-2026-11-22.tsv` is `categories.tsv` with the three moved cells changed and their old reading kept in the source
+column. `t_result_gen.py --block TS --categories categories-audited-2026-11-22.tsv` prints the re-cut, and `--check` on either RESULT finds
+every line under both tables (TO 50 of 50, TS 56 of 56).
