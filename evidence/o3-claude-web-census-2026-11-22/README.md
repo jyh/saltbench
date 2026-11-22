@@ -7,7 +7,7 @@ both again in `--disallowedTools`. 728 of the 748 transcript directories join to
 the subjects' calls to a tool struck the same way (SendMessage, 3 of 3, "No such tool available"). What this does NOT show is
 the client refusing a web call, because no subject ever made one. Section 4 adds the client's own offered tool list under the
 cell launch line, on both clients the launches used: neither web tool is offered, with either layer alone (the fence's
-`permissions.deny`, or the tool flags), and a control with both layers lifted shows the list can name them.
+`permissions.deny`, or the two tool flags together), and a control with both layers lifted shows the list can name them.
 
 **Why it was run.** Paper v5 (saltbench #459) narrowed its abstract's isolation clause to the Claude lane. The CLI's own web
 tools run outside the subprocess sandbox; the rendered fence lists both under `permissions.deny`, and cells launch with
@@ -77,8 +77,14 @@ it from `CLAUDE_CONFIG_DIR` and refuses when it is unset, and that is the only l
   control   26 tools · WebFetch+WebSearch    25 tools · WebFetch+WebSearch
 ```
 Each control names both web tools, so the init list can see them, and each other arm's NONE is readable. Under
-`--dangerously-skip-permissions` the fence's deny alone removes both web tools from what the client offers, and the tool
-flags alone do too. The cell launch line has both. `EndConversation`, answered in two cells (section 3), is in no arm's list,
+`--dangerously-skip-permissions` the fence's deny alone removes both web tools from what the client offers, and the pair of
+tool flags does too. Which of the two flags does it is not separated: the flags arm passes `--tools` (no web tool) AND
+`--disallowedTools` (naming both). The cell launch line has both layers.
+
+The **cell** arm reconstructs the launch line; it is not a copy of one. Against `clbvrs01`'s own ARGV line it omits
+`--name` and `--agents`, runs `claude-sonnet-5` at effort low where the cell ran `claude-opus-5` at effort high, and passes
+the fence once where the launch passes the same fence path twice. The tool flags, `--strict-mcp-config`,
+`--setting-sources user,project`, `--dangerously-skip-permissions` and the fence are the launch's. `EndConversation`, answered in two cells (section 3), is in no arm's list,
 so the init list is not every name the client will answer either.
 
 ## Positive controls for section 1
