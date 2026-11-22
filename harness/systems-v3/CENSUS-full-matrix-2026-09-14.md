@@ -1909,3 +1909,129 @@ DONE 72 · DECLARED 24 · NOT DONE 120 = 216. "Released" and "firing" are states
 ## §AP3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
 Nothing about a spec-change reached from a phase 1 that did not land (the two reach losses are counted, never scored), nothing
 Opus-versus-Sonnet, nothing about the salt method. Every premium in both results is UNRESOLVED-UNDERPOWERED as registered.
+
+---
+# ⚖️ ADDENDUM 46 — **O37: BLOCK NC IS A RESULT OF RECORD. 22 CONDITIONS MOVE TO DONE; 2 ARE DECLARED UNREACHED (LinearScan × spec-change × salt-diet, both models: no source reached phase 2). THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-17, in the same commit as `RESULT-claude-blockNCO-2026-11-17.md` and `RESULT-claude-blockNCS-2026-11-17.md` (§C8: the census section is re-cut with the result).
+
+## §AQ1 · WHAT MOVED
+Block NC (`AMENDMENT-O37-blockNC-specchange-claude-2026-11-13.md`, ADDENDA 1–5) has its 72 condition-cells ended and two result files.
+22 conditions have cells of record and move to DONE, at the n each record states (Opus LinearScan plain at n = 2, Sonnet MaxFlow
+salt-diet at n = 1, the rest n = 3). **Two conditions have NO cell of record:** Opus LinearScan salt-diet (three fresh sources ended
+CAP-COST) and Sonnet LinearScan salt-diet (two ended CAP-COST; one landed and failed its G baseline, 6 of 9). No phase 2 exists for
+either, and §C2 never re-runs a reach loss, so they are DECLARED unreached, beside the section, as the pilot's DECLARED are. DONE is not
+a verdict on the arms. ⚠️ Every Liveness failure in both results is one clause test (each result's §1); it is put to a non-builder read
+as a possible suite defect (§C6 item 4) and no arm reading rests on it.
+
+## §AQ2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-17)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (ADDENDUM 44)   4
+                 block WC: NTT, WHT x spec-change x {plain, salt-diet} x {Opus, Sonnet} (ADDENDUM 45)  8
+                 block NC: the six block-N problems x spec-change, Claude lane (this), 24 less 2  22
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+                 block NC: LinearScan x spec-change x salt-diet x {Opus, Sonnet}, unreached (this)  2
+    NOT DONE     WHT and NTT, the other 24:
+                   x statement, both lanes; x spec-change, agy lane: in no block                     24
+                 the six block-N problems x {statement, spec-change}, the other 72:
+                   x statement, Claude lane, block T: released to build (council 2026-11-14)        24
+                   x {statement, spec-change}, agy lane: in no block                                48
+```
+DONE 94 · DECLARED 26 · NOT DONE 96 = 216. "Released" is a state of a registration, never of a result.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AQ3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing about a spec-change reached from a phase 1 that did not land, nothing Opus-versus-Sonnet, nothing about the salt method. Every
+premium in both results is UNRESOLVED-UNDERPOWERED as registered.
+
+---
+## ADDENDUM 46, NOTE 1 (2026-11-17, bench) — appended; no count moves
+ADDENDUM 46 put block NC's six Liveness clause failures to a non-builder read as a possible suite defect. systems' read (bus offset
+105,218,390) answers YES: the clause test fixes one reading of the card's "sweep" and all six cells counted another reading the card
+admits. The cells stand as they fell and no O37 count moves (DONE 94 · DECLARED 26 · NOT DONE 96 = 216); both block NC results carry
+it as their ADDENDUM 1; the card is amended before any later Liveness run.
+
+
+
+---
+
+# ⚖️ ADDENDUM 47 — **O37: A LIMIT ON THREE agy CELLS OF RECORD: THE CLIENT SERVED THEM A WEB SEARCH (WEB-SERVED). NO COUNT MOVES; NOTHING IS VOIDED; THE THREE LEAVE EVERY COMPARISON.**
+## gemini (the hand), 2026-11-20, on the lead's ruling on the bus (2026-11-20 00:29:42, helm-reversible). Appended; everything above is unchanged.
+
+## §AR1 · WHAT WAS FOUND
+The client's main stream records `search_web` as a step that goes ACTIVE then DONE with no result body, so a stream cannot tell a served call from a denied one; the client's own conversation record (the brain transcript under the cell's `.agyhome`) carries the result. Read there, every `search_web` call on the run box was served (96 of 96), and the canonical PreToolUse hook, registered in each of these cells, denied none. Level 6 AMENDMENT A5.2's "0 of the 48 served" and A6.4's "0 network-tool results were served" were stream censuses; both carry a correction addendum of this date.
+
+## §AR2 · THE CELLS OF RECORD OF THIS MATRIX DECLARED WEB-SERVED
+Of 272 agy cells of record, every one with a brain transcript, 269 were served nothing and three were served a search:
+
+- `l5psra202` (gemini-3.8-flash-high, salt-diet): 1 search result(s) served; first query *"verus" "failed this postcondition" forall exists*
+- `l6vbpp02` (gemini-3.8-flash-high, plain): 1 search result(s) served; first query *"ARMRECV" receipt*
+- `l7npfs01` (gemini-3.1-pro-high, salt-diet): 1 search result(s) served; first query *docs/STATEMENTS.md*
+
+Blocks NA (5 cells) and ZF (2) carry the same declaration in their RESULTs; blocks WA and TA were served nothing.
+
+## §AR3 · WHAT THIS ADDENDUM DOES NOT DO
+**No count in this census moves:** a DONE reports its condition's outcome, and nothing is voided (A5.2 voids only FENCE-TAMPER). The three cells leave every comparison; the re-cut of the tables is a separate change. Nothing here is about the salt method.
+
+Source: `evidence/o37-agy-web-served-2026-11-20/` (README: method, controls, limits).
+
+# ⚖️ ADDENDUM 48 — **THE CLAUDE LANE CALLED NO WEB TOOL: 0 `WebSearch`/`WebFetch` CALLS IN 3,175 CELL TRANSCRIPTS ON THE RUN BOX, AND EVERY RECORDED LAUNCH LEFT BOTH OFF THE SUBJECT'S TOOL SURFACE. NO COUNT MOVES. A WEB CALL'S REFUSAL IS NOT SHOWN, BECAUSE NONE WAS MADE.**
+## bench, 2026-11-22. Appended; everything above is unchanged.
+
+## §AS1 · WHAT WAS MEASURED
+Every Claude-lane cell transcript on the run box (748 cell project directories, 3,175 transcripts, subagent transcripts included, no file counted twice) was searched for a `WebSearch` or `WebFetch` tool call. There are 0, and the two names are absent from the full list of tool names the cells called. The parser can see such calls: a planted transcript reads one call in each class (SERVED, REFUSED, NO-RESULT), and two real session transcripts from outside the cells read 10 web calls, all SERVED. The launch records explain the zero: all 786 recorded Claude-lane launches pass a `--tools` allowlist without the web tools and strike both again in `--disallowedTools`, and 728 of the 748 transcript directories join to such a launch by cell id (the other 20 are probe and test cells with no launch line; they read 0 too). The client refused the subjects' calls to a tool struck the same way (`SendMessage`, 3 of 3, "No such tool available"), but answered a built-in tool that was neither offered nor struck (`EndConversation`, 2 of 2). So the surface is not exactly the `--tools` list. The client's own offered tool list, read under the cell launch line on both clients the launches used (2.1.259 and 2.1.280), names neither web tool, with the fence's `permissions.deny` alone or the two tool flags together; a control with both lifted names both, so the list can see them. The probe's launch line reconstructs the cells' (the tool flags, the fence, the sandbox and permission flags are theirs; `--name`, `--agents`, the model and the effort are not).
+
+## §AS2 · WHY, AND WHAT IT REPLACES
+Paper v5 narrowed its abstract's isolation clause to the Claude lane. The CLI's own web tools run outside the subprocess sandbox; the cell fence denies both, but cells launch with `--dangerously-skip-permissions`, so the outcome was measured rather than assumed. A first run on 2026-11-20 (cited in the v5 read on the bus) took the per-account config dirs only: 560 directories, 2,522 transcripts, 0 calls. It missed 183 directories of the earlier harness config dirs. This addendum's run includes them, and it is the census of record. The 11-20 output is kept beside it.
+
+## §AS3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+What the client would do with a `WebSearch` call that a subject emitted anyway, although it was not offered: none was emitted, and the client's handling of unoffered names is not uniform (`SendMessage` refused, `EndConversation` answered). It also says nothing about network use through the subjects' own shell commands, which is the subprocess sandbox's question. Run-box records only, joined to launches by cell id, not to the cells of record. **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** Nothing here is about the salt method.
+
+Source: `evidence/o3-claude-web-census-2026-11-22/` (README: the census, the launch surface, off-surface calls, the client's offered tool list, the population fix, controls, limits).
+
+---
+
+# ⚖️ ADDENDUM 49 — **O37: BLOCK T IS A RESULT OF RECORD. 24 CONDITIONS MOVE TO DONE (the six block-N problems × statement × {plain, salt-diet} × {Opus, Sonnet}, Claude lane), EACH AT n = 3. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-22, in the same commit as `RESULT-claude-blockTO-2026-11-22.md` and `RESULT-claude-blockTS-2026-11-22.md` (§T9: the census section is re-cut with the result).
+
+## §AT1 · WHAT MOVED
+Block T (`AMENDMENT-O37-statement-six-claude-2026-11-11.md`, ADDENDA 1–5) has its 72 cells ended and two result files. All 72 are cells
+of record: 66 LANDED, 4 CAP-COST (scored as they stood at the cap), and 2 DIALOG (of record by block SB's `clbbps01` precedent). No
+cell is VOID by §T7. One cell (`clbrrp03`) was staged inside the 2026-11-22 sitting; it stays of record by the helm's decision, written
+into the Sonnet result as a fact. The line, printed by `evidence/blockT-result-2026-11-22/t_result_gen.py --census`:
+```
+block T: the six block-N problems x statement, Claude lane: 24 conditions, 24 at n = 3, cells of record 72
+block T spend: COST (capped at the cap) $1,120.18 · metered $1,121.72 · Luby $182.71 metered
+```
+DONE is not a verdict on the arms. Block T's spend sits below the registered price of $1,253.64 and ADDENDUM 5's re-cut of $1,360.98, and
+inside the ceiling of $2,679.12.
+
+## §AT2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-22)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (ADDENDUM 44)   4
+                 block WC: NTT, WHT x spec-change x {plain, salt-diet} x {Opus, Sonnet} (ADDENDUM 45)  8
+                 block NC: the six block-N problems x spec-change, Claude lane (ADDENDUM 46)        22
+                 block T: the six block-N problems x statement, Claude lane (this)                  24
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+                 block NC: LinearScan x spec-change x salt-diet x {Opus, Sonnet}, unreached (ADDENDUM 46)  2
+    NOT DONE     WHT and NTT, the other 24:
+                   x statement, both lanes; x spec-change, agy lane: in no merged block              24
+                 the six block-N problems x {statement, spec-change}, agy lane, the other 48:
+                   x statement, agy lane: block TA, its result on its registration branch, unmerged  24
+                   x spec-change, agy lane: in no merged block                                       24
+```
+DONE 118 · DECLARED 26 · NOT DONE 72 = 216. Block TA's 24 move when its result reaches `main` with its own addendum, not here.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AT3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing Opus-versus-Sonnet, nothing about the statement arm versus `extras = none` across blocks (§T8.3), nothing about the salt method.
+Every premium in both results is UNRESOLVED-UNDERPOWERED as registered.
+
+Source: `evidence/blockT-result-2026-11-22/` (README: the per-cell table, the categories as read, the derive, the generator, the checks).

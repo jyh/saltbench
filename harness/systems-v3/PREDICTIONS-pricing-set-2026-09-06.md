@@ -258,3 +258,13 @@ beat goes stale. A launch with no heartbeat is REFUSED, with `WATCH_BEAT=none` a
 📌 Recorded because the fix changed what the earlier gate could mean: **a gate written against an unbounded
 risk is not automatically right once the risk is bounded**, and leaving the old wording would have made a
 180-second exposure read as a violation of a clause it now satisfies.
+
+
+
+---
+
+## ⚖️ ADDENDUM — O37, 2026-11-20: "THE INTERNET IS OFF IN EVERY SCORED CELL" DID NOT HOLD ON THE agy LANE. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+*"The internet is OFF in every scored cell"* (council item 1, in the set's rules above) is a design rule, and on the agy lane it was not met: the client served `search_web` results to 10 agy cells of record (matrix 3, block NA 5, block ZF 2; 80 results). The Claude lane is not measured by that census. The rule stands as the design; the cells are declared WEB-SERVED in their RESULTs and leave every comparison. Source: `evidence/o37-agy-web-served-2026-11-20/`.

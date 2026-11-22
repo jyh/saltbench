@@ -1,0 +1,9 @@
+EndConversation	ok	cells-clb-ncs-linearscan-plain-clblrp03-repo	Re-read the EndConversation tool guidance below. Confirm this conversation meets those criteria and that you are certain you want to end it. If so, call EndConv
+EndConversation	ok	cells-clb-sbs-crc32-plain-clbucp03-repo	You are running as a background fork of the main conversation (for example memory consolidation), and this tool does nothing here: it can end neither the main c
+Grag	is_error	cells-clb-sc-paxos-plain-clbcpp02-repo	<tool_use_error>Error: No such tool available: Grag</tool_use_error>
+Grash	is_error	cells-clb-ts-binomialheap-saltdiet-clbrhs02-repo	<tool_use_error>Error: No such tool available: Grash</tool_use_error>
+SendMessage	is_error	cells-clb-fh-freelist-plain-clbhfp02-repo	<tool_use_error>Error: No such tool available: SendMessage. SendMessage is disabled for this session, in subagents as well as here.</tool_use_error>
+SendMessage	is_error	cells-clb-fx-freelist-plain-clbxfp03-repo	<tool_use_error>Error: No such tool available: SendMessage. SendMessage is disabled for this session, in subagents as well as here.</tool_use_error>
+SendMessage	is_error	cells-specchange-2-9e6c8d4d-repo	<tool_use_error>Error: No such tool available: SendMessage. SendMessage is disabled for this session, in subagents as well as here.</tool_use_error>
+Str_replace_editor	is_error	cells-clb-ts-maxflow-saltdiet-clbrxs02-repo	<tool_use_error>Error: No such tool available: Str_replace_editor</tool_use_error>
+OFF-SURFACE CALLS 8

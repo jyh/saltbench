@@ -163,3 +163,56 @@ Over the complete matrix's agy cells of record: **salt-diet 32 of 141 (34 counti
 to manufacture a salt-diet advantage, but its sign on cost and outcome is not measured here. A hit is a failure the
 stream PRINTED, not a changed outcome, and no figure above is re-read. Source: `evidence/o37-agy-tmpclaude-2026-11-15/` (README: method, controls, limits).
 The Claude lane is not measured by it.
+
+## ⚖️ ADDENDUM — O37, 2026-11-20: FIVE LinearScan FLASH CELLS OF THIS RECORD WERE SERVED WEB SEARCHES (WEB-SERVED), 51 RESULTS. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+The client's main stream records `search_web` as a step that goes ACTIVE then DONE with no result body, so a stream cannot tell a served call from a denied one; the client's own conversation record (the brain transcript under the cell's `.agyhome`) carries the result. Read there, every `search_web` call on the run box was served (96 of 96), and the canonical PreToolUse hook, registered in each of these cells, denied none.
+
+**Declared WEB-SERVED, of this record** (one more call, a `read_url_content` in `nalsfp202`, was denied by the client's permission layer):
+
+- `nalsfp201` (gemini-3.8-flash-high, plain): 7 search result(s) served; first query *"Poletto and Sarkar" "Linear scan register allocation" spill*
+- `nalsfp202` (gemini-3.8-flash-high, plain): 16 search result(s) served; first query *"Poletto" "Sarkar" "Linear scan register allocation" spill*
+- `nalsfp203` (gemini-3.8-flash-high, plain): 22 search result(s) served; first query *"Linear scan register allocation" "Poletto" "live interval"*
+- `nalsfs202` (gemini-3.8-flash-high, salt-diet): 3 search result(s) served; first query *"Poletto" "Sarkar" "Linear scan register allocation" "live interval" endpoints overlap*
+- `nalsfs203` (gemini-3.8-flash-high, salt-diet): 3 search result(s) served; first query *"Poletto" "Sarkar" "Linear scan register allocation" spill register rewrite*
+
+The queries name the algorithm's source paper. All five are Flash × LinearScan, in the r2 roots; plain carries 45 of the 51.
+
+No cell is voided (level 6 A5.2 registered that the agy fence makes no web-isolation claim and voids only FENCE-TAMPER). A WEB-SERVED cell keeps its verdict and **leaves every comparison**: an input from outside the arm, of unknown sign. The table re-cuts, where a comparison loses a cell, are a separate change; no figure above is re-read here.
+
+Source: `evidence/o37-agy-web-served-2026-11-20/`. The other 68 cells of this record have a brain transcript and were served nothing.
+
+## ⚖️ ADDENDUM — O37, 2026-11-20 (re-cut): THE FIVE WEB-SERVED LinearScan FLASH CELLS OUT OF §3: WHAT MOVES. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+Printed by `recut.py` in `evidence/o37-agy-web-served-2026-11-20/recut/`: the instrument that printed this file, run on its input of record (OLD, which reproduces this file's tables exactly: the control) and with the WEB-SERVED cells taken out (NEW, by the route the instrument already has). No instrument was changed. **Nothing above is replaced:** the tables of record stand as printed, and this is the comparison without the WEB-SERVED cells, beside them. It says nothing about the salt method.
+
+`recut/blockNA-moved.txt`, verbatim (OLD = the record, NEW = without the WEB-SERVED cells; GONE/ADDED = a row on one side only):
+
+```
+@@ -1,3 +1,3 @@
+-cells in n 72 · outside n 1 (nabhfsr01) · conditions 24
+-exports 59508ac 8ed8cb3 e10f420 · task trees vs e54f35a DIFFERENT 12 SAME 60 · x86-concurrent cells 0
+-done_reason LANDED 69 · TURN-TIMEOUT 3
++cells in n 67 · outside n 1 (nabhfsr01) · conditions 23
++exports 59508ac 8ed8cb3 e10f420 · task trees vs e54f35a DIFFERENT 7 SAME 60 · x86-concurrent cells 0
++done_reason LANDED 64 · TURN-TIMEOUT 3
+@@ -16 +16 @@
+-== gemini-3.8-flash-high: 36 cells
++== gemini-3.8-flash-high: 31 cells
+@@ -22,3 +22,3 @@
+-  LinearScan   plain 3/3 scored of 3 fired [9/9 9/9 9/9] trunc 0 · salt-diet 2/3 scored of 3 fired [9/9 8/9 9/9] trunc 3
+-  gemini-3.8-flash-high plain FULL PASS 18 of 18 scored · cut turns 0 of 55 sent · truncated cells 0 of 18 · cells with any cut 0
+-  gemini-3.8-flash-high salt-diet FULL PASS 16 of 17 scored · cut turns 18 of 72 sent · truncated cells 4 of 18 · cells with any cut 5
++  LinearScan   plain 0/0 scored of 0 fired [] trunc 0 · salt-diet 1/1 scored of 1 fired [9/9] trunc 1
++  gemini-3.8-flash-high plain FULL PASS 15 of 15 scored · cut turns 0 of 45 sent · truncated cells 0 of 15 · cells with any cut 0
++  gemini-3.8-flash-high salt-diet FULL PASS 15 of 15 scored · cut turns 14 of 61 sent · truncated cells 2 of 16 · cells with any cut 3
+@@ -27 +27 @@
+-  (ii) gemini-3.8-flash-high salt-diet cells-with-a-cut in reference-size order 0 0 1 0 1 3 · non-decreasing NO
++  (ii) gemini-3.8-flash-high salt-diet cells-with-a-cut in reference-size order 0 0 1 0 1 1 · non-decreasing NO
+
+#RECUT blockNA: 8 old line(s), 8 new line(s)
+```

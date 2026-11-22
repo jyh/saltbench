@@ -1,0 +1,17 @@
+~/cells-l5-paxos-saltdiet-refire-a2/l5psra202	c21ff0eb-6c46-4d34-95cb-5b799dceb912	search_web	1	1	0	0	0	"verus" "failed this postcondition" forall exists
+~/cells-l6v-paxos-flash-plain-bf/l6vbpp02	a0b542b2-15c8-469f-a626-f18924496ca0	search_web	1	1	0	0	0	"ARMRECV" receipt
+~/cells-l7-freelist-pro-salt-bare-bf/l7npfs01	889411d5-865b-470c-93d4-00bb74435c6c	search_web	1	1	0	0	0	docs/STATEMENTS.md
+~/cells-l8-lzw-flash-plain-sc/l8zfps02	f4508964-3948-4943-889a-54cd48c4e662	search_web	8	8	0	0	0	"checksum for" "could not be calculated, but a checksum is listed in the existing lock file" cargo
+~/cells-l8-lzw-flash-plain-sc/l8zfps02	f4508964-3948-4943-889a-54cd48c4e662	read_url_content	1	0	1	0	0	https://docs.rs/cargo/latest/cargo/sources/directory/struct.DirectorySource.html
+~/cells-l8-paxos-flash-plain-sc/l8xfps03	20562f71-f091-457c-94d7-2b0d73447f17	search_web	8	8	0	0	0	"unrecognized .cargo-ok content" cargo
+~/cells-l8-paxos-flash-plain-sc/l8xfps03	20562f71-f091-457c-94d7-2b0d73447f17	read_url_content	1	0	1	0	0	https://raw.githubusercontent.com/rust-lang/cargo/rust-1.88.0/src/cargo/core/package.rs
+~/cells-na-linearscan-flash-plain-r2/nalsfp201	fb140924-dad9-41f8-975f-7482e31d8538	search_web	7	7	0	0	0	"Poletto and Sarkar" "Linear scan register allocation" spill
+~/cells-na-linearscan-flash-plain-r2/nalsfp202	74d0b70b-49ee-4a10-a8dd-f2df03d6600d	search_web	16	16	0	0	0	"Poletto" "Sarkar" "Linear scan register allocation" spill
+~/cells-na-linearscan-flash-plain-r2/nalsfp202	74d0b70b-49ee-4a10-a8dd-f2df03d6600d	read_url_content	1	0	1	0	0	https://bernsteinbear.com/blog/linear-scan-register-allocation/
+~/cells-na-linearscan-flash-plain-r2/nalsfp203	1eccd855-55dc-4efb-a732-05255aed7608	search_web	22	22	0	0	0	"Linear scan register allocation" "Poletto" "live interval"
+~/cells-na-linearscan-flash-salt-r2/nalsfs202	1a9ea672-77a9-44f5-bce8-c218b582ea89	search_web	3	3	0	0	0	"Poletto" "Sarkar" "Linear scan register allocation" "live interval" endpoints overlap
+~/cells-na-linearscan-flash-salt-r2/nalsfs203	b19a3b64-d5be-4713-8386-1cb6ea094bca	search_web	3	3	0	0	0	"Poletto" "Sarkar" "Linear scan register allocation" spill register rewrite
+~/cells-zf-paxos-flash-salt-bf-bare-r1/zffpbns101	e29eaa74-5f8d-4a2f-8b4e-e0b1af943c67	search_web	19	19	0	0	0	"Paxos" "inductive invariant" verus OR dafny
+~/cells-zf-paxos-flash-salt-gf-bare-r2-a2/zffpgns2a201	5fe56f75-dd00-4bb4-a2c1-d10c70572739	search_web	7	7	0	0	0	"paxos" verus proof agreement validity
+~/cells-zf-paxos-flash-salt-gf-bare-r2-a2/zffpgns2a201	5fe56f75-dd00-4bb4-a2c1-d10c70572739	read_url_content	1	0	1	0	0	https://raw.githubusercontent.com/nano-o/ivy-proofs/master/paxos/paxos.ivy
+#POPULATION transcripts=1775 unread=0 search_web:transcripts=12,calls=96,served=96,denied=0,other=0,no_result=0 read_url_content:transcripts=4,calls=4,served=0,denied=4,other=0,no_result=0

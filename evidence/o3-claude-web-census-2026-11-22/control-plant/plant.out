@@ -1,0 +1,8 @@
+cell project dirs 1 · transcript files 1 · control Bash tool_use 1
+SERVED	WebSearch	cells-ctl-plant	results: a b c
+REFUSED	WebFetch	cells-ctl-plant	Permission to use WebFetch has been denied.
+NO-RESULT	WebSearch	cells-ctl-plant	
+WEB CALLS 3 · {('WebSearch', 'SERVED'): 1, ('WebFetch', 'REFUSED'): 1, ('WebSearch', 'NO-RESULT'): 1}
+distinct (slug, file) pairs 1
+block types (lines holding tool_use or tool_result): {'tool_use': 4, 'tool_result': 2}
+tool_use names: {'WebSearch': 2, 'WebFetch': 1, 'Bash': 1}

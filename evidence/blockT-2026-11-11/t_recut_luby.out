@@ -1,0 +1,8 @@
+model	arm	T_luby_n	T_luby_sum	N_luby_n	N_luby_sum	ratio	N_rest_sum	rest_recut
+opus	plain	3	42.53	3	27.25	1.561	228.32	356.41
+opus	salt-diet	3	70.33	3	56.62	1.242	358.82	445.71
+sonnet	plain	3	6.61	3	5.13	1.289	62.97	81.17
+sonnet	salt-diet	3	63.25	3	90.84	0.696	423.70	294.99
+T Luby spent $182.71 over 12 cells (capped 0).
+AES..LinearScan (60 cells): block N spend $1073.81; RE-CUT $1178.27.
+Block T re-cut total = Luby spent + rest re-cut = $1360.98 (registered price $1,253.64 for 72 cells).

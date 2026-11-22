@@ -1,0 +1,4 @@
+9c9
+< dirs = [d for d in glob.glob(home + '/.claude-account-*/projects/*') if 'cells' in os.path.basename(d)]
+---
+> dirs = [d for d in glob.glob(home + '/.claude*/projects/*') if 'cells' in os.path.basename(d)]
