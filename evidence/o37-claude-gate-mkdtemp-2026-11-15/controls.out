@@ -1,0 +1,14 @@
+== MUTANT (no hits)
+model	arm	GATE-HIT	clean	NO-TRANSCRIPT
+claude-opus-5	plain	0	65	0
+claude-opus-5	salt-diet	0	66	0
+claude-sonnet-5	plain	0	68	0
+claude-sonnet-5	salt-diet	0	60	0
+distinct GATE-HIT cells 0 
+== PLANT (clbbcp01, a Sonnet brownfield Crc32 plain cell)
+model	arm	GATE-HIT	clean	NO-TRANSCRIPT
+claude-opus-5	plain	0	65	0
+claude-opus-5	salt-diet	2	64	0
+claude-sonnet-5	plain	1	67	0
+claude-sonnet-5	salt-diet	5	55	0
+distinct GATE-HIT cells 7 clbbcp01 clbbcs03 clbbzs01 clbccs01 clbccs03 clbgfs02 d6b53ee4

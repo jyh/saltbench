@@ -1003,3 +1003,19 @@ two-lane-quiet window is **SCHEDULED for ~21:55**, posted to the lanes at 19:5x 
 **⇒ SIGNED.**
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+
+
+---
+
+## ⚖️ ADDENDUM — O37, 2026-11-20: A5.2's AND A6.4's WEB COUNTS FALL: A STREAM CANNOT SEE A RESULT, AND THE CLIENT SERVED EVERY SEARCH IT WAS ASKED FOR. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+**Corrected:** A5.2's *"the builder reports 0 of the 48 served"* and A6.4's *"network-tool results served 0"* and *"across the 196 agy streams the census read, 0 network-tool results were served"* were read from main streams. A6.4's own method note is the clue: *"a denied web tool leaves no result record at all"*, and a served one leaves none in the stream either. A6.4's `l5psra202` row (*"CALL records only, under a canonical hook whose deny list names search_web"*) is one call, and it was served.
+
+The client's main stream records `search_web` as a step that goes ACTIVE then DONE with no result body, so a stream cannot tell a served call from a denied one; the client's own conversation record (the brain transcript under the cell's `.agyhome`) carries the result. Read there, every `search_web` call on the run box was served (96 of 96), and the canonical PreToolUse hook, registered in each of these cells, denied none.
+
+A5.2's owed per-cell receipt (*"before any result of record is described as untouched on the web route"*) is now that file: `evidence/o37-agy-web-served-2026-11-20/`. Over 705 agy cells of record (levels 5-8 in the matrix, blocks NA, ZF, WA, TA), 10 are WEB-SERVED and 695 were served nothing; 0 are unmeasured. **A5.2's registered wording stands and now carries a measured counterexample:** the agy fence does not deny `search_web`. `read_url_content` was denied by the client's permission layer (4 of 4).
+
+No cell is voided (level 6 A5.2 registered that the agy fence makes no web-isolation claim and voids only FENCE-TAMPER). A WEB-SERVED cell keeps its verdict and **leaves every comparison**: an input from outside the arm, of unknown sign. The table re-cuts, where a comparison loses a cell, are a separate change; no figure above is re-read here.

@@ -904,3 +904,71 @@
 | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | l8xfs201 | 127,713,529 | - | SUBAGENT-FLOOR: 1 metered conversation(s) left no db | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfs201,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfs201,phase=2].T + O57 sub-agent T 5189515 |
 | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | l8xfs202 | 112,081,585 | - | SUBAGENT-FLOOR: 1 metered conversation(s) left no db | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfs202,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfs202,phase=2].T + O57 sub-agent T 1265792 |
 | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | l8xfs203 | 166,780,196 | - | SUBAGENT-FLOOR: 1 metered conversation(s) left no db | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfs203,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfs203,phase=2].T + O57 sub-agent T 0 |
+
+## ⚖️ ADDENDUM — O37, 2026-11-15: agy TOOLS FAILED ON AN UNWRITABLE /tmp/claude, MORE OFTEN IN SALT-DIET CELLS. APPENDED; everything above is unchanged.
+*bench.* Before export 3796e6b4 (block WA ADDENDUM 3, arm L), 791 of the run box's 792 agy srt turn-loop env files omit `CLAUDE_CODE_TMPDIR`;
+without it the subject's shell has `TMPDIR=/tmp/claude` (block WA's F2 battery), which the sandbox does not let it write, so a tool
+that makes a temp file failed (`mktemp`, `patch`, rustc) while the shell itself ran. Which fence arm (srt or seatbelt) each cell
+ran is not shown here: the cause is established for srt cells, and a hit is a printed failure whatever its cause. Cells this file names that print the failure: 2 plain and 34 salt-diet (arm from the cell directory's name).
+Over the complete matrix's agy cells of record: **salt-diet 32 of 141 (34 counting two ambiguous ids), plain 2 of 139.** It is not expected
+to manufacture a salt-diet advantage, but its sign on cost and outcome is not measured here. A hit is a failure the
+stream PRINTED, not a changed outcome, and no figure above is re-read. Source: `evidence/o37-agy-tmpclaude-2026-11-15/` (README: method, controls, limits).
+The Claude lane is not measured by it.
+
+## ⚖️ ADDENDUM — O37, 2026-11-15: THE SALT-DIET GATE'S SELFTEST COULD NOT MAKE ITS TEMP DIR IN SIX CLAUDE-LANE CELLS OF RECORD. APPENDED; everything above is unchanged.
+*bench.* A command's output in these cells shows the salt-diet arm's own gate failing at its selftest: `mkdtemp failed on
+/tmp/claude-<uid>/gatest.XXXX: Operation not permitted`, then `gate: selftest in`. Cells this file names or holds that show it: clbbcs03, clbbzs01, clbccs01, clbccs03, clbgfs02, d6b53ee4. Over the complete matrix's Claude DONE rows:
+**salt-diet 7 of 126 condition-rows (6 distinct cells), plain 0 of 133** (the plain arm has no gate). Whether a subject then ran its gate
+another way, and whether any outcome or cost above moved, is NOT read; its sign on either is not measured here. Source:
+`evidence/o37-claude-gate-mkdtemp-2026-11-15/` (README: method, controls, the two needles not used, limits).
+
+## ⚖️ ADDENDUM — O37, 2026-11-20 (re-cut): THE THREE WEB-SERVED MATRIX CELLS OUT OF THESE TABLES: WHAT MOVES. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+Printed by `recut.py` in `evidence/o37-agy-web-served-2026-11-20/recut/`: the instrument that printed this file, run on its input of record (OLD, which reproduces this file's tables exactly: the control) and with the WEB-SERVED cells taken out (NEW, by the route the instrument already has). No instrument was changed. **Nothing above is replaced:** the tables of record stand as printed, and this is the comparison without the WEB-SERVED cells, beside them. It says nothing about the salt method.
+
+`recut/descriptive-v2-O57-moved.txt`, verbatim (OLD = the record, NEW = without the WEB-SERVED cells; GONE/ADDED = a row on one side only):
+
+```
+## The 10 unmeasured conditions and the cells with no tracked figure
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra201, l5psra202, l5psra203 |
+
+## Cells in the map but OUTSIDE a condition's population (the result of record's scored cells govern, ADDENDUM 1 A1.4)
+  GONE | none | - | every cell of record is in its condition |
+
+## T2 · brownfield — median total tokens per condition (n per condition in the output-token table below)
+  OLD  | gemini-3.1-pro-high | FreeList | 1,949,814 | 17,298,225 | 1,822,259 | 34,282,120 |
+  NEW  | gemini-3.1-pro-high | FreeList | 1,949,814 | 15,550,480 | 1,822,259 | 34,282,120 |
+  OLD  | gemini-3.8-flash-high | Paxos | 7,992,405 | 18,713,325 | — | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 7,084,768 | 18,713,325 | — | — |
+
+### brownfield ratios (in the file, not in T4)
+  OLD  | gemini-3.1-pro-high | FreeList | 8.87 | 18.81 |
+  NEW  | gemini-3.1-pro-high | FreeList | 7.98 | 18.81 |
+  OLD  | gemini-3.8-flash-high | Paxos | 2.34 | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 2.64 | — |
+
+## Per-condition medians of OUTPUT tokens (same rule; not in the tables)
+  OLD  | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | 3 | 107,906 |  |
+  NEW  | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | 2 | 105,158 |  |
+  OLD  | gemini-3.8-flash-high | Paxos | brownfield | plain | none | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | Paxos | brownfield | plain | none | 2 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | 2 | unmeasured | - |
+
+## Per-cell figures and their sources (every table number derives from these rows)
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra202 | unmeasured | - | DEADLINE | no tracked source |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | plain | none | l6vbpp02 | 8,133,242 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:114 field 5 + O57 sub-agent T 0 |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | l7npfs01 | 44,663,204 | 107,906 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7npfs01].T + O57 sub-agent T 29512739 |
+
+## The 10 unmeasured conditions and the cells with no tracked figure
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra201, l5psra203 |
+
+## Cells in the map but OUTSIDE a condition's population (the result of record's scored cells govern, ADDENDUM 1 A1.4)
+  ADDED | gemini-3.8-flash-high / Paxos / greenfield / salt-diet / none | l5psra202 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); DEADLINE: harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:242 truncated; cond: ADDENDUM 3 re-fire attempt 2; l5psra202 TRUNCATED (unpoolable); l5psr01 recorded set-aside; cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / Paxos / brownfield / plain / none | l6vbpp02 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:118 fields T=4 output=6 |
+  ADDED | gemini-3.1-pro-high / FreeList / brownfield / salt-diet / none | l7npfs01 |  |
+
+#RECUT descriptive-v2-O57: key width 0; old 854 rows, new 853; moved 7, gone 5, added 4
+```

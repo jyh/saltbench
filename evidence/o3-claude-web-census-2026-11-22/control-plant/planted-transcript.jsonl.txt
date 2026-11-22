@@ -1,0 +1,2 @@
+{"type":"assistant","message":{"content":[{"type":"tool_use","id":"tu1","name":"WebSearch","input":{"query":"q"}},{"type":"tool_use","id":"tu2","name":"WebFetch","input":{"url":"u"}},{"type":"tool_use","id":"tu3","name":"WebSearch","input":{"query":"r"}},{"type":"tool_use","id":"tu4","name":"Bash","input":{"command":"ls"}}]}}
+{"type":"user","message":{"content":[{"type":"tool_result","tool_use_id":"tu1","content":"results: a b c"},{"type":"tool_result","tool_use_id":"tu2","is_error":true,"content":"Permission to use WebFetch has been denied."}]}}

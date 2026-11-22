@@ -1,0 +1,5 @@
+cell     client 2.1.259 rc=0 · 9 tools · web=NONE · Task,Bash,Edit,Glob,Grep,NotebookEdit,Read,TaskStop,Write
+fence    client 2.1.259 rc=0 · 24 tools · web=NONE · Task,Bash,CronCreate,CronDelete,CronList,DesignSync,Edit,EnterWorktree,ExitWorktree,ListAgents,Monitor,NotebookEdit,PushNotification,Read,RemoteTrigger,ReportFindings,ScheduleWakeup,SendMessage,Skill,TaskOutput,TaskStop,ToolSearch,Workflow,Write
+flags    client 2.1.259 rc=0 · 9 tools · web=NONE · Task,Bash,Edit,Glob,Grep,NotebookEdit,Read,TaskStop,Write
+control  client 2.1.259 rc=0 · 26 tools · web=WebFetch+WebSearch · Task,Bash,CronCreate,CronDelete,CronList,DesignSync,Edit,EnterWorktree,ExitWorktree,ListAgents,Monitor,NotebookEdit,PushNotification,Read,RemoteTrigger,ReportFindings,ScheduleWakeup,SendMessage,Skill,TaskOutput,TaskStop,ToolSearch,WebFetch,WebSearch,Workflow,Write
+INSTRUMENT: control lists a web tool — the arms are readable

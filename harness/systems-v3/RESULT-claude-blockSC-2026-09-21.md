@@ -117,3 +117,10 @@ The harvest's terminal marker reads, verbatim — and the number in it is the CU
 3. It tests **no cross-producer agreement** — there is no retention on a greenfield block — and `V1`/`V2` are **phase 2's** verdicts, not phase 1's `V1_bugs_fixed`.
 4. It changes **no arm, cap, model, fence, P4 probe, scorer, tripwire or list order**, and alters no other recorded result.
 5. ⚠️ **The comparison a reader most wants — "does salt-diet answer a changed spec better?" — is exactly the one this block constrains least**, because the arm-correlated selector removed its two hardest conditions before phase 2 could observe them. **The honest summary is that on the two problems where both arms reached phase 2 and neither was cut, they are level (LRU 3/3 vs 3/3, Crc32 3/3 vs 3/3); on the third the salt-diet arm was cut by its own phase-1 expense acting a second time (LZW 3/3 vs 1/3, and two of those three did no phase-2 work at all); and the two problems that would have separated them produced nothing.**
+
+## ⚖️ ADDENDUM — O37, 2026-11-15: THE SALT-DIET GATE'S SELFTEST COULD NOT MAKE ITS TEMP DIR IN SIX CLAUDE-LANE CELLS OF RECORD. APPENDED; everything above is unchanged.
+*bench.* A command's output in these cells shows the salt-diet arm's own gate failing at its selftest: `mkdtemp failed on
+/tmp/claude-<uid>/gatest.XXXX: Operation not permitted`, then `gate: selftest in`. Cells this file names or holds that show it: clbccs01, clbccs03. Also in this block's DECLARED conditions' cells: clbcps01, clbczs01. Over the complete matrix's Claude DONE rows:
+**salt-diet 7 of 126 condition-rows (6 distinct cells), plain 0 of 133** (the plain arm has no gate). Whether a subject then ran its gate
+another way, and whether any outcome or cost above moved, is NOT read; its sign on either is not measured here. Source:
+`evidence/o37-claude-gate-mkdtemp-2026-11-15/` (README: method, controls, the two needles not used, limits).

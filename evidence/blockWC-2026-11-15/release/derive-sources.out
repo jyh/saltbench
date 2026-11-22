@@ -1,0 +1,31 @@
+$ wc_derive_sources.py p1-baselines.tsv --check <saltbench-systems d55062a6:harness/systems-v3/clb_stage.sh>
+WC_SOURCES EQUALS the derivation (24 rows; fresh 4)
+rc=0
+$ the same against a copy with one row changed (Opus WHT salt-diet 2: clbdws03 -> clbdws02), the negative control
+WC_SOURCES DIFFERS FROM the derivation (24 rows; fresh 4)
+rc=1
+$ wc_derive_sources.py p1-baselines.tsv   (the table)
+Opus NTT plain 1 cells-clb-wo-ntt-plain/clbdtp01
+Opus NTT plain 2 cells-clb-wo-ntt-plain/clbdtp02
+Opus NTT plain 3 cells-clb-wo-ntt-plain/clbdtp03
+Opus NTT salt-diet 1 cells-clb-wo-ntt-saltdiet/clbdts01
+Opus NTT salt-diet 2 cells-clb-wo-ntt-saltdiet/clbdts02
+Opus NTT salt-diet 3 cells-clb-wo-ntt-saltdiet/clbdts03
+Opus WHT plain 1 cells-clb-wo-wht-plain/clbdwp01
+Opus WHT plain 2 cells-clb-wo-wht-plain/clbdwp02
+Opus WHT plain 3 cells-clb-wo-wht-plain/clbdwp03
+Opus WHT salt-diet 1 cells-clb-wo-wht-saltdiet/clbdws01
+Opus WHT salt-diet 2 cells-clb-wo-wht-saltdiet/clbdws03
+Opus WHT salt-diet 3 cells-clb-wfo-wht-saltdiet/clbyws03
+Sonnet NTT plain 1 cells-clb-ws-ntt-plain/clbitp01
+Sonnet NTT plain 2 cells-clb-ws-ntt-plain/clbitp02
+Sonnet NTT plain 3 cells-clb-ws-ntt-plain/clbitp03
+Sonnet NTT salt-diet 1 cells-clb-ws-ntt-saltdiet/clbits03
+Sonnet NTT salt-diet 2 cells-clb-wfs-ntt-saltdiet/clbzts02
+Sonnet NTT salt-diet 3 cells-clb-wfs-ntt-saltdiet/clbzts03
+Sonnet WHT plain 1 cells-clb-ws-wht-plain/clbiwp01
+Sonnet WHT plain 2 cells-clb-ws-wht-plain/clbiwp02
+Sonnet WHT plain 3 cells-clb-ws-wht-plain/clbiwp03
+Sonnet WHT salt-diet 1 cells-clb-ws-wht-saltdiet/clbiws02
+Sonnet WHT salt-diet 2 cells-clb-ws-wht-saltdiet/clbiws03
+Sonnet WHT salt-diet 3 cells-clb-wfs-wht-saltdiet/clbzws03

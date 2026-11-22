@@ -1697,3 +1697,297 @@ the Opus OS ratio is still the smallest. The paper's three ratios are corrected 
 5.12x), and states SG and OS PROBE-IN because the split was taken on a different cell set. Its clause that the split's probe-in
 readings sit *"a hundredth below the record's"* stops being true once the record reads 5.31x and 4.70x, so the same PR changes it to
 *"equal to the record's"*, and the record's SG figure it quotes from 8.27x to 8.29x.
+
+---
+# ⚖️ ADDENDUM 39 — **O37: LU IS DECLARED NOT FEASIBLE AS A RUST PORT. ITS 24 CONDITIONS ARE DECLARED BESIDE THE SECTION, AS THE PILOT'S 16 INEXPRESSIBLE ARE. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-11, on the Captain's council word of 2026-11-10 (ask 3, his whole word on the pack: "Accept recs, keep objectives").
+
+## §AJ1 · WHAT WAS RULED
+The recommendation he accepted read: LU is declared NOT FEASIBLE as a Rust port; its 24 conditions are reported as DECLARED beside the
+census, as the 16 inexpressible were; no harness-library spike. The port verdict it rests on is bench's of 2026-11-10 (systems lane, not
+in this repository). Its reasons, so a reader here need not follow it:
+- v1's LU card is exact rational arithmetic by construction, and its tests include Hilbert matrices, named for their rational growth.
+- A good answer is decidable (every entry of L and U is a ratio of minors), so the task is not disqualified for having no finite check.
+- The executable checker that a treatment submission must ship does not fit a machine word on the card's own tests: checking PA = LU
+  exactly needs a common denominator that leaves i128 at small orders, and Verus's standard library carries no verified bignum.
+- Each way to meet that changes what the arm measures on this card: every treatment submission verifies its own bignum (the cost is then
+  bignum verification, not elimination), or the harness supplies one as a given no other v3 card carries. Shrinking the inputs to fit
+  i128 drops the Hilbert growth, and a finite field is a different task.
+
+## §AJ2 · THE O37 SECTION, RE-CUT
+```
+  O37's population (ADDENDUM 28 §AG1)                                                     216
+    expressible slice, blocks N and NA (ADDENDUM 29)          DONE 48                      48
+    LU x {4 models} x {plain, salt-diet} x {none, statement, spec-change}   DECLARED       24   (this addendum)
+    NTT and WHT, 48 conditions                                 outside every block today   48
+    statement and spec-change on the six block-N problems      outside every block today   96
+```
+The 24 are 4 models (the two Claude and the two agy models of blocks N and NA) x 2 arms x 3 extras. A DECLARED condition is reported
+beside the section with its reason, never counted DONE and never silently removed from O37's 216.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AJ3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+It says the port was not built and why. It says nothing about LU in Lean, about any model's ability on LU, or about the salt method. NTT
+and WHT have v3 rungs built on the systems lane (2026-11-10); they enter this section only with their own block's result.
+
+---
+# ⚖️ ADDENDUM 40 — **O37: BLOCK WA's FLASH HALF IS A RESULT OF RECORD. FOUR CONDITIONS MOVE TO DONE (WHT and NTT × {plain, salt-diet} × gemini-3.8-flash-high). THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-14, in the same commit as `RESULT-gemini-blockWA-flash-2026-11-14.md` (§WA6: the census section is re-cut with the result).
+
+## §AK1 · WHAT MOVED
+The four Flash conditions of block WA (`AMENDMENT-O37-wht-ntt-greenfield-agy-2026-11-13.md`, ADDENDUM 1) each have n = 3 cells of record,
+all scored: FULL PASS 3 of 3 in each (the result's §2). DONE here means the condition has its cells of record and a result file; it is not
+a verdict on the arms, and with every cell at ceiling the result says nothing about one.
+
+## §AK2 · THE O37 SECTION, RE-CUT
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (this)      4
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+    NOT DONE     WHT and NTT, the other 44:
+                   x none, Claude lane, block W: released 2026-11-14, cells firing                   8
+                   x none, gemini-3.1-pro-high, block WA's Pro half: HELD (ADDENDUM 1)                4
+                   x spec-change, Claude lane, block WC: signed, gated on block W's result            8
+                   x statement, both lanes; x spec-change, agy lane: in no block                     24
+                 the six block-N problems x {statement, spec-change}, 96:
+                   x spec-change, Claude lane, block NC: released 2026-11-14, cells firing           24
+                   x statement, Claude lane, block T: signed, waits on the Captain's read            24
+                   x {statement, spec-change}, agy lane: in no block                                48
+```
+DONE 52 · DECLARED 24 · NOT DONE 140 = 216. A NOT DONE condition is only DONE when its block's result file lands, by a later addendum;
+"released" and "firing" are states of a registration, never of a result. Block WA's Pro half becomes NOT-FIRED(MODEL) only by the
+default ADDENDUM 1 names, through its own addendum here.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AK3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing about WHT or NTT on the Claude lane (block W has no result yet), nothing about any Pro model, nothing Claude-versus-agy, and
+nothing about the salt method. The registration states in §AK2 are as of this addendum's date and are not results.
+
+# ⚖️ ADDENDUM 41 — **A LIMIT ON THE agy CELLS OF RECORD: THEIR TOOLS FAILED ON AN UNWRITABLE /tmp/claude, SALT-DIET 32 OF 141 CELLS, PLAIN 2 OF 139. NO COUNT MOVES.**
+## bench, 2026-11-15. Source: `evidence/o37-agy-tmpclaude-2026-11-15/` (README: method, controls, limits; one row per cell of record in `cellmap-join.tsv`).
+
+## §AL1 · WHAT WAS FOUND
+Before export 3796e6b4 (block WA ADDENDUM 3, arm L), 791 of the run box's 792 agy srt turn-loop env files omit `CLAUDE_CODE_TMPDIR`; without it the
+subject's shell has `TMPDIR=/tmp/claude` (block WA's F2 battery), which the sandbox does not let it write. The shell ran; a tool inside it that
+makes a temp file failed (`mktemp`, `patch`, rustc). Which fence arm (srt or seatbelt) each cell ran is not shown here: the cause is
+established for srt cells, and a hit is a printed failure whatever its cause. Over the matrix's agy cells of record (`CELLMAP-descriptive-tables-v2-2026-09-27.tsv`, arm as
+registered), the cells whose stream prints that failure:
+```
+  gemini-3.1-pro-high    plain 2 of 68      salt-diet 21 of 70 (+2 ambiguous ids)
+  gemini-3.8-flash-high  plain 0 of 71      salt-diet 11 of 71
+```
+
+## §AL2 · WHAT IT MEANS FOR THIS CENSUS
+Nothing in a count. A condition is DONE because it has its cells of record and a result file, and this census states no verdict on the arms.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** O37's line (§AK2) is unchanged.
+But any per-arm cost or correctness reading off the agy cells carries an environmental defect that hit salt-diet cells far more often
+than plain ones. It is not expected to manufacture a salt-diet advantage, but its sign on cost and outcome is not measured here. Each agy RESULT file that names a hit cell carries the same limit, appended.
+
+## §AL3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+That any cell's outcome or cost changed (a hit is a failure the stream printed; a subject can retry or work around it). Anything about the
+Claude lane, which this census of streams does not measure.
+
+# ⚖️ ADDENDUM 42 — **A LIMIT ON SIX CLAUDE-LANE SALT-DIET CELLS OF RECORD: THE ARM'S OWN GATE COULD NOT MAKE ITS TEMP DIR AT ITS SELFTEST. NO COUNT MOVES.**
+## bench, 2026-11-15. Source: `evidence/o37-claude-gate-mkdtemp-2026-11-15/` (README: method, controls, the two needles not used, limits; one row per condition-row in `claude-join.tsv`).
+
+## §AM1 · WHAT WAS FOUND
+In these cells a command's output shows `mkdtemp failed on /tmp/claude-<uid>/gatest.XXXX: Operation not permitted`, then `gate: selftest in`:
+the salt-diet gate's selftest could not make its directory under the sandbox's TMPDIR. Searched in tool results only, over every Claude-lane
+cell transcript on the run box (2,513), joined to the matrix's Claude DONE rows by cell id, arm as registered:
+```
+  claude-opus-5    plain 0 of 65      salt-diet 2 of 66     (one cell, d6b53ee4: LRU none and its spec-change)
+  claude-sonnet-5  plain 0 of 68      salt-diet 5 of 60     (clbgfs02, clbbcs03, clbbzs01, clbccs01, clbccs03)
+```
+The plain arm has no gate, so it cannot show this. Two more hits are in cells of two of the three DECLARED conditions (Sonnet LZW and
+Paxos, salt-diet, spec-change: clbczs01, clbcps01).
+
+## §AM2 · WHAT IT MEANS FOR THIS CENSUS
+Nothing in a count. ⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** A DECLARED condition
+stays DECLARED: it was unreached at the cap, and this addendum does not read why. Each RESULT file that names or holds a hit cell carries
+the same limit, appended. ADDENDUM 41 is the agy lane's (a different client and a different failure). The two are not the same kind of
+fact: there the count is arm-correlated in cells of both arms; here plain cannot show it, because only the treatment arm has the gate.
+
+## §AM3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+That any subject failed to run its gate in the end, or that any outcome or cost moved; its sign on either. That the DECLARED conditions'
+being unreached has anything to do with it.
+
+# ⚖️ ADDENDUM 43 — **O37: BLOCK W IS A RESULT OF RECORD. EIGHT CONDITIONS MOVE TO DONE (WHT and NTT × {plain, salt-diet} × {Opus, Sonnet}, Claude lane). THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-15, in the same commit as `RESULT-claude-blockWO-2026-11-15.md` and `RESULT-claude-blockWS-2026-11-15.md` (§W9: the census section is re-cut with the result).
+
+## §AN1 · WHAT MOVED
+The eight conditions of block W (`AMENDMENT-O37-wht-ntt-greenfield-claude-2026-11-11.md`, released by its ADDENDUM 2) each have n = 3 cells
+of record, all scored against the withheld suite; the two result files print each condition's correctness and cost. DONE here means the
+condition has its cells of record and a result file; it is not a verdict on the arms.
+
+## §AN2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-15)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (this)      8
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+    NOT DONE     WHT and NTT, the other 36:
+                   x none, gemini-4-argon-high, block WA's Pro half: firing (WA ADDENDA 2, 4, 5)    4
+                   x spec-change, Claude lane, block WC: signed, gated on block W's result          8
+                   x statement, both lanes; x spec-change, agy lane: in no block                     24
+                 the six block-N problems x {statement, spec-change}, 96:
+                   x spec-change, Claude lane, block NC: released 2026-11-14, cells firing           24
+                   x statement, Claude lane, block T: released to build (council 2026-11-14)        24
+                   x {statement, spec-change}, agy lane: in no block                                48
+```
+DONE 60 · DECLARED 24 · NOT DONE 132 = 216. "Released", "firing" and "gated" are states of a registration, never of a result.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AN3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing about WHT or NTT under any other extras or lane, nothing Opus-versus-Sonnet as models, nothing about the salt method. One cell's
+end kind (`clbdtp03`, EXIT-FORCED) is a harness fault, as the Opus result's §1 states; its score is the withheld suite's.
+
+# ⚖️ ADDENDUM 44 — **O37: BLOCK WA's PRO HALF IS A RESULT OF RECORD. FOUR CONDITIONS MOVE TO DONE (WHT and NTT × {plain, salt-diet} × gemini-4-argon-high). THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-15, in the same commit as `RESULT-gemini-blockWA-pro-2026-11-15.md` (§WA6: the census section is re-cut with the result).
+
+## §AO1 · WHAT MOVED
+The four Pro conditions of block WA (`AMENDMENT-O37-wht-ntt-greenfield-agy-2026-11-13.md`, re-registered on `gemini-4-argon-high` by its
+ADDENDUM 2 and released by ADDENDA 3–5) each have n = 3 cells of record, all scored: FULL PASS 3 of 3 in each (the result's §2), four
+salt-diet passes being floors (TRUNCATED). DONE here means the condition has its cells of record and a result file; it is not a verdict on
+the arms. The condition is argon's, under ADDENDUM 2's model seam; ADDENDUM 40's line for this slot read gemini-3.1-pro-high and HELD,
+and ADDENDUM 43's read argon and firing.
+
+## §AO2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-15)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (this)         4
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+    NOT DONE     WHT and NTT, the other 32:
+                   x spec-change, Claude lane, block WC: signed, baselines run, release drafted      8
+                   x statement, both lanes; x spec-change, agy lane: in no block                     24
+                 the six block-N problems x {statement, spec-change}, 96:
+                   x spec-change, Claude lane, block NC: released 2026-11-14, cells firing           24
+                   x statement, Claude lane, block T: released to build (council 2026-11-14)        24
+                   x {statement, spec-change}, agy lane: in no block                                48
+```
+DONE 64 · DECLARED 24 · NOT DONE 128 = 216. "Released", "firing" and "drafted" are states of a registration, never of a result.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AO3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing about any `gemini-3.1-pro-high` model, nothing Flash-versus-argon or Claude-versus-agy, nothing about the salt method. One cell's
+end kind (`wanas301`, PERSIST-INDETERMINATE) is ruled landed by WA ADDENDUM 6 item 3; its score is the withheld suite's.
+
+---
+# ⚖️ ADDENDUM 45 — **O37: BLOCK WC IS A RESULT OF RECORD. EIGHT CONDITIONS MOVE TO DONE (NTT and WHT × {plain, salt-diet} × {Opus, Sonnet}, spec-change, Claude lane). THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-17, in the same commit as `RESULT-claude-blockWCO-2026-11-17.md` and `RESULT-claude-blockWCS-2026-11-17.md` (§WC7 = NC §C8: the census section is re-cut with the result).
+
+## §AP1 · WHAT MOVED
+The eight conditions of block WC (`AMENDMENT-O37-wht-ntt-specchange-claude-2026-11-13.md`, released by its ADDENDA 1–2, with ADDENDA 3–4
+on one source and its export record) each have their cells of record and a result file. Seven have n = 3. **Sonnet NTT salt-diet has
+n = 1**: its #2 and #3 sources were fresh phase 1s that ended CAP-COST without landing, two REACH LOSSES (the WCS result's §1), never
+re-run. Every phase-2 cell of record passes its withheld B suite in full (each result's §2). DONE here means the condition has its cells
+of record and a result file, at the n its record states; it is not a verdict on the arms.
+
+## §AP2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-17)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (ADDENDUM 44)   4
+                 block WC: NTT, WHT x spec-change x {plain, salt-diet} x {Opus, Sonnet} (this)     8
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+    NOT DONE     WHT and NTT, the other 24:
+                   x statement, both lanes; x spec-change, agy lane: in no block                     24
+                 the six block-N problems x {statement, spec-change}, 96:
+                   x spec-change, Claude lane, block NC: released 2026-11-14, cells firing           24
+                   x statement, Claude lane, block T: released to build (council 2026-11-14)        24
+                   x {statement, spec-change}, agy lane: in no block                                48
+```
+DONE 72 · DECLARED 24 · NOT DONE 120 = 216. "Released" and "firing" are states of a registration, never of a result.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AP3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing about a spec-change reached from a phase 1 that did not land (the two reach losses are counted, never scored), nothing
+Opus-versus-Sonnet, nothing about the salt method. Every premium in both results is UNRESOLVED-UNDERPOWERED as registered.
+
+---
+# ⚖️ ADDENDUM 46 — **O37: BLOCK NC IS A RESULT OF RECORD. 22 CONDITIONS MOVE TO DONE; 2 ARE DECLARED UNREACHED (LinearScan × spec-change × salt-diet, both models: no source reached phase 2). THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-17, in the same commit as `RESULT-claude-blockNCO-2026-11-17.md` and `RESULT-claude-blockNCS-2026-11-17.md` (§C8: the census section is re-cut with the result).
+
+## §AQ1 · WHAT MOVED
+Block NC (`AMENDMENT-O37-blockNC-specchange-claude-2026-11-13.md`, ADDENDA 1–5) has its 72 condition-cells ended and two result files.
+22 conditions have cells of record and move to DONE, at the n each record states (Opus LinearScan plain at n = 2, Sonnet MaxFlow
+salt-diet at n = 1, the rest n = 3). **Two conditions have NO cell of record:** Opus LinearScan salt-diet (three fresh sources ended
+CAP-COST) and Sonnet LinearScan salt-diet (two ended CAP-COST; one landed and failed its G baseline, 6 of 9). No phase 2 exists for
+either, and §C2 never re-runs a reach loss, so they are DECLARED unreached, beside the section, as the pilot's DECLARED are. DONE is not
+a verdict on the arms. ⚠️ Every Liveness failure in both results is one clause test (each result's §1); it is put to a non-builder read
+as a possible suite defect (§C6 item 4) and no arm reading rests on it.
+
+## §AQ2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-17)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (ADDENDUM 44)   4
+                 block WC: NTT, WHT x spec-change x {plain, salt-diet} x {Opus, Sonnet} (ADDENDUM 45)  8
+                 block NC: the six block-N problems x spec-change, Claude lane (this), 24 less 2  22
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+                 block NC: LinearScan x spec-change x salt-diet x {Opus, Sonnet}, unreached (this)  2
+    NOT DONE     WHT and NTT, the other 24:
+                   x statement, both lanes; x spec-change, agy lane: in no block                     24
+                 the six block-N problems x {statement, spec-change}, the other 72:
+                   x statement, Claude lane, block T: released to build (council 2026-11-14)        24
+                   x {statement, spec-change}, agy lane: in no block                                48
+```
+DONE 94 · DECLARED 26 · NOT DONE 96 = 216. "Released" is a state of a registration, never of a result.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AQ3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+Nothing about a spec-change reached from a phase 1 that did not land, nothing Opus-versus-Sonnet, nothing about the salt method. Every
+premium in both results is UNRESOLVED-UNDERPOWERED as registered.
+
+---
+## ADDENDUM 46, NOTE 1 (2026-11-17, bench) — appended; no count moves
+ADDENDUM 46 put block NC's six Liveness clause failures to a non-builder read as a possible suite defect. systems' read (bus offset
+105,218,390) answers YES: the clause test fixes one reading of the card's "sweep" and all six cells counted another reading the card
+admits. The cells stand as they fell and no O37 count moves (DONE 94 · DECLARED 26 · NOT DONE 96 = 216); both block NC results carry
+it as their ADDENDUM 1; the card is amended before any later Liveness run.
+
+
+
+---
+
+# ⚖️ ADDENDUM 47 — **O37: A LIMIT ON THREE agy CELLS OF RECORD: THE CLIENT SERVED THEM A WEB SEARCH (WEB-SERVED). NO COUNT MOVES; NOTHING IS VOIDED; THE THREE LEAVE EVERY COMPARISON.**
+## gemini (the hand), 2026-11-20, on the lead's ruling on the bus (2026-11-20 00:29:42, helm-reversible). Appended; everything above is unchanged.
+
+## §AR1 · WHAT WAS FOUND
+The client's main stream records `search_web` as a step that goes ACTIVE then DONE with no result body, so a stream cannot tell a served call from a denied one; the client's own conversation record (the brain transcript under the cell's `.agyhome`) carries the result. Read there, every `search_web` call on the run box was served (96 of 96), and the canonical PreToolUse hook, registered in each of these cells, denied none. Level 6 AMENDMENT A5.2's "0 of the 48 served" and A6.4's "0 network-tool results were served" were stream censuses; both carry a correction addendum of this date.
+
+## §AR2 · THE CELLS OF RECORD OF THIS MATRIX DECLARED WEB-SERVED
+Of 272 agy cells of record, every one with a brain transcript, 269 were served nothing and three were served a search:
+
+- `l5psra202` (gemini-3.8-flash-high, salt-diet): 1 search result(s) served; first query *"verus" "failed this postcondition" forall exists*
+- `l6vbpp02` (gemini-3.8-flash-high, plain): 1 search result(s) served; first query *"ARMRECV" receipt*
+- `l7npfs01` (gemini-3.1-pro-high, salt-diet): 1 search result(s) served; first query *docs/STATEMENTS.md*
+
+Blocks NA (5 cells) and ZF (2) carry the same declaration in their RESULTs; blocks WA and TA were served nothing.
+
+## §AR3 · WHAT THIS ADDENDUM DOES NOT DO
+**No count in this census moves:** a DONE reports its condition's outcome, and nothing is voided (A5.2 voids only FENCE-TAMPER). The three cells leave every comparison; the re-cut of the tables is a separate change. Nothing here is about the salt method.
+
+Source: `evidence/o37-agy-web-served-2026-11-20/` (README: method, controls, limits).
+
+# ⚖️ ADDENDUM 48 — **THE CLAUDE LANE CALLED NO WEB TOOL: 0 `WebSearch`/`WebFetch` CALLS IN 3,175 CELL TRANSCRIPTS ON THE RUN BOX, AND EVERY RECORDED LAUNCH LEFT BOTH OFF THE SUBJECT'S TOOL SURFACE. NO COUNT MOVES. A WEB CALL'S REFUSAL IS NOT SHOWN, BECAUSE NONE WAS MADE.**
+## bench, 2026-11-22. Appended; everything above is unchanged.
+
+## §AS1 · WHAT WAS MEASURED
+Every Claude-lane cell transcript on the run box (748 cell project directories, 3,175 transcripts, subagent transcripts included, no file counted twice) was searched for a `WebSearch` or `WebFetch` tool call. There are 0, and the two names are absent from the full list of tool names the cells called. The parser can see such calls: a planted transcript reads one call in each class (SERVED, REFUSED, NO-RESULT), and two real session transcripts from outside the cells read 10 web calls, all SERVED. The launch records explain the zero: all 786 recorded Claude-lane launches pass a `--tools` allowlist without the web tools and strike both again in `--disallowedTools`, and 728 of the 748 transcript directories join to such a launch by cell id (the other 20 are probe and test cells with no launch line; they read 0 too). The client refused the subjects' calls to a tool struck the same way (`SendMessage`, 3 of 3, "No such tool available"), but answered a built-in tool that was neither offered nor struck (`EndConversation`, 2 of 2). So the surface is not exactly the `--tools` list. The client's own offered tool list, read under the cell launch line on both clients the launches used (2.1.259 and 2.1.280), names neither web tool, with the fence's `permissions.deny` alone or the two tool flags together; a control with both lifted names both, so the list can see them. The probe's launch line reconstructs the cells' (the tool flags, the fence, the sandbox and permission flags are theirs; `--name`, `--agents`, the model and the effort are not).
+
+## §AS2 · WHY, AND WHAT IT REPLACES
+Paper v5 narrowed its abstract's isolation clause to the Claude lane. The CLI's own web tools run outside the subprocess sandbox; the cell fence denies both, but cells launch with `--dangerously-skip-permissions`, so the outcome was measured rather than assumed. A first run on 2026-11-20 (cited in the v5 read on the bus) took the per-account config dirs only: 560 directories, 2,522 transcripts, 0 calls. It missed 183 directories of the earlier harness config dirs. This addendum's run includes them, and it is the census of record. The 11-20 output is kept beside it.
+
+## §AS3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+What the client would do with a `WebSearch` call that a subject emitted anyway, although it was not offered: none was emitted, and the client's handling of unoffered names is not uniform (`SendMessage` refused, `EndConversation` answered). It also says nothing about network use through the subjects' own shell commands, which is the subprocess sandbox's question. Run-box records only, joined to launches by cell id, not to the cells of record. **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** Nothing here is about the salt method.
+
+Source: `evidence/o3-claude-web-census-2026-11-22/` (README: the census, the launch surface, off-surface calls, the client's offered tool list, the population fix, controls, limits).

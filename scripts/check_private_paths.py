@@ -115,6 +115,7 @@ from __future__ import annotations
 import argparse
 import os
 import hashlib
+import io
 import pathlib
 import re
 import shutil
@@ -290,6 +291,11 @@ _NASHOME = ("vol" + "ume1" + _SEPCLASS + "git" + _SEPCLASS + "Salt" + "works")
 # time of writing were 4 (salt), 3 (saltworks), 0 (jas), all pre-ruling
 # residue, all baselined in the same act that landed the shape.
 _ROOTLESS = ["bri" + "efs", "fle" + "et"]
+# desk AHE (2026-11-18): the private record's top-level directories, audited one by one. A directory is a rootless
+#   root only if its NAME is distinctive: an ordinary word (docs, tools, papers, memory, sources, watch, ...) would fire
+#   on ordinary public content, so of the record's 21 top-level directories these five join the two above. A PR body
+#   naming one of them passed every mode of check_pr_descriptions, the required --open arm included (measured 11-18).
+_ROOTLESS += ["mem" + "ory-seats", "salt-" + "memory", "salt-" + "memory-archive-0815", "h2c-" + "desk", "helm-" + "desk"]
 _ROOTLESS_ALT = "|".join(_ROOTLESS)
 _ROOTLESS_INTO = ("(?<![A-Za-z0-9_./" + _BS + _BS + "-])(?:"
                   + _ROOTLESS_ALT + ")" + _SEPCLASS + "[A-Za-z0-9_.-]+")
@@ -810,7 +816,11 @@ def self_test() -> int:
         ("r-rl-b", "ruled in " + _ROOTLESS[0] + "/2026-08-30-x.md"),
         ("r-rl-f", "the row in " + _ROOTLESS[1] + "/RULING-x.md"),
         ("r-rl-bs", "see " + _ROOTLESS[1] + chr(92) + "DESK.tsv"),
+        # desk AHE: one planted path PER MEMBER, generated, so a member added later is armed by construction.
+        *[(f"r-rl-each-{i}", "see " + w + "/x-1.md for the run") for i, w in enumerate(_ROOTLESS)],
     ]
+    if len(_ROOTLESS) != 7:
+        failures.append(f"the rootless list has {len(_ROOTLESS)} members, expected 7 (desk AHE): a change to it is a change to this arm")
     for ident, text in planted:
         if not scan([(ident, text)]):
             failures.append(f"planted shape {ident} must be caught")
@@ -870,6 +880,9 @@ def self_test() -> int:
         ("c-rl-bare", "the " + _ROOTLESS[0] + " directory holds the record"),
         ("c-rl-mid", "docs/" + _ROOTLESS[0] + "/x.md nests a PUBLIC dir"),
         ("c-rl-word", "a " + _ROOTLESS[1] + " of seats sailed at dawn"),
+        # desk AHE: the left guard, per member: a mid-path component and a bare name stay clean.
+        *[(f"c-rl-mid-{i}", "docs/" + w + "/x.md nests a PUBLIC dir") for i, w in enumerate(_ROOTLESS)],
+        *[(f"c-rl-bare-{i}", "the " + w + " directory holds the record") for i, w in enumerate(_ROOTLESS)],
         # ── THE DOT-PREFIXED SCRATCH DIRECTORY, added 2026-09-09 with its defect ──────────
         # A dot-prefixed directory whose name is a root is NOT that root: it is a cell-local
         # scratch dir in this repo's own harness. 23 of 27 findings on a live branch were this
@@ -1370,6 +1383,81 @@ def self_test() -> int:
     finally:
         os.path.relpath = _relpath13
 
+    # 14. A GIT ERROR IN THE HISTORY WALK IS A FAILURE, NEVER AN EMPTY DIFF (STATUS-systems row 161, named in PR 434).
+    #     added_against ran `git diff` with stderr discarded and its exit code unread, so a diff git could not
+    #     produce read as a commit that added nothing: that commit passed clean. Driven on a scratch repo whose
+    #     second commit adds a planted path: CONTROL first (the walk charges that commit), then its blob object is
+    #     deleted, so `git diff` really fails; history_rows() must now raise CalledProcessError.
+    tmp14 = tempfile.mkdtemp(prefix="ppgate-giterr-")
+    here14 = os.getcwd()
+    try:
+        r14 = os.path.join(tmp14, "r")
+        os.makedirs(r14)
+        os.chdir(r14)
+        g14 = ["git", "-c", "user.name=t", "-c", "user.email=t@t", "-c", "commit.gpgsign=false"]
+        subprocess.run(["git", "init", "-q"], check=True)
+        plant14 = "see projects/claude/" + "saltbench-sys" + "tems" + "/tasks/g.md"
+        for name, text in (("ok.md", "nothing to see\n"), ("g.md", plant14 + "\n")):
+            with open(name, "w", encoding="utf-8", newline="") as fh:
+                fh.write(text)
+            subprocess.run(["git", "add", name], check=True)
+            subprocess.run(g14 + ["commit", "-q", "-m", "add " + name], check=True)
+        head14 = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True,
+                                check=True).stdout.strip()
+        charged14 = {sha for sha, _w, _l in scan(history_rows())}
+        if head14[:12] not in charged14:
+            failures.append("git-error arm: CONTROL failed, the intact walk must charge the planting commit "
+                            f"({head14[:12]} not in {sorted(charged14)}), or the arm tests nothing")
+        else:
+            blob14 = subprocess.run(["git", "rev-parse", "HEAD:g.md"], capture_output=True, text=True,
+                                    check=True).stdout.strip()
+            os.remove(os.path.join(".git", "objects", blob14[:2], blob14[2:]))
+            try:
+                rows14 = history_rows()
+            except subprocess.CalledProcessError:
+                pass
+            else:
+                failures.append("history_rows must RAISE when `git diff` fails (a blob is missing); it returned "
+                                f"{len(rows14)} row(s) and charged {sorted({s for s, _w, _l in scan(rows14)})}, "
+                                "so the planting commit read as a commit that added nothing")
+    finally:
+        os.chdir(here14)
+        shutil.rmtree(tmp14, ignore_errors=True)
+
+    # 15. THE HISTORY OK LINE REPORTS THE LINES IT READ, AND NAMES THE HITS AS HITS (STATUS-systems row 162).
+    #     Since PR 434 `rows` holds only the rows scan() flags, but the OK line still printed len(rows) as
+    #     "added lines" and the commits holding them as "contributed added lines". On a clean history that read
+    #     "0 added lines", which a non-author reader took for an empty scan. Driven on a scratch repo with three
+    #     clean added lines and no findings: the OK line must carry "3 added lines READ".
+    import io as _io15, contextlib as _ctx15
+    tmp15 = tempfile.mkdtemp(prefix="ppgate-okline-")
+    here15 = os.getcwd()
+    saved15 = globals()["HIST_BASELINE"]
+    try:
+        r15 = os.path.join(tmp15, "r")
+        os.makedirs(r15)
+        os.chdir(r15)
+        g15 = ["git", "-c", "user.name=t", "-c", "user.email=t@t", "-c", "commit.gpgsign=false"]
+        subprocess.run(["git", "init", "-q"], check=True)
+        for name, text in (("a.md", "one\ntwo\n"), ("b.md", "three\n")):
+            with open(name, "w", encoding="utf-8", newline="") as fh:
+                fh.write(text)
+            subprocess.run(["git", "add", name], check=True)
+            subprocess.run(g15 + ["commit", "-q", "-m", "add " + name], check=True)
+        globals()["HIST_BASELINE"] = os.path.join(tmp15, "absent-baseline.tsv")
+        buf15 = _io15.StringIO()
+        with _ctx15.redirect_stdout(buf15):
+            rc15 = history_mode(False)
+        out15 = buf15.getvalue()
+        if rc15 != 0 or "3 added lines READ" not in out15:
+            failures.append("--history's OK line must report the lines it READ (3 here) and never label the hit "
+                            f"rows as added lines: rc {rc15}, printed {out15.strip()[-200:]!r}")
+    finally:
+        globals()["HIST_BASELINE"] = saved15
+        os.chdir(here15)
+        shutil.rmtree(tmp15, ignore_errors=True)
+
+    mem_receipt = _history_memory_arm(failures)
     for f in failures:
         print(f"SELF-TEST FAIL: {f}")
     if failures:
@@ -1380,8 +1468,66 @@ def self_test() -> int:
           f"shapes caught; {len(clean)} compliant forms passed; own source clean; "
           f"message-ratchet verdict driven on both arms; pin audit driven on a "
           f"real scratch repo — trichotomy, published-ref precedence in BOTH "
-          f"directions, local-only disclosure; every FAIL path NAMES findings)")
+          f"directions, local-only disclosure; every FAIL path NAMES findings; {mem_receipt})")
     return 0
+
+
+def _peak_rss_bytes(ru_maxrss: int) -> int:
+    """ru_maxrss is BYTES on macOS and KILOBYTES on Linux; a budget compared in the wrong unit passes everything."""
+    return ru_maxrss if sys.platform == "darwin" else ru_maxrss * 1024
+
+
+def _history_memory_arm(failures: list) -> str:
+    """THE HISTORY WALK MUST NOT HOLD THE HISTORY IN MEMORY (port of jyh/vir#67, 2026-11-14).
+
+    jyh/vir's Scrub hung five times on its history steps: two merges there diff 1.92 GB against one
+    parent, and its walk read every diff whole, peaking at 19 GB on a 16 GB runner. THIS copy is worse
+    in shape: history_rows() listed every added line of the WHOLE history before scanning. The arm: a
+    scratch repo whose one commit adds a SIZE-byte text file, history_mode() run in a child, and the
+    child's peak RSS compared against a child that only imports this module. The budget is derived
+    from the fixture: the walk may cost less than ONE copy of the diff it read.
+    """
+    size = 32 * 1024 * 1024
+    here = os.path.dirname(os.path.abspath(__file__))
+    if sys.platform == "win32":
+        # ⛔ A DECLARED LIMIT, NOT A PASS: Windows has no `resource` module, so no peak RSS can be read
+        #   here. The arm runs on the Linux and macOS lanes; this lane says it did not measure.
+        return "history memory arm NOT MEASURABLE on win32 (no resource module; the Linux lane carries it)"
+    probe = ("import resource, sys, io, contextlib; sys.path.insert(0, sys.argv[1]); import check_private_paths as c\n"
+             "with contextlib.redirect_stdout(io.StringIO()):\n"
+             "    r = c.history_mode(False) if sys.argv[2] == 'walk' else 0\n"
+             "print(r, resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)")
+    with tempfile.TemporaryDirectory() as repo:
+        g = ["git", "-C", repo, "-c", "user.name=memory arm", "-c", "user.email=arm@example.invalid"]
+        if subprocess.run(["git", "init", "-q", "-b", "trunk", repo], capture_output=True).returncode != 0:
+            failures.append("history memory arm: git init failed (the arm could not run)")
+            return "history memory arm NOT RUN"
+        line = "an ordinary added line of prose, nothing private\n"
+        with open(os.path.join(repo, "big.md"), "w", encoding="utf-8", newline="") as fh:
+            fh.write(line * (size // len(line)))
+        for a in (["add", "big.md"], ["commit", "-q", "-m", "one large added file"]):
+            if subprocess.run(g + a, capture_output=True).returncode != 0:
+                failures.append(f"history memory arm: git {a[0]} failed (the arm could not run)")
+                return "history memory arm NOT RUN"
+        peaks, rcs = {}, {}
+        for mode in ("idle", "walk"):
+            r = subprocess.run([sys.executable, "-c", probe, here, mode], cwd=repo, env={**os.environ, "PYTHONIOENCODING": "utf-8"},
+                               capture_output=True, text=True, encoding="utf-8", errors="replace")
+            parts = r.stdout.split()
+            if r.returncode != 0 or len(parts) != 2 or not parts[1].isdigit():
+                failures.append(f"history memory arm: the {mode} child exited {r.returncode} with no peak")
+                return "history memory arm NOT RUN"
+            rcs[mode], peaks[mode] = parts[0], _peak_rss_bytes(int(parts[1]))
+    if rcs["walk"] != "0":
+        failures.append(f"history memory arm: history_mode over a clean one-commit repo returned {rcs['walk']}, "
+                        f"not 0 (a clean history must pass; an empty-scan rule must count lines READ, not lines KEPT)")
+    cost = peaks["walk"] - peaks["idle"]
+    if cost >= size:
+        failures.append(f"history memory arm: the walk over one {size} B added file cost {cost} B of peak RSS "
+                        f"beyond an idle import -- it holds the diff whole (the vir hang)")
+    shown = f"{cost // 1024} KiB" if cost > 0 else "0 KiB (below the idle noise)"
+    return (f"history walk cost {shown} over a {size // (1024 * 1024)} MiB diff (budget: under one copy; "
+            f"walk peak {peaks['walk'] // 1024} KiB, idle peak {peaks['idle'] // 1024} KiB)")
 
 
 # ---------------------------------------------------------------------------
@@ -1643,8 +1789,13 @@ def load_hist_baseline() -> set:
     return out
 
 
-def history_rows() -> list:
-    """(sha, added text) for every line every commit in history ADDS.
+def history_rows(keep=None, counter=None) -> list:
+    """(sha, added text) for every line every commit in history ADDS; with `keep`, only the rows keep()
+    accepts, and `counter[0]` counts every added line READ, kept or not (the empty-scan rule's population).
+
+    ⛔ STREAMED, NEVER HELD WHOLE (port of jyh/vir#67). Each diff is read through a pipe. history_mode
+    keeps only the rows scan() flags (scan is per-row), so memory follows the findings and not the size
+    of the history; with no `keep`, the self-test's arms get every row exactly as before.
 
     ⛔ Per commit against its FIRST parent, so a merge is charged for what it
     brings and not for the whole of the branch it merges. A root commit is
@@ -1653,12 +1804,31 @@ def history_rows() -> list:
     """
     EMPTY_TREE = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
 
-    def added_against(base, sha):
-        out = subprocess.run(["git", "diff", "--unified=0", "--no-color", base, sha],
-                             capture_output=True, text=True, encoding="utf-8",
-                             errors="replace", check=False).stdout
-        return [l[1:] for l in out.splitlines()
-                if l.startswith("+") and not l.startswith("+++")]
+    def added_against(base, sha, filt=None):
+        # ⛔ A GIT ERROR RAISES (self-test arm 14, STATUS-systems row 161). Until 2026-11-14 stderr was discarded
+        #   and the exit code unread, so a diff git could not produce read as a commit that added nothing and
+        #   passed clean. The stream is drained first, so git can never block on a full pipe, then a nonzero
+        #   exit raises CalledProcessError, which history_mode reports as FAIL.
+        argv = ["git", "diff", "--unified=0", "--no-color", base, sha]
+        got = []
+        with tempfile.TemporaryFile() as err:
+            p = subprocess.Popen(argv, stdout=subprocess.PIPE, stderr=err)
+            with io.TextIOWrapper(p.stdout, encoding="utf-8", errors="replace", newline="") as out:
+                for physical in out:
+                    for l in physical.splitlines():
+                        if l.startswith("+") and not l.startswith("+++"):
+                            if filt is None or filt(l[1:]):
+                                got.append(l[1:])
+            rc = p.wait()
+            if rc != 0:
+                err.seek(0)
+                raise subprocess.CalledProcessError(rc, argv, stderr=err.read().decode("utf-8", "replace"))
+        return got
+
+    def kept(sha, line):
+        if counter is not None:
+            counter[0] += 1
+        return keep is None or keep((sha[:12], line))
 
     shas = subprocess.run(["git", "rev-list", "HEAD"], capture_output=True,
                           text=True, encoding="utf-8", errors="replace", check=True).stdout.split()
@@ -1670,9 +1840,9 @@ def history_rows() -> list:
         if not parents:
             # a ROOT commit against the empty tree: the first commit is exactly where a
             # pre-gate path sits, and diffing it against nothing would never read it.
-            add = added_against(EMPTY_TREE, sha)
+            add = added_against(EMPTY_TREE, sha, lambda l: kept(sha, l))
         elif len(parents) == 1:
-            add = added_against(parents[0], sha)
+            add = added_against(parents[0], sha, lambda l: kept(sha, l))
         else:
             # ⛔⛔ A MERGE IS CHARGED ONLY FOR CONTENT **NO PARENT HAD**, AND THE FIRST CUT OF
             #   THIS FUNCTION GOT IT WRONG. It diffed against the FIRST PARENT alone, so a
@@ -1688,13 +1858,34 @@ def history_rows() -> list:
             #     can introduce content NEITHER parent had, and skipping merges would make that
             #     invisible. A line is the merge's own exactly when it is added against EVERY
             #     parent.
-            sets = [set(added_against(pa, sha)) for pa in parents]
-            common = set.intersection(*sets) if sets else set()
+            # ⛔ SMALLEST PARENT FIRST, THEN MEMBERSHIP (port of jyh/vir#67): the intersection is a
+            #   subset of every parent's added set, so it is built from the parent whose diff adds the
+            #   fewest lines and each other parent's diff is streamed as a filter on it. The counter
+            #   counts the FIRST-PARENT view only, as the population a merge contributes.
+            order = sorted(parents, key=lambda pa: _added_line_count(pa, sha))
+            common = set(added_against(order[0], sha, lambda l: keep is None or keep((sha[:12], l))))
+            for pa in order[1:]:
+                if not common:
+                    break
+                common = set(added_against(pa, sha, lambda l: l in common))
             # preserve order and multiplicity from the first-parent view
-            add = [l for l in added_against(parents[0], sha) if l in common]
+            add = added_against(parents[0], sha, lambda l: kept(sha, l) and l in common)
         for line in add:
             rows.append((sha[:12], line))
     return rows
+
+
+def _added_line_count(base: str, sha: str) -> int:
+    """Lines the diff base..sha adds, from --numstat (a binary file's `-` counts 0): the ORDER key for a
+    merge's parents, never a verdict."""
+    out = subprocess.run(["git", "diff", "--numstat", "--no-color", base, sha],
+                         capture_output=True, text=True, encoding="utf-8", errors="replace").stdout
+    return sum(int(f) for f in (l.split("\t", 1)[0] for l in out.splitlines()) if f.isdigit())
+
+
+def _is_hit(row) -> bool:
+    """scan() is a per-row predicate, so keeping only the rows it flags changes no verdict."""
+    return bool(scan([row]))
 
 
 def history_mode(write: bool) -> int:
@@ -1703,15 +1894,18 @@ def history_mode(write: bool) -> int:
               "truncated history scans the truncation, not the history.\n"
               "      CI must check out with `fetch-depth: 0` for this job.")
         return 1
+    read = [0]
     try:
-        rows = history_rows()
+        rows = history_rows(keep=_is_hit, counter=read)
     except subprocess.CalledProcessError as e:
         print(f"FAIL: could not read history from HEAD: {e}")
         return 1
     # ⛔ AN EMPTY SCAN IS NOT A CLEAN SCAN. Same refusal as every other arm:
     #   this gate reports a NEGATIVE, and a negative from a population of zero
     #   is the shape every silent failure in this campaign has taken.
-    if _is_empty_scan_fatal(rows):
+    #   ⛔ The population is the lines READ, not the rows KEPT: `rows` now holds only findings, and a
+    #   clean history keeps none.
+    if _is_empty_scan_fatal(range(read[0])):
         print("FAIL: scanned ZERO added lines across HEAD's history. An empty "
               "scan is not a clean scan — this gate refuses to report success "
               "on it.")
@@ -1761,8 +1955,10 @@ def history_mode(write: bool) -> int:
         for sha, what in new[:20]:
             print(f"  {sha}  {what}")
         return 1
+    # ⛔ `rows` holds only the rows scan() flags (PR 434), so len(rows) is HITS, never added lines; the lines
+    #   READ are read[0], the same population the empty-scan refusal above is keyed on (self-test arm 15).
     print(f"check_private_paths --history: OK ({nwalked} commits WALKED, "
-          f"{ncommits} of them contributed added lines, {len(rows)} added lines; "
+          f"{read[0]} added lines READ; {len(rows)} hit row(s) in {ncommits} commit(s); "
           f"{len(base)} accepted historical finding(s), 0 new)")
     return 0
 

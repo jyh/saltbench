@@ -147,3 +147,72 @@ inputs it names; `--check` proves this file still carries every one of them verb
   cover them.
 - Rulings on single legs that this table relies on: Z019's wedge (ADDENDUM 6, not re-fired); Z263, LANDED and scored PASS although its
   supervisor line read PERSIST-INDETERMINATE, which is the persistence probe's verdict and not the cell's (bench, bus 2026-10-24 22:56).
+
+## ⚖️ ADDENDUM — O37, 2026-11-15: agy TOOLS FAILED ON AN UNWRITABLE /tmp/claude, MORE OFTEN IN SALT-DIET CELLS. APPENDED; everything above is unchanged.
+*bench.* Before export 3796e6b4 (block WA ADDENDUM 3, arm L), 791 of the run box's 792 agy srt turn-loop env files omit `CLAUDE_CODE_TMPDIR`;
+without it the subject's shell has `TMPDIR=/tmp/claude` (block WA's F2 battery), which the sandbox does not let it write, so a tool
+that makes a temp file failed (`mktemp`, `patch`, rustc) while the shell itself ran. Which fence arm (srt or seatbelt) each cell
+ran is not shown here: the cause is established for srt cells, and a hit is a printed failure whatever its cause. Cells this file names that print the failure: 3 salt-diet (arm from the cell directory's name).
+Over the complete matrix's agy cells of record: **salt-diet 32 of 141 (34 counting two ambiguous ids), plain 2 of 139.** It is not expected
+to manufacture a salt-diet advantage, but its sign on cost and outcome is not measured here. A hit is a failure the
+stream PRINTED, not a changed outcome, and no figure above is re-read. Source: `evidence/o37-agy-tmpclaude-2026-11-15/` (README: method, controls, limits).
+The Claude lane is not measured by it.
+
+## ⚖️ ADDENDUM — O37, 2026-11-20: TWO FLASH PAXOS CELLS OF THIS RECORD WERE SERVED WEB SEARCHES (WEB-SERVED), 26 RESULTS; ARGON 0. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+The client's main stream records `search_web` as a step that goes ACTIVE then DONE with no result body, so a stream cannot tell a served call from a denied one; the client's own conversation record (the brain transcript under the cell's `.agyhome`) carries the result. Read there, every `search_web` call on the run box was served (96 of 96), and the canonical PreToolUse hook, registered in each of these cells, denied none.
+
+**Declared WEB-SERVED, of this record** (one more call, a `read_url_content` in `zffpgns2a201`, was denied by the client's permission layer):
+
+- `zffpbns101` (flash, salt): 19 search result(s) served; first query *"Paxos" "inductive invariant" verus OR dafny*
+- `zffpgns2a201` (flash, salt): 7 search result(s) served; first query *"paxos" verus proof agreement validity*
+
+No argon cell of this record called a web tool. The other 262 cells of this record have a brain transcript and were served nothing.
+
+No cell is voided (level 6 A5.2 registered that the agy fence makes no web-isolation claim and voids only FENCE-TAMPER). A WEB-SERVED cell keeps its verdict and **leaves every comparison**: an input from outside the arm, of unknown sign. The table re-cuts, where a comparison loses a cell, are a separate change; no figure above is re-read here.
+
+Source: `evidence/o37-agy-web-served-2026-11-20/`.
+
+## ⚖️ ADDENDUM — O37, 2026-11-20 (re-cut): THE TWO WEB-SERVED FLASH PAXOS CELLS OUT OF THE ZF READING: WHAT MOVES. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+Printed by `recut.py` in `evidence/o37-agy-web-served-2026-11-20/recut/`: the instrument that printed this file, run on its input of record (OLD, which reproduces this file's tables exactly: the control) and with the WEB-SERVED cells taken out (NEW, by the route the instrument already has). No instrument was changed. **Nothing above is replaced:** the tables of record stand as printed, and this is the comparison without the WEB-SERVED cells, beside them. It says nothing about the salt method.
+
+⚠️ **`STATE: PARTIAL` in the NEW lines is the instrument reading a removed cell as an unharvested one** (a SHORT pair that no ruling CUT). The ZF set has ended. Here PARTIAL means only that two Flash Paxos salt-diet conditions hold 2 of 3 cells after the exclusion.
+
+`recut/ZF-moved.txt`, verbatim (OLD = the record, NEW = without the WEB-SERVED cells; GONE/ADDED = a row on one side only):
+
+```
+@@ -2,2 +2,3 @@
+-POPULATION §G1: 46 conditions x 2 models x n = 3 = 276 cells; harvested 264; SHORT 4 condition-model pairs
+-STATE: COMPLETE — every SHORT pair is a condition CUT by ruling (4 pairs)
++POPULATION §G1: 46 conditions x 2 models x n = 3 = 276 cells; harvested 262; SHORT 6 condition-model pairs
++STATE: PARTIAL — the set has not ended; every figure below is a reading of the cells harvested so far, not the RESULT
++SHORT flash Paxos gf none salt-diet: 2 of 3
+@@ -7,0 +9 @@
++SHORT flash Paxos bf none salt-diet: 2 of 3
+@@ -18 +20 @@
+-ROW Paxos | gf | none | salt-diet | 3 / 3 · 3/3/0/0 | 3 / 3 · 3/3/0/0 | 0 / 1 (+2 censored) · 2 / 3 † | Z verdict channel: OPEN (ZQ (a), ADDENDUM 3)
++ROW Paxos | gf | none | salt-diet | 3 / 3 · 3/3/0/0 | 2 / 2 · 2/2/0/0 | 0 / 1 (+2 censored) · 2 / 3 † | Z verdict channel: OPEN (ZQ (a), ADDENDUM 3)
+@@ -46 +48 @@
+-ROW Paxos | bf | none | salt-diet | 3 / 3 · 3/3/0/0 | 3 / 3 · 3/3/0/0 | 2 / 3 · 3 / 3 | Z verdict channel: OPEN (ZQ (a), ADDENDUM 3)
++ROW Paxos | bf | none | salt-diet | 3 / 3 · 3/3/0/0 | 2 / 2 · 2/2/0/0 | 2 / 3 · 3 / 3 | Z verdict channel: OPEN (ZQ (a), ADDENDUM 3)
+@@ -58 +60 @@
+-TOTAL gemini-3.8-flash-high salt-diet: COUNTED 57 / 66 · EXCLUDED 57 / 66 · fired 66 · scored 66 · wedge 0 · other 0 | Z verdict channel: OPEN (ZQ (a), ADDENDUM 3)
++TOTAL gemini-3.8-flash-high salt-diet: COUNTED 55 / 64 · EXCLUDED 55 / 64 · fired 64 · scored 64 · wedge 0 · other 0 | Z verdict channel: OPEN (ZQ (a), ADDENDUM 3)
+@@ -60 +62 @@
+-TOTAL gemini-3.8-flash-high both arms: COUNTED 121 / 132 · EXCLUDED 121 / 132 · fired 132 · wedge 0 · other 0 | Z verdict channel: OPEN (ZQ (a), ADDENDUM 3)
++TOTAL gemini-3.8-flash-high both arms: COUNTED 119 / 130 · EXCLUDED 119 / 130 · fired 130 · wedge 0 · other 0 | Z verdict channel: OPEN (ZQ (a), ADDENDUM 3)
+@@ -78,3 +80,3 @@
+-A7 gemini-3.8-flash-high salt-diet: final-phase roots 66 · with a hit 12 · hits 16 | spec-change phase 1 roots 12 · with a hit 0 · hits 0 | roots with no stderr yet 0 | harvested legs 66
+-TRUNCATED-ROW cells (a TRUNCATED score row beside the verdict): gemini-4-argon-high plain 6 · gemini-4-argon-high salt-diet 17 · gemini-3.8-flash-high plain 0 · gemini-3.8-flash-high salt-diet 12
+-EMPTY-TURN cells (>= 1 turn with no output, either phase): gemini-4-argon-high plain 1 · gemini-4-argon-high salt-diet 12 · gemini-3.8-flash-high plain 0 · gemini-3.8-flash-high salt-diet 4
++A7 gemini-3.8-flash-high salt-diet: final-phase roots 66 · with a hit 12 · hits 16 | spec-change phase 1 roots 12 · with a hit 0 · hits 0 | roots with no stderr yet 0 | harvested legs 64
++TRUNCATED-ROW cells (a TRUNCATED score row beside the verdict): gemini-4-argon-high plain 6 · gemini-4-argon-high salt-diet 17 · gemini-3.8-flash-high plain 0 · gemini-3.8-flash-high salt-diet 10
++EMPTY-TURN cells (>= 1 turn with no output, either phase): gemini-4-argon-high plain 1 · gemini-4-argon-high salt-diet 12 · gemini-3.8-flash-high plain 0 · gemini-3.8-flash-high salt-diet 2
+
+#RECUT ZF: 9 old line(s), 11 new line(s)
+```

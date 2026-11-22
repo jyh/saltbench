@@ -139,3 +139,80 @@ not LANDED by done_reason: naaeps01 TURN-TIMEOUT 11524 s NOT-LANDED · naaeps02 
   prose check  RESULT-gemini-blockNA-2026-09-28-prose-verify.py (the lead's): every figure line above re-derived from the table and
                asserted against this document; --selftest requires RED on a PASS turned FAIL and on the outside-n cell admitted
 ```
+
+---
+# ADDENDUM 2026-11-14 · A LIMIT ON MaxFlow's REQUIREMENT R6 (paper, placing bench's probe of 2026-11-13). No figure above changes.
+
+MaxFlow's requirement R6 asks that the second function, `answer_is_valid`, decide any pair it is handed, including a valid pair the
+component did not produce. The withheld suite does not ask that case: its two hand-built "true" pairs carry the reference's own set,
+and its battery arm asks only the component's own pair. A stub whose checker answers "equal to my own answer" passes the suite at 8 of 8.
+
+**The suite does not test a non-own valid pair; every cell of record was checked by probe on 2026-11-13, none rejects one.** The probe
+read each MaxFlow cell of record's scored `solution.rs` by `git show` (no checkout; the cell untouched), linked it through the harness's
+own build with a probe driver, and asked its checker about three valid pairs it did not produce and one invalid control. All 24 MaxFlow
+cells of record (block NO 6, block NS 6, block NA 12) accept the three and reject the control; this file's block holds 12 of them. The record is commit
+`ec868607` of the private harness tree, `evidence/o37-maxflow-r6-nonown-2026-11-13/`. The probe and the stub stay private, because they
+carry the withheld suite's networks and reference. A new MaxFlow cell would need the same check.
+
+## ⚖️ ADDENDUM — O37, 2026-11-15: agy TOOLS FAILED ON AN UNWRITABLE /tmp/claude, MORE OFTEN IN SALT-DIET CELLS. APPENDED; everything above is unchanged.
+*bench.* Before export 3796e6b4 (block WA ADDENDUM 3, arm L), 791 of the run box's 792 agy srt turn-loop env files omit `CLAUDE_CODE_TMPDIR`;
+without it the subject's shell has `TMPDIR=/tmp/claude` (block WA's F2 battery), which the sandbox does not let it write, so a tool
+that makes a temp file failed (`mktemp`, `patch`, rustc) while the shell itself ran. Which fence arm (srt or seatbelt) each cell
+ran is not shown here: the cause is established for srt cells, and a hit is a printed failure whatever its cause. Cells this file names that print the failure: 1 salt-diet (arm from the cell directory's name).
+Over the complete matrix's agy cells of record: **salt-diet 32 of 141 (34 counting two ambiguous ids), plain 2 of 139.** It is not expected
+to manufacture a salt-diet advantage, but its sign on cost and outcome is not measured here. A hit is a failure the
+stream PRINTED, not a changed outcome, and no figure above is re-read. Source: `evidence/o37-agy-tmpclaude-2026-11-15/` (README: method, controls, limits).
+The Claude lane is not measured by it.
+
+## ⚖️ ADDENDUM — O37, 2026-11-20: FIVE LinearScan FLASH CELLS OF THIS RECORD WERE SERVED WEB SEARCHES (WEB-SERVED), 51 RESULTS. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+The client's main stream records `search_web` as a step that goes ACTIVE then DONE with no result body, so a stream cannot tell a served call from a denied one; the client's own conversation record (the brain transcript under the cell's `.agyhome`) carries the result. Read there, every `search_web` call on the run box was served (96 of 96), and the canonical PreToolUse hook, registered in each of these cells, denied none.
+
+**Declared WEB-SERVED, of this record** (one more call, a `read_url_content` in `nalsfp202`, was denied by the client's permission layer):
+
+- `nalsfp201` (gemini-3.8-flash-high, plain): 7 search result(s) served; first query *"Poletto and Sarkar" "Linear scan register allocation" spill*
+- `nalsfp202` (gemini-3.8-flash-high, plain): 16 search result(s) served; first query *"Poletto" "Sarkar" "Linear scan register allocation" spill*
+- `nalsfp203` (gemini-3.8-flash-high, plain): 22 search result(s) served; first query *"Linear scan register allocation" "Poletto" "live interval"*
+- `nalsfs202` (gemini-3.8-flash-high, salt-diet): 3 search result(s) served; first query *"Poletto" "Sarkar" "Linear scan register allocation" "live interval" endpoints overlap*
+- `nalsfs203` (gemini-3.8-flash-high, salt-diet): 3 search result(s) served; first query *"Poletto" "Sarkar" "Linear scan register allocation" spill register rewrite*
+
+The queries name the algorithm's source paper. All five are Flash × LinearScan, in the r2 roots; plain carries 45 of the 51.
+
+No cell is voided (level 6 A5.2 registered that the agy fence makes no web-isolation claim and voids only FENCE-TAMPER). A WEB-SERVED cell keeps its verdict and **leaves every comparison**: an input from outside the arm, of unknown sign. The table re-cuts, where a comparison loses a cell, are a separate change; no figure above is re-read here.
+
+Source: `evidence/o37-agy-web-served-2026-11-20/`. The other 68 cells of this record have a brain transcript and were served nothing.
+
+## ⚖️ ADDENDUM — O37, 2026-11-20 (re-cut): THE FIVE WEB-SERVED LinearScan FLASH CELLS OUT OF §3: WHAT MOVES. APPENDED; everything above is unchanged.
+
+*gemini (the hand), on the lead's ruling on the bus, 2026-11-20 00:29:42, helm-reversible.*
+
+Printed by `recut.py` in `evidence/o37-agy-web-served-2026-11-20/recut/`: the instrument that printed this file, run on its input of record (OLD, which reproduces this file's tables exactly: the control) and with the WEB-SERVED cells taken out (NEW, by the route the instrument already has). No instrument was changed. **Nothing above is replaced:** the tables of record stand as printed, and this is the comparison without the WEB-SERVED cells, beside them. It says nothing about the salt method.
+
+`recut/blockNA-moved.txt`, verbatim (OLD = the record, NEW = without the WEB-SERVED cells; GONE/ADDED = a row on one side only):
+
+```
+@@ -1,3 +1,3 @@
+-cells in n 72 · outside n 1 (nabhfsr01) · conditions 24
+-exports 59508ac 8ed8cb3 e10f420 · task trees vs e54f35a DIFFERENT 12 SAME 60 · x86-concurrent cells 0
+-done_reason LANDED 69 · TURN-TIMEOUT 3
++cells in n 67 · outside n 1 (nabhfsr01) · conditions 23
++exports 59508ac 8ed8cb3 e10f420 · task trees vs e54f35a DIFFERENT 7 SAME 60 · x86-concurrent cells 0
++done_reason LANDED 64 · TURN-TIMEOUT 3
+@@ -16 +16 @@
+-== gemini-3.8-flash-high: 36 cells
++== gemini-3.8-flash-high: 31 cells
+@@ -22,3 +22,3 @@
+-  LinearScan   plain 3/3 scored of 3 fired [9/9 9/9 9/9] trunc 0 · salt-diet 2/3 scored of 3 fired [9/9 8/9 9/9] trunc 3
+-  gemini-3.8-flash-high plain FULL PASS 18 of 18 scored · cut turns 0 of 55 sent · truncated cells 0 of 18 · cells with any cut 0
+-  gemini-3.8-flash-high salt-diet FULL PASS 16 of 17 scored · cut turns 18 of 72 sent · truncated cells 4 of 18 · cells with any cut 5
++  LinearScan   plain 0/0 scored of 0 fired [] trunc 0 · salt-diet 1/1 scored of 1 fired [9/9] trunc 1
++  gemini-3.8-flash-high plain FULL PASS 15 of 15 scored · cut turns 0 of 45 sent · truncated cells 0 of 15 · cells with any cut 0
++  gemini-3.8-flash-high salt-diet FULL PASS 15 of 15 scored · cut turns 14 of 61 sent · truncated cells 2 of 16 · cells with any cut 3
+@@ -27 +27 @@
+-  (ii) gemini-3.8-flash-high salt-diet cells-with-a-cut in reference-size order 0 0 1 0 1 3 · non-decreasing NO
++  (ii) gemini-3.8-flash-high salt-diet cells-with-a-cut in reference-size order 0 0 1 0 1 1 · non-decreasing NO
+
+#RECUT blockNA: 8 old line(s), 8 new line(s)
+```
