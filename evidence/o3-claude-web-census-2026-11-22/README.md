@@ -84,7 +84,8 @@ tool flags does too. Which of the two flags does it is not separated: the flags 
 The **cell** arm reconstructs the launch line; it is not a copy of one. Against `clbvrs01`'s own ARGV line it omits
 `--name` and `--agents`, runs `claude-sonnet-5` at effort low where the cell ran `claude-opus-5` at effort high, and passes
 the fence once where the launch passes the same fence path twice. The tool flags, `--strict-mcp-config`,
-`--setting-sources user,project`, `--dangerously-skip-permissions` and the fence are the launch's. `EndConversation`, answered in two cells (section 3), is in no arm's list,
+`--setting-sources user,project`, `--dangerously-skip-permissions` and the fence are the launch's. Whether the model or the effort
+changes the init list is unmeasured: every arm ran `claude-sonnet-5` at effort low. `EndConversation`, answered in two cells (section 3), is in no arm's list,
 so the init list is not every name the client will answer either.
 
 ## Positive controls for section 1
