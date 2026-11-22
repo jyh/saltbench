@@ -1,0 +1,6 @@
+# mutant: ta_result_gen.py with the USED (partial) test disabled (the first draft read it after the CATS loop, where bare USED matched first)
+flash salt-diet categories: USED 17 · SPEC TRANSCRIBED, CONTRACT ABSENT 1
+argon salt-diet categories: USED 18
+# fixed:
+flash salt-diet categories: USED 15 · USED (partial) 2 · SPEC TRANSCRIBED, CONTRACT ABSENT 1
+argon salt-diet categories: USED 18

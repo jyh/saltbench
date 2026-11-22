@@ -1,0 +1,36 @@
+talfp101 check_trace body 2 lines + 0 called fns · statement names there: 1/22: s_op_ok
+talfp201 check_trace: NOT FOUND
+talfp301 check_trace body 7 lines + 1 called fns · statement names there: 8/22: s_chosen s_covered s_dominating s_indep s_input_wf s_op_ok s_remaining s_vset
+taafp101 check_trace body 16 lines + 2 called fns · statement names there: 0/30: 
+taafp201 check_trace body 5 lines + 2 called fns · statement names there: 0/30: 
+taafp301 check_trace body 16 lines + 2 called fns · statement names there: 1/30: pad16
+tavfp101 check_trace: NOT FOUND
+tavfp201 check_trace: NOT FOUND
+tavfp301 check_trace: NOT FOUND
+tamfp101 check_trace: NOT FOUND
+tamfp2a201 check_trace: NOT FOUND
+tamfp301 check_trace body 33 lines + 1 called fns · statement names there: 0/19: 
+tabfp101 check_trace: NOT FOUND
+tabfp201 check_trace: NOT FOUND
+tabfp301 check_trace: NOT FOUND
+tasfp101 check_trace: NOT FOUND
+tasfp201 check_trace: NOT FOUND
+tasfp301 check_trace: NOT FOUND
+talap101 check_trace body 9 lines + 1 called fns · statement names there: 4/22: s_chosen s_input_wf s_op_ok s_vset
+talap201 check_trace body 25 lines + 2 called fns · statement names there: 5/22: s_chosen s_input_wf s_op_ok s_remaining trace_ok
+talap301 check_trace body 9 lines + 1 called fns · statement names there: 5/22: s_chosen s_input_wf s_nbhd s_op_ok s_vset
+taaap101 check_trace: NOT FOUND
+taaap201 check_trace body 11 lines + 2 called fns · statement names there: 0/30: 
+taaap301 check_trace body 5 lines + 2 called fns · statement names there: 1/30: pad16
+tavap101 check_trace body 14 lines + 1 called fns · statement names there: 5/35: s_in_of s_input_wf s_out_of s_succs s_uds
+tavap201 check_trace: NOT FOUND
+tavap301 check_trace body 18 lines + 2 called fns · statement names there: 6/35: s_block_wf s_input_wf s_iter s_succs s_total_instrs s_uds
+tamap101 check_trace body 35 lines + 2 called fns · statement names there: 0/19: 
+tamap201 check_trace body 27 lines + 2 called fns · statement names there: 4/19: is_plan is_separator set_capacity throughput
+tamap301 check_trace body 18 lines + 2 called fns · statement names there: 0/19: 
+tabap101 check_trace: NOT FOUND
+tabap201 check_trace body 90 lines + 3 called fns · statement names there: 0/25: 
+tabap301 check_trace: NOT FOUND
+tasap101 check_trace: NOT FOUND
+tasap201 check_trace: NOT FOUND
+tasap301 check_trace body 15 lines + 2 called fns · statement names there: 16/51: s_all_fit s_all_in_regs s_all_regs_lt s_alloc_ok s_any_slot s_bit s_disj s_instr_regs_lt s_look s_overlaps s_pairs_lt s_presen

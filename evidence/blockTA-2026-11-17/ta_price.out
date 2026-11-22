@@ -1,0 +1,18 @@
+WA plain: argon n 6 median wall 750.2 s · flash n 6 median 591.1 s · ratio 1.269
+WA salt-diet: argon n 6 median wall 2016.8 s · flash n 6 median 1459.4 s · ratio 1.382
+NA Luby plain: flash n 3 median wall 361.3 s · Flash price 3 x 361.3 = 1084 s · argon price 3 x 361.3 x 1.269 = 1376 s
+NA Luby salt-diet: flash n 3 median wall 992.8 s · Flash price 3 x 992.8 = 2978 s · argon price 3 x 992.8 x 1.382 = 4116 s
+NA AES plain: flash n 3 median wall 415.3 s · Flash price 3 x 415.3 = 1246 s · argon price 3 x 415.3 x 1.269 = 1581 s
+NA AES salt-diet: flash n 3 median wall 1262.6 s · Flash price 3 x 1262.6 = 3788 s · argon price 3 x 1262.6 x 1.382 = 5234 s
+NA Liveness plain: flash n 3 median wall 376.5 s · Flash price 3 x 376.5 = 1130 s · argon price 3 x 376.5 x 1.269 = 1434 s
+NA Liveness salt-diet: flash n 3 median wall 1142.1 s · Flash price 3 x 1142.1 = 3426 s · argon price 3 x 1142.1 x 1.382 = 4735 s
+NA MaxFlow plain: flash n 3 median wall 458.3 s · Flash price 3 x 458.3 = 1375 s · argon price 3 x 458.3 x 1.269 = 1745 s
+NA MaxFlow salt-diet: flash n 3 median wall 1222.1 s · Flash price 3 x 1222.1 = 3666 s · argon price 3 x 1222.1 x 1.382 = 5066 s
+NA BinomialHeap plain: flash n 3 median wall 418.4 s · Flash price 3 x 418.4 = 1255 s · argon price 3 x 418.4 x 1.269 = 1593 s
+NA BinomialHeap salt-diet: flash n 3 median wall 1912.3 s · Flash price 3 x 1912.3 = 5737 s · argon price 3 x 1912.3 x 1.382 = 7928 s
+NA LinearScan plain: flash n 3 median wall 896.6 s · Flash price 3 x 896.6 = 2690 s · argon price 3 x 896.6 x 1.269 = 3414 s
+NA LinearScan salt-diet: flash n 3 median wall 4354.8 s · Flash price 3 x 4354.8 = 13064 s · argon price 3 x 4354.8 x 1.382 = 18054 s
+Flash price, 36 cells: 41439 s = 11.5 h
+argon price, 36 cells: 56276 s = 15.6 h
+TA price, 72 cells: 97715 s = 27.1 h of cell wall; agy pool points per cell UNMEASURED
+largest condition pair: LinearScan salt-diet 31118 s = 32 % of the price

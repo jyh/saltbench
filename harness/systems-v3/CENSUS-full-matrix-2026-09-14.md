@@ -2035,3 +2035,52 @@ Nothing Opus-versus-Sonnet, nothing about the statement arm versus `extras = non
 Every premium in both results is UNRESOLVED-UNDERPOWERED as registered.
 
 Source: `evidence/blockT-result-2026-11-22/` (README: the per-cell table, the categories as read, the derive, the generator, the checks).
+
+# ⚖️ ADDENDUM 50 — **O37: BLOCK TA REACHES `main`. 24 CONDITIONS MOVE TO DONE (the six block-N problems × statement × {plain, salt-diet} × {gemini-3.8-flash-high, gemini-4-argon-high}, agy lane), EACH AT n = 3. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-22, in the commit that lands block TA's registration branch on `main` (ADDENDUM 49 §AT2: "Block TA's 24 move when its result reaches `main` with its own addendum").
+
+## §AU1 · WHAT MOVED
+Block TA (`AMENDMENT-O37-statement-six-agy-2026-11-17.md`, ADDENDA 1–8) and its result of record, `RESULT-gemini-blockTA-2026-11-20.md`
+(gemini's hand, the lead's read; merged into the registration branch as #455), reach `main` with this addendum. All 72 cells are cells
+of record. The lines, printed by `evidence/blockTA-result-2026-11-20/ta_census_line.py` from `cells.tsv` beside it (`--check` on this
+file asserts each one):
+```
+block TA gemini-3.8-flash-high: 12 conditions, 12 at n = 3, cells of record 36 · LANDED 36 · PASS 36 · MODEL-SEAM flagged 4
+block TA gemini-4-argon-high: 12 conditions, 12 at n = 3, cells of record 36 · LANDED 36 · PASS 36 · MODEL-SEAM flagged 0
+block TA: the six block-N problems x statement, agy lane: 24 conditions, cells of record 72
+```
+The four MODEL-SEAM cells (Claude workers started through the client's `swarm` tool, RESULT §1.4) are counted as cells of record by
+the lead's ruling, and they are out of every Flash comparison. Truncated cells, 5 Flash salt-diet and 1 argon salt-diet, are out of
+the comparisons by the RESULT's truncation rule, and they stay cells of record. #457's web census joined all 72 TA cells, and 0 were
+served a search (`evidence/o37-agy-web-served-2026-11-20/README.md`, row TA). DONE is not a verdict on the arms. Every condition is at
+CEILING in both models (RESULT §2, §3).
+
+## §AU2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-22)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (ADDENDUM 44)   4
+                 block WC: NTT, WHT x spec-change x {plain, salt-diet} x {Opus, Sonnet} (ADDENDUM 45)  8
+                 block NC: the six block-N problems x spec-change, Claude lane (ADDENDUM 46)        22
+                 block T: the six block-N problems x statement, Claude lane (ADDENDUM 49)           24
+                 block TA: the six block-N problems x statement, agy lane (this)                    24
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+                 block NC: LinearScan x spec-change x salt-diet x {Opus, Sonnet}, unreached (ADDENDUM 46)  2
+    NOT DONE     WHT and NTT, the other 24:
+                   x statement, both lanes; x spec-change, agy lane: in no merged block              24
+                     (block TW, the Claude lane's 8 x statement, is registered, unmerged: saltbench #462)
+                 the six block-N problems x spec-change, agy lane: in no merged block              24
+```
+DONE 142 · DECLARED 26 · NOT DONE 48 = 216.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AU3 · ALSO REACHING `main` IN THIS LANDING, AND WHAT THIS ADDENDUM DOES NOT ESTABLISH
+The registration branch also carries the cut-turns unit correction (bench queue row 11, #456): the "cut turns" figures in both WA
+RESULTs were print-timeout LINES, three per event. Its addenda to `RESULT-gemini-blockWA-{flash,pro}-*.md` and its evidence
+(`evidence/cut-turns-unit-2026-11-20/`) were merged only into the branch, so `main` carried the uncorrected figures until this landing.
+Nothing Flash-versus-argon (§TA6: a result of record per model, never pooled), nothing about the agy lane versus the Claude lane, nothing
+about the salt method. At ceiling, no pass count separates the arms.
+
+Source: `evidence/blockTA-result-2026-11-20/` (README: the per-cell table, the collectors, the censuses, the generator).
