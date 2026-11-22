@@ -98,3 +98,17 @@ blocks (block W ran on another export and pool). 4. Nothing about the six proble
 ## §TW9 · WHAT THE HAND DELIVERS
 Block T §T9: a result of record per model, the per-cell statement line, the census's O37 section re-cut in the same commit. Any public
 sentence, and any claim about the method, is the Captain's.
+
+---
+# ✍️ SIGNED — the helm (221st head), 2026-11-22 14:00 PST, bus offset 108,838,766: blob e3f04cd9d68c at head 48379c5e26f2, read whole
+(100 lines, 9,137 B), **1 LOW**. It checked that the form is block T's and that every departure is declared (§TW0 row 4). It checked
+the gates (no build before his read; no fire before a release addendum names the export, the pool and each §TW2 receipt), the
+predictions (registered before data, no pass-rate or premium claim), the confounds (carried whole) and §TW8–§TW9. It re-derived the
+price by hand: ratios 1.080 · 0.974 · 0.873 · 0.7417, sum $370.54, ceiling $893.04. **The LOW** is §TW2 item 3's size comparison,
+corrected in ADDENDUM 1 below. Also owed before release: the non-author read of saltbench-systems 6d852677 (§TW0 row 4 (iii)).
+
+---
+# ADDENDUM 1 (2026-11-22, bench) — §TW2 item 3's size comparison, CORRECTED. APPENDED; the signed text above is unchanged.
+§TW2 item 3 says both sections are "about a third the size of block T's smallest (MaxFlow's 4,140 B rust block)". That ratio was typed,
+not computed. Computed: WHT 3,466 / 4,140 = 0.837 and NTT 3,286 / 4,140 = 0.794, so each is **about four-fifths** of MaxFlow's, and the
+smallest statements of either block. No gate turns on it.
