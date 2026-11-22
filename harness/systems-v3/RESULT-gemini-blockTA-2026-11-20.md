@@ -241,4 +241,6 @@ each with its post). **No category moves, and every figure line above stands** (
 `tamap101` TEST ORACLE. Its tests carry `set_capacity`, a name only the Statement supplies, inside failure messages, and its LANDING quotes
 the Statement's `throughput(flow, s) == set_capacity(cap, cut)`. That is a quote in LANDING, which the rule counts.
 
-**Not read:** the other 29 plain cells (each holds more Statement names than the threshold) and every salt-diet cell.
+**Not read:** the other 29 plain cells and every salt-diet cell. The 29 are outside the reach by label or by count: 22 hold more Statement
+names than the threshold, and 7 are at or under it but labelled NO TRACE or WEAK TRACE, which the rule cannot move down (`tamfp101`,
+`tamfp2a201`, `tamfp301`, `tabfp301` NO TRACE; `tabfp101`, `tabfp201`, `tabap201` WEAK TRACE; corrected on the non-author read, bus offset 108,945,262).
