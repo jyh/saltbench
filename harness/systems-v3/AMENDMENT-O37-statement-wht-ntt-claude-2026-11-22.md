@@ -112,3 +112,30 @@ corrected in ADDENDUM 1 below. Also owed before release: the non-author read of 
 §TW2 item 3 says both sections are "about a third the size of block T's smallest (MaxFlow's 4,140 B rust block)". That ratio was typed,
 not computed. Computed: WHT 3,466 / 4,140 = 0.837 and NTT 3,286 / 4,140 = 0.794, so each is **about four-fifths** of MaxFlow's, and the
 smallest statements of either block. No gate turns on it.
+
+---
+# ⚖️ ADDENDUM 2 (2026-11-23, bench) — RELEASE, ⛔ DRAFT: NOT A RELEASE. BUILT AHEAD OF HIS READ (§TW2 item 2). APPENDED.
+Every receipt that can be driven before his read, and without building a cell, is driven here on the export CANDIDATE. The rest are
+marked OPEN. This heading loses its DRAFT mark only in a later addendum that records his word, names the export as cut and the pool, and
+fills every OPEN row. Nothing in this addendum builds or fires a cell.
+**Export candidate: saltbench-systems `6d7f398f`** (§TW0 row 4; backup branch `bench/o37-TW-export-candidate-2026-11-22`). The WHT and NTT
+task trees there have git tree ids WHT 44b92115d240 · NTT 77c641773103, which are equal at WA Pro's export 3fd5edf1 and at the agy hook export
+candidate aa071afc (block TWA's §TWA0 row 4 cites this).
+**§TW2 receipts:**
+1. **MET at the candidate, 2026-11-23, on the lead's workstation** (the files read by `git show 6d7f398f:<path>`, no export cut): `extract_statement_v3.py
+   <ref> --names <verify.names> --interface <G/interface.rs> --check`, run with and without `--carry-consts`, rc 0 in all four runs. Each card's
+   ```rust block under `## Statement` `cmp` EQUAL to the extractor's output: WHT 3,466 B (sha256/16 06099b2de83edec7) · NTT 3,286 B (sha256/16
+   f4e431a069a515ce). With and without `--carry-consts` the output is byte-identical for both. Control: the WHT block with one line appended
+   reads DIFFER. The release re-drives it on the export as cut, or cites this drive with the two tree ids shown equal there.
+2. ⛔ OPEN: the Captain's read of both sections (the pack's ask 2). His word, with its minute line, is recorded in the release.
+3. MET: the sizes above equal §TW2 item 3's table (3,466 B and 3,286 B), with ADDENDUM 1's correction.
+4. ⛔ OPEN by the gate: neutrality is driven on BUILT views, and no cell is built before his read. At the release: 4 dry cells at the
+   export as cut, with the planted-theorem control.
+5. **MET at the candidate's task tree, 2026-11-23, on the lead's workstation** (a detached worktree of 6d7f398f, removed after the run):
+   `check_withheld_leak_v3.py --tasks tasks/systems-v3` CLEAN: 343 identifiers across 13 tasks, every positive control fired, 1,372 view-file
+   reads, 0 in any view (WHT 30 and NTT 28 identifiers screened). The release re-runs it on the export as cut.
+6. ⛔ OPEN: `export_marker_check.sh` on the export as cut, and the stager's `export-marker` selftest arm on its own harness, with the
+   quarantined full-tree cut refused as the control.
+**Also OPEN at the release:** the pool (the PM names it, P3), the zero-cell served-model probe and the account check (§TW2 item 5), and the client pin (§TW0
+row 5, with the `idleCompaction` declaration if the pin moves).
+**Hand:** bench. **Order:** §TW3 as registered (`TW-O`, then `TW-S`, each read before its model continues).
