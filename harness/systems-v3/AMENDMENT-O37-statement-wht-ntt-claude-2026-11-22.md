@@ -139,3 +139,57 @@ candidate aa071afc (block TWA's §TWA0 row 4 cites this).
 **Also OPEN at the release:** the pool (the PM names it, P3), the zero-cell served-model probe and the account check (§TW2 item 5), and the client pin (§TW0
 row 5, with the `idleCompaction` declaration if the pin moves).
 **Hand:** bench. **Order:** §TW3 as registered (`TW-O`, then `TW-S`, each read before its model continues).
+
+---
+# ⚖️ ADDENDUM 3 (2026-11-23, bench) — THE RELEASE. ADDENDUM 2's open items are filled here; this heading is the release. APPENDED.
+The repo appends to a frozen file and never edits it, so ADDENDUM 2's heading keeps its DRAFT mark. Its condition is met by this addendum.
+**§TW2 item 2, his read: MET.** Council 2026-11-23, ask 2 (the council minute of 2026-11-23, item 2, seat blob afbe23b67bcc):
+after an English reading of both statements, his words were *"yes, readd and approved"*. That accepts NTT's weaker statement as registered
+(§TW5.3). What he read is seat blob a859f1d2a31c. Its two ```rust blocks are byte-equal to the cards at the export below: WHT 3,466 B and
+NTT 3,286 B, compared by script.
+**CORRECTION TO ADDENDUM 2 item 1:** the two sha256/16 values there are attached to the wrong problems. Measured twice (a python parse and an awk
+cut of each card's block at the export): **WHT 3,466 B is f4e431a069a515ce, NTT 3,286 B is 06099b2de83edec7.** The seat brief he read
+(the seat brief at blob a859f1d2a31c, its WHT and NTT headings) has them right. The sizes and the `cmp` verdict in ADDENDUM 2 stand.
+**Export: saltbench-systems `e4f786fe`** (backup branch `bench/o37-TW-stager-2026-11-23`) = the candidate 6d7f398f + ONE commit, the TW
+stager. ⚖️ **A DEPARTURE FROM §TW0 row 4, DECLARED:** at 6d7f398f no block could stage a TW cell, because blocks TO/TS are freeze T and the scope
+rule refuses W's problems there. e4f786fe adds blocks TWO (letter a, Opus) and TWS (letter p, Sonnet), greenfield × statement, freeze TW,
+to clb_stage.sh, clb_fire.sh and clb_harvest.py, in the same shape as block T's 2505998e, plus the fixture `clb_blockTW_selftest.sh`. It
+touches no tasks/, referee, leak checker, extractor, builder or neutrality grep: against 6d7f398f, `tasks/systems-v3` (tree e2cbc84cbfba),
+`referee_v3.py`, `check_withheld_leak_v3.py`, `extract_statement_v3.py`, `cell_build.py` and `neutrality_grep.py` are byte-identical (git tree
+and blob ids equal). The fixture: this tree 14/14 GREEN (lane B stage and fire parity on 870 combos; block W's WO/WS and block T's TO/TS
+parity, 32 combos; 24 TW ids and 8 roots, none colliding; 44 cross combinations refuse naming this freeze; `--roots --freeze TW` = 8, 4 Opus
+and 4 Sonnet). The 6d7f398f scripts go RED on exactly the 7 TW arms (b1–b4, c1, d2, d3). Its non-author read: systems, CONCUR, no logic fault (bus offset 109,827,304, 2026-11-23 10:52 PST). It reproduced 14/14 and ran three mutants: two were killed (the fire scope clause, the --freeze TW problems line). The third, TW's letters dropped from clb_harvest, SURVIVES: no fixture arm covers clb_harvest's table, so a missing letter would show only as a KeyError at harvest. That is declared LOW and owed to a later export, together with the pre-existing gap systems found (block G's letter k is absent from clb_harvest; the same at 6d7f398f). With TW the block letters a–z are all in use.
+Cut on the run box by `studio_export.sh --no-toolchain`: 426 files, listing sha256/16 76b33cc7b5817107, withheld-shaped names 0 in the
+listing and 0 on the host, marker written last.
+**§TW2 receipts at the export as cut:**
+1. MET by citation: the WHT and NTT task trees at e4f786fe are 44b92115d240 and 77c641773103, equal to 6d7f398f's, and the extractor blob is
+   unchanged, so ADDENDUM 2's drive stands (with the correction above).
+3. MET (ADDENDUM 2; the trees are unchanged).
+4. MET 2026-11-23 18:32Z on the run box: 4 dry cells (WHT × Opus and NTT × Sonnet, × plain and salt-diet) built by the export's own stager
+   (`clb_stage.sh … --dry`, so `cell_build.py --statement`) into a scratch cells parent under ~/bench-dry. All rc 0, each "card-extras
+   statement". `ctl/neutrality.log` reads "neutrality: zero hits" in 4 of 4. REQUIREMENTS.md is identical across the two arms of each problem
+   except the work-order nonce line, and carries one `## Statement`. Control: a copy of the export with one line `// theorem: planted`
+   inside WHT's ```rust block REFUSED in both arms (neutrality 2 hits; the stager's rc 3).
+5. NO LEAK — MET 2026-11-23 at e4f786fe (a worktree on the lead's workstation): `check_withheld_leak_v3.py --tasks tasks/systems-v3` CLEAN, 343 identifiers across
+   13 tasks, every positive control fired, 1,372 view-file reads, 0 in any view (WHT 30, NTT 28).
+   THE ACCOUNT CHECK — MET 2026-11-23 18:33:39Z: `lane_identity.py --expect` against the pool's REGISTERED digest (the one block T's lane env for
+   this pool carries) read IDENTITY OK, refresh token present. Control: a digest one character off returns rc 5.
+   THE ZERO-CELL PROBE — MET 2026-11-23 18:33:44Z–18:33:51Z, block WC's form: pinned client 2.1.259 (sha256/16 884baa38fe1a624b, asserted),
+   one `-p` turn per model. claude-opus-5: rc 0, reply `OK`, `message.model` set exactly {claude-opus-5}. claude-sonnet-5: rc 0, reply `OK`,
+   set exactly {claude-sonnet-5}. Spend $0.1080 on the pool, outside every cell's meter. `modelUsage` lists a Haiku id on each turn, the
+   client's own side call, which appears in no assistant message (as in T and WC).
+6. MET 2026-11-23: `export_marker_check.sh` on the export as cut: OK (e4f786fe25c0, 426 files, listing 76b33cc7b5817107, withheld-shaped
+   paths 0). The export-marker selftest is green on the same commit's harness, 19/19 (run on the lead's workstation worktree at e4f786fe, because the
+   selftest re-exports from a git HEAD and an export carries no .git). Control: both quarantined T cuts (09516b81, 7fe4ff7f) REFUSED, rc 2.
+**Client pin (§TW0 row 5):** 2.1.259 (sha256/16 884baa38fe1a624b), block T's, asserted by the stager at every stage ("CLIENT PIN OK"). The
+pin did not move, so no `idleCompaction` declaration is owed.
+**Pool: pool 1 (block T's Luby pool and block WC's), at P3.** The PM's report of 2026-11-23 (§1) names it in advance: block TW landing on
+this pool this week "spends the slack, the intended outcome", with the pool on DRAIN to ~95 until its 18:59 PST reset that day. The PM's
+seat is held to its 11-24 cut, so the helm reads this naming. Each launch runs under the fleet's day-line check for this pool. At 10:3x
+PST it read LAUNCH, all 72 against 95. The lane env is block T's env for this pool with ONE line changed (the export).
+**Roots:** created 2026-11-23 18:52:36Z on the run box in a quiet window (no client, watcher, fire, verus or cargo process): `clb_stage.sh
+--roots --freeze TW` from the export, under this block's lane env, rc 0. There are 8 roots with `_bin` linked into e4f786fe, and each root's model
+table was read back (4 Opus, 4 Sonnet, equal to the registered 8).
+**Order:** §TW3 as registered. WHT first, models interleaved. `TW-O` = Opus · WHT · salt-diet+statement#1 fires first, and the lead reads it
+before Opus continues (block T's reading list plus the statement line). `TW-S` = Sonnet · the same, likewise. The WHT triple of each model
+re-cuts the price before NTT fires (§TW4).
