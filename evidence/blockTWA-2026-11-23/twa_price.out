@@ -1,0 +1,14 @@
+ratio plain: TA flash six 18 cells 9010 s / NA flash six 18 cells 9658 s = 0.933
+ratio salt-diet: TA flash six 18 cells 25801 s / NA flash six 18 cells 53492 s = 0.482
+gemini-3.8-flash-high WHT plain: WA n 3 median wall 587.2 s -> 3 x 587.2 x 0.933 = 1643 s
+gemini-3.8-flash-high WHT salt-diet: WA n 3 median wall 1487.2 s -> 3 x 1487.2 x 0.482 = 2152 s
+gemini-3.8-flash-high NTT plain: WA n 3 median wall 614.1 s -> 3 x 614.1 x 0.933 = 1719 s
+gemini-3.8-flash-high NTT salt-diet: WA n 3 median wall 1263.0 s -> 3 x 1263.0 x 0.482 = 1828 s
+gemini-4-argon-high WHT plain: WA n 3 median wall 728.7 s -> 3 x 728.7 x 0.933 = 2039 s
+gemini-4-argon-high WHT salt-diet: WA n 3 median wall 2020.4 s -> 3 x 2020.4 x 0.482 = 2924 s
+gemini-4-argon-high NTT plain: WA n 3 median wall 847.6 s -> 3 x 847.6 x 0.933 = 2372 s
+gemini-4-argon-high NTT salt-diet: WA n 3 median wall 2013.1 s -> 3 x 2013.1 x 0.482 = 2913 s
+gemini-3.8-flash-high price, 12 cells: 7341 s = 2.0 h
+gemini-4-argon-high price, 12 cells: 10248 s = 2.8 h
+TWA price, 24 cells: 17589 s = 4.9 h of cell wall; agy pool points per cell UNMEASURED
+sensitivity, ratio 1 (WA's extras-none walls unscaled): 28684 s = 8.0 h
