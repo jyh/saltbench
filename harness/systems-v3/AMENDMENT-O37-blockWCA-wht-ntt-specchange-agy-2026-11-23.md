@@ -93,3 +93,8 @@ None of NCA's arises (both models have sources; no source is WEB-SERVED; no cond
 ## §WCA8 · READING RULES, VOIDS, WHAT IT CANNOT ESTABLISH, DELIVERABLES
 NCA §NCA8, §NCA9 and §NCA10 carried, for NTT and WHT: a result of record per model, the census O37 section re-cut in the same commit; nothing about
 gemini-3.1-pro-high, nothing Flash-versus-argon or Claude-versus-agy. Any public sentence is the Captain's.
+
+---
+# ⚖️ ADDENDUM 1 (2026-11-23, bench) — RELEASE, ⛔ DRAFT: carried whole from NCA ADDENDUM 1 (export 88b63df9, client, signature, items
+1–6, the replaced-hook gate, the quiet window, quota). WCA-specific: item 1 WHT 44b92115 · NTT 77c64177; item 2 harvest 8/8; item 3
+Flash 12/12 · argon 12/12, no shortfall; item 4's argon drive (wanap101) is this lane's first argon copy. APPENDED.
