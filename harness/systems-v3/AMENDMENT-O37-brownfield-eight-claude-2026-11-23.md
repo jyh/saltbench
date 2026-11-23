@@ -38,7 +38,8 @@ inexpressible).
 
 ## §BC2 · ⛔⛔ THE ITEMS — EACH DRIVEN, WITH A CONTROL, BEFORE THE CELLS IT GATES
 1. **THE SEEDS, AT THE EXPORT.** Per problem: the seed's sha256 at the export equals its plant row's. S1 (`bin/rt check` GREEN in a BUILT
-   dry cell, the containment half included; the drafts drove the build only), S2 (the withheld suite fails on the raw seed, the failing tests
+   dry cell, the containment half included; driven ahead on all eight in the seeds'
+   drafts, `s1-rtcheck/`, and re-driven at the export), S2 (the withheld suite fails on the raw seed, the failing tests
    named from that run), S3 (no warning beyond the plain reference's own warning set; a planted control fires). Drafts: saltbench-systems
    `drafts/o37-brownfield-seeds-2026-11-23/` (all eight). WHT and NTT were seeded by systems, a non-author (row 236 (2),
    5ed13106), and read by bench (README, NON-AUTHOR READ OF WHT AND NTT).
