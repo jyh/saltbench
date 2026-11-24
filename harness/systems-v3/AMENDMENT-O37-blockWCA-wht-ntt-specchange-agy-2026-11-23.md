@@ -104,3 +104,8 @@ Flash 12/12 · argon 12/12, no shortfall; item 4's argon drive (wanap101) is thi
 # by the PM; every receipt MET; the three first-fire reads). Effective when it reaches `main` after a non-author read. APPENDED.
 WCA's own population, order and sources are §WCA1–§WCA4 and ADDENDUM 1. Nothing in NCA ADDENDUM 2 is specific to block NA's six, so it
 carries to NTT and WHT without change.
+
+---
+# ⚖️ ADDENDUM 3 (2026-11-24, bench) — carried whole from NCA ADDENDUM 3: the supervisor 81792dbe (its WCA copy form `^cells-wa-…-wcacp[1-3]$`
+# at AGY_PHASES=2) and the copy root `<source root>-wcacp<k>`; both departures declared. WCA registers no fresh form (24/24 sources eligible),
+# and the supervisor admits none (`cells-wca-` fresh refuses at R2). IN FORCE WITH NCA ADDENDUM 3. APPENDED.
