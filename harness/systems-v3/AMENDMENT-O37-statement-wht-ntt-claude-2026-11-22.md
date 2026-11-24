@@ -193,3 +193,22 @@ table was read back (4 Opus, 4 Sonnet, equal to the registered 8).
 **Order:** §TW3 as registered. WHT first, models interleaved. `TW-O` = Opus · WHT · salt-diet+statement#1 fires first, and the lead reads it
 before Opus continues (block T's reading list plus the statement line). `TW-S` = Sonnet · the same, likewise. The WHT triple of each model
 re-cuts the price before NTT fires (§TW4).
+
+---
+# ADDENDUM 4 (2026-11-24, bench) — §TW4's PRICE RE-CUT FROM THE WHT CELLS, BEFORE NTT FIRES; AND A SECTION FINDING. APPENDED.
+**The 12 WHT cells** (tally `evidence/blockTW-2026-11-22/tw-wht-tally.tsv`, each row read from the cell's own `ctl/post-end-1.tsv` and its
+withheld score by copy): all 12 LANDED, all withheld G suite PASS 11/11, none capped.
+**The re-cut** (`evidence/blockTW-2026-11-22/tw_recut_wht.py` → `tw_recut_wht.out`; per model × arm, TW's metered WHT spend over block W's,
+applied to block W's NTT spend): TW WHT spent $162.77 over 12 cells; NTT re-cut $183.68; block total $346.45, against the registered estimate
+$370.54. No re-cut exceeds the cap or changes the order. ⚠️ The ratio is measured on WHT and applied to NTT, a different problem
+(§TW4), and its direction of error is unknown.
+**A SECTION FINDING (§TW5.2: a defect in a section is a HARNESS finding, never an arm effect):** in 5 of the 6 salt-diet cells (both models),
+the subject edited the WHT statement's spec fns in one direction: (a) `op_ok` gains `result@.len() == input@.len() &&` on both arms, in all 5;
+(b) in 3 of them, `trace_ok` also gains a determinism clause (R5, "the same vector gives the same answer"). Because `check_trace`'s contract
+is `r == trace_ok(t@)`, both edits change its specified result, but only on out-of-domain traces no real call produces. The withheld suite
+does not exercise them. ⇒ the extracted statement is weaker than its requirements in those two places, and the subjects found it
+independently. Each such cell is recorded "USED; CONTRADICTED-NARROW (named edits)". No score changes. The helm concurred: continue as
+registered, no hold on NTT (bus offset 110,036,525). The plain arm's cells were not read for contradiction (no verifier in that arm).
+**Two harness events, nothing spent:** clbpwp01's first launch was HELD on fence DRIFT (another seat's dry copy removed a $HOME root 19 s
+earlier), and it was re-fired by clb_fire after the fence converged. clbaws03's first launch was HELD on an orphan 0-byte
+`.claude.json.tmp.<pid>.*` in the pool config dir; the file was removed and the cell re-fired. Both cells' launch logs carry both attempts.
