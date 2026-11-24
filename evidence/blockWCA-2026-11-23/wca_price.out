@@ -1,0 +1,14 @@
+wca_price: saltbench 9efec234e988
+L8 phase2/phase1 wall, model letter f: n 29 median 0.809
+L8 phase2/phase1 wall, model letter p: n 28 median 0.844
+gemini-3.8-flash-high  NTT plain     source median   614.1 s · phase 2   1491 s
+gemini-3.8-flash-high  NTT salt-diet source median  1263.0 s · phase 2   3067 s
+gemini-3.8-flash-high  WHT plain     source median   587.2 s · phase 2   1426 s
+gemini-3.8-flash-high  WHT salt-diet source median  1487.2 s · phase 2   3612 s
+gemini-3.8-flash-high: sources not landed 0  · 12 phase-2 launches floor · 9596 s = 2.7 h
+gemini-4-argon-high    NTT plain     source median   847.6 s · phase 2   2145 s
+gemini-4-argon-high    NTT salt-diet source median  2013.1 s · phase 2   5095 s
+gemini-4-argon-high    WHT plain     source median   728.7 s · phase 2   1844 s
+gemini-4-argon-high    WHT salt-diet source median  2020.4 s · phase 2   5114 s
+gemini-4-argon-high: sources not landed 0  · 12 phase-2 launches floor · 14199 s = 3.9 h
+WCA total: 24 launches floor · 23794 s = 6.6 h of cell wall; agy pool points per cell UNMEASURED
