@@ -248,3 +248,71 @@ Any public sentence, and any claim about the method, is the Captain's.
 6. **Owed, at the next export (not this block):** the hook's `python3` gets `2>/dev/null`. A parse failure already fails closed,
    and the hook prints its own message for it, so no refusal reason is lost. The export's selftest gets one arm: on a block, the
    hook's stderr is exactly the reason line.
+
+---
+# ⚖️ ADDENDUM 1 (2026-11-23, bench) — RELEASE, ⛔ DRAFT: NOT A RELEASE UNTIL ITEM 6 FIRES AND THE QUOTA IS READ. APPENDED.
+**Signature.** kent's non-author read of this file and WCA's at 97e81bb9 (bus offset 109,849,201), counted as the signature by the helm
+(desk VN). Its coverage rides with the word: the §NCA9/§NCA10 citations and text, row 4's ancestry, commits and five files, and the
+task trees by hash were checked by a non-author. The prices, source counts and the rules carried by citation were not.
+**Export: saltbench-systems `88b63df9`** ("candidate 3") = the released aa071afc + the copy and fire repair of the lead's ruling (A)
+(systems 339437fe..85301cdd: agy_cell_copy_v3.py re-installs ctl/web-deny.sh from the phase-2 export and records the replaced hash;
+fire_agy_v3.sh fires a copy on the export its copied-from.tsv names and refuses a copy from another export's driver or with another
+hook) + bench cadbf91f (dry_phase2_v3.sh, a dry tool no cell runs). ⚖️ **A DEPARTURE FROM §NCA0 row 4, DECLARED:** the harness differs
+from aa071afc in 5 files (agy_cell_copy_v3.py, fire_agy_v3.sh, agy_wave_v3.sh by 2 lines, dry_phase2_v3.sh, one fixture). The web-deny
+hook, the launcher, the referee, the builder and every task tree are unchanged. Why: at aa071afc no copy could fire (58/58 sources
+carry the pre-fix hook a6e064e307a8651d, which aa071afc's launcher refuses), and a copy's phase 2 took its harness from the SOURCE
+export. Both contradict this file's row 4. Reads: kent on 339437fe (bus offset 109,902,645) and its deltas (109,917,950; 109,935,907).
+On the run box as `saltbench-systems-v3-export-88b63df` (EXPORTED-FROM.sha 88b63df9c5be).
+**Client:** agy 1.5.11, sha256/16 62f2102784bb74b7, read on the run box 2026-11-23.
+**§NCA3 receipts (WCA's §WCA3 the same, by citation):**
+1. MET by hash at 88b63df9: AES 00b919ce · BinomialHeap df6427a9 · LinearScan a3c8ae15 · Liveness 143296d6 · Luby 6db3c763 · MaxFlow
+   5b89c4df, each 36ca596b's whole tree; WHT 44b92115 and NTT 77c64177, WC's d55062a6 trees. NC's and WC's non-builder drives are CITED.
+2. MET at aa071afc (gemini, 2026-11-23, harvest 24/24 match for NCA and 8/8 for WCA): both references PASS on both arms at full count,
+   and one clause and one regression mutant per task fail with the builder's counts. The referee and builder are byte-unchanged at
+   88b63df9, so the drive is CITED.
+3. MET (gemini, 2026-11-23 19:12–19:20Z, gbase.sh on clones; controls GREEN AES 8/8, RED LinearScan 0/0): NCA Flash plain 18/18,
+   salt-diet 16/17; WCA Flash 12/12, argon 12/12. 58 of 59 sources ELIGIBLE. SHORTFALLS: nabhfs03 (no landing) and nalsfs202
+   (LinearScan salt-diet, 8/9, as at NA). So the copies are NCA Flash 34 · WCA Flash 12 · WCA argon 12, and the fresh cells are NCA
+   Flash 2 plus NCA argon 36. ⚖️ The instrument read landed-1, as registered (lead's ruling, bus offset 109,861,760 ff.). A
+   NON-REGISTERED side reading on each of the 27 sources that also carry landed-2 passed in full on the newer tag: no eligibility
+   would change. It is declared here, never used as the instrument.
+4. MET at 88b63df9 (gemini, 2026-11-23 21:15–21:20Z, stub client, zero spend; real eligible sources nalbfq01 Flash and wanap101 argon):
+   C-flash and C-argon REACHED (copy re-installs the canonical hook 5383c08a19eb8171 over the source's a6e064e307a8651d; FIRE line
+   names 88b63df9; landed gate rc 0; §M3 PASS; change-1.md equal; aside; source byte manifest unchanged). D (stale fence) and E (pre-fix
+   hook) HELD. Red backwards: on aa071afc both C arms are NOT REACHED. LIMITS: a stub client in phase 2; 2 of 58 sources.
+5. MET by citation: the leak run at aa071afc (CLEAN, 343 identifiers across 13 tasks, 0 in any view). The task trees and the checker
+   are unchanged at 88b63df9.
+6. ⛔ OPEN: the lane-live battery on the release export, one dry cell per model on the client above, with P-WEB and P-SWARM DENIED and a
+   subagent turn completing with send_message served (§NCA9 clause 5). Flash was measured at aa071afc (o37lf02). Both models re-run at
+   88b63df9 because fire_agy_v3.sh changed. Any failure is a HOLD to the lead (§NCA9 clause 5).
+**The replaced-hook gate (kent's MEDIUM 2, the lead's statement):** a copy's phase 2 runs the PHASE-2 export's canonical hook, and the
+source's hook is replaced by design, never trusted. Each copy records the replaced hash. TWO checks: (i) the TOOL (since 8ec128b7)
+refuses a source whose hook differs from the hook its own build recorded (built-from.tsv `web_deny_hook … sha256=`); (ii) the RELEASE
+compares every copy's replaced hash with the census value a6e064e307a8651d (gemini's census: 58/58 eligible sources), and any other
+value HOLDS that copy for a lead ruling before its phase 2 fires.
+**Copies and fresh roots are made in a QUIET WINDOW** on the run box: no Claude-lane or agy cell live, as cells roots are made. A root
+created or removed under $HOME during a live cell drifts that cell's fence (measured 2026-11-23 21:12Z on clbpwp01: held, nothing spent).
+**Quota: ⛔ OPEN** (§NCA0 row 7: P3 on the agy pool, yielding to any O4 agy cell; agy /usage read at each fire). **Order:** §NCA4 / §WCA4.
+
+---
+# ⚖️ ADDENDUM 2 (2026-11-24, bench) — THE RELEASE. ADDENDUM 1's two open items are filled here, and this heading is the release, effective when it reaches `main` after a non-author read. APPENDED; ADDENDUM 1 is unchanged.
+**Item 6: MET at 88b63df9** (the agy lane's battery r3, bus offset 110,083,627; driver blob 52875cd1c451969f, END rc 0 at 2026-11-24
+04:27:55Z; marker checked; the five hook-lane blobs equal kent's read-back). One dry cell per model on client agy 1.5.11 / 62f2102784bb74b7,
+read before AND after:
+```
+gemini-3.8-flash-high   o37lf03   preflight BATTERY GREEN   SERVED verdict OK, 168 steps   P-SWARM DENIED · P-WEB DENIED · P-SUBAGENT COMPLETED
+gemini-4-argon-high     o37la03   preflight BATTERY GREEN   SERVED verdict OK, 264 steps   P-SWARM DENIED · P-WEB DENIED · P-SUBAGENT COMPLETED
+```
+P-SUBAGENT COMPLETED means one `invoke_subagent` answered with one `send_message` delivered and no refusal (§NCA9 clause 5). This is the
+first post-install battery fire on the release export. LIMITS, carried: n = 1 per model, Luby salt-diet, `--statement` dropped; the live
+artefact line reads RC-1=0 RC-2=0 RC-3=1 on both, the same as r2 (11-23) and ta-r4 (11-18).
+**The quota: NAMED** (the PM, bus offset 110,146,697). NCA and WCA fire on the agy pool (Gemini Models weekly), read at each fire, **ahead of
+any O29 OC scored call** (O37 is priority 2, O29 priority 3). Their stop is the pool's 10 % reserve: no NCA/WCA cell fires at a reading
+≤ 10 % remaining before the 11-30 reset, and a reading that cannot be taken counts as a stop. The OC wave's own stop is 30 %, so OC yields
+first.
+**Every §NCA3 receipt is MET** (items 1–5 in ADDENDUM 1, item 6 above). Export 88b63df9, client agy 1.5.11 / 62f2102784bb74b7, the
+signature as ADDENDUM 1 states it.
+**At the first fire, three things are read and posted, and each refuses if it fails:** the pool reading (the stop above); the client's sha
+on the run box (a moved client HOLDS, §NCA9); and a QUIET WINDOW for copy and fresh roots (ADDENDUM 1). The OC scored wave, live on the
+same box at this writing, is an agy cell lane: it is brought to a seam, never killed, before NCA/WCA roots are made, and NCA/WCA then take
+the pool ahead of it.
