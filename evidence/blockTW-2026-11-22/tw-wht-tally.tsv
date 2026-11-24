@@ -1,0 +1,13 @@
+cell	model	problem	arm	n	end	suite	cost_final	spec_named	verbatim	statement_line
+clbaws01	opus	WHT	salt-diet	1	LANDED	PASS 11/11	21.8294	17/17	96/99	USED verbatim (3 missing = body placeholders)
+clbpws01	sonnet	WHT	salt-diet	1	LANDED	PASS 11/11	10.7761	17/17	92/99	USED; CONTRADICTED-NARROW (op_ok + result-length conjunct)
+clbawp01	opus	WHT	plain	1	LANDED	PASS 11/11	16.4952	3/17	24/99	NOT READ for contradiction (plain arm)
+clbpwp01	sonnet	WHT	plain	1	LANDED	PASS 11/11	2.1161	0/17	24/99	NOT READ for contradiction (plain arm)
+clbawp02	opus	WHT	plain	2	LANDED	PASS 11/11	10.8632	7/17	25/99	NOT READ for contradiction (plain arm)
+clbpwp02	sonnet	WHT	plain	2	LANDED	PASS 11/11	1.0740	1/17	24/99	NOT READ for contradiction (plain arm)
+clbaws02	opus	WHT	salt-diet	2	LANDED	PASS 11/11	23.0622	17/17	91/99	USED; CONTRADICTED-NARROW (op_ok + result-length conjunct; trace_ok + trace_det)
+clbpws02	sonnet	WHT	salt-diet	2	LANDED	PASS 11/11	20.3186	17/17	91/99	USED; CONTRADICTED-NARROW (op_ok + result-length conjunct; trace_ok + same_call determinism)
+clbawp03	opus	WHT	plain	3	LANDED	PASS 11/11	14.7181	7/17	25/99	NOT READ for contradiction (plain arm)
+clbpwp03	sonnet	WHT	plain	3	LANDED	PASS 11/11	1.4258	0/17	24/99	NOT READ for contradiction (plain arm)
+clbaws03	opus	WHT	salt-diet	3	LANDED	PASS 11/11	21.2495	17/17	91/99	USED; CONTRADICTED-NARROW (op_ok + result-length conjunct; trace_ok + trace_det)
+clbpws03	sonnet	WHT	salt-diet	3	LANDED	PASS 11/11	18.8371	17/17	92/99	USED; CONTRADICTED-NARROW (op_ok + result-length conjunct)

@@ -2084,3 +2084,50 @@ Nothing Flash-versus-argon (§TA6: a result of record per model, never pooled), 
 about the salt method. At ceiling, no pass count separates the arms.
 
 Source: `evidence/blockTA-result-2026-11-20/` (README: the per-cell table, the collectors, the censuses, the generator).
+
+# ⚖️ ADDENDUM 51 — **O37: BLOCK TW IS A RESULT OF RECORD. 8 CONDITIONS MOVE TO DONE (WHT, NTT × statement × {plain, salt-diet} × {Opus, Sonnet}, Claude lane), EACH AT n = 3. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-24, in the same commit as `RESULT-claude-blockTWO-2026-11-24.md` and `RESULT-claude-blockTWS-2026-11-24.md` (§TW9 = block T §T9: the census section is re-cut with the result). They reach `main` together, with saltbench #468.
+
+## §AV1 · WHAT MOVED
+Block TW (`AMENDMENT-O37-statement-wht-ntt-claude-2026-11-22.md`, ADDENDA 1–4) has its 24 cells ended and two result files. All 24 are
+cells of record and all 24 LANDED; none was capped, none ended on a dialog, and no cell is VOID by §TW7 (24 of 24 sections as built equal
+the export card). The line, printed by `evidence/blockTW-result-2026-11-24/tw_result_gen.py --census`:
+```
+block TW: WHT and NTT x statement, Claude lane: 8 conditions, 8 at n = 3, cells of record 24
+block TW spend: COST (capped at the cap) $312.22 · metered $312.22 · WHT $162.77 metered · NTT $149.45 metered
+```
+DONE is not a verdict on the arms. Every condition passes its withheld suite 3 of 3 in both models, so the block is at CEILING on
+correctness (UNRESOLVED-BY-CEILING). Block TW's spend sits below the registered price of $370.54 and ADDENDUM 4's re-cut of $346.45, and
+inside the ceiling of $893.04.
+
+## §AV2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-24)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (ADDENDUM 44)   4
+                 block WC: NTT, WHT x spec-change x {plain, salt-diet} x {Opus, Sonnet} (ADDENDUM 45)  8
+                 block NC: the six block-N problems x spec-change, Claude lane (ADDENDUM 46)        22
+                 block T: the six block-N problems x statement, Claude lane (ADDENDUM 49)           24
+                 block TA: the six block-N problems x statement, agy lane (ADDENDUM 50)             24
+                 block TW: WHT, NTT x statement, Claude lane (this)                                  8
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+                 block NC: LinearScan x spec-change x salt-diet x {Opus, Sonnet}, unreached (ADDENDUM 46)  2
+    NOT DONE     WHT and NTT, the other 16:
+                   x statement, agy lane: block TWA, registration draft, unmerged (saltbench #467)    8
+                   x spec-change, agy lane: block WCA, registered on main (#470), not released       8
+                 the six block-N problems x spec-change, agy lane:
+                   block NCA, registered on main (#470), not released                               24
+```
+DONE 150 · DECLARED 26 · NOT DONE 40 = 216.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AV3 · A HARNESS FINDING CARRIED, AND WHAT THIS ADDENDUM DOES NOT ESTABLISH
+ADDENDUM 4's §TW5.2 section finding, extended to NTT by the results' §5: 8 of the 12 salt-diet cells (Opus 3, Sonnet 5; WHT 5, NTT 3)
+strengthen the extracted statement's `op_ok` (a result-length conjunct; on NTT also residues) and/or `trace_ok` (R5 determinism), on
+out-of-domain traces only. It is a finding about the statement, never an arm effect, and no score moves. Nothing Opus-versus-Sonnet,
+nothing about the statement arm versus `extras = none` across blocks (§TW8.3), nothing about the salt method. Every premium in both results
+is UNRESOLVED-UNDERPOWERED as registered.
+
+Source: `evidence/blockTW-result-2026-11-24/` (README: the per-cell table, the categories as read, the derive, the generator, the checks).
