@@ -318,26 +318,29 @@ same box at this writing, is an agy cell lane: it is brought to a seam, never ki
 the pool ahead of it.
 
 ---
-# ⚖️ ADDENDUM 3 (2026-11-24, bench) — THE SUPERVISOR AND THE COPY ROOT: TWO DECLARED DEPARTURES THE FIRST FIRE FOUND. ⛔ NOT IN FORCE UNTIL
-# A NON-AUTHOR READ OF THE SUPERVISOR CANDIDATE IS CITED HERE AND THIS REACHES `main` ON THE HELM'S WORD. APPENDED; ADDENDA 1–2 unchanged.
+# ⚖️ ADDENDUM 3 (2026-11-24, bench) — THE SUPERVISOR AND THE COPY ROOT: TWO DECLARED DEPARTURES THE FIRST FIRE FOUND. IN FORCE WHEN IT
+# REACHES `main` ON THE HELM'S WORD (the non-author reads are cited below). APPENDED; ADDENDA 1–2 unchanged.
 **What the fire found** (the hand, bus offset 110,337,678, driven by `--plan`, zero spend, nothing made): (1) §NCA4 fires "through the canary
 wave supervisor", and the supervisor at 88b63df9 admits level 8 only, so it refuses every NCA and WCA row (copy rows at its C2 gate, fresh rows
 at R2). The item-4 copy drive had called `agy_wave_v3.sh` directly, so nothing had exercised that gate. (2) §NCA2's copy root,
 `<source root>-ncacp`, collides under §NCA4's per-cell order: a condition's later cells need the root that its first cell's wave made, and the
 driver refuses an existing root.
 **THE LEAD'S RULINGS** (bus offset 110,343,209, before any data):
-**(A) THE SUPERVISOR: saltbench-systems `991ac98a`** (backup `gemini/o37-nca-supervisor-gate-2026-11-24`, = 88b63df9 + ONE file,
-`harness/systems-v3/gemini_canary_wave_v1.sh`, sha256/16 db6dab3562e26d07). It admits three anchored forms: copy rows
+**(A) THE SUPERVISOR: saltbench-systems `81792dbe`** (backup `gemini/o37-nca-supervisor-gate-2026-11-24`, = 88b63df9 + ONE file,
+`harness/systems-v3/gemini_canary_wave_v1.sh`, sha256/16 e4275bc9adbb6249; `git diff --stat 88b63df9 81792dbe`: that file only). It admits three anchored forms: copy rows
 `^cells-na-…-ncacp[1-3]$` and `^cells-wa-…-wcacp[1-3]$` at AGY_PHASES=2 only, with the source checks C1/C3 kept (C3 requires every source's
 root to equal the row's base), and fresh rows `^cells-nca-…$` at AGY_PHASES=1,2 only. Every level-8 row is classified as before. It also
 CLOSES A HOLE: at 88b63df9, a copy or fresh row with AGY_PHASES unset or 1 read OK and would have fired phase 1 only into a spec-change root
-(new refusals S2/S3). Receipts (the hand, bus offset 110,351,659): selftest 131/131 (110 pre-existing + 21 new); a mutant with 88b63df9's
+(new refusals S2/S3). At the lead's ruling on kent's two LOWs, a family copy row is ONE cell, reps 1 and one source (S4), and a fresh
+root may not carry a copy suffix (S5). Receipts (the hand, bus offsets 110,351,659 and 110,367,446): selftest 133/133 at 81792dbe; 991ac98a
+passes both S4/S5 shapes and 81792dbe refuses them; at 991ac98a the selftest read 131/131 (110 pre-existing + 21 new); a mutant with 88b63df9's
 classification reads 117/131 and fails exactly the 4 admit arms and 10 refusal-tag arms; 88b63df9's own file refuses all 4 admit shapes at
 the phases gate (rc 4) before any ssh; `--plan` on the tripwire rows T-NCA-F and T-NCA-A reaches their plan lines against the run box.
 ⚖️ **DEPARTURE FROM ADDENDUM 1's EXPORT, DECLARED:** the supervisor runs on the lead's box and no cell reads it. The launcher, the hook,
-fire_agy, agy_wave, the copy tool, the referee and every task tree stay byte-equal to the release export 88b63df9. **Non-author read: ⛔ OWED**
-(asked of kent by the hand at 110,351,659).
-**(B) THE COPY ROOT: one root per cell, `<source root>-ncacp<k>` and `<source root>-wcacp<k>`**, where k is the cell's rep within its
+fire_agy, agy_wave, the copy tool, the referee and every task tree stay byte-equal to the release export 88b63df9. **Non-author reads:** kent on 991ac98a
+(bus offset 110,359,030: 0 HIGH, 0 MEDIUM, 2 LOW, both taken) and on the delta 991ac98a..81792dbe (110,369,758: no finding); kent on
+this addendum's first draft (110,363,781: no finding).
+**(B) THE COPY ROOT: one root per cell (S4 above enforces it), `<source root>-ncacp<k>` and `<source root>-wcacp<k>`**, where k is the cell's rep within its
 condition (1 to 3). §NCA4's interleave and the one-cell tripwires stay as registered. **DEPARTURE FROM §NCA2 / §WCA2, DECLARED:** the root
 NAME only. The lineage stays in each copy's `ctl/copied-from.tsv`.
 **THE FIRST FIRE, IN ORDER:** (1) the canary supervisor's standing probe is started on the run box (no cell; it read "UNMEASURED (no pidfile)"
