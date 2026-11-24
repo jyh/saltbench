@@ -348,3 +348,21 @@ in the hand's plan, and its gate needs HEALTHY); (2) the lead writes the OC wave
 seam); (3) `nca-quiet-gate.sh` reads QUIET (rc 0) on the run box; (4) ADDENDUM 2's pool and client reads; (5) the tripwire T-NCA-F, posted
 before its model continues. The three refusals were driven RED in the code that runs (bus offset 110,323,681: pool rc 6 ×2, client
 rc 10, quiet gate rc 3, seat 0dbbfa92c7).
+
+---
+# ⚖️ ADDENDUM 4 (2026-11-24, bench) — §NCA6 ITEM 4 WAS NOT MET BY THE RELEASE; THE SIX Flash LIVENESS CELLS STAND AS THEY FELL. NO COUNT MOVES. APPENDED; ADDENDA 1–3 unchanged.
+**What happened.** §NCA6 item 4 says the Liveness card "is amended before any later Liveness run, so the release names the Liveness card
+and B/ tree it fires on". The amendments exist in saltbench-systems: 7a16ed8f (tree 44202c62) and 8f69472c (tree 53be4d0c). They touch
+`Liveness/card.md` and `Liveness/B/interface.rs` only: each settles "sweep" as the pair pass in card prose and a `//` comment. The card at
+8f69472c ALSO differs from the export's by a statement section (`git diff --stat 88b63df9 8f69472c` on the card: +290 −1, most of it extracted spec) that renders only under
+`--statement` and, by its own comment, reaches no cell until the Captain has read it. No test file changed. NEITHER commit is an ancestor of the release export 88b63df9
+(`git merge-base --is-ancestor`, rc 1 both). The export's Liveness tree is 143296d6, NC's driven tree. ADDENDUM 1 item 1 named it MET.
+**Why it was missed (the lead's).** §NCA3 item 1 takes NC's driven trees by hash, or a different tree re-driven by a non-builder. The release
+took the equal-tree path for all six. That path cannot carry an amended Liveness card, and ADDENDUM 1 did not reconcile item 1 with
+item 4. The hand found it (bus offset 110,612,445) after the six Flash Liveness cells were scored.
+**The ruling** (bus, 2026-11-24, after the scores; helm-reversible): the six cells stand as they fell. Census ADDENDUM 46 NOTE 1's limit
+is carried into the NCA result, mirroring NC's ADDENDUM 1. The cells met the same card and the same B/ suite NC's cells met, so the
+comparison with NC is like for like, and a re-run on the amended card would face an unchanged suite. A Liveness CLAUSE_TESTS pass means
+the cell counted the reading the clause test fixes, so no Liveness clause figure is read as a premium. argon's six Liveness cells fire on
+88b63df9 as registered. NOTE 1's amendment binds the next Liveness block after NCA, on 8f69472c's card or a later one; a statement-arm build on it
+carries the statement section's own condition (the Captain's read) with it.
