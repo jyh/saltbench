@@ -293,3 +293,26 @@ value HOLDS that copy for a lead ruling before its phase 2 fires.
 **Copies and fresh roots are made in a QUIET WINDOW** on the run box: no Claude-lane or agy cell live, as cells roots are made. A root
 created or removed under $HOME during a live cell drifts that cell's fence (measured 2026-11-23 21:12Z on clbpwp01: held, nothing spent).
 **Quota: ⛔ OPEN** (§NCA0 row 7: P3 on the agy pool, yielding to any O4 agy cell; agy /usage read at each fire). **Order:** §NCA4 / §WCA4.
+
+---
+# ⚖️ ADDENDUM 2 (2026-11-24, bench) — THE RELEASE. ADDENDUM 1's two open items are filled here, and this heading is the release, effective when it reaches `main` after a non-author read. APPENDED; ADDENDUM 1 is unchanged.
+**Item 6: MET at 88b63df9** (the agy lane's battery r3, bus offset 110,083,627; driver blob 52875cd1c451969f, END rc 0 at 2026-11-24
+04:27:55Z; marker checked; the five hook-lane blobs equal kent's read-back). One dry cell per model on client agy 1.5.11 / 62f2102784bb74b7,
+read before AND after:
+```
+gemini-3.8-flash-high   o37lf03   preflight BATTERY GREEN   SERVED verdict OK, 168 steps   P-SWARM DENIED · P-WEB DENIED · P-SUBAGENT COMPLETED
+gemini-4-argon-high     o37la03   preflight BATTERY GREEN   SERVED verdict OK, 264 steps   P-SWARM DENIED · P-WEB DENIED · P-SUBAGENT COMPLETED
+```
+P-SUBAGENT COMPLETED means one `invoke_subagent` answered with one `send_message` delivered and no refusal (§NCA9 clause 5). This is the
+first post-install battery fire on the release export. LIMITS, carried: n = 1 per model, Luby salt-diet, `--statement` dropped; the live
+artefact line reads RC-1=0 RC-2=0 RC-3=1 on both, the same as r2 (11-23) and ta-r4 (11-18).
+**The quota: NAMED** (the PM, bus offset 110,146,697). NCA and WCA fire on the agy pool (Gemini Models weekly), read at each fire, **ahead of
+any O29 OC scored call** (O37 is priority 2, O29 priority 3). Their stop is the pool's 10 % reserve: no NCA/WCA cell fires at a reading
+≤ 10 % remaining before the 11-30 reset, and a reading that cannot be taken counts as a stop. The OC wave's own stop is 30 %, so OC yields
+first.
+**Every §NCA3 receipt is MET** (items 1–5 in ADDENDUM 1, item 6 above). Export 88b63df9, client agy 1.5.11 / 62f2102784bb74b7, the
+signature as ADDENDUM 1 states it.
+**At the first fire, three things are read and posted, and each refuses if it fails:** the pool reading (the stop above); the client's sha
+on the run box (a moved client HOLDS, §NCA9); and a QUIET WINDOW for copy and fresh roots (ADDENDUM 1). The OC scored wave, live on the
+same box at this writing, is an agy cell lane: it is brought to a seam, never killed, before NCA/WCA roots are made, and NCA/WCA then take
+the pool ahead of it.

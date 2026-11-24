@@ -98,3 +98,9 @@ gemini-3.1-pro-high, nothing Flash-versus-argon or Claude-versus-agy. Any public
 # ⚖️ ADDENDUM 1 (2026-11-23, bench) — RELEASE, ⛔ DRAFT: carried whole from NCA ADDENDUM 1 (export 88b63df9, client, signature, items
 1–6, the replaced-hook gate, the quiet window, quota). WCA-specific: item 1 WHT 44b92115 · NTT 77c64177; item 2 harvest 8/8; item 3
 Flash 12/12 · argon 12/12, no shortfall; item 4's argon drive (wanap101) is this lane's first argon copy. APPENDED.
+
+---
+# ⚖️ ADDENDUM 2 (2026-11-24, bench) — THE RELEASE, carried whole from NCA ADDENDUM 2 (item 6 MET at 88b63df9, both models; the quota named
+# by the PM; every receipt MET; the three first-fire reads). Effective when it reaches `main` after a non-author read. APPENDED.
+WCA's own population, order and sources are §WCA1–§WCA4 and ADDENDUM 1. Nothing in NCA ADDENDUM 2 is specific to block NA's six, so it
+carries to NTT and WHT without change.
