@@ -1,0 +1,28 @@
+WHT 3466 bytes
+NTT 3286 bytes
+clbawp01 WHT plain two LANDED PASS 11/11
+clbawp02 WHT plain two LANDED PASS 11/11
+clbawp03 WHT plain two LANDED PASS 11/11
+clbaws01 WHT saltdiet two LANDED PASS 11/11
+clbaws02 WHT saltdiet two LANDED PASS 11/11
+clbaws03 WHT saltdiet two LANDED PASS 11/11
+clbatp01 NTT plain two LANDED PASS 11/11
+clbatp02 NTT plain two LANDED PASS 11/11
+clbatp03 NTT plain two LANDED PASS 11/11
+clbats01 NTT saltdiet two LANDED PASS 11/11
+clbats02 NTT saltdiet two LANDED PASS 11/11
+clbats03 NTT saltdiet two LANDED PASS 11/11
+clbpwp01 WHT plain tws LANDED PASS 11/11
+clbpwp02 WHT plain tws LANDED PASS 11/11
+clbpwp03 WHT plain tws LANDED PASS 11/11
+clbpws01 WHT saltdiet tws LANDED PASS 11/11
+clbpws02 WHT saltdiet tws LANDED PASS 11/11
+clbpws03 WHT saltdiet tws LANDED PASS 11/11
+clbptp01 NTT plain tws LANDED PASS 11/11
+clbptp02 NTT plain tws LANDED PASS 11/11
+clbptp03 NTT plain tws LANDED PASS 11/11
+clbpts01 NTT saltdiet tws LANDED PASS 11/11
+clbpts02 NTT saltdiet tws LANDED PASS 11/11
+clbpts03 NTT saltdiet tws LANDED PASS 11/11
+rows 24 unique 24
+EXIT rc=0

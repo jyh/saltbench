@@ -17,7 +17,7 @@ clbats01	opus	NTT	salt-diet	1	LANDED	PASS 11/11	19.6123	17/17	91/95	USED verbati
 clbpts01	sonnet	NTT	salt-diet	1	LANDED	PASS 11/11	23.8350	17/17	91/95	USED verbatim (4 missing = body placeholders)
 clbatp02	opus	NTT	plain	2	LANDED	PASS 11/11	8.5473	5/17	27/95	NOT READ for contradiction (plain arm)
 clbptp02	sonnet	NTT	plain	2	LANDED	PASS 11/11	1.5274	4/17	25/95	NOT READ for contradiction (plain arm)
-clbats02	opus	NTT	salt-diet	2	LANDED	PASS 11/11	24.1332	17/17	90/95	USED; CONTRADICTED-NARROW (trace_ok + same_call determinism; op_ok verbatim)
+clbats02	opus	NTT	salt-diet	2	LANDED	PASS 11/11	24.1332	17/17	90/95	USED; CONTRADICTED-NARROW (trace_ok + same_call determinism; op_ok + result-length & residues conjuncts, the card's body kept as op_ok_value) [CORRECTED 11-24: this row read "op_ok verbatim"; specdefs reads op_ok DIFFERENT; RESULT-claude-blockTWO-2026-11-24.md §5]
 clbpts02	sonnet	NTT	salt-diet	2	LANDED	PASS 11/11	16.7271	17/17	83/95	USED; CONTRADICTED-NARROW (op_ok + result-length & residues conjuncts; ntt/intt/cyclic ensures made unconditional, a strengthening)
 clbatp03	opus	NTT	plain	3	LANDED	PASS 11/11	10.2887	5/17	26/95	NOT READ for contradiction (plain arm)
 clbptp03	sonnet	NTT	plain	3	LANDED	PASS 11/11	1.4673	2/17	25/95	NOT READ for contradiction (plain arm)

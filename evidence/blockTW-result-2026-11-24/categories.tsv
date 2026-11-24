@@ -1,0 +1,25 @@
+cell	category	source
+clbaws01	USED	tally tw-cells.tsv statement_line: USED verbatim (3 missing = body placeholders) (bench reads, relight 217)
+clbpws01	USED	tally tw-cells.tsv statement_line: USED; CONTRADICTED-NARROW (op_ok + result-length conjunct) (bench reads, relight 217)
+clbaws02	USED	tally tw-cells.tsv statement_line: USED; CONTRADICTED-NARROW (op_ok + result-length conjunct; trace_ok + trace_det) (bench reads, relight 217)
+clbpws02	USED	tally tw-cells.tsv statement_line: USED; CONTRADICTED-NARROW (op_ok + result-length conjunct; trace_ok + same_call determinism) (bench reads, relight 217)
+clbaws03	USED	tally tw-cells.tsv statement_line: USED; CONTRADICTED-NARROW (op_ok + result-length conjunct; trace_ok + trace_det) (bench reads, relight 217)
+clbpws03	USED	tally tw-cells.tsv statement_line: USED; CONTRADICTED-NARROW (op_ok + result-length conjunct) (bench reads, relight 217)
+clbats01	USED	tally tw-cells.tsv statement_line: USED verbatim (4 missing = body placeholders) (bench reads, relight 217)
+clbpts01	USED	tally tw-cells.tsv statement_line: USED verbatim (4 missing = body placeholders) (bench reads, relight 217)
+clbats02	USED	tally tw-cells.tsv statement_line, CORRECTED 11-24 (relight 218) by specdefs: USED; CONTRADICTED-NARROW (op_ok + result-length & residues conjuncts, the card's body kept verbatim as op_ok_value; trace_ok + same_call determinism) (bench reads, relight 217; the tally's "op_ok verbatim" misread the rename)
+clbpts02	USED	tally tw-cells.tsv statement_line: USED; CONTRADICTED-NARROW (op_ok + result-length & residues conjuncts; ntt/intt/cyclic ensures made unconditional, a strengthening) (bench reads, relight 217)
+clbats03	USED	tally tw-cells.tsv statement_line: USED verbatim (4 missing = body placeholders) (bench reads, relight 217)
+clbpts03	USED	tally tw-cells.tsv statement_line: USED; CONTRADICTED-NARROW (op_ok + result-length conjunct; trace_ok + same_call determinism) (bench reads, relight 217)
+clbawp01	EXEC USE	bench 11-24 (relight 218): solution check_trace reads op_ok/ok_len as exec, doc-cited to the Statement (solution.rs:52-79); tests/driver.rs and indep.rs also transcribe hent/op_ok as an oracle
+clbawp02	EXEC USE	bench 11-24 (relight 218): solution trace_ok/op_ok/ok_len "of the card" as exec (solution.rs:122-160); tests transcribe hent and wseq as the oracle
+clbawp03	EXEC USE	bench 11-24 (relight 218): solution ok_len/bounded/wseq/inv_dom/op_ok "the requirements'" as exec, check_trace = all(op_ok) (solution.rs:68-129); tests transcribe hent
+clbatp01	EXEC USE	bench 11-24 (relight 218): solution check_trace with in_setting/primitive_root/stated_len, each doc-named as the spec's setting/prim/ok_len/trace_ok (solution.rs:204-234); tests transcribe dft/idft/partner/cyc
+clbatp02	EXEC USE	bench 11-24 (relight 218): solution "the trace checker of the Statement block": op_ok and setting as exec (solution.rs:220-242); tests build mpow/dft/idft/cyc oracles
+clbatp03	EXEC USE	bench 11-24 (relight 218): solution check_trace with residues/ok_len/prim/setting as exec, citing the Statement (solution.rs:261-299)
+clbpwp01	WEAK TRACE	bench 11-24 (relight 218): BORDERLINE. The one Statement-only token is the const name B52 in tests/driver.rs:16 (the bound itself is English, REQUIREMENTS.md line 26); no oracle or exec form from the Statement; LANDING names no Statement fn
+clbpwp02	TEST ORACLE	bench 11-24 (relight 218): tests/driver.rs:22-45 transcribe hent and the sum-of-products "from REQUIREMENTS.md" as the transform oracle; solution names ok_len in one comment only
+clbpwp03	WEAK TRACE	bench 11-24 (relight 218): tests oracle is an explicit H_k matrix from the English; B52 const in tests; LANDING names widen_spec/i128s and inv_dom (LANDING.md:23,36); no executable use
+clbptp01	TEST ORACLE (partial)	bench 11-24 (relight 218): BORDERLINE. tests/driver.rs:59-67's idft oracle names winv and ninv (Statement-only names) but computes them by Fermat, not the Statement's closed forms; the forward oracle is R1's English sum; LANDING.md:50-73 names setting/winv/ninv
+clbptp02	TEST ORACLE	bench 11-24 (relight 218): tests/driver.rs:20-71 build the oracle from "the n^2-term sums the requirements define (dsum / idft)" and "R4 / cyc / csum / partner"; LANDING.md:14 cites the Statement block; check_trace not implemented (LANDING.md:50)
+clbptp03	WEAK TRACE	bench 11-24 (relight 218): tests carry no Statement name (oracles ref_dft/ref_idft from the English sums); LANDING.md:13-30 names dsum/dft/idft/cyc, prim, winv, ninv and the Statement section
