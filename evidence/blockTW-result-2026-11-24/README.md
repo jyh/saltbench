@@ -45,6 +45,9 @@ Block T's categories and its audit rule apply (block T README; the rule is in it
 read. Two are BORDERLINE under the rule "a name only the Statement supplies counts as a derivation": `clbptp01` (TEST ORACLE (partial):
 `winv`/`ninv` named in an oracle that computes both by Fermat) and `clbpwp01` (WEAK TRACE: the constant name `B52` and nothing else). Both
 are open to a non-author read, as block T's were.
+kent's read (bus offset 110,251,674) asked why the derived `tnames` columns do not reproduce the split. Read at the objects: every
+plain-arm hit is a homonym (`ref_dft`, `ref_idft`, `naive_dft`, `vec_bounded`), and a constant such as `B52` is outside tnames' needle
+(lowercase `fn` names only). The categories rest on the reads each row names, never on those counts.
 
 ## A correction this result makes to the tally
 

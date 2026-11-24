@@ -52,7 +52,7 @@ The sign, which is all the registration reads: the salt-diet median is above pla
 (i) NTT salt-diet 0/3 plain 0/3
 (ii) CAP-WALL cells 0
 ```
-- **(i)** "within a condition, salt-diet+statement's CAP-COST incidence is ≥ plain+statement's": read per problem, as registered. It holds by two ties at zero, which is the weakest way to hold.
+- **(i)** "within a condition, salt-diet+statement's CAP-COST incidence is ≥ plain+statement's": read per problem, as registered. It holds by two ties at zero; a tie is not a margin.
 - **(ii)** "CAP-WALL binds no cell": the line above prints the count.
 - No prediction about pass rate or premium was registered, and none is read.
 
