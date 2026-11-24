@@ -316,3 +316,32 @@ signature as ADDENDUM 1 states it.
 on the run box (a moved client HOLDS, §NCA9); and a QUIET WINDOW for copy and fresh roots (ADDENDUM 1). The OC scored wave, live on the
 same box at this writing, is an agy cell lane: it is brought to a seam, never killed, before NCA/WCA roots are made, and NCA/WCA then take
 the pool ahead of it.
+
+---
+# ⚖️ ADDENDUM 3 (2026-11-24, bench) — THE SUPERVISOR AND THE COPY ROOT: TWO DECLARED DEPARTURES THE FIRST FIRE FOUND. ⛔ NOT IN FORCE UNTIL
+# A NON-AUTHOR READ OF THE SUPERVISOR CANDIDATE IS CITED HERE AND THIS REACHES `main` ON THE HELM'S WORD. APPENDED; ADDENDA 1–2 unchanged.
+**What the fire found** (the hand, bus offset 110,337,678, driven by `--plan`, zero spend, nothing made): (1) §NCA4 fires "through the canary
+wave supervisor", and the supervisor at 88b63df9 admits level 8 only, so it refuses every NCA and WCA row (copy rows at its C2 gate, fresh rows
+at R2). The item-4 copy drive had called `agy_wave_v3.sh` directly, so nothing had exercised that gate. (2) §NCA2's copy root,
+`<source root>-ncacp`, collides under §NCA4's per-cell order: a condition's later cells need the root that its first cell's wave made, and the
+driver refuses an existing root.
+**THE LEAD'S RULINGS** (bus offset 110,343,209, before any data):
+**(A) THE SUPERVISOR: saltbench-systems `991ac98a`** (backup `gemini/o37-nca-supervisor-gate-2026-11-24`, = 88b63df9 + ONE file,
+`harness/systems-v3/gemini_canary_wave_v1.sh`, sha256/16 db6dab3562e26d07). It admits three anchored forms: copy rows
+`^cells-na-…-ncacp[1-3]$` and `^cells-wa-…-wcacp[1-3]$` at AGY_PHASES=2 only, with the source checks C1/C3 kept (C3 requires every source's
+root to equal the row's base), and fresh rows `^cells-nca-…$` at AGY_PHASES=1,2 only. Every level-8 row is classified as before. It also
+CLOSES A HOLE: at 88b63df9, a copy or fresh row with AGY_PHASES unset or 1 read OK and would have fired phase 1 only into a spec-change root
+(new refusals S2/S3). Receipts (the hand, bus offset 110,351,659): selftest 131/131 (110 pre-existing + 21 new); a mutant with 88b63df9's
+classification reads 117/131 and fails exactly the 4 admit arms and 10 refusal-tag arms; 88b63df9's own file refuses all 4 admit shapes at
+the phases gate (rc 4) before any ssh; `--plan` on the tripwire rows T-NCA-F and T-NCA-A reaches their plan lines against the run box.
+⚖️ **DEPARTURE FROM ADDENDUM 1's EXPORT, DECLARED:** the supervisor runs on the lead's box and no cell reads it. The launcher, the hook,
+fire_agy, agy_wave, the copy tool, the referee and every task tree stay byte-equal to the release export 88b63df9. **Non-author read: ⛔ OWED**
+(asked of kent by the hand at 110,351,659).
+**(B) THE COPY ROOT: one root per cell, `<source root>-ncacp<k>` and `<source root>-wcacp<k>`**, where k is the cell's rep within its
+condition (1 to 3). §NCA4's interleave and the one-cell tripwires stay as registered. **DEPARTURE FROM §NCA2 / §WCA2, DECLARED:** the root
+NAME only. The lineage stays in each copy's `ctl/copied-from.tsv`.
+**THE FIRST FIRE, IN ORDER:** (1) the canary supervisor's standing probe is started on the run box (no cell; it read "UNMEASURED (no pidfile)"
+in the hand's plan, and its gate needs HEALTHY); (2) the lead writes the OC wave's `ledger/HOLD`, and OC halts before its next call (its
+seam); (3) `nca-quiet-gate.sh` reads QUIET (rc 0) on the run box; (4) ADDENDUM 2's pool and client reads; (5) the tripwire T-NCA-F, posted
+before its model continues. The three refusals were driven RED in the code that runs (bus offset 110,323,681: pool rc 6 ×2, client
+rc 10, quiet gate rc 3, seat 0dbbfa92c7).
