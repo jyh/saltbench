@@ -137,6 +137,13 @@ def classify_call(tc, cell, home=None):
     return names, parent, outside, other
 
 
+def walk_transcripts(d):
+    out = []
+    for dp, dn, fn in os.walk(d):
+        out += [os.path.join(dp, x) for x in fn if x == 'transcript_full.jsonl']
+    return out
+
+
 def census_cell(cell, home=None):
     """-> dict(state, transcripts, calls, named, parent, hits[list of (kind, tool, argjson)])
     `cell` is one directory or a list of them: a by-id record found in more than one family is read in every
@@ -146,7 +153,10 @@ def census_cell(cell, home=None):
     if not cells:
         out['why'] = 'no cell directory'
         return out
-    ts = sorted((c, p) for c in cells for p in glob.glob(os.path.join(c, TRANSCRIPT)))
+    # EVERY transcript_full.jsonl under the cell AND under its family's _aside/<id>/ (a two-phase cell's phase-1
+    # conversation is moved there). The one-depth brain glob missed 213 transcripts in 108 cells of record (11-25).
+    ts = sorted(set((c, p) for c in cells for d in (c, os.path.join(os.path.dirname(c), '_aside', os.path.basename(c)))
+                    for p in walk_transcripts(d)))
     if not ts:
         out['why'] = 'no brain transcript'
         return out
@@ -279,6 +289,17 @@ def selftest():
     ok = c['state'] == 'UNMEASURED'
     fails += not ok
     print('%s %-15s state=%s (want UNMEASURED)' % ('ok  ' if ok else 'FAIL', 'no-directory', c['state']))
+    # a two-phase cell: phase 1's conversation moved to <family>/_aside/<id>/phase1/ (the 108 cells the first glob missed)
+    fam = os.path.join(d, 'famP'); cp = os.path.join(fam, 'p01')
+    mk(os.path.join('famP', 'p01'), [{'name': 'read_file', 'args': {'Path': cp + '/repo/src/lib.rs'}}])
+    ta = os.path.join(fam, '_aside', 'p01', 'phase1', TRANSCRIPT.replace('*', 'conv-0'))
+    os.makedirs(os.path.dirname(ta))
+    with open(ta, 'w') as fh:
+        fh.write(json.dumps({'type': 'PLANNER_RESPONSE', 'tool_calls': [{'name': 'view_file', 'args': {'AbsolutePath': cp + '/ctl/launch.log'}}]}) + '\n')
+    c = census_cell(cp, d)
+    ok = c['state'] == 'CTL-NAMED' and c['transcripts'] == 2
+    fails += not ok
+    print('%s %-15s state=%s transcripts=%s (want CTL-NAMED 2)' % ('ok  ' if ok else 'FAIL', 'aside-phase1', c['state'], c['transcripts']))
     # a copied record: the transcript in family B names its path in family A, which is the SAME record (l5cp01's shape)
     fa, fb = os.path.join(d, 'famA', 'x01'), os.path.join(d, 'famB', 'x01')
     os.makedirs(os.path.join(fa, 'repo'))
@@ -296,7 +317,7 @@ def selftest():
     ok = c['state'] == 'CTL-NAMED' and c['named'] == 1
     fails += not ok
     print('%s %-15s state=%s named=%s (want CTL-NAMED 1)' % ('ok  ' if ok else 'FAIL', 'multi-family', c['state'], c['named']))
-    n = len(arms) + 4
+    n = len(arms) + 5
     print('SELFTEST %d/%d' % (n - fails, n))
     return fails
 
