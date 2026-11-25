@@ -62,6 +62,16 @@ the output text.
 5. The renderer's refusal arms: an `allowRead` of `$HOME` or `/Users` is refused; an `allowRead` covering a `SENSITIVE`
    path is refused; a mutant that drops the `$HOME` deny goes RED on plant 3.
 
+**Arm 5 RECEIPTED, and the renderer built (bench, 2026-11-25, still a draft).** saltbench-systems branch
+`bench/o37-agy-home-allowlist-render-2026-11-25` (base `81792dbe`): `render_srt_config_v3.py` at `14ecb8de` takes
+`--home-allowlist` and `--allow-read`, and `agy_launch_v3.sh` at `87b2d73` passes them under `AGY_HOME_ALLOWLIST=1` with
+the roots derived from the client binary and `rust_env.sh --print`. Both are opt-in, and without the flag the render is
+byte-identical to `81792dbe`'s (config, differences file and stdout, on a fixture). `render_srt_config_v3.py --selftest`
+reads 43/43. Its arm group 6 is this arm: `$HOME`, an ancestor of it, a SENSITIVE path and a missing root are each
+refused by their own message, and the no-`$HOME`-deny mutant opens plant 3 and is refused by the rendered-set check.
+Eight code mutants go RED, each on its own arms. Arms 1 to 4 are still owed, and the launcher's selftest with them,
+which needs the run box's `toolchain.env`.
+
 ## §4 · WHAT IS NOT CHANGED
 No cell of record and no figure. The network rule, the write fence and the hook route are unchanged, and so are the census
 classes (`evidence/o37-agy-ctl-read-census-2026-11-25/`). That census runs per harvest under this rule too: a subject
