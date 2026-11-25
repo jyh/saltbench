@@ -6,7 +6,7 @@ usage: python3 -I tables.py            print the tables
 import collections, os, sys
 
 D = os.path.dirname(os.path.abspath(__file__))
-FLAGS = ('CTL-NAMED', 'OTHER-RECORD', 'HOME-ENV', 'NONE-NAMED', 'UNMEASURED')
+FLAGS = ('CTL-NAMED', 'OTHER-RECORD', 'HOME-ENV', 'TILDE', 'NONE-NAMED', 'UNMEASURED')
 
 
 def tables():
@@ -19,7 +19,7 @@ def tables():
             by[key]['cells'] += 1
             for f in state.split('+'):
                 by[key][f] += 1
-    out.append('  %-7s %-10s %6s %10s %13s %9s %11s %11s' % (('block', 'arm', 'cells') + FLAGS))
+    out.append('  %-7s %-10s %6s %10s %13s %9s %6s %11s %11s' % (('block', 'arm', 'cells') + FLAGS))
     order = []
     for r in rows:
         for key in ((r[0], r[3]), (r[0], '*')):
@@ -27,16 +27,16 @@ def tables():
                 order.append(key)
     for key in sorted(order, key=lambda k: (order.index((k[0], '*')), k[1] == '*', k[1])) + [('all', '*')]:
         c = by[key]
-        out.append('  %-7s %-10s %6d %10d %13d %9d %11d %11d' % ((key[0], 'both' if key[1] == '*' else key[1], c['cells'])
+        out.append('  %-7s %-10s %6d %10d %13d %9d %6d %11d %11d' % ((key[0], 'both' if key[1] == '*' else key[1], c['cells'])
                                                              + tuple(c[f] for f in FLAGS)))
-    out.append('  (a cell can carry CTL-NAMED and OTHER-RECORD both; HOME-ENV is counted only where OTHER-RECORD is absent)')
+    out.append('  (a cell can carry CTL-NAMED and OTHER-RECORD both; HOME-ENV only where OTHER-RECORD is absent; TILDE only where neither is)')
     hits = [l.rstrip('\n').split('\t') for l in open(os.path.join(D, 'hits.tsv')) if not l.startswith('#')]
     k = collections.Counter()
     for h in hits:
         for f in h[2].split('+'):
             k[f] += 1
-    out.append('  tool calls listed in hits.tsv: %d (CTL %d · OTHER-RECORD %d · HOME-ENV %d · PARENT %d)'
-               % (len(hits), k['CTL'], k['OTHER-RECORD'], k['HOME-ENV'], k['PARENT']))
+    out.append('  tool calls listed in hits.tsv: %d (CTL %d · OTHER-RECORD %d · HOME-ENV %d · TILDE %d · PARENT %d)'
+               % (len(hits), k['CTL'], k['OTHER-RECORD'], k['HOME-ENV'], k['TILDE'], k['PARENT']))
     return '\n'.join(out)
 
 

@@ -1,0 +1,260 @@
+
+## $1 · greenfield — median modelled list-price dollars per condition
+  GONE | gemini-3.1-pro-high | LRU | $1.21 | $4.42 | $0.72 | $4.58 |
+  GONE | gemini-3.1-pro-high | LZW | $0.73 | $5.27 | $0.84 | $7.29 |
+  GONE | gemini-3.8-flash-high | LRU | $1.17 | $2.78 | $0.72 | $2.61 |
+  GONE | gemini-3.8-flash-high | FreeList | $1.18 | $3.48 | $1.03 | $3.59 |
+
+## $2 · brownfield — median modelled list-price dollars per condition
+  GONE | gemini-3.1-pro-high | LRU | $0.54 | $2.35 | $0.76 | ≥ $4.97 |
+  GONE | gemini-3.1-pro-high | FreeList | $1.03 | $6.83 | $0.92 | $6.06 |
+  GONE | gemini-3.1-pro-high | LZW | $0.86 | ≥ $13.81 | $0.86 | ≥ $7.39 |
+  GONE | gemini-3.1-pro-high | Paxos | $0.95 | ≥ $6.58 | — | — |
+  GONE | gemini-3.8-flash-high | LRU | $0.77 | $2.69 | $0.79 | $2.33 |
+  GONE | gemini-3.8-flash-high | FreeList | $0.92 | $3.26 | $1.42 | $2.93 |
+  GONE | gemini-3.8-flash-high | LZW | $1.25 | $2.77 | $0.93 | $1.91 |
+  GONE | gemini-3.8-flash-high | Paxos | $1.28 | $3.33 | — | — |
+
+## $3 · spec-change (greenfield only) — median modelled list-price dollars per condition
+  GONE | gemini-3.1-pro-high | Crc32 | $1.29 | $6.01 |
+  GONE | gemini-3.1-pro-high | Paxos | $1.80 | ≥ $7.29 |
+  GONE | gemini-3.8-flash-high | Crc32 | $1.61 | $2.89 |
+  GONE | gemini-3.8-flash-high | LRU | $1.57 | $3.55 |
+  GONE | gemini-3.8-flash-high | FreeList | $2.20 | $4.15 |
+  GONE | gemini-3.8-flash-high | LZW | $1.67 | $4.97 |
+  GONE | gemini-3.8-flash-high | Paxos | $2.28 | $16.16 |
+
+## $4 · salt-diet ÷ plain, greenfield, modelled list-price dollars (v2 §D4's rule)
+  OLD  | gemini-3.1-pro-high | Crc32 | 8.24 | ≥ 7.98 | 4.66 |
+  NEW  | gemini-3.1-pro-high | Crc32 | 8.24 | ≥ 7.98 | 5.01 |
+  OLD  | gemini-3.1-pro-high | LRU | 3.66 | 6.39 | 4.34 |
+  NEW  | gemini-3.1-pro-high | LRU | 3.19 | 6.39 | 4.34 |
+  OLD  | gemini-3.1-pro-high | LZW | 7.25 | 8.68 | 6.51 |
+  NEW  | gemini-3.1-pro-high | LZW | 5.45 | 8.68 | 6.51 |
+  OLD  | gemini-3.1-pro-high | Paxos | ≥ 9.85 | — | ≥ 4.05 |
+  NEW  | gemini-3.1-pro-high | Paxos | ≥ 9.85 | — | ≥ 3.97 |
+  OLD  | gemini-3.8-flash-high | Crc32 | 2.61 | 3.70 | 1.80 |
+  NEW  | gemini-3.8-flash-high | Crc32 | 2.61 | 3.70 | 1.78 |
+  OLD  | gemini-3.8-flash-high | LRU | 2.38 | 3.62 | 2.26 |
+  NEW  | gemini-3.8-flash-high | LRU | 2.46 | 3.62 | — |
+  OLD  | gemini-3.8-flash-high | FreeList | 2.96 | 3.49 | 1.88 |
+  NEW  | gemini-3.8-flash-high | FreeList | 2.42 | — | 1.80 |
+  OLD  | gemini-3.8-flash-high | LZW | ≥ 4.28 | 2.75 | 2.98 |
+  NEW  | gemini-3.8-flash-high | LZW | ≥ 4.28 | 2.75 | 2.88 |
+  OLD  | gemini-3.8-flash-high | Paxos | 3.02 | — | 7.07 |
+  NEW  | gemini-3.8-flash-high | Paxos | 3.02 | — | 7.82 |
+
+### $4 sign counts, per model per treatment (no p-value)
+  OLD  | gemini-3.1-pro-high | bare | 5 of 5 | none | 7.25 | 1 |
+  NEW  | gemini-3.1-pro-high | bare | 5 of 5 | none | 5.88 | 1 |
+  OLD  | gemini-3.1-pro-high | spec-change | 4 of 4 | none | 4.50 | 1 |
+  NEW  | gemini-3.1-pro-high | spec-change | 4 of 4 | none | 4.68 | 1 |
+  OLD  | gemini-3.8-flash-high | bare | 5 of 5 | none | 2.96 | 1 |
+  NEW  | gemini-3.8-flash-high | bare | 5 of 5 | none | 2.61 | 1 |
+  GONE | gemini-3.8-flash-high | statement | 4 of 4 | none | 3.56 | 0 |
+  GONE | gemini-3.8-flash-high | spec-change | 5 of 5 | none | 2.26 | 0 |
+
+### $ brownfield ratios (in the file, not in $4)
+  OLD  | gemini-3.1-pro-high | LRU | 4.34 | ≥ 6.53 |
+  NEW  | gemini-3.1-pro-high | LRU | 2.89 | ≥ 6.46 |
+  OLD  | gemini-3.1-pro-high | FreeList | 6.62 | 6.58 |
+  NEW  | gemini-3.1-pro-high | FreeList | — | ≥ 9.27 |
+  OLD  | gemini-3.1-pro-high | LZW | ≥ 16.07 | ≥ 8.61 |
+  NEW  | gemini-3.1-pro-high | LZW | — | 5.60 |
+  OLD  | gemini-3.1-pro-high | Paxos | ≥ 6.89 | — |
+  NEW  | gemini-3.1-pro-high | Paxos | ≥ 6.90 | — |
+  OLD  | gemini-3.8-flash-high | LRU | 3.49 | 2.95 |
+  NEW  | gemini-3.8-flash-high | LRU | 3.49 | 2.00 |
+  OLD  | gemini-3.8-flash-high | FreeList | 3.55 | 2.07 |
+  NEW  | gemini-3.8-flash-high | FreeList | — | 2.29 |
+  OLD  | gemini-3.8-flash-high | LZW | 2.21 | 2.05 |
+  NEW  | gemini-3.8-flash-high | LZW | 2.21 | 2.46 |
+  OLD  | gemini-3.8-flash-high | Paxos | 2.61 | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 1.90 | — |
+
+## W1 · greenfield — median wall seconds per condition
+  GONE | gemini-3.1-pro-high | LRU | 613 s | 1,318 s | 229 s | 989 s |
+  GONE | gemini-3.1-pro-high | FreeList | 332 s | 2,189 s | 320 s | ≥ 3,598 s |
+  GONE | gemini-3.1-pro-high | LZW | 218 s | 3,806 s | 235 s | 2,044 s |
+  GONE | gemini-3.8-flash-high | LRU | 394 s | 864 s | 374 s | 913 s |
+  GONE | gemini-3.8-flash-high | FreeList | 374 s | 986 s | 337 s | 772 s |
+
+## W2 · brownfield — median wall seconds per condition
+  GONE | gemini-3.1-pro-high | LRU | 182 s | 1,216 s | 207 s | ≥ 1,994 s |
+  GONE | gemini-3.1-pro-high | FreeList | 313 s | 4,793 s | 268 s | ≥ 2,458 s |
+  GONE | gemini-3.1-pro-high | LZW | 242 s | ≥ 5,817 s | 198 s | ≥ 4,375 s |
+  GONE | gemini-3.1-pro-high | Paxos | 364 s | 2,812 s | — | — |
+  GONE | gemini-3.8-flash-high | Crc32 | 261 s | 408 s | 235 s | 900 s |
+  GONE | gemini-3.8-flash-high | LRU | 299 s | 657 s | 286 s | 841 s |
+  GONE | gemini-3.8-flash-high | FreeList | 554 s | 906 s | 430 s | 677 s |
+  GONE | gemini-3.8-flash-high | LZW | 487 s | 966 s | 398 s | 807 s |
+  GONE | gemini-3.8-flash-high | Paxos | 402 s | 662 s | — | — |
+
+## W3 · spec-change (greenfield only) — median wall seconds per condition
+  GONE | gemini-3.1-pro-high | Crc32 | 389 s | 4,863 s |
+  GONE | gemini-3.1-pro-high | Paxos | 560 s | ≥ 3,207 s |
+  GONE | gemini-3.8-flash-high | Crc32 | 913 s | 1,330 s |
+  GONE | gemini-3.8-flash-high | LRU | 717 s | 1,768 s |
+  GONE | gemini-3.8-flash-high | FreeList | 809 s | 1,654 s |
+  GONE | gemini-3.8-flash-high | LZW | 793 s | 2,072 s |
+  GONE | gemini-3.8-flash-high | Paxos | 1,064 s | 8,482 s |
+
+## W4 · salt-diet ÷ plain, greenfield, wall seconds (v2 §D4's rule)
+  OLD  | gemini-3.1-pro-high | Crc32 | 5.93 | ≥ 7.45 | 12.49 |
+  NEW  | gemini-3.1-pro-high | Crc32 | 5.93 | ≥ 7.45 | 9.98 |
+  OLD  | gemini-3.1-pro-high | LRU | 2.15 | 4.32 | 4.90 |
+  NEW  | gemini-3.1-pro-high | LRU | 1.95 | 4.32 | 4.90 |
+  OLD  | gemini-3.1-pro-high | FreeList | 6.60 | ≥ 11.24 | 6.91 |
+  NEW  | gemini-3.1-pro-high | FreeList | 5.93 | ≥ 11.24 | 6.91 |
+  OLD  | gemini-3.1-pro-high | LZW | 17.46 | 8.69 | 9.13 |
+  NEW  | gemini-3.1-pro-high | LZW | 12.83 | 8.69 | 9.13 |
+  OLD  | gemini-3.1-pro-high | Paxos | ≥ 16.70 | — | ≥ 5.72 |
+  NEW  | gemini-3.1-pro-high | Paxos | ≥ 16.70 | — | ≥ 5.45 |
+  OLD  | gemini-3.8-flash-high | Crc32 | 1.84 | 3.16 | 1.46 |
+  NEW  | gemini-3.8-flash-high | Crc32 | 1.84 | 3.16 | 1.28 |
+  OLD  | gemini-3.8-flash-high | LRU | 2.19 | 2.44 | 2.47 |
+  NEW  | gemini-3.8-flash-high | LRU | 2.53 | 2.44 | — |
+  OLD  | gemini-3.8-flash-high | FreeList | 2.63 | 2.29 | 2.04 |
+  NEW  | gemini-3.8-flash-high | FreeList | 2.13 | — | 1.92 |
+  OLD  | gemini-3.8-flash-high | LZW | 3.75 | 2.18 | 2.61 |
+  NEW  | gemini-3.8-flash-high | LZW | 3.75 | 2.18 | 2.64 |
+  OLD  | gemini-3.8-flash-high | Paxos | 2.50 | — | 7.97 |
+  NEW  | gemini-3.8-flash-high | Paxos | 2.50 | — | 6.57 |
+
+### W4 sign counts, per model per treatment (no p-value)
+  OLD  | gemini-3.1-pro-high | bare | 5 of 5 | none | 6.60 | 1 |
+  NEW  | gemini-3.1-pro-high | bare | 5 of 5 | none | 5.93 | 1 |
+  GONE | gemini-3.8-flash-high | statement | 4 of 4 | none | 2.36 | 0 |
+  GONE | gemini-3.8-flash-high | spec-change | 5 of 5 | none | 2.47 | 0 |
+
+### W brownfield ratios (in the file, not in W4)
+  OLD  | gemini-3.1-pro-high | LRU | 6.69 | ≥ 9.63 |
+  NEW  | gemini-3.1-pro-high | LRU | 3.88 | ≥ 8.53 |
+  OLD  | gemini-3.1-pro-high | FreeList | 15.30 | ≥ 9.17 |
+  NEW  | gemini-3.1-pro-high | FreeList | — | ≥ 10.00 |
+  OLD  | gemini-3.1-pro-high | LZW | ≥ 24.02 | ≥ 22.09 |
+  NEW  | gemini-3.1-pro-high | LZW | — | 15.55 |
+  OLD  | gemini-3.1-pro-high | Paxos | 7.72 | — |
+  NEW  | gemini-3.1-pro-high | Paxos | ≥ 9.93 | — |
+  OLD  | gemini-3.8-flash-high | Crc32 | 1.56 | 3.82 |
+  NEW  | gemini-3.8-flash-high | Crc32 | 1.56 | 3.48 |
+  OLD  | gemini-3.8-flash-high | LRU | 2.19 | 2.94 |
+  NEW  | gemini-3.8-flash-high | LRU | 2.19 | 3.23 |
+  OLD  | gemini-3.8-flash-high | FreeList | 1.64 | 1.57 |
+  NEW  | gemini-3.8-flash-high | FreeList | — | 2.01 |
+  OLD  | gemini-3.8-flash-high | LZW | 1.99 | 2.03 |
+  NEW  | gemini-3.8-flash-high | LZW | 1.99 | 2.10 |
+  OLD  | gemini-3.8-flash-high | Paxos | 1.65 | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 1.48 | — |
+
+## Per-cell figures and their sources (every table number derives from these rows)
+  GONE | gemini-3.1-pro-high | LRU | greenfield | plain | none | s3lp03 | 1.4490 | 612.6 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LRU | greenfield | salt-diet | none | s3ls01 | ≥ 7.0197 | ≥ 2578.5 | DEADLINE | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | s3fs02 | 3.4557 | 2188.9 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | s3fs03 | 6.6847 | 3172.9 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LRU | brownfield | plain | none | b4lrp02 | 0.5426 | 181.8 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LRU | brownfield | salt-diet | none | b4lrs03 | 2.8122 | 1886.0 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | Paxos | brownfield | salt-diet | none | b4ps02 | 3.8251 | 2567.2 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs02 | 9.7424 | 5112.0 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | l5lsra303 | 2.5514 | 581.1 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | statement | l5ft01 | 3.5944 | 771.7 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | statement | l5ft02 | 5.8988 | 1426.5 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | statement | l5ft03 | 2.3894 | 669.6 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | salt-diet | none | l6vgps02 | 8.5345 | 5522.7 | - | agy-steps-raw.tsv: p1 per request, tiered (EXCEEDS-METER) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | salt-diet | statement | l6vspt01 | ≥ 7.3558 | ≥ 3943.4 | DEADLINE | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | salt-diet | statement | l6vspt02 | 3.4662 | 872.0 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | salt-diet | none | l6vbps02 | 3.3301 | 662.3 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | salt-diet | none | l6vbps03 | 4.0515 | 1026.4 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | plain | statement | l7cfsp01 | 0.9284 | 235.3 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | plain | statement | l7cfsp02 | 0.8195 | 216.3 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | none | l7nffs01 | 3.3226 | 989.9 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | none | l7nffs02 | 3.2561 | 906.0 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | none | l7nffs03 | 2.2111 | 688.9 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | l7npfs02 | 4.9329 | 1337.2 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | l7npfs03 | 8.7307 | 8249.3 | - | agy-steps-raw.tsv: p1 per request, tiered (EXCEEDS-METER) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | plain | none | l7npzp03 | 0.9601 | 242.4 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | none | l7npzs01 | ≥ 10.3133 | ≥ 4716.6 | DEADLINE | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | none | l7npzs02 | 13.8109 | 5817.2 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | none | l7npzs03 | ≥ 23.8616 | ≥ 9165.1 | DEADLINE | agy-steps-raw.tsv: p1 per request, tiered (EXCEEDS-METER) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | statement | l7sffs03 | 2.9311 | 676.7 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | salt-diet | statement | l7sfrs02 | 3.4810 | 841.0 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | salt-diet | statement | l7sfrs03 | 2.3327 | 816.3 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | LZW | brownfield | salt-diet | statement | l7sfzs03 | 1.6512 | 665.5 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | statement | l7spfb01 | 3.4430 | 891.7 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LRU | brownfield | salt-diet | statement | l7sprs03 | ≥ 10.3955 | ≥ 2003.8 | DEADLINE | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | statement | l7spzs01 | 8.1062 | 8224.3 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | statement | l7spzs03 | ≥ 7.3882 | ≥ 4375.1 | DEADLINE | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | spec-change | l8cfss02 | 2.8922 | 1329.8 | - | agy-steps-raw.tsv: p1 per request (COMPLETE); p2 per request (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-a9-probe-cap-2026-09-24/phase_facts.json, p1 = evidence/l8-chainD-2026-09-24/phase_facts.json |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | spec-change | l8cfss03 | 3.8557 | 1587.9 | - | agy-steps-raw.tsv: p1 per request (COMPLETE); p2 per request (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-a9-probe-cap-2026-09-24/phase_facts.json, p1 = evidence/l8-chainD-2026-09-24/phase_facts.json |
+  GONE | gemini-3.1-pro-high | Crc32 | greenfield | salt-diet | spec-change | l8cpss01 | 6.0118 | 4863.3 | - | agy-steps-raw.tsv: p1 per request, tiered (EXCEEDS-METER); p2 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-a9-probe-cap-2026-09-24/phase_facts.json, p1 = evidence/l8-chainD-2026-09-24/phase_facts.json |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss01 | 4.0021 | 1829.1 | - | agy-steps-raw.tsv: p1 per request (COMPLETE); p2 per request (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-a9-probe-cap-2026-09-24/phase_facts.json, p1 = evidence/l8-chainD-2026-09-24/phase_facts.json |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss02 | 3.3339 | 1636.8 | - | agy-steps-raw.tsv: p1 per request (COMPLETE); p2 per request (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-a9-probe-cap-2026-09-24/phase_facts.json, p1 = evidence/l8-chainD-2026-09-24/phase_facts.json |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss03 | 3.5484 | 1768.4 | - | agy-steps-raw.tsv: p1 per request (COMPLETE); p2 per request (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-a9-probe-cap-2026-09-24/phase_facts.json, p1 = evidence/l8-chainD-2026-09-24/phase_facts.json |
+  GONE | gemini-3.1-pro-high | Paxos | greenfield | plain | spec-change | l8xppr01 | 1.8030 | 560.4 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE); p2 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-chainF-2026-09-24/phase_facts.json |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | spec-change | l8ffsra201 | 7.4946 | 2748.4 | - | agy-steps-raw.tsv: p1 per request (COMPLETE); p2 per request (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-chainF-2026-09-24/phase_facts.json |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | salt-diet | spec-change | l8zfsr01 | 4.9666 | 2072.1 | - | agy-steps-raw.tsv: p1 per request (COMPLETE); p2 per request (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-chainF-2026-09-24/phase_facts.json |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | plain | spec-change | l8zppr01 | 1.4734 | 452.1 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE); p2 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-chainF-2026-09-24/phase_facts.json |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | plain | spec-change | l8zppr02 | 1.6897 | 546.7 | - | agy-steps-raw.tsv: p1 per request, tiered (COMPLETE); p2 per request, tiered (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-chainF-2026-09-24/phase_facts.json |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | l8xfs201 | 16.1554 | 11401.6 | - | agy-steps-raw.tsv: p1 per request (COMPLETE); p2 per request (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-chainF-2026-09-24/phase_facts.json |
+
+## $1 · greenfield — median modelled list-price dollars per condition
+  ADDED | gemini-3.1-pro-high | LRU | $1.09 | $3.49 | $0.72 | $4.58 |
+  ADDED | gemini-3.1-pro-high | LZW | $0.73 | $3.96 | $0.84 | $7.29 |
+  ADDED | gemini-3.8-flash-high | LRU | $1.17 | $2.88 | $0.72 | $2.61 |
+  ADDED | gemini-3.8-flash-high | FreeList | $1.18 | $2.85 | $1.03 | missing |
+
+## $2 · brownfield — median modelled list-price dollars per condition
+  ADDED | gemini-3.1-pro-high | LRU | $0.56 | $1.63 | $0.76 | ≥ $4.92 |
+  ADDED | gemini-3.1-pro-high | FreeList | $1.03 | missing | $0.92 | ≥ $8.54 |
+  ADDED | gemini-3.1-pro-high | LZW | $0.79 | missing | $0.86 | $4.80 |
+  ADDED | gemini-3.1-pro-high | Paxos | $0.95 | ≥ $6.59 | — | — |
+  ADDED | gemini-3.8-flash-high | LRU | $0.77 | $2.69 | $0.79 | $1.58 |
+  ADDED | gemini-3.8-flash-high | FreeList | $0.92 | missing | $1.42 | $3.24 |
+  ADDED | gemini-3.8-flash-high | LZW | $1.25 | $2.77 | $0.93 | $2.29 |
+  ADDED | gemini-3.8-flash-high | Paxos | $1.28 | $2.43 | — | — |
+
+## $3 · spec-change (greenfield only) — median modelled list-price dollars per condition
+  ADDED | gemini-3.1-pro-high | Crc32 | $1.29 | $6.46 |
+  ADDED | gemini-3.1-pro-high | Paxos | $1.84 | ≥ $7.29 |
+  ADDED | gemini-3.8-flash-high | Crc32 | $1.61 | $2.85 |
+  ADDED | gemini-3.8-flash-high | LRU | $1.57 | missing |
+  ADDED | gemini-3.8-flash-high | FreeList | $2.20 | $3.97 |
+  ADDED | gemini-3.8-flash-high | LZW | $1.67 | $4.79 |
+  ADDED | gemini-3.8-flash-high | Paxos | $2.28 | $17.88 |
+
+### $4 sign counts, per model per treatment (no p-value)
+  ADDED | gemini-3.8-flash-high | statement | 3 of 3 | none | 3.62 | 0 |
+  ADDED | gemini-3.8-flash-high | spec-change | 4 of 4 | none | 2.34 | 0 |
+
+## W1 · greenfield — median wall seconds per condition
+  ADDED | gemini-3.1-pro-high | LRU | 511 s | 994 s | 229 s | 989 s |
+  ADDED | gemini-3.1-pro-high | FreeList | 332 s | 1,966 s | 320 s | ≥ 3,598 s |
+  ADDED | gemini-3.1-pro-high | LZW | 218 s | 2,796 s | 235 s | 2,044 s |
+  ADDED | gemini-3.8-flash-high | LRU | 394 s | 997 s | 374 s | 913 s |
+  ADDED | gemini-3.8-flash-high | FreeList | 374 s | 799 s | 337 s | missing |
+
+## W2 · brownfield — median wall seconds per condition
+  ADDED | gemini-3.1-pro-high | LRU | 202 s | 784 s | 207 s | ≥ 1,768 s |
+  ADDED | gemini-3.1-pro-high | FreeList | 313 s | missing | 268 s | ≥ 2,679 s |
+  ADDED | gemini-3.1-pro-high | LZW | 219 s | missing | 198 s | 3,080 s |
+  ADDED | gemini-3.1-pro-high | Paxos | 364 s | ≥ 3,619 s | — | — |
+  ADDED | gemini-3.8-flash-high | Crc32 | 261 s | 408 s | 259 s | 900 s |
+  ADDED | gemini-3.8-flash-high | LRU | 299 s | 657 s | 286 s | 923 s |
+  ADDED | gemini-3.8-flash-high | FreeList | 554 s | missing | 430 s | 866 s |
+  ADDED | gemini-3.8-flash-high | LZW | 487 s | 966 s | 398 s | 836 s |
+  ADDED | gemini-3.8-flash-high | Paxos | 402 s | 595 s | — | — |
+
+## W3 · spec-change (greenfield only) — median wall seconds per condition
+  ADDED | gemini-3.1-pro-high | Crc32 | 389 s | 3,886 s |
+  ADDED | gemini-3.1-pro-high | Paxos | 589 s | ≥ 3,207 s |
+  ADDED | gemini-3.8-flash-high | Crc32 | 913 s | 1,167 s |
+  ADDED | gemini-3.8-flash-high | LRU | 717 s | missing |
+  ADDED | gemini-3.8-flash-high | FreeList | 809 s | 1,553 s |
+  ADDED | gemini-3.8-flash-high | LZW | 793 s | 2,096 s |
+  ADDED | gemini-3.8-flash-high | Paxos | 1,064 s | 6,998 s |
+
+### W4 sign counts, per model per treatment (no p-value)
+  ADDED | gemini-3.8-flash-high | statement | 3 of 3 | none | 2.44 | 0 |
+  ADDED | gemini-3.8-flash-high | spec-change | 4 of 4 | none | 2.28 | 0 |
+
+#RECUT cost-v3: key width 0; old 902 rows, new 854; moved 40, gone 92, added 44

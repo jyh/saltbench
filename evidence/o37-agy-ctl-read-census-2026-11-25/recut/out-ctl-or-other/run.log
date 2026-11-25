@@ -1,0 +1,19 @@
+cells out: WEB-SERVED 10 + set 133 = 141 distinct
+map rows marked: descriptive 132 · correctness 132
+descriptive-v2: control OK (864 table rows = RESULT-descriptive-tables-v2-2026-09-27.md); tool rc old 1 new 1
+descriptive-v2-O57: control OK (864 table rows = RESULT-descriptive-tables-v2-O57-remeter-2026-10-13.md); tool rc old 1 new 1
+cost-v3: control OK (922 table rows = RESULT-cost-tables-v3-2026-09-29.md); tool rc old 0 new 1
+correctness-v3: control OK (781 table rows = RESULT-correctness-tables-v3-2026-10-01.md); tool rc old 0 new 1
+blockNA old: rc 0
+blockNA: cells dropped 6
+blockNA new: rc 0
+ZF: cells dropped 3
+ZF old: rc 0
+ZF new: rc 0
+ZF: control OK (zf_result.py --check RESULT-ZF-gemini4-argon-2026-10-25.md green)
+#RECUT descriptive-v2: key width 0; old 854 rows, new 824; moved 69, gone 186, added 156
+#RECUT descriptive-v2-O57: key width 0; old 854 rows, new 824; moved 62, gone 193, added 163
+#RECUT cost-v3: key width 0; old 905 rows, new 773; moved 40, gone 185, added 53
+#RECUT correctness-v3: key width 0; old 770 rows, new 644; moved 28, gone 185, added 59
+#RECUT blockNA: 9 old line(s), 9 new line(s)
+#RECUT ZF: 9 old line(s), 11 new line(s)

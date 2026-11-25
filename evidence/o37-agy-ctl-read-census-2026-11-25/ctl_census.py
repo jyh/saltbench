@@ -74,12 +74,17 @@ TOOLCHAIN = {'.cargo', '.rustup', '.elan', '.cache', '.local', '.npm', '.gradle'
 
 
 def home_paths(s, home):
-    """every path in s that is rooted at $HOME (~, $HOME, ${HOME} or the literal home), resolved"""
+    """every path in s rooted at the box home -> [(resolved path, literal)]. literal=True: the box home written out, which
+    is unambiguous. literal=False: ~ / $HOME / ${HOME}, resolved AS IF the subject's HOME were the box home. That reading is
+    not fixed by the record: the subject's HOME was <cell>/.agyhome in some eras and clients and the box home in others
+    (measured 11-25: env output of taafs101 and zfafbss201 vs l8rfss03's `find ~`), so a tilde path never sets OTHER-RECORD."""
     if not home:
         return []
     h = home.rstrip('/')
-    pat = r'(?:(?<![\w./-])~|\$\{?HOME\}?|' + re.escape(h) + r')(?=$|[/\s\'";|&<>)])(/[^\s\'";|&<>)`*]*)?'
-    return [h + (m.group(1) or '') for m in re.finditer(pat, s)]
+    tail = r'(?=$|[/\s\'";|&<>)])(/[^\s\'";|&<>)`*]*)?'
+    out = [(h + (m.group(1) or ''), True) for m in re.finditer(re.escape(h) + tail, s)]
+    out += [(h + (m.group(1) or ''), False) for m in re.finditer(r'(?:(?<![\w./-])~|\$\{?HOME\}?)' + tail, s)]
+    return out
 
 
 TOOLCHAIN_PREFIX = ('bench-src/cargo-root',)   # the cells' vstd/cargo source root, a build input
@@ -107,11 +112,12 @@ def is_other_record(p, home):
 
 
 def classify_call(tc, cell, home=None):
-    """-> (names_ctl: bool, parent_reach: bool, outside: bool, other_record: bool)"""
+    """-> (names_ctl, parent_reach, outside, other_record, tilde): outside/other_record from LITERAL paths only;
+    tilde = a ~/$HOME path that is outside the cell only under the box-home reading"""
     args = tc.get('args') if isinstance(tc, dict) else None
     if not isinstance(args, dict):
-        return False, False, False, False
-    names = parent = outside = other = False
+        return False, False, False, False, False
+    names = parent = outside = other = tilde = False
     for k, v in args.items():
         s = strval(v)
         if k.lower() in ('commandline', 'command', 'cmd'):
@@ -120,21 +126,27 @@ def classify_call(tc, cell, home=None):
             if CMD_PARENT.search(s) or any(c and re.search(re.escape(c.rstrip('/')) + r'(?=$|[\s\'";|&)])', s)
                                            for c in (cell if isinstance(cell, list) else [cell])):
                 parent = True
-            for p in home_paths(s, home):
+            for p, lit in home_paths(s, home):
                 if is_outside(p, cell, home):
-                    outside = True
-                    other = other or is_other_record(p, home)
+                    if lit:
+                        outside = True
+                        other = other or is_other_record(p, home)
+                    else:
+                        tilde = True
         elif PATH_KEY.search(k) and not CONTENT_KEY.search(k):
             for p in ([s] if not isinstance(v, list) else [strval(x) for x in v]):
                 if path_names_ctl(p, cell):
                     names = True
                 if path_is_parent(p, cell):
                     parent = True
-                for x in home_paths(p, home):
+                for x, lit in home_paths(p, home):
                     if is_outside(x, cell, home):
-                        outside = True
-                        other = other or is_other_record(x, home)
-    return names, parent, outside, other
+                        if lit:
+                            outside = True
+                            other = other or is_other_record(x, home)
+                        else:
+                            tilde = True
+    return names, parent, outside, other, tilde
 
 
 def walk_transcripts(d):
@@ -148,7 +160,7 @@ def census_cell(cell, home=None):
     """-> dict(state, transcripts, calls, named, parent, hits[list of (kind, tool, argjson)])
     `cell` is one directory or a list of them: a by-id record found in more than one family is read in every
     family, as record_join.py reads it."""
-    out = dict(state='UNMEASURED', transcripts=0, calls=0, named=0, parent=0, outside=0, other=0, hits=[], why='')
+    out = dict(state='UNMEASURED', transcripts=0, calls=0, named=0, parent=0, outside=0, other=0, tilde=0, hits=[], why='')
     cells = [c for c in (cell if isinstance(cell, list) else [cell]) if os.path.isdir(c)]
     if not cells:
         out['why'] = 'no cell directory'
@@ -177,8 +189,8 @@ def census_cell(cell, home=None):
                     continue
                 for tc in r.get('tool_calls') or []:
                     out['calls'] += 1
-                    n, par, outs, oth = classify_call(tc, cells if len(cells) > 1 else cell, home)
-                    if n or par or outs:
+                    n, par, outs, oth, til = classify_call(tc, cells if len(cells) > 1 else cell, home)
+                    if n or par or outs or til:
                         # an argument is shown to its first newline: hits.tsv shows the paths a call names, and an inline
                         # script body is not one (it also carries escaped text a path gate misreads as a separator)
                         shown = {k: (strval(v).split('\n', 1)[0] + (' …' if '\n' in strval(v) else ''))
@@ -188,14 +200,16 @@ def census_cell(cell, home=None):
                             a = a.replace(home.rstrip('/'), '~')
                         # a checkout under ~/projects is a private record on the run box: written as a role, never a path
                         a = re.sub(r'~/projects/[^\s"\\\']*', '~/<a project checkout>', a)
-                        out['hits'].append(('+'.join(k for k, v in (('CTL', n), ('OTHER-RECORD' if oth else 'HOME-ENV', outs), ('PARENT', par)) if v), str(tc.get('name')), a))
+                        out['hits'].append(('+'.join(k for k, v in (('CTL', n), ('OTHER-RECORD' if oth else 'HOME-ENV', outs), ('TILDE', til and not outs), ('PARENT', par)) if v), str(tc.get('name')), a))
                     out['named'] += n
                     out['parent'] += par
                     out['outside'] += outs
                     out['other'] += oth
+                    out['tilde'] += til
         out['transcripts'] += 1
     flags = [k for k, v in (('CTL-NAMED', out['named']), ('OTHER-RECORD', out['other']),
-                            ('HOME-ENV', out['outside'] and not out['other'])) if v]
+                            ('HOME-ENV', out['outside'] and not out['other']),
+                            ('TILDE', out['tilde'] and not out['outside'])) if v]
     out['state'] = '+'.join(flags) or 'NONE-NAMED'
     return out
 
@@ -208,7 +222,7 @@ def run_join(join, home, out_path, hits_path):
     rows = [l.rstrip('\n').split('\t') for l in open(join) if l.strip() and not l.startswith('#')]
     tot = {}
     with open(out_path, 'w') as fo, open(hits_path, 'w') as fh:
-        fo.write('#block\tid\tmodel\tarm\tcell\tstate\ttranscripts\tcalls\tctl_named\tother_record\thome_env_or_other\tparent_reach\twhy\n')
+        fo.write('#block\tid\tmodel\tarm\tcell\tstate\ttranscripts\tcalls\tctl_named\tother_record\thome_env_or_other\ttilde\tparent_reach\twhy\n')
         fh.write('#block\tid\tkind\ttool\targs\n')
         for r in rows:
             block, cid, model, arm, _how, root = r[:6]
@@ -220,7 +234,7 @@ def run_join(join, home, out_path, hits_path):
             tc = c['transcripts'] if c['state'] != 'UNMEASURED' else '-'
             fo.write('\t'.join(map(str, [block, cid, model, arm, rel, c['state'], tc, c['calls'] if tc != '-' else '-',
                                          c['named'] if tc != '-' else '-', c['other'] if tc != '-' else '-',
-                                         c['outside'] if tc != '-' else '-',
+                                         c['outside'] if tc != '-' else '-', c['tilde'] if tc != '-' else '-',
                                          c['parent'] if tc != '-' else '-',
                                          c['why'] or '-'])) + '\n')
             for h in c['hits']:
@@ -267,12 +281,14 @@ def selftest():
         ('no-transcript', lambda c: [], False, 'UNMEASURED', None, None, None),
         # OUTSIDE: l8rfss03's shapes (a home-wide find, then another cell's brain transcript), and what must not count
         ('other-cell', lambda c: [{'name': 'view_file', 'args': {'AbsolutePath': d + '/EVIDENCE-x--cells-y/l8rfpw01/.agyhome/brain/t.jsonl'}}], True, 'OTHER-RECORD', 0, 0, 1),
-        ('find-home', lambda c: [{'name': 'run_command', 'args': {'CommandLine': 'find ~ -name "transcript*.jsonl" 2>/dev/null', 'Cwd': c + '/repo'}}], True, 'HOME-ENV', 0, 0, 1),
-        ('home-var', lambda c: [{'name': 'run_command', 'args': {'CommandLine': 'ls $HOME/agy-cells'}}], True, 'OTHER-RECORD', 0, 0, 1),
+        ('find-home', lambda c: [{'name': 'run_command', 'args': {'CommandLine': 'find ~ -name "transcript*.jsonl" 2>/dev/null', 'Cwd': c + '/repo'}}], True, 'TILDE', 0, 0, 0),
+        ('home-var', lambda c: [{'name': 'run_command', 'args': {'CommandLine': 'ls $HOME/agy-cells'}}], True, 'TILDE', 0, 0, 0),
         ('other-ctl', lambda c: [{'name': 'run_command', 'args': {'CommandLine': 'cat ' + d + '/cells-z/z01/ctl/briefing-file'}}], True, 'CTL-NAMED+OTHER-RECORD', 1, 0, 1),
         ('toolchain', lambda c: [{'name': 'view_file', 'args': {'AbsolutePath': d + '/.cargo/registry/src/x/lib.rs'}}], True, 'NONE-NAMED', 0, 0, 0),
         ('own-cell-tilde', lambda c: [{'name': 'run_command', 'args': {'CommandLine': 'ls -la ~/own-cell-tilde/repo', 'Cwd': c + '/repo'}}], True, 'NONE-NAMED', 0, 0, 0),
-        ('dotfile', lambda c: [{'name': 'run_command', 'args': {'CommandLine': 'cat ~/.gitconfig'}}], True, 'HOME-ENV', 0, 0, 1),
+        ('dotfile', lambda c: [{'name': 'run_command', 'args': {'CommandLine': 'cat ~/.gitconfig'}}], True, 'TILDE', 0, 0, 0),
+        ('literal-dotfile', lambda c: [{'name': 'run_command', 'args': {'CommandLine': 'cat ' + d + '/.gitconfig'}}], True, 'HOME-ENV', 0, 0, 1),
+        ('literal-home', lambda c: [{'name': 'list_dir', 'args': {'DirectoryPath': d}}], True, 'HOME-ENV', 0, 0, 1),
         ('verus-pin', lambda c: [{'name': 'run_command', 'args': {'CommandLine': '~/verus-pin/verus-arm64-macos/verus x.rs'}}], True, 'NONE-NAMED', 0, 0, 0),
         ('cargo-root', lambda c: [{'name': 'view_file', 'args': {'AbsolutePath': d + '/bench-src/cargo-root-v3/vstd/seq.rs'}}], True, 'NONE-NAMED', 0, 0, 0),
         ('tilde-in-word', lambda c: [{'name': 'run_command', 'args': {'CommandLine': 'git diff HEAD~1 -- src/a~b.rs'}}], True, 'NONE-NAMED', 0, 0, 0),
