@@ -5,6 +5,10 @@
                   {nca,wca}-*-score*. A root with two receipts is admitted only when they AGREE on every scored field (both are then
                   cited); two that disagree REFUSE (WA's abandoned-dir hazard): neither is ever chosen
   cell facts      cell_facts.json beside this file (nca_facts.py, read on the run box from each cell's own ctl/; `--fetch` writes it)
+  ctl census      ctl_census.tsv beside this file: root TAB reads TAB paths, one row per root, reads = the subject's tool calls that
+                  read the harness's ctl/ in its phase-2 brain transcript (the lead's ruling 2026-11-24, bus @110,731,568). A root with
+                  reads > 0 is flagged CTL-READ and its briefing and persist fields read UNMEASURED(CTL-READ); a root absent from the
+                  file reads UNREAD, never 0
 A value that cannot be read is UNREAD, never blank and never zero.
   python3 nca_cells_gen.py --fetch HOST   -> runs nca_facts.py on HOST over the 96 rows, writes cell_facts.json
   python3 nca_cells_gen.py                -> the per-cell table (TSV, stdout)
@@ -19,7 +23,7 @@ RUNS = os.environ.get('NCA_RUNS') or os.path.expanduser('~/.fleet/executors/gemi
 MANIFESTS = ('NCA-flash-all', 'NCA-argon-all', 'WCA-flash-all', 'WCA-argon-all')
 COLS = ['block', 'root', 'id', 'problem', 'arm', 'p2_model', 'p2_client16', 'p2_export', 'hook16', 'source', 'T', 'turns_sent',
         'continue_turns', 'cut_turns_all', 'wall_seconds', 'done_reason', 'landed', 'false_done_claims', 'end2', 'verdict', 'TESTS',
-        'REGRESSIONS', 'CLAUSE', 'truncated', 'interface', 'score_receipt']
+        'REGRESSIONS', 'CLAUSE', 'truncated', 'interface', 'score_receipt', 'ctl_reads', 'flag', 'briefing', 'persist']
 NOSCORE = dict(verdict='UNSCORED', TESTS='UNSCORED', REGRESSIONS='UNSCORED', CLAUSE='UNSCORED', truncated='UNSCORED',
                interface='UNSCORED', score_receipt='UNSCORED')
 
@@ -66,8 +70,28 @@ def receipts():
     return out
 
 
+def ctl_census(roots):
+    path = os.path.join(HERE, 'ctl_census.tsv')
+    out = {}
+    if not os.path.exists(path):
+        return out
+    for l in open(path):
+        if l.startswith('#') or not l.strip():
+            continue
+        f = l.rstrip('\n').split('\t')
+        if len(f) != 3 or not re.fullmatch(r'\d+', f[1]) or (f[1] == '0') != (f[2] in ('', '-')):
+            sys.exit('REFUSE: ctl_census.tsv row is not root TAB reads TAB paths (paths "-" iff reads 0): %r' % l)
+        if f[0] not in roots:
+            sys.exit('REFUSE: ctl_census.tsv names a root outside the 96: %s' % f[0])
+        if f[0] in out:
+            sys.exit('REFUSE: ctl_census.tsv names root %s twice' % f[0])
+        out[f[0]] = int(f[1])
+    return out
+
+
 def table():
     pop = population()
+    ctl = ctl_census({p['root'] for p in pop})
     facts = {f['root']: f for f in json.load(open(os.path.join(HERE, 'cell_facts.json')))} if os.path.exists(os.path.join(HERE, 'cell_facts.json')) else {}
     sc = receipts()
     stray = sorted(set(sc) - {p['root'] for p in pop})
@@ -82,6 +106,10 @@ def table():
         if 'cell' in s and r['id'] not in ('UNREAD', s['cell']):
             sys.exit('REFUSE: %s receipt names cell %s, the facts name %s' % (p['root'], s['cell'], r['id']))
         r.update({k: v for k, v in s.items() if k in COLS})
+        n = ctl.get(p['root'])
+        r['ctl_reads'] = 'UNREAD' if n is None else n
+        r['flag'] = 'CTL-READ' if n else ('-' if n == 0 else 'UNREAD')
+        r['briefing'] = r['persist'] = 'UNMEASURED(CTL-READ)' if n else 'as-receipt'
         rows.append(r)
     return rows
 
@@ -90,6 +118,9 @@ def summary(rows):
     scored = lambda rs: [r for r in rs if r['verdict'] in ('PASS', 'FAIL')]
     L = ['rows %d · scored %d · receipts %d · facts %d' % (len(rows), len(scored(rows)), sum(r['score_receipt'] != 'UNSCORED' for r in rows),
                                                        sum(r['id'] not in ('UNREAD', 'NO-CELL', 'TWO-CELLS') for r in rows))]
+    fl = [r['root'] for r in rows if r['flag'] == 'CTL-READ']
+    L.append('ctl census: CTL-READ %d [%s] · read 0 %d · UNREAD %d' % (len(fl), ' '.join(fl) or '-', sum(r['flag'] == '-' for r in rows),
+                                                                       sum(r['flag'] == 'UNREAD' for r in rows)))
     for k in ('p2_model', 'p2_client16', 'p2_export', 'hook16', 'done_reason'):
         v = {}
         for r in rows:
@@ -103,11 +134,12 @@ def summary(rows):
                     continue
                 sr = scored(rs)
                 ct = [r['cut_turns_all'] for r in sr]
-                L.append('%s %s %s: PASS %d of %d scored, of %d registered [%s] · cut turns %s · truncated %d of %d scored' % (
+                L.append('%s %s %s: PASS %d of %d scored, of %d registered [%s] · cut turns %s · truncated %d of %d scored · CTL-READ %s of %d scored' % (
                     b, pr, a, sum(r['verdict'] == 'PASS' for r in sr), len(sr), len(rs),
                     ' '.join('T%s R%s C%s' % (r['TESTS'], r['REGRESSIONS'], r['CLAUSE']) for r in sr) or '-',
                     ('%d' % sum(ct) if all(isinstance(x, int) for x in ct) else 'UNREAD') if sr else '-',   # over SCORED cells only, never a 0 for none
-                    sum(r['truncated'] == 'yes' for r in sr), len(sr)))
+                    sum(r['truncated'] == 'yes' for r in sr), len(sr), ('-' if not sr else 'UNREAD' if any(r['flag'] == 'UNREAD' for r in sr)   # never a 0 over an unread census
+                              else '%d' % sum(r['flag'] == 'CTL-READ' for r in sr)), len(sr)))
     return L
 
 
