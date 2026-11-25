@@ -8,6 +8,8 @@ blockNA old: rc 0
 blockNA: cells dropped 5
 blockNA new: rc 0
 ZF: cells dropped 2
+#TAKEN-OUT by route (distinct ids): blockNA-cells 5 · correctness-map 3 · descriptive-map 3 · zf-cells 2
+#TAKEN-OUT-NOWHERE 0 of 10: none (in no instrument's input; set ids: none)
 ZF old: rc 0
 ZF new: rc 0
 ZF: control OK (zf_result.py --check RESULT-ZF-gemini4-argon-2026-10-25.md green)

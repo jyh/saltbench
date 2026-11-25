@@ -14,7 +14,7 @@ rows that differ with recut_diff.py. It changes no instrument. A cell is taken o
 The CONTROL, run every time: each OLD output must reproduce its RESULT of record's table rows exactly (the RESULT files below);
 a control that fails stops the run, so a NEW is never compared with an OLD that is not the record.
 """
-import csv, os, shutil, subprocess, sys
+import collections, csv, os, shutil, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", "..", ".."))  # evidence/<dir>/recut -> repo
@@ -35,6 +35,9 @@ served = sorted(set(web) | set(extra_set))
 out = os.path.abspath(sys.argv[1])
 os.makedirs(out, exist_ok=True)
 print(f"cells out: WEB-SERVED {len(web)} + set {len(extra_set)} = {len(served)} distinct")
+# ADDED 2026-11-25 (kent's read of #474, question 3): every id records the routes that took it out, and the run prints the
+# ids that NO route took (a cell in none of the instruments' inputs, or a typo), so a count gap is never left unexplained.
+taken = collections.defaultdict(set)
 
 
 def run(args, log):
@@ -46,7 +49,7 @@ def table_rows(p):
     return [l for l in open(p, encoding="utf-8") if l.startswith("|")]
 
 
-def mark(map_path, dst):
+def mark(map_path, dst, route):
     n = 0
     with open(map_path, encoding="utf-8") as fh, open(dst, "w", encoding="utf-8") as w:
         hdr = None
@@ -58,11 +61,12 @@ def mark(map_path, dst):
                 f[0] = "#EXCLUDED-BY-RECORD " + f[0]
                 l = "\t".join(f) + "\n"
                 n += 1
+                taken[f[hdr.index("cell")]].add(route)
             w.write(l)
     return n
 
 
-def drop(tsv, dst, col):
+def drop(tsv, dst, col, route):
     n = 0
     with open(tsv, encoding="utf-8") as fh, open(dst, "w", encoding="utf-8") as w:
         hdr = None
@@ -73,7 +77,7 @@ def drop(tsv, dst, col):
             if hdr is None:
                 hdr = f; w.write(l); continue
             if f[hdr.index(col)] in served:
-                n += 1; continue
+                n += 1; taken[f[hdr.index(col)]].add(route); continue
             w.write(l)
     return n
 
@@ -82,7 +86,7 @@ diffs = []
 M = os.path.join(V3, "CELLMAP-descriptive-tables-v2-2026-09-27.tsv")
 MC = os.path.join(V3, "CELLMAP-correctness-tables-v3-2026-10-01.tsv")
 xM, xMC = os.path.join(out, "x-descriptive-map.tsv"), os.path.join(out, "x-correctness-map.tsv")
-print(f"map rows marked: descriptive {mark(M, xM)} · correctness {mark(MC, xMC)}")
+print(f"map rows marked: descriptive {mark(M, xM, 'descriptive-map')} · correctness {mark(MC, xMC, 'correctness-map')}")
 ADDT = ["--add-T", os.path.join(REPO, "evidence", "o57-agy-subagent-unmetered-2026-10-13", "addT.tsv")]
 EVC = ["--ev", os.path.join(REPO, "evidence", "v3-cost-tables-2026-09-28")]
 TABLES = [
@@ -111,7 +115,7 @@ for side in ("old", "new"):
     if side == "old":
         shutil.copy(os.path.join(V3, f"{NA}-cells.tsv"), d)
     else:
-        print(f"blockNA: cells dropped {drop(os.path.join(V3, f'{NA}-cells.tsv'), os.path.join(d, f'{NA}-cells.tsv'), 'id')}")
+        print(f"blockNA: cells dropped {drop(os.path.join(V3, f'{NA}-cells.tsv'), os.path.join(d, f'{NA}-cells.tsv'), 'id', 'blockNA-cells')}")
     rc = run([PY, "-I", os.path.join(d, f"{NA}-prose-verify.py"), "--print"], os.path.join(out, f"blockNA-{side}.txt"))
     print(f"blockNA {side}: rc {rc}")
 diffs.append(("blockNA", "blockNA-old.txt", "blockNA-new.txt"))
@@ -119,7 +123,12 @@ diffs.append(("blockNA", "blockNA-old.txt", "blockNA-new.txt"))
 # ZF: zf_result.py --print, its own --cells
 ZC = os.path.join(REPO, "evidence", "zf-result", "zf-cells.tsv")
 xZC = os.path.join(out, "x-zf-cells.tsv")
-print(f"ZF: cells dropped {drop(ZC, xZC, 'cid')}")
+print(f"ZF: cells dropped {drop(ZC, xZC, 'cid', 'zf-cells')}")
+_routes = collections.Counter(r for i in served for r in taken.get(i, ()))
+print("#TAKEN-OUT by route (distinct ids): " + " · ".join(f"{k} {v}" for k, v in sorted(_routes.items())))
+_none = [i for i in served if not taken.get(i)]
+print(f"#TAKEN-OUT-NOWHERE {len(_none)} of {len(served)}: " + (" ".join(_none) or "none")
+      + " (in no instrument's input; set ids: " + (" ".join(i for i in _none if i in extra_set) or "none") + ")")
 for side, c in (("old", ZC), ("new", xZC)):
     rc = run([PY, "zf_result.py", "--cells", c, "--print"], os.path.join(out, f"zf-{side}.txt"))
     print(f"ZF {side}: rc {rc}")
