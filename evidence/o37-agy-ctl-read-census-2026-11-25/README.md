@@ -120,6 +120,32 @@ That census's glob (`cells-*/*/.agyhome/…/transcript_full.jsonl`) does not rea
 **0 `search_web` and 0 `read_url_content` calls**, so its WEB-SERVED 10 and CLEAN 695 stand. Its statement that it read
 "every brain transcript" did not cover them, and this paragraph records that.
 
+## What the OTHER-RECORD calls RECEIVED (`other_seen.py` → `other_seen.tsv`; sha256/16 `9c0dbfa955ed14bb` and `34343fad9c310b42`)
+
+For each OTHER-RECORD call it reads the call's RESULT (the next GENERIC record) line by line. A line naming an outside
+literal path is **DENIED** if it carries a refusal (`Operation not permitted`, `Permission denied`, …), **CONTENT** if
+the outside path is the line's SOURCE (a `view_file` header `File Path: file://<path>`, or a grep line `<path>:…`, the
+whole token tested and never a prefix), and **NAMES** otherwise. A cell takes its strongest line.
+
+```
+MATRIX/plain/DENIED-ONLY=2
+MATRIX/plain/NAMES-ONLY=4
+MATRIX/plain/NOTHING=2
+MATRIX/salt-diet/CONTENT=2
+MATRIX/salt-diet/DENIED-ONLY=18
+MATRIX/salt-diet/NAMES-ONLY=11
+MATRIX/salt-diet/NOTHING=11
+NA/salt-diet/NAMES-ONLY=1
+ZF/salt/NAMES-ONLY=1
+```
+**Another record's CONTENT reached the subject in 2 of the 52 cells, both MATRIX salt-diet:** `l5fs02` (test files of a
+cell under a `PRESERVED-waves-…` tree) and `l8rfss03` (the brain transcript of the plain tripwire `l8rfpw01`). In 20
+the fence refused every outside read (its `denyRead` holds the cell's siblings as they stood at render time); 17 received
+names only; 13 received nothing that names an outside path. One refusal reads, in a salt-diet cell:
+`find <family root> -name solution.rs` → `<sibling>: Operation not permitted` for every sibling.
+⇒ The intent to look is arm-skewed (OTHER-RECORD 42 vs 8). Content arriving is rare (2), and both cases are salt-diet.
+Limit: one result record per call; a program the call ran that read further is not seen here.
+
 ## Limits (they bind every row above)
 
 1. **A count of what was NAMED, not of what was SEEN.** A recursive search or listing from a parent reaches `ctl/` or a
