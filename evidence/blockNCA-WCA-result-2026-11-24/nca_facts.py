@@ -9,10 +9,16 @@ Block NA's cell_facts.py read phase 1 (the `-1` files); a spec-change cell's sco
   end1, end2                          ctl/end-1, ctl/end-2 first lines
   source, hook16                      ctl/copied-from.tsv: source, web_deny_replaced's sha256 first 16 hex
                                       (a fresh cell has no copied-from.tsv: both read FRESH)
+  p2_gate                             the §A9.2 gate's OWN verdict, written outside the cell: the LAST `phase2-landed-gate <id> rc=N
+                                      <VERDICT>` line over ~/agy-widen-*.log whose id is the cell's AND whose receipt= is the first 12 hex of
+                                      THIS cell's repo/.seat/landing-1 (ids recur across roots: ncalvap01 is in two; a line carries no
+                                      root), as `rc=N VERDICT` plus `tag=… receipt=…` on a refusal. NONE = no matching line (or no receipt
+                                      in the cell); UNREAD = no widen log readable.
+                                      ⛔ NOT .seat/landing-N: a healthy two-phase cell carries landing-1..N across both phases
 The cell is FOUND: a copy root holds one cell, the basename of the manifest's copy_from; a fresh root holds the one dir whose name
 starts with the manifest's prefix. Zero or two candidates is NO-CELL / TWO-CELLS, never a guess. A value that cannot be read is UNREAD.
 usage (on the run box):  python3 -I nca_facts.py < rows   (rows: root TAB prefix TAB copy_from, one per manifest row) -> JSON list"""
-import json, os, re, sys
+import glob, json, os, re, sys
 
 H = os.path.expanduser('~')
 LOOP = ('turns_sent', 'continue_turns', 'wall_seconds', 'done_reason', 'landed', 'false_done_claims', 'persist_sent', 'persist_answered')
@@ -32,6 +38,25 @@ def first_line(path):
         return 'UNREAD'
 
 
+def gate_lines():
+    out, seen = {}, 0
+    for f in sorted(glob.glob(os.path.join(H, 'agy-widen-*.log'))):
+        try:
+            for l in open(f, errors='replace'):
+                m = re.match(r'phase2-landed-gate (\S+) rc=(\d+) (\S+)(.*)$', l.strip())
+                if m:
+                    head = m.group(4).split('|')[0]
+                    rc = re.search(r'receipt=([0-9a-f]{12})', head)
+                    v = 'rc=%s %s' % (m.group(2), m.group(3))
+                    if m.group(2) != '0':
+                        v += ''.join(' ' + x for x in re.findall(r'(?:tag|receipt)=\S+', head)[:2])
+                    out[(m.group(1), rc.group(1) if rc else None)] = v     # the LAST line for an (id, receipt) wins
+            seen += 1
+        except OSError:
+            pass
+    return out, seen
+
+
 def find(root, prefix, copy_from):
     d = os.path.join(H, root)
     if copy_from not in ('', '-'):
@@ -44,6 +69,7 @@ def find(root, prefix, copy_from):
     return c[0] if len(c) == 1 else ('NO-CELL' if not c else 'TWO-CELLS')
 
 
+GATE, GATE_LOGS = gate_lines()
 out = []
 for line in sys.stdin:
     if not line.strip():
@@ -53,7 +79,7 @@ for line in sys.stdin:
     rec = {'root': root, 'id': cid}
     if cid in ('NO-CELL', 'TWO-CELLS'):   # nothing below is read from a cell that is not found: every field says so, none reads FRESH or 0
         out.append(dict(rec, **{k: cid for k in ('T', 'requested_model', 'meter_verdict', 'cut_turns_all', 'p2_model', 'p2_client16', 'end1',
-                                                   'end2', 'source', 'p2_export', 'hook16') + LOOP}))
+                                                   'end2', 'source', 'p2_export', 'hook16', 'p2_gate') + LOOP}))
         continue
     c = os.path.join(H, root, cid, 'ctl')
     try:
@@ -81,6 +107,8 @@ for line in sys.stdin:
                 rec['p2_model'], rec['p2_client16'] = m.group(1), m.group(2)
     except OSError:
         pass
+    r1 = first_line(os.path.join(H, root, cid, 'repo', '.seat', 'landing-1'))
+    rec['p2_gate'] = 'UNREAD' if not GATE_LOGS else ('NONE' if not re.fullmatch(r'[0-9a-f]{40}', r1) else GATE.get((cid, r1[:12]), 'NONE'))
     rec['end1'], rec['end2'] = first_line(os.path.join(c, 'end-1')), first_line(os.path.join(c, 'end-2'))
     cf = os.path.join(c, 'copied-from.tsv')
     if os.path.exists(cf):

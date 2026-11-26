@@ -23,7 +23,7 @@ RUNS = os.environ.get('NCA_RUNS') or os.path.expanduser('~/.fleet/executors/gemi
 MANIFESTS = ('NCA-flash-all', 'NCA-argon-all', 'WCA-flash-all', 'WCA-argon-all')
 COLS = ['block', 'root', 'id', 'problem', 'arm', 'p2_model', 'p2_client16', 'p2_export', 'hook16', 'source', 'T', 'turns_sent',
         'continue_turns', 'cut_turns_all', 'wall_seconds', 'done_reason', 'landed', 'false_done_claims', 'end2', 'verdict', 'TESTS',
-        'REGRESSIONS', 'CLAUSE', 'truncated', 'interface', 'score_receipt', 'ctl_reads', 'flag', 'briefing', 'persist']
+        'REGRESSIONS', 'CLAUSE', 'truncated', 'interface', 'score_receipt', 'ctl_reads', 'flag', 'briefing', 'persist', 'p2_gate']
 NOSCORE = dict(verdict='UNSCORED', TESTS='UNSCORED', REGRESSIONS='UNSCORED', CLAUSE='UNSCORED', truncated='UNSCORED',
                interface='UNSCORED', score_receipt='UNSCORED')
 
@@ -121,6 +121,14 @@ def summary(rows):
     fl = [r['root'] for r in rows if r['flag'] == 'CTL-READ']
     L.append('ctl census: CTL-READ %d [%s] · read 0 %d · UNREAD %d' % (len(fl), ' '.join(fl) or '-', sum(r['flag'] == '-' for r in rows),
                                                                        sum(r['flag'] == 'UNREAD' for r in rows)))
+    G = lambda r: str(r['p2_gate'])
+    nf = [r['root'] for r in rows if G(r).startswith('rc=') and not G(r).startswith('rc=0 ')]
+    known = lambda r: G(r).startswith('rc=') or G(r) in ('NONE', 'UNREAD', 'NO-CELL', 'TWO-CELLS')
+    if not all(known(r) for r in rows):   # every state is named; an unknown one REFUSES rather than lands in a bucket
+        sys.exit('REFUSE: p2_gate value not in the registered states: %s' % sorted({G(r) for r in rows if not known(r)}))
+    L.append('phase-2 gate (§A9.2, its own lines): FIRED %d · NOT-FIRED %d [%s] · no line %d · no cell %d · UNREAD %d' % (
+        sum(G(r).startswith('rc=0 ') for r in rows), len(nf), ' '.join(nf) or '-', sum(G(r) == 'NONE' for r in rows),
+        sum(G(r) in ('NO-CELL', 'TWO-CELLS') for r in rows), sum(G(r) == 'UNREAD' for r in rows)))
     for k in ('p2_model', 'p2_client16', 'p2_export', 'hook16', 'done_reason'):
         v = {}
         for r in rows:

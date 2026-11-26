@@ -32,5 +32,17 @@ ctlarm ctl-malformed 'not root TAB reads TAB paths' 1 'cells-na-aes-flash-salt-n
 ctlarm ctl-stray-root 'outside the 96' 1 'cells-na-nosuch\t0\t-\n'
 ctlarm ctl-duplicate 'twice' 1 'cells-na-aes-flash-plain-ncacp1\t0\t-\ncells-na-aes-flash-plain-ncacp1\t0\t-\n'
 find "$G" -delete
+# p2_gate arms: nca_facts.py run against a FAKE HOME (two roots holding the SAME id, distinct receipts; the gate log written by hand)
+F=$(mktemp -d "${TMPDIR:-/tmp}/nca-gen-gate.XXXXXX") || exit 2
+gatearm(){ local name=$1 want=$2 log=$3; find "$F" -mindepth 1 -delete
+  for r in ra rb; do mkdir -p "$F/$r/ncax01/ctl" "$F/$r/ncax01/repo/.seat"; done
+  printf 'aaaaaaaaaaaa%028d\n' 0 > "$F/ra/ncax01/repo/.seat/landing-1"; printf 'bbbbbbbbbbbb%028d\n' 0 > "$F/rb/ncax01/repo/.seat/landing-1"
+  [ -n "$log" ] && printf '%b' "$log" > "$F/agy-widen-X.log"
+  out=$(printf 'ra\tncax\t-\nrb\tncax\t-\n' | HOME=$F python3 -I "$HERE/nca_facts.py" | python3 -c 'import json,sys; print(" ".join(r["root"]+"="+r["p2_gate"] for r in json.load(sys.stdin)))' 2>&1)
+  if [ "$out" = "$want" ]; then pass=$((pass+1)); echo "ok   $name"; else fail=$((fail+1)); echo "FAIL $name: got [$out] want [$want]"; fi; }
+gatearm gate-keyed-by-receipt 'ra=rc=0 LANDED rb=NONE' 'phase2-landed-gate ncax01 rc=0 LANDED end-1=LANDED record=True tag=aaaaaaaaaaaa receipt=aaaaaaaaaaaa | limit\n'
+gatearm gate-refusal-named 'ra=rc=0 LANDED rb=rc=1 NOT-LANDED tag=ABSENT receipt=bbbbbbbbbbbb' 'phase2-landed-gate ncax01 rc=0 LANDED tag=aaaaaaaaaaaa receipt=aaaaaaaaaaaa | x\nphase2-landed-gate ncax01 rc=1 NOT-LANDED end-1=LANDED record=True tag=ABSENT receipt=bbbbbbbbbbbb \xe2\x80\x94 fails: tag=ABSENT | x\n'
+gatearm gate-no-log-unread 'ra=UNREAD rb=UNREAD' ''
+find "$F" -delete
 find "$T" -delete
 echo "nca_gen_selftest: $pass of $((pass+fail)) arms"; [ "$fail" = 0 ]
