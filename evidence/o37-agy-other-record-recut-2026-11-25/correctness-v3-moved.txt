@@ -1,0 +1,56 @@
+
+## P1 · greenfield — full passes k / n per condition (n = PASS + FAIL; censored and unscorable beside)
+  OLD  | gemini-3.8-flash-high | FreeList | 1 / 3 † | 0 / 3 † | 3 / 3 † | 3 / 3 † |
+  NEW  | gemini-3.8-flash-high | FreeList | 1 / 3 † | unmeasured | 3 / 3 † | 3 / 3 † |
+  OLD  | gemini-3.8-flash-high | Paxos | 2 / 3 † | 2 / 3 † | — | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 2 / 3 † | unmeasured | — | — |
+
+## P2 · brownfield — full passes k / n per condition
+  OLD  | gemini-3.1-pro-high | FreeList | 3 / 3 | 1 / 3 | 2 / 3 | 1 / 3 |
+  NEW  | gemini-3.1-pro-high | FreeList | 3 / 3 | 0 / 2 | 2 / 3 | 1 / 3 |
+  OLD  | gemini-3.8-flash-high | Paxos | 3 / 3 | 3 / 3 | — | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 2 / 2 | 3 / 3 | — | — |
+
+## P3 · spec-change (greenfield only) — phase-2 full passes k / n per condition
+  OLD  | gemini-3.8-flash-high | LRU | 3 / 3 | 3 / 3 |
+  NEW  | gemini-3.8-flash-high | LRU | 3 / 3 | 2 / 2 |
+
+## P4 · signs, greenfield: salt-diet's pass-rate interval against plain's (ADDENDUM 1: STRICT)
+  GONE | gemini-3.8-flash-high | FreeList | − | = | − |
+  OLD  | gemini-3.8-flash-high | Paxos | = | — | + |
+  NEW  | gemini-3.8-flash-high | Paxos | — | — | + |
+
+### P4 counts, per model per treatment (no test, no p-value)
+  OLD  | gemini-3.8-flash-high | bare | 0 | 3 | 1 | 1 | 0 |
+  NEW  | gemini-3.8-flash-high | bare | 0 | 2 | 0 | 1 | 2 |
+
+## Unmeasured cells
+  GONE | none | | | | | | |
+
+## Per-cell verdicts and their sources (every table entry derives from these rows)
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs01 | by condition | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:39 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs02 | by condition | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:40 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs03 | by condition | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:41 |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra201 | by condition | - | - | - | landed by harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:213 |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra202 | by condition | - | - | - | landed by harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:213 |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra203 | by condition | - | - | - | landed by harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:213 |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | plain | none | l6vbpp02 | PASS | PASS | 17/17 | LANDED | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:114 |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | l7npfs01 | PASS | PASS | 7/7 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:280 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss03 | PASS | PASS | 23/23 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24-cells.tsv:18 |
+
+## P4 · signs, greenfield: salt-diet's pass-rate interval against plain's (ADDENDUM 1: STRICT)
+  ADDED | gemini-3.8-flash-high | FreeList | — | = | − |
+
+## Unmeasured cells
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs01 | ADDENDUM 3d: printed n 3 against 2 cells of record |
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs03 | ADDENDUM 3d: printed n 3 against 2 cells of record |
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra201 | ADDENDUM 3d: printed n 3 against 2 cells of record |
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra203 | ADDENDUM 3d: printed n 3 against 2 cells of record |
+
+## Per-cell verdicts and their sources (every table entry derives from these rows)
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs01 | unmeasured | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:39 |
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs03 | unmeasured | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:41 |
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra201 | unmeasured | - | - | - | ADDENDUM 3d: printed n 3 against 2 cells of record |
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra203 | unmeasured | - | - | - | ADDENDUM 3d: printed n 3 against 2 cells of record |
+
+#RECUT correctness-v3: key width 0; old 770 rows, new 768; moved 7, gone 11, added 9
