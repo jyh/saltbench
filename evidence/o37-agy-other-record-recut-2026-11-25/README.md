@@ -32,7 +32,8 @@ Read from the `*-moved-vs-ruled.txt` files (and listed there in full):
 
 ## Declared, as in the 11-20 re-cut
 The correctness tool's own arithmetic check goes red on the NEW run (`run.log`: `tool rc ... new 1`) because one more condition prints
-`unmeasured`; that is the removal, not a fault. The removal is one-armed (both cells salt-diet), and moves salt-diet's record in both
+`unmeasured`; that is the removal, not a fault. The descriptive tools read `tool rc old 1 new 1` (descriptive v2 and its O57 re-meter):
+red before and after, on the record itself, so not (b′)'s doing (kent's read of #475). The removal is one-armed (both cells salt-diet), and moves salt-diet's record in both
 directions at once (a `−` and a PASS leave).
 
 ## Limits
