@@ -1083,3 +1083,68 @@ Printed by `recut.py` in `evidence/o37-agy-web-served-2026-11-20/recut/`: the in
 
 #RECUT cost-v3: key width 0; old 905 rows, new 902; moved 7, gone 8, added 5
 ```
+
+## ⚖️ ADDENDUM — O37, 2026-11-25 (re-cut, census ADDENDUM 52, arm (b′)): THE TWO CONTENT CELLS (`l5fs02`, `l8rfss03`) OUT OF THESE TABLES, ON TOP OF THE 2026-11-20 WEB-SERVED RE-CUT: WHAT MOVES. APPENDED; everything above is unchanged.
+
+*bench (lead), on the Captain's ruling at the 2026-11-25 sitting (census ADDENDUM 52).*
+
+Printed in `evidence/o37-agy-other-record-recut-2026-11-25/` (README: the instrument, the control, the two readings; `check_recut.py` reproduces it). OLD below is the RULED state (this file's tables without the 10 WEB-SERVED cells, the 2026-11-20 addendum's NEW); NEW is that state without the two CONTENT cells as well. The other 50 OTHER-RECORD cells stay in these tables, labelled by their row in `evidence/o37-agy-ctl-read-census-2026-11-25/census.tsv`. No table above is replaced.
+
+`cost-v3-moved-vs-ruled.txt`, verbatim (GONE/ADDED = a row on one side only):
+
+```
+
+## $1 · greenfield — median modelled list-price dollars per condition
+  GONE | gemini-3.8-flash-high | FreeList | $1.18 | $3.48 | $1.03 | $3.59 |
+
+## $3 · spec-change (greenfield only) — median modelled list-price dollars per condition
+  GONE | gemini-3.8-flash-high | LRU | $1.57 | $3.55 |
+
+## $4 · salt-diet ÷ plain, greenfield, modelled list-price dollars (v2 §D4's rule)
+  OLD  | gemini-3.8-flash-high | LRU | 2.38 | 3.62 | 2.26 |
+  NEW  | gemini-3.8-flash-high | LRU | 2.38 | 3.62 | 2.33 |
+  OLD  | gemini-3.8-flash-high | FreeList | 2.96 | 3.49 | 1.88 |
+  NEW  | gemini-3.8-flash-high | FreeList | 2.42 | 3.49 | 1.88 |
+
+### $4 sign counts, per model per treatment (no p-value)
+  OLD  | gemini-3.8-flash-high | bare | 5 of 5 | none | 2.96 | 1 |
+  NEW  | gemini-3.8-flash-high | bare | 5 of 5 | none | 2.61 | 1 |
+  OLD  | gemini-3.8-flash-high | spec-change | 5 of 5 | none | 2.26 | 0 |
+  NEW  | gemini-3.8-flash-high | spec-change | 5 of 5 | none | 2.33 | 0 |
+
+## W1 · greenfield — median wall seconds per condition
+  GONE | gemini-3.8-flash-high | FreeList | 374 s | 986 s | 337 s | 772 s |
+
+## W3 · spec-change (greenfield only) — median wall seconds per condition
+  GONE | gemini-3.8-flash-high | LRU | 717 s | 1,768 s |
+
+## W4 · salt-diet ÷ plain, greenfield, wall seconds (v2 §D4's rule)
+  OLD  | gemini-3.8-flash-high | LRU | 2.19 | 2.44 | 2.47 |
+  NEW  | gemini-3.8-flash-high | LRU | 2.19 | 2.44 | 2.42 |
+  OLD  | gemini-3.8-flash-high | FreeList | 2.63 | 2.29 | 2.04 |
+  NEW  | gemini-3.8-flash-high | FreeList | 2.13 | 2.29 | 2.04 |
+
+### W4 sign counts, per model per treatment (no p-value)
+  OLD  | gemini-3.8-flash-high | bare | 5 of 5 | none | 2.50 | 0 |
+  NEW  | gemini-3.8-flash-high | bare | 5 of 5 | none | 2.19 | 0 |
+  OLD  | gemini-3.8-flash-high | spec-change | 5 of 5 | none | 2.47 | 0 |
+  NEW  | gemini-3.8-flash-high | spec-change | 5 of 5 | none | 2.42 | 0 |
+
+## Per-cell figures and their sources (every table number derives from these rows)
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs02 | 9.7424 | 5112.0 | - | agy-steps-raw.tsv: p1 per request (COMPLETE) | agy-steps-raw.tsv wall_s |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss03 | 3.5484 | 1768.4 | - | agy-steps-raw.tsv: p1 per request (COMPLETE); p2 per request (COMPLETE) | agy-steps-raw.tsv wall_s; second method: p1 = evidence/l8-a9-probe-cap-2026-09-24/phase_facts.json, p1 = evidence/l8-chainD-2026-09-24/phase_facts.json |
+
+## $1 · greenfield — median modelled list-price dollars per condition
+  ADDED | gemini-3.8-flash-high | FreeList | $1.18 | $2.85 | $1.03 | $3.59 |
+
+## $3 · spec-change (greenfield only) — median modelled list-price dollars per condition
+  ADDED | gemini-3.8-flash-high | LRU | $1.57 | $3.67 |
+
+## W1 · greenfield — median wall seconds per condition
+  ADDED | gemini-3.8-flash-high | FreeList | 374 s | 799 s | 337 s | 772 s |
+
+## W3 · spec-change (greenfield only) — median wall seconds per condition
+  ADDED | gemini-3.8-flash-high | LRU | 717 s | 1,733 s |
+
+#RECUT cost-v3: key width 0; old 902 rows, new 900; moved 8, gone 6, added 4
+```

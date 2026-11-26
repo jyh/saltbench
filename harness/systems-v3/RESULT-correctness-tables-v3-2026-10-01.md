@@ -894,3 +894,48 @@ Printed by `recut.py` in `evidence/o37-agy-web-served-2026-11-20/recut/`: the in
 
 #RECUT correctness-v3: key width 0; old 770 rows, new 768; moved 5, gone 6, added 4
 ```
+
+## ⚖️ ADDENDUM — O37, 2026-11-25 (re-cut, census ADDENDUM 52, arm (b′)): THE TWO CONTENT CELLS (`l5fs02`, `l8rfss03`) OUT OF THESE TABLES, ON TOP OF THE 2026-11-20 WEB-SERVED RE-CUT: WHAT MOVES. APPENDED; everything above is unchanged.
+
+*bench (lead), on the Captain's ruling at the 2026-11-25 sitting (census ADDENDUM 52).*
+
+Printed in `evidence/o37-agy-other-record-recut-2026-11-25/` (README: the instrument, the control, the two readings; `check_recut.py` reproduces it). OLD below is the RULED state (this file's tables without the 10 WEB-SERVED cells, the 2026-11-20 addendum's NEW); NEW is that state without the two CONTENT cells as well. The other 50 OTHER-RECORD cells stay in these tables, labelled by their row in `evidence/o37-agy-ctl-read-census-2026-11-25/census.tsv`. No table above is replaced.
+
+`correctness-v3-moved-vs-ruled.txt`, verbatim (GONE/ADDED = a row on one side only):
+
+```
+
+## P1 · greenfield — full passes k / n per condition (n = PASS + FAIL; censored and unscorable beside)
+  OLD  | gemini-3.8-flash-high | FreeList | 1 / 3 † | 0 / 3 † | 3 / 3 † | 3 / 3 † |
+  NEW  | gemini-3.8-flash-high | FreeList | 1 / 3 † | unmeasured | 3 / 3 † | 3 / 3 † |
+
+## P3 · spec-change (greenfield only) — phase-2 full passes k / n per condition
+  OLD  | gemini-3.8-flash-high | LRU | 3 / 3 | 3 / 3 |
+  NEW  | gemini-3.8-flash-high | LRU | 3 / 3 | 2 / 2 |
+
+## P4 · signs, greenfield: salt-diet's pass-rate interval against plain's (ADDENDUM 1: STRICT)
+  GONE | gemini-3.8-flash-high | FreeList | − | = | − |
+
+### P4 counts, per model per treatment (no test, no p-value)
+  OLD  | gemini-3.8-flash-high | bare | 0 | 2 | 1 | 1 | 1 |
+  NEW  | gemini-3.8-flash-high | bare | 0 | 2 | 0 | 1 | 2 |
+
+## Per-cell verdicts and their sources (every table entry derives from these rows)
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs01 | by condition | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:39 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs02 | by condition | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:40 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs03 | by condition | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:41 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss03 | PASS | PASS | 23/23 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24-cells.tsv:18 |
+
+## P4 · signs, greenfield: salt-diet's pass-rate interval against plain's (ADDENDUM 1: STRICT)
+  ADDED | gemini-3.8-flash-high | FreeList | — | = | − |
+
+## Unmeasured cells
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs01 | ADDENDUM 3d: printed n 3 against 2 cells of record |
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs03 | ADDENDUM 3d: printed n 3 against 2 cells of record |
+
+## Per-cell verdicts and their sources (every table entry derives from these rows)
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs01 | unmeasured | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:39 |
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs03 | unmeasured | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:41 |
+
+#RECUT correctness-v3: key width 0; old 768 rows, new 768; moved 3, gone 5, added 5
+```
