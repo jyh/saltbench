@@ -2142,8 +2142,10 @@ whose tool calls NAMED a path under `$HOME` in another record** (another cell or
 call the census read what the call RECEIVED (`other_seen.py` → `other_seen.tsv`). **Another record's CONTENT reached the subject in 2
 of the 52, both MATRIX salt-diet, gemini-3.8-flash-high:**
 
-- `l5fs02` (FreeList, greenfield): test files of `p2fre02`, a cell under a `PRESERVED-waves-…` tree (3 CONTENT lines).
-- `l8rfss03` (LRU, spec-change): the brain transcript of the plain tripwire cell `l8rfpw01` (5 CONTENT lines).
+- `l5fs02` (FreeList, greenfield): test files of `p2fre02`, a cell under a `PRESERVED-waves-…` tree (3 tool calls whose result carried CONTENT; `other_seen.tsv` `content=` counts CALLS).
+- `l8rfss03` (LRU, spec-change): the brain transcript of the plain tripwire cell `l8rfpw01` (5 such calls).
+
+The two cells' CONTENT LINES number 11 together (`#CONTENT-LINES-BY-SOURCE-FORM grep-abs=2 · view_file=9`); the per-cell line split is not derived here.
 
 In 22 of the other 50 the fence refused every outside read, 15 received names only, and 13 received nothing that names an outside path.
 CONTENT is 2, the same two cells, under every revision of the instrument and with at least one `view_file` CONTENT line in each
@@ -2164,14 +2166,17 @@ condition is scored by condition (P1 salt-diet `0 / 3`), and with `l5fs02` out t
 (printed n 3 against 2 cells of record). Flash bare P4 counts `+ = − ? —` go from `0 2 1 1 1` to `0 2 0 1 2`.
 **One P3 pass leaves salt-diet:** Flash × LRU × spec-change, salt-diet phase 2, goes from `3 / 3` to `2 / 2` (`l8rfss03` was a PASS).
 **Descriptive T4:** every k-of-m sign holds; two Flash medians move (bare 3.72 → 3.03, spec-change 2.88 → 3.06). **Cost v3:** every $4
-and W4 k-of-m sign holds; Flash medians move (`$4` bare 2.96 → 2.61, spec-change 2.26 → 2.33; `W4` bare 2.50 → 2.19, spec-change 2.47 → 2.42).
+and W4 k-of-m sign holds; Flash medians move (`$4` bare 2.96 → 2.61, spec-change 2.26 → 2.33; `W4` bare 2.50 → 2.19, spec-change 2.47 → 2.42). Those are the sign-count tables; inside the two affected conditions the per-condition
+cells move too (T1/T3 median tokens, the output-token medians, $1/$3, W1/W3, the T4/$4/W4 ratio cells, and the per-cell rows), each listed
+in the diff files below.
 Sources: `out-content/correctness-v3-moved-vs-ruled.txt`, `descriptive-v2-moved-vs-ruled.txt`, `cost-v3-moved-vs-ruled.txt`,
 `headline-signs.md` beside `out-ruled/headline-signs.md`.
 ⚠️ **The removal is one-armed:** both cells are salt-diet. It takes away a salt-diet `−` (P4) and a salt-diet PASS (P3), so it moves
 salt-diet's record in both directions at once, and neither move is a measured pass or a measured failure of the arm.
 
 ## §AU4 · WHAT THIS ADDENDUM DOES NOT DO
-**No count in this census moves:** both cells stay cells of record, their conditions stay DONE at the n their records state, and
+**No count in this census moves:** both cells stay cells of record IN THIS CENSUS (the guard's "2 cells of record" in §AU3 counts the
+cells left IN THE COMPARISON), their conditions stay DONE at the n their records state, and
 nothing is voided (A5.2 voids only FENCE-TAMPER). The re-cut of the tables of record is a separate change that cites this addendum. The 50
 that stay are not shown uncontaminated: NONE-NAMED and NAMES-ONLY are lower bounds on contact (the census README, limit 1), and a program
 a call ran that read further is not seen. **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.**
