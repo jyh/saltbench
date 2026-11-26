@@ -189,5 +189,6 @@ and errors; a message outside it reads as CONTENT.
    in cells this census reads NONE-NAMED. So NONE-NAMED is a lower bound on contact. It is not "never touched".
    PARENT calls are listed as candidates.
 2. **`$HOME` only.** Paths outside the home directory (`/tmp`, shared and mounted volumes) are not classified.
-3. **No ruling.** CTL-NAMED stands under the 10-13 ruling. Whether an OTHER-RECORD cell leaves a comparison, as the
-   WEB-SERVED cells do, changes what published tables assert. It is ruled separately and is not applied here.
+3. **No ruling here; the ruling is census ADDENDUM 52** (2026-11-25, arm (b′)). CTL-NAMED stands under the 10-13 ruling. The 2
+   CONTENT cells (`recut/set-content.txt`) leave every comparison, as the WEB-SERVED cells do; the other 50 OTHER-RECORD cells
+   stay, labelled. Nothing in this directory applies it: the tables of record are re-cut in a separate change.
