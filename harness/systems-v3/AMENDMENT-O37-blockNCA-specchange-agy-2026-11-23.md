@@ -387,17 +387,26 @@ as "phase 2 ran". Driven by gemini in plan mode on 2026-11-26: rc 4, nothing cre
 
 **A5.2 · THE ONE DECLARED STEP, before the registered tool.** Taken only for a cell whose `ctl/end-2` text names the class
 `LAUNCH-REFUSED`; any other `end-2` refuses. The source cell and its root are never written.
-1. **Stage.** Copy the cell directory and its root's `_receipts/<id>` and `_receipts/<id>.fence-1` with `cp -a` to a NEW staging root
-   `<source root>-stage`. Verify with a byte manifest (path, size, sha256) of source against staging, which must be equal.
-2. **Rename, in staging only.** `ctl/end-2` becomes `ctl/end-2.LAUNCH-REFUSED`, unchanged in bytes. No other file is edited.
+1. **Stage.** Copy the cell directory, its root's `CELLS.tsv`, and every `_receipts/<id>` and `_receipts/<id>.*` file (`.fence-1` is
+   required by the tool, and `.hooks.json` is carried when present) with `cp -a` to a NEW staging root `<source root>-stage`. Verify with a
+   byte manifest (path, size, sha256) of source against staging, which must be equal.
+2. **Rename, in staging only, TWO files, each unchanged in bytes.** No other file is edited. Each new name starts with NO prefix in the
+   aside's KEEP_PREFIX (`end-`, `built-from`, `token-scan-`, `agy-probes-`, `agy-meter-`, `aside-`, `fault-gate-`) and is not in KEEP_EXACT,
+   so the copy's aside moves both out of the subject's reach:
+   - `ctl/end-2` becomes `ctl/refused-attempt1.end-2`. This clears the copy tool's existence refusal.
+   - `ctl/aside-1.tsv` becomes `ctl/source.aside-1.tsv`. `fire_agy_v3.sh` SKIPS the aside when `ctl/aside-<N-1>.tsv` exists (the re-fire
+     path its selftest arm `p2refire` asserts). The copy tool copies `ctl/` whole, so without this rename the copy would keep `.agyhome/`,
+     the re-created `brain/` included. Found by kent's non-author read (bus offset 111,771,805), which drove it on a scratch fixture: SKIP
+     with the file in place; with it renamed, the aside ran and moved `.agyhome/` to the copy root's `_aside/<id>/phase1/`.
 3. **The registered path.** Run `agy_cell_copy_v3.py --src <staging>/<id> --dst-root <source root>-ncacp --export-root <88b63df9 export>`.
    Its plan-mode output is posted before `--apply`. Then AGY_PHASES=2 runs under a NEW attempt number, through the standard gates (§A9.2
-   landing gate → §M3 fault gate → aside → launcher `--check` → phase 2). On the copy the aside moves the re-created `.agyhome/` and the
-   earlier `ctl/aside-1.tsv` with every other non-KEEP record, so the phase-1 session record stays out of reach. The launcher's `--check`
-   must read clean before any model call.
+   landing gate → §M3 fault gate → aside → launcher `--check` → phase 2). Because of step 2, the copy's aside RUNS. It moves the
+   re-created `.agyhome/`, both renamed files and every other non-KEEP record to `<copy root>/_aside/<id>/phase1/`, and writes a new
+   `ctl/aside-1.tsv`. Before any model call, two reads are posted: the copy's `ctl/aside-1.tsv` (`.agyhome` listed) and the launcher's
+   `--check` reading clean.
 4. **Lineage.** The tool writes `ctl/copied-from.tsv` naming the staging cell as `source`. Two rows are appended immediately after it,
-   in the same act: `source_of_record\t<source root>/<id>` and `staging\tADDENDUM 5 §A5.2 (end-2 renamed end-2.LAUNCH-REFUSED; manifest
-   sha256 <of the step-1 manifest>)`. The staging root is kept as evidence.
+   in the same act: `source_of_record\t<source root>/<id>` and `staging\tADDENDUM 5 §A5.2 (end-2 renamed refused-attempt1.end-2;
+   aside-1.tsv renamed source.aside-1.tsv; manifest sha256 <of the step-1 manifest>)`. The staging root is kept as evidence.
 5. **Reading.** Phase 2's landing is read as the landing declared after `P1`, as the harvest already keys it ("declared-after-P1"),
    never by tag name. This cell's phase 1 owns `landed-2`.
 
