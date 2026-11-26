@@ -1,0 +1,30 @@
+| group | arm | level | PASS | FAIL | by condition | CENSORED | UNSCORABLE | unmeasured | PASS of PASS+FAIL |
+|---|---|---|---|---|---|---|---|---|---|
+| IN-SET | plain | s3 | 1 | 0 | 0 | 0 | 0 | 0 | 1/1 |
+| IN-SET | plain | b4 | 1 | 0 | 0 | 0 | 0 | 0 | 1/1 |
+| IN-SET | plain | l5 | 0 | 0 | 16 | 0 | 0 | 0 | - |
+| IN-SET | plain | l6v | 5 | 0 | 0 | 0 | 0 | 0 | 5/5 |
+| IN-SET | plain | l7 | 16 | 0 | 0 | 0 | 0 | 0 | 16/16 |
+| IN-SET | plain | l8 | 13 | 5 | 0 | 0 | 0 | 0 | 13/18 |
+| IN-SET | plain | all | 36 | 5 | 16 | 0 | 0 | 0 | 36/41 |
+| IN-SET | salt-diet | s3 | 1 | 2 | 0 | 1 | 0 | 0 | 1/3 |
+| IN-SET | salt-diet | b4 | 1 | 1 | 0 | 0 | 0 | 0 | 1/2 |
+| IN-SET | salt-diet | l5 | 0 | 0 | 17 | 0 | 0 | 1 | - |
+| IN-SET | salt-diet | l6v | 8 | 2 | 0 | 0 | 1 | 0 | 8/10 |
+| IN-SET | salt-diet | l7 | 22 | 4 | 0 | 0 | 0 | 0 | 22/26 |
+| IN-SET | salt-diet | l8 | 9 | 2 | 0 | 0 | 0 | 0 | 9/11 |
+| IN-SET | salt-diet | all | 41 | 11 | 17 | 1 | 1 | 1 | 41/52 |
+| stays | plain | s3 | 16 | 4 | 0 | 0 | 0 | 0 | 16/20 |
+| stays | plain | b4 | 5 | 0 | 0 | 0 | 0 | 0 | 5/5 |
+| stays | plain | l5 | 0 | 0 | 5 | 0 | 0 | 0 | - |
+| stays | plain | l6v | 11 | 0 | 0 | 0 | 0 | 0 | 11/11 |
+| stays | plain | l7 | 25 | 1 | 0 | 0 | 0 | 0 | 25/26 |
+| stays | plain | l8 | 8 | 4 | 0 | 0 | 0 | 0 | 8/12 |
+| stays | plain | all | 66 | 9 | 5 | 0 | 0 | 0 | 66/75 |
+| stays | salt-diet | s3 | 12 | 2 | 0 | 3 | 0 | 0 | 12/14 |
+| stays | salt-diet | b4 | 3 | 1 | 0 | 0 | 0 | 0 | 3/4 |
+| stays | salt-diet | l5 | 0 | 0 | 1 | 0 | 0 | 1 | - |
+| stays | salt-diet | l6v | 6 | 1 | 0 | 0 | 0 | 0 | 6/7 |
+| stays | salt-diet | l7 | 13 | 1 | 0 | 0 | 1 | 0 | 13/14 |
+| stays | salt-diet | l8 | 13 | 4 | 0 | 1 | 1 | 0 | 13/17 |
+| stays | salt-diet | all | 47 | 9 | 1 | 4 | 2 | 1 | 47/56 |

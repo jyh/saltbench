@@ -1,0 +1,7 @@
+lines read 2617; rule classes: CONTENT=11 · DENIED=184 · NAMES=72 · None=2350
+old        lines that differ 2 · DENIED→NAMES 2; cells l7nffs01 l8xfs201
+denwhole   lines that differ 0; cells none
+errlist4   lines that differ 0; cells none
+firstsplit lines that differ 0; cells none
+relguard   lines that differ 150 · None→CONTENT 51 · None→UNRESOLVED 99; cells l5fs02 l5ft01 l5ft02 l5ft03 l5lsra303 l5psra202 l6vbps02 l6vbps03 l6vspt01 l7cfsp01 l7cfsp02 l7nffs01 l7nffs02 l7nffs03 l7npfs01 l7npzp03 l7npzs01 l7sfrs03 l7sprs03 l7spzs01 l8rfss03 l8xfs201 l8zfsr01 nalbfs202 s3fs02 s3fs03 s3lp03 s3ls01 zffpgns101
+dencase    lines that differ 2 · DENIED→NAMES 2; cells l7nffs01 l8xfs201

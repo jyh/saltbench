@@ -1,0 +1,503 @@
+
+## The 10 unmeasured conditions and the cells with no tracked figure
+  GONE | model | problem | field | arm | extras | cells with no tracked T |
+  GONE | gemini-3.1-pro-high | Crc32 | greenfield | salt-diet | spec-change | l8cpss01, l8cpss03 |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | plain | statement | l5cq01, l5cq02, l5cq03 |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | statement | l5ct01, l5ct02, l5ct03 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | plain | statement | l5fq01, l5fq02, l5fq03 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | statement | l5ft01, l5ft02, l5ft03 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | plain | statement | l5lq01, l5lq02, l5lq03 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | l5lsra301, l5lsra302, l5lsra303 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | statement | l5lt01, l5lt02, l5lt03 |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | plain | none | l5ppr01, l5ppr02, l5ppr03 |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra201, l5psra203 |
+
+## T1 · greenfield — median total tokens per condition (n per condition in the output-token table below)
+  OLD  | gemini-3.1-pro-high | LRU | 1,466,321 | 9,543,326 | 1,080,062 | 10,360,342 |
+  NEW  | gemini-3.1-pro-high | LRU | 1,399,663 | 7,537,873 | 1,080,062 | 10,360,342 |
+  OLD  | gemini-3.1-pro-high | FreeList | 1,290,763 | 10,498,033 | 1,699,106 | ≥ 12,610,137 |
+  NEW  | gemini-3.1-pro-high | FreeList | 1,290,763 | 10,498,033 | 1,699,106 | ≥ 18,855,296 |
+  OLD  | gemini-3.1-pro-high | LZW | 1,232,089 | 12,471,112 | 1,598,032 | ≥ 17,892,929 |
+  NEW  | gemini-3.1-pro-high | LZW | 1,232,089 | 8,688,326 | 1,598,032 | 18,778,063 |
+  GONE | gemini-3.8-flash-high | Crc32 | 3,993,025 | 12,112,123 | unmeasured | unmeasured |
+  GONE | gemini-3.8-flash-high | LRU | 5,413,078 | unmeasured | unmeasured | unmeasured |
+  GONE | gemini-3.8-flash-high | FreeList | 6,495,950 | 24,187,669 | unmeasured | unmeasured |
+  OLD  | gemini-3.8-flash-high | LZW | 4,244,069 | ≥ 23,941,795 | 5,147,496 | 18,215,862 |
+  NEW  | gemini-3.8-flash-high | LZW | 4,124,538 | 35,553,998 | 5,147,496 | 19,792,936 |
+  GONE | gemini-3.8-flash-high | Paxos | unmeasured | unmeasured | — | — |
+
+## T2 · brownfield — median total tokens per condition (n per condition in the output-token table below)
+  OLD  | gemini-3.1-pro-high | LRU | 938,991 | 4,709,417 | 1,355,238 | ≥ 13,573,895 |
+  NEW  | gemini-3.1-pro-high | LRU | 892,178 | 2,922,521 | 1,355,238 | ≥ 12,960,134 |
+  GONE | gemini-3.1-pro-high | FreeList | 1,949,814 | 14,322,005 | 1,822,259 | 14,174,074 |
+  GONE | gemini-3.1-pro-high | LZW | 1,523,409 | ≥ 26,462,763 | 1,468,162 | 18,030,505 |
+  OLD  | gemini-3.1-pro-high | Paxos | 1,676,061 | 13,771,122 | — | — |
+  NEW  | gemini-3.1-pro-high | Paxos | 1,676,061 | ≥ 15,180,879 | — | — |
+  GONE | gemini-3.8-flash-high | Crc32 | 4,325,246 | 9,683,589 | 5,376,845 | 13,141,849 |
+  GONE | gemini-3.8-flash-high | LRU | 3,804,355 | 14,937,746 | 4,034,404 | 16,299,438 |
+  GONE | gemini-3.8-flash-high | FreeList | 5,334,389 | 21,228,941 | 7,756,505 | 20,084,774 |
+  GONE | gemini-3.8-flash-high | LZW | 6,555,430 | 17,493,691 | 5,919,649 | 13,256,712 |
+  GONE | gemini-3.8-flash-high | Paxos | 7,084,768 | 18,713,325 | — | — |
+
+## T3 · spec-change (greenfield only) — median total tokens per condition (n per condition in the output-token table below)
+  OLD  | gemini-3.1-pro-high | LZW | 2,828,970 | 26,732,286 |
+  NEW  | gemini-3.1-pro-high | LZW | 3,115,631 | 26,732,286 |
+  OLD  | gemini-3.1-pro-high | Paxos | 2,986,585 | ≥ 16,149,668 |
+  NEW  | gemini-3.1-pro-high | Paxos | 3,139,796 | ≥ 16,149,668 |
+  GONE | gemini-3.8-flash-high | Crc32 | 8,827,684 | 20,838,181 |
+  GONE | gemini-3.8-flash-high | LRU | 9,343,447 | 26,945,879 |
+  GONE | gemini-3.8-flash-high | FreeList | 14,103,453 | 32,423,306 |
+  GONE | gemini-3.8-flash-high | LZW | 9,189,665 | 36,488,484 |
+  GONE | gemini-3.8-flash-high | Paxos | 13,889,277 | 122,524,014 |
+
+## T4 · salt-diet ÷ plain, greenfield (registration §D4)
+  OLD  | gemini-3.1-pro-high | LRU | 6.51 | 9.59 | 5.71 |
+  NEW  | gemini-3.1-pro-high | LRU | 5.39 | 9.59 | 5.71 |
+  OLD  | gemini-3.1-pro-high | FreeList | 8.13 | ≥ 7.42 | 5.87 |
+  NEW  | gemini-3.1-pro-high | FreeList | 8.13 | ≥ 11.10 | 5.87 |
+  OLD  | gemini-3.1-pro-high | LZW | 10.12 | ≥ 11.20 | 9.45 |
+  NEW  | gemini-3.1-pro-high | LZW | 7.05 | 11.75 | 8.58 |
+  OLD  | gemini-3.1-pro-high | Paxos | ≥ 12.73 | — | ≥ 5.41 |
+  NEW  | gemini-3.1-pro-high | Paxos | ≥ 12.73 | — | ≥ 5.14 |
+  OLD  | gemini-3.8-flash-high | Crc32 | 3.03 | — | 2.36 |
+  NEW  | gemini-3.8-flash-high | Crc32 | — | — | — |
+  OLD  | gemini-3.8-flash-high | LRU | — | — | 2.88 |
+  NEW  | gemini-3.8-flash-high | LRU | — | — | — |
+  OLD  | gemini-3.8-flash-high | FreeList | 3.72 | — | 2.30 |
+  NEW  | gemini-3.8-flash-high | FreeList | — | — | — |
+  OLD  | gemini-3.8-flash-high | LZW | ≥ 5.64 | 3.54 | 3.97 |
+  NEW  | gemini-3.8-flash-high | LZW | 8.62 | 3.85 | — |
+  OLD  | gemini-3.8-flash-high | Paxos | — | — | 8.82 |
+  NEW  | gemini-3.8-flash-high | Paxos | — | — | — |
+
+### T4 sign counts, per model per treatment (no p-value, by ruling)
+  OLD  | gemini-3.1-pro-high | bare | 5 of 5 | none | 10.12 | 1 |
+  NEW  | gemini-3.1-pro-high | bare | 5 of 5 | none | 8.13 | 1 |
+  OLD  | gemini-3.1-pro-high | statement | 4 of 4 | none | 10.39 | 3 |
+  NEW  | gemini-3.1-pro-high | statement | 4 of 4 | none | 11.42 | 2 |
+  GONE | gemini-3.8-flash-high | bare | 3 of 3 | none | 3.72 | 1 |
+  OLD  | gemini-3.8-flash-high | statement | 1 of 1 | none | 3.54 | 0 |
+  NEW  | gemini-3.8-flash-high | statement | 1 of 1 | none | 3.85 | 0 |
+  GONE | gemini-3.8-flash-high | spec-change | 5 of 5 | none | 2.88 | 0 |
+
+### brownfield ratios (in the file, not in T4)
+  OLD  | gemini-3.1-pro-high | LRU | 5.02 | ≥ 10.02 |
+  NEW  | gemini-3.1-pro-high | LRU | 3.28 | ≥ 9.56 |
+  OLD  | gemini-3.1-pro-high | FreeList | 7.35 | 7.78 |
+  NEW  | gemini-3.1-pro-high | FreeList | — | ≥ 11.97 |
+  OLD  | gemini-3.1-pro-high | LZW | ≥ 17.37 | 12.28 |
+  NEW  | gemini-3.1-pro-high | LZW | — | 6.86 |
+  OLD  | gemini-3.1-pro-high | Paxos | 8.22 | — |
+  NEW  | gemini-3.1-pro-high | Paxos | ≥ 9.06 | — |
+  OLD  | gemini-3.8-flash-high | Crc32 | 2.24 | 2.44 |
+  NEW  | gemini-3.8-flash-high | Crc32 | 3.21 | — |
+  OLD  | gemini-3.8-flash-high | LRU | 3.93 | 4.04 |
+  NEW  | gemini-3.8-flash-high | LRU | 3.96 | — |
+  OLD  | gemini-3.8-flash-high | FreeList | 3.98 | 2.59 |
+  NEW  | gemini-3.8-flash-high | FreeList | — | — |
+  OLD  | gemini-3.8-flash-high | LZW | 2.67 | 2.24 |
+  NEW  | gemini-3.8-flash-high | LZW | 2.62 | — |
+  OLD  | gemini-3.8-flash-high | Paxos | 2.64 | — |
+  NEW  | gemini-3.8-flash-high | Paxos | — | — |
+
+## Per-condition medians of OUTPUT tokens (same rule; not in the tables)
+  OLD  | gemini-3.1-pro-high | Crc32 | greenfield | salt-diet | spec-change | 3 | unmeasured | - |
+  NEW  | gemini-3.1-pro-high | Crc32 | greenfield | salt-diet | spec-change | 2 | unmeasured | - |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | 2 | 105,158 |  |
+  OLD  | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | statement | 3 | 71,265 |  |
+  NEW  | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | statement | 2 | 114,768 | ≥ |
+  OLD  | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | 3 | 97,646 |  |
+  NEW  | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | 1 | 110,900 |  |
+  OLD  | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | statement | 3 | 80,906 | ≥ |
+  NEW  | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | statement | 2 | 111,820 | ≥ |
+  OLD  | gemini-3.1-pro-high | LRU | brownfield | plain | none | 3 | unmeasured | - |
+  NEW  | gemini-3.1-pro-high | LRU | brownfield | plain | none | 2 | unmeasured | - |
+  OLD  | gemini-3.1-pro-high | LRU | brownfield | salt-diet | none | 3 | unmeasured | - |
+  NEW  | gemini-3.1-pro-high | LRU | brownfield | salt-diet | none | 2 | unmeasured | - |
+  OLD  | gemini-3.1-pro-high | LRU | brownfield | salt-diet | statement | 3 | 72,997 | ≥ |
+  NEW  | gemini-3.1-pro-high | LRU | brownfield | salt-diet | statement | 2 | 70,826 | ≥ |
+  OLD  | gemini-3.1-pro-high | LRU | greenfield | plain | none | 3 | 19,409 |  |
+  NEW  | gemini-3.1-pro-high | LRU | greenfield | plain | none | 2 | 15,857 |  |
+  OLD  | gemini-3.1-pro-high | LRU | greenfield | salt-diet | none | 3 | 63,692 |  |
+  NEW  | gemini-3.1-pro-high | LRU | greenfield | salt-diet | none | 2 | 60,518 |  |
+  OLD  | gemini-3.1-pro-high | LZW | brownfield | plain | none | 3 | 17,376 |  |
+  NEW  | gemini-3.1-pro-high | LZW | brownfield | plain | none | 2 | 15,973 |  |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | none | 3 | 211,494 | ≥ |
+  OLD  | gemini-3.1-pro-high | LZW | brownfield | salt-diet | statement | 3 | 106,629 | ≥ |
+  NEW  | gemini-3.1-pro-high | LZW | brownfield | salt-diet | statement | 1 | 106,629 |  |
+  OLD  | gemini-3.1-pro-high | LZW | greenfield | plain | spec-change | 3 | unmeasured | - |
+  NEW  | gemini-3.1-pro-high | LZW | greenfield | plain | spec-change | 1 | unmeasured | - |
+  OLD  | gemini-3.1-pro-high | LZW | greenfield | salt-diet | none | 3 | unmeasured | - |
+  NEW  | gemini-3.1-pro-high | LZW | greenfield | salt-diet | none | 2 | unmeasured | - |
+  OLD  | gemini-3.1-pro-high | LZW | greenfield | salt-diet | statement | 3 | unmeasured | - |
+  NEW  | gemini-3.1-pro-high | LZW | greenfield | salt-diet | statement | 1 | unmeasured | - |
+  OLD  | gemini-3.1-pro-high | Paxos | brownfield | salt-diet | none | 3 | unmeasured | - |
+  NEW  | gemini-3.1-pro-high | Paxos | brownfield | salt-diet | none | 2 | unmeasured | - |
+  OLD  | gemini-3.1-pro-high | Paxos | greenfield | plain | spec-change | 3 | unmeasured | - |
+  NEW  | gemini-3.1-pro-high | Paxos | greenfield | plain | spec-change | 2 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | Crc32 | brownfield | plain | none | 3 | 39,336 |  |
+  NEW  | gemini-3.8-flash-high | Crc32 | brownfield | plain | none | 1 | 39,336 |  |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | plain | statement | 3 | 42,034 |  |
+  OLD  | gemini-3.8-flash-high | Crc32 | brownfield | salt-diet | none | 3 | 65,511 |  |
+  NEW  | gemini-3.8-flash-high | Crc32 | brownfield | salt-diet | none | 1 | 99,176 |  |
+  OLD  | gemini-3.8-flash-high | Crc32 | brownfield | salt-diet | statement | 3 | 89,524 |  |
+  NEW  | gemini-3.8-flash-high | Crc32 | brownfield | salt-diet | statement | 2 | 92,840 |  |
+  OLD  | gemini-3.8-flash-high | Crc32 | greenfield | plain | none | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | Crc32 | greenfield | plain | none | 1 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | plain | spec-change | 3 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | Crc32 | greenfield | plain | statement | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | Crc32 | greenfield | plain | statement | 1 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | none | 3 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | spec-change | 3 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | statement | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | statement | 1 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | FreeList | brownfield | plain | none | 3 | 75,139 |  |
+  NEW  | gemini-3.8-flash-high | FreeList | brownfield | plain | none | 1 | 75,139 |  |
+  OLD  | gemini-3.8-flash-high | FreeList | brownfield | plain | statement | 3 | 84,825 |  |
+  NEW  | gemini-3.8-flash-high | FreeList | brownfield | plain | statement | 1 | 84,825 |  |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | none | 3 | 181,281 |  |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | statement | 3 | 126,201 |  |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | plain | none | 3 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | plain | spec-change | 3 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | FreeList | greenfield | plain | statement | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | FreeList | greenfield | plain | statement | 1 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | 3 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | spec-change | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | spec-change | 1 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | statement | 3 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | LRU | brownfield | plain | none | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | LRU | brownfield | plain | none | 1 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | plain | statement | 3 | 45,024 |  |
+  OLD  | gemini-3.8-flash-high | LRU | brownfield | salt-diet | none | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | LRU | brownfield | salt-diet | none | 1 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | salt-diet | statement | 3 | 125,981 |  |
+  OLD  | gemini-3.8-flash-high | LRU | greenfield | plain | none | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | LRU | greenfield | plain | none | 2 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | plain | spec-change | 3 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | plain | statement | 3 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | 3 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | 3 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | statement | 3 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | LZW | brownfield | plain | none | 3 | 67,540 |  |
+  NEW  | gemini-3.8-flash-high | LZW | brownfield | plain | none | 2 | 69,284 |  |
+  OLD  | gemini-3.8-flash-high | LZW | brownfield | plain | statement | 3 | 55,895 |  |
+  NEW  | gemini-3.8-flash-high | LZW | brownfield | plain | statement | 1 | 54,963 |  |
+  OLD  | gemini-3.8-flash-high | LZW | brownfield | salt-diet | none | 3 | 121,149 |  |
+  NEW  | gemini-3.8-flash-high | LZW | brownfield | salt-diet | none | 1 | 113,937 |  |
+  GONE | gemini-3.8-flash-high | LZW | brownfield | salt-diet | statement | 3 | 100,662 |  |
+  OLD  | gemini-3.8-flash-high | LZW | greenfield | plain | none | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | LZW | greenfield | plain | none | 2 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | plain | spec-change | 3 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | LZW | greenfield | plain | statement | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | LZW | greenfield | plain | statement | 1 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | LZW | greenfield | salt-diet | none | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | LZW | greenfield | salt-diet | none | 1 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | LZW | greenfield | salt-diet | spec-change | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | LZW | greenfield | salt-diet | spec-change | 2 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | LZW | greenfield | salt-diet | statement | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | LZW | greenfield | salt-diet | statement | 2 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | salt-diet | none | 3 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | plain | none | 3 | unmeasured | - |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | plain | spec-change | 3 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | 2 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | 1 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | 2 | unmeasured | - |
+
+## Per-cell figures and their sources (every table number derives from these rows)
+  GONE | gemini-3.1-pro-high | LRU | greenfield | plain | none | s3lp03 | 2,475,940 | 22,968 | - | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3lp03].T |
+  GONE | gemini-3.1-pro-high | LRU | greenfield | salt-diet | none | s3ls01 | 14,708,151 | 91,157 | DEADLINE | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3ls01].T |
+  GONE | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | s3fs02 | 7,002,032 | 71,102 | - | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3fs02].T |
+  GONE | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | s3fs03 | 14,890,233 | 97,646 | - | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3fs03].T |
+  GONE | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | statement | s3ft03 | 12,008,781 | 80,906 | DEADLINE | harness/systems-v3/RESULT-stage3-cells-2026-09-12.tsv [cell=s3ft03].T |
+  GONE | gemini-3.1-pro-high | LRU | brownfield | plain | none | b4lrp02 | 938,991 | - | - | harness/systems-v3/RESULT-per-cell-table-levels-1-and-4-2026-09-14.md:57 col 'T (tokens)' |
+  GONE | gemini-3.1-pro-high | LRU | brownfield | salt-diet | none | b4lrs03 | 6,267,951 | - | - | harness/systems-v3/RESULT-per-cell-table-levels-1-and-4-2026-09-14.md:70 col 'T (tokens)' |
+  GONE | gemini-3.1-pro-high | Paxos | brownfield | salt-diet | none | b4ps02 | 9,357,512 | - | - | harness/systems-v3/RESULT-per-cell-table-levels-1-and-4-2026-09-14.md:75 col 'T (tokens)' |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | plain | none | l5cp01 | 3,993,025 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:30 field 8 |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | plain | none | l5cp02 | 3,389,253 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:31 field 8 |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | none | l5cs01 | 12,112,123 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:33 field 8 |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | none | l5cs02 | 11,452,788 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:34 field 8 |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | none | l5cs03 | 12,283,790 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:35 field 8 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | plain | none | l5fp01 | 4,850,397 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:36 field 8 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | plain | none | l5fp02 | 6,495,950 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:37 field 8 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | plain | none | l5fp03 | 6,748,970 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:38 field 8 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs01 | 11,901,071 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:39 field 8 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs02 | 57,655,873 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:40 field 8 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs03 | 24,187,669 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:41 field 8 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | plain | none | l5lp03 | 3,390,887 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:44 field 8 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | l5lsra301 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | l5lsra302 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | l5lsra303 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | plain | none | l5ppr01 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | plain | none | l5ppr02 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | plain | none | l5ppr03 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra203 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | plain | statement | l5cq01 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | plain | statement | l5cq02 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | statement | l5ct02 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | statement | l5ct03 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | plain | statement | l5fq01 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | plain | statement | l5fq02 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | statement | l5ft01 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | statement | l5ft02 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | statement | l5ft03 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | plain | statement | l5lq01 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | plain | statement | l5lq02 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | plain | statement | l5lq03 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | statement | l5lt01 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | statement | l5lt02 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | statement | l5lt03 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | salt-diet | none | l6vgps02 | 16,759,665 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:137 field 5 |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | salt-diet | statement | l6vspt01 | 17,892,929 | - | DEADLINE | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:142 field 5 |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | salt-diet | statement | l6vspt02 | 7,705,397 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:143 field 5 |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | plain | none | l6vgfp01 | 4,571,225 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:116 field 5 |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | salt-diet | none | l6vgfs01 | 23,941,795 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:133 field 5 |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | salt-diet | none | l6vgfs02 | 172,717 | - | DEADLINE | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:134 field 5 |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | plain | statement | l6vsfq02 | 4,980,956 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:123 field 5 |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | plain | statement | l6vsfq03 | 5,844,965 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:124 field 5 |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | salt-diet | statement | l6vsft03 | 18,215,862 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:141 field 5 |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | plain | none | l6vblp01 | 3,971,258 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:110 field 5 |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | plain | none | l6vblp02 | 3,292,285 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:111 field 5 |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | salt-diet | none | l6vbls02 | 14,937,746 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:128 field 5 |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | salt-diet | none | l6vbls03 | 13,783,042 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:129 field 5 |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | salt-diet | none | l6vbps01 | 14,891,518 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:130 field 5 |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | salt-diet | none | l6vbps02 | 18,713,325 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:131 field 5 |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | salt-diet | none | l6vbps03 | 24,560,143 | - | - | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:132 field 5 |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | plain | none | l7cfbp01 | 4,399,236 | 37,981 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7cfbp01].T |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | plain | none | l7cfbp03 | 4,188,400 | 42,743 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7cfbp03].T |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | salt-diet | none | l7cfbs01 | 8,580,379 | 57,362 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7cfbs01].T |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | salt-diet | none | l7cfbs02 | 9,683,589 | 65,511 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7cfbs02].T |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | plain | statement | l7cfsp01 | 4,626,795 | 42,034 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7cfsp01].T |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | plain | statement | l7cfsp02 | 5,376,845 | 37,259 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7cfsp02].T |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | plain | statement | l7cfsp03 | 5,593,966 | 47,322 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7cfsp03].T |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | salt-diet | statement | l7cfss01 | 13,141,849 | 89,524 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7cfss01].T |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | plain | none | l7nffp01 | 6,360,553 | 83,670 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7nffp01].T |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | plain | none | l7nffp02 | 4,649,180 | 74,143 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7nffp02].T |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | none | l7nffs01 | 22,734,954 | 181,904 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7nffs01].T |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | none | l7nffs02 | 21,228,941 | 181,281 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7nffs02].T |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | none | l7nffs03 | 17,804,823 | 107,729 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7nffs03].T |
+  GONE | gemini-3.8-flash-high | LZW | brownfield | plain | none | l7nfzp01 | 6,261,170 | 64,638 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7nfzp01].T |
+  GONE | gemini-3.8-flash-high | LZW | brownfield | salt-diet | none | l7nfzs01 | 18,064,205 | 134,557 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7nfzs01].T |
+  GONE | gemini-3.8-flash-high | LZW | brownfield | salt-diet | none | l7nfzs02 | 16,854,859 | 121,149 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7nfzs02].T |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | l7npfs02 | 12,404,449 | 94,728 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7npfs02].T |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | l7npfs03 | 16,239,561 | 115,589 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7npfs03].T |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | plain | none | l7npzp03 | 2,097,518 | 17,675 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7npzp03].T |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | none | l7npzs01 | 23,050,944 | 107,186 | DEADLINE | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7npzs01].T |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | none | l7npzs02 | 26,462,763 | 232,294 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7npzs02].T |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | none | l7npzs03 | 63,868,087 | 211,494 | DEADLINE | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7npzs03].T |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | plain | statement | l7sffp01 | 6,354,773 | 67,685 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sffp01].T |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | plain | statement | l7sffp02 | 7,756,505 | 92,762 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sffp02].T |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | statement | l7sffs01 | 34,073,898 | 218,141 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sffs01].T |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | statement | l7sffs02 | 13,351,194 | 95,483 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sffs02].T |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | statement | l7sffs03 | 20,084,774 | 126,201 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sffs03].T |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | plain | statement | l7sfrp01 | 4,705,974 | 45,024 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sfrp01].T |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | plain | statement | l7sfrp02 | 3,676,567 | 44,829 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sfrp02].T |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | plain | statement | l7sfrp03 | 4,034,404 | 58,991 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sfrp03].T |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | salt-diet | statement | l7sfrs01 | 11,378,956 | 92,196 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sfrs01].T |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | salt-diet | statement | l7sfrs02 | 26,417,079 | 125,981 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sfrs02].T |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | salt-diet | statement | l7sfrs03 | 16,299,438 | 133,012 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sfrs03].T |
+  GONE | gemini-3.8-flash-high | LZW | brownfield | plain | statement | l7sfzp01 | 6,616,783 | 73,506 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sfzp01].T |
+  GONE | gemini-3.8-flash-high | LZW | brownfield | plain | statement | l7sfzp02 | 5,536,955 | 55,895 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sfzp02].T |
+  GONE | gemini-3.8-flash-high | LZW | brownfield | salt-diet | statement | l7sfzs01 | 13,256,712 | 100,662 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sfzs01].T |
+  GONE | gemini-3.8-flash-high | LZW | brownfield | salt-diet | statement | l7sfzs02 | 19,555,122 | 165,682 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sfzs02].T |
+  GONE | gemini-3.8-flash-high | LZW | brownfield | salt-diet | statement | l7sfzs03 | 12,230,282 | 93,661 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sfzs03].T |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | statement | l7spfb01 | 8,246,368 | 71,265 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7spfb01].T |
+  GONE | gemini-3.1-pro-high | LRU | brownfield | salt-diet | statement | l7sprs03 | 28,284,577 | 104,126 | DEADLINE | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7sprs03].T |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | statement | l7spzs01 | 18,030,505 | 129,851 | - | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7spzs01].T |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | statement | l7spzs03 | 19,782,278 | 98,747 | DEADLINE | harness/systems-v3/RESULT-gemini-level7-2026-09-19-cells.tsv [cell=l7spzs03].T |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | plain | spec-change | l8cfps01 | 9,522,806 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8cfps01,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8cfps01,phase=2].T |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | plain | spec-change | l8cfps02 | 8,827,684 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8cfps02,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8cfps02,phase=2].T |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | plain | spec-change | l8cfps03 | 7,397,222 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8cfps03,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8cfps03,phase=2].T |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | spec-change | l8cfss01 | 20,838,181 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8cfss01,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8cfss01,phase=2].T |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | spec-change | l8cfss02 | 20,087,009 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8cfss02,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8cfss02,phase=2].T |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | spec-change | l8cfss03 | 30,754,478 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8cfss03,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8cfss03,phase=2].T |
+  GONE | gemini-3.1-pro-high | Crc32 | greenfield | salt-diet | spec-change | l8cpss01 | unmeasured | - | - | no tracked source |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | plain | spec-change | l8rfpb01 | 11,392,058 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfpb01,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfpb01,phase=2].T |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | plain | spec-change | l8rfpb02 | 9,343,447 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfpb02,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfpb02,phase=2].T |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | plain | spec-change | l8rfwra201 | 6,657,322 | - | - | harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24.md:207 /phase 1: T ([0-9,]+)/ + harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24.md:207 /phase 2: T ([0-9,]+)/ |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss01 | 30,904,703 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfss01,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfss01,phase=2].T |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss02 | 26,295,576 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfss02,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfss02,phase=2].T |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss03 | 26,945,879 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfss03,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfss03,phase=2].T |
+  GONE | gemini-3.1-pro-high | Paxos | greenfield | plain | spec-change | l8xppr01 | 2,986,585 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xppr01,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xppr01,phase=2].T |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | plain | spec-change | l8ffpr01 | 14,483,819 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8ffpr01,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8ffpr01,phase=2].T |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | plain | spec-change | l8ffpr02 | 14,103,453 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8ffpr02,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8ffpr02,phase=2].T |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | plain | spec-change | l8ffpr03 | 12,204,118 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8ffpr03,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8ffpr03,phase=2].T |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | spec-change | l8ffsra201 | 58,463,610 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8ffsra201,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8ffsra201,phase=2].T |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | spec-change | l8ffsra202 | 28,025,848 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8ffsra202,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8ffsra202,phase=2].T |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | plain | spec-change | l8zfpra201 | 9,189,665 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8zfpra201,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8zfpra201,phase=2].T |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | plain | spec-change | l8zfpra202 | 8,618,366 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8zfpra202,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8zfpra202,phase=2].T |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | plain | spec-change | l8zfpra203 | 14,621,600 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8zfpra203,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8zfpra203,phase=2].T |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | salt-diet | spec-change | l8zfsr01 | 38,543,805 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8zfsr01,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8zfsr01,phase=2].T |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | plain | spec-change | l8zppr01 | 2,550,452 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8zppr01,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8zppr01,phase=2].T |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | plain | spec-change | l8zppr02 | 2,828,970 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8zppr02,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8zppr02,phase=2].T |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | plain | spec-change | l8xfp2a201 | 13,889,277 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfp2a201,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfp2a201,phase=2].T |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | plain | spec-change | l8xfp2a202 | 15,868,524 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfp2a202,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfp2a202,phase=2].T |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | plain | spec-change | l8xfp2a203 | 12,539,128 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfp2a203,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfp2a203,phase=2].T |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | l8xfs201 | 122,524,014 | - | - | evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfs201,phase=1].T + evidence/l8-chainF-2026-09-24/phase_facts.json [id=l8xfs201,phase=2].T |
+
+## The 5 unmeasured conditions and the cells with no tracked figure
+  ADDED | model | problem | field | arm | extras | cells with no tracked T |
+  ADDED | gemini-3.1-pro-high | Crc32 | greenfield | salt-diet | spec-change | l8cpss03 |
+  ADDED | gemini-3.8-flash-high | Crc32 | greenfield | plain | statement | l5cq03 |
+  ADDED | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | statement | l5ct01 |
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | plain | statement | l5fq03 |
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | none | l5psra201 |
+
+## Cells in the map but OUTSIDE a condition's population (the result of record's scored cells govern, ADDENDUM 1 A1.4)
+  ADDED | gemini-3.1-pro-high / LRU / greenfield / plain / none | s3lp03 | cond: agy lane: no cost cap binds (inert C1_USD); T=input+output+cache_read |
+  ADDED | gemini-3.1-pro-high / LRU / greenfield / salt-diet / none | s3ls01 | DEADLINE: harness/systems-v3/RESULT-per-cell-table-levels-1-and-4-2026-09-14.md:125 done_reason=LANDED TRUNCATED=TRUNCATED; cond: s3ls01 TRUNCATED, PERSIS (not landed) but PASS; agy lane: no cost cap binds (inert C1_USD); T=input+output+cache_read |
+  ADDED | gemini-3.1-pro-high / FreeList / greenfield / salt-diet / none | s3fs02 | cond: agy lane: no cost cap binds (inert C1_USD); T=input+output+cache_read |
+  ADDED | gemini-3.1-pro-high / FreeList / greenfield / salt-diet / none | s3fs03 | cond: agy lane: no cost cap binds (inert C1_USD); T=input+output+cache_read |
+  ADDED | gemini-3.1-pro-high / FreeList / greenfield / salt-diet / statement | s3ft03 | DEADLINE: harness/systems-v3/RESULT-per-cell-table-levels-1-and-4-2026-09-14.md:124 done_reason=TURN-TIMEOUT TRUNCATED=-; cond: s3ft02,s3ft03 TURN-TIMEOUT NOT-LANDED; agy lane: no cost cap binds (inert C1_USD); T=input+output+cache_read |
+  ADDED | gemini-3.1-pro-high / LRU / brownfield / plain / none | b4lrp02 |  |
+  ADDED | gemini-3.1-pro-high / LRU / brownfield / salt-diet / none | b4lrs03 |  |
+  ADDED | gemini-3.1-pro-high / Paxos / brownfield / salt-diet / none | b4ps02 | cond: b4ps02 SELF-NOT; b4ps03 TRUNCATED |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / plain / none | l5cp01 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8 |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / plain / none | l5cp02 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8 |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / salt-diet / none | l5cs01 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8 |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / salt-diet / none | l5cs02 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8 |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / salt-diet / none | l5cs03 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8 |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / plain / none | l5fp01 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8 |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / plain / none | l5fp02 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8 |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / plain / none | l5fp03 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8 |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / salt-diet / none | l5fs01 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8; harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:154 records ONE unnamed freelist-saltdiet cell TRUNCATED; cannot assign to a cell, so not flagged |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / salt-diet / none | l5fs02 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8; harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:154 records ONE unnamed freelist-saltdiet cell TRUNCATED; cannot assign to a cell, so not flagged |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / salt-diet / none | l5fs03 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8; harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:154 records ONE unnamed freelist-saltdiet cell TRUNCATED; cannot assign to a cell, so not flagged |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / plain / none | l5lp03 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8 |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / salt-diet / none | l5lsra301 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:155 records 1 TRUNCATED in the superseded lru-saltdiet first run, not these cells; cond: ADDENDUM 3 re-fire attempt 3 replaces capacity-contaminated l5ls01-03 (whose T IS inline at level5 md :45-47); earlier attempts l5lsr01,l5lsra201 set aside; cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / salt-diet / none | l5lsra302 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:155 records 1 TRUNCATED in the superseded lru-saltdiet first run, not these cells; cond: ADDENDUM 3 re-fire attempt 3 replaces capacity-contaminated l5ls01-03 (whose T IS inline at level5 md :45-47); earlier attempts l5lsr01,l5lsra201 set aside; cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / salt-diet / none | l5lsra303 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:155 records 1 TRUNCATED in the superseded lru-saltdiet first run, not these cells; cond: ADDENDUM 3 re-fire attempt 3 replaces capacity-contaminated l5ls01-03 (whose T IS inline at level5 md :45-47); earlier attempts l5lsr01,l5lsra201 set aside; cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / Paxos / greenfield / plain / none | l5ppr01 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: ADDENDUM 3 re-fire replaces 503-contaminated l5pp01-03 (T inline :48-50); cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / Paxos / greenfield / plain / none | l5ppr02 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: ADDENDUM 3 re-fire replaces 503-contaminated l5pp01-03 (T inline :48-50); cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / Paxos / greenfield / plain / none | l5ppr03 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: ADDENDUM 3 re-fire replaces 503-contaminated l5pp01-03 (T inline :48-50); cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / Paxos / greenfield / salt-diet / none | l5psra203 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: ADDENDUM 3 re-fire attempt 2; l5psra202 TRUNCATED (unpoolable); l5psr01 recorded set-aside; cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / plain / statement | l5cq01 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / plain / statement | l5cq02 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / salt-diet / statement | l5ct02 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / salt-diet / statement | l5ct03 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / plain / statement | l5fq01 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / plain / statement | l5fq02 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / salt-diet / statement | l5ft01 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / salt-diet / statement | l5ft02 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / salt-diet / statement | l5ft03 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / plain / statement | l5lq01 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / plain / statement | l5lq02 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / plain / statement | l5lq03 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / salt-diet / statement | l5lt01 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / salt-diet / statement | l5lt02 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / salt-diet / statement | l5lt03 | NO TRACKED per-cell T (ADDENDUM-3 cell; id from evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out); cond: cell ids inferred from root names in evidence/hc1-stage1-instruments-2026-09-16/concurrency/census-45.out (ADDENDUM 3 names conditions, not cells); NO tracked per-cell T for ADDENDUM-3 cells |
+  ADDED | gemini-3.1-pro-high / LZW / greenfield / salt-diet / none | l6vgps02 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:141 fields T=4 output=6 |
+  ADDED | gemini-3.1-pro-high / LZW / greenfield / salt-diet / statement | l6vspt01 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:146 fields T=4 output=6; DEADLINE: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:146 TRUNCATED(per-turn); harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:183; cond: l6vspt01 TRUNCATED (cost out of pool) |
+  ADDED | gemini-3.1-pro-high / LZW / greenfield / salt-diet / statement | l6vspt02 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:147 fields T=4 output=6; cond: l6vspt01 TRUNCATED (cost out of pool) |
+  ADDED | gemini-3.8-flash-high / LZW / greenfield / plain / none | l6vgfp01 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:120 fields T=4 output=6 |
+  ADDED | gemini-3.8-flash-high / LZW / greenfield / salt-diet / none | l6vgfs01 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:137 fields T=4 output=6; cond: l6vgfs02 VOID (arm never delivered; DONE on 2 of 3; T present but out of cost pool) |
+  ADDED | gemini-3.8-flash-high / LZW / greenfield / salt-diet / none | l6vgfs02 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:138 fields T=4 output=6; DEADLINE: harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:134 done_reason TURN-TIMEOUT (also VOID, arm never delivered, harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:138); cond: l6vgfs02 VOID (arm never delivered; DONE on 2 of 3; T present but out of cost pool) |
+  ADDED | gemini-3.8-flash-high / LZW / greenfield / plain / statement | l6vsfq02 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:127 fields T=4 output=6 |
+  ADDED | gemini-3.8-flash-high / LZW / greenfield / plain / statement | l6vsfq03 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:128 fields T=4 output=6 |
+  ADDED | gemini-3.8-flash-high / LZW / greenfield / salt-diet / statement | l6vsft03 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:145 fields T=4 output=6 |
+  ADDED | gemini-3.8-flash-high / LRU / brownfield / plain / none | l6vblp01 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:114 fields T=4 output=6 |
+  ADDED | gemini-3.8-flash-high / LRU / brownfield / plain / none | l6vblp02 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:115 fields T=4 output=6 |
+  ADDED | gemini-3.8-flash-high / LRU / brownfield / salt-diet / none | l6vbls02 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:132 fields T=4 output=6 |
+  ADDED | gemini-3.8-flash-high / LRU / brownfield / salt-diet / none | l6vbls03 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:133 fields T=4 output=6 |
+  ADDED | gemini-3.8-flash-high / Paxos / brownfield / salt-diet / none | l6vbps01 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:134 fields T=4 output=6 |
+  ADDED | gemini-3.8-flash-high / Paxos / brownfield / salt-diet / none | l6vbps02 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:135 fields T=4 output=6 |
+  ADDED | gemini-3.8-flash-high / Paxos / brownfield / salt-diet / none | l6vbps03 | result of record (census ADDENDUM 9) harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:107 header, T = field 5; companion copy with output: harness/systems-v3/RECORD-l6-agy-tokens-2026-09-17.md:136 fields T=4 output=6 |
+  ADDED | gemini-3.8-flash-high / Crc32 / brownfield / plain / none | l7cfbp01 |  |
+  ADDED | gemini-3.8-flash-high / Crc32 / brownfield / plain / none | l7cfbp03 |  |
+  ADDED | gemini-3.8-flash-high / Crc32 / brownfield / salt-diet / none | l7cfbs01 |  |
+  ADDED | gemini-3.8-flash-high / Crc32 / brownfield / salt-diet / none | l7cfbs02 |  |
+  ADDED | gemini-3.8-flash-high / Crc32 / brownfield / plain / statement | l7cfsp01 |  |
+  ADDED | gemini-3.8-flash-high / Crc32 / brownfield / plain / statement | l7cfsp02 |  |
+  ADDED | gemini-3.8-flash-high / Crc32 / brownfield / plain / statement | l7cfsp03 |  |
+  ADDED | gemini-3.8-flash-high / Crc32 / brownfield / salt-diet / statement | l7cfss01 | cond: §Q2 condition: l7cfss01 + ADDENDUM A cells l7cfssq01/02 (census ADDENDUM 24); l7cfss02/03 rows in cells.tsv never ran (served "-") |
+  ADDED | gemini-3.8-flash-high / FreeList / brownfield / plain / none | l7nffp01 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / brownfield / plain / none | l7nffp02 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / brownfield / salt-diet / none | l7nffs01 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / brownfield / salt-diet / none | l7nffs02 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / brownfield / salt-diet / none | l7nffs03 |  |
+  ADDED | gemini-3.8-flash-high / LZW / brownfield / plain / none | l7nfzp01 |  |
+  ADDED | gemini-3.8-flash-high / LZW / brownfield / salt-diet / none | l7nfzs01 |  |
+  ADDED | gemini-3.8-flash-high / LZW / brownfield / salt-diet / none | l7nfzs02 |  |
+  ADDED | gemini-3.1-pro-high / FreeList / brownfield / salt-diet / none | l7npfs02 |  |
+  ADDED | gemini-3.1-pro-high / FreeList / brownfield / salt-diet / none | l7npfs03 |  |
+  ADDED | gemini-3.1-pro-high / LZW / brownfield / plain / none | l7npzp03 |  |
+  ADDED | gemini-3.1-pro-high / LZW / brownfield / salt-diet / none | l7npzs01 | DEADLINE: harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:283 flag TRUNCATED (also harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:31-33); cond: 2 cells TRUNCATED by per-turn deadline: token figures not poolable (census §Q4) |
+  ADDED | gemini-3.1-pro-high / LZW / brownfield / salt-diet / none | l7npzs02 | cond: 2 cells TRUNCATED by per-turn deadline: token figures not poolable (census §Q4) |
+  ADDED | gemini-3.1-pro-high / LZW / brownfield / salt-diet / none | l7npzs03 | DEADLINE: harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:285 flag TRUNCATED (also harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:31-33); cond: 2 cells TRUNCATED by per-turn deadline: token figures not poolable (census §Q4) |
+  ADDED | gemini-3.8-flash-high / FreeList / brownfield / plain / statement | l7sffp01 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / brownfield / plain / statement | l7sffp02 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / brownfield / salt-diet / statement | l7sffs01 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / brownfield / salt-diet / statement | l7sffs02 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / brownfield / salt-diet / statement | l7sffs03 |  |
+  ADDED | gemini-3.8-flash-high / LRU / brownfield / plain / statement | l7sfrp01 |  |
+  ADDED | gemini-3.8-flash-high / LRU / brownfield / plain / statement | l7sfrp02 |  |
+  ADDED | gemini-3.8-flash-high / LRU / brownfield / plain / statement | l7sfrp03 |  |
+  ADDED | gemini-3.8-flash-high / LRU / brownfield / salt-diet / statement | l7sfrs01 |  |
+  ADDED | gemini-3.8-flash-high / LRU / brownfield / salt-diet / statement | l7sfrs02 |  |
+  ADDED | gemini-3.8-flash-high / LRU / brownfield / salt-diet / statement | l7sfrs03 |  |
+  ADDED | gemini-3.8-flash-high / LZW / brownfield / plain / statement | l7sfzp01 |  |
+  ADDED | gemini-3.8-flash-high / LZW / brownfield / plain / statement | l7sfzp02 |  |
+  ADDED | gemini-3.8-flash-high / LZW / brownfield / salt-diet / statement | l7sfzs01 |  |
+  ADDED | gemini-3.8-flash-high / LZW / brownfield / salt-diet / statement | l7sfzs02 |  |
+  ADDED | gemini-3.8-flash-high / LZW / brownfield / salt-diet / statement | l7sfzs03 |  |
+  ADDED | gemini-3.1-pro-high / FreeList / brownfield / salt-diet / statement | l7spfb01 |  |
+  ADDED | gemini-3.1-pro-high / LRU / brownfield / salt-diet / statement | l7sprs03 | DEADLINE: harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:300 flag TRUNCATED (also harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:31-33) |
+  ADDED | gemini-3.1-pro-high / LZW / brownfield / salt-diet / statement | l7spzs01 |  |
+  ADDED | gemini-3.1-pro-high / LZW / brownfield / salt-diet / statement | l7spzs03 | DEADLINE: harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:303 flag TRUNCATED (also harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:31-33) |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / plain / spec-change | l8cfps01 |  |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / plain / spec-change | l8cfps02 |  |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / plain / spec-change | l8cfps03 |  |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / salt-diet / spec-change | l8cfss01 |  |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / salt-diet / spec-change | l8cfss02 |  |
+  ADDED | gemini-3.8-flash-high / Crc32 / greenfield / salt-diet / spec-change | l8cfss03 |  |
+  ADDED | gemini-3.1-pro-high / Crc32 / greenfield / salt-diet / spec-change | l8cpss01 | phase-2 T untracked: ran phase 2 on a COPY (chainD ADDENDUM A); phase 1 addressable as json|evidence/l8-chainD-2026-09-24/phase_facts.json|l8cpss01|1|T|- but a phase-1-only sum would not be the cell figure; phase-1 rc -9 was the persistence-probe kill, "a kill, not a cap" (harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24.md:74); not a recorded floor; cond: l8cpss01/03 ran phase 2 on COPIES (ADDENDUM A, census ADDENDUM 22); their phase-2 T is null in chainD phase_facts.json and absent from chainF phase_facts.json — UNTRACKED |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / plain / spec-change | l8rfpb01 | cond: third cell = mode-E tripwire l8rfwra201 (ERRATUM 1 §E6, census ADDENDUM 21); its T is inline prose only |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / plain / spec-change | l8rfpb02 | cond: third cell = mode-E tripwire l8rfwra201 (ERRATUM 1 §E6, census ADDENDUM 21); its T is inline prose only |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / plain / spec-change | l8rfwra201 | prose line, phase 1 + phase 2 (ERRATUM 1 §E6); cond: third cell = mode-E tripwire l8rfwra201 (ERRATUM 1 §E6, census ADDENDUM 21); its T is inline prose only |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / salt-diet / spec-change | l8rfss01 |  |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / salt-diet / spec-change | l8rfss02 |  |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / salt-diet / spec-change | l8rfss03 |  |
+  ADDED | gemini-3.1-pro-high / Paxos / greenfield / plain / spec-change | l8xppr01 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / plain / spec-change | l8ffpr01 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / plain / spec-change | l8ffpr02 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / plain / spec-change | l8ffpr03 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / salt-diet / spec-change | l8ffsra201 |  |
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / salt-diet / spec-change | l8ffsra202 |  |
+  ADDED | gemini-3.8-flash-high / LZW / greenfield / plain / spec-change | l8zfpra201 |  |
+  ADDED | gemini-3.8-flash-high / LZW / greenfield / plain / spec-change | l8zfpra202 |  |
+  ADDED | gemini-3.8-flash-high / LZW / greenfield / plain / spec-change | l8zfpra203 |  |
+  ADDED | gemini-3.8-flash-high / LZW / greenfield / salt-diet / spec-change | l8zfsr01 |  |
+  ADDED | gemini-3.1-pro-high / LZW / greenfield / plain / spec-change | l8zppr01 |  |
+  ADDED | gemini-3.1-pro-high / LZW / greenfield / plain / spec-change | l8zppr02 |  |
+  ADDED | gemini-3.8-flash-high / Paxos / greenfield / plain / spec-change | l8xfp2a201 | cond: ran on successor export 2a674d7662b9 |
+  ADDED | gemini-3.8-flash-high / Paxos / greenfield / plain / spec-change | l8xfp2a202 | cond: ran on successor export 2a674d7662b9 |
+  ADDED | gemini-3.8-flash-high / Paxos / greenfield / plain / spec-change | l8xfp2a203 | cond: ran on successor export 2a674d7662b9 |
+  ADDED | gemini-3.8-flash-high / Paxos / greenfield / salt-diet / spec-change | l8xfs201 | cond: ran on successor export 2a674d7662b9 |
+
+## T1 · greenfield — median total tokens per condition (n per condition in the output-token table below)
+  ADDED | gemini-3.8-flash-high | Crc32 | 5,838,876 | missing | unmeasured | unmeasured |
+  ADDED | gemini-3.8-flash-high | LRU | 6,061,122 | missing | missing | missing |
+  ADDED | gemini-3.8-flash-high | FreeList | missing | missing | unmeasured | missing |
+  ADDED | gemini-3.8-flash-high | Paxos | missing | unmeasured | — | — |
+
+## T2 · brownfield — median total tokens per condition (n per condition in the output-token table below)
+  ADDED | gemini-3.1-pro-high | FreeList | 1,949,814 | missing | 1,822,259 | ≥ 21,807,667 |
+  ADDED | gemini-3.1-pro-high | LZW | 1,387,704 | missing | 1,468,162 | 10,072,157 |
+  ADDED | gemini-3.8-flash-high | Crc32 | 4,325,246 | 13,871,972 | missing | 13,204,590 |
+  ADDED | gemini-3.8-flash-high | LRU | 3,804,355 | 15,083,897 | missing | missing |
+  ADDED | gemini-3.8-flash-high | FreeList | 5,334,389 | missing | 8,522,338 | missing |
+  ADDED | gemini-3.8-flash-high | LZW | 6,666,122 | 17,493,691 | 5,919,649 | missing |
+  ADDED | gemini-3.8-flash-high | Paxos | 7,084,768 | missing | — | — |
+
+## T3 · spec-change (greenfield only) — median total tokens per condition (n per condition in the output-token table below)
+  ADDED | gemini-3.8-flash-high | Crc32 | missing | missing |
+  ADDED | gemini-3.8-flash-high | LRU | missing | missing |
+  ADDED | gemini-3.8-flash-high | FreeList | missing | 32,423,306 |
+  ADDED | gemini-3.8-flash-high | LZW | missing | 35,229,836 |
+  ADDED | gemini-3.8-flash-high | Paxos | missing | 138,797,994 |
+
+### T4 sign counts, per model per treatment (no p-value, by ruling)
+  ADDED | gemini-3.8-flash-high | bare | 1 of 1 | none | 8.62 | 0 |
+  ADDED | gemini-3.8-flash-high | spec-change | 0 of 0 | none | — | 0 |
+
+#RECUT descriptive-v2: key width 0; old 853 rows, new 824; moved 68, gone 182, added 153
