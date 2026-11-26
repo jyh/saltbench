@@ -1,0 +1,9 @@
+cells-nca-liveness-argon-plain-r1	ncalvap01	717.5	True	1049.4	True
+cells-nca-liveness-argon-plain-r2	ncalvap01	UNREAD	UNREAD	UNREAD	UNREAD
+cells-nca-liveness-argon-salt-r1	ncalvas01	1335.1	True	UNREAD	UNREAD
+cells-nca-luby-argon-plain-r1	ncalbap01	735.7	True	684.0	True
+cells-nca-luby-argon-plain-r2	ncalbap01	918.4	True	816.5	True
+cells-nca-luby-argon-plain-r3	ncalbap01	730.2	True	615.4	True
+cells-nca-luby-argon-salt-r1	ncalbas01	1593.5	True	1384.8	True
+cells-nca-luby-argon-salt-r2	ncalbas01	1542.0	True	1232.0	True
+cells-nca-luby-argon-salt-r3	ncalbas01	1497.5	True	1149.6	True
