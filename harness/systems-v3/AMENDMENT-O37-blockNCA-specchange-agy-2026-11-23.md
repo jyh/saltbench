@@ -366,3 +366,61 @@ comparison with NC is like for like, and a re-run on the amended card would face
 the cell counted the reading the clause test fixes, so no Liveness clause figure is read as a premium. argon's six Liveness cells fire on
 88b63df9 as registered. NOTE 1's amendment binds the next Liveness block after NCA, on 8f69472c's card or a later one; a statement-arm build on it
 carries the statement section's own condition (the Captain's read) with it.
+
+---
+# ⚖️ ADDENDUM 5 (2026-11-26, bench) — A LAUNCH-REFUSED PHASE 2 RE-FIRES BY COPY THROUGH ONE DECLARED STAGING STEP; AND A PHASE-1 RE-LANDING GETS A DECLARED EXTRA G READING. IN FORCE WHEN IT REACHES `main` ON THE HELM'S WORD AFTER A NON-AUTHOR READ. APPENDED; ADDENDA 1–4 unchanged.
+
+**The case.** Argon cell `ncamfap01` (MaxFlow · plain, root `cells-nca-maxflow-argon-plain-r1`), read on the run box on 2026-11-26. Its tags are
+`landed-1` a41210c 07:35:42 PST, `landed-2` 14cec1f 07:37:53 (the subject landed a second time inside phase 1) and `P1` 2c5fd0a 07:40:05
+(the customer dispatch). `fault-gate-1` reads PASS shell-ok+fence-ok. `end-1` reads PERSIST-INDETERMINATE, which is the persistence probe's
+end, not the cell's. `end-2` reads `LAUNCH-REFUSED phase-2 the launcher's --check refused`. The launcher refused because phase 1's own agy
+client outlived its phase (pid 28072, ppid 1, ended on its own `--print-timeout`) and re-created `brain/` under `.agyhome/` after the aside.
+After 07:40:05 PST that process wrote only under `.agyhome/`, every call it made died at the closed proxy, and `git status` on the repo is
+clean. Ruled on the bus 2026-11-26 by the lead (offset 111,760,062): phase 1 LANDED; phase 2 is a HARNESS refusal, not scored, not a
+subject reach loss.
+
+**A5.1 · THE RULE IS ALREADY REGISTERED; THE INSTRUMENT CANNOT CARRY IT.** L8 ADDENDUM 2 §A2.4: *a `LAUNCH-REFUSED` end … is not a scored
+cell. It re-fires under a new attempt number (A2.2).* §NCA2 rule 4's "one attempt; a reach loss is never retried" binds the SUBJECT's
+attempt, and this subject's phase 2 never launched. The registered copy tool (§NCA2 / L8 §A9.4, `agy_cell_copy_v3.py` at export 88b63df9,
+sha256/16 1b5426fe85be70f3) refuses any source whose `ctl/end-2` EXISTS (lines 82–83, an existence check), so a LAUNCH-REFUSED end reads
+as "phase 2 ran". Driven by gemini in plan mode on 2026-11-26: rc 4, nothing created.
+
+**A5.2 · THE ONE DECLARED STEP, before the registered tool.** Taken only for a cell whose `ctl/end-2` text names the class
+`LAUNCH-REFUSED`; any other `end-2` refuses. The source cell and its root are never written.
+1. **Stage.** Copy the cell directory, its root's `CELLS.tsv`, and every `_receipts/<id>` and `_receipts/<id>.*` file (`.fence-1` is
+   required by the tool, and `.hooks.json` is carried when present) with `cp -a` to a NEW staging root `<source root>-stage`. Verify with a
+   byte manifest (path, size, sha256) of source against staging, which must be equal.
+2. **Rename, in staging only, TWO files, each unchanged in bytes.** No other file is edited. Each new name starts with NO prefix in the
+   aside's KEEP_PREFIX (`end-`, `built-from`, `token-scan-`, `agy-probes-`, `agy-meter-`, `aside-`, `fault-gate-`) and is not in KEEP_EXACT,
+   so the copy's aside moves both out of the subject's reach:
+   - `ctl/end-2` becomes `ctl/refused-attempt1.end-2`. This clears the copy tool's existence refusal.
+   - `ctl/aside-1.tsv` becomes `ctl/source.aside-1.tsv`. `fire_agy_v3.sh` SKIPS the aside when `ctl/aside-<N-1>.tsv` exists (the re-fire
+     path its selftest arm `p2refire` asserts). The copy tool copies `ctl/` whole, so without this rename the copy would keep `.agyhome/`,
+     the re-created `brain/` included. Found by kent's non-author read (bus offset 111,771,805), which drove it on a scratch fixture: SKIP
+     with the file in place; with it renamed, the aside ran and moved `.agyhome/` to the copy root's `_aside/<id>/phase1/`.
+3. **The registered path.** Run `agy_cell_copy_v3.py --src <staging>/<id> --dst-root <source root>-ncacp --export-root <88b63df9 export>`.
+   Its plan-mode output is posted before `--apply`. Then AGY_PHASES=2 runs under a NEW attempt number, through the standard gates (§A9.2
+   landing gate → §M3 fault gate → aside → launcher `--check` → phase 2). Because of step 2, the copy's aside RUNS. It moves the
+   re-created `.agyhome/`, both renamed files and every other non-KEEP record to `<copy root>/_aside/<id>/phase1/`, and writes a new
+   `ctl/aside-1.tsv`. Before any model call, two reads are posted: the copy's `ctl/aside-1.tsv` (`.agyhome` listed) and the launcher's
+   `--check` reading clean.
+4. **Lineage.** The tool writes `ctl/copied-from.tsv` naming the staging cell as `source`. Two rows are appended immediately after it,
+   in the same act: `source_of_record\t<source root>/<id>` and `staging\tADDENDUM 5 §A5.2 (end-2 renamed refused-attempt1.end-2;
+   aside-1.tsv renamed source.aside-1.tsv; manifest sha256 <of the step-1 manifest>)`. The staging root is kept as evidence.
+5. **Reading.** Phase 2's landing is read as the landing declared after `P1`, as the harvest already keys it ("declared-after-P1"),
+   never by tag name. This cell's phase 1 owns `landed-2`.
+
+**A5.3 · A RE-LANDING INSIDE PHASE 1: ONE DECLARED EXTRA G READING.** The registered G baseline (`gemini-fresh-gbase.sh`, rule 4) reads
+`landed-1`. Where phase 1 re-landed, the customer dispatched onto a later landing (here 14cec1f), so the baseline can read code phase 2
+never saw. The registered reading stands and decides rule 4. Beside it, the same instrument reads the at-`P1` landing once, reported
+beside and never replacing. If the two verdicts differ, that is a finding carried into the NCA RESULT. A census of the chain's phase-1
+re-landings is asked of gemini at its next harvest; this rule applies to each one it names.
+
+**A5.4 · WHEN, AND THE CLOCK.** The staging and the copy write a new root, so they wait for the QUIET window after the argon chain ends
+(ADDENDA 1–2). If this addendum has not reached `main` by **2026-11-28 18:00 PST**, cell `ncamfap01` is reported as phase 2 NOT-SCORED
+(harness), its condition's n is declared one short, and no re-fire follows.
+
+**A5.5 · NOT CHANGED, AND QUEUED.** No tool in export 88b63df9 is edited, and no cell's environment changes. Queued for the NEXT export (lead):
+the copy tool reads `end-2`'s CLASS, not its existence. The driver waits on the phase-1 client it launched, or ends it BY PID, before
+the aside. A pre-phase-2 gate lists live processes whose argv names the cell root or its HOME (`ps`, never `pgrep -f`) and refuses on any.
+The chain's quiet gate read QUIET with the ppid-1 client alive.
