@@ -1,0 +1,5 @@
+Luby argon plain     n 3 cell walls (p1+p2) 1419.7 1734.9 1345.6 median 1419.7 s · registered per cell 1532.7 s · measured/registered 0.926
+Luby argon salt-diet n 3 cell walls (p1+p2) 2978.3 2774.0 2647.1 median 2774.0 s · registered per cell 1341.0 s · measured/registered 2.069
+argon rest (5 problems x 2 arms x 3 cells = 30 cells): registered 72740 s = 20.2 h · re-cut 113177 s = 31.4 h
+  plain     registered 9.1 h -> re-cut 8.4 h
+  salt-diet registered 11.1 h -> re-cut 23.0 h

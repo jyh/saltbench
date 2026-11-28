@@ -1,0 +1,13 @@
+# root	task	arm	reps	prefix	extra	phases	copy_from   (WCA argon, 12 copies; T-WCA-A = row 2)
+cells-wa-ntt-argon-plain-r1-wcacp1	NTT	plain	1	wanap1		2	/Users/jyh/cells-wa-ntt-argon-plain-r1/wanap101
+cells-wa-ntt-argon-salt-r1-wcacp1	NTT	salt-diet	1	wanas1		2	/Users/jyh/cells-wa-ntt-argon-salt-r1/wanas101
+cells-wa-ntt-argon-plain-r2-wcacp2	NTT	plain	1	wanap2		2	/Users/jyh/cells-wa-ntt-argon-plain-r2/wanap201
+cells-wa-ntt-argon-salt-r2-wcacp2	NTT	salt-diet	1	wanas2		2	/Users/jyh/cells-wa-ntt-argon-salt-r2/wanas201
+cells-wa-ntt-argon-plain-r3-wcacp3	NTT	plain	1	wanap3		2	/Users/jyh/cells-wa-ntt-argon-plain-r3/wanap301
+cells-wa-ntt-argon-salt-r3-wcacp3	NTT	salt-diet	1	wanas3		2	/Users/jyh/cells-wa-ntt-argon-salt-r3/wanas301
+cells-wa-wht-argon-plain-r1-wcacp1	WHT	plain	1	wawap1		2	/Users/jyh/cells-wa-wht-argon-plain-r1/wawap101
+cells-wa-wht-argon-salt-r2-refire2-wcacp1	WHT	salt-diet	1	wawas1r2		2	/Users/jyh/cells-wa-wht-argon-salt-r2-refire2/wawas1r201
+cells-wa-wht-argon-plain-r2-wcacp2	WHT	plain	1	wawap2		2	/Users/jyh/cells-wa-wht-argon-plain-r2/wawap201
+cells-wa-wht-argon-salt-r2-wcacp2	WHT	salt-diet	1	wawas2		2	/Users/jyh/cells-wa-wht-argon-salt-r2/wawas201
+cells-wa-wht-argon-plain-r3-wcacp3	WHT	plain	1	wawap3		2	/Users/jyh/cells-wa-wht-argon-plain-r3/wawap301
+cells-wa-wht-argon-salt-r3-wcacp3	WHT	salt-diet	1	wawas3		2	/Users/jyh/cells-wa-wht-argon-salt-r3/wawas301
