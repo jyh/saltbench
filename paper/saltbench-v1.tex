@@ -38,7 +38,7 @@ Here we report the benchmark's design and its first measurement, taken end to en
 
 The method under test, the Salt method~\cite{hickey2026saltmethod,hickey2026authority}, is the working discipline the author uses in a formal mathematics project: machine-checked development in which claims travel as kernel-checked artifacts and human attention is reserved for statements and rulings. Its rendering as an arm is described in Section~\ref{sec:arms}; only the part of it that a single sealed agent can carry is rendered, and that limit was registered before the first call.
 
-\paragraph{Related work.} Kaashoek and Zeldovich report a machine-checked proof of the xv6 kernel, 6{,}593 lines of C and assembly, on a Rocq rendering of the Sail RISC-V semantics, built by coding agents under the direction of its two authors~\cite{kaashoek2026xv6}. The two studies ask different questions of agents and a referee. Theirs is one development, directed by its authors throughout, and it reports what the agents cost and what the authors learned about directing them (its Sections~9 and~12). Ours fixes the agent's instructions per arm and asks what a specify-and-verify method costs against a plain agent on the same task, with the outcome decided by a referee outside the agent's own toolchain. Both price agent work from the harness's own transcripts, and theirs records that roughly 9\% of its sessions are missing because the harness deletes transcripts older than 30 days by default (its Section~12.1). Section~\ref{sec:matrixdollars} sets their effort figures beside ours for scale.
+\paragraph{Related work.} Kaashoek and Zeldovich report a machine-checked proof of the xv6 kernel, 6{,}593 lines of C and assembly, on a Rocq rendering of the Sail RISC-V semantics, built by coding agents under the direction of its two authors~\cite{kaashoek2026xv6}. The two studies ask different questions of agents and a referee. Theirs is one development, directed by its authors throughout, and it reports what the agents cost and what the authors learned about directing them (its Sections~9 and~12). Ours fixes the agent's instructions per arm and asks what a specify-and-verify method costs against a plain agent on the same task, with the outcome decided by a referee outside the agent's own toolchain. Both price agent work from the harness's own transcripts, and theirs records that roughly 9\% of its sessions are missing because the harness deletes transcripts older than 30 days by default (its Section~12.1). Section~\ref{sec:matrixdollars} sets their effort figures beside ours for scale. Anthropic report Claude proving on compiled RISC-V binaries, in Rocq, that 239 fuzzing entry points across 123 open-source libraries do not crash on any input up to 64~MB, in about 180 million lines of Rocq, and, on 36 small verification tasks cut from the same code, that ``Opus 5.5 proves half of them with about 40\% fewer tokens than Opus 5''~\cite{anthropic2026formal}. That comparison holds the target statements fixed and varies the model; ours holds the model fixed and varies the method the agent is told to follow, so the two token figures answer different questions.
 
 \section{The seat-as-subject experiment}
 \label{sec:populations}
@@ -1214,6 +1214,15 @@ Jason Hickey.
 Jason Hickey.
 \newblock The Salt method: canonical definition.
 \newblock \texttt{docs/SALT-METHOD.md} in \url{https://github.com/jyh/salt}, commit \texttt{a8eac8bc}, 2026. Apache-2.0.
+
+\bibitem{anthropic2026formal}
+% verified at https://www.anthropic.com/research/formal-verification (2026-11-28): title and the sixteen names of the byline from the page;
+% published 2026-10-22, modified 2026-11-20 (the page's own article dates); the 239, 123, 64 MB and 180 million figures and the quoted
+% sentence read on the page; the appendix PDF it links (dated 2026-10-22, updated 2026-11-17) describes the 36 tasks; the post names
+% its collaborator in the work, the company at theorem.dev
+Keane Lucas, Aengus Lynch, Luna Tong, Luke Champine, Zygi Straznickas, Dino Distefano, Harshikaa Agrawal, Evyatar Ben~Asher, Cheru Berhanu, Ava Howell, Sami Jawhar, Chris Rohlf, Nickolai Zeldovich, Nicholas Carlini, Rajashree Agrawal, and Jason Gross.
+\newblock LLMs are making formal software verification feasible at a much larger scale.
+\newblock Anthropic research post, 22 October 2026. \url{https://www.anthropic.com/research/formal-verification}.
 
 \bibitem{jimenez2024swebench}
 % verified at https://arxiv.org/abs/2310.06770 (2026-09-04; re-verified at the object 2026-09-09); comments field names ICLR 2024
