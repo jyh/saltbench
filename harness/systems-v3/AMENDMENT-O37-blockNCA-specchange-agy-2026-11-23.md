@@ -424,3 +424,52 @@ re-landings is asked of gemini at its next harvest; this rule applies to each on
 the copy tool reads `end-2`'s CLASS, not its existence. The driver waits on the phase-1 client it launched, or ends it BY PID, before
 the aside. A pre-phase-2 gate lists live processes whose argv names the cell root or its HOME (`ps`, never `pgrep -f`) and refuses on any.
 The chain's quiet gate read QUIET with the ppid-1 client alive.
+
+---
+
+# ⚖️ ADDENDUM 6 (2026-11-28, bench) — ADDENDUM 5's RE-FIRE ROUTE REFUSES ON A REAL COPY OF `ncamfap01`, DRIVEN AT ZERO SPEND; THE CELL'S PHASE 2 IS NOT SCORED AND ITS CONDITION'S n IS DECLARED ONE SHORT. IT RECORDS A DRIVE AND A DISPOSITION, AND CHANGES NO TOOL, NO CELL AND NO OTHER CONDITION. IN FORCE WHEN IT REACHES `main` ON THE HELM'S WORD AFTER A NON-AUTHOR READ. APPENDED; ADDENDA 1–5 unchanged.
+
+**A6.1 · WHAT WAS DONE: A5.2 STEPS 1–2, AS REGISTERED.** The argon chain ended at 2026-11-28 01:06:38Z (gemini, `CHAIN-DONE rc=0`,
+24 of 24). A process listing on the run box at 01:14:46Z showed nothing live but the lane canary, and the quiet gate, installed after the
+staging, read QUIET. At 01:20:22Z the cell, its root's `CELLS.tsv` and its four `_receipts` files (`<id>`,
+`.fault-gate-1`, `.fence-1`, `.hooks.json`) were staged with `cp -a` to `<source root>-stage`. The byte manifest of source against staging
+was EQUAL: 559 rows, 425 files, 78,584,162 bytes, manifest sha256 `a14ea7759757452150aaab93af336bee851a152cc0533bb76be876be197e3a7b`.
+The two renames were made in staging only, and each renamed file is byte-identical to its source file (`end-2` sha256/16
+`9140f52a58860aac`, `aside-1.tsv` `4a49b2b80d83234f`). The source was re-manifested afterwards and is unchanged. Step 3's first act, the
+copy tool in plan mode onto `<source root>-ncacp`, read rc 0, and the destination root was absent afterwards. Receipts: bus offset
+112,499,985.
+
+**A6.2 · WHAT THE DRIVE SHOWED.** Before any `--apply` on the real destination, the registered copy tool was applied from staging to a
+scratch root outside every cell root. The wave's `run_phase2` gates were then run on that scratch copy, in the wave's order, each by its
+own tool. No launcher, client or model ran.
+- **§A9.2 landing gate** (`phase2_landed_gate_v3.py`): `NOT-LANDED … record=UNREADABLE`, rc 1. The record it reads,
+  `ctl/agy-turnloop-1.json`, is in the source root's `_aside/`: the 2026-11-26 phase-2 attempt set phase 1 aside at 15:40:06Z, before its
+  `--check` refused. It reads `landed: true` there, which is what the lead's 2026-11-26 ruling (phase 1 LANDED) rests on.
+- **§M3 fault gate `--verify`**: `VERIFY-FAIL no gate record at <copy root>/_receipts/ncamfap01.fault-gate-1`, rc 1. The copy tool carries
+  the briefing receipt, `.fence-1` and `.hooks.json`, not `.fault-gate-1`. A fresh read is not possible either, because the gate's row-8
+  input, `ctl/stream-1.ndjson`, is also in `_aside/`.
+- **`customer.sh dispatch --fold-bus`**: `REFUSED — ncamfap01 is already dispatched`, rc 4. The source was dispatched (`P1` 2c5fd0a,
+  15:40:05Z) one second before its aside, and the copy carries `ctl/customer.log` and the tag.
+
+So the wave stops at the first gate ("PHASE 2 NOT FIRED") and spends nothing. Every earlier phase-2 copy (L8 §A9.4; ADDENDUM 1) was of a
+cell refused BEFORE its dispatch. This source was refused AFTER its dispatch and its aside. A5.2 step 3's gate list does not name the
+dispatch, and it assumes that phase 1's records are still in the cell. A5's non-author read drove the aside on a fixture. Nobody drove
+`run_phase2` on a real copy before the route was registered.
+
+**A6.3 · THE DISPOSITION (the lead, 2026-11-28).** Cell `ncamfap01`: phase 1 LANDED (the set-aside record), phase 2 NOT-SCORED (harness).
+MaxFlow · plain · argon is reported at n = 2 of 3, with the shortfall declared beside its row. No re-fire follows. This is the outcome
+A5.4 names for an addendum that did not reach `main`, reached here for another reason: the route reached `main` and does not run. The helm
+may reverse this by 2026-11-28 18:00 PST (A5.4's clock). Past it, the disposition is final, and argon is removed 2026-11-30.
+NOT TAKEN, AND WHY. A hand route exists. It would copy by hand and append the lineage, byte-carry `.fault-gate-1` (equal to the cell's own
+`ctl/fault-gate-1`, PASS shell-ok+fence-ok), render the copy's fence from the wave's own lines, set phase 1 aside with the registered aside
+tool and post `--check`, then fire `fire_agy_v3.sh <id> 2` directly in the wave's environment, whose re-fire path skips an aside already
+done. That is five steps off the chain and the supervisor, so this one cell's phase 2 would run on a driver path that no other cell of
+record used. One repetition in one of 24 conditions does not pay for that.
+
+**A6.4 · KEPT AS EVIDENCE.** The staging root and its two manifests (A5.2), and the scratch root of the drive, marked as not a cell. The
+scratch copy's `ctl/customer.log` carries the refusal line the drive wrote; the source's log is unchanged.
+
+**A6.5 · QUEUED FOR THE NEXT EXPORT (lead), beside A5.5.** (1) The copy carries `<id>.fault-gate-1`, or the wave re-reads §M3 from the
+set-aside phase. (2) A copy of a source whose phase 2 was dispatched and then refused at `--check` runs phase 2 without a second dispatch:
+the dispatch line and `P1` are its record. (3) The landing gate reads a set-aside turnloop record through the aside's own manifest.
+(4) A route registered for a cell is driven end to end on a real copy, at zero spend, before its registration is signed.
