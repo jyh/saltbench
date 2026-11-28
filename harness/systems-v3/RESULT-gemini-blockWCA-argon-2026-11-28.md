@@ -35,10 +35,10 @@ WCA-argon FULL PASS salt-diet 1 of 1 counted · in comparisons UNREAD
 ---
 # §3 · COST, AS A SIGN ONLY
 ```
-WCA-argon NTT phase-2 T by rep (plain / salt-diet): #1 - / 4011676 · #2 - / - · #3 - / - · salt-diet > plain in 0 of 0 pairs
-WCA-argon NTT phase-2 wall_s by rep (plain / salt-diet): #1 - / 781.8 · #2 - / - · #3 - / - · salt-diet > plain in 0 of 0 pairs
-WCA-argon WHT phase-2 T by rep (plain / salt-diet): #1 - / - · #2 - / - · #3 - / - · salt-diet > plain in 0 of 0 pairs
-WCA-argon WHT phase-2 wall_s by rep (plain / salt-diet): #1 - / - · #2 - / - · #3 - / - · salt-diet > plain in 0 of 0 pairs
+WCA-argon NTT phase-2 T by rep (plain / salt-diet; * leaves comparisons): #1 - / 4011676 · #2 - / - · #3 - / - · salt-diet > plain in UNREAD pairs in comparisons
+WCA-argon NTT phase-2 wall_s by rep (plain / salt-diet; * leaves comparisons): #1 - / 781.8 · #2 - / - · #3 - / - · salt-diet > plain in UNREAD pairs in comparisons
+WCA-argon WHT phase-2 T by rep (plain / salt-diet; * leaves comparisons): #1 - / - · #2 - / - · #3 - / - · salt-diet > plain in 0 of 0 pairs in comparisons
+WCA-argon WHT phase-2 wall_s by rep (plain / salt-diet; * leaves comparisons): #1 - / - · #2 - / - · #3 - / - · salt-diet > plain in 0 of 0 pairs in comparisons
 ```
 T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A sign, never a premium, and no magnitude is claimed.
 

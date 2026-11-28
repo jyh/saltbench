@@ -59,21 +59,22 @@ NCA-flash FULL PASS salt-diet 13 of 16 counted · in comparisons 12 of 14
 ---
 # §3 · COST, AS A SIGN ONLY
 ```
-NCA-flash AES phase-2 T by rep (plain / salt-diet): #1 8337000 / 23383693 · #2 12695638 / 23229074 · #3 7431158 / 27621518 · salt-diet > plain in 3 of 3 pairs
-NCA-flash AES phase-2 wall_s by rep (plain / salt-diet): #1 621.1 / 1493.6 · #2 856.0 / 1252.4 · #3 625.3 / 1359.8 · salt-diet > plain in 3 of 3 pairs
-NCA-flash BinomialHeap phase-2 T by rep (plain / salt-diet): #1 7525931 / 17305710 · #2 8483309 / 19204118 · #3 8418538 / - · salt-diet > plain in 2 of 2 pairs
-NCA-flash BinomialHeap phase-2 wall_s by rep (plain / salt-diet): #1 739.1 / 1125.2 · #2 830.7 / 1098.7 · #3 896.9 / - · salt-diet > plain in 2 of 2 pairs
-NCA-flash LinearScan phase-2 T by rep (plain / salt-diet): #1 9636308 / 25868693 · #2 10364368 / - · #3 15612450 / 26396583 · salt-diet > plain in 2 of 2 pairs
-NCA-flash LinearScan phase-2 wall_s by rep (plain / salt-diet): #1 1032.0 / 2188.9 · #2 874.9 / - · #3 1139.8 / 2222.2 · salt-diet > plain in 2 of 2 pairs
-NCA-flash Liveness phase-2 T by rep (plain / salt-diet): #1 9360351 / 11614879 · #2 10602600 / 28993042 · #3 12550300 / 15388971 · salt-diet > plain in 3 of 3 pairs
-NCA-flash Liveness phase-2 wall_s by rep (plain / salt-diet): #1 856.8 / 780.0 · #2 804.9 / 1788.4 · #3 1127.1 / 1376.8 · salt-diet > plain in 2 of 3 pairs
-NCA-flash Luby phase-2 T by rep (plain / salt-diet): #1 6235559 / 17899439 · #2 7295968 / 13946145 · #3 4641341 / 13713628 · salt-diet > plain in 3 of 3 pairs
-NCA-flash Luby phase-2 wall_s by rep (plain / salt-diet): #1 646.3 / 1247.7 · #2 752.2 / 1077.6 · #3 503.1 / 912.7 · salt-diet > plain in 3 of 3 pairs
-NCA-flash MaxFlow phase-2 T by rep (plain / salt-diet): #1 6996448 / 24746965 · #2 9772413 / 17878752 · #3 6327535 / 20329864 · salt-diet > plain in 3 of 3 pairs
-NCA-flash MaxFlow phase-2 wall_s by rep (plain / salt-diet): #1 741.2 / 1506.4 · #2 848.9 / 1611.8 · #3 696.6 / 1593.3 · salt-diet > plain in 3 of 3 pairs
+NCA-flash AES phase-2 T by rep (plain / salt-diet; * leaves comparisons): #1 8337000 / 23383693* · #2 12695638 / 23229074 · #3 7431158 / 27621518 · salt-diet > plain in 2 of 2 pairs in comparisons
+NCA-flash AES phase-2 wall_s by rep (plain / salt-diet; * leaves comparisons): #1 621.1 / 1493.6* · #2 856.0 / 1252.4 · #3 625.3 / 1359.8 · salt-diet > plain in 2 of 2 pairs in comparisons
+NCA-flash BinomialHeap phase-2 T by rep (plain / salt-diet; * leaves comparisons): #1 7525931 / 17305710 · #2 8483309 / 19204118 · #3 8418538 / - · salt-diet > plain in 2 of 2 pairs in comparisons
+NCA-flash BinomialHeap phase-2 wall_s by rep (plain / salt-diet; * leaves comparisons): #1 739.1 / 1125.2 · #2 830.7 / 1098.7 · #3 896.9 / - · salt-diet > plain in 2 of 2 pairs in comparisons
+NCA-flash LinearScan phase-2 T by rep (plain / salt-diet; * leaves comparisons): #1 9636308* / 25868693 · #2 10364368* / - · #3 15612450* / 26396583* · salt-diet > plain in 0 of 0 pairs in comparisons
+NCA-flash LinearScan phase-2 wall_s by rep (plain / salt-diet; * leaves comparisons): #1 1032.0* / 2188.9 · #2 874.9* / - · #3 1139.8* / 2222.2* · salt-diet > plain in 0 of 0 pairs in comparisons
+NCA-flash Liveness phase-2 T by rep (plain / salt-diet; * leaves comparisons): #1 9360351 / 11614879 · #2 10602600 / 28993042 · #3 12550300 / 15388971 · salt-diet > plain in 3 of 3 pairs in comparisons
+NCA-flash Liveness phase-2 wall_s by rep (plain / salt-diet; * leaves comparisons): #1 856.8 / 780.0 · #2 804.9 / 1788.4 · #3 1127.1 / 1376.8 · salt-diet > plain in 2 of 3 pairs in comparisons
+NCA-flash Luby phase-2 T by rep (plain / salt-diet; * leaves comparisons): #1 6235559 / 17899439 · #2 7295968 / 13946145 · #3 4641341 / 13713628 · salt-diet > plain in 3 of 3 pairs in comparisons
+NCA-flash Luby phase-2 wall_s by rep (plain / salt-diet; * leaves comparisons): #1 646.3 / 1247.7 · #2 752.2 / 1077.6 · #3 503.1 / 912.7 · salt-diet > plain in 3 of 3 pairs in comparisons
+NCA-flash MaxFlow phase-2 T by rep (plain / salt-diet; * leaves comparisons): #1 6996448 / 24746965 · #2 9772413 / 17878752 · #3 6327535 / 20329864 · salt-diet > plain in 3 of 3 pairs in comparisons
+NCA-flash MaxFlow phase-2 wall_s by rep (plain / salt-diet; * leaves comparisons): #1 741.2 / 1506.4 · #2 848.9 / 1611.8 · #3 696.6 / 1593.3 · salt-diet > plain in 3 of 3 pairs in comparisons
 ```
-T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A rep prints only where its cell is COUNTED. Cells that
-leave comparisons are printed here too: this is a sign, never a premium (§NCA5: no premium is registered), and no magnitude is claimed.
+T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A rep prints only where its cell is COUNTED; a value
+marked `*` leaves comparisons (§1), and a pair counts only when both its cells are in comparisons (kent's read of #479). A sign, never a
+premium (§NCA5: no premium is registered), and no magnitude is claimed.
 
 ---
 # §4 · THE REGISTERED PREDICTIONS (NCA §NCA5 (i)–(iii)); A MISS IS A RESULT

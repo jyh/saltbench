@@ -10,6 +10,7 @@ fresh(){ find "$T" -mindepth 1 -delete; for d in "$REAL"/nca-*-score*/ "$REAL"/w
 arm(){ local name=$1 want=$2 rcw=$3; out=$(NCA_RUNS=$T python3 -I "$HERE/nca_cells_gen.py" --summary 2>&1); rc=$?
   if [ "$rc" = "$rcw" ] && printf '%s\n' "$out" | grep -q -F -- "$want"; then pass=$((pass+1)); echo "ok   $name (rc $rc)"; else fail=$((fail+1)); echo "FAIL $name (rc $rc): $(printf '%s' "$out" | tail -1)"; fi; }
 fresh; arm control-real-receipts 'rows 96 · scored' 0
+fresh; arm cost-pair-needs-both-in-comparisons 'NCA-flash LinearScan phase-2 T by rep (plain / salt-diet; * leaves comparisons): #1 9636308* / 25868693 · #2 10364368* / - · #3 15612450* / 26396583* · salt-diet > plain in 0 of 0 pairs in comparisons' 0   # kent F1 on #479
 fresh; arm web-source-leaves-comparisons 'NCA-flash LinearScan plain: PASS 3 of 3 scored, of 3 registered [T14/14 R0/9 C0/5 T14/14 R0/9 C0/5 T14/14 R0/9 C0/5] · G reach-loss 0 · cut turns 0 · truncated 0 of 3 scored · CTL-READ 0 of 3 scored · in comparisons 0 of 3 scored' 0   # its 3 sources are WEB-SERVED (census ADDENDUM 47)
 # ⛔ WCA's receipts sit in wca-*-harvest* dirs (2026-11-28): a reader keyed on -score* read all 24 WCA rows UNSCORED, and so did this
 #   fixture, which copied the same glob. The arm reads the table row of T-WCA-F's root, whose only receipts are in harvest dirs.

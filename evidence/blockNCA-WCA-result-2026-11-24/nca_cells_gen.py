@@ -340,17 +340,21 @@ def summary(rows):
             sum(isinstance(r['p1_cut_turns_all'], int) for r in bb)))
         for pr in sorted({r['problem'] for r in bb}):
             for k, fmt in (('T', '%d'), ('wall_seconds', '%.1f')):
+                # ⛔ a PAIR is a comparison (kent's read of #479, F1): it counts only when BOTH cells are in comparisons, and the tail is
+                #   UNREAD while any counted cell of the condition has unread membership. A value that leaves comparisons prints with '*'.
                 pairs, cells = [], []
+                unread = ncmp([r for r in bb if r['problem'] == pr]) is None
                 for n in (1, 2, 3):
-                    v = {}
+                    v, m = {}, {}
                     for a in ('plain', 'salt-diet'):
                         x = [r for r in bb if r['problem'] == pr and r['arm'] == a and rep(r) == n and r['counted'] == 'yes' and isinstance(r[k], (int, float))]
                         v[a] = x[0][k] if len(x) == 1 else None
-                    cells.append('#%d %s / %s' % (n, fmt % v['plain'] if v['plain'] is not None else '-', fmt % v['salt-diet'] if v['salt-diet'] is not None else '-'))
-                    if None not in v.values():
+                        m[a] = len(x) == 1 and incmp(x[0])
+                    cells.append('#%d %s / %s' % (n, *[(fmt % v[a] + ('' if m[a] or unread else '*')) if v[a] is not None else '-' for a in ('plain', 'salt-diet')]))
+                    if None not in v.values() and m['plain'] and m['salt-diet']:
                         pairs.append(v['salt-diet'] > v['plain'])
-                L.append('%s %s phase-2 %s by rep (plain / salt-diet): %s · salt-diet > plain in %d of %d pairs' % (
-                    b, pr, 'T' if k == 'T' else 'wall_s', ' · '.join(cells), sum(pairs), len(pairs)))
+                L.append('%s %s phase-2 %s by rep (plain / salt-diet; * leaves comparisons): %s · salt-diet > plain in %s pairs in comparisons' % (
+                    b, pr, 'T' if k == 'T' else 'wall_s', ' · '.join(cells), 'UNREAD' if unread else '%d of %d' % (sum(pairs), len(pairs))))
     return L
 
 

@@ -38,13 +38,13 @@ WCA-flash FULL PASS salt-diet 6 of 6 counted · in comparisons UNREAD
 ---
 # §3 · COST, AS A SIGN ONLY
 ```
-WCA-flash NTT phase-2 T by rep (plain / salt-diet): #1 6159835 / 13979757 · #2 8492982 / 17894490 · #3 7359098 / 16985258 · salt-diet > plain in 3 of 3 pairs
-WCA-flash NTT phase-2 wall_s by rep (plain / salt-diet): #1 528.9 / 912.7 · #2 638.4 / 1015.6 · #3 594.8 / 841.5 · salt-diet > plain in 3 of 3 pairs
-WCA-flash WHT phase-2 T by rep (plain / salt-diet): #1 6660527 / 17280322 · #2 4921388 / 12513746 · #3 6363806 / 16004694 · salt-diet > plain in 3 of 3 pairs
-WCA-flash WHT phase-2 wall_s by rep (plain / salt-diet): #1 569.6 / 977.6 · #2 521.5 / 890.2 · #3 574.1 / 1398.5 · salt-diet > plain in 3 of 3 pairs
+WCA-flash NTT phase-2 T by rep (plain / salt-diet; * leaves comparisons): #1 6159835 / 13979757 · #2 8492982 / 17894490 · #3 7359098 / 16985258 · salt-diet > plain in UNREAD pairs in comparisons
+WCA-flash NTT phase-2 wall_s by rep (plain / salt-diet; * leaves comparisons): #1 528.9 / 912.7 · #2 638.4 / 1015.6 · #3 594.8 / 841.5 · salt-diet > plain in UNREAD pairs in comparisons
+WCA-flash WHT phase-2 T by rep (plain / salt-diet; * leaves comparisons): #1 6660527 / 17280322 · #2 4921388 / 12513746 · #3 6363806 / 16004694 · salt-diet > plain in UNREAD pairs in comparisons
+WCA-flash WHT phase-2 wall_s by rep (plain / salt-diet; * leaves comparisons): #1 569.6 / 977.6 · #2 521.5 / 890.2 · #3 574.1 / 1398.5 · salt-diet > plain in UNREAD pairs in comparisons
 ```
-T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A sign, never a premium (§WCA5 carries NCA §NCA5), and no
-magnitude is claimed.
+T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A pair counts only when both its cells are in comparisons,
+so the count reads UNREAD until these cells' ctl census is read. A sign, never a premium (§WCA5 carries NCA §NCA5), and no magnitude is claimed.
 
 ---
 # §4 · THE REGISTERED PREDICTIONS (NCA §NCA5 (i)–(iii), carried by §WCA5); A MISS IS A RESULT

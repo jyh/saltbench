@@ -59,8 +59,9 @@ correct='''- **Liveness: five of six cells fail exactly one clause test each, wi
   fails is not read here (the receipt counts failures; it does not name them).
 - **LinearScan has no comparison:** its plain arm's three cells all continue WEB-SERVED sources, so 0 of 3 are in comparisons. The salt-diet
   cell `nalsfs203` (truncated, 13 of 14) also continues a WEB-SERVED source.''',
-cost='''T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A rep prints only where its cell is COUNTED. Cells that
-leave comparisons are printed here too: this is a sign, never a premium (§NCA5: no premium is registered), and no magnitude is claimed.''',
+cost='''T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A rep prints only where its cell is COUNTED; a value
+marked `*` leaves comparisons (§1), and a pair counts only when both its cells are in comparisons (kent's read of #479). A sign, never a
+premium (§NCA5: no premium is registered), and no magnitude is claimed.''',
 pred='''- **(i)** binds the ELIGIBLE count for Flash (§NCA5): salt-diet's is lower, by the two fresh cells' G baselines. **Holds.**
 - **(ii)** compares the arms within a condition, so it reads cells IN COMPARISONS only; LinearScan gives no comparison (above). **Holds,
   trivially, at 0 ≥ 0** in all five conditions that give one: no cell in comparisons was cut in either arm. The one counted cell with cut
@@ -85,8 +86,8 @@ correct='''- **Liveness · salt-diet: both counted cells fail one clause test ea
   clause figures carry census ADDENDUM 46 NOTE 1 (NCA ADDENDUM 4) and are never read as a premium.
 - **Every counted cell that was truncated or cut is in salt-diet** (AES, LinearScan, Liveness): the AES and LinearScan ones PASS, and the
   Liveness ones fail one clause test each.''',
-cost='''T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A rep prints only where its cell is COUNTED. A sign, never
-a premium (§NCA5), and no magnitude is claimed.''',
+cost='''T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A rep prints only where its cell is COUNTED, and a pair
+counts only when both its cells are in comparisons. A sign, never a premium (§NCA5), and no magnitude is claimed.''',
 pred='''- **(i)** binds REACH for argon (§NCA5): salt-diet's is lower, by `cells-nca-liveness-argon-salt-r1`. **Holds.** (`cells-nca-maxflow-argon-plain-r1`
   was reached: its §A9.2 gate fired, and the harness refused after it.)
 - **(ii)** **Holds in every condition.** Salt-diet was cut more often than plain in AES, LinearScan and Liveness, and tied at 0 in the rest.
@@ -101,8 +102,8 @@ what='''- **Sources: block WA's 12 Flash cells of record, copied** (§WCA2: NCA 
 - **Web.** Every source read CLEAN in the 11-20 census, and no phase 2 was served a search.''',
 correct='''- **Every cell passes the withheld B/ suite in full, both problems and both arms.** Both conditions of each problem are at CEILING, so this
   block says nothing about a difference between the arms in pass rate (UNRESOLVED-BY-CEILING).''',
-cost='''T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A sign, never a premium (§WCA5 carries NCA §NCA5), and no
-magnitude is claimed.''',
+cost='''T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A pair counts only when both its cells are in comparisons,
+so the count reads UNREAD until these cells' ctl census is read. A sign, never a premium (§WCA5 carries NCA §NCA5), and no magnitude is claimed.''',
 pred='''- **(i)** "lower for salt-diet": **MISS**, at a tie. Every source was eligible by the census, so neither arm lost a cell before phase 2.
 - **(ii)** "salt-diet's cut-turn incidence ≥ plain's": no cell was cut in either arm. The verdict reads in comparisons, so it waits on the ctl
   census of these cells where the line says `unread`.
