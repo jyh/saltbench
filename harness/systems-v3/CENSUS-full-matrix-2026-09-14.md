@@ -2184,3 +2184,54 @@ Nothing here is about the salt method.
 
 Source: `evidence/o37-agy-ctl-read-census-2026-11-25/` (README: the census, the OTHER-RECORD content read, controls, limits;
 `recut/README.md`: the three arms and what each moves).
+
+# ⚖️ ADDENDUM 53 — **O37: BLOCKS NCA AND WCA ARE RESULTS OF RECORD. 32 CONDITIONS MOVE TO DONE (the six block-N problems, and WHT and NTT, × spec-change × {plain, salt-diet} × {gemini-3.8-flash-high, gemini-4-argon-high}, agy lane), EACH AT THE n ITS RECORD STATES. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-28, in the same pull request as the four result files `RESULT-gemini-blockNCA-flash-2026-11-28.md`, `RESULT-gemini-blockNCA-argon-2026-11-28.md`, `RESULT-gemini-blockWCA-flash-2026-11-28.md` and `RESULT-gemini-blockWCA-argon-2026-11-28.md` (§NCA8 and §WCA8: the census section is re-cut with the results). They reach `main` together, with saltbench #479.
+
+## §AW1 · WHAT MOVED
+Blocks NCA (`AMENDMENT-O37-blockNCA-specchange-agy-2026-11-23.md`, ADDENDA 1–6) and WCA (`AMENDMENT-O37-blockWCA-wht-ntt-specchange-agy-2026-11-23.md`,
+ADDENDA 1–3) have every registered cell ended and a result file per block and model. A condition's n is its COUNTED cells: a phase 2 that
+is a REACH LOSS under NC rule 4, that the §A9.2 gate refused, or that the harness did not score is listed in its result and never counted.
+The lines, printed by `evidence/blockNCA-WCA-result-2026-11-24/nca_result_gen.py --write` (its `--check` asserts each one here):
+```
+block NCA, gemini-3.8-flash-high: 12 conditions · n=3 10 · n=2 2 [BinomialHeap salt-diet, LinearScan salt-diet] · cells counted 34 of 36
+block NCA, gemini-4-argon-high: 12 conditions · n=3 10 · n=2 2 [Liveness salt-diet, MaxFlow plain] · cells counted 34 of 36
+block WCA, gemini-3.8-flash-high: 4 conditions · n=3 4 · cells counted 12 of 12
+block WCA, gemini-4-argon-high: 4 conditions · n=3 4 · cells counted 12 of 12
+```
+Every condition stands at n = 3 except the four the lines name at n = 2, each for a reason its result file states. NCA Flash BinomialHeap ·
+salt-diet and LinearScan · salt-diet: NA was one source short in each (§NCA2), so each holds two counted copies and one FRESH cell, and that
+cell's G baseline on landed-1 read short of a full pass, a REACH LOSS under NC rule 4 (`cells-nca-binomialheap-flash-salt-r3`,
+`cells-nca-linearscan-flash-salt-r2`). NCA argon Liveness
+· salt-diet: the §A9.2 gate refused phase 2 of `cells-nca-liveness-argon-salt-r1`, whose subject had deleted its own `landed-1` tag (the
+lead's ruling (a), bus offset 111,293,855: a REACH LOSS). NCA argon MaxFlow · plain: phase 2 of `cells-nca-maxflow-argon-plain-r1` is
+NOT-SCORED (harness), NCA ADDENDUM 6. Block WCA has every condition at n = 3, both models. DONE is not a verdict on the arms. Within a
+problem and model the results set arm beside arm (cost signs and prediction verdicts) and claim no difference between them; nothing compares
+models or blocks.
+
+## §AW2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-28)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (ADDENDUM 44)   4
+                 block WC: NTT, WHT x spec-change x {plain, salt-diet} x {Opus, Sonnet} (ADDENDUM 45)  8
+                 block NC: the six block-N problems x spec-change, Claude lane (ADDENDUM 46)        22
+                 block T: the six block-N problems x statement, Claude lane (ADDENDUM 49)           24
+                 block TA: the six block-N problems x statement, agy lane (ADDENDUM 50)             24
+                 block TW: WHT, NTT x statement, Claude lane (ADDENDUM 51)                           8
+                 block NCA: the six block-N problems x spec-change, agy lane (this)                 24
+                 block WCA: WHT, NTT x spec-change, agy lane (this)                                  8
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+                 block NC: LinearScan x spec-change x salt-diet x {Opus, Sonnet}, unreached (ADDENDUM 46)  2
+    NOT DONE     WHT and NTT x statement, agy lane: block TWA, registration draft, unmerged (saltbench #467)  8
+```
+DONE 182 · DECLARED 26 · NOT DONE 8 = 216.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AW3 · WHAT THIS ADDENDUM DOES NOT ESTABLISH
+§NCA8 and §WCA8, carried: no magnitude; nothing Flash-versus-argon, Claude-versus-agy or about gemini-3.1-pro-high; every premium is
+UNRESOLVED-UNDERPOWERED. Cells that continue a WEB-SERVED source (four NCA Flash LinearScan copies, census ADDENDUM 47) and the one CTL-READ
+cell (`naaefs01`) are DONE cells of record that leave every comparison, as their results say. Nothing here says whether the salt method
+helps or hurts. Any public sentence is the Captain's.

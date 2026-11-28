@@ -1,0 +1,13 @@
+# root	task	arm	reps	prefix	extra	phases	copy_from   (WCA flash, 12 copies; T-WCA-F = row 2)
+cells-wa-ntt-flash-plain-r1-wcacp1	NTT	plain	1	wanfp1		2	/Users/jyh/cells-wa-ntt-flash-plain-r1/wanfp101
+cells-wa-ntt-flash-salt-r1-wcacp1	NTT	salt-diet	1	wanfs1		2	/Users/jyh/cells-wa-ntt-flash-salt-r1/wanfs101
+cells-wa-ntt-flash-plain-r2-wcacp2	NTT	plain	1	wanfp2		2	/Users/jyh/cells-wa-ntt-flash-plain-r2/wanfp201
+cells-wa-ntt-flash-salt-r2-wcacp2	NTT	salt-diet	1	wanfs2		2	/Users/jyh/cells-wa-ntt-flash-salt-r2/wanfs201
+cells-wa-ntt-flash-plain-r3-wcacp3	NTT	plain	1	wanfp3		2	/Users/jyh/cells-wa-ntt-flash-plain-r3/wanfp301
+cells-wa-ntt-flash-salt-r3-wcacp3	NTT	salt-diet	1	wanfs3		2	/Users/jyh/cells-wa-ntt-flash-salt-r3/wanfs301
+cells-wa-wht-flash-plain-r1-wcacp1	WHT	plain	1	wawfp1		2	/Users/jyh/cells-wa-wht-flash-plain-r1/wawfp101
+cells-wa-wht-flash-salt-r1-wcacp1	WHT	salt-diet	1	wawfs1		2	/Users/jyh/cells-wa-wht-flash-salt-r1/wawfs101
+cells-wa-wht-flash-plain-r2-wcacp2	WHT	plain	1	wawfp2		2	/Users/jyh/cells-wa-wht-flash-plain-r2/wawfp201
+cells-wa-wht-flash-salt-r2-wcacp2	WHT	salt-diet	1	wawfs2		2	/Users/jyh/cells-wa-wht-flash-salt-r2/wawfs201
+cells-wa-wht-flash-plain-r3-wcacp3	WHT	plain	1	wawfp3		2	/Users/jyh/cells-wa-wht-flash-plain-r3/wawfp301
+cells-wa-wht-flash-salt-r3-wcacp3	WHT	salt-diet	1	wawfs3		2	/Users/jyh/cells-wa-wht-flash-salt-r3/wawfs301
