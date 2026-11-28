@@ -59,7 +59,7 @@ def receipts():
         tr = re.search(r'TRUNCATED (\d+)', text)
         rec = dict(NOSCORE, score_receipt=os.path.relpath(f, RUNS), interface=iface.group(1)[:16] if iface else 'UNREAD',
                    truncated=('yes' if int(tr.group(1)) else 'no') if tr else 'UNREAD')
-        hits = [m for m in (re.match(r'([a-z0-9]+)\s+\S+\s+\S+\s+\S+\s+(PASS|FAIL|NOT-LANDED|NOT-SCORED)\b(.*)$', x) for x in text.splitlines()) if m]
+        hits = [m for m in (re.match(r'([a-z0-9]+)\s+\S+\s+\S+\s+\S+\s+(PASS|FAIL|NOT-LANDED|NOT-SCORED|INCOMPLETE)\b(.*)$', x) for x in text.splitlines()) if m]
         if len(hits) != 1:
             rec.update(verdict='UNREAD-%d-ROWS' % len(hits))
         else:
@@ -211,6 +211,16 @@ def rep_of(root):
 
 def summary(rows):
     scored = lambda rs: [r for r in rs if r['counted'] == 'yes']   # scored AND counted (NC rule 4); a REACH-LOSS(G) phase 2 is listed apart
+    # ⛔ IN COMPARISONS: a counted cell LEAVES EVERY COMPARISON when it continues a WEB-SERVED source (§NCA6 item 5: "exactly as its source
+    #   did", census ADDENDUM 47 §AR3), is itself served a search, or read the harness's ctl/ (CTL-READ, the lead's ruling bus 110,731,568).
+    #   ncmp() is None, never a count, while any counted cell's ctl census or web read is unread.
+    incmp = lambda r: (r['counted'] == 'yes' and r['flag'] != 'CTL-READ' and r['source_web_served'] != 'WEB-SERVED'
+                       and not str(r['p2_web_served']).startswith('WEB-SERVED') and not str(r['source_web_served']).startswith('OWN:WEB-SERVED'))
+    def ncmp(rs):
+        c = scored(rs)
+        if any(r['flag'] == 'UNREAD' or r['p2_web_served'] in ('UNREAD', 'UNMEASURED') or r['source_web_served'] in ('UNREAD', 'NOT-IN-JOIN', 'UNMEASURED') for r in c):
+            return None
+        return [r for r in c if incmp(r)]
     L = ['rows %d · scored %d · receipts %d · facts %d' % (len(rows), len(scored(rows)), sum(r['score_receipt'] != 'UNSCORED' for r in rows),
                                                        sum(r['id'] not in ('UNREAD', 'NO-CELL', 'TWO-CELLS', 'NO-ROOT', 'TWO-ATTEMPTS') for r in rows))]
     at = [r for r in rows if isinstance(r['attempt'], int) and r['attempt'] >= 2]
@@ -252,7 +262,9 @@ def summary(rows):
                      sum(1 for r in c if isinstance(r['cut_turns_all'], int) and r['cut_turns_all'] > 0), len(c))
         cond = []
         for pr in sorted({r['problem'] for r in bb}):
-            inc = {a: [r for r in scored([x for x in bb if x['problem'] == pr and x['arm'] == a])] for a in ('plain', 'salt-diet')}
+            inc = {a: ncmp([x for x in bb if x['problem'] == pr and x['arm'] == a]) for a in ('plain', 'salt-diet')}   # (ii) is a comparison
+            if None in inc.values():
+                cond.append('%s UNREAD' % pr); continue
             f = {a: (sum(isinstance(r['cut_turns_all'], int) and r['cut_turns_all'] > 0 for r in v), len(v)) for a, v in inc.items()}
             ok = f['salt-diet'][0] * max(f['plain'][1], 1) >= f['plain'][0] * max(f['salt-diet'][1], 1)
             cond.append('%s %d/%d vs %d/%d%s' % (pr, f['plain'][0], f['plain'][1], f['salt-diet'][0], f['salt-diet'][1], '' if ok else ' MISS'))
@@ -262,6 +274,18 @@ def summary(rows):
         L.append('%s predictions: (i) ELIGIBLE plain %d/%d salt-diet %d/%d · REACHED plain %d/%d salt-diet %d/%d · (ii) cut-turn incidence plain vs salt-diet: %s · (iii) done_reason %s' % (
             b, pa['plain'][0], pa['plain'][2], pa['salt-diet'][0], pa['salt-diet'][2], pa['plain'][1], pa['plain'][2], pa['salt-diet'][1], pa['salt-diet'][2],
             ' · '.join(cond), ' '.join('%s=%d' % kv for kv in sorted(dr.items()))))
+        # the verdicts, DERIVED: (i) "lower for salt-diet than plain" (a tie is a MISS), on the ELIGIBLE and the REACHED count alike (§NCA5
+        #   binds ELIGIBLE for Flash and REACH for argon; WCA carries both); (ii) per condition with a counted cell in BOTH arms;
+        #   (iii) cells whose done_reason is CELL-KILLED
+        lower = lambda i: 'HOLDS' if pa['salt-diet'][i] * pa['plain'][2] < pa['plain'][i] * pa['salt-diet'][2] else 'MISS'
+        unread = [c.split(' ')[0] for c in cond if c.endswith(' UNREAD')]
+        both = [c for c in cond if not c.endswith(' UNREAD') and not re.search(r' \d+/0 vs | vs \d+/0', c + ' ')]
+        miss = [c.split(' ')[0] for c in both if c.endswith(' MISS')]
+        none = [c.split(' ')[0] for c in cond if c not in both and not c.endswith(' UNREAD')]
+        L.append('%s prediction verdicts: (i) ELIGIBLE salt-diet lower: %s · REACHED salt-diet lower: %s · (ii) salt-diet >= plain in %d of %d conditions with both arms in comparisons%s%s · (iii) CELL-KILLED cells %d' % (
+            b, lower(0), lower(1), len(both) - len(miss), len(both), (' [MISS: %s]' % ' '.join(miss)) if miss else '',
+            ((' · no comparison: %s' % ' '.join(none)) if none else '') + ((' · unread: %s' % ' '.join(unread)) if unread else ''),
+            sum(str(r['done_reason']) == 'CELL-KILLED' for r in bb)))
     for b in ('NCA-flash', 'NCA-argon', 'WCA-flash', 'WCA-argon'):
         for pr in sorted({r['problem'] for r in rows if r['block'] == b}):
             for a in ('plain', 'salt-diet'):
@@ -277,7 +301,8 @@ def summary(rows):
                     len(gl), (' [' + ' '.join('%s G %s, phase 2 %s T%s' % (r['id'], r['g_tests'], r['verdict'], r['TESTS']) for r in gl) + ']') if gl else '',
                     ('%d' % sum(ct) if all(isinstance(x, int) for x in ct) else 'UNREAD') if sr else '-',   # over SCORED cells only, never a 0 for none
                     sum(r['truncated'] == 'yes' for r in sr), len(sr), ('-' if not sr else 'UNREAD' if any(r['flag'] == 'UNREAD' for r in sr)   # never a 0 over an unread census
-                              else '%d' % sum(r['flag'] == 'CTL-READ' for r in sr)), len(sr)))
+                              else '%d' % sum(r['flag'] == 'CTL-READ' for r in sr)), len(sr))
+                         + ' · in comparisons %s of %d scored' % ('UNREAD' if ncmp(rs) is None else '%d' % len(ncmp(rs)), len(sr)))
     # per block: the clients per phase, the web reads, and phase 2's T and wall by rep (a sign only; nothing here is a premium). A pair is
     #   (problem, rep), rep from the root's -r<k>/-ncacp<k>/-wcacp<k>; a value prints only for a COUNTED cell, else '-'.
     def dist(rs, k):
@@ -293,6 +318,18 @@ def summary(rows):
                 sys.exit('REFUSE: %s %s reads reps %s, not [1, 2, 3]' % (b, c, got))
     for b in ('NCA-flash', 'NCA-argon', 'WCA-flash', 'WCA-argon'):
         bb = [r for r in rows if r['block'] == b]
+        nc = [r for r in bb if r['counted'] != 'yes']
+        L.append('%s: rows %d · conditions %d · counted %d · not counted %d [%s]' % (
+            b, len(bb), len({(r['problem'], r['arm']) for r in bb}), sum(r['counted'] == 'yes' for r in bb), len(nc),
+            ' '.join('%s=%s/%s/%s' % (r['id'], r['counted'], r['verdict'], r['p2_gate']) for r in nc) or '-'))
+        L.append('%s phase 2: model %s · export %s · hook %s · done_reason %s' % (
+            b, dist(bb, 'p2_model'), ' '.join('%s=%d' % kv for kv in sorted({str(r['p2_export'])[:12]: sum(str(x['p2_export'])[:12] == str(r['p2_export'])[:12] for x in bb) for r in bb}.items())),
+            dist(bb, 'hook16'), dist(bb, 'done_reason')))
+        for a in ('plain', 'salt-diet'):
+            c = [r for r in bb if r['arm'] == a and r['counted'] == 'yes']
+            k = ncmp([r for r in bb if r['arm'] == a])
+            L.append('%s FULL PASS %s %d of %d counted · in comparisons %s' % (b, a, sum(r['verdict'] == 'PASS' for r in c), len(c),
+                     'UNREAD' if k is None else '%d of %d' % (sum(r['verdict'] == 'PASS' for r in k), len(k))))
         L.append('%s clients: phase 1 %s · phase 2 %s' % (b, dist(bb, 'p1_client16'), dist(bb, 'p2_client16')))
         L.append('%s web: source_web_served %s · phase 2 %s' % (b, dist(bb, 'source_web_served'), dist(bb, 'p2_web_served')))
         L.append('%s phase 1: done_reason %s · cut turns (cells with >= 1) %d of %d read' % (

@@ -10,6 +10,7 @@ fresh(){ find "$T" -mindepth 1 -delete; for d in "$REAL"/nca-*-score*/ "$REAL"/w
 arm(){ local name=$1 want=$2 rcw=$3; out=$(NCA_RUNS=$T python3 -I "$HERE/nca_cells_gen.py" --summary 2>&1); rc=$?
   if [ "$rc" = "$rcw" ] && printf '%s\n' "$out" | grep -q -F -- "$want"; then pass=$((pass+1)); echo "ok   $name (rc $rc)"; else fail=$((fail+1)); echo "FAIL $name (rc $rc): $(printf '%s' "$out" | tail -1)"; fi; }
 fresh; arm control-real-receipts 'rows 96 · scored' 0
+fresh; arm web-source-leaves-comparisons 'NCA-flash LinearScan plain: PASS 3 of 3 scored, of 3 registered [T14/14 R0/9 C0/5 T14/14 R0/9 C0/5 T14/14 R0/9 C0/5] · G reach-loss 0 · cut turns 0 · truncated 0 of 3 scored · CTL-READ 0 of 3 scored · in comparisons 0 of 3 scored' 0   # its 3 sources are WEB-SERVED (census ADDENDUM 47)
 # ⛔ WCA's receipts sit in wca-*-harvest* dirs (2026-11-28): a reader keyed on -score* read all 24 WCA rows UNSCORED, and so did this
 #   fixture, which copied the same glob. The arm reads the table row of T-WCA-F's root, whose only receipts are in harvest dirs.
 fresh; out=$(NCA_RUNS=$T python3 -I "$HERE/nca_cells_gen.py" 2>&1 | awk -F'\t' '$2=="cells-wa-ntt-flash-salt-r1-wcacp1"{print $22, $23}')
@@ -34,6 +35,7 @@ ctlarm(){ local name=$1 want=$2 rcw=$3 body=$4; cp -R "$HERE"/. "$G"/; printf '%
 fresh
 ctlarm ctl-flagged 'CTL-READ 1 [cells-na-aes-flash-salt-ncacp1]' 0 'cells-na-aes-flash-salt-ncacp1\t8\tctl/briefing-claim,ctl/launch.log\ncells-na-aes-flash-plain-ncacp1\t0\t-\n'
 ctlarm ctl-line-unread-not-zero 'NCA-flash AES plain: PASS 3 of 3 scored, of 3 registered [T14/14 R0/8 C0/6 T14/14 R0/8 C0/6 T14/14 R0/8 C0/6] · G reach-loss 0 · cut turns 0 · truncated 0 of 3 scored · CTL-READ UNREAD of 3 scored' 0 'cells-na-aes-flash-plain-ncacp1\t0\t-\n'
+ctlarm ctl-unread-comparisons-unread 'CTL-READ UNREAD of 3 scored · in comparisons UNREAD of 3 scored' 0 'cells-na-aes-flash-plain-ncacp1\t0\t-\n'
 ctlarm ctl-malformed 'not root TAB reads TAB paths' 1 'cells-na-aes-flash-salt-ncacp1\t3\t-\n'
 ctlarm ctl-stray-root 'outside the 96' 1 'cells-na-nosuch\t0\t-\n'
 ctlarm ctl-duplicate 'twice' 1 'cells-na-aes-flash-plain-ncacp1\t0\t-\ncells-na-aes-flash-plain-ncacp1\t0\t-\n'
