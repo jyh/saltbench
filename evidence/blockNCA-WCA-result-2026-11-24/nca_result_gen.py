@@ -194,6 +194,30 @@ def readme_lines(S):
     return [l for l in S if not any(l.startswith(b + ' ') or l.startswith(b + ':') for b in blocks)]
 
 
+CENSUS = os.path.join('harness', 'systems-v3', 'CENSUS-full-matrix-2026-09-14.md')
+
+
+def census_lines(rows):
+    """The census ADDENDUM's figure lines: per block x model, each condition's n = its COUNTED cells (a REACH-LOSS(G), INCOMPLETE or
+    NOT-SCORED phase 2 is never counted). DONE needs n >= 1; a condition at n = 0 is named, never counted DONE (census ADDENDUM 46 §AQ1)."""
+    L = []
+    for b in ('NCA-flash', 'NCA-argon', 'WCA-flash', 'WCA-argon'):
+        bb = [r for r in rows if r['block'] == b]
+        cn = {}
+        for r in bb:
+            cn.setdefault((r['problem'], r['arm']), 0)
+            cn[(r['problem'], r['arm'])] += r['counted'] == 'yes'
+        by = {}
+        for c, n in sorted(cn.items()):
+            by.setdefault(n, []).append('%s %s' % c)
+        blk, m = b.split('-')
+        L.append('block %s, %s: %d conditions · %s · cells counted %d of %d' % (
+            blk, MODEL[m], len(cn),
+            ' · '.join('n=%d %d%s' % (n, len(v), (' [%s]' % ', '.join(v)) if n < 3 else '') for n, v in sorted(by.items(), reverse=True)),
+            sum(r['counted'] == 'yes' for r in bb), len(bb)))
+    return L
+
+
 def main(a):
     if len(a) != 2 or a[0] not in ('--write', '--check'):
         sys.exit(__doc__)
@@ -224,6 +248,17 @@ def main(a):
         for l in miss:
             print('MISSING README.md: %s' % l)
         print('check README.md: %d of %d population lines present' % (len(readme_lines(S)) - len(miss), len(readme_lines(S))))
+        bad += bool(miss)
+    C = census_lines(rows)
+    if a[0] == '--write':
+        print('census lines (ADDENDUM 53 quotes them; --check asserts them in the census):')
+        print('\n'.join(C))
+    else:
+        body = open(os.path.join(repo, CENSUS)).read()
+        miss = [l for l in C if l not in body]
+        for l in miss:
+            print('MISSING census: %s' % l)
+        print('check census: %d of %d lines present' % (len(C) - len(miss), len(C)))
         bad += bool(miss)
     cp = os.path.join(HERE, 'cells.tsv')
     if a[0] == '--write':
