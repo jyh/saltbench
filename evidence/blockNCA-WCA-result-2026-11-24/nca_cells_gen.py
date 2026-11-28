@@ -21,8 +21,8 @@ A value that cannot be read is UNREAD, never blank and never zero.
   python3 nca_cells_gen.py --summary      -> the figure lines the results quote, from the table's own rows
   python3 nca_cells_gen.py --check <md>   -> rc 0 iff every --summary line occurs verbatim in that file (rc 1 names the missing)
 LIMIT: TESTS / REGRESSIONS / CLAUSE are the receipt's words; Liveness CLAUSE figures carry census ADDENDUM 46 NOTE 1 (NCA ADDENDUM 4)
-and are never read as a premium. Within a condition it prints arm beside arm (cost signs, prediction verdicts) and claims no
-difference between the arms; nothing here compares models or blocks."""
+and are never read as a premium. Within a problem and model it prints arm beside arm (cost signs, prediction verdicts) and claims
+no difference between the arms; nothing here compares models or blocks."""
 import glob, json, os, re, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))

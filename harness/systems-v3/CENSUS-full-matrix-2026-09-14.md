@@ -2206,8 +2206,8 @@ cell's G baseline on landed-1 read short of a full pass, a REACH LOSS under NC r
 · salt-diet: the §A9.2 gate refused phase 2 of `cells-nca-liveness-argon-salt-r1`, whose subject had deleted its own `landed-1` tag (the
 lead's ruling (a), bus offset 111,293,855: a REACH LOSS). NCA argon MaxFlow · plain: phase 2 of `cells-nca-maxflow-argon-plain-r1` is
 NOT-SCORED (harness), NCA ADDENDUM 6. Block WCA has every condition at n = 3, both models. DONE is not a verdict on the arms. Within a
-condition the results set arm beside arm (cost signs and prediction verdicts) and claim no difference between them; nothing compares models
-or blocks.
+problem and model the results set arm beside arm (cost signs and prediction verdicts) and claim no difference between them; nothing compares
+models or blocks.
 
 ## §AW2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-28)
 ```
