@@ -440,18 +440,23 @@ copy tool in plan mode onto `<source root>-ncacp`, read rc 0, and the destinatio
 112,499,985.
 
 **A6.2 · WHAT THE DRIVE SHOWED.** Before any `--apply` on the real destination, the registered copy tool was applied from staging to a
-scratch root outside every cell root. The wave's `run_phase2` gates were then run on that scratch copy, in the wave's order, each by its
-own tool. No launcher, client or model ran.
+scratch root outside every cell root. The gates `run_phase2` calls were then run on that scratch copy, in its order, each by its own
+tool; the fault gate was run in `fire_agy_v3.sh`'s `--verify` mode, not in the fresh-read mode `run_phase2` calls (corrected below on the
+non-author read). No launcher, client or model ran, and the wave itself was not run.
 - **§A9.2 landing gate** (`phase2_landed_gate_v3.py`): `NOT-LANDED … record=UNREADABLE`, rc 1. The record it reads,
   `ctl/agy-turnloop-1.json`, is in the source root's `_aside/`: the 2026-11-26 phase-2 attempt set phase 1 aside at 15:40:06Z, before its
   `--check` refused. It reads `landed: true` there, which is what the lead's 2026-11-26 ruling (phase 1 LANDED) rests on.
-- **§M3 fault gate `--verify`**: `VERIFY-FAIL no gate record at <copy root>/_receipts/ncamfap01.fault-gate-1`, rc 1. The copy tool carries
-  the briefing receipt, `.fence-1` and `.hooks.json`, not `.fault-gate-1`. A fresh read is not possible either, because the gate's row-8
-  input, `ctl/stream-1.ndjson`, is also in `_aside/`.
+- **§M3 fault gate.** `run_phase2` calls it WITHOUT `--verify`, as a fresh read. The copy carries the source's `ctl/fault-gate-1`, so
+  the gate at 88b63df9 refuses rc 5 ("already gated") before it opens phase 1's stream (the non-author's drive, on two fixtures: the
+  in-cell record alone, and both records). In `fire_agy_v3.sh`'s `--verify` mode, which is what this drive ran, it reads `VERIFY-FAIL no
+  gate record at <copy root>/_receipts/ncamfap01.fault-gate-1`, rc 1: the copy tool carries the briefing receipt, `.fence-1` and
+  `.hooks.json`, not `.fault-gate-1`. Either mode refuses.
 - **`customer.sh dispatch --fold-bus`**: `REFUSED — ncamfap01 is already dispatched`, rc 4. The source was dispatched (`P1` 2c5fd0a,
   15:40:05Z) one second before its aside, and the copy carries `ctl/customer.log` and the tag.
 
-So the wave stops at the first gate ("PHASE 2 NOT FIRED") and spends nothing. Every earlier phase-2 copy (L8 §A9.4; ADDENDUM 1) was of a
+So `run_phase2` stops at its first gate ("PHASE 2 NOT FIRED") and launches nothing. Before `run_phase2`, the wave makes one client call
+(the `/usage` read at dispatch, its cost not measured) and applies the copy into the destination root. After "PHASE 2 NOT FIRED" it
+prints `WAVE COMPLETE` and exits 0, so by its exit code a refusal reads as a success. Every earlier phase-2 copy (L8 §A9.4; ADDENDUM 1) was of a
 cell refused BEFORE its dispatch. This source was refused AFTER its dispatch and its aside. A5.2 step 3's gate list does not name the
 dispatch, and it assumes that phase 1's records are still in the cell. A5's non-author read drove the aside on a fixture. Nobody drove
 `run_phase2` on a real copy before the route was registered.
@@ -469,7 +474,9 @@ record used. One repetition in one of 24 conditions does not pay for that.
 **A6.4 · KEPT AS EVIDENCE.** The staging root and its two manifests (A5.2), and the scratch root of the drive, marked as not a cell. The
 scratch copy's `ctl/customer.log` carries the refusal line the drive wrote; the source's log is unchanged.
 
-**A6.5 · QUEUED FOR THE NEXT EXPORT (lead), beside A5.5.** (1) The copy carries `<id>.fault-gate-1`, or the wave re-reads §M3 from the
-set-aside phase. (2) A copy of a source whose phase 2 was dispatched and then refused at `--check` runs phase 2 without a second dispatch:
+**A6.5 · QUEUED FOR THE NEXT EXPORT (lead), beside A5.5.** (1) On a copy, `run_phase2` calls the fault gate with `--verify` and the copy
+carries `<id>.fault-gate-1` beside `ctl/fault-gate-1`: a fresh read refuses rc 5 on the carried record, and phase 1's stream is set aside
+(carrying the receipt alone does not fix it). (2) A copy of a source whose phase 2 was dispatched and then refused at `--check` runs phase 2 without a second dispatch:
 the dispatch line and `P1` are its record. (3) The landing gate reads a set-aside turnloop record through the aside's own manifest.
-(4) A route registered for a cell is driven end to end on a real copy, at zero spend, before its registration is signed.
+(4) A route registered for a cell is driven end to end on a real copy, at zero spend, before its registration is signed. (5) The wave's
+exit code distinguishes a phase 2 NOT FIRED from a phase 2 that fired.
