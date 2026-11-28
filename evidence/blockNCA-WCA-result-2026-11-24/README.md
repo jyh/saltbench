@@ -7,7 +7,8 @@ directory. Each input, how it is made, and what it does not see:
 - **`cell_facts.json`** — `nca_facts.py`, run on the run box by `nca_cells_gen.py --fetch HOST`, read-only, over the 96 rows: each row's
   standing attempt (a 503 re-queue is `<root>-a<k>`), its cell's own `ctl/` (meters, turn loops, end markers, launch lines, copy record),
   the phase-1 record the wave set aside (`<root>/_aside/<id>/phase1/ctl/`, or the cell's own `ctl/` when no phase 2 ran), the §A9.2 gate
-  lines, and a fresh cell's G baseline. A value it cannot read is UNREAD, never blank or zero.
+  lines, a fresh cell's G baseline, and the P-PERSIST probe: the registered reader's word (`ctl/agy-probes-2.tsv`) beside whether the
+  subject's validated ack token follows the probe in its own brain transcript or stream (a hand read, 2026-11-28). A value it cannot read is UNREAD, never blank or zero.
 - **Score receipts** — the hand's (`score_wave_v3.sh`, one per cell), in its run directory on the lead's box, NOT in this repository (they
   name paths in a local-only tree). Each row's `score_receipt` column names the receipt it was read from; two receipts for one root are
   admitted only when they agree on every scored field (both are cited), and two that disagree refuse. WCA's sit in `wca-*-harvest*` dirs.
@@ -27,13 +28,13 @@ directory. Each input, how it is made, and what it does not see:
 
 The population-wide lines (`nca_cells_gen.py --summary`, the lines no block owns):
 ```
-rows 96 · scored 81 · receipts 85 · facts 86
-attempts: standing at attempt 1 84 · at attempt 2+ 2 [cells-nca-linearscan-argon-plain-r2=a2 cells-nca-linearscan-argon-salt-r2=a2] · discarded attempts 2 · root not found 10
-ctl census: CTL-READ 1 [cells-na-aes-flash-salt-ncacp1] · read 0 71 · UNREAD 24
-phase-2 gate (§A9.2, its own lines): FIRED 85 · NOT-FIRED 1 [cells-nca-liveness-argon-salt-r1] · no line 0 · no cell 10 · UNREAD 0
-p2_model NO-ROOT=10 UNREAD=3 gemini-3.8-flash-high=48 gemini-4-argon-high=35
-p2_client16 62f2102784bb74b7=83 NO-ROOT=10 UNREAD=3
-p2_export 88b63df9c5be=86 NO-ROOT=10
-hook16 FRESH=38 NO-ROOT=10 a6e064e307a8651d=48
-done_reason LANDED=83 NO-ROOT=10 UNREAD=3
+rows 96 · scored 92 · receipts 96 · facts 96
+attempts: standing at attempt 1 94 · at attempt 2+ 2 [cells-nca-linearscan-argon-plain-r2=a2 cells-nca-linearscan-argon-salt-r2=a2] · discarded attempts 2 · root not found 0
+ctl census: CTL-READ 1 [cells-na-aes-flash-salt-ncacp1] · read 0 95 · UNREAD 0
+phase-2 gate (§A9.2, its own lines): FIRED 95 · NOT-FIRED 1 [cells-nca-liveness-argon-salt-r1] · no line 0 · no cell 0 · UNREAD 0
+p2_model UNREAD=2 gemini-3.8-flash-high=48 gemini-4-argon-high=46
+p2_client16 62f2102784bb74b7=94 UNREAD=2
+p2_export 88b63df9c5be=96
+hook16 FRESH=38 a6e064e307a8651d=58
+done_reason LANDED=94 UNREAD=2
 ```

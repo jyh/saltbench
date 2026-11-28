@@ -71,5 +71,29 @@ NCA-argon	ncalsapa201	gemini-4-argon-high	plain	~/cells-nca-linearscan-argon-pla
 NCA-argon	ncalsasa201	gemini-4-argon-high	salt-diet	~/cells-nca-linearscan-argon-salt-r2-a2/ncalsasa201	NONE-NAMED	5	233	0	0	0	0	0	-
 NCA-argon	ncalsap01	gemini-4-argon-high	plain	~/cells-nca-linearscan-argon-plain-r3/ncalsap01	NONE-NAMED	6	195	0	0	0	0	0	-
 NCA-argon	ncalsas01	gemini-4-argon-high	salt-diet	~/cells-nca-linearscan-argon-salt-r3/ncalsas01	NONE-NAMED	4	251	0	0	0	0	0	-
-#POPULATION rows=72 NCA-flash:CTL-NAMED=1,HOME-ENV=1,NONE-NAMED=33,OTHER-RECORD=1 NCA-argon:NONE-NAMED=35,TILDE=1 all:CTL-NAMED=1,HOME-ENV=1,NONE-NAMED=68,OTHER-RECORD=1,TILDE=1
+WCA-flash	wanfp101	gemini-3.8-flash-high	plain	~/cells-wa-ntt-flash-plain-r1-wcacp1/wanfp101,~/cells-wa-ntt-flash-plain-r1/wanfp101	TILDE	3	261	0	0	0	2	0	-
+WCA-flash	wanfs101	gemini-3.8-flash-high	salt-diet	~/cells-wa-ntt-flash-salt-r1-wcacp1/wanfs101,~/cells-wa-ntt-flash-salt-r1/wanfs101	NONE-NAMED	6	442	0	0	0	0	0	-
+WCA-flash	wanfp201	gemini-3.8-flash-high	plain	~/cells-wa-ntt-flash-plain-r2-wcacp2/wanfp201,~/cells-wa-ntt-flash-plain-r2/wanfp201	NONE-NAMED	3	253	0	0	0	0	0	-
+WCA-flash	wanfs201	gemini-3.8-flash-high	salt-diet	~/cells-wa-ntt-flash-salt-r2-wcacp2/wanfs201,~/cells-wa-ntt-flash-salt-r2/wanfs201	NONE-NAMED	3	453	0	0	0	0	2	-
+WCA-flash	wanfp301	gemini-3.8-flash-high	plain	~/cells-wa-ntt-flash-plain-r3-wcacp3/wanfp301,~/cells-wa-ntt-flash-plain-r3/wanfp301	NONE-NAMED	3	240	0	0	0	0	0	-
+WCA-flash	wanfs301	gemini-3.8-flash-high	salt-diet	~/cells-wa-ntt-flash-salt-r3-wcacp3/wanfs301,~/cells-wa-ntt-flash-salt-r3/wanfs301	NONE-NAMED	3	486	0	0	0	0	0	-
+WCA-flash	wawfp101	gemini-3.8-flash-high	plain	~/cells-wa-wht-flash-plain-r1-wcacp1/wawfp101,~/cells-wa-wht-flash-plain-r1/wawfp101	NONE-NAMED	3	234	0	0	0	0	0	-
+WCA-flash	wawfs101	gemini-3.8-flash-high	salt-diet	~/cells-wa-wht-flash-salt-r1-wcacp1/wawfs101,~/cells-wa-wht-flash-salt-r1/wawfs101	NONE-NAMED	5	496	0	0	0	0	0	-
+WCA-flash	wawfp201	gemini-3.8-flash-high	plain	~/cells-wa-wht-flash-plain-r2-wcacp2/wawfp201,~/cells-wa-wht-flash-plain-r2/wawfp201	NONE-NAMED	3	230	0	0	0	0	0	-
+WCA-flash	wawfs201	gemini-3.8-flash-high	salt-diet	~/cells-wa-wht-flash-salt-r2-wcacp2/wawfs201,~/cells-wa-wht-flash-salt-r2/wawfs201	NONE-NAMED	5	430	0	0	0	0	0	-
+WCA-flash	wawfp301	gemini-3.8-flash-high	plain	~/cells-wa-wht-flash-plain-r3-wcacp3/wawfp301,~/cells-wa-wht-flash-plain-r3/wawfp301	NONE-NAMED	3	232	0	0	0	0	0	-
+WCA-flash	wawfs301	gemini-3.8-flash-high	salt-diet	~/cells-wa-wht-flash-salt-r3-wcacp3/wawfs301,~/cells-wa-wht-flash-salt-r3/wawfs301	NONE-NAMED	6	602	0	0	0	0	0	-
+WCA-argon	wanap101	gemini-4-argon-high	plain	~/cells-wa-ntt-argon-plain-r1-wcacp1/wanap101,~/cells-wa-ntt-argon-plain-r1/wanap101	NONE-NAMED	9	200	0	0	0	0	0	-
+WCA-argon	wanas101	gemini-4-argon-high	salt-diet	~/cells-wa-ntt-argon-salt-r1-wcacp1/wanas101,~/cells-wa-ntt-argon-salt-r1/wanas101	NONE-NAMED	6	291	0	0	0	0	0	-
+WCA-argon	wanap201	gemini-4-argon-high	plain	~/cells-wa-ntt-argon-plain-r2-wcacp2/wanap201,~/cells-wa-ntt-argon-plain-r2/wanap201	NONE-NAMED	9	237	0	0	0	0	0	-
+WCA-argon	wanas201	gemini-4-argon-high	salt-diet	~/cells-wa-ntt-argon-salt-r2-wcacp2/wanas201,~/cells-wa-ntt-argon-salt-r2/wanas201	NONE-NAMED	6	242	0	0	0	0	0	-
+WCA-argon	wanap301	gemini-4-argon-high	plain	~/cells-wa-ntt-argon-plain-r3-wcacp3/wanap301,~/cells-wa-ntt-argon-plain-r3/wanap301	NONE-NAMED	9	198	0	0	0	0	0	-
+WCA-argon	wanas301	gemini-4-argon-high	salt-diet	~/cells-wa-ntt-argon-salt-r3-wcacp3/wanas301,~/cells-wa-ntt-argon-salt-r3/wanas301	NONE-NAMED	6	420	0	0	0	0	0	-
+WCA-argon	wawap101	gemini-4-argon-high	plain	~/cells-wa-wht-argon-plain-r1-wcacp1/wawap101,~/cells-wa-wht-argon-plain-r1/wawap101	NONE-NAMED	9	213	0	0	0	0	0	-
+WCA-argon	wawas1r201	gemini-4-argon-high	salt-diet	~/cells-wa-wht-argon-salt-r2-refire2-wcacp1/wawas1r201,~/cells-wa-wht-argon-salt-r2-refire2/wawas1r201	NONE-NAMED	6	271	0	0	0	0	0	-
+WCA-argon	wawap201	gemini-4-argon-high	plain	~/cells-wa-wht-argon-plain-r2-wcacp2/wawap201,~/cells-wa-wht-argon-plain-r2/wawap201	NONE-NAMED	9	185	0	0	0	0	0	-
+WCA-argon	wawas201	gemini-4-argon-high	salt-diet	~/cells-wa-wht-argon-salt-r2-wcacp2/wawas201,~/cells-wa-wht-argon-salt-r2/wawas201	NONE-NAMED	6	272	0	0	0	0	0	-
+WCA-argon	wawap301	gemini-4-argon-high	plain	~/cells-wa-wht-argon-plain-r3-wcacp3/wawap301,~/cells-wa-wht-argon-plain-r3/wawap301	NONE-NAMED	9	192	0	0	0	0	0	-
+WCA-argon	wawas301	gemini-4-argon-high	salt-diet	~/cells-wa-wht-argon-salt-r3-wcacp3/wawas301,~/cells-wa-wht-argon-salt-r3/wawas301	NONE-NAMED	6	261	0	0	0	0	0	-
+#POPULATION rows=96 NCA-flash:CTL-NAMED=1,HOME-ENV=1,NONE-NAMED=33,OTHER-RECORD=1 NCA-argon:NONE-NAMED=35,TILDE=1 WCA-flash:NONE-NAMED=11,TILDE=1 WCA-argon:NONE-NAMED=12 all:CTL-NAMED=1,HOME-ENV=1,NONE-NAMED=91,OTHER-RECORD=1,TILDE=2
 #LIMIT NONE-NAMED is a lower bound on contact with ctl/: a call that reaches ctl/ without naming it (a recursive read from a parent) is invisible here; PARENT counts those candidates and is never a CTL-READ.

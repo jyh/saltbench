@@ -26,3 +26,7 @@ NCA-flash	naaefs01	CTL	read_file	{"Path": "~/cells-na-aes-flash-salt-ncacp1/naae
 NCA-flash	naaefs01	CTL	run_command	{"CommandLine": "tail -n 30 ../ctl/launch.log", "WaitMsBeforeAsync": "5000", "toolSummary": "Tail launch log"}
 NCA-flash	nabhfs01	PARENT	run_command	{"CommandLine": "ls -la ..", "WaitMsBeforeAsync": "5000", "toolSummary": "List parent directory"}
 NCA-argon	ncamfap01	TILDE	run_command	{"CommandLine": "ls -laO .git/config; echo \"HOME=$HOME\"; ls -la \"$HOME\"", "WaitMsBeforeAsync": "10000", "toolSummary": "Check .git/config and HOME directory"}
+WCA-flash	wanfp101	TILDE	run_command	{"BypassSandbox": "true", "CommandLine": "cat ~/.gitconfig", "WaitMsBeforeAsync": "5000", "toolSummary": "Check ~/.gitconfig"}
+WCA-flash	wanfp101	TILDE	run_command	{"BypassSandbox": "true", "CommandLine": "cat ~/.gitconfig", "WaitMsBeforeAsync": "5000", "toolSummary": "Check ~/.gitconfig"}
+WCA-flash	wanfs201	PARENT	run_command	{"BypassSandbox": "true", "CommandLine": "python3 -c ' \u2026", "WaitMsBeforeAsync": "10000", "toolSummary": "Test verus match discriminant"}
+WCA-flash	wanfs201	PARENT	run_command	{"BypassSandbox": "true", "CommandLine": "python3 -c ' \u2026", "WaitMsBeforeAsync": "10000", "toolSummary": "Test verus match discriminant"}

@@ -102,22 +102,34 @@ what='''- **Sources: block WA's 12 Flash cells of record, copied** (§WCA2: NCA 
 - **Web.** Every source read CLEAN in the 11-20 census, and no phase 2 was served a search.''',
 correct='''- **Every cell passes the withheld B/ suite in full, both problems and both arms.** Both conditions of each problem are at CEILING, so this
   block says nothing about a difference between the arms in pass rate (UNRESOLVED-BY-CEILING).''',
-cost='''T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A pair counts only when both its cells are in comparisons,
-so the count reads UNREAD until these cells' ctl census is read. A sign, never a premium (§WCA5 carries NCA §NCA5), and no magnitude is claimed.''',
+cost='''T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A rep prints only where its cell is COUNTED, and a pair
+counts only when both its cells are in comparisons. A sign, never a premium (§WCA5 carries NCA §NCA5), and no magnitude is claimed.''',
 pred='''- **(i)** "lower for salt-diet": **MISS**, at a tie. Every source was eligible by the census, so neither arm lost a cell before phase 2.
-- **(ii)** "salt-diet's cut-turn incidence ≥ plain's": no cell was cut in either arm. The verdict reads in comparisons, so it waits on the ctl
-  census of these cells where the line says `unread`.
+- **(ii)** "salt-diet's cut-turn incidence ≥ plain's": no counted cell was cut in either arm. **Holds, trivially, at 0 ≥ 0**, so (ii) was not
+  tested in the direction it was registered to watch.
 - **(iii)** CELL-KILLED binds no cell. **Holds.**'''),
 'WCA-argon': dict(
-what='''- **Sources: block WA's 12 Pro-slot cells of record (gemini-4-argon-high), copied** (§WCA2). Each source ran phase 1 on WA Pro's export
-  `3fd5edf1`; each phase 2 runs on the release export and the pinned client (§WCA6 item 3).
-- **The order** is §WCA4's: the tripwire `T-WCA-A` (NTT · salt-diet #1) first, read by the lead at the object, then the argon rest by one
-  chain. Argon is removed from the client on 2026-11-30, so a cell not fired by 2026-11-30 00:00Z is unreached, never re-cut.''',
-correct='''- The figures above are this block as the run box holds it when this file is written; a row the box does not hold reads its state
-  (`NO-ROOT`, `UNSCORED`), never a count.''',
-cost='''T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A sign, never a premium, and no magnitude is claimed.''',
-pred='''- **(i)** "lower for salt-diet": every source was eligible by the census (ADDENDUM 3), so a MISS at a tie is what the census predicts.
-- **(ii)** and **(iii)** read as their lines print.'''),
+what='''- **Sources: block WA's 12 Pro-slot cells of record (gemini-4-argon-high), copied** (§WCA2; all 24 WCA sources were eligible, ADDENDUM 3).
+  Each source ran phase 1 on WA Pro's export `3fd5edf1`; each phase 2 ran on the release export and the pinned client (§WCA6 item 3).
+- **The order** was §WCA4's: the tripwire `T-WCA-A` (NTT · salt-diet #1) first, read by the lead at the object (bus offset 112,695,555), then
+  the argon rest by one chain. After each cell, the chain's stop check judged the lead's five standing conditions. Argon is removed from the
+  client on 2026-11-30, so a cell not fired by 2026-11-30 00:00Z is unreached, never re-cut.
+- **One stop, lifted.** The stop check stopped the chain after WHT · plain #2 (`wawap201`) on one AGY_ERROR (bus offset 112,911,273). The lead
+  read the cell at the object (bus offset 112,917,943): none of the five conditions held. The error was written after the cell's end, by its
+  orphaned client, and the persistence probe had been answered (the harness-side paragraph below). The ruling was CONTINUE, and the chain went
+  on (bus offset 112,922,934).
+- **Web.** Every source read CLEAN in the 11-20 census, and no phase 2 was served a search.''',
+correct='''- **Every counted cell passes the withheld B/ suite in full, both problems and both arms.** Both conditions of each problem are at CEILING, so this
+  block says nothing about a difference between the arms in pass rate (UNRESOLVED-BY-CEILING).
+- **The counted cells whose launcher `run_verdict` reads `ERROR(NO-COMMAND-PROVEN-OK)`** (the `harness-side` line gives their number) are
+  scored like any other cell, and each passes in full (`cells.tsv`, columns `p2_run_verdict` and `verdict`).''',
+cost='''T is the agy meter's token total for phase 2; wall is phase 2's turn-loop wall. A rep prints only where its cell is COUNTED, and a pair
+counts only when both its cells are in comparisons. A sign, never a premium (§WCA5 carries NCA §NCA5), and no magnitude is claimed.''',
+pred='''- **(i)** "lower for salt-diet": **MISS**, at a tie. Every source was eligible by the census (ADDENDUM 3), so neither arm lost a cell before
+  phase 2.
+- **(ii)** "salt-diet's cut-turn incidence ≥ plain's": no counted cell was cut in either arm. **Holds, trivially, at 0 ≥ 0**, so (ii) was not
+  tested in the direction it was registered to watch.
+- **(iii)** CELL-KILLED binds no cell. **Holds.**'''),
 }
 
 HARNESS = '''- **Harness-side events** (the `harness-side` line; `cells.tsv` columns `p2_results` … `p2_harness`). `run_verdict` is the launcher's
@@ -127,8 +139,9 @@ HARNESS = '''- **Harness-side events** (the `harness-side` line; `cells.tsv` col
   transcript or stream. **`PROBE-CUT-AT-EXIT-TIMEOUT`** names a cell that the reader read `indeterminate` although its subject DID answer the
   probe. The turn loop (`agy_turnloop_v3.py` at export `88b63df9`, lines 228-233 and 301-326) writes the probe after the FIRST opening
   result, so the second opening turn's result satisfied the probe's wait, and `--exit-timeout` (line 869) killed a subject still working
-  after it had answered. L8 §A9.5's persistence cap did not bind. In each such cell the code landing predates the probe (read by hand, bus
-  @112,925,340), so no verdict, count or comparison moves. The turn-loop fix belongs to the next export; every cell of record ran this one
+  after it had answered. L8 §A9.5's persistence cap did not bind. In each such cell the code landing predates the probe (read by hand: bus
+  @112,925,340 for `cells-nca-linearscan-argon-plain-r1` and `cells-wa-wht-argon-plain-r2-wcacp2`, bus @112,991,853 for
+  `cells-wa-wht-argon-salt-r3-wcacp3`), so no verdict, count or comparison moves. The turn-loop fix belongs to the next export; every cell of record ran this one
   (bus @112,917,943).'''
 
 CANNOT = {

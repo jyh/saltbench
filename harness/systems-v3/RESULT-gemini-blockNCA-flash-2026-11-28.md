@@ -10,6 +10,7 @@
 NCA-flash: rows 36 · conditions 12 · counted 34 · not counted 2 [cells-nca-binomialheap-flash-salt-r3=REACH-LOSS(G)/FAIL/rc=0 LANDED cells-nca-linearscan-flash-salt-r2=REACH-LOSS(G)/FAIL/rc=0 LANDED]
 NCA-flash phase 2: model gemini-3.8-flash-high=36 · export 88b63df9c5be=36 · hook FRESH=2 a6e064e307a8651d=34 · done_reason LANDED=36
 NCA-flash clients: phase 1 42e76bedafb5896b=29 62f2102784bb74b7=2 6f4785c17acc4b8b=5 · phase 2 62f2102784bb74b7=36
+NCA-flash harness-side over 34 counted: run_verdict OK=34 · P-PERSIST by the registered reader yes=34 · PROBE-CUT-AT-EXIT-TIMEOUT 0 [-] · token after the probe at the object (a hand read beside the reader) yes=34 · other events -
 NCA-flash web: source_web_served CLEAN=30 OWN:CLEAN=2 WEB-SERVED=4 · phase 2 CLEAN=36
 NCA-flash phase 1: done_reason LANDED=36 · cut turns (cells with >= 1) 4 of 36 read
 ```
@@ -29,6 +30,17 @@ NCA-flash phase 1: done_reason LANDED=36 · cut turns (cells with >= 1) 4 of 36 
   same box read NA's `nalsfp201`–`nalsfp203` at 7, 16 and 22 served, the 11-20 figures.
 - **CTL-READ: `naaefs01`** (AES · salt-diet #1) read the harness's `ctl/` in its phase 2 (`ctl_census.tsv`, 8 calls). The lead's ruling (bus
   offset 110,731,568): the verdict stands, the cell leaves every comparison, and its briefing and P-PERSIST read UNMEASURED.
+- **Harness-side events** (the `harness-side` line; `cells.tsv` columns `p2_results` … `p2_harness`). `run_verdict` is the launcher's
+  own word on its phase-2 SERVED line; `ERROR(NO-COMMAND-PROVEN-OK)` marks a cell whose code is still scored, so §2's verdicts are the
+  receipts' either way. `P-PERSIST` is the registered reader's (`agy_probes_v3.py`). Beside it, **as a hand read and not the registered
+  instrument**, `nca_facts.py` reads whether the subject gave its ack token (validated against `launch.log`'s hash) AFTER the probe, in its own
+  transcript or stream. **`PROBE-CUT-AT-EXIT-TIMEOUT`** names a cell that the reader read `indeterminate` although its subject DID answer the
+  probe. The turn loop (`agy_turnloop_v3.py` at export `88b63df9`, lines 228-233 and 301-326) writes the probe after the FIRST opening
+  result, so the second opening turn's result satisfied the probe's wait, and `--exit-timeout` (line 869) killed a subject still working
+  after it had answered. L8 §A9.5's persistence cap did not bind. In each such cell the code landing predates the probe (read by hand: bus
+  @112,925,340 for `cells-nca-linearscan-argon-plain-r1` and `cells-wa-wht-argon-plain-r2-wcacp2`, bus @112,991,853 for
+  `cells-wa-wht-argon-salt-r3-wcacp3`), so no verdict, count or comparison moves. The turn-loop fix belongs to the next export; every cell of record ran this one
+  (bus @112,917,943).
 
 ---
 # §2 · CORRECTNESS, VERIFIED FIRST (the withheld B/ suite; PASS is the receipt's word: TESTS all passed, 0 REGRESSIONS failed, 0 CLAUSE_TESTS failed)
