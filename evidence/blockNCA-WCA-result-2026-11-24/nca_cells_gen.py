@@ -2,7 +2,8 @@
   population      manifests/{NCA,WCA}-{flash,argon}-all.tsv beside this file: byte copies of the hand's chain manifests (96 rows).
                   The population is the manifests, never the receipts found, so a cell not yet scored reads UNSCORED, never absent
   score receipts  ~/.fleet/executors/gemini.runs/<dir>/<root>.p2.score.txt (the hand's, score_wave_v3.sh), over every dir named
-                  {nca,wca}-*-score*. A root with two receipts is admitted only when they AGREE on every scored field (both are then
+                  {nca,wca}-*-score*. <root> is a manifest root or its attempt `<root>-a<k>` (k >= 2, a 503 re-queue); the run box's
+                  standing attempt (nca_facts.py) must agree, and a row scored under two attempts REFUSES. A root with two receipts is admitted only when they AGREE on every scored field (both are then
                   cited); two that disagree REFUSE (WA's abandoned-dir hazard): neither is ever chosen
   cell facts      cell_facts.json beside this file (nca_facts.py, read on the run box from each cell's own ctl/; `--fetch` writes it)
   ctl census      ctl_census.tsv beside this file: root TAB reads TAB paths, one row per root, reads = the subject's tool calls that
@@ -21,7 +22,7 @@ import glob, json, os, re, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 RUNS = os.environ.get('NCA_RUNS') or os.path.expanduser('~/.fleet/executors/gemini.runs')   # NCA_RUNS: a test root only
 MANIFESTS = ('NCA-flash-all', 'NCA-argon-all', 'WCA-flash-all', 'WCA-argon-all')
-COLS = ['block', 'root', 'id', 'problem', 'arm', 'p2_model', 'p2_client16', 'p2_export', 'hook16', 'source', 'T', 'turns_sent',
+COLS = ['block', 'root', 'id', 'attempt', 'discarded', 'problem', 'arm', 'p2_model', 'p2_client16', 'p2_export', 'hook16', 'source', 'T', 'turns_sent',
         'continue_turns', 'cut_turns_all', 'wall_seconds', 'done_reason', 'landed', 'false_done_claims', 'end2', 'verdict', 'TESTS',
         'REGRESSIONS', 'CLAUSE', 'truncated', 'interface', 'score_receipt', 'ctl_reads', 'flag', 'briefing', 'persist', 'p2_gate']
 NOSCORE = dict(verdict='UNSCORED', TESTS='UNSCORED', REGRESSIONS='UNSCORED', CLAUSE='UNSCORED', truncated='UNSCORED',
@@ -94,7 +95,20 @@ def table():
     ctl = ctl_census({p['root'] for p in pop})
     facts = {f['root']: f for f in json.load(open(os.path.join(HERE, 'cell_facts.json')))} if os.path.exists(os.path.join(HERE, 'cell_facts.json')) else {}
     sc = receipts()
-    stray = sorted(set(sc) - {p['root'] for p in pop})
+    # ⛔ A RECEIPT ROOT IS A MANIFEST ROOT (attempt 1) OR `<manifest root>-a<k>`, k >= 2: the canary supervisor's re-queue after a 503
+    #   discard (L8 A2.2: the table carries each cell's attempt number; a discarded attempt is never pooled). Anything else is stray.
+    #   A row scored under TWO attempts REFUSES (only the standing attempt is scored), and so does a receipt whose attempt is not the
+    #   one the run box reads as standing (nca_facts.py `attempt`): neither is ever chosen between.
+    roots = {p['root'] for p in pop}
+    by_row, stray = {}, []
+    for rr in sorted(sc):
+        m = re.fullmatch(r'(.+)-a([0-9]+)', rr)
+        base, k = (rr, 1) if rr in roots else ((m.group(1), int(m.group(2))) if m and m.group(1) in roots and int(m.group(2)) >= 2 else (None, 0))
+        if base is None:
+            stray.append(rr); continue
+        if base in by_row:
+            sys.exit('REFUSE: row %s has receipts for two attempts (%s and %s); only the standing attempt is scored' % (base, by_row[base][1]['score_receipt'], sc[rr]['score_receipt']))
+        by_row[base] = (k, sc[rr])
     if stray:
         sys.exit('REFUSE: receipts for roots outside the 96: %s' % ' '.join(stray))
     rows = []
@@ -102,7 +116,9 @@ def table():
         r = {k: 'UNREAD' for k in COLS}
         r.update({k: p[k] for k in ('block', 'root', 'problem', 'arm')})
         r.update({k: v for k, v in facts.get(p['root'], {}).items() if k in COLS and k != 'root'})
-        s = sc.get(p['root'], NOSCORE)
+        k, s = by_row.get(p['root'], (None, NOSCORE))
+        if k is not None and isinstance(r['attempt'], int) and k != r['attempt']:
+            sys.exit('REFUSE: %s receipt scores attempt %d, the run box reads attempt %d as standing' % (p['root'], k, r['attempt']))
         if 'cell' in s and r['id'] not in ('UNREAD', s['cell']):
             sys.exit('REFUSE: %s receipt names cell %s, the facts name %s' % (p['root'], s['cell'], r['id']))
         r.update({k: v for k, v in s.items() if k in COLS})
@@ -117,18 +133,23 @@ def table():
 def summary(rows):
     scored = lambda rs: [r for r in rs if r['verdict'] in ('PASS', 'FAIL')]
     L = ['rows %d · scored %d · receipts %d · facts %d' % (len(rows), len(scored(rows)), sum(r['score_receipt'] != 'UNSCORED' for r in rows),
-                                                       sum(r['id'] not in ('UNREAD', 'NO-CELL', 'TWO-CELLS') for r in rows))]
+                                                       sum(r['id'] not in ('UNREAD', 'NO-CELL', 'TWO-CELLS', 'NO-ROOT', 'TWO-ATTEMPTS') for r in rows))]
+    at = [r for r in rows if isinstance(r['attempt'], int) and r['attempt'] >= 2]
+    dc = [r['discarded'] for r in rows]
+    L.append('attempts: standing at attempt 1 %d · at attempt 2+ %d [%s] · discarded attempts %s · root not found %d' % (
+        sum(r['attempt'] == 1 for r in rows), len(at), ' '.join('%s=a%d' % (r['root'], r['attempt']) for r in at) or '-',
+        '%d' % sum(dc) if all(isinstance(x, int) for x in dc) else 'UNREAD', sum(r['attempt'] in ('NO-ROOT', 'TWO-ATTEMPTS') for r in rows)))
     fl = [r['root'] for r in rows if r['flag'] == 'CTL-READ']
     L.append('ctl census: CTL-READ %d [%s] · read 0 %d · UNREAD %d' % (len(fl), ' '.join(fl) or '-', sum(r['flag'] == '-' for r in rows),
                                                                        sum(r['flag'] == 'UNREAD' for r in rows)))
     G = lambda r: str(r['p2_gate'])
     nf = [r['root'] for r in rows if G(r).startswith('rc=') and not G(r).startswith('rc=0 ')]
-    known = lambda r: G(r).startswith('rc=') or G(r) in ('NONE', 'UNREAD', 'NO-CELL', 'TWO-CELLS')
+    known = lambda r: G(r).startswith('rc=') or G(r) in ('NONE', 'UNREAD', 'NO-CELL', 'TWO-CELLS', 'NO-ROOT', 'TWO-ATTEMPTS')
     if not all(known(r) for r in rows):   # every state is named; an unknown one REFUSES rather than lands in a bucket
         sys.exit('REFUSE: p2_gate value not in the registered states: %s' % sorted({G(r) for r in rows if not known(r)}))
     L.append('phase-2 gate (§A9.2, its own lines): FIRED %d · NOT-FIRED %d [%s] · no line %d · no cell %d · UNREAD %d' % (
         sum(G(r).startswith('rc=0 ') for r in rows), len(nf), ' '.join(nf) or '-', sum(G(r) == 'NONE' for r in rows),
-        sum(G(r) in ('NO-CELL', 'TWO-CELLS') for r in rows), sum(G(r) == 'UNREAD' for r in rows)))
+        sum(G(r) in ('NO-CELL', 'TWO-CELLS', 'NO-ROOT', 'TWO-ATTEMPTS') for r in rows), sum(G(r) == 'UNREAD' for r in rows)))
     for k in ('p2_model', 'p2_client16', 'p2_export', 'hook16', 'done_reason'):
         v = {}
         for r in rows:

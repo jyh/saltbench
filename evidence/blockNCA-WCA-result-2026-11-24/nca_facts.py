@@ -57,6 +57,26 @@ def gate_lines():
     return out, seen
 
 
+def standing(root):
+    """The ATTEMPT that stands for a manifest root (L8 A2.2: the per-cell table carries each cell's attempt number). The canary
+    supervisor discards a 503-touched attempt by RENAMING its root `<root>[-a<k>].DISCARDED-503-<utc>` and re-queues it as root
+    `<root>-a<k+1>`, prefix `<prefix>a<k+1>`. So the standing attempt is the ONE of `<root>` (attempt 1) and `<root>-a<k>` (k >= 2)
+    that exists as a directory. None is NO-ROOT and two is TWO-ATTEMPTS, never a guess. Returns (root, k, discarded-count)."""
+    try:
+        names = os.listdir(H)
+    except OSError:
+        return 'NO-ROOT', 0, 'UNREAD'
+    cand = [(root, 1)] if root in names and os.path.isdir(os.path.join(H, root)) else []
+    for n in names:
+        m = re.fullmatch(re.escape(root) + r'-a([0-9]+)', n)
+        if m and int(m.group(1)) >= 2 and os.path.isdir(os.path.join(H, n)):
+            cand.append((n, int(m.group(1))))
+    disc = sum(bool(re.fullmatch(re.escape(root) + r'(-a[0-9]+)?\.DISCARDED-503-.+', n)) for n in names)
+    if len(cand) != 1:
+        return ('NO-ROOT' if not cand else 'TWO-ATTEMPTS'), 0, disc
+    return cand[0][0], cand[0][1], disc
+
+
 def find(root, prefix, copy_from):
     d = os.path.join(H, root)
     if copy_from not in ('', '-'):
@@ -75,12 +95,15 @@ for line in sys.stdin:
     if not line.strip():
         continue
     root, prefix, copy_from = (line.rstrip('\n').split('\t') + ['', ''])[:3]
-    cid = find(root, prefix, copy_from)
-    rec = {'root': root, 'id': cid}
-    if cid in ('NO-CELL', 'TWO-CELLS'):   # nothing below is read from a cell that is not found: every field says so, none reads FRESH or 0
+    sroot, k, disc = standing(root)
+    # a fresh attempt k >= 2 is built with prefix <prefix>a<k>; a copy keeps its source's id (the wave strips a<k> before its check)
+    cid = sroot if sroot in ('NO-ROOT', 'TWO-ATTEMPTS') else find(sroot, prefix + ('a%d' % k if k >= 2 else ''), copy_from)
+    rec = {'root': root, 'id': cid, 'standing_root': sroot, 'attempt': k if k else sroot, 'discarded': disc}
+    if cid in ('NO-CELL', 'TWO-CELLS', 'NO-ROOT', 'TWO-ATTEMPTS'):   # nothing below is read from a cell that is not found: every field says so, none reads FRESH or 0
         out.append(dict(rec, **{k: cid for k in ('T', 'requested_model', 'meter_verdict', 'cut_turns_all', 'p2_model', 'p2_client16', 'end1',
                                                    'end2', 'source', 'p2_export', 'hook16', 'p2_gate') + LOOP}))
         continue
+    root = sroot   # every read below is of the standing attempt's cell; rec['root'] stays the manifest row's
     c = os.path.join(H, root, cid, 'ctl')
     try:
         m = json.load(open(os.path.join(c, 'agy-meter-2.json')))
