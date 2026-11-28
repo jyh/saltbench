@@ -39,8 +39,11 @@ NCA-flash phase 1: done_reason LANDED=36 · cut turns (cells with >= 1) 4 of 36 
   result, so the second opening turn's result satisfied the probe's wait, and `--exit-timeout` (line 869) killed a subject still working
   after it had answered. L8 §A9.5's persistence cap did not bind. In each such cell the code landing predates the probe (read by hand: bus
   @112,925,340 for `cells-nca-linearscan-argon-plain-r1` and `cells-wa-wht-argon-plain-r2-wcacp2`, bus @112,991,853 for
-  `cells-wa-wht-argon-salt-r3-wcacp3`), so no verdict, count or comparison moves. The turn-loop fix belongs to the next export; every cell of record ran this one
-  (bus @112,917,943).
+  `cells-wa-wht-argon-salt-r3-wcacp3`), so no verdict or count moves. Their cost figures do: the kill ended a subject still working, so
+  each such cell's phase-2 T and wall are FLOORS, and §3 does not mark them. Where a cut cell is the smaller side of a printed
+  `salt-diet > plain` pair (the first two named above), that pair's sign is not established by its figures; where it is the larger
+  (`cells-wa-wht-argon-salt-r3-wcacp3`), the sign stands (kent's read of #479, LOW R3). The turn-loop fix belongs to the next export;
+  every cell of record ran this one (bus @112,917,943).
 
 ---
 # §2 · CORRECTNESS, VERIFIED FIRST (the withheld B/ suite; PASS is the receipt's word: TESTS all passed, 0 REGRESSIONS failed, 0 CLAUSE_TESTS failed)

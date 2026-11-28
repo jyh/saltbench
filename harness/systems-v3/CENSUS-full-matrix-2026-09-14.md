@@ -2200,12 +2200,14 @@ block WCA, gemini-3.8-flash-high: 4 conditions · n=3 4 · cells counted 12 of 1
 block WCA, gemini-4-argon-high: 4 conditions · n=3 4 · cells counted 12 of 12
 ```
 Every condition stands at n = 3 except the four the lines name at n = 2, each for a reason its result file states. NCA Flash BinomialHeap ·
-salt-diet and LinearScan · salt-diet each hold one FRESH cell (NA had no eligible source, §NCA2) whose G baseline on landed-1 read short of
-a full pass, a REACH LOSS under NC rule 4 (`cells-nca-binomialheap-flash-salt-r3`, `cells-nca-linearscan-flash-salt-r2`). NCA argon Liveness
+salt-diet and LinearScan · salt-diet: NA was one source short in each (§NCA2), so each holds two counted copies and one FRESH cell, and that
+cell's G baseline on landed-1 read short of a full pass, a REACH LOSS under NC rule 4 (`cells-nca-binomialheap-flash-salt-r3`,
+`cells-nca-linearscan-flash-salt-r2`). NCA argon Liveness
 · salt-diet: the §A9.2 gate refused phase 2 of `cells-nca-liveness-argon-salt-r1`, whose subject had deleted its own `landed-1` tag (the
 lead's ruling (a), bus offset 111,293,855: a REACH LOSS). NCA argon MaxFlow · plain: phase 2 of `cells-nca-maxflow-argon-plain-r1` is
-NOT-SCORED (harness), NCA ADDENDUM 6. Block WCA has every condition at n = 3, both models. DONE is not a verdict on the arms, and no result
-here compares arms, models or blocks.
+NOT-SCORED (harness), NCA ADDENDUM 6. Block WCA has every condition at n = 3, both models. DONE is not a verdict on the arms. Within a
+condition the results set arm beside arm (cost signs and prediction verdicts) and claim no difference between them; nothing compares models
+or blocks.
 
 ## §AW2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-28)
 ```
