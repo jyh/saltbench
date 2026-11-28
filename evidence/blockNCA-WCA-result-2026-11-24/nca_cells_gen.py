@@ -2,7 +2,8 @@
   population      manifests/{NCA,WCA}-{flash,argon}-all.tsv beside this file: byte copies of the hand's chain manifests (96 rows).
                   The population is the manifests, never the receipts found, so a cell not yet scored reads UNSCORED, never absent
   score receipts  ~/.fleet/executors/gemini.runs/<dir>/<root>.p2.score.txt (the hand's, score_wave_v3.sh), over every dir named
-                  {nca,wca}-*-score*. <root> is a manifest root or its attempt `<root>-a<k>` (k >= 2, a 503 re-queue); the run box's
+                  {nca,wca}-*-score* and {nca,wca}-*-harvest* (the WCA chain's receipts sit in harvest dirs only: read under the
+                  -score* glob alone, every WCA row read UNSCORED with 13 receipts on disk, 2026-11-28). <root> is a manifest root or its attempt `<root>-a<k>` (k >= 2, a 503 re-queue); the run box's
                   standing attempt (nca_facts.py) must agree, and a row scored under two attempts REFUSES. A root with two receipts is admitted only when they AGREE on every scored field (both are then
                   cited); two that disagree REFUSE (WA's abandoned-dir hazard): neither is ever chosen
   cell facts      cell_facts.json beside this file (nca_facts.py, read on the run box from each cell's own ctl/; `--fetch` writes it)
@@ -48,7 +49,7 @@ def population():
 
 def receipts():
     out = {}
-    dirs = sorted(d for d in glob.glob(os.path.join(RUNS, '*-score*')) if os.path.isdir(d) and re.match(r'(nca|wca)-', os.path.basename(d)))
+    dirs = sorted(d for d in glob.glob(os.path.join(RUNS, '*')) if os.path.isdir(d) and re.match(r'(nca|wca)-.*-(score|harvest)', os.path.basename(d)))
     for f in [g for d in dirs for g in sorted(glob.glob(os.path.join(d, '*.p2.score.txt')))]:
         root = os.path.basename(f)[:-len('.p2.score.txt')]
         text = open(f, errors='replace').read()

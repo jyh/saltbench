@@ -4,11 +4,15 @@
 set -u
 HERE=$(cd "$(dirname "$0")" && pwd); REAL=${REAL_RUNS:-$HOME/.fleet/executors/gemini.runs}; pass=0; fail=0
 T=$(mktemp -d "${TMPDIR:-/tmp}/nca-gen-st.XXXXXX") || exit 2
-fresh(){ find "$T" -mindepth 1 -delete; for d in "$REAL"/nca-*-score*/ "$REAL"/wca-*-score*/; do [ -d "$d" ] || continue; mkdir -p "$T/$(basename "$d")"; cp "$d"*.p2.score.txt "$T/$(basename "$d")/" 2>/dev/null; done
+fresh(){ find "$T" -mindepth 1 -delete; for d in "$REAL"/nca-*-score*/ "$REAL"/wca-*-score*/ "$REAL"/nca-*-harvest*/ "$REAL"/wca-*-harvest*/; do [ -d "$d" ] || continue; mkdir -p "$T/$(basename "$d")"; cp "$d"*.p2.score.txt "$T/$(basename "$d")/" 2>/dev/null; done
   mkdir -p "$T/nca-manifests-2026-11-24"; cp "$REAL"/nca-manifests-2026-11-24/harvest-*.out "$T/nca-manifests-2026-11-24/" 2>/dev/null; }   # the G receipts (2026-11-28)
 arm(){ local name=$1 want=$2 rcw=$3; out=$(NCA_RUNS=$T python3 -I "$HERE/nca_cells_gen.py" --summary 2>&1); rc=$?
   if [ "$rc" = "$rcw" ] && printf '%s\n' "$out" | grep -q -F -- "$want"; then pass=$((pass+1)); echo "ok   $name (rc $rc)"; else fail=$((fail+1)); echo "FAIL $name (rc $rc): $(printf '%s' "$out" | tail -1)"; fi; }
 fresh; arm control-real-receipts 'rows 96 · scored' 0
+# ⛔ WCA's receipts sit in wca-*-harvest* dirs (2026-11-28): a reader keyed on -score* read all 24 WCA rows UNSCORED, and so did this
+#   fixture, which copied the same glob. The arm reads the table row of T-WCA-F's root, whose only receipts are in harvest dirs.
+fresh; out=$(NCA_RUNS=$T python3 -I "$HERE/nca_cells_gen.py" 2>&1 | awk -F'\t' '$2=="cells-wa-ntt-flash-salt-r1-wcacp1"{print $22, $23}')
+if [ "$out" = "PASS 15/15" ]; then pass=$((pass+1)); echo "ok   wca-harvest-receipt-read"; else fail=$((fail+1)); echo "FAIL wca-harvest-receipt-read: got [$out] want [PASS 15/15]"; fi
 fresh; f=$(ls "$T"/nca-flash-liveness-*-score/*ncacp2.p2.score.txt | head -1); mkdir -p "$T/nca-zz-score"; sed 's/REGRESSIONS 0\//REGRESSIONS 9\//' "$f" > "$T/nca-zz-score/$(basename "$f")"
 arm disagreeing-duplicate 'two receipts that DISAGREE' 1
 fresh; f=$(ls "$T"/nca-flash-luby-*-score/*.p2.score.txt | head -1); mkdir -p "$T/nca-zz-score"; cp "$f" "$T/nca-zz-score/"
