@@ -163,8 +163,18 @@ refusal. Declared: the lead's first two drives of this item (kept) failed on the
 values left cargo off PATH (rc 127 in every build), so that run's two controls passed VACUOUSLY; then two readers printed nothing or took
 the wrong line. The driver above sources the run box's own toolchain contract and its readers were validated on the second drive's
 artifacts before this one.
-**The supervisor plan: ⛔ OPEN — the hand's receipt goes here before this addendum is read.** `81792dbe` `--plan` on TWA's four manifests
-in §TWA2's order (T-TWA-F 1 · the Flash rest 11 · T-TWA-P 1 · the argon rest 11 = 24 rows, every root absent).
+**The supervisor plan: MET, zero spend, nothing built** (the hand, bus offset 113,137,368; seat commit `7fdf60f178`). Four manifests in
+§TWA2's order, generated from one table, each row TA's one-phase form with the extra `--field greenfield --statement` (`AGY_PHASES` unset):
+```
+  T-TWA-F         1 row    sha256/16 ca1f0c624be10352   WHT · salt-diet#1 (Flash)
+  the Flash rest 11 rows   sha256/16 bddf9b3f918b0ff3   WHT plain#1 plain#2 salt-diet#2 plain#3 salt-diet#3, then NTT plain#1 … salt-diet#3
+  T-TWA-P         1 row    sha256/16 8c4ff78da0322704   WHT · salt-diet#1 (argon)
+  the argon rest 11 rows   sha256/16 e5d4d1e2caea5339   the Flash rest's order
+```
+`81792dbe` `--plan` on each: rc 0 four times, "phases gate OK", export sha `88b63df9`, 0 REFUSE, 24 of 24 roots absent and 0 EXISTS (plan
+outputs sha256/16 `85456f79925096e3` · `556a903fae473fa5` · `62577cd243376c3e` · `7af09e99c20caeb0`). Control: the same `--plan` on a
+one-phase row whose root exists (a TA root) reads EXISTS, so "absent" is a read that can fail. The plan prints TA's caps line, as row 6
+says (no NCA/WCA phase-2 persist timeout is carried).
 **Every §TWA2 receipt is MET:** items 1, 3 and 5 at `88b63df9` (ADDENDUM 1); items 2 and 4 above; item 6 by NCA ADDENDUM 2's battery on the
 same export and client (ADDENDUM 1). The release: export saltbench-systems `88b63df9` (WHT `44b92115d240` · NTT `77c641773103` there),
 client agy 1.5.11 / `62f2102784bb74b7`, supervisor `81792dbe`, the hand gemini, the signature as recorded below ADDENDUM 1.
