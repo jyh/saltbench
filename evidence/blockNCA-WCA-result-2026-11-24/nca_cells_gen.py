@@ -20,11 +20,13 @@ and are never read as a premium. Nothing here compares arms, models or blocks.""
 import glob, json, os, re, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+G_REC = {}
 RUNS = os.environ.get('NCA_RUNS') or os.path.expanduser('~/.fleet/executors/gemini.runs')   # NCA_RUNS: a test root only
 MANIFESTS = ('NCA-flash-all', 'NCA-argon-all', 'WCA-flash-all', 'WCA-argon-all')
 COLS = ['block', 'root', 'id', 'attempt', 'discarded', 'problem', 'arm', 'p2_model', 'p2_client16', 'p2_export', 'hook16', 'source', 'T', 'turns_sent',
         'continue_turns', 'cut_turns_all', 'wall_seconds', 'done_reason', 'landed', 'false_done_claims', 'end2', 'verdict', 'TESTS',
-        'REGRESSIONS', 'CLAUSE', 'truncated', 'interface', 'score_receipt', 'ctl_reads', 'flag', 'briefing', 'persist', 'p2_gate']
+        'REGRESSIONS', 'CLAUSE', 'truncated', 'interface', 'score_receipt', 'ctl_reads', 'flag', 'briefing', 'persist', 'p2_gate',
+        'g_tests', 'g_verdict', 'g_sha12', 'g_receipt', 'counted']
 NOSCORE = dict(verdict='UNSCORED', TESTS='UNSCORED', REGRESSIONS='UNSCORED', CLAUSE='UNSCORED', truncated='UNSCORED',
                interface='UNSCORED', score_receipt='UNSCORED')
 
@@ -71,6 +73,22 @@ def receipts():
     return out
 
 
+def g_receipts():
+    """The hand's G-baseline ROW lines (harvest-problem.sh, which prints gbase.sh's own line with run_tests.sh's rc), keyed by
+    (id, landed-1 sha12): ids recur across roots, the sha does not. A key read twice with two verdicts REFUSES."""
+    out = {}
+    for f in sorted(glob.glob(os.path.join(RUNS, 'nca-manifests-2026-11-24', 'harvest-*.out'))):
+        for l in open(f, errors='replace'):
+            m = re.search(r'GBASE (\S+) \S+ landed-1=([0-9a-f]{12}) rc=(\d+) (TESTS \d+/\d+|NO-TESTS-LINE).*=> (ELIGIBLE|NOT-ELIGIBLE)', l)
+            if not m:
+                continue
+            k, v = (m.group(1), m.group(2)), 'rc=%s %s %s' % (m.group(3), m.group(4), m.group(5))
+            if k in out and out[k][0] != v:
+                sys.exit('REFUSE: two G receipts for %s disagree: %s / %s' % (k, out[k][0], v))
+            out[k] = (v, os.path.relpath(f, RUNS))
+    return out
+
+
 def ctl_census(roots):
     path = os.path.join(HERE, 'ctl_census.tsv')
     out = {}
@@ -95,6 +113,8 @@ def table():
     ctl = ctl_census({p['root'] for p in pop})
     facts = {f['root']: f for f in json.load(open(os.path.join(HERE, 'cell_facts.json')))} if os.path.exists(os.path.join(HERE, 'cell_facts.json')) else {}
     sc = receipts()
+    global G_REC
+    G_REC = g_receipts()
     # ⛔ A RECEIPT ROOT IS A MANIFEST ROOT (attempt 1) OR `<manifest root>-a<k>`, k >= 2: the canary supervisor's re-queue after a 503
     #   discard (L8 A2.2: the table carries each cell's attempt number; a discarded attempt is never pooled). Anything else is stray.
     #   A row scored under TWO attempts REFUSES (only the standing attempt is scored), and so does a receipt whose attempt is not the
@@ -122,6 +142,16 @@ def table():
         if 'cell' in s and r['id'] not in ('UNREAD', s['cell']):
             sys.exit('REFUSE: %s receipt names cell %s, the facts name %s' % (p['root'], s['cell'], r['id']))
         r.update({k: v for k, v in s.items() if k in COLS})
+        # ⛔ NC RULE 4: a FRESH cell's phase 2 COUNTS only when its G baseline on landed-1 reads ELIGIBLE. A fresh cell whose baseline is
+        #   anything else is a REACH LOSS: its phase 2 is reported and never counted (gemini @735452, @736247; one attempt, never re-run).
+        #   The verdict is the box's (the log's TESTS line); where the hand's harvest printed gbase.sh's ROW line (with rc), the two must
+        #   AGREE or this REFUSES. A copy owes no fresh baseline (its source was made eligible by the census, ADDENDUM 1).
+        gr = G_REC.get((r['id'], r['g_sha12']))
+        r['g_receipt'] = 'COPY' if r['g_verdict'] == 'COPY' else (gr[1] if gr else 'NONE')
+        if gr and not gr[0].endswith(' ' + str(r['g_verdict'])):
+            sys.exit('REFUSE: %s G baseline: the box reads %s (%s), the harvest receipt reads %s' % (p['root'], r['g_verdict'], r['g_tests'], gr[0]))
+        r['counted'] = ('yes' if r['verdict'] in ('PASS', 'FAIL') and r['g_verdict'] in ('COPY', 'ELIGIBLE')
+                        else 'REACH-LOSS(G)' if r['verdict'] in ('PASS', 'FAIL') else 'no')
         n = ctl.get(p['root'])
         r['ctl_reads'] = 'UNREAD' if n is None else n
         r['flag'] = 'CTL-READ' if n else ('-' if n == 0 else 'UNREAD')
@@ -131,7 +161,7 @@ def table():
 
 
 def summary(rows):
-    scored = lambda rs: [r for r in rs if r['verdict'] in ('PASS', 'FAIL')]
+    scored = lambda rs: [r for r in rs if r['counted'] == 'yes']   # scored AND counted (NC rule 4); a REACH-LOSS(G) phase 2 is listed apart
     L = ['rows %d · scored %d · receipts %d · facts %d' % (len(rows), len(scored(rows)), sum(r['score_receipt'] != 'UNSCORED' for r in rows),
                                                        sum(r['id'] not in ('UNREAD', 'NO-CELL', 'TWO-CELLS', 'NO-ROOT', 'TWO-ATTEMPTS') for r in rows))]
     at = [r for r in rows if isinstance(r['attempt'], int) and r['attempt'] >= 2]
@@ -163,9 +193,11 @@ def summary(rows):
                     continue
                 sr = scored(rs)
                 ct = [r['cut_turns_all'] for r in sr]
-                L.append('%s %s %s: PASS %d of %d scored, of %d registered [%s] · cut turns %s · truncated %d of %d scored · CTL-READ %s of %d scored' % (
+                gl = [r for r in rs if r['counted'] == 'REACH-LOSS(G)']
+                L.append('%s %s %s: PASS %d of %d scored, of %d registered [%s] · G reach-loss %d%s · cut turns %s · truncated %d of %d scored · CTL-READ %s of %d scored' % (
                     b, pr, a, sum(r['verdict'] == 'PASS' for r in sr), len(sr), len(rs),
                     ' '.join('T%s R%s C%s' % (r['TESTS'], r['REGRESSIONS'], r['CLAUSE']) for r in sr) or '-',
+                    len(gl), (' [' + ' '.join('%s G %s, phase 2 %s T%s' % (r['id'], r['g_tests'], r['verdict'], r['TESTS']) for r in gl) + ']') if gl else '',
                     ('%d' % sum(ct) if all(isinstance(x, int) for x in ct) else 'UNREAD') if sr else '-',   # over SCORED cells only, never a 0 for none
                     sum(r['truncated'] == 'yes' for r in sr), len(sr), ('-' if not sr else 'UNREAD' if any(r['flag'] == 'UNREAD' for r in sr)   # never a 0 over an unread census
                               else '%d' % sum(r['flag'] == 'CTL-READ' for r in sr)), len(sr)))

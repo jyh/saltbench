@@ -89,6 +89,36 @@ def find(root, prefix, copy_from):
     return c[0] if len(c) == 1 else ('NO-CELL' if not c else 'TWO-CELLS')
 
 
+GBASE = os.path.join(H, 'bench-dry', 'nca-fresh-gbase-2026-11-25')
+
+
+def gbase(sroot, cid):
+    """NC rule 4's G baseline of a FRESH cell, read from its own record (gemini-fresh-gbase.sh, keyed by ROOT + ID; three legacy
+    id-only dirs carry CELL-ROOT.txt). -> (g_tests, g_verdict, g_sha12, g_aborted). The verdict is the log's TESTS line read by
+    gbase.sh's own rule (passed == total > 0); gbase.sh does not record run_tests.sh's rc, so the generator cross-checks every
+    verdict that has a harvest ROW line (which does). NO-RECORD = no base dir; NO-LOG = a base dir and no log (gbase.sh refused before
+    the clone, e.g. no landed-1 tag). g_aborted counts `<root>.ABORTED-*` dirs beside it (an attempt that did not complete)."""
+    d = os.path.join(GBASE, sroot, cid)
+    if not os.path.isdir(d):
+        leg = os.path.join(GBASE, cid)
+        d = leg if first_line(os.path.join(leg, 'CELL-ROOT.txt')) == sroot else None
+    try:
+        ab = sum(n.startswith(sroot + '.ABORTED-') for n in os.listdir(GBASE))
+    except OSError:
+        ab = 'UNREAD'
+    if d is None:
+        return 'NO-RECORD', 'NO-RECORD', 'NO-RECORD', ab
+    log = os.path.join(d, 'logs', cid + '.G.log')
+    try:
+        tl = [l.strip() for l in open(log, errors='replace') if l.startswith('TESTS ')]
+    except OSError:
+        return 'NO-LOG', 'NO-LOG', 'NO-LOG', ab
+    m = re.fullmatch(r'TESTS (\d+)/(\d+)', tl[-1]) if tl else None
+    v = 'ELIGIBLE' if m and m.group(1) == m.group(2) and int(m.group(2)) > 0 else 'NOT-ELIGIBLE'
+    head = first_line(os.path.join(d, 'work', cid, '.git', 'HEAD'))   # a detached checkout of landed-1 writes the sha here
+    return ('%s/%s' % m.groups() if m else 'NO-TESTS-LINE'), v, (head[:12] if re.fullmatch(r'[0-9a-f]{40}', head) else 'UNREAD'), ab
+
+
 GATE, GATE_LOGS = gate_lines()
 out = []
 for line in sys.stdin:
@@ -101,7 +131,7 @@ for line in sys.stdin:
     rec = {'root': root, 'id': cid, 'standing_root': sroot, 'attempt': k if k else sroot, 'discarded': disc}
     if cid in ('NO-CELL', 'TWO-CELLS', 'NO-ROOT', 'TWO-ATTEMPTS'):   # nothing below is read from a cell that is not found: every field says so, none reads FRESH or 0
         out.append(dict(rec, **{k: cid for k in ('T', 'requested_model', 'meter_verdict', 'cut_turns_all', 'p2_model', 'p2_client16', 'end1',
-                                                   'end2', 'source', 'p2_export', 'hook16', 'p2_gate') + LOOP}))
+                                                   'end2', 'source', 'p2_export', 'hook16', 'p2_gate', 'g_tests', 'g_verdict', 'g_sha12', 'g_aborted') + LOOP}))
         continue
     root = sroot   # every read below is of the standing attempt's cell; rec['root'] stays the manifest row's
     c = os.path.join(H, root, cid, 'ctl')
@@ -140,6 +170,10 @@ for line in sys.stdin:
         rec.update(source=k.get('source', 'UNREAD'), p2_export=k.get('phase2_export', 'UNREAD'), hook16=h.group(1) if h else 'UNREAD')
     else:
         rec.update(source='FRESH', p2_export=kv(os.path.join(c, 'built-from.tsv')).get('export_sha', 'UNREAD'), hook16='FRESH')
+    if rec['source'] == 'FRESH':
+        rec['g_tests'], rec['g_verdict'], rec['g_sha12'], rec['g_aborted'] = gbase(root, cid)
+    else:   # a copy's source was made eligible by the census (ADDENDUM 1); it owes no fresh G baseline
+        rec['g_tests'] = rec['g_verdict'] = rec['g_sha12'] = 'COPY'; rec['g_aborted'] = 0
     out.append(rec)
 json.dump(out, sys.stdout, indent=1, sort_keys=True)
 print()

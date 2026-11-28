@@ -4,7 +4,8 @@
 set -u
 HERE=$(cd "$(dirname "$0")" && pwd); REAL=${REAL_RUNS:-$HOME/.fleet/executors/gemini.runs}; pass=0; fail=0
 T=$(mktemp -d "${TMPDIR:-/tmp}/nca-gen-st.XXXXXX") || exit 2
-fresh(){ find "$T" -mindepth 1 -delete; for d in "$REAL"/nca-*-score*/ "$REAL"/wca-*-score*/; do [ -d "$d" ] || continue; mkdir -p "$T/$(basename "$d")"; cp "$d"*.p2.score.txt "$T/$(basename "$d")/" 2>/dev/null; done; }
+fresh(){ find "$T" -mindepth 1 -delete; for d in "$REAL"/nca-*-score*/ "$REAL"/wca-*-score*/; do [ -d "$d" ] || continue; mkdir -p "$T/$(basename "$d")"; cp "$d"*.p2.score.txt "$T/$(basename "$d")/" 2>/dev/null; done
+  mkdir -p "$T/nca-manifests-2026-11-24"; cp "$REAL"/nca-manifests-2026-11-24/harvest-*.out "$T/nca-manifests-2026-11-24/" 2>/dev/null; }   # the G receipts (2026-11-28)
 arm(){ local name=$1 want=$2 rcw=$3; out=$(NCA_RUNS=$T python3 -I "$HERE/nca_cells_gen.py" --summary 2>&1); rc=$?
   if [ "$rc" = "$rcw" ] && printf '%s\n' "$out" | grep -q -F -- "$want"; then pass=$((pass+1)); echo "ok   $name (rc $rc)"; else fail=$((fail+1)); echo "FAIL $name (rc $rc): $(printf '%s' "$out" | tail -1)"; fi; }
 fresh; arm control-real-receipts 'rows 96 · scored' 0
@@ -27,7 +28,7 @@ ctlarm(){ local name=$1 want=$2 rcw=$3 body=$4; cp -R "$HERE"/. "$G"/; printf '%
   if [ "$rc" = "$rcw" ] && printf '%s\n' "$out" | grep -q -F -- "$want"; then pass=$((pass+1)); echo "ok   $name (rc $rc)"; else fail=$((fail+1)); echo "FAIL $name (rc $rc): $(printf '%s' "$out" | grep -F 'CTL-READ' | head -2 | tail -1)"; fi; }
 fresh
 ctlarm ctl-flagged 'CTL-READ 1 [cells-na-aes-flash-salt-ncacp1]' 0 'cells-na-aes-flash-salt-ncacp1\t8\tctl/briefing-claim,ctl/launch.log\ncells-na-aes-flash-plain-ncacp1\t0\t-\n'
-ctlarm ctl-line-unread-not-zero 'NCA-flash AES plain: PASS 3 of 3 scored, of 3 registered [T14/14 R0/8 C0/6 T14/14 R0/8 C0/6 T14/14 R0/8 C0/6] · cut turns 0 · truncated 0 of 3 scored · CTL-READ UNREAD of 3 scored' 0 'cells-na-aes-flash-plain-ncacp1\t0\t-\n'
+ctlarm ctl-line-unread-not-zero 'NCA-flash AES plain: PASS 3 of 3 scored, of 3 registered [T14/14 R0/8 C0/6 T14/14 R0/8 C0/6 T14/14 R0/8 C0/6] · G reach-loss 0 · cut turns 0 · truncated 0 of 3 scored · CTL-READ UNREAD of 3 scored' 0 'cells-na-aes-flash-plain-ncacp1\t0\t-\n'
 ctlarm ctl-malformed 'not root TAB reads TAB paths' 1 'cells-na-aes-flash-salt-ncacp1\t3\t-\n'
 ctlarm ctl-stray-root 'outside the 96' 1 'cells-na-nosuch\t0\t-\n'
 ctlarm ctl-duplicate 'twice' 1 'cells-na-aes-flash-plain-ncacp1\t0\t-\ncells-na-aes-flash-plain-ncacp1\t0\t-\n'
@@ -67,6 +68,24 @@ attarm attempt-one-plain 'pq01 1 0 r' r/pq01/ctl rx-a2/pqa201/ctl
 #   2026-11-28; equivalent on the real population, where each -a<k> root holds one cell). Only an attempt root that ALSO holds a
 #   `pq`-named dir separates the two: with a<k> appended the cell is pqa201, without it TWO-CELLS.
 attarm attempt-prefix-carries-ak 'pqa201 2 0 r-a2' r-a2/pq01/ctl r-a2/pqa201/ctl
+find "$F" -delete
+# G arms (NC rule 4; 2026-11-28): a fresh cell counts only on an ELIGIBLE baseline; the box's verdict and the hand's ROW line must agree
+fresh; arm g-reach-loss-not-counted 'NCA-flash BinomialHeap salt-diet: PASS 2 of 2 scored, of 3 registered [T18/18 R0/13 C0/5 T18/18 R0/13 C0/5] · G reach-loss 1 [ncabhfs01 G 7/13, phase 2 FAIL T7/18]' 0
+fresh; G=$(mktemp -d "${TMPDIR:-/tmp}/nca-gen-g.XXXXXX") || exit 2; cp -R "$HERE"/. "$G"/
+python3 -c 'import json,sys; p=sys.argv[1]; j=json.load(open(p)); [r.update(g_verdict="NOT-ELIGIBLE") for r in j if r["root"]=="cells-nca-aes-argon-plain-r1"]; json.dump(j,open(p,"w"))' "$G/cell_facts.json"
+out=$(NCA_RUNS=$T python3 -I "$G/nca_cells_gen.py" --summary 2>&1); rc=$?
+if [ "$rc" = 1 ] && printf '%s\n' "$out" | grep -q -F 'cells-nca-aes-argon-plain-r1 G baseline: the box reads NOT-ELIGIBLE'; then pass=$((pass+1)); echo "ok   g-box-vs-receipt (rc $rc)"; else fail=$((fail+1)); echo "FAIL g-box-vs-receipt (rc $rc): $(printf '%s' "$out" | tail -1)"; fi
+find "$G" -delete
+F=$(mktemp -d "${TMPDIR:-/tmp}/nca-gen-g2.XXXXXX") || exit 2
+garm(){ local name=$1 want=$2 setup=$3; find "$F" -mindepth 1 -delete; B="$F/bench-dry/nca-fresh-gbase-2026-11-25"; mkdir -p "$F/r/pq01/ctl" "$B"; eval "$setup"
+  out=$(printf 'r\tpq\t-\n' | HOME=$F python3 -I "$HERE/nca_facts.py" | python3 -c 'import json,sys; r=json.load(sys.stdin)[0]; print("%s %s %s %s" % (r["g_tests"], r["g_verdict"], r["g_sha12"], r["g_aborted"]))' 2>&1)
+  if [ "$out" = "$want" ]; then pass=$((pass+1)); echo "ok   $name"; else fail=$((fail+1)); echo "FAIL $name: got [$out] want [$want]"; fi; }
+S40=aaaaaaaaaaaa0000000000000000000000000000
+garm g-root-id-eligible "8/8 ELIGIBLE aaaaaaaaaaaa 0" 'mkdir -p $B/r/pq01/logs $B/r/pq01/work/pq01/.git; printf "x\nTESTS 8/8\n" > $B/r/pq01/logs/pq01.G.log; echo $S40 > $B/r/pq01/work/pq01/.git/HEAD'
+garm g-short-not-eligible "7/13 NOT-ELIGIBLE aaaaaaaaaaaa 0" 'mkdir -p $B/r/pq01/logs $B/r/pq01/work/pq01/.git; printf "TESTS 7/13\n" > $B/r/pq01/logs/pq01.G.log; echo $S40 > $B/r/pq01/work/pq01/.git/HEAD'
+garm g-legacy-own-root "12/12 ELIGIBLE aaaaaaaaaaaa 1" 'mkdir -p $B/pq01/logs $B/pq01/work/pq01/.git $B/r.ABORTED-SIGPIPE-x; echo r > $B/pq01/CELL-ROOT.txt; printf "TESTS 12/12\n" > $B/pq01/logs/pq01.G.log; echo $S40 > $B/pq01/work/pq01/.git/HEAD'
+garm g-legacy-other-root "NO-RECORD NO-RECORD NO-RECORD 0" 'mkdir -p $B/pq01/logs; echo rr > $B/pq01/CELL-ROOT.txt; printf "TESTS 12/12\n" > $B/pq01/logs/pq01.G.log'
+garm g-no-log "NO-LOG NO-LOG NO-LOG 0" 'mkdir -p $B/r/pq01'
 find "$F" -delete
 find "$T" -delete
 echo "nca_gen_selftest: $pass of $((pass+fail)) arms"; [ "$fail" = 0 ]
