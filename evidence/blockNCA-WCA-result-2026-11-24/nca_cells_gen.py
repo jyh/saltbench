@@ -13,6 +13,7 @@
                   file reads UNREAD, never 0
 A value that cannot be read is UNREAD, never blank and never zero.
   python3 nca_cells_gen.py --fetch HOST   -> runs nca_facts.py on HOST over the 96 rows, writes cell_facts.json
+  python3 nca_cells_gen.py --fetch-web HOST -> the tracked 11-20 web census over the standing roots, writes web_census.tsv + web_transcripts.tsv
   python3 nca_cells_gen.py                -> the per-cell table (TSV, stdout)
   python3 nca_cells_gen.py --summary      -> the figure lines the results quote, from the table's own rows
   python3 nca_cells_gen.py --check <md>   -> rc 0 iff every --summary line occurs verbatim in that file (rc 1 names the missing)
@@ -27,7 +28,8 @@ MANIFESTS = ('NCA-flash-all', 'NCA-argon-all', 'WCA-flash-all', 'WCA-argon-all')
 COLS = ['block', 'root', 'id', 'attempt', 'discarded', 'problem', 'arm', 'p2_model', 'p2_client16', 'p2_export', 'hook16', 'source', 'T', 'turns_sent',
         'continue_turns', 'cut_turns_all', 'wall_seconds', 'done_reason', 'landed', 'false_done_claims', 'end2', 'verdict', 'TESTS',
         'REGRESSIONS', 'CLAUSE', 'truncated', 'interface', 'score_receipt', 'ctl_reads', 'flag', 'briefing', 'persist', 'p2_gate',
-        'g_tests', 'g_verdict', 'g_sha12', 'g_receipt', 'counted']
+        'g_tests', 'g_verdict', 'g_sha12', 'g_receipt', 'counted', 'p1_model', 'p1_client16', 'p1_T', 'p1_wall_seconds', 'p1_done_reason',
+        'p1_turns_sent', 'p1_cut_turns_all', 'lineage', 'source_web_served', 'p2_web_served']
 NOSCORE = dict(verdict='UNSCORED', TESTS='UNSCORED', REGRESSIONS='UNSCORED', CLAUSE='UNSCORED', truncated='UNSCORED',
                interface='UNSCORED', score_receipt='UNSCORED')
 
@@ -109,13 +111,39 @@ def ctl_census(roots):
     return out
 
 
+def web_states():
+    """(1) the cell's own web state from web_census.tsv + web_transcripts.tsv (--fetch-web): WEB-SERVED(n) at n served search results,
+    CLEAN at >= 1 brain transcript and none served, UNMEASURED at none; a cell absent from the transcript file reads UNREAD.
+    (2) a copy's SOURCE state from the 11-20 census's join.tsv (tracked beside this dir), keyed by (root, id); absent reads NOT-IN-JOIN."""
+    own, src = {}, {}
+    tp = os.path.join(HERE, 'web_transcripts.tsv')
+    if os.path.exists(tp):
+        served = {}
+        for l in open(os.path.join(HERE, 'web_census.tsv')):
+            f = l.rstrip('\n').split('\t')
+            if l.startswith('#') or len(f) < 5:
+                continue
+            if f[2] == 'search_web':
+                served[f[0]] = served.get(f[0], 0) + int(f[4])
+        for l in open(tp):
+            c, n = l.rstrip('\n').split('\t')
+            own[c] = ('WEB-SERVED(%d)' % served[c]) if served.get(c) else ('CLEAN' if int(n) > 0 else 'UNMEASURED')
+    for l in open(os.environ.get('NCA_WEB_JOIN') or os.path.join(HERE, '..', 'o37-agy-web-served-2026-11-20', 'join.tsv')):   # env: a test copy only
+        f = l.rstrip('\n').split('\t')
+        if l.startswith('#') or len(f) < 11:
+            continue
+        src[(f[5], f[1])] = f[10]
+    return own, src
+
+
 def table():
     pop = population()
     ctl = ctl_census({p['root'] for p in pop})
     facts = {f['root']: f for f in json.load(open(os.path.join(HERE, 'cell_facts.json')))} if os.path.exists(os.path.join(HERE, 'cell_facts.json')) else {}
     sc = receipts()
-    global G_REC
+    global G_REC, OWN_WEB, SRC_WEB
     G_REC = g_receipts()
+    OWN_WEB, SRC_WEB = web_states()
     # ⛔ A RECEIPT ROOT IS A MANIFEST ROOT (attempt 1) OR `<manifest root>-a<k>`, k >= 2: the canary supervisor's re-queue after a 503
     #   discard (L8 A2.2: the table carries each cell's attempt number; a discarded attempt is never pooled). Anything else is stray.
     #   A row scored under TWO attempts REFUSES (only the standing attempt is scored), and so does a receipt whose attempt is not the
@@ -157,8 +185,28 @@ def table():
         r['ctl_reads'] = 'UNREAD' if n is None else n
         r['flag'] = 'CTL-READ' if n else ('-' if n == 0 else 'UNREAD')
         r['briefing'] = r['persist'] = 'UNMEASURED(CTL-READ)' if n else 'as-receipt'
+        sr = facts.get(p['root'], {}).get('standing_root', 'UNREAD')
+        cell = '%s/%s' % (sr, r['id'])
+        r['p2_web_served'] = OWN_WEB.get(cell, 'UNREAD') if r['id'] not in ('UNREAD', 'NO-CELL', 'TWO-CELLS', 'NO-ROOT', 'TWO-ATTEMPTS') else r['id']
+        sp = str(r['source'])
+        if sp == 'FRESH':   # a fresh cell's phase 1 is in its own brain, beside phase 2: its own reading covers both phases
+            r['lineage'], r['source_web_served'] = 'FRESH', 'OWN:' + r['p2_web_served']
+        elif sp.startswith('/'):
+            sroot, sid = sp.rstrip('/').split('/')[-2:]
+            r['lineage'] = '%s/%s' % (sroot, sid)
+            r['source_web_served'] = SRC_WEB.get((sroot, sid), 'NOT-IN-JOIN')
+        else:
+            r['lineage'] = r['source_web_served'] = sp
         rows.append(r)
     return rows
+
+
+def rep_of(root):
+    """⛔ a copy root carries its SOURCE's rep group too (cells-na-luby-flash-plain-r2-ncacp1): the rep is the TRAILING index only."""
+    m = re.search(r'-(?:r|ncacp|wcacp)([1-3])$', root)
+    if not m:
+        sys.exit('REFUSE: no trailing rep index in root %s' % root)
+    return int(m.group(1))
 
 
 def summary(rows):
@@ -230,6 +278,39 @@ def summary(rows):
                     ('%d' % sum(ct) if all(isinstance(x, int) for x in ct) else 'UNREAD') if sr else '-',   # over SCORED cells only, never a 0 for none
                     sum(r['truncated'] == 'yes' for r in sr), len(sr), ('-' if not sr else 'UNREAD' if any(r['flag'] == 'UNREAD' for r in sr)   # never a 0 over an unread census
                               else '%d' % sum(r['flag'] == 'CTL-READ' for r in sr)), len(sr)))
+    # per block: the clients per phase, the web reads, and phase 2's T and wall by rep (a sign only; nothing here is a premium). A pair is
+    #   (problem, rep), rep from the root's -r<k>/-ncacp<k>/-wcacp<k>; a value prints only for a COUNTED cell, else '-'.
+    def dist(rs, k):
+        v = {}
+        for r in rs:
+            v[str(r[k])] = v.get(str(r[k]), 0) + 1
+        return ' '.join('%s=%d' % kv for kv in sorted(v.items()))
+    rep = lambda r: rep_of(r['root'])
+    for b in ('NCA-flash', 'NCA-argon', 'WCA-flash', 'WCA-argon'):
+        for c in {(r['problem'], r['arm']) for r in rows if r['block'] == b}:
+            got = sorted(rep(r) for r in rows if r['block'] == b and (r['problem'], r['arm']) == c)
+            if got != [1, 2, 3]:
+                sys.exit('REFUSE: %s %s reads reps %s, not [1, 2, 3]' % (b, c, got))
+    for b in ('NCA-flash', 'NCA-argon', 'WCA-flash', 'WCA-argon'):
+        bb = [r for r in rows if r['block'] == b]
+        L.append('%s clients: phase 1 %s · phase 2 %s' % (b, dist(bb, 'p1_client16'), dist(bb, 'p2_client16')))
+        L.append('%s web: source_web_served %s · phase 2 %s' % (b, dist(bb, 'source_web_served'), dist(bb, 'p2_web_served')))
+        L.append('%s phase 1: done_reason %s · cut turns (cells with >= 1) %d of %d read' % (
+            b, dist(bb, 'p1_done_reason'), sum(isinstance(r['p1_cut_turns_all'], int) and r['p1_cut_turns_all'] > 0 for r in bb),
+            sum(isinstance(r['p1_cut_turns_all'], int) for r in bb)))
+        for pr in sorted({r['problem'] for r in bb}):
+            for k, fmt in (('T', '%d'), ('wall_seconds', '%.1f')):
+                pairs, cells = [], []
+                for n in (1, 2, 3):
+                    v = {}
+                    for a in ('plain', 'salt-diet'):
+                        x = [r for r in bb if r['problem'] == pr and r['arm'] == a and rep(r) == n and r['counted'] == 'yes' and isinstance(r[k], (int, float))]
+                        v[a] = x[0][k] if len(x) == 1 else None
+                    cells.append('#%d %s / %s' % (n, fmt % v['plain'] if v['plain'] is not None else '-', fmt % v['salt-diet'] if v['salt-diet'] is not None else '-'))
+                    if None not in v.values():
+                        pairs.append(v['salt-diet'] > v['plain'])
+                L.append('%s %s phase-2 %s by rep (plain / salt-diet): %s · salt-diet > plain in %d of %d pairs' % (
+                    b, pr, 'T' if k == 'T' else 'wall_s', ' · '.join(cells), sum(pairs), len(pairs)))
     return L
 
 
@@ -251,10 +332,44 @@ def fetch(host):
     print('cell_facts.json: %d records from %s' % (len(facts), host))
 
 
+WEB_SH = r"""set -u
+D=$HOME/bench-dry/nca-wca-web-$1; F=$D/farm; cd "$D" || exit 2
+[ -d "$F" ] && find "$F" -mindepth 1 -maxdepth 1 -type l -delete; mkdir -p "$F"
+while read -r r; do [ -d "$HOME/$r" ] || { echo "MISSING $r" >&2; exit 3; }; ln -s "$HOME/$r" "$F/$r"; done < standing_roots.txt
+/usr/bin/python3 -I web_brain_census.py "$F" > web_census.raw || exit 4
+for c in "$F"/*/*/; do c=${c%/}; [ -d "$c/.agyhome" ] || continue
+  printf '%s\t%s\n' "${c#$F/}" "$(ls "$c"/.agyhome/.gemini/antigravity-cli/brain/*/.system_generated/logs/transcript_full.jsonl 2>/dev/null | wc -l | tr -d ' ')"
+done > web_transcripts.tsv
+sed "s|$F/||" web_census.raw > web_census.tsv"""
+
+
+def fetch_web(host):
+    """Phase-2 (copies) and both-phase (fresh) web reads: the TRACKED web_brain_census.py (block O37's 11-20 census, beside this dir)
+    run on HOST over a farm of symlinks to the standing roots in cell_facts.json; web_census.tsv (its output, paths root/id) and
+    web_transcripts.tsv (brain transcripts per cell: a cell with none is UNMEASURED, never CLEAN) are written beside this file."""
+    facts = json.load(open(os.path.join(HERE, 'cell_facts.json')))
+    roots = sorted({r['standing_root'] for r in facts if r['standing_root'] not in ('NO-ROOT', 'TWO-ATTEMPTS')})
+    tag = '%d' % os.getpid(); d = '~/bench-dry/nca-wca-web-' + tag
+    census = open(os.path.join(HERE, '..', 'o37-agy-web-served-2026-11-20', 'web_brain_census.py')).read()
+    for name, body in (('standing_roots.txt', '\n'.join(roots) + '\n'), ('web_brain_census.py', census), ('run.sh', WEB_SH)):
+        subprocess.run(['ssh', host, 'mkdir -p %s && cat > %s/%s' % (d, d, name)], input=body, text=True, check=True)
+    p = subprocess.run(['ssh', host, 'bash %s/run.sh %s' % (d, tag)], capture_output=True, text=True)
+    if p.returncode != 0:
+        sys.exit('REFUSE: the web census rc %d on %s: %s' % (p.returncode, host, p.stderr[-400:]))
+    for name in ('web_census.tsv', 'web_transcripts.tsv'):
+        q = subprocess.run(['ssh', host, 'cat %s/%s' % (d, name)], capture_output=True, text=True, check=True)
+        open(os.path.join(HERE, name), 'w').write(q.stdout)
+    tx = [l.split('\t') for l in open(os.path.join(HERE, 'web_transcripts.tsv')) if l.strip()]
+    if len(tx) != len(roots):
+        sys.exit('REFUSE: %d cells carry a transcript count for %d standing roots' % (len(tx), len(roots)))
+    print('web census: %d standing roots, %d transcripts, from %s (%s)' % (len(roots), sum(int(x[1]) for x in tx), host, d))
+
 if __name__ == '__main__':
     a = sys.argv[1:]
     if a[:1] == ['--fetch'] and len(a) == 2:
         fetch(a[1])
+    elif a[:1] == ['--fetch-web'] and len(a) == 2:
+        fetch_web(a[1])
     elif a == ['--summary']:
         print('\n'.join(summary(table())))
     elif a[:1] == ['--check'] and len(a) == 2:

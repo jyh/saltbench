@@ -119,6 +119,49 @@ def gbase(sroot, cid):
     return ('%s/%s' % m.groups() if m else 'NO-TESTS-LINE'), v, (head[:12] if re.fullmatch(r'[0-9a-f]{40}', head) else 'UNREAD'), ab
 
 
+P1 = ('p1_model', 'p1_client16', 'p1_T', 'p1_wall_seconds', 'p1_done_reason', 'p1_turns_sent', 'p1_cut_turns_all')
+
+
+def p1_launch(path):
+    """(model, client16) from the LAST `LAUNCHING phase 1` line of a launch.log; NO-LOG if absent, NO-LINE if no such line."""
+    try:
+        hits = [m.groups() for m in (re.search(r'LAUNCHING phase 1 model (\S+) client ([0-9a-f]{16})', l) for l in open(path, errors='replace')) if m]
+    except OSError:
+        return 'NO-LOG', 'NO-LOG'
+    return hits[-1] if hits else ('NO-LINE', 'NO-LINE')
+
+
+def phase1(root, cid, source):
+    """L8 §M10's phase-1 columns and §NCA8's phase-1 client, read from the cell's own record: the wave sets phase 1 aside at phase 2
+    (`<root>/_aside/<id>/phase1/ctl/`, fresh cells and copies alike); the phase-1 meter stays in `<cell>/ctl/agy-meter-1.json`.
+    A copy's aside launch line is cross-checked against its SOURCE's own ctl/launch.log: two that differ read DISAGREE, never one."""
+    a = os.path.join(H, root, '_aside', cid, 'phase1', 'ctl')
+    r = dict(zip(('p1_model', 'p1_client16'), p1_launch(os.path.join(a, 'launch.log'))))
+    if source not in ('FRESH', 'UNREAD'):
+        sm, sc = p1_launch(os.path.join(source, 'ctl', 'launch.log'))
+        if r['p1_client16'] in ('NO-LOG', 'NO-LINE') and sc not in ('NO-LOG', 'NO-LINE'):   # the source fills an absent aside line; it never overwrites one state with another
+            r['p1_model'], r['p1_client16'] = sm, sc
+        elif sc not in ('NO-LOG', 'NO-LINE') and (sm, sc) != (r['p1_model'], r['p1_client16']):
+            r['p1_model'] = r['p1_client16'] = 'DISAGREE'
+    try:
+        r['p1_T'] = json.load(open(os.path.join(H, root, cid, 'ctl', 'agy-meter-1.json'))).get('T', 'UNREAD')
+    except (OSError, ValueError):
+        r['p1_T'] = 'UNREAD'
+    try:
+        t = json.load(open(os.path.join(a, 'agy-turnloop-1.json')))
+        r.update(p1_wall_seconds=t.get('wall_seconds', 'UNREAD'), p1_done_reason=t.get('done_reason', 'UNREAD'), p1_turns_sent=t.get('turns_sent', 'UNREAD'))
+    except (OSError, ValueError):
+        r.update(p1_wall_seconds='UNREAD', p1_done_reason='UNREAD', p1_turns_sent='UNREAD')
+    n, seen = 0, 0
+    for f in ('agy-stderr-1.txt', 'agy-turnloop-stderr-1.txt'):
+        try:
+            n += sum('print timeout' in l for l in open(os.path.join(a, f), errors='replace')); seen += 1
+        except OSError:
+            pass
+    r['p1_cut_turns_all'] = n if seen == 2 else 'UNREAD'
+    return r
+
+
 GATE, GATE_LOGS = gate_lines()
 out = []
 for line in sys.stdin:
@@ -131,7 +174,7 @@ for line in sys.stdin:
     rec = {'root': root, 'id': cid, 'standing_root': sroot, 'attempt': k if k else sroot, 'discarded': disc}
     if cid in ('NO-CELL', 'TWO-CELLS', 'NO-ROOT', 'TWO-ATTEMPTS'):   # nothing below is read from a cell that is not found: every field says so, none reads FRESH or 0
         out.append(dict(rec, **{k: cid for k in ('T', 'requested_model', 'meter_verdict', 'cut_turns_all', 'p2_model', 'p2_client16', 'end1',
-                                                   'end2', 'source', 'p2_export', 'hook16', 'p2_gate', 'g_tests', 'g_verdict', 'g_sha12', 'g_aborted') + LOOP}))
+                                                   'end2', 'source', 'p2_export', 'hook16', 'p2_gate', 'g_tests', 'g_verdict', 'g_sha12', 'g_aborted') + LOOP + P1}))
         continue
     root = sroot   # every read below is of the standing attempt's cell; rec['root'] stays the manifest row's
     c = os.path.join(H, root, cid, 'ctl')
@@ -170,6 +213,7 @@ for line in sys.stdin:
         rec.update(source=k.get('source', 'UNREAD'), p2_export=k.get('phase2_export', 'UNREAD'), hook16=h.group(1) if h else 'UNREAD')
     else:
         rec.update(source='FRESH', p2_export=kv(os.path.join(c, 'built-from.tsv')).get('export_sha', 'UNREAD'), hook16='FRESH')
+    rec.update(phase1(root, cid, rec['source']))
     if rec['source'] == 'FRESH':
         rec['g_tests'], rec['g_verdict'], rec['g_sha12'], rec['g_aborted'] = gbase(root, cid)
     else:   # a copy's source was made eligible by the census (ADDENDUM 1); it owes no fresh G baseline

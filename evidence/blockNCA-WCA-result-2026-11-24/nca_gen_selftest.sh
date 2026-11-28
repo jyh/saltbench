@@ -3,6 +3,7 @@
 # Each arm builds its fixture from the REAL receipts (copied), plants one defect, and requires the named refusal and rc 1.
 set -u
 HERE=$(cd "$(dirname "$0")" && pwd); REAL=${REAL_RUNS:-$HOME/.fleet/executors/gemini.runs}; pass=0; fail=0
+export NCA_WEB_JOIN="${NCA_WEB_JOIN:-$HERE/../o37-agy-web-served-2026-11-20/join.tsv}"   # the arms below run COPIES of this dir, which have no sibling
 T=$(mktemp -d "${TMPDIR:-/tmp}/nca-gen-st.XXXXXX") || exit 2
 fresh(){ find "$T" -mindepth 1 -delete; for d in "$REAL"/nca-*-score*/ "$REAL"/wca-*-score*/ "$REAL"/nca-*-harvest*/ "$REAL"/wca-*-harvest*/; do [ -d "$d" ] || continue; mkdir -p "$T/$(basename "$d")"; cp "$d"*.p2.score.txt "$T/$(basename "$d")/" 2>/dev/null; done
   mkdir -p "$T/nca-manifests-2026-11-24"; cp "$REAL"/nca-manifests-2026-11-24/harvest-*.out "$T/nca-manifests-2026-11-24/" 2>/dev/null; }   # the G receipts (2026-11-28)
@@ -90,6 +91,37 @@ garm g-short-not-eligible "7/13 NOT-ELIGIBLE aaaaaaaaaaaa 0" 'mkdir -p $B/r/pq01
 garm g-legacy-own-root "12/12 ELIGIBLE aaaaaaaaaaaa 1" 'mkdir -p $B/pq01/logs $B/pq01/work/pq01/.git $B/r.ABORTED-SIGPIPE-x; echo r > $B/pq01/CELL-ROOT.txt; printf "TESTS 12/12\n" > $B/pq01/logs/pq01.G.log; echo $S40 > $B/pq01/work/pq01/.git/HEAD'
 garm g-legacy-other-root "NO-RECORD NO-RECORD NO-RECORD 0" 'mkdir -p $B/pq01/logs; echo rr > $B/pq01/CELL-ROOT.txt; printf "TESTS 12/12\n" > $B/pq01/logs/pq01.G.log'
 garm g-no-log "NO-LOG NO-LOG NO-LOG 0" 'mkdir -p $B/r/pq01'
+find "$F" -delete
+# rep, web and phase-1 arms (2026-11-28, bench relight 229)
+reparm(){ local name=$1 want=$2 root=$3; out=$(cd "$HERE" && python3 -I -c 'import sys; sys.path.insert(0, "."); import nca_cells_gen as g; print(g.rep_of(sys.argv[1]))' "$root" 2>&1)
+  if [ "$out" = "$want" ]; then pass=$((pass+1)); echo "ok   $name"; else fail=$((fail+1)); echo "FAIL $name: got [$out] want [$want]"; fi; }
+reparm rep-copy-trailing-not-source-group 1 cells-na-luby-flash-plain-r2-ncacp1
+reparm rep-fresh-trailing 2 cells-nca-luby-argon-plain-r2
+reparm rep-no-index-refuses 'REFUSE: no trailing rep index in root cells-x-plain-r2-ncacp' cells-x-plain-r2-ncacp
+fresh; W=$(mktemp -d "${TMPDIR:-/tmp}/nca-gen-web.XXXXXX") || exit 2
+WC=cells-wa-ntt-flash-salt-r1-wcacp1/wanfs101
+webarm(){ local name=$1 col=$2 want=$3 root=$4 setup=$5; find "$W" -mindepth 1 -delete; cp -R "$HERE"/. "$W"/; cp "$NCA_WEB_JOIN" "$W/join.tsv"; eval "$setup"
+  out=$(NCA_RUNS=$T NCA_WEB_JOIN="$W/join.tsv" python3 -I "$W/nca_cells_gen.py" 2>&1 | awk -F'\t' -v c="$col" -v r="$root" 'NR==1{for(i=1;i<=NF;i++) if($i==c) k=i} NR>1 && $2==r {print $k}')
+  if [ "$out" = "$want" ]; then pass=$((pass+1)); echo "ok   $name"; else fail=$((fail+1)); echo "FAIL $name: got [$out] want [$want]"; fi; }
+webarm web-control-clean p2_web_served CLEAN cells-wa-ntt-flash-salt-r1-wcacp1 ':'
+webarm web-zero-transcripts-unmeasured p2_web_served UNMEASURED cells-wa-ntt-flash-salt-r1-wcacp1 "sed -i '' 's|^$WC	[0-9]*\$|$WC	0|' \$W/web_transcripts.tsv"
+webarm web-served-counted p2_web_served 'WEB-SERVED(2)' cells-wa-ntt-flash-salt-r1-wcacp1 "printf '%s\tc0\tsearch_web\t2\t2\t0\t0\t0\tq\n' $WC >> \$W/web_census.tsv"
+webarm web-absent-unread p2_web_served UNREAD cells-wa-ntt-flash-salt-r1-wcacp1 "sed -i '' '\|^$WC	|d' \$W/web_transcripts.tsv"
+webarm source-web-served-carried source_web_served WEB-SERVED cells-na-linearscan-flash-plain-r2-ncacp1 ':'
+webarm source-not-in-join source_web_served NOT-IN-JOIN cells-wa-ntt-flash-salt-r1-wcacp1 "sed -i '' '/	wanfs101	/d' \$W/join.tsv"
+webarm fresh-source-is-own source_web_served OWN:CLEAN cells-nca-luby-argon-plain-r1 ':'
+find "$W" -delete
+F=$(mktemp -d "${TMPDIR:-/tmp}/nca-gen-p1.XXXXXX") || exit 2
+p1arm(){ local name=$1 want=$2 setup=$3; find "$F" -mindepth 1 -delete; mkdir -p "$F/r/pq01/ctl" "$F/src/pq01/ctl" "$F/r/_aside/pq01/phase1/ctl"
+  printf 'source\t%s\n' "$F/src/pq01" > "$F/r/pq01/ctl/copied-from.tsv"; eval "$setup"
+  out=$(printf 'r\tpq\t%s\n' "$F/src/pq01" | HOME=$F python3 -I "$HERE/nca_facts.py" | python3 -c 'import json,sys; r=json.load(sys.stdin)[0]; print(r["p1_model"], r["p1_client16"])' 2>&1)
+  if [ "$out" = "$want" ]; then pass=$((pass+1)); echo "ok   $name"; else fail=$((fail+1)); echo "FAIL $name: got [$out] want [$want]"; fi; }
+L1='x LAUNCHING phase 1 model mA client aaaaaaaaaaaaaaaa'; L2='x LAUNCHING phase 1 model mA client bbbbbbbbbbbbbbbb'
+p1arm p1-aside-agrees-with-source 'mA aaaaaaaaaaaaaaaa' "echo '$L1' > \$F/r/_aside/pq01/phase1/ctl/launch.log; echo '$L1' > \$F/src/pq01/ctl/launch.log"
+p1arm p1-aside-disagrees 'DISAGREE DISAGREE' "echo '$L1' > \$F/r/_aside/pq01/phase1/ctl/launch.log; echo '$L2' > \$F/src/pq01/ctl/launch.log"
+p1arm p1-aside-absent-source-read 'mA bbbbbbbbbbbbbbbb' "echo '$L2' > \$F/src/pq01/ctl/launch.log"
+p1arm p1-no-log 'NO-LOG NO-LOG' ':'
+p1arm p1-no-line 'NO-LINE NO-LINE' "echo 'LAUNCHING phase 2 model mA client aaaaaaaaaaaaaaaa' > \$F/r/_aside/pq01/phase1/ctl/launch.log"
 find "$F" -delete
 find "$T" -delete
 echo "nca_gen_selftest: $pass of $((pass+fail)) arms"; [ "$fail" = 0 ]
