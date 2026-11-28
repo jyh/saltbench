@@ -123,7 +123,22 @@ p1arm p1-aside-agrees-with-source 'mA aaaaaaaaaaaaaaaa' "echo '$L1' > \$F/r/_asi
 p1arm p1-aside-disagrees 'DISAGREE DISAGREE' "echo '$L1' > \$F/r/_aside/pq01/phase1/ctl/launch.log; echo '$L2' > \$F/src/pq01/ctl/launch.log"
 p1arm p1-aside-absent-source-read 'mA bbbbbbbbbbbbbbbb' "echo '$L2' > \$F/src/pq01/ctl/launch.log"
 p1arm p1-no-log 'NO-LOG NO-LOG' ':'
+p1arm p1-no-aside-reads-cell-ctl 'mA aaaaaaaaaaaaaaaa' "find \$F/r/_aside -delete; echo '$L1' > \$F/r/pq01/ctl/launch.log"   # a gate refused phase 2: nothing was set aside
 p1arm p1-no-line 'NO-LINE NO-LINE' "echo 'LAUNCHING phase 2 model mA client aaaaaaaaaaaaaaaa' > \$F/r/_aside/pq01/phase1/ctl/launch.log"
 find "$F" -delete
+# --derive-ctl arms (2026-11-28): fixture join/hits files; the function is called directly, the real ctl_census.tsv is never written
+X=$(mktemp -d "${TMPDIR:-/tmp}/nca-gen-ctl2.XXXXXX") || exit 2
+dctl(){ local name=$1 want=$2 join=$3 hits=$4; printf '%b' "$join" > "$X/j.tsv"; printf '%b' "$hits" > "$X/h.tsv"; : > "${X:?}/o.tsv"
+  out=$(cd "$HERE" && python3 -I -c 'import sys; sys.path.insert(0, "."); import nca_cells_gen as g; g.derive_ctl(*sys.argv[1:4])' "$X/j.tsv" "$X/h.tsv" "$X/o.tsv" 2>&1; grep -v '^#' "$X/o.tsv" 2>/dev/null | tr '\t' ' ')
+  if printf '%s\n' "$out" | grep -q -F -- "$want"; then pass=$((pass+1)); echo "ok   $name"; else fail=$((fail+1)); echo "FAIL $name: got [$(printf '%s' "$out" | tail -1)] want [$want]"; fi; }
+J1='NCA-argon\tncalsapa201\tm\tplain\t~/cells-nca-linearscan-argon-plain-r2-a2/ncalsapa201\tNONE-NAMED\t6\t152\t0\t0\t0\t0\t0\t-\n'
+dctl derive-a2-maps-to-manifest-root 'cells-nca-linearscan-argon-plain-r2 0 -' "$J1" ''
+J2='NCA-argon\tncalvas01\tm\tsalt-diet\t~/cells-nca-liveness-argon-salt-r2/ncalvas01\tCTL-NAMED\t3\t9\t2\t0\t0\t0\t0\t-\nNCA-argon\tncalvas01\tm\tsalt-diet\t~/cells-nca-liveness-argon-salt-r3/ncalvas01\tNONE-NAMED\t3\t9\t0\t0\t0\t0\t0\t-\n'
+H2='NCA-argon\tncalvas01\tCTL\tread_file\t{"Path": "ctl/end-1"}\n'
+dctl derive-ambiguous-ctl-refuses 'cannot be assigned to one of cells-nca-liveness-argon-salt-r2 cells-nca-liveness-argon-salt-r3' "$J2" "$H2"
+J3='NCA-flash\tnaaefs01\tm\tsalt-diet\t~/cells-na-aes-flash-salt-ncacp1/naaefs01,~/cells-na-aes-flash-salt/naaefs01\tCTL-NAMED\t3\t9\t1\t0\t0\t0\t0\t-\n'
+H3='NCA-flash\tnaaefs01\tCTL\trun_command\t{"CommandLine": "ls -la ../ctl"}\n'
+dctl derive-bare-ctl-dir 'cells-na-aes-flash-salt-ncacp1 1 ctl/' "$J3" "$H3"
+find "$X" -delete
 find "$T" -delete
 echo "nca_gen_selftest: $pass of $((pass+fail)) arms"; [ "$fail" = 0 ]

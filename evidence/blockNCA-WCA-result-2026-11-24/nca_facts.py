@@ -136,6 +136,8 @@ def phase1(root, cid, source):
     (`<root>/_aside/<id>/phase1/ctl/`, fresh cells and copies alike); the phase-1 meter stays in `<cell>/ctl/agy-meter-1.json`.
     A copy's aside launch line is cross-checked against its SOURCE's own ctl/launch.log: two that differ read DISAGREE, never one."""
     a = os.path.join(H, root, '_aside', cid, 'phase1', 'ctl')
+    if not os.path.isdir(a):   # no phase 2 ran (a gate refused it), so phase 1 was never set aside: its record is still the cell's own ctl/
+        a = os.path.join(H, root, cid, 'ctl')
     r = dict(zip(('p1_model', 'p1_client16'), p1_launch(os.path.join(a, 'launch.log'))))
     if source not in ('FRESH', 'UNREAD'):
         sm, sc = p1_launch(os.path.join(source, 'ctl', 'launch.log'))

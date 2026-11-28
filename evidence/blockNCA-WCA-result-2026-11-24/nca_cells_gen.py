@@ -14,6 +14,9 @@
 A value that cannot be read is UNREAD, never blank and never zero.
   python3 nca_cells_gen.py --fetch HOST   -> runs nca_facts.py on HOST over the 96 rows, writes cell_facts.json
   python3 nca_cells_gen.py --fetch-web HOST -> the tracked 11-20 web census over the standing roots, writes web_census.tsv + web_transcripts.tsv
+  python3 nca_cells_gen.py --join-input     -> ctl_census_join_input.tsv (96 rows) from the manifests and cell_facts.json
+  python3 nca_cells_gen.py --fetch-ctl HOST -> the tracked ctl_census.py (--selftest, then --join) on HOST; writes ctl_census_join.tsv + _hits.tsv
+  python3 nca_cells_gen.py --derive-ctl     -> ctl_census.tsv from the join output (manifest roots; ambiguous CTL hits refuse)
   python3 nca_cells_gen.py                -> the per-cell table (TSV, stdout)
   python3 nca_cells_gen.py --summary      -> the figure lines the results quote, from the table's own rows
   python3 nca_cells_gen.py --check <md>   -> rc 0 iff every --summary line occurs verbatim in that file (rc 1 names the missing)
@@ -321,7 +324,7 @@ def summary(rows):
         nc = [r for r in bb if r['counted'] != 'yes']
         L.append('%s: rows %d · conditions %d · counted %d · not counted %d [%s]' % (
             b, len(bb), len({(r['problem'], r['arm']) for r in bb}), sum(r['counted'] == 'yes' for r in bb), len(nc),
-            ' '.join('%s=%s/%s/%s' % (r['id'], r['counted'], r['verdict'], r['p2_gate']) for r in nc) or '-'))
+            ' '.join('%s=%s/%s/%s' % (r['root'], r['counted'], r['verdict'], r['p2_gate']) for r in nc) or '-'))   # roots: ids recur across roots
         L.append('%s phase 2: model %s · export %s · hook %s · done_reason %s' % (
             b, dist(bb, 'p2_model'), ' '.join('%s=%d' % kv for kv in sorted({str(r['p2_export'])[:12]: sum(str(x['p2_export'])[:12] == str(r['p2_export'])[:12] for x in bb) for r in bb}.items())),
             dist(bb, 'hook16'), dist(bb, 'done_reason')))
@@ -401,12 +404,93 @@ def fetch_web(host):
         sys.exit('REFUSE: %d cells carry a transcript count for %d standing roots' % (len(tx), len(roots)))
     print('web census: %d standing roots, %d transcripts, from %s (%s)' % (len(roots), sum(int(x[1]) for x in tx), host, d))
 
+NOTFOUND = ('UNREAD', 'NO-CELL', 'TWO-CELLS', 'NO-ROOT', 'TWO-ATTEMPTS')
+
+
+def join_input(out_path=None, blocks=None):
+    """ctl_census_join_input.tsv for ctl_census.py --join, from the manifests and cell_facts.json: a copy is read in its standing root AND
+    its source's family; a fresh cell in its standing root. A row the run box does not hold REFUSES (a census cannot read a cell not there)."""
+    facts = {f['root']: f for f in json.load(open(os.path.join(HERE, 'cell_facts.json')))}
+    out = ['#block\tid\tmodel\tarm\thow\tfamilies   (bench 2026-11-28: copies read in the copy root AND the source family)']
+    for p in population():
+        if blocks and p['block'] not in blocks:
+            continue
+        f = facts[p['root']]
+        if f['id'] in NOTFOUND:
+            sys.exit('REFUSE: %s reads %s on the run box; the census cannot read it' % (p['root'], f['id']))
+        if f['source'] == 'FRESH':
+            how, fam = 'fresh', f['standing_root']
+        else:
+            how, fam = 'copy', f['standing_root'] + ',' + f['source'].rstrip('/').split('/')[-2]
+        out.append('\t'.join([p['block'], f['id'], str(f['p2_model']), p['arm'], how, fam]))   # the model column passes through: phase 2's, UNREAD where none ran
+    open(out_path or os.path.join(HERE, 'ctl_census_join_input.tsv'), 'w').write('\n'.join(out) + '\n')
+    print('ctl_census_join_input.tsv: %d rows' % (len(out) - 1))
+
+
+def fetch_ctl(host):
+    """The TRACKED ctl_census.py (evidence/o37-agy-ctl-read-census-2026-11-25/, main's) on HOST: its --selftest first (rc 0 or REFUSE), then
+    --join over ctl_census_join_input.tsv with --home $HOME; ctl_census_join.tsv and ctl_census_hits.tsv come back beside this file."""
+    d = '~/bench-dry/nca-wca-ctl-%d' % os.getpid()
+    for name, src in (('ctl_census.py', os.path.join(HERE, '..', 'o37-agy-ctl-read-census-2026-11-25', 'ctl_census.py')),
+                      ('join_input.tsv', os.path.join(HERE, 'ctl_census_join_input.tsv'))):
+        subprocess.run(['ssh', host, 'mkdir -p %s && cat > %s/%s' % (d, d, name)], input=open(src).read(), text=True, check=True)
+    st = subprocess.run(['ssh', host, 'cd %s && /usr/bin/python3 -I ctl_census.py --selftest' % d], capture_output=True, text=True)
+    if st.returncode != 0:
+        sys.exit('REFUSE: ctl_census.py --selftest rc %d on %s: %s' % (st.returncode, host, (st.stdout + st.stderr)[-300:]))
+    j = subprocess.run(['ssh', host, 'cd %s && /usr/bin/python3 -I ctl_census.py --join join_input.tsv --home $HOME --out join.tsv --hits hits.tsv' % d],
+                       capture_output=True, text=True)
+    if j.returncode != 0:
+        sys.exit('REFUSE: ctl_census.py --join rc %d on %s: %s' % (j.returncode, host, (j.stdout + j.stderr)[-300:]))
+    for name, local in (('join.tsv', 'ctl_census_join.tsv'), ('hits.tsv', 'ctl_census_hits.tsv')):
+        q = subprocess.run(['ssh', host, 'cat %s/%s' % (d, name)], capture_output=True, text=True, check=True)
+        open(os.path.join(HERE, local), 'w').write(q.stdout)
+    print('ctl census on %s (%s): %s | %s' % (host, d, st.stdout.strip().splitlines()[-1], j.stdout.strip().splitlines()[0]))
+
+
+def derive_ctl(join=None, hits=None, out=None):
+    """ctl_census.tsv from the --join output: root (the MANIFEST root; a standing <root>-a<k> maps to its row) TAB reads (the join's
+    ctl_named) TAB paths (the ctl/ paths its CTL hits name, a bare ctl as ctl/, sorted; '-' at 0). The hits file carries no root and ids
+    recur across roots, so a CTL hit whose (block, id) names more than one root REFUSES rather than being assigned."""
+    join = join or os.path.join(HERE, 'ctl_census_join.tsv'); hits = hits or os.path.join(HERE, 'ctl_census_hits.tsv')
+    pop = [p['root'] for p in population()]
+    J = [l.rstrip('\n').split('\t') for l in open(join) if l.strip() and not l.startswith('#')]
+    H = [l.rstrip('\n').split('\t') for l in open(hits) if l.strip() and not l.startswith('#')]
+    rows, seen = {}, {}
+    for r in J:
+        block, cid, cell, n = r[0], r[1], r[4], int(r[8]) if r[8].isdigit() else None
+        if n is None:
+            sys.exit('REFUSE: join row %s/%s has ctl_named %r (UNMEASURED?): a census row must be read' % (block, cid, r[8]))
+        root = re.sub(r'-a[0-9]+$', '', cell.split(',')[0].split('/')[1])
+        if root not in pop or root in rows:
+            sys.exit('REFUSE: join row %s/%s maps to %s (%s)' % (block, cid, root, 'twice' if root in rows else 'outside the 96'))
+        seen.setdefault((block, cid), []).append(root)
+        ps = sorted({(x if '/' in x else x + '/') for h in H if (h[0], h[1], h[2]) == (block, cid, 'CTL')
+                     for x in re.findall(r'(?<![A-Za-z0-9_])ctl(?:/[A-Za-z0-9_.-]*)?(?![A-Za-z0-9_])', h[4])})
+        if n and not ps:
+            sys.exit('REFUSE: %s reads %d and no CTL hit names a path' % (root, n))
+        rows[root] = (n, ','.join(ps) if n else '-')
+    for k, v in seen.items():
+        if len(v) > 1 and any(rows[x][0] for x in v):
+            sys.exit('REFUSE: CTL hits for %s/%s cannot be assigned to one of %s' % (k[0], k[1], ' '.join(v)))
+    body = ['# root\treads\tpaths   (DERIVED by nca_cells_gen.py --derive-ctl from ctl_census_join.tsv column ctl_named and ctl_census_hits.tsv CTL rows;',
+            '#   ctl_census.py from saltbench main, --join form over ctl_census_join_input.tsv, its --selftest green on the run box first)']
+    body += ['%s\t%d\t%s' % (x, rows[x][0], rows[x][1]) for x in pop if x in rows]
+    open(out or os.path.join(HERE, 'ctl_census.tsv'), 'w').write('\n'.join(body) + '\n')
+    print('ctl_census.tsv: %d rows (of 96), reads > 0 in %d' % (len(rows), sum(1 for v in rows.values() if v[0])))
+
+
 if __name__ == '__main__':
     a = sys.argv[1:]
     if a[:1] == ['--fetch'] and len(a) == 2:
         fetch(a[1])
     elif a[:1] == ['--fetch-web'] and len(a) == 2:
         fetch_web(a[1])
+    elif a == ['--join-input']:
+        join_input()
+    elif a[:1] == ['--fetch-ctl'] and len(a) == 2:
+        fetch_ctl(a[1])
+    elif a == ['--derive-ctl']:
+        derive_ctl()
     elif a == ['--summary']:
         print('\n'.join(summary(table())))
     elif a[:1] == ['--check'] and len(a) == 2:

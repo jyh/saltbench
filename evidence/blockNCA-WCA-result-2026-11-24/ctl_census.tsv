@@ -1,5 +1,5 @@
-# root	reads	paths   (DERIVED by bench 2026-11-28 from ctl_census_join.tsv column ctl_named and ctl_census_hits.tsv CTL rows;
-#   ctl_census.py from saltbench main, --join form over ctl_census_join_input.tsv, selftest 27/27 on the run box)
+# root	reads	paths   (DERIVED by nca_cells_gen.py --derive-ctl from ctl_census_join.tsv column ctl_named and ctl_census_hits.tsv CTL rows;
+#   ctl_census.py from saltbench main, --join form over ctl_census_join_input.tsv, its --selftest green on the run box first)
 cells-na-luby-flash-plain-r2-ncacp1	0	-
 cells-na-luby-flash-salt-r2-ncacp1	0	-
 cells-na-luby-flash-plain-r2-ncacp2	0	-
