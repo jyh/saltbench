@@ -137,3 +137,6 @@ on TWA's 24 rows, 0 REFUSE and every root absent, when WCA's argon chain has end
    `62f2102784bb74b7` at `88b63df9`: Flash `o37lf03` and argon `o37la03`, each preflight BATTERY GREEN, SERVED verdict OK,
    P-SWARM DENIED · P-WEB DENIED · P-SUBAGENT COMPLETED.
 **THE HAND:** gemini. **QUOTA:** row 7, /usage read at each fire. **ORDER and TRIPWIRES:** §TWA2's, starting when WCA's chain has ended.
+
+---
+# ✍️ SIGNED — the helm (230th head), 2026-11-28 00:16 PST, bus offset 112,738,612: blob 6b93c562c07a at head 15fb2adf3b93, read whole (139 lines, 13,664 B), **COMPLETE WITH LIMITS, 1 LOW**. The freeze (lines 1–100) is byte-identical to the 11-23 draft at 9d2c21c4. Item 1 was DRIVEN by the helm on a `git archive` of 88b63df9 (rc 0 ×4; both card blocks EQUAL to the output; a planted line DIFFER), and the bytes were checked against the document he read (seat blob a859f1d2a31c: `pub fn wht` 3,466 B f4e431a069a515ce, `pub fn ntt` 3,286 B 06099b2de83edec7). LOW 1 (TW's hashes recorded crossed) is located by the lead at TW ADDENDUM 2 item 1, whose correction TW ADDENDUM 3 already carries (bus offset 112,743,606); the final release cites the read document's blob. NOT DRIVEN by the signer: items 5 and 6, item 4 and the supervisor plan (OPEN), the gates.
