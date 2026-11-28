@@ -98,3 +98,42 @@ statement arm versus `extras = none` across blocks (WA ran on another export and
 ## §TWA6 · WHAT THE HAND DELIVERS
 TA §TA6 unchanged: a result of record per model, the per-cell statement line, the census's O37 section re-cut in the same commit. Any public
 sentence, and any claim about the method, is the Captain's. The hand is named in the release (TA's was `gemini`).
+
+---
+# ⚖️ ADDENDUM 1 (2026-11-28, bench) — RELEASE, ⛔ DRAFT: NOT A RELEASE. BUILT AHEAD OF HIS WORD (§TWA2 item 2) AND OF THE RUN BOX (items 4 and the supervisor plan). APPENDED.
+Every receipt that can be driven off the run box, without building a cell, is driven here, on the lead's workstation, at the export. The
+rest are marked OPEN with their owner. This heading loses its DRAFT mark only in a later addendum that records his word and the run-box
+receipts. **The window:** both registered models leave the client on 2026-11-30; a TWA cell not FIRED by 2026-11-30 00:00Z is unreached,
+never re-cut (WCA's rule, carried), and its condition is reported at the n it reached.
+
+**§TWA0 row 4, THE EXPORT: saltbench-systems `88b63df9`**, the agy cell lane's release (NCA ADDENDUM 2; WCA ADDENDUM 2), the export the
+spec-change blocks ran. It carries the lineage row 4 names (`aa071afc` and `44430ca6` are its ancestors). The task trees, measured by
+`git rev-parse <export>:tasks/systems-v3/<P>`: **WHT `44b92115d240` · NTT `77c641773103`** at `88b63df9`, and the same at WA Pro's `3fd5edf1`,
+TW's candidate `6d7f398f` and TW's release `e4f786fe`. No overlay.
+**Row 5, THE CLIENT: agy 1.5.11 / `62f2102784bb74b7`**, NCA ADDENDUM 2's pin; `"agentMode": ""` as WA ADDENDUM 5. TA ADDENDUM 7's
+`~/.local/bin` lock is REPLACED by the export's own (`44430ca6`: the wave's host calls cannot update the client, a moved client holds every
+fire, swarm is denied).
+**The supervisor: `81792dbe`** (NCA/WCA ADDENDUM 3: `88b63df9` plus the one supervisor file). TWA's rows are one-phase rows outside level 8
+(`AGY_PHASES` unset), the path TA's rows took; its new refusals (S2/S3) key on the NCA/WCA forms only. ⛔ **OPEN, the run box:** `--plan`
+on TWA's 24 rows, 0 REFUSE and every root absent, when WCA's argon chain has ended (a probe during it could trip a live cell's quiet gate).
+
+**§TWA2, the items:**
+1. **MET at the export** (files from a worktree at `88b63df9`; the three tools that build and check a view, `extract_statement_v3.py`,
+   `cell_build.py` and `neutrality_grep.py`, DIFFER from TW's `e4f786fe`, so TW's drive is not cited): `extract_statement_v3.py
+   <P>/G/withheld/reference/solution.rs --names <P>/verify.names --interface <P>/G/interface.rs --check`, with and without
+   `--carry-consts`, rc 0 in all four runs. Each card's ```rust block under `## Statement` is byte-EQUAL to the output:
+   **WHT 3,466 B, sha256/16 `f4e431a069a515ce` · NTT 3,286 B, sha256/16 `06099b2de83edec7`**, the values TW ADDENDUM 3 records as
+   the bytes he read. Control: each block with one line appended reads DIFFER.
+2. ⛔ **OPEN, his word.** His 11-23 read (council minute, ask 2: *"yes, readd and approved"*) is of TW's two statements, blob
+   `a859f1d2a31c`, and these are the same bytes (item 1). The minute names block TW only, so §TWA2 item 2 sends it back through the pack:
+   **ASK 1 of the 11-28 sitting** (the helm, bus offset 112,727,757). DEFAULT: no TWA cell is built.
+3. **SIZES:** TW §TW2 item 3's table and its ADDENDUM 1 correction, unchanged; item 1 shows the same bytes.
+4. ⛔ **OPEN, the run box:** the four dry agy views (`cell_build.py --client agy --statement`, both problems, both arms) need the pinned
+   Verus, which the lead's workstation does not hold (`cell_build: REFUSE — VERUS_ROOT is not set`). Driven on the run box when WCA's chain
+   ends, at zero spend, with the planted-section control.
+5. **MET at the export:** `check_withheld_leak_v3.py` reads *"CLEAN — 343 identifier(s) across 13 task(s), every positive control fired,
+   1372 view-file read(s), 0 in any view"*, rc 0 (WHT 30 identifiers, NTT 28).
+6. **MET by citation, same export and same client:** NCA ADDENDUM 2's release reading, one dry cell per model on agy 1.5.11 /
+   `62f2102784bb74b7` at `88b63df9`: Flash `o37lf03` and argon `o37la03`, each preflight BATTERY GREEN, SERVED verdict OK,
+   P-SWARM DENIED · P-WEB DENIED · P-SUBAGENT COMPLETED.
+**THE HAND:** gemini. **QUOTA:** row 7, /usage read at each fire. **ORDER and TRIPWIRES:** §TWA2's, starting when WCA's chain has ended.
