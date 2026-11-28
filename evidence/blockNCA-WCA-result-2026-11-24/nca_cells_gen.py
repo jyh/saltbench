@@ -185,6 +185,34 @@ def summary(rows):
         for r in rows:
             x = str(r[k])[:12] if k == 'p2_export' else str(r[k]); v[x] = v.get(x, 0) + 1
         L.append('%s %s' % (k, ' '.join('%s=%d' % kv for kv in sorted(v.items()))))
+    # §NCA5 / §WCA5 predictions, per block and model, DERIVED here (a miss is a result). ELIGIBLE = the phase 1 can carry a phase 2 under
+    #   NC rule 4 (a copy by the census, a fresh cell by its G baseline). REACHED = ELIGIBLE and the §A9.2 gate FIRED phase 2 (a harness
+    #   refusal after the gate, ncamfap01, is reached and NOT-SCORED, never a reach loss: NCA ADDENDUM 6). Cut-turn incidence = counted
+    #   cells with >= 1 cut turn. CELL-KILLED = a done_reason; the two 503 discards are whole attempts and are not rows.
+    elig = lambda r: r['g_verdict'] in ('COPY', 'ELIGIBLE')
+    fired = lambda r: str(r['p2_gate']).startswith('rc=0 ')
+    for b in ('NCA-flash', 'NCA-argon', 'WCA-flash', 'WCA-argon'):
+        bb = [r for r in rows if r['block'] == b]
+        if not any(r['id'] not in ('NO-ROOT', 'TWO-ATTEMPTS', 'NO-CELL', 'TWO-CELLS', 'UNREAD') for r in bb):
+            L.append('%s predictions: NOT YET READ (no cell of this block found on the run box)' % b); continue
+        pa = {}
+        for a in ('plain', 'salt-diet'):
+            rs = [r for r in bb if r['arm'] == a]
+            c = scored(rs)
+            pa[a] = (sum(elig(r) for r in rs), sum(elig(r) and fired(r) for r in rs), len(rs),
+                     sum(1 for r in c if isinstance(r['cut_turns_all'], int) and r['cut_turns_all'] > 0), len(c))
+        cond = []
+        for pr in sorted({r['problem'] for r in bb}):
+            inc = {a: [r for r in scored([x for x in bb if x['problem'] == pr and x['arm'] == a])] for a in ('plain', 'salt-diet')}
+            f = {a: (sum(isinstance(r['cut_turns_all'], int) and r['cut_turns_all'] > 0 for r in v), len(v)) for a, v in inc.items()}
+            ok = f['salt-diet'][0] * max(f['plain'][1], 1) >= f['plain'][0] * max(f['salt-diet'][1], 1)
+            cond.append('%s %d/%d vs %d/%d%s' % (pr, f['plain'][0], f['plain'][1], f['salt-diet'][0], f['salt-diet'][1], '' if ok else ' MISS'))
+        dr = {}
+        for r in bb:
+            dr[str(r['done_reason'])] = dr.get(str(r['done_reason']), 0) + 1
+        L.append('%s predictions: (i) ELIGIBLE plain %d/%d salt-diet %d/%d · REACHED plain %d/%d salt-diet %d/%d · (ii) cut-turn incidence plain vs salt-diet: %s · (iii) done_reason %s' % (
+            b, pa['plain'][0], pa['plain'][2], pa['salt-diet'][0], pa['salt-diet'][2], pa['plain'][1], pa['plain'][2], pa['salt-diet'][1], pa['salt-diet'][2],
+            ' · '.join(cond), ' '.join('%s=%d' % kv for kv in sorted(dr.items()))))
     for b in ('NCA-flash', 'NCA-argon', 'WCA-flash', 'WCA-argon'):
         for pr in sorted({r['problem'] for r in rows if r['block'] == b}):
             for a in ('plain', 'salt-diet'):
