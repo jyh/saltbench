@@ -140,3 +140,39 @@ on TWA's 24 rows, 0 REFUSE and every root absent, when WCA's argon chain has end
 
 ---
 # ✍️ SIGNED — the helm (230th head), 2026-11-28 00:16 PST, bus offset 112,738,612: blob 6b93c562c07a at head 15fb2adf3b93, read whole (139 lines, 13,664 B), **COMPLETE WITH LIMITS, 1 LOW**. The freeze (lines 1–100) is byte-identical to the 11-23 draft at 9d2c21c4. Item 1 was DRIVEN by the helm on a `git archive` of 88b63df9 (rc 0 ×4; both card blocks EQUAL to the output; a planted line DIFFER), and the bytes were checked against the document he read (seat blob a859f1d2a31c: `pub fn wht` 3,466 B f4e431a069a515ce, `pub fn ntt` 3,286 B 06099b2de83edec7). LOW 1 (TW's hashes recorded crossed) is located by the lead at TW ADDENDUM 2 item 1, whose correction TW ADDENDUM 3 already carries (bus offset 112,743,606); the final release cites the read document's blob. NOT DRIVEN by the signer: items 5 and 6, item 4 and the supervisor plan (OPEN), the gates.
+
+---
+# ⚖️ ADDENDUM 2 (2026-11-28, bench) — THE RELEASE. ADDENDUM 1's open items are filled here, and this heading is the release, effective when it reaches `main` after a non-author read. ADDENDUM 1's DRAFT mark is lifted by this addendum; ADDENDUM 1 is unchanged. APPENDED.
+**§TWA2 item 2: MET, his word.** The 11-28 council's ASK 1 (does his 11-23 read of TW's two statements also cover block TWA, the same
+bytes?): *"yes"* (council minute 2026-11-28, item 1; relayed to the lead by the helm, bus offset 113,083,421). His read is of the bytes item 1
+shows at the export: WHT 3,466 B `f4e431a069a515ce` · NTT 3,286 B `06099b2de83edec7` (the read document, seat blob `a859f1d2a31c`).
+**§TWA2 item 4: MET on the run box at `88b63df9`, zero spend** (no client, no model; bus offset 113,011,485). Export `git archive 88b63df9
+harness tasks`, tar sha256/16 `56ddfd769f67890b`; driver `twa-item4.sh` sha256/16 `6d131716602f33a5` and its reader `twa-reqhash.py`
+`f885d585e28e828f`, equal on the lead's workstation and the run box; receipt seat blob `bff692fd5ae6`, rc 0, its lines verbatim:
+```
+VIEW WHT plain id=twawhpd1 build rc=0 · neutrality: neutrality: zero hits · REQUIREMENTS statement sha256/16 f4e431a069a515ce (want f4e431a069a515ce) · OK
+VIEW WHT salt-diet id=twawhsd1 build rc=0 · neutrality: neutrality: zero hits · REQUIREMENTS statement sha256/16 f4e431a069a515ce (want f4e431a069a515ce) · OK
+VIEW NTT plain id=twantpd1 build rc=0 · neutrality: neutrality: zero hits · REQUIREMENTS statement sha256/16 06099b2de83edec7 (want 06099b2de83edec7) · OK
+VIEW NTT salt-diet id=twantsd1 build rc=0 · neutrality: neutrality: zero hits · REQUIREMENTS statement sha256/16 06099b2de83edec7 (want 06099b2de83edec7) · OK
+CONTROL planted WHT plain build rc=4 · cell_build: REFUSE — the neutrality grep hit (ctl/neutrality.log) · plant lines in its neutrality.log 2 · OK
+CONTROL planted WHT salt-diet build rc=4 · cell_build: REFUSE — the neutrality grep hit (ctl/neutrality.log) · plant lines in its neutrality.log 2 · OK
+twa-item4: 6 OK · 0 FAIL (of 6: 4 views + 2 controls)
+```
+The control is read as the PLANT's refusal (the neutrality REFUSE line AND the planted line in the cell's own neutrality log), never as any
+refusal. Declared: the lead's first two drives of this item (kept) failed on the lead's script, not the harness. Hand-copied toolchain
+values left cargo off PATH (rc 127 in every build), so that run's two controls passed VACUOUSLY; then two readers printed nothing or took
+the wrong line. The driver above sources the run box's own toolchain contract and its readers were validated on the second drive's
+artifacts before this one.
+**The supervisor plan: ⛔ OPEN — the hand's receipt goes here before this addendum is read.** `81792dbe` `--plan` on TWA's four manifests
+in §TWA2's order (T-TWA-F 1 · the Flash rest 11 · T-TWA-P 1 · the argon rest 11 = 24 rows, every root absent).
+**Every §TWA2 receipt is MET:** items 1, 3 and 5 at `88b63df9` (ADDENDUM 1); items 2 and 4 above; item 6 by NCA ADDENDUM 2's battery on the
+same export and client (ADDENDUM 1). The release: export saltbench-systems `88b63df9` (WHT `44b92115d240` · NTT `77c641773103` there),
+client agy 1.5.11 / `62f2102784bb74b7`, supervisor `81792dbe`, the hand gemini, the signature as recorded below ADDENDUM 1.
+**The quota: NCA ADDENDUM 2's stop, carried** (named by the PM, bus offset 110,146,697): the agy pool is read at each fire; no TWA cell fires
+at a reading ≤ 10 % remaining; a reading that cannot be taken counts as a stop. §TWA0 row 7 stands beside it.
+**At the first fire, three things are read and posted, and each refuses if it fails** (NCA ADDENDUM 2's): the pool reading; the client's
+sha on the run box (a moved client HOLDS); and a QUIET WINDOW on the run box. The Captain's own use of the run box comes first (a sitting
+ruled at the 11-28 council): TWA's first cell fires only after the helm posts that sitting's end. The other agy cell lane on the same box is
+HELD at its seam, never killed, for TWA's chain, and resumes after it.
+**The window, unchanged:** a TWA cell not FIRED by 2026-11-30 00:00Z is unreached, never re-cut, and its condition is reported at the n it
+reached.
