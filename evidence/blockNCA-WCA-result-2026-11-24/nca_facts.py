@@ -15,10 +15,11 @@ Block NA's cell_facts.py read phase 1 (the `-1` files); a spec-change cell's sco
                                       root), as `rc=N VERDICT` plus `tag=… receipt=…` on a refusal. NONE = no matching line (or no receipt
                                       in the cell); UNREAD = no widen log readable.
                                       ⛔ NOT .seat/landing-N: a healthy two-phase cell carries landing-1..N across both phases
+  p2_results … p2_persist_object      the P-PERSIST probe: the registered reader's word beside the object's (persist_facts, 2026-11-28)
 The cell is FOUND: a copy root holds one cell, the basename of the manifest's copy_from; a fresh root holds the one dir whose name
 starts with the manifest's prefix. Zero or two candidates is NO-CELL / TWO-CELLS, never a guess. A value that cannot be read is UNREAD.
 usage (on the run box):  python3 -I nca_facts.py < rows   (rows: root TAB prefix TAB copy_from, one per manifest row) -> JSON list"""
-import glob, json, os, re, sys
+import glob, hashlib, json, os, re, sys
 
 H = os.path.expanduser('~')
 LOOP = ('turns_sent', 'continue_turns', 'wall_seconds', 'done_reason', 'landed', 'false_done_claims', 'persist_sent', 'persist_answered')
@@ -164,6 +165,102 @@ def phase1(root, cid, source):
     return r
 
 
+PERSIST = ('p2_results', 'p2_loop_rc', 'p2_run_verdict', 'p2_persist', 'p2_persist_object')
+TOKRE = re.compile(r'ARMRECV-[0-9a-f]+')
+
+
+def persist_facts(cell):
+    """The P-PERSIST probe of phase 2, as the REGISTERED reader wrote it beside what the OBJECT records (2026-11-28, bus @112,917,943).
+    p2_results, p2_loop_rc    agy-turnloop-2.json `results`, `rc`
+    p2_run_verdict            launch.log's LAST `SERVED model=… run_verdict=<v>` (NO-COMMAND-PROVEN-OK is one such value)
+    p2_persist                ctl/agy-probes-2.tsv P-PERSIST (agy_probes_v3: the registered reader)
+    p2_persist_object         did the subject give its ack token AFTER the probe? The token is derived from the cell's own briefing bytes
+                              (ctl/briefing-file, else repo/AGENTS.md|CLAUDE.md|GEMINI.md) and used ONLY when its sha256/12 equals
+                              launch.log's `ack token sha256/12`. The probe is the LAST USER_INPUT step of the phase-2 conversation
+                              (conversation_id from stream-2.ndjson). Two axes: the brain transcript's MODEL steps past the probe, and
+                              stream-2's text_deltas CONCATENATED PER STEP past the probe (a token can arrive split across deltas).
+                              yes = either axis holds it · no = both axes readable and neither does · UNREAD otherwise, never no.
+    ⛔ WHY (agy_turnloop_v3.py at 88b63df9): the loop writes the probe after the FIRST opening result, so the second opening turn's result
+       satisfies the probe's wait (persist_answered=True is then that result's), and --exit-timeout 120 s kills a subject still working
+       after it answered; agy_probes_v3 then reads results < turns_sent as INDETERMINATE although the token is in the transcript."""
+    c = os.path.join(cell, 'ctl')
+    r = dict.fromkeys(PERSIST, 'UNREAD')
+    sent = False
+    try:
+        t = json.load(open(os.path.join(c, 'agy-turnloop-2.json')))
+        r['p2_results'], r['p2_loop_rc'] = t.get('results', 'UNREAD'), t.get('rc', 'UNREAD')
+        sent = t.get('persist_sent') is True
+    except (OSError, ValueError):
+        pass
+    want, p2 = None, False
+    try:
+        for l in open(os.path.join(c, 'launch.log'), errors='replace'):
+            p2 = p2 or 'LAUNCHING phase 2 model' in l   # ⛔ a SERVED line before phase 2's launch is phase 1's (a cell no phase 2 ran)
+            m = re.search(r'SERVED model=\S+ .*run_verdict=(\S+)', l)
+            if m and p2:
+                r['p2_run_verdict'] = m.group(1)
+            m = re.search(r'ack token sha256/12 ([0-9a-f]{12})', l)
+            if m:
+                want = m.group(1)
+    except OSError:
+        pass
+    pv = kv(os.path.join(c, 'agy-probes-2.tsv')).get('P-PERSIST')
+    if pv:
+        r['p2_persist'] = pv.strip()
+    bf = first_line(os.path.join(c, 'briefing-file'))
+    cands = []
+    for p in ([os.path.join(cell, bf)] if bf != 'UNREAD' else []) + [os.path.join(cell, 'repo', n) for n in ('AGENTS.md', 'CLAUDE.md', 'GEMINI.md')]:
+        try:
+            cands += TOKRE.findall(open(p, errors='replace').read())
+        except OSError:
+            pass
+    tok = next((x for x in cands if want and hashlib.sha256(x.encode()).hexdigest()[:12] == want), None)
+    if tok is None or not sent:   # ⛔ the probe is read only once the loop has ENDED having sent it (a running cell's last input is not it)
+        return r
+    conv, stream, sread = None, [], False
+    try:
+        for l in open(os.path.join(c, 'stream-2.ndjson'), errors='replace'):
+            sread = True
+            try:
+                d = json.loads(l)
+            except ValueError:
+                continue
+            stream.append(d)
+            conv = conv or (d.get('step_update') or d.get('result') or {}).get('conversation_id')
+    except OSError:
+        pass
+    if not conv:
+        return r
+    rows, bread = [], False
+    try:
+        for l in open(os.path.join(cell, '.agyhome', '.gemini', 'antigravity-cli', 'brain', conv, '.system_generated', 'logs', 'transcript.jsonl'), errors='replace'):
+            bread = True
+            try:
+                rows.append(json.loads(l))
+            except ValueError:
+                pass
+    except OSError:
+        pass
+    users = [x for x in rows if x.get('type') == 'USER_INPUT' and isinstance(x.get('step_index'), int)]
+    if not users:
+        return r
+    last = max(users, key=lambda x: x['step_index'])
+    if 'Receipt' not in str(last.get('content', '')):   # the probe names the briefing's "Receipt" section; anything else is not it
+        return r
+    probe = last['step_index']
+    txt = lambda v: v if isinstance(v, str) else json.dumps(v)
+    in_brain = any(isinstance(x.get('step_index'), int) and x['step_index'] > probe and x.get('source') == 'MODEL' and tok in txt(x.get('content', ''))
+                   for x in rows)
+    per = {}
+    for d in stream:
+        su = d.get('step_update') or {}
+        if isinstance(su.get('step_index'), int) and su['step_index'] > probe:
+            per[su['step_index']] = per.get(su['step_index'], '') + (su.get('text_delta') or '')
+    in_stream = any(tok in v for v in per.values())
+    r['p2_persist_object'] = 'yes' if (in_brain or in_stream) else ('no' if (bread and sread) else 'UNREAD')
+    return r
+
+
 GATE, GATE_LOGS = gate_lines()
 out = []
 for line in sys.stdin:
@@ -176,7 +273,7 @@ for line in sys.stdin:
     rec = {'root': root, 'id': cid, 'standing_root': sroot, 'attempt': k if k else sroot, 'discarded': disc}
     if cid in ('NO-CELL', 'TWO-CELLS', 'NO-ROOT', 'TWO-ATTEMPTS'):   # nothing below is read from a cell that is not found: every field says so, none reads FRESH or 0
         out.append(dict(rec, **{k: cid for k in ('T', 'requested_model', 'meter_verdict', 'cut_turns_all', 'p2_model', 'p2_client16', 'end1',
-                                                   'end2', 'source', 'p2_export', 'hook16', 'p2_gate', 'g_tests', 'g_verdict', 'g_sha12', 'g_aborted') + LOOP + P1}))
+                                                   'end2', 'source', 'p2_export', 'hook16', 'p2_gate', 'g_tests', 'g_verdict', 'g_sha12', 'g_aborted') + LOOP + P1 + PERSIST}))
         continue
     root = sroot   # every read below is of the standing attempt's cell; rec['root'] stays the manifest row's
     c = os.path.join(H, root, cid, 'ctl')
@@ -216,6 +313,7 @@ for line in sys.stdin:
     else:
         rec.update(source='FRESH', p2_export=kv(os.path.join(c, 'built-from.tsv')).get('export_sha', 'UNREAD'), hook16='FRESH')
     rec.update(phase1(root, cid, rec['source']))
+    rec.update(persist_facts(os.path.join(H, root, cid)))
     if rec['source'] == 'FRESH':
         rec['g_tests'], rec['g_verdict'], rec['g_sha12'], rec['g_aborted'] = gbase(root, cid)
     else:   # a copy's source was made eligible by the census (ADDENDUM 1); it owes no fresh G baseline

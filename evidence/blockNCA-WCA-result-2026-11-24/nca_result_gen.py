@@ -120,6 +120,17 @@ pred='''- **(i)** "lower for salt-diet": every source was eligible by the census
 - **(ii)** and **(iii)** read as their lines print.'''),
 }
 
+HARNESS = '''- **Harness-side events** (the `harness-side` line; `cells.tsv` columns `p2_results` … `p2_harness`). `run_verdict` is the launcher's
+  own word on its phase-2 SERVED line; `ERROR(NO-COMMAND-PROVEN-OK)` marks a cell whose code is still scored, so §2's verdicts are the
+  receipts' either way. `P-PERSIST` is the registered reader's (`agy_probes_v3.py`). Beside it, **as a hand read and not the registered
+  instrument**, `nca_facts.py` reads whether the subject gave its ack token (validated against `launch.log`'s hash) AFTER the probe, in its own
+  transcript or stream. **`PROBE-CUT-AT-EXIT-TIMEOUT`** names a cell that the reader read `indeterminate` although its subject DID answer the
+  probe. The turn loop (`agy_turnloop_v3.py` at export `88b63df9`, lines 228-233 and 301-326) writes the probe after the FIRST opening
+  result, so the second opening turn's result satisfied the probe's wait, and `--exit-timeout` (line 869) killed a subject still working
+  after it had answered. L8 §A9.5's persistence cap did not bind. In each such cell the code landing predates the probe (read by hand, bus
+  @112,925,340), so no verdict, count or comparison moves. The turn-loop fix belongs to the next export; every cell of record ran this one
+  (bus @112,917,943).'''
+
 CANNOT = {
 'NCA': '''§NCA8, carried: no magnitude or effect size; nothing Flash-versus-argon or Claude-versus-agy; nothing about a spec-change reached from a
 phase 1 that did not land; nothing about a gemini-3.1-pro-high condition; nothing outside §NCA1. NC's reading rules (L8 §M7, NC §C8) are
@@ -144,8 +155,9 @@ def doc(b, S):
         '## 📌 The per-cell table of record is `%s/cells.tsv` (96 rows: both blocks, both models), printed by `nca_cells_gen.py` beside it from the hand\'s score receipts, `cell_facts.json` (read on the run box by `nca_facts.py`), `ctl_census.tsv` and `web_census.tsv`. Its README says how each is made.' % EVID,
         '## ⛔ Every figure line in a code block below is printed by `nca_cells_gen.py --summary`, and `nca_result_gen.py --check` asserts that this file carries every line of its block verbatim. Bus offsets in the prose are citations to where a reader can look, not measurements.',
         '', '---', '# §1 · WHAT RAN, AND ON WHAT',
-        pick(b, S, lambda t: t.startswith(':') or t.startswith(' phase 2:') or t.startswith(' clients:') or t.startswith(' web:') or t.startswith(' phase 1:')),
-        n['what'], '', '---',
+        pick(b, S, lambda t: t.startswith(':') or t.startswith(' phase 2:') or t.startswith(' clients:') or t.startswith(' web:') or t.startswith(' phase 1:')
+             or t.startswith(' harness-side')),
+        n['what'], HARNESS, '', '---',
         '# §2 · CORRECTNESS, VERIFIED FIRST (the withheld B/ suite; PASS is the receipt\'s word: TESTS all passed, 0 REGRESSIONS failed, 0 CLAUSE_TESTS failed)',
         'The bracket lists each counted cell\'s TESTS (passed/total), REGRESSIONS and CLAUSE_TESTS (failed/total), in cell order. A cell IN COMPARISONS is counted and does not leave comparisons (§1).',
         pick(b, S, lambda t: is_cond(t) or t.startswith(' FULL PASS')),
@@ -168,7 +180,8 @@ directory. Each input, how it is made, and what it does not see:
 - **`cell_facts.json`** — `nca_facts.py`, run on the run box by `nca_cells_gen.py --fetch HOST`, read-only, over the 96 rows: each row's
   standing attempt (a 503 re-queue is `<root>-a<k>`), its cell's own `ctl/` (meters, turn loops, end markers, launch lines, copy record),
   the phase-1 record the wave set aside (`<root>/_aside/<id>/phase1/ctl/`, or the cell's own `ctl/` when no phase 2 ran), the §A9.2 gate
-  lines, and a fresh cell's G baseline. A value it cannot read is UNREAD, never blank or zero.
+  lines, a fresh cell's G baseline, and the P-PERSIST probe: the registered reader's word (`ctl/agy-probes-2.tsv`) beside whether the
+  subject's validated ack token follows the probe in its own brain transcript or stream (a hand read, 2026-11-28). A value it cannot read is UNREAD, never blank or zero.
 - **Score receipts** — the hand's (`score_wave_v3.sh`, one per cell), in its run directory on the lead's box, NOT in this repository (they
   name paths in a local-only tree). Each row's `score_receipt` column names the receipt it was read from; two receipts for one root are
   admitted only when they agree on every scored field (both are cited), and two that disagree refuse. WCA's sit in `wca-*-harvest*` dirs.

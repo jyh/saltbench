@@ -141,5 +141,44 @@ J3='NCA-flash\tnaaefs01\tm\tsalt-diet\t~/cells-na-aes-flash-salt-ncacp1/naaefs01
 H3='NCA-flash\tnaaefs01\tCTL\trun_command\t{"CommandLine": "ls -la ../ctl"}\n'
 dctl derive-bare-ctl-dir 'cells-na-aes-flash-salt-ncacp1 1 ctl/' "$J3" "$H3"
 find "$X" -delete
+# P-PERSIST arms (2026-11-28, bus @112,917,943): nca_facts.py's persist_facts against a FAKE HOME. The fixture carries the ack token
+#   BEFORE the probe too (the ACK turn's answer), so a reader that does not restrict to steps AFTER the probe reads 'yes' and fails.
+P=$(mktemp -d "${TMPDIR:-/tmp}/nca-gen-persist.XXXXXX") || exit 2
+PFX='import sys,os,json,hashlib
+F,mode=sys.argv[1:3]; tok="ARMRECV-abc123def0"; c=os.path.join(F,"r","pz01"); os.makedirs(c+"/ctl"); os.makedirs(c+"/repo")
+open(c+"/repo/AGENTS.md","w").write("# x\n\n## Receipt\n\n"+tok+"\n")
+h="000000000000" if mode=="unvalidated" else hashlib.sha256(tok.encode()).hexdigest()[:12]
+ll=["x SERVED model=m vendor=g verdict=OK run_verdict=OK steps=1"]+([] if mode=="p1only" else ["x LAUNCHING phase 2 model m client 0123456789abcdef"])
+ll+=["x DELIVERY=file, ack token sha256/12 %s lives ONLY in the briefing" % h]+([] if mode=="p1only" else ["x SERVED model=m vendor=g verdict=OK run_verdict=ERROR(NO-COMMAND-PROVEN-OK) steps=2"])
+open(c+"/ctl/launch.log","w").write("\n".join(ll)+"\n")
+json.dump({"turns_sent":3,"results":2,"persist_answered":True,"persist_sent":mode!="notsent","rc":-9},open(c+"/ctl/agy-turnloop-2.json","w"))
+open(c+"/ctl/agy-probes-2.tsv","w").write("P-PERSIST\tindeterminate\n")
+C="conv-1"; pr="Before anything else: the instructions file ends with a section titled Receipt"
+rows=[dict(step_index=0,source="USER_EXPLICIT",type="USER_INPUT",content=pr),dict(step_index=1,source="MODEL",type="PLANNER_RESPONSE",content=tok),
+      dict(step_index=5,source="USER_EXPLICIT",type="USER_INPUT",content=pr),dict(step_index=6,source="MODEL",type="PLANNER_RESPONSE",content="working" if mode in ("before","split") else tok)]
+b=os.path.join(c,".agyhome/.gemini/antigravity-cli/brain",C,".system_generated/logs"); os.makedirs(b)
+open(b+"/transcript.jsonl","w").write("".join(json.dumps(x)+"\n" for x in rows))
+st=[dict(event="step_update",step_update=dict(conversation_id=C,step_index=1,text_delta=tok))]
+if mode=="split": st+=[dict(event="step_update",step_update=dict(conversation_id=C,step_index=6,text_delta=d)) for d in (tok[:8],tok[8:])]
+open(c+"/ctl/stream-2.ndjson","w").write("".join(json.dumps(x)+"\n" for x in st))'
+persistarm(){ local name=$1 mode=$2 want=$3; find "$P" -mindepth 1 -delete; python3 -I -c "$PFX" "$P" "$mode"
+  out=$(printf 'r\tpz\t-\n' | HOME=$P python3 -I "$HERE/nca_facts.py" | python3 -c 'import json,sys; r=json.load(sys.stdin)[0]; print(r["p2_persist_object"], r["p2_run_verdict"])' 2>&1)
+  if [ "$out" = "$want" ]; then pass=$((pass+1)); echo "ok   $name"; else fail=$((fail+1)); echo "FAIL $name: got [$out] want [$want]"; fi; }
+persistarm persist-token-after-probe after 'yes ERROR(NO-COMMAND-PROVEN-OK)'
+persistarm persist-token-before-probe-only before 'no ERROR(NO-COMMAND-PROVEN-OK)'
+persistarm persist-token-split-across-deltas split 'yes ERROR(NO-COMMAND-PROVEN-OK)'
+persistarm persist-token-hash-mismatch-unread unvalidated 'UNREAD ERROR(NO-COMMAND-PROVEN-OK)'
+persistarm persist-probe-not-sent-unread notsent 'UNREAD ERROR(NO-COMMAND-PROVEN-OK)'
+persistarm run-verdict-phase1-line-not-read p1only 'yes UNREAD'
+find "$P" -delete
+# harness(): PROBE-CUT-AT-EXIT-TIMEOUT only on the object's 'yes' (the subject's token after the probe); every other non-yes word is named
+harm(){ local name=$1 want=$2 r=$3 f=$4
+  out=$(cd "$HERE" && python3 -I -c 'import sys,json; sys.path.insert(0, "."); import nca_cells_gen as g; print(g.harness(json.loads(sys.argv[1]), json.loads(sys.argv[2])))' "$r" "$f" 2>&1)
+  if [ "$out" = "$want" ]; then pass=$((pass+1)); echo "ok   $name"; else fail=$((fail+1)); echo "FAIL $name: got [$out] want [$want]"; fi; }
+HR='"id":"x","p2_persist":"indeterminate","p2_run_verdict":"OK","p2_results":2,"p2_loop_rc":-9'; HF='{"turns_sent":3,"persist_answered":true}'
+harm harness-probe-cut-on-object-yes PROBE-CUT-AT-EXIT-TIMEOUT "{$HR,\"p2_persist_object\":\"yes\"}" "$HF"
+harm harness-object-no-is-not-explained PERSIST-INDETERMINATE "{$HR,\"p2_persist_object\":\"no\"}" "$HF"
+harm harness-run-verdict-error-named NO-COMMAND-PROVEN-OK '{"id":"x","p2_persist":"yes","p2_run_verdict":"ERROR(NO-COMMAND-PROVEN-OK)","p2_persist_object":"yes","p2_results":3,"p2_loop_rc":0}' "$HF"
+harm harness-unread-never-dash UNREAD '{"id":"x","p2_persist":"UNREAD","p2_run_verdict":"OK","p2_persist_object":"UNREAD","p2_results":"UNREAD","p2_loop_rc":"UNREAD"}' '{}'
 find "$T" -delete
 echo "nca_gen_selftest: $pass of $((pass+fail)) arms"; [ "$fail" = 0 ]

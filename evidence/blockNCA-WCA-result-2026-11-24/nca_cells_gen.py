@@ -32,7 +32,8 @@ COLS = ['block', 'root', 'id', 'attempt', 'discarded', 'problem', 'arm', 'p2_mod
         'continue_turns', 'cut_turns_all', 'wall_seconds', 'done_reason', 'landed', 'false_done_claims', 'end2', 'verdict', 'TESTS',
         'REGRESSIONS', 'CLAUSE', 'truncated', 'interface', 'score_receipt', 'ctl_reads', 'flag', 'briefing', 'persist', 'p2_gate',
         'g_tests', 'g_verdict', 'g_sha12', 'g_receipt', 'counted', 'p1_model', 'p1_client16', 'p1_T', 'p1_wall_seconds', 'p1_done_reason',
-        'p1_turns_sent', 'p1_cut_turns_all', 'lineage', 'source_web_served', 'p2_web_served']
+        'p1_turns_sent', 'p1_cut_turns_all', 'lineage', 'source_web_served', 'p2_web_served',
+        'p2_results', 'p2_loop_rc', 'p2_run_verdict', 'p2_persist', 'p2_persist_object', 'p2_harness']
 NOSCORE = dict(verdict='UNSCORED', TESTS='UNSCORED', REGRESSIONS='UNSCORED', CLAUSE='UNSCORED', truncated='UNSCORED',
                interface='UNSCORED', score_receipt='UNSCORED')
 
@@ -200,8 +201,40 @@ def table():
             r['source_web_served'] = SRC_WEB.get((sroot, sid), 'NOT-IN-JOIN')
         else:
             r['lineage'] = r['source_web_served'] = sp
+        r['p2_harness'] = harness(r, facts.get(p['root'], {}))
         rows.append(r)
     return rows
+
+
+NOTFOUND = ('UNREAD', 'NO-CELL', 'TWO-CELLS', 'NO-ROOT', 'TWO-ATTEMPTS')
+
+
+def harness(r, f):
+    """Phase 2's harness-side events, '+'-joined, '-' for none (2026-11-28; bus @112,917,943, @112,925,340):
+      <V>                        the launcher's run_verdict is ERROR(<V>) (NO-COMMAND-PROVEN-OK is one: the cell's code still scores)
+      PROBE-CUT-AT-EXIT-TIMEOUT  the registered P-PERSIST reader read `indeterminate` (results = turns_sent - 1) AND the turn loop's
+                                 persist_answered is True AND it was SIGKILLed (rc -9) AND the subject's ack token is AFTER the probe in
+                                 its own record (p2_persist_object yes): the loop took the second opening turn's result as the probe's
+                                 answer and killed a subject still working at --exit-timeout (agy_turnloop_v3.py at 88b63df9)
+      PERSIST-<word>             any other P-PERSIST word than yes: named, never explained
+    A cell not found reads its not-found state; any input UNREAD makes the whole cell UNREAD, never '-'."""
+    if r['id'] in NOTFOUND:
+        return r['id']
+    pv, rv, ob = str(r['p2_persist']), str(r['p2_run_verdict']), str(r['p2_persist_object'])
+    if 'UNREAD' in (pv, rv):
+        return 'UNREAD'
+    ev = []
+    m = re.fullmatch(r'ERROR\((.+)\)', rv)
+    if m:
+        ev.append(m.group(1))
+    elif rv != 'OK':
+        ev.append('RUN-VERDICT-' + rv)
+    if pv != 'yes':
+        ts, rs = f.get('turns_sent'), r['p2_results']
+        cut = (pv == 'indeterminate' and isinstance(ts, int) and isinstance(rs, int) and rs == ts - 1 and f.get('persist_answered') is True
+               and r['p2_loop_rc'] == -9 and ob == 'yes')
+        ev.append('PROBE-CUT-AT-EXIT-TIMEOUT' if cut else 'PERSIST-' + pv.upper())
+    return '+'.join(ev) or '-'
 
 
 def rep_of(root):
@@ -334,6 +367,13 @@ def summary(rows):
             L.append('%s FULL PASS %s %d of %d counted · in comparisons %s' % (b, a, sum(r['verdict'] == 'PASS' for r in c), len(c),
                      'UNREAD' if k is None else '%d of %d' % (sum(r['verdict'] == 'PASS' for r in k), len(k))))
         L.append('%s clients: phase 1 %s · phase 2 %s' % (b, dist(bb, 'p1_client16'), dist(bb, 'p2_client16')))
+        cc = [r for r in bb if r['counted'] == 'yes']
+        ev = lambda e: [r['root'] for r in cc if e in str(r['p2_harness']).split('+')]
+        L.append('%s harness-side over %d counted: run_verdict %s · P-PERSIST by the registered reader %s · PROBE-CUT-AT-EXIT-TIMEOUT %d [%s] · token after the probe at the object (a hand read beside the reader) %s · other events %s' % (
+            b, len(cc), dist(cc, 'p2_run_verdict') or '-', dist(cc, 'p2_persist') or '-', len(ev('PROBE-CUT-AT-EXIT-TIMEOUT')),
+            ' '.join(ev('PROBE-CUT-AT-EXIT-TIMEOUT')) or '-', dist(cc, 'p2_persist_object') or '-',
+            ' '.join('%s=%s' % (r['root'], r['p2_harness']) for r in cc
+                     if any(e not in ('PROBE-CUT-AT-EXIT-TIMEOUT', 'NO-COMMAND-PROVEN-OK', '-') for e in str(r['p2_harness']).split('+'))) or '-'))
         L.append('%s web: source_web_served %s · phase 2 %s' % (b, dist(bb, 'source_web_served'), dist(bb, 'p2_web_served')))
         L.append('%s phase 1: done_reason %s · cut turns (cells with >= 1) %d of %d read' % (
             b, dist(bb, 'p1_done_reason'), sum(isinstance(r['p1_cut_turns_all'], int) and r['p1_cut_turns_all'] > 0 for r in bb),
