@@ -111,3 +111,10 @@ undone first). 13 files hit, 23 windows, each read by hand:
 - The tracked copies of `census.tsv`, `join.tsv` and `unserved.txt` have the home directory written as `~/`
   (`sed 's|/Users/<user>/|~/|g'`); the run-box originals are `census2.tsv` sha256 `6a2b2c5279ebe85f…`, `join.tsv`
   `224211fc66f8fc60…`, `unserved.txt` `7b570290bcc32098…`, in `~/bench-dry/gemini-webcensus-2026-11-20/`.
+
+## ⚖️ NOTE, 2026-11-25 (bench, lead): appended; everything above is unchanged
+Step 1's census reads the brain transcripts its glob reaches (`cells-*/*/.agyhome/…/transcript_full.jsonl`). A two-phase
+cell's phase-1 conversation lives under `<family>/_aside/<id>/`, which that glob does not reach: 213 transcripts in 108 cells
+of record (MATRIX 60, ZF 48). Read on 2026-11-25 by `../o37-agy-ctl-read-census-2026-11-25/` (which walks the cell and its
+aside), they hold 0 `search_web` and 0 `read_url_content` calls. **No figure above moves:** WEB-SERVED 10 and CLEAN 695 stand.
+The sentence "reads every brain transcript" did not cover them, and this note records that.

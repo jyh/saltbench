@@ -1,0 +1,196 @@
+
+## P1 · greenfield — full passes k / n per condition (n = PASS + FAIL; censored and unscorable beside)
+  OLD  | gemini-3.1-pro-high | LRU | 3 / 3 | 3 / 3 | 3 / 3 | 3 / 3 |
+  NEW  | gemini-3.1-pro-high | LRU | 2 / 2 | 2 / 2 | 3 / 3 | 3 / 3 |
+  OLD  | gemini-3.1-pro-high | FreeList | 1 / 3 | 0 / 3 | 3 / 3 | 1 / 1 (+2 censored) |
+  NEW  | gemini-3.1-pro-high | FreeList | 1 / 3 | 0 / 1 | 3 / 3 | 1 / 1 (+2 censored) |
+  OLD  | gemini-3.1-pro-high | LZW | 3 / 3 | 2 / 3 | 3 / 3 | 2 / 3 |
+  NEW  | gemini-3.1-pro-high | LZW | 3 / 3 | 2 / 2 | 3 / 3 | 1 / 1 |
+  OLD  | gemini-3.8-flash-high | LRU | 3 / 3 † | 3 / 3 † | 3 / 3 † | 3 / 3 † |
+  NEW  | gemini-3.8-flash-high | LRU | 3 / 3 † | unmeasured | 3 / 3 † | 3 / 3 † |
+  GONE | gemini-3.8-flash-high | FreeList | 1 / 3 † | 0 / 3 † | 3 / 3 † | 3 / 3 † |
+
+## P2 · brownfield — full passes k / n per condition
+  OLD  | gemini-3.1-pro-high | LRU | 3 / 3 | 2 / 3 | 3 / 3 | 2 / 3 |
+  NEW  | gemini-3.1-pro-high | LRU | 2 / 2 | 2 / 2 | 3 / 3 | 2 / 2 |
+  GONE | gemini-3.1-pro-high | FreeList | 3 / 3 | 0 / 2 | 2 / 3 | 1 / 3 |
+  GONE | gemini-3.1-pro-high | LZW | 3 / 3 | 3 / 3 | 3 / 3 | 3 / 3 |
+  OLD  | gemini-3.1-pro-high | Paxos | 3 / 3 | 2 / 3 | — | — |
+  NEW  | gemini-3.1-pro-high | Paxos | 3 / 3 | 1 / 2 | — | — |
+  OLD  | gemini-3.8-flash-high | Crc32 | 3 / 3 | 3 / 3 | 3 / 3 | 3 / 3 |
+  NEW  | gemini-3.8-flash-high | Crc32 | 3 / 3 | 3 / 3 | 1 / 1 | 3 / 3 |
+  OLD  | gemini-3.8-flash-high | LRU | 3 / 3 | 3 / 3 | 3 / 3 | 3 / 3 |
+  NEW  | gemini-3.8-flash-high | LRU | 3 / 3 | 3 / 3 | 3 / 3 | 1 / 1 |
+  GONE | gemini-3.8-flash-high | FreeList | 3 / 3 | 3 / 3 | 3 / 3 | 3 / 3 |
+  OLD  | gemini-3.8-flash-high | LZW | 3 / 3 | 3 / 3 | 3 / 3 | 3 / 3 |
+  NEW  | gemini-3.8-flash-high | LZW | 3 / 3 | 3 / 3 | 3 / 3 | 2 / 2 |
+  OLD  | gemini-3.8-flash-high | Paxos | 2 / 2 | 3 / 3 | — | — |
+  NEW  | gemini-3.8-flash-high | Paxos | 2 / 2 | 1 / 1 | — | — |
+
+## P3 · spec-change (greenfield only) — phase-2 full passes k / n per condition
+  OLD  | gemini-3.1-pro-high | Crc32 | 3 / 3 | 3 / 3 |
+  NEW  | gemini-3.1-pro-high | Crc32 | 3 / 3 | 2 / 2 |
+  OLD  | gemini-3.1-pro-high | LZW | 3 / 3 | 3 / 3 |
+  NEW  | gemini-3.1-pro-high | LZW | 1 / 1 | 3 / 3 |
+  OLD  | gemini-3.1-pro-high | Paxos | 0 / 3 | 1 / 2 (+1 censored) |
+  NEW  | gemini-3.1-pro-high | Paxos | 0 / 2 | 1 / 2 (+1 censored) |
+  OLD  | gemini-3.8-flash-high | Crc32 | 3 / 3 | 3 / 3 |
+  NEW  | gemini-3.8-flash-high | Crc32 | 3 / 3 | 1 / 1 |
+  GONE | gemini-3.8-flash-high | LRU | 3 / 3 | 3 / 3 |
+  OLD  | gemini-3.8-flash-high | FreeList | 2 / 3 | 0 / 3 |
+  NEW  | gemini-3.8-flash-high | FreeList | 2 / 3 | 0 / 2 |
+  OLD  | gemini-3.8-flash-high | LZW | 3 / 3 | 3 / 3 |
+  NEW  | gemini-3.8-flash-high | LZW | 3 / 3 | 2 / 2 |
+  OLD  | gemini-3.8-flash-high | Paxos | 0 / 3 | 3 / 3 |
+  NEW  | gemini-3.8-flash-high | Paxos | 0 / 3 | 2 / 2 |
+
+## P4 · signs, greenfield: salt-diet's pass-rate interval against plain's (ADDENDUM 1: STRICT)
+  GONE | gemini-3.1-pro-high | LZW | − | − | = |
+  OLD  | gemini-3.8-flash-high | LRU | = | = | = |
+  NEW  | gemini-3.8-flash-high | LRU | — | = | — |
+  GONE | gemini-3.8-flash-high | FreeList | − | = | − |
+
+### P4 counts, per model per treatment (no test, no p-value)
+  OLD  | gemini-3.1-pro-high | bare | 0 | 2 | 2 | 1 | 0 |
+  NEW  | gemini-3.1-pro-high | bare | 0 | 3 | 1 | 1 | 0 |
+  OLD  | gemini-3.1-pro-high | statement | 0 | 2 | 1 | 1 | 1 |
+  NEW  | gemini-3.1-pro-high | statement | 0 | 3 | 0 | 1 | 1 |
+  OLD  | gemini-3.8-flash-high | bare | 0 | 2 | 1 | 1 | 1 |
+  NEW  | gemini-3.8-flash-high | bare | 0 | 1 | 0 | 1 | 3 |
+  OLD  | gemini-3.8-flash-high | statement | 0 | 3 | 1 | 0 | 1 |
+  NEW  | gemini-3.8-flash-high | statement | 0 | 2 | 1 | 0 | 2 |
+  OLD  | gemini-3.8-flash-high | spec-change | 1 | 3 | 1 | 0 | 0 |
+  NEW  | gemini-3.8-flash-high | spec-change | 1 | 2 | 1 | 0 | 1 |
+
+### Brownfield signs, by the same rule (in the file, not in P4)
+  GONE | gemini-3.1-pro-high | LRU | − | − |
+  GONE | gemini-3.1-pro-high | FreeList | − | − |
+  OLD  | gemini-3.1-pro-high | LZW | = | = |
+  NEW  | gemini-3.1-pro-high | LZW | — | = |
+  OLD  | gemini-3.8-flash-high | FreeList | = | = |
+  NEW  | gemini-3.8-flash-high | FreeList | — | = |
+
+## Second method: every count a result of record already prints, against the instrument's k
+  GONE | gemini-3.1-pro-high | LRU | greenfield | plain | none | 3/3 | 3 / 3 | agrees | harness/systems-v3/RESULT-p1-greenfield-2026-09-13.md:25 result of record p1-greenfield §2 FULL PASS of SCORABLE [reads 3/3] |
+  GONE | gemini-3.1-pro-high | LRU | greenfield | salt-diet | none | 3/3 | 3 / 3 | agrees | harness/systems-v3/RESULT-p1-greenfield-2026-09-13.md:25 result of record p1-greenfield §2 FULL PASS of SCORABLE [reads 3/3] |
+  OLD  | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | 0/3 | 0 / 3 | agrees | harness/systems-v3/RESULT-p1-greenfield-2026-09-13.md:27 result of record p1-greenfield §2 FULL PASS of SCORABLE [reads 0/3] |
+  NEW  | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | 0/3 | 0 / 1 | agrees | harness/systems-v3/RESULT-p1-greenfield-2026-09-13.md:27 result of record p1-greenfield §2 FULL PASS of SCORABLE [reads 0/3] |
+  GONE | gemini-3.1-pro-high | LRU | greenfield | plain | none | 3/3 | 3 / 3 | agrees | harness/systems-v3/RESULT-stage3-2026-09-12.md:29 RESULT-stage3-2026-09-12.md §① condition table, n = fired cells, k = full (pre-dates p1-greenfield on the same cells) [reads 3/3] |
+  GONE | gemini-3.1-pro-high | LRU | greenfield | salt-diet | none | 3/3 | 3 / 3 | agrees | harness/systems-v3/RESULT-stage3-2026-09-12.md:31 RESULT-stage3-2026-09-12.md §① condition table, n = fired cells, k = full (pre-dates p1-greenfield on the same cells) [reads 3/3] |
+  OLD  | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | 0/3 | 0 / 3 | agrees | harness/systems-v3/RESULT-stage3-2026-09-12.md:35 RESULT-stage3-2026-09-12.md §① condition table, n = fired cells, k = full (pre-dates p1-greenfield on the same cells) [reads 0/3] |
+  NEW  | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | 0/3 | 0 / 1 | agrees | harness/systems-v3/RESULT-stage3-2026-09-12.md:35 RESULT-stage3-2026-09-12.md §① condition table, n = fired cells, k = full (pre-dates p1-greenfield on the same cells) [reads 0/3] |
+  OLD  | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | 0/3 | 0 / 3 | agrees | harness/systems-v3/RESULT-stage3-2026-09-12.md:244 RESULT-stage3 ADDENDUM 1 §R3 (supersedes §②) [reads 0/3] |
+  NEW  | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | 0/3 | 0 / 1 | agrees | harness/systems-v3/RESULT-stage3-2026-09-12.md:244 RESULT-stage3 ADDENDUM 1 §R3 (supersedes §②) [reads 0/3] |
+  OLD  | gemini-3.1-pro-high | Paxos | greenfield | plain | spec-change | 0/3 | 0 / 3 | agrees | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:21 chainF RESULT §1 table, FULL PASS column |
+  NEW  | gemini-3.1-pro-high | Paxos | greenfield | plain | spec-change | 0/3 | 0 / 2 | agrees | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:21 chainF RESULT §1 table, FULL PASS column |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | plain | spec-change | 3/3 | 3 / 3 | agrees | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:25 chainF RESULT §1 table, FULL PASS column |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | 3/3 | 3 / 3 | agrees | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:28 chainF RESULT §1 table, FULL PASS column |
+  OLD  | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | spec-change | 0/3 | 0 / 3 | agrees | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:30 chainF RESULT §1 table, FULL PASS column |
+  NEW  | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | spec-change | 0/3 | 0 / 2 | agrees | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:30 chainF RESULT §1 table, FULL PASS column |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | salt-diet | spec-change | 3/3 | 3 / 3 | agrees | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:32 chainF RESULT §1 table, FULL PASS column |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | 3/3 | 3 / 3 | agrees | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:40 chainF §1 prose, Flash × Paxos |
+  OLD  | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | spec-change | 0/3 | 0 / 3 | agrees | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:41 chainF §1 prose ("the same arm" = salt-diet) |
+  NEW  | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | spec-change | 0/3 | 0 / 2 | agrees | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:41 chainF §1 prose ("the same arm" = salt-diet) |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | plain | spec-change | 3/3 | 3 / 3 | agrees | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:42 chainF §1 prose, one figure for all four LZW conditions |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | salt-diet | spec-change | 3/3 | 3 / 3 | agrees | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:42 chainF §1 prose, one figure for all four LZW conditions |
+  GONE | gemini-3.1-pro-high | Crc32 | greenfield | salt-diet | spec-change | 3/3 | 3 / 3 | agrees | harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24.md:226 chainD ADDENDUM A (l8cpss02 + the two copies); phrase is "k of n reached, scored, FULL PASS" |
+
+## Per-cell verdicts and their sources (every table entry derives from these rows)
+  GONE | gemini-3.1-pro-high | LRU | greenfield | plain | none | s3lp03 | PASS | PASS | 16/16 | LANDED | harness/systems-v3/RESULT-per-cell-table-levels-1-and-4-2026-09-14.md:105 |
+  GONE | gemini-3.1-pro-high | LRU | greenfield | salt-diet | none | s3ls01 | PASS | PASS | 16/16 | LANDED | harness/systems-v3/RESULT-per-cell-table-levels-1-and-4-2026-09-14.md:125 |
+  GONE | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | s3fs02 | FAIL | FAIL | 3/7 | LANDED | harness/systems-v3/RESULT-per-cell-table-levels-1-and-4-2026-09-14.md:120 |
+  GONE | gemini-3.1-pro-high | FreeList | greenfield | salt-diet | none | s3fs03 | FAIL | FAIL | 6/7 | LANDED | harness/systems-v3/RESULT-per-cell-table-levels-1-and-4-2026-09-14.md:121 |
+  GONE | gemini-3.1-pro-high | LRU | brownfield | plain | none | b4lrp02 | PASS | - | 16/16 | LANDED | harness/systems-v3/RESULT-gemini-brownfield-level4-2026-09-14.md:43 |
+  GONE | gemini-3.1-pro-high | LRU | brownfield | salt-diet | none | b4lrs03 | FAIL | - | 10/16 | LANDED | harness/systems-v3/RESULT-gemini-brownfield-level4-2026-09-14.md:47 |
+  GONE | gemini-3.1-pro-high | Paxos | brownfield | salt-diet | none | b4ps02 | PASS | - | 17/17 | LANDED | harness/systems-v3/RESULT-gemini-brownfield-level4-2026-09-14.md:58 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs01 | by condition | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:39 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs02 | by condition | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:40 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs03 | by condition | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:41 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | l5lsra301 | by condition | - | - | - | landed by harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:213 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | l5lsra302 | by condition | - | - | - | landed by harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:213 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | l5lsra303 | by condition | - | - | - | landed by harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:213 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | statement | l5ft01 | by condition | - | - | - | landed by harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:213 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | statement | l5ft02 | by condition | - | - | - | landed by harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:213 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | statement | l5ft03 | by condition | - | - | - | landed by harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:213 |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | salt-diet | none | l6vgps02 | FAIL | FAIL | 0/8 | LANDED | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:137 |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | salt-diet | statement | l6vspt01 | FAIL | FAIL | 0/8 | LANDED | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:142 |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | salt-diet | statement | l6vspt02 | PASS | PASS | 8/8 | LANDED | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:143 |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | salt-diet | none | l6vbps02 | PASS | PASS | 17/17 | LANDED | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:131 |
+  GONE | gemini-3.8-flash-high | Paxos | brownfield | salt-diet | none | l6vbps03 | PASS | PASS | 17/17 | LANDED | harness/systems-v3/RESULT-gemini-level6-2026-09-17.md:132 |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | plain | statement | l7cfsp01 | PASS | PASS | 6/6 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:265 |
+  GONE | gemini-3.8-flash-high | Crc32 | brownfield | plain | statement | l7cfsp02 | PASS | PASS | 6/6 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:266 |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | none | l7nffs01 | PASS | PASS | 7/7 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:274 |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | none | l7nffs02 | PASS | PASS | 7/7 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:275 |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | none | l7nffs03 | PASS | PASS | 7/7 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:276 |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | l7npfs02 | FAIL | FAIL | 6/7 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:281 |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | none | l7npfs03 | FAIL | FAIL | 6/7 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:282 |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | plain | none | l7npzp03 | PASS | PASS | 8/8 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:243 |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | none | l7npzs01 | PASS | PASS | 8/8 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:283 |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | none | l7npzs02 | PASS | PASS | 8/8 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:284 |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | none | l7npzs03 | PASS | PASS | 8/8 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:285 |
+  GONE | gemini-3.8-flash-high | FreeList | brownfield | salt-diet | statement | l7sffs03 | PASS | PASS | 7/7 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:288 |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | salt-diet | statement | l7sfrs02 | PASS | PASS | 16/16 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:290 |
+  GONE | gemini-3.8-flash-high | LRU | brownfield | salt-diet | statement | l7sfrs03 | PASS | PASS | 16/16 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:291 |
+  GONE | gemini-3.8-flash-high | LZW | brownfield | salt-diet | statement | l7sfzs03 | PASS | PASS | 8/8 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:294 |
+  GONE | gemini-3.1-pro-high | FreeList | brownfield | salt-diet | statement | l7spfb01 | FAIL | FAIL | 6/7 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:295 |
+  GONE | gemini-3.1-pro-high | LRU | brownfield | salt-diet | statement | l7sprs03 | FAIL | FAIL | 10/16 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:300 |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | statement | l7spzs01 | PASS | PASS | 8/8 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:301 |
+  GONE | gemini-3.1-pro-high | LZW | brownfield | salt-diet | statement | l7spzs03 | PASS | PASS | 8/8 | LANDED | harness/systems-v3/RESULT-gemini-level7-2026-09-19.md:303 |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | spec-change | l8cfss02 | PASS | PASS | 10/10 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24-cells.tsv:6 |
+  GONE | gemini-3.8-flash-high | Crc32 | greenfield | salt-diet | spec-change | l8cfss03 | PASS | PASS | 10/10 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24-cells.tsv:7 |
+  GONE | gemini-3.1-pro-high | Crc32 | greenfield | salt-diet | spec-change | l8cpss01 | PASS | PASS | 10/10 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24.md:223 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss01 | PASS | PASS | 23/23 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24-cells.tsv:16 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss02 | PASS | PASS | 23/23 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24-cells.tsv:17 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss03 | PASS | PASS | 23/23 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24-cells.tsv:18 |
+  GONE | gemini-3.1-pro-high | Paxos | greenfield | plain | spec-change | l8xppr01 | FAIL | FAIL | 23/24 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24-cells.tsv:2 |
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | spec-change | l8ffsra201 | FAIL | FAIL | 8/9 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24-cells.tsv:11 |
+  GONE | gemini-3.8-flash-high | LZW | greenfield | salt-diet | spec-change | l8zfsr01 | PASS | PASS | 15/15 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24-cells.tsv:23 |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | plain | spec-change | l8zppr01 | PASS | PASS | 15/15 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24-cells.tsv:26 |
+  GONE | gemini-3.1-pro-high | LZW | greenfield | plain | spec-change | l8zppr02 | PASS | PASS | 15/15 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24-cells.tsv:27 |
+  GONE | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | l8xfs201 | PASS | PASS | 24/24 | LANDED | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24-cells.tsv:35 |
+
+## P1 · greenfield — full passes k / n per condition (n = PASS + FAIL; censored and unscorable beside)
+  ADDED | gemini-3.8-flash-high | FreeList | 1 / 3 † | unmeasured | 3 / 3 † | missing |
+
+## P2 · brownfield — full passes k / n per condition
+  ADDED | gemini-3.1-pro-high | FreeList | 3 / 3 | missing | 2 / 3 | 1 / 2 |
+  ADDED | gemini-3.1-pro-high | LZW | 2 / 2 | missing | 3 / 3 | 1 / 1 |
+  ADDED | gemini-3.8-flash-high | FreeList | 3 / 3 | missing | 3 / 3 | 2 / 2 |
+
+## P3 · spec-change (greenfield only) — phase-2 full passes k / n per condition
+  ADDED | gemini-3.8-flash-high | LRU | 3 / 3 | missing |
+
+## P4 · signs, greenfield: salt-diet's pass-rate interval against plain's (ADDENDUM 1: STRICT)
+  ADDED | gemini-3.1-pro-high | LZW | = | = | = |
+  ADDED | gemini-3.8-flash-high | FreeList | — | — | − |
+
+### Brownfield signs, by the same rule (in the file, not in P4)
+  ADDED | gemini-3.1-pro-high | LRU | = | = |
+  ADDED | gemini-3.1-pro-high | FreeList | — | − |
+
+## Second method: every count a result of record already prints, against the instrument's k
+  ADDED | gemini-3.1-pro-high | LRU | greenfield | plain | none | 3/3 | 2 / 2 | DISAGREES — NO CAUSE: no cause given | harness/systems-v3/RESULT-p1-greenfield-2026-09-13.md:25 result of record p1-greenfield §2 FULL PASS of SCORABLE [reads 3/3] |
+  ADDED | gemini-3.1-pro-high | LRU | greenfield | salt-diet | none | 3/3 | 2 / 2 | DISAGREES — NO CAUSE: no cause given | harness/systems-v3/RESULT-p1-greenfield-2026-09-13.md:25 result of record p1-greenfield §2 FULL PASS of SCORABLE [reads 3/3] |
+  ADDED | gemini-3.1-pro-high | LRU | greenfield | plain | none | 3/3 | 2 / 2 | DISAGREES — NO CAUSE: no cause given | harness/systems-v3/RESULT-stage3-2026-09-12.md:29 RESULT-stage3-2026-09-12.md §① condition table, n = fired cells, k = full (pre-dates p1-greenfield on the same cells) [reads 3/3] |
+  ADDED | gemini-3.1-pro-high | LRU | greenfield | salt-diet | none | 3/3 | 2 / 2 | DISAGREES — NO CAUSE: no cause given | harness/systems-v3/RESULT-stage3-2026-09-12.md:31 RESULT-stage3-2026-09-12.md §① condition table, n = fired cells, k = full (pre-dates p1-greenfield on the same cells) [reads 3/3] |
+  ADDED | gemini-3.1-pro-high | LZW | greenfield | plain | spec-change | 3/3 | 1 / 1 | DISAGREES — NO CAUSE: no cause given | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:25 chainF RESULT §1 table, FULL PASS column |
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | 3/3 | 2 / 2 | DISAGREES — NO CAUSE: no cause given | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:28 chainF RESULT §1 table, FULL PASS column |
+  ADDED | gemini-3.8-flash-high | LZW | greenfield | salt-diet | spec-change | 3/3 | 2 / 2 | DISAGREES — NO CAUSE: no cause given | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:32 chainF RESULT §1 table, FULL PASS column |
+  ADDED | gemini-3.8-flash-high | Paxos | greenfield | salt-diet | spec-change | 3/3 | 2 / 2 | DISAGREES — NO CAUSE: no cause given | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:40 chainF §1 prose, Flash × Paxos |
+  ADDED | gemini-3.1-pro-high | LZW | greenfield | plain | spec-change | 3/3 | 1 / 1 | DISAGREES — NO CAUSE: no cause given | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:42 chainF §1 prose, one figure for all four LZW conditions |
+  ADDED | gemini-3.8-flash-high | LZW | greenfield | salt-diet | spec-change | 3/3 | 2 / 2 | DISAGREES — NO CAUSE: no cause given | harness/systems-v3/RESULT-gemini-level8-chainF-2026-09-24.md:42 chainF §1 prose, one figure for all four LZW conditions |
+  ADDED | gemini-3.1-pro-high | Crc32 | greenfield | salt-diet | spec-change | 3/3 | 2 / 2 | DISAGREES — NO CAUSE: no cause given | harness/systems-v3/RESULT-gemini-level8-chainD-2026-09-24.md:226 chainD ADDENDUM A (l8cpss02 + the two copies); phrase is "k of n reached, scored, FULL PASS" |
+
+## Unmeasured cells
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs01 | ADDENDUM 3d: printed n 3 against 2 cells of record |
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs03 | ADDENDUM 3d: printed n 3 against 2 cells of record |
+  ADDED | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | l5lsra301 | ADDENDUM 3d: printed n 3 against 2 cells of record |
+  ADDED | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | l5lsra302 | ADDENDUM 3d: printed n 3 against 2 cells of record |
+
+## Per-cell verdicts and their sources (every table entry derives from these rows)
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs01 | unmeasured | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:39 |
+  ADDED | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs03 | unmeasured | - | - | LANDED | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:41 |
+  ADDED | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | l5lsra301 | unmeasured | - | - | - | ADDENDUM 3d: printed n 3 against 2 cells of record |
+  ADDED | gemini-3.8-flash-high | LRU | greenfield | salt-diet | none | l5lsra302 | unmeasured | - | - | - | ADDENDUM 3d: printed n 3 against 2 cells of record |
+
+#RECUT correctness-v3: key width 0; old 768 rows, new 724; moved 31, gone 72, added 28

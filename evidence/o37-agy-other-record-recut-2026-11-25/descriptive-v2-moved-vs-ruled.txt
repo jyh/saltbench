@@ -1,0 +1,36 @@
+
+## T1 · greenfield — median total tokens per condition (n per condition in the output-token table below)
+  OLD  | gemini-3.8-flash-high | FreeList | 6,495,950 | 24,187,669 | unmeasured | unmeasured |
+  NEW  | gemini-3.8-flash-high | FreeList | 6,495,950 | 18,044,370 | unmeasured | unmeasured |
+
+## T3 · spec-change (greenfield only) — median total tokens per condition (n per condition in the output-token table below)
+  OLD  | gemini-3.8-flash-high | LRU | 9,343,447 | 26,945,879 |
+  NEW  | gemini-3.8-flash-high | LRU | 9,343,447 | 28,600,140 |
+
+## T4 · salt-diet ÷ plain, greenfield (registration §D4)
+  OLD  | gemini-3.8-flash-high | LRU | — | — | 2.88 |
+  NEW  | gemini-3.8-flash-high | LRU | — | — | 3.06 |
+  OLD  | gemini-3.8-flash-high | FreeList | 3.72 | — | 2.30 |
+  NEW  | gemini-3.8-flash-high | FreeList | 2.78 | — | 2.30 |
+
+### T4 sign counts, per model per treatment (no p-value, by ruling)
+  OLD  | gemini-3.8-flash-high | bare | 3 of 3 | none | 3.72 | 1 |
+  NEW  | gemini-3.8-flash-high | bare | 3 of 3 | none | 3.03 | 1 |
+  OLD  | gemini-3.8-flash-high | spec-change | 5 of 5 | none | 2.88 | 0 |
+  NEW  | gemini-3.8-flash-high | spec-change | 5 of 5 | none | 3.06 | 0 |
+
+## Per-condition medians of OUTPUT tokens (same rule; not in the tables)
+  OLD  | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | 2 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | 2 | unmeasured | - |
+
+## Per-cell figures and their sources (every table number derives from these rows)
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs02 | 57,655,873 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:40 field 8 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss03 | 26,945,879 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfss03,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfss03,phase=2].T |
+
+## Cells in the map but OUTSIDE a condition's population (the result of record's scored cells govern, ADDENDUM 1 A1.4)
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / salt-diet / none | l5fs02 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8; harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:154 records ONE unnamed freelist-saltdiet cell TRUNCATED; cannot assign to a cell, so not flagged |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / salt-diet / spec-change | l8rfss03 |  |
+
+#RECUT descriptive-v2: key width 0; old 853 rows, new 853; moved 8, gone 2, added 2

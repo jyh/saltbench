@@ -2084,3 +2084,103 @@ Nothing Flash-versus-argon (§TA6: a result of record per model, never pooled), 
 about the salt method. At ceiling, no pass count separates the arms.
 
 Source: `evidence/blockTA-result-2026-11-20/` (README: the per-cell table, the collectors, the censuses, the generator).
+
+# ⚖️ ADDENDUM 51 — **O37: BLOCK TW IS A RESULT OF RECORD. 8 CONDITIONS MOVE TO DONE (WHT, NTT × statement × {plain, salt-diet} × {Opus, Sonnet}, Claude lane), EACH AT n = 3. THE PILOT'S 200 DO NOT MOVE.**
+## bench, 2026-11-24, in the same commit as `RESULT-claude-blockTWO-2026-11-24.md` and `RESULT-claude-blockTWS-2026-11-24.md` (§TW9 = block T §T9: the census section is re-cut with the result). They reach `main` together, with saltbench #468.
+
+## §AV1 · WHAT MOVED
+Block TW (`AMENDMENT-O37-statement-wht-ntt-claude-2026-11-22.md`, ADDENDA 1–4) has its 24 cells ended and two result files. All 24 are
+cells of record and all 24 LANDED; none was capped, none ended on a dialog, and no cell is VOID by §TW7 (24 of 24 sections as built equal
+the export card). The line, printed by `evidence/blockTW-result-2026-11-24/tw_result_gen.py --census`:
+```
+block TW: WHT and NTT x statement, Claude lane: 8 conditions, 8 at n = 3, cells of record 24
+block TW spend: COST (capped at the cap) $312.22 · metered $312.22 · WHT $162.77 metered · NTT $149.45 metered
+```
+DONE is not a verdict on the arms. Every condition passes its withheld suite 3 of 3 in both models, so the block is at CEILING on
+correctness (UNRESOLVED-BY-CEILING). Block TW's spend sits below the registered price of $370.54 and ADDENDUM 4's re-cut of $346.45, and
+inside the ceiling of $893.04.
+
+## §AV2 · THE O37 SECTION, RE-CUT (registration states as of 2026-11-24)
+```
+  O37's population (ADDENDUM 28 §AG1)                                                                  216
+    DONE         blocks N and NA (ADDENDUM 29)                                                    48
+                 block WA, Flash: WHT, NTT x {plain, salt-diet} x gemini-3.8-flash-high (ADDENDUM 40)  4
+                 block W: WHT, NTT x {plain, salt-diet} x {Opus, Sonnet}, Claude lane (ADDENDUM 43)  8
+                 block WA, Pro: WHT, NTT x {plain, salt-diet} x gemini-4-argon-high (ADDENDUM 44)   4
+                 block WC: NTT, WHT x spec-change x {plain, salt-diet} x {Opus, Sonnet} (ADDENDUM 45)  8
+                 block NC: the six block-N problems x spec-change, Claude lane (ADDENDUM 46)        22
+                 block T: the six block-N problems x statement, Claude lane (ADDENDUM 49)           24
+                 block TA: the six block-N problems x statement, agy lane (ADDENDUM 50)             24
+                 block TW: WHT, NTT x statement, Claude lane (this)                                  8
+    DECLARED     LU, 24 conditions (ADDENDUM 39)                                                   24
+                 block NC: LinearScan x spec-change x salt-diet x {Opus, Sonnet}, unreached (ADDENDUM 46)  2
+    NOT DONE     WHT and NTT, the other 16:
+                   x statement, agy lane: block TWA, registration draft, unmerged (saltbench #467)    8
+                   x spec-change, agy lane: block WCA, registered on main (#470), not released       8
+                 the six block-N problems x spec-change, agy lane:
+                   block NCA, registered on main (#470), not released                               24
+```
+DONE 150 · DECLARED 26 · NOT DONE 40 = 216.
+⚠️ **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.** The two populations are never summed.
+
+## §AV3 · A HARNESS FINDING CARRIED, AND WHAT THIS ADDENDUM DOES NOT ESTABLISH
+ADDENDUM 4's §TW5.2 section finding, extended to NTT by the results' §5: 8 of the 12 salt-diet cells (Opus 3, Sonnet 5; WHT 5, NTT 3)
+strengthen the extracted statement's `op_ok` (a result-length conjunct; on NTT also residues) and/or `trace_ok` (R5 determinism), on
+out-of-domain traces only. It is a finding about the statement, never an arm effect, and no score moves. Nothing Opus-versus-Sonnet,
+nothing about the statement arm versus `extras = none` across blocks (§TW8.3), nothing about the salt method. Every premium in both results
+is UNRESOLVED-UNDERPOWERED as registered.
+
+Source: `evidence/blockTW-result-2026-11-24/` (README: the per-cell table, the categories as read, the derive, the generator, the checks).
+
+# ⚖️ ADDENDUM 52 — **O37: TWO agy CELLS OF RECORD RECEIVED ANOTHER RECORD'S CONTENT (`l5fs02`, `l8rfss03`) AND LEAVE EVERY COMPARISON, UNDER ADDENDUM 47's WEB-SERVED RULE. THE OTHER 50 OTHER-RECORD CELLS STAY, LABELLED. NO COUNT MOVES; NOTHING IS VOIDED.**
+## bench, 2026-11-25, on the Captain's ruling at the 2026-11-25 sitting (the council minute of that date, item 5, his words *"accept rec"*: arm (b′)). Registered BEFORE any table of record moves. Appended; everything above is unchanged.
+
+## §AU1 · WHAT WAS FOUND
+The census of what agy subjects named outside their repo (`evidence/o37-agy-ctl-read-census-2026-11-25/`, 705 cells of record) found **52 cells
+whose tool calls NAMED a path under `$HOME` in another record** (another cell or family root, a preserved or evidence tree): MATRIX 50
+(salt-diet 42 · plain 8), NA 1, ZF 1 (`census.tsv`, column `other_record` > 0; the same 52 ids as `recut/set-other.txt`). For each such
+call the census read what the call RECEIVED (`other_seen.py` → `other_seen.tsv`). **Another record's CONTENT reached the subject in 2
+of the 52, both MATRIX salt-diet, gemini-3.8-flash-high:**
+
+- `l5fs02` (FreeList, greenfield): test files of `p2fre02`, a cell under a `PRESERVED-waves-…` tree (3 tool calls whose result carried CONTENT; `other_seen.tsv` `content=` counts CALLS).
+- `l8rfss03` (LRU, spec-change): the brain transcript of the plain tripwire cell `l8rfpw01` (5 such calls).
+
+The two cells' CONTENT LINES number 11 together (`#CONTENT-LINES-BY-SOURCE-FORM grep-abs=2 · view_file=9`); the per-cell line split is not derived here.
+
+In 22 of the other 50 the fence refused every outside read, 15 received names only, and 13 received nothing that names an outside path.
+CONTENT is 2, the same two cells, under every revision of the instrument and with at least one `view_file` CONTENT line in each
+(the census README, "What the OTHER-RECORD calls RECEIVED").
+
+## §AU2 · THE RULE
+```
+  CONTENT  (another record's file content reached the subject)   2 cells   leave every comparison, as WEB-SERVED cells do (ADDENDUM 47)
+  OTHER-RECORD without CONTENT                                   50 cells   STAY in every comparison, LABELLED OTHER-RECORD
+  CTL-NAMED                                                     unchanged  stays under AMENDMENT-agy-ctl-fence-2026-10-13.md §5
+```
+The label is the cell's `census.tsv` row; a result that cites one of the 50 carries it. The set that leaves is `recut/set-content.txt`,
+derived from `other_seen.tsv` by `awk -F'\t' '$4=="CONTENT"{print $2}'`. Together with the 10 WEB-SERVED cells, 12 ids leave.
+
+## §AU3 · WHAT IT MOVES, READ BEFORE THE RULE BINDS (`recut/out-content/`, against the RULED state that already excludes the 10 WEB-SERVED)
+**One correctness P4 sign leaves salt-diet, on Flash:** Flash × FreeList × greenfield goes from `−` to `—`. The `—` is not a pass: the
+condition is scored by condition (P1 salt-diet `0 / 3`), and with `l5fs02` out the instrument's ADDENDUM 3d guard prints it `unmeasured`
+(printed n 3 against 2 cells of record). Flash bare P4 counts `+ = − ? —` go from `0 2 1 1 1` to `0 2 0 1 2`.
+**One P3 pass leaves salt-diet:** Flash × LRU × spec-change, salt-diet phase 2, goes from `3 / 3` to `2 / 2` (`l8rfss03` was a PASS).
+**Descriptive T4:** every k-of-m sign holds; two Flash medians move (bare 3.72 → 3.03, spec-change 2.88 → 3.06). **Cost v3:** every $4
+and W4 k-of-m sign holds; Flash medians move (`$4` bare 2.96 → 2.61, spec-change 2.26 → 2.33; `W4` bare 2.50 → 2.19, spec-change 2.47 → 2.42). Those are the sign-count tables; inside the two affected conditions the per-condition
+cells move too (T1/T3 median tokens, the output-token medians, $1/$3, W1/W3, the T4/$4/W4 ratio cells, and the per-cell rows), each listed
+in the diff files below.
+Sources: `out-content/correctness-v3-moved-vs-ruled.txt`, `descriptive-v2-moved-vs-ruled.txt`, `cost-v3-moved-vs-ruled.txt`,
+`headline-signs.md` beside `out-ruled/headline-signs.md`.
+⚠️ **The removal is one-armed:** both cells are salt-diet. It takes away a salt-diet `−` (P4) and a salt-diet PASS (P3), so it moves
+salt-diet's record in both directions at once, and neither move is a measured pass or a measured failure of the arm.
+
+## §AU4 · WHAT THIS ADDENDUM DOES NOT DO
+**No count in this census moves:** both cells stay cells of record IN THIS CENSUS (the guard's "2 cells of record" in §AU3 counts the
+cells left IN THE COMPARISON), their conditions stay DONE at the n their records state, and
+nothing is voided (A5.2 voids only FENCE-TAMPER). The re-cut of the tables of record is a separate change that cites this addendum. The 50
+that stay are not shown uncontaminated: NONE-NAMED and NAMES-ONLY are lower bounds on contact (the census README, limit 1), and a program
+a call ran that read further is not seen. **The pilot's line is unchanged: DONE 181 · OWED 0 · BLOCKED 0 · INEXPR 16 · DECLARED 3 = 200.**
+Nothing here is about the salt method.
+
+Source: `evidence/o37-agy-ctl-read-census-2026-11-25/` (README: the census, the OTHER-RECORD content read, controls, limits;
+`recut/README.md`: the three arms and what each moves).
