@@ -217,13 +217,14 @@ def persist_facts(cell):
     tok = next((x for x in cands if want and hashlib.sha256(x.encode()).hexdigest()[:12] == want), None)
     if tok is None or not sent:   # ⛔ the probe is read only once the loop has ENDED having sent it (a running cell's last input is not it)
         return r
-    conv, stream, sread = None, [], False
+    conv, stream, sread, torn = None, [], False, False
     try:
         for l in open(os.path.join(c, 'stream-2.ndjson'), errors='replace'):
             sread = True
             try:
                 d = json.loads(l)
             except ValueError:
+                torn = torn or bool(l.strip())   # a torn line (a kill mid-write) may hold the token: absence is then unread, never no
                 continue
             stream.append(d)
             conv = conv or (d.get('step_update') or d.get('result') or {}).get('conversation_id')
@@ -238,7 +239,7 @@ def persist_facts(cell):
             try:
                 rows.append(json.loads(l))
             except ValueError:
-                pass
+                torn = torn or bool(l.strip())
     except OSError:
         pass
     users = [x for x in rows if x.get('type') == 'USER_INPUT' and isinstance(x.get('step_index'), int)]
@@ -257,7 +258,8 @@ def persist_facts(cell):
         if isinstance(su.get('step_index'), int) and su['step_index'] > probe:
             per[su['step_index']] = per.get(su['step_index'], '') + (su.get('text_delta') or '')
     in_stream = any(tok in v for v in per.values())
-    r['p2_persist_object'] = 'yes' if (in_brain or in_stream) else ('no' if (bread and sread) else 'UNREAD')
+    # kent's delta read of #479, D2: 'no' only when both axes were read WHOLE (no torn line in either)
+    r['p2_persist_object'] = 'yes' if (in_brain or in_stream) else ('no' if (bread and sread and not torn) else 'UNREAD')
     return r
 
 

@@ -155,12 +155,13 @@ json.dump({"turns_sent":3,"results":2,"persist_answered":True,"persist_sent":mod
 open(c+"/ctl/agy-probes-2.tsv","w").write("P-PERSIST\tindeterminate\n")
 C="conv-1"; pr="Before anything else: the instructions file ends with a section titled Receipt"
 rows=[dict(step_index=0,source="USER_EXPLICIT",type="USER_INPUT",content=pr),dict(step_index=1,source="MODEL",type="PLANNER_RESPONSE",content=tok),
-      dict(step_index=5,source="USER_EXPLICIT",type="USER_INPUT",content=pr),dict(step_index=6,source="MODEL",type="PLANNER_RESPONSE",content="working" if mode in ("before","split") else tok)]
+      dict(step_index=5,source="USER_EXPLICIT",type="USER_INPUT",content=pr),dict(step_index=6,source="MODEL",type="PLANNER_RESPONSE",content="working" if mode in ("before","split","torn") else tok)]
 b=os.path.join(c,".agyhome/.gemini/antigravity-cli/brain",C,".system_generated/logs"); os.makedirs(b)
 open(b+"/transcript.jsonl","w").write("".join(json.dumps(x)+"\n" for x in rows))
 st=[dict(event="step_update",step_update=dict(conversation_id=C,step_index=1,text_delta=tok))]
 if mode=="split": st+=[dict(event="step_update",step_update=dict(conversation_id=C,step_index=6,text_delta=d)) for d in (tok[:8],tok[8:])]
-open(c+"/ctl/stream-2.ndjson","w").write("".join(json.dumps(x)+"\n" for x in st))'
+torn="" if mode!="torn" else json.dumps(dict(event="step_update",step_update=dict(conversation_id=C,step_index=6,text_delta=tok)))[:-9]+"\n"
+open(c+"/ctl/stream-2.ndjson","w").write("".join(json.dumps(x)+"\n" for x in st)+torn)'
 persistarm(){ local name=$1 mode=$2 want=$3; find "$P" -mindepth 1 -delete; python3 -I -c "$PFX" "$P" "$mode"
   out=$(printf 'r\tpz\t-\n' | HOME=$P python3 -I "$HERE/nca_facts.py" | python3 -c 'import json,sys; r=json.load(sys.stdin)[0]; print(r["p2_persist_object"], r["p2_run_verdict"])' 2>&1)
   if [ "$out" = "$want" ]; then pass=$((pass+1)); echo "ok   $name"; else fail=$((fail+1)); echo "FAIL $name: got [$out] want [$want]"; fi; }
@@ -170,6 +171,7 @@ persistarm persist-token-split-across-deltas split 'yes ERROR(NO-COMMAND-PROVEN-
 persistarm persist-token-hash-mismatch-unread unvalidated 'UNREAD ERROR(NO-COMMAND-PROVEN-OK)'
 persistarm persist-probe-not-sent-unread notsent 'UNREAD ERROR(NO-COMMAND-PROVEN-OK)'
 persistarm run-verdict-phase1-line-not-read p1only 'yes UNREAD'
+persistarm persist-torn-line-unread-not-no torn 'UNREAD ERROR(NO-COMMAND-PROVEN-OK)'   # kent D2: a torn final line may hold the token
 find "$P" -delete
 # harness(): PROBE-CUT-AT-EXIT-TIMEOUT only on the object's 'yes' (the subject's token after the probe); every other non-yes word is named
 harm(){ local name=$1 want=$2 r=$3 f=$4
@@ -179,6 +181,7 @@ HR='"id":"x","p2_persist":"indeterminate","p2_run_verdict":"OK","p2_results":2,"
 harm harness-probe-cut-on-object-yes PROBE-CUT-AT-EXIT-TIMEOUT "{$HR,\"p2_persist_object\":\"yes\"}" "$HF"
 harm harness-object-no-is-not-explained PERSIST-INDETERMINATE "{$HR,\"p2_persist_object\":\"no\"}" "$HF"
 harm harness-run-verdict-error-named NO-COMMAND-PROVEN-OK '{"id":"x","p2_persist":"yes","p2_run_verdict":"ERROR(NO-COMMAND-PROVEN-OK)","p2_persist_object":"yes","p2_results":3,"p2_loop_rc":0}' "$HF"
+harm harness-object-unread-is-unread UNREAD "{$HR,\"p2_persist_object\":\"UNREAD\"}" "$HF"   # kent D1: every input the decision reads
 harm harness-unread-never-dash UNREAD '{"id":"x","p2_persist":"UNREAD","p2_run_verdict":"OK","p2_persist_object":"UNREAD","p2_results":"UNREAD","p2_loop_rc":"UNREAD"}' '{}'
 find "$T" -delete
 echo "nca_gen_selftest: $pass of $((pass+fail)) arms"; [ "$fail" = 0 ]

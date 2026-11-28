@@ -231,8 +231,11 @@ def harness(r, f):
         ev.append('RUN-VERDICT-' + rv)
     if pv != 'yes':
         ts, rs = f.get('turns_sent'), r['p2_results']
-        cut = (pv == 'indeterminate' and isinstance(ts, int) and isinstance(rs, int) and rs == ts - 1 and f.get('persist_answered') is True
-               and r['p2_loop_rc'] == -9 and ob == 'yes')
+        # ⛔ every input the PROBE-CUT decision reads must be read (kent's delta read of #479, D1): one UNREAD makes the cell UNREAD
+        if not (isinstance(ts, int) and isinstance(rs, int) and isinstance(r['p2_loop_rc'], int) and isinstance(f.get('persist_answered'), bool)
+                and ob in ('yes', 'no')):
+            return 'UNREAD'
+        cut = (pv == 'indeterminate' and rs == ts - 1 and f.get('persist_answered') is True and r['p2_loop_rc'] == -9 and ob == 'yes')
         ev.append('PROBE-CUT-AT-EXIT-TIMEOUT' if cut else 'PERSIST-' + pv.upper())
     return '+'.join(ev) or '-'
 
