@@ -1,0 +1,27 @@
+cells out: WEB-SERVED 10 + set 0 = 10 distinct
+map rows marked: descriptive 3 · correctness 3
+descriptive-v2: control OK (864 table rows = RESULT-descriptive-tables-v2-2026-09-27.md); tool rc old 1 new 1
+descriptive-v2-O57: control OK (864 table rows = RESULT-descriptive-tables-v2-O57-remeter-2026-10-13.md); tool rc old 1 new 1
+cost-v3: control OK (922 table rows = RESULT-cost-tables-v3-2026-09-29.md); tool rc old 0 new 0
+correctness-v3: control OK (781 table rows = RESULT-correctness-tables-v3-2026-10-01.md); tool rc old 0 new 1
+blockNA old: rc 0
+blockNA: cells dropped 5
+blockNA new: rc 0
+ZF: cells dropped 2
+#TAKEN-OUT by route (distinct ids): blockNA-cells 5 · correctness-map 3 · descriptive-map 3 · zf-cells 2
+#TAKEN-OUT-NOWHERE 0 of 10: none (in no instrument's input; set ids: none)
+ZF old: rc 0
+ZF new: rc 0
+ZF: control OK (zf_result.py --check RESULT-ZF-gemini4-argon-2026-10-25.md green)
+#RECUT descriptive-v2: key width 0; old 854 rows, new 853; moved 7, gone 5, added 4
+  --check descriptive-v2: SAME as the tracked descriptive-v2-moved.txt
+#RECUT descriptive-v2-O57: key width 0; old 854 rows, new 853; moved 7, gone 5, added 4
+  --check descriptive-v2-O57: SAME as the tracked descriptive-v2-O57-moved.txt
+#RECUT cost-v3: key width 0; old 905 rows, new 902; moved 7, gone 8, added 5
+  --check cost-v3: SAME as the tracked cost-v3-moved.txt
+#RECUT correctness-v3: key width 0; old 770 rows, new 768; moved 5, gone 6, added 4
+  --check correctness-v3: SAME as the tracked correctness-v3-moved.txt
+#RECUT blockNA: 8 old line(s), 8 new line(s)
+  --check blockNA: SAME as the tracked blockNA-moved.txt
+#RECUT ZF: 9 old line(s), 11 new line(s)
+  --check ZF: SAME as the tracked ZF-moved.txt

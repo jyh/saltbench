@@ -969,3 +969,50 @@ Printed by `recut.py` in `evidence/o37-agy-web-served-2026-11-20/recut/`: the in
 
 #RECUT descriptive-v2: key width 0; old 854 rows, new 853; moved 7, gone 5, added 4
 ```
+
+## ⚖️ ADDENDUM — O37, 2026-11-25 (re-cut, census ADDENDUM 52, arm (b′)): THE TWO CONTENT CELLS (`l5fs02`, `l8rfss03`) OUT OF THESE TABLES, ON TOP OF THE 2026-11-20 WEB-SERVED RE-CUT: WHAT MOVES. APPENDED; everything above is unchanged.
+
+*bench (lead), on the Captain's ruling at the 2026-11-25 sitting (census ADDENDUM 52).*
+
+Printed in `evidence/o37-agy-other-record-recut-2026-11-25/` (README: the instrument, the control, the two readings; `check_recut.py` reproduces it). OLD below is the RULED state (this file's tables without the 10 WEB-SERVED cells, the 2026-11-20 addendum's NEW); NEW is that state without the two CONTENT cells as well. The other 50 OTHER-RECORD cells stay in these tables, labelled by their row in `evidence/o37-agy-ctl-read-census-2026-11-25/census.tsv`. No table above is replaced.
+
+`descriptive-v2-moved-vs-ruled.txt`, verbatim (GONE/ADDED = a row on one side only):
+
+```
+
+## T1 · greenfield — median total tokens per condition (n per condition in the output-token table below)
+  OLD  | gemini-3.8-flash-high | FreeList | 6,495,950 | 24,187,669 | unmeasured | unmeasured |
+  NEW  | gemini-3.8-flash-high | FreeList | 6,495,950 | 18,044,370 | unmeasured | unmeasured |
+
+## T3 · spec-change (greenfield only) — median total tokens per condition (n per condition in the output-token table below)
+  OLD  | gemini-3.8-flash-high | LRU | 9,343,447 | 26,945,879 |
+  NEW  | gemini-3.8-flash-high | LRU | 9,343,447 | 28,600,140 |
+
+## T4 · salt-diet ÷ plain, greenfield (registration §D4)
+  OLD  | gemini-3.8-flash-high | LRU | — | — | 2.88 |
+  NEW  | gemini-3.8-flash-high | LRU | — | — | 3.06 |
+  OLD  | gemini-3.8-flash-high | FreeList | 3.72 | — | 2.30 |
+  NEW  | gemini-3.8-flash-high | FreeList | 2.78 | — | 2.30 |
+
+### T4 sign counts, per model per treatment (no p-value, by ruling)
+  OLD  | gemini-3.8-flash-high | bare | 3 of 3 | none | 3.72 | 1 |
+  NEW  | gemini-3.8-flash-high | bare | 3 of 3 | none | 3.03 | 1 |
+  OLD  | gemini-3.8-flash-high | spec-change | 5 of 5 | none | 2.88 | 0 |
+  NEW  | gemini-3.8-flash-high | spec-change | 5 of 5 | none | 3.06 | 0 |
+
+## Per-condition medians of OUTPUT tokens (same rule; not in the tables)
+  OLD  | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | 2 | unmeasured | - |
+  OLD  | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | 3 | unmeasured | - |
+  NEW  | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | 2 | unmeasured | - |
+
+## Per-cell figures and their sources (every table number derives from these rows)
+  GONE | gemini-3.8-flash-high | FreeList | greenfield | salt-diet | none | l5fs02 | 57,655,873 | - | - | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:40 field 8 |
+  GONE | gemini-3.8-flash-high | LRU | greenfield | salt-diet | spec-change | l8rfss03 | 26,945,879 | - | - | evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfss03,phase=1].T + evidence/l8-chainD-2026-09-24/phase_facts.json [id=l8rfss03,phase=2].T |
+
+## Cells in the map but OUTSIDE a condition's population (the result of record's scored cells govern, ADDENDUM 1 A1.4)
+  ADDED | gemini-3.8-flash-high / FreeList / greenfield / salt-diet / none | l5fs02 | harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:29 header "cell condition arm SUC ERR clean_s cum T ok/run end", T = field 8; harness/systems-v3/RESULT-gemini-flash-level5-2026-09-15.md:154 records ONE unnamed freelist-saltdiet cell TRUNCATED; cannot assign to a cell, so not flagged |
+  ADDED | gemini-3.8-flash-high / LRU / greenfield / salt-diet / spec-change | l8rfss03 |  |
+
+#RECUT descriptive-v2: key width 0; old 853 rows, new 853; moved 8, gone 2, added 2
+```
